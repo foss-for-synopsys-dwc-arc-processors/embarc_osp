@@ -1,0 +1,174 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ * \version 0.1
+ * \date 2014-09-16
+ * \author Qiang Gu
+ *
+ */
+
+/* ******************************************************************************
+ * 1st group definition ARC_HAL
+ */
+
+
+/**
+ * \defgroup ARC_HAL ARC HAL
+ * \brief ARC Hardware Abstraction Layer
+ */
+
+/* ******************************************************************************
+ * 2nd level group definition ARC_HAL
+ */
+
+/**
+ * \defgroup ARC_HAL_CORE Core HAL
+ * \ingroup ARC_HAL
+ * \brief Core definitions of ARCv2 ISA processor
+ */
+
+/**
+ * \defgroup ARC_HAL_STARTUP Startup
+ * \ingroup ARC_HAL
+ * \brief ARC startup module
+ */
+
+/**
+ * \defgroup  ARC_HAL_EXCEPTION Exception and Interrupt
+ * \ingroup ARC_HAL
+ * \brief Definitions and functions of CPU exception and interrupt exception management
+ */
+
+/**
+ * \defgroup  ARC_HAL_BUILTIN Compiler Builtin and Helper
+ * \ingroup ARC_HAL
+ * \brief Built-in and helper functions to access ARC hardware layer
+ */
+
+/**
+ * \defgroup  ARC_HAL_MISC Internal Components
+ * \ingroup ARC_HAL
+ * \brief ARC internal peripheral components
+ *
+ * 	Besides processors, there are different components, such as internal timers, cache, MPU/MMU.
+ */
+
+/**
+ * \defgroup EMBARC_GENERAL embARC General Definitions
+ * \brief General definitions about embARC
+ */
+
+/**
+ * \defgroup  TOOLCHAIN Toolchain
+ * \ingroup EMBARC_GENERAL
+ * \brief Toolchain dependent definitions
+ *
+ * Both the MetaWare and ARC GNU toolchains are supported in embARC. \n
+ * The toolchain dependent definitions include:
+ * <ul>
+ * <li>Data type definitions using stdint.h
+ * <li>Compiler extensions, such as inline functions, assembly in C.
+ * </ul>
+ * Please refer to source code in embARC_toolchain.h for code comments.
+ */
+
+/**
+ * \defgroup  EMBARC_ERROR  Error Management
+ * \ingroup EMBARC_GENERAL
+ * \brief Provide general error code definitions and operation macros
+ */
+
+/**
+ * \defgroup  EMBARC_DEBUG  Debug Facilities
+ * \ingroup EMBARC_GENERAL
+ * \brief Provide basic debug facilities
+ */
+
+/**
+ * \defgroup  EMBARC_ASSERT Assert Facilities
+ * \ingroup EMBARC_GENERAL
+ * \brief Provide basic assert facilities
+ */
+
+/**
+ * \defgroup  EMBARC_TEST Unit Test Framework
+ * \ingroup EMBARC_GENERAL
+ * \brief Provide a basic unit test framework
+ */
+
+
+/* ******************************************************************************
+ * 3nd level group definition ARC_CORE
+ */
+
+/**
+ * \defgroup  ARC_HAL_CORE_COMM Core Definition
+ * \ingroup ARC_HAL_CORE
+ * \brief Common core definitions
+ */
+
+/**
+ * \defgroup  ARC_HAL_CORE_EM EM Series
+ * \ingroup ARC_HAL_CORE
+ * \brief EM specific definitions
+ */
+
+/**
+ * \defgroup  ARC_HAL_CORE_HS HS Series
+ * \ingroup ARC_HAL_CORE
+ * \brief HS specific definitions
+ */
+
+/* ******************************************************************************
+ * 3nd level group definition ARC_HAL_MISC
+ */
+
+/**
+ * \defgroup ARC_HAL_MISC_CACHE Cache
+ * \ingroup ARC_HAL_MISC
+ * \brief Cache related definitions and functions
+ */
+
+/**
+ * \defgroup ARC_HAL_MISC_TIMER Internal Timer
+ * \ingroup ARC_HAL_MISC
+ * \brief ARC internal timer management
+ *
+ * The processor timers include two independent 32-bit timers and a 64-bit real-time counter (RTC). Timer 0 and
+ * timer 1 are identical in operation. The only difference is that these timers are connected to different
+ * interrupts. The Timers cannot be included in a configuration without interrupts. Each timer is optional and
+ * when present, it is connected to a fixed interrupt; interrupt 16 for timer 0 and interrupt 17 for timer 1.
+ * The processor timers are connected to a system clock signal that operates even when the ARCv2-based
+ * processor is in the sleep state. The timers can be used to generate interrupt signals that wake the processor
+ * from SLEEP state.
+ *
+ * The processor timers automatically reset and restart their operation after reaching the limit value. The
+ * processor timers can be programmed to count only the clock cycles when the processor is not halted. The
+ * processor timers can also be programmed to generate an interrupt or to generate a system Reset upon
+ * reaching the limit value.
+ *
+ * The 64-bit RTC does not generate any interrupts. This timer is used to count the clock cycles automatically.
+ */
+
+/**
+ * \defgroup ARC_HAL_MISC_UDMA uDMA
+ * \ingroup ARC_HAL_MISC
+ * \brief uDMA related definitions and functions
+ */
+
+/* ******************************************************************************
+ * 3rd level group definition ARC_HAL_EXCEPTION
+ */
+
+/**
+ * \defgroup ARC_HAL_EXCEPTION_INTERRUPT  Interrupt
+ * \ingroup ARC_HAL_EXCEPTION
+ * \brief Interrupt related definitions
+ */
+
+/**
+ * \defgroup ARC_HAL_EXCEPTION_CPU  CPU Exception
+ * \ingroup ARC_HAL_EXCEPTION
+ * \brief Core exception management
+ */
+

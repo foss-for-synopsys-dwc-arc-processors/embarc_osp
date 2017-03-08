@@ -1,0 +1,140 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ * \version	0.1
+ * \date	2014-09-29
+ * \author	Huaqi Fang
+ *
+ */
+/*! \page page_board Board
+
+\tableofcontents
+
+\section sect_board_introduction Introduction
+
+The <b>Board Support Package (BSP) Layer</b> provides support for different boards based on ARCv2 processors.
+The layer contains the following functions:	\n
+
+- <b>Peripherals driver instantiation</b>	\n
+  In embARC, an object-oriented design is applied for device drivers. The peripheral driver implementations are similar to the definition of class in the device abstraction layer. So the peripheral drivers should be instantiated for every board.
+  For example, dw_gpio_obj.c / dw_gpio_obj.h is the instantiation of the DesignWare GPIO driver implementation in device abstraction layer, which contains the information of register address, interrupt number, etc.
+
+- <b>Common board initialization process</b>	\n
+  A standard bootup process is defined for each board. The entry of this process is <b>board_main</b> defined in <b>board/board.c</b>, it will cover board initialization, os environment setup, fatfs and ntshell initialization, finally it will enter to *main* function if required.
+
+- <b>Board resource unified definition</b>	\n
+  Most boards share common peripherals. Unified definitions are provided such as UART used to print messages, SD card interface, buttons, LEDs.
+
+- <b>Linker script for boards</b>	\n
+  Linker script now is auto-generated from template using the ICCM/DCCM and DDR memory information. We provided template for both gnu and metaware tool, located in <b>board</b> folder, called *linker_template_gnu.ld* and *linker_template_mw.ld*.
+
+\section sect_board_common_board_init_process Common Board Initialization Process
+  The common *board_main* function should do the following operations:
+  - Board initialization steps - defined in *board_init* function.
+    - Install required device driver objects, such as UART/SPI/IIC device objects.
+    - Clear and disable all interrupts.
+    - Initialize 1 ms timer interrupt.
+    - Initialize some peripherals if used.
+    - Initialize other required board resources such as mux controller.
+  - xprintf library setup to provide printf functionality
+  - Initialization of fatfs if FatFs middleware is selected
+  - Initialization of FreeRTOS tasks if defined
+  - Go to *main* function
+
+\section sect_board_resource_unified_definitions Board Resource Unified Definition
+  The board resource definitions defined in board.h (the hardware header of each board is included by board.h) are described in the table below:
+
+|      Resource Definitions           |       Definition Implication            |
+| :---------------------------------: | :-------------------------------------: |
+|  BOARD_CONSOLE_UART_ID              | Console UART ID        |
+|  BOARD_ADC_IIC_ID                   | AD converter IIC interface ID      |
+|  BOARD_TEMP_SENSOR_IIC_ID           | Temperature sensor IIC interface ID |
+|  BOARD_TEMP_IIC_SLVADDR             | Temperature sensor IIC slave address     |
+|  BOARD_SDCARD_SPI_ID                | SD card SPI interface ID            |
+|  BOARD_WIFI_SPI_ID                  | WiFi SPI interface ID              |
+|  BOARD_SFLASH_SPI_ID                | SPI flash SPI interface ID         |
+|  BOARD_SDCARD_SPI_LINE              | SD card SPI interface CS line            |
+|  BOARD_WIFI_SPI_LINE                | WiFI SPI interface CS line              |
+|  BOARD_SFLASH_SPI_LINE              | SPI flash SPI interface CS line         |
+|  BOARD_SYS_TIMER_ID                 | System 1 ms interrupt timer ID           |
+|  BOARD_SYS_TIMER_INTNO              | System 1 ms timer interrupt vector no    |
+|  BOARD_SYS_TIMER_HZ                 | System timer count frequency (1KHz as default)    |
+|  BOARD_SPI_FREQ                     | Board SPI interface common frequency         |
+|  BOARD_SPI_CLKMODE                  | Board SPI interface common clock mode       |
+|  BOARD_SYS_TIMER_MS_HZ              | Board timer count frequency        |
+|  BOARD_SYS_TIMER_MS_CONV            | Converter of board timer count frequency to system timer count frequency           |
+|  BOARD_OS_TIMER_ID                  | OS kernel timer ID      |
+|  BOARD_OS_TIMER_INTNO               | OS kernel timer interrupt no              |
+|  BOARD_CPU_CLOCK                    | CPU clock of the board                  |
+|  BOARD_DEV_CLOCK                    | Device clock of the board               |
+|  BOARD_LED_MASK                     | LED Mask, if 8 LED, mask is 0xff   |
+|  BOARD_LED_CNT                      | LED count                          |
+|  BOARD_BTN_MASK                     | Button mask                        |
+|  BOARD_BTN_CNT                      | Button count                       |
+|  BOARD_SWT_MASK                     | Switch mask                        |
+|  BOARD_SWT_CNT                      | Switch count                       |
+|  BOARD_ONBOARD_NTSHELL_ID           | Default NtShell ID                 |
+|  OSP_DELAY_OS_COMPAT_ENABLE         | the delay function is OS compact  |
+|  OSP_DELAY_OS_COMPAT_DISABLE        | the delay function isn't OS compact |
+|  WF_IPADDR_1                        | WiFi device static IP address 1        |
+|  WF_IPADDR_2                        | WiFi device static IP address 2        |
+|  WF_IPADDR_3                        | WiFi device static IP address 3        |
+|  WF_IPADDR_4                        | WiFi device static IP address 4        |
+|  WF_NETMASK_1                       | WiFi device static netmask 1           |
+|  WF_NETMASK_2                       | WiFi device static netmask 2           |
+|  WF_NETMASK_3                       | WiFi device static netmask 3           |
+|  WF_NETMASK_4                       | WiFi device static netmask 4           |
+|  WF_GATEWAY_1                       | WiFi device static gateway 1           |
+|  WF_GATEWAY_2                       | WiFi device static gateway 2           |
+|  WF_GATEWAY_3                       | WiFi device static gateway 3           |
+|  WF_GATEWAY_4                       | WiFi device static gateway 4           |
+|  WF_HOTSPOT_IS_OPEN                 | Specify whether WiFi hot spot is open or not |
+|  WF_IPADDR_DHCP                     | Use DHCP to get ip or not               |
+|  WF_HOTSPOT_NAME                    | WiFi hot spot name           |
+|  WF_HOTSPOT_PASSWD                  | WiFi hot spot password when not open       |
+|  WF_ENABLE_MANUAL_SET_MAC           | Enable to set MAC manually or not          |
+|  WF_MAC_ADDR0                       | WiFi MAC address 0 (manual set)     |
+|  WF_MAC_ADDR1                       | WiFi MAC address 1 (manual set)     |
+|  WF_MAC_ADDR2                       | WiFi MAC address 2 (manual set)     |
+|  WF_MAC_ADDR3                       | WiFi MAC address 3 (manual set)     |
+|  WF_MAC_ADDR4                       | WiFi MAC address 4 (manual set)     |
+|  WF_MAC_ADDR5                       | WiFi MAC address 5 (manual set)     |
+|  BOARD_PMWIFI_0_ID                  | Pmod WiFi 0 ID                          |
+|  BOARD_PMWIFI_ID_MAX                | Max Pmod WiFi ID                        |
+|  OSP_GET_CUR_SYSHZ                  | Macro to get current syshz       |
+|  OSP_GET_CUR_MS                     | Macro to get current ms count          |
+|  OSP_GET_CUR_US                     | Macro to get current us count          |
+|  OSP_GET_CUR_HWTICKS                | Macro to get current hardware ticks count          |
+|  board_init                         | Function for common board initialization
+|  board_timer_update                 | Called in period interrupt when using OS timer interrupt and not using default timer interrupt |
+|  board_delay_ms                     | ms delay for OS support |
+
+\section sect_board_supported_boards_in_embARC Supported Boards in embARC
+The BSP Layer currently supports the following boards:
+- <b>\subpage page_board_emsk</b>	\n
+  EM Starter Kit board support can be found under board/emsk, detailed in <b>\ref BOARD_EMSK "EM Starter Kit (EMSK)"</b>. It includes the following sub-folders:
+  -# <b>\ref BOARD_EMSK_COMMON "common"</b>	\n
+    EMSK board initialization functions and 1 ms interrupt timer functions
+  -# <b>\ref BOARD_EMSK_DRIVER "drivers"</b>	\n
+    Various peripheral drivers for various examples
+  -# <b>ldscripts</b>	\n
+    Common linker scripts for EMSK board
+- <b>\subpage page_board_nsim</b>	(NOTE: MetaWare license required) \n
+  nSIM virtual board support can be found under board/nsim, detailed in <b>\ref BOARD_NSIM "nSIM Virtual Board"</b>. It includes the following sub-folders:
+  -# <b>\ref BOARD_NSIM_COMMON "common"</b>	\n
+    nSIM virtual board initialization functions and 1 ms interrupt timer functions
+  -# <b>\ref BOARD_NSIM_DRIVER "drivers"</b>	\n
+    Basic hostlink UART driver for message input and output.
+  -# <b>ldscripts</b>	\n
+    Common linker scripts for nSIM virtual board.
+- <b>\subpage page_board_axs</b> \n
+\section sect_board_add_new_board_to_embARC Adding New Board to embARC
+
+Follow the steps below to add a new board:
+- Modify board.mk and board.h. Please refer the EMSK related definitions. Copy EMSK definitions and modify them for your board. EMSK serves as a good template for adding a new board.
+- Create a sub directory under <b>board</b> and name it as <target_board>. Add <target_board>.mk and <target_board>.h. The basic information should be added in <target_board>.mk, such as source directories, including directories, object output directories, compiler options and make rules.
+- Add the source files. The build system will automatically compile all the source files (.c, .s) in the directories described in <target_board>.mk and create library named lib<target_board>.a.
+- Add board linker scripts for board memory resource schemes.
+- Take other board support folder like <b><embARC>/board/emsk</b> for reference.
+
+*/

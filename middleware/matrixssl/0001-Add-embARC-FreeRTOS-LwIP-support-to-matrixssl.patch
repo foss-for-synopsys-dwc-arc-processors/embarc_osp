@@ -1,0 +1,924 @@
+From f45dc6f3d5089b0e3cae70f7af1556362ae50fcc Mon Sep 17 00:00:00 2001
+From: Huaqi Fang <Huaqi.Fang@synopsys.com>
+Date: Wed, 4 May 2016 14:31:17 +0800
+Subject: [PATCH] Add embARC(FreeRTOS+LwIP) support to MatrixSSL
+
+---
+ core/embARC/matrixssl_network.c | 395 ++++++++++++++++++++++++++++++++++++++++
+ core/embARC/matrixssl_network.h |  89 +++++++++
+ core/embARC/osdep.c             | 325 +++++++++++++++++++++++++++++++++
+ core/osdep.h                    |  38 +++-
+ 4 files changed, 846 insertions(+), 1 deletion(-)
+ create mode 100644 core/embARC/matrixssl_network.c
+ create mode 100644 core/embARC/matrixssl_network.h
+ create mode 100644 core/embARC/osdep.c
+
+diff --git a/core/embARC/matrixssl_network.c b/core/embARC/matrixssl_network.c
+new file mode 100644
+index 0000000..70420d7
+--- /dev/null
++++ b/core/embARC/matrixssl_network.c
+@@ -0,0 +1,395 @@
++/* ------------------------------------------
++ * Copyright (c) 2015, Synopsys, Inc. All rights reserved.
++
++ * Redistribution and use in source and binary forms, with or without modification,
++ * are permitted provided that the following conditions are met:
++
++ * 1) Redistributions of source code must retain the above copyright notice, this
++ * list of conditions and the following disclaimer.
++
++ * 2) Redistributions in binary form must reproduce the above copyright notice,
++ * this list of conditions and the following disclaimer in the documentation and/or
++ * other materials provided with the distribution.
++
++ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
++ * be used to endorse or promote products derived from this software without
++ * specific prior written permission.
++
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
++ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
++ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ *
++ * \version 2015.05
++ * \date 2015-03-27
++ * \author Wayne Ren(wei.ren@synopsys.com)
++--------------------------------------------- */
++
++ /**
++ * \file
++ * \brief network wrapper implementation for matrixssl
++ */
++
++#include "core/embARC/matrixssl_network.h"
++#ifndef MATRIXSSL_NO_NETWORK
++
++#define DEBUG
++#include "embARC_debug.h"
++
++static int do_handshake(matrixssl_con* con, int rc)
++{
++	unsigned char *buf;
++	int len;
++
++	int xfered;
++
++	while (1) {
++		switch (rc) {
++			case PS_SUCCESS:
++				DBG("buf empty\n");
++				/* continue to receive, buffer is empty */
++				rc = MATRIXSSL_REQUEST_RECV;
++				break;
++			case MATRIXSSL_HANDSHAKE_COMPLETE:
++				DBG("handshake complete\n");
++				return PS_SUCCESS;
++			case MATRIXSSL_APP_DATA:
++			case MATRIXSSL_APP_DATA_COMPRESSED:
++				/* when APP data is received, handshake is finished */
++				/* if it is app data, left the data to read */
++				DBG("app data in handshaking\n");
++				return PS_SUCCESS;
++			case MATRIXSSL_REQUEST_SEND:
++				DBG("request send\n");
++				if ((len = matrixSslGetOutdata(con->ssl, &buf)) < 0) {
++					DBG("get ssl out buf failed\n");
++					return len;
++				}
++				if ((xfered = send(con->peer, buf, len, 0)) < 0) {
++					DBG("ssl handshake:send failed\n");
++					return  PS_PLATFORM_FAIL;
++				}
++				if ((rc = matrixSslSentData(con->ssl, xfered)) < 0) {
++					DBG("ssl handshake: SslSentData failed\n");
++					return rc;
++				}
++				break;
++			case MATRIXSSL_REQUEST_RECV:
++				DBG("request receive\n");
++				/* Get the ssl buffer and how much data it can accept */
++				/* Note 0 is a return failure, unlike with matrixSslGetOutdata */
++				if ((len = matrixSslGetReadbuf(con->ssl, &buf)) <= 0) {
++					DBG("get ssl read buf failed\n");
++					return len;
++				}
++				if ((xfered = recv(con->peer, buf, len, 0)) <= 0) {
++					DBG("recv data failed:%d\n", xfered);
++					return PS_PLATFORM_FAIL;
++				}
++
++				if ((rc = matrixSslReceivedData(con->ssl, xfered, &buf, (uint32 *)&len)) < 0) {
++					DBG("Ssl process received data error\n");
++					return rc;
++				}
++				break;
++			case MATRIXSSL_RECEIVED_ALERT:
++				DBG("alert received\n");
++				/* The first byte of the buffer is the level */
++				/* The second byte is the description */
++				if (*buf == SSL_ALERT_LEVEL_FATAL) {
++					DBG("Fatal alert: %d, closing connection.\n",
++								*(buf + 1));
++					return  PS_FAILURE;
++				}
++				/* Closure alert is normal (and best) way to close */
++				if (*(buf + 1) == SSL_ALERT_CLOSE_NOTIFY) {
++					DBG("ssl alert close connection\n");
++					return  PS_FAILURE;
++				}
++				DBG("Warning alert: %d\n", *(buf + 1));
++				if ((rc = matrixSslProcessedData(con->ssl, &buf, (uint32*)&len)) == 0) {
++					rc = MATRIXSSL_REQUEST_RECV;
++				}
++				break;
++			case MATRIXSSL_REQUEST_CLOSE:
++				DBG("request close\n");
++				return  PS_FAILURE;
++			default:
++				DBG("wrong return code %d\n", rc);
++				return PS_PLATFORM_FAIL;
++		}
++	}
++}
++
++matrixssl_con* matrixssl_new(MATRIXSSL_SOCKET peer, sslKeys_t* keys)
++{
++	matrixssl_con* con;
++
++	con = psMalloc(MATRIX_NO_POOL, sizeof(matrixssl_con));
++
++	if (con != NULL) {
++		 psMemset(con, 0, sizeof(matrixssl_con));
++		 con->peer = peer;
++		 con->keys = keys;
++	}
++	return con;
++}
++
++void matrixssl_free(matrixssl_con *con)
++{
++	if (con != NULL) {
++		psFree(con, MATRIX_NO_POOL);
++	}
++}
++
++int matrixssl_accept(matrixssl_con* con)
++{
++	int rc;
++
++
++	if (con == NULL) {
++		return PS_ARG_FAIL;
++	}
++	if ((rc = matrixSslNewServerSession(&con->ssl, con->keys, con->cert_cb,
++				&con->options)) < 0) {
++		DBG("create ssl server session failed\n");
++		return rc;
++	}
++	rc = MATRIXSSL_REQUEST_RECV;
++
++	if ((rc = do_handshake(con, rc)) != PS_SUCCESS) {
++		DBG("handshake failed\n");
++	}
++
++	return rc;
++}
++
++
++int matrixssl_write(matrixssl_con* con, void* data, int sz)
++{
++	int sent;
++	int send;
++	int len;
++	int rc;
++	unsigned char *buf;
++	int count = 0;
++
++/* parameter check */
++	if (con == NULL || data == NULL || sz <= 0) {
++		return PS_ARG_FAIL;
++	}
++
++	while (count < sz) {
++		len = sz - count;
++		if ((rc = matrixSslGetWritebuf(con->ssl, &buf, len)) < 0) {
++			DBG("write:get write buf failed\n",rc);
++			return rc;
++		}
++		if (rc < len) {
++			len = rc;
++		}
++		memcpy(buf, data, len);
++		data += len;
++
++		if ((rc = matrixSslEncodeWritebuf(con->ssl, len)) < 0) {
++			DBG("write:encode write buf failed\n",rc);
++			return rc;
++		}
++
++		do {
++			if ((send = matrixSslGetOutdata(con->ssl, &buf)) < 0) {
++				DBG("write:get ssl out buf failed\n", send);
++				return send;
++			}
++
++			if ((sent = send(con->peer, buf, send, 0)) < 0) {
++				DBG("write:send failed:%d\n", sent);
++				return PS_PLATFORM_FAIL;
++			}
++
++			rc = matrixSslSentData(con->ssl, sent);
++		} while (rc == MATRIXSSL_REQUEST_SEND);
++
++		if (rc != PS_SUCCESS) {
++			DBG("write: SslSentData failed:%d\n",rc);
++			return PS_FAILURE;
++		}
++		count += len;
++	}
++	return count;
++}
++
++int matrixssl_read(matrixssl_con* con, void* data, int sz)
++{
++	int read = 0;
++	int len;
++	int xfered;
++	unsigned char* buf;
++	int rc;
++	int done = 0;
++
++	if (con == NULL || data == NULL || sz <= 0) {
++		return PS_ARG_FAIL;
++	}
++
++	/* polling first */
++	if ((rc = matrixSslReceivedData(con->ssl, 0, &buf, (uint32 *)&len)) < 0) {
++		DBG("Ssl process received data error\n");
++		return rc;
++	}
++
++	while (!done) {
++		switch (rc) {
++			case MATRIXSSL_HANDSHAKE_COMPLETE:
++			case PS_SUCCESS:
++				rc = MATRIXSSL_REQUEST_RECV;
++				break;
++			case MATRIXSSL_APP_DATA_COMPRESSED:
++			case MATRIXSSL_APP_DATA:
++				if (sz == 0) {
++					done = 1;
++				} else {
++					if (sz <= len) {
++						len = sz;
++					}
++					memcpy(data, buf, len);
++					data += len;/* move data pointer */
++					sz -= len;
++					read += len;
++					if ((rc = matrixSslProcessedData(con->ssl, &buf, (uint32*)&len)) < 0) {
++						DBG("read: processed data error");
++						return rc;
++					}
++					if (rc == PS_SUCCESS) {
++						done = 1;
++					}
++				}
++				break;
++			case MATRIXSSL_REQUEST_RECV:
++				if ((len = matrixSslGetReadbuf(con->ssl, &buf)) < 0) {
++					DBG("read: get ssl read buf failed\n");
++					return len;
++				}
++
++				if ((xfered = recv(con->peer, buf, len, 0)) < 0) {
++					DBG("read:recv data failed\n");
++					return PS_PLATFORM_FAIL;
++				}
++				if ((rc = matrixSslReceivedData(con->ssl, xfered, &buf, (uint32 *)&len)) < 0) {
++					DBG("Ssl process received data error\n");
++					return rc;
++				}
++				break;
++			case MATRIXSSL_REQUEST_SEND:
++				if ((len = matrixSslGetOutdata(con->ssl, &buf)) < 0) {
++					DBG("get ssl out buf failed\n");
++					return -1;
++				}
++				if ((xfered = send(con->peer, buf, len, 0)) < 0) {
++					DBG("ssl handshake:send failed\n");
++					return PS_PLATFORM_FAIL;
++				}
++				if ((rc = matrixSslSentData(con->ssl, xfered)) < 0) {
++					DBG("ssl handshake: SslSentData failed\n");
++					return rc;
++				}
++				break;
++			case MATRIXSSL_RECEIVED_ALERT:
++				/* The first byte of the buffer is the level */
++				/* The second byte is the description */
++				if (*buf == SSL_ALERT_LEVEL_FATAL) {
++					DBG("Fatal alert: %d, closing connection.\n", 
++								*(buf + 1));
++					return PS_FAILURE;
++				}
++				/* Closure alert is normal (and best) way to close */
++				if (*(buf + 1) == SSL_ALERT_CLOSE_NOTIFY) {
++					DBG("ssl alert close connection\n");
++					return PS_FAILURE;
++				}
++				DBG("Warning alert: %d\n", *(buf + 1));
++				if ((rc = matrixSslProcessedData(con->ssl, &buf, (uint32*)&len)) < 0) {
++					DBG("Ssl process data failed");
++					return rc;
++				}
++				break;
++			case MATRIXSSL_REQUEST_CLOSE:
++				DBG("request close\n");
++				return PS_FAILURE;
++			default:
++				DBG("wrong response code:%d\n", rc);
++				return PS_PLATFORM_FAIL;
++		}
++	}
++	return read;
++}
++
++/* after close, the caller should  close the peer socket or connection */
++int matrixssl_close(matrixssl_con* con)
++{
++	int rc;
++	int send;
++	unsigned char* buf;
++	int sent;
++
++	if (con == NULL) {
++		return PS_ARG_FAIL;
++	}
++	if ((rc = matrixSslEncodeClosureAlert(con->ssl)) < 0) {
++		DBG("encode closure alert failed");
++		return rc;
++	}
++
++	do {
++		if ((send = matrixSslGetOutdata(con->ssl, &buf)) < 0) {
++			DBG("get ssl out buf failed");
++			return send;
++		}
++		if ((sent = send(con->peer, buf, send, 0)) < 0) {
++			DBG("ssl handshake:send failed:%d\n", sent);
++			return PS_PLATFORM_FAIL;
++		}
++
++		if ((rc = matrixSslSentData(con->ssl, sent)) < 0) {
++			DBG("ssl handshake: SslSentData failed\n");
++			return rc;
++		}
++	} while((rc != MATRIXSSL_REQUEST_CLOSE) && (rc == MATRIXSSL_REQUEST_SEND));
++
++	matrixSslDeleteSession(con->ssl);
++
++	return PS_SUCCESS;
++}
++
++
++int matrixssl_connect(matrixssl_con* con)
++{
++	int rc;
++
++	if (con == NULL) {
++		return PS_ARG_FAIL;
++	}
++
++	rc = matrixSslNewClientSession(&con->ssl, con->keys, con->sid, NULL, 0,
++		con->cert_cb, con->peer_name, con->extensions, con->ext_cb, &con->options);
++
++	if (rc != MATRIXSSL_REQUEST_SEND) {
++		DBG("Ssl new client session failed:%d",rc);
++		return rc;
++	}
++
++
++	if ((rc = do_handshake(con, rc)) != 0) {
++		DBG("handshake failed\n");
++	}
++
++	return rc;
++}
++
++#endif /* MATRIXSSL_NO_NETWORK */
+\ No newline at end of file
+diff --git a/core/embARC/matrixssl_network.h b/core/embARC/matrixssl_network.h
+new file mode 100644
+index 0000000..d765922
+--- /dev/null
++++ b/core/embARC/matrixssl_network.h
+@@ -0,0 +1,89 @@
++/* ------------------------------------------
++ * Copyright (c) 2015, Synopsys, Inc. All rights reserved.
++
++ * Redistribution and use in source and binary forms, with or without modification,
++ * are permitted provided that the following conditions are met:
++
++ * 1) Redistributions of source code must retain the above copyright notice, this
++ * list of conditions and the following disclaimer.
++
++ * 2) Redistributions in binary form must reproduce the above copyright notice,
++ * this list of conditions and the following disclaimer in the documentation and/or
++ * other materials provided with the distribution.
++
++ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
++ * be used to endorse or promote products derived from this software without
++ * specific prior written permission.
++
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
++ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
++ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ *
++ * \version 2015.05
++ * \date 2015-03-27
++ * \author Wayne Ren(wei.ren@synopsys.com)
++--------------------------------------------- */
++
++ /**
++ * \file
++ * \brief network wrapper for matrixssl
++ */
++
++#ifndef _MATRIXSSL_NETWORK_H_
++#define _MATRIXSSL_NETWORK_H_
++
++#include "matrixssl/matrixsslApi.h"
++
++#ifdef MID_LWIP		/* LWIP is used */
++#include "lwip/sockets.h"
++#include "lwip/opt.h"
++
++	#if LWIP_SOCKET
++	typedef int    MATRIXSSL_SOCKET;
++	#elif LWIP_NETCONN
++	typedef netconn* MATRIXSSL_SOCKET;
++	#endif
++#elif OS_CONTIKI 	/* for contiki+uIP */
++#error "no support for contiki"
++#else
++#warning "no support for network functions"
++#define MATRIXSSL_NO_NETWORK
++#endif /* MID_LWIP */
++
++#ifndef MATRIXSSL_NO_NETWORK
++typedef struct {
++	ssl_t     *ssl;
++	sslKeys_t *keys;
++	sslSessOpts_t	options;
++	sslSessionId_t *sid;
++
++	char * peer_name;	/* IP or dns name */
++	/* certification call back */
++	int32 (*cert_cb)(ssl_t *ssl, psX509Cert_t *cert, int32 alert);
++	tlsExtension_t *extensions;
++	/* tls extension call back */
++	int32 (*ext_cb)(ssl_t *ssl, unsigned short extType, unsigned short extLen, void *e);
++
++	MATRIXSSL_SOCKET peer;
++	unsigned char handshake;
++
++} matrixssl_con; /* matrixssl connection */
++
++matrixssl_con* matrixssl_new(MATRIXSSL_SOCKET peer, sslKeys_t* keys);
++void matrixssl_free(matrixssl_con *con);
++int matrixssl_connect(matrixssl_con* con);
++int matrixssl_accept(matrixssl_con* con);
++int matrixssl_write(matrixssl_con* con, void* data, int sz);
++int matrixssl_read(matrixssl_con* con, void* data, int sz);
++int matrixssl_close(matrixssl_con* con);
++
++
++#endif /* MATRIXSSL_NO_NETWORK */
++#endif /* _MATRIXSSL_NETWORK_H_ */
+\ No newline at end of file
+diff --git a/core/embARC/osdep.c b/core/embARC/osdep.c
+new file mode 100644
+index 0000000..c08f878
+--- /dev/null
++++ b/core/embARC/osdep.c
+@@ -0,0 +1,325 @@
++/*
++ *	Copyright (c) 2013-2014 INSIDE Secure Corporation
++ *	Copyright (c) PeerSec Networks, 2002-2011
++ *	Copyright (C) 2015 Synopsys, Inc.
++ *	Modified for port to embARC platform by Wayne Ren wei.ren@synopsys.com
++ *
++ *	All Rights Reserved
++ *
++ *	The latest version of this code is available at http://www.matrixssl.org
++ *
++ *	This software is open source; you can redistribute it and/or modify
++ *	it under the terms of the GNU General Public License as published by
++ *	the Free Software Foundation; either version 2 of the License, or
++ *	(at your option) any later version.
++ *
++ *	This General Public License does NOT permit incorporating this software
++ *	into proprietary programs.  If you are unable to comply with the GPL, a
++ *	commercial license for this software may be purchased from INSIDE at
++ *	http://www.insidesecure.com/eng/Company/Locations
++ *
++ *	This program is distributed in WITHOUT ANY WARRANTY; without even the
++ *	implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++ *	See the GNU General Public License for more details.
++ *
++ *	You should have received a copy of the GNU General Public License
++ *	along with this program; if not, write to the Free Software
++ *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ *	http://www.gnu.org/copyleft/gpl.html
++ */
++/******************************************************************************/
++
++#include "../coreApi.h"
++
++/******************************************************************************/
++#ifdef PLATFORM_EMBARC
++/******************************************************************************/
++
++/******************************************************************************/
++/*
++	TIME FUNCTIONS
++*/
++/******************************************************************************/
++/*
++	Module open and close
++*/
++#ifdef OS_FREERTOS
++int osdepTimeOpen(void)
++{
++	return PS_SUCCESS;
++}
++
++void osdepTimeClose()
++{
++}
++
++/*
++	PScore Public API implementations
++	This function always returns seconds/ticks AND OPTIONALLY populates
++	whatever psTime_t happens to be on the given platform.
++*/
++int32 psGetTime(psTime_t *t, void *userPtr)
++{
++	userPtr = userPtr;
++	*t = xTaskGetTickCount();
++	return (int32)(*t / configTICK_RATE_HZ);
++}
++
++int32 psDiffMsecs(psTime_t then, psTime_t now, void *userPtr)
++{
++	userPtr = userPtr;
++
++	if (now < then) {
++		return (int32) (0xFFFFFFFF - then + now);
++	} else {
++		return (now - then);
++	}
++
++}
++#elif OS_CONTIKI
++#error "no support for contiki now!!!"
++#else
++#warning  "bare metal mode"
++int osdepTimeOpen(void)
++{
++	return PS_SUCCESS;
++}
++
++void osdepTimeClose()
++{
++}
++
++int32 psGetTime(psTime_t *t, void *userPtr)
++{
++	userPtr = userPtr;
++	*t = OSP_GET_CUR_MS();
++	return OSP_GET_CUR_SYSHZ();
++}
++
++int32 psDiffMsecs(psTime_t then, psTime_t now, void *userPtr)
++{
++	userPtr = userPtr;
++
++	if (now < then) {
++		return (int32) (0xFFFFFFFF - then + now);
++	} else {
++		return (now - then);
++	}
++
++}
++
++#endif
++
++/******************************************************************************/
++
++#ifdef USE_MULTITHREADING
++#ifdef OS_FREERTOS
++/******************************************************************************/
++/*
++	MUTEX FUNCTIONS
++*/
++/******************************************************************************/
++
++/*
++	Module open and close
++*/
++int osdepMutexOpen(void)
++{
++	return PS_SUCCESS;
++}
++
++int osdepMutexClose(void)
++{
++	return PS_SUCCESS;
++}
++
++/*
++	PScore Public API implementations
++*/
++int32 psCreateMutex(psMutex_t *mutex)
++{
++	*mutex = ( psMutex_t ) xSemaphoreCreateMutex();
++	if (mutex == NULL) {
++		psTraceCore("xSemaphoreCreateMutex failed\n");
++		return PS_PLATFORM_FAIL;
++	}
++	return PS_SUCCESS;
++}
++
++int32 psLockMutex(psMutex_t *mutex)
++{
++	if (xSemaphoreTake(*mutex, portMAX_DELAY) != pdTRUE) {
++		psTraceCore("xSemaphoreTake failed\n");
++		return PS_PLATFORM_FAIL;
++	}
++	return PS_SUCCESS;
++}
++
++int32 psUnlockMutex(psMutex_t *mutex)
++{
++	if (xSemaphoreGive(*mutex) != pdTRUE) {
++		psTraceCore("xSemaphoreGive failed\n");
++		return PS_PLATFORM_FAIL;
++	}
++	return PS_SUCCESS;
++}
++
++void psDestroyMutex(psMutex_t *mutex)
++{
++	vSemaphoreDelete(*mutex);
++}
++#elif OS_CONTIKI
++#error "contiki has no multithreading"
++#endif
++#endif /* USE_MULTITHREADING */
++/******************************************************************************/
++
++
++/******************************************************************************/
++/*
++	ENTROPY FUNCTIONS
++*/
++/******************************************************************************/
++int osdepEntropyOpen(void)
++{
++
++	unsigned int cnt;
++	Asm("lr %0, [0x21]":"=r"(cnt));
++	srand(cnt);
++	//srand(0xa5a5a5);
++	return PS_SUCCESS;
++}
++
++void osdepEntropyClose(void)
++{
++}
++
++int32 psGetEntropy(unsigned char *bytes, uint32 size, void *userPtr)
++{
++	userPtr = userPtr;
++	uint32 temp = size;
++	while(temp--) {
++		*bytes = rand();
++		bytes++;
++	}
++	return (int32)size;
++}
++/******************************************************************************/
++/******************************************************************************/
++
++
++/******************************************************************************/
++/*
++	RAW TRACE FUNCTIONS
++*/
++/******************************************************************************/
++
++int osdepTraceOpen(void)
++{
++	return PS_SUCCESS;
++}
++
++void osdepTraceClose(void)
++{
++}
++
++void _psTrace(const char *msg)
++{
++	EMBARC_PRINTF("%s", msg);
++}
++
++/* message should contain one %s, unless value is NULL */
++void _psTraceStr(const char *message, const char *value)
++{
++	if (value) {
++		EMBARC_PRINTF(message, value);
++	} else {
++		EMBARC_PRINTF("%s", message);
++	}
++}
++
++/* message should contain one %d */
++void _psTraceInt(const char *message, int32 value)
++{
++	EMBARC_PRINTF(message, value);
++}
++
++/* message should contain one %p */
++void _psTracePtr(const char *message, const void *value)
++{
++	EMBARC_PRINTF(message, value);
++}
++
++/******************************************************************************/
++
++#ifdef HALT_ON_PS_ERROR
++/******************************************************************************/
++/*
++	POSIX - abort() on psError when HALT_ON_PS_ERROR enabled
++*/
++void osdepBreak(void)
++{
++#ifdef OS_FREERTOS
++	vTaskSuspend(NULL);
++#elif OS_CONTIKI
++#else
++	while(1);
++#endif
++}
++#endif /* HALT_ON_PS_ERROR */
++
++
++#ifdef MATRIX_USE_FILE_SYSTEM
++/******************************************************************************/
++/*
++	FILE ACCESS FUNCTION
++*/
++/******************************************************************************/
++/*
++	Memory info:
++	Caller must free 'buf' parameter on success
++	Callers do not need to free buf on function failure
++*/
++int32 psGetFileBuf(psPool_t *pool, const char *fileName, unsigned char **buf,
++				int32 *bufLen)
++{
++	static FIL load_file; /* multi thread ? */
++	FRESULT res;
++	unsigned int tmp;
++	unsigned int size;
++
++	*bufLen = 0;
++	*buf = NULL;
++
++	if (fileName == NULL) {
++		return PS_ARG_FAIL;
++	}
++
++	res = f_open(&load_file, fileName, FA_READ | FA_OPEN_EXISTING);
++	if (res != RES_OK) {
++		psTraceStrCore("Unable to open %s\n", (char*)fileName);
++		return PS_PLATFORM_FAIL;
++	}
++	size = f_size(&load_file);
++	*buf = (unsigned char *)psMalloc(pool, size + 1);
++	if (*buf == NULL) {
++		return PS_MEM_FAIL;
++	}
++	memset(*buf, 0x0, size + 1);
++
++	res = f_read(&load_file, *buf, size , &tmp);
++
++	if ((res != RES_OK) || (tmp != size)) {
++		psFree(*buf, pool);
++		return PS_PLATFORM_FAIL;
++	}
++
++	*bufLen += (int32)tmp;
++	f_close(&load_file);
++	return PS_SUCCESS;
++}
++#endif /* MATRIX_USE_FILE_SYSTEM */
++
++/******************************************************************************/
++#endif /* PLATFROM_EMBARC */
++/******************************************************************************/
+diff --git a/core/osdep.h b/core/osdep.h
+index b57c631..ad1bf99 100644
+--- a/core/osdep.h
++++ b/core/osdep.h
+@@ -83,6 +83,8 @@
+  #else
+   #define PSTM_MIPS	/* MIPS assembly supported on 32 bit only */
+  #endif
++#elif defined(__arc__)
++  #define PSTM_ARC
+ #endif
+ #endif /* GNUC/CLANG */
+ 
+@@ -96,6 +98,9 @@
+ 	defined _M_X64 || defined _M_IX86 || \
+ 	defined __ARMEL__ || defined __MIPSEL__)
+  #define __ORDER_LITTLE_ENDIAN__ 1234
++#if defined(__MW__)
++ #undef __BYTE_ORDER__
++#endif
+  #define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+ #elif (defined __BIG_ENDIAN__ || defined __MIPSEB__)
+  #define __ORDER_BIG_ENDIAN__ 4321
+@@ -250,6 +255,31 @@ extern void	osdepEntropyClose(void);
+   typedef uint64_t uint64;
+  #endif
+ #endif
++#ifdef PLATFORM_EMBARC
++	#include "embARC.h"
++  	#include "embARC_debug.h"
++#if defined(__MW__)
++	#define strcasecmp _strcmpi
++#endif
++	typedef int32_t int32;
++	typedef uint32_t uint32;
++	typedef int16_t int16;
++	typedef uint16_t uint16;
++	typedef uint8_t uint8;
++	#ifdef HAVE_NATIVE_INT64
++	typedef int64_t int64;
++	typedef uint64_t uint64;
++	#endif
++
++#ifdef OS_FREERTOS
++	typedef TickType_t psTime_t;
++#elif OS_CONTIKI
++#error "no support for contiki now!!!"
++#else
++	typedef uint32 psTime_t;
++#endif
++
++#endif /* PLATFORM_EMBARC */
+ 
+ /******************************************************************************/
+ /*
+@@ -275,7 +305,7 @@ extern errno_t memset_s(void *s, rsize_t smax, int c, rsize_t n);
+ 	Hardware Abstraction Layer
+ */
+ /* Hardware Abstraction Layer - define functions in HAL directory */
+-#if defined(POSIX) || defined(WIN32) || defined(ECOS) || defined(FREERTOS) || defined(NUCLEUS)
++#if defined(POSIX) || defined(WIN32) || defined(ECOS) || defined(FREERTOS) || defined(NUCLEUS) || defined(PLATFORM_EMBARC)
+  #define halOpen() 0
+  #define halClose()
+  #define halAlert()
+@@ -412,6 +442,12 @@ extern int32 osdepMutexClose(void);
+ #elif defined(VXWORKS)
+  #include "semLib.h"
+  typedef SEM_ID	psMutex_t;
++#elif PLATFORM_EMBARC
++	#ifdef OS_FREERTOS
++		typedef xSemaphoreHandle psMutex_t;
++	#elif OS_CONTIKI
++		#error "no support for contiki now!!!"
++	#endif 
+ #else
+  #error psMutex_t must be defined
+ #endif /* OS specific mutex */
+-- 
+2.1.4
+

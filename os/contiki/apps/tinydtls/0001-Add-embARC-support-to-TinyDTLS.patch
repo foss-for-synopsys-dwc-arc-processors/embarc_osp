@@ -1,0 +1,518 @@
+From 525fb142f8a5adcc3aaad793204f8f9e54e22257 Mon Sep 17 00:00:00 2001
+From: Huaqi Fang <Huaqi.Fang@synopsys.com>
+Date: Sun, 12 Jun 2016 10:56:29 +0800
+Subject: [PATCH] Add embARC support to TinyDTLS
+
+---
+ .gitignore                      | 64 --------------------------------
+ Makefile.tinydtls               | 13 +------
+ dtls.c                          | 14 ++++++-
+ dtls_config.h                   | 25 +++++++++++++
+ platform-specific/config-emsk.h |  4 ++
+ platform-specific/platform.h    |  4 ++
+ sha2/sha2.c                     | 82 +++++++++++++++++++++++------------------
+ tinydtls.h                      | 41 +++++++++++++++++++++
+ 8 files changed, 134 insertions(+), 113 deletions(-)
+ delete mode 100644 .gitignore
+ create mode 100644 dtls_config.h
+ create mode 100644 platform-specific/config-emsk.h
+ create mode 100644 tinydtls.h
+
+diff --git a/.gitignore b/.gitignore
+deleted file mode 100644
+index 589e947..0000000
+--- a/.gitignore
++++ /dev/null
+@@ -1,64 +0,0 @@
+-core
+-*~
+-*.[oa]
+-*.gz
+-*.cap
+-*.pcap
+-Makefile
+-autom4te.cache/
+-config.h
+-config.log
+-config.status
+-configure
+-doc/Doxyfile
+-doc/doxygen.out
+-doc/html/
+-libtinydtls.a
+-tests/ccm-test
+-tests/dtls-client
+-tests/dtls-server
+-tests/prf-test
+-tinydtls-0.6.0
+-./tinydtls-0.6.0/
+-TAGS
+-*.patch
+-.gitignore
+-ecc/testecc
+-ecc/testfield
+-*.d
+-*.hex
+-*.elf
+-*.map
+-obj_*
+-tinydtls.h
+-dtls_config.h
+-*.apple2enh
+-*.atarixl
+-*.avr-atmega128rfa1
+-*.avr-raven
+-*.avr-ravenlcd
+-*.avr-ravenusb
+-*.avr-rcb
+-*.avr-zigbit
+-*.c128
+-*.c64
+-*.cc2530dk
+-*.cc2538dk
+-*.cooja
+-*.econotag
+-*.eval-adf7xxxmb4z
+-*.exp5438
+-*.iris
+-*.mbxxx
+-*.micaz
+-*.minimal-net
+-*.native
+-*.seedeye
+-*.sensinode
+-*.sky
+-*.stm32test
+-*.win32
+-*.wismote
+-*.z1
+-*.z1sp
+-.project
+diff --git a/Makefile.tinydtls b/Makefile.tinydtls
+index 88affc4..380c0a3 100644
+--- a/Makefile.tinydtls
++++ b/Makefile.tinydtls
+@@ -21,16 +21,7 @@ CFLAGS += -DSHA2_USE_INTTYPES_H=1
+ endif
+ 
+ CFLAGS += -DDTLSv12 -DWITH_SHA256 
+-tinydtls_src = dtls.c crypto.c hmac.c rijndael.c sha2.c ccm.c netq.c ecc.c dtls_time.c peer.c session.c
++tinydtls_src = dtls.c crypto.c hmac.c rijndael.c sha2.c ccm.c netq.c ecc.c dtls_time.c \
++		dtls_debug.c peer.c session.c
+ 
+-# This adds support for TLS_PSK_WITH_AES_128_CCM_8
+-CFLAGS += -DDTLS_PSK
+-
+-# This adds support for TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8
+-CFLAGS += -DDTLS_ECC
+-tinydtls_src += ecc.c
+-
+-# This activates debugging support
+-# CFLAGS += -DNDEBUG
+-tinydtls_src += debug.c
+ 
+diff --git a/dtls.c b/dtls.c
+index 5dbf7fd..d9971bf 100644
+--- a/dtls.c
++++ b/dtls.c
+@@ -3718,6 +3718,16 @@ dtls_handle_message(dtls_context_t *ctx,
+ 
+ 	return err;
+       }
++      /* here is a trade off,  ccs & finished msg from server may be lost, tinydtls do not
++      	handle this corner case. So here, if we get ccs from server, ignore finished msg */
++      if (role == DTLS_CLIENT) {
++      	dtls_handshake_free(peer->handshake_params);
++      	peer->handshake_params = NULL;
++      	dtls_debug("Handshake complete\n");
++      	check_stack();
++      	peer->state = DTLS_STATE_CONNECTED;
++	CALL(ctx, event, &peer->session, 0, DTLS_EVENT_CONNECTED);
++      }
+       break;
+ 
+     case DTLS_CT_ALERT:
+@@ -3838,7 +3848,7 @@ dtls_new_context(void *app_data) {
+   PROCESS_CONTEXT_BEGIN(&dtls_retransmit_process);
+   /* the retransmit timer must be initialized to some large value */
+   etimer_set(&c->retransmit_timer, 0xFFFF);
+-  PROCESS_CONTEXT_END(&coap_retransmit_process);
++  PROCESS_CONTEXT_END(&dtls_retransmit_process);
+ #endif /* WITH_CONTIKI */
+ 
+   if (dtls_prng(c->cookie_secret, DTLS_COOKIE_SECRET_LENGTH))
+@@ -4050,7 +4060,7 @@ PROCESS_THREAD(dtls_retransmit_process, ev, data)
+     if (ev == PROCESS_EVENT_TIMER) {
+       if (etimer_expired(&the_dtls_context.retransmit_timer)) {
+ 	
+-	node = netq_head(&the_dtls_context.sendqueue);
++	node = netq_pop_first(&the_dtls_context.sendqueue);
+ 	
+ 	now = clock_time();
+ 	if (node && node->t <= now) {
+diff --git a/dtls_config.h b/dtls_config.h
+new file mode 100644
+index 0000000..0680f82
+--- /dev/null
++++ b/dtls_config.h
+@@ -0,0 +1,25 @@
++/*******************************************************************************
++ *
++ * Copyright (c) 2011, 2012, 2013, 2014, 2015 Olaf Bergmann (TZI) and others.
++ * All rights reserved. This program and the accompanying materials
++ * are made available under the terms of the Eclipse Public License v1.0
++ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
++ *
++ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
++ * and the Eclipse Distribution License is available at 
++ * http://www.eclipse.org/org/documents/edl-v10.php.
++ *
++ * Contributors:
++ *    Olaf Bergmann  - initial API and implementation
++ *    Hauke Mehrtens - memory optimization, ECC integration
++ *
++ *******************************************************************************/
++
++/**
++ * @file dtls_config.h
++ */
++
++#ifndef _DTLS_CONFIG_H_
++#define _DTLS_CONFIG_H_
++#include "tinydtls.h"
++#endif /* _DTLS_CONFIG_H_ */
+diff --git a/platform-specific/config-emsk.h b/platform-specific/config-emsk.h
+new file mode 100644
+index 0000000..427e97c
+--- /dev/null
++++ b/platform-specific/config-emsk.h
+@@ -0,0 +1,4 @@
++#define BYTE_ORDER	1234	/* little endian for sha2 */
++#define HAVE_ASSERT_H	1
++#define PACKAGE_NAME	"tinydtls"
++#define PACKAGE_VERSION	"1.0"
+\ No newline at end of file
+diff --git a/platform-specific/platform.h b/platform-specific/platform.h
+index 7418c0a..f0175eb 100644
+--- a/platform-specific/platform.h
++++ b/platform-specific/platform.h
+@@ -60,6 +60,10 @@
+ #  include "platform-specific/config-minimal-net.h"
+ #endif /* CONTIKI_TARGET_MINIMAL_NET */
+ 
++#ifdef CONTIKI_TARGET_EMSK
++# include "platform-specific/config-emsk.h"
++#endif /* CONTIKI_TARGET_EMSK */
++
+ #endif /* CONTIKI */
+ 
+ #endif /* _PLATFORM_H_ */
+diff --git a/sha2/sha2.c b/sha2/sha2.c
+index 2578f17..43d9b61 100644
+--- a/sha2/sha2.c
++++ b/sha2/sha2.c
+@@ -153,19 +153,26 @@ typedef u_int64_t sha2_word64;	/* Exactly 8 bytes */
+ 
+ /*** ENDIAN REVERSAL MACROS *******************************************/
+ #if BYTE_ORDER == LITTLE_ENDIAN
+-#define REVERSE32(w,x)	{ \
+-	sha2_word32 tmp = (w); \
+-	tmp = (tmp >> 16) | (tmp << 16); \
+-	(x) = ((tmp & 0xff00ff00UL) >> 8) | ((tmp & 0x00ff00ffUL) << 8); \
+-}
+-#define REVERSE64(w,x)	{ \
+-	sha2_word64 tmp = (w); \
+-	tmp = (tmp >> 32) | (tmp << 32); \
+-	tmp = ((tmp & 0xff00ff00ff00ff00ULL) >> 8) | \
+-	      ((tmp & 0x00ff00ff00ff00ffULL) << 8); \
+-	(x) = ((tmp & 0xffff0000ffff0000ULL) >> 16) | \
+-	      ((tmp & 0x0000ffff0000ffffULL) << 16); \
+-}
++#define REVERSE32(w,x,j)				\
++do {                                                    \
++    (x) = ( (sha2_word32) (w)[(j)    ] << 24 )             \
++        | ( (sha2_word32) (w)[(j) + 1] << 16 )             \
++        | ( (sha2_word32) (w)[(j) + 2] <<  8 )             \
++        | ( (sha2_word32) (w)[(j) + 3]       );            \
++} while( 0 )
++
++#define REVERSE64(w,x, j)			     \
++do {                                                 \
++    (x) = ( (sha2_word64) (w)[(j)    ] << 56 )       \
++        | ( (sha2_word64) (w)[(j) + 1] << 48 )       \
++        | ( (sha2_word64) (w)[(j) + 2] << 40 )       \
++        | ( (sha2_word64) (w)[(j) + 3] << 32 )       \
++        | ( (sha2_word64) (w)[(j) + 4] << 24 )       \
++        | ( (sha2_word64) (w)[(j) + 5] << 16 )       \
++        | ( (sha2_word64) (w)[(j) + 6] <<  8 )       \
++        | ( (sha2_word64) (w)[(j) + 7]       );      \
++} while( 0 )
++
+ #endif /* BYTE_ORDER == LITTLE_ENDIAN */
+ 
+ /*
+@@ -246,8 +253,8 @@ typedef u_int64_t sha2_word64;	/* Exactly 8 bytes */
+  * only.
+  */
+ void SHA512_Last(SHA512_CTX*);
+-void SHA256_Transform(SHA256_CTX*, const sha2_word32*);
+-void SHA512_Transform(SHA512_CTX*, const sha2_word64*);
++void SHA256_Transform(SHA256_CTX*, const sha2_byte*);
++void SHA512_Transform(SHA512_CTX*, const sha2_byte*);
+ 
+ #ifdef WITH_SHA256
+ /*** SHA-XYZ INITIAL HASH VALUES AND CONSTANTS ************************/
+@@ -383,7 +390,7 @@ void SHA256_Init(SHA256_CTX* context) {
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 
+ #define ROUND256_0_TO_15(a,b,c,d,e,f,g,h)	\
+-	REVERSE32(*data++, W256[j]); \
++	REVERSE32(data, W256[j], 4*j); \
+ 	T1 = (h) + Sigma1_256(e) + Ch((e), (f), (g)) + \
+              K256[j] + W256[j]; \
+ 	(d) += T1; \
+@@ -393,6 +400,7 @@ void SHA256_Init(SHA256_CTX* context) {
+ 
+ #else /* BYTE_ORDER == LITTLE_ENDIAN */
+ 
++/* FIXME: *data++ is a bug */
+ #define ROUND256_0_TO_15(a,b,c,d,e,f,g,h)	\
+ 	T1 = (h) + Sigma1_256(e) + Ch((e), (f), (g)) + \
+ 	     K256[j] + (W256[j] = *data++); \
+@@ -413,7 +421,7 @@ void SHA256_Init(SHA256_CTX* context) {
+ 	(h) = T1 + Sigma0_256(a) + Maj((a), (b), (c)); \
+ 	j++
+ 
+-void SHA256_Transform(SHA256_CTX* context, const sha2_word32* data) {
++void SHA256_Transform(SHA256_CTX* context, const sha2_byte* data) {
+ 	sha2_word32	a, b, c, d, e, f, g, h, s0, s1;
+ 	sha2_word32	T1, *W256;
+ 	int		j;
+@@ -471,7 +479,7 @@ void SHA256_Transform(SHA256_CTX* context, const sha2_word32* data) {
+ 
+ #else /* SHA2_UNROLL_TRANSFORM */
+ 
+-void SHA256_Transform(SHA256_CTX* context, const sha2_word32* data) {
++void SHA256_Transform(SHA256_CTX* context, const sha2_byte* data) {
+ 	sha2_word32	a, b, c, d, e, f, g, h, s0, s1;
+ 	sha2_word32	T1, T2, *W256;
+ 	int		j;
+@@ -492,10 +500,11 @@ void SHA256_Transform(SHA256_CTX* context, const sha2_word32* data) {
+ 	do {
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 		/* Copy data while converting to host byte order */
+-		REVERSE32(*data++,W256[j]);
++		REVERSE32(data,W256[j],4 * j);
+ 		/* Apply the SHA-256 compression function to update a..h */
+ 		T1 = h + Sigma1_256(e) + Ch(e, f, g) + K256[j] + W256[j];
+ #else /* BYTE_ORDER == LITTLE_ENDIAN */
++		/* FIXME: *data++ is a bug */
+ 		/* Apply the SHA-256 compression function to update a..h with copy */
+ 		T1 = h + Sigma1_256(e) + Ch(e, f, g) + K256[j] + (W256[j] = *data++);
+ #endif /* BYTE_ORDER == LITTLE_ENDIAN */
+@@ -573,7 +582,7 @@ void SHA256_Update(SHA256_CTX* context, const sha2_byte *data, size_t len) {
+ 			context->bitcount += freespace << 3;
+ 			len -= freespace;
+ 			data += freespace;
+-			SHA256_Transform(context, (sha2_word32*)context->buffer);
++			SHA256_Transform(context, context->buffer);
+ 		} else {
+ 			/* The buffer is not yet full */
+ 			MEMCPY_BCOPY(&context->buffer[usedspace], data, len);
+@@ -585,7 +594,7 @@ void SHA256_Update(SHA256_CTX* context, const sha2_byte *data, size_t len) {
+ 	}
+ 	while (len >= SHA256_BLOCK_LENGTH) {
+ 		/* Process as many complete blocks as we can */
+-		SHA256_Transform(context, (sha2_word32*)data);
++		SHA256_Transform(context, data);
+ 		context->bitcount += SHA256_BLOCK_LENGTH << 3;
+ 		len -= SHA256_BLOCK_LENGTH;
+ 		data += SHA256_BLOCK_LENGTH;
+@@ -611,7 +620,7 @@ void SHA256_Final(sha2_byte digest[], SHA256_CTX* context) {
+ 		usedspace = (context->bitcount >> 3) % SHA256_BLOCK_LENGTH;
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 		/* Convert FROM host byte order */
+-		REVERSE64(context->bitcount,context->bitcount);
++		REVERSE64((sha2_byte *)&context->bitcount,context->bitcount, 0);
+ #endif
+ 		if (usedspace > 0) {
+ 			/* Begin padding with a 1 bit: */
+@@ -625,7 +634,7 @@ void SHA256_Final(sha2_byte digest[], SHA256_CTX* context) {
+ 					MEMSET_BZERO(&context->buffer[usedspace], SHA256_BLOCK_LENGTH - usedspace);
+ 				}
+ 				/* Do second-to-last transform: */
+-				SHA256_Transform(context, (sha2_word32*)context->buffer);
++				SHA256_Transform(context, context->buffer);
+ 
+ 				/* And set-up for the last transform: */
+ 				MEMSET_BZERO(context->buffer, SHA256_SHORT_BLOCK_LENGTH);
+@@ -641,14 +650,14 @@ void SHA256_Final(sha2_byte digest[], SHA256_CTX* context) {
+ 		*(sha2_word64*)&context->buffer[SHA256_SHORT_BLOCK_LENGTH] = context->bitcount;
+ 
+ 		/* Final transform: */
+-		SHA256_Transform(context, (sha2_word32*)context->buffer);
++		SHA256_Transform(context, context->buffer);
+ 
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 		{
+ 			/* Convert TO host byte order */
+ 			int	j;
+ 			for (j = 0; j < 8; j++) {
+-				REVERSE32(context->state[j],context->state[j]);
++				REVERSE32((sha2_byte *)context->state,context->state[j], 4 * j);
+ 				*d++ = context->state[j];
+ 			}
+ 		}
+@@ -711,7 +720,7 @@ void SHA512_Init(SHA512_CTX* context) {
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 
+ #define ROUND512_0_TO_15(a,b,c,d,e,f,g,h)	\
+-	REVERSE64(*data++, W512[j]); \
++	REVERSE64(data, W512[j], 8 *j); \
+ 	T1 = (h) + Sigma1_512(e) + Ch((e), (f), (g)) + \
+              K512[j] + W512[j]; \
+ 	(d) += T1, \
+@@ -721,6 +730,7 @@ void SHA512_Init(SHA512_CTX* context) {
+ 
+ #else /* BYTE_ORDER == LITTLE_ENDIAN */
+ 
++/* FIXME: *data++ is a bug */
+ #define ROUND512_0_TO_15(a,b,c,d,e,f,g,h)	\
+ 	T1 = (h) + Sigma1_512(e) + Ch((e), (f), (g)) + \
+              K512[j] + (W512[j] = *data++); \
+@@ -741,7 +751,7 @@ void SHA512_Init(SHA512_CTX* context) {
+ 	(h) = T1 + Sigma0_512(a) + Maj((a), (b), (c)); \
+ 	j++
+ 
+-void SHA512_Transform(SHA512_CTX* context, const sha2_word64* data) {
++void SHA512_Transform(SHA512_CTX* context, const sha2_byte* data) {
+ 	sha2_word64	a, b, c, d, e, f, g, h, s0, s1;
+ 	sha2_word64	T1, *W512 = (sha2_word64*)context->buffer;
+ 	int		j;
+@@ -796,7 +806,7 @@ void SHA512_Transform(SHA512_CTX* context, const sha2_word64* data) {
+ 
+ #else /* SHA2_UNROLL_TRANSFORM */
+ 
+-void SHA512_Transform(SHA512_CTX* context, const sha2_word64* data) {
++void SHA512_Transform(SHA512_CTX* context, const sha2_byte* data) {
+ 	sha2_word64	a, b, c, d, e, f, g, h, s0, s1;
+ 	sha2_word64	T1, T2, *W512 = (sha2_word64*)context->buffer;
+ 	int		j;
+@@ -815,11 +825,12 @@ void SHA512_Transform(SHA512_CTX* context, const sha2_word64* data) {
+ 	do {
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 		/* Convert TO host byte order */
+-		REVERSE64(*data++, W512[j]);
++		REVERSE64(data, W512[j], 8*j);
+ 		/* Apply the SHA-512 compression function to update a..h */
+ 		T1 = h + Sigma1_512(e) + Ch(e, f, g) + K512[j] + W512[j];
+ #else /* BYTE_ORDER == LITTLE_ENDIAN */
+ 		/* Apply the SHA-512 compression function to update a..h with copy */
++		/* FIXME: *data++ is a bug */
+ 		T1 = h + Sigma1_512(e) + Ch(e, f, g) + K512[j] + (W512[j] = *data++);
+ #endif /* BYTE_ORDER == LITTLE_ENDIAN */
+ 		T2 = Sigma0_512(a) + Maj(a, b, c);
+@@ -896,7 +907,7 @@ void SHA512_Update(SHA512_CTX* context, const sha2_byte *data, size_t len) {
+ 			ADDINC128(context->bitcount, freespace << 3);
+ 			len -= freespace;
+ 			data += freespace;
+-			SHA512_Transform(context, (sha2_word64*)context->buffer);
++			SHA512_Transform(context, context->buffer);
+ 		} else {
+ 			/* The buffer is not yet full */
+ 			MEMCPY_BCOPY(&context->buffer[usedspace], data, len);
+@@ -908,7 +919,7 @@ void SHA512_Update(SHA512_CTX* context, const sha2_byte *data, size_t len) {
+ 	}
+ 	while (len >= SHA512_BLOCK_LENGTH) {
+ 		/* Process as many complete blocks as we can */
+-		SHA512_Transform(context, (sha2_word64*)data);
++		SHA512_Transform(context, data);
+ 		ADDINC128(context->bitcount, SHA512_BLOCK_LENGTH << 3);
+ 		len -= SHA512_BLOCK_LENGTH;
+ 		data += SHA512_BLOCK_LENGTH;
+@@ -928,8 +939,8 @@ void SHA512_Last(SHA512_CTX* context) {
+ 	usedspace = (context->bitcount[0] >> 3) % SHA512_BLOCK_LENGTH;
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 	/* Convert FROM host byte order */
+-	REVERSE64(context->bitcount[0],context->bitcount[0]);
+-	REVERSE64(context->bitcount[1],context->bitcount[1]);
++	REVERSE64((sha2_byte *)context->bitcount,context->bitcount[0],0);
++	REVERSE64((sha2_byte *)context->bitcount,context->bitcount[1],8);
+ #endif
+ 	if (usedspace > 0) {
+ 		/* Begin padding with a 1 bit: */
+@@ -972,14 +983,13 @@ void SHA512_Final(sha2_byte digest[], SHA512_CTX* context) {
+ 	/* If no digest buffer is passed, we don't bother doing this: */
+ 	if (digest != (sha2_byte*)0) {
+ 		SHA512_Last(context);
+-
+ 		/* Save the hash data for output: */
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ 		{
+ 			/* Convert TO host byte order */
+ 			int	j;
+ 			for (j = 0; j < 8; j++) {
+-				REVERSE64(context->state[j],context->state[j]);
++				REVERSE64((sha2_byte *)context->state,context->state[j], 8*j);
+ 				*d++ = context->state[j];
+ 			}
+ 		}
+@@ -1055,7 +1065,7 @@ void SHA384_Final(sha2_byte digest[], SHA384_CTX* context) {
+ 			/* Convert TO host byte order */
+ 			int	j;
+ 			for (j = 0; j < 6; j++) {
+-				REVERSE64(context->state[j],context->state[j]);
++				REVERSE64((sha2_byte *)context->state,context->state[j], 8*j);
+ 				*d++ = context->state[j];
+ 			}
+ 		}
+diff --git a/tinydtls.h b/tinydtls.h
+new file mode 100644
+index 0000000..3f22d47
+--- /dev/null
++++ b/tinydtls.h
+@@ -0,0 +1,41 @@
++/*******************************************************************************
++ *
++ * Copyright (c) 2011, 2012, 2013, 2014, 2015 Olaf Bergmann (TZI) and others.
++ * All rights reserved. This program and the accompanying materials
++ * are made available under the terms of the Eclipse Public License v1.0
++ * and Eclipse Distribution License v. 1.0 which accompanies this distribution.
++ *
++ * The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html
++ * and the Eclipse Distribution License is available at
++ * http://www.eclipse.org/org/documents/edl-v10.php.
++ *
++ * Contributors:
++ *    Olaf Bergmann  - initial API and implementation
++ *    Hauke Mehrtens - memory optimization, ECC integration
++ *
++ *******************************************************************************/
++
++/**
++ * @file tinydtls.h
++ * @brief public tinydtls API
++ */
++
++#ifndef _DTLS_TINYDTLS_H_
++#define _DTLS_TINYDTLS_H_
++
++/** Defined to 1 if tinydtls is built with support for ECC */
++#undef DTLS_ECC
++
++/** Defined to 1 if tinydtls is built with support for PSK */
++#undef DTLS_PSK
++#define DTLS_PSK 1
++
++/** Defined to 1 if tinydtls is built for Contiki OS */
++#undef WITH_CONTIKI
++#define WITH_CONTIKI 1
++
++#ifdef WITH_CONTIKI
++#include "platform-specific/platform.h"
++#endif
++
++#endif /* _DTLS_TINYDTLS_H_ */
+-- 
+2.5.3
+

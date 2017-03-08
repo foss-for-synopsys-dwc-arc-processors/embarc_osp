@@ -1,0 +1,47 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ *
+ *
+ *
+ */
+/*! \page page_middleware_iot IoT
+
+\tableofcontents
+
+\section sect_middleware_iot_coap CoAP
+    [Constrained Application Protocol (CoAP)](https://en.wikipedia.org/wiki/Constrained_Application_Protocol) is a software protocol intended to be used in very simple electronic devices and allows them to communicate interactively over the Internet. It is particularly targeted at small low-power sensors, switches, valves, and similar components that need to be controlled or supervised remotely, through standard Internet connections. CoAP is an application layer protocol that is intended for use in resource-constrained Internet devices.
+
+    Contiki includes native support for CoAP. Sources from the [libcoap project](https://libcoap.net/) are used to provide CoAP functionality in FreeRTOS.
+
+\section sect_middleware_iot_mqtt MQTT
+    [Message Queue Telemetry Transport (MQTT)](http://mqtt.org/) is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium.
+
+    Contiki includes native MQTT support. Sources from the [Paho project](http://www.eclipse.org/paho/) are used to provide MQTT functionality in FreeRTOS.
+
+\section sect_middleware_iot_resthttp REST/HTTP
+    [Representational State Transfer (REST)](https://en.wikipedia.org/wiki/Representational_state_transfer) is an architectural style consisting of a coordinated set of architectural constraints applied to components, connectors, and data elements, within a distributed hypermedia system. REST ignores the details of component implementation and protocol syntax to focus on the roles of components, the constraints upon their interaction with other components, and their interpretation of significant data elements.
+
+    Contiki provides support for REST through the low power Erbium (Er) REST Engine. The REST layer is useful for developing server-side applications that can be run over either CoAP or HTTP.
+
+\section sect_middleware_iot_lwm2m LwM2M
+    [Lightweight M2M (LwM2M)](https://en.wikipedia.org/wiki/OMA_LWM2M) defines the application-layer communication protocol between a LwM2M Server and a LwM2M Client, which is located in a LwM2M Device. The target LwM2M devices are mainly resource-constrained devices. It provides a choice for M2M service providers to deploy a M2M system to provide service to M2M users. It is frequently used with CoAP.
+
+    Sources from the [Eclipse Wakaama project](https://projects.eclipse.org/projects/technology.wakaama) are used to provide LwM2M functionality in FreeRTOS. There is currently no support for LwM2M in Contiki.
+
+\section sect_middleware_iot_json JSON
+   [JavaScript Object Notation (JSON)](http://json.org/) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others. These properties make JSON an ideal data-interchange language.
+
+   [Parson](https://github.com/kgabis/parson) is a lightweight JSON library written in C. It provides full JSON support and simple API.
+
+\section sect_middleware_iot_http_parser HTTP Parser
+   [HTTP Parser](https://github.com/nodejs/http-parser) is a parser for HTTP messages written in C. It parses both requests and responses. The parser is designed to be used in performance HTTP applications. It does not make any syscalls nor allocations. It does not buffer data. It can be interrupted at anytime. Depending on architectures, it only requires about 40 bytes of data per message stream (in a web server that is per connection).
+
+\section sect_middleware_iot_xively Xively Library
+   [Xively Library](https://github.com/foss-for-synopsys-dwc-arc-processors/libxively) is a c library is an extremely portable way to interface your embedded product to the Xively API.
+   For more information about xively IoT cloud platform please visit the [xively developer center](https://personal.xively.com/dev/).
+
+\section sect_middleware_iot_awsiot AWS IoT device SDK
+   [AWS IoT device SDK](https://github.com/aws/aws-iot-device-sdk-embedded-C) for embedded C is a collection of C source files which can be used in embedded applications to securely connect to the AWS IoT platform. It includes transport clients MQTT, TLS implementations and examples for their use. It also supports AWS IoT specific features such as Thing Shadow. For more information on the AWS IoT platform please visit the [AWS IoT developer guide](http://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html).
+
+*/

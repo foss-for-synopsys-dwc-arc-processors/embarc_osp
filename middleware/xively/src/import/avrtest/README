@@ -1,0 +1,172 @@
+
+================
+What is avrtest?
+================
+
+avrtest is a free software simulator for the Atmel AVR family of
+microcontrollers distributed under the GNU General Public License.
+
+The main intention of avrtest is to supply a fast, easy-to-use simulator
+to run the GCC testsuite for avr-gcc.  Thus, its main audience are guys
+that develop parts of the AVR toolchain like avr-gcc or avr-libc.
+
+avrtest is an instruction set simulator for AVR core families
+   avr51: ATmega128*, AT90can128, AT90usb128*
+   avr6:  ATmega256*
+
+avrtest-xmega is an instruction set simulator for AVR XMEGA core families
+   avrxmega6: ATXmega128*, ...
+
+The exectuable that supports AVR XMEGA cores is named avrtest-xmega.
+In addition to the avrtest simulator, it supports the XMEGA instructions
+XCH, LAS, LAC and LAT.
+
+In the remainder, avrtest is explained.  avrtest-xmega works similar.
+avrtest does not simulate internal peripherals like timers, I/O ports,
+interrupts, etc. 
+
+================
+Special features
+================
+
+The simulator has builtin capability of writing to stdout when a value
+is written to a destinct memory location.  For example, an easy hello world
+program for AVR could look like this:
+
+
+#include <stdio.h>
+
+int main (void)
+{
+    printf ("Hallo World!\n");
+    return 0;
+}
+
+
+Compile this program as usual but link against exit-atmega128.o. 
+How to build that object is explained in the next chapter. Store the
+C source as hello.c and compile it with, e.g.
+
+	avr-gcc hello.c -O -mmcu=atmega128 -o hello.elf /someplace/avrtest/exit-atmega128.o
+
+The exit-*.o object arranges the putchar function to write to the mentioned
+location.  avrtest will pick the value and print it to standard output of your
+host computer.  To start the program, type
+
+	avrtest -mmcu=avr51 hello.elf
+
+This will print something like
+
+
+Hallo World!
+
+ exit status: EXIT
+      reason: exit function called
+     program: hello.elf
+exit address: 00011c
+total cycles: 806
+
+
+You can also write to the magic locations directly:
+
+
+#include "avrtest.h"
+
+int main (void)
+{
+    char c;
+    
+    STDOUT_PORT = 'Q';
+
+    c = STDIN_PORT;
+    STDOUT_PORT = c+1;
+    
+    return 0;
+}
+
+
+avrtest.h defines the port locations. Compile the C source with
+
+	avr-gcc inout.c -O -mmcu=atmega128 -o inout.elf -I /someplace/avrtest
+
+When running the program with
+
+	avrtest -mmcu=avr51 inout.elf
+
+The simulator will print a 'Q' on the console and wait for input. 
+Type '1<Enter>' and the output will be
+
+Q1
+2
+ exit status: EXIT
+      reason: infinite loop detected (normal exit)
+     program: inout.elf
+exit address: 0000b8
+total cycles: 30
+
+
+There are two more magic ports besides STDIN_PORT and STDOUT_PORT:
+Try writing to ABORT_PORT resp. EXIT_PORT.
+
+
+=================================================
+Running avr-gcc testsuite using avrtest simulator
+=================================================
+
+http://lists.gnu.org/archive/html/avr-gcc-list/2009-09/msg00016.html
+
+* Get avr-gcc, binutils and avr-libc built from sources and working.
+
+* Install dejagnu, expect and TCL
+
+* Unpack the avrtest tar file from WinAVR sources top "someplace".
+  You find a link to the package at "Download GNU tarball" on
+  http://winavr.svn.sourceforge.net/viewvc/winavr/trunk/avrtest/?view=tar
+
+* Run
+
+	make
+  
+  inside /someplace/avrtest which will build executables from avrtest.c
+  and avr object file exit-atmega128.o from dejagnuboards/exit.c.
+
+* To build the XMEGA simulator and exit-atxmega128a3.o, run
+
+	make all-xmega
+
+* To build exit*.o modules, avr-gcc will be used.  If you want a different
+  avr-gcc not found in PATH, use (alternatively with all-xmega):
+  
+	make clean-exit all AVRGCC=/some-compiler-path/avr-gcc
+
+* Copy /someplace/avrtest/.dejagnurc to your $HOME and change the path
+  inside to point to directory where "board file" is located.
+  This is dejagnuboards subdirectory of avrtest files:
+
+	set board dir /someplace/avrtest/dejagnuboards
+
+* Edit /someplace/avrtest/dejagnuboards/atmega128-sim.exp and replace paths
+  to point to correct location of files for simulator (avrtest executable
+  and exit-atmega128.o object file) or add avrtest to $PATH:
+
+	set result [exec /someplace/avrtest/avrtest -m 2000000000 -no-stdin $prog ]
+
+	set board_info ldflags "/someplace/avrtest/exit-atmega128.o" -Wl,-u,vfprintf ...
+
+* Run the tests from gcc subdirectory of your avr-gcc build directory like:
+
+	make -k check RUNTESTFLAGS="--target_board=atmega128-sim"
+	make -k check RUNTESTFLAGS="--target_board=atxmega128-sim"
+
+* Look in the ./gcc/testsuite subdirectory of avr-gcc build directory
+  for logged results or you can add -all switch to
+  see it working 1 test at a time.
+
+	make -k check RUNTESTFLAGS="--target_board=atmega128-sim -all"
+
+* You can run parts of the testsuite like this:
+
+	make -k check RUNTESTFLAGS="--target_board=atmega128-sim avr.exp"
+	make -k check RUNTESTFLAGS="--target_board=atmega128-sim avr-torture.exp=pr418854.c"
+
+Voila!

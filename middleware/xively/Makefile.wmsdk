@@ -1,0 +1,43 @@
+ifeq ($(SDK_PATH), )
+$(error You need to give SDK_PATH)
+endif
+
+ifeq ($(NOISY),1)
+AT=
+else
+AT=@
+endif
+
+#XXX: may be we just need to export SDK_PATH above this?
+INC_DIR := $(SDK_PATH)/src/incl
+include $(SDK_PATH)/build/env/common.mak
+
+XI_USER_AGENT ?= '"libxively-lwip-experimental/0.1.x-detached"'
+
+XI_USER_CONFIG := 1
+XI_USER_CONFIG_PATH ?= $(SDK_PATH)/external/
+XI_WARN_CFLAGS := -Wall -Wextra -Wno-unused-parameter -Wno-unknown-pragmas
+XI_OPTLEVEL ?= $(filter -O0 -O1 -O2 -O3 -O4 -O5 -Os,$(CFLAGS))
+XI_EXTRA_CFLAGS := $(filter-out -O0 -O1 -O2 -O3 -O4 -O5 -Os,$(CFLAGS)) \
+	-DXI_IO_LAYER_POSIX_COMPAT=1 \
+	-DXI_IO_LAYER_POSIX_DISABLE_TIMEOUT \
+	-fgnu89-inline
+
+export XI_USER_CONFIG XI_USER_CONFIG_PATH
+export XI_USER_AGENT
+export XI_WARN_CFLAGS XI_OPTLEVEL XI_EXTRA_CFLAGS
+export CC AR
+
+ifneq ($(OS), Linux)
+# On Cygwin, CodeSourcery toolchain doesn't use the header files from
+# the 'current' directory, but instead picks the header files from the
+# directory where the C file resides, hence this workaround
+XI_EXTRA_CFLAGS += -I.
+endif
+
+all:
+	@echo " [sub] libxively"
+	$(AT)$(MAKE) -C src/ libxively
+
+clean:
+	$(AT)$(MAKE) -C src/ $@

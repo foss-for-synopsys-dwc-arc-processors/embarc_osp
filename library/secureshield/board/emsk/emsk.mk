@@ -1,0 +1,21 @@
+ifneq ($(VALID_CUR_CORE), arcem7d)
+$(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield!)
+else
+ifneq ($(VALID_BD_VER), 22)
+ifneq ($(LIB_SECURESHIELD_VERSION), 2)
+$(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield v1!)
+endif
+else
+ifneq ($(LIB_SECURESHIELD_VERSION), 1)
+$(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield v2!)
+endif
+endif
+endif
+
+LIB_SECURESHIELD_BOARD_EMSK_DIR = $(LIB_SECURESHIELD_DIR)/board/emsk
+
+LIB_SECURESHIELD_ASMSRCDIR += $(LIB_SECURESHIELD_BOARD_EMSK_DIR)/$(VALID_BD_VER)/7d_mpu/
+LIB_SECURESHIELD_CSRCDIR += $(LIB_SECURESHIELD_BOARD_EMSK_DIR)/common $(LIB_SECURESHIELD_BOARD_EMSK_DIR)/$(VALID_BD_VER)/7d_mpu
+LIB_SECURESHIELD_INCDIR += $(LIB_SECURESHIELD_BOARD_EMSK_DIR)/$(VALID_BD_VER)/7d_mpu
+
+SECURESHIELD_BOARD_CONFIG_FILE = $(LIB_SECURESHIELD_BOARD_EMSK_DIR)/$(VALID_BD_VER)/7d_mpu/secureshield_board_config.h

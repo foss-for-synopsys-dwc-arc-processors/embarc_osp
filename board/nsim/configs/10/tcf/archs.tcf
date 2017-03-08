@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config_list>
+  <tool_config version="1.0.59" mwdt_version="M-2016.12" />
+  <configuration name="BCRs" filename="bcr_contents.txt">
+    <string><![CDATA[
+	0x4	0x53		IDENTITY
+	0x18	0x80000000	AUX_DCCM
+	0x60	0x2		BCR_VER
+	0x68	0x10		VECBASE_AC_BUILD
+	0x6e	0x102		RF_BUILD
+	0x74	0x40c04		DCCM_BUILD
+	0x75	0x10304		TIMER_BUILD
+	0x78	0xc04		ICCM_BUILD
+	0x7b	0x20206		MULTIPLY_BUILD
+	0x7c	0x3		SWAP_BUILD
+	0x7d	0x3		NORM_BUILD
+	0x7e	0x2		MINMAX_BUILD
+	0x7f	0x303		BARREL_BUILD
+	0xc0	0x1881105	BPU_BUILD
+	0xc1	0x2647402	ISA_CONFIG
+	0xcf	0x101		CLUSTER_BUILD
+	0xf3	0x13101401	IRQ_BUILD
+	0x208	0x0		AUX_ICCM
+]]></string>
+  </configuration>
+  <configuration name="mw_compiler" filename="ccac.arg">
+    <string><![CDATA[
+	-arcv2hs
+	-core3
+	-HL
+	-Xatomic
+	-Xunaligned
+	-Xcode_density
+	-Xswap
+	-Xbitscan
+	-Xmpy_option=mpy
+	-Xshift_assist
+	-Xbarrel_shifter
+	-Xtimer0
+	-Xtimer1
+	-Hccm
+]]></string>
+  </configuration>
+  <configuration name="mw_debugger" filename="mdb.arg">
+    <string><![CDATA[
+	-arcv2hs
+	-core3
+	-rgf_num_banks=1
+	-rgf_num_wr_ports=2
+	-Xatomic
+	-Xunaligned
+	-Xcode_density
+	-Xswap
+	-Xbitscan
+	-Xmpy_option=mpy
+	-Xshift_assist
+	-Xbarrel_shifter
+	-Xtimer0
+	-Xtimer0_level=1
+	-Xtimer1
+	-Xtimer1_level=0
+	-bpu_bc_entries=512
+	-bpu_pt_entries=8192
+	-bpu_rs_entries=4
+	-bpu_bc_full_tag=0
+	-bpu_bc_tag_size=4
+	-bpu_tosq_entries=5
+	-bpu_fb_entries=2
+	-interrupts=20
+	-interrupt_priorities=4
+	-ext_interrupts=16
+	-firq
+	-interrupt_base=0x0
+	-dccm_size=0x100000
+	-dccm_base=0x80000000
+	-dccm_mem_cycles=2
+	-iccm0_size=0x100000
+	-iccm0_base=0x00000000
+]]></string>
+  </configuration>
+  <configuration name="nSIM" filename="nsim.props">
+    <string><![CDATA[
+	nsim_isa_family=av2hs
+	nsim_isa_core=3
+	arcver=0x53
+	nsim_isa_rgf_num_banks=1
+	nsim_isa_rgf_num_regs=32
+	nsim_isa_rgf_num_wr_ports=2
+	nsim_isa_big_endian=0
+	nsim_isa_lpc_size=32
+	nsim_isa_pc_size=32
+	nsim_isa_addr_size=32
+	nsim_isa_atomic_option=1
+	nsim_isa_ad_option=1
+	nsim_isa_code_density_option=2
+	nsim_isa_swap_option=1
+	nsim_isa_bitscan_option=1
+	nsim_isa_mpy_option=6
+	nsim_isa_shift_option=3
+	nsim_isa_enable_timer_0=1
+	nsim_isa_timer_0_int_level=1
+	nsim_isa_enable_timer_1=1
+	nsim_isa_timer_1_int_level=0
+	nsim_bpu_bc_entries=512
+	nsim_bpu_pt_entries=8192
+	nsim_bpu_rs_entries=4
+	nsim_bpu_bc_full_tag=0
+	nsim_bpu_bc_tag_size=4
+	nsim_bpu_tosq_entries=5
+	nsim_bpu_fb_entries=2
+	nsim_isa_number_of_interrupts=20
+	nsim_isa_number_of_levels=4
+	nsim_isa_number_of_external_interrupts=16
+	nsim_isa_fast_irq=1
+	nsim_isa_intvbase_preset=0x0
+	dccm_size=0x100000
+	dccm_base=0x80000000
+	nsim_isa_dccm_mem_cycles=2
+	iccm0_size=0x100000
+	iccm0_base=0x00000000
+]]></string>
+  </configuration>
+  <configuration name="IDE" filename="ide.props">
+    <string><![CDATA[
+	processor.family=5
+	processor.core_version=3
+	processor.family_name=arcv2hs
+	processor.rgf_num_banks=1
+	processor.rgf_num_wr_ports=2
+	processor.endian=little
+	processor.lpc_size=32
+	processor.pc_size=32
+	processor.addr_size=32
+	processor.Xatomic=1
+	processor.Xunaligned=1
+	processor.Xcode_density=1
+	processor.Xswap=1
+	processor.Xbitscan=1
+	processor.Xmpy_option=mpy
+	processor.Xshift_assist=1
+	processor.Xbarrel_shifter=1
+	processor.Xtimer0=1
+	processor.Xtimer0_level=1
+	processor.Xtimer1=1
+	processor.Xtimer1_level=0
+	processor.bpu_bc_entries=512
+	processor.bpu_pt_entries=8192
+	processor.bpu_rs_entries=4
+	processor.bpu_bc_full_tag=0
+	processor.bpu_bc_tag_size=4
+	processor.bpu_tosq_entries=5
+	processor.bpu_fb_entries=2
+	processor.interrupts=20
+	processor.interrupt_priorities=4
+	processor.ext_interrupts=16
+	processor.firq=1
+	processor.interrupt_base=0x0
+	processor.dccm_size=0x100000
+	processor.dccm_base=0x80000000
+	processor.dccm_mem_cycles=2
+	processor.Hccm=1
+	processor.iccm0_size=0x100000
+	processor.iccm0_base=0x00000000
+]]></string>
+  </configuration>
+  <configuration name="architect" filename="architect.txt">
+    <string><![CDATA[
+	######## Summary of processor build in ARChitect build option format
+	######## This is not suitable for input to the ARChitect.
+	######## Please use file build_configuration.txt if you wish to invoke
+	######## ARChitect with a configuration file.
+	-create com.arc.hardware.HS.System.1_0 System
+	-create com.arc.hardware.implementation.1_0 System.Implementation
+	-create com.arc.hardware.HS.CPU_isle.1_0 System.CPUisle
+	-create com.arc.hardware.HS.ARCv2HS.1_0 System.CPUisle.ARCv2HS
+	-arcv2em_version 2
+	-infer_alu_adder instantiate	// NO BCR INFO FOR THIS VALUE
+	-rgf_impl flip_flops	// NO BCR INFO FOR THIS VALUE
+	-arc_num 0
+	-arcv2hs true
+	-rgf_num_banks 1
+	-rgf_num_regs 32
+	-rgf_wr_ports 2
+	-byte_order little
+	-lpc_size 32
+	-pc_size 32
+	-addr_size 32
+	-atomic_option true
+	-ll64_option false
+	-code_density_option true
+	-div_rem_option none
+	-swap_option true
+	-bitscan_option true
+	-mpy_option mpy
+	-infer_mpy_wtree instantiate	// NO BCR INFO FOR THIS VALUE
+	-shift_option 3
+	-timer_0_int_level 1
+	-create com.arc.hardware.HS.Timer_0.1_0 "System.Cluster.CPUisle.ARCv2HS.Timer 0"
+	-timer_1_int_level 0
+	-create com.arc.hardware.HS.Timer_1.1_0 "System.Cluster.CPUisle.ARCv2HS.Timer 1"
+	-stack_checking false
+	-br_bc_entries 512
+	-br_pt_entries 8192
+	-br_rs_entries 4
+	-br_bc_full_tag false
+	-br_bc_tag_size 4
+	-br_tosq_entries 5
+	-br_fb_entries 2
+	-create com.arc.hardware.HS.Debug_Interface.1_0 "System.Cluster.CPUisle.ARCv2HS.Debug Interface"
+	-create com.arc.hardware.HS.JTAG_Interface.1_0 "System.Cluster.CPUisle.ARCv2HS.JTAG Interface"
+	-intvbase_preset 0
+	-create com.arc.hardware.HS.Interrupt_Controller.1_0 "System.Cluster.CPUisle.ARCv2HS.Interrupt Controller"
+	-number_of_levels 4
+	-number_of_interrupts 20
+	-external_interrupts 16
+	-firq_option true
+	-overload_vectors false
+	-create com.arc.hardware.HS.DCCM.1_0 System.Cluster.CPUisle.ARCv2HS.DCCM
+	-dccm_size 1048576
+	-dccm_dmi false	// NO BCR INFO FOR THIS VALUE
+	-create com.arc.hardware.HS.ICCM0.1_0 System.Cluster.CPUisle.ARCv2HS.ICCM0
+	-iccm0_size 1048576
+	-iccm0_dmi false	// NO BCR INFO FOR THIS VALUE
+	-iccm0_base 0
+]]></string>
+  </configuration>
+  <configuration name="assembler_defines" filename="core_config.s">
+    <string><![CDATA[
+.ifndef __core_config_s
+	.define __core_config_s, 1
+	.define	core_config_cir_identity,0x00000053
+	.define	core_config_cir_identity_chipid,0
+	.define	core_config_cir_identity_arcnum,0
+	.define	core_config_cir_identity_arcver,83
+	.define	core_config_cir_identity_family,5
+	.define	core_config_cir_identity_corever,3
+	.define	core_config_cir_aux_dccm,0x80000000
+	.define	core_config_bcr_bcr_ver,0x00000002
+	.define	core_config_bcr_bcr_ver_version,2
+	.define	core_config_bcr_vecbase_ac_build,0x00000010
+	.define	core_config_bcr_rf_build,0x00000102
+	.define	core_config_bcr_rf_build_version,2
+	.define	core_config_bcr_rf_build_p,1
+	.define	core_config_bcr_rf_build_e,0
+	.define	core_config_bcr_rf_build_r,0
+	.define	core_config_bcr_rf_build_b,0
+	.define	core_config_bcr_rf_build_d,0
+	.define	core_config_bcr_dccm_build,0x00040c04
+	.define	core_config_bcr_dccm_build_cycles,2
+	.define	core_config_bcr_dccm_build_interleave,0
+	.define	core_config_bcr_dccm_build_size1,0
+	.define	core_config_bcr_dccm_build_size0,12
+	.define	core_config_bcr_dccm_build_version,4
+	.define	core_config_bcr_timer_build,0x00010304
+	.define	core_config_bcr_timer_build_sp1,0
+	.define	core_config_bcr_timer_build_sp0,0
+	.define	core_config_bcr_timer_build_p1,0
+	.define	core_config_bcr_timer_build_p0,1
+	.define	core_config_bcr_timer_build_st1,0
+	.define	core_config_bcr_timer_build_st0,0
+	.define	core_config_bcr_timer_build_rtc,0
+	.define	core_config_bcr_timer_build_rtsc_ver,1
+	.define	core_config_bcr_timer_build_rtsc,0
+	.define	core_config_bcr_timer_build_t0,1
+	.define	core_config_bcr_timer_build_t1,1
+	.define	core_config_bcr_timer_build_version,4
+	.define	core_config_bcr_iccm_build,0x00000c04
+	.define	core_config_bcr_iccm_build_iccm1_size1,0
+	.define	core_config_bcr_iccm_build_iccm0_size1,0
+	.define	core_config_bcr_iccm_build_iccm1_size0,0
+	.define	core_config_bcr_iccm_build_iccm0_size0,12
+	.define	core_config_bcr_iccm_build_version,4
+	.define	core_config_bcr_multiply_build,0x00020206
+	.define	core_config_bcr_multiply_build_version16x16,2
+	.define	core_config_bcr_multiply_build_dsp,0
+	.define	core_config_bcr_multiply_build_cyc,0
+	.define	core_config_bcr_multiply_build_type,2
+	.define	core_config_bcr_multiply_build_version32x32,6
+	.define	core_config_bcr_swap_build,0x00000003
+	.define	core_config_bcr_swap_build_version,3
+	.define	core_config_bcr_norm_build,0x00000003
+	.define	core_config_bcr_norm_build_version,3
+	.define	core_config_bcr_minmax_build,0x00000002
+	.define	core_config_bcr_minmax_build_version,2
+	.define	core_config_bcr_barrel_build,0x00000303
+	.define	core_config_bcr_barrel_build_version,3
+	.define	core_config_bcr_barrel_build_shift_option,3
+	.define	core_config_bcr_bpu_build,0x01881105
+	.define	core_config_bcr_bpu_build_version,5
+	.define	core_config_bcr_bpu_build_bce,1
+	.define	core_config_bcr_bpu_build_pte,2
+	.define	core_config_bcr_bpu_build_rse,0
+	.define	core_config_bcr_bpu_build_ft,0
+	.define	core_config_bcr_bpu_build_ts,4
+	.define	core_config_bcr_bpu_build_tqe,2
+	.define	core_config_bcr_bpu_build_fbe,1
+	.define	core_config_bcr_isa_config,0x02647402
+	.define	core_config_bcr_isa_config_d,0
+	.define	core_config_bcr_isa_config_c,2
+	.define	core_config_bcr_isa_config_l,0
+	.define	core_config_bcr_isa_config_n,1
+	.define	core_config_bcr_isa_config_a,1
+	.define	core_config_bcr_isa_config_b,0
+	.define	core_config_bcr_isa_config_addr_size,4
+	.define	core_config_bcr_isa_config_lpc_size,7
+	.define	core_config_bcr_isa_config_pc_size,4
+	.define	core_config_bcr_isa_config_version,2
+	.define	core_config_bcr_cluster_build,0x00000101
+	.define	core_config_bcr_cluster_build_per,0
+	.define	core_config_bcr_cluster_build_c,0
+	.define	core_config_bcr_cluster_build_num_entries,0
+	.define	core_config_bcr_cluster_build_num_cores,1
+	.define	core_config_bcr_cluster_build_version,1
+	.define	core_config_bcr_irq_build,0x13101401
+	.define	core_config_bcr_irq_build_raz,0
+	.define	core_config_bcr_irq_build_f,1
+	.define	core_config_bcr_irq_build_p,3
+	.define	core_config_bcr_irq_build_exts,16
+	.define	core_config_bcr_irq_build_irqs,20
+	.define	core_config_bcr_irq_build_version,1
+	.define	core_config_cir_aux_iccm,0x00000000
+	.define	core_config_family,5
+	.define	core_config_core_version,3
+	.define	core_config_family_name,"arcv2hs"
+	.define	core_config_rgf_num_banks,1
+	.define	core_config_rgf_num_wr_ports,2
+	.define	core_config_endian,"little"
+	.define	core_config_endian_little,1
+	.define	core_config_endian_big,0
+	.define	core_config_lpc_size,32
+	.define	core_config_pc_size,32
+	.define	core_config_addr_size,32
+	.define	core_config_atomic,1
+	.define	core_config_unaligned,1
+	.define	core_config_code_density,1
+	.define	core_config_swap,1
+	.define	core_config_bitscan,1
+	.define	core_config_mpy_option,"mpy"
+	.define	core_config_mpy_option_num,6
+	.define	core_config_shift_assist,1
+	.define	core_config_barrel_shifter,1
+	.define	core_config_timer0,1
+	.define	core_config_timer0_level,1
+	.define	core_config_timer0_vector,16
+	.define	core_config_timer1,1
+	.define	core_config_timer1_level,0
+	.define	core_config_timer1_vector,17
+	.define	core_config_bpu_bc_entries,512
+	.define	core_config_bpu_pt_entries,8192
+	.define	core_config_bpu_rs_entries,4
+	.define	core_config_bpu_bc_full_tag,0
+	.define	core_config_bpu_bc_tag_size,4
+	.define	core_config_bpu_tosq_entries,5
+	.define	core_config_bpu_fb_entries,2
+	.define	core_config_interrupts_present,1
+	.define	core_config_interrupts_number,20
+	.define	core_config_interrupts_priorities,4
+	.define	core_config_interrupts_externals,16
+	.define	core_config_interrupts,20
+	.define	core_config_interrupt_priorities,4
+	.define	core_config_ext_interrupts,16
+	.define	core_config_interrupts_firq,1
+	.define	core_config_interrupts_base,0x0
+	.define	core_config_dccm_present,1
+	.define	core_config_dccm_size,0x100000
+	.define	core_config_dccm_base,0x80000000
+	.define	core_config_dccm_mem_cycles,2
+	.define	core_config_iccm_present,1
+	.define	core_config_iccm0_present,1
+	.define	core_config_iccm_size,0x100000
+	.define	core_config_iccm0_size,0x100000
+	.define	core_config_iccm_base,0x00000000
+	.define	core_config_iccm0_base,0x00000000
+.endif ; __core_config_s
+
+]]></string>
+  </configuration>
+  <configuration name="C_defines" filename="core_config.h">
+    <string><![CDATA[
+#ifndef __core_config_h
+	#define __core_config_h  1
+	#define	core_config_cir_identity	0x00000053
+	#define	core_config_cir_identity_chipid	0
+	#define	core_config_cir_identity_arcnum	0
+	#define	core_config_cir_identity_arcver	83
+	#define	core_config_cir_identity_family	5
+	#define	core_config_cir_identity_corever	3
+	#define	core_config_cir_aux_dccm	0x80000000
+	#define	core_config_bcr_bcr_ver	0x00000002
+	#define	core_config_bcr_bcr_ver_version	2
+	#define	core_config_bcr_vecbase_ac_build	0x00000010
+	#define	core_config_bcr_rf_build	0x00000102
+	#define	core_config_bcr_rf_build_version	2
+	#define	core_config_bcr_rf_build_p	1
+	#define	core_config_bcr_rf_build_e	0
+	#define	core_config_bcr_rf_build_r	0
+	#define	core_config_bcr_rf_build_b	0
+	#define	core_config_bcr_rf_build_d	0
+	#define	core_config_bcr_dccm_build	0x00040c04
+	#define	core_config_bcr_dccm_build_cycles	2
+	#define	core_config_bcr_dccm_build_interleave	0
+	#define	core_config_bcr_dccm_build_size1	0
+	#define	core_config_bcr_dccm_build_size0	12
+	#define	core_config_bcr_dccm_build_version	4
+	#define	core_config_bcr_timer_build	0x00010304
+	#define	core_config_bcr_timer_build_sp1	0
+	#define	core_config_bcr_timer_build_sp0	0
+	#define	core_config_bcr_timer_build_p1	0
+	#define	core_config_bcr_timer_build_p0	1
+	#define	core_config_bcr_timer_build_st1	0
+	#define	core_config_bcr_timer_build_st0	0
+	#define	core_config_bcr_timer_build_rtc	0
+	#define	core_config_bcr_timer_build_rtsc_ver	1
+	#define	core_config_bcr_timer_build_rtsc	0
+	#define	core_config_bcr_timer_build_t0	1
+	#define	core_config_bcr_timer_build_t1	1
+	#define	core_config_bcr_timer_build_version	4
+	#define	core_config_bcr_iccm_build	0x00000c04
+	#define	core_config_bcr_iccm_build_iccm1_size1	0
+	#define	core_config_bcr_iccm_build_iccm0_size1	0
+	#define	core_config_bcr_iccm_build_iccm1_size0	0
+	#define	core_config_bcr_iccm_build_iccm0_size0	12
+	#define	core_config_bcr_iccm_build_version	4
+	#define	core_config_bcr_multiply_build	0x00020206
+	#define	core_config_bcr_multiply_build_version16x16	2
+	#define	core_config_bcr_multiply_build_dsp	0
+	#define	core_config_bcr_multiply_build_cyc	0
+	#define	core_config_bcr_multiply_build_type	2
+	#define	core_config_bcr_multiply_build_version32x32	6
+	#define	core_config_bcr_swap_build	0x00000003
+	#define	core_config_bcr_swap_build_version	3
+	#define	core_config_bcr_norm_build	0x00000003
+	#define	core_config_bcr_norm_build_version	3
+	#define	core_config_bcr_minmax_build	0x00000002
+	#define	core_config_bcr_minmax_build_version	2
+	#define	core_config_bcr_barrel_build	0x00000303
+	#define	core_config_bcr_barrel_build_version	3
+	#define	core_config_bcr_barrel_build_shift_option	3
+	#define	core_config_bcr_bpu_build	0x01881105
+	#define	core_config_bcr_bpu_build_version	5
+	#define	core_config_bcr_bpu_build_bce	1
+	#define	core_config_bcr_bpu_build_pte	2
+	#define	core_config_bcr_bpu_build_rse	0
+	#define	core_config_bcr_bpu_build_ft	0
+	#define	core_config_bcr_bpu_build_ts	4
+	#define	core_config_bcr_bpu_build_tqe	2
+	#define	core_config_bcr_bpu_build_fbe	1
+	#define	core_config_bcr_isa_config	0x02647402
+	#define	core_config_bcr_isa_config_d	0
+	#define	core_config_bcr_isa_config_c	2
+	#define	core_config_bcr_isa_config_l	0
+	#define	core_config_bcr_isa_config_n	1
+	#define	core_config_bcr_isa_config_a	1
+	#define	core_config_bcr_isa_config_b	0
+	#define	core_config_bcr_isa_config_addr_size	4
+	#define	core_config_bcr_isa_config_lpc_size	7
+	#define	core_config_bcr_isa_config_pc_size	4
+	#define	core_config_bcr_isa_config_version	2
+	#define	core_config_bcr_cluster_build	0x00000101
+	#define	core_config_bcr_cluster_build_per	0
+	#define	core_config_bcr_cluster_build_c	0
+	#define	core_config_bcr_cluster_build_num_entries	0
+	#define	core_config_bcr_cluster_build_num_cores	1
+	#define	core_config_bcr_cluster_build_version	1
+	#define	core_config_bcr_irq_build	0x13101401
+	#define	core_config_bcr_irq_build_raz	0
+	#define	core_config_bcr_irq_build_f	1
+	#define	core_config_bcr_irq_build_p	3
+	#define	core_config_bcr_irq_build_exts	16
+	#define	core_config_bcr_irq_build_irqs	20
+	#define	core_config_bcr_irq_build_version	1
+	#define	core_config_cir_aux_iccm	0x00000000
+	#define	core_config_family	5
+	#define	core_config_core_version	3
+	#define	core_config_family_name	"arcv2hs"
+	#define	core_config_rgf_num_banks	1
+	#define	core_config_rgf_num_wr_ports	2
+	#define	core_config_endian	"little"
+	#define	core_config_endian_little	1
+	#define	core_config_endian_big	0
+	#define	core_config_lpc_size	32
+	#define	core_config_pc_size	32
+	#define	core_config_addr_size	32
+	#define	core_config_atomic	1
+	#define	core_config_unaligned	1
+	#define	core_config_code_density	1
+	#define	core_config_swap	1
+	#define	core_config_bitscan	1
+	#define	core_config_mpy_option	"mpy"
+	#define	core_config_mpy_option_num	6
+	#define	core_config_shift_assist	1
+	#define	core_config_barrel_shifter	1
+	#define	core_config_timer0	1
+	#define	core_config_timer0_level	1
+	#define	core_config_timer0_vector	16
+	#define	core_config_timer1	1
+	#define	core_config_timer1_level	0
+	#define	core_config_timer1_vector	17
+	#define	core_config_bpu_bc_entries	512
+	#define	core_config_bpu_pt_entries	8192
+	#define	core_config_bpu_rs_entries	4
+	#define	core_config_bpu_bc_full_tag	0
+	#define	core_config_bpu_bc_tag_size	4
+	#define	core_config_bpu_tosq_entries	5
+	#define	core_config_bpu_fb_entries	2
+	#define	core_config_interrupts_present	1
+	#define	core_config_interrupts_number	20
+	#define	core_config_interrupts_priorities	4
+	#define	core_config_interrupts_externals	16
+	#define	core_config_interrupts	20
+	#define	core_config_interrupt_priorities	4
+	#define	core_config_ext_interrupts	16
+	#define	core_config_interrupts_firq	1
+	#define	core_config_interrupts_base	0x0
+	#define	core_config_dccm_present	1
+	#define	core_config_dccm_size	0x100000
+	#define	core_config_dccm_base	0x80000000
+	#define	core_config_dccm_mem_cycles	2
+	#define	core_config_iccm_present	1
+	#define	core_config_iccm0_present	1
+	#define	core_config_iccm_size	0x100000
+	#define	core_config_iccm0_size	0x100000
+	#define	core_config_iccm_base	0x00000000
+	#define	core_config_iccm0_base	0x00000000
+#endif /* __core_config_h */
+
+]]></string>
+  </configuration>
+  <configuration name="core" filename="core.props">
+    <string><![CDATA[
+	core_config.cir.identity=0x00000053
+	core_config.cir.identity.chipid=0
+	core_config.cir.identity.arcnum=0
+	core_config.cir.identity.arcver=83
+	core_config.cir.identity.family=5
+	core_config.cir.identity.corever=3
+	core_config.cir.aux_dccm=0x80000000
+	core_config.bcr.bcr_ver=0x00000002
+	core_config.bcr.bcr_ver.version=2
+	core_config.bcr.vecbase_ac_build=0x00000010
+	core_config.bcr.rf_build=0x00000102
+	core_config.bcr.rf_build.version=2
+	core_config.bcr.rf_build.p=1
+	core_config.bcr.rf_build.e=0
+	core_config.bcr.rf_build.r=0
+	core_config.bcr.rf_build.b=0
+	core_config.bcr.rf_build.d=0
+	core_config.bcr.dccm_build=0x00040c04
+	core_config.bcr.dccm_build.cycles=2
+	core_config.bcr.dccm_build.interleave=0
+	core_config.bcr.dccm_build.size1=0
+	core_config.bcr.dccm_build.size0=12
+	core_config.bcr.dccm_build.version=4
+	core_config.bcr.timer_build=0x00010304
+	core_config.bcr.timer_build.sp1=0
+	core_config.bcr.timer_build.sp0=0
+	core_config.bcr.timer_build.p1=0
+	core_config.bcr.timer_build.p0=1
+	core_config.bcr.timer_build.st1=0
+	core_config.bcr.timer_build.st0=0
+	core_config.bcr.timer_build.rtc=0
+	core_config.bcr.timer_build.rtsc_ver=1
+	core_config.bcr.timer_build.rtsc=0
+	core_config.bcr.timer_build.t0=1
+	core_config.bcr.timer_build.t1=1
+	core_config.bcr.timer_build.version=4
+	core_config.bcr.iccm_build=0x00000c04
+	core_config.bcr.iccm_build.iccm1_size1=0
+	core_config.bcr.iccm_build.iccm0_size1=0
+	core_config.bcr.iccm_build.iccm1_size0=0
+	core_config.bcr.iccm_build.iccm0_size0=12
+	core_config.bcr.iccm_build.version=4
+	core_config.bcr.multiply_build=0x00020206
+	core_config.bcr.multiply_build.version16x16=2
+	core_config.bcr.multiply_build.dsp=0
+	core_config.bcr.multiply_build.cyc=0
+	core_config.bcr.multiply_build.type=2
+	core_config.bcr.multiply_build.version32x32=6
+	core_config.bcr.swap_build=0x00000003
+	core_config.bcr.swap_build.version=3
+	core_config.bcr.norm_build=0x00000003
+	core_config.bcr.norm_build.version=3
+	core_config.bcr.minmax_build=0x00000002
+	core_config.bcr.minmax_build.version=2
+	core_config.bcr.barrel_build=0x00000303
+	core_config.bcr.barrel_build.version=3
+	core_config.bcr.barrel_build.shift_option=3
+	core_config.bcr.bpu_build=0x01881105
+	core_config.bcr.bpu_build.version=5
+	core_config.bcr.bpu_build.bce=1
+	core_config.bcr.bpu_build.pte=2
+	core_config.bcr.bpu_build.rse=0
+	core_config.bcr.bpu_build.ft=0
+	core_config.bcr.bpu_build.ts=4
+	core_config.bcr.bpu_build.tqe=2
+	core_config.bcr.bpu_build.fbe=1
+	core_config.bcr.isa_config=0x02647402
+	core_config.bcr.isa_config.d=0
+	core_config.bcr.isa_config.c=2
+	core_config.bcr.isa_config.l=0
+	core_config.bcr.isa_config.n=1
+	core_config.bcr.isa_config.a=1
+	core_config.bcr.isa_config.b=0
+	core_config.bcr.isa_config.addr_size=4
+	core_config.bcr.isa_config.lpc_size=7
+	core_config.bcr.isa_config.pc_size=4
+	core_config.bcr.isa_config.version=2
+	core_config.bcr.cluster_build=0x00000101
+	core_config.bcr.cluster_build.per=0
+	core_config.bcr.cluster_build.c=0
+	core_config.bcr.cluster_build.num_entries=0
+	core_config.bcr.cluster_build.num_cores=1
+	core_config.bcr.cluster_build.version=1
+	core_config.bcr.irq_build=0x13101401
+	core_config.bcr.irq_build.raz=0
+	core_config.bcr.irq_build.f=1
+	core_config.bcr.irq_build.p=3
+	core_config.bcr.irq_build.exts=16
+	core_config.bcr.irq_build.irqs=20
+	core_config.bcr.irq_build.version=1
+	core_config.cir.aux_iccm=0x00000000
+	core_config.family=5
+	core_config.core_version=3
+	core_config.family_name=arcv2hs
+	core_config.rgf_num_banks=1
+	core_config.rgf_num_wr_ports=2
+	core_config.endian=little
+	core_config.endian_little=1
+	core_config.endian_big=0
+	core_config.lpc_size=32
+	core_config.pc_size=32
+	core_config.addr_size=32
+	core_config.atomic=1
+	core_config.unaligned=1
+	core_config.code_density=1
+	core_config.swap=1
+	core_config.bitscan=1
+	core_config.mpy_option=mpy
+	core_config.mpy_option_num=6
+	core_config.shift_assist=1
+	core_config.barrel_shifter=1
+	core_config.timer0=1
+	core_config.timer0_level=1
+	core_config.timer0.vector=16
+	core_config.timer1=1
+	core_config.timer1_level=0
+	core_config.timer1.vector=17
+	core_config.bpu_bc_entries=512
+	core_config.bpu_pt_entries=8192
+	core_config.bpu_rs_entries=4
+	core_config.bpu_bc_full_tag=0
+	core_config.bpu_bc_tag_size=4
+	core_config.bpu_tosq_entries=5
+	core_config.bpu_fb_entries=2
+	core_config.interrupts.present=1
+	core_config.interrupts.number=20
+	core_config.interrupts.priorities=4
+	core_config.interrupts.externals=16
+	core_config.interrupts=20
+	core_config.interrupt_priorities=4
+	core_config.ext_interrupts=16
+	core_config.interrupts.firq=1
+	core_config.interrupts.base=0x0
+	core_config.dccm.present=1
+	core_config.dccm_size=0x100000
+	core_config.dccm_base=0x80000000
+	core_config.dccm_mem_cycles=2
+	core_config.iccm.present=1
+	core_config.iccm0.present=1
+	core_config.iccm.size=0x100000
+	core_config.iccm0.size=0x100000
+	core_config.iccm.base=0x00000000
+	core_config.iccm0.base=0x00000000
+]]></string>
+  </configuration>
+  <configuration name="gcc_compiler" filename="gcc.arg">
+    <string><![CDATA[
+	-mcpu=hs34
+	-mlittle-endian
+	-matomic
+	-mno-ll64
+	-mno-div-rem
+	-mswap
+	-mnorm
+	-mmpy-option=2
+	-mbarrel-shifter
+]]></string>
+  </configuration>
+  <configuration name="linker_command_file" filename="link_cmd.txt">
+    <string><![CDATA[
+# SYSTEM memory regions indicate where external memory might be located.
+#   The TCF has no specific knowledge of whether SYSTEM regions contain
+#   external memory or not.
+# CCMWRAP memory regions indicate unusable portions of the address space
+#   due to CCM memory wrapping into upper addresses beyond its size
+
+MEMORY {
+    ICCM0   : ORIGIN = 0x00000000, LENGTH = 0x00100000
+#   CCMWRAP0: ORIGIN = 0x00100000, LENGTH = 0x0ff00000
+#   SYSTEM0 : ORIGIN = 0x10000000, LENGTH = 0x70000000
+    DCCM    : ORIGIN = 0x80000000, LENGTH = 0x00100000
+#   CCMWRAP1: ORIGIN = 0x80100000, LENGTH = 0x0ff00000
+#   SYSTEM1 : ORIGIN = 0x90000000, LENGTH = 0x70000000
+    }
+SECTIONS {
+    GROUP: {
+        .vectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:208): {}
+	.text? : { *('.text$crt*') }
+        * (TEXT): {}
+    	* (LIT): {}
+	} > ICCM0
+
+    GROUP: {
+	/* _SDA_BASE_ computed implicitly */
+        .sdata?: {}
+        .sbss?: {}
+        * (DATA): {}
+        * (BSS): {}
+       .stack ALIGN(4) SIZE(DEFINED _STACKSIZE?_STACKSIZE:65536): {}
+       .heap? ALIGN(4) SIZE(DEFINED _HEAPSIZE?_HEAPSIZE:0): {}
+	} > DCCM
+    }
+
+]]></string>
+  </configuration>
+  <configuration name="gnu_linker_command_file" filename="memory.x">
+    <string><![CDATA[
+MEMORY {
+    ICCM0    : ORIGIN = 0x00000000, LENGTH = 0x00100000
+    CCMWRAP0 : ORIGIN = 0x00100000, LENGTH = 0x0ff00000
+    SYSTEM0  : ORIGIN = 0x10000000, LENGTH = 0x70000000
+    DCCM     : ORIGIN = 0x80000000, LENGTH = 0x00100000
+    CCMWRAP1 : ORIGIN = 0x80100000, LENGTH = 0x0ff00000
+    SYSTEM1  : ORIGIN = 0x90000000, LENGTH = 0x70000000
+    }
+REGION_ALIAS("startup", ICCM0)
+REGION_ALIAS("text", ICCM0)
+REGION_ALIAS("data", DCCM)
+REGION_ALIAS("sdata", DCCM)
+PROVIDE (__stack_top = (0x800fffff & -4 ));
+PROVIDE (__end_heap =  (0x800fffff ));
+]]></string>
+  </configuration>
+</config_list>

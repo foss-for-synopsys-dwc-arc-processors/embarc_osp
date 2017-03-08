@@ -1,0 +1,105 @@
+From 83a7614a73dcce3ff4679bc1f13ca28de5fd7348 Mon Sep 17 00:00:00 2001
+From: Huaqi Fang <Huaqi.Fang@synopsys.com>
+Date: Wed, 4 May 2016 12:33:25 +0800
+Subject: [PATCH 2/3] Fix matrixssl converity issues
+
+---
+ crypto/keyformat/x509.c | 6 +++---
+ crypto/pubkey/ecc.c     | 8 +++++++-
+ matrixssl/sslEncode.c   | 1 +
+ 3 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/crypto/keyformat/x509.c b/crypto/keyformat/x509.c
+index 76b30e8..8d5a1e0 100644
+--- a/crypto/keyformat/x509.c
++++ b/crypto/keyformat/x509.c
+@@ -152,7 +152,7 @@ static void x509FreeRevoked(x509revoked_t **revoked);
+ /******************************************************************************/
+ 
+ static int32_t pemCertFileBufToX509(psPool_t *pool, const unsigned char *fileBuf,
+-				uint16_t fileBufLen, psList_t **x509certList);
++				int32_t fileBufLen, psList_t **x509certList);
+ 
+ /******************************************************************************/
+ /*
+@@ -236,7 +236,7 @@ int32 psX509ParseCertFile(psPool_t *pool, char *fileName,
+ /*
+ */
+ static int32_t pemCertFileBufToX509(psPool_t *pool, const unsigned char *fileBuf,
+-				uint16_t fileBufLen, psList_t **x509certList)
++				int32_t fileBufLen, psList_t **x509certList)
+ {
+ 	psList_t		*front, *prev, *current;
+ 	unsigned char	*start, *end, *endTmp;
+@@ -245,7 +245,7 @@ static int32_t pemCertFileBufToX509(psPool_t *pool, const unsigned char *fileBuf
+ 
+ 	*x509certList = NULL;
+ 	prev = NULL;
+-	if (fileBufLen < 0 || fileBuf == NULL) {
++	if (fileBufLen <= 0 || fileBuf == NULL) {
+ 		psTraceCrypto("Bad parameters to pemCertFileBufToX509\n");
+ 		return PS_ARG_FAIL;
+ 	}
+diff --git a/crypto/pubkey/ecc.c b/crypto/pubkey/ecc.c
+index 5371562..a10f02b 100644
+--- a/crypto/pubkey/ecc.c
++++ b/crypto/pubkey/ecc.c
+@@ -1007,7 +1007,7 @@ static uint8_t get_digit_count(const pstm_int *a)
+ 	return a->used;
+ }
+ 
+-static pstm_digit get_digit(const pstm_int *a, uint8_t n)
++static pstm_digit get_digit(const pstm_int *a, int32_t n)
+ {
+ 	return (n >= a->used || n < 0) ? (pstm_digit)0 : a->dp[n];
+ }
+@@ -2138,28 +2138,34 @@ static psEccPoint_t *eccNewPoint(psPool_t *pool, short size)
+ 	p->pool = pool;
+ 	if (size == 0) {
+ 		if (pstm_init(pool, &p->x) != PSTM_OKAY) {
++			psFree(p, p->pool);
+ 			return NULL;
+ 		}
+ 		if (pstm_init(pool, &p->y) != PSTM_OKAY) {
+ 			pstm_clear(&p->x);
++			psFree(p, p->pool);
+ 			return NULL;
+ 		}
+ 		if (pstm_init(pool, &p->z) != PSTM_OKAY) {
+ 			pstm_clear(&p->x);
+ 			pstm_clear(&p->y);
++			psFree(p, p->pool);
+ 			return NULL;
+ 		}
+ 	} else {
+ 		if (pstm_init_size(pool, &p->x, size) != PSTM_OKAY) {
++			psFree(p, p->pool);
+ 			return NULL;
+ 		}
+ 		if (pstm_init_size(pool, &p->y, size) != PSTM_OKAY) {
+ 			pstm_clear(&p->x);
++			psFree(p, p->pool);
+ 			return NULL;
+ 		}
+ 		if (pstm_init_size(pool, &p->z, size) != PSTM_OKAY) {
+ 			pstm_clear(&p->x);
+ 			pstm_clear(&p->y);
++			psFree(p, p->pool);
+ 			return NULL;
+ 		}
+ 	}
+diff --git a/matrixssl/sslEncode.c b/matrixssl/sslEncode.c
+index 133e5d8..6560ddf 100644
+--- a/matrixssl/sslEncode.c
++++ b/matrixssl/sslEncode.c
+@@ -4030,6 +4030,7 @@ static int32 writeServerKeyExchange(ssl_t *ssl, sslBuf_t *out, uint32 pLen,
+ 
+ 		if ((pkaAfter = getPkaAfter(ssl)) == NULL) {
+ 			psTraceInfo("getPkaAfter error\n");
++			psFree(hsMsgHash, ssl->hsPool);
+ 			return PS_PLATFORM_FAIL;
+ 		}
+ 		pkaAfter->inbuf = hsMsgHash;
+-- 
+2.1.4
+

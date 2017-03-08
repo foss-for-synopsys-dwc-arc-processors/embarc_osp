@@ -1,0 +1,53 @@
+# dir declaration
+MID_HTTP_PARSER_DIR = $(MIDDLEWARES_ROOT)/http_parser
+
+MID_HTTP_PARSER_ASMSRCDIR	=
+MID_HTTP_PARSER_CSRCDIR		= $(MID_HTTP_PARSER_DIR)
+
+MID_HTTP_PARSER_INCDIR		= $(MID_HTTP_PARSER_DIR)
+
+# find all the source files in the target directories
+MID_HTTP_PARSER_CSRCS = $(call get_csrcs, $(MID_HTTP_PARSER_CSRCDIR))
+MID_HTTP_PARSER_ASMSRCS = $(call get_asmsrcs, $(MID_HTTP_PARSER_ASMSRCDIR))
+
+# get object files
+MID_HTTP_PARSER_COBJS = $(call get_relobjs, $(MID_HTTP_PARSER_CSRCS))
+MID_HTTP_PARSER_ASMOBJS = $(call get_relobjs, $(MID_HTTP_PARSER_ASMSRCS))
+MID_HTTP_PARSER_OBJS = $(MID_HTTP_PARSER_COBJS) $(MID_HTTP_PARSER_ASMOBJS)
+
+# get dependency files
+MID_HTTP_PARSER_DEPS = $(call get_deps, $(MID_HTTP_PARSER_OBJS))
+
+# extra macros to be defined
+MID_HTTP_PARSER_DEFINES = -DMID_HTTP_PARSER
+
+# genearte library
+MID_LIB_HTTP_PARSER = $(OUT_DIR)/libmidhttp_parser.a
+
+# library generation rule
+$(MID_LIB_HTTP_PARSER): $(MID_HTTP_PARSER_OBJS)
+	$(TRACE_ARCHIVE)
+	$(Q)$(AR) $(AR_OPT) $@ $(MID_HTTP_PARSER_OBJS)
+
+# specific compile rules
+# user can add rules to compile this middleware
+# if not rules specified to this middleware, it will use default compiling rules
+
+# Middleware Definitions
+MID_INCDIR += $(MID_HTTP_PARSER_INCDIR)
+MID_CSRCDIR += $(MID_HTTP_PARSER_CSRCDIR)
+MID_ASMSRCDIR += $(MID_HTTP_PARSER_ASMSRCDIR)
+
+MID_CSRCS += $(MID_HTTP_PARSER_CSRCS)
+MID_CXXSRCS +=
+MID_ASMSRCS += $(MID_HTTP_PARSER_ASMSRCS)
+MID_ALLSRCS += $(MID_HTTP_PARSER_CSRCS) $(MID_HTTP_PARSER_ASMSRCS)
+
+MID_COBJS += $(MID_HTTP_PARSER_COBJS)
+MID_CXXOBJS +=
+MID_ASMOBJS += $(MID_HTTP_PARSER_ASMOBJS)
+MID_ALLOBJS += $(MID_HTTP_PARSER_OBJS)
+
+MID_DEFINES += $(MID_HTTP_PARSER_DEFINES)
+MID_DEPS += $(MID_HTTP_PARSER_DEPS)
+MID_LIBS += $(MID_LIB_HTTP_PARSER)

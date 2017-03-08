@@ -1,0 +1,223 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ *
+ *
+ *
+ */
+/*! \mainpage embARC Introduction
+\tableofcontents
+
+\section sect_intro_overview Overview
+
+<b>embARC</b> is an open software platform to facilitate the development of embedded systems based on ARCv2 processors.
+
+[embARC](https://embarc.org/) provides a solid starting foundation for embedded developers, simplifying development and improving time-to-market through software reuse.
+
+The embARC software includes the following components:
+<ul>
+<li><b>\ref page_arc "ARC Hardware Abstraction Layer (HAL)"</b> provides the necessary hardware abstraction for ARCv2 ISA compatible processors.
+<li><b>\ref page_device "Device Hardware Abstraction Layer (HAL)"</b> provides hardware abstraction for common platform devices and implementation of DesignWare IP drivers, such as UART, IIC, and SPI.
+<li><b>\ref page_board "Board Support Package (BSP) Layer"</b> provides support for different boards based on the ARCv2 processors.
+<li><b>\ref page_os "OS Layer"</b> provides embedded operating-system support, including options for both traditional Real-Time Operating Systems (RTOSs) and lightweight Internet of Things (IoT) OSs.
+<li><b>\ref page_library "Library Layer"</b> provides basic common library support for embedded systems, such as C library, dlmalloc library and \ref sect_lib_secureshield "SecureShield library".
+<li><b>\ref page_middleware "Middleware Layer"</b> includes mainstream embedded software-stack solutions, including FAT file system, network stack, simple shell/Command Line Interface (CLI), IoT protocols, lightweight graphics, IoT cloud connectivity and more.
+
+Many examples, covering IoT, network, and sensor application cases, are also provided to help get started quickly with ARCv2 processors and the embARC software.
+
+\note See the <b>Related Pages</b> section of the embARC documentation for more information on individual embARC components.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 900px">
+        <img src="pic/embARC.jpg" alt="embARC "/>
+        <p>embARC Architecture</p>
+    </div>
+</div>
+\endhtmlonly
+
+\note Dotted lines indicate supported packages not included in the embARC OSP distribution. See the related embARC documentation sections for information on how to obtain these packages for use with embARC.
+\note For secure communications, see \ref EMBARC_MID_IOT_SECURITY_SUPPORT "Middleware - TLS/DTLS Support".
+\note For MQX support, See \ref EMBARC_OS_MQX_SUPPORT "OS - MQX".
+
+
+\section sect_intro_purpose_and_scope Purpose and Scope
+
+embARC is an open software platform, providing useful components with a consistent software layering model and interfaces to ARCv2 processors for portability and reusability. Developers can write software based on embARC to accelerate implementation and reduce their learning curve and the time-to-market of final product implementation.
+
+The goals of embARC are as follows:
+- Provide an easy introduction for new users of ARC processors.
+- Provide useful software stacks as a starting point for building embedded products based on ARC and well-known open-source software packages.
+- Provide broad ranges of examples to demonstrate ARC usage in various embedded IoT applications.
+- Provide simple, frictionless  **out-of-the box** user experience through:
+	- Single archive download containing all embARC packages and examples.
+	- Comprehensive pre-integrated tools support
+	- Clear, simple, and extensive **how-to** instructions.
+
+\section sect_intro_embarc_software_package embARC Software Package
+
+The table below describes the <b>embARC Software Package</b> directory structure and sub-folders and provides a high-level description of the contents of each sub-folder.
+|      embARC folder                  |       Usage and Meanings                |
+| :---------------------------------: | :-------------------------------------: |
+|  arc           | ARC processor-related core services such as startup, interrupt/exception handling, timer, cache, uDMA, and built-in functions     |
+|  board         | Different board support packages for ARC cores based on the device HAL      |
+|  device        | Device HAL definition and common device drivers |
+|  example       | embARC examples for bare metal, FreeRTOS, Contiki     |
+|  ide_projects  | Pre-generated Eclipse projects for all embARC examples with either GNU or MetaWare IDE           |
+|  inc           | Common header files for embARC, such as ARC core-related headers and other common headers |
+|  lib           | Library support for embARC, such as C library, dlmalloc, ya_getopt and \ref sect_lib_secureshield "SecureShield" |
+|  middleware    | Middleware support for embARC, like LwIP, CoAP, MQTT  |
+|  options       | Build system based on makefiles         |
+|  os            | OS support for embARC, such as FreeRTOS and Contiki           |
+
+
+\section sect_intro_tools_support Tools Support
+
+The embARC software is supported by the following toolchain offerings from Synopsys:
+
+- <a href="http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware">The DesignWare&reg; ARC&reg; MetaWare Development Toolkit</a> builds upon a 25-year legacy of industry-leading compiler and debugger products. It is a complete solution that contains all the components needed to support the development, debugging, and tuning of embedded applications for the DesignWare ARC processors.
+- <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases">The GNU Toolchain for DesignWare ARC Processors</a> provides a prebuilt GNU Toolchain for ARC Processors integrated into the Eclipse IDE. The GNU tools are maintained by Synopsys with new releases being published at regular intervals.
+- <a href="https://www.synopsys.com/cgi-bin/arcmwtk_lite/reg1.cgi">The DesignWare&reg; ARC&reg; MetaWare Development Toolkit Lite Edition</a> is a functioning demonstration of the MetaWare Development Toolkit, but has a number of restrictions, including a code-size limit of 32 Kb and no run-time library sources. It is available for free download and use for academic, personal, and noncompetitive evaluation purposes.
+
+\section sect_intro_build_system Build System
+
+The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system.
+All embARC components are compiled into libraries, which are then merged into one final library called libembarc.a. The application objects are then linked against libembarc.a
+to produce the target .elf file.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/build.jpg" alt="embARC Build System"/>
+        <p>embARC Build System</p>
+    </div>
+</div>
+\endhtmlonly
+
+\image latex pic/build.jpg "embARC Build System" width=12cm
+
+
+The *options* directory under the embARC root contains the common makefiles as shown below:
+
+|      Makefile Names                 |       Description                |
+| :---------------------------------: | :-------------------------------------: |
+| debug.mk                            | Target debug options for the MetaWare debugger, which supports Ashling OpellaXD and Digilent USB-JTAG connections |
+| files.mk 			      | Files and directory collections in embARC |
+| options.mk 			      | Entry makefile with common definitions, path definitions, other makefiles, and so on. |
+| rules.mk                 	      | Make targets and rules |
+| scripts.mk 			      | Common makefile functions |
+| toolchain.mk  		      | General definitions for toolchain, including toolchain_gnu.mk for ARC GNU toolchain and toolchain_mw.mk for MetaWare toolchain |
+| toolchain_gnu / toolchain_mw.mk     | Core independent compile and link options |
+
+
+\section sect_intro_coding_style Coding Style
+
+The embARC coding style is inspired by the <a href="https://github.com/torvalds/linux/blob/master/Documentation/CodingStyle"><i>Linux Kernel Coding Style</i></a>. Variable naming such as "xxx_yyy_zzz" represents a paradigm of objective_action_target, for example uart_get_info (UART GET INFORMATION). Abbreviations in embARC are as follows.
+
+|  Abbreviation  |              Word                |
+| :------------: | :------------------------------: |
+|     AUX aux    |   Auxiliary Register             |
+|     BCR bcr    |   Build Configuration Register   |
+|     DEV dev    |   Device                         |
+|     EXC exc    |   Exception                      |
+|     INT int    |   Interrupt                      |
+|    INFO info   |   Information                    |
+
+The source-code files in embARC are documented with C-style code comments and Doxygen-based comments.
+A Doxygen comment example is shown below:
+
+\code{.unparsed}
+/**
+ * \defgroup	EMBARC_APP_TMPL		embARC Template Example
+ * \ingroup	EMBARC_APPS_TOTAL
+ * \ingroup	EMBARC_APPS_BOARD_EMSK
+ * \ingroup	EMBARC_APPS_BAREMETAL
+ * \brief	embARC Example for template
+ *
+ * \details
+ * ### Extra Required Tools
+ *
+ * ### Extra Required Peripherals
+ *
+ * ### Design Concept
+ *
+ * ### Usage Manual
+ *
+ * ### Extra Comments
+ *
+ */
+
+/**
+ * \file
+ * \ingroup	EMBARC_APP_TMPL
+ * \brief	main source of template example
+ */
+
+/**
+ * \addtogroup	EMBARC_APP_TMPL
+ * @{
+ */
+/* embARC HAL */
+#include "embARC.h"
+#include "embARC_debug.h"
+
+/** main entry */
+int main(void)
+{
+
+	EMBARC_PRINTF("Hello embARC from template example\r\n");
+
+	return E_SYS;
+}
+/** @} */
+\endcode
+
+\section sect_intro_how_to_contribute_embARC How to Contribute to embARC
+
+embARC users are welcome to make contributions to embARC, including examples, source code (bug fixes and/or new packages), and documentation.
+
+\subsection sect_intro_how_to_contribute_embARC_documentation How to Contribute to Documentation
+
+embARC html documentation is generated from documents in the doc/documents folder and comments in source files using Doxygen.
+All documents are written in plain text and formatted using Doxygen and HTML syntax. They can easily be edited; the files have the extension .doc. The documents for each component are in their specific sub-folder.
+xxx_declaration.doc is mainly for the modules in Doxygen. xxx_description.doc is used to generate independent pages with general descriptions.
+All the .doc files are declared and called by the Doxygen configuration file, embARC.doxyfile.
+
+For the source code comment format, see similar embARC source code for reference.
+
+\subsection sect_intro_how_to_contribute_embARC_example How to Add New Examples
+See \ref EMBARC_CREATE_NEW_APPLICATION "Adding a New embARC Example"
+
+\subsection sect_intro_how_to_contribute_embARC_device How to Add New Devices
+See \ref sect_device_add_new_devce_to_embARC
+
+\subsection sect_intro_how_to_contribute_embARC_board How to Add New Boards
+See \ref sect_board_add_new_board_to_embARC
+
+\subsection sect_intro_how_to_contribute_embARC_os How to add new OSs
+See \ref sect_os_add_new_os_to_embARC
+
+\subsection sect_intro_how_to_contribute_embARC_middleware How to Add Mew Middleware
+See \ref sect_mid_add_new_middleware_to_embARC
+
+\subsection sect_intro_how_to_contribute_embARC_submitworks How to Commit Your Work
+You can contribute your work by submitting a post with your patches as an attachment to the [embARC Forum - Enhancements](https://forums.embarc.org/categories/advanced-support). First you need to [register an account](https://forums.embarc.org/entry/register?Target=categories) on the [embARC Forum](https://forums.embarc.org/).
+
+\section sect_intro_copyright_notice Copyright Notice
+
+Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1) Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2) Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3) Neither the name of the Synopsys, Inc., nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+NY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+<b>For complete embARC license information, please refer to the embARC FOSS Notice \ref page_license.</b>
+
+*/

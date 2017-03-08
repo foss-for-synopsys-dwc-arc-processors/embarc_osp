@@ -1,0 +1,333 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ *
+ *
+ *
+ */
+/*! \page page_library Library
+
+\tableofcontents
+
+\section sect_lib_clib	C Library Support
+Provide support for file-related APIs using FatFs, printf() support using a UART, and time-related APIs. For details, please refer to the source code library/clib. The C library support implemented in embARC is compatible with both the GNU toolchain for ARC Processors and the MetaWare Development Toolkit C library implementations (each included in their respective toolchain package).  More information on each C library is included below.
+\subsection sect_lib_clib_newlibc  ARC GNU Newlib
+    [Newlib](https://sourceware.org/newlib/) is a C standard library implementation intended for use on embedded systems. It is a conglomeration of several library parts, all under [free software licenses](https://sourceware.org/newlib/COPYING.NEWLIB) that make them easily usable on embedded products.
+
+    It was created by Cygnus Support as part of building the first GNU cross-development toolchains. It is now maintained by Red Hat developers Jeff Johnston and Corinna Vinschen, and is used in most commercial and non-commercial GCC ports for non-Linux embedded systems.
+
+\subsection sect_lib_clib_metawareclib MetaWare C Run-Time Library
+    The MetaWare C Run-Time Library is a collection of functions, macros, and type declarations organized into header files according to ANSI Standard C Library areas, such as mathematics and string handling.
+    The MetaWare C Run-Time Library is an ANSI Standard C library with extensions. The macros, function names and parameters, and types are those dictated by the ANSI C Standard. The library conforms to the ANSI C Standard (ANSI document X3J11/90-014); the single-precision math functions conform to the ISO/ANSI C99 Standard. The library also provides additional functions not described in the ANSI C Standard.
+
+\section sect_lib_secureshield SecureShield
+\subsection sect_lib_secureshield_overview Overview
+SecureShield enables the execution of applications in isolated, Trusted Execution Environments (TEE). Multiple, isolated environments can run on a single core. The SecureShield runtime is a microvisor implementation that provides the required isolation, enforced by processor privilege levels and the memory-protection unit (MPU). Depending on the level of trust for the application, each execution environment can be given or denied access to system resources like memory, memory-mapped I/O, CPU control registers, and APEX extension instructions and registers.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_overview.jpg" alt="SecureShield Overview"/>
+        <p>SecureShield Overview</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_overview.jpg "SecureShield Overview" width=12cm
+
+\subsection sect_lib_secureshield_terminology Terminology
+
+## SecureShield runtime 
+A microvisor implementation for ARC EM Processors with MPU to manage containers, analogous to RTOS kernel managing tasks
+## Container
+A container defines a sandbox for an application. The container provides the trusted execution environment for application code runs in. Containers are designed to be isolated from each other. Each container has its own space attributes, including the stack area (required), context area (optional), resources (peripherals, interrupt, auxiliary registers). A container context is the memory area that is used for the container itself; its type is defined in the container configuration.
+
+The SecureShield runtime supports two types of containers: secure containers and normal containers.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_containers.jpg" alt="Containers in SecureShield"/>
+        <p>Containers in SecureShield</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_containers.jpg "Containers in SecureShield" width=12cm
+
+### Secure Containers
+Secure containers have a secure privilege level, meaning that Secure containers are trusted and can access all the resources in the system. Bugs or malware in a secure container can compromise the system so a container that is configured as secure can not be changed at runtime.
+### Normal Containers
+Normal containers have a normal privilege level, meaning that their access to system resources is limited. Normal containers are only allowed to access the resources allocated to them. If they attempt to access other resources, a violation exception is raised.
+### Background Container
+The background container is a special normal container whose resources are shared to all the other containers. It has no context area, and its stack is the original application stack when SecureShield is not enabled.
+
+## Resources
+The core concept in SecureShield is that a container can only access resources that have been explicitly allocated to it.
+### Memory Mapped Resources
+The memory mapped resources are resources that are mapped into memory address space, e.g. ram, rom, peripherals (UART/I2/SPI). Memory mapped resources are isolated and protected by the MPU.
+### System Resources
+System resources are resources that are not isolated and protected by MPU, e.g., interrupts, exceptions, registers, APEX. System resources are isolated and protected by the processor privilege level. Secure system resources require secure privilege level and can be allocated to normal containers; normal system resources require normal privilege level and are shared to all containers.
+
+System resources APIs are used by normal containers to access secure system resources. Because secure containers have secure privilege level, then can access secure system resources directly. 
+
+### Container Interfaces
+A container can provide services to other containers through an interface. An interface is a C function with parameters and return value registered in an access control table
+
+### Resources of a container
+A container has implicit resources: code sections (.text, .rodata, .bss, .data) and stack; as well as explicit resources defined in an access control table, e.g., memory mapped resources, system resources and container interfaces
+
+#### Access Control Table
+The privileges that a container has to access the system are defined via Access Control (AC).
+
+Each container has a table that defines the allocated resources and privilege level, including memory, interrupts, and peripherals. This table is referred to as the access-control table or access-control list.
+
+Each item in this table or list is called an access-control item.  An access control item has the type access control, and additional attributes that constitute a triplet: {attribute1, attribute2, type|access}.
+\code{.unparsed}
+typedef struct
+{
+    void* param1;       /* address parameter or function pointer */
+    uint32_t param2;    /* size or no. */
+    CONTAINER_AC ac;    /* resource type, access control types */
+} EMBARC_PACKED CONTAINER_AC_ITEM;
+
+\endcode
+
+An access-control table example is shown below:
+
+\code{.unparsed}
+static CONTAINER_AC_TABLE g_container_act[] = {
+    {(void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX), 0x1000, SECURESHIELD_ACDEF_UPERIPH}, // memory mapper peripheral, {start_address, size in bytes, type | access}
+    {(void *)0x10000, 0x1000, SECURESHIELD_ACDEF_URAM}, // memory, {start_address, size in bytes, type | access}
+    {default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ}, // system resources-interrupt, {interrupt handler, interrupt no, type}
+    {(void *)0x21, 0x3, SECURESHIELD_AC_AUX}, // system resources-auxiliary registers, {start_address, size, type}
+    {tst_func4, 4, SECURESHIELD_AC_INTERFACE}, // container interface, {interface handler, number of interface handler arguments, type}
+};
+\endcode
+
+According to this access control table, the container is allocated the peripheral area of PIN_MUX, a 0x1000 bytes ram region starting from 0x10000, a GPIO interrupt (INTNO_GPIO), an auxiliary-register area starting from 0x21 with a size of 03. The container also has an interface (tst_func4) to provide the service with 4 arguments in the interface handler function
+
+The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute can be found in secureshield_vmpu_exports.h.
+
+## Secure Call
+In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call secure functions. The following SecureShield runtime services are provided:
+- container call: call the services provided by other containers
+- interrupt management: see secureshield_int_exports.h
+- auxiliary-register access and benchmark function: see secureshield_sys_ops_exports.h
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_secure_call.jpg" alt="Secure call"/>
+        <p>Secure call</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_secure_call.jpg "Secure call" width=12cm
+
+\code{.unparsed}
+#define SECURESHIELD_SECURE_CALL(id, metadata, ...) \
+    ({ \
+        SECURESHIELD_MACRO_REGS_ARGS(uint32_t, ##__VA_ARGS__) \
+        SECURESHIELD_MACRO_REGS_RETVAL(uint32_t, res) \
+        Asm( \
+            "SECURE_INSTN %[secure_call_id]\n" \
+            metadata \
+            : SECURESHIELD_MACRO_ASM_OUTPUT(res) \
+            : SECURESHIELD_MACRO_ASM_INPUT(__VA_ARGS__), \
+            [secure_call_id] "i" (id) \
+        ); \
+        res; \
+    })
+\endcode
+
+### Container Call
+Although containers are isolated from each other, a container can provide services to other containers through container calls. This function or service must first be registered in an access control table. The background container has no interface.
+
+\code{.unparsed}
+
+int tst_func2(int arg1, int arg2)
+{
+	return arg1+arg2;
+}
+
+static const CONTAINER_AC_ITEM g_container1_act[] = {
+	{tst_func, 2, SECURESHIELD_AC_INTERFACE}
+};
+\endcode
+
+In the above code, container1 has one interface named tst_func2 with two arguments to provide services. If other containers want to call this service, the following container call should be made:
+
+\code{.unparsed}
+ret = container_call(container1, tst_func2, 1, 2);
+\endcode
+
+1 and 2 are arguments passed to tst_fun2, ret is the return value of tst_func.
+
+Container calls can be nested, i.e., in a container interface, another container call can be made.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_container_call.jpg" alt="Container call"/>
+        <p>Container call</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_container_call.jpg "Container call" width=12cm
+
+
+## Memory Map
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_memory_map.jpg" alt="SecureShield application memory map"/>
+        <p>SecureShield application memory map</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_container_call.jpg "SecureShield application memory map" width=12cm
+## Compile and Link Flow
+\subsection sect_lib_secureshield_steps Steps to Create a SecureShield Application
+## Step1: makefiles
+- LIB_SEL += secureshield, select SecureShield library
+- LIB_SECURESHIELD_VERSION
+    - =1 for the EM with legacy MPU
+    - =2 for the EM SilverStone
+- -DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism which will override the ARC HAL API in arc_exception.h, arc_builtin.h and arc_exception.h with the secureshield API
+- APPL_SECURE_CSRC_DIR (optional), the directories of C source files which need to be compiled and linked with SecureShield runtime
+- SECURE_SYMBOL_LIST (optional ), the file of symbols need to be exported to normal application from secure binary
+## Step2: Container Memory Configuration File (secureshield_appl_config.h)
+secureshield_appl_config.h includes the application information to generate the correct memory map
+- SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in NORMAL_ROM 
+- SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in NORMAL_RAM
+- SECURE_REGION_CONTAINERS_SCURE_ROM : the regions need to be generated in SECURE_ROM  (secure containers only)
+- SECURE_REGION_CONTAINERS_SECURE_RAM : the regions need to be generated in SECURE_RAM (secure containers only)
+\code{.unparsed}
+/* tell linker script template the rom region information of containers */
+#define SECURESHIELD_REGION_CONTAINERS_ROM \
+                    GEN_CONTAINER_ROM_SECTION(container1, 2048, *container1.o*)
+
+/* tell linker script template the ram region information of containers */
+#define SECURESHIELD_REGION_CONTAINERS_RAM \
+                    GEN_CONTAINER_RAM_SECTION(container1, 2048, *container1.o*)  
+
+// 2048 is the size of container region, it's required and computed according to the application if LIB_SECURESHIELD_VERSION = 1 
+// If LIB_SECURESHIELD_VERSION = 2, size can be ignored
+// container1.o is the object file whose relative code sections need to put in the container region
+// multiple object files can be put in this macro
+
+\endcode
+
+The above code segment will generate the following sections in final linker script if LIB_SECURESHIELD_VERSION=2
+
+\code{.unparsed}
+.rom.container1 ALIGN(128): {
+    _f_text_container1 = .;
+    *(.text.container1)
+    "*container1.o*"(TYPE text)
+    . = ALIGN(128);
+    _e_text_container1 = .;
+    _f_rodata_container1 = .;
+    *(.rodata.container1)
+    "*container1.o*"(TYPE lit)
+    . = ALIGN(128);
+    _e_rodata_container1 = .; 
+    } > NORMAL_ROM
+
+
+.ram.data.container1 ALIGN(128) : { 
+        _f_data_container1 = .;
+         *(.data.container1)
+          "*container1.o*"(TYPE data)
+           _e_data_container1 = .; 
+    } > NORMAL_RAM AT > NORMAL_ROM
+.ram.bss.container1 : {
+      _f_bss_container1 = .;
+       *(.bss.container1)
+        "*container1.o*"(TYPE BSS)
+         . = ALIGN(128);
+          _e_bss_container1 = .; 
+    } > NORMAL_RAM
+    _f_data_load_container1 = LOADADDR(.ram.data.container1);
+\endcode
+
+## Step3:Container Access Control Configuration
+
+The container access control configuration is recommended to be in a specific file named container_cfg.c
+
+## Step4: Coding
+
+A recommended SecureShield application is :
+- one container, one source file or directory, e.g container1 in container1.c
+- files compiled with SecureShield runtime are in specific directory, e.g. secure 
+
+## Step5: Define the exported secure symbols
+
+secure_symbol.txt contains the symbols (container interface) exported to normal application from secure binary. This file is only required when normal application needs to call the symbol in secure binary. It also needs to be defined in makefile.
+
+For example, the following container (container4) will be compiled and linked with secure binary, it has two interfaces:
+\code{.unparsed}
+static CONTAINER_AC_TABLE g_container4_act[] = {
+    {tst_func_sec1, 0, SECURESHIELD_AC_INTERFACE},
+    {tst_func_sec2, 0, SECURESHIELD_AC_INTERFACE}
+};
+\endcode
+
+Then the secure_symbol.txt should be
+\code{.unparsed}
+tst_func_sec1
+tst_func_sec2
+\endcode
+
+## Step6: Compile and Debug
+Upon compiling and linking, the following files will be generated:
+* linker_xx.ldf: the generated linker script for normal application
+* the generated linker script for secure binary
+* secureshield_secure.bin/elf: secure binary
+* secureshield_secure.syms (MWDT only): the exported secure symbol list
+
+
+\subsection sect_lib_secureshield_application SecureShield Application Examples
+There are several SecureShield application examples include in the embARC OSP distribution.
+- [baremetal/secureshield/test_case](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE) demonstrates and tests the features of SecureShield.
+- [baremetal/secureshield/secret](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET) and its derived example [baremetal/secureshield/secret2](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2) shows examples of a secret being protected by a password.
+- [contiki/secureshield/dtls_client_ipv4](\ref EMBARC_APP_CONTIKI_SECURESHIELD_DTLS_CLIENT_IPV4) demonstrates how to integrate SecureShield in a full fledged application.
+
+\subsubsection subsect_lib_secureshield_application_feature_app SecureShield Feature Example
+The test_case serves as a unit test of secureshield features. All features provided by secureshield are simply tested in this example.
+
+\subsubsection subsect_lib_secureshield_application_secret_app SecureShield Secret Example
+This example is designed to show how to protect data using secureshield.
+
+As shown below, the secret is protected in container, user needs to input the right password to get the secret. Container2 is trusted by container1, and thus does not need the password to get the secret.
+
+The secret example shows how to use container separation, container check and secure container, and how to define application specific linker script.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_secret.jpg" alt="SecureShield secret example"/>
+        <p>SecureShield secret example</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_tinydtls.jpg "SecureShield secret Example" width=12cm
+
+\subsubsection subsect_lib_secureshield_application_tinydtls_client_app SecureShield TinyDTLS Client Example
+In IoT applications, communication between nodes is typically secured by TLS (for TCP) or DTLS (for UDP). For TLS and DTLS, the critical parts are keys, certification files, and TRNG.  If these critical parts are compromised (read or written without permission), secure communication is at risk.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_tinydtls.jpg" alt="SecureShield tinydtls example"/>
+        <p>SecureShield tinydtls example</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_tinydtls.jpg "SecureShield tinydtls Example" width=12cm
+
+
+This example is a SecureShield-protected secure communication demo, where the key and TRNG device (optional) required by the AES128_CCM protocol are located in container 1 and isolated with application in container 0.  The container call is the only entry to access the key data. In the container call, a check is done to only allow the specific container and function to access the key data.
+
+If malware tries to bypass the check in the container call and directly access the key data, an exception is raised.
+
+*/

@@ -1,0 +1,64 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ * \version	0.1
+ * \date	2014-11-21
+ * \author	Huaqi Fang
+ *
+ */
+
+/* ******************************************************************************
+ * 1st level group definition
+ */
+
+/**
+ * \defgroup	DEVICE_HAL	Device HAL
+ * \brief	Device Hardware Abstraction Layer
+ * \details
+ *		This layer provides a unified API for gpio, uart, spi, iic, wireless network
+ *	controller. You can use this API to operate these devices without knowing exactly
+ *	what device it is based on,such as a DesignWare uart or other uart, if both
+ *	the uart device drivers are implemented under this unified API.
+ */
+
+
+/* ******************************************************************************
+ * 2nd level group definition
+ */
+
+/**
+ * \defgroup	DEVICE_HAL_DEF	Device HAL Definition
+ * \ingroup	DEVICE_HAL
+ * \brief	Device HAL Definition
+ * \details
+ *		Provide unified API definition for different devices.
+ */
+
+/**
+ * \defgroup	DEVICE_IMPL	Device HAL Implementation
+ * \ingroup	DEVICE_HAL
+ * \brief	Device HAL Implementation
+ * \details
+ *		Provide different devices implementations based on Device HAL.
+ */
+
+/* ******************************************************************************
+ * 3nd level group definition
+ */
+
+/**
+ * \defgroup	DEVICE_DW	Designware Device Driver
+ * \ingroup	DEVICE_IMPL
+ * \brief	Designware Device HAL Implementation
+ * \details
+ *		Designware device drivers implementations on this device HAL, like
+ *	uart, spi, iic, gpio.
+ */
+
+/**
+ * \defgroup	DEVICE_MICROCHIP	Microchip Device Driver
+ * \ingroup	DEVICE_IMPL
+ * \brief	Microchip Device HAL Implementation
+ * \details
+ *		Microchip device drivers implementations on this device HAL, like wireless controller.
+ */

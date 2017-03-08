@@ -1,0 +1,44 @@
+language: c
+compiler:
+  - clang
+  - gcc
+before_install:
+  - "sudo apt-get -qq update"
+  - "if [ ! $CC = 'clang' ]; then sudo apt-get -qq install qemu-system libc6:i386; fi"
+  ## These are quite generic and by using `env` we can parallelise builds in verty simple way, if takes too long
+  - "if [ ! $CC = 'clang' ]; then
+        TOOLCHAIN_NAME='arm-2013.05';
+        TOOLCHAIN_TARBALL=${TOOLCHAIN_NAME}-23-arm-none-eabi-i686-pc-linux-gnu.tar.bz2;
+        TOOLCHAIN_URL=https://sourcery.mentor.com/public/gnu_toolchain/arm-none-eabi/${TOOLCHAIN_TARBALL};
+        curl $TOOLCHAIN_URL -o /run/shm/$TOOLCHAIN_TARBALL;
+        sudo tar xf /run/shm/$TOOLCHAIN_TARBALL -C /usr/;
+        export PATH=/usr/${TOOLCHAIN_NAME}/bin:$PATH;
+        unset TOOLCHAIN_NAME TOOLCHAIN_TARBALL TOOLCHAIN_URL;
+        arm-none-eabi-gcc --version;
+    fi"
+  - "if [ ! $CC = 'clang' ]; then
+        TOOLCHAIN_NAME='msp430-elf-02102013-1';
+        TOOLCHAIN_TARBALL=${TOOLCHAIN_NAME}.txz;
+        TOOLCHAIN_URL=https://s3.amazonaws.com/com.xively.packages/${TOOLCHAIN_TARBALL};
+        curl $TOOLCHAIN_URL -o /run/shm/$TOOLCHAIN_TARBALL;
+        sudo tar xf /run/shm/$TOOLCHAIN_TARBALL -C /usr/;
+        export PATH=/usr/${TOOLCHAIN_NAME}/bin:$PATH;
+        unset TOOLCHAIN_NAME TOOLCHAIN_TARBALL TOOLCHAIN_URL;
+        msp430-elf-gcc --version;
+    fi"
+  - "if [ ! $CC = 'clang' ]; then
+        TOOLCHAIN_NAME='avr-02102013-1';
+        TOOLCHAIN_TARBALL=${TOOLCHAIN_NAME}.txz;
+        TOOLCHAIN_URL=https://s3.amazonaws.com/com.xively.packages/${TOOLCHAIN_TARBALL};
+        curl $TOOLCHAIN_URL -o /run/shm/$TOOLCHAIN_TARBALL;
+        sudo tar xf /run/shm/$TOOLCHAIN_TARBALL -C /usr/;
+        export PATH=/usr/${TOOLCHAIN_NAME}/bin:$PATH;
+        unset TOOLCHAIN_NAME TOOLCHAIN_TARBALL TOOLCHAIN_URL;
+        msp430-elf-gcc --version;
+    fi"
+script:
+  - "make -C src libxively"
+  - "make -C src tests XI_UNIT_TEST_TARGET=native"
+  - "if [ ! $CC = 'clang' ]; then make -C src tests XI_UNIT_TEST_TARGET=cortex-m3-qemu; fi"
+  - "if [ ! $CC = 'clang' ]; then make ci_msp430; fi"
+  - "if [ ! $CC = 'clang' ]; then make ci_avr; fi"

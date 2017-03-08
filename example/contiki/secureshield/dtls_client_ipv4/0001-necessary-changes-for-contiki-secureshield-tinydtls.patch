@@ -1,0 +1,76 @@
+From 75bdcf3e7f5fc9657d48ac43167f30b6f12b06c0 Mon Sep 17 00:00:00 2001
+From: Wayne Ren <wei.ren@synopsys.com>
+Date: Fri, 3 Jun 2016 17:19:47 +0800
+Subject: [PATCH] necessary changes for
+ contiki/secureshield/tinydtls_client_ipv4 demo
+
+---
+ dtls.c | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+diff --git a/dtls.c b/dtls.c
+index d9971bf..bb494bb 100644
+--- a/dtls.c
++++ b/dtls.c
+@@ -4043,6 +4043,7 @@ dtls_check_retransmit(dtls_context_t *context, clock_time_t *next) {
+ }
+ 
+ #ifdef WITH_CONTIKI
++#ifndef LIB_SECURESHIELD
+ /*---------------------------------------------------------------------------*/
+ /* message retransmission */
+ /*---------------------------------------------------------------------------*/
+@@ -4083,4 +4084,50 @@ PROCESS_THREAD(dtls_retransmit_process, ev, data)
+   
+   PROCESS_END();
+ }
++#else
++/* dtls_retransmit_process is called in background container, an container_call is requried to
++access tinydtls */
++#include "embARC.h"
++void interface_dtls_retransmit(void)
++{
++	clock_time_t now;
++	netq_t *node;
++
++	if (etimer_expired(&the_dtls_context.retransmit_timer)) {
++		node = netq_pop_first(&the_dtls_context.sendqueue);
++
++		now = clock_time();
++		if (node && node->t <= now) {
++			dtls_retransmit(&the_dtls_context, node);
++			netq_node_free(node);
++			node = netq_head(&the_dtls_context.sendqueue);
++		}
++		/* need to set timer to some value even if no nextpdu is available */
++		if (node) {
++			etimer_set(&the_dtls_context.retransmit_timer, 
++			node->t <= now ? 1 : node->t - now);
++		} else {
++			etimer_set(&the_dtls_context.retransmit_timer, 0xFFFF);
++		}
++	}
++}
++
++/*---------------------------------------------------------------------------*/
++/* message retransmission */
++/*---------------------------------------------------------------------------*/
++PROCESS_THREAD(dtls_retransmit_process, ev, data)
++{
++  PROCESS_BEGIN();
++
++  dtls_debug("Started DTLS retransmit process\r\n");
++
++  while(1) {
++    PROCESS_YIELD();
++    if (ev == PROCESS_EVENT_TIMER) {
++    	container_call(container_tinydtls, interface_dtls_retransmit);
++    }
++  }
++  PROCESS_END();
++}
++#endif /* LIB_SECURESHIELD */
+ #endif /* WITH_CONTIKI */
+-- 
+2.5.3.windows.1
+

@@ -1,0 +1,105 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+*.bin
+*.hex
+*.dasm
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+*.pyc
+
+# Map file
+*.map
+
+# vim swap file
+*.swp
+
+# dependency file
+*.o.d
+
+# TAGS
+*.tags*
+*TAGS*
+*tags*
+
+# logs
+*.log
+
+# generated link file
+*.ldf
+*.mkdir_done
+
+# metaware debugger temp files
+**/.sc.project
+
+# ide project temporary files
+**/.metadata
+**/.settings
+
+# embARC generated
+**/embARC_generated
+
+# embARC object folders
+**/obj_*/gnu_*/*
+**/obj_*/mw_*/*
+
+
+# Ignore Doxygen Generated Documents
+doc/autogendoc
+doc/autogendoc-ntshell
+doc/embARC_Document
+middleware/ntshell/src/doc
+
+# Ignore IDE Workspace for develop master
+ide_projects
+
+# Ignore embARC application repo
+embarc_applications
+
+# OS
+os/riot
+
+## Ignore unnecessary sources and keep necessary files
+os/contiki/apps/tinydtls/*
+!os/contiki/apps/tinydtls/*.patch
+!os/contiki/apps/tinydtls/apply_embARC_patch.sh
+
+# Middleware
+## Ignore unnecessary sources and keep necessary files
+middleware/wolfssl/*
+!middleware/wolfssl/*.patch
+!middleware/wolfssl/apply_embARC_patch.sh
+!middleware/wolfssl/wolfssl.mk
+
+middleware/matrixssl/*
+!middleware/matrixssl/*.patch
+!middleware/matrixssl/apply_embARC_patch.sh
+!middleware/matrixssl/matrixssl.mk
+
+middleware/mbedtls/*
+!middleware/mbedtls/*.patch
+!middleware/mbedtls/apply_embARC_patch.sh
+!middleware/mbedtls/mbedtls.mk
+
+# Board
+board/scss_emsk
+embARC.sublime-project
+embARC.sublime-workspace

@@ -1,0 +1,60 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ *
+ *
+ *
+ */
+/*! \page page_middleware Middleware
+
+\tableofcontents
+
+\section sect_mid_middleware_intro Middleware Introduction
+
+embARC leverages several open-source projects to deliver integrated IoT protocol stack choices for embedded devices based on ARC processors. This section describes various middleware packages that have been ported and integrated for use in embARC.
+
+- \subpage page_middleware_general_middleware "General Middleware"
+- \subpage page_middleware_network_stack "Network Stack"
+- \subpage page_middleware_iot "IoT"
+- \subpage page_middleware_secure_communication "Secure Communication"
+
+\section sect_mid_middleware_list Available Middleware in embARC
+
+|                     Middleware Name                    |      MID_SEL      | Baremetal | Contiki | FreeRTOS |
+| ------------------------------------------------------ | ----------------- | --------- | ------- | -------- |
+|  \ref sect_middleware_general_middleware_common        | common            |     √     |    √    |     √    |
+|  \ref sect_middleware_general_middleware_ntshell       | ntshell           |     √     |    √    |     √    |
+|  \ref sect_middleware_general_middleware_fatfs         | fatfs             |     √     |    √    |     √    |
+|  \ref sect_middleware_general_middleware_u8glib        | u8glib            |     √     |    √    |     √    |
+|  \ref sect_middleware_general_middleware_ihex          | ihex              |     √     |    √    |     √    |
+|  \ref sect_middleware_network_stack_lwip               | lwip lwip-contrib |     x     |    x    |     √    |
+|  \ref sect_middleware_network_stack_openthread         | openthread        |     √     |    x    |     √    |
+|  \ref sect_middleware_iot_json                         | parson            |     √     |    √    |     √    |
+|  \ref sect_middleware_iot_http_parser                  | http_parser       |     √     |    √    |     √    |
+|  \ref sect_middleware_iot_coap                         | coap              |     x     |    x    |     √    |
+|  \ref sect_middleware_iot_mqtt                         | mqtt              |     x     |    x    |     √    |
+|  \ref sect_middleware_iot_lwm2m                        | wakaama           |     x     |    x    |     √    |
+|  \ref sect_middleware_iot_xively                       | xively            |     x     |    √    |     √    |
+|  \ref sect_middleware_iot_awsiot                       | aws               |     x     |    x    |     √    |
+|  \ref sect_middleware_secure_communication_wolfssl     | wolfssl           |     x     |    x    |     √    |
+|  \ref sect_middleware_secure_communication_matrixssl   | matrixssl         |     x     |    x    |     √    |
+|  \ref sect_middleware_secure_communication_mbedtls     | mbedtls           |     x     |    x    |     √    |
+
+
+# Notes on Middleware Table
+- All available middleware packages are located in <em><embARC>/middleware</em>. You can access them by their folder name, such as ntshell or fatfs.
+- <b>√</b> means this middleware is supported in this environment, and **x** means not supported.
+- Add the value in the **MID_SEL** column to the **MID_SEL** option in the application makefile.
+- **aws** middleware required *mbedtls* middleware.
+- **coap, mqtt, and lwm2m** are only for FreeRTOS. and require *lwip and lwip-contrib*. There are coap and mqtt implementations in Contiki, and lwm2m implementation is in Contiki upstream.
+- **wolfssl, matrixssl, and mbedtls** sometimes require *fatfs* middleware to provide file access. TinyDTLS in Contiki provides DTLS network security.
+- **lwip** middleware is only for FreeRTOS. Contiki provides uIP for network communication.
+- **openthread** middleware requires **mbedtls** to support encryption.
+
+\section sect_mid_add_new_middleware_to_embARC Adding New Middleware to embARC
+Follow the steps below to add new middleware:
+- Create a sub-folder named <target-middleware> in middleware.
+- Create <target-middleware>.mk in the folder <target-middlware>. Note that the .mk file name must be the same as the folder's so that the build system can find the new makefile.
+- Add necessary definitions in <target-middleware>.mk, such as folders (MID_INCDIR, MID_CSRDIR, MID_ASM_DIR), source files (MID_XXX_CSRCS, MID_XXX_ASMSRCS), and MID_DEFINES.
+- Use the other middleware makefiles for reference.
+*/

@@ -1,0 +1,63 @@
+/******************************************************************************
+ *
+ * Copyright (c) 2017, Synopsys, Inc.
+ * \version	0.1
+ * \date	2014-09-29
+ * \author	Huaqi Fang
+ *
+ */
+
+/* ******************************************************************************
+ * 1st level group definition
+ */
+
+/**
+ * \defgroup	BOARD	BSP Layer
+ * \brief	Board Support Package Layer
+ * \details
+ *		This Board Support Package Layer provides support for different boards,
+ *	including board peripherals drivers, link scripts used by board, common
+ *	board init process, and common board resources or API definitions.
+ *	- board peripherals drivers.	\n
+ *		Because in embARC we adopt object-oriented concept to define the
+ *	device driver, we implemented some designware ip drivers such as uart, spi, etc.
+ *	in device/designware, but the drivers need to realized with hardware, so you
+ *	need to implement different peripherals drivers based on the device
+ *	driver layer definitions, like implementing a uart driver using the designware
+ *	uart ip driver and uart device abstract definitions. Then applications only
+ *	need to call the apis defined in device hardware abstract layer.
+ *		Also to implement peripherals drivers which may be needed by middleware,
+ *	such as for the fatfs middleware, you need to implement disk_read and disk_write, etc.
+ *	- common board init process.	\n
+ *		We need to install all the needed drivers in the startup process, init
+ *	a 1ms timer interrupt to provide ms-precision counter and delayer, and other
+ *	board init issues. This is done in one common function called board_init.
+ *	- common board resources or API definitions.	\n
+ *		We need to make unified definitions for common devices, so that our applications
+ *	can run with different boards without any changes. This is implemented in board.h,
+ *	such as BOARD_CPU_FREQ, BOARD_DEV_FREQ, Timer Interrupt Frequency, Common used uart,
+ *	and spi id. For example we define a uart id named BOARD_CONSOLE_UART_ID, which
+ *	is a uart mostly used to print messages and is used as a console.  There are other common
+ *	APIs, for example board_delay_ms(cnt).
+ *	- link scripts used by board.	\n
+ *		Put board related link scripts to compile and generate proper program files. A link script
+ *	is the description of the board memory resources and scheme.
+ */
+
+
+/* ******************************************************************************
+ * 2nd level group definition
+ */
+
+/**
+ * \defgroup	BOARD_COMMON	Common Definitions
+ * \ingroup	BOARD
+ * \brief	all the common resources definitions for all boards
+ * \details
+ *		To let more applications can run on different boards, here we need to make many
+ *	definitions for common resources, like uart, sdcard, wifi, button, led and so on.
+ *	So that you can just use it without considering board difference.
+ *
+ */
+
+

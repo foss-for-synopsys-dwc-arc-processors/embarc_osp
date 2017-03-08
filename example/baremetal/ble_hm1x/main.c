@@ -1,0 +1,241 @@
+/* ------------------------------------------
+ * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+
+ * 1) Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+
+ * 2) Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation and/or
+ * other materials provided with the distribution.
+
+ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * \version 2017.03
+ * \date 2016-04-20
+ * \author Qiang Gu(Qiang.Gu@synopsys.com)
+--------------------------------------------- */
+
+/**
+ * \defgroup	EMBARC_APP_BAREMETAL_BLE_HM1X	embARC BLE_HM1X Example
+ * \ingroup	EMBARC_APPS_TOTAL
+ * \ingroup	EMBARC_APPS_BAREMETAL
+ * \brief	embARC example for BLE HM10 device via UART
+ *
+ * \details
+ * ### Extra Required Tools
+ *     * BLE APP on SmartPhone:
+ *       - Android: BLE Android ComAssistant
+ *       - iOS: [LightBlue](http://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8)
+ *
+ * ### Extra Required Peripherals
+ *     * UART Based BLE Device HM-10
+ *
+ * ### Design Concept
+ *     This example is designed to test how to operate UART-based BLE device HM10 via UART
+ *     and demonstrate how to use HM-10 BLE API defined in hm1x.h.
+ *
+ * ### Usage Manual
+ *     - How to connect HM-10 to \ref EMBARC_BOARD_CONNECTION "EMSK".
+ *       \code
+ *       HM10-DV33 <----> J1-PIN6
+ *       HM10-GND  <----> J1-PIN5
+ *       HM10-TXD  <----> J1-PIN4
+ *       HM10-RXD  <----> J1-PIN3
+ *       \endcode
+ *
+ *     - How to use this example
+ *
+ *       This example demonstrates how to use the API of HM-10
+ *        located in *board/emsk/drivers/ble*, the APIs contains information about send AT command and receive response,
+ *        and read or write data to BLE device. \n
+ *       The example performs tests on the HM-10 BLE device using different uart baudrate,
+ *        which take approximately 2 minutes, then the device will enter to receive and send mode.
+ *        Users can use a BLE-UART APP on their smartphone which must support BLE,
+ *        for android please use BLE Android ComAssistant,
+ *        for iOS please use [LightBlue](http://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8).
+ *
+ * ![ScreenShot of ble_hm1x-uart message under baremetal](pic/images/example/emsk/emsk_ble_hm1x.jpg)
+ *
+ * ### Extra Comments
+ *
+ */
+
+/**
+ * \file
+ * \ingroup	EMBARC_APP_BAREMETAL_BLE_HM1X
+ * \brief  example of how to use HM-10 BLE device
+ *  This example shows how to use hm1x api declared in hm1x.h in baremetal.
+ */
+
+/**
+ * \addtogroup	EMBARC_APP_BAREMETAL_BLE_HM1X
+ * @{
+ */
+
+#include "embARC.h"
+#include "embARC_debug.h"
+
+#include "board.h"
+#include "dev_uart.h"
+
+uint32_t baudrate_list[] = {4800, 9600, 19200, 38400, 57600, 115200};
+
+
+int main(void)
+{
+	uint8_t rcv_buf[20];
+	uint32_t rcv_cnt;
+	uint32_t baudrate = UART_BAUDRATE_9600;
+	uint32_t i = 0;
+
+	/** change the init baudrate according to your ble module settings */
+	EMBARC_PRINTF("Init HM1X with baudrate %dbps\r\n", baudrate);
+	hm1x_init(baudrate);
+
+	/**
+	 * For Detail use of HM1X, please refer to its documentation,
+	 * but take notice of its wrong description
+	 * English: https://github.com/danasf/hm10-android-arduino/blob/master/HM-10/datasheet.pdf
+	 */
+
+	do {
+		EMBARC_PRINTF("++++Do following test with baudrate %dbps++++\r\n", baudrate);
+		/** Here is a test sequence for HM1X, no need to add into HM1X init process */
+		hm1x_flush();
+
+		if (hm1x_disconnect() == 0) {
+			EMBARC_PRINTF("Disconnect Successfully\r\n");
+		} else {
+			EMBARC_PRINTF("Disconnect Failed\r\n");
+		}
+
+		if (hm1x_restart() == 0) {
+			EMBARC_PRINTF("Restart Successfully\r\n");
+		} else {
+			EMBARC_PRINTF("Restart Failed\r\n");
+		}
+
+		if (hm1x_set_mode(BLE_HM1X_MODE_0) == 0) {
+			EMBARC_PRINTF("SET MODE to %d\r\n", BLE_HM1X_MODE_0);
+		} else {
+			EMBARC_PRINTF("SET MODE Failed\r\n");
+		}
+
+		if (hm1x_set_type(BLE_HM1X_TYPE_0) == 0) {
+			EMBARC_PRINTF("SET TYPE to %d\r\n", BLE_HM1X_TYPE_0);
+		} else {
+			EMBARC_PRINTF("SET TYPE Failed\r\n");
+		}
+
+		if (hm1x_set_role(BLE_HM1X_SLAVE_ROLE) == 0) {
+			EMBARC_PRINTF("SET ROLE to %d\r\n", BLE_HM1X_SLAVE_ROLE);
+		} else {
+			EMBARC_PRINTF("SET ROLE Failed\r\n");
+		}
+
+		if ((rcv_cnt=hm1x_get_param("ROLE", (char *)rcv_buf)) != -1) {
+			EMBARC_PRINTF("GET ROLE:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET ROLE Failed\r\n");
+		}
+
+		if ((rcv_cnt=hm1x_get_param("MODE", (char *)rcv_buf)) != -1) {
+			EMBARC_PRINTF("GET MODE:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET MODE Failed\r\n");
+		}
+
+		if ((rcv_cnt=hm1x_get_param("TYPE", (char *)rcv_buf)) != -1) {
+			EMBARC_PRINTF("GET TYPE:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET TYPE Failed\r\n");
+		}
+
+		/** how to use hm1x_exec_cmd_chkresp */
+		if ((rcv_cnt=hm1x_exec_cmd_chkresp("AT+BATT?", "OK+Get:", (char *)rcv_buf, 2)) != -1) {
+			EMBARC_PRINTF("GET Battery Level:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET Battery Failed\r\n");
+		}
+		if ((rcv_cnt=hm1x_exec_cmd_chkresp("AT+ADDR?", "OK+ADDR:", (char *)rcv_buf, 2)) != -1) {
+			EMBARC_PRINTF("GET HM1X MAC Address:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET HM1X MAC Failed\r\n");
+		}
+		if ((rcv_cnt=hm1x_exec_cmd_chkresp("AT+NAME?", "OK+NAME:", (char *)rcv_buf, 2)) != -1) {
+			EMBARC_PRINTF("GET HM1X NAME:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET HM1X NAME Failed\r\n");
+		}
+
+		/** how to use hm1x_exec_command */
+		if ((rcv_cnt=hm1x_exec_command("AT+VERS?", (char *)rcv_buf, 500)) != -1) {
+			EMBARC_PRINTF("GET HM1X Version:%s\r\n", rcv_buf);
+		} else {
+			EMBARC_PRINTF("GET HM1X Version Failed\r\n");
+		}
+
+		EMBARC_PRINTF("++++Test with baudrate %dbps finished++++\r\n", baudrate);
+		/**
+		 * Here Set Baudrate to another one,
+		 * but you also need to reconfigure the HM1X UART
+		 * Then go through the test again
+		 */
+		if (hm1x_set_baud(baudrate_list[i]) != -1) {
+			if (hm1x_restart() == 0) {
+				baudrate = baudrate_list[i];
+				EMBARC_PRINTF("Re-Init the HM1X BLE Baudrate to %dbps, and restart the test\r\n", baudrate);
+				hm1x_init(baudrate);
+			} else {
+				break;
+			}
+		} else {
+			break;
+		}
+		/** Test sequence end */
+	} while (i++ < sizeof(baudrate_list));
+
+	EMBARC_PRINTF("\r\nTry to reset the baudrate to %dbps\r\n", UART_BAUDRATE_9600);
+	if (hm1x_set_baud(UART_BAUDRATE_9600) != -1) {
+		if (hm1x_restart() == 0) {
+			hm1x_init(UART_BAUDRATE_9600);
+			baudrate = UART_BAUDRATE_9600;
+		}
+	}
+	if (baudrate != UART_BAUDRATE_9600) {
+		EMBARC_PRINTF("!!!CAUTION:!!!Next Time run this test may fail due to initial baudrate changed\r\n");
+	}
+	EMBARC_PRINTF("Do send and receive test under baudrate:%dbps\r\n", baudrate);
+
+	EMBARC_PRINTF("Start HM1X-BLE Send Receive Test, please connect to HM1X-BLE using its app.\r\n");
+	EMBARC_PRINTF("The main loop will receive data from HM1X, and send back what it received.\r\n");
+
+	while (1) {
+		rcv_cnt = hm1x_read(rcv_buf, sizeof(rcv_buf));
+		rcv_buf[rcv_cnt] = '\0';
+		if (rcv_cnt) {
+			EMBARC_PRINTF("%s", rcv_buf);
+			hm1x_write(rcv_buf, rcv_cnt);
+		}
+	}
+
+	return E_SYS;	/* system error */
+}
+
+/** @} */

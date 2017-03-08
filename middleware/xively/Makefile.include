@@ -1,0 +1,99 @@
+SHELL := /bin/sh
+
+CC ?= gcc
+AR ?= ar
+
+XI_BUILD_TYPE ?= debug
+
+ifndef XI_OVERRIDE_CFLAGS
+  XI_WARN_CFLAGS ?= -Wall -Wextra
+  XI_CFLAGS += -std=gnu99 -Iinclude -fstrict-aliasing
+  XI_CFLAGS += $(XI_WARN_CFLAGS) $(XI_EXTRA_CFLAGS)
+  ifeq ($(XI_BUILD_TYPE),release)
+    XI_OPTLEVEL ?= -O2
+    XI_CFLAGS += $(XI_OPTLEVEL)
+    XI_DEBUG_OUTPUT ?= 0
+    XI_DEBUG_ASSERT ?= 0
+  endif
+  ifeq ($(XI_BUILD_TYPE),debug)
+    XI_OPTLEVEL ?= -O0
+    XI_CFLAGS += $(XI_OPTLEVEL)
+    XI_CFLAGS += -g
+    XI_DEBUG_OUTPUT ?= 1
+    XI_DEBUG_ASSERT ?= 1
+    XI_DEBUG_LAYER_API ?= 1
+  endif
+  ifdef XI_DEBUG_OUTPUT
+    XI_CONFIG += XI_DEBUG_OUTPUT=$(XI_DEBUG_OUTPUT)
+  endif
+  ifdef XI_DEBUG_ASSERT
+    XI_CONFIG += XI_DEBUG_ASSERT=$(XI_DEBUG_ASSERT)
+  endif
+  ifdef XI_DEBUG_PRINTF
+    XI_CONFIG += XI_DEBUG_PRINTF=$(XI_DEBUG_PRINTF)
+  endif
+  ifdef XI_DEBUG_LAYER_API
+    XI_CONFIG += XI_DEBUG_LAYER_API
+  endif
+  XI_CFLAGS += $(foreach constant,$(XI_OVERRIDE_CONSTANTS),-D$(constant))
+  ifdef XI_OPTIMISE
+    XI_CONFIG += $(foreach constant,$(XI_OPTIMISE),XI_OPT_$(constant))
+  endif
+  XI_USER_AGENT ?= '"libxively-$(XI_IO_LAYER)/0.1.x-$(shell git rev-parse --short HEAD)"'
+  XI_CFLAGS += -DXI_USER_AGENT=$(XI_USER_AGENT)
+else
+  XI_CFLAGS := $(XI_OVERRIDE_CFLAGS)
+  $(warning "Overriden XI_CFLAGS with $(XI_OVERRIDE_CFLAGS)")
+endif # XI_OVERRIDE_CFLAGS
+
+ifndef XI_OVERRIDE_ARFLAGS
+  XI_ARFLAGS := -rs
+else
+  XI_ARFLAGS := $(XI_OVERRIDE_ARFLAGS)
+  $(warning "Overriden XI_ARFLAGS with $(XI_OVERRIDE_ARFLAGS)")
+endif # XI_OVERRIDE_ARFLAGS
+
+ifeq ($(XI_IO_LAYER),posix)
+  XI_CONFIG += XI_IO_LAYER=0
+endif
+
+ifeq ($(XI_IO_LAYER),dummy)
+  XI_CONFIG += XI_IO_LAYER=1
+endif
+
+ifeq ($(XI_IO_LAYER),mbed)
+  XI_CONFIG += XI_IO_LAYER=2
+endif
+
+ifeq ($(XI_IO_LAYER),posix_asynch)
+	XI_CFLAGS += -DXI_IO_LAYER=3
+	XI_NOB_ENABLED := true
+endif
+
+ifeq ($(XI_NOB_ENABLED),true)
+  XI_CONFIG += XI_NOB_ENABLED
+endif
+
+ifndef XI_USER_CONFIG
+  XI_CFLAGS += $(foreach constant,$(XI_CONFIG),-D$(constant))
+else
+  $(warning "Using XI_USER_CONFIG instead of: '$(XI_CONFIG)'")
+  XI_CFLAGS += -DXI_USER_CONFIG=1
+  ifdef XI_USER_CONFIG_PATH
+    $(info "Will include '$(XI_USER_CONFIG_PATH)/xi_user_config.h'")
+    XI_CFLAGS += -I$(XI_USER_CONFIG_PATH)
+  endif
+endif
+
+XI_OUTPUT ?= $(LIBXIVELY)/
+XI_OBJDIR := $(XI_OUTPUT)/obj
+XI_BINDIR := $(XI_OUTPUT)/bin
+
+XI ?= $(XI_OBJDIR)/libxively.a
+
+XI_OBJECTS = $(filter-out $(XI_SOURCES), $(XI_SOURCES:.c=.o) $(XI_SOURCES:.cpp=.o))
+XI_DEPENDS = $(filter-out $(XI_SOURCES), $(XI_SOURCES:.c=.d) $(XI_SOURCES:.cpp=.d))
+
+
+XI_OBJS = $(addprefix $(XI_OBJDIR)/,$(XI_OBJECTS))
+XI_DEPS = $(addprefix $(XI_OBJDIR)/,$(XI_DEPENDS))
