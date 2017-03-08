@@ -1,0 +1,27 @@
+var group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t =
+[
+    [ "arc_exception.c", "arc__exception_8c.html", null ],
+    [ "arc_exception.h", "arc__exception_8h.html", null ],
+    [ "INT_PRI_MAX", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gab0ae4780994cd452eef15ad91410d2fc", null ],
+    [ "INT_PRI_MIN", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844", null ],
+    [ "INT_HANDLER", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga9ad1c2fee7a6abbc4e0b9f739e72c8c9", null ],
+    [ "arc_int_disable", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga7ea1ab5796daaeb7d65cc4de131c9645", null ],
+    [ "arc_int_enable", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga98018d89487c4a101cc3d8b9a9dd0d09", null ],
+    [ "arc_int_enabled", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gab1fe93dc449f5f596d7c75cdcf286662", null ],
+    [ "arc_int_ipm_get", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gafc367ad224f3067044adddb9ab681756", null ],
+    [ "arc_int_ipm_set", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gac20e565773ce277ba5d9595d4e49c509", null ],
+    [ "arc_int_level_config", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gac1b965dcd67b3051e8a6d43faa0811f0", null ],
+    [ "arc_int_pri_get", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaa34e4f6a527ff4e9b1aa7a73297531ca", null ],
+    [ "arc_int_pri_set", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga02739d239aebbb7d771132ad4af193ba", null ],
+    [ "arc_int_probe", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga13e2800d9c3013a911a0ff7bac05efca", null ],
+    [ "arc_int_secure_set", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga5a900b7ce755c27e8e94fc5cefee4678", null ],
+    [ "arc_int_sw_trigger", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga17aa45afff4b827df337f4fcdc3d3423", null ],
+    [ "arc_lock", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga0ad1316b54cc369a21190b8f2a79a008", null ],
+    [ "arc_lock_save", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga740985b8ca473a2a4060b87ecdeafac6", null ],
+    [ "arc_unlock", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga73ce913cce085be251cc92a2822db5e6", null ],
+    [ "arc_unlock_restore", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga43d5a1597a3599dc8547a3f633369973", null ],
+    [ "exc_int_init", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga0d83599ed3aa340e40e593d5556e811f", null ],
+    [ "int_handler_default", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gae7e4ca8e25d29bcd69348e9624a684e8", null ],
+    [ "int_handler_get", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga22270fbfb25032dfab2ea10646130df7", null ],
+    [ "int_handler_install", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga92d3c2a8a703078234357e7bce5a5c48", null ]
+];

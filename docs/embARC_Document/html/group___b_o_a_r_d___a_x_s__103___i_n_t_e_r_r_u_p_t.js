@@ -1,0 +1,46 @@
+var group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t =
+[
+    [ "axs_103_interrupt.c", "axs__103__interrupt_8c.html", null ],
+    [ "axs_103_interrupt.h", "axs__103__interrupt_8h.html", null ],
+    [ "dw_ictl_reg", "structdw__ictl__reg.html", [
+      [ "ENABLE_H", "structdw__ictl__reg.html#a961f6450053711629b44ce80caf3f66f", null ],
+      [ "ENABLE_L", "structdw__ictl__reg.html#a7ca291dbe24b25430f17dce12a76c02c", null ],
+      [ "FINALSTATUS_H", "structdw__ictl__reg.html#a64aa83379513a79cfb5732797840583f", null ],
+      [ "FINALSTATUS_L", "structdw__ictl__reg.html#a5b781dc86fa56e22c7a9348a332b34c9", null ],
+      [ "FORCE_H", "structdw__ictl__reg.html#ad9697d51092a2891a98aa7e181581e24", null ],
+      [ "FORCE_L", "structdw__ictl__reg.html#af73a041b4eefbf8066b2180a5c496c72", null ],
+      [ "MASK_H", "structdw__ictl__reg.html#a70e38715e25c67ce366fd160d45f75eb", null ],
+      [ "MASK_L", "structdw__ictl__reg.html#a4738416a399115cfafd8ecc34aeb2ab6", null ],
+      [ "MASKSTATUS_H", "structdw__ictl__reg.html#ae2b4454d3cd90fb003325151c98af55c", null ],
+      [ "MASKSTATUS_L", "structdw__ictl__reg.html#afef88cd7c6ff1dabab8ff8186132ef8d", null ],
+      [ "RAWSTATUS_H", "structdw__ictl__reg.html#abbd63a786b04bb417755a85409b527e9", null ],
+      [ "RAWSTATUS_L", "structdw__ictl__reg.html#ad5da3311af6b0e9789d9101e5238b5a5", null ],
+      [ "STATUS_H", "structdw__ictl__reg.html#ade08ebd4134944956f52c759eb4cd108", null ],
+      [ "STATUS_L", "structdw__ictl__reg.html#ac030a30370f62c514b09bd278279a5cf", null ]
+    ] ],
+    [ "ictl_gpio_reg", "structictl__gpio__reg.html", [
+      [ "DEBOUNCE", "structictl__gpio__reg.html#af037d67391e0c39bcd3a4af8081d7ba7", null ],
+      [ "INT_POLARITY", "structictl__gpio__reg.html#a8171d50b47b2f51a4fe8cb0584d987b2", null ],
+      [ "INTEN", "structictl__gpio__reg.html#a0b97ee12d5dfe511b553a43ad5d9b424", null ],
+      [ "INTMASK", "structictl__gpio__reg.html#a3215cd02633159dcb75351decbc7d9fb", null ],
+      [ "INTSTATUS", "structictl__gpio__reg.html#a3d46f23c98a3964a736c48785021c511", null ],
+      [ "INTTYPE_LEVEL", "structictl__gpio__reg.html#a431b9da6f2002d93bfaec89d0604e931", null ],
+      [ "PORTA_EOI", "structictl__gpio__reg.html#ae97cbecc300954cff0a2827ea3e8022d", null ],
+      [ "RAW_INTSTATUS", "structictl__gpio__reg.html#a82d1212d31198d3f3ebde9349a012ea0", null ],
+      [ "reserved", "structictl__gpio__reg.html#a94cc70c106af3928f3dbc81ec1d2ab5b", null ]
+    ] ],
+    [ "cpu_lock", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga733e45f48f9fe46022e47acd9677d980", null ],
+    [ "cpu_lock_save", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga8801f275b2a194a99f6d673a0e72cd32", null ],
+    [ "cpu_unlock", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gaa93883b650c91f0e9b31a4cd6e935dc8", null ],
+    [ "cpu_unlock_restore", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gacb9f94a852339140f2d1d4ab8411c9c3", null ],
+    [ "int_disable", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gaa06cd81d78d066c1cdc46dde7dabeb57", null ],
+    [ "int_enable", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gab709d97aa7dcc618975fc7e8d5860c7f", null ],
+    [ "int_enabled", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga7f54b17cdd6f65442850e1bdcf10c272", null ],
+    [ "int_ipm_get", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga653e2bfd8567c76dc56578aad0585517", null ],
+    [ "int_ipm_set", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gab54915b2976f68cc96681374cbd0f023", null ],
+    [ "int_level_config", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gafb4ee7c403bef57f56452190d13e93ec", null ],
+    [ "int_pri_get", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga155d43c83556ee963e5291c8a25c1dc5", null ],
+    [ "int_pri_set", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gab670f0f6729ebec51cc2de8f98c74a40", null ],
+    [ "int_probe", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga9126c0df90c318b678022ab7b4d470c2", null ],
+    [ "int_sw_trigger", "group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#ga136b8b6cdc3fd044879e2e3779041c3b", null ]
+];
