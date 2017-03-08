@@ -176,6 +176,9 @@ Container calls can be nested, i.e., in a container interface, another container
 
 
 ## Memory Map
+
+The memory map of a SecureShield application is shown as follow. There are two worlds, secure world and normal world. The normal world, consisting of normal containers, is in normal memory (normal rom and ram). The secure world, consisting of secure containers, is in secure memory (secure rom and ram). In each world, containers are isolated with each other through MPU, an address alignment is also required. Besides secure containers, SecureShield runtime, can be viewed as a special secure container, is in secure memory with a fixed position. SecureShiled runtime will be compiled and linked independently with the application, so it's a black box to application. 
+
 \htmlonly
 <div class="imagebox">
     <div style="width: 600px">
@@ -185,9 +188,44 @@ Container calls can be nested, i.e., in a container interface, another container
 </div>
 \endhtmlonly
 \image latex pic/secureshield_container_call.jpg "SecureShield application memory map" width=12cm
+
 ## Compile and Link Flow
+
+Different with common one shot compile and link, there are two compiles and links in SecureShiled application, one for SecureShield runtime, one for application.
+
+### Phase1: SecureShield runtime compile and link
+
+The compile and link flow is shown as follow
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 800px">
+        <img src="pic/secureshield_1st_compile.jpg" alt="SecureShiled runtime compile and link"/>
+        <p>SecureShiled runtime compile and link</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_1st_compile.jpg "ScureShiled runtime compile and link" width=12cm
+
+### Phase2: Application compile and link
+
+The compile and link flow is shown as follow
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 800px">
+        <img src="pic/secureshield_2nd_compile.jpg" alt="Application compile and link"/>
+        <p>Application compile and link</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_2nd_compile.jpg "Application compile and link" width=12cm
+
+
 \subsection sect_lib_secureshield_steps Steps to Create a SecureShield Application
+
 ## Step1: makefiles
+
 - LIB_SEL += secureshield, select SecureShield library
 - LIB_SECURESHIELD_VERSION
     - =1 for the EM with legacy MPU
@@ -195,7 +233,9 @@ Container calls can be nested, i.e., in a container interface, another container
 - -DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism which will override the ARC HAL API in arc_exception.h, arc_builtin.h and arc_exception.h with the secureshield API
 - APPL_SECURE_CSRC_DIR (optional), the directories of C source files which need to be compiled and linked with SecureShield runtime
 - SECURE_SYMBOL_LIST (optional ), the file of symbols need to be exported to normal application from secure binary
+
 ## Step2: Container Memory Configuration File (secureshield_appl_config.h)
+
 secureshield_appl_config.h includes the application information to generate the correct memory map
 - SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in NORMAL_ROM 
 - SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in NORMAL_RAM
