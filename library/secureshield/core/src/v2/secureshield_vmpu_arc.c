@@ -131,8 +131,6 @@ static uint32_t g_secure_sid_mask;
 #endif
 
 
-
-
 /**
  * \brief find the MPU_REGION in the specified container
  * \param[in] fault_addr fault address
@@ -604,9 +602,6 @@ void vmpu_ac_container(uint8_t container_id, const CONTAINER_CONFIG *container_c
 		g_container_context[container_id].cur_sp =  container_cfg->stack_area + container_cfg->stack_size - 1;
 	}
 }
-
-
-
 
 
 /**

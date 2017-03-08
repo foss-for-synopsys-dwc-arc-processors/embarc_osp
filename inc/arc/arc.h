@@ -320,13 +320,27 @@
 #define AUX_ECR_V_ITLB_MISS		(0x04)	/*!< vector number of instruction TLB missing exception */
 #define AUX_ECR_V_DTLB_MISS		(0x05)	/*!< vector number of data TLB missing exception */
 #define AUX_ECR_V_PROTV			(0x06)	/*!< vector number of protection violation */
+#define AUX_ECR_V_PRIV			(0x07)	/*!< vector number of privilege violation */
+#define AUX_ECR_V_SWI			(0x08)	/*!< vector number of software interrupt */
 #define AUX_ECR_V_TRAP			(0x09)	/*!< vector number of trap */
+#define AUX_ECR_V_EXT			(0x0a)	/*!< vector number of extension */
+#define AUX_ECR_V_DIV_ZERO		(0x0b)	/*!< vector number of divide by zero*/
+#define AUX_ECR_V_DC_ERR		(0x0c)	/*!< vector number of data cache consistency error */
 #define AUX_ECR_V_MISALIG_DATA 		(0x0d)	/*!< vector number of misaligned data access */
 
+
 #define AUX_ECR_C_PROTV_INST_FETCH	(0x00)	/*!< cause code of instruction fetch (protection violation) */
-#define AUX_ECR_C_PROTV_LOAD		(0x01)	/*!< cause code related memory read (protection violation) */
-#define AUX_ECR_C_PROTV_STORE		(0x02)	/*!< cause code related memory write (protection violation) */
-#define AUX_ECR_C_PROTV_XCHG		(0x03)	/*!< cause code related read-modify-write (protection violation) */
+#define AUX_ECR_C_PROTV_LOAD		(0x01)	/*!< cause code of memory read related (protection violation) */
+#define AUX_ECR_C_PROTV_STORE		(0x02)	/*!< cause code of memory write related (protection violation) */
+#define AUX_ECR_C_PROTV_XCHG		(0x03)	/*!< cause code of read-modify-write related (protection violation) */
+#define AUX_ECR_C_PROTV_NS_VECT_IN_S	(0x10)	/*!< cause code of NS vector table in S memory (protection violation) */
+#define AUX_ECR_C_PROTV_NS_HANDLER_IN_S	(0x11)	/*!< cause code of NS handler in S memory (protection violation) */
+#define AUX_ECR_C_PROTV_NSC_RANGE	(0x12)	/*!< cause code of NSC table range violation (protection violation) */
+
+#define AUX_ECR_C_PRIV_PRIV		(0x00)  /*!< cause code of privilege violation (privilege violation) */
+#define AUX_ECR_C_PRIV_DIS_EXT		(0x01)	/*!< cause code of disabled extension (privilege violation) */
+#define AUX_ECR_C_PRIV_ACT_HIT		(0x02)	/*!< cause code of action point hit (privilege violation) */
+#define AUX_ECR_C_PRIV_ACT_SECURE	(0x10)	/*!< cause code of secure related operation (privilege violation) */
 
 #define AUX_ECR_C_MCHK_DUP_TLB		(0x01)	/*!< \todo definition is to be added. */
 

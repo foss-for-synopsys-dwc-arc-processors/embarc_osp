@@ -35,6 +35,7 @@
 #include "arc_asm_common.h"
 #include "secureshield_secure_call_exports.h"
 
+#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE 
 #define MPU_REGION_SECURESHIELD_RUNTIME_RAM	1
 #define SP_NOT_IN_RUMTIME		0
 #define SP_IN_RUNTIME 			1
@@ -151,6 +152,7 @@ sjli_container_call_in:
 
 	lr	sp, [AUX_KERNEL_SP]	// from normal world, load old sp from AUX_KERNEL_SP
 _from_secure_world:
+	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 	EXCEPTION_PROLOGUE		// save 1st part of container context into the container's stack
 	mov	r0, sp
 
@@ -199,6 +201,7 @@ _switch_to_secure_world:
 	mov	r1, sp
 	mov 	sp, blink
 _ret_container_call_out:
+	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 	lr	r2, [AUX_STATUS32]
 	jl	container_call_out
 
@@ -243,6 +246,7 @@ _ret_directly_secure_world:
 secureshield_exc_entry_int:
 	clri	/* disable interrupt */
 
+	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 	/* check whether secure interrupt happens in runtime (between seti and clri) */
 	mov 	r1, SP_NOT_IN_RUMTIME
 	sr 	sp, [AUX_MPU_PROBE]
@@ -367,6 +371,7 @@ _int_return_to_secure_world:
 	.global secureshield_exc_entry_cpu
 	.align 4
 secureshield_exc_entry_cpu:
+	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 	// if exception happens in normal world, SEC_K_SP is used as the stack for
 	// EXCEPTION_PROLOGUE and EXCEPTION_EPILOGUE.
 	// if exception happens in secure world, in kernel mode, the original sp
@@ -389,5 +394,6 @@ secureshield_exc_entry_cpu:
 	jl	[r2]		/* jump to exception handler where interrupts are not allowed! */
 
 	EXCEPTION_EPILOGUE
+	sr 	0, [AUX_MPU_EN]
 	rtie
 /** @endcond */

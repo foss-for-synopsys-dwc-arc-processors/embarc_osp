@@ -34,7 +34,9 @@
 #include "arc.h"
 #include "arc_asm_common.h"
 
-.file "secureshield_startup.s"
+#define MPU_DEFAULT_MODE 	0x40000000
+
+	.file "secureshield_startup.s"
 
 .weak	_f_sdata		/* start of small data, defined in link script */
 
@@ -135,7 +137,7 @@ _next_stage:
 	sr	r0, [AUX_ERBTA]
 	CLEAR_SCRATCH_REGS
 
-	sr 	0x40000000, [AUX_MPU_EN]
+	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 	rtie
 
 /*************************************************************************************/

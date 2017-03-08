@@ -81,6 +81,8 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 	uint8_t args;
 	uint32_t *src, *dst;
 	uint8_t secure = 0;
+
+	SECURESHIELD_ASSERT(src_frame != NULL);
 #if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
 	dst_fn = src_frame->r2;
 	dst_id = (uint32_t *)src_frame->r1 - __secureshield_config.cfgtbl_ptr_start;
@@ -111,7 +113,7 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 		SECURESHIELD_HALT("container call is not allowed in the same container %d", src_id);
 		return 0;
 	}
-	_arc_aux_write(AUX_MPU_EN, MPU_DEFAULT_MODE);
+	
 	args = src_frame->r0; /* r0 is argument number */
 
 	/* get the right interface from interface table */
@@ -189,7 +191,6 @@ uint32_t container_call_out(uint32_t ret_value, uint32_t *sp, uint32_t status32)
 	PROCESSOR_FRAME *src;
 	uint8_t secure = 0;
 
-	_arc_aux_write(AUX_MPU_EN, MPU_DEFAULT_MODE);
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 

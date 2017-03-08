@@ -53,7 +53,7 @@ int32_t secure_timer_present(const uint32_t no)
 			bcr = 0;
 			/* illegal argument so return false */
 			break;
-		}
+	}
 
 	return (int)bcr;
 }

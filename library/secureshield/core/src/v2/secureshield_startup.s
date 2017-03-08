@@ -34,7 +34,9 @@
 #include "arc.h"
 #include "arc_asm_common.h"
 
-.file "secureshield_startup.s"
+#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE 
+
+	.file "secureshield_startup.s"
 
 .weak	_f_sdata		/* start of small data, defined in link script */
 
@@ -44,6 +46,7 @@
 _secureshield_start:
 _init_phase1:
 _copy_text:
+	sr 	MPU_DEFAULT_MODE,  [AUX_MPU_EN]
 	mov	r0, _f_text
 	mov	r1, _load_addr_text
 	cmp	r0, r1

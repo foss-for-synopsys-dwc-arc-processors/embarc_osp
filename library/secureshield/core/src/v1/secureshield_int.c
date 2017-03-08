@@ -103,17 +103,14 @@ static void secureshield_exc_handler_privilege_v(void *frame)
 
 	SECURESHIELD_DBG("privilege violation exception at 0x%x\r\n cause:", excpt_ret_reg);
 	switch (cause_code) {
-		case 0x0:
+		case AUX_ECR_C_PRIV_PRIV:
 			SECURESHIELD_HALT("privilege violation, parameter:0x%x", parameter);
 			break;
-		case 0x1:
+		case AUX_ECR_C_PRIV_DIS_EXT:
 			SECURESHIELD_HALT("disabled extension, parameter:0x%x", parameter);
 			break;
-		case 0x02:
+		case AUX_ECR_C_PRIV_ACT_HIT:
 			SECURESHIELD_HALT("action point hit, parameter:0x%x", parameter);
-			break;
-		case 0x03:
-			SECURESHIELD_HALT("kernel only extension violation, parameter 0x%x", parameter);
 			break;
 		default:
 			SECURESHIELD_HALT("unknown cause:0x%x", cause_code);
@@ -143,26 +140,26 @@ static void secureshield_exc_handler_protect_v(void *frame)
 
 	SECURESHIELD_DBG("protection violation exception at 0x%x\r\n cause:", excpt_ret_reg);
 	switch (cause_code) {
-		case 0x0:
+		case  AUX_ECR_C_PROTV_INST_FETCH:
 			SECURESHIELD_DBG("instruction fetch violation, parameter:0x%x\r\n"
 				, parameter);
 			ret = vmpu_fault_recovery_mpu(excpt_ret_reg, 0);
 			break;
-		case 0x1:
+		case AUX_ECR_C_PROTV_LOAD:
 			SECURESHIELD_DBG("memory read violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
 				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 1);
 			}
 			break;
-		case 0x02:
+		case AUX_ECR_C_PROTV_STORE:
 			SECURESHIELD_DBG("memory write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
 				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 2);
 			}
 			break;
-		case 0x03:
+		case AUX_ECR_C_PROTV_XCHG:
 			SECURESHIELD_DBG("memory read-modify-write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {

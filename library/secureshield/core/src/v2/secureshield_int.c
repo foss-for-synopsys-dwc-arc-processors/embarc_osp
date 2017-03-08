@@ -133,21 +133,21 @@ static void secureshield_exc_handler_privilege_v(void *frame)
 	excpt_cause_reg = _arc_aux_read(AUX_ECR);
 	excpt_ret_reg = _arc_aux_read(AUX_ERRET);
 
-	parameter = excpt_ret_reg & 0xff;
+	parameter = excpt_cause_reg & 0xff;
 	cause_code = (excpt_cause_reg >> 8) & 0xff;
 
 	SECURESHIELD_DBG("privilege violation exception at 0x%x\r\n cause:", excpt_ret_reg);
 	switch (cause_code) {
-		case 0x0:
+		case AUX_ECR_C_PRIV_PRIV:
 			SECURESHIELD_HALT("privilege violation, parameter:0x%x", parameter);
 			break;
-		case 0x1:
+		case AUX_ECR_C_PRIV_DIS_EXT:
 			SECURESHIELD_HALT("disabled extension, parameter:0x%x", parameter);
 			break;
-		case 0x02:
+		case AUX_ECR_C_PRIV_ACT_HIT:
 			SECURESHIELD_HALT("action point hit, parameter:0x%x", parameter);
 			break;
-		case 0x10:
+		case AUX_ECR_C_PRIV_ACT_SECURE:
 			SECURESHIELD_HALT("kernel only extension violation, parameter 0x%x", parameter);
 			/* for seti, clri, wfi, sleep instructions, do we need to do special handling for it ? */
 			secure_violation_handler(parameter);
@@ -180,39 +180,39 @@ static void secureshield_exc_handler_protect_v(void * frame)
 
 	SECURESHIELD_DBG("protection violation exception at 0x%x\r\n cause:", excpt_ret_reg);
 	switch (cause_code) {
-		case 0x0:	// 0x24 i-fetch invalid S/N transition, 0x44 i-fetch invalid SID, 0x00/0x04 old instruction violation 
+		case AUX_ECR_C_PROTV_INST_FETCH:	// 0x24 i-fetch invalid S/N transition, 0x44 i-fetch invalid SID, 0x00/0x04 old instruction violation 
 			SECURESHIELD_DBG("instruction fetch violation, parameter:0x%x\r\n"
 				, parameter);
 			ret = vmpu_fault_recovery_mpu(excpt_ret_reg, 0);
 			break;
-		case 0x1:	// 0x24 S-mode read, 0x44 SID mismatch, 0x01/0x2/0x4 old read violation
+		case  AUX_ECR_C_PROTV_LOAD:	// 0x24 S-mode read, 0x44 SID mismatch, 0x01/0x2/0x4 old read violation
 			SECURESHIELD_DBG("memory read violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
 				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 1);
 			}
 			break;
-		case 0x02: // 0x24 S-mode write, 0x44 SID mismatch, 0x1/0x2/0x4 old write violation
+		case AUX_ECR_C_PROTV_STORE: // 0x24 S-mode write, 0x44 SID mismatch, 0x1/0x2/0x4 old write violation
 			SECURESHIELD_DBG("memory write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
 				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 2);
 			}
 			break;
-		case 0x03:	// 0x24 S-mode violation on read-modify-write, 0x44 SID mismatch, 0x1/0x2/0x4 old read-modify-write violation
+		case AUX_ECR_C_PROTV_XCHG:	// 0x24 S-mode violation on read-modify-write, 0x44 SID mismatch, 0x1/0x2/0x4 old read-modify-write violation
 			SECURESHIELD_DBG("memory read-modify-write, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
 				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 3);
 			}
 			break;
-		case 0x10:	// NS vector table in S memory
+		case AUX_ECR_C_PROTV_NS_VECT_IN_S:	// NS vector table in S memory
 			SECURESHIELD_DBG("Normal vector table in secure memory\r\n");
 			break;
-		case 0x11:	// NS handler code located in S memory
+		case AUX_ECR_C_PROTV_NS_HANDLER_IN_S:	// NS handler code located in S memory
 			SECURESHIELD_DBG("Normal handler code in secure memory\r\n");
 			break;
-		case 0x12: 	// NSC table range violation
+		case AUX_ECR_C_PROTV_NSC_RANGE: 	// NSC table range violation
 			SECURESHIELD_DBG("NSC table range violation\r\n");
 			break;
 		default:
@@ -267,7 +267,6 @@ static int32_t secure_int_default_check(uint32_t intno)
 		return -1;
 	}
 	return 0;
-
 }
 
 /**
@@ -656,10 +655,8 @@ void * secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t runtime)
 		return NULL;
 	}
 
-
 	src_id = g_container_stack_curr_id;
 
-	_arc_aux_write(AUX_MPU_EN, MPU_DEFAULT_MODE);
 	_arc_aux_write(AUX_ERRET, (uint32_t)handler);
 
 

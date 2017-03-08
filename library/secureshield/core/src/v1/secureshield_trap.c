@@ -184,6 +184,8 @@ uint32_t secureshield_trap_handler(void *exc_frame, uint32_t *runtime_sp)
 	INT_EXC_FRAME *trap_frame = (INT_EXC_FRAME *)exc_frame;
 	uint8_t trap_id;
 
+	SECURESHIELD_ASSERT(trap_frame != NULL);
+	
 	trap_id = _arc_aux_read(AUX_ECR) & SECURESHIELD_TRAP_ID_MASK;
 
 	switch (trap_id) {
