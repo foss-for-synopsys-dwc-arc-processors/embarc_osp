@@ -114,27 +114,36 @@ The BSP Layer currently supports the following boards:
 - <b>\subpage page_board_emsk</b>	\n
   EM Starter Kit board support can be found under board/emsk, detailed in <b>\ref BOARD_EMSK "EM Starter Kit (EMSK)"</b>. It includes the following sub-folders:
   -# <b>\ref BOARD_EMSK_COMMON "common"</b>	\n
-    EMSK board initialization functions and 1 ms interrupt timer functions
+    EMSK board initialization functions and 1 ms interrupt timer function
   -# <b>\ref BOARD_EMSK_DRIVER "drivers"</b>	\n
     Various peripheral drivers for various examples
-  -# <b>ldscripts</b>	\n
-    Common linker scripts for EMSK board
+  -# <b>configs</b>  \n
+    Different versions of emsk, and various core configurations for different version
+
 - <b>\subpage page_board_nsim</b>	(NOTE: MetaWare license required) \n
   nSIM virtual board support can be found under board/nsim, detailed in <b>\ref BOARD_NSIM "nSIM Virtual Board"</b>. It includes the following sub-folders:
   -# <b>\ref BOARD_NSIM_COMMON "common"</b>	\n
-    nSIM virtual board initialization functions and 1 ms interrupt timer functions
+    nSIM virtual board initialization functions and 1 ms interrupt timer function
   -# <b>\ref BOARD_NSIM_DRIVER "drivers"</b>	\n
     Basic hostlink UART driver for message input and output.
-  -# <b>ldscripts</b>	\n
-    Common linker scripts for nSIM virtual board.
+  -# <b>configs</b>  \n
+    Different versions of nsim, and various core configurations for different version
+
 - <b>\subpage page_board_axs</b> \n
+  AXS board support can be found under board/axs, detailed in <b>\ref BOARD_AXS "ARC AXS Software Development Platform (AXS)"</b>. It includes the following sub-folders:
+  -# <b>\ref BOARD_AXS_COMMON "common"</b> \n
+    AXS board initialization functions and 1 ms interrupt timer function
+  -# <b>\ref BOARD_AXS_DRIVER "drivers"</b>  \n
+    Various peripheral drivers for various examples
+  -# <b>configs</b>  \n
+    Different versions of axs, and various core configurations for different version
+
 \section sect_board_add_new_board_to_embARC Adding New Board to embARC
 
 Follow the steps below to add a new board:
 - Modify board.mk and board.h. Please refer the EMSK related definitions. Copy EMSK definitions and modify them for your board. EMSK serves as a good template for adding a new board.
-- Create a sub directory under <b>board</b> and name it as <target_board>. Add <target_board>.mk and <target_board>.h. The basic information should be added in <target_board>.mk, such as source directories, including directories, object output directories, compiler options and make rules.
+- Create a sub directory under <b>board</b> and name it as <target_board>. Add <target_board>.mk and <target_board>.h. The basic information should be added in <target_board>.mk, such as source directories, including directories, object output directories and make rules.
 - Add the source files. The build system will automatically compile all the source files (.c, .s) in the directories described in <target_board>.mk and create library named lib<target_board>.a.
-- Add board linker scripts for board memory resource schemes.
 - Take other board support folder like <b><embARC>/board/emsk</b> for reference.
 
 */
