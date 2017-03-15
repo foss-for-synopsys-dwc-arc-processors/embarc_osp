@@ -22,6 +22,10 @@ Before working with embARC, review the following prerequisites:
   - If running and debugging embARC applications using arc-elf32-gdb and OpenOCD, check whether the path of openocd is added to the **PATH** in your environment variables and modify the **OPENOCD_SCRIPT_ROOT** variable in <b><embARC>/options/toolchain/toolchain_gnu.mk</b> according to your OpenOCD root path.
   - If running GNU program with using the GNU toolchain on Linux, modify the OpenOCD configuration file as Linux format with LF line terminators. **dos2unix** can be used to convert it.
   - If using the embARC pre-installed GNU IDE projects on Windows, installing the GNU IDE in the default location is recommended. If using the embARC pre-installed GNU IDE projects on Linux, or installing the GNU IDE in non-default locations on Windows, it is necessary to change the OpenOCD executable path and OpenOCD configuration file path in the tab of <b>Debugger->Gdbserver Settings</b> manually for the debug configuration.
+- Using Ashling Opella-XD debugger
+  - If you want to use Ashling Opella-XD debugger, you need to set **JTAG** to *opella*, and check where the driver for this JTAG located.
+  - You need to check and change all the **ASH_PATH** defined in <b>options/scripts.mk</b> according to where you install the driver to and the OS environment you use.
+  - Only supported by Metaware.
 
 \note See \ref EMBARC_KNOWN_ISSUES "FAQS" and check [embARC website](https://embarc.org/) and [embARC Forum](https://forums.embarc.org/) for the latest information on known issues. If you find any issues to report, post a new discussion item in [embARC Forum](https://forums.embarc.org/).
 \note <b><embARC></b> represents the location where you put the embARC source code, such as **C:/embARC**.
