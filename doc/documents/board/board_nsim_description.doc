@@ -14,19 +14,51 @@
 
 The DesignWare&reg; ARC&reg; nSIM Instruction Set Simulator provides an instruction accurate processor model for the DesignWare ARC processor families. Such processor models take the software development out of your products’ critical path by enabling an early start as well as increased efficiency through enhanced visibility and control. A basic test environment for nSIM is implemented in embARC, where hostlink IO is used for message input and output. ARC related functions can be tested using nSIM such as internal timer, cache module, interrupt and exception module.
 
+\note You need to have Metaware license to install nSIM or Metaware IDE for nSIM simulation.
+
 \section sect_bdnsim_usage How to Run in embARC
 
-For example, go to <b>example/baremetal/arc_feature/timer_interrupt</b> and enter **gmake BOARD=nsim TOOLCHAIN=mw run** to test the timer example on nSIM.
+For example, go to <b>example/baremetal/arc_feature/timer_interrupt</b>,
+then build this application for <em>nSIM - 10 - arcem</em> using metaware or arc gnu toolchain.
+Here are the steps for running or debugging this application in nSIM.
+
+\subsection subsect_bdnsim_USG_MW Run or debug application built by Metaware toolchain in nSIM
+Here are the steps for Metaware toolchain, running in nSIM environment.
+- Step 1: Open one command terminal in this application folder.
+- Step 2: Build and run this application using this command: <em>gmake BOARD=nsim BD_VER=10 CUR_CORE=arcem TOOLCHAIN=mw run</em>
 
 \htmlonly
 <div class="imagebox">
     <div style="width: 1100px">
-        <img src="pic/nsim_embARC_test.jpg" alt="Timer example running on nSIM"/>
-        <p>Timer example running on nSIM</p>
+        <img src="pic/nsim_embARC_test.jpg" alt="Timer example built by Metaware toolchain running on nSIM"/>
+        <p>Timer example built by Metaware toolchain running on nSIM</p>
     </div>
 </div>
 \endhtmlonly
-\image latex pic/nsim_embARC_test.jpg "Timer example running on nSIM" width=15cm
+\image latex pic/nsim_embARC_test.jpg "Timer example built by Metaware toolchain running on nSIM" width=15cm
+
+\subsection subsect_bdnsim_USG_GNU Run or debug application built by ARC GNU toolchain in nSIM
+
+If you want to run or debug embARC application using ARC GNU toolchain, you also need to install nSIM tool.
+- Make sure that you have installed nSIM tool to your OS, and you can run <em>nsimdrv</em> command in command line.
+- For running or debugging embARC application using ARC GNU toolchain, you need to run two commands in two command terminals,
+here take nsim-10-arcem core configuration for application <em>example/baremetal/arc_feature/timer_interrupt</em>.
+  + Step 1: Open two command terminals in this application folder.
+  + Step 2: Start nsim debug server using this command: <em>make BOARD=nsim BD_VER=10 CUR_CORE=arcem TOOLCHAIN=gnu nsim</em>
+  + Step 3: Run or debug this application using this command: <em>make BOARD=nsim BD_VER=10 CUR_CORE=arcem TOOLCHAIN=gnu run</em>
+  + Step 4: Exit the debug process by exiting these two commands.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 1100px">
+        <img src="pic/nsim_embARC_test_arcgnu.jpg" alt="Timer example built by ARC GNU toolchain running on nSIM"/>
+        <p>Timer example built by ARC GNU toolchain running on nSIM</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/nsim_embARC_test_arcgnu.jpg "Timer example built by ARC GNU toolchain running on nSIM" width=15cm
+
+\note Only for ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
 
 \note Most middlewares in embARC are not available for nSIM since there is no external peripheral for nSIM.
 
