@@ -12,7 +12,7 @@
 # Starter kit board supports two different JTAG cables:
 #
 #    usb     -JTAG over USB connection. A standard usb cable is used
-#    opella  -Ahsling Opella XD cable
+#    opella  -Ashling Opella XD cable
 ##
 SUPPORTED_JTAGS = usb opella
 ## Another define in options.mk
