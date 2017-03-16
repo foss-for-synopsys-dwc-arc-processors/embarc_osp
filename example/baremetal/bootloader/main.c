@@ -53,7 +53,7 @@
  * ### Usage Manual
  *     As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA,
  *     a simple primary bootloader is also loaded in ICCM. Through the primary bootloader, the application or secondary bootloader can be
- *     loaded into ICCM or external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.
+ *     loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.
  *
  *     For EMSK1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
  *
@@ -66,34 +66,40 @@
  *     </div>
  *     \endhtmlonly
  *
- *     Here are steps for how to program the secondary bootloader application into onboard SPIFlash(Take EMSK2.0 - ARC EM7D as example) and automatically load and run *boot.hex* or *boot.bin* in SDCard.
+ *     Here are steps for how to program the secondary bootloader application into onboard SPIFlash(Take EMSK2.3 - ARC EM7D as example) and automatically load and run *boot.hex* or *boot.bin* in SDCard.
  *     - Generate a secondary bootloader binary file
- *        * cd <embARC>/example/emsk/bootloader
- *        * make TOOLCHAIN=gnu BD_VER=20 CUR_CORE=arcem7d bin
- *        * If the binary file is generated successfully, you will output as follows:
+ *        + cd <embARC>/example/baremetal/bootloader
+ *        + Generate binary file: make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin
+ *          - If the binary file is generated successfully, you will output as follows:
  *          \code
- *          "Compiling          : " ../../../arc/arc_exception.c
- *          "Assembling         : " ../../../arc/arc_startup.s
- *          "Assembling         : " ../../../arc/arc_exc_asm.s
- *          "Archiving          : " obj_emsk_20/gnu_arcem7d/libemsk.a
- *          "Archiving          : " obj_emsk_20/gnu_arcem7d/libmidcommon.a
- *          "Archiving          : " obj_emsk_20/gnu_arcem7d/libmidfatfs.a
- *          arc-elf32-ar: creating obj_emsk_20/gnu_arcem7d/libemsk.a
- *          arc-elf32-ar: creating obj_emsk_20/gnu_aarrcc-eem7dl/fli3b2mi-dafatrf:s .ac
- *          reating obj_emsk_20/gnu_arcem7d/libmidcommon.a
- *          "Archiving          : " obj_emsk_20/gnu_arcem7d/libmidntshell.a
- *          arc-elf32-ar: creating obj_emsk_20/gnu_arcem7d/libmidntshell.a
- *          "Archiving          : " obj_emsk_20/gnu_arcem7d/libarc.a
- *          arc-elf32-ar: creating obj_emsk_20/gnu_arcem7d/libarc.a
- *          "Archiving          : " obj_emsk_20/gnu_arcem7d/libembarc.a
- *          arc-elf32-ar: creating obj_emsk_20/gnu_arcem7d/libembarc.a
- *          "Linking            : " obj_emsk_20/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.elf
- *          "Generating Binary obj_emsk_20/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin"
+ *          "Compiling             : " ../../../middleware/ntshell/cmds/cmds_fs/ymodem/ymodemio.c
+ *          "Compiling             : " ../../../middleware/ntshell/port/ntshell_usrcmd.c
+ *          "Compiling             : " ../../../middleware/ntshell/port/ntshell_task.c
+ *          "Archiving             : " obj_emsk_23/gnu_arcem7d/libmidntshell.a
+ *          "Compiling             : " ../../../middleware/parson/parson.c
+ *          "Archiving             : " obj_emsk_23/gnu_arcem7d/libmidparson.a
+ *          "Compiling             : " ../../../arc/arc_timer.c
+ *          "Compiling             : " ../../../arc/arc_cache.c
+ *          "Compiling             : " ../../../arc/arc_exception.c
+ *          "Compiling             : " ../../../arc/arc_udma.c
+ *          "Assembling            : " ../../../arc/arc_exc_asm.s
+ *          "Archiving             : " obj_emsk_23/gnu_arcem7d/libcpuarc.a
+ *          "Compiling             : " ../../../library/clib/fatfs_dirent.c
+ *          "Compiling             : " ../../../library/clib/malloc.c
+ *          "Compiling             : " ../../../library/clib/embARC_sbrk.c
+ *          "Compiling             : " ../../../library/clib/embARC_misc.c
+ *          "Compiling             : " ../../../library/clib/embARC_syscalls.c
+ *          "Compiling             : " ../../../library/clib/ya_getopt.c
+ *          "Compiling             : " ../../../library/clib/embARC_target.c
+ *          "Archiving             : " obj_emsk_23/gnu_arcem7d/liblibclib.a
+ *          "Archiving             : " obj_emsk_23/gnu_arcem7d/libembarc.a
+ *          "Linking               : " obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.elf
+ *          "Generating Binary obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin"
  *          \endcode
  *     - Program generated secondary bootloader binary file into SPIFlash
- *        * Insert SDCard to your PC, and copy the binary file *obj_emsk_20/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin* to SDCard Root, and rename it to *em7d_2bt.bin*
- *        * Insert the SDCard to EMSK Board, and build and run the *<embARC>/example/ntshell* example, please choose the right core configuration
- *        * Then use ntshell command *spirw* to program the *em7d_2bt.bin* into spiflash.
+ *        + Insert SDCard to your PC, and copy the binary file *obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin* to SDCard Root, and rename it to *em7d_2bt.bin*
+ *        + Insert the SDCard to EMSK Board, and build and run the <em><embARC>/example/baremetal/bootloader</em> example, please choose the right core configuration
+ *        + Then use ntshell command *spirw* to program the *em7d_2bt.bin* into spiflash.
  *            - Firstly, run *spirw* to show help
  *            - Secondly, run *spirw -i* to check SPIFlash ID, it should be **Device ID = ef4018**
  *            - Thirdly, run *spirw -w em7d_2bt.bin 0x17f00000 0x17f00004* to program spiflash
@@ -102,10 +108,10 @@
  *        * If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.
  *        ![ScreenShot of secondary bootloader autoboot when board configuration is reloaded](pic/images/example/emsk/emsk_bootloader_onspiflash.jpg)
  *     - Generate *boot.bin* using any embARC example which ram start address should be 0x10000000 and use bootloader to run it
- *        * Here take *<embARC>/example/freertos/demo* for example
- *        * cd <embARC>/example/freertos/demo
- *        * Build and generate binary file: *make TOOLCHAIN=gnu BD_VER=20 CUR_CORE=arcem7d bin*
- *        * Insert SDCard to PC, and copy generated binary file *obj_emsk_20/gnu_arcem7d/freertos-demo_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
+ *        * Here take <em><embARC>/example/freertos/kernel</em> for example
+ *        * cd <embARC>/example/freertos/kernel
+ *        * Build and generate binary file: *make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin*
+ *        * Insert SDCard to PC, and copy generated binary file *obj_emsk_20/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
  *        * Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
  *        * ![ScreenShot of secondary bootloader auto load boot.bin](pic/images/example/emsk/emsk_bootloader_loadbootbin.jpg)
  *     - Know Issues
@@ -125,7 +131,7 @@
  *        * Load application finished: LED on board -> 0xFF, if application is running normally, LED will quickly change to 0x0
  *        * Load application failed: LED on board -> 0xAA
  *        * Skip loading application, and enter to NTShell runtime: LED on board -> 0x0
- *     - You can refer to \ref NTSHELL_COMMAND_LIST "list of NTShell commands".
+ *     - Type *help* command in ntshell to show the list of supported commands.
  *
  *  ![ScreenShot of bootloader under baremetal](pic/images/example/emsk/emsk_bootloader.jpg)
  *
@@ -139,7 +145,7 @@
  * \file
  * \ingroup	EMBARC_APP_BAREMETAL_BOOTLOADER
  * \brief	example of secondary bootloader after the bootrom of EMSK
- * \todo	The ntshell is OK but boot file open error.
+ * \todo
  */
 
 /**
@@ -207,6 +213,7 @@ int main(void)
 	uint32_t max_promt_ms = PROMT_DELAY_S * 1000;
 	uint32_t boot_json[1000];
 	fp_t fp;
+
 	/* No USE_BOARD_MAIN */
 	board_init();
 	cpu_unlock();	/* unlock cpu to let interrupt work */
