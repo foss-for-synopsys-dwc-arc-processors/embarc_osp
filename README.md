@@ -7,7 +7,7 @@ It is designed to provide a unified platform for ARCv2 users by defining consist
 embARC OSP provides a solid starting foundation for embedded developers, simplifying development and improving time to market through software reuse.
 ## embARC OSP Architecture
 The general embARC Open Software Platform Architecture is shown in the block diagram below.
-![embARC Open Software Platform Architecture](doc/embARC_Document/htm/pic/embARC.jpg)
+![embARC Open Software Platform Architecture](../master/doc/documents/pic/embARC.jpg)
 ### ARC Hardware Abstraction Layer
 This layer provides standard interfaces and definitions for ARCv2 processors.
 ### Device Hardware Abstraction Layer
@@ -21,5 +21,5 @@ This layer integrates different embedded middleware, such as Shell/Command Line 
 ## How to Use embARC OSP
 The embARC OSP software includes several examples to help the user get up and running quickly with embARC OSP. Please refer to [embARC OSP Documentation](http://foss-for-synopsys-dwc-arc-processors.github.io/embarc_osp) and [embARC OSP Wiki](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/wiki) for more information, or you can generate the latest documentation by yourself following this guide.
 ## Contribute to embARC OSP
-We encourage you to contribute to embARC OSP! Please check out the [Contributing to embARC OSP](.github/CONTRIBUTING.md) for guidelines about how to proceed.
-Everyone interacting in the embARC Community and its sub-projects' codebases, and issue trackers is expected to follow the [embARC code of conduct](.github/CODE_OF_CONDUCT.md).
+We encourage you to contribute to embARC OSP! Please check out the [Contributing to embARC OSP](../master/.github/CONTRIBUTING.md) for guidelines about how to proceed.
+Everyone interacting in the embARC Community and its sub-projects' codebases, and issue trackers is expected to follow the [embARC code of conduct](../master/.github/CODE_OF_CONDUCT.md).
