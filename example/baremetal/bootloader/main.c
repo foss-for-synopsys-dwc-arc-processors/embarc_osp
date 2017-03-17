@@ -56,6 +56,7 @@
  *     loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.
  *
  *     For EMSK1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
+ *     For EMSK 1.0, it can be upgraded to 1.1 by 1.1's firmware. For EMSK 2.0/2.1/2.2, it can be upgraded to 2.3 by 2.3's firmware.
  *
  *     \htmlonly
  *     <div class="imagebox">
@@ -111,7 +112,7 @@
  *        * Here take <em><embARC>/example/freertos/kernel</em> for example
  *        * cd <embARC>/example/freertos/kernel
  *        * Build and generate binary file: *make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin*
- *        * Insert SDCard to PC, and copy generated binary file *obj_emsk_20/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
+ *        * Insert SDCard to PC, and copy generated binary file *obj_emsk_23/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
  *        * Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
  *        * ![ScreenShot of secondary bootloader auto load boot.bin](pic/images/example/emsk/emsk_bootloader_loadbootbin.jpg)
  *     - Know Issues
