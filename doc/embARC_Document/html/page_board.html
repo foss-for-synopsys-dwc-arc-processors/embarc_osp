@@ -273,33 +273,41 @@ Supported Boards in embARC</h1>
 <li><b><a class="el" href="page_board_emsk.html">EM Starter Kit</a></b> <br />
  EM Starter Kit board support can be found under board/emsk, detailed in <b><a class="el" href="group___b_o_a_r_d___e_m_s_k.html">EM Starter Kit (EMSK)</a></b>. It includes the following sub-folders:<ol type="1">
 <li><b><a class="el" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n.html">common</a></b> <br />
- EMSK board initialization functions and 1 ms interrupt timer functions</li>
+ EMSK board initialization functions and 1 ms interrupt timer function</li>
 <li><b><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_i_v_e_r.html">drivers</a></b> <br />
  Various peripheral drivers for various examples</li>
-<li><b>ldscripts</b> <br />
- Common linker scripts for EMSK board</li>
+<li><b>configs</b> <br />
+ Different versions of emsk, and various core configurations for different version</li>
 </ol>
 </li>
-<li><b><a class="el" href="page_board_nsim.html">Virtual Board based on nSIM</a></b> (NOTE: MetaWare license required) <br />
+<li><b><a class="el" href="page_board_nsim.html">Virtual Board based on nSIM</a></b> <br />
  nSIM virtual board support can be found under board/nsim, detailed in <b><a class="el" href="group___b_o_a_r_d___n_s_i_m.html">nSIM Virtual Board</a></b>. It includes the following sub-folders:<ol type="1">
 <li><b><a class="el" href="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n.html">common</a></b> <br />
- nSIM virtual board initialization functions and 1 ms interrupt timer functions</li>
+ nSIM virtual board initialization functions and 1 ms interrupt timer function</li>
 <li><b><a class="el" href="group___b_o_a_r_d___n_s_i_m___d_r_i_v_e_r.html">drivers</a></b> <br />
  Basic hostlink UART driver for message input and output.</li>
-<li><b>ldscripts</b> <br />
- Common linker scripts for nSIM virtual board.</li>
+<li><b>configs</b> <br />
+ Different versions of nsim, and various core configurations for different version <dl class="section note"><dt>Note</dt><dd>MetaWare license required</dd></dl>
+</li>
 </ol>
 </li>
 <li><b><a class="el" href="page_board_axs.html">AXS Board</a></b> <br />
+ AXS board support can be found under board/axs, detailed in <b><a class="el" href="group___b_o_a_r_d___a_x_s.html">ARC AXS Software Development Platform (AXS)</a></b>. It includes the following sub-folders:<ol type="1">
+<li><b><a class="el" href="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n.html">common</a></b> <br />
+ AXS board initialization functions and 1 ms interrupt timer function</li>
+<li><b><a class="el" href="group___b_o_a_r_d___a_x_s___d_r_i_v_e_r.html">drivers</a></b> <br />
+ Various peripheral drivers for various examples</li>
+<li><b>configs</b> <br />
+ Different versions of axs, and various core configurations for different version</li>
+</ol>
 </li>
 </ul>
 <h1><a class="anchor" id="sect_board_add_new_board_to_embARC"></a>
 Adding New Board to embARC</h1>
 <p>Follow the steps below to add a new board:</p><ul>
 <li>Modify board.mk and <a class="el" href="board_8h.html" title="common board header file ">board.h</a>. Please refer the EMSK related definitions. Copy EMSK definitions and modify them for your board. EMSK serves as a good template for adding a new board.</li>
-<li>Create a sub directory under <b>board</b> and name it as &lt;target_board&gt;. Add &lt;target_board&gt;.mk and &lt;target_board&gt;.h. The basic information should be added in &lt;target_board&gt;.mk, such as source directories, including directories, object output directories, compiler options and make rules.</li>
+<li>Create a sub directory under <b>board</b> and name it as &lt;target_board&gt;. Add &lt;target_board&gt;.mk and &lt;target_board&gt;.h. The basic information should be added in &lt;target_board&gt;.mk, such as source directories, including directories, object output directories and make rules.</li>
 <li>Add the source files. The build system will automatically compile all the source files (.c, .s) in the directories described in &lt;target_board&gt;.mk and create library named lib&lt;target_board&gt;.a.</li>
-<li>Add board linker scripts for board memory resource schemes.</li>
 <li>Take other board support folder like <b>&lt;embARC&gt;/board/emsk</b> for reference. </li>
 </ul>
 </div></div><!-- contents -->
@@ -308,7 +316,7 @@ Adding New Board to embARC</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Mar 6 2017 16:47:22 for embARC by
+    <li class="footer">Generated on Fri Mar 17 2017 14:15:30 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -101,24 +101,55 @@ $(document).ready(function(){initNavTree('page_board_nsim.html','');});
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
 <ul><li class="level1"><a href="#sect_bdnsim_description">nSIM Virtual Board Description</a></li>
-<li class="level1"><a href="#sect_bdnsim_usage">How to Run in embARC</a></li>
+<li class="level1"><a href="#sect_bdnsim_usage">How to Run in embARC</a><ul><li class="level2"><a href="#subsect_bdnsim_USG_MW">Run or debug application built by Metaware toolchain in nSIM</a></li>
+<li class="level2"><a href="#subsect_bdnsim_USG_GNU">Run or debug application built by ARC GNU toolchain in nSIM</a></li>
+</ul>
+</li>
 <li class="level1"><a href="#sect_bdnsim_tools_required">Tools</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="sect_bdnsim_description"></a>
 nSIM Virtual Board Description</h1>
 <p>The DesignWare&reg; ARC&reg; nSIM Instruction Set Simulator provides an instruction accurate processor model for the DesignWare ARC processor families. Such processor models take the software development out of your products’ critical path by enabling an early start as well as increased efficiency through enhanced visibility and control. A basic test environment for nSIM is implemented in embARC, where hostlink IO is used for message input and output. ARC related functions can be tested using nSIM such as internal timer, cache module, interrupt and exception module.</p>
+<dl class="section note"><dt>Note</dt><dd>You need to have Metaware license to install nSIM or Metaware IDE for nSIM simulation.</dd></dl>
 <h1><a class="anchor" id="sect_bdnsim_usage"></a>
 How to Run in embARC</h1>
-<p>For example, go to <b>example/baremetal/arc_feature/timer_interrupt</b> and enter <b>gmake BOARD=nsim TOOLCHAIN=mw run</b> to test the timer example on nSIM.</p>
+<p>For example, go to <b>example/baremetal/arc_feature/timer_interrupt</b>, then build this application for <em>nSIM - 10 - arcem</em> using metaware or arc gnu toolchain. Here are the steps for running or debugging this application in nSIM.</p>
+<h2><a class="anchor" id="subsect_bdnsim_USG_MW"></a>
+Run or debug application built by Metaware toolchain in nSIM</h2>
+<p>Here are the steps for Metaware toolchain, running in nSIM environment.</p><ul>
+<li>Step 1: Open one command terminal in this application folder.</li>
+<li>Step 2: Build and run this application using this command: <em>gmake BOARD=nsim BD_VER=10 CUR_CORE=arcem TOOLCHAIN=mw run</em></li>
+</ul>
 <p> 
 <div class="imagebox">
     <div style="width: 1100px">
-        <img src="pic/nsim_embARC_test.jpg" alt="Timer example running on nSIM"/>
-        <p>Timer example running on nSIM</p>
+        <img src="pic/nsim_embARC_test.jpg" alt="Timer example built by Metaware toolchain running on nSIM"/>
+        <p>Timer example built by Metaware toolchain running on nSIM</p>
     </div>
 </div>
- <dl class="section note"><dt>Note</dt><dd>Most middlewares in embARC are not available for nSIM since there is no external peripheral for nSIM.</dd></dl>
+ <h2><a class="anchor" id="subsect_bdnsim_USG_GNU"></a>
+Run or debug application built by ARC GNU toolchain in nSIM</h2>
+<p>If you want to run or debug embARC application using ARC GNU toolchain, you also need to install nSIM tool.</p><ul>
+<li>Make sure that you have installed nSIM tool to your OS, and you can run <em>nsimdrv</em> command in command line.</li>
+<li>For running or debugging embARC application using ARC GNU toolchain, you need to run two commands in two command terminals, here take nsim-10-arcem core configuration for application <em>example/baremetal/arc_feature/timer_interrupt</em>.<ul>
+<li>Step 1: Open two command terminals in this application folder.</li>
+<li>Step 2: Start nsim debug server using this command: <em>make BOARD=nsim BD_VER=10 CUR_CORE=arcem TOOLCHAIN=gnu nsim</em></li>
+<li>Step 3: Run or debug this application using this command: <em>make BOARD=nsim BD_VER=10 CUR_CORE=arcem TOOLCHAIN=gnu run</em></li>
+<li>Step 4: Exit the debug process by exiting these two commands.</li>
+</ul>
+</li>
+</ul>
+<p> 
+<div class="imagebox">
+    <div style="width: 1100px">
+        <img src="pic/nsim_embARC_test_arcgnu.jpg" alt="Timer example built by ARC GNU toolchain running on nSIM"/>
+        <p>Timer example built by ARC GNU toolchain running on nSIM</p>
+    </div>
+</div>
+ <dl class="section note"><dt>Note</dt><dd>Only for ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.</dd>
+<dd>
+Most middlewares in embARC are not available for nSIM since there is no external peripheral for nSIM.</dd></dl>
 <h1><a class="anchor" id="sect_bdnsim_tools_required"></a>
 Tools</h1>
 <p>The following tools are required for use with nSIM Virtual Board:</p>
@@ -134,7 +165,7 @@ Tools</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="page_board.html">Board</a></li>
-    <li class="footer">Generated on Mon Mar 6 2017 16:47:22 for embARC by
+    <li class="footer">Generated on Fri Mar 17 2017 14:15:30 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

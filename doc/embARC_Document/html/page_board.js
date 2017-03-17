@@ -16,7 +16,10 @@ var page_board =
     ] ],
     [ "Virtual Board based on nSIM", "page_board_nsim.html", [
       [ "nSIM Virtual Board Description", "page_board_nsim.html#sect_bdnsim_description", null ],
-      [ "How to Run in embARC", "page_board_nsim.html#sect_bdnsim_usage", null ],
+      [ "How to Run in embARC", "page_board_nsim.html#sect_bdnsim_usage", [
+        [ "Run or debug application built by Metaware toolchain in nSIM", "page_board_nsim.html#subsect_bdnsim_USG_MW", null ],
+        [ "Run or debug application built by ARC GNU toolchain in nSIM", "page_board_nsim.html#subsect_bdnsim_USG_GNU", null ]
+      ] ],
       [ "Tools", "page_board_nsim.html#sect_bdnsim_tools_required", null ]
     ] ],
     [ "AXS Board", "page_board_axs.html", [
