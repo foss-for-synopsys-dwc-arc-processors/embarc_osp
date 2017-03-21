@@ -54,7 +54,8 @@
  *
  * ### Extra Comments
  *    Tested in EMSK 2.3 EM9D, for drivers with DMA, spiflash working frequency can achieve 12Mhz.
- *    For drivers without DMA, spiflash working frequency can achieve 12Mhz.
+ *    For drivers without DMA, spiflash working frequency can achieve 2Mhz.
+ *    This example will stuck at the max frequency that SPI can achieve at that situation.
  */
 
 /**
