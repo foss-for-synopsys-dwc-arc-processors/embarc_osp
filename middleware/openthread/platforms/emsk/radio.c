@@ -555,7 +555,7 @@ void emskRadioProcess(otInstance *aInstance)
 
 	readFrame();
 	uint8_t reg = mrf24j40_read_short_ctrl_reg(MRF24J40_TXSTAT);
-	if (reg & MRF24J40_TXSTAT)
+	if (reg & MRF24J40_TXNSTAT)
 	{
 		DBG("TX MAC Timeout!!!!!!\r\n");
 		if (reg & MRF24J40_CCAFAIL)
