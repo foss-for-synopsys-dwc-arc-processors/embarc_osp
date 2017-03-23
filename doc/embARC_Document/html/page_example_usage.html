@@ -240,7 +240,7 @@ Download required source code and apply embARC patches</div></div>
 </li>
 </ul>
 </li>
-<li>Seperate patch scripts location. You can also run the separate patch script to patch the source code that you need.<ul>
+<li>Separate patch scripts location. You can also run the separate patch script to patch the source code that you need.<ul>
 <li><em>&lt;embARC&gt;/middleware/wolfssl/apply_embARC_patch.sh</em></li>
 <li><em>&lt;embARC&gt;/middleware/matrixssl/apply_embARC_patch.sh</em></li>
 <li><em>&lt;embARC&gt;/middleware/mbedtls/apply_embARC_patch.sh</em></li>
@@ -253,10 +253,11 @@ Download required source code and apply embARC patches</div></div>
 Set Up the Board Environment</h2>
 <ul>
 <li>Set a WiFi hotspot with <b>WPA/WPA2 PSK</b> encrypted. Some changes in <a class="el" href="board_8h.html" title="common board header file ">board/board.h</a> should be made before running embARC examples.<ul>
+<li>Take a look at the <a class="el" href="board_8h.html" title="common board header file ">board/board.h</a>, and go to corresponding header file, such as for emsk, you need to go to <a class="el" href="emsk_8h.html" title="emsk resource definitions ">board/emsk/emsk.h</a></li>
 <li>Set the WiFi hotspot name to "embARC" (just the characters in quotation marks).</li>
 <li>Set the WiFi hotspot IP address range from "192.168.43.1" to "192.168.43.254".</li>
 <li><p class="startli">Set the WiFi password to "qazwsxedc" (just the characters in quotation marks).</p>
-<p class="startli">If the WiFi hotspot IP address settings cannot be changed, the settings in <a class="el" href="board_8h.html" title="common board header file ">board/board.h</a> must be modified. </p><div class="fragment"><div class="line"><span class="preprocessor">#define WF_IPADDR_1                   (192)</span></div>
+<p class="startli">If the WiFi hotspot IP address settings cannot be changed, the settings in the board setting header file must be modified. </p><div class="fragment"><div class="line"><span class="preprocessor">#define WF_IPADDR_1                   (192)</span></div>
 <div class="line"><span class="preprocessor">#define WF_IPADDR_2                   (168)</span></div>
 <div class="line"><span class="preprocessor">#define WF_IPADDR_3                   (43)</span></div>
 <div class="line"><span class="preprocessor">#define WF_IPADDR_4                   (102)</span></div>
@@ -307,7 +308,7 @@ Set Up the Board Environment</h2>
 </ul>
 </li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>If the hotspot IP address range is not similar to "192.168.43.xxx", the IP address settings of the EMSK board should be changed in <a class="el" href="board_8h.html" title="common board header file ">board/board.h</a>. The baremetal examples don't support DHCP. A static IP address is required.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If the hotspot IP address range is not similar to "192.168.43.xxx", the IP address settings of the EMSK board should be changed in corresponding board header file. The baremetal examples don't support DHCP. A static IP address is required.</dd></dl>
 <h1><a class="anchor" id="sect_example_usage_GeneralBuildSteps"></a>
 General Build and Run Steps</h1>
 <h2><a class="anchor" id="subsect_example_usage_GBS_FastSteps"></a>
@@ -705,7 +706,7 @@ FAQs</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="page_example.html">Example</a></li>
-    <li class="footer">Generated on Fri Mar 17 2017 14:15:31 for embARC by
+    <li class="footer">Generated on Thu Mar 23 2017 16:14:38 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
