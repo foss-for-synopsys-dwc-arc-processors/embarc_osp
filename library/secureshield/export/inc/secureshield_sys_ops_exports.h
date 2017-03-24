@@ -46,6 +46,8 @@ extern void secureshield_perf_start(void);
 extern uint32_t secureshield_perf_end(void);
 #elif SECURESHIELD_VERSION == 2
 
+extern void secureshield_except_bit_clear(void);
+
 #endif
 
 extern uint32_t secureshield_arc_lr_reg(uint32_t addr);

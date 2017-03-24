@@ -102,4 +102,32 @@ int32_t secureshield_container_id_caller(void)
 {
 	return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_CONTAINER_ID_CALLER);
 }
+
+static void temp_trap_handler(void)
+{
+
+}
+
+/**
+ * \brief       
+ * The exception state registers (ERET, ECR, ERSTATUS, ERBTA, EFA, ESYN) will be protected by a new internal bit.
+ * This will be set on exception entry if the exception is triggered on a secure mode instruction and cleared on 
+ * exception entry if the exception is triggered on a non-secure instruction. If set, this bit will prevent 
+ * read/write access to these registers from non-secure mode. Any attempt to access these registers in NS mode 
+ * while protected will result in an EV_PriviligeV exception.
+ * 
+ * this function is used to clear this bit.
+ */
+void secureshield_except_bit_clear(void) 
+{
+    EXC_HANDLER prev_trap_handler;
+
+    exc_nest_count = 1;
+    prev_trap_handler = exc_handler_get(EXC_NO_TRAP);
+    exc_handler_install(EXC_NO_TRAP, (EXC_HANDLER)temp_trap_handler);
+    Asm("trap_s 0");
+    exc_nest_count = 0;
+    exc_handler_install(EXC_NO_TRAP, prev_trap_handler);
+}
+
 #endif

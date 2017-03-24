@@ -46,7 +46,7 @@
 #define __ASSEMBLY__
 #include "arc.h"
 
-.file "arc_startup.s"
+	.file "arc_startup.s"
 
 .weak	_f_sdata		/* start of small data, defined in link script */
 .weak	init_hardware_hook	/* app hardware init hook */
@@ -205,6 +205,9 @@ _arc_reset_call_main:
 	/* init cache */
 	jl	arc_cache_init
 	jl 	secureshield_start
+#if SECURESHIELD_VERSION == 2
+	jl 	secureshield_except_bit_clear
+#endif
 #else
 /* early init of interrupt and exception */
 	jl	exc_int_init
@@ -229,7 +232,7 @@ _arc_reset_call_main:
 	.align 4
 _exit_halt:
 _exit_loop:
-	flag	0x1
+	flag	AUX_STATUS_MASK_HALT
 	nop
 	nop
 	nop
