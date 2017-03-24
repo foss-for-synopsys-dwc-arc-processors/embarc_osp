@@ -192,6 +192,7 @@
 #define AUX_STATUS_BIT_U		(7)	/*!< user mode */
 #define AUX_STATUS_BIT_L		(12)	/*!< zero-overhead loop enable */
 #define AUX_STATUS_BIT_IE		(31)	/*!< interrupt enable */
+#define AUX_STATUS_BIT_HALT		(0)	/*!< halt bit */
 
 /* masks correspond to STATUS32 bit-field */
 #define AUX_STATUS_MASK_AE		(1<<AUX_STATUS_BIT_AE)	/*!< mask of AUX_STATUS_BIT_AE */
@@ -199,6 +200,7 @@
 #define AUX_STATUS_MASK_U		(1<<AUX_STATUS_BIT_U)	/*!< mask of AUX_STATUS_BIT_U */
 #define AUX_STATUS_MASK_L		(1<<AUX_STATUS_BIT_L)	/*!< mask of AUX_STATUS_BIT_L */
 #define AUX_STATUS_MASK_IE		(1<<AUX_STATUS_BIT_IE)	/*!< mask of AUX_STATUS_BIT_IE */
+#define AUX_STATUS_MASK_HALT		(1<<AUX_STATUS_BIT_HALT) /*!< mask of AUX_STATUS_BIT_HALT */
 /** @} */
 
 /**

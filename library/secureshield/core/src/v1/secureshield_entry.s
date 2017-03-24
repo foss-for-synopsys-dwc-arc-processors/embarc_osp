@@ -178,7 +178,7 @@ _int_handler_1:
  * come back to container sp, secureshield stack will not be used
  */
 	POP	sp
-	kflag	0x20	/* take interrupt as exception, return as an exception */
+	kflag	AUX_STATUS_MASK_AE	/* take interrupt as exception, return as an exception */
 
 	cmp	r0, 0
 	beq	_ret_int_unprivileged_no_cx
