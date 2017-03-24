@@ -281,7 +281,18 @@ ScreenShot of secondary bootloader auto load boot.bin</div></div>
 <div class="caption">
 ScreenShot of bootloader under baremetal</div></div>
  <h3>Extra Comments</h3>
-<p>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file. </p>
+<ul>
+<li>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.</li>
+<li>Make sure that the bootloader can only load application for extract the same core you built for.</li>
+<li>Bootloader example only support arc core configuration which has DDR with cache enabled.</li>
+<li>Bootloader example runs in DDR ram, not in CCM.</li>
+<li>Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.</li>
+<li>Supported core configurations<ul>
+<li>EMSK 1.1: EM6, EM6GP</li>
+<li>EMSK 2.2/2.3: EM7D, EM11D </li>
+</ul>
+</li>
+</ul>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga55d7be649325d97ae16ea0dfaaeeabd3"></a>
 <div class="memitem">
@@ -294,9 +305,9 @@ ScreenShot of bootloader under baremetal</div></div>
 </div><div class="memdoc">
 <p>save the app configuration file name </p>
 
-<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00167">167</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
+<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00172">172</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
 
-<p>Referenced by <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00206">main()</a>.</p>
+<p>Referenced by <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00211">main()</a>.</p>
 
 </div>
 </div>
@@ -311,7 +322,7 @@ ScreenShot of bootloader under baremetal</div></div>
 </div><div class="memdoc">
 <p>default autoload full file name </p>
 
-<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00165">165</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
+<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00170">170</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
 
 </div>
 </div>
@@ -326,9 +337,9 @@ ScreenShot of bootloader under baremetal</div></div>
 </div><div class="memdoc">
 <p>default wait time for autoload </p>
 
-<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00168">168</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
+<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00173">173</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
 
-<p>Referenced by <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00206">main()</a>.</p>
+<p>Referenced by <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00211">main()</a>.</p>
 
 </div>
 </div>
@@ -343,7 +354,7 @@ ScreenShot of bootloader under baremetal</div></div>
 </div><div class="memdoc">
 <p>default ram start address of boot.bin </p>
 
-<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00166">166</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
+<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00171">171</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
 
 </div>
 </div>
@@ -362,10 +373,10 @@ ScreenShot of bootloader under baremetal</div></div>
 <div class="line">        .boot_file = <a class="code" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html#ga08ad705eea015654280c15259a7832ce">BOOT_FILE_NAME</a>,</div>
 <div class="line">        .ram_startaddress = <a class="code" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html#ga16b17011a83b5823d6d0caa900eb358f">RAM_STARTADDRESS</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r_html_ga16b17011a83b5823d6d0caa900eb358f"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html#ga16b17011a83b5823d6d0caa900eb358f">RAM_STARTADDRESS</a></div><div class="ttdeci">#define RAM_STARTADDRESS</div><div class="ttdef"><b>Definition:</b> <a href="example_2baremetal_2bootloader_2main_8c_source.html#l00166">example/baremetal/bootloader/main.c:166</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r_html_ga08ad705eea015654280c15259a7832ce"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html#ga08ad705eea015654280c15259a7832ce">BOOT_FILE_NAME</a></div><div class="ttdeci">#define BOOT_FILE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="example_2baremetal_2bootloader_2main_8c_source.html#l00165">example/baremetal/bootloader/main.c:165</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r_html_ga16b17011a83b5823d6d0caa900eb358f"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html#ga16b17011a83b5823d6d0caa900eb358f">RAM_STARTADDRESS</a></div><div class="ttdeci">#define RAM_STARTADDRESS</div><div class="ttdef"><b>Definition:</b> <a href="example_2baremetal_2bootloader_2main_8c_source.html#l00171">example/baremetal/bootloader/main.c:171</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r_html_ga08ad705eea015654280c15259a7832ce"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html#ga08ad705eea015654280c15259a7832ce">BOOT_FILE_NAME</a></div><div class="ttdeci">#define BOOT_FILE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="example_2baremetal_2bootloader_2main_8c_source.html#l00170">example/baremetal/bootloader/main.c:170</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00193">193</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
+<p>Definition at line <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00198">198</a> of file <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html">example/baremetal/bootloader/main.c</a>.</p>
 
 </div>
 </div>
@@ -375,7 +386,7 @@ ScreenShot of bootloader under baremetal</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 23 2017 16:14:42 for embARC by
+    <li class="footer">Generated on Fri Mar 24 2017 15:51:39 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
