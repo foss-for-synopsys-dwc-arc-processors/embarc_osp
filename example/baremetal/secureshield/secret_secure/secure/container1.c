@@ -1,4 +1,4 @@
-/*------------------------------------------
+/* ------------------------------------------
  * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,9 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2017-01-19
+ * \date 2016-05-19
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
+
+/**
+ * \file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
+ * \brief	secureshield secret secure example container1 source file
+ */
+
 #undef LIB_SECURESHIELD_OVERRIDES
 #include <string.h>
 #include <stdio.h>

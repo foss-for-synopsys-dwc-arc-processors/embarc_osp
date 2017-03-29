@@ -27,14 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2017-01-12
+ * \date 2016-05-19
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
+
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_V2_SID
- * \brief	secureshield container configuration
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
+ * \brief	secureshield secret secure example container configuration file
  */
+
 #include "embARC.h"
 #include "container1.h"
 #include "container2.h"

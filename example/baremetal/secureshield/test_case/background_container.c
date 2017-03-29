@@ -58,7 +58,7 @@
 /**
  * \file
  * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test example source file
+ * \brief	secureshield test case example background container source file
  */
 
 /**

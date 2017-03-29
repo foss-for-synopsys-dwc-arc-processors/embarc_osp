@@ -31,6 +31,12 @@
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 
+/**
+ * \file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
+ * \brief	secureshield test example container3 source file
+ */
+
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"

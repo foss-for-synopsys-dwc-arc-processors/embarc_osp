@@ -1,4 +1,4 @@
-/* ------------------------------------------
+/*------------------------------------------
  * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,51 +27,51 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2016-05-19
+ * \date 2017-01-12
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
-
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2
- * \brief	secureshield secret2 example container2 source file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
+ * \brief	secureshield container 2 implementation
  */
-
-
+#include <string.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"
 
-#include "container1.h"
 #include "container2.h"
 
-// In this example, for communicating secrets with container 1 a special section is used. Shared between container 1 and 2, others cannot access.
-CONTAINER_BSS(container12_shared) uint8_t private_shared_data[SECRET_LEN];
-CONTAINER_BSS(container2) SECRET_CONTEXT2 container2_context;
+/* Container 2 : the trusted keystore client */
+SECRET_CONTEXT2 container2_context;
 
 void trusted_ops(void)
 {
+	uint8_t data[SECRET_LEN];
 	SECRET_CONTEXT2 *ctx;
 
 	ctx = &container2_context;
 
-	EMBARC_PRINTF("container 2 is trusted\r\n");
-	if(container_call(container1, operate_secret, NULL, GET_SECRET, private_shared_data)) {
-		EMBARC_PRINTF("get secret failed - someone tried to hack the system?\r\n");
-		return;
-	}
+	arc_int_sw_trigger(18);
+	//EMBARC_PRINTF("container 2 is trusted\r\n");
+	/* data is on container's  stack, normally other containers can not access it. As
+	container1 is a secure container, it can access container 2's stack */
+	//if(container_call(container1, operate_secret, NULL, GET_SECRET, data)) {
+		//EMBARC_PRINTF("get secret failed - someone tried to hack the system?\r\n");
+	//	return;
+	//}
 
-	if (! ctx->initialized) {
-		EMBARC_PRINTF("container 2: got the secret for the first time and stored it for private use\r\n");
-		memcpy(ctx->secret, private_shared_data, SECRET_LEN);
+	//if (! ctx->initialized) {
+		//EMBARC_PRINTF("container 2: got the secret for the first time and stored it for private use\r\n");
+		//memcpy(ctx->secret, data, SECRET_LEN);
 		ctx->initialized = 1;
-	} else if (strcmp((const char *)private_shared_data, (const char *)ctx->secret) != 0) {
-		EMBARC_PRINTF("container 2: the secret changed, updated my private copy!\r\n");
-		memcpy(ctx->secret, private_shared_data, SECRET_LEN);
-	} else {
-		EMBARC_PRINTF("got the secret, but not telling you since its secret and for use within this container only...\r\n");
-	}
+	//} else if (strcmp((const char *)data, (const char *)ctx->secret) != 0) {
+		//EMBARC_PRINTF("container 2: the secret changed, updated my private copy!\r\n");
+		//memcpy(ctx->secret, data, SECRET_LEN);
+	//} else {
+		//EMBARC_PRINTF("got the secret, but not telling you since its secret and for use within this container only...\r\n");
+	//}
 
-	// though protected, don't leave secrets in shared memory if not needed
-	memset(private_shared_data, 0, SECRET_LEN);
 }

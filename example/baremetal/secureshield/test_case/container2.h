@@ -30,6 +30,13 @@
  * \date 2016-12-01
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
+
+/**
+ * \file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
+ * \brief	secureshield test case example container2 head file
+ */
+
 #ifndef CONTAINER2_H
 #define CONTAINER2_H
 

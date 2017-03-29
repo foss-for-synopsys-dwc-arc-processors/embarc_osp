@@ -1,5 +1,5 @@
 # Application name
-APPL ?= secureshield_secret2
+APPL ?= secureshield_secret_secure
 
 LIB_SECURESHIELD_VERSION ?= 2
 # Optimization Level
@@ -7,8 +7,6 @@ LIB_SECURESHIELD_VERSION ?= 2
 OLEVEL ?= O2
 
 BOARD ?= nsim
-
-BD_VER ?= 1506
 
 CUR_CORE ?= arcemsecureshield
 
@@ -27,7 +25,13 @@ APPL_CSRC_DIR = .
 APPL_ASMSRC_DIR = .
 
 # application include dirs
-APPL_INC_DIR = .
+APPL_INC_DIR = . ./secure
+
+
+# the dir where src files should be compiled and linked with secure world
+APPL_SECURE_CSRC_DIR = ./secure
+SECURE_SYMBOL_LIST = ./secure/secure_symbol.txt
+
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile

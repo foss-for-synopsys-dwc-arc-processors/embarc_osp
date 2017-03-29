@@ -33,8 +33,8 @@
 
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2
- * \brief	secureshield secret2 example container1 source file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL
+ * \brief	secureshield secret normal example container1 source file
  */
 
 #include <string.h>

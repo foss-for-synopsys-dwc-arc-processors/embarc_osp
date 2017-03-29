@@ -1,4 +1,4 @@
-/* ------------------------------------------
+/*------------------------------------------
  * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,59 +27,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2016-12-01
+ * \date 2016-05-19
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example container1 source file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
+ * \brief	secureshield secret secure example container2 header file
  */
 
-#include "embARC.h"
-#include "embARC_debug.h"
-#include "embARC_assert.h"
+#ifndef CONTAINER2_H
+#define CONTAINER2_H
 
-#include "background_container.h"
 #include "container1.h"
 
-TEST_CONTEXT container1_context;
+typedef struct {
+	uint8_t secret[SECRET_LEN+1];
+	uint8_t initialized;
+} SECRET_CONTEXT2;
 
-int tst_func0(void)
-{
-	EMBARC_PRINTF("tst_func0 in container 1, no arguments\r\n");
-	EMBARC_PRINTF("my container id is:%d\r\n",secureshield_container_id_self());
-	EMBARC_PRINTF("the id of caller is:%d\r\n", secureshield_container_id_caller());
-	return 0;
-}
+extern void trusted_ops(void);
 
-int tst_func1(int arg1)
-{
-	EMBARC_PRINTF("tst_func1 in container 1, arguments are:%d\r\n", arg1);
-	container1_context.initialized = 1;
-	if (secureshield_int_enable(INTNO_SWI1) != 0) {
-		EMBARC_PRINTF("failed to enable INTNO_SWI1\r\n");
-	}
-	if (secureshield_int_sw_trigger(INTNO_SWI1) != 0) {
-		EMBARC_PRINTF("failed to trigger soft interrupt1 \r\n");
-	}
-	EMBARC_PRINTF("container call from 1 to 2\r\n");
-	EMBARC_PRINTF("ret is:%x\r\n", container_call(container2, tst_func3, 1, 2, 3));
-	return 1;
-}
-
-int tst_func2(int arg1, int arg2)
-{
-	//EMBARC_PRINTF("container call in cycles:%d\r\n", secureshield_perf_end());
-	EMBARC_PRINTF("tst_func2 in container 1, arguments are:%d,%d\r\n", arg1, arg2);
-	//secureshield_perf_start();
-	return 2;
-}
-
-
-void soft_interrupt1(void *p_exinf)
-{
-	EMBARC_PRINTF("soft interrupt 1 interrupt handler\r\n");
-}
-
+#endif /* CONTAINER2_H */

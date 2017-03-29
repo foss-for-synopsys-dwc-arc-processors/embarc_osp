@@ -30,6 +30,11 @@
  * \date 2016-07-21
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
+/**
+ * \file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
+ * \brief	secureshield secret secure example container memory map information file
+ */
 
 #ifndef _SECURESHIELD_APPL_CONFIG_H_
 #define _SECURESHIELD_APPL_CONFIG_H_

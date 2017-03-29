@@ -1,4 +1,4 @@
-/* ------------------------------------------
+/*------------------------------------------
  * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,22 +27,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2016-07-21
+ * \date 2016-05-19
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 
-#ifndef _SECURESHIELD_APPL_CONFIG_H_
-#define _SECURESHIELD_APPL_CONFIG_H_
+/**
+ * \file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL
+ * \brief	secureshield secret normal example container2 header file
+ */
 
-/* tell linker script template, there is a region named container1 in normal rom, its size is 2048 bytes */
-#define SECURESHIELD_REGION_CONTAINERS_ROM \
- 					GEN_CONTAINER_ROM_SECTION(container1, 2048)	\
- 					GEN_CONTAINER_ROM_SECTION(container2, 0)
+#ifndef CONTAINER2_H
+#define CONTAINER2_H
 
-/* tell linker script template, there is a region named container12 in normal ram, its size is 2048 bytes */
-#define SECURESHIELD_REGION_CONTAINERS_RAM \
- 					GEN_CONTAINER_RAM_SECTION(container1, 2048) \
- 					GEN_CONTAINER_RAM_SECTION(container2, 2048) \
- 					GEN_CONTAINER_RAM_SECTION(container12_shared, 2048)
+typedef struct {
+	uint8_t secret[SECRET_LEN+1];
+	uint8_t initialized;
+} SECRET_CONTEXT2;
 
-#endif /* _SECURESHIELD_APPL_CONFIG_H_ */
+extern void trusted_ops(void);
+
+#endif

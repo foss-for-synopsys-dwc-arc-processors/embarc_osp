@@ -31,10 +31,10 @@
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET embARC Secureshield Secret Example
+ * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE embARC SecureShield Secret Secure Example
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC Secureshield secret example
+ * \brief	embARC SecureShield secret secure example
  *
  * \details
  * ### Extra Required Tools
@@ -64,12 +64,12 @@
 
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET
- * \brief	secureshield secret example source file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
+ * \brief	secureshield secret secure example background container source file
  */
 
 /**
- * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET
+ * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
  * @{
  */
 /* embARC HAL */

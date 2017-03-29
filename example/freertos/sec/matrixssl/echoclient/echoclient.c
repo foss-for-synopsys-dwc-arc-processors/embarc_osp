@@ -96,7 +96,7 @@
 
 #define TSKPRI_ECHOCLIENT_TEST	(configMAX_PRIORITIES-2) /**< echo client task priority */
 
-#define ECHOSERVER_IP		"192.168.43.252"		/**< echo server ip, need to be modified according to your server IP */
+#define ECHOSERVER_IP		"192.168.43.197"		/**< echo server ip, need to be modified according to your server IP */
 #define ECHOSERVER_PORT		80
 
 static TaskHandle_t echoclient_test_handle = NULL;

@@ -27,36 +27,39 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2016-11-24
+ * \date 2017-01-12
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2 embARC Secureshield Secret2 Example
+ * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID embARC Secureshield Secret with SID Example
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC Secureshield secret2 example
+ * \brief	embARC Secureshield secret with SID example
  *
  * \details
  * ### Extra Required Tools
  *
  * ### Extra Required Peripherals
- *     - Designware nSIM Tool or
- *     - EMSK 2.2 arcem7d configuration
+ *     - Designware nSIM Tool or EMSK 2.3 arcem7d configuration
  *
  * ### Design Concept
- *     This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component. It's similar to the 'secret' example, but protects the secrets differently:
- *     - all containers are normal containers, no secure privileges.
- *     - to initialize the secret data in container 1, a private const data section is used; others cannot access this data. In an application with secure persistent storage like EEPROM or flash, it would be stored there.
- *     - a shared memory region is created for container 1 and container 2 to exchange data; others cannot access this region.
- *     - an application specific linker script is created to show how shared memory is created and how the initialization data is protected.
- *     - for further information on the application, see the 'secret' application
+ *     This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component.
+ *     - The secret and password are protected in the context of container 1 which is a container with secure privileges.
+ *     - You need to input the right password to get the secret from the non-trusted background container; container 2 is trusted and can access the secret without password.
+ *     - The init value of secret and password are stored in the data section of secure container 1. Non-secure containers can not access them directly.
+ *     - Secure container 2 can use the container 1 secret internally for implementing other services. The background application can request such a service, without knowing or obtaining the secret itself.
+ *     - For demonstration purpose, the background container can obtain the secret as well (using the password). Since the background container stores the result in global, public memory, this is normally not secure and not recommended. Instead see Container 2 for how to securely use the secret.
+ *     - The difference between this example and secret secure example is MPU reprogramming is avoidded through SID enabled. All containers MPU configuration will be loaded into MPU hardware.
  *
  * ### Usage Manual
+ *     Here we take EMSK 2.3 EM7D for example, you can run the program using Metaware toolset.
+ *     - Re-configure the EMSK 2.3 board to EM7D configuration.
+ *     - Command: gmake BOARD=emsk BD_VER=23 CUR_CORE=arcem7d run
+ *
  *     When this example start to run, the try the following ntshell commands:
  *     - Run ntshell command **main -h** to see how to run this example.
  *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
- *
- *     ![ScreenShot of secureshield example](pic/images/example/emsk/baremetal_secureshield_secret2.jpg)
+ *     ![ScreenShot of secureshield v2 sid example](pic/images/example/emsk/baremetal_secureshield_secret_v2_sid.jpg)
  *
  * ### Extra Comments
  *
@@ -64,12 +67,12 @@
 
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2
- * \brief	secureshield secret2 example source file
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
+ * \brief	secureshield background container and main application
  */
 
 /**
- * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2
+ * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
  * @{
  */
 /* embARC HAL */
@@ -84,13 +87,7 @@
 #include "container2.h"
 #include "background_container.h"
 
-//For challenging the implementation and trying to obtain secrets
-SECRET_CONTEXT *challenge;
-extern uint8_t *private_shared_data;
-extern uint8_t *secret_const_data;
-
 static uint8_t public_data[SECRET_LEN];
-
 
 static void main_help(void)
 {
@@ -115,12 +112,22 @@ void default_interrupt_handler(void *p_exinf)
 	EMBARC_PRINTF("default interrupt handler\r\n");
 }
 
+void soft_interrupt1(void *p_exinf)
+{
+	EMBARC_PRINTF("soft interrupt 1 interrupt handler\r\n");
+}
+
+
 int main(int argc, char **argv)
 {
 	int32_t opt;
 	char *pwd = NULL;
 	char *secret = NULL;
 	char *new_pwd = NULL;
+
+	int_handler_install(INTNO_SWI, soft_interrupt1);
+	int_enable(INTNO_SWI);
+	int_sw_trigger(INTNO_SWI);
 
 
 	if (container_call(container1, init_secret)) {
@@ -130,17 +137,16 @@ int main(int argc, char **argv)
 
 	if (!strcmp(argv[1], "challenge")) {
 		EMBARC_PRINTF("try to steal the secret\r\n");
-
 		switch (argv[2][0]) {
 			case '0' :
-				EMBARC_PRINTF("the secret from container 1 context is:%s\r\n", challenge->secret);
+				EMBARC_PRINTF("the secret from container 1 context is:%s\r\n", container1_context.secret);
 				break;
 			case '1' :
-				EMBARC_PRINTF("the secret init data is:%s\r\n", secret_const_data);
-				break;
+			 	EMBARC_PRINTF("the secret from direct memory read is:%s\r\n", container1_secret);
+			 	break;
 			case '2' :
-				EMBARC_PRINTF("the private shared data is:%s\r\n", private_shared_data);
-				break;
+			 	EMBARC_PRINTF("the password from direct memory read is:%s\r\n", container1_pwd);
+			 	break;
 			default:
 				EMBARC_PRINTF("Please use challenge 0, 1, or 2\r\n");
 				return E_OK;

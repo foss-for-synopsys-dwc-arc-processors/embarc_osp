@@ -32,8 +32,8 @@
 --------------------------------------------- */
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_V2_SID
- * \brief	secureshield runtime configuration
+ * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
+ * \brief	secureshield secret secure sid example container memory map information file
  */
 #ifndef _SECURESHIELD_APPL_CONFIG_H_
 #define _SECURESHIELD_APPL_CONFIG_H_
