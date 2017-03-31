@@ -33,6 +33,7 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
 	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
 #endif	
+	{default_interrupt_handler, INTNO_SWI, SECURESHIELD_AC_IRQ},
 	{default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ}
 };
 
