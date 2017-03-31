@@ -34,7 +34,7 @@
 /**
  * \file
  * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test example container3 source file
+ * \brief	secureshield test case example container3 source file
  */
 
 #include "embARC.h"

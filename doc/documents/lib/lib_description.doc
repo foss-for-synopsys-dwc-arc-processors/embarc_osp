@@ -108,7 +108,7 @@ According to this access control table, the container is allocated the periphera
 The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute can be found in secureshield_vmpu_exports.h.
 
 ## Secure Call
-In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call secure functions. The following SecureShield runtime services are provided:
+In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call the SecureShield runtime services. The following SecureShield runtime services are provided:
 - container call: call the services provided by other containers
 - interrupt management: see secureshield_int_exports.h
 - auxiliary-register access and benchmark function: see secureshield_sys_ops_exports.h
@@ -139,8 +139,13 @@ In SecureShield, a secure call is implemented as a section of assembly code and 
     })
 \endcode
 
+If SECURESHIELD_VERSION == 1, SECURE_INSTN is **trap_s**; If SECURESHIELD_VERSION == 2, SECURE_INSTN is **sjli**.
+
+
 ### Container Call
-Although containers are isolated from each other, a container can provide services to other containers through container calls. This function or service must first be registered in an access control table. The background container has no interface.
+Although containers are isolated from each other, a container can provide services to other containers through container interface. The container interface must first be registered in the access control table. The background container has no interface as its resources are shared to all other containers. 
+
+To call a container interface,  container all is required. The following is an example.
 
 \code{.unparsed}
 
@@ -162,6 +167,19 @@ ret = container_call(container1, tst_func2, 1, 2);
 
 1 and 2 are arguments passed to tst_fun2, ret is the return value of tst_func.
 
+The **container_call** will be expanded into the following assembly.
+
+\code{.unparsed}
+    mov r0, 1
+    mov r1, 2
+    SECURE_INSTN SECURESHIELD_SECURE_CALL_CONTAINER_IN
+    b skip_args1
+    .long SECURESHIELD_CONTAINER_CALL_MAGIC
+    .long tst_func2
+    .long container1_cfg_prt
+skip_args1:
+\endcode
+
 Container calls can be nested, i.e., in a container interface, another container call can be made.
 
 \htmlonly
@@ -173,6 +191,9 @@ Container calls can be nested, i.e., in a container interface, another container
 </div>
 \endhtmlonly
 \image latex pic/secureshield_container_call.jpg "Container call" width=12cm
+
+It should be noted that container call should not be made in the interrupt and exception handler.
+Because SecureShield runtime is not integrated with OS,  in the container call which will cause container switch, task scheduler should be disabled to avoid task switch.
 
 
 ## Memory Map
@@ -329,7 +350,7 @@ Upon compiling and linking, the following files will be generated:
 \subsection sect_lib_secureshield_application SecureShield Application Examples
 There are several SecureShield application examples include in the embARC OSP distribution.
 - [baremetal/secureshield/test_case](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE) demonstrates and tests the features of SecureShield.
-- [baremetal/secureshield/secret](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET) and its derived example [baremetal/secureshield/secret2](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET2) shows examples of a secret being protected by a password.
+- [baremetal/secureshield/secret_secure](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE) and its derived example [baremetal/secureshield/secret_normal](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL) [baremetal/secureshield/secret_secure_sid](\ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID)shows examples of a secret being protected by a password.
 - [contiki/secureshield/dtls_client_ipv4](\ref EMBARC_APP_CONTIKI_SECURESHIELD_DTLS_CLIENT_IPV4) demonstrates how to integrate SecureShield in a full fledged application.
 
 \subsubsection subsect_lib_secureshield_application_feature_app SecureShield Feature Example
