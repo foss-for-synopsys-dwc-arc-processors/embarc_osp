@@ -139,58 +139,12 @@ dispatcher:
  */
 dispatcher_0:
 	ld	r1, [pxCurrentTCB]
-	cmp	r1, 0		/* if no tasks run, jump to dispatcher_1 */
-	beq	dispatcher_1
 	ld	sp, [r1]	/* recover task stack */
 	POP	r0		/* get critical nesting */
 	st	r0, [ulCriticalNesting]
 	RESTORE_CALLEE_REGS
 	EXCEPTION_EPILOGUE
 	rtie
-
-/* when p_runtsk is NULL, some power saving can be done here */
-dispatcher_1:
-/*
- * unlock the CPU, and be ready to switch to non-task context
- */
-/* switch to non-task context */
-	mov	sp, _e_stack
-dispatcher_2:
-/*
-*  enable all interrupts, run in non-task context to wait for
-*  interrupts.
-*
-*  the switch to no-task context one hand is to solve the problem
-*  of which stack the interrupt processing should use, the other
-*  hand is to prevent task dispatch in the interrupt handlers.
-*
-*  the processing of enable interrupts and wait for interrupts
-*  must be atomic. If not, at the moment that interrupts are
-*  enabled, the interrupts may come out, no matter whether a task
-*  dispatch request exists, the processor will wait for interrupts
-*  after return. So even if a task dispatch request exists, no real
-*  task dispatch will happen.
-*
-*  dependent on target, the processor may get into low power mode
-*  when it is waiting for interrupts.
-*
-*/
-	mov	r1, 1
-	st	r1, [exc_nest_count]		/* exc_nest_count = 1 */
-
-	seti		/* enable interrupt */
-	sleep
-	clri		/* disable interrupt */
-
-	ld	r0, [context_switch_reqflg]	/* if context_switch_reqflg is false, jump to dispatcher_2 */
-	cmp	r0, 0
-	beq	dispatcher_2
-	mov	r0, 0
-	st	r0, [context_switch_reqflg]	/* context_switch_reqflg = 0 */
-	st	r0, [exc_nest_count]		/* exc_nest_count = 0 */
-	b	dispatcher_0
-
-
 
 /****** exceptions and interrupts handing ******/
 /****** entry for exception handling ******/
