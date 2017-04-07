@@ -42,7 +42,12 @@
  * ### Extra Required Peripherals
  *
  * ### Design Concept
- *     This example is designed to test secureshield runtime in embARC.
+ *     This example is designed to show how FreeRTOS is integrated with SecureShield.
+ *     Here, trap_s is used to trigger a task context switch request. So application
+ *     should not use trap exception.
+ *     
+ *     As container switch is not with task switch. So during a container call, task scheduler 
+ *     should be suspended to avoid a task context.
  *
  * ### Usage Manual
  *     Here we take EMSK 2.3 EM7D for example, you can run the program using Metaware toolset.
@@ -67,19 +72,14 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
+#include "background_container.h"
 #include "container1.h"
 #include "container2.h"
 
 static void task1(void * par);
 static void task2(void * par);
-static void trap_exception(void *p_excinf);
-static void soft_interrupt(void *p_excinf);
-
-#ifdef INTNO_I2C0
-#define INTNO_SWI		INTNO_I2C0
-#else
-#define INTNO_SWI		20
-#endif
+static void interrupt_high_pri(void *p_excinf);
+static void interrupt_low_pri(void *p_excinf);
 
 /**
  * \var		task1_handle
@@ -97,9 +97,8 @@ static TaskHandle_t task2_handle = NULL;
 static volatile unsigned int start = 0;
 static unsigned int perf_id = 0xFF;
 
+static unsigned int t_int_t2;
 static unsigned int t_t2_t1;
-static unsigned int t_int_t1;
-static unsigned int t_t1_t2;
 static unsigned int t_t1_int;
 static unsigned int t_int_nest;
 static unsigned int t_nest_int;
@@ -165,13 +164,16 @@ int main(void)
 	}
 	
 
-	int_handler_install(INTNO_SWI, (EXC_HANDLER)soft_interrupt);
-	int_pri_set(INTNO_SWI, INT_PRI_MIN);
-	int_enable(INTNO_SWI);
+	int_handler_install(INTNO_LOW_PRI, (INT_HANDLER)interrupt_low_pri);
+	int_pri_set(INTNO_LOW_PRI, INT_PRI_MAX);
+	int_enable(INTNO_LOW_PRI);
 
-	exc_handler_install(EXC_NO_TRAP, trap_exception);	/*!< install the exception handler */
+	int_handler_install(INTNO_HIGH_PRI, (INT_HANDLER)interrupt_high_pri);
+	int_pri_set(INTNO_HIGH_PRI, INT_PRI_MIN);
+	int_enable(INTNO_HIGH_PRI);
 
 
+	vTaskSuspendAll();
 	if (xTaskCreate(task1, "task1", 256, (void *)1, configMAX_PRIORITIES-2, &task1_handle)
 		!= pdPASS) {	/*!< FreeRTOS xTaskCreate() API function */
 		EMBARC_PRINTF("create task1 error\r\n");
@@ -182,8 +184,7 @@ int main(void)
 		EMBARC_PRINTF("create task2 error\r\n");
 		return -1;
 	}
-
-	vTaskSuspend(NULL);
+	xTaskResumeAll();
 
 	return 0;
 }
@@ -196,26 +197,25 @@ int main(void)
  */
 static void task1(void * par)
 {
-	TickType_t xLastExecutionTime;
-	xLastExecutionTime = xTaskGetTickCount();	/*!< initialize current tick */
-	int i = 0;
-
 	while(1) {
-		t_t2_t1 = perf_end();
-		vTaskDelayUntil( &xLastExecutionTime, 500);	/*!< This task should execute exactly every 1 second. */
 		perf_start();
-		_arc_aux_write(AUX_IRQ_HINT, INTNO_SWI);	/*!< activate soft_interrupt */
-		t_int_t1 = perf_end();
+		_arc_aux_write(AUX_IRQ_HINT, INTNO_LOW_PRI);	/*!< activate low priority interrupt */
+		t_t2_t1 = perf_end();
 
-		EMBARC_PRINTF("Rounds: %d\r\n", i++);
+		EMBARC_PRINTF("The performance data is:\r\n");
+		EMBARC_PRINTF("\ttask2->task1:%d cycles\r\n",t_t2_t1);
+		EMBARC_PRINTF("\ttask1->int:%d cycles\r\n", t_t1_int);
+		EMBARC_PRINTF("\tint->nest int:%d cycles\r\n", t_int_nest);
+		EMBARC_PRINTF("\tnest int->int:%d cycles\r\n", t_nest_int);
+		EMBARC_PRINTF("\tint->task2:%d cycles\r\n", t_int_t2);
+		EMBARC_PRINTF("\r\n");
+
 		EMBARC_PRINTF("Task1 is running and makes a container call...\r\n");
 		vTaskSuspendAll();
 		container_call(container2, trusted_ops);
 		xTaskResumeAll();
 
-		perf_start();
-		vTaskResume(task2_handle);
-		
+		vTaskDelay(500);
 	}
 
 }
@@ -227,14 +227,16 @@ static void task1(void * par)
  */
 static void task2(void * par)
 {
+	int i = 0;
 	uint32_t ret = 0;
 
 	perf_init(TIMER_1);
 	while(1) {
 		perf_start();
 		vTaskSuspend(NULL);	/*!< suspend task2 */
-		t_t1_t2 = perf_end();
+		t_int_t2 = perf_end();
 
+		EMBARC_PRINTF("\r\nRounds: %d\r\n", i++);
 		EMBARC_PRINTF("\r\nTask2 is running and makes a container call...\r\n");
 		vTaskSuspendAll();
 		ret = container_call(container1, operate_secret, "embarc", GET_SECRET, public_data);
@@ -245,41 +247,35 @@ static void task2(void * par)
 			EMBARC_PRINTF("the secret is:%s\r\n", public_data);
 			memset(public_data, 0, SECRET_LEN);
 		}
-
-		EMBARC_PRINTF("The performance data is:\r\n");
-		EMBARC_PRINTF("\ttask2->task1:%d cycles\r\n",t_t2_t1);
-		EMBARC_PRINTF("\ttask1->int:%d cycles\r\n", t_t1_int);
-		EMBARC_PRINTF("\tint->nest int:%d cycles\r\n", t_int_nest);
-		EMBARC_PRINTF("\tnest int->int:%d cycles\r\n", t_nest_int);
-		EMBARC_PRINTF("\tint->task1:%d cycles\r\n", t_int_t1);
-		EMBARC_PRINTF("\ttask1->task2:%d cycles\r\n",t_t1_t2);
-		EMBARC_PRINTF("\r\n");
 	}
 }
 
 /**
- * \brief  trap exception
+ * \brief  high priority interrupt
  * \details Call xTaskResumeFromISR() to resume task2 that can be called from within ISR.
  * If resuming the task2 should result in a context switch, call vPortYieldFromIsr() to generate task switch request.
  * \param[in] *p_excinf
  */
-static void trap_exception(void *p_excinf)
+static void interrupt_high_pri(void *p_excinf)
 {
 	// show exception frame
 	t_int_nest = perf_end();
+	if (xTaskResumeFromISR(task2_handle) == pdTRUE) {
+		portYIELD_FROM_ISR();	/* need to make task switch */
+	}
 	perf_start();
 }
 
 /**
- * \brief  soft interrupt
- * \details Call trap_s instruction to raise the exception.
+ * \brief  low priority interrupt
+ * \details write AUX_IRQ_HINT to raise higher priority interrtupt.
  * \param[in] *p_excinf
  */
-static void soft_interrupt(void *p_exinf)
+static void interrupt_low_pri(void *p_exinf)
 {
 	t_t1_int = perf_end();
 	perf_start();
-	Asm("trap_s 1");
+	_arc_aux_write(AUX_IRQ_HINT, INTNO_HIGH_PRI);	/*!< activate high priority interrupt */
 	t_nest_int = perf_end();
 	perf_start();
 }

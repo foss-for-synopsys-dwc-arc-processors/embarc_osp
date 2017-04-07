@@ -30,6 +30,11 @@
  * \date 2016-11-21
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
+/**
+ * \file
+ * \ingroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
+ * \brief	freertos kernel secure example container1 head file
+ */
 #ifndef CONTAINER1_H
 #define CONTAINER1_H
 
