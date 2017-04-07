@@ -83,27 +83,6 @@
 #include "arc_asm_common.h"
 
 /*
- *  task dispatcher
- *
- */
-	.text
-	.align 4
-	.global dispatch
-dispatch:
-/*
- *  the pre-conditions of this routine are task context, CPU is
- *  locked, dispatch is enabled.
- */	
-	sr 	blink, [AUX_ERRET]
-	lr 	blink, [AUX_STATUS32]
-	sr 	blink, [AUX_ERSTATUS]
-	EXCEPTION_PROLOGUE
-	SAVE_CALLEE_REGS
-	ld	r0, [pxCurrentTCB]
-	b	dispatcher
-
-
-/*
  *  start dispatch
  */
 	.global start_dispatch

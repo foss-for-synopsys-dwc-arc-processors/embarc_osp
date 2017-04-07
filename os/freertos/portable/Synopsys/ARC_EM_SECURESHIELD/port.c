@@ -286,11 +286,7 @@ void vPortYieldFromIsr(void)
 /* ----------------------------------------------------------------------------*/
 void vPortYield(void)
 {
-	unsigned int status32;
-
-	status32 = cpu_lock_save();
-	dispatch();
-	cpu_unlock_restore(status32);
+	Asm("trap_s 1");
 }
 
 /* --------------------------------------------------------------------------*/

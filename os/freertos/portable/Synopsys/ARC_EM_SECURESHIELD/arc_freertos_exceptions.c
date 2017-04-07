@@ -79,6 +79,14 @@
 #ifdef __GNU__
 extern void gnu_printf_setup(void);
 #endif
+
+extern unsigned int context_switch_reqflg;
+
+static void trap_task_switch_handler(void)
+{
+    context_switch_reqflg = 1; // require a context switch
+}
+
 /**
  * \brief  freertos related cpu exception initialization, all the interrupts handled by freertos must be not
  * fast irqs. If fiq is needed, please install the default firq_exc_entry or your own fast irq entry into
@@ -86,7 +94,7 @@ extern void gnu_printf_setup(void);
  */
 void freertos_exc_init(void)
 {
-
+    exc_handler_install(EXC_NO_TRAP, (EXC_HANDLER)trap_task_switch_handler);
 #ifdef __GNU__
 	gnu_printf_setup();
 #endif
