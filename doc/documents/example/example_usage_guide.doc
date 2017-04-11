@@ -378,6 +378,10 @@ Multiple EMSK boards are required to run or debug application code on a single P
  + For EMSK 2.3 support, MWDT version >= 2016.12 is prefered.
    In EMSK 2.3, the EM7d core is an ARC EM core with secure features, but some secure feature related compiler options are introduced in MWDT 2016.12.
 
+ + If you can run any of the examples provided for the first time, but for the second time, it hanged up, you need to re-configure the core configuration of the board.
+
+ + Server examples for matrixssl, wolfssl and mbedtls may not work correctly as expected, just ignore it, since the we suggest developer to use emsk as a tls/dtls client, not a server.
+
  + Here are some issues you need to take care of when you are using ARC GNU 2016.03.
    - Install EMSK Digilent JTAG drivers on Windows for ARC GNU
    You need to install new drivers for EMSK digilent JTAG.
