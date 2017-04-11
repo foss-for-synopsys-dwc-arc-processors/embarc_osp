@@ -32,7 +32,7 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_BOOTLOADER		embARC Bootloader Example
+ * \defgroup	EMBARC_APP_BAREMETAL_BOOTLOADER		embARC Secondary Bootloader Example
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
  * \ingroup	EMBARC_APPS_MID_NTSHELL
@@ -49,6 +49,7 @@
  *
  * ### Design Concept
  *     This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program.
+ *     And this example itself can be used as ntshell application.
  *
  * ### Usage Manual
  *     As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA,
@@ -99,39 +100,42 @@
  *          \endcode
  *     - Program generated secondary bootloader binary file into SPIFlash
  *        + Insert SDCard to your PC, and copy the binary file *obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin* to SDCard Root, and rename it to *em7d_2bt.bin*
- *        + Insert the SDCard to EMSK Board, and build and run the <em><embARC>/example/baremetal/bootloader</em> example, please choose the right core configuration
+ *        + Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the <em><embARC>/example/baremetal/bootloader</em> example,
+ *          then press any button to stop auto boot process, and enter to ntshell command mode.
  *        + Then use ntshell command *spirw* to program the *em7d_2bt.bin* into spiflash.
  *            - Firstly, run *spirw* to show help
  *            - Secondly, run *spirw -i* to check SPIFlash ID, it should be **Device ID = ef4018**
  *            - Thirdly, run *spirw -w em7d_2bt.bin 0x17f00000 0x17f00004* to program spiflash
  *            - Check the output message to see if if was programmed successfully.
  *            - ![ScreenShot of program secondary bootloader to spiflash](pic/images/example/emsk/emsk_bootloader_program2splflash.jpg)
- *        * If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.
+ *        + If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.
+ *        + If the sdcard already contains the *boot.bin* in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.
+ *        + You can goto the next step to generate the *boot.bin* for proper application you want to be auto-loaded in sdcard.
  *        ![ScreenShot of secondary bootloader autoboot when board configuration is reloaded](pic/images/example/emsk/emsk_bootloader_onspiflash.jpg)
  *     - Generate *boot.bin* using any embARC example which ram start address should be 0x10000000 and use bootloader to run it
- *        * Here take <em><embARC>/example/freertos/kernel</em> for example
- *        * cd <embARC>/example/freertos/kernel
- *        * Build and generate binary file: *make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin*
- *        * Insert SDCard to PC, and copy generated binary file *obj_emsk_23/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
- *        * Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
- *        * ![ScreenShot of secondary bootloader auto load boot.bin](pic/images/example/emsk/emsk_bootloader_loadbootbin.jpg)
+ *        + Here take <em><embARC>/example/freertos/kernel</em> for example
+ *        + cd <embARC>/example/freertos/kernel
+ *        + Build and generate binary file: *make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin*
+ *        + Insert SDCard to PC, and copy generated binary file *obj_emsk_23/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
+ *        + Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
+ *        + ![ScreenShot of secondary bootloader auto load boot.bin](pic/images/example/emsk/emsk_bootloader_loadbootbin.jpg)
  *     - Know Issues
- *        * Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.
+ *        + Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.
  *
  *  **The secondary bootloader is a complement of the primary bootloader, and provides the following functions:**
  *     - File operations on SD card
  *     - Operations on the EMSK, GPIO, I2C, SPI flash
  *     - Operations on ARC processors
  *     - Automatic boot from SD card, using following instructions:
- *     	  * burn the bin file of bootloader into EMSK spi flash using spirw command <b>spirw -w bootloader.bin 0x17f00000 0x17f00004 </b> with the help of JTAG
- *     	  * the primary bootloader should be able to load the secondary bootloader
- *     	  * put the file you want to boot in the root directory of SD card, name it boot.bin
- *     	  * plug in SD card
+ *     	  + burn the bin file of bootloader into EMSK spiflash using spirw command <b>spirw -w bootloader.bin 0x17f00000 0x17f00004 </b> with the help of JTAG
+ *     	  + the primary bootloader should be able to load the secondary bootloader
+ *     	  + put the file you want to boot in the root directory of SD card, name it boot.bin
+ *     	  + plug in SD card
  *     - LED Status of loading application(boot.bin)
- *        * Start to load application: LED on board -> 0x0F
- *        * Load application finished: LED on board -> 0xFF, if application is running normally, LED will quickly change to 0x0
- *        * Load application failed: LED on board -> 0xAA
- *        * Skip loading application, and enter to NTShell runtime: LED on board -> 0x0
+ *        + Start to load application: LED on board -> 0x0F
+ *        + Load application finished: LED on board -> 0xFF, if application is running normally, LED will quickly change to 0x0
+ *        + Load application failed: LED on board -> 0xAA
+ *        + Skip loading application, and enter to NTShell runtime: LED on board -> 0x0
  *     - Type *help* command in ntshell to show the list of supported commands.
  *
  *  ![ScreenShot of bootloader under baremetal](pic/images/example/emsk/emsk_bootloader.jpg)

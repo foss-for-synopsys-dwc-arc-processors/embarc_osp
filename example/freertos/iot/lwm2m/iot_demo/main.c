@@ -55,6 +55,7 @@
  *
  *
  * ### Extra Comments
+ *    A detailed application note will be provided to explain how to run this demo.
  *
  */
 
