@@ -638,6 +638,8 @@ FAQs</h1>
 <ul>
 <li>For TCF support for ARC GNU in embARC, you need to get a <em>tcftool</em> from Metaware or its lite version. Since TCF support in embARC relied on the <em>tcftool</em> in Metaware toolchain, so you need to copy the tool from Metaware or its lite version if you want to build the application using ARC GNU toolchain.</li>
 <li>For EMSK 2.3 support, MWDT version &gt;= 2016.12 is prefered. In EMSK 2.3, the EM7d core is an ARC EM core with secure features, but some secure feature related compiler options are introduced in MWDT 2016.12.</li>
+<li>If you can run any of the examples provided for the first time, but for the second time, it hanged up, you need to re-configure the core configuration of the board.</li>
+<li>Server examples for matrixssl, wolfssl and mbedtls may not work correctly as expected, just ignore it, since the we suggest developer to use emsk as a tls/dtls client, not a server.</li>
 <li>Here are some issues you need to take care of when you are using ARC GNU 2016.03.<ul>
 <li>Install EMSK Digilent JTAG drivers on Windows for ARC GNU You need to install new drivers for EMSK digilent JTAG. For how to do it see <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a>.</li>
 <li>Installing the Digilent JTAG drivers for ARC GNU affects the usage of Metaware debugger, so if you want to switch to using the MetaWare debugger, you need to uninstall the Digilent JTAG drivers for ARC GNU, and then install drivers provided by digilent. System reboot might be needed.</li>
@@ -706,7 +708,7 @@ FAQs</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="page_example.html">Example</a></li>
-    <li class="footer">Generated on Tue Apr 11 2017 15:31:56 for embARC by
+    <li class="footer">Generated on Tue Apr 11 2017 16:01:03 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
