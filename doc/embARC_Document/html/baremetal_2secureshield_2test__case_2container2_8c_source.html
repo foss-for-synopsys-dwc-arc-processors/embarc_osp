@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('baremetal_2secureshield_2test__case_2c
 <div class="title">baremetal/secureshield/test_case/container2.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* ------------------------------------------</span></div>
+<a href="baremetal_2secureshield_2test__case_2container2_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* ------------------------------------------</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2017, Synopsys, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without modification,</span></div>
@@ -131,52 +131,56 @@ $(document).ready(function(){initNavTree('baremetal_2secureshield_2test__case_2c
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2016-12-01</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Wayne Ren(Wei.Ren@synopsys.com)</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__assert_8h.html">embARC_assert.h</a>&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;container1.h&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;container2.h&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;container4.h&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/* container2 is secure and linked with other normal containers</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">   so do not call normal world&#39;s code, as AUX_SEC_KP will be modified </span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">   If you want to do this,  save AUX_SEC_KP first and retore it after call */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> tst_func3(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        ret = container_call(container3, tst_func4, 1, 2, 3, 4);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ret = container_call(container4, tst_func_sec1);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">/* secure container can directly access the system resources */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        _arc_aux_read(<a class="code" href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga09ab13132c163e6d01b021cec056ea32">AUX_TIMER0_CNT</a>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga98018d89487c4a101cc3d8b9a9dd0d09">arc_int_enable</a>(INTNO_SWI2);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga17aa45afff4b827df337f4fcdc3d3423">arc_int_sw_trigger</a>(INTNO_SWI2);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga17aa45afff4b827df337f4fcdc3d3423">arc_int_sw_trigger</a>(INTNO_SWI1);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">int</span> tst_func5(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3, <span class="keywordtype">int</span> arg4, <span class="keywordtype">int</span> arg5)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">/* container 2 is secure, it can directly access all system resources, no exception raised */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">/* the area pointed by challenge1 belongs to container1 */</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        container1_context.initialized = 0;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> 5;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> soft_interrupt2(<span class="keywordtype">void</span> *p_exinf)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">/* if secure container is not really in secure state, _arc_lr_reg will raise an exception */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        _arc_aux_read(<a class="code" href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gad07a04f21e4b6880f191139bdc714cf8">AUX_IRQ_CTRL</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__assert_8h.html">embARC_assert.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baremetal_2secureshield_2test__case_2container1_8h.html">container1.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baremetal_2secureshield_2test__case_2container2_8h.html">container2.h</a>&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="container4_8h.html">container4.h</a>&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* container2 is secure and linked with other normal containers</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">   so do not call normal world&#39;s code, as AUX_SEC_KP will be modified </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">   If you want to do this,  save AUX_SEC_KP first and retore it after call */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> tst_func3(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        ret = container_call(container3, tst_func4, 1, 2, 3, 4);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        ret = container_call(container4, tst_func_sec1);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">/* secure container can directly access the system resources */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        _arc_aux_read(<a class="code" href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga09ab13132c163e6d01b021cec056ea32">AUX_TIMER0_CNT</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga98018d89487c4a101cc3d8b9a9dd0d09">arc_int_enable</a>(INTNO_SWI2);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga17aa45afff4b827df337f4fcdc3d3423">arc_int_sw_trigger</a>(INTNO_SWI2);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga17aa45afff4b827df337f4fcdc3d3423">arc_int_sw_trigger</a>(INTNO_SWI1);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">int</span> tst_func5(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3, <span class="keywordtype">int</span> arg4, <span class="keywordtype">int</span> arg5)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">/* container 2 is secure, it can directly access all system resources, no exception raised */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">/* the area pointed by challenge1 belongs to container1 */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        container1_context.initialized = 0;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> 5;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="ttc" id="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_html_gad07a04f21e4b6880f191139bdc714cf8"><div class="ttname"><a href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gad07a04f21e4b6880f191139bdc714cf8">AUX_IRQ_CTRL</a></div><div class="ttdeci">#define AUX_IRQ_CTRL</div><div class="ttdef"><b>Definition:</b> <a href="arc_8h_source.html#l00355">arc.h:355</a></div></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> soft_interrupt2(<span class="keywordtype">void</span> *p_exinf)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">/* if secure container is not really in secure state, _arc_lr_reg will raise an exception */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        _arc_aux_read(<a class="code" href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gad07a04f21e4b6880f191139bdc714cf8">AUX_IRQ_CTRL</a>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="ttc" id="container4_8h_html"><div class="ttname"><a href="container4_8h.html">container4.h</a></div><div class="ttdoc">secureshield test case example container4 head file </div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_html_gad07a04f21e4b6880f191139bdc714cf8"><div class="ttname"><a href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gad07a04f21e4b6880f191139bdc714cf8">AUX_IRQ_CTRL</a></div><div class="ttdeci">#define AUX_IRQ_CTRL</div><div class="ttdef"><b>Definition:</b> <a href="arc_8h_source.html#l00357">arc.h:357</a></div></div>
+<div class="ttc" id="baremetal_2secureshield_2test__case_2container1_8h_html"><div class="ttname"><a href="baremetal_2secureshield_2test__case_2container1_8h.html">container1.h</a></div><div class="ttdoc">secureshield test case example container1 head file </div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
+<div class="ttc" id="baremetal_2secureshield_2test__case_2container2_8h_html"><div class="ttname"><a href="baremetal_2secureshield_2test__case_2container2_8h.html">container2.h</a></div><div class="ttdoc">secureshield test case example container2 head file </div></div>
 <div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_ga17aa45afff4b827df337f4fcdc3d3423"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga17aa45afff4b827df337f4fcdc3d3423">arc_int_sw_trigger</a></div><div class="ttdeci">Inline void arc_int_sw_trigger(const uint32_t intno)</div><div class="ttdoc">trigger the interrupt in software </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00322">arc_exception.h:322</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_html_ga09ab13132c163e6d01b021cec056ea32"><div class="ttname"><a href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga09ab13132c163e6d01b021cec056ea32">AUX_TIMER0_CNT</a></div><div class="ttdeci">#define AUX_TIMER0_CNT</div><div class="ttdef"><b>Definition:</b> <a href="arc_8h_source.html#l00231">arc.h:231</a></div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_html_ga09ab13132c163e6d01b021cec056ea32"><div class="ttname"><a href="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga09ab13132c163e6d01b021cec056ea32">AUX_TIMER0_CNT</a></div><div class="ttdeci">#define AUX_TIMER0_CNT</div><div class="ttdef"><b>Definition:</b> <a href="arc_8h_source.html#l00233">arc.h:233</a></div></div>
 <div class="ttc" id="emb_a_r_c__assert_8h_html"><div class="ttname"><a href="emb_a_r_c__assert_8h.html">embARC_assert.h</a></div><div class="ttdoc">necessary definitions of assert </div></div>
 <div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_ga98018d89487c4a101cc3d8b9a9dd0d09"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga98018d89487c4a101cc3d8b9a9dd0d09">arc_int_enable</a></div><div class="ttdeci">Inline void arc_int_enable(const uint32_t intno)</div><div class="ttdoc">enable the specific int </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00218">arc_exception.h:218</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -185,8 +189,8 @@ $(document).ready(function(){initNavTree('baremetal_2secureshield_2test__case_2c
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_4a90417cf3b801ec833de2fe59fe3550.html">baremetal</a></li><li class="navelem"><a class="el" href="dir_6f347b12facc01e54449317297d699de.html">secureshield</a></li><li class="navelem"><a class="el" href="dir_6cd7514f9e558e0339e2a5fd931044e3.html">test_case</a></li><li class="navelem"><b>container2.c</b></li>
-    <li class="footer">Generated on Fri Mar 24 2017 15:51:31 for embARC by
+    <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_4a90417cf3b801ec833de2fe59fe3550.html">baremetal</a></li><li class="navelem"><a class="el" href="dir_6f347b12facc01e54449317297d699de.html">secureshield</a></li><li class="navelem"><a class="el" href="dir_6cd7514f9e558e0339e2a5fd931044e3.html">test_case</a></li><li class="navelem"><a class="el" href="baremetal_2secureshield_2test__case_2container2_8c.html">container2.c</a></li>
+    <li class="footer">Generated on Tue Apr 11 2017 15:31:49 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

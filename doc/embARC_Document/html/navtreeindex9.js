@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"structcallee__frame.html#ab02e1276538442db44a11f8e559c3227":[10,0,2,0,3,8],
+"structcallee__frame.html#abbbd829027438bd905cbb55237e8f628":[10,0,2,0,3,0],
 "structcallee__frame.html#acbf5c297b3451a0f4014149da75be950":[10,0,2,0,3,10],
 "structcallee__frame.html#afc174652d1cf6f37a09b7cd147528741":[10,0,2,0,3,9],
 "structdev__buffer.html":[10,2,0,0,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "structictl__gpio__reg.html":[10,1,0,1,0,3],
 "structictl__gpio__reg.html#a0b97ee12d5dfe511b553a43ad5d9b424":[10,1,0,1,0,3,2],
 "structictl__gpio__reg.html#a3215cd02633159dcb75351decbc7d9fb":[10,1,0,1,0,3,3],
-"structictl__gpio__reg.html#a3d46f23c98a3964a736c48785021c511":[10,1,0,1,0,3,4],
-"structictl__gpio__reg.html#a431b9da6f2002d93bfaec89d0604e931":[10,1,0,1,0,3,5],
-"structictl__gpio__reg.html#a8171d50b47b2f51a4fe8cb0584d987b2":[10,1,0,1,0,3,1]
+"structictl__gpio__reg.html#a3d46f23c98a3964a736c48785021c511":[10,1,0,1,0,3,4]
 };

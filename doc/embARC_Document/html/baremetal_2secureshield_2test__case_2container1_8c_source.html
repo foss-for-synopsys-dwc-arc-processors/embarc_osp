@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('baremetal_2secureshield_2test__case_2c
 <div class="title">baremetal/secureshield/test_case/container1.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* ------------------------------------------</span></div>
+<a href="baremetal_2secureshield_2test__case_2container1_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* ------------------------------------------</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2017, Synopsys, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without modification,</span></div>
@@ -132,55 +132,57 @@ $(document).ready(function(){initNavTree('baremetal_2secureshield_2test__case_2c
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Wayne Ren(Wei.Ren@synopsys.com)</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__assert_8h.html">embARC_assert.h</a>&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;background_container.h&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;container1.h&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a> container1_context;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> tst_func0(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func0 in container 1, no arguments\r\n&quot;</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;my container id is:%d\r\n&quot;</span>,secureshield_container_id_self());</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;the id of caller is:%d\r\n&quot;</span>, secureshield_container_id_caller());</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">int</span> tst_func1(<span class="keywordtype">int</span> arg1)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func1 in container 1, arguments are:%d\r\n&quot;</span>, arg1);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        container1_context.initialized = 1;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_enable(INTNO_SWI1) != 0) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to enable INTNO_SWI1\r\n&quot;</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_sw_trigger(INTNO_SWI1) != 0) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to trigger soft interrupt1 \r\n&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;container call from 1 to 2\r\n&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;ret is:%x\r\n&quot;</span>, container_call(container2, tst_func3, 1, 2, 3));</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">int</span> tst_func2(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">//EMBARC_PRINTF(&quot;container call in cycles:%d\r\n&quot;, secureshield_perf_end());</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func2 in container 1, arguments are:%d,%d\r\n&quot;</span>, arg1, arg2);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">//secureshield_perf_start();</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> soft_interrupt1(<span class="keywordtype">void</span> *p_exinf)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;soft interrupt 1 interrupt handler\r\n&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__assert_8h.html">embARC_assert.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baremetal_2secureshield_2test__case_2background__container_8h.html">background_container.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="baremetal_2secureshield_2test__case_2container1_8h.html">container1.h</a>&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a> container1_context;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> tst_func0(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func0 in container 1, no arguments\r\n&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;my container id is:%d\r\n&quot;</span>,secureshield_container_id_self());</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;the id of caller is:%d\r\n&quot;</span>, secureshield_container_id_caller());</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">int</span> tst_func1(<span class="keywordtype">int</span> arg1)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func1 in container 1, arguments are:%d\r\n&quot;</span>, arg1);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        container1_context.initialized = 1;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_enable(INTNO_SWI1) != 0) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to enable INTNO_SWI1\r\n&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_sw_trigger(INTNO_SWI1) != 0) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to trigger soft interrupt1 \r\n&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;container call from 1 to 2\r\n&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;ret is:%x\r\n&quot;</span>, container_call(container2, tst_func3, 1, 2, 3));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">int</span> tst_func2(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">//EMBARC_PRINTF(&quot;container call in cycles:%d\r\n&quot;, secureshield_perf_end());</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func2 in container 1, arguments are:%d,%d\r\n&quot;</span>, arg1, arg2);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">//secureshield_perf_start();</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> 2;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> soft_interrupt1(<span class="keywordtype">void</span> *p_exinf)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;soft interrupt 1 interrupt handler\r\n&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="ttc" id="baremetal_2secureshield_2test__case_2container1_8h_html"><div class="ttname"><a href="baremetal_2secureshield_2test__case_2container1_8h.html">container1.h</a></div><div class="ttdoc">secureshield test case example container1 head file </div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="struct_t_e_s_t___c_o_n_t_e_x_t_html"><div class="ttname"><a href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="baremetal_2secureshield_2test__case_2background__container_8h_source.html#l00005">baremetal/secureshield/test_case/background_container.h:5</a></div></div>
+<div class="ttc" id="baremetal_2secureshield_2test__case_2background__container_8h_html"><div class="ttname"><a href="baremetal_2secureshield_2test__case_2background__container_8h.html">background_container.h</a></div><div class="ttdoc">secureshield test case example background container head file </div></div>
+<div class="ttc" id="struct_t_e_s_t___c_o_n_t_e_x_t_html"><div class="ttname"><a href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="baremetal_2secureshield_2test__case_2background__container_8h_source.html#l00044">baremetal/secureshield/test_case/background_container.h:44</a></div></div>
 <div class="ttc" id="emb_a_r_c__assert_8h_html"><div class="ttname"><a href="emb_a_r_c__assert_8h.html">embARC_assert.h</a></div><div class="ttdoc">necessary definitions of assert </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -188,8 +190,8 @@ $(document).ready(function(){initNavTree('baremetal_2secureshield_2test__case_2c
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_4a90417cf3b801ec833de2fe59fe3550.html">baremetal</a></li><li class="navelem"><a class="el" href="dir_6f347b12facc01e54449317297d699de.html">secureshield</a></li><li class="navelem"><a class="el" href="dir_6cd7514f9e558e0339e2a5fd931044e3.html">test_case</a></li><li class="navelem"><b>container1.c</b></li>
-    <li class="footer">Generated on Fri Mar 24 2017 15:51:31 for embARC by
+    <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_4a90417cf3b801ec833de2fe59fe3550.html">baremetal</a></li><li class="navelem"><a class="el" href="dir_6f347b12facc01e54449317297d699de.html">secureshield</a></li><li class="navelem"><a class="el" href="dir_6cd7514f9e558e0339e2a5fd931044e3.html">test_case</a></li><li class="navelem"><a class="el" href="baremetal_2secureshield_2test__case_2container1_8c.html">container1.c</a></li>
+    <li class="footer">Generated on Tue Apr 11 2017 15:31:49 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

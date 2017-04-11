@@ -362,158 +362,162 @@ $(document).ready(function(){initNavTree('application_2aws__iot__smarthome__mult
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                rc = aws_iot_shadow_connect(&amp;mqttClient, &amp;scp);</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Shadow Connection Error %d&quot;</span>, rc);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;\r\nPlease check the following things:&quot;</span>)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                        IOT_INFO(&quot;1. Whether the AWS_IOT_MQTT_HOST in aws_iot_config.h is changed according to your aws account.&quot;);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        IOT_INFO(&quot;2. Whether the rootCA, clientCRT and clientKey files are replaced according to your aws account.&quot;);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        IOT_INFO(&quot;3. Whether the modified rootCA, clientCRT and clientKey files are copied to your SDCard.\r\n&quot;);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        continue;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                } else {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;Shadow Connection OK&quot;</span>);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                <span class="comment">/*</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">                 * Enable Auto Reconnect functionality. Minimum and Maximum time of Exponential backoff are set in aws_iot_config.h</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">                 *  #AWS_IOT_MQTT_MIN_RECONNECT_WAIT_INTERVAL</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">                 *  #AWS_IOT_MQTT_MAX_RECONNECT_WAIT_INTERVAL</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">                 */</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                rc = aws_iot_shadow_set_autoreconnect_status(&amp;mqttClient, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Unable to set Auto Reconnect to true - %d&quot;</span>, rc);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                        <span class="keywordflow">return</span> rc;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                }</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                rc = aws_iot_shadow_register_delta(&amp;mqttClient, &amp;LivingRoomLightsActuator);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Shadow Register Delta Error&quot;</span>);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;Shadow Register Delta OK&quot;</span>);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                }</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                smarthome_init();</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                controlLivingRoomLights(LivingRoomLights);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Failed to connect to AWS_IOT_MQTT_HOST: %s&quot;</span>, sp.pHost);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Shadow Connection Error %d&quot;</span>, rc);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;\r\nPlease check the following things:&quot;</span>)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        IOT_INFO(&quot;1. Whether the AWS_IOT_MQTT_HOST in aws_iot_config.h is changed according to your aws account.&quot;);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        IOT_INFO(&quot;2. Whether the rootCA, clientCRT and clientKey files are replaced according to your aws account.&quot;);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        IOT_INFO(&quot;3. Whether the modified rootCA(%s), clientCRT(%s) and clientKey(%s) files are copied to the right folder(%s) in your SDCard.&quot;,\</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                         cafileName, clientCRTName, clientKeyName, CERT_ROOTDIR);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        IOT_INFO(&quot;4. If everything is modified and setup correctly, just wait for a while for connection retry.\r\n&quot;);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        vTaskDelay(1000);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                        continue;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                } else {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;Shadow Connection OK&quot;</span>);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="comment">/*</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">                 * Enable Auto Reconnect functionality. Minimum and Maximum time of Exponential backoff are set in aws_iot_config.h</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">                 *  #AWS_IOT_MQTT_MIN_RECONNECT_WAIT_INTERVAL</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">                 *  #AWS_IOT_MQTT_MAX_RECONNECT_WAIT_INTERVAL</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment">                 */</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                rc = aws_iot_shadow_set_autoreconnect_status(&amp;mqttClient, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Unable to set Auto Reconnect to true - %d&quot;</span>, rc);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                        <span class="keywordflow">return</span> rc;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                rc = aws_iot_shadow_register_delta(&amp;mqttClient, &amp;LivingRoomLightsActuator);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;Shadow Register Delta Error&quot;</span>);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;Shadow Register Delta OK&quot;</span>);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                }</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                last_LivingRoomLights = !LivingRoomLights;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                smarthome_init();</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                uint32_t act_idx = 0;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                <span class="keywordflow">while</span> (NETWORK_ATTEMPTING_RECONNECT == rc || NETWORK_RECONNECTED == rc || SUCCESS == rc) {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                        rc = aws_iot_shadow_yield(&amp;mqttClient, 200);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                        <span class="keywordflow">if</span> (NETWORK_ATTEMPTING_RECONNECT == rc) {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                                vTaskDelay(1000);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                                <span class="comment">// If the client is attempting to reconnect we will skip the rest of the loop.</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                        }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                        act_idx = 0;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                        <span class="keywordflow">if</span> (LivingRoomLights_updated) {</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                curActuator[act_idx] = &amp;LivingRoomLightsActuator;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                                act_idx ++;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                                LivingRoomLights = !LivingRoomLights;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                                LivingRoomLights_updated = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                controlLivingRoomLights(LivingRoomLights);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                        }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                        <span class="keywordflow">if</span> (act_idx &gt; 0) {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                rc = aws_iot_shadow_init_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                                <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                                        <span class="keywordflow">if</span> (act_idx == 1) {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                                                rc = aws_iot_shadow_add_desired(JsonDocumentBuffer, sizeOfJsonDocumentBuffer, 1, curActuator[0]);</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                        }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                        <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                                rc = aws_iot_finalize_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                                                <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                                        IOT_INFO(<span class="stringliteral">&quot;Update Shadow Desired: %s&quot;</span>, JsonDocumentBuffer);</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                                                        rc = aws_iot_shadow_update(&amp;mqttClient, AWS_IOT_MY_THING_NAME, JsonDocumentBuffer, ShadowUpdateStatusCallback,</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                                                        NULL, 4, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                                                }</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                                        }</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                                }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                        }</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                        <span class="keywordflow">if</span> (rc != SUCCESS) {</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                controlLivingRoomLights(LivingRoomLights);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                last_LivingRoomLights = !LivingRoomLights;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                uint32_t act_idx = 0;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordflow">while</span> (NETWORK_ATTEMPTING_RECONNECT == rc || NETWORK_RECONNECTED == rc || SUCCESS == rc) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                        rc = aws_iot_shadow_yield(&amp;mqttClient, 200);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                        <span class="keywordflow">if</span> (NETWORK_ATTEMPTING_RECONNECT == rc) {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                vTaskDelay(1000);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                <span class="comment">// If the client is attempting to reconnect we will skip the rest of the loop.</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                        }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        act_idx = 0;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        <span class="keywordflow">if</span> (LivingRoomLights_updated) {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                curActuator[act_idx] = &amp;LivingRoomLightsActuator;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                                act_idx ++;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                                LivingRoomLights = !LivingRoomLights;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                LivingRoomLights_updated = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                controlLivingRoomLights(LivingRoomLights);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                        }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                        <span class="keywordflow">if</span> (act_idx &gt; 0) {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                rc = aws_iot_shadow_init_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                        <span class="keywordflow">if</span> (act_idx == 1) {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                                                rc = aws_iot_shadow_add_desired(JsonDocumentBuffer, sizeOfJsonDocumentBuffer, 1, curActuator[0]);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                        }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                                        <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                                                rc = aws_iot_finalize_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                                                <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                                                        IOT_INFO(<span class="stringliteral">&quot;Update Shadow Desired: %s&quot;</span>, JsonDocumentBuffer);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                                                        rc = aws_iot_shadow_update(&amp;mqttClient, AWS_IOT_MY_THING_NAME, JsonDocumentBuffer, ShadowUpdateStatusCallback,</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                                                        NULL, 4, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                                                }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                                        }</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                                }</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                        }</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                        rc = aws_iot_shadow_init_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                        <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                                rc = aws_iot_shadow_add_reported(JsonDocumentBuffer, sizeOfJsonDocumentBuffer, 1, &amp;LivingRoomLightsActuator);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                                <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                        rc = aws_iot_finalize_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                                        <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                                IOT_INFO(<span class="stringliteral">&quot;Update Shadow: %s&quot;</span>, JsonDocumentBuffer);</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                                rc = aws_iot_shadow_update(&amp;mqttClient, AWS_IOT_MY_THING_NAME, JsonDocumentBuffer, ShadowUpdateStatusCallback,</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                                                NULL, 4, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                        }</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                                }</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                        }</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                        toggleHeartbeatLed();</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;*****************************************************************************************\n&quot;</span>);</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        vTaskDelay(delay_ms);</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                        <span class="keywordflow">if</span> (rc != SUCCESS) {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                        }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                        rc = aws_iot_shadow_init_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                        <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                rc = aws_iot_shadow_add_reported(JsonDocumentBuffer, sizeOfJsonDocumentBuffer, 1, &amp;LivingRoomLightsActuator);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                                        rc = aws_iot_finalize_json_document(JsonDocumentBuffer, sizeOfJsonDocumentBuffer);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                        <span class="keywordflow">if</span> (rc == SUCCESS) {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                                                IOT_INFO(<span class="stringliteral">&quot;Update Shadow: %s&quot;</span>, JsonDocumentBuffer);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                                                rc = aws_iot_shadow_update(&amp;mqttClient, AWS_IOT_MY_THING_NAME, JsonDocumentBuffer, ShadowUpdateStatusCallback,</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                                                NULL, 4, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                                        }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                                }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                        }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                        toggleHeartbeatLed();</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                smarthome_close();</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;An error occurred in the loop %d&quot;</span>, rc);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                checkAndWaitNetwork();</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                <span class="keywordflow">if</span> (rc == FAILURE) {</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;Disconnecting&quot;</span>);</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                        rc = aws_iot_shadow_disconnect(&amp;mqttClient);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;*****************************************************************************************\n&quot;</span>);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        vTaskDelay(delay_ms);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                smarthome_close();</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                        IOT_ERROR(<span class="stringliteral">&quot;An error occurred in the loop %d&quot;</span>, rc);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                checkAndWaitNetwork();</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                        <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                                IOT_ERROR(<span class="stringliteral">&quot;Disconnect error %d&quot;</span>, rc);</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                        }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                }</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        }</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        smarthome_error();</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keywordflow">return</span> rc;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;}</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="comment">/* interrupt service routine for LivingRoomLights control */</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> LivingRoomLights_button_isr(<span class="keywordtype">void</span> *ptr)</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;{</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        LivingRoomLights_updated = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;}</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#define BUTTON_USED_MASK        (0x2)</span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> smarthome_init(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;{</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        <a class="code" href="structdev__gpio__bit__isr.html">DEV_GPIO_BIT_ISR</a> bit_isr;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        <a class="code" href="structdev__gpio__int__cfg.html">DEV_GPIO_INT_CFG</a> int_cfg;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_t_e_m_p.html#gacdef57c10980210fcb236b8e704133cd">temp_sensor_init</a>(TEMP_I2C_SLAVE_ADDRESS);</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        <a class="code" href="structdev__gpio.html">DEV_GPIO_PTR</a> port = <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j.html#gaa3ed54c8ec11f3ae9033d93c86e21c72">gpio_get_dev</a>(EMSK_BUTTON_PORT);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                <span class="keywordflow">if</span> (rc == FAILURE) {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                        IOT_INFO(<span class="stringliteral">&quot;Disconnecting&quot;</span>);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                        rc = aws_iot_shadow_disconnect(&amp;mqttClient);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                        <span class="keywordflow">if</span> (SUCCESS != rc) {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                                IOT_ERROR(<span class="stringliteral">&quot;Disconnect error %d&quot;</span>, rc);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                        }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                }</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        smarthome_error();</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="keywordflow">return</span> rc;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;}</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="comment">/* interrupt service routine for LivingRoomLights control */</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> LivingRoomLights_button_isr(<span class="keywordtype">void</span> *ptr)</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;{</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        LivingRoomLights_updated = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="preprocessor">#define BUTTON_USED_MASK        (0x2)</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> smarthome_init(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;{</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        <a class="code" href="structdev__gpio__bit__isr.html">DEV_GPIO_BIT_ISR</a> bit_isr;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        <a class="code" href="structdev__gpio__int__cfg.html">DEV_GPIO_INT_CFG</a> int_cfg;</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga628f933ae67d4f0acdedffd3b8b3ae99">GPIO_CMD_DIS_BIT_INT</a>, (<span class="keywordtype">void</span> *)BUTTON_USED_MASK);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_t_e_m_p.html#gacdef57c10980210fcb236b8e704133cd">temp_sensor_init</a>(TEMP_I2C_SLAVE_ADDRESS);</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#abd8f09f3ae841c70f4eac7996b131ba3">int_bit_mask</a> = BUTTON_USED_MASK;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#a3fc775dfe0535f3009cdc177411625c3">int_bit_type</a> = BUTTON_USED_MASK; <span class="comment">/* edge trigger */</span></div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#a1cb57db4fecc7b34137972ff05a3ecc5">int_bit_polarity</a> = 0x0; <span class="comment">/* falling sensitive */</span></div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#aceb9fb6c9a83d3d2a511cf63f87c3fda">int_bit_debounce</a> = BUTTON_USED_MASK; <span class="comment">/* with debounce */</span></div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gada822221fb039eb5549af98e8c88ce9b">GPIO_CMD_SET_BIT_INT_CFG</a>, &amp;int_cfg);</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        <span class="comment">/* LivingRoomLights button */</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        bit_isr.<a class="code" href="structdev__gpio__bit__isr.html#ac46b214e96ed33acaa2394e2fb75fe34">int_bit_ofs</a> = 1;</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        bit_isr.<a class="code" href="structdev__gpio__bit__isr.html#a4c3106c9eedd78f6b1dec60069db08b6">int_bit_handler</a> = LivingRoomLights_button_isr;</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gad43d27e0971a8cbca838dc69af2639a7">GPIO_CMD_SET_BIT_ISR</a>, &amp;bit_isr);</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga0dc3ba08f56ab2c5ca64e4beab70fed5">GPIO_CMD_ENA_BIT_INT</a>, (<span class="keywordtype">void</span> *)BUTTON_USED_MASK);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;}</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        <a class="code" href="structdev__gpio.html">DEV_GPIO_PTR</a> port = <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j.html#gaa3ed54c8ec11f3ae9033d93c86e21c72">gpio_get_dev</a>(EMSK_BUTTON_PORT);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga628f933ae67d4f0acdedffd3b8b3ae99">GPIO_CMD_DIS_BIT_INT</a>, (<span class="keywordtype">void</span> *)BUTTON_USED_MASK);</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#abd8f09f3ae841c70f4eac7996b131ba3">int_bit_mask</a> = BUTTON_USED_MASK;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#a3fc775dfe0535f3009cdc177411625c3">int_bit_type</a> = BUTTON_USED_MASK; <span class="comment">/* edge trigger */</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#a1cb57db4fecc7b34137972ff05a3ecc5">int_bit_polarity</a> = 0x0; <span class="comment">/* falling sensitive */</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        int_cfg.<a class="code" href="structdev__gpio__int__cfg.html#aceb9fb6c9a83d3d2a511cf63f87c3fda">int_bit_debounce</a> = BUTTON_USED_MASK; <span class="comment">/* with debounce */</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gada822221fb039eb5549af98e8c88ce9b">GPIO_CMD_SET_BIT_INT_CFG</a>, &amp;int_cfg);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="comment">/* LivingRoomLights button */</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        bit_isr.<a class="code" href="structdev__gpio__bit__isr.html#ac46b214e96ed33acaa2394e2fb75fe34">int_bit_ofs</a> = 1;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        bit_isr.<a class="code" href="structdev__gpio__bit__isr.html#a4c3106c9eedd78f6b1dec60069db08b6">int_bit_handler</a> = LivingRoomLights_button_isr;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gad43d27e0971a8cbca838dc69af2639a7">GPIO_CMD_SET_BIT_ISR</a>, &amp;bit_isr);</div>
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> smarthome_close(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;{</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <a class="code" href="structdev__gpio.html">DEV_GPIO_PTR</a> port = <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j.html#gaa3ed54c8ec11f3ae9033d93c86e21c72">gpio_get_dev</a>(EMSK_BUTTON_PORT);</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga628f933ae67d4f0acdedffd3b8b3ae99">GPIO_CMD_DIS_BIT_INT</a>, (<span class="keywordtype">void</span> *)BUTTON_USED_MASK);</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;}</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga0dc3ba08f56ab2c5ca64e4beab70fed5">GPIO_CMD_ENA_BIT_INT</a>, (<span class="keywordtype">void</span> *)BUTTON_USED_MASK);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;}</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> smarthome_close(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;{</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <a class="code" href="structdev__gpio.html">DEV_GPIO_PTR</a> port = <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j.html#gaa3ed54c8ec11f3ae9033d93c86e21c72">gpio_get_dev</a>(EMSK_BUTTON_PORT);</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        port-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">gpio_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga628f933ae67d4f0acdedffd3b8b3ae99">GPIO_CMD_DIS_BIT_INT</a>, (<span class="keywordtype">void</span> *)BUTTON_USED_MASK);</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;}</div>
 <div class="ttc" id="structdev__gpio__bit__isr_html"><div class="ttname"><a href="structdev__gpio__bit__isr.html">dev_gpio_bit_isr</a></div><div class="ttdoc">interrupt handler for each port bit </div><div class="ttdef"><b>Definition:</b> <a href="dev__gpio_8h_source.html#l00285">dev_gpio.h:285</a></div></div>
 <div class="ttc" id="structdev__gpio__int__cfg_html_abd8f09f3ae841c70f4eac7996b131ba3"><div class="ttname"><a href="structdev__gpio__int__cfg.html#abd8f09f3ae841c70f4eac7996b131ba3">dev_gpio_int_cfg::int_bit_mask</a></div><div class="ttdeci">uint32_t int_bit_mask</div><div class="ttdef"><b>Definition:</b> <a href="dev__gpio_8h_source.html#l00270">dev_gpio.h:270</a></div></div>
 <div class="ttc" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_html_ga659dba8a34f6d83194be83c3bdee0677"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga659dba8a34f6d83194be83c3bdee0677">dev_gpio::gpio_control</a></div><div class="ttdeci">int32_t(* gpio_control)(uint32_t ctrl_cmd, void *param)</div><div class="ttdef"><b>Definition:</b> <a href="dev__gpio_8h_source.html#l00338">dev_gpio.h:338</a></div></div>
@@ -544,7 +548,7 @@ $(document).ready(function(){initNavTree('application_2aws__iot__smarthome__mult
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_8544b725459c67a79d01ed8cb4e59e68.html">aws_iot_smarthome_multinode</a></li><li class="navelem"><a class="el" href="dir_7c56eabcb9bcfc0466bb10b5128def12.html">src</a></li><li class="navelem"><a class="el" href="dir_b3c893b3fb9952b1155c42b41e4f5743.html">livingRoom</a></li><li class="navelem"><a class="el" href="application_2aws__iot__smarthome__multinode_2src_2living_room_2main_8c.html">main.c</a></li>
-    <li class="footer">Generated on Fri Mar 24 2017 15:51:32 for embARC by
+    <li class="footer">Generated on Tue Apr 11 2017 15:31:50 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

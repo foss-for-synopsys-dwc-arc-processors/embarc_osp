@@ -40,7 +40,7 @@ var searchData=
   ['skip',['skip',['../structunit__test.html#adbea58cb2b76aa1dd384ea76e3c180b2',1,'unit_test']]],
   ['slave',['slave',['../structdev__spi__info.html#a9f0ece1223fa45457206ee925eb90047',1,'dev_spi_info']]],
   ['slv_5faddr',['slv_addr',['../structdev__iic__info.html#a155d96f61944dba9f8b8834772725302',1,'dev_iic_info']]],
-  ['soft_5finterrupt',['soft_interrupt',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga06c887bf221456b43a93438ee7cf17d1',1,'soft_interrupt(void *p_exinf):&#160;main.c'],['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l___s_e_c_u_r_e.html#ga06c887bf221456b43a93438ee7cf17d1',1,'soft_interrupt(void *p_exinf):&#160;background_container.c']]],
+  ['soft_5finterrupt',['soft_interrupt',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga06c887bf221456b43a93438ee7cf17d1',1,'main.c']]],
   ['somecomputing',['someComputing',['../classsome_computing.html',1,'']]],
   ['somecomputing_3c_20t_2c_200_20_3e',['someComputing&lt; T, 0 &gt;',['../classsome_computing_3_01_t_00_010_01_4.html',1,'']]],
   ['source',['source',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga54a126800987121aef7c38a0b04434d6',1,'_dma_channel']]],

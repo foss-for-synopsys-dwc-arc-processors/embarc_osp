@@ -42,7 +42,7 @@ var searchData=
   ['tinydtls_5fserver_2ec',['tinydtls_server.c',['../tinydtls__server_8c.html',1,'']]],
   ['toolchain',['Toolchain',['../group___t_o_o_l_c_h_a_i_n.html',1,'']]],
   ['tot_5flen',['tot_len',['../structdev__spi__transfer.html#a447ff59149a2a0dc87a493b2bf4c6c5a',1,'dev_spi_transfer']]],
-  ['trap_5fexception',['trap_exception',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga78005931d0d53e0184edc2eda550f633',1,'trap_exception(void *p_excinf):&#160;main.c'],['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l___s_e_c_u_r_e.html#ga78005931d0d53e0184edc2eda550f633',1,'trap_exception(void *p_excinf):&#160;background_container.c']]],
+  ['trap_5fexception',['trap_exception',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga78005931d0d53e0184edc2eda550f633',1,'main.c']]],
   ['tskpri_5fcoap_5fserver',['TSKPRI_COAP_SERVER',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___c_o_a_p___c_o_a_p___s_e_r_v_e_r.html#ga2c1cee3e4a2c8fe3819bcb429c087aee',1,'main.c']]],
   ['tskpri_5fechoclient_5ftest',['TSKPRI_ECHOCLIENT_TEST',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_a_t_r_i_x_s_s_l___e_c_h_o_c_l_i_e_n_t.html#ga1f34fde0cf0419e3737d792704d0aeb0',1,'echoclient.c']]],
   ['tskpri_5fechoserver_5ftest',['TSKPRI_ECHOSERVER_TEST',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_a_t_r_i_x_s_s_l___e_c_h_o_s_e_r_v_e_r.html#ga4d27be3948a5d3689d03445fceb926e3',1,'echoserver.c']]],

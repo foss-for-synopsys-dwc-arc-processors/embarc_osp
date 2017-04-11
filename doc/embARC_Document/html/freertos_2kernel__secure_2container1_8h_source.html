@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('freertos_2kernel__secure_2container1_8
 <div class="title">freertos/kernel_secure/container1.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*------------------------------------------</span></div>
+<a href="freertos_2kernel__secure_2container1_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*------------------------------------------</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2017, Synopsys, Inc. All rights reserved.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without modification,</span></div>
@@ -131,44 +131,44 @@ $(document).ready(function(){initNavTree('freertos_2kernel__secure_2container1_8
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2016-11-21</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Wayne Ren(Wei.Ren@synopsys.com)</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifndef CONTAINER1_H</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define CONTAINER1_H</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// memory region for secret data shared between container 1 and 2</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define CONTAINER_12_SHARED_ORIGIN      ((uint32_t)_f_data_container12_shared)</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define CONTAINER_12_SHARED_LENGTH      2048</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define SECRET_LEN      64</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define PWD_LEN         6</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define GET_SECRET      1</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define SET_PWD         2</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define SET_SECRET      3</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        uint8_t secret[SECRET_LEN+1];</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        uint8_t pwd[PWD_LEN+1];</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        uint8_t initialized;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        uint8_t fails;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <a class="code" href="struct_s_e_c_r_e_t___c_o_n_t_e_x_t.html">SECRET_CONTEXT</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">extern</span> uint8_t _f_data_container12_shared[];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> uint8_t _e_bss_container12_shared[];</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef CONTAINER1_H</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define CONTAINER1_H</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// memory region for secret data shared between container 1 and 2</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define CONTAINER_12_SHARED_ORIGIN      ((uint32_t)_f_data_container12_shared)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define CONTAINER_12_SHARED_LENGTH      2048</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define SECRET_LEN      64</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define PWD_LEN         6</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define GET_SECRET      1</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define SET_PWD         2</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define SET_SECRET      3</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        uint8_t secret[SECRET_LEN+1];</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        uint8_t pwd[PWD_LEN+1];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        uint8_t initialized;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        uint8_t fails;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;} <a class="code" href="struct_s_e_c_r_e_t___c_o_n_t_e_x_t.html">SECRET_CONTEXT</a>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">extern</span> int32_t init_secret(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">extern</span> int32_t operate_secret(<span class="keywordtype">char</span>* pwd, uint32_t cmd, <span class="keywordtype">char</span> * data);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="struct_s_e_c_r_e_t___c_o_n_t_e_x_t_html"><div class="ttname"><a href="struct_s_e_c_r_e_t___c_o_n_t_e_x_t.html">SECRET_CONTEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="baremetal_2secureshield_2secret_2secure_2container1_8h_source.html#l00011">baremetal/secureshield/secret/secure/container1.h:11</a></div></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">extern</span> uint8_t _f_data_container12_shared[];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">extern</span> uint8_t _e_bss_container12_shared[];</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">extern</span> int32_t init_secret(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">extern</span> int32_t operate_secret(<span class="keywordtype">char</span>* pwd, uint32_t cmd, <span class="keywordtype">char</span> * data);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="struct_s_e_c_r_e_t___c_o_n_t_e_x_t_html"><div class="ttname"><a href="struct_s_e_c_r_e_t___c_o_n_t_e_x_t.html">SECRET_CONTEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="baremetal_2secureshield_2secret__normal_2container1_8h_source.html#l00054">baremetal/secureshield/secret_normal/container1.h:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_4859bdb505fc77d673a475f3db3c7ec1.html">kernel_secure</a></li><li class="navelem"><b>container1.h</b></li>
-    <li class="footer">Generated on Fri Mar 24 2017 15:51:31 for embARC by
+    <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_4859bdb505fc77d673a475f3db3c7ec1.html">kernel_secure</a></li><li class="navelem"><a class="el" href="freertos_2kernel__secure_2container1_8h.html">container1.h</a></li>
+    <li class="footer">Generated on Tue Apr 11 2017 15:31:49 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

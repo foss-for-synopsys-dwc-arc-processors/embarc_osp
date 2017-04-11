@@ -184,7 +184,7 @@ Terminology</h2>
 </div><!-- fragment --><p>According to this access control table, the container is allocated the peripheral area of PIN_MUX, a 0x1000 bytes ram region starting from 0x10000, a GPIO interrupt (INTNO_GPIO), an auxiliary-register area starting from 0x21 with a size of 03. The container also has an interface (tst_func4) to provide the service with 4 arguments in the interface handler function</p>
 <p>The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute can be found in secureshield_vmpu_exports.h.</p>
 <h2>Secure Call</h2>
-<p>In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call secure functions. The following SecureShield runtime services are provided:</p><ul>
+<p>In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call the SecureShield runtime services. The following SecureShield runtime services are provided:</p><ul>
 <li>container call: call the services provided by other containers</li>
 <li>interrupt management: see secureshield_int_exports.h</li>
 <li>auxiliary-register access and benchmark function: see secureshield_sys_ops_exports.h</li>
@@ -209,8 +209,10 @@ Terminology</h2>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        ); \</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        res; \</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    })</div>
-</div><!-- fragment --><h3>Container Call</h3>
-<p>Although containers are isolated from each other, a container can provide services to other containers through container calls. This function or service must first be registered in an access control table. The background container has no interface.</p>
+</div><!-- fragment --><p>If SECURESHIELD_VERSION == 1, SECURE_INSTN is <b>trap_s</b>; If SECURESHIELD_VERSION == 2, SECURE_INSTN is <b>sjli</b>.</p>
+<h3>Container Call</h3>
+<p>Although containers are isolated from each other, a container can provide services to other containers through container interface. The container interface must first be registered in the access control table. The background container has no interface as its resources are shared to all other containers.</p>
+<p>To call a container interface, container all is required. The following is an example.</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;int tst_func2(int arg1, int arg2)</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;{</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;        return arg1+arg2;</div>
@@ -222,7 +224,16 @@ Terminology</h2>
 </div><!-- fragment --><p>In the above code, container1 has one interface named tst_func2 with two arguments to provide services. If other containers want to call this service, the following container call should be made:</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;ret = container_call(container1, tst_func2, 1, 2);</div>
 </div><!-- fragment --><p>1 and 2 are arguments passed to tst_fun2, ret is the return value of tst_func.</p>
-<p>Container calls can be nested, i.e., in a container interface, another container call can be made.</p>
+<p>The <b>container_call</b> will be expanded into the following assembly.</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;    mov r0, 1</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    mov r1, 2</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    SECURE_INSTN SECURESHIELD_SECURE_CALL_CONTAINER_IN</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    b skip_args1</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    .long SECURESHIELD_CONTAINER_CALL_MAGIC</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    .long tst_func2</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    .long container1_cfg_prt</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;skip_args1:</div>
+</div><!-- fragment --><p>Container calls can be nested, i.e., in a container interface, another container call can be made.</p>
 <p> 
 <div class="imagebox">
     <div style="width: 600px">
@@ -230,7 +241,8 @@ Terminology</h2>
         <p>Container call</p>
     </div>
 </div>
- <h2>Memory Map</h2>
+ <p>It should be noted that container call should not be made in the interrupt and exception handler. Because SecureShield runtime is not integrated with OS, in the container call which will cause container switch, task scheduler should be disabled to avoid task switch.</p>
+<h2>Memory Map</h2>
 <p>The memory map of a SecureShield application is shown as follow. There are two worlds, secure world and normal world. The normal world, consisting of normal containers, is in normal memory (normal rom and ram). The secure world, consisting of secure containers, is in secure memory (secure rom and ram). In each world, containers are isolated with each other through MPU, an address alignment is also required. Besides secure containers, SecureShield runtime, can be viewed as a special secure container, is in secure memory with a fixed position. SecureShiled runtime will be compiled and linked independently with the application, so it's a black box to application.</p>
 <p> 
 <div class="imagebox">
@@ -342,7 +354,7 @@ Steps to Create a SecureShield Application</h2>
 SecureShield Application Examples</h2>
 <p>There are several SecureShield application examples include in the embARC OSP distribution.</p><ul>
 <li><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___t_e_s_t___c_a_s_e.html">baremetal/secureshield/test_case</a> demonstrates and tests the features of SecureShield.</li>
-<li><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___s_e_c_r_e_t.html">baremetal/secureshield/secret</a> and its derived example <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___s_e_c_r_e_t2.html">baremetal/secureshield/secret2</a> shows examples of a secret being protected by a password.</li>
+<li><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___s_e_c_r_e_t___s_e_c_u_r_e.html">baremetal/secureshield/secret_secure</a> and its derived example <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___s_e_c_r_e_t___n_o_r_m_a_l.html">baremetal/secureshield/secret_normal</a> <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___s_e_c_r_e_t___s_e_c_u_r_e___s_i_d.html">baremetal/secureshield/secret_secure_sid</a>shows examples of a secret being protected by a password.</li>
 <li><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___s_e_c_u_r_e_s_h_i_e_l_d___d_t_l_s___c_l_i_e_n_t___i_p_v4.html">contiki/secureshield/dtls_client_ipv4</a> demonstrates how to integrate SecureShield in a full fledged application.</li>
 </ul>
 <h3><a class="anchor" id="subsect_lib_secureshield_application_feature_app"></a>
@@ -378,7 +390,7 @@ SecureShield TinyDTLS Client Example</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Mar 24 2017 15:51:37 for embARC by
+    <li class="footer">Generated on Tue Apr 11 2017 15:31:56 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
