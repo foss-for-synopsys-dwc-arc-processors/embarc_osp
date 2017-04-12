@@ -33,7 +33,8 @@
 #ifndef _SECURESHIELD_VMPU_EXPORTS_H_
 #define _SECURESHIELD_VMPU_EXPORTS_H_
 
-/* basic access control rights definitions */
+/* basic resource access control attribute definitions */
+/* access control right in user mode */
 #define SECURESHIELD_AC_UEXECUTE	0x0001UL
 #define SECURESHIELD_AC_UWRITE		0x0002UL
 #define SECURESHIELD_AC_UREAD		0x0004UL
@@ -41,7 +42,7 @@
 					SECURESHIELD_AC_UWRITE |\
 					SECURESHIELD_AC_UEXECUTE)
 
-/* access control right in system mode*/
+/* access control right in kernel mode */
 #define SECURESHIELD_AC_KEXECUTE	0x0008UL
 #define SECURESHIELD_AC_KWRITE		0x0010UL
 #define SECURESHIELD_AC_KREAD		0x0020UL
@@ -56,95 +57,80 @@
 #define SECURESHIELD_AC_ACCESS		(SECURESHIELD_AC_UAC | SECURESHIELD_AC_KAC |\
 					SECURESHIELD_AC_SECURE)
 
-/* system resource definitions */
+/* container resource definitions */
 #define SECURESHIELD_AC_MEMORY		0x0100UL
-#define SECURESHIELD_AC_STACK		0x0200UL
 #define SECURESHIELD_AC_PERIPHERAL	0x0400UL
 #define SECURESHIELD_AC_INTERFACE	0x0800UL
 #define SECURESHIELD_AC_IRQ		0x1000UL
 #define SECURESHIELD_AC_AUX		0x2000UL
 
-#define SECURESHIELD_AC_SIZE_ROUND_UP	0x10000000UL
-#define SECURESHIELD_AC_SIZE_ROUND_DOWN	0x20000000UL
-#define SECURESHIELD_AC_SHARED		0x40000000UL
-#define SECURESHIELD_AC_SECURE		0x80000000UL
-#define SECURESHIELD_AC_NORMAL		0x0UL
+/*  extended container resource access control attribute definitions */
+#define SECURESHIELD_AC_SIZE_ROUND_UP	0x10000000UL 	/* the resource size should be rounded up */
+#define SECURESHIELD_AC_SIZE_ROUND_DOWN	0x20000000UL	/* the resource size should be rounded down */
+#define SECURESHIELD_AC_SHARED		0x40000000UL	/* the resource is a shared resource (no implementation now) */
+#define SECURESHIELD_AC_SECURE		0x80000000UL 	/* the resource is a secure resource  */
+#define SECURESHIELD_AC_NORMAL		0x0UL 		/* the resource is a normal resource  */
 
 
+/* the following macros are combinations based on resource type and resource attribute */
+/* ROM area requires user privilege */
 #define SECURESHIELD_ACDEF_UROM		(SECURESHIELD_AC_MEMORY	|\
 					SECURESHIELD_AC_UREAD	|\
 					SECURESHIELD_AC_KREAD	)
-
+/* RAM area requires user privilege */
 #define SECURESHIELD_ACDEF_URAM		(SECURESHIELD_AC_MEMORY	|\
 					SECURESHIELD_AC_UREAD	|\
 					SECURESHIELD_AC_UWRITE	|\
 					SECURESHIELD_AC_KREAD	|\
 					SECURESHIELD_AC_KWRITE	)
 
-#define SECURESHIELD_ACDEF_UCONS	SECURESHIELD_ACDEF_UROM
-
+/* instruction area (.text) requires user privilege */
 #define SECURESHIELD_ACDEF_UTEXT	(SECURESHIELD_ACDEF_UROM |\
 					SECURESHIELD_AC_EXECUTE)
-
+/* memory area (.data, .bss) requires user privilege */
 #define SECURESHIELD_ACDEF_UDATA	SECURESHIELD_ACDEF_URAM
 #define SECURESHIELD_ACDEF_UBSS		SECURESHIELD_ACDEF_URAM
 
 
-#define SECURESHIELD_ACDEF_UPERIPH	(SECURESHIELD_AC_PERIPHERAL	|\
+/* peripheral area requires user privilege */
+#define SECURESHIELD_ACDEF_UPERIPH	(SECURESHIELD_AC_PERIPHERAL |\
 					SECURESHIELD_AC_UREAD	|\
 					SECURESHIELD_AC_UWRITE	|\
 					SECURESHIELD_AC_KREAD	|\
 					SECURESHIELD_AC_KWRITE	)
-
-#define SECURESHIELD_ACDEF_USTACK	(SECURESHIELD_AC_STACK	|\
-					SECURESHIELD_AC_UREAD	|\
-					SECURESHIELD_AC_UWRITE	|\
-					SECURESHIELD_AC_KREAD	|\
-					SECURESHIELD_AC_KWRITE)
-
+/* ROM area requires kernel privilege */
 #define SECURESHIELD_ACDEF_KROM		(SECURESHIELD_AC_MEMORY	|\
 					SECURESHIELD_AC_KREAD	)
 
+/* RAM area requires kernel privilege */
 #define SECURESHIELD_ACDEF_KRAM		(SECURESHIELD_AC_MEMORY	|\
 					SECURESHIELD_AC_KREAD	|\
 					SECURESHIELD_AC_KWRITE)
 
-#define SECURESHIELD_ACDEF_KCONS	SECURESHIELD_ACDEF_KROM
-
+/* instruction area (.text) requires kernel privilege */
 #define SECURESHIELD_ACDEF_KTEXT	(SECURESHIELD_ACDEF_KROM |\
 					SECURESHIELD_AC_KEXECUTE)
-
+/* memory area (.data, .bss) requires user privilege */
 #define SECURESHIELD_ACDEF_KDATA	SECURESHIELD_ACDEF_KRAM
 #define SECURESHIELD_ACDEF_KBSS		SECURESHIELD_ACDEF_KRAM
 
-
+/* peripheral area requires kernel privilege */
 #define SECURESHIELD_ACDEF_KPERIPH	(SECURESHIELD_AC_PERIPHERAL	|\
-					SECURESHIELD_AC_KREAD	|\
-					SECURESHIELD_AC_KWRITE)
-
-#define SECURESHIELD_ACDEF_KSTACK	(SECURESHIELD_AC_STACK	|\
 					SECURESHIELD_AC_KREAD	|\
 					SECURESHIELD_AC_KWRITE)
 
 
 #define SECURESHIELD_PAD32(x)		(32 - (sizeof(x) & ~0x1FUL))
 #define SECURESHIELD_CONTAINER_MAGIC	0x42CFB66FUL		/* magic number to identify container configuration */
-#define SECURESHIELD_CONTAINER_SECURE	0x1
-#define SECURESHILED_CONTAINER_NORMAL	0x0
+#define SECURESHIELD_CONTAINER_SECURE	0x1 			/* container type: secure */
+#define SECURESHILED_CONTAINER_NORMAL	0x0 			/* container type: normal */
 
 #define SECURESHIELD_MEM_SIZE_ROUND(x)	SECURESHIELD_REGION_ROUND_UP(x)
-
-#define SECURESHIELD_MIN_STACK_SIZE	 1024
-#define SECURESHIELD_MIN_STACK(x)	(((x)<SECURESHIELD_MIN_STACK_SIZE)?SECURESHIELD_MIN_STACK_SIZE:(x))
 
 
 #define SECURESHIELD_REGION_ROUND_DOWN(x)	((x) & ~((1UL<<SECURESHIELD_REGION_BITS(x))-1))
 #define SECURESHIELD_REGION_ROUND_UP(x)		(1UL<<SECURESHIELD_REGION_BITS(x))
 #define SECURESHIELD_STACK_SIZE_ROUND(x)	SECURESHIELD_REGION_ROUND_UP(x)
-
-#ifndef SECURESHIELD_SHIELD_STACK_SIZE
-#define SECURESHIELD_SHIELD_STACK_SIZE	SECURESHIELD_MIN_STACK_SIZE
-#endif/*SECURESHIELD_SHIELD_STACK*/
 
 
 typedef uint32_t CONTAINER_AC;
@@ -158,24 +144,24 @@ typedef struct
 
 typedef struct
 {
-	uint32_t magic;
-	uint32_t type;
-	uint32_t stack_size;
-	uint32_t *stack_area;
+	uint32_t magic; 	/* magic number to identify this structure */
+	uint32_t type;		/* container type */
+	uint32_t stack_size;	/* container stack size */
+	uint32_t *stack_area;	/* container stack area */
 
-	const CONTAINER_AC_ITEM* const ac_table;
-	uint32_t ac_count;
+	const CONTAINER_AC_ITEM* const ac_table; /* container resource access control table */
+	uint32_t ac_count; 	/* item counts in container resource access control table */
 
 	/* memory area */
-	void *text_start;
-	void *text_end;
-	void *rodata_start;
-	void *rodata_end;
-	void *data_start;
-	void *data_end;
-	void *data_load_start;
-	void *bss_start;
-	void *bss_end;
+	void *text_start;	/* the start address of container's .text section */
+	void *text_end;		/* the end address of container's .text section, no .text section if text_start == text_end */
+	void *rodata_start;	/* the start address of container's .rodata section */
+	void *rodata_end;	/* the end address of container's .rodata section, no .rodata section if rodata_start == text_end */
+	void *data_start;	/* the start address of container's .data section */
+	void *data_end;		/* the end address of container's .data section, no .data section if data_start == data_end */
+	void *data_load_start;  /* the start load address of container's .data section */
+	void *bss_start;	/* the start address of container's .bss section, container stack is in .bss section */
+	void *bss_end;		/* the end address of container's .bss section */
 } EMBARC_PACKED CONTAINER_CONFIG;
 
 
