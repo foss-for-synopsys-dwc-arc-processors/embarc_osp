@@ -43,9 +43,6 @@ extern int32_t container_id_self(void);
 #if SECURESHIELD_VERSION == 1
 
 extern void secureshield_sys_ops(INT_EXC_FRAME *frame);
-extern void perf_config(uint32_t overhead);
-extern void perf_start(void);
-extern uint32_t	perf_end(void);
 
 #elif SECURESHIELD_VERSION == 2
 /* secureshield version 1 specific system services */

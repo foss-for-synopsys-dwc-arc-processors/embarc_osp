@@ -78,8 +78,6 @@
 #include "background_container.h"
 
 
-
-
 static void tst_func7(int arg)
 {
 	EMBARC_PRINTF("test function 7 in background container:%d\r\n", arg);
@@ -102,26 +100,16 @@ void default_interrupt_handler(void *p_exinf)
 
 int main(void)
 {
-	//unsigned int cycles;
 
 	EMBARC_PRINTF("timer0 interrupt prioirty is:%d\r\n", secureshield_int_pri_get(INTNO_TIMER0));
 
-	//secureshield_perf_config();
-
-	//secureshield_perf_start();
 	int_handler_install(INTNO_SWI0, soft_interrupt0);
 	int_enable(INTNO_SWI0);
-	//cycles = secureshield_perf_end();
-
-	//EMBARC_PRINTF("int_enable cycles:%d\r\n", cycles);
-
+	
 	EMBARC_PRINTF("container call from background to 1 \r\n");
 	EMBARC_PRINTF("ret is:%x\r\n", container_call(container1, tst_func1, 1));
 
-	//secureshield_perf_start();
 	container_call(container1, tst_func2, 1, 2);
-	//cycles = secureshield_perf_end();
-	//EMBARC_PRINTF("container call out cycles:%d\r\n", cycles);
 
 	EMBARC_PRINTF("container call from background to 2\r\n");
 	EMBARC_PRINTF("ret is:%x\r\n", container_call(container2, tst_func5, 1, 2, 3, 4, 5));
@@ -135,10 +123,6 @@ int main(void)
 	EMBARC_PRINTF("IRQ_ACT is:%x\r\n", secureshield_arc_lr_reg(AUX_IRQ_ACT));
 
 	tst_func7(7);
-
-	/* comment out the following line to test memory violation */
-	//challenge2->initialized = 0;
-
 
 	return E_SYS;
 }

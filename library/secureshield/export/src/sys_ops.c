@@ -54,23 +54,6 @@ void secureshield_arc_sr_reg(uint32_t addr, uint32_t val)
 	}
 }
 
-void secureshield_perf_config(void)
-{
-	SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_PERF_CFG, 0);
-	secureshield_perf_start();
-	SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_PERF_CFG, secureshield_perf_end());
-}
-
-void secureshield_perf_start(void)
-{
-	SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_PERF_START);
-}
-
-uint32_t secureshield_perf_end(void)
-{
-	return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_PERF_END);
-}
-
 int32_t secureshield_container_id_self(void)
 {
 	return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_CONTAINER_ID_SELF);

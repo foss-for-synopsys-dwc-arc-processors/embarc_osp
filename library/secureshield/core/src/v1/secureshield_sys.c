@@ -180,41 +180,6 @@ int32_t vmpu_ac_aux(uint8_t container_id, uint32_t start, uint32_t size)
 	return 0;
 }
 
-static uint32_t g_perf_overhead;
-
-/**
- * \brief config the performance benchmark service
- * \param[in] overhead overhead of performance benchmark service
- */
-void perf_config(uint32_t overhead)
-{
-	if (overhead == 0) {
-		// enable timer1 to measure performance
-		_arc_sr_reg(AUX_TIMER1_CTRL, 0);
-		_arc_sr_reg(AUX_TIMER1_LIMIT, 0xFFFFFFFF);
-		_arc_sr_reg(AUX_TIMER1_CTRL, 0x2);
-	} else {
-		g_perf_overhead = overhead;
-	}
-}
-
-/**
- * \brief start to measure
- */
-void perf_start(void)
-{
-	_arc_sr_reg(AUX_TIMER1_CNT, 0);
-}
-
-/**
- * \brief end to measure
- * \return  result
- */
-uint32_t perf_end(void)
-{
-	return _arc_lr_reg(AUX_TIMER1_CNT) - g_perf_overhead;
-}
-
 /**
  * \brief get the current active container id
  * \return current active container id
@@ -256,15 +221,6 @@ void secureshield_sys_ops(INT_EXC_FRAME *frame)
 		case SECURESHIELD_SYS_SR:
 			SECURESHIELD_DBG("write aux reg 0x%x\r\n", frame->r1);
 			secure_arc_sr_reg(frame->r1, frame->r2);
-			break;
-		case SECURESHIELD_SYS_PERF_CFG:
-			perf_config(frame->r1);
-			break;
-		case SECURESHIELD_SYS_PERF_START:
-			perf_start();
-			break;
-		case SECURESHIELD_SYS_PERF_END:
-			frame->r0 = perf_end();
 			break;
 		case SECURESHIELD_SYS_CONTAINER_ID_SELF:
 			frame->r0 = container_id_self();

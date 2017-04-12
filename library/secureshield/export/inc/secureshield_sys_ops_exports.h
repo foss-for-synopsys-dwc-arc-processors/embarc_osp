@@ -38,12 +38,9 @@
 extern "C" {
 #endif
 
-
-
 #if SECURESHIELD_VERSION == 1
-extern void secureshield_perf_config(void);
-extern void secureshield_perf_start(void);
-extern uint32_t secureshield_perf_end(void);
+
+
 #elif SECURESHIELD_VERSION == 2
 
 extern void secureshield_except_bit_clear(void);

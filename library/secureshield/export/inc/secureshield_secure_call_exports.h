@@ -57,17 +57,6 @@
 #define SECURESHIELD_INT_EXC_CPU_LOCK		(10)
 #define SECURESHIELD_INT_EXC_CPU_UNLOCK		(11)
 
-
-/* system-level operations codes */
-#define SECURESHIELD_SYS_LR			(0)
-#define SECURESHIELD_SYS_SR			(1)
-#define SECURESHIELD_SYS_PERF_CFG		(2)
-#define SECURESHIELD_SYS_PERF_START		(3)
-#define SECURESHIELD_SYS_PERF_END		(4)
-#define SECURESHIELD_SYS_CONTAINER_ID_SELF	(5)
-#define SECURESHIELD_SYS_CONTAINER_ID_CALLER	(6)
-
-
 /* get the immediate from  trap instruction */
 #define SECURESHIELD_TRAP_IMMEDIATE(trap_instn) ((trap_instn >> 5) & 0x3F)
 
@@ -110,12 +99,6 @@
 #define SECURESHIELD_INT_EXC_CPU_UNLOCK		(11)
 
 
-#define SECURESHIELD_SYS_LR			(0)
-#define SECURESHIELD_SYS_SR			(1)
-#define SECURESHIELD_SYS_CONTAINER_ID_SELF	(5)
-#define SECURESHIELD_SYS_CONTAINER_ID_CALLER	(6)
-
-
 #define SECURESHIELD_SECURE_CALL(id, metadata, ...) \
 	({ \
 		SECURESHIELD_MACRO_REGS_ARGS(uint32_t, ##__VA_ARGS__) \
@@ -137,5 +120,11 @@
 #else
 #error "unsupported secureshield version"
 #endif
+
+/* runtime system service call id */
+#define SECURESHIELD_SYS_LR			(0)
+#define SECURESHIELD_SYS_SR			(1)
+#define SECURESHIELD_SYS_CONTAINER_ID_SELF	(2)
+#define SECURESHIELD_SYS_CONTAINER_ID_CALLER	(3)
 
 #endif/*_SECURESHIELD_SECURE_CALL_EXPORTS_H_*/
