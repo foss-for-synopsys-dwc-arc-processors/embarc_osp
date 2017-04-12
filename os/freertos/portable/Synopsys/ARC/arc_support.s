@@ -112,7 +112,7 @@ dispatch_r:
 	.align 4
 start_dispatch:
 /*
- *  this routine is called in the non-task conext during the startup of the kernel
+ *  this routine is called in the non-task context during the startup of the kernel
  *  , and all the interrupts are locked.
  *
  *  when the dispatcher is called, the cpu is locked, no nest exception (CPU exception/interrupt).
@@ -177,7 +177,7 @@ exc_entry_cpu:
 	st	r1, [exc_nest_count]
 	cmp	r0, 0
 	bne	exc_handler_1
-/* chang to interrupt stack if interrupt happened in task context */
+/* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
 exc_handler_1:
 	PUSH	blink
@@ -268,7 +268,7 @@ exc_entry_int:
 	st	r2, [exc_nest_count]
 	cmp	r3, 0
 	bne	irq_handler_1
-/* chang to interrupt stack if interrupt happened in task context */
+/* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
 irq_handler_1:
 	PUSH	blink
@@ -308,7 +308,7 @@ ret_int_1:	/* return from non-task context */
 	rtie
 /* there is a dispatch request */
 ret_int_2:
-	/* clear dispatch requst */
+	/* clear dispatch request */
 	mov	r0, 0
 	st	r0, [context_switch_reqflg]
 

@@ -34,12 +34,14 @@
 #ifndef _SECURESHIELD_APPL_CONFIG_H_
 #define _SECURESHIELD_APPL_CONFIG_H_
 
-/* tell linker script template, there is a region named container1 in normal rom, its size is 2048 bytes */
+/* tell linker script template, there is a region named container1 in normal rom, its size is 2048 bytes 
+ * container2 related definiion is a placeholder to generate necessary symbols */
 #define SECURESHIELD_REGION_CONTAINERS_ROM \
  					GEN_CONTAINER_ROM_SECTION(container1, 2048)	\
  					GEN_CONTAINER_ROM_SECTION(container2, 0)
 
-/* tell linker script template, there is a region named container12 in normal ram, its size is 2048 bytes */
+/* tell linker script template, there are regions named container1, container2 and container12 in normal 
+ * ram who sizes are 2048 bytes */
 #define SECURESHIELD_REGION_CONTAINERS_RAM \
  					GEN_CONTAINER_RAM_SECTION(container1, 2048) \
  					GEN_CONTAINER_RAM_SECTION(container2, 2048) \

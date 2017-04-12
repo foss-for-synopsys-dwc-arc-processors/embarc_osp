@@ -1,5 +1,5 @@
 /*
-    FreeRTOS V8.2.3 - Copyright (C) 2015 Real Time Engineers Ltd.
+    FreeRTOS V9.0.0 - Copyright (C) 2016 Real Time Engineers Ltd.
     All rights reserved
 
     VISIT http://www.FreeRTOS.org TO ENSURE YOU ARE USING THE LATEST VERSION.
@@ -78,9 +78,7 @@ extern void exc_entry_cpu(void);	/* cpu exception entry for freertos */
 extern void exc_entry_int(void);	/* int exception entry for freertos */
 
 /* task dispatch functions in .s */
-extern void start_r(void);
 extern void start_dispatch();
-extern void dispatch();
 
 extern void freertos_exc_init(void);
 

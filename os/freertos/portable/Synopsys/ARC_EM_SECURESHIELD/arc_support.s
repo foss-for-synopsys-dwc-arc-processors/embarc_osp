@@ -89,10 +89,9 @@
 	.align 4
 start_dispatch:
 /*
- *  this routine is called in the non-task conext during the startup of the kernel
+ *  this routine is called in the non-task context during the startup of the kernel
  *  , and all the interrupts are locked.
  *
- *  when the dispatcher is called, the cpu is locked, no nest exception (CPU exception/interrupt).
  *  In target_initialize, all interrupt priority mask should be cleared, cpu should be
  *  locked, the interrupts outside the kernel such as fiq can be
  *  enabled.
@@ -112,7 +111,7 @@ dispatcher:
 /*
  *  before dispatcher is called, task context | cpu locked | dispatch enabled
  *  should be satisfied. In this routine, the processor will jump
- *  into the entry of next to run task
+ *  into the entry of next to run task through exception return
  *
  *  i.e. kernel mode, IRQ disabled, dispatch enabled
  */
@@ -141,7 +140,7 @@ exc_entry_cpu:
 	st	r1, [exc_nest_count]
 	cmp	r0, 0
 	bne	exc_handler_1
-/* chang to interrupt stack if interrupt happened in task context */
+/* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
 exc_handler_1:
 	PUSH	blink
@@ -188,19 +187,7 @@ ret_exc_r_1:
 exc_entry_int:
 	clri	/* disable interrupt */
 
-#if ARC_FEATURE_FIRQ == 1
-#if ARC_FEATURE_RGF_NUM_BANKS > 1
-	lr	r0, [AUX_IRQ_ACT]			/*  check whether it is P0 interrupt */
-	btst	r0, 0
-	jnz	exc_entry_firq
-#else
-	PUSH	r10
-	lr	r10, [AUX_IRQ_ACT]
-	btst	r10, 0
-	POP	r10
-	jnz	exc_entry_firq
-#endif
-#endif
+	/* FIRQ and banking is not supported now in secureshield */
 	INTERRUPT_PROLOGUE
 
 	mov	blink, sp
@@ -210,7 +197,7 @@ exc_entry_int:
 	st	r2, [exc_nest_count]
 	cmp	r3, 0
 	bne	irq_handler_1
-/* chang to interrupt stack if interrupt happened in task context */
+/* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
 irq_handler_1:
 	PUSH	blink
@@ -242,7 +229,7 @@ ret_int:
 	ld	r0, [context_switch_reqflg]
 	cmp	r0, 0
 	beq	ret_int_r_1
-	/* clear dispatch requst */
+	/* clear dispatch request */
 	mov	r0, 0
 	st	r0, [context_switch_reqflg]
 
@@ -263,6 +250,12 @@ ret_int:
 	st	r0, [ulCriticalNesting]
 	RESTORE_CALLEE_REGS
 ret_int_r_1:
+	/* differences between INTERRUPT_EPILOGUE and EXCEPTION_EPILOGUE:
+	 *  INTERRUPT_EPIOLOGUE is a subset of EXCEPTION_EPIOLOGUE.
+	 *  In EXCEPTION_EPILOGUE, all regs are popped through SW.
+	 *  IN INTERRUPT_EPILOGUE, some regs are popped through SW, the left
+	 *  part is popped by HW (interrupt return).
+	*/
 	INTERRUPT_EPILOGUE
 	rtie
 /** @endcond */

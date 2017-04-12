@@ -268,7 +268,7 @@ static void interrupt_high_pri(void *p_excinf)
 
 /**
  * \brief  low priority interrupt
- * \details write AUX_IRQ_HINT to raise higher priority interrtupt.
+ * \details write AUX_IRQ_HINT to raise higher priority interrupt.
  * \param[in] *p_excinf
  */
 static void interrupt_low_pri(void *p_exinf)

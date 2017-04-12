@@ -121,11 +121,10 @@ static void prvSetupTimerInterrupt(void)
 
 /*
  * Setup the stack of a new task so it is ready to be placed under the
- * scheduler control.  The registers have to be placed on the stack in
+ * scheduler control. The registers have to be placed on the stack in
  * the order that the port expects to find them.
  *
- * For ARC, task context switch is implemented with the help of SWI exception
- * It's not efficient but simple.
+ * For ARC, task context switch is implemented with the help of TRAP exception
  *
  */
 StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters )

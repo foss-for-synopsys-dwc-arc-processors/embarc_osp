@@ -58,8 +58,6 @@ typedef struct {
 
 
 extern uint8_t _f_data_container12_shared[];
-extern uint8_t _e_bss_container12_shared[];
-
 
 extern int32_t init_secret(void);
 extern int32_t operate_secret(char* pwd, uint32_t cmd, char * data);
