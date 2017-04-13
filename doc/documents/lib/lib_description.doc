@@ -70,7 +70,21 @@ System resources are resources that are not isolated and protected by MPU, e.g.,
 System resources APIs are used by normal containers to access secure system resources. Because secure containers have secure privilege level, then can access secure system resources directly. 
 
 ### Container Interfaces
-A container can provide services to other containers through an interface. An interface is a C function with parameters and return value registered in an access control table
+A container can provide services to other containers through an interface. An interface is a C function with parameters and return value registered in an access control table.
+
+As shown below, a container can call the interface of another container through container call. The container interface will be executed in the context of callee container.
+
+\htmlonly
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_container_interface.jpg" alt="Container interface"/>
+        <p>Container interface</p>
+    </div>
+</div>
+\endhtmlonly
+\image latex pic/secureshield_container_interface.jpg "Container interface" width=12cm
+
+Background container has no interfaces as it is a global shared container, i.e., regular C function calls can be performed.
 
 ### Resources of a container
 A container has implicit resources: code sections (.text, .rodata, .bss, .data) and stack; as well as explicit resources defined in an access control table, e.g., memory mapped resources, system resources and container interfaces
@@ -105,7 +119,35 @@ static CONTAINER_AC_TABLE g_container_act[] = {
 
 According to this access control table, the container is allocated the peripheral area of PIN_MUX, a 0x1000 bytes ram region starting from 0x10000, a GPIO interrupt (INTNO_GPIO), an auxiliary-register area starting from 0x21 with a size of 03. The container also has an interface (tst_func4) to provide the service with 4 arguments in the interface handler function
 
-The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute can be found in secureshield_vmpu_exports.h.
+The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute is listed as follow. 
+
+
+|      Basic Resource Type         |       Parameters            |            Comments                                     |
+| :---------------------------------: | :-------------------------------------: |  :-------------------------------------: |
+|  SECURESHIELD_AC_MEMORY          | (start_address, size)       |                                                        |
+|  SECURESHIELD_AC_PERIPHERAL      | (start_address, size)       |  Currently, only memory-mapped peripherals are supported |
+|  SECURESHIELD_AC_IRQ             | (interrupt_handler, interrupt no) |                                                    |
+|  SECURESHIELD_AC_AUX             | (aux start address, size)   |  AUX is in auxiliary address space                       |
+|  SECURESHIELD_AC_INTERFACE       | (interface_handler, arguments number) |  No extra resource attribute                   |
+
+|      Basic Resource Access Attribute  |            Comments                    |
+| :---------------------------------: |  :-------------------------------------: |
+|   SECURESHIELD_AC_UEXECUTE          |    Execution with user privilege   |
+|   SECURESHIELD_AC_UWRITE            |    Write with user privilege       |
+|   SECURESHIELD_AC_UREAD             |    Read with user privilege        |
+|   SECURESHIELD_AC_KEXECUTE          |    Execution with kernel privilege |
+|   SECURESHIELD_AC_KWRITE            |    Write with kernel privilege     |
+|   SECURESHIELD_AC_KREAD             |    Read with kernel Privilege      | 
+
+|      Extended Resource Access Attribute |            Comments                    |
+| :---------------------------------: |  :-------------------------------------: |
+|   SECURESHIELD_AC_SIZE_ROUND_UP     |    the resource size should be rounded up    |
+|   SECURESHIELD_AC_SIZE_ROUND_DOWN   |    the resource size should be rounded down  |
+|   SECURESHIELD_AC_SHARED            |    the resource is a shared resource (no implementation now)        |
+|   SECURESHIELD_AC_SECURE            |    the resource is a secure resource  |
+|   SECURESHIELD_AC_NORMAL            |    the resource is a normal resource   |
+
+More details can be found in secureshield_vmpu_exports.h. For some resources, there are pre-defined CONTAINER_AC, e.g., SECURESHIELD_ACDEF_U/KROM, SECURESHIELD_ACDEF_U/KRAM.
 
 ## Secure Call
 In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call the SecureShield runtime services. The following SecureShield runtime services are provided:
