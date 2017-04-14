@@ -161,7 +161,16 @@ Terminology</h2>
 <p>System resources are resources that are not isolated and protected by MPU, e.g., interrupts, exceptions, registers, APEX. System resources are isolated and protected by the processor privilege level. Secure system resources require secure privilege level and can be allocated to normal containers; normal system resources require normal privilege level and are shared to all containers.</p>
 <p>System resources APIs are used by normal containers to access secure system resources. Because secure containers have secure privilege level, then can access secure system resources directly.</p>
 <h3>Container Interfaces</h3>
-<p>A container can provide services to other containers through an interface. An interface is a C function with parameters and return value registered in an access control table</p>
+<p>A container can provide services to other containers through an interface. An interface is a C function with parameters and return value registered in an access control table.</p>
+<p>As shown below, a container can call the interface of another container through container call. The container interface will be executed in the context of callee container.</p>
+<p> 
+<div class="imagebox">
+    <div style="width: 600px">
+        <img src="pic/secureshield_container_interface.jpg" alt="Container interface"/>
+        <p>Container interface</p>
+    </div>
+</div>
+ <p>Background container has no interfaces as it is a global shared container, i.e., regular C function calls can be performed.</p>
 <h3>Resources of a container</h3>
 <p>A container has implicit resources: code sections (.text, .rodata, .bss, .data) and stack; as well as explicit resources defined in an access control table, e.g., memory mapped resources, system resources and container interfaces</p>
 <h4>Access Control Table</h4>
@@ -182,7 +191,52 @@ Terminology</h2>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {tst_func4, 4, SECURESHIELD_AC_INTERFACE}, // container interface, {interface handler, number of interface handler arguments, type}</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;};</div>
 </div><!-- fragment --><p>According to this access control table, the container is allocated the peripheral area of PIN_MUX, a 0x1000 bytes ram region starting from 0x10000, a GPIO interrupt (INTNO_GPIO), an auxiliary-register area starting from 0x21 with a size of 03. The container also has an interface (tst_func4) to provide the service with 4 arguments in the interface handler function</p>
-<p>The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute can be found in secureshield_vmpu_exports.h.</p>
+<p>The resource type describes the kind of resource, such as interrupt, register, or memory. The access-control attribute describes how it is accessed: secure or normal, read/write/execute. The detailed definitions of resource type and access-control attribute is listed as follow.</p>
+<table class="doxtable">
+<tr>
+<th align="center">Basic Resource Type </th><th align="center">Parameters </th><th align="center">Comments  </th></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_MEMORY </td><td align="center">(start_address, size) </td><td align="center"></td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_PERIPHERAL </td><td align="center">(start_address, size) </td><td align="center">Currently, only memory-mapped peripherals are supported </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_IRQ </td><td align="center">(interrupt_handler, interrupt no) </td><td align="center"></td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_AUX </td><td align="center">(aux start address, size) </td><td align="center">AUX is in auxiliary address space </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_INTERFACE </td><td align="center">(interface_handler, arguments number) </td><td align="center">No extra resource attribute </td></tr>
+</table>
+<table class="doxtable">
+<tr>
+<th align="center">Basic Resource Access Attribute </th><th align="center">Comments  </th></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_UEXECUTE </td><td align="center">Execution with user privilege </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_UWRITE </td><td align="center">Write with user privilege </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_UREAD </td><td align="center">Read with user privilege </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_KEXECUTE </td><td align="center">Execution with kernel privilege </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_KWRITE </td><td align="center">Write with kernel privilege </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_KREAD </td><td align="center">Read with kernel Privilege </td></tr>
+</table>
+<table class="doxtable">
+<tr>
+<th align="center">Extended Resource Access Attribute </th><th align="center">Comments  </th></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_SIZE_ROUND_UP </td><td align="center">the resource size should be rounded up </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_SIZE_ROUND_DOWN </td><td align="center">the resource size should be rounded down </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_SHARED </td><td align="center">the resource is a shared resource (no implementation now) </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_SECURE </td><td align="center">the resource is a secure resource </td></tr>
+<tr>
+<td align="center">SECURESHIELD_AC_NORMAL </td><td align="center">the resource is a normal resource </td></tr>
+</table>
+<p>More details can be found in secureshield_vmpu_exports.h. For some resources, there are pre-defined CONTAINER_AC, e.g., SECURESHIELD_ACDEF_U/KROM, SECURESHIELD_ACDEF_U/KRAM.</p>
 <h2>Secure Call</h2>
 <p>In SecureShield, a secure call is implemented as a section of assembly code and invoked as a normal function call. The secure call is the only communication interface for a container to call the SecureShield runtime services. The following SecureShield runtime services are provided:</p><ul>
 <li>container call: call the services provided by other containers</li>
@@ -390,7 +444,7 @@ SecureShield TinyDTLS Client Example</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 11 2017 16:01:03 for embARC by
+    <li class="footer">Generated on Fri Apr 14 2017 09:55:33 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

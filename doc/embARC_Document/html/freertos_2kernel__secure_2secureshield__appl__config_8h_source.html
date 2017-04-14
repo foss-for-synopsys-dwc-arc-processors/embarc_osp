@@ -135,18 +135,20 @@ $(document).ready(function(){initNavTree('freertos_2kernel__secure_2secureshield
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#ifndef _SECURESHIELD_APPL_CONFIG_H_</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define _SECURESHIELD_APPL_CONFIG_H_</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* tell linker script template, there is a region named container1 in normal rom, its size is 2048 bytes */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define SECURESHIELD_REGION_CONTAINERS_ROM \</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_ROM_SECTION(container1, 2048)     \</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_ROM_SECTION(container2, 0)</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/* tell linker script template, there is a region named container12 in normal ram, its size is 2048 bytes */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define SECURESHIELD_REGION_CONTAINERS_RAM \</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_RAM_SECTION(container1, 2048) \</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_RAM_SECTION(container2, 2048) \</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_RAM_SECTION(container12_shared, 2048)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SECURESHIELD_APPL_CONFIG_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* tell linker script template, there is a region named container1 in normal rom, its size is 2048 bytes </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * container2 related definiion is a placeholder to generate necessary symbols */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define SECURESHIELD_REGION_CONTAINERS_ROM \</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_ROM_SECTION(container1, 2048)     \</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_ROM_SECTION(container2, 0)</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* tell linker script template, there are regions named container1, container2 and container12 in normal </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"> * ram who sizes are 2048 bytes */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define SECURESHIELD_REGION_CONTAINERS_RAM \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_RAM_SECTION(container1, 2048) \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_RAM_SECTION(container2, 2048) \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">                                        GEN_CONTAINER_RAM_SECTION(container12_shared, 2048)</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SECURESHIELD_APPL_CONFIG_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -154,7 +156,7 @@ $(document).ready(function(){initNavTree('freertos_2kernel__secure_2secureshield
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_4859bdb505fc77d673a475f3db3c7ec1.html">kernel_secure</a></li><li class="navelem"><b>secureshield_appl_config.h</b></li>
-    <li class="footer">Generated on Tue Apr 11 2017 16:00:58 for embARC by
+    <li class="footer">Generated on Fri Apr 14 2017 09:55:24 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
