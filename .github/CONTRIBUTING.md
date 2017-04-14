@@ -9,7 +9,8 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 #### Table Of Contents
 
 [What should I know before I get started?](#what-should-i-know-before-i-get-started)
-  * [Code of Conduct](#code-of-conduct)
+  * [Review Code of Conduct](#code-of-conduct)
+  * [Create GitHub account and sign Contribution Agreement](#account-and-cla)
   * [embARC OSP and Applications](#embarc-osp-and-applications)
   * [embARC OSP Design Decisions](#embarc-osp-design-decisions)
 
@@ -34,6 +35,12 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [info@embarc.org](mailto:info@embarc.org).
+
+### account-and-cla
+
+Make sure you have a [GitHub account](https://github.com/signup/free). If your contribution was developed during employment or while contracting for a third-party, ensure that such owner or contracting party has provided explicit approval for your contribution to the Synopsys project under the terms of the Synopsys Contributor License Agreement.
+
+Submit the [Synopsys Contributor License Agreement](https://www.clahub.com/agreements/foss-for-synopsys-dwc-arc-processors/embarc_osp) on CLAhub.com.
 
 ### embARC OSP and Applications
 
