@@ -10,7 +10,7 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 
 [What should I know before I get started?](#what-should-i-know-before-i-get-started)
   * [Review Code of Conduct](#code-of-conduct)
-  * [Create GitHub account and sign Contribution Agreement](#Create-github-account-and-sign-contribution-agreement)
+  * [Create GitHub account and sign Contribution Agreement](#Create-GitHub-account-and-sign-Contribution-Agreement)
   * [embARC OSP and Applications](#embarc-osp-and-applications)
   * [embARC OSP Design Decisions](#embarc-osp-design-decisions)
 
