@@ -10,7 +10,7 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 
 [What should I know before I get started?](#what-should-i-know-before-i-get-started)
   * [Review Code of Conduct](#code-of-conduct)
-  * [Create GitHub account and sign Contribution Agreement](#account-and-cla)
+  * [Create GitHub account and sign Contribution Agreement](#Create-github-account-and-sign-contribution-agreement)
   * [embARC OSP and Applications](#embarc-osp-and-applications)
   * [embARC OSP Design Decisions](#embarc-osp-design-decisions)
 
@@ -36,7 +36,7 @@ This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDU
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [info@embarc.org](mailto:info@embarc.org).
 
-### account-and-cla
+### Create GitHub account and sign Contribution Agreement
 
 Make sure you have a [GitHub account](https://github.com/signup/free). If your contribution was developed during employment or while contracting for a third-party, ensure that such owner or contracting party has provided explicit approval for your contribution to the Synopsys project under the terms of the Synopsys Contributor License Agreement.
 
