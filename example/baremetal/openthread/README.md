@@ -14,7 +14,9 @@ This application is designed to show how to use the OpenThread Command Line Inte
 
 ### Hardware Connection
 - Connect PmodRF2 to J6.
+  
   ![EMSK Connections](doc/screenshots/emsk_connections.jpg)
+  
 - Configure your hardware with proper core configuration. ARCEM7D on EMSK 2.3 is used as an example in the following document.
 
 ## User Manual
@@ -42,6 +44,7 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
         - run **spirw -h** to show help.
         - run **spirw -w em7d_2bt.bin 0x17f00000 0x17f00004** to program SPI flash.
         - Check the output message to see if it is programmed successfully. The process may take some time. If `WF INIT FAILED` and `MRF24G Init Failed` is shown in the Tera Term, there is no error since the WiFi module has not been used here.
+        
         ![spirw em7d_2bt](doc/screenshots/spirw_em7d_2bt.jpg)
 
 1. Generate `boot.bin` of the OpenThread CLI example.
@@ -51,16 +54,23 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
 
 1. Run OpenThread example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.
     - Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.
+    
     ![Enter No. EMSK 1](doc/screenshots/enter_no_emsk1.jpg)
+    
     - Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
+    
     ![Enter No. EMSK 2](doc/screenshots/enter_no_emsk2.jpg)
+    
     - Enter **1** and press Enter button in one Tera Term. Enter **2** and press Enter button in the other one. Enter the number here to generate pseudo random number for OpenThread. Recommend to enter numbers in order, such as **1**, **2** and **3**. Using same number in different nodes may lead error. The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
+    
     ![Show No. EMSK](doc/screenshots/show_no_emsk.jpg)
+    
     - Enter the following commands in the two Tera Term windows.
         - **panid 0x1234**
         - **ifconfig up**
         - **thread start**
     - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
+    
     ![Thread State](doc/screenshots/thread_state.jpg)
 
 1. Enter **ipaddr** to show the IP address of the Thread node. Then enter **ping [IP address]**, such as **ping fdde:ad00:beef:0:0:ff:fe00:ec00**.
@@ -69,6 +79,7 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
     - This example demonstrates a minimal OpenThread application to show the OpenThread configuration and management interfaces via a basic command-line interface. The example result is the same as the one in the Posix simulation in Linux.
     - See the OpenThread CLI reference `OT_CLI.md` for more details.
     - For example, the following response can be shown for the EMSK node 1 (COM6) and EMSK node 2 (COM8).
+    
     ![Thread Ping](doc/screenshots/thread_ping.jpg)
 
     ```bash
