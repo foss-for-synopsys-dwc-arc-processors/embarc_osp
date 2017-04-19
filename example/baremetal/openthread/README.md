@@ -14,8 +14,8 @@ This application is designed to show how to use the OpenThread Command Line Inte
 
 ### Hardware Connection
 - Connect PmodRF2 to J6.
-  
-  ![EMSK Connections](doc/screenshots/emsk_connections.jpg)
+
+![EMSK Connections](doc/screenshots/emsk_connections.jpg)
   
 - Configure your hardware with proper core configuration. ARCEM7D on EMSK 2.3 is used as an example in the following document.
 
