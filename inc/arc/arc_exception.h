@@ -127,7 +127,55 @@ typedef struct int_exc_frame {
 } EMBARC_PACKED INT_EXC_FRAME;
 #endif
 
+typedef struct dsp_ext_frame {
+	/*  todo xy memory support */
+#if defined(ARC_FEATURE_DSP_COMPLEX)
+	uint32_t dsp_fft_ctrl; 
+	uint32_t dsp_bfly0;
+#endif 
+	uint32_t acc0_ghi;
+	uint32_t acc0_hi;
+	uint32_t acc0_glo;
+	uint32_t acc0_lo;
+	uint32_t dsp_ctrl;
+
+} EMBARC_PACKED DSP_EXT_FRAME;
+
+
+typedef struct fpu_ext_frame {
+#if defined(ARC_FEATURE_FPU_DA)
+	uint32_t dpfp2h;
+	uint32_t dpfp2l;
+	uint32_t dpfp1h;
+	uint32_t dpfp1l;
+#endif 
+
+	uint32_t fpu_status;
+	uint32_t fpu_ctrl;
+
+} EMBARC_PACKED  FPU_EXT_FRAME;
+
+
 typedef struct callee_frame {
+
+#if ARC_FEATURE_FPU_DSP_CONTEXT 
+
+#if defined(ARC_FEATURE_DSP)
+	DSP_EXT_FRAME dsp_regs;
+#endif
+
+#if defined(ARC_FEATURE_FPU)
+	FPU_EXT_FRAME fpu_ext_regs;
+#endif
+
+#if defined(ARC_FEATURE_DSP) || defined(ARC_FEATURE_FPU) || ARC_FEATURE_MPU_OPTION_NUM > 6
+	/* accl and acch, common for mpy_option >6 and fpu_fma option */	
+	uint32_t r59;
+	uint32_t r58;
+#endif
+
+#endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
+
 #ifndef ARC_FEATURE_RF16
 	uint32_t r25;
 	uint32_t r24;

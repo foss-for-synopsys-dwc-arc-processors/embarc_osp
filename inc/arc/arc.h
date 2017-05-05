@@ -418,6 +418,35 @@
 /** @} */
 
 
+/**
+ * \name fpu related auxiliary register
+ * @{
+ */
+#define AUX_FPU_CTRL			(0x300) /*!< FPU ctrl register */
+#define AUX_FPU_STATUS			(0x301) /*!< FPU status register */
+#define AUX_FPU_DPFP1L			(0x302) /*!< double float D1 register low */
+#define AUX_FPU_DPFP1H			(0x303) /*!< double float D1 register high */
+#define AUX_FPU_DPFP2L			(0x304) /*!< double float D2 register low */
+#define AUX_FPU_DPFP2H			(0x305) /*!< double float D2 register high */
+
+/** @} */
+
+
+/**
+ * \name dsp related auxiliary register
+ * @{
+ */
+
+#define AUX_ACC0_LO			(0x580)
+#define AUX_ACC0_GLO			(0x581)
+#define AUX_ACC0_HI			(0x582)
+#define AUX_ACC0_GHI			(0x583)
+#define AUX_DSP_BFLY0			(0x598)
+#define AUX_DSP_FFT_CTRL		(0x59e)
+#define AUX_DSP_CTRL 			(0x59f)
+
+
+/** @} */
 
 /**
  * \name other auxiliary register

@@ -231,6 +231,57 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 	*pxTopOfStack = ( StackType_t ) 0x25252525;	/* R25 */
 #endif
 
+#if ARC_FEATURE_FPU_DSP_CONTEXT
+
+#if defined(ARC_FEATURE_DSP) || defined(ARC_FEATURE_FPU) || ARC_FEATURE_MPU_OPTION_NUM > 6
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) 0x58585858;	/* R58 */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) 0x59595959;	/* R58 */
+#endif
+
+#if defined(ARC_FEATURE_FPU) 
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_CTRL);	/* AUX_FPU_CTRL */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_STATUS);	/* AUX_FPU_STATUS */
+
+#if defined(ARC_FEATURE_FPU_DA)
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP1L);	/* AUX_FPU_DPFP1L */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP1H);	/* AUX_FPU_DPFP1H */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP2L);	/* AUX_FPU_DPFP2L */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP2H);	/* AUX_FPU_DPFP2H */
+#endif
+
+#endif /* ARC_FEATURE_FPU */
+
+#if defined(ARC_FEATURE_DSP)
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_CTRL);	/* AUX_DSP_CTRL */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_LO);	/* AUX_ACC0_LO */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_GLO);	/* AUX_ACC0_GLO */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_HI);	/* AUX_ACC0_HI */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_GHI);	/* AUX_ACC0_GHI */
+
+#if defined(ARC_FEATURE_DSP_COMPLEX)
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_FFT_CTRL);/* AUX_DSP_FFT_CTRL */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_BFLY0);	/* AUX_DSP_BFLY0 */
+#endif
+
+#endif /* ARC_FEATURE_DSP */
+
+#endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
+	
 	pxTopOfStack--;
 	*pxTopOfStack = (StackType_t) portNO_CRITICAL_NESTING;
 

@@ -380,6 +380,42 @@
 #endif
 #endif
 
+/** ARC mpy option  */
+#if !defined(ARC_FEATURE_MPU_OPTION_NUM)
+#define ARC_FEATURE_MPU_OPTION_NUM  	core_config_mpy_option_num
+#endif
+
+#if !defined(ARC_FEATURE_FPU_DSP_CONTEXT)
+#define ARC_FEATURE_FPU_DSP_CONTEXT	1	/* whether to put FPU and DSP regs into the context */
+#endif
+
+/** ARC FPU options */
+#if !defined(ARC_FEATURE_FPU)
+
+#if core_config_bcr_fpu_build_sp || core_config_bcr_fpu_build_dp
+#define ARC_FEATURE_FPU 	1
+
+#if core_config_bcr_fpu_build_da
+#define ARC_FEATURE_FPU_DA	1
+#endif
+
+#endif
+
+#endif
+
+/** ARC DSP options */
+#if !defined(ARC_FEATURE_DSP)
+
+#if core_config_dsp1 || core_config_dsp2
+#define ARC_FEATURE_DSP 1
+
+#if core_config_dsp_complex
+#define ARC_FEATURE_DSP_COMPLEX 1
+#endif
+
+#endif
+
+#endif
 
 #ifdef __cplusplus
 extern "C" {
