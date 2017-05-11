@@ -305,12 +305,12 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 	/* verify region alignment */
 
 	if ((uint32_t)base & ARC_FEATURE_MPU_ALIGNMENT_MASK) {
-		SECURESHIELD_HALT("start address:%x is not aligned with MPU's requirement", (uint32_t)base);
+		SECURESHIELD_HALT("start address:0x%x is not aligned with MPU's requirement", (uint32_t)base);
 		return;
 	}
 
 	if (size & ARC_FEATURE_MPU_ALIGNMENT_MASK) {
-		SECURESHIELD_HALT("start address:%x is not aligned with MPU's requirement", size);
+		SECURESHIELD_HALT("size:%d is not aligned with MPU's requirement", size);
 		return;
 	}
 
@@ -320,7 +320,7 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 	// SID setting
 #if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
 	//  2 SIDs reserved for background container and secureshield runtime
-	if (container_id > (SECURESHIELD_MPU_SID_BITS -2)) {
+	if (container_id > (SECURESHIELD_MPU_SID_BITS - 2)) {
 		SECURESHIELD_HALT("no more sids for the container");
 		return;
 	}
@@ -618,7 +618,7 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 
 	/* MPU region walk like MMU region walk */
 	if ((region = vmpu_fault_find_region(fault_addr)) == NULL) {
-		SECURESHIELD_DBG("the region for 0x%08X is not found\r\n", fault_addr);
+		SECURESHIELD_DBG("the region for 0x%x is not found\r\n", fault_addr);
 		return -1;
 	}
 
@@ -732,7 +732,7 @@ void vmpu_arch_init(void)
 	SECURESHIELD_DBG("MPU verison:%x, regions:%d\r\n", mpu_cfg & 0xff, (mpu_cfg >> 8) & 0xff);
 
 	if (mpu_cfg & 0x10000) {
-		SECURESHIELD_DBG("MPU supports defining regions as Secure/Non-secure\r\n");
+		SECURESHIELD_DBG("MPU supports defining regions as secure/non-secure\r\n");
 	}
 
 	if (mpu_cfg & 0x20000) {

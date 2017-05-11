@@ -99,7 +99,7 @@ _ret_exc:	/* return from exception to unprivileged mode*/
 	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 
 /*
- * swtich to the target container through exception return.
+ * switch to the target container through exception return.
  * AUX_USER_SP always has the runtime stack pointer
  */
 	lr 	ilink, [AUX_ERSTATUS]
