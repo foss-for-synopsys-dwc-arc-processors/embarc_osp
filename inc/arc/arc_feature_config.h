@@ -393,10 +393,10 @@
 #if !defined(ARC_FEATURE_FPU)
 
 #if core_config_bcr_fpu_build_sp || core_config_bcr_fpu_build_dp
-#define ARC_FEATURE_FPU 	1
+#define ARC_FEATURE_FPU 		1
 
 #if core_config_bcr_fpu_build_da
-#define ARC_FEATURE_FPU_DA	1
+#define ARC_FEATURE_FPU_DA		1
 #endif
 
 #endif
@@ -407,10 +407,10 @@
 #if !defined(ARC_FEATURE_DSP)
 
 #if core_config_dsp1 || core_config_dsp2
-#define ARC_FEATURE_DSP 1
+#define ARC_FEATURE_DSP 		1
 
 #if core_config_dsp_complex
-#define ARC_FEATURE_DSP_COMPLEX 1
+#define ARC_FEATURE_DSP_COMPLEX 	1
 #endif
 
 #endif
