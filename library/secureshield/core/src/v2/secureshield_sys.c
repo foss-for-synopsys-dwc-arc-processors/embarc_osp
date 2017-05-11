@@ -184,7 +184,7 @@ int32_t vmpu_ac_aux(uint8_t container_id, uint32_t start, uint32_t size)
  * \brief get current container's id
  * \return  container id
  */
-int32_t container_id_self(void)
+int32_t secure_container_id_self(void)
 {
 	return g_active_container;
 }
@@ -194,7 +194,7 @@ int32_t container_id_self(void)
  * \brief get the id of caller container's id
  * \return  caller container's id
  */
-int32_t container_id_caller(void)
+int32_t secure_container_id_caller(void)
 {
 	if (g_container_stack_ptr < 1) {
 		/* no container call in stack */
@@ -229,10 +229,10 @@ int32_t secureshield_sys_ops(uint32_t sys_id, uint32_t par1, uint32_t par2, uint
 			secure_arc_sr_reg(par1, par2);
 			break;
 		case SECURESHIELD_SYS_CONTAINER_ID_SELF:
-			ret = container_id_self();
+			ret = secure_container_id_self();
 			break;
 		case SECURESHIELD_SYS_CONTAINER_ID_CALLER:
-			ret = container_id_caller();
+			ret = secure_container_id_caller();
 			break;
 		default:
 			SECURESHIELD_DBG("Unsupported sys level operation:%d\r\n", sys_id);

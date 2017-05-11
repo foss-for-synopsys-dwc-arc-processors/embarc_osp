@@ -37,8 +37,8 @@
 /* common secureshield runtime services */
 extern uint32_t secure_arc_lr_reg(uint32_t addr);
 extern void secure_arc_sr_reg(uint32_t addr, uint32_t val);
-extern int32_t container_id_caller(void);
-extern int32_t container_id_self(void);
+extern int32_t secure_container_id_caller(void);
+extern int32_t secure_container_id_self(void);
 
 #if SECURESHIELD_VERSION == 1
 
