@@ -56,9 +56,9 @@
 
 /* set default minimum region address alignment */
 
-/* \todo ALIGNMENT_BTS is also decided by cache_line_length */
+/* \todo ALIGNMENT_BITS is also decided by cache_line_length */
 #ifndef ARC_FEATURE_MPU_ALIGNMENT_BITS
-#define ARC_FEATURE_MPU_ALIGNMENT_BITS 5
+#define ARC_FEATURE_MPU_ALIGNMENT_BITS	5
 #endif/*ARC_FEATURE_MPU_ALIGNMENT_BITS*/
 
 /* derived region alignment settings */
@@ -146,7 +146,7 @@ static const MPU_REGION* vmpu_fault_find_container_region(uint32_t fault_addr, c
 	count = container->count;
 	region = container->region;
 	while (count-- > 0) {
-		if ((fault_addr >= region->base) && (fault_addr < region->end)) {
+		if ((fault_addr >= region->base) && (fault_addr < (region->end + ARC_FEATURE_MPU_ALIGNMENT))) {
 			return region;
 		}
 		else {

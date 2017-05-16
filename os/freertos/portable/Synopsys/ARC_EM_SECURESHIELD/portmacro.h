@@ -138,7 +138,7 @@ typedef unsigned long UBaseType_t;
 #define portYIELD()			vPortYield()
 
 
-#define portINITIAL_STATUS32 0x80000000 | (((INT_PRI_MAX - INT_PRI_MIN) << 1) & 0x1e)
+#define portINITIAL_STATUS32 (0x80000000 | STATUS32_RESET_VALUE | (((INT_PRI_MAX - INT_PRI_MIN) << 1) & 0x1e))
 
 /* Critical section management. */
 #define portDISABLE_INTERRUPTS()		\

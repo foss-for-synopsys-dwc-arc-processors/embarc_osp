@@ -36,11 +36,32 @@
 #include "container_config.h"
 
 #include "secureshield_appl_config.h"
+#include "arc_feature_config.h"
 
+/* CONTAINER_ADDRESS_ALIGNMENT is the max value of (32, dcache_line_size, icache_line_size) */
 #ifndef CONTAINER_ADDRESS_ALIGNMENT
-#define CONTAINER_ADDRESS_ALIGNMENT	128
+
+#ifndef ARC_FEATURE_ICACHE_LINE_SIZE
+#define ARC_FEATURE_ICACHE_LINE_SIZE 0
 #endif
 
+#ifndef ARC_FEATURE_DCACHE_LINE_SIZE
+#define ARC_FEATURE_DCACHE_LINE_SIZE 0
+#endif
+
+#if ARC_FEATURE_DCACHE_LINE_SIZE > ARC_FEATURE_ICACHE_LINE_SIZE
+#define ARC_FEATURE_CACHE_LINE_SIZE ARC_FEATURE_DCACHE_LINE_SIZE
+#else
+#define ARC_FEATURE_CACHE_LINE_SIZE ARC_FEATURE_ICACHE_LINE_SIZE
+#endif
+
+#if ARC_FEATURE_CACHE_LINE_SIZE > 32
+#define CONTAINER_ADDRESS_ALIGNMENT ARC_FEATURE_CACHE_LINE_SIZE
+#else
+#define CONTAINER_ADDRESS_ALIGNMENT 32
+#endif
+
+#endif /* CONTAINER_ADDRESS_ALIGNMENT */
 /* rom area for normal world */
 #ifndef NORMAL_ROM_START
 #define NORMAL_ROM_START 0x0
