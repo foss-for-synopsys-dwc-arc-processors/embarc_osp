@@ -70,9 +70,9 @@
 /* relative device reg base address */
 #define REL_REGBASE_PINMUX	(0x00000000U)		/*!< PINMUX */
 #define REL_REGBASE_GPIO0	(0x00002000U)		/*!< GPIO 0 Onboard */
-#define REL_REGBASE_GPIO1	(0x00003000U)		/*!< not implemented on this board */
+// #define REL_REGBASE_GPIO1	(0x00003000U)		/*!< not implemented on this board */
 #define REL_REGBASE_I2C0	(0x00004000U)		/*!< I2C 0 */
-#define REL_REGBASE_I2C1	(0x00005000U)		/*!< not implemented on this board */
+//#define REL_REGBASE_I2C1	(0x00005000U)		/*!< not implemented on this board */
 #define REL_REGBASE_SPI0	(0x00006000U)		/*!< SPI Master  */
 #define REL_REGBASE_SPI1	(0x00007000U)		/*!< SPI Slave   */
 #define REL_REGBASE_UART0	(0x00008000U)		/*!< UART0 is connected to PMOD */
@@ -82,7 +82,7 @@
 #define INTNO_TIMER1		17
 #define INTNO_GPIO		18
 #define INTNO_I2C0		19
-#define INTNO_I2C1		20
+//#define INTNO_I2C1		20
 #define INTNO_SPI_MASTER	21
 #define INTNO_SPI_SLAVE		22
 #define INTNO_UART0		23

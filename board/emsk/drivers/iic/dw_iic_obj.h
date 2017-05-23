@@ -49,7 +49,11 @@
  * \name	DesignWare IIC Object Number
  * @{
  */
+#if defined(HW_VERSION) && (HW_VERSION > 11)
+#define DW_IIC_NUM		(2)	/*!< DesignWare IIC valid number */
+#else
 #define DW_IIC_NUM		(1)	/*!< DesignWare IIC valid number */
+#endif
 /** @} end of name */
 
 /**
@@ -64,8 +68,10 @@
  * \name	Designware IIC Object Control Macros
  * @{
  */
-#define USE_DW_IIC_0	1	/*!< enable use designware iic 0 */
-#define USE_DW_IIC_1	1	/*!< enable use designware iic 1 */
+#define USE_DW_IIC_0		1	/*!< enable use designware iic 0 */
+#if defined(HW_VERSION) && (HW_VERSION > 11)
+#define USE_DW_IIC_1		1	/*!< enable use designware iic 1 */
+#endif
 /** @} end of name */
 
 #ifdef __cplusplus
