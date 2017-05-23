@@ -70,14 +70,6 @@
 #define USE_DW_UART_2	1     	/*!< enable use designware uart 2 */
 /** @} end of name */
 
-/**
- * \name	Designware UART Ringbuffer Size Control Macros
- * @{
- */
-#define MAX_SNDBUF_SIZE	256	/*!< max size of uart send buffer */
-#define MAX_RCVBUF_SIZE	10	/*!< max size of uart recv buffer */
-/** @} end of name */
-
 #ifdef __cplusplus
 extern "C" {
 #endif
