@@ -49,7 +49,11 @@
  * \name	DesignWare UART Object Number
  * @{
  */
+#if defined(HW_VERSION) && (HW_VERSION > 11)
+#define DW_UART_NUM	(3)	/*!< DesignWare UART valid number */
+#else
 #define DW_UART_NUM	(2)	/*!< DesignWare UART valid number */
+#endif
 /** @} end of name */
 
 /**
@@ -58,6 +62,7 @@
  */
 #define DW_UART_0_ID	0	/*!< uart 0 id macro */
 #define DW_UART_1_ID	1	/*!< uart 1 id macro */
+#define DW_UART_2_ID	2	/*!< uart 2 id macro */
 /** @} end of name */
 
 /**
@@ -66,14 +71,10 @@
  */
 #define USE_DW_UART_0	1     	/*!< enable use designware uart 0 */
 #define USE_DW_UART_1	1     	/*!< enable use designware uart 1 */
-/** @} end of name */
+#if defined(HW_VERSION) && (HW_VERSION > 11)
+#define USE_DW_UART_2	1     	/*!< enable use designware uart 2 */
+#endif
 
-/**
- * \name	Designware UART Ringbuffer Size Control Macros
- * @{
- */
-#define MAX_SNDBUF_SIZE	256	/*!< max size of uart send buffer */
-#define MAX_RCVBUF_SIZE	10	/*!< max size of uart recv buffer */
 /** @} end of name */
 
 #ifdef __cplusplus

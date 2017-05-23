@@ -222,6 +222,81 @@ static void dw_uart_1_install(void)
 #endif /* USE_DW_UART_1 */
 /** @} end of name */
 
+/**
+ * \name	EMSK DesignWare UART 2 Object Instantiation
+ * @{
+ */
+#if (USE_DW_UART_2)
+static void dw_uart_2_isr(void *ptr);
+#define DW_UART_2_RELBASE	(REL_REGBASE_UART2)	/*!< designware uart 2 relative baseaddr */
+#define DW_UART_2_INTNO		(INTNO_UART2)		/*!< designware uart 2 interrupt number  */
+
+DEV_UART		dw_uart_2;			/*!< designware uart 2 object */
+DW_UART_CTRL	dw_uart_2_ctrl = {			/*!< designware uart 2 ctrl */
+	0, CLK_BUS_APB, DW_UART_2_INTNO, (INT_HANDLER)dw_uart_2_isr,
+	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
+};
+
+/** designware uart 2 open */
+static int32_t dw_uart_2_open (uint32_t baud)
+{
+	return dw_uart_open(&dw_uart_2, baud);
+}
+/** designware uart 2 close */
+static int32_t dw_uart_2_close (void)
+{
+	return dw_uart_close(&dw_uart_2);
+}
+/** designware uart 2 control */
+static int32_t dw_uart_2_control (uint32_t ctrl_cmd, void *param)
+{
+	return dw_uart_control(&dw_uart_2, ctrl_cmd, param);
+}
+/** designware uart 2 write */
+static int32_t dw_uart_2_write (const void *data, uint32_t len)
+{
+	return dw_uart_write(&dw_uart_2, data, len);
+}
+/** designware uart 2 close */
+static int32_t dw_uart_2_read (void *data, uint32_t len)
+{
+	return dw_uart_read(&dw_uart_2, data, len);
+}
+/** designware uart 2 interrupt routine */
+static void dw_uart_2_isr(void *ptr)
+{
+	dw_uart_isr(&dw_uart_2, ptr);
+}
+/** install designware uart 2 to system */
+static void dw_uart_2_install(void)
+{
+	uint32_t uart_abs_base = 0;
+	DEV_UART *dw_uart_ptr = &dw_uart_2;
+	DEV_UART_INFO *dw_uart_info_ptr = &(dw_uart_2.uart_info);
+	DW_UART_CTRL *dw_uart_ctrl_ptr = &dw_uart_2_ctrl;
+
+	/**
+	 * get absolute designware base address
+	 */
+	uart_abs_base = (uint32_t)PERIPHERAL_BASE + DW_UART_2_RELBASE;
+	dw_uart_ctrl_ptr->dw_uart_regbase = uart_abs_base;
+
+	/** uart info init */
+	dw_uart_info_ptr->uart_ctrl = (void *)dw_uart_ctrl_ptr;
+	dw_uart_info_ptr->opn_cnt = 0;
+	dw_uart_info_ptr->status = 0;
+	dw_uart_info_ptr->baudrate = UART_BAUDRATE_115200;  /* default 115200bps */
+
+	/** uart dev init */
+	dw_uart_ptr->uart_open = dw_uart_2_open;
+	dw_uart_ptr->uart_close = dw_uart_2_close;
+	dw_uart_ptr->uart_control = dw_uart_2_control;
+	dw_uart_ptr->uart_write = dw_uart_2_write;
+	dw_uart_ptr->uart_read = dw_uart_2_read;
+}
+#endif /* USE_DW_UART_2 */
+/** @} end of name */
+
 /** get one designware device structure */
 DEV_UART_PTR uart_get_dev(int32_t uart_id)
 {
@@ -244,6 +319,11 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 			return &dw_uart_1;
 			break;
 #endif
+#if (USE_DW_UART_2)
+		case DW_UART_2_ID:
+			return &dw_uart_2;
+			break;
+#endif
 		default:
 			break;
 	}
@@ -261,6 +341,9 @@ void dw_uart_all_install(void)
 #endif
 #if (USE_DW_UART_1)
 	dw_uart_1_install();
+#endif
+#if (USE_DW_UART_2)
+	dw_uart_2_install();
 #endif
 }
 
