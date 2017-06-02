@@ -589,7 +589,7 @@ void vmpu_ac_container(uint8_t container_id, const CONTAINER_CONFIG *container_c
 
 		if (container_id) {
 			memcpy(container_cfg->data_start, container_cfg->data_load_start, VMPU_REGION_SIZE(container_cfg->data_start, container_cfg->data_end));
-			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_end, container_cfg->bss_start));
+			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_start, container_cfg->bss_end));
 		}
 	}
 

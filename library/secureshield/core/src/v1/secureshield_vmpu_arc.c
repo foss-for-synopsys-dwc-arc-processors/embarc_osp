@@ -559,8 +559,8 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		vmpu_ac_mem(container_id, container_cfg->data_start, size, ram_attribute);
 
 		if (container_id) {
-			memcpy(container_cfg->data_start, container_cfg->data_load_start, VMPU_REGION_SIZE(container_cfg->data_end, container_cfg->data_start));
-			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_end, container_cfg->bss_start));
+			memcpy(container_cfg->data_start, container_cfg->data_load_start, VMPU_REGION_SIZE(container_cfg->data_start, container_cfg->data_end));
+			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_start, container_cfg->bss_end));
 		}
 	}
 
