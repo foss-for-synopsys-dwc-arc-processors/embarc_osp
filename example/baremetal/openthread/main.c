@@ -82,7 +82,6 @@
  *     * Use AC adapter to ensure a steady power supply.
  *     * Open two Tera Term emulators to connect EMSKs with different COM ports.
  *     * The self-boot mode preparation is included in the above steps.
- *       See the application note on secondary bootloader in [embARC Application Note](https://www.embarc.org/help.html).
  *     * “make run” is not supported because EMSK boards are both v2.x and it can lead to conflict.
  *       See \ref sect_example_usage_HowToDebugMultiBoards "how to debug multiple boards in embARC" for more information.
  *     * Enter number to generate the pseudo-random number for OpenThread. Recommend enter number in order, such as “1”, “2” and “3”.
