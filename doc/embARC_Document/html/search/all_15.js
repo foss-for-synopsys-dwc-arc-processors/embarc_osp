@@ -84,7 +84,6 @@ var searchData=
   ['unit_5ftest_5fsetup',['UNIT_TEST_SETUP',['../group___e_m_b_a_r_c___t_e_s_t.html#ga415c0a7bda40a31015b44d76500bb9d6',1,'embARC_test.h']]],
   ['unit_5ftest_5fteardown',['UNIT_TEST_TEARDOWN',['../group___e_m_b_a_r_c___t_e_s_t.html#gab80d00563001b89b1a62f89cd0f33553',1,'embARC_test.h']]],
   ['use_5fdw_5fiic_5f0',['USE_DW_IIC_0',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#ga3b19d229b16227184baa09f36adaba34',1,'dw_iic_obj.h']]],
-  ['use_5fdw_5fiic_5f1',['USE_DW_IIC_1',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#ga2e36257b25f1a40cbaf5f0e1c6cd1bff',1,'dw_iic_obj.h']]],
   ['use_5fdw_5fspi_5f0',['USE_DW_SPI_0',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga34e3341140daa698fc095af193bf853d',1,'dw_spi_obj.h']]],
   ['use_5fdw_5fspi_5f1',['USE_DW_SPI_1',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#gabcfda0fb678fcc8afb4f799433dfb84f',1,'dw_spi_obj.h']]],
   ['use_5fdw_5fuart_5f0',['USE_DW_UART_0',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga50fce0ca9fc47ca9b62f20978bb07c68',1,'USE_DW_UART_0():&#160;dw_uart_obj.h'],['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga50fce0ca9fc47ca9b62f20978bb07c68',1,'USE_DW_UART_0():&#160;dw_uart_obj.h']]],

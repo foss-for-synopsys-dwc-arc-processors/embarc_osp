@@ -28,6 +28,17 @@ var group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u =
       [ "ret", "structint__exc__frame.html#a500ff9f43175150bc6f021c43101af33", null ],
       [ "status32", "structint__exc__frame.html#a6c8d977cfddecfc22845bfa2f6e5eb28", null ]
     ] ],
+    [ "dsp_ext_frame", "structdsp__ext__frame.html", [
+      [ "acc0_ghi", "structdsp__ext__frame.html#a8483b0b2dc625ccbda453eedbe7c80b4", null ],
+      [ "acc0_glo", "structdsp__ext__frame.html#afc1e3e03bb198c36d33ac2b2d893611e", null ],
+      [ "acc0_hi", "structdsp__ext__frame.html#aac90375ba59941f19bf282a3a5c0a34a", null ],
+      [ "acc0_lo", "structdsp__ext__frame.html#a100fb037769cf80f4382fc4f396905e4", null ],
+      [ "dsp_ctrl", "structdsp__ext__frame.html#a436039d107bc8ae9cfa6ea9878f98907", null ]
+    ] ],
+    [ "fpu_ext_frame", "structfpu__ext__frame.html", [
+      [ "fpu_ctrl", "structfpu__ext__frame.html#a01391605af286854f8d599586f511feb", null ],
+      [ "fpu_status", "structfpu__ext__frame.html#aaa84b35adc0a978604b6bd31a64705a8", null ]
+    ] ],
     [ "callee_frame", "structcallee__frame.html", [
       [ "r13", "structcallee__frame.html#abbbd829027438bd905cbb55237e8f628", null ],
       [ "r14", "structcallee__frame.html#a2bfb231184bcccd69a49439da7fe477f", null ],

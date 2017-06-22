@@ -136,24 +136,32 @@ $(document).ready(function(){initNavTree('emsk_2drivers_2uart_2dw__uart__obj_8h_
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dev__uart_8h.html">dev_uart.h</a>&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#gaba6f51fb934a1ee1541a6c4f03e65917">   52</a></span>&#160;<span class="preprocessor">#define DW_UART_NUM     (2)     </span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">   59</a></span>&#160;<span class="preprocessor">#define DW_UART_0_ID    0       </span></div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga5fb2a0672ce7e3c57ea515366808fe56">   60</a></span>&#160;<span class="preprocessor">#define DW_UART_1_ID    1       </span></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga50fce0ca9fc47ca9b62f20978bb07c68">   67</a></span>&#160;<span class="preprocessor">#define USE_DW_UART_0   1       </span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga3ab11c72fb6de4b75eaed479b58f9299">   68</a></span>&#160;<span class="preprocessor">#define USE_DW_UART_1   1       </span></div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga0415852d23151330d553bfa482df6e02">   75</a></span>&#160;<span class="preprocessor">#define MAX_SNDBUF_SIZE 256     </span></div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#gae58369a6661102131d49d6d4e67c2a34">   76</a></span>&#160;<span class="preprocessor">#define MAX_RCVBUF_SIZE 10      </span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga753da64d72c992edb3b90f781ef53828">dw_uart_all_install</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _DW_UART_OBJ_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#if defined(HW_VERSION) &amp;&amp; (HW_VERSION &gt; 11)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define DW_UART_NUM     (3)     </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#gaba6f51fb934a1ee1541a6c4f03e65917">   55</a></span>&#160;<span class="preprocessor">#define DW_UART_NUM     (2)     </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">   63</a></span>&#160;<span class="preprocessor">#define DW_UART_0_ID    0       </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga5fb2a0672ce7e3c57ea515366808fe56">   64</a></span>&#160;<span class="preprocessor">#define DW_UART_1_ID    1       </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#gaf791cda00d95454c6e8a0fe977398606">   65</a></span>&#160;<span class="preprocessor">#define DW_UART_2_ID    2       </span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga50fce0ca9fc47ca9b62f20978bb07c68">   72</a></span>&#160;<span class="preprocessor">#define USE_DW_UART_0   1       </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga3ab11c72fb6de4b75eaed479b58f9299">   73</a></span>&#160;<span class="preprocessor">#define USE_DW_UART_1   1       </span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#if defined(HW_VERSION) &amp;&amp; (HW_VERSION &gt; 11)</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define USE_DW_UART_2   1       </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga753da64d72c992edb3b90f781ef53828">dw_uart_all_install</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _DW_UART_OBJ_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="dev__uart_8h_html"><div class="ttname"><a href="dev__uart_8h.html">dev_uart.h</a></div><div class="ttdoc">uart device hardware layer definitions </div></div>
 <div class="ttc" id="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_html_ga753da64d72c992edb3b90f781ef53828"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga753da64d72c992edb3b90f781ef53828">dw_uart_all_install</a></div><div class="ttdeci">void dw_uart_all_install(void)</div><div class="ttdoc">install all uart objects </div><div class="ttdef"><b>Definition:</b> <a href="axs_2drivers_2uart_2dw__uart__obj_8c_source.html#l00308">axs/drivers/uart/dw_uart_obj.c:308</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -163,7 +171,7 @@ $(document).ready(function(){initNavTree('emsk_2drivers_2uart_2dw__uart__obj_8h_
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a class="el" href="dir_ba790842f448632b805827035471586a.html">emsk</a></li><li class="navelem"><a class="el" href="dir_2f7e22bd2ce967436634585d9443b467.html">drivers</a></li><li class="navelem"><a class="el" href="dir_c90022dbf3958bef73d6d41beed1dad9.html">uart</a></li><li class="navelem"><a class="el" href="emsk_2drivers_2uart_2dw__uart__obj_8h.html">dw_uart_obj.h</a></li>
-    <li class="footer">Generated on Fri Apr 14 2017 09:55:23 for embARC by
+    <li class="footer">Generated on Thu Jun 22 2017 10:30:30 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

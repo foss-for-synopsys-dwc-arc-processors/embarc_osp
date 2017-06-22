@@ -10,6 +10,7 @@ var group___a_r_c___h_a_l___m_i_s_c =
     [ "ARC_FEATURE_FIRQ", "group___a_r_c___h_a_l___m_i_s_c.html#gad5845909cab8518955f34df3dd2d81dd", null ],
     [ "ARC_FEATURE_LITTLE_ENDIAN", "group___a_r_c___h_a_l___m_i_s_c.html#ga858110705156712d19cf5b36a031c223", null ],
     [ "ARC_FEATURE_LPC_SIZE", "group___a_r_c___h_a_l___m_i_s_c.html#gaae41b9d5220c4435f07a71283c1e4fa0", null ],
+    [ "ARC_FEATURE_MPU_OPTION_NUM", "group___a_r_c___h_a_l___m_i_s_c.html#ga6ac592ada4b3d12463575b7a40bb6657", null ],
     [ "ARC_FEATURE_PC_SIZE", "group___a_r_c___h_a_l___m_i_s_c.html#ga749801f4866b2b307df2d8725f455976", null ],
     [ "ARC_FEATURE_RGF_NUM_BANKS", "group___a_r_c___h_a_l___m_i_s_c.html#ga4c3b66c890f3cde2bbf7585221e37df5", null ],
     [ "STATUS32_RESET_VALUE", "group___a_r_c___h_a_l___m_i_s_c.html#ga16c85de3f35dd1260842a7015e8cd791", null ]

@@ -17,6 +17,7 @@ var searchData=
   ['flash_5fwait_5fready',['flash_wait_ready',['../group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#gaeede29a7cb6c89eca3e7d44a05b95976',1,'spiflash.c']]],
   ['flash_5fwrite',['flash_write',['../group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#gae755251cea1da30326f713fd99adc572',1,'spiflash.c']]],
   ['flash_5fwrite_5fenable',['flash_write_enable',['../group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#ga19de875e46154a4fcf224c2182d2c0a4',1,'spiflash.c']]],
+  ['fpu_5fext_5fframe',['fpu_ext_frame',['../structfpu__ext__frame.html',1,'']]],
   ['freq',['freq',['../structdev__spi__info.html#a5ecb225abfb364893985791e5344e304',1,'dev_spi_info']]],
   ['fs_5fscl_5fhcnt',['fs_scl_hcnt',['../structdw__iic__scl__cnt.html#a66532284430f9a6c15a90e610de3fa1d',1,'dw_iic_scl_cnt']]],
   ['fs_5fscl_5flcnt',['fs_scl_lcnt',['../structdw__iic__scl__cnt.html#a3e3e7c933046935fc76af10bc9858070',1,'dw_iic_scl_cnt']]],

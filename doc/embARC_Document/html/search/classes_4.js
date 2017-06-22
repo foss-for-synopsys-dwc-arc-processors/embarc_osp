@@ -19,6 +19,7 @@ var searchData=
   ['dev_5fwnic_5finfo',['dev_wnic_info',['../structdev__wnic__info.html',1,'']]],
   ['dev_5fwnic_5fon_5fops',['dev_wnic_on_ops',['../structdev__wnic__on__ops.html',1,'']]],
   ['device_5fdata_5ft',['device_data_t',['../structdevice__data__t.html',1,'']]],
+  ['dsp_5fext_5fframe',['dsp_ext_frame',['../structdsp__ext__frame.html',1,'']]],
   ['dw_5fgpio_5fbit_5fisr',['dw_gpio_bit_isr',['../structdw__gpio__bit__isr.html',1,'']]],
   ['dw_5fgpio_5fport',['dw_gpio_port',['../structdw__gpio__port.html',1,'']]],
   ['dw_5fgpio_5freg',['dw_gpio_reg',['../structdw__gpio__reg.html',1,'']]],

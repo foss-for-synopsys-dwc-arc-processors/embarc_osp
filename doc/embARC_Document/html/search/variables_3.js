@@ -21,8 +21,6 @@ var searchData=
   ['dw_5fapb_5fbus_5ffreq',['dw_apb_bus_freq',['../structdw__spi__ctrl.html#a600f26e6151128805765ab5cf36001a5',1,'dw_spi_ctrl::dw_apb_bus_freq()'],['../structdw__uart__ctrl.html#a99f664a7c1dc7d150c3adb68601421b1',1,'dw_uart_ctrl::dw_apb_bus_freq()']]],
   ['dw_5fiic_5f0',['dw_iic_0',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#gae3634028ee4e9ec4a8d2b58d1354c46f',1,'dw_iic_obj.c']]],
   ['dw_5fiic_5f0_5fctrl',['dw_iic_0_ctrl',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#gac4b852330a462d4b9345078bea8ae676',1,'dw_iic_obj.c']]],
-  ['dw_5fiic_5f1',['dw_iic_1',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#ga0bf1815935410074872879ce748c75d4',1,'dw_iic_obj.c']]],
-  ['dw_5fiic_5f1_5fctrl',['dw_iic_1_ctrl',['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#ga82a54be5198e4415eb21ce9e072ca075',1,'dw_iic_obj.c']]],
   ['dw_5fiic_5fint_5fhandler',['dw_iic_int_handler',['../structdw__iic__ctrl.html#a68e06e6698d8ec4a0f1e5e56c6a7f8cf',1,'dw_iic_ctrl']]],
   ['dw_5fiic_5fregs',['dw_iic_regs',['../structdw__iic__ctrl.html#ac932344f1a0028b710e44591ec589443',1,'dw_iic_ctrl']]],
   ['dw_5fiic_5frxbuf',['dw_iic_rxbuf',['../structdw__iic__ctrl.html#aa88c8581d770dd2a71dd2d11bf88774b',1,'dw_iic_ctrl']]],
