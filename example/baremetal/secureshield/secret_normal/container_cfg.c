@@ -67,7 +67,7 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{default_interrupt_handler, INTNO_UART1, SECURESHIELD_AC_IRQ},
 #endif
 	/* Timer1, Timer 0, RTC and TIMIE BCR are accessible for background container*/
-#if LIB_SECURESHIELD_VERSION == 1
+#if SECURESHIELD_VERSION == 1
 	{(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
 	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
 	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
