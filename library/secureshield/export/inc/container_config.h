@@ -261,27 +261,24 @@ extern uint32_t __secureshield_mode;
 
 #if SECURESHIELD_VERSION == 1
 
-#define GEN_CONTAINER_ROM_SECTION(container_name, size, ...)	\
-		.container_name.rom : {		\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
+#define GEN_CONTAINER_ROM_SECTION(container_name, size, ...) \
+		.container_name.rom ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_text_##container_name = .;		\
 		*(.container_name.text)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_TEXT(__VA_ARGS__)		\
 		)()					\
 		_e_text_##container_name = .;		\
-		_f_rodata_##container_name = .; 		\
+		_f_rodata_##container_name = .; 	\
 		*(.container_name.rodata)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
-		_e_rodata_##container_name = .;		\
+		_e_rodata_##container_name = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
 		} > NORMAL_ROM
 
-#define GEN_CONTAINER_RAM_SECTION(container_name, size, ...)	\
-		.container_name.ram.data : {		\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
+#define GEN_CONTAINER_RAM_SECTION(container_name, size, ...) \
+		.container_name.ram.data ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_data_##container_name = .;		\
 		*(.container_name.data)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
@@ -295,32 +292,28 @@ extern uint32_t __secureshield_mode;
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
-		_e_bss_##container_name = .;		\
+		_e_bss_##container_name = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
 		} > NORMAL_RAM				\
 		_f_data_load_##container_name = LOADADDR(.container_name.ram.data);
 
-#define GEN_SECURE_CONTAINER_ROM_SECTION(container_name, size, ...)	\
-		.container_name.rom : {		\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
+#define GEN_SECURE_CONTAINER_ROM_SECTION(container_name, size, ...) \
+		.container_name.rom ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_text_##container_name = .;		\
 		*(.container_name.text)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_TEXT(__VA_ARGS__)		\
 		)()					\
 		_e_text_##container_name = .;		\
-		_f_rodata_##container_name = .; 		\
+		_f_rodata_##container_name = .; 	\
 		*(.container_name.rodata)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
-		_e_rodata_##container_name = .;		\
+		_e_rodata_##container_name = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
 		} > SECURE_ROM
 
-#define GEN_SECURE_CONTAINER_RAM_SECTION(container_name, size, ...)	\
-		.container_name.ram.data : {		\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
+#define GEN_SECURE_CONTAINER_RAM_SECTION(container_name, size, ...) \
+		.container_name.ram.data ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_data_##container_name = .;		\
 		*(.container_name.data)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
@@ -334,15 +327,14 @@ extern uint32_t __secureshield_mode;
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
-		. = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
-		_e_bss_##container_name = .;		\
+		_e_bss_##container_name = ALIGN(CONTAINER_SIZE_ALIGNMENT(size)); \
 		} > SECURE_RAM				\
 		_f_data_load_##container_name = LOADADDR(.container_name.ram.data); 
 
 #elif SECURESHIELD_VERSION == 2
 
-#define GEN_CONTAINER_ROM_SECTION(container_name, size, ...)	\
-		.container_name.rom ALIGN(CONTAINER_ADDRESS_ALIGNMENT): {	\
+#define GEN_CONTAINER_ROM_SECTION(container_name, size, ...) \
+		.container_name.rom ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : { \
 		_f_text_##container_name = .;		\
 		*(.container_name.text)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
@@ -350,17 +342,16 @@ extern uint32_t __secureshield_mode;
 		)()					\
 		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		_e_text_##container_name = .;		\
-		_f_rodata_##container_name = .; 		\
+		_f_rodata_##container_name = .; 	\
 		*(.container_name.rodata)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
-		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
-		_e_rodata_##container_name = .; 		\
+		_e_rodata_##container_name = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		} > NORMAL_ROM				
 
-#define GEN_CONTAINER_RAM_SECTION(container_name, size, ...)	\
-		.container_name.ram.data ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : {	\
+#define GEN_CONTAINER_RAM_SECTION(container_name, size, ...) \
+		.container_name.ram.data ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : { \
 		_f_data_##container_name = .;		\
 		*(.container_name.data)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
@@ -374,13 +365,12 @@ extern uint32_t __secureshield_mode;
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
-		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
-		_e_bss_##container_name = .;		\
+		_e_bss_##container_name = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		} > NORMAL_RAM				\
 		_f_data_load_##container_name = LOADADDR(.container_name.ram.data); 
 
-#define GEN_SECURE_CONTAINER_ROM_SECTION(container_name, size, ...)	\
-		.container_name.rom ALIGN(CONTAINER_ADDRESS_ALIGNMENT): {	\
+#define GEN_SECURE_CONTAINER_ROM_SECTION(container_name, size, ...) \
+		.container_name.rom ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : { \
 		_f_text_##container_name = .;		\
 		*(.container_name.text)			\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
@@ -388,16 +378,15 @@ extern uint32_t __secureshield_mode;
 		)()					\
 		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		_e_text_##container_name = .;		\
-		_f_rodata_##container_name = .; 		\
+		_f_rodata_##container_name = .; 	\
 		*(.container_name.rodata)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
-		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
-		_e_rodata_##container_name = .; 		\
+		_e_rodata_##container_name = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		} > SECURE_ROM		
 
-#define GEN_SECURE_CONTAINER_RAM_SECTION(container_name, size, ...)	\
+#define GEN_SECURE_CONTAINER_RAM_SECTION(container_name, size, ...) \
 		.container_name.ram.data ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : {	\
 		_f_data_##container_name = .;		\
 		*(.container_name.data)			\
@@ -412,8 +401,7 @@ extern uint32_t __secureshield_mode;
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
-		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
-		_e_bss_##container_name = .;		\
+		_e_bss_##container_name = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		} > SECURE_RAM				\
 		_f_data_load_##container_name = LOADADDR(.container_name.ram.data); 
 #endif	/* SECURESHIELD_VERSION */

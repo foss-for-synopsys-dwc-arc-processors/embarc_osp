@@ -43,8 +43,7 @@ SECTIONS {
 #if  SECURESHIELD_VERSION == 1
 			_e_rom_secureshieldruntime = _f_rom_secureshieldruntime + CONTAINER_SIZE_ALIGNMENT(. - _f_rom_secureshieldruntime);
 #elif SECURESHIELD_VERSION == 2
-			. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT);
-			_e_rom_secureshieldruntime = .;
+			_e_rom_secureshieldruntime = ALIGN(CONTAINER_ADDRESS_ALIGNMENT);
 #endif
 		}
 	} > SECURE_ROM
@@ -67,8 +66,7 @@ SECTIONS {
 #if  SECURESHIELD_VERSION == 1
 			_e_ram_secureshieldruntime = _f_ram_secureshieldruntime + CONTAINER_SIZE_ALIGNMENT(. - _f_ram_secureshieldruntime);
 #elif SECURESHIELD_VERSION == 2
-			. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT);
-			_e_ram_secureshieldruntime = .;
+			_e_ram_secureshieldruntime  = ALIGN(CONTAINER_ADDRESS_ALIGNMENT);
 #endif
 		}
 
