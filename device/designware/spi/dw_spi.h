@@ -54,8 +54,8 @@
 #define DW_SPI_IN_TX			(DEV_IN_TX|DEV_IN_XFER)			/*!< Currently in spi tx */
 #define DW_SPI_IN_RX			(DEV_IN_RX|DEV_IN_XFER)			/*!< Currently in spi rx */
 
-#define DW_SPI_GINT_DISABLED		(0)		/*!< designware interrupt disabled for control iic irq/fiq */
-#define DW_SPI_GINT_ENABLE		(1<<0)		/*!< designware interrupt enabled for control iic irq/fiq */
+#define DW_SPI_GINT_DISABLED		(0)		/*!< designware interrupt disabled for control spi irq/fiq */
+#define DW_SPI_GINT_ENABLE		(1<<0)		/*!< designware interrupt enabled for control spi irq/fiq */
 
 #define DW_SPI_MASTER_SUPPORTED		(0x1)	/*!< Support Designware SPI Master Mode */
 #define DW_SPI_SLAVE_SUPPORTED		(0x2)	/*!< Support Designware SPI Slave Mode */
@@ -157,8 +157,8 @@ typedef struct dw_spi_ctrl {
 	uint32_t tx_fifo_len;		/*!< transmit fifo length */
 	uint32_t rx_fifo_len;		/*!< receive fifo length */
 	INT_HANDLER dw_spi_int_handler;	/*!< spi interrupt handler */
-	/* Variables which always change during iic operation */
-	uint32_t int_status;		/*!< iic interrupt status */
+	/* Variables which always change during spi operation */
+	uint32_t int_status;		/*!< spi interrupt status */
 	DW_SPI_TRANSFER dw_xfer;	/*!< designware spi transfer */
 } DW_SPI_CTRL, *DW_SPI_CTRL_PTR;
 
