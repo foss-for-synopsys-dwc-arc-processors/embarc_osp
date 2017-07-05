@@ -112,7 +112,7 @@ void __do_global_dtors_aux(void)
 	unsigned int i;
 
 	nDtors = (unsigned int)__DTOR_LIST__[0];
-	i = 0;
+	i = 1;
 
 	while (i <= nDtors) {
 		__DTOR_LIST__[i++]();
