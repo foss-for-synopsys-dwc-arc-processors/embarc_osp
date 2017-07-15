@@ -105,6 +105,7 @@
 	.align 4
 sjli_secureshield_sys_ops:
 	push_s 	blink
+	push 	fp    /* fp may be used, saved here */
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	mov 	gp, _f_sdata
 #endif
@@ -115,6 +116,7 @@ sjli_secureshield_sys_ops:
 /* The newlib c of ARC GNU is compiled with sdata enabled */
 	ld	gp, [normal_world_gp]	/* init small-data base register */
 #endif
+	pop 	fp
 	pop_s 	blink
 	j 	[blink]
 
@@ -123,6 +125,7 @@ sjli_secureshield_sys_ops:
 	.align 4
 sjli_secureshield_int_ops:
 	push_s 	blink
+	push	fp    /* fp may be used, saved here */
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	mov 	gp, _f_sdata
 #endif
@@ -133,6 +136,7 @@ sjli_secureshield_int_ops:
 /* The newlib c of ARC GNU is compiled with sdata enabled */
 	ld	gp, [normal_world_gp]	/* init small-data base register */
 #endif
+	pop	fp
 	pop_s 	blink
 	j 	[blink]
 
