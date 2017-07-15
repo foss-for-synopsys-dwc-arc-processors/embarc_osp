@@ -148,7 +148,7 @@ typedef union {
 
 /**
  * \ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  intialize the exception and interrupt handling
+ * \brief  initialize the exception and interrupt handling
  */
 void exc_int_init(void)
 {
