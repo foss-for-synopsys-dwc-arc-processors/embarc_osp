@@ -286,7 +286,8 @@
 	mov	r10, 0
 	mov	r11, 0
 	mov	r12, 0
-	
+
+	mov 	fp, 0
 	mov 	r29, 0
 	mov 	r30, 0
 .endm
