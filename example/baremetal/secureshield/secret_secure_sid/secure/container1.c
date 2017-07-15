@@ -118,7 +118,7 @@ int32_t operate_secret(char* pwd, uint32_t cmd, char * data)
 		return -1;
 	}
 
-	caller_container = container_id_caller();
+	caller_container = secure_container_id_caller();
 
 	if (caller_container < 0) {
 		EMBARC_PRINTF("containre_id_caller error\r\n");
