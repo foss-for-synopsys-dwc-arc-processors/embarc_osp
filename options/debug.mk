@@ -123,6 +123,11 @@ ifeq ($(DBG), mdb)
 DBG_HW_FLAGS += -run
 endif
 ifeq ($(DBG), arc-elf32-gdb)
+ifeq ($(BOARD), nsim)
+DBG = $(NSIMDRV)
+DBG_HW_FLAGS =  -p nsim_emt=1 $(NSIMDRV_OPT)
+else
 DBG_HW_FLAGS += -ex "c"
+endif
 endif
 endif
