@@ -536,7 +536,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		rodata_attribute = SECURESHIELD_ACDEF_KROM;
 		ram_attribute = SECURESHIELD_ACDEF_KRAM;
 
-	} else if (container_cfg->type == SECURESHILED_CONTAINER_NORMAL) {
+	} else if (container_cfg->type == SECURESHIELD_CONTAINER_NORMAL) {
 		g_container_context[container_id].cpu_status = NORMAL_CONTAINER_DEFAULT_STATUS;
 
 		text_attribute = SECURESHIELD_ACDEF_UTEXT;

@@ -98,7 +98,7 @@ SECTIONS {
 			_e_vector = .;
 		}
 
-		/* . = ALIGN(SECURESHILED_CONTAINER_ALIGNMENT); */
+		/* . = ALIGN(SECURESHIELD_CONTAINER_ALIGNMENT); */
 		.text ALIGN(4): {
 			_f_text = .;
 			*(TYPE text)
