@@ -52,6 +52,7 @@
  *     ![ScreenShot of axs 103 board test under baremetal](pic/images/example/emsk/baremetal_arc_feature_axs103.jpg)
  *
  * ### Extra Comments
+ *     Tested and supported on v1.1 firmware version of AXS103.
  */
 
 /**
