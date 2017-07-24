@@ -10,7 +10,7 @@
 BOARD_AXS_DIR = $(BOARDS_ROOT)/axs
 ##
 # board version definition
-# 103 stands for 103
+# 103 stands for 103, the firmware version supported is v1.1
 # When you don't special BD_VER
 # in any other place or through make options
 # it will select a proper BD_VER according to your cur_core
