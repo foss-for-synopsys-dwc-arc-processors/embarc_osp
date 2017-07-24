@@ -55,7 +55,7 @@
 	\
 	static const __attribute__((section(".keep.secureshield.cfgtbl"), aligned(4))) CONTAINER_CONFIG background_container_cfg = { \
 		SECURESHIELD_CONTAINER_MAGIC, \
-		SECURESHILED_CONTAINER_NORMAL, \
+		SECURESHIELD_CONTAINER_NORMAL, \
 		0,			\
 		0,			\
 		ac_table, \
@@ -115,11 +115,11 @@
 
 #define __SECURESHIELD_CONTAINER_CONFIG_NOSTACK(container_name, ac_table) \
 	__SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, 1024,	\
-		SECURESHILED_CONTAINER_NORMAL)
+		SECURESHIELD_CONTAINER_NORMAL)
 
 #define __SECURESHIELD_CONTAINER_CONFIG_STACK(container_name, ac_table, stack_size) \
 	__SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, stack_size,	\
-		SECURESHILED_CONTAINER_NORMAL)
+		SECURESHIELD_CONTAINER_NORMAL)
 
 #define __SECURESHIELD_CONTIANER_CONFIG_TYPE(container_name, ac_table, stack_size, container_type) \
 	__SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, stack_size, container_type)
