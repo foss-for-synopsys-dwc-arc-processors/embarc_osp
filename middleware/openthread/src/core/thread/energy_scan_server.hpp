@@ -34,15 +34,16 @@
 #ifndef ENERGY_SCAN_SERVER_HPP_
 #define ENERGY_SCAN_SERVER_HPP_
 
-#include <openthread-core-config.h>
-#include <openthread-types.h>
-#include <coap/coap_client.hpp>
-#include <coap/coap_server.hpp>
-#include <common/timer.hpp>
-#include <net/ip6_address.hpp>
-#include <net/udp6.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "openthread-core-config.h"
+#include "coap/coap.hpp"
+#include "common/locator.hpp"
+#include "common/timer.hpp"
+#include "net/ip6_address.hpp"
+#include "net/udp6.hpp"
+
+namespace ot {
 
 class MeshForwarder;
 class ThreadLastTransactionTimeTlv;
@@ -54,7 +55,7 @@ class ThreadTargetTlv;
  * This class implements handling Energy Scan Requests.
  *
  */
-class EnergyScanServer
+class EnergyScanServer: public ThreadNetifLocator
 {
 public:
     /**
@@ -70,21 +71,22 @@ private:
         kReportDelay = 500,   ///< Delay before sending a report (milliseconds)
     };
 
-    static void HandleRequest(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleRequest(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                               const otMessageInfo *aMessageInfo);
     void HandleRequest(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
     static void HandleScanResult(void *aContext, otEnergyScanResult *aResult);
     void HandleScanResult(otEnergyScanResult *aResult);
 
-    static void HandleTimer(void *aContext);
+    static void HandleTimer(Timer &aTimer);
     void HandleTimer(void);
 
     static void HandleNetifStateChanged(uint32_t aFlags, void *aContext);
     void HandleNetifStateChanged(uint32_t aFlags);
 
-    ThreadError SendReport(void);
-    ThreadError SendResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aRequestMessageInfo);
+    otError SendReport(void);
+
+    static EnergyScanServer &GetOwner(const Context &aContext);
 
     Ip6::Address mCommissioner;
     uint32_t mChannelMask;
@@ -97,21 +99,17 @@ private:
     int8_t mScanResults[OPENTHREAD_CONFIG_MAX_ENERGY_RESULTS];
     uint8_t mScanResultsLength;
 
-    Timer mTimer;
+    TimerMilli mTimer;
 
     Ip6::NetifCallback mNetifCallback;
 
     Coap::Resource mEnergyScan;
-    Coap::Server &mCoapServer;
-    Coap::Client &mCoapClient;
-
-    ThreadNetif &mNetif;
 };
 
 /**
  * @}
  */
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // ENERGY_SCAN_SERVER_HPP_

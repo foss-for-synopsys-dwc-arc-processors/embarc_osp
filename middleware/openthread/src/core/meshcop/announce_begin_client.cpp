@@ -33,34 +33,35 @@
 
 #define WPP_NAME "announce_begin_client.tmh"
 
-#ifdef OPENTHREAD_CONFIG_FILE
-#include OPENTHREAD_CONFIG_FILE
-#else
-#include <openthread-config.h>
-#endif
+#include <openthread/config.h>
 
-#include <coap/coap_header.hpp>
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <common/logging.hpp>
-#include <platform/random.h>
-#include <meshcop/announce_begin_client.hpp>
-#include <meshcop/tlvs.hpp>
-#include <thread/thread_netif.hpp>
-#include <thread/thread_uris.hpp>
+#include "announce_begin_client.hpp"
 
-namespace Thread {
+#include <openthread/platform/random.h>
 
-AnnounceBeginClient::AnnounceBeginClient(ThreadNetif &aThreadNetif) :
-    mNetif(aThreadNetif),
-    mCoapClient(aThreadNetif.GetCoapClient())
+#include "openthread-instance.h"
+#include "coap/coap_header.hpp"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/logging.hpp"
+#include "meshcop/meshcop.hpp"
+#include "meshcop/meshcop_tlvs.hpp"
+#include "thread/thread_netif.hpp"
+#include "thread/thread_uri_paths.hpp"
+
+#if OPENTHREAD_ENABLE_COMMISSIONER && OPENTHREAD_FTD
+
+namespace ot {
+
+AnnounceBeginClient::AnnounceBeginClient(ThreadNetif &aThreadNetif):
+    ThreadNetifLocator(aThreadNetif)
 {
 }
 
-ThreadError AnnounceBeginClient::SendRequest(uint32_t aChannelMask, uint8_t aCount, uint16_t aPeriod,
-                                             const Ip6::Address &aAddress)
+otError AnnounceBeginClient::SendRequest(uint32_t aChannelMask, uint8_t aCount, uint16_t aPeriod,
+                                         const Ip6::Address &aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     Coap::Header header;
     MeshCoP::CommissionerSessionIdTlv sessionId;
     MeshCoP::ChannelMask0Tlv channelMask;
@@ -68,18 +69,21 @@ ThreadError AnnounceBeginClient::SendRequest(uint32_t aChannelMask, uint8_t aCou
     MeshCoP::PeriodTlv period;
 
     Ip6::MessageInfo messageInfo;
-    Message *message;
+    Message *message = NULL;
 
-    header.Init(aAddress.IsMulticast() ? kCoapTypeNonConfirmable : kCoapTypeConfirmable,
-                kCoapRequestPost);
+    VerifyOrExit(GetNetif().GetCommissioner().IsActive(), error = OT_ERROR_INVALID_STATE);
+
+    header.Init(aAddress.IsMulticast() ? OT_COAP_TYPE_NON_CONFIRMABLE : OT_COAP_TYPE_CONFIRMABLE,
+                OT_COAP_CODE_POST);
     header.SetToken(Coap::Header::kDefaultTokenLength);
-    header.AppendUriPathOptions(OPENTHREAD_URI_ANNOUNCE_BEGIN);
+    header.AppendUriPathOptions(OT_URI_PATH_ANNOUNCE_BEGIN);
     header.SetPayloadMarker();
 
-    VerifyOrExit((message = mCoapClient.NewMessage(header)) != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit((message = MeshCoP::NewMeshCoPMessage(GetNetif().GetCoap(), header)) != NULL,
+                 error = OT_ERROR_NO_BUFS);
 
     sessionId.Init();
-    sessionId.SetCommissionerSessionId(mNetif.GetCommissioner().GetSessionId());
+    sessionId.SetCommissionerSessionId(GetNetif().GetCommissioner().GetSessionId());
     SuccessOrExit(error = message->Append(&sessionId, sizeof(sessionId)));
 
     channelMask.Init();
@@ -94,17 +98,18 @@ ThreadError AnnounceBeginClient::SendRequest(uint32_t aChannelMask, uint8_t aCou
     period.SetPeriod(aPeriod);
     SuccessOrExit(error = message->Append(&period, sizeof(period)));
 
+    messageInfo.SetSockAddr(GetNetif().GetMle().GetMeshLocal16());
     messageInfo.SetPeerAddr(aAddress);
     messageInfo.SetPeerPort(kCoapUdpPort);
-    messageInfo.SetInterfaceId(mNetif.GetInterfaceId());
+    messageInfo.SetInterfaceId(GetNetif().GetInterfaceId());
 
-    SuccessOrExit(error = mCoapClient.SendMessage(*message, messageInfo));
+    SuccessOrExit(error = GetNetif().GetCoap().SendMessage(*message, messageInfo));
 
-    otLogInfoMeshCoP("sent announce begin query");
+    otLogInfoMeshCoP(GetInstance(), "sent announce begin query");
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
@@ -112,4 +117,7 @@ exit:
     return error;
 }
 
-}  // namespace Thread
+}  // namespace ot
+
+#endif // OPENTHREAD_ENABLE_COMMISSIONER && OPENTHREAD_FTD
+

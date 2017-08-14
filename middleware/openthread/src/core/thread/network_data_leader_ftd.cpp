@@ -31,36 +31,42 @@
  *   This file implements the Thread Network Data managed by the Thread Leader.
  */
 
+#if OPENTHREAD_FTD
+
+
 #define WPP_NAME "network_data_leader_ftd.tmh"
+#include <openthread/config.h>
 
-#include <coap/coap_header.hpp>
-#include <common/debug.hpp>
-#include <common/logging.hpp>
-#include <common/code_utils.hpp>
-#include <common/encoding.hpp>
-#include <common/message.hpp>
-#include <common/timer.hpp>
-#include <mac/mac_frame.hpp>
-#include <platform/random.h>
-#include <thread/mle_router.hpp>
-#include <thread/network_data_leader.hpp>
-#include <thread/thread_netif.hpp>
-#include <thread/thread_tlvs.hpp>
-#include <thread/thread_uris.hpp>
-#include <thread/lowpan.hpp>
+#include "network_data_leader.hpp"
+#include <openthread/platform/random.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
+#include "openthread-instance.h"
+#include "coap/coap_header.hpp"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/encoding.hpp"
+#include "common/logging.hpp"
+#include "common/message.hpp"
+#include "common/timer.hpp"
+#include "mac/mac_frame.hpp"
+#include "meshcop/meshcop.hpp"
+#include "thread/lowpan.hpp"
+#include "thread/mle_router.hpp"
+#include "thread/thread_netif.hpp"
+#include "thread/thread_tlvs.hpp"
+#include "thread/thread_uri_paths.hpp"
 
-namespace Thread {
+using ot::Encoding::BigEndian::HostSwap16;
+
+namespace ot {
 namespace NetworkData {
 
 Leader::Leader(ThreadNetif &aThreadNetif):
     LeaderBase(aThreadNetif),
-    mTimer(aThreadNetif.GetIp6().mTimerScheduler, &Leader::HandleTimer, this),
-    mServerData(OPENTHREAD_URI_SERVER_DATA, &Leader::HandleServerData, this),
-    mCommissioningDataGet(OPENTHREAD_URI_COMMISSIONER_GET, &Leader::HandleCommissioningGet, this),
-    mCommissioningDataSet(OPENTHREAD_URI_COMMISSIONER_SET, &Leader::HandleCommissioningSet, this),
-    mCoapServer(aThreadNetif.GetCoapServer())
+    mTimer(aThreadNetif.GetInstance(), &Leader::HandleTimer, this),
+    mServerData(OT_URI_PATH_SERVER_DATA, &Leader::HandleServerData, this),
+    mCommissioningDataGet(OT_URI_PATH_COMMISSIONER_GET, &Leader::HandleCommissioningGet, this),
+    mCommissioningDataSet(OT_URI_PATH_COMMISSIONER_SET, &Leader::HandleCommissioningSet, this)
 {
     Reset();
 }
@@ -76,30 +82,36 @@ void Leader::Reset(void)
 
 void Leader::Start(void)
 {
-    mCoapServer.AddResource(mServerData);
-    mCoapServer.AddResource(mCommissioningDataGet);
-    mCoapServer.AddResource(mCommissioningDataSet);
+    Coap::Coap &coap = GetNetif().GetCoap();
+
+    coap.AddResource(mServerData);
+    coap.AddResource(mCommissioningDataGet);
+    coap.AddResource(mCommissioningDataSet);
 }
 
 void Leader::Stop(void)
 {
-    mCoapServer.RemoveResource(mServerData);
-    mCoapServer.RemoveResource(mCommissioningDataGet);
-    mCoapServer.RemoveResource(mCommissioningDataSet);
+    Coap::Coap &coap = GetNetif().GetCoap();
+
+    coap.RemoveResource(mServerData);
+    coap.RemoveResource(mCommissioningDataGet);
+    coap.RemoveResource(mCommissioningDataSet);
 }
 
 void Leader::IncrementVersion(void)
 {
-    if (mMle.GetDeviceState() == Mle::kDeviceStateLeader)
+    ThreadNetif &netif = GetNetif();
+
+    if (netif.GetMle().GetRole() == OT_DEVICE_ROLE_LEADER)
     {
         mVersion++;
-        mNetif.SetStateChangedFlags(OT_THREAD_NETDATA_UPDATED);
+        netif.SetStateChangedFlags(OT_CHANGED_THREAD_NETDATA);
     }
 }
 
 void Leader::IncrementStableVersion(void)
 {
-    if (mMle.GetDeviceState() == Mle::kDeviceStateLeader)
+    if (GetNetif().GetMle().GetRole() == OT_DEVICE_ROLE_LEADER)
     {
         mStableVersion++;
     }
@@ -110,10 +122,10 @@ uint32_t Leader::GetContextIdReuseDelay(void) const
     return mContextIdReuseDelay;
 }
 
-ThreadError Leader::SetContextIdReuseDelay(uint32_t aDelay)
+otError Leader::SetContextIdReuseDelay(uint32_t aDelay)
 {
     mContextIdReuseDelay = aDelay;
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
 void Leader::RemoveBorderRouter(uint16_t aRloc16)
@@ -122,7 +134,7 @@ void Leader::RemoveBorderRouter(uint16_t aRloc16)
     bool rlocStable = false;
     RlocLookup(aRloc16, rlocIn, rlocStable, mTlvs, mLength);
 
-    VerifyOrExit(rlocIn, ;);
+    VerifyOrExit(rlocIn);
 
     RemoveRloc(aRloc16);
     mVersion++;
@@ -132,13 +144,13 @@ void Leader::RemoveBorderRouter(uint16_t aRloc16)
         mStableVersion++;
     }
 
-    mNetif.SetStateChangedFlags(OT_THREAD_NETDATA_UPDATED);
+    GetNetif().SetStateChangedFlags(OT_CHANGED_THREAD_NETDATA);
 
 exit:
     return;
 }
 
-void Leader::HandleServerData(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void Leader::HandleServerData(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                               const otMessageInfo *aMessageInfo)
 {
     static_cast<Leader *>(aContext)->HandleServerData(
@@ -152,28 +164,30 @@ void Leader::HandleServerData(Coap::Header &aHeader, Message &aMessage,
     ThreadNetworkDataTlv networkData;
     ThreadRloc16Tlv rloc16;
 
-    otLogInfoNetData("Received network data registration");
+    otLogInfoNetData(GetInstance(), "Received network data registration");
 
-    if (ThreadTlv::GetTlv(aMessage, ThreadTlv::kRloc16, sizeof(rloc16), rloc16) == kThreadError_None)
+    if (ThreadTlv::GetTlv(aMessage, ThreadTlv::kRloc16, sizeof(rloc16), rloc16) == OT_ERROR_NONE)
     {
-        VerifyOrExit(rloc16.IsValid(), ;);
+        VerifyOrExit(rloc16.IsValid());
         RemoveBorderRouter(rloc16.GetRloc16());
     }
 
     if (ThreadTlv::GetTlv(aMessage, ThreadTlv::kThreadNetworkData, sizeof(networkData), networkData) ==
-        kThreadError_None)
+        OT_ERROR_NONE)
     {
         RegisterNetworkData(HostSwap16(aMessageInfo.mPeerAddr.mFields.m16[7]),
                             networkData.GetTlvs(), networkData.GetLength());
     }
 
-    SendServerDataResponse(aHeader, aMessageInfo, NULL, 0);
+    SuccessOrExit(GetNetif().GetCoap().SendEmptyAck(aHeader, aMessageInfo));
+
+    otLogInfoNetData(GetInstance(), "Sent network data registration acknowledgment");
 
 exit:
     return;
 }
 
-void Leader::HandleCommissioningSet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void Leader::HandleCommissioningSet(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                     const otMessageInfo *aMessageInfo)
 {
     static_cast<Leader *>(aContext)->HandleCommissioningSet(
@@ -191,7 +205,7 @@ void Leader::HandleCommissioningSet(Coap::Header &aHeader, Message &aMessage, co
     bool hasValidTlv = false;
     uint16_t sessionId = 0;
 
-    VerifyOrExit(mMle.GetDeviceState() == Mle::kDeviceStateLeader, state = MeshCoP::StateTlv::kReject);
+    VerifyOrExit(GetNetif().GetMle().GetRole() == OT_DEVICE_ROLE_LEADER, state = MeshCoP::StateTlv::kReject);
 
     aMessage.Read(offset, length, tlvs);
 
@@ -228,20 +242,30 @@ void Leader::HandleCommissioningSet(Coap::Header &aHeader, Message &aMessage, co
     // verify whether or not MGMT_COMM_SET.req includes at least one valid TLV
     VerifyOrExit(hasValidTlv, state = MeshCoP::StateTlv::kReject);
 
-    for (MeshCoP::Tlv *cur = reinterpret_cast<MeshCoP::Tlv *>(mTlvs + sizeof(CommissioningDataTlv));
-         cur < reinterpret_cast<MeshCoP::Tlv *>(mTlvs + mLength);
-         cur = cur->GetNext())
+    // Find Commissioning Data TLV
+    for (NetworkDataTlv *netDataTlv = reinterpret_cast<NetworkDataTlv *>(mTlvs);
+         netDataTlv < reinterpret_cast<NetworkDataTlv *>(mTlvs + mLength);
+         netDataTlv = netDataTlv->GetNext())
     {
-        if (cur->GetType() == MeshCoP::Tlv::kCommissionerSessionId)
+        if (netDataTlv->GetType() == NetworkDataTlv::kTypeCommissioningData)
         {
-            VerifyOrExit(sessionId ==
-                         static_cast<MeshCoP::CommissionerSessionIdTlv *>(cur)->GetCommissionerSessionId(),
-                         state = MeshCoP::StateTlv::kReject);
-        }
-        else if (cur->GetType() == MeshCoP::Tlv::kBorderAgentLocator)
-        {
-            memcpy(tlvs + length, reinterpret_cast<uint8_t *>(cur), cur->GetLength() + sizeof(MeshCoP::Tlv));
-            length += (cur->GetLength() + sizeof(MeshCoP::Tlv));
+            // Iterate over MeshCoP TLVs and extract desired data
+            for (MeshCoP::Tlv *cur = reinterpret_cast<MeshCoP::Tlv *>(netDataTlv->GetValue());
+                 cur < reinterpret_cast<MeshCoP::Tlv *>(netDataTlv->GetValue() + netDataTlv->GetLength());
+                 cur = cur->GetNext())
+            {
+                if (cur->GetType() == MeshCoP::Tlv::kCommissionerSessionId)
+                {
+                    VerifyOrExit(sessionId ==
+                                 static_cast<MeshCoP::CommissionerSessionIdTlv *>(cur)->GetCommissionerSessionId(),
+                                 state = MeshCoP::StateTlv::kReject);
+                }
+                else if (cur->GetType() == MeshCoP::Tlv::kBorderAgentLocator)
+                {
+                    memcpy(tlvs + length, reinterpret_cast<uint8_t *>(cur), cur->GetLength() + sizeof(MeshCoP::Tlv));
+                    length += (cur->GetLength() + sizeof(MeshCoP::Tlv));
+                }
+            }
         }
     }
 
@@ -249,7 +273,7 @@ void Leader::HandleCommissioningSet(Coap::Header &aHeader, Message &aMessage, co
 
 exit:
 
-    if (mMle.GetDeviceState() == Mle::kDeviceStateLeader)
+    if (GetNetif().GetMle().GetRole() == OT_DEVICE_ROLE_LEADER)
     {
         SendCommissioningSetResponse(aHeader, aMessageInfo, state);
     }
@@ -257,7 +281,7 @@ exit:
     return;
 }
 
-void Leader::HandleCommissioningGet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void Leader::HandleCommissioningGet(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                     const otMessageInfo *aMessageInfo)
 {
     static_cast<Leader *>(aContext)->HandleCommissioningGet(
@@ -289,53 +313,22 @@ void Leader::HandleCommissioningGet(Coap::Header &aHeader, Message &aMessage, co
     SendCommissioningGetResponse(aHeader, aMessageInfo, tlvs, length);
 }
 
-void Leader::SendServerDataResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
-                                    const uint8_t *aTlvs, uint8_t aTlvsLength)
-{
-    ThreadError error = kThreadError_None;
-    Coap::Header responseHeader;
-    Message *message;
-
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
-    responseHeader.SetDefaultResponseHeader(aRequestHeader);
-
-    if (aTlvsLength > 0)
-    {
-        responseHeader.SetPayloadMarker();
-    }
-
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
-    SuccessOrExit(error = message->Append(aTlvs, aTlvsLength));
-
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, aMessageInfo));
-
-    otLogInfoNetData("Sent network data registration acknowledgment");
-
-exit:
-
-    if (error != kThreadError_None && message != NULL)
-    {
-        message->Free();
-    }
-}
-
 void Leader::SendCommissioningGetResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
                                           uint8_t *aTlvs, uint8_t aLength)
 {
-    ThreadError error = kThreadError_None;
+    ThreadNetif &netif = GetNetif();
+    otError error = OT_ERROR_NONE;
     Coap::Header responseHeader;
     Message *message;
     uint8_t index;
     uint8_t *data = NULL;
     uint8_t length = 0;
 
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
     responseHeader.SetDefaultResponseHeader(aRequestHeader);
     responseHeader.SetPayloadMarker();
 
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
+    VerifyOrExit((message = MeshCoP::NewMeshCoPMessage(netif.GetCoap(), responseHeader)) != NULL,
+                 error = OT_ERROR_NO_BUFS);
 
     for (NetworkDataTlv *cur = reinterpret_cast<NetworkDataTlv *>(mTlvs);
          cur < reinterpret_cast<NetworkDataTlv *>(mTlvs + mLength);
@@ -349,7 +342,7 @@ void Leader::SendCommissioningGetResponse(const Coap::Header &aRequestHeader, co
         }
     }
 
-    VerifyOrExit(data && length, error = kThreadError_Drop);
+    VerifyOrExit(data && length, error = OT_ERROR_DROP);
 
     if (aLength == 0)
     {
@@ -372,13 +365,19 @@ void Leader::SendCommissioningGetResponse(const Coap::Header &aRequestHeader, co
         }
     }
 
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, aMessageInfo));
+    if (message->GetLength() == responseHeader.GetLength())
+    {
+        // no payload, remove coap payload marker
+        message->SetLength(message->GetLength() - 1);
+    }
 
-    otLogInfoMeshCoP("sent commissioning dataset get response");
+    SuccessOrExit(error = netif.GetCoap().SendMessage(*message, aMessageInfo));
+
+    otLogInfoMeshCoP(GetInstance(), "sent commissioning dataset get response");
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
@@ -387,29 +386,29 @@ exit:
 void Leader::SendCommissioningSetResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
                                           MeshCoP::StateTlv::State aState)
 {
-    ThreadError error = kThreadError_None;
+    ThreadNetif &netif = GetNetif();
+    otError error = OT_ERROR_NONE;
     Coap::Header responseHeader;
     Message *message;
     MeshCoP::StateTlv state;
 
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
     responseHeader.SetDefaultResponseHeader(aRequestHeader);
     responseHeader.SetPayloadMarker();
 
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
+    VerifyOrExit((message = MeshCoP::NewMeshCoPMessage(netif.GetCoap(), responseHeader)) != NULL,
+                 error = OT_ERROR_NO_BUFS);
 
     state.Init();
     state.SetState(aState);
     SuccessOrExit(error = message->Append(&state, sizeof(state)));
 
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, aMessageInfo));
+    SuccessOrExit(error = netif.GetCoap().SendMessage(*message, aMessageInfo));
 
-    otLogInfoMeshCoP("sent commissioning dataset set response");
+    otLogInfoMeshCoP(GetInstance(), "sent commissioning dataset set response");
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
@@ -505,38 +504,44 @@ bool Leader::IsStableUpdated(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLeng
     bool rval = false;
     NetworkDataTlv *cur = reinterpret_cast<NetworkDataTlv *>(aTlvs);
     NetworkDataTlv *end = reinterpret_cast<NetworkDataTlv *>(aTlvs + aTlvsLength);
-    PrefixTlv *prefix;
-    PrefixTlv *prefixBase;
-    BorderRouterTlv *borderRouter;
-    HasRouteTlv *hasRoute;
-    ContextTlv *context;
 
     while (cur < end)
     {
         if (cur->GetType() == NetworkDataTlv::kTypePrefix)
         {
-            prefix = static_cast<PrefixTlv *>(cur);
-            context = FindContext(*prefix);
-            borderRouter = FindBorderRouter(*prefix);
-            hasRoute = FindHasRoute(*prefix);
+            PrefixTlv *prefix = static_cast<PrefixTlv *>(cur);
+            ContextTlv *context = FindContext(*prefix);
+            BorderRouterTlv *borderRouter = FindBorderRouter(*prefix);
+            HasRouteTlv *hasRoute = FindHasRoute(*prefix);
 
             if (cur->IsStable() && (!context || borderRouter))
             {
-                prefixBase = FindPrefix(prefix->GetPrefix(), prefix->GetPrefixLength(), aTlvsBase, aTlvsBaseLength);
+                PrefixTlv *prefixBase = FindPrefix(prefix->GetPrefix(), prefix->GetPrefixLength(),
+                                                   aTlvsBase, aTlvsBaseLength);
 
                 if (!prefixBase)
                 {
                     ExitNow(rval = true);
                 }
 
-                if (borderRouter && memcmp(borderRouter, FindBorderRouter(*prefixBase), borderRouter->GetLength()) != 0)
+                if (borderRouter)
                 {
-                    ExitNow(rval = true);
+                    BorderRouterTlv *borderRouterBase = FindBorderRouter(*prefixBase);
+
+                    if (!borderRouterBase || memcmp(borderRouter, borderRouterBase, borderRouter->GetLength()) != 0)
+                    {
+                        ExitNow(rval = true);
+                    }
                 }
 
-                if (hasRoute && (memcmp(hasRoute, FindHasRoute(*prefixBase), hasRoute->GetLength()) != 0))
+                if (hasRoute)
                 {
-                    ExitNow(rval = true);
+                    HasRouteTlv *hasRouteBase = FindHasRoute(*prefixBase);
+
+                    if (!hasRouteBase || (memcmp(hasRoute, hasRouteBase, hasRoute->GetLength()) != 0))
+                    {
+                        ExitNow(rval = true);
+                    }
                 }
             }
         }
@@ -545,13 +550,13 @@ bool Leader::IsStableUpdated(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLeng
     }
 
 exit:
-    (void)aRloc16;
+    OT_UNUSED_VARIABLE(aRloc16);
     return rval;
 }
 
-ThreadError Leader::RegisterNetworkData(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLength)
+otError Leader::RegisterNetworkData(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLength)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     bool rlocIn = false;
     bool rlocStable = false;
     bool stableUpdated = false;
@@ -589,13 +594,13 @@ ThreadError Leader::RegisterNetworkData(uint16_t aRloc16, uint8_t *aTlvs, uint8_
         }
     }
 
-    mNetif.SetStateChangedFlags(OT_THREAD_NETDATA_UPDATED);
+    GetNetif().SetStateChangedFlags(OT_CHANGED_THREAD_NETDATA);
 
 exit:
     return error;
 }
 
-ThreadError Leader::AddNetworkData(uint8_t *aTlvs, uint8_t aTlvsLength)
+otError Leader::AddNetworkData(uint8_t *aTlvs, uint8_t aTlvsLength)
 {
     NetworkDataTlv *cur = reinterpret_cast<NetworkDataTlv *>(aTlvs);
     NetworkDataTlv *end = reinterpret_cast<NetworkDataTlv *>(aTlvs + aTlvsLength);
@@ -606,23 +611,22 @@ ThreadError Leader::AddNetworkData(uint8_t *aTlvs, uint8_t aTlvsLength)
         {
         case NetworkDataTlv::kTypePrefix:
             AddPrefix(*static_cast<PrefixTlv *>(cur));
-            otDumpDebgNetData("add prefix done", mTlvs, mLength);
+            otDumpDebgNetData(GetInstance(), "add prefix done", mTlvs, mLength);
             break;
 
         default:
-            assert(false);
             break;
         }
 
         cur = cur->GetNext();
     }
 
-    otDumpDebgNetData("add done", mTlvs, mLength);
+    otDumpDebgNetData(GetInstance(), "add done", mTlvs, mLength);
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::AddPrefix(PrefixTlv &aPrefix)
+otError Leader::AddPrefix(PrefixTlv &aPrefix)
 {
     NetworkDataTlv *cur = aPrefix.GetSubTlvs();
     NetworkDataTlv *end = aPrefix.GetNext();
@@ -640,19 +644,18 @@ ThreadError Leader::AddPrefix(PrefixTlv &aPrefix)
             break;
 
         default:
-            assert(false);
             break;
         }
 
         cur = cur->GetNext();
     }
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::AddHasRoute(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute)
+otError Leader::AddHasRoute(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     PrefixTlv *dstPrefix;
     HasRouteTlv *dstHasRoute;
 
@@ -690,9 +693,9 @@ ThreadError Leader::AddHasRoute(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute)
     return error;
 }
 
-ThreadError Leader::AddBorderRouter(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter)
+otError Leader::AddBorderRouter(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     PrefixTlv *dstPrefix;
     ContextTlv *dstContext;
     BorderRouterTlv *dstBorderRouter;
@@ -720,7 +723,7 @@ ThreadError Leader::AddBorderRouter(PrefixTlv &aPrefix, BorderRouterTlv &aBorder
         dstContext->SetContextLength(aPrefix.GetPrefixLength());
     }
 
-    VerifyOrExit(dstContext != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit(dstContext != NULL, error = OT_ERROR_NO_BUFS);
     mContextLastUsed[dstContext->GetContextId() - kMinContextId] = 0;
 
 
@@ -759,7 +762,7 @@ int Leader::AllocateContext(void)
         {
             mContextUsed |= 1 << i;
             rval = i;
-            otLogInfoNetData("Allocated Context ID = %d", rval);
+            otLogInfoNetData(GetInstance(), "Allocated Context ID = %d", rval);
             ExitNow();
         }
     }
@@ -768,26 +771,26 @@ exit:
     return rval;
 }
 
-ThreadError Leader::FreeContext(uint8_t aContextId)
+otError Leader::FreeContext(uint8_t aContextId)
 {
-    otLogInfoNetData("Free Context Id = %d", aContextId);
+    otLogInfoNetData(GetInstance(), "Free Context Id = %d", aContextId);
     RemoveContext(aContextId);
     mContextUsed &= ~(1 << aContextId);
     mVersion++;
     mStableVersion++;
-    mNetif.SetStateChangedFlags(OT_THREAD_NETDATA_UPDATED);
-    return kThreadError_None;
+    GetNetif().SetStateChangedFlags(OT_CHANGED_THREAD_NETDATA);
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::SendServerDataNotification(uint16_t aRloc16)
+otError Leader::SendServerDataNotification(uint16_t aRloc16)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     bool rlocIn = false;
     bool rlocStable = false;
 
     RlocLookup(aRloc16, rlocIn, rlocStable, mTlvs, mLength);
 
-    VerifyOrExit(rlocIn, error = kThreadError_NotFound);
+    VerifyOrExit(rlocIn, error = OT_ERROR_NOT_FOUND);
 
     SuccessOrExit(error = NetworkData::SendServerDataNotification(aRloc16));
 
@@ -795,7 +798,7 @@ exit:
     return error;
 }
 
-ThreadError Leader::RemoveRloc(uint16_t aRloc16)
+otError Leader::RemoveRloc(uint16_t aRloc16)
 {
     NetworkDataTlv *cur = reinterpret_cast<NetworkDataTlv *>(mTlvs);
     NetworkDataTlv *end;
@@ -823,26 +826,23 @@ ThreadError Leader::RemoveRloc(uint16_t aRloc16)
                 continue;
             }
 
-            otDumpDebgNetData("remove prefix done", mTlvs, mLength);
+            otDumpDebgNetData(GetInstance(), "remove prefix done", mTlvs, mLength);
             break;
         }
 
         default:
-        {
-            assert(false);
             break;
-        }
         }
 
         cur = cur->GetNext();
     }
 
-    otDumpDebgNetData("remove done", mTlvs, mLength);
+    otDumpDebgNetData(GetInstance(), "remove done", mTlvs, mLength);
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::RemoveRloc(PrefixTlv &prefix, uint16_t aRloc16)
+otError Leader::RemoveRloc(PrefixTlv &prefix, uint16_t aRloc16)
 {
     NetworkDataTlv *cur = prefix.GetSubTlvs();
     NetworkDataTlv *end;
@@ -885,11 +885,7 @@ ThreadError Leader::RemoveRloc(PrefixTlv &prefix, uint16_t aRloc16)
 
             break;
 
-        case NetworkDataTlv::kTypeContext:
-            break;
-
         default:
-            assert(false);
             break;
         }
 
@@ -901,7 +897,7 @@ ThreadError Leader::RemoveRloc(PrefixTlv &prefix, uint16_t aRloc16)
         if (prefix.GetSubTlvsLength() == sizeof(ContextTlv))
         {
             context->ClearCompress();
-            mContextLastUsed[context->GetContextId() - kMinContextId] = Timer::GetNow();
+            mContextLastUsed[context->GetContextId() - kMinContextId] = TimerMilli::GetNow();
 
             if (mContextLastUsed[context->GetContextId() - kMinContextId] == 0)
             {
@@ -917,10 +913,10 @@ ThreadError Leader::RemoveRloc(PrefixTlv &prefix, uint16_t aRloc16)
         }
     }
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::RemoveRloc(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute, uint16_t aRloc16)
+otError Leader::RemoveRloc(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute, uint16_t aRloc16)
 {
     HasRouteEntry *entry;
 
@@ -940,10 +936,10 @@ ThreadError Leader::RemoveRloc(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute, uint1
         break;
     }
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::RemoveRloc(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter, uint16_t aRloc16)
+otError Leader::RemoveRloc(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter, uint16_t aRloc16)
 {
     BorderRouterEntry *entry;
 
@@ -963,10 +959,10 @@ ThreadError Leader::RemoveRloc(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRoute
         break;
     }
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::RemoveContext(uint8_t aContextId)
+otError Leader::RemoveContext(uint8_t aContextId)
 {
     NetworkDataTlv *cur = reinterpret_cast<NetworkDataTlv *>(mTlvs);
     NetworkDataTlv *end;
@@ -994,26 +990,23 @@ ThreadError Leader::RemoveContext(uint8_t aContextId)
                 continue;
             }
 
-            otDumpDebgNetData("remove prefix done", mTlvs, mLength);
+            otDumpDebgNetData(GetInstance(), "remove prefix done", mTlvs, mLength);
             break;
         }
 
         default:
-        {
-            assert(false);
             break;
-        }
         }
 
         cur = cur->GetNext();
     }
 
-    otDumpDebgNetData("remove done", mTlvs, mLength);
+    otDumpDebgNetData(GetInstance(), "remove done", mTlvs, mLength);
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Leader::RemoveContext(PrefixTlv &aPrefix, uint8_t aContextId)
+otError Leader::RemoveContext(PrefixTlv &aPrefix, uint8_t aContextId)
 {
     NetworkDataTlv *cur = aPrefix.GetSubTlvs();
     NetworkDataTlv *end;
@@ -1031,11 +1024,6 @@ ThreadError Leader::RemoveContext(PrefixTlv &aPrefix, uint8_t aContextId)
 
         switch (cur->GetType())
         {
-        case NetworkDataTlv::kTypeBorderRouter:
-        {
-            break;
-        }
-
         case NetworkDataTlv::kTypeContext:
         {
             // remove context tlv
@@ -1053,22 +1041,18 @@ ThreadError Leader::RemoveContext(PrefixTlv &aPrefix, uint8_t aContextId)
         }
 
         default:
-        {
-            assert(false);
             break;
-        }
         }
 
         cur = cur->GetNext();
     }
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-void Leader::HandleTimer(void *aContext)
+void Leader::HandleTimer(Timer &aTimer)
 {
-    Leader *obj = reinterpret_cast<Leader *>(aContext);
-    obj->HandleTimer();
+    GetOwner(aTimer).HandleTimer();
 }
 
 void Leader::HandleTimer(void)
@@ -1082,7 +1066,7 @@ void Leader::HandleTimer(void)
             continue;
         }
 
-        if ((Timer::GetNow() - mContextLastUsed[i]) >= Timer::SecToMsec(mContextIdReuseDelay))
+        if ((TimerMilli::GetNow() - mContextLastUsed[i]) >= TimerMilli::SecToMsec(mContextIdReuseDelay))
         {
             FreeContext(kMinContextId + i);
         }
@@ -1098,5 +1082,19 @@ void Leader::HandleTimer(void)
     }
 }
 
+Leader &Leader::GetOwner(const Context &aContext)
+{
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    Leader &leader = *static_cast<Leader *>(aContext.GetContext());
+#else
+    Leader &leader = otGetThreadNetif().GetNetworkDataLeader();
+    OT_UNUSED_VARIABLE(aContext);
+#endif
+    return leader;
+}
+
 }  // namespace NetworkData
-}  // namespace Thread
+}  // namespace ot
+
+#endif // OPENTHREAD_FTD
+

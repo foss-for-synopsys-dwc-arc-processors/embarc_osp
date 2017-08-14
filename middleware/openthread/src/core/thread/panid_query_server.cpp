@@ -31,33 +31,37 @@
  *   This file implements the PAN ID Query Server.
  */
 
+
 #define WPP_NAME "panid_query_server.tmh"
+#include <openthread/config.h>
 
-#include <coap/coap_header.hpp>
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <common/logging.hpp>
-#include <meshcop/tlvs.hpp>
-#include <platform/random.h>
-#include <thread/panid_query_server.hpp>
-#include <thread/thread_netif.hpp>
-#include <thread/thread_uris.hpp>
+#include "panid_query_server.hpp"
 
-namespace Thread {
+#include <openthread/platform/random.h>
+
+#include "openthread-instance.h"
+#include "coap/coap_header.hpp"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/logging.hpp"
+#include "meshcop/meshcop.hpp"
+#include "meshcop/meshcop_tlvs.hpp"
+#include "thread/thread_netif.hpp"
+#include "thread/thread_uri_paths.hpp"
+
+namespace ot {
 
 PanIdQueryServer::PanIdQueryServer(ThreadNetif &aThreadNetif) :
+    ThreadNetifLocator(aThreadNetif),
     mChannelMask(0),
     mPanId(Mac::kPanIdBroadcast),
-    mTimer(aThreadNetif.GetIp6().mTimerScheduler, &PanIdQueryServer::HandleTimer, this),
-    mPanIdQuery(OPENTHREAD_URI_PANID_QUERY, &PanIdQueryServer::HandleQuery, this),
-    mCoapServer(aThreadNetif.GetCoapServer()),
-    mCoapClient(aThreadNetif.GetCoapClient()),
-    mNetif(aThreadNetif)
+    mTimer(aThreadNetif.GetInstance(), &PanIdQueryServer::HandleTimer, this),
+    mPanIdQuery(OT_URI_PATH_PANID_QUERY, &PanIdQueryServer::HandleQuery, this)
 {
-    mCoapServer.AddResource(mPanIdQuery);
+    aThreadNetif.GetCoap().AddResource(mPanIdQuery);
 }
 
-void PanIdQueryServer::HandleQuery(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void PanIdQueryServer::HandleQuery(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                    const otMessageInfo *aMessageInfo)
 {
     static_cast<PanIdQueryServer *>(aContext)->HandleQuery(
@@ -69,56 +73,29 @@ void PanIdQueryServer::HandleQuery(Coap::Header &aHeader, Message &aMessage, con
 {
     MeshCoP::PanIdTlv panId;
     MeshCoP::ChannelMask0Tlv channelMask;
+    Ip6::MessageInfo responseInfo(aMessageInfo);
 
-    VerifyOrExit(aHeader.GetCode() == kCoapRequestPost, ;);
+    VerifyOrExit(aHeader.GetCode() == OT_COAP_CODE_POST);
 
     SuccessOrExit(MeshCoP::Tlv::GetTlv(aMessage, MeshCoP::Tlv::kChannelMask, sizeof(channelMask), channelMask));
-    VerifyOrExit(channelMask.IsValid(),);
+    VerifyOrExit(channelMask.IsValid());
 
     SuccessOrExit(MeshCoP::Tlv::GetTlv(aMessage, MeshCoP::Tlv::kPanId, sizeof(panId), panId));
-    VerifyOrExit(panId.IsValid(), ;);
+    VerifyOrExit(panId.IsValid());
 
     mChannelMask = channelMask.GetMask();
     mCommissioner = aMessageInfo.GetPeerAddr();
     mPanId = panId.GetPanId();
     mTimer.Start(kScanDelay);
 
-    SendQueryResponse(aHeader, aMessageInfo);
+    if (aHeader.IsConfirmable() && !aMessageInfo.GetSockAddr().IsMulticast())
+    {
+        SuccessOrExit(GetNetif().GetCoap().SendEmptyAck(aHeader, responseInfo));
+        otLogInfoMeshCoP(GetInstance(), "sent panid query response");
+    }
 
 exit:
     return;
-}
-
-ThreadError PanIdQueryServer::SendQueryResponse(const Coap::Header &aRequestHeader,
-                                                const Ip6::MessageInfo &aRequestInfo)
-{
-    ThreadError error = kThreadError_None;
-    Message *message = NULL;
-    Coap::Header responseHeader;
-    Ip6::MessageInfo responseInfo;
-
-    VerifyOrExit(aRequestHeader.GetType() == kCoapTypeConfirmable, ;);
-
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
-    responseHeader.SetDefaultResponseHeader(aRequestHeader);
-
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
-
-    memcpy(&responseInfo, &aRequestInfo, sizeof(responseInfo));
-    memset(&responseInfo.mSockAddr, 0, sizeof(responseInfo.mSockAddr));
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, responseInfo));
-
-    otLogInfoMeshCoP("sent panid query response");
-
-exit:
-
-    if (error != kThreadError_None && message != NULL)
-    {
-        message->Free();
-    }
-
-    return error;
 }
 
 void PanIdQueryServer::HandleScanResult(void *aContext, Mac::Frame *aFrame)
@@ -145,21 +122,22 @@ void PanIdQueryServer::HandleScanResult(Mac::Frame *aFrame)
     }
 }
 
-ThreadError PanIdQueryServer::SendConflict(void)
+otError PanIdQueryServer::SendConflict(void)
 {
-    ThreadError error = kThreadError_None;
+    ThreadNetif &netif = GetNetif();
+    otError error = OT_ERROR_NONE;
     Coap::Header header;
     MeshCoP::ChannelMask0Tlv channelMask;
     MeshCoP::PanIdTlv panId;
     Ip6::MessageInfo messageInfo;
     Message *message;
 
-    header.Init(kCoapTypeConfirmable, kCoapRequestPost);
+    header.Init(OT_COAP_TYPE_CONFIRMABLE, OT_COAP_CODE_POST);
     header.SetToken(Coap::Header::kDefaultTokenLength);
-    header.AppendUriPathOptions(OPENTHREAD_URI_PANID_CONFLICT);
+    header.AppendUriPathOptions(OT_URI_PATH_PANID_CONFLICT);
     header.SetPayloadMarker();
 
-    VerifyOrExit((message = mCoapClient.NewMessage(header)) != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit((message = MeshCoP::NewMeshCoPMessage(netif.GetCoap(), header)) != NULL, error = OT_ERROR_NO_BUFS);
 
     channelMask.Init();
     channelMask.SetMask(mChannelMask);
@@ -169,15 +147,16 @@ ThreadError PanIdQueryServer::SendConflict(void)
     panId.SetPanId(mPanId);
     SuccessOrExit(error = message->Append(&panId, sizeof(panId)));
 
+    messageInfo.SetSockAddr(netif.GetMle().GetMeshLocal16());
     messageInfo.SetPeerAddr(mCommissioner);
     messageInfo.SetPeerPort(kCoapUdpPort);
-    SuccessOrExit(error = mCoapClient.SendMessage(*message, messageInfo));
+    SuccessOrExit(error = netif.GetCoap().SendMessage(*message, messageInfo));
 
-    otLogInfoMeshCoP("sent panid conflict");
+    otLogInfoMeshCoP(GetInstance(), "sent panid conflict");
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
@@ -185,15 +164,26 @@ exit:
     return error;
 }
 
-void PanIdQueryServer::HandleTimer(void *aContext)
+void PanIdQueryServer::HandleTimer(Timer &aTimer)
 {
-    static_cast<PanIdQueryServer *>(aContext)->HandleTimer();
+    GetOwner(aTimer).HandleTimer();
 }
 
 void PanIdQueryServer::HandleTimer(void)
 {
-    mNetif.GetMac().ActiveScan(mChannelMask, 0, HandleScanResult, this);
+    GetNetif().GetMac().ActiveScan(mChannelMask, 0, HandleScanResult, this);
     mChannelMask = 0;
 }
 
-}  // namespace Thread
+PanIdQueryServer &PanIdQueryServer::GetOwner(const Context &aContext)
+{
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    PanIdQueryServer &server = *static_cast<PanIdQueryServer *>(aContext.GetContext());
+#else
+    PanIdQueryServer &server = otGetThreadNetif().GetPanIdQueryServer();
+    OT_UNUSED_VARIABLE(aContext);
+#endif
+    return server;
+}
+
+}  // namespace ot

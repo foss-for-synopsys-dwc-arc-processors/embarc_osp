@@ -34,12 +34,14 @@
  *   This file includes definitions for MPL.
  */
 
-#include <openthread-types.h>
-#include <common/message.hpp>
-#include <common/timer.hpp>
-#include <net/ip6_headers.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "common/locator.hpp"
+#include "common/message.hpp"
+#include "common/timer.hpp"
+#include "net/ip6_headers.hpp"
+
+namespace ot {
 namespace Ip6 {
 
 /**
@@ -262,11 +264,11 @@ public:
      *
      * @param[in]  aMessage  A reference to the message.
      *
-     * @retval kThreadError_None    Successfully appended the bytes.
-     * @retval kThreadError_NoBufs  Insufficient available buffers to grow the message.
+     * @retval OT_ERROR_NONE     Successfully appended the bytes.
+     * @retval OT_ERROR_NO_BUFS  Insufficient available buffers to grow the message.
      *
      */
-    ThreadError AppendTo(Message &aMessage) const {
+    otError AppendTo(Message &aMessage) const {
         return aMessage.Append(this, sizeof(*this));
     };
 
@@ -287,10 +289,10 @@ public:
      *
      * @param[in]  aMessage  A reference to the message.
      *
-     * @retval kThreadError_None  Successfully removed the header.
+     * @retval OT_ERROR_NONE  Successfully removed the header.
      *
      */
-    ThreadError RemoveFrom(Message &aMessage) {
+    otError RemoveFrom(Message &aMessage) {
         return aMessage.SetLength(aMessage.GetLength() - sizeof(*this));
     };
 
@@ -426,7 +428,7 @@ private:
  * This class implements MPL message processing.
  *
  */
-class Mpl
+class Mpl: public Ip6Locator
 {
 public:
     /**
@@ -456,11 +458,11 @@ public:
      * @param[in]  aAddress    A reference to the IPv6 Source Address.
      * @param[in]  aIsOutbound TRUE if this message was locally generated, FALSE otherwise.
      *
-     * @retval kThreadError_None  Successfully processed the MPL option.
-     * @retval kThreadError_Drop  The MPL message is a duplicate and should be dropped.
+     * @retval OT_ERROR_NONE  Successfully processed the MPL option.
+     * @retval OT_ERROR_DROP  The MPL message is a duplicate and should be dropped.
      *
      */
-    ThreadError ProcessOption(Message &aMessage, const Address &aAddress, bool aIsOutbound);
+    otError ProcessOption(Message &aMessage, const Address &aAddress, bool aIsOutbound);
 
     /**
      * This method returns the MPL Seed Id value.
@@ -521,20 +523,20 @@ private:
         kDataMessageInterval = 64
     };
 
-    ThreadError UpdateSeedSet(uint16_t aSeedId, uint8_t aSequence);
+    otError UpdateSeedSet(uint16_t aSeedId, uint8_t aSequence);
     void UpdateBufferedSet(uint16_t aSeedId, uint8_t aSequence);
     void AddBufferedMessage(Message &aMessage, uint16_t aSeedId, uint8_t aSequence, bool aIsOutbound);
 
-    static void HandleSeedSetTimer(void *aContext);
+    static void HandleSeedSetTimer(Timer &aTimer);
     void HandleSeedSetTimer(void);
 
-    static void HandleRetransmissionTimer(void *aContext);
+    static void HandleRetransmissionTimer(Timer &aTimer);
     void HandleRetransmissionTimer(void);
 
-    Ip6 &mIp6;
+    static Mpl &GetOwner(const Context &aContext);
 
-    Timer mSeedSetTimer;
-    Timer mRetransmissionTimer;
+    TimerMilli mSeedSetTimer;
+    TimerMilli mRetransmissionTimer;
 
     uint8_t mTimerExpirations;
     uint8_t mSequence;
@@ -552,6 +554,6 @@ private:
  */
 
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // NET_IP6_MPL_HPP_

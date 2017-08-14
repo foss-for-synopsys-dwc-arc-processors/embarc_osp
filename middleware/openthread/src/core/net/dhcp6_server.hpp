@@ -34,14 +34,16 @@
 #ifndef DHCP6_SERVER_HPP_
 #define DHCP6_SERVER_HPP_
 
-#include <openthread-types.h>
-#include <mac/mac_frame.hpp>
-#include <mac/mac.hpp>
-#include <net/dhcp6.hpp>
-#include <net/udp6.hpp>
-#include <thread/network_data_leader.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "common/locator.hpp"
+#include "mac/mac_frame.hpp"
+#include "mac/mac.hpp"
+#include "net/dhcp6.hpp"
+#include "net/udp6.hpp"
+#include "thread/network_data_leader.hpp"
+
+namespace ot {
 
 class ThreadNetif;
 namespace NetworkData { class Leader; }
@@ -98,7 +100,7 @@ private:
     otIp6Prefix mIp6Prefix;                  ///< prefix
 } OT_TOOL_PACKED_END;
 
-class Dhcp6Server
+class Dhcp6Server: public ThreadNetifLocator
 {
 public:
     /**
@@ -113,45 +115,40 @@ public:
      * This method updates DHCP Agents and DHCP Alocs.
      *
      */
-    ThreadError UpdateService();
+    otError UpdateService();
 
 private:
-    ThreadError Start(void);
-    ThreadError Stop(void);
+    otError Start(void);
+    otError Stop(void);
 
-    ThreadError AddPrefixAgent(otIp6Prefix &aIp6Prefix);
-    ThreadError RemovePrefixAgent(const uint8_t *aIp6Address);
+    otError AddPrefixAgent(otIp6Prefix &aIp6Prefix);
+    otError RemovePrefixAgent(const uint8_t *aIp6Address);
 
-    ThreadError AppendHeader(Message &aMessage, uint8_t *aTransactionId);
-    ThreadError AppendClientIdentifier(Message &aMessage, ClientIdentifier &aClient);
-    ThreadError AppendServerIdentifier(Message &aMessage);
-    ThreadError AppendIaNa(Message &aMessage, IaNa &aIaNa);
-    ThreadError AppendStatusCode(Message &aMessage, Status aStatusCode);
-    ThreadError AppendIaAddress(Message &aMessage, ClientIdentifier &aClient);
-    ThreadError AppendRapidCommit(Message &aMessage);
-    ThreadError AppendVendorSpecificInformation(Message &aMessage);
+    otError AppendHeader(Message &aMessage, uint8_t *aTransactionId);
+    otError AppendClientIdentifier(Message &aMessage, ClientIdentifier &aClient);
+    otError AppendServerIdentifier(Message &aMessage);
+    otError AppendIaNa(Message &aMessage, IaNa &aIaNa);
+    otError AppendStatusCode(Message &aMessage, Status aStatusCode);
+    otError AppendIaAddress(Message &aMessage, ClientIdentifier &aClient);
+    otError AppendRapidCommit(Message &aMessage);
+    otError AppendVendorSpecificInformation(Message &aMessage);
 
-    ThreadError AddIaAddress(Message &aMessage, otIp6Prefix &aIp6Prefix, ClientIdentifier &aClient);
+    otError AddIaAddress(Message &aMessage, otIp6Prefix &aIp6Prefix, ClientIdentifier &aClient);
 
-    static void HandleUdpReceive(void *aContext, otMessage aMessage, const otMessageInfo *aMessageInfo);
+    static void HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo);
     void HandleUdpReceive(Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
     void ProcessSolicit(Message &aMessage, otIp6Address &aDst, uint8_t *aTransactionId);
 
     uint16_t FindOption(Message &aMessage, uint16_t aOffset, uint16_t aLength, Code aCode);
-    ThreadError ProcessClientIdentifier(Message &aMessage, uint16_t aOffset, ClientIdentifier &aClient);
-    ThreadError ProcessIaNa(Message &aMessage, uint16_t aOffset, IaNa &aIaNa);
-    ThreadError ProcessIaAddress(Message &aMessage, uint16_t aOffset);
-    ThreadError ProcessElapsedTime(Message &aMessage, uint16_t aOffset);
+    otError ProcessClientIdentifier(Message &aMessage, uint16_t aOffset, ClientIdentifier &aClient);
+    otError ProcessIaNa(Message &aMessage, uint16_t aOffset, IaNa &aIaNa);
+    otError ProcessIaAddress(Message &aMessage, uint16_t aOffset);
+    otError ProcessElapsedTime(Message &aMessage, uint16_t aOffset);
 
-    ThreadError SendReply(otIp6Address &aDst, uint8_t *aTransactionId, ClientIdentifier &aClientIdentifier, IaNa &aIaNa);
+    otError SendReply(otIp6Address &aDst, uint8_t *aTransactionId, ClientIdentifier &aClientIdentifier, IaNa &aIaNa);
 
     Ip6::UdpSocket mSocket;
-
-    Mac::Mac &mMac;
-    Mle::MleRouter &mMle;
-    NetworkData::Leader &mNetworkDataLeader;
-    ThreadNetif &mNetif;
 
     Ip6::NetifUnicastAddress mAgentsAloc[OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES];
     PrefixAgent mPrefixAgents[OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES];
@@ -160,6 +157,6 @@ private:
 };
 
 }  // namespace Dhcp6
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // DHCP6_SERVER_HPP_

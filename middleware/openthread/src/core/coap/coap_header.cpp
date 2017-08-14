@@ -31,20 +31,25 @@
  *   This file implements the CoAP header generation and parsing.
  */
 
-#include <coap/coap_header.hpp>
-#include <coap/coap_client.hpp>
-#include <common/debug.hpp>
-#include <common/code_utils.hpp>
-#include <common/encoding.hpp>
-#include <platform/random.h>
+#include <openthread/config.h>
 
-namespace Thread {
+#include "coap_header.hpp"
+
+#include <openthread/platform/random.h>
+
+#include "coap/coap.hpp"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/encoding.hpp"
+
+namespace ot {
 namespace Coap {
 
 void Header::Init(void)
 {
     mHeaderLength = kMinHeaderLength;
     mOptionLast = 0;
+    mFirstOptionOffset = 0;
     mNextOptionOffset = 0;
     memset(&mOption, 0, sizeof(mOption));
     memset(&mHeader, 0, sizeof(mHeader));
@@ -58,9 +63,9 @@ void Header::Init(Type aType, Code aCode)
     SetCode(aCode);
 }
 
-ThreadError Header::FromMessage(const Message &aMessage, bool aCopiedMessage)
+otError Header::FromMessage(const Message &aMessage, uint16_t aMetadataSize)
 {
-    ThreadError error = kThreadError_Parse;
+    otError error = OT_ERROR_PARSE;
     uint16_t offset = aMessage.GetOffset();
     uint16_t length = aMessage.GetLength() - aMessage.GetOffset();
     uint8_t tokenLength;
@@ -68,41 +73,47 @@ ThreadError Header::FromMessage(const Message &aMessage, bool aCopiedMessage)
     uint16_t optionDelta;
     uint16_t optionLength;
 
-    if (aCopiedMessage)
-    {
-        length -= sizeof(RequestMetadata);
-    }
+    length -= aMetadataSize;
 
-    VerifyOrExit(length >= kTokenOffset, error = kThreadError_Parse);
+    Init();
+
+    VerifyOrExit(kTokenOffset <= length);
     aMessage.Read(offset, kTokenOffset, mHeader.mBytes);
     mHeaderLength = kTokenOffset;
     offset += kTokenOffset;
-    length -= kTokenOffset;
 
-    VerifyOrExit(GetVersion() == 1, error = kThreadError_Parse);
+    VerifyOrExit(GetVersion() == 1);
 
     tokenLength = GetTokenLength();
-    VerifyOrExit(tokenLength <= kMaxTokenLength && tokenLength <= length, error = kThreadError_Parse);
+    VerifyOrExit(tokenLength <= kMaxTokenLength && (mHeaderLength + tokenLength) <= length);
     aMessage.Read(offset, tokenLength, mHeader.mBytes + mHeaderLength);
     mHeaderLength += tokenLength;
     offset += tokenLength;
-    length -= tokenLength;
 
-    while (length > 0)
+    while (mHeaderLength < length)
     {
+        VerifyOrExit(mHeaderLength + kMaxOptionHeaderSize <= kMaxHeaderLength);
+
         aMessage.Read(offset, kMaxOptionHeaderSize, mHeader.mBytes + mHeaderLength);
 
         if (mHeader.mBytes[mHeaderLength] == 0xff)
         {
             mHeaderLength += sizeof(uint8_t);
-            ExitNow(error = kThreadError_None);
+            // RFC7252: The presence of a marker followed by a zero-length payload MUST be processed
+            // as a message format error.
+            VerifyOrExit(mHeaderLength < length);
+            ExitNow(error = OT_ERROR_NONE);
+        }
+
+        if (firstOption)
+        {
+            mFirstOptionOffset = mHeaderLength;
         }
 
         optionDelta = mHeader.mBytes[mHeaderLength] >> 4;
         optionLength = mHeader.mBytes[mHeaderLength] & 0xf;
         mHeaderLength += sizeof(uint8_t);
         offset += sizeof(uint8_t);
-        length -= sizeof(uint8_t);
 
         if (optionDelta < kOption1ByteExtension)
         {
@@ -113,19 +124,18 @@ ThreadError Header::FromMessage(const Message &aMessage, bool aCopiedMessage)
             optionDelta = kOption1ByteExtensionOffset + mHeader.mBytes[mHeaderLength];
             mHeaderLength += sizeof(uint8_t);
             offset += sizeof(uint8_t);
-            length -= sizeof(uint8_t);
         }
         else if (optionDelta == kOption2ByteExtension)
         {
             optionDelta = kOption2ByteExtensionOffset +
-                          static_cast<uint16_t>((mHeader.mBytes[mHeaderLength] << 8) | mHeader.mBytes[mHeaderLength + 1]);
+                          static_cast<uint16_t>((mHeader.mBytes[mHeaderLength] << 8) |
+                                                (mHeader.mBytes[mHeaderLength + 1]));
             mHeaderLength += sizeof(uint16_t);
             offset += sizeof(uint16_t);
-            length -= sizeof(uint16_t);
         }
         else
         {
-            ExitNow(error = kThreadError_Parse);
+            ExitNow(error = OT_ERROR_PARSE);
         }
 
         if (optionLength < kOption1ByteExtension)
@@ -137,19 +147,18 @@ ThreadError Header::FromMessage(const Message &aMessage, bool aCopiedMessage)
             optionLength = kOption1ByteExtensionOffset + mHeader.mBytes[mHeaderLength];
             mHeaderLength += sizeof(uint8_t);
             offset += sizeof(uint8_t);
-            length -= sizeof(uint8_t);
         }
         else if (optionLength == kOption2ByteExtension)
         {
             optionLength = kOption2ByteExtensionOffset +
-                           static_cast<uint16_t>((mHeader.mBytes[mHeaderLength] << 8) | mHeader.mBytes[mHeaderLength + 1]);
+                           static_cast<uint16_t>((mHeader.mBytes[mHeaderLength] << 8) |
+                                                 (mHeader.mBytes[mHeaderLength + 1]));
             mHeaderLength += sizeof(uint16_t);
             offset += sizeof(uint16_t);
-            length -= sizeof(uint16_t);
         }
         else
         {
-            ExitNow(error = kThreadError_Parse);
+            ExitNow(error = OT_ERROR_PARSE);
         }
 
         if (firstOption)
@@ -161,33 +170,41 @@ ThreadError Header::FromMessage(const Message &aMessage, bool aCopiedMessage)
             firstOption = false;
         }
 
-        VerifyOrExit(optionLength <= length, error = kThreadError_Parse);
+        VerifyOrExit(mHeaderLength + optionLength <= kMaxHeaderLength);
+        VerifyOrExit(mHeaderLength + optionLength <= length);
+
         aMessage.Read(offset, optionLength, mHeader.mBytes + mHeaderLength);
         mHeaderLength += static_cast<uint8_t>(optionLength);
         offset += optionLength;
-        length -= optionLength;
     }
 
-    if (length == 0)
+    if (mHeaderLength == length)
     {
         // No payload present - return success.
-        error = kThreadError_None;
+        error = OT_ERROR_NONE;
     }
 
 exit:
+
+    // In case any step failed, prevent access to corrupt Option
+    if (error != OT_ERROR_NONE)
+    {
+        mFirstOptionOffset = 0;
+    }
+
     return error;
 }
 
-ThreadError Header::AppendOption(const Option &aOption)
+otError Header::AppendOption(const Option &aOption)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     uint8_t *buf = mHeader.mBytes + mHeaderLength;
     uint8_t *cur = buf + 1;
     uint16_t optionDelta = aOption.mNumber - mOptionLast;
     uint16_t optionLength;
 
     // Assure that no option is inserted out of order.
-    VerifyOrExit(aOption.mNumber >= mOptionLast, error = kThreadError_InvalidArgs);
+    VerifyOrExit(aOption.mNumber >= mOptionLast, error = OT_ERROR_INVALID_ARGS);
 
     // Calculate the total option size and check the buffers.
     optionLength = 1 + aOption.mLength;
@@ -195,7 +212,7 @@ ThreadError Header::AppendOption(const Option &aOption)
                     (optionDelta < kOption2ByteExtensionOffset ? 1 : 2);
     optionLength += aOption.mLength < kOption1ByteExtensionOffset ? 0 :
                     (aOption.mLength < kOption2ByteExtensionOffset ? 1 : 2);
-    VerifyOrExit(mHeaderLength + optionLength < kMaxHeaderLength, error = kThreadError_NoBufs);
+    VerifyOrExit(mHeaderLength + optionLength < kMaxHeaderLength, error = OT_ERROR_NO_BUFS);
 
     // Insert option delta.
     if (optionDelta < kOption1ByteExtensionOffset)
@@ -244,14 +261,38 @@ exit:
     return error;
 }
 
-ThreadError Header::AppendUriPathOptions(const char *aUriPath)
+otError Header::AppendUintOption(uint16_t aNumber, uint32_t aValue)
 {
-    ThreadError error = kThreadError_None;
+    Option coapOption;
+
+    aValue = Encoding::BigEndian::HostSwap32(aValue);
+    coapOption.mNumber = aNumber;
+    coapOption.mLength = 4;
+    coapOption.mValue = reinterpret_cast<uint8_t *>(&aValue);
+
+    // skip preceding zeros
+    while (coapOption.mValue[0] == 0 && coapOption.mLength > 0)
+    {
+        coapOption.mValue++;
+        coapOption.mLength--;
+    }
+
+    return AppendOption(coapOption);
+}
+
+otError Header::AppendObserveOption(uint32_t aObserve)
+{
+    return AppendUintOption(OT_COAP_OPTION_OBSERVE, aObserve & 0xFFFFFF);
+}
+
+otError Header::AppendUriPathOptions(const char *aUriPath)
+{
+    otError error = OT_ERROR_NONE;
     const char *cur = aUriPath;
     const char *end;
     Header::Option coapOption;
 
-    coapOption.mNumber = kCoapOptionUriPath;
+    coapOption.mNumber = OT_COAP_OPTION_URI_PATH;
 
     while ((end = strchr(cur, '/')) != NULL)
     {
@@ -269,21 +310,40 @@ exit:
     return error;
 }
 
-ThreadError Header::AppendContentFormatOption(MediaType aType)
+otError Header::AppendContentFormatOption(otCoapOptionContentFormat aContentFormat)
+{
+    return AppendUintOption(OT_COAP_OPTION_CONTENT_FORMAT, static_cast<uint32_t>(aContentFormat));
+}
+
+otError Header::AppendMaxAgeOption(uint32_t aMaxAge)
+{
+    return AppendUintOption(OT_COAP_OPTION_MAX_AGE, aMaxAge);
+}
+
+otError Header::AppendUriQueryOption(const char *aUriQuery)
 {
     Option coapOption;
-    uint8_t type = static_cast<uint8_t>(aType);
 
-    coapOption.mNumber = kCoapOptionContentFormat;
-    coapOption.mLength = 1;
-    coapOption.mValue = &type;
+    coapOption.mNumber = OT_COAP_OPTION_URI_QUERY;
+    coapOption.mLength = static_cast<uint16_t>(strlen(aUriQuery));
+    coapOption.mValue  = reinterpret_cast<const uint8_t *>(aUriQuery);
 
     return AppendOption(coapOption);
 }
 
-const Header::Option *Header::GetCurrentOption(void) const
+const Header::Option *Header::GetFirstOption(void)
 {
-    return static_cast<const Header::Option *>(&mOption);
+    const Option *rval = NULL;
+
+    VerifyOrExit(mFirstOptionOffset > 0);
+
+    memset(&mOption, 0, sizeof(mOption));
+    mNextOptionOffset = mFirstOptionOffset;
+
+    rval = GetNextOption();
+
+exit:
+    return rval;
 }
 
 const Header::Option *Header::GetNextOption(void)
@@ -292,7 +352,7 @@ const Header::Option *Header::GetNextOption(void)
     uint16_t optionDelta;
     uint16_t optionLength;
 
-    VerifyOrExit(mNextOptionOffset < mHeaderLength, ;);
+    VerifyOrExit(mNextOptionOffset < mHeaderLength);
 
     optionDelta = mHeader.mBytes[mNextOptionOffset] >> 4;
     optionLength = mHeader.mBytes[mNextOptionOffset] & 0xf;
@@ -348,11 +408,11 @@ exit:
     return rval;
 }
 
-ThreadError Header::SetPayloadMarker(void)
+otError Header::SetPayloadMarker(void)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
-    VerifyOrExit(mHeaderLength < kMaxHeaderLength, error = kThreadError_NoBufs);
+    VerifyOrExit(mHeaderLength < kMaxHeaderLength, error = OT_ERROR_NO_BUFS);
     mHeader.mBytes[mHeaderLength++] = 0xff;
 
 exit:
@@ -375,10 +435,10 @@ void Header::SetToken(uint8_t aTokenLength)
 
 void Header::SetDefaultResponseHeader(const Header &aRequestHeader)
 {
-    Init(kCoapTypeAcknowledgment, kCoapResponseChanged);
+    Init(OT_COAP_TYPE_ACKNOWLEDGMENT, OT_COAP_CODE_CHANGED);
     SetMessageId(aRequestHeader.GetMessageId());
     SetToken(aRequestHeader.GetToken(), aRequestHeader.GetTokenLength());
 }
 
 }  // namespace Coap
-}  // namespace Thread
+}  // namespace ot

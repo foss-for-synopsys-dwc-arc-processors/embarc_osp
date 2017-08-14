@@ -31,24 +31,21 @@
  *   This file implements IPv6 addresses.
  */
 
-#ifdef OPENTHREAD_CONFIG_FILE
-#include OPENTHREAD_CONFIG_FILE
-#else
-#include <openthread-config.h>
-#endif
+#include <openthread/config.h>
+
+#include "ip6_address.hpp"
 
 #include <stdio.h>
-#include <string.h>
+#include "utils/wrap_string.h"
 
-#include <common/code_utils.hpp>
-#include <common/encoding.hpp>
-#include <mac/mac_frame.hpp>
-#include <net/ip6_address.hpp>
+#include "common/code_utils.hpp"
+#include "common/encoding.hpp"
+#include "mac/mac_frame.hpp"
 
-using Thread::Encoding::BigEndian::HostSwap16;
-using Thread::Encoding::BigEndian::HostSwap32;
+using ot::Encoding::BigEndian::HostSwap16;
+using ot::Encoding::BigEndian::HostSwap32;
 
-namespace Thread {
+namespace ot {
 namespace Ip6 {
 
 bool Address::IsUnspecified(void) const
@@ -114,13 +111,14 @@ bool Address::IsRealmLocalAllMplForwarders(void) const
 bool Address::IsRoutingLocator(void) const
 {
     return (mFields.m16[4] == HostSwap16(0x0000) && mFields.m16[5] == HostSwap16(0x00ff) &&
-            mFields.m16[6] == HostSwap16(0xfe00));
+            mFields.m16[6] == HostSwap16(0xfe00) && mFields.m8[14] < kAloc16Mask &&
+            (mFields.m8[14] & kRloc16ReservedBitMask) == 0);
 }
 
 bool Address::IsAnycastRoutingLocator(void) const
 {
     return (mFields.m16[4] == HostSwap16(0x0000) && mFields.m16[5] == HostSwap16(0x00ff) &&
-            mFields.m16[6] == HostSwap16(0xfe00) && mFields.m8[14] == 0xfc);
+            mFields.m16[6] == HostSwap16(0xfe00) && mFields.m8[14] == kAloc16Mask);
 }
 
 bool Address::IsSubnetRouterAnycast(void) const
@@ -161,6 +159,12 @@ void Address::SetIid(const Mac::ExtAddress &aEui64)
     mFields.m8[kInterfaceIdentifierOffset] ^= 0x02;
 }
 
+void Address::ToExtAddress(Mac::ExtAddress &aExtAddress) const
+{
+    memcpy(aExtAddress.m8, mFields.m8 + kInterfaceIdentifierOffset, sizeof(aExtAddress.m8));
+    aExtAddress.m8[0] ^= 0x02;
+}
+
 uint8_t Address::GetScope(void) const
 {
     if (IsMulticast())
@@ -179,14 +183,19 @@ uint8_t Address::GetScope(void) const
     return kGlobalScope;
 }
 
-uint8_t Address::PrefixMatch(const Address &aOther) const
+uint8_t Address::PrefixMatch(const uint8_t *aPrefixA, const uint8_t *aPrefixB, uint8_t aMaxLength)
 {
     uint8_t rval = 0;
     uint8_t diff;
 
-    for (uint8_t i = 0; i < sizeof(Address); i++)
+    if (aMaxLength > sizeof(Address))
     {
-        diff = mFields.m8[i] ^ aOther.mFields.m8[i];
+        aMaxLength = sizeof(Address);
+    }
+
+    for (uint8_t i = 0; i < aMaxLength; i++)
+    {
+        diff = aPrefixA[i] ^ aPrefixB[i];
 
         if (diff == 0)
         {
@@ -207,6 +216,11 @@ uint8_t Address::PrefixMatch(const Address &aOther) const
     return rval;
 }
 
+uint8_t Address::PrefixMatch(const Address &aOther) const
+{
+    return PrefixMatch(mFields.m8, aOther.mFields.m8, sizeof(Address));
+}
+
 bool Address::operator==(const Address &aOther) const
 {
     return memcmp(mFields.m8, aOther.mFields.m8, sizeof(mFields.m8)) == 0;
@@ -217,9 +231,9 @@ bool Address::operator!=(const Address &aOther) const
     return memcmp(mFields.m8, aOther.mFields.m8, sizeof(mFields.m8)) != 0;
 }
 
-ThreadError Address::FromString(const char *aBuf)
+otError Address::FromString(const char *aBuf)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     uint8_t *dst = reinterpret_cast<uint8_t *>(mFields.m8);
     uint8_t *endp = reinterpret_cast<uint8_t *>(mFields.m8 + 15);
     uint8_t *colonp = NULL;
@@ -246,7 +260,7 @@ ThreadError Address::FromString(const char *aBuf)
         {
             if (count)
             {
-                VerifyOrExit(dst + 2 <= endp, error = kThreadError_Parse);
+                VerifyOrExit(dst + 2 <= endp, error = OT_ERROR_PARSE);
                 *(dst + 1) = static_cast<uint8_t>(val >> 8);
                 *(dst + 2) = static_cast<uint8_t>(val);
                 dst += 2;
@@ -255,7 +269,7 @@ ThreadError Address::FromString(const char *aBuf)
             }
             else if (ch == ':')
             {
-                VerifyOrExit(colonp == NULL || first, error = kThreadError_Parse);
+                VerifyOrExit(colonp == NULL || first, error = OT_ERROR_PARSE);
                 colonp = dst;
             }
 
@@ -268,12 +282,12 @@ ThreadError Address::FromString(const char *aBuf)
         }
         else
         {
-            VerifyOrExit('0' <= ch && ch <= '9', error = kThreadError_Parse);
+            VerifyOrExit('0' <= ch && ch <= '9', error = OT_ERROR_PARSE);
         }
 
         first = false;
         val = static_cast<uint16_t>((val << 4) | d);
-        VerifyOrExit(++count <= 4, error = kThreadError_Parse);
+        VerifyOrExit(++count <= 4, error = OT_ERROR_PARSE);
     }
 
     while (colonp && dst > colonp)
@@ -297,8 +311,9 @@ const char *Address::ToString(char *aBuf, uint16_t aSize) const
              HostSwap16(mFields.m16[2]), HostSwap16(mFields.m16[3]),
              HostSwap16(mFields.m16[4]), HostSwap16(mFields.m16[5]),
              HostSwap16(mFields.m16[6]), HostSwap16(mFields.m16[7]));
+
     return aBuf;
 }
 
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot

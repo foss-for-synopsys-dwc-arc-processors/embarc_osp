@@ -35,11 +35,11 @@
 #ifndef MESHCOP_DATASET_MANAGER_FTD_HPP_
 #define MESHCOP_DATASET_MANAGER_FTD_HPP_
 
-#include <openthread-types.h>
+#include <openthread/types.h>
 
-#include <coap/coap_server.hpp>
+#include "coap/coap.hpp"
 
-namespace Thread {
+namespace ot {
 
 class ThreadNetif;
 
@@ -50,24 +50,19 @@ class ActiveDataset: public ActiveDatasetBase
 public:
     ActiveDataset(ThreadNetif &aThreadNetif);
 
-    ThreadError GenerateLocal(void);
+    otError GenerateLocal(void);
 
     void StartLeader(void);
 
     void StopLeader(void);
 
 private:
-    static void HandleGet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
-                          const otMessageInfo *aMessageInfo);
-    void HandleGet(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
-
-    static void HandleSet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleSet(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                           const otMessageInfo *aMessageInfo);
     void HandleSet(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
     bool IsTlvInitialized(Tlv::Type aType);
 
-    Coap::Resource mResourceGet;
     Coap::Resource mResourceSet;
 };
 
@@ -80,20 +75,17 @@ public:
 
     void StopLeader(void);
 
-private:
-    static void HandleGet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
-                          const otMessageInfo *aMessageInfo);
-    void HandleGet(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
+    void ApplyActiveDataset(const Timestamp &aTimestamp, Message &aMessage);
 
-    static void HandleSet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+private:
+    static void HandleSet(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                           const otMessageInfo *aMessageInfo);
     void HandleSet(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
-    Coap::Resource mResourceGet;
     Coap::Resource mResourceSet;
 };
 
 }  // namespace MeshCoP
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // MESHCOP_DATASET_MANAGER_HPP_

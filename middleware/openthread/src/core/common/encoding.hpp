@@ -35,9 +35,9 @@
 #define ENCODING_HPP_
 
 #include <limits.h>
-#include <stdint.h>
+#include "utils/wrap_stdint.h"
 
-namespace Thread {
+namespace ot {
 namespace Encoding {
 
 inline uint16_t Swap16(uint16_t v)
@@ -69,6 +69,17 @@ inline uint64_t Swap64(uint64_t v)
         ((v & static_cast<uint64_t>(0xff00000000000000ULL)) >> 56);
 }
 
+inline uint32_t Reverse32(uint32_t v)
+{
+    v = ((v & 0x55555555) << 1)  | ((v & 0xaaaaaaaa) >> 1);
+    v = ((v & 0x33333333) << 2)  | ((v & 0xcccccccc) >> 2);
+    v = ((v & 0x0f0f0f0f) << 4)  | ((v & 0xf0f0f0f0) >> 4);
+    v = ((v & 0x00ff00ff) << 8)  | ((v & 0xff00ff00) >> 8);
+    v = ((v & 0x0000ffff) << 16) | ((v & 0xffff0000) >> 16);
+
+    return v;
+}
+
 #define BitVectorBytes(x)           \
     (((x) + (CHAR_BIT-1)) / CHAR_BIT)
 
@@ -88,6 +99,63 @@ inline uint64_t HostSwap64(uint64_t v) { return Swap64(v); }
 
 #endif  // LITTLE_ENDIAN
 
+/**
+ * This function reads a `uint16_t` value from a given buffer assuming big-ending encoding.
+ *
+ * @param[in] aBuffer   Pointer to buffer to read from.
+ *
+ * @returns The `uint16_t` value read from buffer.
+ *
+ */
+inline uint16_t ReadUint16(const uint8_t *aBuffer)
+{
+    return static_cast<uint16_t>((aBuffer[0] << 8) | aBuffer[1]);
+}
+
+/**
+ * This function reads a `uint32_t` value from a given buffer assuming big-ending encoding.
+ *
+ * @param[in] aBuffer   Pointer to buffer to read from.
+ *
+ * @returns The `uint32_t` value read from buffer.
+ *
+ */
+inline uint32_t ReadUint32(const uint8_t *aBuffer)
+{
+    return ((static_cast<uint32_t>(aBuffer[0]) << 24) |
+            (static_cast<uint32_t>(aBuffer[1]) << 16) |
+            (static_cast<uint32_t>(aBuffer[2]) << 8)  |
+            (static_cast<uint32_t>(aBuffer[3]) << 0));
+}
+
+/**
+ * This function writes a `uint16_t` value to a given buffer using big-ending encoding.
+ *
+ * @param[in]  aValue    The value to write to buffer.
+ * @param[out] aBuffer   Pointer to buffer where the value will be written.
+ *
+ */
+inline void WriteUint16(uint16_t aValue, uint8_t *aBuffer)
+{
+    aBuffer[0] = (aValue >> 8) & 0xff;
+    aBuffer[1] = (aValue >> 0) & 0xff;
+}
+
+/**
+ * This function writes a `uint32_t` value to a given buffer using big-ending encoding.
+ *
+ * @param[in]  aValue    The value to write to buffer.
+ * @param[out] aBuffer   Pointer to buffer where the value will be written.
+ *
+ */
+inline void WriteUint32(uint32_t aValue, uint8_t *aBuffer)
+{
+    aBuffer[0] = (aValue >> 24) & 0xff;
+    aBuffer[1] = (aValue >> 16) & 0xff;
+    aBuffer[2] = (aValue >> 8)  & 0xff;
+    aBuffer[3] = (aValue >> 0)  & 0xff;
+}
+
 }  // namespace BigEndian
 
 namespace LittleEndian {
@@ -106,8 +174,65 @@ inline uint64_t HostSwap64(uint64_t v) { return v; }
 
 #endif
 
+/**
+ * This function reads a `uint16_t` value from a given buffer assuming little-ending encoding.
+ *
+ * @param[in] aBuffer   Pointer to buffer to read from.
+ *
+ * @returns The `uint16_t` value read from buffer.
+ *
+ */
+inline uint16_t ReadUint16(const uint8_t *aBuffer)
+{
+    return static_cast<uint16_t>(aBuffer[0] | (aBuffer[1] << 8));
+}
+
+/**
+ * This function reads a `uint32_t` value from a given buffer assuming little-ending encoding.
+ *
+ * @param[in] aBuffer   Pointer to buffer to read from.
+ *
+ * @returns The `uint32_t` value read from buffer.
+ *
+ */
+inline uint32_t ReadUint32(const uint8_t *aBuffer)
+{
+    return ((static_cast<uint32_t>(aBuffer[0]) << 0) |
+            (static_cast<uint32_t>(aBuffer[1]) << 8) |
+            (static_cast<uint32_t>(aBuffer[2]) << 16) |
+            (static_cast<uint32_t>(aBuffer[3]) << 24));
+}
+
+/**
+ * This function writes a `uint16_t` value to a given buffer using little-ending encoding.
+ *
+ * @param[in]  aValue    The value to write to buffer.
+ * @param[out] aBuffer   Pointer to buffer where the value will be written.
+ *
+ */
+inline void WriteUint16(uint16_t aValue, uint8_t *aBuffer)
+{
+    aBuffer[0] = (aValue >> 0) & 0xff;
+    aBuffer[1] = (aValue >> 8) & 0xff;
+}
+
+/**
+ * This function writes a `uint32_t` value to a given buffer using little-ending encoding.
+ *
+ * @param[in]  aValue   The value to write to buffer.
+ * @param[out] aBuffer  Pointer to buffer where the value will be written.
+ *
+ */
+inline void WriteUint32(uint32_t aValue, uint8_t *aBuffer)
+{
+    aBuffer[0] = (aValue >> 0)  & 0xff;
+    aBuffer[1] = (aValue >> 8)  & 0xff;
+    aBuffer[2] = (aValue >> 16) & 0xff;
+    aBuffer[3] = (aValue >> 24) & 0xff;
+}
+
 }  // namespace LittleEndian
 }  // namespace Encoding
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // ENCODING_HPP_

@@ -34,11 +34,13 @@
 #ifndef IP6_ADDRESS_HPP_
 #define IP6_ADDRESS_HPP_
 
-#include <stdint.h>
+#include "utils/wrap_stdint.h"
 
-#include <openthread-types.h>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "mac/mac_frame.hpp"
+
+namespace ot {
 namespace Ip6 {
 
 /**
@@ -57,12 +59,24 @@ class Address: public otIp6Address
 {
 public:
     /**
+     * Masks
+     *
+     */
+    enum
+    {
+        kAloc16Mask                 = 0xfc, ///< The mask for Aloc16.
+        kRloc16ReservedBitMask      = 0x02, ///< The mask for the reserved bit of Rloc16.
+    };
+
+    /**
      * Constants
      *
      */
     enum
     {
         kInterfaceIdentifierSize   = 8,  ///< Interface Identifier size in bytes.
+        kIp6AddressStringSize      = 40, ///< Max buffer size in bytes to store an IPv6 address in string format.
+        kMeshLocalPrefixLength     = 64, ///< Length of Thread mesh local prefix.
     };
 
     /**
@@ -266,6 +280,14 @@ public:
     void SetIid(const Mac::ExtAddress &aEui64);
 
     /**
+     * This method converts the IPv6 Interface Identifier to an IEEE 802.15.4 Extended Address.
+     *
+     * @param[out]  aExtAddress  A reference to the extended address.
+     *
+     */
+    void ToExtAddress(Mac::ExtAddress &aExtAddress) const;
+
+    /**
      * This method returns the IPv6 address scope.
      *
      * @returns The IPv6 address scope.
@@ -310,11 +332,11 @@ public:
      *
      * @param[in]  aBuf  A pointer to the NULL-terminated string.
      *
-     * @retval kThreadError_None         Successfully parsed the IPv6 address string.
-     * @retval kTheradError_InvalidArgs  Failed to parse the IPv6 address string.
+     * @retval OT_ERROR_NONE          Successfully parsed the IPv6 address string.
+     * @retval OT_ERROR_INVALID_ARGS  Failed to parse the IPv6 address string.
      *
      */
-    ThreadError FromString(const char *aBuf);
+    otError FromString(const char *aBuf);
 
     /**
      * This method converts an IPv6 address object to a NULL-terminated string.
@@ -326,6 +348,18 @@ public:
      *
      */
     const char *ToString(char *aBuf, uint16_t aSize) const;
+
+    /**
+     * This method returns the number of IPv6 prefix bits that match.
+     *
+     * @param[in]  aPrefixA     A pointer to the prefix to match.
+     * @param[in]  aPrefixB     A pointer to the prefix to match against.
+     * @param[in]  aMaxLength   Number of bytes of the two prefixes.
+     *
+     * @returns The number of prefix bits that match.
+     *
+     */
+    static uint8_t PrefixMatch(const uint8_t *aPrefixA, const uint8_t *aPrefixB, uint8_t aMaxLength);
 
 private:
     enum
@@ -340,6 +374,6 @@ private:
  */
 
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // NET_IP6_ADDRESS_HPP_

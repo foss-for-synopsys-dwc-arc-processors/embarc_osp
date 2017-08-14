@@ -33,57 +33,55 @@
 
 #define WPP_NAME "announce_begin_server.tmh"
 
-#ifdef OPENTHREAD_CONFIG_FILE
-#include OPENTHREAD_CONFIG_FILE
-#else
-#include <openthread-config.h>
-#endif
+#include <openthread/config.h>
 
-#include <coap/coap_header.hpp>
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <common/logging.hpp>
-#include <meshcop/tlvs.hpp>
-#include <platform/radio.h>
-#include <thread/announce_begin_server.hpp>
-#include <thread/thread_netif.hpp>
-#include <thread/thread_uris.hpp>
+#include "announce_begin_server.hpp"
 
-using Thread::Encoding::BigEndian::HostSwap32;
+#include <openthread/platform/radio.h>
 
-namespace Thread {
+#include "openthread-instance.h"
+#include "coap/coap_header.hpp"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/logging.hpp"
+#include "meshcop/meshcop_tlvs.hpp"
+#include "thread/thread_netif.hpp"
+#include "thread/thread_uri_paths.hpp"
+
+using ot::Encoding::BigEndian::HostSwap32;
+
+namespace ot {
 
 AnnounceBeginServer::AnnounceBeginServer(ThreadNetif &aThreadNetif) :
+    ThreadNetifLocator(aThreadNetif),
     mChannelMask(0),
     mPeriod(0),
     mCount(0),
     mChannel(0),
-    mTimer(aThreadNetif.GetIp6().mTimerScheduler, &AnnounceBeginServer::HandleTimer, this),
-    mAnnounceBegin(OPENTHREAD_URI_ANNOUNCE_BEGIN, &AnnounceBeginServer::HandleRequest, this),
-    mCoapServer(aThreadNetif.GetCoapServer()),
-    mNetif(aThreadNetif)
+    mTimer(aThreadNetif.GetInstance(), &AnnounceBeginServer::HandleTimer, this),
+    mAnnounceBegin(OT_URI_PATH_ANNOUNCE_BEGIN, &AnnounceBeginServer::HandleRequest, this)
 {
-    mCoapServer.AddResource(mAnnounceBegin);
+    aThreadNetif.GetCoap().AddResource(mAnnounceBegin);
 }
 
-ThreadError AnnounceBeginServer::SendAnnounce(uint32_t aChannelMask)
+otError AnnounceBeginServer::SendAnnounce(uint32_t aChannelMask)
 {
     return SendAnnounce(aChannelMask, kDefaultCount, kDefaultPeriod);
 }
 
-ThreadError AnnounceBeginServer::SendAnnounce(uint32_t aChannelMask, uint8_t aCount, uint16_t aPeriod)
+otError AnnounceBeginServer::SendAnnounce(uint32_t aChannelMask, uint8_t aCount, uint16_t aPeriod)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     mChannelMask = aChannelMask;
     mCount = aCount;
     mPeriod = aPeriod;
-    mChannel = kPhyMinChannel;
+    mChannel = OT_RADIO_CHANNEL_MIN;
 
     while ((mChannelMask & (1 << mChannel)) == 0)
     {
         mChannel++;
-        VerifyOrExit(mChannel <= kPhyMaxChannel,);
+        VerifyOrExit(mChannel <= OT_RADIO_CHANNEL_MAX, error = OT_ERROR_INVALID_ARGS);
     }
 
     mTimer.Start(mPeriod);
@@ -92,7 +90,7 @@ exit:
     return error;
 }
 
-void AnnounceBeginServer::HandleRequest(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void AnnounceBeginServer::HandleRequest(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                         const otMessageInfo *aMessageInfo)
 {
     static_cast<AnnounceBeginServer *>(aContext)->HandleRequest(
@@ -104,64 +102,39 @@ void AnnounceBeginServer::HandleRequest(Coap::Header &aHeader, Message &aMessage
     MeshCoP::ChannelMask0Tlv channelMask;
     MeshCoP::CountTlv count;
     MeshCoP::PeriodTlv period;
+    Ip6::MessageInfo responseInfo(aMessageInfo);
 
-    VerifyOrExit(aHeader.GetCode() == kCoapRequestPost, ;);
+    VerifyOrExit(aHeader.GetCode() == OT_COAP_CODE_POST);
 
     SuccessOrExit(MeshCoP::Tlv::GetTlv(aMessage, MeshCoP::Tlv::kChannelMask, sizeof(channelMask), channelMask));
-    VerifyOrExit(channelMask.IsValid(),);
+    VerifyOrExit(channelMask.IsValid());
 
     SuccessOrExit(MeshCoP::Tlv::GetTlv(aMessage, MeshCoP::Tlv::kCount, sizeof(count), count));
-    VerifyOrExit(count.IsValid(), ;);
+    VerifyOrExit(count.IsValid());
 
     SuccessOrExit(MeshCoP::Tlv::GetTlv(aMessage, MeshCoP::Tlv::kPeriod, sizeof(period), period));
-    VerifyOrExit(period.IsValid(), ;);
+    VerifyOrExit(period.IsValid());
 
     SendAnnounce(channelMask.GetMask(), count.GetCount(), period.GetPeriod());
 
-    SendResponse(aHeader, aMessageInfo);
+    if (aHeader.IsConfirmable() && !aMessageInfo.GetSockAddr().IsMulticast())
+    {
+        SuccessOrExit(GetNetif().GetCoap().SendEmptyAck(aHeader, responseInfo));
+        otLogInfoMeshCoP(GetInstance(), "sent announce begin response");
+    }
 
 exit:
     return;
 }
 
-ThreadError AnnounceBeginServer::SendResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aRequestInfo)
+void AnnounceBeginServer::HandleTimer(Timer &aTimer)
 {
-    ThreadError error = kThreadError_None;
-    Message *message = NULL;
-    Coap::Header responseHeader;
-    Ip6::MessageInfo responseInfo(aRequestInfo);
-
-    VerifyOrExit(aRequestHeader.GetType() == kCoapTypeConfirmable, ;);
-
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
-    responseHeader.SetDefaultResponseHeader(aRequestHeader);
-
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
-
-    memset(&responseInfo.mSockAddr, 0, sizeof(responseInfo.mSockAddr));
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, responseInfo));
-
-    otLogInfoMeshCoP("sent announce begin response");
-
-exit:
-
-    if (error != kThreadError_None && message != NULL)
-    {
-        message->Free();
-    }
-
-    return error;
-}
-
-void AnnounceBeginServer::HandleTimer(void *aContext)
-{
-    static_cast<AnnounceBeginServer *>(aContext)->HandleTimer();
+    GetOwner(aTimer).HandleTimer();
 }
 
 void AnnounceBeginServer::HandleTimer(void)
 {
-    mNetif.GetMle().SendAnnounce(mChannel++, false);
+    GetNetif().GetMle().SendAnnounce(mChannel++, false);
 
     while (mCount > 0)
     {
@@ -173,12 +146,23 @@ void AnnounceBeginServer::HandleTimer(void)
 
         mChannel++;
 
-        if (mChannel > kPhyMaxChannel)
+        if (mChannel > OT_RADIO_CHANNEL_MAX)
         {
-            mChannel = kPhyMinChannel;
+            mChannel = OT_RADIO_CHANNEL_MIN;
             mCount--;
         }
     }
 }
 
-}  // namespace Thread
+AnnounceBeginServer &AnnounceBeginServer::GetOwner(const Context &aContext)
+{
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    AnnounceBeginServer &server = *static_cast<AnnounceBeginServer *>(aContext.GetContext());
+#else
+    AnnounceBeginServer &server = otGetThreadNetif().GetAnnounceBeginServer();
+    OT_UNUSED_VARIABLE(aContext);
+#endif
+    return server;
+}
+
+}  // namespace ot

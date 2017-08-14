@@ -26,8 +26,124 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifdef OPENTHREAD_MTD
-#include "leader_mtd.hpp"
-#else
-#include "leader_ftd.hpp"
-#endif
+/**
+ * @file
+ *   This file includes definitions for a MeshCoP Leader.
+ */
+
+#ifndef MESHCOP_LEADER_HPP_
+#define MESHCOP_LEADER_HPP_
+
+#include "coap/coap.hpp"
+#include "common/locator.hpp"
+#include "common/timer.hpp"
+#include "meshcop/meshcop_tlvs.hpp"
+#include "net/udp6.hpp"
+#include "thread/mle.hpp"
+
+namespace ot {
+namespace MeshCoP {
+
+OT_TOOL_PACKED_BEGIN
+class CommissioningData
+{
+public:
+    uint8_t GetLength(void) const {
+        return sizeof(Tlv) + mBorderAgentLocator.GetLength() +
+               sizeof(Tlv) + mCommissionerSessionId.GetLength() +
+               sizeof(Tlv) + mSteeringData.GetLength();
+    }
+
+    BorderAgentLocatorTlv mBorderAgentLocator;
+    CommissionerSessionIdTlv mCommissionerSessionId;
+    SteeringDataTlv mSteeringData;
+} OT_TOOL_PACKED_END;
+
+class Leader: public ThreadNetifLocator
+{
+public:
+    /**
+     * This constructor initializes the Leader object.
+     *
+     * @param[in]  aThreadNetif  A reference to the Thread network interface.
+     *
+     */
+    Leader(ThreadNetif &aThreadNetif);
+
+    /**
+     * This method sends a MGMT_DATASET_CHANGED message to commissioner.
+     *
+     * @param[in]  aAddress   The IPv6 address of destination.
+     *
+     * @retval OT_ERROR_NONE     Successfully send MGMT_DATASET_CHANGED message.
+     * @retval OT_ERROR_NO_BUFS  Insufficient buffers to generate a MGMT_DATASET_CHANGED message.
+     *
+     */
+    otError SendDatasetChanged(const Ip6::Address &aAddress);
+
+    /**
+     * This method sets minimal delay timer.
+     *
+     * @param[in]  aDelayTimerMinimal The value of minimal delay timer (in ms).
+     *
+     * @retval  OT_ERROR_NONE         Successfully set the minimal delay timer.
+     * @retval  OT_ERROR_INVALID_ARGS If @p aDelayTimerMinimal is not valid.
+     *
+     */
+    otError SetDelayTimerMinimal(uint32_t aDelayTimerMinimal);
+
+    /**
+     * This method gets minimal delay timer.
+     *
+     * @retval the miniaml delay timer (in ms).
+     *
+     */
+    uint32_t GetDelayTimerMinimal(void) const;
+
+    /**
+     * This method sets empty Commissioner Data TLV in the Thread Network Data.
+     *
+     */
+    void SetEmptyCommissionerData(void);
+
+private:
+    enum
+    {
+        kTimeoutLeaderPetition = 50, ///< TIMEOUT_LEAD_PET (seconds)
+    };
+
+    static void HandleTimer(Timer &aTimer);
+    void HandleTimer(void);
+
+    static void HandlePetition(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
+                               const otMessageInfo *aMessageInfo);
+    void HandlePetition(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
+    otError SendPetitionResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
+                                 StateTlv::State aState);
+
+    static void HandleKeepAlive(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
+                                const otMessageInfo *aMessageInfo);
+    void HandleKeepAlive(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
+    otError SendKeepAliveResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
+                                  StateTlv::State aState);
+
+    static void HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo);
+
+    void ResignCommissioner(void);
+
+    static Leader &GetOwner(const Context &aContext);
+
+    Coap::Resource mPetition;
+    Coap::Resource mKeepAlive;
+    TimerMilli mTimer;
+
+    uint32_t mDelayTimerMinimal;
+
+    CommissionerIdTlv mCommissionerId;
+    uint16_t mSessionId;
+};
+
+}  // namespace MeshCoP
+}  // namespace ot
+
+#endif  // MESHCOP_LEADER_HPP_

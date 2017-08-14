@@ -31,24 +31,21 @@
  *   This file implements the Thread IPv6 global addresses configuration utilities.
  */
 
-#ifdef OPENTHREAD_CONFIG_FILE
-#include OPENTHREAD_CONFIG_FILE
-#else
-#include <openthread-config.h>
-#endif
+#include <openthread/config.h>
 
-#include <openthread.h>
-#include <openthread-types.h>
-#include <common/debug.hpp>
-#include <common/code_utils.hpp>
-#include <crypto/sha256.hpp>
-#include <mac/mac.hpp>
-#include <net/ip6_address.hpp>
-#include <utils/slaac_address.hpp>
+#include "slaac_address.hpp"
 
-#include <string.h>
+#include "utils/wrap_string.h"
 
-namespace Thread {
+#include <openthread/openthread.h>
+
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "crypto/sha256.hpp"
+#include "mac/mac.hpp"
+#include "net/ip6_address.hpp"
+
+namespace ot {
 namespace Utils {
 
 void Slaac::UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, uint32_t aNumAddresses,
@@ -63,14 +60,14 @@ void Slaac::UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, u
         otNetifAddress *address = &aAddresses[i];
         bool found = false;
 
-        if (address->mValidLifetime == 0)
+        if (!address->mValid)
         {
             continue;
         }
 
         iterator = OT_NETWORK_DATA_ITERATOR_INIT;
 
-        while (otGetNextOnMeshPrefix(aInstance, false, &iterator, &config) == kThreadError_None)
+        while (otNetDataGetNextOnMeshPrefix(aInstance, &iterator, &config) == OT_ERROR_NONE)
         {
             if (config.mSlaac == false)
             {
@@ -87,15 +84,15 @@ void Slaac::UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, u
 
         if (!found)
         {
-            otRemoveUnicastAddress(aInstance, &address->mAddress);
-            address->mValidLifetime = 0;
+            otIp6RemoveUnicastAddress(aInstance, &address->mAddress);
+            address->mValid = false;
         }
     }
 
     // add addresses
     iterator = OT_NETWORK_DATA_ITERATOR_INIT;
 
-    while (otGetNextOnMeshPrefix(aInstance, false, &iterator, &config) == kThreadError_None)
+    while (otNetDataGetNextOnMeshPrefix(aInstance, &iterator, &config) == OT_ERROR_NONE)
     {
         bool found = false;
 
@@ -108,7 +105,7 @@ void Slaac::UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, u
         {
             otNetifAddress *address = &aAddresses[i];
 
-            if (address->mValidLifetime == 0)
+            if (!address->mValid)
             {
                 continue;
             }
@@ -127,7 +124,7 @@ void Slaac::UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, u
             {
                 otNetifAddress *address = &aAddresses[i];
 
-                if (address->mValidLifetime != 0)
+                if (address->mValid)
                 {
                     continue;
                 }
@@ -136,39 +133,39 @@ void Slaac::UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, u
                 memcpy(&address->mAddress, &config.mPrefix.mPrefix, 8);
 
                 address->mPrefixLength = config.mPrefix.mLength;
-                address->mPreferredLifetime = config.mPreferred ? 0xffffffff : 0;
-                address->mValidLifetime = 0xffffffff;
+                address->mPreferred = config.mPreferred;
+                address->mValid = true;
 
-                if (aIidCreator(aInstance, address, aContext) != kThreadError_None)
+                if (aIidCreator(aInstance, address, aContext) != OT_ERROR_NONE)
                 {
                     CreateRandomIid(aInstance, address, aContext);
                 }
 
-                otAddUnicastAddress(aInstance, address);
+                otIp6AddUnicastAddress(aInstance, address);
                 break;
             }
         }
     }
 }
 
-ThreadError Slaac::CreateRandomIid(otInstance *, otNetifAddress *aAddress, void *)
+otError Slaac::CreateRandomIid(otInstance *, otNetifAddress *aAddress, void *)
 {
     for (size_t i = sizeof(aAddress[i].mAddress) - OT_IP6_IID_SIZE; i < sizeof(aAddress[i].mAddress); i++)
     {
         aAddress->mAddress.mFields.m8[i] = static_cast<uint8_t>(otPlatRandomGet());
     }
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError SemanticallyOpaqueIidGenerator::CreateIid(otInstance *aInstance, otNetifAddress *aAddress)
+otError SemanticallyOpaqueIidGenerator::CreateIid(otInstance *aInstance, otNetifAddress *aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     for (uint32_t i = 0; i <= kMaxRetries; i++)
     {
         error = CreateIidOnce(aInstance, aAddress);
-        VerifyOrExit(error == kThreadError_Ipv6AddressCreationFailure,);
+        VerifyOrExit(error == OT_ERROR_IP6_ADDRESS_CREATION_FAILURE);
 
         mDadCounter++;
     }
@@ -177,9 +174,9 @@ exit:
     return error;
 }
 
-ThreadError SemanticallyOpaqueIidGenerator::CreateIidOnce(otInstance *aInstance, otNetifAddress *aAddress)
+otError SemanticallyOpaqueIidGenerator::CreateIidOnce(otInstance *aInstance, otNetifAddress *aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     Crypto::Sha256 sha256;
     uint8_t hash[Crypto::Sha256::kHashSize];
     Ip6::Address *address = static_cast<Ip6::Address *>(&aAddress->mAddress);
@@ -188,18 +185,18 @@ ThreadError SemanticallyOpaqueIidGenerator::CreateIidOnce(otInstance *aInstance,
 
     sha256.Update(aAddress->mAddress.mFields.m8, aAddress->mPrefixLength / 8);
 
-    VerifyOrExit(mInterfaceId != NULL, error = kThreadError_InvalidArgs);
+    VerifyOrExit(mInterfaceId != NULL, error = OT_ERROR_INVALID_ARGS);
     sha256.Update(mInterfaceId, mInterfaceIdLength);
 
     if (mNetworkIdLength)
     {
-        VerifyOrExit(mNetworkId != NULL, error = kThreadError_InvalidArgs);
+        VerifyOrExit(mNetworkId != NULL, error = OT_ERROR_INVALID_ARGS);
         sha256.Update(mNetworkId, mNetworkIdLength);
     }
 
     sha256.Update(static_cast<uint8_t *>(&mDadCounter), sizeof(mDadCounter));
 
-    VerifyOrExit(mSecretKey != NULL, error = kThreadError_InvalidArgs);
+    VerifyOrExit(mSecretKey != NULL, error = OT_ERROR_INVALID_ARGS);
     sha256.Update(mSecretKey, mSecretKeyLength);
 
     sha256.Finish(hash);
@@ -207,8 +204,8 @@ ThreadError SemanticallyOpaqueIidGenerator::CreateIidOnce(otInstance *aInstance,
     memcpy(&aAddress->mAddress.mFields.m8[OT_IP6_ADDRESS_SIZE - OT_IP6_IID_SIZE],
            &hash[sizeof(hash) - OT_IP6_IID_SIZE], OT_IP6_IID_SIZE);
 
-    VerifyOrExit(!IsAddressRegistered(aInstance, aAddress), error = kThreadError_Ipv6AddressCreationFailure);
-    VerifyOrExit(!address->IsIidReserved(), error = kThreadError_Ipv6AddressCreationFailure);
+    VerifyOrExit(!IsAddressRegistered(aInstance, aAddress), error = OT_ERROR_IP6_ADDRESS_CREATION_FAILURE);
+    VerifyOrExit(!address->IsIidReserved(), error = OT_ERROR_IP6_ADDRESS_CREATION_FAILURE);
 
 exit:
     return error;
@@ -217,7 +214,7 @@ exit:
 bool SemanticallyOpaqueIidGenerator::IsAddressRegistered(otInstance *aInstance, otNetifAddress *aCreatedAddress)
 {
     bool result = false;
-    const otNetifAddress *address = otGetUnicastAddresses(aInstance);
+    const otNetifAddress *address = otIp6GetUnicastAddresses(aInstance);
 
     while (address != NULL)
     {
@@ -236,4 +233,4 @@ exit:
 
 
 }  // namespace Slaac
-}  // namespace Thread
+}  // namespace ot

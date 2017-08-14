@@ -34,15 +34,16 @@
 #ifndef PANID_QUERY_SERVER_HPP_
 #define PANID_QUERY_SERVER_HPP_
 
-#include <openthread-core-config.h>
-#include <openthread-types.h>
-#include <coap/coap_client.hpp>
-#include <coap/coap_server.hpp>
-#include <common/timer.hpp>
-#include <net/ip6_address.hpp>
-#include <net/udp6.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "openthread-core-config.h"
+#include "coap/coap.hpp"
+#include "common/locator.hpp"
+#include "common/timer.hpp"
+#include "net/ip6_address.hpp"
+#include "net/udp6.hpp"
+
+namespace ot {
 
 class MeshForwarder;
 class ThreadLastTransactionTimeTlv;
@@ -54,7 +55,7 @@ class ThreadTargetTlv;
  * This class implements handling PANID Query Requests.
  *
  */
-class PanIdQueryServer
+class PanIdQueryServer: public ThreadNetifLocator
 {
 public:
     /**
@@ -69,37 +70,34 @@ private:
         kScanDelay = 1000,  ///< SCAN_DELAY (milliseconds)
     };
 
-    static void HandleQuery(void *aContext, otCoapHeader *aHeader, otMessage aMessage, const otMessageInfo *aMessageInfo);
+    static void HandleQuery(void *aContext, otCoapHeader *aHeader, otMessage *aMessage, const otMessageInfo *aMessageInfo);
     void HandleQuery(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
     static void HandleScanResult(void *aContext, Mac::Frame *aFrame);
     void HandleScanResult(Mac::Frame *aFrame);
 
-    static void HandleTimer(void *aContext);
+    static void HandleTimer(Timer &aTimer);
     void HandleTimer(void);
 
-    static void HandleUdpReceive(void *aContext, otMessage aMessage, const otMessageInfo *aMessageInfo);
+    static void HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo);
 
-    ThreadError SendConflict(void);
-    ThreadError SendQueryResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aRequestMessageInfo);
+    otError SendConflict(void);
+
+    static PanIdQueryServer &GetOwner(const Context &aContext);
 
     Ip6::Address mCommissioner;
     uint32_t mChannelMask;
     uint16_t mPanId;
 
-    Timer mTimer;
+    TimerMilli mTimer;
 
     Coap::Resource mPanIdQuery;
-    Coap::Server &mCoapServer;
-    Coap::Client &mCoapClient;
-
-    ThreadNetif &mNetif;
 };
 
 /**
  * @}
  */
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // PANID_QUERY_SERVER_HPP_

@@ -31,28 +31,31 @@
  *   This file implements IPv6 route tables.
  */
 
-#include <net/ip6.hpp>
-#include <net/ip6_routes.hpp>
-#include <net/netif.hpp>
-#include <common/code_utils.hpp>
-#include <common/message.hpp>
+#include <openthread/config.h>
 
-namespace Thread {
+#include "ip6_routes.hpp"
+
+#include "common/code_utils.hpp"
+#include "common/message.hpp"
+#include "net/ip6.hpp"
+#include "net/netif.hpp"
+
+namespace ot {
 namespace Ip6 {
 
 Routes::Routes(Ip6 &aIp6):
-    mRoutes(NULL),
-    mIp6(aIp6)
+    Ip6Locator(aIp6),
+    mRoutes(NULL)
 {
 }
 
-ThreadError Routes::Add(Route &aRoute)
+otError Routes::Add(Route &aRoute)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     for (Route *cur = mRoutes; cur; cur = cur->mNext)
     {
-        VerifyOrExit(cur != &aRoute, error = kThreadError_Already);
+        VerifyOrExit(cur != &aRoute, error = OT_ERROR_ALREADY);
     }
 
     aRoute.mNext = mRoutes;
@@ -62,7 +65,7 @@ exit:
     return error;
 }
 
-ThreadError Routes::Remove(Route &aRoute)
+otError Routes::Remove(Route &aRoute)
 {
     if (&aRoute == mRoutes)
     {
@@ -82,7 +85,7 @@ ThreadError Routes::Remove(Route &aRoute)
 
     aRoute.mNext = NULL;
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
 int8_t Routes::Lookup(const Address &aSource, const Address &aDestination)
@@ -114,9 +117,9 @@ int8_t Routes::Lookup(const Address &aSource, const Address &aDestination)
         rval = cur->mInterfaceId;
     }
 
-    for (Netif *netif = mIp6.GetNetifList(); netif; netif = netif->GetNext())
+    for (Netif *netif = GetIp6().GetNetifList(); netif; netif = netif->GetNext())
     {
-        if (netif->RouteLookup(aSource, aDestination, &prefixMatch) == kThreadError_None &&
+        if (netif->RouteLookup(aSource, aDestination, &prefixMatch) == OT_ERROR_NONE &&
             static_cast<int8_t>(prefixMatch) > maxPrefixMatch)
         {
             maxPrefixMatch = static_cast<int8_t>(prefixMatch);
@@ -128,4 +131,4 @@ int8_t Routes::Lookup(const Address &aSource, const Address &aDestination)
 }
 
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot

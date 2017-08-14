@@ -31,12 +31,15 @@
  *   This file implements common MeshCoP timestamp processing.
  */
 
-#include <string.h>
+#include <openthread/config.h>
 
-#include <openthread-types.h>
-#include <meshcop/timestamp.hpp>
+#include "timestamp.hpp"
 
-namespace Thread {
+#include "utils/wrap_string.h"
+
+#include <openthread/types.h>
+
+namespace ot {
 namespace MeshCoP {
 
 int Timestamp::Compare(const Timestamp &aCompare) const
@@ -72,4 +75,4 @@ int Timestamp::Compare(const Timestamp &aCompare) const
 }
 
 }  // namespace MeshCoP
-}  // namespace Thread
+}  // namespace ot

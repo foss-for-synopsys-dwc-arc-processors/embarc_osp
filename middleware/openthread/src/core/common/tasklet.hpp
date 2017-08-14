@@ -34,12 +34,14 @@
 #ifndef TASKLET_HPP_
 #define TASKLET_HPP_
 
-#include <openthread-types.h>
-#include <openthread-tasklet.h>
+#include <stdio.h>
 
-namespace Thread {
+#include <openthread/tasklet.h>
 
-namespace Ip6 { class Ip6; }
+#include "common/context.hpp"
+#include "common/locator.hpp"
+
+namespace ot {
 
 class TaskletScheduler;
 
@@ -57,7 +59,7 @@ class TaskletScheduler;
  * This class is used to represent a tasklet.
  *
  */
-class Tasklet
+class Tasklet: public InstanceLocator, public Context
 {
     friend class TaskletScheduler;
 
@@ -65,33 +67,31 @@ public:
     /**
      * This function pointer is called when the tasklet is run.
      *
-     * @param[in]  aContext  A pointer to arbitrary context information.
+     * @param[in]  aTasklet  A reference to the tasklet being run.
      *
      */
-    typedef void (*Handler)(void *aContext);
+    typedef void (*Handler)(Tasklet &aTasklet);
 
     /**
      * This constructor creates a tasklet instance.
      *
-     * @param[in]  aScheduler  A reference to the tasklet scheduler.
+     * @param[in]  aInstance   A reference to the instance object.
      * @param[in]  aHandler    A pointer to a function that is called when the tasklet is run.
      * @param[in]  aContext    A pointer to arbitrary context information.
      *
      */
-    Tasklet(TaskletScheduler &aScheduler, Handler aHandler, void *aContext);
+    Tasklet(otInstance &aInstance, Handler aHandler, void *aContext);
 
     /**
      * This method puts the tasklet on the run queue.
      *
      */
-    ThreadError Post(void);
+    otError Post(void);
 
 private:
-    void RunTask(void) { mHandler(mContext); }
+    void RunTask(void) { mHandler(*this); }
 
-    TaskletScheduler &mScheduler;
     Handler           mHandler;
-    void             *mContext;
     Tasklet          *mNext;
 };
 
@@ -113,10 +113,10 @@ public:
      *
      * @param[in]  aTasklet  A reference to the tasklet to enqueue.
      *
-     * @retval kThreadError_None  Successfully enqueued the tasklet.
-     * @retval kThreadError_Already  The tasklet was already enqueued.
+     * @retval OT_ERROR_NONE     Successfully enqueued the tasklet.
+     * @retval OT_ERROR_ALREADY  The tasklet was already enqueued.
      */
-    ThreadError Post(Tasklet &aTasklet);
+    otError Post(Tasklet &aTasklet);
 
     /**
      * This method indicates whether or not there are tasklets pending.
@@ -125,21 +125,13 @@ public:
      * @retval FALSE  If there are no tasklets pending.
      *
      */
-    bool AreTaskletsPending(void);
+    bool AreTaskletsPending(void) { return mHead != NULL; }
 
     /**
      * This method processes all tasklets queued when this is called.
      *
      */
     void ProcessQueuedTasklets(void);
-
-    /**
-     * This method returns the pointer to the parent Ip6 structure.
-     *
-     * @returns The pointer to the parent Ip6 structure.
-     *
-     */
-    Ip6::Ip6 *GetIp6();
 
 private:
     Tasklet *PopTasklet(void);
@@ -152,6 +144,6 @@ private:
  *
  */
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // TASKLET_HPP_

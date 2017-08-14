@@ -34,12 +34,17 @@
  *   This file includes definitions for manipulating IPv6 routing tables.
  */
 
-#include <openthread-types.h>
-#include <common/message.hpp>
-#include <net/ip6_address.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "common/locator.hpp"
+#include "common/message.hpp"
+#include "net/ip6_address.hpp"
+#include "net/ip6_routes.hpp"
+
+namespace ot {
 namespace Ip6 {
+
+class Ip6;
 
 /**
  * @addtogroup core-ip6-ip6
@@ -64,7 +69,7 @@ struct Route
  * This class implements IPv6 route management.
  *
  */
-class Routes
+class Routes: public Ip6Locator
 {
 public:
     /**
@@ -80,22 +85,22 @@ public:
      *
      * @param[in]  aRoute  A reference to the IPv6 route.
      *
-     * @retval kThreadError_None  Successfully added the route.
-     * @retval kThreadError_Already  The route was already added.
+     * @retval OT_ERROR_NONE     Successfully added the route.
+     * @retval OT_ERROR_ALREADY  The route was already added.
      *
      */
-    ThreadError Add(Route &aRoute);
+    otError Add(Route &aRoute);
 
     /**
      * This method removes an IPv6 route.
      *
      * @param[in]  aRoute  A reference to the IPv6 route.
      *
-     * @retval kThreadError_None         Successfully removed the route.
-     * @retval kThreadError_NotFound  The route was not added.
+     * @retval OT_ERROR_NONE       Successfully removed the route.
+     * @retval OT_ERROR_NOT_FOUND  The route was not added.
      *
      */
-    ThreadError Remove(Route &aRoute);
+    otError Remove(Route &aRoute);
 
     /**
      * This method performs source-destination route lookup.
@@ -110,7 +115,6 @@ public:
 
 private:
     Route *mRoutes;
-    Ip6 &mIp6;
 };
 
 /**
@@ -119,6 +123,6 @@ private:
  */
 
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // NET_IP6_ROUTES_HPP_
