@@ -80,28 +80,7 @@
 #define AUX_MPU_RDP_KW  0x080    /* only allow kernel write */
 #define AUX_MPU_RDP_KR  0x100    /* only allow kernel read */
 
-#define AUX_MPU_RDP_REGION_2K       0x402
-#define AUX_MPU_RDP_REGION_4K       0x403
-#define AUX_MPU_RDP_REGION_8K       0x600
-#define AUX_MPU_RDP_REGION_16K      0x601
-#define AUX_MPU_RDP_REGION_32K      0x602
-#define AUX_MPU_RDP_REGION_64K      0x603
-#define AUX_MPU_RDP_REGION_128K     0x800
-#define AUX_MPU_RDP_REGION_256K     0x801
-#define AUX_MPU_RDP_REGION_512K     0x802
-#define AUX_MPU_RDP_REGION_1M       0x803
-#define AUX_MPU_RDP_REGION_2M       0xA00
-#define AUX_MPU_RDP_REGION_4M       0xA01
-#define AUX_MPU_RDP_REGION_8M       0xA02
-#define AUX_MPU_RDP_REGION_16M      0xA03
-#define AUX_MPU_RDP_REGION_32M      0xC00
-#define AUX_MPU_RDP_REGION_64M      0xC01
-#define AUX_MPU_RDP_REGION_128M     0xC02
-#define AUX_MPU_RDP_REGION_256M     0xC03
-#define AUX_MPU_RDP_REGION_512M     0xE00
-#define AUX_MPU_RDP_REGION_1G       0xE01
-#define AUX_MPU_RDP_REGION_2G       0xE02
-#define AUX_MPU_RDP_REGION_4G       0xE03
+#define AUX_MPU_RDP_REGION_SIZE(bits)  	(((bits - 1) & 0x3) | (((bits - 1) & 0x1C) << 7))
 
 #define SECURE_CONTAINER_DEFAULT_STATUS	(AUX_STATUS_MASK_IE | (((INT_PRI_MAX - INT_PRI_MIN) << 1) & 0x1e))
 #define NORMAL_CONTAINER_DEFAULT_STATUS	(SECURE_CONTAINER_DEFAULT_STATUS | AUX_STATUS_MASK_U)
@@ -128,7 +107,7 @@ typedef struct {
 } CONTAINER_INTERFACE;
 
 
-// structure to describe how a container owns interfaces
+/* structure to describe how a container owns interfaces */
 typedef struct {
 	CONTAINER_INTERFACE *interface;
 	uint32_t count;
@@ -189,7 +168,7 @@ static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 		return region;
 	}
 	
-	// if current container is secure,  check all normal containers
+	/* if current container is secure,  check all normal containers */
 	if (container_is_secure(g_active_container)) {
 		for (i = 0; i < g_vmpu_container_count; i++) {
 			if (!container_is_secure(i)) {
@@ -310,7 +289,7 @@ static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t container_id,
 	void* base, uint32_t size, CONTAINER_AC ac)
 {
-	uint32_t flags, bits, mask, size_rounded;
+	uint32_t bits, mask, size_rounded;
 
 	SECURESHIELD_DBG("\tcontainer[%d] ac[%d]={0x%x,size=%d,ac=0x%x,",
 		container_id, g_mpu_region_count, (uint32_t)base, size, ac);
@@ -319,7 +298,7 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 	bits = vmpu_region_bits(size);
 	size_rounded = 1UL << bits;
 	if (size_rounded != size) {
-		if((ac & (SECURESHIELD_AC_SIZE_ROUND_UP|SECURESHIELD_AC_SIZE_ROUND_DOWN))==0) {
+		if ((ac & (SECURESHIELD_AC_SIZE_ROUND_UP|SECURESHIELD_AC_SIZE_ROUND_DOWN))==0) {
 			SECURESHIELD_HALT(
 				"container size (%d) not rounded, rounding disabled (rounded=%d)",
 				size, size_rounded
@@ -327,7 +306,7 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 			return;
 		}
 
-		if(ac & SECURESHIELD_AC_SIZE_ROUND_DOWN) {
+		if (ac & SECURESHIELD_AC_SIZE_ROUND_DOWN) {
 			bits--;
 			if(bits<ARC_FEATURE_MPU_ALIGNMENT_BITS) {
 				SECURESHIELD_HALT("region size (%d) can't be rounded down",size);
@@ -345,11 +324,8 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 	}
 
 	/* map generic ACL's to internal ACL's */
-	flags = vmpu_map_ac(ac);
-
-	bits += 0xA - ARC_FEATURE_MPU_ALIGNMENT_BITS;
 	/* enable region & add size */
-	region->rdp = flags | ((bits & 0x3) | ((bits & 0x1C) << 7));
+	region->rdp = vmpu_map_ac(ac) | AUX_MPU_RDP_REGION_SIZE(bits);
 	region->base = (uint32_t) base;
 	region->end = (uint32_t) base + size_rounded;
 	region->size = size_rounded;
@@ -388,7 +364,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 		return;
 	}
 
-	//SECURESHIELD_DBG("switching from %d to %d\n\r", src_id, dst_id);
+	SECURESHIELD_DBG("switching from %d to %d\n\r", src_id, dst_id);
 	/* remember active container */
 	g_active_container = dst_id;
 
@@ -401,8 +377,10 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 		region = container->region;
 
 		for (i = 0; i < container->count; i++) {
-			if (mpu_slot >= ARC_FEATURE_MPU_REGIONS)
-				 break;
+			if (mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
+				return;
+			}
+
 			 /* RDP must be set before RDB */
 			_arc_aux_write(AUX_MPU_RDP0 + mpu_slot * 2, region->rdp);
 			_arc_aux_write(AUX_MPU_RDB0 + mpu_slot * 2,
@@ -418,14 +396,14 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 	region = container->region;
 
 	for (i = 0; i < container->count; i++) {
-		if (mpu_slot >= ARC_FEATURE_MPU_REGIONS)
-			 break;
+		if (mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
+			return;
+		}
 
 		_arc_aux_write(AUX_MPU_RDP0 + mpu_slot * 2, region->rdp);
 		_arc_aux_write(AUX_MPU_RDB0 + mpu_slot *2,
 			region->base | AUX_MPU_RDB_VALID_MASK);
 
-		/* process next slot */
 		region++;
 		mpu_slot++;
 	}
@@ -446,8 +424,7 @@ void vmpu_load_container(uint8_t container_id)
 {
 	if (container_id == 0) {
 		vmpu_switch(0, 0);
-	}
-	else {
+	} else {
 		SECURESHIELD_HALT("currently only container 0 can be loaded");
 	}
 	/*  container 0 is the background container and shared to other containers, must be loaded */
@@ -494,7 +471,7 @@ void vmpu_ac_mem(uint8_t container_id, void* addr, uint32_t size, CONTAINER_AC a
 
 	/* assign container region pointer */
 	container = &g_mpu_container[container_id];
-	if (!container->region){
+	if (!container->region) {
 		container->region = &g_mpu_list[g_mpu_region_count];
 	}
 
@@ -536,7 +513,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		rodata_attribute = SECURESHIELD_ACDEF_KROM;
 		ram_attribute = SECURESHIELD_ACDEF_KRAM;
 
-	} else if (container_cfg->type == SECURESHILED_CONTAINER_NORMAL) {
+	} else if (container_cfg->type == SECURESHIELD_CONTAINER_NORMAL) {
 		g_container_context[container_id].cpu_status = NORMAL_CONTAINER_DEFAULT_STATUS;
 
 		text_attribute = SECURESHIELD_ACDEF_UTEXT;
@@ -597,8 +574,9 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 
 	/* if g_mpu_slot is overflow  go back to start to do the recovery */
 	if (g_mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
-		// why + 2 ?  because the first 2 regions maybe used for container's 
-		// rom (.text &.rodata) and ram (.data and .bss)
+		/* why + 2 ?  because the first 2 regions maybe used for container's 
+		 rom (.text &.rodata) and ram (.data and .bss)
+		 */
 		g_mpu_slot = ARC_MPU_RESERVED_REGIONS + 2;
 	}
 

@@ -132,6 +132,16 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 	dst_frame = (INT_EXC_FRAME *)(g_container_context[dst_id].cur_sp - ARC_EXC_FRAME_SIZE);
 
 	dst_frame->erbta = 0; /* erbta, is 0 the correct value? */
+
+	dst_frame->fp = 0;
+	dst_frame->lp_end = 0;
+	dst_frame->lp_start = 0;
+	dst_frame->lp_count= 0;
+#ifdef ARC_FEATURE_CODE_DENSITY
+	dst_frame->ei = 0;
+	dst_frame->ldi = 0;
+	dst_frame->jli = 0;
+#endif
 	dst_frame->ret = dst_fn; /* eret */
 	dst_frame->status32 = g_container_context[dst_id].cpu_status;
 

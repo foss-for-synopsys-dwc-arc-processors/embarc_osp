@@ -62,9 +62,20 @@
 /* tell linker script template, there is a region named container1 in secure rom, its size is 0 */
 #define SECURESHIELD_REGION_SECURE_CONTAINERS_ROM GEN_SECURE_CONTAINER_ROM_SECTION(container1, 0)
 
+// CONTAINER_ROM_OBJS_LIST is only for ARC_GNU
+// This macro wii exclude the specified container objs from background container in linking,
+// (EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .text EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST)
+// .text. EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .gnu.linkonce.t.*)
+#define CONTAINER_ROM_OBJS_LIST *container2.o
+
 /* tell linker script template, there is a region named container1 in secure ram, its size is 2048 bytes */
 #define SECURESHIELD_REGION_SECURE_CONTAINERS_RAM GEN_SECURE_CONTAINER_RAM_SECTION(container1, 2048)
 
+// CONTAINER_RAM_OBJS_LIST is only for ARC_GNU
+// This macro wii exclude the specified container objs from background container in linking,
+//(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST)
+//.data. EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.d.*)
+#define CONTAINER_RAM_OBJS_LIST *container2.o
 
 /* tell linker script template, there is a region named container2 in normal rom, its size is 0 bytes */
 #define SECURESHIELD_REGION_CONTAINERS_ROM GEN_CONTAINER_ROM_SECTION(container2, 2048, *container2.o*)

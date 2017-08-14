@@ -566,7 +566,7 @@ void vmpu_ac_container(uint8_t container_id, const CONTAINER_CONFIG *container_c
 
 	if (secure == SECURESHIELD_CONTAINER_SECURE) {
 		secure = SECURESHIELD_AC_SECURE;
-	} else if (secure == SECURESHILED_CONTAINER_NORMAL) {
+	} else if (secure == SECURESHIELD_CONTAINER_NORMAL) {
 		secure = SECURESHIELD_AC_NORMAL;
 	} else {
 		SECURESHIELD_HALT("unsupported container type");

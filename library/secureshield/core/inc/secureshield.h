@@ -62,8 +62,8 @@ typedef struct {
 	uint32_t *secure_ram_start, *secure_ram_end;
 
 
-	uint32_t *background_rom_start, background_rom_end;
-	uint32_t *background_ram_start, background_ram_end;
+	uint32_t *background_rom_start, *background_rom_end;
+	uint32_t *background_ram_start, *background_ram_end;
 
 	/* container configuration tables */
 	uint32_t *cfgtbl_start, *cfgtbl_end;

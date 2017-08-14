@@ -103,17 +103,19 @@
 	({ \
 		SECURESHIELD_MACRO_REGS_ARGS(uint32_t, ##__VA_ARGS__) \
 		SECURESHIELD_MACRO_REGS_RETVAL(uint32_t, res) \
-		uint32_t status = arc_lock_save(); \
 		Asm( \
 			"push_s %%blink\n" \
+			"clri  %%blink\n"  \
+			"push_s %%blink\n"  \
 			".long %[secure_call_id]\n" \
 			metadata \
 			"pop_s %%blink\n" \
+			"seti %%blink\n" \
+			"pop_s %%blink\n"  \
 			: SECURESHIELD_MACRO_ASM_OUTPUT(res) \
 			: SECURESHIELD_MACRO_ASM_INPUT(__VA_ARGS__), \
 			[secure_call_id] "i" (SJLI_OPCODE(id)) \
 		); \
-		arc_unlock_restore(status); \
 		res; \
 	})
 

@@ -123,7 +123,7 @@
 #define SECURESHIELD_PAD32(x)		(32 - (sizeof(x) & ~0x1FUL))
 #define SECURESHIELD_CONTAINER_MAGIC	0x42CFB66FUL		/* magic number to identify container configuration */
 #define SECURESHIELD_CONTAINER_SECURE	0x1 			/* container type: secure */
-#define SECURESHILED_CONTAINER_NORMAL	0x0 			/* container type: normal */
+#define SECURESHIELD_CONTAINER_NORMAL	0x0 			/* container type: normal */
 
 #define SECURESHIELD_MEM_SIZE_ROUND(x)	SECURESHIELD_REGION_ROUND_UP(x)
 

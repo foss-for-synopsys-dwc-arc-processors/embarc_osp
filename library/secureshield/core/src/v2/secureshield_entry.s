@@ -105,6 +105,7 @@
 	.align 4
 sjli_secureshield_sys_ops:
 	push_s 	blink
+	push 	fp    /* fp may be used, saved here */
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	mov 	gp, _f_sdata
 #endif
@@ -115,6 +116,7 @@ sjli_secureshield_sys_ops:
 /* The newlib c of ARC GNU is compiled with sdata enabled */
 	ld	gp, [normal_world_gp]	/* init small-data base register */
 #endif
+	pop 	fp
 	pop_s 	blink
 	j 	[blink]
 
@@ -123,6 +125,7 @@ sjli_secureshield_sys_ops:
 	.align 4
 sjli_secureshield_int_ops:
 	push_s 	blink
+	push	fp    /* fp may be used, saved here */
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	mov 	gp, _f_sdata
 #endif
@@ -133,6 +136,7 @@ sjli_secureshield_int_ops:
 /* The newlib c of ARC GNU is compiled with sdata enabled */
 	ld	gp, [normal_world_gp]	/* init small-data base register */
 #endif
+	pop	fp
 	pop_s 	blink
 	j 	[blink]
 
@@ -284,6 +288,11 @@ _int_from_normal_world:
 
 _int_from_secure_world:
 	INTERRUPT_PROLOGUE
+	// from secure container, AUX_KERNEL_SP is background container's sp
+	// from  runtime, AUX_KERNEL_SP could be any normal container's sp
+	// it may be overwritten to background container's sp for normal interrupt handling
+	// so save it and restore when return
+	PUSHAX 	AUX_KERNEL_SP 
 	mov	r0, sp
 
 	cmp 	r1, SP_IN_RUNTIME
@@ -291,7 +300,7 @@ _int_from_secure_world:
 	ld 	sp, [secureshield_runtime_stack_ptr] // secure interrupts(S)
 
 _secure_int_handler_1:
-	sr 	sp, [AUX_SEC_K_SP] 	// update AUX_SEC_K_SP,
+	sr 	sp, [AUX_SEC_K_SP] 	// update AUX_SEC_K_SP with correct runtime sp
 
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	mov 	gp, _f_sdata
@@ -306,6 +315,7 @@ _secure_int_handler_1:
 	btst	r0, 0		// bit 0 = 0 is no context switch, = 1 is context switch
 	bclr	r0, r0, 0	// clear bit 0,  z bit will not be updated
 	bz 	_int_handle_no_ctx_switch  // z is the result of btst
+_int_handle_ctx_switch:
 	SAVE_CALLEE_REGS
 	mov 	sp, r0		// switch to target container's sp
 
@@ -351,6 +361,7 @@ _secure_int_return:
 	btst 	r0, AUX_SEC_STAT_BIT_IRM
 	bnz	_int_return_to_secure_world
 
+_int_return_to_normal_world:
 	INTERRUPT_EPILOGUE	// pop from interrupted normal container's stack 
 #ifdef ARC_FEATURE_CODE_DENSITY
 	add 	sp, sp, 24 	// skip spaces for ei, ldi, jli, lp_end, lp_start, lp_count
@@ -363,6 +374,7 @@ _secure_int_return:
 	rtie
 
 _int_return_to_secure_world:
+	POPAX	AUX_KERNEL_SP
 	INTERRUPT_EPILOGUE
 	rtie
 

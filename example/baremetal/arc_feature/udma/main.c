@@ -53,7 +53,8 @@
  *     When you change this values defined in *appl_mem_config.h* in this example, you need to clean the project first then rebuilt it.
  *
  * ### Extra Comments
- *
+ *     - This example only supported EMSK 2.2 and EMSK 2.3.
+ *     - This example required that the core configuration should have uDMA option.
  */
 
 /**

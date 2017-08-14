@@ -125,10 +125,12 @@ endif
 ifeq ($(VALID_TOOLCHAIN), mw)
 SECURE_LINK_OPT	+=  -Hldopt=-Bsymout=$(SECURESHIELD_SECURE).syms -Hldopt=-Bsymlist=$(SECURE_SYMBOL_LIST)
 LINK_OPT += -Hldopt=-Bsymin=$(SECURESHIELD_SECURE).syms
+DBG_HW_FLAGS += -cmd="symbols $(SECURESHIELD_SECURE).elf"
 
 else
 ifeq ($(VALID_TOOLCHAIN), gnu)
 LINK_OPT += -Xlinker --just-symbols=$(SECURESHIELD_SECURE).syms
+DBG_HW_FLAGS += -ex "add-symbol-file $(SECURESHIELD_SECURE).elf _f_rom_secureshieldruntime -readnow"
 endif
 endif
 

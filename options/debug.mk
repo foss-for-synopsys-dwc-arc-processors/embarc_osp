@@ -96,7 +96,7 @@ $(error $(OPENOCD_CFG_FILE) doesn't exist, please choose the right openocd confi
 endif
 endif
 ifeq ($(VALID_JTAG), usb)
-DBG_HW_FLAGS = -ex "target remote | openocd --pipe $(OPENOCD_OPTIONS)" -ex "load"
+DBG_HW_FLAGS += -ex "target remote | openocd --pipe $(OPENOCD_OPTIONS)" -ex "load"
 endif
 endif
 
@@ -112,7 +112,7 @@ DBG_HW_FLAGS += -nsim -off=binary_stdin -off=binary_stdout  -on=load_at_paddr\
 endif
 
 ifeq ($(DBG), arc-elf32-gdb)
-DBG_HW_FLAGS = -ex "target remote localhost:1234" -ex "load"
+DBG_HW_FLAGS += -ex "target remote localhost:1234" -ex "load"
 endif
 
 endif # end of nsim case #
@@ -123,6 +123,11 @@ ifeq ($(DBG), mdb)
 DBG_HW_FLAGS += -run
 endif
 ifeq ($(DBG), arc-elf32-gdb)
+ifeq ($(BOARD), nsim)
+DBG = $(NSIMDRV)
+DBG_HW_FLAGS =  -p nsim_emt=1 $(NSIMDRV_OPT)
+else
 DBG_HW_FLAGS += -ex "c"
+endif
 endif
 endif

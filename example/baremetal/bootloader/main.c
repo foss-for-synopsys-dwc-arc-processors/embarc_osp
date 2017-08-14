@@ -143,9 +143,11 @@
  * ### Extra Comments
  *     - Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.
  *     - Make sure that the bootloader can only load application for extract the same core you built for.
+ *     - Currently the 2nd bootloader ran in a different place(end of DDR) in DDR which has no conflict with other normal examples placed at start of DDR.
  *     - Bootloader example only support arc core configuration which has DDR with cache enabled.
  *     - Bootloader example runs in DDR ram, not in CCM.
  *     - Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.
+ *     - The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run sucessfully for another core configuration.
  *     - Supported core configurations
  *       + EMSK 1.1: EM6, EM6GP
  *       + EMSK 2.2/2.3: EM7D, EM11D

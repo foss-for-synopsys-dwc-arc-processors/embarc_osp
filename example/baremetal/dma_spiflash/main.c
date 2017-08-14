@@ -53,9 +53,10 @@
  *     ![ScreenShot for SPIFlash erase/write/read test using uDMA](pic/images/example/emsk/baremetal_dma_spiflash.jpg)
  *
  * ### Extra Comments
- *    Tested in EMSK 2.3 EM9D, for drivers with DMA, spiflash working frequency can achieve 12Mhz.
- *    For drivers without DMA, spiflash working frequency can achieve 2Mhz.
- *    This example will stuck at the max frequency that SPI can achieve at that situation.
+ *    - Tested in EMSK 2.3 EM9D, for drivers with DMA, spiflash working frequency can achieve 12Mhz.
+ *    - For drivers without DMA, spiflash working frequency can achieve 2Mhz.
+ *    - This example will stuck at the max frequency that SPI can achieve at that situation.
+ *    - This example required that the ARC core configuration should has uDMA option and DW SPI also enabled DMA interface with uDMA.
  */
 
 /**
