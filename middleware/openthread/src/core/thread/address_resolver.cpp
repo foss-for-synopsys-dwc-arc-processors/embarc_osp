@@ -31,57 +31,65 @@
  *   This file implements Thread's EID-to-RLOC mapping and caching.
  */
 
+#if OPENTHREAD_FTD
+
 #define WPP_NAME "address_resolver.tmh"
 
-#include <coap/coap_header.hpp>
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <common/logging.hpp>
-#include <common/encoding.hpp>
-#include <mac/mac_frame.hpp>
-#include <platform/random.h>
-#include <thread/address_resolver.hpp>
-#include <thread/mesh_forwarder.hpp>
-#include <thread/mle_router.hpp>
-#include <thread/thread_netif.hpp>
-#include <thread/thread_tlvs.hpp>
-#include <thread/thread_uris.hpp>
+#include <openthread/config.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
+#include "address_resolver.hpp"
 
-namespace Thread {
+#include <openthread/platform/random.h>
+
+#include "openthread-instance.h"
+#include "coap/coap_header.hpp"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/encoding.hpp"
+#include "common/logging.hpp"
+#include "mac/mac_frame.hpp"
+#include "thread/mesh_forwarder.hpp"
+#include "thread/mle_router.hpp"
+#include "thread/thread_netif.hpp"
+#include "thread/thread_tlvs.hpp"
+#include "thread/thread_uri_paths.hpp"
+
+using ot::Encoding::BigEndian::HostSwap16;
+
+namespace ot {
 
 AddressResolver::AddressResolver(ThreadNetif &aThreadNetif) :
-    mAddressError(OPENTHREAD_URI_ADDRESS_ERROR, &AddressResolver::HandleAddressError, this),
-    mAddressQuery(OPENTHREAD_URI_ADDRESS_QUERY, &AddressResolver::HandleAddressQuery, this),
-    mAddressNotification(OPENTHREAD_URI_ADDRESS_NOTIFY, &AddressResolver::HandleAddressNotification, this),
-    mIcmpHandler(&AddressResolver::HandleDstUnreach, this),
-    mTimer(aThreadNetif.GetIp6().mTimerScheduler, &AddressResolver::HandleTimer, this),
-    mMeshForwarder(aThreadNetif.GetMeshForwarder()),
-    mCoapServer(aThreadNetif.GetCoapServer()),
-    mCoapClient(aThreadNetif.GetCoapClient()),
-    mMle(aThreadNetif.GetMle()),
-    mNetif(aThreadNetif)
+    ThreadNetifLocator(aThreadNetif),
+    mAddressError(OT_URI_PATH_ADDRESS_ERROR, &AddressResolver::HandleAddressError, this),
+    mAddressQuery(OT_URI_PATH_ADDRESS_QUERY, &AddressResolver::HandleAddressQuery, this),
+    mAddressNotification(OT_URI_PATH_ADDRESS_NOTIFY, &AddressResolver::HandleAddressNotification, this),
+    mIcmpHandler(&AddressResolver::HandleIcmpReceive, this),
+    mTimer(aThreadNetif.GetInstance(), &AddressResolver::HandleTimer, this)
 {
-    memset(&mCache, 0, sizeof(mCache));
+    Clear();
 
-    mCoapServer.AddResource(mAddressError);
-    mCoapServer.AddResource(mAddressQuery);
-    mCoapServer.AddResource(mAddressNotification);
+    aThreadNetif.GetCoap().AddResource(mAddressError);
+    aThreadNetif.GetCoap().AddResource(mAddressQuery);
+    aThreadNetif.GetCoap().AddResource(mAddressNotification);
 
-    mNetif.GetIp6().mIcmp.RegisterCallbacks(mIcmpHandler);
+    aThreadNetif.GetIp6().mIcmp.RegisterHandler(mIcmpHandler);
 }
 
 void AddressResolver::Clear()
 {
     memset(&mCache, 0, sizeof(mCache));
+
+    for (uint8_t i = 0; i < kCacheEntries; i++)
+    {
+        mCache[i].mAge = i;
+    }
 }
 
-ThreadError AddressResolver::GetEntry(uint8_t aIndex, otEidCacheEntry &aEntry) const
+otError AddressResolver::GetEntry(uint8_t aIndex, otEidCacheEntry &aEntry) const
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
-    VerifyOrExit(aIndex < kCacheEntries, error = kThreadError_InvalidArgs);
+    VerifyOrExit(aIndex < kCacheEntries, error = OT_ERROR_INVALID_ARGS);
     memcpy(&aEntry.mTarget, &mCache[aIndex].mTarget, sizeof(aEntry.mTarget));
     aEntry.mRloc16 = mCache[aIndex].mRloc16;
     aEntry.mValid = mCache[aIndex].mState == Cache::kStateCached;
@@ -94,16 +102,69 @@ void AddressResolver::Remove(uint8_t routerId)
 {
     for (int i = 0; i < kCacheEntries; i++)
     {
-        if ((mCache[i].mRloc16 >> 10) == routerId)
+        if (Mle::Mle::GetRouterId(mCache[i].mRloc16) == routerId)
         {
-            mCache[i].mState = Cache::kStateInvalid;
+            InvalidateCacheEntry(mCache[i]);
         }
     }
 }
 
-ThreadError AddressResolver::Resolve(const Ip6::Address &aEid, uint16_t &aRloc16)
+AddressResolver::Cache *AddressResolver::NewCacheEntry(void)
 {
-    ThreadError error = kThreadError_None;
+    Cache *rval = NULL;
+
+    for (int i = 0; i < kCacheEntries; i++)
+    {
+        if (mCache[i].mState == Cache::kStateQuery && mCache[i].mFailures == 0)
+        {
+            continue;
+        }
+
+        if (rval == NULL || rval->mAge < mCache[i].mAge)
+        {
+            rval = &mCache[i];
+        }
+    }
+
+    if (rval != NULL)
+    {
+        InvalidateCacheEntry(*rval);
+    }
+
+    return rval;
+}
+
+void AddressResolver::MarkCacheEntryAsUsed(Cache &aEntry)
+{
+    for (int i = 0; i < kCacheEntries; i++)
+    {
+        if (mCache[i].mAge < aEntry.mAge)
+        {
+            mCache[i].mAge++;
+        }
+    }
+
+    aEntry.mAge = 0;
+}
+
+void AddressResolver::InvalidateCacheEntry(Cache &aEntry)
+{
+    for (int i = 0; i < kCacheEntries; i++)
+    {
+        if (mCache[i].mAge > aEntry.mAge)
+        {
+            mCache[i].mAge--;
+        }
+    }
+
+    aEntry.mAge = kCacheEntries - 1;
+    aEntry.mState = Cache::kStateInvalid;
+    otLogInfoArp(GetInstance(), "cache entry removed!");
+}
+
+otError AddressResolver::Resolve(const Ip6::Address &aEid, uint16_t &aRloc16)
+{
+    otError error = OT_ERROR_NONE;
     Cache *entry = NULL;
 
     for (int i = 0; i < kCacheEntries; i++)
@@ -116,13 +177,14 @@ ThreadError AddressResolver::Resolve(const Ip6::Address &aEid, uint16_t &aRloc16
                 break;
             }
         }
-        else if (entry == NULL)
-        {
-            entry = &mCache[i];
-        }
     }
 
-    VerifyOrExit(entry != NULL, error = kThreadError_NoBufs);
+    if (entry == NULL)
+    {
+        entry = NewCacheEntry();
+    }
+
+    VerifyOrExit(entry != NULL, error = OT_ERROR_NO_BUFS);
 
     switch (entry->mState)
     {
@@ -134,29 +196,30 @@ ThreadError AddressResolver::Resolve(const Ip6::Address &aEid, uint16_t &aRloc16
         entry->mRetryTimeout = kAddressQueryInitialRetryDelay;
         entry->mState = Cache::kStateQuery;
         SendAddressQuery(aEid);
-        error = kThreadError_AddressQuery;
+        error = OT_ERROR_ADDRESS_QUERY;
         break;
 
     case Cache::kStateQuery:
         if (entry->mTimeout > 0)
         {
-            error = kThreadError_AddressQuery;
+            error = OT_ERROR_ADDRESS_QUERY;
         }
         else if (entry->mTimeout == 0 && entry->mRetryTimeout == 0)
         {
             entry->mTimeout = kAddressQueryTimeout;
             SendAddressQuery(aEid);
-            error = kThreadError_AddressQuery;
+            error = OT_ERROR_ADDRESS_QUERY;
         }
         else
         {
-            error = kThreadError_Drop;
+            error = OT_ERROR_DROP;
         }
 
         break;
 
     case Cache::kStateCached:
         aRloc16 = entry->mRloc16;
+        MarkCacheEntryAsUsed(*entry);
         break;
     }
 
@@ -164,19 +227,20 @@ exit:
     return error;
 }
 
-ThreadError AddressResolver::SendAddressQuery(const Ip6::Address &aEid)
+otError AddressResolver::SendAddressQuery(const Ip6::Address &aEid)
 {
-    ThreadError error;
+    ThreadNetif &netif = GetNetif();
+    otError error;
     Message *message;
     Coap::Header header;
     ThreadTargetTlv targetTlv;
     Ip6::MessageInfo messageInfo;
 
-    header.Init(kCoapTypeNonConfirmable, kCoapRequestPost);
-    header.AppendUriPathOptions(OPENTHREAD_URI_ADDRESS_QUERY);
+    header.Init(OT_COAP_TYPE_NON_CONFIRMABLE, OT_COAP_CODE_POST);
+    header.AppendUriPathOptions(OT_URI_PATH_ADDRESS_QUERY);
     header.SetPayloadMarker();
 
-    VerifyOrExit((message = mCoapClient.NewMessage(header)) != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit((message = netif.GetCoap().NewMessage(header)) != NULL, error = OT_ERROR_NO_BUFS);
 
     targetTlv.Init();
     targetTlv.SetTarget(aEid);
@@ -184,13 +248,13 @@ ThreadError AddressResolver::SendAddressQuery(const Ip6::Address &aEid)
 
     messageInfo.GetPeerAddr().mFields.m16[0] = HostSwap16(0xff03);
     messageInfo.GetPeerAddr().mFields.m16[7] = HostSwap16(0x0002);
-    messageInfo.SetSockAddr(mMle.GetMeshLocal16());
+    messageInfo.SetSockAddr(netif.GetMle().GetMeshLocal16());
     messageInfo.SetPeerPort(kCoapUdpPort);
-    messageInfo.SetInterfaceId(mNetif.GetInterfaceId());
+    messageInfo.SetInterfaceId(netif.GetInterfaceId());
 
-    SuccessOrExit(error = mCoapClient.SendMessage(*message, messageInfo));
+    SuccessOrExit(error = netif.GetCoap().SendMessage(*message, messageInfo));
 
-    otLogInfoArp("Sent address query");
+    otLogInfoArp(GetInstance(), "Sent address query");
 
 exit:
 
@@ -199,7 +263,7 @@ exit:
         mTimer.Start(kStateUpdatePeriod);
     }
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
@@ -207,7 +271,7 @@ exit:
     return error;
 }
 
-void AddressResolver::HandleAddressNotification(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void AddressResolver::HandleAddressNotification(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                                 const otMessageInfo *aMessageInfo)
 {
     static_cast<AddressResolver *>(aContext)->HandleAddressNotification(
@@ -218,32 +282,34 @@ void AddressResolver::HandleAddressNotification(void *aContext, otCoapHeader *aH
 void AddressResolver::HandleAddressNotification(Coap::Header &aHeader, Message &aMessage,
                                                 const Ip6::MessageInfo &aMessageInfo)
 {
+    ThreadNetif &netif = GetNetif();
     ThreadTargetTlv targetTlv;
     ThreadMeshLocalEidTlv mlIidTlv;
     ThreadRloc16Tlv rloc16Tlv;
     ThreadLastTransactionTimeTlv lastTransactionTimeTlv;
     uint32_t lastTransactionTime;
 
-    VerifyOrExit(aHeader.GetType() == kCoapTypeConfirmable &&
-                 aHeader.GetCode() == kCoapRequestPost, ;);
+    VerifyOrExit(aHeader.GetType() == OT_COAP_TYPE_CONFIRMABLE &&
+                 aHeader.GetCode() == OT_COAP_CODE_POST);
 
-    otLogInfoArp("Received address notification from %04x", HostSwap16(aMessageInfo.GetPeerAddr().mFields.m16[7]));
+    otLogInfoArp(GetInstance(), "Received address notification from %04x",
+                 HostSwap16(aMessageInfo.GetPeerAddr().mFields.m16[7]));
 
     SuccessOrExit(ThreadTlv::GetTlv(aMessage, ThreadTlv::kTarget, sizeof(targetTlv), targetTlv));
-    VerifyOrExit(targetTlv.IsValid(), ;);
+    VerifyOrExit(targetTlv.IsValid());
 
     SuccessOrExit(ThreadTlv::GetTlv(aMessage, ThreadTlv::kMeshLocalEid, sizeof(mlIidTlv), mlIidTlv));
-    VerifyOrExit(mlIidTlv.IsValid(), ;);
+    VerifyOrExit(mlIidTlv.IsValid());
 
     SuccessOrExit(ThreadTlv::GetTlv(aMessage, ThreadTlv::kRloc16, sizeof(rloc16Tlv), rloc16Tlv));
-    VerifyOrExit(rloc16Tlv.IsValid(), ;);
+    VerifyOrExit(rloc16Tlv.IsValid());
 
     lastTransactionTime = 0;
 
     if (ThreadTlv::GetTlv(aMessage, ThreadTlv::kLastTransactionTime, sizeof(lastTransactionTimeTlv),
-                          lastTransactionTimeTlv) == kThreadError_None)
+                          lastTransactionTimeTlv) == OT_ERROR_NONE)
     {
-        VerifyOrExit(lastTransactionTimeTlv.IsValid(), ;);
+        VerifyOrExit(lastTransactionTimeTlv.IsValid());
         lastTransactionTime = lastTransactionTimeTlv.GetTime();
     }
 
@@ -281,8 +347,14 @@ void AddressResolver::HandleAddressNotification(Coap::Header &aHeader, Message &
             mCache[i].mTimeout = 0;
             mCache[i].mFailures = 0;
             mCache[i].mState = Cache::kStateCached;
-            SendAddressNotificationResponse(aHeader, aMessageInfo);
-            mMeshForwarder.HandleResolved(*targetTlv.GetTarget(), kThreadError_None);
+            MarkCacheEntryAsUsed(mCache[i]);
+
+            if (netif.GetCoap().SendEmptyAck(aHeader, aMessageInfo) == OT_ERROR_NONE)
+            {
+                otLogInfoArp(GetInstance(), "Sent address notification acknowledgment");
+            }
+
+            netif.GetMeshForwarder().HandleResolved(*targetTlv.GetTarget(), OT_ERROR_NONE);
             break;
         }
     }
@@ -291,46 +363,21 @@ exit:
     return;
 }
 
-void AddressResolver::SendAddressNotificationResponse(const Coap::Header &aRequestHeader,
-                                                      const Ip6::MessageInfo &aRequestInfo)
+otError AddressResolver::SendAddressError(const ThreadTargetTlv &aTarget, const ThreadMeshLocalEidTlv &aEid,
+                                          const Ip6::Address *aDestination)
 {
-    ThreadError error;
-    Message *message;
-    Coap::Header responseHeader;
-    Ip6::MessageInfo responseInfo(aRequestInfo);
-
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
-    responseHeader.SetDefaultResponseHeader(aRequestHeader);
-
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
-
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, responseInfo));
-
-    otLogInfoArp("Sent address notification acknowledgment");
-
-exit:
-
-    if (error != kThreadError_None && message != NULL)
-    {
-        message->Free();
-    }
-}
-
-ThreadError AddressResolver::SendAddressError(const ThreadTargetTlv &aTarget, const ThreadMeshLocalEidTlv &aEid,
-                                              const Ip6::Address *aDestination)
-{
-    ThreadError error;
+    ThreadNetif &netif = GetNetif();
+    otError error;
     Message *message;
     Coap::Header header;
     Ip6::MessageInfo messageInfo;
 
-    header.Init(aDestination == NULL ? kCoapTypeNonConfirmable : kCoapTypeConfirmable,
-                kCoapRequestPost);
-    header.AppendUriPathOptions(OPENTHREAD_URI_ADDRESS_ERROR);
+    header.Init(aDestination == NULL ? OT_COAP_TYPE_NON_CONFIRMABLE : OT_COAP_TYPE_CONFIRMABLE,
+                OT_COAP_CODE_POST);
+    header.AppendUriPathOptions(OT_URI_PATH_ADDRESS_ERROR);
     header.SetPayloadMarker();
 
-    VerifyOrExit((message = mCoapClient.NewMessage(header)) != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit((message = netif.GetCoap().NewMessage(header)) != NULL, error = OT_ERROR_NO_BUFS);
 
     SuccessOrExit(error = message->Append(&aTarget, sizeof(aTarget)));
     SuccessOrExit(error = message->Append(&aEid, sizeof(aEid)));
@@ -345,17 +392,17 @@ ThreadError AddressResolver::SendAddressError(const ThreadTargetTlv &aTarget, co
         memcpy(&messageInfo.GetPeerAddr(), aDestination, sizeof(messageInfo.GetPeerAddr()));
     }
 
-    messageInfo.SetSockAddr(mMle.GetMeshLocal16());
+    messageInfo.SetSockAddr(netif.GetMle().GetMeshLocal16());
     messageInfo.SetPeerPort(kCoapUdpPort);
-    messageInfo.SetInterfaceId(mNetif.GetInterfaceId());
+    messageInfo.SetInterfaceId(netif.GetInterfaceId());
 
-    SuccessOrExit(error = mCoapClient.SendMessage(*message, messageInfo));
+    SuccessOrExit(error = netif.GetCoap().SendMessage(*message, messageInfo));
 
-    otLogInfoArp("Sent address error");
+    otLogInfoArp(GetInstance(), "Sent address error");
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
@@ -363,33 +410,7 @@ exit:
     return error;
 }
 
-void AddressResolver::SendAddressErrorResponse(const Coap::Header &aRequestHeader,
-                                               const Ip6::MessageInfo &aRequestInfo)
-{
-    ThreadError error;
-    Message *message;
-    Coap::Header responseHeader;
-    Ip6::MessageInfo responseInfo(aRequestInfo);
-
-    VerifyOrExit((message = mCoapServer.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
-
-    responseHeader.SetDefaultResponseHeader(aRequestHeader);
-
-    SuccessOrExit(error = message->Append(responseHeader.GetBytes(), responseHeader.GetLength()));
-
-    SuccessOrExit(error = mCoapServer.SendMessage(*message, responseInfo));
-
-    otLogInfoArp("Sent address error notification acknowledgment");
-
-exit:
-
-    if (error != kThreadError_None && message != NULL)
-    {
-        message->Free();
-    }
-}
-
-void AddressResolver::HandleAddressError(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void AddressResolver::HandleAddressError(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                          const otMessageInfo *aMessageInfo)
 {
     static_cast<AddressResolver *>(aContext)->HandleAddressError(
@@ -400,7 +421,8 @@ void AddressResolver::HandleAddressError(void *aContext, otCoapHeader *aHeader, 
 void AddressResolver::HandleAddressError(Coap::Header &aHeader, Message &aMessage,
                                          const Ip6::MessageInfo &aMessageInfo)
 {
-    ThreadError error = kThreadError_None;
+    ThreadNetif &netif = GetNetif();
+    otError error = OT_ERROR_NONE;
     ThreadTargetTlv targetTlv;
     ThreadMeshLocalEidTlv mlIidTlv;
     Child *children;
@@ -408,56 +430,59 @@ void AddressResolver::HandleAddressError(Coap::Header &aHeader, Message &aMessag
     Mac::ExtAddress macAddr;
     Ip6::Address destination;
 
-    VerifyOrExit(aHeader.GetType() == kCoapTypeConfirmable &&
-                 aHeader.GetCode() == kCoapRequestPost, error = kThreadError_Drop);
+    VerifyOrExit(aHeader.GetType() == OT_COAP_TYPE_CONFIRMABLE &&
+                 aHeader.GetCode() == OT_COAP_CODE_POST, error = OT_ERROR_DROP);
 
-    otLogInfoArp("Received address error notification");
+    otLogInfoArp(GetInstance(), "Received address error notification");
 
-    if (!aMessageInfo.GetSockAddr().IsMulticast())
+    if (aHeader.IsConfirmable() && !aMessageInfo.GetSockAddr().IsMulticast())
     {
-        SendAddressErrorResponse(aHeader, aMessageInfo);
+        if (netif.GetCoap().SendEmptyAck(aHeader, aMessageInfo) == OT_ERROR_NONE)
+        {
+            otLogInfoArp(GetInstance(), "Sent address error notification acknowledgment");
+        }
     }
 
     SuccessOrExit(error = ThreadTlv::GetTlv(aMessage, ThreadTlv::kTarget, sizeof(targetTlv), targetTlv));
-    VerifyOrExit(targetTlv.IsValid(), error = kThreadError_Parse);
+    VerifyOrExit(targetTlv.IsValid(), error = OT_ERROR_PARSE);
 
     SuccessOrExit(error = ThreadTlv::GetTlv(aMessage, ThreadTlv::kMeshLocalEid, sizeof(mlIidTlv), mlIidTlv));
-    VerifyOrExit(mlIidTlv.IsValid(), error = kThreadError_Parse);
+    VerifyOrExit(mlIidTlv.IsValid(), error = OT_ERROR_PARSE);
 
-    for (const Ip6::NetifUnicastAddress *address = mNetif.GetUnicastAddresses(); address; address = address->GetNext())
+    for (const Ip6::NetifUnicastAddress *address = netif.GetUnicastAddresses(); address; address = address->GetNext())
     {
         if (memcmp(&address->mAddress, targetTlv.GetTarget(), sizeof(address->mAddress)) == 0 &&
-            memcmp(mMle.GetMeshLocal64().GetIid(), mlIidTlv.GetIid(), 8))
+            memcmp(netif.GetMle().GetMeshLocal64().GetIid(), mlIidTlv.GetIid(), 8))
         {
             // Target EID matches address and Mesh Local EID differs
-            mNetif.RemoveUnicastAddress(*address);
+            netif.RemoveUnicastAddress(*address);
             ExitNow();
         }
     }
 
-    children = mMle.GetChildren(&numChildren);
+    children = netif.GetMle().GetChildren(&numChildren);
 
     memcpy(&macAddr, mlIidTlv.GetIid(), sizeof(macAddr));
     macAddr.m8[0] ^= 0x2;
 
     for (int i = 0; i < numChildren; i++)
     {
-        if (children[i].mState != Neighbor::kStateValid || (children[i].mMode & Mle::ModeTlv::kModeFFD) != 0)
+        if (children[i].GetState() != Neighbor::kStateValid || children[i].IsFullThreadDevice())
         {
             continue;
         }
 
-        for (int j = 0; j < Child::kMaxIp6AddressPerChild; j++)
+        for (uint8_t j = 0; j < Child::kMaxIp6AddressPerChild; j++)
         {
-            if (memcmp(&children[i].mIp6Address[j], targetTlv.GetTarget(), sizeof(children[i].mIp6Address[j])) == 0 &&
-                memcmp(&children[i].mMacAddr, &macAddr, sizeof(children[i].mMacAddr)))
+            if (children[i].GetIp6Address(j) == *targetTlv.GetTarget() &&
+                memcmp(&children[i].GetExtAddress(), &macAddr, sizeof(macAddr)))
             {
                 // Target EID matches child address and Mesh Local EID differs on child
-                memset(&children[i].mIp6Address[j], 0, sizeof(children[i].mIp6Address[j]));
+                memset(&children[i].GetIp6Address(j), 0, sizeof(children[i].GetIp6Address(j)));
 
                 memset(&destination, 0, sizeof(destination));
                 destination.mFields.m16[0] = HostSwap16(0xfe80);
-                destination.SetIid(children[i].mMacAddr);
+                destination.SetIid(children[i].GetExtAddress());
 
                 SendAddressError(targetTlv, mlIidTlv, &destination);
                 ExitNow();
@@ -466,10 +491,17 @@ void AddressResolver::HandleAddressError(Coap::Header &aHeader, Message &aMessag
     }
 
 exit:
-    {}
+
+    if (error != OT_ERROR_NONE)
+    {
+        otLogWarnArp(GetInstance(), "Error while processing address error notification: %s",
+                     otThreadErrorToString(error));
+    }
+
+    return;
 }
 
-void AddressResolver::HandleAddressQuery(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+void AddressResolver::HandleAddressQuery(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                          const otMessageInfo *aMessageInfo)
 {
     static_cast<AddressResolver *>(aContext)->HandleAddressQuery(
@@ -480,60 +512,59 @@ void AddressResolver::HandleAddressQuery(void *aContext, otCoapHeader *aHeader, 
 void AddressResolver::HandleAddressQuery(Coap::Header &aHeader, Message &aMessage,
                                          const Ip6::MessageInfo &aMessageInfo)
 {
+    ThreadNetif &netif = GetNetif();
     ThreadTargetTlv targetTlv;
     ThreadMeshLocalEidTlv mlIidTlv;
     ThreadLastTransactionTimeTlv lastTransactionTimeTlv;
     Child *children;
     uint8_t numChildren;
 
-    VerifyOrExit(aHeader.GetType() == kCoapTypeNonConfirmable &&
-                 aHeader.GetCode() == kCoapRequestPost, ;);
+    VerifyOrExit(aHeader.GetType() == OT_COAP_TYPE_NON_CONFIRMABLE &&
+                 aHeader.GetCode() == OT_COAP_CODE_POST);
 
-    otLogInfoArp("Received address query from %04x", HostSwap16(aMessageInfo.GetPeerAddr().mFields.m16[7]));
+    otLogInfoArp(GetInstance(), "Received address query from %04x", HostSwap16(aMessageInfo.GetPeerAddr().mFields.m16[7]));
 
     SuccessOrExit(ThreadTlv::GetTlv(aMessage, ThreadTlv::kTarget, sizeof(targetTlv), targetTlv));
-    VerifyOrExit(targetTlv.IsValid(), ;);
+    VerifyOrExit(targetTlv.IsValid());
 
     mlIidTlv.Init();
 
     lastTransactionTimeTlv.Init();
 
-    if (mNetif.IsUnicastAddress(*targetTlv.GetTarget()))
+    if (netif.IsUnicastAddress(*targetTlv.GetTarget()))
     {
-        mlIidTlv.SetIid(mMle.GetMeshLocal64().GetIid());
+        mlIidTlv.SetIid(netif.GetMle().GetMeshLocal64().GetIid());
         SendAddressQueryResponse(targetTlv, mlIidTlv, NULL, aMessageInfo.GetPeerAddr());
         ExitNow();
     }
 
-    children = mMle.GetChildren(&numChildren);
+    children = netif.GetMle().GetChildren(&numChildren);
 
     for (int i = 0; i < numChildren; i++)
     {
-        if (children[i].mState != Neighbor::kStateValid ||
-            (children[i].mMode & Mle::ModeTlv::kModeFFD) != 0 ||
-            children[i].mLinkFailures >= Mle::kFailedChildTransmissions)
+        if (children[i].GetState() != Neighbor::kStateValid ||
+            children[i].IsFullThreadDevice() ||
+            children[i].GetLinkFailures() >= Mle::kFailedChildTransmissions)
         {
             continue;
         }
 
-        for (int j = 0; j < Child::kMaxIp6AddressPerChild; j++)
+        for (uint8_t j = 0; j < Child::kMaxIp6AddressPerChild; j++)
         {
-            if (memcmp(&children[i].mIp6Address[j], targetTlv.GetTarget(), sizeof(children[i].mIp6Address[j])))
+            if (children[i].GetIp6Address(j) != *targetTlv.GetTarget())
             {
                 continue;
             }
 
-            children[i].mMacAddr.m8[0] ^= 0x2;
-            mlIidTlv.SetIid(children[i].mMacAddr.m8);
-            children[i].mMacAddr.m8[0] ^= 0x2;
-            lastTransactionTimeTlv.SetTime(Timer::GetNow() - children[i].mLastHeard);
+            mlIidTlv.SetIid(children[i].GetExtAddress());
+            lastTransactionTimeTlv.SetTime(TimerMilli::GetNow() - children[i].GetLastHeard());
             SendAddressQueryResponse(targetTlv, mlIidTlv, &lastTransactionTimeTlv, aMessageInfo.GetPeerAddr());
             ExitNow();
         }
     }
 
 exit:
-    {}
+    return;
 }
 
 void AddressResolver::SendAddressQueryResponse(const ThreadTargetTlv &aTargetTlv,
@@ -541,23 +572,24 @@ void AddressResolver::SendAddressQueryResponse(const ThreadTargetTlv &aTargetTlv
                                                const ThreadLastTransactionTimeTlv *aLastTransactionTimeTlv,
                                                const Ip6::Address &aDestination)
 {
-    ThreadError error;
+    ThreadNetif &netif = GetNetif();
+    otError error;
     Message *message;
     Coap::Header header;
     ThreadRloc16Tlv rloc16Tlv;
     Ip6::MessageInfo messageInfo;
 
-    header.Init(kCoapTypeConfirmable, kCoapRequestPost);
-    header.AppendUriPathOptions(OPENTHREAD_URI_ADDRESS_NOTIFY);
+    header.Init(OT_COAP_TYPE_CONFIRMABLE, OT_COAP_CODE_POST);
+    header.AppendUriPathOptions(OT_URI_PATH_ADDRESS_NOTIFY);
     header.SetPayloadMarker();
 
-    VerifyOrExit((message = mCoapClient.NewMessage(header)) != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit((message = netif.GetCoap().NewMessage(header)) != NULL, error = OT_ERROR_NO_BUFS);
 
     SuccessOrExit(error = message->Append(&aTargetTlv, sizeof(aTargetTlv)));
     SuccessOrExit(error = message->Append(&aMlIidTlv, sizeof(aMlIidTlv)));
 
     rloc16Tlv.Init();
-    rloc16Tlv.SetRloc16(mMle.GetRloc16());
+    rloc16Tlv.SetRloc16(netif.GetMle().GetRloc16());
     SuccessOrExit(error = message->Append(&rloc16Tlv, sizeof(rloc16Tlv)));
 
     if (aLastTransactionTimeTlv != NULL)
@@ -566,24 +598,24 @@ void AddressResolver::SendAddressQueryResponse(const ThreadTargetTlv &aTargetTlv
     }
 
     messageInfo.SetPeerAddr(aDestination);
-    messageInfo.SetSockAddr(mMle.GetMeshLocal16());
+    messageInfo.SetSockAddr(netif.GetMle().GetMeshLocal16());
     messageInfo.SetPeerPort(kCoapUdpPort);
 
-    SuccessOrExit(error = mCoapClient.SendMessage(*message, messageInfo));
+    SuccessOrExit(error = netif.GetCoap().SendMessage(*message, messageInfo));
 
-    otLogInfoArp("Sent address notification");
+    otLogInfoArp(GetInstance(), "Sent address notification");
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
         message->Free();
     }
 }
 
-void AddressResolver::HandleTimer(void *aContext)
+void AddressResolver::HandleTimer(Timer &aTimer)
 {
-    static_cast<AddressResolver *>(aContext)->HandleTimer();
+    GetOwner(aTimer).HandleTimer();
 }
 
 void AddressResolver::HandleTimer()
@@ -617,7 +649,7 @@ void AddressResolver::HandleTimer()
                     mCache[i].mRetryTimeout = kAddressQueryMaxRetryDelay;
                 }
 
-                mMeshForwarder.HandleResolved(mCache[i].mTarget, kThreadError_Drop);
+                GetNetif().GetMeshForwarder().HandleResolved(mCache[i].mTarget, OT_ERROR_DROP);
             }
         }
         else if (mCache[i].mRetryTimeout > 0)
@@ -632,35 +664,50 @@ void AddressResolver::HandleTimer()
     }
 }
 
-void AddressResolver::HandleDstUnreach(void *aContext, Message &aMessage, const Ip6::MessageInfo &aMessageInfo,
-                                       const Ip6::IcmpHeader &aIcmpHeader)
+void AddressResolver::HandleIcmpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo,
+                                        const otIcmp6Header *aIcmpHeader)
 {
-    static_cast<AddressResolver *>(aContext)->HandleDstUnreach(aMessage, aMessageInfo, aIcmpHeader);
+    static_cast<AddressResolver *>(aContext)->HandleIcmpReceive(*static_cast<Message *>(aMessage),
+                                                                *static_cast<const Ip6::MessageInfo *>(aMessageInfo),
+                                                                *static_cast<const Ip6::IcmpHeader *>(aIcmpHeader));
 
-    (void)aMessageInfo;
+    OT_UNUSED_VARIABLE(aMessageInfo);
 }
 
-void AddressResolver::HandleDstUnreach(Message &aMessage, const Ip6::MessageInfo &aMessageInfo,
-                                       const Ip6::IcmpHeader &aIcmpHeader)
+void AddressResolver::HandleIcmpReceive(Message &aMessage, const Ip6::MessageInfo &aMessageInfo,
+                                        const Ip6::IcmpHeader &aIcmpHeader)
 {
     Ip6::Header ip6Header;
 
-    VerifyOrExit(aIcmpHeader.GetCode() == Ip6::IcmpHeader::kCodeDstUnreachNoRoute, ;);
-    VerifyOrExit(aMessage.Read(aMessage.GetOffset(), sizeof(ip6Header), &ip6Header) == sizeof(ip6Header), ;);
+    VerifyOrExit(aIcmpHeader.GetType() == Ip6::IcmpHeader::kTypeDstUnreach);
+    VerifyOrExit(aIcmpHeader.GetCode() == Ip6::IcmpHeader::kCodeDstUnreachNoRoute);
+    VerifyOrExit(aMessage.Read(aMessage.GetOffset(), sizeof(ip6Header), &ip6Header) == sizeof(ip6Header));
 
     for (int i = 0; i < kCacheEntries; i++)
     {
         if (mCache[i].mState != Cache::kStateInvalid &&
             memcmp(&mCache[i].mTarget, &ip6Header.GetDestination(), sizeof(mCache[i].mTarget)) == 0)
         {
-            mCache[i].mState = Cache::kStateInvalid;
-            otLogInfoArp("cache entry removed!");
+            InvalidateCacheEntry(mCache[i]);
             break;
         }
     }
 
 exit:
-    (void)aMessageInfo;
+    OT_UNUSED_VARIABLE(aMessageInfo);
 }
 
-}  // namespace Thread
+AddressResolver &AddressResolver::GetOwner(const Context &aContext)
+{
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    AddressResolver &resolver = *static_cast<AddressResolver *>(aContext.GetContext());
+#else
+    AddressResolver &resolver = otGetThreadNetif().GetAddressResolver();
+    OT_UNUSED_VARIABLE(aContext);
+#endif
+    return resolver;
+}
+
+}  // namespace ot
+
+#endif // OPENTHREAD_FTD

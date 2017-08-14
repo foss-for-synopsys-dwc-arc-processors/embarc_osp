@@ -34,17 +34,18 @@
 #ifndef THREAD_TLVS_HPP_
 #define THREAD_TLVS_HPP_
 
-#include <openthread-types.h>
-#include <common/encoding.hpp>
-#include <common/message.hpp>
-#include <common/tlvs.hpp>
-#include <net/ip6_address.hpp>
-#include <thread/mle.hpp>
+#include <openthread/types.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
-using Thread::Encoding::BigEndian::HostSwap32;
+#include "common/encoding.hpp"
+#include "common/message.hpp"
+#include "common/tlvs.hpp"
+#include "net/ip6_address.hpp"
+#include "thread/mle.hpp"
 
-namespace Thread {
+using ot::Encoding::BigEndian::HostSwap16;
+using ot::Encoding::BigEndian::HostSwap32;
+
+namespace ot {
 
 enum
 {
@@ -56,7 +57,7 @@ enum
  *
  */
 OT_TOOL_PACKED_BEGIN
-class ThreadTlv : public Thread::Tlv
+class ThreadTlv : public ot::Tlv
 {
 public:
     /**
@@ -83,7 +84,7 @@ public:
      * @returns The Type value.
      *
      */
-    Type GetType(void) const { return static_cast<Type>(Thread::Tlv::GetType()); }
+    Type GetType(void) const { return static_cast<Type>(ot::Tlv::GetType()); }
 
     /**
      * This method sets the Type value.
@@ -91,7 +92,7 @@ public:
      * @param[in]  aType  The Type value.
      *
      */
-    void SetType(Type aType) { Thread::Tlv::SetType(static_cast<uint8_t>(aType)); }
+    void SetType(Type aType) { ot::Tlv::SetType(static_cast<uint8_t>(aType)); }
 
     /**
      * This static method reads the requested TLV out of @p aMessage.
@@ -101,12 +102,12 @@ public:
      * @param[in]   aMaxLength  Maximum number of bytes to read.
      * @param[out]  aTlv        A reference to the TLV that will be copied to.
      *
-     * @retval kThreadError_None      Successfully copied the TLV.
-     * @retval kThreadError_NotFound  Could not find the TLV with Type @p aType.
+     * @retval OT_ERROR_NONE       Successfully copied the TLV.
+     * @retval OT_ERROR_NOT_FOUND  Could not find the TLV with Type @p aType.
      *
      */
-    static ThreadError GetTlv(const Message &aMessage, Type aType, uint16_t aMaxLength, Tlv &aTlv) {
-        return Thread::Tlv::Get(aMessage, static_cast<uint8_t>(aType), aMaxLength, aTlv);
+    static otError GetTlv(const Message &aMessage, Type aType, uint16_t aMaxLength, Tlv &aTlv) {
+        return ot::Tlv::Get(aMessage, static_cast<uint8_t>(aType), aMaxLength, aTlv);
     }
 
 } OT_TOOL_PACKED_END;
@@ -273,10 +274,21 @@ public:
     /**
      * This method sets the ML-EID IID.
      *
-     * @param[in]  aIid  A pointer to the ML-EID IID..
+     * @param[in]  aIid  A pointer to the ML-EID IID.
      *
      */
     void SetIid(const uint8_t *aIid) { memcpy(mIid, aIid, sizeof(mIid)); }
+
+    /**
+     * This method sets the ML-EID IID.
+     *
+     * @param[in]  aExtAddress  A reference to the MAC Extended Address.
+     *
+     */
+    void SetIid(const Mac::ExtAddress &aExtAddress) {
+        memcpy(mIid, aExtAddress.m8, sizeof(mIid));
+        mIid[0] ^= 0x2;
+    }
 
 private:
     uint8_t mIid[8];
@@ -491,6 +503,6 @@ private:
     uint8_t mTlvs[kMaxSize];
 } OT_TOOL_PACKED_END;
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // THREAD_TLVS_HPP_

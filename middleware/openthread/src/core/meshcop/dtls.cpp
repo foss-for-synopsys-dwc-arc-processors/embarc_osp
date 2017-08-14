@@ -32,35 +32,43 @@
  */
 
 #define WPP_NAME "dtls.tmh"
+#include <openthread/config.h>
 
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <common/encoding.hpp>
-#include <common/logging.hpp>
-#include <common/timer.hpp>
-#include <crypto/sha256.hpp>
-#include <meshcop/dtls.hpp>
-#include <thread/thread_netif.hpp>
+#include "dtls.hpp"
 
 #include <mbedtls/debug.h>
+#include <openthread/platform/radio.h>
 
-namespace Thread {
+#include "openthread-instance.h"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/encoding.hpp"
+#include "common/logging.hpp"
+#include "common/timer.hpp"
+#include "crypto/sha256.hpp"
+#include "thread/thread_netif.hpp"
+
+#if OPENTHREAD_ENABLE_DTLS
+
+namespace ot {
 namespace MeshCoP {
 
 Dtls::Dtls(ThreadNetif &aNetif):
+    ThreadNetifLocator(aNetif),
     mPskLength(0),
     mStarted(false),
-    mTimer(aNetif.GetIp6().mTimerScheduler, &Dtls::HandleTimer, this),
+    mTimer(aNetif.GetInstance(), &Dtls::HandleTimer, this),
     mTimerIntermediate(0),
     mTimerSet(false),
     mReceiveMessage(NULL),
     mReceiveOffset(0),
     mReceiveLength(0),
+    mConnectedHandler(NULL),
     mReceiveHandler(NULL),
     mSendHandler(NULL),
     mContext(NULL),
     mClient(false),
-    mNetif(aNetif)
+    mMessageSubType(0)
 {
     memset(mPsk, 0, sizeof(mPsk));
     memset(&mEntropy, 0, sizeof(mEntropy));
@@ -71,31 +79,35 @@ Dtls::Dtls(ThreadNetif &aNetif):
     mProvisioningUrl.Init();
 }
 
-ThreadError Dtls::Start(bool aClient, ReceiveHandler aReceiveHandler, SendHandler aSendHandler, void *aContext)
+otError Dtls::Start(bool aClient, ConnectedHandler aConnectedHandler, ReceiveHandler aReceiveHandler,
+                    SendHandler aSendHandler, void *aContext)
 {
     static const int ciphersuites[2] = {0xC0FF, 0}; // EC-JPAKE cipher suite
+    otExtAddress eui64;
     int rval;
 
+    mConnectedHandler = aConnectedHandler;
     mReceiveHandler = aReceiveHandler;
     mSendHandler = aSendHandler;
     mContext = aContext;
     mClient = aClient;
     mReceiveMessage = NULL;
+    mMessageSubType = 0;
 
     mbedtls_ssl_init(&mSsl);
     mbedtls_ssl_config_init(&mConf);
     mbedtls_ctr_drbg_init(&mCtrDrbg);
     mbedtls_entropy_init(&mEntropy);
 
-    mbedtls_debug_set_threshold(4);
-
-    // XXX: should set personalization data to hardware address
-    rval = mbedtls_ctr_drbg_seed(&mCtrDrbg, mbedtls_entropy_func, &mEntropy, NULL, 0);
-    VerifyOrExit(rval == 0, ;);
+    // mbedTLS's debug level is almost the same as OpenThread's
+    mbedtls_debug_set_threshold(OPENTHREAD_CONFIG_LOG_LEVEL);
+    otPlatRadioGetIeeeEui64(&GetInstance(), eui64.m8);
+    rval = mbedtls_ctr_drbg_seed(&mCtrDrbg, mbedtls_entropy_func, &mEntropy, eui64.m8, sizeof(eui64));
+    VerifyOrExit(rval == 0);
 
     rval = mbedtls_ssl_config_defaults(&mConf, mClient ? MBEDTLS_SSL_IS_CLIENT : MBEDTLS_SSL_IS_SERVER,
                                        MBEDTLS_SSL_TRANSPORT_DATAGRAM, MBEDTLS_SSL_PRESET_DEFAULT);
-    VerifyOrExit(rval == 0, ;);
+    VerifyOrExit(rval == 0);
 
     mbedtls_ssl_conf_rng(&mConf, mbedtls_ctr_drbg_random, &mCtrDrbg);
     mbedtls_ssl_conf_min_version(&mConf, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_3);
@@ -103,54 +115,61 @@ ThreadError Dtls::Start(bool aClient, ReceiveHandler aReceiveHandler, SendHandle
     mbedtls_ssl_conf_ciphersuites(&mConf, ciphersuites);
     mbedtls_ssl_conf_export_keys_cb(&mConf, HandleMbedtlsExportKeys, this);
     mbedtls_ssl_conf_handshake_timeout(&mConf, 8000, 60000);
-    mbedtls_ssl_conf_dbg(&mConf, HandleMbedtlsDebug, NULL);
+    mbedtls_ssl_conf_dbg(&mConf, HandleMbedtlsDebug, this);
 
     if (!mClient)
     {
         mbedtls_ssl_cookie_init(&mCookieCtx);
 
         rval = mbedtls_ssl_cookie_setup(&mCookieCtx, mbedtls_ctr_drbg_random, &mCtrDrbg);
-        VerifyOrExit(rval == 0, ;);
+        VerifyOrExit(rval == 0);
 
         mbedtls_ssl_conf_dtls_cookies(&mConf, mbedtls_ssl_cookie_write, mbedtls_ssl_cookie_check, &mCookieCtx);
     }
 
     rval = mbedtls_ssl_setup(&mSsl, &mConf);
-    VerifyOrExit(rval == 0, ;);
+    VerifyOrExit(rval == 0);
 
     mbedtls_ssl_set_bio(&mSsl, this, &Dtls::HandleMbedtlsTransmit, HandleMbedtlsReceive, NULL);
     mbedtls_ssl_set_timer_cb(&mSsl, this, &Dtls::HandleMbedtlsSetTimer, HandleMbedtlsGetTimer);
 
     rval = mbedtls_ssl_set_hs_ecjpake_password(&mSsl, mPsk, mPskLength);
-    VerifyOrExit(rval == 0, ;);
+    VerifyOrExit(rval == 0);
 
     mStarted = true;
     Process();
 
-    otLogInfoMeshCoP("DTLS started");
+    otLogInfoMeshCoP(GetInstance(), "DTLS started");
 
 exit:
     return MapError(rval);
 }
 
-ThreadError Dtls::Stop(void)
+otError Dtls::Stop(void)
 {
     mbedtls_ssl_close_notify(&mSsl);
     Close();
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
 void Dtls::Close(void)
 {
-    if (mStarted)
+    VerifyOrExit(mStarted);
+
+    mStarted = false;
+    mbedtls_ssl_free(&mSsl);
+    mbedtls_ssl_config_free(&mConf);
+    mbedtls_ctr_drbg_free(&mCtrDrbg);
+    mbedtls_entropy_free(&mEntropy);
+    mbedtls_ssl_cookie_free(&mCookieCtx);
+
+    if (mConnectedHandler != NULL)
     {
-        mStarted = false;
-        mbedtls_ssl_free(&mSsl);
-        mbedtls_ssl_config_free(&mConf);
-        mbedtls_ctr_drbg_free(&mCtrDrbg);
-        mbedtls_entropy_free(&mEntropy);
-        mbedtls_ssl_cookie_free(&mCookieCtx);
+        mConnectedHandler(mContext, false);
     }
+
+exit:
+    return;
 }
 
 bool Dtls::IsStarted(void)
@@ -158,11 +177,11 @@ bool Dtls::IsStarted(void)
     return mStarted;
 }
 
-ThreadError Dtls::SetPsk(const uint8_t *aPsk, uint8_t aPskLength)
+otError Dtls::SetPsk(const uint8_t *aPsk, uint8_t aPskLength)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
-    VerifyOrExit(aPskLength <= sizeof(mPsk), error = kThreadError_InvalidArgs);
+    VerifyOrExit(aPskLength <= sizeof(mPsk), error = OT_ERROR_INVALID_ARGS);
 
     memcpy(mPsk, aPsk, aPskLength);
     mPskLength = aPskLength;
@@ -171,7 +190,7 @@ exit:
     return error;
 }
 
-ThreadError Dtls::SetClientId(const uint8_t *aClientId, uint8_t aLength)
+otError Dtls::SetClientId(const uint8_t *aClientId, uint8_t aLength)
 {
     int rval = mbedtls_ssl_set_client_transport_id(&mSsl, aClientId, aLength);
     return MapError(rval);
@@ -182,13 +201,15 @@ bool Dtls::IsConnected(void)
     return mSsl.state == MBEDTLS_SSL_HANDSHAKE_OVER;
 }
 
-ThreadError Dtls::Send(Message &aMessage, uint16_t aLength)
+otError Dtls::Send(Message &aMessage, uint16_t aLength)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     uint8_t buffer[kApplicationDataMaxLength];
 
-    VerifyOrExit(aLength <= kApplicationDataMaxLength, error = kThreadError_NoBufs);
+    VerifyOrExit(aLength <= kApplicationDataMaxLength, error = OT_ERROR_NO_BUFS);
 
+    // Store message specific sub type.
+    mMessageSubType = aMessage.GetSubType();
     aMessage.Read(0, aLength, buffer);
 
     SuccessOrExit(error = MapError(mbedtls_ssl_write(&mSsl, buffer, aLength)));
@@ -199,7 +220,7 @@ exit:
     return error;
 }
 
-ThreadError Dtls::Receive(Message &aMessage, uint16_t aOffset, uint16_t aLength)
+otError Dtls::Receive(Message &aMessage, uint16_t aOffset, uint16_t aLength)
 {
     mReceiveMessage = &aMessage;
     mReceiveOffset = aOffset;
@@ -207,7 +228,7 @@ ThreadError Dtls::Receive(Message &aMessage, uint16_t aOffset, uint16_t aLength)
 
     Process();
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
 int Dtls::HandleMbedtlsTransmit(void *aContext, const unsigned char *aBuf, size_t aLength)
@@ -217,20 +238,23 @@ int Dtls::HandleMbedtlsTransmit(void *aContext, const unsigned char *aBuf, size_
 
 int Dtls::HandleMbedtlsTransmit(const unsigned char *aBuf, size_t aLength)
 {
-    ThreadError error;
+    otError error;
     int rval = 0;
 
-    otLogInfoMeshCoP("Dtls::HandleMbedtlsTransmit");
+    otLogInfoMeshCoP(GetInstance(), "Dtls::HandleMbedtlsTransmit");
 
-    error = mSendHandler(mContext, aBuf, (uint16_t)aLength);
+    error = mSendHandler(mContext, aBuf, static_cast<uint16_t>(aLength), mMessageSubType);
+
+    // Restore default sub type.
+    mMessageSubType = 0;
 
     switch (error)
     {
-    case kThreadError_None:
+    case OT_ERROR_NONE:
         rval = static_cast<int>(aLength);
         break;
 
-    case kThreadError_NoBufs:
+    case OT_ERROR_NO_BUFS:
         rval = MBEDTLS_ERR_SSL_WANT_WRITE;
         break;
 
@@ -251,7 +275,7 @@ int Dtls::HandleMbedtlsReceive(unsigned char *aBuf, size_t aLength)
 {
     int rval;
 
-    otLogInfoMeshCoP("Dtls::HandleMbedtlsReceive");
+    otLogInfoMeshCoP(GetInstance(), "Dtls::HandleMbedtlsReceive");
 
     VerifyOrExit(mReceiveMessage != NULL && mReceiveLength != 0, rval = MBEDTLS_ERR_SSL_WANT_READ);
 
@@ -277,7 +301,7 @@ int Dtls::HandleMbedtlsGetTimer(void)
 {
     int rval;
 
-    otLogInfoMeshCoP("Dtls::HandleMbedtlsGetTimer");
+    otLogInfoMeshCoP(GetInstance(), "Dtls::HandleMbedtlsGetTimer");
 
     if (!mTimerSet)
     {
@@ -287,7 +311,7 @@ int Dtls::HandleMbedtlsGetTimer(void)
     {
         rval = 2;
     }
-    else if (static_cast<int32_t>(mTimerIntermediate - Timer::GetNow()) <= 0)
+    else if (static_cast<int32_t>(mTimerIntermediate - TimerMilli::GetNow()) <= 0)
     {
         rval = 1;
     }
@@ -306,7 +330,7 @@ void Dtls::HandleMbedtlsSetTimer(void *aContext, uint32_t aIntermediate, uint32_
 
 void Dtls::HandleMbedtlsSetTimer(uint32_t aIntermediate, uint32_t aFinish)
 {
-    otLogInfoMeshCoP("Dtls::SetTimer");
+    otLogInfoMeshCoP(GetInstance(), "Dtls::SetTimer");
 
     if (aFinish == 0)
     {
@@ -317,7 +341,7 @@ void Dtls::HandleMbedtlsSetTimer(uint32_t aIntermediate, uint32_t aFinish)
     {
         mTimerSet = true;
         mTimer.Start(aFinish);
-        mTimerIntermediate = Timer::GetNow() + aIntermediate;
+        mTimerIntermediate = TimerMilli::GetNow() + aIntermediate;
     }
 }
 
@@ -335,20 +359,20 @@ int Dtls::HandleMbedtlsExportKeys(const unsigned char *aMasterSecret, const unsi
     Crypto::Sha256 sha256;
 
     sha256.Start();
-    sha256.Update(aKeyBlock, static_cast<uint16_t>(aMacLength + aKeyLength + aIvLength));
+    sha256.Update(aKeyBlock, 2 * static_cast<uint16_t>(aMacLength + aKeyLength + aIvLength));
     sha256.Finish(kek);
 
-    mNetif.GetKeyManager().SetKek(kek);
+    GetNetif().GetKeyManager().SetKek(kek);
 
-    otLogInfoMeshCoP("Generated KEK");
+    otLogInfoMeshCoP(GetInstance(), "Generated KEK");
 
-    (void)aMasterSecret;
+    OT_UNUSED_VARIABLE(aMasterSecret);
     return 0;
 }
 
-void Dtls::HandleTimer(void *aContext)
+void Dtls::HandleTimer(Timer &aTimer)
 {
-    static_cast<Dtls *>(aContext)->HandleTimer();
+    GetOwner(aTimer).HandleTimer();
 }
 
 void Dtls::HandleTimer(void)
@@ -367,6 +391,11 @@ void Dtls::Process(void)
         if (mSsl.state != MBEDTLS_SSL_HANDSHAKE_OVER)
         {
             rval = mbedtls_ssl_handshake(&mSsl);
+
+            if ((mSsl.state == MBEDTLS_SSL_HANDSHAKE_OVER) && (mConnectedHandler != NULL))
+            {
+                mConnectedHandler(mContext, true);
+            }
         }
         else
         {
@@ -394,6 +423,7 @@ void Dtls::Process(void)
                 break;
 
             case MBEDTLS_ERR_SSL_FATAL_ALERT_MESSAGE:
+                mbedtls_ssl_close_notify(&mSsl);
                 ExitNow(shouldClose = true);
                 break;
 
@@ -432,18 +462,18 @@ exit:
     }
 }
 
-ThreadError Dtls::MapError(int rval)
+otError Dtls::MapError(int rval)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     switch (rval)
     {
     case MBEDTLS_ERR_SSL_BAD_INPUT_DATA:
-        error = kThreadError_InvalidArgs;
+        error = OT_ERROR_INVALID_ARGS;
         break;
 
     case MBEDTLS_ERR_SSL_ALLOC_FAILED:
-        error = kThreadError_NoBufs;
+        error = OT_ERROR_NO_BUFS;
         break;
 
     default:
@@ -454,28 +484,45 @@ ThreadError Dtls::MapError(int rval)
     return error;
 }
 
-void Dtls::HandleMbedtlsDebug(void *, int level, const char *, int , const char *str)
+void Dtls::HandleMbedtlsDebug(void *ctx, int level, const char *, int, const char *str)
 {
+    Dtls *pThis = static_cast<Dtls *>(ctx);
+    OT_UNUSED_VARIABLE(pThis);
+    OT_UNUSED_VARIABLE(str);
+
     switch (level)
     {
     case 1:
-        otLogCritMbedTls("%s", str);
+        otLogCritMbedTls(pThis->GetInstance(), "%s", str);
         break;
 
     case 2:
-        otLogWarnMbedTls("%s", str);
+        otLogWarnMbedTls(pThis->GetInstance(), "%s", str);
         break;
 
     case 3:
-        otLogInfoMbedTls("%s", str);
+        otLogInfoMbedTls(pThis->GetInstance(), "%s", str);
         break;
 
     case 4:
     default:
-        otLogDebgMbedTls("%s", str);
+        otLogDebgMbedTls(pThis->GetInstance(), "%s", str);
         break;
     }
 }
 
+Dtls &Dtls::GetOwner(const Context &aContext)
+{
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    Dtls &dtls = *static_cast<Dtls *>(aContext.GetContext());
+#else
+    Dtls &dtls = otGetThreadNetif().GetDtls();
+    OT_UNUSED_VARIABLE(aContext);
+#endif
+    return dtls;
+}
+
 }  // namespace MeshCoP
-}  // namespace Thread
+}  // namespace ot
+
+#endif // OPENTHREAD_ENABLE_DTLS

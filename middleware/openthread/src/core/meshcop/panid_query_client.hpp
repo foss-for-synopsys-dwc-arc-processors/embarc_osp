@@ -34,15 +34,15 @@
 #ifndef PANID_QUERY_CLIENT_HPP_
 #define PANID_QUERY_CLIENT_HPP_
 
-#include <openthread-core-config.h>
-#include <openthread-types.h>
-#include <commissioning/commissioner.h>
-#include <coap/coap_client.hpp>
-#include <coap/coap_server.hpp>
-#include <net/ip6_address.hpp>
-#include <net/udp6.hpp>
+#include <openthread/commissioner.h>
 
-namespace Thread {
+#include "openthread-core-config.h"
+#include "coap/coap.hpp"
+#include "common/locator.hpp"
+#include "net/ip6_address.hpp"
+#include "net/udp6.hpp"
+
+namespace ot {
 
 class ThreadNetif;
 
@@ -50,7 +50,7 @@ class ThreadNetif;
  * This class implements handling PANID Query Requests.
  *
  */
-class PanIdQueryClient
+class PanIdQueryClient: public ThreadNetifLocator
 {
 public:
     /**
@@ -68,34 +68,28 @@ public:
      * @param[in]  aCallback      A pointer to a function called on receiving an Energy Report message.
      * @param[in]  aContext       A pointer to application-specific context.
      *
-     * @retval kThreadError_None    Successfully enqueued the PAN ID Query message.
-     * @retval kThreadError_NoBufs  Insufficient buffers to generate a PAN ID Query message.
+     * @retval OT_ERROR_NONE     Successfully enqueued the PAN ID Query message.
+     * @retval OT_ERROR_NO_BUFS  Insufficient buffers to generate a PAN ID Query message.
      *
      */
-    ThreadError SendQuery(uint16_t aPanId, uint32_t aChannelMask, const Ip6::Address &aAddress,
-                          otCommissionerPanIdConflictCallback aCallback, void *aContext);
+    otError SendQuery(uint16_t aPanId, uint32_t aChannelMask, const Ip6::Address &aAddress,
+                      otCommissionerPanIdConflictCallback aCallback, void *aContext);
 
 private:
-    static void HandleConflict(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleConflict(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                const otMessageInfo *aMessageInfo);
     void HandleConflict(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
-
-    ThreadError SendConflictResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aRequestMessageInfo);
 
     otCommissionerPanIdConflictCallback mCallback;
     void *mContext;
 
     Coap::Resource mPanIdQuery;
-    Coap::Server &mCoapServer;
-    Coap::Client &mCoapClient;
-
-    ThreadNetif &mNetif;
 };
 
 /**
  * @}
  */
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // PANID_QUERY_CLIENT_HPP_

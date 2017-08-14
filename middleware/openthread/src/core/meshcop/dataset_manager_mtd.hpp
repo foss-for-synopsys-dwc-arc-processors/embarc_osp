@@ -35,9 +35,9 @@
 #ifndef MESHCOP_DATASET_MANAGER_MTD_HPP_
 #define MESHCOP_DATASET_MANAGER_MTD_HPP_
 
-#include <openthread-types.h>
+#include <openthread/types.h>
 
-namespace Thread {
+namespace ot {
 
 class ThreadNetif;
 
@@ -48,24 +48,16 @@ class ActiveDataset: public ActiveDatasetBase
 public:
     ActiveDataset(ThreadNetif &aThreadNetif) : ActiveDatasetBase(aThreadNetif) { }
 
-    ThreadError GenerateLocal(void) { return kThreadError_NotImplemented; }
-
-    void StartLeader(void) { }
-
-    void StopLeader(void) { }
+    otError GenerateLocal(void) { return OT_ERROR_NOT_IMPLEMENTED; }
 };
 
 class PendingDataset: public PendingDatasetBase
 {
 public:
     PendingDataset(ThreadNetif &aThreadNetif) : PendingDatasetBase(aThreadNetif) { }
-
-    void StartLeader(void) { }
-
-    void StopLeader(void) { }
 };
 
 }  // namespace MeshCoP
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // MESHCOP_DATASET_MANAGER_HPP_

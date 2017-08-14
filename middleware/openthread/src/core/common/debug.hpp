@@ -36,7 +36,9 @@
 
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include "utils/wrap_string.h"
+
+#include "openthread-core-config.h"
 
 #if defined(OPENTHREAD_TARGET_DARWIN) || defined(OPENTHREAD_TARGET_LINUX)
 
@@ -54,6 +56,18 @@
 #elif defined(_WIN32)
 
 #include <assert.h>
+
+#elif OPENTHREAD_CONFIG_PLATFORM_ASSERT_MANAGEMENT
+
+#include "openthread/platform/misc.h"
+
+#define assert(cond)                            \
+  do {                                          \
+    if (!(cond)) {                              \
+      otPlatAssertFail(__FILE__, __LINE__);     \
+      while (1) {}                              \
+    }                                           \
+  } while (0)
 
 #else
 

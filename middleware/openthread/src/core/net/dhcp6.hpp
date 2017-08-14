@@ -34,13 +34,13 @@
 #ifndef DHCP6_HPP_
 #define DHCP6_HPP_
 
-#include <common/message.hpp>
-#include <net/udp6.hpp>
+#include "common/message.hpp"
+#include "net/udp6.hpp"
 
-using Thread::Encoding::BigEndian::HostSwap16;
-using Thread::Encoding::BigEndian::HostSwap32;
+using ot::Encoding::BigEndian::HostSwap16;
+using ot::Encoding::BigEndian::HostSwap32;
 
-namespace Thread {
+namespace ot {
 namespace Dhcp6 {
 
 /**
@@ -580,6 +580,6 @@ public:
 } OT_TOOL_PACKED_END;
 
 }  // namespace Dhcp6
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // DHCP6_HPP_

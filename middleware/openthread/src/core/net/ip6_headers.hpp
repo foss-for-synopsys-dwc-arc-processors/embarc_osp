@@ -36,20 +36,21 @@
 
 #include <stddef.h>
 
-#include <openthread-types.h>
-#include <common/encoding.hpp>
-#include <common/message.hpp>
-#include <net/ip6_address.hpp>
-#include <net/netif.hpp>
-#include <net/socket.hpp>
+#include <openthread/types.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
-using Thread::Encoding::BigEndian::HostSwap32;
+#include "common/encoding.hpp"
+#include "common/message.hpp"
+#include "net/ip6_address.hpp"
+#include "net/netif.hpp"
+#include "net/socket.hpp"
 
-namespace Thread {
+using ot::Encoding::BigEndian::HostSwap16;
+using ot::Encoding::BigEndian::HostSwap32;
+
+namespace ot {
 
 /**
- * @namespace Thread::Ip6
+ * @namespace ot::Ip6
  *
  * @brief
  *   This namespace includes definitions for IPv6 networking.
@@ -144,6 +145,17 @@ public:
      *
      */
     void Init(uint32_t aVersionClassFlow) { mVersionClassFlow.m32[0] = HostSwap32(aVersionClassFlow); }
+
+    /**
+     * This method reads the IPv6 header from @p aMessage.
+     *
+     * @param[in]  aMessage  The IPv6 datagram.
+     *
+     * @retval OT_ERROR_NONE   Successfully read the IPv6 header.
+     * @retval OT_ERROR_PARSE  Malformed IPv6 header.
+     *
+     */
+    otError Init(const Message &aMessage);
 
     /**
      * This method indicates whether or not the IPv6 Version is set to 6.
@@ -336,6 +348,14 @@ OT_TOOL_PACKED_BEGIN
 class OptionHeader
 {
 public:
+    /**
+     * Default constructor.
+     *
+     */
+    OptionHeader(void):
+        mType(0),
+        mLength(0) {}
+
     /**
      * This method returns the IPv6 Option Type value.
      *
@@ -549,6 +569,6 @@ private:
  */
 
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // NET_IP6_HEADERS_HPP_

@@ -34,19 +34,19 @@
 #ifndef COAP_HEADER_HPP_
 #define COAP_HEADER_HPP_
 
-#include <string.h>
+#include "utils/wrap_string.h"
 
-#include <openthread-types.h>
-#include <openthread-coap.h>
-#include <common/encoding.hpp>
-#include <common/message.hpp>
+#include <openthread/coap.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
+#include "common/encoding.hpp"
+#include "common/message.hpp"
 
-namespace Thread {
+using ot::Encoding::BigEndian::HostSwap16;
+
+namespace ot {
 
 /**
- * @namespace Thread::Coap
+ * @namespace ot::Coap
  * @brief
  *   This namespace includes definitions for CoAP.
  *
@@ -109,13 +109,13 @@ public:
      * This method parses the CoAP header from a message.
      *
      * @param[in]  aMessage       A reference to the message.
-     * @param[in]  aCopiedMessage To indicate if this message is a copied one or not
+     * @param[in]  aMetadataSize  A size of metadata appended to the message.
      *
-     * @retval kThreadError_None   Successfully parsed the message.
-     * @retval kThreadError_Parse  Failed to parse the message.
+     * @retval OT_ERROR_NONE   Successfully parsed the message.
+     * @retval OT_ERROR_PARSE  Failed to parse the message.
      *
      */
-    ThreadError FromMessage(const Message &aMessage, bool aCopiedMessage);
+    otError FromMessage(const Message &aMessage, uint16_t aMetadataSize);
 
     /**
      * This method returns the Version value.
@@ -266,53 +266,91 @@ public:
      *
      * @param[in]  aOption  The CoAP Option.
      *
-     * @retval kThreadError_None         Successfully appended the option.
-     * @retval kThreadError_InvalidArgs  The option type is not equal or greater than the last option type.
-     * @retval kThreadError_NoBufs       The option length exceeds the buffer size.
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
      *
      */
-    ThreadError AppendOption(const Option &aOption);
+    otError AppendOption(const Option &aOption);
+
+    /**
+     * This method appends an unsigned integer CoAP option as specified in
+     * https://tools.ietf.org/html/rfc7252#section-3.2
+     *
+     * @param[in]  aNumber  The CoAP Option number.
+     * @param[in]  aValue   The CoAP Option unsigned integer value.
+     *
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
+     *
+     */
+    otError AppendUintOption(uint16_t aNumber, uint32_t aValue);
+
+    /**
+     * This method appends an Observe option.
+     *
+     * @param[in]  aObserve  Observe field value.
+     *
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
+     */
+    otError AppendObserveOption(uint32_t aObserve);
 
     /**
      * This method appends a Uri-Path option.
      *
      * @param[in]  aUriPath  A pointer to a NULL-terminated string.
      *
-     * @retval kThreadError_None         Successfully appended the option.
-     * @retval kThreadError_InvalidArgs  The option type is not equal or greater than the last option type.
-     * @retval kThreadError_NoBufs       The option length exceeds the buffer size.
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
      *
      */
-    ThreadError AppendUriPathOptions(const char *aUriPath);
-
-    /**
-     * Media Types
-     *
-     */
-    enum MediaType
-    {
-        kApplicationOctetStream = 42,  ///< application/octet-stream
-    };
+    otError AppendUriPathOptions(const char *aUriPath);
 
     /**
      * This method appends a Content-Format option.
      *
-     * @param[in]  aType  The Media Type value.
+     * @param[in]  aContentFormat  The Content Format value.
      *
-     * @retval kThreadError_None         Successfully appended the option.
-     * @retval kThreadError_InvalidArgs  The option type is not equal or greater than the last option type.
-     * @retval kThreadError_NoBufs       The option length exceeds the buffer size.
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
      *
      */
-    ThreadError AppendContentFormatOption(MediaType aType);
+    otError AppendContentFormatOption(otCoapOptionContentFormat aContentFormat);
 
     /**
-     * This method returns a pointer to the current option.
+     * This method appends a Max-Age option.
      *
-     * @returns A pointer to the current option.
+     * @param[in]  aMaxAge  The Max-Age value.
+     *
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
+     */
+    otError AppendMaxAgeOption(uint32_t aMaxAge);
+
+    /**
+     * This method appends a single Uri-Query option.
+     *
+     * @param[in]  aUriQuery  A pointer to NULL-terminated string, which should contain a single key=value pair.
+     *
+     * @retval OT_ERROR_NONE          Successfully appended the option.
+     * @retval OT_ERROR_INVALID_ARGS  The option type is not equal or greater than the last option type.
+     * @retval OT_ERROR_NO_BUFS       The option length exceeds the buffer size.
+     */
+    otError AppendUriQueryOption(const char *aUriQuery);
+
+    /**
+     * This method returns a pointer to the first option.
+     *
+     * @returns A pointer to the first option.
      *
      */
-    const Option *GetCurrentOption(void) const;
+    const Option *GetFirstOption(void);
 
     /**
      * This method returns a pointer to the next option.
@@ -325,11 +363,11 @@ public:
     /**
      * This method adds Payload Marker indicating beginning of the payload to the CoAP header.
      *
-     * @retval kThreadError_None    Payload Marker successfully added.
-     * @retval kThreadError_NoBufs  Header Payload Marker exceeds the buffer size.
+     * @retval OT_ERROR_NONE     Payload Marker successfully added.
+     * @retval OT_ERROR_NO_BUFS  Header Payload Marker exceeds the buffer size.
      *
      */
-    ThreadError SetPayloadMarker(void);
+    otError SetPayloadMarker(void);
 
     /**
      * This method returns a pointer to the first byte of the header.
@@ -371,7 +409,7 @@ public:
      * @retval FALSE  Header is not a request header.
      *
      */
-    bool IsRequest(void) const { return (GetCode() >= kCoapRequestGet && GetCode() <= kCoapRequestDelete); };
+    bool IsRequest(void) const { return (GetCode() >= OT_COAP_CODE_GET && GetCode() <= OT_COAP_CODE_DELETE); };
 
     /**
      * This method checks if a header is a response header.
@@ -380,7 +418,7 @@ public:
      * @retval FALSE  Header is not a response header.
      *
      */
-    bool IsResponse(void) const { return (GetCode() >= kCoapResponseChanged); };
+    bool IsResponse(void) const { return (GetCode() >= OT_COAP_CODE_RESPONSE_MIN); };
 
     /**
      * This method checks if a header is a CON message header.
@@ -389,7 +427,7 @@ public:
      * @retval FALSE  Header is not is a CON message header.
      *
      */
-    bool IsConfirmable(void) const { return (GetType() == kCoapTypeConfirmable); };
+    bool IsConfirmable(void) const { return (GetType() == OT_COAP_TYPE_CONFIRMABLE); };
 
     /**
      * This method checks if a header is a NON message header.
@@ -398,7 +436,7 @@ public:
      * @retval FALSE  Header is not is a NON message header.
      *
      */
-    bool IsNonConfirmable(void) const { return (GetType() == kCoapTypeNonConfirmable); };
+    bool IsNonConfirmable(void) const { return (GetType() == OT_COAP_TYPE_NON_CONFIRMABLE); };
 
     /**
      * This method checks if a header is a ACK message header.
@@ -407,7 +445,7 @@ public:
      * @retval FALSE  Header is not is a ACK message header.
      *
      */
-    bool IsAck(void) const { return (GetType() == kCoapTypeAcknowledgment); };
+    bool IsAck(void) const { return (GetType() == OT_COAP_TYPE_ACKNOWLEDGMENT); };
 
     /**
      * This method checks if a header is a RST message header.
@@ -416,7 +454,7 @@ public:
      * @retval FALSE  Header is not is a RST message header.
      *
      */
-    bool IsReset(void) const { return (GetType() == kCoapTypeReset);  };
+    bool IsReset(void) const { return (GetType() == OT_COAP_TYPE_RESET);  };
 
 private:
     /**
@@ -451,6 +489,6 @@ private:
  */
 
 }  // namespace Coap
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // COAP_HEADER_HPP_

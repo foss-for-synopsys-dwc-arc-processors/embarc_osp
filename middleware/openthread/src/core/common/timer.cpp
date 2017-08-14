@@ -33,29 +33,74 @@
 
 #define WPP_NAME "timer.tmh"
 
-#include <common/code_utils.hpp>
-#include <common/timer.hpp>
-#include <common/debug.hpp>
-#include <common/logging.hpp>
-#include <net/ip6.hpp>
-#include <platform/alarm.h>
-#include <openthread-instance.h>
+#include <openthread/config.h>
 
-namespace Thread {
+#include "timer.hpp"
 
-TimerScheduler::TimerScheduler(void):
-    mHead(NULL)
+#include "openthread-instance.h"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/logging.hpp"
+
+namespace ot {
+
+const TimerScheduler::AlarmApi TimerMilliScheduler::sAlarmMilliApi =
 {
+    &otPlatAlarmMilliStartAt,
+    &otPlatAlarmMilliStop,
+    &otPlatAlarmMilliGetNow
+};
+
+bool Timer::DoesFireBefore(const Timer &aSecondTimer, uint32_t aNow)
+{
+    bool retval;
+    bool isBeforeNow = TimerScheduler::IsStrictlyBefore(GetFireTime(), aNow);
+
+    // Check if one timer is before `now` and the other one is not.
+    if (TimerScheduler::IsStrictlyBefore(aSecondTimer.GetFireTime(), aNow) != isBeforeNow)
+    {
+        // One timer is before `now` and the other one is not, so if this timer's fire time is before `now` then
+        // the second fire time would be after `now` and this timer would fire before the second timer.
+
+        retval = isBeforeNow;
+    }
+    else
+    {
+        // Both timers are before `now` or both are after `now`. Either way the difference is guaranteed to be less
+        // than `kMaxDt` so we can safely compare the fire times directly.
+
+        retval = TimerScheduler::IsStrictlyBefore(GetFireTime(), aSecondTimer.GetFireTime());
+    }
+
+    return retval;
 }
 
-void TimerScheduler::Add(Timer &aTimer)
+void TimerMilli::StartAt(uint32_t aT0, uint32_t aDt)
 {
-    Remove(aTimer);
+    assert(aDt <= kMaxDt);
+    mFireTime = aT0 + aDt;
+    GetTimerMilliScheduler().Add(*this);
+}
+
+void TimerMilli::Stop(void)
+{
+    GetTimerMilliScheduler().Remove(*this);
+}
+
+TimerMilliScheduler &TimerMilli::GetTimerMilliScheduler(void) const
+{
+    return GetInstance().mTimerMilliScheduler;
+}
+
+void TimerScheduler::Add(Timer &aTimer, const AlarmApi &aAlarmApi)
+{
+    Remove(aTimer, aAlarmApi);
 
     if (mHead == NULL)
     {
         mHead = &aTimer;
-        SetAlarm();
+        aTimer.mNext = NULL;
+        SetAlarm(aAlarmApi);
     }
     else
     {
@@ -64,7 +109,7 @@ void TimerScheduler::Add(Timer &aTimer)
 
         for (cur = mHead; cur; cur = cur->mNext)
         {
-            if (TimerCompare(aTimer, *cur))
+            if (aTimer.DoesFireBefore(*cur, aAlarmApi.AlarmGetNow()))
             {
                 if (prev)
                 {
@@ -75,7 +120,7 @@ void TimerScheduler::Add(Timer &aTimer)
                 {
                     aTimer.mNext = mHead;
                     mHead = &aTimer;
-                    SetAlarm();
+                    SetAlarm(aAlarmApi);
                 }
 
                 break;
@@ -87,17 +132,19 @@ void TimerScheduler::Add(Timer &aTimer)
         if (cur == NULL)
         {
             prev->mNext = &aTimer;
+            aTimer.mNext = NULL;
         }
     }
 }
 
-void TimerScheduler::Remove(Timer &aTimer)
+void TimerScheduler::Remove(Timer &aTimer, const AlarmApi &aAlarmApi)
 {
+    VerifyOrExit(aTimer.mNext != &aTimer);
+
     if (mHead == &aTimer)
     {
         mHead = aTimer.mNext;
-        aTimer.mNext = NULL;
-        SetAlarm();
+        SetAlarm(aAlarmApi);
     }
     else
     {
@@ -106,119 +153,112 @@ void TimerScheduler::Remove(Timer &aTimer)
             if (cur->mNext == &aTimer)
             {
                 cur->mNext = aTimer.mNext;
-                aTimer.mNext = NULL;
                 break;
             }
         }
     }
-}
 
-bool TimerScheduler::IsAdded(const Timer &aTimer)
-{
-    bool rval = false;
-
-    for (Timer *cur = mHead; cur; cur = cur->mNext)
-    {
-        if (cur == &aTimer)
-        {
-            ExitNow(rval = true);
-        }
-    }
+    aTimer.mNext = &aTimer;
 
 exit:
-    return rval;
+    return;
 }
 
-void TimerScheduler::SetAlarm(void)
+void TimerScheduler::SetAlarm(const AlarmApi &aAlarmApi)
 {
-    uint32_t now = otPlatAlarmGetNow();
-    uint32_t elapsed;
-    uint32_t remaining;
-
     if (mHead == NULL)
     {
-        otPlatAlarmStop(GetIp6()->GetInstance());
+        aAlarmApi.AlarmStop(&GetInstance());
     }
     else
     {
-        elapsed = now - mHead->mT0;
-        remaining = (mHead->mDt > elapsed) ? mHead->mDt - elapsed : 0;
+        uint32_t now = aAlarmApi.AlarmGetNow();
+        uint32_t remaining = IsStrictlyBefore(now, mHead->mFireTime) ? (mHead->mFireTime - now) : 0;
 
-        otPlatAlarmStartAt(GetIp6()->GetInstance(), now, remaining);
+        aAlarmApi.AlarmStartAt(&GetInstance(), now, remaining);
     }
 }
 
-extern "C" void otPlatAlarmFired(otInstance *aInstance)
+void TimerScheduler::ProcessTimers(const AlarmApi &aAlarmApi)
 {
-    otLogFuncEntry();
-    aInstance->mIp6.mTimerScheduler.FireTimers();
-    otLogFuncExit();
-}
-
-void TimerScheduler::FireTimers()
-{
-    uint32_t now = otPlatAlarmGetNow();
-    uint32_t elapsed;
     Timer *timer = mHead;
 
     if (timer)
     {
-        elapsed = now - timer->mT0;
-
-        if (elapsed >= timer->mDt)
+        if (!IsStrictlyBefore(aAlarmApi.AlarmGetNow(), timer->mFireTime))
         {
-            Remove(*timer);
+            Remove(*timer, aAlarmApi);
             timer->Fired();
         }
         else
         {
-            SetAlarm();
+            SetAlarm(aAlarmApi);
         }
     }
     else
     {
-        SetAlarm();
+        SetAlarm(aAlarmApi);
     }
 }
 
-Ip6::Ip6 *TimerScheduler::GetIp6()
+bool TimerScheduler::IsStrictlyBefore(uint32_t aTimeA, uint32_t aTimeB)
 {
-    return Ip6::Ip6FromTimerScheduler(this);
+    uint32_t diff = aTimeA - aTimeB;
+
+    // Three cases:
+    // 1) aTimeA is before  aTimeB  =>  Difference is negative (last bit of difference is set)   => Returning true.
+    // 2) aTimeA is same as aTimeB  =>  Difference is zero     (last bit of difference is clear) => Returning false.
+    // 3) aTimeA is after   aTimeB  =>  Difference is positive (last bit of difference is clear) => Returning false.
+
+    return ((diff & (1UL << 31)) != 0);
 }
 
-bool TimerScheduler::TimerCompare(const Timer &aTimerA, const Timer &aTimerB)
+extern "C" void otPlatAlarmMilliFired(otInstance *aInstance)
 {
-    uint32_t now = otPlatAlarmGetNow();
-    uint32_t elapsedA = now - aTimerA.mT0;
-    uint32_t elapsedB = now - aTimerB.mT0;
-    bool retval = false;
+    otLogFuncEntry();
 
-    if (aTimerA.mDt >= elapsedA && aTimerB.mDt >= elapsedB)
-    {
-        uint32_t remainingA = aTimerA.mDt - elapsedA;
-        uint32_t remainingB = aTimerB.mDt - elapsedB;
+    VerifyOrExit(otInstanceIsInitialized(aInstance));
+    aInstance->mTimerMilliScheduler.ProcessTimers();
 
-        if (remainingA < remainingB)
-        {
-            retval = true;
-        }
-    }
-    else if (aTimerA.mDt < elapsedA && aTimerB.mDt >= elapsedB)
-    {
-        retval = true;
-    }
-    else if (aTimerA.mDt < elapsedA && aTimerB.mDt < elapsedB)
-    {
-        uint32_t expiredByA = elapsedA - aTimerA.mDt;
-        uint32_t expiredByB = elapsedB - aTimerB.mDt;
-
-        if (expiredByB < expiredByA)
-        {
-            retval = true;
-        }
-    }
-
-    return retval;
+exit:
+    otLogFuncExit();
 }
 
-}  // namespace Thread
+#if OPENTHREAD_CONFIG_ENABLE_PLATFORM_USEC_TIMER
+const TimerScheduler::AlarmApi TimerMicroScheduler::sAlarmMicroApi =
+{
+    &otPlatAlarmMicroStartAt,
+    &otPlatAlarmMicroStop,
+    &otPlatAlarmMicroGetNow
+};
+
+void TimerMicro::StartAt(uint32_t aT0, uint32_t aDt)
+{
+    assert(aDt <= kMaxDt);
+    mFireTime = aT0 + aDt;
+    GetTimerMicroScheduler().Add(*this);
+}
+
+void TimerMicro::Stop(void)
+{
+    GetTimerMicroScheduler().Remove(*this);
+}
+
+TimerMicroScheduler &TimerMicro::GetTimerMicroScheduler(void) const
+{
+    return GetInstance().mTimerMicroScheduler;
+}
+
+extern "C" void otPlatAlarmMicroFired(otInstance *aInstance)
+{
+    otLogFuncEntry();
+
+    VerifyOrExit(otInstanceIsInitialized(aInstance));
+    aInstance->mTimerMicroScheduler.ProcessTimers();
+
+exit:
+    otLogFuncExit();
+}
+#endif // OPENTHREAD_CONFIG_ENABLE_PLATFORM_USEC_TIMER
+
+}  // namespace ot

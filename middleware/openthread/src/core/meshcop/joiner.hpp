@@ -34,23 +34,25 @@
 #ifndef JOINER_HPP_
 #define JOINER_HPP_
 
-#include <openthread-types.h>
+#include <openthread/joiner.h>
 
-#include <coap/coap_header.hpp>
-#include <coap/coap_server.hpp>
-#include <coap/secure_coap_client.hpp>
-#include <common/message.hpp>
-#include <net/udp6.hpp>
-#include <meshcop/dtls.hpp>
-#include <meshcop/tlvs.hpp>
+#include "coap/coap.hpp"
+#include "coap/coap_header.hpp"
+#include "coap/coap_secure.hpp"
+#include "common/crc16.hpp"
+#include "common/locator.hpp"
+#include "common/message.hpp"
+#include "meshcop/dtls.hpp"
+#include "meshcop/meshcop_tlvs.hpp"
+#include "net/udp6.hpp"
 
-namespace Thread {
+namespace ot {
 
 class ThreadNetif;
 
 namespace MeshCoP {
 
-class Joiner
+class Joiner: public ThreadNetifLocator
 {
 public:
     /**
@@ -66,60 +68,93 @@ public:
      *
      * @param[in]  aPSKd             A pointer to the PSKd.
      * @param[in]  aProvisioningUrl  A pointer to the Provisioning URL (may be NULL).
+     * @param[in]  aVendorName       A pointer to the Vendor Name (must be static).
+     * @param[in]  aVendorModel      A pointer to the Vendor Model (must be static).
+     * @param[in]  aVendorSwVersion  A pointer to the Vendor SW Version (must be static).
+     * @param[in]  aVendorData       A pointer to the Vendor Data (must be static).
+     * @param[in]  aCallback         A pointer to a function that is called when the join operation completes.
+     * @param[in]  aContext          A pointer to application-specific context.
      *
-     * @retval kThreadError_None  Successfully started the Joiner service.
+     * @retval OT_ERROR_NONE  Successfully started the Joiner service.
      *
      */
-    ThreadError Start(const char *aPSKd, const char *aProvisioningUrl);
+    otError Start(const char *aPSKd, const char *aProvisioningUrl,
+                  const char *aVendorName, const char *aVendorModel,
+                  const char *aVendorSwVersion, const char *aVendorData,
+                  otJoinerCallback aCallback, void *aContext);
 
     /**
      * This method stops the Joiner service.
      *
-     * @retval kThreadError_None  Successfully stopped the Joiner service.
+     * @retval OT_ERROR_NONE  Successfully stopped the Joiner service.
      *
      */
-    ThreadError Stop(void);
+    otError Stop(void);
 
 private:
     enum
     {
         kConfigExtAddressDelay = 100,  ///< milliseconds
+        kTimeout               = 4000, ///< milliseconds
     };
 
     static void HandleDiscoverResult(otActiveScanResult *aResult, void *aContext);
     void HandleDiscoverResult(otActiveScanResult *aResult);
 
-    static void HandleTimer(void *aContext);
+    static void HandleTimer(Timer &aTimer);
     void HandleTimer(void);
 
     void Close(void);
+    void Complete(otError aError);
 
-    static void HandleSecureCoapClientConnect(void *aContext);
+    static void HandleSecureCoapClientConnect(bool aConnected, void *aContext);
+    void HandleSecureCoapClientConnect(bool aConnected);
 
     void SendJoinerFinalize(void);
-    static void HandleJoinerFinalizeResponse(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
-                                             const otMessageInfo *aMessageInfo, ThreadError aResult);
+    static void HandleJoinerFinalizeResponse(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
+                                             const otMessageInfo *aMessageInfo, otError aResult);
     void HandleJoinerFinalizeResponse(Coap::Header *aHeader, Message *aMessage,
-                                      const Ip6::MessageInfo *aMessageInfo, ThreadError aResult);
+                                      const Ip6::MessageInfo *aMessageInfo, otError aResult);
 
-    static void HandleJoinerEntrust(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleJoinerEntrust(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                     const otMessageInfo *aMessageInfo);
     void HandleJoinerEntrust(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
     void SendJoinerEntrustResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aRequestInfo);
+
+    static Joiner &GetOwner(const Context &aContext);
+
+    enum State
+    {
+        kStateIdle      = 0,
+        kStateDiscover  = 1,
+        kStateConnect   = 2,
+        kStateConnected = 3,
+        kStateEntrust   = 4,
+        kStateJoined    = 5,
+    };
+    State mState;
+
+    otJoinerCallback mCallback;
+    void *mContext;
+
+    uint16_t mCcitt;
+    uint16_t mAnsi;
 
     uint8_t mJoinerRouterChannel;
     uint16_t mJoinerRouterPanId;
     uint16_t mJoinerUdpPort;
     Mac::ExtAddress mJoinerRouter;
 
-    Timer mTimer;
+    const char *mVendorName;
+    const char *mVendorModel;
+    const char *mVendorSwVersion;
+    const char *mVendorData;
+
+    TimerMilli mTimer;
     Coap::Resource mJoinerEntrust;
-    Coap::Server &mCoapServer;
-    Coap::SecureClient &mSecureCoapClient;
-    ThreadNetif &mNetif;
 };
 
 }  // namespace MeshCoP
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // JOINER_HPP_

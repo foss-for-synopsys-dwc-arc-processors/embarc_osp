@@ -30,41 +30,53 @@
  * @file
  *   This file implements IPv6 network interfaces.
  */
+#include <openthread/config.h>
 
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <common/message.hpp>
-#include <net/ip6.hpp>
-#include <net/netif.hpp>
+#include "netif.hpp"
 
-namespace Thread {
+#include "openthread-instance.h"
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+#include "common/message.hpp"
+#include "net/ip6.hpp"
+
+namespace ot {
 namespace Ip6 {
 
 Netif::Netif(Ip6 &aIp6, int8_t aInterfaceId):
-    mIp6(aIp6),
+    Ip6Locator(aIp6),
     mCallbacks(NULL),
     mUnicastAddresses(NULL),
     mMulticastAddresses(NULL),
     mInterfaceId(aInterfaceId),
     mAllRoutersSubscribed(false),
-    mMulticastPromiscuousMode(false),
-    mStateChangedTask(aIp6.mTaskletScheduler, &Netif::HandleStateChangedTask, this),
+    mMulticastPromiscuous(false),
+    mStateChangedTask(aIp6.GetInstance(), &Netif::HandleStateChangedTask, this),
     mNext(NULL),
-    mStateChangedFlags(0),
-    mMaskExtUnicastAddresses(0),
-    mMaskExtMulticastAddresses(0)
+    mStateChangedFlags(0)
 {
+    for (size_t i = 0; i < sizeof(mExtUnicastAddresses) / sizeof(mExtUnicastAddresses[0]); i++)
+    {
+        // To mark the address as unused/available, set the `mNext` to point back to itself.
+        mExtUnicastAddresses[i].mNext = &mExtUnicastAddresses[i];
+    }
+
+    for (size_t i = 0; i < sizeof(mExtMulticastAddresses) / sizeof(mExtMulticastAddresses[0]); i++)
+    {
+        // To mark the address as unused/available, set the `mNext` to point back to itself.
+        mExtMulticastAddresses[i].mNext = &mExtMulticastAddresses[i];
+    }
 }
 
-ThreadError Netif::RegisterCallback(NetifCallback &aCallback)
+otError Netif::RegisterCallback(NetifCallback &aCallback)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     for (NetifCallback *cur = mCallbacks; cur; cur = cur->mNext)
     {
         if (cur == &aCallback)
         {
-            ExitNow(error = kThreadError_Already);
+            ExitNow(error = OT_ERROR_ALREADY);
         }
     }
 
@@ -75,9 +87,9 @@ exit:
     return error;
 }
 
-ThreadError Netif::RemoveCallback(NetifCallback &aCallback)
+otError Netif::RemoveCallback(NetifCallback &aCallback)
 {
-    ThreadError error = kThreadError_Already;
+    otError error = OT_ERROR_ALREADY;
     NetifCallback *prev = NULL;
 
     for (NetifCallback *cur = mCallbacks; cur; cur = cur->mNext)
@@ -94,7 +106,7 @@ ThreadError Netif::RemoveCallback(NetifCallback &aCallback)
             }
 
             cur->mNext = NULL;
-            error = kThreadError_None;
+            error = OT_ERROR_NONE;
             break;
         }
 
@@ -102,21 +114,6 @@ ThreadError Netif::RemoveCallback(NetifCallback &aCallback)
     }
 
     return error;
-}
-
-Netif *Netif::GetNext() const
-{
-    return mNext;
-}
-
-Ip6 &Netif::GetIp6(void)
-{
-    return mIp6;
-}
-
-int8_t Netif::GetInterfaceId() const
-{
-    return mInterfaceId;
 }
 
 bool Netif::IsMulticastSubscribed(const Address &aAddress) const
@@ -145,43 +142,29 @@ exit:
     return rval;
 }
 
-void Netif::SubscribeAllRoutersMulticast()
+otError Netif::SubscribeMulticast(NetifMulticastAddress &aAddress)
 {
-    mAllRoutersSubscribed = true;
-}
-
-void Netif::UnsubscribeAllRoutersMulticast()
-{
-    mAllRoutersSubscribed = false;
-}
-
-const NetifMulticastAddress *Netif::GetMulticastAddresses() const
-{
-    return mMulticastAddresses;
-}
-
-ThreadError Netif::SubscribeMulticast(NetifMulticastAddress &aAddress)
-{
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     for (NetifMulticastAddress *cur = mMulticastAddresses; cur; cur = cur->GetNext())
     {
         if (cur == &aAddress)
         {
-            ExitNow(error = kThreadError_Already);
+            ExitNow(error = OT_ERROR_ALREADY);
         }
     }
 
     aAddress.mNext = mMulticastAddresses;
     mMulticastAddresses = &aAddress;
+    SetStateChangedFlags(OT_CHANGED_IP6_MULTICAST_SUBSRCRIBED);
 
 exit:
     return error;
 }
 
-ThreadError Netif::UnsubscribeMulticast(const NetifMulticastAddress &aAddress)
+otError Netif::UnsubscribeMulticast(const NetifMulticastAddress &aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     if (mMulticastAddresses == &aAddress)
     {
@@ -200,137 +183,129 @@ ThreadError Netif::UnsubscribeMulticast(const NetifMulticastAddress &aAddress)
         }
     }
 
-    ExitNow(error = kThreadError_Error);
+    ExitNow(error = OT_ERROR_NOT_FOUND);
 
 exit:
+
+    if (error != OT_ERROR_NOT_FOUND)
+    {
+        SetStateChangedFlags(OT_CHANGED_IP6_MULTICAST_UNSUBSRCRIBED);
+    }
+
     return error;
 }
 
-ThreadError Netif::SubscribeExternalMulticast(const Address &aAddress)
+otError Netif::SubscribeExternalMulticast(const Address &aAddress)
 {
-    ThreadError error = kThreadError_None;
-    int8_t index = 0;
+    otError error = OT_ERROR_NONE;
+    NetifMulticastAddress *entry;
+    size_t num = sizeof(mExtMulticastAddresses) / sizeof(mExtMulticastAddresses[0]);
 
-    for (NetifMulticastAddress *cur = mMulticastAddresses; cur; cur = cur->GetNext())
+    if (IsMulticastSubscribed(aAddress))
     {
-        if (memcmp(&cur->mAddress, &aAddress, sizeof(otIp6Address)) == 0)
+        ExitNow(error = OT_ERROR_ALREADY);
+    }
+
+    // Find an available entry in the `mExtMulticastAddresses` array.
+    for (entry = &mExtMulticastAddresses[0]; num > 0; num--, entry++)
+    {
+        // In an unused/available entry, `mNext` points back to the entry itself.
+        if (entry->mNext == entry)
         {
-            VerifyOrExit(GetExtMulticastAddressIndex(cur) != -1, error = kThreadError_InvalidArgs);
-            ExitNow(error = kThreadError_Already);
+            break;
         }
     }
 
-    // Make sure we haven't set all the bits in the mask already
-    VerifyOrExit(mMaskExtMulticastAddresses != ((1 << OPENTHREAD_CONFIG_MAX_EXT_MULTICAST_IP_ADDRS) - 1),
-                 error = kThreadError_NoBufs);
+    VerifyOrExit(num > 0, error = OT_ERROR_NO_BUFS);
 
-    // Get next available entry index
-    while ((mMaskExtMulticastAddresses & (1 << index)) != 0)
-    {
-        index++;
-    }
-
-    assert(index < OPENTHREAD_CONFIG_MAX_EXT_MULTICAST_IP_ADDRS);
-
-    // Increase the count and mask the index
-    mMaskExtMulticastAddresses |= 1 << index;
-
-    // Copy the address to the next available dynamic address
-    mExtMulticastAddresses[index].mAddress = aAddress;
-    mExtMulticastAddresses[index].mNext = mMulticastAddresses;
-
-    mMulticastAddresses = &mExtMulticastAddresses[index];
+    // Copy the address into the available entry and add it to linked-list.
+    entry->mAddress = aAddress;
+    entry->mNext = mMulticastAddresses;
+    mMulticastAddresses = entry;
+    SetStateChangedFlags(OT_CHANGED_IP6_MULTICAST_SUBSRCRIBED);
 
 exit:
     return error;
 }
 
-ThreadError Netif::UnsubscribeExternalMulticast(const Address &aAddress)
+otError Netif::UnsubscribeExternalMulticast(const Address &aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
+    NetifMulticastAddress *entry;
     NetifMulticastAddress *last = NULL;
-    int8_t aAddressIndexToRemove = -1;
+    size_t num = sizeof(mExtMulticastAddresses) / sizeof(mExtMulticastAddresses[0]);
 
-    for (NetifMulticastAddress *cur = mMulticastAddresses; cur; cur = cur->GetNext())
+    for (entry = mMulticastAddresses; entry; entry = entry->GetNext())
     {
-        if (memcmp(&cur->mAddress, &aAddress, sizeof(otIp6Address)) == 0)
+        if (memcmp(&entry->mAddress, &aAddress, sizeof(otIp6Address)) == 0)
         {
-            aAddressIndexToRemove = GetExtMulticastAddressIndex(cur);
-            VerifyOrExit(aAddressIndexToRemove != -1, error = kThreadError_InvalidArgs);
+            VerifyOrExit((entry >= &mExtMulticastAddresses[0]) && (entry < &mExtMulticastAddresses[num]),
+                         error = OT_ERROR_INVALID_ARGS);
 
             if (last)
             {
-                last->mNext = cur->GetNext();
+                last->mNext = entry->GetNext();
             }
             else
             {
-                mMulticastAddresses = cur->GetNext();
+                mMulticastAddresses = entry->GetNext();
             }
 
             break;
         }
 
-        last = cur;
+        last = entry;
     }
 
-    if (aAddressIndexToRemove != -1)
-    {
-        mMaskExtMulticastAddresses &= ~(1 << aAddressIndexToRemove);
-    }
-    else
-    {
-        error = kThreadError_NotFound;
-    }
+    VerifyOrExit(entry != NULL, error = OT_ERROR_NOT_FOUND);
+
+    // To mark the address entry as unused/available, set the `mNext` pointer back to the entry itself.
+    entry->mNext = entry;
+
+    SetStateChangedFlags(OT_CHANGED_IP6_MULTICAST_UNSUBSRCRIBED);
 
 exit:
-
     return error;
 }
 
-bool Netif::IsMulticastPromiscuousModeEnabled(void)
+void Netif::UnsubscribeAllExternalMulticastAddresses(void)
 {
-    return mMulticastPromiscuousMode;
+    size_t num = sizeof(mExtMulticastAddresses) / sizeof(mExtMulticastAddresses[0]);
+
+    for (NetifMulticastAddress *entry = &mExtMulticastAddresses[0]; num > 0; num--, entry++)
+    {
+        // In unused entries, the `mNext` points back to the entry itself.
+        if (entry->mNext != entry)
+        {
+            UnsubscribeExternalMulticast(*static_cast<Address *>(&entry->mAddress));
+        }
+    }
 }
 
-void Netif::EnableMulticastPromiscuousMode(void)
+otError Netif::AddUnicastAddress(NetifUnicastAddress &aAddress)
 {
-    mMulticastPromiscuousMode = true;
-}
-
-void Netif::DisableMulticastPromiscuousMode(void)
-{
-    mMulticastPromiscuousMode = false;
-}
-
-const NetifUnicastAddress *Netif::GetUnicastAddresses() const
-{
-    return mUnicastAddresses;
-}
-
-ThreadError Netif::AddUnicastAddress(NetifUnicastAddress &aAddress)
-{
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     for (NetifUnicastAddress *cur = mUnicastAddresses; cur; cur = cur->GetNext())
     {
         if (cur == &aAddress)
         {
-            ExitNow(error = kThreadError_Already);
+            ExitNow(error = OT_ERROR_ALREADY);
         }
     }
 
     aAddress.mNext = mUnicastAddresses;
     mUnicastAddresses = &aAddress;
 
-    SetStateChangedFlags(OT_IP6_ADDRESS_ADDED);
+    SetStateChangedFlags(aAddress.mRloc ? OT_CHANGED_THREAD_RLOC_ADDED : OT_CHANGED_IP6_ADDRESS_ADDED);
 
 exit:
     return error;
 }
 
-ThreadError Netif::RemoveUnicastAddress(const NetifUnicastAddress &aAddress)
+otError Netif::RemoveUnicastAddress(const NetifUnicastAddress &aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     if (mUnicastAddresses == &aAddress)
     {
@@ -349,105 +324,113 @@ ThreadError Netif::RemoveUnicastAddress(const NetifUnicastAddress &aAddress)
         }
     }
 
-    ExitNow(error = kThreadError_NotFound);
+    ExitNow(error = OT_ERROR_NOT_FOUND);
 
 exit:
 
-    if (error != kThreadError_NotFound)
+    if (error != OT_ERROR_NOT_FOUND)
     {
-        SetStateChangedFlags(OT_IP6_ADDRESS_REMOVED);
+        SetStateChangedFlags(aAddress.mRloc ? OT_CHANGED_THREAD_RLOC_REMOVED : OT_CHANGED_IP6_ADDRESS_REMOVED);
     }
 
     return error;
 }
 
-ThreadError Netif::AddExternalUnicastAddress(const NetifUnicastAddress &aAddress)
+otError Netif::AddExternalUnicastAddress(const NetifUnicastAddress &aAddress)
 {
-    ThreadError error = kThreadError_None;
-    int8_t index = 0;
+    otError error = OT_ERROR_NONE;
+    NetifUnicastAddress *entry;
+    size_t num = sizeof(mExtUnicastAddresses) / sizeof(mExtUnicastAddresses[0]);
 
-    for (NetifUnicastAddress *cur = mUnicastAddresses; cur; cur = cur->GetNext())
+    for (entry = mUnicastAddresses; entry; entry = entry->GetNext())
     {
-        if (memcmp(&cur->mAddress, &aAddress.mAddress, sizeof(otIp6Address)) == 0)
+        if (memcmp(&entry->mAddress, &aAddress.mAddress, sizeof(otIp6Address)) == 0)
         {
-            VerifyOrExit(GetExtUnicastAddressIndex(cur) != -1, error = kThreadError_InvalidArgs);
+            VerifyOrExit((entry >= &mExtUnicastAddresses[0]) && (entry < &mExtUnicastAddresses[num]),
+                         error = OT_ERROR_INVALID_ARGS);
 
-            cur->mPreferredLifetime = aAddress.mPreferredLifetime;
-            cur->mValidLifetime = aAddress.mValidLifetime;
-            cur->mPrefixLength = aAddress.mPrefixLength;
+            entry->mPrefixLength = aAddress.mPrefixLength;
+            entry->mPreferred = aAddress.mPreferred;
+            entry->mValid = aAddress.mValid;
             ExitNow();
         }
     }
 
-    // Make sure we haven't set all the bits in the mask already
-    VerifyOrExit(mMaskExtUnicastAddresses != ((1 << OPENTHREAD_CONFIG_MAX_EXT_IP_ADDRS) - 1),
-                 error = kThreadError_NoBufs);
-
-    // Get next available entry index
-    while ((mMaskExtUnicastAddresses & (1 << index)) != 0)
+    // Find an available entry in the `mExtUnicastAddresses` array.
+    for (entry = &mExtUnicastAddresses[0]; num > 0; num--, entry++)
     {
-        index++;
+        // In an unused/available entry, `mNext` points back to the entry itself.
+        if (entry->mNext == entry)
+        {
+            break;
+        }
     }
 
-    assert(index < OPENTHREAD_CONFIG_MAX_EXT_IP_ADDRS);
+    VerifyOrExit(num > 0, error = OT_ERROR_NO_BUFS);
 
-    // Increase the count and mask the index
-    mMaskExtUnicastAddresses |= 1 << index;
+    // Copy the new address into the available entry and insert it in linked-list.
+    *entry = aAddress;
+    entry->mNext = mUnicastAddresses;
+    mUnicastAddresses = entry;
 
-    // Copy the address to the next available dynamic address
-    mExtUnicastAddresses[index] = aAddress;
-    mExtUnicastAddresses[index].mNext = mUnicastAddresses;
-
-    mUnicastAddresses = &mExtUnicastAddresses[index];
-
-    SetStateChangedFlags(OT_IP6_ADDRESS_ADDED);
+    SetStateChangedFlags(OT_CHANGED_IP6_ADDRESS_ADDED);
 
 exit:
     return error;
 }
 
-ThreadError Netif::RemoveExternalUnicastAddress(const Address &aAddress)
+otError Netif::RemoveExternalUnicastAddress(const Address &aAddress)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
+    NetifUnicastAddress *entry;
     NetifUnicastAddress *last = NULL;
-    int8_t aAddressIndexToRemove = -1;
+    size_t num = sizeof(mExtUnicastAddresses) / sizeof(mExtUnicastAddresses[0]);
 
-    for (NetifUnicastAddress *cur = mUnicastAddresses; cur; cur = cur->GetNext())
+    for (entry = mUnicastAddresses; entry; entry = entry->GetNext())
     {
-        if (memcmp(&cur->mAddress, &aAddress, sizeof(otIp6Address)) == 0)
+        if (memcmp(&entry->mAddress, &aAddress, sizeof(otIp6Address)) == 0)
         {
-            aAddressIndexToRemove = GetExtUnicastAddressIndex(cur);
-            VerifyOrExit(aAddressIndexToRemove != -1, error = kThreadError_InvalidArgs);
+            VerifyOrExit((entry >= &mExtUnicastAddresses[0]) && (entry < &mExtUnicastAddresses[num]),
+                         error = OT_ERROR_INVALID_ARGS);
 
             if (last)
             {
-                last->mNext = cur->mNext;
+                last->mNext = entry->mNext;
             }
             else
             {
-                mUnicastAddresses = cur->GetNext();
+                mUnicastAddresses = entry->GetNext();
             }
 
             break;
         }
 
-        last = cur;
+        last = entry;
     }
 
-    if (aAddressIndexToRemove != -1)
-    {
-        mMaskExtUnicastAddresses &= ~(1 << aAddressIndexToRemove);
+    VerifyOrExit(entry != NULL, error = OT_ERROR_NOT_FOUND);
 
-        SetStateChangedFlags(OT_IP6_ADDRESS_REMOVED);
-    }
-    else
-    {
-        error = kThreadError_NotFound;
-    }
+    // To mark the address entry as unused/available, set the `mNext` pointer back to the entry itself.
+    entry->mNext = entry;
+
+    SetStateChangedFlags(OT_CHANGED_IP6_ADDRESS_REMOVED);
 
 exit:
-
     return error;
+}
+
+void Netif::RemoveAllExternalUnicastAddresses(void)
+{
+    size_t num = sizeof(mExtUnicastAddresses) / sizeof(mExtUnicastAddresses[0]);
+
+    for (NetifUnicastAddress *entry = &mExtUnicastAddresses[0]; num > 0; num--, entry++)
+    {
+        // In unused entries, the `mNext` points back to the entry itself.
+        if (entry->mNext != entry)
+        {
+            RemoveExternalUnicastAddress(*static_cast<Address *>(&entry->mAddress));
+        }
+    }
 }
 
 bool Netif::IsUnicastAddress(const Address &aAddress) const
@@ -466,21 +449,15 @@ exit:
     return rval;
 }
 
-
-bool Netif::IsStateChangedCallbackPending(void)
-{
-    return mStateChangedFlags != 0;
-}
-
 void Netif::SetStateChangedFlags(uint32_t aFlags)
 {
     mStateChangedFlags |= aFlags;
     mStateChangedTask.Post();
 }
 
-void Netif::HandleStateChangedTask(void *aContext)
+void Netif::HandleStateChangedTask(Tasklet &aTasklet)
 {
-    static_cast<Netif *>(aContext)->HandleStateChangedTask();
+    GetOwner(aTasklet).HandleStateChangedTask();
 }
 
 void Netif::HandleStateChangedTask(void)
@@ -495,5 +472,16 @@ void Netif::HandleStateChangedTask(void)
     }
 }
 
+Netif &Netif::GetOwner(const Context &aContext)
+{
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    Netif &netif = *static_cast<Netif *>(aContext.GetContext());
+#else
+    Netif &netif = otGetThreadNetif();
+    OT_UNUSED_VARIABLE(aContext);
+#endif
+    return netif;
+}
+
 }  // namespace Ip6
-}  // namespace Thread
+}  // namespace ot

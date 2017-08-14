@@ -33,26 +33,29 @@
 
 #define WPP_NAME "dhcp6_server.tmh"
 
-#include <openthread-types.h>
-#include <common/code_utils.hpp>
-#include <common/encoding.hpp>
-#include <common/logging.hpp>
-#include <net/dhcp6_server.hpp>
-#include <thread/mle.hpp>
-#include <thread/thread_netif.hpp>
+#include <openthread/config.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
-using Thread::Encoding::BigEndian::HostSwap32;
+#include "dhcp6_server.hpp"
 
-namespace Thread {
+#include <openthread/types.h>
+
+#include "common/code_utils.hpp"
+#include "common/encoding.hpp"
+#include "common/logging.hpp"
+#include "thread/mle.hpp"
+#include "thread/thread_netif.hpp"
+
+#if OPENTHREAD_ENABLE_DHCP6_SERVER
+
+using ot::Encoding::BigEndian::HostSwap16;
+using ot::Encoding::BigEndian::HostSwap32;
+
+namespace ot {
 namespace Dhcp6 {
 
 Dhcp6Server::Dhcp6Server(ThreadNetif &aThreadNetif):
-    mSocket(aThreadNetif.GetIp6().mUdp),
-    mMac(aThreadNetif.GetMac()),
-    mMle(aThreadNetif.GetMle()),
-    mNetworkDataLeader(aThreadNetif.GetNetworkDataLeader()),
-    mNetif(aThreadNetif)
+    ThreadNetifLocator(aThreadNetif),
+    mSocket(aThreadNetif.GetIp6().mUdp)
 {
     for (uint8_t i = 0; i < OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES; i++)
     {
@@ -64,12 +67,13 @@ Dhcp6Server::Dhcp6Server(ThreadNetif &aThreadNetif):
     mPrefixAgentsMask = 0;
 }
 
-ThreadError Dhcp6Server::UpdateService(void)
+otError Dhcp6Server::UpdateService(void)
 {
-    ThreadError error = kThreadError_None;
+    ThreadNetif &netif = GetNetif();
+    otError error = OT_ERROR_NONE;
     bool found;
     uint8_t i;
-    uint16_t rloc16 = mMle.GetRloc16();
+    uint16_t rloc16 = netif.GetMle().GetRloc16();
     Ip6::Address *address = NULL;
     otNetworkDataIterator iterator;
     otBorderRouterConfig config;
@@ -80,7 +84,7 @@ ThreadError Dhcp6Server::UpdateService(void)
     {
         found = false;
 
-        if (mAgentsAloc[i].mValidLifetime == 0)
+        if (!mAgentsAloc[i].mValid)
         {
             continue;
         }
@@ -88,14 +92,15 @@ ThreadError Dhcp6Server::UpdateService(void)
         address = &(mAgentsAloc[i].GetAddress());
         iterator = OT_NETWORK_DATA_ITERATOR_INIT;
 
-        while (mNetworkDataLeader.GetNextOnMeshPrefix(&iterator, rloc16, &config) == kThreadError_None)
+        while (netif.GetNetworkDataLeader().GetNextOnMeshPrefix(&iterator, rloc16, &config) == OT_ERROR_NONE)
         {
             if (!config.mDhcp)
             {
                 continue;
             }
 
-            mNetworkDataLeader.GetContext(*static_cast<const Ip6::Address *>(&(config.mPrefix.mPrefix)), lowpanContext);
+            netif.GetNetworkDataLeader().GetContext(*static_cast<const Ip6::Address *>(&(config.mPrefix.mPrefix)),
+                                                    lowpanContext);
 
             if (address->mFields.m8[15] == lowpanContext.mContextId)
             {
@@ -107,9 +112,9 @@ ThreadError Dhcp6Server::UpdateService(void)
 
         if (!found)
         {
-            mNetworkDataLeader.GetContext(address->mFields.m8[15], lowpanContext);
-            mNetif.RemoveUnicastAddress(mAgentsAloc[i]);
-            mAgentsAloc[i].mValidLifetime = 0;
+            netif.GetNetworkDataLeader().GetContext(address->mFields.m8[15], lowpanContext);
+            netif.RemoveUnicastAddress(mAgentsAloc[i]);
+            mAgentsAloc[i].mValid = false;
             RemovePrefixAgent(lowpanContext.mPrefix);
         }
     }
@@ -117,7 +122,7 @@ ThreadError Dhcp6Server::UpdateService(void)
     // add dhcp agent aloc and prefix delegation
     iterator = OT_NETWORK_DATA_ITERATOR_INIT;
 
-    while (mNetworkDataLeader.GetNextOnMeshPrefix(&iterator, rloc16, &config) == kThreadError_None)
+    while (netif.GetNetworkDataLeader().GetNextOnMeshPrefix(&iterator, rloc16, &config) == OT_ERROR_NONE)
     {
         found = false;
 
@@ -126,13 +131,14 @@ ThreadError Dhcp6Server::UpdateService(void)
             continue;
         }
 
-        mNetworkDataLeader.GetContext(*static_cast<const Ip6::Address *>(&config.mPrefix.mPrefix), lowpanContext);
+        netif.GetNetworkDataLeader().GetContext(*static_cast<const Ip6::Address *>(&config.mPrefix.mPrefix),
+                                                lowpanContext);
 
         for (i = 0; i < OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES; i++)
         {
             address = &(mAgentsAloc[i].GetAddress());
 
-            if ((mAgentsAloc[i].mValidLifetime != 0) && (address->mFields.m8[15] == lowpanContext.mContextId))
+            if ((mAgentsAloc[i].mValid) && (address->mFields.m8[15] == lowpanContext.mContextId))
             {
                 found = true;
                 break;
@@ -147,19 +153,19 @@ ThreadError Dhcp6Server::UpdateService(void)
 
         for (i = 0; i < OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES; i++)
         {
-            if (mAgentsAloc[i].mValidLifetime == 0)
+            if (!mAgentsAloc[i].mValid)
             {
                 address = &(mAgentsAloc[i].GetAddress());
-                memcpy(address, mMle.GetMeshLocalPrefix(), 8);
+                memcpy(address, netif.GetMle().GetMeshLocalPrefix(), 8);
                 address->mFields.m16[4] = HostSwap16(0x0000);
                 address->mFields.m16[5] = HostSwap16(0x00ff);
                 address->mFields.m16[6] = HostSwap16(0xfe00);
-                address->mFields.m8[14] = Mle::kAloc16Mask;
+                address->mFields.m8[14] = Ip6::Address::kAloc16Mask;
                 address->mFields.m8[15] = lowpanContext.mContextId;
                 mAgentsAloc[i].mPrefixLength = 128;
-                mAgentsAloc[i].mPreferredLifetime = 0xffffffff;
-                mAgentsAloc[i].mValidLifetime = 0xffffffff;
-                mNetif.AddUnicastAddress(mAgentsAloc[i]);
+                mAgentsAloc[i].mPreferred = true;
+                mAgentsAloc[i].mValid = true;
+                netif.AddUnicastAddress(mAgentsAloc[i]);
                 AddPrefixAgent(config.mPrefix);
                 break;
             }
@@ -168,7 +174,7 @@ ThreadError Dhcp6Server::UpdateService(void)
         // if no available Dhcp Agent Aloc resources
         if (i == OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES)
         {
-            ExitNow(error = kThreadError_NoBufs);
+            ExitNow(error = OT_ERROR_NO_BUFS);
         }
     }
 
@@ -185,25 +191,25 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::Start(void)
+otError Dhcp6Server::Start(void)
 {
     Ip6::SockAddr sockaddr;
     sockaddr.mPort = kDhcpServerPort;
     mSocket.Open(&Dhcp6Server::HandleUdpReceive, this);
     mSocket.Bind(sockaddr);
 
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Dhcp6Server::Stop(void)
+otError Dhcp6Server::Stop(void)
 {
     mSocket.Close();
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError Dhcp6Server::AddPrefixAgent(otIp6Prefix &aIp6Prefix)
+otError Dhcp6Server::AddPrefixAgent(otIp6Prefix &aIp6Prefix)
 {
-    ThreadError error = kThreadError_NoBufs;
+    otError error = OT_ERROR_NO_BUFS;
 
     for (uint8_t i = 0; i < OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES; i++)
     {
@@ -214,16 +220,16 @@ ThreadError Dhcp6Server::AddPrefixAgent(otIp6Prefix &aIp6Prefix)
 
         mPrefixAgents[i].SetPrefix(aIp6Prefix);
         mPrefixAgentsCount++;
-        ExitNow(error = kThreadError_None);
+        ExitNow(error = OT_ERROR_NONE);
     }
 
 exit:
     return error;
 }
 
-ThreadError Dhcp6Server::RemovePrefixAgent(const uint8_t *aIp6Address)
+otError Dhcp6Server::RemovePrefixAgent(const uint8_t *aIp6Address)
 {
-    ThreadError error = kThreadError_NotFound;
+    otError error = OT_ERROR_NOT_FOUND;
     otIp6Prefix *prefix = NULL;
 
     for (uint8_t i = 0; i < OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES; i++)
@@ -239,7 +245,7 @@ ThreadError Dhcp6Server::RemovePrefixAgent(const uint8_t *aIp6Address)
         {
             memset(&(mPrefixAgents[i]), 0, sizeof(PrefixAgent));
             mPrefixAgentsCount--;
-            ExitNow(error = kThreadError_None);
+            ExitNow(error = OT_ERROR_NONE);
         }
     }
 
@@ -247,7 +253,7 @@ exit:
     return error;
 }
 
-void Dhcp6Server::HandleUdpReceive(void *aContext, otMessage aMessage, const otMessageInfo *aMessageInfo)
+void Dhcp6Server::HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo)
 {
     Dhcp6Server *obj = static_cast<Dhcp6Server *>(aContext);
     obj->HandleUdpReceive(*static_cast<Message *>(aMessage), *static_cast<const Ip6::MessageInfo *>(aMessageInfo));
@@ -258,16 +264,16 @@ void Dhcp6Server::HandleUdpReceive(Message &aMessage, const Ip6::MessageInfo &aM
     Dhcp6Header header;
     otIp6Address dst = aMessageInfo.mPeerAddr;
 
-    VerifyOrExit(aMessage.Read(aMessage.GetOffset(), sizeof(header), &header) == sizeof(header),);
+    VerifyOrExit(aMessage.Read(aMessage.GetOffset(), sizeof(header), &header) == sizeof(header));
     aMessage.MoveOffset(sizeof(header));
 
     // discard if not solicit type
-    VerifyOrExit((header.GetType() == kTypeSolicit), ;);
+    VerifyOrExit((header.GetType() == kTypeSolicit));
 
     ProcessSolicit(aMessage, dst, header.GetTransactionId());
 
 exit:
-    {}
+    return;
 }
 
 void Dhcp6Server::ProcessSolicit(Message &aMessage, otIp6Address &aDst, uint8_t *aTransactionId)
@@ -279,14 +285,14 @@ void Dhcp6Server::ProcessSolicit(Message &aMessage, otIp6Address &aDst, uint8_t 
     uint16_t length = aMessage.GetLength() - aMessage.GetOffset();
 
     // Client Identifier (discard if not present)
-    VerifyOrExit((optionOffset = FindOption(aMessage, offset, length, kOptionClientIdentifier)) > 0, ;);
+    VerifyOrExit((optionOffset = FindOption(aMessage, offset, length, kOptionClientIdentifier)) > 0);
     SuccessOrExit(ProcessClientIdentifier(aMessage, optionOffset, clientIdentifier));
 
     // Server Identifier (assuming Rapid Commit, discard if present)
-    VerifyOrExit(FindOption(aMessage, offset, length, kOptionServerIdentifier) == 0, ;);
+    VerifyOrExit(FindOption(aMessage, offset, length, kOptionServerIdentifier) == 0);
 
     // Rapid Commit (assuming Rapid Commit, discard if not present)
-    VerifyOrExit(FindOption(aMessage, offset, length, kOptionRapidCommit) > 0, ;);
+    VerifyOrExit(FindOption(aMessage, offset, length, kOptionRapidCommit) > 0);
 
     // Elapsed Time if present
     if ((optionOffset = FindOption(aMessage, offset, length, kOptionElapsedTime)) > 0)
@@ -295,13 +301,13 @@ void Dhcp6Server::ProcessSolicit(Message &aMessage, otIp6Address &aDst, uint8_t 
     }
 
     // IA_NA (discard if not present)
-    VerifyOrExit((optionOffset = FindOption(aMessage, offset, length, kOptionIaNa)) > 0, ;);
+    VerifyOrExit((optionOffset = FindOption(aMessage, offset, length, kOptionIaNa)) > 0);
     SuccessOrExit(ProcessIaNa(aMessage, optionOffset, iana));
 
     SuccessOrExit(SendReply(aDst, aTransactionId, clientIdentifier, iana));
 
 exit:
-    {}
+    return;
 }
 
 uint16_t Dhcp6Server::FindOption(Message &aMessage, uint16_t aOffset, uint16_t aLength, Code aCode)
@@ -311,7 +317,7 @@ uint16_t Dhcp6Server::FindOption(Message &aMessage, uint16_t aOffset, uint16_t a
     while (aOffset <= end)
     {
         Dhcp6Option option;
-        VerifyOrExit(aMessage.Read(aOffset, sizeof(option), &option) == sizeof(option),);
+        VerifyOrExit(aMessage.Read(aOffset, sizeof(option), &option) == sizeof(option));
 
         if (option.GetCode() == aCode)
         {
@@ -324,49 +330,49 @@ uint16_t Dhcp6Server::FindOption(Message &aMessage, uint16_t aOffset, uint16_t a
 exit:
     return 0;
 }
-ThreadError Dhcp6Server::ProcessClientIdentifier(Message &aMessage, uint16_t aOffset, ClientIdentifier &aClient)
+otError Dhcp6Server::ProcessClientIdentifier(Message &aMessage, uint16_t aOffset, ClientIdentifier &aClient)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     VerifyOrExit(((aMessage.Read(aOffset, sizeof(aClient), &aClient) == sizeof(aClient)) &&
                   (aClient.GetLength() == (sizeof(aClient) - sizeof(Dhcp6Option))) &&
                   (aClient.GetDuidType() == kDuidLL) &&
                   (aClient.GetDuidHardwareType() == kHardwareTypeEui64)),
-                 error = kThreadError_Parse);
+                 error = OT_ERROR_PARSE);
 exit:
     return error;
 }
 
-ThreadError Dhcp6Server::ProcessElapsedTime(Message &aMessage, uint16_t aOffset)
+otError Dhcp6Server::ProcessElapsedTime(Message &aMessage, uint16_t aOffset)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     ElapsedTime option;
 
     VerifyOrExit(((aMessage.Read(aOffset, sizeof(option), &option) == sizeof(option)) &&
                   (option.GetLength() == ((sizeof(option) - sizeof(Dhcp6Option))))),
-                 error = kThreadError_Parse);
+                 error = OT_ERROR_PARSE);
 exit:
     return error;
 }
 
-ThreadError Dhcp6Server::ProcessIaNa(Message &aMessage, uint16_t aOffset, IaNa &aIaNa)
+otError Dhcp6Server::ProcessIaNa(Message &aMessage, uint16_t aOffset, IaNa &aIaNa)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     uint16_t optionOffset;
     uint16_t length;
 
-    VerifyOrExit((aMessage.Read(aOffset, sizeof(aIaNa), &aIaNa) == sizeof(aIaNa)), error = kThreadError_Parse);
+    VerifyOrExit((aMessage.Read(aOffset, sizeof(aIaNa), &aIaNa) == sizeof(aIaNa)), error = OT_ERROR_PARSE);
 
     aOffset += sizeof(aIaNa);
     length = aIaNa.GetLength() + sizeof(Dhcp6Option) - sizeof(IaNa);
 
-    VerifyOrExit(length <= aMessage.GetLength() - aOffset, error = kThreadError_Parse);
+    VerifyOrExit(length <= aMessage.GetLength() - aOffset, error = OT_ERROR_PARSE);
 
     mPrefixAgentsMask = 0;
 
     while (length > 0)
     {
-        VerifyOrExit((optionOffset = FindOption(aMessage, aOffset, length, kOptionIaAddress)) > 0, ;);
+        VerifyOrExit((optionOffset = FindOption(aMessage, aOffset, length, kOptionIaAddress)) > 0);
         SuccessOrExit(error = ProcessIaAddress(aMessage, optionOffset));
 
         length -= ((optionOffset - aOffset) + sizeof(IaAddress));
@@ -377,15 +383,15 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::ProcessIaAddress(Message &aMessage, uint16_t aOffset)
+otError Dhcp6Server::ProcessIaAddress(Message &aMessage, uint16_t aOffset)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     otIp6Prefix *prefix = NULL;
     IaAddress option;
 
     VerifyOrExit(((aMessage.Read(aOffset, sizeof(option), &option) == sizeof(option)) &&
                   option.GetLength() == (sizeof(option) - sizeof(Dhcp6Option))),
-                 error = kThreadError_Parse);
+                 error = OT_ERROR_PARSE);
 
     // mask matching prefix
     for (uint8_t i = 0; i < OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES; i++)
@@ -399,7 +405,7 @@ ThreadError Dhcp6Server::ProcessIaAddress(Message &aMessage, uint16_t aOffset)
 
         if (otIp6PrefixMatch(option.GetAddress(), &(prefix->mPrefix)) >= prefix->mLength)
         {
-            mPrefixAgentsMask |= (1 << i);;
+            mPrefixAgentsMask |= (1 << i);
             break;
         }
     }
@@ -408,13 +414,13 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::SendReply(otIp6Address &aDst, uint8_t *aTransactionId, ClientIdentifier &aClient, IaNa &aIaNa)
+otError Dhcp6Server::SendReply(otIp6Address &aDst, uint8_t *aTransactionId, ClientIdentifier &aClient, IaNa &aIaNa)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     Ip6::MessageInfo messageInfo;
     Message *message;
 
-    VerifyOrExit((message = mSocket.NewMessage(0)) != NULL, error = kThreadError_NoBufs);
+    VerifyOrExit((message = mSocket.NewMessage(0)) != NULL, error = OT_ERROR_NO_BUFS);
     SuccessOrExit(error = AppendHeader(*message, aTransactionId));
     SuccessOrExit(error = AppendServerIdentifier(*message));
     SuccessOrExit(error = AppendClientIdentifier(*message, aClient));
@@ -430,7 +436,7 @@ ThreadError Dhcp6Server::SendReply(otIp6Address &aDst, uint8_t *aTransactionId, 
 
 exit:
 
-    if (message != NULL && error != kThreadError_None)
+    if (message != NULL && error != OT_ERROR_NONE)
     {
         message->Free();
     }
@@ -438,7 +444,7 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::AppendHeader(Message &aMessage, uint8_t *aTransactionId)
+otError Dhcp6Server::AppendHeader(Message &aMessage, uint8_t *aTransactionId)
 {
     Dhcp6Header header;
 
@@ -448,29 +454,29 @@ ThreadError Dhcp6Server::AppendHeader(Message &aMessage, uint8_t *aTransactionId
     return aMessage.Append(&header, sizeof(header));
 }
 
-ThreadError Dhcp6Server::AppendClientIdentifier(Message &aMessage, ClientIdentifier &aClient)
+otError Dhcp6Server::AppendClientIdentifier(Message &aMessage, ClientIdentifier &aClient)
 {
     return aMessage.Append(&aClient, sizeof(aClient));
 }
 
-ThreadError Dhcp6Server::AppendServerIdentifier(Message &aMessage)
+otError Dhcp6Server::AppendServerIdentifier(Message &aMessage)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     ServerIdentifier option;
 
     option.Init();
     option.SetDuidType(kDuidLL);
     option.SetDuidHardwareType(kHardwareTypeEui64);
-    option.SetDuidLinkLayerAddress(mMac.GetExtAddress());
+    option.SetDuidLinkLayerAddress(GetNetif().GetMac().GetExtAddress());
     SuccessOrExit(error = aMessage.Append(&option, sizeof(option)));
 
 exit:
     return error;
 }
 
-ThreadError Dhcp6Server::AppendIaNa(Message &aMessage, IaNa &aIaNa)
+otError Dhcp6Server::AppendIaNa(Message &aMessage, IaNa &aIaNa)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     uint16_t length = 0;
 
     if (mPrefixAgentsMask)
@@ -499,7 +505,7 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::AppendStatusCode(Message &aMessage, Status aStatus)
+otError Dhcp6Server::AppendStatusCode(Message &aMessage, Status aStatus)
 {
     StatusCode option;
 
@@ -508,9 +514,9 @@ ThreadError Dhcp6Server::AppendStatusCode(Message &aMessage, Status aStatus)
     return aMessage.Append(&option, sizeof(option));
 }
 
-ThreadError Dhcp6Server::AppendIaAddress(Message &aMessage, ClientIdentifier &aClient)
+otError Dhcp6Server::AppendIaAddress(Message &aMessage, ClientIdentifier &aClient)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     otIp6Prefix *prefix = NULL;
 
     // if specified, only apply specified prefixes
@@ -544,9 +550,9 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::AddIaAddress(Message &aMessage, otIp6Prefix &aIp6Prefix, ClientIdentifier &aClient)
+otError Dhcp6Server::AddIaAddress(Message &aMessage, otIp6Prefix &aIp6Prefix, ClientIdentifier &aClient)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     IaAddress option;
 
     option.Init();
@@ -559,7 +565,7 @@ exit:
     return error;
 }
 
-ThreadError Dhcp6Server::AppendRapidCommit(Message &aMessage)
+otError Dhcp6Server::AppendRapidCommit(Message &aMessage)
 {
     RapidCommit option;
 
@@ -568,4 +574,6 @@ ThreadError Dhcp6Server::AppendRapidCommit(Message &aMessage)
 }
 
 }  // namespace Dhcp6
-}  // namespace Thread
+}  // namespace ot
+
+#endif //  OPENTHREAD_ENABLE_DHCP6_SERVER
