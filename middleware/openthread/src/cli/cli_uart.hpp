@@ -34,11 +34,13 @@
 #ifndef CLI_UART_HPP_
 #define CLI_UART_HPP_
 
-#include <openthread-types.h>
-#include <cli/cli_server.hpp>
-#include <common/tasklet.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "cli/cli.hpp"
+#include "cli/cli_server.hpp"
+#include "common/tasklet.hpp"
+
+namespace ot {
 namespace Cli {
 
 /**
@@ -65,7 +67,7 @@ public:
      * @returns The number of bytes placed in the output queue.
      *
      */
-    int Output(const char *aBuf, uint16_t aBufLength);
+    virtual int Output(const char *aBuf, uint16_t aBufLength);
 
     /**
      * This method delivers formatted output to the client.
@@ -76,7 +78,7 @@ public:
      * @returns The number of bytes placed in the output queue.
      *
      */
-    int OutputFormat(const char *fmt, ...);
+    virtual int OutputFormat(const char *fmt, ...);
 
     /**
      * This method delivers formatted output to the client.
@@ -88,6 +90,14 @@ public:
      *
      */
     int OutputFormatV(const char *aFmt, va_list aAp);
+
+    /**
+     * This method returns a reference to the interpreter object.
+     *
+     * @returns A reference to the interpreter object.
+     *
+     */
+    Interpreter &GetInterpreter(void) { return mInterpreter; }
 
     void ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength);
     void SendDoneTask(void);
@@ -102,7 +112,7 @@ private:
         kMaxLineLength = 128,
     };
 
-    ThreadError ProcessCommand(void);
+    otError ProcessCommand(void);
     void Send(void);
 
     char mRxBuffer[kRxBufferSize];
@@ -120,6 +130,6 @@ private:
 };
 
 }  // namespace Cli
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // CLI_UART_HPP_
