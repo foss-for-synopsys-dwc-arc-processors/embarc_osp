@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -30,27 +30,23 @@
  * @file
  *   This file implements the OpenThread platform abstraction for UART communication.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
  */
 
 #include <stddef.h>
 
-#include <openthread-types.h>
-#include <common/code_utils.hpp>
-#include <platform/uart.h>
+#include "openthread/types.h"
+#include <utils/code_utils.h>
+#include "openthread/platform/uart.h"
 #include "platform-emsk.h"
 
-#define DEBUG
-#include "embARC_debug.h"
+#include <stdio.h>
+#define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
 
 enum
 {
-	kUartId = BOARD_CONSOLE_UART_ID,
-	kBaudRate = BOARD_CONSOLE_UART_BAUD,
-	kReceiveBufferSize = 128,
+    kUartId = BOARD_CONSOLE_UART_ID,
+    kBaudRate = BOARD_CONSOLE_UART_BAUD,
+    kReceiveBufferSize = 128,
 };
 
 static void processReceive(void);
@@ -64,86 +60,90 @@ static uint16_t sReceiveHead = 0;
 
 static DEV_UART *consoleUart;
 
-ThreadError otPlatUartEnable(void)
+otError otPlatUartEnable(void)
 {
-	int32_t stateUart = 0;
-	/* UART in embARC */
-	consoleUart = uart_get_dev(BOARD_CONSOLE_UART_ID);
+    int32_t stateUart = 0;
+    otError error = OT_ERROR_DROP;
 
-	if (consoleUart == NULL)
-	{
-		DBG("Console UART is missing.\r\n");
-		return kThreadError_Drop;
-	}
+    /* UART in embARC */
+    consoleUart = uart_get_dev(BOARD_CONSOLE_UART_ID);
 
-	stateUart = consoleUart->uart_open(BOARD_CONSOLE_UART_BAUD);
-	if (stateUart == E_OPNED)
-	{
-		consoleUart->uart_control(UART_CMD_SET_BAUD, (void *)(BOARD_CONSOLE_UART_BAUD));
-		DBG("Set Console UART Baudrate to 115200.\r\n");
-	}
-	else if (stateUart == E_OK)
-	{
-		DBG("Open Console UART Successfully.\r\n");
-	}
-	else
-	{
-		DBG("Open Console UART Error.\r\n");
-	}
+    otEXPECT_ACTION(!(consoleUart == NULL), DBG("Console UART is missing.\r\n"));
 
-	return kThreadError_None;
-}
+    stateUart = consoleUart->uart_open(BOARD_CONSOLE_UART_BAUD);
 
-ThreadError otPlatUartDisable(void)
-{
-	return kThreadError_None;
-}
-
-ThreadError otPlatUartSend(const uint8_t *aBuf, uint16_t aBufLength)
-{
-	ThreadError error = kThreadError_None;
-
-	VerifyOrExit(sTransmitBuffer == NULL, error = kThreadError_Busy);
-
-	sTransmitBuffer = aBuf;
-	sTransmitLength = aBufLength;
+    if (stateUart == E_OPNED)
+    {
+        consoleUart->uart_control(UART_CMD_SET_BAUD, (void *)(BOARD_CONSOLE_UART_BAUD));
+        error = OT_ERROR_NONE;
+        DBG("Set Console UART Baudrate to %d.\r\n", BOARD_CONSOLE_UART_BAUD);
+    }
+    else if (stateUart == E_OK)
+    {
+        error = OT_ERROR_NONE;
+        DBG("Open Console UART Successfully.\r\n");
+    }
+    else
+    {
+        DBG("Open Console UART Error.\r\n");
+    }
 
 exit:
-	return error;
+
+    return error;
+
+}
+
+otError otPlatUartDisable(void)
+{
+    return OT_ERROR_NONE;
+}
+
+otError otPlatUartSend(const uint8_t *aBuf, uint16_t aBufLength)
+{
+    otError error = OT_ERROR_NONE;
+
+    otEXPECT_ACTION(sTransmitBuffer == NULL, error = OT_ERROR_BUSY);
+
+    sTransmitBuffer = aBuf;
+    sTransmitLength = aBufLength;
+
+exit:
+    return error;
 }
 
 void processReceive(void)
 {
 
-	int32_t rdAvail = 0;
-	uint16_t remaining;
+    int32_t rdAvail = 0;
+    uint16_t remaining;
 
-	consoleUart->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rdAvail));
-	VerifyOrExit(rdAvail > 0, ;);
+    consoleUart->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rdAvail));
+    otEXPECT_ACTION(rdAvail > 0, ;);
 
-	remaining = kReceiveBufferSize - sReceiveHead;
+    remaining = kReceiveBufferSize - sReceiveHead;
 
-	if (rdAvail >= remaining)
-	{
-		consoleUart->uart_read((void *)(sReceiveBuffer + sReceiveHead), (uint32_t)remaining);
-		otPlatUartReceived(sReceiveBuffer + sReceiveHead, remaining);
-		sReceiveHead = 0;
-		rdAvail -= (int32_t)remaining;
-	}
+    if (rdAvail >= remaining)
+    {
+        consoleUart->uart_read((void *)(sReceiveBuffer + sReceiveHead), (uint32_t)remaining);
+        otPlatUartReceived(sReceiveBuffer + sReceiveHead, remaining);
+        sReceiveHead = 0;
+        rdAvail -= (int32_t)remaining;
+    }
 
-	while (rdAvail >= kReceiveBufferSize)
-	{
-		consoleUart->uart_read((void *)(sReceiveBuffer + sReceiveHead), (uint32_t)kReceiveBufferSize);
-		otPlatUartReceived(sReceiveBuffer + sReceiveHead, kReceiveBufferSize);
-		rdAvail -= kReceiveBufferSize;
-	}
+    while (rdAvail >= kReceiveBufferSize)
+    {
+        consoleUart->uart_read((void *)(sReceiveBuffer + sReceiveHead), (uint32_t)kReceiveBufferSize);
+        otPlatUartReceived(sReceiveBuffer + sReceiveHead, kReceiveBufferSize);
+        rdAvail -= kReceiveBufferSize;
+    }
 
-	if (rdAvail >0)
-	{
-		consoleUart->uart_read((void *)(sReceiveBuffer + sReceiveHead), (uint32_t)rdAvail);
-		otPlatUartReceived(sReceiveBuffer + sReceiveHead, rdAvail);
-		sReceiveHead += (uint16_t)rdAvail;
-	}
+    if (rdAvail > 0)
+    {
+        consoleUart->uart_read((void *)(sReceiveBuffer + sReceiveHead), (uint32_t)rdAvail);
+        otPlatUartReceived(sReceiveBuffer + sReceiveHead, rdAvail);
+        sReceiveHead += (uint16_t)rdAvail;
+    }
 
 exit:
     return;
@@ -151,12 +151,12 @@ exit:
 
 void processTransmit(void)
 {
-	VerifyOrExit(sTransmitBuffer != NULL, ;);
+    otEXPECT_ACTION(sTransmitBuffer != NULL, ;);
 
-	consoleUart->uart_write((void *)sTransmitBuffer, (int32_t)sTransmitLength);
+    consoleUart->uart_write((void *)sTransmitBuffer, (int32_t)sTransmitLength);
 
-	sTransmitBuffer = NULL;
-	otPlatUartSendDone();
+    sTransmitBuffer = NULL;
+    otPlatUartSendDone();
 
 exit:
     return;
@@ -164,7 +164,7 @@ exit:
 
 void emskUartProcess(void)
 {
-	processReceive();
-	processTransmit();
+    processReceive();
+    processTransmit();
 }
 

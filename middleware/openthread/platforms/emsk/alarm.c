@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -30,19 +30,12 @@
  * @file
  *   This file implements the OpenThread platform abstraction for the alarm.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
  */
 
-#include <platform/alarm.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include "openthread/platform/alarm-milli.h"
 #include "platform-emsk.h"
-
-#ifdef DEBUG
-#undef DEBUG
-#endif
-#include "embARC_debug.h"
 
 static uint32_t sCounter = 0;
 static uint32_t expires;
@@ -50,72 +43,70 @@ static bool sIsRunning = false;
 
 void emskAlarmInit(void)
 {
-	sCounter = OSP_GET_CUR_MS();
+    sCounter = OSP_GET_CUR_MS();
 }
 
-uint32_t otPlatAlarmGetNow(void)
+uint32_t otPlatAlarmMilliGetNow(void)
 {
-	return (OSP_GET_CUR_MS() - sCounter);
+    return (OSP_GET_CUR_MS() - sCounter);
 }
 
-void otPlatAlarmStartAt(otInstance *aInstance, uint32_t t0, uint32_t dt)
+void otPlatAlarmMilliStartAt(otInstance *aInstance, uint32_t t0, uint32_t dt)
 {
-	(void)aInstance;
-	expires = t0 + dt;
-	sIsRunning = true;
+    (void)aInstance;
+    expires = t0 + dt;
+    sIsRunning = true;
 }
 
-void otPlatAlarmStop(otInstance *aInstance)
+void otPlatAlarmMilliStop(otInstance *aInstance)
 {
-	(void)aInstance;
-	sIsRunning = false;
+    (void)aInstance;
+    sIsRunning = false;
 }
 
 void emskAlarmUpdateTimeout(int32_t *aTimeout)
 {
-	int32_t remaining;
+    int32_t remaining;
 
-	if (aTimeout == NULL)
-	{
-		return;
-	}
+    otEXPECT(aTimeout != NULL);
 
-	if (sIsRunning)
-	{
-		remaining = (int32_t)(expires - otPlatAlarmGetNow());
+    if (sIsRunning)
+    {
+        remaining = (int32_t)(expires - otPlatAlarmMilliGetNow());
 
-		if (remaining > 0)
-		{
-			*aTimeout = remaining;
-		}
-		else
-		{
-			*aTimeout = 0;
-		}
-	}
-	else
-	{
-		*aTimeout = 10000;
-	}
+        if (remaining > 0)
+        {
+            *aTimeout = remaining;
+        }
+        else
+        {
+            *aTimeout = 0;
+        }
+    }
+    else
+    {
+        *aTimeout = 10000;
+    }
+
+exit:
+    return;
+
 }
 
 void emskAlarmProcess(otInstance *aInstance)
 {
-	int32_t remaining;
+    int32_t remaining;
 
-	if (sIsRunning)
-	{
-		remaining = (int32_t)(expires - otPlatAlarmGetNow());
-		/* Testing */
-		DBG("remaining time (AlarmProcess) = %d\r\n", remaining);
+    if (sIsRunning)
+    {
+        remaining = (int32_t)(expires - otPlatAlarmMilliGetNow());
 
-		if (remaining <= 0)
-		{
-			sIsRunning = false;
-			otPlatAlarmFired(aInstance);
-			DBG("Enable otPlatAlarmFired()\r\n");
-		}
+        if (remaining <= 0)
+        {
+            sIsRunning = false;
+            otPlatAlarmMilliFired(aInstance);
+        }
 
-	}
+    }
 
 }

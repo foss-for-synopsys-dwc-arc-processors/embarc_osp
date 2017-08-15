@@ -28,64 +28,50 @@
 
 /**
  * @file
- *   This file includes the platform-specific initializers.
- *
+ *   This file includes EMSK compile-time configuration constants for OpenThread.
  */
 
-#ifndef PLATFORM_EMSK_H_
-#define PLATFORM_EMSK_H_
-
-#include <stdint.h>
-#include <stdbool.h>
-#include "openthread/types.h"
-
-#include "board/board.h"
-
-// Global OpenThread instance structure
-extern otInstance *sInstance;
+#ifndef OPENTHREAD_CORE_EMSK_CONFIG_H_
+#define OPENTHREAD_CORE_EMSK_CONFIG_H_
 
 /**
- * This function initializes the alarm service used by OpenThread.
+ * @def OPENTHREAD_CONFIG_PLATFORM_INFO
+ *
+ * The platform-specific string to insert into the OpenThread version string.
  *
  */
-void emskAlarmInit(void);
+#define OPENTHREAD_CONFIG_PLATFORM_INFO                         "EMSK"
 
 /**
- * This function retrieves the time remaining until the alarm fires.
+ * @def OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT
  *
- * @param[out]  aTimeval  A pointer to timer value.
+ * Define to 1 to enable default log output.
  *
  */
-void emskAlarmUpdateTimeout(int32_t *aTimeout);
+#define OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT             1
 
 /**
- * This function performs alarm driver processing.
+ * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ACK_TIMEOUT
+ *
+ * Define to 1 if you want to enable software ACK timeout logic.
  *
  */
-void emskAlarmProcess(otInstance *aInstance);
+#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ACK_TIMEOUT           0
 
 /**
- * This function initializes the radio service used by OpenThread.
+ * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_RETRANSMIT
+ *
+ * Define to 1 if you want to enable software retransmission logic.
  *
  */
-void emskRadioInit(void);
+#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_RETRANSMIT            0
 
 /**
- * This function performs radio driver processing.
+ * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN
+ *
+ * Define to 1 if you want to enable software energy scanning logic.
  *
  */
-void emskRadioProcess(otInstance *aInstance);
+#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN           0
 
-/**
- * This function initializes the random number service used by OpenThread.
- *
- */
-void emskRandomInit(void);
-
-/**
- * This function performs UART driver processing.
- *
- */
-void emskUartProcess(void);
-
-#endif  // PLATFORM_EMSK_H_
+#endif  // OPENTHREAD_CORE_EMSK_CONFIG_H_
