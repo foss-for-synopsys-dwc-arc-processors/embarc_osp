@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -26,27 +26,24 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
- *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
- */
-
-#include <platform/misc.h>
+#include "openthread/platform/misc.h"
 #include "platform-emsk.h"
 
 void otPlatReset(otInstance *aInstance)
 {
-	// Default
-	(void)aInstance;
-	mrf24j40_hard_reset();
+    // Default
+    (void)aInstance;
+    mrf24j40_hard_reset();
 }
 
 otPlatResetReason otPlatGetResetReason(otInstance *aInstance)
 {
-	(void)aInstance;
-	// TODO: Write me!
-	return kPlatResetReason_PowerOn;
+    (void)aInstance;
+    // TODO: Write me!
+    return OT_PLAT_RESET_REASON_POWER_ON;
+}
+
+void otPlatWakeHost(void)
+{
+    // TODO: implement an operation to wake the host from sleep state.
 }

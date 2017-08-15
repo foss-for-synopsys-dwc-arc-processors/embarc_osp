@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -30,99 +30,14 @@
  * @file
  *   This file implements the OpenThread platform abstraction for logging.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
  */
 
-#include <stdio.h>
-#include <stdarg.h>
-
-#include <platform/logging.h>
-#include "platform-emsk.h"
+#include "openthread/platform/logging.h"
 
 void otPlatLog(otLogLevel aLogLevel, otLogRegion aLogRegion, const char *aFormat, ...)
 {
-	va_list args;
-
-	switch (aLogLevel)
-	{
-	case kLogLevelNone:
-		printf("NONE ");
-		break;
-
-	case kLogLevelCrit:
-		printf("CRIT ");
-		break;
-
-	case kLogLevelWarn:
-		printf("WARN ");
-		break;
-
-	case kLogLevelInfo:
-		printf("INFO ");
-		break;
-
-	case kLogLevelDebg:
-		printf("DEBG ");
-		break;
-	}
-
-	switch (aLogRegion)
-	{
-	case kLogRegionApi:
-		printf("API  ");
-		break;
-
-	case kLogRegionMle:
-		printf("MLE  ");
-		break;
-
-	case kLogRegionArp:
-		printf("ARP  ");
-		break;
-
-	case kLogRegionNetData:
-		printf("NETD ");
-		break;
-
-	case kLogRegionIp6:
-		printf("IPV6 ");
-		break;
-
-	case kLogRegionIcmp:
-		printf("ICMP ");
-		break;
-
-	case kLogRegionMac:
-		printf("MAC  ");
-		break;
-
-	case kLogRegionMem:
-		printf("MEM  ");
-		break;
-
-	case kLogRegionNcp:
-		printf("NCP  ");
-		break;
-
-	case kLogRegionMeshCoP:
-		printf("MeshCop  ");
-		break;
-
-	case kLogRegionNetDiag:
-		printf("NetDiag  ");
-		break;
-
-	case kLogRegionPlatform:
-		printf("Platform  ");
-		break;
-	}
-
-	va_start(args, aFormat);
-	vprintf(aFormat, args);
-	printf("\r\n");
-	va_end(args);
+    (void)aLogLevel;
+    (void)aLogRegion;
+    (void)aFormat;
 }
 
