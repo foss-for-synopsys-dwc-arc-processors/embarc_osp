@@ -26,8 +26,18 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* Define to 1 if you want to enable default logging */
-#define OPENTHREAD_ENABLE_DEFAULT_LOGGING 1
+/* Define to 1 to enable the NCP UART interface. */
+// On the command line: #define OPENTHREAD_ENABLE_NCP_UART 0
+
+/* Define to 1 to enable the NCP SPI interface. */
+// On the command line: #define OPENTHREAD_ENABLE_NCP_SPI  1
+
+/* Define to 1 if you want to enable support for multiple OpenThread
+   instances. */
+#define OPENTHREAD_ENABLE_MULTIPLE_INSTANCES 1
+
+/* Define to 1 if you want to enable default log output. */
+#define OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT 1
 
 /* Define to 1 to enable the commissioner role. */
 #define OPENTHREAD_ENABLE_COMMISSIONER 1
@@ -48,13 +58,29 @@
 #define OPENTHREAD_ENABLE_JAM_DETECTION 0
 
 /* Define to 1 to enable DHCPv6 Client. */
-#define OPENTHREAD_ENABLE_DHCP6_CLIENT 0
+#define OPENTHREAD_ENABLE_DHCP6_CLIENT 1
 
 /* Define to 1 to enable DHCPv6 SERVER. */
-#define OPENTHREAD_ENABLE_DHCP6_SERVER 0
+#define OPENTHREAD_ENABLE_DHCP6_SERVER 1
 
 /* Define to 1 to enable MAC whitelist/blacklist feature. */
-#define OPENTHREAD_ENABLE_MAC_WHITELIST 1
+#define OPENTHREAD_ENABLE_MAC_FILTER 1
+
+/* Define to 1 to enable TMF proxy feature. */
+#define OPENTHREAD_ENABLE_TMF_PROXY 0
+
+/* Define to 1 to enable raw link-layer API. */
+#ifdef _KERNEL_MODE
+#define OPENTHREAD_ENABLE_RAW_LINK_API 0
+#else
+#define OPENTHREAD_ENABLE_RAW_LINK_API 1
+#endif
+
+/* Define to the platform name. */
+#define OPENTHREAD_CONFIG_PLATFORM_INFO "Windows"
+
+/* Define to 1 to enable Border Router feature. */
+#define OPENTHREAD_ENABLE_BORDER_ROUTER 1
 
 /* Name of package */
 #define PACKAGE "openthread"
@@ -80,9 +106,6 @@
 /* Version number of package */
 #define VERSION "0.01.00"
 
-/* Platform version information */
-#define PLATFORM_INFO "Windows"
-
 // Windows Kernel only has sprintf_s
 #ifdef _KERNEL_MODE
 #define snprintf sprintf_s
@@ -90,9 +113,6 @@
 
 // Redefine rand to random for test code
 #define random rand
-
-// Temporary !!! TODO - Remove this once we figure out the strncpy issue
-#define _CRT_SECURE_NO_WARNINGS
 
 // Disable a few warnings that we don't care about
 #pragma warning(disable:4200)  // nonstandard extension used: zero-sized array in struct/union
