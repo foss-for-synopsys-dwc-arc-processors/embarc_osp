@@ -2,10 +2,14 @@
 MID_OPENTHREAD_DIR = $(MIDDLEWARES_ROOT)/openthread
 
 MID_OPENTHREAD_ASMSRCDIR	=
-MID_OPENTHREAD_CSRCDIR		= $(MID_OPENTHREAD_DIR)/platforms/emsk \
-				$(MID_OPENTHREAD_DIR)/mbedtls
+MID_OPENTHREAD_CSRCDIR		= $(MID_OPENTHREAD_DIR)/mbedtls \
+				$(MID_OPENTHREAD_DIR)/platforms/emsk \
+				$(MID_OPENTHREAD_DIR)/src/core/utils \
+				$(MID_OPENTHREAD_DIR)/src/core/ncp
 
-MID_OPENTHREAD_CXXSRCDIR	= $(MID_OPENTHREAD_DIR)/src/core \
+MID_OPENTHREAD_CXXSRCDIR	= $(MID_OPENTHREAD_DIR)/platforms/utils \
+				$(MID_OPENTHREAD_DIR)/src/cli \
+				$(MID_OPENTHREAD_DIR)/src/core/api \
 				$(MID_OPENTHREAD_DIR)/src/core/coap \
 				$(MID_OPENTHREAD_DIR)/src/core/common \
 				$(MID_OPENTHREAD_DIR)/src/core/crypto \
@@ -14,16 +18,25 @@ MID_OPENTHREAD_CXXSRCDIR	= $(MID_OPENTHREAD_DIR)/src/core \
 				$(MID_OPENTHREAD_DIR)/src/core/net \
 				$(MID_OPENTHREAD_DIR)/src/core/thread \
 				$(MID_OPENTHREAD_DIR)/src/core/utils \
-				$(MID_OPENTHREAD_DIR)/src/cli \
-				$(MID_OPENTHREAD_DIR)/platforms/utils
+				$(MID_OPENTHREAD_DIR)/src/diag \
+				$(MID_OPENTHREAD_DIR)/src/ncp
 
-MID_OPENTHREAD_INCDIR		= $(MID_OPENTHREAD_DIR)/src \
-				$(MID_OPENTHREAD_DIR)/src/core \
-				$(MID_OPENTHREAD_DIR)/src/cli \
-				$(MID_OPENTHREAD_DIR)/include \
-				$(MID_OPENTHREAD_DIR)/platforms \
+MID_OPENTHREAD_INCDIR		= $(MID_OPENTHREAD_DIR)/include \
+				$(MID_OPENTHREAD_DIR)/include/openthread \
+				$(MID_OPENTHREAD_DIR)/include/openthread/platform \
 				$(MID_OPENTHREAD_DIR)/platforms/emsk \
-				$(MID_OPENTHREAD_DIR)/platforms/utils
+				$(MID_OPENTHREAD_DIR)/platforms/utils \
+				$(MID_OPENTHREAD_DIR)/src/cli \
+				$(MID_OPENTHREAD_DIR)/src/core \
+				$(MID_OPENTHREAD_DIR)/src/core/api \
+				$(MID_OPENTHREAD_DIR)/src/core/coap \
+				$(MID_OPENTHREAD_DIR)/src/core/common \
+				$(MID_OPENTHREAD_DIR)/src/core/crypto \
+				$(MID_OPENTHREAD_DIR)/src/core/mac \
+				$(MID_OPENTHREAD_DIR)/src/core/meshcop \
+				$(MID_OPENTHREAD_DIR)/src/core/net \
+				$(MID_OPENTHREAD_DIR)/src/core/thread \
+				$(MID_OPENTHREAD_DIR)/src/core/utils
 
 # find all the srcs in the target dirs
 MID_OPENTHREAD_CXXSRCS = $(call get_cxxsrcs, $(MID_OPENTHREAD_CXXSRCDIR))
