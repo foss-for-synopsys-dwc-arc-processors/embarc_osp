@@ -34,10 +34,12 @@
 #ifndef CLI_UDP_HPP_
 #define CLI_UDP_HPP_
 
-#include <openthread-types.h>
-#include <cli/cli_server.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "cli/cli.hpp"
+#include "cli/cli_server.hpp"
+
+namespace ot {
 namespace Cli {
 
 /**
@@ -59,10 +61,10 @@ public:
     /**
      * This method starts the CLI server.
      *
-     * @retval kThreadError_None  Successfully started the server.
+     * @retval OT_ERROR_NONE  Successfully started the server.
      *
      */
-    ThreadError Start(void);
+    otError Start(void);
 
     /**
      * This method delivers raw characters to the client.
@@ -73,7 +75,7 @@ public:
      * @returns The number of bytes placed in the output queue.
      *
      */
-    int Output(const char *aBuf, uint16_t aBufLength);
+    virtual int Output(const char *aBuf, uint16_t aBufLength);
 
     /**
      * This method delivers formatted output to the client.
@@ -84,7 +86,7 @@ public:
      * @returns The number of bytes placed in the output queue.
      *
      */
-    int OutputFormat(const char *fmt, ...);
+    virtual int OutputFormat(const char *fmt, ...);
 
 private:
     enum
@@ -92,8 +94,8 @@ private:
         kMaxLineLength = 128,
     };
 
-    static void HandleUdpReceive(void *aContext, otMessage aMessage, const otMessageInfo *aMessageInfo);
-    void HandleUdpReceive(otMessage aMessage, const otMessageInfo *aMessageInfo);
+    static void HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo);
+    void HandleUdpReceive(otMessage *aMessage, const otMessageInfo *aMessageInfo);
 
     otUdpSocket mSocket;
     otMessageInfo mPeer;
@@ -102,6 +104,6 @@ private:
 };
 
 }  // namespace Cli
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // CLI_UDP_HPP_

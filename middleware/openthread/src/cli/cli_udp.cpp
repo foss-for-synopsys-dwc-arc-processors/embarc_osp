@@ -31,15 +31,18 @@
  *   This file implements the CLI server on a UDP socket.
  */
 
+#include <openthread/config.h>
+
+#include "cli_udp.hpp"
+
 #include <stdarg.h>
 #include <stdio.h>
-#include <string.h>
+#include "utils/wrap_string.h"
 
-#include <cli/cli.hpp>
-#include <cli/cli_udp.hpp>
-#include <common/code_utils.hpp>
+#include "cli/cli.hpp"
+#include "common/code_utils.hpp"
 
-namespace Thread {
+namespace ot {
 namespace Cli {
 
 Udp::Udp(otInstance *aInstance, Interpreter *aInterpreter):
@@ -50,33 +53,33 @@ Udp::Udp(otInstance *aInstance, Interpreter *aInterpreter):
     memset(&mPeer, 0, sizeof(mPeer));
 }
 
-ThreadError Udp::Start(void)
+otError Udp::Start(void)
 {
-    ThreadError error;
+    otError error;
 
     otSockAddr sockaddr;
     memset(&sockaddr, 0, sizeof(otSockAddr));
     sockaddr.mPort = 7335;
 
-    SuccessOrExit(error = otOpenUdpSocket(mInstance, &mSocket, &Udp::HandleUdpReceive, this));
-    SuccessOrExit(error = otBindUdpSocket(&mSocket, &sockaddr));
+    SuccessOrExit(error = otUdpOpen(mInstance, &mSocket, &Udp::HandleUdpReceive, this));
+    SuccessOrExit(error = otUdpBind(&mSocket, &sockaddr));
 
 exit:
     return error;
 }
 
-void Udp::HandleUdpReceive(void *aContext, otMessage aMessage, const otMessageInfo *aMessageInfo)
+void Udp::HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo)
 {
     static_cast<Udp *>(aContext)->HandleUdpReceive(aMessage, aMessageInfo);
 }
 
-void Udp::HandleUdpReceive(otMessage aMessage, const otMessageInfo *aMessageInfo)
+void Udp::HandleUdpReceive(otMessage *aMessage, const otMessageInfo *aMessageInfo)
 {
-    uint16_t payloadLength = otGetMessageLength(aMessage) - otGetMessageOffset(aMessage);
+    uint16_t payloadLength = otMessageGetLength(aMessage) - otMessageGetOffset(aMessage);
     char buf[512];
 
-    VerifyOrExit(payloadLength <= sizeof(buf), ;);
-    otReadMessage(aMessage, otGetMessageOffset(aMessage), buf, payloadLength);
+    VerifyOrExit(payloadLength <= sizeof(buf));
+    otMessageRead(aMessage, otMessageGetOffset(aMessage), buf, payloadLength);
 
     if (buf[payloadLength - 1] == '\n')
     {
@@ -93,24 +96,24 @@ void Udp::HandleUdpReceive(otMessage aMessage, const otMessageInfo *aMessageInfo
     mInterpreter->ProcessLine(buf, payloadLength, *this);
 
 exit:
-    {}
+    return;
 }
 
 int Udp::Output(const char *aBuf, uint16_t aBufLength)
 {
-    ThreadError error = kThreadError_None;
-    otMessage message;
+    otError error = OT_ERROR_NONE;
+    otMessage *message;
 
-    VerifyOrExit((message = otNewUdpMessage(mInstance, true)) != NULL, error = kThreadError_NoBufs);
-    SuccessOrExit(error = otSetMessageLength(message, aBufLength));
-    otWriteMessage(message, 0, aBuf, aBufLength);
-    SuccessOrExit(error = otSendUdp(&mSocket, message, &mPeer));
+    VerifyOrExit((message = otUdpNewMessage(mInstance, true)) != NULL, error = OT_ERROR_NO_BUFS);
+    SuccessOrExit(error = otMessageSetLength(message, aBufLength));
+    otMessageWrite(message, 0, aBuf, aBufLength);
+    SuccessOrExit(error = otUdpSend(&mSocket, message, &mPeer));
 
 exit:
 
-    if (error != kThreadError_None && message != NULL)
+    if (error != OT_ERROR_NONE && message != NULL)
     {
-        otFreeMessage(message);
+        otMessageFree(message);
         aBufLength = 0;
     }
 
@@ -130,4 +133,4 @@ int Udp::OutputFormat(const char *fmt, ...)
 }
 
 }  // namespace Cli
-}  // namespace Thread
+}  // namespace ot

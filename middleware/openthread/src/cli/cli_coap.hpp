@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, The OpenThread Authors.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -28,89 +28,72 @@
 
 /**
  * @file
- *   This file contains definitions for a CLI server on the CONSOLE service.
+ *   This file contains definitions for a simple CLI CoAP server and client.
  */
 
-#ifndef CLI_CONSOLE_HPP_
-#define CLI_CONSOLE_HPP_
+#ifndef CLI_COAP_HPP_
+#define CLI_COAP_HPP_
 
-#include <openthread/cli.h>
+#include <openthread/types.h>
 
-#include "cli/cli.hpp"
-#include "cli/cli_server.hpp"
+#include "coap/coap_header.hpp"
 
 namespace ot {
 namespace Cli {
 
+class Interpreter;
+
 /**
- * This class implements the CLI server on top of the CONSOLE platform abstraction.
+ * This class implements the CLI CoAP server and client.
  *
  */
-class Console: public Server
+class Coap
 {
 public:
     /**
      * Constructor
      *
-     * @param[in]  aInstance  The OpenThread instance structure.
+     * @param[in]  aInterpreter  The CLI interpreter.
      *
      */
-    Console(otInstance *aInstance);
+    Coap(Interpreter &aInterpreter): mInterpreter(aInterpreter) { }
 
     /**
-     * This method delivers raw characters to the client.
+     * This method interprets a list of CLI arguments.
      *
-     * @param[in]  aBuf        A pointer to a buffer.
-     * @param[in]  aBufLength  Number of bytes in the buffer.
-     *
-     * @returns The number of bytes placed in the output queue.
+     * @param[in]  argc  The number of elements in argv.
+     * @param[in]  argv  A pointer to an array of command line arguments.
      *
      */
-    int Output(const char *aBuf, uint16_t aBufLength);
-
-    /**
-     * This method delivers formatted output to the client.
-     *
-     * @param[in]  aFmt  A pointer to the format string.
-     * @param[in]  ...   A variable list of arguments to format.
-     *
-     * @returns The number of bytes placed in the output queue.
-     *
-     */
-    int OutputFormat(const char *fmt, ...);
-
-    /**
-     * This method sets a callback that is called when console has some output.
-     *
-     * @param[in]  aCallback   A pointer to a callback method.
-     *
-     */
-    void SetOutputCallback(otCliConsoleOutputCallback aCallback);
-
-    /**
-     * This method sets a context that is returned with the callback.
-     *
-     * @param[in]  aContext   A pointer to a user context.
-     *
-     */
-    void SetContext(void *aContext);
-
-    void ReceiveTask(char *aBuf, uint16_t aBufLength);
+    otError Process(int argc, char *argv[]);
 
 private:
     enum
     {
-        kMaxLineLength = 128,
+        kMaxUriLength = 32,
+        kMaxBufferSize = 16
     };
 
-    otCliConsoleOutputCallback mCallback;
-    void *mContext;
+    void PrintPayload(otMessage *aMessage) const;
 
-    Interpreter mInterpreter;
+    otError ProcessRequest(int argc, char *argv[]);
 
+    static void OTCALL HandleServerResponse(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
+                                            const otMessageInfo *aMessageInfo);
+    void HandleServerResponse(otCoapHeader *aHeader, otMessage *aMessage, const otMessageInfo *aMessageInfo);
+
+    static void OTCALL HandleClientResponse(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
+                                            const otMessageInfo *aMessageInfo, otError aError);
+    void HandleClientResponse(otCoapHeader *aHeader, otMessage *aMessage, const otMessageInfo *aMessageInfo,
+                              otError aError);
+
+    otCoapResource mResource;
+    char mUriPath[kMaxUriLength];
+
+    Interpreter &mInterpreter;
 };
 
 }  // namespace Cli
 }  // namespace ot
 
-#endif  // CLI_CONSOLE_HPP_
+#endif  // CLI_COAP_HPP_
