@@ -34,14 +34,15 @@
 
 #include <stdlib.h>
 #include <stddef.h>
-#include <string.h>
+#include "utils/wrap_string.h"
 #include <assert.h>
 
-#include <openthread-types.h>
 #include <openthread-core-config.h>
 
-#include <common/code_utils.hpp>
-#include <platform/settings.h>
+#include "openthread/types.h"
+#include "openthread/platform/settings.h"
+
+#include <utils/code_utils.h>
 
 #include "flash.h"
 
@@ -76,7 +77,7 @@ struct settingsBlock
     uint16_t reserved;
 } OT_TOOL_PACKED_END;
 
-/* Modify this part for ARC EMSK*/
+
 /**
  * @def SETTINGS_CONFIG_BASE_ADDRESS
  *
@@ -84,7 +85,7 @@ struct settingsBlock
  *
  */
 #ifndef SETTINGS_CONFIG_BASE_ADDRESS
-#define SETTINGS_CONFIG_BASE_ADDRESS                 0x00ffe000
+#define SETTINGS_CONFIG_BASE_ADDRESS                 0x39000
 #endif  // SETTINGS_CONFIG_BASE_ADDRESS
 
 /**
@@ -94,7 +95,7 @@ struct settingsBlock
  *
  */
 #ifndef SETTINGS_CONFIG_PAGE_SIZE
-#define SETTINGS_CONFIG_PAGE_SIZE                    0x1000
+#define SETTINGS_CONFIG_PAGE_SIZE                    0x800
 #endif  // SETTINGS_CONFIG_PAGE_SIZE
 
 /**
@@ -104,7 +105,7 @@ struct settingsBlock
  *
  */
 #ifndef SETTINGS_CONFIG_PAGE_NUM
-#define SETTINGS_CONFIG_PAGE_NUM                     1
+#define SETTINGS_CONFIG_PAGE_NUM                     2
 #endif  // SETTINGS_CONFIG_PAGE_NUM
 
 static uint32_t sSettingsBaseAddress;
@@ -148,7 +149,7 @@ static uint32_t swapSettingsBlock(otInstance *aInstance)
 
     (void)aInstance;
 
-    VerifyOrExit(pageNum > 1, ;);
+    otEXPECT(pageNum > 1);
 
     sSettingsBaseAddress = (swapAddress == SETTINGS_CONFIG_BASE_ADDRESS) ?
                            (swapAddress + settingsSize) :
@@ -215,10 +216,10 @@ exit:
     return settingsSize - sSettingsUsedSize;
 }
 
-static ThreadError addSetting(otInstance *aInstance, uint16_t aKey, bool aIndex0, const uint8_t *aValue,
-                              uint16_t aValueLength)
+static otError addSetting(otInstance *aInstance, uint16_t aKey, bool aIndex0, const uint8_t *aValue,
+                          uint16_t aValueLength)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
     OT_TOOL_PACKED_BEGIN
     struct addSettingsBlock
     {
@@ -243,8 +244,8 @@ static ThreadError addSetting(otInstance *aInstance, uint16_t aKey, bool aIndex0
     if ((sSettingsUsedSize + getAlignLength(addBlock.block.length) + sizeof(struct settingsBlock)) >=
         settingsSize)
     {
-        VerifyOrExit(swapSettingsBlock(aInstance) >= (getAlignLength(addBlock.block.length) + sizeof(struct settingsBlock)),
-                     error = kThreadError_NoBufs);
+        otEXPECT_ACTION(swapSettingsBlock(aInstance) >= (getAlignLength(addBlock.block.length) + sizeof(struct settingsBlock)),
+                        error = OT_ERROR_NO_BUFS);
     }
 
     utilsFlashWrite(sSettingsBaseAddress + sSettingsUsedSize,
@@ -319,28 +320,29 @@ void otPlatSettingsInit(otInstance *aInstance)
     }
 }
 
-ThreadError otPlatSettingsBeginChange(otInstance *aInstance)
+otError otPlatSettingsBeginChange(otInstance *aInstance)
 {
     (void)aInstance;
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError otPlatSettingsCommitChange(otInstance *aInstance)
+otError otPlatSettingsCommitChange(otInstance *aInstance)
 {
     (void)aInstance;
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError otPlatSettingsAbandonChange(otInstance *aInstance)
+otError otPlatSettingsAbandonChange(otInstance *aInstance)
 {
     (void)aInstance;
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-ThreadError otPlatSettingsGet(otInstance *aInstance, uint16_t aKey, int aIndex, uint8_t *aValue, uint16_t *aValueLength)
+otError otPlatSettingsGet(otInstance *aInstance, uint16_t aKey, int aIndex, uint8_t *aValue, uint16_t *aValueLength)
 {
-    ThreadError error = kThreadError_NotFound;
+    otError error = OT_ERROR_NOT_FOUND;
     uint32_t address = sSettingsBaseAddress + kSettingsFlagSize;
+    uint16_t valueLength = 0;
     int index = 0;
 
     (void)aInstance;
@@ -362,18 +364,22 @@ ThreadError otPlatSettingsGet(otInstance *aInstance, uint16_t aKey, int aIndex, 
             {
                 if (index == aIndex)
                 {
-                    error = kThreadError_None;
+                    uint16_t readLength = block.length;
 
-                    if (aValueLength)
+                    // only perform read if an input buffer was passed in
+                    if (aValue != NULL && aValueLength != NULL)
                     {
-                        *aValueLength = block.length;
+                        // adjust read length if input buffer length is smaller
+                        if (readLength > *aValueLength)
+                        {
+                            readLength = *aValueLength;
+                        }
+
+                        utilsFlashRead(address + sizeof(struct settingsBlock), aValue, readLength);
                     }
 
-                    if (aValue)
-                    {
-                        VerifyOrExit(aValueLength, error = kThreadError_InvalidArgs);
-                        utilsFlashRead(address + sizeof(struct settingsBlock), aValue, block.length);
-                    }
+                    valueLength = block.length;
+                    error = OT_ERROR_NONE;
                 }
 
                 index++;
@@ -383,27 +389,31 @@ ThreadError otPlatSettingsGet(otInstance *aInstance, uint16_t aKey, int aIndex, 
         address += (getAlignLength(block.length) + sizeof(struct settingsBlock));
     }
 
-exit:
+    if (aValueLength != NULL)
+    {
+        *aValueLength = valueLength;
+    }
+
     return error;
 }
 
-ThreadError otPlatSettingsSet(otInstance *aInstance, uint16_t aKey, const uint8_t *aValue, uint16_t aValueLength)
+otError otPlatSettingsSet(otInstance *aInstance, uint16_t aKey, const uint8_t *aValue, uint16_t aValueLength)
 {
     return addSetting(aInstance, aKey, true, aValue, aValueLength);
 }
 
-ThreadError otPlatSettingsAdd(otInstance *aInstance, uint16_t aKey, const uint8_t *aValue, uint16_t aValueLength)
+otError otPlatSettingsAdd(otInstance *aInstance, uint16_t aKey, const uint8_t *aValue, uint16_t aValueLength)
 {
     uint16_t length;
     bool index0;
 
-    index0 = (otPlatSettingsGet(aInstance, aKey, 0, NULL, &length) == kThreadError_NotFound ? true : false);
+    index0 = (otPlatSettingsGet(aInstance, aKey, 0, NULL, &length) == OT_ERROR_NOT_FOUND ? true : false);
     return addSetting(aInstance, aKey, index0, aValue, aValueLength);
 }
 
-ThreadError otPlatSettingsDelete(otInstance *aInstance, uint16_t aKey, int aIndex)
+otError otPlatSettingsDelete(otInstance *aInstance, uint16_t aKey, int aIndex)
 {
-    ThreadError error = kThreadError_NotFound;
+    otError error = OT_ERROR_NOT_FOUND;
     uint32_t address = sSettingsBaseAddress + kSettingsFlagSize;
     int index = 0;
 
@@ -426,7 +436,7 @@ ThreadError otPlatSettingsDelete(otInstance *aInstance, uint16_t aKey, int aInde
             {
                 if (aIndex == index || aIndex == -1)
                 {
-                    error = kThreadError_None;
+                    error = OT_ERROR_NONE;
                     block.flag &= (~kBlockDeleteFlag);
                     utilsFlashWrite(address, reinterpret_cast<uint8_t *>(&block), sizeof(block));
                 }
