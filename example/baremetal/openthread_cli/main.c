@@ -107,26 +107,28 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
-#ifdef OPENTHREAD_CONFIG_FILE
-#include OPENTHREAD_CONFIG_FILE
-#else
-#include <openthread-config.h>
-#endif
+#include <openthread/config.h>
 
-#include <openthread-core-config.h>
-#include <openthread.h>
-#include <openthread-diag.h>
-#include <openthread-tasklet.h>
-#include "cli/cli-uart.h"
-#include "platform/platform.h"
 #include <assert.h>
 
-#ifdef TASK_STACK_SIZE_MAIN
-#undef TASK_STACK_SIZE_MAIN
-#endif
-#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(131070)
+#include <openthread/cli.h>
+#include <openthread/diag.h>
+#include <openthread/openthread.h>
+#include <openthread/platform/platform.h>
 
-void otSignalTaskletPending(otInstance *aInstance)
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+void *otPlatCAlloc(size_t aNum, size_t aSize)
+{
+	return calloc(aNum, aSize);
+}
+
+void otPlatFree(void *aPtr)
+{
+	free(aPtr);
+}
+#endif
+
+void otTaskletsSignalPending(otInstance *aInstance)
 {
 	(void)aInstance;
 }
@@ -135,12 +137,29 @@ int main(void)
 {
 	otInstance *sInstance;
 
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+	size_t otInstanceBufferLength = 0;
+	uint8_t *otInstanceBuffer = NULL;
+#endif
+
 	int argc = 0;
 	char **argv = NULL;
 
 	PlatformInit(argc, argv);
 
-	sInstance = otInstanceInit();
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+	// Call to query the buffer size
+	(void)otInstanceInit(NULL, &otInstanceBufferLength);
+
+	// Call to allocate the buffer
+	otInstanceBuffer = (uint8_t *)malloc(otInstanceBufferLength);
+	assert(otInstanceBuffer);
+
+	// Initialize OpenThread with the buffer
+	sInstance = otInstanceInit(otInstanceBuffer, &otInstanceBufferLength);
+#else
+	sInstance = otInstanceInitSingle();
+#endif
 	assert(sInstance);
 
 	otCliUartInit(sInstance);
@@ -148,16 +167,19 @@ int main(void)
 	EMBARC_PRINTF("OpenThread Start\r\n");
 
 #if OPENTHREAD_ENABLE_DIAG
-	diagInit(sInstance);
+	otDiagInit(sInstance);
 #endif
 
 	while (1)
 	{
-		otProcessQueuedTasklets(sInstance);
+		otTaskletsProcess(sInstance);
 		PlatformProcessDrivers(sInstance);
-
-		//mrf24j40_delay_ms(70);
 	}
+
+	// otInstanceFinalize(sInstance);
+#if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+	// free(otInstanceBuffer);
+#endif
 
 	return 0;
 }

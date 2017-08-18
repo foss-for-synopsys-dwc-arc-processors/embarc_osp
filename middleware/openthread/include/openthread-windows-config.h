@@ -112,7 +112,7 @@
 #endif // _KERNEL_MODE
 
 // Redefine rand to random for test code
-#define random rand
+// #define random rand
 
 // Disable a few warnings that we don't care about
 #pragma warning(disable:4200)  // nonstandard extension used: zero-sized array in struct/union
