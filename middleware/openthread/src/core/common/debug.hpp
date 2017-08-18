@@ -40,6 +40,11 @@
 
 #include "openthread-core-config.h"
 
+// Add undefine for embARC build
+#if defined(assert)
+#undef assert
+#endif // defined(assert)
+
 #if defined(OPENTHREAD_TARGET_DARWIN) || defined(OPENTHREAD_TARGET_LINUX)
 
 #include <assert.h>

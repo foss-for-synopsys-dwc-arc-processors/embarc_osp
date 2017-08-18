@@ -1,5 +1,5 @@
 # Application name
-APPL ?= openthread
+APPL ?= openthread_cli
 
 # Optimization Level
 OLEVEL = O2
@@ -20,7 +20,9 @@ APPL_ASMSRC_DIR = .
 APPL_INC_DIR = .
 
 # application defines
-APPL_DEFINES = -DMBEDTLS_CONFIG_FILE=\"mbedtls_config.h\" -DOPENTHREAD_ENABLE_MAC_WHITELIST=1
+APPL_DEFINES = -DMBEDTLS_CONFIG_FILE=\"mbedtls-config.h\" \
+		-DOPENTHREAD_CONFIG_FILE=\"openthread-windows-config.h\" \
+		-DOPENTHREAD_FTD=1
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
