@@ -9,6 +9,13 @@ OLEVEL = O2
 #
 EMBARC_ROOT = ../../..
 
+##
+# HEAP & STACK SETTINGS
+# For OpenThread Stack Usage
+##
+HEAPSZ ?= 81920
+STACKSZ ?= 81920
+
 # Select Middleware Packages
 MID_SEL = common mbedtls openthread
 
@@ -22,7 +29,8 @@ APPL_INC_DIR = .
 # application defines
 APPL_DEFINES = -DMBEDTLS_CONFIG_FILE=\"mbedtls-config.h\" \
 		-DOPENTHREAD_CONFIG_FILE=\"openthread-windows-config.h\" \
-		-DOPENTHREAD_FTD=1
+		-DOPENTHREAD_FTD=1 \
+		-DOPENTHREAD_ENABLE_APPLICATION_COAP=1
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
