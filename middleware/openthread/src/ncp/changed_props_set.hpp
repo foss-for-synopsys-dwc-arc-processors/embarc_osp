@@ -33,6 +33,7 @@
 #ifndef CHANGED_PROPS_SET_HPP_
 #define CHANGED_PROPS_SET_HPP_
 
+#include <stdlib.h>
 #include <openthread/types.h>
 
 #include "spinel.h"
@@ -109,7 +110,7 @@ public:
      * @param[out]  aNumEntries  A reference to output the number of entries in the list.
      *
      * @returns A pointer to the supported entries array.
-     *
+     * 
      */
     const Entry *GetSupportedEntries(uint8_t &aNumEntries) const {
         aNumEntries = GetNumEntries();

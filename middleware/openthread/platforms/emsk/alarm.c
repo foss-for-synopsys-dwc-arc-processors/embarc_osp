@@ -36,6 +36,7 @@
 #include <stdint.h>
 #include "openthread/platform/alarm-milli.h"
 #include "platform-emsk.h"
+#include "code_utils.h"
 
 static uint32_t sCounter = 0;
 static uint32_t expires;
