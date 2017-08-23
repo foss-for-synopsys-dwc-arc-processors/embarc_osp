@@ -39,7 +39,7 @@
 #include <openthread/platform/radio.h>
 #include "platform-emsk.h"
 
-#include "device/device_hal/inc/dev_gpio.h"
+#include "dev_gpio.h"
 #include <string.h>
 
 #include <stdio.h>

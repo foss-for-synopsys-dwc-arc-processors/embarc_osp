@@ -44,7 +44,7 @@
 #include "common/logging.hpp"
 #include "common/new.hpp"
 
-#if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+// #if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 
 static otDEFINE_ALIGNED_VAR(sInstanceRaw, sizeof(otInstance), uint64_t);
 otInstance *sInstance = NULL;
@@ -73,7 +73,7 @@ ot::Ip6::Ip6 &otGetIp6(void)
 {
     return sInstance->mIp6;
 }
-#endif // #if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+// #endif // #if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 
 otInstance::otInstance(void) :
     mReceiveIp6DatagramCallback(NULL),
