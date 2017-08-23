@@ -5,7 +5,8 @@ MID_OPENTHREAD_ASMSRCDIR	=
 MID_OPENTHREAD_CSRCDIR		= $(MID_OPENTHREAD_DIR)/mbedtls \
 				$(MID_OPENTHREAD_DIR)/platforms/emsk \
 				$(MID_OPENTHREAD_DIR)/src/core/utils \
-				$(MID_OPENTHREAD_DIR)/src/core/ncp
+				$(MID_OPENTHREAD_DIR)/src/core/ncp \
+				$(MID_OPENTHREAD_DIR)/src/ncp
 
 MID_OPENTHREAD_CXXSRCDIR	= $(MID_OPENTHREAD_DIR)/platforms/utils \
 				$(MID_OPENTHREAD_DIR)/src/core/api \
