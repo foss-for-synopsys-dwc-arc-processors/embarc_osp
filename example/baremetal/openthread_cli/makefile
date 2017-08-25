@@ -4,6 +4,12 @@ APPL ?= openthread_cli
 # Optimization Level
 OLEVEL = O2
 
+# Board Options
+BOARD=emsk
+BD_VER=23
+CUR_CORE=arcem7d
+TOOLCHAIN=gnu
+
 #
 # root dir of embARC
 #
@@ -30,7 +36,11 @@ APPL_INC_DIR = .
 APPL_DEFINES = -DMBEDTLS_CONFIG_FILE=\"mbedtls-config.h\" \
 		-DOPENTHREAD_CONFIG_FILE=\"openthread-windows-config.h\" \
 		-DOPENTHREAD_FTD=1 \
-		-DOPENTHREAD_ENABLE_APPLICATION_COAP=1
+		-DOPENTHREAD_ENABLE_CLI=1 \
+		-DOPENTHREAD_ENABLE_CLI_MTD=0 \
+		-DOPENTHREAD_ENABLE_CLI_FTD=1 \
+		-DOPENTHREAD_ENABLE_APPLICATION_COAP=1 \
+		-DOPENTHREAD_CLI_DEBUG_INFO=0
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile

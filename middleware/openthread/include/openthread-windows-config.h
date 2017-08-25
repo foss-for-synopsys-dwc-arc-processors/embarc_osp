@@ -32,9 +32,18 @@
 /* Define to 1 to enable the NCP SPI interface. */
 // On the command line: #define OPENTHREAD_ENABLE_NCP_SPI  1
 
+/* Define to 1 if you want to enable DNS Client */
+#define OPENTHREAD_ENABLE_DNS_CLIENT 1
+
+/* Define to 1 if you want to use MAC whitelist/blacklist feature */
+#define OPENTHREAD_ENABLE_MAC_WHITELIST 1
+
+/* Define to 1 to enable network diagnostic for MTD. */
+#define OPENTHREAD_ENABLE_MTD_NETWORK_DIAGNOSTIC 1
+
 /* Define to 1 if you want to enable support for multiple OpenThread
    instances. */
-#define OPENTHREAD_ENABLE_MULTIPLE_INSTANCES 1
+#define OPENTHREAD_ENABLE_MULTIPLE_INSTANCES 0
 
 /* Define to 1 if you want to enable default log output. */
 #define OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT 1
@@ -64,7 +73,7 @@
 #define OPENTHREAD_ENABLE_DHCP6_SERVER 1
 
 /* Define to 1 to enable MAC whitelist/blacklist feature. */
-#define OPENTHREAD_ENABLE_MAC_FILTER 1
+#define OPENTHREAD_ENABLE_MAC_FILTER 1 
 
 /* Define to 1 to enable TMF proxy feature. */
 #define OPENTHREAD_ENABLE_TMF_PROXY 0
