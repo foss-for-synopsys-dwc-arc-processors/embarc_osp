@@ -179,7 +179,7 @@ void otPlatRadioSetPanId(otInstance *aInstance, uint16_t aPanId);
  *
  *
  */
-void otPlatRadioSetExtendedAddress(otInstance *aInstance, const otExtAddress *aExtAddress);
+void otPlatRadioSetExtendedAddress(otInstance *aInstance, otExtAddress *aExtAddress);
 
 /**
  * Set the Short Address for address filtering.
