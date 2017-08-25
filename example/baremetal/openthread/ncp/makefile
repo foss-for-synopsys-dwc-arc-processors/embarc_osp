@@ -1,5 +1,5 @@
 # Application name
-APPL ?= openthread_cli
+APPL ?= openthread_ncp
 
 # Optimization Level
 OLEVEL = O2
@@ -13,7 +13,7 @@ TOOLCHAIN=gnu
 #
 # root dir of embARC
 #
-EMBARC_ROOT = ../../..
+EMBARC_ROOT = ../../../..
 
 ##
 # HEAP & STACK SETTINGS
@@ -36,11 +36,11 @@ APPL_INC_DIR = .
 APPL_DEFINES = -DMBEDTLS_CONFIG_FILE=\"mbedtls-config.h\" \
 		-DOPENTHREAD_CONFIG_FILE=\"openthread-windows-config.h\" \
 		-DOPENTHREAD_FTD=1 \
-		-DOPENTHREAD_ENABLE_CLI=1 \
-		-DOPENTHREAD_ENABLE_CLI_MTD=0 \
-		-DOPENTHREAD_ENABLE_CLI_FTD=1 \
-		-DOPENTHREAD_ENABLE_APPLICATION_COAP=1 \
-		-DOPENTHREAD_CLI_DEBUG_INFO=0
+		-DOPENTHREAD_ENABLE_NCP=1 \
+		-DOPENTHREAD_ENABLE_NCP_MTD=0 \
+		-DOPENTHREAD_ENABLE_NCP_FTD=1 \
+		-DOPENTHREAD_ENABLE_NCP_UART=1 \
+		-DOPENTHREAD_ENABLE_NCP_SPI=0
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
