@@ -243,7 +243,7 @@ void otPlatRadioSetPanId(otInstance *aInstance, uint16_t panid)
 	mrf24j40_set_pan(pan);
 }
 
-void otPlatRadioSetExtendedAddress(otInstance *aInstance, const otExtAddress *address)
+void otPlatRadioSetExtendedAddress(otInstance *aInstance, otExtAddress *address)
 {
 	(void)aInstance;
 	mrf24j40_set_eui(address->m8);
