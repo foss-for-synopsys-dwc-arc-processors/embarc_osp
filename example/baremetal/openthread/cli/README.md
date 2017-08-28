@@ -55,13 +55,13 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
 1. Run OpenThread CLI example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.
     - Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.
     
-    ![enter_no_emsk][32]
+    	![enter_no_emsk][32]
     
     - Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
     
     - Enter **1** and press Enter button in one Tera Term. Enter **2** and press Enter button in the other one. Enter the number here to generate pseudo random number for OpenThread. Recommend to enter numbers in order, such as **1**, **2** and **3**. Using same number in different nodes may lead error. The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
     
-    ![show_no_emsk][33]
+    	![show_no_emsk][33]
     
     - Enter the following commands in the two Tera Term windows.
         - **panid 0x1234**
@@ -69,7 +69,7 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
         - **thread start**
     - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
     
-    ![thread_state][34]
+    	![thread_state][34]
 
 1. Enter **ipaddr** to show the IP address of the Thread node. Then enter **ping [IP address]**, such as **ping fdde:ad00:beef:0:0:ff:fe00:ec00**.
     - The IP addresses may not be the same in different tests, even using the same node number, program and EMSK board.
@@ -78,28 +78,32 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
     - See the OpenThread CLI reference `OT_CLI.md` for more details.
     - For example, the following response can be shown for the EMSK node 1 (COM4) and EMSK node 2 (COM8).
     
-    ![thread_ping][35]
+    	![thread_ping][35]
 
         ```bash
-        > state
-        leader
-        > ipaddr
-        fdde:ad00:beef:0:0:ff:fe00:fc00
-        fdde:ad00:beef:0:0:ff:fe00:d400
-        fdde:ad00:beef:0:63a8:7376:c6ad:828c
-        fe80:0:0:0:c8b:9427:900e:186f
-        > ping fe80:0:0:0:f065:44eb:ef9f:57c8
+
+	        > state
+	        leader
+	        > ipaddr
+	        fdde:ad00:beef:0:0:ff:fe00:fc00
+	        fdde:ad00:beef:0:0:ff:fe00:d400
+	        fdde:ad00:beef:0:63a8:7376:c6ad:828c
+	        fe80:0:0:0:c8b:9427:900e:186f
+	        > ping fe80:0:0:0:f065:44eb:ef9f:57c8
+	 
         ```
 
         ```bash
-        > state
-        router
-        > ipaddr
-        fdde:ad00:beef:0:0:ff:fe00:fc00
-        fdde:ad00:beef:0:0:ff:fe00:6800
-        fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0
-        fe80:0:0:0:f065:44eb:ef9f:57c8
-        > ping fe80:0:0:0:c8b:9427:900e:186f
+
+	        > state
+	        router
+	        > ipaddr
+	        fdde:ad00:beef:0:0:ff:fe00:fc00
+	        fdde:ad00:beef:0:0:ff:fe00:6800
+	        fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0
+	        fe80:0:0:0:f065:44eb:ef9f:57c8
+	        > ping fe80:0:0:0:c8b:9427:900e:186f
+        
         ```
 
 [1]: https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit "DesignWare ARC EM Starter Kit(EMSK)"
@@ -107,7 +111,7 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
 
 [30]: doc/screenshots/emsk_connections.jpg "emsk_connections"
 [31]: doc/screenshots/spirw_em7d_2bt.jpg "spirw_em7d_2bt"
-[32]: doc/screenshots/enter_no_emsk.jpg "enter_no_emsk"
-[33]: doc/screenshots/show_no_emsk.jpg "show_no_emsk"
-[34]: doc/screenshots/thread_state.jpg "thread_state"
-[35]: doc/screenshots/thread_ping.jpg "thread_ping"
+[32]: doc/screenshots/enter_no_emsk.PNG "enter_no_emsk"
+[33]: doc/screenshots/show_no_emsk.PNG "show_no_emsk"
+[34]: doc/screenshots/thread_state.PNG "thread_state"
+[35]: doc/screenshots/thread_ping.PNG "thread_ping"
