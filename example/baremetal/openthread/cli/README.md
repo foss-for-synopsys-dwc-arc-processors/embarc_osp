@@ -1,12 +1,12 @@
-# OpenThread CLI Application
+# OpenThread CLI Example
 
 This application is designed to show how to use the OpenThread Command Line Interface (CLI) example in embARC.
 
 ## Hardware and Software Setup
 ### Required Hardware
 - 2 x [DesignWare ARC EM Starter Kit(EMSK)](https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit), recommended version 2.3
-- 2x [Digilent Pmod RF2](http://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/)
-- SD card
+- 2 x [Digilent Pmod RF2](http://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/)
+- 1 x SD card
 
 ### Required Software
 - Metaware or ARC GNU Toolset
@@ -16,7 +16,7 @@ This application is designed to show how to use the OpenThread Command Line Inte
 - Connect PmodRF2 to J6.
 
 ![EMSK Connections](doc/screenshots/emsk_connections.jpg)
-  
+
 - Configure your hardware with proper core configuration. ARCEM7D on EMSK 2.3 is used as an example in the following document.
 
 ## User Manual
@@ -27,7 +27,7 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
 - Use AC adapter to ensure a steady power supply.
 - Open two Tera Term emulators to connect EMSKs with different COM ports.
 - The self-boot mode preparation is included in the following steps.
-- **make run** is not supported because both EMSK board is v2.3 and it can lead to conflict.
+- **make run** is not supported because both EMSK board is v2.3 and it will lead to conflict.
 
 ## Building and running OpenThread example
 
@@ -48,22 +48,20 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
         ![spirw em7d_2bt](doc/screenshots/spirw_em7d_2bt.jpg)
 
 1. Generate `boot.bin` of the OpenThread CLI example.
-    - Go to `\embARC\example\baremetal\openthread` in command line.
+    - Go to `\embARC\example\baremetal\openthread\cli` in command line.
     - Enter **make TOOLCHAIN=gnu BD_VER=23 CUR_CORE=arcem7d bin**.
     - Insert SD Card to PC. Copy the generated binary file `obj_emsk_23/gnu_arcem7d/openthread_gnu_arcem7d.bin` to SD card root. And rename it to `boot.bin`. Note that the secondary bootloader can only identify `boot.bin` in the SD card root.
 
-1. Run OpenThread example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.
+1. Run OpenThread CLI example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.
     - Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.
     
-    ![Enter No. EMSK 1](doc/screenshots/enter_no_emsk1.jpg)
+    ![Enter No. EMSK](doc/screenshots/enter_no_emsk.PNG)
     
     - Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
     
-    ![Enter No. EMSK 2](doc/screenshots/enter_no_emsk2.jpg)
-    
     - Enter **1** and press Enter button in one Tera Term. Enter **2** and press Enter button in the other one. Enter the number here to generate pseudo random number for OpenThread. Recommend to enter numbers in order, such as **1**, **2** and **3**. Using same number in different nodes may lead error. The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
     
-    ![Show No. EMSK](doc/screenshots/show_no_emsk.jpg)
+    ![Show No. EMSK](doc/screenshots/show_no_emsk.PNG)
     
     - Enter the following commands in the two Tera Term windows.
         - **panid 0x1234**
@@ -71,35 +69,35 @@ Two EMSKs will be used as two Thread nodes. They are set automatically by OpenTh
         - **thread start**
     - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
     
-    ![Thread State](doc/screenshots/thread_state.jpg)
+    ![Thread State](doc/screenshots/thread_state.PNG)
 
 1. Enter **ipaddr** to show the IP address of the Thread node. Then enter **ping [IP address]**, such as **ping fdde:ad00:beef:0:0:ff:fe00:ec00**.
     - The IP addresses may not be the same in different tests, even using the same node number, program and EMSK board.
     - ICMP protocol is implemented in OpenThread for **ping** command.
     - This example demonstrates a minimal OpenThread application to show the OpenThread configuration and management interfaces via a basic command-line interface. The example result is the same as the one in the Posix simulation in Linux.
     - See the OpenThread CLI reference `OT_CLI.md` for more details.
-    - For example, the following response can be shown for the EMSK node 1 (COM6) and EMSK node 2 (COM8).
+    - For example, the following response can be shown for the EMSK node 1 (COM4) and EMSK node 2 (COM8).
     
-    ![Thread Ping](doc/screenshots/thread_ping.jpg)
+    ![Thread Ping](doc/screenshots/thread_ping.PNG)
 
-    ```bash
-    > state
-    router
-    > ipaddr
-    fdde:ad00:beef:0:0:ff:fe00:9c00
-    fdde:ad00:beef:0:c285:da19:e77a:9e9d
-    fe80:0:0:0:20eb:d8b:9427:900e
-    > ping
-    ping fdde:ad00:beef:0:0:ff:fe00:ec00
-    ```
+        ```bash
+        > state
+        leader
+        > ipaddr
+        fdde:ad00:beef:0:0:ff:fe00:fc00
+        fdde:ad00:beef:0:0:ff:fe00:d400
+        fdde:ad00:beef:0:63a8:7376:c6ad:828c
+        fe80:0:0:0:c8b:9427:900e:186f
+        > ping fe80:0:0:0:f065:44eb:ef9f:57c8
+        ```
 
-    ```bash
-    > state
-    leader
-    > ipaddr
-    fdde:ad00:beef:0:0:ff:fe00:ec00
-    fdde:ad00:beef:0:b2e5:c57f:faf6:e40a
-    fe80:0:0:0:c462:f165:44eb:ef9f
-    > ping
-    ping fdde:ad00:beef:0:0:ff:fe00:9c00
-    ```
+        ```bash
+        > state
+        router
+        > ipaddr
+        fdde:ad00:beef:0:0:ff:fe00:fc00
+        fdde:ad00:beef:0:0:ff:fe00:6800
+        fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0
+        fe80:0:0:0:f065:44eb:ef9f:57c8
+        > ping fe80:0:0:0:c8b:9427:900e:186f
+        ```
