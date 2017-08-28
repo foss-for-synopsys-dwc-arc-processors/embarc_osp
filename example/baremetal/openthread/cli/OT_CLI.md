@@ -7,16 +7,20 @@ OpenThread test scripts use the CLI to execute test cases.
 
 ## OpenThread Command List
 
+* [autostart](#autostart)
+* [bufferinfo](#bufferinfo)
 * [channel](#channel)
-* [blacklist](#blacklist)
-* [child](#child)
+* [child](#child-list)
 * [childmax](#childmax)
 * [childtimeout](#childtimeout)
-* [commissioner](#commissioner)
+* [coap](#coap-start)
+* [commissioner](#commissioner-start-provisioningurl)
 * [contextreusedelay](#contextreusedelay)
 * [counter](#counter)
-* [dataset](#dataset)
-* [discover](#discover)
+* [dataset](#dataset-help)
+* [delaytimermin](#delaytimermin)
+* [discover](#discover-channel)
+* [dns](#dns-resolve-hostname-dns-server-ip-dns-server-port)
 * [eidcache](#eidcache)
 * [eui64](#eui64)
 * [extaddr](#extaddr)
@@ -26,97 +30,92 @@ OpenThread test scripts use the CLI to execute test cases.
 * [ifconfig](#ifconfig)
 * [ipaddr](#ipaddr)
 * [ipmaddr](#ipmaddr)
-* [joiner](#joiner)
-* [keysequence](#keysequence)
+* [joiner](#joiner-start-pskd-provisioningurl)
+* [joinerport](#joinerport-port)
+* [keysequence](#keysequence-counter)
+* [leaderdata](#leaderdata)
 * [leaderpartitionid](#leaderpartitionid)
 * [leaderweight](#leaderweight)
-* [linkquality](#linkquality)
+* [linkquality](#linkquality-extaddr)
+* [macfilter](#macfilter)
 * [masterkey](#masterkey)
 * [mode](#mode)
 * [netdataregister](#netdataregister)
+* [networkdiagnostic](#networkdiagnostic-get-addr-type-)
 * [networkidtimeout](#networkidtimeout)
 * [networkname](#networkname)
 * [panid](#panid)
 * [parent](#parent)
-* [ping](#ping)
-* [pollperiod](#pollperiod)
-* [prefix](#prefix)
+* [parentpriority](#parentpriority)
+* [ping](#ping-ipaddr-size-count-interval)
+* [pollperiod](#pollperiod-pollperiod)
+* [prefix](#prefix-add-prefix-pvdcsr-prf)
 * [promiscuous](#promiscuous)
-* [releaserouterid](#releaserouterid)
+* [releaserouterid](#releaserouterid-routerid)
 * [reset](#reset)
 * [rloc16](#rloc16)
-* [route](#route)
-* [router](#router)
+* [route](#route-add-prefix-s-prf)
+* [router](#router-list)
 * [routerdowngradethreshold](#routerdowngradethreshold)
 * [routerrole](#routerrole)
 * [routerselectionjitter](#routerselectionjitter)
 * [routerupgradethreshold](#routerupgradethreshold)
-* [scan](#scan)
+* [scan](#scan-channel)
 * [singleton](#singleton)
 * [state](#state)
-* [thread](#thread)
+* [thread](#thread-start)
+* [txpowermax](#txpowermax)
 * [version](#version)
-* [whitelist](#whitelist)
 * [diag](#diag)
 
 ## OpenThread Command Details
 
-### blacklist
+### autostart true
 
-List the blacklist entries.
+Automatically start Thread on initialization.
 
 ```bash
-> blacklist
-Enabled
-166e0a0000000002
-166e0a0000000003
+> autostart true
 Done
 ```
 
-### blacklist add \<extaddr\>
+### autostart false
 
-Add an IEEE 802.15.4 Extended Address to the blacklist.
+Don't automatically start Thread on initialization.
 
 ```bash
-> blacklist add 166e0a0000000002
+> autostart false
 Done
 ```
 
-### blacklist clear
+### autostart
 
-Clear all entries from the blacklist.
+Show the status of automatically starting Thread on initialization.
 
 ```bash
-> blacklist clear
+> autostart
+false
 Done
 ```
 
-### blacklist disable
+### bufferinfo
 
-Disable MAC blacklist filtering.
+Show the current message buffer information.
 
 ```bash
-> blacklist disable
+> bufferinfo
+total: 40
+free: 40
+6lo send: 0 0
+6lo reas: 0 0
+ip6: 0 0
+mpl: 0 0
+mle: 0 0
+arp: 0 0
+coap: 0 0
 Done
 ```
 
-### blacklist enable
-
-Enable MAC blacklist filtering.
-
-```bash
-> blacklist enable
-Done
-```
-
-### blacklist remove \<extaddr\>
-
-Remove an IEEE 802.15.4 Extended Address from the blacklist.
-
-```bash
-> blacklist remove 166e0a0000000002
-Done
-```
 ### channel
 
 Get the IEEE 802.15.4 Channel value.
@@ -152,10 +151,10 @@ Print table of attached children.
 
 ```bash
 > child table
-| ID  | RLOC16 | Timeout    | Age        | LQI In | C_VN |R|S|D|N| Extended MAC     |
-+-----+--------+------------+------------+--------+------+-+-+-+-+------------------+
-|   1 | 0xe001 |        240 |         44 |      3 |  237 |1|1|1|1| d28d7f875888fccb |
-|   2 | 0xe002 |        240 |         27 |      3 |  237 |0|1|0|1| e2b3540590b0fd87 |
+| ID  | RLOC16 | Timeout    | Age        | LQ In | C_VN |R|S|D|N| Extended MAC     |
++-----+--------+------------+------------+-------+------+-+-+-+-+------------------+
+|   1 | 0xe001 |        240 |         44 |     3 |  237 |1|1|1|1| d28d7f875888fccb |
+|   2 | 0xe002 |        240 |         27 |     3 |  237 |0|1|0|1| e2b3540590b0fd87 |
 Done
 ```
 
@@ -172,7 +171,7 @@ Mode: rsn
 Net Data: 184
 Timeout: 100
 Age: 0
-LQI: 3
+Link Quality In: 3
 RSSI: -20
 Done
 ```
@@ -213,6 +212,59 @@ Set the Thread Child Timeout value.
 ```bash
 > childtimeout 300
 Done
+```
+
+### coap start
+
+Starts the application coap service.
+
+```bash
+> coap start
+Coap service started: Done
+```
+
+### coap stop
+
+Stops the application coap service.
+
+```bash
+> coap start
+Coap service stopped: Done
+```
+
+### coap resource \[uri-path\]
+
+Sets the URI-Path for the test resource.
+
+```bash
+> coap resource test
+Resource name is 'test': Done
+> coap resource
+Resource name is 'test': Done
+```
+
+### coap \<method\> \<address\> \<uri\> \[payload\] \[type\]
+
+* method: CoAP method to be used (GET/PUT/POST/DELETE).
+* address: IP address of the CoAP server to query.
+* uri: URI String of the resource on the CoAP server.
+* payload: In case of PUT/POST/DELETE a payload can be encapsulated.
+* type: Switch between confirmable ("con") and non-confirmable (default).
+
+```bash
+> coap get fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc test
+Sending coap message: Done
+Received coap request from [fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc]: GET
+coap response sent successfully!
+Received coap response with payload: 30
+> coap put fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc test non-con somePayload
+Sending coap message: Done
+Received coap request from [fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc]: PUT with payload: 73 6f 6d 65 50 61 79 6c 6f 61 64
+> coap put fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc test con 123
+Sending coap message: Done
+Received coap request from [fdde:ad00:beef:0:dbaa:f1d0:8afb:30dc]: PUT with payload: 31 32 33
+coap response sent successfully!
+Received coap response
 ```
 
 ### commissioner start \<provisioningUrl\>
@@ -394,6 +446,7 @@ help
 active
 activetimestamp
 channel
+channelmask
 clear
 commit
 delay
@@ -406,8 +459,10 @@ networkname
 panid
 pending
 pendingtimestamp
-userdata
+pskc
+securitypolicy
 Done
+>
 ```
 
 ### dataset active
@@ -420,16 +475,7 @@ Active Timestamp: 0
 Done
 ```
 
-### dataset activetimestamp
-
-Set getting active timestamp flag.
-
-```bash
-> dataset activestamp
-Done
-```
-
-### dataset activetimestamp \[activetimestamp\]
+### dataset activetimestamp \<activetimestamp\>
 
 Set active timestamp.
 
@@ -438,21 +484,21 @@ Set active timestamp.
 Done
 ```
 
-### dataset channel
-
-Set getting channel flag.
-
-```bash
-> dataset channel
-Done
-```
-
-### dataset channel \[channel\]
+### dataset channel \<channel\>
 
 Set channel.
 
 ```bash
 > dataset channel 12
+Done
+```
+
+### dataset channelmask \<channelmask\>
+
+Set channel mask.
+
+```bash
+> dataset channelmask e0ff1f00
 Done
 ```
 
@@ -465,7 +511,7 @@ Reset operational dataset buffer.
 Done
 ```
 
-### dataset commit \[commit\]
+### dataset commit \<dataset\>
 
 Commit operational dataset buffer to active/pending operational dataset.
 
@@ -474,16 +520,7 @@ Commit operational dataset buffer to active/pending operational dataset.
 Done
 ```
 
-### dataset delay
-
-Set getting delay timer value flag.
-
-```bash
-> dataset delay
-Done
-```
-
-### dataset delay \[delay\]
+### dataset delay \<delay\>
 
 Set delay timer value.
 
@@ -492,16 +529,7 @@ Set delay timer value.
 Done
 ```
 
-### dataset extpanid
-
-Set getting extended panid flag.
-
-```bash
-> dataset extpanid
-Done
-```
-
-### dataset extpanid \[extpanid\]
+### dataset extpanid \<extpanid\>
 
 Set extended panid.
 
@@ -510,16 +538,7 @@ Set extended panid.
 Done
 ```
 
-### dataset masterkey
-
-Set getting master key flag.
-
-```bash
-> dataset masterkey
-Done
-```
-
-### dataset masterkey \[masterkey\]
+### dataset masterkey \<masterkey\>
 
 Set master key.
 
@@ -528,16 +547,7 @@ Set master key.
 Done
 ```
 
-### dataset meshlocalprefix
-
-Set getting mesh local prefix flag.
-
-```bash
-> dataset meshlocalprefix
-Done
-```
-
-### dataset meshlocalprefix fd00:db8::
+### dataset meshlocalprefix \<meshlocalprefix\>
 
 Set mesh local prefix.
 
@@ -582,16 +592,7 @@ Send MGMT_PENDING_SET.
 Done
 ```
 
-### dataset networkname
-
-Set getting network name flag.
-
-```bash
-> dataset networkname
-Done
-```
-
-### dataset networkname \[networkname\]
+### dataset networkname \<networkname\>
 
 Set network name.
 
@@ -600,16 +601,7 @@ Set network name.
 Done
 ```
 
-### dataset panid
-
-Set getting panid flag.
-
-```bash
-> dataset panid
-Done
-```
-
-### dataset panid \[panid\]
+### dataset panid \<panid\>
 
 Set panid.
 
@@ -627,16 +619,7 @@ Print meshcop pending operational dataset.
 Done
 ```
 
-### dataset pendingtimestamp
-
-Set getting pending timestamp flag.
-
-```bash
-> dataset pendingtimestamp
-Done
-```
-
-### dataset pendingtimestamp \[pendingtimestamp\]
+### dataset pendingtimestamp \<pendingtimestamp\>
 
 Set pending timestamp.
 
@@ -645,12 +628,46 @@ Set pending timestamp.
 Done
 ```
 
-### dataset userdata \[size\] \[data\]
+### dataset pskc \<pskc\>
 
-Set user specific data for the command.
+Set pskc with hex format.
 
 ```bash
-> dataset userdata 3 820155
+> dataset pskc 67c0c203aa0b042bfb5381c47aef4d9e
+Done
+```
+
+### dataset securitypolicy \<rotationtime\> \[onrcb\]
+
+Set security policy.
+
+* o: Obtaining the Master Key for out-of-band commissioning is enabled.
+* n: Native Commissioning using PSKc is allowed.
+* r: Thread 1.x Routers are enabled.
+* c: External Commissioner authentication is allowed using PSKc.
+* b: Thread 1.x Beacons are enabled.
+
+```bash
+> dataset securitypolicy 672 onrcb
+Done
+```
+
+### delaytimermin
+
+Get the minimal delay timer (in seconds).
+
+```bash
+> delaytimermin
+30
+Done
+```
+
+### delaytimermin \<delaytimermin\>
+
+Set the minimal delay timer (in seconds).
+
+```bash
+> delaytimermin 60
 Done
 ```
 
@@ -666,6 +683,18 @@ Perform an MLE Discovery operation.
 +---+------------------+------------------+------+------------------+----+-----+-----+
 | 0 | OpenThread       | dead00beef00cafe | ffff | f1d92a82c8d8fe43 | 11 | -20 |   0 |
 Done
+```
+
+### dns resolve \<hostname\> \[DNS server IP\] \[DNS server port\]
+
+Send DNS Query to obtain IPv6 address for given hostname.
+The latter two parameters have following default values:
+ * DNS server IP: 2001:4860:4860::8888 (Google DNS Server)
+ * DNS server port: 53
+
+```bash
+> dns resolve ipv6.google.com
+> DNS response for ipv6.google.com - [2a00:1450:401b:801:0:0:0:200e] TTL: 300
 ```
 
 ### eidcache
@@ -745,6 +774,16 @@ e0b220eb7d8dda7e
 Done
 ```
 
+### ifconfig
+
+Show the status of the IPv6 interface.
+
+```bash
+> ifconfig
+down
+Done
+```
+
 ### ifconfig up
 
 Bring up the IPv6 interface.
@@ -760,16 +799,6 @@ Bring down the IPv6 interface.
 
 ```bash
 > ifconfig down
-Done
-```
-
-### ifconfig
-
-Show the status of the IPv6 interface.
-
-```bash
-> ifconfig
-down
 Done
 ```
 
@@ -885,6 +914,15 @@ Stop the Joiner role.
 Done
 ```
 
+### joinerport \<port\>
+
+Set the Joiner port.
+
+```bash
+> joinerport 1000
+Done
+```
+
 ### keysequence counter
 
 Get the Thread Key Sequence Counter.
@@ -934,12 +972,26 @@ Get the Thread Leader Partition ID.
 Done
 ```
 
-### leaderpartitionid \<partitionid>\
+### leaderpartitionid \<partitionid\>
 
 Set the Thread Leader Partition ID.
 
 ```bash
 > leaderpartitionid 0xffffffff
+Done
+```
+
+### leaderdata
+
+Show the Thread Leader Data.
+
+```bash
+> leaderdata
+Partition ID: 1077744240
+Weighting: 64
+Data Version: 109
+Stable Data Version: 211
+Leader Router ID: 60
 Done
 ```
 
@@ -962,7 +1014,7 @@ Set the Thread Leader Weight.
 Done
 ```
 
-### linkquality \<extaddr>\
+### linkquality \<extaddr\>
 
 Get the link quality on the link to a given extended address.
 
@@ -972,7 +1024,7 @@ Get the link quality on the link to a given extended address.
 Done
 ```
 
-### linkquality \<extaddr>\ \<linkquality>\
+### linkquality \<extaddr\> \<linkquality\>
 
 Set the link quality on the link to a given extended address.
 
@@ -1035,6 +1087,31 @@ Register local network data with Thread Leader.
 
 ```bash
 > netdataregister
+Done
+```
+
+### networkdiagnostic get \<addr\> \<type\> ..
+
+Send network diagnostic request to retrieve tlv of \<type\>s.
+
+If \<addr\> is unicast address, `Diagnostic Get` will be sent.
+if \<addr\> is multicast address, `Diagnostic Query` will be sent.
+
+```bash
+> networkdiagnostic get fdde:ad00:beef:0:0:ff:fe00:f400 0 1 6
+DIAG_GET.rsp: 00088e18ad17a24b0b740102f400060841dcb82d40bac63d
+
+> networkdiagnostic get ff02::1 0 1
+DIAG_GET.rsp: 0008567e31a79667a8cc0102f000
+DIAG_GET.rsp: 0008aaa7e584759e4e6401025400
+```
+
+### networkdiagnostic reset \<addr\> \<type\> ..
+
+Send network diagnostic request to reset \<addr\>'s tlv of \<type\>s. Currently only `MAC Counters`(9) is supported.
+
+```bash
+> diagnostic reset fd00:db8::ff:fe00:0 9
 Done
 ```
 
@@ -1103,6 +1180,28 @@ Get the diagnostic information for a Thread Router as parent.
 > parent
 Ext Addr: be1857c6c21dce55
 Rloc: 5c00
+Link Quality In: 3
+Link Quality Out: 3
+Age: 20
+Done
+```
+
+### parentpriority
+
+Get the assigned parent priority value, -2 means not assigned.
+
+```bash
+> parentpriority
+1
+Done
+```
+
+### parentpriority \<parentpriority\>
+
+Set the assigned parent priority value: 1, 0, -1 or -2.
+
+```bash
+> parentpriority 1
 Done
 ```
 
@@ -1115,6 +1214,15 @@ Send an ICMPv6 Echo Request.
 16 bytes from fdde:ad00:beef:0:558:f56b:d688:799: icmp_seq=1 hlim=64 time=28ms
 ```
 
+### ping stop
+
+Stop sending ICMPv6 Echo Requests.
+
+```bash
+> ping stop
+Done
+```
+
 ### pollperiod
 
 Get the customized data poll period of sleepy end device (seconds). Only for certification test
@@ -1125,7 +1233,7 @@ Get the customized data poll period of sleepy end device (seconds). Only for cer
 Done
 ```
 
-### pollperiod \<pollperiod>\
+### pollperiod \<pollperiod\>
 
 Set the customized data poll period for sleepy end device (seconds). Only for certification test
 
@@ -1251,10 +1359,10 @@ Print table of routers.
 
 ```bash
 > router table
-| ID | RLOC16 | Next Hop | Path Cost | LQI In | LQI Out | Age | Extended MAC     |
-+----+--------+----------+-----------+--------+---------+-----+------------------+
-| 21 | 0x5400 |       21 |         0 |      3 |       3 |   5 | d28d7f875888fccb |
-| 56 | 0xe000 |       56 |         0 |      0 |       0 | 182 | f2d92a82c8d8fe43 |
+| ID | RLOC16 | Next Hop | Path Cost | LQ In | LQ Out | Age | Extended MAC     |
++----+--------+----------+-----------+-------+--------+-----+------------------+
+| 21 | 0x5400 |       21 |         0 |     3 |      3 |   5 | d28d7f875888fccb |
+| 56 | 0xe000 |       56 |         0 |     0 |      0 | 182 | f2d92a82c8d8fe43 |
 Done
 ```
 
@@ -1271,8 +1379,8 @@ Next Hop: c800
 Link: 1
 Ext Addr: e2b3540590b0fd87
 Cost: 0
-LQI In: 3
-LQI Out: 3
+Link Quality In: 3
+Link Quality Out: 3
 Age: 3
 Done
 ```
@@ -1286,8 +1394,8 @@ Next Hop: c800
 Link: 1
 Ext Addr: e2b3540590b0fd87
 Cost: 0
-LQI In: 3
-LQI Out: 3
+Link Quality In: 3
+Link Quality Out: 3
 Age: 7
 Done
 ```
@@ -1400,6 +1508,23 @@ true or false
 Done
 ```
 
+### state
+Return state of current state.
+
+```bash
+> state
+offline, disabled, detached, child, router or leader
+Done
+```
+
+### state <state>
+Try to switch to state `detached`, `child`, `router` or `leader`.
+
+```bash
+> state leader
+Done
+```
+
 ### thread start
 
 Enable Thread protocol operation and attach to a Thread network.
@@ -1418,6 +1543,25 @@ Disable Thread protocol operation and detach from a Thread network.
 Done
 ```
 
+### txpowermax
+
+Get the maximum transmit power in dBm.
+
+```bash
+> txpowermax
+-10 dBm
+Done
+```
+
+### txpowermax \<txpowermax\>
+
+Set the maximum transmit power.
+
+```bash
+> txpowermax -10
+Done
+```
+
 ### version
 
 Print the build version information.
@@ -1428,61 +1572,158 @@ OPENTHREAD/gf4f2f04; Jul  1 2016 17:00:09
 Done
 ```
 
-### whitelist
+### macfilter
 
-List the whitelist entries.
+List the macfilter status, including address and received signal strength filter settings.
 
 ```bash
-> whitelist
-Enabled
-e2b3540590b0fd87
-d38d7f875888fccb
-c467a90a2060fa0e
+> macfilter
+Address Mode: Whitelist
+0f6127e33af6b403 : rss -95 (lqi 1)
+0f6127e33af6b402
+RssIn List:
+0f6127e33af6b403 : rss -95 (lqi 1)
+Default rss : -50 (lqi 3)
 Done
 ```
 
-### whitelist add \<extaddr\>
+### macfilter addr
 
-Add an IEEE 802.15.4 Extended Address to the whitelist.
+List the address filter status.
 
 ```bash
-> whitelist add dead00beef00cafe
+> macfilter addr
+Whitelist
+0f6127e33af6b403 : rss -95 (lqi 1)
+0f6127e33af6b402
 Done
 ```
 
-### whitelist clear
+### macfilter addr disable
 
-Clear all entries from the whitelist.
+Disable address filter mode.
 
 ```bash
-> whitelist clear
+> macfilter addr disable
 Done
 ```
 
-### whitelist disable
+### macfilter addr whitelist
 
-Disable MAC whitelist filtering.
+Enable whitelist address filter mode.
 
 ```bash
-> whitelist disable
+> macfilter addr whitelist
 Done
 ```
 
-### whitelist enable
+### macfilter addr blacklist
 
-Enable MAC whitelist filtering.
+Enable blacklist address filter mode.
 
 ```bash
-> whitelist enable
+> macfilter addr blacklist
 Done
 ```
 
-### whitelist remove \<extaddr\>
+### macfilter addr add \<extaddr\> \[rss\]
 
-Remove an IEEE 802.15.4 Extended Address from the whitelist.
+Add an IEEE 802.15.4 Extended Address to the address filter, and fixed the received singal strength for
+the messages from the address if rss is specified.
 
 ```bash
-> whitelist remove dead00beef00cafe
+> macfilter addr add 0f6127e33af6b403 -95
+Done
+```
+
+```bash
+> macfilter addr add 0f6127e33af6b402
+Done
+```
+
+### macfilter addr remove \<extaddr\>
+
+Remove the IEEE802.15.4 Extended Address from the address filter.
+
+```bash
+> macfilter addr remove 0f6127e33af6b402
+Done
+```
+
+### macfilter addr clear
+
+Clear all the IEEE802.15.4 Extended Addresses from the address filter.
+
+```bash
+> macfilter addr clear
+Done
+```
+
+### macfilter rss
+
+List the rss filter status
+
+```bash
+> macfilter rss
+0f6127e33af6b403 : rss -95 (lqi 1)
+Default rss: -50 (lqi 3)
+Done
+```
+
+### macfilter rss add \<extaddr\> \<rss\>
+
+Set the received signal strength for the messages from the IEEE802.15.4 Extended Address.
+If extaddr is \*, default received signal strength for all received messages would be set.
+
+
+```bash
+> macfilter rss add * -50
+Done
+```
+
+```bash
+> macfilter rss add 0f6127e33af6b404 -85
+Done
+```
+
+### macfilter rss add-lqi \<extaddr\> \<lqi\>
+
+Set the received link quality for the messages from the IEEE802.15.4 Extended Address. Valid lqi range [0,3]
+If extaddr is \*, default received link quality for all received messages would be set.
+Equivalent with 'filter rss add' with similar usage
+
+
+```bash
+> macfilter rss add-lqi * 3
+Done
+```
+
+```bash
+> macfilter rss add 0f6127e33af6b404 2
+Done
+```
+
+### macfilter rss remove \<extaddr\>
+
+Removes the received signal strength or received link quality setting on the Extended Address.
+If extaddr is \*, default received signal strength or link quality for all received messages would be unset.
+
+```bash
+> macfilter rss remove *
+Done
+```
+
+```bash
+> macfilter rss remove 0f6127e33af6b404
+Done
+```
+
+### macfilter rss clear
+
+Clear all the the received signal strength or received link quality settings.
+
+```bash
+> macfilter rss clear
 Done
 ```
 
@@ -1491,4 +1732,4 @@ Done
 Diagnostics module is enabled only when building OpenThread with --enable-diag option.
 Go [diagnostics module][1] for more information.
 
-[1]:../diag/README.md
+[1]:./OT_DIAG.md
