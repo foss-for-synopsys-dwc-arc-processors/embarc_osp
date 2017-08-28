@@ -27,12 +27,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2016-11-14
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
+ * \date 2017-8-28
+ * \author Xiangcai Huang(xiangcai@synopsys.com)
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_OPENTHREAD	embARC OpenThread example on MRF24J40
+ * \defgroup	EMBARC_APP_BAREMETAL_OPENTHREAD_CLI	embARC OpenThread CLI example on MRF24J40
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
  * \ingroup	EMBARC_APPS_MID_OPENTHREAD
@@ -50,7 +50,7 @@
  *     This example is an OpenThread Command Line Interface (CLI) application on PMOD RF2 (MRF24J40).
  *     The mesh network is established, and IPv6 is configured with using bi-/multi-boards as Thread nodes.
  *     The node status can be shown on the terminal via UART. There are dozens of commands supported in the CLI example.
- *     The OpenThread CLI reference is in README.md.
+ *     The OpenThread CLI reference is in OT_CLI.md.
  *
  * ### Usage Manual
  *     - See \ref EMBARC_BOARD_CONNECTION "EMSK" to connect PMOD RF2 (MRF24J40).
@@ -68,13 +68,11 @@
  *         - Enter the following commands in the two terminal windows, "panid 0x1234", "ifconfig up", "thread start", to start
  *           start Thread process.
  *         - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
- *         - Enter other commands in the OpenThread CLI reference (README.md) to get more information. For example,
+ *         - Enter other commands in the OpenThread CLI reference (OT_CLI.md) to get more information. For example,
  *           “ipaddr” is used to show the IP address of the Thread node. Enter “ipaddr” in one ternimal to get the Thread node IP address,
- *           such as **fdde:ad00:beef:0:0:ff:fe00:ec00**. Enter “ping fdde:ad00:beef:0:0:ff:fe00:ec00” in the other ternimal to ping the Thread node.
+ *           such as **fe80:0:0:0:f065:44eb:ef9f:57c8**. Enter “ping fe80:0:0:0:f065:44eb:ef9f:57c8” in the other ternimal to ping the Thread node.
  *           The Internet Control Messages Protocol (ICMP) is implemented in the OpenThread for **ping** command.
  *
- * ![ScreenShot of Thread nodes and OpenThread startup](pic/images/example/emsk/emsk_openthread_connection.jpg)
- * ![ScreenShot of 'start' and 'ping' in OpenThread](pic/images/example/emsk/emsk_openthread_configuration.jpg)
  *
  *
  * ### Extra Comments
@@ -93,14 +91,14 @@
 
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_OPENTHREAD
+ * \ingroup	EMBARC_APP_BAREMETAL_OPENTHREAD_CLI
  * \brief  example of how to use OpenThread command-line interface
  *   This example demonstrates a minimal OpenThread application to
  *   show the OpenThread configuration and management interfaces via a basic command-line interface.
  */
 
 /**
- * \addtogroup	EMBARC_APP_BAREMETAL_OPENTHREAD
+ * \addtogroup	EMBARC_APP_BAREMETAL_OPENTHREAD_CLI
  * @{
  */
 
