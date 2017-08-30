@@ -136,7 +136,7 @@ Two EMSKs will be used as two Thread nodes, one is CLI Node and the other is NCP
 
 ## Ping to each other, the CLI and Linux Host
 
-- Go to the CLI's Tara term. Type **ipaddr** and note it's IPv6 address, here it is `fdde:ad00:beef:0:63a8:7376:c6ad:828c`. Type **ping fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0**, it will ping the Linux host from CLI:
+- Go to the CLI's Tera Term. Type **ipaddr** and note it's IPv6 address, here it is `fdde:ad00:beef:0:63a8:7376:c6ad:828c`. Type **ping fdde:ad00:beef:0:4f6e:7e53:67c8:f5b0**, it will ping the Linux host from CLI:
 
     ![ping_pc_from_cli][40]
 
