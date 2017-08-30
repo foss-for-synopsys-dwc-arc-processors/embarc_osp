@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2016-11-14
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
+ * \date 2017-8-28
+ * \author Xiangcai Huang(xiangcai@synopsys.com)
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_OPENTHREAD	embARC OpenThread example on MRF24J40
+ * \defgroup	EMBARC_APP_BAREMETAL_OPENTHREAD_NCP	embARC OpenThread example on MRF24J40
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
  * \ingroup	EMBARC_APPS_MID_OPENTHREAD
- * \brief	OpenThread command line interface example on MRF24J40
+ * \brief	OpenThread Network Co-Processor (NCP) on MRF24J40
  *
  * \details
  * ### Extra Required Tools
@@ -44,13 +44,15 @@
  * ### Extra Required Peripherals
  *     * 2 x EMSK
  *     * 2 x Digilent PMOD RF2 (MRF24J40)
- *     * 1 x SD card
+ *     * 2 x SD card
  *
  * ### Design Concept
- *     This example is an OpenThread Command Line Interface (CLI) application on PMOD RF2 (MRF24J40).
- *     The mesh network is established, and IPv6 is configured with using bi-/multi-boards as Thread nodes.
- *     The node status can be shown on the terminal via UART. There are dozens of commands supported in the CLI example.
- *     The OpenThread CLI reference is in README.md.
+ *     This example is an OpenThread Network Co-Processor (NCP) application on PMOD RF2 (MRF24J40).
+ *     This example can serve as a low-power wireless Network Co-Processor (NCP) to join Thread network
+ *         and communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems.
+ *     This example can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.
+ *         For more information about NCP and wpantund, see README.md for reference.
+ *     The NCP status can not be shown on the terminal via UART, it might show messy code.
  *
  * ### Usage Manual
  *     - See \ref EMBARC_BOARD_CONNECTION "EMSK" to connect PMOD RF2 (MRF24J40).
@@ -58,29 +60,26 @@
  *     - How to use this example
  *
  *       * Program the secondary bootloader application into onboard SPI flash of EMSKs.
- *       * Generate boot.bin of the Openthread CLI example using "make bin".
- *       * Run Openthread CLI example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable
- *         the secondary bootloader.
- *         - Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
- *         - Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
- *         - Enter “1” and press Enter button in one Tera Term. Enter “2” and press Enter button in the other one.
- *           The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
+ *       * Generate boot.bin of the Openthread NCP example using "make bin".
+ *       * Run an Openthread CLI example first with boot.bin from SD card, see `cli\README.md` for more information.
+ *         - Insert SD Card back to one EMSK. It will run the CLI example. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
+ *         - Enter “1” and press Enter button in the Tera Term. Enter the number here to generate pseudo random number for OpenThread.
  *         - Enter the following commands in the two terminal windows, "panid 0x1234", "ifconfig up", "thread start", to start
- *           start Thread process.
- *         - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.
- *         - Enter other commands in the OpenThread CLI reference (README.md) to get more information. For example,
- *           “ipaddr” is used to show the IP address of the Thread node. Enter “ipaddr” in one ternimal to get the Thread node IP address,
- *           such as **fdde:ad00:beef:0:0:ff:fe00:ec00**. Enter “ping fdde:ad00:beef:0:0:ff:fe00:ec00” in the other ternimal to ping the Thread node.
- *           The Internet Control Messages Protocol (ICMP) is implemented in the OpenThread for **ping** command.
+ *           Thread process.
+ *         - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the leader.
+ *       * Run Openthread NCP example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable
+ *         the secondary bootloader.
+ *         - Insert the other SD card to the other EMSK. It will run the NCP example. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
+ *         - Enter **2** and press Enter button in the NCP's Tera Term.
+ *         - After entering **2** in the NCP's Tera Term, the NCP will start up automatically.
+ *           It will show you some messy code in the last line, just ignore it.
+ *         - Install and Run OpenThread wpantund, and join the NCP to the Thread network created by CLI. See README.md for more information.
+ *         - Ping to each other between Linux host and CLI Node.
  *
- * ![ScreenShot of Thread nodes and OpenThread startup](pic/images/example/emsk/emsk_openthread_connection.jpg)
- * ![ScreenShot of 'start' and 'ping' in OpenThread](pic/images/example/emsk/emsk_openthread_configuration.jpg)
  *
  *
  * ### Extra Comments
- *     * A few seconds are required to make connections of Thread nodes.
  *     * Use AC adapter to ensure a steady power supply.
- *     * Open two Tera Term emulators to connect EMSKs with different COM ports.
  *     * The self-boot mode preparation is included in the above steps.
  *     * “make run” is not supported because EMSK boards are both v2.x and it can lead to conflict.
  *       See \ref sect_example_usage_HowToDebugMultiBoards "how to debug multiple boards in embARC" for more information.
@@ -93,14 +92,14 @@
 
 /**
  * \file
- * \ingroup	EMBARC_APP_BAREMETAL_OPENTHREAD
- * \brief  example of how to use OpenThread command-line interface
- *   This example demonstrates a minimal OpenThread application to
- *   show the OpenThread configuration and management interfaces via a basic command-line interface.
+ * \ingroup	EMBARC_APP_BAREMETAL_OPENTHREAD_NCP
+ * \brief  example of how to use OpenThread Network Co-Processor (NCP)
+ *   This example demonstrates a minimal OpenThread application to show the OpenThread NCP
+ *   joins Thread network and communicates with wpantund on Unix-like operating systems.
  */
 
 /**
- * \addtogroup	EMBARC_APP_BAREMETAL_OPENTHREAD
+ * \addtogroup	EMBARC_APP_BAREMETAL_OPENTHREAD_NCP
  * @{
  */
 
