@@ -47,12 +47,16 @@
 
 static unsigned int seed;
 
-void emskRandomInit(void)
+void emskRandomInit(int num)
 {
     unsigned int i;
 
     printf("Node No.:");
-    scanf("%d", &i);
+    if (num < 0)
+        scanf("%d", &i);
+    else
+        i = num;
+    
     printf("%d\n", i);
     seed = 10 + i;
     srand(seed);

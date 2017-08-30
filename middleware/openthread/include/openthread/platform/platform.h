@@ -45,7 +45,7 @@ extern "C" {
  * This function performs all platform-specific initialization.
  *
  */
-void PlatformInit(int argc, char *argv[]);
+void PlatformInit(int argc, char *argv[], int num);
 
 /**
  * This function performs all platform-specific deinitialization.
