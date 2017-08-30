@@ -114,6 +114,8 @@
 #include <openthread/openthread.h>
 #include <openthread/platform/platform.h>
 
+#define NUM_INPUT_MANUAL (-1)
+
 #if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 void *otPlatCAlloc(size_t aNum, size_t aSize)
 {
@@ -143,7 +145,7 @@ int main(void)
 	int argc = 0;
 	char **argv = NULL;
 
-	PlatformInit(argc, argv);
+	PlatformInit(argc, argv, NUM_INPUT_MANUAL);
 
 #if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 	// Call to query the buffer size
@@ -162,7 +164,7 @@ int main(void)
 
 	otCliUartInit(sInstance);
 
-	EMBARC_PRINTF("OpenThread Start\r\n");
+	EMBARC_PRINTF("OpenThread CLI Started!\r\n");
 
 #if OPENTHREAD_ENABLE_DIAG
 	otDiagInit(sInstance);

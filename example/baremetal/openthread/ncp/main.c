@@ -116,6 +116,9 @@
 #include <openthread/openthread.h>
 #include <openthread/platform/platform.h>
 
+#define NUM_INPUT_MANUAL (-1)
+#define NUM_NCP          (3)
+
 #if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 void *otPlatCAlloc(size_t aNum, size_t aSize)
 {
@@ -144,7 +147,7 @@ int main(void)
 	int argc = 0;
 	char **argv = NULL;
 
-	PlatformInit(argc, argv);
+	PlatformInit(argc, argv, NUM_INPUT_MANUAL);
 
 #if OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 	// Call to query the buffer size
