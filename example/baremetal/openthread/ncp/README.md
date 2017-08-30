@@ -1,6 +1,6 @@
 # OpenThread NCP Example
 
-This application is designed to show how to use the OpenThread Network Co-Processor (NCP) example in embARC.
+This application is designed to show how to use the OpenThread Network Co-Processor (NCP) example in embARC. It can serve as a low-power wireless Network Co-Processor (NCP) to communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems. It can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.
 
 ## Hardware and Software Setup
 ### Required Hardware
@@ -55,17 +55,17 @@ Two EMSKs will be used as two Thread nodes, one is CLI Node and the other is NCP
     - Insert SD Card to PC. Copy the generated binary file `obj_emsk_23/gnu_arcem7d/openthread_gnu_arcem7d.bin` to SD cards root. And rename it to `boot.bin`. Note that the secondary bootloader can only identify `boot.bin` in the SD card root.
 
 3. Run OpenThread CLI and NCP example. Before resetting the EMSK boards, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader to run.
-    - Insert SD Card back to one EMSK. It will run the CLI example. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.
+    - Insert SD Card back to one EMSK. It will run the **CLI** example. Press the reset button to reboot it. Wait for loading boot.bin from SD card. The response in the terminal window is shown as below.
     
         ![enter_no_cli_emsk][32]
     
-    - Insert the other SD card to the other EMSK. It will run the NCP example. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
+    - Insert the other SD card to the other EMSK. It will run the **NCP** example. Press the reset button to reboot it. Wait for loading boot.bin from SD card.
 
         ![enter_no_ncp_emsk][33]
     
     - Enter **1** and press Enter button in CLI's Tera Term. Enter **2** and press Enter button in the NCP's. Enter the number here to generate pseudo random number for OpenThread. Recommend to enter numbers in order, such as **1**, **2** and **3**. Using same number in different nodes may lead error. The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.
 
-    - After entering **2** in the NCP's Tera Term, the NCP will start up automatically. It will show you some messy code in the last line, just ignore it.
+    - After entering **2** in the NCP's Tera Term, the NCP will start up automatically. It will show you some messy code in the last line, just ignore it. And after that this Tera Term won't be used any more.
     
         ![show_no_emsk][34]
     
@@ -75,7 +75,7 @@ Two EMSKs will be used as two Thread nodes, one is CLI Node and the other is NCP
             > ifconfig up
             > thread start
 
-    - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the leader.
+    - Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the **leader**.
     
         ![start_cli_emsk][35]
 
@@ -86,11 +86,7 @@ Two EMSKs will be used as two Thread nodes, one is CLI Node and the other is NCP
     - Install python-software-properties
 
             $ sudo apt-get install -y python-software-properties
-            
             $ sudo add-apt-repository -y ppa:terry.guo/gcc-arm-embedded
-
-        > Ignore all errors and fails, it seems doesn't matter.
-
             $ sudo apt-get update -qq
 
     - Install packages needed for wpantund build and runtime
@@ -112,7 +108,7 @@ Two EMSKs will be used as two Thread nodes, one is CLI Node and the other is NCP
 
 3. Run OpenThread wpantund and join the network created by CLI Node.
 
-    - Run a terminal on PC and type the following commands to start wpantund:
+    - Run a terminal and type the following commands to start wpantund:
 
             sudo /usr/local/sbin/wpantund -o Config:NCP:SocketPath "/dev/ttyUSB1" -o Daemon:SyslogMask " -info" -o Config:TUN:InterfaceName utun6
 
