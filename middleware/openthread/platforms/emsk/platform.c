@@ -40,11 +40,11 @@
 #include <stdio.h>
 #define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
 
-void PlatformInit(int argc, char *argv[])
+void PlatformInit(int argc, char *argv[], int num)
 {
     emskAlarmInit();
     emskRadioInit();
-    emskRandomInit();
+    emskRandomInit(num);
     otPlatUartEnable();
 
     DBG("OpenThread Init Finished\r\n");

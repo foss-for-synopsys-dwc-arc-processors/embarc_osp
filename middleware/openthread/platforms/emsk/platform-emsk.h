@@ -80,7 +80,7 @@ void emskRadioProcess(otInstance *aInstance);
  * This function initializes the random number service used by OpenThread.
  *
  */
-void emskRandomInit(void);
+void emskRandomInit(int num);
 
 /**
  * This function performs UART driver processing.
