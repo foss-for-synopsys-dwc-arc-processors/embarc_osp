@@ -1,6 +1,7 @@
 var group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df =
 [
     [ "acceleration.c", "acceleration_8c.html", null ],
+    [ "acceleration.h", "acceleration_8h.html", null ],
     [ "body_temperature.c", "body__temperature_8c.html", null ],
     [ "body_temperature.h", "body__temperature_8h.html", null ],
     [ "heartrate.c", "heartrate_8c.html", null ],
@@ -23,6 +24,11 @@ var group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_
       [ "azl", "union__acc__data.html#a12b914f46035b52afc51f95f89e0c75b", null ],
       [ "buf", "union__acc__data.html#a03494fb4b2da3c90f2fbc37d9cdb44bc", null ]
     ] ],
+    [ "__accValues", "struct____acc_values.html", [
+      [ "accl_x", "struct____acc_values.html#a989995d9000b0a1051054bc94fb2f2ac", null ],
+      [ "accl_y", "struct____acc_values.html#abfecbb9d7b6ad6cf4db569bc8320da35", null ],
+      [ "accl_z", "struct____acc_values.html#a685cae313bc2611f7a1f6b0dc157437b", null ]
+    ] ],
     [ "_btemp_data", "union__btemp__data.html", [
       [ "btemp_h", "union__btemp__data.html#a1c9a366fbac2f0f08de703193b208f33", null ],
       [ "btemp_l", "union__btemp__data.html#aa76dc9007f99688a69422f5365437fc5", null ],
@@ -44,13 +50,17 @@ var group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_
       [ "warn_downward", "structdata__wearable__node.html#a66b7cdc822b1e8fae606772e071229bd", null ],
       [ "warn_hrate", "structdata__wearable__node.html#aeaa9578dfd49eeeb036d677d454b7604", null ]
     ] ],
+    [ "ACC_SENSOR_IIC_ID", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga4c3d53fa716e8a9977cfcae6661eab2f", null ],
     [ "AWAKE", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gae9b5b2671c05995937b7a6622a22e97e", null ],
     [ "BTEMP_SENSOR_IIC_ID", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf098546d37d2f08069de046156240248", null ],
+    [ "EMSK_IMU_SENSOR_CHECK_EXP_NORTN", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga9d3a8474caf4382ec64848f85969cead", null ],
     [ "HRATE_BASE_VALUE", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga60d17686436997a2e588254fad9da806", null ],
     [ "HRATE_SENSOR_IIC_ID", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga36788c64a8d9e5acd4a00d2a0b19f084", null ],
     [ "LEN_STA_QUEUE", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaa3afd78d8be703aa7a5b36f54ad8803d", null ],
     [ "LWM2M_CLIENT", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga4a2a1bcef3d8df565ba4f01ffabb2faf", null ],
     [ "MAX30102_ADDRESS", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gad7327a848315960f1d8828a09316c6a9", null ],
+    [ "MPU6050_A0_PIN", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gac670872f2c379cd3597c11027ec5fa0e", null ],
+    [ "MPU6050_ADDRESS", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga6a26d06d2f863deedd849612a6c2a4e4", null ],
     [ "NOEVENT", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga217de19a0b55ac6c6fe90fa32d44a029", null ],
     [ "PRINT_DEBUG_AWAKE", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga51583b9eb6b9913bfae97ede9a941c3f", null ],
     [ "PRINT_DEBUG_FUNC", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gae02a89ac32cbee34e2ef29f1e40ef58c", null ],

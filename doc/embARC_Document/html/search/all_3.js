@@ -2,9 +2,9 @@ var searchData=
 [
   ['acc_5fctrl_5foi_5fs',['acc_ctrl_oi_s',['../structacc__ctrl__oi__s.html',1,'']]],
   ['acc_5fctrl_5fri_5fs',['acc_ctrl_ri_s',['../structacc__ctrl__ri__s.html',1,'']]],
-  ['acc_5fsensor_5fiic_5fid',['ACC_SENSOR_IIC_ID',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_b_a_b_y___s_m_a_r_t_h_o_m_e___n_o_d_e_s___w_e_81b306b7b8e22821087e7123bd534c80.html#ga4c3d53fa716e8a9977cfcae6661eab2f',1,'acceleration.h']]],
-  ['acc_5fsensor_5finit',['acc_sensor_init',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8512b4820c4da2b82ca2eaa74d9fb428',1,'acc_sensor_init(uint32_t slv_addr):&#160;acceleration.c'],['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_b_a_b_y___s_m_a_r_t_h_o_m_e___n_o_d_e_s___w_e_81b306b7b8e22821087e7123bd534c80.html#ga8512b4820c4da2b82ca2eaa74d9fb428',1,'acc_sensor_init(uint32_t slv_addr):&#160;acceleration.c']]],
-  ['acc_5fsensor_5fread',['acc_sensor_read',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gacd3cf3c14620fecccacb3ad9806f7874',1,'acc_sensor_read(acc_values *acc_temp):&#160;acceleration.c'],['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_b_a_b_y___s_m_a_r_t_h_o_m_e___n_o_d_e_s___w_e_81b306b7b8e22821087e7123bd534c80.html#gad609029449a9bc6b851a6de8867583c3',1,'acc_sensor_read(acc_values *accel_val):&#160;acceleration.c']]],
+  ['acc_5fsensor_5fiic_5fid',['ACC_SENSOR_IIC_ID',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga4c3d53fa716e8a9977cfcae6661eab2f',1,'acceleration.h']]],
+  ['acc_5fsensor_5finit',['acc_sensor_init',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8512b4820c4da2b82ca2eaa74d9fb428',1,'acceleration.c']]],
+  ['acc_5fsensor_5fread',['acc_sensor_read',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gacd3cf3c14620fecccacb3ad9806f7874',1,'acceleration.c']]],
   ['acc_5fspecial',['acc_special',['../structacc__special.html',1,'']]],
   ['acc_5fupbuf',['acc_upbuf',['../structacc__upbuf.html',1,'']]],
   ['accel_5frng',['ACCEL_RNG',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0befdc6de35299d6e7ea19a36bdd9bd5',1,'IMU.h']]],
