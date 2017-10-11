@@ -31,19 +31,16 @@
  *   This file implements CRC16 computations.
  */
 
-#include <common/crc16.hpp>
+#include <openthread/config.h>
 
-namespace Thread {
+#include "crc16.hpp"
+
+namespace ot {
 
 Crc16::Crc16(Polynomial aPolynomial)
 {
     mPolynomial = static_cast<uint16_t>(aPolynomial);
     Init();
-}
-
-void Crc16::Init(void)
-{
-    mCrc = 0;
 }
 
 void Crc16::Update(uint8_t aByte)
@@ -67,9 +64,4 @@ void Crc16::Update(uint8_t aByte)
     while (--i);
 }
 
-uint16_t Crc16::Get(void) const
-{
-    return mCrc;
-}
-
-}  // namespace Thread
+}  // namespace ot

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, The OpenThread Authors.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -30,16 +30,12 @@
  * @file
  *   This file implements the OpenThread platform abstraction for flash.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-12-21
- *
  */
 
-#include <openthread-config.h>
-#include <platform/alarm.h>
+#include <openthread/config.h>
+#include "openthread/platform/alarm-milli.h"
 #include <utils/flash.h>
-#include <common/code_utils.hpp>
+#include <utils/code_utils.h>
 #include "platform-emsk.h"
 
 /**
@@ -55,112 +51,118 @@
  * Secondary bootloader: from 0x0078 0000
  * Available for OpenThread: from 0x00FF D000 to 0x00FF EFFF
  */
-#define OPENTHREAD_FLASH_BASE		0x00ffd000
-#define OPENTHREAD_FLASH_SIZE		0x00002000
+#define OPENTHREAD_FLASH_BASE       0x00ffd000
+#define OPENTHREAD_FLASH_SIZE       0x00002000
 
 /**
  * Define SETTINGS_CONFIG_BASE_ADDRESS,
- *	  SETTINGS_CONFIG_PAGE_SIZE, and
- *	  SETTINGS_CONFIG_PAGE_NUM for EMSK
+ *    SETTINGS_CONFIG_PAGE_SIZE, and
+ *    SETTINGS_CONFIG_PAGE_NUM for EMSK
  */
-#define SETTINGS_CONFIG_BASE_ADDRESS	0x00ffe000
-#define SETTINGS_CONFIG_PAGE_SIZE	FLASH_SECTOR_SIZE
-#define SETTINGS_CONFIG_PAGE_NUM	1
+#ifdef SETTINGS_CONFIG_BASE_ADDRESS
+#undef SETTINGS_CONFIG_BASE_ADDRESS
+#endif // SETTINGS_CONFIG_BASE_ADDRESS
+#define SETTINGS_CONFIG_BASE_ADDRESS    0x00ffe000
 
-ThreadError utilsFlashInit(void)
+#ifdef SETTINGS_CONFIG_PAGE_SIZE
+#undef SETTINGS_CONFIG_PAGE_SIZE
+#endif // SETTINGS_CONFIG_PAGE_SIZE
+#define SETTINGS_CONFIG_PAGE_SIZE   FLASH_SECTOR_SIZE
+
+#ifdef SETTINGS_CONFIG_PAGE_NUM
+#undef SETTINGS_CONFIG_PAGE_NUM
+#endif // SETTINGS_CONFIG_PAGE_NUM
+#define SETTINGS_CONFIG_PAGE_NUM    1
+
+otError utilsFlashInit(void)
 {
-	flash_init();
-	return kThreadError_None;
+    flash_init();
+    return OT_ERROR_NONE;
 }
 
 uint32_t utilsFlashGetSize(void)
 {
-	return (uint32_t)FLASH_SECTOR_SIZE;
+    return (uint32_t)FLASH_SECTOR_SIZE;
 }
 
-ThreadError utilsFlashErasePage(uint32_t aAddress)
+otError utilsFlashErasePage(uint32_t aAddress)
 {
-	ThreadError error = kThreadError_None;
-	int32_t status;
+    otError error = OT_ERROR_NONE;
+    int32_t status;
 
-	VerifyOrExit((aAddress >= OPENTHREAD_FLASH_BASE) && (aAddress < (OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE - 1)),
-			error = kThreadError_InvalidArgs);
+    otEXPECT_ACTION((aAddress >= OPENTHREAD_FLASH_BASE) && (aAddress < (OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE - 1)),
+                    error = OT_ERROR_INVALID_ARGS);
 
-	/* Use 2 sectors in the implementation, cannot erase the address over the boundry */
-	status = flash_erase(aAddress, FLASH_SECTOR_SIZE);
+    /* Use 2 sectors in the implementation, cannot erase the address over the boundry */
+    status = flash_erase(aAddress, FLASH_SECTOR_SIZE);
 
-	VerifyOrExit(!(status == -1), error = kThreadError_Failed);
+    otEXPECT_ACTION(status != -1, error = OT_ERROR_FAILED);
 
 exit:
-	return error;
+    return error;
 }
 
-ThreadError utilsFlashStatusWait(uint32_t aTimeout)
+otError utilsFlashStatusWait(uint32_t aTimeout)
 {
-	ThreadError error = kThreadError_None;
-	uint32_t start = otPlatAlarmGetNow();
-	uint32_t busy = 1;
-	uint32_t status = 0x01;
+    otError error = OT_ERROR_NONE;
+    uint32_t start = otPlatAlarmMilliGetNow();
+    bool busy = true;
+    uint32_t status = 0x01;
 
-	while (busy && ((otPlatAlarmGetNow() - start) < aTimeout))
-	{
-		status = flash_read_status();
-		if (status & 0x01)
-		{
-			busy = 1;
-		}
-		else
-		{
-			busy = 0;
-		}
-	}
+    while (busy && ((otPlatAlarmMilliGetNow() - start) < aTimeout))
+    {
+        status = flash_read_status();
+        busy =  status & 0x01;
+    }
 
-	VerifyOrExit(!busy, error = kThreadError_Busy);
+    otEXPECT_ACTION(!busy, error = OT_ERROR_BUSY);
 
 exit:
-	return error;
+    return error;
 }
 
 uint32_t utilsFlashWrite(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
 {
-	int32_t written_size = 0;
-	uint32_t size = 0;
+    int32_t written_size = 0;
+    uint32_t size = 0;
 
-	VerifyOrExit((aAddress >= OPENTHREAD_FLASH_BASE) &&
-			((aAddress + aSize) <= OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE) &&
-			(!(aAddress & 3)) && (!(aSize & 3)), ;);
+    otEXPECT_ACTION((aAddress >= OPENTHREAD_FLASH_BASE) &&
+                    ((aAddress + aSize) <= OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE) &&
+                    (!(aAddress & 3)) && (!(aSize & 3)), ;);
 
-	written_size = flash_write(aAddress, aSize, aData);
-	if (written_size < 0)
-	{
-		size = 0;
-	}
-	else
-	{
-		size = (uint32_t)written_size;
-	}
+    written_size = flash_write(aAddress, aSize, aData);
+
+    if (written_size < 0)
+    {
+        size = 0;
+    }
+    else
+    {
+        size = (uint32_t)written_size;
+    }
 
 exit:
-	return size;
+    return size;
 }
 
 uint32_t utilsFlashRead(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
 {
-	int32_t read_size = 0;
-	uint32_t size = 0;
+    int32_t read_size = 0;
+    uint32_t size = 0;
 
-	VerifyOrExit((aAddress >= OPENTHREAD_FLASH_BASE) &&
-			((aAddress + aSize) <= OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE), ;);
+    otEXPECT_ACTION((aAddress >= OPENTHREAD_FLASH_BASE) &&
+                    ((aAddress + aSize) <= OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE), ;);
 
-	read_size = flash_read(aAddress, aSize, aData);
-	if (read_size < 0)
-	{
-		size = 0;
-	}
-	else
-	{
-		size = (uint32_t)read_size;
-	}
+    read_size = flash_read(aAddress, aSize, aData);
+
+    if (read_size < 0)
+    {
+        size = 0;
+    }
+    else
+    {
+        size = (uint32_t)read_size;
+    }
 
 
 exit:

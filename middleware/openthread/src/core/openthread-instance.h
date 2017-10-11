@@ -35,15 +35,24 @@
 #ifndef OPENTHREADINSTANCE_H_
 #define OPENTHREADINSTANCE_H_
 
-#include <stdint.h>
-#include <stdbool.h>
+#include <openthread/config.h>
 
-#include <openthread-core-config.h>
-#include <openthread-types.h>
-#include <crypto/mbedtls.hpp>
-#include <net/ip6.hpp>
-#include <thread/thread_netif.hpp>
-#include <coap/coap_server.hpp>
+#include "utils/wrap_stdint.h"
+#include "utils/wrap_stdbool.h"
+
+#include <openthread/types.h>
+#include <openthread/platform/logging.h>
+
+#include "openthread-core-config.h"
+#include "openthread-single-instance.h"
+#if OPENTHREAD_ENABLE_RAW_LINK_API
+#include "api/link_raw.hpp"
+#endif
+#include "coap/coap.hpp"
+#include "crypto/heap.hpp"
+#include "crypto/mbedtls.hpp"
+#include "net/ip6.hpp"
+#include "thread/thread_netif.hpp"
 
 /**
  * This type represents all the static / global variables used by OpenThread allocated in one place.
@@ -54,9 +63,9 @@ typedef struct otInstance
     // Callbacks
     //
 
-    Thread::Ip6::NetifCallback mNetifCallback[OPENTHREAD_CONFIG_MAX_STATECHANGE_HANDLERS];
+    ot::Ip6::NetifCallback mNetifCallback[OPENTHREAD_CONFIG_MAX_STATECHANGE_HANDLERS];
 
-    otReceiveIp6DatagramCallback mReceiveIp6DatagramCallback;
+    otIp6ReceiveCallback mReceiveIp6DatagramCallback;
     void *mReceiveIp6DatagramCallbackContext;
 
     otHandleActiveScanResult mActiveScanCallback;
@@ -69,27 +78,43 @@ typedef struct otInstance
     // State
     //
 
-#ifndef OPENTHREAD_MULTIPLE_INSTANCE
-    Thread::Crypto::MbedTls mMbedTls;
+    ot::TaskletScheduler mTaskletScheduler;
+    ot::TimerMilliScheduler mTimerMilliScheduler;
+#if OPENTHREAD_CONFIG_ENABLE_PLATFORM_USEC_TIMER
+    ot::TimerMicroScheduler mTimerMicroScheduler;
 #endif
-    Thread::Ip6::Ip6 mIp6;
-    Thread::ThreadNetif mThreadNetif;
+
+#if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
+    ot::Crypto::MbedTls mMbedTls;
+    ot::Crypto::Heap    mMbedTlsHeap;
+#endif
+    ot::Ip6::Ip6 mIp6;
+    ot::ThreadNetif mThreadNetif;
+
+#if OPENTHREAD_ENABLE_RAW_LINK_API
+    ot::LinkRaw mLinkRaw;
+#endif // OPENTHREAD_ENABLE_RAW_LINK_API
 
 #if OPENTHREAD_ENABLE_APPLICATION_COAP
-    Thread::Coap::Server mApplicationCoapServer;
+    ot::Coap::Coap mApplicationCoap;
 #endif // OPENTHREAD_ENABLE_APPLICATION_COAP
+
+#if OPENTHREAD_CONFIG_ENABLE_DYNAMIC_LOG_LEVEL
+    otLogLevel mLogLevel;
+#endif // OPENTHREAD_CONFIG_ENABLE_DYNAMIC_LOG_LEVEL
+    ot::MessagePool mMessagePool;
 
     // Constructor
     otInstance(void);
 
 } otInstance;
 
-static inline otInstance *otInstanceFromIp6(Thread::Ip6::Ip6 *aIp6)
+static inline otInstance *otInstanceFromIp6(ot::Ip6::Ip6 *aIp6)
 {
     return (otInstance *)CONTAINING_RECORD(aIp6, otInstance, mIp6);
 }
 
-static inline otInstance *otInstanceFromThreadNetif(Thread::ThreadNetif *aThreadNetif)
+static inline otInstance *otInstanceFromThreadNetif(ot::ThreadNetif *aThreadNetif)
 {
     return (otInstance *)CONTAINING_RECORD(aThreadNetif, otInstance, mThreadNetif);
 }

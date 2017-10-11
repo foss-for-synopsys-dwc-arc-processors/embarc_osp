@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,6 @@
  * @file
  *   This file includes the platform-specific initializers.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
  */
 
 #ifndef PLATFORM_EMSK_H_
@@ -41,7 +37,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <openthread-types.h>
+#include "openthread/types.h"
 
 #include "board.h"
 
@@ -84,7 +80,7 @@ void emskRadioProcess(otInstance *aInstance);
  * This function initializes the random number service used by OpenThread.
  *
  */
-void emskRandomInit(void);
+void emskRandomInit(int num);
 
 /**
  * This function performs UART driver processing.

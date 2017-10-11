@@ -2,7 +2,7 @@
 
 ## REPO CONFIGURATION
 REPO_LINK="https://github.com/ARMmbed/mbedtls.git"
-REPO_COMMIT="yotta-2.3.0"
+REPO_COMMIT="mbedtls-2.4.1"
 SRC_DIRS="library,include"
 
 PREV_DIR=$(pwd)

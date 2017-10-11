@@ -34,14 +34,16 @@
 #ifndef NETWORK_DATA_HPP_
 #define NETWORK_DATA_HPP_
 
-#include <openthread-types.h>
-#include <coap/coap_client.hpp>
-#include <net/udp6.hpp>
-#include <thread/lowpan.hpp>
-#include <thread/mle_router.hpp>
-#include <thread/network_data_tlvs.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+#include "coap/coap.hpp"
+#include "common/locator.hpp"
+#include "net/udp6.hpp"
+#include "thread/lowpan.hpp"
+#include "thread/mle_router.hpp"
+#include "thread/network_data_tlvs.hpp"
+
+namespace ot {
 
 /**
  * @addtogroup core-netdata
@@ -60,7 +62,7 @@ namespace Thread {
  */
 
 /**
- * @namespace Thread::NetworkData
+ * @namespace ot::NetworkData
  *
  * @brief
  *   This namespace includes definitions for managing Thread Network Data.
@@ -82,7 +84,7 @@ namespace NetworkData {
  * This class implements Network Data processing.
  *
  */
-class NetworkData
+class NetworkData: public ThreadNetifLocator
 {
 public:
     enum
@@ -100,6 +102,12 @@ public:
     NetworkData(ThreadNetif &aThreadNetif, bool aLocal);
 
     /**
+     * This method clears the network data.
+     *
+     */
+    void Clear(void);
+
+    /**
      * This method provides a full or stable copy of the Thread Network Data.
      *
      * @param[in]     aStable      TRUE when copying the stable version, FALSE when copying the full version.
@@ -115,11 +123,11 @@ public:
      * @param[inout]  aIterator  A pointer to the Network Data iterator context.
      * @param[out]    aConfig    A pointer to where the On Mesh Prefix information will be placed.
      *
-     * @retval kThreadError_None      Successfully found the next On Mesh prefix.
-     * @retval kThreadError_NotFound  No subsequent On Mesh prefix exists in the Thread Network Data.
+     * @retval OT_ERROR_NONE       Successfully found the next On Mesh prefix.
+     * @retval OT_ERROR_NOT_FOUND  No subsequent On Mesh prefix exists in the Thread Network Data.
      *
      */
-    ThreadError GetNextOnMeshPrefix(otNetworkDataIterator *aIterator, otBorderRouterConfig *aConfig);
+    otError GetNextOnMeshPrefix(otNetworkDataIterator *aIterator, otBorderRouterConfig *aConfig);
 
     /**
      * This method provides the next On Mesh prefix in the Thread Network Data for a given RLOC16.
@@ -128,11 +136,11 @@ public:
      * @param[in]     aRloc16    The RLOC16 value.
      * @param[out]    aConfig    A pointer to where the On Mesh Prefix information will be placed.
      *
-     * @retval kThreadError_None      Successfully found the next On Mesh prefix.
-     * @retval kThreadError_NotFound  No subsequent On Mesh prefix exists in the Thread Network Data.
+     * @retval OT_ERROR_NONE       Successfully found the next On Mesh prefix.
+     * @retval OT_ERROR_NOT_FOUND  No subsequent On Mesh prefix exists in the Thread Network Data.
      *
      */
-    ThreadError GetNextOnMeshPrefix(otNetworkDataIterator *aIterator, uint16_t aRloc16, otBorderRouterConfig *aConfig);
+    otError GetNextOnMeshPrefix(otNetworkDataIterator *aIterator, uint16_t aRloc16, otBorderRouterConfig *aConfig);
 
     /**
      * This method provides the next external route in the Thread Network Data.
@@ -140,11 +148,11 @@ public:
      * @param[inout]  aIterator  A pointer to the Network Data iterator context.
      * @param[out]    aConfig    A pointer to where the external route information will be placed.
      *
-     * @retval kThreadError_None      Successfully found the next external route.
-     * @retval kThreadError_NotFound  No subsequent external route exists in the Thread Network Data.
+     * @retval OT_ERROR_NONE       Successfully found the next external route.
+     * @retval OT_ERROR_NOT_FOUND  No subsequent external route exists in the Thread Network Data.
      *
      */
-    ThreadError GetNextExternalRoute(otNetworkDataIterator *aIterator, otExternalRouteConfig *aConfig);
+    otError GetNextExternalRoute(otNetworkDataIterator *aIterator, otExternalRouteConfig *aConfig);
 
     /**
      * This method provides the next external route in the Thread Network Data for a given RLOC16.
@@ -153,12 +161,12 @@ public:
      * @param[in]     aRloc16    The RLOC16 value.
      * @param[out]    aConfig    A pointer to where the external route information will be placed.
      *
-     * @retval kThreadError_None      Successfully found the next external route.
-     * @retval kThreadError_NotFound  No subsequent external route exists in the Thread Network Data.
+     * @retval OT_ERROR_NONE       Successfully found the next external route.
+     * @retval OT_ERROR_NOT_FOUND  No subsequent external route exists in the Thread Network Data.
      *
      */
-    ThreadError GetNextExternalRoute(otNetworkDataIterator *aIterator, uint16_t aRloc16,
-                                     otExternalRouteConfig *aConfig);
+    otError GetNextExternalRoute(otNetworkDataIterator *aIterator, uint16_t aRloc16,
+                                 otExternalRouteConfig *aConfig);
 
     /**
      * This method indicates whether or not the Thread Network Data contains all of the on mesh prefix information
@@ -275,11 +283,11 @@ protected:
      * @param[in]  aStart   A pointer to the beginning of the insertion.
      * @param[in]  aLength  The number of bytes to insert.
      *
-     * @retval kThreadError_None         Successfully inserted bytes.
-     * @retval kThreadError_NoBufs       Insufficient buffer space to insert bytes.
+     * @retval OT_ERROR_NONE          Successfully inserted bytes.
+     * @retval OT_ERROR_NO_BUFS       Insufficient buffer space to insert bytes.
      *
      */
-    ThreadError Insert(uint8_t *aStart, uint8_t aLength);
+    otError Insert(uint8_t *aStart, uint8_t aLength);
 
     /**
      * This method removes bytes from the Network Data.
@@ -287,10 +295,10 @@ protected:
      * @param[in]  aStart   A pointer to the beginning of the removal.
      * @param[in]  aLength  The number of bytes to remove.
      *
-     * @retval kThreadError_None    Successfully removed bytes.
+     * @retval OT_ERROR_NONE    Successfully removed bytes.
      *
      */
-    ThreadError Remove(uint8_t *aStart, uint8_t aLength);
+    otError Remove(uint8_t *aStart, uint8_t aLength);
 
     /**
      * This method strips non-stable data from the Thread Network Data.
@@ -330,16 +338,14 @@ protected:
      *
      * @param[in]  aRloc16  The old RLOC16 value that was previously registered.
      *
-     * @retval kThreadError_None    Successfully enqueued the notification message.
-     * @retval kThreadError_NoBufs  Insufficient message buffers to generate the notification message.
+     * @retval OT_ERROR_NONE     Successfully enqueued the notification message.
+     * @retval OT_ERROR_NO_BUFS  Insufficient message buffers to generate the notification message.
      *
      */
-    ThreadError SendServerDataNotification(uint16_t aRloc16);
+    otError SendServerDataNotification(uint16_t aRloc16);
 
     uint8_t mTlvs[kMaxSize];  ///< The Network Data buffer.
     uint8_t mLength;          ///< The number of valid bytes in @var mTlvs.
-
-    Mle::MleRouter &mMle;
 
 private:
     enum
@@ -347,11 +353,24 @@ private:
         kDataResubmitDelay = 300000,  ///< DATA_RESUBMIT_DELAY (miliseconds)
     };
 
+    class NetworkDataIterator
+    {
+    public:
+        NetworkDataIterator(otNetworkDataIterator *aIterator):
+            mIteratorBuffer(reinterpret_cast<uint8_t *>(aIterator)) { }
+
+        uint8_t GetTlvsIndex(void) const { return mIteratorBuffer[0]; }
+        uint8_t GetEntryIndex(void) const { return mIteratorBuffer[1]; }
+        void SetTlvsIndex(uint8_t aIndex) { mIteratorBuffer[0] = aIndex; }
+        void SetEntryIndex(uint8_t aIndex) { mIteratorBuffer[1] = aIndex; }
+
+    private:
+        uint8_t *mIteratorBuffer;
+    };
+
     const bool      mLocal;
     bool            mLastAttemptWait;
     uint32_t        mLastAttempt;
-
-    Coap::Client &mCoapClient;
 };
 
 }  // namespace NetworkData
@@ -360,6 +379,6 @@ private:
  * @}
  */
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // NETWORK_DATA_HPP_

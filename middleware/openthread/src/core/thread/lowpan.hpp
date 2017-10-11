@@ -34,16 +34,13 @@
 #ifndef LOWPAN_HPP_
 #define LOWPAN_HPP_
 
-#include <common/message.hpp>
-#include <mac/mac_frame.hpp>
-#include <net/ip6.hpp>
-#include <net/ip6_address.hpp>
+#include "common/locator.hpp"
+#include "common/message.hpp"
+#include "mac/mac_frame.hpp"
+#include "net/ip6.hpp"
+#include "net/ip6_address.hpp"
 
-namespace Thread {
-
-class ThreadNetif;
-
-namespace NetworkData { class Leader; }
+namespace ot {
 
 /**
  * @addtogroup core-6lowpan
@@ -55,7 +52,7 @@ namespace NetworkData { class Leader; }
  */
 
 /**
- * @namespace Thread::Lowpan
+ * @namespace ot::Lowpan
  *
  * @brief
  *   This namespace includes definitions for 6LoWPAN message processing.
@@ -79,7 +76,7 @@ struct Context
  * This class implements LOWPAN_IPHC header compression.
  *
  */
-class Lowpan
+class Lowpan: public ThreadNetifLocator
 {
 public:
     /**
@@ -205,12 +202,10 @@ private:
 
     int DecompressExtensionHeader(Message &message, const uint8_t *aBuf, uint16_t aBufLength);
     int DecompressUdpHeader(Message &message, const uint8_t *aBuf, uint16_t aBufLength, uint16_t datagramLength);
-    ThreadError DispatchToNextHeader(uint8_t dispatch, Ip6::IpProto &nextHeader);
+    otError DispatchToNextHeader(uint8_t dispatch, Ip6::IpProto &nextHeader);
 
-    static ThreadError CopyContext(const Context &aContext, Ip6::Address &aAddress);
-    static ThreadError ComputeIid(const Mac::Address &aMacAddr, const Context &aContext, Ip6::Address &aIpAddress);
-
-    NetworkData::Leader &mNetworkData;
+    static otError CopyContext(const Context &aContext, Ip6::Address &aAddress);
+    static otError ComputeIid(const Mac::Address &aMacAddr, const Context &aContext, Ip6::Address &aIpAddress);
 };
 
 /**
@@ -233,51 +228,33 @@ public:
     MeshHeader(void) { memset(this, 0, sizeof(*this)); }
 
     /**
-     * Mesh Header constructor that takes frame @p aFrame as a parameter.
-     *
-     * @param[in]  aFrame  The pointer to the frame.
-     *
-     */
-    MeshHeader(const uint8_t *aFrame) {
-        mDispatchHopsLeft = *aFrame++;
-        mDeepHopsLeft = IsDeepHopsLeftField() ? *aFrame++ : 0;
-
-/* Add __CCAC__ for ARC MetaWare compiler */
-#if defined(__CCAC__)
-        memcpy((void *)(&mAddress), aFrame, sizeof(mAddress));
-#else
-        memcpy(&mAddress, aFrame, sizeof(mAddress));
-#endif
-    }
-
-    /**
-     * Mesh Header constructor that takes message object @p aMessage as a parameter.
-     *
-     * @param[in]  aMessage  The message object.
-     *
-     */
-    MeshHeader(const Message &aMessage) {
-        aMessage.Read(0, sizeof(mDispatchHopsLeft), &mDispatchHopsLeft);
-
-        if (IsDeepHopsLeftField()) {
-            aMessage.Read(1, sizeof(mDeepHopsLeft) + sizeof(mAddress), &mDeepHopsLeft);
-        }
-        else {
-
-/* Add __CCAC__ for ARC MetaWare compiler */
-#if defined(__CCAC__)
-            aMessage.Read(1, sizeof(mAddress), (void *)(&mAddress));
-#else
-            aMessage.Read(1, sizeof(mAddress), &mAddress);
-#endif
-        }
-    }
-
-    /**
      * This method initializes the header.
      *
      */
     void Init(void) { mDispatchHopsLeft = kDispatch | kSourceShort | kDestinationShort; }
+
+    /**
+     * This method initializes the mesh header from a frame @p aFrame.
+     *
+     * @param[in]  aFrame        The pointer to the frame.
+     * @param[in]  aFrameLength  The length of the frame.
+     *
+     * @retval OT_ERROR_NONE     Mesh Header initialized successfully.
+     * @retval OT_ERROR_FAILED   Mesh header could not be initialized from @p aFrame (e.g., frame not long enough).
+     *
+     */
+    otError Init(const uint8_t *aFrame, uint8_t aFrameLength);
+
+    /**
+     * This method initializes the mesh header from a message object @p aMessage.
+     *
+     * @param[in]  aMessage  The message object.
+     *
+     * @retval OT_ERROR_NONE     Mesh Header initialized successfully.
+     * @retval OT_ERROR_FAILED   Mesh header could not be initialized from @ aMessage(e.g., not long enough).
+     *
+     */
+    otError Init(const Message &aMessage);
 
     /**
      * This method indicates whether or not the header is a Mesh Header.
@@ -382,12 +359,8 @@ public:
         if (IsDeepHopsLeftField()) {
             *aFrame++ = mDeepHopsLeft;
         }
-/* Add __CCAC__ for ARC MetaWare compiler */
-#if defined(__CCAC__)
-        memcpy(aFrame, (const void *)(&mAddress), sizeof(mAddress));
-#else
+
         memcpy(aFrame, &mAddress, sizeof(mAddress));
-#endif
     }
 
 private:
@@ -425,6 +398,18 @@ public:
     void Init(void) { mDispatchSize = HostSwap16(kDispatch); }
 
     /**
+     * This method initializes the fragment header from a frame @p aFrame.
+     *
+     * @param[in]  aFrame        The pointer to the frame.
+     * @param[in]  aFrameLength  The length of the frame.
+     *
+     * @retval OT_ERROR_NONE     Fragment Header initialized successfully.
+     * @retval OT_ERROR_PARSE    Fragment header could not be initialized from @p aFrame (e.g., frame not long enough).
+     *
+     */
+    otError Init(const uint8_t *aFrame, uint8_t aFrameLength);
+
+    /**
      * This method indicates whether or not the header is a Fragment Header.
      *
      * @retval TRUE   If the header matches the Fragment Header dispatch value.
@@ -439,9 +424,15 @@ public:
      * @returns The Fragment Header length in bytes.
      *
      */
-    uint8_t GetHeaderLength(void) {
-        return (HostSwap16(mDispatchSize) & kOffset) ? sizeof(*this) : sizeof(*this) - sizeof(mOffset);
-    }
+    uint8_t GetHeaderLength(void) const { return IsOffsetPresent() ? sizeof(*this) : sizeof(*this) - sizeof(mOffset); }
+
+    /**
+     * This method indicates whether or not the Offset field is present.
+     *
+     * @returns TRUE if the Offset field is present, FALSE otherwise.
+     *
+     */
+    bool IsOffsetPresent(void) const { return (HostSwap16(mDispatchSize) & kOffset) != 0; }
 
     /**
      * This method returns the Datagram Size value.
@@ -449,7 +440,7 @@ public:
      * @returns The Datagram Size value.
      *
      */
-    uint16_t GetDatagramSize(void) { return HostSwap16(mDispatchSize) & kSizeMask; }
+    uint16_t GetDatagramSize(void) const { return HostSwap16(mDispatchSize) & kSizeMask; }
 
     /**
      * This method sets the Datagram Size value.
@@ -467,7 +458,7 @@ public:
      * @returns The Datagram Tag value.
      *
      */
-    uint16_t GetDatagramTag(void) { return HostSwap16(mTag); }
+    uint16_t GetDatagramTag(void) const { return HostSwap16(mTag); }
 
     /**
      * This method sets the Datagram Tag value.
@@ -483,7 +474,7 @@ public:
      * @returns The Datagram Offset value.
      *
      */
-    uint16_t GetDatagramOffset(void) { return (HostSwap16(mDispatchSize) & kOffset) ? static_cast<uint16_t>(mOffset) * 8 : 0; }
+    uint16_t GetDatagramOffset(void) const { return IsOffsetPresent() ? static_cast<uint16_t>(mOffset) * 8 : 0; }
 
     /**
      * This method sets the Datagram Offset value.
@@ -521,6 +512,6 @@ private:
  */
 
 }  // namespace Lowpan
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // LOWPAN_HPP_

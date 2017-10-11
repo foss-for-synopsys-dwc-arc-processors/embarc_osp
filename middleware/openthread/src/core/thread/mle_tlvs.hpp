@@ -34,22 +34,27 @@
 #ifndef MLE_TLVS_HPP_
 #define MLE_TLVS_HPP_
 
-#include <string.h>
+#include "utils/wrap_string.h"
 
-#include <openthread-types.h>
-#include <common/encoding.hpp>
-#include <common/message.hpp>
-#include <common/tlvs.hpp>
-#include <meshcop/timestamp.hpp>
-#include <net/ip6_address.hpp>
-#include <thread/mle_constants.hpp>
+#include <openthread/types.h>
 
-using Thread::Encoding::BigEndian::HostSwap16;
-using Thread::Encoding::BigEndian::HostSwap32;
+#include "common/encoding.hpp"
+#include "common/message.hpp"
+#include "common/tlvs.hpp"
+#include "meshcop/timestamp.hpp"
+#include "net/ip6_address.hpp"
+#include "thread/mle_constants.hpp"
 
-namespace Thread {
+using ot::Encoding::BigEndian::HostSwap16;
+using ot::Encoding::BigEndian::HostSwap32;
+
+namespace ot {
 
 namespace Mle {
+
+#define TLVREQUESTTLV_ITERATOR_INIT  0  ///< Initializer for TlvRequestTlvIterator.
+
+typedef uint8_t TlvRequestIterator;      ///< Used to iterate through TlvRequestTlv.
 
 /**
  * @addtogroup core-mle-tlvs
@@ -66,7 +71,7 @@ namespace Mle {
  *
  */
 OT_TOOL_PACKED_BEGIN
-class Tlv : public Thread::Tlv
+class Tlv : public ot::Tlv
 {
 public:
     /**
@@ -111,7 +116,7 @@ public:
      * @returns The Type value.
      *
      */
-    Type GetType(void) const { return static_cast<Type>(Thread::Tlv::GetType()); }
+    Type GetType(void) const { return static_cast<Type>(ot::Tlv::GetType()); }
 
     /**
      * This method sets the Type value.
@@ -119,7 +124,7 @@ public:
      * @param[in]  aType  The Type value.
      *
      */
-    void SetType(Type aType) { Thread::Tlv::SetType(static_cast<uint8_t>(aType)); }
+    void SetType(Type aType) { ot::Tlv::SetType(static_cast<uint8_t>(aType)); }
 
     /**
      * This static method reads the requested TLV out of @p aMessage.
@@ -129,12 +134,12 @@ public:
      * @param[in]   aMaxLength  Maximum number of bytes to read.
      * @param[out]  aTlv        A reference to the TLV that will be copied to.
      *
-     * @retval kThreadError_None      Successfully copied the TLV.
-     * @retval kThreadError_NotFound  Could not find the TLV with Type @p aType.
+     * @retval OT_ERROR_NONE       Successfully copied the TLV.
+     * @retval OT_ERROR_NOT_FOUND  Could not find the TLV with Type @p aType.
      *
      */
-    static ThreadError GetTlv(const Message &aMessage, Type aType, uint16_t aMaxLength, Tlv &aTlv) {
-        return Thread::Tlv::Get(aMessage, static_cast<uint8_t>(aType), aMaxLength, aTlv);
+    static otError GetTlv(const Message &aMessage, Type aType, uint16_t aMaxLength, Tlv &aTlv) {
+        return ot::Tlv::Get(aMessage, static_cast<uint8_t>(aType), aMaxLength, aTlv);
     }
 
     /**
@@ -144,12 +149,12 @@ public:
      * @param[in]   aType       The Type value to search for.
      * @param[out]  aOffset     A reference to the offset of the TLV.
      *
-     * @retval kThreadError_None      Successfully copied the TLV.
-     * @retval kThreadError_NotFound  Could not find the TLV with Type @p aType.
+     * @retval OT_ERROR_NONE       Successfully copied the TLV.
+     * @retval OT_ERROR_NOT_FOUND  Could not find the TLV with Type @p aType.
      *
      */
-    static ThreadError GetOffset(const Message &aMessage, Type aType, uint16_t &aOffset) {
-        return Thread::Tlv::GetOffset(aMessage, static_cast<uint8_t>(aType), aOffset);
+    static otError GetOffset(const Message &aMessage, Type aType, uint16_t &aOffset) {
+        return ot::Tlv::GetOffset(aMessage, static_cast<uint8_t>(aType), aOffset);
     }
 
 } OT_TOOL_PACKED_END;
@@ -871,6 +876,25 @@ public:
     const uint8_t *GetTlvs(void) const { return mTlvs; }
 
     /**
+     * This method provides the next Tlv in the TlvRequestTlv.
+     *
+     * @retval OT_ERROR_NONE        Successfully found the next Tlv.
+     * @retval OT_ERROR_NOT_FOUND   No subsequent Tlv exists in TlvRequestTlv.
+     *
+     */
+    otError GetNextTlv(TlvRequestIterator &aIterator, uint8_t &aTlv) {
+        otError error = OT_ERROR_NOT_FOUND;
+
+        if (aIterator < GetLength()) {
+            aTlv = mTlvs[aIterator];
+            aIterator = static_cast<TlvRequestIterator>(aIterator + sizeof(uint8_t));
+            error = OT_ERROR_NONE;
+        }
+
+        return error;
+    }
+
+    /**
      * This method sets the list of TLVs.
      *
      * @param[in]  aTlvs  A pointer to the TLV list.
@@ -988,7 +1012,10 @@ public:
      * @retval FALSE  If the TLV does not appear to be well-formed.
      *
      */
-    bool IsValid(void) const { return GetLength() == sizeof(*this) - sizeof(Tlv); }
+    bool IsValid(void) const {
+        return (GetLength() == sizeof(*this) - sizeof(Tlv) ||
+                GetLength() == sizeof(*this) - sizeof(Tlv) - sizeof(mSedBufferSize) - sizeof(mSedDatagramCount));
+    }
 
     /**
      * This method returns the Parent Priority value.
@@ -996,7 +1023,7 @@ public:
      * @returns The Parent Priority value.
      *
      */
-    int8_t GetParentPriority(void) const { return (mParentPriority & kParentPriorityMask) >> kParentPriorityOffset; }
+    int8_t GetParentPriority(void) const { return (static_cast<int8_t>(mParentPriority & kParentPriorityMask)) >> kParentPriorityOffset; }
 
     /**
      * This method sets the Parent Priority value.
@@ -1607,6 +1634,6 @@ public:
 }  // namespace Mle
 
 
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // MLE_TLVS_HPP_

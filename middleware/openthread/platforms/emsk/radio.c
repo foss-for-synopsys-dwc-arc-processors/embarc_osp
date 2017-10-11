@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -30,25 +30,20 @@
  * @file
  *   This file implements the OpenThread platform abstraction for radio communication.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
  */
 
-#include <openthread-types.h>
+#include "openthread/types.h"
 
-#include <common/code_utils.hpp>
-#include <platform/radio.h>
+#include <utils/code_utils.h>
+#include <openthread/platform/alarm-milli.h>
+#include <openthread/platform/radio.h>
 #include "platform-emsk.h"
 
 #include "dev_gpio.h"
+#include <string.h>
 
-// #ifdef DEBUG
-// #undef DEBUG
-// #endif
-#define DEBUG
-#include "embARC_debug.h"
+#include <stdio.h>
+#define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
 
 enum
 {
@@ -94,24 +89,29 @@ enum
 
 enum
 {
+	EMSK_RECEIVE_SENSITIVITY = -100,  // dBm
+};
+
+enum
+{
 	MRF24J40_RSSI_OFFSET = 90,
 	MRF24J40_RSSI_SLOPE = 5
 };
 
 static void radioTransmitMessage(otInstance *aInstance);
 
-static RadioPacket sTransmitFrame;
-static RadioPacket sReceiveFrame;
-static RadioPacket sAckFrame;
+static otRadioFrame sTransmitFrame;
+static otRadioFrame sReceiveFrame;
+static otRadioFrame sAckFrame;
 
-static ThreadError sTransmitError;
-static ThreadError sReceiveError;
+static otError sTransmitError;
+static otError sReceiveError;
 
 static uint8_t sTransmitPsdu[IEEE802154_MAX_LENGTH];
 static uint8_t sReceivePsdu[IEEE802154_MAX_LENGTH];
 static uint8_t sAckPsdu[IEEE802154_MAX_LENGTH];
 
-static PhyState sState = kStateDisabled;
+static otRadioState sState = OT_RADIO_STATE_DISABLED;
 static bool sIsReceiverEnabled = false;
 
 static volatile uint8_t Mrf24StatusTx = 0;
@@ -126,16 +126,15 @@ static void RadioIsr(void *ptr);
 static uint32_t numInterruptRev = 0;
 static uint32_t numInterruptTrans = 0;
 static uint32_t numRadioProcess = 0;
-static uint32_t NODE_ID = 1;
 
 static inline bool isSecurityEnabled(const uint8_t *frame)
 {
-    return (frame[0] & IEEE802154_SECURITY_ENABLED) != 0;
+	return (frame[0] & IEEE802154_SECURITY_ENABLED) != 0;
 }
 
 static inline bool isAckRequested(const uint8_t *frame)
 {
-    return (frame[0] & IEEE802154_ACK_REQUEST) != 0;
+	return (frame[0] & IEEE802154_ACK_REQUEST) != 0;
 }
 
 static inline bool isPanIdCompressed(const uint8_t *frame)
@@ -152,41 +151,43 @@ static inline uint8_t getHeadLength(const uint8_t *frame)
 	/* Destination PAN + Address */
 	switch (frame[1] & IEEE802154_DST_ADDR_MASK)
 	{
-		case IEEE802154_DST_ADDR_SHORT:
-			length += sizeof(otPanId) + sizeof(otShortAddress);
-			break;
+	case IEEE802154_DST_ADDR_SHORT:
+		length += sizeof(otPanId) + sizeof(otShortAddress);
+		break;
 
-		case IEEE802154_DST_ADDR_EXT:
-			length += sizeof(otPanId) + sizeof(otExtAddress);
-			break;
+	case IEEE802154_DST_ADDR_EXT:
+		length += sizeof(otPanId) + sizeof(otExtAddress);
+		break;
 
-		default:
-			ExitNow(length = 0);
+	default:
+		length = 0;
+		goto exit;
 	}
 
 	/* Source PAN + Address */
 	switch (frame[1] & IEEE802154_SRC_ADDR_MASK)
 	{
-		case IEEE802154_SRC_ADDR_SHORT:
-			if (!isPanIdCompressed(frame))
-			{
-				length += sizeof(otPanId);
-			}
+	case IEEE802154_SRC_ADDR_SHORT:
+		if (!isPanIdCompressed(frame))
+		{
+			length += sizeof(otPanId);
+		}
 
-			length += sizeof(otShortAddress);
-			break;
+		length += sizeof(otShortAddress);
+		break;
 
-		case IEEE802154_SRC_ADDR_EXT:
-			if (!isPanIdCompressed(frame))
-			{
-				length += sizeof(otPanId);
-			}
+	case IEEE802154_SRC_ADDR_EXT:
+		if (!isPanIdCompressed(frame))
+		{
+			length += sizeof(otPanId);
+		}
 
-			length += sizeof(otExtAddress);
-			break;
+		length += sizeof(otExtAddress);
+		break;
 
-		default:
-		ExitNow(length = 0);
+	default:
+		length = 0;
+		goto exit;
 	}
 
 exit:
@@ -222,14 +223,14 @@ void otPlatRadioGetIeeeEui64(otInstance *aInstance, uint8_t *aIeeeEui64)
 {
 	(void)aInstance;
 	/* should set it manually or preset it in memory */
-	aIeeeEui64[0] = 0x18;
-	aIeeeEui64[1] = 0xb4;
-	aIeeeEui64[2] = 0x30;
-	aIeeeEui64[3] = 0x00;
-	aIeeeEui64[4] = (NODE_ID >> 24) & 0xff;
-	aIeeeEui64[5] = (NODE_ID >> 16) & 0xff;
-	aIeeeEui64[6] = (NODE_ID >> 8) & 0xff;
-	aIeeeEui64[7] = NODE_ID & 0xff;
+	aIeeeEui64[0] = 0x00;
+	aIeeeEui64[1] = 0x50;
+	aIeeeEui64[2] = 0xC2;
+	aIeeeEui64[3] = 0xFF;
+	aIeeeEui64[4] = 0XFE;
+	aIeeeEui64[5] = 0X1D;
+	aIeeeEui64[6] = 0X30;
+	aIeeeEui64[7] = 0x00;
 }
 
 void otPlatRadioSetPanId(otInstance *aInstance, uint16_t panid)
@@ -242,10 +243,10 @@ void otPlatRadioSetPanId(otInstance *aInstance, uint16_t panid)
 	mrf24j40_set_pan(pan);
 }
 
-void otPlatRadioSetExtendedAddress(otInstance *aInstance, uint8_t *address)
+void otPlatRadioSetExtendedAddress(otInstance *aInstance, otExtAddress *address)
 {
 	(void)aInstance;
-	mrf24j40_set_eui(address);
+	mrf24j40_set_eui(address->m8);
 }
 
 void otPlatRadioSetShortAddress(otInstance *aInstance, uint16_t address)
@@ -273,23 +274,29 @@ void emskRadioInit(void)
 	sAckFrame.mLength = 0;
 	sAckFrame.mPsdu = sAckPsdu;
 
-	DBG("EMSK SPI Init\r\n");
 	pmrf_spi_ptr = spi_get_dev(EMSK_PMRF_0_SPI_ID);
 	ercd = pmrf_spi_ptr->spi_open(DEV_MASTER_MODE, EMSK_PMRF_0_SPIFREQ);
-	if ((ercd != E_OK) && (ercd != E_OPNED)) {
+
+	if ((ercd != E_OK) && (ercd != E_OPNED))
+	{
 		DBG("PmodRF2 SPI open error\r\n");
 	}
 
+	DBG("EMSK SPI Init\r\n");
 	pmrf_spi_ptr->spi_control(SPI_CMD_SET_CLK_MODE, CONV2VOID(EMSK_PMRF_0_SPICLKMODE));
 
 	/*MRF24J40 wakepin:output, rstpin:output, INT_PIN:input, interrupt */
 	DBG("EMSK GPIO Init\r\n");
 	pmrf_gpio_ptr = gpio_get_dev(EMSK_PMRF_0_GPIO_ID);
 	ercd = pmrf_gpio_ptr->gpio_open(MRF24J40_WAKE_PIN | MRF24J40_RST_PIN);
-	if ((ercd != E_OK) && (ercd != E_OPNED)) {
+
+	if ((ercd != E_OK) && (ercd != E_OPNED))
+	{
 		DBG("PmodRF2 CRTL port open error");
 	}
-	if (ercd == E_OPNED) {
+
+	if (ercd == E_OPNED)
+	{
 		pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, (void *)(MRF24J40_WAKE_PIN | MRF24J40_RST_PIN));
 		pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)MRF24J40_INT_PIN);
 	}
@@ -309,9 +316,9 @@ void emskRadioInit(void)
 	pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_ISR, (void *)(&isr));
 
 	/* interrupt for mrf24j40 is enabled at the end of the init process */
-	DBG("MRF24J40 Initialization started\r\n");
+	DBG("MRF24J40 Init Started\r\n");
 	mrf24j40_initialize();
-	DBG("MRF24J40 Initialization finished\r\n");
+	DBG("MRF24J40 Init Finished\r\n");
 
 	pmrf_gpio_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)MRF24J40_INT_PIN);
 }
@@ -319,53 +326,53 @@ void emskRadioInit(void)
 bool otPlatRadioIsEnabled(otInstance *aInstance)
 {
 	(void)aInstance;
-	return (sState != kStateDisabled) ? true : false;
+	return (sState != OT_RADIO_STATE_DISABLED);
 }
 
-ThreadError otPlatRadioEnable(otInstance *aInstance)
+otError otPlatRadioEnable(otInstance *aInstance)
 {
 	if (!otPlatRadioIsEnabled(aInstance))
 	{
-		sState = kStateSleep;
+		sState = OT_RADIO_STATE_SLEEP;
 	}
 
-	return kThreadError_None;
+	return OT_ERROR_NONE;
 }
 
-ThreadError otPlatRadioDisable(otInstance *aInstance)
+otError otPlatRadioDisable(otInstance *aInstance)
 {
 	if (otPlatRadioIsEnabled(aInstance))
 	{
-		sState = kStateDisabled;
+		sState = OT_RADIO_STATE_DISABLED;
 	}
 
-	return kThreadError_None;
+	return OT_ERROR_NONE;
 }
 
-ThreadError otPlatRadioSleep(otInstance *aInstance)
+otError otPlatRadioSleep(otInstance *aInstance)
 {
-	ThreadError error = kThreadError_InvalidState;
+	otError error = OT_ERROR_INVALID_STATE;
 	(void)aInstance;
 
-	if (sState == kStateSleep || sState == kStateReceive)
+	if (sState == OT_RADIO_STATE_SLEEP || sState == OT_RADIO_STATE_RECEIVE)
 	{
-		error = kThreadError_None;
-		sState = kStateSleep;
+		error = OT_ERROR_NONE;
+		sState = OT_RADIO_STATE_SLEEP;
 		disableReceiver();
 	}
 
 	return error;
 }
 
-ThreadError otPlatRadioReceive(otInstance *aInstance, uint8_t aChannel)
+otError otPlatRadioReceive(otInstance *aInstance, uint8_t aChannel)
 {
-	ThreadError error = kThreadError_InvalidState;
+	otError error = OT_ERROR_INVALID_STATE;
 	(void)aInstance;
 
-	if (sState != kStateDisabled)
+	if (sState != OT_RADIO_STATE_DISABLED)
 	{
-		error = kThreadError_None;
-		sState = kStateReceive;
+		error = OT_ERROR_NONE;
+		sState = OT_RADIO_STATE_RECEIVE;
 		setChannel(aChannel);
 		sReceiveFrame.mChannel = aChannel;
 		enableReceiver();
@@ -374,25 +381,23 @@ ThreadError otPlatRadioReceive(otInstance *aInstance, uint8_t aChannel)
 	return error;
 }
 
-ThreadError otPlatRadioTransmit(otInstance *aInstance, RadioPacket *aPacket)
+otError otPlatRadioTransmit(otInstance *aInstance, otRadioFrame *aFrame)
 {
-	ThreadError error = kThreadError_InvalidState;
+	otError error = OT_ERROR_INVALID_STATE;
 	(void)aInstance;
-	(void)aPacket;
+	(void)aFrame;
 
-	if (sState == kStateReceive)
+	if (sState == OT_RADIO_STATE_RECEIVE)
 	{
-		error = kThreadError_None;
-		sState = kStateTransmit;
+		error = OT_ERROR_NONE;
+		sState = OT_RADIO_STATE_TRANSMIT;
 	}
 
-
-exit:
 	return error;
 
 }
 
-RadioPacket *otPlatRadioGetTransmitBuffer(otInstance *aInstance)
+otRadioFrame *otPlatRadioGetTransmitBuffer(otInstance *aInstance)
 {
 	(void)aInstance;
 	return &sTransmitFrame;
@@ -407,7 +412,7 @@ int8_t otPlatRadioGetRssi(otInstance *aInstance)
 otRadioCaps otPlatRadioGetCaps(otInstance *aInstance)
 {
 	(void)aInstance;
-	return kRadioCapsNone;
+	return OT_RADIO_CAPS_NONE;
 }
 
 bool otPlatRadioGetPromiscuous(otInstance *aInstance)
@@ -426,10 +431,10 @@ void otPlatRadioSetPromiscuous(otInstance *aInstance, bool aEnable)
 void readFrame(void)
 {
 
-/* readBuffer
- * 1 bit -- 5 to 127 bits -- 1 bit -- 1bit
- * Frame Length -- PSDU (Header + Data Payload + FCS) -- LQI -- RSSI
- */
+	/* readBuffer
+	 * 1 bit -- 5 to 127 bits -- 1 bit -- 1bit
+	 * Frame Length -- PSDU (Header + Data Payload + FCS) -- LQI -- RSSI
+	 */
 	uint8_t readBuffer[MRF24J40_RXFIFO_SIZE];
 	uint8_t readPlqi = 0;
 	uint8_t readRssi = 0;
@@ -437,30 +442,32 @@ void readFrame(void)
 	uint16_t length;
 	int16_t i;
 
-	for (i = 0; i < MRF24J40_RXFIFO_SIZE; i++)
-	{
-		readBuffer[i] = 0;
-	}
+	memset(readBuffer, 0, MRF24J40_RXFIFO_SIZE);
 
-	VerifyOrExit(sState == kStateReceive || sState == kStateTransmit, ;);
-	VerifyOrExit(Mrf24StatusRx, ;);
+	otEXPECT_ACTION(sState == OT_RADIO_STATE_RECEIVE || sState == OT_RADIO_STATE_TRANSMIT, ;);
+	otEXPECT_ACTION(Mrf24StatusRx, ;);
+
 	if (Mrf24StatusRx == 1)
 	{
 		Mrf24StatusRx = 0;
 	}
+
 	if (Mrf24StatusSec == 1)
 	{
 		Mrf24StatusSec = 0;
+#if OPENTHREAD_CLI_DEBUG_INFO
 		DBG("Receive Frame with encryption!!!!!!!!!!\r\n");
+#endif
 	}
 
 	/* Read length */
 	length = (uint16_t)mrf24j40_rxpkt_intcb(readBuffer, &readPlqi, &readRssi);
-
+#if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("Receive Frame Length = %d\r\n", length);
-	VerifyOrExit(IEEE802154_MIN_LENGTH <= length && length <= IEEE802154_MAX_LENGTH,
-		DBG("Error PSDU in readBuffer, too long or too short!\r\n"));
+#endif
 
+	otEXPECT_ACTION(IEEE802154_MIN_LENGTH <= length && length <= IEEE802154_MAX_LENGTH, ;);
+#if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("PSDU Frame Receive\r\n");
 
 	/* Read PSDU */
@@ -470,29 +477,40 @@ void readFrame(void)
 		DBG("%x ", sReceiveFrame.mPsdu[i]);
 	}
 	DBG("\r\nPSDU Frame Receive Finish\r\n");
+#endif
 
-	sReceiveFrame.mPower = (int8_t)(readRssi/MRF24J40_RSSI_SLOPE) - MRF24J40_RSSI_OFFSET;
+#if OPENTHREAD_ENABLE_RAW_LINK_API
+	// Timestamp
+	sReceiveFrame.mMsec = otPlatAlarmMilliGetNow();
+	sReceiveFrame.mUsec = 0;  // Don't support microsecond timer for now.
+#endif
+
+	/* Read PSDU */
+	memcpy(sReceiveFrame.mPsdu, readBuffer, length - 2);
+
+	sReceiveFrame.mPower = (int8_t)(readRssi / MRF24J40_RSSI_SLOPE) - MRF24J40_RSSI_OFFSET;
 	sReceiveFrame.mLength = (uint8_t) length;
 	sReceiveFrame.mLqi = readPlqi;
 
+#if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("CUR_MS = %d\r\n", (uint32_t)OSP_GET_CUR_MS());
-	DBG("numRadioProcess %d, numInterruptRev %d, numInterruptTrans %d \r\n", numRadioProcess, numInterruptRev, numInterruptTrans);
+	DBG("numRadioProcess %d, numInterruptRev %d, numInterruptTrans %d \r\n\r\n\r\n", numRadioProcess, numInterruptRev, numInterruptTrans);
+#endif
 
 exit:
-
 	return;
 
 }
 
 void radioTransmitMessage(otInstance *aInstance)
 {
-	(void)aInstance;
 	uint8_t header_len = 0;
 
-	sTransmitError = kThreadError_None;
+	sTransmitError = OT_ERROR_NONE;
 	setChannel(sTransmitFrame.mChannel);
 
-	DBG("PSDU Frame Trans\r\n");
+#if OPENTHREAD_CLI_DEBUG_INFO
+	DBG("\r\nPSDU Frame Trans\r\n");
 	for (int16_t i = 0; i < (sTransmitFrame.mLength - 2); i++)
 	{
 		DBG("%x ", sTransmitFrame.mPsdu[i]);
@@ -500,17 +518,21 @@ void radioTransmitMessage(otInstance *aInstance)
 	DBG("\r\nPSDU Frame Trans Finish\r\n");
 
 	DBG("Transmit Frame Length = %d\r\n", sTransmitFrame.mLength);
+#endif
 
 	uint8_t reg = mrf24j40_read_short_ctrl_reg(MRF24J40_TXNCON);
-
+#if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("TXNCON = 0x%x, ", reg);
+#endif
 
 	header_len = getHeadLength(sTransmitFrame.mPsdu);
 
 	if (isAckRequested(sTransmitFrame.mPsdu))
 	{
 		reg |= MRF24J40_TXNACKREQ;
+#if OPENTHREAD_CLI_DEBUG_INFO
 		DBG("PSDU Frame Trans with ACK Request!!!!!!\r\n");
+#endif
 	}
 	else
 	{
@@ -520,7 +542,9 @@ void radioTransmitMessage(otInstance *aInstance)
 	if (isSecurityEnabled(sTransmitFrame.mPsdu))
 	{
 		reg |= MRF24J40_TXNSECEN;
+#if OPENTHREAD_CLI_DEBUG_INFO
 		DBG("PSDU Frame Trans with Security\r\n");
+#endif
 	}
 	else
 	{
@@ -532,21 +556,29 @@ void radioTransmitMessage(otInstance *aInstance)
 
 	mrf24j40_write_short_ctrl_reg(MRF24J40_TXNCON, reg | MRF24J40_TXNTRIG);
 
+	otPlatRadioTxStarted(aInstance, &sTransmitFrame);
+
 	int16_t tx_timeout = 500;
 	Mrf24StatusTx = 0;
-	while (!((tx_timeout <= 0) || (Mrf24StatusTx == 1)))
+
+	while ((tx_timeout > 0) && (Mrf24StatusTx != 1))
 	{
 		mrf24j40_delay_ms(1);
 		tx_timeout--;
+
+#if OPENTHREAD_CLI_DEBUG_INFO
 		if (tx_timeout <= 0)
 		{
 			DBG("Radio Transmit Timeout!!!!!!!!!!!!\r\n");
 		}
+#endif
 	}
+#if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("Radio Transmit was Successful.\r\n");
 	DBG("Mrf24StatusTx = %d\r\n", Mrf24StatusTx);
 	DBG("CUR_MS = %d\r\n", (uint32_t)OSP_GET_CUR_MS());
-	DBG("numRadioProcess %d, numInterruptRev %d, numInterruptTrans %d \r\n", numRadioProcess, numInterruptRev, numInterruptTrans);
+	DBG("numRadioProcess %d, numInterruptRev %d, numInterruptTrans %d \r\n\r\n\r\n", numRadioProcess, numInterruptRev, numInterruptTrans);
+#endif
 }
 
 void emskRadioProcess(otInstance *aInstance)
@@ -555,40 +587,38 @@ void emskRadioProcess(otInstance *aInstance)
 
 	readFrame();
 	uint8_t reg = mrf24j40_read_short_ctrl_reg(MRF24J40_TXSTAT);
+
 	if (reg & MRF24J40_TXNSTAT)
 	{
+#if OPENTHREAD_CLI_DEBUG_INFO
 		DBG("TX MAC Timeout!!!!!!\r\n");
+
 		if (reg & MRF24J40_CCAFAIL)
 		{
 			DBG("Channel busy!!!!!!\r\n");
 		}
+#endif
 	}
 
-	if ((sState == kStateReceive) && (sReceiveFrame.mLength > 0))
+	if ((sState == OT_RADIO_STATE_RECEIVE) && (sReceiveFrame.mLength > 0))
 	{
 		otPlatRadioReceiveDone(aInstance, &sReceiveFrame, sReceiveError);
 	}
 
-	if (sState == kStateTransmit)
+	if (sState == OT_RADIO_STATE_TRANSMIT)
 	{
 		radioTransmitMessage(aInstance);
-		if (sTransmitError != kThreadError_None || (sTransmitFrame.mPsdu[0] & IEEE802154_ACK_REQUEST) == 0)
+
+		if (sTransmitError != OT_ERROR_NONE || (sTransmitFrame.mPsdu[0] & IEEE802154_ACK_REQUEST) == 0)
 		{
-			sState = kStateReceive;
-			otPlatRadioTransmitDone(aInstance, &sTransmitFrame, false, sTransmitError);
+			sState = OT_RADIO_STATE_RECEIVE;
+			otPlatRadioTxDone(aInstance, &sTransmitFrame, NULL, sTransmitError);
 		}
 		else if (Mrf24StatusTx == 1)
 		{
 			Mrf24StatusTx = 0;
-			DBG("Check ACK !!!!!!!!!!!!!\r\n");
-			if ((mrf24j40_read_short_ctrl_reg(MRF24J40_TXNCON) & MRF24J40_FPSTAT) != 0)
-			{
-				DBG("Get ACK with Pending !!!!!!!!!!!!!\r\n");
-			}
-			sState = kStateReceive;
-			otPlatRadioTransmitDone(aInstance, &sTransmitFrame,
-						(mrf24j40_read_short_ctrl_reg(MRF24J40_TXNCON) & MRF24J40_FPSTAT) != 0,
-						sTransmitError);
+			sState = OT_RADIO_STATE_RECEIVE;
+			otPlatRadioTxDone(aInstance, &sTransmitFrame, &sReceiveFrame, sTransmitError);
 		}
 	}
 
@@ -618,16 +648,18 @@ static void RadioIsr(void *ptr)
 	{
 		switch (mrf24j40_txpkt_intcb())
 		{
-			case MRF24J40_EBUSY:
-				/* Channel busy */
-				break;
-			case MRF24J40_EIO:
-				/* Channel idle */
-				break;
-			case 0:
-				numInterruptTrans++;
-				Mrf24StatusTx = 1;
-				break;
+		case MRF24J40_EBUSY:
+			/* Channel busy */
+			break;
+
+		case MRF24J40_EIO:
+			/* Channel idle */
+			break;
+
+		case 0:
+			numInterruptTrans++;
+			Mrf24StatusTx = 1;
+			break;
 		}
 	}
 
@@ -644,52 +676,65 @@ static void RadioIsr(void *ptr)
    and this is not supported in MRF24J40 */
 void otPlatRadioEnableSrcMatch(otInstance *aInstance, bool aEnable)
 {
-    (void)aInstance;
-    (void)aEnable;
+	(void)aInstance;
+	(void)aEnable;
 }
 
-ThreadError otPlatRadioAddSrcMatchShortEntry(otInstance *aInstance, const uint16_t aShortAddress)
+otError otPlatRadioAddSrcMatchShortEntry(otInstance *aInstance, const uint16_t aShortAddress)
 {
-    (void)aInstance;
-    (void)aShortAddress;
-    return kThreadError_None;
+	(void)aInstance;
+	(void)aShortAddress;
+	return OT_ERROR_NONE;
 }
 
-ThreadError otPlatRadioAddSrcMatchExtEntry(otInstance *aInstance, const uint8_t *aExtAddress)
+otError otPlatRadioAddSrcMatchExtEntry(otInstance *aInstance, const otExtAddress *aExtAddress)
 {
-    (void)aInstance;
-    (void)aExtAddress;
-    return kThreadError_None;
+	(void)aInstance;
+	(void)aExtAddress;
+	return OT_ERROR_NONE;
 }
 
-ThreadError otPlatRadioClearSrcMatchShortEntry(otInstance *aInstance, const uint16_t aShortAddress)
+otError otPlatRadioClearSrcMatchShortEntry(otInstance *aInstance, const uint16_t aShortAddress)
 {
-    (void)aInstance;
-    (void)aShortAddress;
-    return kThreadError_None;
+	(void)aInstance;
+	(void)aShortAddress;
+	return OT_ERROR_NONE;
 }
 
-ThreadError otPlatRadioClearSrcMatchExtEntry(otInstance *aInstance, const uint8_t *aExtAddress)
+otError otPlatRadioClearSrcMatchExtEntry(otInstance *aInstance, const otExtAddress *aExtAddress)
 {
-    (void)aInstance;
-    (void)aExtAddress;
-    return kThreadError_None;
+	(void)aInstance;
+	(void)aExtAddress;
+	return OT_ERROR_NONE;
 }
 
 void otPlatRadioClearSrcMatchShortEntries(otInstance *aInstance)
 {
-    (void)aInstance;
+	(void)aInstance;
 }
 
 void otPlatRadioClearSrcMatchExtEntries(otInstance *aInstance)
 {
-    (void)aInstance;
+	(void)aInstance;
 }
 
-ThreadError otPlatRadioEnergyScan(otInstance *aInstance, uint8_t aScanChannel, uint16_t aScanDuration)
+otError otPlatRadioEnergyScan(otInstance *aInstance, uint8_t aScanChannel, uint16_t aScanDuration)
 {
-    (void)aInstance;
-    (void)aScanChannel;
-    (void)aScanDuration;
-    return kThreadError_NotImplemented;
+	(void)aInstance;
+	(void)aScanChannel;
+	(void)aScanDuration;
+	return OT_ERROR_NOT_IMPLEMENTED;
+}
+
+void otPlatRadioSetDefaultTxPower(otInstance *aInstance, int8_t aPower)
+{
+	// TODO: Create a proper implementation for this driver.
+	(void)aInstance;
+	(void)aPower;
+}
+
+int8_t otPlatRadioGetReceiveSensitivity(otInstance *aInstance)
+{
+	(void)aInstance;
+	return EMSK_RECEIVE_SENSITIVITY;
 }

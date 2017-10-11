@@ -273,9 +273,9 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 
 #if defined(ARC_FEATURE_DSP_COMPLEX)
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_FFT_CTRL);/* AUX_DSP_FFT_CTRL */
-	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_BFLY0);	/* AUX_DSP_BFLY0 */
+	pxTopOfStack--;
+	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_FFT_CTRL);/* AUX_DSP_FFT_CTRL */
 #endif
 
 #endif /* ARC_FEATURE_DSP */

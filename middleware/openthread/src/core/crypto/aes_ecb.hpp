@@ -36,7 +36,7 @@
 
 #include <mbedtls/aes.h>
 
-namespace Thread {
+namespace ot {
 namespace Crypto {
 
 /**
@@ -57,6 +57,18 @@ public:
     {
         kBlockSize = 16,  ///< AES-128 block size (bytes).
     };
+
+    /**
+     * Constructor to initialize the mbedtls_aes_context.
+     *
+     */
+    AesEcb();
+
+    /**
+     * Destructor to free the mbedtls_aes_context.
+     *
+     */
+    ~AesEcb();
 
     /**
      * This method sets the key.
@@ -86,6 +98,6 @@ private:
  */
 
 }  // namespace Crypto
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // AES_ECB_HPP_

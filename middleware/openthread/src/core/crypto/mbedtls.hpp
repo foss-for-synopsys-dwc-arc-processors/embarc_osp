@@ -34,15 +34,9 @@
 #ifndef OT_MBEDTLS_HPP_
 #define OT_MBEDTLS_HPP_
 
-#ifdef OPENTHREAD_CONFIG_FILE
-#include OPENTHREAD_CONFIG_FILE
-#else
-#include <openthread-config.h>
-#endif
+#if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 
-#include <mbedtls/memory_buffer_alloc.h>
-
-namespace Thread {
+namespace ot {
 namespace Crypto {
 
 /**
@@ -59,23 +53,11 @@ namespace Crypto {
 class MbedTls
 {
 public:
-    enum
-    {
-#if OPENTHREAD_ENABLE_DTLS
-        kMemorySize = 2048 * sizeof(void *), ///< Size of memory buffer (bytes).
-#else
-        kMemorySize = 384,                   ///< Size of memory buffer (bytes).
-#endif
-    };
-
     /**
      * This constructor initializes the object.
      *
      */
     MbedTls(void);
-
-private:
-    unsigned char mMemory[kMemorySize];
 };
 
 /**
@@ -84,6 +66,8 @@ private:
  */
 
 }  // namespace Crypto
-}  // namespace Thread
+}  // namespace ot
+
+#endif // #if !OPENTHREAD_ENABLE_MULTIPLE_INSTANCES
 
 #endif  // OT_MBEDTLS_HPP_

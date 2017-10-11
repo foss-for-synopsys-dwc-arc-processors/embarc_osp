@@ -31,23 +31,27 @@
  *   This file implements AES-CCM.
  */
 
-#include <common/code_utils.hpp>
-#include <common/debug.hpp>
-#include <crypto/aes_ccm.hpp>
+#include <openthread/config.h>
 
-namespace Thread {
+#include "aes_ccm.hpp"
+
+#include "common/code_utils.hpp"
+#include "common/debug.hpp"
+
+namespace ot {
 namespace Crypto {
 
-ThreadError AesCcm::SetKey(const uint8_t *aKey, uint16_t aKeyLength)
+otError AesCcm::SetKey(const uint8_t *aKey, uint16_t aKeyLength)
 {
     mEcb.SetKey(aKey, 8 * aKeyLength);
-    return kThreadError_None;
+    return OT_ERROR_NONE;
 }
 
-void AesCcm::Init(uint32_t aHeaderLength, uint32_t aPlainTextLength, uint8_t aTagLength,
-                  const void *aNonce, uint8_t aNonceLength)
+otError AesCcm::Init(uint32_t aHeaderLength, uint32_t aPlainTextLength, uint8_t aTagLength,
+                     const void *aNonce, uint8_t aNonceLength)
 {
     const uint8_t *nonceBytes = reinterpret_cast<const uint8_t *>(aNonce);
+    otError error = OT_ERROR_NONE;
     uint8_t blockLength = 0;
     uint32_t len;
     uint8_t L;
@@ -59,6 +63,10 @@ void AesCcm::Init(uint32_t aHeaderLength, uint32_t aPlainTextLength, uint8_t aTa
     if (aTagLength > sizeof(mBlock))
     {
         aTagLength = sizeof(mBlock);
+    }
+    else if (aTagLength < kTagLengthMin)
+    {
+        ExitNow(error = OT_ERROR_INVALID_ARGS);
     }
 
     L = 0;
@@ -156,6 +164,9 @@ void AesCcm::Init(uint32_t aHeaderLength, uint32_t aPlainTextLength, uint8_t aTa
     mBlockLength = blockLength;
     mCtrLength = sizeof(mCtrPad);
     mTagLength = aTagLength;
+
+exit:
+    return error;
 }
 
 void AesCcm::Header(const void *aHeader, uint32_t aHeaderLength)
@@ -274,4 +285,4 @@ void AesCcm::Finalize(void *tag, uint8_t *aTagLength)
 }
 
 }  // namespace Crypto
-}  // namespace Thread
+}  // namespace ot

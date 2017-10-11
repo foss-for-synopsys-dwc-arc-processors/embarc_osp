@@ -31,22 +31,26 @@
  *   This file implements the CLI server on the UART service.
  */
 
+#include <openthread/config.h>
+
+#include "cli_uart.hpp"
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "utils/wrap_string.h"
 
-#include <cli/cli.hpp>
-#include <cli/cli-uart.h>
-#include <cli/cli_uart.hpp>
-#include <common/code_utils.hpp>
-#include <common/encoding.hpp>
-#include <common/new.hpp>
-#include <common/tasklet.hpp>
-#include <platform/logging.h>
-#include <platform/uart.h>
+#include <openthread/cli.h>
+#include <openthread/platform/logging.h>
+#include <openthread/platform/uart.h>
 
-namespace Thread {
+#include "cli/cli.hpp"
+#include "common/code_utils.hpp"
+#include "common/encoding.hpp"
+#include "common/new.hpp"
+#include "common/tasklet.hpp"
+
+namespace ot {
 namespace Cli {
 
 static const char sCommandPrompt[] = {'>', ' '};
@@ -68,6 +72,8 @@ Uart::Uart(otInstance *aInstance):
     mTxHead = 0;
     mTxLength = 0;
     mSendLength = 0;
+
+    otPlatUartEnable();
 }
 
 extern "C" void otPlatUartReceived(const uint8_t *aBuf, uint16_t aBufLength)
@@ -101,6 +107,7 @@ void Uart::ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
 
 #ifdef OPENTHREAD_EXAMPLES_POSIX
 
+        case 0x04: // ASCII for Ctrl-D
         case 0x03: // ASCII for Ctrl-C
             exit(EXIT_SUCCESS);
             break;
@@ -128,9 +135,9 @@ void Uart::ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
     }
 }
 
-ThreadError Uart::ProcessCommand(void)
+otError Uart::ProcessCommand(void)
 {
-    ThreadError error = kThreadError_None;
+    otError error = OT_ERROR_NONE;
 
     if (mRxBuffer[mRxLength - 1] == '\n')
     {
@@ -194,7 +201,7 @@ int Uart::OutputFormatV(const char *aFmt, va_list aAp)
 
 void Uart::Send(void)
 {
-    VerifyOrExit(mSendLength == 0, ;);
+    VerifyOrExit(mSendLength == 0);
 
     if (mTxLength > kTxBufferSize - mTxHead)
     {
@@ -228,7 +235,7 @@ void Uart::SendDoneTask(void)
     Send();
 }
 
-#if OPENTHREAD_ENABLE_DEFAULT_LOGGING
+#if OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -245,13 +252,13 @@ void otPlatLog(otLogLevel aLogLevel, otLogRegion aLogRegion, const char *aFormat
     Uart::sUartServer->OutputFormat("\r\n");
     va_end(args);
 
-    (void)aLogLevel;
-    (void)aLogRegion;
+    OT_UNUSED_VARIABLE(aLogLevel);
+    OT_UNUSED_VARIABLE(aLogRegion);
 }
 #ifdef __cplusplus
 }  // extern "C"
 #endif
-#endif // OPENTHREAD_ENABLE_DEFAULT_LOGGING
+#endif // OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT
 
 }  // namespace Cli
-}  // namespace Thread
+}  // namespace ot

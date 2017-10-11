@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2016, Nest Labs, Inc.
+ *  Copyright (c) 2017, The OpenThread Authors.
  *  All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -31,35 +31,33 @@
  * @brief
  *   This file includes the platform-specific initializers.
  *
- * Modified by Qiang Gu(Qiang.Gu@synopsys.com) for embARC
- * \version 2016.12
- * \date 2016-11-7
- *
  */
 
-#include <openthread.h>
-#include <platform/uart.h>
+#include "openthread/openthread.h"
+#include "openthread/platform/uart.h"
 #include "platform-emsk.h"
 
-// Modified for embARC
-// otInstance *sInstance;
+#include <stdio.h>
+#define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
 
-void PlatformInit(int argc, char *argv[])
+void PlatformInit(int argc, char *argv[], int num)
 {
-	emskAlarmInit();
-	emskRadioInit();
-	emskRandomInit();
-	otPlatUartEnable();
+    emskAlarmInit();
+    emskRadioInit();
+    emskRandomInit(num);
+    otPlatUartEnable();
 
-	(void)argc;
-	(void)argv;
+    DBG("OpenThread Init Finished\r\n");
+
+    (void)argc;
+    (void)argv;
 }
 
 void PlatformProcessDrivers(otInstance *aInstance)
 {
-	// sInstance = aInstance;
+    // sInstance = aInstance;
 
-	emskUartProcess();
-	emskRadioProcess(aInstance);
-	emskAlarmProcess(aInstance);
+    emskUartProcess();
+    emskRadioProcess(aInstance);
+    emskAlarmProcess(aInstance);
 }

@@ -34,15 +34,18 @@
 #ifndef DHCP6_CLIENT_HPP_
 #define DHCP6_CLIENT_HPP_
 
-#include <common/message.hpp>
-#include <common/timer.hpp>
-#include <common/trickle_timer.hpp>
-#include <mac/mac.hpp>
-#include <mac/mac_frame.hpp>
-#include <net/dhcp6.hpp>
-#include <net/udp6.hpp>
+#include <openthread/dhcp6_client.h>
 
-namespace Thread {
+#include "common/locator.hpp"
+#include "common/message.hpp"
+#include "common/timer.hpp"
+#include "common/trickle_timer.hpp"
+#include "mac/mac.hpp"
+#include "mac/mac_frame.hpp"
+#include "net/dhcp6.hpp"
+#include "net/udp6.hpp"
+
+namespace ot {
 
 class ThreadNetif;
 namespace Mle { class MleRouter; }
@@ -165,7 +168,7 @@ private:
  * This class implements DHCPv6 Client.
  *
  */
-class Dhcp6Client
+class Dhcp6Client: public ThreadNetifLocator
 {
 public:
     /**
@@ -177,7 +180,7 @@ public:
     explicit Dhcp6Client(ThreadNetif &aThreadNetif);
 
     /**
-     * This function update addresses that shall be automatically created using DHCP.
+     * This method update addresses that shall be automatically created using DHCP.
      *
      * @param[in]     aInstance     A pointer to openThread instance.
      * @param[inout]  aAddresses    A pointer to an array containing addresses created by this module.
@@ -185,50 +188,49 @@ public:
      * @param[in]     aContext      A pointer to IID creator-specific context data.
      *
      */
-    void UpdateAddresses(otInstance *aInstance, otNetifAddress *aAddresses, uint32_t aNumAddresses, void *aContext);
+    void UpdateAddresses(otInstance *aInstance, otDhcpAddress *aAddresses, uint32_t aNumAddresses, void *aContext);
 
 private:
-    ThreadError Start(void);
-    ThreadError Stop(void);
+    otError Start(void);
+    otError Stop(void);
 
-    ThreadError Solicit(uint16_t aRloc16);
+    otError Solicit(uint16_t aRloc16);
 
     void AddIdentityAssociation(uint16_t aRloc16, otIp6Prefix &aIp6Prefix);
     void RemoveIdentityAssociation(uint16_t aRloc16, otIp6Prefix &aIp6Prefix);
 
     bool ProcessNextIdentityAssociation(void);
 
-    ThreadError AppendHeader(Message &aMessage);
-    ThreadError AppendClientIdentifier(Message &aMessage);
-    ThreadError AppendIaNa(Message &aMessage, uint16_t aRloc16);
-    ThreadError AppendIaAddress(Message &aMessage, uint16_t aRloc16);
-    ThreadError AppendElapsedTime(Message &aMessage);
-    ThreadError AppendRapidCommit(Message &aMessage);
+    otError AppendHeader(Message &aMessage);
+    otError AppendClientIdentifier(Message &aMessage);
+    otError AppendIaNa(Message &aMessage, uint16_t aRloc16);
+    otError AppendIaAddress(Message &aMessage, uint16_t aRloc16);
+    otError AppendElapsedTime(Message &aMessage);
+    otError AppendRapidCommit(Message &aMessage);
 
-    static void HandleUdpReceive(void *aContext, otMessage aMessage, const otMessageInfo *aMessageInfo);
+    static void HandleUdpReceive(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo);
     void HandleUdpReceive(Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
     void ProcessReply(Message &aMessage);
     uint16_t FindOption(Message &aMessage, uint16_t aOffset, uint16_t aLength, Code aCode);
-    ThreadError ProcessServerIdentifier(Message &aMessage, uint16_t aOffset);
-    ThreadError ProcessClientIdentifier(Message &aMessage, uint16_t aOffset);
-    ThreadError ProcessIaNa(Message &aMessage, uint16_t aOffset);
-    ThreadError ProcessStatusCode(Message &aMessage, uint16_t aOffset);
-    ThreadError ProcessIaAddress(Message &aMessage, uint16_t aOffset);
+    otError ProcessServerIdentifier(Message &aMessage, uint16_t aOffset);
+    otError ProcessClientIdentifier(Message &aMessage, uint16_t aOffset);
+    otError ProcessIaNa(Message &aMessage, uint16_t aOffset);
+    otError ProcessStatusCode(Message &aMessage, uint16_t aOffset);
+    otError ProcessIaAddress(Message &aMessage, uint16_t aOffset);
 
-    static bool HandleTrickleTimer(void *aContext);
+    static bool HandleTrickleTimer(TrickleTimer &aTrickleTimer);
     bool HandleTrickleTimer(void);
+
+    static Dhcp6Client &GetOwner(const Context &aContext);
 
     TrickleTimer mTrickleTimer;
 
     Ip6::UdpSocket mSocket;
-    Mle::MleRouter &mMle;
-    Mac::Mac &mMac;
-    ThreadNetif &mNetif;
 
     uint8_t mTransactionId[kTransactionIdSize];
     uint32_t mStartTime;
-    otNetifAddress *mAddresses;
+    otDhcpAddress *mAddresses;
     uint32_t mNumAddresses;
 
     IdentityAssociation mIdentityAssociations[OPENTHREAD_CONFIG_NUM_DHCP_PREFIXES];
@@ -237,6 +239,6 @@ private:
 };
 
 }  // namespace Dhcp6
-}  // namespace Thread
+}  // namespace ot
 
 # endif  // DHCP6_CLIENT_HPP_

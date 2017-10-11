@@ -34,9 +34,9 @@
 #ifndef CLI_SERVER_HPP_
 #define CLI_SERVER_HPP_
 
-#include <common/message.hpp>
+#include <openthread/types.h>
 
-namespace Thread {
+namespace ot {
 namespace Cli {
 
 /**
@@ -70,6 +70,6 @@ public:
 };
 
 }  // namespace Cli
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // CLI_SERVER_HPP_

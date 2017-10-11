@@ -35,14 +35,17 @@
 #ifndef MESHCOP_DATASET_HPP_
 #define MESHCOP_DATASET_HPP_
 
-#include <common/message.hpp>
-#include <meshcop/tlvs.hpp>
+#include "common/locator.hpp"
+#include "common/message.hpp"
+#include "meshcop/meshcop_tlvs.hpp"
 
-namespace Thread {
+namespace ot {
 namespace MeshCoP {
 
 class Dataset
 {
+    friend class DatasetLocal;
+
 public:
     enum
     {
@@ -53,19 +56,16 @@ public:
     /**
      * This constructor initializes the object.
      *
-     * @param[in]  aInstance  A pointer to an OpenThread instance.
      * @param[in]  aType       The type of the dataset, active or pending.
      *
      */
-    Dataset(otInstance *aInstance, const Tlv::Type aType);
+    Dataset(const Tlv::Type aType);
 
     /**
      * This method clears the Dataset.
      *
-     * @param[in]  isLocal  TRUE to delete the local dataset from non-volatile memory, FALSE not.
-     *
      */
-    void Clear(bool isLocal);
+    void Clear(void);
 
     /**
      * This method returns a pointer to the TLV.
@@ -106,6 +106,14 @@ public:
     uint16_t GetSize(void) const { return mLength; }
 
     /**
+     * This method returns the local time the dataset was last updated.
+     *
+     * @returns The local time the dataset was last updated.
+     *
+     */
+    uint32_t GetUpdateTime(void) const { return mUpdateTime; }
+
+    /**
      * This method returns a reference to the Timestamp.
      *
      * @returns A pointer to the Timestamp.
@@ -120,51 +128,53 @@ public:
     void SetTimestamp(const Timestamp &aTimestamp);
 
     /**
-     * This method compares this dataset to another based on the timestamp.
-     *
-     * @param[in]  aCompare  A reference to the timestamp to compare.
-     *
-     * @retval -1  if @p aCompare is older than this dataset.
-     * @retval  0  if @p aCompare is equal to this dataset.
-     * @retval  1  if @p aCompare is newer than this dataset.
-     *
-     */
-    int Compare(const Dataset &aCompare) const;
-
-    /**
-     * This method restores dataset from non-volatile memory.
-     *
-     * @retval kThreadError_None      Successfully restore the dataset.
-     * @retval kThreadError_NotFound  There is no corresponding dataset stored in non-volatile memory.
-     *
-     */
-    ThreadError Restore(void);
-
-    /**
-     * This method stores dataset into non-volatile memory.
-     *
-     * @retval kThreadError_None      Successfully store the dataset.
-     * @retval kThreadError_NoBufs    Could not store the dataset due to insufficient memory space.
-     *
-     */
-    ThreadError Store(void);
-
-    /**
      * This method sets a TLV in the Dataset.
      *
      * @param[in]  aTlv  A reference to the TLV.
      *
-     * @retval kThreadError_None    Successfully set the TLV.
-     * @retval kThreadError_NoBufs  Could not set the TLV due to insufficient buffer space.
+     * @retval OT_ERROR_NONE     Successfully set the TLV.
+     * @retval OT_ERROR_NO_BUFS  Could not set the TLV due to insufficient buffer space.
      *
      */
-    ThreadError Set(const Tlv &aTlv);
+    otError Set(const Tlv &aTlv);
 
-    ThreadError Set(const Message &aMessage, uint16_t aOffset, uint8_t aLength);
+    /**
+     * This method sets the Dataset using TLVs stored in a message buffer.
+     *
+     * @param[in]  aMessage  The message buffer.
+     * @param[in]  aOffset   The message buffer offset where the dataset starts.
+     * @param[in]  aLength   The TLVs length in the message buffer in bytes.
+     *
+     * @retval OT_ERROR_NONE          Successfully set the Dataset.
+     * @retval OT_ERROR_INVALID_ARGS  The values of @p aOffset and @p aLength are not valid for @p aMessage.
+     *
+     */
+    otError Set(const Message &aMessage, uint16_t aOffset, uint8_t aLength);
 
-    ThreadError Set(const Dataset &aDataset);
+    /**
+     * This method sets the Dataset using an existing Dataset.
+     *
+     * If this Dataset is an Active Dataset, any Pending Timestamp and Delay Timer TLVs will be omitted in the copy
+     * from @p aDataset.
+     *
+     * @param[in]  aDataset  The input Dataset.
+     *
+     * @retval OT_ERROR_NONE  Successfully set the Dataset.
+     *
+     */
+    otError Set(const Dataset &aDataset);
 
-    ThreadError Set(const otOperationalDataset &aDataset);
+#if OPENTHREAD_FTD
+    /**
+     * This method sets the Dataset.
+     *
+     * @param[in]  aDataset  The input Dataset.
+     *
+     * @retval OT_ERROR_NONE  Successfully set the Dataset.
+     *
+     */
+    otError Set(const otOperationalDataset &aDataset);
+#endif
 
     /**
      * This method removes a TLV from the Dataset.
@@ -177,22 +187,24 @@ public:
     /**
      * This method appends the MLE Dataset TLV but excluding MeshCoP Sub Timestamp TLV.
      *
-     * @retval kThreadError_None    Successfully append MLE Dataset TLV without MeshCoP Sub Timestamp TLV.
-     * @retval kThreadError_NoBufs  Insufficient available buffers to append the message with MLE Dataset TLV.
+     * @retval OT_ERROR_NONE     Successfully append MLE Dataset TLV without MeshCoP Sub Timestamp TLV.
+     * @retval OT_ERROR_NO_BUFS  Insufficient available buffers to append the message with MLE Dataset TLV.
      *
      */
-    ThreadError AppendMleDatasetTlv(Message &aMessage);
+    otError AppendMleDatasetTlv(Message &aMessage) const;
 
 private:
+    uint16_t GetSettingsKey(void);
+
     void Remove(uint8_t *aStart, uint8_t aLength);
 
-    Tlv::Type  mType;            ///< Active or Pending
     uint8_t    mTlvs[kMaxSize];  ///< The Dataset buffer
+    uint32_t   mUpdateTime;      ///< Local time last updated
     uint16_t   mLength;          ///< The number of valid bytes in @var mTlvs
-    otInstance *mInstance;       ///< The pointer to an OpenThread instance
+    Tlv::Type  mType;            ///< Active or Pending
 };
 
 }  // namespace MeshCoP
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // MESHCOP_DATASET_HPP_

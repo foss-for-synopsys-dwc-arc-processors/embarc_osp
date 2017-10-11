@@ -34,15 +34,15 @@
 #ifndef NETWORK_DATA_LEADER_FTD_HPP_
 #define NETWORK_DATA_LEADER_FTD_HPP_
 
-#include <stdint.h>
+#include "utils/wrap_stdint.h"
 
-#include <coap/coap_server.hpp>
-#include <common/timer.hpp>
-#include <net/ip6_address.hpp>
-#include <thread/mle_router.hpp>
-#include <thread/network_data.hpp>
+#include "coap/coap.hpp"
+#include "common/timer.hpp"
+#include "net/ip6_address.hpp"
+#include "thread/mle_router.hpp"
+#include "thread/network_data.hpp"
 
-namespace Thread {
+namespace ot {
 
 class ThreadNetif;
 
@@ -119,7 +119,7 @@ public:
      * @param[in]  aDelay  The CONTEXT_ID_REUSE_DELAY value.
      *
      */
-    ThreadError SetContextIdReuseDelay(uint32_t aDelay);
+    otError SetContextIdReuseDelay(uint32_t aDelay);
 
     /**
      * This method removes Network Data associated with a given RLOC16.
@@ -134,51 +134,49 @@ public:
      *
      * @param[in]  aRloc16  The invalid RLOC16 to notify.
      *
-     * @retval kThreadError_None    Successfully enqueued the notification message.
-     * @retval kThreadError_NoBufs  Insufficient message buffers to generate the notification message.
+     * @retval OT_ERROR_NONE     Successfully enqueued the notification message.
+     * @retval OT_ERROR_NO_BUFS  Insufficient message buffers to generate the notification message.
      *
      */
-    ThreadError SendServerDataNotification(uint16_t aRloc16);
+    otError SendServerDataNotification(uint16_t aRloc16);
 
 private:
-    static void HandleServerData(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleServerData(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                  const otMessageInfo *aMessageInfo);
     void HandleServerData(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
-    void SendServerDataResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
-                                const uint8_t *aTlvs, uint8_t aTlvsLength);
 
-    static void HandleTimer(void *aContext);
+    static void HandleTimer(Timer &aTimer);
     void HandleTimer(void);
 
-    ThreadError RegisterNetworkData(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLength);
+    otError RegisterNetworkData(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLength);
 
-    ThreadError AddHasRoute(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute);
-    ThreadError AddBorderRouter(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter);
-    ThreadError AddNetworkData(uint8_t *aTlv, uint8_t aTlvLength);
-    ThreadError AddPrefix(PrefixTlv &aTlv);
+    otError AddHasRoute(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute);
+    otError AddBorderRouter(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter);
+    otError AddNetworkData(uint8_t *aTlv, uint8_t aTlvLength);
+    otError AddPrefix(PrefixTlv &aTlv);
 
     int AllocateContext(void);
-    ThreadError FreeContext(uint8_t aContextId);
+    otError FreeContext(uint8_t aContextId);
 
-    ThreadError RemoveContext(uint8_t aContextId);
-    ThreadError RemoveContext(PrefixTlv &aPrefix, uint8_t aContextId);
+    otError RemoveContext(uint8_t aContextId);
+    otError RemoveContext(PrefixTlv &aPrefix, uint8_t aContextId);
 
-    ThreadError RemoveCommissioningData(void);
+    otError RemoveCommissioningData(void);
 
-    ThreadError RemoveRloc(uint16_t aRloc16);
-    ThreadError RemoveRloc(PrefixTlv &aPrefix, uint16_t aRloc16);
-    ThreadError RemoveRloc(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute, uint16_t aRloc16);
-    ThreadError RemoveRloc(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter, uint16_t aRloc16);
+    otError RemoveRloc(uint16_t aRloc16);
+    otError RemoveRloc(PrefixTlv &aPrefix, uint16_t aRloc16);
+    otError RemoveRloc(PrefixTlv &aPrefix, HasRouteTlv &aHasRoute, uint16_t aRloc16);
+    otError RemoveRloc(PrefixTlv &aPrefix, BorderRouterTlv &aBorderRouter, uint16_t aRloc16);
 
     void RlocLookup(uint16_t aRloc16, bool &aIn, bool &aStable, uint8_t *aTlvs, uint8_t aTlvsLength);
     bool IsStableUpdated(uint16_t aRloc16, uint8_t *aTlvs, uint8_t aTlvsLength, uint8_t *aTlvsBase,
                          uint8_t aTlvsBaseLength);
 
-    static void HandleCommissioningSet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleCommissioningSet(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                        const otMessageInfo *aMessageInfo);
     void HandleCommissioningSet(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
-    static void HandleCommissioningGet(void *aContext, otCoapHeader *aHeader, otMessage aMessage,
+    static void HandleCommissioningGet(void *aContext, otCoapHeader *aHeader, otMessage *aMessage,
                                        const otMessageInfo *aMessageInfo);
     void HandleCommissioningGet(Coap::Header &aHeader, Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
 
@@ -186,6 +184,7 @@ private:
                                       uint8_t *aTlvs, uint8_t aLength);
     void SendCommissioningSetResponse(const Coap::Header &aRequestHeader, const Ip6::MessageInfo &aMessageInfo,
                                       MeshCoP::StateTlv::State aState);
+    static Leader &GetOwner(const Context &aContext);
 
     /**
      * Thread Specification Constants
@@ -201,14 +200,12 @@ private:
     uint16_t mContextUsed;
     uint32_t mContextLastUsed[kNumContextIds];
     uint32_t mContextIdReuseDelay;
-    Timer mTimer;
+    TimerMilli mTimer;
 
     Coap::Resource  mServerData;
 
     Coap::Resource mCommissioningDataGet;
     Coap::Resource mCommissioningDataSet;
-
-    Coap::Server   &mCoapServer;
 };
 
 /**
@@ -216,6 +213,6 @@ private:
  */
 
 }  // namespace NetworkData
-}  // namespace Thread
+}  // namespace ot
 
 #endif  // NETWORK_DATA_LEADER_FTD_HPP_
