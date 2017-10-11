@@ -13,6 +13,8 @@ var searchData=
   ['res_2dtoggle_2ec',['res-toggle.c',['../res-toggle_8c.html',1,'']]],
   ['root_2ec',['root.c',['../root_8c.html',1,'']]],
   ['router_2ec',['router.c',['../router_8c.html',1,'']]],
+  ['rtc_2ec',['rtc.c',['../rtc_8c.html',1,'']]],
+  ['rtc_2eh',['rtc.h',['../rtc_8h.html',1,'']]],
   ['rw009_2ec',['rw009.c',['../rw009_8c.html',1,'']]],
   ['rw009_2eh',['rw009.h',['../rw009_8h.html',1,'']]]
 ];

@@ -300,7 +300,7 @@ $(document).ready(function(){initNavTree('example_2freertos_2iot_2lwm2m_2iot__de
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;}</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keywordtype">void</span> system_setValueChangedHandler(lwm2m_context_t *lwm2mH, CHANGE_HANDLER prv_value_change)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keywordtype">void</span> system_setValueChangedHandler(<a class="code" href="structlwm2m__context__t.html">lwm2m_context_t</a> *lwm2mH, CHANGE_HANDLER prv_value_change)</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;{</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keyword">static</span> uint32_t par[2];</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
@@ -321,7 +321,7 @@ $(document).ready(function(){initNavTree('example_2freertos_2iot_2lwm2m_2iot__de
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordtype">char</span> *uri;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordtype">char</span> **buffer;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        pt = (uint32_t *)par;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        lwm2m_context_t *lwm2mH = (lwm2m_context_t *)(pt[0]);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <a class="code" href="structlwm2m__context__t.html">lwm2m_context_t</a> *lwm2mH = (<a class="code" href="structlwm2m__context__t.html">lwm2m_context_t</a> *)(pt[0]);</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        CHANGE_HANDLER prv_value_change = (CHANGE_HANDLER)(pt[1]);</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">while</span> (1) {</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                err = xQueueReceive(queue_observe, buffer, portMAX_DELAY);</div>
@@ -332,11 +332,12 @@ $(document).ready(function(){initNavTree('example_2freertos_2iot_2lwm2m_2iot__de
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                }</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        }</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
-<div class="ttc" id="struct__lwm2m__client__info___html"><div class="ttname"><a href="struct__lwm2m__client__info__.html">_lwm2m_client_info_</a></div><div class="ttdef"><b>Definition:</b> <a href="iot__demo_2lwm2mclient_8h_source.html#l00041">iot_demo/lwm2mclient.h:41</a></div></div>
+<div class="ttc" id="struct__lwm2m__client__info___html"><div class="ttname"><a href="struct__lwm2m__client__info__.html">_lwm2m_client_info_</a></div><div class="ttdef"><b>Definition:</b> <a href="example_2freertos_2iot_2lwm2m_2iot__demo_2lwm2mclient_8h_source.html#l00041">example/freertos/iot/lwm2m/iot_demo/lwm2mclient.h:41</a></div></div>
 <div class="ttc" id="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103_html_ga840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html#ga840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">main entry for testing arc fiq interrupt </div><div class="ttdef"><b>Definition:</b> <a href="example_2baremetal_2arc__feature_2axs103_2main_8c_source.html#l00099">example/baremetal/arc_feature/axs103/main.c:99</a></div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
-<div class="ttc" id="struct__obj__info___html"><div class="ttname"><a href="struct__obj__info__.html">_obj_info_</a></div><div class="ttdef"><b>Definition:</b> <a href="iot__demo_2lwm2mclient_8h_source.html#l00035">iot_demo/lwm2mclient.h:35</a></div></div>
+<div class="ttc" id="struct__obj__info___html"><div class="ttname"><a href="struct__obj__info__.html">_obj_info_</a></div><div class="ttdef"><b>Definition:</b> <a href="example_2freertos_2iot_2lwm2m_2iot__demo_2lwm2mclient_8h_source.html#l00035">example/freertos/iot/lwm2m/iot_demo/lwm2mclient.h:35</a></div></div>
 <div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___l_w_m2_m___i_o_t___d_e_m_o_html_ga62c1e651db613bd4cb1cb814e42f4d99"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___l_w_m2_m___i_o_t___d_e_m_o.html#ga62c1e651db613bd4cb1cb814e42f4d99">TSKPRI_LWM2M_CLIENT</a></div><div class="ttdeci">#define TSKPRI_LWM2M_CLIENT</div><div class="ttdoc">lwm2m task priority </div><div class="ttdef"><b>Definition:</b> <a href="example_2freertos_2iot_2lwm2m_2iot__demo_2main_8c_source.html#l00084">example/freertos/iot/lwm2m/iot_demo/main.c:84</a></div></div>
+<div class="ttc" id="structlwm2m__context__t_html"><div class="ttname"><a href="structlwm2m__context__t.html">lwm2m_context_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00553">lamp_node/lwm2m_client/liblwm2m.h:553</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -345,7 +346,7 @@ $(document).ready(function(){initNavTree('example_2freertos_2iot_2lwm2m_2iot__de
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_717d1eb839f89675d53f200dfc3658fb.html">iot</a></li><li class="navelem"><a class="el" href="dir_68c14c075e01943a947e998014771f10.html">lwm2m</a></li><li class="navelem"><a class="el" href="dir_91ebbec21545be04c8dff1a3b853529f.html">iot_demo</a></li><li class="navelem"><a class="el" href="example_2freertos_2iot_2lwm2m_2iot__demo_2main_8c.html">main.c</a></li>
-    <li class="footer">Generated on Mon Jul 24 2017 15:17:24 for embARC by
+    <li class="footer">Generated on Wed Oct 11 2017 12:56:27 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

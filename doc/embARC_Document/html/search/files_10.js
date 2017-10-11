@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['scope_2ec',['scope.c',['../scope_8c.html',1,'']]],
+  ['scope_2eh',['scope.h',['../scope_8h.html',1,'']]],
   ['sensor_5fexample_2ec',['sensor_example.c',['../sensor__example_8c.html',1,'']]],
   ['sink_2ec',['sink.c',['../sink_8c.html',1,'']]],
   ['spiflash_2ec',['spiflash.c',['../spiflash_8c.html',1,'']]],

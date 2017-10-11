@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['secret_5fcontext',['SECRET_CONTEXT',['../struct_s_e_c_r_e_t___c_o_n_t_e_x_t.html',1,'']]],
-  ['secret_5fcontext2',['SECRET_CONTEXT2',['../struct_s_e_c_r_e_t___c_o_n_t_e_x_t2.html',1,'']]],
-  ['somecomputing',['someComputing',['../classsome_computing.html',1,'']]],
-  ['somecomputing_3c_20t_2c_200_20_3e',['someComputing&lt; T, 0 &gt;',['../classsome_computing_3_01_t_00_010_01_4.html',1,'']]],
-  ['spi_5fxfer',['spi_xfer',['../structspi__xfer.html',1,'']]]
+  ['rgb_5fs',['rgb_s',['../struct_r_g_b___t_1_1rgb__s.html',1,'RGB_T']]],
+  ['rgb_5ft',['RGB_T',['../union_r_g_b___t.html',1,'']]],
+  ['rw009_5fcmd',['rw009_cmd',['../structrw009__cmd.html',1,'']]],
+  ['rw009_5fresp',['rw009_resp',['../structrw009__resp.html',1,'']]],
+  ['rw009_5fspi_5fdata_5fpacket',['rw009_spi_data_packet',['../structrw009__spi__data__packet.html',1,'']]],
+  ['rw009_5fspi_5frequest',['rw009_spi_request',['../structrw009__spi__request.html',1,'']]],
+  ['rw009_5fspi_5fresponse',['rw009_spi_response',['../structrw009__spi__response.html',1,'']]]
 ];

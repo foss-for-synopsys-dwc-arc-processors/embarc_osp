@@ -1,0 +1,4 @@
+var group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_b_a_b_y___s_m_a_r_t_h_o_m_e___n_o_d_e_s___w_e_a_r_a_b_l_e___n_o_d_e__ =
+[
+    [ "hrate_detector_start", "group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_b_a_b_y___s_m_a_r_t_h_o_m_e___n_o_d_e_s___w_e_a_r_a_b_l_e___n_o_d_e__.html#gae3c980c10a171a9f6f69cc6f4dd2a8b3", null ]
+];

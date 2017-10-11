@@ -43,6 +43,7 @@ var searchData=
   ['gpio_5feint_5fcontrol',['gpio_eint_control',['../structwf__gpio__ops.html#ae6dea37c0d51fe24af68f1702e94f813',1,'wf_gpio_ops']]],
   ['gpio_5feint_5fis_5fenabled',['gpio_eint_is_enabled',['../structwf__gpio__ops.html#aedd5a9afd675a073c6525bc385a3d207',1,'wf_gpio_ops']]],
   ['gpio_5fget_5fdev',['gpio_get_dev',['../group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j.html#gaa3ed54c8ec11f3ae9033d93c86e21c72',1,'gpio_get_dev(int32_t gpio_id):&#160;dw_gpio_obj.c'],['../group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j.html#gaa3ed54c8ec11f3ae9033d93c86e21c72',1,'gpio_get_dev(int32_t gpio_id):&#160;dw_gpio_obj.c'],['../group___d_e_v_i_c_e___h_a_l___g_p_i_o.html#gaa3ed54c8ec11f3ae9033d93c86e21c72',1,'gpio_get_dev(int32_t gpio_id):&#160;dw_gpio_obj.c']]],
+  ['gpio_5fh_5fcfg_5fside',['GPIO_H_CFG_SIDE',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga6774d2eb7858b6c2f9a8234a3e80a7f9',1,'light_driver.h']]],
   ['gpio_5finfo',['gpio_info',['../structdev__gpio.html#ad9ee0de0f2f120a328ceaf891a2e6a6b',1,'dev_gpio']]],
   ['gpio_5fini_5frising_5fedge',['GPIO_INI_RISING_EDGE',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ggaf7acf5e0cba8e4d0fea85668a51e747fa87441b1eacd71eb5440985ff5c32c481',1,'dev_gpio.h']]],
   ['gpio_5fini_5frising_5fedge_5fall',['GPIO_INI_RISING_EDGE_ALL',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ggaf7acf5e0cba8e4d0fea85668a51e747faaa080f7cd6a5aeb85a0834855d284ddf',1,'dev_gpio.h']]],
@@ -79,6 +80,7 @@ var searchData=
   ['gpio_5fint_5fno_5fdebounce_5fall',['GPIO_INT_NO_DEBOUNCE_ALL',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga2c0e952816e5c67259a674a6010ad41c',1,'dev_gpio.h']]],
   ['gpio_5fint_5fpolarity',['gpio_int_polarity',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#gaf7acf5e0cba8e4d0fea85668a51e747f',1,'gpio_int_polarity():&#160;dev_gpio.h'],['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga58ce96f05f5aed30f6101586fdecb750',1,'GPIO_INT_POLARITY():&#160;dev_gpio.h']]],
   ['gpio_5fopen',['gpio_open',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga5127296ba57626bc984aa48d6ee5f010',1,'dev_gpio']]],
+  ['gpio_5fout_5fport_5fmiddle',['GPIO_OUT_PORT_MIDDLE',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga05212d69f5b709453f469ce519408f28',1,'light_driver.h']]],
   ['gpio_5fread',['gpio_read',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga0583a36e5d0aab4bd914c34bb44832c9',1,'dev_gpio::gpio_read()'],['../structwf__gpio__ops.html#a5f1f352e4e0ac3f190a5fe5412d55018',1,'wf_gpio_ops::gpio_read()']]],
   ['gpio_5fwrite',['gpio_write',['../group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#ga70bd322128648796b6652e4026a2eb91',1,'dev_gpio::gpio_write()'],['../structwf__gpio__ops.html#a34ad3a909e900fb5a94d73975f31a229',1,'wf_gpio_ops::gpio_write()']]],
   ['general_20middleware',['General Middleware',['../page_middleware_general_middleware.html',1,'page_middleware']]]

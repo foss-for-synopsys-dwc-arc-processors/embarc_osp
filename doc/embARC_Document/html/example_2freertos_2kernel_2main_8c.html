@@ -124,11 +124,20 @@ Macros</h2></td></tr>
 <tr class="memitem:ga35c5a3e1106534bb1ee777a042389ecd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga35c5a3e1106534bb1ee777a042389ecd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>SWI_INTNO</b>&#160;&#160;&#160;20</td></tr>
 <tr class="separator:ga35c5a3e1106534bb1ee777a042389ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43fd8f79b852188763ee29379843264e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga43fd8f79b852188763ee29379843264e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSK_PRIOR_HI</b>&#160;&#160;&#160;(configMAX_PRIORITIES-1)</td></tr>
+<tr class="separator:ga43fd8f79b852188763ee29379843264e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67e665d80591c407deefcbdd9a3b3611"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga67e665d80591c407deefcbdd9a3b3611"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TSK_PRIOR_LO</b>&#160;&#160;&#160;(configMAX_PRIORITIES-2)</td></tr>
+<tr class="separator:ga67e665d80591c407deefcbdd9a3b3611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2285dd35532dca72052d095f30864e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac2285dd35532dca72052d095f30864e3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EVENT_WAIT_BITS</b>&#160;&#160;&#160;0x00000001</td></tr>
+<tr class="separator:gac2285dd35532dca72052d095f30864e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga78f316da3a87bf72cb1647786b64bf0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga78f316da3a87bf72cb1647786b64bf0e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_SAMPLES</b>&#160;&#160;&#160;1000</td></tr>
 <tr class="separator:ga78f316da3a87bf72cb1647786b64bf0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga36e8798f6b2d315a183aa829616edfb1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga36e8798f6b2d315a183aa829616edfb1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TASK_DELAY_MS</b>&#160;&#160;&#160;10</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TASK_DELAY_MS</b>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:ga36e8798f6b2d315a183aa829616edfb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -170,12 +179,24 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:gad2ceea4f9c7d555dc0c1b3df57146f54"><td class="memItemLeft" align="right" valign="top">static TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#gad2ceea4f9c7d555dc0c1b3df57146f54">task1_handle</a> = NULL</td></tr>
-<tr class="memdesc:gad2ceea4f9c7d555dc0c1b3df57146f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle of task1  <a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#gad2ceea4f9c7d555dc0c1b3df57146f54">More...</a><br /></td></tr>
-<tr class="separator:gad2ceea4f9c7d555dc0c1b3df57146f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga21d69943d8ad99fabf15d49965dcc031"><td class="memItemLeft" align="right" valign="top">static TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga21d69943d8ad99fabf15d49965dcc031">task2_handle</a> = NULL</td></tr>
-<tr class="memdesc:ga21d69943d8ad99fabf15d49965dcc031"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle of task2  <a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga21d69943d8ad99fabf15d49965dcc031">More...</a><br /></td></tr>
-<tr class="separator:ga21d69943d8ad99fabf15d49965dcc031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5644aef70d0b811d77a33566ec3c3ee4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5644aef70d0b811d77a33566ec3c3ee4"></a>
+static TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task1_handle</b> = NULL</td></tr>
+<tr class="separator:ga5644aef70d0b811d77a33566ec3c3ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecec5dda30b4da676c6aa9e1f861bdc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaecec5dda30b4da676c6aa9e1f861bdc5"></a>
+static TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>task2_handle</b> = NULL</td></tr>
+<tr class="separator:gaecec5dda30b4da676c6aa9e1f861bdc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1575a4945b4541c764391937d3b5d7e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac1575a4945b4541c764391937d3b5d7e"></a>
+static SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>mux1_id</b></td></tr>
+<tr class="separator:gac1575a4945b4541c764391937d3b5d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad90705d2b329bb0ffb07e7667149fa37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad90705d2b329bb0ffb07e7667149fa37"></a>
+static SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>sem1_id</b></td></tr>
+<tr class="separator:gad90705d2b329bb0ffb07e7667149fa37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabbab7424b2537c78623a3d75d24f62cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabbab7424b2537c78623a3d75d24f62cb"></a>
+static EventGroupHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>evt1_cb</b></td></tr>
+<tr class="separator:gabbab7424b2537c78623a3d75d24f62cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca5b6c5e740d182524b562a333c6b436"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaca5b6c5e740d182524b562a333c6b436"></a>
+static QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>dtq1_id</b></td></tr>
+<tr class="separator:gaca5b6c5e740d182524b562a333c6b436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f1b03d73855ec60bc5537313596b853"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2f1b03d73855ec60bc5537313596b853"></a>
 static volatile unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> = 0</td></tr>
 <tr class="separator:ga2f1b03d73855ec60bc5537313596b853"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,7 +227,7 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>sample_count</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_62a10446af456e9b79bfd9fcd77af51f.html">kernel</a></li><li class="navelem"><a class="el" href="example_2freertos_2kernel_2main_8c.html">main.c</a></li>
-    <li class="footer">Generated on Mon Jul 24 2017 15:17:26 for embARC by
+    <li class="footer">Generated on Wed Oct 11 2017 12:56:29 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

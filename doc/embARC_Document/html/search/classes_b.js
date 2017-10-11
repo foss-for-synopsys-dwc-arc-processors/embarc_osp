@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['rw009_5fcmd',['rw009_cmd',['../structrw009__cmd.html',1,'']]],
-  ['rw009_5fresp',['rw009_resp',['../structrw009__resp.html',1,'']]],
-  ['rw009_5fspi_5fdata_5fpacket',['rw009_spi_data_packet',['../structrw009__spi__data__packet.html',1,'']]],
-  ['rw009_5fspi_5frequest',['rw009_spi_request',['../structrw009__spi__request.html',1,'']]],
-  ['rw009_5fspi_5fresponse',['rw009_spi_response',['../structrw009__spi__response.html',1,'']]]
+  ['port_5fctrl',['port_ctrl',['../structport__ctrl.html',1,'']]],
+  ['processor_5fframe',['processor_frame',['../structprocessor__frame.html',1,'']]],
+  ['psk_5fkey_5fformat',['PSK_KEY_FORMAT',['../struct_p_s_k___k_e_y___f_o_r_m_a_t.html',1,'']]]
 ];

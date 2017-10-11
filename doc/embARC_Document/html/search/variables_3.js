@@ -1,6 +1,8 @@
 var searchData=
 [
   ['data',['DATA',['../structdw__uart__reg.html#ac875fac57791596bc4b2c0d2e755cad7',1,'dw_uart_reg::DATA()'],['../structunit__test.html#a540063e433ea2466c5f8067e66fc0d95',1,'unit_test::data()']]],
+  ['data_5freport_5fwn',['data_report_wn',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8af188091733d36ec5d3385a46a731c6',1,'common.h']]],
+  ['data_5freport_5fwn_5fold',['data_report_wn_old',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaa9092e2ff9444eca3bdeb029f2809fba',1,'common.h']]],
   ['databits',['databits',['../structuart__dps__format.html#a8e849d194ac4eeea56b98e0819fde84a',1,'uart_dps_format']]],
   ['debounce',['DEBOUNCE',['../structictl__gpio__reg.html#af037d67391e0c39bcd3a4af8081d7ba7',1,'ictl_gpio_reg::DEBOUNCE()'],['../structdw__gpio__reg.html#a3fbcec16b1661e6558157306ed58faff',1,'dw_gpio_reg::DEBOUNCE()']]],
   ['desc',['desc',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gafacb52388c1247e781414892c1751d7f',1,'_dma_channel']]],

@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define LWM2M_EMSK_INSTANCE_ID  0</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">static</span> u8g_t u8g;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> display_prepare(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> display_refresh(lwm2m_object_t * objectP);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> display_refresh(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> * Multiple instance objects can use userdata to store data that will be shared between the different instances.</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> * The lwm2m_object_t object structure - which represents every object of the liblwm2m as seen in the single instance</span></div>
@@ -188,8 +188,8 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        uint32_t y_coordinate;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;} <a class="code" href="struct__prv__instance__.html">prv_instance_t</a>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">static</span> uint8_t prv_read(uint16_t instanceId, <span class="keywordtype">int</span> * numDataP, lwm2m_tlv_t ** dataArrayP,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">static</span> uint8_t prv_read(uint16_t instanceId, <span class="keywordtype">int</span> * numDataP, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> ** dataArrayP,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">int</span> i;</div>
@@ -237,8 +237,8 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">return</span> COAP_205_CONTENT;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">static</span> uint8_t prv_write(uint16_t instanceId, <span class="keywordtype">int</span> numData, lwm2m_tlv_t * dataArray,</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">static</span> uint8_t prv_write(uint16_t instanceId, <span class="keywordtype">int</span> numData, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> * dataArray,</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordtype">int</span> i;</div>
@@ -290,24 +290,24 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">static</span> uint8_t prv_delete(uint16_t <span class="keywordtype">id</span>, lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">static</span> uint8_t prv_delete(uint16_t <span class="keywordtype">id</span>, <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keyword">static</span> uint8_t prv_create(uint16_t instanceId, <span class="keywordtype">int</span> numData, lwm2m_tlv_t * dataArray,</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keyword">static</span> uint8_t prv_create(uint16_t instanceId, <span class="keywordtype">int</span> numData, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> * dataArray,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">static</span> uint8_t prv_exec(uint16_t instanceId, uint16_t resourceId, uint8_t * buffer, <span class="keywordtype">int</span> length,</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_close(lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_close(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;{</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        LWM2M_LIST_FREE(objectP-&gt;instanceList);</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">if</span> (objectP-&gt;userData != NULL) {</div>
@@ -316,11 +316,11 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;lwm2m_object_t * get_object_display(uint32_t num)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * get_object_display(uint32_t num)</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;{</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        lwm2m_object_t * obj;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * obj;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        uint16_t max_x, max_y;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        obj = (lwm2m_object_t *)lwm2m_malloc(<span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        obj = (<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> *)lwm2m_malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">if</span> (NULL != obj) {</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keywordtype">int</span> i;</div>
@@ -329,7 +329,7 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                u8g_Begin(&amp;u8g);</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                max_x = u8g_GetWidth(&amp;u8g);</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                max_y = u8g_GetHeight(&amp;u8g);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                memset(obj, 0, <span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                memset(obj, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                obj-&gt;objID = OBJECT_LIGHT_ID;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">for</span> (i = 0 ;i &lt; num ;i++) {</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        instance_ptr = (<a class="code" href="struct__prv__instance__.html">prv_instance_t</a> *)lwm2m_malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__prv__instance__.html">prv_instance_t</a>));</div>
@@ -375,7 +375,7 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        u8g_SetFontPosTop(&amp;u8g);</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> display_refresh(lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> display_refresh(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;{</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        uint8_t instanceId;</div>
@@ -401,6 +401,8 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        } <span class="keywordflow">while</span> (u8g_NextPage(&amp;u8g));</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
+<div class="ttc" id="structlwm2m__tlv__t_html"><div class="ttname"><a href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00255">lamp_node/lwm2m_client/liblwm2m.h:255</a></div></div>
+<div class="ttc" id="struct__lwm2m__object__t_html"><div class="ttname"><a href="struct__lwm2m__object__t.html">_lwm2m_object_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00345">lamp_node/lwm2m_client/liblwm2m.h:345</a></div></div>
 <div class="ttc" id="struct__prv__instance___html"><div class="ttname"><a href="struct__prv__instance__.html">_prv_instance_</a></div><div class="ttdef"><b>Definition:</b> <a href="object__button_8c_source.html#l00079">object_button.c:79</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -410,7 +412,7 @@ $(document).ready(function(){initNavTree('object__display_8c_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_717d1eb839f89675d53f200dfc3658fb.html">iot</a></li><li class="navelem"><a class="el" href="dir_68c14c075e01943a947e998014771f10.html">lwm2m</a></li><li class="navelem"><a class="el" href="dir_91ebbec21545be04c8dff1a3b853529f.html">iot_demo</a></li><li class="navelem"><a class="el" href="dir_8fdee1a19f64d2b1218e91285bd61123.html">objects</a></li><li class="navelem"><b>object_display.c</b></li>
-    <li class="footer">Generated on Mon Jul 24 2017 15:17:24 for embARC by
+    <li class="footer">Generated on Wed Oct 11 2017 12:56:28 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

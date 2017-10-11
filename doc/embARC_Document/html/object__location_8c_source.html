@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> timestamp;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;} location_data_t;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">static</span> uint8_t prv_res2tlv(lwm2m_tlv_t* tlvP,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">static</span> uint8_t prv_res2tlv(<a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a>* tlvP,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                           location_data_t* locDataP)</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//-------------------------------------------------------------------- JH --</span></div>
@@ -233,8 +233,8 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keyword">static</span> uint8_t prv_location_read(uint16_t objInstId,</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                 <span class="keywordtype">int</span>*  numDataP,</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                 lwm2m_tlv_t** tlvArrayP,</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                 lwm2m_object_t*  objectP)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                 <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a>** tlvArrayP,</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                 <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>*  objectP)</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">//-------------------------------------------------------------------- JH --</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">int</span>     i;</div>
@@ -275,7 +275,7 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keywordtype">void</span> location_setVelocity(lwm2m_object_t* locationObj,</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keywordtype">void</span> location_setVelocity(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>* locationObj,</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                          uint16_t bearing,</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                          uint16_t horizontalSpeed,</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                          uint8_t speedUncertainty)</div>
@@ -291,7 +291,7 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="keywordtype">void</span> display_location_object(lwm2m_object_t * <span class="keywordtype">object</span>)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="keywordtype">void</span> display_location_object(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * <span class="keywordtype">object</span>)</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#ifdef WITH_LOGS</span></div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    location_data_t * data = (location_data_t *)object-&gt;userData;</div>
@@ -304,7 +304,7 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_location_close(lwm2m_object_t * <span class="keywordtype">object</span>)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_location_close(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * <span class="keywordtype">object</span>)</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;{</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> (NULL != object-&gt;userData)</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
@@ -319,7 +319,7 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keywordtype">void</span> location_setLocationAtTime(lwm2m_object_t* locationObj,</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keywordtype">void</span> location_setLocationAtTime(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>* locationObj,</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                             <span class="keywordtype">float</span> latitude,</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                             <span class="keywordtype">float</span> longitude,</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                             <span class="keywordtype">float</span> altitude,</div>
@@ -341,25 +341,25 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    pData-&gt;timestamp = timestamp;</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;lwm2m_object_t * get_object_location(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * get_object_location(<span class="keywordtype">void</span>)</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;{</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment">//-------------------------------------------------------------------- JH --</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    lwm2m_object_t * locationObj;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * locationObj;</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    locationObj = (lwm2m_object_t *)lwm2m_malloc(<span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    locationObj = (<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> *)lwm2m_malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">if</span> (NULL != locationObj)</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        memset(locationObj, 0, <span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        memset(locationObj, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="comment">// It assigns its unique ID</span></div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="comment">// The 6 is the standard ID for the optional object &quot;Location&quot;.</span></div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        locationObj-&gt;objID = LWM2M_LOCATION_OBJECT_ID;</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="comment">// and its unique instance</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        locationObj-&gt;instanceList = (lwm2m_list_t *)lwm2m_malloc(<span class="keyword">sizeof</span>(lwm2m_list_t));</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        locationObj-&gt;instanceList = (<a class="code" href="struct__lwm2m__list__t.html">lwm2m_list_t</a> *)lwm2m_malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__list__t.html">lwm2m_list_t</a>));</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">if</span> (NULL != locationObj-&gt;instanceList)</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            memset(locationObj-&gt;instanceList, 0, <span class="keyword">sizeof</span>(lwm2m_list_t));</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            memset(locationObj-&gt;instanceList, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__list__t.html">lwm2m_list_t</a>));</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
@@ -396,7 +396,10 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">return</span> locationObj;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;}</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#endif  //LWM2M_CLIENT_MODE</span></div>
+<div class="ttc" id="struct__lwm2m__list__t_html"><div class="ttname"><a href="struct__lwm2m__list__t.html">_lwm2m_list_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00162">lamp_node/lwm2m_client/liblwm2m.h:162</a></div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
+<div class="ttc" id="structlwm2m__tlv__t_html"><div class="ttname"><a href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00255">lamp_node/lwm2m_client/liblwm2m.h:255</a></div></div>
+<div class="ttc" id="struct__lwm2m__object__t_html"><div class="ttname"><a href="struct__lwm2m__object__t.html">_lwm2m_object_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00345">lamp_node/lwm2m_client/liblwm2m.h:345</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -404,7 +407,7 @@ $(document).ready(function(){initNavTree('object__location_8c_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_717d1eb839f89675d53f200dfc3658fb.html">iot</a></li><li class="navelem"><a class="el" href="dir_68c14c075e01943a947e998014771f10.html">lwm2m</a></li><li class="navelem"><a class="el" href="dir_c2325b645aafdf61888715c98d0663a8.html">lwm2m_client</a></li><li class="navelem"><a class="el" href="dir_dba9cdec6d5294ee6e9649af5091f5f0.html">objects</a></li><li class="navelem"><a class="el" href="object__location_8c.html">object_location.c</a></li>
-    <li class="footer">Generated on Mon Jul 24 2017 15:17:24 for embARC by
+    <li class="footer">Generated on Wed Oct 11 2017 12:56:28 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -15,6 +15,7 @@ var searchData=
   ['dcache_5finvalidate_5fmlines',['dcache_invalidate_mlines',['../arc__cache_8c.html#a59d602ce2dc5882749c4efb11d4afd45',1,'dcache_invalidate_mlines(uint32_t start_addr, uint32_t size):&#160;arc_cache.c'],['../arc__cache_8h.html#a59d602ce2dc5882749c4efb11d4afd45',1,'dcache_invalidate_mlines(uint32_t start_addr, uint32_t size):&#160;arc_cache.c']]],
   ['dcache_5flock_5fline',['dcache_lock_line',['../arc__cache_8h.html#aff88b1dee48572a46c012e97f7b822b6',1,'arc_cache.h']]],
   ['dcache_5flock_5fmlines',['dcache_lock_mlines',['../arc__cache_8c.html#a04d4e5c837e79cc0eaffe1e462b744bc',1,'dcache_lock_mlines(uint32_t start_addr, uint32_t size):&#160;arc_cache.c'],['../arc__cache_8h.html#a04d4e5c837e79cc0eaffe1e462b744bc',1,'dcache_lock_mlines(uint32_t start_addr, uint32_t size):&#160;arc_cache.c']]],
+  ['delay_5f10us',['delay_10us',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gab72ed7c98601ff0ee5985ab8f2bf744b',1,'light_driver.c']]],
   ['dmac_5fcheck_5fchannel',['dmac_check_channel',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga5cdbefc94c44553c2e42d016d6cfb54f',1,'arc_udma.c']]],
   ['dmac_5fclear_5fchannel',['dmac_clear_channel',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gafb0b911e1d6f13309597253cdd6e07d6',1,'arc_udma.c']]],
   ['dmac_5fclose',['dmac_close',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gaa077df81d09f99dc06f9f09746bee81a',1,'arc_udma.c']]],

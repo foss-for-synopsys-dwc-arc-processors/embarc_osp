@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('object__temperature_8c_source.html',''
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">static</span> TaskHandle_t task_lwm2m_temperature_handle = NULL;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> task_lwm2m_temperature(<span class="keywordtype">void</span>* par);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">static</span> lwm2m_object_t * tempure_obj;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">static</span> <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * tempure_obj;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">extern</span> xQueueHandle queue_observe;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*</span></div>
@@ -198,8 +198,8 @@ $(document).ready(function(){initNavTree('object__temperature_8c_source.html',''
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">static</span> uint8_t prv_read(uint16_t instanceId,</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                                <span class="keywordtype">int</span> * numDataP,</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                lwm2m_tlv_t ** dataArrayP,</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> ** dataArrayP,</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">int</span> i;</div>
@@ -246,30 +246,30 @@ $(document).ready(function(){initNavTree('object__temperature_8c_source.html',''
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">return</span> COAP_205_CONTENT;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">static</span> uint8_t prv_write(uint16_t instanceId, <span class="keywordtype">int</span> numData, lwm2m_tlv_t * dataArray,</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">static</span> uint8_t prv_write(uint16_t instanceId, <span class="keywordtype">int</span> numData, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> * dataArray,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;{</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">static</span> uint8_t prv_delete(uint16_t <span class="keywordtype">id</span>, lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">static</span> uint8_t prv_delete(uint16_t <span class="keywordtype">id</span>, <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">static</span> uint8_t prv_create(uint16_t instanceId, <span class="keywordtype">int</span> numData, lwm2m_tlv_t * dataArray,</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">static</span> uint8_t prv_create(uint16_t instanceId, <span class="keywordtype">int</span> numData, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> * dataArray,</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword">static</span> uint8_t prv_exec(uint16_t instanceId, uint16_t resourceId, uint8_t * buffer,</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        <span class="keywordtype">int</span> length, lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        <span class="keywordtype">int</span> length, <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_close(lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_close(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;{</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        LWM2M_LIST_FREE(objectP-&gt;instanceList);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span> (objectP-&gt;userData != NULL) {</div>
@@ -292,16 +292,16 @@ $(document).ready(function(){initNavTree('object__temperature_8c_source.html',''
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;lwm2m_object_t * get_object_temperature(uint32_t num)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * get_object_temperature(uint32_t num)</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        lwm2m_object_t * obj;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        obj = (lwm2m_object_t *)lwm2m_malloc(<span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * obj;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        obj = (<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> *)lwm2m_malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">if</span> (NULL != obj) {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordtype">int</span> i;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                memset(obj, 0, <span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                memset(obj, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                obj-&gt;objID = OBJECT_TEMP_ID;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordflow">for</span> (i = 0 ; i &lt; num ; i++)</div>
@@ -356,6 +356,8 @@ $(document).ready(function(){initNavTree('object__temperature_8c_source.html',''
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
 <div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_t_e_m_p_html_gacdef57c10980210fcb236b8e704133cd"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_t_e_m_p.html#gacdef57c10980210fcb236b8e704133cd">temp_sensor_init</a></div><div class="ttdeci">int32_t temp_sensor_init(uint32_t slv_addr)</div><div class="ttdoc">temperature sensor init </div><div class="ttdef"><b>Definition:</b> <a href="emsk__temperature_8c_source.html#l00183">emsk_temperature.c:183</a></div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
+<div class="ttc" id="structlwm2m__tlv__t_html"><div class="ttname"><a href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00255">lamp_node/lwm2m_client/liblwm2m.h:255</a></div></div>
+<div class="ttc" id="struct__lwm2m__object__t_html"><div class="ttname"><a href="struct__lwm2m__object__t.html">_lwm2m_object_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00345">lamp_node/lwm2m_client/liblwm2m.h:345</a></div></div>
 <div class="ttc" id="struct__prv__instance___html"><div class="ttname"><a href="struct__prv__instance__.html">_prv_instance_</a></div><div class="ttdef"><b>Definition:</b> <a href="object__button_8c_source.html#l00079">object_button.c:79</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
 <div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_t_e_m_p_html_ga3f117feb7972d2a9232c79dca53aab9f"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_t_e_m_p.html#ga3f117feb7972d2a9232c79dca53aab9f">temp_sensor_read</a></div><div class="ttdeci">int32_t temp_sensor_read(int32_t *val)</div><div class="ttdoc">val is the return temperature in degrees Celsius (1/10 C) </div><div class="ttdef"><b>Definition:</b> <a href="emsk__temperature_8c_source.html#l00216">emsk_temperature.c:216</a></div></div>
@@ -366,7 +368,7 @@ $(document).ready(function(){initNavTree('object__temperature_8c_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_717d1eb839f89675d53f200dfc3658fb.html">iot</a></li><li class="navelem"><a class="el" href="dir_68c14c075e01943a947e998014771f10.html">lwm2m</a></li><li class="navelem"><a class="el" href="dir_91ebbec21545be04c8dff1a3b853529f.html">iot_demo</a></li><li class="navelem"><a class="el" href="dir_8fdee1a19f64d2b1218e91285bd61123.html">objects</a></li><li class="navelem"><b>object_temperature.c</b></li>
-    <li class="footer">Generated on Mon Jul 24 2017 15:17:24 for embARC by
+    <li class="footer">Generated on Wed Oct 11 2017 12:56:28 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

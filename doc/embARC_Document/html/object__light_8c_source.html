@@ -182,8 +182,8 @@ $(document).ready(function(){initNavTree('object__light_8c_source.html','');});
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        uint8_t dimer;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;} <a class="code" href="struct__prv__instance__.html">prv_instance_t</a>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">static</span> uint8_t prv_read(uint16_t instanceId, <span class="keywordtype">int</span> * numDataP, lwm2m_tlv_t ** dataArrayP,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">static</span> uint8_t prv_read(uint16_t instanceId, <span class="keywordtype">int</span> * numDataP, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> ** dataArrayP,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">int</span> i;</div>
@@ -220,8 +220,8 @@ $(document).ready(function(){initNavTree('object__light_8c_source.html','');});
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> COAP_205_CONTENT;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">static</span> uint8_t prv_write(uint16_t instanceId, <span class="keywordtype">int</span> numData, lwm2m_tlv_t * dataArray,</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">static</span> uint8_t prv_write(uint16_t instanceId, <span class="keywordtype">int</span> numData, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> * dataArray,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">int</span> i;</div>
@@ -273,24 +273,24 @@ $(document).ready(function(){initNavTree('object__light_8c_source.html','');});
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span> result;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">static</span> uint8_t prv_delete(uint16_t <span class="keywordtype">id</span>, lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">static</span> uint8_t prv_delete(uint16_t <span class="keywordtype">id</span>, <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">static</span> uint8_t prv_create(uint16_t instanceId, <span class="keywordtype">int</span> numData, lwm2m_tlv_t * dataArray,</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">static</span> uint8_t prv_create(uint16_t instanceId, <span class="keywordtype">int</span> numData, <a class="code" href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a> * dataArray,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keyword">static</span> uint8_t prv_exec(uint16_t instanceId, uint16_t resourceId, uint8_t * buffer,</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        <span class="keywordtype">int</span> length, lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        <span class="keywordtype">int</span> length, <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;{</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_close(lwm2m_object_t * objectP)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> prv_close(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * objectP)</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        LWM2M_LIST_FREE(objectP-&gt;instanceList);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (objectP-&gt;userData != NULL) {</div>
@@ -299,17 +299,17 @@ $(document).ready(function(){initNavTree('object__light_8c_source.html','');});
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;lwm2m_object_t * get_object_light(uint32_t num)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * get_object_light(uint32_t num)</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;{</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        lwm2m_object_t * obj;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> * obj;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        obj = (lwm2m_object_t *)lwm2m_malloc(<span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        obj = (<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a> *)lwm2m_malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">if</span> (NULL != obj) {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                <span class="keywordtype">int</span> i;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <a class="code" href="struct__prv__instance__.html">prv_instance_t</a> * instance_ptr;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                memset(obj, 0, <span class="keyword">sizeof</span>(lwm2m_object_t));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                memset(obj, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__lwm2m__object__t.html">lwm2m_object_t</a>));</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                obj-&gt;objID = OBJECT_LIGHT_ID;</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordflow">for</span> (i=0 ; i &lt; num ; i++) {</div>
@@ -343,7 +343,9 @@ $(document).ready(function(){initNavTree('object__light_8c_source.html','');});
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
 <div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_ga0d116692517e4c11de41ec07145b8404"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0d116692517e4c11de41ec07145b8404">led_write</a></div><div class="ttdeci">void led_write(uint32_t led_val, uint32_t mask)</div><div class="ttdoc">write 1 to light on led bit, else light off led </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00133">emsk_gpio.c:133</a></div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
+<div class="ttc" id="structlwm2m__tlv__t_html"><div class="ttname"><a href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00255">lamp_node/lwm2m_client/liblwm2m.h:255</a></div></div>
 <div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_ga0dc68bc0b79209469f458809e464b178"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a></div><div class="ttdeci">uint32_t led_read(uint32_t mask)</div><div class="ttdoc">read led value, on for 1, off for 0 </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00150">emsk_gpio.c:150</a></div></div>
+<div class="ttc" id="struct__lwm2m__object__t_html"><div class="ttname"><a href="struct__lwm2m__object__t.html">_lwm2m_object_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00345">lamp_node/lwm2m_client/liblwm2m.h:345</a></div></div>
 <div class="ttc" id="struct__prv__instance___html"><div class="ttname"><a href="struct__prv__instance__.html">_prv_instance_</a></div><div class="ttdef"><b>Definition:</b> <a href="object__button_8c_source.html#l00079">object_button.c:79</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -353,7 +355,7 @@ $(document).ready(function(){initNavTree('object__light_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_717d1eb839f89675d53f200dfc3658fb.html">iot</a></li><li class="navelem"><a class="el" href="dir_68c14c075e01943a947e998014771f10.html">lwm2m</a></li><li class="navelem"><a class="el" href="dir_91ebbec21545be04c8dff1a3b853529f.html">iot_demo</a></li><li class="navelem"><a class="el" href="dir_8fdee1a19f64d2b1218e91285bd61123.html">objects</a></li><li class="navelem"><b>object_light.c</b></li>
-    <li class="footer">Generated on Mon Jul 24 2017 15:17:24 for embARC by
+    <li class="footer">Generated on Wed Oct 11 2017 12:56:28 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
