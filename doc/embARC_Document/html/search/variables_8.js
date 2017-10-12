@@ -67,7 +67,7 @@ var searchData=
   ['ilight_5fmiddle',['ilight_middle',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5ffe249892e03cde8a9e0a02f0ed720c',1,'light_driver.c']]],
   ['ilight_5fside',['ilight_side',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54a80d0a8744dfeef33bdf01093d8820',1,'light_driver.c']]],
   ['imr',['IMR',['../structdw__spi__reg.html#a63857ed13c92c9464997ebda0d88aa49',1,'dw_spi_reg']]],
-  ['imu_5fmpu6050_5fupdate_5fptr',['imu_mpu6050_update_ptr',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga474aa32692829793eb6ed7b0a8ec587d',1,'IMU.h']]],
+  ['imu_5fmpu6050_5fupdate_5fptr',['imu_mpu6050_update_ptr',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga474aa32692829793eb6ed7b0a8ec587d',1,'imu.h']]],
   ['init_5fstatus',['init_status',['../structdev__wnic__info.html#ae8e985f8e237e05452df9f1375428f17',1,'dev_wnic_info']]],
   ['int_5fbit_5fdebounce',['int_bit_debounce',['../structdev__gpio__int__cfg.html#aceb9fb6c9a83d3d2a511cf63f87c3fda',1,'dev_gpio_int_cfg']]],
   ['int_5fbit_5fhandler',['int_bit_handler',['../structdev__gpio__bit__isr.html#a4c3106c9eedd78f6b1dec60069db08b6',1,'dev_gpio_bit_isr']]],
