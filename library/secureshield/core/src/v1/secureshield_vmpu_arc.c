@@ -167,12 +167,12 @@ static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 		fault_addr, &g_mpu_container[g_active_container])) != NULL)) {
 		return region;
 	}
-	
+
 	/* if current container is secure,  check all normal containers */
 	if (container_is_secure(g_active_container)) {
 		for (i = 0; i < g_vmpu_container_count; i++) {
 			if (!container_is_secure(i)) {
-				if ((region = vmpu_fault_find_container_region(fault_addr, 
+				if ((region = vmpu_fault_find_container_region(fault_addr,
 					&g_mpu_container[i])) != NULL) {
 					return region;
 				}
@@ -233,25 +233,21 @@ static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 					 SECURESHIELD_AC_KREAD | SECURESHIELD_AC_KWRITE;
 				flags = AUX_MPU_RDP_UR |
 					AUX_MPU_RDP_KR | AUX_MPU_RDP_KW;
-			}
-			else {
+			} else {
 				ac_res = SECURESHIELD_AC_UREAD |
 					 SECURESHIELD_AC_KREAD;
 				flags = AUX_MPU_RDP_UR |
 					AUX_MPU_RDP_KR;
 			}
-		}
-		else {
+		} else {
 			if (ac & SECURESHIELD_AC_KWRITE) {
 				ac_res = SECURESHIELD_AC_KREAD | SECURESHIELD_AC_KWRITE;
 				flags = AUX_MPU_RDP_KR | AUX_MPU_RDP_KW;
-			}
-			else {
+			} else {
 				if (ac & SECURESHIELD_AC_KREAD) {
 					ac_res = SECURESHIELD_AC_KREAD;
 					flags = AUX_MPU_RDP_KR;
-				}
-				else {
+				} else {
 					ac_res = 0;
 					flags = 0;
 				}
@@ -364,7 +360,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 		return;
 	}
 
-	SECURESHIELD_DBG("switching from %d to %d\n\r", src_id, dst_id);
+	SECURESHIELD_DBG("switching from %d to %d\r\n", src_id, dst_id);
 	/* remember active container */
 	g_active_container = dst_id;
 
@@ -574,7 +570,7 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 
 	/* if g_mpu_slot is overflow  go back to start to do the recovery */
 	if (g_mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
-		/* why + 2 ?  because the first 2 regions maybe used for container's 
+		/* why + 2 ?  because the first 2 regions maybe used for container's
 		 rom (.text &.rodata) and ram (.data and .bss)
 		 */
 		g_mpu_slot = ARC_MPU_RESERVED_REGIONS + 2;
@@ -675,7 +671,7 @@ void vmpu_arch_init(void)
 	SECURESHIELD_DBG("MPU version:%x, regions:%d\r\n", mpu_cfg & 0xff, (mpu_cfg >> 8) & 0xff);
 	SECURESHIELD_DBG("MPU ALIGNMENT=0x%x\r\n", 1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS);
 	SECURESHIELD_DBG("MPU ALIGNMENT_BITS=%d\r\n", vmpu_bits(1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS));
-	
+
 	/* background for secureshield and application */
 	/* application cannot access secureshield except execution */
 	/* for iccm, UREAD, KREAD, KWRITE, U&S EXECUTE are ok */

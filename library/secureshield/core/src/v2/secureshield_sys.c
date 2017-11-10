@@ -109,7 +109,7 @@ static int32_t _secureshield_aux_check(uint8_t container_id, uint32_t addr)
 
 /**
  * \brief read an aux register
- * \param[in]  addr the aux reg address 
+ * \param[in]  addr the aux reg address
  * \return  aux register value (ok) or 0xffffffff (failed)
  */
 uint32_t secure_arc_lr_reg(uint32_t addr)
@@ -117,7 +117,7 @@ uint32_t secure_arc_lr_reg(uint32_t addr)
 	if (_secureshield_aux_check(g_active_container, addr) != 0 ) {
 		return 0xffffffff;
 	}
-	
+
 	return _arc_lr_reg(addr);
 }
 

@@ -112,14 +112,14 @@ _exc_ret_to_secure:
 	mov 	ilink, __secureshield_stack
 	sr 	ilink, [AUX_USER_SP]
 	rtie
-	
+
 /*************************************************************************************/
 
 	.global secureshield_exc_entry_int
 	.align 4
 secureshield_exc_entry_int:
 	clri	/* disable interrupt */
-	
+
 	/* disable MPU, runtime can do everything */
 	sr 	0x0, [AUX_MPU_EN]
 
@@ -192,7 +192,7 @@ _int_handler_1:
 
 /* interrupt  belongs to the same container, no container switch */
 _ret_int_unprivileged_no_cx:
-	
+
 	/* leave runtime, re-enable the mpu */
 	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
 
@@ -213,7 +213,7 @@ _int_exc_ret_to_secure:
 
 
 /*************************************************************************************/
-/* the following are return entries of secure call, 
+/* the following are return entries of secure call,
  * because of this, user mode is given execute privilege of secureshield runtime,
  * but no read and write privilege
  */

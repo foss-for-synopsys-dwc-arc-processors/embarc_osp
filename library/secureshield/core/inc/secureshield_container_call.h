@@ -51,7 +51,7 @@
 typedef struct {
 #if SECURESHIELD_VERSION == 1
 	uint16_t opcode;	// opcode of trap_s
-#elif SECURESHIELD_VERSION == 2 
+#elif SECURESHIELD_VERSION == 2
 	uint32_t opcode;	// opcode of sjli
 #endif
 	uint32_t branch;	// jump instruction

@@ -35,7 +35,7 @@
 #include "arc_asm_common.h"
 #include "secureshield_secure_call_exports.h"
 
-#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE 
+#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE
 #define MPU_REGION_SECURESHIELD_RUNTIME_RAM	1
 #define SP_NOT_IN_RUMTIME		0
 #define SP_IN_RUNTIME 			1
@@ -170,11 +170,11 @@ _normal_use_aux_sec_k_sp:
 #endif
 	lr 	sp, [AUX_SEC_K_SP]
 	push_s	r0			// save old sp
-	
+
 	jl 	container_call_in	// call container_call_in in secureshield runtime' sp
 
 	pop	sp			// recover old sp
-	cmp 	r0, 0			
+	cmp 	r0, 0
 	// r0 is the destination sp, !=0 a container switch required
 	// bit0 = 1, go to secure world, bit0 = 0 go to normal world
 	beq	_ret_directly		// if no container switch caused by errors in container_call_in, directly return
@@ -192,14 +192,14 @@ _normal_use_aux_sec_k_sp:
 	bnz	_switch_to_secure_world //  z bit is the result of btst
 
 _switch_to_normal_world:
-	
+
 	S_TO_N_CALL
 
 	lr	r1, [AUX_KERNEL_SP]
 	b 	_ret_container_call_out
 
 _switch_to_secure_world:
-	
+
 	S_TO_S_CALL
 
 	mov	r1, sp
@@ -212,13 +212,13 @@ _ret_container_call_out:
 	btst	r0, 0		// r0 is the sp of caller container, bit0 = 1 for secure container
 				// bit0 = 0 for normal container
 	bclr	r0, r0, 0	// clear bit 0,  z bit will not be updated
-	
+
 	mov	sp, r0
 	RESTORE_CALLEE_REGS
 	EXCEPTION_EPILOGUE
-	
+
 	sr 	0, [AUX_MPU_EN]		// leave secureshield runtime, disable default configuration
-	
+
 	bnz 	_ret_to_secure_world // z bit is the result of btst r0, 0
 	sr	sp, [AUX_KERNEL_SP]
 	lr	sp, [AUX_SEC_K_SP]
@@ -230,7 +230,7 @@ _ret_directly:
 	EXCEPTION_PROLOGUE
 
 	sr 	0, [AUX_MPU_EN]		// leave secureshield runtime, disable default configuration
-	
+
 	lr 	blink, [AUX_MPU_RPER]
 	btst	blink, AUX_MPU_RPER_BIT_S
 	bnz	_ret_directly_secure_world
@@ -255,7 +255,7 @@ secureshield_exc_entry_int:
 	mov 	r1, SP_NOT_IN_RUMTIME
 	sr 	sp, [AUX_MPU_PROBE]
 	lr 	r0, [AUX_MPU_INDEX]
-	cmp 	r0, MPU_REGION_SECURESHIELD_RUNTIME_RAM	
+	cmp 	r0, MPU_REGION_SECURESHIELD_RUNTIME_RAM
 	mov.z 	r1, SP_IN_RUNTIME
 
 	lr 	r0, [AUX_SEC_STAT]
@@ -267,13 +267,13 @@ secureshield_exc_entry_int:
 	// AUX_KERNEL_SP has the sp of interrupted normal world
 	// no consideration for interrupts happed in user mode
 	mov 	r2, sp // sp could not be runtime stack, case: S->N_INT->S_INT
-	
+
 	lr	sp, [AUX_KERNEL_SP]
 #ifdef ARC_FEATURE_CODE_DENSITY
 	sub 	sp, sp, 24 	// keep spaces for ei, ldi, jli in normal world, not in stack
 #else
 	sub 	sp, sp, 12 	// keep spaces for lp_end, lp_start, lp_count in normal world, not in stack
-#endif 
+#endif
 	INTERRUPT_PROLOGUE
 	mov 	r0, sp
 
@@ -283,7 +283,7 @@ secureshield_exc_entry_int:
 	bz 	_int_from_normal_world
 	ld 	sp, [secureshield_runtime_stack_ptr] // load the right runtime stack
 _int_from_normal_world:
-	push 	r2 // need to remember 
+	push 	r2 // need to remember
 	b 	_secure_int_handler_1 // sp is secureshield runtime stack ptr
 
 _int_from_secure_world:
@@ -292,7 +292,7 @@ _int_from_secure_world:
 	// from  runtime, AUX_KERNEL_SP could be any normal container's sp
 	// it may be overwritten to background container's sp for normal interrupt handling
 	// so save it and restore when return
-	PUSHAX 	AUX_KERNEL_SP 
+	PUSHAX 	AUX_KERNEL_SP
 	mov	r0, sp
 
 	cmp 	r1, SP_IN_RUNTIME
@@ -308,9 +308,9 @@ _secure_int_handler_1:
 	push	r0
 
 	jl	secureshield_interrupt_handle
-	
+
 	pop 	sp
-	cmp  	r0, 0 	
+	cmp  	r0, 0
 	bz 	_secure_int_return //  r0 is 0 means  the secure interrupt belong to secure world or error
 	btst	r0, 0		// bit 0 = 0 is no context switch, = 1 is context switch
 	bclr	r0, r0, 0	// clear bit 0,  z bit will not be updated
@@ -326,9 +326,9 @@ _int_handle_no_ctx_switch:
 	sr	blink, [AUX_MPU_PROBE]
 	lr 	blink, [AUX_MPU_RPER]
 	btst	blink, AUX_MPU_RPER_BIT_S
-	
-	sr 	0, [AUX_MPU_EN]	// leave secureshield runtime, disable default configuration */ 
-	
+
+	sr 	0, [AUX_MPU_EN]	// leave secureshield runtime, disable default configuration */
+
 	bnz	_secure_int_handle
 
 _normal_int_handle:
@@ -337,7 +337,7 @@ _normal_int_handle:
 
 	b 	handle_int_return
 _secure_int_handle:
-	
+
 	S_TO_S_CALL
 
 	mov 	sp, blink
@@ -349,7 +349,7 @@ handle_int_return:
 	btst	r0, 0
 	// clear bit 0,  z bit will not be updated, bit0 = 0 is no context switch
 	// bit = 1,  context switch
-	bclr	r0, r0, 0	
+	bclr	r0, r0, 0
 	mov	sp, r0
 	bz 	_secure_int_return
 	RESTORE_CALLEE_REGS
@@ -362,7 +362,7 @@ _secure_int_return:
 	bnz	_int_return_to_secure_world
 
 _int_return_to_normal_world:
-	INTERRUPT_EPILOGUE	// pop from interrupted normal container's stack 
+	INTERRUPT_EPILOGUE	// pop from interrupted normal container's stack
 #ifdef ARC_FEATURE_CODE_DENSITY
 	add 	sp, sp, 24 	// skip spaces for ei, ldi, jli, lp_end, lp_start, lp_count
 #else
@@ -387,7 +387,7 @@ secureshield_exc_entry_cpu:
 	// if exception happens in normal world, SEC_K_SP is used as the stack for
 	// EXCEPTION_PROLOGUE and EXCEPTION_EPILOGUE.
 	// if exception happens in secure world, in kernel mode, the original sp
-	// is used as the stack for EXCEPTION_PROLOGUE and EXCEPTION_EPILOGUE, 
+	// is used as the stack for EXCEPTION_PROLOGUE and EXCEPTION_EPILOGUE,
 	// in user mode, SEC_K_SP is used as the stack for EXCEPTION_PROLOGUE and EXCEPTION_EPILOGUE
 	EXCEPTION_PROLOGUE
 

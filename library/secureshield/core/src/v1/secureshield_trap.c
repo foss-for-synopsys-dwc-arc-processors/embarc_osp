@@ -150,7 +150,7 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
 	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE,
 		dst_frame->status32) != 0) {
 		return 0;
-	}	
+	}
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
 
@@ -185,7 +185,7 @@ uint32_t secureshield_trap_handler(void *exc_frame, uint32_t *runtime_sp)
 	uint8_t trap_id;
 
 	SECURESHIELD_ASSERT(trap_frame != NULL);
-	
+
 	trap_id = _arc_aux_read(AUX_ECR) & SECURESHIELD_TRAP_ID_MASK;
 
 	switch (trap_id) {

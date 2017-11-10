@@ -92,16 +92,16 @@ static void temp_trap_handler(void)
 }
 
 /**
- * \brief       
+ * \brief
  * The exception state registers (ERET, ECR, ERSTATUS, ERBTA, EFA, ESYN) will be protected by a new internal bit.
- * This will be set on exception entry if the exception is triggered on a secure mode instruction and cleared on 
- * exception entry if the exception is triggered on a non-secure instruction. If set, this bit will prevent 
- * read/write access to these registers from non-secure mode. Any attempt to access these registers in NS mode 
+ * This will be set on exception entry if the exception is triggered on a secure mode instruction and cleared on
+ * exception entry if the exception is triggered on a non-secure instruction. If set, this bit will prevent
+ * read/write access to these registers from non-secure mode. Any attempt to access these registers in NS mode
  * while protected will result in an EV_PriviligeV exception.
- * 
+ *
  * this function is used to clear this bit.
  */
-void secureshield_except_bit_clear(void) 
+void secureshield_except_bit_clear(void)
 {
     EXC_HANDLER prev_trap_handler;
 

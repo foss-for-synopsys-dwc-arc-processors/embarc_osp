@@ -180,7 +180,7 @@ static void secureshield_exc_handler_protect_v(void * frame)
 
 	SECURESHIELD_DBG("protection violation exception at 0x%x\r\n cause:", excpt_ret_reg);
 	switch (cause_code) {
-		case AUX_ECR_C_PROTV_INST_FETCH:	// 0x24 i-fetch invalid S/N transition, 0x44 i-fetch invalid SID, 0x00/0x04 old instruction violation 
+		case AUX_ECR_C_PROTV_INST_FETCH:	// 0x24 i-fetch invalid S/N transition, 0x44 i-fetch invalid SID, 0x00/0x04 old instruction violation
 			SECURESHIELD_DBG("instruction fetch violation, parameter:0x%x\r\n"
 				, parameter);
 			ret = vmpu_fault_recovery_mpu(excpt_ret_reg, 0);
@@ -488,7 +488,7 @@ int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER handler, uint32_t intno)
 	/* other container can change background container's irq resources */
 	if (exc->id) {
 		SECURESHIELD_DBG(
-			"Permission denied: IRQ %d is owned by container %d\n\r"
+			"Permission denied: IRQ %d is owned by container %d\r\n"
 			, intno, exc->id);
 		return -1;
 	}
@@ -539,7 +539,7 @@ int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
 	exc->handler = (EXC_HANDLER) handler;
 	exc->id = handler ? g_active_container : 0;
 
-	SECURESHIELD_DBG("IRQ %d %s container %d\n\r",
+	SECURESHIELD_DBG("IRQ %d %s container %d\r\n",
 		intno,
 		handler ? "registered to" : "released by",
 		g_active_container);

@@ -34,7 +34,7 @@
 #include "arc.h"
 #include "arc_asm_common.h"
 
-#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE 
+#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE
 
 	.file "secureshield_startup.s"
 

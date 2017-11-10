@@ -61,7 +61,7 @@ const SJLI_ENTRY secureshield_sjli_entry_table[NUM_SJLI_ENTRY] = {
 /**
  * \brief default sjli entry
  */
-static void sjli_default_entry(void) 
+static void sjli_default_entry(void)
 {
 	SECURESHIELD_HALT("default sjli entry");
 }
@@ -73,7 +73,7 @@ static void sjli_default_entry(void)
  */
 uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 {
-	
+
 	uint8_t src_id, dst_id;
 	INT_EXC_FRAME *dst_frame;
 	uint32_t dst_fn;
@@ -217,7 +217,7 @@ uint32_t container_call_out(uint32_t ret_value, uint32_t *sp, uint32_t status32)
 
 	/* switch access control tables */
 	vmpu_switch(dst_id, src_id);
-	
+
 	_arc_aux_write(AUX_MPU_PROBE, src->exc_frame.ret);
 	if (_arc_aux_read(AUX_MPU_RPER) & (1 << AUX_MPU_RPER_BIT_S)) {
 		secure = 1;

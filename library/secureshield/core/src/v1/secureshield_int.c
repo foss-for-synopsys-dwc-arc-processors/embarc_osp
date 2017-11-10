@@ -180,7 +180,8 @@ static void secureshield_exc_handler_protect_v(void *frame)
  * \brief default exception handler, not recoverable
  * \param[in] frame exception frame
  */
-static void secureshield_exc_handler_default(void *frame) {
+static void secureshield_exc_handler_default(void *frame)
+{
 	uint32_t excpt_cause_reg;
 	uint32_t excpt_ret_reg;
 	uint32_t vector_no;
@@ -265,7 +266,7 @@ static int32_t secure_int_ac_check(uint32_t intno)
 /**
  * \brief allocate an interrupt to the specified container
  * \param[in]  container_id container id
- * \param[in]  handler 	interrupt handler    	
+ * \param[in]  handler 	interrupt handler
  * \param[in]  intno        interrupt no.
  * \return 0 ok, -1 failed
  */
@@ -642,7 +643,7 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame, uint32_t *runtime_sp)
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 
-	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE, 
+	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE,
 		dst_frame->status32) != 0 ) {
 		return 0;
 	}

@@ -179,7 +179,7 @@ static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 	if (container_is_secure(g_active_container)) {
 		for (i = 0; i < g_vmpu_container_count; i++) {
 			if (!container_is_secure(i)) {
-				if ((region = vmpu_fault_find_container_region(fault_addr, 
+				if ((region = vmpu_fault_find_container_region(fault_addr,
 					&g_mpu_container[i])) != NULL) {
 					return region;
 				}
@@ -332,7 +332,7 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 			sid = SECURESHIELD_MPU_SID_BACKGROUND_CONTAINER;
 		} else {
 			// background container's data space are shared to all containers
-			sid = SECURESHIELD_MPU_SID_ALL;   	
+			sid = SECURESHIELD_MPU_SID_ALL;
 		}
 	} else {
 		sid = 1 << (container_id + 1);
@@ -358,8 +358,8 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 
 /**
  * find the access control of the specified address with the specified size
- * \param[in]  fault_addr 
- * \param[in]  size       
+ * \param[in]  fault_addr
+ * \param[in]  size
  * \return     0
  */
 uint32_t vmpu_fault_find_ac(uint32_t fault_addr, uint32_t size)
@@ -381,12 +381,12 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 	MPU_REGION *region;
 	static int32_t vmpu_load = 0;
 
-	if (vmpu_load) { // if mpu is loaded, no need to load again 
+	if (vmpu_load) { // if mpu is loaded, no need to load again
 		return;
-	}	
+	}
 
 	if (g_mpu_region_count > (ARC_FEATURE_MPU_REGIONS - ARC_MPU_RESERVED_REGIONS)) {
-		SECURESHIELD_HALT("total mpu regions(%d) are more then mpu haredware entries", 
+		SECURESHIELD_HALT("total mpu regions(%d) are more then mpu haredware entries",
 			g_mpu_region_count + ARC_MPU_RESERVED_REGIONS);
 		return;
 	}
@@ -417,7 +417,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 		return;
 	}
 
-	//SECURESHIELD_DBG("switching from %d to %d\n\r", src_id, dst_id);
+	//SECURESHIELD_DBG("switching from %d to %d\r\n", src_id, dst_id);
 	/* remember active container */
 	g_active_container = dst_id;
 
@@ -631,9 +631,9 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 
 	/* if g_mpu_slot is overflow  go back to start to do the recovery */
 	if (g_mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
-		// why +3 ?  because the first 2 regions maybe used for container's 
+		// why +3 ?  because the first 2 regions maybe used for container's
 		// .text, .rodata and ram (.data and .bss)
-		g_mpu_slot = ARC_MPU_RESERVED_REGIONS + 3; 
+		g_mpu_slot = ARC_MPU_RESERVED_REGIONS + 3;
 	}
 
 	return 0;

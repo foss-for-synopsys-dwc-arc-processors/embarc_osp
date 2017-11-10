@@ -35,7 +35,7 @@
 
 
 typedef struct {
-	INT_HANDLER handler;	/* interrupt handler function */	
+	INT_HANDLER handler;	/* interrupt handler function */
 	uint8_t id;		/* the container it belongs to */
 	uint8_t enabled;	/* enabled status */
 } SECURESHIELD_INT_HANDLER;

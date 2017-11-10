@@ -39,7 +39,7 @@
 
 #elif SECURESHIELD_VERSION == 2
 
-#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE 
+#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE
 
 #endif
 
