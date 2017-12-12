@@ -54,7 +54,7 @@
     - SSD1306 OLED module
     - SD Card, SDHC (8G preferred)
     - Wireless router or smart-phone hotspot (Android preferred)
-      - WiFi supports IEEE 802.11b/g/n and can be connected to the Internet website [Xively](https://xively.com/) and [AWS IoT](http://aws.amazon.com/iot/).
+      - WiFi supports IEEE 802.11b/g/n and can be connected to the Internet website [AWS IoT](http://aws.amazon.com/iot/).
       - Encryption with WPA/WPA2 - AES.
 
 \note The board version(BD_VER) should be confirmed before building an application.
@@ -93,8 +93,6 @@
     - Run <em>bash <embARC>/apply_embARC_patch.sh</em> in shell environment (Linux or Cygwin) to download required source code and patch them.
     ![Download required source code and apply embARC patches](pic/images/example/embARC101/embARC_apply_patches.jpg)
   - Separate patch scripts location. You can also run the separate patch script to patch the source code that you need.
-    - <em><embARC>/middleware/wolfssl/apply_embARC_patch.sh</em>
-    - <em><embARC>/middleware/matrixssl/apply_embARC_patch.sh</em>
     - <em><embARC>/middleware/mbedtls/apply_embARC_patch.sh</em>
     - <em><embARC>/os/contiki/apps/tinydtls/apply_embARC_patch.sh</em>
 
@@ -379,8 +377,6 @@ Multiple EMSK boards are required to run or debug application code on a single P
    In EMSK 2.3, the EM7d core is an ARC EM core with secure features, but some secure feature related compiler options are introduced in MWDT 2016.12.
 
  + If you can run any of the examples provided for the first time, but for the second time, it hanged up, you need to re-configure the core configuration of the board.
-
- + Server examples for matrixssl, wolfssl and mbedtls may not work correctly as expected, just ignore it, since the we suggest developer to use emsk as a tls/dtls client, not a server.
 
  + Here are some issues you need to take care of when you are using ARC GNU 2016.03.
    - Install EMSK Digilent JTAG drivers on Windows for ARC GNU

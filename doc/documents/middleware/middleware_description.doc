@@ -34,10 +34,7 @@ embARC leverages several open-source projects to deliver integrated IoT protocol
 |  \ref sect_middleware_iot_coap                         | coap              |     x     |    x    |     √    |
 |  \ref sect_middleware_iot_mqtt                         | mqtt              |     x     |    x    |     √    |
 |  \ref sect_middleware_iot_lwm2m                        | wakaama           |     x     |    x    |     √    |
-|  \ref sect_middleware_iot_xively                       | xively            |     x     |    √    |     √    |
 |  \ref sect_middleware_iot_awsiot                       | aws               |     x     |    x    |     √    |
-|  \ref sect_middleware_secure_communication_wolfssl     | wolfssl           |     x     |    x    |     √    |
-|  \ref sect_middleware_secure_communication_matrixssl   | matrixssl         |     x     |    x    |     √    |
 |  \ref sect_middleware_secure_communication_mbedtls     | mbedtls           |     x     |    x    |     √    |
 
 
@@ -47,7 +44,7 @@ embARC leverages several open-source projects to deliver integrated IoT protocol
 - Add the value in the **MID_SEL** column to the **MID_SEL** option in the application makefile.
 - **aws** middleware required *mbedtls* middleware.
 - **coap, mqtt, and lwm2m** are only for FreeRTOS. and require *lwip and lwip-contrib*. There are coap and mqtt implementations in Contiki, and lwm2m implementation is in Contiki upstream.
-- **wolfssl, matrixssl, and mbedtls** sometimes require *fatfs* middleware to provide file access. TinyDTLS in Contiki provides DTLS network security.
+- **mbedtls** sometimes require *fatfs* middleware to provide file access. TinyDTLS in Contiki provides DTLS network security.
 - **lwip** middleware is only for FreeRTOS. Contiki provides uIP for network communication.
 - **openthread** middleware requires **mbedtls** to support encryption.
 

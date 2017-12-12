@@ -94,11 +94,11 @@
 #endif
 
 #ifndef NTSHELL_USE_CMDS_FS_SPIRW
-#define NTSHELL_USE_CMDS_FS_SPIRW	(1) /*!< use commands defined in cmd_spirw.c*/
+#define NTSHELL_USE_CMDS_FS_SPIRW	(0) /*!< use commands defined in cmd_spirw.c*/
 #endif
 
 #ifndef NTSHELL_USE_CMDS_FS_MLOAD
-#define NTSHELL_USE_CMDS_FS_MLOAD	(1) /*!< use commands defined in cmd_mload.c*/
+#define NTSHELL_USE_CMDS_FS_MLOAD	(0) /*!< use commands defined in cmd_mload.c*/
 #endif
 
 #endif /* MID_FATFS */
