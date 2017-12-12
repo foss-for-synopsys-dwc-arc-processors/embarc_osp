@@ -18,16 +18,9 @@
 
     embARC supports mbed TLS in FreeRTOS.
 
-\section sect_middleware_secure_communication_tinydtls TinyDTLS
-    [tinydtls](http://projects.eclipse.org/proposals/tinydtls) provides a lightweight implementation of the DTLS protocol that can be used in devices with tight memory constraints, on the order of 100 KiB flash memory and about 10 KiB RAM. The cipher suites supported by tinydtls are limited to TLS_PSK_WITH_AES_128_CCM_8 and TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8, which are mandatory-to-implement for CoAP.
-
-    The library contains an implementation of the Rijndael algorithm (AES) from OpenBSD. The license information is available in the source file rijndael.c. The SHA256 implementation included with tinydtls is licensed under BSD (taken from Aaron D. Gifford). The implementation of the ECC curve secp256r1 was originally developed by Chris K Cockrum and has been put under MIT license. Additional contributions to tinydtls are from Hauke Mehrtens.
-
-    embARC supports tinydtls in Contiki.
-
 \section sect_mid_add_tls_dtls_support_in_embarc Adding TLS/DTLS Support in embARC
 
-Due to export control requirements for United States companies, MatrixSSL, wolfSSL, mbed TLS, and TinyDTLS are not distributed as part of embARC. These packages have been ported and verified for use with embARC. The embARC OSP distribution contains required patches to integrate MatrixSSL, woflssl, mbed TLS, and TinyDTLS into embARC.
+Due to export control requirements for United States companies, mbed TLS is not distributed as part of embARC. These packages have been ported and verified for use with embARC. The embARC OSP distribution contains required patches to integrate mbed TLS into embARC.
 
 Refer to \ref EMBARC_APPLY_PATCHES "Download and apply patches" for detailed information.
 

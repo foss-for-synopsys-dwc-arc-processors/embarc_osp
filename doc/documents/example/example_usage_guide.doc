@@ -94,7 +94,6 @@
     ![Download required source code and apply embARC patches](pic/images/example/embARC101/embARC_apply_patches.jpg)
   - Separate patch scripts location. You can also run the separate patch script to patch the source code that you need.
     - <em><embARC>/middleware/mbedtls/apply_embARC_patch.sh</em>
-    - <em><embARC>/os/contiki/apps/tinydtls/apply_embARC_patch.sh</em>
 
 \note <embARC> represents the location where you put the embARC source code, such as **C:/embARC**.
 
@@ -298,7 +297,6 @@
         - You can refer to the existing \ref EMBARC_APPS_BAREMETAL "Baremetal examples" when developing bare-metal applications.
       - Developing OS-Aware applications
         - freertos: add or set **OS_SEL** in your makefile to be **freertos**.
-        - contiki: add or set **OS_SEL** in your makefile to be **contiki**.
         - You can refer to the existing \ref EMBARC_APPS_OS_FREERTOS "FreeRTOS examples" when developing FreeRTOS applications.
         - You can refer to existing \ref EMBARC_APPS_OS_CONTIKI "Contiki examples" when developing Contiki applications.
       - For an introduction to middleware, see \ref sect_mid_middleware_intro.
@@ -337,7 +335,6 @@
   + **OLEVEL**, **CUR_CORE** and **OS_SEL**
     - **OLEVEL** is the optimization level you specify to compile the program, which can be O0, O1, O2, O3, or Os.
     - **CUR_CORE** is the ARC core configuration, which can be (1) arcem4, arcem6, arcem4cr16, and arcem6gp for EMSK 1.x, (2) arcem5d, arcem7d, and arcem7dfpu for EMSK 2.0, and EMSK 2.1, (3) arcem7d, arcem9d, and arcem11d for EMSK 2.2.
-    - **OS_SEL** is the OS option in your embARC application. Leaving it blank means *baremetal* mode. *freertos* and *contiki* are the other options of **OS_SEL** based on the application. If you select *freertos*, you must supply *FreeRTOSConfig.h*. See \ref EMBARC_APPS_OS_FREERTOS "FreeRTOS Examples in embARC" for more information.
   + Other options
     - Set the toolchain to build embARC applications by adding one of the following strings in the makefile:
       + GNU Toolchain      : TOOLCHAIN ?= gnu

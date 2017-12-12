@@ -85,9 +85,7 @@ typedef xQueueHandle sys_mbox_t;
 
 typedef xTaskHandle sys_thread_t;
 
-#elif defined (OS_CONTIKI)  /* FREERTOS */
-#error "Don't supported contiki now"
-#else  /* CONTIKI */
+#else
 #error "unsupported OS"
 #endif /* Other OS Case */
 #else /* ENABLE_OS */

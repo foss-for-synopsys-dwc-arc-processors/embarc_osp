@@ -71,15 +71,6 @@
 
 #endif	/* OS_FREERTOS */
 
-/** OS_CONTIKI   */
-#ifdef OS_CONTIKI
-/** header files need to include */
-#include "contiki.h"
-
-/** global macros that may need */
-#define os_hal_exc_init()
-#endif	/* OS_CONTIKI */
-
 #else /* NO OS */
 
 /** global macros that may need */

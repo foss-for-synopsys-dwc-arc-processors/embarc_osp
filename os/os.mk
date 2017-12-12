@@ -53,16 +53,7 @@ OS_ID = OS_FREERTOS
 COMMON_COMPILE_PREREQUISITES += $(OSES_ROOT_DIR)/freertos/freertos.mk
 include $(OSES_ROOT_DIR)/freertos/freertos.mk
 else #end of freertos#
-ifeq ($(OS_SEL), contiki)
-#os definition
-OS_ID = OS_CONTIKI
-CONTIKI = $(OSES_ROOT_DIR)/contiki
-#os usage settings
-COMMON_COMPILE_PREREQUISITES += $(OSES_ROOT_DIR)/contiki/contiki.mk
-include $(OSES_ROOT_DIR)/contiki/contiki.mk
-else
 ## OTHER CASE ##
-endif #end of contiki
 endif #end of freertos
 
 ##
