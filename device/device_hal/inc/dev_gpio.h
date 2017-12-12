@@ -77,6 +77,84 @@
 /** @} */
 
 /**
+ * \defgroup	DEVICE_HAL_GPIO_PINDEF		GPIO Pin definitions
+ * \ingroup	DEVICE_HAL_GPIO
+ * \brief	Define macros to indicate gpio pins
+ * @{
+ */
+/** Macro to define a gpio pin, start from 0 */
+#define DEV_GPIO_PIN_DEF(pin)			((pin)&0xFFFF)
+/** gpio pin defintions */
+typedef enum dev_gpio_pin {
+	DEV_GPIO_PIN_0 = 0,		/*!< GPIO Pin 0  */
+	DEV_GPIO_PIN_1,			/*!< GPIO Pin 1  */
+	DEV_GPIO_PIN_2,			/*!< GPIO Pin 2  */
+	DEV_GPIO_PIN_3,			/*!< GPIO Pin 3  */
+	DEV_GPIO_PIN_4,			/*!< GPIO Pin 4  */
+	DEV_GPIO_PIN_5,			/*!< GPIO Pin 5  */
+	DEV_GPIO_PIN_6,			/*!< GPIO Pin 6  */
+	DEV_GPIO_PIN_7,			/*!< GPIO Pin 7  */
+	DEV_GPIO_PIN_8,			/*!< GPIO Pin 8  */
+	DEV_GPIO_PIN_9,			/*!< GPIO Pin 9  */
+	DEV_GPIO_PIN_10,		/*!< GPIO Pin 10 */
+	DEV_GPIO_PIN_11,		/*!< GPIO Pin 11 */
+	DEV_GPIO_PIN_12,		/*!< GPIO Pin 12 */
+	DEV_GPIO_PIN_13,		/*!< GPIO Pin 13 */
+	DEV_GPIO_PIN_14,		/*!< GPIO Pin 14 */
+	DEV_GPIO_PIN_15,		/*!< GPIO Pin 15 */
+	DEV_GPIO_PIN_16,		/*!< GPIO Pin 16 */
+	DEV_GPIO_PIN_17,		/*!< GPIO Pin 17 */
+	DEV_GPIO_PIN_18,		/*!< GPIO Pin 18 */
+	DEV_GPIO_PIN_19,		/*!< GPIO Pin 19 */
+	DEV_GPIO_PIN_20,		/*!< GPIO Pin 20 */
+	DEV_GPIO_PIN_21,		/*!< GPIO Pin 21 */
+	DEV_GPIO_PIN_22,		/*!< GPIO Pin 22 */
+	DEV_GPIO_PIN_23,		/*!< GPIO Pin 23 */
+	DEV_GPIO_PIN_24,		/*!< GPIO Pin 24 */
+	DEV_GPIO_PIN_25,		/*!< GPIO Pin 25 */
+	DEV_GPIO_PIN_26,		/*!< GPIO Pin 26 */
+	DEV_GPIO_PIN_27,		/*!< GPIO Pin 27 */
+	DEV_GPIO_PIN_28,		/*!< GPIO Pin 28 */
+	DEV_GPIO_PIN_29,		/*!< GPIO Pin 29 */
+	DEV_GPIO_PIN_30,		/*!< GPIO Pin 30 */
+	DEV_GPIO_PIN_31,		/*!< GPIO Pin 31 */
+	DEV_GPIO_PIN_NC = 0xFFFFFFFF	/*!< GPIO Pin Not Connected */
+} DEV_GPIO_PIN;
+
+/** Macro to define a gpio port, start from 0 */
+#define DEV_GPIO_PORT_DEF(port)			((port)&0xFFFF)
+/** Macro to define a gpio port-pin(such as P0.0 or PA.0, start from 0 */
+#define DEV_GPIO_PORT_PIN_DEF(port, pin)	(((port)<<16)|((pin)&0xFFFF))
+
+/** gpio port defintions */
+typedef enum dev_gpio_port {
+	DEV_GPIO_PORT_0 = 0,		/*!< GPIO Port 0  */
+	DEV_GPIO_PORT_1,		/*!< GPIO Port 1  */
+	DEV_GPIO_PORT_2,		/*!< GPIO Port 2  */
+	DEV_GPIO_PORT_3,		/*!< GPIO Port 3  */
+	DEV_GPIO_PORT_4,		/*!< GPIO Port 4  */
+	DEV_GPIO_PORT_5,		/*!< GPIO Port 5  */
+	DEV_GPIO_PORT_6,		/*!< GPIO Port 6  */
+	DEV_GPIO_PORT_7,		/*!< GPIO Port 7  */
+	DEV_GPIO_PORT_8,		/*!< GPIO Port 8  */
+	DEV_GPIO_PORT_9,		/*!< GPIO Port 9  */
+	DEV_GPIO_PORT_10,		/*!< GPIO Port 10 */
+	DEV_GPIO_PORT_A = 0,		/*!< GPIO Port A  */
+	DEV_GPIO_PORT_B = 1,		/*!< GPIO Port B  */
+	DEV_GPIO_PORT_C = 2,		/*!< GPIO Port C  */
+	DEV_GPIO_PORT_D = 3,		/*!< GPIO Port D  */
+	DEV_GPIO_PORT_E = 4,		/*!< GPIO Port E  */
+	DEV_GPIO_PORT_F = 5,		/*!< GPIO Port F  */
+	DEV_GPIO_PORT_G = 6,		/*!< GPIO Port G  */
+	DEV_GPIO_PORT_H = 7,		/*!< GPIO Port H  */
+	DEV_GPIO_PORT_I = 8,		/*!< GPIO Port I  */
+	DEV_GPIO_PORT_J = 9,		/*!< GPIO Port J  */
+	DEV_GPIO_PORT_K = 10,		/*!< GPIO Port K  */
+	DEV_GPIO_PORT_NC = 0xFFFFFFFF	/*!< GPIO Port Not Connected */
+} DEV_GPIO_PORT;
+/** @} */
+
+/**
  * \defgroup	DEVICE_HAL_GPIO_CTRLCMD		GPIO Device Control Commands
  * \ingroup	DEVICE_HAL_GPIO
  * \brief	Definitions for gpio control command, used in \ref dev_gpio::gpio_control "GPIO IO Control"
@@ -167,6 +245,13 @@
  * - Return value explanation :
  */
 #define GPIO_CMD_GET_BIT_MTHD				DEV_SET_SYSCMD(9)
+/**
+ * Toggle GPIO output of the masked bits(pins).
+ * - Param type : uint32_t
+ * - Param usage : 1 in each bit will be masked.
+ * - Return value explanation :
+ */
+#define GPIO_CMD_TOGGLE_BITS				DEV_SET_SYSCMD(10)
 /* @} */
 
 /**
@@ -212,12 +297,12 @@ typedef enum gpio_int_polarity {
 	GPIO_INT_ACTIVE_LOW   = 0, /*!< Active low for level-sensitive interrupt for 1 bit */
 	GPIO_INT_FALLING_EDGE = 0, /*!< Falling-edge for edge-sensitive interrupt for 1 bit */
 	GPIO_INT_ACTIVE_HIGH =  1, /*!< Active high for level-sensitive interrupt for 1 bit */
-	GPIO_INI_RISING_EDGE = 1, /*!< Rising-edge for edge-sensitive interrupt for 1 bit */
+	GPIO_INT_RISING_EDGE = 1, /*!< Rising-edge for edge-sensitive interrupt for 1 bit */
 	/* Polartiy for all 32 bits */
 	GPIO_INT_ACTIVE_LOW_ALL   = 0, /*!< Active low for level-sensitive interrupt for all bits */
 	GPIO_INT_FALLING_EDGE_ALL = 0, /*!< Falling-edge for edge-sensitive interrupt for all bits */
 	GPIO_INT_ACTIVE_HIGH_ALL =  0XFFFFFFFF, /*!< Active high for level-sensitive interrupt for all bits */
-	GPIO_INI_RISING_EDGE_ALL = 0XFFFFFFFF /*!< Rising-edge for edge-sensitive interrupt for all bits */
+	GPIO_INT_RISING_EDGE_ALL = 0XFFFFFFFF /*!< Rising-edge for edge-sensitive interrupt for all bits */
 } GPIO_INT_POLARITY;
 
 /* For bit settings */
@@ -228,7 +313,7 @@ typedef enum gpio_int_polarity {
 /** Set bit polarity of gpio into falling edge */
 #define GPIO_INT_BIT_POL_FALL_EDGE(bit_ofs)	(GPIO_INT_FALLING_EDGE<<(bit_ofs))
 /** Set bit polarity of gpio into rising edge */
-#define GPIO_INT_BIT_POL_RISE_EDGE(bit_ofs)	(GPIO_INI_RISING_EDGE<<(bit_ofs))
+#define GPIO_INT_BIT_POL_RISE_EDGE(bit_ofs)	(GPIO_INT_RISING_EDGE<<(bit_ofs))
 
 /* For bits settings */
 /** Set polarity of masked bits of gpio into active low */
@@ -238,7 +323,7 @@ typedef enum gpio_int_polarity {
 /** Set polarity of masked bits of gpio into falling edge */
 #define GPIO_INT_BITS_POL_FALL_EDGE(bit_mask)	(GPIO_INT_FALLING_EDGE_ALL&(bit_mask))
 /** Set polarity of masked bits of gpio into rising edge */
-#define GPIO_INT_BITS_POL_RISE_EDGE(bit_mask)	(GPIO_INI_RISING_EDGE_ALL&(bit_mask))
+#define GPIO_INT_BITS_POL_RISE_EDGE(bit_mask)	(GPIO_INT_RISING_EDGE_ALL&(bit_mask))
 
 /* GPIO Interrupt Debounce Related Definitions */
 
@@ -309,6 +394,7 @@ typedef struct dev_gpio_info {
 	uint32_t opn_cnt;	/*!< gpio open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
 	uint32_t direction;	/*!< each bit direction of this GPIO, default all \ref GPIO_DIR_INPUT "input" for first open */
 	uint32_t method;	/*!< int/poll method for each bit of GPIO, 0 for poll, 1 for interrupt, default all \ref DEV_POLL_METHOD "poll" for first open */
+	uint32_t bitofs;	/*!< current in response interrupt pin offset */
 	void * extra;		/*!< a extra pointer to get hook to applications which should not used by bsp developer,
 					this should be NULL for first open and you can \ref DEV_GPIO_INFO_SET_EXTRA_OBJECT "set"
 					or \ref DEV_GPIO_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */

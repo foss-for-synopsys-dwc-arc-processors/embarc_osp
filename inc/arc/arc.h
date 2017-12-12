@@ -455,11 +455,18 @@
 #define AUX_IDENTITY			(0x4) 	/*!< identity register */
 #define AUX_DMP_PERIPHERAL		(0x20a) /*!< peripheral memory region */
 #define AUX_XFLAGS			(0x44f) /*!< user extension flags register */
-#define AUX_MCIP_CMD			(0x600) /*!< \todo definition is to be added. */
-#define AUX_MCIP_WDATA			(0x601) /*!< \todo definition is to be added. */
-#define AUX_MCIP_READBACK		(0x602) /*!< \todo definition is to be added. */
-#define AUX_SMART_CONTROL		(0x700) /*!< \todo definition is to be added. */
-#define AUX_SMART_DATA			(0x701) /*!< \todo definition is to be added. */
+
+#define AUX_MCIP_CMD			(0x600) /*!< ARConnect Command Register, CONNECT_CMD */
+#define AUX_MCIP_WDATA			(0x601) /*!< ARConnect Write Data Register, CONNECT_WDATA */
+#define AUX_MCIP_READBACK		(0x602) /*!< ARConnect Read Data Register, CONNECT_READBACK */
+
+#define AUX_CONNECT_CMD			(0x600) /*!< ARConnect Command Register, CONNECT_CMD */
+#define AUX_CONNECT_WDATA		(0x601) /*!< ARConnect Write Data Register, CONNECT_WDATA */
+#define AUX_CONNECT_READBACK		(0x602) /*!< ARConnect Read Data Register, CONNECT_READBACK */
+
+#define AUX_SMART_CONTROL		(0x700) /*!< SmaRT Control Register, SMART_CONTROL */
+#define AUX_SMART_DATA			(0x701) /*!< SmaRT Data Register, SMART_DATA */
+
 
 /** @} */
 

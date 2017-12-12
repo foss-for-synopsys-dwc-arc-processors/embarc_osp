@@ -106,12 +106,20 @@ const uint8_t dw_uart_stopbits[] = {
 /** test whether uart is ready to send, 1 ready, 0 not ready */
 Inline int32_t dw_uart_putready(DW_UART_REG *uart_reg_ptr)
 {
-	return ((uart_reg_ptr->USR & DW_UART_USR_TFNF) != 0);
+	if (uart_reg_ptr->CPR & DW_UART_CPR_FIFO_STAT) {
+		return ((uart_reg_ptr->USR & DW_UART_USR_TFNF) != 0);
+	} else {
+		return ((uart_reg_ptr->LSR & DW_UART_LSR_TXD_EMPTY) != 0);
+	}
 }
 /** test whether uart is ready to receive, 1 ready, 0 not ready */
 Inline int32_t dw_uart_getready(DW_UART_REG *uart_reg_ptr)
 {
-	return ((uart_reg_ptr->USR & DW_UART_USR_RFNE) != 0);
+	if (uart_reg_ptr->CPR & DW_UART_CPR_FIFO_STAT) {
+		return ((uart_reg_ptr->USR & DW_UART_USR_RFNE) != 0);
+	} else {
+		return ((uart_reg_ptr->LSR & DW_UART_LSR_DR) != 0);
+	}
 }
 /** write char to uart send fifo */
 Inline void dw_uart_putchar(DW_UART_REG *uart_reg_ptr, char chr)
@@ -333,8 +341,10 @@ static void dw_uart_flush_output(DEV_UART_INFO *uart_info_ptr)
 		uart_info_ptr->tx_buf.len = 0;
 		uart_info_ptr->tx_buf.ofs = 0;
 	}
-	/* wait until transmit fifo is empty */
-	while ((uart_reg_ptr->USR & DW_UART_USR_TFE) == 0);
+	if (uart_reg_ptr->CPR & DW_UART_CPR_FIFO_STAT) {
+		/* wait until transmit fifo is empty */
+		while ((uart_reg_ptr->USR & DW_UART_USR_TFE) == 0);
+	}
 	while (uart_reg_ptr->USR & DW_UART_USR_BUSY);
 }
 
@@ -362,7 +372,9 @@ static void dw_uart_dis_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 	}
 	if (uart_ctrl_ptr->int_status & DW_UART_GINT_ENABLE) {
 		if ((uart_ctrl_ptr->int_status & (DW_UART_RXINT_ENABLE|DW_UART_TXINT_ENABLE)) == 0) {
-			int_disable(uart_ctrl_ptr->intno);
+			if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
+				int_disable(uart_ctrl_ptr->intno);
+			}
 			uart_ctrl_ptr->int_status &= ~DW_UART_GINT_ENABLE;
 		}
 	}
@@ -393,7 +405,9 @@ static void dw_uart_ena_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 	if ((uart_ctrl_ptr->int_status & DW_UART_GINT_ENABLE) == 0) {
 		if (uart_ctrl_ptr->int_status & (DW_UART_RXINT_ENABLE|DW_UART_TXINT_ENABLE)) {
 			uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
-			int_enable(uart_ctrl_ptr->intno);
+			if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
+				int_enable(uart_ctrl_ptr->intno);
+			}
 		}
 	}
 }
@@ -406,9 +420,13 @@ static void dw_uart_enable_interrupt(DEV_UART_INFO *uart_info_ptr)
 {
 	DW_UART_CTRL *uart_ctrl_ptr = (DW_UART_CTRL_PTR)(uart_info_ptr->uart_ctrl);
 
-	int_handler_install(uart_ctrl_ptr->intno, uart_ctrl_ptr->dw_uart_int_handler);
-	uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
-	int_enable(uart_ctrl_ptr->intno);	/** enable uart interrupt */
+	if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
+		int_handler_install(uart_ctrl_ptr->intno, uart_ctrl_ptr->dw_uart_int_handler);
+		uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
+		int_enable(uart_ctrl_ptr->intno);	/** enable uart interrupt */
+	} else {
+		uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
+	}
 }
 /**
  * \brief	disable designware uart interrupt
@@ -422,7 +440,9 @@ static void dw_uart_disable_interrupt(DEV_UART_INFO *uart_info_ptr)
 	dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_SND);
 	dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_RCV);
 	/* disable uart interrupt */
-	int_disable(uart_ctrl_ptr->intno);
+	if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
+		int_disable(uart_ctrl_ptr->intno);
+	}
 	uart_ctrl_ptr->int_status &= ~(DW_UART_GINT_ENABLE|DW_UART_TXINT_ENABLE|DW_UART_RXINT_ENABLE);
 }
 
@@ -556,8 +576,13 @@ int32_t dw_uart_open (DEV_UART *uart_obj, uint32_t baud)
 	DW_UART_REG *uart_reg_ptr = (DW_UART_REG_PTR)(uart_ctrl_ptr->dw_uart_regbase);
 
 	/* Get FIFO Length */
-	uart_ctrl_ptr->tx_fifo_len = dw_uart_get_txfifo_len(uart_reg_ptr);
-	uart_ctrl_ptr->rx_fifo_len = dw_uart_get_rxfifo_len(uart_reg_ptr);
+	if (uart_reg_ptr->CPR & DW_UART_CPR_FIFO_STAT) {
+		uart_ctrl_ptr->tx_fifo_len = dw_uart_get_txfifo_len(uart_reg_ptr);
+		uart_ctrl_ptr->rx_fifo_len = dw_uart_get_rxfifo_len(uart_reg_ptr);
+	} else {
+		uart_ctrl_ptr->tx_fifo_len = 0;
+		uart_ctrl_ptr->rx_fifo_len = 0;
+	}
 
 	/** init uart */
 	uart_info_ptr->baudrate = baud;
@@ -574,7 +599,9 @@ int32_t dw_uart_open (DEV_UART *uart_obj, uint32_t baud)
 	 */
 	dw_uart_disable_interrupt(uart_info_ptr);
 	/** install uart interrupt into system */
-	int_handler_install(uart_ctrl_ptr->intno, uart_ctrl_ptr->dw_uart_int_handler);
+	if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
+		int_handler_install(uart_ctrl_ptr->intno, uart_ctrl_ptr->dw_uart_int_handler);
+	}
 
 	memset(&(uart_info_ptr->tx_buf), 0, sizeof(DEV_BUFFER));
 	memset(&(uart_info_ptr->rx_buf), 0, sizeof(DEV_BUFFER));

@@ -121,6 +121,43 @@
 #define DEV_IN_XFER_ABRT			(1<<6)	/*!< Bit 6 for device in transfer abort state */
 /** @} */
 
+
+/**
+ * \defgroup	DEVICE_HAL_COMMON_DEVID		Common Device ID
+ * \ingroup	DEVICE_HAL_COMMON
+ * \brief	definitions for device id,
+ *	used in GPIO/UART/IIC/SPI/WNIC object identification.
+ * @{
+ */
+typedef enum dev_id {
+	DEV_ID_0 = 0,			/*!< Device ID as 0, which is the first ID */
+	DEV_ID_1 = 1,			/*!< Device ID as 1 */
+	DEV_ID_2 = 2,			/*!< Device ID as 2 */
+	DEV_ID_3 = 3,			/*!< Device ID as 3 */
+	DEV_ID_4 = 4,			/*!< Device ID as 4 */
+	DEV_ID_5 = 5,			/*!< Device ID as 5 */
+	DEV_ID_6 = 6,			/*!< Device ID as 6 */
+	DEV_ID_7 = 7,			/*!< Device ID as 7 */
+	DEV_ID_8 = 8,			/*!< Device ID as 8 */
+	DEV_ID_9 = 9,			/*!< Device ID as 9 */
+	DEV_ID_10 = 10,			/*!< Device ID as 10 */
+	DEV_ID_INV = 0xFFFFFFFF		/*!< Invalid Device ID */
+} DEV_ID;
+/** Device ID definition, start from 0 */
+#define DEV_ID_DEF(id)			(id)
+/** @} */
+
+/**
+ * Invalid Interrupt Vector Number
+ * When interrupt number is set to this value,
+ * all interrupt related function in the device
+ * driver source code shouldn't be called,
+ * that means the interrupt processing maybe done
+ * in outside of device driver, maybe done in the device
+ * object instantiation
+ */
+#define DEV_INTNO_INVALID		(0xFFFFFFFF)
+
 /**
  * \defgroup	DEVICE_HAL_COMMON_DEFCMD	Common Device Defining Command
  * \ingroup	DEVICE_HAL_COMMON

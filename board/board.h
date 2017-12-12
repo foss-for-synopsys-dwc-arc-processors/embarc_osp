@@ -68,7 +68,11 @@
 
 #ifdef BOARD_AXS
 #include "axs/axs.h"
-#endif
+#endif /* BOARD_AXS */
+
+#ifdef BOARD_HSDK
+#include "hsdk/hsdk.h"
+#endif /* BOARD_HSDK */
 
 #endif /* _EMBARC_BOARD_H_ */
 

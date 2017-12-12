@@ -363,6 +363,8 @@ static void dw_spi_hw_init(DW_SPI_CTRL *spi_ctrl_ptr, uint32_t clk_mode, uint32_
 	spi_reg_ptr->TXFTLR = 0;
 	spi_reg_ptr->RXFTLR = 0;
 
+	spi_reg_ptr->RX_SAMPLE_DLY = spi_ctrl_ptr->rx_sampledly;
+
 	dw_spi_enable(spi_reg_ptr);
 }
 
@@ -421,7 +423,9 @@ static int32_t dw_spi_dis_cbr(DEV_SPI_INFO *spi_info_ptr, uint32_t cbrtn)
 	dw_spi_mask_interrupt(spi_ctrl_ptr->dw_spi_regs, DW_SPI_IMR_XFER);
 
 	if (spi_ctrl_ptr->int_status & DW_SPI_GINT_ENABLE) {
-		int_disable(spi_ctrl_ptr->intno);
+		if (spi_ctrl_ptr->intno != DW_SPI_INVALID_INTNO) {
+			int_disable(spi_ctrl_ptr->intno);
+		}
 		spi_ctrl_ptr->int_status &= ~DW_SPI_GINT_ENABLE;
 	}
 
@@ -457,7 +461,9 @@ static int32_t dw_spi_ena_cbr(DEV_SPI_INFO *spi_info_ptr, uint32_t cbrtn)
 
 	if ((spi_ctrl_ptr->int_status & DW_SPI_GINT_ENABLE) == 0) {
 		spi_ctrl_ptr->int_status |= DW_SPI_GINT_ENABLE;
-		int_enable(spi_ctrl_ptr->intno);
+		if (spi_ctrl_ptr->intno != DW_SPI_INVALID_INTNO) {
+			int_enable(spi_ctrl_ptr->intno);
+		}
 	}
 
 error_exit:
@@ -472,9 +478,14 @@ static void dw_spi_enable_interrupt(DEV_SPI_INFO *spi_info_ptr)
 {
 	DW_SPI_CTRL *spi_ctrl_ptr = (DW_SPI_CTRL *)(spi_info_ptr->spi_ctrl);
 
-	int_handler_install(spi_ctrl_ptr->intno, spi_ctrl_ptr->dw_spi_int_handler);
-	spi_ctrl_ptr->int_status |= DW_SPI_GINT_ENABLE;
-	int_enable(spi_ctrl_ptr->intno);	/** enable spi interrupt */
+	if (spi_ctrl_ptr->intno != DW_SPI_INVALID_INTNO) {
+		int_handler_install(spi_ctrl_ptr->intno, spi_ctrl_ptr->dw_spi_int_handler);
+		spi_ctrl_ptr->int_status |= DW_SPI_GINT_ENABLE;
+		/** enable spi interrupt */
+		int_enable(spi_ctrl_ptr->intno);
+	} else {
+		spi_ctrl_ptr->int_status |= DW_SPI_GINT_ENABLE;
+	}
 }
 /**
  * \brief	disable designware spi interrupt
@@ -491,7 +502,9 @@ static void dw_spi_disable_interrupt(DEV_SPI_INFO *spi_info_ptr)
 	/* disable spi interrupt */
 	dw_spi_mask_interrupt(spi_ctrl_ptr->dw_spi_regs, DW_SPI_IMR_XFER);
 	spi_info_ptr->status &= ~DW_SPI_IN_XFER;
-	int_disable(spi_ctrl_ptr->intno);
+	if (spi_ctrl_ptr->intno != DW_SPI_INVALID_INTNO) {
+		int_disable(spi_ctrl_ptr->intno);
+	}
 	spi_ctrl_ptr->int_status &= ~(DW_SPI_GINT_ENABLE);
 }
 
@@ -889,7 +902,9 @@ int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 
 	/** install spi interrupt into system */
 	dw_spi_disable_interrupt(spi_info_ptr);
-	int_handler_install(spi_ctrl_ptr->intno, spi_ctrl_ptr->dw_spi_int_handler);
+	if (spi_ctrl_ptr->intno != DW_SPI_INVALID_INTNO) {
+		int_handler_install(spi_ctrl_ptr->intno, spi_ctrl_ptr->dw_spi_int_handler);
+	}
 	memset(&(spi_info_ptr->xfer), 0, sizeof(DEV_SPI_TRANSFER));
 	memset(&(spi_info_ptr->spi_cbs), 0, sizeof(DEV_SPI_CBS));
 

@@ -62,6 +62,13 @@
 #define DW_IIC_BOTH_SUPPORTED		(DW_IIC_MASTER_SUPPORTED|DW_IIC_SLAVE_SUPPORTED)
 /** @} */
 
+#define DW_IIC_INVALID_INTNO		(DEV_INTNO_INVALID)
+
+enum {
+	DW_IIC_CAP_LOADING_100PF = 0,
+	DW_IIC_CAP_LOADING_400PF
+};
+
 /**
  * \defgroup	DEVICE_DW_IIC_REGSTRUCT		DesignWare IIC Register Structure
  * \ingroup	DEVICE_DW_IIC
@@ -158,6 +165,8 @@ typedef struct dw_iic_buffer {
 typedef struct dw_iic_ctrl {
 	DW_IIC_REG *dw_iic_regs;	/*!< iic device registers */
 	/* Variables which should be set during object implementation */
+	uint32_t ic_clkhz;		/*!< IC clock in HZ */
+	uint32_t ic_caploading;		/*!< I2C Bus cap loading pf */
 	uint32_t support_modes;		/*!< supported iic modes */
 	uint32_t tx_fifo_len;		/*!< transmit fifo length */
 	uint32_t rx_fifo_len;		/*!< receive fifo length */
@@ -175,42 +184,31 @@ typedef struct dw_iic_ctrl {
 } DW_IIC_CTRL, *DW_IIC_CTRL_PTR;
 
 /*!< One possible value for \ref dw_iic_ctrl::retry_cnt */
-#define DW_IIC_MAX_RETRY_COUNT		(100000)
+#define DW_IIC_MAX_RETRY_COUNT			(100000)
 
-#if DW_IIC_USE_IC_CLK_MHZ == 100 /*!< 100MHz */
-/*!< One possible value for \ref dw_iic_ctrl::iic_spklen */
-static const DW_IIC_SPKLEN dw_iic_spklen_const = {5, 1};
+#define DW_IIC_FS_SPKLEN_NS			(50)
+#define DW_IIC_HS_SPKLEN_NS			(10)
 
-/*!< One possible value for \ref dw_iic_ctrl::iic_spklen */
-#if DW_IIC_USE_HS_BUS_LOADING_100PF
-static const DW_IIC_SCL_CNT dw_iic_sclcnt_const = {0x0190, 0x01d6, 0x003c, 0x0082, 0x6, 0x10};
-#else
-static const DW_IIC_SCL_CNT dw_iic_sclcnt_const = {0x0190, 0x01d6, 0x003c, 0x0082, 0xc, 0x20};
-#endif
+#define MIN_DW_IIC_SS_SCL_LCNT(spklen)		((spklen)+7)
+#define MIN_DW_IIC_FS_SCL_LCNT(spklen)		((spklen)+7)
 
-#elif DW_IIC_USE_IC_CLK_MHZ == 50 /* 50MHz */
-/*!< One possible value for \ref dw_iic_ctrl::iic_spklen */
-static const DW_IIC_SPKLEN dw_iic_spklen_const = {5, 1};
+#define MIN_DW_IIC_SS_SCL_HCNT(spklen)		((spklen)+5)
+#define MIN_DW_IIC_FS_SCL_HCNT(spklen)		((spklen)+5)
 
-/*!< One possible value for \ref dw_iic_ctrl::iic_spklen */
-#if DW_IIC_USE_HS_BUS_LOADING_100PF
-static const DW_IIC_SCL_CNT dw_iic_sclcnt_const = {0x00c8, 0x00eb, 0x001e, 0x0041, 0x6, 0x8};
-#else
-static const DW_IIC_SCL_CNT dw_iic_sclcnt_const = {0x00c8, 0x00eb, 0x001e, 0x0041, 0x6, 0x10};
-#endif
+#define MIN_DW_IIC_HS_SCL_LCNT(spklen)		((spklen)+7)
+#define MIN_DW_IIC_HS_SCL_HCNT(spklen)		((spklen)+5)
 
-#else /* Default 100MHz */
-/*!< One possible value for \ref dw_iic_ctrl::iic_spklen */
-static const DW_IIC_SPKLEN dw_iic_spklen_const = {5, 1};
+#define MIN_DW_IIC_SS_HIGH_TIME_NS		(4000)
+#define MIN_DW_IIC_SS_LOW_TIME_NS		(4700)
 
-/*!< One possible value for \ref dw_iic_ctrl::iic_spklen */
-#if DW_IIC_USE_HS_BUS_LOADING_100PF
-static const DW_IIC_SCL_CNT dw_iic_sclcnt_const = {0x0190, 0x01d6, 0x003c, 0x0082, 0x6, 0x10};
-#else
-static const DW_IIC_SCL_CNT dw_iic_sclcnt_const = {0x0190, 0x01d6, 0x003c, 0x0082, 0xc, 0x20};
-#endif
+#define MIN_DW_IIC_FS_HIGH_TIME_NS		(600)
+#define MIN_DW_IIC_FS_LOW_TIME_NS		(1300)
 
-#endif
+#define MIN_DW_IIC_HS_100PF_HIGH_TIME_NS	(60)
+#define MIN_DW_IIC_HS_100PF_LOW_TIME_NS		(160)
+
+#define MIN_DW_IIC_HS_400PF_HIGH_TIME_NS	(120)
+#define MIN_DW_IIC_HS_400PF_LOW_TIME_NS		(320)
 
 #ifdef __cplusplus
 extern "C" {

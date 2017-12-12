@@ -101,6 +101,8 @@ typedef volatile struct dw_uart_reg {
 #define DW_UART_TXINT_ENABLE	(1<<1)		/*!< designware interrupt enabled for control transmit process */
 #define DW_UART_RXINT_ENABLE	(1<<2)		/*!< designware interrupt enabled for control transmit process */
 
+#define DW_UART_INVALID_INTNO		(DEV_INTNO_INVALID)
+
 /**
  * \brief	DesignWare UART control structure definition
  * \details	implement of dev_uart_info::uart_ctrl

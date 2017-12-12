@@ -62,6 +62,8 @@
 /*!< Support Designware SPI Both Master and Slave Mode */
 #define DW_SPI_BOTH_SUPPORTED		(DW_SPI_MASTER_SUPPORTED|DW_SPI_SLAVE_SUPPORTED)
 
+#define DW_SPI_INVALID_INTNO		(DEV_INTNO_INVALID)
+
 /**
  * \defgroup	DEVICE_DW_SPI_REGSTRUCT		DesignWare SPI Register Structure
  * \ingroup	DEVICE_DW_SPI
@@ -131,6 +133,10 @@ typedef volatile struct dw_spi_reg
 	/*!< Data Register */
 	/*!< SPI DATA Register for both Read and Write  (0x60) */
 	uint32_t DATAREG;
+	/*!< More SPI DATA Register for both Read and Write  (0x64-0xEC) */
+	uint32_t DRS[35];
+	/** 0xF0, RxD Sample Delay Register */
+	uint32_t RX_SAMPLE_DLY;
 } DW_SPI_REG, *DW_SPI_REG_PTR;
 /** @} */
 
@@ -154,6 +160,7 @@ typedef struct dw_spi_ctrl {
 	uint32_t support_modes;		/*!< supported spi modes */
 	uint32_t intno;			/*!< interrupt no */
 	uint32_t dw_apb_bus_freq;	/*!< spi ip apb bus frequency */
+	uint32_t rx_sampledly;		/*!< RxD Sample Delay */
 	uint32_t tx_fifo_len;		/*!< transmit fifo length */
 	uint32_t rx_fifo_len;		/*!< receive fifo length */
 	INT_HANDLER dw_spi_int_handler;	/*!< spi interrupt handler */

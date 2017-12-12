@@ -66,6 +66,9 @@
  * \defgroup	DEVICE_HAL_IIC_CFG	IIC Related Configurations
  * \ingroup	DEVICE_HAL_IIC
  * \brief	Macros for IIC device related configurations.
+ * During IIC device during implementation, it is recommended that
+ * when user set iic speed to a speed maybe not supported in your
+ * iic device, device driver will set to a supported slower speed.
  * @{
  */
 /** IIC Bus possible speed modes */

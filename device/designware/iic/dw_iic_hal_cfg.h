@@ -70,13 +70,5 @@
 #define DW_IIC_CALC_FIFO_LEN_ENABLE		(1)	/*!< Default enable calculate fifo length */
 #endif
 
-#ifndef DW_IIC_USE_IC_CLK_MHZ
-#define DW_IIC_USE_IC_CLK_MHZ			(50)	/*!< Default use 50MHz IC_CLK */
-#endif
-
-#ifndef DW_IIC_USE_HS_BUS_LOADING_100PF
-#define DW_IIC_USE_HS_BUS_LOADING_100PF		(1)	/*!< Use bus loading 100pf */
-#endif
-
 #endif /* _DEVICE_DW_IIC_HAL_CFG_H_ */
 

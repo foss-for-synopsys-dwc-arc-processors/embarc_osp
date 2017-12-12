@@ -44,10 +44,10 @@
 #include "dev_gpio.h"
 #include "arc_exception.h"
 
-#define DW_GPIO_PORT_A	(0x00)
-#define DW_GPIO_PORT_B	(0x01)
-#define DW_GPIO_PORT_C	(0x02)
-#define DW_GPIO_PORT_D	(0x03)
+#define DW_GPIO_PORT_A				(0)
+#define DW_GPIO_PORT_B				(1)
+#define DW_GPIO_PORT_C				(2)
+#define DW_GPIO_PORT_D				(3)
 
 #define DW_GPIO_INT_ACT_LOW			GPIO_INT_ACTIVE_LOW
 #define DW_GPIO_INT_ACT_HIGH			GPIO_INT_ACTIVE_HIGH
@@ -63,6 +63,8 @@
 #define DW_GPIO_MASK_ALL			(0xffffffff)
 #define DW_GPIO_INPUT_ALL			(0x0)
 #define DW_GPIO_OUTPUT_ALL			(0xffffffff)
+
+#define DW_GPIO_INVALID_INTNO			(DEV_INTNO_INVALID)
 
 /**
  * \name	DesignWare GPIO Register Structure
@@ -134,6 +136,7 @@ extern int32_t dw_gpio_read(DEV_GPIO *gpio_obj, uint32_t *val, uint32_t mask);
 extern int32_t dw_gpio_write(DEV_GPIO *gpio_obj, uint32_t val, uint32_t mask);
 extern int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param);
 extern int32_t dw_gpio_isr_handler(DEV_GPIO *gpio_obj, void *ptr);
+extern int32_t dw_gpio_bit_isr_handler(DEV_GPIO *gpio_obj, uint32_t bitofs, void *ptr);
 
 #ifdef __cplusplus
 }

@@ -352,6 +352,12 @@ typedef struct dev_spi_cbs {
 } DEV_SPI_CBS, *DEV_SPI_CBS_PTR;
 /** @} */
 
+/**
+ * \defgroup	DEVICE_HAL_SPI_CLK_MODE	SPI Clock Mode
+ * \ingroup	DEVICE_HAL_SPI
+ * \brief	spi clock mode settings
+ * @{
+ */
 /** SPI Clock Mode */
 typedef enum spi_clk_mode {
 	SPI_CPOL_0_CPHA_0 = 0,	/*!< Inactive state of serial clock is low, serial clock toggles in middle of first data bit */
@@ -365,7 +371,55 @@ typedef enum spi_clk_mode {
 	SPI_CLK_MODE_3    = SPI_CPOL_1_CPHA_1	/*!< Equal to \ref SPI_CPOL_1_CPHA_1 */
 } SPI_CLK_MODE;
 
-#define SPI_CLK_MODE_DEFAULT	SPI_CPOL_0_CPHA_0	/*!< Default SPI device clock mode */
+typedef SPI_CLK_MODE			DEV_SPI_CLK_MODE;
+
+/*!< Default SPI device clock mode */
+#define SPI_CLK_MODE_DEFAULT		SPI_CPOL_0_CPHA_0
+/** @} */
+
+/**
+ * \defgroup	DEVICE_HAL_SPI_SLAVE_SELECT	SPI Slave Select Line
+ * \ingroup	DEVICE_HAL_SPI
+ * \brief	spi slave select line definition
+ * @{
+ */
+/** SPI Slave Select Line, start from 0 */
+#define DEV_SPI_CS_LINE_DEF(line)		(line)
+typedef enum dev_spi_cs_line {
+	DEV_SPI_CS_LINE_0 = 0,		/*!< SPI slave select line 0  */
+	DEV_SPI_CS_LINE_1,		/*!< SPI slave select line 1  */
+	DEV_SPI_CS_LINE_2,		/*!< SPI slave select line 2  */
+	DEV_SPI_CS_LINE_3,		/*!< SPI slave select line 3  */
+	DEV_SPI_CS_LINE_4,		/*!< SPI slave select line 4  */
+	DEV_SPI_CS_LINE_5,		/*!< SPI slave select line 5  */
+	DEV_SPI_CS_LINE_6,		/*!< SPI slave select line 6  */
+	DEV_SPI_CS_LINE_7,		/*!< SPI slave select line 7  */
+	DEV_SPI_CS_LINE_8,		/*!< SPI slave select line 8  */
+	DEV_SPI_CS_LINE_9,		/*!< SPI slave select line 9  */
+	DEV_SPI_CS_LINE_10,		/*!< SPI slave select line 10 */
+	DEV_SPI_CS_LINE_11,		/*!< SPI slave select line 11 */
+	DEV_SPI_CS_LINE_12,		/*!< SPI slave select line 12 */
+	DEV_SPI_CS_LINE_13,		/*!< SPI slave select line 13 */
+	DEV_SPI_CS_LINE_14,		/*!< SPI slave select line 14 */
+	DEV_SPI_CS_LINE_15,		/*!< SPI slave select line 15 */
+	DEV_SPI_CS_LINE_16,		/*!< SPI slave select line 16 */
+	DEV_SPI_CS_LINE_17,		/*!< SPI slave select line 17 */
+	DEV_SPI_CS_LINE_18,		/*!< SPI slave select line 18 */
+	DEV_SPI_CS_LINE_19,		/*!< SPI slave select line 19 */
+	DEV_SPI_CS_LINE_20,		/*!< SPI slave select line 20 */
+	DEV_SPI_CS_LINE_21,		/*!< SPI slave select line 21 */
+	DEV_SPI_CS_LINE_22,		/*!< SPI slave select line 22 */
+	DEV_SPI_CS_LINE_23,		/*!< SPI slave select line 23 */
+	DEV_SPI_CS_LINE_24,		/*!< SPI slave select line 24 */
+	DEV_SPI_CS_LINE_25,		/*!< SPI slave select line 25 */
+	DEV_SPI_CS_LINE_26,		/*!< SPI slave select line 26 */
+	DEV_SPI_CS_LINE_27,		/*!< SPI slave select line 27 */
+	DEV_SPI_CS_LINE_28,		/*!< SPI slave select line 28 */
+	DEV_SPI_CS_LINE_29,		/*!< SPI slave select line 29 */
+	DEV_SPI_CS_LINE_30,		/*!< SPI slave select line 30 */
+	DEV_SPI_CS_LINE_31		/*!< SPI slave select line 31 */
+} DEV_SPI_CS_LINE;
+/** @} */
 
 /**
  * \defgroup	DEVICE_HAL_SPI_DEVSTRUCT	SPI Device Structure

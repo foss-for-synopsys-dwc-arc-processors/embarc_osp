@@ -197,6 +197,21 @@ static void dw_gpio_write_dr(DW_GPIO_PORT_PTR port, uint32_t bit_mask, uint32_t 
 	port->regs->SWPORTS[port->no].DR = temp_reg;
 }
 
+static void dw_gpio_toggle_dr(DW_GPIO_PORT_PTR port, uint32_t bit_mask)
+{
+	uint32_t temp_reg1, temp_reg2;
+
+	temp_reg1 = port->regs->SWPORTS[port->no].DR;
+	// save unmasked bits value
+	temp_reg2 = temp_reg1 & (~bit_mask);
+	// toggle masked bits value
+	temp_reg1 = (~temp_reg1) & bit_mask;
+	// combine both masked and unmasked bits
+	temp_reg1 |= temp_reg2;
+
+	port->regs->SWPORTS[port->no].DR = temp_reg1;
+}
+
 static void dw_gpio_write_dir(DW_GPIO_PORT_PTR port, uint32_t bit_mask, uint32_t val)
 {
 	uint32_t temp_reg;
@@ -251,8 +266,10 @@ int32_t dw_gpio_open(DEV_GPIO *gpio_obj, uint32_t dir)
 		dw_gpio_int_disable(port, DW_GPIO_MASK_ALL);
 		dw_gpio_int_unmask(port, DW_GPIO_MASK_ALL);
 		/* install gpio interrupt handler */
-		int_handler_install(port->intno, port->int_handler);
-		int_disable(port->intno);
+		if (port->intno != DW_GPIO_INVALID_INTNO) { // Handle Bit ISR 1-1 map to vector table
+			int_handler_install(port->intno, port->int_handler);
+			int_disable(port->intno);
+		}
 		/** Set int type, int polarity and debounce configuration to default settings of device gpio */
 		dw_gpio_set_int_cfg(port, (DEV_GPIO_INT_CFG *)(&gpio_int_cfg_default));
 		port_info_ptr->method = dw_gpio_read_mthd(port);
@@ -264,6 +281,7 @@ int32_t dw_gpio_open(DEV_GPIO *gpio_obj, uint32_t dir)
 
 	port_info_ptr->direction = dir;
 	port_info_ptr->extra = NULL;
+	port_info_ptr->bitofs = 0;
 
 error_exit:
 	return ercd;
@@ -285,13 +303,16 @@ int32_t dw_gpio_close(DEV_GPIO *gpio_obj)
 	DW_GPIO_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_OK);
 
 	port_info_ptr->opn_cnt --;
+	port_info_ptr->bitofs = 0;
 	if (port_info_ptr->opn_cnt == 0) {
 		dw_gpio_write_dr(port, port->valid_bit_mask, 0);
 		dw_gpio_write_dir(port, port->valid_bit_mask, 0);
 		if (port->no == DW_GPIO_PORT_A) {
 			dw_gpio_int_clear(port, DW_GPIO_MASK_ALL);
 			dw_gpio_int_disable(port, DW_GPIO_MASK_ALL);
-			int_disable(port->intno);
+			if (port->intno != DW_GPIO_INVALID_INTNO) {
+				int_disable(port->intno);
+			}
 		}
 
 		port_info_ptr->direction = 0;
@@ -376,6 +397,11 @@ int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param)
 		DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
 		port_info_ptr->direction = dw_gpio_read_dir(port);
 		*((int32_t *)param) = port_info_ptr->direction;
+	} else if (ctrl_cmd == GPIO_CMD_TOGGLE_BITS) {
+		val32 = (uint32_t)param;
+		// Only mask the output bits
+		val32 &= port_info_ptr->direction;
+		dw_gpio_toggle_dr(port, val32);
 	} else {
 		DW_GPIO_CHECK_EXP(port->no == DW_GPIO_PORT_A, E_NOSPT);
 		/* output pin cannot be used as interrupt */
@@ -417,7 +443,9 @@ int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param)
 				dw_gpio_int_enable(port, val32);
 				port_info_ptr->method = dw_gpio_read_mthd(port);
 				if (port_info_ptr->method) {
-					int_enable(port->intno);
+					if (port->intno != DW_GPIO_INVALID_INTNO) {
+						int_enable(port->intno);
+					}
 				}
 				break;
 			case GPIO_CMD_DIS_BIT_INT:
@@ -425,7 +453,9 @@ int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param)
 				dw_gpio_int_disable(port, val32);
 				port_info_ptr->method = dw_gpio_read_mthd(port);
 				if (port_info_ptr->method == 0) {
-					int_disable(port->intno);
+					if (port->intno != DW_GPIO_INVALID_INTNO) {
+						int_disable(port->intno);
+					}
 				}
 				break;
 			case GPIO_CMD_GET_BIT_MTHD:
@@ -470,11 +500,51 @@ int32_t dw_gpio_isr_handler(DEV_GPIO *gpio_obj, void *ptr)
 	for (i=0; i<max_int_bit_count; i++) {
 		if (gpio_bit_isr_state & (1<<i)) {
 			/* this bit interrupt enabled */
+			port_info_ptr->bitofs = i;
 			if (port->gpio_bit_isr->int_bit_handler_ptr[i]) {
 				port->gpio_bit_isr->int_bit_handler_ptr[i](gpio_obj);
 			}
 			dw_gpio_int_clear(port, (1<<i)); /** clear this bit interrupt */
 		}
+	}
+
+error_exit:
+	return ercd;
+}
+
+/** designware gpio bit interrupt process */
+int32_t dw_gpio_bit_isr_handler(DEV_GPIO *gpio_obj, uint32_t bitofs, void *ptr)
+{
+	int32_t ercd = E_OK;
+	DEV_GPIO_INFO_PTR port_info_ptr = &(gpio_obj->gpio_info);
+
+	/* START ERROR CHECK */
+	VALID_CHK_GPIO_INFO_OBJECT(port_info_ptr);
+	/* END OF ERROR CHECK */
+
+	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+	DW_GPIO_CHECK_EXP(port->no == DW_GPIO_PORT_A, E_NOSPT);
+
+	uint32_t gpio_bit_isr_state;
+	uint32_t max_int_bit_count = 0;
+
+	/** read interrupt status */
+	gpio_bit_isr_state = dw_gpio_int_read_status(port);
+
+	if (port->gpio_bit_isr) {
+		max_int_bit_count = (port->gpio_bit_isr->int_bit_max_cnt);
+		if (bitofs < max_int_bit_count) {
+			if (gpio_bit_isr_state & (1<<bitofs)) {
+				/* this bit interrupt enabled */
+				port_info_ptr->bitofs = bitofs;
+				if (port->gpio_bit_isr->int_bit_handler_ptr[bitofs]) {
+					port->gpio_bit_isr->int_bit_handler_ptr[bitofs](gpio_obj);
+				}
+				dw_gpio_int_clear(port, (1<<bitofs)); /** clear this bit interrupt */
+			}
+		}
+	} else {
+		dw_gpio_int_clear(port, gpio_bit_isr_state);
 	}
 
 error_exit:

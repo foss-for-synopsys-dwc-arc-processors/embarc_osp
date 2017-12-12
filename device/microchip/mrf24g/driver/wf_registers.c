@@ -45,6 +45,7 @@
 //==============================================================================
 //                                  INCLUDES
 //==============================================================================
+#include <stdlib.h>
 #include "wf_dev_hal.h"
 
 #include "./inc/shared/wf_universal_driver.h"
@@ -59,7 +60,7 @@
 static uint8_t g_txBuf[3];
 static uint8_t g_rxBuf[3];
 
-static DEV_SPI_TRANSFER wf_spi_tsf_cmd, wf_spi_tsf_data;
+static DEV_SPI_TRANSFER wf_spi_tsf_cmd;
 
 #define WFSPI_CHECK_EXP_NORTN(EXPR)     CHECK_EXP_NOERCD(EXPR, error_exit)
 
@@ -210,25 +211,39 @@ error_exit:
  *****************************************************************************/
 void WriteWFArray(uint8_t regId, const uint8_t *p_Buf, uint16_t length)
 {
+    uint8_t *data_buf;
+    uint16_t i;
     WF_OPS *p_wf_ops = get_wf_ops();
 
     WFSPI_CHECK_EXP_NORTN(p_wf_ops);
 
-    g_txBuf[0] = regId;
+    data_buf = malloc(length + 1);
+
+    if (data_buf == NULL) {
+        return;
+    }
+
+    data_buf[0] = regId;
+    for (i = 1; i <= length ; i++) {
+        data_buf[i] = *p_Buf;
+        p_Buf++;
+    }
 
     p_wf_ops->spi_ops->spi_cs(WF_CHIP_SELECTED);
 
-    DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_cmd, g_txBuf, 0, 1);
+    DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_cmd, data_buf, 0, length + 1);
     DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_cmd, g_rxBuf, 1, 0);
-    DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_cmd, &wf_spi_tsf_data);
+    DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_cmd, NULL);
 
-    DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_data, p_Buf, 0, length);
-    DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_data, g_rxBuf, length, 0);
-    DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_data, NULL);
+   // DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_data, p_Buf, 0, length);
+   // DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_data, g_rxBuf, length, 0);
+   // DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_data, NULL);
 
     p_wf_ops->spi_ops->spi_transfer(&wf_spi_tsf_cmd);
 
     p_wf_ops->spi_ops->spi_cs(WF_CHIP_DESELECTED);
+
+    free(data_buf);
 
 error_exit:
     return;
@@ -258,12 +273,12 @@ void ReadWFArray(uint8_t  regId, uint8_t *p_Buf, uint16_t length)
     p_wf_ops->spi_ops->spi_cs(WF_CHIP_SELECTED);
 
     DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_cmd, g_txBuf, 0, 1);
-    DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_cmd, g_rxBuf, 1, 0);
-    DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_cmd, &wf_spi_tsf_data);
+    DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_cmd, p_Buf, 1, length);
+    DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_cmd, NULL);
 
-    DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_data, p_Buf, 0, 0);
-    DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_data, p_Buf, 0, length);
-    DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_data, NULL);
+    // DEV_SPI_XFER_SET_TXBUF(&wf_spi_tsf_data, p_Buf, 0, 0);
+    // DEV_SPI_XFER_SET_RXBUF(&wf_spi_tsf_data, p_Buf, 0, length);
+    // DEV_SPI_XFER_SET_NEXT(&wf_spi_tsf_data, NULL);
 
     p_wf_ops->spi_ops->spi_transfer(&wf_spi_tsf_cmd);
 

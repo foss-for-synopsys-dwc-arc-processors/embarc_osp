@@ -262,6 +262,111 @@ Inline void dw_iic_set_scl_cnt(DW_IIC_REG *iic_reg_ptr, DW_IIC_SCL_CNT *scl_cnt)
 	dw_iic_enable(iic_reg_ptr);
 }
 
+void dw_iic_calc_spklen(uint32_t clk_khz, DW_IIC_SPKLEN *spklen)
+{
+	uint32_t clk_ns;
+
+	spklen->fs_spklen = 0;
+	spklen->hs_spklen = 0;
+
+	if (clk_khz <= 1000000) {
+		clk_ns = 1000000 / clk_khz;
+		spklen->fs_spklen = DW_IIC_FS_SPKLEN_NS/clk_ns;
+		if ((DW_IIC_FS_SPKLEN_NS % clk_ns) != 0) {
+			spklen->fs_spklen += 1;
+		}
+		spklen->hs_spklen = DW_IIC_HS_SPKLEN_NS/clk_ns;
+		if ((DW_IIC_HS_SPKLEN_NS % clk_ns) != 0) {
+			spklen->hs_spklen += 1;
+		}
+	} else {
+		clk_ns = clk_khz / 1000000;
+		spklen->fs_spklen = DW_IIC_FS_SPKLEN_NS*clk_ns;
+		spklen->hs_spklen = DW_IIC_HS_SPKLEN_NS*clk_ns;
+	}
+}
+
+void dw_iic_calc_sclcnt(uint32_t clk_khz, uint32_t caploading, DW_IIC_SCL_CNT *scl_cnt, DW_IIC_SPKLEN *spklen)
+{
+	uint32_t clk_ns;
+
+	clk_ns = 1000000 / clk_khz;
+
+	if (clk_khz <= 1000000) {
+		// Calculate CNT values for SS
+		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_HIGH_TIME_NS/clk_ns;
+		if ((MIN_DW_IIC_SS_HIGH_TIME_NS % clk_ns) != 0) {
+			scl_cnt->ss_scl_hcnt += 1;
+		}
+		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_LOW_TIME_NS/clk_ns;
+		if ((MIN_DW_IIC_SS_LOW_TIME_NS % clk_ns) != 0) {
+			scl_cnt->ss_scl_lcnt += 1;
+		}
+		// Calculate CNT values for FS
+		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_HIGH_TIME_NS/clk_ns;
+		if ((MIN_DW_IIC_FS_HIGH_TIME_NS % clk_ns) != 0) {
+			scl_cnt->fs_scl_hcnt += 1;
+		}
+		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_LOW_TIME_NS/clk_ns;
+		if ((MIN_DW_IIC_FS_LOW_TIME_NS % clk_ns) != 0) {
+			scl_cnt->fs_scl_lcnt += 1;
+		}
+		// Calculate CNT values for HS
+		if (caploading == DW_IIC_CAP_LOADING_100PF) {
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_100PF_HIGH_TIME_NS/clk_ns;
+			if ((MIN_DW_IIC_HS_100PF_HIGH_TIME_NS % clk_ns) != 0) {
+				scl_cnt->hs_scl_hcnt += 1;
+			}
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_100PF_LOW_TIME_NS/clk_ns;
+			if ((MIN_DW_IIC_HS_100PF_LOW_TIME_NS % clk_ns) != 0) {
+				scl_cnt->hs_scl_lcnt += 1;
+			}
+		} else {
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_400PF_HIGH_TIME_NS/clk_ns;
+			if ((MIN_DW_IIC_HS_400PF_HIGH_TIME_NS % clk_ns) != 0) {
+				scl_cnt->hs_scl_hcnt += 1;
+			}
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_400PF_LOW_TIME_NS/clk_ns;
+			if ((MIN_DW_IIC_HS_400PF_LOW_TIME_NS % clk_ns) != 0) {
+				scl_cnt->hs_scl_lcnt += 1;
+			}
+		}
+	} else {
+		// Calculate CNT values for SS
+		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_HIGH_TIME_NS*clk_ns;
+		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_LOW_TIME_NS*clk_ns;
+		// Calculate CNT values for FS
+		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_HIGH_TIME_NS*clk_ns;
+		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_LOW_TIME_NS*clk_ns;
+		// Calculate CNT values for HS
+		if (caploading == DW_IIC_CAP_LOADING_100PF) {
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_100PF_HIGH_TIME_NS*clk_ns;
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_100PF_LOW_TIME_NS*clk_ns;
+		} else {
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_400PF_HIGH_TIME_NS*clk_ns;
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_400PF_LOW_TIME_NS*clk_ns;
+		}
+	}
+	if (scl_cnt->ss_scl_hcnt < MIN_DW_IIC_SS_SCL_HCNT(spklen->fs_spklen)) {
+		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_SCL_HCNT(spklen->fs_spklen);
+	}
+	if (scl_cnt->ss_scl_lcnt < MIN_DW_IIC_SS_SCL_LCNT(spklen->fs_spklen)) {
+		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_SCL_LCNT(spklen->fs_spklen);
+	}
+	if (scl_cnt->fs_scl_hcnt < MIN_DW_IIC_FS_SCL_HCNT(spklen->fs_spklen)) {
+		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_SCL_HCNT(spklen->fs_spklen);
+	}
+	if (scl_cnt->fs_scl_lcnt < MIN_DW_IIC_FS_SCL_LCNT(spklen->fs_spklen)) {
+		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_SCL_LCNT(spklen->fs_spklen);
+	}
+	if (scl_cnt->hs_scl_hcnt < MIN_DW_IIC_HS_SCL_HCNT(spklen->hs_spklen)) {
+		scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_SCL_HCNT(spklen->hs_spklen);
+	}
+	if (scl_cnt->hs_scl_lcnt < MIN_DW_IIC_HS_SCL_LCNT(spklen->hs_spklen)) {
+		scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_SCL_LCNT(spklen->hs_spklen);
+	}
+}
+
 /** Set spike suppression configuration */
 Inline void dw_iic_set_spike_len(DW_IIC_REG *iic_reg_ptr, DW_IIC_SPKLEN *spklen)
 {
@@ -361,8 +466,8 @@ static void dw_iic_master_init(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t speed_mode, u
 	dw_iic_enable(iic_reg_ptr);
 
 	/* Clock Settings */
-	dw_iic_set_scl_cnt(iic_reg_ptr, &(iic_ctrl_ptr->iic_scl_cnt));
 	dw_iic_set_spike_len(iic_reg_ptr, &(iic_ctrl_ptr->iic_spklen));
+	dw_iic_set_scl_cnt(iic_reg_ptr, &(iic_ctrl_ptr->iic_scl_cnt));
 }
 
 /** Init Designware IIC Device into Slave mode */
@@ -597,7 +702,9 @@ static void dw_iic_dis_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 
 	if (iic_ctrl_ptr->int_status & DW_IIC_GINT_ENABLE) {
 		if ((iic_ctrl_ptr->int_status & (DW_IIC_RXINT_ENABLE|DW_IIC_TXINT_ENABLE)) == 0) {
-			int_disable(iic_ctrl_ptr->intno);
+			if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
+				int_disable(iic_ctrl_ptr->intno);
+			}
 			iic_ctrl_ptr->int_status &= ~DW_IIC_GINT_ENABLE;
 		}
 	}
@@ -621,7 +728,9 @@ static void dw_iic_ena_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 	if ((iic_ctrl_ptr->int_status & DW_IIC_GINT_ENABLE) == 0) {
 		if (iic_ctrl_ptr->int_status & (DW_IIC_RXINT_ENABLE|DW_IIC_TXINT_ENABLE)) {
 			iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
-			int_enable(iic_ctrl_ptr->intno);
+			if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
+				int_enable(iic_ctrl_ptr->intno);
+			}
 		}
 	}
 }
@@ -634,9 +743,13 @@ static void dw_iic_enable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 {
 	DW_IIC_CTRL *iic_ctrl_ptr = (DW_IIC_CTRL *)(iic_info_ptr->iic_ctrl);
 
-	int_handler_install(iic_ctrl_ptr->intno, iic_ctrl_ptr->dw_iic_int_handler);
-	iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
-	int_enable(iic_ctrl_ptr->intno);	/** enable iic interrupt */
+	if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
+		int_handler_install(iic_ctrl_ptr->intno, iic_ctrl_ptr->dw_iic_int_handler);
+		iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
+		int_enable(iic_ctrl_ptr->intno);	/** enable iic interrupt */
+	} else {
+		iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
+	}
 }
 /**
  * \brief	disable designware iic interrupt
@@ -649,8 +762,10 @@ static void dw_iic_disable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 	/** disable iic send&receive interrupt after disable iic interrupt */
 	dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_SND);
 	dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_RCV);
-	/* disable iic interrupt */
-	int_disable(iic_ctrl_ptr->intno);
+	if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
+		/* disable iic interrupt */
+		int_disable(iic_ctrl_ptr->intno);
+	}
 	iic_ctrl_ptr->int_status &= ~(DW_IIC_GINT_ENABLE|DW_IIC_TXINT_ENABLE|DW_IIC_RXINT_ENABLE);
 }
 
@@ -1114,6 +1229,9 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 	iic_ctrl_ptr->rx_fifo_len = dw_iic_get_rxfifo_len(iic_ctrl_ptr->dw_iic_regs);
 #endif
 
+	dw_iic_calc_spklen(iic_ctrl_ptr->ic_clkhz/1000, &(iic_ctrl_ptr->iic_spklen));
+	dw_iic_calc_sclcnt(iic_ctrl_ptr->ic_clkhz/1000, iic_ctrl_ptr->ic_caploading, \
+		&(iic_ctrl_ptr->iic_scl_cnt), &(iic_ctrl_ptr->iic_spklen));
 	/* Disable device before init it */
 	dw_iic_disable_device(iic_info_ptr);
 
@@ -1137,7 +1255,9 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 	iic_ctrl_ptr->dw_iic_rxbuf.buf = &(iic_info_ptr->rx_buf);
 	/** install iic interrupt into system */
 	dw_iic_disable_interrupt(iic_info_ptr);
-	int_handler_install(iic_ctrl_ptr->intno, iic_ctrl_ptr->dw_iic_int_handler);
+	if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
+		int_handler_install(iic_ctrl_ptr->intno, iic_ctrl_ptr->dw_iic_int_handler);
+	}
 	memset(&(iic_info_ptr->tx_buf), 0, sizeof(DEV_BUFFER));
 	memset(&(iic_info_ptr->rx_buf), 0, sizeof(DEV_BUFFER));
 	memset(&(iic_info_ptr->iic_cbs), 0, sizeof(DEV_IIC_CBS));

@@ -44,36 +44,9 @@
 #define DEBUG
 #include "embARC_debug.h"
 
-#define RW009_SPI_ID		DW_SPI_0_ID
-
-#ifdef EMSK_PMWIFI_USE_J6
-/** J6 is not the default connection, conflict with pmod rf(J6) */
-#define RW009_SPI_LINE		EMSK_SPI_LINE_0
-#define RW009_GPIO_ID		EMSK_GPIO_PORT_A
-
-#define RW009_INT_BUSY_PIN	(28)
-#define RW009_RST_PIN		(29)
-#define RW009_CS_PIN		(30)
-#else
-/** by default, use J5 */
-#define RW009_SPI_LINE		EMSK_SPI_LINE_1
-#define RW009_GPIO_ID		EMSK_GPIO_PORT_A
-
-#define RW009_INT_BUSY_PIN	(24)
-#define RW009_RST_PIN		(25)
-#define RW009_CS_PIN		(26)
-#endif
-
-
 #define RW009_RST_PIN_MASK		(1 << RW009_RST_PIN)
 #define RW009_INT_BUSY_PIN_MASK		(1 << RW009_INT_BUSY_PIN)
 #define RW009_CS_PIN_MASK		(1 << RW009_CS_PIN)
-
-/** RW009 WIFI SPI FREQ & CLK MODE SETTINGS */
-#define RW009_SPIFREQ			BOARD_SPI_FREQ
-/* Must use SPI_CLK_MODE_0 */
-#define RW009_SPICLKMODE		BOARD_SPI_CLKMODE
-
 
 /* data format of rw009 */
 /*
@@ -159,7 +132,7 @@ typedef enum {
 typedef struct _rw009_ap_info {
 	char        ssid[RW009_SSID_NAME_LENGTH_MAX];
 	uint8_t     bssid[8]; 	/* 6byte + 2byte PAD. */
-	int         rssi;      	/* Receive Signal Strength Indication in dBm. */
+	int32_t     rssi;      	/* Receive Signal Strength Indication in dBm. */
 	uint32_t    max_data_rate; /* Maximum data rate in kilobits/s */
 	uint32_t    security;      /* Security type  */
 	uint32_t    channel;       /* Radio channel that the AP beacon was received on   */
@@ -347,7 +320,7 @@ static void rw009_int_disable(void)
  * @brief poll rw009 whether is busy
  * @return 1 busy, 0 idle
  */
-static int rw009_is_busy(void)
+static int32_t rw009_is_busy(void)
 {
 	uint32_t val;
 
@@ -367,7 +340,7 @@ static void rw009_reset(void)
 {
 #define RW009_RESET_ASSERT  	(~RW009_RST_PIN_MASK)
 #define RW009_RESET_UNASSERT	(RW009_RST_PIN_MASK)
-#define RW009_RESET_ASSERT_MS	10
+#define RW009_RESET_ASSERT_MS	100
 #define RW009_RESET_DELAY_MS	200
 
 	rw009_gpio_ptr->gpio_write(RW009_RESET_ASSERT, RW009_RST_PIN_MASK);
@@ -401,12 +374,12 @@ static void rw009_deselect(void)
  */
 static void rw009_isr(void *ptr)
 {
-	//DBG("interrupt from rw009\n");
+	//DBG("interrupt from rw009\r\n");
 	/* rw009 has data to send */
 	if (rw009_to_send == 0) {
 		rw009_to_send = 1;
 	} else {
-		DBG("rw009 interrupt missed\n");
+		DBG("rw009 interrupt missed\r\n");
 	}
 	rw009_int_disable();
 }
@@ -419,7 +392,7 @@ static void rw009_isr(void *ptr)
 
  * @return error code
  */
-static int cmd_resp_handler(DEV_WNIC *rw009_wnic, struct rw009_resp* resp)
+static int32_t cmd_resp_handler(DEV_WNIC *rw009_wnic, struct rw009_resp* resp)
 {
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rw009_info;
@@ -431,16 +404,16 @@ static int cmd_resp_handler(DEV_WNIC *rw009_wnic, struct rw009_resp* resp)
 
 
 	if (resp->cmd != last_cmd) {
-		DBG("current command is %d, cmd and response do not match!\n", resp->cmd);
+		DBG("current command is %d, cmd and response do not match!\r\n", resp->cmd);
 	}
 
 	switch (resp->cmd) {
 		case RW009_CMD_INIT:
 			RW009_CHECK_EXP((rw009_info->init_status == WNIC_DURING_INITIALIZATION), E_PAR);
 
-			DBG("response for rw009_cmd_init\n");
-			DBG("sn:%s\n", resp->resp.init.sn);
-			DBG("ver:%s\n", resp->resp.init.version);
+			DBG("response for rw009_cmd_init\r\n");
+			DBG("sn:%s\r\n", resp->resp.init.sn);
+			DBG("ver:%s\r\n", resp->resp.init.version);
 			memcpy(rw009_info->mac_addr, resp->resp.init.mac, WNIC_HDR_LEN);
 			rw009_info->init_status = WNIC_INIT_SUCCESSFUL;
 			init_try = 0;
@@ -466,10 +439,10 @@ static int cmd_resp_handler(DEV_WNIC *rw009_wnic, struct rw009_resp* resp)
 			RW009_CHECK_EXP((rw009_info->conn_status == WNIC_DURING_CONNECTION) || \
 			                (rw009_info->conn_status == WNIC_CONNECTED), E_CLS);
 			rw009_info->busy_status = WNIC_IS_FREE;
-			DBG("response for rw009_cmd_join or easy_join(cmd:%d, resp:%d)\n", resp->cmd, resp->result);
+			DBG("response for rw009_cmd_join or easy_join(cmd:%d, resp:%d)\r\n", resp->cmd, resp->result);
 			if (resp->result == 0) {
 				/* connected */
-				DBG("rw009 connection success\n");
+				DBG("rw009 connection success\r\n");
 				if (rw009_info->conn_status != WNIC_CONNECTED) {
 					rw009_info->conn_status = WNIC_CONNECTED;
 					if (rw009_on_ops->on_connected != NULL) {
@@ -485,7 +458,7 @@ static int cmd_resp_handler(DEV_WNIC *rw009_wnic, struct rw009_resp* resp)
 					(resp->cmd == RW009_CMD_EASY_JOIN)) {
 					break;
 				}
-				DBG("rw009 connection failure\n");
+				DBG("rw009 connection failure\r\n");
 				if (rw009_info->conn_status == WNIC_CONNECTED) {
 					rw009_info->conn_status = WNIC_NOT_CONNECTED;
 					if (rw009_on_ops->on_disconnected != NULL) {
@@ -498,11 +471,11 @@ static int cmd_resp_handler(DEV_WNIC *rw009_wnic, struct rw009_resp* resp)
 			break;
 		case RW009_CMD_RSSI:
 			RW009_CHECK_EXP((rw009_info->init_status == WNIC_INIT_SUCCESSFUL), E_PAR);
-			DBG("response for rw009_cmd_rssi\n");
+			DBG("response for rw009_cmd_rssi\r\n");
 			/* \todo use to poll the status of connection ? */
 			break;
 		default:
-			DBG("unknown cmd response\n");
+			DBG("unknown cmd response\r\n");
 			ercd = E_PAR;
 			break;
 	}
@@ -519,7 +492,7 @@ error_exit:
  * @param rw009_spi_data_packet input packet
  * @return < 0 error
  */
-static int rw009_xfer(DEV_WNIC *rw009_wnic, struct rw009_spi_data_packet* out, struct rw009_spi_data_packet* in)
+static int32_t rw009_xfer(DEV_WNIC *rw009_wnic, struct rw009_spi_data_packet* out, struct rw009_spi_data_packet* in)
 {
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rw009_info;
@@ -566,7 +539,7 @@ static int rw009_xfer(DEV_WNIC *rw009_wnic, struct rw009_spi_data_packet* out, s
 	rw009_spi_ptr->spi_read(&resp, sizeof(resp));
 
 	if ((resp.magic1 != RW009_RESP_MAGIC1) || (resp.magic2 != RW009_RESP_MAGIC2)) {
-		DBG("bad resp magic, abort!\n");
+		DBG("bad resp magic, abort!\r\n");
 		return E_SYS;
 	}
 
@@ -601,12 +574,12 @@ static int rw009_xfer(DEV_WNIC *rw009_wnic, struct rw009_spi_data_packet* out, s
 			/* cmd respone received */
 			cmd_resp_handler(rw009_wnic, (struct rw009_resp *)in->buffer);
 		} else {
-			DBG("unsupported data type\n");
+			DBG("unsupported data type\r\n");
 			ercd = E_SYS;
 		}
 	}
 	rw009_int_enable();
-	//DBG("master send %d bytes, rw009 send %d bytes\n", to_send, resp.len);
+	//DBG("master send %d bytes, rw009 send %d bytes\r\n", to_send, resp.len);
 error_exit:
 	return ercd;
 }
@@ -622,7 +595,9 @@ error_exit:
 static int32_t rw009_cmd(DEV_WNIC *rw009_wnic, uint32_t cmd, void *args)
 {
 	uint32_t cmd_len;
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	uint32_t cpu_status;
+#endif
 	struct rw009_cmd *cmd_packet;
 	struct rw009_spi_data_packet* out;
 
@@ -655,11 +630,13 @@ static int32_t rw009_cmd(DEV_WNIC *rw009_wnic, uint32_t cmd, void *args)
 	}
 
 	if (cmd_len == 0xff) {
-		DBG("cmd type error\n");
+		DBG("cmd type error\r\n");
 		return -1;
 	}
 
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	cpu_status = cpu_lock_save();
+#endif
 
 	out = &snd_packet;
 	cmd_packet = (struct rw009_cmd *)out->buffer;
@@ -674,8 +651,9 @@ static int32_t rw009_cmd(DEV_WNIC *rw009_wnic, uint32_t cmd, void *args)
 	out->len = 0;
 	out->type = 0;
 
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	cpu_unlock_restore(cpu_status);
-
+#endif
 	return 0;
 }
 
@@ -723,14 +701,14 @@ int32_t rw009_wnic_init(DEV_WNIC *rw009_wnic, uint32_t network_type)
 	rw009_info->init_status = WNIC_DURING_INITIALIZATION;  /* start initialization process */
 	rw009_info->network_type = network_type; /* set network type used next */
 
-	DBG("init rw009\n");
+	DBG("init rw009\r\n");
 	if ((ercd = rw009_gpio_open()) != E_OK) {
-		DBG("rw009 gpio open failed\n");
+		DBG("rw009 gpio open failed\r\n");
 		return ercd;
 	}
 
 	if ((ercd = rw009_spi_open(RW009_SPIFREQ, RW009_SPICLKMODE)) != E_OK) {
-		DBG("rw009 spi open failed\n");
+		DBG("rw009 spi open failed\r\n");
 		return ercd;
 	}
 
@@ -1071,13 +1049,18 @@ int32_t rw009_commit_tx(DEV_WNIC *rw009_wnic, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rw009_info;
+
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	unsigned int cpu_status;
+#endif
 
 	RW009_CHECK_EXP(rw009_wnic != NULL, E_OBJ);
 	rw009_info = &(rw009_wnic->wnic_info);
 	RW009_CHECK_EXP((rw009_info->init_status == WNIC_INIT_SUCCESSFUL), E_CLSED);
 
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	cpu_status = cpu_lock_save();
+#endif
 
 	snd_packet.len = snd_cnt;
 	snd_packet.type = data_type_eth_data;
@@ -1085,7 +1068,9 @@ int32_t rw009_commit_tx(DEV_WNIC *rw009_wnic, uint32_t len)
 	snd_packet.len = 0;
 	snd_cnt = 0;
 
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	cpu_unlock_restore(cpu_status);
+#endif
 
 error_exit:
 	return ercd;
@@ -1199,7 +1184,9 @@ void rw009_period_process(DEV_WNIC *rw009_wnic, void *ptr)
 {
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rw009_info;
+#ifdef RW009_SPI_CPULOCK_ENABLE
 	unsigned int cpu_status;
+#endif
 	DEV_WNIC_ON_OPS *rw009_on_ops;
 
 	RW009_CHECK_EXP(rw009_wnic != NULL, E_OBJ);
@@ -1208,12 +1195,15 @@ void rw009_period_process(DEV_WNIC *rw009_wnic, void *ptr)
 	rw009_on_ops = &(rw009_wnic->wnic_on_ops);
 
 	if (rw009_to_send) {
+#ifdef RW009_SPI_CPULOCK_ENABLE
 		cpu_status = cpu_lock_save();
-
+#endif
 		rw009_xfer(rw009_wnic, &snd_packet, &rcv_packet);
 		rw009_to_send = 0;
 
+#ifdef RW009_SPI_CPULOCK_ENABLE
 		cpu_unlock_restore(cpu_status);
+#endif
 	}
 
 	if (rw009_info->scan_status == WNIC_DURING_SCAN) {
@@ -1232,7 +1222,7 @@ void rw009_period_process(DEV_WNIC *rw009_wnic, void *ptr)
 	if (rw009_info->init_status == WNIC_DURING_INITIALIZATION) {
 		if (rw009_timer_read_ms() > init_timer) {
 			if (init_try < RW009_INIT_RETRY) {
-				DBG("rw009 re-init\n");
+				DBG("rw009 re-init\r\n");
 				rw009_cmd_init cmd;
 				rw009_reset();
 				rw009_deselect();
@@ -1240,7 +1230,7 @@ void rw009_period_process(DEV_WNIC *rw009_wnic, void *ptr)
 				rw009_cmd(rw009_wnic, RW009_CMD_INIT, (void *)&cmd);
 				init_try++;
 			} else {
-				DBG("rw009 init failed\n");
+				DBG("rw009 init failed\r\n");
 				init_try = 0;
 				rw009_info->init_status = WNIC_INIT_FAILED;
 				if (rw009_on_ops->on_init_fail != NULL) {
@@ -1252,7 +1242,7 @@ void rw009_period_process(DEV_WNIC *rw009_wnic, void *ptr)
 
 	if (rw009_info->conn_status == WNIC_DURING_CONNECTION) {
 		if (rw009_timer_read_ms() > conn_timer) {
-			DBG("rw009 connection time out\n");
+			DBG("rw009 connection time out\r\n");
 			rw009_info->conn_status = WNIC_NOT_CONNECTED;
 			if (rw009_on_ops->on_disconnected != NULL) {
 				rw009_on_ops->on_disconnected(rw009_wnic);

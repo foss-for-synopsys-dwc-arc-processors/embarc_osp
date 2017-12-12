@@ -17,5 +17,6 @@
 #define _FF_SDCARD_H_
 
 #include "ff_sdcard_spi.h"
+#include "ff_sdcard_sdio.h"
 
 #endif /** _FF_SDCARD_H_ */
