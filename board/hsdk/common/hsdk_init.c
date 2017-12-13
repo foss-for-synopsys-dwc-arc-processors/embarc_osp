@@ -55,9 +55,6 @@
 #include "embARC_debug.h"
 
 #include "board.h"
-#include "hsdk_timer.h"
-#include "hsdk_hardware.h"
-#include "creg_hsdc.h"
 
 
 /**
@@ -65,18 +62,7 @@
  */
 static void hsdk_mux_init(void)
 {
-	// Set GPIO 0-3 as GPIO, GPIO4-7 as RS9113 UART (Fixed Configuration)
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_0, CREG_HSDC_GPIOMUX_GPIO);
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_1, CREG_HSDC_GPIOMUX_UART);
-	// Set GPIO 16-17 as I2C1, GPIO 18-19 as I2C2, PMOD C as I2C Interface
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_4, CREG_HSDC_GPIOMUX_I2C);
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_5, CREG_HSDC_GPIOMUX_I2C);
-	// Set GPIO 8-11 as SPI1, GPIO 20-21 as GPIO  PMOD A as PMOD Interface Type 2A (expanded SPI)
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_2, CREG_HSDC_GPIOMUX_SPI);
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_6, CREG_HSDC_GPIOMUX_GPIO);
-	// Set GPIO 12-15 as SPI2, GPIO 22-23 as GPIO PMOD B as PMOD Interface Type 2A (expanded SPI)
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_3, CREG_HSDC_GPIOMUX_SPI);
-	creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, CREG_HSDC_GPIOSEL_7, CREG_HSDC_GPIOMUX_GPIO);
+	io_mux_init();
 }
 
 /**

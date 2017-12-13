@@ -62,7 +62,6 @@
 #include "dw_spi_obj.h"
 
 #include "../../hsdk.h"
-#include "creg_hsdc.h"
 
 #define DW_SPI_DEFAULT_FREQ		1000000
 /**

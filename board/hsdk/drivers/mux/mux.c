@@ -27,90 +27,387 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * \version 2017.03
- * \date 2014-07-07
- * \author Huaqi Fang(Huaqi.Fang@synopsys.com)
+ * \date 2017-12-10
+ * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
- * \defgroup	BOARD_EMSK_DRV_MUX	EMSK Mux Driver
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Mux Controller Driver
+ * \defgroup	BOARD_HSDK_DRV_MUX	HSDK Mux Driver
+ * \ingroup	BOARD_HSDK_DRIVER
+ * \brief	HSDK Mux Controller Driver
  * \details
- *		Mux controller is the hardware external PMOD port pin connection
+ *		Mux controller is the hardware external pin connection
  *	controller, it can distribute the external port pins into different
  *	functions like general input/output, spi, iic, uart and so on.
  */
 
 /**
  * \file
- * \ingroup	BOARD_EMSK_DRV_MUX
- * \brief	emsk mux controller driver
+ * \ingroup	BOARD_HSDK_DRV_MUX
+ * \brief	hsdk mux controller driver
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_MUX
+ * \addtogroup	BOARD_HSDK_DRV_MUX
  * @{
  */
-#include "mux_hal.h"
+
+#include "embARC_toolchain.h"
 #include "mux.h"
+#include "../../hsdk.h"
 
-static MUX_REG *mux_ctrl_regs = (MUX_REG *)0;
+#define GPIO_MUX_CONFIG_NUM 8
 
-/** initialize i2c controller and set slave device address */
-void mux_init(MUX_REG *mux_regs)
+typedef struct gpio_mux {
+	uint8_t val;
+	uint8_t type;
+} GPIO_MUX;
+
+
+static GPIO_MUX gpio_mux_config[GPIO_MUX_CONFIG_NUM] = {
+	{0, PINMUX_TYPE_DEFAULT},
+	{1, PINMUX_TYPE_DEFAULT},
+	{0, PINMUX_TYPE_DEFAULT},
+	{0, PINMUX_TYPE_DEFAULT},
+	{0, PINMUX_TYPE_DEFAULT},
+	{0, PINMUX_TYPE_DEFAULT},
+	{0, PINMUX_TYPE_DEFAULT},
+	{0, PINMUX_TYPE_DEFAULT},
+};
+
+
+int32_t io_mikro_config(uint32_t config)
 {
-	// Initialize Mux controller registers by default values
-	mux_regs[PMOD_MUX_CTRL] = PMOD_MUX_CTRL_DEFAULT;
-	mux_regs[SPI_MAP_CTRL] =  SPI_MAP_CTRL_DEFAULT;
-	mux_regs[UART_MAP_CTRL] = UART_MAP_CTRL_DEFAULT;
-	mux_ctrl_regs = mux_regs;
+	if (config) {
+		if (gpio_mux_config[1].type == PINMUX_TYPE_MIKRO &&
+		gpio_mux_config[3].type == PINMUX_TYPE_MIKRO &&
+		 gpio_mux_config[4].type == PINMUX_TYPE_MIKRO &&
+		 gpio_mux_config[5].type == PINMUX_TYPE_MIKRO &&
+		 gpio_mux_config[7].type == PINMUX_TYPE_MIKRO) {
+			return E_OK; /*mikrobus already enabled */
+		}
+
+		if (gpio_mux_config[1].type == PINMUX_TYPE_DEFAULT &&
+		 gpio_mux_config[3].type == PINMUX_TYPE_DEFAULT &&
+		 gpio_mux_config[4].type == PINMUX_TYPE_DEFAULT &&
+		 gpio_mux_config[5].type == PINMUX_TYPE_DEFAULT &&
+		 gpio_mux_config[7].type == PINMUX_TYPE_DEFAULT) {
+			gpio_mux_config[1].val = 0;
+			gpio_mux_config[3].val = 2;
+			gpio_mux_config[4].val = 4;
+			gpio_mux_config[5].val = 3;
+			gpio_mux_config[7].val = 1;
+			gpio_mux_config[1].type = PINMUX_TYPE_MIKRO;
+			gpio_mux_config[3].type = PINMUX_TYPE_MIKRO;
+			gpio_mux_config[4].type = PINMUX_TYPE_MIKRO;
+			gpio_mux_config[5].type = PINMUX_TYPE_MIKRO;
+			gpio_mux_config[7].type = PINMUX_TYPE_MIKRO;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 1,
+			0);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 3,
+			2);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 4,
+			4);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 5,
+			3);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 7,
+			1);
+		} else {
+			return E_OPNED; /* alread used by other type */
+		}
+	} else {
+		if (gpio_mux_config[1].type == PINMUX_TYPE_MIKRO &&
+		gpio_mux_config[3].type == PINMUX_TYPE_MIKRO &&
+		 gpio_mux_config[4].type == PINMUX_TYPE_MIKRO &&
+		 gpio_mux_config[5].type == PINMUX_TYPE_MIKRO &&
+		 gpio_mux_config[7].type == PINMUX_TYPE_MIKRO) {
+			gpio_mux_config[1].val = 1;
+			gpio_mux_config[3].val = 0;
+			gpio_mux_config[4].val = 0;
+			gpio_mux_config[5].val = 0;
+			gpio_mux_config[7].val = 0;
+			gpio_mux_config[1].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[3].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[4].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[5].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[7].type = PINMUX_TYPE_DEFAULT;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 1,
+			1);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 3,
+			0);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 4,
+			0);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 5,
+			0);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 7,
+			0);
+		} else {
+			return E_OPNED; /* already used by other type, or not config */
+		}
+	}
+	return E_OK;
 }
 
-/** Get mux ctrl register pointer, only valid after mux_init */
-MUX_REG *get_mux_regs(void)
+int32_t io_arduino_config_spi(uint32_t config)
 {
-	return mux_ctrl_regs;
+	if (config) {
+		if (gpio_mux_config[3].type == PINMUX_TYPE_DEFAULT ||
+		gpio_mux_config[3].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[3].type = PINMUX_TYPE_ARDUINO;
+			gpio_mux_config[3].val = 2;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 3,
+			2);
+		} else {
+			return E_OPNED;
+		}
+
+	} else {
+		if (gpio_mux_config[3].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[3].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[3].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 3,
+			0);
+		} else {
+			return E_OPNED;
+		}
+	}
+	return E_OK;
 }
 
-/** set PMOD muxer scheme */
-void set_pmod_mux(MUX_REG *mux_regs, uint32_t val)
+int32_t io_arduino_config_uart(uint32_t config)
 {
-	mux_regs[PMOD_MUX_CTRL] = val;
+	if (config) {
+		if (gpio_mux_config[7].type == PINMUX_TYPE_DEFAULT ||
+		gpio_mux_config[7].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[7].type = PINMUX_TYPE_ARDUINO;
+			gpio_mux_config[7].val = 1;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 7,
+			1);
+		} else {
+			return E_OPNED;
+		}
+
+	} else {
+		if (gpio_mux_config[7].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[7].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[7].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 7,
+			0);
+		} else {
+			return E_OPNED;
+		}
+	}
+	return E_OK;
 }
 
-/** get PMOD muxer scheme */
-uint32_t get_pmod_mux(MUX_REG *mux_regs)
+int32_t io_arduino_config_i2c(uint32_t config)
 {
-	return (uint32_t) mux_regs[PMOD_MUX_CTRL];
+	if (config) {
+		if (gpio_mux_config[5].type == PINMUX_TYPE_DEFAULT ||
+		gpio_mux_config[5].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[5].type = PINMUX_TYPE_ARDUINO;
+			gpio_mux_config[5].val = 3;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 5,
+			3);
+		} else {
+			return E_OPNED;
+		}
+
+	} else {
+		if (gpio_mux_config[5].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[5].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[5].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 5,
+			0);
+		} else {
+			return E_OPNED;
+		}
+	}
+	return E_OK;
 }
 
-/** set PMOD muxer scheme */
-void change_pmod_mux(MUX_REG *mux_regs, uint32_t val, uint32_t change_bits)
+int32_t io_arduino_config_ad(uint32_t num, uint32_t config)
 {
-	mux_regs[PMOD_MUX_CTRL] = ((mux_regs[PMOD_MUX_CTRL] & ~change_bits) | val);
+	return  E_SYS; /* no ad pin connected to arduino interface */
 }
 
-/** set SPI connection scheme */
-void set_spi_map(MUX_REG *mux_regs, uint32_t val)
+int32_t io_arduino_config_pwm(uint32_t num, uint32_t config)
 {
-	mux_regs[SPI_MAP_CTRL] = val;
+	uint32_t index = 0;
+
+	switch (num) {
+	case ARDUINO_PIN_3:
+		index = 4;
+		break;
+	case ARDUINO_PIN_10:
+	case ARDUINO_PIN_11:
+		index = 3;
+		break;
+	case ARDUINO_PIN_6:
+		index = 6;
+		break;
+	case ARDUINO_PIN_5:
+	case ARDUINO_PIN_9:
+		index = 2;
+		break;
+	default:
+		return E_PAR;
+		break;
+	}
+
+	if (config) {
+		if (gpio_mux_config[index].type == PINMUX_TYPE_DEFAULT ||
+		gpio_mux_config[index].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[index].type = PINMUX_TYPE_ARDUINO;
+			gpio_mux_config[index].val = 6;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index,
+			6);
+		} else {
+			return E_OPNED;
+		}
+
+	} else {
+		if (gpio_mux_config[index].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[index].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[index].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index,
+			0);
+		} else {
+			return E_OPNED;
+		}
+	}
+
+	return E_OK;
 }
 
-/** get SPI connection scheme */
-uint32_t get_spi_map(MUX_REG *mux_regs)
+int32_t io_arduino_config_gpio(uint32_t num, uint32_t config)
 {
-	return (uint32_t) mux_regs[SPI_MAP_CTRL];
+	uint32_t index = 0;
+
+	switch (num) {
+		case ARDUINO_PIN_0:
+		case ARDUINO_PIN_1:
+			index = 7;
+			break;
+		case ARDUINO_PIN_2:
+		case ARDUINO_PIN_3:
+			index = 4;
+			break;
+		case ARDUINO_PIN_4:
+		case ARDUINO_PIN_5:
+		case ARDUINO_PIN_8:
+		case ARDUINO_PIN_9:
+			index = 2;
+			break;
+		case ARDUINO_PIN_6:
+		case ARDUINO_PIN_7:
+			index = 6;
+			break;
+		case ARDUINO_PIN_10:
+		case ARDUINO_PIN_11:
+		case ARDUINO_PIN_12:
+		case ARDUINO_PIN_13:
+			index = 3;
+			break;
+		case ARDUINO_PIN_AD4:
+		case ARDUINO_PIN_AD5:
+			index = 5;
+			break;
+		default :
+			return E_PAR;
+	}
+
+	if (config) {
+		if (gpio_mux_config[index].type == PINMUX_TYPE_DEFAULT ||
+		gpio_mux_config[index].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[index].type = PINMUX_TYPE_ARDUINO;
+			gpio_mux_config[index].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index,
+			0);
+		} else {
+			return E_OPNED;
+		}
+
+	} else {
+		if (gpio_mux_config[index].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[index].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[index].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index,
+			0);
+		} else {
+			return E_OPNED;
+		}
+	}
+	return E_OK;
 }
 
-/** set UART connection scheme */
-void set_uart_map(MUX_REG *mux_regs, uint32_t val)
+
+int32_t io_pmod_config(uint32_t pmod, uint32_t type, uint32_t config)
 {
-	mux_regs[UART_MAP_CTRL] = val;
+	uint32_t index1 = 0;
+	uint32_t index2 = 0;
+
+	switch (pmod) {
+	case PMOD_A:
+		index1 = 2;
+		index2 = 6;
+		break;
+	case PMOD_B:
+		index1 = 3;
+		index2 = 7;
+		break;
+	case PMOD_C:
+		if (type > PMOD_I2C) {
+			return E_PAR; /* PMOD_C does not support PWM */
+		}
+		index1 = 4;
+		index2 = 5;
+	default:
+		return E_PAR;
+	}
+
+	if (config) {
+		if ((gpio_mux_config[index1].type == PINMUX_TYPE_DEFAULT &&
+			gpio_mux_config[index2].type == PINMUX_TYPE_DEFAULT) ||
+			(gpio_mux_config[index1].type == PINMUX_TYPE_PMOD &&
+			 gpio_mux_config[index2].type == PINMUX_TYPE_PMOD)) {
+				gpio_mux_config[index1].type = PINMUX_TYPE_PMOD;
+				gpio_mux_config[index1].val = type;
+				gpio_mux_config[index2].type = PINMUX_TYPE_PMOD;
+				gpio_mux_config[index2].val = 0;
+				creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index1,
+				type);
+				creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index2,
+				0);
+			} else {
+				return E_OPNED;
+			}
+
+	} else {
+		if (gpio_mux_config[index1].type == PINMUX_TYPE_ARDUINO &&
+		   gpio_mux_config[index2].type == PINMUX_TYPE_ARDUINO) {
+			gpio_mux_config[index1].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[index1].val = 0;
+			gpio_mux_config[index2].type = PINMUX_TYPE_DEFAULT;
+			gpio_mux_config[index2].val = 0;
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index1,
+			0);
+			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index2,
+			0);
+		} else {
+			return E_OPNED;
+		}
+	}
+	return E_OK;
 }
 
-/** get UART connection scheme */
-uint32_t get_uart_map(MUX_REG *mux_regs)
+void io_mux_init(void)
 {
-	return (uint32_t) mux_regs[UART_MAP_CTRL];
+	int32_t i;
+
+	for (i = 0; i < GPIO_MUX_CONFIG_NUM; i++) {
+		creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, i,
+			gpio_mux_config[i].val);
+	}
 }
-/** @} end of group BOARD_EMSK_DRV_MUX */
+/** @} end of group BOARD_HSDK_DRV_MUX */
 

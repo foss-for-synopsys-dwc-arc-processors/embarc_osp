@@ -98,12 +98,13 @@ BOARD_HSDK_CSRCDIR		+= $(BOARD_HSDK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_HSDK_DIR)/drivers/iic \
 				$(BOARD_HSDK_DIR)/drivers/pmwifi \
 				$(BOARD_HSDK_DIR)/drivers/creg \
+				$(BOARD_HSDK_DIR)/drivers/mux	\
 				$(BOARD_HSDK_DIR)/drivers/sdcard \
 				$(BOARD_HSDK_DIR)/drivers/sdio \
 				$(BOARD_HSDK_DIR)/drivers/ntshell
 
 BOARD_HSDK_ASMSRCDIR	+= $(BOARD_HSDK_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
-BOARD_HSDK_INCDIR	+= $(BOARD_HSDK_DEV_INCDIR) $(BOARD_CORE_DIR) $(BOARD_HSDK_DIR)/drivers/creg
+BOARD_HSDK_INCDIR	+= $(BOARD_HSDK_DEV_INCDIR) $(BOARD_CORE_DIR)
 
 
 # find all the source files in the target directories

@@ -53,7 +53,8 @@
 #include "drivers/pmwifi/pmwifi.h"
 #include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/sdcard.h"
-
+#include "drivers/creg/creg_hsdc.h"
+#include "drivers/mux/mux.h"
 #include "common/hsdk_timer.h"
 
 #include "hsdk_hardware.h"

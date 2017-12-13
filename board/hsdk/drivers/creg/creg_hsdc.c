@@ -177,7 +177,7 @@ void creg_hsdc_set_offset(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst
 	}
 }
 
-void creg_hsdc_getOffset(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst, CREG_HSDC_OFFSET_T *offset, CREG_HSDC_APERTURE_T ap)
+void creg_hsdc_get_offset(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst, CREG_HSDC_OFFSET_T *offset, CREG_HSDC_APERTURE_T ap)
 {
 	uint32_t reg;
 	volatile uint32_t *ptr;
