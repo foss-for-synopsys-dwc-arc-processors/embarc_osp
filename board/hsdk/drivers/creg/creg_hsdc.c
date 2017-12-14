@@ -161,8 +161,7 @@ void creg_hsdc_set_offset(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst
 			//Calculate offset + 0x08
 			ptr += (mst * 8) + 2;
 			c_ap = ap;
-			if (c_ap >= CREG_HSDC_APERTURE_8)
-			{
+			if (c_ap >= CREG_HSDC_APERTURE_8) {
 				//take next register (aperture[8]..[15])
 				ptr++;
 				c_ap -= CREG_HSDC_APERTURE_8;
