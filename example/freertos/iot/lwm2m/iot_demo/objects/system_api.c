@@ -50,6 +50,7 @@
 
 #include "liblwm2m.h"
 #include "lwm2mclient.h"
+#include "spi_flash_w25qxx.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -66,7 +67,7 @@ Inline unsigned int make_checks(unsigned int init, unsigned char *buf, unsigned 
 	return init;
 }
 
-static int32_t read_spi(uint32_t address, uint32_t size, uint32_t* checksum)
+static int32_t read_spi(void * flash, uint32_t address, uint32_t size, uint32_t* checksum)
 {
 	uint8_t local_buf[BUF_SIZE];
 	int32_t cnt, datalen, len;
@@ -75,13 +76,13 @@ static int32_t read_spi(uint32_t address, uint32_t size, uint32_t* checksum)
 	if( checksum == NULL)
 		return 0;
 
-	flash_wait_ready();
+	w25qxx_wait_ready(flash);
 
 	csum = *checksum;
 
 	datalen = 0;
 	do {
-		cnt = flash_read(address, BUF_SIZE, local_buf);
+		cnt = w25qxx_read(flash, address, BUF_SIZE, local_buf);
 		if (cnt < 0) {
 			*checksum = 0;
 			return 0;
@@ -106,15 +107,16 @@ static int32_t reload_btloader(void)
 	uint32_t datalen;
 	uint32_t checksum = 0;
 
+	W25QXX_DEF(flash, BOARD_SFLASH_SPI_ID, BOARD_SFLASH_SPI_LIN, FLASH_PAGE_SIZE, FLASH_SECTOR_SIZE);
 	// read spi header
-	flash_init();
-	datalen = flash_read(BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
+	w25qxx_init(flash, 2000000);
+	datalen = w25qxx_read(flash, BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
 
 	if(BOOTIMAGE_HEAD == header.head && \
 		header.start >= BOOTIMAGE_START &&  header.start < BOOTIMAGE_START + BOOTIMAGE_MAX_SIZE && \
 		header.start >= BOOTIMAGE_START &&  header.start < BOOTIMAGE_START + BOOTIMAGE_MAX_SIZE && \
 		header.size > 0  && header.size <= BOOTIMAGE_MAX_SIZE ) {
-		datalen = read_spi(header.start, header.size, &checksum);
+		datalen = read_spi(flash, header.start, header.size, &checksum);
 
 		if(checksum != header.checksum) {
 			datalen = 0;

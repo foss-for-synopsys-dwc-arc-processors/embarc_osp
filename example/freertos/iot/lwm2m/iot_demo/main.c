@@ -122,8 +122,6 @@ int main(void)
 	JSON_Value *cfg_json;
 	char *app_cfg = (char *)0x17f00000;
 	uint32_t i;
-	char *ptr;
-	char buf[30];
 	char *cfg_str = NULL;
 
 	c_info.server = SERVER_HOST;

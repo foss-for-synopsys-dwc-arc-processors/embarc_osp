@@ -1,6 +1,8 @@
 # Application name
 APPL ?= mbedtls_dtls_server
 
+EXT_DEV_LIST += wifi/mrf24g
+
 # Heap Size Settings
 HEAPSZ ?= 1048576
 STACKSZ ?= 1048576

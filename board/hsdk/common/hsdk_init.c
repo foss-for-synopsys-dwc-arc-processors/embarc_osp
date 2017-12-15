@@ -53,17 +53,7 @@
 #include "arc.h"
 #include "arc_timer.h"
 #include "embARC_debug.h"
-
 #include "board.h"
-
-
-/**
- * \brief	hsdk-related mux io init
- */
-static void hsdk_mux_init(void)
-{
-	io_mux_init();
-}
 
 /**
  * \brief	Board init routine MUST be called in each application
@@ -73,7 +63,7 @@ static void hsdk_mux_init(void)
 void board_init(void)
 {
 	timer_init();
-	hsdk_mux_init();
+	io_mux_init();
 	hsdk_hardware_init();
 	hsdk_timer_init();
 }

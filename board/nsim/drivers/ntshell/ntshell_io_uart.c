@@ -61,7 +61,7 @@
 #include "ntshell_io_uart.h"
 #include "ntshell_task.h"
 
-#include "board.h"
+#include "nsim/nsim.h"
 
 #define NSIM_NTSHELL_UART_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 

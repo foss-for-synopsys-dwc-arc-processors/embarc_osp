@@ -61,7 +61,7 @@
 #include "ntshell_io_uart.h"
 #include "ntshell_task.h"
 
-#include "board.h"
+#include "hsdk/hsdk.h"
 
 #ifdef ENABLE_OS
 #include "os_hal_inc.h"

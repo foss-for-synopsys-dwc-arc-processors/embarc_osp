@@ -26,8 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-12-10
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
@@ -52,8 +50,10 @@
  */
 
 #include "embARC_toolchain.h"
-#include "mux.h"
-#include "../../hsdk.h"
+#include "embARC_error.h"
+
+#include "dev_pinmux.h"
+#include "hsdk/hsdk.h"
 
 #define GPIO_MUX_CONFIG_NUM 8
 

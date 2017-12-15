@@ -15,3 +15,4 @@ CUR_CORE ?= arcem7d
 ## Force uDMA version to be v2
 # For emsk 2.3 the udma controller hardware version is v2
 CORE_DEFINES += -DCORE_DMAC_INTERNAL_VERSION=2
+ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio

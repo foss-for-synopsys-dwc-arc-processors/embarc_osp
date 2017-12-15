@@ -77,7 +77,11 @@ BOARD_NSIM_DEV_INCDIR		=
 BOARD_NSIM_CSRCDIR		+= $(BOARD_NSIM_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_NSIM_DIR)/common \
 				$(BOARD_NSIM_DIR)/drivers/uart \
-				$(BOARD_NSIM_DIR)/drivers/ntshell
+
+# select dirvers according to middleware
+ifneq ($(findstring ntshell, $(MID_SEL)), )
+BOARD_NSIM_CSRCDIR += $(BOARD_NSIM_DIR)/drivers/ntshell
+endif
 
 
 BOARD_NSIM_ASMSRCDIR	+= $(BOARD_NSIM_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)

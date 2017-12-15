@@ -1,6 +1,10 @@
 # Application name
 APPL ?= freertos_net_httpserver
 
+EXT_DEV_LIST += wifi/mrf24g
+
+STACKSZ = 4096
+
 #
 # root dir of embARC
 #

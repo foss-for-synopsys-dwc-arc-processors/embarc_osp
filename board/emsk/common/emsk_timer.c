@@ -105,7 +105,9 @@ void board_timer_update(uint32_t precision)
 		sys_ms_update = 0;
 		gl_emsk_ms_cnt ++;
 
+#ifdef MID_FATFS
 		emsk_sdcard_1ms_update();
+#endif
 	}
 }
 

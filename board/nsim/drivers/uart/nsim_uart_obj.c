@@ -53,7 +53,7 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "../../nsim.h"
+#include "nsim/nsim.h"
 
 
 /**

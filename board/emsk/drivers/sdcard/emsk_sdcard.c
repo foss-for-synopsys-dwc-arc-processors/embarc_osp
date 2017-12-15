@@ -50,9 +50,9 @@
  * \addtogroup	BOARD_EMSK_DRV_MID_FS_SDCARD
  * @{
  */
-#include "embARC_toolchain.h"
-
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
+
+#include "embARC_toolchain.h"
 #include "ff_diskio.h"
 #include "emsk_sdcard.h"
 #include <time.h>
@@ -97,12 +97,6 @@ void emsk_sdcard_1ms_update(void)
 #endif
 }
 
-#else /* no fatfs */
-/** update in 1ms period interrupt */
-void emsk_sdcard_1ms_update(void)
-{
-
-}
 
 #endif /* MID_FATFS */
 

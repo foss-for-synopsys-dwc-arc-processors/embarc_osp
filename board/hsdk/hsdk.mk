@@ -65,43 +65,40 @@ OPENOCD_CFG_FILE = $(OPENOCD_SCRIPT_ROOT)/board/snps_axs103_hs38.cfg
 OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 
 ## Build Rules
-DEVICES_ROOT = $(EMBARC_ROOT)/device
+# onchip ip object rules
+ifdef ONCHIP_IP_LIST
+	BOARD_HSDK_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_HSDK_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
+endif
+
+include $(EMBARC_ROOT)/device/device.mk
 
 ##
 # \brief	hsdk device driver related
 ##
-BOARD_HSDK_DEV_CSRCDIR		= $(DEVICES_ROOT)/designware/uart \
-				$(DEVICES_ROOT)/designware/gpio \
-				$(DEVICES_ROOT)/designware/iic \
-				$(DEVICES_ROOT)/designware/spi \
-				$(DEVICES_ROOT)/designware/sdio \
-				$(DEVICES_ROOT)/microchip/mrf24g \
-				$(DEVICES_ROOT)/microchip/mrf24g/driver \
-				$(DEVICES_ROOT)/rtthread/rw009
+BOARD_HSDK_DEV_CSRCDIR		+= $(DEV_CSRCDIR)
+BOARD_HSDK_DEV_ASMSRCDIR	+= $(DEV_ASMSRCDIR)
+BOARD_HSDK_DEV_INCDIR		+= $(DEV_INCDIR)
 
-BOARD_HSDK_DEV_ASMSRCDIR	=
-BOARD_HSDK_DEV_INCDIR		= $(DEVICES_ROOT)/designware/uart \
-				$(DEVICES_ROOT)/designware/gpio \
-				$(DEVICES_ROOT)/designware/iic \
-				$(DEVICES_ROOT)/designware/spi \
-				$(DEVICES_ROOT)/designware/sdio \
-				$(DEVICES_ROOT)/microchip/mrf24g \
-				$(DEVICES_ROOT)/rtthread/rw009
 ##
 # \brief	hsdk board related source and header
 ##
 BOARD_HSDK_CSRCDIR		+= $(BOARD_HSDK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_HSDK_DIR)/common \
-				$(BOARD_HSDK_DIR)/drivers/uart \
-				$(BOARD_HSDK_DIR)/drivers/gpio \
-				$(BOARD_HSDK_DIR)/drivers/spi \
-				$(BOARD_HSDK_DIR)/drivers/iic \
-				$(BOARD_HSDK_DIR)/drivers/pmwifi \
 				$(BOARD_HSDK_DIR)/drivers/creg \
-				$(BOARD_HSDK_DIR)/drivers/mux	\
-				$(BOARD_HSDK_DIR)/drivers/sdcard \
-				$(BOARD_HSDK_DIR)/drivers/sdio \
-				$(BOARD_HSDK_DIR)/drivers/ntshell
+				$(BOARD_HSDK_DIR)/drivers/mux
+
+# select dirvers according to middleware
+ifneq ($(findstring ntshell, $(MID_SEL)), )
+BOARD_HSDK_CSRCDIR += $(BOARD_HSDK_DIR)/drivers/ntshell
+endif
+
+ifneq ($(findstring fatfs, $(MID_SEL)), )
+BOARD_HSDK_CSRCDIR += $(BOARD_HSDK_DIR)/drivers/sdcard
+endif
+
+ifneq ($(findstring lwip, $(MID_SEL)), )
+BOARD_HSDK_CSRCDIR += $(BOARD_HSDK_DIR)/drivers/pmwifi
+endif
 
 BOARD_HSDK_ASMSRCDIR	+= $(BOARD_HSDK_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
 BOARD_HSDK_INCDIR	+= $(BOARD_HSDK_DEV_INCDIR) $(BOARD_CORE_DIR)
@@ -120,7 +117,7 @@ BOARD_HSDK_OBJS = $(BOARD_HSDK_COBJS) $(BOARD_HSDK_ASMOBJS)
 BOARD_HSDK_DEPS = $(call get_deps, $(BOARD_HSDK_OBJS))
 
 # extra macros to be defined
-BOARD_HSDK_DEFINES += $(CORE_DEFINES) -DEMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
+BOARD_HSDK_DEFINES += $(CORE_DEFINES) $(DEV_DEFINES) -DEMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
 
 # genearte library
 BOARD_LIB_HSDK = $(OUT_DIR)/libboard_hsdk.a

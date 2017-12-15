@@ -1,6 +1,8 @@
 # Application name
 APPL ?= freertos_iot_lwm2m_client
 
+EXT_DEV_LIST += wifi/mrf24g
+
 ##
 # HEAP & STACK SETTINGS
 # For LwM2M Stack Usage

@@ -69,20 +69,16 @@
 /** @} end of group MID_FS_FATFS_MMCSPI_CMDS */
 
 typedef struct fatfs_sdcard_spi_ctrl {
-	uint32_t card_type;			/*!< SDCard Type */
-	volatile int32_t drv_status;		/*!< Physical drive status */
+	uint8_t card_type;			/*!< SDCard Type */
+	volatile int8_t drv_status;		/*!< Physical drive status */
 	volatile uint64_t ms_update;		/*!< 1ms update count , no clear */
 	uint32_t init_freq;			/*!< spi frequency during initialization */
 	uint32_t working_freq;			/*!< spi frequency during working */
-	uint32_t clk_mode;			/*!< spi clock mode */
-	int32_t (*spi_open)(uint32_t freq, uint32_t clk_mode);	/*!< open spi with this freq & clk_mode */
-	int32_t (*spi_change_freq)(uint32_t freq);	/*!< change spi working freq */
-	int32_t (*spi_close)(void);		/*!< close spi */
-	int32_t (*spi_cs)(int32_t cs);		/*!< spi chip select control */
-	int32_t (*spi_write)(const void *buf, uint32_t cnt);	/*!< write data by spi */
-	int32_t (*spi_read)(void *buf, uint32_t cnt);		/*!< read data by spi */
-	int32_t (*card_is_writeprotect)(void);			/*!< detect whether card is under write protect */
-	int32_t (*card_is_inserted)(void);			/*!< detect whether card is insert */
+	uint8_t clk_mode;			/*!< spi clock mode */
+	uint8_t spi_master; 			/*!< spi master id */
+	uint8_t cs;				/*!< the cs pin of sd card */
+	int32_t (*card_is_writeprotect)(void);	/*!< detect whether card is under write protect */
+	int32_t (*card_is_inserted)(void);	/*!< detect whether card is insert */
 } FS_SDCARD_SPI_CTRL, *FS_SDCARD_SPI_CTRL_PTR;
 
 
@@ -91,8 +87,8 @@ typedef struct fs_sdcard_info {
 	uint32_t cid[4];
 	uint32_t ocr;
 	uint32_t rca;
-	uint32_t version;
-	uint32_t high_capacity;
+	uint8_t version;
+	uint8_t high_capacity;
 	uint32_t trans_speed;
 	uint64_t c_size;
 	uint32_t read_bl_len;
@@ -103,7 +99,7 @@ typedef struct fs_sdcard_info {
 
 typedef struct fs_sdcard_sdio_ctrl {
 	uint8_t id;
-	volatile int32_t drv_status;
+	volatile int8_t drv_status;
 	void * host;
 	FS_SDCARD_INFO card_info;
 } FS_SDCARD_SDIO_CTRL, *FS_SDCARD_SDIO_CTRL_PTR;

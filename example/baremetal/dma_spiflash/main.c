@@ -73,6 +73,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "spi_flash.h"
+#include "spi_flash_w25qxx.h"
 
 
 #define BUFFER_SIZE 0x4000
@@ -185,6 +186,7 @@ uint32_t flash_poll_test(uint32_t freq)
 	uint32_t i = 0, wr_err_cnt;
 	uint8_t initval;
 	uint32_t cost_cyc;
+	W25QXX_DEF(flash, BOARD_SFLASH_SPI_ID, BOARD_SFLASH_SPI_LIN, FLASH_PAGE_SIZE, FLASH_SECTOR_SIZE);
 
 	initval = (uint8_t)OSP_GET_CUR_MS();
 	EMBARC_PRINTF("Random value:%d\r\n", initval);
@@ -192,16 +194,15 @@ uint32_t flash_poll_test(uint32_t freq)
 	for (i = 0; i < BUFFER_SIZE; i++) {
 		test_buffer[i] = (initval+i) & 0xff;
 	}
-	flash_init();
+	w25qxx_init(flash, freq);
 	perf_init(TIMER_1);
-	flash_change_freq(freq);
-	EMBARC_PRINTF("SPI FLASH ID: 0x%x\r\n", flash_read_id());
+	EMBARC_PRINTF("SPI FLASH ID: 0x%x\r\n", w25qxx_read_id(flash));
 	perf_start();
-	flash_erase(start_addr, BUFFER_SIZE);
+	w25qxx_erase(flash, start_addr, BUFFER_SIZE);
 	cost_cyc = perf_end();
 	EMBARC_PRINTF("SPI Flash Erase Finished in %d cycles\r\n", cost_cyc);
 	perf_start();
-	flash_read(start_addr, BUFFER_SIZE, test_buffer_rd);
+	w25qxx_read(flash, start_addr, BUFFER_SIZE, test_buffer_rd);
 	cost_cyc = perf_end();
 	for (i = 0; i < BUFFER_SIZE; i++) {
 		if (test_buffer_rd[i] != 0xFF) {
@@ -212,11 +213,11 @@ uint32_t flash_poll_test(uint32_t freq)
 	EMBARC_PRINTF("SPI Flash Read Finished in %d cycles\r\n", cost_cyc);
 
 	perf_start();
-	flash_write(start_addr, BUFFER_SIZE, test_buffer);
+	w25qxx_write(flash, start_addr, BUFFER_SIZE, test_buffer);
 	cost_cyc = perf_end();
 	EMBARC_PRINTF("SPI Flash Write Finished in %d cycles\r\n", cost_cyc);
 	perf_start();
-	flash_read(start_addr, BUFFER_SIZE, test_buffer_rd);
+	w25qxx_read(flash, start_addr, BUFFER_SIZE, test_buffer_rd);
 	cost_cyc = perf_end();
 	EMBARC_PRINTF("SPI Flash Read Finished in %d cycles\r\n", cost_cyc);
 	/* verify read and write */

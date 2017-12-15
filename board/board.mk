@@ -13,7 +13,6 @@ BOARDS_ROOT = $(EMBARC_ROOT)/board
 SUPPORTED_BOARDS = $(basename $(notdir $(wildcard $(BOARDS_ROOT)/*/*.mk)))
 BOARD ?= emsk
 USE_BOARD_MAIN ?= 1
-WIFI_SEL ?= 0
 
 override BOARD := $(strip $(BOARD))
 override USE_BOARD_MAIN := $(strip $(USE_BOARD_MAIN))
@@ -29,7 +28,7 @@ else
 BOARD_MAIN_DEFINES =
 endif
 
-EXTRA_BOARD_DEFINES += $(BOARD_MAIN_DEFINES) -DBOARD_WIFI_SEL=$(WIFI_SEL)
+EXTRA_BOARD_DEFINES += $(BOARD_MAIN_DEFINES)
 
 ifeq ($(VALID_TOOLCHAIN), mw)
 LINKER_SCRIPT_FILE ?= $(BOARDS_ROOT)/linker_template_mw.ld

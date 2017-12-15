@@ -81,7 +81,7 @@
 #include "embARC_debug.h"
 
 #include "MQTTClient.h"
-
+#include "adt7420.h"
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
@@ -181,17 +181,21 @@ static void lights_init(void) {
 
 int main(void)
 {
+	ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, BOARD_TEMP_IIC_SLVADDR);
 	EMBARC_PRINTF("embARC Xively MQTT Smart Home Demo\r\n");
 
 	lights_init();
-	temp_sensor_init(BOARD_TEMP_IIC_SLVADDR);
+	adt7420_sensor_init(temp);
 
 	device_msg = xQueueCreate(10, sizeof( uint32_t ));
 
-	if (xTaskCreate(task_xively_rx, "xively mqtt client", 512, (void *)1,
+	if (xTaskCreate(task_xively_rx, "xively mqtt client", 512, (void *)temp,
 		TSKPRI_XIVELYRX, &task_xivelyrx_handle) != pdPASS) {
 		EMBARC_PRINTF("create mqtt client failed\r\n");
 		return -1;
+	}
+	while(1){
+		board_delay_ms(5000, OSP_DELAY_OS_COMPAT_ENABLE);
 	}
 
 
@@ -285,7 +289,7 @@ static void task_xively_rx(void *par)
 	}
 
 
-	if (xTaskCreate(task_xively_tx, "xively update task", 512, (void *)1,
+	if (xTaskCreate(task_xively_tx, "xively update task", 512, par,
 		TSKPRI_XIVELYTX, &task_xivelytx_handle) != pdPASS) {
 		EMBARC_PRINTF("create xively update task failed\r\n");
 		vTaskDelete(NULL);
@@ -305,7 +309,6 @@ static void task_xively_rx(void *par)
 
 static void task_xively_tx(void *par)
 {
-	int32_t val;
 	float temp_val;
 	uint32_t msg;
 	int32_t delay_s = TIME_DELAY_UPDATE;
@@ -326,10 +329,8 @@ static void task_xively_tx(void *par)
 
 		} else {
 
-			if (temp_sensor_read(&val) != E_OK) {
-				temp_val = 0;
-			} else {
-				temp_val = val / 10.0;
+			if (adt7420_sensor_read((ADT7420_DEF_PTR)par, &temp_val) != E_OK) {
+				temp_val = 0.0f;
 			}
 			sprintf(msg_string, "temperature,%.3f\r\n", temp_val);
 		}

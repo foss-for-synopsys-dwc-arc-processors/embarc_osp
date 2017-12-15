@@ -45,29 +45,27 @@
 #define _EMSK_H_
 
 #include "arc_em.h"
+#include "arc_builtin.h"
 
-#include "drivers/iic/dw_iic_obj.h"
-#include "drivers/spi/dw_spi_obj.h"
-#include "drivers/uart/dw_uart_obj.h"
-#include "drivers/gpio/dw_gpio_obj.h"
-#include "drivers/gpio/emsk_gpio.h"
-#include "drivers/spiflash/spiflash.h"
-#include "drivers/pmwifi/pmwifi.h"
-#include "drivers/temperature/emsk_temperature.h"
-#include "drivers/sdcard/emsk_sdcard.h"
+#include "drivers/ip/designware/iic/dw_iic_obj.h"
+#include "drivers/ip/designware/spi/dw_spi_obj.h"
+#include "drivers/ip/designware/uart/dw_uart_obj.h"
+#include "drivers/ip/designware/gpio/dw_gpio_obj.h"
 #include "drivers/ntshell/ntshell_io.h"
-#include "drivers/ble/hm1x.h"
-#include "drivers/pmrf/pmrf.h"
-#include "drivers/pmrf/mrf24j40.h"
+#include "drivers/sdcard/emsk_sdcard.h"
+#include "drivers/pmwifi/pmwifi.h"
+#include "dev_pinmux.h"
 
 #include "common/emsk_timer.h"
+#include "common/emsk_gpio.h"
 
 #include "emsk_hardware.h"
 
-#define EMSK_GPIO_PORT_A		DW_GPIO_PORT_A
-#define EMSK_GPIO_PORT_B		DW_GPIO_PORT_B
-#define EMSK_GPIO_PORT_C		DW_GPIO_PORT_C
-#define EMSK_GPIO_PORT_D		DW_GPIO_PORT_D
+#ifdef ARC_FEATURE_DMP_PERIPHERAL
+#define PERIPHERAL_BASE		ARC_FEATURE_DMP_PERIPHERAL
+#else
+#define PERIPHERAL_BASE		_arc_aux_read(AUX_DMP_PERIPHERAL)
+#endif
 
 /* common macros must be defined by all boards */
 
@@ -84,7 +82,7 @@
 
 #define BOARD_SDCARD_SPI_LINE		EMSK_SPI_LINE_SDCARD
 #define BOARD_WIFI_SPI_LINE		EMSK_SPI_LINE_1
-#define BOARD_SFLASH_SPI_LINE		EMSK_SPI_LINE_SFLASH
+#define BOARD_SFLASH_SPI_LIN		EMSK_SPI_LINE_SFLASH
 
 #ifndef BOARD_SPI_FREQ
 #define BOARD_SPI_FREQ			(1000000)
@@ -153,10 +151,6 @@
 #define WF_MAC_ADDR3			(EMSK_PMWIFI_0_MAC_ADDR3)
 #define WF_MAC_ADDR4			(EMSK_PMWIFI_0_MAC_ADDR4)
 #define WF_MAC_ADDR5			(EMSK_PMWIFI_0_MAC_ADDR5)
-
-/** Possible Pmod WiFi choices */
-#define PMWIFI_MRF24G			0
-#define PMWIFI_RW009			1
 
 #define BOARD_PMWIFI_0_ID		EMSK_PMWIFI_0_ID
 #define BOARD_PMWIFI_ID_MAX		EMSK_PMWIFI_0_ID

@@ -43,45 +43,16 @@
 #ifndef _PMWIFI_H_
 #define _PMWIFI_H_
 
-#include "wf_dev_hal.h"
+#if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
+
+#include "dev_wnic.h"
 
 #define EMSK_PMWIFI_0_ID		0
 
 #define USE_EMSK_PMWIFI_0		1
 
-/** BOARD_WIFI_SEL can be changed in board.mk by changing WIFI_SEL, possible choices defined in emsk.h */
-#ifndef BOARD_WIFI_SEL
-#define BOARD_WIFI_SEL			PMWIFI_MRF24G
-#endif
-
-
-#define RW009_SPI_ID		DW_SPI_0_ID
-
-#ifdef EMSK_PMWIFI_USE_J6
-/** J6 is not the default connection, conflict with pmod rf(J6) */
-#define RW009_SPI_LINE		BOARD_WIFI_SPI_LINE
-#define RW009_GPIO_ID		DW_GPIO_PORT_A
-
-#define RW009_INT_BUSY_PIN	(28)
-#define RW009_RST_PIN		(29)
-#define RW009_CS_PIN		(30)
-#else
-/** by default, use J5 */
-#define RW009_SPI_LINE		BOARD_WIFI_SPI_LINE
-#define RW009_GPIO_ID		DW_GPIO_PORT_A
-
-#define RW009_INT_BUSY_PIN	(24)
-#define RW009_RST_PIN		(25)
-#define RW009_CS_PIN		(26)
-#endif
-
+/* configurations for RW009 */
 #define RW009_SPI_CPULOCK_ENABLE
-
-/** RW009 WIFI SPI FREQ & CLK MODE SETTINGS */
-#define RW009_SPIFREQ			BOARD_SPI_FREQ
-/* Must use SPI_CLK_MODE_0 */
-#define RW009_SPICLKMODE		BOARD_SPI_CLKMODE
-
 
 #define EMSK_PMWIFI_0_MAC_ADDR0		(0x00)
 #define EMSK_PMWIFI_0_MAC_ADDR1		(0x1e)
@@ -100,6 +71,7 @@ extern void pmwifi_all_install(void);
 }
 #endif
 
+#endif  /* MID_LWIP && MID_LWIP_CONTRIB */
 #endif /* _PMWIFI_H_ */
 
 /** @} end of group BOARD_EMSK_DRV_PMODWIFI */

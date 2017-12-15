@@ -71,7 +71,6 @@
 
 #include "sdcard_sdio.h"
 
-
 #define SDCARD_SDIO_ID		0
 
 #if (USE_HSDK_SDCARD_SDIO_0)
@@ -80,7 +79,6 @@ static FS_SDCARD_SDIO_CTRL sdcard_sdio0 = {
 	.id = 0,
 	.drv_status = STA_NOINIT
 };
-
 
 static int32_t sdcard_sdio_0_diskio_initialize(void)
 {
@@ -113,7 +111,6 @@ static void sdcard_sdio_0_diskio_timerproc(void)
 	return;
 }
 
-
 FATFS_DISKIO sdcard_sdio_0_diskio = {
 	(void *)&sdcard_sdio0,
 	sdcard_sdio_0_diskio_initialize,
@@ -123,8 +120,6 @@ FATFS_DISKIO sdcard_sdio_0_diskio = {
 	sdcard_sdio_0_diskio_ioctl,
 	sdcard_sdio_0_diskio_timerproc
 };
-
-
 
 #endif /* USE_HSDK_SDCARD_SDIO_0 */
 

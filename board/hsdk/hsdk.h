@@ -46,20 +46,20 @@
 
 #include "arc_hs.h"
 
-#include "drivers/iic/dw_iic_obj.h"
-#include "drivers/spi/dw_spi_obj.h"
-#include "drivers/uart/dw_uart_obj.h"
-#include "drivers/gpio/dw_gpio_obj.h"
+#include "drivers/ip/designware/iic/dw_iic_obj.h"
+#include "drivers/ip/designware/spi/dw_spi_obj.h"
+#include "drivers/ip/designware/uart/dw_uart_obj.h"
+#include "drivers/ip/designware/gpio/dw_gpio_obj.h"
+#include "drivers/ip/designware/sdio/dw_sdio_obj.h"
 #include "drivers/pmwifi/pmwifi.h"
 #include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/creg/creg_hsdc.h"
-#include "drivers/mux/mux.h"
 #include "common/hsdk_timer.h"
+#include "dev_pinmux.h"
+
 
 #include "hsdk_hardware.h"
-
-#define HSDK_GPIO_PORT_A		DW_GPIO_PORT_A
 
 /* common macros must be defined by all boards */
 
@@ -98,13 +98,6 @@
 #define BOARD_CPU_CLOCK			CLK_CPU
 #define BOARD_DEV_CLOCK			CLK_BUS_APB
 
-#define BOARD_LED_MASK			(0x1ff)
-#define BOARD_LED_CNT			(9)
-#define BOARD_BTN_MASK			(0x7)
-#define BOARD_BTN_CNT			(3)
-#define BOARD_SWT_MASK			(0xf)
-#define BOARD_SWT_CNT			(4)
-
 #define BOARD_ONBOARD_NTSHELL_ID	(HSDK_NTSHELL_0_ID)
 #define NTSHELL_CONSOLE_ID		(HSDK_NTSHELL_0_ID)
 #define NTSHELL_NETWORK_ID		(HSDK_NTSHELL_1_ID)
@@ -142,10 +135,6 @@
 #define WF_MAC_ADDR3			(HSDK_PMWIFI_0_MAC_ADDR3)
 #define WF_MAC_ADDR4			(HSDK_PMWIFI_0_MAC_ADDR4)
 #define WF_MAC_ADDR5			(HSDK_PMWIFI_0_MAC_ADDR5)
-
-/** Possible Pmod WiFi choices */
-#define PMWIFI_MRF24G			0
-#define PMWIFI_RW009			1
 
 #define BOARD_PMWIFI_0_ID		HSDK_PMWIFI_0_ID
 #define BOARD_PMWIFI_ID_MAX		HSDK_PMWIFI_0_ID

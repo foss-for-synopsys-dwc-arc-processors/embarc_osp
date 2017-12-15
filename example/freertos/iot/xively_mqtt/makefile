@@ -1,6 +1,7 @@
 # Application name
 APPL ?= xively_mqtt
 
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
 #
 # root dir of embARC
 #

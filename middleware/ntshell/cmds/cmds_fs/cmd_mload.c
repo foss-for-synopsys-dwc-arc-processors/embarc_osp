@@ -82,6 +82,11 @@ static NTSHELL_IO_PREDEF;
 static uint32_t mcs_dest_mode = 0x01; /* 0x01: write mcs file to spi flash, 0x02: compare data between spi flash with mcs file*/
 #define BUFFER_SIZE					(1024)
 
+#include "spi_flash_w25qxx.h"
+
+extern W25QXX_DEF_PTR w25q128bv;
+
+
 /** convert ASCII to int */
 static char * convert_chars_to_int(char *ptr, int32_t length, void *data)
 {
@@ -154,15 +159,15 @@ static int32_t write_bin(uint32_t address, uint8_t *data, uint8_t data_length)
 #else
 			if(mcs_dest_mode == 0x01) {
 				/* write mcs flie to spi flash */
-				ercd = flash_write(bin_address, bin_buffer_cnt, bin_buffer);
+				ercd = w25qxx_write(w25q128bv, bin_address, bin_buffer_cnt, bin_buffer);
 				if(ercd == -1) {
 					CMD_DEBUG("writing data to SPI flash failed, the address: %8x, the size: %4d\r\n", bin_address, bin_buffer_cnt);
 					goto error_exit;
 				}
-				flash_wait_ready();
+				w25qxx_wait_ready(w25q128bv);
 			} else if (mcs_dest_mode == 0x02) {
 				/* check FPGA configure between spi flash and specified mcs file */
-				cnt = flash_read(bin_address, bin_buffer_cnt, spi_flash_buffer);
+				cnt = w25qxx_read(w25q128bv, bin_address, bin_buffer_cnt, spi_flash_buffer);
 				if ((cnt < 0) && (cnt != bin_buffer_cnt)) {
 					CMD_DEBUG("Read SPI flash error!\r\n");
 					ercd = E_SYS;
@@ -198,15 +203,15 @@ static int32_t write_bin(uint32_t address, uint8_t *data, uint8_t data_length)
 #else
 		if(mcs_dest_mode == 0x01) {
 			/* write mcs flie to spi flash */
-			ercd = flash_write(bin_address, bin_buffer_cnt, bin_buffer);
+			ercd = w25qxx_write(w25q128bv, bin_address, bin_buffer_cnt, bin_buffer);
 			if(ercd == -1) {
 				CMD_DEBUG("writing data to SPI flash failed, the address: %8x, the size: %4d\r\n", bin_address, bin_buffer_cnt);
 				goto error_exit;
 			}
-			flash_wait_ready();
+			w25qxx_wait_ready(w25q128bv);
 		} else if (mcs_dest_mode == 0x02) {
 			/* check FPGA configure between spi flash and specified mcs file */
-			cnt = flash_read(bin_address, bin_buffer_cnt, spi_flash_buffer);
+			cnt = w25qxx_read(w25q128bv, bin_address, bin_buffer_cnt, spi_flash_buffer);
 			if ((cnt < 0) && (cnt != bin_buffer_cnt)) {
 				CMD_DEBUG("Read SPI flash error!\r\n");
 				ercd = E_SYS;
@@ -261,15 +266,15 @@ static int32_t close_bin(void)
 #else
 	if(mcs_dest_mode == 0x01) {
 		/* write mcs flie to spi flash */
-		ercd = flash_write(bin_address, bin_buffer_cnt, bin_buffer);
+		ercd = w25qxx_write(w25q128bv, bin_address, bin_buffer_cnt, bin_buffer);
 		if(ercd == -1) {
 			CMD_DEBUG("writing data to SPI flash failed, the address: %8x, the size: %4d\r\n", bin_address, bin_buffer_cnt);
 			goto error_exit;
 		}
-		flash_wait_ready();
+		w25qxx_wait_ready(w25q128bv);
 	} else if (mcs_dest_mode == 0x02) {
 		/* check FPGA configure between spi flash and specified mcs file */
-		cnt = flash_read(bin_address, bin_buffer_cnt, spi_flash_buffer);
+		cnt = w25qxx_read(w25q128bv, bin_address, bin_buffer_cnt, spi_flash_buffer);
 		if ((cnt < 0) && (cnt != bin_buffer_cnt)) {
 			CMD_DEBUG("Read SPI flash error!\r\n");
 			ercd = E_SYS;
@@ -493,7 +498,7 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 		goto error_exit;
 	}
 
-	flash_init();
+	w25qxx_init(w25q128bv, BOARD_SPI_FREQ);
 
 	opterr = 0;
 	optind = 1;
@@ -507,7 +512,7 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 				goto error_exit;
 				break;
 			case 'i':
-				ID = flash_read_id();
+				ID = w25qxx_read_id(w25q128bv);
 				CMD_DEBUG("Device ID = %x\r\n", ID);
 				goto error_exit;
 				break;
@@ -568,18 +573,18 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 	/* erase the whole SPI flash */
 	if(mode & 0x08) {
 		CMD_DEBUG("Erasing SPI flash ...\r");
-		ercd = flash_erase(FPGA_IMAGE_START, FPGA_IMAGE_SIZE);
+		ercd = w25qxx_erase(w25q128bv, FPGA_IMAGE_START, FPGA_IMAGE_SIZE);
 		if(ercd == -1) {
 			CMD_DEBUG("Erase SPI flash error!\r\n");
 			goto error_exit;
 		} else {
 			CMD_DEBUG("Erase SPI flash successfully!\r\n");
 		}
-		flash_wait_ready();
+		w25qxx_wait_ready(w25q128bv);
 	}
 	/* read the data from SPI flash */
 	if(mode & 0x01) {
-		cnt = flash_read(spi_address, 128, local_buf);
+		cnt = w25qxx_read(w25q128bv, spi_address, 128, local_buf);
 		if (cnt < 0) {
 			ercd = E_SYS;
 			goto error_exit;

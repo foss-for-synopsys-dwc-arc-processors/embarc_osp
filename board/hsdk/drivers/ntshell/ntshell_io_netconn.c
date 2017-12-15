@@ -63,8 +63,6 @@
 #include "ntshell_io_netconn.h"
 #include "ntshell_task.h"
 
-#include "board.h"
-
 #include "lwip/opt.h"
 #include "lwip/mem.h"
 #include "lwip/debug.h"

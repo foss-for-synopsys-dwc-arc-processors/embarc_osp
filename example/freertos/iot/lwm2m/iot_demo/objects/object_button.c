@@ -63,7 +63,7 @@
 
 #define LWM2M_EMSK_INSTANCE_ID  0
 
-#define BUTTON_SENSOR_ID    EMSK_GPIO_PORT_A
+#define BUTTON_SENSOR_ID    DEV_GPIO_PORT_A
 
 static void button0_isr(void *ptr);
 static void button1_isr(void *ptr);

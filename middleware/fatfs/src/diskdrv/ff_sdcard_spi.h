@@ -20,11 +20,11 @@
 
 #include "ff_diskio.h"
 
-extern int32_t sdcard_spi_diskio_initialize(FATFS_DISKIO *diskio);
-extern int32_t sdcard_spi_diskio_status(FATFS_DISKIO *diskio);
-extern int32_t sdcard_spi_diskio_read(FATFS_DISKIO *diskio, void *buf, uint32_t sector, uint32_t count);
-extern int32_t sdcard_spi_diskio_write(FATFS_DISKIO *diskio, const void *buf, uint32_t sector, uint32_t count);
-extern int32_t sdcard_spi_diskio_ioctl(FATFS_DISKIO *diskio, uint32_t cmd, void *buf);
-extern void sdcard_spi_diskio_timerproc(FATFS_DISKIO *diskio);
+extern int32_t sdcard_spi_diskio_initialize(FATFS_DISKIO_PTR diskio);
+extern int32_t sdcard_spi_diskio_status(FATFS_DISKIO_PTR diskio);
+extern int32_t sdcard_spi_diskio_read(FATFS_DISKIO_PTR diskio, void *buf, uint32_t sector, uint32_t count);
+extern int32_t sdcard_spi_diskio_write(FATFS_DISKIO_PTR diskio, const void *buf, uint32_t sector, uint32_t count);
+extern int32_t sdcard_spi_diskio_ioctl(FATFS_DISKIO_PTR diskio, uint32_t cmd, void *buf);
+extern void sdcard_spi_diskio_timerproc(FATFS_DISKIO_PTR diskio);
 
 #endif /** _FF_SDCARD_SPI_H_ */

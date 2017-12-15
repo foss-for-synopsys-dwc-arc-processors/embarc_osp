@@ -1,6 +1,7 @@
 # Application name
 APPL ?= ble_hm1x
 
+EXT_DEV_LIST += ble/hm1x
 #
 # root dir of embARC
 #
