@@ -124,11 +124,6 @@ error_exit:
 	return;
 }
 
-/**
- * workaround for get led value
- * because gpio read return is not right
- */
-static uint32_t g_led_val;
 /** write 1 to light on led bit, else light off led */
 void led_write(uint32_t led_val, uint32_t mask)
 {
@@ -139,14 +134,21 @@ void led_write(uint32_t led_val, uint32_t mask)
 	mask = (mask << EMSK_LED_OFFSET) & EMSK_LED_MASK;
 	led_port->gpio_write(led_val, mask);
 
-	g_led_val = led_val;
+error_exit:
+	return;
+}
+
+/** toggle masked led */
+void led_toggle(uint32_t mask)
+{
+	EMSK_GPIO_CHECK_EXP_NORTN(led_port != NULL);
+	led_port->gpio_control(GPIO_CMD_TOGGLE_BITS, CONV2VOID(mask));
 
 error_exit:
 	return;
 }
 
 /** read led value, on for 1, off for 0 */
-/** \todo need to find why when led set to output then can't get the right value of led */
 uint32_t led_read(uint32_t mask)
 {
 	uint32_t value;

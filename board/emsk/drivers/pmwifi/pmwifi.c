@@ -315,7 +315,9 @@ static int32_t pmwifi_0_spi_cs(int32_t cs)
 	int32_t ercd = E_OK;
 	DEV_SPI *pmwifi_spi_ptr;
 	uint32_t cs_line = EMSK_PMWIFI_0_SPI_LINE;
-	static unsigned int cs_cpu_status;
+#ifdef EMSK_PMWIFI_0_SPI_CPULOCK_ENABLE
+	unsigned int cs_cpu_status;
+#endif
 
 	pmwifi_spi_ptr = spi_get_dev(EMSK_PMWIFI_0_SPI_ID);
 	PMWIFI_CHECK_EXP(pmwifi_spi_ptr != NULL, E_OBJ);

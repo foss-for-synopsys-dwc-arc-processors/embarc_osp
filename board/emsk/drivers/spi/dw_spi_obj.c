@@ -77,6 +77,7 @@
 static void dw_spi_0_isr(void *ptr);
 #define DW_SPI_0_RELBASE	(REL_REGBASE_SPI0)	/*!< designware spi 0 relative baseaddr */
 #define DW_SPI_0_INTNO		(INTNO_SPI_MASTER)	/*!< designware spi 0 interrupt number  */
+#define DW_SPI_0_RX_SAMPLEDLY	0			/*!< designware spi 0 RXD Sample Delay  */
 
 #define DW_SPI_0_TX_FIFO_LEN	(32)
 #define DW_SPI_0_RX_FIFO_LEN	(32)
@@ -169,6 +170,7 @@ static void dw_spi_0_install(void)
 	dw_spi_ctrl_ptr->tx_fifo_len = DW_SPI_0_TX_FIFO_LEN;
 	dw_spi_ctrl_ptr->rx_fifo_len = DW_SPI_0_TX_FIFO_LEN;
 	dw_spi_ctrl_ptr->dw_apb_bus_freq = CLK_BUS_APB;
+	dw_spi_ctrl_ptr->rx_sampledly = DW_SPI_0_RX_SAMPLEDLY;
 	dw_spi_ctrl_ptr->dw_spi_int_handler = dw_spi_0_isr;
 	/* Variables which always change during spi operation */
 	dw_spi_ctrl_ptr->int_status = 0;
@@ -191,6 +193,7 @@ static void dw_spi_0_install(void)
 static void dw_spi_1_isr(void *ptr);
 #define DW_SPI_1_RELBASE	(REL_REGBASE_SPI1)	/*!< designware spi 1 relative baseaddr */
 #define DW_SPI_1_INTNO		(INTNO_SPI_SLAVE)	/*!< designware spi 1 interrupt number  */
+#define DW_SPI_1_RX_SAMPLEDLY	0			/*!< designware spi 1 RXD Sample Delay  */
 
 #define DW_SPI_1_TX_FIFO_LEN	(32)
 #define DW_SPI_1_RX_FIFO_LEN	(32)
@@ -263,6 +266,7 @@ static void dw_spi_1_install(void)
 	dw_spi_ctrl_ptr->support_modes = DW_SPI_1_SUPPORTED_MODE;
 	dw_spi_ctrl_ptr->tx_fifo_len = DW_SPI_1_TX_FIFO_LEN;
 	dw_spi_ctrl_ptr->rx_fifo_len = DW_SPI_1_TX_FIFO_LEN;
+	dw_spi_ctrl_ptr->rx_sampledly = DW_SPI_1_RX_SAMPLEDLY;
 	dw_spi_ctrl_ptr->dw_apb_bus_freq = CLK_BUS_APB;
 	dw_spi_ctrl_ptr->dw_spi_int_handler = dw_spi_1_isr;
 	/* Variables which always change during spi operation */

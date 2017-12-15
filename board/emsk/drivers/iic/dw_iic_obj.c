@@ -68,6 +68,7 @@
 #else
 #define PERIPHERAL_BASE		_arc_aux_read(AUX_DMP_PERIPHERAL)
 #endif
+#define DW_IIC_CLOCK		CLK_BUS_APB
 
 /**
  * \name	EMSK DesignWare IIC 0 Object Instantiation
@@ -82,6 +83,8 @@ static void dw_iic_0_isr(void *ptr);
 #define DW_IIC_0_RX_FIFO_LEN	(32)
 #define DW_IIC_0_MASTER_CODE	(0)
 #define DW_IIC_0_TARADDR	(0x55)
+#define DW_IIC_0_CLK		(DW_IIC_CLOCK)
+#define DW_IIC_0_IC_CAPLOADING	(DW_IIC_CAP_LOADING_100PF)
 
 DEV_IIC			dw_iic_0;			/*!< designware iic object */
 DW_IIC_CTRL		dw_iic_0_ctrl;			/*!< designware iic 0 ctrl */
@@ -139,6 +142,8 @@ static void dw_iic_0_install(void)
 	/* iic ctrl init */
 	dw_iic_ctrl_ptr->dw_iic_regs = dw_iic_reg_ptr;
 	/* Variables which should be set during object implementation */
+	dw_iic_ctrl_ptr->ic_clkhz = DW_IIC_0_CLK;
+	dw_iic_ctrl_ptr->ic_caploading= DW_IIC_0_IC_CAPLOADING;
 	dw_iic_ctrl_ptr->support_modes = DW_IIC_BOTH_SUPPORTED;
 	dw_iic_ctrl_ptr->tx_fifo_len = DW_IIC_0_TX_FIFO_LEN;
 	dw_iic_ctrl_ptr->rx_fifo_len = DW_IIC_0_RX_FIFO_LEN;
@@ -146,8 +151,6 @@ static void dw_iic_0_install(void)
 	dw_iic_ctrl_ptr->retry_cnt = DW_IIC_MAX_RETRY_COUNT;
 	dw_iic_ctrl_ptr->intno = DW_IIC_0_INTNO;
 	dw_iic_ctrl_ptr->dw_iic_int_handler = dw_iic_0_isr;
-	dw_iic_ctrl_ptr->iic_spklen = dw_iic_spklen_const;
-	dw_iic_ctrl_ptr->iic_scl_cnt = dw_iic_sclcnt_const;
 	/* Variables which always change during iic operation */
 	dw_iic_ctrl_ptr->int_status = 0;
 	dw_iic_ctrl_ptr->iic_tx_over = 0;
@@ -176,6 +179,8 @@ static void dw_iic_1_isr(void *ptr);
 #define DW_IIC_1_RX_FIFO_LEN	(32)
 #define DW_IIC_1_MASTER_CODE	(1)
 #define DW_IIC_1_TARADDR	(0x56)
+#define DW_IIC_1_CLK		(DW_IIC_CLOCK)
+#define DW_IIC_1_IC_CAPLOADING	(DW_IIC_CAP_LOADING_100PF)
 
 DEV_IIC		dw_iic_1;				/*!< designware iic 1 object */
 DW_IIC_CTRL 	dw_iic_1_ctrl;				/*!< designware iic 1 ctrl */
@@ -233,6 +238,8 @@ static void dw_iic_1_install(void)
 	/* iic ctrl init */
 	dw_iic_ctrl_ptr->dw_iic_regs = dw_iic_reg_ptr;
 	/* Variables which should be set during object implementation */
+	dw_iic_ctrl_ptr->ic_clkhz = DW_IIC_1_CLK;
+	dw_iic_ctrl_ptr->ic_caploading= DW_IIC_1_IC_CAPLOADING;
 	dw_iic_ctrl_ptr->support_modes = DW_IIC_BOTH_SUPPORTED;
 	dw_iic_ctrl_ptr->tx_fifo_len = DW_IIC_1_TX_FIFO_LEN;
 	dw_iic_ctrl_ptr->rx_fifo_len = DW_IIC_1_RX_FIFO_LEN;
@@ -240,8 +247,6 @@ static void dw_iic_1_install(void)
 	dw_iic_ctrl_ptr->retry_cnt = DW_IIC_MAX_RETRY_COUNT;
 	dw_iic_ctrl_ptr->intno = DW_IIC_1_INTNO;
 	dw_iic_ctrl_ptr->dw_iic_int_handler = dw_iic_1_isr;
-	dw_iic_ctrl_ptr->iic_spklen = dw_iic_spklen_const;
-	dw_iic_ctrl_ptr->iic_scl_cnt = dw_iic_sclcnt_const;
 	/* Variables which always change during iic operation */
 	dw_iic_ctrl_ptr->int_status = 0;
 	dw_iic_ctrl_ptr->iic_tx_over = 0;

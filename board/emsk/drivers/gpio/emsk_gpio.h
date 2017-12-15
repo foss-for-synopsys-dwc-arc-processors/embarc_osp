@@ -84,6 +84,7 @@ extern void emsk_switch_init(void);
 extern void emsk_gpio_init(void);
 extern void led_write(uint32_t led_val, uint32_t mask);
 extern uint32_t led_read(uint32_t mask);
+extern void led_toggle(uint32_t mask);
 extern uint32_t switch_read(uint32_t mask);
 extern uint32_t button_read(uint32_t mask);
 

@@ -54,6 +54,35 @@
 #define BOARD_WIFI_SEL			PMWIFI_MRF24G
 #endif
 
+
+#define RW009_SPI_ID		DW_SPI_0_ID
+
+#ifdef EMSK_PMWIFI_USE_J6
+/** J6 is not the default connection, conflict with pmod rf(J6) */
+#define RW009_SPI_LINE		BOARD_WIFI_SPI_LINE
+#define RW009_GPIO_ID		DW_GPIO_PORT_A
+
+#define RW009_INT_BUSY_PIN	(28)
+#define RW009_RST_PIN		(29)
+#define RW009_CS_PIN		(30)
+#else
+/** by default, use J5 */
+#define RW009_SPI_LINE		BOARD_WIFI_SPI_LINE
+#define RW009_GPIO_ID		DW_GPIO_PORT_A
+
+#define RW009_INT_BUSY_PIN	(24)
+#define RW009_RST_PIN		(25)
+#define RW009_CS_PIN		(26)
+#endif
+
+#define RW009_SPI_CPULOCK_ENABLE
+
+/** RW009 WIFI SPI FREQ & CLK MODE SETTINGS */
+#define RW009_SPIFREQ			BOARD_SPI_FREQ
+/* Must use SPI_CLK_MODE_0 */
+#define RW009_SPICLKMODE		BOARD_SPI_CLKMODE
+
+
 #define EMSK_PMWIFI_0_MAC_ADDR0		(0x00)
 #define EMSK_PMWIFI_0_MAC_ADDR1		(0x1e)
 #define EMSK_PMWIFI_0_MAC_ADDR2		(0xc0)
