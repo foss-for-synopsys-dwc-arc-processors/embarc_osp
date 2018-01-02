@@ -60,7 +60,6 @@ The layer contains the following functions:	\n
 |  BOARD_SYS_TIMER_INTNO              | System 1 ms timer interrupt vector no    |
 |  BOARD_SYS_TIMER_HZ                 | System timer count frequency (1KHz as default)    |
 |  BOARD_SPI_FREQ                     | Board SPI interface common frequency         |
-|  BOARD_SPI_CLKMODE                  | Board SPI interface common clock mode       |
 |  BOARD_SYS_TIMER_MS_HZ              | Board timer count frequency        |
 |  BOARD_SYS_TIMER_MS_CONV            | Converter of board timer count frequency to system timer count frequency           |
 |  BOARD_OS_TIMER_ID                  | OS kernel timer ID      |
@@ -138,6 +137,15 @@ The BSP Layer currently supports the following boards:
     Various peripheral drivers for various examples
   -# <b>configs</b>  \n
     Different versions of axs, and various core configurations for different version
+
+- <b>\subpage page_board_hsdk</b> \n
+  HSDK board support can be found under board/hsdk, detailed in <b>\ref BOARD_HSDK "ARC HS Developement Kit (HSDK)"</b>. It includes the following sub-folders:
+  -# <b>\ref BOARD_HSDK_COMMON "common"</b> \n
+    HSDK board initialization functions and 1 ms interrupt timer function
+  -# <b>\ref BOARD_HSDK_DRIVER "drivers"</b>  \n
+    Various peripheral drivers for various examples
+  -# <b>configs</b>  \n
+    Different versions of hsdk, and various core configurations for different version
 
 \section sect_board_add_new_board_to_embARC Adding New Board to embARC
 
