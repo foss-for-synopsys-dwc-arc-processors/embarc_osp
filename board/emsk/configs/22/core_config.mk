@@ -11,3 +11,4 @@
 # Select the core configuration loaded into FPGA chip
 ##
 CUR_CORE ?= arcem7d
+ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio

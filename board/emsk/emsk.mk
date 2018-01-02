@@ -73,45 +73,43 @@ endif
 OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 BOARD_EMSK_DEFINES += -DBOARD_SPI_FREQ=800000
 
-## Build Rules
-DEVICES_ROOT = $(EMBARC_ROOT)/device
-
-##
-# \brief	emsk device driver related
-##
-BOARD_EMSK_DEV_CSRCDIR		= $(DEVICES_ROOT)/designware/iic \
-				$(DEVICES_ROOT)/designware/spi \
-				$(DEVICES_ROOT)/designware/uart \
-				$(DEVICES_ROOT)/designware/gpio \
-				$(DEVICES_ROOT)/microchip/mrf24g \
-				$(DEVICES_ROOT)/microchip/mrf24g/driver \
-				$(DEVICES_ROOT)/rtthread/rw009
-
-BOARD_EMSK_DEV_ASMSRCDIR	=
-BOARD_EMSK_DEV_INCDIR		= $(DEVICES_ROOT)/designware/iic \
-				$(DEVICES_ROOT)/designware/spi \
-				$(DEVICES_ROOT)/designware/uart \
-				$(DEVICES_ROOT)/designware/gpio \
-				$(DEVICES_ROOT)/microchip/mrf24g \
-				$(DEVICES_ROOT)/rtthread/rw009
 
 ##
 # \brief	emsk board related source and header
 ##
-BOARD_EMSK_CSRCDIR		+= $(BOARD_EMSK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
-				$(BOARD_EMSK_DIR)/common \
-				$(BOARD_EMSK_DIR)/drivers/mux \
-				$(BOARD_EMSK_DIR)/drivers/uart \
-				$(BOARD_EMSK_DIR)/drivers/iic \
-				$(BOARD_EMSK_DIR)/drivers/spi \
-				$(BOARD_EMSK_DIR)/drivers/gpio \
-				$(BOARD_EMSK_DIR)/drivers/spiflash \
-				$(BOARD_EMSK_DIR)/drivers/pmwifi \
-				$(BOARD_EMSK_DIR)/drivers/temperature \
-				$(BOARD_EMSK_DIR)/drivers/sdcard \
-				$(BOARD_EMSK_DIR)/drivers/ntshell \
-				$(BOARD_EMSK_DIR)/drivers/ble \
-				$(BOARD_EMSK_DIR)/drivers/pmrf
+# onchip ip object rules
+ifdef ONCHIP_IP_LIST
+	BOARD_EMSK_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_EMSK_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
+endif
+
+# onboard device rules
+EXT_DEV_LIST += flash/w25qxx
+
+include $(EMBARC_ROOT)/device/device.mk
+
+##
+# \brief	emsk device driver related
+##
+BOARD_EMSK_DEV_CSRCDIR		+= $(DEV_CSRCDIR)
+BOARD_EMSK_DEV_ASMSRCDIR	+= $(DEV_ASMSRCDIR)
+BOARD_EMSK_DEV_INCDIR		+= $(DEV_INCDIR)
+
+BOARD_EMSK_CSRCDIR += $(BOARD_EMSK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
+			$(BOARD_EMSK_DIR)/common \
+			$(BOARD_EMSK_DIR)/drivers/mux
+
+# select dirvers according to middleware
+ifneq ($(findstring ntshell, $(MID_SEL)), )
+BOARD_EMSK_CSRCDIR += $(BOARD_EMSK_DIR)/drivers/ntshell
+endif
+
+ifneq ($(findstring fatfs, $(MID_SEL)), )
+BOARD_EMSK_CSRCDIR += $(BOARD_EMSK_DIR)/drivers/sdcard
+endif
+
+ifneq ($(findstring lwip, $(MID_SEL)), )
+BOARD_EMSK_CSRCDIR += $(BOARD_EMSK_DIR)/drivers/pmwifi
+endif
 
 BOARD_EMSK_ASMSRCDIR	+= $(BOARD_EMSK_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
 BOARD_EMSK_INCDIR	+= $(BOARD_EMSK_DEV_INCDIR) $(BOARD_CORE_DIR)
@@ -130,7 +128,7 @@ BOARD_EMSK_OBJS = $(BOARD_EMSK_COBJS) $(BOARD_EMSK_ASMOBJS)
 BOARD_EMSK_DEPS = $(call get_deps, $(BOARD_EMSK_OBJS))
 
 # extra macros to be defined
-BOARD_EMSK_DEFINES += $(CORE_DEFINES)
+BOARD_EMSK_DEFINES += $(CORE_DEFINES) $(DEV_DEFINES)
 
 # genearte library
 BOARD_LIB_EMSK = $(OUT_DIR)/libboard_emsk.a

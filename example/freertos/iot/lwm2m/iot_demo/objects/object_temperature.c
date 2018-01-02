@@ -58,6 +58,7 @@
 
 #include "embARC.h"
 #include "embARC_debug.h"
+#include "adt7420.h"
 
 #define OBJECT_TEMP_ID		3303
 
@@ -75,6 +76,7 @@ static TaskHandle_t task_lwm2m_temperature_handle = NULL;
 static void task_lwm2m_temperature(void* par);
 
 static lwm2m_object_t * tempure_obj;
+static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, BOARD_TEMP_IIC_SLVADDR);
 extern xQueueHandle queue_observe;
 
 /*
@@ -180,7 +182,7 @@ static void prv_close(lwm2m_object_t * objectP)
 static void prv_temperature_set(uint8_t temperature_id, uint8_t enable)
 {
 	if(enable) {
-		temp_sensor_init(ADT7420_ADDRESS);
+		adt7420_sensor_init(temp);
 		if (xTaskCreate(task_lwm2m_temperature, "lwm2m temperature", 2048, (void *)1,
 			0, &task_lwm2m_temperature_handle) != pdPASS) {
 			EMBARC_PRINTF("create lwm2m client failed\r\n");
@@ -241,13 +243,11 @@ static void task_lwm2m_temperature(void* par)
 	prv_instance_t * instance_ptr;
 	char *buff = "/3303/0/5700";
 	instance_ptr = (prv_instance_t *)lwm2m_list_find(tempure_obj->instanceList, 0);
-	int32_t val;
 	float value;
 	TickType_t xLastExecutionTime;
 	xLastExecutionTime = xTaskGetTickCount();
 	while(1){
-		temp_sensor_read(&val);
-		value = val/10.0;
+		adt7420_sensor_read(temp, &value);
 		instance_ptr -> value = value;
 		xQueueSendToFrontFromISR(queue_observe, (void *)(&buff), 0);
 		vTaskDelayUntil( &xLastExecutionTime, 5000);

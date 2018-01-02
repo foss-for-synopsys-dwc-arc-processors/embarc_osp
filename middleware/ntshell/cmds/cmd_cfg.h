@@ -51,6 +51,8 @@
 #define NTSHELL_USE_CMDS_PERIPHERAL	(1)		/*!< use commands defined in cmds_peripheral */
 #endif
 
+#endif /* BOARD_EMSK */
+
 #ifdef MID_FATFS
 
 #ifndef NTSHELL_USE_CMDS_FS
@@ -63,7 +65,7 @@
 #define NTSHELL_USE_CMDS_EXTEND		(1)		/*!< use commands defined in cmds_extend */
 #endif
 
-#endif /* BOARD_EMSK */
+
 
 #endif /* MID_COMMON */
 

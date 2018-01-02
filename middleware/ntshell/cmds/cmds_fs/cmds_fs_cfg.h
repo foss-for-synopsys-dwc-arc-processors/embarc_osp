@@ -93,12 +93,14 @@
 #define NTSHELL_USE_CMDS_FS_LOAD	(1) /*!< use commands defined in cmd_load.c*/
 #endif
 
+#if defined(BOARD_EMSK)
 #ifndef NTSHELL_USE_CMDS_FS_SPIRW
 #define NTSHELL_USE_CMDS_FS_SPIRW	(0) /*!< use commands defined in cmd_spirw.c*/
 #endif
 
 #ifndef NTSHELL_USE_CMDS_FS_MLOAD
 #define NTSHELL_USE_CMDS_FS_MLOAD	(0) /*!< use commands defined in cmd_mload.c*/
+#endif
 #endif
 
 #endif /* MID_FATFS */

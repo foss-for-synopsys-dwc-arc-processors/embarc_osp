@@ -4,6 +4,7 @@
 #include "arc_udma.h"
 #include "dw_spi_hal.h"
 #include "dw_spi.h"
+#include "spi_flash_w25qxx.h"
 
 #define _MEMORY_FENCE()				_arc_sync()
 #define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))

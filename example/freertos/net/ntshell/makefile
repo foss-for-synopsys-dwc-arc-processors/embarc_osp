@@ -1,6 +1,8 @@
 # Application name
 APPL ?= freertos_net_ntshell
 
+EXT_DEV_LIST += wifi/mrf24g
+
 #
 # root dir of embARC
 #

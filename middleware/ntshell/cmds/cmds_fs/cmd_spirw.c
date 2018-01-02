@@ -45,7 +45,17 @@
 #include "embARC.h"
 
 #include "ntshell_common.h"
+#include "spi_flash_w25qxx.h"
 
+typedef struct {
+	uint32_t head;		/*!< 0x68656164 ='head' */
+	uint32_t cpu_type;	/*!< = 0 - all images, reserved for future */
+	uint32_t start;		/*!< start address of application image in spi flash */
+	uint32_t size;		/*!< size of image in bytes */
+	uint32_t ramaddr;	/*!< address of ram for loading image */
+	uint32_t ramstart;	/*!< start address of application in RAM !!!! */
+	uint32_t checksum;	/*!< checksum of all bytes in image */
+} EMSK_FIRMWARE_DEF;
 
 
 #ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
@@ -59,7 +69,7 @@ static NTSHELL_IO_PREDEF;
 #define BUF_SIZE	4096
 
 /* define the address in the SPI flash */
-#define IMAGE_HEADER_LEN	(sizeof(image_t))
+#define IMAGE_HEADER_LEN	(sizeof(EMSK_FIRMWARE_DEF))
 #define BOOTIMAGE_HEAD		(0x68656164)
 #if HW_VERSION == 10 || HW_VERSION == 11
 #define BOOTIMAGE_START		(0x780000)
@@ -73,12 +83,16 @@ static NTSHELL_IO_PREDEF;
 #define MIN_RAM_START		(0x2000)
 #endif
 
+
+W25QXX_DEF(w25q128bv, DW_SPI_0_ID, EMSK_SPI_LINE_SFLASH, 0x100, 0x1000);
+
 static uint8_t local_buf[BUF_SIZE];
 
 Inline unsigned int make_checksum(unsigned int init, unsigned char *buf, unsigned int len)
 {
-	while(len--)
+	while(len--) {
 		init += *buf++;
+	}
 	return init;
 }
 
@@ -88,7 +102,7 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 	uint32_t cnt;
 	uint32_t sector_addr, res;
 	uint32_t num_of_erased_sectors = 0, erased_start = 0;
-	image_t header;
+	EMSK_FIRMWARE_DEF header;
 
 	// check address to preven earasing FPGA images
 	if(address < BOOTIMAGE_START){
@@ -104,8 +118,6 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 		return 0;
 	}
 
-	flash_wait_ready();
-
 	// write header
 	header.head = BOOTIMAGE_HEAD; // 0x68656164 = 'head'
 	header.cpu_type = 0;
@@ -115,10 +127,11 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 	header.ramstart = ram_start;
 	header.checksum = 0;
 
+	w25qxx_wait_ready(w25q128bv);
 
 	// erase starting sector for header and first data block
 	sector_addr = address & ~(FLASH_SECTOR_SIZE - 1);
-	res = flash_erase(sector_addr, IMAGE_HEADER_LEN + header.size);
+	res = w25qxx_erase(w25q128bv,sector_addr, IMAGE_HEADER_LEN + header.size);
 	// save statistic
 	erased_start = sector_addr;
 	num_of_erased_sectors += res;
@@ -144,14 +157,14 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 
 		CMD_DEBUG("write 0x%x - 0x%x check_sum:%x\r\n", address, address+cnt, header.checksum);
 
-		flash_write(address, cnt, local_buf);
-		flash_wait_ready();
+		w25qxx_write(w25q128bv, address, cnt, local_buf);
+		w25qxx_wait_ready(w25q128bv);
 
 		address += cnt;
 	} while (cnt >= BUF_SIZE);
 
-	flash_write(BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
-	flash_wait_ready();
+	w25qxx_write(w25q128bv, BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
+	w25qxx_wait_ready(w25q128bv);
 
 	CMD_DEBUG("  Written %d bytes: header=%d and image=%d image from 0x%x to 0x%x\r\n",IMAGE_HEADER_LEN + header.size,
 		IMAGE_HEADER_LEN, header.size, header.start - IMAGE_HEADER_LEN, address-1);
@@ -165,21 +178,23 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 	return cnt;
  }
 
-static int32_t read_raw_spi(FIL *file, uint32_t address, uint32_t size, uint32_t* checksum) {
+static int32_t read_raw_spi(FIL *file, uint32_t address, uint32_t size, uint32_t* checksum)
+{
 	int32_t cnt, datalen, len;
 	uint32_t csum;
 	uint32_t temp;
 
-	if( checksum == NULL || file == NULL )
+	if( checksum == NULL || file == NULL ) {
 		return 0;
+	}
 
-	flash_wait_ready();
+	w25qxx_wait_ready(w25q128bv);
 
 	csum = *checksum;
 
 	datalen = 0;
 	do {
-		cnt = flash_read(address, BUF_SIZE, local_buf);
+		cnt = w25qxx_read(w25q128bv, address, BUF_SIZE, local_buf);
 		if (cnt < 0) {
 			*checksum = 0;
 			return 0;
@@ -202,13 +217,14 @@ static int32_t read_raw_spi(FIL *file, uint32_t address, uint32_t size, uint32_t
  }
 
 
-static int32_t read_spi_image(FIL *file) {
-	image_t header;
+static int32_t read_spi_image(FIL *file)
+{
+	EMSK_FIRMWARE_DEF header;
 	uint32_t datalen;
 	uint32_t checksum = 0;
 
 	// read spi header
-	datalen = flash_read(BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
+	datalen = w25qxx_read(w25q128bv, BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
 
 	CMD_DEBUG("\r\n** Read SPI flash **\r\n");
 	CMD_DEBUG("  Read %d bytes of header\r\n", datalen);
@@ -281,7 +297,7 @@ static int cmd_spirw(int argc, char **argv, void *extobj)
 		goto error_exit;
 	}
 
-	flash_init();
+	w25qxx_init(w25q128bv, 1000000);
 
 	opterr = 0;
 	optind = 1;
@@ -295,7 +311,7 @@ static int cmd_spirw(int argc, char **argv, void *extobj)
 				goto error_exit;
 				break;
 			case 'i':
-				ID = flash_read_id();
+				ID = w25qxx_read_id(w25q128bv);
 				CMD_DEBUG("Device ID = %x\r\n", ID);
 				break;
 			case 'r':

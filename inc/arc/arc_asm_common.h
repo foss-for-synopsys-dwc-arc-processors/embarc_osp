@@ -117,7 +117,7 @@
 	PUSHAX AUX_FPU_DPFP2H
 #endif
 
-#endif	
+#endif
 .endm
 
 .macro RESTORE_FPU_REGS
@@ -128,7 +128,7 @@
 	POPAX AUX_FPU_DPFP2L
 	POPAX AUX_FPU_DPFP1H
 	POPAX AUX_FPU_DPFP1L
-#endif	
+#endif
 	POPAX AUX_FPU_STATUS
 	POPAX AUX_FPU_CTRL
 #endif
@@ -166,7 +166,7 @@
 	POPAX AUX_DSP_CTRL
 #endif
 .endm
-	
+
 
 /*--------------------------------------------------------------
  * Helpers to save/restore callee-saved regs:
@@ -189,7 +189,7 @@
 	PUSH	r25
 #endif
 
-#if ARC_FEATURE_FPU_DSP_CONTEXT 
+#if ARC_FEATURE_FPU_DSP_CONTEXT
 	SAVE_R58_R59
 	SAVE_FPU_REGS
 	SAVE_DSP_REGS
@@ -199,7 +199,7 @@
 
 .macro RESTORE_CALLEE_REGS
 
-#if ARC_FEATURE_FPU_DSP_CONTEXT 	
+#if ARC_FEATURE_FPU_DSP_CONTEXT
 	RESTORE_DSP_REGS
 	RESTORE_FPU_REGS
 	RESTORE_R58_R59

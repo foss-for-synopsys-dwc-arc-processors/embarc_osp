@@ -242,7 +242,7 @@ static int32_t netconn_nt_read_chr(NTSHELL_IO_NETCONN *nt_netconn)
 				case TELNET_OPT_DONT:
 					req = netconn_nt_read_chr_raw(nt_netconn);
 					if (req != E_OBJ) {
-						DBG("Telnet Request:%x\r\n", req);
+						DBG("Telnet Request:%x\n\r", req);
 					} else {
 						return req;
 					}

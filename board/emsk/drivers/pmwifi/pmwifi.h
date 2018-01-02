@@ -43,16 +43,16 @@
 #ifndef _PMWIFI_H_
 #define _PMWIFI_H_
 
-#include "wf_dev_hal.h"
+#if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
+
+#include "dev_wnic.h"
 
 #define EMSK_PMWIFI_0_ID		0
 
 #define USE_EMSK_PMWIFI_0		1
 
-/** BOARD_WIFI_SEL can be changed in board.mk by changing WIFI_SEL, possible choices defined in emsk.h */
-#ifndef BOARD_WIFI_SEL
-#define BOARD_WIFI_SEL			PMWIFI_MRF24G
-#endif
+/* configurations for RW009 */
+#define RW009_SPI_CPULOCK_ENABLE
 
 #define EMSK_PMWIFI_0_MAC_ADDR0		(0x00)
 #define EMSK_PMWIFI_0_MAC_ADDR1		(0x1e)
@@ -71,6 +71,7 @@ extern void pmwifi_all_install(void);
 }
 #endif
 
+#endif  /* MID_LWIP && MID_LWIP_CONTRIB */
 #endif /* _PMWIFI_H_ */
 
 /** @} end of group BOARD_EMSK_DRV_PMODWIFI */

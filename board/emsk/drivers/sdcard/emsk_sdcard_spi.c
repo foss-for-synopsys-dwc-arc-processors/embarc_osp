@@ -72,8 +72,6 @@
 
 #include "emsk_sdcard_spi.h"
 
-#define EMSK_SDCARD_SPI_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
-
 #if USE_EMSK_SDCARD_SPI_0
 
 #define EMSK_SDCARD_SPI_0_ID		(DW_SPI_0_ID)
@@ -85,115 +83,13 @@
 
 #define EMSK_SDCARD_SPI_0_CPULOCK_ENABLE
 
-static int32_t sdcard_spi_0_spi_open(uint32_t freq, uint32_t clk_mode)
-{
-	int32_t ercd = E_OK;
-	DEV_SPI *sdcard_spi_ptr;
 
-	sdcard_spi_ptr = spi_get_dev(EMSK_SDCARD_SPI_0_ID);
-	EMSK_SDCARD_SPI_CHECK_EXP(sdcard_spi_ptr != NULL, E_OBJ);
-
-	ercd = sdcard_spi_ptr->spi_open(DEV_MASTER_MODE, freq);
-	if (ercd == E_OPNED || ercd == E_OK) {
-		ercd = sdcard_spi_ptr->spi_control(SPI_CMD_SET_CLK_MODE, CONV2VOID(clk_mode));
-	}
-
-error_exit:
-	return ercd;
-}
-
-static int32_t sdcard_spi_0_spi_change_freq(uint32_t freq)
-{
-	int32_t ercd = E_OK;
-	DEV_SPI *sdcard_spi_ptr;
-
-	sdcard_spi_ptr = spi_get_dev(EMSK_SDCARD_SPI_0_ID);
-	EMSK_SDCARD_SPI_CHECK_EXP(sdcard_spi_ptr != NULL, E_OBJ);
-
-	ercd = sdcard_spi_ptr->spi_control(SPI_CMD_MST_SET_FREQ, CONV2VOID(freq));
-
-error_exit:
-	return ercd;
-}
-
-static int32_t sdcard_spi_0_spi_close(void)
-{
-	int32_t ercd = E_OK;
-	DEV_SPI *sdcard_spi_ptr;
-
-	sdcard_spi_ptr = spi_get_dev(EMSK_SDCARD_SPI_0_ID);
-	EMSK_SDCARD_SPI_CHECK_EXP(sdcard_spi_ptr != NULL, E_OBJ);
-
-	ercd = sdcard_spi_ptr->spi_close();
-
-error_exit:
-	return ercd;
-}
-
-static int32_t sdcard_spi_0_spi_cs(int32_t cs)
-{
-	int32_t ercd = E_OK;
-	DEV_SPI *sdcard_spi_ptr;
-	uint32_t cs_line = EMSK_SDCARD_SPI_0_LINE;
-#ifdef EMSK_SDCARD_SPI_0_CPULOCK_ENABLE
-	static unsigned int cs_cpu_status;
-#endif
-
-	sdcard_spi_ptr = spi_get_dev(EMSK_SDCARD_SPI_0_ID);
-	EMSK_SDCARD_SPI_CHECK_EXP(sdcard_spi_ptr != NULL, E_OBJ);
-
-	if (cs == SDCARD_SPI_SELECTED) {
-#ifdef EMSK_SDCARD_SPI_0_CPULOCK_ENABLE
-	cs_cpu_status = cpu_lock_save();
-#endif
-		ercd = sdcard_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
-	} else {
-		ercd = sdcard_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_SDCARD_SPI_0_CPULOCK_ENABLE
-	cpu_unlock_restore(cs_cpu_status);
-#endif
-	}
-
-error_exit:
-	return ercd;
-}
-
-static int32_t sdcard_spi_0_spi_write(const void *buf, uint32_t cnt)
-{
-	int32_t ercd = E_OK;
-	DEV_SPI *sdcard_spi_ptr;
-
-	sdcard_spi_ptr = spi_get_dev(EMSK_SDCARD_SPI_0_ID);
-	EMSK_SDCARD_SPI_CHECK_EXP(sdcard_spi_ptr != NULL, E_OBJ);
-
-	ercd = sdcard_spi_ptr->spi_write(buf, cnt);
-
-error_exit:
-	return ercd;
-}
-
-static int32_t sdcard_spi_0_spi_read(void *buf, uint32_t cnt)
-{
-	int32_t ercd = E_OK;
-	uint32_t dummy = 0xff;
-	DEV_SPI *sdcard_spi_ptr;
-
-	sdcard_spi_ptr = spi_get_dev(EMSK_SDCARD_SPI_0_ID);
-	EMSK_SDCARD_SPI_CHECK_EXP(sdcard_spi_ptr != NULL, E_OBJ);
-
-	ercd = sdcard_spi_ptr->spi_control(SPI_CMD_SET_DUMMY_DATA, CONV2VOID(dummy));
-	ercd = sdcard_spi_ptr->spi_read(buf, cnt);
-
-error_exit:
-	return ercd;
-}
-
-static int32_t sdcard_spi_0_card_is_writeprotect(void)
+static int32_t sdcard_spi_card_is_writeprotect(void)
 {
 	return 0;
 }
 
-static int32_t sdcard_spi_0_card_is_inserted(void)
+static int32_t sdcard_spi_card_is_inserted(void)
 {
 	return 1;
 }
@@ -231,14 +127,9 @@ static void sdcard_spi_0_diskio_timerproc(void)
 static FS_SDCARD_SPI_CTRL sdcard_spi_0_ctrl = {
 	0, 0, 0,
 	SDCARD_SPI_FREQ_400K, EMSK_SDCARD_SPI_0_FREQ, EMSK_SDCARD_SPI_0_CLKMODE,
-	sdcard_spi_0_spi_open,
-	sdcard_spi_0_spi_change_freq,
-	sdcard_spi_0_spi_close,
-	sdcard_spi_0_spi_cs,
-	sdcard_spi_0_spi_write,
-	sdcard_spi_0_spi_read,
-	sdcard_spi_0_card_is_writeprotect,
-	sdcard_spi_0_card_is_inserted
+	DW_SPI_0_ID, BOARD_SDCARD_SPI_LINE,
+	sdcard_spi_card_is_writeprotect,
+	sdcard_spi_card_is_inserted
 };
 
 FATFS_DISKIO sdcard_spi_0_diskio = {

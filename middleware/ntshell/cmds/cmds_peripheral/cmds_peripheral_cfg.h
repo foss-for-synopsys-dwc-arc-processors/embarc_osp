@@ -52,11 +52,11 @@
 #endif
 
 #ifndef NTSHELL_USE_CMDS_PERIPHERAL_ADC
-#define NTSHELL_USE_CMDS_PERIPHERAL_ADC			(1) /*!< use commands defined in cmd_adc.c*/
+#define NTSHELL_USE_CMDS_PERIPHERAL_ADC			(0) /*!< use commands defined in cmd_adc.c*/
 #endif
 
 #ifndef NTSHELL_USE_CMDS_PERIPHERAL_TEMP
-#define NTSHELL_USE_CMDS_PERIPHERAL_TEMP		(1) /*!< use commands defined in cmd_temp.c*/
+#define NTSHELL_USE_CMDS_PERIPHERAL_TEMP		(0) /*!< use commands defined in cmd_temp.c*/
 #endif
 
 #else /* Common commands disabled */

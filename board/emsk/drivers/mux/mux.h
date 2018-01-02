@@ -167,15 +167,10 @@ typedef volatile uint32_t MUX_REG;
 extern "C" {
 #endif
 
-extern void mux_init(MUX_REG *mux_regs);
-extern MUX_REG *get_mux_regs(void);
-extern void set_pmod_mux(MUX_REG *mux_regs, uint32_t val);
-extern uint32_t get_pmod_mux(MUX_REG *mux_regs);
-extern void change_pmod_mux(MUX_REG *mux_regs, uint32_t val, uint32_t change_bits);
-extern void set_spi_map(MUX_REG *mux_regs, uint32_t val);
-extern uint32_t get_spi_map(MUX_REG *mux_regs);
-extern void set_uart_map(MUX_REG *mux_regs, uint32_t val);
-extern uint32_t get_uart_map(MUX_REG *mux_regs);
+extern void set_pmod_mux(uint32_t val);
+extern uint32_t get_pmod_mux(void);
+extern void set_spi_map(uint32_t val);
+extern void set_uart_map(uint32_t val);
 
 #ifdef __cplusplus
 }

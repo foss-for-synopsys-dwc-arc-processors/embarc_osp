@@ -79,6 +79,7 @@
 #include "embARC_debug.h"
 #include "lwip/netif.h"
 #include "coap.h"
+#include "adt7420.h"
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
@@ -92,6 +93,7 @@ static TaskHandle_t task_coap_server_handle = NULL;
 static TaskHandle_t task_temptx_handle = NULL;
 
 static coap_resource_t *temp_resource = NULL;
+static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, BOARD_TEMP_IIC_SLVADDR);
 
 int main(void)
 {
@@ -133,8 +135,7 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 	coap_opt_iterator_t opt_iter;
 	unsigned char buf[40];
 	size_t len;
-	int32_t val;
-	int32_t  temp_val;
+	float temp_val;
 	coap_subscription_t *subscription;
 
 	response->hdr->code = COAP_RESPONSE_CODE(205);
@@ -161,15 +162,13 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 	coap_add_option(response, COAP_OPTION_MAXAGE,
 		coap_encode_var_bytes(buf, 60), buf);
 
-	if (temp_sensor_read(&val) != E_OK) {
-		temp_val = 0;
-	} else {
-		temp_val = val / 10;
+	if (adt7420_sensor_read(temp, &temp_val) != E_OK) {
+		temp_val = 0.0f;
 	}
 
 	len = snprintf((char *)buf,
 			min(sizeof(buf), response->max_size - response->length),
-			"%d", temp_val);
+			"%f", temp_val);
 	coap_add_data(response, len, buf);
 }
 
@@ -269,7 +268,7 @@ static void task_coap_server(void *par)
 
 static void task_temp_tx(void *par)
 {
-	temp_sensor_init(BOARD_TEMP_IIC_SLVADDR);
+	adt7420_sensor_init(temp);
 	EMBARC_PRINTF("temperature update running\r\n");
 	while (1) {
 		temp_resource->dirty = 1;

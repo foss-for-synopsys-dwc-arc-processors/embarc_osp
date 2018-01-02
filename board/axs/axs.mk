@@ -65,25 +65,29 @@ include $(BOARD_AXS_DIR)/configs/core_compiler.mk
 ## Board Related Settings
 
 ## Build Rules
-DEVICES_ROOT = $(EMBARC_ROOT)/device
 
 ##
 # \brief	AXS device driver related
 ##
-BOARD_AXS_DEV_CSRCDIR	= $(DEVICES_ROOT)/designware/uart \
-			$(DEVICES_ROOT)/designware/gpio
+# onchip ip object rules
+ifdef ONCHIP_IP_LIST
+	BOARD_EMSK_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_EMSK_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
+endif
 
-BOARD_AXS_DEV_ASMSRCDIR	=
-BOARD_AXS_DEV_INCDIR	= $(DEVICES_ROOT)/designware/uart \
-			$(DEVICES_ROOT)/designware/gpio
+include $(EMBARC_ROOT)/device/device.mk
+
+##
+# \brief	emsk device driver related
+##
+BOARD_AXS_DEV_CSRCDIR	+= $(DEV_CSRCDIR)
+BOARD_AXS_DEV_ASMSRCDIR	+= $(DEV_ASMSRCDIR)
+BOARD_AXS_DEV_INCDIR	+= $(DEV_INCDIR)
 
 ##
 # \brief	axs board related source and header
 ##
 BOARD_AXS_CSRCDIR	+= $(BOARD_AXS_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_AXS_DIR)/common \
-				$(BOARD_AXS_DIR)/drivers/uart \
-				$(BOARD_AXS_DIR)/drivers/gpio
 
 BOARD_AXS_ASMSRCDIR	+= $(BOARD_AXS_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
 BOARD_AXS_INCDIR	+= $(BOARD_AXS_DEV_INCDIR) $(BOARD_CORE_DIR)
@@ -101,7 +105,7 @@ BOARD_AXS_OBJS = $(BOARD_AXS_COBJS) $(BOARD_AXS_ASMOBJS)
 BOARD_AXS_DEPS = $(call get_deps, $(BOARD_AXS_OBJS))
 
 # extra macros to be defined
-BOARD_AXS_DEFINES += $(CORE_DEFINES) -DEMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
+BOARD_AXS_DEFINES += $(CORE_DEFINES) $(DEV_DEFINES) -DEMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
 
 # genearte library
 BOARD_LIB_AXS = $(OUT_DIR)/libboard_axs.a

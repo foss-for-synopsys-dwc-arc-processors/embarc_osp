@@ -1,6 +1,8 @@
 # Application name
 APPL ?= freertos_iot_coap_server
 
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
+
 # root dir of embARC
 #
 EMBARC_ROOT = ../../../../..
