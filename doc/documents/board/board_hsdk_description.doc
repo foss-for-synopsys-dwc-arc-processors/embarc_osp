@@ -1,8 +1,8 @@
 /******************************************************************************
  *
- * Copyright (c) 2017, Synopsys, Inc.
+ * Copyright (c) 2018, Synopsys, Inc.
  * \version 0.1
- * \date	2014-09-29
+ * \date	2018-01-02
  * \author	Huaqi Fang
  *
  */
@@ -12,7 +12,7 @@
 
 \section sect_bdhsdk_description ARC HS Development Kit Description
 The DesignWare&reg; ARC&reg; HS Development Kit (HSDK, hsdk) enables rapid software
-development, code porting, software debugging, and profiling for ARC HS processors. It is based on ARC HS Development chip featuring the latest ARC HS38x4 quad-core at speed in real silicon.
+development, code porting, software debugging, and profiling for ARC HS processors. It is based on a custom Synopsys SoC developed for this platform, featuring the latest ARC HS38x4 quad-core and integrated peripheral controllers, running at 1GHz.
 
 \htmlonly
 <div class="imagebox">
@@ -24,30 +24,29 @@ development, code porting, software debugging, and profiling for ARC HS processo
 \endhtmlonly
 \image latex pic/hsdk_board.jpg "ARC HS Development Kit" width=16cm
 
-The ARC HS Development Kit contains the following components:
-- ARC HS Development Chip:
-  - Quad Core HS38x4
-  - DDR3 memory interface
-  - GPU
+The ARC HS Development Kit features the following components:
+- ARC HS SoC:
+  - Quad Core HS38x4 Processor
+  - DDR3 memory controller
+  - GPU (Vivante)
   - USB, Ethernet, SDIO
-  - Several APB Peripherals
-- Memory:
+  - DesignWare APB Peripherals (consult HSDK documentation for complete details)
+- Memory / Storage:
   - DDR3-1333 (4 GB)
-  - NOR Flash (1 MB)
   - 2x SPI Flash (2 MB)
   - I2C EEPROM (3 KB)
 - Interfaces:
   - USB2 (2x)
   - Ethernet (10/100/1000)
-  - Audi  - line in/out
+  - Audio  - line in/out
   - USB Data port (JTAG/UART)
-  - Micro- SD Card
+  - Micro-SD Card
   - WIFI/BT module
   - ADC (6 channels)
-  - RTT Nexus, JTAG
+  - RTT Nexus and JTAG connectors
 - Extensions:
-  - AXI Tunnel (32-bit, max 150 MHz)
-  - Arduin  - Interface headers (UNO R3 compatible)
+  - AXI Tunnel (32-bit, 150 MHz)
+  - Arduino  - Interface headers (UNO R3 compatible)
   - mikroBUS headers
   - Pmod Interfaces (3x), PMOD A and PMOD B (12 pins), PMOD C (6 pins)
 
@@ -120,15 +119,15 @@ The HS Development Chip provides the following main features:
 - JTAG interface
 
 
-embARC examples can be compiled by both ARC MetaWare(ccac) and ARC GNU(arc-elf32-gcc) compilers using the provided makefiles.
+embARC OSP examples can be compiled by both ARC MetaWare (ccac) and ARC GNU (arc-elf32-gcc) compilers using the provided makefiles.
 Please refer \ref sect_example_how_to_use_embARC for more information.
 
 \section sect_bdemsk_tools_required Tools
 
-The following tools are required for EMSK:
+The following tools are required for use with HSDK:
 
 - Digilent Adept Software — software driver for the Digilent JTAG-USB cable.
-- <a href="http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware">MetaWare Development Toolkit</a> — a complete solution t  - develop, debug and tune applications for the DesignWare ARC processors.
-- <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases">ARC GNU Toolchain</a> — an open-source development environment t  - run and debug applications for the DesignWare ARC processors.
+- <a href="http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware">MetaWare Development Toolkit</a> — a complete solution to develop, debug and tune applications for the DesignWare ARC processors.
+- <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases">GNU Toolchain for ARC Processors</a> — open-source toolchain to run and debug applications for the DesignWare ARC processors.
 
 */

@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * Copyright (c) 2017, Synopsys, Inc.
+ * Copyright (c) 2018, Synopsys, Inc.
  *
  *
  *
@@ -44,9 +44,9 @@ The files relevant to supported devices in the <b>embARC Software Package</b> ar
 |      Source Code Folder             |                    Comments                           |
 | :---------------------------------: | :---------------------------------------------------: |
 |  board/xxxx/drivers                 |    Peripheral driver implementations for devices on board xxxx|
-|  device/ip/designware/xxxx             |    Device HAL implementation for DesignWare IP, e.g. GPIO, I2C, SPI |
-|  device/ip/ip_hal/inc              |    Device HAL definitions       |
-|  device/peripheral/xxx             |    Peripheral drivers implementation, e.g. pmod modules, WiFi, BLE |
+|  device/ip/designware/xxxx          |    Device HAL implementation for DesignWare IP, e.g. GPIO, I2C, SPI |
+|  device/ip/ip_hal/inc               |    Device HAL definitions       |
+|  device/peripheral/xxx              |    Peripheral drivers implementation, e.g. pmod modules, WiFi, BLE |
 
 See also \ref DEVICE_HAL "Device HAL API"
 
@@ -57,16 +57,16 @@ See also \ref DEVICE_HAL "Device HAL API"
 - \ref DEVICE_HAL_UART
 - \ref DEVICE_HAL_WNIC
 
-\note The DesignWare UART, IIC, and SPI drivers support both polling mode and interrupt mode. SDIO driver only supports polling mode
+\note The DesignWare UART, IIC, and SPI drivers support both polling and interrupt modes. The SDIO driver currently only supports polling mode.
 
 \section sect_device_use_dev  How use to on-chip device IP and peripherals
-To use on-chip device ip and peripherals, two new variables are introduced in build system, ONCHIP_IP_LIST and EXT_DEV_LIST.
+To use on-chip device ip and peripherals, two new variables are introduced in the build system: ONCHIP_IP_LIST and EXT_DEV_LIST.
 
-For most cases, when a board/SoC/chip is determined, its on-chip IP is also determined, ONCHIP_IP_LIST is mainly defined in board's makefile. Taking EMSK as an example, it has Designware SPI/IIC/GPIO/UART, so <b>ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio </b> is added.
+In most cases, when a board/SoC/chip is determined, its on-chip IP is also determined, ONCHIP_IP_LIST is primarily defined in the board's makefile. Taking EMSK as an example, it has Designware SPI/IIC/GPIO/UART, so <b>ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio </b> is added.
 
-Different applications may use difference peripherals. Therefore, EXT_DEV_LIST is always defined in application level. For example, WiFi based applications will use pmod WiFi module, then in its application makefile, <b>EXT_DEV_LIST += wifi/mrf24g</b> is defined to use the pmod WiFi module.
+Different applications may use difference peripherals. Therefore, EXT_DEV_LIST is always defined in application level. For example, if a WiFi-based applications uses the pmod WiFi module, then its application makefile, <b>EXT_DEV_LIST += wifi/mrf24g</b> is defined to use the pmod WiFi module.
 
-\section sect_device_add_new_devce_to_embARC Adding New Device to embARC
+\section sect_device_add_new_device_to_embARC Adding New Device to embARC
 \subsection sect_device_add_ip Add on-chip IP
 If the HAL of the new device is defined, follow the steps below:
 - Create a subfolder under the device/ip folder.
@@ -79,7 +79,7 @@ If the HAL of the new device is not defined, follow the steps below:
 - Implement the driver according to the device HAL definition.
 - Add corresponding makefile.
 
-\subsection sect_device_add_periphreal Add on-board or external peripherals
+\subsection sect_device_add_peripheral Add on-board or external peripherals
 
 - Add the driver in <b>device/peripheral</b> folder according to the class of peripheral. For example, a flash device xxx should be in the folder <b>device/peripheral/flash/xxx</b> folder.
 - Add corresponding makefile.
