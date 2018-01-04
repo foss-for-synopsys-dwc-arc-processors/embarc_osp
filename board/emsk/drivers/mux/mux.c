@@ -212,7 +212,7 @@ void io_mux_init(void)
 	 * UM4:RXD, UM3:TXD
 	 * UM2:RTS_N, UM1:CTS_N
 	 */
-	set_uart_map(0x9c);
+	set_uart_map(0xe4);
 }
 
 /** @} end of group BOARD_EMSK_DRV_MUX */

@@ -55,6 +55,7 @@
 #include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/creg/creg_hsdc.h"
+#include "drivers/cgu/cgu_hsdc.h"
 #include "common/hsdk_timer.h"
 #include "dev_pinmux.h"
 
@@ -77,10 +78,6 @@
 
 #ifndef BOARD_SPI_FREQ
 #define BOARD_SPI_FREQ			(15000000)
-#endif
-
-#ifndef BOARD_SPI_CLKMODE
-#define BOARD_SPI_CLKMODE		(SPI_CLK_MODE_0)
 #endif
 
 #define BOARD_SYS_TIMER_ID		TIMER_0

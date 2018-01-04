@@ -85,6 +85,7 @@ BOARD_HSDK_DEV_INCDIR		+= $(DEV_INCDIR)
 BOARD_HSDK_CSRCDIR		+= $(BOARD_HSDK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_HSDK_DIR)/common \
 				$(BOARD_HSDK_DIR)/drivers/creg \
+				$(BOARD_HSDK_DIR)/drivers/cgu \
 				$(BOARD_HSDK_DIR)/drivers/mux
 
 # select dirvers according to middleware

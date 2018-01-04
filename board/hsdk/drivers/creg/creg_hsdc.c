@@ -40,7 +40,7 @@ void creg_hsdc_init_device(CREG_HSDC_STRUCT_PTR creg_regs)
 {
 }
 
-uint32_t creg_hsdc_getVersion (CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_VERSION_T v)
+uint32_t creg_hsdc_get_version (CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_VERSION_T v)
 {
 	uint32_t reg;
 
