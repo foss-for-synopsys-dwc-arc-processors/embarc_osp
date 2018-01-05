@@ -410,7 +410,7 @@ error_exit:
  * \param[in]	mrf24j40	MRF24J40 object pointer
  * \retval	E_OK	Control device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in SPI process 
+ * \retval	E_SYS	Error in SPI process
  */
 uint32_t mrf24j40_rxfifo_flush(MRF24J40_DEF *mrf24j40)
 {
@@ -435,7 +435,7 @@ error_exit:
  * \retval	E_OK	Control device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	value point (pend) is NULL
- * \retval	E_SYS	Error in SPI process 
+ * \retval	E_SYS	Error in SPI process
  */
 uint32_t mrf24j40_get_pending_frame(MRF24J40_DEF *mrf24j40, uint8_t *pend)
 {
@@ -455,10 +455,10 @@ error_exit:
 /**
  * \brief	Perform hardware Reset by asserting RESET pin
  * \details	The MRF24J40 will be released from Reset approximately 250 us after the RESET pin is released.
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \retval	E_OK	Control device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in GPIO process 
+ * \retval	E_SYS	Error in GPIO process
  */
 uint32_t mrf24j40_reset(MRF24J40_DEF *mrf24j40)
 {
@@ -501,10 +501,10 @@ error_exit:
 /**
  * \brief	Perform hardware Reset by asserting RESET pin
  * \details	The MRF24J40 will be released from Reset approximately 250 us after the RESET pin is released.
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \retval	E_OK	Control device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in GPIO process 
+ * \retval	E_SYS	Error in GPIO process
  */
 uint32_t mrf24j40_sleep(MRF24J40_DEF *mrf24j40)
 {
@@ -533,10 +533,10 @@ error_exit:
 /**
  * \brief	Set RFCTL: RF Mode Control Register
  * \details	Perform RF Reset by setting RFRST = 1 and then RFRST = 0
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \retval	E_OK	Control device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in GPIO process 
+ * \retval	E_SYS	Error in GPIO process
  */
 static uint32_t mrf24j40_rf_reset(MRF24J40_DEF *mrf24j40)
 {
@@ -623,8 +623,7 @@ void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
 	do
 	{
 		mrf24j40_read_long_ctrl_reg(mrf24j40, MRF24J40_RFSTATE, &rf_state);
-	}
-	while(((rf_state >> 5) & 0x05) != 0x05);
+	} while(((rf_state >> 5) & 0x05) != 0x05);
 	mrf24j40_rxfifo_flush(mrf24j40);
 }
 
@@ -682,7 +681,7 @@ error_exit:
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	addr point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_short_addr(MRF24J40_DEF *mrf24j40, uint8_t *addr)
 {
@@ -703,7 +702,7 @@ error_exit:
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	addr point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_coordinator_short_addr(MRF24J40_DEF *mrf24j40, uint8_t *addr)
 {
@@ -719,12 +718,12 @@ error_exit:
 
 /**
  * \brief	Set associated coordinator extended address from ASSOEADR0 to ASSOEADR7
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]  *eui	Pointer of associated coordinator extended address, eui[0] to eui[7]
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	eui point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_coordinator_eui(MRF24J40_DEF *mrf24j40, uint8_t *eui)
 {
@@ -746,12 +745,12 @@ error_exit:
 
 /**
  * \brief	Set extended address from EADR0 to EADR7
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]  *eui	Pointer of extended address, eui[0] to eui[7]
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	eui point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_eui(MRF24J40_DEF *mrf24j40, uint8_t *eui)
 {
@@ -773,12 +772,12 @@ error_exit:
 
 /**
  * \brief	Set PAN ID in PANIDL and PANIDH
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]  *pan	Pointer of PAN ID, pan[0] for low byte and pan[1] for high byte
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	pan point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_pan(MRF24J40_DEF *mrf24j40, uint8_t *pan)
 {
@@ -837,12 +836,12 @@ error_exit:
 
 /**
  * \brief	Set key in address for SECKTXNFIFO
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]  *key		Pointer of security key (16 bytes)
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	key point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_tx_key(MRF24J40_DEF *mrf24j40, uint8_t *key)
 {
@@ -858,12 +857,12 @@ error_exit:
 
 /**
  * \brief	Set key in address for SECKRXFIFO
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]  *key		Pointer of security key (16 bytes)
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	key point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_rx_key(MRF24J40_DEF *mrf24j40, uint8_t *key)
 {
@@ -880,11 +879,11 @@ error_exit:
 /**
  * \brief	Set CHANNEL in RFCON0: RF Control 0 Register
  * \details	Set channel number
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in] 	ch	Channel number, 0000 = Channel 11 (2405 MHz) as default
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_channel(MRF24J40_DEF *mrf24j40, int16_t ch)
 {
@@ -901,14 +900,14 @@ error_exit:
 /**
  * \brief	Set PROMI in RXMCR: Receive MAC Control Register
  * \details	Set promiscuous mode
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]	crc_check	1 = Discard packet when there is a MAC address mismatch,
  *				illegal frame type, dPAN/sPAN or MAC short address mismatch,
  * 				0 = Receive all packet types with good CRC
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	crc_check is not 0 or 1
- * \retval	E_SYS	Error in SPI/GPIO process 
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_promiscuous(MRF24J40_DEF *mrf24j40, uint8_t crc_check)
 {
@@ -935,13 +934,13 @@ error_exit:
 /**
  * \brief	Set PANCOORD in RXMCR: Receive MAC Control Register
  * \details	Set device as PAN coordinator
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]	mark		1 = Set as PAN coordinator
  * 				0 = Not Set as PAN coordinator
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	mark is not 0 or 1
- * \retval	E_SYS	Error in SPI/GPIO process  
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_coordinator(MRF24J40_DEF *mrf24j40, uint8_t mark)
 {
@@ -1011,11 +1010,11 @@ error_exit:
 
 /**
  * \brief	Enable and transmit frame in TX Normal FIFO from tx_buf
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	key point is NULL
- * \retval	E_SYS	Error in SPI/GPIO process  
+ * \retval	E_SYS	Error in SPI/GPIO process
  *
  */
 /* TX buffer packet */
@@ -1055,7 +1054,7 @@ error_exit:
 
 /**
  * \brief	Set RXCIPHER and TXNCIPHER in SECCON0: Security Control 0 Register
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[in]	rxcipher	RX FIFO security suite select bits
  * \param[in]	txcipher	TX normal FIFO security suite select bits
  * \details	111 = AES-CBC-MAC-32
@@ -1068,7 +1067,7 @@ error_exit:
  *		000 = None (default)
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in SPI/GPIO process  
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_cipher(MRF24J40_DEF *mrf24j40, uint8_t rxcipher, uint8_t txcipher)
 {
@@ -1084,12 +1083,12 @@ error_exit:
 /**
  * \brief	Read SECDECERR in RXSR: RX MAC Status Register
  * \details	Read security decryption error bit
- * \param[in]	mrf24j40	MRF24J40 object pointer 
+ * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[out] 	err	0	Security decryption error occurred
 			1	Security decryption error did not occur
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in SPI/GPIO process  
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 // Need test
 uint32_t mrf24j40_rx_sec_fail(MRF24J40_DEF *mrf24j40, uint8_t *err)
@@ -1148,18 +1147,18 @@ error_exit:
  * \brief	Read RX packet in RX FIFO from rx_buf
  * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[out]  *plqi	Pointer of LQI in RX FIFO
- * \param[out]  *prssi	Pointer of RSSI in RX FIFO 
+ * \param[out]  *prssi	Pointer of RSSI in RX FIFO
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_PAR	Frame length is bigger than buffer size
- * \retval	E_SYS	Error in SPI/GPIO process  
+ * \retval	E_SYS	Error in SPI/GPIO process
  *
  */
-// RX buffer packet 
+// RX buffer packet
 // typedef struct mrf24j40_rxbuf
-//{				 Name: byte 
-//	uint8_t flen;		 Frame length (m+n+2): 1 
-//	uint8_t pck[128];	 Header (MHR): m + Data payload (MSDU): n + FCS: 2 
+//{				 Name: byte
+//	uint8_t flen;		 Frame length (m+n+2): 1
+//	uint8_t pck[128];	 Header (MHR): m + Data payload (MSDU): n + FCS: 2
 //	uint8_t lqi;		/* LQI: 1 */
 //	uint8_t rssi;		/* RSSI: 1 */
 // } MRF24J40_RXBUF;
@@ -1205,7 +1204,7 @@ error_exit:
  * \param[in]	accept	1: start decryption process, 0: ignore decryption process
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_SYS	Error in SPI/GPIO process  
+ * \retval	E_SYS	Error in SPI/GPIO process
  */
 uint32_t mrf24j40_set_decrypt_start(MRF24J40_DEF *mrf24j40, uint8_t accept)
 {

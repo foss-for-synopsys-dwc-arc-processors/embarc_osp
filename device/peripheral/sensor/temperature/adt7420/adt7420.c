@@ -30,7 +30,7 @@
 --------------------------------------------- */
 /**
  * \file
- * \brief	pmod temperature sensor driver
+ * \brief	adt7420 pmod temperature sensor driver
  */
 #include "arc.h"
 #include "arc_builtin.h"
@@ -237,7 +237,6 @@ int32_t adt7420_sensor_resolution(ADT7420_DEF_PTR obj, int32_t resolution){
 	return E_OK;
 }
 
-/** val is the return temperature in degrees Celsius (°C) */
 /**
  * \brief	read temperature sensor value in 0.1c unit
  * \param[in]	obj	temperature sensor object

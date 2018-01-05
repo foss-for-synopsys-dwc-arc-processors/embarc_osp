@@ -38,7 +38,7 @@
 
 #include "dev_iic.h"
 
-/* TCN75 iic address */
+/* TCN75 iic address, can be selected using jumpers on board */
 #define TCN75_A0_PIN		1	/*!< I2C Serial Bus Address Selection Pin */
 #define TCN75_A1_PIN		1	/*!< I2C Serial Bus Address Selection Pin */
 #define TCN75_A2_PIN		0	/*!< I2C Serial Bus Address Selection Pin */

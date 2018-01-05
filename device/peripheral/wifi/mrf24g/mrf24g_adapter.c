@@ -72,7 +72,7 @@
 #include "mrf24g_adapter.h"
 #include "./driver/inc/shared/wf_universal_driver.h"
 
-#define MRF24G_CHECK_EXP(EXPR, ERROR_CODE)	  CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define MRF24G_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 int32_t mrf24g_wnic_get_info(DEV_WNIC *mrf24g_wnic, uint32_t cmd, void *rinfo)
 {

@@ -45,8 +45,8 @@
 #define WREN	0x06	/*!< write enablewaitDeviceReady */
 #define WRDI	0x04	/*!< write disable */
 #define READ	0x03	/*!< read data bytes */
-#define SE	0x20	/*!< sector erase */
-#define PP	0x02	/*!< page program */
+#define SE		0x20	/*!< sector erase */
+#define PP		0x02	/*!< page program */
 /** @} end of name */
 
 #define W25QXX_NOT_VALID	(0xFFFFFFFF)
@@ -218,7 +218,6 @@ int32_t w25qxx_wait_ready(W25QXX_DEF_PTR dev)
 
 	return 0;
 }
-
 
 /**
  * \brief	read data from flash

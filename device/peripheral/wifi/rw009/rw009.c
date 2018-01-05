@@ -255,7 +255,6 @@ static int32_t rw009_gpio_open(RW009_DEF_PTR rw009)
 
 	ercd = gpio->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)(mask));
 
-
 error_exit:
 	return ercd;
 }
@@ -336,7 +335,6 @@ static void rw009_deselect(RW009_DEF_PTR rw009)
 	gpio->gpio_write(1 << rw009->pin_cs, 1 << rw009->pin_cs);
 	spi->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID((uint32_t)rw009->spi_cs));
 }
-
 
 /**
  * @brief cmd response handler
@@ -464,7 +462,6 @@ static int32_t rw009_xfer(DEV_WNIC *rw009_wnic, struct rw009_spi_data_packet* ou
 	RW009_CHECK_EXP(rw009_wnic != NULL, E_OBJ);
 	rw009_info = &(rw009_wnic->wnic_info);
 	rw009_on_ops = &(rw009_wnic->wnic_on_ops);
-
 
 	if (out == NULL || in == NULL) {
 		return -1;

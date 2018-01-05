@@ -135,7 +135,7 @@ error_exit:
 
 /**
  * \brief	temperature sensor init
- * \param[in]	obj			temperature sensor object
+ * \param[in]	obj		temperature sensor object
  * \retval	E_OK	init success
  * \retval	!E_OK	init failed
  */
@@ -196,11 +196,10 @@ int32_t tcn75_sensor_mode(TCN75_DEF_PTR obj, int32_t mode){
 	return E_OK;
 }
 
-/** val is the return temperature in degrees Celsius (°C) */
 /**
  * \brief	read temperature sensor value in 0.1c unit
- * \param[in]	obj	temperature sensor object
- * \param[out]	val	return temperature in degrees Celsius (°C)
+ * \param[in]	obj		temperature sensor object
+ * \param[out]	val		return temperature in degrees Celsius (°C)
  * \retval	E_OK	read success
  * \retval	!E_OK	read failed
  */

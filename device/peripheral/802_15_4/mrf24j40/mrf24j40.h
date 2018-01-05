@@ -215,7 +215,7 @@
 #define MRF24J40_NOCSMA         (1<<7)
 #define MRF24J40_BATLIFEXT      (1<<6)
 #define MRF24J40_SLOTTED        (1<<5)
-#define MRF24J40_MACMINBE(x)        ((x & 0x03)<<3)
+#define MRF24J40_MACMINBE(x)    ((x & 0x03)<<3)
 #define MRF24J40_CSMABF(x)      (x & 0x07)
 
 /* ACKTMOUT */
@@ -288,10 +288,10 @@
 
 /* SLPACK */
 #define MRF24J40__SLPACK        (1<<7)
-#define MRF24J40_WAKECNT_L(x)       (x & 0x03F)
+#define MRF24J40_WAKECNT_L(x)   (x & 0x03F)
 
 /* RFCTL */
-#define MRF24J40_WAKECNT_H(x)       ((x & 0x03) << 3)
+#define MRF24J40_WAKECNT_H(x)   ((x & 0x03) << 3)
 #define MRF24J40_RFRST          (1<<2)
 #define MRF24J40_RFTXMODE       (1<<1)
 #define MRF24J40_RFRXMODE       (1)
@@ -311,7 +311,7 @@
 #define MRF24J40_CCASTH(x)      ((x & 0x0F) <<2)
 
 /* BBREG3 */
-#define MRF24J40_PREVALIDTH(x)      ((x & 0x0F) <<4)
+#define MRF24J40_PREVALIDTH(x)  ((x & 0x0F) <<4)
 
 /* BBREG4 */
 #define MRF24J40_CSTH(x)        ((x & 0x07) << 5)
@@ -337,13 +337,13 @@
 
 /* RFCON6 */
 #define MRF24J40_TXFIL          (1 << 7)
-#define MRF24J40__20MRECVR          (1 << 4)
-#define MRF24J40_BATEN              (1 << 3)
+#define MRF24J40__20MRECVR      (1 << 4)
+#define MRF24J40_BATEN          (1 << 3)
 
 /* RFCON 7 */
-#define MRF24J40_SLPCLKSEL(x)       ((x & 0x03) << 6)
-#define MRF24J40_SLPCLKSEL_100k     (MRF24J40_SLPCLKSEL(0x02))
-#define MRF24J40_SLPCLKSEL_32k      (MRF24J40_SLPCLKSEL(0x01))
+#define MRF24J40_SLPCLKSEL(x)   ((x & 0x03) << 6)
+#define MRF24J40_SLPCLKSEL_100k (MRF24J40_SLPCLKSEL(0x02))
+#define MRF24J40_SLPCLKSEL_32k  (MRF24J40_SLPCLKSEL(0x01))
 
 /* RFCON8 */
 #define MRF24J40_RFVCO          (1 << 4)
@@ -353,7 +353,7 @@
 
 /* SLPCON1 */
 #define MRF24J40_CLKOUTDIS      (1 << 5) 		/* CLKOUTEN' */
-#define MRF24J40_SLPCLKDIV(x)       ((x & 0x1F))	/* division ratio: 2^(SLPCLKDIV) */
+#define MRF24J40_SLPCLKDIV(x)   ((x & 0x1F))	/* division ratio: 2^(SLPCLKDIV) */
 
 /* Channel state */
 typedef enum mrf24j40_chstate

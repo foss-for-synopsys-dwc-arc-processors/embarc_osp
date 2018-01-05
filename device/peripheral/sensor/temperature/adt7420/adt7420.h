@@ -30,7 +30,7 @@
 --------------------------------------------- */
 /**
  * \file
- * \brief	header file of pmod temperature sensor driver
+ * \brief	header file of adt7420 pmod temperature sensor driver
  */
 
 #ifndef _ADT7420_H_
@@ -61,7 +61,7 @@ typedef enum {
 } ADT7420_OP_MODE;
 
 /* options for resolution parameter of temp_sensor_resolution() */
-typedef enum adt7420_resolution {
+typedef enum {
 	ADT7420_RESOLUTION_13BIT,
 	ADT7420_RESOLUTION_16BIT
 } ADT7420_RESOLUTION;

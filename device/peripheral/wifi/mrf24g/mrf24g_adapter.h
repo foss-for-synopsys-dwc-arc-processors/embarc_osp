@@ -75,12 +75,12 @@ typedef struct MACADDR_T
 {
 	union
 	{
-		uint8_t u8[6];
-		uint16_t u16[3];
+		uint8_t		u8[6];
+		uint16_t	u16[3];
 	};
 } MACADDR;
 
-#define MACBROADCAST		((MACADDR) {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF})	// RFC 894
+#define MACBROADCAST	((MACADDR) {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF})	// RFC 894
 #define MACNONE			((MACADDR) {0x00, 0x00, 0x00, 0x00, 0x00, 0x00})	// RFC 894
 
 // WPA and WPA2 KEY, used for both
@@ -93,8 +93,8 @@ typedef struct
 {
 	union
 	{
-		uint8_t rgbKey[5];
-		int8_t asciiKey[5];
+		uint8_t		rgbKey[5];
+		int8_t		asciiKey[5];
 	} key[4];
 } WEP40KEY;
 
@@ -102,8 +102,8 @@ typedef struct
 {
 	union
 	{
-		uint8_t rgbKey[13];
-		int8_t asciiKey[13];
+		uint8_t		rgbKey[13];
+		int8_t		asciiKey[13];
 	} key[4];
 } WEP104KEY;
 

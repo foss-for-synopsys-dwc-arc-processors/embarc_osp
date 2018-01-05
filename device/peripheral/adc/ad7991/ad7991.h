@@ -59,7 +59,7 @@
 #define AD7991_CONFIG_CH2_EN		(1 << 6)
 #define AD7991_CONFIG_CH3_EN		(1 << 7)
 /**
- * I2C address : Pmod AD2 (AD7991) uses AD7991-0 which has only one address which is 0x28
+ * I2C address : Pmod AD2 (AD7991) uses AD7991-0, has only one address which is 0x28
  */
 #define AD7991_IIC_ADDRESS	0x28
 
