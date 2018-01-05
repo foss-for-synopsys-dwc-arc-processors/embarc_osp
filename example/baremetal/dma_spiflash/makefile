@@ -1,5 +1,6 @@
 # Application name
 APPL ?= dma_spiflash
+BOARD = emsk
 EXT_DEV_LIST += flash/w25qxx
 #
 # root dir of embARC

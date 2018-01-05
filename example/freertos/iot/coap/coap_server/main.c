@@ -93,7 +93,7 @@ static TaskHandle_t task_coap_server_handle = NULL;
 static TaskHandle_t task_temptx_handle = NULL;
 
 static coap_resource_t *temp_resource = NULL;
-static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, BOARD_TEMP_IIC_SLVADDR);
+static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
 
 int main(void)
 {
@@ -187,7 +187,7 @@ static void hnd_post_leds(coap_context_t  *ctx, struct coap_resource_t *resource
 	if (size) {
 		data[size] = '\0';	/* borrow one byte in pbuf */
 		xatoi((char **)&data, &val);
-		led_write(val, EMSK_LED_MASK);
+		led_write(val, 0xffffffff);
 	}
 }
 

@@ -76,7 +76,7 @@ static TaskHandle_t task_lwm2m_temperature_handle = NULL;
 static void task_lwm2m_temperature(void* par);
 
 static lwm2m_object_t * tempure_obj;
-static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, BOARD_TEMP_IIC_SLVADDR);
+static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
 extern xQueueHandle queue_observe;
 
 /*

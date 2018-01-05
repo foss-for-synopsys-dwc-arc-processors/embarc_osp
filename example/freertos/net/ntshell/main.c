@@ -78,6 +78,10 @@
 static TaskHandle_t net_ntshell_handle = NULL;
 #define TSKPRI_NET_NTSHELL	(configMAX_PRIORITIES-3)	  /**< net ntshell task priority */
 
+/* according to the board, configure the right ntshell id */
+
+#define NTSHELL_ID_NET		1
+
 int main(void)
 {
 	NTSHELL_IO *nt_io;
@@ -86,7 +90,7 @@ int main(void)
 	EMBARC_PRINTF("Now please telnet to the IPAddr @ Port %d, to run ntshell ver telnet\r\n", 23);
 	EMBARC_PRINTF("Command line like this: telnet ipaddr port\r\n");
 
-	nt_io = get_ntshell_io(EMSK_NTSHELL_1_ID);
+	nt_io = get_ntshell_io(NTSHELL_ID_NET);
 	if (net_ntshell_handle == NULL) {
 		xTaskCreate(ntshell_task, "net_ntshell", 512, (void *)nt_io, TSKPRI_NET_NTSHELL, &net_ntshell_handle);
 	}

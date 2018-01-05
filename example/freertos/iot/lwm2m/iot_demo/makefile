@@ -1,7 +1,7 @@
 # Application name
 APPL ?= freertos_lwm2m_iotdemo
 
-EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420 flash/w25qxx
 
 ##
 # HEAP & STACK SETTINGS
