@@ -9,7 +9,7 @@
 # Optimization Level
 # Please Refer to toolchain_xxx.mk for this option
 ##
-OLEVEL ?= O2
+OLEVEL ?= 
 
 ##
 # Select Which Board to be built
