@@ -619,12 +619,6 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t *runti
 		_arc_sr_reg(AUX_ERBTA, 0);
 	}
 
-	if (g_container_context[dst_id].cpu_status & AUX_STATUS_MASK_U) {
-		*(__secureshield_config.mode) = SECURESHIELD_ENABLED;
-	} else {
-		*(__secureshield_config.mode) = SECURESHIELD_DISABLED;
-	}
-
 	return target_sp;
 }
 
@@ -659,11 +653,6 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame, uint32_t *runtime_sp)
 		src_sp = 0;
 	}
 
-	if (g_container_context[src_id].cpu_status & AUX_STATUS_MASK_U) {
-		*(__secureshield_config.mode) = SECURESHIELD_ENABLED;
-	} else {
-		*(__secureshield_config.mode) = SECURESHIELD_DISABLED;
-	}
 	/* clear the first set bit in AUX_IRQ_ACT to simulate the quit of interrupt */
 	//_arc_sr_reg(AUX_IRQ_ACT, _arc_lr_reg(AUX_IRQ_ACT) & ~(1 << _arc_lr_reg(AUX_IRQ_PRIORITY)));
 	// Asm is more effective, it bitscan option is enabled */

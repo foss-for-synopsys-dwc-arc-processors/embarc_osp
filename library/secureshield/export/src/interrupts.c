@@ -37,7 +37,7 @@
 #if SECURESHIELD_VERSION == 1
 int32_t secureshield_int_disable(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_disable(intno);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_DISABLE, intno);
@@ -46,7 +46,7 @@ int32_t secureshield_int_disable(uint32_t intno)
 
 int32_t secureshield_int_enable(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_enable(intno);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_ENABLE, intno);
@@ -55,7 +55,7 @@ int32_t secureshield_int_enable(uint32_t intno)
 
 int32_t secureshield_int_enabled(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_enabled(intno);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_ENABLED, intno);
@@ -64,7 +64,7 @@ int32_t secureshield_int_enabled(uint32_t intno)
 
 int32_t secureshield_int_pri_set(uint32_t intno, int intpri)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_pri_set(intno,intpri);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_PRI_SET, intno, intpri);
@@ -73,7 +73,7 @@ int32_t secureshield_int_pri_set(uint32_t intno, int intpri)
 
 int32_t secureshield_int_pri_get(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_pri_get(intno);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_PRI_GET, intno);
@@ -82,7 +82,7 @@ int32_t secureshield_int_pri_get(uint32_t intno)
 
 int32_t secureshield_int_handler_install(uint32_t intno, void* handler)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_handler_install(intno, handler);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_INSTALL, intno, handler);
@@ -91,7 +91,7 @@ int32_t secureshield_int_handler_install(uint32_t intno, void* handler)
 
 void * secureshield_int_handler_get(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_handler_get(intno);
 	} else {
 		return (void *)SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_GET, intno);
@@ -100,7 +100,7 @@ void * secureshield_int_handler_get(uint32_t intno)
 
 int32_t secureshield_int_sw_trigger(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_sw_trigger(intno);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_SW_TRIG, intno);
@@ -109,7 +109,7 @@ int32_t secureshield_int_sw_trigger(uint32_t intno)
 
 int32_t secureshield_int_probe(uint32_t intno)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_probe(intno);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_PROBE, intno);
@@ -118,7 +118,7 @@ int32_t secureshield_int_probe(uint32_t intno)
 
 int32_t secureshield_int_level_config(uint32_t intno, uint32_t level)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return int_level_config(intno, level);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_LEVEL_CONFIG, intno, level);
@@ -127,7 +127,7 @@ int32_t secureshield_int_level_config(uint32_t intno, uint32_t level)
 
 void secureshield_cpu_lock(void)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		cpu_lock();
 	} else {
 		SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_CPU_LOCK);
@@ -136,7 +136,7 @@ void secureshield_cpu_lock(void)
 
 void secureshield_cpu_unlock(void)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		cpu_lock();
 	} else {
 		SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_CPU_UNLOCK);
@@ -145,7 +145,7 @@ void secureshield_cpu_unlock(void)
 
 uint32_t secureshield_cpu_lock_save(void)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return cpu_lock_save();
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_CPU_LOCK);
@@ -154,7 +154,7 @@ uint32_t secureshield_cpu_lock_save(void)
 
 void secureshield_cpu_unlock_restore(uint32_t status)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		cpu_unlock_restore(status);
 	} else {
 		SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_CPU_UNLOCK);

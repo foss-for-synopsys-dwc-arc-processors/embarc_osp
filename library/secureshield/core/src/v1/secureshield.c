@@ -49,11 +49,8 @@ static void secureshield_init_post(void)
  */
 void secureshield_init(void)
 {
-	*(__secureshield_config.mode) = SECURESHIELD_DISABLED;
-	/* run basic sanity checks */
 	/* secureshield interrupt init */
 	secureshield_int_init();
 	/* finish initialization */
 	secureshield_init_post();
-	*(__secureshield_config.mode) = SECURESHIELD_ENABLED;
 }

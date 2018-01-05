@@ -73,8 +73,8 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ}
 };
 
-/* enable secureshield, set the access control table of background container */
-SECURESHIELD_SET_MODE_AC(SECURESHIELD_ENABLED, g_main_container_act);
+/* set the access control table of background container */
+SECURESHIELD_CONTAINER_BACKGROUND(g_main_container_act);
 
 /* configure the secret container */
 /* container1 is secure container, it has access to most of the system resources */

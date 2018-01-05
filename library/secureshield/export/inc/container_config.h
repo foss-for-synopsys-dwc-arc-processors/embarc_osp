@@ -35,13 +35,12 @@
 #define _CONTAINER_CONFIG_H_
 
 #ifndef __ASSEMBLY__
-#define SECURESHIELD_SET_MODE(mode) \
-	SECURESHIELD_SET_MODE_AC_COUNT(mode, NULL, 0)
 
-#define SECURESHIELD_SET_MODE_AC(mode, ac_table) \
-	SECURESHIELD_SET_MODE_AC_COUNT(mode, ac_table, EMBARC_ARRAY_COUNT(ac_table))
 
-#define SECURESHIELD_SET_MODE_AC_COUNT(mode, ac_table, ac_table_count) \
+#define SECURESHIELD_CONTAINER_BACKGROUND(ac_table) \
+	__SECURESHIELD_CONTAINER_BACKGROUND(ac_table, EMBARC_ARRAY_COUNT(ac_table))
+
+#define __SECURESHIELD_CONTAINER_BACKGROUND(ac_table, ac_table_count) \
 	extern uint8_t _e_text_background_container[]; \
 	extern uint8_t _f_text_background_container[]; \
 	extern uint8_t _e_rodata_background_container[]; \
@@ -51,8 +50,6 @@
 	extern uint8_t _f_data_background_container[]; \
 	extern uint8_t _e_data_background_container[]; \
 	extern uint8_t _f_data_load_background_container[]; \
-	uint32_t __secureshield_mode = (mode); \
-	\
 	static const __attribute__((section(".keep.secureshield.cfgtbl"), aligned(4))) CONTAINER_CONFIG background_container_cfg = { \
 		SECURESHIELD_CONTAINER_MAGIC, \
 		SECURESHIELD_CONTAINER_NORMAL, \
@@ -144,8 +141,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-extern uint32_t __secureshield_mode;
 
 #ifdef __cplusplus
 }

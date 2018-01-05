@@ -38,7 +38,7 @@
 #if SECURESHIELD_VERSION == 1
 uint32_t secureshield_arc_lr_reg(uint32_t addr)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		return _arc_lr_reg(addr);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_LR, addr);
@@ -47,7 +47,7 @@ uint32_t secureshield_arc_lr_reg(uint32_t addr)
 
 void secureshield_arc_sr_reg(uint32_t addr, uint32_t val)
 {
-	if (__secureshield_mode == SECURESHIELD_DISABLED) {
+	if (_arc_in_user_mode() == 0) {
 		_arc_sr_reg(addr, val);
 	} else {
 		SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_SR, addr, val);

@@ -121,12 +121,6 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 		src++;
 	}
 
-	if (g_container_context[dst_id].cpu_status & AUX_STATUS_MASK_U) {
-		*(__secureshield_config.mode) = SECURESHIELD_ENABLED;
-	} else {
-		*(__secureshield_config.mode) = SECURESHIELD_DISABLED;
-	}
-
 	/* switch access control tables */
 	vmpu_switch(src_id, dst_id);
 
@@ -159,12 +153,6 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
 
 	/* copy return value */
 	src->exc_frame.r0 = dst_frame->r0;
-
-	if (g_container_context[src_id].cpu_status & AUX_STATUS_MASK_U) {
-		*(__secureshield_config.mode) = SECURESHIELD_ENABLED;
-	} else {
-		*(__secureshield_config.mode) = SECURESHIELD_DISABLED;
-	}
 
 	/* switch access control tables */
 	vmpu_switch(dst_id, src_id);

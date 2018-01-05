@@ -34,9 +34,6 @@
 #ifndef _SECURESHIELD_EXPORTS_H_
 #define _SECURESHIELD_EXPORTS_H_
 
-#define SECURESHIELD_DISABLED	0
-#define SECURESHIELD_ENABLED	1
-
 /* maximum number of containers: 1 is the minimum (unprivileged container) */
 #define SECURESHIELD_MAX_CONTAINERS 5U
 

@@ -36,7 +36,6 @@
 
 .globl secureshield_start
 .globl secureshield_config
-.weak  __secureshield_mode
 
 	.file 	"wrapper.s"
 
@@ -49,12 +48,6 @@ secureshield_config:
 	   secureshield will intentionally freeze to avoid accidentally
 	   unprotected systems */
 	.long  SECURESHIELD_MAGIC
-
-	/* secureshield mode
-	   0: disabled
-	   1: enabled
-	 */
-	.long __secureshield_mode
 
 	/* start and end address of protected bss */
 	.long _f_rom_secureshieldruntime
@@ -77,10 +70,6 @@ secureshield_config:
 	/* start and end address of list of pointers to containers configuration tables */
 	.long __secureshield_cfgtbl_ptr_start
 	.long __secureshield_cfgtbl_ptr_end
-
-__secureshield_mode:
-	/* secureshield default mode - user can override weak reference */
-	.long 0
 
 .section .ram.secureshield.secure, "aw", @nobits
 	.space SECURESHIELD_SECURE_RAM_USAGE

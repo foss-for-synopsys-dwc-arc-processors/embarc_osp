@@ -107,15 +107,15 @@ extern "C" {
 #else
 Inline uint32_t _arc_swap32(uint32_t val) {
 	register uint32_t v;
-	__asm__ volatile ("swape %0, %1" :"=r"(v): "r"(val));
+	Asm("swape %0, %1" :"=r"(v): "r"(val));
 	return v;
 }
 
 Inline uint16_t _arc_swap16(uint32_t val) {
 	register uint32_t temp;
 	register uint32_t v;
-	__asm__ volatile ("swape %0, %1" :"=r"(temp): "r"(val));
-	__asm__ volatile ("lsr16 %0, %1" :"=r"(v): "r"(temp));
+	Asm("swape %0, %1" :"=r"(temp): "r"(val));
+	Asm("lsr16 %0, %1" :"=r"(v): "r"(temp));
 	return (unsigned short)v;
 }
 #endif
@@ -165,7 +165,7 @@ Inline uint16_t _arc_swap16(uint32_t val) {
 
 Inline uint32_t _arc_clri(void) {
 	register uint32_t v;
-	__asm__ volatile ("clri %0" :"=r"(v));
+	Asm("clri %0" :"=r"(v));
 	return v;
 
 }
@@ -173,20 +173,20 @@ Inline uint32_t _arc_clri(void) {
 
 Inline uint32_t _arc_swap32(uint32_t val) {
 	register uint32_t v;
-	__asm__ volatile ("swape %0, %1" :"=r"(v): "r"(val));
+	Asm("swape %0, %1" :"=r"(v): "r"(val));
 	return v;
 }
 
 Inline uint16_t _arc_swap16(uint32_t val) {
 	register uint32_t temp;
 	register uint32_t v;
-	__asm__ volatile ("swape %0, %1" :"=r"(temp): "r"(val));
-	__asm__ volatile ("lsr16 %0, %1" :"=r"(v): "r"(temp));
+	Asm("swape %0, %1" :"=r"(temp): "r"(val));
+	Asm("lsr16 %0, %1" :"=r"(v): "r"(temp));
 	return (unsigned short)v;
 }
 
 Inline void _arc_sync(void) {
-	__asm__ volatile ("sync");
+	Asm("sync");
 }
 
 /**
@@ -275,8 +275,8 @@ Inline void _arc_write_cached_32(void *ptr, uint32_t data)
  * \retval return value of main function
  */
 Inline int32_t _arc_goto_main(int argc, char **argv) {
-	int __ret;
-	__asm__ volatile(
+	int32_t __ret;
+	Asm(
 		"mov %%r0, %1\n"
 		"mov %%r1, %2\n"
 		"push_s %%blink\n"
@@ -284,8 +284,35 @@ Inline int32_t _arc_goto_main(int argc, char **argv) {
 		"pop_s %%blink\n"
 		"mov %0, %%r0"
 		:"=r"(__ret): "r"(argc), "r"(argv));
-	return (int)__ret;
+	return (int32_t)__ret;
 }
+
+
+/**
+ * \brief check whether process is in user mode
+ * \retval 0 kernel mode, 1 user mode
+ */
+Inline uint32_t _arc_in_user_mode(void)
+{
+	uint32_t __ret;
+	uint32_t __val = 0;
+	Asm(
+		"lr    %0,[0xa]\n"
+		"bbit1 %0,20,1f\n" 	/* STATUS32.US == 1 implies Kernel mode */
+		"bset  %1,%0,20\n"	/* set the US bit */
+		"bclr  %1,%0,31\n"	/* clear the IE bit (no preemption) */
+		"kflag %1\n"		/* attempt to set US to 1 and IE to 0 */
+		"lr    %1,[0xa]\n"
+		"bbit0 %1,20,2f\n"	/* STATUS32.US == 0 implies User mode */
+		"kflag %0\n"		/* Kernel mode, restore STATUS32.[US,IE] */
+		"1:\n"
+		"mov   %0,0\n"		/* return 0 (not in User mode) */
+		"2:\n"
+		"mov   %0,1\n"		/* return 1 (in User mode) */
+		: "=r"(__ret):"r"(__val));
+	return __ret;
+}
+
 
 #ifdef __cplusplus
 }

@@ -70,15 +70,15 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
 	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
 	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
-#endif	
+#endif
 /* if LIB_SECURESHIELD_VERSION == 2, the following interrupts are configured as normal interrupts */
 	{default_interrupt_handler, INTNO_LOW_PRI, SECURESHIELD_AC_IRQ},
 	{default_interrupt_handler, INTNO_HIGH_PRI, SECURESHIELD_AC_IRQ},
 	{default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ}
 };
 
-/* enable secureshield, set the access control table of background container */
-SECURESHIELD_SET_MODE_AC(SECURESHIELD_ENABLED, g_main_container_act);
+/* set the access control table of background container */
+SECURESHIELD_CONTAINER_BACKGROUND(g_main_container_act);
 
 /* configure other containers */
 SECURESHIELD_CONTAINER_CONFIG(container1, g_container1_act, 1024);

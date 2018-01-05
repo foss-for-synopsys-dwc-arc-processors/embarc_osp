@@ -95,7 +95,7 @@ _clear_bss_loop:
 	st.ab	r2, [r0, 4]
 	cmp	r0, r1
 	jlt	_clear_bss_loop
-	
+
 	/* switch to secureshield runtime stack, save original sp into AUX_USER_SP */
 	mov 	r0, __secureshield_stack
 	sr 	r0, [AUX_USER_SP]
@@ -132,6 +132,7 @@ _next_stage:
 	sr 	blink, [AUX_ERRET]
 	lr 	r0, [AUX_STATUS32]
 	bset 	r0, r0, AUX_STATUS_BIT_U
+	bset	r0, r0, AUX_STATUS_BIT_IE
 	sr 	r0, [AUX_ERSTATUS]
 	lr 	r0, [AUX_BTA]
 	sr	r0, [AUX_ERBTA]

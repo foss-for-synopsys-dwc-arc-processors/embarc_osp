@@ -101,13 +101,7 @@ static int32_t vmpu_config_checks(void)
 	SECURESHIELD_ASSERT(__secureshield_config.cfgtbl_ptr_start >= __secureshield_config.secure_rom_start);
 	SECURESHIELD_ASSERT((uint32_t)__secureshield_config.cfgtbl_ptr_end <= (uint32_t)(SECURE_ROM_START + SECURE_ROM_SIZE));
 
-	/* return error if secureshield is not enabled */
-	// \todo remove the check
-	if (!__secureshield_config.mode) {
-		return -1;
-	} else {
-		return 0;
-	}
+	return 0;
 }
 
 

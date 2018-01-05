@@ -54,7 +54,6 @@
  */
 typedef struct {
 	uint32_t magic;
-	uint32_t *mode;
 
 	/* protected flash memory region */
 	uint32_t *secure_rom_start, *secure_rom_end;
