@@ -63,13 +63,15 @@ include $(BOARD_NSIM_DIR)/configs/core_configs.mk
 COMMON_COMPILE_PREREQUISITES += $(BOARD_NSIM_DIR)/configs/core_compiler.mk
 include $(BOARD_NSIM_DIR)/configs/core_compiler.mk
 
+
+include $(EMBARC_ROOT)/device/device.mk
+
 ##
 # \brief	nsim device driver related
 ##
-BOARD_NSIM_DEV_CSRCDIR		=
-
-BOARD_NSIM_DEV_ASMSRCDIR	=
-BOARD_NSIM_DEV_INCDIR		=
+BOARD_NSIM_DEV_CSRCDIR		+= $(DEV_CSRCDIR)
+BOARD_NSIM_DEV_ASMSRCDIR	+= $(DEV_ASMSRCDIR)
+BOARD_NSIM_DEV_INCDIR		+= $(DEV_INCDIR)
 
 ##
 # \brief	nsim board related source and header

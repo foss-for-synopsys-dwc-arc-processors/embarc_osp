@@ -52,15 +52,6 @@
 #include "arc_cache.h"
 #include "arc_udma.h"
 
-/* Device HAL */
-#include "dev_gpio.h"
-#include "dev_iic.h"
-#include "dev_spi.h"
-#include "dev_uart.h"
-#ifdef WIFI_SEL
-#include "dev_wnic.h"
-#endif
-
 #include "board.h"
 
 #ifdef ENABLE_OS

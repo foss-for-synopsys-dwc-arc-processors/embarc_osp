@@ -6,7 +6,7 @@
 DEVHAL_ASMSRCDIR	=
 DEVHAL_CSRCDIR		=
 DEVHAL_CXXSRCDIR	=
-DEVHAL_INCDIR		= $(EMBARC_ROOT)/device/device_hal/inc
+DEVHAL_INCDIR		=
 
 ## Extra Related ##
 ### These source code will not be compiled and linked as library
