@@ -691,9 +691,8 @@ uint8_t u8g_com_msp430_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void 
 uint8_t u8g_com_raspberrypi_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);                /* u8g_com_rasperrypi_hw_spi.c */
 uint8_t u8g_com_raspberrypi_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);		/* u8g_com_raspberrypi_ssd_i2c.c */
 
-uint8_t u8g_com_emsk_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
-uint8_t u8g_com_emsk_ssd_i2c0_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
-uint8_t u8g_com_emsk_ssd_i2c1_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
+uint8_t u8g_com_embarc_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
+
 
 /* 
   Translation of system specific com drives to generic com names
@@ -848,16 +847,13 @@ defined(__18CXX) || defined(__PIC32MX)
 #endif
 #endif
 
-/* ==== HW I2C, embARC EMSK ====*/
+/* ==== HW I2C, embARC ====*/
 #if defined(PLATFORM_EMBARC)
-#if defined(BOARD_EMSK)
-#define U8G_COM_SSD_I2C u8g_com_emsk_ssd_i2c_fn
-#define U8G_COM_SSD_I2C0 u8g_com_emsk_ssd_i2c0_fn
-#define U8G_COM_SSD_I2C1 u8g_com_emsk_ssd_i2c1_fn
-#endif
+#define U8G_COM_SSD_I2C u8g_com_embarc_ssd_i2c_fn
 
 #ifndef U8G_COM_SSD_I2C
 #define U8G_COM_SSD_I2C u8g_com_null_fn
+#endif
 #endif
 
 #ifndef U8G_COM_UC_I2C
@@ -868,8 +864,6 @@ defined(__18CXX) || defined(__PIC32MX)
 #endif
 #ifndef U8G_COM_UC_I2C
 #define U8G_COM_UC_I2C u8g_com_null_fn
-#endif
-
 #endif
 
 

@@ -43,8 +43,11 @@
 #include "embARC_error.h"
 
 #include "dev_iic.h"
+#include "ssd1306_app_config.h"
 
-#define OLED_IIC_OBJID		1
+#ifndef SSD1306_I2C_ID
+#define SSD1306_I2C_ID		1
+#endif
 
 #define I2C_SLA			0x3c
 #define I2C_CMD_MODE		0x000
@@ -52,27 +55,35 @@
 #define I2C_CONTINUE_BIT 	0x080
 
 /* Use RESET pin or not */
-#define SSD1306_USE_RESET_PIN	1
+#ifndef SSD1306_USE_RST_PIN
+#define SSD1306_USE_RST_PIN	1
+#endif
 
-#if SSD1306_USE_RESET_PIN
+#if SSD1306_USE_RST_PIN
 #include "dev_gpio.h"
 
-// Port D[5]
-#define OLED_RST_GPIO_OBJID	3
-#define OLED_RST_PIN_IDX	5
+
+#ifndef SSD1306_RST_GPIO
+#define SSD1306_RST_GPIO	3
+#endif
+
+#ifndef SSD1306_RST_PIN
+#define SSD1306_RST_PIN		5
+#endif
+
 static DEV_GPIO *oled_gpio;
 
 static void oled_ssd1306_hw_reset(void)
 {
-	oled_gpio = gpio_get_dev(OLED_RST_GPIO_OBJID);
+	oled_gpio = gpio_get_dev(SSD1306_RST_GPIO);
 	if (oled_gpio) {
-		oled_gpio->gpio_open(1<<OLED_RST_PIN_IDX);
-		oled_gpio->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, CONV2VOID(1<<OLED_RST_PIN_IDX));
+		oled_gpio->gpio_open(1<<SSD1306_RST_PIN);
+		oled_gpio->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, CONV2VOID(1<<SSD1306_RST_PIN));
 		// Power off OLED
-		oled_gpio->gpio_write(0, 1<<OLED_RST_PIN_IDX);
+		oled_gpio->gpio_write(0, 1<<SSD1306_RST_PIN);
 		u8g_Delay(100);
 		// Power on OLED
-		oled_gpio->gpio_write(1<<OLED_RST_PIN_IDX, 1<<OLED_RST_PIN_IDX);
+		oled_gpio->gpio_write(1<<SSD1306_RST_PIN, 1<<SSD1306_RST_PIN);
 		u8g_Delay(5);
 	}
 }
@@ -134,7 +145,7 @@ Inline int32_t oled_ssd1306_write_buf(uint8_t *buf, uint8_t cnt)
 	return ercd;
 }
 
-uint8_t u8g_com_emsk_ssd_i2c_fn_sel(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr, int32_t devid)
+uint8_t u8g_com_embarc_ssd_i2c_fn_sel(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr, int32_t devid)
 {
 	//uint8_t *ptr;
 	int32_t ercd;
@@ -181,17 +192,7 @@ uint8_t u8g_com_emsk_ssd_i2c_fn_sel(u8g_t *u8g, uint8_t msg, uint8_t arg_val, vo
 	return 1;
 }
 
-uint8_t u8g_com_emsk_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)
+uint8_t u8g_com_embarc_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)
 {
-	return u8g_com_emsk_ssd_i2c_fn_sel(u8g, msg, arg_val, arg_ptr, 0);
-}
-
-uint8_t u8g_com_emsk_ssd_i2c0_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)
-{
-	return u8g_com_emsk_ssd_i2c_fn_sel(u8g, msg, arg_val, arg_ptr, 0);
-}
-
-uint8_t u8g_com_emsk_ssd_i2c1_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)
-{
-	return u8g_com_emsk_ssd_i2c_fn_sel(u8g, msg, arg_val, arg_ptr, 1);
+	return u8g_com_embarc_ssd_i2c_fn_sel(u8g, msg, arg_val, arg_ptr, SSD1306_I2C_ID);
 }

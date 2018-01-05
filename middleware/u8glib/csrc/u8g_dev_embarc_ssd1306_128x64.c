@@ -178,5 +178,3 @@ uint8_t u8g_dev_ssd1306_128x64_2x_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, vo
 uint8_t u8g_dev_ssd1306_128x64_2x_buf[WIDTH*2] U8G_NOCOMMON ;
 u8g_pb_t u8g_dev_ssd1306_128x64_2x_pb = { {16, HEIGHT, 0, 0, 0},  WIDTH, u8g_dev_ssd1306_128x64_2x_buf};
 u8g_dev_t u8g_dev_ssd1306_128x64_2x_i2c = { u8g_dev_ssd1306_128x64_2x_fn, &u8g_dev_ssd1306_128x64_2x_pb, U8G_COM_SSD_I2C };
-u8g_dev_t u8g_dev_ssd1306_128x64_2x_i2c0 = { u8g_dev_ssd1306_128x64_2x_fn, &u8g_dev_ssd1306_128x64_2x_pb, U8G_COM_SSD_I2C0 };
-u8g_dev_t u8g_dev_ssd1306_128x64_2x_i2c1 = { u8g_dev_ssd1306_128x64_2x_fn, &u8g_dev_ssd1306_128x64_2x_pb, U8G_COM_SSD_I2C1 };
