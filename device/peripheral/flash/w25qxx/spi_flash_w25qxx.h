@@ -71,6 +71,7 @@ typedef struct w25qxx_t {
 extern "C" {
 #endif
 
+extern uint32_t w25qxx_read_status(W25QXX_DEF_PTR dev);
 extern uint32_t w25qxx_read_id(W25QXX_DEF_PTR dev);
 extern int32_t w25qxx_read(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, void *data);
 extern int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev);

@@ -1,6 +1,9 @@
 # Application name
 APPL ?= openthread_cli
 
+# Extended Device Listcd
+EXT_DEV_LIST += 802_15_4/mrf24j40
+
 # Optimization Level
 OLEVEL = O2
 
@@ -34,7 +37,7 @@ APPL_DEFINES = -DMBEDTLS_CONFIG_FILE=\"mbedtls-config.h\" \
 		-DOPENTHREAD_ENABLE_CLI_MTD=0 \
 		-DOPENTHREAD_ENABLE_CLI_FTD=1 \
 		-DOPENTHREAD_ENABLE_APPLICATION_COAP=1 \
-		-DOPENTHREAD_CLI_DEBUG_INFO=0
+		-DOPENTHREAD_CLI_DEBUG_INFO=1
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile

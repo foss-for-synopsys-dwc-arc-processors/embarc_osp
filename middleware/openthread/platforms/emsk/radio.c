@@ -38,12 +38,19 @@
 #include <openthread/platform/alarm-milli.h>
 #include <openthread/platform/radio.h>
 #include "platform-emsk.h"
+#include "embARC_error.h"
+#include "mrf24j40.h"
 
 #include "dev_gpio.h"
 #include <string.h>
 
 #include <stdio.h>
 #define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
+
+#define MRF_GPIO_SETUP(port_pin, port, pin)		{ \
+		port = (port_pin & 0xffff0000) >>16; \
+		pin = port_pin & 0xffff; \
+	}
 
 enum
 {
@@ -98,6 +105,8 @@ enum
 	MRF24J40_RSSI_SLOPE = 5
 };
 
+static MRF24J40_DEF mrf24j40_def;
+
 static void radioTransmitMessage(otInstance *aInstance);
 
 static otRadioFrame sTransmitFrame;
@@ -119,7 +128,7 @@ static volatile uint8_t Mrf24StatusRx = 0;
 static volatile uint8_t Mrf24StatusSec = 0;
 
 static DEV_SPI_PTR pmrf_spi_ptr;
-static DEV_GPIO_PTR pmrf_gpio_ptr;
+
 static void RadioIsr(void *ptr);
 
 /* Variables for test */
@@ -194,11 +203,88 @@ exit:
 	return length;
 }
 
+static void mrf24j40Init(void)
+{
+	DEV_GPIO_BIT_ISR isr;
+	DEV_GPIO_INT_CFG int_cfg;
+	uint16_t port_wake, port_reset, pin_wake, pin_reset, port_intr, pin_intr;
+
+	int32_t ercd;
+
+#ifdef BOARD_EMSK
+	mrf24j40_def.spi = MRF24J40_SPI_ID;
+	mrf24j40_def.spi_cs = MRF24J40_SPI_CS;
+	mrf24j40_def.gpio_pin_wake = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_WAKE, MRF24J40_GPIO_PIN_WAKE);	// DEV_GPIO_PORT_0 --  DW_GPIO_PORT_A
+	mrf24j40_def.gpio_pin_reset = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_RESET, MRF24J40_GPIO_PIN_RESET);
+	mrf24j40_def.gpio_pin_intr = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PIN_INTR, MRF24J40_GPIO_PIN_INTR);
+
+	memset(&(mrf24j40_def.rx_buf[0]), 0, sizeof(uint8_t)*MRF24J40_BUF_SIZE);
+	memset(&(mrf24j40_def.tx_buf[0]), 0, sizeof(uint8_t)*MRF24J40_BUF_SIZE);
+	mrf24j40_def.ch_state = MRF24J40_EIO;
+
+	pmrf_spi_ptr = spi_get_dev(mrf24j40_def.spi);
+	ercd = pmrf_spi_ptr->spi_open(DEV_MASTER_MODE, MRF24J40_SPIFREQ);
+
+	if ((ercd != E_OK) && (ercd != E_OPNED))
+	{
+		DBG("PmodRF2 SPI open error\r\n");
+	}
+
+	DBG("EMSK SPI Init\r\n");
+	pmrf_spi_ptr->spi_control(SPI_CMD_SET_CLK_MODE, CONV2VOID(MRF24J40_SPICLKMODE));
+
+	/*MRF24J40 wakepin:output, rstpin:output, INT_PIN:input, interrupt */
+	DBG("EMSK GPIO Init\r\n");
+	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_wake, port_wake, pin_wake);
+	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_reset, port_reset, pin_reset);
+	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_intr, port_intr, pin_intr);
+	/* In EMSK, the pin wake, reset and intr are in a same port */
+	DEV_GPIO_PTR pmrf_gpio_ptr = gpio_get_dev(port_wake);
+	// ercd = pmrf_gpio_ptr->gpio_open((1 << pin_wake) | (1 << pin_reset) | (1 << pin_intr));
+	ercd = pmrf_gpio_ptr->gpio_open((1 << pin_wake) | (1 << pin_reset));
+
+	if ((ercd != E_OK) && (ercd != E_OPNED))
+	{
+		DBG("PmodRF2 CRTL port open error");
+	}
+
+	ercd = pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, (void *)((1 << pin_wake) | (1 << pin_reset)));
+	ercd = pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)(1 << pin_intr));
+
+	// if (ercd == E_OPNED)
+	// {
+		// ercd = pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, (void *)((1 << pin_wake) | (1 << pin_reset)));
+		// ercd = pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)(1 << pin_intr));
+	// }
+
+	DBG("EMSK Interrupt Config\r\n");
+	pmrf_gpio_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)(1 << pin_intr));
+
+	int_cfg.int_bit_mask = 1 << pin_intr;
+	int_cfg.int_bit_type = GPIO_INT_BITS_EDGE_TRIG(1 << pin_intr);
+	int_cfg.int_bit_polarity = GPIO_INT_BITS_POL_FALL_EDGE(1 << pin_intr);
+	int_cfg.int_bit_debounce = GPIO_INT_BITS_DIS_DEBOUNCE(1 << pin_intr);
+	pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_INT_CFG, (void *)(&int_cfg));
+
+	isr.int_bit_ofs = pin_intr;
+	isr.int_bit_handler = RadioIsr;
+	pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_ISR, (void *)(&isr));
+
+	/* interrupt for mrf24j40 is enabled at the end of the init process */
+	DBG("MRF24J40 Init Started\r\n");
+	mrf24j40_initialize(&mrf24j40_def);
+	DBG("MRF24J40 Init Finished\r\n");
+
+	pmrf_gpio_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)(1 << pin_intr));
+#endif /* BOARD_EMSK */
+
+}
+
 void enableReceiver(void)
 {
 	if (!sIsReceiverEnabled)
 	{
-		mrf24j40_rxfifo_flush();
+		mrf24j40_rxfifo_flush(&mrf24j40_def);
 		/* add code to enable receiver (wakeup) */
 		sIsReceiverEnabled = true;
 	}
@@ -208,7 +294,7 @@ void disableReceiver(void)
 {
 	if (sIsReceiverEnabled)
 	{
-		mrf24j40_rxfifo_flush();
+		mrf24j40_rxfifo_flush(&mrf24j40_def);
 		/* add code to disable receiver (sleep) */
 		sIsReceiverEnabled = false;
 	}
@@ -216,7 +302,7 @@ void disableReceiver(void)
 
 void setChannel(uint8_t channel)
 {
-	mrf24j40_set_channel((int16_t)(channel - 11));
+	mrf24j40_set_channel(&mrf24j40_def, (int16_t)(channel - 11));
 }
 
 void otPlatRadioGetIeeeEui64(otInstance *aInstance, uint8_t *aIeeeEui64)
@@ -240,13 +326,13 @@ void otPlatRadioSetPanId(otInstance *aInstance, uint16_t panid)
 
 	pan[0] = (uint8_t)(panid & 0xFF);
 	pan[1] = (uint8_t)(panid >> 8);
-	mrf24j40_set_pan(pan);
+	mrf24j40_set_pan(&mrf24j40_def, pan);
 }
 
 void otPlatRadioSetExtendedAddress(otInstance *aInstance, otExtAddress *address)
 {
 	(void)aInstance;
-	mrf24j40_set_eui(address->m8);
+	mrf24j40_set_eui(&mrf24j40_def, address->m8);
 }
 
 void otPlatRadioSetShortAddress(otInstance *aInstance, uint16_t address)
@@ -256,17 +342,11 @@ void otPlatRadioSetShortAddress(otInstance *aInstance, uint16_t address)
 
 	addr[0] = (uint8_t)(address & 0xFF);
 	addr[1] = (uint8_t)(address >> 8);
-	mrf24j40_set_short_addr(addr);
+	mrf24j40_set_short_addr(&mrf24j40_def, addr);
 }
 
 void emskRadioInit(void)
 {
-	DEV_GPIO_BIT_ISR isr;
-	DEV_GPIO_INT_CFG int_cfg;
-
-	int32_t ercd;
-	uint32_t temp;
-
 	sTransmitFrame.mLength = 0;
 	sTransmitFrame.mPsdu = sTransmitPsdu;
 	sReceiveFrame.mLength = 0;
@@ -274,53 +354,7 @@ void emskRadioInit(void)
 	sAckFrame.mLength = 0;
 	sAckFrame.mPsdu = sAckPsdu;
 
-	pmrf_spi_ptr = spi_get_dev(EMSK_PMRF_0_SPI_ID);
-	ercd = pmrf_spi_ptr->spi_open(DEV_MASTER_MODE, EMSK_PMRF_0_SPIFREQ);
-
-	if ((ercd != E_OK) && (ercd != E_OPNED))
-	{
-		DBG("PmodRF2 SPI open error\r\n");
-	}
-
-	DBG("EMSK SPI Init\r\n");
-	pmrf_spi_ptr->spi_control(SPI_CMD_SET_CLK_MODE, CONV2VOID(EMSK_PMRF_0_SPICLKMODE));
-
-	/*MRF24J40 wakepin:output, rstpin:output, INT_PIN:input, interrupt */
-	DBG("EMSK GPIO Init\r\n");
-	pmrf_gpio_ptr = gpio_get_dev(EMSK_PMRF_0_GPIO_ID);
-	ercd = pmrf_gpio_ptr->gpio_open(MRF24J40_WAKE_PIN | MRF24J40_RST_PIN);
-
-	if ((ercd != E_OK) && (ercd != E_OPNED))
-	{
-		DBG("PmodRF2 CRTL port open error");
-	}
-
-	if (ercd == E_OPNED)
-	{
-		pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, (void *)(MRF24J40_WAKE_PIN | MRF24J40_RST_PIN));
-		pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)MRF24J40_INT_PIN);
-	}
-
-	DBG("EMSK Interrupt Config\r\n");
-	pmrf_gpio_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)MRF24J40_INT_PIN);
-
-	temp = MRF24J40_INT_PIN;
-	int_cfg.int_bit_mask = temp;
-	int_cfg.int_bit_type = GPIO_INT_BITS_EDGE_TRIG(temp);
-	int_cfg.int_bit_polarity = GPIO_INT_BITS_POL_FALL_EDGE(temp);
-	int_cfg.int_bit_debounce = GPIO_INT_BITS_DIS_DEBOUNCE(temp);
-	pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_INT_CFG, (void *)(&int_cfg));
-
-	isr.int_bit_ofs = MRF24J40_INT_PIN_OFS;
-	isr.int_bit_handler = RadioIsr;
-	pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_ISR, (void *)(&isr));
-
-	/* interrupt for mrf24j40 is enabled at the end of the init process */
-	DBG("MRF24J40 Init Started\r\n");
-	mrf24j40_initialize();
-	DBG("MRF24J40 Init Finished\r\n");
-
-	pmrf_gpio_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)MRF24J40_INT_PIN);
+	mrf24j40Init();
 }
 
 bool otPlatRadioIsEnabled(otInstance *aInstance)
@@ -418,14 +452,16 @@ otRadioCaps otPlatRadioGetCaps(otInstance *aInstance)
 bool otPlatRadioGetPromiscuous(otInstance *aInstance)
 {
 	(void)aInstance;
-	return (bool)(mrf24j40_read_short_ctrl_reg(MRF24J40_RXMCR) & MRF24J40_PROMI);
+	uint8_t val = 0;
+	mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_RXMCR, &val);
+	return (bool)(val & MRF24J40_PROMI);
 }
 
 // should be checked again with CC2538
 void otPlatRadioSetPromiscuous(otInstance *aInstance, bool aEnable)
 {
 	(void)aInstance;
-	mrf24j40_set_promiscuous(~aEnable);
+	mrf24j40_set_promiscuous(&mrf24j40_def, ~aEnable);
 }
 
 void readFrame(void)
@@ -435,14 +471,13 @@ void readFrame(void)
 	 * 1 bit -- 5 to 127 bits -- 1 bit -- 1bit
 	 * Frame Length -- PSDU (Header + Data Payload + FCS) -- LQI -- RSSI
 	 */
-	uint8_t readBuffer[MRF24J40_RXFIFO_SIZE];
 	uint8_t readPlqi = 0;
 	uint8_t readRssi = 0;
 
 	uint16_t length;
 	int16_t i;
 
-	memset(readBuffer, 0, MRF24J40_RXFIFO_SIZE);
+	memset(&(mrf24j40_def.rx_buf[0]), 0, MRF24J40_RXFIFO_SIZE);
 
 	otEXPECT_ACTION(sState == OT_RADIO_STATE_RECEIVE || sState == OT_RADIO_STATE_TRANSMIT, ;);
 	otEXPECT_ACTION(Mrf24StatusRx, ;);
@@ -461,19 +496,26 @@ void readFrame(void)
 	}
 
 	/* Read length */
-	length = (uint16_t)mrf24j40_rxpkt_intcb(readBuffer, &readPlqi, &readRssi);
+	if (mrf24j40_rxpkt(&mrf24j40_def, &readPlqi, &readRssi) != E_OK)
+	{
+#if OPENTHREAD_CLI_DEBUG_INFO
+		DBG("Read process error");
+		goto exit;
+#endif
+	}
+	length = mrf24j40_def.rx_buf[0];
 #if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("Receive Frame Length = %d\r\n", length);
 #endif
 
 	otEXPECT_ACTION(IEEE802154_MIN_LENGTH <= length && length <= IEEE802154_MAX_LENGTH, ;);
+	/* Read PSDU */
+	memcpy(sReceiveFrame.mPsdu, &(mrf24j40_def.rx_buf[1]), length - 2);
 #if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("PSDU Frame Receive\r\n");
-
-	/* Read PSDU */
 	for (i = 0; i < length - 2; i++)
 	{
-		sReceiveFrame.mPsdu[i] = readBuffer[i];
+		// sReceiveFrame.mPsdu[i] = mrf24j40_def.rx_buf[i+1];
 		DBG("%x ", sReceiveFrame.mPsdu[i]);
 	}
 	DBG("\r\nPSDU Frame Receive Finish\r\n");
@@ -485,8 +527,6 @@ void readFrame(void)
 	sReceiveFrame.mUsec = 0;  // Don't support microsecond timer for now.
 #endif
 
-	/* Read PSDU */
-	memcpy(sReceiveFrame.mPsdu, readBuffer, length - 2);
 
 	sReceiveFrame.mPower = (int8_t)(readRssi / MRF24J40_RSSI_SLOPE) - MRF24J40_RSSI_OFFSET;
 	sReceiveFrame.mLength = (uint8_t) length;
@@ -505,6 +545,8 @@ exit:
 void radioTransmitMessage(otInstance *aInstance)
 {
 	uint8_t header_len = 0;
+	uint8_t reg = 0;
+	uint8_t val = 0;
 
 	sTransmitError = OT_ERROR_NONE;
 	setChannel(sTransmitFrame.mChannel);
@@ -520,10 +562,7 @@ void radioTransmitMessage(otInstance *aInstance)
 	DBG("Transmit Frame Length = %d\r\n", sTransmitFrame.mLength);
 #endif
 
-	uint8_t reg = mrf24j40_read_short_ctrl_reg(MRF24J40_TXNCON);
-#if OPENTHREAD_CLI_DEBUG_INFO
-	DBG("TXNCON = 0x%x, ", reg);
-#endif
+	mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXNCON, &reg);
 
 	header_len = getHeadLength(sTransmitFrame.mPsdu);
 
@@ -549,21 +588,24 @@ void radioTransmitMessage(otInstance *aInstance)
 	else
 	{
 		reg &= ~(MRF24J40_TXNSECEN);
-		mrf24j40_write_short_ctrl_reg(MRF24J40_TXNCON, mrf24j40_read_short_ctrl_reg(MRF24J40_TXNCON) & (~MRF24J40_TXNSECEN));
+		mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXNCON, &val);
+		mrf24j40_write_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXNCON, val & (~MRF24J40_TXNSECEN));
 	}
 
-	mrf24j40_txfifo_write(MRF24J40_TXNFIFO, sTransmitFrame.mPsdu, header_len, (sTransmitFrame.mLength - 2));
+	mrf24j40_txfifo_write(&mrf24j40_def, MRF24J40_TXNFIFO, sTransmitFrame.mPsdu, header_len, (sTransmitFrame.mLength - 2));
 
-	mrf24j40_write_short_ctrl_reg(MRF24J40_TXNCON, reg | MRF24J40_TXNTRIG);
+	mrf24j40_write_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXNCON, reg | MRF24J40_TXNTRIG);
 
 	otPlatRadioTxStarted(aInstance, &sTransmitFrame);
 
-	int16_t tx_timeout = 500;
+	int16_t tx_timeout = 1000;
 	Mrf24StatusTx = 0;
 
+	mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXNCON, &val);
+	DBG("TXNCON = 0x%x, ", val);
 	while ((tx_timeout > 0) && (Mrf24StatusTx != 1))
 	{
-		mrf24j40_delay_ms(1);
+		board_delay_ms(1, OSP_DELAY_OS_COMPAT_DISABLE);
 		tx_timeout--;
 
 #if OPENTHREAD_CLI_DEBUG_INFO
@@ -574,7 +616,7 @@ void radioTransmitMessage(otInstance *aInstance)
 #endif
 	}
 #if OPENTHREAD_CLI_DEBUG_INFO
-	DBG("Radio Transmit was Successful.\r\n");
+	DBG("Radio Transmit process done.\r\n");
 	DBG("Mrf24StatusTx = %d\r\n", Mrf24StatusTx);
 	DBG("CUR_MS = %d\r\n", (uint32_t)OSP_GET_CUR_MS());
 	DBG("numRadioProcess %d, numInterruptRev %d, numInterruptTrans %d \r\n\r\n\r\n", numRadioProcess, numInterruptRev, numInterruptTrans);
@@ -586,7 +628,8 @@ void emskRadioProcess(otInstance *aInstance)
 	numRadioProcess++;
 
 	readFrame();
-	uint8_t reg = mrf24j40_read_short_ctrl_reg(MRF24J40_TXSTAT);
+	uint8_t reg = 0;
+	mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXSTAT, &reg);
 
 	if (reg & MRF24J40_TXNSTAT)
 	{
@@ -633,8 +676,9 @@ void emskRadioProcess(otInstance *aInstance)
 static void RadioIsr(void *ptr)
 {
 	uint8_t int_status = 0;
+	uint8_t tx_status = 0;
 
-	int_status = pmrf_read_short_ctrl_reg(MRF24J40_INTSTAT);
+	mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_INTSTAT, &int_status);
 
 	/* a frame is received */
 	if (int_status & MRF24J40_RXIF)
@@ -642,32 +686,35 @@ static void RadioIsr(void *ptr)
 		numInterruptRev++;
 		Mrf24StatusRx = 1;
 	}
-
 	/* a frame is transmitted */
 	if (int_status & MRF24J40_TXNIF)
 	{
-		switch (mrf24j40_txpkt_intcb())
+		mrf24j40_read_short_ctrl_reg(&mrf24j40_def, MRF24J40_TXSTAT, &tx_status);
+		if (tx_status & MRF24J40_TXNSTAT)
 		{
-		case MRF24J40_EBUSY:
-			/* Channel busy */
-			break;
-
-		case MRF24J40_EIO:
-			/* Channel idle */
-			break;
-
-		case 0:
+			if (tx_status & MRF24J40_CCAFAIL)
+			{
+				/* Failed, channel busy */
+				mrf24j40_def.ch_state = MRF24J40_EBUSY;
+			}
+			else
+			{
+				/* Failed, channel idle */
+				mrf24j40_def.ch_state = MRF24J40_EIO;
+			}
+		}
+		else
+		{
 			numInterruptTrans++;
 			Mrf24StatusTx = 1;
-			break;
 		}
 	}
-
 	/* a frame with security key request is received */
 	if (int_status & MRF24J40_SECIF)
 	{
 		Mrf24StatusSec = 1;
-		mrf24j40_sec_intcb(false);
+		/* ignore decryption process here */
+		mrf24j40_set_decrypt_start(&mrf24j40_def, 0);
 	}
 
 }

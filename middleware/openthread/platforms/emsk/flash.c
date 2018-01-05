@@ -38,6 +38,10 @@
 #include <utils/code_utils.h>
 #include "platform-emsk.h"
 
+#ifdef BOARD_EMSK
+#include "spi_flash_w25qxx.h"
+
+
 /**
  * EMSK HAS 128 Mbit (16 MB) SPI flash memory (Winbond W25Q128BV).
  * The Winbond W25Q128BV array is organized into 65536 programmable pages of
@@ -74,15 +78,17 @@
 #endif // SETTINGS_CONFIG_PAGE_NUM
 #define SETTINGS_CONFIG_PAGE_NUM    1
 
+W25QXX_DEF(w25q128bv, DW_SPI_0_ID, EMSK_SPI_LINE_SFLASH, FLASH_PAGE_SIZE, FLASH_SECTOR_SIZE);
+
 otError utilsFlashInit(void)
 {
-    flash_init();
+    w25qxx_init(w25q128bv, 1000000);
     return OT_ERROR_NONE;
 }
 
 uint32_t utilsFlashGetSize(void)
 {
-    return (uint32_t)FLASH_SECTOR_SIZE;
+    return (uint32_t)(w25q128bv->sector_sz);
 }
 
 otError utilsFlashErasePage(uint32_t aAddress)
@@ -94,7 +100,7 @@ otError utilsFlashErasePage(uint32_t aAddress)
                     error = OT_ERROR_INVALID_ARGS);
 
     /* Use 2 sectors in the implementation, cannot erase the address over the boundry */
-    status = flash_erase(aAddress, FLASH_SECTOR_SIZE);
+    status = w25qxx_erase(w25q128bv, aAddress, FLASH_SECTOR_SIZE);
 
     otEXPECT_ACTION(status != -1, error = OT_ERROR_FAILED);
 
@@ -111,7 +117,7 @@ otError utilsFlashStatusWait(uint32_t aTimeout)
 
     while (busy && ((otPlatAlarmMilliGetNow() - start) < aTimeout))
     {
-        status = flash_read_status();
+        status = w25qxx_read_status(w25q128bv);
         busy =  status & 0x01;
     }
 
@@ -130,7 +136,7 @@ uint32_t utilsFlashWrite(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
                     ((aAddress + aSize) <= OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE) &&
                     (!(aAddress & 3)) && (!(aSize & 3)), ;);
 
-    written_size = flash_write(aAddress, aSize, aData);
+    written_size = w25qxx_write(w25q128bv, aAddress, aSize, aData);
 
     if (written_size < 0)
     {
@@ -153,7 +159,7 @@ uint32_t utilsFlashRead(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
     otEXPECT_ACTION((aAddress >= OPENTHREAD_FLASH_BASE) &&
                     ((aAddress + aSize) <= OPENTHREAD_FLASH_BASE + OPENTHREAD_FLASH_SIZE), ;);
 
-    read_size = flash_read(aAddress, aSize, aData);
+    read_size = w25qxx_read(w25q128bv, aAddress, aSize, aData);
 
     if (read_size < 0)
     {
@@ -168,3 +174,51 @@ uint32_t utilsFlashRead(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
 exit:
     return size;
 }
+
+#endif /* BOARD_EMSK */
+
+
+#ifdef BOARD_HSDK
+/*
+ * The HSDK flash driver is only for compiling the OpenThread code.
+ */
+otError utilsFlashInit(void)
+{
+    // Todo
+    return OT_ERROR_NONE;
+}
+
+uint32_t utilsFlashGetSize(void)
+{
+    return 0x1000;
+}
+
+otError utilsFlashErasePage(uint32_t aAddress)
+{
+    (void)aAddress;
+    return OT_ERROR_NONE;
+}
+
+otError utilsFlashStatusWait(uint32_t aTimeout)
+{
+    (void)aTimeout;
+    return OT_ERROR_NONE;
+}
+
+uint32_t utilsFlashWrite(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
+{
+    (void)aAddress;
+    (void)aData;
+    (void)aSize;
+    return aSize;
+}
+
+uint32_t utilsFlashRead(uint32_t aAddress, uint8_t *aData, uint32_t aSize)
+{
+    (void)aAddress;
+    (void)aData;
+    (void)aSize;
+    return aSize;
+}
+
+#endif /* BOARD_HSDK */

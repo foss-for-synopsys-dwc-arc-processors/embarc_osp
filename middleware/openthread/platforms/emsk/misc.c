@@ -28,22 +28,34 @@
 
 #include "openthread/platform/misc.h"
 #include "platform-emsk.h"
+#include "mrf24j40.h"
+
+static MRF24J40_DEF mrf24j40_def = 
+{
+#ifdef BOARD_EMSK
+	.spi = MRF24J40_SPI_ID,
+	.spi_cs = MRF24J40_SPI_CS,
+	.gpio_pin_wake = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_WAKE, MRF24J40_GPIO_PIN_WAKE),    // DEV_GPIO_PORT_0 --  DW_GPIO_PORT_A
+	.gpio_pin_reset = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_RESET, MRF24J40_GPIO_PIN_RESET),
+	.gpio_pin_intr = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PIN_INTR, MRF24J40_GPIO_PIN_INTR),
+#endif /* BOARD_EMSK */
+};
 
 void otPlatReset(otInstance *aInstance)
 {
-    // Default
-    (void)aInstance;
-    mrf24j40_hard_reset();
+	// Default
+	(void)aInstance;
+	mrf24j40_reset(&mrf24j40_def);
 }
 
 otPlatResetReason otPlatGetResetReason(otInstance *aInstance)
 {
-    (void)aInstance;
-    // TODO: Write me!
-    return OT_PLAT_RESET_REASON_POWER_ON;
+	(void)aInstance;
+	// TODO: Write me!
+	return OT_PLAT_RESET_REASON_POWER_ON;
 }
 
 void otPlatWakeHost(void)
 {
-    // TODO: implement an operation to wake the host from sleep state.
+	// TODO: implement an operation to wake the host from sleep state.
 }
