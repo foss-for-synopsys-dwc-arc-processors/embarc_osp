@@ -9,30 +9,30 @@
 # Optimization Level
 # Please Refer to toolchain_xxx.mk for this option
 ##
-OLEVEL ?= 
+OLEVEL ?=
 
 ##
 # Select Which Board to be built
 # Refer to board.mk
 ##
-BOARD ?= emsk
+BOARD ?=
 
 ##
 # Select which board version to use
 # Refer to board/xxx/xxx.mk
 ##
-BD_VER ?= 23
+BD_VER ?=
 
 ##
 # Select the operation cpu core
 ##
-CUR_CORE ?= arcem7d
+CUR_CORE ?=
 
 ##
 # Select ToolChain to build
 # Refer to toolchain.mk
 ##
-TOOLCHAIN ?= mw
+TOOLCHAIN ?=
 
 ##
 # Definition of Tool Paths
@@ -91,6 +91,7 @@ KEEP ?= 1
 
 MAKE_CFG_T :=
 MAKE_OPT_T :=
+BUILD_CFG_T :=
 
 ##
 # Makefile Options Definitions
@@ -107,24 +108,30 @@ endif
 ##
 # Makefile Configuration Passed
 ##
-ifneq ($(OLEVEL), )
-	MAKE_CFG_T += OLEVEL=$(OLEVEL)
-endif
 
 ifneq ($(BOARD), )
 	MAKE_CFG_T += BOARD=$(BOARD)
+	BUILD_CFG_T += "${BOARD}"
 endif
 
 ifneq ($(BD_VER), )
 	MAKE_CFG_T += BD_VER=$(BD_VER)
+	BUILD_CFG_T += "- ${BD_VER}"
 endif
 
 ifneq ($(CUR_CORE), )
 	MAKE_CFG_T += CUR_CORE=$(CUR_CORE)
+	BUILD_CFG_T += "- ${CUR_CORE}"
+endif
+
+ifneq ($(OLEVEL), )
+	MAKE_CFG_T += OLEVEL=$(OLEVEL)
+	BUILD_CFG_T += "- ${OLEVEL}"
 endif
 
 ifneq ($(TOOLCHAIN), )
 	MAKE_CFG_T += TOOLCHAIN=$(TOOLCHAIN)
+	BUILD_CFG_T += "- ${TOOLCHAIN}"
 endif
 
 ifneq ($(OUT_DIR_ROOT), )
@@ -152,9 +159,9 @@ OUT_DIR_PREFIX = obj_
 else
 OUT_DIR_PREFIX = $(strip $(OUT_DIR_ROOT))/obj_
 endif
-## Board Infomation
+## Board Information
 BOARD_INFO = $(strip $(BOARD))_$(strip $(BD_VER))
-## Build Infomation
+## Build Information
 BUILD_INFO = $(strip $(TOOLCHAIN))_$(strip $(CUR_CORE))
 ## Selected Configuration
 SELECTED_CONFIG=$(BOARD_INFO)-$(BUILD_INFO)
@@ -164,11 +171,14 @@ BOARD_OUT_DIR = $(OUT_DIR_PREFIX)$(BOARD_INFO)
 OUT_DIR = $(BOARD_OUT_DIR)/$(BUILD_INFO)
 
 ##
-# Build Result, It should Generate an *.elf file
+# Build Result, It should generate an *.elf file
 ##
 OBJ_DIRS := $(addsuffix $(OUT_DIR)/, $(DIRS))
 MAKE_ELF_RESULT :=  $(foreach dir2find, $(OBJ_DIRS), $(wildcard $(dir2find)*.elf) )
 MAKE_BIN_RESULT :=  $(foreach dir2find, $(OBJ_DIRS), $(wildcard $(dir2find)*.bin) )
+## Build successfully or complete dirs result ##
+## CP means ComPlete ##
+MAKE_DIR_CP_RESULT := $(patsubst %$(OUT_DIR)/, %, $(sort $(dir $(MAKE_ELF_RESULT))))
 ## not build successfully or not complete dirs result ##
 ## NC means Not Complete ##
 MAKE_DIR_NC_RESULT := $(patsubst %$(OUT_DIR)/, %, $(filter-out $(dir $(MAKE_ELF_RESULT)), $(dir $(OBJ_DIRS))))
@@ -211,11 +221,11 @@ info :
 	@$(ECHO) Here is the directory list to be operated :  $(DIRS)
 
 status :
-	@$(ECHO) Build Status of ${BOARD}-${BD_VER} - $(CUR_CORE) - $(TOOLCHAIN) - $(OLEVEL)
+	@$(ECHO) Build Status: ${BUILD_CFG_T}
 	@$(ECHO) There are $(words $(DIRS)) examples
-	@$(ECHO) ==== ELF BUILD RESULT ====
-	@$(ECHO) There are $(words $(MAKE_ELF_RESULT)) examples built complete
-	@$(ECHO) $(MAKE_ELF_RESULT)
+	@$(ECHO) ==== BUILD SUCCESS RESULT ====
+	@$(ECHO) There are $(words $(MAKE_DIR_CP_RESULT)) examples built complete
+	@$(ECHO) $(MAKE_DIR_CP_RESULT)
 	@$(ECHO) ==== BUILD FAILED OR NOT COMPLETED DIRECTORIES ====
 	@$(ECHO) There are $(words $(MAKE_DIR_NC_RESULT)) examples built not complete or failed
 	@$(ECHO) $(MAKE_DIR_NC_RESULT)
