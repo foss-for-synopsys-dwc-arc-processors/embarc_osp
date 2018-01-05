@@ -75,7 +75,7 @@
  *
  * ### Extra Comments
  *     - Sometimes the server may not respond to client, this may caused by the wifi connection is bad.
- *     - In the upper case, you need to disconnect all the power of your board, and reconnect PMOD WIFI module and wait for a while, then restart this application.
+ *     - In the case above, you need to disconnect all the power of your board, reconnect PMOD WIFI module and wait for a while, then restart this application.
  *
  */
 

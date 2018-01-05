@@ -46,7 +46,7 @@
 #include "container4.h"
 
 /* container2 is secure and linked with other normal containers
-   so do not call normal world's code, as AUX_SEC_KP will be modified 
+   so do not call normal world's code, as AUX_SEC_KP will be modified
    If you want to do this,  save AUX_SEC_KP first and retore it after call */
 
 int tst_func3(int arg1, int arg2, int arg3)

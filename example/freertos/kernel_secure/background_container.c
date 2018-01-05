@@ -45,8 +45,8 @@
  *     This example is designed to show how FreeRTOS is integrated with SecureShield.
  *     Here, trap_s is used to trigger a task context switch request. So application
  *     should not use trap exception.
- *     
- *     As container switch is not with task switch. So during a container call, task scheduler 
+ *
+ *     As container switch is not with task switch. So during a container call, task scheduler
  *     should be suspended to avoid a task context.
  *
  * ### Usage Manual
@@ -162,7 +162,7 @@ int main(void)
 		EMBARC_PRINTF("secret key initialized error\r\n");
 		return -1;
 	}
-	
+
 
 	int_handler_install(INTNO_LOW_PRI, (INT_HANDLER)interrupt_low_pri);
 	int_pri_set(INTNO_LOW_PRI, INT_PRI_MAX);

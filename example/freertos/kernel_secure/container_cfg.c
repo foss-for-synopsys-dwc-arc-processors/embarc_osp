@@ -46,7 +46,7 @@ static CONTAINER_AC_TABLE g_container1_act[] = {
 	{init_secret, 0, SECURESHIELD_AC_INTERFACE},
 	{operate_secret, 3, SECURESHIELD_AC_INTERFACE},
 	{(void *)CONTAINER_12_SHARED_ORIGIN, CONTAINER_12_SHARED_LENGTH, SECURESHIELD_ACDEF_URAM}
- };
+};
 
 // Container 2: one special memory region for communication with container 2
 static CONTAINER_AC_TABLE g_container2_act[] = {
@@ -70,7 +70,7 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
 	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
 	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
-#endif	
+#endif
 /* if LIB_SECURESHIELD_VERSION == 2, the following interrupts are configured as normal interrupts */
 	{default_interrupt_handler, INTNO_LOW_PRI, SECURESHIELD_AC_IRQ},
 	{default_interrupt_handler, INTNO_HIGH_PRI, SECURESHIELD_AC_IRQ},

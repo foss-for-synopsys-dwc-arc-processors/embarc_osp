@@ -56,7 +56,7 @@
  *     - Re-configure the EMSK 2.3 board to EM7D configuration.
  *     - Command: gmake BOARD=emsk BD_VER=23 CUR_CORE=arcem7d run
  *
- *     When this example start to run, the try the following ntshell commands:
+ *     When this example start to run, please try the following ntshell commands:
  *     - Run ntshell command **main -h** to see how to run this example.
  *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
  *     ![ScreenShot of secureshield v2 sid example](pic/images/example/emsk/baremetal_secureshield_secret_v2_sid.jpg)
