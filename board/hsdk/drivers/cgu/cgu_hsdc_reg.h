@@ -1,22 +1,36 @@
-/*************************************************************************/
-/*************************************************************************/
-/**                                                                     **/
-/** Copyright (C) 1989-2013 Synopsys, Inc.                              **/
-/** All Rights Reserved.                                                **/
-/**                                                                     **/
-/** SYNOPSYS CONFIDENTIAL                                               **/
-/**                                                                     **/
-/** This is an unpublished proprietary work of Synopsys, Inc., and is   **/
-/** fully protected under copyright and trade secret laws. You may not  **/
-/** view, use, disclose, copy, or distribute this file or any           **/
-/** information contained herein except pursuant to a valid written     **/
-/** license from Synopsys.                                              **/
-/**                                                                     **/
-/** For more information, contact                                       **/
-/** est-adm@synopsys.com or call (650) 584-1631                         **/
-/**                                                                     **/
-/*************************************************************************/
-/*************************************************************************/
+/* ------------------------------------------
+ * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+
+ * 1) Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+
+ * 2) Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation and/or
+ * other materials provided with the distribution.
+
+ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * \version 2017.12
+ * \date 2017-11-10
+	
+ * \author Wayne Ren(Wei.Ren@synopsys.com)
+--------------------------------------------- */
 #ifndef __CGU_HSDC_REG_H__
 #define __CGU_HSDC_REG_H__
 
