@@ -298,7 +298,6 @@
       - Developing OS-Aware applications
         - freertos: add or set **OS_SEL** in your makefile to be **freertos**.
         - You can refer to the existing \ref EMBARC_APPS_OS_FREERTOS "FreeRTOS examples" when developing FreeRTOS applications.
-        - You can refer to existing \ref EMBARC_APPS_OS_CONTIKI "Contiki examples" when developing Contiki applications.
       - For an introduction to middleware, see \ref sect_mid_middleware_intro.
 
 \subsection subsect_example_usage_CNAIE_DebugIDEProject Debug an embARC application in the ARC GNU IDE
@@ -434,8 +433,6 @@ Multiple EMSK boards are required to run or debug application code on a single P
  + Make sure the source code file is not in UTF-16 format. If the UTF-16 format is used, compiling may fail with the error message:"cc1.exe: out of memory allocating 838860800 bytes".
 
  + If you are running multi-node examples, an alternative way is generating binary file for your applications, for example, **make TOOLCHAIN=gnu BD_VER=22 CUR_CORE=arcem7d bin**. Rename it to *boot.bin* and copy it to the SDCard. Then use emsk_bootloader as a \ref EMBARC_APP_BOOTLOADER "secondary bootloader" to load *boot.bin* on the SDCard, where SPI Flash is programmed.
-
- + See \ref EMBARC_APP_CONTIKI_XIVELY-MULTI-NODES_ROUTER "Contiki Xively multi-node" example for debugging multi-node examples. Use two different JTAGs or try the DIG_NAME option in *option.mk* to select the specified Digilent JTAG when using the MetaWare debugger. Another alternative way is using more PCs (including virtual machines) to debug different applications.
 
  + When building and downloading a program, it is best to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause compiling to fail when checking the license of the compiler. It depends on your network environment.
 
