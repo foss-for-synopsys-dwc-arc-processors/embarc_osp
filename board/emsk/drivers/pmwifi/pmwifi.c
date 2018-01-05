@@ -73,7 +73,6 @@
 #if (USE_EMSK_PMWIFI_0)
 /** PMOD WIFI SPI FREQ & CLK MODE SETTINGS */
 #define EMSK_PMWIFI_0_SPI_FREQ		BOARD_SPI_FREQ
-#define EMSK_PMWIFI_0_SPI_CLKMODE	BOARD_SPI_CLKMODE
 
 #define EMSK_PMWIFI_0_SPI_ID		DW_SPI_0_ID
 
@@ -361,7 +360,6 @@ static int32_t pmwifi_0_spi_transfer(DEV_SPI_TRANSFER *xfer)
 #ifdef EMSK_PMWIFI_0_SPI_CPULOCK_ENABLE
 		cpu_unlock_restore(cs_cpu_status);
 #endif
-
 error_exit:
 	return ercd;
 }
@@ -373,7 +371,7 @@ WF_SPI_OPS pmwifi_0_spi_ops = {
 	pmwifi_0_spi_cs,
 	pmwifi_0_spi_transfer,
 	EMSK_PMWIFI_0_SPI_FREQ,
-	EMSK_PMWIFI_0_SPI_CLKMODE
+	SPI_CPOL_0_CPHA_0
 };
 
 WF_OPS pmwifi_0_ops = {
