@@ -69,7 +69,7 @@ void go_bootloader(){
 	for (int i = NUM_EXC_CPU; i < NUM_EXC_ALL; i++) {
 		int_disable(i);
 	}
-	 // set up an enviroment for application 
+	 // set up an enviroment for application
 	if ((_arc_aux_read(AUX_BCR_I_CACHE) & 0x7) >= 0x2) {
 		//icache_invalidate();
 	}
@@ -112,23 +112,23 @@ void task_lwm2m_update(void *par)
 /* show help of command */
 static void cmd_lwm2m_client_help(char *cmd_name, void *extobj)
 {
-    NTSHELL_IO_PREDEF;
+	NTSHELL_IO_PREDEF;
 
-    VALID_EXTOBJ_NORTN(extobj);
-    NTSHELL_IO_GET(extobj);
+	VALID_EXTOBJ_NORTN(extobj);
+	NTSHELL_IO_GET(extobj);
 
-    if (cmd_name == NULL) {
-        /* cmd_name not valid */
-        return;
-    }
-    CMD_DEBUG("usage: %s \r\n"
+	if (cmd_name == NULL) {
+		/* cmd_name not valid */
+		return;
+	}
+	CMD_DEBUG("usage: %s \r\n"
 	"	-q 			quit client\r\n"
 	"	-s <server_url>		set the lwM2M server URL\r\n"
 	"	-c <client_name>	set the lwM2M client endpoint name\r\n"
 	"	-p <server port>	set the LwM2M server port\r\n", cmd_name);
 
 error_exit:
-    return;
+	return;
 }
 
 static char *malloc_and_copy(char *chr)

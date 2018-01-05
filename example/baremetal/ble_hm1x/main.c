@@ -62,7 +62,7 @@
  *     - How to use this example
  *
  *       This example demonstrates how to use the API of HM-10
- *        located in *board/emsk/drivers/ble*, the APIs contains information about send AT command and receive response,
+ *        located in *device/peripheral/ble*, the APIs contains information about send AT command and receive response,
  *        and read or write data to BLE device. \n
  *       The example performs tests on the HM-10 BLE device using different uart baudrate,
  *        which take approximately 2 minutes, then the device will enter to receive and send mode.

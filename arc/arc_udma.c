@@ -62,8 +62,8 @@ static dma_state_t *g_dmac = NULL;
 
 #define _ISR(vector, func)			void func(void* ptr)
 
-#define _ENABLE_INT(vector, sensitvity, enable)	{			\
-	int_level_config(vector, sensitvity);		/*IRQ_TRIGGER*/	\
+#define _ENABLE_INT(vector, sensitivity, enable)	{			\
+	int_level_config(vector, sensitivity);		/*IRQ_TRIGGER*/	\
 	if (enable) { int_enable(vector); } else { int_disable(vector); }/*IRQ_ENABLE*/	\
 }
 

@@ -38,6 +38,7 @@
 #include <utils/code_utils.h>
 #include "openthread/platform/uart.h"
 #include "platform-emsk.h"
+#include "embARC_error.h"
 
 #include <stdio.h>
 #define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)

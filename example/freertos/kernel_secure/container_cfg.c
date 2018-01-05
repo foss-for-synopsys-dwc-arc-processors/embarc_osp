@@ -46,7 +46,7 @@ static CONTAINER_AC_TABLE g_container1_act[] = {
 	{init_secret, 0, SECURESHIELD_AC_INTERFACE},
 	{operate_secret, 3, SECURESHIELD_AC_INTERFACE},
 	{(void *)CONTAINER_12_SHARED_ORIGIN, CONTAINER_12_SHARED_LENGTH, SECURESHIELD_ACDEF_URAM}
- };
+};
 
 // Container 2: one special memory region for communication with container 2
 static CONTAINER_AC_TABLE g_container2_act[] = {

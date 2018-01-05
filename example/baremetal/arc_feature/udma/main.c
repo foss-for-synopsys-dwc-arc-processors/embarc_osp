@@ -54,7 +54,7 @@
  *
  * ### Extra Comments
  *     - This example only supported EMSK 2.2 and EMSK 2.3.
- *     - This example required that the core configuration should have uDMA option.
+ *     - This example require the core configuration to have uDMA option.
  */
 
 /**

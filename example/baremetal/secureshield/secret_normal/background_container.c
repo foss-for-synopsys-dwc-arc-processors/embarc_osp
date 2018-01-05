@@ -52,7 +52,7 @@
  *     - for further information on the application, see the 'secret' application
  *
  * ### Usage Manual
- *     When this example start to run, the try the following ntshell commands:
+ *     When this example start to run, please try the following ntshell commands:
  *     - Run ntshell command **main -h** to see how to run this example.
  *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
  *

@@ -105,7 +105,7 @@ int main(void)
 
 	int_handler_install(INTNO_SWI0, soft_interrupt0);
 	int_enable(INTNO_SWI0);
-	
+
 	EMBARC_PRINTF("container call from background to 1 \r\n");
 	EMBARC_PRINTF("ret is:%x\r\n", container_call(container1, tst_func1, 1));
 

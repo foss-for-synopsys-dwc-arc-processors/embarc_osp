@@ -37,74 +37,87 @@
 
 #include <utils/code_utils.h>
 
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "openthread/platform/random.h"
 #include "openthread/platform/radio.h"
 #include "platform-emsk.h"
+#include "mrf24j40.h"
 
-#include <stdlib.h>
-
-#include <stdio.h>
+static MRF24J40_DEF mrf24j40_def = 
+{
+#ifdef BOARD_EMSK
+	.spi = MRF24J40_SPI_ID,
+	.spi_cs = MRF24J40_SPI_CS,
+	.gpio_pin_wake = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_WAKE, MRF24J40_GPIO_PIN_WAKE),    // DEV_GPIO_PORT_0 --  DW_GPIO_PORT_A
+	.gpio_pin_reset = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_RESET, MRF24J40_GPIO_PIN_RESET),
+	.gpio_pin_intr = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PIN_INTR, MRF24J40_GPIO_PIN_INTR),
+#endif /* BOARD_EMSK */
+};
 
 static unsigned int seed;
 
 void emskRandomInit(int num)
 {
-    unsigned int i;
+	unsigned int i;
 
-    printf("Node No.:");
-    if (num < 0)
-        scanf("%d", &i);
-    else
-        i = num;
-    
-    printf("%d\n", i);
-    seed = 10 + i;
-    srand(seed);
+	printf("Node No.:");
+	if (num < 0)
+		scanf("%d", &i);
+	else
+		i = num;
+	
+	printf("%d\n", i);
+	seed = 10 + i;
+	srand(seed);
 }
 
 uint32_t otPlatRandomGet(void)
 {
 
-    return (uint32_t)rand();
+	return (uint32_t)rand();
 }
 
 otError otPlatRandomGetTrue(uint8_t *aOutput, uint16_t aOutputLength)
 {
-    otError error = OT_ERROR_NONE;
-    uint8_t channel = 0;
+	otError error = OT_ERROR_NONE;
+	uint8_t channel = 0;
+	uint8_t val = 0;
 
-    otEXPECT_ACTION(aOutput && aOutputLength, error = OT_ERROR_INVALID_ARGS);
+	otEXPECT_ACTION(aOutput && aOutputLength, error = OT_ERROR_INVALID_ARGS);
 
-    /* disable radio*/
-    if (otPlatRadioIsEnabled(sInstance))
-    {
-        channel = (mrf24j40_read_long_ctrl_reg(MRF24J40_RFCON0) >> 4) + 11;
-        otPlatRadioSleep(sInstance);
-        otPlatRadioDisable(sInstance);
-    }
+	/* disable radio*/
+	if (otPlatRadioIsEnabled(sInstance))
+	{
+		mrf24j40_read_long_ctrl_reg(&mrf24j40_def, MRF24J40_RFCON0, &val);
+		channel = (val >> 4) + 11;
+		otPlatRadioSleep(sInstance);
+		otPlatRadioDisable(sInstance);
+	}
 
-    /*
-     * THE IMPLEMENTATION BELOW IS NOT COMPLIANT WITH THE THREAD SPECIFICATION.
-     *
-     * Please see Note in `<path-to-openthread>/examples/platforms/emsk/README.md`
-     * for TRNG features on EMSK.
-     */
-    otEXPECT_ACTION(aOutput && aOutputLength, error = OT_ERROR_INVALID_ARGS);
+	/*
+	 * THE IMPLEMENTATION BELOW IS NOT COMPLIANT WITH THE THREAD SPECIFICATION.
+	 *
+	 * Please see Note in `<path-to-openthread>/examples/platforms/emsk/README.md`
+	 * for TRNG features on EMSK.
+	 */
+	otEXPECT_ACTION(aOutput && aOutputLength, error = OT_ERROR_INVALID_ARGS);
 
-    for (uint16_t length = 0; length < aOutputLength; length++)
-    {
-        /* Get random number */
-        aOutput[length] = (uint8_t)otPlatRandomGet();
-    }
+	for (uint16_t length = 0; length < aOutputLength; length++)
+	{
+		/* Get random number */
+		aOutput[length] = (uint8_t)otPlatRandomGet();
+	}
 
-    /* Enable radio*/
-    if (channel)
-    {
-        emskRadioInit();
-        otPlatRadioEnable(sInstance);
-        otPlatRadioReceive(sInstance, channel);
-    }
+	/* Enable radio*/
+	if (channel)
+	{
+		emskRadioInit();
+		otPlatRadioEnable(sInstance);
+		otPlatRadioReceive(sInstance, channel);
+	}
 
 exit:
-    return error;
+	return error;
 }

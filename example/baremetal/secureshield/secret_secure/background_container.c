@@ -52,7 +52,7 @@
  *     - For demonstration purpose, the background container can obtain the secret as well (using the password). Since the background container stores the result in global, public memory, this is normally not secure and not recommended. Instead see Container 2 for how to securely use the secret.
  *
  * ### Usage Manual
- *     When this example start to run, the try the following ntshell commands:
+ *     When this example start to run, please try the following ntshell commands:
  *     - Run ntshell command **main -h** to see how to run this example.
  *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
 
