@@ -207,11 +207,17 @@ static void mrf24j40Init(void)
 {
 	DEV_GPIO_BIT_ISR isr;
 	DEV_GPIO_INT_CFG int_cfg;
-	uint16_t port_wake, port_reset, pin_wake, pin_reset, port_intr, pin_intr;
-
+	uint32_t port_wake, port_reset, port_intr;
+	uint32_t pin_wake, pin_reset, pin_intr;
+	uint32_t pin = 0;
 	int32_t ercd;
 
-#ifdef BOARD_EMSK
+#ifdef BOARD_HSDK
+	/* Set PMOD-A as SPI. WAKE pin is n.c.. 
+	   SPI1 is used and gpio[16] is INT and gpio[17] is RST. */
+	io_pmod_config(PMOD_A, PMOD_SPI, 1);
+#endif /* BOARD_HSDK */
+
 	mrf24j40_def.spi = MRF24J40_SPI_ID;
 	mrf24j40_def.spi_cs = MRF24J40_SPI_CS;
 	mrf24j40_def.gpio_pin_wake = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_WAKE, MRF24J40_GPIO_PIN_WAKE);	// DEV_GPIO_PORT_0 --  DW_GPIO_PORT_A
@@ -238,10 +244,18 @@ static void mrf24j40Init(void)
 	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_wake, port_wake, pin_wake);
 	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_reset, port_reset, pin_reset);
 	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_intr, port_intr, pin_intr);
-	/* In EMSK, the pin wake, reset and intr are in a same port */
-	DEV_GPIO_PTR pmrf_gpio_ptr = gpio_get_dev(port_wake);
+	/* In EMSK and HSDK, the pin wake, reset and intr are in a same port */
+	DEV_GPIO_PTR pmrf_gpio_ptr = gpio_get_dev(port_reset);
 	// ercd = pmrf_gpio_ptr->gpio_open((1 << pin_wake) | (1 << pin_reset) | (1 << pin_intr));
-	ercd = pmrf_gpio_ptr->gpio_open((1 << pin_wake) | (1 << pin_reset));
+	if (pin_wake != DEV_GPIO_PIN_NC)
+	{
+		pin |= (1 << pin_wake);
+	}
+	if (pin_reset != DEV_GPIO_PIN_NC)
+	{
+		pin |= (1 << pin_reset);
+	}
+	ercd = pmrf_gpio_ptr->gpio_open(pin);
 
 	if ((ercd != E_OK) && (ercd != E_OPNED))
 	{
@@ -276,7 +290,6 @@ static void mrf24j40Init(void)
 	DBG("MRF24J40 Init Finished\r\n");
 
 	pmrf_gpio_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)(1 << pin_intr));
-#endif /* BOARD_EMSK */
 
 }
 

@@ -42,7 +42,7 @@
 #include "board.h"
 
 #ifdef BOARD_EMSK
-/** PMOD RF port and pin setting */
+/* PMOD RF port and pin setting */
 #define MRF24J40_SPI_ID             DW_SPI_0_ID
 #define MRF24J40_SPI_CS             EMSK_SPI_LINE_0
 #define MRF24J40_GPIO_PORT_WAKE     DEV_GPIO_PORT_0
@@ -55,6 +55,22 @@
 #define MRF24J40_SPIFREQ            BOARD_SPI_FREQ
 #define MRF24J40_SPICLKMODE         SPI_CLK_MODE_0
 #endif /* BOARD_EMSK */
+
+#ifdef BOARD_HSDK
+/* PMOD RF port and pin setting */
+#define MRF24J40_SPI_ID             DW_SPI_1_ID
+#define MRF24J40_SPI_CS             HSDC_SPI_CS_0
+/* Wake n.c. */
+#define MRF24J40_GPIO_PORT_WAKE     CPU_DW_GPIO_PORT_A
+#define MRF24J40_GPIO_PORT_RESET    CPU_DW_GPIO_PORT_A
+#define MRF24J40_GPIO_PORT_INTR     CPU_DW_GPIO_PORT_A
+#define MRF24J40_GPIO_PIN_WAKE      DEV_GPIO_PIN_16
+#define MRF24J40_GPIO_PIN_RESET     DEV_GPIO_PIN_21
+#define MRF24J40_GPIO_PIN_INTR      DEV_GPIO_PIN_20
+/** PMOD RF SPI FREQ & CLK mode settting */
+#define MRF24J40_SPIFREQ            BOARD_SPI_FREQ
+#define MRF24J40_SPICLKMODE         SPI_CLK_MODE_0
+#endif /* BOARD_HSDK */
 
 // Global OpenThread instance structure
 extern otInstance *sInstance;
