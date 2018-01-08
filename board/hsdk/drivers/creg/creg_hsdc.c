@@ -275,7 +275,7 @@ void creg_hsdc_update_handler (void)
 	//DBG_print("@@ Creg-update\n\r");
 }
 
-int creg_hsdc_program_aperture(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_APERTURECONFIG_T *config)
+int32_t creg_hsdc_program_aperture(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_APERTURECONFIG_T *config)
 {
 	if (config->mst < CREG_HSDC_MASTER_NONE) {
 		int loop = 512;

@@ -143,6 +143,7 @@
 
 #define button_read(x) 			1
 #define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
+#define BOARD_LED_MASK			0xff
 
 #ifdef __cplusplus
 extern "C" {
