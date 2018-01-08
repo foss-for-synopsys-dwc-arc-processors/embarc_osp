@@ -561,7 +561,14 @@ char *_mwgetenv2(const char *var)
 //////////////////////
 // Time Calculation //
 //////////////////////
-
+/*
+ * \todo
+ * the arc_timer.h in embARC conflicts with arc_timer.h in MWDT library
+ * both in name and path.
+ * A better fix is to rename arc_timer.h in embARC to arc_sys_timer.h/
+ * arc_internal_timer.h
+ */
+extern unsigned long _timer_clocks_per_sec(void);
 /** Determining the Clock Value */
 clock_t SYSCALL_PREFIX(clock)(void)
 {
