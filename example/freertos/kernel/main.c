@@ -105,7 +105,8 @@ static unsigned int perf_id = 0xFF;
 
 //#define ENABLE_DETAILED_RESULT_OUTPUT
 
-#define MAX_SAMPLES		1000
+// Change this macro if you want to run more or less times
+#define MAX_SAMPLES		200
 
 #define TASK_DELAY_MS		2
 
