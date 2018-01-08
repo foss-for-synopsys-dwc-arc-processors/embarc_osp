@@ -522,6 +522,8 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
   improvement at the expense of carrying around more memory.
 */
 #include "embARC_toolchain.h"
+#define USE_LOCKS 0 /* single core currenlty */
+
 extern void *_sbrk(unsigned int size);
 
 #ifndef _WIN32
