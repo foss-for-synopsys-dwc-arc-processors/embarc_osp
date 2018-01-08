@@ -104,6 +104,10 @@
 #define OSP_GET_CUR_US()		board_get_cur_us()
 #define OSP_GET_CUR_HWTICKS()		board_get_hwticks()
 
+#define button_read(x) 			1
+#define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
+#define BOARD_LED_MASK			0xff
+
 #ifdef __cplusplus
 extern "C" {
 #endif
