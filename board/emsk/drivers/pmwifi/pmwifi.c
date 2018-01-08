@@ -253,7 +253,7 @@ error_exit:
 }
 
 /* wifi gpio operation object */
-WF_GPIO_OPS pmwifi_0_gpio_ops = {
+static WF_GPIO_OPS pmwifi_0_gpio_ops = {
 	pmwifi_0_gpio_open,
 	pmwifi_0_gpio_close,
 	pmwifi_0_gpio_read,
@@ -284,7 +284,7 @@ static void pmwifi_0_timer_delay(uint32_t ms)
 }
 
 /* wifi timer operations object */
-WF_TIMER_OPS pmwifi_0_timer_ops = {
+static WF_TIMER_OPS pmwifi_0_timer_ops = {
 	pmwifi_0_timer_init,
 	pmwifi_0_timer_read_ms,
 	pmwifi_0_timer_delay
@@ -365,7 +365,7 @@ error_exit:
 }
 
 /* wifi spi operations object */
-WF_SPI_OPS pmwifi_0_spi_ops = {
+static WF_SPI_OPS pmwifi_0_spi_ops = {
 	pmwifi_0_spi_open,
 	pmwifi_0_spi_close,
 	pmwifi_0_spi_cs,
@@ -374,7 +374,7 @@ WF_SPI_OPS pmwifi_0_spi_ops = {
 	SPI_CPOL_0_CPHA_0
 };
 
-WF_OPS pmwifi_0_ops = {
+static WF_OPS pmwifi_0_ops = {
 	&pmwifi_0_gpio_ops,
 	&pmwifi_0_timer_ops,
 	&pmwifi_0_spi_ops
@@ -384,7 +384,7 @@ WF_OPS pmwifi_0_ops = {
 #define PMWIFI_0_NAME		"MRF24G"
 #define PMWIFI_0_IFNAME0	'w'
 #define PMWIFI_0_IFNAME1	'0'
-DEV_WNIC pmwifi_0_wnic;
+static DEV_WNIC pmwifi_0_wnic;
 const uint8_t  pmwifi_0_mac_addr[WNIC_HDR_LEN] = {
 	EMSK_PMWIFI_0_MAC_ADDR0,
 	EMSK_PMWIFI_0_MAC_ADDR1,
