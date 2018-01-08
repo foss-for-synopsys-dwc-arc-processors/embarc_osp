@@ -77,12 +77,12 @@
 #define PRV_RESOURCE_3_SIZE 190
 #define PRV_TLV_BUFFER_SIZE 64
 
-#define LWM2M_EMSK_BTN_ID	0
-#define LWM2M_EMSK_SWT_ID	1
-#define LWM2M_EMSK_LED_ID	2
+#define LWM2M_BTN_ID	    0
+#define LWM2M_SWT_ID	    1
+#define LWM2M_LED_ID	    2
 #define LWM2M_FOLAT_ID		3
 
-#define LWM2M_EMSK_INSTANCE_ID  0
+#define LWM2M_INSTANCE_ID  0
 
 /*
  * Multiple instance objects can use userdata to store data that will be shared between the different instances.
@@ -148,20 +148,20 @@ static uint8_t prv_get_value(lwm2m_tlv_t * tlvP,
 
     switch (tlvP->id)
     {
-    case LWM2M_EMSK_BTN_ID:
-        targetP->btn = button_read(EMSK_BUTTON_MASK);
+    case LWM2M_BTN_ID:
+        targetP->btn = button_read(BOARD_BTN_MASK);
         lwm2m_tlv_encode_int(targetP->btn, tlvP);
         if (0 != tlvP->length) return COAP_205_CONTENT;
         else return COAP_500_INTERNAL_SERVER_ERROR;
 
-    case LWM2M_EMSK_SWT_ID:
-        targetP->swt = switch_read(EMSK_SWITCH_MASK);
+    case LWM2M_SWT_ID:
+        targetP->swt = switch_read(BOARD_SWT_MASK);
         lwm2m_tlv_encode_int(targetP->swt, tlvP);
         if (0 != tlvP->length) return COAP_205_CONTENT;
         else return COAP_500_INTERNAL_SERVER_ERROR;
 
-    case LWM2M_EMSK_LED_ID:
-        targetP->led = led_read(EMSK_LED_MASK);
+    case LWM2M_LED_ID:
+        targetP->led = led_read(BOARD_LED_MASK);
         lwm2m_tlv_encode_int(targetP->led, tlvP);
         if (0 != tlvP->length) return COAP_205_CONTENT;
         else return COAP_500_INTERNAL_SERVER_ERROR;
@@ -193,9 +193,9 @@ static uint8_t prv_read(uint16_t instanceId,
         if (*numDataP == 0)
         {
             uint16_t resList[] = {
-                    LWM2M_EMSK_BTN_ID,
-                    LWM2M_EMSK_SWT_ID,
-                    LWM2M_EMSK_LED_ID,
+                    LWM2M_BTN_ID,
+                    LWM2M_SWT_ID,
+                    LWM2M_LED_ID,
                     LWM2M_FOLAT_ID
             };
             int nbRes = sizeof(resList)/sizeof(uint16_t);
@@ -239,12 +239,12 @@ static uint8_t prv_write(uint16_t instanceId,
     {
         switch (dataArray[i].id)
         {
-        case LWM2M_EMSK_BTN_ID:
-        case LWM2M_EMSK_SWT_ID:
+        case LWM2M_BTN_ID:
+        case LWM2M_SWT_ID:
             result = COAP_405_METHOD_NOT_ALLOWED;
             break;
 
-        case LWM2M_EMSK_LED_ID:
+        case LWM2M_LED_ID:
         {
             int64_t value;
 
@@ -338,10 +338,10 @@ static uint8_t prv_exec(uint16_t instanceId,
 
     switch (resourceId)
     {
-    case LWM2M_EMSK_SWT_ID:
-    case LWM2M_EMSK_BTN_ID:
+    case LWM2M_SWT_ID:
+    case LWM2M_BTN_ID:
         return COAP_405_METHOD_NOT_ALLOWED;
-    case LWM2M_EMSK_LED_ID:
+    case LWM2M_LED_ID:
         EMBARC_PRINTF("\r\n-----------------\r\n"
                         "Execute on %hu/%d/%d\r\n"
                         " Parameter (%d bytes):\r\n",
@@ -403,7 +403,7 @@ lwm2m_object_t * get_test_object(void)
                 return NULL;
             }
             memset(targetP, 0, sizeof(prv_instance_t));
-            targetP->shortID = LWM2M_EMSK_INSTANCE_ID+i;
+            targetP->shortID = LWM2M_INSTANCE_ID+i;
             targetP->swt = switch_read(BOARD_SWT_MASK);
             targetP->led = led_read(BOARD_LED_MASK);
             targetP->btn = button_read(BOARD_LED_MASK);
