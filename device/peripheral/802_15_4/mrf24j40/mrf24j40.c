@@ -318,7 +318,7 @@ error_exit:
  * \retval	E_PAR	value point (val) is NULL
  * \retval	E_SYS	Error in SPI process
  */
-uint32_t mrf24j40_read_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *val)
+int32_t mrf24j40_read_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *val)
 {
 	int32_t ercd = E_OK;
 	uint8_t ret_val = 0;
@@ -346,7 +346,7 @@ error_exit:
  * \retval	E_PAR	value point (val) is NULL
  * \retval	E_SYS	Error in SPI process
  */
-uint32_t mrf24j40_read_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, uint8_t *val)
+int32_t mrf24j40_read_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, uint8_t *val)
 {
 	int32_t ercd = E_OK;
 	uint8_t ret_val = 0;
@@ -373,7 +373,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI process
  */
-uint32_t mrf24j40_write_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t value)
+int32_t mrf24j40_write_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t value)
 {
 	int32_t ercd = E_OK;
 
@@ -393,7 +393,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI process
  */
-uint32_t mrf24j40_write_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, uint8_t value)
+int32_t mrf24j40_write_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, uint8_t value)
 {
 	int32_t ercd = E_OK;
 
@@ -412,7 +412,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI process
  */
-uint32_t mrf24j40_rxfifo_flush(MRF24J40_DEF *mrf24j40)
+int32_t mrf24j40_rxfifo_flush(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	uint8_t ret_val = 0;
@@ -437,7 +437,7 @@ error_exit:
  * \retval	E_PAR	value point (pend) is NULL
  * \retval	E_SYS	Error in SPI process
  */
-uint32_t mrf24j40_get_pending_frame(MRF24J40_DEF *mrf24j40, uint8_t *pend)
+int32_t mrf24j40_get_pending_frame(MRF24J40_DEF *mrf24j40, uint8_t *pend)
 {
 	int32_t ercd = E_OK;
 	uint8_t ret_val = 0;
@@ -460,7 +460,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in GPIO process
  */
-uint32_t mrf24j40_reset(MRF24J40_DEF *mrf24j40)
+int32_t mrf24j40_reset(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	int32_t result = E_OK;
@@ -477,7 +477,7 @@ error_exit:
 	return ercd;
 }
 
-static uint32_t mrf24j40_wake_pin(MRF24J40_DEF *mrf24j40, uint8_t flag)
+static int32_t mrf24j40_wake_pin(MRF24J40_DEF *mrf24j40, uint8_t flag)
 {
 	int32_t ercd = E_OK;
 	int32_t result = E_OK;
@@ -506,7 +506,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in GPIO process
  */
-uint32_t mrf24j40_sleep(MRF24J40_DEF *mrf24j40)
+int32_t mrf24j40_sleep(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	int32_t result = E_OK;
@@ -538,7 +538,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in GPIO process
  */
-static uint32_t mrf24j40_rf_reset(MRF24J40_DEF *mrf24j40)
+static int32_t mrf24j40_rf_reset(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	int32_t result = E_OK;
@@ -635,7 +635,7 @@ void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_CLSED	GPIO is no open
  */
-uint32_t mrf24j40_setup(MRF24J40_DEF *mrf24j40)
+int32_t mrf24j40_setup(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	DEV_GPIO_PTR gpio_wake_ptr;
@@ -683,7 +683,7 @@ error_exit:
  * \retval	E_PAR	addr point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_short_addr(MRF24J40_DEF *mrf24j40, uint8_t *addr)
+int32_t mrf24j40_set_short_addr(MRF24J40_DEF *mrf24j40, uint8_t *addr)
 {
 	int32_t ercd = E_OK;
 
@@ -704,7 +704,7 @@ error_exit:
  * \retval	E_PAR	addr point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_coordinator_short_addr(MRF24J40_DEF *mrf24j40, uint8_t *addr)
+int32_t mrf24j40_set_coordinator_short_addr(MRF24J40_DEF *mrf24j40, uint8_t *addr)
 {
 	int32_t ercd = E_OK;
 
@@ -725,7 +725,7 @@ error_exit:
  * \retval	E_PAR	eui point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_coordinator_eui(MRF24J40_DEF *mrf24j40, uint8_t *eui)
+int32_t mrf24j40_set_coordinator_eui(MRF24J40_DEF *mrf24j40, uint8_t *eui)
 {
 	int32_t ercd = E_OK;
 
@@ -752,7 +752,7 @@ error_exit:
  * \retval	E_PAR	eui point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_eui(MRF24J40_DEF *mrf24j40, uint8_t *eui)
+int32_t mrf24j40_set_eui(MRF24J40_DEF *mrf24j40, uint8_t *eui)
 {
 	int32_t ercd = E_OK;
 
@@ -779,7 +779,7 @@ error_exit:
  * \retval	E_PAR	pan point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_pan(MRF24J40_DEF *mrf24j40, uint8_t *pan)
+int32_t mrf24j40_set_pan(MRF24J40_DEF *mrf24j40, uint8_t *pan)
 {
 	int32_t ercd = E_OK;
 
@@ -792,7 +792,7 @@ error_exit:
 }
 
 /* Need test */
-static uint32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *key)
+static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *key)
 {
 	int32_t ercd = E_OK;
 	uint8_t msg[16+2];
@@ -843,7 +843,7 @@ error_exit:
  * \retval	E_PAR	key point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_tx_key(MRF24J40_DEF *mrf24j40, uint8_t *key)
+int32_t mrf24j40_set_tx_key(MRF24J40_DEF *mrf24j40, uint8_t *key)
 {
 	int32_t ercd = E_OK;
 
@@ -864,7 +864,7 @@ error_exit:
  * \retval	E_PAR	key point is NULL
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_rx_key(MRF24J40_DEF *mrf24j40, uint8_t *key)
+int32_t mrf24j40_set_rx_key(MRF24J40_DEF *mrf24j40, uint8_t *key)
 {
 	int32_t ercd = E_OK;
 
@@ -885,7 +885,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_channel(MRF24J40_DEF *mrf24j40, int16_t ch)
+int32_t mrf24j40_set_channel(MRF24J40_DEF *mrf24j40, int16_t ch)
 {
 	int32_t ercd = E_OK;
 
@@ -909,7 +909,7 @@ error_exit:
  * \retval	E_PAR	crc_check is not 0 or 1
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_promiscuous(MRF24J40_DEF *mrf24j40, uint8_t crc_check)
+int32_t mrf24j40_set_promiscuous(MRF24J40_DEF *mrf24j40, uint8_t crc_check)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
@@ -942,7 +942,7 @@ error_exit:
  * \retval	E_PAR	mark is not 0 or 1
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_coordinator(MRF24J40_DEF *mrf24j40, uint8_t mark)
+int32_t mrf24j40_set_coordinator(MRF24J40_DEF *mrf24j40, uint8_t mark)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
@@ -964,7 +964,7 @@ error_exit:
 
 }
 
-static uint32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *frame, uint8_t hdr_len, uint8_t frame_len)
+static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *frame, uint8_t hdr_len, uint8_t frame_len)
 {
 	int32_t ercd = E_OK;
 	uint8_t msg[frame_len+2+2];
@@ -1024,7 +1024,7 @@ error_exit:
 //	uint8_t flen;		/* Frame length (m+n): 1 */
 //	uint8_t pck[128];	/* Header： m + Data payload: n */
 //}MRF24J40_TXBUF;
-uint32_t mrf24j40_txpkt(MRF24J40_DEF *mrf24j40)
+int32_t mrf24j40_txpkt(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
@@ -1069,7 +1069,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_cipher(MRF24J40_DEF *mrf24j40, uint8_t rxcipher, uint8_t txcipher)
+int32_t mrf24j40_set_cipher(MRF24J40_DEF *mrf24j40, uint8_t rxcipher, uint8_t txcipher)
 {
 	int32_t ercd = E_OK;
 
@@ -1091,7 +1091,7 @@ error_exit:
  * \retval	E_SYS	Error in SPI/GPIO process
  */
 // Need test
-uint32_t mrf24j40_rx_sec_fail(MRF24J40_DEF *mrf24j40, uint8_t *err)
+int32_t mrf24j40_rx_sec_fail(MRF24J40_DEF *mrf24j40, uint8_t *err)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
@@ -1106,7 +1106,7 @@ error_exit:
 }
 
 /* Need test */
-static uint32_t mrf24j40_rxpkt_frame_write(MRF24J40_DEF *mrf24j40, uint8_t *buf, uint8_t length)
+static int32_t mrf24j40_rxpkt_frame_write(MRF24J40_DEF *mrf24j40, uint8_t *buf, uint8_t length)
 {
 	int32_t ercd = E_OK;
 	uint8_t msg[length];
@@ -1162,7 +1162,7 @@ error_exit:
 //	uint8_t lqi;		/* LQI: 1 */
 //	uint8_t rssi;		/* RSSI: 1 */
 // } MRF24J40_RXBUF;
-uint32_t mrf24j40_rxpkt(MRF24J40_DEF *mrf24j40, uint8_t *plqi, uint8_t *prssi)
+int32_t mrf24j40_rxpkt(MRF24J40_DEF *mrf24j40, uint8_t *plqi, uint8_t *prssi)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
@@ -1206,7 +1206,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_decrypt_start(MRF24J40_DEF *mrf24j40, uint8_t accept)
+int32_t mrf24j40_set_decrypt_start(MRF24J40_DEF *mrf24j40, uint8_t accept)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
@@ -1231,7 +1231,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_txfifo_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *data, uint8_t hdr_len, uint8_t len)
+int32_t mrf24j40_txfifo_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *data, uint8_t hdr_len, uint8_t len)
 {
 	int32_t ercd = E_OK;
 
@@ -1251,7 +1251,7 @@ error_exit:
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI/GPIO process
  */
-uint32_t mrf24j40_set_transmit_trig(MRF24J40_DEF *mrf24j40)
+int32_t mrf24j40_set_transmit_trig(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	uint8_t retval = 0;
