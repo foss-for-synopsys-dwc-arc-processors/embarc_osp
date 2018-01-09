@@ -36,7 +36,7 @@
 #include "openthread/platform/alarm-milli.h"
 #include <utils/flash.h>
 #include <utils/code_utils.h>
-#include "platform-emsk.h"
+#include "platform-arc.h"
 
 #ifdef BOARD_EMSK
 #include "spi_flash_w25qxx.h"

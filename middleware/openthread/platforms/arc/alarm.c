@@ -35,14 +35,14 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include "openthread/platform/alarm-milli.h"
-#include "platform-emsk.h"
+#include "platform-arc.h"
 #include "code_utils.h"
 
 static uint32_t sCounter = 0;
 static uint32_t expires;
 static bool sIsRunning = false;
 
-void emskAlarmInit(void)
+void arcAlarmInit(void)
 {
     sCounter = OSP_GET_CUR_MS();
 }
@@ -65,7 +65,7 @@ void otPlatAlarmMilliStop(otInstance *aInstance)
     sIsRunning = false;
 }
 
-void emskAlarmUpdateTimeout(int32_t *aTimeout)
+void arcAlarmUpdateTimeout(int32_t *aTimeout)
 {
     int32_t remaining;
 
@@ -94,7 +94,7 @@ exit:
 
 }
 
-void emskAlarmProcess(otInstance *aInstance)
+void arcAlarmProcess(otInstance *aInstance)
 {
     int32_t remaining;
 

@@ -26,34 +26,52 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "openthread/platform/misc.h"
-#include "platform-emsk.h"
-#include "mrf24j40.h"
+/**
+ * @file
+ *   This file includes ARC compile-time configuration constants for OpenThread.
+ */
 
-static MRF24J40_DEF mrf24j40_def = 
-{
-	.spi = MRF24J40_SPI_ID,
-	.spi_cs = MRF24J40_SPI_CS,
-	.gpio_pin_wake = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_WAKE, MRF24J40_GPIO_PIN_WAKE),    // DEV_GPIO_PORT_0 --  DW_GPIO_PORT_A
-	.gpio_pin_reset = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_RESET, MRF24J40_GPIO_PIN_RESET),
-	.gpio_pin_intr = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PIN_INTR, MRF24J40_GPIO_PIN_INTR),
-};
+#ifndef OPENTHREAD_CORE_ARC_CONFIG_H_
+#define OPENTHREAD_CORE_ARC_CONFIG_H_
 
-void otPlatReset(otInstance *aInstance)
-{
-	// Default
-	(void)aInstance;
-	mrf24j40_reset(&mrf24j40_def);
-}
+/**
+ * @def OPENTHREAD_CONFIG_PLATFORM_INFO
+ *
+ * The platform-specific string to insert into the OpenThread version string.
+ *
+ */
+#define OPENTHREAD_CONFIG_PLATFORM_INFO                         "ARC"
 
-otPlatResetReason otPlatGetResetReason(otInstance *aInstance)
-{
-	(void)aInstance;
-	// TODO: Write me!
-	return OT_PLAT_RESET_REASON_POWER_ON;
-}
+/**
+ * @def OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT
+ *
+ * Define to 1 to enable default log output.
+ *
+ */
+#define OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT             1
 
-void otPlatWakeHost(void)
-{
-	// TODO: implement an operation to wake the host from sleep state.
-}
+/**
+ * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ACK_TIMEOUT
+ *
+ * Define to 1 if you want to enable software ACK timeout logic.
+ *
+ */
+#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ACK_TIMEOUT           0
+
+/**
+ * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_RETRANSMIT
+ *
+ * Define to 1 if you want to enable software retransmission logic.
+ *
+ */
+#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_RETRANSMIT            0
+
+/**
+ * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN
+ *
+ * Define to 1 if you want to enable software energy scanning logic.
+ *
+ */
+#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN           0
+
+#endif  // OPENTHREAD_CORE_ARC_CONFIG_H_

@@ -37,7 +37,7 @@
 #include "openthread/types.h"
 #include <utils/code_utils.h>
 #include "openthread/platform/uart.h"
-#include "platform-emsk.h"
+#include "platform-arc.h"
 #include "embARC_error.h"
 
 #include <stdio.h>
@@ -163,7 +163,7 @@ exit:
     return;
 }
 
-void emskUartProcess(void)
+void arcUartProcess(void)
 {
     processReceive();
     processTransmit();

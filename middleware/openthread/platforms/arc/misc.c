@@ -26,38 +26,34 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
- * @file
- * @brief
- *   This file includes the platform-specific initializers.
- *
- */
+#include "openthread/platform/misc.h"
+#include "platform-arc.h"
+#include "mrf24j40.h"
 
-#include "openthread/openthread.h"
-#include "openthread/platform/uart.h"
-#include "platform-emsk.h"
-
-#include <stdio.h>
-#define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
-
-void PlatformInit(int argc, char *argv[], int num)
+static MRF24J40_DEF mrf24j40_def = 
 {
-    emskAlarmInit();
-    emskRadioInit();
-    emskRandomInit(num);
-    otPlatUartEnable();
+	.spi = MRF24J40_SPI_ID,
+	.spi_cs = MRF24J40_SPI_CS,
+	.gpio_pin_wake = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_WAKE, MRF24J40_GPIO_PIN_WAKE),    // DEV_GPIO_PORT_0 --  DW_GPIO_PORT_A
+	.gpio_pin_reset = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PORT_RESET, MRF24J40_GPIO_PIN_RESET),
+	.gpio_pin_intr = DEV_GPIO_PORT_PIN_DEF(MRF24J40_GPIO_PIN_INTR, MRF24J40_GPIO_PIN_INTR),
+};
 
-    DBG("OpenThread Init Finished\r\n");
-
-    (void)argc;
-    (void)argv;
+void otPlatReset(otInstance *aInstance)
+{
+	// Default
+	(void)aInstance;
+	mrf24j40_reset(&mrf24j40_def);
 }
 
-void PlatformProcessDrivers(otInstance *aInstance)
+otPlatResetReason otPlatGetResetReason(otInstance *aInstance)
 {
-    // sInstance = aInstance;
+	(void)aInstance;
+	// TODO: Write me!
+	return OT_PLAT_RESET_REASON_POWER_ON;
+}
 
-    emskUartProcess();
-    emskRadioProcess(aInstance);
-    emskAlarmProcess(aInstance);
+void otPlatWakeHost(void)
+{
+	// TODO: implement an operation to wake the host from sleep state.
 }

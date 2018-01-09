@@ -28,50 +28,36 @@
 
 /**
  * @file
- *   This file includes EMSK compile-time configuration constants for OpenThread.
- */
-
-#ifndef OPENTHREAD_CORE_EMSK_CONFIG_H_
-#define OPENTHREAD_CORE_EMSK_CONFIG_H_
-
-/**
- * @def OPENTHREAD_CONFIG_PLATFORM_INFO
- *
- * The platform-specific string to insert into the OpenThread version string.
+ * @brief
+ *   This file includes the platform-specific initializers.
  *
  */
-#define OPENTHREAD_CONFIG_PLATFORM_INFO                         "EMSK"
 
-/**
- * @def OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT
- *
- * Define to 1 to enable default log output.
- *
- */
-#define OPENTHREAD_CONFIG_ENABLE_DEFAULT_LOG_OUTPUT             1
+#include "openthread/openthread.h"
+#include "openthread/platform/uart.h"
+#include "platform-arc.h"
 
-/**
- * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ACK_TIMEOUT
- *
- * Define to 1 if you want to enable software ACK timeout logic.
- *
- */
-#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ACK_TIMEOUT           0
+#include <stdio.h>
+#define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
 
-/**
- * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_RETRANSMIT
- *
- * Define to 1 if you want to enable software retransmission logic.
- *
- */
-#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_RETRANSMIT            0
+void PlatformInit(int argc, char *argv[], int num)
+{
+    arcAlarmInit();
+    arcRadioInit();
+    arcRandomInit(num);
+    otPlatUartEnable();
 
-/**
- * @def OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN
- *
- * Define to 1 if you want to enable software energy scanning logic.
- *
- */
-#define OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN           0
+    DBG("OpenThread Init Finished\r\n");
 
-#endif  // OPENTHREAD_CORE_EMSK_CONFIG_H_
+    (void)argc;
+    (void)argv;
+}
+
+void PlatformProcessDrivers(otInstance *aInstance)
+{
+    // sInstance = aInstance;
+
+    arcUartProcess();
+    arcRadioProcess(aInstance);
+    arcAlarmProcess(aInstance);
+}

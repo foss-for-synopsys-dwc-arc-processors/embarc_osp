@@ -32,8 +32,8 @@
  *
  */
 
-#ifndef PLATFORM_EMSK_H_
-#define PLATFORM_EMSK_H_
+#ifndef PLATFORM_ARC_H_
+#define PLATFORM_ARC_H_
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -79,7 +79,7 @@ extern otInstance *sInstance;
  * This function initializes the alarm service used by OpenThread.
  *
  */
-void emskAlarmInit(void);
+void arcAlarmInit(void);
 
 /**
  * This function retrieves the time remaining until the alarm fires.
@@ -87,36 +87,36 @@ void emskAlarmInit(void);
  * @param[out]  aTimeval  A pointer to timer value.
  *
  */
-void emskAlarmUpdateTimeout(int32_t *aTimeout);
+void arcAlarmUpdateTimeout(int32_t *aTimeout);
 
 /**
  * This function performs alarm driver processing.
  *
  */
-void emskAlarmProcess(otInstance *aInstance);
+void arcAlarmProcess(otInstance *aInstance);
 
 /**
  * This function initializes the radio service used by OpenThread.
  *
  */
-void emskRadioInit(void);
+void arcRadioInit(void);
 
 /**
  * This function performs radio driver processing.
  *
  */
-void emskRadioProcess(otInstance *aInstance);
+void arcRadioProcess(otInstance *aInstance);
 
 /**
  * This function initializes the random number service used by OpenThread.
  *
  */
-void emskRandomInit(int num);
+void arcRandomInit(int num);
 
 /**
  * This function performs UART driver processing.
  *
  */
-void emskUartProcess(void);
+void arcUartProcess(void);
 
-#endif  // PLATFORM_EMSK_H_
+#endif  // PLATFORM_ARC_H_

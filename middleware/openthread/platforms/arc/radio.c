@@ -37,7 +37,7 @@
 #include <utils/code_utils.h>
 #include <openthread/platform/alarm-milli.h>
 #include <openthread/platform/radio.h>
-#include "platform-emsk.h"
+#include "platform-arc.h"
 #include "embARC_error.h"
 #include "mrf24j40.h"
 
@@ -96,7 +96,7 @@ enum
 
 enum
 {
-	EMSK_RECEIVE_SENSITIVITY = -100,  // dBm
+	ARC_RECEIVE_SENSITIVITY = -100,  // dBm
 };
 
 enum
@@ -236,15 +236,15 @@ static void mrf24j40Init(void)
 		DBG("PmodRF2 SPI open error\r\n");
 	}
 
-	DBG("EMSK SPI Init\r\n");
+	DBG("Board SPI Init\r\n");
 	pmrf_spi_ptr->spi_control(SPI_CMD_SET_CLK_MODE, CONV2VOID(MRF24J40_SPICLKMODE));
 
 	/*MRF24J40 wakepin:output, rstpin:output, INT_PIN:input, interrupt */
-	DBG("EMSK GPIO Init\r\n");
+	DBG("Board GPIO Init\r\n");
 	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_wake, port_wake, pin_wake);
 	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_reset, port_reset, pin_reset);
 	MRF_GPIO_SETUP(mrf24j40_def.gpio_pin_intr, port_intr, pin_intr);
-	/* In EMSK and HSDK, the pin wake, reset and intr are in a same port */
+	/* In ARC boards, the pin wake, reset and intr are in a same port */
 	DEV_GPIO_PTR pmrf_gpio_ptr = gpio_get_dev(port_reset);
 	// ercd = pmrf_gpio_ptr->gpio_open((1 << pin_wake) | (1 << pin_reset) | (1 << pin_intr));
 	if (pin_wake != DEV_GPIO_PIN_NC)
@@ -271,7 +271,7 @@ static void mrf24j40Init(void)
 		// ercd = pmrf_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)(1 << pin_intr));
 	// }
 
-	DBG("EMSK Interrupt Config\r\n");
+	DBG("ARC Interrupt Config\r\n");
 	pmrf_gpio_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)(1 << pin_intr));
 
 	int_cfg.int_bit_mask = 1 << pin_intr;
@@ -358,7 +358,7 @@ void otPlatRadioSetShortAddress(otInstance *aInstance, uint16_t address)
 	mrf24j40_set_short_addr(&mrf24j40_def, addr);
 }
 
-void emskRadioInit(void)
+void arcRadioInit(void)
 {
 	sTransmitFrame.mLength = 0;
 	sTransmitFrame.mPsdu = sTransmitPsdu;
@@ -488,7 +488,6 @@ void readFrame(void)
 	uint8_t readRssi = 0;
 
 	uint16_t length;
-	int16_t i;
 
 	memset(&(mrf24j40_def.rx_buf[0]), 0, MRF24J40_RXFIFO_SIZE);
 
@@ -636,7 +635,7 @@ void radioTransmitMessage(otInstance *aInstance)
 #endif
 }
 
-void emskRadioProcess(otInstance *aInstance)
+void arcRadioProcess(otInstance *aInstance)
 {
 	numRadioProcess++;
 
@@ -796,5 +795,5 @@ void otPlatRadioSetDefaultTxPower(otInstance *aInstance, int8_t aPower)
 int8_t otPlatRadioGetReceiveSensitivity(otInstance *aInstance)
 {
 	(void)aInstance;
-	return EMSK_RECEIVE_SENSITIVITY;
+	return ARC_RECEIVE_SENSITIVITY;
 }

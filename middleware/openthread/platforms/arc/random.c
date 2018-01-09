@@ -42,7 +42,7 @@
 
 #include "openthread/platform/random.h"
 #include "openthread/platform/radio.h"
-#include "platform-emsk.h"
+#include "platform-arc.h"
 #include "mrf24j40.h"
 
 static MRF24J40_DEF mrf24j40_def = 
@@ -56,7 +56,7 @@ static MRF24J40_DEF mrf24j40_def =
 
 static unsigned int seed;
 
-void emskRandomInit(int num)
+void arcRandomInit(int num)
 {
 	unsigned int i;
 
@@ -97,8 +97,8 @@ otError otPlatRandomGetTrue(uint8_t *aOutput, uint16_t aOutputLength)
 	/*
 	 * THE IMPLEMENTATION BELOW IS NOT COMPLIANT WITH THE THREAD SPECIFICATION.
 	 *
-	 * Please see Note in `<path-to-openthread>/examples/platforms/emsk/README.md`
-	 * for TRNG features on EMSK.
+	 * Please see Note in `<path-to-openthread>/examples/platforms/arc/README.md`
+	 * for TRNG features on arc.
 	 */
 	otEXPECT_ACTION(aOutput && aOutputLength, error = OT_ERROR_INVALID_ARGS);
 
@@ -111,7 +111,7 @@ otError otPlatRandomGetTrue(uint8_t *aOutput, uint16_t aOutputLength)
 	/* Enable radio*/
 	if (channel)
 	{
-		emskRadioInit();
+		arcRadioInit();
 		otPlatRadioEnable(sInstance);
 		otPlatRadioReceive(sInstance, channel);
 	}
