@@ -106,14 +106,16 @@ extern "C" {
 #define _arc_swap32(a)			_swap32(a)
 #else
 Inline uint32_t _arc_swap32(uint32_t val) {
-	register uint32_t v;
+	uint32_t v;
+
 	Asm("swape %0, %1" :"=r"(v): "r"(val));
 	return v;
 }
 
 Inline uint16_t _arc_swap16(uint32_t val) {
-	register uint32_t temp;
-	register uint32_t v;
+	uint32_t temp;
+	uint32_t v;
+
 	Asm("swape %0, %1" :"=r"(temp): "r"(val));
 	Asm("lsr16 %0, %1" :"=r"(v): "r"(temp));
 	return (unsigned short)v;
@@ -164,7 +166,8 @@ Inline uint16_t _arc_swap16(uint32_t val) {
 #define _arc_swi 				__builtin_arc_swi
 
 Inline uint32_t _arc_clri(void) {
-	register uint32_t v;
+	uint32_t v;
+
 	Asm("clri %0" :"=r"(v));
 	return v;
 
@@ -172,14 +175,16 @@ Inline uint32_t _arc_clri(void) {
 /* \todo add more builtin functions of gnu tool */
 
 Inline uint32_t _arc_swap32(uint32_t val) {
-	register uint32_t v;
+	uint32_t v;
+
 	Asm("swape %0, %1" :"=r"(v): "r"(val));
 	return v;
 }
 
 Inline uint16_t _arc_swap16(uint32_t val) {
-	register uint32_t temp;
-	register uint32_t v;
+	uint32_t temp;
+	uint32_t v;
+
 	Asm("swape %0, %1" :"=r"(temp): "r"(val));
 	Asm("lsr16 %0, %1" :"=r"(v): "r"(temp));
 	return (unsigned short)v;
@@ -231,6 +236,7 @@ Inline void _arc_sync(void) {
 Inline uint32_t _arc_read_uncached_32(void *ptr)
 {
 	uint32_t __ret;
+
 	Asm("ld.di %0, [%1]":"=r"(__ret):"r"(ptr));
 	return __ret;
 }
@@ -253,6 +259,7 @@ Inline void _arc_write_uncached_32(void *ptr, uint32_t data)
 Inline uint32_t _arc_read_cached_32(void *ptr)
 {
 	uint32_t __ret;
+
 	Asm("ld %0, [%1]":"=r"(__ret):"r"(ptr));
 	return __ret;
 }
@@ -276,6 +283,7 @@ Inline void _arc_write_cached_32(void *ptr, uint32_t data)
  */
 Inline int32_t _arc_goto_main(int argc, char **argv) {
 	int32_t __ret;
+
 	Asm(
 		"mov %%r0, %1\n"
 		"mov %%r1, %2\n"
@@ -296,6 +304,7 @@ Inline uint32_t _arc_in_user_mode(void)
 {
 	uint32_t __ret;
 	uint32_t __val = 0;
+
 	Asm(
 		"lr    %0,[0xa]\n"
 		"bbit1 %0,20,1f\n" 	/* STATUS32.US == 1 implies Kernel mode */
