@@ -56,6 +56,9 @@
 #include <string.h>
 #endif // #ifndef SPINEL_PLATFORM_HEADER
 
+/* Modify here for missing strnlen with MetaWare toolchain in embARC */
+#include "utils/wrap_string.h"
+
 // ----------------------------------------------------------------------------
 // MARK: -
 
