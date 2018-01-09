@@ -71,13 +71,13 @@ include $(BOARD_AXS_DIR)/configs/core_compiler.mk
 ##
 # onchip ip object rules
 ifdef ONCHIP_IP_LIST
-	BOARD_EMSK_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_EMSK_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
+	BOARD_AXS_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_AXS_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
 endif
 
 include $(EMBARC_ROOT)/device/device.mk
 
 ##
-# \brief	emsk device driver related
+# \brief	axs device driver related
 ##
 BOARD_AXS_DEV_CSRCDIR	+= $(DEV_CSRCDIR)
 BOARD_AXS_DEV_ASMSRCDIR	+= $(DEV_ASMSRCDIR)

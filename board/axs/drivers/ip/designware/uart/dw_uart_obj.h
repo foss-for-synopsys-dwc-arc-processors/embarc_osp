@@ -32,12 +32,12 @@
 --------------------------------------------- */
 /**
  * \file
- * \ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
- * \brief	header file of designware uart object instantiation on emsk
+ * \ingroup	BOARD_AXS_DRV_DW_UART_OBJ
+ * \brief	header file of designware uart object instantiation on axs
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_DW_UART_OBJ
+ * \addtogroup	BOARD_AXS_DRV_DW_UART_OBJ
  * @{
  */
 #ifndef _DW_UART_OBJ_H_

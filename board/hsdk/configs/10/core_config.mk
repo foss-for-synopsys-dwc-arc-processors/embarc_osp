@@ -1,6 +1,6 @@
 ## Current Supported Core Configurations
 ##
-# ====================EMSK 1.0 & EMSK 1.1========================
+# ====================HSDK========================
 #    archs38_c0      - arc hs38x4 core 1, Boot Core selected 0b'00
 #    archs38_c1      - arc hs38x4 core 1, Boot Core selected 0b'01
 #    archs38_c2      - arc hs38x4 core 1, Boot Core selected 0b'10

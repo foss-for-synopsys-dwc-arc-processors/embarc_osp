@@ -46,8 +46,8 @@
 
 #include "arc_hs.h"
 
-#include "drivers/uart/dw_uart_obj.h"
-#include "drivers/gpio/dw_gpio_obj.h"
+#include "drivers/ip/designware/uart/dw_uart_obj.h"
+#include "drivers/ip/designware/gpio/dw_gpio_obj.h"
 
 #include "common/axs_timer.h"
 
@@ -84,6 +84,20 @@
 #define OSP_GET_CUR_MS()		(gl_axs_ms_cnt)
 #define OSP_GET_CUR_US()		board_get_cur_us()
 #define OSP_GET_CUR_HWTICKS()		board_get_hwticks()
+
+// Un-implemented LED/Switch/Button functions and macros
+#define BOARD_LED_MASK			(0x0)
+#define BOARD_LED_CNT			(0)
+#define BOARD_BTN_MASK			(0x0)
+#define BOARD_BTN_CNT			(0)
+#define BOARD_SWT_MASK			(0x0)
+#define BOARD_SWT_CNT			(0)
+
+#define led_write(val, mask)		EMBARC_PRINTF("Led out: val 0x%x, mask 0x%x\r\n", val, mask)
+#define led_read(mask)			(0x0)
+#define led_toggle(mask)
+#define switch_read(mask)		(0x0)
+#define button_read(mask)		(0x0)
 
 #ifdef __cplusplus
 extern "C" {

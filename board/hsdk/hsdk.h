@@ -149,11 +149,11 @@
 #define BOARD_SWT_MASK			(0x0)
 #define BOARD_SWT_CNT			(0)
 
-#define led_write(val, mask)    EMBARC_PRINTF("Led out: val 0x%x, mask 0x%x\r\n", val, mask)
-#define led_read(mask)          (0x0)
+#define led_write(val, mask)		EMBARC_PRINTF("Led out: val 0x%x, mask 0x%x\r\n", val, mask)
+#define led_read(mask)			(0x0)
 #define led_toggle(mask)
-#define switch_read(mask)       (0x0)
-#define button_read(mask)       (0x0)
+#define switch_read(mask)		(0x0)
+#define button_read(mask)		(0x0)
 
 #ifdef __cplusplus
 extern "C" {

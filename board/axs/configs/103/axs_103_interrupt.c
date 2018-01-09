@@ -252,7 +252,7 @@ int32_t int_disable(const uint32_t intno)
 
 	uint32_t sub_intno = intno & 0xff;
 
-	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { 
+	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) {
 		/* arc interrupt controller */
 		arc_int_disable(sub_intno);
 	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */

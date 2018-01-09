@@ -42,7 +42,7 @@
 #ifndef _AXC003_GPIO_H_
 #define _AXC003_GPIO_H_
 
-#include "../../drivers/gpio/dw_gpio_obj.h"
+#include "../../drivers/ip/designware/gpio/dw_gpio_obj.h"
 
 
 /*
