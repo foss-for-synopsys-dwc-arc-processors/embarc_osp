@@ -43,7 +43,7 @@
  *
  *	};
  *	then instantiate the gpio class:
- *	gpio emsk_gpio_a;
+ *	gpio axs_gpio_a;
  */
 
 /**

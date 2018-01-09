@@ -44,7 +44,7 @@
 /**
  * \file
  * \ingroup	BOARD_AXS_DRV_DW_UART_OBJ
- * \brief	designware uart object instantiation on emsk
+ * \brief	designware uart object instantiation on axs
  */
 
 /**
