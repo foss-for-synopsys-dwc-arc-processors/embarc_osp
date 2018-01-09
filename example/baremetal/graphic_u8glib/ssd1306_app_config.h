@@ -30,7 +30,7 @@
 #ifndef _SSD1306_APP_CONFIG_H_
 #define _SSD1306_APP_CONFIG_H_
 
-#define SSD1306_I2C_ID	1
+#define SSD1306_I2C_ID	0
 #define SSD1306_RST_GPIO 3
 #define SSD1306_RST_PIN	5
 #endif /* _SSD1306_APP_CONFIG_H_ */
