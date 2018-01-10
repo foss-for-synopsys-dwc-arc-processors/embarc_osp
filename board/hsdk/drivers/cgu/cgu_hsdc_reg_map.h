@@ -28,7 +28,6 @@
  *
  * \version 2017.03
  * \date 2017-11-10
-	
 --------------------------------------------- */
 // ----------------------------------------------
 // !!! This file was automatically generated !!!
@@ -58,8 +57,8 @@ typedef volatile struct cgu_hsdc_reg
 	uint32_t 	CGU_HDMI_PLL_FMEAS;  	// RW	0x048	HDMI PLL frequency measurement register
 	uint32_t 	CGU_HDMI_PLL_MON;  	// RW	0x04C	HDMI PLL monitor register
 	uint32_t 	reserved1[12];
-	uint32_t 	CGU_ARC_IDIV;  	// RW	0x080	Integer divider register for ARC HS38x4 clock 
-	uint32_t 	CGU_ARC_FMEAS;  	// RW	0x084	Freq measurement register for ARC HS38x4 clock 
+	uint32_t 	CGU_ARC_IDIV;  	// RW	0x080	Integer divider register for ARC HS38x4 clock
+	uint32_t 	CGU_ARC_FMEAS;  	// RW	0x084	Freq measurement register for ARC HS38x4 clock
 	uint32_t 	reserved2[62];
 	uint32_t 	CGU_SYS_IDIV_APB;  	// RW	0x180	Integer divider register for APB clock
 	uint32_t 	CGU_SYS_FMEAS_APB;  	// RW	0x184	Freq measurement register for APB clock
@@ -121,11 +120,11 @@ typedef volatile struct cgu_hsdc_reg
 	uint32_t 	CGU_I2S_IDIV_RX;  	// RW	0x590	Integer divider register for I2S RX clock
 	uint32_t 	CGU_I2S_FMEAS_RX;  	// RW	0x594	Freq measurement register for I2S RX clock
 	uint32_t 	reserved22[186];
-	uint32_t 	CGU_ARC_RST_CTRL;  	// RW	0x880	Reset control register for ARC HS38x4  
+	uint32_t 	CGU_ARC_RST_CTRL;  	// RW	0x880	Reset control register for ARC HS38x4
 	uint32_t 	reserved23[7];
 	uint32_t 	CGU_SYS_RST_CTRL;  	// RW	0x8A0	Reset control register for System peripherals
 	uint32_t 	reserved24[7];
-	uint32_t 	CGU_DDR_RST_CTRL;  	// RW	0x8C0	Reset control register for DDR 
+	uint32_t 	CGU_DDR_RST_CTRL;  	// RW	0x8C0	Reset control register for DDR
 	uint32_t 	reserved25[7];
 	uint32_t 	CGU_TUN_RST_CTRL;  	// RW	0x8E0	Reset control register for Tunnel
 	uint32_t 	reserved26[39];

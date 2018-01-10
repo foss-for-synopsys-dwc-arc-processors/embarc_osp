@@ -28,7 +28,6 @@
  *
  * \version 2017.12
  * \date 2017-11-10
-	
  * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 #ifndef __CGU_HSDC_REG_H__
