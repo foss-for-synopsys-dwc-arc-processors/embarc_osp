@@ -358,7 +358,7 @@ static int32_t pmwifi_0_spi_transfer(DEV_SPI_TRANSFER *xfer)
 	ercd = pmwifi_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, (void *)(xfer));
 
 #ifdef EMSK_PMWIFI_0_SPI_CPULOCK_ENABLE
-		cpu_unlock_restore(cs_cpu_status);
+	cpu_unlock_restore(cs_cpu_status);
 #endif
 error_exit:
 	return ercd;
