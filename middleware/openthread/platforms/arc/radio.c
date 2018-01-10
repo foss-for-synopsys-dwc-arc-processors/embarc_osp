@@ -525,7 +525,7 @@ void readFrame(void)
 	memcpy(sReceiveFrame.mPsdu, &(mrf24j40_def.rx_buf[1]), length - 2);
 #if OPENTHREAD_CLI_DEBUG_INFO
 	DBG("PSDU Frame Receive\r\n");
-	for (i = 0; i < length - 2; i++)
+	for (int i = 0; i < length - 2; i++)
 	{
 		// sReceiveFrame.mPsdu[i] = mrf24j40_def.rx_buf[i+1];
 		DBG("%x ", sReceiveFrame.mPsdu[i]);
