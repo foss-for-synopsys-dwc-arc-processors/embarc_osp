@@ -70,7 +70,7 @@
  */
 #define EMSK_BUTTON_OFFSET	(0)
 #define EMSK_BUTTON_MASK	((0x7) << EMSK_BUTTON_OFFSET)
-#define EMSK_BUTTON_PORT	(DEV_GPIO_PORT_B)
+#define EMSK_BUTTON_PORT	(DEV_GPIO_PORT_A)
 #define EMSK_BUTTON_DIR		((0x0) << EMSK_BUTTON_OFFSET)
 /** @} end of name */
 
