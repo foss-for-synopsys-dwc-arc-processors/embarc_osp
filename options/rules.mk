@@ -165,6 +165,7 @@ opt :
 	@$(ECHO) OLEVEL : $(OLEVEL)
 	@$(ECHO) JTAG : $(JTAG)
 	@$(ECHO) EMBARC_ROOT : $(EMBARC_ROOT)
+	@$(ECHO) OUT_DIR_ROOT : $(OUT_DIR_ROOT)
 	@$(ECHO) COMPILE_OPT : $(subst $(MKDEP_OPT), , $(COMPILE_OPT))
 	@$(ECHO) CXX_COMPILE_OPT: $(subst $(MKDEP_OPT), , $(CXX_COMPILE_OPT))
 	@$(ECHO) ASM_OPT : $(subst $(MKDEP_OPT), , $(ASM_OPT))
