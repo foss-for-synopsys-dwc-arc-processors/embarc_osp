@@ -20,22 +20,22 @@ embARC leverages several open-source projects to deliver integrated IoT protocol
 
 \section sect_mid_middleware_list Available Middleware in embARC
 
-|                     Middleware Name                    |      MID_SEL      | Baremetal | Contiki | FreeRTOS |
-| ------------------------------------------------------ | ----------------- | --------- | ------- | -------- |
-|  \ref sect_middleware_general_middleware_common        | common            |     √     |    √    |     √    |
-|  \ref sect_middleware_general_middleware_ntshell       | ntshell           |     √     |    √    |     √    |
-|  \ref sect_middleware_general_middleware_fatfs         | fatfs             |     √     |    √    |     √    |
-|  \ref sect_middleware_general_middleware_u8glib        | u8glib            |     √     |    √    |     √    |
-|  \ref sect_middleware_general_middleware_ihex          | ihex              |     √     |    √    |     √    |
-|  \ref sect_middleware_network_stack_lwip               | lwip lwip-contrib |     x     |    x    |     √    |
-|  \ref sect_middleware_network_stack_openthread         | openthread        |     √     |    x    |     √    |
-|  \ref sect_middleware_iot_json                         | parson            |     √     |    √    |     √    |
-|  \ref sect_middleware_iot_http_parser                  | http_parser       |     √     |    √    |     √    |
-|  \ref sect_middleware_iot_coap                         | coap              |     x     |    x    |     √    |
-|  \ref sect_middleware_iot_mqtt                         | mqtt              |     x     |    x    |     √    |
-|  \ref sect_middleware_iot_lwm2m                        | wakaama           |     x     |    x    |     √    |
-|  \ref sect_middleware_iot_awsiot                       | aws               |     x     |    x    |     √    |
-|  \ref sect_middleware_secure_communication_mbedtls     | mbedtls           |     x     |    x    |     √    |
+|                     Middleware Name                    |      MID_SEL      | Baremetal | FreeRTOS |
+| ------------------------------------------------------ | ----------------- | --------- | -------- |
+|  \ref sect_middleware_general_middleware_common        | common            |     √     |     √    |
+|  \ref sect_middleware_general_middleware_ntshell       | ntshell           |     √     |     √    |
+|  \ref sect_middleware_general_middleware_fatfs         | fatfs             |     √     |     √    |
+|  \ref sect_middleware_general_middleware_u8glib        | u8glib            |     √     |     √    |
+|  \ref sect_middleware_general_middleware_ihex          | ihex              |     √     |     √    |
+|  \ref sect_middleware_network_stack_lwip               | lwip lwip-contrib |     x     |     √    |
+|  \ref sect_middleware_network_stack_openthread         | openthread        |     √     |     √    |
+|  \ref sect_middleware_iot_json                         | parson            |     √     |     √    |
+|  \ref sect_middleware_iot_http_parser                  | http_parser       |     √     |     √    |
+|  \ref sect_middleware_iot_coap                         | coap              |     x     |     √    |
+|  \ref sect_middleware_iot_mqtt                         | mqtt              |     x     |     √    |
+|  \ref sect_middleware_iot_lwm2m                        | wakaama           |     x     |     √    |
+|  \ref sect_middleware_iot_awsiot                       | aws               |     x     |     √    |
+|  \ref sect_middleware_secure_communication_mbedtls     | mbedtls           |     x     |     √    |
 
 
 # Notes on Middleware Table
@@ -43,9 +43,9 @@ embARC leverages several open-source projects to deliver integrated IoT protocol
 - <b>√</b> means this middleware is supported in this environment, and **x** means not supported.
 - Add the value in the **MID_SEL** column to the **MID_SEL** option in the application makefile.
 - **aws** middleware required *mbedtls* middleware.
-- **coap, mqtt, and lwm2m** are only for FreeRTOS. and require *lwip and lwip-contrib*. There are coap and mqtt implementations in Contiki, and lwm2m implementation is in Contiki upstream.
-- **mbedtls** sometimes require *fatfs* middleware to provide file access. TinyDTLS in Contiki provides DTLS network security.
-- **lwip** middleware is only for FreeRTOS. Contiki provides uIP for network communication.
+- **coap, mqtt, and lwm2m** are only for FreeRTOS. and require *lwip and lwip-contrib*.
+- **mbedtls** require *fatfs* middleware to provide file access in some cases.
+- **lwip** middleware is only for FreeRTOS.
 - **openthread** middleware requires **mbedtls** to support encryption.
 
 \section sect_mid_add_new_middleware_to_embARC Adding New Middleware to embARC

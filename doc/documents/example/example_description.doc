@@ -66,6 +66,7 @@ See \ref sect_example_usage_GeneralBuildSteps for more details.
     |   emsk        | \ref page_board_emsk           |
     |   axs         | \ref page_board_axs            |
     |   nsim        | \ref page_board_nsim           |
+    |   hsdk        | \ref page_board_hsdk           |
 
   - For example, *make BOARD=emsk* selects the EMSK board as the target board.
 
@@ -76,11 +77,13 @@ See \ref sect_example_usage_GeneralBuildSteps for more details.
     |   emsk        | board/emsk/emsk.mk                    |
     |   axs         | board/axs/axs.mk                      |
     |   nsim        | board/nsim/nsim.mk                    |
+    |   hsdk        | board/hsdk/hsdk.mk                    |
 
   - For the *emsk* board, three versions are supported in embARC: 1.1, 2.2, and 2.3. The optional values of *BD_VER* are *11*, *22* and *23*. The *BD_VER* must match the target EMSK version. For example, programs built for 1.1 cannot run on an EMSK 2.x board. The default value of *BD_VER* for the *emsk* board is *22*.
     - For EMSK 2.0, 2.1 and 2.2, you can upgrade the firmware version to 2.3, and for EMSK 1.0, you can upgrade the firmware version to 1.1.
   - For the *axs* board, one version is supported: 103. The optional value of *BD_VER* is *103*. The default value of *BD_VER* for the *axs* board is *103*.
   - For the *nsim* board, two versions are supported: 10, 1506. The optional value of *BD_VER* is *1506* and *10*. The default value of *BD_VER* for the *nsim* board is *1506*.
+  - For the *hsdk* board, one versions are supported: 10. The optional value of *BD_VER* is *10*. The default value of *BD_VER* for the *hsdk* board is *10*.
   - For example, *make BOARD=emsk BD_VER=22* selects *2.2* as the EMSK target board version.
 
 - <b>CUR_CORE</b>: Select the core configuration for the specified board version.
@@ -122,6 +125,15 @@ See \ref sect_example_usage_GeneralBuildSteps for more details.
     | ------------ | ------------------------------ |
     |   arcem      | ARC EM core                    |
     |   archs      | ARC HS core                    |
+
+  - For <em>hsdk</em>, the default value of this option is defined in **board/hsdk/configs/10/core_config.mk**.
+  - Optional values for <em>hsdk</em>; default value is *archs38_c0*.
+    |   CUR_CORE   |       Description      |
+    | ------------ | ---------------------- |
+    |  archs38_c0  | ARC HS38x4 core 0      |
+    |  archs38_c1  | ARC HS38x4 core 1      |
+    |  archs38_c2  | ARC HS38x4 core 2      |
+    |  archs38_c3  | ARC HS38x4 core 3      |
 
   - For example, *make BOARD=emsk BD_VER=23 CUR_CORE=arcem11d* selects the *arcem11d* core configuration for emsk 2.3.
 
@@ -306,7 +318,8 @@ and \ref EMBARC_APPS_USERGUIDE "Example Usage Guide" for detailed usage informat
 |  baremetal_cxx   | baremetal/cxx  |   \ref EMBARC_APP_BAREMETAL_CXX  |
 |  baremetal_dma_spiflash   | baremetal/dma_spiflash  |   \ref EMBARC_APP_BAREMETAL_DMA_SPIFLASH  |
 |  baremetal_graphic_u8glib   | baremetal/graphic_u8glib  |   \ref EMBARC_APP_BAREMETAL_GRAPHIC_U8GLIB  |
-|  baremetal_openthread   | baremetal/openthread  |   \ref EMBARC_APP_BAREMETAL_OPENTHREAD  |
+|  baremetal_openthread_cli   | baremetal/openthread/cli  |   \ref EMBARC_APP_BAREMETAL_OPENTHREAD_CLI  |
+|  baremetal_openthread_ncp   | baremetal/openthread/ncp  |   \ref EMBARC_APP_BAREMETAL_OPENTHREAD_NCP  |
 |  baremetal_secureshield_secret_secure   | baremetal/secureshield/secret_secure  |   \ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE  |
 |  baremetal_secureshield_secret_normal   | baremetal/secureshield/secret_normal  |   \ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL  |
 |  baremetal_secureshield_secret_secure_sid   | baremetal/secureshield/secret_secure_sid  |   \ref EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID  |
@@ -324,17 +337,18 @@ and \ref EMBARC_APPS_USERGUIDE "Example Usage Guide" for detailed usage informat
 |  freertos_sec_mbedtls_ssl_client2   | freertos/sec/mbedtls/ssl/client2  |   \ref EMBARC_APP_FREERTOS_SEC_MBEDTLS_SSL_CLIENT2  |
 |  freertos_sec_mbedtls_ssl_server2   | freertos/sec/mbedtls/ssl/server2  |   \ref EMBARC_APP_FREERTOS_SEC_MBEDTLS_SSL_SERVER2  |
 
-- **Here is a list of embARC applications**, located in <i><embARC>/application</i>.
-|          Application Name          |          Application Directory           |          Application Document Link           |
-|  ---------------------------   |  ----------------------------------  |  --------------------------------------  |
-|  aws_iot_smarthome_demo   | aws_iot_smarthome/src  |   \ref EMBARC_APP_FREERTOS_IOT_AWS_SMARTHOME_DEMO  |
-|  aws_iot_smarthome_nodes_frontDoor   | aws_iot_smarthome_multinode/src/frontDoor  |   \ref EMBARC_APP_FREERTOS_IOT_AWS_SMARTHOME_NODES_FRONTDOOR  |
-|  aws_iot_smarthome_nodes_kitchen   | aws_iot_smarthome_multinode/src/kitchen  |   \ref EMBARC_APP_FREERTOS_IOT_AWS_SMARTHOME_NODES_KITCHEN  |
-|  aws_iot_smarthome_nodes_livingRoom   | aws_iot_smarthome_multinode/src/livingRoom  |   \ref EMBARC_APP_FREERTOS_IOT_AWS_SMARTHOME_NODES_LIVINGROOM  |
+- **Here is a list of embARC applications**, located in [embARC applications](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications).  
+|          Application Name      |         Application Link             |
+|  ---------------------------   |  ----------------------------------  |
+|  aws_iot_smarthome             | [AWS IoT Smarthome Application](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome)        |
+|  aws_iot_smarthome_multinode   | [AWS IoT Smarthome Multi-node Application](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome_multinode)  |
+|  ibaby_smarthome_multinode     | [iBaby Smarthome Application](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/ibaby_smarthome_multinode)  |
+|  ilight_smartdevice            | [iLight SmartDevice Application](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/ilight_smartdevice)  |
+|  ot_smarthome_multinode        | [OpenThread Smarthome Application](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/ot_smarthome_multinode)  |
 
 \section sect_example_division_of_provided_embARC_examples Division of embARC Examples
 
-embARC provides bare-metal, FreeRTOS, and Contiki examples. You can click on the following links to go to the appropriate section.
+embARC provides bare-metal and FreeRTOS examples. You can click on the following links to go to the appropriate section.
 - [Baremetal Examples](\ref EMBARC_APPS_BAREMETAL)
 - [FreeRTOS Examples](\ref EMBARC_APPS_OS_FREERTOS)
 
