@@ -85,7 +85,7 @@ vpath %.cpp $(ALL_CXXSRC_DIRS)
 vpath %.S $(ALL_ASMSRC_DIRS)
 vpath %.s $(ALL_ASMSRC_DIRS)
 
-.PHONY : all build dump dasm bin hex size clean boardclean distclean run gui cfg opt spopt infodirs infosrcs infoobjs help
+.PHONY : all build dump dasm bin hex size clean boardclean distclean run gui cfg opt info spopt infodirs infosrcs infoobjs help
 
 all : $(APPL_FULL_NAME).elf
 
@@ -173,6 +173,22 @@ opt :
 	@$(ECHO) DEBUGGER : $(DBG)
 	@$(ECHO) DBG_HW_FLAGS : $(DBG_HW_FLAGS)
 	@$(ECHO) MDB_NSIM_OPT : $(MDB_NSIM_OPT)
+
+info:
+	@$(ECHO) ======CURRENT BUILD INFORMATION=====
+	@$(ECHO) EMBARC_ROOT : $(realpath $(EMBARC_ROOT))
+	@$(ECHO) OUT_DIR_ROOT : $(realpath $(OUT_DIR_ROOT))
+	@$(ECHO) BUILD_OPTION : BOARD=$(BOARD) BD_VER=$(BD_VER) CUR_CORE=$(CUR_CORE) TOOLCHAIN=$(TOOLCHAIN) OLEVEL=$(OLEVEL) V=$(V) DEBUG=$(DEBUG) SILENT=$(SILENT)
+	@$(ECHO) APPLICATION_NAME : $(APPL_NAME)
+	@$(ECHO) APPLICATION_LINKSCRIPT : $(APPL_LINK_FILE)
+	@$(ECHO) APPLICATION_ELF : $(APPL_FULL_NAME).elf
+	@$(ECHO) APPLICATION_BIN : $(APPL_FULL_NAME).bin
+	@$(ECHO) APPLICATION_HEX : $(APPL_FULL_NAME).hex
+	@$(ECHO) APPLICATION_MAP : $(APPL_FULL_NAME).map
+	@$(ECHO) APPLICATION_DUMP : $(APPL_FULL_NAME).dump
+	@$(ECHO) APPLICATION_DASM : $(APPL_FULL_NAME).dasm
+	@$(ECHO) MIDDLEWARE : $(sort $(MID_SEL))
+	@$(ECHO) PERIPHERAL : $(sort $(EXT_DEV_LIST))
 
 spopt :
 	@$(ECHO) ======SUPPORTED CONFIGURATIONS=====
