@@ -32,7 +32,7 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_BAREMETAL_OPENTHREAD_NCP	embARC OpenThreadc NCP example on MRF24J40
+ * \defgroup	EMBARC_APP_BAREMETAL_OPENTHREAD_NCP	embARC OpenThread NCP example on MRF24J40
  * \ingroup	EMBARC_APPS_TOTAL
  * \ingroup	EMBARC_APPS_BAREMETAL
  * \ingroup	EMBARC_APPS_MID_OPENTHREAD
