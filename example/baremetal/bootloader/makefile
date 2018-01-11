@@ -1,6 +1,8 @@
 # Application name
 APPL ?= emsk_bootloader
 
+EXT_DEV_LIST += sensor/temperature/adt7420
+
 ##
 # link script
 #

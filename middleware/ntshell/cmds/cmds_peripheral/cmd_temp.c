@@ -44,6 +44,7 @@
 #include "embARC.h"
 #include "ntlibc.h"
 #include "ntshell_common.h"
+#include "adt7420.h"
 
 #ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
 #define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
@@ -53,6 +54,8 @@ static NTSHELL_IO_PREDEF;
 
 #define CELSIUS    1
 #define FAHRENHEIT 0
+
+static ADT7420_DEFINE(temp_sensor, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
 
 static int32_t read_temp (int tmp_units);
 
@@ -120,7 +123,7 @@ static int cmd_temp(int argc, char **argv, void *extobj)
 		}
 	}
 
-	temp_sensor_init(BOARD_TEMP_IIC_SLVADDR);
+	adt7420_sensor_init(temp_sensor);
 
 	if ((temp=read_temp(unit)) != -1000) {
 		CMD_DEBUG("Current Temperature:%d.%d", temp/10, temp%10);
@@ -146,20 +149,22 @@ error_exit:
 /*****************************************************************************/
 int32_t read_temp (int tmp_units)
 {
-	int32_t t;
+	int32_t tempval;
+	float tempf;
 
 	//read from sensor
-	if (temp_sensor_read(&t) == E_OK) {
+	if (adt7420_sensor_read(temp_sensor, &tempf) == E_OK) {
+		tempval = (int32_t)(tempf * 10);
 		if (tmp_units == FAHRENHEIT) {
 			//conversion F = 32 + (9/5) * C
 			//t is 0.1c unit
-			t = 320 + ((9*t)/5); /* 0.1 F */
+			tempval = 320 + ((9*tempval)/5); /* 0.1 F */
 		}
 	} else {
 		return -1000;
 	}
 
-	return (int32_t)t;
+	return tempval;
 }
 
 static CMD_TABLE_T temp_cmd = {"temp", "Show current temperature", cmd_temp, NULL};
