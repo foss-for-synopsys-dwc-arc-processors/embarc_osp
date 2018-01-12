@@ -22,8 +22,6 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * \version 2017.12
- * \date 2017-12-13
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 
 /**

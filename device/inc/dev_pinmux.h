@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-12-10
- * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 #ifndef _DEV_PINMUX_H_
 #define _DEV_PINMUX_H_

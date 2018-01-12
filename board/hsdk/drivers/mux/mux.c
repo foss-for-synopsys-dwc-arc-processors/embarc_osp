@@ -26,7 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
  * \defgroup	BOARD_HSDK_DRV_MUX	HSDK Mux Driver

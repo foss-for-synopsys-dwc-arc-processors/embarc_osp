@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2016-09-19
- * \author Huaqi Fang(Huaqi.Fang@synopsys.com)
 --------------------------------------------- */
 
 #ifndef _TARGET_MEM_CONFIG_H_

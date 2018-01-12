@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2016-04-20
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 /**
  * \defgroup	EMBARC_APP_FREERTOS_NET_NTSHELL	embARC Net Example on NT-Shell

@@ -26,7 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 #ifndef _SPI_FLASH_W25QXX_H_
 #define _SPI_FLASH_W25QXX_H_

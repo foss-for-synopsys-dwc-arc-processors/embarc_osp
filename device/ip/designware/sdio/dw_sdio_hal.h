@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-11-10
- * \author Wayne Ren(wei.ren@synopsys.com)
 --------------------------------------------- */
 #ifndef _DW_SDIO_HAL_H_
 #define _DW_SDIO_HAL_H_

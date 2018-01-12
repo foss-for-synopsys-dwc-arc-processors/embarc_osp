@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-01-12
- * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
  * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID embARC Secureshield Secret with SID Example

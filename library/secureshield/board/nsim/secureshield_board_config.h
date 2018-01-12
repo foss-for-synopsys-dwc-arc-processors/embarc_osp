@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2016-02-03
- * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 #ifndef _SECURESHIELD_BOARD_CONFIG_H_
 #define _SECURESHIELD_BOARD_CONFIG_H_

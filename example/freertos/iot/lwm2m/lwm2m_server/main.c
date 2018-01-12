@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2016-04-20
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 /**
  * \defgroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER	embARC LwIP LwM2M Server Example
