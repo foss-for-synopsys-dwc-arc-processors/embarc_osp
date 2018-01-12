@@ -1,7 +1,7 @@
 # Application name
 APPL ?= freertos_net_ntshell
 
-EXT_DEV_LIST += wifi/mrf24g
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
 
 #
 # root dir of embARC

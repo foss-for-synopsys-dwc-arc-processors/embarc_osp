@@ -1,7 +1,7 @@
 # Application name
 APPL ?= mbedtls_ssl_client2
 
-EXT_DEV_LIST += wifi/mrf24g
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
 
 # Heap Size Settings
 HEAPSZ ?= 1048576
