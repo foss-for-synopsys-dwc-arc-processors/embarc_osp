@@ -9,62 +9,74 @@
 
 The compatibility matrix for the embARC examples with [MetaWare Development Toolkit](https://www.synopsys.com/dw/ipdir.php?ds=sw_metaware) is listed in the following table.
 
-| Project Name                          | EMSK 1.1 | EMSK 2.2 | EMSK 2.3 | HSDK 1.0 | nsim 1.0 |
-|---------------------------------------|----------|----------|----------|----------|----------|
-| baremetal_arc_feature_cache           | √        | √        | √        | √        | √        |
-| baremetal_arc_feature_timer_interrupt | √        | √        | √        | √        | √        |
-| baremetal_arc_feature_udma            | √        | √        | √        | √        | √        |
-| baremetal_axs103                      | ×        | ×        | ×        | ×        | ×        |
-| baremetal_ble_hm1x                    | √        | √        | √        | √        | ×        |
-| baremetal_blinky                      | √        | √        | √        | √        | √        |
-| baremetal_bootloader                  | √        | √        | √        | √        | ×        |
-| baremetal_cxx                         | √        | √        | √        | √        | √        |
-| baremetal_dma_spiflash                | √        | √        | √        | ×        | ×        |
-| baremetal_graphic_u8glib              | √        | √        | √        | √        | ×        |
-| baremetal_openthread_cli              | √        | √        | √        | √        | ×        |
-| baremetal_openthread_ncp              | √        | √        | √        | √        | ×        |
-| baremetal_secureshield_test_case      | ×        | ×        | ×        | ×        | ×        |
-| freertos_iot_coap_coap_server         | √        | √        | √        | √        | ×        |
-| freertos_iot_lwm2m_iot_demo           | √        | √        | √        | ×        | ×        |
-| freertos_iot_lwm2m_client             | √        | √        | √        | √        | ×        |
-| freertos_iot_lwm2m_server             | √        | √        | √        | √        | ×        |
-| freertos_kernel                       | √        | √        | √        | √        | √        |
-| freertos_kernel_secure                | ×        | ×        | ×        | ×        | ×        |
-| freertos_net_httpserver               | √        | √        | √        | √        | ×        |
-| freertos_net_ntshell                  | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_dtls_client      | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_dtls_server      | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_ssl_client2      | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_ssl_server2      | √        | √        | √        | √        | ×        |
+| Project Name                              | EMSK 1.1 | EMSK 2.2 | EMSK 2.3 | HSDK 1.0 | AXS 103  | nsim 1.0 |
+|-------------------------------------------|----------|----------|----------|----------|----------|----------|
+| baremetal_arc_feature_cache               | √        | √        | √        | √        | √        | √        |
+| baremetal_arc_feature_udma                | √        | √        | √        | √        | √        | √        |
+| baremetal_arc_feature_timer_interrupt     | √        | √        | √        | √        | √        | √        |
+| baremetal_axs103                          | ×        | ×        | ×        | ×        | √        | ×        |
+| baremetal_ble_hm1x                        | √        | √        | √        | √        | ×        | ×        |
+| baremetal_blinky                          | √        | √        | √        | √        | √        | √        |
+| baremetal_bootloader                      | √        | √        | √        | √        | ×        | ×        |
+| baremetal_cxx                             | √        | √        | √        | √        | √        | √        |
+| baremetal_dma_spiflash                    | x        | x        | √        | ×        | ×        | ×        |
+| baremetal_graphic_u8glib                  | √        | √        | √        | √        | ×        | ×        |
+| baremetal_openthread_cli                  | √        | √        | √        | √        | ×        | ×        |
+| baremetal_openthread_ncp                  | √        | √        | √        | √        | ×        | ×        |
+| baremetal_secureshield_secret_secure      | ×        | √        | √        | ×        | ×        | ×        |
+| baremetal_secureshield_secret_normal      | ×        | √        | √        | ×        | ×        | ×        |
+| baremetal_secureshield_secret_secure_sid  | ×        | ×        | √        | ×        | ×        | ×        |
+| baremetal_secureshield_test_case          | ×        | ×        | √        | ×        | ×        | ×        |
+| freertos_iot_coap_coap_server             | √        | √        | √        | √        | ×        | ×        |
+| freertos_iot_lwm2m_iot_demo               | √        | √        | √        | ×        | ×        | ×        |
+| freertos_iot_lwm2m_client                 | √        | √        | √        | √        | ×        | ×        |
+| freertos_iot_lwm2m_server                 | √        | √        | √        | √        | ×        | ×        |
+| freertos_kernel                           | √        | √        | √        | √        | √        | √        |
+| freertos_kernel_secure                    | ×        | ×        | ×        | ×        | ×        | ×        |
+| freertos_net_httpserver                   | √        | √        | √        | √        | ×        | ×        |
+| freertos_net_ntshell                      | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_dtls_client          | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_dtls_server          | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_ssl_client2          | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_ssl_server2          | √        | √        | √        | √        | ×        | ×        |
+
+# Notes on compatibility matrix
+- Secureshield related examples required to excuted on EMSK 2.2 ARC EM7D or EMSK 2.3 ARC EM7D.
 
 The compatibility matrix for the embARC examples with [GNU Toolchain for ARC Processors](https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases) is listed in the following table.
 
-| Project Name                          | EMSK 1.1 | EMSK 2.2 | EMSK 2.3 | HSDK 1.0 | nsim 1.0 |
-|---------------------------------------|----------|----------|----------|----------|----------|
-| baremetal_arc_feature_cache           | √        | √        | √        | √        | ×        |
-| baremetal_arc_feature_timer_interrupt | √        | √        | √        | √        | √        |
-| baremetal_arc_feature_udma            | √        | √        | √        | √        | √        |
-| baremetal_axs103                      | ×        | ×        | ×        | ×        | ×        |
-| baremetal_ble_hm1x                    | √        | √        | √        | √        | ×        |
-| baremetal_blinky                      | √        | √        | √        | √        | √        |
-| baremetal_bootloader                  | √        | √        | √        | √        | ×        |
-| baremetal_cxx                         | √        | √        | √        | √        | √        |
-| baremetal_dma_spiflash                | √        | √        | √        | ×        | ×        |
-| baremetal_graphic_u8glib              | √        | √        | √        | √        | ×        |
-| baremetal_openthread_cli              | √        | √        | √        | √        | ×        |
-| baremetal_openthread_ncp              | √        | √        | √        | √        | ×        |
-| baremetal_secureshield_test_case      | ×        | ×        | ×        | ×        | ×        |
-| freertos_iot_coap_coap_server         | √        | √        | √        | √        | ×        |
-| freertos_iot_lwm2m_iot_demo           | √        | √        | √        | ×        | ×        |
-| freertos_iot_lwm2m_client             | √        | √        | √        | √        | ×        |
-| freertos_iot_lwm2m_server             | √        | √        | √        | √        | ×        |
-| freertos_kernel                       | √        | √        | √        | √        | √        |
-| freertos_kernel_secure                | ×        | ×        | ×        | ×        | ×        |
-| freertos_net_httpserver               | √        | √        | √        | √        | ×        |
-| freertos_net_ntshell                  | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_dtls_client      | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_dtls_server      | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_ssl_client2      | √        | √        | √        | √        | ×        |
-| freertos_sec_mbedtls_ssl_server2      | √        | √        | √        | √        | ×        |
+| Project Name                              | EMSK 1.1 | EMSK 2.2 | EMSK 2.3 | HSDK 1.0 | AXS 103  | nsim 1.0 |
+|-------------------------------------------|----------|----------|----------|----------|----------|----------|
+| baremetal_arc_feature_cache               | √        | √        | √        | √        | √        | √        |
+| baremetal_arc_feature_udma                | √        | √        | √        | √        | √        | √        |
+| baremetal_arc_feature_timer_interrupt     | √        | √        | √        | √        | √        | √        |
+| baremetal_axs103                          | ×        | ×        | ×        | ×        | √        | ×        |
+| baremetal_ble_hm1x                        | √        | √        | √        | √        | ×        | ×        |
+| baremetal_blinky                          | √        | √        | √        | √        | √        | √        |
+| baremetal_bootloader                      | √        | √        | √        | √        | ×        | ×        |
+| baremetal_cxx                             | √        | √        | √        | √        | √        | √        |
+| baremetal_dma_spiflash                    | x        | x        | √        | ×        | ×        | ×        |
+| baremetal_graphic_u8glib                  | √        | √        | √        | √        | ×        | ×        |
+| baremetal_openthread_cli                  | √        | √        | √        | √        | ×        | ×        |
+| baremetal_openthread_ncp                  | √        | √        | √        | √        | ×        | ×        |
+| baremetal_secureshield_secret_secure      | ×        | √        | √        | ×        | ×        | ×        |
+| baremetal_secureshield_secret_normal      | ×        | √        | √        | ×        | ×        | ×        |
+| baremetal_secureshield_secret_secure_sid  | ×        | ×        | √        | ×        | ×        | ×        |
+| baremetal_secureshield_test_case          | ×        | ×        | √        | ×        | ×        | ×        |
+| freertos_iot_coap_coap_server             | √        | √        | √        | √        | ×        | ×        |
+| freertos_iot_lwm2m_iot_demo               | √        | √        | √        | ×        | ×        | ×        |
+| freertos_iot_lwm2m_client                 | √        | √        | √        | √        | ×        | ×        |
+| freertos_iot_lwm2m_server                 | √        | √        | √        | √        | ×        | ×        |
+| freertos_kernel                           | √        | √        | √        | √        | √        | √        |
+| freertos_kernel_secure                    | ×        | ×        | ×        | ×        | ×        | ×        |
+| freertos_net_httpserver                   | √        | √        | √        | √        | ×        | ×        |
+| freertos_net_ntshell                      | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_dtls_client          | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_dtls_server          | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_ssl_client2          | √        | √        | √        | √        | ×        | ×        |
+| freertos_sec_mbedtls_ssl_server2          | √        | √        | √        | √        | ×        | ×        |
+
+# Notes on compatibility matrix
+- Secureshield related examples required to excuted on EMSK 2.2 ARC EM7D or EMSK 2.3 ARC EM7D.
 
 */
