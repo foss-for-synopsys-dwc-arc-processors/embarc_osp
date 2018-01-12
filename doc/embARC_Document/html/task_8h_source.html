@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,76 +127,73 @@ $(document).ready(function(){initNavTree('task_8h_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.09</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2017-09-27</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Jingru Wang(nuannuan12016@outlook.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef _TASK_H_</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define _TASK_H_</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef _TASK_H_</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define _TASK_H_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define MPU_PERIOD_TICK         15</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define REC_PERIOD_TICK         30</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define MIC_PERIOD_TICK         5</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define ALARM_PERIOD_TICK       15000</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define INIT_MODE               0x11</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define INIT_BRIGHT             0</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define INIT_FREQUENCE          0</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define INIT_TIME               0</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define INIT_TEMPERTURE         0</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define INIT_HUMIDITY           0</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define INIT_WEATHER            0</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define MPU_PERIOD_TICK         15</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define REC_PERIOD_TICK         30</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define MIC_PERIOD_TICK         5</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define ALARM_PERIOD_TICK       15000</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define INIT_MODE               0x11</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define INIT_BRIGHT             0</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define INIT_FREQUENCE          0</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define INIT_TIME               0</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define INIT_TEMPERTURE         0</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define INIT_HUMIDITY           0</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define INIT_WEATHER            0</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define FANCE_TXT_LEN_MAX       20</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define LED_WAIT_TIME_MAX       1000</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define FANCE_TXT_LEN_MAX       20</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define LED_WAIT_TIME_MAX       1000</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define MIN_MODE                LIGHT_MODE_RUNNING</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define MAX_MODE                LIGHT_MODE_SOS</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define MIN_BRIGHT              1</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define MAX_BRIGHT              127</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define INIT_MODE_INFO {        \</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">        INIT_MODE,              \</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        INIT_BRIGHT,            \</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">        INIT_FREQUENCE,         \</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">        INIT_TIME,              \</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">        INIT_WEATHER,           \</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">        INIT_TEMPERTURE,        \</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">        INIT_HUMIDITY,          \</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">        {0}                     \</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">}</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structmode__info.html">   81</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        uint8_t mode;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        uint8_t bright;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        uint8_t frequence;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        uint32_t time;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        uint8_t weather;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        uint8_t temperture;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        uint8_t humidity;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        uint8_t fance_txt[FANCE_TXT_LEN_MAX];</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <a class="code" href="structmode__info.html">mode_info</a>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">extern</span> TaskHandle_t pattern_change_task_handle;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">extern</span> SemaphoreHandle_t recognition_semaphore;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">extern</span> QueueHandle_t led_queue;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">extern</span> QueueHandle_t mode_info_queue;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define MIN_MODE                LIGHT_MODE_RUNNING</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define MAX_MODE                LIGHT_MODE_SOS</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define MIN_BRIGHT              1</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define MAX_BRIGHT              127</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define INIT_MODE_INFO {        \</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">        INIT_MODE,              \</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">        INIT_BRIGHT,            \</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">        INIT_FREQUENCE,         \</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">        INIT_TIME,              \</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        INIT_WEATHER,           \</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">        INIT_TEMPERTURE,        \</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">        INIT_HUMIDITY,          \</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">        {0}                     \</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">}</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structmode__info.html">   78</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        uint8_t mode;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        uint8_t bright;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        uint8_t frequence;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        uint32_t time;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        uint8_t weather;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        uint8_t temperture;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        uint8_t humidity;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        uint8_t fance_txt[FANCE_TXT_LEN_MAX];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <a class="code" href="structmode__info.html">mode_info</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">extern</span> TaskHandle_t pattern_change_task_handle;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">extern</span> SemaphoreHandle_t recognition_semaphore;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">extern</span> QueueHandle_t led_queue;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">extern</span> QueueHandle_t mode_info_queue;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">extern</span> uint8_t color_row;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">extern</span> uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga045213aacd7671ea9539035312266cb7">light_num</a>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">extern</span> uint8_t color_row;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">extern</span> uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga045213aacd7671ea9539035312266cb7">light_num</a>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">extern</span> uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac9e6fe96df4a014c4cb1a080dfc1ba2d">task_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _TASK_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga045213aacd7671ea9539035312266cb7"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga045213aacd7671ea9539035312266cb7">light_num</a></div><div class="ttdeci">uint8_t light_num</div><div class="ttdef"><b>Definition:</b> <a href="light__driver_8c_source.html#l00055">light_driver.c:55</a></div></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">extern</span> uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac9e6fe96df4a014c4cb1a080dfc1ba2d">task_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _TASK_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga045213aacd7671ea9539035312266cb7"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga045213aacd7671ea9539035312266cb7">light_num</a></div><div class="ttdeci">uint8_t light_num</div><div class="ttdef"><b>Definition:</b> <a href="light__driver_8c_source.html#l00052">light_driver.c:52</a></div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gac9e6fe96df4a014c4cb1a080dfc1ba2d"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac9e6fe96df4a014c4cb1a080dfc1ba2d">task_init</a></div><div class="ttdeci">uint8_t task_init(void)</div><div class="ttdoc">create all the task at appropriate order. </div><div class="ttdef"><b>Definition:</b> <a href="task_8c_source.html#l00336">task.c:336</a></div></div>
-<div class="ttc" id="structmode__info_html"><div class="ttname"><a href="structmode__info.html">mode_info</a></div><div class="ttdef"><b>Definition:</b> <a href="task_8h_source.html#l00081">task.h:81</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gac9e6fe96df4a014c4cb1a080dfc1ba2d"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac9e6fe96df4a014c4cb1a080dfc1ba2d">task_init</a></div><div class="ttdeci">uint8_t task_init(void)</div><div class="ttdoc">create all the task at appropriate order. </div><div class="ttdef"><b>Definition:</b> <a href="task_8c_source.html#l00333">task.c:333</a></div></div>
+<div class="ttc" id="structmode__info_html"><div class="ttname"><a href="structmode__info.html">mode_info</a></div><div class="ttdef"><b>Definition:</b> <a href="task_8h_source.html#l00078">task.h:78</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -204,7 +201,7 @@ $(document).ready(function(){initNavTree('task_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_e83eca56c5ef8ec0356c9dc141b8ff29.html">ilight_smartdevice</a></li><li class="navelem"><a class="el" href="dir_a9b5a6b8da6a445d53d3a17c169a3758.html">src</a></li><li class="navelem"><a class="el" href="task_8h.html">task.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:09 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:19 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

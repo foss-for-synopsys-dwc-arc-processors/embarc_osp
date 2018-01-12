@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -110,6 +110,8 @@ $(document).ready(function(){initNavTree('application_2ot__smarthome__multinode_
 <div class="textblock"><code>#include &quot;<a class="el" href="emb_a_r_c_8h_source.html">embARC.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="emb_a_r_c__debug_8h_source.html">embARC_debug.h</a>&quot;</code><br />
 <code>#include &lt;openthread/config.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;openthread/openthread.h&gt;</code><br />
 <code>#include &lt;openthread/diag.h&gt;</code><br />
@@ -117,6 +119,7 @@ $(document).ready(function(){initNavTree('application_2ot__smarthome__multinode_
 <code>#include &lt;openthread/cli.h&gt;</code><br />
 <code>#include &lt;openthread/thread_ftd.h&gt;</code><br />
 <code>#include &lt;openthread/platform/platform.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="adt7420_8h_source.html">adt7420.h</a>&quot;</code><br />
 </div>
 <p><a href="application_2ot__smarthome__multinode_2src_2living_room_2main_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -193,9 +196,15 @@ Macros</h2></td></tr>
 <tr class="memitem:gac64f9aa61b02a6482a6e6bdfaeab6e36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac64f9aa61b02a6482a6e6bdfaeab6e36"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>T1_COUNT_5s</b>&#160;&#160;&#160;(5)</td></tr>
 <tr class="separator:gac64f9aa61b02a6482a6e6bdfaeab6e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8740f2292f4a6d35bfb50cdff9c29cac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8740f2292f4a6d35bfb50cdff9c29cac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>itoa</b>&#160;&#160;&#160;_itoa</td></tr>
+<tr class="separator:ga8740f2292f4a6d35bfb50cdff9c29cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gacfe0b4ca9e60a7f2ed7937f56bcd1226"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacfe0b4ca9e60a7f2ed7937f56bcd1226"></a>
+static&#160;</td><td class="memItemRight" valign="bottom"><b>ADT7420_DEFINE</b> (temperature_sensor, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS)</td></tr>
+<tr class="separator:gacfe0b4ca9e60a7f2ed7937f56bcd1226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga24e63ee4237efe1ee15a0de77021fa3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga24e63ee4237efe1ee15a0de77021fa3a"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___o_t___s_m_a_r_t_h_o_m_e___m_u_l_t_i_n_o_d_e___l_i_v_i_n_g_r_o_o_m.html#ga24e63ee4237efe1ee15a0de77021fa3a">timer1_isr</a> (void *ptr)</td></tr>
 <tr class="memdesc:ga24e63ee4237efe1ee15a0de77021fa3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">arc timer 1 interrupt routine <br /></td></tr>
@@ -302,7 +311,7 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>t1_cnt</b>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_b1aea6852e2ccb236b1af2553847fe15.html">ot_smarthome_multinode</a></li><li class="navelem"><a class="el" href="dir_8e7e6cf9ec6e264d81591bd97f323f8b.html">src</a></li><li class="navelem"><a class="el" href="dir_017e21f76c741b8b444c62356ded40f1.html">livingRoom</a></li><li class="navelem"><a class="el" href="application_2ot__smarthome__multinode_2src_2living_room_2main_8c.html">main.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:22 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

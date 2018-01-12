@@ -38,5 +38,5 @@ var page_example =
       [ "How to Debug Multiple Boards with embARC", "page_example_usage.html#sect_example_usage_HowToDebugMultiBoards", null ],
       [ "FAQs", "page_example_usage.html#sect_example_usage_FAQ", null ]
     ] ],
-    [ "Compatibility Matrix for embARC Examples", "page_example_compatibility_matrix.html", "page_example_compatibility_matrix" ]
+    [ "Compatibility Matrix for embARC Examples", "page_example_compatibility_matrix.html", null ]
 ];

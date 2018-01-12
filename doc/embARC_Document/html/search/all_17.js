@@ -10,6 +10,7 @@ var searchData=
   ['lwm2m_2eh',['lwm2m.h',['../wearable__node_2function_2lwm2m_2lwm2m_8h.html',1,'']]],
   ['print_5fmsg_2ec',['print_msg.c',['../wearable__node_2function_2print__msg_2print__msg_8c.html',1,'']]],
   ['print_5fmsg_2eh',['print_msg.h',['../wearable__node_2function_2print__msg_2print__msg_8h.html',1,'']]],
+  ['w25qxx_5ft',['w25qxx_t',['../structw25qxx__t.html',1,'']]],
   ['wake',['WAKE',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gab23132129b5681825aa48c060e629e08',1,'process_acc.h']]],
   ['warn_5fbtemp',['warn_btemp',['../structdata__wearable__node.html#aa38ff75756c7b87177ddf5e5e6e84a17',1,'data_wearable_node']]],
   ['warn_5fdownward',['warn_downward',['../structdata__wearable__node.html#a66b7cdc822b1e8fae606772e071229bd',1,'data_wearable_node']]],
@@ -33,7 +34,7 @@ var searchData=
   ['wnic_5fcontrol',['wnic_control',['../structdev__wnic.html#af14b3c96ea64f865b7acf2707d478242',1,'dev_wnic']]],
   ['wnic_5fdisconnect',['wnic_disconnect',['../structdev__wnic.html#a41e9deabe10c26df933f453936799a9f',1,'dev_wnic']]],
   ['wnic_5fduring_5fscan',['WNIC_DURING_SCAN',['../group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s.html#ggaeb8375d4e6a245d40ba5ecbc3a520a2eaec0e384b7e408b3f1c477859c38f3a30',1,'dev_wnic.h']]],
-  ['wnic_5fget_5fdev',['wnic_get_dev',['../group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i.html#ga4ea6fc486b6808c2c88e8116dde30a05',1,'wnic_get_dev(int32_t wnic_id):&#160;pmwifi.c'],['../group___d_e_v_i_c_e___h_a_l___w_n_i_c.html#ga4ea6fc486b6808c2c88e8116dde30a05',1,'wnic_get_dev(int32_t wnic_id):&#160;pmwifi.c']]],
+  ['wnic_5fget_5fdev',['wnic_get_dev',['../group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i.html#ga4ea6fc486b6808c2c88e8116dde30a05',1,'wnic_get_dev(int32_t wnic_id):&#160;pmwifi.c'],['../group___b_o_a_r_d___h_s_d_k___d_r_v___p_m_o_d_w_i_f_i.html#ga4ea6fc486b6808c2c88e8116dde30a05',1,'wnic_get_dev(int32_t wnic_id):&#160;pmwifi.c'],['../group___d_e_v_i_c_e___h_a_l___w_n_i_c.html#ga4ea6fc486b6808c2c88e8116dde30a05',1,'wnic_get_dev(int32_t wnic_id):&#160;pmwifi.c']]],
   ['wnic_5fget_5finfo',['wnic_get_info',['../structdev__wnic.html#a0253a38c4916fa13163d092b1945e477',1,'dev_wnic']]],
   ['wnic_5fhdr_5flen',['WNIC_HDR_LEN',['../group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s.html#gad31392abb15670470441f4fdbe8936cc',1,'dev_wnic.h']]],
   ['wnic_5fif_5fname_5flen',['WNIC_IF_NAME_LEN',['../group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s.html#gaf44f41d2b9ad0a42f025c6eec0e53a4e',1,'dev_wnic.h']]],
@@ -53,8 +54,5 @@ var searchData=
   ['word_2ec',['word.c',['../word_8c.html',1,'']]],
   ['word_2eh',['word.h',['../word_8h.html',1,'']]],
   ['working_5ffreq',['working_freq',['../structwf__spi__ops.html#a4b52c86616e85137ec24dc532de39e8e',1,'wf_spi_ops']]],
-  ['wpa2key',['WPA2KEY',['../struct_w_p_a2_k_e_y.html',1,'']]],
-  ['wrdi',['WRDI',['../group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#gacb229428140f30a6f8b6fa2ebb3fb6f0',1,'spiflash.c']]],
-  ['wren',['WREN',['../group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#ga53dec1d28a7c7b24b2d56c058f7e140a',1,'spiflash.c']]],
-  ['wrsr',['WRSR',['../group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#ga29d01dca16eb0a060d2efd567b58b47a',1,'spiflash.c']]]
+  ['wpa2key',['WPA2KEY',['../struct_w_p_a2_k_e_y.html',1,'']]]
 ];

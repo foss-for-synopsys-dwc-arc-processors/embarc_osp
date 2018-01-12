@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,97 +127,84 @@ $(document).ready(function(){initNavTree('mux_8h_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.03</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2014-07-07</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Huaqi Fang(Huaqi.Fang@synopsys.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef _MUX_H_</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define _MUX_H_</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__toolchain_8h.html">embARC_toolchain.h</a>&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define BIT0                    (0)</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define BIT1                    (1)</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define BIT2                    (2)</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define BIT3                    (3)</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define PM1_OFFSET              (0)</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define PM2_OFFSET              (4)</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define PM3_OFFSET              (8)</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define PM4_OFFSET              (12)</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define PM5_OFFSET              (16)</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define PM6_OFFSET              (20)</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define PM7_OFFSET              (24)</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define PM1_MASK                (0xf &lt;&lt; PM1_OFFSET)</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define PM2_MASK                (0xf &lt;&lt; PM2_OFFSET)</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define PM3_MASK                (0xf &lt;&lt; PM3_OFFSET)</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define PM4_MASK                (0xf &lt;&lt; PM4_OFFSET)</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define PM5_MASK                (0xf &lt;&lt; PM5_OFFSET)</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define PM6_MASK                (0xf &lt;&lt; PM6_OFFSET)</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define PM7_MASK                (0xf &lt;&lt; PM7_OFFSET)</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef _MUX_H_</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define _MUX_H_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__toolchain_8h.html">embARC_toolchain.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define BIT0                    (0)</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define BIT1                    (1)</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define BIT2                    (2)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define BIT3                    (3)</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define PM1_OFFSET              (0)</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define PM2_OFFSET              (4)</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define PM3_OFFSET              (8)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define PM4_OFFSET              (12)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define PM5_OFFSET              (16)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define PM6_OFFSET              (20)</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define PM7_OFFSET              (24)</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define PM1_MASK                (0xf &lt;&lt; PM1_OFFSET)</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define PM2_MASK                (0xf &lt;&lt; PM2_OFFSET)</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define PM3_MASK                (0xf &lt;&lt; PM3_OFFSET)</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define PM4_MASK                (0xf &lt;&lt; PM4_OFFSET)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define PM5_MASK                (0xf &lt;&lt; PM5_OFFSET)</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define PM6_MASK                (0xf &lt;&lt; PM6_OFFSET)</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define PM7_MASK                (0xf &lt;&lt; PM7_OFFSET)</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define SPI_MAP_NORMAL          (0)</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define SPI_MAP_LOOPBACK        (1)</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define SPI_MAP_NORMAL          (0)</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define SPI_MAP_LOOPBACK        (1)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define UART_MAP_TYPE4          (0xE4)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define UART_MAP_TYPE3          (0x6C)</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define UART_MAP_TYPE4          (0xE4)</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define UART_MAP_TYPE3          (0x6C)</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga4c9c0eb890da3157523cacb1092eddbc">   79</a></span>&#160;<span class="preprocessor">#define PMOD_MUX_CTRL_DEFAULT   (0)                     </span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga5eb7f84cdeb8a0f092b11e5c238b88b0">   80</a></span>&#160;<span class="preprocessor">#define SPI_MAP_CTRL_DEFAULT    (SPI_MAP_NORMAL)        </span></div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga98b1debfeed8daf9056378946e66b6b6">   81</a></span>&#160;<span class="preprocessor">#define UART_MAP_CTRL_DEFAULT   (UART_MAP_TYPE4)        </span></div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga7752fbbf2f08432a3c0869767ea8f9a1">   88</a></span>&#160;<span class="preprocessor">#define PM1_UR_GPIO_C           ((0 &lt;&lt; BIT0) &lt;&lt; PM1_OFFSET)     </span></div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga4e9e9b308d70c9fe3e4a012376520b21">   89</a></span>&#160;<span class="preprocessor">#define PM1_UR_UART_0           ((1 &lt;&lt; BIT0) &lt;&lt; PM1_OFFSET)     </span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gad8e54756e21619a92f75a02f69e00577">   91</a></span>&#160;<span class="preprocessor">#define PM1_LR_GPIO_A           ((0 &lt;&lt; BIT2) &lt;&lt; PM1_OFFSET)     </span></div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaba0ff4df68cf401eea282652138f0a4a">   92</a></span>&#160;<span class="preprocessor">#define PM1_LR_SPI_S            ((1 &lt;&lt; BIT2) &lt;&lt; PM1_OFFSET)     </span></div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa7fcfad85a6e80594c6e3eef39224732">  100</a></span>&#160;<span class="preprocessor">#define PM2_GPIO_AC             ((0 &lt;&lt; BIT0) &lt;&lt; PM2_OFFSET)     </span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#define PM2_I2C_HRI             ((1 &lt;&lt; BIT0) &lt;&lt; PM2_OFFSET)     </span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define PM3_GPIO_AC             ((0 &lt;&lt; BIT0) &lt;&lt; PM3_OFFSET)     </span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#define PM3_I2C_GPIO_D          ((1 &lt;&lt; BIT0) &lt;&lt; PM3_OFFSET)     </span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#define PM4_GPIO_AC             ((0 &lt;&lt; BIT0) &lt;&lt; PM4_OFFSET)     </span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#define PM4_I2C_GPIO_D          ((1 &lt;&lt; BIT0) &lt;&lt; PM4_OFFSET)     </span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#define PM5_UR_GPIO_C           ((0 &lt;&lt; BIT0) &lt;&lt; PM5_OFFSET)     </span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#define PM5_UR_SPI_M1           ((1 &lt;&lt; BIT0) &lt;&lt; PM5_OFFSET)     </span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#define PM5_LR_GPIO_A           ((0 &lt;&lt; BIT2) &lt;&lt; PM5_OFFSET)     </span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#define PM5_LR_SPI_M2           ((1 &lt;&lt; BIT2) &lt;&lt; PM5_OFFSET)     </span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#define PM6_UR_GPIO_C           ((0 &lt;&lt; BIT0) &lt;&lt; PM6_OFFSET)     </span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#define PM6_UR_SPI_M0           ((1 &lt;&lt; BIT0) &lt;&lt; PM6_OFFSET)     </span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#define PM6_LR_GPIO_A           ((0 &lt;&lt; BIT2) &lt;&lt; PM6_OFFSET)     </span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">#define PM6_LR_CSS_STAT         ((1 &lt;&lt; BIT2) &lt;&lt; PM6_OFFSET)     </span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#define PM7_GPIO_D              ((0 &lt;&lt; BIT0) &lt;&lt; PM7_OFFSET)     </span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#define PM7_STAT                ((1 &lt;&lt; BIT0) &lt;&lt; PM7_OFFSET)     </span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">typedef volatile uint32_t MUX_REG;</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga844929859a1e2fc74b6ddbeda0d1f34d">  169</a></span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gae4344445edd3cce894cad6488d164698">  170</a></span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaf02f2c828e9118bfd8f04273a85a76c9">mux_init</a>(MUX_REG *mux_regs);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">extern</span> MUX_REG *<a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gabb8902a836223e3b4a2a1236b1c572b7">get_mux_regs</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa8aeb353f3821d5566477cf698058ba3">set_pmod_mux</a>(MUX_REG *mux_regs, uint32_t val);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga0b23662db75bed7fe8272293b8248abc">get_pmod_mux</a>(MUX_REG *mux_regs);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gadde7485dba4ed8e824568d039f885e73">change_pmod_mux</a>(MUX_REG *mux_regs, uint32_t val, uint32_t change_bits);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa3ef344c191f857e032a4b52816a13ac">set_spi_map</a>(MUX_REG *mux_regs, uint32_t val);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga22926dd85e9a36800971bd667cbd3849">get_spi_map</a>(MUX_REG *mux_regs);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gae6088143a85738105a08ad0b6470b98f">set_uart_map</a>(MUX_REG *mux_regs, uint32_t val);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga31f6522d9fc826a0e437720449d5e66d">get_uart_map</a>(MUX_REG *mux_regs);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _MUX_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gadde7485dba4ed8e824568d039f885e73"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gadde7485dba4ed8e824568d039f885e73">change_pmod_mux</a></div><div class="ttdeci">void change_pmod_mux(MUX_REG *mux_regs, uint32_t val, uint32_t change_bits)</div><div class="ttdoc">set PMOD muxer scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00087">mux.c:87</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gabb8902a836223e3b4a2a1236b1c572b7"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gabb8902a836223e3b4a2a1236b1c572b7">get_mux_regs</a></div><div class="ttdeci">MUX_REG * get_mux_regs(void)</div><div class="ttdoc">Get mux ctrl register pointer, only valid after mux_init. </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00069">mux.c:69</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_ga22926dd85e9a36800971bd667cbd3849"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga22926dd85e9a36800971bd667cbd3849">get_spi_map</a></div><div class="ttdeci">uint32_t get_spi_map(MUX_REG *mux_regs)</div><div class="ttdoc">get SPI connection scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00099">mux.c:99</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gaa8aeb353f3821d5566477cf698058ba3"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa8aeb353f3821d5566477cf698058ba3">set_pmod_mux</a></div><div class="ttdeci">void set_pmod_mux(MUX_REG *mux_regs, uint32_t val)</div><div class="ttdoc">set PMOD muxer scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00075">mux.c:75</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_ga31f6522d9fc826a0e437720449d5e66d"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga31f6522d9fc826a0e437720449d5e66d">get_uart_map</a></div><div class="ttdeci">uint32_t get_uart_map(MUX_REG *mux_regs)</div><div class="ttdoc">get UART connection scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00111">mux.c:111</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gae6088143a85738105a08ad0b6470b98f"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gae6088143a85738105a08ad0b6470b98f">set_uart_map</a></div><div class="ttdeci">void set_uart_map(MUX_REG *mux_regs, uint32_t val)</div><div class="ttdoc">set UART connection scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00105">mux.c:105</a></div></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga4c9c0eb890da3157523cacb1092eddbc">   76</a></span>&#160;<span class="preprocessor">#define PMOD_MUX_CTRL_DEFAULT   (0)                     </span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga5eb7f84cdeb8a0f092b11e5c238b88b0">   77</a></span>&#160;<span class="preprocessor">#define SPI_MAP_CTRL_DEFAULT    (SPI_MAP_NORMAL)        </span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga98b1debfeed8daf9056378946e66b6b6">   78</a></span>&#160;<span class="preprocessor">#define UART_MAP_CTRL_DEFAULT   (UART_MAP_TYPE4)        </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga7752fbbf2f08432a3c0869767ea8f9a1">   85</a></span>&#160;<span class="preprocessor">#define PM1_UR_GPIO_C           ((0 &lt;&lt; BIT0) &lt;&lt; PM1_OFFSET)     </span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga4e9e9b308d70c9fe3e4a012376520b21">   86</a></span>&#160;<span class="preprocessor">#define PM1_UR_UART_0           ((1 &lt;&lt; BIT0) &lt;&lt; PM1_OFFSET)     </span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gad8e54756e21619a92f75a02f69e00577">   88</a></span>&#160;<span class="preprocessor">#define PM1_LR_GPIO_A           ((0 &lt;&lt; BIT2) &lt;&lt; PM1_OFFSET)     </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaba0ff4df68cf401eea282652138f0a4a">   89</a></span>&#160;<span class="preprocessor">#define PM1_LR_SPI_S            ((1 &lt;&lt; BIT2) &lt;&lt; PM1_OFFSET)     </span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa7fcfad85a6e80594c6e3eef39224732">   97</a></span>&#160;<span class="preprocessor">#define PM2_GPIO_AC             ((0 &lt;&lt; BIT0) &lt;&lt; PM2_OFFSET)     </span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#define PM2_I2C_HRI             ((1 &lt;&lt; BIT0) &lt;&lt; PM2_OFFSET)     </span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define PM3_GPIO_AC             ((0 &lt;&lt; BIT0) &lt;&lt; PM3_OFFSET)     </span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define PM3_I2C_GPIO_D          ((1 &lt;&lt; BIT0) &lt;&lt; PM3_OFFSET)     </span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#define PM4_GPIO_AC             ((0 &lt;&lt; BIT0) &lt;&lt; PM4_OFFSET)     </span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#define PM4_I2C_GPIO_D          ((1 &lt;&lt; BIT0) &lt;&lt; PM4_OFFSET)     </span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#define PM5_UR_GPIO_C           ((0 &lt;&lt; BIT0) &lt;&lt; PM5_OFFSET)     </span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#define PM5_UR_SPI_M1           ((1 &lt;&lt; BIT0) &lt;&lt; PM5_OFFSET)     </span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#define PM5_LR_GPIO_A           ((0 &lt;&lt; BIT2) &lt;&lt; PM5_OFFSET)     </span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#define PM5_LR_SPI_M2           ((1 &lt;&lt; BIT2) &lt;&lt; PM5_OFFSET)     </span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#define PM6_UR_GPIO_C           ((0 &lt;&lt; BIT0) &lt;&lt; PM6_OFFSET)     </span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#define PM6_UR_SPI_M0           ((1 &lt;&lt; BIT0) &lt;&lt; PM6_OFFSET)     </span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#define PM6_LR_GPIO_A           ((0 &lt;&lt; BIT2) &lt;&lt; PM6_OFFSET)     </span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#define PM6_LR_CSS_STAT         ((1 &lt;&lt; BIT2) &lt;&lt; PM6_OFFSET)     </span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#define PM7_GPIO_D              ((0 &lt;&lt; BIT0) &lt;&lt; PM7_OFFSET)     </span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#define PM7_STAT                ((1 &lt;&lt; BIT0) &lt;&lt; PM7_OFFSET)     </span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">typedef volatile uint32_t MUX_REG;</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga844929859a1e2fc74b6ddbeda0d1f34d">  166</a></span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gae4344445edd3cce894cad6488d164698">  167</a></span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga8356bee63484f5b67a7995fbde693d11">set_pmod_mux</a>(uint32_t val);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab7f64addda6f60359e9382320e696861">get_pmod_mux</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab1edc41eb546dfce3d1f6c23636540fc">set_spi_map</a>(uint32_t val);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa1c11b77b7888c47cf5b107eb7ee15a2">set_uart_map</a>(uint32_t val);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _MUX_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gaa1c11b77b7888c47cf5b107eb7ee15a2"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa1c11b77b7888c47cf5b107eb7ee15a2">set_uart_map</a></div><div class="ttdeci">void set_uart_map(uint32_t val)</div><div class="ttdoc">set UART connection scheme </div><div class="ttdef"><b>Definition:</b> <a href="emsk_2drivers_2mux_2mux_8c_source.html#l00079">emsk/drivers/mux/mux.c:79</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_ga8356bee63484f5b67a7995fbde693d11"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga8356bee63484f5b67a7995fbde693d11">set_pmod_mux</a></div><div class="ttdeci">void set_pmod_mux(uint32_t val)</div><div class="ttdoc">set PMOD muxer scheme </div><div class="ttdef"><b>Definition:</b> <a href="emsk_2drivers_2mux_2mux_8c_source.html#l00061">emsk/drivers/mux/mux.c:61</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gab7f64addda6f60359e9382320e696861"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab7f64addda6f60359e9382320e696861">get_pmod_mux</a></div><div class="ttdeci">uint32_t get_pmod_mux(void)</div><div class="ttdoc">get PMOD muxer scheme </div><div class="ttdef"><b>Definition:</b> <a href="emsk_2drivers_2mux_2mux_8c_source.html#l00067">emsk/drivers/mux/mux.c:67</a></div></div>
 <div class="ttc" id="emb_a_r_c__toolchain_8h_html"><div class="ttname"><a href="emb_a_r_c__toolchain_8h.html">embARC_toolchain.h</a></div><div class="ttdoc">toolchain dependent definitions </div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gaf02f2c828e9118bfd8f04273a85a76c9"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaf02f2c828e9118bfd8f04273a85a76c9">mux_init</a></div><div class="ttdeci">void mux_init(MUX_REG *mux_regs)</div><div class="ttdoc">initialize i2c controller and set slave device address </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00059">mux.c:59</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_ga0b23662db75bed7fe8272293b8248abc"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga0b23662db75bed7fe8272293b8248abc">get_pmod_mux</a></div><div class="ttdeci">uint32_t get_pmod_mux(MUX_REG *mux_regs)</div><div class="ttdoc">get PMOD muxer scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00081">mux.c:81</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gaa3ef344c191f857e032a4b52816a13ac"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa3ef344c191f857e032a4b52816a13ac">set_spi_map</a></div><div class="ttdeci">void set_spi_map(MUX_REG *mux_regs, uint32_t val)</div><div class="ttdoc">set SPI connection scheme </div><div class="ttdef"><b>Definition:</b> <a href="mux_8c_source.html#l00093">mux.c:93</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_html_gab1edc41eb546dfce3d1f6c23636540fc"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab1edc41eb546dfce3d1f6c23636540fc">set_spi_map</a></div><div class="ttdeci">void set_spi_map(uint32_t val)</div><div class="ttdoc">set SPI connection scheme </div><div class="ttdef"><b>Definition:</b> <a href="emsk_2drivers_2mux_2mux_8c_source.html#l00073">emsk/drivers/mux/mux.c:73</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -225,7 +212,7 @@ $(document).ready(function(){initNavTree('mux_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a class="el" href="dir_ba790842f448632b805827035471586a.html">emsk</a></li><li class="navelem"><a class="el" href="dir_2f7e22bd2ce967436634585d9443b467.html">drivers</a></li><li class="navelem"><a class="el" href="dir_3f8627c760f09868a58b393df7b18a45.html">mux</a></li><li class="navelem"><a class="el" href="mux_8h.html">mux.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:08 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:16 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

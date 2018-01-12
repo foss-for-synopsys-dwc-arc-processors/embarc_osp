@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,94 +127,91 @@ $(document).ready(function(){initNavTree('scope_8c_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.09</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2017-09-27</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Zhiwei Zhang(1812816853@qq.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*embARC HAL*/</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*embARC HAL*/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*custom HAL*/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scope_8h.html">scope.h</a>&quot;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*custom HAL*/</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scope_8h.html">scope.h</a>&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/* scope operation */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">static</span> <a class="code" href="structdev__uart.html">DEV_UART</a> *scope_uart;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/* scope operation */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">static</span> <a class="code" href="structdev__uart.html">DEV_UART</a> *scope_uart;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">   61</a></span>&#160;<span class="keyword">static</span> uint16_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">crc_check</a>(uint8_t *pbuf, uint8_t crc_cnt)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        uint16_t crc_temp = 0xFFFF;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        uint8_t i, j;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">   58</a></span>&#160;<span class="keyword">static</span> uint16_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">crc_check</a>(uint8_t *pbuf, uint8_t crc_cnt)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        uint16_t crc_temp = 0xFFFF;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        uint8_t i, j;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; crc_cnt; i++ ) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                crc_temp ^= pbuf[i];</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; crc_cnt; i++ ) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                crc_temp ^= pbuf[i];</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">for</span> (j = 0; j &lt; 8; j++ ) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <span class="keywordflow">if</span> (crc_temp &amp; 0x01){</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                crc_temp = (crc_temp &gt;&gt; 1) ^ 0xA001;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        } <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                crc_temp = crc_temp &gt;&gt; 1;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> (crc_temp);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf064e091610494a79bbb7a3ff7a7855">   86</a></span>&#160;uint32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf064e091610494a79bbb7a3ff7a7855">scope_init</a>(uint32_t baudrate)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        scope_uart = <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gade938afe2174b43b8522bf05cdcb1202">uart_get_dev</a>(<a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">DW_UART_0_ID</a>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (scope_uart == NULL) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;Failed to get device of uart0 for scope.\r\n&quot;</span>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (scope_uart-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga00f4f8769a030124d548f65895d2ff87">uart_open</a>(baudrate) == <a class="code" href="group___e_m_b_a_r_c___e_r_r_o_r.html#gaa5935765e74b9d1a7e72c9c8f9018b42">E_OPNED</a>) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                scope_uart-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga7cd1bf12f5d9ca4663980883d01c092a">uart_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d.html#ga764fa9e43d0e6386328e6123469dfd05">UART_CMD_SET_BAUD</a>, (<span class="keywordtype">void</span> *)(baudrate));</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;Succeed to initial the uart0 for scope.\r\n&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">for</span> (j = 0; j &lt; 8; j++ ) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <span class="keywordflow">if</span> (crc_temp &amp; 0x01){</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                crc_temp = (crc_temp &gt;&gt; 1) ^ 0xA001;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        } <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                crc_temp = crc_temp &gt;&gt; 1;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> (crc_temp);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf064e091610494a79bbb7a3ff7a7855">   83</a></span>&#160;uint32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf064e091610494a79bbb7a3ff7a7855">scope_init</a>(uint32_t baudrate)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        scope_uart = <a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gade938afe2174b43b8522bf05cdcb1202">uart_get_dev</a>(<a class="code" href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">DW_UART_0_ID</a>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> (scope_uart == NULL) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;Failed to get device of uart0 for scope.\r\n&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (scope_uart-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga00f4f8769a030124d548f65895d2ff87">uart_open</a>(baudrate) == <a class="code" href="group___e_m_b_a_r_c___e_r_r_o_r.html#gaa5935765e74b9d1a7e72c9c8f9018b42">E_OPNED</a>) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                scope_uart-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga7cd1bf12f5d9ca4663980883d01c092a">uart_control</a>(<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d.html#ga764fa9e43d0e6386328e6123469dfd05">UART_CMD_SET_BAUD</a>, (<span class="keywordtype">void</span> *)(baudrate));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;Succeed to initial the uart0 for scope.\r\n&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga8914056e98f5662bb4ca02c6999e566c">  109</a></span>&#160;uint32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga8914056e98f5662bb4ca02c6999e566c">output_data</a>(int16_t *out_data)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        uint8_t data_buf[10];</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        uint16_t temp[4] = {0};</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        uint8_t i;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        uint16_t crc16 = 0;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; 4; i++ ) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                temp[i] = (uint16_t)out_data[i];</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; 4; i++ ) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                data_buf[i * 2] = (uint8_t)(temp[i] % 256);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                data_buf[i * 2 + 1] = (uint8_t)(temp[i] / 256);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        crc16 = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">crc_check</a>(data_buf, 8);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        data_buf[8] = crc16 % 256;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        data_buf[9] = crc16 / 256;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga8914056e98f5662bb4ca02c6999e566c">  106</a></span>&#160;uint32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga8914056e98f5662bb4ca02c6999e566c">output_data</a>(int16_t *out_data)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        uint8_t data_buf[10];</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        uint16_t temp[4] = {0};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        uint8_t i;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        uint16_t crc16 = 0;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; 4; i++ ) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                temp[i] = (uint16_t)out_data[i];</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; 4; i++ ) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                data_buf[i * 2] = (uint8_t)(temp[i] % 256);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                data_buf[i * 2 + 1] = (uint8_t)(temp[i] / 256);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        crc16 = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">crc_check</a>(data_buf, 8);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        data_buf[8] = crc16 % 256;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        data_buf[9] = crc16 / 256;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> scope_uart-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#gadb3f65e65636442af53578c64f2ea2a4">uart_write</a>(data_buf, 10);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">return</span> scope_uart-&gt;<a class="code" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#gadb3f65e65636442af53578c64f2ea2a4">uart_write</a>(data_buf, 10);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga8914056e98f5662bb4ca02c6999e566c"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga8914056e98f5662bb4ca02c6999e566c">output_data</a></div><div class="ttdeci">uint32_t output_data(int16_t *out_data)</div><div class="ttdoc">Output the date to scope. </div><div class="ttdef"><b>Definition:</b> <a href="scope_8c_source.html#l00109">scope.c:109</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j_html_ga61cfe53266aacb4cb6a0f8b879507dee"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">DW_UART_0_ID</a></div><div class="ttdeci">#define DW_UART_0_ID</div><div class="ttdef"><b>Definition:</b> <a href="axs_2drivers_2uart_2dw__uart__obj_8h_source.html#l00059">axs/drivers/uart/dw_uart_obj.h:59</a></div></div>
-<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_html_gadb3f65e65636442af53578c64f2ea2a4"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#gadb3f65e65636442af53578c64f2ea2a4">dev_uart::uart_write</a></div><div class="ttdeci">int32_t(* uart_write)(const void *data, uint32_t len)</div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00389">dev_uart.h:389</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_html_gade938afe2174b43b8522bf05cdcb1202"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gade938afe2174b43b8522bf05cdcb1202">uart_get_dev</a></div><div class="ttdeci">DEV_UART_PTR uart_get_dev(int32_t uart_id)</div><div class="ttdoc">get one designware device structure </div><div class="ttdef"><b>Definition:</b> <a href="axs_2drivers_2uart_2dw__uart__obj_8c_source.html#l00272">axs/drivers/uart/dw_uart_obj.c:272</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___e_r_r_o_r_html_gaa5935765e74b9d1a7e72c9c8f9018b42"><div class="ttname"><a href="group___e_m_b_a_r_c___e_r_r_o_r.html#gaa5935765e74b9d1a7e72c9c8f9018b42">E_OPNED</a></div><div class="ttdeci">#define E_OPNED</div><div class="ttdef"><b>Definition:</b> <a href="emb_a_r_c__error_8h_source.html#l00081">embARC_error.h:81</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gadf064e091610494a79bbb7a3ff7a7855"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf064e091610494a79bbb7a3ff7a7855">scope_init</a></div><div class="ttdeci">uint32_t scope_init(uint32_t baudrate)</div><div class="ttdoc">Initial the scope. </div><div class="ttdef"><b>Definition:</b> <a href="scope_8c_source.html#l00086">scope.c:86</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga8914056e98f5662bb4ca02c6999e566c"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga8914056e98f5662bb4ca02c6999e566c">output_data</a></div><div class="ttdeci">uint32_t output_data(int16_t *out_data)</div><div class="ttdoc">Output the date to scope. </div><div class="ttdef"><b>Definition:</b> <a href="scope_8c_source.html#l00106">scope.c:106</a></div></div>
+<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_html_gadb3f65e65636442af53578c64f2ea2a4"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#gadb3f65e65636442af53578c64f2ea2a4">dev_uart::uart_write</a></div><div class="ttdeci">int32_t(* uart_write)(const void *data, uint32_t len)</div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00386">dev_uart.h:386</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_html_gade938afe2174b43b8522bf05cdcb1202"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gade938afe2174b43b8522bf05cdcb1202">uart_get_dev</a></div><div class="ttdeci">DEV_UART_PTR uart_get_dev(int32_t uart_id)</div><div class="ttdoc">get one designware device structure </div><div class="ttdef"><b>Definition:</b> <a href="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source.html#l00269">axs/drivers/ip/designware/uart/dw_uart_obj.c:269</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___e_r_r_o_r_html_gaa5935765e74b9d1a7e72c9c8f9018b42"><div class="ttname"><a href="group___e_m_b_a_r_c___e_r_r_o_r.html#gaa5935765e74b9d1a7e72c9c8f9018b42">E_OPNED</a></div><div class="ttdeci">#define E_OPNED</div><div class="ttdef"><b>Definition:</b> <a href="emb_a_r_c__error_8h_source.html#l00078">embARC_error.h:78</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gadf064e091610494a79bbb7a3ff7a7855"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf064e091610494a79bbb7a3ff7a7855">scope_init</a></div><div class="ttdeci">uint32_t scope_init(uint32_t baudrate)</div><div class="ttdoc">Initial the scope. </div><div class="ttdef"><b>Definition:</b> <a href="scope_8c_source.html#l00083">scope.c:83</a></div></div>
 <div class="ttc" id="scope_8h_html"><div class="ttname"><a href="scope_8h.html">scope.h</a></div><div class="ttdoc">virtual scope for iLight </div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gaa766ea5212f23d253363f8c319707f4e"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">crc_check</a></div><div class="ttdeci">static uint16_t crc_check(uint8_t *pbuf, uint8_t crc_cnt)</div><div class="ttdoc">CRC check. </div><div class="ttdef"><b>Definition:</b> <a href="scope_8c_source.html#l00061">scope.c:61</a></div></div>
-<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d_html_ga764fa9e43d0e6386328e6123469dfd05"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d.html#ga764fa9e43d0e6386328e6123469dfd05">UART_CMD_SET_BAUD</a></div><div class="ttdeci">#define UART_CMD_SET_BAUD</div><div class="ttdoc">Set uart baudrate. </div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00175">dev_uart.h:175</a></div></div>
-<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_html_ga7cd1bf12f5d9ca4663980883d01c092a"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga7cd1bf12f5d9ca4663980883d01c092a">dev_uart::uart_control</a></div><div class="ttdeci">int32_t(* uart_control)(uint32_t ctrl_cmd, void *param)</div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00388">dev_uart.h:388</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_html_ga61cfe53266aacb4cb6a0f8b879507dee"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">DW_UART_0_ID</a></div><div class="ttdeci">#define DW_UART_0_ID</div><div class="ttdef"><b>Definition:</b> <a href="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_source.html#l00056">axs/drivers/ip/designware/uart/dw_uart_obj.h:56</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gaa766ea5212f23d253363f8c319707f4e"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaa766ea5212f23d253363f8c319707f4e">crc_check</a></div><div class="ttdeci">static uint16_t crc_check(uint8_t *pbuf, uint8_t crc_cnt)</div><div class="ttdoc">CRC check. </div><div class="ttdef"><b>Definition:</b> <a href="scope_8c_source.html#l00058">scope.c:58</a></div></div>
+<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d_html_ga764fa9e43d0e6386328e6123469dfd05"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d.html#ga764fa9e43d0e6386328e6123469dfd05">UART_CMD_SET_BAUD</a></div><div class="ttdeci">#define UART_CMD_SET_BAUD</div><div class="ttdoc">Set uart baudrate. </div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00172">dev_uart.h:172</a></div></div>
+<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_html_ga7cd1bf12f5d9ca4663980883d01c092a"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga7cd1bf12f5d9ca4663980883d01c092a">dev_uart::uart_control</a></div><div class="ttdeci">int32_t(* uart_control)(uint32_t ctrl_cmd, void *param)</div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00385">dev_uart.h:385</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_html_ga00f4f8769a030124d548f65895d2ff87"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga00f4f8769a030124d548f65895d2ff87">dev_uart::uart_open</a></div><div class="ttdeci">int32_t(* uart_open)(uint32_t baud)</div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00386">dev_uart.h:386</a></div></div>
-<div class="ttc" id="structdev__uart_html"><div class="ttname"><a href="structdev__uart.html">dev_uart</a></div><div class="ttdoc">UART device interface definition. </div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00384">dev_uart.h:384</a></div></div>
+<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_html_ga00f4f8769a030124d548f65895d2ff87"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga00f4f8769a030124d548f65895d2ff87">dev_uart::uart_open</a></div><div class="ttdeci">int32_t(* uart_open)(uint32_t baud)</div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00383">dev_uart.h:383</a></div></div>
+<div class="ttc" id="structdev__uart_html"><div class="ttname"><a href="structdev__uart.html">dev_uart</a></div><div class="ttdoc">UART device interface definition. </div><div class="ttdef"><b>Definition:</b> <a href="dev__uart_8h_source.html#l00381">dev_uart.h:381</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -222,7 +219,7 @@ $(document).ready(function(){initNavTree('scope_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_e83eca56c5ef8ec0356c9dc141b8ff29.html">ilight_smartdevice</a></li><li class="navelem"><a class="el" href="dir_a9b5a6b8da6a445d53d3a17c169a3758.html">src</a></li><li class="navelem"><a class="el" href="dir_64e1535ea7640b2daf27b9f2891862a6.html">function</a></li><li class="navelem"><a class="el" href="dir_9adabeb45c0ced9a06defa0739f4cf88.html">scope</a></li><li class="navelem"><a class="el" href="scope_8c.html">scope.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:09 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:18 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

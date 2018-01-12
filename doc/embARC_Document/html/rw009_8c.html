@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -100,8 +100,7 @@ $(document).ready(function(){initNavTree('rw009_8c.html','');});
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">rw009.c File Reference</div>  </div>
 </div><!--header-->
@@ -121,10 +120,6 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrw009__spi__request.html">rw009_spi_request</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrw009__spi__response.html">rw009_spi_response</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__rw009__ap__info.html">_rw009_ap_info</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__rw009__cmd__init.html">_rw009_cmd_init</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,41 +145,6 @@ Macros</h2></td></tr>
 <tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad72dbcf6d0153db1b8d8a58001feed83"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DEBUG</b></td></tr>
 <tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a150c2c14bc77b2e75bce881d4d5e62b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a150c2c14bc77b2e75bce881d4d5e62b1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SPI_ID</b>&#160;&#160;&#160;<a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga906ed6ea818fb3ea7b3b52f174751ec2">DW_SPI_0_ID</a></td></tr>
-<tr class="separator:a150c2c14bc77b2e75bce881d4d5e62b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8509889f9ba8556d2549c72dbc115204"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8509889f9ba8556d2549c72dbc115204"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a8509889f9ba8556d2549c72dbc115204">RW009_SPI_LINE</a>&#160;&#160;&#160;<a class="el" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga235e46bf2bd5d250f4c329e9bf71ed0e">EMSK_SPI_LINE_1</a></td></tr>
-<tr class="memdesc:a8509889f9ba8556d2549c72dbc115204"><td class="mdescLeft">&#160;</td><td class="mdescRight">by default, use J5 <br /></td></tr>
-<tr class="separator:a8509889f9ba8556d2549c72dbc115204"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac176546eaad6df3b6fa1c3b5658837c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac176546eaad6df3b6fa1c3b5658837c8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_GPIO_ID</b>&#160;&#160;&#160;EMSK_GPIO_PORT_A</td></tr>
-<tr class="separator:ac176546eaad6df3b6fa1c3b5658837c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7363515b5341a86dafa7ea71a88954c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7363515b5341a86dafa7ea71a88954c4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_INT_BUSY_PIN</b>&#160;&#160;&#160;(24)</td></tr>
-<tr class="separator:a7363515b5341a86dafa7ea71a88954c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae086d6d53c5cac50c22ad8b8c1947d3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae086d6d53c5cac50c22ad8b8c1947d3b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RST_PIN</b>&#160;&#160;&#160;(25)</td></tr>
-<tr class="separator:ae086d6d53c5cac50c22ad8b8c1947d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a089b7e9e15b3674cf6b0ee31af2fe999"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a089b7e9e15b3674cf6b0ee31af2fe999"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CS_PIN</b>&#160;&#160;&#160;(26)</td></tr>
-<tr class="separator:a089b7e9e15b3674cf6b0ee31af2fe999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0732d6552aa9a8dde0c7499499fab9b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0732d6552aa9a8dde0c7499499fab9b0"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RST_PIN_MASK</b>&#160;&#160;&#160;(1 &lt;&lt; RW009_RST_PIN)</td></tr>
-<tr class="separator:a0732d6552aa9a8dde0c7499499fab9b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6bc0bca1574de2c25db96277e58c7d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6bc0bca1574de2c25db96277e58c7d2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_INT_BUSY_PIN_MASK</b>&#160;&#160;&#160;(1 &lt;&lt; RW009_INT_BUSY_PIN)</td></tr>
-<tr class="separator:ad6bc0bca1574de2c25db96277e58c7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd449bdcf2af3d6169b62c86e04fac78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd449bdcf2af3d6169b62c86e04fac78"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CS_PIN_MASK</b>&#160;&#160;&#160;(1 &lt;&lt; RW009_CS_PIN)</td></tr>
-<tr class="separator:abd449bdcf2af3d6169b62c86e04fac78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f7f0bae592b37462c236740bccf78ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f7f0bae592b37462c236740bccf78ed"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a3f7f0bae592b37462c236740bccf78ed">RW009_SPIFREQ</a>&#160;&#160;&#160;BOARD_SPI_FREQ</td></tr>
-<tr class="memdesc:a3f7f0bae592b37462c236740bccf78ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">RW009 WIFI SPI FREQ &amp; CLK MODE SETTINGS. <br /></td></tr>
-<tr class="separator:a3f7f0bae592b37462c236740bccf78ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8478aa0e6b4bea13db16874b4c5435f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8478aa0e6b4bea13db16874b4c5435f3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SPICLKMODE</b>&#160;&#160;&#160;BOARD_SPI_CLKMODE</td></tr>
-<tr class="separator:a8478aa0e6b4bea13db16874b4c5435f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c2bfb9820bc9242a520f3350f2ac58"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75c2bfb9820bc9242a520f3350f2ac58"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CHECK_EXP</b>(EXPR, ERROR_CODE)&#160;&#160;&#160;<a class="el" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga4151670bbcb21a581f28ed6bc5baa906">CHECK_EXP</a>(EXPR, ercd, ERROR_CODE, error_exit)</td></tr>
 <tr class="separator:a75c2bfb9820bc9242a520f3350f2ac58"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,15 +166,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ace2ba118e8c4fb4cd74e593920c4c935"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace2ba118e8c4fb4cd74e593920c4c935"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESP_MAGIC2</b>&#160;&#160;&#160;(0x10325476)</td></tr>
 <tr class="separator:ace2ba118e8c4fb4cd74e593920c4c935"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a00848152c798d080cecd58f0c935d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09a00848152c798d080cecd58f0c935d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SPI_MAX_DATA_LEN</b>&#160;&#160;&#160;(1520)</td></tr>
-<tr class="separator:a09a00848152c798d080cecd58f0c935d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5d274035d67b366b7f83089fd4bbcdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5d274035d67b366b7f83089fd4bbcdf"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_PACKET_HRD_LEN</b>&#160;&#160;&#160;(8)</td></tr>
 <tr class="separator:aa5d274035d67b366b7f83089fd4bbcdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a716bcf358cdb878af28fcd21a3b2ed5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a716bcf358cdb878af28fcd21a3b2ed5b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SSID_NAME_LENGTH_MAX</b>&#160;&#160;&#160;(32)</td></tr>
-<tr class="separator:a716bcf358cdb878af28fcd21a3b2ed5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23f63fed92f2f0a05242d1953cf499f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23f63fed92f2f0a05242d1953cf499f8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_PASSWORD_LENGTH_MAX</b>&#160;&#160;&#160;(64)</td></tr>
 <tr class="separator:a23f63fed92f2f0a05242d1953cf499f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,35 +193,14 @@ Macros</h2></td></tr>
 <tr class="memitem:ae916468ae841c454dc7e3b02bb511d6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae916468ae841c454dc7e3b02bb511d6a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_NULL</b>&#160;&#160;&#160;(0xff)</td></tr>
 <tr class="separator:ae916468ae841c454dc7e3b02bb511d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56c7b743293660888fe7e74bc786bf36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56c7b743293660888fe7e74bc786bf36"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SCAN_TIME_MS</b>&#160;&#160;&#160;(3000)	/* 3000 ms for scan */</td></tr>
-<tr class="separator:a56c7b743293660888fe7e74bc786bf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace51eaa08d8e8f714ede63fb95a6a330"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace51eaa08d8e8f714ede63fb95a6a330"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SCAN_AP_NUM</b>&#160;&#160;&#160;(5)</td></tr>
-<tr class="separator:ace51eaa08d8e8f714ede63fb95a6a330"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01d1dbac0b8aea060a5cdd7e7a2cc4ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01d1dbac0b8aea060a5cdd7e7a2cc4ad"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_INIT_TIME_MS</b>&#160;&#160;&#160;(3000)  /* 3000 ms for init time out */</td></tr>
-<tr class="separator:a01d1dbac0b8aea060a5cdd7e7a2cc4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81374e818db088f08cf4e95bba588a7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81374e818db088f08cf4e95bba588a7b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_INIT_RETRY</b>&#160;&#160;&#160;(3)     /* retry times for init */</td></tr>
-<tr class="separator:a81374e818db088f08cf4e95bba588a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66143e221f5fb4e9c9baffa8c06a696"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae66143e221f5fb4e9c9baffa8c06a696"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CON_TIME_MS</b>&#160;&#160;&#160;(10000)  /* 10000 ms for connection time out */</td></tr>
-<tr class="separator:ae66143e221f5fb4e9c9baffa8c06a696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a357c35804758396371f0f38b3babf5e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a357c35804758396371f0f38b3babf5e7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_DATA_PACKET_HDR_LEN</b>&#160;&#160;&#160;(8)</td></tr>
 <tr class="separator:a357c35804758396371f0f38b3babf5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c56899e17ca97d09f13708d1d636294"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c56899e17ca97d09f13708d1d636294"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_PACKET_HDR_LEN</b>&#160;&#160;&#160;(8)</td></tr>
 <tr class="separator:a0c56899e17ca97d09f13708d1d636294"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0db2cedf655edfd12c8afd1f98d751d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0db2cedf655edfd12c8afd1f98d751d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESET_ASSERT</b>&#160;&#160;&#160;(~RW009_RST_PIN_MASK)</td></tr>
-<tr class="separator:af0db2cedf655edfd12c8afd1f98d751d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c693a50a87cf58a3ccbe0d554ed5e3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c693a50a87cf58a3ccbe0d554ed5e3c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESET_UNASSERT</b>&#160;&#160;&#160;(RW009_RST_PIN_MASK)</td></tr>
-<tr class="separator:a8c693a50a87cf58a3ccbe0d554ed5e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdbb26d017d84d3474bfb59717f73019"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdbb26d017d84d3474bfb59717f73019"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESET_ASSERT_MS</b>&#160;&#160;&#160;10</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESET_ASSERT_MS</b>&#160;&#160;&#160;100</td></tr>
 <tr class="separator:afdbb26d017d84d3474bfb59717f73019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21a8247558006b680b59a9079943da0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21a8247558006b680b59a9079943da0a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESET_DELAY_MS</b>&#160;&#160;&#160;200</td></tr>
@@ -275,90 +208,86 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ab21bf0f2dd342950a0c14fe6023fea9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab21bf0f2dd342950a0c14fe6023fea9b"></a>
-typedef struct <a class="el" href="struct__rw009__ap__info.html">_rw009_ap_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_ap_info</b></td></tr>
-<tr class="separator:ab21bf0f2dd342950a0c14fe6023fea9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8759c273513fbbba1be49d172bb51ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae8759c273513fbbba1be49d172bb51ba"></a>
-typedef struct <a class="el" href="struct__rw009__cmd__init.html">_rw009_cmd_init</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_cmd_init</b></td></tr>
-<tr class="separator:ae8759c273513fbbba1be49d172bb51ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abff11af8b01b13243b3b84109f08f93d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abff11af8b01b13243b3b84109f08f93d"></a>
-typedef struct <a class="el" href="struct__rw009__resp__init.html">_rw009_resp_init</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_resp_init</b></td></tr>
-<tr class="separator:abff11af8b01b13243b3b84109f08f93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16154d85385906678e2db26441537e06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16154d85385906678e2db26441537e06"></a>
-typedef struct <a class="el" href="struct__rw009__cmd__easy__join.html">_rw009_cmd_easy_join</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_cmd_easy_join</b></td></tr>
-<tr class="separator:a16154d85385906678e2db26441537e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42fcc3f7a442fdd1495a349b9b257193"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42fcc3f7a442fdd1495a349b9b257193"></a>
-typedef struct <a class="el" href="struct__rw009__cmd__join.html">_rw009_cmd_join</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_cmd_join</b></td></tr>
-<tr class="separator:a42fcc3f7a442fdd1495a349b9b257193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4101f85ebe4bd576dbdb7a461f8532b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4101f85ebe4bd576dbdb7a461f8532b"></a>
-typedef struct <a class="el" href="struct__rw009__cmd__rssi.html">_rw009_cmd_rssi</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_cmd_rssi</b></td></tr>
-<tr class="separator:ae4101f85ebe4bd576dbdb7a461f8532b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c8de8f689e9feaa25c75c44d3b9d393"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c8de8f689e9feaa25c75c44d3b9d393"></a>
-typedef struct <a class="el" href="struct__rw009__cmd__softap.html">_rw009_cmd_softap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_cmd_softap</b></td></tr>
-<tr class="separator:a5c8de8f689e9feaa25c75c44d3b9d393"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada9a65c1bff66a951f6365f67defb7d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada9a65c1bff66a951f6365f67defb7d8"></a>
-typedef struct <a class="el" href="struct__rw009__resp__join.html">_rw009_resp_join</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_resp_join</b></td></tr>
-<tr class="separator:ada9a65c1bff66a951f6365f67defb7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c88cbc8eaf6ab04a2697ae929962f03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c88cbc8eaf6ab04a2697ae929962f03"></a>
+typedef struct <a class="el" href="struct__rw009__cmd__init.html">_rw009_cmd_init</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_INIT_DEF</b></td></tr>
+<tr class="separator:a5c88cbc8eaf6ab04a2697ae929962f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7a046212dd6a988d3a7d90e4b30a4bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7a046212dd6a988d3a7d90e4b30a4bc"></a>
+typedef struct <a class="el" href="struct__rw009__resp__init.html">_rw009_resp_init</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESP_INIT_DEF</b></td></tr>
+<tr class="separator:ab7a046212dd6a988d3a7d90e4b30a4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad453ac01290ee4375b9c6ad1f3cfc8dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad453ac01290ee4375b9c6ad1f3cfc8dd"></a>
+typedef struct <a class="el" href="struct__rw009__cmd__easy__join.html">_rw009_cmd_easy_join</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_EASY_JOIN_DEF</b></td></tr>
+<tr class="separator:ad453ac01290ee4375b9c6ad1f3cfc8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f55fddfc4e4f46f831f2c78d856c57e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f55fddfc4e4f46f831f2c78d856c57e"></a>
+typedef struct <a class="el" href="struct__rw009__cmd__join.html">_rw009_cmd_join</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_JOIN_DEF</b></td></tr>
+<tr class="separator:a0f55fddfc4e4f46f831f2c78d856c57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ede7cfb23c5142c7ab0e917566b951b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ede7cfb23c5142c7ab0e917566b951b"></a>
+typedef struct <a class="el" href="struct__rw009__cmd__rssi.html">_rw009_cmd_rssi</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_RSSI_DEF</b></td></tr>
+<tr class="separator:a9ede7cfb23c5142c7ab0e917566b951b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0af56add18b926e3b41a3b4180edbab9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0af56add18b926e3b41a3b4180edbab9"></a>
+typedef struct <a class="el" href="struct__rw009__cmd__softap.html">_rw009_cmd_softap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_SOFTAP_DEF</b></td></tr>
+<tr class="separator:a0af56add18b926e3b41a3b4180edbab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb62d64e8bbc087da8fd4bd71d764691"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb62d64e8bbc087da8fd4bd71d764691"></a>
+typedef struct <a class="el" href="struct__rw009__resp__join.html">_rw009_resp_join</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_RESP_JOIN_DEF</b></td></tr>
+<tr class="separator:aeb62d64e8bbc087da8fd4bd71d764691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac91a01be9d1347575a76c984197f4b7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac91a01be9d1347575a76c984197f4b7c"></a>
+typedef struct <a class="el" href="structrw009__cmd.html">rw009_cmd</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_DEF</b></td></tr>
+<tr class="separator:ac91a01be9d1347575a76c984197f4b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e69d2c51ce4c8dde20047f198325e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22e69d2c51ce4c8dde20047f198325e8"></a>
+typedef struct <a class="el" href="structrw009__cmd.html">rw009_cmd</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CMD_DEF_PTR</b></td></tr>
+<tr class="separator:a22e69d2c51ce4c8dde20047f198325e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a2459e77bf2f5dd5c844312de731f9fba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2459e77bf2f5dd5c844312de731f9fba"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>spi_data_type</b> { <b>data_type_eth_data</b> = 0, 
-<b>data_type_cmd</b>, 
-<b>data_type_resp</b>, 
-<b>data_type_status</b>
+<tr class="memitem:a8bc2e9be3288cbf12a85869242f8a63d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bc2e9be3288cbf12a85869242f8a63d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>RW009_DATA_TYPE_DEF</b> { <b>RW009_TYPE_ETH_DATA</b> = 0, 
+<b>RW009_TYPE_CMD</b>, 
+<b>RW009_TYPE_RESP</b>, 
+<b>RW009_TYPE_STATUS</b>
  }</td></tr>
-<tr class="separator:a2459e77bf2f5dd5c844312de731f9fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5cdc5dfe0eddd7a27ff37a5fdfcf50b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5cdc5dfe0eddd7a27ff37a5fdfcf50b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>wifi_mode_t</b> { <b>MODE_STATION</b> = 0, 
-<b>MODE_SOFTAP</b> = 1
- }</td></tr>
-<tr class="separator:aa5cdc5dfe0eddd7a27ff37a5fdfcf50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a8bc2e9be3288cbf12a85869242f8a63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a416bb1663f4c3a8334ea4af8a18f0904"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a416bb1663f4c3a8334ea4af8a18f0904">rw009_isr</a> (void *ptr)</td></tr>
-<tr class="memdesc:a416bb1663f4c3a8334ea4af8a18f0904"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt service routine for rw009  <a href="#a416bb1663f4c3a8334ea4af8a18f0904">More...</a><br /></td></tr>
-<tr class="separator:a416bb1663f4c3a8334ea4af8a18f0904"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bd3e8f5d786b455235c418ca932c05f"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a2bd3e8f5d786b455235c418ca932c05f">rw009_timer_read_ms</a> (void)</td></tr>
 <tr class="memdesc:a2bd3e8f5d786b455235c418ca932c05f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get current system time in millisecond  <a href="#a2bd3e8f5d786b455235c418ca932c05f">More...</a><br /></td></tr>
 <tr class="separator:a2bd3e8f5d786b455235c418ca932c05f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4091932ec1ea276a7ea7ca93abc6f51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4091932ec1ea276a7ea7ca93abc6f51"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_timer_delay</b> (uint32_t ms)</td></tr>
 <tr class="separator:aa4091932ec1ea276a7ea7ca93abc6f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d5ab4d3f8c84558bbb2424c288a102"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad0d5ab4d3f8c84558bbb2424c288a102"></a>
-static int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_spi_open</b> (uint32_t freq, uint32_t clk_mode)</td></tr>
-<tr class="separator:ad0d5ab4d3f8c84558bbb2424c288a102"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55db8be0c9dbf4c555b656b91bfbf7f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55db8be0c9dbf4c555b656b91bfbf7f0"></a>
-static int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_gpio_open</b> (void)</td></tr>
-<tr class="separator:a55db8be0c9dbf4c555b656b91bfbf7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdab8701768d4f46fed5f66ef98c379d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdab8701768d4f46fed5f66ef98c379d"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#afdab8701768d4f46fed5f66ef98c379d">rw009_int_enable</a> (void)</td></tr>
-<tr class="memdesc:afdab8701768d4f46fed5f66ef98c379d"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable rw009 interrupt <br /></td></tr>
-<tr class="separator:afdab8701768d4f46fed5f66ef98c379d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95824b53684fe7fe17a3742cc4987217"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95824b53684fe7fe17a3742cc4987217"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a95824b53684fe7fe17a3742cc4987217">rw009_int_disable</a> (void)</td></tr>
-<tr class="memdesc:a95824b53684fe7fe17a3742cc4987217"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable rw009 interrupt <br /></td></tr>
-<tr class="separator:a95824b53684fe7fe17a3742cc4987217"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8e8a457409e6f571cb81fc5f6ecb0e0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#ad8e8a457409e6f571cb81fc5f6ecb0e0">rw009_is_busy</a> (void)</td></tr>
-<tr class="memdesc:ad8e8a457409e6f571cb81fc5f6ecb0e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">poll rw009 whether is busy  <a href="#ad8e8a457409e6f571cb81fc5f6ecb0e0">More...</a><br /></td></tr>
-<tr class="separator:ad8e8a457409e6f571cb81fc5f6ecb0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31f3229b6fccd6a92d0b1f4721186f7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31f3229b6fccd6a92d0b1f4721186f7b"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a31f3229b6fccd6a92d0b1f4721186f7b">rw009_reset</a> (void)</td></tr>
-<tr class="memdesc:a31f3229b6fccd6a92d0b1f4721186f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset rw009 <br /></td></tr>
-<tr class="separator:a31f3229b6fccd6a92d0b1f4721186f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa868966de71c8cdccb2173b2f0fdb690"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa868966de71c8cdccb2173b2f0fdb690"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#aa868966de71c8cdccb2173b2f0fdb690">rw009_select</a> (void)</td></tr>
-<tr class="memdesc:aa868966de71c8cdccb2173b2f0fdb690"><td class="mdescLeft">&#160;</td><td class="mdescRight">chip select rw009 <br /></td></tr>
-<tr class="separator:aa868966de71c8cdccb2173b2f0fdb690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a919d166a10737ccd525f5380c23336e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a919d166a10737ccd525f5380c23336e7"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a919d166a10737ccd525f5380c23336e7">rw009_deselect</a> (void)</td></tr>
-<tr class="memdesc:a919d166a10737ccd525f5380c23336e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">chip de-select rw009 <br /></td></tr>
-<tr class="separator:a919d166a10737ccd525f5380c23336e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab020d24fb9f530b7994116d9a0b0bc04"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#ab020d24fb9f530b7994116d9a0b0bc04">cmd_resp_handler</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, struct <a class="el" href="structrw009__resp.html">rw009_resp</a> *resp)</td></tr>
-<tr class="memdesc:ab020d24fb9f530b7994116d9a0b0bc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">cmd response handler  <a href="#ab020d24fb9f530b7994116d9a0b0bc04">More...</a><br /></td></tr>
-<tr class="separator:ab020d24fb9f530b7994116d9a0b0bc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8adc11b876b3607699fa354e7b73965e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a8adc11b876b3607699fa354e7b73965e">rw009_xfer</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, struct <a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> *out, struct <a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> *in)</td></tr>
-<tr class="memdesc:a8adc11b876b3607699fa354e7b73965e"><td class="mdescLeft">&#160;</td><td class="mdescRight">transfer function between rw009 and host  <a href="#a8adc11b876b3607699fa354e7b73965e">More...</a><br /></td></tr>
-<tr class="separator:a8adc11b876b3607699fa354e7b73965e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f0a92e573bcffb7869bd1835af2243"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02f0a92e573bcffb7869bd1835af2243"></a>
+static int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_spi_open</b> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="separator:a02f0a92e573bcffb7869bd1835af2243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa11cc6e3ec485477b6f95b3dd055ad90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa11cc6e3ec485477b6f95b3dd055ad90"></a>
+static int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_gpio_open</b> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="separator:aa11cc6e3ec485477b6f95b3dd055ad90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84eae839dbe24ce66c380676a973b821"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84eae839dbe24ce66c380676a973b821"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a84eae839dbe24ce66c380676a973b821">rw009_int_enable</a> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="memdesc:a84eae839dbe24ce66c380676a973b821"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable rw009 interrupt <br /></td></tr>
+<tr class="separator:a84eae839dbe24ce66c380676a973b821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f5062c0ce2bef35f45e26ed9227754"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8f5062c0ce2bef35f45e26ed9227754"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#ab8f5062c0ce2bef35f45e26ed9227754">rw009_int_disable</a> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="memdesc:ab8f5062c0ce2bef35f45e26ed9227754"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable rw009 interrupt <br /></td></tr>
+<tr class="separator:ab8f5062c0ce2bef35f45e26ed9227754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a263b978e9eade186ebac3eb97ecadbc4"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a263b978e9eade186ebac3eb97ecadbc4">rw009_is_busy</a> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="memdesc:a263b978e9eade186ebac3eb97ecadbc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">poll rw009 whether is busy  <a href="#a263b978e9eade186ebac3eb97ecadbc4">More...</a><br /></td></tr>
+<tr class="separator:a263b978e9eade186ebac3eb97ecadbc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255b6885c7a047cb4891fe068fc050be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a255b6885c7a047cb4891fe068fc050be"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a255b6885c7a047cb4891fe068fc050be">rw009_reset</a> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="memdesc:a255b6885c7a047cb4891fe068fc050be"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset rw009 <br /></td></tr>
+<tr class="separator:a255b6885c7a047cb4891fe068fc050be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a643e79a39c2777e77de223f7477a10ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a643e79a39c2777e77de223f7477a10ef"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a643e79a39c2777e77de223f7477a10ef">rw009_select</a> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="memdesc:a643e79a39c2777e77de223f7477a10ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">chip select rw009 <br /></td></tr>
+<tr class="separator:a643e79a39c2777e77de223f7477a10ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa741dd23d0142aa1efc8c7f0c18d5744"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa741dd23d0142aa1efc8c7f0c18d5744"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#aa741dd23d0142aa1efc8c7f0c18d5744">rw009_deselect</a> (<a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a> rw009)</td></tr>
+<tr class="memdesc:aa741dd23d0142aa1efc8c7f0c18d5744"><td class="mdescLeft">&#160;</td><td class="mdescRight">chip de-select rw009 <br /></td></tr>
+<tr class="separator:aa741dd23d0142aa1efc8c7f0c18d5744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04e971bbdf9aebd065d2422503a2488"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#af04e971bbdf9aebd065d2422503a2488">cmd_resp_handler</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, struct <a class="el" href="structrw009__resp.html">rw009_resp</a> *resp)</td></tr>
+<tr class="memdesc:af04e971bbdf9aebd065d2422503a2488"><td class="mdescLeft">&#160;</td><td class="mdescRight">cmd response handler  <a href="#af04e971bbdf9aebd065d2422503a2488">More...</a><br /></td></tr>
+<tr class="separator:af04e971bbdf9aebd065d2422503a2488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e6344b0a4f0782e70887734e416f4c4"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a8e6344b0a4f0782e70887734e416f4c4">rw009_xfer</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, struct <a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> *out, struct <a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> *in)</td></tr>
+<tr class="memdesc:a8e6344b0a4f0782e70887734e416f4c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">transfer function between rw009 and host  <a href="#a8e6344b0a4f0782e70887734e416f4c4">More...</a><br /></td></tr>
+<tr class="separator:a8e6344b0a4f0782e70887734e416f4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c78b1941f6f2ee9315db74df9b9c4f"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#a76c78b1941f6f2ee9315db74df9b9c4f">rw009_cmd</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t cmd, void *args)</td></tr>
 <tr class="memdesc:a76c78b1941f6f2ee9315db74df9b9c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">send cmd to rw009  <a href="#a76c78b1941f6f2ee9315db74df9b9c4f">More...</a><br /></td></tr>
 <tr class="separator:a76c78b1941f6f2ee9315db74df9b9c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -440,61 +369,16 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_reset</
 <tr class="memitem:a46e54270c5188de882bc24d11c0131ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46e54270c5188de882bc24d11c0131ab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_period_process</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, void *ptr)</td></tr>
 <tr class="separator:a46e54270c5188de882bc24d11c0131ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a33809743a7cda8eb4e3c0970973198f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33809743a7cda8eb4e3c0970973198f3"></a>
-static <a class="el" href="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t.html#gadd86dcfed5b39e0bf5b74c47b4b2971a">DEV_SPI</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_spi_ptr</b></td></tr>
-<tr class="separator:a33809743a7cda8eb4e3c0970973198f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a541e5b37c6f1f44164941bd1601aeee8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a541e5b37c6f1f44164941bd1601aeee8"></a>
-static <a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#gab39bda9a6b6726d0ccccc7b4742d9d27">DEV_GPIO</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_gpio_ptr</b></td></tr>
-<tr class="separator:a541e5b37c6f1f44164941bd1601aeee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae18847c9ca4868c5fd7f1defad9619b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae18847c9ca4868c5fd7f1defad9619b8"></a>
-static struct <a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a>&#160;</td><td class="memItemRight" valign="bottom"><b>snd_packet</b></td></tr>
-<tr class="separator:ae18847c9ca4868c5fd7f1defad9619b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abac0492c39bc1884261a1b2fb51fa033"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abac0492c39bc1884261a1b2fb51fa033"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>snd_cnt</b></td></tr>
-<tr class="separator:abac0492c39bc1884261a1b2fb51fa033"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a218379f323cde59c2bfa917c083f14ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a218379f323cde59c2bfa917c083f14ad"></a>
-static struct <a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rcv_packet</b></td></tr>
-<tr class="separator:a218379f323cde59c2bfa917c083f14ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48f1bf7e70fe8aa49952ba1fcec4df44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48f1bf7e70fe8aa49952ba1fcec4df44"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rcv_cnt</b></td></tr>
-<tr class="separator:a48f1bf7e70fe8aa49952ba1fcec4df44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3206093315dbcd8650dfd94bf791a46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3206093315dbcd8650dfd94bf791a46"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>last_cmd</b> = RW009_CMD_NULL</td></tr>
-<tr class="separator:ae3206093315dbcd8650dfd94bf791a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1759815d3e9b7222b0c3589d5d9d3d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1759815d3e9b7222b0c3589d5d9d3d2"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_to_send</b> = 0</td></tr>
-<tr class="separator:ae1759815d3e9b7222b0c3589d5d9d3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c32be31d15afcca7e4c26628ba013d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c32be31d15afcca7e4c26628ba013d3"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>scan_timer</b> = 0</td></tr>
-<tr class="separator:a7c32be31d15afcca7e4c26628ba013d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8f212644553534e6aa07ed4b9cd327f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8f212644553534e6aa07ed4b9cd327f"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>scan_cnt</b> = 0</td></tr>
-<tr class="separator:aa8f212644553534e6aa07ed4b9cd327f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae664a94e9cc19a68728eb6136c099a71"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae664a94e9cc19a68728eb6136c099a71"></a>
-static <a class="el" href="struct__rw009__ap__info.html">rw009_ap_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>scanned_ap</b> [RW009_SCAN_AP_NUM]</td></tr>
-<tr class="separator:ae664a94e9cc19a68728eb6136c099a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a996ad7946530a4243f45d6fb9c425bdb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a996ad7946530a4243f45d6fb9c425bdb"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>init_timer</b> = 0</td></tr>
-<tr class="separator:a996ad7946530a4243f45d6fb9c425bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73eeb501ad2cb1b3142bca81d0e6b65c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73eeb501ad2cb1b3142bca81d0e6b65c"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>init_try</b> = 0</td></tr>
-<tr class="separator:a73eeb501ad2cb1b3142bca81d0e6b65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5c10d5c1f0e290dcb0190dd225f3439"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5c10d5c1f0e290dcb0190dd225f3439"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>conn_timer</b> = 0</td></tr>
-<tr class="separator:af5c10d5c1f0e290dcb0190dd225f3439"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8697e25616241ba113a10704c91752bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8697e25616241ba113a10704c91752bc"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b> = <a class="el" href="rw009_8c.html#a8509889f9ba8556d2549c72dbc115204">RW009_SPI_LINE</a></td></tr>
-<tr class="separator:a8697e25616241ba113a10704c91752bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf69da31b12ec04cde46f2b3601526c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8c.html#abdf69da31b12ec04cde46f2b3601526c">rw009_isr</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="memdesc:abdf69da31b12ec04cde46f2b3601526c"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt service routine for rw009  <a href="#abdf69da31b12ec04cde46f2b3601526c">More...</a><br /></td></tr>
+<tr class="separator:abdf69da31b12ec04cde46f2b3601526c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>rw009 wifi module driver </p>
 
 <p>Definition in file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ab020d24fb9f530b7994116d9a0b0bc04"></a>
+<a class="anchor" id="af04e971bbdf9aebd065d2422503a2488"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -502,7 +386,7 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int cmd_resp_handler </td>
+          <td class="memname">static int32_t cmd_resp_handler </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdev__wnic.html">DEV_WNIC</a> *&#160;</td>
           <td class="paramname"><em>rw009_wnic</em>, </td>
@@ -536,11 +420,11 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>error code </dd></dl>
 
-<p>Definition at line <a class="el" href="rw009_8c_source.html#l00422">422</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l00344">344</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 
-<p>References <a class="el" href="dev__wnic_8h_source.html#l00312">dev_wnic_info::busy_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00306">dev_wnic_info::conn_status</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00078">E_CLS</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00072">E_OBJ</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00058">E_OK</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00063">E_PAR</a>, <a class="el" href="dev__wnic_8h_source.html#l00305">dev_wnic_info::init_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00311">dev_wnic_info::mac_addr</a>, <a class="el" href="structrw009__resp.html#a534a511e65dc40f6170e85aef0579380">rw009_resp::resp</a>, <a class="el" href="dev__wnic_8h_source.html#l00309">dev_wnic_info::scan_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00143">WNIC_DURING_SCAN</a>, <a class="el" href="dev__wnic_8h_source.html#l00098">WNIC_HDR_LEN</a>, <a class="el" href="dev__wnic_8h_source.html#l00329">dev_wnic::wnic_info</a>, and <a class="el" href="dev__wnic_8h_source.html#l00330">dev_wnic::wnic_on_ops</a>.</p>
+<p>References <a class="el" href="dev__wnic_8h_source.html#l00309">dev_wnic_info::busy_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00303">dev_wnic_info::conn_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00297">dev_wnic_info::ctrl</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00075">E_CLS</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00069">E_OBJ</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00055">E_OK</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00060">E_PAR</a>, <a class="el" href="dev__wnic_8h_source.html#l00302">dev_wnic_info::init_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00308">dev_wnic_info::mac_addr</a>, <a class="el" href="structrw009__resp.html#af6aaece8f26190303a42153af54bb4c3">rw009_resp::resp</a>, <a class="el" href="dev__wnic_8h_source.html#l00306">dev_wnic_info::scan_status</a>, <a class="el" href="dev__wnic_8h_source.html#l00140">WNIC_DURING_SCAN</a>, <a class="el" href="dev__wnic_8h_source.html#l00095">WNIC_HDR_LEN</a>, <a class="el" href="dev__wnic_8h_source.html#l00326">dev_wnic::wnic_info</a>, and <a class="el" href="dev__wnic_8h_source.html#l00327">dev_wnic::wnic_on_ops</a>.</p>
 
-<p>Referenced by <a class="el" href="rw009_8c_source.html#l00522">rw009_xfer()</a>.</p>
+<p>Referenced by <a class="el" href="rw009_8c_source.html#l00445">rw009_xfer()</a>.</p>
 
 </div>
 </div>
@@ -593,13 +477,13 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>&lt; 0 failed </dd></dl>
 
-<p>Definition at line <a class="el" href="rw009_8c_source.html#l00622">622</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l00552">552</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 
-<p>References <a class="el" href="arc__exception_8c_source.html#l00475">cpu_lock_save()</a>, <a class="el" href="arc__exception_8c_source.html#l00485">cpu_unlock_restore()</a>, <a class="el" href="structrw009__cmd.html#aecf5c336ea930ea1b82eca19d7ea5d8f">rw009_cmd::params</a>, <a class="el" href="rw009_8c_source.html#l00258">rw009_timer_read_ms()</a>, and <a class="el" href="rw009_8c_source.html#l00522">rw009_xfer()</a>.</p>
+<p>References <a class="el" href="arc__exception_8c_source.html#l00472">cpu_lock_save()</a>, <a class="el" href="arc__exception_8c_source.html#l00482">cpu_unlock_restore()</a>, <a class="el" href="dev__wnic_8h_source.html#l00297">dev_wnic_info::ctrl</a>, <a class="el" href="structrw009__cmd.html#a50495df52d6f4ee424d37322c3d46614">rw009_cmd::params</a>, <a class="el" href="rw009_8c_source.html#l00173">rw009_timer_read_ms()</a>, <a class="el" href="rw009_8c_source.html#l00445">rw009_xfer()</a>, and <a class="el" href="dev__wnic_8h_source.html#l00326">dev_wnic::wnic_info</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad8e8a457409e6f571cb81fc5f6ecb0e0"></a>
+<a class="anchor" id="a263b978e9eade186ebac3eb97ecadbc4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -607,10 +491,10 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int rw009_is_busy </td>
+          <td class="memname">static int32_t rw009_is_busy </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct__rw009__t.html">RW009_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>rw009</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -624,34 +508,26 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
 <p>poll rw009 whether is busy </p>
 <dl class="section return"><dt>Returns</dt><dd>1 busy, 0 idle </dd></dl>
 
-<p>Definition at line <a class="el" href="rw009_8c_source.html#l00350">350</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l00283">283</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 
-<p>References <a class="el" href="dev__gpio_8h_source.html#l00340">dev_gpio::gpio_read</a>.</p>
+<p>References <a class="el" href="axs_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source.html#l00191">gpio_get_dev()</a>, and <a class="el" href="dev__gpio_8h_source.html#l00423">dev_gpio::gpio_read</a>.</p>
 
-<p>Referenced by <a class="el" href="rw009_8c_source.html#l00522">rw009_xfer()</a>.</p>
+<p>Referenced by <a class="el" href="rw009_8c_source.html#l00445">rw009_xfer()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a416bb1663f4c3a8334ea4af8a18f0904"></a>
+<a class="anchor" id="abdf69da31b12ec04cde46f2b3601526c"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void rw009_isr </td>
+          <td class="memname">void rw009_isr </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a>&#160;</td>
+          <td class="paramname"><em>rw009_wnic</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>interrupt service routine for rw009 </p>
@@ -662,9 +538,9 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rw009_8c_source.html#l00402">402</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l01255">1255</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 
-<p>References <a class="el" href="rw009_8c_source.html#l00339">rw009_int_disable()</a>.</p>
+<p>References <a class="el" href="dev__wnic_8h_source.html#l00297">dev_wnic_info::ctrl</a>, <a class="el" href="rw009_8c_source.html#l00272">rw009_int_disable()</a>, and <a class="el" href="dev__wnic_8h_source.html#l00326">dev_wnic::wnic_info</a>.</p>
 
 </div>
 </div>
@@ -693,13 +569,13 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
 <p>get current system time in millisecond </p>
 <dl class="section return"><dt>Returns</dt><dd>millisecond </dd></dl>
 
-<p>Definition at line <a class="el" href="rw009_8c_source.html#l00258">258</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l00173">173</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 
-<p>Referenced by <a class="el" href="rw009_8c_source.html#l00622">rw009_cmd()</a>.</p>
+<p>Referenced by <a class="el" href="rw009_8c_source.html#l00552">rw009_cmd()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8adc11b876b3607699fa354e7b73965e"></a>
+<a class="anchor" id="a8e6344b0a4f0782e70887734e416f4c4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -707,7 +583,7 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int rw009_xfer </td>
+          <td class="memname">static int32_t rw009_xfer </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structdev__wnic.html">DEV_WNIC</a> *&#160;</td>
           <td class="paramname"><em>rw009_wnic</em>, </td>
@@ -748,11 +624,11 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>&lt; 0 error </dd></dl>
 
-<p>Definition at line <a class="el" href="rw009_8c_source.html#l00522">522</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l00445">445</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
 
-<p>References <a class="el" href="rw009_8c_source.html#l00422">cmd_resp_handler()</a>, <a class="el" href="dev__spi_8h_source.html#l00428">DEV_SPI_XFER_SET_NEXT</a>, <a class="el" href="dev__spi_8h_source.html#l00414">DEV_SPI_XFER_SET_RXBUF</a>, <a class="el" href="dev__spi_8h_source.html#l00404">DEV_SPI_XFER_SET_TXBUF</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00072">E_OBJ</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00058">E_OK</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00059">E_SYS</a>, <a class="el" href="dev__wnic_8h_source.html#l00305">dev_wnic_info::init_status</a>, <a class="el" href="rw009_8c_source.html#l00391">rw009_deselect()</a>, <a class="el" href="rw009_8c_source.html#l00339">rw009_int_disable()</a>, <a class="el" href="rw009_8c_source.html#l00329">rw009_int_enable()</a>, <a class="el" href="rw009_8c_source.html#l00350">rw009_is_busy()</a>, <a class="el" href="rw009_8c_source.html#l00382">rw009_select()</a>, <a class="el" href="dev__spi_8h_source.html#l00211">SPI_CMD_TRANSFER_POLLING</a>, <a class="el" href="dev__spi_8h_source.html#l00484">dev_spi::spi_control</a>, <a class="el" href="dev__spi_8h_source.html#l00486">dev_spi::spi_read</a>, <a class="el" href="dev__spi_8h_source.html#l00485">dev_spi::spi_write</a>, <a class="el" href="dev__wnic_8h_source.html#l00329">dev_wnic::wnic_info</a>, and <a class="el" href="dev__wnic_8h_source.html#l00330">dev_wnic::wnic_on_ops</a>.</p>
+<p>References <a class="el" href="rw009_8c_source.html#l00344">cmd_resp_handler()</a>, <a class="el" href="dev__common_8h_source.html#l00180">CONV2VOID</a>, <a class="el" href="dev__wnic_8h_source.html#l00297">dev_wnic_info::ctrl</a>, <a class="el" href="dev__spi_8h_source.html#l00479">DEV_SPI_XFER_SET_NEXT</a>, <a class="el" href="dev__spi_8h_source.html#l00465">DEV_SPI_XFER_SET_RXBUF</a>, <a class="el" href="dev__spi_8h_source.html#l00455">DEV_SPI_XFER_SET_TXBUF</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00069">E_OBJ</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00055">E_OK</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00056">E_SYS</a>, <a class="el" href="dev__wnic_8h_source.html#l00302">dev_wnic_info::init_status</a>, <a class="el" href="rw009_8c_source.html#l00327">rw009_deselect()</a>, <a class="el" href="rw009_8c_source.html#l00272">rw009_int_disable()</a>, <a class="el" href="rw009_8c_source.html#l00262">rw009_int_enable()</a>, <a class="el" href="rw009_8c_source.html#l00283">rw009_is_busy()</a>, <a class="el" href="rw009_8c_source.html#l00315">rw009_select()</a>, <a class="el" href="dev__spi_8h_source.html#l00365">SPI_CLK_MODE_0</a>, <a class="el" href="dev__spi_8h_source.html#l00329">SPI_CMD_MST_SET_FREQ</a>, <a class="el" href="dev__spi_8h_source.html#l00114">SPI_CMD_SET_CLK_MODE</a>, <a class="el" href="dev__spi_8h_source.html#l00208">SPI_CMD_TRANSFER_POLLING</a>, <a class="el" href="dev__spi_8h_source.html#l00535">dev_spi::spi_control</a>, <a class="el" href="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source.html#l00275">spi_get_dev()</a>, <a class="el" href="dev__spi_8h_source.html#l00537">dev_spi::spi_read</a>, <a class="el" href="dev__spi_8h_source.html#l00536">dev_spi::spi_write</a>, <a class="el" href="dev__wnic_8h_source.html#l00326">dev_wnic::wnic_info</a>, and <a class="el" href="dev__wnic_8h_source.html#l00327">dev_wnic::wnic_on_ops</a>.</p>
 
-<p>Referenced by <a class="el" href="rw009_8c_source.html#l00622">rw009_cmd()</a>.</p>
+<p>Referenced by <a class="el" href="rw009_8c_source.html#l00552">rw009_cmd()</a>.</p>
 
 </div>
 </div>
@@ -762,8 +638,8 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>cs_line</b
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_8b5f1eaa9d7ef7d0571dd113cd80890f.html">rtthread</a></li><li class="navelem"><a class="el" href="dir_cab433926fdce8809400df13fd2381a3.html">rw009</a></li><li class="navelem"><a class="el" href="rw009_8c.html">rw009.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_f18e8804d198f58c6ec1fb973a6c201d.html">peripheral</a></li><li class="navelem"><a class="el" href="dir_619b03bb44275c6083f63d94b994bb3a.html">wifi</a></li><li class="navelem"><a class="el" href="dir_d732ebf575fcaefe18cb410559e0000b.html">rw009</a></li><li class="navelem"><a class="el" href="rw009_8c.html">rw009.c</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:22 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

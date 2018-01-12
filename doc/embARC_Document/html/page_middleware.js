@@ -23,14 +23,10 @@ var page_middleware =
       [ "LwM2M", "page_middleware_iot.html#sect_middleware_iot_lwm2m", null ],
       [ "JSON", "page_middleware_iot.html#sect_middleware_iot_json", null ],
       [ "HTTP Parser", "page_middleware_iot.html#sect_middleware_iot_http_parser", null ],
-      [ "Xively Library", "page_middleware_iot.html#sect_middleware_iot_xively", null ],
       [ "AWS IoT device SDK", "page_middleware_iot.html#sect_middleware_iot_awsiot", null ]
     ] ],
     [ "Secure Communication", "page_middleware_secure_communication.html", [
-      [ "MatrixSSL", "page_middleware_secure_communication.html#sect_middleware_secure_communication_matrixssl", null ],
-      [ "wolfSSL", "page_middleware_secure_communication.html#sect_middleware_secure_communication_wolfssl", null ],
       [ "mbed TLS", "page_middleware_secure_communication.html#sect_middleware_secure_communication_mbedtls", null ],
-      [ "TinyDTLS", "page_middleware_secure_communication.html#sect_middleware_secure_communication_tinydtls", null ],
       [ "Adding TLS/DTLS Support in embARC", "page_middleware_secure_communication.html#sect_mid_add_tls_dtls_support_in_embarc", null ]
     ] ]
 ];

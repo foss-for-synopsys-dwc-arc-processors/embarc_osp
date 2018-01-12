@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -181,6 +181,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_gpio_get_in
 <tr class="memitem:ga3f8b9754ca946e48fea850a457479fa0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3f8b9754ca946e48fea850a457479fa0"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_gpio_write_dr</b> (<a class="el" href="structdw__gpio__port.html">DW_GPIO_PORT_PTR</a> port, uint32_t bit_mask, uint32_t val)</td></tr>
 <tr class="separator:ga3f8b9754ca946e48fea850a457479fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e5e51650bb2e5b2c8fe7028501888dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7e5e51650bb2e5b2c8fe7028501888dd"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_gpio_toggle_dr</b> (<a class="el" href="structdw__gpio__port.html">DW_GPIO_PORT_PTR</a> port, uint32_t bit_mask)</td></tr>
+<tr class="separator:ga7e5e51650bb2e5b2c8fe7028501888dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac8f75e0c1390e25d386d2b7bd7fb6c60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac8f75e0c1390e25d386d2b7bd7fb6c60"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_gpio_write_dir</b> (<a class="el" href="structdw__gpio__port.html">DW_GPIO_PORT_PTR</a> port, uint32_t bit_mask, uint32_t val)</td></tr>
 <tr class="separator:gac8f75e0c1390e25d386d2b7bd7fb6c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,6 +214,10 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d
 int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__gpio_8c.html#a21733bb0557ceb1ec260ce52d31b4f1f">dw_gpio_isr_handler</a> (<a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#gab39bda9a6b6726d0ccccc7b4742d9d27">DEV_GPIO</a> *gpio_obj, void *ptr)</td></tr>
 <tr class="memdesc:a21733bb0557ceb1ec260ce52d31b4f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">designware gpio interrupt process <br /></td></tr>
 <tr class="separator:a21733bb0557ceb1ec260ce52d31b4f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a05d1eec248e95cb142d6419c1a095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14a05d1eec248e95cb142d6419c1a095"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__gpio_8c.html#a14a05d1eec248e95cb142d6419c1a095">dw_gpio_bit_isr_handler</a> (<a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#gab39bda9a6b6726d0ccccc7b4742d9d27">DEV_GPIO</a> *gpio_obj, uint32_t bitofs, void *ptr)</td></tr>
+<tr class="memdesc:a14a05d1eec248e95cb142d6419c1a095"><td class="mdescLeft">&#160;</td><td class="mdescRight">designware gpio bit interrupt process <br /></td></tr>
+<tr class="separator:a14a05d1eec248e95cb142d6419c1a095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>designware gpio driver </p>
@@ -235,14 +242,14 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d
 <div class="line"><a class="code" href="dw__gpio_8c.html#a976fe0dcdf97291c5180a1d95bb6ed1a">			DW_GPIO_CHECK_EXP</a>((gpioinfo_obj_ptr)!=NULL, <a class="code" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a>);                  <a class="code" href="dw__gpio_8c.html#a976fe0dcdf97291c5180a1d95bb6ed1a">\</a></div>
 <div class="line"><a class="code" href="dw__gpio_8c.html#a976fe0dcdf97291c5180a1d95bb6ed1a">			DW_GPIO_CHECK_EXP</a>(((gpioinfo_obj_ptr)-&gt;gpio_ctrl)!=NULL, <a class="code" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a>);     \</div>
 <div class="line">                }</div>
-<div class="ttc" id="dw__gpio_8c_html_a976fe0dcdf97291c5180a1d95bb6ed1a"><div class="ttname"><a href="dw__gpio_8c.html#a976fe0dcdf97291c5180a1d95bb6ed1a">DW_GPIO_CHECK_EXP</a></div><div class="ttdeci">#define DW_GPIO_CHECK_EXP(EXPR, ERROR_CODE)</div><div class="ttdoc">check expressions used in DesignWare GPIO driver implementation </div><div class="ttdef"><b>Definition:</b> <a href="dw__gpio_8c_source.html#l00054">dw_gpio.c:54</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___e_r_r_o_r_html_ga33dcdca4c2e85d1b2899272d9d176553"><div class="ttname"><a href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a></div><div class="ttdeci">#define E_OBJ</div><div class="ttdef"><b>Definition:</b> <a href="emb_a_r_c__error_8h_source.html#l00072">embARC_error.h:72</a></div></div>
+<div class="ttc" id="dw__gpio_8c_html_a976fe0dcdf97291c5180a1d95bb6ed1a"><div class="ttname"><a href="dw__gpio_8c.html#a976fe0dcdf97291c5180a1d95bb6ed1a">DW_GPIO_CHECK_EXP</a></div><div class="ttdeci">#define DW_GPIO_CHECK_EXP(EXPR, ERROR_CODE)</div><div class="ttdoc">check expressions used in DesignWare GPIO driver implementation </div><div class="ttdef"><b>Definition:</b> <a href="dw__gpio_8c_source.html#l00051">dw_gpio.c:51</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___e_r_r_o_r_html_ga33dcdca4c2e85d1b2899272d9d176553"><div class="ttname"><a href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a></div><div class="ttdeci">#define E_OBJ</div><div class="ttdef"><b>Definition:</b> <a href="emb_a_r_c__error_8h_source.html#l00069">embARC_error.h:69</a></div></div>
 </div><!-- fragment -->
 <p>valid check of uart info object </p>
 
-<p>Definition at line <a class="el" href="dw__gpio_8c_source.html#l00058">58</a> of file <a class="el" href="dw__gpio_8c_source.html">dw_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__gpio_8c_source.html#l00055">55</a> of file <a class="el" href="dw__gpio_8c_source.html">dw_gpio.c</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__gpio_8c_source.html#l00273">dw_gpio_close()</a>, <a class="el" href="dw__gpio_8c_source.html#l00352">dw_gpio_control()</a>, <a class="el" href="dw__gpio_8c_source.html#l00446">dw_gpio_isr_handler()</a>, <a class="el" href="dw__gpio_8c_source.html#l00226">dw_gpio_open()</a>, <a class="el" href="dw__gpio_8c_source.html#l00309">dw_gpio_read()</a>, and <a class="el" href="dw__gpio_8c_source.html#l00332">dw_gpio_write()</a>.</p>
+<p>Referenced by <a class="el" href="dw__gpio_8c_source.html#l00513">dw_gpio_bit_isr_handler()</a>, <a class="el" href="dw__gpio_8c_source.html#l00288">dw_gpio_close()</a>, <a class="el" href="dw__gpio_8c_source.html#l00370">dw_gpio_control()</a>, <a class="el" href="dw__gpio_8c_source.html#l00473">dw_gpio_isr_handler()</a>, <a class="el" href="dw__gpio_8c_source.html#l00238">dw_gpio_open()</a>, <a class="el" href="dw__gpio_8c_source.html#l00327">dw_gpio_read()</a>, and <a class="el" href="dw__gpio_8c_source.html#l00350">dw_gpio_write()</a>.</p>
 
 </div>
 </div>
@@ -252,8 +259,8 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_b59a8600bbd419fdb936261c6802f792.html">designware</a></li><li class="navelem"><a class="el" href="dir_ab00d3856eceff742eda738cbf33bbe2.html">gpio</a></li><li class="navelem"><a class="el" href="dw__gpio_8c.html">dw_gpio.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_186dbe9c673f504ebc67eaaff66f4d3d.html">ip</a></li><li class="navelem"><a class="el" href="dir_b056e28a29363c4009472bd1a71fa520.html">designware</a></li><li class="navelem"><a class="el" href="dir_2ef4f580b9b5fca55573e18f1c127a49.html">gpio</a></li><li class="navelem"><a class="el" href="dw__gpio_8c.html">dw_gpio.c</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:20 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

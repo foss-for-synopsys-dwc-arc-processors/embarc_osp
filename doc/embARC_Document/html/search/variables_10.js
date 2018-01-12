@@ -9,6 +9,7 @@ var searchData=
   ['scan_5fstatus',['scan_status',['../structdev__wnic__info.html#a3f3a0fc5c459d12a535c9e64076d8f0b',1,'dev_wnic_info']]],
   ['score_5fsl',['score_sl',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga717ef11d0bd75aced9024f66e5eb156b',1,'process_acc.h']]],
   ['scratchpad',['SCRATCHPAD',['../structdw__uart__reg.html#afa9b6cd9513139cd97467e4d6645d1c8',1,'dw_uart_reg']]],
+  ['sdio_5finfo',['sdio_info',['../structdev__sdio.html#a7c9fef3dc00e3c4fe0b90cdc981281a0',1,'dev_sdio']]],
   ['sdmam',['SDMAM',['../structdw__uart__reg.html#a5cd1af6fff739069c1e25676022f2c7b',1,'dw_uart_reg']]],
   ['ser',['SER',['../structdw__spi__reg.html#a37fef049a05a3b30fe7c30c41d38538a',1,'dw_spi_reg']]],
   ['set_5fmacaddr',['set_macaddr',['../structdev__wnic.html#ad6695099e2cbf7c74432feca799bbe74',1,'dev_wnic']]],

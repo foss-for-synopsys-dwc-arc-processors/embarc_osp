@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -183,6 +183,12 @@ Inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 Inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___s_t_a_t_i_c.html#ga6aee62cffd57bce7d01c97221973e8bb">dw_iic_set_scl_cnt</a> (<a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___r_e_g_s_t_r_u_c_t.html#ga68f539e7b0bf755a2cdf228eb930cfbb">DW_IIC_REG</a> *iic_reg_ptr, <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d65999">DW_IIC_SCL_CNT</a> *scl_cnt)</td></tr>
 <tr class="memdesc:ga6aee62cffd57bce7d01c97221973e8bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set IC_CLK frequency by configuration the *CNT registers for different speed modes. <br /></td></tr>
 <tr class="separator:ga6aee62cffd57bce7d01c97221973e8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4970a3112621f7820837ae0be2bbc0cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4970a3112621f7820837ae0be2bbc0cc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_iic_calc_spklen</b> (uint32_t clk_khz, <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> *spklen)</td></tr>
+<tr class="separator:ga4970a3112621f7820837ae0be2bbc0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4250303bbd5f286073debc0fe8820da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae4250303bbd5f286073debc0fe8820da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_iic_calc_sclcnt</b> (uint32_t clk_khz, uint32_t caploading, <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d65999">DW_IIC_SCL_CNT</a> *scl_cnt, <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> *spklen)</td></tr>
+<tr class="separator:gae4250303bbd5f286073debc0fe8820da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga086527733f82c3a86b549e85fe7fc58e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga086527733f82c3a86b549e85fe7fc58e"></a>
 Inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___s_t_a_t_i_c.html#ga086527733f82c3a86b549e85fe7fc58e">dw_iic_set_spike_len</a> (<a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___r_e_g_s_t_r_u_c_t.html#ga68f539e7b0bf755a2cdf228eb930cfbb">DW_IIC_REG</a> *iic_reg_ptr, <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> *spklen)</td></tr>
 <tr class="memdesc:ga086527733f82c3a86b549e85fe7fc58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set spike suppression configuration. <br /></td></tr>
@@ -340,11 +346,11 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00588">588</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00690">690</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>References <a class="el" href="dev__common_8h_source.html#l00104">DEV_MASTER_MODE</a>, <a class="el" href="dw__iic_8h_source.html#l00144">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00508">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00146">DW_IIC_RXINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00527">dw_iic_slv_dis_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00145">DW_IIC_TXINT_ENABLE</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00282">int_disable()</a>, <a class="el" href="dw__iic_8h_source.html#l00171">dw_iic_ctrl::int_status</a>, <a class="el" href="dw__iic_8h_source.html#l00166">dw_iic_ctrl::intno</a>, and <a class="el" href="dev__iic_8h_source.html#l00397">dev_iic_info::mode</a>.</p>
+<p>References <a class="el" href="dev__common_8h_source.html#l00101">DEV_MASTER_MODE</a>, <a class="el" href="dw__iic_8h_source.html#l00148">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00610">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00150">DW_IIC_RXINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00629">dw_iic_slv_dis_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00149">DW_IIC_TXINT_ENABLE</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00279">int_disable()</a>, <a class="el" href="dw__iic_8h_source.html#l00177">dw_iic_ctrl::int_status</a>, <a class="el" href="dw__iic_8h_source.html#l00172">dw_iic_ctrl::intno</a>, and <a class="el" href="dev__iic_8h_source.html#l00397">dev_iic_info::mode</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00674">dw_iic_abort_rx()</a>, <a class="el" href="dw__iic_8c_source.html#l00658">dw_iic_abort_tx()</a>, <a class="el" href="dw__iic_8c_source.html#l01200">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l00645">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00914">dw_iic_mst_int_read()</a>, <a class="el" href="dw__iic_8c_source.html#l00847">dw_iic_mst_int_write()</a>, and <a class="el" href="dw__iic_8c_source.html#l00995">dw_iic_slv_int_process()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00786">dw_iic_abort_rx()</a>, <a class="el" href="dw__iic_8c_source.html#l00770">dw_iic_abort_tx()</a>, <a class="el" href="dw__iic_8c_source.html#l01317">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l00755">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l01026">dw_iic_mst_int_read()</a>, <a class="el" href="dw__iic_8c_source.html#l00959">dw_iic_mst_int_write()</a>, and <a class="el" href="dw__iic_8c_source.html#l01107">dw_iic_slv_int_process()</a>.</p>
 
 </div>
 </div>
@@ -378,11 +384,11 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00645">645</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00755">755</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>References <a class="el" href="dw__iic_8c_source.html#l00588">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00144">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00072">DW_IIC_RDY_RCV</a>, <a class="el" href="dw__iic_8c_source.html#l00071">DW_IIC_RDY_SND</a>, <a class="el" href="dw__iic_8h_source.html#l00146">DW_IIC_RXINT_ENABLE</a>, <a class="el" href="dw__iic_8h_source.html#l00145">DW_IIC_TXINT_ENABLE</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00282">int_disable()</a>, <a class="el" href="dw__iic_8h_source.html#l00171">dw_iic_ctrl::int_status</a>, and <a class="el" href="dw__iic_8h_source.html#l00166">dw_iic_ctrl::intno</a>.</p>
+<p>References <a class="el" href="dw__iic_8c_source.html#l00690">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00148">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00069">DW_IIC_RDY_RCV</a>, <a class="el" href="dw__iic_8c_source.html#l00068">DW_IIC_RDY_SND</a>, <a class="el" href="dw__iic_8h_source.html#l00150">DW_IIC_RXINT_ENABLE</a>, <a class="el" href="dw__iic_8h_source.html#l00149">DW_IIC_TXINT_ENABLE</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00279">int_disable()</a>, <a class="el" href="dw__iic_8h_source.html#l00177">dw_iic_ctrl::int_status</a>, and <a class="el" href="dw__iic_8h_source.html#l00172">dw_iic_ctrl::intno</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l01156">dw_iic_close()</a>, and <a class="el" href="dw__iic_8c_source.html#l01058">dw_iic_open()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l01273">dw_iic_close()</a>, and <a class="el" href="dw__iic_8c_source.html#l01170">dw_iic_open()</a>.</p>
 
 </div>
 </div>
@@ -427,11 +433,11 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00611">611</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00715">715</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>References <a class="el" href="dev__common_8h_source.html#l00104">DEV_MASTER_MODE</a>, <a class="el" href="dw__iic_8h_source.html#l00144">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00546">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00146">DW_IIC_RXINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00565">dw_iic_slv_ena_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00145">DW_IIC_TXINT_ENABLE</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00297">int_enable()</a>, <a class="el" href="dw__iic_8h_source.html#l00171">dw_iic_ctrl::int_status</a>, <a class="el" href="dw__iic_8h_source.html#l00166">dw_iic_ctrl::intno</a>, and <a class="el" href="dev__iic_8h_source.html#l00397">dev_iic_info::mode</a>.</p>
+<p>References <a class="el" href="dev__common_8h_source.html#l00101">DEV_MASTER_MODE</a>, <a class="el" href="dw__iic_8h_source.html#l00148">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00648">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00150">DW_IIC_RXINT_ENABLE</a>, <a class="el" href="dw__iic_8c_source.html#l00667">dw_iic_slv_ena_cbr()</a>, <a class="el" href="dw__iic_8h_source.html#l00149">DW_IIC_TXINT_ENABLE</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00294">int_enable()</a>, <a class="el" href="dw__iic_8h_source.html#l00177">dw_iic_ctrl::int_status</a>, <a class="el" href="dw__iic_8h_source.html#l00172">dw_iic_ctrl::intno</a>, and <a class="el" href="dev__iic_8h_source.html#l00397">dev_iic_info::mode</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l01200">dw_iic_control()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l01317">dw_iic_control()</a>.</p>
 
 </div>
 </div>
@@ -465,9 +471,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00633">633</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00739">739</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>References <a class="el" href="dw__iic_8h_source.html#l00144">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8h_source.html#l00167">dw_iic_ctrl::dw_iic_int_handler</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00297">int_enable()</a>, <a class="el" href="arc__exception_8c_source.html#l00496">int_handler_install()</a>, <a class="el" href="dw__iic_8h_source.html#l00171">dw_iic_ctrl::int_status</a>, and <a class="el" href="dw__iic_8h_source.html#l00166">dw_iic_ctrl::intno</a>.</p>
+<p>References <a class="el" href="dw__iic_8h_source.html#l00148">DW_IIC_GINT_ENABLE</a>, <a class="el" href="dw__iic_8h_source.html#l00173">dw_iic_ctrl::dw_iic_int_handler</a>, <a class="el" href="dev__iic_8h_source.html#l00394">dev_iic_info::iic_ctrl</a>, <a class="el" href="arc__exception_8c_source.html#l00294">int_enable()</a>, <a class="el" href="arc__exception_8c_source.html#l00493">int_handler_install()</a>, <a class="el" href="dw__iic_8h_source.html#l00177">dw_iic_ctrl::int_status</a>, and <a class="el" href="dw__iic_8h_source.html#l00172">dw_iic_ctrl::intno</a>.</p>
 
 </div>
 </div>
@@ -477,7 +483,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:12 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:25 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -42,13 +42,16 @@ var NAVTREE =
       [ "Introduction", "page_device.html#sect_device_introduction", null ],
       [ "Device HAL", "page_device.html#sect_device_devicehal", null ],
       [ "Device Drivers in embARC Software Package", "page_device.html#sect_device_implemented_drivers_in_embARC", null ],
-      [ "Adding New Device to embARC", "page_device.html#sect_device_add_new_devce_to_embARC", null ]
+      [ "How use to on-chip device IP and peripherals", "page_device.html#sect_device_use_dev", null ],
+      [ "Adding New Device to embARC", "page_device.html#sect_device_add_new_device_to_embARC", [
+        [ "Add on-chip IP", "page_device.html#sect_device_add_ip", null ],
+        [ "Add on-board or external peripherals", "page_device.html#sect_device_add_peripheral", null ]
+      ] ]
     ] ],
     [ "Board", "page_board.html", "page_board" ],
     [ "OS", "page_os.html", [
       [ "OS Introduction", "page_os.html#sect_os_introduction", null ],
       [ "FreeRTOS", "page_os.html#sect_os_freertos", null ],
-      [ "Contiki", "page_os.html#sect_os_contiki", null ],
       [ "MQX", "page_os.html#sect_os_mqx", null ],
       [ "Adding a New OS to embARC", "page_os.html#sect_os_add_new_os_to_embARC", null ]
     ] ],
@@ -71,6 +74,7 @@ var NAVTREE =
     ] ],
     [ "Example", "page_example.html", "page_example" ],
     [ "ChangeLog", "page_changelog.html", [
+      [ "2017.12", "page_changelog.html#sec_chglog_201712", null ],
       [ "2017.03", "page_changelog.html#sect_chglog_201703", null ],
       [ "2016.05", "page_changelog.html#sect_chglog_201605", null ],
       [ "2016.01", "page_changelog.html#sect_chglog_201601", null ],
@@ -85,20 +89,21 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "class_b.html",
-"group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gadd26921022efd21c4c969aae73dcb37e",
-"group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gga1f177e8a3c0fc8a0e765bb0c687655a9ae13ed33e6357aa0b91c311537df60831",
-"group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r.html#ga4cc2877b737ebd7d60ae34abbaf59f46",
-"group___b_o_a_r_d___e_m_s_k___d_r_v___s_p_i_f_l_a_s_h.html#ga146d84f00924ab547673ad435130a6da",
-"group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gaad16affb5d8e7ec732e904be45328c96",
-"group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d.html#ga18aa857d3b0815ca0235f41e4b6c1067",
+"group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gad8f08f6c3af59b8f17ed01b567510117",
+"group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gga1f177e8a3c0fc8a0e765bb0c687655a9a9b4f3f2211ecbee3f4db62862c04f151",
+"group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gadf5f8e8c98b00c4857d2ad07d4416571",
+"group___b_o_a_r_d___h_s_d_k___d_r_v___d_w___i_i_c___o_b_j.html#ga8780b20d526231e1420e0ec782533a9a",
+"group___d_e_v_i_c_e___d_w___i_i_c___s_t_a_t_i_c.html#gacdf17d2a10a6acdfdf1be12796933533",
+"group___d_e_v_i_c_e___h_a_l___g_p_i_o___p_i_n_d_e_f.html#ggab250cf93325c17613311c44766920a12ac085ab34c235b596edaa0a87f72abed0",
+"group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d.html#ga1f80b681a44db548672e225872820439",
 "group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___o_t___s_m_a_r_t_h_o_m_e___m_u_l_t_i_n_o_d_e___l_i_v_i_n_g_r_o_o_m.html#ga24e63ee4237efe1ee15a0de77021fa3a",
-"group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga717ef11d0bd75aced9024f66e5eb156b",
-"group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_i_n_o_d_e___l_a_m_p___n_o_d_e.html#gad2497112a46d690b1a136472c597f32a",
-"group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___l_w_m2_m___l_w_m2_m___c_l_i_e_n_t.html#ga6bb8e215eef7954cc259b784ae5ca9b3",
-"page_board_emsk.html#sect_bdemsk_peripherals",
-"structapplication__t.html#a89f6637a0106dc6412e62c05b2524fd0",
-"structdev__wnic__info.html#a4ff4703269b5603af0fe386eb7a51d71",
-"structwf__gpio__ops.html"
+"group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga87d1589892ba71c92d3d2d63787b1c2b",
+"group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e",
+"group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html#ga840291bc02cba5474a4cb46a9b9566fe",
+"page_library.html#subsect_lib_secureshield_application_feature_app",
+"structdata__wearable__node.html#a5ac4fc45cd18f60e83f70d825967a7ec",
+"structdw__iic__reg.html#af3293b712b0b742c8e11262d730a09f4",
+"structwifi__cfg__t.html#ac2213c6e5918c8345df6b5fd6754a4e3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

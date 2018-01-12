@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -100,14 +100,80 @@ $(document).ready(function(){initNavTree('page_changelog.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#sect_chglog_201703">2017.03</a></li>
+<ul><li class="level1"><a href="#sec_chglog_201712">2017.12</a></li>
+<li class="level1"><a href="#sect_chglog_201703">2017.03</a></li>
 <li class="level1"><a href="#sect_chglog_201605">2016.05</a></li>
 <li class="level1"><a href="#sect_chglog_201601">2016.01</a></li>
 <li class="level1"><a href="#sect_chglog_201505">2015.05</a></li>
 <li class="level1"><a href="#sect_chglog_201501">2015.01</a></li>
 </ul>
 </div>
-<div class="textblock"><h1><a class="anchor" id="sect_chglog_201703"></a>
+<div class="textblock"><h1><a class="anchor" id="sec_chglog_201712"></a>
+2017.12</h1>
+<p>This is the sixth release of the embARC Open Software Platform, release 2017.12.</p>
+<h2>Tool Support </h2>
+<ul>
+<li>Eclipse IDE for GNU Toolchain for ARC Processors, 2017.09</li>
+<li>MetaWare Development Toolkit, 2017.09</li>
+</ul>
+<h2>Features and Enhancements </h2>
+<ul>
+<li>Main new features<ul>
+<li>Add support for new ARC HS Development Kit (HSDK) platform</li>
+<li>Reconstruct the device HAL</li>
+</ul>
+</li>
+<li>Device HAL updates<ul>
+<li>Add device/peripheral folder for reusable peripheral drivers</li>
+<li>Add device/ip folder for on-chip ip, e.g. uart, spi, i2c.</li>
+<li>Add Designware SDIO driver</li>
+</ul>
+</li>
+<li>ARC HAL updates<ul>
+<li>Add initial support of arc connect for multi core</li>
+<li>Add the io pinmux api for arduino, pmod and mikro bus</li>
+<li>Bugs fixed</li>
+</ul>
+</li>
+<li>Board support updates<ul>
+<li>Update the board support according the changes in device HAL</li>
+<li>Add ARC HS Development Kit support</li>
+</ul>
+</li>
+<li>Middleware updates<ul>
+<li>Remove Xively</li>
+<li>Remove Matrixssl</li>
+<li>Remove Wolfssl</li>
+</ul>
+</li>
+<li>OS updates<ul>
+<li>Remove Contiki OS</li>
+</ul>
+</li>
+<li>Examples update<ul>
+<li>Remove Xively, Matrixssl, Wolfssl and Contiki related examples</li>
+<li>Make some examples board-independent</li>
+<li>Bug fixes</li>
+</ul>
+</li>
+<li>Documentation updates</li>
+<li>Bug fixes</li>
+<li>FOSS notice update</li>
+</ul>
+<h2>How to Use </h2>
+<p>Please refer to the doc folder in the release zip file and <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/wiki/Getting-Started-with-embARC-OSP">getting started instructions</a></p>
+<h2>Known Issues </h2>
+<ul>
+<li>This release has changed a lot in device layer, with the peripheral layer introduced, many examples which rely on old peripheral drivers in emsk will not be compatible with new embARC OSP, please modify it.</li>
+<li>Make version &gt;=4.0 is not supported. Please use make version 3.81 or 3.82</li>
+<li>For Wifi applications, the Digilent pmod Wifi with Microchip part MRF24WG0MA should be used. Pmods built with MRF24WB0MA have been shown to experience problems and are NOT supported.</li>
+<li>Please don't put embARC source code too deep in your directory, because some examples can't be compiled due to too long command line not supported in Windows.</li>
+<li>Since brand new device hal API is upgraded, your application that use the old device hal API need to be upgraded.</li>
+<li>Secureshield library need MPU hardware module on EMSK, check your hardware configuration of EMSK before using it.</li>
+<li>Please use the recommended tool versions for metaware and arc gnu.</li>
+<li>For ARC GNU, an utility called <em>tcftool</em> from metaware toolset is required for tcf build support. You can get it from Metaware Lite and copy it to ARC GNU's folder such as <b>C:/arc_gnu/bin/</b>.</li>
+</ul>
+<h1><a class="anchor" id="sect_chglog_201703"></a>
 2017.03</h1>
 <p>This is the fifth release of the embARC Open Software Platform, release 2017.03.</p>
 <h2>Tool Support </h2>
@@ -457,7 +523,7 @@ $(document).ready(function(){initNavTree('page_changelog.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:23 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

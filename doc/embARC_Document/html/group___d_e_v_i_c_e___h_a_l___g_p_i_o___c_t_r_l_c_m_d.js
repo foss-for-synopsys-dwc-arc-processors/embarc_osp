@@ -9,5 +9,6 @@ var group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d =
     [ "GPIO_CMD_SET_BIT_DIR_INPUT", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gadf2e3c74bf24056161b11fe605ae2465", null ],
     [ "GPIO_CMD_SET_BIT_DIR_OUTPUT", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga012ec483702c3346090ed3990fb5c424", null ],
     [ "GPIO_CMD_SET_BIT_INT_CFG", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gada822221fb039eb5549af98e8c88ce9b", null ],
-    [ "GPIO_CMD_SET_BIT_ISR", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gad43d27e0971a8cbca838dc69af2639a7", null ]
+    [ "GPIO_CMD_SET_BIT_ISR", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#gad43d27e0971a8cbca838dc69af2639a7", null ],
+    [ "GPIO_CMD_TOGGLE_BITS", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d.html#ga1bdac03e82e12781a8196fd300753a4d", null ]
 ];

@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -158,8 +158,8 @@ Macros</h2></td></tr>
 <tr class="memitem:ga4232393d3d52c0cedfedf119e07b4d85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4232393d3d52c0cedfedf119e07b4d85"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_ISR</b>(vector, func)&#160;&#160;&#160;void func(void* ptr)</td></tr>
 <tr class="separator:ga4232393d3d52c0cedfedf119e07b4d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a2b798f86e47281c500190c6f448d3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>_ENABLE_INT</b>(vector, sensitvity, enable)</td></tr>
-<tr class="separator:ga2a2b798f86e47281c500190c6f448d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e0a8ae89976b159f7da6f566806399d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>_ENABLE_INT</b>(vector, sensitivity, enable)</td></tr>
+<tr class="separator:ga8e0a8ae89976b159f7da6f566806399d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac5ddbba4d9d5f0381f992ce460cdc173"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac5ddbba4d9d5f0381f992ce460cdc173"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>_INT_LEVEL_SENS</b>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:gac5ddbba4d9d5f0381f992ce460cdc173"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -557,7 +557,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>dma_claim_chan
 <tr class="memdesc:gaaff2446b924c369ec11cd71a6aa0f185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve a DMA channel, and bind it with dma_chn, and set the dma trigger source.  <a href="#gaaff2446b924c369ec11cd71a6aa0f185">More...</a><br /></td></tr>
 <tr class="separator:gaaff2446b924c369ec11cd71a6aa0f185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga25537e98368a2a3223312aa3a2720db0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga25537e98368a2a3223312aa3a2720db0"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>dmac_process_desc</b> (<a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga70e62b9d60cf124ecc6427a59cf5e43a">dma_desc_t</a> *desc, uint32_t <a class="el" href="group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t.html#gab709d97aa7dcc618975fc7e8d5860c7f">int_enable</a>)</td></tr>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>dmac_process_desc</b> (<a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga70e62b9d60cf124ecc6427a59cf5e43a">dma_desc_t</a> *desc, uint32_t <a class="el" href="group___b_o_a_r_d___h_s_d_k___i_n_t_e_r_r_u_p_t.html#gab709d97aa7dcc618975fc7e8d5860c7f">int_enable</a>)</td></tr>
 <tr class="separator:ga25537e98368a2a3223312aa3a2720db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa8def3178273523539defa6f8b832b1a"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gaa8def3178273523539defa6f8b832b1a">dmac_start_channel</a> (<a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d1854ef6ca92f26e35a4e869f8a157f">dma_channel_t</a> *dma_chn, <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga67d148aa2be7a7fe322355a6474aa91e">dma_callback_t</a> callback, uint32_t priority)</td></tr>
 <tr class="memdesc:gaa8def3178273523539defa6f8b832b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start uDMA transfer for dma_chn, and set callback and transfer priority.  <a href="#gaa8def3178273523539defa6f8b832b1a">More...</a><br /></td></tr>
@@ -641,7 +641,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>uDMA related definitions and functions </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ga2a2b798f86e47281c500190c6f448d3c"></a>
+<a class="anchor" id="ga8e0a8ae89976b159f7da6f566806399d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -655,7 +655,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">sensitvity, </td>
+          <td class="paramname">sensitivity, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -671,14 +671,14 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">{                       <a class="code" href="arc__exception_8c.html#afb4ee7c403bef57f56452190d13e93ec">\</a></div>
-<div class="line"><a class="code" href="arc__exception_8c.html#afb4ee7c403bef57f56452190d13e93ec">	int_level_config</a>(vector, sensitvity);          <span class="comment">/*IRQ_TRIGGER*/</span> \</div>
+<div class="line"><a class="code" href="arc__exception_8c.html#afb4ee7c403bef57f56452190d13e93ec">	int_level_config</a>(vector, sensitivity);         <span class="comment">/*IRQ_TRIGGER*/</span> \</div>
 <div class="line">        if (enable) { <a class="code" href="arc__exception_8c.html#ab709d97aa7dcc618975fc7e8d5860c7f">int_enable</a>(vector); } <span class="keywordflow">else</span> { <a class="code" href="arc__exception_8c.html#aa06cd81d78d066c1cdc46dde7dabeb57">int_disable</a>(vector); }<span class="comment">/*IRQ_ENABLE*/</span> \</div>
 <div class="line">}</div>
-<div class="ttc" id="arc__exception_8c_html_aa06cd81d78d066c1cdc46dde7dabeb57"><div class="ttname"><a href="arc__exception_8c.html#aa06cd81d78d066c1cdc46dde7dabeb57">int_disable</a></div><div class="ttdeci">int32_t int_disable(const uint32_t intno)</div><div class="ttdoc">disable the specific interrupt </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00282">arc_exception.c:282</a></div></div>
-<div class="ttc" id="arc__exception_8c_html_ab709d97aa7dcc618975fc7e8d5860c7f"><div class="ttname"><a href="arc__exception_8c.html#ab709d97aa7dcc618975fc7e8d5860c7f">int_enable</a></div><div class="ttdeci">int32_t int_enable(const uint32_t intno)</div><div class="ttdoc">enable the specific int </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00297">arc_exception.c:297</a></div></div>
-<div class="ttc" id="arc__exception_8c_html_afb4ee7c403bef57f56452190d13e93ec"><div class="ttname"><a href="arc__exception_8c.html#afb4ee7c403bef57f56452190d13e93ec">int_level_config</a></div><div class="ttdeci">int32_t int_level_config(const uint32_t intno, const uint32_t level)</div><div class="ttdoc">config the interrupt level triggered or pulse triggered </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00444">arc_exception.c:444</a></div></div>
+<div class="ttc" id="arc__exception_8c_html_aa06cd81d78d066c1cdc46dde7dabeb57"><div class="ttname"><a href="arc__exception_8c.html#aa06cd81d78d066c1cdc46dde7dabeb57">int_disable</a></div><div class="ttdeci">int32_t int_disable(const uint32_t intno)</div><div class="ttdoc">disable the specific interrupt </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00279">arc_exception.c:279</a></div></div>
+<div class="ttc" id="arc__exception_8c_html_ab709d97aa7dcc618975fc7e8d5860c7f"><div class="ttname"><a href="arc__exception_8c.html#ab709d97aa7dcc618975fc7e8d5860c7f">int_enable</a></div><div class="ttdeci">int32_t int_enable(const uint32_t intno)</div><div class="ttdoc">enable the specific int </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00294">arc_exception.c:294</a></div></div>
+<div class="ttc" id="arc__exception_8c_html_afb4ee7c403bef57f56452190d13e93ec"><div class="ttname"><a href="arc__exception_8c.html#afb4ee7c403bef57f56452190d13e93ec">int_level_config</a></div><div class="ttdeci">int32_t int_level_config(const uint32_t intno, const uint32_t level)</div><div class="ttdoc">config the interrupt level triggered or pulse triggered </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00441">arc_exception.c:441</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00065">65</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00062">62</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
 </div>
 </div>
@@ -715,10 +715,10 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 <div class="line"><a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga92d3c2a8a703078234357e7bce5a5c48">	int_handler_install</a>(vector, handler);  <a class="code" href="arc__exception_8c.html#ab670f0f6729ebec51cc2de8f98c74a40">\</a></div>
 <div class="line"><a class="code" href="arc__exception_8c.html#ab670f0f6729ebec51cc2de8f98c74a40">	int_pri_set</a>(vector, prior);            \</div>
 <div class="line">}</div>
-<div class="ttc" id="arc__exception_8c_html_ab670f0f6729ebec51cc2de8f98c74a40"><div class="ttname"><a href="arc__exception_8c.html#ab670f0f6729ebec51cc2de8f98c74a40">int_pri_set</a></div><div class="ttdeci">int32_t int_pri_set(const uint32_t intno, int32_t intpri)</div><div class="ttdoc">set interrupt priority </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00374">arc_exception.c:374</a></div></div>
-<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_ga92d3c2a8a703078234357e7bce5a5c48"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga92d3c2a8a703078234357e7bce5a5c48">int_handler_install</a></div><div class="ttdeci">int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)</div><div class="ttdoc">install an interrupt handler </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00496">arc_exception.c:496</a></div></div>
+<div class="ttc" id="arc__exception_8c_html_ab670f0f6729ebec51cc2de8f98c74a40"><div class="ttname"><a href="arc__exception_8c.html#ab670f0f6729ebec51cc2de8f98c74a40">int_pri_set</a></div><div class="ttdeci">int32_t int_pri_set(const uint32_t intno, int32_t intpri)</div><div class="ttdoc">set interrupt priority </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00371">arc_exception.c:371</a></div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_ga92d3c2a8a703078234357e7bce5a5c48"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#ga92d3c2a8a703078234357e7bce5a5c48">int_handler_install</a></div><div class="ttdeci">int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)</div><div class="ttdoc">install an interrupt handler </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00493">arc_exception.c:493</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00072">72</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00069">69</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
 </div>
 </div>
@@ -754,9 +754,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><!-- fragment -->
 <p>Install uDMA interrupt service, set interrupt as level sensitive, and enable interrupt. </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00091">91</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00088">88</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00504">dmac_init()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00501">dmac_init()</a>.</p>
 
 </div>
 </div>
@@ -771,9 +771,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>&lt; Number of all DMA channels Number of all aux-register based DMA channels </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00066">66</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00063">63</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00966">_ISR()</a>, <a class="el" href="arc__udma_8c_source.html#l00912">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00832">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00859">dmac_release_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00662">dmac_reserve_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00806">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00886">dmac_wait_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00963">_ISR()</a>, <a class="el" href="arc__udma_8c_source.html#l00909">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00829">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00856">dmac_release_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00659">dmac_reserve_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00803">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00883">dmac_wait_channel()</a>.</p>
 
 </div>
 </div>
@@ -805,7 +805,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00301">301</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00298">298</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -842,7 +842,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00325">325</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00322">322</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -879,7 +879,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00313">313</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00310">310</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -916,7 +916,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00307">307</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00304">304</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -953,7 +953,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00289">289</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00286">286</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -990,7 +990,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00295">295</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00292">292</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1027,7 +1027,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00319">319</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00316">316</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1064,7 +1064,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00277">277</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00274">274</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1101,7 +1101,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00283">283</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00280">280</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1138,7 +1138,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00332">332</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00329">329</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1153,7 +1153,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>Mask of all DMA channels at the most </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00070">70</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00067">67</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1172,9 +1172,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>Channel number to Bit </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00103">103</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00100">100</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>.</p>
 
 </div>
 </div>
@@ -1193,7 +1193,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 30,31 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00092">92</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00089">89</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1208,7 +1208,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 30,31 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00101">101</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00098">98</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1223,7 +1223,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 30,31 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00083">83</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00080">80</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1242,7 +1242,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 21..28 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00090">90</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00087">87</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1257,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 21..28 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00099">99</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00096">96</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1272,7 +1272,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 21..28 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00081">81</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00078">78</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1291,7 +1291,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 3,4 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00087">87</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00084">84</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1306,7 +1306,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 3,4 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00096">96</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00093">93</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1321,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 3,4 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00078">78</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00075">75</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1340,7 +1340,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 5,6,7 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00088">88</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00085">85</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1355,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 5,6,7 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00097">97</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00094">94</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1370,7 +1370,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 5,6,7 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00079">79</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00076">76</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1389,7 +1389,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 29 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00091">91</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00088">88</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1404,7 +1404,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 29 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00100">100</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00097">97</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1419,7 +1419,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 29 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00082">82</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00079">79</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1438,7 +1438,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 0,1 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00085">85</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00082">82</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1453,7 +1453,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 0,1 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00094">94</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00091">91</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1468,7 +1468,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 0,1 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00076">76</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00073">73</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1487,7 +1487,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 2 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00086">86</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00083">83</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1502,7 +1502,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 2 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00095">95</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00092">92</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1517,7 +1517,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 2 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00077">77</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00074">74</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1536,7 +1536,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field value: bit 8..20 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00089">89</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00086">86</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1551,7 +1551,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field mask: bit 8..20 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00098">98</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00095">95</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1566,7 +1566,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>bit field offset: bit 8..20 </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00080">80</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00077">77</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1591,7 +1591,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00134">134</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00131">131</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1615,7 +1615,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00214">214</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00211">211</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1645,7 +1645,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00206">206</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00203">203</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1675,7 +1675,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00180">180</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00177">177</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1717,7 +1717,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00188">188</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00185">185</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1741,7 +1741,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00200">200</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00197">197</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1771,7 +1771,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00166">166</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00163">163</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1795,7 +1795,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00174">174</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00171">171</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1819,7 +1819,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00140">140</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00137">137</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1849,7 +1849,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00126">126</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00123">123</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -1898,9 +1898,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 <p>Interrupt about DMA transaction completion. </p>
 <p>Sets the the "complete" status for completed DMA transaction and ! starts next transaction from queue. Reset DMA completion IRQ flags </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00966">966</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00963">963</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>.</p>
 
 </div>
 </div>
@@ -1931,9 +1931,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 <p>Interrupt about DMA transaction completion with error. </p>
 <p>Sets the the "complete with error" status for completed DMA transaction ! Reset the DMA channel. </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00979">979</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00976">976</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>.</p>
 
 </div>
 </div>
@@ -1968,9 +1968,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00912">912</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00909">909</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00201">DMA_INT_DISABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::int_enable</a>, and <a class="el" href="arc__udma_8h_source.html#l00161">_dma_channel::status</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00198">DMA_INT_DISABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00155">_dma_channel::int_enable</a>, and <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::status</a>.</p>
 
 </div>
 </div>
@@ -2003,9 +2003,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00832">832</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00829">829</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00127">DMA_IDLE</a>, and <a class="el" href="arc__udma_8h_source.html#l00161">_dma_channel::status</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00124">DMA_IDLE</a>, and <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::status</a>.</p>
 
 </div>
 </div>
@@ -2049,9 +2049,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00641">641</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00638">638</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>.</p>
 
 </div>
 </div>
@@ -2117,9 +2117,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00603">603</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00600">600</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00122">_dma_ctrl::value</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00119">_dma_ctrl::value</a>.</p>
 
 </div>
 </div>
@@ -2163,9 +2163,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00617">617</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00614">614</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00151">_dma_desc::DMALLPx</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00148">_dma_desc::DMALLPx</a>.</p>
 
 </div>
 </div>
@@ -2199,9 +2199,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00504">504</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00501">501</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8c_source.html#l00091">DMA_ADD_IRQ_PROC</a>, and <a class="el" href="arc__udma__config_8h_source.html#l00073">DMA_IRQ_PRIO</a>.</p>
+<p>References <a class="el" href="arc__udma_8c_source.html#l00088">DMA_ADD_IRQ_PROC</a>, and <a class="el" href="arc__udma__config_8h_source.html#l00070">DMA_IRQ_PRIO</a>.</p>
 
 </div>
 </div>
@@ -2235,9 +2235,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00626">626</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00623">623</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00162">_dma_channel::callback</a>, <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00136">DMA_CHN_INVALID</a>, <a class="el" href="arc__udma_8h_source.html#l00127">DMA_IDLE</a>, <a class="el" href="arc__udma_8h_source.html#l00141">DMA_REQ_SOFT</a>, <a class="el" href="arc__udma_8h_source.html#l00159">_dma_channel::source</a>, and <a class="el" href="arc__udma_8h_source.html#l00161">_dma_channel::status</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00159">_dma_channel::callback</a>, <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00133">DMA_CHN_INVALID</a>, <a class="el" href="arc__udma_8h_source.html#l00124">DMA_IDLE</a>, <a class="el" href="arc__udma_8h_source.html#l00138">DMA_REQ_SOFT</a>, <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::source</a>, and <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::status</a>.</p>
 
 </div>
 </div>
@@ -2270,9 +2270,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00859">859</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00856">856</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, and <a class="el" href="arc__udma_8h_source.html#l00136">DMA_CHN_INVALID</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, and <a class="el" href="arc__udma_8h_source.html#l00133">DMA_CHN_INVALID</a>.</p>
 
 </div>
 </div>
@@ -2323,9 +2323,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00662">662</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00659">659</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00135">DMA_CHN_ANY</a>, and <a class="el" href="arc__udma_8h_source.html#l00136">DMA_CHN_INVALID</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00132">DMA_CHN_ANY</a>, and <a class="el" href="arc__udma_8h_source.html#l00133">DMA_CHN_INVALID</a>.</p>
 
 </div>
 </div>
@@ -2378,9 +2378,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00742">742</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00739">739</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00162">_dma_channel::callback</a>, <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00128">DMA_BUSY</a>, <a class="el" href="arc__udma_8h_source.html#l00216">DMA_CHN_HIGH_PRIO</a>, <a class="el" href="arc__udma_8h_source.html#l00201">DMA_INT_DISABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00202">DMA_INT_ENABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00141">DMA_REQ_SOFT</a>, <a class="el" href="arc__udma_8h_source.html#l00103">DMACHANNEL</a>, <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::int_enable</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::priority</a>, <a class="el" href="arc__udma_8h_source.html#l00159">_dma_channel::source</a>, and <a class="el" href="arc__udma_8h_source.html#l00161">_dma_channel::status</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00159">_dma_channel::callback</a>, <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00125">DMA_BUSY</a>, <a class="el" href="arc__udma_8h_source.html#l00213">DMA_CHN_HIGH_PRIO</a>, <a class="el" href="arc__udma_8h_source.html#l00198">DMA_INT_DISABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00199">DMA_INT_ENABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00138">DMA_REQ_SOFT</a>, <a class="el" href="arc__udma_8h_source.html#l00100">DMACHANNEL</a>, <a class="el" href="arc__udma_8h_source.html#l00155">_dma_channel::int_enable</a>, <a class="el" href="arc__udma_8h_source.html#l00154">_dma_channel::priority</a>, <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::source</a>, and <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::status</a>.</p>
 
 </div>
 </div>
@@ -2413,9 +2413,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00806">806</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00803">803</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00128">DMA_BUSY</a>, <a class="el" href="arc__udma_8h_source.html#l00130">DMA_STOP</a>, and <a class="el" href="arc__udma_8h_source.html#l00161">_dma_channel::status</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00125">DMA_BUSY</a>, <a class="el" href="arc__udma_8h_source.html#l00127">DMA_STOP</a>, and <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::status</a>.</p>
 
 </div>
 </div>
@@ -2449,9 +2449,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00886">886</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8c_source.html#l00883">883</a> of file <a class="el" href="arc__udma_8c_source.html">arc_udma.c</a>.</p>
 
-<p>References <a class="el" href="arc__udma_8h_source.html#l00156">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00160">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00066">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00128">DMA_BUSY</a>, <a class="el" href="arc__udma_8h_source.html#l00201">DMA_INT_DISABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::int_enable</a>, and <a class="el" href="arc__udma_8h_source.html#l00161">_dma_channel::status</a>.</p>
+<p>References <a class="el" href="arc__udma_8h_source.html#l00153">_dma_channel::channel</a>, <a class="el" href="arc__udma_8h_source.html#l00157">_dma_channel::desc</a>, <a class="el" href="arc__udma_8h_source.html#l00063">DMA_ALL_CHANNEL_NUM</a>, <a class="el" href="arc__udma_8h_source.html#l00125">DMA_BUSY</a>, <a class="el" href="arc__udma_8h_source.html#l00198">DMA_INT_DISABLE</a>, <a class="el" href="arc__udma_8h_source.html#l00155">_dma_channel::int_enable</a>, and <a class="el" href="arc__udma_8h_source.html#l00158">_dma_channel::status</a>.</p>
 
 </div>
 </div>
@@ -2467,7 +2467,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>address mode field </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00116">116</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00113">113</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2482,7 +2482,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>arbitration size </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00114">114</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00111">111</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2497,7 +2497,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>control register in bits format </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00121">121</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00118">118</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2512,7 +2512,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>data transfer in bytes field </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00113">113</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00110">110</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2527,9 +2527,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA transfer callback </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00162">162</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00159">159</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00626">dmac_init_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00623">dmac_init_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>.</p>
 
 </div>
 </div>
@@ -2544,9 +2544,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>Channel ID binded to this transfer </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00156">156</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00153">153</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00912">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00832">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00626">dmac_init_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00859">dmac_release_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00806">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00886">dmac_wait_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00909">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00829">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00623">dmac_init_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00856">dmac_release_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00803">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00883">dmac_wait_channel()</a>.</p>
 
 </div>
 </div>
@@ -2561,9 +2561,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA transfer descriptor for this transfer </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00160">160</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00157">157</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00912">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00832">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00641">dmac_config_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00626">dmac_init_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00859">dmac_release_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00806">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00886">dmac_wait_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00909">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00829">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00638">dmac_config_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00623">dmac_init_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00856">dmac_release_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00803">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00883">dmac_wait_channel()</a>.</p>
 
 </div>
 </div>
@@ -2578,7 +2578,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA channel control register </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00148">148</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00145">145</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2593,7 +2593,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA channel end destination address register </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00150">150</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00147">147</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2608,9 +2608,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA channel link-list pointer (for chaining/linking separate DMA transfers only) </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00151">151</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00148">148</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00617">dmac_desc_add_linked()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00614">dmac_desc_add_linked()</a>.</p>
 
 </div>
 </div>
@@ -2625,7 +2625,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA channel end source address register </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00149">149</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00146">146</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2640,7 +2640,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>source and destination target types field </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00111">111</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00108">108</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2655,7 +2655,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>data width and address increment field </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00112">112</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00109">109</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2670,9 +2670,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>Interrupt enable status </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00158">158</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00155">155</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00912">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00886">dmac_wait_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00909">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00883">dmac_wait_channel()</a>.</p>
 
 </div>
 </div>
@@ -2687,7 +2687,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>interrupt mode bit </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00115">115</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00112">112</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2702,7 +2702,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>operation field </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00109">109</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00106">106</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2717,9 +2717,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>Transfer priority </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00157">157</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00154">154</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>.</p>
 
 </div>
 </div>
@@ -2734,7 +2734,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>request type field </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00110">110</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00107">107</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
 </div>
 </div>
@@ -2749,9 +2749,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA request or trigger source for this transfer </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00159">159</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00156">156</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00626">dmac_init_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00623">dmac_init_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>.</p>
 
 </div>
 </div>
@@ -2766,9 +2766,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>DMA transfer status of this transfer </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00161">161</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00158">158</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00912">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00832">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00626">dmac_init_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00742">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00806">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00886">dmac_wait_channel()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00909">dmac_check_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00829">dmac_clear_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00623">dmac_init_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00739">dmac_start_channel()</a>, <a class="el" href="arc__udma_8c_source.html#l00803">dmac_stop_channel()</a>, and <a class="el" href="arc__udma_8c_source.html#l00883">dmac_wait_channel()</a>.</p>
 
 </div>
 </div>
@@ -2783,9 +2783,9 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 </div><div class="memdoc">
 <p>control register in word format </p>
 
-<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00122">122</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__udma_8h_source.html#l00119">119</a> of file <a class="el" href="arc__udma_8h_source.html">arc_udma.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00603">dmac_config_desc()</a>.</p>
+<p>Referenced by <a class="el" href="arc__udma_8c_source.html#l00600">dmac_config_desc()</a>.</p>
 
 </div>
 </div>
@@ -2795,7 +2795,7 @@ volatile <a class="el" href="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:24 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

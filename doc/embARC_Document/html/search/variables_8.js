@@ -1,6 +1,8 @@
 var searchData=
 [
   ['ic_5fack_5fgeneral_5fcall',['IC_ACK_GENERAL_CALL',['../structdw__iic__reg.html#a328f6c45ec15f69e7916b85476a524f4',1,'dw_iic_reg']]],
+  ['ic_5fcaploading',['ic_caploading',['../structdw__iic__ctrl.html#a669a5a21b1e6c1454c4b8d6beafe2406',1,'dw_iic_ctrl']]],
+  ['ic_5fclkhz',['ic_clkhz',['../structdw__iic__ctrl.html#a1111c430b78e5aec9db2d727da82c332',1,'dw_iic_ctrl']]],
   ['ic_5fclr_5factivity',['IC_CLR_ACTIVITY',['../structdw__iic__reg.html#a48ec192503f85ddae7e1ab93244239e8',1,'dw_iic_reg']]],
   ['ic_5fclr_5fgen_5fcall',['IC_CLR_GEN_CALL',['../structdw__iic__reg.html#a1eae1241502dffeeb6f8fd76f90e510d',1,'dw_iic_reg']]],
   ['ic_5fclr_5fintr',['IC_CLR_INTR',['../structdw__iic__reg.html#aa9fe0d4c920c64b5a51648cc3c62942c',1,'dw_iic_reg']]],

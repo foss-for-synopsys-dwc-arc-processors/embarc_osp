@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -111,8 +111,8 @@ $(document).ready(function(){initNavTree('group___b_o_a_r_d___e_m_s_k___d_r_v___
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:mux_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mux_8c.html">mux.c</a></td></tr>
-<tr class="memdesc:mux_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">emsk mux controller driver <br /></td></tr>
+<tr class="memitem:emsk_2drivers_2mux_2mux_8c"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="emsk_2drivers_2mux_2mux_8c.html">emsk/drivers/mux/mux.c</a></td></tr>
+<tr class="memdesc:emsk_2drivers_2mux_2mux_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">emsk mux controller driver <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:mux_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mux_8h.html">mux.h</a></td></tr>
 <tr class="memdesc:mux_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">header file of emsk mux controller driver <br /></td></tr>
@@ -198,48 +198,55 @@ typedef volatile uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaf02f2c828e9118bfd8f04273a85a76c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf02f2c828e9118bfd8f04273a85a76c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaf02f2c828e9118bfd8f04273a85a76c9">mux_init</a> (MUX_REG *mux_regs)</td></tr>
-<tr class="memdesc:gaf02f2c828e9118bfd8f04273a85a76c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize i2c controller and set slave device address <br /></td></tr>
-<tr class="separator:gaf02f2c828e9118bfd8f04273a85a76c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabb8902a836223e3b4a2a1236b1c572b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabb8902a836223e3b4a2a1236b1c572b7"></a>
-MUX_REG *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gabb8902a836223e3b4a2a1236b1c572b7">get_mux_regs</a> (void)</td></tr>
-<tr class="memdesc:gabb8902a836223e3b4a2a1236b1c572b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get mux ctrl register pointer, only valid after mux_init. <br /></td></tr>
-<tr class="separator:gabb8902a836223e3b4a2a1236b1c572b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8aeb353f3821d5566477cf698058ba3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa8aeb353f3821d5566477cf698058ba3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa8aeb353f3821d5566477cf698058ba3">set_pmod_mux</a> (MUX_REG *mux_regs, uint32_t val)</td></tr>
-<tr class="memdesc:gaa8aeb353f3821d5566477cf698058ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">set PMOD muxer scheme <br /></td></tr>
-<tr class="separator:gaa8aeb353f3821d5566477cf698058ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0b23662db75bed7fe8272293b8248abc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0b23662db75bed7fe8272293b8248abc"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga0b23662db75bed7fe8272293b8248abc">get_pmod_mux</a> (MUX_REG *mux_regs)</td></tr>
-<tr class="memdesc:ga0b23662db75bed7fe8272293b8248abc"><td class="mdescLeft">&#160;</td><td class="mdescRight">get PMOD muxer scheme <br /></td></tr>
-<tr class="separator:ga0b23662db75bed7fe8272293b8248abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadde7485dba4ed8e824568d039f885e73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadde7485dba4ed8e824568d039f885e73"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gadde7485dba4ed8e824568d039f885e73">change_pmod_mux</a> (MUX_REG *mux_regs, uint32_t val, uint32_t change_bits)</td></tr>
-<tr class="memdesc:gadde7485dba4ed8e824568d039f885e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">set PMOD muxer scheme <br /></td></tr>
-<tr class="separator:gadde7485dba4ed8e824568d039f885e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa3ef344c191f857e032a4b52816a13ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa3ef344c191f857e032a4b52816a13ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa3ef344c191f857e032a4b52816a13ac">set_spi_map</a> (MUX_REG *mux_regs, uint32_t val)</td></tr>
-<tr class="memdesc:gaa3ef344c191f857e032a4b52816a13ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">set SPI connection scheme <br /></td></tr>
-<tr class="separator:gaa3ef344c191f857e032a4b52816a13ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22926dd85e9a36800971bd667cbd3849"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga22926dd85e9a36800971bd667cbd3849"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga22926dd85e9a36800971bd667cbd3849">get_spi_map</a> (MUX_REG *mux_regs)</td></tr>
-<tr class="memdesc:ga22926dd85e9a36800971bd667cbd3849"><td class="mdescLeft">&#160;</td><td class="mdescRight">get SPI connection scheme <br /></td></tr>
-<tr class="separator:ga22926dd85e9a36800971bd667cbd3849"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae6088143a85738105a08ad0b6470b98f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae6088143a85738105a08ad0b6470b98f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gae6088143a85738105a08ad0b6470b98f">set_uart_map</a> (MUX_REG *mux_regs, uint32_t val)</td></tr>
-<tr class="memdesc:gae6088143a85738105a08ad0b6470b98f"><td class="mdescLeft">&#160;</td><td class="mdescRight">set UART connection scheme <br /></td></tr>
-<tr class="separator:gae6088143a85738105a08ad0b6470b98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31f6522d9fc826a0e437720449d5e66d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga31f6522d9fc826a0e437720449d5e66d"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga31f6522d9fc826a0e437720449d5e66d">get_uart_map</a> (MUX_REG *mux_regs)</td></tr>
-<tr class="memdesc:ga31f6522d9fc826a0e437720449d5e66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">get UART connection scheme <br /></td></tr>
-<tr class="separator:ga31f6522d9fc826a0e437720449d5e66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8356bee63484f5b67a7995fbde693d11"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8356bee63484f5b67a7995fbde693d11"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga8356bee63484f5b67a7995fbde693d11">set_pmod_mux</a> (uint32_t val)</td></tr>
+<tr class="memdesc:ga8356bee63484f5b67a7995fbde693d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">set PMOD muxer scheme <br /></td></tr>
+<tr class="separator:ga8356bee63484f5b67a7995fbde693d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7f64addda6f60359e9382320e696861"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab7f64addda6f60359e9382320e696861"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab7f64addda6f60359e9382320e696861">get_pmod_mux</a> (void)</td></tr>
+<tr class="memdesc:gab7f64addda6f60359e9382320e696861"><td class="mdescLeft">&#160;</td><td class="mdescRight">get PMOD muxer scheme <br /></td></tr>
+<tr class="separator:gab7f64addda6f60359e9382320e696861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1edc41eb546dfce3d1f6c23636540fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab1edc41eb546dfce3d1f6c23636540fc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab1edc41eb546dfce3d1f6c23636540fc">set_spi_map</a> (uint32_t val)</td></tr>
+<tr class="memdesc:gab1edc41eb546dfce3d1f6c23636540fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">set SPI connection scheme <br /></td></tr>
+<tr class="separator:gab1edc41eb546dfce3d1f6c23636540fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1c11b77b7888c47cf5b107eb7ee15a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa1c11b77b7888c47cf5b107eb7ee15a2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa1c11b77b7888c47cf5b107eb7ee15a2">set_uart_map</a> (uint32_t val)</td></tr>
+<tr class="memdesc:gaa1c11b77b7888c47cf5b107eb7ee15a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">set UART connection scheme <br /></td></tr>
+<tr class="separator:gaa1c11b77b7888c47cf5b107eb7ee15a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea9c8745e17c7340aac1b83ca78f0bd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaea9c8745e17c7340aac1b83ca78f0bd4"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_mikro_config</b> (uint32_t config)</td></tr>
+<tr class="separator:gaea9c8745e17c7340aac1b83ca78f0bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed6d84e2f298582850bade46596b82fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaed6d84e2f298582850bade46596b82fc"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_arduino_config_spi</b> (uint32_t config)</td></tr>
+<tr class="separator:gaed6d84e2f298582850bade46596b82fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf4d73821b689e641fe3bea3c1ee3666d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf4d73821b689e641fe3bea3c1ee3666d"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_arduino_config_uart</b> (uint32_t config)</td></tr>
+<tr class="separator:gaf4d73821b689e641fe3bea3c1ee3666d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89a57c39917f80eb6379d0d353780729"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga89a57c39917f80eb6379d0d353780729"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_arduino_config_i2c</b> (uint32_t config)</td></tr>
+<tr class="separator:ga89a57c39917f80eb6379d0d353780729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac21ff8dd77e494cdb202fbee068aac3f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac21ff8dd77e494cdb202fbee068aac3f"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_arduino_config_ad</b> (uint32_t num, uint32_t config)</td></tr>
+<tr class="separator:gac21ff8dd77e494cdb202fbee068aac3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga091f6746e8ae1a1f40f2b6a1db1f0d35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga091f6746e8ae1a1f40f2b6a1db1f0d35"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_arduino_config_pwm</b> (uint32_t num, uint32_t config)</td></tr>
+<tr class="separator:ga091f6746e8ae1a1f40f2b6a1db1f0d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4404c8248fba121378a136e92519eeac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4404c8248fba121378a136e92519eeac"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_arduino_config_gpio</b> (uint32_t num, uint32_t config)</td></tr>
+<tr class="separator:ga4404c8248fba121378a136e92519eeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8fc8550242f1a2dee25a8b1612f6bce1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8fc8550242f1a2dee25a8b1612f6bce1"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>io_pmod_config</b> (uint32_t pmod, uint32_t type, uint32_t config)</td></tr>
+<tr class="separator:ga8fc8550242f1a2dee25a8b1612f6bce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadbb2990c863c9961339946c92f2fc2d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadbb2990c863c9961339946c92f2fc2d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>io_mux_init</b> (void)</td></tr>
+<tr class="separator:gadbb2990c863c9961339946c92f2fc2d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ga5f58c779ba47936a7ed195997016c873"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5f58c779ba47936a7ed195997016c873"></a>
-static MUX_REG *&#160;</td><td class="memItemRight" valign="bottom"><b>mux_ctrl_regs</b> = (MUX_REG *)0</td></tr>
-<tr class="separator:ga5f58c779ba47936a7ed195997016c873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0e269517bb2fb6c308d7d7a55ff8d41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab0e269517bb2fb6c308d7d7a55ff8d41"></a>
+static MUX_REG *&#160;</td><td class="memItemRight" valign="bottom"><b>mux_regs</b></td></tr>
+<tr class="separator:gab0e269517bb2fb6c308d7d7a55ff8d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Default pin muxer settings</h2></td></tr>
@@ -337,7 +344,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>32-bits, offset 0x4 </p>
 
-<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00055">55</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
+<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00052">52</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
 
 </div>
 </div>
@@ -352,7 +359,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod1[10:7] are connected to DW GPIO Port A[11:8] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00091">91</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00088">88</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -367,9 +374,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod1[10:7] are connected to DW SPI Slave signals </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00092">92</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00089">89</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -384,7 +389,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod1[4:1] are connected to DW GPIO Port C[11:8] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00088">88</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00085">85</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -399,9 +404,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod1[4:1] are connected to DW UART0 signals </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00089">89</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00086">86</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -416,7 +419,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod2[4:1] are connected to DW GPIO Port C[15:12], Pmod2[10:7] are connected to DW GPIO Port A[15:12] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00100">100</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00097">97</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -431,9 +434,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>connect I2C to Pmod2[4:1] and halt/run interface to Pmod2[10:7] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00104">104</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00101">101</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -448,9 +449,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod3[4:1] are connected to DW GPIO Port C[19:16], Pmod3[10:7] are connected to DW GPIO Port A[19:16] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00112">112</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00109">109</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -465,7 +464,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod3[4:3] are connected to DW I2C signals, Pmod3[2:1] are connected to DW GPIO Port D[1:0], Pmod3[10:7] are connected to DW GPIO Port D[3:2] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00116">116</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00113">113</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -480,7 +479,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod4[4:1] are connected to DW GPIO Port C[23:20], Pmod4[10:7] are connected to DW GPIO Port A[23:20] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00128">128</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00125">125</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -495,9 +494,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod4[4:3] are connected to DW I2C signals, Pmod4[2:1] are connected to DW GPIO Port D[5:4], Pmod4[10:7] are connected to DW GPIO Port D[7:6] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00132">132</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00129">129</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -512,9 +509,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod5[10:7] are connected to DW GPIO Port A[27:24] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00146">146</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00143">143</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -529,7 +524,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod5[10:7] are connected to DW SPI Master signals using CS2_N </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00147">147</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00144">144</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -544,7 +539,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod5[4:1] are connected to DW GPIO Port C[27:24] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00143">143</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00140">140</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -559,9 +554,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod5[4:1] are connected to DW SPI Master signals using CS1_N </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00144">144</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00141">141</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -576,7 +569,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod6[8:7] are connected to the DW SPI Master chip select signals CS1_N and CS2_N, Pmod6[6:5] are connected to the ARC EM halt and sleep status signals </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00160">160</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00157">157</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -591,9 +584,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod6[10:7] are connected to DW GPIO Port A[31:28] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00158">158</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00155">155</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -608,7 +599,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod6[4:1] are connected to DW GPIO Port C[31:28] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00155">155</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00152">152</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -623,9 +614,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod6[4:1] are connected to DW SPI Master signals using CS0_N </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00156">156</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="emsk__init_8c_source.html#l00071">emsk_mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00153">153</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -640,7 +629,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod7[4:1] are connected to DW GPIO Port D[11:8] </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00169">169</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00166">166</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -655,7 +644,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>Pmod7[4:1] are connected to the ARC EM sleep status signals </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00170">170</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00167">167</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -670,9 +659,9 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>32-bits, offset 0x0, This register controls mapping of the peripheral device signals on Pmod connectors </p>
 
-<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00051">51</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
+<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00048">48</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
 
-<p>Referenced by <a class="el" href="mux_8c_source.html#l00087">change_pmod_mux()</a>, <a class="el" href="mux_8c_source.html#l00081">get_pmod_mux()</a>, <a class="el" href="mux_8c_source.html#l00059">mux_init()</a>, and <a class="el" href="mux_8c_source.html#l00075">set_pmod_mux()</a>.</p>
+<p>Referenced by <a class="el" href="emsk_2drivers_2mux_2mux_8c_source.html#l00067">get_pmod_mux()</a>, and <a class="el" href="emsk_2drivers_2mux_2mux_8c_source.html#l00061">set_pmod_mux()</a>.</p>
 
 </div>
 </div>
@@ -687,9 +676,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>all pins are configured as GPIO inputs </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00079">79</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="mux_8c_source.html#l00059">mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00076">76</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -707,9 +694,9 @@ Mux Control Register Index</h2></td></tr>
 <li>Loop-back mode, SPI_MAP_CTRL[0]=1: SPI Slave is connected to the SPI Master inside the FPGA using CS4. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00057">57</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
+<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00054">54</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
 
-<p>Referenced by <a class="el" href="mux_8c_source.html#l00099">get_spi_map()</a>, <a class="el" href="mux_8c_source.html#l00059">mux_init()</a>, and <a class="el" href="mux_8c_source.html#l00093">set_spi_map()</a>.</p>
+<p>Referenced by <a class="el" href="emsk_2drivers_2mux_2mux_8c_source.html#l00073">set_spi_map()</a>.</p>
 
 </div>
 </div>
@@ -724,9 +711,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>normal SPI mode </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00080">80</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="mux_8c_source.html#l00059">mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00077">77</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -741,9 +726,9 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>32-bits, offset 0x8, This register controls the mapping of the UART signals on the Pmod1 connector. </p>
 
-<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00067">67</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
+<p>Definition at line <a class="el" href="mux__hal_8h_source.html#l00064">64</a> of file <a class="el" href="mux__hal_8h_source.html">mux_hal.h</a>.</p>
 
-<p>Referenced by <a class="el" href="mux_8c_source.html#l00111">get_uart_map()</a>, <a class="el" href="mux_8c_source.html#l00059">mux_init()</a>, and <a class="el" href="mux_8c_source.html#l00105">set_uart_map()</a>.</p>
+<p>Referenced by <a class="el" href="emsk_2drivers_2mux_2mux_8c_source.html#l00079">set_uart_map()</a>.</p>
 
 </div>
 </div>
@@ -758,9 +743,7 @@ Mux Control Register Index</h2></td></tr>
 </div><div class="memdoc">
 <p>TYPE4 PMOD compatible </p>
 
-<p>Definition at line <a class="el" href="mux_8h_source.html#l00081">81</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
-
-<p>Referenced by <a class="el" href="mux_8c_source.html#l00059">mux_init()</a>.</p>
+<p>Definition at line <a class="el" href="mux_8h_source.html#l00078">78</a> of file <a class="el" href="mux_8h_source.html">mux.h</a>.</p>
 
 </div>
 </div>
@@ -770,7 +753,7 @@ Mux Control Register Index</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:12 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:24 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

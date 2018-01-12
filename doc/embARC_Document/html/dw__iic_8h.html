@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -99,8 +99,8 @@ $(document).ready(function(){initNavTree('dw__iic_8h.html','');});
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">dw_iic.h File Reference<div class="ingroups"><a class="el" href="group___d_e_v_i_c_e___h_a_l.html">Device HAL</a> &raquo; <a class="el" href="group___d_e_v_i_c_e___i_m_p_l.html">Device HAL Implementation</a> &raquo; <a class="el" href="group___d_e_v_i_c_e___d_w.html">Designware Device Driver</a> &raquo; <a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c.html">Designware IIC Driver</a></div></div>  </div>
 </div><!--header-->
@@ -142,6 +142,9 @@ Macros</h2></td></tr>
 <tr class="memitem:gaadca31a022beb763a4e256c264f6bb2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaadca31a022beb763a4e256c264f6bb2f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_IIC_BOTH_SUPPORTED</b>&#160;&#160;&#160;(<a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___i_n_f_o.html#gacfcefe0d62276098440b81c0216b0466">DW_IIC_MASTER_SUPPORTED</a>|<a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___i_n_f_o.html#ga857d13cb0b37e0aa5efdfd886f5d859f">DW_IIC_SLAVE_SUPPORTED</a>)</td></tr>
 <tr class="separator:gaadca31a022beb763a4e256c264f6bb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af32a3a4ac37235611cd4c81a0a58f635"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af32a3a4ac37235611cd4c81a0a58f635"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_IIC_INVALID_INTNO</b>&#160;&#160;&#160;(<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga1c959a409ad6e952dc79b876f8e9b861">DEV_INTNO_INVALID</a>)</td></tr>
+<tr class="separator:af32a3a4ac37235611cd4c81a0a58f635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad147fb4d3e48ce1d0df6bd14ccfb975a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__iic_8h.html#ad147fb4d3e48ce1d0df6bd14ccfb975a">DW_IIC_GINT_DISABLED</a>&#160;&#160;&#160;(0)</td></tr>
 <tr class="separator:ad147fb4d3e48ce1d0df6bd14ccfb975a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0509ef4816530066c19a6ae16179c2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__iic_8h.html#ab0509ef4816530066c19a6ae16179c2a">DW_IIC_GINT_ENABLE</a>&#160;&#160;&#160;(1&lt;&lt;0)</td></tr>
@@ -150,8 +153,57 @@ Macros</h2></td></tr>
 <tr class="separator:aff63376ae7c2948cc57d99bc87dc15e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dc29a268b2193cc94e214dd84f6ad6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__iic_8h.html#a5dc29a268b2193cc94e214dd84f6ad6b">DW_IIC_RXINT_ENABLE</a>&#160;&#160;&#160;(1&lt;&lt;2)</td></tr>
 <tr class="separator:a5dc29a268b2193cc94e214dd84f6ad6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49faa4ff35ed5bebe06df813faecfb33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__iic_8h.html#a49faa4ff35ed5bebe06df813faecfb33">DW_IIC_MAX_RETRY_COUNT</a>&#160;&#160;&#160;(100000)</td></tr>
+<tr class="memitem:a49faa4ff35ed5bebe06df813faecfb33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49faa4ff35ed5bebe06df813faecfb33"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_IIC_MAX_RETRY_COUNT</b>&#160;&#160;&#160;(100000)</td></tr>
 <tr class="separator:a49faa4ff35ed5bebe06df813faecfb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d70e8169a5755c6ede481976d3d061b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d70e8169a5755c6ede481976d3d061b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_IIC_FS_SPKLEN_NS</b>&#160;&#160;&#160;(50)</td></tr>
+<tr class="separator:a2d70e8169a5755c6ede481976d3d061b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7e9ead716f17c1c151dbc3e913b4c94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7e9ead716f17c1c151dbc3e913b4c94"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_IIC_HS_SPKLEN_NS</b>&#160;&#160;&#160;(10)</td></tr>
+<tr class="separator:af7e9ead716f17c1c151dbc3e913b4c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c11f51301cd3bfba1a128f9fa275c84"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c11f51301cd3bfba1a128f9fa275c84"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_SS_SCL_LCNT</b>(spklen)&#160;&#160;&#160;((spklen)+7)</td></tr>
+<tr class="separator:a2c11f51301cd3bfba1a128f9fa275c84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b49a7c24b2193e0655545f576071e1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b49a7c24b2193e0655545f576071e1b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_FS_SCL_LCNT</b>(spklen)&#160;&#160;&#160;((spklen)+7)</td></tr>
+<tr class="separator:a1b49a7c24b2193e0655545f576071e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dd1a6f773a16d4877795f0fdcde32b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1dd1a6f773a16d4877795f0fdcde32b0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_SS_SCL_HCNT</b>(spklen)&#160;&#160;&#160;((spklen)+5)</td></tr>
+<tr class="separator:a1dd1a6f773a16d4877795f0fdcde32b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda1838221c0e8887f6caaf10d266b99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adda1838221c0e8887f6caaf10d266b99"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_FS_SCL_HCNT</b>(spklen)&#160;&#160;&#160;((spklen)+5)</td></tr>
+<tr class="separator:adda1838221c0e8887f6caaf10d266b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf025566047a9df9a17c78f42980460"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcf025566047a9df9a17c78f42980460"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_HS_SCL_LCNT</b>(spklen)&#160;&#160;&#160;((spklen)+7)</td></tr>
+<tr class="separator:adcf025566047a9df9a17c78f42980460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3933c11c2ae2a6ca5ff1482aa7558fd8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3933c11c2ae2a6ca5ff1482aa7558fd8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_HS_SCL_HCNT</b>(spklen)&#160;&#160;&#160;((spklen)+5)</td></tr>
+<tr class="separator:a3933c11c2ae2a6ca5ff1482aa7558fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2faf2c304ba2f92c8bb0e9f1990ef3b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2faf2c304ba2f92c8bb0e9f1990ef3b0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_SS_HIGH_TIME_NS</b>&#160;&#160;&#160;(4000)</td></tr>
+<tr class="separator:a2faf2c304ba2f92c8bb0e9f1990ef3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba218611406987e29961c41de4954d01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba218611406987e29961c41de4954d01"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_SS_LOW_TIME_NS</b>&#160;&#160;&#160;(4700)</td></tr>
+<tr class="separator:aba218611406987e29961c41de4954d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b05e4873b374b4b67a0ad16a2c1326"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7b05e4873b374b4b67a0ad16a2c1326"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_FS_HIGH_TIME_NS</b>&#160;&#160;&#160;(600)</td></tr>
+<tr class="separator:af7b05e4873b374b4b67a0ad16a2c1326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a064fc04b81a52069409c8d938be4c8a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a064fc04b81a52069409c8d938be4c8a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_FS_LOW_TIME_NS</b>&#160;&#160;&#160;(1300)</td></tr>
+<tr class="separator:a064fc04b81a52069409c8d938be4c8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d5e69e1e2c60e93e85d250547b55d27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d5e69e1e2c60e93e85d250547b55d27"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_HS_100PF_HIGH_TIME_NS</b>&#160;&#160;&#160;(60)</td></tr>
+<tr class="separator:a0d5e69e1e2c60e93e85d250547b55d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877686cd5597e7c567a2f2b6a8eac012"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a877686cd5597e7c567a2f2b6a8eac012"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_HS_100PF_LOW_TIME_NS</b>&#160;&#160;&#160;(160)</td></tr>
+<tr class="separator:a877686cd5597e7c567a2f2b6a8eac012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94981d0bc25a25531820d32362c548a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac94981d0bc25a25531820d32362c548a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_HS_400PF_HIGH_TIME_NS</b>&#160;&#160;&#160;(120)</td></tr>
+<tr class="separator:ac94981d0bc25a25531820d32362c548a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a770dbb3cd985f1a2aff1e1cfc912eb36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a770dbb3cd985f1a2aff1e1cfc912eb36"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_DW_IIC_HS_400PF_LOW_TIME_NS</b>&#160;&#160;&#160;(320)</td></tr>
+<tr class="separator:a770dbb3cd985f1a2aff1e1cfc912eb36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -188,6 +240,13 @@ typedef struct <a class="el" href="structdw__iic__buffer.html">dw_iic_buffer</a>
 <tr class="memitem:af3016734c5112447af36a9e00039f9e2"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structdw__iic__ctrl.html">dw_iic_ctrl</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__iic_8h.html#af3016734c5112447af36a9e00039f9e2">DW_IIC_CTRL_PTR</a></td></tr>
 <tr class="separator:af3016734c5112447af36a9e00039f9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55b"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>DW_IIC_CAP_LOADING_100PF</b> = 0, 
+<b>DW_IIC_CAP_LOADING_400PF</b>
+ }</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gad75471c3a8e98385a58d6b887316f8f5"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r.html#gad75471c3a8e98385a58d6b887316f8f5">dw_iic_open</a> (<a class="el" href="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t.html#gaf976c496ff5f91bfaa0eeb8383fbdd5a">DEV_IIC</a> *iic_obj, uint32_t mode, uint32_t param)</td></tr>
@@ -208,14 +267,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gacd0ef0be9b50cb36286b1ec5ca663d64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r.html#gacd0ef0be9b50cb36286b1ec5ca663d64">dw_iic_isr</a> (<a class="el" href="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t.html#gaf976c496ff5f91bfaa0eeb8383fbdd5a">DEV_IIC</a> *iic_obj, void *ptr)</td></tr>
 <tr class="memdesc:gacd0ef0be9b50cb36286b1ec5ca663d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">DesignWare IIC interrupt processing routine.  <a href="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r.html#gacd0ef0be9b50cb36286b1ec5ca663d64">More...</a><br /></td></tr>
 <tr class="separator:gacd0ef0be9b50cb36286b1ec5ca663d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:af0b578e3c744019376cd702ce133006a"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__iic_8h.html#af0b578e3c744019376cd702ce133006a">dw_iic_spklen_const</a> = {5, 1}</td></tr>
-<tr class="separator:af0b578e3c744019376cd702ce133006a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8861d43ee24a46484651d29e72de503f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8861d43ee24a46484651d29e72de503f"></a>
-static const <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d65999">DW_IIC_SCL_CNT</a>&#160;</td><td class="memItemRight" valign="bottom"><b>dw_iic_sclcnt_const</b> = {0x0190, 0x01d6, 0x003c, 0x0082, 0xc, 0x20}</td></tr>
-<tr class="separator:a8861d43ee24a46484651d29e72de503f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>designware iic driver header file </p>
@@ -233,7 +284,7 @@ static const <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d659
 </div><div class="memdoc">
 <p>designware interrupt disabled for control iic irq/fiq </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00143">143</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00147">147</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
 
 </div>
 </div>
@@ -248,26 +299,9 @@ static const <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d659
 </div><div class="memdoc">
 <p>designware interrupt enabled for control iic irq/fiq </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00144">144</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00148">148</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00588">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00645">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00611">dw_iic_ena_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00633">dw_iic_enable_interrupt()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a49faa4ff35ed5bebe06df813faecfb33"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DW_IIC_MAX_RETRY_COUNT&#160;&#160;&#160;(100000)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>100MHz </p>
-
-<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00178">178</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
-
-<p>Referenced by <a class="el" href="dw__iic__obj_8c_source.html#l00120">dw_iic_0_install()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00690">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00755">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00715">dw_iic_ena_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00739">dw_iic_enable_interrupt()</a>.</p>
 
 </div>
 </div>
@@ -282,9 +316,9 @@ static const <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d659
 </div><div class="memdoc">
 <p>designware interrupt enabled for control transmit process </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00146">146</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00150">150</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00674">dw_iic_abort_rx()</a>, <a class="el" href="dw__iic_8c_source.html#l00588">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00645">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00611">dw_iic_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00508">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00546">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00527">dw_iic_slv_dis_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00565">dw_iic_slv_ena_cbr()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00786">dw_iic_abort_rx()</a>, <a class="el" href="dw__iic_8c_source.html#l00690">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00755">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00715">dw_iic_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00610">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00648">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00629">dw_iic_slv_dis_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00667">dw_iic_slv_ena_cbr()</a>.</p>
 
 </div>
 </div>
@@ -299,9 +333,9 @@ static const <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d659
 </div><div class="memdoc">
 <p>designware interrupt enabled for control transmit process </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00145">145</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00149">149</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00658">dw_iic_abort_tx()</a>, <a class="el" href="dw__iic_8c_source.html#l00588">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00645">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00611">dw_iic_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00508">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00546">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00527">dw_iic_slv_dis_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00565">dw_iic_slv_ena_cbr()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00770">dw_iic_abort_tx()</a>, <a class="el" href="dw__iic_8c_source.html#l00690">dw_iic_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00755">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00715">dw_iic_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00610">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00648">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00629">dw_iic_slv_dis_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00667">dw_iic_slv_ena_cbr()</a>.</p>
 
 </div>
 </div>
@@ -334,40 +368,14 @@ static const <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d659
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="af0b578e3c744019376cd702ce133006a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> dw_iic_spklen_const = {5, 1}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>&lt; One possible value for <a class="el" href="structdw__iic__ctrl.html#ad936442e76e6a38ee817bf17e0d5cdf5">dw_iic_ctrl::iic_spklen</a> One possible value for <a class="el" href="structdw__iic__ctrl.html#ad936442e76e6a38ee817bf17e0d5cdf5">dw_iic_ctrl::iic_spklen</a> </p>
-
-<p>Definition at line <a class="el" href="dw__iic_8h_source.html#l00204">204</a> of file <a class="el" href="dw__iic_8h_source.html">dw_iic.h</a>.</p>
-
-<p>Referenced by <a class="el" href="dw__iic__obj_8c_source.html#l00120">dw_iic_0_install()</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_b59a8600bbd419fdb936261c6802f792.html">designware</a></li><li class="navelem"><a class="el" href="dir_a063b08016e6987a02b2dab99dd2157b.html">iic</a></li><li class="navelem"><a class="el" href="dw__iic_8h.html">dw_iic.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_186dbe9c673f504ebc67eaaff66f4d3d.html">ip</a></li><li class="navelem"><a class="el" href="dir_b056e28a29363c4009472bd1a71fa520.html">designware</a></li><li class="navelem"><a class="el" href="dir_3db3af53fa3d51172b0d6adb4bb8a763.html">iic</a></li><li class="navelem"><a class="el" href="dw__iic_8h.html">dw_iic.h</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:20 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,64 +127,61 @@ $(document).ready(function(){initNavTree('freertos_2kernel__secure_2container__c
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.03</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2016-11-21</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Wayne Ren(Wei.Ren@synopsys.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="freertos_2kernel__secure_2container1_8h.html">container1.h</a>&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="freertos_2kernel__secure_2container2_8h.html">container2.h</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="freertos_2kernel__secure_2background__container_8h.html">background_container.h</a>&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// Container 1:  one special memory region for communication with container 2</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">static</span> CONTAINER_AC_TABLE g_container1_act[] = {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {init_secret, 0, SECURESHIELD_AC_INTERFACE},</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {operate_secret, 3, SECURESHIELD_AC_INTERFACE},</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {(<span class="keywordtype">void</span> *)CONTAINER_12_SHARED_ORIGIN, CONTAINER_12_SHARED_LENGTH, SECURESHIELD_ACDEF_URAM}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">// Container 2: one special memory region for communication with container 2</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">static</span> CONTAINER_AC_TABLE g_container2_act[] = {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {(<span class="keywordtype">void</span> *)CONTAINER_12_SHARED_ORIGIN, CONTAINER_12_SHARED_LENGTH, SECURESHIELD_ACDEF_URAM},</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {trusted_ops, 0, SECURESHIELD_AC_INTERFACE}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">static</span> CONTAINER_AC_TABLE g_main_container_act[] = {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#ifdef BOARD_EMSK</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define PERIPHERAL_ADDR_BASE 0xf0000000</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">/* PINMUX, UART1 and GPIO0 are required */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {(<span class="keywordtype">void</span> *)(PERIPHERAL_ADDR_BASE + <a class="code" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gad546bb76834a25f627e225bb1638afe8">REL_REGBASE_PINMUX</a>), 0x1000, SECURESHIELD_ACDEF_UPERIPH},</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {(<span class="keywordtype">void</span> *)(PERIPHERAL_ADDR_BASE + <a class="code" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga96ca2c9bd93f3b4b9dc7572250490f7f">REL_REGBASE_UART1</a>), 0x1000, SECURESHIELD_ACDEF_UPERIPH},</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {(<span class="keywordtype">void</span> *)(PERIPHERAL_ADDR_BASE + <a class="code" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga0eb03c00f04b81f4f0ac787fe4a0ccff">REL_REGBASE_GPIO0</a>), 0x1000, SECURESHIELD_ACDEF_UPERIPH},</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ},</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {default_interrupt_handler, INTNO_UART1, SECURESHIELD_AC_IRQ},</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">/* Timer1, Timer 0, RTC and TIMIE BCR are accessible for background container*/</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#if SECURESHIELD_VERSION == 1</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {(<span class="keywordtype">void</span> *)0x21, 0x3, SECURESHIELD_AC_AUX},</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {(<span class="keywordtype">void</span> *)0x100, 0x6, SECURESHIELD_AC_AUX},</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {(<span class="keywordtype">void</span> *)0x75, 0x1, SECURESHIELD_AC_AUX},</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;#endif  </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* if LIB_SECURESHIELD_VERSION == 2, the following interrupts are configured as normal interrupts */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {default_interrupt_handler, INTNO_LOW_PRI, SECURESHIELD_AC_IRQ},</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {default_interrupt_handler, INTNO_HIGH_PRI, SECURESHIELD_AC_IRQ},</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {default_interrupt_handler, <a class="code" href="group___b_o_a_r_d___a_x_s__103.html#ga7b8512078a0c7ba91d2f2058ca8e66b6">INTNO_TIMER0</a>, SECURESHIELD_AC_IRQ}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="freertos_2kernel__secure_2container1_8h.html">container1.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="freertos_2kernel__secure_2container2_8h.html">container2.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="freertos_2kernel__secure_2background__container_8h.html">background_container.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// Container 1:  one special memory region for communication with container 2</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">static</span> CONTAINER_AC_TABLE g_container1_act[] = {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {init_secret, 0, SECURESHIELD_AC_INTERFACE},</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {operate_secret, 3, SECURESHIELD_AC_INTERFACE},</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {(<span class="keywordtype">void</span> *)CONTAINER_12_SHARED_ORIGIN, CONTAINER_12_SHARED_LENGTH, SECURESHIELD_ACDEF_URAM}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// Container 2: one special memory region for communication with container 2</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">static</span> CONTAINER_AC_TABLE g_container2_act[] = {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {(<span class="keywordtype">void</span> *)CONTAINER_12_SHARED_ORIGIN, CONTAINER_12_SHARED_LENGTH, SECURESHIELD_ACDEF_URAM},</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {trusted_ops, 0, SECURESHIELD_AC_INTERFACE}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">static</span> CONTAINER_AC_TABLE g_main_container_act[] = {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#ifdef BOARD_EMSK</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define PERIPHERAL_ADDR_BASE 0xf0000000</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">/* PINMUX, UART1 and GPIO0 are required */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {(<span class="keywordtype">void</span> *)(PERIPHERAL_ADDR_BASE + <a class="code" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gad546bb76834a25f627e225bb1638afe8">REL_REGBASE_PINMUX</a>), 0x1000, SECURESHIELD_ACDEF_UPERIPH},</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {(<span class="keywordtype">void</span> *)(PERIPHERAL_ADDR_BASE + <a class="code" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga96ca2c9bd93f3b4b9dc7572250490f7f">REL_REGBASE_UART1</a>), 0x1000, SECURESHIELD_ACDEF_UPERIPH},</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {(<span class="keywordtype">void</span> *)(PERIPHERAL_ADDR_BASE + <a class="code" href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga0eb03c00f04b81f4f0ac787fe4a0ccff">REL_REGBASE_GPIO0</a>), 0x1000, SECURESHIELD_ACDEF_UPERIPH},</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ},</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {default_interrupt_handler, INTNO_UART1, SECURESHIELD_AC_IRQ},</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">/* Timer1, Timer 0, RTC and TIMIE BCR are accessible for background container*/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#if SECURESHIELD_VERSION == 1</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {(<span class="keywordtype">void</span> *)0x21, 0x3, SECURESHIELD_AC_AUX},</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {(<span class="keywordtype">void</span> *)0x100, 0x6, SECURESHIELD_AC_AUX},</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {(<span class="keywordtype">void</span> *)0x75, 0x1, SECURESHIELD_AC_AUX},</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;#endif</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/* if LIB_SECURESHIELD_VERSION == 2, the following interrupts are configured as normal interrupts */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {default_interrupt_handler, INTNO_LOW_PRI, SECURESHIELD_AC_IRQ},</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {default_interrupt_handler, INTNO_HIGH_PRI, SECURESHIELD_AC_IRQ},</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {default_interrupt_handler, <a class="code" href="group___b_o_a_r_d___a_x_s__103.html#ga7b8512078a0c7ba91d2f2058ca8e66b6">INTNO_TIMER0</a>, SECURESHIELD_AC_IRQ}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/* set the access control table of background container */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;SECURESHIELD_CONTAINER_BACKGROUND(g_main_container_act);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/* enable secureshield, set the access control table of background container */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;SECURESHIELD_SET_MODE_AC(SECURESHIELD_ENABLED, g_main_container_act);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/* configure other containers */</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;SECURESHIELD_CONTAINER_CONFIG(container1, g_container1_act, 1024);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;SECURESHIELD_CONTAINER_CONFIG(container2, g_container2_act, 1024);</div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_html_gad546bb76834a25f627e225bb1638afe8"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gad546bb76834a25f627e225bb1638afe8">REL_REGBASE_PINMUX</a></div><div class="ttdeci">#define REL_REGBASE_PINMUX</div><div class="ttdef"><b>Definition:</b> <a href="11_2emsk__hardware_8h_source.html#l00071">11/emsk_hardware.h:71</a></div></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/* configure other containers */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;SECURESHIELD_CONTAINER_CONFIG(container1, g_container1_act, 1024);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;SECURESHIELD_CONTAINER_CONFIG(container2, g_container2_act, 1024);</div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_html_gad546bb76834a25f627e225bb1638afe8"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gad546bb76834a25f627e225bb1638afe8">REL_REGBASE_PINMUX</a></div><div class="ttdeci">#define REL_REGBASE_PINMUX</div><div class="ttdef"><b>Definition:</b> <a href="11_2emsk__hardware_8h_source.html#l00068">11/emsk_hardware.h:68</a></div></div>
 <div class="ttc" id="freertos_2kernel__secure_2background__container_8h_html"><div class="ttname"><a href="freertos_2kernel__secure_2background__container_8h.html">background_container.h</a></div><div class="ttdoc">background container head file </div></div>
-<div class="ttc" id="group___b_o_a_r_d___a_x_s__103_html_ga7b8512078a0c7ba91d2f2058ca8e66b6"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s__103.html#ga7b8512078a0c7ba91d2f2058ca8e66b6">INTNO_TIMER0</a></div><div class="ttdeci">#define INTNO_TIMER0</div><div class="ttdef"><b>Definition:</b> <a href="axs__hardware_8h_source.html#l00109">axs_hardware.h:109</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___a_x_s__103_html_ga7b8512078a0c7ba91d2f2058ca8e66b6"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s__103.html#ga7b8512078a0c7ba91d2f2058ca8e66b6">INTNO_TIMER0</a></div><div class="ttdeci">#define INTNO_TIMER0</div><div class="ttdef"><b>Definition:</b> <a href="axs__hardware_8h_source.html#l00106">axs_hardware.h:106</a></div></div>
 <div class="ttc" id="freertos_2kernel__secure_2container1_8h_html"><div class="ttname"><a href="freertos_2kernel__secure_2container1_8h.html">container1.h</a></div><div class="ttdoc">freertos kernel secure example container1 head file </div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_html_ga0eb03c00f04b81f4f0ac787fe4a0ccff"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga0eb03c00f04b81f4f0ac787fe4a0ccff">REL_REGBASE_GPIO0</a></div><div class="ttdeci">#define REL_REGBASE_GPIO0</div><div class="ttdef"><b>Definition:</b> <a href="11_2emsk__hardware_8h_source.html#l00072">11/emsk_hardware.h:72</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_html_ga0eb03c00f04b81f4f0ac787fe4a0ccff"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga0eb03c00f04b81f4f0ac787fe4a0ccff">REL_REGBASE_GPIO0</a></div><div class="ttdeci">#define REL_REGBASE_GPIO0</div><div class="ttdef"><b>Definition:</b> <a href="11_2emsk__hardware_8h_source.html#l00069">11/emsk_hardware.h:69</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_html_ga96ca2c9bd93f3b4b9dc7572250490f7f"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga96ca2c9bd93f3b4b9dc7572250490f7f">REL_REGBASE_UART1</a></div><div class="ttdeci">#define REL_REGBASE_UART1</div><div class="ttdef"><b>Definition:</b> <a href="11_2emsk__hardware_8h_source.html#l00079">11/emsk_hardware.h:79</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_html_ga96ca2c9bd93f3b4b9dc7572250490f7f"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga96ca2c9bd93f3b4b9dc7572250490f7f">REL_REGBASE_UART1</a></div><div class="ttdeci">#define REL_REGBASE_UART1</div><div class="ttdef"><b>Definition:</b> <a href="11_2emsk__hardware_8h_source.html#l00076">11/emsk_hardware.h:76</a></div></div>
 <div class="ttc" id="freertos_2kernel__secure_2container2_8h_html"><div class="ttname"><a href="freertos_2kernel__secure_2container2_8h.html">container2.h</a></div><div class="ttdoc">freertos kernel secure example container2 head file </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -193,7 +190,7 @@ $(document).ready(function(){initNavTree('freertos_2kernel__secure_2container__c
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_4859bdb505fc77d673a475f3db3c7ec1.html">kernel_secure</a></li><li class="navelem"><a class="el" href="freertos_2kernel__secure_2container__cfg_8c.html">container_cfg.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:06 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:11 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

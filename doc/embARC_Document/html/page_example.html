@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -177,6 +177,8 @@ Options to Set Using the make Command</h3>
 <td>axs </td><td><a class="el" href="page_board_axs.html">AXS Board</a> </td></tr>
 <tr>
 <td>nsim </td><td><a class="el" href="page_board_nsim.html">Virtual Board based on nSIM</a> </td></tr>
+<tr>
+<td>hsdk </td><td><a class="el" href="page_board_hsdk.html">ARC HS Development Kit</a> </td></tr>
 </table>
 </li>
 <li>For example, <em>make BOARD=emsk</em> selects the EMSK board as the target board.</li>
@@ -192,6 +194,8 @@ Options to Set Using the make Command</h3>
 <td>axs </td><td>board/axs/axs.mk </td></tr>
 <tr>
 <td>nsim </td><td>board/nsim/nsim.mk </td></tr>
+<tr>
+<td>hsdk </td><td>board/hsdk/hsdk.mk </td></tr>
 </table>
 </li>
 <li>For the <em>emsk</em> board, three versions are supported in embARC: 1.1, 2.2, and 2.3. The optional values of <em>BD_VER</em> are <em>11</em>, <em>22</em> and <em>23</em>. The <em>BD_VER</em> must match the target EMSK version. For example, programs built for 1.1 cannot run on an EMSK 2.x board. The default value of <em>BD_VER</em> for the <em>emsk</em> board is <em>22</em>.<ul>
@@ -200,6 +204,7 @@ Options to Set Using the make Command</h3>
 </li>
 <li>For the <em>axs</em> board, one version is supported: 103. The optional value of <em>BD_VER</em> is <em>103</em>. The default value of <em>BD_VER</em> for the <em>axs</em> board is <em>103</em>.</li>
 <li>For the <em>nsim</em> board, two versions are supported: 10, 1506. The optional value of <em>BD_VER</em> is <em>1506</em> and <em>10</em>. The default value of <em>BD_VER</em> for the <em>nsim</em> board is <em>1506</em>.</li>
+<li>For the <em>hsdk</em> board, one version is supported: 10. The optional value of <em>BD_VER</em> is <em>10</em>. The default value of <em>BD_VER</em> for the <em>hsdk</em> board is <em>10</em>.</li>
 <li>For example, <em>make BOARD=emsk BD_VER=22</em> selects <em>2.2</em> as the EMSK target board version.</li>
 </ul>
 </li>
@@ -259,6 +264,20 @@ Options to Set Using the make Command</h3>
 <td>arcem </td><td>ARC EM core </td></tr>
 <tr>
 <td>archs </td><td>ARC HS core </td></tr>
+</table>
+</li>
+<li>For <em>hsdk</em>, the default value of this option is defined in <b>board/hsdk/configs/10/core_config.mk</b>.</li>
+<li>Optional values for <em>hsdk</em>; default value is <em>archs38_c0</em>. <table class="doxtable">
+<tr>
+<th>CUR_CORE </th><th>Description  </th></tr>
+<tr>
+<td>archs38_c0 </td><td>ARC HS38x4 core 0 </td></tr>
+<tr>
+<td>archs38_c1 </td><td>ARC HS38x4 core 1 </td></tr>
+<tr>
+<td>archs38_c2 </td><td>ARC HS38x4 core 2 </td></tr>
+<tr>
+<td>archs38_c3 </td><td>ARC HS38x4 core 3 </td></tr>
 </table>
 </li>
 <li>For example, <em>make BOARD=emsk BD_VER=23 CUR_CORE=arcem11d</em> selects the <em>arcem11d</em> core configuration for emsk 2.3.</li>
@@ -330,8 +349,6 @@ Options to Hard-Code in the Application Makefile</h3>
 <th>OS_SEL </th><th>Description  </th></tr>
 <tr>
 <td>freertos </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___f_r_e_e_r_t_o_s.html">FreeRTOS Runtime</a> </td></tr>
-<tr>
-<td>contiki </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___c_o_n_t_i_k_i.html">Contiki Runtime</a> </td></tr>
 </table>
 </li>
 <li>If you leave the <em>OS_SEL</em> value blank, such as <b>OS_SEL= </b>, no OS services are selected; just use <a class="el" href="group___e_m_b_a_r_c___a_p_p_s___b_a_r_e_m_e_t_a_l.html">Bare-Metal Run Time</a>.</li>
@@ -386,22 +403,18 @@ Options to Hard-Code in the Application Makefile</h3>
 <li>The default value of this option is defined in <b>board/board.mk</b>.</li>
 <li>Default value is 1; set in <em>&lt;embARC&gt;/board/board.mk</em>.</li>
 <li>When this option is 0, it uses the normal board init process, compatible with previous embARC releases; you must do board_init yourself.</li>
-<li>When this option is 1, embARC initializes fatfs, ntshell, and lwip with WiFi and creates a FreeRTOS task for <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a>. You only need to write applications or create new tasks in the <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a> function. When ntshell is enabled, the <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a> function needs to be triggered by the ntshell <em>main</em> command.</li>
+<li>When this option is 1, embARC initializes fatfs, ntshell, and lwip with WiFi and creates a FreeRTOS task for <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___t_i_m_e_r___i_n_t_e_r_r_u_p_t.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a>. You only need to write applications or create new tasks in the <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___t_i_m_e_r___i_n_t_e_r_r_u_p_t.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a> function. When ntshell is enabled, the <a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___t_i_m_e_r___i_n_t_e_r_r_u_p_t.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a> function needs to be triggered by the ntshell <em>main</em> command.</li>
 <li>For more details about how this new process is implemented, see <em>&lt;embARC&gt;/board/board.c</em>.</li>
 <li>In most cases, you don't need to change this value to <em>0</em>.</li>
 </ul>
 </li>
-<li><b>WIFI_SEL</b>: Set WiFi module used in the examples.<ul>
-<li>The default value of this option is defined in <b>board/board.mk</b>.</li>
-<li>Optional values for <em>WIFI_SEL</em> are shown below. <table class="doxtable">
-<tr>
-<th>WIFI_SEL </th><th>Description  </th></tr>
-<tr>
-<td>0 </td><td>PmodWiFi (default) </td></tr>
-<tr>
-<td>1 </td><td>RW009 WiFi </td></tr>
-</table>
-</li>
+<li><b>EXT_DEV_LIST</b>: Select peripheral device drivers used in example.<ul>
+<li>Use it in the example's makefile, like this <code>EXT_DEV_LIST += sensor/temperature/adt7420</code></li>
+<li>Optional values for <em>EXT_DEV_LIST</em> can be found in <em>device/peripheral</em>.</li>
+<li>Select the peripheral device drivers relative path you want to use, and add to <code>EXT_DEV_LIST</code>.</li>
+<li>If more than one peripheral device drivers are selected, please use space between each other, such as <code>EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420</code></li>
+<li>Some onboard peripheral device drivers are already selected according to the board you use, you can check it in board makefile.</li>
+<li><em>WIFI_SEL</em> is not available now, if you want to choose different WiFi, you need to change the <code>EXT_DEV_LIST</code> in your example makefile.</li>
 </ul>
 </li>
 <li><b>EMBARC_ROOT</b>: Set embARC source-code root directory path.<ul>
@@ -461,7 +474,7 @@ Building an Application in embARC</h1>
 <li>Set the parameters in the makefile, such as application name (APPL) and board-related parameters. <b>EMBARC_ROOT</b> is the relative path to the root of the embARC software.</li>
 <li>Select the required middleware (MID_SEL) and OS (OS_SEL).</li>
 <li>Set the source code (src) directory (APPL_CSRC_DIR for C files and APPL_ASMSRC_DIR for assembly (.s/.S)). The build system automatically collects the source files in the specified directories.</li>
-<li>Write application code. For bare metal, the <b><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a></b> function is the application entry, and some initialization must be done at the beginning of <b><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a></b>. For OS-based applications, see the provided OS-based examples.</li>
+<li>Write application code. For bare metal, the <b><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___t_i_m_e_r___i_n_t_e_r_r_u_p_t.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a></b> function is the application entry, and some initialization must be done at the beginning of <b><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___t_i_m_e_r___i_n_t_e_r_r_u_p_t.html#ga840291bc02cba5474a4cb46a9b9566fe" title="main entry for testing arc fiq interrupt ">main()</a></b>. For OS-based applications, see the provided OS-based examples.</li>
 <li>Build application code. See <a class="el" href="page_example_usage.html">embARC Example Usage</a> for detailed usage information.</li>
 </ul>
 <h1><a class="anchor" id="sect_example_overview_of_provided_embARC_examples"></a>
@@ -475,8 +488,6 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <tr>
 <th>Example Name </th><th>Example Directory </th><th>Example Document Link  </th></tr>
 <tr>
-<td>baremetal_arc_feature_axs103 </td><td>baremetal/arc_feature/axs103 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html">embARC AXS 103 board test Example</a> </td></tr>
-<tr>
 <td>baremetal_arc_feature_cache </td><td>baremetal/arc_feature/cache </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___c_a_c_h_e.html">embARC Cache Example</a> </td></tr>
 <tr>
 <td>baremetal_arc_feature_timer_interrupt </td><td>baremetal/arc_feature/timer_interrupt </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___t_i_m_e_r___i_n_t_e_r_r_u_p_t.html">embARC ARC Timer and Interrupt Example</a> </td></tr>
@@ -487,6 +498,8 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <tr>
 <td>baremetal_blinky </td><td>baremetal/blinky </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_l_i_n_k_y.html">embARC Blinky Example</a> </td></tr>
 <tr>
+<td>baremetal_axs103 </td><td>baremetal/axs103 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___a_r_c___f_e_a_t_u_r_e___a_x_s103.html">embARC AXS 103 board test Example</a> </td></tr>
+<tr>
 <td>baremetal_bootloader </td><td>baremetal/bootloader </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___b_o_o_t_l_o_a_d_e_r.html">embARC Secondary Bootloader Example</a> </td></tr>
 <tr>
 <td>baremetal_cxx </td><td>baremetal/cxx </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___c_x_x.html">embARC C++ Support Test Example</a> </td></tr>
@@ -495,7 +508,9 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <tr>
 <td>baremetal_graphic_u8glib </td><td>baremetal/graphic_u8glib </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___g_r_a_p_h_i_c___u8_g_l_i_b.html">embARC Graphic Example on SSD1306</a> </td></tr>
 <tr>
-<td>baremetal_openthread </td><td>baremetal/openthread </td><td>EMBARC_APP_BAREMETAL_OPENTHREAD </td></tr>
+<td>baremetal_openthread_cli </td><td>baremetal/openthread/cli </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___o_p_e_n_t_h_r_e_a_d___c_l_i.html">embARC OpenThread CLI example on MRF24J40</a> </td></tr>
+<tr>
+<td>baremetal_openthread_ncp </td><td>baremetal/openthread/ncp </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___o_p_e_n_t_h_r_e_a_d___n_c_p.html">embARC OpenThread NCP example on MRF24J40</a> </td></tr>
 <tr>
 <td>baremetal_secureshield_secret_secure </td><td>baremetal/secureshield/secret_secure </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___s_e_c_r_e_t___s_e_c_u_r_e.html">embARC SecureShield Secret Secure Example</a> </td></tr>
 <tr>
@@ -505,28 +520,6 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <tr>
 <td>baremetal_secureshield_test_case </td><td>baremetal/secureshield/test_case </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___s_e_c_u_r_e_s_h_i_e_l_d___t_e_s_t___c_a_s_e.html">embARC Secureshield Test Cases Example</a> </td></tr>
 <tr>
-<td>contiki_coap_server </td><td>contiki/coap_server </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___c_o_a_p___s_e_r_v_e_r.html">embARC Contiki CoAP Server Example</a> </td></tr>
-<tr>
-<td>contiki_ipv6_ip64_router </td><td>contiki/ipv6/ip64_router </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___i_p_v6___i_p64___r_o_u_t_e_r.html">embARC Contiki IPv6-IPv4 Border Router</a> </td></tr>
-<tr>
-<td>contiki_ipv6_multicast_intermediate </td><td>contiki/ipv6/multicast/intermediate </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___i_p_v6___m_u_l_t_i_c_a_s_t___i_n_t_e_r_m_e_d_i_a_t_e.html">embARC Contiki IPv6 Multicast Example-Intermediate Node</a> </td></tr>
-<tr>
-<td>contiki_ipv6_multicast_root </td><td>contiki/ipv6/multicast/root </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___i_p_v6___m_u_l_t_i_c_a_s_t___r_o_o_t.html">embARC Contiki IPv6 Multicast Example-Root Node</a> </td></tr>
-<tr>
-<td>contiki_ipv6_multicast_sink </td><td>contiki/ipv6/multicast/sink </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___i_p_v6___m_u_l_t_i_c_a_s_t___s_i_n_k.html">embARC Contiki IPv6 Multicast Example-Sink Node</a> </td></tr>
-<tr>
-<td>contiki_secureshield_dtls_client_ipv4 </td><td>contiki/secureshield/dtls_client_ipv4 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___s_e_c_u_r_e_s_h_i_e_l_d___d_t_l_s___c_l_i_e_n_t___i_p_v4.html">embARC Contiki+Secureshield TinyDTLS DTLS Client IPv4 Example</a> </td></tr>
-<tr>
-<td>contiki_sensor </td><td>contiki/sensor </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___s_e_n_s_o_r.html">embARC Contiki Sensor Example</a> </td></tr>
-<tr>
-<td>contiki_tinydtls_dtls_client_ipv4 </td><td>contiki/tinydtls/dtls_client_ipv4 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___t_i_n_y_d_t_l_s___d_t_l_s___c_l_i_e_n_t___i_p_v4.html">embARC Contiki TinyDTLS DTLS Client IPv4 Example</a> </td></tr>
-<tr>
-<td>contiki_tinydtls_dtls_server_ipv4 </td><td>contiki/tinydtls/dtls_server_ipv4 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___t_i_n_y_d_t_l_s___d_t_l_s___s_e_r_v_e_r___i_p_v4.html">embARC Contiki TinyDTLS DTLS Server IPv4 Example</a> </td></tr>
-<tr>
-<td>contiki_xively_http </td><td>contiki/xively_http </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___x_i_v_e_l_y___h_t_t_p.html">embARC Contiki Xively HTTP Example</a> </td></tr>
-<tr>
-<td>contiki_xively_mqtt </td><td>contiki/xively_mqtt </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___c_o_n_t_i_k_i___x_i_v_e_l_y___m_q_t_t.html">embARC Contiki Xively MQTT Client Example</a> </td></tr>
-<tr>
 <td>freertos_iot_coap_coap_server </td><td>freertos/iot/coap/coap_server </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___c_o_a_p___c_o_a_p___s_e_r_v_e_r.html">embARC LwIP CoAP Server Example</a> </td></tr>
 <tr>
 <td>freertos_iot_lwm2m_iot_demo </td><td>freertos/iot/lwm2m/iot_demo </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___l_w_m2_m___i_o_t___d_e_m_o.html">embARC IoT Demo with LwM2M Example</a> </td></tr>
@@ -534,8 +527,6 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <td>freertos_iot_lwm2m_lwm2m_client </td><td>freertos/iot/lwm2m/lwm2m_client </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___l_w_m2_m___l_w_m2_m___c_l_i_e_n_t.html">embARC LwIP LwM2M Client Example</a> </td></tr>
 <tr>
 <td>freertos_iot_lwm2m_lwm2m_server </td><td>freertos/iot/lwm2m/lwm2m_server </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___l_w_m2_m___l_w_m2_m___s_e_r_v_e_r.html">embARC LwIP LwM2M Server Example</a> </td></tr>
-<tr>
-<td>freertos_iot_xively_mqtt </td><td>freertos/iot/xively_mqtt </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___x_i_v_e_l_y___m_q_t_t.html">embARC Xively MQTT demo</a> </td></tr>
 <tr>
 <td>freertos_kernel </td><td>freertos/kernel </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l.html">embARC FreeRTOS Kernel Example</a> </td></tr>
 <tr>
@@ -545,10 +536,6 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <tr>
 <td>freertos_net_ntshell </td><td>freertos/net/ntshell </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___n_e_t___n_t_s_h_e_l_l.html">embARC Net Example on NT-Shell</a> </td></tr>
 <tr>
-<td>freertos_sec_matrixssl_echoclient </td><td>freertos/sec/matrixssl/echoclient </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_a_t_r_i_x_s_s_l___e_c_h_o_c_l_i_e_n_t.html">embARC MatrixSSL Secure Echoclient</a> </td></tr>
-<tr>
-<td>freertos_sec_matrixssl_echoserver </td><td>freertos/sec/matrixssl/echoserver </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_a_t_r_i_x_s_s_l___e_c_h_o_s_e_r_v_e_r.html">embARC MatrixSSL Secure Echoserver</a> </td></tr>
-<tr>
 <td>freertos_sec_mbedtls_dtls_client </td><td>freertos/sec/mbedtls/dtls/client </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_b_e_d_t_l_s___d_t_l_s___c_l_i_e_n_t.html">embARC DTLS Secure Client using mbed TLS</a> </td></tr>
 <tr>
 <td>freertos_sec_mbedtls_dtls_server </td><td>freertos/sec/mbedtls/dtls/server </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_b_e_d_t_l_s___d_t_l_s___s_e_r_v_e_r.html">embARC DTLS Secure Server using mbed TLS</a> </td></tr>
@@ -556,32 +543,29 @@ The .elf files of the following examples can be loaded through JTAG, or the .bin
 <td>freertos_sec_mbedtls_ssl_client2 </td><td>freertos/sec/mbedtls/ssl/client2 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_b_e_d_t_l_s___s_s_l___c_l_i_e_n_t2.html">embARC SSL Secure Client using mbed TLS</a> </td></tr>
 <tr>
 <td>freertos_sec_mbedtls_ssl_server2 </td><td>freertos/sec/mbedtls/ssl/server2 </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___m_b_e_d_t_l_s___s_s_l___s_e_r_v_e_r2.html">embARC SSL Secure Server using mbed TLS</a> </td></tr>
-<tr>
-<td>freertos_sec_wolfssl_client </td><td>freertos/sec/wolfssl/client </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___w_o_l_f_s_s_l___c_l_i_e_n_t.html">embARC wolfSSL Secure Client</a> </td></tr>
-<tr>
-<td>freertos_sec_wolfssl_server </td><td>freertos/sec/wolfssl/server </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___s_e_c___w_o_l_f_s_s_l___s_e_r_v_e_r.html">embARC wolfSSL Secure Server</a> </td></tr>
 </table>
 </li>
-<li><b>Here is a list of embARC applications</b>, located in <em>&lt;embARC&gt;/application</em>. <table class="doxtable">
+<li><b>Here is a list of embARC applications</b>, located in <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications">embARC applications</a>. <table class="doxtable">
 <tr>
-<th>Application Name </th><th>Application Directory </th><th>Application Document Link  </th></tr>
+<th>Application Name </th><th>Application Link  </th></tr>
 <tr>
-<td>aws_iot_smarthome_demo </td><td>aws_iot_smarthome/src </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___a_w_s___s_m_a_r_t_h_o_m_e___d_e_m_o.html">embARC IoT Amazon Web Services(AWS) Smart Home Demo</a> </td></tr>
+<td>aws_iot_smarthome </td><td><a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome">AWS IoT Smarthome Application</a> </td></tr>
 <tr>
-<td>aws_iot_smarthome_nodes_frontDoor </td><td>aws_iot_smarthome_multinode/src/frontDoor </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___a_w_s___s_m_a_r_t_h_o_m_e___n_o_d_e_s___f_r_o_n_t_d_o_o_r.html">embARC IoT Amazon Web Services(AWS) Smart Home Node Front Door</a> </td></tr>
+<td>aws_iot_smarthome_multinode </td><td><a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome_multinode">AWS IoT Smarthome Multi-node Application</a> </td></tr>
 <tr>
-<td>aws_iot_smarthome_nodes_kitchen </td><td>aws_iot_smarthome_multinode/src/kitchen </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___a_w_s___s_m_a_r_t_h_o_m_e___n_o_d_e_s___k_i_t_c_h_e_n.html">embARC IoT Amazon Web Services(AWS) Smart Home Node Kitchen</a> </td></tr>
+<td>ibaby_smarthome_multinode </td><td><a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/ibaby_smarthome_multinode">iBaby Smarthome Application</a> </td></tr>
 <tr>
-<td>aws_iot_smarthome_nodes_livingRoom </td><td>aws_iot_smarthome_multinode/src/livingRoom </td><td><a class="el" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___a_w_s___s_m_a_r_t_h_o_m_e___n_o_d_e_s___l_i_v_i_n_g_r_o_o_m.html">embARC IoT Amazon Web Services(AWS) Smart Home Node Living Room</a> </td></tr>
+<td>ilight_smartdevice </td><td><a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/ilight_smartdevice">iLight SmartDevice Application</a> </td></tr>
+<tr>
+<td>ot_smarthome_multinode </td><td><a href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/ot_smarthome_multinode">OpenThread Smarthome Application</a> </td></tr>
 </table>
 </li>
 </ul>
 <h1><a class="anchor" id="sect_example_division_of_provided_embARC_examples"></a>
 Division of embARC Examples</h1>
-<p>embARC provides bare-metal, FreeRTOS, and Contiki examples. You can click on the following links to go to the appropriate section.</p><ul>
+<p>embARC provides bare-metal and FreeRTOS examples. You can click on the following links to go to the appropriate section.</p><ul>
 <li><a class="el" href="group___e_m_b_a_r_c___a_p_p_s___b_a_r_e_m_e_t_a_l.html">Baremetal Examples</a></li>
-<li><a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___f_r_e_e_r_t_o_s.html">FreeRTOS Examples</a></li>
-<li><a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___c_o_n_t_i_k_i.html">Contiki Examples</a> </li>
+<li><a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___f_r_e_e_r_t_o_s.html">FreeRTOS Examples</a> </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
@@ -589,7 +573,7 @@ Division of embARC Examples</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:23 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -209,6 +209,12 @@ Inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 Inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___s_t_a_t_i_c.html#ga6aee62cffd57bce7d01c97221973e8bb">dw_iic_set_scl_cnt</a> (<a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___r_e_g_s_t_r_u_c_t.html#ga68f539e7b0bf755a2cdf228eb930cfbb">DW_IIC_REG</a> *iic_reg_ptr, <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d65999">DW_IIC_SCL_CNT</a> *scl_cnt)</td></tr>
 <tr class="memdesc:ga6aee62cffd57bce7d01c97221973e8bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set IC_CLK frequency by configuration the *CNT registers for different speed modes. <br /></td></tr>
 <tr class="separator:ga6aee62cffd57bce7d01c97221973e8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4970a3112621f7820837ae0be2bbc0cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4970a3112621f7820837ae0be2bbc0cc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_iic_calc_spklen</b> (uint32_t clk_khz, <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> *spklen)</td></tr>
+<tr class="separator:ga4970a3112621f7820837ae0be2bbc0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4250303bbd5f286073debc0fe8820da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae4250303bbd5f286073debc0fe8820da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>dw_iic_calc_sclcnt</b> (uint32_t clk_khz, uint32_t caploading, <a class="el" href="dw__iic_8h.html#a92662411333284047a51e15409d65999">DW_IIC_SCL_CNT</a> *scl_cnt, <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> *spklen)</td></tr>
+<tr class="separator:gae4250303bbd5f286073debc0fe8820da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga086527733f82c3a86b549e85fe7fc58e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga086527733f82c3a86b549e85fe7fc58e"></a>
 Inline void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___s_t_a_t_i_c.html#ga086527733f82c3a86b549e85fe7fc58e">dw_iic_set_spike_len</a> (<a class="el" href="group___d_e_v_i_c_e___d_w___i_i_c___r_e_g_s_t_r_u_c_t.html#ga68f539e7b0bf755a2cdf228eb930cfbb">DW_IIC_REG</a> *iic_reg_ptr, <a class="el" href="dw__iic_8h.html#a3cfa7f2089282b5a13b2485aefef5859">DW_IIC_SPKLEN</a> *spklen)</td></tr>
 <tr class="memdesc:ga086527733f82c3a86b549e85fe7fc58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set spike suppression configuration. <br /></td></tr>
@@ -356,9 +362,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><div class="memdoc">
 <p>ready to receive callback </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00072">72</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00069">69</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00674">dw_iic_abort_rx()</a>, <a class="el" href="dw__iic_8c_source.html#l01200">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l00645">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00508">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00546">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00914">dw_iic_mst_int_read()</a>, <a class="el" href="dw__iic_8c_source.html#l00527">dw_iic_slv_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00565">dw_iic_slv_ena_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00995">dw_iic_slv_int_process()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00786">dw_iic_abort_rx()</a>, <a class="el" href="dw__iic_8c_source.html#l01317">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l00755">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00610">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00648">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l01026">dw_iic_mst_int_read()</a>, <a class="el" href="dw__iic_8c_source.html#l00629">dw_iic_slv_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00667">dw_iic_slv_ena_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l01107">dw_iic_slv_int_process()</a>.</p>
 
 </div>
 </div>
@@ -373,9 +379,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><div class="memdoc">
 <p>ready to send callback </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00071">71</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00068">68</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00658">dw_iic_abort_tx()</a>, <a class="el" href="dw__iic_8c_source.html#l01200">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l00645">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00508">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00546">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00847">dw_iic_mst_int_write()</a>, <a class="el" href="dw__iic_8c_source.html#l00527">dw_iic_slv_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00565">dw_iic_slv_ena_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l00995">dw_iic_slv_int_process()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l00770">dw_iic_abort_tx()</a>, <a class="el" href="dw__iic_8c_source.html#l01317">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l00755">dw_iic_disable_interrupt()</a>, <a class="el" href="dw__iic_8c_source.html#l00610">dw_iic_mst_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00648">dw_iic_mst_ena_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00959">dw_iic_mst_int_write()</a>, <a class="el" href="dw__iic_8c_source.html#l00629">dw_iic_slv_dis_cbr()</a>, <a class="el" href="dw__iic_8c_source.html#l00667">dw_iic_slv_ena_cbr()</a>, and <a class="el" href="dw__iic_8c_source.html#l01107">dw_iic_slv_int_process()</a>.</p>
 
 </div>
 </div>
@@ -396,14 +402,14 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <div class="line"><a class="code" href="dw__iic_8c.html#a51b5fcb72255b754b9a3fd668dd7ae6b">			DW_IIC_CHECK_EXP</a>((iicinfo_obj_ptr)!=NULL, <a class="code" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a>);            <a class="code" href="dw__iic_8c.html#a51b5fcb72255b754b9a3fd668dd7ae6b">\</a></div>
 <div class="line"><a class="code" href="dw__iic_8c.html#a51b5fcb72255b754b9a3fd668dd7ae6b">			DW_IIC_CHECK_EXP</a>(((iicinfo_obj_ptr)-&gt;iic_ctrl)!=NULL, <a class="code" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a>);        \</div>
 <div class="line">                }</div>
-<div class="ttc" id="dw__iic_8c_html_a51b5fcb72255b754b9a3fd668dd7ae6b"><div class="ttname"><a href="dw__iic_8c.html#a51b5fcb72255b754b9a3fd668dd7ae6b">DW_IIC_CHECK_EXP</a></div><div class="ttdeci">#define DW_IIC_CHECK_EXP(EXPR, ERROR_CODE)</div><div class="ttdoc">check expressions used in DesignWare IIC driver implementation </div><div class="ttdef"><b>Definition:</b> <a href="dw__iic_8c_source.html#l00056">dw_iic.c:56</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___e_r_r_o_r_html_ga33dcdca4c2e85d1b2899272d9d176553"><div class="ttname"><a href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a></div><div class="ttdeci">#define E_OBJ</div><div class="ttdef"><b>Definition:</b> <a href="emb_a_r_c__error_8h_source.html#l00072">embARC_error.h:72</a></div></div>
+<div class="ttc" id="dw__iic_8c_html_a51b5fcb72255b754b9a3fd668dd7ae6b"><div class="ttname"><a href="dw__iic_8c.html#a51b5fcb72255b754b9a3fd668dd7ae6b">DW_IIC_CHECK_EXP</a></div><div class="ttdeci">#define DW_IIC_CHECK_EXP(EXPR, ERROR_CODE)</div><div class="ttdoc">check expressions used in DesignWare IIC driver implementation </div><div class="ttdef"><b>Definition:</b> <a href="dw__iic_8c_source.html#l00053">dw_iic.c:53</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___e_r_r_o_r_html_ga33dcdca4c2e85d1b2899272d9d176553"><div class="ttname"><a href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga33dcdca4c2e85d1b2899272d9d176553">E_OBJ</a></div><div class="ttdeci">#define E_OBJ</div><div class="ttdef"><b>Definition:</b> <a href="emb_a_r_c__error_8h_source.html#l00069">embARC_error.h:69</a></div></div>
 </div><!-- fragment -->
 <p>valid check of iic info object </p>
 
-<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00060">60</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
+<p>Definition at line <a class="el" href="dw__iic_8c_source.html#l00057">57</a> of file <a class="el" href="dw__iic_8c_source.html">dw_iic.c</a>.</p>
 
-<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l01156">dw_iic_close()</a>, <a class="el" href="dw__iic_8c_source.html#l01200">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l01562">dw_iic_isr()</a>, <a class="el" href="dw__iic_8c_source.html#l01058">dw_iic_open()</a>, <a class="el" href="dw__iic_8c_source.html#l01492">dw_iic_read()</a>, and <a class="el" href="dw__iic_8c_source.html#l01421">dw_iic_write()</a>.</p>
+<p>Referenced by <a class="el" href="dw__iic_8c_source.html#l01273">dw_iic_close()</a>, <a class="el" href="dw__iic_8c_source.html#l01317">dw_iic_control()</a>, <a class="el" href="dw__iic_8c_source.html#l01679">dw_iic_isr()</a>, <a class="el" href="dw__iic_8c_source.html#l01170">dw_iic_open()</a>, <a class="el" href="dw__iic_8c_source.html#l01609">dw_iic_read()</a>, and <a class="el" href="dw__iic_8c_source.html#l01538">dw_iic_write()</a>.</p>
 
 </div>
 </div>
@@ -413,8 +419,8 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_b59a8600bbd419fdb936261c6802f792.html">designware</a></li><li class="navelem"><a class="el" href="dir_a063b08016e6987a02b2dab99dd2157b.html">iic</a></li><li class="navelem"><a class="el" href="dw__iic_8c.html">dw_iic.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_186dbe9c673f504ebc67eaaff66f4d3d.html">ip</a></li><li class="navelem"><a class="el" href="dir_b056e28a29363c4009472bd1a71fa520.html">designware</a></li><li class="navelem"><a class="el" href="dir_3db3af53fa3d51172b0d6adb4bb8a763.html">iic</a></li><li class="navelem"><a class="el" href="dw__iic_8c.html">dw_iic.c</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:20 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

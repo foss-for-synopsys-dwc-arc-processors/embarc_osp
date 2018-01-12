@@ -1,7 +1,7 @@
 var group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j =
 [
-    [ "dw_iic_obj.c", "dw__iic__obj_8c.html", null ],
-    [ "dw_iic_obj.h", "dw__iic__obj_8h.html", null ],
+    [ "emsk/drivers/ip/designware/iic/dw_iic_obj.c", "emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c.html", null ],
+    [ "emsk/drivers/ip/designware/iic/dw_iic_obj.h", "emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h.html", null ],
     [ "DW_IIC_0_ID", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#ga9dad39587e7f20b0e80aca04791dbb09", null ],
     [ "DW_IIC_0_INTNO", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#ga056effa24c346eea093468b972964193", null ],
     [ "DW_IIC_0_RELBASE", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___i_i_c___o_b_j.html#gac3800c967368ae4de7b98857fb8d663d", null ],

@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -121,6 +121,7 @@ $(document).ready(function(){initNavTree('application_2aws__iot__smarthome__mult
 <code>#include &quot;aws_iot_mqtt_client_interface.h&quot;</code><br />
 <code>#include &quot;aws_iot_shadow_interface.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="emb_a_r_c_8h_source.html">embARC.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="adt7420_8h_source.html">adt7420.h</a>&quot;</code><br />
 </div>
 <p><a href="application_2aws__iot__smarthome__multinode_2src_2front_door_2main_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -132,6 +133,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ga3618839af2640c1a3b2112a62e3d3867"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3618839af2640c1a3b2112a62e3d3867"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_LENGTH_OF_UPDATE_JSON_BUFFER</b>&#160;&#160;&#160;512</td></tr>
 <tr class="separator:ga3618839af2640c1a3b2112a62e3d3867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ba2cdda6496875d6e2eb4a29a90fc91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0ba2cdda6496875d6e2eb4a29a90fc91"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRESS_BUTTON_GPIO_PORT</b>&#160;&#160;&#160;<a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___p_i_n_d_e_f.html#ggac090176f5a201bc707f545e478599e8aaa3fdf40e9267c25f2835932e0f40df83">DEV_GPIO_PORT_NC</a></td></tr>
+<tr class="separator:ga0ba2cdda6496875d6e2eb4a29a90fc91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga259293ccdeb01ea665cba956c5d4c6de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga259293ccdeb01ea665cba956c5d4c6de"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CERT_ROOTDIR</b>&#160;&#160;&#160;&quot;cert/frontdoor&quot;</td></tr>
 <tr class="separator:ga259293ccdeb01ea665cba956c5d4c6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,6 +160,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gacfe0b4ca9e60a7f2ed7937f56bcd1226"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacfe0b4ca9e60a7f2ed7937f56bcd1226"></a>
+static&#160;</td><td class="memItemRight" valign="bottom"><b>ADT7420_DEFINE</b> (temperature_sensor, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS)</td></tr>
+<tr class="separator:gacfe0b4ca9e60a7f2ed7937f56bcd1226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga35e2775f0853cec1c6c18cdc68f4365a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga35e2775f0853cec1c6c18cdc68f4365a"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>getRoomTemperature</b> (float *pRoomTemperature)</td></tr>
 <tr class="separator:ga35e2775f0853cec1c6c18cdc68f4365a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,7 +280,7 @@ static <a class="el" href="structdev__wnic.html">DEV_WNIC</a> *&#160;</td><td cl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_8544b725459c67a79d01ed8cb4e59e68.html">aws_iot_smarthome_multinode</a></li><li class="navelem"><a class="el" href="dir_7c56eabcb9bcfc0466bb10b5128def12.html">src</a></li><li class="navelem"><a class="el" href="dir_2074ac0e019ac73687f553b70660ed8d.html">frontDoor</a></li><li class="navelem"><a class="el" href="application_2aws__iot__smarthome__multinode_2src_2front_door_2main_8c.html">main.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:22 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

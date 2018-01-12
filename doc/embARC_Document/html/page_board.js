@@ -26,5 +26,9 @@ var page_board =
       [ "ARC Software Development Platform", "page_board_axs.html#sect_bdaxs_description", null ],
       [ "How to Run in embARC", "page_board_axs.html#sect_bdaxs_usage", null ],
       [ "Tools", "page_board_axs.html#sect_bdaxs_tools_required", null ]
+    ] ],
+    [ "ARC HS Development Kit", "page_board_hsdk.html", [
+      [ "ARC HS Development Kit Description", "page_board_hsdk.html#sect_bdhsdk_description", null ],
+      [ "ARC HS Development Chip Description", "page_board_hsdk.html#sect_bdhsdk_chip", null ]
     ] ]
 ];

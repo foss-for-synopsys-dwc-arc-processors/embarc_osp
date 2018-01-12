@@ -8,7 +8,7 @@ var group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o =
     [ "emsk_led_init", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gac9f916612edd3260bf1282c25ceea192", null ],
     [ "emsk_switch_init", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga17c90e6a42b9c2952d406d0136a390ba", null ],
     [ "led_read", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178", null ],
+    [ "led_toggle", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga37c8d684dfd11fe1900c93fa1fe7cc0b", null ],
     [ "led_write", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0d116692517e4c11de41ec07145b8404", null ],
-    [ "switch_read", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0", null ],
-    [ "g_led_val", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga1e64eb405e6f20161e7d5ad869cf6202", null ]
+    [ "switch_read", "group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0", null ]
 ];

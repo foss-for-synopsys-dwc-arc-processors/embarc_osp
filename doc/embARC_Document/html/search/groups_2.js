@@ -8,6 +8,7 @@ var searchData=
   ['common_20definitions',['Common Definitions',['../group___b_o_a_r_d___c_o_m_m_o_n.html',1,'']]],
   ['common_20device_20layer_20definitions',['Common Device Layer Definitions',['../group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html',1,'']]],
   ['common_20device_20defining_20command',['Common Device Defining Command',['../group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d.html',1,'']]],
+  ['common_20device_20id',['Common Device ID',['../group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html',1,'']]],
   ['common_20device_20working_20mode',['Common Device Working Mode',['../group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e.html',1,'']]],
   ['common_20device_20working_20method',['Common Device Working Method',['../group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_t_h_d.html',1,'']]],
   ['common_20device_20state',['Common Device State',['../group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_e.html',1,'']]],

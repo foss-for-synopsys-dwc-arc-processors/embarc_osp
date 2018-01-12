@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,59 +127,56 @@ $(document).ready(function(){initNavTree('container3_8c_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.03</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2016-12-01</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Wayne Ren(Wei.Ren@synopsys.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__assert_8h.html">embARC_assert.h</a>&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="container3_8h.html">container3.h</a>&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a> container3_context;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> tst_func4(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3, <span class="keywordtype">int</span> arg4)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func4 in container 3, arguments are:%d,%d,%d,%d\r\n&quot;</span>,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                arg1, arg2, arg3, arg4);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">/* container 3 initializes its own context */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        container3_context.initialized = 1;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_enable(INTNO_SWI3) != 0) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to enable INTNO_SWI3\r\n&quot;</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__assert_8h.html">embARC_assert.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="container3_8h.html">container3.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a> container3_context;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> tst_func4(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3, <span class="keywordtype">int</span> arg4)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func4 in container 3, arguments are:%d,%d,%d,%d\r\n&quot;</span>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                arg1, arg2, arg3, arg4);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">/* container 3 initializes its own context */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        container3_context.initialized = 1;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_enable(INTNO_SWI3) != 0) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to enable INTNO_SWI3\r\n&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_pri_set(INTNO_SWI3, <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844">INT_PRI_MIN</a>) != 0) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to enable INTNO_SWIT3\r\n&quot;</span>);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_pri_set(INTNO_SWI3, <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844">INT_PRI_MIN</a>) != 0) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;failed to enable INTNO_SWIT3\r\n&quot;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_pri_get(INTNO_SWI3) != <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844">INT_PRI_MIN</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;interrupt pri ops error\r\n&quot;</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (secureshield_int_pri_get(INTNO_SWI3) != <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844">INT_PRI_MIN</a>) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                EMBARC_PRINTF(<span class="stringliteral">&quot;interrupt pri ops error\r\n&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;container call from 3 to 1\r\n&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;ret is:%x\r\n&quot;</span>, container_call(container1, tst_func0));</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> 4;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span> tst_func6(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3, <span class="keywordtype">int</span> arg4, <span class="keywordtype">int</span> arg5, <span class="keywordtype">int</span> arg6)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func6 in container 3, arguments are:%d,%d,%d,%d,%d,%d\r\n&quot;</span>,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                arg1, arg2, arg3, arg4, arg5, arg6);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">/* here timer interrupt belonging to background container will come out, test the case of</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">        interrupt handling with container switch */</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <a class="code" href="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___i_n_i_t.html#gadf80b95e6ceb5c1014e3e1a6f243fe8e">board_delay_ms</a>(100, 0);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> 6;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> soft_interrupt3(<span class="keywordtype">void</span> *p_exinf)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;soft interrupt 3 interrupt handler\r\n&quot;</span>);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;container call from 3 to 1\r\n&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;ret is:%x\r\n&quot;</span>, container_call(container1, tst_func0));</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> 4;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">int</span> tst_func6(<span class="keywordtype">int</span> arg1, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3, <span class="keywordtype">int</span> arg4, <span class="keywordtype">int</span> arg5, <span class="keywordtype">int</span> arg6)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;tst_func6 in container 3, arguments are:%d,%d,%d,%d,%d,%d\r\n&quot;</span>,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                arg1, arg2, arg3, arg4, arg5, arg6);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">/* here timer interrupt belonging to background container will come out, test the case of</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">        interrupt handling with container switch */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___i_n_i_t.html#gadf80b95e6ceb5c1014e3e1a6f243fe8e">board_delay_ms</a>(100, 0);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> 6;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> soft_interrupt3(<span class="keywordtype">void</span> *p_exinf)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;soft interrupt 3 interrupt handler\r\n&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
-<div class="ttc" id="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___i_n_i_t_html_gadf80b95e6ceb5c1014e3e1a6f243fe8e"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___i_n_i_t.html#gadf80b95e6ceb5c1014e3e1a6f243fe8e">board_delay_ms</a></div><div class="ttdeci">void board_delay_ms(uint32_t ms, uint8_t os_compat)</div><div class="ttdoc">provide MS delay function </div><div class="ttdef"><b>Definition:</b> <a href="axs__timer_8c_source.html#l00184">axs_timer.c:184</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___i_n_i_t_html_gadf80b95e6ceb5c1014e3e1a6f243fe8e"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___i_n_i_t.html#gadf80b95e6ceb5c1014e3e1a6f243fe8e">board_delay_ms</a></div><div class="ttdeci">void board_delay_ms(uint32_t ms, uint8_t os_compat)</div><div class="ttdoc">provide MS delay function </div><div class="ttdef"><b>Definition:</b> <a href="axs__timer_8c_source.html#l00181">axs_timer.c:181</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="struct_t_e_s_t___c_o_n_t_e_x_t_html"><div class="ttname"><a href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="baremetal_2secureshield_2test__case_2background__container_8h_source.html#l00044">baremetal/secureshield/test_case/background_container.h:44</a></div></div>
-<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_gaabc533409696b211335240a4140ae844"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844">INT_PRI_MIN</a></div><div class="ttdeci">#define INT_PRI_MIN</div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00246">arc_exception.h:246</a></div></div>
+<div class="ttc" id="struct_t_e_s_t___c_o_n_t_e_x_t_html"><div class="ttname"><a href="struct_t_e_s_t___c_o_n_t_e_x_t.html">TEST_CONTEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="baremetal_2secureshield_2test__case_2background__container_8h_source.html#l00041">baremetal/secureshield/test_case/background_container.h:41</a></div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_gaabc533409696b211335240a4140ae844"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gaabc533409696b211335240a4140ae844">INT_PRI_MIN</a></div><div class="ttdeci">#define INT_PRI_MIN</div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00240">arc_exception.h:240</a></div></div>
 <div class="ttc" id="emb_a_r_c__assert_8h_html"><div class="ttname"><a href="emb_a_r_c__assert_8h.html">embARC_assert.h</a></div><div class="ttdoc">necessary definitions of assert </div></div>
 <div class="ttc" id="container3_8h_html"><div class="ttname"><a href="container3_8h.html">container3.h</a></div><div class="ttdoc">secureshield test case example container3 head file </div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -189,7 +186,7 @@ $(document).ready(function(){initNavTree('container3_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_4a90417cf3b801ec833de2fe59fe3550.html">baremetal</a></li><li class="navelem"><a class="el" href="dir_6f347b12facc01e54449317297d699de.html">secureshield</a></li><li class="navelem"><a class="el" href="dir_6cd7514f9e558e0339e2a5fd931044e3.html">test_case</a></li><li class="navelem"><a class="el" href="container3_8c.html">container3.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:06 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:11 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

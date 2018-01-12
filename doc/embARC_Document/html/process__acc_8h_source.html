@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,30 +127,27 @@ $(document).ready(function(){initNavTree('process__acc_8h_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.07</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2017-07-26</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Xiangcai Huang(xiangcai@synopsys.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifndef _PROCESS_ACC_H_</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define _PROCESS_ACC_H_</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifndef _PROCESS_ACC_H_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define _PROCESS_ACC_H_</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="acceleration_8h.html">acceleration.h</a>&quot;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="acceleration_8h.html">acceleration.h</a>&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gae9b5b2671c05995937b7a6622a22e97e">   52</a></span>&#160;<span class="preprocessor">#define AWAKE   (1)        </span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga217de19a0b55ac6c6fe90fa32d44a029">   53</a></span>&#160;<span class="preprocessor">#define NOEVENT (0)        </span></div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaa3afd78d8be703aa7a5b36f54ad8803d">   55</a></span>&#160;<span class="preprocessor">#define LEN_STA_QUEUE (20) </span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga44e89d523436fcbbf2c56e4fb335d509">   58</a></span>&#160;<span class="preprocessor">#define SLEEP   (1)        </span></div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gab23132129b5681825aa48c060e629e08">   59</a></span>&#160;<span class="preprocessor">#define WAKE    (0)        </span></div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga13c445607d6792e3509995ee39c25038">   63</a></span>&#160;<span class="preprocessor">uint8_t state_aw[LEN_STA_QUEUE]; </span></div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8fcf6ee0aa0dca3a92c81bfc5e6a31b1">   66</a></span>&#160;<span class="preprocessor">uint32_t inten_sl[5]; </span></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8fc176d6b9a9e64f278d8e919b17fd09">   67</a></span>&#160;<span class="preprocessor">uint32_t sum_svm_5s;  </span></div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga717ef11d0bd75aced9024f66e5eb156b">   68</a></span>&#160;<span class="preprocessor">float    score_sl;    </span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">extern void sleep_monitor_start(void);</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span><span class="comment">/* _PROCESS_ACC_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gae9b5b2671c05995937b7a6622a22e97e">   49</a></span>&#160;<span class="preprocessor">#define AWAKE   (1)        </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga217de19a0b55ac6c6fe90fa32d44a029">   50</a></span>&#160;<span class="preprocessor">#define NOEVENT (0)        </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaa3afd78d8be703aa7a5b36f54ad8803d">   52</a></span>&#160;<span class="preprocessor">#define LEN_STA_QUEUE (20) </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga44e89d523436fcbbf2c56e4fb335d509">   55</a></span>&#160;<span class="preprocessor">#define SLEEP   (1)        </span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gab23132129b5681825aa48c060e629e08">   56</a></span>&#160;<span class="preprocessor">#define WAKE    (0)        </span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga13c445607d6792e3509995ee39c25038">   60</a></span>&#160;<span class="preprocessor">uint8_t state_aw[LEN_STA_QUEUE]; </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8fcf6ee0aa0dca3a92c81bfc5e6a31b1">   63</a></span>&#160;<span class="preprocessor">uint32_t inten_sl[5]; </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga8fc176d6b9a9e64f278d8e919b17fd09">   64</a></span>&#160;<span class="preprocessor">uint32_t sum_svm_5s;  </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga717ef11d0bd75aced9024f66e5eb156b">   65</a></span>&#160;<span class="preprocessor">float    score_sl;    </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">extern void sleep_monitor_start(void);</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span><span class="comment">/* _PROCESS_ACC_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="ttc" id="acceleration_8h_html"><div class="ttname"><a href="acceleration_8h.html">acceleration.h</a></div><div class="ttdoc">acceleration sensor driver related header file </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -159,7 +156,7 @@ $(document).ready(function(){initNavTree('process__acc_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_0ecc9a78d8907d932edd7e6e9c13c56f.html">ibaby_smarthome_multinode</a></li><li class="navelem"><a class="el" href="dir_63e158be860768d26ae354d6cd5a9c8d.html">src</a></li><li class="navelem"><a class="el" href="dir_a52cff20d940f38a997f3b56ab65685c.html">wearable_node</a></li><li class="navelem"><a class="el" href="dir_74aeade7c8b7df3f1de42fc183651cc9.html">function</a></li><li class="navelem"><a class="el" href="dir_898d4a28880529fee134ec7325f6f05e.html">process_acc</a></li><li class="navelem"><a class="el" href="process__acc_8h.html">process_acc.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:09 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:18 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

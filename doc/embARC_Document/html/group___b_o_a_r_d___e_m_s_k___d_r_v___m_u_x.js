@@ -1,6 +1,6 @@
 var group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x =
 [
-    [ "mux.c", "mux_8c.html", null ],
+    [ "emsk/drivers/mux/mux.c", "emsk_2drivers_2mux_2mux_8c.html", null ],
     [ "mux.h", "mux_8h.html", null ],
     [ "mux_hal.h", "mux__hal_8h.html", null ],
     [ "I2C_MAP_CTRL", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaf6292d2ca82caea2f0c018716b6bc1d4", null ],
@@ -30,13 +30,8 @@ var group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x =
     [ "SPI_MAP_CTRL_DEFAULT", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga5eb7f84cdeb8a0f092b11e5c238b88b0", null ],
     [ "UART_MAP_CTRL", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga6532dcdafba6b20ce40aa06495a79fc6", null ],
     [ "UART_MAP_CTRL_DEFAULT", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga98b1debfeed8daf9056378946e66b6b6", null ],
-    [ "change_pmod_mux", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gadde7485dba4ed8e824568d039f885e73", null ],
-    [ "get_mux_regs", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gabb8902a836223e3b4a2a1236b1c572b7", null ],
-    [ "get_pmod_mux", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga0b23662db75bed7fe8272293b8248abc", null ],
-    [ "get_spi_map", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga22926dd85e9a36800971bd667cbd3849", null ],
-    [ "get_uart_map", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga31f6522d9fc826a0e437720449d5e66d", null ],
-    [ "mux_init", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaf02f2c828e9118bfd8f04273a85a76c9", null ],
-    [ "set_pmod_mux", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa8aeb353f3821d5566477cf698058ba3", null ],
-    [ "set_spi_map", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa3ef344c191f857e032a4b52816a13ac", null ],
-    [ "set_uart_map", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gae6088143a85738105a08ad0b6470b98f", null ]
+    [ "get_pmod_mux", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab7f64addda6f60359e9382320e696861", null ],
+    [ "set_pmod_mux", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#ga8356bee63484f5b67a7995fbde693d11", null ],
+    [ "set_spi_map", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gab1edc41eb546dfce3d1f6c23636540fc", null ],
+    [ "set_uart_map", "group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x.html#gaa1c11b77b7888c47cf5b107eb7ee15a2", null ]
 ];

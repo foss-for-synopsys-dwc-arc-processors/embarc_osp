@@ -1,6 +1,7 @@
 var group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t =
 [
     [ "dev_gpio_info", "structdev__gpio__info.html", [
+      [ "bitofs", "structdev__gpio__info.html#ab30658a6eda2ab275436d129ad384c25", null ],
       [ "direction", "structdev__gpio__info.html#ad127dface06d3090d4041e97d45e9104", null ],
       [ "extra", "structdev__gpio__info.html#a1b0f0c94f8c74d556f2b9a11eabb7c6d", null ],
       [ "gpio_ctrl", "structdev__gpio__info.html#aeb761b5ce47b5bfd6f665f8e4690fab5", null ],

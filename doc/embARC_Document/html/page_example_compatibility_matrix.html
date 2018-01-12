@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -99,17 +99,130 @@ $(document).ready(function(){initNavTree('page_example_compatibility_matrix.html
 <div class="title">Compatibility Matrix for embARC Examples </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The compatibility matrix for the embARC examples is listed in the following table.</p>
+<div class="textblock"><h3>The compatibility matrix for the embARC examples with <a href="https://www.synopsys.com/dw/ipdir.php?ds=sw_metaware">MetaWare Development Toolkit</a> is listed in the following table.</h3>
 <table class="doxtable">
 <tr>
-<th align="center">embARC Board </th><th align="center">Compatibility Matrix Link  </th></tr>
+<th>Project Name </th><th>EMSK 1.1 </th><th>EMSK 2.2 </th><th>EMSK 2.3 </th><th>HSDK 1.0 </th><th>AXS 103 </th><th>nSIM 1.0  </th></tr>
 <tr>
-<td align="center">EMSK 1.1 </td><td align="center"><a class="el" href="page_example__c_m_emsk11.html">Compatibility Matrix: embARC Examples with EMSK 1.1</a> </td></tr>
+<td>baremetal_arc_feature_cache </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
 <tr>
-<td align="center">EMSK 2.2 </td><td align="center"><a class="el" href="page_example__c_m_emsk22.html">Compatibility Matrix: embARC Examples with EMSK 2.2</a> </td></tr>
+<td>baremetal_arc_feature_udma </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
 <tr>
-<td align="center">EMSK 2.3 </td><td align="center"><a class="el" href="page_example__c_m_emsk23.html">Compatibility Matrix: embARC Examples with EMSK 2.3</a> </td></tr>
+<td>baremetal_arc_feature_timer_interrupt </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_axs103 </td><td>× </td><td>× </td><td>× </td><td>× </td><td>√ </td><td>× </td></tr>
+<tr>
+<td>baremetal_ble_hm1x </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_blinky </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_bootloader </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_cxx </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_dma_spiflash </td><td>x </td><td>x </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_graphic_u8glib </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_openthread_cli </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_openthread_ncp </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_secret_secure </td><td>× </td><td>√ </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_secret_normal </td><td>× </td><td>√ </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_secret_secure_sid </td><td>× </td><td>× </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_test_case </td><td>× </td><td>× </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_coap_coap_server </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_lwm2m_iot_demo </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_lwm2m_client </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_lwm2m_server </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_kernel </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>freertos_kernel_secure </td><td>× </td><td>× </td><td>× </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_net_httpserver </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_net_ntshell </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_dtls_client </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_dtls_server </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_ssl_client2 </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_ssl_server2 </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
 </table>
+<dl class="section note"><dt>Note</dt><dd>Secureshield related examples required to excuted on EMSK 2.2 ARC EM7D or EMSK 2.3 ARC EM7D.</dd></dl>
+<h3>The compatibility matrix for the embARC examples with <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases">GNU Toolchain for ARC Processors</a> is listed in the following table.</h3>
+<table class="doxtable">
+<tr>
+<th>Project Name </th><th>EMSK 1.1 </th><th>EMSK 2.2 </th><th>EMSK 2.3 </th><th>HSDK 1.0 </th><th>AXS 103 </th><th>nSIM 1.0  </th></tr>
+<tr>
+<td>baremetal_arc_feature_cache </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_arc_feature_udma </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_arc_feature_timer_interrupt </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_axs103 </td><td>× </td><td>× </td><td>× </td><td>× </td><td>√ </td><td>× </td></tr>
+<tr>
+<td>baremetal_ble_hm1x </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_blinky </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_bootloader </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_cxx </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>baremetal_dma_spiflash </td><td>x </td><td>x </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_graphic_u8glib </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_openthread_cli </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_openthread_ncp </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_secret_secure </td><td>× </td><td>√ </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_secret_normal </td><td>× </td><td>√ </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_secret_secure_sid </td><td>× </td><td>× </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>baremetal_secureshield_test_case </td><td>× </td><td>× </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_coap_coap_server </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_lwm2m_iot_demo </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_lwm2m_client </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_iot_lwm2m_server </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_kernel </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td></tr>
+<tr>
+<td>freertos_kernel_secure </td><td>× </td><td>× </td><td>× </td><td>× </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_net_httpserver </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_net_ntshell </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_dtls_client </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_dtls_server </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_ssl_client2 </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+<tr>
+<td>freertos_sec_mbedtls_ssl_server2 </td><td>√ </td><td>√ </td><td>√ </td><td>√ </td><td>× </td><td>× </td></tr>
+</table>
+<dl class="section note"><dt>Note</dt><dd>Secureshield related examples required to excuted on EMSK 2.2 ARC EM7D or EMSK 2.3 ARC EM7D. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -117,7 +230,7 @@ $(document).ready(function(){initNavTree('page_example_compatibility_matrix.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="page_example.html">Example</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:23 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

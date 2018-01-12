@@ -1,13 +1,15 @@
 var group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j =
 [
-    [ "dw_spi_obj.c", "dw__spi__obj_8c.html", null ],
-    [ "dw_spi_obj.h", "dw__spi__obj_8h.html", null ],
+    [ "emsk/drivers/ip/designware/spi/dw_spi_obj.c", "emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c.html", null ],
+    [ "emsk/drivers/ip/designware/spi/dw_spi_obj.h", "emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h.html", null ],
     [ "DW_SPI_0_ID", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga906ed6ea818fb3ea7b3b52f174751ec2", null ],
     [ "DW_SPI_0_INTNO", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga320b0f5d4389de4581d75bff65b8eb3c", null ],
     [ "DW_SPI_0_RELBASE", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga69d07199dead0103fd9c98cc38b7413f", null ],
+    [ "DW_SPI_0_RX_SAMPLEDLY", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga1e92bea9a2d9f6ab5c0faf8c6aef4821", null ],
     [ "DW_SPI_1_ID", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga8a5280ff5f1815b96c5cf853e366527b", null ],
     [ "DW_SPI_1_INTNO", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga38a5268ffbdbd3373dd0cf01fde501b2", null ],
     [ "DW_SPI_1_RELBASE", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga8f1165c6a4ffd8a38e195d5fe101befa", null ],
+    [ "DW_SPI_1_RX_SAMPLEDLY", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga4990fb15a9b821c7cd80291dc87fa6d5", null ],
     [ "DW_SPI_NUM", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga0c560ccf513e4577cb9cbb0a8d78480a", null ],
     [ "USE_DW_SPI_0", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#ga34e3341140daa698fc095af193bf853d", null ],
     [ "USE_DW_SPI_1", "group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j.html#gabcfda0fb678fcc8afb4f799433dfb84f", null ],

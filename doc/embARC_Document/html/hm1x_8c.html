@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -97,10 +97,9 @@ $(document).ready(function(){initNavTree('hm1x_8c.html','');});
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">hm1x.c File Reference<div class="ingroups"><a class="el" href="group___b_o_a_r_d.html">BSP Layer</a> &raquo; <a class="el" href="group___b_o_a_r_d___e_m_s_k.html">EMSK BSP</a> &raquo; <a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_i_v_e_r.html">EMSK Peripheral Driver Module</a> &raquo; <a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e.html">EMSK Bluetooth 4.0 Driver</a> &raquo; <a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html">EMSK BLE-HM1X Driver</a></div></div>  </div>
+<div class="title">hm1x.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -108,6 +107,7 @@ $(document).ready(function(){initNavTree('hm1x_8c.html','');});
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="emb_a_r_c__toolchain_8h_source.html">embARC_toolchain.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="emb_a_r_c__error_8h_source.html">embARC_error.h</a>&quot;</code><br />
+<code>#include &quot;hm1x.h&quot;</code><br />
 <code>#include &quot;stdio.h&quot;</code><br />
 <code>#include &quot;string.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="dev__uart_8h_source.html">dev_uart.h</a>&quot;</code><br />
@@ -118,139 +118,599 @@ $(document).ready(function(){initNavTree('hm1x_8c.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga5d98f836d695c6427dc37c595e3bace6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5d98f836d695c6427dc37c595e3bace6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga5d98f836d695c6427dc37c595e3bace6">HM_1X_UART_ID</a>&#160;&#160;&#160;<a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee">DW_UART_0_ID</a></td></tr>
-<tr class="memdesc:ga5d98f836d695c6427dc37c595e3bace6"><td class="mdescLeft">&#160;</td><td class="mdescRight">uart id which HM-10 BLE uses <br /></td></tr>
-<tr class="separator:ga5d98f836d695c6427dc37c595e3bace6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ca2e4b1f4f8c4252654ad0b74c32ddd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0ca2e4b1f4f8c4252654ad0b74c32ddd"></a>
+<tr class="memitem:a0ca2e4b1f4f8c4252654ad0b74c32ddd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ca2e4b1f4f8c4252654ad0b74c32ddd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>HM1X_TIMENOW</b>()&#160;&#160;&#160;OSP_GET_CUR_MS()</td></tr>
-<tr class="separator:ga0ca2e4b1f4f8c4252654ad0b74c32ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga72902f57d26a34d6b3dc70271adee904"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga72902f57d26a34d6b3dc70271adee904"></a>
+<tr class="separator:a0ca2e4b1f4f8c4252654ad0b74c32ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72902f57d26a34d6b3dc70271adee904"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72902f57d26a34d6b3dc70271adee904"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>HM1X_READ_TMOUT</b>&#160;&#160;&#160;500</td></tr>
-<tr class="separator:ga72902f57d26a34d6b3dc70271adee904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e69b1ee7e19bfbe378c886f88e60fac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2e69b1ee7e19bfbe378c886f88e60fac"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_CMD_LENGTH</b>&#160;&#160;&#160;32</td></tr>
-<tr class="separator:ga2e69b1ee7e19bfbe378c886f88e60fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabb6704a268cffae04d47e14dd5e9eba1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabb6704a268cffae04d47e14dd5e9eba1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_RESP_LENGTH</b>&#160;&#160;&#160;32</td></tr>
-<tr class="separator:gabb6704a268cffae04d47e14dd5e9eba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5250a1012848aa5fd350a61cd3d7f7e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5250a1012848aa5fd350a61cd3d7f7e8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>AT_CMD_PREFIX</b>&#160;&#160;&#160;&quot;AT+&quot;</td></tr>
-<tr class="separator:ga5250a1012848aa5fd350a61cd3d7f7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaddf3394175b63831c7a3adef0fb5fe12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaddf3394175b63831c7a3adef0fb5fe12"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAUD_INDEX_MAX</b>&#160;&#160;&#160;8</td></tr>
-<tr class="separator:gaddf3394175b63831c7a3adef0fb5fe12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa2ab28764622183371d1430787bbdde9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa2ab28764622183371d1430787bbdde9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAUD_INDEX_MIN</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:gaa2ab28764622183371d1430787bbdde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac87412ade6d745470bedbb8021c15626"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac87412ade6d745470bedbb8021c15626"></a>
+<tr class="separator:a72902f57d26a34d6b3dc70271adee904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac87412ade6d745470bedbb8021c15626"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac87412ade6d745470bedbb8021c15626"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>HM1X_SYS_DELAY_MS</b>&#160;&#160;&#160;550</td></tr>
-<tr class="separator:gac87412ade6d745470bedbb8021c15626"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga18aa6e95ca314f755c0be6d7ff147b6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga18aa6e95ca314f755c0be6d7ff147b6b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ENABLE_HM1X_DEBUG</b></td></tr>
-<tr class="separator:ga18aa6e95ca314f755c0be6d7ff147b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8d9fde2662503544b03118c053966ce9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8d9fde2662503544b03118c053966ce9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HM1X_DEBUG</b>(fmt,...)&#160;&#160;&#160;EMBARC_PRINTF(fmt, ##__VA_ARGS__)</td></tr>
-<tr class="separator:ga8d9fde2662503544b03118c053966ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab7ef8495078bb9b45bd958466076988"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaab7ef8495078bb9b45bd958466076988"></a>
+<tr class="separator:ac87412ade6d745470bedbb8021c15626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7ef8495078bb9b45bd958466076988"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab7ef8495078bb9b45bd958466076988"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_READ_CNT</b>&#160;&#160;&#160;20</td></tr>
-<tr class="separator:gaab7ef8495078bb9b45bd958466076988"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9c9fab4202cd680e4f5608d025542267"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9c9fab4202cd680e4f5608d025542267"></a>
+<tr class="separator:aab7ef8495078bb9b45bd958466076988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e69b1ee7e19bfbe378c886f88e60fac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e69b1ee7e19bfbe378c886f88e60fac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_CMD_LENGTH</b>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:a2e69b1ee7e19bfbe378c886f88e60fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb6704a268cffae04d47e14dd5e9eba1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb6704a268cffae04d47e14dd5e9eba1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_RESP_LENGTH</b>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:abb6704a268cffae04d47e14dd5e9eba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5409100957617fdd47d3da1f894d770"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5409100957617fdd47d3da1f894d770"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AT_TEST_PREFIX</b>&#160;&#160;&#160;&quot;AT&quot;</td></tr>
+<tr class="separator:ab5409100957617fdd47d3da1f894d770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accab6ad15147bdb4b7ec1de2158feb18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accab6ad15147bdb4b7ec1de2158feb18"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OK_PREFIX</b>&#160;&#160;&#160;&quot;OK&quot;</td></tr>
+<tr class="separator:accab6ad15147bdb4b7ec1de2158feb18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5250a1012848aa5fd350a61cd3d7f7e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5250a1012848aa5fd350a61cd3d7f7e8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AT_CMD_PREFIX</b>&#160;&#160;&#160;&quot;AT+&quot;</td></tr>
+<tr class="separator:a5250a1012848aa5fd350a61cd3d7f7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9fab4202cd680e4f5608d025542267"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c9fab4202cd680e4f5608d025542267"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OK_SET_PREFIX</b>&#160;&#160;&#160;&quot;OK+Set:&quot;</td></tr>
-<tr class="separator:ga9c9fab4202cd680e4f5608d025542267"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga351164b424cbf89d9b7a02bc52ba3271"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga351164b424cbf89d9b7a02bc52ba3271"></a>
+<tr class="separator:a9c9fab4202cd680e4f5608d025542267"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a351164b424cbf89d9b7a02bc52ba3271"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a351164b424cbf89d9b7a02bc52ba3271"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OK_GET_PREFIX</b>&#160;&#160;&#160;&quot;OK+Get:&quot;</td></tr>
-<tr class="separator:ga351164b424cbf89d9b7a02bc52ba3271"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabf1772d57139c78e8e913df3f88ada94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabf1772d57139c78e8e913df3f88ada94"></a>
+<tr class="separator:a351164b424cbf89d9b7a02bc52ba3271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39f91973df58146185e1509f6c323620"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39f91973df58146185e1509f6c323620"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AT_ROLE_COMMAND</b>&#160;&#160;&#160;&quot;ROLE&quot;</td></tr>
+<tr class="separator:a39f91973df58146185e1509f6c323620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d205bb6bd7ab27efe5b5ab8112b377"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6d205bb6bd7ab27efe5b5ab8112b377"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AT_MODE_COMMAND</b>&#160;&#160;&#160;&quot;MODE&quot;</td></tr>
+<tr class="separator:ac6d205bb6bd7ab27efe5b5ab8112b377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79a6f20f20f636fce3f5a9e8632506f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79a6f20f20f636fce3f5a9e8632506f5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AT_TYPE_COMMAND</b>&#160;&#160;&#160;&quot;TYPE&quot;</td></tr>
+<tr class="separator:a79a6f20f20f636fce3f5a9e8632506f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf1772d57139c78e8e913df3f88ada94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf1772d57139c78e8e913df3f88ada94"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>CMD_BAUD_SET_PREFIX</b>&#160;&#160;&#160;&quot;AT+BAUD&quot;</td></tr>
-<tr class="separator:gabf1772d57139c78e8e913df3f88ada94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:abf1772d57139c78e8e913df3f88ada94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac7edae73d2ce7bdb5dc6df7f14b4d51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac7edae73d2ce7bdb5dc6df7f14b4d51"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CMD_RESET_PREFIX</b>&#160;&#160;&#160;&quot;AT+RESET&quot;</td></tr>
+<tr class="separator:aac7edae73d2ce7bdb5dc6df7f14b4d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1f71e4c3db5ae2b501b71660a9e88ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1f71e4c3db5ae2b501b71660a9e88ee"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CMD_RENEW_PREFIX</b>&#160;&#160;&#160;&quot;AT+RENEW&quot;</td></tr>
+<tr class="separator:af1f71e4c3db5ae2b501b71660a9e88ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf3394175b63831c7a3adef0fb5fe12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addf3394175b63831c7a3adef0fb5fe12"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAUD_INDEX_MAX</b>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:addf3394175b63831c7a3adef0fb5fe12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ab28764622183371d1430787bbdde9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2ab28764622183371d1430787bbdde9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BAUD_INDEX_MIN</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa2ab28764622183371d1430787bbdde9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18aa6e95ca314f755c0be6d7ff147b6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18aa6e95ca314f755c0be6d7ff147b6b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ENABLE_HM1X_DEBUG</b></td></tr>
+<tr class="separator:a18aa6e95ca314f755c0be6d7ff147b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d9fde2662503544b03118c053966ce9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d9fde2662503544b03118c053966ce9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HM1X_DEBUG</b>(fmt,...)&#160;&#160;&#160;EMBARC_PRINTF(fmt, ##__VA_ARGS__)</td></tr>
+<tr class="separator:a8d9fde2662503544b03118c053966ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f4bdf7950227c37ca150978fd911f8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f4bdf7950227c37ca150978fd911f8d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EMSK_BLE_CHECK_EXP</b>(EXPR, <a class="el" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga545786d2cbebd00e5c9754c0401810a2">ERCD</a>, ERROR_CODE)&#160;&#160;&#160;<a class="el" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga4151670bbcb21a581f28ed6bc5baa906">CHECK_EXP</a>(EXPR, <a class="el" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga545786d2cbebd00e5c9754c0401810a2">ERCD</a>, ERROR_CODE, error_exit)</td></tr>
+<tr class="separator:a8f4bdf7950227c37ca150978fd911f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24329935b6f1b640e261b3841b5fad7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24329935b6f1b640e261b3841b5fad7c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EMSK_BLE_CHECK_EXP_NORTN</b>(EXPR)&#160;&#160;&#160;<a class="el" href="group___e_m_b_a_r_c___e_r_r_o_r.html#ga77484b978195f1cc0b1e094fd7f085e6">CHECK_EXP_NOERCD</a>(EXPR, error_exit)</td></tr>
+<tr class="separator:a24329935b6f1b640e261b3841b5fad7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga86b99a2938621835a17978f630a058ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga86b99a2938621835a17978f630a058ff"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga86b99a2938621835a17978f630a058ff">hm1x_delay</a> (uint32_t ms)</td></tr>
-<tr class="memdesc:ga86b99a2938621835a17978f630a058ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal delay function used by hm1x. <br /></td></tr>
-<tr class="separator:ga86b99a2938621835a17978f630a058ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab095652f92b4a3266a3068ba71068029"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab095652f92b4a3266a3068ba71068029"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gab095652f92b4a3266a3068ba71068029">hm1x_flush</a> (void)</td></tr>
-<tr class="memdesc:gab095652f92b4a3266a3068ba71068029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the hm1x input data. <br /></td></tr>
-<tr class="separator:gab095652f92b4a3266a3068ba71068029"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga22f84b6ae1426a90b961329725618c7f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga22f84b6ae1426a90b961329725618c7f">hm1x_init</a> (uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga22f84b6ae1426a90b961329725618c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init HM1X BLE device.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga22f84b6ae1426a90b961329725618c7f">More...</a><br /></td></tr>
-<tr class="separator:ga22f84b6ae1426a90b961329725618c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2dc154a2342de42b7fbe3269bc78230a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga2dc154a2342de42b7fbe3269bc78230a">hm1x_write</a> (uint8_t *buf, uint32_t cnt)</td></tr>
-<tr class="memdesc:ga2dc154a2342de42b7fbe3269bc78230a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data to HM1X.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga2dc154a2342de42b7fbe3269bc78230a">More...</a><br /></td></tr>
-<tr class="separator:ga2dc154a2342de42b7fbe3269bc78230a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga85bd512de1a495894e4670f5bc71ab99"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga85bd512de1a495894e4670f5bc71ab99">hm1x_read</a> (uint8_t *buf, uint32_t cnt)</td></tr>
-<tr class="memdesc:ga85bd512de1a495894e4670f5bc71ab99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from HM1X.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga85bd512de1a495894e4670f5bc71ab99">More...</a><br /></td></tr>
-<tr class="separator:ga85bd512de1a495894e4670f5bc71ab99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac0dab256188fc333c4821ea43704fa65"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gac0dab256188fc333c4821ea43704fa65">hm1x_exec_command</a> (char *cmd, char *resp, uint32_t wait_ms)</td></tr>
-<tr class="memdesc:gac0dab256188fc333c4821ea43704fa65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute command and wait for response with timeout.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gac0dab256188fc333c4821ea43704fa65">More...</a><br /></td></tr>
-<tr class="separator:gac0dab256188fc333c4821ea43704fa65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae979833675bdb5f274c1658d78a4bfac"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gae979833675bdb5f274c1658d78a4bfac">hm1x_exec_cmd_chkresp</a> (char *cmd, char *resp_prefix, char *resp_data, uint32_t max_try)</td></tr>
-<tr class="memdesc:gae979833675bdb5f274c1658d78a4bfac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute command and check whether the response prefix matches.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gae979833675bdb5f274c1658d78a4bfac">More...</a><br /></td></tr>
-<tr class="separator:gae979833675bdb5f274c1658d78a4bfac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga138d7c27f691485f783f81977db03aa5"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga138d7c27f691485f783f81977db03aa5">hm1x_set_param</a> (char *param, char *val)</td></tr>
-<tr class="memdesc:ga138d7c27f691485f783f81977db03aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">HM1X set param, value and param must end with '\0', 0 for success, -1 for fail.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga138d7c27f691485f783f81977db03aa5">More...</a><br /></td></tr>
-<tr class="separator:ga138d7c27f691485f783f81977db03aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga50a4187b23caa8d03bb7c1bc19d2e64f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga50a4187b23caa8d03bb7c1bc19d2e64f">hm1x_get_param</a> (char *param, char *r_val)</td></tr>
-<tr class="memdesc:ga50a4187b23caa8d03bb7c1bc19d2e64f"><td class="mdescLeft">&#160;</td><td class="mdescRight">HM1X get param, cmd and val must contain '\0' end, &gt;=0 for success, &lt;0 for fail.  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga50a4187b23caa8d03bb7c1bc19d2e64f">More...</a><br /></td></tr>
-<tr class="separator:ga50a4187b23caa8d03bb7c1bc19d2e64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08238856c002d42bbf51129f05e811f1"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga08238856c002d42bbf51129f05e811f1">hm1x_set_param_u8</a> (char *param, uint8_t val)</td></tr>
-<tr class="memdesc:ga08238856c002d42bbf51129f05e811f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">set a 8bits long parameter of hm1x, 0 for success, -1 for fail  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga08238856c002d42bbf51129f05e811f1">More...</a><br /></td></tr>
-<tr class="separator:ga08238856c002d42bbf51129f05e811f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga18fc31dee15f42f094ff4a687be3444a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga18fc31dee15f42f094ff4a687be3444a"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga18fc31dee15f42f094ff4a687be3444a">hm1x_set_role</a> (uint32_t role)</td></tr>
-<tr class="memdesc:ga18fc31dee15f42f094ff4a687be3444a"><td class="mdescLeft">&#160;</td><td class="mdescRight">set working role, 0 for success, -1 for fail <br /></td></tr>
-<tr class="separator:ga18fc31dee15f42f094ff4a687be3444a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac9e94325cde42bd30a8d719f1dc31024"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac9e94325cde42bd30a8d719f1dc31024"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gac9e94325cde42bd30a8d719f1dc31024">hm1x_set_mode</a> (uint32_t mode)</td></tr>
-<tr class="memdesc:gac9e94325cde42bd30a8d719f1dc31024"><td class="mdescLeft">&#160;</td><td class="mdescRight">set working mode, 0 for success, -1 for fail <br /></td></tr>
-<tr class="separator:gac9e94325cde42bd30a8d719f1dc31024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae1b37bb6f3fa4ecb90cc36e51e8e8a0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae1b37bb6f3fa4ecb90cc36e51e8e8a0c"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#gae1b37bb6f3fa4ecb90cc36e51e8e8a0c">hm1x_set_type</a> (uint32_t type)</td></tr>
-<tr class="memdesc:gae1b37bb6f3fa4ecb90cc36e51e8e8a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">set working type, 0 for success, -1 for fail <br /></td></tr>
-<tr class="separator:gae1b37bb6f3fa4ecb90cc36e51e8e8a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1acaf30d8c9a81e171bb5d1573fe906f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1acaf30d8c9a81e171bb5d1573fe906f"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga1acaf30d8c9a81e171bb5d1573fe906f">hm1x_set_baud</a> (uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga1acaf30d8c9a81e171bb5d1573fe906f"><td class="mdescLeft">&#160;</td><td class="mdescRight">set baudrate of hm1x, &gt;=0 for success, -1 for fail <br /></td></tr>
-<tr class="separator:ga1acaf30d8c9a81e171bb5d1573fe906f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4992e51d972e4b4654d29a7e66613b14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4992e51d972e4b4654d29a7e66613b14"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga4992e51d972e4b4654d29a7e66613b14">hm1x_disconnect</a> (void)</td></tr>
-<tr class="memdesc:ga4992e51d972e4b4654d29a7e66613b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">disconnect the already connected ble, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
-<tr class="separator:ga4992e51d972e4b4654d29a7e66613b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga691a65767c501a225359cec3d545c0bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga691a65767c501a225359cec3d545c0bc"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga691a65767c501a225359cec3d545c0bc">hm1x_restart</a> (void)</td></tr>
-<tr class="memdesc:ga691a65767c501a225359cec3d545c0bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset and restart the module, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
-<tr class="separator:ga691a65767c501a225359cec3d545c0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3fe3dea62ef575b512309bb28e7c31e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3fe3dea62ef575b512309bb28e7c31e9"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga3fe3dea62ef575b512309bb28e7c31e9">hm1x_renew</a> (void)</td></tr>
-<tr class="memdesc:ga3fe3dea62ef575b512309bb28e7c31e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">renew the module, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
-<tr class="separator:ga3fe3dea62ef575b512309bb28e7c31e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga32287a8cedaab802f20f01e2cee98dc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga32287a8cedaab802f20f01e2cee98dc1"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___b_l_e___h_m1_x.html#ga32287a8cedaab802f20f01e2cee98dc1">hm1x_baudrate_map</a> (uint32_t baudrate)</td></tr>
-<tr class="memdesc:ga32287a8cedaab802f20f01e2cee98dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the baudrate map of hm1x, return the index of baudrate map in hm1x <br /></td></tr>
-<tr class="separator:ga32287a8cedaab802f20f01e2cee98dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga962884969a3e4bf4411e70169f8c855c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga962884969a3e4bf4411e70169f8c855c"></a>
-<a class="el" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t.html#ga8e8dd2c66ea7a119aec01e976ff4d6b4">DEV_UART</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>hm1x_ble_uart</b> = NULL</td></tr>
-<tr class="separator:ga962884969a3e4bf4411e70169f8c855c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ba2c45c19a162566b3a57b1c2ebbf6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33ba2c45c19a162566b3a57b1c2ebbf6"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a33ba2c45c19a162566b3a57b1c2ebbf6">_hm1x_delay</a> (uint32_t ms)</td></tr>
+<tr class="memdesc:a33ba2c45c19a162566b3a57b1c2ebbf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal delay function used by hm1x. <br /></td></tr>
+<tr class="separator:a33ba2c45c19a162566b3a57b1c2ebbf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe808aeab52b7c64f1da79aae90ed09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabe808aeab52b7c64f1da79aae90ed09"></a>
+static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#aabe808aeab52b7c64f1da79aae90ed09">_hm1x_baudrate_map</a> (uint32_t baudrate)</td></tr>
+<tr class="memdesc:aabe808aeab52b7c64f1da79aae90ed09"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the baudrate map of hm1x, return the index of baudrate map in hm1x <br /></td></tr>
+<tr class="separator:aabe808aeab52b7c64f1da79aae90ed09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525345f4a3f481b7dbe3b4164510a0ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a525345f4a3f481b7dbe3b4164510a0ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a525345f4a3f481b7dbe3b4164510a0ca">hm1x_flush</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj)</td></tr>
+<tr class="memdesc:a525345f4a3f481b7dbe3b4164510a0ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the hm1x input data. <br /></td></tr>
+<tr class="separator:a525345f4a3f481b7dbe3b4164510a0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59dab308f0075d2e3715331456af6be9"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a59dab308f0075d2e3715331456af6be9">hm1x_init</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint32_t baudrate)</td></tr>
+<tr class="memdesc:a59dab308f0075d2e3715331456af6be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init HM1X BLE device.  <a href="#a59dab308f0075d2e3715331456af6be9">More...</a><br /></td></tr>
+<tr class="separator:a59dab308f0075d2e3715331456af6be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a962f590c5f7dbfe35edfc1134d150982"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a962f590c5f7dbfe35edfc1134d150982">hm1x_deinit</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj)</td></tr>
+<tr class="memdesc:a962f590c5f7dbfe35edfc1134d150982"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinit HM1X BLE device.  <a href="#a962f590c5f7dbfe35edfc1134d150982">More...</a><br /></td></tr>
+<tr class="separator:a962f590c5f7dbfe35edfc1134d150982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28d8a66e71cee93ff911a10b1b78c385"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a28d8a66e71cee93ff911a10b1b78c385">hm1x_write</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint8_t *buf, uint32_t cnt)</td></tr>
+<tr class="memdesc:a28d8a66e71cee93ff911a10b1b78c385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data to HM1X.  <a href="#a28d8a66e71cee93ff911a10b1b78c385">More...</a><br /></td></tr>
+<tr class="separator:a28d8a66e71cee93ff911a10b1b78c385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96977a38bfdaa27ca569b2aa6d3a0d63"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a96977a38bfdaa27ca569b2aa6d3a0d63">hm1x_read</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint8_t *buf, uint32_t cnt)</td></tr>
+<tr class="memdesc:a96977a38bfdaa27ca569b2aa6d3a0d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from HM1X.  <a href="#a96977a38bfdaa27ca569b2aa6d3a0d63">More...</a><br /></td></tr>
+<tr class="separator:a96977a38bfdaa27ca569b2aa6d3a0d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bd85cd79024530e2bd4dbb2564810a9"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a8bd85cd79024530e2bd4dbb2564810a9">hm1x_exec_command</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, char *cmd, char *resp, uint32_t wait_ms)</td></tr>
+<tr class="memdesc:a8bd85cd79024530e2bd4dbb2564810a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute command and wait for response with timeout.  <a href="#a8bd85cd79024530e2bd4dbb2564810a9">More...</a><br /></td></tr>
+<tr class="separator:a8bd85cd79024530e2bd4dbb2564810a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9f67d080950bf5522f88d1576d631e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#acf9f67d080950bf5522f88d1576d631e">hm1x_exec_cmd_chkresp</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, char *cmd, char *resp_prefix, char *resp_data, uint32_t max_try)</td></tr>
+<tr class="memdesc:acf9f67d080950bf5522f88d1576d631e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute command and check whether the response prefix matches.  <a href="#acf9f67d080950bf5522f88d1576d631e">More...</a><br /></td></tr>
+<tr class="separator:acf9f67d080950bf5522f88d1576d631e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afde53d1721f314d7e176439b1985f3d1"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#afde53d1721f314d7e176439b1985f3d1">hm1x_set_param</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, char *param, char *val)</td></tr>
+<tr class="memdesc:afde53d1721f314d7e176439b1985f3d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">HM1X set param, value and param must end with '\0', E_OK for success, -1 for fail.  <a href="#afde53d1721f314d7e176439b1985f3d1">More...</a><br /></td></tr>
+<tr class="separator:afde53d1721f314d7e176439b1985f3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a2b9bc179b1477e7da1b82fb128e03a"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a6a2b9bc179b1477e7da1b82fb128e03a">hm1x_get_param</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, char *param, char *r_val)</td></tr>
+<tr class="memdesc:a6a2b9bc179b1477e7da1b82fb128e03a"><td class="mdescLeft">&#160;</td><td class="mdescRight">HM1X get param, cmd and val must contain '\0' end, &gt;=0 for success, &lt;0 for fail.  <a href="#a6a2b9bc179b1477e7da1b82fb128e03a">More...</a><br /></td></tr>
+<tr class="separator:a6a2b9bc179b1477e7da1b82fb128e03a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a357c405c30916c382b78f76a90088f3f"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a357c405c30916c382b78f76a90088f3f">hm1x_set_param_u8</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, char *param, uint8_t val)</td></tr>
+<tr class="memdesc:a357c405c30916c382b78f76a90088f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">set a 8bits long parameter of hm1x, E_OK for success, -1 for fail  <a href="#a357c405c30916c382b78f76a90088f3f">More...</a><br /></td></tr>
+<tr class="separator:a357c405c30916c382b78f76a90088f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab619aea84f42a69e8e60d7d8cb63293"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab619aea84f42a69e8e60d7d8cb63293"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#aab619aea84f42a69e8e60d7d8cb63293">hm1x_set_role</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint32_t role)</td></tr>
+<tr class="memdesc:aab619aea84f42a69e8e60d7d8cb63293"><td class="mdescLeft">&#160;</td><td class="mdescRight">set working role, 0 for success, -1 for fail <br /></td></tr>
+<tr class="separator:aab619aea84f42a69e8e60d7d8cb63293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8172a0e683bb177e5c09e0982ce10f13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8172a0e683bb177e5c09e0982ce10f13"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a8172a0e683bb177e5c09e0982ce10f13">hm1x_set_mode</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint32_t mode)</td></tr>
+<tr class="memdesc:a8172a0e683bb177e5c09e0982ce10f13"><td class="mdescLeft">&#160;</td><td class="mdescRight">set working mode, 0 for success, -1 for fail <br /></td></tr>
+<tr class="separator:a8172a0e683bb177e5c09e0982ce10f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd81edc6fa2dc560e857fd3520b7700"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dd81edc6fa2dc560e857fd3520b7700"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a4dd81edc6fa2dc560e857fd3520b7700">hm1x_set_type</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint32_t type)</td></tr>
+<tr class="memdesc:a4dd81edc6fa2dc560e857fd3520b7700"><td class="mdescLeft">&#160;</td><td class="mdescRight">set working type, 0 for success, -1 for fail <br /></td></tr>
+<tr class="separator:a4dd81edc6fa2dc560e857fd3520b7700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c767f31e608097997e3c94b420dd5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22c767f31e608097997e3c94b420dd5e"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a22c767f31e608097997e3c94b420dd5e">hm1x_set_baud</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj, uint32_t baudrate)</td></tr>
+<tr class="memdesc:a22c767f31e608097997e3c94b420dd5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">set baudrate of hm1x, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
+<tr class="separator:a22c767f31e608097997e3c94b420dd5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72ef9100a54daa3258e7cef84098f7a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72ef9100a54daa3258e7cef84098f7a7"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a72ef9100a54daa3258e7cef84098f7a7">hm1x_test_command</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj)</td></tr>
+<tr class="memdesc:a72ef9100a54daa3258e7cef84098f7a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the test command for hm1x ble module, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
+<tr class="separator:a72ef9100a54daa3258e7cef84098f7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a42ee39679f05b07c6125516b6d5ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97a42ee39679f05b07c6125516b6d5ab"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a97a42ee39679f05b07c6125516b6d5ab">hm1x_restart</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj)</td></tr>
+<tr class="memdesc:a97a42ee39679f05b07c6125516b6d5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset and restart the module, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
+<tr class="separator:a97a42ee39679f05b07c6125516b6d5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5584dde725b4ac3650bd2b9321399a17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5584dde725b4ac3650bd2b9321399a17"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hm1x_8c.html#a5584dde725b4ac3650bd2b9321399a17">hm1x_renew</a> (<a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a> obj)</td></tr>
+<tr class="memdesc:a5584dde725b4ac3650bd2b9321399a17"><td class="mdescLeft">&#160;</td><td class="mdescRight">renew the module, &gt;=0 for success, &lt;0 for fail <br /></td></tr>
+<tr class="separator:a5584dde725b4ac3650bd2b9321399a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>HM-1X BLE driver. </p>
 <p>Implement hm-1x ble driver. </p>
 
 <p>Definition in file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a962f590c5f7dbfe35edfc1134d150982"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_deinit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deinit HM1X BLE device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>HM1X type object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">E_OK</td><td>success </td></tr>
+    <tr><td class="paramname">!E_OK</td><td>fail </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00178">178</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00055">E_OK</a>, <a class="el" href="dev__uart_8h_source.html#l00384">dev_uart::uart_close</a>, and <a class="el" href="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source.html#l00269">uart_get_dev()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acf9f67d080950bf5522f88d1576d631e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_exec_cmd_chkresp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>resp_prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>resp_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>max_try</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute command and check whether the response prefix matches. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd</td><td>Command to send to the BLE device using the UART </td></tr>
+    <tr><td class="paramname">resp_prefix</td><td>Response prefix string, like OK. Must not be NULL </td></tr>
+    <tr><td class="paramname">resp_data</td><td>Response data buffer, may be NULL </td></tr>
+    <tr><td class="paramname">max_try</td><td>How many times this function can try to run </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">&lt;0</td><td>Fail </td></tr>
+    <tr><td class="paramname">&gt;=0</td><td>Response data length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00263">263</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00060">E_PAR</a>, and <a class="el" href="hm1x_8c_source.html#l00233">hm1x_exec_command()</a>.</p>
+
+<p>Referenced by <a class="el" href="hm1x_8c_source.html#l00329">hm1x_get_param()</a>, <a class="el" href="hm1x_8c_source.html#l00422">hm1x_renew()</a>, <a class="el" href="hm1x_8c_source.html#l00410">hm1x_restart()</a>, <a class="el" href="hm1x_8c_source.html#l00385">hm1x_set_baud()</a>, <a class="el" href="hm1x_8c_source.html#l00304">hm1x_set_param()</a>, and <a class="el" href="hm1x_8c_source.html#l00403">hm1x_test_command()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8bd85cd79024530e2bd4dbb2564810a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_exec_command </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>resp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>wait_ms</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute command and wait for response with timeout. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cmd</td><td>Command to send to the BLE device using the UART </td></tr>
+    <tr><td class="paramname">resp</td><td>Response buffer, must not be NULL </td></tr>
+    <tr><td class="paramname">wait_ms</td><td>Maximum MS to wait for response </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">&lt;0</td><td>Fail </td></tr>
+    <tr><td class="paramname">&gt;=0</td><td>Response string count </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00233">233</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00060">E_PAR</a>, <a class="el" href="hm1x_8c_source.html#l00209">hm1x_read()</a>, and <a class="el" href="hm1x_8c_source.html#l00193">hm1x_write()</a>.</p>
+
+<p>Referenced by <a class="el" href="hm1x_8c_source.html#l00263">hm1x_exec_cmd_chkresp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a2b9bc179b1477e7da1b82fb128e03a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_get_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>r_val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HM1X get param, cmd and val must contain '\0' end, &gt;=0 for success, &lt;0 for fail. </p>
+<p>only for return resp with OK+Get: </p>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00329">329</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00077">E_BOVR</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00060">E_PAR</a>, and <a class="el" href="hm1x_8c_source.html#l00263">hm1x_exec_cmd_chkresp()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a59dab308f0075d2e3715331456af6be9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>baudrate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Init HM1X BLE device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>HM1X type object </td></tr>
+    <tr><td class="paramname">baudrate</td><td>ble working baudrate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">E_OK</td><td>success </td></tr>
+    <tr><td class="paramname">!E_OK</td><td>fail </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00156">156</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00069">E_OBJ</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00055">E_OK</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00078">E_OPNED</a>, <a class="el" href="dev__uart_8h_source.html#l00172">UART_CMD_SET_BAUD</a>, <a class="el" href="dev__uart_8h_source.html#l00385">dev_uart::uart_control</a>, <a class="el" href="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source.html#l00269">uart_get_dev()</a>, and <a class="el" href="dev__uart_8h_source.html#l00383">dev_uart::uart_open</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a96977a38bfdaa27ca569b2aa6d3a0d63"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t hm1x_read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>cnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read data from HM1X. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Buffer to be read to </td></tr>
+    <tr><td class="paramname">cnt</td><td>Number to be read </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">&lt;0</td><td>Failed to read </td></tr>
+    <tr><td class="paramname">&gt;=0</td><td>Read count </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00209">209</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00069">E_OBJ</a>, <a class="el" href="dev__uart_8h_source.html#l00221">UART_CMD_GET_RXAVAIL</a>, <a class="el" href="dev__uart_8h_source.html#l00385">dev_uart::uart_control</a>, <a class="el" href="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source.html#l00269">uart_get_dev()</a>, and <a class="el" href="dev__uart_8h_source.html#l00387">dev_uart::uart_read</a>.</p>
+
+<p>Referenced by <a class="el" href="hm1x_8c_source.html#l00233">hm1x_exec_command()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afde53d1721f314d7e176439b1985f3d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_set_param </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HM1X set param, value and param must end with '\0', E_OK for success, -1 for fail. </p>
+<p>only for return resp with OK+Set: </p>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00304">304</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00077">E_BOVR</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00055">E_OK</a>, <a class="el" href="emb_a_r_c__error_8h_source.html#l00060">E_PAR</a>, and <a class="el" href="hm1x_8c_source.html#l00263">hm1x_exec_cmd_chkresp()</a>.</p>
+
+<p>Referenced by <a class="el" href="hm1x_8c_source.html#l00350">hm1x_set_param_u8()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a357c405c30916c382b78f76a90088f3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t hm1x_set_param_u8 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set a 8bits long parameter of hm1x, E_OK for success, -1 for fail </p>
+<p>only for return resp with OK+Set: </p>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00350">350</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="hm1x_8c_source.html#l00304">hm1x_set_param()</a>.</p>
+
+<p>Referenced by <a class="el" href="hm1x_8c_source.html#l00372">hm1x_set_mode()</a>, <a class="el" href="hm1x_8c_source.html#l00361">hm1x_set_role()</a>, and <a class="el" href="hm1x_8c_source.html#l00378">hm1x_set_type()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a28d8a66e71cee93ff911a10b1b78c385"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t hm1x_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_h_m1_x___d_e_f.html">HM1X_DEF_PTR</a>&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>cnt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write data to HM1X. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>Buffer to be written </td></tr>
+    <tr><td class="paramname">cnt</td><td>Number to be written </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">&lt;0</td><td>Failed to write </td></tr>
+    <tr><td class="paramname">&gt;=0</td><td>Written count </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="hm1x_8c_source.html#l00193">193</a> of file <a class="el" href="hm1x_8c_source.html">hm1x.c</a>.</p>
+
+<p>References <a class="el" href="emb_a_r_c__error_8h_source.html#l00069">E_OBJ</a>, <a class="el" href="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source.html#l00269">uart_get_dev()</a>, and <a class="el" href="dev__uart_8h_source.html#l00386">dev_uart::uart_write</a>.</p>
+
+<p>Referenced by <a class="el" href="hm1x_8c_source.html#l00233">hm1x_exec_command()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a class="el" href="dir_ba790842f448632b805827035471586a.html">emsk</a></li><li class="navelem"><a class="el" href="dir_2f7e22bd2ce967436634585d9443b467.html">drivers</a></li><li class="navelem"><a class="el" href="dir_c38bace21033d56f123d9ace5aaae683.html">ble</a></li><li class="navelem"><a class="el" href="hm1x_8c.html">hm1x.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_f18e8804d198f58c6ec1fb973a6c201d.html">peripheral</a></li><li class="navelem"><a class="el" href="dir_b373daf05f8628986bb6613cd89009c0.html">ble</a></li><li class="navelem"><a class="el" href="dir_27c282f7bec945c2a20814706f2adfe5.html">hm1x</a></li><li class="navelem"><a class="el" href="hm1x_8c.html">hm1x.c</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:21 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

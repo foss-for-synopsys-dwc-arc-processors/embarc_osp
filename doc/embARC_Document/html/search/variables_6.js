@@ -1,7 +1,6 @@
 var searchData=
 [
   ['g_5fdmac',['g_dmac',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gacb5c9c1f9c1c3851e7ed8c016248dd9d',1,'arc_udma.c']]],
-  ['g_5fled_5fval',['g_led_val',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga1e64eb405e6f20161e7d5ad869cf6202',1,'emsk_gpio.c']]],
   ['get_5fmacaddr',['get_macaddr',['../structdev__wnic.html#ac5b66354759860280141897638cf960c',1,'dev_wnic']]],
   ['get_5frx_5fdata',['get_rx_data',['../structdev__wnic.html#a2143baf1c09c1f072ea558bca46bc1ca',1,'dev_wnic']]],
   ['get_5fscan_5fresult',['get_scan_result',['../structdev__wnic.html#ad40e29ab395b3c7c6adfc39da6ee8c96',1,'dev_wnic']]],
@@ -10,6 +9,8 @@ var searchData=
   ['gl_5faxs_5fsys_5fhz_5fcnt',['gl_axs_sys_hz_cnt',['../group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___t_i_m_e_r.html#ga16f7996e7e192ab68d6cad3d1ef04a83',1,'gl_axs_sys_hz_cnt():&#160;axs_timer.c'],['../group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___t_i_m_e_r.html#ga16f7996e7e192ab68d6cad3d1ef04a83',1,'gl_axs_sys_hz_cnt():&#160;axs_timer.c']]],
   ['gl_5femsk_5fms_5fcnt',['gl_emsk_ms_cnt',['../group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r.html#gae76eacf30d5e3a4d952ac1f09ad455c2',1,'gl_emsk_ms_cnt():&#160;emsk_timer.c'],['../group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r.html#gae76eacf30d5e3a4d952ac1f09ad455c2',1,'gl_emsk_ms_cnt():&#160;emsk_timer.c']]],
   ['gl_5femsk_5fsys_5fhz_5fcnt',['gl_emsk_sys_hz_cnt',['../group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r.html#ga4cc2877b737ebd7d60ae34abbaf59f46',1,'gl_emsk_sys_hz_cnt():&#160;emsk_timer.c'],['../group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r.html#ga4cc2877b737ebd7d60ae34abbaf59f46',1,'gl_emsk_sys_hz_cnt():&#160;emsk_timer.c']]],
+  ['gl_5fhsdk_5fms_5fcnt',['gl_hsdk_ms_cnt',['../group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___t_i_m_e_r.html#gaedd366e6546354fa76ff37690909bbbd',1,'gl_hsdk_ms_cnt():&#160;hsdk_timer.c'],['../group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___t_i_m_e_r.html#gaedd366e6546354fa76ff37690909bbbd',1,'gl_hsdk_ms_cnt():&#160;hsdk_timer.c']]],
+  ['gl_5fhsdk_5fsys_5fhz_5fcnt',['gl_hsdk_sys_hz_cnt',['../group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___t_i_m_e_r.html#ga44d72998495251a839f1563a24b25fde',1,'gl_hsdk_sys_hz_cnt():&#160;hsdk_timer.c'],['../group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___t_i_m_e_r.html#ga44d72998495251a839f1563a24b25fde',1,'gl_hsdk_sys_hz_cnt():&#160;hsdk_timer.c']]],
   ['gl_5fnsim_5fms_5fcnt',['gl_nsim_ms_cnt',['../group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___t_i_m_e_r.html#ga19543392858fa8e12df9a7b995b8ebd8',1,'gl_nsim_ms_cnt():&#160;nsim_timer.c'],['../group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___t_i_m_e_r.html#ga19543392858fa8e12df9a7b995b8ebd8',1,'gl_nsim_ms_cnt():&#160;nsim_timer.c']]],
   ['gl_5fnsim_5fsys_5fhz_5fcnt',['gl_nsim_sys_hz_cnt',['../group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___t_i_m_e_r.html#gae4b0888aa2ce6afa284752dd4a5648a0',1,'gl_nsim_sys_hz_cnt():&#160;nsim_timer.c'],['../group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___t_i_m_e_r.html#gae4b0888aa2ce6afa284752dd4a5648a0',1,'gl_nsim_sys_hz_cnt():&#160;nsim_timer.c']]],
   ['gpio_5fbit_5fisr',['gpio_bit_isr',['../structdw__gpio__port.html#ab02148e6be77d3827bf3cba30421e26a',1,'dw_gpio_port']]],

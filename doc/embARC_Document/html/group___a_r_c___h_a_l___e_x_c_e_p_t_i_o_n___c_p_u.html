@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -138,7 +138,8 @@ Macros</h2></td></tr>
 <tr class="separator:ga1443e9a11bdf7ee0540d79c6ebcc321f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga07e2a217a7f54496ed4ad507d48d894d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga07e2a217a7f54496ed4ad507d48d894d">NUM_EXC_INT</a>&#160;&#160;&#160;9</td></tr>
 <tr class="separator:ga07e2a217a7f54496ed4ad507d48d894d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5139fa9096875ad9a126741fce30e03"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae5139fa9096875ad9a126741fce30e03">NUM_EXC_ALL</a>&#160;&#160;&#160;(<a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a> + <a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga07e2a217a7f54496ed4ad507d48d894d">NUM_EXC_INT</a>)</td></tr>
+<tr class="memitem:gae5139fa9096875ad9a126741fce30e03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae5139fa9096875ad9a126741fce30e03"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NUM_EXC_ALL</b>&#160;&#160;&#160;(<a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a> + <a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga07e2a217a7f54496ed4ad507d48d894d">NUM_EXC_INT</a>)</td></tr>
 <tr class="separator:gae5139fa9096875ad9a126741fce30e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa5c10461f63cc75d09ead1273bce3d1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa5c10461f63cc75d09ead1273bce3d1b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>ARC_PROCESSOR_FRAME_SIZE</b>&#160;&#160;&#160;(sizeof(<a class="el" href="structprocessor__frame.html">PROCESSOR_FRAME</a>) / sizeof(uint32_t))</td></tr>
@@ -208,14 +209,14 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ga8191a0964127f3e199c755e4771508c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga76ef78e52a0465e63fcebd9385b71bbd">EXC_HANDLER</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga8191a0964127f3e199c755e4771508c8">exc_int_handler_table</a> [<a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae5139fa9096875ad9a126741fce30e03">NUM_EXC_ALL</a>]</td></tr>
+<tr class="memitem:ga8191a0964127f3e199c755e4771508c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga76ef78e52a0465e63fcebd9385b71bbd">EXC_HANDLER</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga8191a0964127f3e199c755e4771508c8">exc_int_handler_table</a> [NUM_EXC_ALL]</td></tr>
 <tr class="memdesc:ga8191a0964127f3e199c755e4771508c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the cpu exception and interrupt exception handler table called in exc_entry_default and exc_entry_int  <a href="#ga8191a0964127f3e199c755e4771508c8">More...</a><br /></td></tr>
 <tr class="separator:ga8191a0964127f3e199c755e4771508c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga379c2e6bebc250fad4c57da70cb62cac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga379c2e6bebc250fad4c57da70cb62cac"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga379c2e6bebc250fad4c57da70cb62cac">exc_nest_count</a></td></tr>
 <tr class="memdesc:ga379c2e6bebc250fad4c57da70cb62cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">the counter for exc/int processing, =0 no int/exc &gt;1 in int/exc processing <br /></td></tr>
 <tr class="separator:ga379c2e6bebc250fad4c57da70cb62cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga91b7022c29998a80fe16897fd8514a8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae3672aa4e2804ea07d3ecd02d68b2893">EXC_ENTRY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga91b7022c29998a80fe16897fd8514a8f">exc_entry_table</a> [<a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae5139fa9096875ad9a126741fce30e03">NUM_EXC_ALL</a>]</td></tr>
+<tr class="memitem:ga91b7022c29998a80fe16897fd8514a8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae3672aa4e2804ea07d3ecd02d68b2893">EXC_ENTRY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga91b7022c29998a80fe16897fd8514a8f">exc_entry_table</a> [NUM_EXC_ALL]</td></tr>
 <tr class="memdesc:ga91b7022c29998a80fe16897fd8514a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">exception entry table  <a href="#ga91b7022c29998a80fe16897fd8514a8f">More...</a><br /></td></tr>
 <tr class="separator:ga91b7022c29998a80fe16897fd8514a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5f9b7ff48abdf4699865396f0cce4cc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga5f9b7ff48abdf4699865396f0cce4cc8"></a>
@@ -242,23 +243,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Core exception management. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="gae5139fa9096875ad9a126741fce30e03"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NUM_EXC_ALL&#160;&#160;&#160;(<a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a> + <a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga07e2a217a7f54496ed4ad507d48d894d">NUM_EXC_INT</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>total number of exceptions </p>
-
-<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00066">66</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
-
-<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00236">exc_entry_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00197">exc_entry_install()</a>, <a class="el" href="arc__exception_8c_source.html#l00266">exc_handler_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00250">exc_handler_install()</a>, <a class="el" href="arc__exception_8c_source.html#l00153">exc_int_init()</a>, <a class="el" href="arc__exception_8c_source.html#l00282">int_disable()</a>, <a class="el" href="arc__exception_8c_source.html#l00297">int_enable()</a>, <a class="el" href="arc__exception_8c_source.html#l00313">int_enabled()</a>, <a class="el" href="axs__103__interrupt_8c_source.html#l00539">int_handler_get()</a>, <a class="el" href="axs__103__interrupt_8c_source.html#l00514">int_handler_install()</a>, <a class="el" href="arc__exception_8c_source.html#l00444">int_level_config()</a>, <a class="el" href="arc__exception_8c_source.html#l00357">int_pri_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00374">int_pri_set()</a>, <a class="el" href="arc__exception_8c_source.html#l00413">int_probe()</a>, <a class="el" href="arc__exception_8c_source.html#l00395">int_secure_set()</a>, <a class="el" href="arc__exception_8c_source.html#l00428">int_sw_trigger()</a>, and <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00217">main()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ga1443e9a11bdf7ee0540d79c6ebcc321f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -268,11 +252,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<p>number of CPU exceptions </p>
+<p>&lt; number of CPU exceptions number of interrupt exceptions, defined in <a class="el" href="arc__feature__config_8h.html" title="header file for arc feature configuration ">arc_feature_config.h</a> </p>
 
-<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00059">59</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00054">54</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
 
-<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00153">exc_int_init()</a>, <a class="el" href="arc__exception_8c_source.html#l00282">int_disable()</a>, <a class="el" href="arc__exception_8c_source.html#l00297">int_enable()</a>, <a class="el" href="arc__exception_8c_source.html#l00313">int_enabled()</a>, <a class="el" href="arc__exception_8c_source.html#l00512">int_handler_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00496">int_handler_install()</a>, <a class="el" href="arc__exception_8c_source.html#l00444">int_level_config()</a>, <a class="el" href="arc__exception_8c_source.html#l00357">int_pri_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00374">int_pri_set()</a>, <a class="el" href="arc__exception_8c_source.html#l00413">int_probe()</a>, <a class="el" href="arc__exception_8c_source.html#l00395">int_secure_set()</a>, <a class="el" href="arc__exception_8c_source.html#l00428">int_sw_trigger()</a>, and <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00217">main()</a>.</p>
+<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00150">exc_int_init()</a>, <a class="el" href="arc__exception_8c_source.html#l00279">int_disable()</a>, <a class="el" href="arc__exception_8c_source.html#l00294">int_enable()</a>, <a class="el" href="arc__exception_8c_source.html#l00310">int_enabled()</a>, <a class="el" href="arc__exception_8c_source.html#l00509">int_handler_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00493">int_handler_install()</a>, <a class="el" href="arc__exception_8c_source.html#l00441">int_level_config()</a>, <a class="el" href="arc__exception_8c_source.html#l00354">int_pri_get()</a>, <a class="el" href="arc__exception_8c_source.html#l00371">int_pri_set()</a>, <a class="el" href="arc__exception_8c_source.html#l00410">int_probe()</a>, <a class="el" href="arc__exception_8c_source.html#l00392">int_secure_set()</a>, <a class="el" href="arc__exception_8c_source.html#l00425">int_sw_trigger()</a>, and <a class="el" href="example_2baremetal_2bootloader_2main_8c_source.html#l00214">main()</a>.</p>
 
 </div>
 </div>
@@ -285,9 +269,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<p>number of interrupt exceptions, defined by users </p>
+<p>total number of exceptions </p>
 
-<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00063">63</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00059">59</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
 
 </div>
 </div>
@@ -309,9 +293,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <p>read current exception vector base </p>
 <dl class="section return"><dt>Returns</dt><dd>exception vector base (uint32_t) </dd></dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00223">223</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00217">217</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
 
-<p>References <a class="el" href="arc_8h_source.html#l00358">AUX_INT_VECT_BASE</a>.</p>
+<p>References <a class="el" href="arc_8h_source.html#l00355">AUX_INT_VECT_BASE</a>.</p>
 
 </div>
 </div>
@@ -337,9 +321,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00213">213</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00207">207</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
 
-<p>References <a class="el" href="arc_8h_source.html#l00358">AUX_INT_VECT_BASE</a>.</p>
+<p>References <a class="el" href="arc_8h_source.html#l00355">AUX_INT_VECT_BASE</a>.</p>
 
 </div>
 </div>
@@ -366,9 +350,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the installed CPU exception entry </dd></dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00236">236</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00233">233</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
 
-<p>References <a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga91b7022c29998a80fe16897fd8514a8f">exc_entry_table</a>, and <a class="el" href="arc__exception_8h_source.html#l00066">NUM_EXC_ALL</a>.</p>
+<p>References <a class="el" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga91b7022c29998a80fe16897fd8514a8f">exc_entry_table</a>.</p>
 
 </div>
 </div>
@@ -405,9 +389,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00197">197</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00194">194</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
 
-<p>References <a class="el" href="arc_8h_source.html#l00130">AUX_BCR_D_CACHE</a>, <a class="el" href="arc_8h_source.html#l00358">AUX_INT_VECT_BASE</a>, <a class="el" href="arc_8h_source.html#l00359">AUX_INT_VECT_BASE_S</a>, <a class="el" href="arc__exception_8c_source.html#l00475">cpu_lock_save()</a>, <a class="el" href="arc__exception_8c_source.html#l00485">cpu_unlock_restore()</a>, <a class="el" href="arc__cache_8h_source.html#l00251">dcache_flush_line()</a>, <a class="el" href="arc__cache_8h_source.html#l00128">icache_invalidate_line()</a>, and <a class="el" href="arc__exception_8h_source.html#l00066">NUM_EXC_ALL</a>.</p>
+<p>References <a class="el" href="arc_8h_source.html#l00127">AUX_BCR_D_CACHE</a>, <a class="el" href="arc_8h_source.html#l00355">AUX_INT_VECT_BASE</a>, <a class="el" href="arc_8h_source.html#l00356">AUX_INT_VECT_BASE_S</a>, <a class="el" href="arc__exception_8c_source.html#l00472">cpu_lock_save()</a>, <a class="el" href="arc__exception_8c_source.html#l00482">cpu_unlock_restore()</a>, <a class="el" href="arc__cache_8h_source.html#l00248">dcache_flush_line()</a>, and <a class="el" href="arc__cache_8h_source.html#l00125">icache_invalidate_line()</a>.</p>
 
 </div>
 </div>
@@ -441,9 +425,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00068">68</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00065">65</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
 
-<p>References <a class="el" href="arc_8h_source.html#l00273">AUX_ECR</a>, and <a class="el" href="arc_8h_source.html#l00270">AUX_ERRET</a>.</p>
+<p>References <a class="el" href="arc_8h_source.html#l00270">AUX_ECR</a>, and <a class="el" href="arc_8h_source.html#l00267">AUX_ERRET</a>.</p>
 
 </div>
 </div>
@@ -470,11 +454,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the installed exception handler or NULL </dd></dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00266">266</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00263">263</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
 
-<p>References <a class="el" href="arc__exception_8h_source.html#l00066">NUM_EXC_ALL</a>.</p>
-
-<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00512">int_handler_get()</a>.</p>
+<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00509">int_handler_get()</a>.</p>
 
 </div>
 </div>
@@ -511,11 +493,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00250">250</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00247">247</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
 
-<p>References <a class="el" href="arc__exception_8h_source.html#l00066">NUM_EXC_ALL</a>.</p>
-
-<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00496">int_handler_install()</a>, and <a class="el" href="example_2freertos_2kernel_2main_8c_source.html#l00172">main()</a>.</p>
+<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00493">int_handler_install()</a>, and <a class="el" href="example_2freertos_2kernel_2main_8c_source.html#l00170">main()</a>.</p>
 
 </div>
 </div>
@@ -542,7 +522,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00234">234</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8h_source.html#l00228">228</a> of file <a class="el" href="arc__exception_8h_source.html">arc_exception.h</a>.</p>
 
 </div>
 </div>
@@ -561,7 +541,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <p>install exception entry table to ARC_AUX_INT_VECT_BASE in startup. According to ARCv2 ISA, vectors are fetched in instruction space and thus may be present in ICCM, Instruction Cache, or main memory accessed by instruction fetch logic. So it is put into a specific section .vector.</p>
 <p>Please note that the exc_entry_table maybe cached in ARC. Some functions is defined in .s files. </p>
 
-<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00236">exc_entry_get()</a>.</p>
+<p>Referenced by <a class="el" href="arc__exception_8c_source.html#l00233">exc_entry_get()</a>.</p>
 
 </div>
 </div>
@@ -576,16 +556,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">         [0 ... <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a>-1] = <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gaaa967b5a9b8869279d8bbe9b57fc7a9b">exc_handler_default</a>,</div>
-<div class="line">         [<a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a> ... <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae5139fa9096875ad9a126741fce30e03">NUM_EXC_ALL</a>-1] = <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gae7e4ca8e25d29bcd69348e9624a684e8">int_handler_default</a></div>
+<div class="line">         [<a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a> ... NUM_EXC_ALL-1] = <a class="code" href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gae7e4ca8e25d29bcd69348e9624a684e8">int_handler_default</a></div>
 <div class="line">}</div>
-<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_gae7e4ca8e25d29bcd69348e9624a684e8"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gae7e4ca8e25d29bcd69348e9624a684e8">int_handler_default</a></div><div class="ttdeci">static void int_handler_default(void *p_excinf)</div><div class="ttdoc">default interrupt handler </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00094">arc_exception.c:94</a></div></div>
-<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_html_gae5139fa9096875ad9a126741fce30e03"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae5139fa9096875ad9a126741fce30e03">NUM_EXC_ALL</a></div><div class="ttdeci">#define NUM_EXC_ALL</div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00066">arc_exception.h:66</a></div></div>
-<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_html_gaaa967b5a9b8869279d8bbe9b57fc7a9b"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gaaa967b5a9b8869279d8bbe9b57fc7a9b">exc_handler_default</a></div><div class="ttdeci">static void exc_handler_default(void *p_excinf)</div><div class="ttdoc">default cpu exception handler </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00068">arc_exception.c:68</a></div></div>
-<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_html_ga1443e9a11bdf7ee0540d79c6ebcc321f"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a></div><div class="ttdeci">#define NUM_EXC_CPU</div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00059">arc_exception.h:59</a></div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_html_gae7e4ca8e25d29bcd69348e9624a684e8"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t.html#gae7e4ca8e25d29bcd69348e9624a684e8">int_handler_default</a></div><div class="ttdeci">static void int_handler_default(void *p_excinf)</div><div class="ttdoc">default interrupt handler </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00091">arc_exception.c:91</a></div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_html_gaaa967b5a9b8869279d8bbe9b57fc7a9b"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gaaa967b5a9b8869279d8bbe9b57fc7a9b">exc_handler_default</a></div><div class="ttdeci">static void exc_handler_default(void *p_excinf)</div><div class="ttdoc">default cpu exception handler </div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8c_source.html#l00065">arc_exception.c:65</a></div></div>
+<div class="ttc" id="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_html_ga1443e9a11bdf7ee0540d79c6ebcc321f"><div class="ttname"><a href="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f">NUM_EXC_CPU</a></div><div class="ttdeci">#define NUM_EXC_CPU</div><div class="ttdef"><b>Definition:</b> <a href="arc__exception_8h_source.html#l00054">arc_exception.h:54</a></div></div>
 </div><!-- fragment -->
 <p>the cpu exception and interrupt exception handler table called in exc_entry_default and exc_entry_int </p>
 
-<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00119">119</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
+<p>Definition at line <a class="el" href="arc__exception_8c_source.html#l00116">116</a> of file <a class="el" href="arc__exception_8c_source.html">arc_exception.c</a>.</p>
 
 </div>
 </div>
@@ -595,7 +574,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:24 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

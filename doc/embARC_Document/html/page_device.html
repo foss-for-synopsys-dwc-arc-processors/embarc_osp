@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -103,14 +103,18 @@ $(document).ready(function(){initNavTree('page_device.html','');});
 <ul><li class="level1"><a href="#sect_device_introduction">Introduction</a></li>
 <li class="level1"><a href="#sect_device_devicehal">Device HAL</a></li>
 <li class="level1"><a href="#sect_device_implemented_drivers_in_embARC">Device Drivers in embARC Software Package</a></li>
-<li class="level1"><a href="#sect_device_add_new_devce_to_embARC">Adding New Device to embARC</a></li>
+<li class="level1"><a href="#sect_device_use_dev">How use to on-chip device IP and peripherals</a></li>
+<li class="level1"><a href="#sect_device_add_new_device_to_embARC">Adding New Device to embARC</a><ul><li class="level2"><a href="#sect_device_add_ip">Add on-chip IP</a></li>
+<li class="level2"><a href="#sect_device_add_peripheral">Add on-board or external peripherals</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="sect_device_introduction"></a>
 Introduction</h1>
 <p>The device folder in the root of embARC contains the necessary software APIs and implementations for common device IP. The device layer consists of the following components:</p><ul>
-<li><b>Device HAL</b>: a device hardware abstraction layer including WNIC (Wireless Network Interface Controller), UART (Universal Asynchronous Receiver/Transmitter), SPI (Serial Peripheral Interface), IIC (Inter-Integrated Circuit), and GPIO (General Purpose Input Output).</li>
-<li><b>Implementation</b>: device driver implementations based on the above device HAL, including WNIC implementation of Microchip MRF24G WiFi device and DesignWare IP implementations of UART, IIC, SPI, and GPIO devices.</li>
+<li><b>Device HAL</b>: a device hardware abstraction layer including WNIC (Wireless Network Interface Controller), UART (Universal Asynchronous Receiver/Transmitter), SPI (Serial Peripheral Interface), IIC (Inter-Integrated Circuit), GPIO (General Purpose Input Output) and SDIO (Secure Digital Input and Output).</li>
+<li><b>Implementation</b>: device driver implementations based on the above device HAL, including WNIC implementation of Microchip MRF24G WiFi device and DesignWare IP implementations of UART, IIC, SPI, GPIO and SDIO devices.</li>
 </ul>
 <p> 
 <div class="imagebox">
@@ -126,9 +130,10 @@ Device HAL</h1>
 <li><b>I2C</b>: I2C device abstraction in <a class="el" href="dev__iic_8h.html" title="iic device hardware layer definitions ">dev_iic.h</a></li>
 <li><b>SPI</b>: SPI device abstraction in <a class="el" href="dev__spi_8h.html" title="spi device hardware layer definitions ">dev_spi.h</a></li>
 <li><b>UART</b>: UART device abstraction in <a class="el" href="dev__uart_8h.html" title="uart device hardware layer definitions ">dev_uart.h</a></li>
+<li><b>SDIO</b>: SDIO device abstraction in <a class="el" href="dev__sdio_8h_source.html">dev_sdio.h</a></li>
 <li><b>WNIC</b>: WINC device abstraction in <a class="el" href="dev__wnic_8h.html" title="wireless network interface controller device hardware layer definitions ">dev_wnic.h</a></li>
 </ul>
-<p>These *.h files provide abstraction APIs and macros that require corresponding implementations. embARC provides the device implementations in <b>device/designware</b>, <b>device/microchip</b>, <b>device/rtthread</b> and <b>board/emsk/drivers</b>. <br />
+<p>These *.h files provide abstraction APIs and macros that require corresponding implementations. embARC provides the device implementations in <b>device/ip/designware</b>, <b>device/peripheral</b>, and <b>board/xxxx/drivers</b>. <br />
 Different device features are abstracted in the device HAL, such as UART, IIC, and SPI. Object-oriented concepts are adopted to provide common device operation APIs and device access APIs. See the section for each device for detailed information of the device HAL.</p>
 <h1><a class="anchor" id="sect_device_implemented_drivers_in_embARC"></a>
 Device Drivers in embARC Software Package</h1>
@@ -137,21 +142,13 @@ Device Drivers in embARC Software Package</h1>
 <tr>
 <th align="center">Source Code Folder </th><th align="center">Comments  </th></tr>
 <tr>
-<td align="center">board/emsk/drivers </td><td align="center">Peripheral driver implementations for EMSK devices </td></tr>
+<td align="center">board/xxxx/drivers </td><td align="center">Peripheral driver implementations for devices on board xxxx </td></tr>
 <tr>
-<td align="center">device/designware/gpio </td><td align="center">GPIO HAL implementation for DesignWare GPIO devices </td></tr>
+<td align="center">device/ip/designware/xxxx </td><td align="center">Device HAL implementation for DesignWare IP, e.g. GPIO, I2C, SPI </td></tr>
 <tr>
-<td align="center">device/designware/iic </td><td align="center">IIC HAL implementation for DesignWare IIC devices </td></tr>
+<td align="center">device/ip/ip_hal/inc </td><td align="center">Device HAL definitions </td></tr>
 <tr>
-<td align="center">device/designware/spi </td><td align="center">SPI HAL implementation for DesignWare SPI devices </td></tr>
-<tr>
-<td align="center">device/designware/uart </td><td align="center">UART HAL implementation for DesignWare UART devices </td></tr>
-<tr>
-<td align="center">device/device_hal/inc </td><td align="center">Device HAL definitions for EMSK devices </td></tr>
-<tr>
-<td align="center">device/microchip/mrf24g </td><td align="center">WNIC HAL implementation for Digilent PMOD WIFI(MRF24WG0MA) </td></tr>
-<tr>
-<td align="center">device/rtthread/rw009 </td><td align="center">WNIC HAL implementation for <a href="http://item.taobao.com/item.htm?spm=a230r.1.14.12.wgEHPS&amp;id=40813298723&amp;ns=1&amp;abbucket=2#detail">RW009 WIFI module</a> </td></tr>
+<td align="center">device/peripheral/xxx </td><td align="center">Peripheral drivers implementation, e.g. pmod modules, WiFi, BLE </td></tr>
 </table>
 <p>See also <a class="el" href="group___d_e_v_i_c_e___h_a_l.html">Device HAL API</a></p>
 <ul>
@@ -162,17 +159,32 @@ Device Drivers in embARC Software Package</h1>
 <li><a class="el" href="group___d_e_v_i_c_e___h_a_l___u_a_r_t.html">UART Device HAL Interface</a></li>
 <li><a class="el" href="group___d_e_v_i_c_e___h_a_l___w_n_i_c.html">Wireless Network Interface Controller Device HAL Interface</a></li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>The DesignWare UART, IIC, and SPI drivers support both polling mode and interrupt mode.</dd></dl>
-<h1><a class="anchor" id="sect_device_add_new_devce_to_embARC"></a>
+<dl class="section note"><dt>Note</dt><dd>The DesignWare UART, IIC, and SPI drivers support both polling and interrupt modes. The SDIO driver currently only supports polling mode.</dd></dl>
+<h1><a class="anchor" id="sect_device_use_dev"></a>
+How use to on-chip device IP and peripherals</h1>
+<p>To use on-chip device ip and peripherals, two new variables are introduced in the build system: ONCHIP_IP_LIST and EXT_DEV_LIST.</p>
+<p>In most cases, when a board/SoC/chip is determined, its on-chip IP is also determined, ONCHIP_IP_LIST is primarily defined in the board's makefile. Taking EMSK as an example, it has Designware SPI/IIC/GPIO/UART, so <b>ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio </b> is added.</p>
+<p>Different applications may use difference peripherals. Therefore, EXT_DEV_LIST is always defined in application level. For example, if a WiFi-based applications uses the pmod WiFi module, then its application makefile, <b>EXT_DEV_LIST += wifi/mrf24g</b> is defined to use the pmod WiFi module.</p>
+<h1><a class="anchor" id="sect_device_add_new_device_to_embARC"></a>
 Adding New Device to embARC</h1>
+<h2><a class="anchor" id="sect_device_add_ip"></a>
+Add on-chip IP</h2>
 <p>If the HAL of the new device is defined, follow the steps below:</p><ul>
-<li>Create a subfolder under the device folder.</li>
+<li>Create a subfolder under the device/ip folder.</li>
 <li>Implement the driver according to the device HAL definition and existing DesignWare IP implementations.</li>
+<li>Add corresponding makefile.</li>
 </ul>
 <p>If the HAL of the new device is not defined, follow the steps below:</p><ul>
-<li>Create a header file under <b>device/device_hal/folder</b>.</li>
+<li>Create a header file under <b>device/ip/ip_hal</b>.</li>
 <li>Add the HAL definition for the new device.</li>
-<li>Implement the driver according to the device HAL definition. </li>
+<li>Implement the driver according to the device HAL definition.</li>
+<li>Add corresponding makefile.</li>
+</ul>
+<h2><a class="anchor" id="sect_device_add_peripheral"></a>
+Add on-board or external peripherals</h2>
+<ul>
+<li>Add the driver in <b>device/peripheral</b> folder according to the class of peripheral. For example, a flash device xxx should be in the folder <b>device/peripheral/flash/xxx</b> folder.</li>
+<li>Add corresponding makefile. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
@@ -180,7 +192,7 @@ Adding New Device to embARC</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:22 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -3,7 +3,6 @@ var searchData=
   ['emsk_5fbutton_5finit',['emsk_button_init',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga1c5aeb4ab0898b4d756415644ff65c68',1,'emsk_gpio.c']]],
   ['emsk_5fgpio_5finit',['emsk_gpio_init',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gaa1c3c3474fcd341b7f0c8c2dd8318e97',1,'emsk_gpio.c']]],
   ['emsk_5fled_5finit',['emsk_led_init',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gac9f916612edd3260bf1282c25ceea192',1,'emsk_gpio.c']]],
-  ['emsk_5fmux_5finit',['emsk_mux_init',['../group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gada5e0143232404ec3e90e76905b0b1ab',1,'emsk_init.c']]],
   ['emsk_5fsdcard_5f1ms_5fupdate',['emsk_sdcard_1ms_update',['../group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d.html#gaddfb9a7f58b633dee5caca5b863b9ba2',1,'emsk_sdcard.c']]],
   ['emsk_5fswitch_5finit',['emsk_switch_init',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga17c90e6a42b9c2952d406d0136a390ba',1,'emsk_gpio.c']]],
   ['emsk_5ftimer_5finit',['emsk_timer_init',['../group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r.html#gaa39776349a5b6abdebd9ea209b6d4f8e',1,'emsk_timer.c']]],

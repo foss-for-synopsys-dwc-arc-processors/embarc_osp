@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -98,7 +98,8 @@ $(document).ready(function(){initNavTree('dev__common_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">dev_common.h File Reference<div class="ingroups"><a class="el" href="group___d_e_v_i_c_e___h_a_l.html">Device HAL</a> &raquo; <a class="el" href="group___d_e_v_i_c_e___h_a_l___d_e_f.html">Device HAL Definition</a> &raquo; <a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html">Common Device Layer Definitions</a></div></div>  </div>
 </div><!--header-->
@@ -150,6 +151,14 @@ Macros</h2></td></tr>
 <tr class="separator:ga039071faab7f693aff3dc479800073fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7ded35ef3b9e2d6e0122314647320da7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s.html#ga7ded35ef3b9e2d6e0122314647320da7">DEV_IN_XFER_ABRT</a>&#160;&#160;&#160;(1&lt;&lt;6)</td></tr>
 <tr class="separator:ga7ded35ef3b9e2d6e0122314647320da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e99d07a2a0aeb5040276d5a56ed5356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4e99d07a2a0aeb5040276d5a56ed5356"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ga4e99d07a2a0aeb5040276d5a56ed5356">DEV_ID_DEF</a>(id)&#160;&#160;&#160;(id)</td></tr>
+<tr class="memdesc:ga4e99d07a2a0aeb5040276d5a56ed5356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device ID definition, start from 0. <br /></td></tr>
+<tr class="separator:ga4e99d07a2a0aeb5040276d5a56ed5356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c959a409ad6e952dc79b876f8e9b861"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1c959a409ad6e952dc79b876f8e9b861"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga1c959a409ad6e952dc79b876f8e9b861">DEV_INTNO_INVALID</a>&#160;&#160;&#160;(0xFFFFFFFF)</td></tr>
+<tr class="memdesc:ga1c959a409ad6e952dc79b876f8e9b861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalid Interrupt Vector Number When interrupt number is set to this value, all interrupt related function in the device driver source code shouldn't be called, that means the interrupt processing maybe done in outside of device driver, maybe done in the device object instantiation. <br /></td></tr>
+<tr class="separator:ga1c959a409ad6e952dc79b876f8e9b861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf92f7e76e0f28fb3afa05ac663e7e3d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d.html#gaf92f7e76e0f28fb3afa05ac663e7e3d5">DEV_SYS_CMDBSE</a>&#160;&#160;&#160;(0x00000000)</td></tr>
 <tr class="separator:gaf92f7e76e0f28fb3afa05ac663e7e3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1e98640399df4b548576d76c8247bc53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d.html#ga1e98640399df4b548576d76c8247bc53">DEV_USR_CMDBSE</a>&#160;&#160;&#160;(0x80000000)</td></tr>
@@ -166,6 +175,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ga7d86b3918abd486e7f2953d6db49ef62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7d86b3918abd486e7f2953d6db49ef62"></a>
+typedef enum <a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#gae2dabafacb4a0fa4c5d6b7176b542e72">dev_id</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DEV_ID</b></td></tr>
+<tr class="separator:ga7d86b3918abd486e7f2953d6db49ef62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1e2d2bd78cfc19bba910da7448cc6fdc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1e2d2bd78cfc19bba910da7448cc6fdc"></a>
 typedef struct <a class="el" href="structdev__buffer.html">dev_buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga1e2d2bd78cfc19bba910da7448cc6fdc">DEV_BUFFER</a></td></tr>
 <tr class="memdesc:ga1e2d2bd78cfc19bba910da7448cc6fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common Device Buffer Structure. <br /></td></tr>
@@ -173,6 +185,27 @@ typedef struct <a class="el" href="structdev__buffer.html">dev_buffer</a>&#160;<
 <tr class="memitem:ga91091c2a8f895b2d00ae61e6b607335e"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga91091c2a8f895b2d00ae61e6b607335e">DEV_CALLBACK</a> )(void *ptr)</td></tr>
 <tr class="memdesc:ga91091c2a8f895b2d00ae61e6b607335e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device callback function typedef.  <a href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga91091c2a8f895b2d00ae61e6b607335e">More...</a><br /></td></tr>
 <tr class="separator:ga91091c2a8f895b2d00ae61e6b607335e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:gae2dabafacb4a0fa4c5d6b7176b542e72"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#gae2dabafacb4a0fa4c5d6b7176b542e72">dev_id</a> { <br />
+&#160;&#160;<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72ad8b8c0d94ab1f9ed963f6681fe2cdbb6">DEV_ID_0</a> = 0, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72aa8eed3d6cc9145388a042c34dcdc61b6">DEV_ID_1</a> = 1, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72a2fb9dc18608923bd9d76b4e3ec16602d">DEV_ID_2</a> = 2, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72abf66b50708c5fd06192b0adce02f5a61">DEV_ID_3</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72a923012f2fd079216d891c9e08ba16c8f">DEV_ID_4</a> = 4, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72a94eb818993823307b8b32a2c0b9d2c3f">DEV_ID_5</a> = 5, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72a644e7320e43259ee84d8de53fb0f6526">DEV_ID_6</a> = 6, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72ae38bdb402138787999fe42ba8fb19e60">DEV_ID_7</a> = 7, 
+<br />
+&#160;&#160;<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72a3ee0aae6d5392a56d7e0b014bbb032d3">DEV_ID_8</a> = 8, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72a8823fa59f99a30250360e1d899f82141">DEV_ID_9</a> = 9, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72aed135c8799c5a4a05ca0b23133af4e12">DEV_ID_10</a> = 10, 
+<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d.html#ggae2dabafacb4a0fa4c5d6b7176b542e72aa129d1e10346c4aa7a2efee575486afc">DEV_ID_INV</a> = 0xFFFFFFFF
+<br />
+ }</td></tr>
+<tr class="separator:gae2dabafacb4a0fa4c5d6b7176b542e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>header file to define common definitions for device layer </p>
@@ -185,8 +218,8 @@ typedef struct <a class="el" href="structdev__buffer.html">dev_buffer</a>&#160;<
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_3e2b0dbe59dd7c26318e8d50d8f24b2d.html">device_hal</a></li><li class="navelem"><a class="el" href="dir_74f19b744bdee38415651cb554260441.html">inc</a></li><li class="navelem"><a class="el" href="dev__common_8h.html">dev_common.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_ae60a82b7c91840206ecc2ac949003e2.html">inc</a></li><li class="navelem"><a class="el" href="dev__common_8h.html">dev_common.h</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:20 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -58,7 +58,6 @@ var group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t =
     [ "INTNO_UART1", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gaff6516c80148c967a8f37f304ceb2d4c", null ],
     [ "INTNO_UART2", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga404c610c91f0617b0010b66d5bd7fc94", null ],
     [ "INTNO_UART2", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga404c610c91f0617b0010b66d5bd7fc94", null ],
-    [ "PMWIFI_MRF24G", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga1449d08043c61fe17c3d04fea549e056", null ],
     [ "REL_REGBASE_GMAC", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga654031fc6802e4f0a2b37084cae2e46a", null ],
     [ "REL_REGBASE_GPIO0", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga0eb03c00f04b81f4f0ac787fe4a0ccff", null ],
     [ "REL_REGBASE_GPIO0", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga0eb03c00f04b81f4f0ac787fe4a0ccff", null ],
@@ -97,6 +96,5 @@ var group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t =
     [ "board_get_cur_us", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gac804f2adaefaef9ae3d123dbe4abb123", null ],
     [ "board_get_hwticks", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gac019f96ffa35670f7013ab1e3c91b230", null ],
     [ "board_init", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga916f2adc2080b4fe88034086d107a8dc", null ],
-    [ "board_timer_update", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga2d400eb191882aeb5b35143ffe7ea9ef", null ],
-    [ "emsk_mux_init", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#gada5e0143232404ec3e90e76905b0b1ab", null ]
+    [ "board_timer_update", "group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t.html#ga2d400eb191882aeb5b35143ffe7ea9ef", null ]
 ];

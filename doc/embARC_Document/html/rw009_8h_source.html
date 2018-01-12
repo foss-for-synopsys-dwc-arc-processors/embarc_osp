@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,64 +127,130 @@ $(document).ready(function(){initNavTree('rw009_8h_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \version 2017.03</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \date 2015-04-24</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> * \author Wayne Ren(Wei.Ren@synopsys.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef _RW009_H_</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define _RW009_H_</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dev__wnic_8h.html">dev_wnic.h</a>&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifndef _RW009_H_</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define _RW009_H_</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dev__wnic_8h.html">dev_wnic.h</a>&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define RW009_SCAN_TIME_MS              (3000)  </span><span class="comment">/* 3000 ms for scan */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define RW009_SCAN_AP_NUM               (5)</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_get_info(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t cmd, <span class="keywordtype">void</span> *rinfo);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_control(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t ctrl_cmd, <span class="keywordtype">void</span> *param);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_init(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t network_type);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_init_status(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_busy_status(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">extern</span> int32_t rw009_set_network_type(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t type);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">extern</span> int32_t rw009_set_macaddr(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *mac);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_macaddr(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *mac);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">extern</span> int32_t rw009_start_scan(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">extern</span> int32_t rw009_stop_scan(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_scan_status(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_scan_result_cnt(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_scan_result(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t index, <a class="code" href="structwnic__scan__result.html">WNIC_SCAN_RESULT</a> *result);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_connect(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t security, <span class="keyword">const</span> uint8_t *ssid, <a class="code" href="structwnic__auth__key.html">WNIC_AUTH_KEY</a> *key);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_conn_status(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_disconnect(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">extern</span> int32_t rw009_prepare_tx(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t tx_len);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">extern</span> int32_t rw009_add_tx_data(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *p_buf, uint32_t len);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">extern</span> int32_t rw009_commit_tx(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t len);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">extern</span> int32_t rw009_prepare_rx(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_rx_data(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *p_buf, uint32_t len);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">extern</span> int32_t rw009_accept_rx(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">extern</span> int32_t rw009_config_power_mode(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, int32_t power_mode);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_power_mode(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_reset(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> rw009_period_process(<a class="code" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, <span class="keywordtype">void</span> *ptr);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _RW009_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="structwnic__auth__key_html"><div class="ttname"><a href="structwnic__auth__key.html">wnic_auth_key</a></div><div class="ttdef"><b>Definition:</b> <a href="dev__wnic_8h_source.html#l00196">dev_wnic.h:196</a></div></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define RW009_INIT_TIME_MS              (3000)  </span><span class="comment">/* 3000 ms for init time out */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define RW009_INIT_RETRY                (3)     </span><span class="comment">/* retry times for init */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define RW009_CON_TIME_MS               (10000) </span><span class="comment">/* 10000 ms for connection time out */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define RW009_SPI_MAX_DATA_LEN          (1520) </span><span class="comment">/* one ethernet frame */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define RW009_SSID_NAME_LENGTH_MAX      (32)</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structrw009__spi__data__packet.html">   57</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        uint32_t len;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        uint32_t type;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">char</span> buffer[RW009_SPI_MAX_DATA_LEN];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        RW009_MODE_STATION = 0,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        RW009_MODE_SOFTAP = 1,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} RW009_MODE_DEF;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="struct__rw009__ap__info.html">   68</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__rw009__ap__info.html">_rw009_ap_info</a> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">char</span>        ssid[RW009_SSID_NAME_LENGTH_MAX];</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        uint8_t     bssid[8];   <span class="comment">/* 6byte + 2byte PAD. */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        int32_t     rssi;       <span class="comment">/* Receive Signal Strength Indication in dBm. */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        uint32_t    max_data_rate; <span class="comment">/* Maximum data rate in kilobits/s */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        uint32_t    security;      <span class="comment">/* Security type  */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        uint32_t    channel;       <span class="comment">/* Radio channel that the AP beacon was received on   */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <a class="code" href="struct__rw009__ap__info.html">RW009_AP_INFO_DEF</a>, * <a class="code" href="struct__rw009__ap__info.html">RW009_AP_INFO_DEF_PTR</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="struct__rw009__t.html">   77</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__rw009__t.html">_rw009_t</a> {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        uint8_t spi_master;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        uint8_t spi_cs;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        uint32_t spi_freq;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        uint8_t gpio_int_busy;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        uint8_t pin_int_busy;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga8b480cf689e0b43585d081d51d1b6ff6">DEV_GPIO_HANDLER</a> gpio_int_handler;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        uint8_t gpio_rst;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        uint8_t pin_rst;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        uint8_t gpio_cs;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        uint8_t pin_cs;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">struct </span><a class="code" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> snd_packet;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        uint32_t snd_cnt;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">struct </span><a class="code" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a> rcv_packet;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        uint32_t rcv_cnt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        uint32_t last_cmd;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        uint32_t rw009_to_send; <span class="comment">/* flag of rw009 has data to send */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        uint32_t scan_timer;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        uint32_t scan_cnt;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="struct__rw009__ap__info.html">RW009_AP_INFO_DEF</a> scanned_ap[RW009_SCAN_AP_NUM];</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        uint32_t init_timer;    <span class="comment">/* init timer */</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        uint32_t init_try;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        uint32_t conn_timer;    <span class="comment">/* con timer */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <a class="code" href="struct__rw009__t.html">RW009_DEF</a>, * <a class="code" href="struct__rw009__t.html">RW009_DEF_PTR</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_get_info(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t cmd, <span class="keywordtype">void</span> *rinfo);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_control(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t ctrl_cmd, <span class="keywordtype">void</span> *param);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_init(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t network_type);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_init_status(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_busy_status(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">extern</span> int32_t rw009_set_network_type(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t type);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">extern</span> int32_t rw009_set_macaddr(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *mac);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_macaddr(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *mac);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">extern</span> int32_t rw009_start_scan(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">extern</span> int32_t rw009_stop_scan(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_scan_status(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_scan_result_cnt(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_scan_result(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t index, <a class="code" href="structwnic__scan__result.html">WNIC_SCAN_RESULT</a> *result);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_connect(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t security, <span class="keyword">const</span> uint8_t *ssid, <a class="code" href="structwnic__auth__key.html">WNIC_AUTH_KEY</a> *key);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_conn_status(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_disconnect(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">extern</span> int32_t rw009_prepare_tx(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t tx_len);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">extern</span> int32_t rw009_add_tx_data(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *p_buf, uint32_t len);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">extern</span> int32_t rw009_commit_tx(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t len);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">extern</span> int32_t rw009_prepare_rx(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">extern</span> int32_t rw009_get_rx_data(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *p_buf, uint32_t len);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">extern</span> int32_t rw009_accept_rx(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">extern</span> int32_t rw009_config_power_mode(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, int32_t power_mode);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">extern</span> int32_t rw009_poll_power_mode(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">extern</span> int32_t rw009_wnic_reset(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> rw009_period_process(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, <span class="keywordtype">void</span> *ptr);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="rw009_8h.html#abdf69da31b12ec04cde46f2b3601526c">rw009_isr</a>(<a class="code" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _RW009_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="structrw009__spi__data__packet_html"><div class="ttname"><a href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a></div><div class="ttdef"><b>Definition:</b> <a href="rw009_8h_source.html#l00057">rw009.h:57</a></div></div>
+<div class="ttc" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t_html_ga8b480cf689e0b43585d081d51d1b6ff6"><div class="ttname"><a href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga8b480cf689e0b43585d081d51d1b6ff6">DEV_GPIO_HANDLER</a></div><div class="ttdeci">void(* DEV_GPIO_HANDLER)(void *ptr)</div><div class="ttdoc">GPIO interrupt handler or Interrupt Service Routine(ISR) </div><div class="ttdef"><b>Definition:</b> <a href="dev__gpio_8h_source.html#l00364">dev_gpio.h:364</a></div></div>
+<div class="ttc" id="structwnic__auth__key_html"><div class="ttname"><a href="structwnic__auth__key.html">wnic_auth_key</a></div><div class="ttdef"><b>Definition:</b> <a href="dev__wnic_8h_source.html#l00193">dev_wnic.h:193</a></div></div>
 <div class="ttc" id="dev__wnic_8h_html"><div class="ttname"><a href="dev__wnic_8h.html">dev_wnic.h</a></div><div class="ttdoc">wireless network interface controller device hardware layer definitions </div></div>
-<div class="ttc" id="structwnic__scan__result_html"><div class="ttname"><a href="structwnic__scan__result.html">wnic_scan_result</a></div><div class="ttdef"><b>Definition:</b> <a href="dev__wnic_8h_source.html#l00202">dev_wnic.h:202</a></div></div>
-<div class="ttc" id="structdev__wnic_html"><div class="ttname"><a href="structdev__wnic.html">dev_wnic</a></div><div class="ttdoc">wnic device interface definition </div><div class="ttdef"><b>Definition:</b> <a href="dev__wnic_8h_source.html#l00328">dev_wnic.h:328</a></div></div>
+<div class="ttc" id="struct__rw009__ap__info_html"><div class="ttname"><a href="struct__rw009__ap__info.html">_rw009_ap_info</a></div><div class="ttdef"><b>Definition:</b> <a href="rw009_8h_source.html#l00068">rw009.h:68</a></div></div>
+<div class="ttc" id="struct__rw009__t_html"><div class="ttname"><a href="struct__rw009__t.html">_rw009_t</a></div><div class="ttdef"><b>Definition:</b> <a href="rw009_8h_source.html#l00077">rw009.h:77</a></div></div>
+<div class="ttc" id="structwnic__scan__result_html"><div class="ttname"><a href="structwnic__scan__result.html">wnic_scan_result</a></div><div class="ttdef"><b>Definition:</b> <a href="dev__wnic_8h_source.html#l00199">dev_wnic.h:199</a></div></div>
+<div class="ttc" id="structdev__wnic_html"><div class="ttname"><a href="structdev__wnic.html">dev_wnic</a></div><div class="ttdoc">wnic device interface definition </div><div class="ttdef"><b>Definition:</b> <a href="dev__wnic_8h_source.html#l00325">dev_wnic.h:325</a></div></div>
+<div class="ttc" id="rw009_8h_html_abdf69da31b12ec04cde46f2b3601526c"><div class="ttname"><a href="rw009_8h.html#abdf69da31b12ec04cde46f2b3601526c">rw009_isr</a></div><div class="ttdeci">void rw009_isr(DEV_WNIC_PTR rw009_wnic)</div><div class="ttdoc">interrupt service routine for rw009 </div><div class="ttdef"><b>Definition:</b> <a href="rw009_8c_source.html#l01255">rw009.c:1255</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_8b5f1eaa9d7ef7d0571dd113cd80890f.html">rtthread</a></li><li class="navelem"><a class="el" href="dir_cab433926fdce8809400df13fd2381a3.html">rw009</a></li><li class="navelem"><a class="el" href="rw009_8h.html">rw009.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:09 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_f18e8804d198f58c6ec1fb973a6c201d.html">peripheral</a></li><li class="navelem"><a class="el" href="dir_619b03bb44275c6083f63d94b994bb3a.html">wifi</a></li><li class="navelem"><a class="el" href="dir_d732ebf575fcaefe18cb410559e0000b.html">rw009</a></li><li class="navelem"><a class="el" href="rw009_8h.html">rw009.h</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:18 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

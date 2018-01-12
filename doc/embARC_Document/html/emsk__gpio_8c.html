@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -106,13 +106,11 @@ $(document).ready(function(){initNavTree('emsk__gpio_8c.html','');});
 
 <p>all on emsk board gpio device init and operate functions  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="arc_8h_source.html">arc.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="arc__builtin_8h_source.html">arc_builtin.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="emb_a_r_c__toolchain_8h_source.html">embARC_toolchain.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="emb_a_r_c__toolchain_8h_source.html">embARC_toolchain.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="emb_a_r_c__error_8h_source.html">embARC_error.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="dw__gpio_8h_source.html">dw_gpio.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="emsk__gpio_8h_source.html">emsk_gpio.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="board_8h_source.html">board.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="emsk_8h_source.html">emsk/emsk.h</a>&quot;</code><br />
 </div>
 <p><a href="emsk__gpio_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -144,8 +142,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0d116692517e4c11de41ec07145b8404">led_write</a> (uint32_t led_val, uint32_t mask)</td></tr>
 <tr class="memdesc:ga0d116692517e4c11de41ec07145b8404"><td class="mdescLeft">&#160;</td><td class="mdescRight">write 1 to light on led bit, else light off led <br /></td></tr>
 <tr class="separator:ga0d116692517e4c11de41ec07145b8404"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0dc68bc0b79209469f458809e464b178"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a> (uint32_t mask)</td></tr>
-<tr class="memdesc:ga0dc68bc0b79209469f458809e464b178"><td class="mdescLeft">&#160;</td><td class="mdescRight">read led value, on for 1, off for 0  <a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">More...</a><br /></td></tr>
+<tr class="memitem:ga37c8d684dfd11fe1900c93fa1fe7cc0b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga37c8d684dfd11fe1900c93fa1fe7cc0b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga37c8d684dfd11fe1900c93fa1fe7cc0b">led_toggle</a> (uint32_t mask)</td></tr>
+<tr class="memdesc:ga37c8d684dfd11fe1900c93fa1fe7cc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">toggle masked led <br /></td></tr>
+<tr class="separator:ga37c8d684dfd11fe1900c93fa1fe7cc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0dc68bc0b79209469f458809e464b178"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0dc68bc0b79209469f458809e464b178"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a> (uint32_t mask)</td></tr>
+<tr class="memdesc:ga0dc68bc0b79209469f458809e464b178"><td class="mdescLeft">&#160;</td><td class="mdescRight">read led value, on for 1, off for 0 <br /></td></tr>
 <tr class="separator:ga0dc68bc0b79209469f458809e464b178"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacf651d7f9071df560e583ba654d4b3d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacf651d7f9071df560e583ba654d4b3d0"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0">switch_read</a> (uint32_t mask)</td></tr>
@@ -167,10 +170,6 @@ static <a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u
 <tr class="memitem:ga054dd530ff75285901241b2beb6ad112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga054dd530ff75285901241b2beb6ad112"></a>
 static <a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#gab39bda9a6b6726d0ccccc7b4742d9d27">DEV_GPIO</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>switch_port</b></td></tr>
 <tr class="separator:ga054dd530ff75285901241b2beb6ad112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1e64eb405e6f20161e7d5ad869cf6202"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1e64eb405e6f20161e7d5ad869cf6202"></a>
-static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga1e64eb405e6f20161e7d5ad869cf6202">g_led_val</a></td></tr>
-<tr class="memdesc:ga1e64eb405e6f20161e7d5ad869cf6202"><td class="mdescLeft">&#160;</td><td class="mdescRight">workaround for get led value because gpio read return is not right <br /></td></tr>
-<tr class="separator:ga1e64eb405e6f20161e7d5ad869cf6202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>all on emsk board gpio device init and operate functions </p>
@@ -183,8 +182,8 @@ static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el"
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a class="el" href="dir_ba790842f448632b805827035471586a.html">emsk</a></li><li class="navelem"><a class="el" href="dir_2f7e22bd2ce967436634585d9443b467.html">drivers</a></li><li class="navelem"><a class="el" href="dir_68876837f6f2b0153df41a24e086ce03.html">gpio</a></li><li class="navelem"><a class="el" href="emsk__gpio_8c.html">emsk_gpio.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_7149141a7e3af1ee95dfb0598e371427.html">board</a></li><li class="navelem"><a class="el" href="dir_ba790842f448632b805827035471586a.html">emsk</a></li><li class="navelem"><a class="el" href="dir_18199f27b1ac439ff20e342b4523a07a.html">common</a></li><li class="navelem"><a class="el" href="emsk__gpio_8c.html">emsk_gpio.c</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:21 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

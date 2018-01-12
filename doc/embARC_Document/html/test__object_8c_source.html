@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -178,12 +178,12 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define PRV_RESOURCE_3_SIZE 190</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define PRV_TLV_BUFFER_SIZE 64</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define LWM2M_EMSK_BTN_ID       0</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define LWM2M_EMSK_SWT_ID       1</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define LWM2M_EMSK_LED_ID       2</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define LWM2M_BTN_ID        0</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define LWM2M_SWT_ID        1</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define LWM2M_LED_ID        2</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define LWM2M_FOLAT_ID          3</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define LWM2M_EMSK_INSTANCE_ID  0</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define LWM2M_INSTANCE_ID  0</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"> * Multiple instance objects can use userdata to store data that will be shared between the different instances.</span></div>
@@ -249,20 +249,20 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">switch</span> (tlvP-&gt;id)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">case</span> LWM2M_EMSK_BTN_ID:</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        targetP-&gt;btn = <a class="code" href="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o.html#ga1321d1f2d3e39b23315285b52acd0852">button_read</a>(EMSK_BUTTON_MASK);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">case</span> LWM2M_BTN_ID:</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        targetP-&gt;btn = button_read(BOARD_BTN_MASK);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        lwm2m_tlv_encode_int(targetP-&gt;btn, tlvP);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">if</span> (0 != tlvP-&gt;length) <span class="keywordflow">return</span> COAP_205_CONTENT;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">return</span> COAP_500_INTERNAL_SERVER_ERROR;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">case</span> LWM2M_EMSK_SWT_ID:</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        targetP-&gt;swt = <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0">switch_read</a>(EMSK_SWITCH_MASK);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">case</span> LWM2M_SWT_ID:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        targetP-&gt;swt = <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0">switch_read</a>(BOARD_SWT_MASK);</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        lwm2m_tlv_encode_int(targetP-&gt;swt, tlvP);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span> (0 != tlvP-&gt;length) <span class="keywordflow">return</span> COAP_205_CONTENT;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">return</span> COAP_500_INTERNAL_SERVER_ERROR;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">case</span> LWM2M_EMSK_LED_ID:</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        targetP-&gt;led = <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a>(EMSK_LED_MASK);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">case</span> LWM2M_LED_ID:</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        targetP-&gt;led = <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a>(BOARD_LED_MASK);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        lwm2m_tlv_encode_int(targetP-&gt;led, tlvP);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">if</span> (0 != tlvP-&gt;length) <span class="keywordflow">return</span> COAP_205_CONTENT;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">return</span> COAP_500_INTERNAL_SERVER_ERROR;</div>
@@ -294,9 +294,9 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">if</span> (*numDataP == 0)</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            uint16_t resList[] = {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    LWM2M_EMSK_BTN_ID,</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    LWM2M_EMSK_SWT_ID,</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    LWM2M_EMSK_LED_ID,</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    LWM2M_BTN_ID,</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    LWM2M_SWT_ID,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    LWM2M_LED_ID,</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    LWM2M_FOLAT_ID</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            };</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordtype">int</span> nbRes = <span class="keyword">sizeof</span>(resList)/<span class="keyword">sizeof</span>(uint16_t);</div>
@@ -340,12 +340,12 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    {</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordflow">switch</span> (dataArray[i].<span class="keywordtype">id</span>)</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">case</span> LWM2M_EMSK_BTN_ID:</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">case</span> LWM2M_EMSK_SWT_ID:</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="keywordflow">case</span> LWM2M_BTN_ID:</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">case</span> LWM2M_SWT_ID:</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            result = COAP_405_METHOD_NOT_ALLOWED;</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">case</span> LWM2M_EMSK_LED_ID:</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">case</span> LWM2M_LED_ID:</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            int64_t value;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
@@ -439,10 +439,10 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">switch</span> (resourceId)</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">case</span> LWM2M_EMSK_SWT_ID:</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">case</span> LWM2M_EMSK_BTN_ID:</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">case</span> LWM2M_SWT_ID:</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">case</span> LWM2M_BTN_ID:</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">return</span> COAP_405_METHOD_NOT_ALLOWED;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">case</span> LWM2M_EMSK_LED_ID:</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">case</span> LWM2M_LED_ID:</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        EMBARC_PRINTF(<span class="stringliteral">&quot;\r\n-----------------\r\n&quot;</span></div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        <span class="stringliteral">&quot;Execute on %hu/%d/%d\r\n&quot;</span></div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                        <span class="stringliteral">&quot; Parameter (%d bytes):\r\n&quot;</span>,</div>
@@ -504,10 +504,10 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            }</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            memset(targetP, 0, <span class="keyword">sizeof</span>(<a class="code" href="struct__prv__instance__.html">prv_instance_t</a>));</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            targetP-&gt;shortID = LWM2M_EMSK_INSTANCE_ID+i;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            targetP-&gt;shortID = LWM2M_INSTANCE_ID+i;</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            targetP-&gt;swt = <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0">switch_read</a>(BOARD_SWT_MASK);</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            targetP-&gt;led = <a class="code" href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a>(BOARD_LED_MASK);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            targetP-&gt;btn = <a class="code" href="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o.html#ga1321d1f2d3e39b23315285b52acd0852">button_read</a>(BOARD_LED_MASK);</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            targetP-&gt;btn = button_read(BOARD_LED_MASK);</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            targetP-&gt;dec = 1.32;</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            testObj-&gt;instanceList = LWM2M_LIST_ADD(testObj-&gt;instanceList, targetP);</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        }</div>
@@ -528,15 +528,14 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">return</span> testObj;</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
-<div class="ttc" id="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o_html_ga1321d1f2d3e39b23315285b52acd0852"><div class="ttname"><a href="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o.html#ga1321d1f2d3e39b23315285b52acd0852">button_read</a></div><div class="ttdeci">uint32_t button_read(uint32_t mask)</div><div class="ttdoc">Press down bit set to 1 else 0. </div><div class="ttdef"><b>Definition:</b> <a href="axc003__gpio_8c_source.html#l00127">axc003_gpio.c:127</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_ga0d116692517e4c11de41ec07145b8404"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0d116692517e4c11de41ec07145b8404">led_write</a></div><div class="ttdeci">void led_write(uint32_t led_val, uint32_t mask)</div><div class="ttdoc">write 1 to light on led bit, else light off led </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00133">emsk_gpio.c:133</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_ga0d116692517e4c11de41ec07145b8404"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0d116692517e4c11de41ec07145b8404">led_write</a></div><div class="ttdeci">void led_write(uint32_t led_val, uint32_t mask)</div><div class="ttdoc">write 1 to light on led bit, else light off led </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00123">emsk_gpio.c:123</a></div></div>
 <div class="ttc" id="struct__lwm2m__list__t_html"><div class="ttname"><a href="struct__lwm2m__list__t.html">_lwm2m_list_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00162">lamp_node/lwm2m_client/liblwm2m.h:162</a></div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
 <div class="ttc" id="structlwm2m__tlv__t_html"><div class="ttname"><a href="structlwm2m__tlv__t.html">lwm2m_tlv_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00255">lamp_node/lwm2m_client/liblwm2m.h:255</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_ga0dc68bc0b79209469f458809e464b178"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a></div><div class="ttdeci">uint32_t led_read(uint32_t mask)</div><div class="ttdoc">read led value, on for 1, off for 0 </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00150">emsk_gpio.c:150</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_ga0dc68bc0b79209469f458809e464b178"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178">led_read</a></div><div class="ttdeci">uint32_t led_read(uint32_t mask)</div><div class="ttdoc">read led value, on for 1, off for 0 </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00147">emsk_gpio.c:147</a></div></div>
 <div class="ttc" id="struct__lwm2m__object__t_html"><div class="ttname"><a href="struct__lwm2m__object__t.html">_lwm2m_object_t</a></div><div class="ttdef"><b>Definition:</b> <a href="lamp__node_2lwm2m__client_2liblwm2m_8h_source.html#l00345">lamp_node/lwm2m_client/liblwm2m.h:345</a></div></div>
-<div class="ttc" id="struct__prv__instance___html"><div class="ttname"><a href="struct__prv__instance__.html">_prv_instance_</a></div><div class="ttdef"><b>Definition:</b> <a href="object__button_8c_source.html#l00079">object_button.c:79</a></div></div>
-<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_gacf651d7f9071df560e583ba654d4b3d0"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0">switch_read</a></div><div class="ttdeci">uint32_t switch_read(uint32_t mask)</div><div class="ttdoc">Pull down switch return 1, else 0. </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00167">emsk_gpio.c:167</a></div></div>
+<div class="ttc" id="struct__prv__instance___html"><div class="ttname"><a href="struct__prv__instance__.html">_prv_instance_</a></div><div class="ttdef"><b>Definition:</b> <a href="object__button_8c_source.html#l00076">object_button.c:76</a></div></div>
+<div class="ttc" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_html_gacf651d7f9071df560e583ba654d4b3d0"><div class="ttname"><a href="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#gacf651d7f9071df560e583ba654d4b3d0">switch_read</a></div><div class="ttdeci">uint32_t switch_read(uint32_t mask)</div><div class="ttdoc">Pull down switch return 1, else 0. </div><div class="ttdef"><b>Definition:</b> <a href="emsk__gpio_8c_source.html#l00164">emsk_gpio.c:164</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -545,7 +544,7 @@ $(document).ready(function(){initNavTree('test__object_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_cfafba98a580ce4b62f8a6fa96d7cbb0.html">example</a></li><li class="navelem"><a class="el" href="dir_002d729648cb1aa21ba35be242d803d3.html">freertos</a></li><li class="navelem"><a class="el" href="dir_717d1eb839f89675d53f200dfc3658fb.html">iot</a></li><li class="navelem"><a class="el" href="dir_68c14c075e01943a947e998014771f10.html">lwm2m</a></li><li class="navelem"><a class="el" href="dir_c2325b645aafdf61888715c98d0663a8.html">lwm2m_client</a></li><li class="navelem"><a class="el" href="dir_dba9cdec6d5294ee6e9649af5091f5f0.html">objects</a></li><li class="navelem"><b>test_object.c</b></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:09 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:19 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

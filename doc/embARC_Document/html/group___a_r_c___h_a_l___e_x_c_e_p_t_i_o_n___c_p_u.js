@@ -58,7 +58,6 @@ var group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u =
       [ "callee_regs", "structprocessor__frame.html#a2f2c1b7624589ad150fbdbf8b431e49f", null ],
       [ "exc_frame", "structprocessor__frame.html#a7d4c0fb65aa987e224e8682c418c7078", null ]
     ] ],
-    [ "NUM_EXC_ALL", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae5139fa9096875ad9a126741fce30e03", null ],
     [ "NUM_EXC_CPU", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga1443e9a11bdf7ee0540d79c6ebcc321f", null ],
     [ "NUM_EXC_INT", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#ga07e2a217a7f54496ed4ad507d48d894d", null ],
     [ "EXC_ENTRY", "group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u.html#gae3672aa4e2804ea07d3ecd02d68b2893", null ],

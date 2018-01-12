@@ -7,6 +7,7 @@ var searchData=
   ['led_5fdisplay_5ftask',['led_display_task',['../task_8c.html#a3eb69ae2d1c2b8e98b371ee36d52a484',1,'task.c']]],
   ['led_5fread',['led_read',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0dc68bc0b79209469f458809e464b178',1,'emsk_gpio.c']]],
   ['led_5ftemp_5fblink',['led_temp_blink',['../group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___o_t___s_m_a_r_t_h_o_m_e___m_u_l_t_i_n_o_d_e___l_i_v_i_n_g_r_o_o_m.html#ga134c6cc5ecdd759bc353486e7e909a7b',1,'main.c']]],
+  ['led_5ftoggle',['led_toggle',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga37c8d684dfd11fe1900c93fa1fe7cc0b',1,'emsk_gpio.c']]],
   ['led_5fturn',['led_turn',['../task_8c.html#adccb88a38068f8a71fa5f904a46177a5',1,'task.c']]],
   ['led_5fwrite',['led_write',['../group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o.html#ga0d116692517e4c11de41ec07145b8404',1,'emsk_gpio.c']]],
   ['leda_5fwrite',['leda_write',['../group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o.html#gae3ae9c28ab249bbd265e14e9bc1ae639',1,'axc003_gpio.c']]],

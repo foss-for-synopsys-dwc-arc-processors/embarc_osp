@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -96,6 +96,10 @@ $(document).ready(function(){initNavTree('rw009_8h.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">rw009.h File Reference</div>  </div>
@@ -108,99 +112,186 @@ $(document).ready(function(){initNavTree('rw009_8h.html','');});
 </div>
 <p><a href="rw009_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrw009__spi__data__packet.html">rw009_spi_data_packet</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__rw009__ap__info.html">_rw009_ap_info</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__rw009__t.html">_rw009_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a56c7b743293660888fe7e74bc786bf36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56c7b743293660888fe7e74bc786bf36"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SCAN_TIME_MS</b>&#160;&#160;&#160;(3000)	/* 3000 ms for scan */</td></tr>
+<tr class="separator:a56c7b743293660888fe7e74bc786bf36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace51eaa08d8e8f714ede63fb95a6a330"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace51eaa08d8e8f714ede63fb95a6a330"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SCAN_AP_NUM</b>&#160;&#160;&#160;(5)</td></tr>
+<tr class="separator:ace51eaa08d8e8f714ede63fb95a6a330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d1dbac0b8aea060a5cdd7e7a2cc4ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01d1dbac0b8aea060a5cdd7e7a2cc4ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_INIT_TIME_MS</b>&#160;&#160;&#160;(3000)  /* 3000 ms for init time out */</td></tr>
+<tr class="separator:a01d1dbac0b8aea060a5cdd7e7a2cc4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81374e818db088f08cf4e95bba588a7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81374e818db088f08cf4e95bba588a7b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_INIT_RETRY</b>&#160;&#160;&#160;(3)     /* retry times for init */</td></tr>
+<tr class="separator:a81374e818db088f08cf4e95bba588a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66143e221f5fb4e9c9baffa8c06a696"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae66143e221f5fb4e9c9baffa8c06a696"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_CON_TIME_MS</b>&#160;&#160;&#160;(10000) /* 10000 ms for connection time out */</td></tr>
+<tr class="separator:ae66143e221f5fb4e9c9baffa8c06a696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a00848152c798d080cecd58f0c935d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09a00848152c798d080cecd58f0c935d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SPI_MAX_DATA_LEN</b>&#160;&#160;&#160;(1520) /* one ethernet frame */</td></tr>
+<tr class="separator:a09a00848152c798d080cecd58f0c935d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a716bcf358cdb878af28fcd21a3b2ed5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a716bcf358cdb878af28fcd21a3b2ed5b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_SSID_NAME_LENGTH_MAX</b>&#160;&#160;&#160;(32)</td></tr>
+<tr class="separator:a716bcf358cdb878af28fcd21a3b2ed5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aeb0a0a0eff38848b56060a9dfb17fe55"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb0a0a0eff38848b56060a9dfb17fe55"></a>
+typedef struct <a class="el" href="struct__rw009__ap__info.html">_rw009_ap_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_AP_INFO_DEF</b></td></tr>
+<tr class="separator:aeb0a0a0eff38848b56060a9dfb17fe55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52a8653e4aa716e787a4100d6c649f04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52a8653e4aa716e787a4100d6c649f04"></a>
+typedef struct <a class="el" href="struct__rw009__ap__info.html">_rw009_ap_info</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_AP_INFO_DEF_PTR</b></td></tr>
+<tr class="separator:a52a8653e4aa716e787a4100d6c649f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b3abef4dfbaf7812904f2ee43344314"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b3abef4dfbaf7812904f2ee43344314"></a>
+typedef struct <a class="el" href="struct__rw009__t.html">_rw009_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_DEF</b></td></tr>
+<tr class="separator:a3b3abef4dfbaf7812904f2ee43344314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3ae23ed571f4edef2ba5441fcc6cc03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3ae23ed571f4edef2ba5441fcc6cc03"></a>
+typedef struct <a class="el" href="struct__rw009__t.html">_rw009_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>RW009_DEF_PTR</b></td></tr>
+<tr class="separator:aa3ae23ed571f4edef2ba5441fcc6cc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a9546bd736b27c32029c0ceeda1064958"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9546bd736b27c32029c0ceeda1064958"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>RW009_MODE_DEF</b> { <b>RW009_MODE_STATION</b> = 0, 
+<b>RW009_MODE_SOFTAP</b> = 1
+ }</td></tr>
+<tr class="separator:a9546bd736b27c32029c0ceeda1064958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a650204dd55b902f680b931a7e0b51aee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a650204dd55b902f680b931a7e0b51aee"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_get_info</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t cmd, void *rinfo)</td></tr>
-<tr class="separator:a650204dd55b902f680b931a7e0b51aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeecb420b08caed3431fcffff390bc1b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeecb420b08caed3431fcffff390bc1b2"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_control</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t ctrl_cmd, void *param)</td></tr>
-<tr class="separator:aeecb420b08caed3431fcffff390bc1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29a7a22bdb82ecfba8423193d1599dd2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29a7a22bdb82ecfba8423193d1599dd2"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_init</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t network_type)</td></tr>
-<tr class="separator:a29a7a22bdb82ecfba8423193d1599dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d7dc8460615757af880ad12e088b8a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9d7dc8460615757af880ad12e088b8a6"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_init_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a9d7dc8460615757af880ad12e088b8a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb3ae9ec76d32e16923765f9a4be872f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb3ae9ec76d32e16923765f9a4be872f"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_busy_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:afb3ae9ec76d32e16923765f9a4be872f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65a0d30211376c8f445f41025cd642c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65a0d30211376c8f445f41025cd642c5"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_set_network_type</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t type)</td></tr>
-<tr class="separator:a65a0d30211376c8f445f41025cd642c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1210971f1ee07bd1b53372141df99781"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1210971f1ee07bd1b53372141df99781"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_set_macaddr</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *mac)</td></tr>
-<tr class="separator:a1210971f1ee07bd1b53372141df99781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38f764ca9a1cfdaf4fd41007bce36b62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38f764ca9a1cfdaf4fd41007bce36b62"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_macaddr</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *mac)</td></tr>
-<tr class="separator:a38f764ca9a1cfdaf4fd41007bce36b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4573d2c59868947455012e99732d43c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4573d2c59868947455012e99732d43c6"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_start_scan</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a4573d2c59868947455012e99732d43c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7993ddd5f6e82209fb88c146e5dbc02d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7993ddd5f6e82209fb88c146e5dbc02d"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_stop_scan</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a7993ddd5f6e82209fb88c146e5dbc02d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ebb17df9b7f8c3a4e17b404fbba1b00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ebb17df9b7f8c3a4e17b404fbba1b00"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_scan_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a9ebb17df9b7f8c3a4e17b404fbba1b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa02cff4a09b4da2bf9bea5ee19be9cdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa02cff4a09b4da2bf9bea5ee19be9cdf"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_scan_result_cnt</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:aa02cff4a09b4da2bf9bea5ee19be9cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a0f714c160a45b0b4d04c0f490fad0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a0f714c160a45b0b4d04c0f490fad0e"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_scan_result</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t index, <a class="el" href="structwnic__scan__result.html">WNIC_SCAN_RESULT</a> *result)</td></tr>
-<tr class="separator:a5a0f714c160a45b0b4d04c0f490fad0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbe442f76703f44c7ed46ed181018d85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbe442f76703f44c7ed46ed181018d85"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_connect</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t security, const uint8_t *ssid, <a class="el" href="structwnic__auth__key.html">WNIC_AUTH_KEY</a> *key)</td></tr>
-<tr class="separator:abbe442f76703f44c7ed46ed181018d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae216427c2f30ddf8e55073d4c42c8761"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae216427c2f30ddf8e55073d4c42c8761"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_conn_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:ae216427c2f30ddf8e55073d4c42c8761"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1285dd69a823e68d87df48388adb0a03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1285dd69a823e68d87df48388adb0a03"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_disconnect</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a1285dd69a823e68d87df48388adb0a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8843c0751311366150910b6e21e61be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8843c0751311366150910b6e21e61be"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_prepare_tx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t tx_len)</td></tr>
-<tr class="separator:ac8843c0751311366150910b6e21e61be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a584b833f7e75f1709f77c537e2370cc4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a584b833f7e75f1709f77c537e2370cc4"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_add_tx_data</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *p_buf, uint32_t len)</td></tr>
-<tr class="separator:a584b833f7e75f1709f77c537e2370cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46e5ff8e96d44aa8dfeada76c7d37ef5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46e5ff8e96d44aa8dfeada76c7d37ef5"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_commit_tx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint32_t len)</td></tr>
-<tr class="separator:a46e5ff8e96d44aa8dfeada76c7d37ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6dab14e8602aa49dbcfbd1bfa0dbab0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6dab14e8602aa49dbcfbd1bfa0dbab0"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_prepare_rx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:ae6dab14e8602aa49dbcfbd1bfa0dbab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeda90d03e81e82a810bc26a0d679815f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeda90d03e81e82a810bc26a0d679815f"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_rx_data</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, uint8_t *p_buf, uint32_t len)</td></tr>
-<tr class="separator:aeda90d03e81e82a810bc26a0d679815f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af95e2e4d98b8066347fcc2b3d03aa965"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af95e2e4d98b8066347fcc2b3d03aa965"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_accept_rx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:af95e2e4d98b8066347fcc2b3d03aa965"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0d46cc3f2b2a8c34c185700ea6219cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0d46cc3f2b2a8c34c185700ea6219cc"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_config_power_mode</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, int32_t power_mode)</td></tr>
-<tr class="separator:af0d46cc3f2b2a8c34c185700ea6219cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36b9bd21aa3ded07f07e02108f8a888a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36b9bd21aa3ded07f07e02108f8a888a"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_power_mode</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a36b9bd21aa3ded07f07e02108f8a888a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3afb66db6acc6cda37dc91a7dbd84653"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3afb66db6acc6cda37dc91a7dbd84653"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_reset</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic)</td></tr>
-<tr class="separator:a3afb66db6acc6cda37dc91a7dbd84653"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46e54270c5188de882bc24d11c0131ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46e54270c5188de882bc24d11c0131ab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_period_process</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC</a> *rw009_wnic, void *ptr)</td></tr>
-<tr class="separator:a46e54270c5188de882bc24d11c0131ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7b6397ba5a96fea293440282512358"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f7b6397ba5a96fea293440282512358"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_get_info</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t cmd, void *rinfo)</td></tr>
+<tr class="separator:a9f7b6397ba5a96fea293440282512358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44951a572fa49414d27238c35dc48e18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44951a572fa49414d27238c35dc48e18"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_control</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t ctrl_cmd, void *param)</td></tr>
+<tr class="separator:a44951a572fa49414d27238c35dc48e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a597c80c1c8f0862478fc19b455c1f6b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a597c80c1c8f0862478fc19b455c1f6b4"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_init</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t network_type)</td></tr>
+<tr class="separator:a597c80c1c8f0862478fc19b455c1f6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239242ab35acab9330c61e24368bdbd5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a239242ab35acab9330c61e24368bdbd5"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_init_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a239242ab35acab9330c61e24368bdbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f66a16f137cac683b7d2f07d3616d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33f66a16f137cac683b7d2f07d3616d4"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_busy_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a33f66a16f137cac683b7d2f07d3616d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f22a021dd16af2df16ae1f0b2327b8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f22a021dd16af2df16ae1f0b2327b8f"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_set_network_type</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t type)</td></tr>
+<tr class="separator:a2f22a021dd16af2df16ae1f0b2327b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25bf41fd07c74f4df89ab0c196c22530"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25bf41fd07c74f4df89ab0c196c22530"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_set_macaddr</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *mac)</td></tr>
+<tr class="separator:a25bf41fd07c74f4df89ab0c196c22530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a642a30d7decb5bd0dc4b7448aac01f95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a642a30d7decb5bd0dc4b7448aac01f95"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_macaddr</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *mac)</td></tr>
+<tr class="separator:a642a30d7decb5bd0dc4b7448aac01f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87df54080442455fe3cb2a55bb5444db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87df54080442455fe3cb2a55bb5444db"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_start_scan</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a87df54080442455fe3cb2a55bb5444db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06a1647ef0546094903bf60d5a25b3b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06a1647ef0546094903bf60d5a25b3b5"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_stop_scan</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a06a1647ef0546094903bf60d5a25b3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90e6d53e26b1e84ac694c32f5fa9ab0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad90e6d53e26b1e84ac694c32f5fa9ab0"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_scan_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:ad90e6d53e26b1e84ac694c32f5fa9ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6e7b04e330bba81901708b8742349e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf6e7b04e330bba81901708b8742349e"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_scan_result_cnt</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:adf6e7b04e330bba81901708b8742349e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84894b00842912bf5f218fa8f1012dd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84894b00842912bf5f218fa8f1012dd6"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_scan_result</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t index, <a class="el" href="structwnic__scan__result.html">WNIC_SCAN_RESULT</a> *result)</td></tr>
+<tr class="separator:a84894b00842912bf5f218fa8f1012dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64cab1ecbdd9c7697e5b92e390d4e8ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64cab1ecbdd9c7697e5b92e390d4e8ce"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_connect</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t security, const uint8_t *ssid, <a class="el" href="structwnic__auth__key.html">WNIC_AUTH_KEY</a> *key)</td></tr>
+<tr class="separator:a64cab1ecbdd9c7697e5b92e390d4e8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a371b14fc3f026164b7b899b90e0bf0c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a371b14fc3f026164b7b899b90e0bf0c1"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_conn_status</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a371b14fc3f026164b7b899b90e0bf0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dae65add0b223be97b61ea85dcef51a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9dae65add0b223be97b61ea85dcef51a"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_disconnect</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a9dae65add0b223be97b61ea85dcef51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a212697098cd887a8bf093082975df127"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a212697098cd887a8bf093082975df127"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_prepare_tx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t tx_len)</td></tr>
+<tr class="separator:a212697098cd887a8bf093082975df127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a147826c0e8e6260ddb1d709b47f7fb52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a147826c0e8e6260ddb1d709b47f7fb52"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_add_tx_data</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *p_buf, uint32_t len)</td></tr>
+<tr class="separator:a147826c0e8e6260ddb1d709b47f7fb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a0657ad6ad09e8aa5a5ff7dbd7ecc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41a0657ad6ad09e8aa5a5ff7dbd7ecc6"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_commit_tx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint32_t len)</td></tr>
+<tr class="separator:a41a0657ad6ad09e8aa5a5ff7dbd7ecc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9790235c82baa82703a838a1587438c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9790235c82baa82703a838a1587438c1"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_prepare_rx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a9790235c82baa82703a838a1587438c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc674b8ae15009c5e9faf0ff7a803e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aacc674b8ae15009c5e9faf0ff7a803e5"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_get_rx_data</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, uint8_t *p_buf, uint32_t len)</td></tr>
+<tr class="separator:aacc674b8ae15009c5e9faf0ff7a803e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01eeb88c186398e031cab35853c510b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01eeb88c186398e031cab35853c510b6"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_accept_rx</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:a01eeb88c186398e031cab35853c510b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b56e530bad30de270ac690768821215"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b56e530bad30de270ac690768821215"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_config_power_mode</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, int32_t power_mode)</td></tr>
+<tr class="separator:a6b56e530bad30de270ac690768821215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcbb4985376c6ec734e717f2ddd0203a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abcbb4985376c6ec734e717f2ddd0203a"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_poll_power_mode</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:abcbb4985376c6ec734e717f2ddd0203a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af409ddbd5c69eb0427232bba47a87c27"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af409ddbd5c69eb0427232bba47a87c27"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_wnic_reset</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="separator:af409ddbd5c69eb0427232bba47a87c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf88153bf268ce80591d7a63e4a1e762"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf88153bf268ce80591d7a63e4a1e762"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rw009_period_process</b> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic, void *ptr)</td></tr>
+<tr class="separator:acf88153bf268ce80591d7a63e4a1e762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf69da31b12ec04cde46f2b3601526c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rw009_8h.html#abdf69da31b12ec04cde46f2b3601526c">rw009_isr</a> (<a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a> rw009_wnic)</td></tr>
+<tr class="memdesc:abdf69da31b12ec04cde46f2b3601526c"><td class="mdescLeft">&#160;</td><td class="mdescRight">interrupt service routine for rw009  <a href="#abdf69da31b12ec04cde46f2b3601526c">More...</a><br /></td></tr>
+<tr class="separator:abdf69da31b12ec04cde46f2b3601526c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>rw009 wifi module driver </p>
 
 <p>Definition in file <a class="el" href="rw009_8h_source.html">rw009.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="abdf69da31b12ec04cde46f2b3601526c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rw009_isr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structdev__wnic.html">DEV_WNIC_PTR</a>&#160;</td>
+          <td class="paramname"><em>rw009_wnic</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>interrupt service routine for rw009 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>parameter to isr </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="rw009_8c_source.html#l01255">1255</a> of file <a class="el" href="rw009_8c_source.html">rw009.c</a>.</p>
+
+<p>References <a class="el" href="dev__wnic_8h_source.html#l00297">dev_wnic_info::ctrl</a>, <a class="el" href="rw009_8c_source.html#l00272">rw009_int_disable()</a>, and <a class="el" href="dev__wnic_8h_source.html#l00326">dev_wnic::wnic_info</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_8b5f1eaa9d7ef7d0571dd113cd80890f.html">rtthread</a></li><li class="navelem"><a class="el" href="dir_cab433926fdce8809400df13fd2381a3.html">rw009</a></li><li class="navelem"><a class="el" href="rw009_8h.html">rw009.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_f18e8804d198f58c6ec1fb973a6c201d.html">peripheral</a></li><li class="navelem"><a class="el" href="dir_619b03bb44275c6083f63d94b994bb3a.html">wifi</a></li><li class="navelem"><a class="el" href="dir_d732ebf575fcaefe18cb410559e0000b.html">rw009</a></li><li class="navelem"><a class="el" href="rw009_8h.html">rw009.h</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:22 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

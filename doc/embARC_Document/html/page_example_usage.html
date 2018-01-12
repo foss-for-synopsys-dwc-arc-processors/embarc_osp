@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -184,7 +184,7 @@ Hardware Requirements</h2>
 <li>SSD1306 OLED module</li>
 <li>SD Card, SDHC (8G preferred)</li>
 <li>Wireless router or smart-phone hotspot (Android preferred)<ul>
-<li>WiFi supports IEEE 802.11b/g/n and can be connected to the Internet website <a href="https://xively.com/">Xively</a> and <a href="http://aws.amazon.com/iot/">AWS IoT</a>.</li>
+<li>WiFi supports IEEE 802.11b/g/n and can be connected to the Internet website <a href="http://aws.amazon.com/iot/">AWS IoT</a>.</li>
 <li>Encryption with WPA/WPA2 - AES.</li>
 </ul>
 </li>
@@ -241,10 +241,7 @@ Download required source code and apply embARC patches</div></div>
 </ul>
 </li>
 <li>Separate patch scripts location. You can also run the separate patch script to patch the source code that you need.<ul>
-<li><em>&lt;embARC&gt;/middleware/wolfssl/apply_embARC_patch.sh</em></li>
-<li><em>&lt;embARC&gt;/middleware/matrixssl/apply_embARC_patch.sh</em></li>
 <li><em>&lt;embARC&gt;/middleware/mbedtls/apply_embARC_patch.sh</em></li>
-<li><em>&lt;embARC&gt;/os/contiki/apps/tinydtls/apply_embARC_patch.sh</em></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +406,7 @@ Create a New Application in embARC</h1>
 <ul>
 <li>Look at the examples in the <em>example</em> folder in the embARC source code. Prepare the makefile first (see the example/example.makefile).</li>
 <li>In the makefile, <b>EMBARC_ROOT</b> is the relative path to the root of embARC source code.</li>
-<li>Write embARC application code. The entry point for an application is <b>main</b> (baremetal, FreeRTOS). See the Contiki development manual for Contiki applications. </li>
+<li>Write embARC application code. The entry point for an application is <b>main</b> (baremetal, FreeRTOS). </li>
 </ul>
 <h2><a class="anchor" id="subsect_example_usage_CNAIE_CreateHelloWorldApplication"></a>
 Create a "HelloWorld" Application Using ARC GNU</h2>
@@ -521,9 +518,7 @@ Debug Hello World App</div></div>
 </li>
 <li>Developing OS-Aware applications<ul>
 <li>freertos: add or set <b>OS_SEL</b> in your makefile to be <b>freertos</b>.</li>
-<li>contiki: add or set <b>OS_SEL</b> in your makefile to be <b>contiki</b>.</li>
 <li>You can refer to the existing <a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___f_r_e_e_r_t_o_s.html">FreeRTOS examples</a> when developing FreeRTOS applications.</li>
-<li>You can refer to existing <a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___c_o_n_t_i_k_i.html">Contiki examples</a> when developing Contiki applications.</li>
 </ul>
 </li>
 <li>For an introduction to middleware, see <a class="el" href="page_middleware.html#sect_mid_middleware_intro">Middleware Introduction</a>.</li>
@@ -589,7 +584,6 @@ Key Makefile Options</h2>
 <li><b>OLEVEL</b>, <b>CUR_CORE</b> and <b>OS_SEL</b><ul>
 <li><b>OLEVEL</b> is the optimization level you specify to compile the program, which can be O0, O1, O2, O3, or Os.</li>
 <li><b>CUR_CORE</b> is the ARC core configuration, which can be (1) arcem4, arcem6, arcem4cr16, and arcem6gp for EMSK 1.x, (2) arcem5d, arcem7d, and arcem7dfpu for EMSK 2.0, and EMSK 2.1, (3) arcem7d, arcem9d, and arcem11d for EMSK 2.2.</li>
-<li><b>OS_SEL</b> is the OS option in your embARC application. Leaving it blank means <em>baremetal</em> mode. <em>freertos</em> and <em>contiki</em> are the other options of <b>OS_SEL</b> based on the application. If you select <em>freertos</em>, you must supply <em>FreeRTOSConfig.h</em>. See <a class="el" href="group___e_m_b_a_r_c___a_p_p_s___o_s___f_r_e_e_r_t_o_s.html">FreeRTOS Examples in embARC</a> for more information.</li>
 </ul>
 </li>
 <li>Other options<ul>
@@ -639,7 +633,6 @@ FAQs</h1>
 <li>For TCF support for ARC GNU in embARC, you need to get a <em>tcftool</em> from Metaware or its lite version. Since TCF support in embARC relied on the <em>tcftool</em> in Metaware toolchain, so you need to copy the tool from Metaware or its lite version if you want to build the application using ARC GNU toolchain.</li>
 <li>For EMSK 2.3 support, MWDT version &gt;= 2016.12 is prefered. In EMSK 2.3, the EM7d core is an ARC EM core with secure features, but some secure feature related compiler options are introduced in MWDT 2016.12.</li>
 <li>If you can run any of the examples provided for the first time, but for the second time, it hanged up, you need to re-configure the core configuration of the board.</li>
-<li>Server examples for matrixssl, wolfssl and mbedtls may not work correctly as expected, just ignore it, since the we suggest developer to use emsk as a tls/dtls client, not a server.</li>
 <li>Here are some issues you need to take care of when you are using ARC GNU 2016.03.<ul>
 <li>Install EMSK Digilent JTAG drivers on Windows for ARC GNU You need to install new drivers for EMSK digilent JTAG. For how to do it see <a href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a>.</li>
 <li>Installing the Digilent JTAG drivers for ARC GNU affects the usage of Metaware debugger, so if you want to switch to using the MetaWare debugger, you need to uninstall the Digilent JTAG drivers for ARC GNU, and then install drivers provided by digilent. System reboot might be needed.</li>
@@ -677,8 +670,7 @@ FAQs</h1>
 <li>If some examples are not running normally, what should I do? Here are some suggestions.<ul>
 <li>Check the board version and core configuration.</li>
 <li>Check the WiFi hotspot name and password settings in <em><a class="el" href="board_8h.html" title="common board header file ">board/board.h</a></em>.</li>
-<li>Make sure that peripherals are connected to the right ports, such as WiFi Pmod, TMP2 Pmod, RF2 Pmod, and SD card.</li>
-<li>Some examples are not quite stable, such as the Xively cloud examples in FreeRTOS and Contiki. This instability is caused by the Xively cloud restrictions and the disconnection between the Xively cloud and EMSK.</li>
+<li>Make sure that peripherals are connected to the right ports, such as Pmod WiFi, Pmod TMP2, Pmod RF2, and SD card.</li>
 <li>The MetaWare toolchain works better than the ARC GNU toolchain.</li>
 <li>Check if your PC or laptop is connected to the same WiFi hotspot as EMSK.</li>
 <li>If you are running a Telnet commands on your PC to test embARC examples, shut down the Telnet process in the Task Manager.</li>
@@ -689,7 +681,6 @@ FAQs</h1>
 <li>Why do the <em>make TOOLCHAIN=gnu run</em> or <em>make TOOLCHAIN=gnu gui</em> commands fail on Linux host? OpenOCD on Linux requires configuration files in a UNIX file format with LF line terminators. Convert them to UNIX file format.</li>
 <li>Make sure the source code file is not in UTF-16 format. If the UTF-16 format is used, compiling may fail with the error message:"cc1.exe: out of memory allocating 838860800 bytes".</li>
 <li>If you are running multi-node examples, an alternative way is generating binary file for your applications, for example, <b>make TOOLCHAIN=gnu BD_VER=22 CUR_CORE=arcem7d bin</b>. Rename it to <em>boot.bin</em> and copy it to the SDCard. Then use emsk_bootloader as a secondary bootloader to load <em>boot.bin</em> on the SDCard, where SPI Flash is programmed.</li>
-<li>See Contiki Xively multi-node example for debugging multi-node examples. Use two different JTAGs or try the DIG_NAME option in <em>option.mk</em> to select the specified Digilent JTAG when using the MetaWare debugger. Another alternative way is using more PCs (including virtual machines) to debug different applications.</li>
 <li>When building and downloading a program, it is best to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause compiling to fail when checking the license of the compiler. It depends on your network environment.</li>
 <li>For some ARC core configurations of EMSK, like EMSK 2.2, the CPU frequency and JTAG frequency don't match. Sometimes you need to change the JTAG frequency to match the CPU frequency of the selected core configuration.<ul>
 <li>For the MetaWare toolkit, you can pass a make option called DIG_SPEED (in Hz), like <em>DIG_SPEED=5000000</em>, but for EMSK2.2, the DIG_SPEED is hard-coded in <em>board/emsk/configs/22/emsk_22.mk</em>.</li>
@@ -708,7 +699,7 @@ FAQs</h1>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="page_example.html">Example</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:11 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:23 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,16 +127,16 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a67c3f2013de50310f621df8b50b9df14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67c3f2013de50310f621df8b50b9df14"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_A</b>&#160;&#160;&#160;(0x00)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_A</b>&#160;&#160;&#160;(0)</td></tr>
 <tr class="separator:a67c3f2013de50310f621df8b50b9df14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65c71f2011a145ceeb165628df790cae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65c71f2011a145ceeb165628df790cae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_B</b>&#160;&#160;&#160;(0x01)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_B</b>&#160;&#160;&#160;(1)</td></tr>
 <tr class="separator:a65c71f2011a145ceeb165628df790cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08eb98dd84db8cf59c90fa4af06e86a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08eb98dd84db8cf59c90fa4af06e86a3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_C</b>&#160;&#160;&#160;(0x02)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_C</b>&#160;&#160;&#160;(2)</td></tr>
 <tr class="separator:a08eb98dd84db8cf59c90fa4af06e86a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab23f5cdb03eb1a7ca224307448bdbda4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab23f5cdb03eb1a7ca224307448bdbda4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_D</b>&#160;&#160;&#160;(0x03)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_PORT_D</b>&#160;&#160;&#160;(3)</td></tr>
 <tr class="separator:ab23f5cdb03eb1a7ca224307448bdbda4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fa49e904965e2934fc50ef9853eff78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fa49e904965e2934fc50ef9853eff78"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_INT_ACT_LOW</b>&#160;&#160;&#160;<a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ggaf7acf5e0cba8e4d0fea85668a51e747fac05bf506d475a58b45649c05c7448d7a">GPIO_INT_ACTIVE_LOW</a></td></tr>
@@ -171,6 +171,9 @@ Macros</h2></td></tr>
 <tr class="memitem:acb5b37e49ae882abe9edd6e529035ad0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb5b37e49ae882abe9edd6e529035ad0"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_OUTPUT_ALL</b>&#160;&#160;&#160;(0xffffffff)</td></tr>
 <tr class="separator:acb5b37e49ae882abe9edd6e529035ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8afd7c7955f3d24a5ee2538b6227325"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8afd7c7955f3d24a5ee2538b6227325"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DW_GPIO_INVALID_INTNO</b>&#160;&#160;&#160;(<a class="el" href="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga1c959a409ad6e952dc79b876f8e9b861">DEV_INTNO_INVALID</a>)</td></tr>
+<tr class="separator:ad8afd7c7955f3d24a5ee2538b6227325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -231,6 +234,10 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d
 int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__gpio_8h.html#a21733bb0557ceb1ec260ce52d31b4f1f">dw_gpio_isr_handler</a> (<a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#gab39bda9a6b6726d0ccccc7b4742d9d27">DEV_GPIO</a> *gpio_obj, void *ptr)</td></tr>
 <tr class="memdesc:a21733bb0557ceb1ec260ce52d31b4f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">designware gpio interrupt process <br /></td></tr>
 <tr class="separator:a21733bb0557ceb1ec260ce52d31b4f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a05d1eec248e95cb142d6419c1a095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14a05d1eec248e95cb142d6419c1a095"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dw__gpio_8h.html#a14a05d1eec248e95cb142d6419c1a095">dw_gpio_bit_isr_handler</a> (<a class="el" href="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t.html#gab39bda9a6b6726d0ccccc7b4742d9d27">DEV_GPIO</a> *gpio_obj, uint32_t bitofs, void *ptr)</td></tr>
+<tr class="memdesc:a14a05d1eec248e95cb142d6419c1a095"><td class="mdescLeft">&#160;</td><td class="mdescRight">designware gpio bit interrupt process <br /></td></tr>
+<tr class="separator:a14a05d1eec248e95cb142d6419c1a095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>designware gpio driver </p>
@@ -259,8 +266,8 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="d
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_b59a8600bbd419fdb936261c6802f792.html">designware</a></li><li class="navelem"><a class="el" href="dir_ab00d3856eceff742eda738cbf33bbe2.html">gpio</a></li><li class="navelem"><a class="el" href="dw__gpio_8h.html">dw_gpio.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:10 for embARC by
+    <li class="navelem"><a class="el" href="dir_820b2b9dd608784780e51ab49715a98b.html">device</a></li><li class="navelem"><a class="el" href="dir_186dbe9c673f504ebc67eaaff66f4d3d.html">ip</a></li><li class="navelem"><a class="el" href="dir_b056e28a29363c4009472bd1a71fa520.html">designware</a></li><li class="navelem"><a class="el" href="dir_2ef4f580b9b5fca55573e18f1c127a49.html">gpio</a></li><li class="navelem"><a class="el" href="dw__gpio_8h.html">dw_gpio.h</a></li>
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:20 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -126,419 +126,416 @@ $(document).ready(function(){initNavTree('imu_8c_source.html','');});
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * \version 2017.09</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \date 2017-09-27</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> * \author WangShuai(mrwangs@huast.edu.cn)</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* embARC HAL */</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/* embARC HAL */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c_8h.html">embARC.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emb_a_r_c__debug_8h.html">embARC_debug.h</a>&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/* standard HAL */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* standard HAL */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/* custom HAL */</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="imu_8h.html">imu.h</a>&quot;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mpu6050_8h.html">mpu6050.h</a>&quot;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scope_8h.html">scope.h</a>&quot;</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/* Some templates of waves definition */</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define WAVE_P                  1</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define WAVE_N                  2</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define WAVE_PN                 6</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define WAVE_NP                 9</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define WAVE_NN                 10</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define WAVE_PNP                25</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define WAVE_PNN                26</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define WAVE_NPN                38</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define WAVE_PNPN               102</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define WAVE_NPNP               153</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define WAVE_NPNN               154</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define WAVE_NNPN               166</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define WAVE_PNPNP              409</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define WAVE_PNNPN              422</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define WAVE_NPNPN              614</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define WAVE_NPNPP              618</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define WAVE_PNPNPN             1638</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* Some flags definition */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define GET_PEAK_PO                     0x11 </span><span class="comment">/* The flag of getting the first positive peak order */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define GET_PEAK_NE                     0x10 </span><span class="comment">/* The flag of getting the first negative peak order */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/* Some threshold which is used in data dealing definition */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define JUDGE_WAVE_PO_THRESHOLD         0.3  </span><span class="comment">/* The threshold of determing the acceleration waveform peak is positive */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define JUDGE_WAVE_NE_THRESHOLD         0.5  </span><span class="comment">/* The threshold of determing the acceleration waveform peak is negative */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define JUDGE_SYMBOL_THRESHOLD          800  </span><span class="comment">/* The threshold of determing the symbol of acc */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define JUDGE_START_THRESHOLD           200</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define JUDGE_STOP_THRESHOLD            40</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define JUDGE_YACC_SWING_THRESHOLD      400</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define JUDGE_YACC_CIRLE_THRESHOLD      300</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#define PEAK_WAVE_NEGATIVE              0x02 </span><span class="comment">/* The record of negative peak */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#define PEAK_WAVE_POSITIVE              0x01 </span><span class="comment">/* The record of negative peak */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#define ACC_FILTER_NUM                  10   </span><span class="comment">/* The number of filtering windows */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#define ACC_BUF_WINDOW_NUM              15   </span><span class="comment">/* The number of dynamically updated caches */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/* Acceleration filter cache */</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structacc__upbuf.html">   93</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structacc__upbuf.html">acc_upbuf</a> {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">int</span> acc_x_buf[ACC_FILTER_NUM]; <span class="comment">/* The buffer of x_axis&#39;s acceleration that is used to filter */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">int</span> acc_y_buf[ACC_FILTER_NUM];</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">int</span> acc_z_buf[ACC_FILTER_NUM];</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        int32_t acc_dif_buf[ACC_FILTER_NUM];</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <a class="code" href="structacc__upbuf.html">ACC_UPBUF</a>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/* The structure is used to record some specials of the wave of an action */</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structacc__special.html">  101</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structacc__special.html">acc_special</a> {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        int8_t acc_x_num_crest;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        int8_t acc_y_num_valley;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        int8_t acc_x_sign_first_peak;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        int8_t acc_y_sign_first_peak;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        int32_t length_reaction;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <a class="code" href="structacc__special.html">ACC_SPECIAL</a>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">static</span> <a class="code" href="structimu__mpu6050__update.html">MPU050_UPDATA</a> n_data;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">static</span> <a class="code" href="structacc__upbuf.html">ACC_UPBUF</a> <a class="code" href="structacc__upbuf.html">acc_upbuf</a>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">static</span> <a class="code" href="structacc__special.html">ACC_SPECIAL</a> acc_special_data;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<a class="code" href="structimu__mpu6050__update.html">MPU050_UPDATA</a> *<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga474aa32692829793eb6ed7b0a8ec587d">imu_mpu6050_update_ptr</a> = &amp;n_data;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">  121</a></span>&#160;<span class="keyword">static</span> uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">static</span> uint8_t shaking_rec_startflag;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf465d31296eb51f4bc5e56b6d4055d9">  129</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf465d31296eb51f4bc5e56b6d4055d9">imu_init</a>(uint8_t gyro_rng, uint8_t acc_rng)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac1d90b91a47cab7d045d849995472641">mpu6050_init</a>(gyro_rng, acc_rng);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">  137</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="comment">/* If the value of acceleration difference is bigger than the threshold of start,set the first bit of  \</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">                partern_rec_startflag one.Get the start of action */</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &gt;= JUDGE_START_THRESHOLD) &amp;&amp; \</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &gt;= JUDGE_START_THRESHOLD)) {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">if</span> (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &lt;= JUDGE_START_THRESHOLD) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> |= 0x01;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="comment">/* If the start action has been got and the value of acceleration difference is smaller than the threshold of stop,set</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">                the eighth bit of partern_rec_startflag one */</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &lt;= JUDGE_STOP_THRESHOLD) &amp;&amp; \</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &lt;= JUDGE_STOP_THRESHOLD)) {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">if</span> ((<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp; 0x01) &amp;&amp; (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &gt;= JUDGE_STOP_THRESHOLD)) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp;= 0xfe;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> |= 0x80;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">  162</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">imu_shaing_get_stastp_point</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="comment">/* If the value of acceleration difference is bigger than the threshold of start,set the first bit of</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">                partern_rec_startflag one.Get the start of action */</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &gt;= JUDGE_START_THRESHOLD) &amp;&amp; \</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &gt;= JUDGE_START_THRESHOLD)) {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keywordflow">if</span> (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &lt;= JUDGE_START_THRESHOLD) {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                        shaking_rec_startflag |= 0x01;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="comment">/* If the start action has been got and the value of acceleration difference is smaller than</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">                the threshold of stop,set the eighth bit of partern_rec_startflag one */</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &lt;= JUDGE_STOP_THRESHOLD) &amp;&amp; \</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &lt;= JUDGE_STOP_THRESHOLD)) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">if</span> ((shaking_rec_startflag &amp; 0x01) &amp;&amp; (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &gt;= JUDGE_STOP_THRESHOLD)) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                        shaking_rec_startflag &amp;= 0xfe;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                        shaking_rec_startflag |= 0x80;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54d267199d20a3198fa1b6768679a0fa">  189</a></span>&#160;int8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54d267199d20a3198fa1b6768679a0fa">imu_get_shaking_start</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[1] &lt; -1000) &amp;&amp; \</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[1] &lt;= imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[2])) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">return</span> ACTION_START;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">  207</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(int32_t *point, <span class="keywordtype">float</span> multi_throd, uint32_t *recognition, uint8_t *peak_order, uint8_t peak_flag)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        uint8_t i;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        int32_t max_value = 0, min_value = 0, last_value_flag = 0;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        int32_t *cal_point = point, posi_zero_value, nega_zero_value;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        *recognition = 0;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="comment">/* Get the the maximum value and minimum value */</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">if</span> (*cal_point &gt; max_value) {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        max_value = *cal_point;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* custom HAL */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="imu_8h.html">imu.h</a>&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mpu6050_8h.html">mpu6050.h</a>&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="scope_8h.html">scope.h</a>&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/* Some templates of waves definition */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define WAVE_P                  1</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define WAVE_N                  2</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define WAVE_PN                 6</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define WAVE_NP                 9</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define WAVE_NN                 10</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define WAVE_PNP                25</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define WAVE_PNN                26</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define WAVE_NPN                38</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define WAVE_PNPN               102</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define WAVE_NPNP               153</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define WAVE_NPNN               154</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define WAVE_NNPN               166</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define WAVE_PNPNP              409</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define WAVE_PNNPN              422</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define WAVE_NPNPN              614</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define WAVE_NPNPP              618</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define WAVE_PNPNPN             1638</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/* Some flags definition */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define GET_PEAK_PO                     0x11 </span><span class="comment">/* The flag of getting the first positive peak order */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define GET_PEAK_NE                     0x10 </span><span class="comment">/* The flag of getting the first negative peak order */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/* Some threshold which is used in data dealing definition */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define JUDGE_WAVE_PO_THRESHOLD         0.3  </span><span class="comment">/* The threshold of determing the acceleration waveform peak is positive */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define JUDGE_WAVE_NE_THRESHOLD         0.5  </span><span class="comment">/* The threshold of determing the acceleration waveform peak is negative */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define JUDGE_SYMBOL_THRESHOLD          800  </span><span class="comment">/* The threshold of determing the symbol of acc */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define JUDGE_START_THRESHOLD           200</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define JUDGE_STOP_THRESHOLD            40</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define JUDGE_YACC_SWING_THRESHOLD      400</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define JUDGE_YACC_CIRLE_THRESHOLD      300</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define PEAK_WAVE_NEGATIVE              0x02 </span><span class="comment">/* The record of negative peak */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define PEAK_WAVE_POSITIVE              0x01 </span><span class="comment">/* The record of negative peak */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#define ACC_FILTER_NUM                  10   </span><span class="comment">/* The number of filtering windows */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#define ACC_BUF_WINDOW_NUM              15   </span><span class="comment">/* The number of dynamically updated caches */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/* Acceleration filter cache */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structacc__upbuf.html">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structacc__upbuf.html">acc_upbuf</a> {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">int</span> acc_x_buf[ACC_FILTER_NUM]; <span class="comment">/* The buffer of x_axis&#39;s acceleration that is used to filter */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">int</span> acc_y_buf[ACC_FILTER_NUM];</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> acc_z_buf[ACC_FILTER_NUM];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        int32_t acc_dif_buf[ACC_FILTER_NUM];</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <a class="code" href="structacc__upbuf.html">ACC_UPBUF</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/* The structure is used to record some specials of the wave of an action */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="structacc__special.html">   98</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structacc__special.html">acc_special</a> {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        int8_t acc_x_num_crest;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        int8_t acc_y_num_valley;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        int8_t acc_x_sign_first_peak;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        int8_t acc_y_sign_first_peak;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        int32_t length_reaction;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;} <a class="code" href="structacc__special.html">ACC_SPECIAL</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">static</span> <a class="code" href="structimu__mpu6050__update.html">MPU050_UPDATA</a> n_data;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">static</span> <a class="code" href="structacc__upbuf.html">ACC_UPBUF</a> <a class="code" href="structacc__upbuf.html">acc_upbuf</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">static</span> <a class="code" href="structacc__special.html">ACC_SPECIAL</a> acc_special_data;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="structimu__mpu6050__update.html">MPU050_UPDATA</a> *<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga474aa32692829793eb6ed7b0a8ec587d">imu_mpu6050_update_ptr</a> = &amp;n_data;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">  118</a></span>&#160;<span class="keyword">static</span> uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">static</span> uint8_t shaking_rec_startflag;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf465d31296eb51f4bc5e56b6d4055d9">  126</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf465d31296eb51f4bc5e56b6d4055d9">imu_init</a>(uint8_t gyro_rng, uint8_t acc_rng)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac1d90b91a47cab7d045d849995472641">mpu6050_init</a>(gyro_rng, acc_rng);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="comment">/* If the value of acceleration difference is bigger than the threshold of start,set the first bit of  \</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">                partern_rec_startflag one.Get the start of action */</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &gt;= JUDGE_START_THRESHOLD) &amp;&amp; \</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &gt;= JUDGE_START_THRESHOLD)) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="keywordflow">if</span> (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &lt;= JUDGE_START_THRESHOLD) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> |= 0x01;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="comment">/* If the start action has been got and the value of acceleration difference is smaller than the threshold of stop,set</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">                the eighth bit of partern_rec_startflag one */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &lt;= JUDGE_STOP_THRESHOLD) &amp;&amp; \</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &lt;= JUDGE_STOP_THRESHOLD)) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordflow">if</span> ((<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp; 0x01) &amp;&amp; (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &gt;= JUDGE_STOP_THRESHOLD)) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp;= 0xfe;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> |= 0x80;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">  159</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">imu_shaing_get_stastp_point</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="comment">/* If the value of acceleration difference is bigger than the threshold of start,set the first bit of</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">                partern_rec_startflag one.Get the start of action */</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &gt;= JUDGE_START_THRESHOLD) &amp;&amp; \</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &gt;= JUDGE_START_THRESHOLD)) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">if</span> (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &lt;= JUDGE_START_THRESHOLD) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        shaking_rec_startflag |= 0x01;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="comment">/* If the start action has been got and the value of acceleration difference is smaller than</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">                the threshold of stop,set the eighth bit of partern_rec_startflag one */</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[1] &lt;= JUDGE_STOP_THRESHOLD) &amp;&amp; \</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] &lt;= JUDGE_STOP_THRESHOLD)) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keywordflow">if</span> ((shaking_rec_startflag &amp; 0x01) &amp;&amp; (imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[3] &gt;= JUDGE_STOP_THRESHOLD)) {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        shaking_rec_startflag &amp;= 0xfe;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        shaking_rec_startflag |= 0x80;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54d267199d20a3198fa1b6768679a0fa">  186</a></span>&#160;int8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54d267199d20a3198fa1b6768679a0fa">imu_get_shaking_start</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">if</span> ((imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[1] &lt; -1000) &amp;&amp; \</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        (imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[1] &lt;= imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[2])) {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">return</span> ACTION_START;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">  204</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(int32_t *point, <span class="keywordtype">float</span> multi_throd, uint32_t *recognition, uint8_t *peak_order, uint8_t peak_flag)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        uint8_t i;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        int32_t max_value = 0, min_value = 0, last_value_flag = 0;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        int32_t *cal_point = point, posi_zero_value, nega_zero_value;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        *recognition = 0;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="comment">/* Get the the maximum value and minimum value */</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordflow">if</span> (*cal_point &gt; max_value) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                        max_value = *cal_point;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">if</span> (*cal_point &lt; min_value) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        min_value = *cal_point;</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                }</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">if</span> (*cal_point &lt; min_value) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        min_value = *cal_point;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                cal_point--;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="comment">/* Point the pointer to the first address of the acceleration cache */</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        cal_point += (ACC_DATA_CON_NUM - 1 - ACC_BUF_WINDOW_NUM);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="comment">/* Get the first positive peak&#39;s position */</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">if</span> (peak_flag == GET_PEAK_PO) {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        <span class="comment">/* If the value is bigger than 0.8 times of the maximum,</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">                                calibrate the first positive peak&#39;s position */</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                        <span class="keywordflow">if</span> (*cal_point &gt;= (max_value * 0.8)) {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                *peak_order = i;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        cal_point--;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                }</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        <span class="keywordflow">if</span> ((*cal_point) &lt;= (min_value * 0.8)) {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                <span class="comment">/* If the value is smaller than 0.8 times of the minimal,</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">                                        calibrate the first negative peak&#39;s position */</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                *peak_order = i;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                        }</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                        cal_point--;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="comment">/* Set the threshold for determining acceleration 0 */</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        posi_zero_value = 0.1 * max_value;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        nega_zero_value = 0.1 * min_value;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="comment">/* Set the positive and negative thresholds.If the max_value*multi_throd is smaller</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">                than JUDGE_SYMBOL_THRESHOLD,the threshold will be set as JUDGE_SYMBOL_THRESHOLD */</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        max_value = (max_value * multi_throd &gt; JUDGE_SYMBOL_THRESHOLD) ? max_value * multi_throd : JUDGE_SYMBOL_THRESHOLD;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        min_value = (min_value * multi_throd &lt; -JUDGE_SYMBOL_THRESHOLD) ? min_value * multi_throd : -JUDGE_SYMBOL_THRESHOLD;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">/* Judge the positive and negative of the intercept waveform</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">          If the judgment waveform is positive，the variable &quot;(*recognition)&quot; is shifted by two bits and</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">                takes 0x02.Take &quot;last_value_flag&quot; with 0x02 \</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">          If the judgment waveform is negative，the variable &quot;(*recognition)&quot; is shifted by two bits and</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">                takes 0x01.Take &quot;last_value_flag&quot; with 0x01 \</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">          Take &quot;last_value_flag&quot; with 0x00</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">        */</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt;= ACC_BUF_WINDOW_NUM; i--)</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="comment">/* If the last feature is not negative(Judge by the second bit of last_value_flag,if the second</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">                        bit of last_value_flag is not one),\</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">                   and the value is smaller than min_value */</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                <span class="keywordflow">if</span> (((*point) &lt; min_value) &amp;&amp; ((last_value_flag &amp; 0x02) == 0x00)) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        (*recognition) = ((*recognition) &lt;&lt; 2) | PEAK_WAVE_NEGATIVE;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        last_value_flag &amp;= 0x00;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        last_value_flag |= PEAK_WAVE_NEGATIVE;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                }</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="comment">/* If the last feature is not zero(Judge by the first and second bits of last_value_flag,if these</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">                        bits of last_value_flag are zero) */</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">if</span> ((last_value_flag &amp; 0x03) != 0x00) {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        <span class="keywordflow">if</span> (((*point) &gt; nega_zero_value) &amp;&amp; (*point) &lt; posi_zero_value) {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                last_value_flag &amp;= 0x00;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                        }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <span class="comment">/* If the last feature is not positive(Judge by the first bit of last_value_flag,if the first bit</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">                         of last_value_flag is not one) */</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                <span class="keywordflow">if</span> (((*point) &gt; max_value) &amp;&amp; (((*recognition) &amp; 0x01) == 0x00)) {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                        (*recognition) = ((*recognition) &lt;&lt; 2) | PEAK_WAVE_POSITIVE;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        last_value_flag &amp;= 0x00;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        last_value_flag |= PEAK_WAVE_POSITIVE;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                point--;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;}</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga74f0c6f405e16f061a2023a95d8f6572">  300</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga74f0c6f405e16f061a2023a95d8f6572">imu_mpu6050_update</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;{</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        int8_t i;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keyword">static</span> uint8_t filter_cnt = 0;  <span class="comment">/* Filter cache flag */</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="comment">//float scope_data[4];          /* Ued in scope */</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        uint32_t cal_acc_temp[3], acc_sum;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        uint32_t acc_dif_temp = 0;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordtype">int</span> acc_temp[3] = {0};</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        acc_upbuf.acc_x_buf[filter_cnt] = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a>(ACCEL_XOUT_H);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        acc_upbuf.acc_y_buf[filter_cnt] = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a>(ACCEL_YOUT_H);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        acc_upbuf.acc_z_buf[filter_cnt] = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a>(ACCEL_ZOUT_H);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; ACC_FILTER_NUM; i++) {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                acc_temp[0] += acc_upbuf.acc_x_buf[i];</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                acc_temp[1] += acc_upbuf.acc_y_buf[i];</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                acc_temp[2] += acc_upbuf.acc_z_buf[i];</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        acc_temp[0] = acc_temp[0] / ACC_FILTER_NUM;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        acc_temp[1] = acc_temp[1] / ACC_FILTER_NUM;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        acc_temp[2] = acc_temp[2] / ACC_FILTER_NUM;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_x = 16 * ((acc_temp[0]) * 1000) / (32768);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_y = 16 * ((acc_temp[1]) * 1000) / (32768);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_z = 16 * ((acc_temp[2]) * 1000) / (32768);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">/* Upte those buffer which is update dynamically */</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">for</span> (i = ACC_BUF_WINDOW_NUM - 1; i &gt; 0; i--) {</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i - 1];</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[0] = imu_mpu6050_update_ptr-&gt;acc_x;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">for</span> (i = ACC_BUF_WINDOW_NUM - 1; i &gt; 0; i--) {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i - 1];</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[0] = imu_mpu6050_update_ptr-&gt;acc_y;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordflow">for</span> (i = ACC_BUF_WINDOW_NUM - 1; i &gt; 0; i--) {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i - 1];</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        }</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[0] = imu_mpu6050_update_ptr-&gt;acc_z;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="comment">/* If the statr of action is captured ,store date in buffer */</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp; 0x01) {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i - 1];</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i - 1];</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i - 1];</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                }</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_BUF_WINDOW_NUM] = imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_BUF_WINDOW_NUM - 1] * 4;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[ACC_BUF_WINDOW_NUM] = imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[ACC_BUF_WINDOW_NUM - 1];</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_BUF_WINDOW_NUM] = imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_BUF_WINDOW_NUM - 1] + 1000;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        cal_acc_temp[0] = (imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[1] - imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[0]);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        cal_acc_temp[1] = (imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[1] - imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[0]);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        cal_acc_temp[2] = (imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[1] - imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[0]);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        acc_upbuf.acc_dif_buf[filter_cnt] = abs(cal_acc_temp[0]) + abs(cal_acc_temp[1]) + abs(cal_acc_temp[2]);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; ACC_FILTER_NUM; i++) {</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                acc_dif_temp += acc_upbuf.acc_dif_buf[i];</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        acc_dif_temp = acc_dif_temp / ACC_FILTER_NUM;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; 0; i--) {</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[i - 1];</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] = acc_dif_temp;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        filter_cnt++;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <span class="keywordflow">if</span> (filter_cnt == ACC_FILTER_NUM) {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                filter_cnt = 0;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
-<div class="line"><a name="l00380"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0e6e0a08cd385542b45ca50bd06e7ec5">  380</a></span>&#160;uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0e6e0a08cd385542b45ca50bd06e7ec5">imu_get_action_shaking</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;{</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        uint8_t i, y_order, z_order;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        uint32_t recognition_z = 0, recognition_y = 0;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a>();</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">imu_shaing_get_stastp_point</a>();</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">if</span> (shaking_rec_startflag &amp; 0x80)</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_DATA_CON_NUM - 1]), \</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                    JUDGE_WAVE_NE_THRESHOLD, &amp;recognition_y, &amp;y_order, GET_PEAK_PO);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_DATA_CON_NUM - 1]), \</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                                    JUDGE_WAVE_PO_THRESHOLD, &amp;recognition_z, &amp;z_order, GET_PEAK_NE);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                <span class="keywordflow">if</span> ((recognition_z &gt;= WAVE_PN) || (recognition_y &gt;= WAVE_PN)) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                        shaking_rec_startflag = 0;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaaef5f53dccb45c548b9b3fd284c9b810">ACTION_SHAKING</a>;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                }</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                cal_point--;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="comment">/* Point the pointer to the first address of the acceleration cache */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        cal_point += (ACC_DATA_CON_NUM - 1 - ACC_BUF_WINDOW_NUM);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="comment">/* Get the first positive peak&#39;s position */</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">if</span> (peak_flag == GET_PEAK_PO) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <span class="comment">/* If the value is bigger than 0.8 times of the maximum,</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">                                calibrate the first positive peak&#39;s position */</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                        <span class="keywordflow">if</span> (*cal_point &gt;= (max_value * 0.8)) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                *peak_order = i;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                        }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                        cal_point--;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        <span class="keywordflow">if</span> ((*cal_point) &lt;= (min_value * 0.8)) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                <span class="comment">/* If the value is smaller than 0.8 times of the minimal,</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">                                        calibrate the first negative peak&#39;s position */</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                *peak_order = i;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        cal_point--;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="comment">/* Set the threshold for determining acceleration 0 */</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        posi_zero_value = 0.1 * max_value;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        nega_zero_value = 0.1 * min_value;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="comment">/* Set the positive and negative thresholds.If the max_value*multi_throd is smaller</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">                than JUDGE_SYMBOL_THRESHOLD,the threshold will be set as JUDGE_SYMBOL_THRESHOLD */</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        max_value = (max_value * multi_throd &gt; JUDGE_SYMBOL_THRESHOLD) ? max_value * multi_throd : JUDGE_SYMBOL_THRESHOLD;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        min_value = (min_value * multi_throd &lt; -JUDGE_SYMBOL_THRESHOLD) ? min_value * multi_throd : -JUDGE_SYMBOL_THRESHOLD;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="comment">/* Judge the positive and negative of the intercept waveform</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">          If the judgment waveform is positive，the variable &quot;(*recognition)&quot; is shifted by two bits and</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">                takes 0x02.Take &quot;last_value_flag&quot; with 0x02 \</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">          If the judgment waveform is negative，the variable &quot;(*recognition)&quot; is shifted by two bits and</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">                takes 0x01.Take &quot;last_value_flag&quot; with 0x01 \</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">          Take &quot;last_value_flag&quot; with 0x00</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt;= ACC_BUF_WINDOW_NUM; i--)</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="comment">/* If the last feature is not negative(Judge by the second bit of last_value_flag,if the second</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">                        bit of last_value_flag is not one),\</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">                   and the value is smaller than min_value */</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">if</span> (((*point) &lt; min_value) &amp;&amp; ((last_value_flag &amp; 0x02) == 0x00)) {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        (*recognition) = ((*recognition) &lt;&lt; 2) | PEAK_WAVE_NEGATIVE;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        last_value_flag &amp;= 0x00;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        last_value_flag |= PEAK_WAVE_NEGATIVE;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="comment">/* If the last feature is not zero(Judge by the first and second bits of last_value_flag,if these</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">                        bits of last_value_flag are zero) */</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">if</span> ((last_value_flag &amp; 0x03) != 0x00) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                        <span class="keywordflow">if</span> (((*point) &gt; nega_zero_value) &amp;&amp; (*point) &lt; posi_zero_value) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                last_value_flag &amp;= 0x00;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                        }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <span class="comment">/* If the last feature is not positive(Judge by the first bit of last_value_flag,if the first bit</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">                         of last_value_flag is not one) */</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">if</span> (((*point) &gt; max_value) &amp;&amp; (((*recognition) &amp; 0x01) == 0x00)) {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        (*recognition) = ((*recognition) &lt;&lt; 2) | PEAK_WAVE_POSITIVE;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        last_value_flag &amp;= 0x00;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        last_value_flag |= PEAK_WAVE_POSITIVE;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                point--;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga74f0c6f405e16f061a2023a95d8f6572">  297</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga74f0c6f405e16f061a2023a95d8f6572">imu_mpu6050_update</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;{</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        int8_t i;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keyword">static</span> uint8_t filter_cnt = 0;  <span class="comment">/* Filter cache flag */</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="comment">//float scope_data[4];          /* Ued in scope */</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        uint32_t cal_acc_temp[3], acc_sum;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        uint32_t acc_dif_temp = 0;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordtype">int</span> acc_temp[3] = {0};</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        acc_upbuf.acc_x_buf[filter_cnt] = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a>(ACCEL_XOUT_H);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        acc_upbuf.acc_y_buf[filter_cnt] = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a>(ACCEL_YOUT_H);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        acc_upbuf.acc_z_buf[filter_cnt] = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a>(ACCEL_ZOUT_H);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; ACC_FILTER_NUM; i++) {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                acc_temp[0] += acc_upbuf.acc_x_buf[i];</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                acc_temp[1] += acc_upbuf.acc_y_buf[i];</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                acc_temp[2] += acc_upbuf.acc_z_buf[i];</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        acc_temp[0] = acc_temp[0] / ACC_FILTER_NUM;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        acc_temp[1] = acc_temp[1] / ACC_FILTER_NUM;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        acc_temp[2] = acc_temp[2] / ACC_FILTER_NUM;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_x = 16 * ((acc_temp[0]) * 1000) / (32768);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_y = 16 * ((acc_temp[1]) * 1000) / (32768);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_z = 16 * ((acc_temp[2]) * 1000) / (32768);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="comment">/* Upte those buffer which is update dynamically */</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">for</span> (i = ACC_BUF_WINDOW_NUM - 1; i &gt; 0; i--) {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i - 1];</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[0] = imu_mpu6050_update_ptr-&gt;acc_x;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordflow">for</span> (i = ACC_BUF_WINDOW_NUM - 1; i &gt; 0; i--) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i - 1];</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[0] = imu_mpu6050_update_ptr-&gt;acc_y;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">for</span> (i = ACC_BUF_WINDOW_NUM - 1; i &gt; 0; i--) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i - 1];</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[0] = imu_mpu6050_update_ptr-&gt;acc_z;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="comment">/* If the statr of action is captured ,store date in buffer */</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp; 0x01) {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; ACC_BUF_WINDOW_NUM; i--) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i - 1];</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i - 1];</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i - 1];</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_BUF_WINDOW_NUM] = imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_BUF_WINDOW_NUM - 1] * 4;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[ACC_BUF_WINDOW_NUM] = imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[ACC_BUF_WINDOW_NUM - 1];</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_BUF_WINDOW_NUM] = imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_BUF_WINDOW_NUM - 1] + 1000;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        cal_acc_temp[0] = (imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[1] - imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[0]);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        cal_acc_temp[1] = (imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[1] - imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[0]);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        cal_acc_temp[2] = (imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[1] - imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[0]);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        acc_upbuf.acc_dif_buf[filter_cnt] = abs(cal_acc_temp[0]) + abs(cal_acc_temp[1]) + abs(cal_acc_temp[2]);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; ACC_FILTER_NUM; i++) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                acc_dif_temp += acc_upbuf.acc_dif_buf[i];</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        acc_dif_temp = acc_dif_temp / ACC_FILTER_NUM;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keywordflow">for</span> (i = ACC_DATA_CON_NUM - 1; i &gt; 0; i--) {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[i] = imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[i - 1];</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        imu_mpu6050_update_ptr-&gt;acc_judge_dif_buf[0] = acc_dif_temp;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        filter_cnt++;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">if</span> (filter_cnt == ACC_FILTER_NUM) {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                filter_cnt = 0;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0e6e0a08cd385542b45ca50bd06e7ec5">  377</a></span>&#160;uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0e6e0a08cd385542b45ca50bd06e7ec5">imu_get_action_shaking</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;{</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        uint8_t i, y_order, z_order;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        uint32_t recognition_z = 0, recognition_y = 0;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a>();</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">imu_shaing_get_stastp_point</a>();</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keywordflow">if</span> (shaking_rec_startflag &amp; 0x80)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_DATA_CON_NUM - 1]), \</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                    JUDGE_WAVE_NE_THRESHOLD, &amp;recognition_y, &amp;y_order, GET_PEAK_PO);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_DATA_CON_NUM - 1]), \</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                                    JUDGE_WAVE_PO_THRESHOLD, &amp;recognition_z, &amp;z_order, GET_PEAK_NE);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                <span class="keywordflow">if</span> ((recognition_z &gt;= WAVE_PN) || (recognition_y &gt;= WAVE_PN)) {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                        shaking_rec_startflag = 0;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaaef5f53dccb45c548b9b3fd284c9b810">ACTION_SHAKING</a>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
-<div class="line"><a name="l00411"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga475b9c157eaa4c68bcadc503be28817f">  411</a></span>&#160;uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga475b9c157eaa4c68bcadc503be28817f">imu_pattern_recongnition</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;{</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        uint8_t i, y_order, z_order;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="keyword">static</span> uint8_t start_action_get_flag;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        uint32_t recognition_z = 0, recognition_y = 0;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        uint8_t action_result = 0;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a>();</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp; 0x80) {</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_DATA_CON_NUM - 1]), JUDGE_WAVE_NE_THRESHOLD, \</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                                    &amp;recognition_y, &amp;y_order, GET_PEAK_PO);</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_DATA_CON_NUM - 1]), JUDGE_WAVE_PO_THRESHOLD, \</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                                    &amp;recognition_z, &amp;z_order, GET_PEAK_NE);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                <span class="comment">/* Only when the system does not enter the mode of switching state,we will judge whether we have got the T */</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                <span class="keywordflow">if</span> (start_action_get_flag == 0) {</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        <span class="comment">/* Judge T!  Z:6,2,38.  Y:9,38 */</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                        <span class="keywordflow">if</span> ((recognition_z == WAVE_PN) || (recognition_z == WAVE_N) || (recognition_z == WAVE_NPN)) {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                                <span class="keywordflow">if</span> ((recognition_y == WAVE_NP) || (recognition_y == WAVE_NPN)) {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                                        <span class="comment">/* Judge first action is vertical or vertical to reduce miscarriage of justice */</span></div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                                        <span class="keywordflow">if</span> (y_order &gt; z_order) {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                                                start_action_get_flag = 0x01;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                                                EMBARC_PRINTF(<span class="stringliteral">&quot;Recognition OK!!  :T!\r\n&quot;</span>);</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                                                action_result = ACTION_START;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                                        }</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                }</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                        }</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                }</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                <span class="comment">/* Only when the system enter the mode of switching state,we will judge left or right */</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                <span class="keywordflow">if</span>  (start_action_get_flag != 0) {</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                        <span class="keywordflow">if</span> ((recognition_y == WAVE_NP) || (recognition_y == WAVE_NPN)) {</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                                <span class="keywordflow">if</span> ((recognition_z == 0) || (recognition_z == WAVE_P) || (recognition_z == WAVE_N)) {</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                                        action_result = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga098bae4209c6b0cb791ff1ec1e41ea66">ACTION_LEFT</a>;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                                        EMBARC_PRINTF(<span class="stringliteral">&quot;Recognition OK!!  :LEFT\r\n&quot;</span>);</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                                }</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                        }</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                        <span class="keywordflow">if</span> ((recognition_y == WAVE_PN) || (recognition_y == WAVE_PNP)) {</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                                <span class="keywordflow">if</span> ((recognition_z == 0) || (recognition_z == WAVE_P) || (recognition_z == WAVE_N)) {</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                                        action_result = ACTION_RIGHT;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                                        EMBARC_PRINTF(<span class="stringliteral">&quot;Recognition OK!!  :RIGHT\r\n&quot;</span>);</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                                }</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                        }</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                <span class="keywordflow">if</span> (start_action_get_flag != 0) {</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                        <span class="keywordflow">if</span> ((recognition_z == WAVE_PNP) || (recognition_z == WAVE_NP)) {</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                                <span class="keywordflow">if</span> ((recognition_y == WAVE_NP)) {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                                        action_result = ACTION_OVER;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                                        start_action_get_flag = 0;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                                }</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                        }</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                }</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp;= 0x7f;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                <span class="keywordflow">for</span> (i = 0; i &lt; ACC_DATA_CON_NUM; i++)</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                {</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i] = 0;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i] = 0;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i] = 0;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                }</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        }</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <span class="keywordflow">return</span> action_result;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;}</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;</div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga03ade61ab33479793f2738c59cb8e20e"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a></div><div class="ttdeci">int mpu6050_get_data(uint8_t regaddr)</div><div class="ttdoc">Get the MPU6050 data. </div><div class="ttdef"><b>Definition:</b> <a href="mpu6050_8c_source.html#l00180">mpu6050.c:180</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gadf465d31296eb51f4bc5e56b6d4055d9"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf465d31296eb51f4bc5e56b6d4055d9">imu_init</a></div><div class="ttdeci">void imu_init(uint8_t gyro_rng, uint8_t acc_rng)</div><div class="ttdoc">Init the device which is used to get data of acceleration. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00129">imu.c:129</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga475b9c157eaa4c68bcadc503be28817f"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga475b9c157eaa4c68bcadc503be28817f">imu_pattern_recongnition</a></div><div class="ttdeci">uint8_t imu_pattern_recongnition(void)</div><div class="ttdoc">Recongnize the type of action and return value related. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00411">imu.c:411</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga474aa32692829793eb6ed7b0a8ec587d"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga474aa32692829793eb6ed7b0a8ec587d">imu_mpu6050_update_ptr</a></div><div class="ttdeci">MPU050_UPDATA * imu_mpu6050_update_ptr</div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00072">imu.h:72</a></div></div>
-<div class="ttc" id="structacc__special_html"><div class="ttname"><a href="structacc__special.html">acc_special</a></div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00101">imu.c:101</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gaedfaa927c1e11d0b41295d41b8431d1c"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a></div><div class="ttdeci">static uint8_t partern_rec_startflag</div><div class="ttdoc">Action captures state variables. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00121">imu.c:121</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gac1d90b91a47cab7d045d849995472641"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac1d90b91a47cab7d045d849995472641">mpu6050_init</a></div><div class="ttdeci">void mpu6050_init(uint8_t gyro_rng, uint8_t accel_rng)</div><div class="ttdoc">MPU6050 init. </div><div class="ttdef"><b>Definition:</b> <a href="mpu6050_8c_source.html#l00134">mpu6050.c:134</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gafd3422e785f97ad58b8d8feea16fa864"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">imu_shaing_get_stastp_point</a></div><div class="ttdeci">void imu_shaing_get_stastp_point(void)</div><div class="ttdoc">Get the start and stop point of shaking and set the first position of partern_rec_startflag. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00162">imu.c:162</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga026d4d596f92399f7e77a89f283e4957"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a></div><div class="ttdeci">void imu_acc_feature_get(int32_t *point, float multi_throd, uint32_t *recognition, uint8_t *peak_order, uint8_t peak_flag)</div><div class="ttdoc">Get some features of the data of action that is caputured. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00207">imu.c:207</a></div></div>
-<div class="ttc" id="structimu__mpu6050__update_html"><div class="ttname"><a href="structimu__mpu6050__update.html">imu_mpu6050_update</a></div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00062">imu.h:62</a></div></div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga475b9c157eaa4c68bcadc503be28817f">  408</a></span>&#160;uint8_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga475b9c157eaa4c68bcadc503be28817f">imu_pattern_recongnition</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;{</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        uint8_t i, y_order, z_order;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keyword">static</span> uint8_t start_action_get_flag;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        uint32_t recognition_z = 0, recognition_y = 0;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        uint8_t action_result = 0;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a>();</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp; 0x80) {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[ACC_DATA_CON_NUM - 1]), JUDGE_WAVE_NE_THRESHOLD, \</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                    &amp;recognition_y, &amp;y_order, GET_PEAK_PO);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a>(&amp;(imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[ACC_DATA_CON_NUM - 1]), JUDGE_WAVE_PO_THRESHOLD, \</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                    &amp;recognition_z, &amp;z_order, GET_PEAK_NE);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <span class="comment">/* Only when the system does not enter the mode of switching state,we will judge whether we have got the T */</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                <span class="keywordflow">if</span> (start_action_get_flag == 0) {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                        <span class="comment">/* Judge T!  Z:6,2,38.  Y:9,38 */</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                        <span class="keywordflow">if</span> ((recognition_z == WAVE_PN) || (recognition_z == WAVE_N) || (recognition_z == WAVE_NPN)) {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                                <span class="keywordflow">if</span> ((recognition_y == WAVE_NP) || (recognition_y == WAVE_NPN)) {</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                                        <span class="comment">/* Judge first action is vertical or vertical to reduce miscarriage of justice */</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                                        <span class="keywordflow">if</span> (y_order &gt; z_order) {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                                                start_action_get_flag = 0x01;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                                                EMBARC_PRINTF(<span class="stringliteral">&quot;Recognition OK!!  :T!\r\n&quot;</span>);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                                                action_result = ACTION_START;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                                        }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                                }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                        }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                }</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                <span class="comment">/* Only when the system enter the mode of switching state,we will judge left or right */</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                <span class="keywordflow">if</span>  (start_action_get_flag != 0) {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                        <span class="keywordflow">if</span> ((recognition_y == WAVE_NP) || (recognition_y == WAVE_NPN)) {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                                <span class="keywordflow">if</span> ((recognition_z == 0) || (recognition_z == WAVE_P) || (recognition_z == WAVE_N)) {</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                                        action_result = <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga098bae4209c6b0cb791ff1ec1e41ea66">ACTION_LEFT</a>;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                                        EMBARC_PRINTF(<span class="stringliteral">&quot;Recognition OK!!  :LEFT\r\n&quot;</span>);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                                }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                        }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                        <span class="keywordflow">if</span> ((recognition_y == WAVE_PN) || (recognition_y == WAVE_PNP)) {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                                <span class="keywordflow">if</span> ((recognition_z == 0) || (recognition_z == WAVE_P) || (recognition_z == WAVE_N)) {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                                        action_result = ACTION_RIGHT;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                                        EMBARC_PRINTF(<span class="stringliteral">&quot;Recognition OK!!  :RIGHT\r\n&quot;</span>);</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                                }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                        }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                <span class="keywordflow">if</span> (start_action_get_flag != 0) {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                        <span class="keywordflow">if</span> ((recognition_z == WAVE_PNP) || (recognition_z == WAVE_NP)) {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                                <span class="keywordflow">if</span> ((recognition_y == WAVE_NP)) {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                                        action_result = ACTION_OVER;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                                        start_action_get_flag = 0;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                                }</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                        }</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a> &amp;= 0x7f;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                <span class="keywordflow">for</span> (i = 0; i &lt; ACC_DATA_CON_NUM; i++)</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_x_buf[i] = 0;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_y_buf[i] = 0;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                        imu_mpu6050_update_ptr-&gt;acc_judge_z_buf[i] = 0;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                }</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        }</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <span class="keywordflow">return</span> action_result;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;}</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga03ade61ab33479793f2738c59cb8e20e"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga03ade61ab33479793f2738c59cb8e20e">mpu6050_get_data</a></div><div class="ttdeci">int mpu6050_get_data(uint8_t regaddr)</div><div class="ttdoc">Get the MPU6050 data. </div><div class="ttdef"><b>Definition:</b> <a href="mpu6050_8c_source.html#l00177">mpu6050.c:177</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gadf465d31296eb51f4bc5e56b6d4055d9"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gadf465d31296eb51f4bc5e56b6d4055d9">imu_init</a></div><div class="ttdeci">void imu_init(uint8_t gyro_rng, uint8_t acc_rng)</div><div class="ttdoc">Init the device which is used to get data of acceleration. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00126">imu.c:126</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga475b9c157eaa4c68bcadc503be28817f"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga475b9c157eaa4c68bcadc503be28817f">imu_pattern_recongnition</a></div><div class="ttdeci">uint8_t imu_pattern_recongnition(void)</div><div class="ttdoc">Recongnize the type of action and return value related. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00408">imu.c:408</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga474aa32692829793eb6ed7b0a8ec587d"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga474aa32692829793eb6ed7b0a8ec587d">imu_mpu6050_update_ptr</a></div><div class="ttdeci">MPU050_UPDATA * imu_mpu6050_update_ptr</div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00069">imu.h:69</a></div></div>
+<div class="ttc" id="structacc__special_html"><div class="ttname"><a href="structacc__special.html">acc_special</a></div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00098">imu.c:98</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gaedfaa927c1e11d0b41295d41b8431d1c"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaedfaa927c1e11d0b41295d41b8431d1c">partern_rec_startflag</a></div><div class="ttdeci">static uint8_t partern_rec_startflag</div><div class="ttdoc">Action captures state variables. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00118">imu.c:118</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gac1d90b91a47cab7d045d849995472641"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gac1d90b91a47cab7d045d849995472641">mpu6050_init</a></div><div class="ttdeci">void mpu6050_init(uint8_t gyro_rng, uint8_t accel_rng)</div><div class="ttdoc">MPU6050 init. </div><div class="ttdef"><b>Definition:</b> <a href="mpu6050_8c_source.html#l00131">mpu6050.c:131</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gafd3422e785f97ad58b8d8feea16fa864"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gafd3422e785f97ad58b8d8feea16fa864">imu_shaing_get_stastp_point</a></div><div class="ttdeci">void imu_shaing_get_stastp_point(void)</div><div class="ttdoc">Get the start and stop point of shaking and set the first position of partern_rec_startflag. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00159">imu.c:159</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga026d4d596f92399f7e77a89f283e4957"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga026d4d596f92399f7e77a89f283e4957">imu_acc_feature_get</a></div><div class="ttdeci">void imu_acc_feature_get(int32_t *point, float multi_throd, uint32_t *recognition, uint8_t *peak_order, uint8_t peak_flag)</div><div class="ttdoc">Get some features of the data of action that is caputured. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00204">imu.c:204</a></div></div>
+<div class="ttc" id="structimu__mpu6050__update_html"><div class="ttname"><a href="structimu__mpu6050__update.html">imu_mpu6050_update</a></div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00059">imu.h:59</a></div></div>
 <div class="ttc" id="scope_8h_html"><div class="ttname"><a href="scope_8h.html">scope.h</a></div><div class="ttdoc">virtual scope for iLight </div></div>
 <div class="ttc" id="emb_a_r_c__debug_8h_html"><div class="ttname"><a href="emb_a_r_c__debug_8h.html">embARC_debug.h</a></div><div class="ttdoc">necessary definitions of debug </div></div>
-<div class="ttc" id="structacc__upbuf_html"><div class="ttname"><a href="structacc__upbuf.html">acc_upbuf</a></div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00093">imu.c:93</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga098bae4209c6b0cb791ff1ec1e41ea66"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga098bae4209c6b0cb791ff1ec1e41ea66">ACTION_LEFT</a></div><div class="ttdeci">#define ACTION_LEFT</div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00048">imu.h:48</a></div></div>
+<div class="ttc" id="structacc__upbuf_html"><div class="ttname"><a href="structacc__upbuf.html">acc_upbuf</a></div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00090">imu.c:90</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga098bae4209c6b0cb791ff1ec1e41ea66"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga098bae4209c6b0cb791ff1ec1e41ea66">ACTION_LEFT</a></div><div class="ttdeci">#define ACTION_LEFT</div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00045">imu.h:45</a></div></div>
 <div class="ttc" id="imu_8h_html"><div class="ttname"><a href="imu_8h.html">imu.h</a></div><div class="ttdoc">Header file of action recognition function. </div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga54d267199d20a3198fa1b6768679a0fa"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54d267199d20a3198fa1b6768679a0fa">imu_get_shaking_start</a></div><div class="ttdeci">int8_t imu_get_shaking_start(void)</div><div class="ttdoc">Get the point of start of shaking. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00189">imu.c:189</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gaaef5f53dccb45c548b9b3fd284c9b810"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaaef5f53dccb45c548b9b3fd284c9b810">ACTION_SHAKING</a></div><div class="ttdeci">#define ACTION_SHAKING</div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00052">imu.h:52</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga54d267199d20a3198fa1b6768679a0fa"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga54d267199d20a3198fa1b6768679a0fa">imu_get_shaking_start</a></div><div class="ttdeci">int8_t imu_get_shaking_start(void)</div><div class="ttdoc">Get the point of start of shaking. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00186">imu.c:186</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_gaaef5f53dccb45c548b9b3fd284c9b810"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#gaaef5f53dccb45c548b9b3fd284c9b810">ACTION_SHAKING</a></div><div class="ttdeci">#define ACTION_SHAKING</div><div class="ttdef"><b>Definition:</b> <a href="imu_8h_source.html#l00049">imu.h:49</a></div></div>
 <div class="ttc" id="mpu6050_8h_html"><div class="ttname"><a href="mpu6050_8h.html">mpu6050.h</a></div><div class="ttdoc">emsk mpu6050 sensor driver for iLight </div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga5234b5dfc42f840b7846f328921652af"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a></div><div class="ttdeci">void imu_get_stastp_point(void)</div><div class="ttdoc">Get the start and stop point and set the first position of partern_rec_startflag. ...</div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00137">imu.c:137</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga5234b5dfc42f840b7846f328921652af"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga5234b5dfc42f840b7846f328921652af">imu_get_stastp_point</a></div><div class="ttdeci">void imu_get_stastp_point(void)</div><div class="ttdoc">Get the start and stop point and set the first position of partern_rec_startflag. ...</div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00134">imu.c:134</a></div></div>
 <div class="ttc" id="emb_a_r_c_8h_html"><div class="ttname"><a href="emb_a_r_c_8h.html">embARC.h</a></div><div class="ttdoc">header files wrapper </div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga74f0c6f405e16f061a2023a95d8f6572"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga74f0c6f405e16f061a2023a95d8f6572">imu_mpu6050_update</a></div><div class="ttdeci">void imu_mpu6050_update(void)</div><div class="ttdoc">Update x_axis,y_axis,z_axis&#39;s date of acceleration an filter. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00300">imu.c:300</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga0e6e0a08cd385542b45ca50bd06e7ec5"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0e6e0a08cd385542b45ca50bd06e7ec5">imu_get_action_shaking</a></div><div class="ttdeci">uint8_t imu_get_action_shaking(void)</div><div class="ttdoc">According to the data that buffered,recongnize the action of shaking. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00380">imu.c:380</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga74f0c6f405e16f061a2023a95d8f6572"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga74f0c6f405e16f061a2023a95d8f6572">imu_mpu6050_update</a></div><div class="ttdeci">void imu_mpu6050_update(void)</div><div class="ttdoc">Update x_axis,y_axis,z_axis&#39;s date of acceleration an filter. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00297">imu.c:297</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e_html_ga0e6e0a08cd385542b45ca50bd06e7ec5"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_l_i_g_h_t___s_m_a_r_t_d_e_v_i_c_e.html#ga0e6e0a08cd385542b45ca50bd06e7ec5">imu_get_action_shaking</a></div><div class="ttdeci">uint8_t imu_get_action_shaking(void)</div><div class="ttdoc">According to the data that buffered,recongnize the action of shaking. </div><div class="ttdef"><b>Definition:</b> <a href="imu_8c_source.html#l00377">imu.c:377</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -546,7 +543,7 @@ $(document).ready(function(){initNavTree('imu_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_e83eca56c5ef8ec0356c9dc141b8ff29.html">ilight_smartdevice</a></li><li class="navelem"><a class="el" href="dir_a9b5a6b8da6a445d53d3a17c169a3758.html">src</a></li><li class="navelem"><a class="el" href="dir_64e1535ea7640b2daf27b9f2891862a6.html">function</a></li><li class="navelem"><a class="el" href="dir_04d328fd6162714f80f5b178da4ce8be.html">imu</a></li><li class="navelem"><a class="el" href="imu_8c.html">imu.c</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:07 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:14 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>

@@ -1,9 +1,17 @@
 var group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j =
 [
-    [ "axs/drivers/uart/dw_uart_obj.c", "axs_2drivers_2uart_2dw__uart__obj_8c.html", null ],
+    [ "axs/drivers/ip/designware/uart/dw_uart_obj.c", "axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c.html", null ],
+    [ "axs/drivers/ip/designware/uart/dw_uart_obj.h", "axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h.html", null ],
+    [ "DW_UART_0_ID", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga61cfe53266aacb4cb6a0f8b879507dee", null ],
     [ "DW_UART_0_INTNO", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga2e64af6d82f6b504c142d8aeab3e460d", null ],
+    [ "DW_UART_1_ID", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga5fb2a0672ce7e3c57ea515366808fe56", null ],
     [ "DW_UART_1_INTNO", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga0ffafa7522db686a52c98d906febf2dc", null ],
+    [ "DW_UART_2_ID", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gaf791cda00d95454c6e8a0fe977398606", null ],
     [ "DW_UART_2_INTNO", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga4886cc7e890d2b6b8823ad762b536bdb", null ],
+    [ "DW_UART_NUM", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gaba6f51fb934a1ee1541a6c4f03e65917", null ],
+    [ "USE_DW_UART_0", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga50fce0ca9fc47ca9b62f20978bb07c68", null ],
+    [ "USE_DW_UART_1", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga3ab11c72fb6de4b75eaed479b58f9299", null ],
+    [ "USE_DW_UART_2", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gabeab2a8d5398fd62e829b7ba6dc62c94", null ],
     [ "dw_uart_0_close", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga210e2c054be71e307f0f4affcf09b2bb", null ],
     [ "dw_uart_0_control", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#gabdc562db81bd8c2183975fe16ed540c1", null ],
     [ "dw_uart_0_install", "group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j.html#ga539eef22064d5a5da5aa8df55343bda5", null ],

@@ -17,11 +17,11 @@ var group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___c_x_x =
     ] ],
     [ "someComputing", "classsome_computing.html", [
       [ "retType", "classsome_computing.html#ad1bd7ca1f1f7f77178a0e2ad5f1de653", null ],
-      [ "retValume", "group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___c_x_x.html#gga88080239ae2802def1567d778980270daed32277f2734d99238cc2a4485e17110", null ],
+      [ "retValume", "group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___c_x_x.html#gga52e8cb8fef53778476cce197e4f66549aed32277f2734d99238cc2a4485e17110", null ],
       [ "f", "classsome_computing.html#ae94ad54da1394d2186a6e9d20ea33e15", null ]
     ] ],
     [ "someComputing< T, 0 >", "classsome_computing_3_01_t_00_010_01_4.html", [
-      [ "retValume", "group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___c_x_x.html#ggad92169d275ee708997786f5e6a8abf81a7ea9bf9bec7c614e3934334eeccc8fa7", null ]
+      [ "retValume", "group___e_m_b_a_r_c___a_p_p___b_a_r_e_m_e_t_a_l___c_x_x.html#gga8cdae952de6d832b642aa9138a628ce6a7ea9bf9bec7c614e3934334eeccc8fa7", null ]
     ] ],
     [ "codeComputing", "classcode_computing.html", [
       [ "f", "classcode_computing.html#a4791b7aa6d2a0757565079abea0f15df", null ]

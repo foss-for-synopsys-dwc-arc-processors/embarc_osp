@@ -31,7 +31,7 @@
  <tr style="height: 50px;">
   <td id="projectlogo"><img alt="Logo" src="embARC_Logo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectnumber">2017.03</div>
+   <div id="projectnumber">2017.12</div>
   </td>
  </tr>
  </tbody>
@@ -127,27 +127,24 @@ $(document).ready(function(){initNavTree('body__temperature_8h_source.html','');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">* (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">* SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">* \version 2017.07</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">* \date 2017-07-26</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">* \author Xiangcai Huang(xiangcai@synopsys.com)</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef _BODY_TEMPERATURE_H_</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define _BODY_TEMPERATURE_H_</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">--------------------------------------------- */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef _BODY_TEMPERATURE_H_</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define _BODY_TEMPERATURE_H_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf098546d37d2f08069de046156240248">   44</a></span>&#160;<span class="preprocessor">#define BTEMP_SENSOR_IIC_ID  DW_IIC_1_ID</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf098546d37d2f08069de046156240248">   47</a></span>&#160;<span class="preprocessor">#define BTEMP_SENSOR_IIC_ID  DW_IIC_1_ID</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define TMP112_ADDRESS       0x48</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define BTEMP_SENSOR_ADDR    TMP112_ADDRESS</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define EMSK_TMP_SENSOR_CHECK_EXP_NORTN(EXPR)    CHECK_EXP_NOERCD(EXPR, error_exit)</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define TMP112_ADDRESS       0x48</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define BTEMP_SENSOR_ADDR    TMP112_ADDRESS</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define EMSK_TMP_SENSOR_CHECK_EXP_NORTN(EXPR)    CHECK_EXP_NOERCD(EXPR, error_exit)</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">extern</span> int32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf99c08471d340a8270fb0b6ebf82a524">btemp_sensor_init</a>(uint32_t slv_addr);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> int32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga7c768aab7eda639e09bae5eb504ff530">btemp_sensor_read</a>(uint16_t *btmp);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">extern</span> int32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf99c08471d340a8270fb0b6ebf82a524">btemp_sensor_init</a>(uint32_t slv_addr);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> int32_t <a class="code" href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga7c768aab7eda639e09bae5eb504ff530">btemp_sensor_read</a>(uint16_t *btmp);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _BODY_TEMPERATURE_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df_html_ga7c768aab7eda639e09bae5eb504ff530"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga7c768aab7eda639e09bae5eb504ff530">btemp_sensor_read</a></div><div class="ttdeci">int32_t btemp_sensor_read(uint16_t *btemp)</div><div class="ttdoc">val is the return temperature in degrees Celsius (1/10 C) </div><div class="ttdef"><b>Definition:</b> <a href="body__temperature_8c_source.html#l00195">body_temperature.c:195</a></div></div>
-<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df_html_gaf99c08471d340a8270fb0b6ebf82a524"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf99c08471d340a8270fb0b6ebf82a524">btemp_sensor_init</a></div><div class="ttdeci">int32_t btemp_sensor_init(uint32_t slv_addr)</div><div class="ttdoc">body temperature sensor initialize </div><div class="ttdef"><b>Definition:</b> <a href="body__temperature_8c_source.html#l00166">body_temperature.c:166</a></div></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _BODY_TEMPERATURE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df_html_ga7c768aab7eda639e09bae5eb504ff530"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga7c768aab7eda639e09bae5eb504ff530">btemp_sensor_read</a></div><div class="ttdeci">int32_t btemp_sensor_read(uint16_t *btemp)</div><div class="ttdoc">val is the return temperature in degrees Celsius (1/10 C) </div><div class="ttdef"><b>Definition:</b> <a href="body__temperature_8c_source.html#l00192">body_temperature.c:192</a></div></div>
+<div class="ttc" id="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df_html_gaf99c08471d340a8270fb0b6ebf82a524"><div class="ttname"><a href="group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaf99c08471d340a8270fb0b6ebf82a524">btemp_sensor_init</a></div><div class="ttdeci">int32_t btemp_sensor_init(uint32_t slv_addr)</div><div class="ttdoc">body temperature sensor initialize </div><div class="ttdef"><b>Definition:</b> <a href="body__temperature_8c_source.html#l00163">body_temperature.c:163</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.8-->
@@ -155,7 +152,7 @@ $(document).ready(function(){initNavTree('body__temperature_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d75c23162a2652451dce46d2e7e8aead.html">application</a></li><li class="navelem"><a class="el" href="dir_0ecc9a78d8907d932edd7e6e9c13c56f.html">ibaby_smarthome_multinode</a></li><li class="navelem"><a class="el" href="dir_63e158be860768d26ae354d6cd5a9c8d.html">src</a></li><li class="navelem"><a class="el" href="dir_a52cff20d940f38a997f3b56ab65685c.html">wearable_node</a></li><li class="navelem"><a class="el" href="dir_d1e3b2027121b317c8efdff2d8240a9e.html">driver</a></li><li class="navelem"><a class="el" href="dir_21275b108fa9adf4ae097e8d412054a4.html">body_temperature</a></li><li class="navelem"><a class="el" href="body__temperature_8h.html">body_temperature.h</a></li>
-    <li class="footer">Generated on Thu Oct 12 2017 17:24:06 for embARC by
+    <li class="footer">Generated on Fri Jan 12 2018 18:43:10 for embARC by
     <a href="http://www.synopsys.com">
     <img class="footer" src="pic/snps_logo.png" alt="snps_logo"/></a>. All Rights Reserved. </li>
   </ul>
