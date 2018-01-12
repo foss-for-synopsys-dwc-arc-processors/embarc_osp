@@ -19,7 +19,6 @@
 /*! \file
   LWM2M object "Location" implementation
 
-  \author Joerg Hubschneider
 */
 
 /*

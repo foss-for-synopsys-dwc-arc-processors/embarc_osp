@@ -64,9 +64,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2016.05
- * \date 2016-08-11
- * \author Xinyi Zhao(xinyi@synopsys.com)
 --------------------------------------------- */
 
 /*

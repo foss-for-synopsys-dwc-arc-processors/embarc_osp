@@ -72,7 +72,6 @@
  * \ingroup OS_FREERTOS
  * \brief  freertos support for arc processor
  *	like task dispatcher, interrupt handler
- * \author Wayne Ren, Huaqi Fang
  */
 /** @cond OS_FREERTOS_ASM_ARC_SUPPORT */
 
