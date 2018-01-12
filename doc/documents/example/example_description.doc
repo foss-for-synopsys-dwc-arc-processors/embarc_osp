@@ -236,13 +236,13 @@ See \ref sect_example_usage_GeneralBuildSteps for more details.
   - For more details about how this new process is implemented, see <em><embARC>/board/board.c</em>.
   - In most cases, you don't need to change this value to *0*.
 
-- <b>WIFI_SEL</b>: Set WiFi module used in the examples.
-  - The default value of this option is defined in **board/board.mk**.
-  - Optional values for *WIFI_SEL* are shown below.
-    |   WIFI_SEL    |       Description                                 |
-    | ------------  | ------------------------------------------------- |
-    |       0       | PmodWiFi (default)                                 |
-    |       1       | RW009 WiFi                                        |
+- <b>EXT_DEV_LIST</b>: Select peripheral device drivers used in example.
+  - Use it in the example's makefile, like this `EXT_DEV_LIST += sensor/temperature/adt7420`
+  - Optional values for *EXT_DEV_LIST* can be found in *device/peripheral*.
+  - Select the peripheral device drivers relative path you want to use, and add to `EXT_DEV_LIST`.
+  - If more than one peripheral device drivers are selected, please use space between each other, such as `EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420`
+  - Some onboard peripheral device drivers are already selected according to the board you use, you can check it in board makefile.
+  - *WIFI_SEL* is not available now, if you want to choose different WiFi, you need to change the `EXT_DEV_LIST` in your example makefile.
 
 - <b>EMBARC_ROOT</b>: Set embARC source-code root directory path.
   - This option should be defined in your application makefile.
@@ -308,12 +308,12 @@ and \ref EMBARC_APPS_USERGUIDE "Example Usage Guide" for detailed usage informat
 - **Here is the list of embARC examples**, located in <i><embARC>/example</i>.
 |          Example Name          |          Example Directory           |          Example Document Link           |
 |  ---------------------------   |  ----------------------------------  |  --------------------------------------  |
-|  baremetal_arc_feature_axs103   | baremetal/arc_feature/axs103  |   \ref EMBARC_APP_BAREMETAL_ARC_FEATURE_AXS103  |
 |  baremetal_arc_feature_cache   | baremetal/arc_feature/cache  |   \ref EMBARC_APP_BAREMETAL_ARC_FEATURE_CACHE  |
 |  baremetal_arc_feature_timer_interrupt   | baremetal/arc_feature/timer_interrupt  |   \ref EMBARC_APP_BAREMETAL_ARC_FEATURE_TIMER_INTERRUPT  |
 |  baremetal_arc_feature_udma   | baremetal/arc_feature/udma  |   \ref EMBARC_APP_BAREMETAL_ARC_FEATURE_UDMA  |
 |  baremetal_ble_hm1x   | baremetal/ble_hm1x  |   \ref EMBARC_APP_BAREMETAL_BLE_HM1X  |
 |  baremetal_blinky   | baremetal/blinky  |   \ref EMBARC_APP_BAREMETAL_BLINKY  |
+|  baremetal_axs103   | baremetal/axs103  |   \ref EMBARC_APP_BAREMETAL_ARC_FEATURE_AXS103  |
 |  baremetal_bootloader   | baremetal/bootloader  |   \ref EMBARC_APP_BAREMETAL_BOOTLOADER  |
 |  baremetal_cxx   | baremetal/cxx  |   \ref EMBARC_APP_BAREMETAL_CXX  |
 |  baremetal_dma_spiflash   | baremetal/dma_spiflash  |   \ref EMBARC_APP_BAREMETAL_DMA_SPIFLASH  |
@@ -337,7 +337,7 @@ and \ref EMBARC_APPS_USERGUIDE "Example Usage Guide" for detailed usage informat
 |  freertos_sec_mbedtls_ssl_client2   | freertos/sec/mbedtls/ssl/client2  |   \ref EMBARC_APP_FREERTOS_SEC_MBEDTLS_SSL_CLIENT2  |
 |  freertos_sec_mbedtls_ssl_server2   | freertos/sec/mbedtls/ssl/server2  |   \ref EMBARC_APP_FREERTOS_SEC_MBEDTLS_SSL_SERVER2  |
 
-- **Here is a list of embARC applications**, located in [embARC applications](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications).  
+- **Here is a list of embARC applications**, located in [embARC applications](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications).
 |          Application Name      |         Application Link             |
 |  ---------------------------   |  ----------------------------------  |
 |  aws_iot_smarthome             | [AWS IoT Smarthome Application](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome)        |

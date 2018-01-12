@@ -8,8 +8,8 @@
 /*! \page page_changelog ChangeLog
 \tableofcontents
 
-\section sec_chglog_201801 2018.01
-This is the sixth release of the embARC Open Software Platform, release 2018.01.
+\section sec_chglog_201712 2017.12
+This is the sixth release of the embARC Open Software Platform, release 2017.12.
 
 Tool Support
 -----------------
@@ -52,6 +52,7 @@ Please refer to the doc folder in the release zip file and [getting started inst
 
 Known Issues
 -------------------
+- This release has changed a lot in device layer, with the peripheral layer introduced, many examples which rely on old peripheral drivers in emsk will not be compatible with new embARC OSP, please modify it.
 - Make version >=4.0 is not supported. Please use make version 3.81 or 3.82
 - For Wifi applications, the Digilent pmod Wifi with Microchip part MRF24WG0MA should be used. Pmods built with MRF24WB0MA have been shown to experience problems and are NOT supported.
 - Please don't put embARC source code too deep in your directory, because some examples can't be compiled due to too long command line not supported in Windows.
@@ -59,8 +60,6 @@ Known Issues
 - Secureshield library need MPU hardware module on EMSK, check your hardware configuration of EMSK before using it.
 - Please use the recommended tool versions for metaware and arc gnu.
 - For ARC GNU, an utility called *tcftool* from metaware toolset is required for tcf build support. You can get it from Metaware Lite and copy it to ARC GNU's folder such as <b>C:/arc_gnu/bin/</b>.
-
-
 
 
 \section sect_chglog_201703 2017.03
