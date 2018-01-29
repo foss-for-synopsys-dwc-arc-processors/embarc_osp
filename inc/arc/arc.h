@@ -473,6 +473,11 @@ extern "C" {
 
 #ifndef __ASSEMBLY__
 /* add type definition and function declaration here */
+/**
+ * \brief check whether process is in user mode
+ * \retval 0 kernel mode, 1 user mode
+ */
+extern unsigned int _arc_in_user_mode(void);
 #endif	/* assembly */
 
 #ifdef __cplusplus

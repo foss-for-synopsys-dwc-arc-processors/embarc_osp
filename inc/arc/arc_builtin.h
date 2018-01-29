@@ -292,34 +292,6 @@ Inline int32_t _arc_goto_main(int argc, char **argv) {
 	return (int32_t)__ret;
 }
 
-
-/**
- * \brief check whether process is in user mode
- * \retval 0 kernel mode, 1 user mode
- */
-Inline uint32_t _arc_in_user_mode(void)
-{
-	uint32_t __ret;
-	uint32_t __val = 0;
-
-	Asm(
-		"lr    %0,[0xa]\n"
-		"bbit1 %0,20,1f\n" 	/* STATUS32.US == 1 implies Kernel mode */
-		"bset  %1,%0,20\n"	/* set the US bit */
-		"bclr  %1,%0,31\n"	/* clear the IE bit (no preemption) */
-		"kflag %1\n"		/* attempt to set US to 1 and IE to 0 */
-		"lr    %1,[0xa]\n"
-		"bbit0 %1,20,2f\n"	/* STATUS32.US == 0 implies User mode */
-		"kflag %0\n"		/* Kernel mode, restore STATUS32.[US,IE] */
-		"1:\n"
-		"mov   %0,0\n"		/* return 0 (not in User mode) */
-		"2:\n"
-		"mov   %0,1\n"		/* return 1 (in User mode) */
-		: "=r"(__ret):"r"(__val));
-	return __ret;
-}
-
-
 #ifdef __cplusplus
 }
 #endif
