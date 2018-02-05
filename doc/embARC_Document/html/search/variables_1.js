@@ -7,7 +7,6 @@ var searchData=
   ['blksz',['blksz',['../group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga4dd2892eb63fb14df9d934f88436b3e9',1,'_dma_ctrl_field']]],
   ['bssid',['bssid',['../structwnic__scan__result.html#a305fad964d708d5195613ca16f52dfd4',1,'wnic_scan_result']]],
   ['bsstype',['bsstype',['../structwnic__scan__result.html#a8e0cde05c42c5294c2c194aaaf5c194f',1,'wnic_scan_result']]],
-  ['btemp',['btemp',['../structdata__wearable__node.html#a49757c295a5f8fc8da62c89658de2535',1,'data_wearable_node']]],
   ['buf',['buf',['../structdev__buffer.html#a9229a6df77f315674f8a9e08809f97c1',1,'dev_buffer']]],
   ['busy_5fstatus',['busy_status',['../structdev__wnic__info.html#a0482d4e497510b10f79f7c1be32af4ab',1,'dev_wnic_info']]]
 ];

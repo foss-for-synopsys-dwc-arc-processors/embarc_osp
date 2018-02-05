@@ -1,19 +1,6 @@
 var searchData=
 [
-  ['cmd_5flwm2m_2ec',['cmd_lwm2m.c',['../lwm2m__client_2cmd__lwm2m_8c.html',1,'']]],
-  ['cmd_5flwm2m_2ec',['cmd_lwm2m.c',['../lwm2m__server_2cmd__lwm2m_8c.html',1,'']]],
-  ['common_2eh',['common.h',['../lamp__node_2function_2common_8h.html',1,'']]],
-  ['lamp_2ec',['lamp.c',['../lamp_8c.html',1,'']]],
-  ['lamp_2eh',['lamp.h',['../lamp_8h.html',1,'']]],
-  ['lamp_5fwork_2ec',['lamp_work.c',['../lamp__work_8c.html',1,'']]],
-  ['lamp_5fwork_2eh',['lamp_work.h',['../lamp__work_8h.html',1,'']]],
-  ['light_5fdriver_2ec',['light_driver.c',['../light__driver_8c.html',1,'']]],
-  ['light_5fdriver_2eh',['light_driver.h',['../light__driver_8h.html',1,'']]],
-  ['light_5fmode_2ec',['light_mode.c',['../light__mode_8c.html',1,'']]],
-  ['light_5fmode_2eh',['light_mode.h',['../light__mode_8h.html',1,'']]],
-  ['lwm2m_2ec',['lwm2m.c',['../lamp__node_2function_2lwm2m_2lwm2m_8c.html',1,'']]],
-  ['lwm2m_2eh',['lwm2m.h',['../lamp__node_2function_2lwm2m_2lwm2m_8h.html',1,'']]],
-  ['lwm2mserver_2ec',['lwm2mserver.c',['../lwm2mserver_8c.html',1,'']]],
-  ['print_5fmsg_2ec',['print_msg.c',['../lamp__node_2function_2print__msg_2print__msg_8c.html',1,'']]],
-  ['print_5fmsg_2eh',['print_msg.h',['../lamp__node_2function_2print__msg_2print__msg_8h.html',1,'']]]
+  ['cmd_5flwm2m_2ec',['cmd_lwm2m.c',['../lwm2m__client_2cmd__lwm2m_8c.html',1,'(Global Namespace)'],['../lwm2m__server_2cmd__lwm2m_8c.html',1,'(Global Namespace)']]],
+  ['lwm2mclient_2ec',['lwm2mclient.c',['../lwm2m__client_2lwm2mclient_8c.html',1,'']]],
+  ['lwm2mserver_2ec',['lwm2mserver.c',['../lwm2mserver_8c.html',1,'']]]
 ];

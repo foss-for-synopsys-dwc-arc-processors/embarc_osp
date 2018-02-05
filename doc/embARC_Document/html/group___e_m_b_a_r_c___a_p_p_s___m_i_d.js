@@ -1,6 +1,6 @@
 var group___e_m_b_a_r_c___a_p_p_s___m_i_d =
 [
-    [ "embARC AWS IoT Applications", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___a_w_s.html", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___a_w_s" ],
+    [ "embARC AWS IoT Applications", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___a_w_s.html", null ],
     [ "embARC CoAP Applications", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___c_o_a_p.html", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___c_o_a_p" ],
     [ "embARC FatFS Applications", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___f_a_t_f_s.html", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___f_a_t_f_s" ],
     [ "embARC HTTP Parser Applications", "group___e_m_b_a_r_c___a_p_p_s___m_i_d___h_t_t_p___p_a_r_s_e_r.html", null ],

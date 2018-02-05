@@ -231,5 +231,6 @@ var group___a_r_c___h_a_l___c_o_r_e___c_o_m_m =
     [ "EXC_VECTOR_SWI", "group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#gacc066340cac624a1d3721c49dc835e4d", null ],
     [ "EXC_VECTOR_TLB_MISS_D", "group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga2b6303cd236abfb4957715eaa8b130f1", null ],
     [ "EXC_VECTOR_TLB_MISS_I", "group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga856bfa5e31c89793c6b08095eec05245", null ],
-    [ "EXC_VECTOR_TRAP", "group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga02e00356023e7582b7e026e094ac9c37", null ]
+    [ "EXC_VECTOR_TRAP", "group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga02e00356023e7582b7e026e094ac9c37", null ],
+    [ "_arc_in_user_mode", "group___a_r_c___h_a_l___c_o_r_e___c_o_m_m.html#ga547f9841aa3efb0af6448e4106e19701", null ]
 ];

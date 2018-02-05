@@ -1,6 +1,6 @@
 var group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l =
 [
-    [ "example/freertos/kernel/main.c", "example_2freertos_2kernel_2main_8c.html", null ],
+    [ "freertos/kernel/main.c", "freertos_2kernel_2main_8c.html", null ],
     [ "_sample", "struct__sample.html", [
       [ "t_dtq_wri", "struct__sample.html#a0c74c970249fce005b0ebd162116d6b5", null ],
       [ "t_evt_snd", "struct__sample.html#ac2edba2f71102f544ac80496c25cb534", null ],

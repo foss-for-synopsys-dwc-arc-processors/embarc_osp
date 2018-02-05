@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['macaddr_5ft',['MACADDR_T',['../struct_m_a_c_a_d_d_r___t.html',1,'']]],
-  ['main_5fargs',['main_args',['../structmain__args.html',1,'']]],
-  ['mode_5finfo',['mode_info',['../structmode__info.html',1,'']]],
-  ['mrf24j40_5fdef',['mrf24j40_def',['../structmrf24j40__def.html',1,'']]]
+  ['netconn_5fthread',['netconn_thread',['../structnetconn__thread.html',1,'']]],
+  ['ntshell_5fio_5fnetconn',['ntshell_io_netconn',['../structntshell__io__netconn.html',1,'']]],
+  ['ntshell_5fio_5fuart',['ntshell_io_uart',['../structntshell__io__uart.html',1,'']]]
 ];

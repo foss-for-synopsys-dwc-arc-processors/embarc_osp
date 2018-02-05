@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['data_5flamp_5fnode',['data_lamp_node',['../structdata__lamp__node.html',1,'']]],
-  ['data_5fwearable_5fnode',['data_wearable_node',['../structdata__wearable__node.html',1,'']]],
   ['dev_5fbuffer',['dev_buffer',['../structdev__buffer.html',1,'']]],
   ['dev_5fgpio',['dev_gpio',['../structdev__gpio.html',1,'']]],
   ['dev_5fgpio_5fbit_5fisr',['dev_gpio_bit_isr',['../structdev__gpio__bit__isr.html',1,'']]],

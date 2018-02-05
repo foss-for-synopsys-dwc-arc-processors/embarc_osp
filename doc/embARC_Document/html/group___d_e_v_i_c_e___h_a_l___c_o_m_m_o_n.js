@@ -15,5 +15,5 @@ var group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n =
     [ "DEV_BUFFER_INIT", "group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga116434ee0f8c4f969194decd4fae00a7", null ],
     [ "DEV_INTNO_INVALID", "group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga1c959a409ad6e952dc79b876f8e9b861", null ],
     [ "DEV_BUFFER", "group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga1e2d2bd78cfc19bba910da7448cc6fdc", null ],
-    [ "DEV_CALLBACK", "group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#ga91091c2a8f895b2d00ae61e6b607335e", null ]
+    [ "DEV_CALLBACK", "group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n.html#gad799b59590746b2af9531e870ae176c8", null ]
 ];

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['t1_5fcnt',['t1_cnt',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#ga3c9dd3e5113e3ba85555235fcb375d3a',1,'timer1.h']]],
-  ['t1_5fstart',['t1_start',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___i_o_t___i_b_a_b_y___s_m_a_r_t_h_o_m_e___m_u_l_t_c05b9a5c9481ac0add3481f8b14e10df.html#gaea2d7a3160e3d0fd8ac40a71bf387d76',1,'timer1.h']]],
   ['tar_5faddr',['tar_addr',['../structdev__iic__info.html#a053f6977e28df5bdc0ed484681aa3a0a',1,'dev_iic_info']]],
   ['task1_5fhandle',['task1_handle',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l___s_e_c_u_r_e.html#gad2ceea4f9c7d555dc0c1b3df57146f54',1,'background_container.c']]],
   ['task2_5fhandle',['task2_handle',['../group___e_m_b_a_r_c___a_p_p___f_r_e_e_r_t_o_s___k_e_r_n_e_l___s_e_c_u_r_e.html#ga21d69943d8ad99fabf15d49965dcc031',1,'background_container.c']]],
@@ -13,9 +11,9 @@ var searchData=
   ['thread_5fname',['thread_name',['../structnetconn__thread.html#a9cd4d7d5514a3b38ee4f7f76de62ba08',1,'netconn_thread']]],
   ['thread_5fprio',['thread_prio',['../structnetconn__thread.html#afcc4bf92f7027cdab4d121fa0046fd6d',1,'netconn_thread']]],
   ['thread_5fstksz',['thread_stksz',['../structnetconn__thread.html#ac3170bed911ee3b37cf9e0392094833f',1,'netconn_thread']]],
-  ['timer_5fdelay',['timer_delay',['../structwf__timer__ops.html#abf34c8be7291eecda5835bf1bd6fb1ff',1,'wf_timer_ops']]],
-  ['timer_5finit',['timer_init',['../structwf__timer__ops.html#a648830931c86ef10ff4c6934e1ef5b50',1,'wf_timer_ops']]],
-  ['timer_5fread_5fms',['timer_read_ms',['../structwf__timer__ops.html#aefa0ff534811d7046f6467961d726204',1,'wf_timer_ops']]],
+  ['timer_5fdelay',['timer_delay',['../structwf__timer__ops.html#a3d1e2c2c7807016ee9b86aaf4da9e029',1,'wf_timer_ops']]],
+  ['timer_5finit',['timer_init',['../structwf__timer__ops.html#a8abc66a5be0f22124ab5ebbaec55c310',1,'wf_timer_ops']]],
+  ['timer_5fread_5fms',['timer_read_ms',['../structwf__timer__ops.html#ab8a92f55a6e4f255f6cfdefd01c68f4a',1,'wf_timer_ops']]],
   ['tot_5flen',['tot_len',['../structdev__spi__transfer.html#a447ff59149a2a0dc87a493b2bf4c6c5a',1,'dev_spi_transfer']]],
   ['ttname',['ttname',['../structunit__test.html#a69921a808ce0a38eef134e6f9db60002',1,'unit_test']]],
   ['tx_5fbuf',['tx_buf',['../structdev__iic__info.html#a5cbc1ba3c206cec0eaa3f5c1737eb924',1,'dev_iic_info::tx_buf()'],['../structdev__uart__info.html#aaec9266437298f69cee418419b2af57e',1,'dev_uart_info::tx_buf()']]],

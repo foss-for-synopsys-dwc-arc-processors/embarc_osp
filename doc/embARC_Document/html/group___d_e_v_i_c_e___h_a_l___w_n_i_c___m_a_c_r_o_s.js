@@ -5,16 +5,16 @@ var group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s =
       [ "ssid_len", "structwnic__cfg__ssid.html#a67b9ffb41e38616ca48beec953711789", null ]
     ] ],
     [ "wnic_ap_config", "unionwnic__ap__config.html", [
+      [ "apcfg", "structwnic__ap__config_1_1apcfg.html", [
+        [ "ie", "structwnic__ap__config_1_1apcfg.html#a02268919fa8b11a81bfd8d0baf5dfc22", null ],
+        [ "preamble", "structwnic__ap__config_1_1apcfg.html#a5a027b83b1a13fbde04a1c9e441e61c3", null ],
+        [ "privacy", "structwnic__ap__config_1_1apcfg.html#a2169f47e2b56eb313736c433408e7fc6", null ],
+        [ "reserved", "structwnic__ap__config_1_1apcfg.html#a8af3c075e348117c5e5d2d0730a3606e", null ],
+        [ "wpa", "structwnic__ap__config_1_1apcfg.html#a4b07732a470d8d14ec07a77aaba4939a", null ],
+        [ "wpa2", "structwnic__ap__config_1_1apcfg.html#a34547cc694273d726599df66ca4b0184", null ]
+      ] ],
       [ "ap_cfg", "unionwnic__ap__config.html#a3f6aa1c477b8de9be309e23efde0e7ef", null ],
       [ "apConfig", "unionwnic__ap__config.html#a649125a9b845e0f16b78dc4406d8048f", null ]
-    ] ],
-    [ "apcfg", "structwnic__ap__config_1_1apcfg.html", [
-      [ "ie", "structwnic__ap__config_1_1apcfg.html#a02268919fa8b11a81bfd8d0baf5dfc22", null ],
-      [ "preamble", "structwnic__ap__config_1_1apcfg.html#a5a027b83b1a13fbde04a1c9e441e61c3", null ],
-      [ "privacy", "structwnic__ap__config_1_1apcfg.html#a2169f47e2b56eb313736c433408e7fc6", null ],
-      [ "reserved", "structwnic__ap__config_1_1apcfg.html#a8af3c075e348117c5e5d2d0730a3606e", null ],
-      [ "wpa", "structwnic__ap__config_1_1apcfg.html#a4b07732a470d8d14ec07a77aaba4939a", null ],
-      [ "wpa2", "structwnic__ap__config_1_1apcfg.html#a34547cc694273d726599df66ca4b0184", null ]
     ] ],
     [ "wnic_auth_key", "structwnic__auth__key.html", [
       [ "key", "structwnic__auth__key.html#aec90d3f0a43021a449a37446e53cd7ab", null ],

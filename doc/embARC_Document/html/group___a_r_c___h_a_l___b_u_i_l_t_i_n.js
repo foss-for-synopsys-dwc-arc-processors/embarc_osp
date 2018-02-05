@@ -14,7 +14,6 @@ var group___a_r_c___h_a_l___b_u_i_l_t_i_n =
     [ "_arc_swi", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#gac5e596c9be37023b785d097061ec14d7", null ],
     [ "_arc_sync", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#gae036cd29e75a50a6e98090522cbb3968", null ],
     [ "_arc_goto_main", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#gab41428f421e9539fb507467584998b43", null ],
-    [ "_arc_in_user_mode", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#ga642a37504d0f5a31ae288824386ba835", null ],
     [ "_arc_read_cached_32", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#ga5c784703529f421a8c6a0fd3a2749e0b", null ],
     [ "_arc_read_uncached_32", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#gaa94be405be89c127168cb98cc47ffdf2", null ],
     [ "_arc_write_cached_32", "group___a_r_c___h_a_l___b_u_i_l_t_i_n.html#ga6e637ed3b936c2f87739981e7087fdff", null ],

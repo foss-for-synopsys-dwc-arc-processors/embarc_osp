@@ -8,8 +8,6 @@ var searchData=
   ['dw_5fspi_5fobj_2eh',['dw_spi_obj.h',['../hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h.html',1,'']]],
   ['dw_5fuart_5fobj_2ec',['dw_uart_obj.c',['../hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c.html',1,'']]],
   ['dw_5fuart_5fobj_2eh',['dw_uart_obj.h',['../hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h.html',1,'']]],
-  ['heartrate_2ec',['heartrate.c',['../heartrate_8c.html',1,'']]],
-  ['heartrate_2eh',['heartrate.h',['../heartrate_8h.html',1,'']]],
   ['hm1x_2ec',['hm1x.c',['../hm1x_8c.html',1,'']]],
   ['hsdk_2eh',['hsdk.h',['../hsdk_8h.html',1,'']]],
   ['hsdk_5fhardware_2ec',['hsdk_hardware.c',['../hsdk__hardware_8c.html',1,'']]],

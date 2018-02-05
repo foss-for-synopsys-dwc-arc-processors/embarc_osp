@@ -82,7 +82,7 @@ var group___a_r_c___h_a_l___m_i_s_c___u_d_m_a =
     [ "DMACTRLx_SIZE", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gac2f590aac7504e3960cf3607c973f664", null ],
     [ "DMACTRLx_SIZE_MASK", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#gaf0b85ea535b49f78caedc2c15c1bb743", null ],
     [ "DMACTRLx_SIZE_OFS", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga93a80795d8f15775272ce151207655a8", null ],
-    [ "dma_callback_t", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga67d148aa2be7a7fe322355a6474aa91e", null ],
+    [ "dma_callback_t", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga5f18d1bfb8133a90f49570f6212b9316", null ],
     [ "dma_channel_t", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga0d1854ef6ca92f26e35a4e869f8a157f", null ],
     [ "dma_channel_type_t", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga4ab1406bf196a260bfc24ec6f004eb38", null ],
     [ "dma_chn_prio_t", "group___a_r_c___h_a_l___m_i_s_c___u_d_m_a.html#ga810d6c59a45aa2f16572989a2a13a82b", null ],

@@ -37,7 +37,7 @@ var group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t =
     [ "GPIO_INT_NO_DEBOUNCE", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga593c2f076bdb6d88ca004fed48c7a12f", null ],
     [ "GPIO_INT_NO_DEBOUNCE_ALL", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga2c0e952816e5c67259a674a6010ad41c", null ],
     [ "DEV_GPIO_BIT_ISR", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga620e465b53c10b6718d12fdc29e963b8", null ],
-    [ "DEV_GPIO_HANDLER", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga8b480cf689e0b43585d081d51d1b6ff6", null ],
+    [ "DEV_GPIO_HANDLER", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#gad63a55aa4fd71c10bcb4f7d3dc5ea11f", null ],
     [ "DEV_GPIO_INT_CFG", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga3cd4a71b300b56dcf96373a00fd03e02", null ],
     [ "GPIO_INT_POLARITY", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#ga58ce96f05f5aed30f6101586fdecb750", null ],
     [ "gpio_int_polarity", "group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t.html#gaf7acf5e0cba8e4d0fea85668a51e747f", [
