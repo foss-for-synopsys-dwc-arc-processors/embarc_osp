@@ -231,10 +231,10 @@ typedef enum _dma_chn_prio {
 typedef struct _dma_state {
 #ifdef DMA_MEMORY_HEADER
 	/*!< Memory based DMA descriptors */
-	__attribute__((aligned(256))) volatile dma_desc_t mem_dma_descs[DMA_MEMORY_CHANNEL_NUM];
+	EMBARC_ALIGNED(256) volatile dma_desc_t mem_dma_descs[DMA_MEMORY_CHANNEL_NUM];
 #endif
 #if CORE_DMAC_INTERNAL_VERSION > 1
-	__attribute__((aligned(32))) volatile uint32_t mem_dma_ptrs[DMA_ALL_CHANNEL_NUM];
+	EMBARC_ALIGNED(32) volatile uint32_t mem_dma_ptrs[DMA_ALL_CHANNEL_NUM];
 #endif
 	/*!< All uDMA channel resources */
 	volatile dma_channel_t *dma_chns[DMA_ALL_CHANNEL_NUM];

@@ -57,120 +57,33 @@ static dma_state_t *g_dmac = NULL;
 #define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
 #define _MEMORY_FENCE()				_arc_sync()
 
-#define _ISR(vector, func)			void func(void* ptr)
-
-#define _ENABLE_INT(vector, sensitivity, enable)	{			\
-	int_level_config(vector, sensitivity);		/*IRQ_TRIGGER*/	\
-	if (enable) { int_enable(vector); } else { int_disable(vector); }/*IRQ_ENABLE*/	\
-}
-
 #define _INT_LEVEL_SENS				0
-
-#define _SETVECTI_PRIOR(vector, handler, prior)	{	\
-	int_handler_install(vector, handler);	\
-	int_pri_set(vector, prior);		\
-}
 
 #if DMA_MULTI_IRQ /* Multiple-Internal interrupt case */
 #define DMA_INT_OK_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START)
 #define DMA_INT_ERR_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START+DMA_ALL_CHANNEL_NUM)
-/** Install uDMA interrupt service, set interrupt as level sensitive, and enable interrupt */
-#define DMA_ADD_IRQ_PROC(ofs, priority)		{			\
-	_ENABLE_INT(DMA_INT_OK_VECTOR(ofs),  _INT_LEVEL_SENS, 1);	\
-	_ENABLE_INT(DMA_INT_ERR_VECTOR(ofs), _INT_LEVEL_SENS, 1);	\
-	_SETVECTI_PRIOR(DMA_INT_OK_VECTOR(ofs),  _dmac_interrupt_completed_##ofs, priority);\
-	_SETVECTI_PRIOR(DMA_INT_ERR_VECTOR(ofs), _dmac_interrupt_error_##ofs, priority);\
-}
 #else /* Single-Internal interrupt case */
 #define DMA_INT_OK_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START)
 #define DMA_INT_ERR_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START+1)
-/** Install uDMA interrupt service, set interrupt as level sensitive, and enable interrupt */
-#define DMA_ADD_IRQ_PROC(ofs, priority)		{			\
-	_ENABLE_INT(DMA_INT_OK_VECTOR(ofs),  _INT_LEVEL_SENS, 1);	\
-	_ENABLE_INT(DMA_INT_ERR_VECTOR(ofs), _INT_LEVEL_SENS, 1);	\
-	_SETVECTI_PRIOR(DMA_INT_OK_VECTOR(ofs),  _dmac_interrupt_completed, priority);	\
-	_SETVECTI_PRIOR(DMA_INT_ERR_VECTOR(ofs), _dmac_interrupt_error, priority);	\
-}
 #endif
 /*----- MACRO END */
-
-// **********************************
-// ********   Low level API   ******
-// **********************************
-#if !DMA_MULTI_IRQ
 
 //! Interrupt about DMA transaction completion
 /*! Sets the the "complete" status for completed DMA transaction and
  *! starts next transaction from queue. Reset DMA completion IRQ flags
  */
-_ISR(0, _dmac_interrupt_completed);
+static void _dmac_interrupt_completed(void *ptr);
+static void _dmac_interrupt_completed_channel(uint32_t channel);
 
-#else
-//! Interrupt for DMA transaction completion for multiple interrupts
-/*! Sets the the "complete" status for completed DMA transaction and
- *! starts next transaction from queue. Reset DMA completion IRQ flags
- */
-void _dmac_interrupt_completed_channel(uint32_t channel);
-
-_ISR(0, _dmac_interrupt_completed_0);
-_ISR(1, _dmac_interrupt_completed_1);
-_ISR(2, _dmac_interrupt_completed_2);
-_ISR(3, _dmac_interrupt_completed_3);
-_ISR(4, _dmac_interrupt_completed_4);
-_ISR(5, _dmac_interrupt_completed_5);
-_ISR(6, _dmac_interrupt_completed_6);
-_ISR(7, _dmac_interrupt_completed_7);
-_ISR(8, _dmac_interrupt_completed_8);
-_ISR(9, _dmac_interrupt_completed_9);
-_ISR(10, _dmac_interrupt_completed_10);
-_ISR(11, _dmac_interrupt_completed_11);
-_ISR(12, _dmac_interrupt_completed_12);
-_ISR(13, _dmac_interrupt_completed_13);
-_ISR(14, _dmac_interrupt_completed_14);
-_ISR(15, _dmac_interrupt_completed_15);
-
-#endif
-
-#if !DMA_MULTI_IRQ
 
 //! Interrupt about DMA transaction completion with error
 /*! Sets the the "complete with error" status for completed DMA transaction
  *! Reset the DMA channel.
  */
-_ISR(0, _dmac_interrupt_error);
+static void _dmac_interrupt_error(void *ptr);
+static void _dmac_interrupt_error_channel(uint32_t channel);
 
-#else
-
-//! Interrupt for DMA transaction completion for multiple interrupts
-/*! Sets the the "complete" status for completed DMA transaction and starts
- *! next transaction from queue. Reset DMA completion IRQ flags
- */
-void _dmac_interrupt_error_channel(uint32_t channel);
-
-_ISR(0, _dmac_interrupt_error_0);
-_ISR(1, _dmac_interrupt_error_1);
-_ISR(2, _dmac_interrupt_error_2);
-_ISR(3, _dmac_interrupt_error_3);
-_ISR(4, _dmac_interrupt_error_4);
-_ISR(5, _dmac_interrupt_error_5);
-_ISR(6, _dmac_interrupt_error_6);
-_ISR(7, _dmac_interrupt_error_7);
-_ISR(8, _dmac_interrupt_error_8);
-_ISR(9, _dmac_interrupt_error_9);
-_ISR(10, _dmac_interrupt_error_10);
-_ISR(11, _dmac_interrupt_error_11);
-_ISR(12, _dmac_interrupt_error_12);
-_ISR(13, _dmac_interrupt_error_13);
-_ISR(14, _dmac_interrupt_error_14);
-_ISR(15, _dmac_interrupt_error_15);
-
-#endif
-
-
-// **********************************
-// ********   Low level API   ******
-// **********************************
-static __inline__ void _dmac_enable(void)
+Inline void _dmac_enable(void)
 {
 	_arc_aux_write(AUX_DMACTRL, 1);
 #ifdef DMA_MEMORY_HEADER
@@ -181,115 +94,115 @@ static __inline__ void _dmac_enable(void)
 #endif
 }
 
-static __inline__ void _dmac_disable(void)
+Inline void _dmac_disable(void)
 {
 	_arc_aux_write(AUX_DMACTRL, 0);
 }
 
-static __inline__ void _dmac_enable_channel(uint32_t channel)
+Inline void _dmac_enable_channel(uint32_t channel)
 {
 	uint32_t mask = DMACHANNEL(channel);
 	_arc_aux_write(AUX_DMACENB, mask);
 }
 
-static __inline__ void _dmac_enable_channels(uint32_t mask)
+Inline void _dmac_enable_channels(uint32_t mask)
 {
 	_arc_aux_write(AUX_DMACENB, mask);
 }
 
-static __inline__ void _dmac_enable_all_channels(void)
+Inline void _dmac_enable_all_channels(void)
 {
 	_arc_aux_write(AUX_DMACENB, DMA_ALL_CHANNEL_MASK);
 }
 
-static __inline__ void _dmac_disable_channel(uint32_t channel)
+Inline void _dmac_disable_channel(uint32_t channel)
 {
 	uint32_t mask = DMACHANNEL(channel);
 	_arc_aux_write(AUX_DMACDSB, mask);
 }
 
-static __inline__ void _dmac_disable_channels(uint32_t mask)
+Inline void _dmac_disable_channels(uint32_t mask)
 {
 	_arc_aux_write(AUX_DMACDSB, mask);
 }
 
-static __inline__ void _dmac_disable_all_channels(void)
+Inline void _dmac_disable_all_channels(void)
 {
 	_arc_aux_write(AUX_DMACDSB, DMA_ALL_CHANNEL_MASK);
 }
 
-static __inline__ void _dmac_reset_channel(uint32_t channel)
+Inline void _dmac_reset_channel(uint32_t channel)
 {
 	uint32_t mask = DMACHANNEL(channel);
 	_arc_aux_write(AUX_DMACRST, mask);
 }
 
-static __inline__ void _dmac_reset_channels(uint32_t mask)
+Inline void _dmac_reset_channels(uint32_t mask)
 {
 	_arc_aux_write(AUX_DMACRST, mask);
 }
 
-static __inline__ void _dmac_reset_all_channels(void)
+Inline void _dmac_reset_all_channels(void)
 {
 	_arc_aux_write(AUX_DMACRST, DMA_ALL_CHANNEL_MASK);
 }
 
-static __inline__ uint32_t _dmac_reset_status(void)
+Inline uint32_t _dmac_reset_status(void)
 {
 	return _arc_aux_read(AUX_DMACRST);
 }
 
-static __inline__ void _dmac_set_hp_channels(uint32_t mask)
+Inline void _dmac_set_hp_channels(uint32_t mask)
 {
 	_arc_aux_write(AUX_DMACHPRI, mask);
 }
 
-static __inline__ void _dmac_set_np_channels(uint32_t mask)
+Inline void _dmac_set_np_channels(uint32_t mask)
 {
 	_arc_aux_write(AUX_DMACNPRI, mask);
 }
 
-static __inline__ void _dmac_start_trigger(uint32_t channel)
+Inline void _dmac_start_trigger(uint32_t channel)
 {
 	_arc_aux_write(AUX_DMACREQ, DMACHANNEL(channel));
 }
 
-static __inline__ void _dmac_start_trigger_mask(uint32_t mask)
+Inline void _dmac_start_trigger_mask(uint32_t mask)
 {
 	_arc_aux_write(AUX_DMACREQ, mask);
 }
 
-static __inline__ void _dmac_irq_clear(uint32_t channel)
+Inline void _dmac_irq_clear(uint32_t channel)
 {
 	_arc_aux_write(AUX_DMACIRQ, DMACHANNEL(channel));
 }
 
-static __inline__ void _dmac_irq_clear_all(void)
+Inline void _dmac_irq_clear_all(void)
 {
 	_arc_aux_write(AUX_DMACIRQ, DMA_ALL_CHANNEL_MASK);
 }
 
-static __inline__ uint32_t _dmac_irq_status(void)
+Inline uint32_t _dmac_irq_status(void)
 {
 	return _arc_aux_read(AUX_DMACIRQ);
 }
 
-static __inline__ uint32_t _dmac_channel_status(void)
+Inline uint32_t _dmac_channel_status(void)
 {
 	return _arc_aux_read(AUX_DMACSTAT0);
 }
 
-static __inline__ uint32_t _dmac_complete_status(void)
+Inline uint32_t _dmac_complete_status(void)
 {
 	return _arc_aux_read(AUX_DMACSTAT1);
 }
 
-static __inline__ void _dmac_clear_error(uint32_t channel)
+Inline void _dmac_clear_error(uint32_t channel)
 {
 	_arc_aux_write(AUX_DMACSTAT1, DMACHANNEL(channel) << 16);
 }
 
-static __inline__ void _dmac_clear_all_error(void)
+Inline void _dmac_clear_all_error(void)
 {
 	_arc_aux_write(AUX_DMACSTAT1, 0xFFFF0000);
 }
@@ -495,9 +408,7 @@ static void _dmac_fill_descriptor(uint32_t channel, dma_desc_t * desc)
 	}
 }
 
-// **********************************
-// ********   High level API   ******
-// **********************************
+
 int32_t dmac_init(dma_state_t * state)
 {
 #if UDMA_CHECK_ERRORS
@@ -524,62 +435,166 @@ int32_t dmac_init(dma_state_t * state)
 #endif
 	_dmac_enable();
 
-#if !DMA_MULTI_IRQ
-	DMA_ADD_IRQ_PROC(0, DMA_IRQ_PRIO);
-#else
 
-#if (DMA_ALL_CHANNEL_NUM > 15)
-	DMA_ADD_IRQ_PROC(15, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 14)
-	DMA_ADD_IRQ_PROC(14, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 13)
-	DMA_ADD_IRQ_PROC(13, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 12)
-	DMA_ADD_IRQ_PROC(12, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 11)
-	DMA_ADD_IRQ_PROC(11, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 10)
-	DMA_ADD_IRQ_PROC(10, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 9)
-	DMA_ADD_IRQ_PROC(9, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 8)
-	DMA_ADD_IRQ_PROC(8, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 7)
-	DMA_ADD_IRQ_PROC(7, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 6)
-	DMA_ADD_IRQ_PROC(6, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 5)
-	DMA_ADD_IRQ_PROC(5, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 4)
-	DMA_ADD_IRQ_PROC(4, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 3)
-	DMA_ADD_IRQ_PROC(3, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 2)
-	DMA_ADD_IRQ_PROC(2, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 1)
-	DMA_ADD_IRQ_PROC(1, DMA_IRQ_PRIO);
-#endif
-#if (DMA_ALL_CHANNEL_NUM > 0)
-	DMA_ADD_IRQ_PROC(0, DMA_IRQ_PRIO);
-#endif
+#if !DMA_MULTI_IRQ
+	int_level_config(DMA_INT_OK_VECTOR(0), _INT_LEVEL_SENS);
+	int_enable(DMA_INT_OK_VECTOR(0));
+	int_handler_install(DMA_INT_OK_VECTOR(0), _dmac_interrupt_completed);
+	int_pri_set(DMA_INT_OK_VECTOR(0), DMA_IRQ_PRIO);
+
+	int_level_config(DMA_INT_ERR_VECTOR(0), _INT_LEVEL_SENS);
+	int_enable(DMA_INT_ERR_VECTOR(0));
+	int_handler_install(DMA_INT_ERR_VECTOR(0), _dmac_interrupt_error);
+	int_pri_set(DMA_INT_ERR_VECTOR(0), DMA_IRQ_PRIO);
+#else
+	for (int32_t i = 0; i < DMA_ALL_CHANNEL_NUM; i++) {
+		int_level_config(DMA_INT_OK_VECTOR(i), _INT_LEVEL_SENS);
+		int_enable(DMA_INT_OK_VECTOR(i));
+		int_handler_install(DMA_INT_OK_VECTOR(i), _dmac_interrupt_completed);
+		int_pri_set(DMA_INT_OK_VECTOR(i), DMA_IRQ_PRIO);
+
+		int_level_config(DMA_INT_ERR_VECTOR(i), _INT_LEVEL_SENS);
+		int_enable(DMA_INT_ERR_VECTOR(i));
+		int_handler_install(DMA_INT_ERR_VECTOR(i), _dmac_interrupt_error);
+		int_pri_set(DMA_INT_ERR_VECTOR(i), DMA_IRQ_PRIO);
+	}
 
 #endif
 	return 0;
 }
+
+static void _dmac_process_desc(dma_desc_t * desc, uint32_t int_enable)
+{
+	do {
+		if (_arc_rarely(desc->DMALLPx)) {
+			/*
+			 * Force it to be auto-linked transfer when it is not
+			 * DMA_MANUAL_LINKED_TRANSFER
+			 */
+			if (_arc_usually(((desc->DMACTRLx & DMACTRLx_OP_MASK) >> DMACTRLx_OP_OFS) !=
+			                 DMA_MANUAL_LINKED_TRANSFER)) {
+				desc->DMACTRLx &= ~DMACTRLx_OP_MASK;
+				desc->DMACTRLx |= DMACTRLx_OP(DMA_AUTO_LINKED_TRANSFER);
+			}
+		} else {
+			desc->DMACTRLx &= ~DMACTRLx_OP_MASK;
+			desc->DMACTRLx |= DMACTRLx_OP(DMA_SINGLE_TRANSFER);
+			/* Only forcely change the interrupt bit of the last dma descriptor */
+			desc->DMACTRLx &= ~DMACTRLx_INT_MASK;
+			desc->DMACTRLx |= DMACTRLx_INT(int_enable);
+		}
+		/*
+		 * TODO: Make sure all linked DMA channel descriptors
+		 * stored into memory, not just in data cache
+		 */
+		_MEMORY_FENCE();
+		_DCACHE_FLUSH_MLINES((void *)desc, sizeof(dma_desc_t));
+		desc = (dma_desc_t *) desc->DMALLPx;
+	} while (desc != 0);
+}
+
+#if UDMA_CHECK_ERRORS
+static int32_t dmac_valid_channel(int32_t channel, dma_desc_t * desc)
+{
+#if CORE_DMAC_INTERNAL_VERSION == 1
+	if (DMA_CHECK_REGISTER(channel)) {
+		if (_arc_rarely(desc->DMALLPx)) {
+			/** For AUX Mapped registers, Linked transfer is not supported */
+			return -1;
+		}
+	}
+#endif
+	return 0;
+}
+#endif
+
+
+static void _dmac_interrupt_completed_channel(uint32_t channel)
+{
+	_dmac_irq_clear(channel);
+	_dmac_disable_channel(channel);
+
+	if (channel >= DMA_ALL_CHANNEL_NUM) return;
+
+	dma_channel_t *dma_chn = (dma_channel_t *) g_dmac->dma_chns[channel];
+	dma_chn->status = DMA_IDLE;
+	if (_arc_usually(dma_chn->callback)) {
+		dma_chn->callback((void *) dma_chn);
+	}
+}
+
+static void _dmac_interrupt_error_channel(uint32_t channel)
+{
+	_dmac_irq_clear(channel);
+	_dmac_clear_error(channel);
+	_dmac_disable_channel(channel);
+
+	if (channel >= DMA_ALL_CHANNEL_NUM) return;
+
+	dma_channel_t *dma_chn = (dma_channel_t *) g_dmac->dma_chns[channel];
+	dma_chn->status = DMA_ERROR;
+	if (_arc_usually(dma_chn->callback)) {
+		dma_chn->callback((void *) dma_chn);
+	}
+}
+
+static void _dma_claim_channel(int32_t channel, dma_channel_t * dma_chn,
+				dma_request_source_t source)
+{
+	g_dmac->dma_chns[channel] = dma_chn;
+	dma_chn->source = source;
+	dma_chn->callback = NULL;
+	dma_chn->status = DMA_IDLE;
+	dma_chn->channel = channel;
+}
+
+#if !DMA_MULTI_IRQ
+static void _dmac_interrupt_completed(void *ptr)
+{
+	// In complete interrupt, the DMACIRQ and DMACSTAT1 complete bit are both set
+	uint32_t status = _dmac_complete_status();
+
+	for (int channel = 0; channel < DMA_ALL_CHANNEL_NUM;
+	                ++channel, status >>= 1) {
+		if (_arc_rarely(status & 0x1)) {
+			_dmac_interrupt_completed_channel(channel);
+		}
+	}
+}
+
+static void _dmac_interrupt_error(void *ptr)
+{
+	// In error interrupt, the DMACIRQ is not set, only the DMACSTAT1 error bit is set
+	uint32_t status = _dmac_complete_status() >> 16;
+
+	for (int channel = 0; channel < DMA_ALL_CHANNEL_NUM;
+	                ++channel, status >>= 1) {
+		if (_arc_rarely(status & 0x1)) {
+			_dmac_interrupt_error_channel(channel);
+		}
+	}
+}
+#else
+static void _dmac_interrupt_completed(void *ptr)
+{
+	uint32_t channel;
+
+	channel = _arc_aux_read(AUX_IRQ_CAUSE) - DMA_IRQ_NUM_START;
+
+	_dmac_interrupt_completed_channel(channel);
+}
+
+static void _dmac_interrupt_error(void *ptr)
+{
+	uint32_t channel;
+
+	channel = _arc_aux_read(AUX_IRQ_CAUSE) - DMA_IRQ_NUM_START -
+		DMA_ALL_CHANNEL_NUM;
+
+	_dmac_interrupt_error_channel(channel);
+}
+
+#endif
 
 void dmac_close(void)
 {
@@ -598,7 +613,7 @@ void dmac_close(void)
 }
 
 int32_t dmac_config_desc(dma_desc_t * desc, void *src, void *dst, uint32_t size,
-                         dma_ctrl_t * ctrl)
+			dma_ctrl_t * ctrl)
 {
 #if UDMA_CHECK_ERRORS
 	if (_arc_rarely(desc == NULL)) {
@@ -646,18 +661,8 @@ int32_t dmac_config_channel(dma_channel_t * dma_chn, dma_desc_t * desc)
 	return 0;
 }
 
-static void dma_claim_channel(int32_t channel, dma_channel_t * dma_chn,
-                              dma_request_source_t source)
-{
-	g_dmac->dma_chns[channel] = dma_chn;
-	dma_chn->source = source;
-	dma_chn->callback = NULL;
-	dma_chn->status = DMA_IDLE;
-	dma_chn->channel = channel;
-}
-
 int32_t dmac_reserve_channel(int32_t channel, dma_channel_t * dma_chn,
-                             dma_request_source_t source)
+				dma_request_source_t source)
 {
 	if (_arc_rarely(dma_chn == NULL)) {
 		return DMA_CHN_INVALID;
@@ -668,7 +673,7 @@ int32_t dmac_reserve_channel(int32_t channel, dma_channel_t * dma_chn,
 		for (int32_t i = 0; i < DMA_ALL_CHANNEL_NUM; i++) {
 			if (_arc_usually(!g_dmac->dma_chns[i])) {
 				g_dmac->dma_chns[i] = dma_chn;
-				dma_claim_channel(i, dma_chn, source);
+				_dma_claim_channel(i, dma_chn, source);
 				DMAC_UNLOCK();
 				return i;
 			}
@@ -682,7 +687,7 @@ int32_t dmac_reserve_channel(int32_t channel, dma_channel_t * dma_chn,
 
 	DMAC_LOCK();
 	if (_arc_usually(!g_dmac->dma_chns[channel])) {
-		dma_claim_channel(channel, dma_chn, source);
+		_dma_claim_channel(channel, dma_chn, source);
 		DMAC_UNLOCK();
 		return channel;
 	}
@@ -691,53 +696,8 @@ int32_t dmac_reserve_channel(int32_t channel, dma_channel_t * dma_chn,
 	return DMA_CHN_INVALID;
 }
 
-static void dmac_process_desc(dma_desc_t * desc, uint32_t int_enable)
-{
-	do {
-		if (_arc_rarely(desc->DMALLPx)) {
-			/*
-			 * Force it to be auto-linked transfer when it is not
-			 * DMA_MANUAL_LINKED_TRANSFER
-			 */
-			if (_arc_usually(((desc->DMACTRLx & DMACTRLx_OP_MASK) >> DMACTRLx_OP_OFS) !=
-			                 DMA_MANUAL_LINKED_TRANSFER)) {
-				desc->DMACTRLx &= ~DMACTRLx_OP_MASK;
-				desc->DMACTRLx |= DMACTRLx_OP(DMA_AUTO_LINKED_TRANSFER);
-			}
-		} else {
-			desc->DMACTRLx &= ~DMACTRLx_OP_MASK;
-			desc->DMACTRLx |= DMACTRLx_OP(DMA_SINGLE_TRANSFER);
-			/* Only forcely change the interrupt bit of the last dma descriptor */
-			desc->DMACTRLx &= ~DMACTRLx_INT_MASK;
-			desc->DMACTRLx |= DMACTRLx_INT(int_enable);
-		}
-		/*
-		 * TODO: Make sure all linked DMA channel descriptors
-		 * stored into memory, not just in data cache
-		 */
-		_MEMORY_FENCE();
-		_DCACHE_FLUSH_MLINES((void *)desc, sizeof(dma_desc_t));
-		desc = (dma_desc_t *) desc->DMALLPx;
-	} while (desc != 0);
-}
-
-#if UDMA_CHECK_ERRORS
-static int32_t dmac_valid_channel(int32_t channel, dma_desc_t * desc)
-{
-#if CORE_DMAC_INTERNAL_VERSION == 1
-	if (DMA_CHECK_REGISTER(channel)) {
-		if (_arc_rarely(desc->DMALLPx)) {
-			/** For AUX Mapped registers, Linked transfer is not supported */
-			return -1;
-		}
-	}
-#endif
-	return 0;
-}
-#endif
-
 int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
-                           uint32_t priority)
+			uint32_t priority)
 {
 	int32_t channel;
 #if UDMA_CHECK_ERRORS
@@ -782,7 +742,7 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 		_dmac_set_np_channels(DMACHANNEL(channel));
 	}
 
-	dmac_process_desc(dma_chn->desc, dma_chn->int_enable);
+	_dmac_process_desc(dma_chn->desc, dma_chn->int_enable);
 	_dmac_fill_descriptor(channel, dma_chn->desc);
 	_dmac_clear_error(channel);
 #if CORE_DMAC_INTERNAL_VERSION > 1
@@ -929,220 +889,3 @@ int32_t dmac_check_channel(dma_channel_t * dma_chn)
 	}
 	return dma_chn->status;
 }
-
-void _dmac_interrupt_completed_channel(uint32_t channel)
-{
-	_dmac_irq_clear(channel);
-	_dmac_disable_channel(channel);
-
-	if (channel >= DMA_ALL_CHANNEL_NUM) return;
-
-	dma_channel_t *dma_chn = (dma_channel_t *) g_dmac->dma_chns[channel];
-	dma_chn->status = DMA_IDLE;
-	if (_arc_usually(dma_chn->callback)) {
-		dma_chn->callback((void *) dma_chn);
-	}
-}
-
-void _dmac_interrupt_error_channel(uint32_t channel)
-{
-	_dmac_irq_clear(channel);
-	_dmac_clear_error(channel);
-	_dmac_disable_channel(channel);
-
-	if (channel >= DMA_ALL_CHANNEL_NUM) return;
-
-	dma_channel_t *dma_chn = (dma_channel_t *) g_dmac->dma_chns[channel];
-	dma_chn->status = DMA_ERROR;
-	if (_arc_usually(dma_chn->callback)) {
-		dma_chn->callback((void *) dma_chn);
-	}
-}
-
-#if !DMA_MULTI_IRQ
-_ISR(0, _dmac_interrupt_completed)
-{
-	// In complete interrupt, the DMACIRQ and DMACSTAT1 complete bit are both set
-	uint32_t status = _dmac_complete_status();
-
-	for (int channel = 0; channel < DMA_ALL_CHANNEL_NUM;
-	                ++channel, status >>= 1) {
-		if (_arc_rarely(status & 0x1)) {
-			_dmac_interrupt_completed_channel(channel);
-		}
-	}
-}
-
-_ISR(0, _dmac_interrupt_error)
-{
-	// In error interrupt, the DMACIRQ is not set, only the DMACSTAT1 error bit is set
-	uint32_t status = _dmac_complete_status() >> 16;
-
-	for (int channel = 0; channel < DMA_ALL_CHANNEL_NUM;
-	                ++channel, status >>= 1) {
-		if (_arc_rarely(status & 0x1)) {
-			_dmac_interrupt_error_channel(channel);
-		}
-	}
-}
-#else
-_ISR(0, _dmac_interrupt_completed_0)
-{
-	_dmac_interrupt_completed_channel(0x0);
-};
-
-_ISR(1, _dmac_interrupt_completed_1)
-{
-	_dmac_interrupt_completed_channel(0x1);
-};
-
-_ISR(2, _dmac_interrupt_completed_2)
-{
-	_dmac_interrupt_completed_channel(0x2);
-};
-
-_ISR(3, _dmac_interrupt_completed_3)
-{
-	_dmac_interrupt_completed_channel(0x3);
-};
-
-_ISR(4, _dmac_interrupt_completed_4)
-{
-	_dmac_interrupt_completed_channel(0x4);
-};
-
-_ISR(5, _dmac_interrupt_completed_5)
-{
-	_dmac_interrupt_completed_channel(0x5);
-};
-
-_ISR(6, _dmac_interrupt_completed_6)
-{
-	_dmac_interrupt_completed_channel(0x6);
-};
-
-_ISR(7, _dmac_interrupt_completed_7)
-{
-	_dmac_interrupt_completed_channel(0x7);
-};
-
-_ISR(8, _dmac_interrupt_completed_8)
-{
-	_dmac_interrupt_completed_channel(0x8);
-};
-
-_ISR(9, _dmac_interrupt_completed_9)
-{
-	_dmac_interrupt_completed_channel(0x9);
-};
-
-_ISR(10, _dmac_interrupt_completed_10)
-{
-	_dmac_interrupt_completed_channel(0xA);
-};
-
-_ISR(11, _dmac_interrupt_completed_11)
-{
-	_dmac_interrupt_completed_channel(0xB);
-};
-
-_ISR(12, _dmac_interrupt_completed_12)
-{
-	_dmac_interrupt_completed_channel(0xC);
-};
-
-_ISR(13, _dmac_interrupt_completed_13)
-{
-	_dmac_interrupt_completed_channel(0xD);
-};
-
-_ISR(14, _dmac_interrupt_completed_14)
-{
-	_dmac_interrupt_completed_channel(0xE);
-};
-
-_ISR(15, _dmac_interrupt_completed_15)
-{
-	_dmac_interrupt_completed_channel(0xF);
-};
-
-_ISR(0, _dmac_interrupt_error_0)
-{
-	_dmac_interrupt_error_channel(0x1);
-};
-
-_ISR(1, _dmac_interrupt_error_1)
-{
-	_dmac_interrupt_error_channel(0x1);
-};
-
-_ISR(2, _dmac_interrupt_error_2)
-{
-	_dmac_interrupt_error_channel(0x2);
-};
-
-_ISR(3, _dmac_interrupt_error_3)
-{
-	_dmac_interrupt_error_channel(0x3);
-};
-
-_ISR(4, _dmac_interrupt_error_4)
-{
-	_dmac_interrupt_error_channel(0x4);
-};
-
-_ISR(5, _dmac_interrupt_error_5)
-{
-	_dmac_interrupt_error_channel(0x5);
-};
-
-_ISR(6, _dmac_interrupt_error_6)
-{
-	_dmac_interrupt_error_channel(0x6);
-};
-
-_ISR(7, _dmac_interrupt_error_7)
-{
-	_dmac_interrupt_error_channel(0x7);
-};
-
-_ISR(8, _dmac_interrupt_error_8)
-{
-	_dmac_interrupt_error_channel(0x8);
-};
-
-_ISR(9, _dmac_interrupt_error_9)
-{
-	_dmac_interrupt_error_channel(0x9);
-};
-
-_ISR(10, _dmac_interrupt_error_10)
-{
-	_dmac_interrupt_error_channel(0xA);
-};
-
-_ISR(11, _dmac_interrupt_error_11)
-{
-	_dmac_interrupt_error_channel(0xB);
-};
-
-_ISR(12, _dmac_interrupt_error_12)
-{
-	_dmac_interrupt_error_channel(0xC);
-};
-
-_ISR(13, _dmac_interrupt_error_13)
-{
-	_dmac_interrupt_error_channel(0xD);
-};
-
-_ISR(14, _dmac_interrupt_error_14)
-{
-	_dmac_interrupt_error_channel(0xE);
-};
-
-_ISR(15, _dmac_interrupt_error_15)
-{
-	_dmac_interrupt_error_channel(0xF);
-};
-#endif
