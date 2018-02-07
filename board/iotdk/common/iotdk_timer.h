@@ -26,55 +26,38 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2017-07-31
+ * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 /**
- *
  * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
+ * \ingroup	BOARD_IOTDK_COMMON_TIMER
+ * \brief	iotdk timer functions header
  */
 
 /**
- * \addtogroup BOARD_COMMON
+ * \addtogroup BOARD_IOTDK_COMMON_TIMER
  * @{
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#ifndef _IOTDK_TIMER_
+#define _IOTDK_TIMER_
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+#include "embARC_toolchain.h"
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+extern volatile uint64_t gl_iotdk_sys_hz_cnt;
+extern volatile uint32_t gl_iotdk_ms_cnt;
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+extern void iotdk_timer_init(void);
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+#ifdef __cplusplus
+}
+#endif
 
-#endif /* _EMBARC_BOARD_H_ */
+#endif /* _IOTDK_TIMER_ */
 
-/** @} end of group BOARD_COMMON */
+/** @} end of group BOARD_IOTDK_COMMON_TIMER */

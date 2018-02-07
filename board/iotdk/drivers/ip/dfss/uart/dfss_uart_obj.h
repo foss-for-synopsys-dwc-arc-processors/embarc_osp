@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2016, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -26,55 +26,74 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2017-08-25
+ * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 /**
- *
  * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
+ * \ingroup	BOARD_IOTDK_DRV_DFSS_UART
+ * \brief	header file of DFSS uart object instantiation on emsk
  */
 
 /**
- * \addtogroup BOARD_COMMON
+ * \addtogroup	BOARD_IOTDK_DRV_DFSS_UART
  * @{
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
+#ifndef _DFSS_UART_H_
+#define _DFSS_UART_H_
+
+#include "dev_uart.h"
+
+#ifdef IO_UART0_PRESENT
+#define USE_DFSS_UART_0				1	/*!< enable use DFSS UART 0 */
+#else
+#define USE_DFSS_UART_0				0	/*!< disable use DFSS UART 0 */
+#endif
+
+#ifdef IO_UART1_PRESENT
+#define USE_DFSS_UART_1				1	/*!< enable use DFSS UART 1 */
+#else
+#define USE_DFSS_UART_1				0	/*!< disable use DFSS UART 1 */
+#endif
+
+#ifdef IO_UART2_PRESENT
+#define USE_DFSS_UART_2				1	/*!< enable use DFSS UART 2 */
+#else
+#define USE_DFSS_UART_2				0	/*!< disable use DFSS UART 2 */
+#endif
+
+#ifdef IO_UART3_PRESENT
+#define USE_DFSS_UART_3				1	/*!< enable use DFSS UART 3 */
+#else
+#define USE_DFSS_UART_3				0	/*!< disable use DFSS UART 3 */
+#endif
+
 /**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
+ * \name	DFSS UART Number
+ * @{
  */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#define DFSS_UART_NUM	(4)	/*!< DFSS UART valid number */
+/** @} end of name */
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+/**
+ * \name	DFSS UART Object ID Macros
+ * @{
+ */
+#define DFSS_UART_0_ID		0	/*!< UART 0 ID macro */
+#define DFSS_UART_1_ID		1	/*!< UART 1 ID macro */
+#define DFSS_UART_2_ID		2	/*!< UART 2 ID macro */
+#define DFSS_UART_3_ID		3	/*!< UART 3 ID macro */
+/** @} end of name */
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+extern void dfss_uart_all_install(void);
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifdef __cplusplus
+}
+#endif
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
-
-#endif /* _EMBARC_BOARD_H_ */
-
-/** @} end of group BOARD_COMMON */
+#endif /* _DFSS_UARTH_ */

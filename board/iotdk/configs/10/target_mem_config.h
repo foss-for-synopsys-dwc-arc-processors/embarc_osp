@@ -26,55 +26,93 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2016-07-14
+ * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
- */
+#ifndef _TARGET_MEM_CONFIG_H_
+#define _TARGET_MEM_CONFIG_H_
+
+#include "arc_feature_config.h"
+
+#define BOOT_SPI_FLASH_SIZE		0x200000
+#define BOOT_SPI_FLASH_BASE		0x10000000
+
+#define ONCHIP_FLASH_SIZE		0x40000
+#define ONCHIP_FLASH_BASE		0x0
+
+
+#ifdef USE_APPL_MEM_CONFIG
+#include "appl_mem_config.h"
+#endif
 
 /**
- * \addtogroup BOARD_COMMON
- * @{
+ * The unit of XXXX_SIZE is Byte
+ * For REGION_ROM, ICCM, EXT_ROM and EXT_RAM are available
+ * For REGION_RAM, DCCM and EXT_RAM are available
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#ifdef ARC_FEATURE_ICCM_PRESENT
+#ifndef ICCM_SIZE
+#define ICCM_SIZE	ARC_FEATURE_ICCM_SIZE
+#endif
+#ifndef ICCM_START
+#define ICCM_START	ARC_FEATURE_ICCM_BASE
+#endif
+#else
+#ifndef ICCM_SIZE
+#define ICCM_SIZE	0x40000
+#endif
+#ifndef ICCM_START
+#define ICCM_START	0x20000000
+#endif
+#endif
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+#ifdef ARC_FEATURE_DCCM_PRESENT
+#ifndef DCCM_SIZE
+#define DCCM_SIZE	ARC_FEATURE_DCCM_SIZE
+#endif
+#ifndef DCCM_START
+#define DCCM_START	ARC_FEATURE_DCCM_BASE
+#endif
+#else
+#ifndef DCCM_SIZE
+#define DCCM_SIZE	0x20000
+#endif
+#ifndef DCCM_START
+#define DCCM_START	0x80000000
+#endif
+#endif
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+#ifndef EXT_RAM_START
+#define EXT_RAM_START	0x30000000
+#endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+#ifndef EXT_RAM_SIZE
+#define EXT_RAM_SIZE	0x20000
+#endif
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifndef EXT_ROM_START
+#define EXT_ROM_START	ONCHIP_FLASH_BASE
+#endif
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+#ifndef EXT_ROM_SIZE
+#define EXT_ROM_SIZE	ONCHIP_FLASH_SIZE
+#endif
 
-#endif /* _EMBARC_BOARD_H_ */
+#ifndef REGION_ROM
+#ifdef ARC_FEATURE_ICACHE_PRESENT
+#define REGION_ROM	EXT_RAM
+#else
+#define REGION_ROM	ICCM
+#endif
+#endif
 
-/** @} end of group BOARD_COMMON */
+#ifndef REGION_RAM
+#ifdef ARC_FEATURE_DCACHE_PRESENT
+#define REGION_RAM	EXT_RAM
+#else
+#define REGION_RAM	DCCM
+#endif
+#endif
+
+#endif /* _TARGET_MEM_CONFIG_H_ */

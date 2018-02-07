@@ -26,55 +26,73 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2017-09-04
+ * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 /**
- *
  * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
+ * \ingroup	BOARD_IOTDK_DRV_DFSS_IIC_OBJ
+ * \brief	header file of dfss iic object instantiation
  */
 
 /**
- * \addtogroup BOARD_COMMON
+ * \addtogroup	BOARD_IOTDK_DRV_DFSS_IIC_OBJ
  * @{
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
+#ifndef _DFSS_IIC_OBJ_H_
+#define _DFSS_IIC_OBJ_H_
+
+#include "io_config.h"
+
 /**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
+ * \name	DFSS IIC Object Number
+ * @{
  */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#define DFSS_IIC_NUM		(3)	/*!< DFSS IIC valid number */
+/** @} end of name */
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+/**
+ * \name	DFSS IIC Object ID Macros
+ * @{
+ */
+#define DFSS_IIC_0_ID		0	/*!< IIC 0 ID macro */
+#define DFSS_IIC_1_ID		1	/*!< IIC 1 ID macro */
+/** @} end of name */
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+/**
+ * \name	DFSS IIC Object Control Macros, only IIC master in Huangshan
+ * @{
+ */
+#ifdef IO_I2C_MST0_PRESENT
+#define USE_DFSS_IIC_0		1	/*!< enable use DFSS IIC 0 */
+#else
+#define USE_DFSS_IIC_0		0	/*!< enable use DFSS IIC 0 */
+#endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+#ifdef IO_I2C_MST1_PRESENT
+#define USE_DFSS_IIC_1		1	/*!< enable use DFSS IIC 1 */
+#else
+#define USE_DFSS_IIC_1		0	/*!< enable use DFSS IIC 1 */
+#endif
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifdef IO_I2C_MST2_PRESENT
+#define USE_DFSS_IIC_2		1	/*!< enable use DFSS IIC 2 */
+#else
+#define USE_DFSS_IIC_2		0	/*!< enable use DFSS IIC 2 */
+#endif
+/** @} end of name */
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif /* _EMBARC_BOARD_H_ */
+extern void dfss_iic_all_install(void);
 
-/** @} end of group BOARD_COMMON */
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _DFSS_IIC_OBJ_H_ */
+
+/** @} end of group BOARD_IOTDK_IIC_OBJ */
