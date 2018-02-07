@@ -32,6 +32,9 @@
 
 #include "embARC_toolchain.h"
 
+#define IO_PINMUX_ENABLE 	1
+#define IO_PINMUX_DISABLE 	0
+
 typedef enum arduino_pin {
 	ARDUINO_PIN_0 = 0,
 	ARDUINO_PIN_1,
@@ -52,7 +55,8 @@ typedef enum arduino_pin {
 	ARDUINO_PIN_AD2,
 	ARDUINO_PIN_AD3,
 	ARDUINO_PIN_AD4,
-	ARDUINO_PIN_AD5
+	ARDUINO_PIN_AD5,
+	ARDUINO_PIN_NONE
 } ARDUINO_PIN;
 
 typedef enum pmod_port {
@@ -67,7 +71,8 @@ typedef enum pmod_port {
 	PMOD_B,
 	PMOD_C,
 	PMOD_D,
-	PMOD_E
+	PMOD_E,
+	PMOD_NUM_NONE,
 } PMOD_PORT;
 
 typedef enum pmod_type {
@@ -75,16 +80,27 @@ typedef enum pmod_type {
 	PMOD_UART,
 	PMOD_SPI,
 	PMOD_I2C,
-	PMOD_PWM_PIN2,
-	PMOD_PWM_PIN1,
-	PMOD_PWM_PIN12
+	PMOD_PWM_MODE1,
+	PMOD_PWM_MODE2,
+	PMOD_PWM_MODE3,
+	PMOD_NONE
 } PMOD_TYPE;
+
+typedef enum arduino_type {
+	ARDUINO_GPIO = 0,
+	ARDUINO_UART,
+	ARDUINO_SPI,
+	ARDUINO_I2C,
+	ARDUINO_PWM,
+	ARDUINO_NONE
+} ARDUINO_TYPE;
 
 typedef enum pinmux_type {
 	PINMUX_TYPE_DEFAULT = 0,
 	PINMUX_TYPE_ARDUINO,
 	PINMUX_TYPE_PMOD,
-	PINMUX_TYPE_MIKRO
+	PINMUX_TYPE_MIKRO,
+	PINMUX_TYPE_NONE
 } PINMUX_TYPE;
 
 
@@ -92,16 +108,14 @@ typedef enum pinmux_type {
 extern "C" {
 #endif
 
-extern int32_t io_arduino_config_gpio(uint32_t num, uint32_t config);
+extern void io_mux_init(void);
+extern int32_t io_pmod_config(uint32_t pmod, uint32_t type, uint32_t config);
+extern int32_t io_mikro_config(uint32_t config);
+extern int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config);
+
 extern int32_t io_arduino_config_spi(uint32_t config);
 extern int32_t io_arduino_config_uart(uint32_t config);
 extern int32_t io_arduino_config_i2c(uint32_t config);
-extern int32_t io_arduino_config_pwm(uint32_t num, uint32_t config);
-extern int32_t io_arduino_config_ad(uint32_t num, uint32_t config);
-extern int32_t io_pmod_config(uint32_t pmod, uint32_t type, uint32_t config);
-extern int32_t io_mikro_config(uint32_t config);
-extern void io_mux_init(void);
-
 
 #ifdef __cplusplus
 }

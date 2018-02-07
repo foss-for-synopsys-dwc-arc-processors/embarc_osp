@@ -105,19 +105,7 @@ int32_t io_arduino_config_i2c(uint32_t config)
 	return E_NOSPT;
 }
 
-int32_t io_arduino_config_ad(uint32_t num, uint32_t config)
-{
-	/* no arduino interface */
-	return E_NOSPT;
-}
-
-int32_t io_arduino_config_pwm(uint32_t num, uint32_t config)
-{
-	/* no arduino interface */
-	return E_NOSPT;
-}
-
-int32_t io_arduino_config_gpio(uint32_t num, uint32_t config)
+int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
 {
 	/* no arduino interface */
 	return E_NOSPT;
@@ -213,4 +201,3 @@ void io_mux_init(void)
 }
 
 /** @} end of group BOARD_EMSK_DRV_MUX */
-
