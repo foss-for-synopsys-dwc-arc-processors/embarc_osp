@@ -43,14 +43,13 @@
 #ifndef _PMI2S_H_
 #define _PMI2S_H_
 
-#include "dev_i2s.h"
+// #include "dev_i2s.h"
 #include "dw_i2s.h"
 #include "embARC_error.h"
-#include "stdio.h"
 
 #define MCLK_FREQUENCY_KHZ		24576	/*!< The frequency of main clock and the unit is khz>*/
-#define I2S_MODE_ISR			1
-#define I2S_MODE_POL			0
+#define PMI2S_MODE_ISR			1
+#define PMI2S_MODE_POL			0
 
 /**
  * \brief	I2S init data definition
@@ -65,7 +64,7 @@ typedef struct cs_i2s_init
 	uint32_t ope_device;	/*!< Set the device as trans mode or receive mode */
 	uint32_t mode;			/*!< Set the i2s as master or slave */
 	uint32_t num_sclk;		/*!< the number of sclk cycles in half ws cycle which must be larger than data_format.16/24/32 */
-}CS_I2S_INIT;
+}PMI2S_INIT_STR;
 
 /**
  * \defgroup	SAMPLE_FREQUENCY_E	I2S Audio Sampling Rate
@@ -73,11 +72,11 @@ typedef struct cs_i2s_init
  */
 typedef enum sample_frequency_e
 {
-	I2S_SAMPLE_FREQ_192 = 192,
-	I2S_SAMPLE_FREQ_96 = 96,
-	I2S_SAMPLE_FREQ_48 = 48,
-	I2S_SAMPLE_FREQ_32 = 32,
-	I2S_SAMPLE_FREQ_16 = 16
+	PMI2S_SAMPLE_FREQ_192 = 192,
+	PMI2S_SAMPLE_FREQ_96 = 96,
+	PMI2S_SAMPLE_FREQ_48 = 48,
+	PMI2S_SAMPLE_FREQ_32 = 32,
+	PMI2S_SAMPLE_FREQ_16 = 16
 }SAMPLE_FREQUENCY_E;
 
 /**
@@ -86,24 +85,24 @@ typedef enum sample_frequency_e
  */
 typedef enum data_format_e
 {
-	I2S_DATA_FORMAT_32 = 32,
-	I2S_DATA_FORMAT_24 = 24,
-	I2S_DATA_FORMAT_20 = 20,
-	I2S_DATA_FORMAT_16 = 16
+	PMI2S_DATA_FORMAT_32 = 32,
+	PMI2S_DATA_FORMAT_24 = 24,
+	PMI2S_DATA_FORMAT_20 = 20,
+	PMI2S_DATA_FORMAT_16 = 16
 }DATA_FORMAT_E;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-/* !<Across the data of structue CS_I2S_INIT to init the i2s.*/
 
-extern uint32_t i2s_init_func(DEV_I2S *pdev_i2s,const CS_I2S_INIT *cs_i2s_init,DEV_BUFFER *dev,void (*i2s_isr)(void));
 /* ！<Write data through i2s>*/
-extern uint32_t i2s_write_data(DEV_I2S *pdev_i2s,const void *data,uint32_t len,uint32_t channel);
-extern uint32_t i2s_read_data(DEV_I2S *pdev_i2s,void *data,uint32_t len,uint32_t channel);
+extern uint32_t pmi2s_write_data(const void *data,uint32_t len,uint32_t channel);
+extern uint32_t pmi2s_read_data(void *data,uint32_t len,uint32_t channel);
 /* ! <Flus the transmitter fifo>*/
-extern void i2s_tx_flush_fifo(DEV_I2S *pdev_i2s);
-extern void i2s_rx_flush_fifo(DEV_I2S *pdev_i2s);
+extern void pmi2s_tx_flush_fifo();
+extern void pmi2s_rx_flush_fifo();
+extern void pmi2s_tx_isr_restart(DEV_BUFFER *tx_buffer);
+extern int16_t pmi2s_tx_init(uint32_t freq,uint32_t dfmt,uint32_t mode_sel,DEV_BUFFER *buffer,void (*i2s_isr)(void));
 #ifdef __cplusplus
 }
 #endif
