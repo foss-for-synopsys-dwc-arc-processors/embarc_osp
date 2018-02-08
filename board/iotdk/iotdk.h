@@ -46,10 +46,13 @@
 
 #include "arc_em.h"
 
+#include "drivers/ip/designware/i2s/dw_i2s_obj.h"
+#include "drivers/ip/designware/sdio/dw_sdio_obj.h"
 #include "drivers/ip/dfss/iic/dfss_iic_obj.h"
 #include "drivers/ip/dfss/uart/dfss_uart_obj.h"
 #include "drivers/ip/dfss/spi/dfss_spi_obj.h"
 #include "drivers/ip/dfss/gpio/dfss_gpio_obj.h"
+#include "drivers/sdcard/sdcard.h"
 #include "drivers/sysconf/sysconf.h"
 #include "common/iotdk_timer.h"
 

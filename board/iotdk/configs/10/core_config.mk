@@ -13,4 +13,7 @@ ONCHIP_IP_LIST		?= dfss/gpio \
 			dfss/iic \
 			dfss/uart \
 			dfss/spi \
-			dfss/dmac
+			dfss/dmac \
+			designware/i2s \
+			designware/sdio
+			

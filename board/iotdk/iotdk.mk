@@ -84,6 +84,7 @@ BOARD_IOTDK_DEV_INCDIR		+= $(DEV_INCDIR)
 ##
 BOARD_IOTDK_CSRCDIR		+= $(BOARD_IOTDK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_IOTDK_DIR)/common \
+				$(BOARD_IOTDK_DIR)/drivers/sdcard \
 				$(BOARD_IOTDK_DIR)/drivers/sysconf
 
 # select dirvers according to middleware
