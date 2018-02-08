@@ -78,6 +78,7 @@
 /*
  * core-dependent part in assemble language (for arc)
  */
+#define __ASSEMBLY__
 #include "arc.h"
 #include "arc_asm_common.h"
 
