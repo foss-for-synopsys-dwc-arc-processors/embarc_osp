@@ -64,7 +64,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
-#include "pmi2s.h"
+#include "cs4344.h"
 
 __attribute__((aligned(16))) DEV_BUFFER tx_buffer,rx_buffer;
 
@@ -109,9 +109,9 @@ static uint16_t sine_table[256] = {
  * \detail  This function will be callback when the whole data has been send and you have to \
  			resatrt the interrupt and point the data buffer in this function.
 */
-static void pmi2s_tx_isr()
+static void cs4344_tx_isr()
 {
-	pmi2s_tx_isr_restart(&tx_buffer);
+	cs4344_tx_isr_restart(&tx_buffer);
 }
 
 int main(void)
@@ -119,7 +119,7 @@ int main(void)
 	tx_buffer.buf=(uint16_t *)sine_table;
 	tx_buffer.len=256;
 	tx_buffer.ofs=0;
-	pmi2s_tx_init(PMI2S_SAMPLE_FREQ_32,PMI2S_DATA_FORMAT_16,PMI2S_MODE_ISR,&tx_buffer,pmi2s_tx_isr);
+	cs4344_tx_init(CS4344_SAMPLE_FREQ_32, CS4344_DATA_FORMAT_16, CS4344_MODE_ISR, &tx_buffer, cs4344_tx_isr);
 	while(1)
 	{
 

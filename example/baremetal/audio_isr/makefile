@@ -1,7 +1,7 @@
 # Application name
 APPL ?= audio_isr
 
-EXT_DEV_LIST += audio/pmi2s
+EXT_DEV_LIST += audio/cs4344
 ##
 # select debugging jtag
 ##
