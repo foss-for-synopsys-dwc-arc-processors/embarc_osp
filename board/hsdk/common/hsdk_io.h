@@ -28,42 +28,40 @@
  *
 --------------------------------------------- */
 /**
- * \defgroup	BOARD_HSDK_COMMON_INIT	HSDK Common Init Module
- * \ingroup	BOARD_HSDK_COMMON
- * \brief	HSDK Board Common Init Module
- * \details
- * 		HSDK timer/gpio/interrupt init process. Device-driver installation is done while
- *	getting the device object for the first time.
- */
-
-/**
  * \file
- * \ingroup	BOARD_HSDK_COMMON_INIT
- * \brief	common hsdk init module
+ * \ingroup	BOARD_HSDK_DRV_IO
+ * \brief	HSDK board IO related functions header
  */
-
 /**
- * \addtogroup	BOARD_HSDK_COMMON_INIT
+ * \addtogroup	BOARD_HSDK_DRV_IO
  * @{
  */
-#include "arc_builtin.h"
-#include "arc.h"
-#include "arc_timer.h"
-#include "embARC_debug.h"
-#include "board.h"
+#ifndef _HSDK_IO_H_
+#define _HSDK_IO_H_
 
-/**
- * \brief	Board init routine MUST be called in each application
- * \note	It is better to disable interrupts when calling this function
- *	remember to enable interrupt when you want to use them
- */
-void board_init(void)
-{
-	timer_init();
-	io_mux_init();
-	hsdk_hardware_init();
-	hsdk_timer_init();
-	hsdk_io_init();
+#include "../drivers/ip/designware/iic/dw_iic_obj.h"
+
+#define HSDK_I2C_ADDR_CY8C95XX_IO		(0x20)
+#define HSDK_I2C_ADDR_CY8C95XX_EEP		(0x40)
+#define HSDK_I2C_ID_CY8C95XX			(DW_IIC_0_ID)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void hsdk_io_init(void);
+extern void led_write(uint32_t led_val, uint32_t mask);
+
+// Un-implemented Switch/Button functions
+// extern void hsdk_button_init(void);
+// extern void hsdk_switch_init(void);
+// extern uint32_t switch_read(uint32_t mask);
+// extern uint32_t button_read(uint32_t mask);
+
+#ifdef __cplusplus
 }
+#endif
 
-/** @} end of group BOARD_HSDK_COMMON_INIT */
+#endif /* _HSDK_IO_H_ */
+
+/** @} end of group BOARD_HSDK_DRV_IO */

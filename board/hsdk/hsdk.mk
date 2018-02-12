@@ -70,6 +70,9 @@ ifdef ONCHIP_IP_LIST
 	BOARD_HSDK_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_HSDK_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
 endif
 
+# onboard device rules
+EXT_DEV_LIST += io/cy8c95xx
+
 include $(EMBARC_ROOT)/device/device.mk
 
 ##
