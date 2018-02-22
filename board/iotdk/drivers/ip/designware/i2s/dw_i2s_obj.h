@@ -26,55 +26,51 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2017-11-04
+ * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 /**
- *
  * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
+ * \ingroup	BOARD_HUANGSHAN_DRV_DW_I2S_OBJ
+ * \brief	header file of DesignWare I2S object instantiation
  */
 
 /**
- * \addtogroup BOARD_COMMON
+ * \addtogroup	BOARD_HUANGSHAN_DRV_DW_I2S_OBJ
  * @{
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
+#ifndef _DW_I2S_OBJ_H_
+#define _DW_I2S_OBJ_H_
+
+#include "dev_i2s.h"
+
 /**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
+ * \name	DesignWare I2S Object ID Macros
+ * @{
  */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#define DW_I2S_0_ID		0	/*!< I2s 0 ID macro */
+#define DW_I2S_1_ID		1	/*!< I2s 1 ID macro */
+/** @} end of name */
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+/**
+ * \name	DesignWare I2S Object Control Macros
+ * @{
+ */
+#define USE_DW_I2S_0		1	/*!< enable use DesignWare I2S 0 as TX */
+#define USE_DW_I2S_1		1	/*!< enable use DesignWare I2S 1 as TX */
+/** @} end of name */
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+extern DEV_I2S_PTR i2s_get_dev(int32_t i2s_id);
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifdef __cplusplus
+}
+#endif
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+#endif /* _DW_I2S_OBJ_H_ */
 
-#endif /* _EMBARC_BOARD_H_ */
-
-/** @} end of group BOARD_COMMON */
+/** @} end of group BOARD_HUANGSHAN_DRV_DW_I2S_OBJ */

@@ -16,5 +16,3 @@ ifdef EXT_DEV_LIST
 	EXT_DEV_MKS = $(foreach EXT_DEV, $(EXT_DEV_LIST), $(join $(DEVICES_ROOT)/peripheral/$(EXT_DEV)/, $(notdir $(EXT_DEV)).mk))
 	include $(EXT_DEV_MKS)
 endif
-
-

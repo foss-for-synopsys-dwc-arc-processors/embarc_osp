@@ -26,55 +26,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2017-11-10
+ * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
- */
+#ifndef _DW_SDIO_OBJ_H_
+#define _DW_SDIO_OBJ_H_
 
-/**
- * \addtogroup BOARD_COMMON
- * @{
- */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+#define DW_SDIO_NUM 		(1)
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+#define DW_SDIO_0_ID 		(0)
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+#define USE_DW_SDIO_0		1
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif /* _EMBARC_BOARD_H_ */
+extern void dw_sdio_all_install(void);
 
-/** @} end of group BOARD_COMMON */
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif

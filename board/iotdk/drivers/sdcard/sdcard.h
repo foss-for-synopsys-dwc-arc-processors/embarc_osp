@@ -26,55 +26,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * \version 2017.03
+ * \date 2017-11-10
+ * \author Wayne Ren(wei.ren@synopsys.com)
 --------------------------------------------- */
 /**
- *
  * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
+ * \ingroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD
+ * \brief	header file of sdcard driver for fatfs of hsdk board
  */
 
 /**
- * \addtogroup BOARD_COMMON
+ * \addtogroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD
  * @{
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#ifndef _HUANGSHAN_SDCARD_H_
+#define _HUANGSHAN_SDCARD_H_
+#include "embARC_toolchain.h"
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+#ifdef MID_FATFS /* only available when enable fatfs middleware */
+#include "sdcard_sdio.h"
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
+#define HUANGSHAN_SDCARD_0_DRVID		(0)
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+#endif /* MID_FATFS */
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
 
-#endif /* _EMBARC_BOARD_H_ */
+#ifdef __cplusplus
+}
+#endif
 
-/** @} end of group BOARD_COMMON */
+#endif /** _HUANGSHAN_SDCARD_H_ */
+
+/** @} end of group BOARD_HUANGSHAN_DRV_MID_FS_SDCARD */
