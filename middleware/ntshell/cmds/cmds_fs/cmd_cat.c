@@ -35,19 +35,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_CAT
-
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "cmd_fs_common.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 static NTSHELL_IO_PREDEF;
 
@@ -55,16 +43,16 @@ static int32_t fs_cat(char *pathname, int32_t mode, void *extobj)
 {
 	int32_t ercd = E_OK;
 	uint8_t res = 0;
-	uint32_t s1, blen = sizeof(Buff_fs);
+	uint32_t s1, blen = sizeof(cmd_fs_buffer);
 	char *ptr;
 	uint32_t ofs = 0;
-	FIL file;
 	char line[5];
 	int32_t base_address = 0;
 
 	VALID_EXTOBJ_NORTN(extobj);
 
-	res = f_open(&file, pathname, FA_OPEN_EXISTING | FA_READ);
+	res = f_open(&cmd_files[0], pathname, FA_OPEN_EXISTING | FA_READ);
+
 	if (res) {
 		ercd = E_SYS;
 		fs_put_err(res, extobj);
@@ -72,14 +60,14 @@ static int32_t fs_cat(char *pathname, int32_t mode, void *extobj)
 	}
 
 	for (;;) {
-		res = f_read(&file, Buff_fs, blen, &s1);
+		res = f_read(&cmd_files[0], cmd_fs_buffer, blen, &s1);
 		if (res || s1 == 0) break;   /* error or eof */
 		if(mode == 1) {
-			for (ptr=(char*)Buff_fs, ofs = 0; ofs < s1; ptr += 16, ofs += 16) {
+			for (ptr=(char*)cmd_fs_buffer, ofs = 0; ofs < s1; ptr += 16, ofs += 16) {
 				cmds_put_dump((uint8_t*)ptr, (base_address+ofs), 16, DW_CHAR, extobj);
 			}
 		} else {
-			CMD_WRITE(Buff_fs, s1);
+			CMD_WRITE(cmd_fs_buffer, s1);
 			CMD_DEBUG("\r\n");
 		}
 		base_address += blen;
@@ -97,7 +85,7 @@ static int32_t fs_cat(char *pathname, int32_t mode, void *extobj)
 			while (*ptr == ' ') ptr ++;
 			if(line[0] == 'n') {
 				CMD_DEBUG("\r\n");
-				f_close(&file);
+				f_close(&cmd_files[0]);
 				goto error_exit;
 			} else if(line[0] == 'y') {
 				CMD_DEBUG("\r\n");
@@ -105,7 +93,7 @@ static int32_t fs_cat(char *pathname, int32_t mode, void *extobj)
 			}
 		}
 	}
-	f_close(&file);
+	f_close(&cmd_files[0]);
 	return E_OK;
 
 error_exit:

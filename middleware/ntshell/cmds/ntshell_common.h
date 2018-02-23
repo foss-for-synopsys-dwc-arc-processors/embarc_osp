@@ -37,6 +37,13 @@
 #define _NTSHELL_COMMON_H_
 
 #include <stdint.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+#include "embARC.h"
+#include "embARC_debug.h"
 
 /* argument error flag settings */
 #define FIRST_ARG_ERR	(0x00000001)

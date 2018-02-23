@@ -35,19 +35,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_DISK
-
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "cmd_fs_common.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 static NTSHELL_IO_PREDEF;
 
@@ -94,22 +82,22 @@ int32_t disk_display_status(int disk_num, void *extobj)
 	if (disk_ioctl((uint8_t)disk_num, MMC_GET_TYPE, &b) == RES_OK) {
 		CMD_DEBUG("Media type: %u\r\n", b);
 	}
-	if (disk_ioctl((uint8_t)disk_num, MMC_GET_CSD, Buff_fs) == RES_OK) {
+	if (disk_ioctl((uint8_t)disk_num, MMC_GET_CSD, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("CSD:\r\n");
-		cmds_put_dump(Buff_fs, 0, 16, DW_CHAR, extobj);
+		cmds_put_dump(cmd_fs_buffer, 0, 16, DW_CHAR, extobj);
 	}
-	if (disk_ioctl((uint8_t)disk_num, MMC_GET_CID, Buff_fs) == RES_OK) {
+	if (disk_ioctl((uint8_t)disk_num, MMC_GET_CID, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("CID:\r\n");
-		cmds_put_dump(Buff_fs, 0, 16, DW_CHAR, extobj);
+		cmds_put_dump(cmd_fs_buffer, 0, 16, DW_CHAR, extobj);
 	}
-	if (disk_ioctl((uint8_t)disk_num, MMC_GET_OCR, Buff_fs) == RES_OK) {
+	if (disk_ioctl((uint8_t)disk_num, MMC_GET_OCR, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("OCR:\r\n");
-		cmds_put_dump(Buff_fs, 0, 4, DW_CHAR, extobj);
+		cmds_put_dump(cmd_fs_buffer, 0, 4, DW_CHAR, extobj);
 	}
-	if (disk_ioctl((uint8_t)disk_num, MMC_GET_SDSTAT, Buff_fs) == RES_OK) {
+	if (disk_ioctl((uint8_t)disk_num, MMC_GET_SDSTAT, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("SD Status:\r\n");
 		for (s1 = 0; s1 < 64; s1 += 16) {
-			cmds_put_dump(Buff_fs+s1, s1, 16, DW_CHAR, extobj);
+			cmds_put_dump(cmd_fs_buffer+s1, s1, 16, DW_CHAR, extobj);
 		}
 	}
 

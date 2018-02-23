@@ -36,29 +36,14 @@
 #include "cmds_fs_cfg.h"
 
 #if NTSHELL_USE_CMDS_FS_LOAD
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-
 #include "ntlibc.h"
-#include "ntshell_common.h"
-
-#include "embARC_debug.h"
+#include "cmd_fs_common.h"
 
 #ifdef MID_IHEX
 #include "ihex_load.h"
 #endif
 
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
-
 static NTSHELL_IO_PREDEF;
-
-static FIL load_file;
 
 extern unsigned int _f_text;
 extern unsigned int _e_heap;
@@ -74,7 +59,7 @@ static int32_t load_application(char *file_name, uint32_t load_addr)
 	int32_t ercd = E_OK;
 	uint8_t res;
 	uint32_t binsize = 0, load_size = 0;
-	FIL *p_load_file = &load_file;
+	FIL *p_load_file = &cmd_files[0];
 
 	if (load_addr & 0x3) {
 		CMD_DEBUG("Please check the load address is 4 bytes align!\r\n");
@@ -224,7 +209,7 @@ static int32_t find_application(const char *boot_cfg, const char *app_name, char
 	int32_t found = -3;
 	int8_t res;
 	char *linestr = NULL;
-	FIL *p_bootcfg = &load_file;
+	FIL *p_bootcfg = &cmd_files[0];
 
 	res = f_open(p_bootcfg, boot_cfg, FA_READ | FA_OPEN_EXISTING);
 	if (res != RES_OK) {

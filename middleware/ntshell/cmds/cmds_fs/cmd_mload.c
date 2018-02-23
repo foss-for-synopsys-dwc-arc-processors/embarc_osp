@@ -36,18 +36,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_MLOAD
-
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
+#include "cmd_fs_common.h"
 
 /* MCS file format */
 #define MCS_START_CODE_SIZE		(1)
@@ -90,7 +79,6 @@ static char * convert_chars_to_int(char *ptr, int32_t length, void *data)
 	uint8_t temp[10];
 	uint8_t i = 0;
 
-	// temp = malloc(length);
 	*(uint8_t *)data = 0;
 
 	for(i = 0; i < length; i++) {
@@ -107,7 +95,6 @@ static char * convert_chars_to_int(char *ptr, int32_t length, void *data)
 		ptr++;
 		*(uint8_t *)data += ((uint8_t)(temp[i] & 0x0F) << (4 * (length-i-1)));
 	}
-	// free(temp);
 	return ptr;
 }
 
@@ -133,10 +120,10 @@ static int32_t get_record(char *ptr, int32_t data_length, uint8_t *record)
 }
 
 #define BIN_BUFFER_SIZE		0x400
-static uint8_t bin_buffer[BIN_BUFFER_SIZE];
+static uint8_t* bin_buffer = cmd_fs_buffer;
 static uint32_t bin_buffer_cnt = 0;
 static uint32_t bin_address = 0x00;
-static uint8_t spi_flash_buffer[BIN_BUFFER_SIZE] = {0};
+static uint8_t* spi_flash_buffer = &cmd_fs_buffer[CMD_FS_BUF_SIZE/2];
 
 /** write data with binary */
 static int32_t write_bin(uint32_t address, uint8_t *data, uint8_t data_length)
@@ -467,9 +454,8 @@ error_exit:
 /** the callback function of command "mload "*/
 static int cmd_mload(int argc, char **argv, void *extobj)
 {
-	FIL file;
+
 	char *file_name = NULL;
-	FIL check_file;
 	char *check_filename = NULL;
 	uint8_t res;
 	int32_t opt;
@@ -535,7 +521,7 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 				/* read file name */
 				file_name = optarg;
 				/* open the file */
-				res = f_open(&file, file_name, FA_READ | FA_OPEN_EXISTING);
+				res = f_open(&cmd_files[0], file_name, FA_READ | FA_OPEN_EXISTING);
 				if(res) {
 					CMD_DEBUG("ERROR: Cannot open file %s\r\n", file_name);
 					ercd = E_SYS;
@@ -548,7 +534,7 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 				/* read file name */
 				check_filename = optarg;
 				/* open the file */
-				res = f_open(&check_file, check_filename, FA_READ | FA_OPEN_EXISTING);
+				res = f_open(&cmd_files[1], check_filename, FA_READ | FA_OPEN_EXISTING);
 				if(res) {
 					CMD_DEBUG("ERROR: Cannot open file %s\r\n", check_filename);
 					ercd = E_SYS;
@@ -596,9 +582,9 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 		/* set the destination: spi flash*/
 		mcs_dest_mode = 0x01;
 		/* mcs file parsing */
-		ercd = mcs_parsing(&file);
+		ercd = mcs_parsing(&cmd_files[0]);
 		/* close the file */
-		if(f_close(&file) != FR_OK) {
+		if(f_close(&cmd_files[0]) != FR_OK) {
 			ercd = E_SYS;
 			CMD_DEBUG("The file close error!\r\n");
 			goto error_exit;
@@ -609,9 +595,9 @@ static int cmd_mload(int argc, char **argv, void *extobj)
 		/* check FPGA configure between spi flash and specified mcs file */
 		mcs_dest_mode = 0x02;
 		/* mcs file parsing */
-		ercd = mcs_parsing(&check_file);
+		ercd = mcs_parsing(&cmd_files[1]);
 		/* close the file */
-		if(f_close(&check_file) != FR_OK) {
+		if(f_close(&cmd_files[1]) != FR_OK) {
 			ercd = E_SYS;
 			CMD_DEBUG("The file close error!\r\n");
 			goto error_exit;

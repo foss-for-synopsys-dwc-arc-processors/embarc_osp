@@ -37,15 +37,16 @@
 
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_FS
-
-#include "stdint.h"
 #include "ntshell_common.h"
 
 #include "ff.h"
 
+#define CMD_FS_BUF_SIZE	4096
+
 /*define global parameter*/
-extern uint8_t Buff_fs[4096];
+extern uint8_t cmd_fs_buffer[CMD_FS_BUF_SIZE];
 extern char working_directory[256];
+extern FIL cmd_files[2];
 
 /*define function*/
 extern char * fs_working_dir(void);

@@ -34,9 +34,6 @@
  */
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_FS
-
-#include "embARC.h"
-#include "embARC_debug.h"
 #include "cmds_fs_cfg.h"
 #include "cmd_fs_common.h"
 

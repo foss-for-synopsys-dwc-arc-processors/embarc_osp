@@ -36,12 +36,8 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_SPIRW
+#include "cmd_fs_common.h"
 
-#include <unistd.h>
-
-#include "embARC.h"
-
-#include "ntshell_common.h"
 #include "spi_flash_w25qxx.h"
 
 typedef struct {
@@ -55,15 +51,9 @@ typedef struct {
 } EMSK_FIRMWARE_DEF;
 
 
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
-
 static NTSHELL_IO_PREDEF;
 
 #define ENABLE_HELP 1
-
-#define BUF_SIZE	4096
 
 /* define the address in the SPI flash */
 #define IMAGE_HEADER_LEN	(sizeof(EMSK_FIRMWARE_DEF))
@@ -82,8 +72,6 @@ static NTSHELL_IO_PREDEF;
 
 
 W25QXX_DEF(w25q128bv, DW_SPI_0_ID, EMSK_SPI_LINE_SFLASH, 0x100, 0x1000);
-
-static uint8_t local_buf[BUF_SIZE];
 
 Inline unsigned int make_checksum(unsigned int init, unsigned char *buf, unsigned int len)
 {
@@ -146,19 +134,19 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 
 	// write data to the flash
 	do{
-		if (f_read(file, local_buf, BUF_SIZE, &cnt) != FR_OK) {
+		if (f_read(file, cmd_fs_buffer, CMD_FS_BUF_SIZE, &cnt) != FR_OK) {
 			CMD_DEBUG("read file error, already read %d\r\n", cnt);
 			return 0;
 		}
-		header.checksum = make_checksum(header.checksum, local_buf, cnt);
+		header.checksum = make_checksum(header.checksum, cmd_fs_buffer, cnt);
 
 		CMD_DEBUG("write 0x%x - 0x%x check_sum:%x\r\n", address, address+cnt, header.checksum);
 
-		w25qxx_write(w25q128bv, address, cnt, local_buf);
+		w25qxx_write(w25q128bv, address, cnt, cmd_fs_buffer);
 		w25qxx_wait_ready(w25q128bv);
 
 		address += cnt;
-	} while (cnt >= BUF_SIZE);
+	} while (cnt >= CMD_FS_BUF_SIZE);
 
 	w25qxx_write(w25q128bv, BOOTIMAGE_START, IMAGE_HEADER_LEN, &header);
 	w25qxx_wait_ready(w25q128bv);
@@ -191,14 +179,14 @@ static int32_t read_raw_spi(FIL *file, uint32_t address, uint32_t size, uint32_t
 
 	datalen = 0;
 	do {
-		cnt = w25qxx_read(w25q128bv, address, BUF_SIZE, local_buf);
+		cnt = w25qxx_read(w25q128bv, address, CMD_FS_BUF_SIZE, cmd_fs_buffer);
 		if (cnt < 0) {
 			*checksum = 0;
 			return 0;
 		}
 		len = (size < cnt) ? size : cnt;
-		csum = make_checksum(csum, local_buf, len);
-		if (f_write(file, local_buf, len, &temp)) {
+		csum = make_checksum(csum, cmd_fs_buffer, len);
+		if (f_write(file, cmd_fs_buffer, len, &temp)) {
 			*checksum = 0;
 			return 0;
 		}

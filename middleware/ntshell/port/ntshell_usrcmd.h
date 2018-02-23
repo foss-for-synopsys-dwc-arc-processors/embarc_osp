@@ -67,6 +67,9 @@ struct cmd_table_t {
 #else /* don't use ntshell extobj */
 #define NTSHELL_IO_PREDEF
 #define NTSHELL_IO_GET(extobj)
+#define CMD_DEBUG(fmt, ...)		EMBARC_PRINTF(fmt, ##__VA_ARGS__)
+#define CMD_WRITE(data, cnt)		console_putstr(data, cnt)
+#define CMD_READ(data, cnt)		console_getstr(data, cnt)
 
 #define VALID_EXTOBJ(EXPR, ERROR_CODE)
 #define VALID_EXTOBJ_NORTN(extobj)

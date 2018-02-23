@@ -34,18 +34,9 @@
  */
 #include "cmds_peripheral_cfg.h"
 #if NTSHELL_USE_CMDS_PERIPHERAL_TEMP
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
 #include "ntlibc.h"
 #include "ntshell_common.h"
 #include "adt7420.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 static NTSHELL_IO_PREDEF;
 

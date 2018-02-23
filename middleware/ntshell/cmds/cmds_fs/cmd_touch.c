@@ -35,19 +35,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_TOUCH
-
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "cmd_fs_common.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 static NTSHELL_IO_PREDEF;
 
@@ -78,7 +66,6 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 	uint8_t res = 0;
 	int32_t opt = 0;
 	uint8_t print_flag = 0;
-	FIL file;
 
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
@@ -91,14 +78,14 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 		goto error_exit;
 	} else if(*argv[1] != '-') {
 
-		res = f_open(&file, argv[1], FA_CREATE_NEW);
+		res = f_open(&cmd_files[0], argv[1], FA_CREATE_NEW);
 
 		if(res != FR_OK) {
 			ercd = E_SYS;
 			fs_put_err(res, extobj);
 			goto error_exit;
 		}
-		f_close(&file);
+		f_close(&cmd_files[0]);
 		return E_OK;
 	}
 
@@ -125,7 +112,7 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 
 	/*chech the parameter*/
 	if((optind+1) == argc) {
-		res = f_open(&file, argv[optind], FA_CREATE_NEW);
+		res = f_open(&cmd_files[0], argv[optind], FA_CREATE_NEW);
 
 		if(res != FR_OK) {
 			ercd = E_SYS;
@@ -136,7 +123,7 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 		if(print_flag == 1){
 			CMD_DEBUG("%s: created file '%s'\r\n",argv[0], argv[optind]);
 		}
-		f_close(&file);
+		f_close(&cmd_files[0]);
 	} else {
 		ercd = E_SYS;
 		CMD_DEBUG("%s: parameter error\r\n", argv[0]);

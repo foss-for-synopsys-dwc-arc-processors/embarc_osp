@@ -35,20 +35,13 @@
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_FS
 
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include "cmd_fs_common.h"
 
-#include "embARC.h"
-#include "embARC_debug.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
-
-uint8_t Buff_fs[4096] __attribute__ ((aligned (4))) ;	/* Working Buffer */
+EMBARC_ALIGNED(4) uint8_t cmd_fs_buffer[CMD_FS_BUF_SIZE];	/* Working Buffer */
 
 char working_directory[256] = {"/"};
+
+FIL cmd_files[2];
 
 static NTSHELL_IO_PREDEF;
 

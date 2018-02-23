@@ -36,18 +36,7 @@
 #include "cmds_arc_cfg.h"
 #if NTSHELL_USE_CMDS_ARC_MEM
 
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "ntshell_common.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 static NTSHELL_IO_PREDEF;
 /*command: mem*/

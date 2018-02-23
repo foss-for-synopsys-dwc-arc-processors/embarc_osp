@@ -35,19 +35,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_LS
-
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "cmd_fs_common.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 #if _USE_LFN
 static char Lfname[_MAX_LFN+1];
@@ -61,7 +49,7 @@ static int32_t fs_ls(char *pathname, int mode, void *extobj)
 	int32_t ercd = E_OK;
 	int32_t p1;
 	uint8_t res = 0;
-	uint32_t s1, s2 = sizeof Buff_fs;
+	uint32_t s1, s2 = sizeof(cmd_fs_buffer);
 	FATFS *fs;
 	char *filename = NULL;
 	FILINFO Finfo;

@@ -35,19 +35,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_CP
-
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "cmd_fs_common.h"
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 
 static NTSHELL_IO_PREDEF;
 
@@ -56,8 +44,7 @@ static int fs_cp(char *srcname, char *dstname, void *extobj)
 	int32_t ercd = E_OK;
 	int32_t p1;
 	uint8_t res = 0;
-	uint32_t s1, s2, blen = sizeof Buff_fs;
-	FIL file[2];
+	uint32_t s1, s2, blen = sizeof(cmd_fs_buffer);
 	FILINFO fno;
 	char *new_destname = NULL;
 
@@ -83,32 +70,32 @@ static int fs_cp(char *srcname, char *dstname, void *extobj)
 			}
 		}
 	}
-	res = f_open(&file[0], srcname, FA_OPEN_EXISTING | FA_READ);
+	res = f_open(&cmd_files[0], srcname, FA_OPEN_EXISTING | FA_READ);
 	if (res) {
 		ercd = res;
 		goto error_exit;
 	}
 	if (new_destname) {
-		res = f_open(&file[1], new_destname, FA_CREATE_NEW | FA_WRITE);
+		res = f_open(&cmd_files[1], new_destname, FA_CREATE_NEW | FA_WRITE);
 	} else {
-		res = f_open(&file[1], dstname, FA_CREATE_NEW | FA_WRITE);
+		res = f_open(&cmd_files[1], dstname, FA_CREATE_NEW | FA_WRITE);
 	}
 
 	if (res){
 		ercd = res;
-		f_close(&file[0]);
+		f_close(&cmd_files[0]);
 		goto error_exit;
 	}
 	p1 = 0;
 	for (;;){
-		res = f_read(&file[0], Buff_fs, blen, &s1);
+		res = f_read(&cmd_files[0], cmd_fs_buffer, blen, &s1);
 		if (res || s1 == 0) break;   /* error or eof */
-		res = f_write(&file[1], Buff_fs, s1, &s2);
+		res = f_write(&cmd_files[1], cmd_fs_buffer, s1, &s2);
 		p1 += s2;
 		if (res || s2 < s1) break;   /* error or disk full */
 	}
-	f_close(&file[0]);
-	f_close(&file[1]);
+	f_close(&cmd_files[0]);
+	f_close(&cmd_files[1]);
 	if (new_destname) free(new_destname);
 
 	return E_OK;

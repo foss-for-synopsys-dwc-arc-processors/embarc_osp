@@ -39,10 +39,6 @@
 #include "embARC_error.h"
 #include "ntshell_task.h"
 
-
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 /** Parse ntshell argument error */
 void parse_arg_err(unsigned int errorflag, void *extobj)
 {

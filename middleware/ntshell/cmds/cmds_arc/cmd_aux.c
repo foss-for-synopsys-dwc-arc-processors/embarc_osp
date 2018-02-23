@@ -37,16 +37,8 @@
 #include "cmds_arc_cfg.h"
 #if NTSHELL_USE_CMDS_ARC_AUX
 
-#include <stdio.h>
-
-#include "embARC.h"
-#include "embARC_debug.h"
-
 #include "ntshell_common.h"
 
-#ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
-#endif
 static NTSHELL_IO_PREDEF;
 
 #define MAXROWS 4
@@ -72,26 +64,27 @@ static void _auxiliary_register_dump(uint32_t start_addr, uint32_t end_addr, voi
 	VALID_EXTOBJ_NORTN(extobj);
 
 	p = start_addr;
-	while (p <= end_addr)
-	{
+	while (p <= end_addr) {
 		CMD_DEBUG("0x%08x: ", p);
-		for (x = 0; x < MAXROWS; x++)
-		{
+		for (x = 0; x < MAXROWS; x++) {
 			val = _arc_aux_read(p);	/* read aux register */
 			CMD_DEBUG("0x%08x  ", val);
 			np = p + 1;
-			if (np < p)
-			{
+			if (np < p) {
 				brk = 1;
 				break;
 			}
 			p = np;
-			if (p > end_addr)
+			if (p > end_addr) {
 				break;
+			}
 		}
+
 		CMD_DEBUG("\r\n");
-		if (brk)
+
+		if (brk) {
 			break;
+		}
 	}
 
 error_exit:

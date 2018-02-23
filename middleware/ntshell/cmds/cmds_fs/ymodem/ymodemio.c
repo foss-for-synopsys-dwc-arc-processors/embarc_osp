@@ -30,7 +30,7 @@
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_YMODEM
-#include "embARC.h"
+#include "cmd_fs_common.h"
 
 #define YMODEM_USART_ID			BOARD_CONSOLE_UART_ID
 #define YM_GET_CUR_MS			OSP_GET_CUR_MS
@@ -80,13 +80,13 @@ int32_t ym_put_char(int32_t ch)
 
 	return -1;
 }
-static FIL file;
+
 /** open the destination of the the received file*/
 int32_t ym_open_dest(const char *filename)
 {
 	uint8_t res = 0;
 	/* Open the 'file_name' file with write operation */
-	res = f_open(&file, filename, FA_WRITE | FA_OPEN_ALWAYS);
+	res = f_open(&cmd_files[0], filename, FA_WRITE | FA_OPEN_ALWAYS);
 	return res;
 }
 /** close the destination of the the received file*/
@@ -94,7 +94,7 @@ int32_t ym_close_dest(void)
 {
 	uint8_t res = 0;
 	/* Close the file */
-	res = f_close(&file);
+	res = f_close(&cmd_files[0]);
 	return res;
 }
 
@@ -103,7 +103,7 @@ int32_t ym_output_dest(uint8_t *buf, int32_t length, const char *filename)
 {
 	uint32_t cnt = 0;
 	/* Write data to the file */
-	f_write(&file, buf, length, &cnt);
+	f_write(&cmd_files[0], buf, length, &cnt);
 	return 0;
 }
 
@@ -112,17 +112,16 @@ int32_t ym_get_size(const char *filename)
 {
 	uint8_t res = 0;
 	int32_t file_size;
-	FIL file;
 
 	/* Open the 'file_name' file with write operation */
-	res = f_open(&file, filename, FA_READ);
+	res = f_open(&cmd_files[0], filename, FA_READ);
 	if (res != RES_OK) {
 		file_size = -1;
 	} else {
 		/* Get the size of the file */
-		file_size = f_size(&file);
+		file_size = f_size(&cmd_files[0]);
 		/* Close the file */
-		f_close(&file);
+		f_close(&cmd_files[0]);
 	}
 
 	return file_size;
@@ -132,17 +131,16 @@ int32_t ym_get_size(const char *filename)
 int32_t ym_get_data(char *buf, int32_t pt, int32_t length, const char *filename)
 {
 	uint8_t res = 0;
-	FIL file;
 	uint32_t cnt = 0;
 
 	/* Open the 'file_name' file with write operation */
-	res = f_open(&file, filename, FA_READ);
+	res = f_open(&cmd_files[0], filename, FA_READ);
 	/* Move the pointer to the specified point */
-	f_lseek(&file, pt);
+	f_lseek(&cmd_files[0], pt);
 	/* read data from file*/
-	f_read(&file, buf, length, &cnt);
+	f_read(&cmd_files[0], buf, length, &cnt);
 	/* Close the file */
-	f_close(&file);
+	f_close(&cmd_files[0]);
 
 	return cnt;
 }
