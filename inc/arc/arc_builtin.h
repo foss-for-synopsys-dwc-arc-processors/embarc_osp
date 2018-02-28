@@ -191,6 +191,7 @@ Inline void _arc_sync(void) {
 	Asm("sync");
 }
 
+
 /**
  * \note Following is a workaround for arc gcc
  *       built-in function __builtin_arc_sr.
@@ -290,6 +291,55 @@ Inline int32_t _arc_goto_main(int argc, char **argv) {
 		"mov %0, %%r0"
 		:"=r"(__ret): "r"(argc), "r"(argv));
 	return (int32_t)__ret;
+}
+
+/**
+ *
+ * \brief find most significant bit set in a 32-bit word
+ *
+ * This routine finds the first bit set starting from the most significant bit
+ * in the argument passed in and returns the index of that bit. Bits are
+ * numbered starting at 1 from the least significant bit. A return value of
+ * zero indicates that the value passed is zero.
+ *
+ * \return most significant bit set, 0 if @a val is 0
+ */
+Inline uint32_t _arc_find_msb(uint32_t val) {
+	uint32_t bit;
+
+	Asm(
+		/* BITSCAN_OPTION is required */
+		"fls.f %0, %1;\n"
+		"add.nz %0, %0, 1;\n"
+		: "=r"(bit)
+		: "r"(val));
+
+	return bit;
+}
+
+/**
+ *
+ * \brief find least significant bit set in a 32-bit word
+ *
+ * This routine finds the first bit set starting from the least significant bit
+ * in the argument passed in and returns the index of that bit.  Bits are
+ * numbered starting at 1 from the least significant bit.  A return value of
+ * zero indicates that the value passed is zero.
+ *
+ * \return least significant bit set, 0 if @a val is 0
+ */
+Inline uint32_t _arc_find_lsb(uint32_t val) {
+	uint32_t bit;
+
+	Asm(
+		/* BITSCAN_OPTION is required */
+		"ffs.f %0, %1;\n"
+		"add.nz %0, %0, 1;\n"
+		"mov.z %0, 0;\n"
+		: "=&r"(bit)
+		: "r"(val));
+
+	return bit;
 }
 
 #ifdef __cplusplus
