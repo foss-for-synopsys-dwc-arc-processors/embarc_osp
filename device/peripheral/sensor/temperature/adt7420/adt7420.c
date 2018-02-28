@@ -163,7 +163,7 @@ int32_t adt7420_sensor_init(ADT7420_DEF_PTR obj)
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
 	ADT7420_CHECK_EXP_NORTN(iic_obj!=NULL);
 
-	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_HIGH);
+	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
 		ercd = iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(obj->slvaddr));
 		/** Set to Default resolution and op_mode*/
