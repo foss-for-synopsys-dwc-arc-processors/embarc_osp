@@ -176,6 +176,10 @@ static int32_t io_arduino_config_pwm(uint32_t num, uint32_t config)
 	if (config == IO_PINMUX_ENABLE) {
 		if (gpio_mux_config[index].type == PINMUX_TYPE_DEFAULT ||
 		gpio_mux_config[index].type == PINMUX_TYPE_ARDUINO) {
+			if (gpio_mux_config[index].val != 0 &&
+				gpio_mux_config[index].val != 6) {
+				return E_OPNED;
+			}
 			gpio_mux_config[index].type = PINMUX_TYPE_ARDUINO;
 			gpio_mux_config[index].val = 6;
 			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index,
@@ -240,6 +244,9 @@ static int32_t io_arduino_config_gpio(uint32_t num, uint32_t config)
 	if (config == IO_PINMUX_ENABLE) {
 		if (gpio_mux_config[index].type == PINMUX_TYPE_DEFAULT ||
 		gpio_mux_config[index].type == PINMUX_TYPE_ARDUINO) {
+			if (gpio_mux_config[index].val != 0) {
+				return E_OPNED;
+			}
 			gpio_mux_config[index].type = PINMUX_TYPE_ARDUINO;
 			gpio_mux_config[index].val = 0;
 			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, index,
@@ -307,6 +314,10 @@ int32_t io_arduino_config_spi(uint32_t config)
 	if (config == IO_PINMUX_ENABLE) {
 		if (gpio_mux_config[3].type == PINMUX_TYPE_DEFAULT ||
 		gpio_mux_config[3].type == PINMUX_TYPE_ARDUINO) {
+			if (gpio_mux_config[3].val != 0 &&
+				gpio_mux_config[3].val != 2) {
+				return E_OPNED;
+			}
 			gpio_mux_config[3].type = PINMUX_TYPE_ARDUINO;
 			gpio_mux_config[3].val = 2;
 			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 3,
@@ -336,6 +347,10 @@ int32_t io_arduino_config_uart(uint32_t config)
 	if (config == IO_PINMUX_ENABLE) {
 		if (gpio_mux_config[7].type == PINMUX_TYPE_DEFAULT ||
 		gpio_mux_config[7].type == PINMUX_TYPE_ARDUINO) {
+			if (gpio_mux_config[7].val != 0 &&
+				gpio_mux_config[7].val != 1) {
+				return E_OPNED;
+			}
 			gpio_mux_config[7].type = PINMUX_TYPE_ARDUINO;
 			gpio_mux_config[7].val = 1;
 			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 7,
@@ -365,6 +380,10 @@ int32_t io_arduino_config_i2c(uint32_t config)
 	if (config == IO_PINMUX_ENABLE) {
 		if (gpio_mux_config[5].type == PINMUX_TYPE_DEFAULT ||
 		gpio_mux_config[5].type == PINMUX_TYPE_ARDUINO) {
+			if (gpio_mux_config[5].val != 0 &&
+				gpio_mux_config[5].val != 3) {
+				return E_OPNED;
+			}
 			gpio_mux_config[5].type = PINMUX_TYPE_ARDUINO;
 			gpio_mux_config[5].val = 3;
 			creg_hsdc_set_gpio_mux((CREG_HSDC_STRUCT *)HSDC_CREG_REGBASE, 5,
