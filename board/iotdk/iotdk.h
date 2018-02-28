@@ -148,6 +148,13 @@
 
 #define TASK_STACK_SIZE_MAIN		1024
 
+// Un-implemented LED/Switch/Button functions and macros
+#define BOARD_LED_MASK			(0x0)
+#define BOARD_LED_CNT			(0)
+#define BOARD_BTN_MASK			(0x0)
+#define BOARD_BTN_CNT			(0)
+#define BOARD_SWT_MASK			(0x0)
+#define BOARD_SWT_CNT			(0)
 
 #define button_read(x) 			1
 #define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
