@@ -1,0 +1,40 @@
+language: generic
+
+sudo: required
+dist: trusty
+
+before_install:
+  - .travis/before_install.sh
+
+script:
+  - .travis/script.sh
+
+matrix:
+  include:
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" CUR_CORE="arcem4"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" CUR_CORE="arcem6"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" CUR_CORE="arcem7d"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" CUR_CORE="arcem9d"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" CUR_CORE="arcem11d"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" CUR_CORE="arcem7d"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" CUR_CORE="arcem9d"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" CUR_CORE="arcem11d"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="hsdk" BD_VER="10" CUR_CORE="archs38_c0"
+      os: linux
+      compiler: gcc
