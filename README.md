@@ -1,4 +1,7 @@
 # embARC Open Software Platform (OSP)
+
+[ ![Travis CI Status](https://travis-ci.org/foss-for-synopsys-dwc-arc-processors/embarc_osp.svg?branch=master)](https://travis-ci.org/foss-for-synopsys-dwc-arc-processors/embarc_osp)
+
 ## Introduction
 The embARC Open Software Platform (OSP) is a software distribution aimed at facilitating the development of embedded systems based on ARCv2 Processors.
 
