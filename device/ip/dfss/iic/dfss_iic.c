@@ -28,6 +28,17 @@
  *
 --------------------------------------------- */
 
+/**
+ * \defgroup	DEVICE_DW_IIC	Designware IIC Driver
+ * \ingroup	DEVICE_DW
+ * \brief	Designware IIC Driver Implementation
+ */
+
+/**
+ * \file
+ * \brief	Designware iic driver
+ * \ingroup	DEVICE_DW_IIC
+ */
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -256,12 +267,9 @@ Inline void dfss_iic_set_taraddr(DEV_IIC_INFO *iic_info_ptr,uint32_t dev_id,uint
 		val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
 	}
 	dfss_iic_disable(dev_id);
-	if (val32 != iic_info_ptr->tar_addr)
-	{
-		while ((I2C_ENABLE_STATUS_IC_EN & REG_READ( I2C_ENABLE_STATUS )) != 0) ;
-		REG_WRITE(I2C_TAR, val32 | res);
-		iic_info_ptr->tar_addr = val32;
-	}
+	while ((I2C_ENABLE_STATUS_IC_EN & REG_READ( I2C_ENABLE_STATUS )) != 0);
+	REG_WRITE(I2C_TAR, val32 | res);
+	iic_info_ptr->tar_addr = val32;
 	dfss_iic_enable(dev_id);
 }
 
@@ -372,6 +380,14 @@ Inline int32_t dfss_iic_master_putready(uint32_t dev_id)
 	i2c_info_pt dev = i2c_handles[dev_id];
 	uint32_t status = REG_READ(I2C_STATUS);
 	return ((status & I2C_STATUS_TFNF) != 0);
+}
+
+/** test whether iic is ready to read, 1 ready, 0 not ready */
+Inline int32_t dfss_iic_master_getready(uint32_t dev_id)
+{
+	i2c_info_pt dev = i2c_handles[dev_id];
+	uint32_t status = REG_READ(I2C_STATUS);
+	return ((status & I2C_STATUS_RFNE) != 0);
 }
 
 /** test whether iic is ready to read, 1 ready, 0 not ready */
@@ -866,9 +882,8 @@ static void dfss_i2c_master_close( uint32_t dev_id )
  */
 static int32_t dfss_i2c_master_read(DEV_IIC *iic_obj, uint32_t dev_id, uint8_t * data, uint32_t * size)
 {
-	int32_t ercd = E_OK;
+	volatile int32_t ercd = E_OK;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
-	DFSS_IIC_CTRL *iic_ctrl_ptr = (DFSS_IIC_CTRL *)(iic_info_ptr->iic_ctrl);
 
 	uint32_t free,cnt_res,i;
 	i2c_info_pt dev = i2c_handles[dev_id];
@@ -897,10 +912,8 @@ static int32_t dfss_i2c_master_read(DEV_IIC *iic_obj, uint32_t dev_id, uint8_t *
 		i = 0;
 		cnt_read = 0;
 		while (cnt_read < cnt) {
-			if (i++ > DFSS_IIC_MAX_RETRY_COUNT) return -1;
-			ercd = dfss_iic_mst_chkerr(iic_ctrl_ptr);
-			if (ercd != IIC_ERR_NONE) return ercd;
-			if (REG_READ(I2C_RXFLR)) {
+			if (i++ > DFSS_IIC_MAX_RETRY_COUNT) return (ercd = -1);
+			if (dfss_iic_master_getready(dev_id)) {
 				data[cnt_read] = REG_READ(I2C_DATA_CMD);
 				cnt_read++;
 				i= 0;
@@ -925,7 +938,7 @@ error_exit:
  */
 static int32_t dfss_i2c_master_write(DEV_IIC *iic_obj, uint32_t dev_id, uint8_t * data, uint32_t * size)
 {
-	int32_t ercd = E_OK;
+	volatile int32_t ercd = E_OK;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
 
 	uint32_t free,cnt_res,i;
@@ -1047,6 +1060,9 @@ int32_t dfss_iic_close (DEV_IIC *iic_obj)
 		if (iic_info_ptr->opn_cnt > 0) {
 			iic_info_ptr->opn_cnt = 0;
 			dfss_i2c_master_close(iic_ctrl_ptr->dev_id);
+			iic_info_ptr->status = DEV_DISABLED;
+			iic_info_ptr->next_cond = IIC_MODE_STOP;
+			iic_info_ptr->extra = NULL;
 		} else {
 			ercd = E_CLSED;
 		}
@@ -1074,7 +1090,7 @@ error_exit:
  */
 int32_t dfss_iic_write(DEV_IIC *iic_obj, const void *data, uint32_t len)
 {
-	int32_t ercd = E_OK;
+	volatile int32_t ercd = E_OK;
 	uint32_t i = 0;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
 	DFSS_IIC_CTRL *iic_ctrl_ptr = (DFSS_IIC_CTRL *)(iic_info_ptr->iic_ctrl);
@@ -1099,9 +1115,7 @@ int32_t dfss_iic_write(DEV_IIC *iic_obj, const void *data, uint32_t len)
 	}
 	/* Issue a read request */
 	while (dfss_iic_master_putover(iic_ctrl_ptr->dev_id) == 0) {
-		if (i++ > DFSS_IIC_MAX_RETRY_COUNT) return IIC_ERR_TIMEOUT;
-		ercd = dfss_iic_mst_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (i++ > DFSS_IIC_MAX_RETRY_COUNT) return -1;
 	}
 error_exit:
 	return ercd;
@@ -1121,7 +1135,7 @@ error_exit:
  */
 int32_t dfss_iic_read(DEV_IIC *iic_obj, void *data, uint32_t len)
 {
-	int32_t ercd;
+	volatile int32_t ercd;
 	uint32_t i = 0;
 
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
@@ -1137,9 +1151,7 @@ int32_t dfss_iic_read(DEV_IIC *iic_obj, void *data, uint32_t len)
 
 	/* Issue a read request */
 	while (dfss_iic_master_putready(iic_ctrl_ptr->dev_id) == 0) {
-		if (i++ > DFSS_IIC_MAX_RETRY_COUNT) return IIC_ERR_TIMEOUT;
-		ercd = dfss_iic_mst_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (i++ > DFSS_IIC_MAX_RETRY_COUNT) return -1;
 	}
 
 	if (iic_info_ptr->mode == DEV_MASTER_MODE) { /* Master mode receive data */
