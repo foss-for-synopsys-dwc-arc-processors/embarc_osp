@@ -48,6 +48,7 @@
 #include "arc_exception.h"
 #include "arc_cache.h"
 #include "arc_udma.h"
+#include "arc_mpu.h"
 
 #include "board.h"
 

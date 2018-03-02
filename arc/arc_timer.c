@@ -35,8 +35,7 @@
  * \todo RTC support should be improved if RTC is enabled
  */
 #include "arc_timer.h"
-#include "arc.h"
-#include "arc_builtin.h"
+
 
 /**
  * \brief  check whether the specific timer present

@@ -90,6 +90,8 @@ extern "C" {
 #define __EMBARC_TO_STRING(x) #x
 #define EMBARC_TO_STRING(x)   __EMBARC_TO_STRING(x)
 
+#define DIV_ROUND_UP(x, y)  (((x) + (y) - 1) / (y))
+
 #if defined(__GNU__)
 /* GNU tool specific definitions */
 

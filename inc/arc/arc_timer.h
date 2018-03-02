@@ -42,6 +42,7 @@
 #ifndef _ARC_HAL_TIMER_H_
 #define _ARC_HAL_TIMER_H_
 #include "arc.h"
+#include "arc_builtin.h"
 #include "embARC_toolchain.h"
 
 /**
