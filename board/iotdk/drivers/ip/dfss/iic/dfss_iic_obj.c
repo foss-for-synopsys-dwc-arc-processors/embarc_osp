@@ -59,514 +59,85 @@
 #include "io_config.h"
 #include "apexextensions.h"
 
-#include "i2c_priv.h"
 #include "dev_iic.h"
-#include "i2c_master.h"
+#include "dfss_iic.h"
 #include "dfss_iic_obj.h"
 
-// #ifdef DEBUG
-// #undef DEBUG
-// #endif
 #define DEBUG
 #include "embARC_debug.h"
 
-#define IC_TX_RX_FIFO_SIZE		16	/* TX/RX FIFO size in hardware */
-
-/* IIC STATUS register */
-#define IC_STATUS_TFNF			(0x02)	/* (1 << 1) */
-#define IC_STATUS_RFNE			(0x08)	/* (1 << 3) */
-
-/* interrupt callback routines select macros definitions */
-#define DFSS_IIC_RDY_SND		(0x1)	/* ready to send callback */
-#define DFSS_IIC_RDY_RCV		(0x2)	/* ready to receive callback */
-
-/** check expressions used in DFSS IIC driver implementation */
-#define DFSS_IIC_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
-
-typedef struct iic_dev_context
-{
-	uint32_t		dev_id;		/* Device ID */
-	uint32_t 		reg_base;	/* AUX base address */
-	uint32_t 		int_err;	/* Interrupt nunmber ERR */
-	uint32_t 		int_rx_avail;	/* Interrupt number RX_AVAIL */
-	uint32_t 		int_tx_req;	/* Interrupt TX_REQ */
-	uint32_t 		int_stop_det; 	/* Interrupt STOP_DET */
-	volatile int32_t 	tx_over;	/* TX done flag */
-	volatile int32_t 	rx_over; 	/* RX done flag */
-	DEV_IIC_INFO 		*info;		/* IIC device information */
-} IIC_DEV_CONTEXT;
-
-IIC_DEV_CONTEXT iic_ctx[3] =
-{
-// (USE_DFSS_IIC_0)
-	{.dev_id = 0,
-	.reg_base = AR_IO_I2C_MST0_CON,
-	.int_err = IO_I2C_MST0_INT_ERR,
-	.int_rx_avail = IO_I2C_MST0_INT_RX_AVAIL,
-	.int_tx_req = IO_I2C_MST0_INT_TX_REQ,
-	.int_stop_det = IO_I2C_MST0_INT_STOP_DET },
-// (USE_DFSS_IIC_1)
-	{.dev_id = 1,
-	.reg_base = AR_IO_I2C_MST1_CON,
-	.int_err = IO_I2C_MST1_INT_ERR,
-	.int_rx_avail = IO_I2C_MST1_INT_RX_AVAIL,
-	.int_tx_req = IO_I2C_MST1_INT_TX_REQ,
-	.int_stop_det = IO_I2C_MST1_INT_STOP_DET },
-// (USE_DFSS_IIC_2)
-	{2},
-};
-
-static inline void dfss_iic_master_write_reg(uint32_t dev_id, uint32_t reg, uint32_t val)
-{
-	_arc_aux_write(iic_ctx[dev_id].reg_base + reg, val);
-}
-
-static inline uint32_t dfss_iic_master_read_reg(uint32_t dev_id, uint32_t reg)
-{
-	return (_arc_aux_read(iic_ctx[dev_id].reg_base + reg));
-}
-
-static inline IIC_DEV_CONTEXT *get_context(uint32_t dev_id)
-{
-	return &iic_ctx[dev_id];
-}
-
-/** test whether iic is ready to write, 1 ready, 0 not ready */
-static inline int32_t dfss_iic_master_putready(uint32_t dev_id)
-{
-	uint32_t status = dfss_iic_master_read_reg(dev_id, I2C_STATUS);
-	return ((status & IC_STATUS_TFNF) != 0);
-}
-
-/** test whether iic is ready to receive, 1 ready, 0 not ready */
-static inline int32_t dfss_iic_master_getready(uint32_t dev_id)
-{
-	uint32_t status = dfss_iic_master_read_reg(dev_id, I2C_STATUS);
-	return ((status & IC_STATUS_RFNE) != 0);
-}
-
-/** Disable designware iic bit interrupt with mask */
-static inline void dfss_iic_mask_interrupt(uint32_t dev_id, uint32_t mask)
-{
-	uint32_t intr_mask = dfss_iic_master_read_reg(dev_id, I2C_INTR_MASK);
-	dfss_iic_master_write_reg(dev_id, I2C_INTR_MASK, intr_mask&(~mask));
-}
-
-static void iic_rx_cb(uint32_t dev_id)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	ctx->rx_over = 1;
-}
-
-static void iic_tx_cb(uint32_t dev_id)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	ctx->tx_over = 1;
-}
-
-static void iic_err_cb(uint32_t dev_id)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	ctx->tx_over = -1;
-	ctx->rx_over = -1;
-}
-
-/* enable IIC mater */
-static void dfss_iic_master_enable_device(uint32_t dev_id)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	DEV_IIC_INFO *info = ctx->info;
-	uint32_t enable = dfss_iic_master_read_reg(dev_id, I2C_ENABLE);
-
-	if (((enable & 0x1) & DEV_ENABLED) == 0)
-	{
-		dfss_iic_master_write_reg(dev_id, I2C_ENABLE, (enable | 0x1));
-		info->status |= DEV_ENABLED;
-	}
-}
-
-/* disable IIC master */
-static void dfss_iic_master_disable_device(uint32_t dev_id)
-{
-	uint32_t enable = dfss_iic_master_read_reg(dev_id, I2C_ENABLE);
-
-	dfss_iic_master_write_reg(dev_id, I2C_ENABLE, (enable & (~(0x1))));
-
-	while ((0x1 & dfss_iic_master_read_reg(dev_id, I2C_ENABLE_STATUS)) != 0);
-}
-
-/* reset IIC master */
-static void dfss_iic_master_reset_device(uint32_t dev_id)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	DEV_IIC_INFO *info = ctx->info;
-
-	io_i2c_master_close(dev_id);
-	info->next_cond = IIC_MODE_STOP;
-	info->cur_state = IIC_FREE;
-	info->err_state = IIC_ERR_NONE;
-	ctx->tx_over = 0;
-	ctx->rx_over = 0;
-	io_i2c_master_open(dev_id);
-}
-
-/** Disable iic master interrupt for transmit or receive */
-static void dfss_iic_master_dis_cbr(uint32_t dev_id, uint32_t cbrtn)
-{
-	switch (cbrtn)
-	{
-		case DFSS_IIC_RDY_SND:
-			dfss_iic_mask_interrupt(dev_id, R_TX_EMPTY);
-			break;
-		case DFSS_IIC_RDY_RCV:
-			dfss_iic_mask_interrupt(dev_id, R_TX_EMPTY | R_RX_FULL);
-			break;
-		default:
-			break;
-	}
-}
-
-/* flush TX FIFO */
-static void dfss_iic_master_flush_tx(uint32_t dev_id)
-{
-	(void)dev_id;
-}
-
-/* flush RX FIFO */
-static void dfss_iic_master_flush_rx(uint32_t dev_id)
-{
-	(void)dev_id;
-}
-
-/* Get available transmit fifo count */
-static int32_t dfss_iic_master_get_txavail(uint32_t dev_id)
-{
-	uint32_t flr = dfss_iic_master_read_reg(dev_id, I2C_TXFLR);
-	return (int32_t)(IC_TX_RX_FIFO_SIZE - flr);
-}
-
-/* Get available receive fifo count */
-static int32_t dfss_iic_master_get_rxavail(uint32_t dev_id)
-{
-	uint32_t flr = dfss_iic_master_read_reg(dev_id, I2C_RXFLR);
-	return (int32_t)flr;
-}
-
-static int32_t dfss_iic_master_close(uint32_t dev_id)
-{
-	int32_t ret = E_OK;
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	DEV_IIC_INFO *info = ctx->info;
-
-	if (info->opn_cnt > 0)
-	{
-		info->opn_cnt = 0;
-		io_i2c_master_close(dev_id);
-		int_disable(ctx->int_err);
-		int_disable(ctx->int_rx_avail);
-		int_disable(ctx->int_tx_req);
-		int_disable(ctx->int_stop_det);
-	}
-	else
-	{
-		ret = E_CLSED;
-	}
-
-	return ret;
-}
-
-static int32_t dfss_iic_master_control(uint32_t dev_id, uint32_t ctrl_cmd, void *param)
-{
-	int32_t ercd = E_OK;
-	uint32_t val32;
-	uint32_t arg;
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	DEV_IIC_INFO *iic_info_ptr = ctx->info;
-	io_cb_t callback;
-
-	switch (ctrl_cmd)
-	{
-		case IIC_CMD_GET_STATUS:
-			DFSS_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = iic_info_ptr->status;
-			break;
-		case IIC_CMD_ENA_DEV:
-			dfss_iic_master_enable_device(dev_id);
-			break;
-		case IIC_CMD_DIS_DEV:
-			dfss_iic_master_disable_device(dev_id);
-			break;
-		case IIC_CMD_RESET:
-			dfss_iic_master_reset_device(dev_id);
-			break;
-		case IIC_CMD_FLUSH_TX:
-			dfss_iic_master_flush_tx(dev_id);
-			break;
-		case IIC_CMD_FLUSH_RX:
-			dfss_iic_master_flush_rx(dev_id);
-			break;
-		case IIC_CMD_SET_ADDR_MODE:
-			val32 = (uint32_t)param;
-			DFSS_IIC_CHECK_EXP((val32==IIC_7BIT_ADDRESS) || (val32==IIC_10BIT_ADDRESS), E_PAR);
-			if (val32==IIC_10BIT_ADDRESS)
-			{
-				arg = 1;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
-				iic_info_ptr->addr_mode = IIC_10BIT_ADDRESS;
-			}
-			else
-			{
-				arg = 0;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
-				iic_info_ptr->addr_mode = IIC_7BIT_ADDRESS;
-			}
-			iic_info_ptr->addr_mode = val32;
-			break;
-		case IIC_CMD_GET_RXAVAIL:
-			DFSS_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dfss_iic_master_get_rxavail(dev_id);
-			break;
-		case IIC_CMD_GET_TXAVAIL:
-			DFSS_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dfss_iic_master_get_txavail(dev_id);
-			break;
-		case IIC_CMD_SET_TXCB:
-			DFSS_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			callback.cb = param;
-			io_i2c_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
-			break;
-		case IIC_CMD_SET_RXCB:
-			DFSS_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			callback.cb = param;
-			io_i2c_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
-			break;
-		case IIC_CMD_SET_ERRCB:
-			DFSS_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			callback.cb = param;
-			io_i2c_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
-			break;
-		case IIC_CMD_ABORT_TX:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_ABORT_RX:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_SET_TXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0)
-			{
-				dfss_iic_master_dis_cbr(dev_id, DFSS_IIC_RDY_SND);
-			}
-			else
-			{
-				dfss_iic_master_dis_cbr(dev_id, DFSS_IIC_RDY_SND);
-			}
-			break;
-		case IIC_CMD_SET_RXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0)
-			{
-				dfss_iic_master_dis_cbr(dev_id, DFSS_IIC_RDY_RCV);
-			}
-			else
-			{
-				dfss_iic_master_dis_cbr(dev_id, DFSS_IIC_RDY_RCV);
-			}
-			break;
-		case IIC_CMD_SET_TXINT_BUF:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_SET_RXINT_BUF:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_MST_SET_SPEED_MODE:
-			val32 = (uint32_t)param;
-			DFSS_IIC_CHECK_EXP((val32>=IIC_SPEED_STANDARD) && (val32<=IIC_SPEED_FAST), E_PAR);
-			if (val32 == IIC_SPEED_STANDARD)
-			{
-				arg = 1;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
-				iic_info_ptr->speed_mode = IIC_SPEED_STANDARD;
-			}
-			else
-			{
-				arg = 2;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
-				iic_info_ptr->speed_mode = IIC_SPEED_FAST;
-			}
-			break;
-		case IIC_CMD_MST_SET_TAR_ADDR:
-			if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
-				val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
-			} else {
-				val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
-			}
-			if (val32 != iic_info_ptr->tar_addr)
-			{
-				arg = val32;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_TARGET_ADDR, &arg);
-				iic_info_ptr->tar_addr = val32;
-			}
-			break;
-		case IIC_CMD_MST_SET_NEXT_COND:
-			break;
-		default:
-			ercd = E_NOSPT;
-			break;
-	}
-
-error_exit:
-	return ercd;
-}
-
-
-/* param: speed mode, 1-standard mode, 2-fast mode, 2 as default in hardware */
-static int32_t dfss_iic_master_open(uint32_t dev_id, uint32_t param)
-{
-	int32_t ercd = E_OK;
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	DEV_IIC_INFO *info = ctx->info;
-	io_cb_t callback;
-	int32_t int_e = 0;
-	uint32_t val32 = 0;
-	uint32_t arg;
-
-	DFSS_IIC_CHECK_EXP((param>=IIC_SPEED_STANDARD) && (param<=IIC_SPEED_FAST), E_PAR);
-
-	if (info->opn_cnt == 0)
-	{
-		DFSS_IIC_CHECK_EXP(io_i2c_master_open(dev_id) == 0, E_SYS);
-		val32 = (uint32_t)param;
-		if (val32 == IIC_SPEED_STANDARD)
-		{
-			arg = 1;
-			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
-			info->speed_mode = IIC_SPEED_STANDARD;
-		}
-		else
-		{
-			arg = 2;
-			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
-			info->speed_mode = IIC_SPEED_FAST;
-		}
-
-		callback.cb = &iic_rx_cb;
-		io_i2c_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
-		callback.cb = &iic_tx_cb;
-		io_i2c_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
-		callback.cb = &iic_err_cb;
-		io_i2c_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
-
-		info->opn_cnt++;
-		info->addr_mode = IIC_7BIT_ADDRESS;
-		info->mode = DEV_MASTER_MODE;
-		info->tar_addr &= IIC_7BIT_ADDRESS_MASK;
-
-		ctx->tx_over = 1;
-		ctx->rx_over = 1;
-
-		/* enable interrupt */
-		int_e = int_e | int_enable(ctx->int_err);
-		int_e = int_e | int_enable(ctx->int_rx_avail);
-		int_e = int_e | int_enable(ctx->int_tx_req);
-		int_e = int_e | int_enable(ctx->int_stop_det);
-		if (int_e != 0)
-		{
-			ercd = E_PAR;
-		}
-	}
-	else
-	{
-		ercd = E_OPNED;
-	}
-
-error_exit:
-	return ercd;
-}
-
-static int32_t dfss_iic_master_write(uint32_t dev_id, const void *data, uint32_t len)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	uint32_t xlen;
-
-	if ((ctx->rx_over != 1) && (ctx->tx_over != 1))
-	{
-		return E_NORES;
-	}
-	xlen = len;
-	ctx->tx_over = 0;	// busy
-	io_i2c_master_write(dev_id, (uint8_t *)data, &xlen);
-	while (!ctx->tx_over);
-
-	return len;
-}
-
-static int32_t dfss_iic_master_read(uint32_t dev_id, const void *data, uint32_t len)
-{
-	IIC_DEV_CONTEXT *ctx = get_context(dev_id);
-	uint32_t xlen;
-
-	if ((ctx->rx_over != 1) && (ctx->tx_over != 1))
-	{
-		return E_NORES;
-	}
-	xlen = len;
-	ctx->rx_over = 0;	// busy
-	io_i2c_master_read(dev_id, (uint8_t *)data, &xlen);
-	while (!ctx->rx_over);
-
-	return len;
-}
+#define IIC_TX_RX_FIFO_SIZE		16	/* TX/RX FIFO size in hardware */
 
 #if (USE_DFSS_IIC_0)
 /**
  * \name	DFSS IIC 0 Object Instantiation
  * @{
  */
+static void dfss_iic_0_isr(void *ptr);
+#define DFSS_IIC_0_TARADDR		(0)
+#define DFSS_IIC_0_MASTER_CODE		(0)
+#define DFSS_IIC_0_IC_CAPLOADING	(DFSS_IIC_CAP_LOADING_100PF)
 
-#define DFSS_IIC_0_TARADDR	(0)
-
-static DEV_IIC			dfss_iic_0;		/*!< DFSS IIC object */
+DEV_IIC		dfss_iic_0;		/*!< DFSS IIC object */
+DFSS_IIC_CTRL	dfss_iic_0_ctrl;	/*!< DFSS iic 0 ctrl */
 
 /** DFSS IIC 0 open */
 static int32_t dfss_iic_0_open (uint32_t mode, uint32_t param)
 {
-	(void)mode;
-	return dfss_iic_master_open(0, param);
+	return dfss_iic_open(&dfss_iic_0, mode, param);
 }
 /** DFSS IIC 0 close */
 static int32_t dfss_iic_0_close (void)
 {
-	return dfss_iic_master_close(0);
+	return dfss_iic_close(&dfss_iic_0);
 }
 /** DFSS IIC 0 control */
 static int32_t dfss_iic_0_control (uint32_t ctrl_cmd, void *param)
 {
-	return dfss_iic_master_control(0, ctrl_cmd, param);
+	return dfss_iic_control(&dfss_iic_0, ctrl_cmd, param);
 }
 /** DFSS IIC 0 write */
 static int32_t dfss_iic_0_write (const void *data, uint32_t len)
 {
-	return dfss_iic_master_write(0, data, len);
+	return dfss_iic_write(&dfss_iic_0, data, len);
 }
 /** DFSS IIC 0 read */
 static int32_t dfss_iic_0_read (void *data, uint32_t len)
 {
-	return dfss_iic_master_read(0, data, len);
+	return dfss_iic_read(&dfss_iic_0, data, len);
+}
+/** DFSS iic 0 interrupt routine */
+static void dfss_iic_0_isr(void *ptr)
+{
+	dfss_iic_isr(&dfss_iic_0, ptr);
 }
 /** install DFSS IIC 0 to system */
 static void dfss_iic_0_install(void)
 {
 	DEV_IIC *dfss_iic_ptr = &dfss_iic_0;
 	DEV_IIC_INFO *dfss_iic_info_ptr = &(dfss_iic_0.iic_info);
-	IIC_DEV_CONTEXT *ctx = get_context(0);
+	DFSS_IIC_CTRL *dfss_iic_ctrl_ptr = &dfss_iic_0_ctrl;
 
-	ctx->info = &(dfss_iic_0.iic_info);
 	/* Info init */
-	dfss_iic_info_ptr->iic_ctrl = NULL;
+	dfss_iic_info_ptr->iic_ctrl = (void *)dfss_iic_ctrl_ptr;
 	dfss_iic_info_ptr->opn_cnt = 0;
 	dfss_iic_info_ptr->addr_mode = IIC_7BIT_ADDRESS;
 	dfss_iic_info_ptr->tar_addr = DFSS_IIC_0_TARADDR;
+
+	/* Variables which should be set during object implementation */
+	dfss_iic_ctrl_ptr->dev_id = 0;
+	dfss_iic_ctrl_ptr->ic_caploading= DFSS_IIC_0_IC_CAPLOADING;
+	dfss_iic_ctrl_ptr->support_modes = DFSS_IIC_BOTH_SUPPORTED;
+	dfss_iic_ctrl_ptr->tx_fifo_len = IIC_TX_RX_FIFO_SIZE;
+	dfss_iic_ctrl_ptr->rx_fifo_len = IIC_TX_RX_FIFO_SIZE;
+	dfss_iic_ctrl_ptr->iic_master_code = DFSS_IIC_0_MASTER_CODE;
+	dfss_iic_ctrl_ptr->retry_cnt = DFSS_IIC_MAX_RETRY_COUNT;
+	dfss_iic_ctrl_ptr->dfss_iic_int_handler = dfss_iic_0_isr;
+
+	/* Variables which always change during iic operation */
+	dfss_iic_ctrl_ptr->int_status = 0;
+	dfss_iic_ctrl_ptr->iic_tx_over = 0;
+	dfss_iic_ctrl_ptr->iic_rx_over = 0;
 
 	/** iic dev init */
 	dfss_iic_ptr->iic_open = dfss_iic_0_open;
@@ -584,50 +155,71 @@ static void dfss_iic_0_install(void)
  * \name	DFSS IIC 1 Object Instantiation
  * @{
  */
-
+static void dfss_iic_1_isr(void *ptr);
 #define DFSS_IIC_1_TARADDR	(0)
+#define DFSS_IIC_1_MASTER_CODE	(0)
+#define DFSS_IIC_1_IC_CAPLOADING	(DFSS_IIC_CAP_LOADING_100PF)
 
-static DEV_IIC			dfss_iic_1;		/*!< DFSS IIC object */
+DEV_IIC		dfss_iic_1;		/*!< DFSS IIC object */
+DFSS_IIC_CTRL	dfss_iic_1_ctrl;	/*!< DFSS iic 1 ctrl */
 
 /** DFSS IIC 1 open */
 static int32_t dfss_iic_1_open (uint32_t mode, uint32_t param)
 {
-	(void)mode;
-	return dfss_iic_master_open(1, param);
+	return dfss_iic_open(&dfss_iic_1, mode, param);
 }
 /** DFSS IIC 1 close */
 static int32_t dfss_iic_1_close (void)
 {
-	return dfss_iic_master_close(1);
+	return dfss_iic_close(&dfss_iic_1);
 }
 /** DFSS IIC 1 control */
 static int32_t dfss_iic_1_control (uint32_t ctrl_cmd, void *param)
 {
-	return dfss_iic_master_control(1, ctrl_cmd, param);
+	return dfss_iic_control(&dfss_iic_1, ctrl_cmd, param);
 }
 /** DFSS IIC 1 write */
 static int32_t dfss_iic_1_write (const void *data, uint32_t len)
 {
-	return dfss_iic_master_write(1, data, len);
+	return dfss_iic_write(&dfss_iic_1, data, len);
 }
 /** DFSS IIC 1 read */
 static int32_t dfss_iic_1_read (void *data, uint32_t len)
 {
-	return dfss_iic_master_read(1, data, len);
+	return dfss_iic_read(&dfss_iic_1, data, len);
+}
+/** DFSS iic 1 interrupt routine */
+static void dfss_iic_1_isr(void *ptr)
+{
+	dfss_iic_isr(&dfss_iic_0, ptr);
 }
 /** install DFSS IIC 1 to system */
 static void dfss_iic_1_install(void)
 {
 	DEV_IIC *dfss_iic_ptr = &dfss_iic_1;
 	DEV_IIC_INFO *dfss_iic_info_ptr = &(dfss_iic_1.iic_info);
-	IIC_DEV_CONTEXT *ctx = get_context(1);
+	DFSS_IIC_CTRL *dfss_iic_ctrl_ptr = &dfss_iic_1_ctrl;
 
-	ctx->info = &(dfss_iic_1.iic_info);
 	/* Info init */
-	dfss_iic_info_ptr->iic_ctrl = NULL;
+	dfss_iic_info_ptr->iic_ctrl = (void *)dfss_iic_ctrl_ptr;
 	dfss_iic_info_ptr->opn_cnt = 0;
 	dfss_iic_info_ptr->addr_mode = IIC_7BIT_ADDRESS;
-	dfss_iic_info_ptr->tar_addr = DFSS_IIC_1_TARADDR;
+	dfss_iic_info_ptr->tar_addr = DFSS_IIC_0_TARADDR;
+
+	/* Variables which should be set during object implementation */
+	dfss_iic_ctrl_ptr->dev_id = 1;
+	dfss_iic_ctrl_ptr->ic_caploading= DFSS_IIC_1_IC_CAPLOADING;
+	dfss_iic_ctrl_ptr->support_modes = DFSS_IIC_BOTH_SUPPORTED;
+	dfss_iic_ctrl_ptr->tx_fifo_len = IIC_TX_RX_FIFO_SIZE;
+	dfss_iic_ctrl_ptr->rx_fifo_len = IIC_TX_RX_FIFO_SIZE;
+	dfss_iic_ctrl_ptr->iic_master_code = DFSS_IIC_1_MASTER_CODE;
+	dfss_iic_ctrl_ptr->retry_cnt = DFSS_IIC_MAX_RETRY_COUNT;
+	dfss_iic_ctrl_ptr->dfss_iic_int_handler = dfss_iic_1_isr;
+
+	/* Variables which always change during iic operation */
+	dfss_iic_ctrl_ptr->int_status = 0;
+	dfss_iic_ctrl_ptr->iic_tx_over = 0;
+	dfss_iic_ctrl_ptr->iic_rx_over = 0;
 
 	/** iic dev init */
 	dfss_iic_ptr->iic_open = dfss_iic_1_open;
@@ -635,7 +227,6 @@ static void dfss_iic_1_install(void)
 	dfss_iic_ptr->iic_control = dfss_iic_1_control;
 	dfss_iic_ptr->iic_write = dfss_iic_1_write;
 	dfss_iic_ptr->iic_read = dfss_iic_1_read;
-
 }
 #endif /* USE_DFSS_IIC_1 */
 /** @} end of name */
