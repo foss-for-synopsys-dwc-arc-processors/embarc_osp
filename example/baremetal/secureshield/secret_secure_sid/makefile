@@ -9,7 +9,7 @@ OLEVEL ?= O2
 
 BOARD ?= nsim
 
-CUR_CORE = arcemsecureshield
+CUR_CORE = arcsem
 
 APPL_DEFINES  = -DNTSHELL_USE_CMDS_PERIPHERAL=0 -DNTSHELL_USE_CMDS_ARC=0
 

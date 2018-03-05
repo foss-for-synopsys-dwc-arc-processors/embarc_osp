@@ -10,15 +10,14 @@
 BOARD_NSIM_DIR = $(BOARDS_ROOT)/nsim
 ##
 # nsim version definition
-# 1506 stands for 2015.06 release
 # When you don't special BD_VER
 # in any other place or through make options
 # it will select a proper BD_VER according to your cur_core
 ##
-SUPPORTED_BD_VERS = 10 1506
+SUPPORTED_BD_VERS = 10
 
 ## Select Board Version
-BD_VER ?= 1506
+BD_VER ?= 10
 
 override BD_VER := $(strip $(BD_VER))
 

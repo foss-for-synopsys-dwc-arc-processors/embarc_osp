@@ -104,7 +104,7 @@
 
 /* secure ram reserved for secure bin file */
 #ifndef SECURESHIELD_SECURE_RAM_USAGE
-#define SECURESHIELD_SECURE_RAM_USAGE	(SECURE_HEAPSIZE+SECURE_STACKSIZE+8192) 
+#define SECURESHIELD_SECURE_RAM_USAGE	(SECURE_HEAPSIZE+SECURE_STACKSIZE+8192)
 #endif
 
 #include "container_config.h"

@@ -9,7 +9,7 @@ BOARD ?= nsim
 
 BD_VER ?= 1506
 
-CUR_CORE ?= arcemsecureshield
+CUR_CORE ?= arcsem
 
 # Selected OS
 OS_SEL = freertos

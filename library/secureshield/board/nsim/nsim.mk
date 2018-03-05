@@ -1,5 +1,5 @@
-ifneq ($(VALID_CUR_CORE), arcemfull)
-ifneq ($(VALID_CUR_CORE), arcemsecureshield)
+ifneq ($(VALID_CUR_CORE), arcem)
+ifneq ($(VALID_CUR_CORE), arcsem)
 $(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield!)
 else
 ifneq ($(LIB_SECURESHIELD_VERSION), 2)
