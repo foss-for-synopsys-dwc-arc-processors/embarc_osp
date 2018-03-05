@@ -41,7 +41,7 @@ void arc_mpu_enable(void)
 #if ARC_FEATURE_MPU_VERSION == 2
 	_arc_aux_write(AUX_MPU_EN,
 		_arc_aux_read(AUX_MPU_EN) | AUX_MPU_EN_ENABLE);
-#elif ARC_FEATURE_MPU_VERSION == 3
+#elif ARC_FEATURE_MPU_VERSION == 4
 	arc_mpu_default(0);
 #endif
 }
@@ -51,7 +51,7 @@ void arc_mpu_disable(void)
 #if ARC_FEATURE_MPU_VERSION == 2
 	_arc_aux_write(AUX_MPU_EN,
 		_arc_aux_read(AUX_MPU_EN) | AUX_MPU_EN_DISABLE);
-#elif ARC_FEATURE_MPU_VERSION == 3
+#elif ARC_FEATURE_MPU_VERSION == 4
 	arc_mpu_default(ARC_MPU_REGION_ALL_ATTR);
 #endif
 }
@@ -89,7 +89,7 @@ void arc_mpu_region(uint32_t index, uint32_t base, uint32_t size,
 	_arc_aux_write(AUX_MPU_RDP0 + index, region_attr);
 	_arc_aux_write(AUX_MPU_RDB0 + index, base);
 
-#elif ARC_FEATURE_MPU_VERSION == 3
+#elif ARC_FEATURE_MPU_VERSION == 4
 	if (size < (1 << ARC_FEATURE_MPU_ALIGNMENT_BITS)) {
 		size = (1 << ARC_FEATURE_MPU_ALIGNMENT_BITS);
 	}
@@ -134,7 +134,7 @@ int32_t arc_mpu_in_region(uint32_t index, uint32_t start, uint32_t size)
 		return 1;
 	}
 
-#elif ARC_FEATURE_MPU_VERSION == 3
+#elif ARC_FEATURE_MPU_VERSION == 4
 
 	if ((index == arc_mpu_probe(start)) &&
 		(index == arc_mpu_probe(start + size))) {
@@ -160,7 +160,7 @@ int32_t arc_mpu_probe(uint32_t addr)
 
 	return -1;
 
-#elif ARC_FEATURE_MPU_VERSION == 3
+#elif ARC_FEATURE_MPU_VERSION == 4
 	_arc_aux_write(AUX_MPU_PROBE, addr);
 	index = _arc_aux_read(AUX_MPU_INDEX);
 

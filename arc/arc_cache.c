@@ -36,9 +36,6 @@
 #undef LIB_SECURESHIELD_OVERRIDES
 #include "arc_cache.h"
 
-#define DIV_ROUND_UP(x, y)  (((x) + (y) - 1) / (y))
-
-
 struct cache_config {
 	uint8_t ver;			/* version */
 	uint8_t assoc;			/* Cache Associativity */
