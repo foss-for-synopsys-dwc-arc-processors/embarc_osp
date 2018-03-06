@@ -599,7 +599,6 @@ WF_OPS_PTR get_wf_ops(void)
 
 /*********************PMOD WIFI -> RW009*********************/
 #elif defined(WIFI_RW009)
-
 #include "rw009.h"
 
 /** install wnic 0 to system */
@@ -826,11 +825,220 @@ static void pmwifi_0_install(void)
 	pmwifi_wnic_ptr->wnic_reset		= pmwifi_0_wnic_reset		;
 	pmwifi_wnic_ptr->period_process		= pmwifi_0_period_process	;
 }
-#else /* PMWIFI_RW009 */
+
+/*********************PMOD WIFI -> ESP8266*********************/
+#elif defined(WIFI_ESP8266)
+#error "ESP8266 uses UART-SLIP"
+
+#else
 #error "no wifi module selected"
 #endif
 
 #endif /* USE_EMSK_PMWIFI_0 */
+
+#if (USE_EMSK_SLIPWIFI_0)
+#if defined(WIFI_ESP8266)
+#include "slip_esp.h"
+
+static DEV_WNIC slipwifi_0_wnic;
+static SLIP_ESP_DEF esp;
+
+/** install wnic 0 to system */
+#define SLIPWIFI_0_NAME		"SLIP-ESP"
+#define SLIPWIFI_0_IFNAME0	's'
+#define SLIPWIFI_0_IFNAME1	'l'
+const uint8_t  slipwifi_0_mac_addr[WNIC_HDR_LEN] = {
+	EMSK_PMWIFI_0_MAC_ADDR0,
+	EMSK_PMWIFI_0_MAC_ADDR1,
+	EMSK_PMWIFI_0_MAC_ADDR2,
+	EMSK_PMWIFI_0_MAC_ADDR3,
+	EMSK_PMWIFI_0_MAC_ADDR4,
+	EMSK_PMWIFI_0_MAC_ADDR5
+};
+
+static int32_t slipwifi_0_wnic_get_info(uint32_t cmd, void *rinfo)
+{
+	return slip_esp_wnic_get_info(&slipwifi_0_wnic, cmd, rinfo);
+}
+static int32_t slipwifi_0_wnic_control(uint32_t ctrl_cmd, void *param){
+	return slip_esp_wnic_control(&slipwifi_0_wnic, ctrl_cmd, param);
+}
+
+static int32_t slipwifi_0_wnic_init(uint32_t network_type){
+	return slip_esp_wnic_init(&slipwifi_0_wnic, network_type);
+}
+
+static int32_t slipwifi_0_poll_init_status(void){
+	return slip_esp_poll_init_status(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_poll_busy_status(void){
+	return slip_esp_poll_busy_status(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_set_network_type(uint32_t type){
+	return slip_esp_set_network_type(&slipwifi_0_wnic, type);
+}
+
+static int32_t slipwifi_0_set_macaddr(uint8_t *mac){
+	return slip_esp_set_macaddr(&slipwifi_0_wnic, mac);
+}
+
+static int32_t slipwifi_0_get_macaddr(uint8_t *mac){
+	return slip_esp_get_macaddr(&slipwifi_0_wnic, mac);
+}
+
+static int32_t slipwifi_0_start_scan(void){
+	return slip_esp_start_scan(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_stop_scan(void){
+	return slip_esp_stop_scan(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_poll_scan_status(void){
+	return slip_esp_poll_scan_status(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_get_scan_result_cnt(void){
+	return slip_esp_get_scan_result_cnt(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_get_scan_result(uint32_t index, WNIC_SCAN_RESULT *result){
+	return slip_esp_get_scan_result(&slipwifi_0_wnic, index, result);
+}
+
+static int32_t slipwifi_0_wnic_connect(uint32_t security, const uint8_t *ssid, WNIC_AUTH_KEY *key){
+	return slip_esp_wnic_connect(&slipwifi_0_wnic, security, ssid, key);
+}
+
+static int32_t slipwifi_0_poll_conn_status(void){
+	return slip_esp_poll_conn_status(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_wnic_disconnect(void){
+	return slip_esp_wnic_disconnect(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_prepare_tx(uint32_t tx_len){
+	return slip_esp_prepare_tx(&slipwifi_0_wnic, tx_len);
+}
+
+static int32_t slipwifi_0_add_tx_data(uint8_t *p_buf, uint32_t len){
+	return slip_esp_add_tx_data(&slipwifi_0_wnic, p_buf, len);
+}
+
+static int32_t slipwifi_0_commit_tx(uint32_t len){
+	return slip_esp_commit_tx(&slipwifi_0_wnic, len);
+}
+
+static int32_t slipwifi_0_prepare_rx(void){
+	return slip_esp_prepare_rx(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_get_rx_data(uint8_t *p_buf, uint32_t len){
+	return slip_esp_get_rx_data(&slipwifi_0_wnic, p_buf, len);
+}
+
+static int32_t slipwifi_0_accept_rx(void){
+	return slip_esp_accept_rx(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_config_power_mode(int32_t power_mode){
+	return slip_esp_config_power_mode(&slipwifi_0_wnic, power_mode);
+}
+
+static int32_t slipwifi_0_poll_power_mode(void){
+	return slip_esp_poll_power_mode(&slipwifi_0_wnic);
+}
+
+static int32_t slipwifi_0_wnic_reset(void){
+	return slip_esp_wnic_reset(&slipwifi_0_wnic);
+}
+
+static void slipwifi_0_period_process(void *ptr){
+	slip_esp_period_process(&slipwifi_0_wnic, ptr);
+}
+
+static void slipwifi_0_install(void)
+{
+	DEV_WNIC *slipwifi_wnic_ptr = &slipwifi_0_wnic;
+	DEV_WNIC_INFO *slipwifi_wnic_info_ptr = &(slipwifi_0_wnic.wnic_info);
+	DEV_WNIC_ON_OPS *slipwifi_wnic_on_ops_ptr = &(slipwifi_0_wnic.wnic_on_ops);
+	SLIP_ESP_DEF_PTR esp_ptr = &esp;
+
+	memcpy((void *)slipwifi_wnic_info_ptr->name, (void *)SLIPWIFI_0_NAME, strlen(SLIPWIFI_0_NAME));
+	slipwifi_wnic_info_ptr->ifname[0] = SLIPWIFI_0_IFNAME0;
+	slipwifi_wnic_info_ptr->ifname[1] = SLIPWIFI_0_IFNAME1;
+	memset((void *)&slipwifi_wnic_info_ptr->ssid, 0, sizeof(WNIC_CFG_SSID));
+
+	slipwifi_wnic_info_ptr->ctrl = esp_ptr;
+	slipwifi_wnic_info_ptr->extra = NULL;
+	slipwifi_wnic_info_ptr->opn_flg = DEV_CLOSED;
+	slipwifi_wnic_info_ptr->err_flg = DEV_GOOD;
+	slipwifi_wnic_info_ptr->network_type = WNIC_NETWORK_TYPE_INFRASTRUCTURE;
+	slipwifi_wnic_info_ptr->init_status = WNIC_NOT_INITIALIZED;
+	slipwifi_wnic_info_ptr->conn_status = WNIC_NOT_CONNECTED;
+	slipwifi_wnic_info_ptr->conn_type = WNIC_CONN_NONE;
+	slipwifi_wnic_info_ptr->mac_status = WNIC_MAC_NOT_UPDATED;
+	slipwifi_wnic_info_ptr->scan_status = WNIC_NOT_SCANED;
+	slipwifi_wnic_info_ptr->scan_results = 0;
+	memcpy((void *)slipwifi_wnic_info_ptr->mac_addr, (void *)slipwifi_0_mac_addr, WNIC_HDR_LEN);
+	slipwifi_wnic_info_ptr->busy_status = WNIC_IS_FREE;
+	slipwifi_wnic_info_ptr->tx_frame_cnt = 0;
+	slipwifi_wnic_info_ptr->tx_speed = 0;
+	slipwifi_wnic_info_ptr->tx_pending = 0;
+	slipwifi_wnic_info_ptr->rx_frame_cnt = 0;
+	slipwifi_wnic_info_ptr->rx_speed = 0;
+	slipwifi_wnic_info_ptr->rx_pending = 0;
+	slipwifi_wnic_info_ptr->power_status = WNIC_POWER_OFF;
+
+	slipwifi_wnic_on_ops_ptr->on_init_success	= NULL;
+	slipwifi_wnic_on_ops_ptr->on_init_fail	= NULL;
+	slipwifi_wnic_on_ops_ptr->on_connected 	= NULL;
+	slipwifi_wnic_on_ops_ptr->on_disconnected	= NULL;
+	slipwifi_wnic_on_ops_ptr->on_mac_updated 	= NULL;
+	slipwifi_wnic_on_ops_ptr->on_scan_finished= NULL;
+	slipwifi_wnic_on_ops_ptr->on_rxdata_comes	= NULL;
+	slipwifi_wnic_on_ops_ptr->on_dev_asserted	= NULL;
+
+	slipwifi_wnic_ptr->wnic_get_info 		= slipwifi_0_wnic_get_info		;
+	slipwifi_wnic_ptr->wnic_control			= slipwifi_0_wnic_control		;
+	slipwifi_wnic_ptr->wnic_init			= slipwifi_0_wnic_init			;
+	slipwifi_wnic_ptr->poll_init_status		= slipwifi_0_poll_init_status	;
+	slipwifi_wnic_ptr->poll_busy_status		= slipwifi_0_poll_busy_status	;
+	slipwifi_wnic_ptr->set_network_type		= slipwifi_0_set_network_type	;
+	slipwifi_wnic_ptr->set_macaddr			= slipwifi_0_set_macaddr		;
+	slipwifi_wnic_ptr->get_macaddr			= slipwifi_0_get_macaddr		;
+	slipwifi_wnic_ptr->start_scan			= slipwifi_0_start_scan			;
+	slipwifi_wnic_ptr->stop_scan			= slipwifi_0_stop_scan			;
+	slipwifi_wnic_ptr->poll_scan_status		= slipwifi_0_poll_scan_status	;
+	slipwifi_wnic_ptr->get_scan_result_cnt	= slipwifi_0_get_scan_result_cnt;
+	slipwifi_wnic_ptr->get_scan_result 		= slipwifi_0_get_scan_result	;
+	slipwifi_wnic_ptr->wnic_connect			= slipwifi_0_wnic_connect		;
+	slipwifi_wnic_ptr->poll_conn_status		= slipwifi_0_poll_conn_status	;
+	slipwifi_wnic_ptr->wnic_disconnect		= slipwifi_0_wnic_disconnect	;
+	slipwifi_wnic_ptr->prepare_tx			= slipwifi_0_prepare_tx			;
+	slipwifi_wnic_ptr->add_tx_data			= slipwifi_0_add_tx_data		;
+	slipwifi_wnic_ptr->commit_tx			= slipwifi_0_commit_tx			;
+	slipwifi_wnic_ptr->prepare_rx			= slipwifi_0_prepare_rx			;
+	slipwifi_wnic_ptr->get_rx_data			= slipwifi_0_get_rx_data		;
+	slipwifi_wnic_ptr->accept_rx			= slipwifi_0_accept_rx			;
+	slipwifi_wnic_ptr->config_power_mode	= slipwifi_0_config_power_mode	;
+	slipwifi_wnic_ptr->poll_power_mode		= slipwifi_0_poll_power_mode	;
+	slipwifi_wnic_ptr->wnic_reset			= slipwifi_0_wnic_reset			;
+	slipwifi_wnic_ptr->period_process		= slipwifi_0_period_process		;
+}
+
+#elif defined (WIFI_MRF24G)
+#error "MRF24G uses PMOD"
+#elif defined (WIFI_RW009)
+#error "RW009 uses PMOD"
+#else
+#error "no wifi module selected"
+#endif
+
+#endif /* USE_EMSK_SLIPWIFI_0 */
 
 /** get one wnic device structure */
 DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
@@ -849,6 +1057,11 @@ DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
 			return &pmwifi_0_wnic;
 			break;
 #endif
+#if (USE_EMSK_SLIPWIFI_0)
+		case EMSK_SLIPWIFI_0_ID:
+			return &slipwifi_0_wnic;
+			break;
+#endif
 		default:
 			break;
 	}
@@ -863,6 +1076,9 @@ void pmwifi_all_install(void)
 {
 #if (USE_EMSK_PMWIFI_0)
 	pmwifi_0_install();
+#endif
+#if (USE_EMSK_SLIPWIFI_0)
+	slipwifi_0_install();
 #endif
 }
 #endif  /* MID_LWIP && MID_LWIP_CONTRIB */

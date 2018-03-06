@@ -55,6 +55,7 @@ static FATFS sd_card_fs;	/* File system object for each logical drive */
 #ifdef MID_LWIP
 
 #include "lwip_pmwifi.h"
+#include "lwip_slip.h"
 
 #ifndef TASK_WIFI_PERIOD
 #define TASK_WIFI_PERIOD	50 /* WiFi connection task polling period, unit: kernel ticks */
@@ -69,7 +70,7 @@ static FATFS sd_card_fs;	/* File system object for each logical drive */
 #define TASK_PRI_WIFI		(configMAX_PRIORITIES-1) /* WiFi task priority */
 #endif
 
-static DEV_WNIC *pmwifi_wnic;
+static DEV_WNIC *wifi_wnic;
 static TaskHandle_t task_handle_wifi;
 
 #endif /* MID_LWIP */
@@ -106,7 +107,11 @@ static void task_wifi(void *par)
 	WNIC_AUTH_KEY auth_key;
 	int flag=0;
 
-	pmwifi_wnic = wnic_get_dev(BOARD_PMWIFI_0_ID);
+#ifdef USE_SLIP
+	wifi_wnic = wnic_get_dev(BOARD_SLIPWIFI_0_ID);
+#else
+	wifi_wnic = wnic_get_dev(BOARD_PMWIFI_0_ID);
+#endif
 
 #if WF_HOTSPOT_IS_OPEN
 	auth_key.key = NULL;
@@ -117,17 +122,26 @@ static void task_wifi(void *par)
 	auth_key.key_len = sizeof(WF_HOTSPOT_PASSWD);
 	auth_key.key_idx = 0;
 #endif
+#ifdef USE_SLIP
+	lwip_slipwifi_init();
+#else
 	lwip_pmwifi_init();
+#endif
 	EMBARC_PRINTF("\r\nNow trying to connect to WIFI hotspot, please wait about 30s!\r\n");
 
 	while (1) {
-		pmwifi_wnic->period_process(par);
+		wifi_wnic->period_process(par);
 #if WF_HOTSPOT_IS_OPEN
-		pmwifi_wnic->wnic_connect(AUTH_SECURITY_OPEN, (const uint8_t *)WF_HOTSPOT_NAME, &auth_key);
+		wifi_wnic->wnic_connect(AUTH_SECURITY_OPEN, (const uint8_t *)WF_HOTSPOT_NAME, &auth_key);
 #else
-		pmwifi_wnic->wnic_connect(AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE, (const uint8_t *)WF_HOTSPOT_NAME, &auth_key);
+		wifi_wnic->wnic_connect(AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE, (const uint8_t *)WF_HOTSPOT_NAME, &auth_key);
 #endif
-		if ((flag == 0) && lwip_pmwifi_isup())  {
+#ifdef USE_SLIP
+		if ((flag == 0) && lwip_slipwifi_isup())
+#else
+		if ((flag == 0) && lwip_pmwifi_isup())
+#endif
+		{
 			flag = 1;
 			EMBARC_PRINTF("WiFi connected \r\n");
 #ifndef MID_NTSHELL /* resume main task when ntshell task is not defined */

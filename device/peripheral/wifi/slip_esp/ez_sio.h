@@ -1,20 +1,15 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
-
+ * Copyright (c) 2016, Synopsys, Inc. All rights reserved.
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
-
  * 1) Redistributions of source code must retain the above copyright notice, this
  * list of conditions and the following disclaimer.
-
  * 2) Redistributions in binary form must reproduce the above copyright notice,
  * this list of conditions and the following disclaimer in the documentation and/or
  * other materials provided with the distribution.
-
  * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
  * be used to endorse or promote products derived from this software without
  * specific prior written permission.
-
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,55 +22,23 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_PMODWIFI
- * \brief	header file of pmod wifi driver for emsk board
- */
+#ifndef _EZ_SIO_H_
+#define BOARD_EMSK_DRV_EASY_SIO
 
-/**
- * \addtogroup	BOARD_EMSK_DRV_PMODWIFI
- * @{
- */
-#ifndef _PMWIFI_H_
-#define _PMWIFI_H_
+#include "stdint.h"
+#include "ringbuffer.h"
+#include "dev_uart.h"
 
-#if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
+/** easy serial io structure */
+typedef struct ez_sio {
+	DEV_UART *sio_uart_obj;
+	RINGBUFFER snd_rb;
+	RINGBUFFER rcv_rb;
+} EZ_SIO;
 
-#include "dev_wnic.h"
+extern EZ_SIO *ez_sio_open(uint32_t uart_id, uint32_t baudrate, uint32_t tx_bufsz, uint32_t rx_bufsz);
+extern void ez_sio_close(EZ_SIO *sio);
+extern int32_t ez_sio_read(EZ_SIO *sio, char *buf, uint32_t cnt);
+extern int32_t ez_sio_write(EZ_SIO *sio, char *buf, uint32_t cnt);
 
-#define EMSK_PMWIFI_0_ID		0
-#define EMSK_SLIPWIFI_0_ID		1
-
-#ifdef  USE_SLIP
-#define USE_EMSK_PMWIFI_0		0
-#define USE_EMSK_SLIPWIFI_0		1
-#else
-#define USE_EMSK_PMWIFI_0		1
-#define USE_EMSK_SLIPWIFI_0		0
-#endif
-
-/* configurations for RW009 */
-#define RW009_SPI_CPULOCK_ENABLE
-
-#define EMSK_PMWIFI_0_MAC_ADDR0		(0x00)
-#define EMSK_PMWIFI_0_MAC_ADDR1		(0x1e)
-#define EMSK_PMWIFI_0_MAC_ADDR2		(0xc0)
-#define EMSK_PMWIFI_0_MAC_ADDR3		(0x0e)
-#define EMSK_PMWIFI_0_MAC_ADDR4		(0x71)
-#define EMSK_PMWIFI_0_MAC_ADDR5		(0xac)
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void pmwifi_all_install(void);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  /* MID_LWIP && MID_LWIP_CONTRIB */
-#endif /* _PMWIFI_H_ */
-
-/** @} end of group BOARD_EMSK_DRV_PMODWIFI */
+#endif /* _EZ_SIO_H_ */

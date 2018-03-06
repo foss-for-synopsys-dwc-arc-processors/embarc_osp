@@ -1574,7 +1574,7 @@
  * sys_thread_new() when the thread is created.
  */
 #if !defined SLIPIF_THREAD_STACKSIZE || defined __DOXYGEN__
-#define SLIPIF_THREAD_STACKSIZE         0
+#define SLIPIF_THREAD_STACKSIZE         512
 #endif
 
 /**

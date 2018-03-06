@@ -148,6 +148,7 @@
 
 #define BOARD_PMWIFI_0_ID		EMSK_PMWIFI_0_ID
 #define BOARD_PMWIFI_ID_MAX		EMSK_PMWIFI_0_ID
+#define BOARD_SLIPWIFI_0_ID		EMSK_SLIPWIFI_0_ID
 
 #define OSP_GET_CUR_SYSHZ()		(gl_emsk_sys_hz_cnt)
 #define OSP_GET_CUR_MS()		(gl_emsk_ms_cnt)
