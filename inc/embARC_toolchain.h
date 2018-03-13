@@ -34,11 +34,6 @@
  * \brief toolchain dependent definitions
  */
 
-#include <stdint.h>	/* C99 standard lib */
-#include <limits.h>	/* C99 standard lib */
-#include <stddef.h>	/* C99 standard lib */
-#include <stdbool.h> 	/* C99 standard lib */
-
 /**
  * \addtogroup TOOLCHAIN
  * @{
@@ -50,6 +45,13 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#ifndef __ASSEMBLY__
+
+#include <stdint.h>	/* C99 standard lib */
+#include <limits.h>	/* C99 standard lib */
+#include <stddef.h>	/* C99 standard lib */
+#include <stdbool.h> 	/* C99 standard lib */
 
 /*
  *  macro definitions of compiler extend function
@@ -89,11 +91,19 @@ extern "C" {
  *       __EMBARC_TO_STRING */
 #define __EMBARC_TO_STRING(x) #x
 #define EMBARC_TO_STRING(x)   __EMBARC_TO_STRING(x)
+#define EMBARC_CLZ(x)		(x == 0 ? 32 : __builtin_clz(x))
+#define EMBARC_BITS(x)		(32 - EMBARC_CLZ(x))
+/* x must be > 0 */
+#define EMBARC_POW2_CEIL(x) ((1 << (31 - EMBARC_CLZ(x))) < x ?  \
+		1 << (31 - EMBARC_CLZ(x) + 1) : \
+		1 << (31 - EMBARC_CLZ(x)))
+
 
 #define DIV_ROUND_UP(x, y)  (((x) + (y) - 1) / (y))
 
 #if defined(__GNU__)
 /* GNU tool specific definitions */
+
 
 #elif defined(__MW__)
 /* Metaware tool specific definitions */
@@ -102,6 +112,8 @@ extern "C" {
 #else
 #error "unsupported toolchain"
 #endif
+#endif /* __ASSEMBLY__ */
+
 
 #ifdef __cplusplus
 }
