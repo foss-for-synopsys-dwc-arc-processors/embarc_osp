@@ -198,7 +198,7 @@ static int32_t vmpu_region_bits(uint32_t size)
 {
 	int32_t bits;
 
-	bits = vmpu_bits(size)-1;
+	bits = EMBARC_BITS(size)-1;
 
 	/* minimum region size is 32 bytes or cache line length */
 	if (bits < ARC_FEATURE_MPU_ALIGNMENT_BITS) {

@@ -125,8 +125,8 @@
 #define SECURESHIELD_MEM_SIZE_ROUND(x)	SECURESHIELD_REGION_ROUND_UP(x)
 
 
-#define SECURESHIELD_REGION_ROUND_DOWN(x)	((x) & ~((1UL<<SECURESHIELD_REGION_BITS(x))-1))
-#define SECURESHIELD_REGION_ROUND_UP(x)		(1UL<<SECURESHIELD_REGION_BITS(x))
+#define SECURESHIELD_REGION_ROUND_DOWN(x)	(EMBARC_POW2_CEIL(x) >> 1)
+#define SECURESHIELD_REGION_ROUND_UP(x)		EMBARC_POW2_CEIL(x)
 #define SECURESHIELD_STACK_SIZE_ROUND(x)	SECURESHIELD_REGION_ROUND_UP(x)
 
 
@@ -160,39 +160,5 @@ typedef struct
 	void *bss_start;	/* the start address of container's .bss section, container stack is in .bss section */
 	void *bss_end;		/* the end address of container's .bss section */
 } EMBARC_PACKED CONTAINER_CONFIG;
-
-
-/*
- * only use this macro for rounding const values during compile time:
- * for variables please use secureshield_region_bits(x) instead
- */
-#define SECURESHIELD_REGION_BITS(x)       (((x)<=32UL)?5:(((x)<=64UL)?\
-	6:(((x)<=128UL)?7:(((x)<=256UL)?8:(((x)<=512UL)?9:(((x)<=1024UL)?\
-	10:(((x)<=2048UL)?11:(((x)<=4096UL)?12:(((x)<=8192UL)?\
-	13:(((x)<=16384UL)?14:(((x)<=32768UL)?15:(((x)<=65536UL)?\
-	16:(((x)<=131072UL)?17:(((x)<=262144UL)?18:(((x)<=524288UL)?\
-	19:(((x)<=1048576UL)?20:(((x)<=2097152UL)?21:(((x)<=4194304UL)?\
-	22:(((x)<=8388608UL)?23:(((x)<=16777216UL)?24:(((x)<=33554432UL)?\
-	25:(((x)<=67108864UL)?26:(((x)<=134217728UL)?27:(((x)<=268435456UL)?\
-	28:(((x)<=536870912UL)?29:(((x)<=1073741824UL)?30:(((x)<=2147483648UL)?\
-	31:32)))))))))))))))))))))))))))
-
-static inline uint32_t vmpu_clz(uint32_t size)
-{
-	if (size & 0x80000000) {
-		return 0;
-	} else {
-		return (__builtin_clrsb(size) + 1);
-	}
-}
-
-
-static inline uint32_t vmpu_bits(uint32_t size)
-{
-	return 32 - vmpu_clz(size);
-}
-
-
-#define __builtin_clz(arg)   vmpu_clz(arg)
 
 #endif	/*_SECURESHIELD_VMPU_EXPORTS_H_*/

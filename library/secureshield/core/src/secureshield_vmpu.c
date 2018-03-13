@@ -60,14 +60,14 @@ static int32_t vmpu_config_checks(void)
 		return -1;
 	}
 
-	/* verify basic assumptions about vmpu_bits/__builtin_clz */
-	SECURESHIELD_ASSERT(__builtin_clz(0) == 32);
-	SECURESHIELD_ASSERT(__builtin_clz(1UL << 31) == 0);
-	SECURESHIELD_ASSERT(vmpu_bits(0) == 0);
-	SECURESHIELD_ASSERT(vmpu_bits(1UL << 31) == 32);
-	SECURESHIELD_ASSERT(vmpu_bits(0x8000UL) == 16);
-	SECURESHIELD_ASSERT(vmpu_bits(0x8001UL) == 16);
-	SECURESHIELD_ASSERT(vmpu_bits(1) == 1);
+	/* verify basic assumptions about EMBARC_BITS/EMBARC_CLZ */
+	SECURESHIELD_ASSERT(EMBARC_CLZ(0) == 32);
+	SECURESHIELD_ASSERT(EMBARC_CLZ(1UL << 31) == 0);
+	SECURESHIELD_ASSERT(EMBARC_BITS(0) == 0);
+	SECURESHIELD_ASSERT(EMBARC_BITS(1UL << 31) == 32);
+	SECURESHIELD_ASSERT(EMBARC_BITS(0x8000UL) == 16);
+	SECURESHIELD_ASSERT(EMBARC_BITS(0x8001UL) == 16);
+	SECURESHIELD_ASSERT(EMBARC_BITS(1) == 1);
 
 	/* verify that __secureshield_config is within valid ROM for secureshield */
 	SECURESHIELD_ASSERT(((uint32_t)&__secureshield_config) >= SECURE_ROM_START);

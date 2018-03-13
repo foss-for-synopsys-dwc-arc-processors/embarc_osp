@@ -31,8 +31,9 @@
 #ifndef _CONTAINER_CONFIG_H_
 #define _CONTAINER_CONFIG_H_
 
-#ifndef __ASSEMBLY__
+#include "code_gen_macros.h"
 
+#ifndef __ASSEMBLY__
 
 #define SECURESHIELD_CONTAINER_BACKGROUND(ac_table) \
 	__SECURESHIELD_CONTAINER_BACKGROUND(ac_table, EMBARC_ARRAY_COUNT(ac_table))
@@ -145,81 +146,11 @@ extern "C" {
 
 #endif	/* not define __ASSEMBLY__ */
 
-#define FIRST(a, ...) a
-#define SECOND(a, b, ...) b
-
-#define EMPTY()
-
-#define EVAL(...)	EVAL1024(__VA_ARGS__)
-#define EVAL1024(...)	EVAL512(EVAL512(__VA_ARGS__))
-#define EVAL512(...)	EVAL256(EVAL256(__VA_ARGS__))
-#define EVAL256(...)	EVAL128(EVAL128(__VA_ARGS__))
-#define EVAL128(...)	EVAL64(EVAL64(__VA_ARGS__))
-#define EVAL64(...)	EVAL32(EVAL32(__VA_ARGS__))
-#define EVAL32(...)	EVAL16(EVAL16(__VA_ARGS__))
-#define EVAL16(...)	EVAL8(EVAL8(__VA_ARGS__))
-#define EVAL8(...)	EVAL4(EVAL4(__VA_ARGS__))
-#define EVAL4(...)	EVAL2(EVAL2(__VA_ARGS__))
-#define EVAL2(...)	EVAL1(EVAL1(__VA_ARGS__))
-#define EVAL1(...)	__VA_ARGS__
-
-#define DEFER1(m)	m EMPTY()
-#define DEFER2(m)	m EMPTY EMPTY()()
-#define DEFER3(m)	m EMPTY EMPTY EMPTY()()()
-#define DEFER4(m)	m EMPTY EMPTY EMPTY EMPTY()()()()
-
-#define IS_PROBE(...)	SECOND(__VA_ARGS__, 0)
-#define PROBE()		~, 1
-
-#define CAT(a,b)	a ## b
-
-#define NOT(x)		IS_PROBE(CAT(_NOT_, x))
-#define _NOT_0		PROBE()
-
-#define BOOL(x)		NOT(NOT(x))
-
-#define IF_ELSE(condition)	_IF_ELSE(BOOL(condition))
-#define _IF_ELSE(condition)	CAT(_IF_, condition)
-
-#define _IF_1(...)	__VA_ARGS__ _IF_1_ELSE
-#define _IF_0(...)	_IF_0_ELSE
-
-#define _IF_1_ELSE(...)
-#define _IF_0_ELSE(...)	__VA_ARGS__
-
-#define HAS_ARGS(...)	BOOL(FIRST(_END_OF_ARGUMENTS_ __VA_ARGS__)())
-#define _END_OF_ARGUMENTS_()	0
-
-#define MAP(m, first, ...)		\
-	m(first)			\
-	IF_ELSE(HAS_ARGS(__VA_ARGS__))(	\
-	DEFER2(_MAP)()(m, __VA_ARGS__)	\
-	)(				\
-	/* Do nothing, just terminate */\
-	)
-#define _MAP()	MAP
-
-
-
 #if defined(__MW__)
 #define OBJ_TEXT(obj_name)	#obj_name(TYPE text)
 #define OBJ_RODATA(obj_name)	#obj_name(TYPE lit)
 #define OBJ_DATA(obj_name)	#obj_name(TYPE data)
 #define OBJ_BSS(obj_name)	#obj_name(TYPE BSS)
-#elif defined(__GNU__)
-#define OBJ_TEXT(obj_name)	#obj_name(.text .text.* .gnu.linkonce.t.*)
-#define OBJ_RODATA(obj_name)	#obj_name(.rodata .rodata.* .gnu.linkonce.r.*)
-#define OBJ_DATA(obj_name)	#obj_name(.data .data.* .gnu.linkonce.d.*)
-#define OBJ_BSS(obj_name)	#obj_name(.bss .bss.* .gnu.linkonce.b.*)
-#endif
-
-
-#define OBJS_TEXT(...)		EVAL(MAP(OBJ_TEXT, __VA_ARGS__))
-#define OBJS_RODATA(...)	EVAL(MAP(OBJ_RODATA, __VA_ARGS__))
-#define	OBJS_DATA(...)		EVAL(MAP(OBJ_DATA, __VA_ARGS__))
-#define	OBJS_BSS(...)		EVAL(MAP(OBJ_BSS, __VA_ARGS__))
-
-
 #define CONTAINER_SIZE_ALIGNMENT(x) (1 << (((x)<=2048)?11:(((x)<=4096)?12:(((x)<=8192)?\
 	13:(((x)<=16384)?14:(((x)<=32768)?15:(((x)<=65536)?\
 	16:(((x)<=131072)?17:(((x)<=262144)?18:(((x)<=524288)?\
@@ -228,6 +159,19 @@ extern "C" {
 	25:(((x)<=67108864)?26:(((x)<=134217728)?27:(((x)<=268435456)?\
 	28:(((x)<=536870912)?29:(((x)<=1073741824)?30:(((x)<=2147483648)?\
 	31:32))))))))))))))))))))))
+#elif defined(__GNU__)
+#define OBJ_TEXT(obj_name)	#obj_name(.text .text.* .gnu.linkonce.t.*)
+#define OBJ_RODATA(obj_name)	#obj_name(.rodata .rodata.* .gnu.linkonce.r.*)
+#define OBJ_DATA(obj_name)	#obj_name(.data .data.* .gnu.linkonce.d.*)
+#define OBJ_BSS(obj_name)	#obj_name(.bss .bss.* .gnu.linkonce.b.*)
+#define CONTAINER_SIZE_ALIGNMENT(x) (1 << LOG2CEIL(x))
+#endif
+
+
+#define OBJS_TEXT(...)		EVAL(MAP(OBJ_TEXT, __VA_ARGS__))
+#define OBJS_RODATA(...)	EVAL(MAP(OBJ_RODATA, __VA_ARGS__))
+#define	OBJS_DATA(...)		EVAL(MAP(OBJ_DATA, __VA_ARGS__))
+#define	OBJS_BSS(...)		EVAL(MAP(OBJ_BSS, __VA_ARGS__))
 
 
 /*
