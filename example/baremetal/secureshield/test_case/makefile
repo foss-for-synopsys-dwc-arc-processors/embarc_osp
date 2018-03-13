@@ -1,7 +1,6 @@
 # Application name
 APPL ?= secureshield_test_case
 
-LIB_SECURESHIELD_VERSION ?= 2
 # Optimization Level
 # Please Refer to toolchain_xxx.mk for this option
 OLEVEL ?= O2

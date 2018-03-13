@@ -1,15 +1,19 @@
-ifneq ($(VALID_CUR_CORE), arcem7d)
+ifeq ($(VALID_CUR_CORE), arcem7d)
+
+ifeq ($(VALID_BD_VER), 22)
+LIB_SECURESHIELD_VERSION = 1
+else
+
+ifeq ($(VALID_BD_VER), 23)
+LIB_SECURESHIELD_VERSION = 2
+else
 $(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield!)
+endif
+
+endif
+
 else
-ifneq ($(VALID_BD_VER), 22)
-ifneq ($(LIB_SECURESHIELD_VERSION), 2)
-$(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield v1!)
-endif
-else
-ifneq ($(LIB_SECURESHIELD_VERSION), 1)
-$(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield v2!)
-endif
-endif
+$(error $(VALID_BOARD)-$(VALID_BD_VER)-$(VALID_CUR_CORE) is not supported in secureshield!)
 endif
 
 LIB_SECURESHIELD_BOARD_EMSK_DIR = $(LIB_SECURESHIELD_DIR)/board/emsk

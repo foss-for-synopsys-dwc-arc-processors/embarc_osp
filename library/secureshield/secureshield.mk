@@ -1,10 +1,11 @@
 # dir declaration
 LIB_SECURESHIELD_DIR = $(LIBRARIES_ROOT)/secureshield
 
-LIB_SECURESHIELD_VERSION ?= 1
-
 LIB_SECURESHIELD_ASMSRCDIR	= $(LIB_SECURESHIELD_DIR)/core/src
 LIB_SECURESHIELD_CSRCDIR	= $(LIB_SECURESHIELD_DIR)/core/src
+
+# include board related makefile
+include $(LIB_SECURESHIELD_DIR)/board/$(VALID_BOARD)/$(VALID_BOARD).mk
 
 ifeq ($(LIB_SECURESHIELD_VERSION), 1)
 
@@ -29,8 +30,7 @@ endif
 
 LIB_SECURESHIELD_INCDIR		+= $(LIB_SECURESHIELD_DIR)/core/inc
 
-# include board related makefile
-include $(LIB_SECURESHIELD_DIR)/board/$(VALID_BOARD)/$(VALID_BOARD).mk
+
 
 ifeq ($(VALID_TOOLCHAIN), mw)
 SECURESHIELD_NORMAL_LINKER_SCRIPT_FILE  ?= $(LIB_SECURESHIELD_DIR)/board/secureshield_normal_template_mw.ld

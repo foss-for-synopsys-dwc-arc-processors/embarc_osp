@@ -1,7 +1,6 @@
 # Application name
 APPL ?= secureshield_secret_secure_sid
 
-LIB_SECURESHIELD_VERSION = 2
 LIB_SECURESHIELD_USE_MPU_SID = 1
 # Optimization Level
 # Please Refer to toolchain_xxx.mk for this option
