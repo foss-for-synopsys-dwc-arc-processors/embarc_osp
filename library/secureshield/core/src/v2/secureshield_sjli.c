@@ -110,7 +110,7 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 		SECURESHIELD_HALT("container call is not allowed in the same container %d", src_id);
 		return 0;
 	}
-	
+
 	args = src_frame->r0; /* r0 is argument number */
 
 	/* get the right interface from interface table */
@@ -119,7 +119,7 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 		return 0;
 	}
 
-	
+
 	/* push the calling container and set the callee container */
 	/* the left registers of src container will be saved later, reserve space here */
 	container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_SIZE,

@@ -28,14 +28,21 @@
  *
 --------------------------------------------- */
 #define __ASSEMBLY__
-#include "arc.h"
 #include "arc_asm_common.h"
 
-#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE
+/* MPU enabled, SID=1, S mode, KR, KW, KE, also used as MPU disabled */
+#if SECURESHIELD_VERSION == 1
+#define MPU_DISABLE	0x0
+#elif SECURESHIELD_VERSION == 2
+#define MPU_DISABLE	0x400181c0
+#endif
+
+#define MPU_ENABLE	0x40000000
 
 	.file "secureshield_startup.s"
 
-.weak	_f_sdata		/* start of small data, defined in link script */
+/* start of small data, defined in link script */
+.weak	_f_sdata
 
 	.section .secureshield_init, "ax"
 	.global _secureshield_start
@@ -43,7 +50,7 @@
 _secureshield_start:
 _init_phase1:
 _copy_text:
-	sr 	MPU_DEFAULT_MODE,  [AUX_MPU_EN]
+	sr 	MPU_DISABLE,  [AUX_MPU_EN]
 	mov	r0, _f_text
 	mov	r1, _load_addr_text
 	cmp	r0, r1
@@ -95,10 +102,17 @@ _clear_bss_loop:
 
 	/* switch to secureshield runtime stack, save original sp into AUX_USER_SP */
 	mov 	r0, __secureshield_stack
+
+#if SECURESHIELD_VERSION == 1
+	sr 	r0, [AUX_USER_SP]
+	aex 	sp, [AUX_USER_SP]
+#elif SECURESHIELD_VERSION == 2
 	sr 	r0, [AUX_SEC_K_SP]
 	sr 	r0, [AUX_KERNEL_SP]
 	/* sp is the secure sp, aux_kernel_sp is normal (background container) */
 	aex 	sp, [AUX_KERNEL_SP]
+#endif
+	/* save return address */
 	push 	blink
 	/* switch to secure small data */
 	push 	gp
@@ -121,24 +135,39 @@ _init_phase2:
 #elif defined(__GNU__)
 	jl	__do_global_dtors_aux
 #endif
-	pop 	gp
-	pop 	blink
-	lr 	sp, [AUX_KERNEL_SP]
-	j 	[blink]
+	j 	_exit_loop
 _next_stage:
 	jl 	secureshield_init
-	// sync-up AUX_SEC_STAT and AUX_ERSEC_STAT
-	lr 	r0, [AUX_SEC_STAT]
-	sr 	r0, [AUX_ERSEC_STAT]
-	// disable default mpu region
-	sr 	0,  [AUX_MPU_EN]
+
 	pop 	gp
 	pop 	blink
+
+#if SECURESHIELD_VERSION == 1
+	sr 	blink, [AUX_ERRET]
+	lr 	r0, [AUX_STATUS32]
+	bset 	r0, r0, AUX_STATUS_BIT_U
+	bset	r0, r0, AUX_STATUS_BIT_IE
+	sr 	r0, [AUX_ERSTATUS]
+	lr 	r0, [AUX_BTA]
+	sr	r0, [AUX_ERBTA]
+
+	/* fake exception return */
+	CLEAR_SCRATCH_REGS
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
+	rtie
+
+#elif SECURESHIELD_VERSION == 2
+	/* sync-up AUX_SEC_STAT and AUX_ERSEC_STAT */
+	lr 	r0, [AUX_SEC_STAT]
+	sr 	r0, [AUX_ERSEC_STAT]
+
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	st 	gp, [normal_world_gp]
 #endif
 	CLEAR_SCRATCH_REGS
+	sr 	MPU_ENABLE,  [AUX_MPU_EN]
 	j 	[blink]
+#endif
 
 /*************************************************************************************/
 	.global _exit_loop
@@ -146,7 +175,7 @@ _next_stage:
 	.align 4
 _exit_halt:
 _exit_loop:
-	flag	0x1
+	flag	AUX_STATUS_MASK_HALT
 	nop
 	nop
 	nop

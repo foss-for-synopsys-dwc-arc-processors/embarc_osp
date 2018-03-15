@@ -55,7 +55,7 @@ SECTIONS {
 			_e_data = .;
 		}
 	} > SECURE_RAM AT > SECURE_ROM
-	
+
 	GROUP (NOLOAD) : {
 		.bss ALIGN(4): {
 			_f_bss = .;

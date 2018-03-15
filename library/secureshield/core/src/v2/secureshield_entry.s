@@ -32,7 +32,9 @@
 #include "arc_asm_common.h"
 #include "secureshield_secure_call_exports.h"
 
-#define MPU_DEFAULT_MODE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE
+#define MPU_DISABLE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE
+#define MPU_ENABLE	0
+
 #define MPU_REGION_SECURESHIELD_RUNTIME_RAM	1
 #define SP_NOT_IN_RUMTIME		0
 #define SP_IN_RUNTIME 			1
@@ -153,7 +155,7 @@ sjli_container_call_in:
 
 	lr	sp, [AUX_KERNEL_SP]	// from normal world, load old sp from AUX_KERNEL_SP
 _from_secure_world:
-	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
+	sr 	MPU_DISABLE, [AUX_MPU_EN]
 	EXCEPTION_PROLOGUE		// save 1st part of container context into the container's stack
 	mov	r0, sp
 
@@ -184,9 +186,9 @@ _normal_use_aux_sec_k_sp:
 	mov	sp, r0 		// r0 is the sp of destination container
 	EXCEPTION_EPILOGUE	// pop the parameters
 
-	sr 	0, [AUX_MPU_EN]		// leave secureshield runtime, disable default configuration
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 
-	bnz	_switch_to_secure_world //  z bit is the result of btst
+	bnz	_switch_to_secure_world  //  z bit is the result of btst
 
 _switch_to_normal_world:
 
@@ -202,7 +204,7 @@ _switch_to_secure_world:
 	mov	r1, sp
 	mov 	sp, blink
 _ret_container_call_out:
-	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
+	sr 	MPU_DISABLE, [AUX_MPU_EN]
 	lr	r2, [AUX_STATUS32]
 	jl	container_call_out
 
@@ -214,19 +216,19 @@ _ret_container_call_out:
 	RESTORE_CALLEE_REGS
 	EXCEPTION_EPILOGUE
 
-	sr 	0, [AUX_MPU_EN]		// leave secureshield runtime, disable default configuration
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 
 	bnz 	_ret_to_secure_world // z bit is the result of btst r0, 0
 	sr	sp, [AUX_KERNEL_SP]
 	lr	sp, [AUX_SEC_K_SP]
 _ret_to_secure_world:
 	lr	blink, [AUX_ERRET]
-	j	[blink]
+	j	[blink]  /* leave secureshield runtime */
 
 _ret_directly:
 	EXCEPTION_PROLOGUE
 
-	sr 	0, [AUX_MPU_EN]		// leave secureshield runtime, disable default configuration
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 
 	lr 	blink, [AUX_MPU_RPER]
 	btst	blink, AUX_MPU_RPER_BIT_S
@@ -238,7 +240,7 @@ _ret_directly:
 _ret_directly_secure_world:
 	lr	blink, [AUX_ERRET]
 	mov	r0, 0
-	j	[blink]
+	j	[blink] /* leave secureshield runtime */
 
 /*************************************************************************************/
 // the interrupt entry of secure interrupt
@@ -247,7 +249,7 @@ _ret_directly_secure_world:
 secureshield_exc_entry_int:
 	clri	/* disable interrupt */
 
-	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
+	sr 	MPU_DISABLE, [AUX_MPU_EN]
 	/* check whether secure interrupt happens in runtime (between seti and clri) */
 	mov 	r1, SP_NOT_IN_RUMTIME
 	sr 	sp, [AUX_MPU_PROBE]
@@ -324,7 +326,7 @@ _int_handle_no_ctx_switch:
 	lr 	blink, [AUX_MPU_RPER]
 	btst	blink, AUX_MPU_RPER_BIT_S
 
-	sr 	0, [AUX_MPU_EN]	// leave secureshield runtime, disable default configuration */
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 
 	bnz	_secure_int_handle
 
@@ -352,7 +354,7 @@ handle_int_return:
 	RESTORE_CALLEE_REGS
 
 _secure_int_return:
-	sr 	0,  [AUX_MPU_EN]
+	sr 	MPU_ENABLE,  [AUX_MPU_EN]
 
 	lr 	r0, [AUX_SEC_STAT]
 	btst 	r0, AUX_SEC_STAT_BIT_IRM
@@ -364,7 +366,7 @@ _int_return_to_normal_world:
 	add 	sp, sp, 24 	// skip spaces for ei, ldi, jli, lp_end, lp_start, lp_count
 #else
 	add 	sp, sp, 12
-#endif 
+#endif
 	sr 	sp, [AUX_KERNEL_SP]
 	lr 	sp, [AUX_SEC_K_SP]
 	pop 	sp
@@ -380,7 +382,7 @@ _int_return_to_secure_world:
 	.global secureshield_exc_entry_cpu
 	.align 4
 secureshield_exc_entry_cpu:
-	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
+	sr 	MPU_DISABLE, [AUX_MPU_EN]
 	// if exception happens in normal world, SEC_K_SP is used as the stack for
 	// EXCEPTION_PROLOGUE and EXCEPTION_EPILOGUE.
 	// if exception happens in secure world, in kernel mode, the original sp
@@ -403,6 +405,6 @@ secureshield_exc_entry_cpu:
 	jl	[r2]		/* jump to exception handler where interrupts are not allowed! */
 
 	EXCEPTION_EPILOGUE
-	sr 	0, [AUX_MPU_EN]
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 	rtie
 /** @endcond */

@@ -27,11 +27,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include <string.h>
 #include "secureshield.h"
 #include "secureshield_vmpu.h"
 #include "secureshield_int.h"
 
+#if SECURESHIELD_VERSION == 2
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 uint32_t normal_world_gp;
 #endif
@@ -40,6 +40,7 @@ uint32_t normal_world_gp;
 extern uint32_t __secureshield_stack[];
 
 uint32_t * secureshield_runtime_stack_ptr = __secureshield_stack;
+#endif
 
 
 /**
@@ -57,10 +58,13 @@ static void secureshield_init_post(void)
  */
 void secureshield_init(void)
 {
-	/* now processor is in secure kernel mode */
-	/* the processor cannot execute the code in normal world when it's secure mode */
+	/* now processor is in secure mode */
+	/*
+	 * for sem the processor cannot execute the code in normal world when
+	 * it's secure mode
+	 */
 	/* secureshield interrupt init */
 	secureshield_int_init();
-		/* finish initialization */
+	/* finish initialization */
 	secureshield_init_post();
 }

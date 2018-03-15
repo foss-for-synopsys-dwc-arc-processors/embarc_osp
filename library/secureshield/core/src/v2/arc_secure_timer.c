@@ -178,7 +178,7 @@ int32_t secure_timer_int_clear(const uint32_t no)
 }
 
 /**
- * \brief  init internal timer
+ * \brief  init internal secure timer
  */
 void secure_timer_init(void)
 {

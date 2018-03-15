@@ -32,62 +32,44 @@
 #include <string.h>
 #include "secureshield.h"
 #include "secureshield_vmpu.h"
+#if SECURESHIELD_VERSION == 2
 #include "secureshield_sjli.h"
+#endif
 #include "secureshield_container_stack.h"
 #include "secureshield_container_call.h"
 
+#include "arc_mpu.c"
 
-/* MPU region count */
+
+/* Maximu MPU region count that can be defined in container configuration */
 #ifndef MPU_REGION_COUNT
 #define MPU_REGION_COUNT 32
 #endif/*MPU_REGION_COUNT*/
 
-/* set default MPU region coun\t */
-#ifndef ARC_FEATURE_MPU_REGIONS
-#define ARC_FEATURE_MPU_REGIONS 16
-#endif/*ARC_FEATURE_MPU_REGIONS*/
 
-/* reserve 2 regions, 2 regions for for the secureshield runtime(.text, .rodata, ...) & (.data, .bss)
+/*
+ * reserve 2 regions, 2 regions for for the secureshield runtime(.text, .rodata,
+ * ...) & (.data, .bss)
  */
 #define ARC_MPU_RESERVED_REGIONS 2
-
-/* set default minimum region address alignment */
-
-/* \todo ALIGNMENT_BITS is also decided by cache_line_length */
-#ifndef ARC_FEATURE_MPU_ALIGNMENT_BITS
-#define ARC_FEATURE_MPU_ALIGNMENT_BITS	5
-#endif/*ARC_FEATURE_MPU_ALIGNMENT_BITS*/
-
-/* derived region alignment settings */
-#define ARC_FEATURE_MPU_ALIGNMENT (1UL<<ARC_FEATURE_MPU_ALIGNMENT_BITS)
-#define ARC_FEATURE_MPU_ALIGNMENT_MASK (ARC_FEATURE_MPU_ALIGNMENT-1)
-
 
 #ifndef CONTAINER_INTERFACE_COUNT
 #define CONTAINER_INTERFACE_COUNT	10
 #endif
 
-#define AUX_MPU_RDB_VALID_MASK 0x1
-#define AUX_MPU_EN_ENABLE   0x40000000
-#define AUX_MPU_EN_DISABLE  0x0
-
-#define AUX_MPU_RPER_UE  0x008    /* allow user execution */
-#define AUX_MPU_RPER_UW  0x010    /* allow user write */
-#define AUX_MPU_RPER_UR  0x020    /* allow user read */
-#define AUX_MPU_RPER_KE  0x040    /* only allow kernel execution */
-#define AUX_MPU_RPER_KW  0x080    /* only allow kernel write */
-#define AUX_MPU_RPER_KR  0x100    /* only allow kernel read */
-#define AUX_MPU_RPER_S	 0x8000	  /* secure */
-#define AUX_MPU_RPER_N	 0x0000   /* normal */
-
-#define AUX_MPU_RPER_SID_OFFSET	16
-#define AUX_MPU_RPER_SID_MASK	(0xFF << AUX_MPU_RPER_SID_OFFSET)
-
+#if SECURESHIELD_VERSION == 1
+#define SECURE_ROM_ATTR  (SECURESHIELD_ACDEF_KROM | SECURESHIELD_AC_EXECUTE)
+#define SECURE_RAM_ATTR	 (SECURESHIELD_ACDEF_KRAM)
+#define SECURE_CONTAINER_DEFAULT_STATUS	(AUX_STATUS_MASK_IE | (((INT_PRI_MAX - INT_PRI_MIN) << 1) & 0x1e))
+#define NORMAL_CONTAINER_DEFAULT_STATUS	(SECURE_CONTAINER_DEFAULT_STATUS | AUX_STATUS_MASK_U)
+#elif SECURESHIELD_VERSION == 2
+#define SECURE_ROM_ATTR  (SECURESHIELD_ACDEF_UTEXT | SECURESHIELD_AC_SECURE)
+#define SECURE_RAM_ATTR  (SECURESHIELD_ACDEF_URAM |  SECURESHIELD_AC_SECURE)
+#endif
 
 typedef struct {
 	uint32_t base;
-	uint32_t end;
-	uint32_t rper;
+	uint32_t attr;
 	uint32_t size;
 	uint32_t ac;
 } MPU_REGION;
@@ -143,10 +125,9 @@ static const MPU_REGION* vmpu_fault_find_container_region(uint32_t fault_addr, c
 	count = container->count;
 	region = container->region;
 	while (count-- > 0) {
-		if ((fault_addr >= region->base) && (fault_addr < (region->end + ARC_FEATURE_MPU_ALIGNMENT))) {
+		if ((fault_addr >= region->base) && (fault_addr < (region->base + region->size))) {
 			return region;
-		}
-		else {
+		} else {
 			region++;
 		}
 	}
@@ -172,7 +153,7 @@ static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 		return region;
 	}
 
-	// if current container is secure,  check all normal containers
+	/* if current container is secure,  check all normal containers */
 	if (container_is_secure(g_active_container)) {
 		for (i = 0; i < g_vmpu_container_count; i++) {
 			if (!container_is_secure(i)) {
@@ -198,9 +179,9 @@ static int32_t vmpu_region_bits(uint32_t size)
 {
 	int32_t bits;
 
-	bits = EMBARC_BITS(size)-1;
+	bits = EMBARC_BITS(size) - 1;
 
-	/* minimum region size is 32 bytes or cache line length */
+	/* align to minimum region size */
 	if (bits < ARC_FEATURE_MPU_ALIGNMENT_BITS) {
 		bits = ARC_FEATURE_MPU_ALIGNMENT_BITS;
 	}
@@ -227,29 +208,29 @@ static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 	if (ac & SECURESHIELD_AC_UWRITE) {
 		ac_res = SECURESHIELD_AC_UREAD | SECURESHIELD_AC_UWRITE |
 			  SECURESHIELD_AC_KREAD | SECURESHIELD_AC_KWRITE;
-		flags = AUX_MPU_RPER_UR | AUX_MPU_RPER_UW |
-			AUX_MPU_RPER_KR | AUX_MPU_RPER_KW;
+		flags = AUX_MPU_ATTR_UR | AUX_MPU_ATTR_UW |
+			AUX_MPU_ATTR_KR | AUX_MPU_ATTR_KW;
 	} else {
 		if (ac & SECURESHIELD_AC_UREAD) {
 			if (ac & SECURESHIELD_AC_KWRITE) {
 				ac_res = SECURESHIELD_AC_UREAD |
 					 SECURESHIELD_AC_KREAD | SECURESHIELD_AC_KWRITE;
-				flags = AUX_MPU_RPER_UR |
-					AUX_MPU_RPER_KR | AUX_MPU_RPER_KW;
+				flags = AUX_MPU_ATTR_UR |
+					AUX_MPU_ATTR_KR | AUX_MPU_ATTR_KW;
 			} else {
 				ac_res = SECURESHIELD_AC_UREAD |
 					 SECURESHIELD_AC_KREAD;
-				flags = AUX_MPU_RPER_UR |
-					AUX_MPU_RPER_KR;
+				flags = AUX_MPU_ATTR_UR |
+					AUX_MPU_ATTR_KR;
 			}
 		} else {
 			if (ac & SECURESHIELD_AC_KWRITE) {
 				ac_res = SECURESHIELD_AC_KREAD | SECURESHIELD_AC_KWRITE;
-				flags = AUX_MPU_RPER_KR | AUX_MPU_RPER_KW;
+				flags = AUX_MPU_ATTR_KR | AUX_MPU_ATTR_KW;
 			} else {
 				if (ac & SECURESHIELD_AC_KREAD) {
 					ac_res = SECURESHIELD_AC_KREAD;
-					flags = AUX_MPU_RPER_KR;
+					flags = AUX_MPU_ATTR_KR;
 				} else {
 					ac_res = 0;
 					flags = 0;
@@ -260,18 +241,20 @@ static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 
 	if (ac & SECURESHIELD_AC_UEXECUTE) {
 		ac_res |= SECURESHIELD_AC_UEXECUTE;
-		flags |= AUX_MPU_RPER_UE;
+		flags |= AUX_MPU_ATTR_UE;
 	}
 
 	if (ac & SECURESHIELD_AC_KEXECUTE) {
 		ac_res |= SECURESHIELD_AC_KEXECUTE;
-		flags |= AUX_MPU_RPER_KE;
+		flags |= AUX_MPU_ATTR_KE;
 	}
 
+#if SECURESHIELD_VERSION == 2
 	if (ac & SECURESHIELD_AC_SECURE) {
 		ac_res |= SECURESHIELD_AC_SECURE;
-		flags |= AUX_MPU_RPER_S;
+		flags |= AUX_MPU_ATTR_S;
 	}
+#endif
 
 	/* check if we meet the expected AC */
 	if ((ac_res) != (ac & SECURESHIELD_AC_ACCESS)) {
@@ -282,6 +265,64 @@ static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 	return flags;
 }
 
+#if SECURESHIELD_VERSION == 1
+/**
+ * \brief update the setting of MPU region in the specified container
+ * \param[in] region MPU region
+ * \param[in] container_id  the specified container
+ * \param[in] base start address
+ * \param[in] size region size
+ * \param[in] ac  access control of the region
+ */
+static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t container_id,
+	void* base, uint32_t size, CONTAINER_AC ac)
+{
+	uint32_t mask, size_rounded;
+
+	SECURESHIELD_DBG("\tcontainer[%d] ac[%d]={0x%x,size=%d,ac=0x%x,",
+		container_id, g_mpu_region_count, (uint32_t)base, size, ac);
+
+	/* verify region alignment */
+	size_rounded = EMBARC_POW2_CEIL(size);
+	if (size_rounded != size) {
+		if ((ac & (SECURESHIELD_AC_SIZE_ROUND_UP | SECURESHIELD_AC_SIZE_ROUND_DOWN))==0) {
+			SECURESHIELD_HALT(
+				"container size (%d) not rounded, rounding disabled (rounded=%d)",
+				size, size_rounded
+			);
+			return;
+		}
+
+		if (ac & SECURESHIELD_AC_SIZE_ROUND_DOWN) {
+			size_rounded = size_rounded >> 1;
+
+			if (size_rounded < (1 << ARC_FEATURE_MPU_ALIGNMENT_BITS)) {
+				SECURESHIELD_HALT("region size (%d) can't be rounded down",size);
+				return;
+			}
+		}
+	}
+
+	/* check for correctly aligned base address */
+	mask = size_rounded - 1;
+
+	if (((uint32_t)base) & mask) {
+		SECURESHIELD_HALT("base address 0x%x and size (%d) are inconsistent", base, size);
+		return;
+	}
+
+	/* map generic ACL's to internal ACL's */
+	/* enable region & add size */
+	region->attr = vmpu_map_ac(ac);
+	region->base = (uint32_t) base;
+	region->size = size_rounded;
+	region->ac = ac;
+
+	SECURESHIELD_DBG("rounded=%d}\r\n", size_rounded);
+
+}
+
+#elif SECURESHIELD_VERSION == 2
 /**
  * \brief update the setting of MPU region in the specified container
  * \param[in] region MPU region
@@ -314,21 +355,24 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 	/* map generic ACL's to internal ACL's */
 	flags = vmpu_map_ac(ac);
 
-	// SID setting
+	/* SID setting */
 #if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
-	//  2 SIDs reserved for background container and secureshield runtime
+	/*  2 SIDs reserved for background container and secureshield runtime */
 	if (container_id > (SECURESHIELD_MPU_SID_BITS - 2)) {
 		SECURESHIELD_HALT("no more sids for the container");
 		return;
 	}
 
-	if (container_id == 0) {  // for background container and secureshield runtime
-		if (ac & SECURESHIELD_AC_SECURE) { // secureshield runtime
+	/* for background container and secureshield runtime */
+	if (container_id == 0) {
+		if (ac & SECURESHIELD_AC_SECURE) {
+			 /* secureshield runtime */
 			sid = SECURESHIELD_MPU_SID_RUNTIME;
-		} else if (ac & SECURESHIELD_AC_EXECUTE) { // for background container instruction space
+		} else if (ac & SECURESHIELD_AC_EXECUTE) {
+			/* for background container instruction space */
 			sid = SECURESHIELD_MPU_SID_BACKGROUND_CONTAINER;
 		} else {
-			// background container's data space are shared to all containers
+			/* background container's data space are shared to all containers */
 			sid = SECURESHIELD_MPU_SID_ALL;
 		}
 	} else {
@@ -336,22 +380,22 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 		if (container_is_secure(container_id)) {
 			g_secure_sid_mask |= sid;
 		}
-		// secureshield runtime can access all container's data space
+		/* secureshield runtime can access all container's data space */
 		if (!(ac & SECURESHIELD_AC_EXECUTE)) {
 			sid |= SECURESHIELD_MPU_SID_RUNTIME;
 		}
 	}
 #endif
 
-	flags |= (sid << AUX_MPU_RPER_SID_OFFSET);
+	flags |= (sid << AUX_MPU_ATTR_SID_OFFSET);
 
 	/* enable region & add size */
-	region->rper = flags;
+	region->attr = flags;
 	region->base = (uint32_t) base;
-	region->end = (uint32_t) base + size - ARC_FEATURE_MPU_ALIGNMENT;
 	region->size = size;
 	region->ac = ac;
 }
+#endif
 
 /**
  * find the access control of the specified address with the specified size
@@ -363,7 +407,6 @@ uint32_t vmpu_fault_find_ac(uint32_t fault_addr, uint32_t size)
 {
 	return 0;
 }
-
 
 /**
  * \brief MPU context switch
@@ -390,16 +433,12 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 
 	region = g_mpu_list;
 
-	for (i = 0; i < g_mpu_region_count; i++) {
-		_arc_aux_write(AUX_MPU_INDEX, i + ARC_MPU_RESERVED_REGIONS);
-		_arc_aux_write(AUX_MPU_RSTART, region->base);
-		_arc_aux_write(AUX_MPU_REND, region->end);
-
-		if (!(region->rper & (AUX_MPU_RPER_S | AUX_MPU_RPER_KE | AUX_MPU_RPER_UE))) {
-			region->rper |= (g_secure_sid_mask << 16);
+	for (i = ARC_MPU_RESERVED_REGIONS; i < g_mpu_region_count; i++) {
+		if (!(region->attr & (AUX_MPU_ATTR_S | AUX_MPU_ATTR_KE | AUX_MPU_ATTR_UE))) {
+			region->attr |= (g_secure_sid_mask << 16);
 		}
 
-		_arc_aux_write(AUX_MPU_RPER, region->rper | AUX_MPU_RDB_VALID_MASK);
+		arc_mpu_region(i, region->base, region->size, region->attr);
 		region++;
 	}
 
@@ -414,7 +453,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 		return;
 	}
 
-	//SECURESHIELD_DBG("switching from %d to %d\r\n", src_id, dst_id);
+	SECURESHIELD_DBG("switching from %d to %d\r\n", src_id, dst_id);
 	/* remember active container */
 	g_active_container = dst_id;
 
@@ -427,12 +466,10 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 		region = container->region;
 
 		for (i = 0; i < container->count; i++) {
-			if (mpu_slot >= ARC_FEATURE_MPU_REGIONS)
+			if (mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
 				 break;
-			_arc_aux_write(AUX_MPU_INDEX, mpu_slot);
-			_arc_aux_write(AUX_MPU_RSTART, region->base);
-			_arc_aux_write(AUX_MPU_REND, region->end);
-			_arc_aux_write(AUX_MPU_RPER, region->rper | AUX_MPU_RDB_VALID_MASK);
+			}
+			arc_mpu_region(mpu_slot, region->base, region->size, region->attr);
 			region++;
 			mpu_slot++;
 		}
@@ -443,13 +480,11 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 	region = container->region;
 
 	for (i = 0; i < container->count; i++) {
-		if (mpu_slot >= ARC_FEATURE_MPU_REGIONS)
+		if (mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
 			 break;
+		}
 
-		_arc_aux_write(AUX_MPU_INDEX, mpu_slot);
-		_arc_aux_write(AUX_MPU_RSTART, region->base);
-		_arc_aux_write(AUX_MPU_REND, region->end);
-		_arc_aux_write(AUX_MPU_RPER, region->rper | AUX_MPU_RDB_VALID_MASK);
+		arc_mpu_region(mpu_slot, region->base, region->size, region->attr);
 
 		/* process next slot */
 		region++;
@@ -460,10 +495,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 
 	/* clear remaining slots */
 	while (mpu_slot < ARC_FEATURE_MPU_REGIONS) {
-		_arc_aux_write(AUX_MPU_INDEX, mpu_slot);
-		_arc_aux_write(AUX_MPU_RSTART, 0);
-		_arc_aux_write(AUX_MPU_REND, 0);
-		_arc_aux_write(AUX_MPU_RPER, 0);
+		arc_mpu_region(mpu_slot, 0, 0, 0);
 		mpu_slot++;
 	}
 #endif
@@ -496,16 +528,13 @@ uint32_t vmpu_ac_static_region(uint8_t region, void* base, uint32_t size, CONTAI
 	MPU_REGION res;
 
 	if (region >= ARC_FEATURE_MPU_REGIONS) {
-		return 0; // region overflow
+		return 0;
 	}
 
 	/* apply access control */
 	vmpu_ac_update_container_region(&res, 0, base, size, ac);
 
-	_arc_aux_write(AUX_MPU_INDEX, region);
-	_arc_aux_write(AUX_MPU_RSTART, res.base);
-	_arc_aux_write(AUX_MPU_REND, res.end);
-	_arc_aux_write(AUX_MPU_RPER, res.rper | AUX_MPU_RDB_VALID_MASK);
+	arc_mpu_region(region, res.base, res.size, res.attr);
 
 	return res.size;
 }
@@ -529,12 +558,13 @@ void vmpu_ac_mem(uint8_t container_id, void* addr, uint32_t size, CONTAINER_AC a
 
 	/* assign container region pointer */
 	container = &g_mpu_container[container_id];
-	if (!container->region)
+	if (!container->region) {
 		container->region = &g_mpu_list[g_mpu_region_count];
+	}
 
 	/* allocate new MPU region */
 	region = &container->region[container->count];
-	if (region->rper) {
+	if (region->attr) {
 		SECURESHIELD_HALT("unordered region allocation");
 		return;
 	}
@@ -554,12 +584,63 @@ void vmpu_ac_mem(uint8_t container_id, void* addr, uint32_t size, CONTAINER_AC a
  */
 void vmpu_ac_container(uint8_t container_id, const CONTAINER_CONFIG *container_cfg)
 {
+#if SECURESHIELD_VERSION == 1
+/* note: for ARCv2, minimum region size is 2K bytes, region address must be
+aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
+	uint32_t size;
+	uint32_t text_attribute;
+	uint32_t rodata_attribute;
+	uint32_t ram_attribute;
 
+
+	if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
+		/* secure container shares the same MPU regions of secureshield runtime */
+		g_container_context[container_id].cpu_status = SECURE_CONTAINER_DEFAULT_STATUS;
+
+		text_attribute = SECURESHIELD_ACDEF_KTEXT;
+		rodata_attribute = SECURESHIELD_ACDEF_KROM;
+		ram_attribute = SECURESHIELD_ACDEF_KRAM;
+
+	} else if (container_cfg->type == SECURESHIELD_CONTAINER_NORMAL) {
+		g_container_context[container_id].cpu_status = NORMAL_CONTAINER_DEFAULT_STATUS;
+
+		text_attribute = SECURESHIELD_ACDEF_UTEXT;
+		rodata_attribute = SECURESHIELD_ACDEF_UROM;
+		ram_attribute = SECURESHIELD_ACDEF_URAM;
+
+	} else {
+		SECURESHIELD_HALT("unsupported container type");
+		return;
+	}
+
+
+	size = VMPU_REGION_SIZE(container_cfg->text_start, container_cfg->rodata_end);
+	if (size != 0) {
+		vmpu_ac_mem(container_id, container_cfg->text_start, size, text_attribute);
+	}
+
+	size = VMPU_REGION_SIZE(container_cfg->data_start, container_cfg->bss_end);
+	if (size != 0) {
+		vmpu_ac_mem(container_id, container_cfg->data_start, size, ram_attribute);
+
+		if (container_id) {
+			memcpy(container_cfg->data_start, container_cfg->data_load_start, VMPU_REGION_SIZE(container_cfg->data_start, container_cfg->data_end));
+			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_start, container_cfg->bss_end));
+		}
+	}
+
+	/* handle background container */
+	if (!container_id) {
+		/* container 0 is background container, it uses the default stack */
+		g_container_context[container_id].cur_sp = (uint32_t *)_arc_aux_read(AUX_USER_SP);
+	} else {
+		g_container_context[container_id].cur_sp =  container_cfg->stack_area + container_cfg->stack_size - 1;
+	}
+#elif SECURESHIELD_VERSION == 2
 	uint32_t size;
 	uint32_t secure;
 
 	secure = container_cfg->type;
-
 
 	if (secure == SECURESHIELD_CONTAINER_SECURE) {
 		secure = SECURESHIELD_AC_SECURE;
@@ -595,9 +676,10 @@ void vmpu_ac_container(uint8_t container_id, const CONTAINER_CONFIG *container_c
 		/* container 0 is background container, it uses the default stack */
 		g_container_context[container_id].cur_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
 	} else {
-	// -1 here, so the mpu lookup will find the right region.
+		/* -1 here, so the mpu lookup will find the right region. */
 		g_container_context[container_id].cur_sp =  container_cfg->stack_area + container_cfg->stack_size - 1;
 	}
+#endif
 }
 
 
@@ -619,18 +701,24 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 		return -1;
 	}
 
-	_arc_aux_write(AUX_MPU_INDEX, g_mpu_slot);
-	_arc_aux_write(AUX_MPU_RSTART, region->base);
-	_arc_aux_write(AUX_MPU_REND, region->end);
-	_arc_aux_write(AUX_MPU_RPER, region->rper | AUX_MPU_RDB_VALID_MASK);
+	arc_mpu_region(g_mpu_slot, region->base, region->size, region->attr);
 
 	g_mpu_slot++;
 
 	/* if g_mpu_slot is overflow  go back to start to do the recovery */
 	if (g_mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
-		// why +3 ?  because the first 2 regions maybe used for container's
-		// .text, .rodata and ram (.data and .bss)
+#if SECURESHIELD_VERSION == 1
+		/* why + 2 ?  because the first 2 regions maybe used for container's
+		 rom (.text &.rodata) and ram (.data and .bss)
+		 */
+		g_mpu_slot = ARC_MPU_RESERVED_REGIONS + 2;
+#elif SECURESHIELD_VERSION == 2
+		/*
+		 * why +3 ?  because the first 3 regions maybe used for container's
+		 * .text, .rodata and ram (.data and .bss)
+		 */
 		g_mpu_slot = ARC_MPU_RESERVED_REGIONS + 3;
+#endif
 	}
 
 	return 0;
@@ -721,12 +809,18 @@ void vmpu_arch_init(void)
 {
 	uint32_t mpu_cfg;
 
-	SFLAG((1 << AUX_SEC_STAT_BIT_NIC));  // enable seti, clri, setev in normal world
-	sjli_init();
 	g_mpu_slot = ARC_MPU_RESERVED_REGIONS;
-	/* init protected container memory enumeration pointer */
+
 	mpu_cfg = _arc_aux_read(AUX_BCR_MPU);
-	SECURESHIELD_DBG("MPU verison:%x, regions:%d\r\n", mpu_cfg & 0xff, (mpu_cfg >> 8) & 0xff);
+	SECURESHIELD_DBG("MPU version:%x, regions:%d\r\n", mpu_cfg & 0xff, (mpu_cfg >> 8) & 0xff);
+	SECURESHIELD_DBG("MPU ALIGNMENT=0x%x\r\n", 1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS);
+
+#if SECURESHIELD_VERSION == 2
+	/* enable seti, clri, setev in normal world */
+	SFLAG((1 << AUX_SEC_STAT_BIT_NIC));
+	sjli_init();
+	/* init protected container memory enumeration pointer */
+
 
 	if (mpu_cfg & 0x10000) {
 		SECURESHIELD_DBG("MPU supports defining regions as secure/non-secure\r\n");
@@ -735,8 +829,7 @@ void vmpu_arch_init(void)
 	if (mpu_cfg & 0x20000) {
 		SECURESHIELD_DBG("MPU supports SID mechanism\r\n");
 	}
-	SECURESHIELD_DBG("MPU ALIGNMENT=0x%x\r\n", 1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS);
-	SECURESHIELD_DBG("MPU ALIGNMENT_BITS=%d\r\n", vmpu_bits(1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS));
+#endif
 
 	/* background for secureshield and application */
 	/* application cannot access secureshield except execution */
@@ -744,10 +837,10 @@ void vmpu_arch_init(void)
 	SECURESHIELD_DBG("Shared AC table to all containers:\r\n");
 	vmpu_ac_static_region(0, (void *)SECURE_ROM_START,
 		(uint32_t)(__secureshield_config.secure_rom_end) - SECURE_ROM_START,
-		 SECURESHIELD_ACDEF_UTEXT |  SECURESHIELD_AC_SECURE);
+		SECURE_ROM_ATTR);
 
 	/* for application iccm, all operations are allowed */
 	vmpu_ac_static_region(1, (void *)SECURE_RAM_START,
 		(uint32_t)(__secureshield_config.secure_ram_end) - SECURE_RAM_START,
-		 SECURESHIELD_ACDEF_URAM |  SECURESHIELD_AC_SECURE);
+		SECURE_RAM_ATTR);
 }

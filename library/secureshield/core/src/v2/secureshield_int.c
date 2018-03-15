@@ -523,7 +523,6 @@ int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
 	/* reduce an offset */
 	exc = &secureshield_int_handler_table[intno - NUM_EXC_CPU];
 
-
 	/* if the intno does not belong to the active container */
 	if (exc->id != g_active_container && exc->id) {
 		SECURESHIELD_DBG(

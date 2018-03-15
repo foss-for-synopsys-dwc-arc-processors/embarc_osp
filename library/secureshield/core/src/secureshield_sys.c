@@ -33,8 +33,10 @@
 #include "secureshield_vmpu.h"
 #include "secureshield_sys.h"
 #include "secureshield_container_stack.h"
-#include "secureshield_container_call.h"
+#include "secureshield_secure_call_exports.h"
 
+
+/* max aux entries in container configurations */
 
 #ifndef CONTAINER_AUX_COUNT
 #define CONTAINER_AUX_COUNT		8
@@ -52,7 +54,9 @@ typedef struct {
 } AUX_CONTAINER;
 
 
+/* current used aux entries */
 static uint32_t g_aux_count;
+/* the list to manage the access to aux regs from normal containers */
 static CONTAINER_AUX g_aux_list[CONTAINER_AUX_COUNT];
 static AUX_CONTAINER g_aux_container[SECURESHIELD_MAX_CONTAINERS];
 
@@ -60,7 +64,7 @@ static AUX_CONTAINER g_aux_container[SECURESHIELD_MAX_CONTAINERS];
 /**
  * \brief check whether the specified container is able to access the specified aux address
  * \param[in] container_id  container id
- * \param[in] addr address in aux register space
+ * \param[in] addr         address in aux register space
  */
 static int32_t _secureshield_aux_check(uint8_t container_id, uint32_t addr)
 {
@@ -89,7 +93,8 @@ static int32_t _secureshield_aux_check(uint8_t container_id, uint32_t addr)
 	aux = &container->aux[0];
 
 	if (!container->aux) {
-		SECURESHIELD_DBG("no aux region is allocated for container 0 and %d\r\n", container_id);
+		SECURESHIELD_DBG("no aux region is allocated for container 0 and %d\r\n",
+				 container_id);
 		return -1;
 	}
 
@@ -100,7 +105,8 @@ static int32_t _secureshield_aux_check(uint8_t container_id, uint32_t addr)
 		aux++;
 	}
 
-	SECURESHIELD_DBG("the aux regs:0x%x is not allocated to container 0 and %d\r\n", addr, container_id);
+	SECURESHIELD_DBG("the aux regs:0x%x is not allocated to container 0 and %d\r\n",
+			 addr, container_id);
 	return -1;
 }
 
@@ -120,7 +126,7 @@ uint32_t secure_arc_lr_reg(uint32_t addr)
 }
 
 /**
- * \brief write an aux register
+ * write an aux register
  * \param[in] addr the aux reg address
  * \param[in] val  value to write
  */
@@ -178,17 +184,18 @@ int32_t vmpu_ac_aux(uint8_t container_id, uint32_t start, uint32_t size)
 }
 
 /**
- * \brief get the current active container id
- * \return current active container id
+ * \brief get current container's id
+ * \return  container id
  */
 int32_t secure_container_id_self(void)
 {
 	return g_active_container;
 }
 
+
 /**
- * \brief get the caller id of a container call
- * \return caller container id
+ * \brief get the id of caller container's id
+ * \return  caller container's id
  */
 int32_t secure_container_id_caller(void)
 {
@@ -202,6 +209,7 @@ int32_t secure_container_id_caller(void)
 	return g_container_stack[g_container_stack_ptr - 1].src_id;
 }
 
+#if SECURESHIELD_VERSION == 1
 /**
  * \brief system service provided by secureshield runtime
  * \param[in] frame exception frame
@@ -230,3 +238,42 @@ void secureshield_sys_ops(INT_EXC_FRAME *frame)
 			break;
 	}
 }
+
+#elif SECURESHIELD_VERSION == 2
+/**
+ * \brief secureshield runtime service
+ * \param[in]  sys_id system service id
+ * \param[in]  par1   1st parameter
+ * \param[in]  par2   2nd parameter
+ * \param[in]  par3   3rd parameter
+ * \param[in]  par4   4th parameter
+ * \return        return value of runtime service
+ */
+int32_t secureshield_sys_ops(uint32_t sys_id, uint32_t par1, uint32_t par2, uint32_t par3, uint32_t par4)
+{
+	int32_t ret = -1;
+
+	switch (sys_id) {
+		case SECURESHIELD_SYS_LR:
+			SECURESHIELD_DBG("read aux reg 0x%x\r\n", par1);
+			ret =  secure_arc_lr_reg(par1);
+			break;
+		case SECURESHIELD_SYS_SR:
+			SECURESHIELD_DBG("write aux reg 0x%x\r\n", par1);
+			secure_arc_sr_reg(par1, par2);
+			break;
+		case SECURESHIELD_SYS_CONTAINER_ID_SELF:
+			ret = secure_container_id_self();
+			break;
+		case SECURESHIELD_SYS_CONTAINER_ID_CALLER:
+			ret = secure_container_id_caller();
+			break;
+		default:
+			SECURESHIELD_DBG("Unsupported sys level operation:%d\r\n", sys_id);
+			break;
+	}
+	return ret;
+}
+#endif
+
+
