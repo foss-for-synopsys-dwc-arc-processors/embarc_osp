@@ -32,9 +32,6 @@
 #define CALC_REGION_END_ADDR(start, size) \
 		(start + size - (1 << ARC_FEATURE_MPU_ALIGNMENT_BITS))
 
-#ifndef ARC_FEATURE_MPU_REGIONS
-#define ARC_FEATURE_MPU_REGIONS arc_mpu_regions()
-#endif
 
 void arc_mpu_enable(void)
 {
@@ -64,7 +61,7 @@ void arc_mpu_region(uint32_t index, uint32_t base, uint32_t size,
 		return;
 	}
 
-	region_attr &= AUX_MPU_RDP_ATTR_MASK;
+	region_attr &= AUX_MPU_ATTR_MASK;
 
 	/* ARC MPU version 2 and version 3 have different aux reg interface */
 #if ARC_FEATURE_MPU_VERSION == 2
@@ -81,7 +78,7 @@ void arc_mpu_region(uint32_t index, uint32_t base, uint32_t size,
 
 	if (size > 0) {
 		region_attr |= AUX_MPU_RDP_REGION_SIZE(bits);
-		base |= AUX_MPU_RDB_VALID_MASK;
+		base |= AUX_MPU_VALID_MASK;
 	} else {
 		base = 0;
 	}
@@ -95,7 +92,7 @@ void arc_mpu_region(uint32_t index, uint32_t base, uint32_t size,
 	}
 
 	if (region_attr) {
-		region_attr |= AUX_MPU_RDB_VALID_MASK;
+		region_attr |= AUX_MPU_VALID_MASK;
 	}
 
 	_arc_aux_write(AUX_MPU_INDEX, index);
@@ -109,8 +106,8 @@ void arc_mpu_region(uint32_t index, uint32_t base, uint32_t size,
 void arc_mpu_default(uint32_t region_attr)
 {
 	uint32_t val = _arc_aux_read(AUX_MPU_EN) &
-			(~AUX_MPU_RDP_ATTR_MASK);
-	region_attr &= AUX_MPU_RDP_ATTR_MASK;
+			(~AUX_MPU_ATTR_MASK);
+	region_attr &= AUX_MPU_ATTR_MASK;
 
 	_arc_aux_write(AUX_MPU_EN, region_attr | val);
 }
@@ -124,9 +121,9 @@ int32_t arc_mpu_in_region(uint32_t index, uint32_t start, uint32_t size)
 	uint32_t r_size_lshift;
 
 	r_addr_start = _arc_aux_read(AUX_MPU_RDB0 + 2 * index)
-			& (~AUX_MPU_RDB_VALID_MASK);
+			& (~AUX_MPU_VALID_MASK);
 	r_size_lshift = _arc_aux_read(AUX_MPU_RDP0 + 2 * index)
-			& AUX_MPU_RDP_ATTR_MASK;
+			& AUX_MPU_ATTR_MASK;
 	r_size_lshift = (r_size_lshift & 0x3) | ((r_size_lshift >> 7) & 0x1C);
 	r_addr_end = r_addr_start  + (1 << (r_size_lshift + 1));
 

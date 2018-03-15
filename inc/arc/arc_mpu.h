@@ -37,23 +37,31 @@
 #define ARC_FEATURE_MPU_VERSION 2
 #endif
 
-#define AUX_MPU_RDB_VALID_MASK (0x1)
+#ifndef ARC_FEATURE_MPU_REGIONS
+#define ARC_FEATURE_MPU_REGIONS arc_mpu_regions()
+#endif
+
+
+#define AUX_MPU_VALID_MASK (0x1)
 #define AUX_MPU_EN_ENABLE   (0x40000000)
 #define AUX_MPU_EN_DISABLE  (0xBFFFFFFF)
 
 #define AUX_MPU_RDP_REGION_SIZE(bits)  \
 			(((bits - 1) & 0x3) | (((bits - 1) & 0x1C) << 7))
 
-#define AUX_MPU_RDP_ATTR_MASK (0xFFF)
+#define AUX_MPU_ATTR_MASK (0xFFF)
 
-#define AUX_MPU_RDP_UE  0x008    /* allow user execution */
-#define AUX_MPU_RDP_UW  0x010    /* allow user write */
-#define AUX_MPU_RDP_UR  0x020    /* allow user read */
-#define AUX_MPU_RDP_KE  0x040    /* only allow kernel execution */
-#define AUX_MPU_RDP_KW  0x080    /* only allow kernel write */
-#define AUX_MPU_RDP_KR  0x100    /* only allow kernel read */
-#define AUX_MPU_RDP_S   0x8000   /* secure */
-#define AUX_MPU_RDP_N   0x0000   /* normal */
+#define AUX_MPU_ATTR_UE  0x008    /* allow user execution */
+#define AUX_MPU_ATTR_UW  0x010    /* allow user write */
+#define AUX_MPU_ATTR_UR  0x020    /* allow user read */
+#define AUX_MPU_ATTR_KE  0x040    /* only allow kernel execution */
+#define AUX_MPU_ATTR_KW  0x080    /* only allow kernel write */
+#define AUX_MPU_ATTR_KR  0x100    /* only allow kernel read */
+#define AUX_MPU_ATTR_S   0x8000   /* secure */
+#define AUX_MPU_ATTR_N   0x0000   /* normal */
+
+#define AUX_MPU_ATTR_SID_OFFSET 16
+#define AUX_MPU_ATTR_SID_MASK	(0xFF << AUX_MPU_ATTR_SID_OFFSET)
 
 #define AUX_MPU_INDEX_DEFAULT	0x80000000
 #define AUX_MPU_INDEX_MULT	0x40000000
@@ -64,23 +72,27 @@
 #define ARC_FEATURE_MPU_ALIGNMENT_BITS 5
 #endif
 
+/* derived region alignment settings */
+#define ARC_FEATURE_MPU_ALIGNMENT (1UL<<ARC_FEATURE_MPU_ALIGNMENT_BITS)
+#define ARC_FEATURE_MPU_ALIGNMENT_MASK (ARC_FEATURE_MPU_ALIGNMENT-1)
+
 /* Some helper defines for common regions */
 #define ARC_MPU_REGION_RAM_ATTR	\
-			(AUX_MPU_RDP_UW | AUX_MPU_RDP_UR | \
-			 AUX_MPU_RDP_KW | AUX_MPU_RDP_KR)
+			(AUX_MPU_ATTR_UW | AUX_MPU_ATTR_UR | \
+			 AUX_MPU_ATTR_KW | AUX_MPU_ATTR_KR)
 
 #define ARC_MPU_REGION_FLASH_ATTR \
-			(AUX_MPU_RDP_UE | AUX_MPU_RDP_UR | \
-			 AUX_MPU_RDP_KE | AUX_MPU_RDP_KR)
+			(AUX_MPU_ATTR_UE | AUX_MPU_ATTR_UR | \
+			 AUX_MPU_ATTR_KE | AUX_MPU_ATTR_KR)
 
 #define ARC_MPU_REGION_IO_ATTR \
-			(AUX_MPU_RDP_UW | AUX_MPU_RDP_UR | \
-			 AUX_MPU_RDP_KW | AUX_MPU_RDP_KR)
+			(AUX_MPU_ATTR_UW | AUX_MPU_ATTR_UR | \
+			 AUX_MPU_ATTR_KW | AUX_MPU_ATTR_KR)
 
 #define ARC_MPU_REGION_ALL_ATTR \
-			(AUX_MPU_RDP_UW | AUX_MPU_RDP_UR | \
-			 AUX_MPU_RDP_KW | AUX_MPU_RDP_KR | \
-			 AUX_MPU_RDP_KE | AUX_MPU_RDP_UE)
+			(AUX_MPU_ATTR_UW | AUX_MPU_ATTR_UR | \
+			 AUX_MPU_ATTR_KW | AUX_MPU_ATTR_KR | \
+			 AUX_MPU_ATTR_KE | AUX_MPU_ATTR_UE)
 
 #define REGION_32B      0x200
 #define REGION_64B      0x201
