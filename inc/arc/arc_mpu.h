@@ -49,7 +49,11 @@
 #define AUX_MPU_RDP_REGION_SIZE(bits)  \
 			(((bits - 1) & 0x3) | (((bits - 1) & 0x1C) << 7))
 
-#define AUX_MPU_ATTR_MASK (0xFFF)
+#if ARC_FEATURE_MPU_VERSION == 2
+#define AUX_MPU_ATTR_MASK (0xFFB)
+#elif ARC_FEATURE_MPU_VERSION == 4
+#define AUX_MPU_ATTR_MASK (0xFF81F9)
+#endif
 
 #define AUX_MPU_ATTR_UE  0x008    /* allow user execution */
 #define AUX_MPU_ATTR_UW  0x010    /* allow user write */
