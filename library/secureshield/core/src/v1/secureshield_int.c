@@ -48,7 +48,6 @@ static void secureshield_exc_handler_default(void *frame);
 static void secureshield_exc_handler_privilege_v(void *frame);
 static void secureshield_exc_handler_protect_v(void * frame);
 
-
 /** secure world exception entry table */
 EMBARC_ALIGNED(1024)
 const EXC_ENTRY secureshield_exc_entry_table[NUM_EXC_ALL] = {
@@ -113,7 +112,6 @@ static void secureshield_exc_handler_privilege_v(void *frame)
 			SECURESHIELD_HALT("unknown cause:0x%x", cause_code);
 			break;
 	}
-	/* \todo, how to recover from privilege violation exception */
 }
 
 /**
@@ -522,36 +520,35 @@ void secureshield_int_init(void)
 #endif
 	ictrl.save_blink = 1;
 	ictrl.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
-	ictrl.save_u_to_u = 1;		/* user context saved on user stack */
+	ictrl.save_u_to_u = 0;		/* user context saved on secure stack */
 	ictrl.save_idx_regs = 1;	/* JLI, LDI, EI */
 
 	_arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)secureshield_exc_entry_table);
 	for (i = NUM_EXC_CPU;i < NUM_EXC_ALL; i++)
 	{
-
 		/* interrupt level triggered, disabled, priority is the lowest */
 		_arc_aux_write(AUX_IRQ_SELECT, i);
 		_arc_aux_write(AUX_IRQ_ENABLE, 0);
 		_arc_aux_write(AUX_IRQ_TRIGGER, 0);
 		_arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
 	}
-	/* U bit is set, register is saved in user stack */
+
 	_arc_aux_write(AUX_IRQ_CTRL, *(uint32_t *)&ictrl);
 	arc_int_ipm_set(INT_PRI_MAX - INT_PRI_MIN);
 }
 
+
+uint32_t* dst_container_user_sp;
+
 /**
  * \brief common part of interrupt handling in secure world
  * \param[in] src_frame   interrupt frame
- * \param[in] runtime_sp  runtime sp
  * \return  target container sp
  */
-uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t *runtime_sp)
+uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 {
 	uint32_t src_id, dst_id;
-	INT_EXC_FRAME* dst_frame;
-	uint32_t dst_fn;
-	uint32_t target_sp = 0;
+	INT_HANDLER handler;
 
 	/* reuse src_id*/
 	src_id = _arc_aux_read(AUX_IRQ_CAUSE);
@@ -570,11 +567,10 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t *runti
 
 	/* get dst_id and interrupt handler */
 	dst_id = secureshield_int_handler_table[src_id - NUM_EXC_CPU].id;
-	dst_fn = (uint32_t)secureshield_int_handler_table[src_id - NUM_EXC_CPU].handler;
-
+	handler = secureshield_int_handler_table[src_id - NUM_EXC_CPU].handler;
 
 	/* check interrupt handler */
-	if(!dst_fn) {
+	if(!handler) {
 		/* failed, directly return and disable the interrupt*/
 		arc_int_disable(src_id);
 		SECURESHIELD_DBG("Unprivileged handler for IRQ %d not found\r\n", src_id);
@@ -588,44 +584,49 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t *runti
 
 	/* a proper context switch is only needed when container changed */
 	if(src_id != dst_id) {
-		/* save current state */
-		container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
-			src_frame->status32, dst_id);
-		/* gather information from current state */
-		/* create the cpu frame and exception frame for the destination container */
-		dst_frame = (INT_EXC_FRAME *)(g_container_context[dst_id].cur_sp - ARC_EXC_FRAME_SIZE);
-		target_sp = (uint32_t)(((uint32_t *)dst_frame) - ARC_CALLEE_FRAME_SIZE);
-
-		dst_frame->erbta = 0;
-		dst_frame->ret = dst_fn;
-		dst_frame->status32 = g_container_context[dst_id].cpu_status;
-
-#if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
-/* when gp is not changed during execution and sdata is enabled, the following is meaningful */
-/* The newlib c of ARC GNU is compiled with sdata enabled */
-		dst_frame->gp = src_frame->gp;
-#endif
-
 		/* switch access control table */
 		vmpu_switch(src_id, dst_id);
-	} else {
 		/* save current state */
-		container_stack_push(src_id, (uint32_t *)src_frame, src_frame->status32, dst_id);
-		_arc_sr_reg(AUX_ERRET, dst_fn);
-		_arc_sr_reg(AUX_ERSTATUS, src_frame->status32);
-		_arc_sr_reg(AUX_ERBTA, 0);
-	}
+		container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
+			(uint32_t *)_arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
+		/* gather information from current state */
 
-	return target_sp;
+		if (!container_is_secure(dst_id)) {
+			dst_container_user_sp = g_container_context[dst_id].normal_sp;
+		} else {
+			dst_container_user_sp = 0;
+		}
+
+		_arc_aux_write(AUX_ERRET, (uint32_t)handler);
+		_arc_aux_write(AUX_ERSTATUS, g_container_context[dst_id].cpu_status);
+
+		return (uint32_t)g_container_context[dst_id].cur_sp;
+
+	} else {
+		if (container_is_secure(src_id)) {
+			_arc_aux_write(AUX_MPU_EN, 0x40000000);
+			arc_unlock_restore(src_frame->status32);
+			handler(0);
+
+			return 0;
+		} else {
+			container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
+			(uint32_t *)_arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
+			_arc_aux_write(AUX_ERRET, (uint32_t)handler);
+			_arc_aux_write(AUX_ERSTATUS, src_frame->status32);
+			dst_container_user_sp = (uint32_t *)_arc_aux_read(AUX_USER_SP);
+
+			return (uint32_t)g_container_context[dst_id].cur_sp;
+		}
+	}
 }
 
 /**
  * \brief interrupt return from normal world
  * \param[in] dst_frame   exception frame
- * \param[in] runtime_sp  runtime sp
  * \return  target container sp
  */
-uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame, uint32_t *runtime_sp)
+uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 {
 	uint32_t src_id, dst_id;
 	uint32_t *src_sp;
@@ -635,7 +636,7 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame, uint32_t *runtime_sp)
 	dst_id = g_container_stack_curr_id;
 
 	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE,
-		dst_frame->status32) != 0 ) {
+		(uint32_t *)_arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0 ) {
 		return 0;
 	}
 
@@ -645,9 +646,6 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame, uint32_t *runtime_sp)
 	if (src_id != dst_id) {
 		/* switch access control table */
 		vmpu_switch(dst_id, src_id);
-	} else {
-		*runtime_sp = (uint32_t)src_sp; /* directly return */
-		src_sp = 0;
 	}
 
 	/* clear the first set bit in AUX_IRQ_ACT to simulate the quit of interrupt */

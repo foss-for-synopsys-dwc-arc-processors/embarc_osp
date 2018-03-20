@@ -63,6 +63,7 @@ SECTIONS {
 			. = ALIGN(4);
 			_f_ram_secureshieldruntime = .;
 			KEEP(*(.ram.secureshield.secure))
+			KEEP(*(.ram.secureshield.stack))
 #if  SECURESHIELD_VERSION == 1
 			_e_ram_secureshieldruntime = _f_ram_secureshieldruntime + CONTAINER_SIZE_ALIGNMENT(. - _f_ram_secureshieldruntime);
 #elif SECURESHIELD_VERSION == 2

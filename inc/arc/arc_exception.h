@@ -170,6 +170,15 @@ typedef struct callee_frame {
 
 #endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
 
+#if defined(LIB_SECURESHIELD)
+#if SECURESHIELD_VERSION == 1
+	uint32_t user_sp;
+#elif SECURESHIELD_VERSION == 2
+	uint32_t secure_kernel_sp;
+	uint32_t kernel_sp;
+#endif
+#endif
+
 #ifndef ARC_FEATURE_RF16
 	uint32_t r25;
 	uint32_t r24;

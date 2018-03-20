@@ -45,16 +45,18 @@ typedef struct {
 
 typedef struct {
 	uint32_t *cur_sp;
+	uint32_t *normal_sp;
 	uint32_t cpu_status;
+	const CONTAINER_CONFIG *cfg;
 } EMBARC_PACKED CONTAINER_CONTEXT;
 
 /* state variables */
 extern CONTAINER_STACK_ITEM g_container_stack[SECURESHIELD_CONTAINER_STACK_MAX_DEPTH];
 extern uint32_t g_container_stack_ptr;
+
 extern CONTAINER_CONTEXT g_container_context[SECURESHIELD_MAX_CONTAINERS];
 extern uint32_t g_container_stack_curr_id;
 
-extern uint32_t *secureshield_target_sp;
 
 /**
  * \brief push a container into the container context stack
@@ -64,7 +66,8 @@ extern uint32_t *secureshield_target_sp;
  * \param[in] dst_id destination container
  * \return 0 ok, -1 failed
  */
-Inline int32_t container_stack_push(uint8_t src_id, uint32_t *src_sp, uint32_t status, uint8_t dst_id)
+Inline int32_t container_stack_push(uint8_t src_id, uint32_t *src_sp,
+			uint32_t *normal_sp, uint32_t status, uint8_t dst_id)
 {
 	/* check container stack overflow */
 	if (g_container_stack_ptr == SECURESHIELD_CONTAINER_STACK_MAX_DEPTH) {
@@ -79,6 +82,7 @@ Inline int32_t container_stack_push(uint8_t src_id, uint32_t *src_sp, uint32_t s
 
 	/* save current stack pointer for the src container */
 	g_container_context[src_id].cur_sp = src_sp;
+	g_container_context[src_id].normal_sp = normal_sp;
 	g_container_context[src_id].cpu_status = status;
 
 	/* update current container id */
@@ -94,7 +98,8 @@ Inline int32_t container_stack_push(uint8_t src_id, uint32_t *src_sp, uint32_t s
  * \param[in] status cpu status
  * \return  0 ok, -1 failed
  */
-Inline int32_t container_stack_pop(uint8_t dst_id, uint32_t *dst_sp, uint32_t status)
+Inline int32_t container_stack_pop(uint8_t dst_id, uint32_t *dst_sp,
+				uint32_t *normal_sp, uint32_t status)
 {
 	/* check container stack underflow */
 	if (!g_container_stack_ptr) {
@@ -107,6 +112,7 @@ Inline int32_t container_stack_pop(uint8_t dst_id, uint32_t *dst_sp, uint32_t st
 
 	/* save current stack pointer */
 	g_container_context[dst_id].cur_sp = dst_sp;
+	g_container_context[dst_id].normal_sp = normal_sp;
 	g_container_context[dst_id].cpu_status = status;
 
 	/* update current container stack id */

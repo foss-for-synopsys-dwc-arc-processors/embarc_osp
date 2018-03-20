@@ -63,8 +63,10 @@ int tst_func3(int arg1, int arg2, int arg3)
 
 int tst_func5(int arg1, int arg2, int arg3, int arg4, int arg5)
 {
-	/* container 2 is secure, it can directly access all system resources, no exception raised */
-	/* the area pointed by challenge1 belongs to container1 */
+	/*
+	 * container 2 is secure, it can directly access all system resources,
+	 * no exception raised.
+	 */
 	container1_context.initialized = 0;
 	return 5;
 }
@@ -72,6 +74,10 @@ int tst_func5(int arg1, int arg2, int arg3, int arg4, int arg5)
 
 void soft_interrupt2(void *p_exinf)
 {
-	/* if secure container is not really in secure state, _arc_lr_reg will raise an exception */
+	/*
+	 * if secure container is not really in secure state,
+	 * _arc_lr_reg will raise an exception
+	 */
+
 	_arc_aux_read(AUX_IRQ_CTRL);
 }

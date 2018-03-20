@@ -49,7 +49,15 @@ static void secureshield_exc_handler_privilege_v(void *frame);
 /* protection violation exception handler */
 static void secureshield_exc_handler_protect_v(void * frame);
 
-extern uint32_t * secureshield_runtime_stack_ptr;
+
+typedef struct int_handler_call_frame {
+	uint32_t *secure_sp;
+	uint32_t *normal_sp;
+	void *pc;
+	uint32_t cpu_status;
+} EMBARC_PACKED INT_HANDLER_CALL_FRAME;
+
+#define INT_HANDLER_CALL_FRAME_SIZE	(sizeof(INT_HANDLER_CALL_FRAME) / sizeof(uint32_t))
 
 EMBARC_ALIGNED(1024)
 const EXC_ENTRY secureshield_exc_entry_table[NUM_EXC_ALL] = {
@@ -329,8 +337,8 @@ int32_t secure_int_enable(uint32_t intno)
 		return -1;
 	}
 
-	arc_int_enable(intno);
 	secureshield_int_handler_table[intno - NUM_EXC_CPU].enabled = 1;
+	arc_int_enable(intno);
 	return 0;
 }
 
@@ -473,8 +481,9 @@ int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER handler, uint32_t intno)
 {
 	SECURESHIELD_INT_HANDLER* exc;
 
-	if (secure_int_default_check(intno) != 0)
+	if (secure_int_default_check(intno) != 0) {
 		return -1;
+	}
 
 	exc = &secureshield_int_handler_table[intno - NUM_EXC_CPU];
 
@@ -492,12 +501,14 @@ int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER handler, uint32_t intno)
 
 	exc->id = container_id;
 	exc->handler = handler;
+	exc->enabled = 0;
 
 	if (container_id != 0) {
 		//SECURESHIELD_DBG("normal interrupts are shared to all normal containers\r\n");
 		arc_int_secure_set(intno, 1);
 	} else {
-		arc_int_secure_set(intno, 0); // background container's interrupt is normal interrupt
+		/* background container's interrupts are normal interrupts */
+		arc_int_secure_set(intno, 0);
 	}
 	return 0;
 }
@@ -588,7 +599,7 @@ void secureshield_int_init(void)
 #endif
 	ictrl.bits.save_blink = 1;
 	ictrl.bits.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
-	ictrl.bits.save_u_to_u = 1;		/* user context saved on user stack */
+	ictrl.bits.save_u_to_u = 0;		/* user context saved on kernel stack */
 	ictrl.bits.save_idx_regs = 1;		/* JLI, LDI, EI */
 
 	_arc_aux_write(AUX_INT_VECT_BASE_S, (uint32_t)secureshield_exc_entry_table);
@@ -601,7 +612,7 @@ void secureshield_int_init(void)
 		_arc_aux_write(AUX_IRQ_PRIORITY, (INT_PRI_MAX - INT_PRI_MIN) |
 			(1 << AUX_IRQ_PRIORITY_BIT_S));
 	}
-	/* U bit is set, register is saved in user stack */
+
 	_arc_aux_write(AUX_IRQ_CTRL, ictrl.value);
 	arc_int_ipm_set(INT_PRI_MAX - INT_PRI_MIN);
 
@@ -617,10 +628,11 @@ void secureshield_int_init(void)
  * \param[in] src_frame interrupt frame
  * \return  interrupt handler address
  */
-void * secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t runtime)
+void * secureshield_interrupt_handle(uint32_t *sp)
 {
 	uint32_t src_id, dst_id;
 	INT_HANDLER handler;
+	INT_HANDLER_CALL_FRAME *dst_frame;
 
 	/* reuse src_id and dst_id */
 	src_id = _arc_aux_read(AUX_IRQ_CAUSE);
@@ -650,29 +662,39 @@ void * secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t runtime)
 
 	src_id = g_container_stack_curr_id;
 
-	_arc_aux_write(AUX_ERRET, (uint32_t)handler);
-
-
 	if (src_id != dst_id) {
 		vmpu_switch(src_id, dst_id);
-		container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE, src_frame->status32, dst_id);
 
-		/* for all normal interrupts happened in secure world, it's handled in background container stack */
+		container_stack_push(src_id, (uint32_t *)sp - ARC_CALLEE_FRAME_SIZE,
+			(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), _arc_aux_read(AUX_STATUS32),
+			 dst_id);
+
+		if (container_is_secure(src_id)) {
+			g_container_context[0].normal_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
+		}
+
+		dst_frame = (INT_HANDLER_CALL_FRAME *)
+			(g_container_context[dst_id].cur_sp - INT_HANDLER_CALL_FRAME_SIZE);
+
+		dst_frame->secure_sp = g_container_context[dst_id].cur_sp;
+
 		if (container_is_secure(dst_id)) {
-			_arc_aux_write(AUX_KERNEL_SP, (uint32_t)g_container_context[0].cur_sp);
+			dst_frame->normal_sp = g_container_context[0].normal_sp;
+		} else {
+			dst_frame->normal_sp = g_container_context[dst_id].normal_sp;
 		}
 
-		if (runtime) {
-			_arc_aux_write(AUX_SEC_K_SP,  (uint32_t)g_container_context[src_id].cur_sp);
-		}
-		return (void *) g_container_context[dst_id].cur_sp + 1;
+		dst_frame->pc = handler;
+		dst_frame->cpu_status = g_container_context[dst_id].cpu_status;
+
+		return (void *) dst_frame;
 	} else {
-		container_stack_push(src_id, (uint32_t *)src_frame, src_frame->status32, dst_id);
-		if (runtime) {
-			// must be normal containers
-			return (void *)_arc_aux_read(AUX_KERNEL_SP);
-		}
-		return (void *) g_container_context[dst_id].cur_sp;
+		/* enable MPU */
+		_arc_aux_write(AUX_MPU_EN, 0);
+		Asm("seti");
+		handler(0);
+		Asm("clri");
+		return NULL;
 	}
 }
 
@@ -681,26 +703,18 @@ void * secureshield_interrupt_handle(INT_EXC_FRAME *src_frame, uint32_t runtime)
  * \param[in]  status cpu status (not used now)
  * \return        previous interrupted container's stack pointer
  */
-void *secureshield_interrupt_handle_return(uint32_t status)
+void *secureshield_interrupt_handle_return(uint32_t* sp)
 {
 	uint32_t src_id, dst_id;
 
 	dst_id = g_container_stack_curr_id;
 
-	container_stack_pop(dst_id, g_container_context[dst_id].cur_sp, status);
+	container_stack_pop(dst_id, sp, (uint32_t *)_arc_aux_read(AUX_KERNEL_SP),
+			_arc_aux_read(AUX_STATUS32));
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
 
-	if (src_id != dst_id) {
-
-		/* for all normal interrupts happened in secure world, it's handled in background container stack */
-		if (container_is_secure(src_id)) {
-			_arc_aux_write(AUX_KERNEL_SP, (uint32_t)g_container_context[0].cur_sp);
-		}
-
-		vmpu_switch(dst_id, src_id);
-		return (void *)g_container_stack[g_container_stack_ptr].src_sp + 1; // need restore callee regs
-	}
+	vmpu_switch(dst_id, src_id);
 
 	return g_container_stack[g_container_stack_ptr].src_sp;
 }

@@ -53,7 +53,7 @@ typedef void (*SJLI_ENTRY) (void);
 extern const SJLI_ENTRY secureshield_sjli_entry_table[NUM_SJLI_ENTRY];
 
 extern uint32_t container_call_in(INT_EXC_FRAME *src_frame);
-extern uint32_t container_call_out(uint32_t ret_value, uint32_t *sp, uint32_t status32);
+extern uint32_t container_call_out(PROCESSOR_FRAME *dst);
 extern void sjli_init(void);
 extern int32_t sjli_entry_install(uint32_t no, SJLI_ENTRY entry);
 extern SJLI_ENTRY sjli_entry_get(uint32_t no);

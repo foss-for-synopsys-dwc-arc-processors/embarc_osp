@@ -420,6 +420,9 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 	MPU_REGION *region;
 	static int32_t vmpu_load = 0;
 
+	/* remember active container */
+	g_active_container = dst_id;
+
 	if (vmpu_load) { // if mpu is loaded, no need to load again
 		return;
 	}
@@ -432,12 +435,13 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 
 	region = g_mpu_list;
 
-	for (i = ARC_MPU_RESERVED_REGIONS; i < g_mpu_region_count; i++) {
+	for (i = 0; i < g_mpu_region_count; i++) {
 		if (!(region->attr & (AUX_MPU_ATTR_S | AUX_MPU_ATTR_KE | AUX_MPU_ATTR_UE))) {
 			region->attr |= (g_secure_sid_mask << 16);
 		}
 
-		arc_mpu_region(i, region->base, region->size, region->attr);
+		arc_mpu_region(i + ARC_MPU_RESERVED_REGIONS, region->base,
+				 region->size, region->attr);
 		region++;
 	}
 
@@ -591,6 +595,8 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	uint32_t rodata_attribute;
 	uint32_t ram_attribute;
 
+	PROCESSOR_FRAME *context;
+
 
 	if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
 		/* secure container shares the same MPU regions of secureshield runtime */
@@ -628,16 +634,29 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		}
 	}
 
+	g_container_context[container_id].cfg = container_cfg;
+
 	/* handle background container */
 	if (!container_id) {
-		/* container 0 is background container, it uses the default stack */
-		g_container_context[container_id].cur_sp = (uint32_t *)_arc_aux_read(AUX_USER_SP);
+		/* container 0 is background container, it uses the default stack, just set the secure stack*/
+		_arc_aux_write(AUX_USER_SP, (uint32_t)container_cfg->stack_secure);
+		_arc_aux_write(AUX_ERSTATUS, g_container_context[0].cpu_status);
 	} else {
-		g_container_context[container_id].cur_sp =  container_cfg->stack_area + container_cfg->stack_size - 1;
+		if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
+			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
+		} else {
+			context = (PROCESSOR_FRAME *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_SIZE);
+			context->callee_regs.user_sp = (uint32_t)container_cfg->stack_area;
+			g_container_context[container_id].normal_sp = container_cfg->stack_area;
+		}
+
+		g_container_context[container_id].cur_sp = (uint32_t *)context;
 	}
 #elif SECURESHIELD_VERSION == 2
 	uint32_t size;
 	uint32_t secure;
+
+	PROCESSOR_FRAME *context;
 
 	secure = container_cfg->type;
 
@@ -670,13 +689,25 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		}
 	}
 
-	/* handle background container */
+	g_container_context[container_id].cfg = container_cfg;
+
+	/* initialize the status of container, stack pointer and status register */
 	if (!container_id) {
 		/* container 0 is background container, it uses the default stack */
-		g_container_context[container_id].cur_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
+		_arc_aux_write(AUX_SEC_K_SP, (uint32_t)container_cfg->stack_secure);
 	} else {
-		/* -1 here, so the mpu lookup will find the right region. */
-		g_container_context[container_id].cur_sp =  container_cfg->stack_area + container_cfg->stack_size - 1;
+		/* \todo init cpu status ? */
+		if (secure == SECURESHIELD_AC_SECURE) {
+			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
+			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_area;
+		} else {
+			context = (PROCESSOR_FRAME *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_SIZE);
+			context->callee_regs.kernel_sp = (uint32_t)container_cfg->stack_area;
+			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_secure;
+			g_container_context[container_id].normal_sp =container_cfg->stack_area;
+		}
+
+		g_container_context[container_id].cur_sp = (uint32_t *)context;
 	}
 #endif
 }

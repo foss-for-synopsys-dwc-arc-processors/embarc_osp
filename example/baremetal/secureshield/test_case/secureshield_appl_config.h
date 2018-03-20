@@ -39,11 +39,11 @@
  					GEN_CONTAINER_ROM_SECTION(container1, 2048, *container1.o) \
  					GEN_CONTAINER_ROM_SECTION(container2, 2048, *container2.o) \
  					GEN_CONTAINER_ROM_SECTION(container3, 2048, *container3.o) \
-  					GEN_CONTAINER_ROM_SECTION(container4, 0)	
+  					GEN_CONTAINER_ROM_SECTION(container4, 0)
 
 // CONTAINER_ROM_OBJS_LIST is only for ARC_GNU
 // This macro wii exclude the specified container objs from background container in linking,
-// *(EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .text EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) 
+// *(EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .text EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST)
 // .text.* EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .gnu.linkonce.t.*)
 #define CONTAINER_ROM_OBJS_LIST *container1.o *container2.o *container3.o
 
@@ -61,7 +61,7 @@
 
 // CONTAINER_RAM_OBJS_LIST is only for ARC_GNU
 // This macro wii exclude the specified container objs from background container in linking,
-//*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) 
+//*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST)
 //.data.* EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.d.*)
 #define CONTAINER_RAM_OBJS_LIST *container1.o *container2.o *container3.o
 

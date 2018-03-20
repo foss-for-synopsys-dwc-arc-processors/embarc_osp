@@ -129,6 +129,8 @@
 #define SECURESHIELD_REGION_ROUND_UP(x)		EMBARC_POW2_CEIL(x)
 #define SECURESHIELD_STACK_SIZE_ROUND(x)	SECURESHIELD_REGION_ROUND_UP(x)
 
+#define CONTAINER_SECURE_STACK_SIZE 	512
+#define CONTAINER_DEFAUTL_STACK_SIZE	1024
 
 typedef uint32_t CONTAINER_AC;
 
@@ -141,8 +143,10 @@ typedef struct
 
 typedef struct
 {
+	char * container_name;
 	uint32_t magic; 	/* magic number to identify this structure */
 	uint32_t type;		/* container type */
+	uint32_t *stack_secure;  /* secure stack to call runtime service */
 	uint32_t stack_size;	/* container stack size */
 	uint32_t *stack_area;	/* container stack area */
 

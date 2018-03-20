@@ -31,18 +31,6 @@
 #include "secureshield_vmpu.h"
 #include "secureshield_int.h"
 
-#if SECURESHIELD_VERSION == 2
-#if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
-uint32_t normal_world_gp;
-#endif
-
-
-extern uint32_t __secureshield_stack[];
-
-uint32_t * secureshield_runtime_stack_ptr = __secureshield_stack;
-#endif
-
-
 /**
  * \brief the post initialization of secureshield
  */

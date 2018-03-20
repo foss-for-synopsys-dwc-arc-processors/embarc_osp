@@ -114,9 +114,8 @@ Inline uint32_t container_call_get_dst_id(CONTAINER_CALL *pc)
  */
 Inline uint32_t container_is_secure(uint8_t id)
 {
-	CONTAINER_CONFIG *container_cfg = (CONTAINER_CONFIG *)__secureshield_config.cfgtbl_ptr_start[id];
 
-	return container_cfg->type;
+	return g_container_context[id].cfg->type;
 }
 
 #endif/* _SECURESHIELD_MONITOR_CC_H_ */

@@ -49,11 +49,16 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 {
 	uint32_t trap_pc;
 	uint8_t src_id, dst_id;
-	INT_EXC_FRAME *dst_frame;
+	PROCESSOR_FRAME *dst_frame;
 	uint32_t dst_fn;
 	/* number of arguments to pass to the target function */
 	uint8_t args;
 	uint32_t *src, *dst;
+
+	/* container_call is not allowed in interrupt */
+	if (arc_int_active()) {
+		return 0;
+	}
 
 	/* get it from stack or AUX register */
 	trap_pc = src_frame->ret - 2; // the length of traps_s is 2 bytes
@@ -65,7 +70,7 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 	dst_fn = container_call_get_dst_fn((CONTAINER_CALL *)trap_pc);
 	dst_id = container_call_get_dst_id((CONTAINER_CALL *)trap_pc);
 
-	// the target container of container call could not be 0 (background container)
+	/* the target container of container call could not be 0 (background container) */
 	if (dst_id == 0) {
 		return 0;
 	}
@@ -88,29 +93,29 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 	/* push the calling container and set the callee container */
 	/* the left registers of src container will be saved later, reserve space here */
 	if (container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_SIZE,
-		src_frame->status32, dst_id) != 0) {
+		(uint32_t *)_arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id) != 0) {
 		return 0;
 	}
 
 	/* create the cpu frame and exception frame for the destination container */
-	dst_frame = (INT_EXC_FRAME *)(g_container_context[dst_id].cur_sp - ARC_EXC_FRAME_SIZE);
+	dst_frame = (PROCESSOR_FRAME *)(g_container_context[dst_id].cur_sp);
 
-	dst_frame->erbta = 0; /* erbta is 0, no branch */
-	dst_frame->ret = dst_fn; /* eret */
-	dst_frame->status32 = g_container_context[dst_id].cpu_status;
+	dst_frame->exc_frame.erbta = 0; /* erbta is 0, no branch */
+	dst_frame->exc_frame.ret = dst_fn; /* eret */
+	dst_frame->exc_frame.status32 = g_container_context[dst_id].cpu_status;
 
 	/* set the dst_fn as the return address of destination container  */
-	dst_frame->blink = (uint32_t)secureshield_secure_call_container_out;
+	dst_frame->exc_frame.blink = (uint32_t)secureshield_secure_call_container_out;
 
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 /* when gp is not changed during execution and sdata is enabled, the following is meaningful */
 /* The newlib c of ARC GNU is compiled with sdata enabled */
-	dst_frame->gp = src_frame->gp;
+	dst_frame->exc_frame.gp = src_frame->gp;
 #endif
 
 	/* copy parameters */
 	src = (uint32_t *)&(src_frame->r1);
-	dst = (uint32_t *)&(dst_frame->r0);
+	dst = (uint32_t *)&(dst_frame->exc_frame.r0);
 	/* r1->r0, r2->r1, ... r6->r5 */
 	while(args--) {
 		*dst = *src;
@@ -122,7 +127,7 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 	vmpu_switch(src_id, dst_id);
 
 	/* need to check whether dst_sp is overflow ? */
-	return (uint32_t)(((uint32_t *)dst_frame) - ARC_CALLEE_FRAME_SIZE);
+	return (uint32_t)dst_frame;
 }
 
 /**
@@ -138,13 +143,12 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 
-	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE,
-		dst_frame->status32) != 0) {
+	if (container_stack_pop(dst_id, (uint32_t *)dst_frame - ARC_CALLEE_FRAME_SIZE,
+		(uint32_t *)_arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0) {
 		return 0;
 	}
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
-
 
 	src = (PROCESSOR_FRAME *)g_container_stack[g_container_stack_ptr].src_sp;
 
@@ -154,17 +158,16 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
 	/* switch access control tables */
 	vmpu_switch(dst_id, src_id);
 
-	return (uint32_t)g_container_stack[g_container_stack_ptr].src_sp;
+	return (uint32_t)src;
 }
 
 
 /**
  * \brief trap exception handler
  * \param[in] exc_frame   exception frame
- * \param[in] runtime_sp  runtime_sp
  * \return  target container sp
  */
-uint32_t secureshield_trap_handler(void *exc_frame, uint32_t *runtime_sp)
+uint32_t secureshield_trap_handler(void *exc_frame)
 {
 	INT_EXC_FRAME *trap_frame = (INT_EXC_FRAME *)exc_frame;
 	uint8_t trap_id;
@@ -188,7 +191,7 @@ uint32_t secureshield_trap_handler(void *exc_frame, uint32_t *runtime_sp)
 			break;
 		case SECURESHIELD_SECURE_CALL_INT_OUT:
 			SECURESHIELD_DBG("interrupt return\r\n");
-			return secureshield_int_return(trap_frame, runtime_sp);
+			return secureshield_int_return(trap_frame);
 			break;
 		case SECURESHIELD_SECURE_CALL_INT_EXC:
 			SECURESHIELD_DBG("interrupt operations\r\n");

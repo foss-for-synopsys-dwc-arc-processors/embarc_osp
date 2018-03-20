@@ -35,6 +35,7 @@
 
 #ifndef __ASSEMBLY__
 
+/* background container config macro */
 #define SECURESHIELD_CONTAINER_BACKGROUND(ac_table) \
 	__SECURESHIELD_CONTAINER_BACKGROUND(ac_table, EMBARC_ARRAY_COUNT(ac_table))
 
@@ -48,9 +49,13 @@
 	extern uint8_t _f_data_background_container[]; \
 	extern uint8_t _e_data_background_container[]; \
 	extern uint8_t _f_data_load_background_container[]; \
+	uint32_t __attribute__((section(".ram.secureshield.stack"), aligned(4))) \
+		secure_stack_background_container[CONTAINER_SECURE_STACK_SIZE]; \
 	static const __attribute__((section(".keep.secureshield.cfgtbl"), aligned(4))) CONTAINER_CONFIG background_container_cfg = { \
+		"background_container", \
 		SECURESHIELD_CONTAINER_MAGIC, \
 		SECURESHIELD_CONTAINER_NORMAL, \
+		secure_stack_background_container + CONTAINER_SECURE_STACK_SIZE, \
 		0,			\
 		0,			\
 		ac_table, \
@@ -72,7 +77,48 @@
 /* this macro selects an overloaded macro (variable number of arguments) */
 #define __SECURESHIELD_CONTAINER_MACRO(_1, _2, _3, _4, NAME, ...) NAME
 
-#define __SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, stack_size, container_type) \
+/* normal container config macro */
+#define __SECURESHIELD_NORMAL_CONTAINER_CONFIG(container_name, ac_table, stack_size) \
+	\
+	extern uint8_t _e_text_ ## container_name[]; \
+	extern uint8_t _f_text_ ## container_name[]; \
+	extern uint8_t _e_rodata_ ## container_name[]; \
+	extern uint8_t _f_rodata_ ## container_name[]; \
+	extern uint8_t _e_bss_ ## container_name[]; \
+	extern uint8_t _f_bss_ ## container_name[]; \
+	extern uint8_t _f_data_ ## container_name[]; \
+	extern uint8_t _e_data_ ## container_name[]; \
+	extern uint8_t _f_data_load_ ## container_name[]; \
+	uint32_t __attribute__((section(".ram.secureshield.stack"), aligned(4))) \
+		secure_stack_ ## container_name[CONTAINER_SECURE_STACK_SIZE]; \
+	uint32_t __attribute__((section(EMBARC_TO_STRING(.container_name.bss)))) \
+		stack_ ## container_name[(stack_size+3)/4]; \
+	\
+	static const __attribute__((section(".keep.secureshield.cfgtbl"), aligned(4))) CONTAINER_CONFIG container_name ## _cfg = { \
+		EMBARC_TO_STRING(container_name), \
+		SECURESHIELD_CONTAINER_MAGIC, \
+		SECURESHIELD_CONTAINER_NORMAL, \
+		secure_stack_ ## container_name + CONTAINER_SECURE_STACK_SIZE, \
+		(stack_size+3)/4, \
+		stack_ ## container_name + (stack_size+3)/4, \
+		ac_table, \
+		EMBARC_ARRAY_COUNT(ac_table), \
+		_f_text_ ## container_name, \
+		_e_text_ ## container_name, \
+		_f_rodata_ ## container_name, \
+		_e_rodata_ ## container_name,  \
+		_f_data_ ## container_name, \
+		_e_data_ ## container_name, \
+		_f_data_load_ ## container_name, \
+		_f_bss_ ## container_name,  \
+		_e_bss_ ## container_name   \
+	}; \
+	\
+	const __attribute__((section(".keep.secureshield.cfgtbl_ptr"), aligned(4))) void * const container_name ## _cfg_ptr = &container_name ## _cfg;
+
+
+/* secure container config macro */
+#define __SECURESHIELD_SECURE_CONTAINER_CONFIG(container_name, ac_table, stack_size) \
 	\
 	extern uint8_t _e_text_ ## container_name[]; \
 	extern uint8_t _f_text_ ## container_name[]; \
@@ -85,12 +131,13 @@
 	extern uint8_t _f_data_load_ ## container_name[]; \
 	uint32_t __attribute__((section(EMBARC_TO_STRING(.container_name.bss)))) \
 		stack_ ## container_name[(stack_size+3)/4]; \
-	\
 	static const __attribute__((section(".keep.secureshield.cfgtbl"), aligned(4))) CONTAINER_CONFIG container_name ## _cfg = { \
+		EMBARC_TO_STRING(container_name), \
 		SECURESHIELD_CONTAINER_MAGIC, \
-		container_type, \
+		SECURESHIELD_CONTAINER_SECURE, \
+		0, \
 		(stack_size+3)/4, \
-		stack_ ## container_name, \
+		stack_ ## container_name + (stack_size+3)/4, \
 		ac_table, \
 		EMBARC_ARRAY_COUNT(ac_table), \
 		_f_text_ ## container_name, \
@@ -109,15 +156,13 @@
 
 
 #define __SECURESHIELD_CONTAINER_CONFIG_NOSTACK(container_name, ac_table) \
-	__SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, 1024,	\
-		SECURESHIELD_CONTAINER_NORMAL)
+	__SECURESHIELD_NORMAL_CONTAINER_CONFIG(container_name, ac_table, CONTAINER_DEFAULT_STACK_SIZE)
 
 #define __SECURESHIELD_CONTAINER_CONFIG_STACK(container_name, ac_table, stack_size) \
-	__SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, stack_size,	\
-		SECURESHIELD_CONTAINER_NORMAL)
+	__SECURESHIELD_NORMAL_CONTAINER_CONFIG(container_name, ac_table, stack_size)
 
 #define __SECURESHIELD_CONTIANER_CONFIG_TYPE(container_name, ac_table, stack_size, container_type) \
-	__SECURESHIELD_CONTAINER_CONFIG(container_name, ac_table, stack_size, container_type)
+	__SECURESHIELD_SECURE_CONTAINER_CONFIG(container_name, ac_table, stack_size)
 
 #define CONTAINER_AC_TABLE const __attribute__((section(".keep.secureshield.ac_table"), aligned(4))) CONTAINER_AC_ITEM
 

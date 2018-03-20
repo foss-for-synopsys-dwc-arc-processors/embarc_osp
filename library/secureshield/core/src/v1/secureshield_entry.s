@@ -33,8 +33,8 @@
 #include "arc_asm_common.h"
 #include "secureshield_secure_call_exports.h"
 
-
-#define MPU_DEFAULT_MODE 	0x40000000
+#define MPU_DISABLE 	0x0
+#define MPU_ENABLE	0x40000000
 
 	.file "secureshield_entry.s"
 /* entry for secureshield cpu exception handling */
@@ -42,28 +42,15 @@
 	.global secureshield_exc_entry_cpu
 	.align 4
 secureshield_exc_entry_cpu:
-	/* disable MPU, runtime can do everything */
-	sr 	0x0, [AUX_MPU_EN]
- /*  as the sp may be not correct, pop and push is not allowed
- use ilink as temp register, ilink is not used in secureshield */
-	lr	ilink, [AUX_ERSTATUS]
-	btst	ilink, AUX_STATUS_BIT_U
-	bz	_exc_called_from_priv
-	/* recover user mode sp, secureshield sp is in user_sp */
-	lr	sp, [AUX_USER_SP]
-_exc_called_from_priv:
-
 	EXCEPTION_PROLOGUE
 
-	mov	blink, sp
-
-/* switch to secureshield stack */
-	mov	sp, __secureshield_stack;
-	PUSH	blink
+	/* disable MPU, runtime can do everything */
+	sr 	MPU_DISABLE, [AUX_MPU_EN]
 
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 	mov 	gp, _f_sdata
 #endif
+
 /* find the exception cause */
 	lr	r0, [AUX_ECR]
 	lsr	r0, r0, 16
@@ -71,43 +58,23 @@ _exc_called_from_priv:
 	mov	r1, secureshield_exc_handler_table
 	ld.as	r2, [r1, r0]
 
-	mov	r0, blink
-	mov	r1, sp
-	jl	[r2]		/* jump to exception handler where interrupts are not allowed! */
+/* jump to exception handler where interrupts are not allowed! */
+	mov	r0, sp
+	jl	[r2]
 
-/*
- * come back to last sp, secureshield stack will not be used
- * 1. to save more callee registers, do container switch
- * 2. no container switch, just return from exception
- */
-	POP	sp
 	cmp	r0, 0
 	beq	_ret_exc
 
-/* there is a context switch request */
-	SAVE_CALLEE_REGS	/* save callee save registers */
+	/* there is a context switch request */
+	SAVE_CALLEE_REGS
 	mov	sp, r0
 	RESTORE_CALLEE_REGS
 
-_ret_exc:	/* return from exception to unprivileged mode*/
+_ret_exc:
 	EXCEPTION_EPILOGUE
 
 	/* leave runtime, re-enable the mpu */
-	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
-
-/*
- * switch to the target container through exception return.
- * AUX_USER_SP always has the runtime stack pointer
- */
-	lr 	ilink, [AUX_ERSTATUS]
-	btst 	ilink, AUX_STATUS_BIT_U
-	bz	_exc_ret_to_secure
-	sr 	sp, [AUX_USER_SP]
-	mov 	sp, __secureshield_stack
-	rtie
-_exc_ret_to_secure:
-	mov 	ilink, __secureshield_stack
-	sr 	ilink, [AUX_USER_SP]
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 	rtie
 
 /*************************************************************************************/
@@ -115,37 +82,24 @@ _exc_ret_to_secure:
 	.global secureshield_exc_entry_int
 	.align 4
 secureshield_exc_entry_int:
-	clri	/* disable interrupt */
-
-	/* disable MPU, runtime can do everything */
-	sr 	0x0, [AUX_MPU_EN]
-
-/* check where interrupt comes from: unprivileged or privileged */
-/*  utilize the fact that Z bit is set if interrupt taken in U mode*/
-	bnz	_int_from_priv
-/* recover user sp to save more registers */
-	lr	sp, [AUX_USER_SP]
-/* interrupt from privileged mode */
-	b 	_int_not_from_runtime
-_int_from_priv:
-	// special handling for the case when nest interrupt happens before clri
-	cmp 	ilink, secureshield_exc_entry_int
-	bnz	_int_not_from_runtime
-	lr 	ilink, [AUX_USER_SP]
-	cmp 	ilink, __secureshield_stack
-	bz 	_int_not_from_runtime
-	lr 	sp, [AUX_USER_SP]
-_int_not_from_runtime:
 #if ARC_FEATURE_FIRQ == 1
-	lr	ilink, [AUX_IRQ_ACT] // ilink can be used
+	/* the ret is saved or in ERET, so ilink can be used */
+	lr	ilink, [AUX_IRQ_ACT]
 	btst	ilink, 0
 	bz	.L_normal_irq
-	lr	ilink, [AUX_STATUS32_P0]	/* status32 p0 */
-	sr	ilink, [AUX_ERSTATUS] /* return pc is already in eret */
+	lr	ilink, [AUX_STATUS32_P0]
+	sr	ilink, [AUX_ERSTATUS]
 #if ARC_FEATURE_RGF_NUM_BANKS > 1
+	btst 	ilink, AUX_STATUS_BIT_U
+	bz 	_firq_from_secure
+	sr 	sp, [AUX_USER_SP]
 /* sp is also banked when there are more than 16 banked regs.*/
 	kflag	0x1000	/* switch bank0, loop enable, get the original sp */
-
+	aex 	sp, [AUX_USER_SP]
+	b 	_firq_hanlde
+_firq_from_secure:
+	kflag 	0x1000
+_firq_hanlde:
 #endif
 	lr 	ilink, [AUX_ERRET]
 	EXCEPTION_PROLOGUE
@@ -155,58 +109,51 @@ _int_not_from_runtime:
 	INTERRUPT_PROLOGUE
 
 .L_common_for_irq_and_firq:
-	mov	blink, sp
 
+	clri	/* disable interrupt */
+	/* disable MPU, runtime can do everything */
+	sr 	MPU_DISABLE, [AUX_MPU_EN]
 
-/* switch to secureshield stack when user mode switches to kernel mode */
-	mov 	sp, __secureshield_stack
-_int_handler_1:
-	PUSH	blink
+	mov	r0, sp
+	jl	secureshield_interrupt_handle
 
-#if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
-	mov 	gp, _f_sdata
-#endif
-
-	mov	r0, blink
-	mov	r1, sp
-	bl	secureshield_interrupt_handle
-
-/*
- * come back to container sp, secureshield stack will not be used
- */
-	POP	sp
-	kflag	AUX_STATUS_MASK_AE	/* take interrupt as exception, return as an exception */
-
+	/*
+	 * if r0 is not 0, it means:
+	 *  1: interrupt belongs to different secure container
+	 *  2: interrupt belongs to normal container
+	 */
 	cmp	r0, 0
-	beq	_ret_int_unprivileged_no_cx
+	beq	_ret_int_directly
 
-/* there is a context switch request */
-	SAVE_CALLEE_REGS	/* save callee save registers */
+	/* take interrupt as exception, return as an exception */
+	kflag	AUX_STATUS_MASK_AE
+
+	SAVE_CALLEE_REGS
+
+	ld 	r1, [dst_container_user_sp]
+	sr 	r1, [AUX_USER_SP]
+
+	CLEAR_CALLEE_REGS
+	CLEAR_SCRATCH_REGS
+
 	mov	sp, r0
-	RESTORE_CALLEE_REGS
 
-	EXCEPTION_EPILOGUE
-
-/* interrupt  belongs to the same container, no container switch */
-_ret_int_unprivileged_no_cx:
-
-	/* leave runtime, re-enable the mpu */
-	sr 	MPU_DEFAULT_MODE, [AUX_MPU_EN]
-
-/* AUX_ERET, AUX_ERSTATUS, AUX_ERBTA are set in secureshield_interrupt_handle */
-/* set blink to interrupt return */
+	/*
+	 * AUX_ERET, AUX_ERSTATUS, AUX_ERBTA are set in
+	 * secureshield_interrupt_handle
+	 */
+	/* set blink to interrupt return */
 	mov	blink, secureshield_secure_call_int_out
 
-	lr 	r10, [AUX_ERSTATUS]
-	btst 	r10, AUX_STATUS_BIT_U
-	bz	_int_exc_ret_to_secure
-	sr 	sp, [AUX_USER_SP]
-	mov 	sp, __secureshield_stack
-	rtie
-_int_exc_ret_to_secure:
-	mov 	r10, __secureshield_stack
-	sr 	r10, [AUX_USER_SP]
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
 	rtie	/* rtie will do an exception return */
+
+_ret_int_directly:
+	INTERRUPT_EPILOGUE
+
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
+	rtie
+
 
 
 /*************************************************************************************/

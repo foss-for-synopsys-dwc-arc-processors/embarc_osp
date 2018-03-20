@@ -209,7 +209,7 @@
 /** @} */
 
 #define AUX_USER_SP			(0xd)	/*!< user-mode stack pointer */
-/* added in silverstone */
+/* added in secure mode */
 #define AUX_KERNEL_SP			(0x38)	/*!< kernel-mode stack pointer */
 #define AUX_SEC_U_SP			(0x39)	/*!< secure user-mode stack pointer */
 #define AUX_SEC_K_SP			(0x3a)	/*!< secure kernel-mode stack pointer */

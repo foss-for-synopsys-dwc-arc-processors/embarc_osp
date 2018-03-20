@@ -57,8 +57,8 @@ int tst_func4(int arg1, int arg2, int arg3, int arg4)
 	if (secureshield_int_pri_get(INTNO_SWI3) != INT_PRI_MIN) {
 		EMBARC_PRINTF("interrupt pri ops error\r\n");
 	}
-	EMBARC_PRINTF("container call from 3 to 1\r\n");
-	EMBARC_PRINTF("ret is:%x\r\n", container_call(container1, tst_func0));
+	//EMBARC_PRINTF("container call from 3 to 1\r\n");
+	//EMBARC_PRINTF("ret is:%x\r\n", container_call(container1, tst_func0));
 	return 4;
 }
 
@@ -66,8 +66,10 @@ int tst_func6(int arg1, int arg2, int arg3, int arg4, int arg5, int arg6)
 {
 	EMBARC_PRINTF("tst_func6 in container 3, arguments are:%d,%d,%d,%d,%d,%d\r\n",
 		arg1, arg2, arg3, arg4, arg5, arg6);
-	/* here timer interrupt belonging to background container will come out, test the case of
-	interrupt handling with container switch */
+	/*
+    	 * here timer interrupt belonging to background container will come out,
+	 * test the case of interrupt handling with container switch
+	 */
 	board_delay_ms(100, 0);
 	return 6;
 }

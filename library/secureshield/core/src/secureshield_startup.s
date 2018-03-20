@@ -100,22 +100,18 @@ _clear_bss_loop:
 	cmp	r0, r1
 	jlt	_clear_bss_loop
 
-	/* switch to secureshield runtime stack, save original sp into AUX_USER_SP */
-	mov 	r0, __secureshield_stack
+	mov 	r0, sp
 
-#if SECURESHIELD_VERSION == 1
-	sr 	r0, [AUX_USER_SP]
-	aex 	sp, [AUX_USER_SP]
-#elif SECURESHIELD_VERSION == 2
-	sr 	r0, [AUX_SEC_K_SP]
-	sr 	r0, [AUX_KERNEL_SP]
-	/* sp is the secure sp, aux_kernel_sp is normal (background container) */
-	aex 	sp, [AUX_KERNEL_SP]
-#endif
+	/* switch to secureshield runtime stack */
+	mov 	sp, __secureshield_stack
+
+	/*  save background container's normal sp */
+	push 	r0
 	/* save return address */
 	push 	blink
 	/* switch to secure small data */
 	push 	gp
+
 	mov 	gp, _f_sdata
 
 _init_phase2:
@@ -141,15 +137,15 @@ _next_stage:
 
 	pop 	gp
 	pop 	blink
+	pop 	r0
 
 #if SECURESHIELD_VERSION == 1
 	sr 	blink, [AUX_ERRET]
-	lr 	r0, [AUX_STATUS32]
-	bset 	r0, r0, AUX_STATUS_BIT_U
-	bset	r0, r0, AUX_STATUS_BIT_IE
-	sr 	r0, [AUX_ERSTATUS]
-	lr 	r0, [AUX_BTA]
-	sr	r0, [AUX_ERBTA]
+	lr 	r1, [AUX_BTA]
+	sr	r1, [AUX_ERBTA]
+
+	lr 	sp, [AUX_USER_SP]
+	sr 	r0, [AUX_USER_SP]
 
 	/* fake exception return */
 	CLEAR_SCRATCH_REGS
@@ -157,13 +153,13 @@ _next_stage:
 	rtie
 
 #elif SECURESHIELD_VERSION == 2
+	sr 	r0, [AUX_KERNEL_SP]
+	lr 	sp, [AUX_SEC_K_SP]
+
 	/* sync-up AUX_SEC_STAT and AUX_ERSEC_STAT */
 	lr 	r0, [AUX_SEC_STAT]
 	sr 	r0, [AUX_ERSEC_STAT]
 
-#if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
-	st 	gp, [normal_world_gp]
-#endif
 	CLEAR_SCRATCH_REGS
 	sr 	MPU_ENABLE,  [AUX_MPU_EN]
 	j 	[blink]

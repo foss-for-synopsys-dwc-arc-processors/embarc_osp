@@ -51,24 +51,13 @@ void trusted_ops(void)
 
 	ctx = &container2_context;
 
-	arc_int_sw_trigger(18);
-	//EMBARC_PRINTF("container 2 is trusted\r\n");
 	/* data is on container's  stack, normally other containers can not access it. As
 	container1 is a secure container, it can access container 2's stack */
-	//if(container_call(container1, operate_secret, NULL, GET_SECRET, data)) {
-		//EMBARC_PRINTF("get secret failed - someone tried to hack the system?\r\n");
-	//	return;
-	//}
+	if(container_call(container1, operate_secret, NULL, GET_SECRET, data)) {
+		return;
+	}
 
-	//if (! ctx->initialized) {
-		//EMBARC_PRINTF("container 2: got the secret for the first time and stored it for private use\r\n");
-		//memcpy(ctx->secret, data, SECRET_LEN);
+	if (!ctx->initialized) {
 		ctx->initialized = 1;
-	//} else if (strcmp((const char *)data, (const char *)ctx->secret) != 0) {
-		//EMBARC_PRINTF("container 2: the secret changed, updated my private copy!\r\n");
-		//memcpy(ctx->secret, data, SECRET_LEN);
-	//} else {
-		//EMBARC_PRINTF("got the secret, but not telling you since its secret and for use within this container only...\r\n");
-	//}
-
+	}
 }

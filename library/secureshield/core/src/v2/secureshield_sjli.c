@@ -72,14 +72,20 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 {
 
 	uint8_t src_id, dst_id;
-	INT_EXC_FRAME *dst_frame;
+	PROCESSOR_FRAME *dst_frame;
 	uint32_t dst_fn;
 	/* number of arguments to pass to the target function */
 	uint8_t args;
-	uint32_t *src, *dst;
-	uint8_t secure = 0;
+	uint32_t *src, *dst;;
 
 	SECURESHIELD_ASSERT(src_frame != NULL);
+
+	/* container_call is not allowed in interrupt */
+	if (arc_int_active()) {
+		return 0;
+	}
+
+
 #if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
 	dst_fn = src_frame->r2;
 	dst_id = (uint32_t *)src_frame->r1 - __secureshield_config.cfgtbl_ptr_start;
@@ -91,7 +97,7 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 #else
 	uint32_t pc;
 	/* get caller pc */
-	pc = src_frame->ret - SJLI_INSTRUCTION_LENGTH;
+	pc = src_frame->blink - SJLI_INSTRUCTION_LENGTH;
 
 	if (container_call_check_magic((CONTAINER_CALL *)pc) != 0) {
 		return 0;
@@ -123,42 +129,34 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 	/* push the calling container and set the callee container */
 	/* the left registers of src container will be saved later, reserve space here */
 	container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_SIZE,
-		src_frame->status32, dst_id);
+		(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), src_frame->status32, dst_id);
+
+	if (container_is_secure(src_id)) {
+		g_container_context[0].normal_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
+	}
 
 	/* create the cpu frame and exception frame for the destination container */
-	dst_frame = (INT_EXC_FRAME *)(g_container_context[dst_id].cur_sp - ARC_EXC_FRAME_SIZE);
+	dst_frame = (PROCESSOR_FRAME *)(g_container_context[dst_id].cur_sp);
 
-	dst_frame->erbta = 0; /* erbta, is 0 the correct value? */
-
-	dst_frame->fp = 0;
-	dst_frame->lp_end = 0;
-	dst_frame->lp_start = 0;
-	dst_frame->lp_count= 0;
-#ifdef ARC_FEATURE_CODE_DENSITY
-	dst_frame->ei = 0;
-	dst_frame->ldi = 0;
-	dst_frame->jli = 0;
-#endif
-	dst_frame->ret = dst_fn; /* eret */
-	dst_frame->status32 = g_container_context[dst_id].cpu_status;
+	dst_frame->exc_frame.blink = dst_fn; /* eret */
+	dst_frame->exc_frame.ret = dst_fn; /* eret */
+	dst_frame->exc_frame.status32 = g_container_context[dst_id].cpu_status;
 
 #if !defined(__MW__) || !defined(_NO_SMALL_DATA_)
 /* when gp is not changed during execution and sdata is enabled, the following is meaningful */
 /* The newlib c of ARC GNU is compiled with sdata enabled */
-	dst_frame->gp = src_frame->gp;
-// normal world's gp is different with secure world's gp
+/* normal world's gp is different with secure world's gp */
+	dst_frame->exc_frame.gp = src_frame->gp;
 #endif
 
-	/* copy parameters */
+	/* copy parameters which is transfered through stack */
 #if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
 	src = (uint32_t *)&(src_frame->r3);
 #else
 	src = (uint32_t *)&(src_frame->r1);
 #endif
-	dst = (uint32_t *)&(dst_frame->r0);
+	dst = (uint32_t *)&(dst_frame->exc_frame.r0);
 	/* r1->r0, r2->r1, ... r6->r5 */
-
-
 
 	while(args--) {
 		*dst = *src;
@@ -169,20 +167,12 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 	/* switch access control tables */
 	vmpu_switch(src_id, dst_id);
 
-
-	_arc_aux_write(AUX_MPU_PROBE, dst_fn);
-
-	if (_arc_aux_read(AUX_MPU_RPER) & (1 << AUX_MPU_RPER_BIT_S)) {
-		secure = 1;
-	}
-
-	/* for all normal interrupts happed in secure world, it's handled in background container stack */
-	if (secure == 1) {
-		_arc_aux_write(AUX_KERNEL_SP, (uint32_t)g_container_context[0].cur_sp);
+	if (container_is_secure(dst_id)) {
+		dst_frame->callee_regs.kernel_sp = (uint32_t)g_container_context[0].normal_sp;
 	}
 
 	/* need to check whether dst_sp is overflow ? */
-	return (((uint32_t)dst_frame) | secure);
+	return (uint32_t)dst_frame;
 }
 
 /**
@@ -192,40 +182,28 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
  * \param[in]  status32  callee container's status register
  * \return     caller container's stack pointer
  */
-uint32_t container_call_out(uint32_t ret_value, uint32_t *sp, uint32_t status32)
+uint32_t container_call_out(PROCESSOR_FRAME *dst)
 {
 	uint32_t src_id, dst_id;
 	PROCESSOR_FRAME *src;
-	uint8_t secure = 0;
 
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 
-
-	container_stack_pop(dst_id, sp, status32);
+	container_stack_pop(dst_id, (uint32_t *)dst,
+		(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), _arc_aux_read(AUX_STATUS32));
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
-
 
 	src = (PROCESSOR_FRAME *)g_container_stack[g_container_stack_ptr].src_sp;
 
 	/* copy return value */
-	src->exc_frame.r0 = ret_value;
+	src->exc_frame.r0 = dst->exc_frame.r0;
 
 	/* switch access control tables */
 	vmpu_switch(dst_id, src_id);
 
-	_arc_aux_write(AUX_MPU_PROBE, src->exc_frame.ret);
-	if (_arc_aux_read(AUX_MPU_RPER) & (1 << AUX_MPU_RPER_BIT_S)) {
-		secure = 1;
-	}
-
-	/* for all normal interrupts happened in secure world, it's handled in background container stack */
-	if (secure == 1) {
-		_arc_aux_write(AUX_KERNEL_SP, (uint32_t)g_container_context[0].cur_sp);
-	}
-
-	return  ((uint32_t) g_container_stack[g_container_stack_ptr].src_sp) | secure;
+	return  (uint32_t) src;
 }
 
 /**
