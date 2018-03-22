@@ -244,8 +244,6 @@ ret_exc_r_1:
 	.global exc_entry_int	/* entry for interrupt handling */
 	.align 4
 exc_entry_int:
-	clri	/* disable interrupt */
-
 #if ARC_FEATURE_FIRQ == 1
 #if ARC_FEATURE_RGF_NUM_BANKS > 1
 	lr	r0, [AUX_IRQ_ACT]			/*  check whether it is P0 interrupt */
@@ -263,9 +261,12 @@ exc_entry_int:
 
 	mov	blink, sp
 
+	clri	/* disable interrupt */
 	ld	r3, [exc_nest_count]
 	add	r2, r3, 1
 	st	r2, [exc_nest_count]
+	seti	/* enable higher priority interrupt */
+
 	cmp	r3, 0
 	bne	irq_handler_1
 /* change to exception stack if interrupt happened in task context */
@@ -286,7 +287,7 @@ irq_handler_1:
 irq_hint_handled:
 	lr	r3, [AUX_IRQ_PRIORITY]
 	PUSH	r3		/* save irq priority */
-	seti	/* enable higher priority interrupt */
+
 	jl	[r2]		/* jump to interrupt handler */
 /* no interrupts are allowed from here */
 ret_int:

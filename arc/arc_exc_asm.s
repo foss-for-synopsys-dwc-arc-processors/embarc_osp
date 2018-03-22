@@ -71,8 +71,6 @@ exc_entry_cpu:
 
 	EXCEPTION_PROLOGUE
 
-	mov	r3, sp				/* as exception handler's para(exc_frame) */
-
 /* exc_nest_count +1 */
 	ld	r0, [exc_nest_count]
 	add	r0, r0, 1
@@ -85,8 +83,9 @@ exc_entry_cpu:
 	mov	r1, exc_int_handler_table
 	ld.as	r2, [r1, r0]
 
-	mov	r0, r3
-	jl	[r2]				/* jump to exception handler where interrupts are not allowed! */
+/* jump to exception handler where interrupts are not allowed! */
+	mov	r0, sp
+	jl	[r2]
 exc_return:
 
 /* exc_nest_count -1 */
@@ -103,11 +102,10 @@ exc_return:
 	.weak exc_entry_int
 	.align 4
 exc_entry_int:
-	clri						/* disable interrupt */
-
 #if ARC_FEATURE_FIRQ == 1
 #if ARC_FEATURE_RGF_NUM_BANKS > 1
-	lr	r0, [AUX_IRQ_ACT]			/*  check whether it is P0 interrupt */
+/*  check whether it is P0 interrupt */
+	lr	r0, [AUX_IRQ_ACT]
 	btst	r0, 0
 	bnz	exc_entry_firq
 #else
@@ -118,18 +116,21 @@ exc_entry_int:
 	bnz	exc_entry_firq
 #endif
 #endif
-	INTERRUPT_PROLOGUE				/* save scratch regs */
+/* save scratch regs */
+	INTERRUPT_PROLOGUE
 
-
-/* exc_nest_count +1 */
+/* critical area */
+/* exc_nest_count is designed to record the nest interrupts */
+	clri
 	ld	r0, [exc_nest_count]
 	add	r0, r0, 1
 	st	r0, [exc_nest_count]
-
+	seti
 
 	lr	r0, [AUX_IRQ_CAUSE]
 	mov	r1, exc_int_handler_table
-	ld.as	r2, [r1, r0]				/* r2 = _kernel_exc_tbl + irqno *4 */
+/* r2 = _kernel_exc_tbl + irqno *4 */
+	ld.as	r2, [r1, r0]
 
 /* for the case of software triggered interrupt */
 	lr	r3, [AUX_IRQ_HINT]
@@ -138,19 +139,18 @@ exc_entry_int:
 	xor	r3, r3, r3
 	sr	r3, [AUX_IRQ_HINT]
 irq_hint_handled:
-	seti						/* enable higher priority interrupt */
 
+/* jump to interrupt handler */
 	mov	r0, sp
-	jl	[r2]					/* jump to interrupt handler */
-
-/* no interrupts are allowed from here */
+	jl	[r2]
 int_return:
-	clri						/* disable interrupt */
-
-/* exc_nest_count -1 */
+/* critical area */
+/* exc_nest_count is designed to record the nest interrupts */
+	clri
 	ld	r0, [exc_nest_count]
 	sub	r0, r0, 1
 	st	r0, [exc_nest_count]
+	seti
 
 	INTERRUPT_EPILOGUE
 	rtie
@@ -160,17 +160,17 @@ int_return:
 	.weak exc_entry_firq
 	.align 4
 exc_entry_firq:
-	clri						/* disable interrupt */
 	SAVE_FIQ_EXC_REGS
 
-/* exc_nest_count +1 */
+/* firq's priority is the highest */
 	ld	r0, [exc_nest_count]
 	add	r0, r0, 1
 	st	r0, [exc_nest_count]
 
 	lr	r0, [AUX_IRQ_CAUSE]
 	mov	r1, exc_int_handler_table
-	ld.as	r2, [r1, r0]				/* r2 = _kernel_exc_tbl + irqno *4 */
+/* r2 = _kernel_exc_tbl + irqno *4 */
+	ld.as	r2, [r1, r0]
 
 /* for the case of software triggered interrupt */
 	lr	r3, [AUX_IRQ_HINT]
@@ -180,7 +180,9 @@ exc_entry_firq:
 	sr	r3, [AUX_IRQ_HINT]
 firq_hint_handled:
 
-	jl	[r2]					/* jump to interrupt handler */
+/* jump to interrupt handler */
+	mov	r0, sp
+	jl	[r2]
 
 firq_return:
 

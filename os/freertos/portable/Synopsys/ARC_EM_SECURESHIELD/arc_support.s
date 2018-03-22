@@ -185,16 +185,17 @@ ret_exc_r_1:
 	.global exc_entry_int	/* entry for interrupt handling */
 	.align 4
 exc_entry_int:
-	clri	/* disable interrupt */
 
 	/* FIRQ and banking is not supported now in secureshield */
 	INTERRUPT_PROLOGUE
 
 	mov	blink, sp
 
+	clri	/* disable interrupt */
 	ld	r3, [exc_nest_count]
 	add	r2, r3, 1
 	st	r2, [exc_nest_count]
+	seti	/* enable higher priority interrupt */
 	cmp	r3, 0
 	bne	irq_handler_1
 /* change to exception stack if interrupt happened in task context */
@@ -213,7 +214,7 @@ irq_handler_1:
 	xor	r3, r3, r3
 	sr	r3, [AUX_IRQ_HINT]
 irq_hint_handled:
-	seti	/* enable higher priority interrupt */
+
 	jl	[r2]		/* jump to interrupt handler */
 /* no interrupts are allowed from here */
 ret_int:
@@ -248,6 +249,7 @@ ret_int:
 	ld	sp, [r1]	/* recover task stack */
 	POP	r0		/* get critical nesting */
 	st	r0, [ulCriticalNesting]
+
 	RESTORE_CALLEE_REGS
 ret_int_r_1:
 	/* differences between INTERRUPT_EPILOGUE and EXCEPTION_EPILOGUE:
