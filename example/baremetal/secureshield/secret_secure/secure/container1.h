@@ -51,8 +51,6 @@ typedef struct {
 	uint8_t fails;
 } SECRET_CONTEXT;
 
-
-#define INTNO_TIMER1	17
 #define INTNO_SWI 	18
 
 /* the following extern variables are used to simulate memory leakage */
