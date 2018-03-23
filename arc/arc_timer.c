@@ -204,3 +204,162 @@ void timer_init(void)
 	timer_stop(TIMER_1);
 	timer_stop(TIMER_RTC);
 }
+
+
+#if defined(ARC_FEATURE_SEC_TIMER1_PRESENT) || defined(ARC_FEATURE_SEC_TIMER0_PRESENT)
+/**
+ * \brief  check whether the specific secure timer present
+ * \param[in] no timer number
+ * \return 1 present, 0 not present
+ */
+int32_t secure_timer_present(const uint32_t no)
+{
+	uint32_t bcr = _arc_aux_read(AUX_BCR_TIMERS);
+	switch (no) {
+		case SECURE_TIMER_0:
+			bcr = (bcr >> 11) & 1;
+			break;
+		case SECURE_TIMER_1:
+			bcr = (bcr >> 12) & 1;
+			break;
+		default:
+			bcr = 0;
+			/* illegal argument so return false */
+			break;
+	}
+
+	return (int)bcr;
+}
+
+/**
+ * \brief  start the specific secure timer
+ * \param[in] no	timer number
+ * \param[in] mode	timer mode
+ * \param[in] val	timer limit value (not for RTC)
+ * \return 0 success, -1 failure
+ */
+int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
+{
+	if (secure_timer_present(no) == 0) {
+		return -1;
+	}
+
+	switch (no) {
+		case SECURE_TIMER_0:
+			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
+			_arc_aux_write(AUX_SECURE_TIMER0_LIMIT, val);
+			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, mode);
+			_arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
+			break;
+		case SECURE_TIMER_1:
+			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
+			_arc_aux_write(AUX_SECURE_TIMER1_LIMIT, val);
+			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, mode);
+			_arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
+			break;
+		default:
+			return -1;
+	}
+
+	return 0;
+}
+
+/**
+ * \brief  stop and clear the specific secure timer
+ *
+ * \param[in] no timer number
+ * \return 0 success, -1 failure
+ */
+int32_t secure_timer_stop(const uint32_t no)
+{
+	if (secure_timer_present(no) == 0) {
+		return -1;
+	}
+
+	switch (no) {
+		case SECURE_TIMER_0 :
+			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
+			_arc_aux_write(AUX_SECURE_TIMER0_LIMIT,0);
+			_arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
+			break;
+		case SECURE_TIMER_1:
+			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
+			_arc_aux_write(AUX_SECURE_TIMER1_LIMIT,0);
+			_arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
+			break;
+		default:
+			return -1;
+	}
+
+	return 0;
+}
+
+/**
+ * \brief  get secure timer current tick
+ *
+ * \param[in] no timer number
+ * \param[out] val, timer value
+ * \return 0 success, -1 failure
+ */
+int32_t secure_timer_current(const uint32_t no, void *val)
+{
+	if (secure_timer_present(no) == 0) {
+		return -1;
+	}
+
+	switch (no) {
+		case SECURE_TIMER_0 :
+			*((uint32_t *)val) = _arc_aux_read(AUX_SECURE_TIMER0_CNT);
+			break;
+		case SECURE_TIMER_1 :
+			*((uint32_t *)val) = _arc_aux_read(AUX_SECURE_TIMER1_CNT);
+			break;
+		default :
+			return -1;
+	}
+
+	return 0;
+}
+
+/**
+ * \brief  clear the interrupt pending bit of timer
+ *
+ * \param[in] no timer number
+ * \return 0 success, -1 failure
+ */
+int32_t secure_timer_int_clear(const uint32_t no)
+{
+	uint32_t val;
+
+	if (secure_timer_present(no) == 0) {
+		return -1;
+	}
+
+	switch (no) {
+		case SECURE_TIMER_0 :
+			val = _arc_aux_read(AUX_SECURE_TIMER0_CTRL);
+			val &= ~TIMER_CTRL_IP;
+			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, val);
+			break;
+		case SECURE_TIMER_1 :
+			val = _arc_aux_read(AUX_SECURE_TIMER1_CTRL);
+			val &= ~TIMER_CTRL_IP;
+			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, val);
+			break;
+		default :
+			return -1;
+	}
+
+	return 0;
+}
+
+/**
+ * \brief  init internal secure timer
+ */
+void secure_timer_init(void)
+{
+	secure_timer_stop(SECURE_TIMER_0);
+	secure_timer_stop(SECURE_TIMER_1);
+}
+#endif /* ARC_FEATURE_SEC_TIMER1_PRESENT && ARC_FEATURE_SEC_TIMER0_PRESENT */
+

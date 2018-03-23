@@ -240,8 +240,6 @@
 
 #define ARC_CONNECT_NUM_INT_ALL			(HSDK_MAX_NUM_ISR-HSDC_CREG_SW0_ISR)
 
-#define INTNO_TIMER0				16    /*!< ARC Timer0 */
-#define INTNO_TIMER1				17    /*!< ARC Timer1 */
 
 //DMA flow control mapping
 #define HSDC_DMAC_SPI0_TX			(0)

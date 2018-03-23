@@ -103,8 +103,6 @@
 
 
 /* Interrupt Connection */
-#define INTNO_TIMER0			16		/*!< ARC Timer0 */
-#define INTNO_TIMER1			17		/*!< ARC Timer1 */
 #define INTNO_ICTL_MB			24		/*!< mainboard interrupt controller */
 #define INTNO_ICTL_CPU			25		/*!< CPU card interrupt controller */
 #define INTNO_CREG			26		/*!< ctrl register */

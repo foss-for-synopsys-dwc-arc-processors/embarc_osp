@@ -69,8 +69,6 @@
 	#define CLK_BUS_APB		(50000000U)
 #endif
 
-#define INTNO_TIMER0		16
-#define INTNO_TIMER1		17
 
 /* common macros must be defined by all boards */
 

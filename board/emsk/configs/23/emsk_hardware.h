@@ -82,9 +82,6 @@
 // #define REL_REGBASE_GMAC		(0x0000E000U)		/*!< GMAC  */
 
 /* Interrupt Connection */
-#define INTNO_TIMER0			16			/*!< ARC Timer0 */
-#define INTNO_TIMER1			17			/*!< ARC Timer1 */
-#define INTNO_SECURE_TIMER0		20			/*!< Core Secure Timer 0 */
 #define INTNO_DMA_START			22			/*!< Core DMA Controller */
 #define INTNO_DMA_COMPLETE		22			/*!< Core DMA Controller Complete */
 #define INTNO_DMA_ERROR			23			/*!< Core DMA Controller Error */

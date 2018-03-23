@@ -52,8 +52,15 @@
 #define TIMER_0		0 	/*!< macro name for arc internal timer 0 */
 #define TIMER_1		1 	/*!< macro name for arc internal timer 1 */
 #define TIMER_RTC	2 	/*!< macro name for arc internal RTC */
+#define SECURE_TIMER_0		0 	/*!< macro name for arc internal secure timer 0 */
+#define SECURE_TIMER_1		1 	/*!< macro name for arc internal secure timer 1 */
 
 /** @} */
+
+#define INTNO_TIMER0			ARC_FEATURE_TIMER0_VECTOR	/*!< ARC Timer0 */
+#define INTNO_TIMER1			ARC_FEATURE_TIMER0_VECTOR	/*!< ARC Timer1 */
+#define INTNO_SECURE_TIMER0		ARC_FEATURE_SEC_TIMER0_VECTOR	/*!< Core Secure Timer 0 */
+#define INTNO_SECURE_TIMER1		ARC_FEATURE_SEC_TIMER1_VECTOR	/*!< Core Secure Timer 1 */
 
 /**
  * \name bit definition of RTC CTRL reg
@@ -88,6 +95,12 @@ extern int32_t timer_stop(const uint32_t no);
 extern int32_t timer_current(const uint32_t no, void* val);
 extern int32_t timer_int_clear(const uint32_t no);
 extern void timer_init(void);
+extern int32_t secure_timer_present(const uint32_t no);
+extern int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val);
+extern int32_t secure_timer_stop(const uint32_t no);
+extern int32_t secure_timer_current(const uint32_t no, void* val);
+extern int32_t secure_timer_int_clear(const uint32_t no);
+extern void secure_timer_init(void);
 
 #ifdef __cplusplus
 }
