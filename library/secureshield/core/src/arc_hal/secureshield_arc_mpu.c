@@ -27,44 +27,5 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef _ARC_HAL_SECURE_TIMER_H_
-#define _ARC_HAL_SECURE_TIMER_H_
-#include "embARC_toolchain.h"
-
-/**
- * \name arc internal timers names
- * @{
- */
-#define SECURE_TIMER_0		0 	/*!< macro name for arc internal secure timer 0 */
-#define SECURE_TIMER_1		1 	/*!< macro name for arc internal secure timer 1 */
-
-/** @} */
-
-
-/**
- * \name bit definition of timer CTRL reg
- * @{
- */
-#define TIMER_CTRL_IE		(1 << 0)	/*!< Interrupt when count reaches limit */
-#define TIMER_CTRL_NH		(1 << 1)	/*!< Count only when CPU NOT halted */
-#define TIMER_CTRL_W		(1 << 2)	/*!< watchdog enable */
-#define TIMER_CTRL_IP		(1 << 3)	/*!< interrupt pending */
-
-/** @} */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern int32_t secure_timer_present(const uint32_t no);
-extern int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val);
-extern int32_t secure_timer_stop(const uint32_t no);
-extern int32_t secure_timer_current(const uint32_t no, void* val);
-extern int32_t secure_timer_int_clear(const uint32_t no);
-extern void secure_timer_init(void);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif	/* _ARC_HAL_SECURE_TIMER_H_ */
+#undef LIB_SECURESHIELD_OVERRIDES
+#include "arc_mpu.c"

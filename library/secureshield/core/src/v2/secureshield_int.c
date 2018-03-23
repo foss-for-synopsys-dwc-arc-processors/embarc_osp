@@ -36,9 +36,6 @@
 #include "secureshield_container_stack.h"
 #include "secureshield_container_call.h"
 
-#ifndef SECURESHIELD_SECURE_INT_EXC_STACK_SIZE
-#define SECURESHIELD_SECURE_INT_EXC_STACK_SIZE 256 // 1024 bytes
-#endif
 
 /* default interrupt exception entry */
 extern void secureshield_exc_entry_int(void);
