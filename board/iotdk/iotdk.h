@@ -55,6 +55,7 @@
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/sysconf/sysconf.h"
 #include "common/iotdk_timer.h"
+#include "drivers/pmwifi/pmwifi.h"
 
 #include "iotdk_hardware.h"
 
@@ -128,22 +129,32 @@
 
 #define WF_ENABLE_MANUAL_SET_MAC	(0)
 
-#define WF_MAC_ADDR0			(EMSK_PMWIFI_0_MAC_ADDR0)
-#define WF_MAC_ADDR1			(EMSK_PMWIFI_0_MAC_ADDR1)
-#define WF_MAC_ADDR2			(EMSK_PMWIFI_0_MAC_ADDR2)
-#define WF_MAC_ADDR3			(EMSK_PMWIFI_0_MAC_ADDR3)
-#define WF_MAC_ADDR4			(EMSK_PMWIFI_0_MAC_ADDR4)
-#define WF_MAC_ADDR5			(EMSK_PMWIFI_0_MAC_ADDR5)
+#define WF_MAC_ADDR0			(IOTDK_PMWIFI_0_MAC_ADDR0)
+#define WF_MAC_ADDR1			(IOTDK_PMWIFI_0_MAC_ADDR1)
+#define WF_MAC_ADDR2			(IOTDK_PMWIFI_0_MAC_ADDR2)
+#define WF_MAC_ADDR3			(IOTDK_PMWIFI_0_MAC_ADDR3)
+#define WF_MAC_ADDR4			(IOTDK_PMWIFI_0_MAC_ADDR4)
+#define WF_MAC_ADDR5			(IOTDK_PMWIFI_0_MAC_ADDR5)
 
 /** Possible Pmod WiFi choices */
 #define PMWIFI_MRF24G			0
 #define PMWIFI_RW009			1
 
 
-#define BOARD_PMWIFI_0_ID		PMWIFI_0_ID
+#define BOARD_PMWIFI_0_ID		IOTDK_PMWIFI_0_ID
+#define BOARD_WIFI_SPI_LINE		0
+#define BOARD_WIFI_0_INT		4
+#define BOARD_WIFI_0_RST		5
 
 #define TASK_STACK_SIZE_MAIN		1024
 
+// Un-implemented LED/Switch/Button functions and macros
+#define BOARD_LED_MASK			(0x0)
+#define BOARD_LED_CNT			(0)
+#define BOARD_BTN_MASK			(0x0)
+#define BOARD_BTN_CNT			(0)
+#define BOARD_SWT_MASK			(0x0)
+#define BOARD_SWT_CNT			(0)
 
 #define button_read(x) 			1
 #define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
