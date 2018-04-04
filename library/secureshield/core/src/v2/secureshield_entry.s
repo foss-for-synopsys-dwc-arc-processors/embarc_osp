@@ -210,11 +210,9 @@ _secure_int_return:
 	.global secureshield_exc_entry_cpu
 	.align 4
 secureshield_exc_entry_cpu:
-	//kflag 1
-	//rtie
 	/*
 	 * exception will be handled in secure container's stack and
-	 * normal container's securr stack
+	 * normal container's secure stack
 	 */
 	EXCEPTION_PROLOGUE
 

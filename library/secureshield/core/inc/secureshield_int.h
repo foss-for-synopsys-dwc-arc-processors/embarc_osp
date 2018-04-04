@@ -62,6 +62,7 @@ extern void secureshield_int_ops(INT_EXC_FRAME *frame);
 
 #elif SECURESHIELD_VERSION == 2
 extern void * secureshield_interrupt_handle(uint32_t *sp);
+extern int32_t secureshield_int_ops(uint32_t ops, uint32_t par1, uint32_t par2);
 #endif
 
 #endif /* _SECURESHIELD_INT_H_ */

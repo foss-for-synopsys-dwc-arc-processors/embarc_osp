@@ -41,12 +41,30 @@
 extern void secureshield_exc_entry_int(void);
 /* default cpu exception entry */
 extern void secureshield_exc_entry_cpu(void);
-/* trap exception handler */
-extern void secureshield_trap_handler(void *frame);
 
+#if SECURESHIELD_VERSION == 1
+/* trap exception handler */
+extern void secureshield_trap_handler(void *exc_frame);
+#endif
+
+/* default exception handler */
 static void secureshield_exc_handler_default(void *frame);
+/* privilege violation exception handler */
 static void secureshield_exc_handler_privilege_v(void *frame);
-static void secureshield_exc_handler_protect_v(void * frame);
+/* protection violation exception handler */
+static void secureshield_exc_handler_protect_v(void *frame);
+
+
+#if SECURESHIELD_VERSION == 2
+typedef struct int_handler_call_frame {
+	uint32_t *secure_sp;
+	uint32_t *normal_sp;
+	void *pc;
+	uint32_t cpu_status;
+} EMBARC_PACKED INT_HANDLER_CALL_FRAME;
+
+#define INT_HANDLER_CALL_FRAME_SIZE	(sizeof(INT_HANDLER_CALL_FRAME) / sizeof(uint32_t))
+#endif
 
 /** secure world exception entry table */
 EMBARC_ALIGNED(1024)
@@ -68,7 +86,11 @@ EXC_HANDLER secureshield_exc_handler_table[NUM_EXC_CPU] = {
 	secureshield_exc_handler_protect_v,	/* EV_PortV */
 	secureshield_exc_handler_privilege_v,	/* EV_PrivilegeV */
 	secureshield_exc_handler_default,	/* EV_SWI	*/
+#if SECURESHIELD_VERSION == 1
 	secureshield_trap_handler,		/* EV_Trap	*/
+#else
+	secureshield_exc_handler_default,
+#endif
 	secureshield_exc_handler_default,	/* EV_Extension	*/
 	secureshield_exc_handler_default,	/* EV_DivZero	*/
 	secureshield_exc_handler_default,	/* EV_DCError	*/
@@ -79,6 +101,43 @@ EXC_HANDLER secureshield_exc_handler_table[NUM_EXC_CPU] = {
 
 /** secure world interrupt handler table */
 SECURESHIELD_INT_HANDLER secureshield_int_handler_table[NUM_EXC_INT];
+
+
+
+#if SECURESHIELD_VERSION == 2
+/**
+ * \brief handler for new ecr in secureshield
+ * \param[in] parameter exception parameter
+ */
+static void secure_violation_handler(uint32_t parameter)
+{
+
+	switch (parameter) {
+		case 0x1:
+			SECURESHIELD_HALT("N to S with wrong return type");
+			break;
+		case 0x2:
+			SECURESHIELD_HALT("Mismatched return U/K");
+			break;
+		case 0x3:
+			SECURESHIELD_HALT("IRQ/Exception return fetch from wrong mode");
+			break;
+		case 0x4:
+			SECURESHIELD_HALT("Attempt to halt processor in N mode");
+			break;
+		case 0x20:
+			SECURESHIELD_HALT("Attempt to access secure resource from N mode");
+			break;
+		case 0x40:
+			SECURESHIELD_HALT("SID violation on resource access");
+			break;
+		default:
+			SECURESHIELD_HALT("unknown parameter");
+			break;
+	}
+}
+#endif
+
 
 /**
  * \brief privilege violation exception handler
@@ -108,11 +167,20 @@ static void secureshield_exc_handler_privilege_v(void *frame)
 		case AUX_ECR_C_PRIV_ACT_HIT:
 			SECURESHIELD_HALT("action point hit, parameter:0x%x", parameter);
 			break;
+#if SECURESHIELD_VERSION == 2
+		case AUX_ECR_C_PRIV_ACT_SECURE:
+			SECURESHIELD_HALT("kernel only extension violation, parameter 0x%x", parameter);
+			/* for seti, clri, wfi, sleep instructions, do we need to do special handling for it ? */
+			secure_violation_handler(parameter);
+#endif
 		default:
 			SECURESHIELD_HALT("unknown cause:0x%x", cause_code);
 			break;
 	}
+	/* \todo, how to recover from privilege violation exception */
 }
+
+
 
 /**
  * \brief protection violation handler
@@ -132,15 +200,23 @@ static void secureshield_exc_handler_protect_v(void *frame)
 	parameter = excpt_cause_reg & 0xff;
 	cause_code = (excpt_cause_reg >> 8) & 0xff;
 
-
 	SECURESHIELD_DBG("protection violation exception at 0x%x\r\n cause:", excpt_ret_reg);
+
 	switch (cause_code) {
 		case  AUX_ECR_C_PROTV_INST_FETCH:
+		/*
+		 * 0x24 i-fetch invalid S/N transition, 0x44 i-fetch invalid SID
+		 * 0x00/0x04 old instruction violation
+		 */
 			SECURESHIELD_DBG("instruction fetch violation, parameter:0x%x\r\n"
 				, parameter);
 			ret = vmpu_fault_recovery_mpu(excpt_ret_reg, 0);
 			break;
 		case AUX_ECR_C_PROTV_LOAD:
+		/*
+		 * 0x24 S-mode read, 0x44 SID mismatch,
+		 * 0x01/0x2/0x4 old read violation
+		 */
 			SECURESHIELD_DBG("memory read violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
@@ -148,6 +224,10 @@ static void secureshield_exc_handler_protect_v(void *frame)
 			}
 			break;
 		case AUX_ECR_C_PROTV_STORE:
+		/*
+		 * 0x24 S-mode write, 0x44 SID mismatch,
+		 * 0x1/0x2/0x4 old write violation
+		 */
 			SECURESHIELD_DBG("memory write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
@@ -155,12 +235,30 @@ static void secureshield_exc_handler_protect_v(void *frame)
 			}
 			break;
 		case AUX_ECR_C_PROTV_XCHG:
+		/*
+		 * 0x24 S-mode violation on read-modify-write, 0x44 SID mismatch,
+		 * 0x1/0x2/0x4 old read-modify-write violation
+		 */
 			SECURESHIELD_DBG("memory read-modify-write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
 				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 3);
 			}
 			break;
+#if SECURESHIELD_VERSION == 2
+		/* NS vector table in S memory */
+		case AUX_ECR_C_PROTV_NS_VECT_IN_S:
+			SECURESHIELD_DBG("Normal vector table in secure memory\r\n");
+			break;
+		/* NS handler code located in S memory */
+		case AUX_ECR_C_PROTV_NS_HANDLER_IN_S:
+			SECURESHIELD_DBG("Normal handler code in secure memory\r\n");
+			break;
+		/* NSC table range violation */
+		case AUX_ECR_C_PROTV_NSC_RANGE:
+			SECURESHIELD_DBG("NSC table range violation\r\n");
+			break;
+#endif
 		default:
 			SECURESHIELD_DBG("unknown cause:0x%x\r\n", cause_code);
 			break;
@@ -170,6 +268,8 @@ static void secureshield_exc_handler_protect_v(void *frame)
 		SECURESHIELD_HALT("halt caused by protection violation");
 	}
 }
+
+
 
 /**
  * \brief default exception handler, not recoverable
@@ -218,6 +318,7 @@ static int32_t secure_int_default_check(uint32_t intno)
 	return 0;
 }
 
+
 /**
  * \brief check the access control to the specified interrupt
  * \param[in]  intno interrupt no.
@@ -258,37 +359,61 @@ static int32_t secure_int_ac_check(uint32_t intno)
 	return 0;
 }
 
+
+
 /**
- * \brief allocate an interrupt to the specified container
- * \param[in]  container_id container id
- * \param[in]  handler 	interrupt handler
- * \param[in]  intno        interrupt no.
- * \return 0 ok, -1 failed
+ * \brief install an interrupt handler
+ * \param[in]  intno   interrupt no.
+ * \param[in]  handler interrupt handler
+ * \return     0 ok, -1 failed
  */
-int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER handler, uint32_t intno)
+int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
 {
+
 	SECURESHIELD_INT_HANDLER* exc;
 
 	if (secure_int_default_check(intno) != 0) {
 		return -1;
 	}
 
+	/* reduce an offset */
 	exc = &secureshield_int_handler_table[intno - NUM_EXC_CPU];
 
-	/* interrupt is already installed */
-	/* other container can change background container's irq resources */
-	if(exc->id) {
+	/* if the intno does not belong to the active container */
+	if (exc->id != g_active_container && exc->id) {
 		SECURESHIELD_DBG(
 			"Permission denied: IRQ %d is owned by container %d\r\n"
 			, intno, exc->id);
 		return -1;
 	}
 
-	exc->id = container_id;
-	exc->handler = handler;
 
+	exc->handler = (EXC_HANDLER) handler;
+	exc->id = handler ? g_active_container : 0;
+
+
+	SECURESHIELD_DBG("IRQ %d %s container %d\r\n",
+		intno,
+		handler ? "registered to" : "released by",
+		g_active_container);
 	return 0;
 }
+
+
+/**
+ * \brief get interrupt handler
+ * \param[in]  intno interrupt no.
+ * \return interrupt handler
+ */
+INT_HANDLER secure_int_handler_get(uint32_t intno)
+{
+	if (secure_int_ac_check(intno) != 0) {
+		return NULL;
+	}
+
+	return secureshield_int_handler_table[intno - NUM_EXC_CPU].handler;
+}
+
 
 /**
  * \brief disable interrupt
@@ -368,57 +493,6 @@ int32_t secure_int_pri_get(uint32_t intno)
 	return (int32_t)arc_int_pri_get(intno) + INT_PRI_MIN;;
 }
 
-/**
- * \brief install an interrupt handler
- * \param[in]  intno   interrupt no.
- * \param[in]  handler interrupt handler
- * \return     0 ok, -1 failed
- */
-int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
-{
-
-	SECURESHIELD_INT_HANDLER* exc;
-
-	if (secure_int_default_check(intno) != 0) {
-		return -1;
-	}
-
-	/* reduce an offset */
-	exc = &secureshield_int_handler_table[intno - NUM_EXC_CPU];
-
-	/* if the intno does not belong to the active container */
-	if (exc->id != g_active_container && exc->id) {
-		SECURESHIELD_DBG(
-			"Permission denied: IRQ %d is owned by container %d\r\n"
-			, intno, exc->id);
-		return -1;
-	}
-
-
-	exc->handler = (EXC_HANDLER) handler;
-	exc->id = handler ? g_active_container : 0;
-
-
-	SECURESHIELD_DBG("IRQ %d %s container %d\r\n",
-		intno,
-		handler ? "registered to" : "released by",
-		g_active_container);
-	return 0;
-}
-
-/**
- * \brief get interrupt handler
- * \param[in]  intno interrupt no.
- * \return interrupt handler
- */
-INT_HANDLER secure_int_handler_get(uint32_t intno)
-{
-	if (secure_int_ac_check(intno) != 0) {
-		return NULL;
-	}
-
-	return secureshield_int_handler_table[intno - NUM_EXC_CPU].handler;
-}
 
 /**
  * \brief trigger the interrupt in software
@@ -501,43 +575,117 @@ void secure_cpu_unlock(void)
 
 }
 
+typedef struct aux_irq_ctrl_field {
+	/* note: little endian */
+	uint32_t save_nr_gpr_pairs: 5;	/** Indicates number of general-purpose register pairs saved, from 0 to 8/16 */
+	uint32_t res: 4;		/** Reserved */
+	uint32_t save_blink: 1;		/** Indicates whether to save and restore BLINK */
+	uint32_t save_lp_regs: 1;	/** Indicates whether to save and restore loop registers (LP_COUNT, LP_START, LP_END) */
+	uint32_t save_u_to_u: 1;	/** Indicates if user context is saved to user stack */
+	uint32_t res2: 1;		/** Reserved */
+	uint32_t save_idx_regs: 1;	/** Indicates whether to save and restore code-density registers (EI_BASE, JLI_BASE, LDI_BASE) */
+	uint32_t res3: 18;		/** Reserved */
+} aux_irq_ctrl_field_t;
+
+typedef union {
+	aux_irq_ctrl_field_t bits;
+	uint32_t value;
+} aux_irq_ctrl_t;
+
 /**
  *  \brief interrupt initialization in secure world
  */
 void secureshield_int_init(void)
 {
 	uint32_t i;
-	struct aux_irq_ctrl {
-	/* note: little endian */
-		uint32_t save_nr_gpr_pairs:5, res:4,
-			save_blink:1, save_lp_regs:1, save_u_to_u:1,
-			res2:1, save_idx_regs:1, res3:18;
-	} ictrl;
-#ifndef ARC_FEATURE_RF16
-	ictrl.save_nr_gpr_pairs = 6;	/* r0 to r11 (r12 saved manually) */
-#else
-	ictrl.save_nr_gpr_pairs = 3;	/* r0 to r3, r10, r11  */
-#endif
-	ictrl.save_blink = 1;
-	ictrl.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
-	ictrl.save_u_to_u = 0;		/* user context saved on secure stack */
-	ictrl.save_idx_regs = 1;	/* JLI, LDI, EI */
+	aux_irq_ctrl_t ictrl;
 
+	ictrl.value = 0;
+
+#ifndef ARC_FEATURE_RF16
+	ictrl.bits.save_nr_gpr_pairs = 6;	/* r0 to r11 (r12 saved manually) */
+#else
+	ictrl.bits.save_nr_gpr_pairs = 3;	/* r0 to r3, r10, r11  */
+#endif
+	ictrl.bits.save_blink = 1;
+	ictrl.bits.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
+	ictrl.bits.save_u_to_u = 0;		/* user context saved on kernel stack */
+	ictrl.bits.save_idx_regs = 1;		/* JLI, LDI, EI */
+
+#if SECURESHIELD_VERSION == 1
 	_arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)secureshield_exc_entry_table);
+#elif SECURESHIELD_VERSION == 2
+	_arc_aux_write(AUX_INT_VECT_BASE_S, (uint32_t)secureshield_exc_entry_table);
+#endif
 	for (i = NUM_EXC_CPU;i < NUM_EXC_ALL; i++)
 	{
 		/* interrupt level triggered, disabled, priority is the lowest */
 		_arc_aux_write(AUX_IRQ_SELECT, i);
 		_arc_aux_write(AUX_IRQ_ENABLE, 0);
 		_arc_aux_write(AUX_IRQ_TRIGGER, 0);
+#if SECURESHIELD_VERSION == 1
 		_arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
+#elif SECURESHIELD_VERSION == 2
+		_arc_aux_write(AUX_IRQ_PRIORITY, (INT_PRI_MAX - INT_PRI_MIN) |
+			(1 << AUX_IRQ_PRIORITY_BIT_S));
+#endif
 	}
 
 	_arc_aux_write(AUX_IRQ_CTRL, *(uint32_t *)&ictrl);
 	arc_int_ipm_set(INT_PRI_MAX - INT_PRI_MIN);
+
+#if SECURESHIELD_VERSION == 2
+	/* all exceptions are handled in secure world, except swi and trap exception */
+	_arc_aux_write(AUX_SEC_EXCEPT, 0xfcff);
+#endif
 }
 
 
+/**
+ * \brief allocate an interrupt to the specified container
+ * \param[in]  container_id container id
+ * \param[in]  handler 	interrupt handler
+ * \param[in]  intno        interrupt no.
+ * \return 0 ok, -1 failed
+ */
+int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER handler, uint32_t intno)
+{
+	SECURESHIELD_INT_HANDLER* exc;
+
+	if (secure_int_default_check(intno) != 0) {
+		return -1;
+	}
+
+	exc = &secureshield_int_handler_table[intno - NUM_EXC_CPU];
+
+	/* interrupt is already installed */
+	/* other container can change background container's irq resources */
+	if(exc->id) {
+		SECURESHIELD_DBG(
+			"Permission denied: IRQ %d is owned by container %d\r\n"
+			, intno, exc->id);
+		return -1;
+	}
+
+	exc->id = container_id;
+	exc->handler = handler;
+	exc->enabled = 0;
+
+#if SECURESHIELD_VERSION == 2
+	if (container_id != 0) {
+		/* interrupts allocated to non-background container are secure interrupts */
+		arc_int_secure_set(intno, 1);
+	} else {
+		/* background container's interrupts are normal interrupts */
+		arc_int_secure_set(intno, 0);
+	}
+#endif
+
+	return 0;
+}
+
+
+#if SECURESHIELD_VERSION == 1
 uint32_t* dst_container_user_sp;
 
 /**
@@ -629,7 +777,6 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 {
 	uint32_t src_id, dst_id;
-	uint32_t *src_sp;
 
 
 	/* discard the created cpu frame, recover the original sp of destination container */
@@ -641,7 +788,6 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 	}
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
-	src_sp = g_container_stack[g_container_stack_ptr].src_sp;
 
 	if (src_id != dst_id) {
 		/* switch access control table */
@@ -650,14 +796,15 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 
 	/* clear the first set bit in AUX_IRQ_ACT to simulate the quit of interrupt */
 	//_arc_sr_reg(AUX_IRQ_ACT, _arc_lr_reg(AUX_IRQ_ACT) & ~(1 << _arc_lr_reg(AUX_IRQ_PRIORITY)));
-	// Asm is more effective, it bitscan option is enabled */
+	/* Asm is more effective, it requires bitscan option is enabled */
 	Asm(
 	" lr %%r0, [%[irq_act]]\n"
 	" ffs %%r1, %%r0\n"
 	" bclr %%r0, %%r0, %%r1\n"
+	" bclr %%r0, %%r0, 31\n" 		/* clear U bit */
 	" sr %%r0, [%[irq_act]]\n" :: [irq_act] "i" (AUX_IRQ_ACT));
 
-	return (uint32_t) src_sp;
+	return (uint32_t) g_container_stack[g_container_stack_ptr].src_sp;
 }
 
 /**
@@ -713,3 +860,173 @@ void secureshield_int_ops(INT_EXC_FRAME *frame)
 			break;
 	}
 }
+#elif SECURESHIELD_VERSION == 2
+/**
+ * \brief secure interrupt handle
+ * \details the secure interrupt is handled in secureshield runtime stack
+ *
+ * \param[in] src_frame interrupt frame
+ * \return  interrupt handler address
+ */
+void * secureshield_interrupt_handle(uint32_t *sp)
+{
+	uint32_t src_id, dst_id;
+	INT_HANDLER handler;
+	INT_HANDLER_CALL_FRAME *dst_frame;
+
+	/* reuse src_id and dst_id */
+	src_id = _arc_aux_read(AUX_IRQ_CAUSE);
+
+	/* if triggered by software, clear it */
+	if (src_id == _arc_aux_read(AUX_IRQ_HINT)) {
+		_arc_aux_write(AUX_IRQ_HINT, 0);
+	}
+
+	/* verify IRQ access privileges */
+	if (secure_int_default_check(src_id) != 0) {
+		arc_int_disable(src_id);
+		return NULL;
+	}
+
+	/* get dst_id and interrupt handler */
+	dst_id = secureshield_int_handler_table[src_id - NUM_EXC_CPU].id;
+	handler = secureshield_int_handler_table[src_id - NUM_EXC_CPU].handler;
+
+
+	/* check interrupt handler */
+	if (!handler) {
+		SECURESHIELD_DBG("Unprivileged handler for IRQ %d not found\r\n", src_id);
+		arc_int_disable(src_id);
+		return NULL;
+	}
+
+	src_id = g_container_stack_curr_id;
+
+	if (src_id != dst_id) {
+		vmpu_switch(src_id, dst_id);
+
+		container_stack_push(src_id, (uint32_t *)sp - ARC_CALLEE_FRAME_SIZE,
+			(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), _arc_aux_read(AUX_STATUS32),
+			 dst_id);
+
+		if (container_is_secure(src_id)) {
+			g_container_context[0].normal_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
+		}
+
+		dst_frame = (INT_HANDLER_CALL_FRAME *)
+			(g_container_context[dst_id].cur_sp - INT_HANDLER_CALL_FRAME_SIZE);
+
+		dst_frame->secure_sp = g_container_context[dst_id].cur_sp;
+
+		if (container_is_secure(dst_id)) {
+			dst_frame->normal_sp = g_container_context[0].normal_sp;
+		} else {
+			dst_frame->normal_sp = g_container_context[dst_id].normal_sp;
+		}
+
+		dst_frame->pc = handler;
+		dst_frame->cpu_status = g_container_context[dst_id].cpu_status;
+
+		return (void *) dst_frame;
+	} else {
+		/* enable MPU */
+		_arc_aux_write(AUX_MPU_EN, 0);
+		Asm("seti");
+		handler(0);
+		Asm("clri");
+		return NULL;
+	}
+}
+
+/**
+ * \brief the handling after secure interrupt handler returns
+ * \param[in]  status cpu status (not used now)
+ * \return        previous interrupted container's stack pointer
+ */
+void *secureshield_interrupt_handle_return(uint32_t* sp)
+{
+	uint32_t src_id, dst_id;
+
+	dst_id = g_container_stack_curr_id;
+
+	container_stack_pop(dst_id, sp, (uint32_t *)_arc_aux_read(AUX_KERNEL_SP),
+			_arc_aux_read(AUX_STATUS32));
+
+	src_id = g_container_stack[g_container_stack_ptr].src_id;
+
+	vmpu_switch(dst_id, src_id);
+
+	return g_container_stack[g_container_stack_ptr].src_sp;
+}
+
+/**
+ * \brief interrupt operation handler
+ * \param[in]  ops  operation id
+ * \param[in]  par1 1st parameter
+ * \param[in]  par2 2nd parameter
+ * \return     operation result
+ */
+int32_t secureshield_int_ops(uint32_t ops, uint32_t par1, uint32_t par2)
+{
+	int32_t ret = -1;
+	/* FIXME: remove switch case structure, use jump table */
+	switch (ops) {
+		case SECURESHIELD_INT_EXC_GET:
+			ret = (int32_t)secure_int_handler_get(par1);
+			break;
+		case SECURESHIELD_INT_EXC_INSTALL:
+			ret = secure_int_handler_install(par1, (INT_HANDLER)par2);
+			break;
+		case SECURESHIELD_INT_EXC_ENABLE:
+			ret = secure_int_enable(par1);
+			break;
+		case SECURESHIELD_INT_EXC_ENABLED:
+			ret = secure_int_enabled(par1);
+			break;
+		case SECURESHIELD_INT_EXC_DISABLE:
+			ret = secure_int_disable(par1);
+			break;
+		case SECURESHIELD_INT_EXC_PRI_SET:
+			ret = secure_int_pri_set(par1, par2);
+			break;
+		case SECURESHIELD_INT_EXC_PRI_GET:
+			ret = secure_int_pri_get(par1);
+			break;
+		case SECURESHIELD_INT_EXC_PROBE:
+			ret = secure_int_probe(par1);
+			break;
+		case SECURESHIELD_INT_EXC_LEVEL_CONFIG:
+			ret = secure_int_level_config(par1, par2);
+			break;
+		case SECURESHIELD_INT_EXC_SW_TRIG:
+			ret = secure_int_sw_trigger(par1);
+			break;
+		case SECURESHIELD_INT_EXC_CPU_LOCK:
+			secure_cpu_lock();
+			break;
+		case SECURESHIELD_INT_EXC_CPU_UNLOCK:
+			secure_cpu_unlock();
+			break;
+		default:
+			SECURESHIELD_DBG("Unsupported interrupt operation:%d\r\n", ops);
+			break;
+	}
+
+	return ret;
+}
+#endif
+
+int32_t int_disable(const uint32_t intno) EMBARC_LINKTO(secure_int_disable);
+int32_t int_enable(const uint32_t intno) EMBARC_LINKTO(secure_int_enable);
+int32_t int_enabled(const uint32_t intno) EMBARC_LINKTO(secure_int_enabled);
+int32_t int_pri_get(const uint32_t intno) EMBARC_LINKTO(secure_int_pri_get);
+int32_t int_pri_set(const uint32_t intno, int32_t intpri) EMBARC_LINKTO(secure_int_pri_set);
+int32_t int_probe(const uint32_t intno) EMBARC_LINKTO(secure_int_probe);
+int32_t int_sw_trigger(const uint32_t intno) EMBARC_LINKTO(secure_int_sw_trigger);
+int32_t int_level_config(const uint32_t intno, const uint32_t level) EMBARC_LINKTO(secure_int_level_config);
+void cpu_lock() EMBARC_LINKTO(secure_cpu_lock);
+void cpu_unlock() EMBARC_LINKTO(secure_cpu_unlock);
+uint32_t cpu_lock_save(void) EMBARC_LINKTO(secure_cpu_lock);
+void cpu_unlock_restore(const uint32_t status) EMBARC_LINKTO(secure_cpu_unlock);
+int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler) EMBARC_LINKTO(secure_int_handler_install);
+INT_HANDLER int_handler_get(const uint32_t intno) EMBARC_LINKTO(secure_int_handler_get);

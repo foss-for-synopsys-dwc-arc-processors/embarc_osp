@@ -105,7 +105,7 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 	dst_fn = container_call_get_dst_fn((CONTAINER_CALL *)pc);
 	dst_id = container_call_get_dst_id((CONTAINER_CALL *)pc);
 
-	// the target container of container call could not be 0 (background container)
+	/* the target container of container call could not be 0 (background container) */
 	if (dst_id == 0) {
 		return 0;
 	}

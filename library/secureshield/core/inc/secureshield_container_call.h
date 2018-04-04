@@ -37,24 +37,26 @@
 
 
 #if SECURESHIELD_VERSION == 1
+/* TRAP_S ID */
 #define SECURESHIELD_CONTAINER_CALL_OPCODE \
  	(uint16_t) (0x781E + (SECURESHIELD_SECURE_CALL_CONTAINER_IN << 5))
 #elif SECURESHIELD_VERSION == 2
 
+/* SJLI  U12 */
 #define SECURESHIELD_CONTAINER_CALL_OPCODE \
- 	(uint32_t) (SJLI_OPCODE(SECURESHIELD_SECURE_CALL_CONTAINER_IN)) // SJLI  U12
+	(uint32_t) (SJLI_OPCODE(SECURESHIELD_SECURE_CALL_CONTAINER_IN))
 #endif
 
 typedef struct {
 #if SECURESHIELD_VERSION == 1
-	uint16_t opcode;	// opcode of trap_s
+	uint16_t opcode;	/* opcode of trap_s */
 #elif SECURESHIELD_VERSION == 2
-	uint32_t opcode;	// opcode of sjli
+	uint32_t opcode;	/* opcode of sjli */
 #endif
-	uint32_t branch;	// jump instruction
-	uint32_t magic;		// magic code
-	uint32_t dst_fn;	// destination function
-	uint32_t *cfg_ptr;	// pointer to container configuration
+	uint32_t branch;	/* jump instruction */
+	uint32_t magic;		/* magic code */
+	uint32_t dst_fn;	/* destination function */
+	uint32_t *cfg_ptr;	/* pointer to container configuration */
 } EMBARC_PACKED CONTAINER_CALL;
 
 
@@ -114,8 +116,7 @@ Inline uint32_t container_call_get_dst_id(CONTAINER_CALL *pc)
  */
 Inline uint32_t container_is_secure(uint8_t id)
 {
-
 	return g_container_context[id].cfg->type;
 }
 
-#endif/* _SECURESHIELD_MONITOR_CC_H_ */
+#endif/* _SECURESHIELD_CONTAINER_CALL_H_ */

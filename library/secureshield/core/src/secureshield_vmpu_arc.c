@@ -423,12 +423,13 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 	/* remember active container */
 	g_active_container = dst_id;
 
-	if (vmpu_load) { // if mpu is loaded, no need to load again
+	/* if mpu is loaded, no need to load again */
+	if (vmpu_load) {
 		return;
 	}
 
 	if (g_mpu_region_count > (ARC_FEATURE_MPU_REGIONS - ARC_MPU_RESERVED_REGIONS)) {
-		SECURESHIELD_HALT("total mpu regions(%d) are more then mpu haredware entries",
+		SECURESHIELD_HALT("total mpu regions(%d) are more then mpu hardware entries",
 			g_mpu_region_count + ARC_MPU_RESERVED_REGIONS);
 		return;
 	}
@@ -849,8 +850,6 @@ void vmpu_arch_init(void)
 	/* enable seti, clri, setev in normal world */
 	SFLAG((1 << AUX_SEC_STAT_BIT_NIC));
 	sjli_init();
-	/* init protected container memory enumeration pointer */
-
 
 	if (mpu_cfg & 0x10000) {
 		SECURESHIELD_DBG("MPU supports defining regions as secure/non-secure\r\n");

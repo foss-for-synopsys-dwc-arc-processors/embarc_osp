@@ -38,16 +38,16 @@ extern "C" {
 extern int32_t secureshield_int_disable(uint32_t intno);
 extern int32_t secureshield_int_enable(uint32_t intno);
 extern int32_t secureshield_int_enabled(uint32_t intno);
-extern int32_t secureshield_int_pri_set(uint32_t intno, int intpri);
+extern int32_t secureshield_int_pri_set(uint32_t intno, int32_t intpri);
 extern int32_t secureshield_int_pri_get(uint32_t intno);
 extern int32_t secureshield_int_handler_install(uint32_t intno, void *handler);
 extern void * secureshield_int_handler_get(uint32_t intno);
 extern int32_t secureshield_int_sw_trigger(uint32_t intno);
 extern int32_t secureshield_int_probe(uint32_t intno);
 extern int32_t secureshield_int_level_config(uint32_t intno, uint32_t level);
-extern void secureshield_cpu_lock();
-extern void secureshield_cpu_unlock();
-extern uint32_t secureshield_cpu_lock_save();
+extern void secureshield_cpu_lock(void);
+extern void secureshield_cpu_unlock(void);
+extern uint32_t secureshield_cpu_lock_save(void);
 extern void secureshield_cpu_unlock_restore(uint32_t status);
 
 #ifdef __cplusplus
