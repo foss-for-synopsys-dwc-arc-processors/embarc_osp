@@ -37,7 +37,7 @@
 /*
  * This file is a skeleton for developing Ethernet network interface
  * drivers for lwIP. Add code to the low_level functions and do a
- * search-and-replace for the word "pmwifi_if" to replace it with
+ * search-and-replace for the word "wifi_if" to replace it with
  * something that better describes your network interface.
  */
 #include "stdint.h"
@@ -73,14 +73,14 @@
  * Called from pmwifi_if_init().
  *
  * @param netif the already initialized lwip network interface structure
- *        for this pmwifi_if
+ *        for this wifi_if
  */
 static err_t
 low_level_init(struct netif *netif)
 {
-  struct pmwifi_if *pmwifi_if_ptr;
+  struct wifi_if *pmwifi_if_ptr;
 
-  pmwifi_if_ptr = (struct pmwifi_if *)(netif->state);
+  pmwifi_if_ptr = (struct wifi_if *)(netif->state);
 
   if (pmwifi_if_ptr == NULL) {
     return ERR_MEM;
@@ -115,7 +115,7 @@ low_level_init(struct netif *netif)
  * contained in the pbuf that is passed to the function. This pbuf
  * might be chained.
  *
- * @param netif the lwip network interface structure for this pmwifi_if
+ * @param netif the lwip network interface structure for this wifi_if
  * @param p the MAC packet to send (e.g. IP packet including MAC addresses and type)
  * @return ERR_OK if the packet could be sent
  *         an err_t value if the packet couldn't be sent
@@ -132,11 +132,11 @@ low_level_output(struct netif *netif, struct pbuf *p)
   struct pbuf *q;
   uint32_t total_len;
   err_t ercd = ERR_OK;
-  struct pmwifi_if *pmwifi_if_ptr;
+  struct wifi_if *pmwifi_if_ptr;
   DEV_WNIC *pmwifi_wnic_ptr;
   static uint32_t tx_err_cnt = 0;
 
-  pmwifi_if_ptr = (struct pmwifi_if *)(netif->state);
+  pmwifi_if_ptr = (struct wifi_if *)(netif->state);
 
   if (pmwifi_if_ptr == NULL) {
     return ERR_IF;
@@ -215,10 +215,10 @@ pmwifi_on_input(DEV_WNIC *wnic_ptr)
   struct pbuf *p, *frame;
   struct eth_hdr *ethhdr;
   struct netif *netif;
-  struct pmwifi_if *pmwifi_if_ptr;
+  struct wifi_if *pmwifi_if_ptr;
   int32_t len = 0;
 
-  pmwifi_if_ptr = (struct pmwifi_if *)(wnic_ptr->wnic_info.extra);
+  pmwifi_if_ptr = (struct wifi_if *)(wnic_ptr->wnic_info.extra);
 
   if (pmwifi_if_ptr == NULL) {
     return ERR_MEM;
@@ -286,7 +286,7 @@ pmwifi_on_input(DEV_WNIC *wnic_ptr)
  *
  * This function should be passed as a parameter to netif_add().
  *
- * @param netif the lwip network interface structure for this pmwifi_if
+ * @param netif the lwip network interface structure for this wifi_if
  * @return ERR_OK if the loopif is initialized
  *         ERR_MEM if private data couldn't be allocated
  *         any other err_t on error
@@ -294,12 +294,12 @@ pmwifi_on_input(DEV_WNIC *wnic_ptr)
 err_t
 pmwifi_if_init(struct netif *netif)
 {
-  struct pmwifi_if *pmwifi_if_ptr;
+  struct wifi_if *pmwifi_if_ptr;
 
   LWIP_ASSERT("netif != NULL", (netif != NULL));
   LWIP_ASSERT("netif->state != NULL", (netif->state != NULL));
 
-  pmwifi_if_ptr = (struct pmwifi_if *)(netif->state);
+  pmwifi_if_ptr = (struct wifi_if *)(netif->state);
 
   if ((pmwifi_if_ptr == NULL) || (pmwifi_if_ptr->wnic == NULL)) {
     LWIP_DEBUGF(NETIF_DEBUG, ("pmwifi_if_init: unable to point to pmwifi interface\r\n"));

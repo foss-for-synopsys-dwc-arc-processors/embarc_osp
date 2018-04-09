@@ -50,7 +50,7 @@
  * as it is already kept in the struct netif.
  * But this is only an example, anyway...
  */
-typedef struct pmwifi_if {
+typedef struct wifi_if {
   DEV_WNIC        *wnic;
   struct netif    *netif;
   struct eth_addr *ethaddr;
@@ -64,7 +64,7 @@ typedef struct pmwifi_if {
 #endif
   volatile unsigned int cpu_status;
   volatile bool ready;
-} PMWIFI_IF, *PMWIFI_IF_PTR;
+} WIFI_IF, *WIFI_IF_PTR;
 
 
 int32_t pmwifi_on_input(DEV_WNIC *wnic_ptr);

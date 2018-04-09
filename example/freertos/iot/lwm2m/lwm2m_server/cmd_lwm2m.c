@@ -42,7 +42,7 @@
 #include "embARC_debug.h"
 
 #include "lwm2mserver.h"
-#include "lwip_pmwifi.h"
+#include "lwip_wifi.h"
 
 #ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
 #define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)

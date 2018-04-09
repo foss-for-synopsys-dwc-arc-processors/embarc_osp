@@ -54,8 +54,7 @@ static FATFS sd_card_fs;	/* File system object for each logical drive */
 
 #ifdef MID_LWIP
 
-#include "lwip_pmwifi.h"
-#include "lwip_slip.h"
+#include "lwip_wifi.h"
 
 #ifndef TASK_WIFI_PERIOD
 #define TASK_WIFI_PERIOD	50 /* WiFi connection task polling period, unit: kernel ticks */
@@ -122,11 +121,7 @@ static void task_wifi(void *par)
 	auth_key.key_len = sizeof(WF_HOTSPOT_PASSWD);
 	auth_key.key_idx = 0;
 #endif
-#ifdef USE_SLIP
-	lwip_slipwifi_init();
-#else
-	lwip_pmwifi_init();
-#endif
+	lwip_wifi_init();
 	EMBARC_PRINTF("\r\nNow trying to connect to WIFI hotspot, please wait about 30s!\r\n");
 
 	while (1) {
@@ -136,12 +131,7 @@ static void task_wifi(void *par)
 #else
 		wifi_wnic->wnic_connect(AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE, (const uint8_t *)WF_HOTSPOT_NAME, &auth_key);
 #endif
-#ifdef USE_SLIP
-		if ((flag == 0) && lwip_slipwifi_isup())
-#else
-		if ((flag == 0) && lwip_pmwifi_isup())
-#endif
-		{
+		if ((flag == 0) && lwip_wifi_isup()){
 			flag = 1;
 			EMBARC_PRINTF("WiFi connected \r\n");
 #ifndef MID_NTSHELL /* resume main task when ntshell task is not defined */

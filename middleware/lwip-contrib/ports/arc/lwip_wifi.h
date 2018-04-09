@@ -31,15 +31,15 @@
  */
 /*
  * Modified for port to ARC processor
- * by Yuguo Zou yuguo@synopsys.com, Synopsys, Inc.
+ * by Huaqi Fang huaqi.fang@synopsys.com, Synopsys, Inc.
  */
 
 /**
- * \addtogroup	MID_LWIP_CONTRIB_SLIPWIFI
+ * \addtogroup	MID_LWIP_CONTRIB_PMWIFI
  * @{
  *
  * \file
- * \brief	lwip slip wifi interface header file
+ * \brief	lwip pmod wifi interface header file
  *
  */
 #include "stdint.h"
@@ -48,19 +48,11 @@
 
 #include "lwip/def.h"
 #include "lwip/netif.h"
+#include "pmwifi_netif.h"
 
-typedef struct slipwifi_if {
-  DEV_WNIC        *wnic;
-  struct netif    *netif;
-  struct eth_addr *eaddr;
-  /* Add whatever per-interface state that is needed here. */
-  ip_addr_t external_addr;
-} SLIPWIFI_IF, SLIPWIFI_IF_PTR;
+#define PMWIFI_MAX_ID		BOARD_PMWIFI_ID_MAX
 
-#define EMSK_SLIPWIFI_0_UART_ID		DW_UART_0_ID;
-//#define PMWIFI_MAX_ID		BOARD_PMWIFI_ID_MAX
+int32_t lwip_wifi_init(void);
+int32_t lwip_wifi_isup(void);
 
-int32_t lwip_slipwifi_init(void);
-int32_t lwip_slipwifi_isup(void);
-
-/** @} end of group MID_LWIP_CONTRIB_SLIPWIFI */
+/** @} end of group MID_LWIP_CONTRIB_PMWIFI */

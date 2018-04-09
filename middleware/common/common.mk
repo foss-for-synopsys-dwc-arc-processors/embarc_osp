@@ -1,9 +1,9 @@
 # directory declaration
 MID_COMMON_DIR = $(MIDDLEWARES_ROOT)/common
 
-MID_COMMON_ASMSRCDIR	= $(MID_COMMON_DIR) $(MID_COMMON_DIR)/ringbuffer $(MID_COMMON_DIR)/xprintf
-MID_COMMON_CSRCDIR	= $(MID_COMMON_DIR) $(MID_COMMON_DIR)/ringbuffer $(MID_COMMON_DIR)/xprintf
-MID_COMMON_INCDIR	= $(MID_COMMON_DIR) $(MID_COMMON_DIR)/ringbuffer $(MID_COMMON_DIR)/xprintf
+MID_COMMON_ASMSRCDIR	= $(MID_COMMON_DIR) $(MID_COMMON_DIR)/ez_sio $(MID_COMMON_DIR)/ringbuffer $(MID_COMMON_DIR)/xprintf
+MID_COMMON_CSRCDIR	= $(MID_COMMON_DIR) $(MID_COMMON_DIR)/ez_sio $(MID_COMMON_DIR)/ringbuffer $(MID_COMMON_DIR)/xprintf
+MID_COMMON_INCDIR	= $(MID_COMMON_DIR) $(MID_COMMON_DIR)/ez_sio $(MID_COMMON_DIR)/ringbuffer $(MID_COMMON_DIR)/xprintf
 
 # find all the source files in the target directories
 MID_COMMON_CSRCS = $(call get_csrcs, $(MID_COMMON_CSRCDIR))
