@@ -27,43 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE	embARC Secureshield Test Cases Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC Secureshield Test Cases example
- *
- * \details
- * ### Extra Required Tools
- *     - Designware nSIM Tool
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to test the secureshield's API functionality.
- *
- * ### Usage Manual
- *     Run this example you will see the following output.
- *
- *     ![ScreenShot of secureshield example](pic/images/example/emsk/baremetal_secureshield.jpg)
- *
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example background container source file
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * @{
- */
-
-/* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"
@@ -97,8 +60,49 @@ void default_interrupt_handler(void *p_exinf)
 
 int main(void)
 {
+	int32_t val;
+	EMBARC_PRINTF("interrupt operation tests\r\n");
+	EMBARC_PRINTF("test cases for secureshield_int_disable\r\n");
 
-	EMBARC_PRINTF("timer0 interrupt prioirty is:%d\r\n", secureshield_int_pri_get(INTNO_TIMER0));
+	EMBARC_ASSERT(secureshield_int_disable(INTNO_TIMER0) == 0);
+	EMBARC_ASSERT(secureshield_int_disable(INTNO_SWI1) != 0);
+
+	EMBARC_PRINTF("test cases for secureshield_int_enable\r\n");
+	EMBARC_ASSERT(secureshield_int_enable(INTNO_TIMER0) == 0);
+	EMBARC_ASSERT(secureshield_int_enable(INTNO_SWI1) != 0);
+
+	EMBARC_PRINTF("test cases for secureshield_int_enabled\r\n");
+	EMBARC_ASSERT(secureshield_int_enabled(INTNO_TIMER0) > 0);
+	EMBARC_ASSERT(secureshield_int_enabled(INTNO_SWI1) == -1);
+
+	EMBARC_PRINTF("test cases for secureshield_int_prt_set/get\r\n");
+	val = secureshield_int_pri_get(INTNO_TIMER0);
+	EMBARC_ASSERT(val < 0);
+	EMBARC_ASSERT(secureshield_int_pri_get(INTNO_SWI1) == 0);
+	EMBARC_ASSERT(secureshield_int_pri_set(INTNO_TIMER0, val) == 0);
+	EMBARC_ASSERT(secureshield_int_pri_set(INTNO_SWI1, val) < 0);
+
+	EMBARC_PRINTF("test cases for secureshield_int_handler_install/get\r\n");
+	val = (int32_t)secureshield_int_handler_get(INTNO_TIMER0);
+	EMBARC_ASSERT(val != 0);
+	EMBARC_ASSERT(secureshield_int_handler_get(INTNO_SWI1) == 0);
+	EMBARC_ASSERT(secureshield_int_handler_install(INTNO_TIMER0, default_interrupt_handler) == 0);
+	EMBARC_ASSERT(secureshield_int_handler_install(INTNO_SWI1, default_interrupt_handler) < 0);
+	EMBARC_ASSERT(secureshield_int_handler_get(INTNO_TIMER0) == default_interrupt_handler);
+	EMBARC_ASSERT(secureshield_int_handler_install(INTNO_TIMER0, (void *)val) == 0);
+
+	EMBARC_PRINTF("test cases for secureshield_int_sw_trigger and probe\r\n");
+	secureshield_cpu_lock();
+	EMBARC_ASSERT(secureshield_int_sw_trigger(INTNO_TIMER0) == 0);
+	EMBARC_ASSERT(secureshield_int_sw_trigger(INTNO_SWI1) < 0);
+	EMBARC_ASSERT(secureshield_int_probe(INTNO_TIMER0) > 0);
+	EMBARC_ASSERT(secureshield_int_probe(INTNO_SWI1) < 0);
+	secureshield_cpu_unlock();
+
+	EMBARC_PRINTF("test cases for secureshield_int_level_config");
+	EMBARC_ASSERT(secureshield_int_level_config(INTNO_TIMER0, 0) == 0);
+	EMBARC_ASSERT(secureshield_int_level_config(INTNO_TIMER0, 1) == 0);
+	EMBARC_ASSERT(secureshield_int_level_config(INTNO_SWI1, 0) < 0);
 
 	int_handler_install(INTNO_SWI0, soft_interrupt0);
 	int_enable(INTNO_SWI0);
@@ -123,5 +127,3 @@ int main(void)
 
 	return E_SYS;
 }
-
-/** @} */

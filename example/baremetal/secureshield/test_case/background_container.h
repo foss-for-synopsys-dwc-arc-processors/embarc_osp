@@ -27,13 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example background container head file
- */
-
 #ifndef BACKGROUND_CONTAINER_H
 #define BACKGROUND_CONTAINER_H
 

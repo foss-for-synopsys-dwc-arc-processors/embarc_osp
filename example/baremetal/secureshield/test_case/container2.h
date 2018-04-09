@@ -27,15 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example container2 head file
- */
-
-#ifndef CONTAINER2_H
-#define CONTAINER2_H
+#ifndef _CONTAINER2_H_
+#define _CONTAINER2_H_
 
 #include "background_container.h"
 #define INTNO_SWI2 20
@@ -44,4 +37,4 @@ extern int tst_func3(int arg1, int arg2, int arg3);
 extern int tst_func5(int arg1, int arg2, int arg3, int arg4, int arg5);
 extern void soft_interrupt2(void *p_exinf);
 
-#endif
+#endif /* _CONTAINER2_H_ */

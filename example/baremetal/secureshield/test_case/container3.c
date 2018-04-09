@@ -27,13 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example container3 source file
- */
-
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"
@@ -57,8 +50,6 @@ int tst_func4(int arg1, int arg2, int arg3, int arg4)
 	if (secureshield_int_pri_get(INTNO_SWI3) != INT_PRI_MIN) {
 		EMBARC_PRINTF("interrupt pri ops error\r\n");
 	}
-	//EMBARC_PRINTF("container call from 3 to 1\r\n");
-	//EMBARC_PRINTF("ret is:%x\r\n", container_call(container1, tst_func0));
 	return 4;
 }
 

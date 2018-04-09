@@ -27,17 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example container4 head file
- */
-
-#ifndef CONTAINER4_H
-#define CONTAINER4_H
+#ifndef _CONTAINER4_H_
+#define _CONTAINER4_H_
 
 extern int tst_func_sec1(void);
 extern int tst_func_sec2(void);
 
-#endif
+#endif /* _CONTAINER4_H_ */

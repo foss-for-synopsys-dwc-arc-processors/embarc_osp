@@ -27,13 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example container4 source file
- */
-
 #undef LIB_SECURESHIELD_OVERRIDES
 #include "embARC.h"
 #include "embARC_debug.h"

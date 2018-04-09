@@ -68,9 +68,7 @@ int tst_func1(int arg1)
 
 int tst_func2(int arg1, int arg2)
 {
-	//EMBARC_PRINTF("container call in cycles:%d\r\n", secureshield_perf_end());
 	EMBARC_PRINTF("tst_func2 in container 1, arguments are:%d,%d\r\n", arg1, arg2);
-	//secureshield_perf_start();
 	return 2;
 }
 
