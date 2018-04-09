@@ -149,8 +149,19 @@ _firq_hanlde:
 	rtie	/* rtie will do an exception return */
 
 _ret_int_directly:
-	INTERRUPT_EPILOGUE
+#if ARC_FEATURE_FIRQ == 1
+	lr	r0, [AUX_IRQ_ACT]
+	btst	r0, 0
+	bz 	_ret_int_rirq
+	EXCEPTION_EPILOGUE
+	lr ilink, [AUX_ERRET]
 
+	sr 	MPU_ENABLE, [AUX_MPU_EN]
+	rtie
+
+_ret_int_rirq:
+#endif
+	INTERRUPT_EPILOGUE
 	sr 	MPU_ENABLE, [AUX_MPU_EN]
 	rtie
 
