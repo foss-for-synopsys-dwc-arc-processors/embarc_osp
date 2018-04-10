@@ -223,6 +223,9 @@ include $(EMBARC_ROOT)/board/board.mk
 # ARC HAL
 include $(EMBARC_ROOT)/arc/arc.mk
 
+# library makefile
+include $(EMBARC_ROOT)/library/library.mk
+
 # os specific settings
 ifdef OS_SEL
 override OS_SEL := $(strip $(OS_SEL))
@@ -232,9 +235,6 @@ endif
 
 # middleware makefile
 include $(EMBARC_ROOT)/middleware/middleware.mk
-
-# library makefile
-include $(EMBARC_ROOT)/library/library.mk
 
 ############## Post processing #############################################
 # source directories and include directories settings
