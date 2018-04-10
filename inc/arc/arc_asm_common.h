@@ -186,12 +186,12 @@
 	PUSH	r25
 #endif
 
-#if defined(LIB_SECURESHIELD)
-#if SECURESHIELD_VERSION == 1
-	PUSHAX AUX_USER_SP
-#elif SECURESHIELD_VERSION == 2
+#if defined(ARC_ENABLE_EXTRA_CALLEE)
+#if ARC_FEATURE_SEC_PRESENT
 	PUSHAX AUX_KERNEL_SP
 	PUSHAX AUX_SEC_K_SP
+#else
+	PUSHAX AUX_USER_SP
 #endif
 #endif
 
@@ -211,14 +211,15 @@
 	RESTORE_R58_R59
 #endif
 
-#if defined(LIB_SECURESHIELD)
-#if SECURESHIELD_VERSION == 1
-	POPAX AUX_USER_SP
-#elif SECURESHIELD_VERSION == 2
+#if defined(ARC_ENABLE_EXTRA_CALLEE)
+#if ARC_FEATURE_SEC_PRESENT
 	POPAX AUX_SEC_K_SP
 	POPAX AUX_KERNEL_SP
+#else
+	POPAX AUX_USER_SP
 #endif
 #endif
+
 #ifndef ARC_FEATURE_RF16
 	POP	r25
 	POP	r24
@@ -507,7 +508,7 @@
 	POP	r12
 .endm
 
-#if SECURESHIELD_VERSION == 2
+#if ARC_FEATURE_SEC_PRESENT
 /* exception prologue, create the same frame of interrupt manually */
 .macro EXCEPTION_PROLOGUE
 	st.as	r10, [sp, -6]	/* save r10 first, free up a register*/
@@ -671,7 +672,7 @@
 #endif
 .endm
 
-#endif /* SECURESHIELD_VERSION == 2 */
+#endif /* ARC_FEATURE_SEC_PRESENT */
 
 #endif	/* _ARC_HAL_ASM_COMMON_H */
 /** @endcond */
