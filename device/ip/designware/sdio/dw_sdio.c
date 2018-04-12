@@ -38,8 +38,6 @@
 
 
 #define min(a, b) (((a) < (b)) ? (a) : (b))
-#define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
-
 
 Inline void dw_sdio_enable_card_threshold(DW_SDIO_CTRL_PTR sdio, uint32_t threshold)
 {
