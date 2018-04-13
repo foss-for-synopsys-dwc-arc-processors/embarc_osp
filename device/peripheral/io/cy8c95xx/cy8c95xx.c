@@ -47,14 +47,13 @@ int32_t cy8c95xx_reg_write(CY8C95XX_DEF_PTR obj, uint8_t dev, uint8_t regaddr, u
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
 	CY8C95XX_CHECK_EXP_NORTN(iic_obj != NULL, E_PAR);
 	CY8C95XX_CHECK_EXP_NORTN((dev == 0) || (dev == 1), E_PAR);
-	if (dev == 0)
-	{
+
+	if (dev == 0) {
 		slvaddr = obj->slvaddr_io;
-	}
-	else
-	{
+	} else {
 		slvaddr = obj->slvaddr_eep;
 	}
+
 	data[0] = (uint8_t)(regaddr & 0xff);
 	/** make sure set the temp sensor's slave address */
 	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(slvaddr));
@@ -77,14 +76,13 @@ int32_t cy8c95xx_reg_read(CY8C95XX_DEF_PTR obj, uint8_t dev, uint8_t regaddr, ui
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
 	CY8C95XX_CHECK_EXP_NORTN(iic_obj != NULL, E_PAR);
 	CY8C95XX_CHECK_EXP_NORTN((dev == 0) || (dev == 1), E_PAR);
-	if (dev == 0)
-	{
+
+	if (dev == 0) {
 		slvaddr = obj->slvaddr_io;
-	}
-	else
-	{
+	} else {
 		slvaddr = obj->slvaddr_eep;
 	}
+
 	data[0] = (uint8_t)(regaddr & 0xff);
 	/** make sure set the temp sensor's slave address */
 	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(slvaddr));

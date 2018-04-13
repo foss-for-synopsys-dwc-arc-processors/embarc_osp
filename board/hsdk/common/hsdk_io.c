@@ -70,46 +70,44 @@ static void cy8c95xx_delay_us(uint32_t us)
 /** hsdk on-board led init, led default off */
 void hsdk_led_init(void)
 {
-	int ercd = E_OK;
+	int32_t ercd = E_OK;
+	int32_t rv = 0;
+	uint8_t buffer_tx[1];
+	uint8_t val = 0;
+
 	cy8c95xx_obj.i2c_id = HSDK_I2C_ID_CY8C95XX;
 	cy8c95xx_obj.slvaddr_io = HSDK_I2C_ADDR_CY8C95XX_IO;
 	cy8c95xx_obj.slvaddr_eep = HSDK_I2C_ADDR_CY8C95XX_EEP;
 
 	DEV_IIC_PTR iic_obj = iic_get_dev(cy8c95xx_obj.i2c_id);
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_STANDARD);
-	if ((ercd == E_OK) || (ercd == E_OPNED))
-	{
+
+	if ((ercd == E_OK) || (ercd == E_OPNED)) {
 		iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(cy8c95xx_obj.slvaddr_io));
 	}
-	int rv = 0;
-	uint8_t buffer_tx[1];
-	uint8_t val = 0;
-	// Select port
+
+
+	/* Select port */
 	buffer_tx[0] = CY8C95XX_PORT_1;
 	rv = cy8c95xx_reg_write(&cy8c95xx_obj, CY8C95XX_DEV_IO, CY8C95XX_PORT_SELECT_REG, buffer_tx, 1);
 	cy8c95xx_delay_us(100);
-	do
-	{
+
+	do {
 		cy8c95xx_reg_read(&cy8c95xx_obj, CY8C95XX_DEV_IO, CY8C95XX_PORT_SELECT_REG, &val, 1);
 	} while (val != buffer_tx[0]);
-	// Set direction: all pins output
+	/* Set direction: all pins output */
 	buffer_tx[0] = 0x00;
 	rv = cy8c95xx_reg_write(&cy8c95xx_obj, CY8C95XX_DEV_IO, CY8C95XX_PIN_DIRECTION_REG, buffer_tx, 1);
 	cy8c95xx_delay_us(100);
-	do
-	{
+	do {
 		cy8c95xx_reg_read(&cy8c95xx_obj, CY8C95XX_DEV_IO, CY8C95XX_PIN_DIRECTION_REG, &val, 1);
 	} while (val != buffer_tx[0]);
 	cy8c95xx_delay_us(100);
-	// Set driver mode: Pull Up
+	/* Set driver mode: Pull Up */
 	cy8c95xx_reg_read(&cy8c95xx_obj, CY8C95XX_DEV_IO, CY8C95XX_DRIVE_MODE_PU_REG, &val, 1);
 	buffer_tx[0] = 0xFF;
 	rv = cy8c95xx_reg_write(&cy8c95xx_obj, CY8C95XX_DEV_IO, CY8C95XX_DRIVE_MODE_PU_REG, buffer_tx, 1);
 	cy8c95xx_delay_us(100);
-	// do
-	// {
-	// 	_cy8c95xx_reg_read(CY8C95XX_DRIVE_MODE_PU_REG, &val, 1);
-	// } while (val != buffer_tx[0]);
 
 error_exit:
 	return;
@@ -129,8 +127,6 @@ error_exit:
 void hsdk_io_init(void)
 {
 	hsdk_led_init();
-	// hsdk_button_init();
-	// hsdk_switch_init();
 }
 
 /** @} end of group BOARD_HSDK_DRV_IO */
