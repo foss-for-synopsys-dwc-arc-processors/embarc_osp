@@ -75,8 +75,6 @@
 #define REL_REGBASE_UART0	(0x00008000U)		/*!< UART0 is connected to PMOD */
 #define REL_REGBASE_UART1	(0x00009000U)		/*!< UART1 is USB-UART， use UART1 as default */
 
-#define INTNO_TIMER0		16
-#define INTNO_TIMER1		17
 #define INTNO_GPIO		18
 #define INTNO_I2C0		19
 //#define INTNO_I2C1		20

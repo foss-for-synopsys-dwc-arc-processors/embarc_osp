@@ -82,8 +82,6 @@
 #define REL_REGBASE_GMAC		(0x0000E000U)		/*!< GMAC  */
 
 /* Interrupt Connection */
-#define INTNO_TIMER0			16			/*!< ARC Timer0 */
-#define INTNO_TIMER1			17			/*!< ARC Timer1 */
 #define INTNO_GPIO			22			/*!< GPIO controller */
 #define INTNO_I2C0			23			/*!< I2C_0 controller */
 #define INTNO_I2C1			24			/*!< I2C_1 controller */
