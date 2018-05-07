@@ -81,7 +81,7 @@ sio_fd_t sio_open(u8_t devnum){
  * @note This function will block until the character can be sent.
  */
 void sio_send(u8_t c, sio_fd_t fd){
-	ez_sio_write(fd, &c, 1);
+	ez_sio_write(fd, (char *)&c, 1);
 }
 
 /**
@@ -93,7 +93,7 @@ void sio_send(u8_t c, sio_fd_t fd){
  */
 u8_t sio_recv(sio_fd_t fd){
 	u8_t buf;
-	ez_sio_read(fd, &buf, 1);
+	ez_sio_read(fd, (char *)&buf, 1);
 	return buf;
 }
 

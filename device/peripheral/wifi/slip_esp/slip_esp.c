@@ -309,6 +309,7 @@ int32_t slip_esp_stop_scan(DEV_WNIC_PTR slip_esp_wnic)
 	SLIP_CHECK_EXP(slip_esp_wnic != NULL, E_OBJ);
 	slip_esp_info = &(slip_esp_wnic->wnic_info);
 	SLIP_CHECK_EXP((slip_esp_info->init_status == WNIC_INIT_SUCCESSFUL), E_CLSED);
+	esp = (SLIP_ESP_DEF_PTR)slip_esp_info->ctrl;
 
 	if(slip_esp_info->scan_status != WNIC_NOT_SCANED){
 		slip_esp_info->scan_status = WNIC_NOT_SCANED;
@@ -316,7 +317,6 @@ int32_t slip_esp_stop_scan(DEV_WNIC_PTR slip_esp_wnic)
 	}
 
 	slip_esp_info->busy_status = WNIC_IS_FREE;
-	esp = (SLIP_ESP_DEF_PTR)slip_esp_info->ctrl;
 
 	esp->scan_cnt = 0;
 	esp->scan_timer = 0;
@@ -625,6 +625,7 @@ void slip_esp_period_process(DEV_WNIC_PTR slip_esp_wnic, void *ptr)
 		if (slip_timer_read_ms() > esp->conn_timer) {
 			DBG("esp connection timeout check\r\n");
 			slip_console_send("show\r\n");
+			slip_timer_delay(500);
 			slip_console_receive(esp->console_buf, SLIP_CONSOLE_BUF_LEN);
 			if(strstr(esp->console_buf, "External IP") != NULL){
 				slip_esp_info->conn_status = WNIC_CONNECTED;
