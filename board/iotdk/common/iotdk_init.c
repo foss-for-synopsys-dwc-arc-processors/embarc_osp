@@ -30,9 +30,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-07-31
- * \author Wayne Ren(wei.ren@synopsys.com)
 --------------------------------------------- */
 /**
  * \defgroup	BOARD_IOTDK_COMMON_INIT	IOTDK Common Init Module
@@ -79,7 +76,6 @@ void board_init(void)
 	pll_fout_config(CLK_CPU/1000000);
 	timer_init();
 	iotdk_mux_init();
-	//iotdk_gpio_init();
 	iotdk_timer_init();
 }
 

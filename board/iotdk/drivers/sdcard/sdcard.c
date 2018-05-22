@@ -26,15 +26,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-11-10
- * \author Wayne Ren(wei.ren@synopsys.com)
 --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD	HUANGSHAN Fatfs Middleware SDCard Driver
- * \ingroup	BOARD_HUANGSHAN_DRIVER
- * \brief	HUANGSHAN Fatfs Middleware SDCard Interface Driver
+ * \defgroup	BOARD_IOTDK_DRV_MID_FS_SDCARD	IOTDK Fatfs Middleware SDCard Driver
+ * \ingroup	BOARD_IOTDK_DRIVER
+ * \brief	IOTDK Fatfs Middleware SDCard Interface Driver
  * \details
  *		Realize the sdcard driver for fatfs based on the middleware fatfs diskio abstract
  *	layer, sdcard interface can be spi or sdio and so on.
@@ -42,12 +39,12 @@
 
 /**
  * \file
- * \ingroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD
+ * \ingroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
  * \brief	sdcard driver for fatfs of hsdk board
  */
 
 /**
- * \addtogroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD
+ * \addtogroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
  * @{
  */
 #include "embARC_toolchain.h"
@@ -90,4 +87,4 @@ FATFS_DISKIO *get_fatfs_diskio(uint32_t drvid)
 }
 #endif /* MID_FATFS */
 
-/** @} end of group BOARD_HUANGSHAN_DRV_MID_FS_SDCARD */
+/** @} end of group BOARD_IOTDK_DRV_MID_FS_SDCARD */

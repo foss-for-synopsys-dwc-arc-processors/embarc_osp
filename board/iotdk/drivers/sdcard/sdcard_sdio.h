@@ -26,36 +26,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-11-10
- * \author Wayne Ren(wei.ren@synopsys.com)
 --------------------------------------------- */
 /**
  * \file
- * \ingroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD_SDIO
+ * \ingroup	BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO
  * \brief	header file of sdcard driver using sdio interface for fatfs
  */
 
 /**
- * \addtogroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD_SDIO
+ * \addtogroup	BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO
  * @{
  */
-#ifndef _HUANGSHAN_SDCARD_SDIO_H_
-#define _HUANGSHAN_SDCARD_SDIO_H_
+#ifndef _IOTDK_SDCARD_SDIO_H_
+#define _IOTDK_SDCARD_SDIO_H_
 
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include "ff_diskio.h"
 
-#define USE_HUANGSHAN_SDCARD_SDIO_0 	1
+#define USE_IOTDK_SDCARD_SDIO_0 	1
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#if USE_HUANGSHAN_SDCARD_SDIO_0
+#if USE_IOTDK_SDCARD_SDIO_0
 extern FATFS_DISKIO sdcard_sdio_0_diskio;
-#endif /* USE_HUANGSHAN_SDCARD_SDIO_0 */
+#endif /* USE_IOTDK_SDCARD_SDIO_0 */
 
 #ifdef __cplusplus
 }
@@ -63,6 +60,6 @@ extern FATFS_DISKIO sdcard_sdio_0_diskio;
 
 #endif /* MID_FATFS */
 
-#endif /** _HUANGSHAN_SDCARD_SDIO_H_ */
+#endif /** _IOTDK_SDCARD_SDIO_H_ */
 
-/** @} end of group BOARD_HUANGSHAN_DRV_MID_FS_SDCARD_SDIO */
+/** @} end of group BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO */

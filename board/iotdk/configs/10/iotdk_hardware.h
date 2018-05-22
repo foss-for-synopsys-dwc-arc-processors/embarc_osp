@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-07-31
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 /**
  *
@@ -87,9 +84,6 @@
 
 
 /* Interrupt Connection */
-/* ARC timer */
-#define INTNO_TIMER0				16	/* ARC Timer0 */
-#define INTNO_TIMER1				17	/* ARC Timer1 */
 /* SPI */
 #define INTNO_SPIMST0_SPI_MST_ERR_INTR		70
 #define INTNO_SPIMST0_SPI_MST_INTR_RX_AVAIL	71

@@ -26,18 +26,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-11-10
- * \author Wayne Ren(wei.ren@synopsys.com)
 --------------------------------------------- */
 /**
  * \file
- * \ingroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD
+ * \ingroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
  * \brief	header file of sdcard driver for fatfs of hsdk board
  */
 
 /**
- * \addtogroup	BOARD_HUANGSHAN_DRV_MID_FS_SDCARD
+ * \addtogroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
  * @{
  */
 #ifndef _HUANGSHAN_SDCARD_H_
@@ -62,4 +59,4 @@ extern "C" {
 
 #endif /** _HUANGSHAN_SDCARD_H_ */
 
-/** @} end of group BOARD_HUANGSHAN_DRV_MID_FS_SDCARD */
+/** @} end of group BOARD_IOTDK_DRV_MID_FS_SDCARD */
