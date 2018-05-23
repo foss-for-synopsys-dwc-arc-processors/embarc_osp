@@ -68,7 +68,6 @@
 #include "dev_wnic.h"
 #include "arc_exception.h"
 
-#include "pmwifi_netif.h"
 #include "netif/slipif.h"
 #include "lwip_wifi.h"
 
@@ -227,9 +226,9 @@ static void lwip_wifi_showipinfo(struct netif *netif)
 #ifndef USE_SLIP
 #if LWIP_DNS
     for (i=0; i<DNS_MAX_SERVERS; i++) {
-    	dns_server = dns_getserver(i);
-    	LWIP_DEBUGF(LWIP_DBG_ON, ("\r\n dns server %d :", i));
-    	ip_addr_debug_print(LWIP_DBG_ON, dns_server);
+        dns_server = dns_getserver(i);
+        LWIP_DEBUGF(LWIP_DBG_ON, ("\r\n dns server %d :", i));
+        ip_addr_debug_print(LWIP_DBG_ON, dns_server);
     }
 #endif
 #endif
@@ -291,6 +290,9 @@ int32_t lwip_wifi_init(void)
 #ifdef USE_SLIP
     WNIC_SET_ON_DISCONNECTED(wnic_ptr,   NULL);
     WNIC_SET_ON_RXDATA_COMES(wnic_ptr,   NULL);
+#elif defined WIFI_RS9113
+    WNIC_SET_ON_DISCONNECTED(wnic_ptr,   lwip_wifi_on_disconnected);
+    WNIC_SET_ON_RXDATA_COMES(wnic_ptr,   NULL);
 #else
     WNIC_SET_ON_DISCONNECTED(wnic_ptr,   lwip_wifi_on_disconnected);
     WNIC_SET_ON_RXDATA_COMES(wnic_ptr,   pmwifi_on_input);
@@ -316,8 +318,12 @@ int32_t lwip_wifi_init(void)
 #if NO_SYS
     netif_add(netif, &addr, &netmask, &gw, (void *)wifi_if_ptr, pmwifi_if_init, ethernet_input);
 #else
+#ifdef WIFI_RS9113
+    netif_add(netif, &addr, &netmask, &gw, (void *)wifi_if_ptr, rswifi_if_init, tcpip_input);
+#else
     netif_add(netif, &addr, &netmask, &gw, (void *)wifi_if_ptr, pmwifi_if_init, tcpip_input);
-#endif
+#endif /*WIFI_RS9113*/
+#endif /*NO_SYS*/
     netif_set_default(netif);
 
 #endif /* USE_SLIP */

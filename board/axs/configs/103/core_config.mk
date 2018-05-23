@@ -10,5 +10,5 @@
 # CURRENT CORE CONFIGURATION
 # Select the core configuration loaded into FPGA chip
 ##
-CUR_CORE ?= archs36
+CORE ?= archs36
 ONCHIP_IP_LIST ?= designware/uart designware/gpio
