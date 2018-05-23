@@ -411,7 +411,7 @@ static void _dmac_fill_descriptor(uint32_t channel, dma_desc_t * desc)
 
 int32_t dmac_init(dma_state_t * state)
 {
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (state == NULL) {
 		return -1;
 	}
@@ -493,7 +493,7 @@ static void _dmac_process_desc(dma_desc_t * desc, uint32_t int_enable)
 	} while (desc != 0);
 }
 
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 static int32_t dmac_valid_channel(int32_t channel, dma_desc_t * desc)
 {
 #if CORE_DMAC_INTERNAL_VERSION == 1
@@ -615,7 +615,7 @@ void dmac_close(void)
 int32_t dmac_config_desc(dma_desc_t * desc, void *src, void *dst, uint32_t size,
 			dma_ctrl_t * ctrl)
 {
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(desc == NULL)) {
 		return -1;
 	}
@@ -637,7 +637,7 @@ int32_t dmac_desc_add_linked(dma_desc_t * head, dma_desc_t * next)
 
 int32_t dmac_init_channel(dma_channel_t * dma_chn)
 {
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -652,7 +652,7 @@ int32_t dmac_init_channel(dma_channel_t * dma_chn)
 
 int32_t dmac_config_channel(dma_channel_t * dma_chn, dma_desc_t * desc)
 {
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -700,7 +700,7 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 			uint32_t priority)
 {
 	int32_t channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -710,7 +710,7 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 #endif
 	channel = dma_chn->channel;
 
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
@@ -719,7 +719,7 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 		return -1;
 	}
 	/** Check if aux based registers and linked transfer is not supported */
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dmac_valid_channel(channel, dma_chn->desc) != 0)) {
 		return -2;
 	}
@@ -763,7 +763,7 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 int32_t dmac_stop_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -772,7 +772,7 @@ int32_t dmac_stop_channel(dma_channel_t * dma_chn)
 	}
 #endif
 	channel = dma_chn->channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
@@ -789,7 +789,7 @@ int32_t dmac_stop_channel(dma_channel_t * dma_chn)
 int32_t dmac_clear_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -799,7 +799,7 @@ int32_t dmac_clear_channel(dma_channel_t * dma_chn)
 #endif
 	channel = dma_chn->channel;
 
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
@@ -816,7 +816,7 @@ int32_t dmac_clear_channel(dma_channel_t * dma_chn)
 int32_t dmac_release_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -826,7 +826,7 @@ int32_t dmac_release_channel(dma_channel_t * dma_chn)
 #endif
 	channel = dma_chn->channel;
 
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
@@ -843,7 +843,7 @@ int32_t dmac_release_channel(dma_channel_t * dma_chn)
 int32_t dmac_wait_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -853,7 +853,7 @@ int32_t dmac_wait_channel(dma_channel_t * dma_chn)
 #endif
 	channel = dma_chn->channel;
 
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
@@ -869,7 +869,7 @@ int32_t dmac_wait_channel(dma_channel_t * dma_chn)
 int32_t dmac_check_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(dma_chn == NULL)) {
 		return -1;
 	}
@@ -879,7 +879,7 @@ int32_t dmac_check_channel(dma_channel_t * dma_chn)
 #endif
 	channel = dma_chn->channel;
 
-#if UDMA_CHECK_ERRORS
+#ifdef UDMA_CHECK_ERRORS
 	if (_arc_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}

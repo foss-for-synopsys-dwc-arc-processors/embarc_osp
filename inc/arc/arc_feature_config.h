@@ -350,7 +350,7 @@
 #define ARC_FEATURE_DMAC		core_config_dmac
 #define CORE_DMAC_CHANNELS		core_config_dmac_channels
 #define CORE_DMAC_REGISTERS		core_config_dmac_registers
-#if core_config_bcr_dmac_build_int_cfg == 2 && core_config_bcr_dmac_build_int_cfg == 4
+#if core_config_bcr_dmac_build_int_cfg == 2 || core_config_bcr_dmac_build_int_cfg == 4
 #define DMA_MULTI_IRQ			1
 #else
 #define DMA_MULTI_IRQ			0

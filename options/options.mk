@@ -178,7 +178,7 @@ endif
 ## Board Infomation
 BOARD_INFO = $(strip $(BOARD))_$(strip $(BD_VER))
 ## Build Infomation
-BUILD_INFO = $(strip $(TOOLCHAIN))_$(strip $(CUR_CORE))
+BUILD_INFO = $(strip $(TOOLCHAIN))_$(strip $(CORE))
 ## Selected Configuration
 SELECTED_CONFIG=$(BOARD_INFO)-$(BUILD_INFO)
 

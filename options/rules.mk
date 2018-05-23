@@ -120,10 +120,10 @@ help :
 	@$(ECHO) '  opt         - Display Current MAKE options'
 	@$(ECHO) '  spopt       - Display Supported MAKE options'
 	@$(ECHO) 'Available Configurations:'
-	@$(ECHO) '  BOARD=emsk|nsim|axs                         - Build for which board(EMSK, NSIM, AXS)'
-	@$(ECHO) '  BD_VER=11|22|23|10|1506|103                 - Board Version of development board'
+	@$(ECHO) '  BOARD=emsk|nsim|axs|emsdp                    - Build for which board(EMSK, NSIM, AXS, EMSDP)'
+	@$(ECHO) '  BD_VER=11|22|23|10|1506|103|rev1            - Board Version of development board'
 	@$(ECHO) '  OLEVEL=Os|O0|O1|O2|O3                       - Optimization Level of examples to be built'
-	@$(ECHO) '  CUR_CORE=arcem4|arcem4cr16|arcem6|arcem6gp|arcem7d|arcem9d|arcem11d|arcem|archs|arcemfull|arcsem|archs36|...'
+	@$(ECHO) '  CORE=arcem4|arcem4cr16|arcem6|arcem6gp|arcem7d|arcem9d|arcem11d|arcem|archs|arcemfull|arcsem|archs36|...'
 	@$(ECHO) '                                              - Current core configuration'
 	@$(ECHO) '  TCF=path/to/yourtcf                         - Select your own tcf file to replace current used one'
 	@$(ECHO) '  TOOLCHAIN=mw|gnu                            - Current selected compiling toolchain'
@@ -136,15 +136,15 @@ help :
 	@$(ECHO) '  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes'
 	@$(ECHO) 'Example Usage:'
 	@$(ECHO) '  make all                                                                - build example in current directory using default configuration'
-	@$(ECHO) '  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)'
-	@$(ECHO) '  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TCF=mytcfpath all            - build example using configuration (emsk, 22, arcem7d) using the tcf defined in TCF option'
+	@$(ECHO) '  make BOARD=emsk BD_VER=22 CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)'
+	@$(ECHO) '  make BOARD=emsk BD_VER=22 CORE=arcem7d TCF=mytcfpath all            - build example using configuration (emsk, 22, arcem7d) using the tcf defined in TCF option'
 
 cfg :
 	@$(ECHO) '=======Current Configuration======='
 	@$(ECHO) 'Host OS            : $(HOST_OS)'
 	@$(ECHO) 'Board              : $(BOARD)'
 	@$(ECHO) 'Hardware Version   : $(BD_VER)'
-	@$(ECHO) 'Core Configuration : $(CUR_CORE)'
+	@$(ECHO) 'Core Configuration : $(CORE)'
 	@$(ECHO) 'CPU Clock HZ       : $(CPU_FREQ)'
 	@$(ECHO) 'Peripheral Clock HZ: $(DEV_FREQ)'
 	@$(ECHO) 'Build Toolchain    : $(TOOLCHAIN)'
@@ -152,7 +152,7 @@ cfg :
 	@$(ECHO) 'Debug Jtag         : $(JTAG)'
 	@$(ECHO) '======Supported Configurations of $(BOARD)-$(BD_VER)======'
 	@$(ECHO) 'Boards (BOARD)                 : $(SUPPORTED_BOARDS)'
-	@$(ECHO) 'Core Configurations (CUR_CORE) : $(SUPPORTED_CORES)'
+	@$(ECHO) 'Core Configurations (CORE) : $(SUPPORTED_CORES)'
 	@$(ECHO) 'Build Toolchains (TOOLCHAIN)   : $(SUPPORTED_TOOLCHAINS)'
 	@$(ECHO) 'Debug Jtags (JTAG)             : $(SUPPORTED_JTAGS)'
 
@@ -160,7 +160,7 @@ opt :
 	@$(ECHO) ======CURRENT CONFIGURATION=====
 	@$(ECHO) BOARD : $(BOARD)
 	@$(ECHO) BD_VER : $(BD_VER)
-	@$(ECHO) CUR_CORE : $(CUR_CORE)
+	@$(ECHO) CORE : $(CORE)
 	@$(ECHO) TOOLCHAIN : $(TOOLCHAIN)
 	@$(ECHO) OLEVEL : $(OLEVEL)
 	@$(ECHO) JTAG : $(JTAG)
@@ -179,7 +179,7 @@ info:
 	@$(ECHO) ======CURRENT BUILD INFORMATION=====
 	@$(ECHO) EMBARC_ROOT : $(realpath $(EMBARC_ROOT))
 	@$(ECHO) OUT_DIR_ROOT : $(realpath $(OUT_DIR_ROOT))
-	@$(ECHO) BUILD_OPTION : BOARD=$(BOARD) BD_VER=$(BD_VER) CUR_CORE=$(CUR_CORE) TOOLCHAIN=$(TOOLCHAIN) OLEVEL=$(OLEVEL) V=$(V) DEBUG=$(DEBUG) SILENT=$(SILENT)
+	@$(ECHO) BUILD_OPTION : BOARD=$(BOARD) BD_VER=$(BD_VER) CORE=$(CORE) TOOLCHAIN=$(TOOLCHAIN) OLEVEL=$(OLEVEL) V=$(V) DEBUG=$(DEBUG) SILENT=$(SILENT)
 	@$(ECHO) APPLICATION_NAME : $(APPL_NAME)
 	@$(ECHO) APPLICATION_LINKSCRIPT : $(APPL_LINK_FILE)
 	@$(ECHO) APPLICATION_ELF : $(APPL_FULL_NAME).elf

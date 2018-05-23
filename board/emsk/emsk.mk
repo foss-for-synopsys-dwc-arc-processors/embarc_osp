@@ -40,7 +40,7 @@ TCFFILE_NAME = $(firstword $(basename $(notdir $(TCF))))
 endif
 endif
 
-## If CUR_CORE is not in SUPPORTED_BD_VERS list, then force BD_VER and VALID_BD_VER to be 23
+## If CORE is not in SUPPORTED_BD_VERS list, then force BD_VER and VALID_BD_VER to be 23
 ifeq ($(TCFFILE_IS_VALID),1)
 ifeq ($(VALID_BD_VER),)
 override BD_VER := 23
