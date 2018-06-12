@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPO_NAME="github.com/qiangg/embarc_osp.git"
+REPO_NAME="github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp.git"
 REPO_LINK="https://""${GH_TOKEN}""@""${REPO_NAME}"
 
 die()
