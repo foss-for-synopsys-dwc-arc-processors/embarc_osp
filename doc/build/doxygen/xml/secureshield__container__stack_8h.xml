@@ -13,21 +13,14 @@
       <node id="3772">
         <label>stdbool.h</label>
       </node>
-      <node id="3779">
-        <label>secureshield_exports.h</label>
-        <link refid="secureshield__exports_8h_source"/>
-      </node>
       <node id="3765">
         <label>secureshield_container_stack.h</label>
         <link refid="secureshield_container_stack.h"/>
         <childnode refid="3766" relation="include">
         </childnode>
       </node>
-      <node id="3773">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="3774" relation="include">
-        </childnode>
+      <node id="3769">
+        <label>stdint.h</label>
       </node>
       <node id="3778">
         <label>embARC_assert.h</label>
@@ -37,13 +30,35 @@
         <childnode refid="3768" relation="include">
         </childnode>
       </node>
-      <node id="3769">
-        <label>stdint.h</label>
+      <node id="3771">
+        <label>stddef.h</label>
       </node>
       <node id="3775">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
         <childnode refid="3768" relation="include">
+        </childnode>
+      </node>
+      <node id="3770">
+        <label>limits.h</label>
+      </node>
+      <node id="3779">
+        <label>secureshield_exports.h</label>
+        <link refid="secureshield__exports_8h_source"/>
+      </node>
+      <node id="3773">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="3774" relation="include">
+        </childnode>
+      </node>
+      <node id="3781">
+        <label>secureshield_board_config.h</label>
+      </node>
+      <node id="3776">
+        <label>embARC_debug.h</label>
+        <link refid="emb_a_r_c__debug_8h"/>
+        <childnode refid="3777" relation="include">
         </childnode>
       </node>
       <node id="3766">
@@ -60,43 +75,12 @@
         <childnode refid="3780" relation="include">
         </childnode>
       </node>
-      <node id="3771">
-        <label>stddef.h</label>
-      </node>
-      <node id="3770">
-        <label>limits.h</label>
-      </node>
-      <node id="3776">
-        <label>embARC_debug.h</label>
-        <link refid="emb_a_r_c__debug_8h"/>
-        <childnode refid="3777" relation="include">
-        </childnode>
-      </node>
-      <node id="3781">
-        <label>secureshield_board_config.h</label>
-      </node>
       <node id="3774">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="3767">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="3768" relation="include">
-        </childnode>
-        <childnode refid="3773" relation="include">
-        </childnode>
-        <childnode refid="3775" relation="include">
-        </childnode>
-      </node>
       <node id="3777">
         <label>xprintf.h</label>
-      </node>
-      <node id="3780">
-        <label>secureshield_config.h</label>
-        <link refid="secureshield__config_8h_source"/>
-        <childnode refid="3781" relation="include">
-        </childnode>
       </node>
       <node id="3768">
         <label>embARC_toolchain.h</label>
@@ -108,6 +92,22 @@
         <childnode refid="3771" relation="include">
         </childnode>
         <childnode refid="3772" relation="include">
+        </childnode>
+      </node>
+      <node id="3780">
+        <label>secureshield_config.h</label>
+        <link refid="secureshield__config_8h_source"/>
+        <childnode refid="3781" relation="include">
+        </childnode>
+      </node>
+      <node id="3767">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="3768" relation="include">
+        </childnode>
+        <childnode refid="3773" relation="include">
+        </childnode>
+        <childnode refid="3775" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -132,6 +132,14 @@
         <label>secureshield_sjli.c</label>
         <link refid="secureshield__sjli_8c_source"/>
       </node>
+      <node id="3786">
+        <label>secureshield_vmpu_arc.c</label>
+        <link refid="secureshield__vmpu__arc_8c_source"/>
+      </node>
+      <node id="3787">
+        <label>secureshield_trap.c</label>
+        <link refid="secureshield__trap_8c_source"/>
+      </node>
       <node id="3783">
         <label>secureshield_int.c</label>
         <link refid="secureshield__int_8c_source"/>
@@ -139,14 +147,6 @@
       <node id="3785">
         <label>secureshield_vmpu.c</label>
         <link refid="secureshield__vmpu_8c_source"/>
-      </node>
-      <node id="3787">
-        <label>secureshield_trap.c</label>
-        <link refid="secureshield__trap_8c_source"/>
-      </node>
-      <node id="3786">
-        <label>secureshield_vmpu_arc.c</label>
-        <link refid="secureshield__vmpu__arc_8c_source"/>
       </node>
       <node id="3784">
         <label>secureshield_sys.c</label>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="38" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" bodystart="38" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="38" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="54" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="41" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="54" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__container__stack_8h_1a9f168286efe60661b880f8542b244c3f" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="55" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="43" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="55" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__container__stack_8h_1a5588a3f42d1549e830e167845ce292bc" prot="public" static="no" mutable="no">
         <type>CONTAINER_CONTEXT</type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="57" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="46" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="57" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__container__stack_8h_1a95ee208a0f33d7ef357cff207b928ec4" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="58" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="47" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="58" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -284,7 +284,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="69" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" bodystart="69" bodyend="91"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="69" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" bodystart="69" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__container__stack_8h_1a7d867e0986d6a954d9e7934024778320" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline int32_t</type>
@@ -336,7 +336,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="101" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" bodystart="101" bodyend="121"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" line="101" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h" bodystart="101" bodyend="121"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -453,6 +453,6 @@
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*_SECURESHIELD_CONTAINER_STACK_H_*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/core/inc/secureshield_container_stack.h"/>
   </compounddef>
 </doxygen>

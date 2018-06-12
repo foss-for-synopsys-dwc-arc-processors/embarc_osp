@@ -9,21 +9,6 @@
       <node id="622">
         <label>stdbool.h</label>
       </node>
-      <node id="623">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="616" relation="include">
-        </childnode>
-      </node>
-      <node id="619">
-        <label>stdint.h</label>
-      </node>
-      <node id="624">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="618" relation="include">
-        </childnode>
-      </node>
       <node id="615">
         <label>arc_udma_config.h</label>
         <link refid="arc_udma_config.h"/>
@@ -32,25 +17,30 @@
         <childnode refid="617" relation="include">
         </childnode>
       </node>
+      <node id="619">
+        <label>stdint.h</label>
+      </node>
       <node id="621">
         <label>stddef.h</label>
+      </node>
+      <node id="624">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="618" relation="include">
+        </childnode>
       </node>
       <node id="620">
         <label>limits.h</label>
       </node>
+      <node id="623">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="616" relation="include">
+        </childnode>
+      </node>
       <node id="616">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="617">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="618" relation="include">
-        </childnode>
-        <childnode refid="623" relation="include">
-        </childnode>
-        <childnode refid="624" relation="include">
-        </childnode>
       </node>
       <node id="618">
         <label>embARC_toolchain.h</label>
@@ -64,22 +54,22 @@
         <childnode refid="622" relation="include">
         </childnode>
       </node>
+      <node id="617">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="618" relation="include">
+        </childnode>
+        <childnode refid="623" relation="include">
+        </childnode>
+        <childnode refid="624" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="634">
-        <label>axs_103_interrupt.c</label>
-        <link refid="axs__103__interrupt_8c"/>
-      </node>
-      <node id="631">
-        <label>fatfs_dirent.c</label>
-        <link refid="fatfs__dirent_8c_source"/>
-      </node>
-      <node id="629">
-        <label>fatfs_dirent.h</label>
-        <link refid="fatfs__dirent_8h_source"/>
-        <childnode refid="630" relation="include">
-        </childnode>
-        <childnode refid="631" relation="include">
+      <node id="625">
+        <label>arc_udma_config.h</label>
+        <link refid="arc_udma_config.h"/>
+        <childnode refid="626" relation="include">
         </childnode>
       </node>
       <node id="628">
@@ -98,16 +88,6 @@
         <childnode refid="636" relation="include">
         </childnode>
       </node>
-      <node id="625">
-        <label>arc_udma_config.h</label>
-        <link refid="arc_udma_config.h"/>
-        <childnode refid="626" relation="include">
-        </childnode>
-      </node>
-      <node id="636">
-        <label>hsdk_interrupt.c</label>
-        <link refid="hsdk__interrupt_8c"/>
-      </node>
       <node id="626">
         <label>arc_udma.h</label>
         <link refid="arc__udma_8h"/>
@@ -116,9 +96,37 @@
         <childnode refid="628" relation="include">
         </childnode>
       </node>
+      <node id="630">
+        <label>dirent.h</label>
+        <link refid="dirent_8h_source"/>
+      </node>
+      <node id="636">
+        <label>hsdk_interrupt.c</label>
+        <link refid="hsdk__interrupt_8c"/>
+      </node>
       <node id="627">
         <label>arc_udma.c</label>
         <link refid="arc__udma_8c"/>
+      </node>
+      <node id="631">
+        <label>fatfs_dirent.c</label>
+        <link refid="fatfs__dirent_8c_source"/>
+      </node>
+      <node id="629">
+        <label>fatfs_dirent.h</label>
+        <link refid="fatfs__dirent_8h_source"/>
+        <childnode refid="630" relation="include">
+        </childnode>
+        <childnode refid="631" relation="include">
+        </childnode>
+      </node>
+      <node id="632">
+        <label>embARC_syscalls.c</label>
+        <link refid="emb_a_r_c__syscalls_8c_source"/>
+      </node>
+      <node id="634">
+        <label>axs_103_interrupt.c</label>
+        <link refid="axs__103__interrupt_8c"/>
       </node>
       <node id="635">
         <label>board.c</label>
@@ -127,14 +135,6 @@
       <node id="633">
         <label>secure_console.c</label>
         <link refid="emsk_2common_2secure__console_8c_source"/>
-      </node>
-      <node id="632">
-        <label>embARC_syscalls.c</label>
-        <link refid="emb_a_r_c__syscalls_8c_source"/>
-      </node>
-      <node id="630">
-        <label>dirent.h</label>
-        <link refid="dirent_8h_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" line="50" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" bodystart="50" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" line="50" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga4642d85e06eb3f65bed393a77bfd2bba" prot="public" static="no">
         <name>CORE_DMAC_CHANNELS</name>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" line="55" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" line="55" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga339a7d94d2ede2dc39f219b47fd0a03a" prot="public" static="no">
         <name>CORE_DMAC_REGISTERS</name>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" line="60" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" bodystart="60" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" line="60" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga8e05b31d51dbe30264e2467c9d1650c9" prot="public" static="no">
         <name>DMA_IRQ_NUM_START</name>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" line="65" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" bodystart="65" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" line="65" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaf16c6e745771a011277aabd659759eed" prot="public" static="no">
         <name>DMA_IRQ_PRIO</name>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" line="70" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" bodystart="70" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" line="70" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" bodystart="70" bodyend="-1"/>
         <referencedby refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae06eefba765e595748af588b8d4a0fef" compoundref="arc__udma_8c" startline="412" endline="464">dmac_init</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae6d576ffb70ae165ab3cf26f1a5c24b0" prot="public" static="no">
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" line="75" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h" bodystart="75" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" line="75" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -283,6 +283,6 @@
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_ARC_UDMA_CONFIG_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma_config.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma_config.h"/>
   </compounddef>
 </doxygen>

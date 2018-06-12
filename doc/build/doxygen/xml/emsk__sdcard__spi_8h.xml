@@ -6,14 +6,14 @@
     <includedby refid="emsk__sdcard_8h" local="yes">emsk_sdcard.h</includedby>
     <includedby refid="emsk__sdcard__spi_8c" local="yes">emsk_sdcard_spi.c</includedby>
     <incdepgraph>
-      <node id="2590">
-        <label>ff_diskio.h</label>
-      </node>
       <node id="2589">
         <label>emsk_sdcard_spi.h</label>
         <link refid="emsk_sdcard_spi.h"/>
         <childnode refid="2590" relation="include">
         </childnode>
+      </node>
+      <node id="2590">
+        <label>ff_diskio.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -21,9 +21,33 @@
         <label>emsk_gpio.c</label>
         <link refid="emsk__gpio_8c"/>
       </node>
+      <node id="2597">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      </node>
       <node id="2596">
         <label>dw_iic_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      </node>
+      <node id="2595">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
+      </node>
+      <node id="2599">
+        <label>mux.c</label>
+        <link refid="emsk_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="2601">
+        <label>emsk_sdcard_spi.c</label>
+        <link refid="emsk__sdcard__spi_8c"/>
+      </node>
+      <node id="2591">
+        <label>emsk_sdcard_spi.h</label>
+        <link refid="emsk_sdcard_spi.h"/>
+        <childnode refid="2592" relation="include">
+        </childnode>
+        <childnode refid="2601" relation="include">
+        </childnode>
       </node>
       <node id="2593">
         <label>emsk.h</label>
@@ -41,14 +65,6 @@
         <childnode refid="2599" relation="include">
         </childnode>
       </node>
-      <node id="2598">
-        <label>dw_uart_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
-      <node id="2595">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
-      </node>
       <node id="2600">
         <label>emsk_sdcard.c</label>
         <link refid="emsk__sdcard_8c"/>
@@ -61,25 +77,9 @@
         <childnode refid="2600" relation="include">
         </childnode>
       </node>
-      <node id="2597">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
-      </node>
-      <node id="2601">
-        <label>emsk_sdcard_spi.c</label>
-        <link refid="emsk__sdcard__spi_8c"/>
-      </node>
-      <node id="2591">
-        <label>emsk_sdcard_spi.h</label>
-        <link refid="emsk_sdcard_spi.h"/>
-        <childnode refid="2592" relation="include">
-        </childnode>
-        <childnode refid="2601" relation="include">
-        </childnode>
-      </node>
-      <node id="2599">
-        <label>mux.c</label>
-        <link refid="emsk_2drivers_2mux_2mux_8c"/>
+      <node id="2598">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="46" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="46" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga3614bb104e3fc23881bd3f96f9f47efc" prot="public" static="no">
         <name>SDCARD_SPI_FREQ_400K</name>
@@ -103,7 +103,7 @@
 <para>sdcard spi freq:400KHz </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="48" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="48" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gab6103500d3ab79357f6cfc965d1aedf4" prot="public" static="no">
         <name>SDCARD_SPI_FREQ_1M</name>
@@ -114,7 +114,7 @@
 <para>sdcard spi freq:2MHz </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="49" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf56eb03d0c336e8c744420a058993b91" prot="public" static="no">
         <name>SDCARD_SPI_FREQ_2M</name>
@@ -125,7 +125,7 @@
 <para>sdcard spi freq:2MHz </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="50" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="50" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="50" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gadcefe914823a238c03a301427e55ef06" prot="public" static="no">
         <name>SDCARD_SPI_FREQ_4M</name>
@@ -136,7 +136,7 @@
 <para>sdcard spi freq:4MHz </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="51" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="51" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="51" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="58" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="132" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="58" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="132" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -218,6 +218,6 @@
 <codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h"/>
   </compounddef>
 </doxygen>

@@ -19,26 +19,8 @@
       <node id="1334">
         <label>stdbool.h</label>
       </node>
-      <node id="1335">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="1336" relation="include">
-        </childnode>
-      </node>
-      <node id="1327">
-        <label>dev_gpio.h</label>
-        <link refid="dev__gpio_8h"/>
-        <childnode refid="1328" relation="include">
-        </childnode>
-      </node>
       <node id="1329">
         <label>stdint.h</label>
-      </node>
-      <node id="1337">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="1331" relation="include">
-        </childnode>
       </node>
       <node id="1333">
         <label>stddef.h</label>
@@ -49,22 +31,38 @@
         <childnode refid="1329" relation="include">
         </childnode>
       </node>
+      <node id="1337">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="1331" relation="include">
+        </childnode>
+      </node>
       <node id="1332">
         <label>limits.h</label>
+      </node>
+      <node id="1327">
+        <label>dev_gpio.h</label>
+        <link refid="dev__gpio_8h"/>
+        <childnode refid="1328" relation="include">
+        </childnode>
+      </node>
+      <node id="1335">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="1336" relation="include">
+        </childnode>
+      </node>
+      <node id="1326">
+        <label>dw_gpio.h</label>
+        <link refid="dw_gpio.h"/>
+        <childnode refid="1327" relation="include">
+        </childnode>
+        <childnode refid="1330" relation="include">
+        </childnode>
       </node>
       <node id="1336">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="1330">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="1331" relation="include">
-        </childnode>
-        <childnode refid="1335" relation="include">
-        </childnode>
-        <childnode refid="1337" relation="include">
-        </childnode>
       </node>
       <node id="1331">
         <label>embARC_toolchain.h</label>
@@ -78,37 +76,33 @@
         <childnode refid="1334" relation="include">
         </childnode>
       </node>
-      <node id="1326">
-        <label>dw_gpio.h</label>
-        <link refid="dw_gpio.h"/>
-        <childnode refid="1327" relation="include">
+      <node id="1330">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="1331" relation="include">
         </childnode>
-        <childnode refid="1330" relation="include">
+        <childnode refid="1335" relation="include">
+        </childnode>
+        <childnode refid="1337" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1358">
-        <label>hsdk.h</label>
-        <link refid="hsdk_8h"/>
-        <childnode refid="1355" relation="include">
+      <node id="1346">
+        <label>emsk_gpio.c</label>
+        <link refid="emsk__gpio_8c"/>
+      </node>
+      <node id="1347">
+        <label>emsk_gpio.h</label>
+        <link refid="emsk__gpio_8h"/>
+        <childnode refid="1346" relation="include">
         </childnode>
-        <childnode refid="1356" relation="include">
+        <childnode refid="1348" relation="include">
         </childnode>
-        <childnode refid="1359" relation="include">
-        </childnode>
-        <childnode refid="1360" relation="include">
-        </childnode>
-        <childnode refid="1361" relation="include">
-        </childnode>
-        <childnode refid="1362" relation="include">
-        </childnode>
-        <childnode refid="1363" relation="include">
-        </childnode>
-        <childnode refid="1364" relation="include">
-        </childnode>
-        <childnode refid="1365" relation="include">
-        </childnode>
+      </node>
+      <node id="1351">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
       <node id="1343">
         <label>axs_hardware.h</label>
@@ -118,13 +112,9 @@
         <childnode refid="1342" relation="include">
         </childnode>
       </node>
-      <node id="1340">
-        <label>axs.h</label>
-        <link refid="axs_8h"/>
-      </node>
-      <node id="1362">
-        <label>dw_uart_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      <node id="1350">
+        <label>dw_iic_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
       <node id="1345">
         <label>dw_gpio_obj.c</label>
@@ -140,18 +130,30 @@
         <childnode refid="1345" relation="include">
         </childnode>
       </node>
+      <node id="1360">
+        <label>dw_sdio_obj.c</label>
+        <link refid="dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1340">
+        <label>axs.h</label>
+        <link refid="axs_8h"/>
+      </node>
+      <node id="1361">
+        <label>dw_spi_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      </node>
       <node id="1363">
         <label>mux.c</label>
         <link refid="hsdk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="1346">
-        <label>emsk_gpio.c</label>
-        <link refid="emsk__gpio_8c"/>
+      <node id="1349">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="1347">
-        <label>emsk_gpio.h</label>
-        <link refid="emsk__gpio_8h"/>
-        <childnode refid="1346" relation="include">
+      <node id="1354">
+        <label>dw_gpio_obj.h</label>
+        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
+        <childnode refid="1349" relation="include">
         </childnode>
         <childnode refid="1348" relation="include">
         </childnode>
@@ -160,9 +162,9 @@
         <label>dw_iic_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
-      <node id="1350">
-        <label>dw_iic_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      <node id="1353">
+        <label>mux.c</label>
+        <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
       <node id="1348">
         <label>emsk.h</label>
@@ -180,34 +182,6 @@
         <childnode refid="1353" relation="include">
         </childnode>
       </node>
-      <node id="1352">
-        <label>dw_uart_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
-      <node id="1349">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
-      </node>
-      <node id="1354">
-        <label>dw_gpio_obj.h</label>
-        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
-        <childnode refid="1349" relation="include">
-        </childnode>
-        <childnode refid="1348" relation="include">
-        </childnode>
-      </node>
-      <node id="1355">
-        <label>hsdk_io.c</label>
-        <link refid="hsdk__io_8c"/>
-      </node>
-      <node id="1360">
-        <label>dw_sdio_obj.c</label>
-        <link refid="dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="1351">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
-      </node>
       <node id="1342">
         <label>axc003_gpio.c</label>
         <link refid="axc003__gpio_8c"/>
@@ -221,38 +195,6 @@
         </childnode>
         <childnode refid="1344" relation="include">
         </childnode>
-      </node>
-      <node id="1356">
-        <label>dw_gpio_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
-      </node>
-      <node id="1357">
-        <label>dw_gpio_obj.h</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
-        <childnode refid="1356" relation="include">
-        </childnode>
-        <childnode refid="1358" relation="include">
-        </childnode>
-      </node>
-      <node id="1364">
-        <label>ntshell_io_uart.c</label>
-        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
-      </node>
-      <node id="1344">
-        <label>axs_103_init.c</label>
-        <link refid="axs__103__init_8c"/>
-      </node>
-      <node id="1365">
-        <label>pmwifi.c</label>
-        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
-      </node>
-      <node id="1361">
-        <label>dw_spi_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
-      </node>
-      <node id="1353">
-        <label>mux.c</label>
-        <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
       <node id="1366">
         <label>dw_gpio.c</label>
@@ -284,6 +226,64 @@
         <childnode refid="1366" relation="include">
         </childnode>
       </node>
+      <node id="1352">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      </node>
+      <node id="1344">
+        <label>axs_103_init.c</label>
+        <link refid="axs__103__init_8c"/>
+      </node>
+      <node id="1356">
+        <label>dw_gpio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
+      </node>
+      <node id="1357">
+        <label>dw_gpio_obj.h</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
+        <childnode refid="1356" relation="include">
+        </childnode>
+        <childnode refid="1358" relation="include">
+        </childnode>
+      </node>
+      <node id="1358">
+        <label>hsdk.h</label>
+        <link refid="hsdk_8h"/>
+        <childnode refid="1355" relation="include">
+        </childnode>
+        <childnode refid="1356" relation="include">
+        </childnode>
+        <childnode refid="1359" relation="include">
+        </childnode>
+        <childnode refid="1360" relation="include">
+        </childnode>
+        <childnode refid="1361" relation="include">
+        </childnode>
+        <childnode refid="1362" relation="include">
+        </childnode>
+        <childnode refid="1363" relation="include">
+        </childnode>
+        <childnode refid="1364" relation="include">
+        </childnode>
+        <childnode refid="1365" relation="include">
+        </childnode>
+      </node>
+      <node id="1364">
+        <label>ntshell_io_uart.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="1365">
+        <label>pmwifi.c</label>
+        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
+      </node>
+      <node id="1355">
+        <label>hsdk_io.c</label>
+        <link refid="hsdk__io_8c"/>
+      </node>
+      <node id="1362">
+        <label>dw_uart_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      </node>
     </invincdepgraph>
     <innerclass refid="structport__ctrl" prot="public">port_ctrl</innerclass>
     <innerclass refid="structdw__gpio__reg" prot="public">dw_gpio_reg</innerclass>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="75" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="75" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__gpio_8h_1a2984772bf6e5521c157e8279ed74c1a9" prot="public" static="no">
         <type>struct <ref refid="structdw__gpio__reg" kindref="compound">dw_gpio_reg</ref></type>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="98" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="98" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__gpio_8h_1a5451a126bb62827a969898271948a162" prot="public" static="no">
         <type>struct <ref refid="structdw__gpio__reg" kindref="compound">dw_gpio_reg</ref> *</type>
@@ -329,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="98" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="98" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -354,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="130" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="238" bodyend="285"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="130" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="238" bodyend="285"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -391,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="131" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="288" bodyend="324"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="131" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="288" bodyend="324"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="132" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="327" bodyend="347"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="132" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="327" bodyend="347"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -467,7 +467,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="133" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="350" bodyend="367"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="133" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="350" bodyend="367"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -501,7 +501,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="134" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="370" bodyend="470"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="134" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="370" bodyend="470"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -555,7 +555,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="135" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="473" bodyend="510"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="135" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="473" bodyend="510"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -591,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="136" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="513" bodyend="549"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="136" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.c" bodystart="513" bodyend="549"/>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
         <references refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" compoundref="dev__gpio_8h" startline="418">dev_gpio::gpio_info</references>
         <references refid="dw__gpio_8c_1a61bc555dd864cdcc6bd02a534e014487" compoundref="dw__gpio_8c" startline="55">VALID_CHK_GPIO_INFO_OBJECT</references>
@@ -615,7 +615,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="44" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="44" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a65c71f2011a145ceeb165628df790cae" prot="public" static="no">
         <name>DW_GPIO_PORT_B</name>
@@ -626,7 +626,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="45" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="45" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a08eb98dd84db8cf59c90fa4af06e86a3" prot="public" static="no">
         <name>DW_GPIO_PORT_C</name>
@@ -637,7 +637,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="46" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="46" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1ab23f5cdb03eb1a7ca224307448bdbda4" prot="public" static="no">
         <name>DW_GPIO_PORT_D</name>
@@ -648,7 +648,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="47" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a1fa49e904965e2934fc50ef9853eff78" prot="public" static="no">
         <name>DW_GPIO_INT_ACT_LOW</name>
@@ -659,7 +659,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="49" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a3ef067dcea5f9c4979bb03c0e0f0aed3" prot="public" static="no">
         <name>DW_GPIO_INT_ACT_HIGH</name>
@@ -670,7 +670,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="50" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="50" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="50" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1ac1d5ad9086830afca0b8ac35592a361f" prot="public" static="no">
         <name>DW_GPIO_INT_LEVEL_TRIG</name>
@@ -681,7 +681,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="52" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="52" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="52" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1ae84deb504a3e51df8403dbd199e9a0a4" prot="public" static="no">
         <name>DW_GPIO_INT_EDGE_TRIG</name>
@@ -692,7 +692,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="53" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="53" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="53" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a211fa90c83b3b58454d6f386ffce0064" prot="public" static="no">
         <name>DW_GPIO_INT_NO_DEBOUNCE</name>
@@ -703,7 +703,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="55" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="55" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1af61c95980f8a29c5ad19a59761f91efe" prot="public" static="no">
         <name>DW_GPIO_INT_DEBOUNCE</name>
@@ -714,7 +714,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="56" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="56" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="56" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a944e054212a7a58bc5ab965fe8d85b6e" prot="public" static="no">
         <name>DW_GPIO_ALL_ZERO</name>
@@ -725,7 +725,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="58" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="58" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="58" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a901a57cb601676ea11a51020140d2ce9" prot="public" static="no">
         <name>DW_GPIO_ALL_ONE</name>
@@ -736,7 +736,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="59" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="59" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="59" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1aff5476769ac24bbf79518242017441af" prot="public" static="no">
         <name>DW_GPIO_MASK_ALL</name>
@@ -747,7 +747,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="60" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="60" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="60" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1a96b867c321785fbbb2cfa167e354fabe" prot="public" static="no">
         <name>DW_GPIO_INPUT_ALL</name>
@@ -758,7 +758,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="61" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="61" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="61" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1acb5b37e49ae882abe9edd6e529035ad0" prot="public" static="no">
         <name>DW_GPIO_OUTPUT_ALL</name>
@@ -769,7 +769,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="62" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="62" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="62" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__gpio_8h_1ad8afd7c7955f3d24a5ee2538b6227325" prot="public" static="no">
         <name>DW_GPIO_INVALID_INTNO</name>
@@ -780,7 +780,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="64" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="64" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="64" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -795,7 +795,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="105" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="105" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__gpio_8h_1a959c5eb2df330156977ae6a1d24c8ed7" prot="public" static="no">
         <type>struct <ref refid="structdw__gpio__bit__isr" kindref="compound">dw_gpio_bit_isr</ref> *</type>
@@ -808,7 +808,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="105" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="105" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__gpio_8h_1a5894d60ad6ca701345408f76790dcb0e" prot="public" static="no">
         <type>struct <ref refid="structdw__gpio__port" kindref="compound">dw_gpio_port</ref></type>
@@ -821,7 +821,7 @@
 <para>implement of <ref refid="structdev__gpio__info_1aeb761b5ce47b5bfd6f665f8e4690fab5" kindref="member">dev_gpio_info::gpio_ctrl</ref> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="118" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="118" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__gpio_8h_1a1f9f7c9e316249c38d70b9f8a041166a" prot="public" static="no">
         <type>struct <ref refid="structdw__gpio__port" kindref="compound">dw_gpio_port</ref> *</type>
@@ -834,7 +834,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="118" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h" line="118" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -957,6 +957,6 @@
 <codeline lineno="141"><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="144"><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_GPIO_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/gpio/dw_gpio.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/gpio/dw_gpio.h"/>
   </compounddef>
 </doxygen>

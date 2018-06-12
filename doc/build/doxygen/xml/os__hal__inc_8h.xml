@@ -14,25 +14,9 @@
     <includedby refid="sdcard__sdio_8c" local="yes">sdcard_sdio.c</includedby>
     <includedby refid="nsim__timer_8c" local="yes">nsim_timer.c</includedby>
     <invincdepgraph>
-      <node id="3427">
-        <label>axs_103_interrupt.c</label>
-        <link refid="axs__103__interrupt_8c"/>
-      </node>
-      <node id="3424">
-        <label>fatfs_dirent.c</label>
-        <link refid="fatfs__dirent_8c_source"/>
-      </node>
-      <node id="3422">
-        <label>fatfs_dirent.h</label>
-        <link refid="fatfs__dirent_8h_source"/>
-        <childnode refid="3423" relation="include">
-        </childnode>
-        <childnode refid="3424" relation="include">
-        </childnode>
-      </node>
-      <node id="3432">
-        <label>ntshell_io_uart.c</label>
-        <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      <node id="3439">
+        <label>nsim_timer.c</label>
+        <link refid="nsim__timer_8c"/>
       </node>
       <node id="3421">
         <label>embARC.h</label>
@@ -50,13 +34,17 @@
         <childnode refid="3429" relation="include">
         </childnode>
       </node>
+      <node id="3435">
+        <label>hsdk_timer.c</label>
+        <link refid="hsdk__timer_8c"/>
+      </node>
+      <node id="3423">
+        <label>dirent.h</label>
+        <link refid="dirent_8h_source"/>
+      </node>
       <node id="3429">
         <label>hsdk_interrupt.c</label>
         <link refid="hsdk__interrupt_8c"/>
-      </node>
-      <node id="3438">
-        <label>sdcard_sdio.c</label>
-        <link refid="sdcard__sdio_8c"/>
       </node>
       <node id="3420">
         <label>os_hal_inc.h</label>
@@ -84,17 +72,21 @@
         <childnode refid="3439" relation="include">
         </childnode>
       </node>
-      <node id="3431">
-        <label>emsk_timer.c</label>
-        <link refid="emsk__timer_8c"/>
+      <node id="3433">
+        <label>pmwifi.c</label>
+        <link refid="emsk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
-      <node id="3428">
-        <label>board.c</label>
-        <link refid="board_8c_source"/>
+      <node id="3430">
+        <label>axs_timer.c</label>
+        <link refid="axs__timer_8c"/>
       </node>
-      <node id="3426">
-        <label>secure_console.c</label>
-        <link refid="emsk_2common_2secure__console_8c_source"/>
+      <node id="3434">
+        <label>emsk_sdcard_spi.c</label>
+        <link refid="emsk__sdcard__spi_8c"/>
+      </node>
+      <node id="3438">
+        <label>sdcard_sdio.c</label>
+        <link refid="sdcard__sdio_8c"/>
       </node>
       <node id="3436">
         <label>ntshell_io_uart.c</label>
@@ -104,33 +96,41 @@
         <label>pmwifi.c</label>
         <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
+      <node id="3424">
+        <label>fatfs_dirent.c</label>
+        <link refid="fatfs__dirent_8c_source"/>
+      </node>
+      <node id="3422">
+        <label>fatfs_dirent.h</label>
+        <link refid="fatfs__dirent_8h_source"/>
+        <childnode refid="3423" relation="include">
+        </childnode>
+        <childnode refid="3424" relation="include">
+        </childnode>
+      </node>
       <node id="3425">
         <label>embARC_syscalls.c</label>
         <link refid="emb_a_r_c__syscalls_8c_source"/>
       </node>
-      <node id="3423">
-        <label>dirent.h</label>
-        <link refid="dirent_8h_source"/>
+      <node id="3431">
+        <label>emsk_timer.c</label>
+        <link refid="emsk__timer_8c"/>
       </node>
-      <node id="3434">
-        <label>emsk_sdcard_spi.c</label>
-        <link refid="emsk__sdcard__spi_8c"/>
+      <node id="3427">
+        <label>axs_103_interrupt.c</label>
+        <link refid="axs__103__interrupt_8c"/>
       </node>
-      <node id="3439">
-        <label>nsim_timer.c</label>
-        <link refid="nsim__timer_8c"/>
+      <node id="3428">
+        <label>board.c</label>
+        <link refid="board_8c_source"/>
       </node>
-      <node id="3430">
-        <label>axs_timer.c</label>
-        <link refid="axs__timer_8c"/>
+      <node id="3432">
+        <label>ntshell_io_uart.c</label>
+        <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="3435">
-        <label>hsdk_timer.c</label>
-        <link refid="hsdk__timer_8c"/>
-      </node>
-      <node id="3433">
-        <label>pmwifi.c</label>
-        <link refid="emsk_2drivers_2pmwifi_2pmwifi_8c"/>
+      <node id="3426">
+        <label>secure_console.c</label>
+        <link refid="emsk_2common_2secure__console_8c_source"/>
       </node>
     </invincdepgraph>
     <briefdescription>
@@ -198,6 +198,6 @@
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>ENABLE_OS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/></highlight><highlight class="comment">/*<sp/>OS_HAL_INC<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/os/hal/inc/os_hal_inc.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/os/hal/inc/os_hal_inc.h"/>
   </compounddef>
 </doxygen>

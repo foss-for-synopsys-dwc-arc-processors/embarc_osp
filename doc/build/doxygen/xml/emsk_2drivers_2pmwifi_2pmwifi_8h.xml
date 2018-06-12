@@ -6,14 +6,14 @@
     <includedby refid="emsk_8h" local="yes">emsk.h</includedby>
     <includedby refid="emsk_2drivers_2pmwifi_2pmwifi_8c" local="yes">pmwifi.c</includedby>
     <incdepgraph>
+      <node id="3507">
+        <label>stdint.h</label>
+      </node>
       <node id="3505">
         <label>dev_wnic.h</label>
         <link refid="dev__wnic_8h"/>
         <childnode refid="3506" relation="include">
         </childnode>
-      </node>
-      <node id="3507">
-        <label>stdint.h</label>
       </node>
       <node id="3506">
         <label>dev_common.h</label>
@@ -33,9 +33,33 @@
         <label>emsk_gpio.c</label>
         <link refid="emsk__gpio_8c"/>
       </node>
+      <node id="3513">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      </node>
       <node id="3512">
         <label>dw_iic_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      </node>
+      <node id="3511">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
+      </node>
+      <node id="3516">
+        <label>pmwifi.c</label>
+        <link refid="emsk_2drivers_2pmwifi_2pmwifi_8c"/>
+      </node>
+      <node id="3508">
+        <label>pmwifi.h</label>
+        <link refid="emsk/drivers/pmwifi/pmwifi.h"/>
+        <childnode refid="3509" relation="include">
+        </childnode>
+        <childnode refid="3516" relation="include">
+        </childnode>
+      </node>
+      <node id="3515">
+        <label>mux.c</label>
+        <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
       <node id="3509">
         <label>emsk.h</label>
@@ -57,30 +81,6 @@
         <label>dw_uart_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
-      <node id="3511">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
-      </node>
-      <node id="3513">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
-      </node>
-      <node id="3515">
-        <label>mux.c</label>
-        <link refid="emsk_2drivers_2mux_2mux_8c"/>
-      </node>
-      <node id="3516">
-        <label>pmwifi.c</label>
-        <link refid="emsk_2drivers_2pmwifi_2pmwifi_8c"/>
-      </node>
-      <node id="3508">
-        <label>pmwifi.h</label>
-        <link refid="emsk/drivers/pmwifi/pmwifi.h"/>
-        <childnode refid="3509" relation="include">
-        </childnode>
-        <childnode refid="3516" relation="include">
-        </childnode>
-      </node>
     </invincdepgraph>
       <sectiondef kind="define">
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga70fa49565ed5982e16d11a884e32bdc4" prot="public" static="no">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="47" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga33c6091f13c03fe1a51cf91e94084ce5" prot="public" static="no">
         <name>EMSK_SLIPWIFI_0_ID</name>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="48" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="48" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga54b9581a07595223bc9ae06a5781a546" prot="public" static="no">
         <name>USE_EMSK_PMWIFI_0</name>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="54" column="10" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="54" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="54" column="10" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga06e1a59366472bf7343111b1ffa025a2" prot="public" static="no">
         <name>USE_EMSK_SLIPWIFI_0</name>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="55" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="55" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="55" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga777f2076b7251c27a30eb67a59317cf3" prot="public" static="no">
         <name>RW009_SPI_CPULOCK_ENABLE</name>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="59" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="59" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="59" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1gad402612eb5a87ddb717bf5bd9af690d0" prot="public" static="no">
         <name>EMSK_PMWIFI_0_MAC_ADDR0</name>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="61" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="61" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="61" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga366400bbae18bea81cbd28e02a862f17" prot="public" static="no">
         <name>EMSK_PMWIFI_0_MAC_ADDR1</name>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="62" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="62" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="62" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1gaa620174e7a6b4f187789e02540307e15" prot="public" static="no">
         <name>EMSK_PMWIFI_0_MAC_ADDR2</name>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="63" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="63" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="63" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga362a5474edc013aa86af3e2c8d56fd6d" prot="public" static="no">
         <name>EMSK_PMWIFI_0_MAC_ADDR3</name>
@@ -179,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="64" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="64" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="64" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga93373cf3ff382494dbecda5acbe547d9" prot="public" static="no">
         <name>EMSK_PMWIFI_0_MAC_ADDR4</name>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="65" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="65" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="65" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1gad25f3fb0c3e689b5b23a7047263f5770" prot="public" static="no">
         <name>EMSK_PMWIFI_0_MAC_ADDR5</name>
@@ -201,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="66" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="66" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" line="66" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -220,7 +220,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.c" line="1075" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.c" bodystart="1075" bodyend="1083"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.c" line="1075" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.c" bodystart="1075" bodyend="1083"/>
         <referencedby refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" compoundref="emsk_2drivers_2pmwifi_2pmwifi_8c" startline="1044" endline="1069">wnic_get_dev</referencedby>
       </memberdef>
       </sectiondef>
@@ -300,6 +300,6 @@
 <codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_PMWIFI_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="80"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.h"/>
   </compounddef>
 </doxygen>

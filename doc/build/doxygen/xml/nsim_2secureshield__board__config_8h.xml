@@ -6,12 +6,6 @@
     <includes refid="container__config_8h" local="yes">container_config.h</includes>
     <includedby refid="secureshield__config_8h" local="yes">secureshield_config.h</includedby>
     <incdepgraph>
-      <node id="3713">
-        <label>container_config.h</label>
-        <link refid="container__config_8h_source"/>
-        <childnode refid="3714" relation="include">
-        </childnode>
-      </node>
       <node id="3711">
         <label>secureshield_board_config.h</label>
         <link refid="nsim/secureshield_board_config.h"/>
@@ -23,16 +17,18 @@
       <node id="3712">
         <label>secureshield_appl_config.h</label>
       </node>
+      <node id="3713">
+        <label>container_config.h</label>
+        <link refid="container__config_8h_source"/>
+        <childnode refid="3714" relation="include">
+        </childnode>
+      </node>
       <node id="3714">
         <label>code_gen_macros.h</label>
         <link refid="code__gen__macros_8h_source"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3726">
-        <label>secureshield.c</label>
-        <link refid="secureshield_8c_source"/>
-      </node>
       <node id="3723">
         <label>secureshield_container_stack.h</label>
         <link refid="secureshield__container__stack_8h_source"/>
@@ -49,17 +45,29 @@
         <childnode refid="3722" relation="include">
         </childnode>
       </node>
+      <node id="3718">
+        <label>secureshield_container_call.h</label>
+        <link refid="secureshield__container__call_8h_source"/>
+        <childnode refid="3719" relation="include">
+        </childnode>
+        <childnode refid="3720" relation="include">
+        </childnode>
+        <childnode refid="3721" relation="include">
+        </childnode>
+        <childnode refid="3722" relation="include">
+        </childnode>
+      </node>
       <node id="3722">
         <label>secureshield_sjli.c</label>
         <link refid="secureshield__sjli_8c_source"/>
       </node>
-      <node id="3719">
-        <label>secureshield_int.c</label>
-        <link refid="secureshield__int_8c_source"/>
+      <node id="3720">
+        <label>secureshield_vmpu_arc.c</label>
+        <link refid="secureshield__vmpu__arc_8c_source"/>
       </node>
-      <node id="3725">
-        <label>secureshield_vmpu.c</label>
-        <link refid="secureshield__vmpu_8c_source"/>
+      <node id="3721">
+        <label>secureshield_trap.c</label>
+        <link refid="secureshield__trap_8c_source"/>
       </node>
       <node id="3717">
         <label>secureshield.h</label>
@@ -83,39 +91,15 @@
         <childnode refid="3722" relation="include">
         </childnode>
       </node>
-      <node id="3721">
-        <label>secureshield_trap.c</label>
-        <link refid="secureshield__trap_8c_source"/>
-      </node>
-      <node id="3718">
-        <label>secureshield_container_call.h</label>
-        <link refid="secureshield__container__call_8h_source"/>
-        <childnode refid="3719" relation="include">
-        </childnode>
-        <childnode refid="3720" relation="include">
-        </childnode>
-        <childnode refid="3721" relation="include">
-        </childnode>
-        <childnode refid="3722" relation="include">
-        </childnode>
-      </node>
-      <node id="3720">
-        <label>secureshield_vmpu_arc.c</label>
-        <link refid="secureshield__vmpu__arc_8c_source"/>
-      </node>
-      <node id="3724">
-        <label>secureshield_sys.c</label>
-        <link refid="secureshield__sys_8c_source"/>
-      </node>
       <node id="3715">
         <label>secureshield_board_config.h</label>
         <link refid="nsim/secureshield_board_config.h"/>
         <childnode refid="3716" relation="include">
         </childnode>
       </node>
-      <node id="3727">
-        <label>wrapper.s</label>
-        <link refid="wrapper_8s_source"/>
+      <node id="3719">
+        <label>secureshield_int.c</label>
+        <link refid="secureshield__int_8c_source"/>
       </node>
       <node id="3716">
         <label>secureshield_config.h</label>
@@ -124,6 +108,22 @@
         </childnode>
         <childnode refid="3727" relation="include">
         </childnode>
+      </node>
+      <node id="3725">
+        <label>secureshield_vmpu.c</label>
+        <link refid="secureshield__vmpu_8c_source"/>
+      </node>
+      <node id="3726">
+        <label>secureshield.c</label>
+        <link refid="secureshield_8c_source"/>
+      </node>
+      <node id="3724">
+        <label>secureshield_sys.c</label>
+        <link refid="secureshield__sys_8c_source"/>
+      </node>
+      <node id="3727">
+        <label>wrapper.s</label>
+        <link refid="wrapper_8s_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="66" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="66" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="66" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1a3bda4a0063313480cb06037e706d3f5e" prot="public" static="no">
         <name>NORMAL_ROM_START</name>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="71" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="71" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="71" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1a342094e2ce6367f0d4de54119d9c9dd4" prot="public" static="no">
         <name>NORMAL_ROM_SIZE</name>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="75" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="75" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="75" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1a72708b473192385e5152ca1f3d49762c" prot="public" static="no">
         <name>SECURE_ROM_START</name>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="80" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="80" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="80" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1ac3cc67dd3b04bb01fa71932e61b2d351" prot="public" static="no">
         <name>SECURE_ROM_SIZE</name>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="84" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="84" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="84" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1a4ce618b50664dfaf401bbe131d370696" prot="public" static="no">
         <name>NORMAL_RAM_START</name>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="89" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="89" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="89" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1a31f9db732e08b02ff9709845e49e8637" prot="public" static="no">
         <name>NORMAL_RAM_SIZE</name>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="93" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="93" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="93" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1ab70d3188a33dba0c19bf40f54ffaa592" prot="public" static="no">
         <name>SECURE_RAM_START</name>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="98" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="98" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="98" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1adfbe652f1d3cf9da7a8bb76e70b8094d" prot="public" static="no">
         <name>SECURE_RAM_SIZE</name>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="102" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="102" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="102" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="nsim_2secureshield__board__config_8h_1a7dfa29cb9ea2b2508c698e0fec4871ad" prot="public" static="no">
         <name>SECURESHIELD_SECURE_RAM_USAGE</name>
@@ -235,7 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="107" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="107" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" line="107" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -357,6 +357,6 @@
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SECURESHIELD_BOARD_CONFIG_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/board/nsim/secureshield_board_config.h"/>
   </compounddef>
 </doxygen>

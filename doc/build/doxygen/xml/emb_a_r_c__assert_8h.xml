@@ -9,6 +9,9 @@
       <node id="2113">
         <label>stdbool.h</label>
       </node>
+      <node id="2110">
+        <label>stdint.h</label>
+      </node>
       <node id="2107">
         <label>embARC_assert.h</label>
         <link refid="embARC_assert.h"/>
@@ -16,9 +19,6 @@
         </childnode>
         <childnode refid="2109" relation="include">
         </childnode>
-      </node>
-      <node id="2110">
-        <label>stdint.h</label>
       </node>
       <node id="2112">
         <label>stddef.h</label>
@@ -43,10 +43,6 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2124">
-        <label>secureshield.c</label>
-        <link refid="secureshield_8c_source"/>
-      </node>
       <node id="2121">
         <label>secureshield_container_stack.h</label>
         <link refid="secureshield__container__stack_8h_source"/>
@@ -63,23 +59,35 @@
         <childnode refid="2120" relation="include">
         </childnode>
       </node>
-      <node id="2120">
-        <label>secureshield_sjli.c</label>
-        <link refid="secureshield__sjli_8c_source"/>
-      </node>
-      <node id="2117">
-        <label>secureshield_int.c</label>
-        <link refid="secureshield__int_8c_source"/>
-      </node>
       <node id="2114">
         <label>embARC_assert.h</label>
         <link refid="embARC_assert.h"/>
         <childnode refid="2115" relation="include">
         </childnode>
       </node>
-      <node id="2123">
-        <label>secureshield_vmpu.c</label>
-        <link refid="secureshield__vmpu_8c_source"/>
+      <node id="2116">
+        <label>secureshield_container_call.h</label>
+        <link refid="secureshield__container__call_8h_source"/>
+        <childnode refid="2117" relation="include">
+        </childnode>
+        <childnode refid="2118" relation="include">
+        </childnode>
+        <childnode refid="2119" relation="include">
+        </childnode>
+        <childnode refid="2120" relation="include">
+        </childnode>
+      </node>
+      <node id="2120">
+        <label>secureshield_sjli.c</label>
+        <link refid="secureshield__sjli_8c_source"/>
+      </node>
+      <node id="2118">
+        <label>secureshield_vmpu_arc.c</label>
+        <link refid="secureshield__vmpu__arc_8c_source"/>
+      </node>
+      <node id="2119">
+        <label>secureshield_trap.c</label>
+        <link refid="secureshield__trap_8c_source"/>
       </node>
       <node id="2115">
         <label>secureshield.h</label>
@@ -103,25 +111,17 @@
         <childnode refid="2120" relation="include">
         </childnode>
       </node>
-      <node id="2119">
-        <label>secureshield_trap.c</label>
-        <link refid="secureshield__trap_8c_source"/>
+      <node id="2117">
+        <label>secureshield_int.c</label>
+        <link refid="secureshield__int_8c_source"/>
       </node>
-      <node id="2116">
-        <label>secureshield_container_call.h</label>
-        <link refid="secureshield__container__call_8h_source"/>
-        <childnode refid="2117" relation="include">
-        </childnode>
-        <childnode refid="2118" relation="include">
-        </childnode>
-        <childnode refid="2119" relation="include">
-        </childnode>
-        <childnode refid="2120" relation="include">
-        </childnode>
+      <node id="2123">
+        <label>secureshield_vmpu.c</label>
+        <link refid="secureshield__vmpu_8c_source"/>
       </node>
-      <node id="2118">
-        <label>secureshield_vmpu_arc.c</label>
-        <link refid="secureshield__vmpu__arc_8c_source"/>
+      <node id="2124">
+        <label>secureshield.c</label>
+        <link refid="secureshield_8c_source"/>
       </node>
       <node id="2122">
         <label>secureshield_sys.c</label>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="47" column="14" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="47" column="14" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emb_a_r_c__assert_8h_1a47887f67d907c0a921f2e1106bebbb79" prot="public" static="no">
         <name>ASSERT_FORMAT</name>
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="58" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="58" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="58" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emb_a_r_c__assert_8h_1a7490a4d76e1cc701c06bafcf05d54928" prot="public" static="no">
         <name>HALT_FORMAT</name>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="59" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="59" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="59" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emb_a_r_c__assert_8h_1a2035594eaca2cdb540b817df526c0fd7" prot="public" static="no">
         <name>EMBARC_ASSERT</name>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="81" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="81" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="81" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emb_a_r_c__assert_8h_1a35d048cdf15a3d545ad9229ddc3aab5d" prot="public" static="no">
         <name>EMBARC_HALT</name>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="84" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="84" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="84" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="56" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="56" column="1"/>
       </memberdef>
       <memberdef kind="function" id="emb_a_r_c__assert_8h_1a597eb5d953e40c7dcfb9f31788de0b59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="62" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="62" bodyend="65"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="62" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="emb_a_r_c__assert_8h_1aff532d199ff2d55957549fbdc385bcae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="67" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="67" bodyend="71"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="67" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="67" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="emb_a_r_c__assert_8h_1a705ffe936fa1d4c59c72019345313a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" line="73" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h" bodystart="73" bodyend="78"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" line="73" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h" bodystart="73" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -369,6 +369,6 @@
 <codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>DEBUG_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/inc/embARC_assert.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_assert.h"/>
   </compounddef>
 </doxygen>

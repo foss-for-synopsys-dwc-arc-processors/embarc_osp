@@ -11,33 +11,17 @@
     <includedby refid="secureshield__lib_8h" local="yes">secureshield_lib.h</includedby>
     <includedby refid="wrapper_8s" local="yes">wrapper.s</includedby>
     <invincdepgraph>
-      <node id="3876">
-        <label>secureshield_sjli.c</label>
-        <link refid="secureshield__sjli_8c_source"/>
-      </node>
-      <node id="3881">
-        <label>interrupts.c</label>
-        <link refid="interrupts_8c_source"/>
-      </node>
-      <node id="3873">
-        <label>secureshield_int.c</label>
-        <link refid="secureshield__int_8c_source"/>
-      </node>
-      <node id="3878">
-        <label>secureshield_entry.s</label>
-        <link refid="v1_2secureshield__entry_8s_source"/>
-      </node>
       <node id="3882">
         <label>sys_ops.c</label>
         <link refid="sys__ops_8c_source"/>
       </node>
-      <node id="3879">
-        <label>secureshield_entry.s</label>
-        <link refid="v2_2secureshield__entry_8s_source"/>
-      </node>
-      <node id="3875">
-        <label>secureshield_trap.c</label>
-        <link refid="secureshield__trap_8c_source"/>
+      <node id="3880">
+        <label>secureshield_lib.h</label>
+        <link refid="secureshield__lib_8h_source"/>
+        <childnode refid="3881" relation="include">
+        </childnode>
+        <childnode refid="3882" relation="include">
+        </childnode>
       </node>
       <node id="3872">
         <label>secureshield_container_call.h</label>
@@ -51,17 +35,13 @@
         <childnode refid="3876" relation="include">
         </childnode>
       </node>
+      <node id="3876">
+        <label>secureshield_sjli.c</label>
+        <link refid="secureshield__sjli_8c_source"/>
+      </node>
       <node id="3874">
         <label>secureshield_vmpu_arc.c</label>
         <link refid="secureshield__vmpu__arc_8c_source"/>
-      </node>
-      <node id="3880">
-        <label>secureshield_lib.h</label>
-        <link refid="secureshield__lib_8h_source"/>
-        <childnode refid="3881" relation="include">
-        </childnode>
-        <childnode refid="3882" relation="include">
-        </childnode>
       </node>
       <node id="3871">
         <label>secureshield_secure_call_exports.h</label>
@@ -83,6 +63,22 @@
         <childnode refid="3883" relation="include">
         </childnode>
       </node>
+      <node id="3875">
+        <label>secureshield_trap.c</label>
+        <link refid="secureshield__trap_8c_source"/>
+      </node>
+      <node id="3881">
+        <label>interrupts.c</label>
+        <link refid="interrupts_8c_source"/>
+      </node>
+      <node id="3873">
+        <label>secureshield_int.c</label>
+        <link refid="secureshield__int_8c_source"/>
+      </node>
+      <node id="3879">
+        <label>secureshield_entry.s</label>
+        <link refid="v2_2secureshield__entry_8s_source"/>
+      </node>
       <node id="3877">
         <label>secureshield_sys.c</label>
         <link refid="secureshield__sys_8c_source"/>
@@ -90,6 +86,10 @@
       <node id="3883">
         <label>wrapper.s</label>
         <link refid="wrapper_8s_source"/>
+      </node>
+      <node id="3878">
+        <label>secureshield_entry.s</label>
+        <link refid="v1_2secureshield__entry_8s_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="33" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="33" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="33" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__secure__call__exports_8h_1a3f6561b1f574caac86d114c59d33a73c" prot="public" static="no">
         <name>SECURESHIELD_SECURE_CALL_SYS</name>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="35" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="35" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="35" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__secure__call__exports_8h_1a28f0e2fd8dd5722c87843f736fd5eb65" prot="public" static="no">
         <name>SECURESHIELD_SECURE_CALL_CONTAINER_IN</name>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="36" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="36" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="36" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__secure__call__exports_8h_1a61af56d38b93357dd128e48f73bf4e4f" prot="public" static="no">
         <name>SECURESHIELD_SYS_LR</name>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="124" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="124" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="124" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__secure__call__exports_8h_1a840a847b3e6c973fcf544ac65ae80f7e" prot="public" static="no">
         <name>SECURESHIELD_SYS_SR</name>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="125" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="125" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="125" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__secure__call__exports_8h_1a84fc2cca975638f020b6f2c904571a93" prot="public" static="no">
         <name>SECURESHIELD_SYS_CONTAINER_ID_SELF</name>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="126" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="126" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="126" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__secure__call__exports_8h_1a783507b659e8183e9c8f32b29ce251d5" prot="public" static="no">
         <name>SECURESHIELD_SYS_CONTAINER_ID_CALLER</name>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="127" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="127" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" line="127" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h" bodystart="127" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -306,6 +306,6 @@
 <codeline lineno="128"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">/*_SECURESHIELD_SECURE_CALL_EXPORTS_H_*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/inc/secureshield_secure_call_exports.h"/>
   </compounddef>
 </doxygen>

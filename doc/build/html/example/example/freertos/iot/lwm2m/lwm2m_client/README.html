@@ -24,30 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../../../_static/style_overrides.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../../../search.html"/>
-    <link rel="top" title="embARC 2018.01 documentation" href="../../../../../../index.html"/>
-        <link rel="up" title="OS Based Examples" href="../../../os_based_example.html"/>
-        <link rel="next" title="FreeRTOS IoT LwM2M Server" href="../lwm2m_server/README.html"/>
-        <link rel="prev" title="FreeRTOS IoT CoAP Server" href="../../coap/coap_server/README.html"/> 
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="FreeRTOS IoT LwM2M Server" href="../lwm2m_server/README.html" />
+    <link rel="prev" title="FreeRTOS IoT CoAP Server" href="../../coap/coap_server/README.html" /> 
 
   
   <script src="../../../../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -131,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../../../index.html">embARC</a>
@@ -139,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -222,7 +213,7 @@
 </li>
 <li><dl class="first docutils">
 <dt>Usage Manual</dt>
-<dd><p class="first">This is an example running OMA LightweightM2M(LwM2M) client, provides core device management features(device, connectivity, etc). It provides an extra ntshell command called <code class="docutils literal"><span class="pre">lwm2m_client</span></code> to show this demo.
+<dd><p class="first">This is an example running OMA LightweightM2M(LwM2M) client, provides core device management features(device, connectivity, etc). It provides an extra ntshell command called <code class="docutils literal notranslate"><span class="pre">lwm2m_client</span></code> to show this demo.
 - About LwM2M provided in embARC</p>
 <blockquote>
 <div><ul class="simple">
@@ -243,9 +234,9 @@
 <li><p class="first">When leshan server is running on your local PC (connected to the same wifi network which your board will connect), then download program to the board, and run lwm2m_client ntshell command.</p>
 <blockquote>
 <div><ul class="simple">
-<li>If you local PC IP is 192.168.43.4, then you need to run command <code class="docutils literal"><span class="pre">lwm2m_client</span> <span class="pre">-s</span> <span class="pre">192.168.43.4</span></code> to connect to local leshan server.</li>
+<li>If you local PC IP is 192.168.43.4, then you need to run command <code class="docutils literal notranslate"><span class="pre">lwm2m_client</span> <span class="pre">-s</span> <span class="pre">192.168.43.4</span></code> to connect to local leshan server.</li>
 <li>If leshan reports any port being occupied, you could uses its detailed options to change port</li>
-<li>If connected to local leshan server, you will see the connected LwM2M client in <code class="docutils literal"><span class="pre">http://127.0.0.1:8080/#/clients</span></code>.</li>
+<li>If connected to local leshan server, you will see the connected LwM2M client in <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8080/#/clients</span></code>.</li>
 <li>Click on the client, then you will see many objects which the connected client provided.</li>
 <li>On this website, you can do many operations on this objects.</li>
 <li>Here you can read onboard switch and button value, and control onboard LEDs using Object 1024.</li>
@@ -273,13 +264,13 @@
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>This example outputs to the console. It is supported by all platform. The commands to run this example are as follows:</div></blockquote>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">   $</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/iot/lwm2m/lwm2m_client
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">   $</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/iot/lwm2m/lwm2m_client
 <span class="gp">   $</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
 
 <span class="go">And here is command to run leshan server demo:</span>
 </pre></div>
 </div>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">java -jar leshan-server-demo.jar</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">java -jar leshan-server-demo.jar</span>
 </pre></div>
 </div>
 <div class="section" id="sample-output">
@@ -291,9 +282,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -315,7 +304,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -334,6 +323,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../../../',
             VERSION:'2018.01',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -346,19 +336,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

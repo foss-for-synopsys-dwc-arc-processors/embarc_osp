@@ -13,16 +13,16 @@
       <node id="3171">
         <label>ntshell_task.h</label>
       </node>
-      <node id="3172">
-        <label>ntshell_io_netconn.h</label>
-        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="3166" relation="include">
-        </childnode>
-        <childnode refid="3171" relation="include">
-        </childnode>
-      </node>
       <node id="3167">
         <label>stdint.h</label>
+      </node>
+      <node id="3164">
+        <label>ntshell_io.h</label>
+        <link refid="hsdk/drivers/ntshell/ntshell_io.h"/>
+        <childnode refid="3165" relation="include">
+        </childnode>
+        <childnode refid="3172" relation="include">
+        </childnode>
       </node>
       <node id="3169">
         <label>stddef.h</label>
@@ -38,14 +38,6 @@
         <childnode refid="3171" relation="include">
         </childnode>
       </node>
-      <node id="3164">
-        <label>ntshell_io.h</label>
-        <link refid="hsdk/drivers/ntshell/ntshell_io.h"/>
-        <childnode refid="3165" relation="include">
-        </childnode>
-        <childnode refid="3172" relation="include">
-        </childnode>
-      </node>
       <node id="3166">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
@@ -58,8 +50,48 @@
         <childnode refid="3170" relation="include">
         </childnode>
       </node>
+      <node id="3172">
+        <label>ntshell_io_netconn.h</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
+        <childnode refid="3166" relation="include">
+        </childnode>
+        <childnode refid="3171" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3179">
+        <label>dw_sdio_obj.c</label>
+        <link refid="dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="3180">
+        <label>dw_spi_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      </node>
+      <node id="3182">
+        <label>mux.c</label>
+        <link refid="hsdk_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="3174">
+        <label>ntshell_io.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io_8c"/>
+      </node>
+      <node id="3173">
+        <label>ntshell_io.h</label>
+        <link refid="hsdk/drivers/ntshell/ntshell_io.h"/>
+        <childnode refid="3174" relation="include">
+        </childnode>
+        <childnode refid="3175" relation="include">
+        </childnode>
+      </node>
+      <node id="3178">
+        <label>dw_iic_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      </node>
+      <node id="3177">
+        <label>dw_gpio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
+      </node>
       <node id="3175">
         <label>hsdk.h</label>
         <link refid="hsdk_8h"/>
@@ -82,30 +114,6 @@
         <childnode refid="3184" relation="include">
         </childnode>
       </node>
-      <node id="3181">
-        <label>dw_uart_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
-      <node id="3182">
-        <label>mux.c</label>
-        <link refid="hsdk_2drivers_2mux_2mux_8c"/>
-      </node>
-      <node id="3178">
-        <label>dw_iic_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
-      </node>
-      <node id="3176">
-        <label>hsdk_io.c</label>
-        <link refid="hsdk__io_8c"/>
-      </node>
-      <node id="3179">
-        <label>dw_sdio_obj.c</label>
-        <link refid="dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="3177">
-        <label>dw_gpio_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
-      </node>
       <node id="3183">
         <label>ntshell_io_uart.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
@@ -114,21 +122,13 @@
         <label>pmwifi.c</label>
         <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
-      <node id="3180">
-        <label>dw_spi_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      <node id="3176">
+        <label>hsdk_io.c</label>
+        <link refid="hsdk__io_8c"/>
       </node>
-      <node id="3174">
-        <label>ntshell_io.c</label>
-        <link refid="hsdk_2drivers_2ntshell_2ntshell__io_8c"/>
-      </node>
-      <node id="3173">
-        <label>ntshell_io.h</label>
-        <link refid="hsdk/drivers/ntshell/ntshell_io.h"/>
-        <childnode refid="3174" relation="include">
-        </childnode>
-        <childnode refid="3175" relation="include">
-        </childnode>
+      <node id="3181">
+        <label>dw_uart_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" line="43" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" bodystart="43" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" line="43" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o_1gad4abc1b02934fa53904c796ec3acfae5" prot="public" static="no">
         <name>HSDK_NTSHELL_1_ID</name>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" line="44" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" line="44" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -201,6 +201,6 @@
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
 <codeline lineno="51"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io.h"/>
   </compounddef>
 </doxygen>

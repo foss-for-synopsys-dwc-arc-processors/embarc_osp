@@ -13,25 +13,21 @@
       <node id="1928">
         <label>stdbool.h</label>
       </node>
+      <node id="1923">
+        <label>stdint.h</label>
+      </node>
+      <node id="1920">
+        <label>dw_uart.h</label>
+        <link refid="dw_uart.h"/>
+        <childnode refid="1921" relation="include">
+        </childnode>
+        <childnode refid="1924" relation="include">
+        </childnode>
+      </node>
       <node id="1921">
         <label>dev_uart.h</label>
         <link refid="dev__uart_8h"/>
         <childnode refid="1922" relation="include">
-        </childnode>
-      </node>
-      <node id="1929">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="1930" relation="include">
-        </childnode>
-      </node>
-      <node id="1923">
-        <label>stdint.h</label>
-      </node>
-      <node id="1931">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="1925" relation="include">
         </childnode>
       </node>
       <node id="1927">
@@ -43,30 +39,24 @@
         <childnode refid="1923" relation="include">
         </childnode>
       </node>
-      <node id="1920">
-        <label>dw_uart.h</label>
-        <link refid="dw_uart.h"/>
-        <childnode refid="1921" relation="include">
-        </childnode>
-        <childnode refid="1924" relation="include">
+      <node id="1931">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="1925" relation="include">
         </childnode>
       </node>
       <node id="1926">
         <label>limits.h</label>
       </node>
+      <node id="1929">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="1930" relation="include">
+        </childnode>
+      </node>
       <node id="1930">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="1924">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="1925" relation="include">
-        </childnode>
-        <childnode refid="1929" relation="include">
-        </childnode>
-        <childnode refid="1931" relation="include">
-        </childnode>
       </node>
       <node id="1925">
         <label>embARC_toolchain.h</label>
@@ -80,20 +70,18 @@
         <childnode refid="1928" relation="include">
         </childnode>
       </node>
+      <node id="1924">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="1925" relation="include">
+        </childnode>
+        <childnode refid="1929" relation="include">
+        </childnode>
+        <childnode refid="1931" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1936">
-        <label>dw_uart_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
-      <node id="1934">
-        <label>dw_uart_obj.c</label>
-        <link refid="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
-      <node id="1935">
-        <label>dw_uart_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
       <node id="1937">
         <label>dw_uart.c</label>
         <link refid="dw__uart_8c"/>
@@ -111,6 +99,18 @@
         </childnode>
         <childnode refid="1937" relation="include">
         </childnode>
+      </node>
+      <node id="1934">
+        <label>dw_uart_obj.c</label>
+        <link refid="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      </node>
+      <node id="1935">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      </node>
+      <node id="1936">
+        <label>dw_uart_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
       <node id="1933">
         <label>secure_console.c</label>
@@ -133,7 +133,7 @@
 <para>Detailed struct description of DesignWare UART block register information, implementation of dev_uart_info::uart_regs </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="93" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="93" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__uart_8h_1a19ef2c0bda940457e99df54cc421fdf5" prot="public" static="no">
         <type>struct <ref refid="structdw__uart__reg" kindref="compound">dw_uart_reg</ref> *</type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="93" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="93" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -222,7 +222,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="127" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="551" bodyend="609"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="127" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="551" bodyend="609"/>
         <references refid="structdev__uart__info_1ade43cdfba4fbeb94641e9be3453e7ef0" compoundref="dev__uart_8h" startline="359">dev_uart_info::baudrate</references>
         <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
         <references refid="structdev__uart__info_1aef7fdb7858a5bb595b5751231af3293d" compoundref="dev__uart_8h" startline="360">dev_uart_info::dps_format</references>
@@ -304,7 +304,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="128" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="618" bodyend="646"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="128" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="618" bodyend="646"/>
         <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga17cb2aa3d8fa1de710018838f34b2da6" compoundref="dw__uart_8c" startline="487" endline="500">dw_uart_abort_rx</references>
         <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga74b2995571a4daecb84808b56a12e3e0" compoundref="dw__uart_8c" startline="471" endline="484">dw_uart_abort_tx</references>
         <references refid="dw__uart_8c_1a8866d97c5a3a75b78f9feea8446ca1a8" compoundref="dw__uart_8c" startline="59">DW_UART_CHECK_EXP</references>
@@ -428,7 +428,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="129" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="662" bodyend="811"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="129" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="662" bodyend="811"/>
         <references refid="structdev__uart__info_1ade43cdfba4fbeb94641e9be3453e7ef0" compoundref="dev__uart_8h" startline="359">dev_uart_info::baudrate</references>
         <references refid="structdev__buffer_1a9229a6df77f315674f8a9e08809f97c1" compoundref="dev__common_8h" startline="187">dev_buffer::buf</references>
         <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gace3d588dc25676d080bcf53ee3522d63" compoundref="emb_a_r_c__error_8h" startline="143">CHECK_ALIGN_4BYTES</references>
@@ -572,7 +572,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="130" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="823" bodyend="849"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="130" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="823" bodyend="849"/>
         <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
         <references refid="dw__uart_8c_1a8866d97c5a3a75b78f9feea8446ca1a8" compoundref="dw__uart_8c" startline="59">DW_UART_CHECK_EXP</references>
         <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6b41ca49bf60f21c21e5251d341ac52b" compoundref="dw__uart_8c" startline="162" endline="168">dw_uart_psnd_chr</references>
@@ -665,7 +665,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="131" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="861" bodyend="887"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="131" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="861" bodyend="887"/>
         <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
         <references refid="dw__uart_8c_1a8866d97c5a3a75b78f9feea8446ca1a8" compoundref="dw__uart_8c" startline="59">DW_UART_CHECK_EXP</references>
         <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gac53799396d836bfa41b27c469cda6dc7" compoundref="dw__uart_8c" startline="174" endline="180">dw_uart_prcv_chr</references>
@@ -718,7 +718,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="132" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="894" bodyend="980"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="132" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="894" bodyend="980"/>
         <references refid="structdev__buffer_1a9229a6df77f315674f8a9e08809f97c1" compoundref="dev__common_8h" startline="187">dev_buffer::buf</references>
         <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</references>
         <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga42757531357f3f56ef28a7e6525c4d7b" compoundref="dw__uart_8c" startline="127" endline="130">dw_uart_getchar</references>
@@ -755,7 +755,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="49" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__uart_8h_1af4f51c07450de863acf90f5d6da19e76" prot="public" static="no">
         <name>DW_UART_GINT_DISABLED</name>
@@ -766,7 +766,7 @@
 <para>designware interrupt disabled for control uart irq/fiq </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="96" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="96" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="96" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__uart_8h_1ac7b6b350d796de899fa93483ca697695" prot="public" static="no">
         <name>DW_UART_GINT_ENABLE</name>
@@ -777,7 +777,7 @@
 <para>designware interrupt enabled for control uart irq/fiq </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="97" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="97" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="97" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="97" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</referencedby>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab989ee3c9df5d9163650670273df8283" compoundref="dw__uart_8c" startline="432" endline="444">dw_uart_disable_interrupt</referencedby>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga34b6916c9c6d6336d813a95986d6beac" compoundref="dw__uart_8c" startline="385" endline="410">dw_uart_ena_cbr</referencedby>
@@ -792,7 +792,7 @@
 <para>designware interrupt enabled for control transmit process </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="98" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="98" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="98" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="98" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga74b2995571a4daecb84808b56a12e3e0" compoundref="dw__uart_8c" startline="471" endline="484">dw_uart_abort_tx</referencedby>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</referencedby>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab989ee3c9df5d9163650670273df8283" compoundref="dw__uart_8c" startline="432" endline="444">dw_uart_disable_interrupt</referencedby>
@@ -807,7 +807,7 @@
 <para>designware interrupt enabled for control transmit process </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="99" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="99" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="99" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="99" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga17cb2aa3d8fa1de710018838f34b2da6" compoundref="dw__uart_8c" startline="487" endline="500">dw_uart_abort_rx</referencedby>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</referencedby>
         <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab989ee3c9df5d9163650670273df8283" compoundref="dw__uart_8c" startline="432" endline="444">dw_uart_disable_interrupt</referencedby>
@@ -822,7 +822,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="101" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="101" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="101" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -837,7 +837,7 @@
 <para>implement of <ref refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" kindref="member">dev_uart_info::uart_ctrl</ref> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="115" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="115" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__uart_8h_1a3d1311c5c8765fccf7a50272e8df95cb" prot="public" static="no">
         <type>struct <ref refid="structdw__uart__ctrl" kindref="compound">dw_uart_ctrl</ref> *</type>
@@ -850,7 +850,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h" line="115" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h" line="115" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -961,6 +961,6 @@
 <codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_UART_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.h"/>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/uart/dw_uart.h"/>
   </compounddef>
 </doxygen>
