@@ -13,6 +13,10 @@ set -x
     bash apply_embARC_patch.sh || die
     cd .travis || die
 
+    [ $TOOLCHAIN != sphinx -o $BOARD != none -o $BD_VER != none -o $CUR_CORE != none ] || {
+        bash deploy_doc.sh || die
+    }
+
     [ $TOOLCHAIN != gnu -o $BOARD != emsk -o $BD_VER != 11 -o $CUR_CORE != arcem4 ] || {
         python3 build.py "TOOLCHAIN=${TOOLCHAIN} BOARD=${BOARD} BD_VER=${BD_VER} CUR_CORE=${CUR_CORE}" || die
     }
