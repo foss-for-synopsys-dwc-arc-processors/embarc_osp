@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARC HS Development Kit &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC IoT Development Kit" href="iotdk.html" />
+    <link rel="prev" title="ARC EM Starter Kit" href="emsk.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="board.html">Boards</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="board.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="board.html#common-board-initialization-process">Common Board Initialization Process</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="board.html#supported-boards">Supported Boards</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="axs.html">ARC Software Development Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emsk.html">ARC EM Starter Kit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ARC HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nsim.html">ARC Virtual Board based on nSIM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="board.html#board-resource-unified-definitions">Board Resource Unified Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="board.html">Boards</a> &raquo;</li>
+        
+      <li>ARC HS Development Kit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/board/hsdk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arc-hs-development-kit">
+<span id="board-hsdk"></span><h1>ARC HS Development Kit<a class="headerlink" href="#arc-hs-development-kit" title="Permalink to this headline">¶</a></h1>
+<p>The ARC HS Development Kit (HSDK) Platform supports the ARC HS34, HS36 and
+HS38x4 quad core processors running at 1GHz. The ARC HSDK features 256 kByte
+of on-chip SRAM and 4 GByte of DDR3-SDRAM. The software available from
+Synopsys for the ARC HSDK includes pre-built SMP Linux image (plus the U-boot
+bootloader) and the embARC OSP distribution for embedded systems. embARC OSP
+source code includes bare metal and FreeRTOS device drivers and example
+applications. Code development is made easy using the MetaWare Development
+Toolkit, MetaWare Lite tools or the ARC GNU Tool Chain.</p>
+<img alt="ARC HS Development Kit" src="../_images/hsdk_board.jpg" />
+<p>The ARC HS Development Kit features the following components:</p>
+<ul class="simple">
+<li>ARC HS SoC:
+- Quad Core HS38x4 Processor
+- DDR3 memory controller
+- GPU (Vivante)
+- USB, Ethernet, SDIO
+- DesignWare APB Peripherals (consult HSDK documentation for complete details)</li>
+<li>Memory / Storage:
+- DDR3-1333 (4 GB)
+- 2x SPI Flash (2 MB)
+- I2C EEPROM (3 KB)</li>
+<li>Interfaces:
+- USB2 (2x)
+- Ethernet (10/100/1000)
+- Audio  - line in/out
+- USB Data port (JTAG/UART)
+- Micro-SD Card
+- WIFI/BT module
+- ADC (6 channels)
+- RTT Nexus and JTAG connectors</li>
+<li>Extensions:
+- AXI Tunnel (32-bit, 150 MHz)
+- Arduino  - Interface headers (UNO R3 compatible)
+- mikroBUS headers
+- Pmod Interfaces (3x), PMOD A and PMOD B (12 pins), PMOD C (6 pins)</li>
+</ul>
+<img alt="ARC HSDK Block Diagram" src="../_images/hsdk_block_diagram.jpg" />
+<img alt="ARC HS Development Chip Block Diagram" src="../_images/hsdk_chip.jpg" />
+<p>The HS Development Chip provides the following main features:</p>
+<ul class="simple">
+<li>Flexible, customizable IC architecture<ul>
+<li>Configurable / programmable boot scenarios</li>
+<li>Configurable / programmable memory map</li>
+</ul>
+</li>
+<li>DesignWare HS38x4 quad-core &#64; 1GHz<ul>
+<li>64kByte instruction cache</li>
+<li>64kByte data cache</li>
+<li>256kByte ICCM (2 cores)</li>
+<li>256kByte DCCM (2 cores)</li>
+<li>Memory Management Unit</li>
+<li>Physical Address Extension (PAE)</li>
+<li>512kByte system level cache</li>
+<li>Support for IO coherency</li>
+<li>Support for Real-Time Trace</li>
+</ul>
+</li>
+<li>Vivante GC7000 NanoUltra3T GPU Processing Unit &#64; 400Mhz</li>
+<li>Flexible clock generation<ul>
+<li>system clocks<ul>
+<li>33MHz system reference clock input</li>
+<li>PLL for DDR clock</li>
+<li>PLL for TUNNEL clock</li>
+<li>PLL for ARC clock</li>
+<li>PLL for all other system clocks</li>
+</ul>
+</li>
+<li>audio<ul>
+<li>audio reference clock input (24.576 MHz)</li>
+<li>integer divider(s) for audio serial clock</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>256kByte SRAM</li>
+<li>DDR3 interface<ul>
+<li>max speed grade DDR-1600 (800MHz)</li>
+<li>data width 32bit</li>
+<li>max row address width 16bit</li>
+<li>max bank address width 3bit</li>
+<li>max 2 memory ranks</li>
+<li>max supported DDR memory size is 4GByte</li>
+</ul>
+</li>
+<li>I2S TX / RX interface</li>
+<li>USB 2.0 Host interface</li>
+<li>SDIO interfaces</li>
+<li>10/100/1000Mbps Ethernet RGMII interface</li>
+<li>AXI tunnel interface<ul>
+<li>source-synchronous</li>
+<li>max freq 150MHz</li>
+<li>max data throughput 600MByte/s</li>
+</ul>
+</li>
+<li>UART interfaces</li>
+<li>I2C interfaces</li>
+<li>SPI interfaces</li>
+<li>PWM interfaces</li>
+<li>JTAG interface</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="iotdk.html" class="btn btn-neutral float-right" title="ARC IoT Development Kit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="emsk.html" class="btn btn-neutral" title="ARC EM Starter Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

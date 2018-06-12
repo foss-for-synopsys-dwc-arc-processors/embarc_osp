@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage Guide FAQ &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contribute to embARC OSP" href="../contribute/contribute.html" />
+    <link rel="prev" title="embARC Documentation Generation" href="../developer/documentation_generation.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage Guide FAQ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/faq/faq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage-guide-faq">
+<span id="id1"></span><h1>Usage Guide FAQ<a class="headerlink" href="#usage-guide-faq" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p class="first"><strong>Here are some tips when running some examples unsuccessfully.</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Check the board version, core configuration and toolchain version.</li>
+<li>Check the WiFi hotspot name and password settings in <em>board/board.h</em>.</li>
+<li>Make sure that peripherals are connected to the right ports, such as Pmod WiFi, Pmod TMP2, Pmod RF2, and SD card.</li>
+<li>The MetaWare toolchain works better than the ARC GNU toolchain.</li>
+<li>Check if your PC or laptop is connected to the same WiFi hotspot as EMSK.</li>
+<li>If you are running a Telnet commands on your PC to test embARC examples, shut down the Telnet process in the Task Manager.</li>
+<li>If <strong>WF_EVENT_CONNECTION_FAILED</strong> is printed in the terminal when embARC startup, wait at least two minutes for reconnection. The EMSK can reconnect to the WiFi hotspot if your WiFi hotspot setting is right.</li>
+<li>Using the make/gmake in the MetaWare and ARC GNU toolchain is highly recommended in the embARC OSP.</li>
+<li>Make sure the source code file is not in UTF-16 format. If the UTF-16 format is used, compiling may fail with the error message <strong>cc1.exe: out of memory allocating 838860800 bytes</strong>.</li>
+<li>When building and downloading a program with the Metaware toolchain, it is recommended to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause a compile failure when checking the license of the compiler. It depends on your network environment.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Here are some tips when you are using the ARC GNU toolchain.</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Install EMSK Digilent JTAG drivers on Windows for the ARC GNU toolchain. See <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a> for more information.</li>
+<li>Installing the Digilent JTAG drivers for the ARC GNU toolchain affects the usage of Metaware debugger. If you want to switch to using the MetaWare debugger, uninstall the Digilent JTAG drivers for the ARC GNU toolchain. Then install the drivers provided by Digilent.</li>
+<li>Different board has different driver name. There are two drivers for the onboard FTDI chip, one for JTAG and the other for USB. Choose and update the JTAG driver only.</li>
+<li>System reboot might be needed.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Why cannot build the embARC after changing the version of embARC OSP, or pulling source code from Github?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Check the embARC OSP version and ARC toolchain version carefully in <a class="reference internal" href="../getting_started/software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>. The embARC OSP doesn’t check the toolchain version compatibility.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Why cannot run an example with minor changes in the source code/configuration again?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>The generated files are not cleaned automatically when changing some code or configurations.</li>
+<li>If you can run any of the examples provided in the first time. But for the second time, no response is sent back. Try to clean the project with <cite>make clean</cite>, set the board configuration and build the example again.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Here are some tips when you are using WiFi in the embARC OSP?</strong></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Make sure your Pmod WiFi connects to the right Pmod connector, J5. Then Check the hotspot settings in &lt;board_name&gt;/&lt;board_name&gt;.h, e.g., emsk/emsk.h.</p>
+</li>
+<li><p class="first">Make sure your WiFi setting is correct.</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>WF_HOTSPOT_IS_OPEN</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>1: WiFi hotspot is non-encrypted</li>
+<li>0: WiFi hotspot is encrypted, you must set the right WF_HOTSPOT_NAME and WF_HOTSPOT_PASSWD</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>WF_HOTSPOT_NAME</strong>: the SSID name of your WiFi hotspot</p>
+</li>
+<li><p class="first"><strong>WF_HOTSPOT_PASSWD</strong>: the password of your WIFI hotspot</p>
+</li>
+<li><p class="first">If your WIFI hotspot is encrypted, you must set it to WPA/WPA2 PSK encrypted.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Running the WiFi examples on EMSK is recommended in the current version.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Why are the IP addresses different when running in bare metal and RTOS?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Running examples under an RTOS (FreeRTOS) enables DHCP to get the IP address from the DHCP server. So the IP address under an RTOS is automatically assigned.</li>
+<li>Set the right IP address, gateway, and netmask in <em>board/board.h</em> when using baremetal.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>How can I check whether the Pmod WiFi is connected to a hotspot?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>When the WIFI Pmod is connected to a hotspot, EMSK prints a message on the terminal.</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WF_EVENT_CONNECTION_SUCCESSFUL.</span>
+<span class="go">When connecting fails, the message is WF_EVENT_CONNECTION_FAILED. The common message for lwIP examples is shown below.</span>
+<span class="go">Now trying to connect to WIFI Hotspot, Please wait about 30s!</span>
+<span class="go">MRF24G Device Information As Follows:</span>
+<span class="go">Device Type:2, ROM Ver:31, Patch Ver:7</span>
+<span class="go">Connection Profile ID:1</span>
+<span class="go">WF INIT SUCCESSFULL!</span>
+<span class="go">PMWIFI_0 MAC ADDRESS:00-1e-c0-0e-71-ac</span>
+<span class="go">WF_EVENT_CONNECTION_FAILED     --&gt; sometimes happens</span>
+<span class="go">WF_EVENT_CONNECTION_SUCCESSFUL</span>
+<span class="go">Link is UP!</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Sometimes the board may hang when using the WiFi module. The board can prints a message <strong>WF_EVENT_ERROR:XXXXXX</strong> or gives no output. If the board hangs, recommend to power down the board, download and run your program again.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>How to run multi-node examples in the embARC OSP</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>For the EMSK boards, a recommended way is generating binary file for your applications, for example, <cite>make TOOLCHAIN=gnu BD_VER=22 CUR_CORE=arcem7d bin</cite>. Rename it to <em>boot.bin</em> and copy it to the SDCard. Then use <strong>emsk_bootloader</strong> as a secondary bootloader to load <em>boot.bin</em> on the SDCard, where the EMSK SPI Flash is programmed.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Why do the make TOOLCHAIN=gnu run or make TOOLCHAIN=gnu gui commands fail on Linux host?</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>OpenOCD</strong> on Linux requires the configuration files in a UNIX file format with LF line terminators. Convert the configuration files to UNIX file format.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>How to set the JTAG frequecncy to match the target CPU frequecncy?</strong></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Sometimes the CPU frequency and JTAG frequency don’t match in the ARC core configurations, e.g., when you add a new ARC board. It is necessary to set the JTAG frequency to match the CPU frequency of the selected core configuration.</p>
+</li>
+<li><p class="first">For the MetaWare toolchain, pass a make option called <strong>DIG_SPEED</strong> (in Hz) to set the JTAG frequency, like <code class="docutils literal notranslate"><span class="pre">DIG_SPEED=5000000</span></code>. For the EMSK 2.2, the <strong>DIG_SPEED</strong> is hard-coded in <em>board/emsk/configs/22/emsk_22.mk</em>.</p>
+</li>
+<li><p class="first">For the ARC GNU toolchain, change the value of adapter_khz(in KHz) in the openocd file of EMSK to set the JTAG frequency.</p>
+<blockquote>
+<div><ul class="simple">
+<li>For EMSK 1.x, the openocd config file is located in <em>&lt;ARC_GNU&gt;/share/openocd/scripts/board/snps_em_sk_v1.cfg</em>.</li>
+<li>For EMSK2.x, the openocd config file is located in <em>&lt;ARC_GNU&gt;/share/openocd/scripts/board/snps_em_sk.cfg</em>.</li>
+<li><em>&lt;ARC_GNU&gt;</em> is the installation directory of the ARC GNU toolchain.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contribute/contribute.html" class="btn btn-neutral float-right" title="Contribute to embARC OSP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../developer/documentation_generation.html" class="btn btn-neutral" title="embARC Documentation Generation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

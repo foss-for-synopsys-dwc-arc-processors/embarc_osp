@@ -1,0 +1,1319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="arc__connect_8h" kind="file">
+    <compoundname>arc_connect.h</compoundname>
+    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
+    <includes refid="arc_8h" local="yes">arc.h</includes>
+    <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
+    <includedby refid="arc__connect_8c" local="yes">arc_connect.c</includedby>
+    <includedby refid="hsdk__interrupt_8c" local="yes">hsdk_interrupt.c</includedby>
+    <incdepgraph>
+      <node id="252">
+        <label>stdbool.h</label>
+      </node>
+      <node id="253">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="254" relation="include">
+        </childnode>
+      </node>
+      <node id="249">
+        <label>stdint.h</label>
+      </node>
+      <node id="255">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="248" relation="include">
+        </childnode>
+      </node>
+      <node id="247">
+        <label>arc_connect.h</label>
+        <link refid="arc_connect.h"/>
+        <childnode refid="248" relation="include">
+        </childnode>
+        <childnode refid="253" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+      </node>
+      <node id="251">
+        <label>stddef.h</label>
+      </node>
+      <node id="250">
+        <label>limits.h</label>
+      </node>
+      <node id="254">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="248">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="249" relation="include">
+        </childnode>
+        <childnode refid="250" relation="include">
+        </childnode>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="258">
+        <label>hsdk_interrupt.c</label>
+        <link refid="hsdk__interrupt_8c"/>
+      </node>
+      <node id="256">
+        <label>arc_connect.h</label>
+        <link refid="arc_connect.h"/>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="258" relation="include">
+        </childnode>
+      </node>
+      <node id="257">
+        <label>arc_connect.c</label>
+        <link refid="arc__connect_8c_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structarc__connect__op" prot="public">arc_connect_op</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="arc__connect_8h_1a2dfdb8f14a52e82b48d659713b69f9c6" prot="public" static="no">
+        <name>ARC_CONNECT_OP_SET</name>
+        <param><defname>op</defname></param>
+        <param><defname>cmd_v</defname></param>
+        <param><defname>type_v</defname></param>
+        <param><defname>param_v</defname></param>
+        <param><defname>wdata_v</defname></param>
+        <initializer>{ \
+		(op)-&gt;cmd = (ARC_CONNECT_CMD)(cmd_v);				\
+		(op)-&gt;type = (ARC_CONNECT_CMD_TYPE)(type_v);			\
+		(op)-&gt;param = (uint32_t)(param_v);				\
+		(op)-&gt;wdata = (uint32_t)(wdata_v); }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="150" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="arc__connect_8h_1ac06be684aed40a9bec48f12f2f7e98e3" prot="public" static="no">
+        <name>ARC_CONNECT_CMD_ONLY_OP_SET</name>
+        <param><defname>op</defname></param>
+        <param><defname>cmd_v</defname></param>
+        <param><defname>param_v</defname></param>
+        <initializer>{ \
+		(op)-&gt;cmd = (ARC_CONNECT_CMD)(cmd_v);				\
+		(op)-&gt;param = (uint32_t)(param_v);				\
+		(op)-&gt;type = ARC_CONNECT_CMD_TYPE_CMD_ONLY; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="156" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="arc__connect_8h_1aff433cd6d7635947d20f4b411585b8f4" prot="public" static="no">
+        <name>ARC_CONNECT_CMD_RETURN_OP_SET</name>
+        <param><defname>op</defname></param>
+        <param><defname>cmd_v</defname></param>
+        <param><defname>param_v</defname></param>
+        <initializer>{ \
+		(op)-&gt;cmd = (ARC_CONNECT_CMD)(cmd_v);				\
+		(op)-&gt;param = (uint32_t)(param_v);				\
+		(op)-&gt;type = ARC_CONNECT_CMD_TYPE_CMD_RETURN; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="161" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="arc__connect_8h_1aeb56a4b0f1042d5303928646136cba78" prot="public" static="no">
+        <name>ARC_CONNECT_CMD_WDATA_OP_SET</name>
+        <param><defname>op</defname></param>
+        <param><defname>cmd_v</defname></param>
+        <param><defname>param_v</defname></param>
+        <param><defname>wdata_v</defname></param>
+        <initializer>ARC_CONNECT_OP_SET(op, cmd_v, ARC_CONNECT_CMD_TYPE_CMD_WDATA, param_v, wdata_v)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="166" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="arc__connect_8h_1ae3386cf15def8ce5e939c8df03977a97" prot="public" static="no">
+        <name>ARC_CONNECT_CMD_WDATA_RETURN_OP_SET</name>
+        <param><defname>op</defname></param>
+        <param><defname>cmd_v</defname></param>
+        <param><defname>param_v</defname></param>
+        <param><defname>wdata_v</defname></param>
+        <initializer>ARC_CONNECT_OP_SET(op, cmd_v, ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN, param_v, wdata_v)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="169" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="arc__connect_8h_1a7177c654fb9667121d2539227e364aac" prot="public" static="no">
+        <name>ARC_CONNECT_CMD</name>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacaa43b7e1eff6bae909d4af1914f237fae" prot="public">
+          <name>ARC_CONNECT_CMD_CHECK_CORE_ID</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca36bcbdba02ca49a5db3254246dbf91bc" prot="public">
+          <name>ARC_CONNECT_CMD_INTRPT_GENERATE_IRQ</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacaf3403da61b2132591d8b3f3f2d642988" prot="public">
+          <name>ARC_CONNECT_CMD_INTRPT_GENERATE_ACK</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacab1a19c092ffeacba61fff7374e4c027d" prot="public">
+          <name>ARC_CONNECT_CMD_INTRPT_READ_STATUS</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacac5353e1401c083249095b66d0d83f9db" prot="public">
+          <name>ARC_CONNECT_CMD_INTRPT_CHECK_SOURCE</name>
+          <initializer>= 0x4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacae0cc56a1af9b8565d27f10e79df4c48c" prot="public">
+          <name>ARC_CONNECT_CMD_SEMA_CLAIM_AND_READ</name>
+          <initializer>= 0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacac25f532c2b4632a69c0043636ac0f9b3" prot="public">
+          <name>ARC_CONNECT_CMD_SEMA_RELEASE</name>
+          <initializer>= 0x12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca0a1fccd0a2a77c789f171416992d0964" prot="public">
+          <name>ARC_CONNECT_CMD_SEMA_FORCE_RELEASE</name>
+          <initializer>= 0x13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacab9a65c3d1f2ed9f05ed269db2ac3aeaa" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_SET_ADDR</name>
+          <initializer>= 0x21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca9c10c32a59d2f0bda93157f3786ecd15" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_READ_ADDR</name>
+          <initializer>= 0x22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca91897b15bb90aa2c8902f0c188ef5848" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_SET_ADDR_OFFSET</name>
+          <initializer>= 0x23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca794c42b8b640ad868655ed849ba311fb" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_READ_ADDR_OFFSET</name>
+          <initializer>= 0x24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca8fe73c7f31279d3b1427fabc7baf4ed4" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_WRITE</name>
+          <initializer>= 0x25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca884a3bf98d5546cf0223334bdb33aca4" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_WRITE_INC</name>
+          <initializer>= 0x26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacabeaae7ca76e6f22a678964ed28461e99" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_WRITE_IMM</name>
+          <initializer>= 0x27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacab9a0f5bd14554b0a94443941f4fac8f0" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_READ</name>
+          <initializer>= 0x28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca443342ff5024a82ca4d0635ee1fc077f" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_READ_INC</name>
+          <initializer>= 0x29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca9583948369039b62acae86ccc0acb4d1" prot="public">
+          <name>ARC_CONNECT_CMD_MSG_SRAM_READ_IMM</name>
+          <initializer>= 0x2a</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacaa631ff5347c44a326c8a3d88b51e999d" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_RESET</name>
+          <initializer>= 0x31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacaf40e7bce3a59c491acee3daeded88917" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_HALT</name>
+          <initializer>= 0x32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca6bf0f3c793d9f0e30bd101a5226551be" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_RUN</name>
+          <initializer>= 0x33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacad4b87079719fc24c04cec8ecc87edc36" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_SET_MASK</name>
+          <initializer>= 0x34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacae5cdc261265abf31536e47bc824c5314" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_READ_MASK</name>
+          <initializer>= 0x35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacabf4b3db949bff93e1da6cd8090474e32" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_SET_SELECT</name>
+          <initializer>= 0x36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca3ee1990d6b305289f034ffe6d867d9eb" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_READ_SELECT</name>
+          <initializer>= 0x37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacacf418f58681f914e515a1e88725f80ff" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_READ_EN</name>
+          <initializer>= 0x38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca123c67ed032dd6270e299603acd8ed9d" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_READ_CMD</name>
+          <initializer>= 0x39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacaf212ebf3aaa3d2a1a9897832bd2c82af" prot="public">
+          <name>ARC_CONNECT_CMD_DEBUG_READ_CORE</name>
+          <initializer>= 0x3a</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca39c79bd108b68489d521e04488cdcb14" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_CLEAR</name>
+          <initializer>= 0x41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca9a7bcb2afcfc0f6e1a41dc307883d5d7" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_READ_LO</name>
+          <initializer>= 0x42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca6949ed678fa65291e4044d62ea38c4cf" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_READ_HI</name>
+          <initializer>= 0x43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca603a3369bb934059aa15b5a7fcd197f5" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_ENABLE</name>
+          <initializer>= 0x44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca71b23d8ebbb3f5006e9b6b77a0d4400b" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_DISABLE</name>
+          <initializer>= 0x45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacab300bda1804a6631840bd577a17460ad" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_READ_DISABLE</name>
+          <initializer>= 0x46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacac5256f93e1357892818611f10d733834" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_SET_CORE</name>
+          <initializer>= 0x47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca60587adffa12182450937c019233d0ee" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_READ_CORE</name>
+          <initializer>= 0x48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacac8f2a1cfb9748acd0cda4ca53545afba" prot="public">
+          <name>ARC_CONNECT_CMD_GFRC_READ_HALT</name>
+          <initializer>= 0x49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca87fcdead34dccf442a72b46d7e61f1c8" prot="public">
+          <name>ARC_CONNECT_CMD_PDM_SET_PM</name>
+          <initializer>= 0x81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacae5467fecfafeba2b3338d8943bb91b97" prot="public">
+          <name>ARC_CONNECT_CMD_PDM_READ_PSTATUS</name>
+          <initializer>= 0x82</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacaa2c765b60de8b2d3b63b6ba7ac157161" prot="public">
+          <name>ARC_CONNECT_CMD_PMU_SET_PUCNT</name>
+          <initializer>= 0x51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca38eadaf153b72379ef982e4d8a3b9358" prot="public">
+          <name>ARC_CONNECT_CMD_PMU_READ_PUCNT</name>
+          <initializer>= 0x52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacafac71264268e913f8663afd4d751bdf3" prot="public">
+          <name>ARC_CONNECT_CMD_PMU_SET_RSTCNT</name>
+          <initializer>= 0x53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca562694c777570fe9c779fde7c1e63f1f" prot="public">
+          <name>ARC_CONNECT_CMD_PMU_READ_RSTCNT</name>
+          <initializer>= 0x54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca7f678759ea4395ab8d8116675cfcdd16" prot="public">
+          <name>ARC_CONNECT_CMD_PMU_SET_PDCNT</name>
+          <initializer>= 0x55</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca19dc13b1d1212198efbb929324cd7097" prot="public">
+          <name>ARC_CONNECT_CMD_PMU_READ_PDCNT</name>
+          <initializer>= 0x56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca0f83117647df2fa40303203fbe093a4c" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_ENABLE</name>
+          <initializer>= 0x71</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca0ded50424969eb8e848e1be9c52e72d9" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_DISABLE</name>
+          <initializer>= 0x72</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacac4afb74ee752c9617a35a23d0c871772" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_READ_ENABLE</name>
+          <initializer>= 0x73</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca74e830dcfbd2eef87030a85fbf2b4828" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_SET_MODE</name>
+          <initializer>= 0x74</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca19b3b7374a9646ebc77f2db92e1a8f18" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_READ_MODE</name>
+          <initializer>= 0x75</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca05787bd57bd94f42e8eae41af15a6041" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_SET_DEST</name>
+          <initializer>= 0x76</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacad916f8c624e6b8135a11efaec7f203d2" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_READ_DEST</name>
+          <initializer>= 0x77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca487c7ae88083ad810e90f997a86ff3cd" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_GEN_CIRQ</name>
+          <initializer>= 0x78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca9bbfd36edaf74681f3e9f2abbf57b4e7" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_ACK_CIRQ</name>
+          <initializer>= 0x79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca3164c395b2c1035ad31d07b0f4c855f3" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_CHECK_STATUS</name>
+          <initializer>= 0x7a</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca2d013f0277be5ba6599df56a89e3c93a" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_CHECK_SOURCE</name>
+          <initializer>= 0x7b</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacacc3e714dd59ae0803ac22a27a3d59cca" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_SET_MASK</name>
+          <initializer>= 0x7c</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aacab8774f844748cc3c1aa283e72d308593" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_READ_MASK</name>
+          <initializer>= 0x7d</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a7177c654fb9667121d2539227e364aaca32920201441c2a4aec7ef10dfc881111" prot="public">
+          <name>ARC_CONNECT_CMD_IDU_CHECK_FIRST</name>
+          <initializer>= 0x7e</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="48" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="48" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="enum" id="arc__connect_8h_1a5a961cf4b3ce72a1804cf4f1e2d4adad" prot="public" static="no">
+        <name>ARC_CONNECT_CMD_TYPE</name>
+        <enumvalue id="arc__connect_8h_1a5a961cf4b3ce72a1804cf4f1e2d4adada1d69c512b1d94a5d4877bfec627f86d7" prot="public">
+          <name>ARC_CONNECT_CMD_TYPE_CMD_ONLY</name>
+          <initializer>= 0x0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a5a961cf4b3ce72a1804cf4f1e2d4adadad66911d5321dc883cd77c6ce2541fae1" prot="public">
+          <name>ARC_CONNECT_CMD_TYPE_CMD_RETURN</name>
+          <initializer>= 0x1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a5a961cf4b3ce72a1804cf4f1e2d4adadadd02e5d64ec299d94563b014403bdc1d" prot="public">
+          <name>ARC_CONNECT_CMD_TYPE_CMD_WDATA</name>
+          <initializer>= 0x2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a5a961cf4b3ce72a1804cf4f1e2d4adada58ad3e28b79d9718488b689a681113d1" prot="public">
+          <name>ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN</name>
+          <initializer>= 0x3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="118" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="118" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="enum" id="arc__connect_8h_1afd47bfa2ae8dbda0e04d3b4aad84cf59" prot="public" static="no">
+        <name>ARC_CONNECT_INTRPT_TRIGGER_MODE</name>
+        <enumvalue id="arc__connect_8h_1afd47bfa2ae8dbda0e04d3b4aad84cf59a6ac5142c21bb6621727ea20a790ff21c" prot="public">
+          <name>ARC_CONNECT_INTRPT_TRIGGER_LEVEL</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1afd47bfa2ae8dbda0e04d3b4aad84cf59a9df93eee63c947b90d56d78d70f887fd" prot="public">
+          <name>ARC_CONNECT_INTRPT_TRIGGER_EDGE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="132" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="enum" id="arc__connect_8h_1a14e8a662f70c64bd75c424e5059f6c18" prot="public" static="no">
+        <name>ARC_CONNECT_DISTRI_MODE</name>
+        <enumvalue id="arc__connect_8h_1a14e8a662f70c64bd75c424e5059f6c18a379420723baeca599c310fee09b1cf5d" prot="public">
+          <name>ARC_CONNECT_DISTRI_MODE_ROUND_ROBIN</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a14e8a662f70c64bd75c424e5059f6c18a4523db470251a20e45de30ad08326852" prot="public">
+          <name>ARC_CONNECT_DISTRI_MODE_FIRST_ACK</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a14e8a662f70c64bd75c424e5059f6c18aefb2ff09c5ca97fec03118a300433791" prot="public">
+          <name>ARC_CONNECT_DISTRI_ALL_DEST</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="137" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="137" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="enum" id="arc__connect_8h_1a1f6d15eff60ce2a10c9dd8b217751462" prot="public" static="no">
+        <name>ARC_CONNECT_CORE_MASK</name>
+        <enumvalue id="arc__connect_8h_1a1f6d15eff60ce2a10c9dd8b217751462a563c0d97b27b1dda000c9f8c5efebde2" prot="public">
+          <name>ARC_CONNECT_CORE_0</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a1f6d15eff60ce2a10c9dd8b217751462a1dc258dc586b2514ee0b1043f5dd9785" prot="public">
+          <name>ARC_CONNECT_CORE_1</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a1f6d15eff60ce2a10c9dd8b217751462a9bf74cdc8965bef3559dbd0969e62e5f" prot="public">
+          <name>ARC_CONNECT_CORE_2</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="arc__connect_8h_1a1f6d15eff60ce2a10c9dd8b217751462a3d6a5a823de7de15869f023ca68e3ecb" prot="public">
+          <name>ARC_CONNECT_CORE_3</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="143" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" bodystart="143" bodyend="148"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="arc__connect_8h_1a167255f41e22842488a81bf390cf5f60" prot="public" static="no">
+        <type>struct <ref refid="structarc__connect__op" kindref="compound">arc_connect_op</ref></type>
+        <definition>typedef struct arc_connect_op  ARC_CONNECT_OP</definition>
+        <argsstring></argsstring>
+        <name>ARC_CONNECT_OP</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="130" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="arc__connect_8h_1a912c5dc6d1df1d32fb8b419c187d6799" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_check_core_id</definition>
+        <argsstring>(void)</argsstring>
+        <name>arc_connect_check_core_id</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="173" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="61" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a591bec3e4be54c37c99b90abaca27d03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_enable</definition>
+        <argsstring>(void)</argsstring>
+        <name>arc_connect_idu_enable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="175" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="70" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1ab01ba3d249f2a1387fb8bd8f1132bc99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_disable</definition>
+        <argsstring>(void)</argsstring>
+        <name>arc_connect_idu_disable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="177" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="79" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a00289402f9725d4c02f48c322ff1c6e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_read_enable</definition>
+        <argsstring>(void)</argsstring>
+        <name>arc_connect_idu_read_enable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="179" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="88" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a648816ccbd36fcf163a70483dc89fa5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_set_mode</definition>
+        <argsstring>(uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode)</argsstring>
+        <name>arc_connect_idu_set_mode</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>trigger_mode</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>distri_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="181" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="97" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a9c064d4c1ab6ae4aeca31102017a9f70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_read_mode</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_read_mode</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="183" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="107" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a3d94bbc6b56cfc269e39ee378789fc96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_set_dest</definition>
+        <argsstring>(uint32_t irq_num, uint32_t target_core)</argsstring>
+        <name>arc_connect_idu_set_dest</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>target_core</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="185" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="116" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a99885bfd2aa3ac3d3549ac9e390d78e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_read_dest</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_read_dest</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="187" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="125" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a1aca71f7972d38e19d010b148ab79fc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_gen_cirq</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_gen_cirq</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="189" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="134" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a337c03bd1ca9d6ab3d25c8be1bf0449c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_ack_cirq</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_ack_cirq</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="191" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="143" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a886e8c0ae9d6050eaff81aaea928912f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_check_status</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_check_status</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="193" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="152" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a345eb482d6b3be403aea671c7e1d2d20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_check_source</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_check_source</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="195" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="161" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a4ca2b84e2427a87737234531b011620d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_idu_set_mask</definition>
+        <argsstring>(uint32_t irq_num, uint32_t mask)</argsstring>
+        <name>arc_connect_idu_set_mask</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="197" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="170" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1ae7bba5c38ef4ee2da3acf1e2a613df2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_read_mask</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_read_mask</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="199" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="179" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a4d89840c1872293867240ea9a0d22b8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t arc_connect_idu_check_first</definition>
+        <argsstring>(uint32_t irq_num)</argsstring>
+        <name>arc_connect_idu_check_first</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="201" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="188" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="arc__connect_8h_1a94e74064c99479e7c93c0368000d46f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void arc_connect_init_isr</definition>
+        <argsstring>(uint32_t core, uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode)</argsstring>
+        <name>arc_connect_init_isr</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>core</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>irq_num</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>trigger_mode</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>distri_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h" line="203" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/arc/arc_connect.c" bodystart="197" bodyend="204"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>header file of arc connect module </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor">#ifndef<sp/>_ARC_CONNECT_H_</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_ARC_CONNECT_H_</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_CHECK_CORE_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x0,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_INTRPT_GENERATE_IRQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x1,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_INTRPT_GENERATE_ACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x2,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_INTRPT_READ_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x3,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_INTRPT_CHECK_SOURCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x4,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_SEMA_CLAIM_AND_READ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x11,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_SEMA_RELEASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x12,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_SEMA_FORCE_RELEASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x13,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_SET_ADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x21,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_READ_ADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x22,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_SET_ADDR_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x23,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_READ_ADDR_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x24,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_WRITE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x25,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_WRITE_INC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x26,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_WRITE_IMM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x27,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_READ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x28,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_READ_INC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x29,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_MSG_SRAM_READ_IMM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x2a,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x31,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_HALT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x32,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_RUN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x33,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_SET_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x34,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_READ_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x35,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_SET_SELECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x36,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_READ_SELECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x37,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_READ_EN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x38,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_READ_CMD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x39,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_DEBUG_READ_CORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x3a,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_CLEAR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x41,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_READ_LO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x42,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_READ_HI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x43,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_ENABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x44,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x45,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_READ_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x46,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_SET_CORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x47,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_READ_CORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x48,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_GFRC_READ_HALT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x49,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PDM_SET_PM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x81,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PDM_READ_PSTATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x82,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PMU_SET_PUCNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x51,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PMU_READ_PUCNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x52,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PMU_SET_RSTCNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x53,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PMU_READ_RSTCNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x54,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PMU_SET_PDCNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x55,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_PMU_READ_PDCNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x56,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_ENABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x71,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x72,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_READ_ENABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x73,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_SET_MODE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x74,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_READ_MODE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x75,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_SET_DEST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x76,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_READ_DEST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x77,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_GEN_CIRQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x78,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_ACK_CIRQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x79,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_CHECK_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x7a,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_CHECK_SOURCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x7b,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_SET_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x7c,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_READ_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x7d,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_IDU_CHECK_FIRST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x7e</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}<sp/>ARC_CONNECT_CMD;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_TYPE_CMD_ONLY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x0,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_TYPE_CMD_RETURN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x1,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_TYPE_CMD_WDATA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x2,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x3</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}<sp/>ARC_CONNECT_CMD_TYPE;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="structarc__connect__op" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structarc__connect__op" kindref="compound">arc_connect_op</ref><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD<sp/>cmd;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CMD_TYPE<sp/>type;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>param;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>wdata;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}<sp/><ref refid="structarc__connect__op" kindref="compound">ARC_CONNECT_OP</ref>;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_INTRPT_TRIGGER_LEVEL<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_INTRPT_TRIGGER_EDGE<sp/>=<sp/>1</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}<sp/>ARC_CONNECT_INTRPT_TRIGGER_MODE;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_DISTRI_MODE_ROUND_ROBIN<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_DISTRI_MODE_FIRST_ACK<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_DISTRI_ALL_DEST<sp/>=<sp/>2</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}<sp/>ARC_CONNECT_DISTRI_MODE;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CORE_0<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CORE_1<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CORE_2<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_CORE_3<sp/>=<sp/>8</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}<sp/>ARC_CONNECT_CORE_MASK;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARC_CONNECT_OP_SET(op,<sp/>cmd_v,<sp/>type_v,<sp/>param_v,<sp/>wdata_v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;cmd<sp/>=<sp/>(ARC_CONNECT_CMD)(cmd_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;type<sp/>=<sp/>(ARC_CONNECT_CMD_TYPE)(type_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="153"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;param<sp/>=<sp/>(uint32_t)(param_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="154"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;wdata<sp/>=<sp/>(uint32_t)(wdata_v);<sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARC_CONNECT_CMD_ONLY_OP_SET(op,<sp/>cmd_v,<sp/>param_v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="157"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;cmd<sp/>=<sp/>(ARC_CONNECT_CMD)(cmd_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="158"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;param<sp/>=<sp/>(uint32_t)(param_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;type<sp/>=<sp/>ARC_CONNECT_CMD_TYPE_CMD_ONLY;<sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARC_CONNECT_CMD_RETURN_OP_SET(op,<sp/>cmd_v,<sp/>param_v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;cmd<sp/>=<sp/>(ARC_CONNECT_CMD)(cmd_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;param<sp/>=<sp/>(uint32_t)(param_v);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="164"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(op)-&gt;type<sp/>=<sp/>ARC_CONNECT_CMD_TYPE_CMD_RETURN;<sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARC_CONNECT_CMD_WDATA_OP_SET(op,<sp/>cmd_v,<sp/>param_v,<sp/>wdata_v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_OP_SET(op,<sp/>cmd_v,<sp/>ARC_CONNECT_CMD_TYPE_CMD_WDATA,<sp/>param_v,<sp/>wdata_v)</highlight></codeline>
+<codeline lineno="168"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARC_CONNECT_CMD_WDATA_RETURN_OP_SET(op,<sp/>cmd_v,<sp/>param_v,<sp/>wdata_v)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARC_CONNECT_OP_SET(op,<sp/>cmd_v,<sp/>ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN,<sp/>param_v,<sp/>wdata_v)</highlight></codeline>
+<codeline lineno="171"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_check_core_id(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_enable(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_disable(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_read_enable(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_set_mode(uint32_t<sp/>irq_num,<sp/>uint16_t<sp/>trigger_mode,<sp/>uint16_t<sp/>distri_mode);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_read_mode(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_set_dest(uint32_t<sp/>irq_num,<sp/>uint32_t<sp/>target_core);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_read_dest(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_gen_cirq(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_ack_cirq(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_check_status(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_check_source(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_idu_set_mask(uint32_t<sp/>irq_num,<sp/>uint32_t<sp/>mask);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_read_mask(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>arc_connect_idu_check_first(uint32_t<sp/>irq_num);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>arc_connect_init_isr(uint32_t<sp/>core,<sp/>uint32_t<sp/>irq_num,<sp/>uint16_t<sp/>trigger_mode,<sp/>uint16_t<sp/>distri_mode);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="206"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="208"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_ARC_CONNECT_H_*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_connect.h"/>
+  </compounddef>
+</doxygen>

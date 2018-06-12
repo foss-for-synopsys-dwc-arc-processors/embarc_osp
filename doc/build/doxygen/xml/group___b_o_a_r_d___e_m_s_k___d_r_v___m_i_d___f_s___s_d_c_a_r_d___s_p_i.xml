@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i" kind="group">
+    <compoundname>BOARD_EMSK_DRV_MID_FS_SDCARD_SPI</compoundname>
+    <title>EMSK SDCard SPI Interface Driver</title>
+    <innerfile refid="emsk__sdcard__spi_8c">emsk_sdcard_spi.c</innerfile>
+    <innerfile refid="emsk__sdcard__spi_8h">emsk_sdcard_spi.h</innerfile>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga76053ce6e596a9089a4130ffe422c26e" prot="public" static="yes" mutable="no">
+        <type>FS_SDCARD_SPI_CTRL</type>
+        <definition>FS_SDCARD_SPI_CTRL sdcard_spi_0_ctrl</definition>
+        <argsstring></argsstring>
+        <name>sdcard_spi_0_ctrl</name>
+        <initializer>= {
+	0, 0, 0,
+	<ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga3614bb104e3fc23881bd3f96f9f47efc" kindref="member">SDCARD_SPI_FREQ_400K</ref>, <ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" kindref="member">EMSK_SDCARD_SPI_0_FREQ</ref>, EMSK_SDCARD_SPI_0_CLKMODE,
+	<ref refid="group___b_o_a_r_d___h_s_d_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref>, BOARD_SDCARD_SPI_LINE,
+	sdcard_spi_card_is_writeprotect,
+	sdcard_spi_card_is_inserted
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="124" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga6dc3a92c5832ccaf220e95c1e7b7c7dc" prot="public" static="no" mutable="no">
+        <type>FATFS_DISKIO</type>
+        <definition>FATFS_DISKIO sdcard_spi_0_diskio</definition>
+        <argsstring></argsstring>
+        <name>sdcard_spi_0_diskio</name>
+        <initializer>= {
+	(void *)&amp;sdcard_spi_0_ctrl,
+	sdcard_spi_0_diskio_initialize,
+	sdcard_spi_0_diskio_status,
+	sdcard_spi_0_diskio_read,
+	sdcard_spi_0_diskio_write,
+	sdcard_spi_0_diskio_ioctl,
+	sdcard_spi_0_diskio_timerproc
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="132" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga6dc3a92c5832ccaf220e95c1e7b7c7dc" prot="public" static="no" mutable="no">
+        <type>FATFS_DISKIO</type>
+        <definition>FATFS_DISKIO sdcard_spi_0_diskio</definition>
+        <argsstring></argsstring>
+        <name>sdcard_spi_0_diskio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="58" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf7ef0459e19ce1cd61d70576b61c3128" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_card_is_writeprotect</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_spi_card_is_writeprotect</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="84" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="84" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf90d5d49e0bdb463451a52dacf2eef37" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_card_is_inserted</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_spi_card_is_inserted</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="89" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="89" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga8eef1686df4be6dd1bc8dd80723c97f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_0_diskio_initialize</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_spi_0_diskio_initialize</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="94" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaeb5b16ba3a527fbeeaee1abf50fd644c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_0_diskio_status</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_spi_0_diskio_status</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="99" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga130977899860bcdcc251b06c5cea0de8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_0_diskio_read</definition>
+        <argsstring>(void *buf, uint32_t sector, uint32_t count)</argsstring>
+        <name>sdcard_spi_0_diskio_read</name>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>sector</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="104" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="104" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga1f74d818dfa8f9d759282ac162fbca80" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_0_diskio_write</definition>
+        <argsstring>(const void *buf, uint32_t sector, uint32_t count)</argsstring>
+        <name>sdcard_spi_0_diskio_write</name>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>sector</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="109" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga611b5cd343778505a5de15618d8c70d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_spi_0_diskio_ioctl</definition>
+        <argsstring>(uint32_t cmd, void *buf)</argsstring>
+        <name>sdcard_spi_0_diskio_ioctl</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>cmd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="114" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga367b6e28e65be7dc88382143e34c9175" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void sdcard_spi_0_diskio_timerproc</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_spi_0_diskio_timerproc</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="119" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="119" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga03714ac31fad2550c63cd48628ca97a3" prot="public" static="no">
+        <name>EMSK_SDCARD_SPI_0_ID</name>
+        <initializer>(<ref refid="group___b_o_a_r_d___h_s_d_k___d_r_v___d_w___s_p_i___o_b_j_1ga906ed6ea818fb3ea7b3b52f174751ec2" kindref="member">DW_SPI_0_ID</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="74" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gae731bd3eee8f7317075a201578cd2298" prot="public" static="no">
+        <name>EMSK_SDCARD_SPI_0_LINE</name>
+        <initializer>BOARD_SDCARD_SPI_LINE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="75" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" prot="public" static="no">
+        <name>EMSK_SDCARD_SPI_0_FREQ</name>
+        <initializer>BOARD_SPI_FREQ</initializer>
+        <briefdescription>
+<para>SDCARD SPI FREQ &amp; CLK MODE SETTINGS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="78" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga4f987d693a48d388b7794e049702c1e3" prot="public" static="no">
+        <name>EMSK_SDCARD_SPI_0_CLKMODE</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e_1ggab7e00794f1fac3fdb4d4bf9fd0244c7ba61bb9ad4a905372e5df6fe772828858a" kindref="member">SPI_CLK_MODE_0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="79" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga31c50ecfb6886531dd1b0199014ca060" prot="public" static="no">
+        <name>EMSK_SDCARD_SPI_0_CPULOCK_ENABLE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="81" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaed7bda20ba720a2232f7614bbae931ca" prot="public" static="no">
+        <name>USE_EMSK_SDCARD_SPI_0</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="46" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga3614bb104e3fc23881bd3f96f9f47efc" prot="public" static="no">
+        <name>SDCARD_SPI_FREQ_400K</name>
+        <initializer>(400000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sdcard spi freq:400KHz </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="48" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gab6103500d3ab79357f6cfc965d1aedf4" prot="public" static="no">
+        <name>SDCARD_SPI_FREQ_1M</name>
+        <initializer>(1000000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sdcard spi freq:2MHz </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="49" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf56eb03d0c336e8c744420a058993b91" prot="public" static="no">
+        <name>SDCARD_SPI_FREQ_2M</name>
+        <initializer>(2000000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sdcard spi freq:2MHz </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="50" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gadcefe914823a238c03a301427e55ef06" prot="public" static="no">
+        <name>SDCARD_SPI_FREQ_4M</name>
+        <initializer>(4000000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>sdcard spi freq:4MHz </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" line="51" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>EMSK Fatfs SDCard SPI Interface Driver. </para>    </briefdescription>
+    <detaileddescription>
+<para>Realize the sdcard driver using spi interface for fatfs, under the abstract of fatfs diskio. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

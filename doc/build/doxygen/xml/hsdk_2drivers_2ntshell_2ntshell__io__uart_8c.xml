@@ -1,0 +1,868 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c" kind="file">
+    <compoundname>hsdk/drivers/ntshell/ntshell_io_uart.c</compoundname>
+    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
+    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
+    <includes local="no">stdarg.h</includes>
+    <includes refid="dev__uart_8h" local="yes">dev_uart.h</includes>
+    <includes local="yes">xprintf.h</includes>
+    <includes refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8h" local="yes">ntshell_io_uart.h</includes>
+    <includes local="yes">ntshell_task.h</includes>
+    <includes refid="hsdk_8h" local="yes">hsdk/hsdk.h</includes>
+    <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
+    <incdepgraph>
+      <node id="3313">
+        <label>hsdk/hsdk.h</label>
+        <link refid="hsdk_8h"/>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3317" relation="include">
+        </childnode>
+        <childnode refid="3319" relation="include">
+        </childnode>
+        <childnode refid="3321" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3329" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3334" relation="include">
+        </childnode>
+        <childnode refid="3337" relation="include">
+        </childnode>
+        <childnode refid="3340" relation="include">
+        </childnode>
+        <childnode refid="3341" relation="include">
+        </childnode>
+        <childnode refid="3342" relation="include">
+        </childnode>
+        <childnode refid="3343" relation="include">
+        </childnode>
+      </node>
+      <node id="3304">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3328">
+        <label>dev_wnic.h</label>
+        <link refid="dev__wnic_8h"/>
+        <childnode refid="3309" relation="include">
+        </childnode>
+      </node>
+      <node id="3308">
+        <label>dev_uart.h</label>
+        <link refid="dev__uart_8h"/>
+        <childnode refid="3309" relation="include">
+        </childnode>
+      </node>
+      <node id="3307">
+        <label>stdarg.h</label>
+      </node>
+      <node id="3338">
+        <label>cgu_hsdc_reg.h</label>
+        <link refid="cgu__hsdc__reg_8h_source"/>
+        <childnode refid="3339" relation="include">
+        </childnode>
+      </node>
+      <node id="3321">
+        <label>drivers/ip/designware/uart/dw_uart_obj.h</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h"/>
+        <childnode refid="3308" relation="include">
+        </childnode>
+      </node>
+      <node id="3315">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3324">
+        <label>dev_gpio.h</label>
+        <link refid="dev__gpio_8h"/>
+        <childnode refid="3309" relation="include">
+        </childnode>
+      </node>
+      <node id="3312">
+        <label>ntshell_task.h</label>
+      </node>
+      <node id="3330">
+        <label>ntshell_io_netconn.h</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+        <childnode refid="3312" relation="include">
+        </childnode>
+      </node>
+      <node id="3301">
+        <label>stdint.h</label>
+      </node>
+      <node id="3306">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+      </node>
+      <node id="3339">
+        <label>cgu_hsdc_reg_map.h</label>
+        <link refid="cgu__hsdc__reg__map_8h_source"/>
+      </node>
+      <node id="3317">
+        <label>drivers/ip/designware/iic/dw_iic_obj.h</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h"/>
+        <childnode refid="3318" relation="include">
+        </childnode>
+      </node>
+      <node id="3331">
+        <label>drivers/sdcard/sdcard.h</label>
+        <link refid="sdcard_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+        <childnode refid="3332" relation="include">
+        </childnode>
+      </node>
+      <node id="3334">
+        <label>drivers/creg/creg_hsdc.h</label>
+        <link refid="creg__hsdc_8h_source"/>
+        <childnode refid="3335" relation="include">
+        </childnode>
+      </node>
+      <node id="3332">
+        <label>sdcard_sdio.h</label>
+        <link refid="sdcard__sdio_8h"/>
+        <childnode refid="3333" relation="include">
+        </childnode>
+      </node>
+      <node id="3314">
+        <label>arc_hs.h</label>
+        <link refid="arc__hs_8h"/>
+        <childnode refid="3315" relation="include">
+        </childnode>
+      </node>
+      <node id="3303">
+        <label>stddef.h</label>
+      </node>
+      <node id="3309">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="3301" relation="include">
+        </childnode>
+      </node>
+      <node id="3344">
+        <label>os_hal_inc.h</label>
+        <link refid="os__hal__inc_8h"/>
+      </node>
+      <node id="3336">
+        <label>creg_hsdc_reg_map.h</label>
+        <link refid="creg__hsdc__reg__map_8h_source"/>
+      </node>
+      <node id="3302">
+        <label>limits.h</label>
+      </node>
+      <node id="3320">
+        <label>dev_spi.h</label>
+        <link refid="dev__spi_8h"/>
+        <childnode refid="3309" relation="include">
+        </childnode>
+      </node>
+      <node id="3341">
+        <label>common/hsdk_io.h</label>
+        <link refid="hsdk__io_8h"/>
+        <childnode refid="3317" relation="include">
+        </childnode>
+      </node>
+      <node id="3318">
+        <label>dev_iic.h</label>
+        <link refid="dev__iic_8h"/>
+        <childnode refid="3309" relation="include">
+        </childnode>
+      </node>
+      <node id="3326">
+        <label>drivers/ip/designware/sdio/dw_sdio_obj.h</label>
+        <link refid="dw__sdio__obj_8h_source"/>
+      </node>
+      <node id="3335">
+        <label>creg_hsdc_reg.h</label>
+        <link refid="creg__hsdc__reg_8h_source"/>
+        <childnode refid="3336" relation="include">
+        </childnode>
+      </node>
+      <node id="3322">
+        <label>drivers/ip/designware/gpio/dw_gpio_obj.h</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
+        <childnode refid="3323" relation="include">
+        </childnode>
+      </node>
+      <node id="3343">
+        <label>hsdk_hardware.h</label>
+        <link refid="hsdk__hardware_8h"/>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3299">
+        <label>ntshell_io_uart.c</label>
+        <link refid="hsdk/drivers/ntshell/ntshell_io_uart.c"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+        <childnode refid="3305" relation="include">
+        </childnode>
+        <childnode refid="3307" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3310" relation="include">
+        </childnode>
+        <childnode refid="3311" relation="include">
+        </childnode>
+        <childnode refid="3312" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3344" relation="include">
+        </childnode>
+      </node>
+      <node id="3311">
+        <label>ntshell_io_uart.h</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+        <childnode refid="3312" relation="include">
+        </childnode>
+      </node>
+      <node id="3327">
+        <label>drivers/pmwifi/pmwifi.h</label>
+        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8h"/>
+        <childnode refid="3328" relation="include">
+        </childnode>
+      </node>
+      <node id="3316">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="3333">
+        <label>ff_diskio.h</label>
+      </node>
+      <node id="3325">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+      </node>
+      <node id="3310">
+        <label>xprintf.h</label>
+      </node>
+      <node id="3319">
+        <label>drivers/ip/designware/spi/dw_spi_obj.h</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h"/>
+        <childnode refid="3320" relation="include">
+        </childnode>
+      </node>
+      <node id="3342">
+        <label>dev_pinmux.h</label>
+        <link refid="dev__pinmux_8h_source"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+      </node>
+      <node id="3337">
+        <label>drivers/cgu/cgu_hsdc.h</label>
+        <link refid="cgu__hsdc_8h_source"/>
+        <childnode refid="3338" relation="include">
+        </childnode>
+      </node>
+      <node id="3329">
+        <label>drivers/ntshell/ntshell_io.h</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io_8h"/>
+        <childnode refid="3311" relation="include">
+        </childnode>
+        <childnode refid="3330" relation="include">
+        </childnode>
+      </node>
+      <node id="3300">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="3301" relation="include">
+        </childnode>
+        <childnode refid="3302" relation="include">
+        </childnode>
+        <childnode refid="3303" relation="include">
+        </childnode>
+        <childnode refid="3304" relation="include">
+        </childnode>
+      </node>
+      <node id="3340">
+        <label>common/hsdk_timer.h</label>
+        <link refid="hsdk__timer_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+      </node>
+      <node id="3305">
+        <label>embARC_error.h</label>
+        <link refid="emb_a_r_c__error_8h"/>
+        <childnode refid="3301" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+      </node>
+      <node id="3323">
+        <label>dw_gpio.h</label>
+        <link refid="dw__gpio_8h"/>
+        <childnode refid="3324" relation="include">
+        </childnode>
+        <childnode refid="3325" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structntshell__io__uart" prot="public">ntshell_io_uart</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1gaf9af82cef08974817ed12aa6ebb7e286" prot="public" static="no">
+        <name>HSDK_NTSHELL_UART_CHECK_EXP</name>
+        <param><defname>EXPR</defname></param>
+        <param><defname>ERROR_CODE</defname></param>
+        <initializer><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="67" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga2726ac2b9d49a8e6339bf607b70e9d8b" prot="public" static="no">
+        <type>struct <ref refid="structntshell__io__uart" kindref="compound">ntshell_io_uart</ref></type>
+        <definition>typedef struct ntshell_io_uart NTSHELL_IO_UART</definition>
+        <argsstring></argsstring>
+        <name>NTSHELL_IO_UART</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="58" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1gaf8d5a72faf358cc9f95a96814de4323c" prot="public" static="no">
+        <type>struct <ref refid="structntshell__io__uart" kindref="compound">ntshell_io_uart</ref> *</type>
+        <definition>typedef struct ntshell_io_uart * NTSHELL_IO_UART_PTR</definition>
+        <argsstring></argsstring>
+        <name>NTSHELL_IO_UART_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="69" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga905c11f6a3cdbc7be08c1020da90acb4" prot="public" static="yes" mutable="no">
+        <type>ntshell_t</type>
+        <definition>ntshell_t uart_ntshell_1</definition>
+        <argsstring></argsstring>
+        <name>uart_ntshell_1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="221" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga2def4fccecf537f066324fe30c81d88f" prot="public" static="yes" mutable="no">
+        <type><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref></type>
+        <definition>NTSHELL_IO_UART ntshell_uart_1_info</definition>
+        <argsstring></argsstring>
+        <name>ntshell_uart_1_info</name>
+        <initializer>= {
+	BOARD_CONSOLE_UART_ID, <ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___b_a_u_d_1ga7ba5033e1e1547d07d7683d0542c1f4a" kindref="member">UART_BAUDRATE_115200</ref>, <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_t_h_d_1ga8c26618746280e13545b7b45f59d75b3" kindref="member">DEV_POLL_METHOD</ref>, 
+	ntshell_uart_1_write_byte
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="222" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga01a183299e72c9e9831763eaf55041aa" prot="public" static="no" mutable="no">
+        <type>NTSHELL_IO</type>
+        <definition>NTSHELL_IO ntshell_uart_1</definition>
+        <argsstring></argsstring>
+        <name>ntshell_uart_1</name>
+        <initializer>= {
+	&amp;uart_ntshell_1, 
+	&amp;help_cmd, 
+	NULL, 
+	&quot;COM1&gt;&quot;, 
+	(void *)(&amp;ntshell_uart_1_info), 
+	ntshell_uart_1_nt_ioinit, 
+	ntshell_uart_1_nt_read, 
+	ntshell_uart_1_nt_write, 
+	ntshell_uart_1_nt_printf
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="232" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga441cba1220b218fc49665ddd7498d18d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_uart_nt_ioinit</definition>
+        <argsstring>(NTSHELL_IO *nt_io)</argsstring>
+        <name>ntshell_uart_nt_ioinit</name>
+        <param>
+          <type>NTSHELL_IO *</type>
+          <declname>nt_io</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="78" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="78" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1gaab9cc355ebf70b63b89d7fd8bd563b56" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_uart_nt_read</definition>
+        <argsstring>(NTSHELL_IO *nt_io, void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_uart_nt_read</name>
+        <param>
+          <type>NTSHELL_IO *</type>
+          <declname>nt_io</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="100" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="100" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1gab2d1b17072fa9f34f01162186bf93cfc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_uart_nt_write</definition>
+        <argsstring>(NTSHELL_IO *nt_io, const void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_uart_nt_write</name>
+        <param>
+          <type>NTSHELL_IO *</type>
+          <declname>nt_io</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="135" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="135" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga2cc00590749cf33db11ef7fb221784a3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_uart_nt_printf</definition>
+        <argsstring>(NTSHELL_IO *nt_io, const char *fmt, va_list arp)</argsstring>
+        <name>ntshell_uart_nt_printf</name>
+        <param>
+          <type>NTSHELL_IO *</type>
+          <declname>nt_io</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>va_list</type>
+          <declname>arp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="155" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="155" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga9452d501bdcf02b298c0b192dcc14680" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_uart_write_byte</definition>
+        <argsstring>(NTSHELL_IO_UART *nt_uart, unsigned char byte)</argsstring>
+        <name>ntshell_uart_write_byte</name>
+        <param>
+          <type><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref> *</type>
+          <declname>nt_uart</declname>
+        </param>
+        <param>
+          <type>unsigned char</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="177" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="177" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1gaba9e7538ef347e695afac43761a539a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_uart_1_nt_ioinit</definition>
+        <argsstring>(void)</argsstring>
+        <name>ntshell_uart_1_nt_ioinit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="195" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="195" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga1be0028ffde9b9fd33fa597f9914e1c4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_uart_1_nt_read</definition>
+        <argsstring>(void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_uart_1_nt_read</name>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="200" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="200" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1gaf9cd527f2cedd06ba8758b838d9c9922" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_uart_1_nt_write</definition>
+        <argsstring>(const void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_uart_1_nt_write</name>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="205" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="205" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga32dea110a2dc181f165c0e2a3ef91910" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_uart_1_nt_printf</definition>
+        <argsstring>(const char *fmt,...)</argsstring>
+        <name>ntshell_uart_1_nt_printf</name>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="210" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="210" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___u_a_r_t_1ga836fec0e8b665adf827955775dca185b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_uart_1_write_byte</definition>
+        <argsstring>(unsigned char byte)</argsstring>
+        <name>ntshell_uart_1_write_byte</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" line="219" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c" bodystart="227" bodyend="230"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>middleware ntshell io uart interface driver </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__uart_8h" kindref="compound">dev_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;xprintf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8h" kindref="compound">ntshell_io_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ntshell_task.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hsdk_8h" kindref="compound">hsdk/hsdk.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="os__hal__inc_8h" kindref="compound">os_hal_inc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HSDK_NTSHELL_UART_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structntshell__io__uart" kindref="compound">ntshell_io_uart</ref><sp/><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref>,<sp/>*<ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART_PTR</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structntshell__io__uart" kindref="compound">ntshell_io_uart</ref><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>uart_id;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>uart_freq;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>uart_mthd;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*write_byte)(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_nt_ioinit(NTSHELL_IO<sp/>*nt_io)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__uart" kindref="compound">DEV_UART</ref><sp/>*uart_dev;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*nt_uart;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io-&gt;extra_info!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_uart<sp/>=<sp/>(<ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*)nt_io-&gt;extra_info;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev<sp/>=<sp/><ref refid="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_1gade938afe2174b43b8522bf05cdcb1202" kindref="member">uart_get_dev</ref>(nt_uart-&gt;uart_id);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga00f4f8769a030124d548f65895d2ff87" kindref="member">uart_open</ref>(nt_uart-&gt;uart_freq);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_nt_read(NTSHELL_IO<sp/>*nt_io,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__uart" kindref="compound">DEV_UART</ref><sp/>*uart_dev;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*nt_uart;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>rd_avail<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io-&gt;extra_info!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_uart<sp/>=<sp/>(<ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*)nt_io-&gt;extra_info;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev<sp/>=<sp/><ref refid="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_1gade938afe2174b43b8522bf05cdcb1202" kindref="member">uart_get_dev</ref>(nt_uart-&gt;uart_id);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>cnt;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga7cd1bf12f5d9ca4663980883d01c092a" kindref="member">uart_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___c_t_r_l_c_m_d_1ga8d2dc24b2777c4ad6ac72350c2d6b6c4" kindref="member">UART_CMD_GET_RXAVAIL</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;rd_avail));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rd_avail<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rd_avail<sp/>=<sp/>(rd_avail<sp/>&gt;<sp/>cnt)<sp/>?<sp/>cnt<sp/>:<sp/>rd_avail;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8fa470ea11eca6e728e802b64501cbb5" kindref="member">uart_read</ref>(buf,<sp/>rd_avail);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buf<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(((uint32_t)buf)<sp/>+<sp/>rd_avail);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt<sp/>-=<sp/>rd_avail;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(5);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(cnt<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_nt_write(NTSHELL_IO<sp/>*nt_io,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__uart" kindref="compound">DEV_UART</ref><sp/>*uart_dev;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*nt_uart;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io-&gt;extra_info!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_uart<sp/>=<sp/>(<ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*)nt_io-&gt;extra_info;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev<sp/>=<sp/><ref refid="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_1gade938afe2174b43b8522bf05cdcb1202" kindref="member">uart_get_dev</ref>(nt_uart-&gt;uart_id);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>(int32_t)uart_dev-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gadb3f65e65636442af53578c64f2ea2a4" kindref="member">uart_write</ref>(buf,<sp/>cnt);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_nt_printf(NTSHELL_IO<sp/>*nt_io,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fmt,<sp/>va_list<sp/>arp)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*nt_uart;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*pf)(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_io-&gt;extra_info!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_uart<sp/>=<sp/>(<ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*)nt_io-&gt;extra_info;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(nt_uart-&gt;write_byte)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pf<sp/>=<sp/>xfunc_out;<sp/><sp/></highlight><highlight class="comment">/*<sp/>Save<sp/>current<sp/>output<sp/>device<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xfunc_out<sp/>=<sp/>nt_uart-&gt;write_byte;<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Switch<sp/>output<sp/>to<sp/>specified<sp/>device<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xvprintf(fmt,<sp/>arp);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xfunc_out<sp/>=<sp/>pf;<sp/><sp/></highlight><highlight class="comment">/*<sp/>Restore<sp/>output<sp/>device<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_write_byte(<ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>*nt_uart,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__uart" kindref="compound">DEV_UART</ref><sp/>*uart_dev;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(nt_uart!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev<sp/>=<sp/><ref refid="group___b_o_a_r_d___a_x_s___d_r_v___d_w___u_a_r_t___o_b_j_1gade938afe2174b43b8522bf05cdcb1202" kindref="member">uart_get_dev</ref>(nt_uart-&gt;uart_id);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uart_dev-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gadb3f65e65636442af53578c64f2ea2a4" kindref="member">uart_write</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;byte,<sp/>1);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>USE_HSDK_NTSHELL_UART_1</highlight></codeline>
+<codeline lineno="195"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_1_nt_ioinit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_uart_nt_ioinit(&amp;ntshell_uart_1);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_1_nt_read(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_uart_nt_read(&amp;ntshell_uart_1,<sp/>buf,<sp/>cnt);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_uart_1_nt_write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_uart_nt_write(&amp;ntshell_uart_1,<sp/>buf,<sp/>cnt);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_nt_printf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fmt,<sp/>...)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>arp;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_start(arp,<sp/>fmt);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_nt_printf(&amp;ntshell_uart_1,<sp/>fmt,<sp/>arp);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_end(arp);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>ntshell_t<sp/><sp/>uart_ntshell_1;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structntshell__io__uart" kindref="compound">NTSHELL_IO_UART</ref><sp/>ntshell_uart_1_info<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_CONSOLE_UART_ID,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___b_a_u_d_1ga7ba5033e1e1547d07d7683d0542c1f4a" kindref="member">UART_BAUDRATE_115200</ref>,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_t_h_d_1ga8c26618746280e13545b7b45f59d75b3" kindref="member">DEV_POLL_METHOD</ref>,<sp/>\</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_1_write_byte</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_uart_1_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_write_byte(&amp;ntshell_uart_1_info,<sp/>byte);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal">NTSHELL_IO<sp/>ntshell_uart_1<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;uart_ntshell_1,<sp/>\</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;help_cmd,<sp/>\</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NULL,<sp/>\</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;COM1&gt;&quot;</highlight><highlight class="normal">,<sp/>\</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;ntshell_uart_1_info),<sp/>\</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_1_nt_ioinit,<sp/>\</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_1_nt_read,<sp/>\</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_1_nt_write,<sp/>\</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_uart_1_nt_printf</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+<codeline lineno="246"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_uart.c"/>
+  </compounddef>
+</doxygen>

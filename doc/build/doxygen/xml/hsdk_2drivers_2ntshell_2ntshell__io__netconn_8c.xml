@@ -1,0 +1,1243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c" kind="file">
+    <compoundname>hsdk/drivers/ntshell/ntshell_io_netconn.c</compoundname>
+    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
+    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
+    <includes local="no">stdarg.h</includes>
+    <includes refid="dev__uart_8h" local="yes">dev_uart.h</includes>
+    <includes local="yes">xprintf.h</includes>
+    <includes refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h" local="yes">ntshell_io_netconn.h</includes>
+    <includes local="yes">ntshell_task.h</includes>
+    <includes local="yes">lwip/opt.h</includes>
+    <includes local="yes">lwip/mem.h</includes>
+    <includes local="yes">lwip/debug.h</includes>
+    <includes local="yes">lwip/def.h</includes>
+    <includes local="yes">lwip/api.h</includes>
+    <includes local="yes">lwip/pbuf.h</includes>
+    <includes refid="emb_a_r_c__debug_8h" local="yes">embARC_debug.h</includes>
+    <incdepgraph>
+      <node id="3226">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3230">
+        <label>dev_uart.h</label>
+        <link refid="dev__uart_8h"/>
+        <childnode refid="3231" relation="include">
+        </childnode>
+      </node>
+      <node id="3229">
+        <label>stdarg.h</label>
+      </node>
+      <node id="3234">
+        <label>ntshell_task.h</label>
+      </node>
+      <node id="3221">
+        <label>ntshell_io_netconn.c</label>
+        <link refid="hsdk/drivers/ntshell/ntshell_io_netconn.c"/>
+        <childnode refid="3222" relation="include">
+        </childnode>
+        <childnode refid="3227" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3230" relation="include">
+        </childnode>
+        <childnode refid="3232" relation="include">
+        </childnode>
+        <childnode refid="3233" relation="include">
+        </childnode>
+        <childnode refid="3234" relation="include">
+        </childnode>
+        <childnode refid="3235" relation="include">
+        </childnode>
+        <childnode refid="3236" relation="include">
+        </childnode>
+        <childnode refid="3237" relation="include">
+        </childnode>
+        <childnode refid="3238" relation="include">
+        </childnode>
+        <childnode refid="3239" relation="include">
+        </childnode>
+        <childnode refid="3240" relation="include">
+        </childnode>
+        <childnode refid="3241" relation="include">
+        </childnode>
+      </node>
+      <node id="3233">
+        <label>ntshell_io_netconn.h</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
+        <childnode refid="3222" relation="include">
+        </childnode>
+        <childnode refid="3234" relation="include">
+        </childnode>
+      </node>
+      <node id="3223">
+        <label>stdint.h</label>
+      </node>
+      <node id="3228">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3222" relation="include">
+        </childnode>
+      </node>
+      <node id="3237">
+        <label>lwip/debug.h</label>
+      </node>
+      <node id="3225">
+        <label>stddef.h</label>
+      </node>
+      <node id="3231">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="3223" relation="include">
+        </childnode>
+      </node>
+      <node id="3224">
+        <label>limits.h</label>
+      </node>
+      <node id="3241">
+        <label>embARC_debug.h</label>
+        <link refid="emb_a_r_c__debug_8h"/>
+        <childnode refid="3232" relation="include">
+        </childnode>
+      </node>
+      <node id="3238">
+        <label>lwip/def.h</label>
+      </node>
+      <node id="3235">
+        <label>lwip/opt.h</label>
+      </node>
+      <node id="3232">
+        <label>xprintf.h</label>
+      </node>
+      <node id="3240">
+        <label>lwip/pbuf.h</label>
+      </node>
+      <node id="3236">
+        <label>lwip/mem.h</label>
+      </node>
+      <node id="3222">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="3223" relation="include">
+        </childnode>
+        <childnode refid="3224" relation="include">
+        </childnode>
+        <childnode refid="3225" relation="include">
+        </childnode>
+        <childnode refid="3226" relation="include">
+        </childnode>
+      </node>
+      <node id="3239">
+        <label>lwip/api.h</label>
+      </node>
+      <node id="3227">
+        <label>embARC_error.h</label>
+        <link refid="emb_a_r_c__error_8h"/>
+        <childnode refid="3223" relation="include">
+        </childnode>
+        <childnode refid="3228" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structnetconn__thread" prot="public">netconn_thread</innerclass>
+    <innerclass refid="structntshell__io__netconn" prot="public">ntshell_io_netconn</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gad72dbcf6d0153db1b8d8a58001feed83" prot="public" static="no">
+        <name>DEBUG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="70" column="10" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gac0dc02840a2aad44d41bf707bde4d261" prot="public" static="no">
+        <name>HSDK_NTSHELL_NETCONN_CHECK_EXP</name>
+        <param><defname>EXPR</defname></param>
+        <param><defname>ERROR_CODE</defname></param>
+        <initializer><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="73" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gacdf0ca79ad11b081ad83b5c9727a58cb" prot="public" static="no">
+        <name>CONN_NOTCONNECT</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="75" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gaf20066867b3296c28a4d46dcb60403d5" prot="public" static="no">
+        <name>CONN_SUCCESS</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="76" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga5ab5cf3707683a598675ac95ba72b08e" prot="public" static="no">
+        <name>CONN_LOST</name>
+        <initializer>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="77" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga80e6a55f5098b7f455550a62fa9a966f" prot="public" static="no">
+        <name>CONN_PORT_EXIST</name>
+        <initializer>(3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="78" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga948030ae014e788a7f4dccc56f7a34c7" prot="public" static="no">
+        <name>CONN_FAILED</name>
+        <initializer>(4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="79" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga3c070ff28c0df2d070a118fcb644161d" prot="public" static="no">
+        <name>CONN_CTRL_ECHO</name>
+        <initializer>(0x1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="81" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga916d6f216bd9d646309b6f51d45916d7" prot="public" static="no">
+        <name>CONN_CTRL_CRLF</name>
+        <initializer>(0x2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="82" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gacda058cf25ce65f76ccb1e38af72dd47" prot="public" static="no">
+        <name>TELNET_OPT_SE</name>
+        <initializer>(240)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="86" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gae710b68314f6cd7a152c9debf49f03d6" prot="public" static="no">
+        <name>TELNET_OPT_NOP</name>
+        <initializer>(241)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="87" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga3637ad2bd8936529efd9d649d361a310" prot="public" static="no">
+        <name>TELNET_OPT_DM</name>
+        <initializer>(242)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="88" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga9c161927802588444a7264da5b7c73c3" prot="public" static="no">
+        <name>TELNET_OPT_BRK</name>
+        <initializer>(243)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="89" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gad6a7e1b0e6ec6ecbb2aa4b5c3a5ce037" prot="public" static="no">
+        <name>TELNET_OPT_IP</name>
+        <initializer>(244)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="90" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gac2db006b9e852ce4fa982f82e1922aec" prot="public" static="no">
+        <name>TELNET_OPT_AO</name>
+        <initializer>(245)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="91" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gae991c549ecc7a1d9ecc9e71f95725a65" prot="public" static="no">
+        <name>TELNET_OPT_AYT</name>
+        <initializer>(246)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="92" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gad3bec1a68c1b9614a243ca1f11c6b272" prot="public" static="no">
+        <name>TELNET_OPT_EC</name>
+        <initializer>(247)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="93" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga57146b3da1c702ee2ef61220acfb30e7" prot="public" static="no">
+        <name>TELNET_OPT_EL</name>
+        <initializer>(248)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="94" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga9c6fb4b34ab83cb94d9afd6220c24cda" prot="public" static="no">
+        <name>TELNET_OPT_GA</name>
+        <initializer>(249)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="95" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gaf5e95539872107c6c98be08c18dd0ac9" prot="public" static="no">
+        <name>TELNET_OPT_SB</name>
+        <initializer>(250)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="96" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga4a301dc90136baee4e8f566b359c8fae" prot="public" static="no">
+        <name>TELNET_OPT_WILL</name>
+        <initializer>(251)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="97" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gaad0692283348e67a00a8b14e622c2140" prot="public" static="no">
+        <name>TELNET_OPT_WONT</name>
+        <initializer>(252)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="98" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga7ca79e4e3be5ba6798f4efb7704fe321" prot="public" static="no">
+        <name>TELNET_OPT_DO</name>
+        <initializer>(253)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="99" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga4b977736544659c09d4e65f4a1473a76" prot="public" static="no">
+        <name>TELNET_OPT_DONT</name>
+        <initializer>(254)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="100" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga405512bbd8ce6a8b8522d54190e56361" prot="public" static="no">
+        <name>TELNET_OPT_IAC</name>
+        <initializer>(255)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="101" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gaa8f1f23998cc013d7c7c2f134388e40a" prot="public" static="no">
+        <type>struct <ref refid="structntshell__io__netconn" kindref="compound">ntshell_io_netconn</ref></type>
+        <definition>typedef struct ntshell_io_netconn NTSHELL_IO_NETCONN</definition>
+        <argsstring></argsstring>
+        <name>NTSHELL_IO_NETCONN</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="57" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga6cf1f952da46fbde19c6028920ee3ccf" prot="public" static="no">
+        <type>struct <ref refid="structntshell__io__netconn" kindref="compound">ntshell_io_netconn</ref> *</type>
+        <definition>typedef struct ntshell_io_netconn * NTSHELL_IO_NETCONN_PTR</definition>
+        <argsstring></argsstring>
+        <name>NTSHELL_IO_NETCONN_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="103" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga1a3dc2fc04af8cfd3df3e5d11bb6e22b" prot="public" static="no">
+        <type>struct <ref refid="structnetconn__thread" kindref="compound">netconn_thread</ref></type>
+        <definition>typedef struct netconn_thread NETCONN_THREAD</definition>
+        <argsstring></argsstring>
+        <name>NETCONN_THREAD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="103" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga6fbc10ef2693044a10b14e4cc0349819" prot="public" static="no">
+        <type>struct <ref refid="structnetconn__thread" kindref="compound">netconn_thread</ref> *</type>
+        <definition>typedef struct netconn_thread * NETCONN_THREAD_PTR</definition>
+        <argsstring></argsstring>
+        <name>NETCONN_THREAD_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="104" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga5b008a923fb4811380b30d0e79e332eb" prot="public" static="yes" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t dont_echo[3]</definition>
+        <argsstring>[3]</argsstring>
+        <name>dont_echo</name>
+        <initializer>= {TELNET_OPT_IAC,TELNET_OPT_DONT,1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="127" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga39dd87ce2da208feb25578c5317ef082" prot="public" static="yes" mutable="no">
+        <type><ref refid="structnetconn__thread" kindref="compound">NETCONN_THREAD</ref></type>
+        <definition>NETCONN_THREAD netconn_0_thread</definition>
+        <argsstring></argsstring>
+        <name>netconn_0_thread</name>
+        <initializer>= {
+	&quot;NT_NTCONN_0&quot;, NT_NETCONN_0_PRIO, 512, 
+	(void *)(&amp;ntshell_netconn_0), ntshell_netconn_thread
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="375" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gac47ca77568024c6f8ea43f2a4c97acd5" prot="public" static="yes" mutable="no">
+        <type>ntshell_t</type>
+        <definition>ntshell_t netconn_ntshell_0</definition>
+        <argsstring></argsstring>
+        <name>netconn_ntshell_0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="380" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="380" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga072c0ecbc358020e02bb40d1a2f3d5ce" prot="public" static="yes" mutable="no">
+        <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref></type>
+        <definition>NTSHELL_IO_NETCONN ntshell_netconn_0_info</definition>
+        <argsstring></argsstring>
+        <name>ntshell_netconn_0_info</name>
+        <initializer>= {
+	NULL, NULL, 
+	0, 0, NULL, 
+	23, CONN_NOTCONNECT, CONN_CTRL_ECHO|CONN_CTRL_CRLF, 
+	&amp;netconn_0_thread, ntshell_netconn_0_write_byte
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="381" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="381" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga4306e6da1f2424145b1994998c06c40a" prot="public" static="no" mutable="no">
+        <type>NTSHELL_IO</type>
+        <definition>NTSHELL_IO ntshell_netconn_0</definition>
+        <argsstring></argsstring>
+        <name>ntshell_netconn_0</name>
+        <initializer>= {
+	&amp;netconn_ntshell_0, 
+	&amp;help_cmd, 
+	NULL, 
+	&quot;NETCONN0&gt;&quot;, 
+	(void *)(&amp;ntshell_netconn_0_info), 
+	ntshell_netconn_0_nt_ioinit, 
+	ntshell_netconn_0_nt_read, 
+	ntshell_netconn_0_nt_write, 
+	ntshell_netconn_0_nt_printf
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="393" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga24310b1d76145c673e77e08437047ef9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_netconn_nt_write</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn, const void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_netconn_nt_write</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="129" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="292" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga7d823d0fcba473c62416f106bdf61e82" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_netconn_thread</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>ntshell_netconn_thread</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="131" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="131" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gae9f0abc0ca244b034863945ff912ba8d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_netconn_nt_ioinit</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn)</argsstring>
+        <name>ntshell_netconn_nt_ioinit</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="172" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="172" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gae93a2521965e54093be5fb890835a948" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t netconn_nt_read_chr_raw</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn)</argsstring>
+        <name>netconn_nt_read_chr_raw</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="193" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="193" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga6a298e6a7f1697eb81b5f8d6ff41f1c9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t netconn_nt_read_chr</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn)</argsstring>
+        <name>netconn_nt_read_chr</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="226" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="226" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga554afa5de75ecc969976c6046ade9c2a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_netconn_nt_read</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn, void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_netconn_nt_read</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="261" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="261" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga4c050fb794951768119ddcf98171de54" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t netconn_nt_write_chr</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn, int8_t chr)</argsstring>
+        <name>netconn_nt_write_chr</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <param>
+          <type>int8_t</type>
+          <declname>chr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="287" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="287" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga091b4df09f77d113e2c9e9724ce89861" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_netconn_nt_printf</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn, const char *fmt, va_list arp)</argsstring>
+        <name>ntshell_netconn_nt_printf</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>va_list</type>
+          <declname>arp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="324" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="324" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga5ba461c61696a6ef995e7586cc2eb906" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_netconn_write_byte</definition>
+        <argsstring>(NTSHELL_IO_NETCONN *nt_netconn, unsigned char byte)</argsstring>
+        <name>ntshell_netconn_write_byte</name>
+        <param>
+          <type><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref> *</type>
+          <declname>nt_netconn</declname>
+        </param>
+        <param>
+          <type>unsigned char</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="342" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="342" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1gae6d467073ae053d66746680739b8e0a2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_netconn_0_nt_ioinit</definition>
+        <argsstring>(void)</argsstring>
+        <name>ntshell_netconn_0_nt_ioinit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="349" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="349" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga6de145c852f0cc013d0b2b408b7d3bdc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_netconn_0_nt_read</definition>
+        <argsstring>(void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_netconn_0_nt_read</name>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="354" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="354" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga4eeb972874ddab397f9f2873d72632b0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t ntshell_netconn_0_nt_write</definition>
+        <argsstring>(const void *buf, uint32_t cnt)</argsstring>
+        <name>ntshell_netconn_0_nt_write</name>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cnt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="359" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="359" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga6e3a9ec0b4f92f8bf88f8717bcc44f73" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_netconn_0_nt_printf</definition>
+        <argsstring>(const char *fmt,...)</argsstring>
+        <name>ntshell_netconn_0_nt_printf</name>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="364" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="364" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o___n_e_t_c_o_n_n_1ga1d82c8a7363f7e99eadd978a328955d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ntshell_netconn_0_write_byte</definition>
+        <argsstring>(unsigned char byte)</argsstring>
+        <name>ntshell_netconn_0_write_byte</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" line="373" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c" bodystart="388" bodyend="391"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>middleware ntshell io netconn interface driver </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MID_NTSHELL)<sp/>&amp;&amp;<sp/>defined(MID_LWIP)<sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;&amp;<sp/>defined(ENABLE_OS)<sp/><sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>&amp;<sp/>lwip<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__uart_8h" kindref="compound">dev_uart.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;xprintf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h" kindref="compound">ntshell_io_netconn.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ntshell_task.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/opt.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/mem.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/debug.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/def.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/api.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;lwip/pbuf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/>DEBUG</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__debug_8h" kindref="compound">embARC_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_NOTCONNECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_SUCCESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2)</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_PORT_EXIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_FAILED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONN_CTRL_ECHO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x1)</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>CONN_CTRL_CRLF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x2)</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>TELNET<sp/>option<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_SE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(240)</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_NOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(241)</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(242)</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_BRK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(243)</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_IP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(244)</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_AO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(245)</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_AYT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(246)</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_EC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(247)</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_EL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(248)</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_GA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(249)</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_SB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(250)</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_WILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(251)</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_WONT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(252)</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(253)</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_DONT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(254)</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>TELNET_OPT_IAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(255)</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structntshell__io__netconn" kindref="compound">ntshell_io_netconn</ref><sp/><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref>,<sp/>*<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN_PTR</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnetconn__thread" kindref="compound">netconn_thread</ref><sp/><ref refid="structnetconn__thread" kindref="compound">NETCONN_THREAD</ref>,<sp/>*<ref refid="structnetconn__thread" kindref="compound">NETCONN_THREAD_PTR</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structnetconn__thread" kindref="compound">netconn_thread</ref><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="structnetconn__thread_1a9cd4d7d5514a3b38ee4f7f76de62ba08" kindref="member">thread_name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structnetconn__thread_1afcc4bf92f7027cdab4d121fa0046fd6d" kindref="member">thread_prio</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structnetconn__thread_1ac3170bed911ee3b37cf9e0392094833f" kindref="member">thread_stksz</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structnetconn__thread_1a99a7802a8dbf5512da3d580f76055a09" kindref="member">thread_arg</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*<sp/><ref refid="structnetconn__thread_1a7a9f8fd26269fca461518875daf04d4d" kindref="member">thread</ref>)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*arg);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structntshell__io__netconn" kindref="compound">ntshell_io_netconn</ref><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">netconn<sp/>*local_conn;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">netconn<sp/>*remote_conn;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>rcv_len;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>rcv_ofs;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">pbuf<sp/>*pbuf_rcv;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>conn_port;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>conn_status;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>conn_ctrl;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structnetconn__thread" kindref="compound">NETCONN_THREAD</ref><sp/>*conn_thread;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*write_byte)(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint8_t<sp/>dont_echo[3]<sp/>=<sp/>{TELNET_OPT_IAC,TELNET_OPT_DONT,1};</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_nt_write(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_thread(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*arg)</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>err_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NTSHELL_IO<sp/>*nt_io<sp/>=<sp/>(NTSHELL_IO<sp/>*)arg;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">netconn<sp/>*temp_conn;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*p_dont_echo<sp/>=<sp/>&amp;dont_echo[0];</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(nt_io!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(nt_io-&gt;extra_info!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn<sp/>=<sp/>(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*)nt_io-&gt;extra_info;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;local_conn<sp/>=<sp/>netconn_new(NETCONN_TCP);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>netconn_bind(nt_netconn-&gt;local_conn,<sp/>NULL,<sp/>23);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>netconn_listen(nt_netconn-&gt;local_conn);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_status<sp/>=<sp/>CONN_NOTCONNECT;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>netconn_accept(nt_netconn-&gt;local_conn,<sp/>&amp;temp_conn);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_status<sp/>=<sp/>CONN_NOTCONNECT;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/>ERR_OK)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;remote_conn<sp/>!=<sp/>NULL)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>kill<sp/>previous<sp/>connection<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sys_mbox_trypost(&amp;nt_netconn-&gt;remote_conn-&gt;recvmbox,<sp/>NULL);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sys_msleep(200);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>netconn_close(nt_netconn-&gt;remote_conn);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>netconn_delete(nt_netconn-&gt;remote_conn);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DBG(</highlight><highlight class="stringliteral">&quot;Delete<sp/>old<sp/>connection\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DBG(</highlight><highlight class="stringliteral">&quot;New<sp/>connection<sp/>connected\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;remote_conn<sp/>=<sp/>temp_conn;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_status<sp/>=<sp/>CONN_SUCCESS;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_nt_write(nt_netconn,<sp/>p_dont_echo,<sp/>3);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_status<sp/>=<sp/>CONN_FAILED;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_nt_ioinit(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(nt_netconn!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1a99a7802a8dbf5512da3d580f76055a09" kindref="member">thread_arg</ref><sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1a99a7802a8dbf5512da3d580f76055a09" kindref="member">thread_arg</ref><sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)nt_netconn;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sys_thread_new(nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1a9cd4d7d5514a3b38ee4f7f76de62ba08" kindref="member">thread_name</ref>,<sp/>nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1a7a9f8fd26269fca461518875daf04d4d" kindref="member">thread</ref>,<sp/>\</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1a99a7802a8dbf5512da3d580f76055a09" kindref="member">thread_arg</ref>,<sp/>nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1ac3170bed911ee3b37cf9e0392094833f" kindref="member">thread_stksz</ref>,<sp/>\</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_thread-&gt;<ref refid="structnetconn__thread_1afcc4bf92f7027cdab4d121fa0046fd6d" kindref="member">thread_prio</ref>);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;conn_status<sp/>!=<sp/>CONN_SUCCESS)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sys_msleep(100);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>netconn_nt_read_chr_raw(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int8_t<sp/>rcv_chr;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;conn_status<sp/>==<sp/>CONN_SUCCESS)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;rcv_ofs<sp/>&gt;=<sp/>nt_netconn-&gt;rcv_len)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;pbuf_rcv<sp/>!=<sp/>NULL)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>free<sp/>it<sp/>when<sp/>valid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pbuf_free(nt_netconn-&gt;pbuf_rcv);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>netconn_recv_tcp_pbuf(nt_netconn-&gt;remote_conn,<sp/>&amp;nt_netconn-&gt;pbuf_rcv);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/>ERR_OK)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;rcv_ofs<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;rcv_len<sp/>=<sp/>nt_netconn-&gt;pbuf_rcv-&gt;tot_len;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;conn_status<sp/>=<sp/>CONN_LOST;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;pbuf_rcv<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pbuf_copy_partial(nt_netconn-&gt;pbuf_rcv,<sp/>&amp;rcv_chr,<sp/>1,<sp/>nt_netconn-&gt;rcv_ofs);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;rcv_ofs<sp/>++;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((int32_t)rcv_chr)<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;pbuf_rcv<sp/>!=<sp/>NULL)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>free<sp/>it<sp/>when<sp/>valid<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pbuf_free(nt_netconn-&gt;pbuf_rcv);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;rcv_ofs<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nt_netconn-&gt;rcv_len<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>netconn_nt_read_chr(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn)</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ch,<sp/>req;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>(ch<sp/>=<sp/>netconn_nt_read_chr_raw(nt_netconn))<sp/>==<sp/>TELNET_OPT_IAC<sp/>\</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>ch<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>ch<sp/>!=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ch<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ch<sp/>=<sp/>netconn_nt_read_chr_raw(nt_netconn))<sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TELNET_OPT_WILL:</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TELNET_OPT_WONT:</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TELNET_OPT_DO:</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TELNET_OPT_DONT:</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>req<sp/>=<sp/>netconn_nt_read_chr_raw(nt_netconn);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(req<sp/>!=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DBG(</highlight><highlight class="stringliteral">&quot;Telnet<sp/>Request:%x\n\r&quot;</highlight><highlight class="normal">,<sp/>req);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>req;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TELNET_OPT_SB:</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((ch<sp/>=<sp/>netconn_nt_read_chr_raw(nt_netconn))<sp/>!=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref><sp/>&amp;&amp;<sp/>ch<sp/>!=<sp/>TELNET_OPT_IAC)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ch<sp/>=<sp/>netconn_nt_read_chr_raw(nt_netconn))<sp/>==<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref><sp/>||<sp/>ch<sp/>==<sp/>TELNET_OPT_SE)<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ch;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_nt_read(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>reacnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*p_charbuf<sp/>=<sp/>(uint8_t<sp/>*)buf;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(nt_netconn!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(buf!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(reacnt<sp/>&lt;<sp/>cnt)<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>netconn_nt_read_chr(nt_netconn);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sys_msleep(10);<sp/></highlight><highlight class="comment">/*<sp/>yield<sp/>for<sp/>other<sp/>process<sp/>to<sp/>run<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p_charbuf[reacnt]<sp/>=<sp/>(uint8_t)ercd<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reacnt<sp/>++;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>reacnt;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>netconn_nt_write_chr(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn,<sp/>int8_t<sp/>chr)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>netconn_write(nt_netconn-&gt;remote_conn,<sp/>&amp;chr,<sp/>1,<sp/>NETCONN_COPY);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_nt_write(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="293"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>wricnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>crlf_snd<sp/>=<sp/>1,<sp/>crlf_snd_save<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*p_charbuf<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*)buf;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>sndchr<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(nt_netconn!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(buf!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(wricnt<sp/>&lt;<sp/>cnt)<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crlf_snd_save<sp/>=<sp/>crlf_snd;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sndchr<sp/>=<sp/>p_charbuf[wricnt];</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(crlf_snd<sp/>&amp;&amp;<sp/>sndchr<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>nt_netconn-&gt;conn_ctrl<sp/>&amp;<sp/>CONN_CTRL_CRLF)<sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crlf_snd<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sndchr<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>crlf_snd<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>netconn_nt_write_chr(nt_netconn,<sp/>sndchr);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;conn_status<sp/>!=<sp/>CONN_SUCCESS)<sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wricnt<sp/>+=<sp/>crlf_snd;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>wricnt;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_nt_printf(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fmt,<sp/>va_list<sp/>arp)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void<sp/>(*pf)(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>char);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HSDK_NTSHELL_NETCONN_CHECK_EXP(nt_netconn!=NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nt_netconn-&gt;write_byte)<sp/>{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pf<sp/>=<sp/>xfunc_out;<sp/><sp/></highlight><highlight class="comment">/*<sp/>Save<sp/>current<sp/>output<sp/>device<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xfunc_out<sp/>=<sp/>nt_netconn-&gt;write_byte;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Switch<sp/>output<sp/>to<sp/>specified<sp/>device<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xvprintf(fmt,<sp/>arp);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xfunc_out<sp/>=<sp/>pf;<sp/><sp/></highlight><highlight class="comment">/*<sp/>Restore<sp/>output<sp/>device<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_write_byte(<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*nt_netconn,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="343"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_nt_write(nt_netconn,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;byte),<sp/>1);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>USE_HSDK_NTSHELL_NETCONN_0</highlight></codeline>
+<codeline lineno="349"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_0_nt_ioinit(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="350"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_netconn_nt_ioinit((<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*)(ntshell_netconn_0.extra_info));</highlight></codeline>
+<codeline lineno="352"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_0_nt_read(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="355"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_netconn_nt_read((<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*)(ntshell_netconn_0.extra_info),<sp/>buf,<sp/>cnt);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>ntshell_netconn_0_nt_write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*buf,<sp/>uint32_t<sp/>cnt)</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ntshell_netconn_nt_write((<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*)(ntshell_netconn_0.extra_info),<sp/>buf,<sp/>cnt);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_nt_printf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*fmt,<sp/>...)</highlight></codeline>
+<codeline lineno="365"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>arp;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_start(arp,<sp/>fmt);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_nt_printf((<ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>*)(ntshell_netconn_0.extra_info),<sp/>fmt,<sp/>arp);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_end(arp);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structnetconn__thread" kindref="compound">NETCONN_THREAD</ref><sp/>netconn_0_thread<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NT_NTCONN_0&quot;</highlight><highlight class="normal">,<sp/>NT_NETCONN_0_PRIO,<sp/>512,<sp/>\</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;ntshell_netconn_0),<sp/>ntshell_netconn_thread</highlight></codeline>
+<codeline lineno="378"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>ntshell_t<sp/><sp/>netconn_ntshell_0;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structntshell__io__netconn" kindref="compound">NTSHELL_IO_NETCONN</ref><sp/>ntshell_netconn_0_info<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NULL,<sp/>NULL,<sp/>\</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>0,<sp/>NULL,<sp/>\</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>23,<sp/>CONN_NOTCONNECT,<sp/>CONN_CTRL_ECHO|CONN_CTRL_CRLF,<sp/>\</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;netconn_0_thread,<sp/>ntshell_netconn_0_write_byte</highlight></codeline>
+<codeline lineno="386"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ntshell_netconn_0_write_byte(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>byte)</highlight></codeline>
+<codeline lineno="389"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_write_byte(&amp;ntshell_netconn_0_info,<sp/>byte);</highlight></codeline>
+<codeline lineno="391"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal">NTSHELL_IO<sp/>ntshell_netconn_0<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;netconn_ntshell_0,<sp/>\</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;help_cmd,<sp/>\</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NULL,<sp/>\</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NETCONN0&gt;&quot;</highlight><highlight class="normal">,<sp/>\</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;ntshell_netconn_0_info),<sp/>\</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_0_nt_ioinit,<sp/>\</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_0_nt_read,<sp/>\</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_0_nt_write,<sp/>\</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ntshell_netconn_0_nt_printf</highlight></codeline>
+<codeline lineno="403"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+<codeline lineno="407"><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/qiangg/embarc_osp/board/hsdk/drivers/ntshell/ntshell_io_netconn.c"/>
+  </compounddef>
+</doxygen>

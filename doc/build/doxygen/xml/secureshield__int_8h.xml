@@ -1,0 +1,462 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="secureshield__int_8h" kind="file">
+    <compoundname>secureshield_int.h</compoundname>
+    <includedby refid="secureshield__int_8c" local="yes">secureshield_int.c</includedby>
+    <includedby refid="secureshield_8c" local="yes">secureshield.c</includedby>
+    <includedby refid="secureshield__trap_8c" local="yes">secureshield_trap.c</includedby>
+    <includedby refid="secureshield__sjli_8c" local="yes">secureshield_sjli.c</includedby>
+    <invincdepgraph>
+      <node id="3843">
+        <label>secureshield.c</label>
+        <link refid="secureshield_8c_source"/>
+      </node>
+      <node id="3845">
+        <label>secureshield_sjli.c</label>
+        <link refid="secureshield__sjli_8c_source"/>
+      </node>
+      <node id="3842">
+        <label>secureshield_int.c</label>
+        <link refid="secureshield__int_8c_source"/>
+      </node>
+      <node id="3841">
+        <label>secureshield_int.h</label>
+        <link refid="secureshield_int.h"/>
+        <childnode refid="3842" relation="include">
+        </childnode>
+        <childnode refid="3843" relation="include">
+        </childnode>
+        <childnode refid="3844" relation="include">
+        </childnode>
+        <childnode refid="3845" relation="include">
+        </childnode>
+      </node>
+      <node id="3844">
+        <label>secureshield_trap.c</label>
+        <link refid="secureshield__trap_8c_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_s_e_c_u_r_e_s_h_i_e_l_d___i_n_t___h_a_n_d_l_e_r" prot="public">SECURESHIELD_INT_HANDLER</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="secureshield__int_8h_1acba17020ed61e878c5e82678fe5662bd" prot="public" static="no" mutable="no">
+        <type><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gae3672aa4e2804ea07d3ecd02d68b2893" kindref="member">EXC_ENTRY</ref></type>
+        <definition>EXC_ENTRY secureshield_entry_table[]</definition>
+        <argsstring>[]</argsstring>
+        <name>secureshield_entry_table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="secureshield__int_8h_1aafa037ad637cab0578cc6fb80ddb774b" prot="public" static="no" mutable="no">
+        <type><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga76ef78e52a0465e63fcebd9385b71bbd" kindref="member">EXC_HANDLER</ref></type>
+        <definition>EXC_HANDLER secureshield_exc_handler_table[]</definition>
+        <argsstring>[]</argsstring>
+        <name>secureshield_exc_handler_table</name>
+        <briefdescription>
+<para>secure world exception handler table </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="42" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="secureshield__int_8h_1a77f8dc8596324c7bf3c4ac02787a7b5b" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_s_e_c_u_r_e_s_h_i_e_l_d___i_n_t___h_a_n_d_l_e_r" kindref="compound">SECURESHIELD_INT_HANDLER</ref></type>
+        <definition>SECURESHIELD_INT_HANDLER secureshield_int_handler_table[]</definition>
+        <argsstring>[]</argsstring>
+        <name>secureshield_int_handler_table</name>
+        <briefdescription>
+<para>secure world interrupt handler table </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="43" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="secureshield__int_8h_1a4d3152d7b2b978abd633a24cc49e56e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_disable</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_disable</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>disable interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 0k, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="45" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="423" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1a28fbee65816afb7abe0e7953c1788c83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_enable</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_enable</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>enable interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 0k, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="46" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="439" bodyend="448"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1a2a2eb4921c0c9728ea969f1001f805b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_enabled</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_enabled</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>is interrupt enabled? </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 disabled, 1 enabled, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="47" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="455" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1a9010a383e4f60bd63b4b4002d2a5f25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_pri_set</definition>
+        <argsstring>(uint32_t intno, int intpri)</argsstring>
+        <name>secure_int_pri_set</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>intpri</declname>
+        </param>
+        <briefdescription>
+<para>set interrupt priority </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 0k, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="48" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="470" bodyend="480"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1a946c8c513d400189577f5b4d47660439" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_pri_get</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_pri_get</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>get interrupt priority </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>interrupt priority, 0 for failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="49" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="487" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1a45e763d5e74ca9e82494d9a03fe3f6a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_handler_install</definition>
+        <argsstring>(uint32_t intno, INT_HANDLER handler)</argsstring>
+        <name>secure_int_handler_install</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <param>
+          <type><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref></type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>install an interrupt handler </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt handler </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 ok, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="50" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="370" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1ac4d2830312410c0ca2bfb09a8189eac1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref></type>
+        <definition>INT_HANDLER secure_int_handler_get</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_handler_get</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>get interrupt handler </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>interrupt handler </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="51" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="408" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1ab760f1ffb1d6d5d29b70c11931df83a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_sw_trigger</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_sw_trigger</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>trigger the interrupt in software </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 ok, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="52" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="502" bodyend="510"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1afcf0af4ef5f4ebb9fd05c6e8baad350d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_probe</definition>
+        <argsstring>(uint32_t intno)</argsstring>
+        <name>secure_int_probe</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>probe the interrupt whether is pending </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 pending, 0 no pending, -1 error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="53" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="517" bodyend="524"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1ac018d450cb5960e23931c7e923afa294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t secure_int_level_config</definition>
+        <argsstring>(uint32_t intno, uint32_t level)</argsstring>
+        <name>secure_int_level_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>config the trigger level of interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0-level trigger, 1-pulse triggered </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="54" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="531" bodyend="539"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__int_8h_1a16b2ed238a732f2613b57296e68b6dc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void secureshield_int_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>secureshield_int_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>interrupt initialization in secure world </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h" line="55" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="598" bodyend="641"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECURESHIELD_INT_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_SECURESHIELD_INT_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="struct_s_e_c_u_r_e_s_h_i_e_l_d___i_n_t___h_a_n_d_l_e_r" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref><sp/>handler;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>interrupt<sp/>handler<sp/>function<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>id;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>the<sp/>container<sp/>it<sp/>belongs<sp/>to<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>enabled;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>enabled<sp/>status<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/><ref refid="struct_s_e_c_u_r_e_s_h_i_e_l_d___i_n_t___h_a_n_d_l_e_r" kindref="compound">SECURESHIELD_INT_HANDLER</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gae3672aa4e2804ea07d3ecd02d68b2893" kindref="member">EXC_ENTRY</ref><sp/>secureshield_entry_table[];</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga76ef78e52a0465e63fcebd9385b71bbd" kindref="member">EXC_HANDLER</ref><sp/>secureshield_exc_handler_table[];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="struct_s_e_c_u_r_e_s_h_i_e_l_d___i_n_t___h_a_n_d_l_e_r" kindref="compound">SECURESHIELD_INT_HANDLER</ref><sp/>secureshield_int_handler_table[];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_disable(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_enable(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_enabled(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_pri_set(uint32_t<sp/>intno,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>intpri);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_pri_get(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_handler_install(uint32_t<sp/>intno,<sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref><sp/>handler);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref><sp/>secure_int_handler_get(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_sw_trigger(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_probe(uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secure_int_level_config(uint32_t<sp/>intno,<sp/>uint32_t<sp/>level);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secureshield_int_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SECURESHIELD_VERSION<sp/>==<sp/>1</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>secureshield_interrupt_handle(<ref refid="structint__exc__frame" kindref="compound">INT_EXC_FRAME</ref><sp/>*sp);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>secureshield_int_return(<ref refid="structint__exc__frame" kindref="compound">INT_EXC_FRAME</ref><sp/>*sp);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secureshield_int_ops(<ref refid="structint__exc__frame" kindref="compound">INT_EXC_FRAME</ref><sp/>*frame);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>SECURESHIELD_VERSION<sp/>==<sp/>2</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>secureshield_interrupt_handle(uint32_t<sp/>*sp);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>secureshield_int_ops(uint32_t<sp/>ops,<sp/>uint32_t<sp/>par1,<sp/>uint32_t<sp/>par2);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SECURESHIELD_INT_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_int.h"/>
+  </compounddef>
+</doxygen>

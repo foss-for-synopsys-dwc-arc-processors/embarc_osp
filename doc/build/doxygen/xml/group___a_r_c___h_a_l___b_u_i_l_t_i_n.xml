@@ -1,0 +1,462 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___a_r_c___h_a_l___b_u_i_l_t_i_n" kind="group">
+    <compoundname>ARC_HAL_BUILTIN</compoundname>
+    <title>Compiler Builtin and Helper</title>
+    <innerfile refid="arc__builtin_8h">arc_builtin.h</innerfile>
+      <sectiondef kind="user-defined">
+      <header>cache related helper function</header>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaa94be405be89c127168cb98cc47ffdf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t _arc_read_uncached_32</definition>
+        <argsstring>(void *ptr)</argsstring>
+        <name>_arc_read_uncached_32</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+<para>read memory and bypass the cache </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>memory address </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>value in the memory </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="234" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="234" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gae6a4acaab3f1a05455dfd4a8daa17964" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void _arc_write_uncached_32</definition>
+        <argsstring>(void *ptr, uint32_t data)</argsstring>
+        <name>_arc_write_uncached_32</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>write memory and bypass the cache </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>memory address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vaule to be written </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="247" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="247" bodyend="250"/>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga1acbe06806a36412c40ce0bbf67875be" compoundref="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c" startline="93" endline="107">dw_spi_0_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga5c784703529f421a8c6a0fd3a2749e0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t _arc_read_cached_32</definition>
+        <argsstring>(void *ptr)</argsstring>
+        <name>_arc_read_cached_32</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+<para>read memory with cache </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>memory address </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>value in the memory </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="257" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="257" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga6e637ed3b936c2f87739981e7087fdff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void _arc_write_cached_32</definition>
+        <argsstring>(void *ptr, uint32_t data)</argsstring>
+        <name>_arc_write_cached_32</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>read memory with cache </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>memory address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vaule to be written </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>description </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="271" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="271" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gab41428f421e9539fb507467584998b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t _arc_goto_main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>_arc_goto_main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+<para>go to main function with proper arguments </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>argument count </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>argument content array </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>return</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value of main function </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="282" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="282" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaeda112966176865ad5182340a80f43ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t _arc_find_msb</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>_arc_find_msb</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>find most significant bit set in a 32-bit word </para>        </briefdescription>
+        <detaileddescription>
+<para>This routine finds the first bit set starting from the most significant bit in the argument passed in and returns the index of that bit. Bits are numbered starting at 1 from the least significant bit. A return value of zero indicates that the value passed is zero.</para><para><simplesect kind="return"><para>most significant bit set, 0 if <emphasis>val</emphasis> is 0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="307" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="307" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gade2fbcddaaa9e3de0c0769fd7a3b7cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t _arc_find_lsb</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>_arc_find_lsb</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>find least significant bit set in a 32-bit word </para>        </briefdescription>
+        <detaileddescription>
+<para>This routine finds the first bit set starting from the least significant bit in the argument passed in and returns the index of that bit. Bits are numbered starting at 1 from the least significant bit. A return value of zero indicates that the value passed is zero.</para><para><simplesect kind="return"><para>least significant bit set, 0 if <emphasis>val</emphasis> is 0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="331" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="331" bodyend="343"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaf2336b11a7d9988fae4a7020d20a19b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t _arc_swap32</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>_arc_swap32</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="105" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="105" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga40ad4dd8aaed6a59d6ab59c7dde33cba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint16_t</type>
+        <definition>Inline uint16_t _arc_swap16</definition>
+        <argsstring>(uint32_t val)</argsstring>
+        <name>_arc_swap16</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="112" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="112" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaf3f0dc7e55ccccc48b5221b044fea76c" prot="public" static="no">
+        <name>_arc_nop</name>
+        <initializer>_nop</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>no operation, generate a nop instruction produces a single NOP instruction in the compiled code </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="55" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga7974888f34d00304cbeaf8ab948d1269" prot="public" static="no">
+        <name>_arc_brk</name>
+        <initializer>_brk</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a brk instruction </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="57" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga72cb582da8bcbe8bd56fd701e5e022bf" prot="public" static="no">
+        <name>_arc_clri</name>
+        <initializer>_clri</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a clri instruction </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="59" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="59" bodyend="-1"/>
+        <referencedby refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga740985b8ca473a2a4060b87ecdeafac6" compoundref="arc__exception_8h" startline="427" endline="430">arc_lock_save</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gac88768a7f4c0cdba77e0adfbb8a5aebd" prot="public" static="no">
+        <name>_arc_seti</name>
+        <param><defname>c</defname></param>
+        <initializer>_seti(c)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a seti instruction </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="61" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="61" bodyend="-1"/>
+        <referencedby refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga43d5a1597a3599dc8547a3f633369973" compoundref="arc__exception_8h" startline="437" endline="440">arc_unlock_restore</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga04aedd6ff5e8bd995f276a4c5e996290" prot="public" static="no">
+        <name>_arc_core_write</name>
+        <param><defname>regno</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>_core_write(val, regno)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write core register </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="63" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga13a91ed1f6deafab4253accdb2976af9" prot="public" static="no">
+        <name>_arc_core_read</name>
+        <param><defname>regno</defname></param>
+        <initializer>_core_read(regno)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read core register </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="65" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga9a3e0a1903d9a64e35b3ad3866ce5b0f" prot="public" static="no">
+        <name>_arc_lr_reg</name>
+        <param><defname>aux</defname></param>
+        <initializer>_lr(aux)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read auxiliary register </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="67" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga8ee255d46720ce1489efdc9d18f2756e" prot="public" static="no">
+        <name>_arc_sr_reg</name>
+        <param><defname>aux</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>_sr(val, aux)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write auxiliary register </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="69" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gae3ae996a22713a4641a075a97b3447ca" prot="public" static="no">
+        <name>_arc_sleep</name>
+        <param><defname>a</defname></param>
+        <initializer>_sleep(a)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a sleep instruction </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="71" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaaa9cdf00a9a835f7fee4f8cafeded961" prot="public" static="no">
+        <name>_arc_flag</name>
+        <param><defname>a</defname></param>
+        <initializer>_flag(a)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a flag instruction </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="73" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga4fa8d13932607ff0aa7c5d336a18ba34" prot="public" static="no">
+        <name>_arc_kflag</name>
+        <param><defname>a</defname></param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="75" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gae036cd29e75a50a6e98090522cbb3968" prot="public" static="no">
+        <name>_arc_sync</name>
+        <initializer>_sync</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>generate a sync instruction </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="77" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga7fa12f3bfa73b4d00f4227a60908a6af" prot="public" static="no">
+        <name>_arc_usually</name>
+        <param><defname>a</defname></param>
+        <initializer>_Usually((a))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="83" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga738da33c7d2c393be489f7361f77e6ef" prot="public" static="no">
+        <name>_arc_rarely</name>
+        <param><defname>a</defname></param>
+        <initializer>_Rarely((a))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="89" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gac5e596c9be37023b785d097061ec14d7" prot="public" static="no">
+        <name>_arc_swi</name>
+        <initializer>_swi</initializer>
+        <briefdescription>
+<para>Each call to _swi() generates one software interrupt instruction (SWI) for processors to support the SWI instruction. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="127" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga7094653bc3c70be9328907de9b57eab8" prot="public" static="no">
+        <name>_arc_aux_read</name>
+        <param><defname>aux</defname></param>
+        <initializer><ref refid="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga9a3e0a1903d9a64e35b3ad3866ce5b0f" kindref="member">_arc_lr_reg</ref>(aux)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="221" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga107ac7b60c49fcc1badee5a9d36095bc" prot="public" static="no">
+        <name>_arc_aux_write</name>
+        <param><defname>aux</defname></param>
+        <param><defname>val</defname></param>
+        <initializer><ref refid="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1ga8ee255d46720ce1489efdc9d18f2756e" kindref="member">_arc_sr_reg</ref>(aux, val)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" line="222" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_builtin.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Built-in and helper functions to access ARC hardware layer. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

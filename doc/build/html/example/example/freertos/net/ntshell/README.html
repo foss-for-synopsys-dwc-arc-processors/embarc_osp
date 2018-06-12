@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FreeRTOS Net NT-Shell &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../../../_static/style_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../../search.html"/>
+    <link rel="top" title="embARC 2018.01 documentation" href="../../../../../index.html"/>
+        <link rel="up" title="OS Based Examples" href="../../os_based_example.html"/>
+        <link rel="next" title="FreeRTOS mbed TLS Example: DTLS Client" href="../../sec/mbedtls/dtls/client/README.html"/>
+        <link rel="prev" title="FreeRTOS Net HTTP Server" href="../httpserver/README.html"/> 
+
+  
+  <script src="../../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../lib/library.html">Libraries</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../example.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../example.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../example.html">Examples and Demos</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../baremetal/baremetal_based_example.html">Baremetal examples</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../os_based_example.html">OS Based Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../example.html#application-note">Application Note</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">embARC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../../example.html">Examples</a> &raquo;</li>
+        
+          <li><a href="../../../example.html">Examples and Demos</a> &raquo;</li>
+        
+          <li><a href="../../os_based_example.html">OS Based Examples</a> &raquo;</li>
+        
+      <li>FreeRTOS Net NT-Shell</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../../_sources/example/example/freertos/net/ntshell/README.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="freertos-net-nt-shell">
+<span id="example-net-ntshell"></span><h1>FreeRTOS Net NT-Shell<a class="headerlink" href="#freertos-net-nt-shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This is embARC Example for NT-Shell on LwIP and FreeRTOS</div></blockquote>
+<div class="section" id="detailed-description">
+<h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Extra Required Tools</dt>
+<dd>NO</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extra Required Peripherals</dt>
+<dd>Digilent PMOD WIFI (MRF24WG0MA)</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Design Concept</dt>
+<dd>The Pmod modules should be connected to EMSK. This example is designed to show how to use NT-Shell over network in FreeRTOS</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Usage Manual</dt>
+<dd><dl class="first last docutils">
+<dt>This is an example running NT-Shell command interface ver network, and use telnet to connect to it</dt>
+<dd><ul class="first last">
+<li>when program is running and connected to the wifi hotspot, then you can connect your laptop to the same wifi hotspot that emsk connected to</li>
+<li>use telnet command to connect to the ip address of emsk. If there are outputs, then you can run and try out ntshell commands</li>
+<li>some commands require extra peripheral modules, for example command temp require Digilent PMOD TMP2 module in order to mesure temperature</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extra Comments</dt>
+<dd>NO</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="buidling-and-running">
+<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
+<p>This example outputs to the console. It is supported by all platform. The commands to run this example are as follows:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/net/ntshell
+<span class="gp">$</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
+</pre></div>
+</div>
+<div class="section" id="sample-output">
+<h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
+<span class="go"> ____                                _ ____</span>
+<span class="go">|  _ \ _____      _____ _ __ ___  __| | __ ) _   _</span>
+<span class="go">| |_) / _ \ \ /\ / / _ \ &#39;__/ _ \/ _` |  _ \| | | |</span>
+<span class="go">|  __/ (_) \ V  V /  __/ | |  __/ (_| | |_) | |_| |</span>
+<span class="go">|_|   \___/ \_/\_/ \___|_|  \___|\__,_|____/ \__, |</span>
+<span class="go">                                             |___/</span>
+<span class="go">                     _       _    ____   ____</span>
+<span class="go">       ___ _ __ ___ | |__   / \  |  _ \ / ___|</span>
+<span class="go">      / _ \ &#39;_ ` _ \| &#39;_ \ / _ \ | |_) | |</span>
+<span class="go">     |  __/ | | | | | |_) / ___ \|  _ &lt;| |___</span>
+<span class="go">      \___|_| |_| |_|_.__/_/   \_\_| \_\\____|</span>
+<span class="go">------------------------------------------------------------</span>
+
+<span class="go">embARC Build Time: Apr 12 2018, 17:35:28</span>
+<span class="go">Compiler Version: Metaware, 4.2.1 Compatible Clang 4.0.1 (branches/release_40)</span>
+<span class="go">FatFS initialized successfully!</span>
+<span class="go">Start Init LWIP</span>
+<span class="go">ntshell command info(Information) was registered!</span>
+<span class="go">ntshell command main(Call main function) was registered!</span>
+<span class="go">ntshell command swape(Swap endianness of input variable) was registered!</span>
+<span class="go">ntshell command map(Show the memory map of bootloader) was registered!</span>
+<span class="go">ntshell command bcr(Dump processor build configuration) was registered!</span>
+<span class="go">ntshell command lr(Read auxiliary register) was registered!</span>
+<span class="go">ntshell command sr(Write auxiliary register) was registered!</span>
+<span class="go">ntshell command mem(Operate the memory) was registered!</span>
+<span class="go">ntshell command ledflash(Run led flash example) was registered!</span>
+<span class="go">ntshell command led(Write LED) was registered!</span>
+<span class="go">ntshell command btn(Read button value) was registered!</span>
+<span class="go">ntshell command swt(Read DIP switch value) was registered!</span>
+<span class="go">ntshell command ledswbtn(Operate the LED through button and switch) was registered!</span>
+<span class="go">ntshell command adc(PMOD ADC sensor demo command) was registered!</span>
+<span class="go">ntshell command temp(Show current temperature) was registered!</span>
+<span class="go">ntshell command wifi(wifi operations) was registered!</span>
+<span class="go">ntshell command ls(List information about files) was registered!</span>
+<span class="go">ntshell command cd(Change the working directory) was registered!</span>
+<span class="go">ntshell command rm(Remove the file or the folder) was registered!</span>
+<span class="go">ntshell command mkdir(Create the directory) was registered!</span>
+<span class="go">ntshell command cat(Output file contents) was registered!</span>
+<span class="go">ntshell command cp(Copy source to destination) was registered!</span>
+<span class="go">ntshell command mv(Rename file or move file) was registered!</span>
+<span class="go">ntshell command pwd(Print the current working directory) was registered!</span>
+<span class="go">ntshell command touch(Create a file) was registered!</span>
+<span class="go">ntshell command ymodem(Ymodem file transfer protocol) was registered!</span>
+<span class="go">ntshell command disk(Operate the storge device) was registered!</span>
+<span class="go">ntshell command load(Load .bin file from SD card to ram at specified address) was registered!</span>
+<span class="go">ntshell command boot(Load application specified in a boot.cfg file from sdcard and run) was registered!</span>
+<span class="go">ntshell command go(Run the program at the specified address) was registered!</span>
+<span class="go">ntshell command spirw(Read/Write the image in spi flash for updating bootloader/application image) was registered!</span>
+<span class="go">ntshell command mload(Update firmware, read or write MCS file in the SPI flash) was registered!</span>
+<span class="go">NTShell Task StartUp</span>
+<span class="go">COM1&gt;</span>
+<span class="go">Now trying to connect to WIFI hotspot, please wait about 30s!</span>
+<span class="go">MRF24G Device Information As Follows:</span>
+<span class="go">Device Type:2, ROM Ver:31, Patch Ver:7</span>
+<span class="go">Connection Profile ID:1</span>
+<span class="go">WF INIT SUCCESSFULL!</span>
+<span class="go">MRF24G MAC ADDRESS:00-1e-c0-0e-6e-0a</span>
+<span class="go">WF_EVENT_CONNECTION_SUCCESSFUL</span>
+<span class="go">Link is UP!</span>
+
+<span class="go">Now start get ip address using DHCP, Please wait about 30s!</span>
+
+<span class="go">-----PMOD WIFI IP ADDRESS INFO-----</span>
+<span class="go"> ipaddr 192.168.137.108 netmask 255.255.255.0 gw 192.168.137.1</span>
+<span class="go"> dns server 0 :192.168.137.1</span>
+<span class="go"> dns server 1 :0.0.0.0</span>
+<span class="go">-----------------------------------</span>
+<span class="go">WiFi connected</span>
+<span class="go">Please run NT-Shell command(main) to start your application.</span>
+
+<span class="go">main command may required some arguments, please refer to example&#39;s document.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../sec/mbedtls/dtls/client/README.html" class="btn btn-neutral float-right" title="FreeRTOS mbed TLS Example: DTLS Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../httpserver/README.html" class="btn btn-neutral" title="FreeRTOS Net HTTP Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../../',
+            VERSION:'2018.01',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

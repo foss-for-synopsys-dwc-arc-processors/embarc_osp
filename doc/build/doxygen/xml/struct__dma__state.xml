@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="struct__dma__state" kind="struct" prot="public">
+    <compoundname>_dma_state</compoundname>
+    <includes refid="arc__udma_8h" local="no">arc_udma.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga64ac6b5df0bf7289323feebfa9bfd702" prot="public" static="no" mutable="no">
+        <type><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga0d1854ef6ca92f26e35a4e869f8a157f" kindref="member">dma_channel_t</ref> *</type>
+        <definition>volatile dma_channel_t* _dma_state::dma_chns[DMA_ALL_CHANNEL_NUM]</definition>
+        <argsstring>[DMA_ALL_CHANNEL_NUM]</argsstring>
+        <name>dma_chns</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma.h" line="240" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad875d605835bec0ffdbbcdf699efa7d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>_dma_state::EMBARC_ALIGNED</definition>
+        <argsstring>(32) volatile uint32_t mem_dma_ptrs[DMA_ALL_CHANNEL_NUM]</argsstring>
+        <name>EMBARC_ALIGNED</name>
+        <param>
+          <type>32</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>All uDMA channel resources </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma.h" line="237" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>DMA state to maintain uDMA resources. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="13">
+        <label>_dma_desc</label>
+        <link refid="struct__dma__desc"/>
+      </node>
+      <node id="11">
+        <label>_dma_state</label>
+        <link refid="struct__dma__state"/>
+        <childnode refid="12" relation="usage">
+          <edgelabel>+dma_chns</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>_dma_channel</label>
+        <link refid="struct__dma__channel"/>
+        <childnode refid="13" relation="usage">
+          <edgelabel>+desc</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma.h" line="231" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/inc/arc/arc_udma.h" bodystart="231" bodyend="245"/>
+    <listofallmembers>
+      <member refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga64ac6b5df0bf7289323feebfa9bfd702" prot="public" virt="non-virtual"><scope>_dma_state</scope><name>dma_chns</name></member>
+      <member refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad875d605835bec0ffdbbcdf699efa7d0" prot="public" virt="non-virtual"><scope>_dma_state</scope><name>EMBARC_ALIGNED</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

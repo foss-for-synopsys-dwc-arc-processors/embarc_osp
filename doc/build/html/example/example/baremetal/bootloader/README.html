@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Simple Bootloader &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="CPP Build" href="../cxx/README.html" />
+    <link rel="prev" title="Blinky" href="../blinky/README.html" /> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lib/library.html">Libraries</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../example.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../example.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../example.html">Examples and Demos</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../baremetal_based_example.html">Baremetal examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example.html#application-note">Application Note</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../example.html">Examples</a> &raquo;</li>
+        
+          <li><a href="../../example.html">Examples and Demos</a> &raquo;</li>
+        
+          <li><a href="../baremetal_based_example.html">Baremetal examples</a> &raquo;</li>
+        
+      <li>Simple Bootloader</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../../_sources/example/example/baremetal/bootloader/README.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simple-bootloader">
+<span id="example-bootloader"></span><h1>Simple Bootloader<a class="headerlink" href="#simple-bootloader" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. And this example itself can be used as ntshell application.</div></blockquote>
+<div class="section" id="detailed-description">
+<h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Extra Required Tools</dt>
+<dd><p class="first last">NO</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extra Required Peripherals</dt>
+<dd><ul class="first last simple">
+<li>SDCard with boot binary(boot.hex or boot.bin)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Design Concept</dt>
+<dd><p class="first last">This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. And this example itself can be used as ntshell application.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Usage Manual</dt>
+<dd><p class="first">As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA, a simple primary bootloader is also loaded in ICCM. Through the primary bootloader, the application or secondary bootloader can be loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.</p>
+<p>For EMSK1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
+For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.2, it can be upgraded to 2.3 by 2.3’s firmware.</p>
+<img alt="example/example/baremetal/bootloader/../../../../pic/bootloader.jpg" src="example/example/baremetal/bootloader/../../../../pic/bootloader.jpg" />
+<p>Here are steps for how to program the secondary bootloader application into onboard SPIFlash (Take EMSK2.3 - ARC EM7D as example) and automatically load and run <em>boot.hex</em> or <em>boot.bin</em> in SDCard.</p>
+<ul>
+<li><p class="first">Generate a secondary bootloader binary file</p>
+</li>
+<li><dl class="first docutils">
+<dt>Program generated secondary bootloader binary file into SPIFlash</dt>
+<dd><ul class="first">
+<li><p class="first">Insert SDCard to your PC, and copy the binary file <em>obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin</em> to SDCard Root, and rename it to <em>em7d_2bt.bin</em></p>
+</li>
+<li><p class="first">Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the &lt;em&gt;&lt;embARC&gt;/example/baremetal/bootloader&lt;/em&gt; example, then press any button to stop auto boot process, and enter to ntshell command mode.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Then use ntshell command <em>spirw</em> to program the <em>em7d_2bt.bin</em> into spiflash.</dt>
+<dd><ul class="first simple">
+<li>Firstly, run <em>spirw</em> to show help</li>
+<li>Secondly, run <em>spirw -i</em> to check SPIFlash ID, it should be <strong>Device ID = ef4018</strong></li>
+<li>Thirdly, run <em>spirw -w em7d_2bt.bin 0x17f00000 0x17f00004</em> to program spiflash</li>
+<li>Check the output message to see if it was programmed successfully.</li>
+</ul>
+<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg" class="last" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg" />
+</dd>
+</dl>
+</li>
+<li><p class="first">If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.</p>
+</li>
+<li><p class="first">If the sdcard already contains the <em>boot.bin</em> in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.</p>
+</li>
+<li><p class="first">You can goto the next step to generate the <em>boot.bin</em> for proper application you want to be auto-loaded in sdcard.</p>
+</li>
+</ul>
+<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg" class="last" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg" />
+</dd>
+</dl>
+</li>
+<li><p class="first">Generate <em>boot.bin</em> using any embARC example which ram start address should be 0x10000000 and use bootloader to run it</p>
+</li>
+<li><dl class="first docutils">
+<dt>Know Issues</dt>
+<dd><ul class="first last simple">
+<li>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="docutils">
+<dt><strong>The secondary bootloader is a complement of the primary bootloader, and provides the following functions:</strong></dt>
+<dd><ul class="first last simple">
+<li>File operations on SD card</li>
+<li>Operations on the EMSK, GPIO, I2C, SPI flash</li>
+<li>Operations on ARC processors</li>
+<li><dl class="first docutils">
+<dt>Automatic boot from SD card, using following instructions:</dt>
+<dd><ul class="first last">
+<li>burn the bin file of bootloader into EMSK spiflash using spirw command &lt;b&gt;spirw -w bootloader.bin 0x17f00000 0x17f00004 &lt;/b&gt; with the help of JTAG</li>
+<li>the primary bootloader should be able to load the secondary bootloader</li>
+<li>put the file you want to boot in the root directory of SD card, name it boot.bin</li>
+<li>plug in SD card</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>LED Status of loading application(boot.bin)</dt>
+<dd><ul class="first last">
+<li>Start to load application: LED on board -&gt; 0x0F</li>
+<li>Load application finished: LED on board -&gt; 0xFF, if application is running normally, LED will quickly change to 0x0</li>
+<li>Load application failed: LED on board -&gt; 0xAA</li>
+<li>Skip loading application, and enter to NTShell runtime: LED on board -&gt; 0x0</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Type <em>help</em> command in ntshell to show the list of supported commands.</li>
+</ul>
+</dd>
+</dl>
+<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader.jpg" class="last" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader.jpg" />
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extra Comments</dt>
+<dd><ul class="first last simple">
+<li>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send</li>
+<li>Make sure that the bootloader can only load application for extract the same core you built for.</li>
+<li>Currently the 2nd bootloader ran in a different place(end of DDR) in DDR which has no conflict with other normal examples placed at start of DDR.</li>
+<li>Bootloader example only support arc core configuration which has DDR with cache enabled.</li>
+<li>Bootloader example runs in DDR ram, not in CCM.</li>
+<li>Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.</li>
+<li>The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run sucessfully</li>
+<li><dl class="first docutils">
+<dt>Supported core configurations</dt>
+<dd><ul class="first last">
+<li>EMSK 1.1: EM6, EM6GP</li>
+<li>EMSK 2.2/2.3: EM7D, EM11D</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="buidling-and-running">
+<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Generate a secondary bootloader binary file</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+</pre></div>
+</div>
+<p>If the binary file is generated successfully, you will output as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&quot;Compiling       : &quot; ../../../middleware/ntshell/cmds/cmds_fs/ymodem/ymodemio.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../middleware/ntshell/port/ntshell_usrcmd.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../middleware/ntshell/port/ntshell_task.c</span>
+<span class="go">&quot;Archiving       : &quot; obj_emsk_23/gnu_arcem7d/libmidntshell.a</span>
+<span class="go">&quot;Compiling       : &quot; ../../../middleware/parson/parson.c</span>
+<span class="go">&quot;Archiving       : &quot; obj_emsk_23/gnu_arcem7d/libmidparson.a</span>
+<span class="go">&quot;Compiling       : &quot; ../../../arc/arc_timer.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../arc/arc_cache.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../arc/arc_exception.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../arc/arc_udma.c</span>
+<span class="go">&quot;Assembling      : &quot; ../../../arc/arc_exc_asm.s</span>
+<span class="go">&quot;Archiving       : &quot; obj_emsk_23/gnu_arcem7d/libcpuarc.a</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/fatfs_dirent.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/malloc.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/embARC_sbrk.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/embARC_misc.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/embARC_syscalls.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/ya_getopt.c</span>
+<span class="go">&quot;Compiling       : &quot; ../../../library/clib/embARC_target.c</span>
+<span class="go">&quot;Archiving       : &quot; obj_emsk_23/gnu_arcem7d/liblibclib.a</span>
+<span class="go">&quot;Archiving       : &quot; obj_emsk_23/gnu_arcem7d/libembarc.a</span>
+<span class="go">&quot;Linking         : &quot; obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.elf</span>
+<span class="go">&quot;Generating Binary obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin&quot;</span>
+</pre></div>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>Generate <em>boot.bin</em> using any embARC example which ram start address should be 0x10000000 and use bootloader to run it</dt>
+<dd><ul class="first simple">
+<li>Here take <em>&lt;embarc_root&gt;/example/freertos/kernel</em> for example</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
+<span class="gp">        $</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+</pre></div>
+</div>
+<ul class="last simple">
+<li>Insert SDCard to PC, and copy generated binary file <em>obj_emsk_23/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin</em> to SDCard Root, and rename it to boot.bin</li>
+<li>Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter <strong>C</strong>, and wait for autoload.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration</p>
+</div>
+<div class="section" id="sample-output">
+<h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
+<p>The output depends on the <em>boot.bin</em>. This sample is using <em>&lt;embarc_root&gt;/example/freertos/kernel</em>.</p>
+<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cxx/README.html" class="btn btn-neutral float-right" title="CPP Build" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../blinky/README.html" class="btn btn-neutral" title="Blinky" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

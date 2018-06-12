@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mbed TLS &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MQTT" href="mqtt.html" />
+    <link rel="prev" title="LwM2M" href="lwm2m.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../middleware.html">Middlwares</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../middleware.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../iot.html">IoT Stacks and Platforms</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="aws.html">AWS IoT device SDK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coap.html">CoAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="http_parser.html">HTTP Parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lwm2m.html">LwM2M</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">mbed TLS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mqtt.html">MQTT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../network_stack.html">Network Stacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc.html">Misc. Middlewares</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../middleware.html">Middlwares</a> &raquo;</li>
+        
+          <li><a href="../iot.html">IoT Stacks and Platforms</a> &raquo;</li>
+        
+      <li>mbed TLS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/middleware/iot/mbedtls.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mbed-tls">
+<span id="middleware-mbedtls"></span><h1>mbed TLS<a class="headerlink" href="#mbed-tls" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>mbed TLS (formerly known as PolarSSL) makes it trivially easy for developers
+to include cryptographic and SSL/TLS capabilities in their (embedded)
+products, facilitating this functionality with a minimal coding footprint.</p>
+<p>mbed TLS is available as open source under the Apache 2.0 license, the GPL 2.0
+license, or under an mbed partnership. The Apache 2.0 license enables you to
+use mbed TLS in both open source and closed source projects.</p>
+<p>embARC supports mbed TLS in FreeRTOS.</p>
+</div>
+<div class="section" id="use-mbed-tls">
+<h2>Use mbed TLS<a class="headerlink" href="#use-mbed-tls" title="Permalink to this headline">¶</a></h2>
+<p>Due to export control requirements for United States companies, mbed TLS is
+not distributed as part of embARC. These packages have been ported and
+verified for use with embARC. The embARC OSP distribution contains required
+patches to integrate mbed TLS into embARC.</p>
+<p>Steps:</p>
+<ul>
+<li><p class="first">Make sure <code class="docutils literal notranslate"><span class="pre">&lt;embARC&gt;/middleware/mbedtls/apply_embARC_patch.sh</span></code> is Unix format.
+If not, use dos2unix to convert it first.</p>
+</li>
+<li><p class="first">Run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">&lt;embARC&gt;/middleware/mbedtls/apply_embARC_patch.sh</span></code> in shell
+environment (Linux or Cygwin) to download required source code and patch
+them. The output is as follow:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embARC&gt;/middleware/mbedtls
+<span class="gp">$</span> bash ./apply_embarc_patch.sh
+<span class="go">  Clone repo from https://github.com/ARMmbed/mbedtls.git at commit or tag mbedtls-2.4.1</span>
+<span class="go">  Branch master set up to track remote branch coverity_scan from origin.</span>
+<span class="go">  Already on &#39;master&#39;</span>
+<span class="go">  commit b2c6b254430bd97aced22a4946bec1a51ccd5173</span>
+<span class="go">  Author: Janos Follath &lt;janos.follath@arm.com&gt;</span>
+<span class="go">  Date:   Tue Dec 13 14:14:03 2016 +0000</span>
+
+<span class="go">  Update library version number to 2.4.1</span>
+<span class="go">  Switched to a new branch &#39;embARC&#39;</span>
+<span class="go">  Try to apply patch for this repo</span>
+<span class="go">  Applying: Add embARC (FreeRTOS+LwIP) support to mbedtls</span>
+<span class="go">  .git/rebase-apply/patch:433: space before tab in indent.</span>
+<span class="go">           (void) mbedtls_timing_get_timer( &amp;ctx-&gt;timer, 1 );</span>
+<span class="go">  .git/rebase-apply/patch:448: space before tab in indent.</span>
+<span class="go">           return( 2 );</span>
+<span class="go">  .git/rebase-apply/patch:451: space before tab in indent.</span>
+<span class="go">           return( 1 );</span>
+<span class="go">  .git/rebase-apply/patch:458: new blank line at EOF.</span>
+<span class="go">  +</span>
+<span class="go">  warning: 4 lines add whitespace errors.</span>
+<span class="go">  Patches are applied</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mqtt.html" class="btn btn-neutral float-right" title="MQTT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lwm2m.html" class="btn btn-neutral" title="LwM2M" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

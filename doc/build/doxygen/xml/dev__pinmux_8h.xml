@@ -1,0 +1,949 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="dev__pinmux_8h" kind="file">
+    <compoundname>dev_pinmux.h</compoundname>
+    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
+    <includedby refid="emsk__init_8c" local="yes">emsk_init.c</includedby>
+    <includedby refid="emsk_2drivers_2mux_2mux_8c" local="yes">mux.c</includedby>
+    <includedby refid="emsk_8h" local="yes">emsk.h</includedby>
+    <includedby refid="hsdk_2drivers_2mux_2mux_8c" local="yes">mux.c</includedby>
+    <includedby refid="hsdk_8h" local="yes">hsdk.h</includedby>
+    <incdepgraph>
+      <node id="1168">
+        <label>stdbool.h</label>
+      </node>
+      <node id="1165">
+        <label>stdint.h</label>
+      </node>
+      <node id="1167">
+        <label>stddef.h</label>
+      </node>
+      <node id="1166">
+        <label>limits.h</label>
+      </node>
+      <node id="1163">
+        <label>dev_pinmux.h</label>
+        <link refid="dev_pinmux.h"/>
+        <childnode refid="1164" relation="include">
+        </childnode>
+      </node>
+      <node id="1164">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="1165" relation="include">
+        </childnode>
+        <childnode refid="1166" relation="include">
+        </childnode>
+        <childnode refid="1167" relation="include">
+        </childnode>
+        <childnode refid="1168" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1179">
+        <label>hsdk.h</label>
+        <link refid="hsdk_8h"/>
+        <childnode refid="1180" relation="include">
+        </childnode>
+        <childnode refid="1181" relation="include">
+        </childnode>
+        <childnode refid="1182" relation="include">
+        </childnode>
+        <childnode refid="1183" relation="include">
+        </childnode>
+        <childnode refid="1184" relation="include">
+        </childnode>
+        <childnode refid="1185" relation="include">
+        </childnode>
+        <childnode refid="1178" relation="include">
+        </childnode>
+        <childnode refid="1186" relation="include">
+        </childnode>
+        <childnode refid="1187" relation="include">
+        </childnode>
+      </node>
+      <node id="1185">
+        <label>dw_uart_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      </node>
+      <node id="1178">
+        <label>mux.c</label>
+        <link refid="hsdk_2drivers_2mux_2mux_8c"/>
+      </node>
+      <node id="1173">
+        <label>emsk_gpio.c</label>
+        <link refid="emsk__gpio_8c"/>
+      </node>
+      <node id="1182">
+        <label>dw_iic_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      </node>
+      <node id="1175">
+        <label>dw_iic_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      </node>
+      <node id="1172">
+        <label>emsk.h</label>
+        <link refid="emsk_8h"/>
+        <childnode refid="1173" relation="include">
+        </childnode>
+        <childnode refid="1174" relation="include">
+        </childnode>
+        <childnode refid="1175" relation="include">
+        </childnode>
+        <childnode refid="1176" relation="include">
+        </childnode>
+        <childnode refid="1177" relation="include">
+        </childnode>
+        <childnode refid="1171" relation="include">
+        </childnode>
+      </node>
+      <node id="1177">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
+      </node>
+      <node id="1174">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
+      </node>
+      <node id="1170">
+        <label>emsk_init.c</label>
+        <link refid="emsk__init_8c"/>
+      </node>
+      <node id="1180">
+        <label>hsdk_io.c</label>
+        <link refid="hsdk__io_8c"/>
+      </node>
+      <node id="1183">
+        <label>dw_sdio_obj.c</label>
+        <link refid="dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1176">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      </node>
+      <node id="1181">
+        <label>dw_gpio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
+      </node>
+      <node id="1186">
+        <label>ntshell_io_uart.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
+      </node>
+      <node id="1187">
+        <label>pmwifi.c</label>
+        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
+      </node>
+      <node id="1184">
+        <label>dw_spi_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
+      </node>
+      <node id="1169">
+        <label>dev_pinmux.h</label>
+        <link refid="dev_pinmux.h"/>
+        <childnode refid="1170" relation="include">
+        </childnode>
+        <childnode refid="1171" relation="include">
+        </childnode>
+        <childnode refid="1172" relation="include">
+        </childnode>
+        <childnode refid="1178" relation="include">
+        </childnode>
+        <childnode refid="1179" relation="include">
+        </childnode>
+      </node>
+      <node id="1171">
+        <label>mux.c</label>
+        <link refid="emsk_2drivers_2mux_2mux_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="dev__pinmux_8h_1ac46defe93716adb036206c73a595ee95" prot="public" static="no">
+        <name>IO_PINMUX_ENABLE</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="35" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="dev__pinmux_8h_1a09be524df1deae2c7d8b1bf3034b67d3" prot="public" static="no">
+        <name>IO_PINMUX_DISABLE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="36" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2" prot="public" static="no">
+        <name>arduino_pin</name>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2aa82221b5a6e97d530a87f666fea1cc6d" prot="public">
+          <name>ARDUINO_PIN_0</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2aa0f872de9d3ebfbcf7e7ddc53869fd22" prot="public">
+          <name>ARDUINO_PIN_1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a4b699d55b9d2bcb0f073eff972ff46c0" prot="public">
+          <name>ARDUINO_PIN_2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2ae33885b5c4b0b93852d0785879aeb3dd" prot="public">
+          <name>ARDUINO_PIN_3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2afc9b09c8b1f2fe1d22f55a23f2900fa2" prot="public">
+          <name>ARDUINO_PIN_4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a152d3a2158b8e739a701d8a548d5af94" prot="public">
+          <name>ARDUINO_PIN_5</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a3d6db051d0d97d3c4dd1cc428a908714" prot="public">
+          <name>ARDUINO_PIN_6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2ab1fa1a7f54b906b62e6dfe0ff37c0c79" prot="public">
+          <name>ARDUINO_PIN_7</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a223d7a382fdd41be4ddb8aada234698d" prot="public">
+          <name>ARDUINO_PIN_8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a4655aa6fb5dc805baec24743c3378a63" prot="public">
+          <name>ARDUINO_PIN_9</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a3588ab627cba019c240ba3a1bbd7c613" prot="public">
+          <name>ARDUINO_PIN_10</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a5ae5407557fa326919467ecfad67683e" prot="public">
+          <name>ARDUINO_PIN_11</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2ab7b017ad464b90ca9e514a4c76d4be64" prot="public">
+          <name>ARDUINO_PIN_12</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a1bb73b08453698afeeffda07b517eb0e" prot="public">
+          <name>ARDUINO_PIN_13</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a663c06cbddfe7fdfc637f738b769b31f" prot="public">
+          <name>ARDUINO_PIN_AD0</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a03bba66efd282fc062a0d113766dffd1" prot="public">
+          <name>ARDUINO_PIN_AD1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a8bc3598e9a365393a118c43f0d8391a8" prot="public">
+          <name>ARDUINO_PIN_AD2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a3e70f330bbb3ecdd499da4d4423dca86" prot="public">
+          <name>ARDUINO_PIN_AD3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2a127fcac42c990772bc271974ed0b764b" prot="public">
+          <name>ARDUINO_PIN_AD4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2acdebdd2c81e83d56c23fc24a808975e4" prot="public">
+          <name>ARDUINO_PIN_AD5</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a0096c930ab0ba5fe2c7ac65c488ac7e2aaa81f300f307b37fd80318f927b37b30" prot="public">
+          <name>ARDUINO_PIN_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="38" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="38" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="enum" id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45" prot="public" static="no">
+        <name>pmod_port</name>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a22cc6e94f8646ca64e38e5eb7553b13c" prot="public">
+          <name>PMOD_0</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a0f695d7e2c2974247f3f0b4ea51c345d" prot="public">
+          <name>PMOD_1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a17534b2e6aa34afcbc618d2a6b2213a4" prot="public">
+          <name>PMOD_2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45ac298e90ec6b78da431a260c25ce92f15" prot="public">
+          <name>PMOD_3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45ad4bbff04cc34c2c5b88d68a12b61855c" prot="public">
+          <name>PMOD_4</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a6d2a5a4855eafb45b359e0796d8a32eb" prot="public">
+          <name>PMOD_5</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a1299b63cce6f89a6b47495df365da9d9" prot="public">
+          <name>PMOD_6</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45ae3d8ed8d99532405fef99ea09cc487e3" prot="public">
+          <name>PMOD_A</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45ab7e3637a95e46d107267438ae1b10eac" prot="public">
+          <name>PMOD_B</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a55b2d3e9585cbe232ff276af4cbd7760" prot="public">
+          <name>PMOD_C</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45aee462faa145fd54189c3560d44292b73" prot="public">
+          <name>PMOD_D</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45ab9c4e12879e650aacf9413fae31fbb81" prot="public">
+          <name>PMOD_E</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a3eb4ae1e22726f82be43c7e33d826c45a22d0b8a6190d4f65390056c0afa97594" prot="public">
+          <name>PMOD_NUM_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="62" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="62" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="enum" id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6" prot="public" static="no">
+        <name>pmod_type</name>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6a39c88a000d710127cd51459a34dcb328" prot="public">
+          <name>PMOD_GPIO</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6a1f9df27c7fb3f7deb6e0829532975d30" prot="public">
+          <name>PMOD_UART</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6a670b57536a128fa1ecfc05b7e71fa774" prot="public">
+          <name>PMOD_SPI</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6a4b67b6156c0676611e1960bc418220cf" prot="public">
+          <name>PMOD_I2C</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6ac34d2d7b0eaeb2531eaa4c53e3e9ee27" prot="public">
+          <name>PMOD_PWM_MODE1</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6ade776128f5afb51f7fb6bc16a1796372" prot="public">
+          <name>PMOD_PWM_MODE2</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6a3f8ea7f7d36ba2da079f402dd6d508df" prot="public">
+          <name>PMOD_PWM_MODE3</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a37c143d132d8247baedc8881008148c6a75857d9dfafc1ee491f34afbaa6be2ed" prot="public">
+          <name>PMOD_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="78" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="78" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="enum" id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34" prot="public" static="no">
+        <name>arduino_type</name>
+        <enumvalue id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a0893f69b993232cefb30507062a74da9" prot="public">
+          <name>ARDUINO_GPIO</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a2da891aedea052f648e3c36b2b8784bc" prot="public">
+          <name>ARDUINO_UART</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a4158bf1e145c696412b0195b511fdb6f" prot="public">
+          <name>ARDUINO_SPI</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34adc15a63698325d7ff3f4d890ba7465ca" prot="public">
+          <name>ARDUINO_I2C</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a80fcbd987ca5a7f46f025d3a1e58fee9" prot="public">
+          <name>ARDUINO_PWM</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a45a1158abe901b3279d37a410af27262" prot="public">
+          <name>ARDUINO_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="89" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="89" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="enum" id="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088" prot="public" static="no">
+        <name>pinmux_type</name>
+        <enumvalue id="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088a04cdb960e45b3aa128493fd28e15d0d2" prot="public">
+          <name>PINMUX_TYPE_DEFAULT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088ad6dc8d16223c1663b4b6d7a66a234f22" prot="public">
+          <name>PINMUX_TYPE_ARDUINO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088a008213ea51e535ff845f794182fe63ef" prot="public">
+          <name>PINMUX_TYPE_PMOD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088a672f73806f6df02db3c69e59afca8542" prot="public">
+          <name>PINMUX_TYPE_MIKRO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088a99ea0713d8512d129a3b1ce7f9bd5354" prot="public">
+          <name>PINMUX_TYPE_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="98" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" bodystart="98" bodyend="104"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="dev__pinmux_8h_1a8e005bde1c2183cbdcb30e30ddd8f0b6" prot="public" static="no">
+        <type>enum arduino_pin</type>
+        <definition>typedef enum arduino_pin  ARDUINO_PIN</definition>
+        <argsstring></argsstring>
+        <name>ARDUINO_PIN</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dev__pinmux_8h_1af22a90995f2abfac2e3f832ac0870b4c" prot="public" static="no">
+        <type>enum pmod_port</type>
+        <definition>typedef enum pmod_port  PMOD_PORT</definition>
+        <argsstring></argsstring>
+        <name>PMOD_PORT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dev__pinmux_8h_1ad3ca50cc4cbbefb37b8b9ead5e58b0c0" prot="public" static="no">
+        <type>enum pmod_type</type>
+        <definition>typedef enum pmod_type  PMOD_TYPE</definition>
+        <argsstring></argsstring>
+        <name>PMOD_TYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dev__pinmux_8h_1a460205569785d151de58ab8b04a0d435" prot="public" static="no">
+        <type>enum arduino_type</type>
+        <definition>typedef enum arduino_type  ARDUINO_TYPE</definition>
+        <argsstring></argsstring>
+        <name>ARDUINO_TYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="96" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="dev__pinmux_8h_1abbaaa01a69f9ed587a4bab19c4761902" prot="public" static="no">
+        <type>enum pinmux_type</type>
+        <definition>typedef enum pinmux_type  PINMUX_TYPE</definition>
+        <argsstring></argsstring>
+        <name>PINMUX_TYPE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="104" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gadbb2990c863c9961339946c92f2fc2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void io_mux_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>io_mux_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="111" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="168" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8fc8550242f1a2dee25a8b1612f6bce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_pmod_config</definition>
+        <argsstring>(uint32_t pmod, uint32_t type, uint32_t config)</argsstring>
+        <name>io_pmod_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>pmod</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="112" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="115" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaea9c8745e17c7340aac1b83ca78f0bd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_mikro_config</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_mikro_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="113" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8981ef574064d7afe0b09b193834773c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config</definition>
+        <argsstring>(uint32_t pin_num, uint32_t type, uint32_t config)</argsstring>
+        <name>io_arduino_config</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>pin_num</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="114" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaed6d84e2f298582850bade46596b82fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config_spi</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_arduino_config_spi</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="116" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="90" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaf4d73821b689e641fe3bea3c1ee3666d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config_uart</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_arduino_config_uart</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="117" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="96" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga89a57c39917f80eb6379d0d353780729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t io_arduino_config_i2c</definition>
+        <argsstring>(uint32_t config)</argsstring>
+        <name>io_arduino_config_i2c</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h" line="118" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="102" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_DEV_PINMUX_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_DEV_PINMUX_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IO_PINMUX_ENABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IO_PINMUX_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>arduino_pin<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_0<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_1,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_2,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_3,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_4,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_5,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_6,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_7,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_8,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_9,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_10,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_11,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_12,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_13,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_AD0,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_AD1,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_AD2,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_AD3,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_AD4,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_AD5,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PIN_NONE</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}<sp/>ARDUINO_PIN;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>pmod_port<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_0<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_1,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_2,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_3,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_4,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_5,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_6,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_A<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_B,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_C,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_D,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_E,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_NUM_NONE,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}<sp/>PMOD_PORT;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>pmod_type<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_GPIO<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_UART,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_SPI,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_I2C,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_PWM_MODE1,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_PWM_MODE2,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_PWM_MODE3,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMOD_NONE</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}<sp/>PMOD_TYPE;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>arduino_type<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_GPIO<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_UART,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_SPI,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_I2C,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_PWM,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ARDUINO_NONE</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}<sp/>ARDUINO_TYPE;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>pinmux_type<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PINMUX_TYPE_DEFAULT<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PINMUX_TYPE_ARDUINO,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PINMUX_TYPE_PMOD,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PINMUX_TYPE_MIKRO,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PINMUX_TYPE_NONE</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}<sp/>PINMUX_TYPE;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>io_mux_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>io_pmod_config(uint32_t<sp/>pmod,<sp/>uint32_t<sp/>type,<sp/>uint32_t<sp/>config);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>io_mikro_config(uint32_t<sp/>config);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>io_arduino_config(uint32_t<sp/>pin_num,<sp/>uint32_t<sp/>type,<sp/>uint32_t<sp/>config);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>io_arduino_config_spi(uint32_t<sp/>config);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>io_arduino_config_uart(uint32_t<sp/>config);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>io_arduino_config_i2c(uint32_t<sp/>config);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DEV_PINMUX_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_pinmux.h"/>
+  </compounddef>
+</doxygen>

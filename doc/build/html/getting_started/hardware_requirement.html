@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hardware Requirement &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC Processors" href="../arc/arc.html" />
+    <link rel="prev" title="Getting Started with HS Development Kit" href="getting_started_with_hs_development_kit.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-code">Checking Out the embARC OSP Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#set-up-the-development-environment">Set Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-a-sample-application">Building a Sample Application</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#hardware-preparation">Hardware Preparation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_em_starter_kit.html">Getting Started with EM Starter Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_hs_development_kit.html">Getting Started with HS Development Kit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hardware Requirement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#board-requirement">Board Requirement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#board-connections">Board Connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-board-environment">Setting Board Environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#running-a-sample-application">Running a Sample Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
+        
+      <li>Hardware Requirement</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/getting_started/hardware_requirement.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hardware-requirement">
+<span id="id1"></span><h1>Hardware Requirement<a class="headerlink" href="#hardware-requirement" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="board-requirement">
+<h2>Board Requirement<a class="headerlink" href="#board-requirement" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ARC Board<ul>
+<li><a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit">ARC EM Starter Kit</a></li>
+<li><a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc-hs-development-kit">ARC HS Development Kit</a></li>
+<li>AXS Board</li>
+<li><a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit">ARC IoT Development Kit</a></li>
+<li><a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc-software-development-platform">ARC AXS</a></li>
+<li><a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=sim_nSIM">ARC Virtual Board based on nSIM</a></li>
+</ul>
+</li>
+</ul>
+<p>See <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a> for more board information. You can also add your own boards in <a class="reference internal" href="../developer/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
+<ul class="simple">
+<li>Peripherals<ul>
+<li>Wireless<ul>
+<li><a class="reference external" href="http://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/">Digilent Pmod WiFi with Microchip MRF24WG0MA</a></li>
+<li><a class="reference external" href="https://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/">Digilent Pmod RF2 with Microchip MRF24J40MA</a></li>
+<li><a class="reference external" href="http://www.microchip.com/wwwproducts/en/RN4020">BLE Microchip RN4020</a></li>
+<li><a class="reference external" href="http://www.huamaosoft.cn/bluetooth.asp?id=1">BLE Huamao HM-10</a></li>
+<li>WiFi RW009</li>
+</ul>
+</li>
+<li>Sensor<ul>
+<li><a class="reference external" href="https://store.digilentinc.com/pmod-ad2-4-channel-12-bit-a-d-converter/">Digilent Pmod AD2 with Analog Devices AD7991</a></li>
+<li><a class="reference external" href="https://store.digilentinc.com/pmod-tmp2-temperature-sensor/">Digilent Pmod TMP2 with Analog&nbsp;Devices&nbsp;ADT7420</a></li>
+<li><a class="reference external" href="https://store.digilentinc.com/pmod-tmp3-digital-temperature-sensor/">Digilent Pmod TMP3 with Microchip TCN75A</a></li>
+</ul>
+</li>
+<li>Audio &amp; Display<ul>
+<li><a class="reference external" href="https://store.digilentinc.com/pmod-i2s-stereo-audio-output/">Digilent Pmod I2S with Cirrus Logic CS4344</a></li>
+<li><a class="reference external" href="http://www.solomon-systech.com/en/product/display-ic/oled-driver-controller/ssd1306/">SSD1306 Monochrome OLED Graphic Display</a></li>
+</ul>
+</li>
+<li>Storage<ul>
+<li>SD Card, SDHC (8G preferred)</li>
+</ul>
+</li>
+<li>Wireless router or smart-phone hotspot (Android preferred)<ul>
+<li>WiFi supports IEEE 802.11b/g/n and can be connected to the Internet website AWS IoT</li>
+<li>Encryption with WPA/WPA2 - AES</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Not every peripheral is required for the embARC OSP examples. Choose peripherals according to your applications. You can also add your own peripherals in the embARC OSP.</p>
+</div>
+<div class="section" id="board-connections">
+<h2>Board Connections<a class="headerlink" href="#board-connections" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>EMSK<ul>
+<li>Pmod WiFi is connected to Pmod J5 connector.</li>
+<li>Pmod RF2 is connected to Pmod J6 connector.</li>
+<li>BLE HM-10 is connected to the Pmod J1 connector.</li>
+<li>Pmod AD2 is connected to the Pmod J2 connector.</li>
+<li>Pmod TMP2/TMP3 is connected to the Pmod J2 connector.</li>
+<li>SSD1306 OLED module is connected to the Pmod J2 or J4 connector depending on your application.</li>
+<li>SD Card plugged into card slot J9.</li>
+</ul>
+</li>
+</ul>
+<div class="figure" id="id2">
+<span id="emsk-board-settings"></span><a class="reference internal image-reference" href="../_images/emsk_board_settings.jpg"><img alt="emsk board setting" src="../_images/emsk_board_settings.jpg" style="width: 616.0px; height: 654.4px;" /></a>
+<p class="caption"><span class="caption-text">EMSK board connection</span></p>
+</div>
+<p>All versions of EMSK have the same board connections.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above connections are set as default in the embARC OSP. You can set your board connections in <em>&lt;embARC&gt;/board</em>. The hardware may be damaged by wrong connections.</p>
+</div>
+</div>
+<div class="section" id="setting-board-environment">
+<h2>Setting Board Environment<a class="headerlink" href="#setting-board-environment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Set serial terminal<ul>
+<li>The default UART baudrate is 115200 bps.</li>
+<li>For example, in the Tera Term menu, select <strong>Setup -&gt; Serial Port</strong> and change the settings for port and baudrate.</li>
+</ul>
+</li>
+<li>If using WiFi modules in the embARC OSP, a WiFi hotspot with <strong>WPA/WPA2 PSK</strong> encrypted is necessary. Some changes in <em>&lt;embARC&gt;/board</em> should be made before running embARC examples.<ul>
+<li>Check the <em>&lt;embARC&gt;/board/board.h</em>. And go to the target board header file, For example, go to <em>&lt;embARC&gt;/board/emsk/emsk.h</em> for EMSK.</li>
+<li>Set the WiFi hotspot name to <strong>embARC</strong>.</li>
+<li>Set the WiFi hotspot IP address range from <strong>192.168.43.1</strong> to <strong>192.168.43.254</strong>.</li>
+<li>Set the WiFi password to <strong>qazwsxedc</strong>.</li>
+</ul>
+</li>
+</ul>
+<p>If the WiFi hotspot IP address settings cannot be changed, the settings in the board setting header file must be modified.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define WF_IPADDR_1                   (192)</span>
+<span class="cp">#define WF_IPADDR_2                   (168)</span>
+<span class="cp">#define WF_IPADDR_3                   (43)</span>
+<span class="cp">#define WF_IPADDR_4                   (102)</span>
+
+<span class="cp">#define WF_NETMASK_1                  (255)</span>
+<span class="cp">#define WF_NETMASK_2                  (255)</span>
+<span class="cp">#define WF_NETMASK_3                  (255)</span>
+<span class="cp">#define WF_NETMASK_4                  (0)</span>
+
+<span class="cp">#define WF_GATEWAY_1                  (192)</span>
+<span class="cp">#define WF_GATEWAY_2                  (168)</span>
+<span class="cp">#define WF_GATEWAY_3                  (43)</span>
+<span class="cp">#define WF_GATEWAY_4                  (1)</span>
+
+<span class="cp">#define WF_HOTSPOT_IS_OPEN            (0)</span>
+
+<span class="cp">#define WF_IPADDR_DHCP                (1)</span>
+
+<span class="cp">#define WF_HOTSPOT_NAME               &quot;embARC&quot;</span>
+<span class="cp">#define WF_HOTSPOT_PASSWD             &quot;qazwsxedc&quot;</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>The IP address settings should be adjusted according to your hotspot settings.</dt>
+<dd><ul class="first simple">
+<li>For example, if your hotspot IP address is 192.168.1.1, your WiFi hotspot name is “synopsys”, and password is “12345678”, change the settings as shown below. Make sure the IP address (WF_IPADDR_x) doesn’t conflict with other WiFi devices in the same network.</li>
+</ul>
+<div class="last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define WF_IPADDR_1                   (192)</span>
+<span class="cp">#define WF_IPADDR_2                   (168)</span>
+<span class="cp">#define WF_IPADDR_3                   (1)</span>
+<span class="cp">#define WF_IPADDR_4                   (102)</span>
+
+<span class="cp">#define WF_NETMASK_1                  (255)</span>
+<span class="cp">#define WF_NETMASK_2                  (255)</span>
+<span class="cp">#define WF_NETMASK_3                  (255)</span>
+<span class="cp">#define WF_NETMASK_4                  (0)</span>
+
+<span class="cp">#define WF_GATEWAY_1                  (192)</span>
+<span class="cp">#define WF_GATEWAY_2                  (168)</span>
+<span class="cp">#define WF_GATEWAY_3                  (1)</span>
+<span class="cp">#define WF_GATEWAY_4                  (1)</span>
+
+<span class="cp">#define WF_HOTSPOT_IS_OPEN            (0)</span>
+
+<span class="cp">#define WF_IPADDR_DHCP                (1)</span>
+
+<span class="cp">#define WF_HOTSPOT_NAME               &quot;synopsys&quot;</span>
+<span class="cp">#define WF_HOTSPOT_PASSWD             &quot;12345678&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the hotspot IP address range is not similar to <strong>192.168.43.xxx</strong>, the IP address settings of the EMSK board should be changed in the target board header file. The baremetal examples don’t support DHCP. A static IP address is required.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started_with_hs_development_kit.html" class="btn btn-neutral" title="Getting Started with HS Development Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,818 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="secureshield__vmpu_8h" kind="file">
+    <compoundname>secureshield_vmpu.h</compoundname>
+    <includes refid="secureshield__vmpu__exports_8h" local="yes">secureshield_vmpu_exports.h</includes>
+    <includedby refid="secureshield__int_8c" local="yes">secureshield_int.c</includedby>
+    <includedby refid="secureshield_8c" local="yes">secureshield.c</includedby>
+    <includedby refid="secureshield__sys_8c" local="yes">secureshield_sys.c</includedby>
+    <includedby refid="secureshield__vmpu_8c" local="yes">secureshield_vmpu.c</includedby>
+    <includedby refid="secureshield__vmpu__arc_8c" local="yes">secureshield_vmpu_arc.c</includedby>
+    <includedby refid="secureshield__trap_8c" local="yes">secureshield_trap.c</includedby>
+    <includedby refid="secureshield__sjli_8c" local="yes">secureshield_sjli.c</includedby>
+    <incdepgraph>
+      <node id="3996">
+        <label>secureshield_vmpu.h</label>
+        <link refid="secureshield_vmpu.h"/>
+        <childnode refid="3997" relation="include">
+        </childnode>
+      </node>
+      <node id="3997">
+        <label>secureshield_vmpu_exports.h</label>
+        <link refid="secureshield__vmpu__exports_8h_source"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4000">
+        <label>secureshield.c</label>
+        <link refid="secureshield_8c_source"/>
+      </node>
+      <node id="4005">
+        <label>secureshield_sjli.c</label>
+        <link refid="secureshield__sjli_8c_source"/>
+      </node>
+      <node id="3998">
+        <label>secureshield_vmpu.h</label>
+        <link refid="secureshield_vmpu.h"/>
+        <childnode refid="3999" relation="include">
+        </childnode>
+        <childnode refid="4000" relation="include">
+        </childnode>
+        <childnode refid="4001" relation="include">
+        </childnode>
+        <childnode refid="4002" relation="include">
+        </childnode>
+        <childnode refid="4003" relation="include">
+        </childnode>
+        <childnode refid="4004" relation="include">
+        </childnode>
+        <childnode refid="4005" relation="include">
+        </childnode>
+      </node>
+      <node id="3999">
+        <label>secureshield_int.c</label>
+        <link refid="secureshield__int_8c_source"/>
+      </node>
+      <node id="4002">
+        <label>secureshield_vmpu.c</label>
+        <link refid="secureshield__vmpu_8c_source"/>
+      </node>
+      <node id="4004">
+        <label>secureshield_trap.c</label>
+        <link refid="secureshield__trap_8c_source"/>
+      </node>
+      <node id="4003">
+        <label>secureshield_vmpu_arc.c</label>
+        <link refid="secureshield__vmpu__arc_8c_source"/>
+      </node>
+      <node id="4001">
+        <label>secureshield_sys.c</label>
+        <link refid="secureshield__sys_8c_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="secureshield__vmpu_8h_1ac545b1439b607c341f7a47e5ea89e66a" prot="public" static="no">
+        <name>VMPU_NORMAL_ROM_ADDR_MASK</name>
+        <initializer>(~(((uint32_t)(NORMAL_ROM_SIZE)) - 1))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="43" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="secureshield__vmpu_8h_1ad2bdc106303a0fca23049cc8dd0759f6" prot="public" static="no">
+        <name>VMPU_NORMAL_ROM_ADDR</name>
+        <param><defname>addr</defname></param>
+        <initializer>((VMPU_NORMAL_ROM_ADDR_MASK &amp; (uint32_t)(addr)) == \
+					(NORMAL_ROM_START &amp; VMPU_NORMAL_ROM_ADDR_MASK))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="44" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="secureshield__vmpu_8h_1a1c9eb7c0398da4e04f14933f469f291b" prot="public" static="no">
+        <name>VMPU_SECURE_ROM_ADDR_MASK</name>
+        <initializer>(~(((uint32_t)(SECURE_ROM_SIZE)) - 1))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="47" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="secureshield__vmpu_8h_1a1cfbbb231f4325988b7a8860a466df63" prot="public" static="no">
+        <name>VMPU_SECURE_ROM_ADDR</name>
+        <param><defname>addr</defname></param>
+        <initializer>((VMPU_SECURE_ROM_ADDR_MASK &amp; (uint32_t)(addr)) == \
+					(SECURE_ROM_START &amp; VMPU_SECURE_ROM_ADDR_MASK))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="48" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="secureshield__vmpu_8h_1ab7e17c1a69e9d97c354988024c23df44" prot="public" static="no">
+        <name>VMPU_REGION_SIZE</name>
+        <param><defname>p1</defname></param>
+        <param><defname>p2</defname></param>
+        <initializer>((p1 &gt;= p2) ? 0 : \
+					((uint32_t) (p2) - (uint32_t) (p1)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="52" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="secureshield__vmpu_8h_1a05c2a1e80928f00fb628438e2f5afeb4" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t g_vmpu_container_count</definition>
+        <argsstring></argsstring>
+        <name>g_vmpu_container_count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="86" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="secureshield__vmpu_8h_1a0e27f687ce06c335e1f4f2d7b612c2fc" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t g_active_container</definition>
+        <argsstring></argsstring>
+        <name>g_active_container</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="87" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a26ddd727c0fd8202c363535e43415825" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vmpu_ac_mem</definition>
+        <argsstring>(uint8_t container_id, void *addr, uint32_t size, CONTAINER_AC ac)</argsstring>
+        <name>vmpu_ac_mem</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>CONTAINER_AC</type>
+          <declname>ac</declname>
+        </param>
+        <briefdescription>
+<para>add a memory space region for the specified container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the specified container </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>region size </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ac</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>access control </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="56" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="553" bodyend="582"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1aba9af2ddc512ca77bf76cb7afd98ed66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t vmpu_ac_irq</definition>
+        <argsstring>(uint8_t container_id, INT_HANDLER function, uint32_t intno)</argsstring>
+        <name>vmpu_ac_irq</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <param>
+          <type><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref></type>
+          <declname>function</declname>
+          <defname>handler</defname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>intno</declname>
+        </param>
+        <briefdescription>
+<para>allocate an interrupt to the specified container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>container id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt handler </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">intno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt no. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 ok, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="58" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_int.c" bodystart="651" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a9b1e9f8060cae5b6d68ba0d708ac3043" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t vmpu_ac_peripheral</definition>
+        <argsstring>(CONTAINER_AC ac, uint16_t periperal_id)</argsstring>
+        <name>vmpu_ac_peripheral</name>
+        <param>
+          <type>CONTAINER_AC</type>
+          <declname>ac</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>periperal_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a636e67ae5c91db9eab136d0b74d81c29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t vmpu_ac_interface</definition>
+        <argsstring>(uint8_t container_id, void *function, uint32_t args_num)</argsstring>
+        <name>vmpu_ac_interface</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>function</declname>
+          <defname>func</defname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>args_num</declname>
+        </param>
+        <briefdescription>
+<para>add an interface for the specified container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the specified container </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interface function </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">args_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>valid argument number </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 for success, -1 for fail </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="62" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="765" bodyend="801"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a63dd63b03fd91fb7873e388fc969d3a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* vmpu_find_interface</definition>
+        <argsstring>(uint8_t container_id, void *function, uint32_t args_num)</argsstring>
+        <name>vmpu_find_interface</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>function</declname>
+          <defname>func</defname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>args_num</declname>
+        </param>
+        <briefdescription>
+<para>get the correct interface of the specified container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the specified container </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the callee interface </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">args_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the argument number of the callee interface </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>real interface pointer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="64" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="810" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1abdb7cd39b31397c7ecee2250e11fddd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t vmpu_ac_aux</definition>
+        <argsstring>(uint8_t container_id, uint32_t start, uint32_t size)</argsstring>
+        <name>vmpu_ac_aux</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>allocate an aux region to the specified container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>container id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address size </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 ok, -1 failed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="66" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_sys.c" bodystart="148" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1aaa6f0eb8f9b969dd8ae4b11891e1ae76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vmpu_ac_container</definition>
+        <argsstring>(uint8_t container_id, const CONTAINER_CONFIG *container_cfg)</argsstring>
+        <name>vmpu_ac_container</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <param>
+          <type>const CONTAINER_CONFIG *</type>
+          <declname>container_cfg</declname>
+        </param>
+        <briefdescription>
+<para>load the basic configuration of the specified container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the specified container </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">container_cfg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>container configuration </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="68" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="589" bodyend="714"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a8040e03fc3c84a6f00ddb8ebc39771a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t vmpu_ac_static_region</definition>
+        <argsstring>(uint8_t region, void *base, uint32_t size, CONTAINER_AC ac)</argsstring>
+        <name>vmpu_ac_static_region</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>base</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>CONTAINER_AC</type>
+          <declname>ac</declname>
+        </param>
+        <briefdescription>
+<para>add an global MPU region </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">region</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>region id </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">base</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start address </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>region size </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ac</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>region access control </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>adjusted region size, 0 for fail </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="70" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="530" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1ab361336cfb5ea0ee2a1ccd0ba4bc60d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vmpu_switch</definition>
+        <argsstring>(uint8_t src_id, uint8_t dst_id)</argsstring>
+        <name>vmpu_switch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>src_id</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>dst_id</declname>
+        </param>
+        <briefdescription>
+<para>MPU context switch. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">src_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source container </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">dst_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination container </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="72" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="415" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1ae1217ddc338beed85ddcb44fefaad4ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vmpu_load_container</definition>
+        <argsstring>(uint8_t container_id)</argsstring>
+        <name>vmpu_load_container</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>container_id</declname>
+        </param>
+        <briefdescription>
+<para>load container </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">container_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the specified container </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="74" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="512" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1ad9cbe7e69b4f4318df23a7f6684f33b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t vmpu_fault_find_ac</definition>
+        <argsstring>(uint32_t fault_addr, uint32_t size)</argsstring>
+        <name>vmpu_fault_find_ac</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>fault_addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>find the access control of the specified address with the specified size </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fault_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="76" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="405" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a2f85826e2cb277b23ded85e6954afd71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t vmpu_fault_recovery_mpu</definition>
+        <argsstring>(uint32_t fault_addr, uint32_t type)</argsstring>
+        <name>vmpu_fault_recovery_mpu</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>fault_addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>MPU walk function when an MPU exception occurs. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">fault_address</parametername>
+<parametername direction="in">the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>address which caused exception </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">type</parametername>
+<parametername direction="in">not</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>used now </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>-1 the mpu region not found, 0 mpu region found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="78" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="723" bodyend="756"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a20a8d7230440997f5204057198b9d333" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vmpu_arch_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>vmpu_arch_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="80" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="839" bodyend="875"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1aea8987eb24bc4ba758b9167ebc9b611d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t vmpu_init_pre</definition>
+        <argsstring>(void)</argsstring>
+        <name>vmpu_init_pre</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>the initial init of vmpu </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="82" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="secureshield__vmpu_8h_1a629c9bce961b74afa0d66369de26842b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void vmpu_init_post</definition>
+        <argsstring>(void)</argsstring>
+        <name>vmpu_init_post</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>the post init of vmpu </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h" line="84" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/src/secureshield_vmpu.c" bodystart="187" bodyend="197"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECURESHIELD_VMPU_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_SECURESHIELD_VMPU_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;secureshield_vmpu_exports.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SECURESHIELD_VERSION<sp/>==<sp/>1</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>SECURESHIELD_VERSION<sp/>==<sp/>2</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MPU_DEFAULT_MODE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x400181c0<sp/><sp/>//<sp/>MPU<sp/>enabled,<sp/>SID=1,<sp/>S<sp/>mode,<sp/>KR,<sp/>KW,<sp/>KE</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VMPU_NORMAL_ROM_ADDR_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(~(((uint32_t)(NORMAL_ROM_SIZE))<sp/>-<sp/>1))</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>VMPU_NORMAL_ROM_ADDR(addr)<sp/><sp/><sp/><sp/><sp/><sp/>((VMPU_NORMAL_ROM_ADDR_MASK<sp/>&amp;<sp/>(uint32_t)(addr))<sp/>==<sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(NORMAL_ROM_START<sp/>&amp;<sp/>VMPU_NORMAL_ROM_ADDR_MASK))</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VMPU_SECURE_ROM_ADDR_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(~(((uint32_t)(SECURE_ROM_SIZE))<sp/>-<sp/>1))</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>VMPU_SECURE_ROM_ADDR(addr)<sp/><sp/><sp/><sp/><sp/><sp/>((VMPU_SECURE_ROM_ADDR_MASK<sp/>&amp;<sp/>(uint32_t)(addr))<sp/>==<sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(SECURE_ROM_START<sp/>&amp;<sp/>VMPU_SECURE_ROM_ADDR_MASK))</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VMPU_REGION_SIZE(p1,<sp/>p2)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((p1<sp/>&gt;=<sp/>p2)<sp/>?<sp/>0<sp/>:<sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((uint32_t)<sp/>(p2)<sp/>-<sp/>(uint32_t)<sp/>(p1)))</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>a<sp/>memory<sp/>resource<sp/>to<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>vmpu_ac_mem(uint8_t<sp/>container_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*addr,<sp/>uint32_t<sp/>size,<sp/>CONTAINER_AC<sp/>ac);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>an<sp/>irq<sp/>resource<sp/>to<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>vmpu_ac_irq(uint8_t<sp/>container_id,<sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga9ad1c2fee7a6abbc4e0b9f739e72c8c9" kindref="member">INT_HANDLER</ref><sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">,<sp/>uint32_t<sp/>intno);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>a<sp/>peripheral<sp/>resource<sp/>to<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>vmpu_ac_peripheral(CONTAINER_AC<sp/>ac,<sp/>uint16_t<sp/>periperal_id);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>a<sp/>interface<sp/>to<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>vmpu_ac_interface(uint8_t<sp/>container_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">function</highlight><highlight class="normal">,<sp/>uint32_t<sp/>args_num);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>find<sp/>the<sp/>interface<sp/>in<sp/>the<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>vmpu_find_interface(uint8_t<sp/>container_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">function</highlight><highlight class="normal">,<sp/>uint32_t<sp/>args_num);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>an<sp/>aux<sp/>resource<sp/>to<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>vmpu_ac_aux(uint8_t<sp/>container_id,<sp/>uint32_t<sp/>start,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>stack<sp/>and<sp/>context<sp/>to<sp/>a<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>vmpu_ac_container(uint8_t<sp/>container_id,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CONTAINER_CONFIG<sp/>*container_cfg);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>add<sp/>a<sp/>static<sp/>region<sp/>which<sp/>does<sp/>not<sp/>belong<sp/>to<sp/>any<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>vmpu_ac_static_region(uint8_t<sp/>region,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>base,<sp/>uint32_t<sp/>size,<sp/>CONTAINER_AC<sp/>ac);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>switch<sp/>a<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>vmpu_switch(uint8_t<sp/>src_id,<sp/>uint8_t<sp/>dst_id);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>load<sp/>a<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>vmpu_load_container(uint8_t<sp/>container_id);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>according<sp/>to<sp/>the<sp/>fault_addr<sp/>and<sp/>size,<sp/>find<sp/>the<sp/>correct<sp/>access<sp/>control<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>vmpu_fault_find_ac(uint32_t<sp/>fault_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>try<sp/>to<sp/>recover<sp/>from<sp/>an<sp/>exception<sp/>raiser<sp/>by<sp/>MPU,<sp/>i.e.<sp/>,<sp/>MPU<sp/>walking<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>vmpu_fault_recovery_mpu(uint32_t<sp/>fault_addr,<sp/>uint32_t<sp/>type);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>hardware<sp/>dependent<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>vmpu_arch_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>pre-init<sp/>of<sp/>vmpu<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>vmpu_init_pre(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>post-init<sp/>of<sp/>vmpu<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>vmpu_init_post(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>g_vmpu_container_count;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/>g_active_container;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">/*_SECURESHIELD_VMPU_H_*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/qiangg/embarc_osp/library/secureshield/core/inc/secureshield_vmpu.h"/>
+  </compounddef>
+</doxygen>

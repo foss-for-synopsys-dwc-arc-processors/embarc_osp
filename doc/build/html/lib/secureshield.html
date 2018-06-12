@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SecureShiled &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../example/example.html" />
+    <link rel="prev" title="C Library Support" href="c_lib.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="library.html">Libraries</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c_lib.html">C Library Support</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SecureShiled</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminology">Terminology</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#secureshield-runtime">SecureShield Runtime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#container">Container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resources">Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resources-of-a-container">Resources of a container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#secure-call">Secure Call</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-map">Memory Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compile-and-link-flow">Compile and Link Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#phase1-secureshield-runtime-compile-and-link">Phase1: SecureShield runtime compile and link</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#phase2-application-compile-and-link">Phase2: Application compile and link</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#steps-to-create-a-secureshield-application">Steps to Create a SecureShield Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#secureshield-application-examples">SecureShield Application Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="library.html">Libraries</a> &raquo;</li>
+        
+      <li>SecureShiled</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/lib/secureshield.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="secureshiled">
+<span id="lib-secureshield"></span><h1>SecureShiled<a class="headerlink" href="#secureshiled" title="Permalink to this headline">¶</a></h1>
+<p>SecureShield enables the execution of applications in isolated, Trusted
+Execution Environments (TEE). Multiple, isolated environments can run on a
+single core. The SecureShield runtime is a microvisor implementation that
+provides the required isolation, enforced by processor privilege levels and
+the memory-protection unit (MPU). Depending on the level of trust for the
+application, each execution environment can be given or denied access to
+system resources like memory, memory-mapped I/O, CPU control registers, and
+APEX extension instructions and registers.</p>
+<img alt="SecureShield Overview" src="../_images/secureshield_overview.jpg" />
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="secureshield-runtime">
+<h3>SecureShield Runtime<a class="headerlink" href="#secureshield-runtime" title="Permalink to this headline">¶</a></h3>
+<p>SecurrShield runtime is a kind of microvisor implementation for ARC EM
+Processors with MPU to manage containers, analogous to RTOS kernel managing
+tasks.</p>
+</div>
+<div class="section" id="container">
+<h3>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h3>
+<p>A container defines a sandbox for an application. The container provides the
+trusted execution environment for application code runs in. Containers are
+designed to be isolated from each other. Each container has its own space
+attributes, including the stack area (required), context area (optional),
+resources (peripherals, interrupt, auxiliary registers). A container context
+is the memory area (ROM or RAM) that is used for the container itself; it is
+defined in the container configuration.</p>
+<img alt="Containers in SecureShield" src="../_images/secureshield_containers.jpg" />
+<div class="section" id="secure-containers">
+<h4>Secure Containers<a class="headerlink" href="#secure-containers" title="Permalink to this headline">¶</a></h4>
+<p>Secure containers have a secure privilege level, meaning that Secure
+containers are trusted and can access all the resources in the system. Bugs or
+malware in a secure container can compromise the system so a container that is
+configured as secure can not be changed at runtime.</p>
+</div>
+<div class="section" id="normal-containers">
+<h4>Normal Containers<a class="headerlink" href="#normal-containers" title="Permalink to this headline">¶</a></h4>
+<p>Normal containers have a normal privilege level, meaning that their access to
+system resources is limited. Normal containers are only allowed to access the
+resources allocated to them. If they attempt to access other resources, a
+violation exception is raised.</p>
+</div>
+<div class="section" id="background-container">
+<h4>Background Container<a class="headerlink" href="#background-container" title="Permalink to this headline">¶</a></h4>
+<p>The background container is a special normal container whose resources are
+shared to all the other containers. It has no context area, and its stack is
+the original application stack when SecureShield is not enabled.</p>
+</div>
+</div>
+<div class="section" id="resources">
+<h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h3>
+<p>The core concept in SecureShield is that a container can only access resources
+that have been explicitly allocated to it.</p>
+<div class="section" id="memory-mapped-resources">
+<h4>Memory Mapped Resources<a class="headerlink" href="#memory-mapped-resources" title="Permalink to this headline">¶</a></h4>
+<p>The memory mapped resources are resources that are mapped into memory address
+space, e.g. ram, rom, peripherals (UART/I2/SPI). Memory mapped resources are
+isolated and protected by the MPU.</p>
+</div>
+<div class="section" id="system-resources">
+<h4>System Resources<a class="headerlink" href="#system-resources" title="Permalink to this headline">¶</a></h4>
+<p>System resources are resources that are not isolated and protected by MPU,
+e.g., interrupts, exceptions, registers, APEX. System resources are isolated
+and protected by the processor privilege level. Secure system resources
+require secure privilege level and can be allocated to normal containers;
+normal system resources require normal privilege level and are shared to all
+containers.</p>
+<p>System resources APIs are used by normal containers to access secure system
+resources. Because secure containers have secure privilege level, then can
+access secure system resources directly.</p>
+</div>
+<div class="section" id="container-interfaces">
+<h4>Container Interfaces<a class="headerlink" href="#container-interfaces" title="Permalink to this headline">¶</a></h4>
+<p>A container can provide services to other containers through an interface. An
+interface is a C function with parameters and return value registered in an
+access control table.</p>
+<p>As shown below, a container can call the interface of
+another container through container call. The container interface will be
+executed in the context of callee container.</p>
+<img alt="Container Interface" src="../_images/secureshield_container_interface.jpg" />
+<p>Background container has no interfaces as it is a global shared container,
+i.e., regular C function calls can be performed.</p>
+</div>
+</div>
+<div class="section" id="resources-of-a-container">
+<h3>Resources of a container<a class="headerlink" href="#resources-of-a-container" title="Permalink to this headline">¶</a></h3>
+<p>A container has implicit resources: code sections (.text, .rodata, .bss,
+.data) and stack; as well as explicit resources defined in an access control
+table, e.g., memory mapped resources, system resources and container
+interfaces.</p>
+<div class="section" id="access-control-table">
+<h4>Access Control Table<a class="headerlink" href="#access-control-table" title="Permalink to this headline">¶</a></h4>
+<p>The privileges that a container has to access the system are defined via
+Access Control (AC).</p>
+<p>Each container has a table that defines the allocated resources and privilege
+level, including memory, interrupts, and peripherals. This table is referred
+to as the access-control table or access-control list.</p>
+<p>Each item in this table or list is called an access-control item. An access
+control item has the type access control, and additional attributes that
+constitute a triplet: {attribute1, attribute2, type|access}.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">param1</span><span class="p">;</span>       <span class="cm">/* address parameter or function pointer */</span>
+    <span class="kt">uint32_t</span> <span class="n">param2</span><span class="p">;</span>    <span class="cm">/* size or no. */</span>
+    <span class="n">CONTAINER_AC</span> <span class="n">ac</span><span class="p">;</span>    <span class="cm">/* resource type, access control types */</span>
+<span class="p">}</span> <span class="n">EMBARC_PACKED</span> <span class="n">CONTAINER_AC_ITEM</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>An access-control table example is shown below:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">CONTAINER_AC_TABLE</span> <span class="n">g_container_act</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="cm">/* memory mapper peripheral, {start_address, size in bytes, type | access} */</span>
+   <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)(</span><span class="n">PERIPHERAL_ADDR_BASE</span> <span class="o">+</span> <span class="n">REL_REGBASE_PINMUX</span><span class="p">),</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">SECURESHIELD_ACDEF_UPERIPH</span><span class="p">},</span>
+   <span class="cm">/* memory, {start_address, size in bytes, type | access} */</span>
+   <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x10000</span><span class="p">,</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">SECURESHIELD_ACDEF_URAM</span><span class="p">},</span>
+   <span class="cm">/* system resources-interrupt, {interrupt handler, interrupt no, type} */</span>
+   <span class="p">{</span><span class="n">default_interrupt_handler</span><span class="p">,</span> <span class="n">INTNO_GPIO</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_IRQ</span><span class="p">},</span>
+   <span class="cm">/* system resources-auxiliary registers, {start_address, size, type}*/</span>
+   <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x3</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_AUX</span><span class="p">},</span>
+   <span class="cm">/* container interface, {interface handler, number of interface handler arguments, type} */</span>
+   <span class="p">{</span><span class="n">tst_func4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_INTERFACE</span><span class="p">},</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>According to this access control table, the container is allocated the
+peripheral area of PIN_MUX, a 0x1000 bytes ram region starting from 0x10000, a
+GPIO interrupt (INTNO_GPIO), an auxiliary-register area starting from 0x21
+with a size of 03. The container also has an interface (tst_func4) to provide
+the service with 4 arguments in the interface handler function</p>
+<p>The resource type describes the kind of resource, such as interrupt, register,
+or memory. The access-control attribute describes how it is accessed: secure
+or normal, read/write/execute. The detailed definitions of resource type and
+access-control attribute is listed as follow.</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Container Resoure Type</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Basic Resource Type</th>
+<th class="head">Parameters</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SECURESHIELD_AC_MEMORY</td>
+<td>(start_address, size)</td>
+<td>Allocate a memory region</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_PERIPHERAL</td>
+<td>(start_address, size)</td>
+<td>Allocate a memory-mapped peripheral are</td>
+</tr>
+<tr class="row-even"><td>SECURESHIELD_AC_IRQ</td>
+<td>(interrupt_handler, interrupt no</td>
+<td>Allocate an interrupt</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_AUX</td>
+<td>(aux start address, size)</td>
+<td>Allocate an auxilliary address space</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">Container Resoure Attribute</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource Access Attribute</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SECURESHIELD_AC_UEXECUTE</td>
+<td>Execution with user privilege</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_UWRITE</td>
+<td>Write with user privilege</td>
+</tr>
+<tr class="row-even"><td>SECURESHIELD_AC_UREAD</td>
+<td>Read with user privilege</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_KEXECUTE</td>
+<td>Execution with kernel privilege</td>
+</tr>
+<tr class="row-even"><td>SECURESHIELD_AC_KWRITE</td>
+<td>Write with kernel privilege</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_KREAD</td>
+<td>Read with kernel Privilege</td>
+</tr>
+<tr class="row-even"><td>SECURESHIELD_AC_SIZE_ROUND_UP</td>
+<td>The resource size should be rounded up</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_SIZE_ROUND_DOWN</td>
+<td>the resource size should be rounded down</td>
+</tr>
+<tr class="row-even"><td>SECURESHIELD_AC_SHARED</td>
+<td>the resource is a shared resource (no implementation now)</td>
+</tr>
+<tr class="row-odd"><td>SECURESHIELD_AC_SECURE</td>
+<td>the resource is a secure resource</td>
+</tr>
+<tr class="row-even"><td>SECURESHIELD_AC_NORMAL</td>
+<td>the resource is a normal resource</td>
+</tr>
+</tbody>
+</table>
+<p>More details can be found in secureshield_vmpu_exports.h. For some resources, there are pre-defined CONTAINER_AC, e.g., SECURESHIELD_ACDEF_U/KROM, SECURESHIELD_ACDEF_U/KRAM.</p>
+</div>
+</div>
+<div class="section" id="secure-call">
+<h3>Secure Call<a class="headerlink" href="#secure-call" title="Permalink to this headline">¶</a></h3>
+<p>In SecureShield, a secure call is implemented as a section of assembly code
+and invoked as a normal function call. The secure call is the only
+communication interface for a container to call the SecureShield runtime
+services. The following SecureShield runtime services are provided:</p>
+<ul class="simple">
+<li>container call: call the services provided by other containers</li>
+<li>interrupt management: see secureshield_int_exports.h</li>
+<li>auxiliary-register access and benchmark function: see
+<code class="docutils literal notranslate"><span class="pre">secureshield_sys_ops_exports.h</span></code></li>
+</ul>
+<img alt="Secure call" src="../_images/secureshield_secure_call.jpg" />
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define SECURESHIELD_SECURE_CALL(id, metadata, ...) \</span>
+<span class="cp">    ({ \</span>
+<span class="cp">        SECURESHIELD_MACRO_REGS_ARGS(uint32_t, ##__VA_ARGS__) \</span>
+<span class="cp">        SECURESHIELD_MACRO_REGS_RETVAL(uint32_t, res) \</span>
+<span class="cp">        Asm( \</span>
+<span class="cp">            &quot;SECURE_INSTN %[secure_call_id]\n&quot; \</span>
+<span class="cp">            metadata \</span>
+<span class="cp">            : SECURESHIELD_MACRO_ASM_OUTPUT(res) \</span>
+<span class="cp">            : SECURESHIELD_MACRO_ASM_INPUT(__VA_ARGS__), \</span>
+<span class="cp">            [secure_call_id] &quot;i&quot; (id) \</span>
+<span class="cp">        ); \</span>
+<span class="cp">        res; \</span>
+<span class="cp">    })</span>
+</pre></div>
+</div>
+<p>If SECURESHIELD_VERSION == 1, SECURE_INSTN is trap_s; If SECURESHIELD_VERSION
+== 2, SECURE_INSTN is sjli.</p>
+<div class="section" id="container-call">
+<h4>Container Call<a class="headerlink" href="#container-call" title="Permalink to this headline">¶</a></h4>
+<p>Although containers are isolated from each other, a container can provide
+services to other containers through container interface. The container
+interface must first be registered in the access control table. The background
+container has no interface as its resources are shared to all other
+containers.</p>
+<p>To call a container interface, container all is required. The following is an
+example.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">tst_func2</span><span class="p">(</span><span class="kt">int</span> <span class="n">arg1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arg2</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">arg1</span><span class="o">+</span><span class="n">arg2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="n">CONTAINER_AC_ITEM</span> <span class="n">g_container1_act</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="n">tst_func</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_INTERFACE</span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>In the above code, container1 has one interface named tst_func2 with two
+arguments to provide services. If other containers want to call this service,
+the following container call should be made:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span> <span class="o">=</span> <span class="n">container_call</span><span class="p">(</span><span class="n">container1</span><span class="p">,</span> <span class="n">tst_func2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="Container call" src="../_images/secureshield_container_call.jpg" />
+<p>The container_call will be expanded into the following assembly.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">mov</span> <span class="n">r0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">mov</span> <span class="n">r1</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">SECURE_INSTN</span> <span class="n">SECURESHIELD_SECURE_CALL_CONTAINER_IN</span>
+<span class="n">b</span> <span class="n">skip_args1</span>
+<span class="p">.</span><span class="kt">long</span> <span class="n">SECURESHIELD_CONTAINER_CALL_MAGIC</span>
+<span class="p">.</span><span class="kt">long</span> <span class="n">tst_func2</span>
+<span class="p">.</span><span class="kt">long</span> <span class="n">container1_cfg_prt</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Container calls can be nested, i.e., in a container interface, another
+container call can be made. But the target container should not be the
+caller container, i.e.,  <strong>a loop of container call is not allowed !</strong></p>
+<p>Also, container call is not allowed to be made in the interrupt and
+exception handler</p>
+<p class="last">Because SecureShield runtime is not integrated with OS, in the container
+call which will cause container switch, task scheduler should be disabled
+to avoid task switch.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="memory-map">
+<h2>Memory Map<a class="headerlink" href="#memory-map" title="Permalink to this headline">¶</a></h2>
+<p>The memory map of a SecureShield application is shown as follow. There are two
+worlds, secure world and normal world. The normal world, consisting of normal
+containers, is in normal memory (normal rom and ram). The secure world,
+consisting of secure containers, is in secure memory (secure rom and ram). In
+each world, containers are isolated with each other through MPU, an address
+alignment is also required. Besides secure containers, SecureShield runtime,
+can be viewed as a special secure container, is in secure memory with a fixed
+position. SecureShiled runtime will be compiled and linked independently with
+the application, so it’s a black box to application.</p>
+<img alt="SecureShield application memory map" src="../_images/secureshield_memory_map.jpg" />
+</div>
+<div class="section" id="compile-and-link-flow">
+<h2>Compile and Link Flow<a class="headerlink" href="#compile-and-link-flow" title="Permalink to this headline">¶</a></h2>
+<p>Different with common one shot compile and link, there are two compiles and
+links in SecureShiled application, one for SecureShield runtime, one for
+application.</p>
+<div class="section" id="phase1-secureshield-runtime-compile-and-link">
+<h3>Phase1: SecureShield runtime compile and link<a class="headerlink" href="#phase1-secureshield-runtime-compile-and-link" title="Permalink to this headline">¶</a></h3>
+<p>The compile and link flow is shown as follow</p>
+<img alt="SecureShiled runtime compile and link" src="../_images/secureshield_1st_compile.jpg" />
+</div>
+<div class="section" id="phase2-application-compile-and-link">
+<h3>Phase2: Application compile and link<a class="headerlink" href="#phase2-application-compile-and-link" title="Permalink to this headline">¶</a></h3>
+<p>The compile and link flow is shown as follow:</p>
+<img alt="Application compile and link" src="../_images/secureshield_2nd_compile.jpg" />
+</div>
+</div>
+<div class="section" id="steps-to-create-a-secureshield-application">
+<h2>Steps to Create a SecureShield Application<a class="headerlink" href="#steps-to-create-a-secureshield-application" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>makefiles</li>
+</ol>
+<ul class="simple">
+<li>LIB_SEL += secureshield, select SecureShield library</li>
+<li>-DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism
+which will override the ARC HAL API in arc_exception.h, arc_builtin.h and
+arc_exception.h with the secureshield API</li>
+<li>APPL_SECURE_CSRC_DIR (optional), the directories of C source files which
+need to be compiled and linked with SecureShield runtime</li>
+<li>SECURE_SYMBOL_LIST (optional ), the file of symbols need to be exported to
+normal application from secure binary</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>Container Memory Configuration File (secureshield_appl_config.h)</li>
+</ol>
+<p>secureshield_appl_config.h includes the application information to generate
+the correct memory map</p>
+<ul class="simple">
+<li>SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in
+NORMAL_ROM</li>
+<li>SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in
+NORMAL_RAM</li>
+<li>SECURE_REGION_CONTAINERS_SCURE_ROM : the regions need to be generated in
+SECURE_ROM  (secure containers only)</li>
+<li>SECURE_REGION_CONTAINERS_SECURE_RAM : the regions need to be generated in
+SECURE_RAM (secure containers only)</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* tell linker script template the rom region information of containers */</span>
+<span class="cp">#define SECURESHIELD_REGION_CONTAINERS_ROM \</span>
+<span class="cp">                    GEN_CONTAINER_ROM_SECTION(container1, 2048, *container1.o*)</span>
+
+<span class="cm">/* tell linker script template the ram region information of containers */</span>
+<span class="cp">#define SECURESHIELD_REGION_CONTAINERS_RAM \</span>
+<span class="cp">                    GEN_CONTAINER_RAM_SECTION(container1, 2048, *container1.o*)</span>
+</pre></div>
+</div>
+<p>The above code segment will generate the following sections in final linker
+script if LIB_SECURESHIELD_VERSION=2</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">rom</span><span class="p">.</span><span class="n">container1</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="o">:</span> <span class="p">{</span>
+    <span class="n">_f_text_container1</span> <span class="o">=</span> <span class="p">.;</span>
+    <span class="o">*</span><span class="p">(.</span><span class="n">text</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
+    <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">text</span><span class="p">)</span>
+    <span class="p">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
+    <span class="n">_e_text_container1</span> <span class="o">=</span> <span class="p">.;</span>
+    <span class="n">_f_rodata_container1</span> <span class="o">=</span> <span class="p">.;</span>
+    <span class="o">*</span><span class="p">(.</span><span class="n">rodata</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
+    <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">lit</span><span class="p">)</span>
+    <span class="p">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
+    <span class="n">_e_rodata_container1</span> <span class="o">=</span> <span class="p">.;</span>
+    <span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
+<span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">container1</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="n">_f_data_container1</span> <span class="o">=</span> <span class="p">.;</span>
+         <span class="o">*</span><span class="p">(.</span><span class="n">data</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
+          <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">data</span><span class="p">)</span>
+           <span class="n">_e_data_container1</span> <span class="o">=</span> <span class="p">.;</span>
+    <span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span> <span class="n">AT</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
+<span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">bss</span><span class="p">.</span><span class="nl">container1</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="n">_f_bss_container1</span> <span class="o">=</span> <span class="p">.;</span>
+       <span class="o">*</span><span class="p">(.</span><span class="n">bss</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
+        <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">BSS</span><span class="p">)</span>
+         <span class="p">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
+          <span class="n">_e_bss_container1</span> <span class="o">=</span> <span class="p">.;</span>
+    <span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span>
+    <span class="n">_f_data_load_container1</span> <span class="o">=</span> <span class="n">LOADADDR</span><span class="p">(.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">container1</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Container Access Control Configuration</li>
+</ol>
+<p>The container access control configuration is recommended to be in a specific
+file named container_cfg.c</p>
+<ol class="arabic simple" start="4">
+<li>Coding</li>
+</ol>
+<p>A recommended SecureShield application is :</p>
+<ul class="simple">
+<li>one container, one source file or directory, e.g container1 in container1.c</li>
+<li>files compiled with SecureShield runtime are in specific directory, e.g. secure</li>
+</ul>
+<ol class="arabic simple" start="5">
+<li>Define the exported secure symbols</li>
+</ol>
+<p>secure_symbol.txt contains the symbols (container interface) exported to normal application from secure binary. This file is only required when normal application needs to call the symbol in secure binary. It also needs to be defined in makefile.
+For example, the following container (container4) will be compiled and linked with secure binary, it has two interfaces:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">CONTAINER_AC_TABLE</span> <span class="n">g_container4_act</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="p">{</span><span class="n">tst_func_sec1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_INTERFACE</span><span class="p">},</span>
+<span class="p">{</span><span class="n">tst_func_sec2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_INTERFACE</span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Then the secure_symbol.txt should be:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tst_func_sec1</span>
+<span class="n">tst_func_sec2</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Compile and Debug</li>
+</ol>
+<p>Upon compiling and linking, the following files will be generated:</p>
+<ul class="simple">
+<li>linker_xx.ldf: the generated linker script for normal applicatio</li>
+<li>the generated linker script for secure binary</li>
+<li>secureshield_secure.bin/elf: secure binary</li>
+<li>secureshield_secure.syms: the exported secure symbol list</li>
+</ul>
+</div>
+<div class="section" id="secureshield-application-examples">
+<h2>SecureShield Application Examples<a class="headerlink" href="#secureshield-application-examples" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../example/example.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="c_lib.html" class="btn btn-neutral" title="C Library Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

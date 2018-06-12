@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARC Processors &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Devices" href="../device/device.html" />
+    <link rel="prev" title="Hardware Requirement" href="../getting_started/hardware_requirement.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ARC Processors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-up-in-embarc-osp">Start up in embARC OSP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#processor-level-start-up">Processor level start up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board-level-start-up">Board level start up</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions-and-interrupts-management">Exceptions and Interrupts Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arc-exceptions-and-interrupts">ARC exceptions and interrupts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exception-and-interrupt-processing-framework">Exception and interrupt processing framework</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-functions">Built-In Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-definitions">Resource Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-to-resources">Access to Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#internal-timers">Internal timers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#caches">Caches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#udma">uDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mpu">MPU</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#related-files">Related files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ARC Processors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/arc/arc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arc-processors">
+<span id="arc-hal"></span><h1>ARC Processors<a class="headerlink" href="#arc-processors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The ARC <strong>Hardware Abstraction Layer</strong> (HAL) provides hardware abstraction for
+DesignWare® ARC® processors. In this layer, the following functions are provided:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#arc-hal-start"><span class="std std-ref">Start up</span></a>: common startup routines or templates to handle necessary
+initializations after power on, reset, and so on.</li>
+<li><a class="reference internal" href="#arc-hal-exc-int"><span class="std std-ref">Exception and interrupt management</span></a>: a standard exception and interrupt
+processing model and related resource definitions.</li>
+<li><a class="reference internal" href="#arc-hal-builtin"><span class="std std-ref">Unified intrinsic/built-in functions</span></a>: covering both the MetaWare and GNU
+toolchains.</li>
+<li><a class="reference internal" href="#arc-hal-res-def"><span class="std std-ref">Unified resource definitions</span></a>: registers, data types, macros, and so on.</li>
+<li><a class="reference internal" href="#arc-hal-res-access"><span class="std std-ref">Access to the resources</span></a>: internal timers, cache, auxiliary registers,
+and build configuration registers.</li>
+</ul>
+</div>
+<div class="section" id="start-up-in-embarc-osp">
+<span id="arc-hal-start"></span><h2>Start up in embARC OSP<a class="headerlink" href="#start-up-in-embarc-osp" title="Permalink to this headline">¶</a></h2>
+<p>The start up in embARC OSP can be divided into two parts:</p>
+<div class="section" id="processor-level-start-up">
+<h3>Processor level start up<a class="headerlink" href="#processor-level-start-up" title="Permalink to this headline">¶</a></h3>
+<p>The processor level start up process is implemented in <code class="docutils literal notranslate"><span class="pre">arc_startup.s</span></code>. The
+program jumps to the <code class="docutils literal notranslate"><span class="pre">board_main()</span></code> function after the startup process,
+which runs in three stages:</p>
+<img alt="processor-level start up" src="../_images/startup.jpg" />
+<ul class="simple">
+<li>Stage 1: Hardware Initialization<ul>
+<li>Initialize necessayr status and registers.</li>
+<li>Initialize system clock (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</li>
+<li>Initialize memory controller (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</li>
+</ul>
+</li>
+<li>Stage 2: C Run-time Initialization<ul>
+<li>Initialize the stack.</li>
+<li>Copy section, e.g. data section, text section if necessary.</li>
+<li>Clear Block Started by Symbol (BSS) section.</li>
+</ul>
+</li>
+<li>Stage 3: Go to <code class="docutils literal notranslate"><span class="pre">board_main()</span></code><ul>
+<li>Early initialization of software (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">software_init_hook</span></code>).</li>
+<li>Call arc_exc_init, or other initialization functions.</li>
+<li>Jump to <code class="docutils literal notranslate"><span class="pre">board_main()</span></code> function.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="board-level-start-up">
+<h3>Board level start up<a class="headerlink" href="#board-level-start-up" title="Permalink to this headline">¶</a></h3>
+<p>The board level start up process is implemented <code class="docutils literal notranslate"><span class="pre">board.c</span></code> with an entry of <code class="docutils literal notranslate"><span class="pre">board_main</span></code>.</p>
+<p>The following pre-defined work is done in <code class="docutils literal notranslate"><span class="pre">board_main</span></code> function:</p>
+<ul class="simple">
+<li>board-level hardware initialization in <code class="docutils literal notranslate"><span class="pre">board_init</span></code></li>
+<li>Middleware initialization<ul>
+<li>initialize the <code class="docutils literal notranslate"><span class="pre">xprintf</span></code> function to have a console output</li>
+<li>initialize the FatFs and mount the sd card if <code class="docutils literal notranslate"><span class="pre">MID_FATFS</span></code> is enabled</li>
+<li>initialize NT-Shel if <code class="docutils literal notranslate"><span class="pre">MID_NTSHELL</span></code> is enabled</li>
+</ul>
+</li>
+<li>OS specific initialization if <code class="docutils literal notranslate"><span class="pre">ENABLE_OS</span></code> is defined<ul>
+<li>create main task for user <code class="docutils literal notranslate"><span class="pre">main</span></code> function</li>
+<li>create WiFi task if ·<code class="docutils literal notranslate"><span class="pre">MID_LWIP</span></code> is enabled and WiFi module is used</li>
+</ul>
+</li>
+<li>jump to <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">User can undefine the macro <code class="docutils literal notranslate"><span class="pre">EMBARC_USE_BOARD_MAIN</span></code> to bypass the pre-defined board-level initialization and do customized initialization.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exceptions-and-interrupts-management">
+<span id="arc-hal-exc-int"></span><h2>Exceptions and Interrupts Management<a class="headerlink" href="#exceptions-and-interrupts-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arc-exceptions-and-interrupts">
+<h3>ARC exceptions and interrupts<a class="headerlink" href="#arc-exceptions-and-interrupts" title="Permalink to this headline">¶</a></h3>
+<p>DesignWare® ARC® processors are designed to allow exceptions to be taken and handled by
+interrupt service routines in user or kernel mode. All exceptions and
+interrupts cause an immediate switch into kernel mode. Interrupts are disabled
+on entry to an exception handler.</p>
+<p>Exceptions can be divided into two types: CPU exceptions and interrupt
+exceptions. CPU exceptions are triggered by errors such as illegal
+instructions, invalid or illegal memory accesses, and protection violations.
+Most CPU exceptions are synchronous. Interrupt exceptions are triggered by
+device interrupts and are always asynchronous.</p>
+<p>Exception vectors are fetched in the instruction space (<code class="docutils literal notranslate"><span class="pre">ICCM</span> <span class="pre">or</span> <span class="pre">main</span> <span class="pre">memory,</span>
+<span class="pre">but</span> <span class="pre">not</span> <span class="pre">DCCM</span></code>) with an alignment 1024 bytes. Every exception contains the
+following information:</p>
+<ul class="simple">
+<li>Vector Name is a symbolic equivalent of the vector number.</li>
+<li>Vector Number is a unique eight-bit index in the exception or interrupt
+vector table. Vector Offset is an offset value calculated as four times the
+vector number (vector offset = 4*vector_number), which is used to determine
+the position of the appropriate exception or interrupt service routine.</li>
+<li>Cause Code is an eight-bit number to identify the exact cause of an exception.</li>
+<li>Parameter is an eight-bit field to pass a single parameter from the exception
+to the exception handler and identify exceptions with the same cause code.</li>
+</ul>
+<p>For more details, see the <code class="docutils literal notranslate"><span class="pre">ARCv2</span> <span class="pre">ISA</span> <span class="pre">Programmer's</span> <span class="pre">Reference</span> <span class="pre">Manual</span> <span class="pre">(PRM)</span></code>.</p>
+</div>
+<div class="section" id="exception-and-interrupt-processing-framework">
+<h3>Exception and interrupt processing framework<a class="headerlink" href="#exception-and-interrupt-processing-framework" title="Permalink to this headline">¶</a></h3>
+<p>A basic exception and interrupt processing framework is implemented in embARC OSP.
+Through this framework, you can handle specific exceptions or interrupts by
+installing the desired handlers. This can help you analyze the underlying
+details of saving and operating registers.</p>
+<p>For CPU exceptions and interrupts, entry(<code class="docutils literal notranslate"><span class="pre">exc_entry_cpu</span></code> for CPU exception, <code class="docutils literal notranslate"><span class="pre">exc_entry_int</span></code> for interrupts) is called first, then handler is
+called in entry. You can define your own entry using <code class="docutils literal notranslate"><span class="pre">exc_entry_install</span></code>.</p>
+<p>A standard interrupt processing model is shown in the picture below.</p>
+<img alt="interrupt and exception processing" src="../_images/interrupt.jpg" />
+<p>In this model, interrupts have the following features:</p>
+<ul class="simple">
+<li>Devices request interrupts through their own interrupt vectors and they can
+share the same interrupt vectors.</li>
+<li>An interrupt can be level-sensitive or pulse-sensitive.</li>
+<li>An interrupt can be enabled (unmasked) and disabled (masked).</li>
+<li>The priority of each interrupt can be programmed by software.</li>
+<li>Interrupt priority order is from INT_PRI_HIGH (highest, -1 default) to
+INT_PRI_MIN (lowest, -2 default).</li>
+<li>CPU lock and unlock are used to disable and enable interrupt processing.</li>
+</ul>
+<p>For most Real-Time Operating Systems (RTOS), the task/process/thread priority
+is a positive number and starts from 1 (the highest priority).</p>
+<p>Negative numbers are used to define a unified priority scheme in embARC.
+Priority 0 (highest priority) is always assigned to the OS scheduler. A
+higher-priority task can preempt a lower-priority task. The OS scheduler can
+preempt any other tasks. But interrupt handling tasks with negative numbers
+cannot be scheduled or switched by the OS scheduler.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_exception.h</span></code> for further details.</p>
+</div>
+</div>
+<div class="section" id="built-in-functions">
+<span id="arc-hal-builtin"></span><h2>Built-In Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h2>
+<p>Compiler built-in functions are used to invoke certain processor operations
+without writing assembly code. In embARC OSP, a series of built-in functions are
+provided for both the MetaWare and GNU toolchains.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_builtin.h</span></code> for further details.</p>
+</div>
+<div class="section" id="resource-definitions">
+<span id="arc-hal-res-def"></span><h2>Resource Definitions<a class="headerlink" href="#resource-definitions" title="Permalink to this headline">¶</a></h2>
+<p>The structure of resource definitions is
+architecture-&gt;series-&gt;processor-&gt;board.</p>
+<p><code class="docutils literal notranslate"><span class="pre">arc.h</span></code> includes the common resource definitions for the DesignWare® ARC® processors,
+such as macros for exceptions and auxiliary register access.</p>
+<p><code class="docutils literal notranslate"><span class="pre">arc_em.h</span></code> includes the common resource definitions for ARC EM Processors.</p>
+</div>
+<div class="section" id="access-to-resources">
+<span id="arc-hal-res-access"></span><h2>Access to Resources<a class="headerlink" href="#access-to-resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="internal-timers">
+<h3>Internal timers<a class="headerlink" href="#internal-timers" title="Permalink to this headline">¶</a></h3>
+<p>DesignWare® ARC® processors have two independent 32-bit timers and a 64-bit real-time
+counter (RTC). Timer 0 and Timer 1 are identical in operation. The only
+difference is that these timers are connected to different interrupts. Each
+timer is optional with a fixed interrupt: interrupt 16 for timer 0 and
+interrupt 17 for timer 1.</p>
+<p>The internal timers are connected to a system clock signal that always runs
+even when the ARC EM processor is in the SLEEP state. The timers can be used
+to generate interrupt signals that wake the processor from the SLEEP state.
+The processor timers automatically reset and restart after reaching the limit
+value. The processor timers can be programmed to count the clock cycles only
+if the processor is not halted. The processor timers can also be programmed to
+generate an interrupt or a system reset if they reach the limit value. The
+64-bit RTC cannot generate any interrupts. This timer is used to count the
+clock cycles automatically.</p>
+<p>embARC OSP provides interfaces for internal timers such as start, stop, poll, and read.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_timer.h</span></code> for further details</p>
+</div>
+<div class="section" id="caches">
+<h3>Caches<a class="headerlink" href="#caches" title="Permalink to this headline">¶</a></h3>
+<p>DesignWare® ARC® processors can be configured with both data cache (dcache) and
+instruction cache (icache). The cache configuration can be selected as
+desired. The cache can be controlled through specific auxiliary registers.</p>
+<p>embARC provides unified interfaces to enable/disable, flush, invalidate, lock,
+and unlock cache lines and to access cache-internal RAM.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_cache.h</span></code> for further details.</p>
+</div>
+<div class="section" id="udma">
+<h3>uDMA<a class="headerlink" href="#udma" title="Permalink to this headline">¶</a></h3>
+<p>The DMA controller is an optional high performance, low area/energy
+consumption DMA engine for use in the ARC EM 2.0 cores.</p>
+<p>The DMA controller supports the following features:</p>
+<ul class="simple">
+<li>1 to 16 independent programmable DMA channels (number of channels is configurable)</li>
+<li>User-programmable prioritization scheme for all available channels</li>
+<li>Concurrent operation with the CPU</li>
+<li>Software/Hardware–triggered DMA transfers</li>
+<li>Two addressing modes</li>
+<li>Five data transfer modes (configurable down to one)</li>
+<li>Internal and external interrupt support</li>
+</ul>
+</div>
+<div class="section" id="mpu">
+<h3>MPU<a class="headerlink" href="#mpu" title="Permalink to this headline">¶</a></h3>
+<p>The ARCv2-based Memory Protection Unit (MPU) provides protection by dividing
+the address space into regions associated with specific attributes such as
+Read, Write, and Execute. If an attempt is made to access a region for which
+an associated attribute is not permitted, the ARCv2-based processors raises a
+Protection Violation exception, and this exception prevents the faulting
+instruction from completing.</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_mpu.h</span></code> for further details</p>
+</div>
+</div>
+<div class="section" id="related-files">
+<h2>Related files<a class="headerlink" href="#related-files" title="Permalink to this headline">¶</a></h2>
+<p>The files relevant to the ARC HAL are described in the table below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>File/Folder</td>
+<td>Content</td>
+</tr>
+<tr class="row-even"><td>arc.h, arc_em.h, arc_hs.h</td>
+<td>Processor resources definition</td>
+</tr>
+<tr class="row-odd"><td>arc_asm_common.h</td>
+<td>Common macro definitions for assembly code</td>
+</tr>
+<tr class="row-even"><td>arc_builtin.h</td>
+<td>Compiler built-in and helper functions</td>
+</tr>
+<tr class="row-odd"><td>arc_cache.c, arc_cache.h</td>
+<td>ARC cache module</td>
+</tr>
+<tr class="row-even"><td>arc_exc_asm.s</td>
+<td>Assembly part of exception handling</td>
+</tr>
+<tr class="row-odd"><td>arc_startup.s</td>
+<td>Common startup routine</td>
+</tr>
+<tr class="row-even"><td>arc_timer.c, arc_timer.h</td>
+<td>ARC internal timer module</td>
+</tr>
+<tr class="row-odd"><td>arc_udma.c, arc_udma.h, arc_udma_config.h</td>
+<td>ARC uDMA module</td>
+</tr>
+<tr class="row-even"><td>arc_mpu.c, arc_mpu.h</td>
+<td>ARC MPU module</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../device/device.html" class="btn btn-neutral float-right" title="Devices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../getting_started/hardware_requirement.html" class="btn btn-neutral" title="Hardware Requirement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

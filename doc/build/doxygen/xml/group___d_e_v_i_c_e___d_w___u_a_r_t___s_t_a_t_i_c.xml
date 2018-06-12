@@ -1,0 +1,935 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c" kind="group">
+    <compoundname>DEVICE_DW_UART_STATIC</compoundname>
+    <title>DesignWare UART Driver Static Functions</title>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gacde67c4589b7545d916585f051bc2cdf" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t dw_uart_databits[]</definition>
+        <argsstring>[]</argsstring>
+        <name>dw_uart_databits</name>
+        <initializer>= { 
+	DW_UART_LCR_WORD_LEN5, DW_UART_LCR_WORD_LEN6, 
+	DW_UART_LCR_WORD_LEN7, DW_UART_LCR_WORD_LEN8}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="90" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga556033b93cfcc60100dc0fe792b84bf4" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t dw_uart_parity[]</definition>
+        <argsstring>[]</argsstring>
+        <name>dw_uart_parity</name>
+        <initializer>= {
+	DW_UART_LCR_PARITY_NONE, DW_UART_LCR_PARITY_ODD,
+	DW_UART_LCR_PARITY_EVEN, DW_UART_LCR_PARITY_MASK,
+	DW_UART_LCR_PARITY_SPACE
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="93" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gaa85824a21e026ecebca6cd01f36a59a3" prot="public" static="no" mutable="no">
+        <type>const uint8_t</type>
+        <definition>const uint8_t dw_uart_stopbits[]</definition>
+        <argsstring>[]</argsstring>
+        <name>dw_uart_stopbits</name>
+        <initializer>= {
+	DW_UART_LCR_1_STOP_BIT, DW_UART_LCR_1D5_STOP_BIT,
+	DW_UART_LCR_2_STOP_BIT
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="98" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6a1ca898cfbf0e8a6a0876720cab0deb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t dw_uart_putready</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_putready</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>test whether uart is ready to send, 1 ready, 0 not ready </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="104" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="104" bodyend="111"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab45a15d2186c5d50f2af6dd2c7b9fa74" compoundref="dw__uart_8c" startline="139" endline="146">dw_uart_snd_chr</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6b41ca49bf60f21c21e5251d341ac52b" compoundref="dw__uart_8c" startline="162" endline="168">dw_uart_psnd_chr</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gad3d9c1f9d9820d9358be93c1dbc95fe6" compoundref="dw__uart_8c" startline="503" endline="518">dw_uart_get_txavail</referencedby>
+        <referencedby refid="dw__uart_8h_1a931f15b8f8a5a29ab3a7344aa3cb10d2" compoundref="dw__uart_8c" startline="894" endline="980">dw_uart_isr</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga1aa5cb38d04f53efd78b152223589b97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t dw_uart_getready</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_getready</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>test whether uart is ready to receive, 1 ready, 0 not ready </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="113" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="113" bodyend="120"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gac53799396d836bfa41b27c469cda6dc7" compoundref="dw__uart_8c" startline="174" endline="180">dw_uart_prcv_chr</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gaac62cb6213fa0e985e4da95ef4270aa2" compoundref="dw__uart_8c" startline="521" endline="536">dw_uart_get_rxavail</referencedby>
+        <referencedby refid="dw__uart_8h_1a931f15b8f8a5a29ab3a7344aa3cb10d2" compoundref="dw__uart_8c" startline="894" endline="980">dw_uart_isr</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga25731a94a23de5006d3d5f1aa27c02aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void dw_uart_putchar</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, char chr)</argsstring>
+        <name>dw_uart_putchar</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>chr</declname>
+        </param>
+        <briefdescription>
+<para>write char to uart send fifo </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="122" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="122" bodyend="125"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab45a15d2186c5d50f2af6dd2c7b9fa74" compoundref="dw__uart_8c" startline="139" endline="146">dw_uart_snd_chr</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6b41ca49bf60f21c21e5251d341ac52b" compoundref="dw__uart_8c" startline="162" endline="168">dw_uart_psnd_chr</referencedby>
+        <referencedby refid="dw__uart_8h_1a931f15b8f8a5a29ab3a7344aa3cb10d2" compoundref="dw__uart_8c" startline="894" endline="980">dw_uart_isr</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga42757531357f3f56ef28a7e6525c4d7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t dw_uart_getchar</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_getchar</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>read data from uart receive fifo, return data received </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="127" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="127" bodyend="130"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gade34ee9170b5f8580baf8c2c8306c410" compoundref="dw__uart_8c" startline="153" endline="156">dw_uart_rcv_chr</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gac53799396d836bfa41b27c469cda6dc7" compoundref="dw__uart_8c" startline="174" endline="180">dw_uart_prcv_chr</referencedby>
+        <referencedby refid="dw__uart_8h_1a931f15b8f8a5a29ab3a7344aa3cb10d2" compoundref="dw__uart_8c" startline="894" endline="980">dw_uart_isr</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab45a15d2186c5d50f2af6dd2c7b9fa74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t dw_uart_snd_chr</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, char chr)</argsstring>
+        <name>dw_uart_snd_chr</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>chr</declname>
+        </param>
+        <briefdescription>
+<para>send char by uart when available, mostly used in interrupt method, non-blocked function </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure pointer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">chr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>char to be sent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>send successfully </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>-1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>not ready to send data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="139" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="139" bodyend="146"/>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga25731a94a23de5006d3d5f1aa27c02aa" compoundref="dw__uart_8c" startline="122" endline="125">dw_uart_putchar</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6a1ca898cfbf0e8a6a0876720cab0deb" compoundref="dw__uart_8c" startline="104" endline="111">dw_uart_putready</references>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gade34ee9170b5f8580baf8c2c8306c410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t dw_uart_rcv_chr</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_rcv_chr</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>receive one char from uart, mostly used in interrupt routine, non-blocked function </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure pointer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>data received by the uart </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="153" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="153" bodyend="156"/>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga42757531357f3f56ef28a7e6525c4d7b" compoundref="dw__uart_8c" startline="127" endline="130">dw_uart_getchar</references>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6b41ca49bf60f21c21e5251d341ac52b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void dw_uart_psnd_chr</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, char chr)</argsstring>
+        <name>dw_uart_psnd_chr</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>chr</declname>
+        </param>
+        <briefdescription>
+<para>send char by uart in poll method, blocked function </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure pointer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">chr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>char to be sent </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="162" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="162" bodyend="168"/>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga25731a94a23de5006d3d5f1aa27c02aa" compoundref="dw__uart_8c" startline="122" endline="125">dw_uart_putchar</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6a1ca898cfbf0e8a6a0876720cab0deb" compoundref="dw__uart_8c" startline="104" endline="111">dw_uart_putready</references>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga296ed0af981331eed09ff311cf9b17e6" compoundref="dw__uart_8c" startline="323" endline="346">dw_uart_flush_output</referencedby>
+        <referencedby refid="dw__uart_8h_1a66f55a5d83c8d575ff0c2add94e6ec51" compoundref="dw__uart_8c" startline="823" endline="849">dw_uart_write</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gac53799396d836bfa41b27c469cda6dc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline int32_t</type>
+        <definition>Inline int32_t dw_uart_prcv_chr</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_prcv_chr</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>receive one char from uart in poll method, blocked function </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure pointer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>data received by the uart </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="174" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="174" bodyend="180"/>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga42757531357f3f56ef28a7e6525c4d7b" compoundref="dw__uart_8c" startline="127" endline="130">dw_uart_getchar</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga1aa5cb38d04f53efd78b152223589b97" compoundref="dw__uart_8c" startline="113" endline="120">dw_uart_getready</references>
+        <referencedby refid="dw__uart_8h_1a9f48bb55260aea46433c78bfd0935c69" compoundref="dw__uart_8c" startline="861" endline="887">dw_uart_read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga1899e10572c9f538d78067c6a76f3efe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t dw_uart_get_txfifo_len</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_get_txfifo_len</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Get TX FIFO Length. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="183" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="183" bodyend="196"/>
+        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga60fe4d5fe17acd86d8f98b297b12bfa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline uint32_t</type>
+        <definition>Inline uint32_t dw_uart_get_rxfifo_len</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_get_rxfifo_len</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Get RX FIFO Length. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="199" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="199" bodyend="212"/>
+        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gaacbe47fcc6fd08b7b9aaa0581fd11b8e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t dw_uart_set_dps</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, UART_DPS_FORMAT *dps)</argsstring>
+        <name>dw_uart_set_dps</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___f_o_r_m_a_t_1gacaa41f5e07b9b64820a2a96bd96dfd41" kindref="member">UART_DPS_FORMAT</ref> *</type>
+          <declname>dps</declname>
+        </param>
+        <briefdescription>
+<para>set designware uart DPS value </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>data bits/parity bit/stop bits parameter </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set ok </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>!0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set failed </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="221" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="221" bodyend="243"/>
+        <references refid="structuart__dps__format_1a8e849d194ac4eeea56b98e0819fde84a" compoundref="dev__uart_8h" startline="124">uart_dps_format::databits</references>
+        <references refid="structuart__dps__format_1a4eb21acfa64cdd536ee454f21789970c" compoundref="dev__uart_8h" startline="125">uart_dps_format::parity</references>
+        <references refid="structuart__dps__format_1ad2d49c7a22c6028af004d8287389edc7" compoundref="dev__uart_8h" startline="126">uart_dps_format::stopbits</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___f_o_r_m_a_t_1gga24fd4dba815fc40fbd8e8c37dbf87c7aa9866e632545cc7de127aee8071528030" compoundref="dev__uart_8h" startline="108">UART_PARITY_SPACE</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___f_o_r_m_a_t_1ggacbd51ac613ec824eeb73a5b6bf743ca6a8408cb794ac8f8e4003fb9e99b4e3b7d" compoundref="dev__uart_8h" startline="117">UART_STPBITS_TWO</references>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga2e6916f0af485cf8578374b0c6cb95eb" compoundref="dw__uart_8c" startline="307" endline="317">dw_uart_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga80f4fd4e33a6e7758998c8562290a76e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_set_baud</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor)</argsstring>
+        <name>dw_uart_set_baud</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_divisor</declname>
+        </param>
+        <briefdescription>
+<para>set designware uart baudrate </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>baud_divisor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart baudrate divisor </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="250" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="250" bodyend="261"/>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6dd5da5a303245d2c1a95564d8cbe980" compoundref="dw__uart_8c" startline="459" endline="468">dw_uart_disable_device</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gac84e8d6126193d255334f825885681ae" compoundref="dw__uart_8c" startline="447" endline="456">dw_uart_enable_device</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga2e6916f0af485cf8578374b0c6cb95eb" compoundref="dw__uart_8c" startline="307" endline="317">dw_uart_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gabb4256ea2b68ef4014313192a73be13f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void dw_uart_software_reset</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_software_reset</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Do uart software reset. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="267" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="267" bodyend="271"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga2e6916f0af485cf8578374b0c6cb95eb" compoundref="dw__uart_8c" startline="307" endline="317">dw_uart_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab528eba58066212798ba5fcedfbfa6de" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_set_hwfc</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, UART_HW_FLOW_CONTROL hwfc)</argsstring>
+        <name>dw_uart_set_hwfc</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t_1gaa79a1d08e403b54670b892c0c58d91d5" kindref="member">UART_HW_FLOW_CONTROL</ref></type>
+          <declname>hwfc</declname>
+        </param>
+        <briefdescription>
+<para>set designware uart baudrate </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hwfc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart hardware flow control type </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Need to set corresponding pin functions </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="279" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="279" bodyend="290"/>
+        <references refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t_1ggaa79a1d08e403b54670b892c0c58d91d5a666090870593651febac7ad9db862760" compoundref="dev__uart_8h" startline="142">UART_FC_BOTH</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t_1ggaa79a1d08e403b54670b892c0c58d91d5a42eb1be010429695afe750de07e7ade6" compoundref="dev__uart_8h" startline="141">UART_FC_CTS</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t_1ggaa79a1d08e403b54670b892c0c58d91d5a527864f0ec595151e7db5ef909fcf9f0" compoundref="dev__uart_8h" startline="139">UART_FC_NONE</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t_1ggaa79a1d08e403b54670b892c0c58d91d5afc75cc759e85ee277ead4520fb1d0b90" compoundref="dev__uart_8h" startline="140">UART_FC_RTS</references>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga2e6916f0af485cf8578374b0c6cb95eb" compoundref="dw__uart_8c" startline="307" endline="317">dw_uart_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga75dc17b8200d755deb873719f450f591" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void dw_uart_set_break</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_set_break</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="292" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="292" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gaa4b9f03ef0fcab96324b12d7cce682cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Inline void</type>
+        <definition>Inline void dw_uart_clr_break</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr)</argsstring>
+        <name>dw_uart_clr_break</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="297" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="297" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga2e6916f0af485cf8578374b0c6cb95eb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_init</definition>
+        <argsstring>(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor, UART_DPS_FORMAT *dps, UART_HW_FLOW_CONTROL hwfc)</argsstring>
+        <name>dw_uart_init</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1ab2543a5370a1cd65365a8829705d0d71" kindref="member">DW_UART_REG</ref> *</type>
+          <declname>uart_reg_ptr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_divisor</declname>
+        </param>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___f_o_r_m_a_t_1gacaa41f5e07b9b64820a2a96bd96dfd41" kindref="member">UART_DPS_FORMAT</ref> *</type>
+          <declname>dps</declname>
+        </param>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t_1gaa79a1d08e403b54670b892c0c58d91d5" kindref="member">UART_HW_FLOW_CONTROL</ref></type>
+          <declname>hwfc</declname>
+        </param>
+        <briefdescription>
+<para>init designware uart with selected baud </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">uart_reg_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart register structure pointer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">baud_divisor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>baudrate divisor </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="307" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="307" bodyend="317"/>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga80f4fd4e33a6e7758998c8562290a76e" compoundref="dw__uart_8c" startline="250" endline="261">dw_uart_set_baud</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gaacbe47fcc6fd08b7b9aaa0581fd11b8e" compoundref="dw__uart_8c" startline="221" endline="243">dw_uart_set_dps</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab528eba58066212798ba5fcedfbfa6de" compoundref="dw__uart_8c" startline="279" endline="290">dw_uart_set_hwfc</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gabb4256ea2b68ef4014313192a73be13f" compoundref="dw__uart_8c" startline="267" endline="271">dw_uart_software_reset</references>
+        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga296ed0af981331eed09ff311cf9b17e6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_flush_output</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr)</argsstring>
+        <name>dw_uart_flush_output</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <briefdescription>
+<para>set designware uart baudrate </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_info_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart information structure pointer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="323" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="323" bodyend="346"/>
+        <references refid="structdev__buffer_1a9229a6df77f315674f8a9e08809f97c1" compoundref="dev__common_8h" startline="187">dev_buffer::buf</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6b41ca49bf60f21c21e5251d341ac52b" compoundref="dw__uart_8c" startline="162" endline="168">dw_uart_psnd_chr</references>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="structdev__buffer_1a39df7479eb803d0ca261490f1b2b677d" compoundref="dev__common_8h" startline="188">dev_buffer::len</references>
+        <references refid="structdev__buffer_1aa3763537ccb4d9fd5619c2d1647397a6" compoundref="dev__common_8h" startline="189">dev_buffer::ofs</references>
+        <references refid="structdev__uart__info_1aaec9266437298f69cee418419b2af57e" compoundref="dev__uart_8h" startline="362">dev_uart_info::tx_buf</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_dis_cbr</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)</argsstring>
+        <name>dw_uart_dis_cbr</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cbrtn</declname>
+        </param>
+        <briefdescription>
+<para>disable designware uart send or receive interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">DEV_UART_INFO</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>*uart_info_ptr </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cbrtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>control code of callback routine of send or receive </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="353" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="353" bodyend="378"/>
+        <references refid="dw__uart_8h_1ac7b6b350d796de899fa93483ca697695" compoundref="dw__uart_8h" startline="97">DW_UART_GINT_ENABLE</references>
+        <references refid="dw__uart_8c_1ad06558b8493c1463445b785e398694aa" compoundref="dw__uart_8c" startline="78">DW_UART_RDY_RCV</references>
+        <references refid="dw__uart_8c_1ac95bdbdc9b968146b56e2799bed84a09" compoundref="dw__uart_8c" startline="77">DW_UART_RDY_SND</references>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="dw__uart_8h_1a1e495eaace4cbeb5a95407a074be5581" compoundref="dw__uart_8h" startline="99">DW_UART_RXINT_ENABLE</references>
+        <references refid="dw__uart_8h_1ab16608b3249786f0e0c4282b66bbb64d" compoundref="dw__uart_8h" startline="98">DW_UART_TXINT_ENABLE</references>
+        <references refid="group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t_1gaa06cd81d78d066c1cdc46dde7dabeb57" compoundref="arc__exception_8c" startline="279" endline="287">int_disable</references>
+        <references refid="structdw__uart__ctrl_1a667ee41c9a8c8ed6dfd8d37271b42d8f" compoundref="dw__uart_8h" startline="114">dw_uart_ctrl::int_status</references>
+        <references refid="structdw__uart__ctrl_1a4fdf6dee070321f5299590fc6aa8a3c8" compoundref="dw__uart_8h" startline="110">dw_uart_ctrl::intno</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga17cb2aa3d8fa1de710018838f34b2da6" compoundref="dw__uart_8c" startline="487" endline="500">dw_uart_abort_rx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga74b2995571a4daecb84808b56a12e3e0" compoundref="dw__uart_8c" startline="471" endline="484">dw_uart_abort_tx</referencedby>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab989ee3c9df5d9163650670273df8283" compoundref="dw__uart_8c" startline="432" endline="444">dw_uart_disable_interrupt</referencedby>
+        <referencedby refid="dw__uart_8h_1a931f15b8f8a5a29ab3a7344aa3cb10d2" compoundref="dw__uart_8c" startline="894" endline="980">dw_uart_isr</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga34b6916c9c6d6336d813a95986d6beac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_ena_cbr</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)</argsstring>
+        <name>dw_uart_ena_cbr</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>cbrtn</declname>
+        </param>
+        <briefdescription>
+<para>enable DesignWare UART send or receive interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">DEV_UART_INFO</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>*uart_info_ptr </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cbrtn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>control code of callback routine of send or receive </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="385" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="385" bodyend="410"/>
+        <references refid="dw__uart_8h_1ac7b6b350d796de899fa93483ca697695" compoundref="dw__uart_8h" startline="97">DW_UART_GINT_ENABLE</references>
+        <references refid="dw__uart_8c_1ad06558b8493c1463445b785e398694aa" compoundref="dw__uart_8c" startline="78">DW_UART_RDY_RCV</references>
+        <references refid="dw__uart_8c_1ac95bdbdc9b968146b56e2799bed84a09" compoundref="dw__uart_8c" startline="77">DW_UART_RDY_SND</references>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="dw__uart_8h_1a1e495eaace4cbeb5a95407a074be5581" compoundref="dw__uart_8h" startline="99">DW_UART_RXINT_ENABLE</references>
+        <references refid="dw__uart_8h_1ab16608b3249786f0e0c4282b66bbb64d" compoundref="dw__uart_8h" startline="98">DW_UART_TXINT_ENABLE</references>
+        <references refid="group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t_1gab709d97aa7dcc618975fc7e8d5860c7f" compoundref="arc__exception_8c" startline="294" endline="302">int_enable</references>
+        <references refid="structdw__uart__ctrl_1a667ee41c9a8c8ed6dfd8d37271b42d8f" compoundref="dw__uart_8h" startline="114">dw_uart_ctrl::int_status</references>
+        <references refid="structdw__uart__ctrl_1a4fdf6dee070321f5299590fc6aa8a3c8" compoundref="dw__uart_8h" startline="110">dw_uart_ctrl::intno</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga66d7d3cbabaff997b04ede14d386d993" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_enable_interrupt</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr)</argsstring>
+        <name>dw_uart_enable_interrupt</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <briefdescription>
+<para>enable designware uart interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_info_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart information structure pointer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="416" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="416" bodyend="427"/>
+        <references refid="dw__uart_8h_1ac7b6b350d796de899fa93483ca697695" compoundref="dw__uart_8h" startline="97">DW_UART_GINT_ENABLE</references>
+        <references refid="structdw__uart__ctrl_1a21df8fde009f07577bfc55d56ff10a1a" compoundref="dw__uart_8h" startline="111">dw_uart_ctrl::dw_uart_int_handler</references>
+        <references refid="group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t_1gab709d97aa7dcc618975fc7e8d5860c7f" compoundref="arc__exception_8c" startline="294" endline="302">int_enable</references>
+        <references refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga92d3c2a8a703078234357e7bce5a5c48" compoundref="arc__exception_8c" startline="493" endline="501">int_handler_install</references>
+        <references refid="structdw__uart__ctrl_1a667ee41c9a8c8ed6dfd8d37271b42d8f" compoundref="dw__uart_8h" startline="114">dw_uart_ctrl::int_status</references>
+        <references refid="structdw__uart__ctrl_1a4fdf6dee070321f5299590fc6aa8a3c8" compoundref="dw__uart_8h" startline="110">dw_uart_ctrl::intno</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gab989ee3c9df5d9163650670273df8283" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_disable_interrupt</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr)</argsstring>
+        <name>dw_uart_disable_interrupt</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <briefdescription>
+<para>disable designware uart interrupt </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uart_info_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uart information structure pointer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="432" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="432" bodyend="444"/>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</references>
+        <references refid="dw__uart_8h_1ac7b6b350d796de899fa93483ca697695" compoundref="dw__uart_8h" startline="97">DW_UART_GINT_ENABLE</references>
+        <references refid="dw__uart_8c_1ad06558b8493c1463445b785e398694aa" compoundref="dw__uart_8c" startline="78">DW_UART_RDY_RCV</references>
+        <references refid="dw__uart_8c_1ac95bdbdc9b968146b56e2799bed84a09" compoundref="dw__uart_8c" startline="77">DW_UART_RDY_SND</references>
+        <references refid="dw__uart_8h_1a1e495eaace4cbeb5a95407a074be5581" compoundref="dw__uart_8h" startline="99">DW_UART_RXINT_ENABLE</references>
+        <references refid="dw__uart_8h_1ab16608b3249786f0e0c4282b66bbb64d" compoundref="dw__uart_8h" startline="98">DW_UART_TXINT_ENABLE</references>
+        <references refid="group___b_o_a_r_d___a_x_s__103___i_n_t_e_r_r_u_p_t_1gaa06cd81d78d066c1cdc46dde7dabeb57" compoundref="arc__exception_8c" startline="279" endline="287">int_disable</references>
+        <references refid="structdw__uart__ctrl_1a667ee41c9a8c8ed6dfd8d37271b42d8f" compoundref="dw__uart_8h" startline="114">dw_uart_ctrl::int_status</references>
+        <references refid="structdw__uart__ctrl_1a4fdf6dee070321f5299590fc6aa8a3c8" compoundref="dw__uart_8h" startline="110">dw_uart_ctrl::intno</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
+        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gac84e8d6126193d255334f825885681ae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_enable_device</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr)</argsstring>
+        <name>dw_uart_enable_device</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <briefdescription>
+<para>enable designware uart </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="447" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="447" bodyend="456"/>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="structdev__uart__info_1a0d5c787fe766670160806618b2897f9f" compoundref="dev__uart_8h" startline="358">dev_uart_info::status</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga80f4fd4e33a6e7758998c8562290a76e" compoundref="dw__uart_8c" startline="250" endline="261">dw_uart_set_baud</references>
+        <references refid="structdev__uart__info_1ade43cdfba4fbeb94641e9be3453e7ef0" compoundref="dev__uart_8h" startline="359">dev_uart_info::baudrate</references>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6dd5da5a303245d2c1a95564d8cbe980" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_disable_device</definition>
+        <argsstring>(DEV_UART_INFO *uart_info_ptr)</argsstring>
+        <name>dw_uart_disable_device</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc" kindref="member">DEV_UART_INFO</ref> *</type>
+          <declname>uart_info_ptr</declname>
+        </param>
+        <briefdescription>
+<para>disable designware uart </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="459" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="459" bodyend="468"/>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="structdev__uart__info_1a0d5c787fe766670160806618b2897f9f" compoundref="dev__uart_8h" startline="358">dev_uart_info::status</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga80f4fd4e33a6e7758998c8562290a76e" compoundref="dw__uart_8c" startline="250" endline="261">dw_uart_set_baud</references>
+        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga74b2995571a4daecb84808b56a12e3e0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_abort_tx</definition>
+        <argsstring>(DEV_UART *uart_obj)</argsstring>
+        <name>dw_uart_abort_tx</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8e8dd2c66ea7a119aec01e976ff4d6b4" kindref="member">DEV_UART</ref> *</type>
+          <declname>uart_obj</declname>
+        </param>
+        <briefdescription>
+<para>abort current interrupt transmit transfer </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="471" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="471" bodyend="484"/>
+        <references refid="structdev__uart_1a2d149949181bf8ea15253f4523a681d4" compoundref="dev__uart_8h" startline="382">dev_uart::uart_info</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <references refid="structdw__uart__ctrl_1a667ee41c9a8c8ed6dfd8d37271b42d8f" compoundref="dw__uart_8h" startline="114">dw_uart_ctrl::int_status</references>
+        <references refid="dw__uart_8h_1ab16608b3249786f0e0c4282b66bbb64d" compoundref="dw__uart_8h" startline="98">DW_UART_TXINT_ENABLE</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</references>
+        <references refid="dw__uart_8c_1ac95bdbdc9b968146b56e2799bed84a09" compoundref="dw__uart_8c" startline="77">DW_UART_RDY_SND</references>
+        <references refid="structdev__uart__info_1a0d5c787fe766670160806618b2897f9f" compoundref="dev__uart_8h" startline="358">dev_uart_info::status</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1ga80e3a2bfa3fca72a807e59da0bb3b2ee" compoundref="dev__common_8h" startline="116">DEV_IN_TX_ABRT</references>
+        <references refid="structdev__uart__info_1ae131bbd873bc2eb53c24a1da367a6918" compoundref="dev__uart_8h" startline="364">dev_uart_info::uart_cbs</references>
+        <references refid="structdev__uart__cbs_1a2c385cdfd61f1d7a8f6371935db8e0f1" compoundref="dev__uart_8h" startline="334">dev_uart_cbs::tx_cb</references>
+        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga17cb2aa3d8fa1de710018838f34b2da6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void dw_uart_abort_rx</definition>
+        <argsstring>(DEV_UART *uart_obj)</argsstring>
+        <name>dw_uart_abort_rx</name>
+        <param>
+          <type><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8e8dd2c66ea7a119aec01e976ff4d6b4" kindref="member">DEV_UART</ref> *</type>
+          <declname>uart_obj</declname>
+        </param>
+        <briefdescription>
+<para>abort current interrupt receive transfer </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="487" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="487" bodyend="500"/>
+        <references refid="structdev__uart_1a2d149949181bf8ea15253f4523a681d4" compoundref="dev__uart_8h" startline="382">dev_uart::uart_info</references>
+        <references refid="structdev__uart__info_1a4cc1288339f8ca3e63fe27a185369695" compoundref="dev__uart_8h" startline="356">dev_uart_info::uart_ctrl</references>
+        <references refid="structdw__uart__ctrl_1a667ee41c9a8c8ed6dfd8d37271b42d8f" compoundref="dw__uart_8h" startline="114">dw_uart_ctrl::int_status</references>
+        <references refid="dw__uart_8h_1a1e495eaace4cbeb5a95407a074be5581" compoundref="dw__uart_8h" startline="99">DW_UART_RXINT_ENABLE</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga996db08e5110d96068b8bee2f1108bfa" compoundref="dw__uart_8c" startline="353" endline="378">dw_uart_dis_cbr</references>
+        <references refid="dw__uart_8c_1ad06558b8493c1463445b785e398694aa" compoundref="dw__uart_8c" startline="78">DW_UART_RDY_RCV</references>
+        <references refid="structdev__uart__info_1a0d5c787fe766670160806618b2897f9f" compoundref="dev__uart_8h" startline="358">dev_uart_info::status</references>
+        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1ga039071faab7f693aff3dc479800073fc" compoundref="dev__common_8h" startline="117">DEV_IN_RX_ABRT</references>
+        <references refid="structdev__uart__info_1ae131bbd873bc2eb53c24a1da367a6918" compoundref="dev__uart_8h" startline="364">dev_uart_info::uart_cbs</references>
+        <references refid="structdev__uart__cbs_1af6d1329c648df0d31eb8f8c1a6d7e777" compoundref="dev__uart_8h" startline="335">dev_uart_cbs::rx_cb</references>
+        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gad3d9c1f9d9820d9358be93c1dbc95fe6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t dw_uart_get_txavail</definition>
+        <argsstring>(DW_UART_CTRL *uart_ctrl_ptr)</argsstring>
+        <name>dw_uart_get_txavail</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1a570bebe153d185bf2de8e79db464da36" kindref="member">DW_UART_CTRL</ref> *</type>
+          <declname>uart_ctrl_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Get available transmit fifo count. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="503" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="503" bodyend="518"/>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="structdw__uart__ctrl_1ab2faf4c7a1a0869f943ce3cbeb925473" compoundref="dw__uart_8h" startline="112">dw_uart_ctrl::tx_fifo_len</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga6a1ca898cfbf0e8a6a0876720cab0deb" compoundref="dw__uart_8c" startline="104" endline="111">dw_uart_putready</references>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1gaac62cb6213fa0e985e4da95ef4270aa2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t dw_uart_get_rxavail</definition>
+        <argsstring>(DW_UART_CTRL *uart_ctrl_ptr)</argsstring>
+        <name>dw_uart_get_rxavail</name>
+        <param>
+          <type><ref refid="dw__uart_8h_1a570bebe153d185bf2de8e79db464da36" kindref="member">DW_UART_CTRL</ref> *</type>
+          <declname>uart_ctrl_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Get available receive fifo count. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" line="521" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/designware/uart/dw_uart.c" bodystart="521" bodyend="536"/>
+        <references refid="structdw__uart__ctrl_1a382ce9e511eba93018a7882c0d913c9a" compoundref="dw__uart_8h" startline="108">dw_uart_ctrl::dw_uart_regbase</references>
+        <references refid="structdw__uart__ctrl_1ab28e548352feb3d3bbce7e8f217727ff" compoundref="dw__uart_8h" startline="113">dw_uart_ctrl::rx_fifo_len</references>
+        <references refid="group___d_e_v_i_c_e___d_w___u_a_r_t___s_t_a_t_i_c_1ga1aa5cb38d04f53efd78b152223589b97" compoundref="dw__uart_8c" startline="113" endline="120">dw_uart_getready</references>
+        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Static or inline functions, variables for DesignWare UART handle uart operations, only used in this file. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

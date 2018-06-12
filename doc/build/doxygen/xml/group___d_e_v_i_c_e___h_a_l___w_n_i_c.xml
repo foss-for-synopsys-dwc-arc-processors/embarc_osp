@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___d_e_v_i_c_e___h_a_l___w_n_i_c" kind="group">
+    <compoundname>DEVICE_HAL_WNIC</compoundname>
+    <title>Wireless Network Interface Controller Device HAL Interface</title>
+    <innerfile refid="dev__wnic_8h">dev_wnic.h</innerfile>
+    <innergroup refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___c_t_r_l_c_m_d">WNIC Device Control Command</innergroup>
+    <innergroup refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s">WNIC Device Enums and Macros</innergroup>
+    <innergroup refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___g_e_t_i_n_f_o_c_m_d">WNIC Device Get Info Command</innergroup>
+    <innergroup refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___d_e_v_s_t_r_u_c_t">WNIC Device Structure</innergroup>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdev__wnic" kindref="compound">DEV_WNIC_PTR</ref></type>
+        <definition>DEV_WNIC_PTR wnic_get_dev</definition>
+        <argsstring>(int32_t wnic_id)</argsstring>
+        <name>wnic_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>wnic_id</declname>
+        </param>
+        <briefdescription>
+<para>get an <ref refid="structdev__wnic" kindref="compound">wnic device</ref> by wnic device id. </para>        </briefdescription>
+        <detaileddescription>
+<para>For how to use wnic device hal refer to <ref refid="structdev__wnic" kindref="compound">Functions in wnic device structure</ref> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">wnic_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of wnic, defined by user </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>!NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an wnic device structure (<ref refid="structdev__wnic" kindref="compound">dev_wnic</ref>) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>failed to find the wnic device by wnic_id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>need to implemented by user in user code</para></simplesect>
+get an <ref refid="structdev__wnic" kindref="compound">wnic device</ref> by wnic device id. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/inc/dev_wnic.h" line="369" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/board/emsk/drivers/pmwifi/pmwifi.c" bodystart="1044" bodyend="1069"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" compoundref="emsk_2drivers_2pmwifi_2pmwifi_8c" startline="1075" endline="1083">pmwifi_all_install</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>definitions for wnic device hardware layer (<ref refid="dev__wnic_8h" kindref="compound">dev_wnic.h</ref>) </para>    </briefdescription>
+    <detaileddescription>
+<para>provide interfaces for wnic driver to implement Here is a diagram for the wnic interface.</para><para><htmlonly> 
+ &lt;div class=&quot;imagebox&quot;&gt;
+     &lt;div style=&quot;width: 900px&quot;&gt;
+         &lt;img src=&quot;pic/dev_wnic_hal.jpg&quot; alt=&quot;WNIC Device HAL Interface Diagram&quot;/&gt;
+         &lt;p&gt;WNIC Device HAL Interface Diagram&lt;/p&gt;
+     &lt;/div&gt;
+ &lt;/div&gt;
+ </htmlonly> </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

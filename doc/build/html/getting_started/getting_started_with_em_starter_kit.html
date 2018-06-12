@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started with EM Starter Kit &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting Started with HS Development Kit" href="getting_started_with_hs_development_kit.html" />
+    <link rel="prev" title="Software Requirement" href="software_requirement.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-code">Checking Out the embARC OSP Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#set-up-the-development-environment">Set Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-a-sample-application">Building a Sample Application</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#hardware-preparation">Hardware Preparation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Getting Started with EM Starter Kit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supported-hardware">Supported Hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-emsk">Setting Up EMSK</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_hs_development_kit.html">Getting Started with HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware_requirement.html">Hardware Requirement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#running-a-sample-application">Running a Sample Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
+        
+      <li>Getting Started with EM Starter Kit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/getting_started/getting_started_with_em_starter_kit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started-with-em-starter-kit">
+<span id="id1"></span><h1>Getting Started with EM Starter Kit<a class="headerlink" href="#getting-started-with-em-starter-kit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="supported-hardware">
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Permalink to this headline">¶</a></h2>
+<p>The ARC EM Starter Kit (EMSK) is an FPGA-based solution for rapid software development, code porting, software debugging, and profiling, preloaded with images for the ARC EM Family of processors. It can be extended using Digilent® Peripheral Modules (Pmods™).</p>
+<p>EMSK 1.1, 2.2 and 2.3 are supported in embARC OSP.</p>
+</div>
+<div class="section" id="setting-up-emsk">
+<h2>Setting Up EMSK<a class="headerlink" href="#setting-up-emsk" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The EMSK has a bank of DIP switches labeled SW1 that you use for selecting a configuration. For example, to select ARC EM11D for EMSK 2.3, set bit 2 to the ON position (down), and the others to OFF (up) as shown.</li>
+</ol>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../_images/emsk23_dipswitch.jpg"><img alt="../_images/emsk23_dipswitch.jpg" src="../_images/emsk23_dipswitch.jpg" style="width: 186.8px; height: 146.0px;" /></a>
+<p class="caption"><span class="caption-text">DIP switch settings for ARC EM11D on EMSK 2.3</span></p>
+</div>
+<p>For exact DIP switch settings for various ARC EM Starter Kit versions, refer to EM Starter Kit section in provided embARC documentation. For complete ARC EM Starter Kit information, see the <strong>EM Starter Kit User’s Guide</strong> provided with the ARC EM Starter Kit.</p>
+<ol class="arabic simple">
+<li>Connect the USB cable to connector J7 on the EMSK and to a spare USB port on your development host. If using the Ashling Opella-XD for ARC Debug Probe, connect it to the J15 connector.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Despite the fact that EMSK 2.3 can be powered by connector J7, it is recommended to use an AC adapter to supply power of the board.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">You can use any terminal emulation program to view UART output from the EMSK. The USB connection provides both the debug channel and RS232 transport. Use PuTTY in Windows as an example.</p>
+<ul>
+<li><p class="first">Determine which COM port the EMSK is using.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Open the <strong>Windows Control Panel</strong> and select <strong>Device Manager</strong> in a Windows environment.</li>
+<li>Expand <strong>Ports (COM and LPT)</strong> in the list. Select <strong>USB Serial Port (COM x)</strong> and note the COM port number for the ARC board.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Configure serial terminal connection.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Launch PuTTY. Select <strong>Serial</strong> under <strong>Connection type</strong> and enter the appropriate COM port string under <strong>Serial line</strong>.</li>
+<li>Choose 115200 baud, 8 bits, 1 stop bit, no parity (115200-8-N-1) in settings.</li>
+<li>You can optionally save your settings so they can be easily retrieved every time PuTTY is launched.</li>
+<li>Click Open to open the console.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">Test serial output with EMSK.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Press the middle (“R”eset) button above the <strong>ARC</strong> label on the EMSK board to reset the board and run the self-test.</li>
+<li>Use EMSK 2.3 as an example. Confirm that you can see the header and self-test message printed to the console.</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">***********************************</span>
+<span class="go">**       Synopsys, Inc.          **</span>
+<span class="go">**     ARC EM Starter kit        **</span>
+<span class="go">**                               **</span>
+<span class="go">** Comprehensive software stacks **</span>
+<span class="go">**   available from embARC.org   **</span>
+<span class="go">**                               **</span>
+<span class="go">***********************************</span>
+<span class="go">Firmware   Feb 22 2017, v2.3</span>
+<span class="go">Bootloader Feb 22 2017, v1.1</span>
+<span class="go">ARC EM11D, core configuration #3</span>
+
+<span class="go">ARC IDENTITY = 0x43</span>
+<span class="go">RF_BUILD = 0xc902</span>
+<span class="go">TIMER_BUILD = 0x10304</span>
+<span class="go">ICCM_BUILD = 0x804</span>
+<span class="go">DCCM_BUILD = 0x10804</span>
+<span class="go">I_CACHE_BUILD = 0x135104</span>
+<span class="go">D_CACHE_BUILD = 0x215104</span>
+
+<span class="go">SelfTest PASSED</span>
+
+<span class="go">Info: No boot image found</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">(Optional) Connect the PmodWiFi, PmodRF2, and PmodTMP2 modules to the EMSK as shown.</p>
+</li>
+</ol>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../_images/emsk_board_settings.jpg"><img alt="emsk board setting" src="../_images/emsk_board_settings.jpg" style="width: 462.0px; height: 490.8px;" /></a>
+<p class="caption"><span class="caption-text">EMSK board connection</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started_with_hs_development_kit.html" class="btn btn-neutral float-right" title="Getting Started with HS Development Kit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="software_requirement.html" class="btn btn-neutral" title="Software Requirement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

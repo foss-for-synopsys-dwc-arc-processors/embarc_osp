@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Boards &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC Software Development Platform" href="axs.html" />
+    <link rel="prev" title="WNIC HAL" href="../device/wnic.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Boards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-board-initialization-process">Common Board Initialization Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-boards">Supported Boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="axs.html">ARC Software Development Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emsk.html">ARC EM Starter Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsdk.html">ARC HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nsim.html">ARC Virtual Board based on nSIM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#board-resource-unified-definitions">Board Resource Unified Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Boards</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/board/board.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="boards">
+<span id="board-bsp"></span><h1>Boards<a class="headerlink" href="#boards" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Board Support Package (BSP) Layer</strong> provides support for different
+boards based on DesignWare® ARC® processors. The layer contains the following functions:</p>
+<ul class="simple">
+<li><strong>Drivers instantiation</strong>   In embARC OSP, an object-oriented design is applied
+for device drivers. The peripheral driver implementations are similar to the
+definition of class in the device abstraction layer. So the peripheral drivers
+should be instantiated for every board.   For example, <code class="docutils literal notranslate"><span class="pre">dw_gpio_obj.c</span></code> /
+<code class="docutils literal notranslate"><span class="pre">dw_gpio_obj.h</span></code> is the instantiation of the DesignWare GPIO driver
+implementation in device abstraction layer, which contains the information of
+register address, interrupt number, etc.</li>
+<li><strong>Common board initialization process</strong> A standard bootup process is
+defined for each board. The entry of this process is <code class="docutils literal notranslate"><span class="pre">board_main</span></code> defined
+in <code class="docutils literal notranslate"><span class="pre">board/board.c</span></code>, it will cover board initialization, os environment
+setup, fatfs and ntshell initialization, finally it will enter to <code class="docutils literal notranslate"><span class="pre">main</span></code>
+function if required.</li>
+<li><strong>Board resource unified definition</strong>  Most boards share common peripherals.
+Unified definitions are provided such as UART used to print messages, SD card
+interface, buttons, LEDs.</li>
+<li><strong>Linker script for boards</strong> Linker script now is auto-generated from
+template using the ICCM/DCCM and DDR memory information. embARC OSP provides template
+for both gnu and metaware tool, located in <code class="docutils literal notranslate"><span class="pre">board</span></code> folder, called
+<code class="docutils literal notranslate"><span class="pre">linker_template_gnu.ld</span></code> and <code class="docutils literal notranslate"><span class="pre">linker_template_mw.ld</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="common-board-initialization-process">
+<h2>Common Board Initialization Process<a class="headerlink" href="#common-board-initialization-process" title="Permalink to this headline">¶</a></h2>
+<p>The common <code class="docutils literal notranslate"><span class="pre">board_main</span></code> function in <code class="docutils literal notranslate"><span class="pre">board.c</span></code> will do the following operations:</p>
+<ul class="simple">
+<li>Board initialization steps - defined in <code class="docutils literal notranslate"><span class="pre">board_init</span></code> function.<ul>
+<li>Install required device driver objects, such as UART/SPI/IIC device objects.</li>
+<li>Clear and disable all interrupts.</li>
+<li>Initialize 1 ms timer interrupt.</li>
+<li>Initialize some peripherals if used.</li>
+<li>Initialize other required board resources such as mux controller.</li>
+</ul>
+</li>
+<li>xprintf library setup to provide printf functionality</li>
+<li>Initialization of fatfs if FatFs middleware is selected</li>
+<li>Initialization of FreeRTOS tasks if defined</li>
+<li>Go to <code class="docutils literal notranslate"><span class="pre">main</span></code> function</li>
+</ul>
+</div>
+<div class="section" id="supported-boards">
+<h2>Supported Boards<a class="headerlink" href="#supported-boards" title="Permalink to this headline">¶</a></h2>
+<p>The BSP Layer currently supports the following boards.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="axs.html">ARC Software Development Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emsk.html">ARC EM Starter Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hsdk.html">ARC HS Development Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nsim.html">ARC Virtual Board based on nSIM</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li>AXS board support can be found in <code class="docutils literal notranslate"><span class="pre">board/ax</span></code>, detailed in ARC AXS Software
+Development Platform (AXS). It includes the following sub-folders:<ul>
+<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: AXS board initialization functions and 1 ms interrupt timer function</li>
+<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
+<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of axs, and various core configurations for different version</li>
+</ul>
+</li>
+<li>EM Starter Kit (EMSK) support can be found in <code class="docutils literal notranslate"><span class="pre">board/emsk</span></code>. It includes the following sub-folders.<ul>
+<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: EMSK board initialization functions and 1 ms interrupt timer function</li>
+<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
+<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of emsk, and various core configurations for different version</li>
+</ul>
+</li>
+<li>HS Development Kit (HSDK) board support can be found in <code class="docutils literal notranslate"><span class="pre">board/hsdk</span></code>. It includes the following sub-folders.<ul>
+<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: HSDK board initialization functions and 1 ms interrupt timer function</li>
+<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
+<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Support for different board versions (if applicable), and support for different core configurations for each board version (if applicable)</li>
+</ul>
+</li>
+<li>IoT Development Kit (IoTDK) board support can be found in <code class="docutils literal notranslate"><span class="pre">board/iotdk</span></code>. It includes the following sub-folders.<ul>
+<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: IoTDK board initialization functions and 1 ms interrupt timer function</li>
+<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
+<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Support for different board versions (if applicable), and support for different core configurations for each board version (if applicable)</li>
+</ul>
+</li>
+<li>nSIM virtual board support can be found in <code class="docutils literal notranslate"><span class="pre">board/nsim</span></code>. It includes the following sub-folders.<ul>
+<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: nSIM virtual board initialization functions and 1 ms interrupt timer function</li>
+<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Basic hostlink UART driver for message input and output</li>
+<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of nsim, and various core configurations for different version</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MetaWare license is required for nSIM virtual board.</p>
+</div>
+</div>
+<div class="section" id="board-resource-unified-definitions">
+<h2>Board Resource Unified Definitions<a class="headerlink" href="#board-resource-unified-definitions" title="Permalink to this headline">¶</a></h2>
+<p>The board resource definitions are defined in <code class="docutils literal notranslate"><span class="pre">board.h</span></code>, where the hardware header files of each board are included. The following are the common board resources definitions. For each board, it can implement these definitions according to its own configurations. Through these common definitions, the code re-usability is improved.</p>
+<table border="1" class="colwidths-auto docutils" id="id1">
+<caption><span class="caption-text">Board resource definition</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Resource Definitions</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>BOARD_CONSOLE_UART_ID</td>
+<td>Console UART ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_ADC_IIC_ID</td>
+<td>AD converter IIC interface ID</td>
+</tr>
+<tr class="row-even"><td>BOARD_TEMP_SENSOR_IIC_ID</td>
+<td>Temperature sensor IIC interface ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_TEMP_IIC_SLVADDR</td>
+<td>Temperature sensor IIC slave address</td>
+</tr>
+<tr class="row-even"><td>BOARD_SDCARD_SPI_ID</td>
+<td>SD card SPI interface ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_WIFI_SPI_ID</td>
+<td>WiFi SPI interface ID</td>
+</tr>
+<tr class="row-even"><td>BOARD_SFLASH_SPI_ID</td>
+<td>SPI flash SPI interface ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_SDCARD_SPI_LINE</td>
+<td>SD card SPI interface CS line</td>
+</tr>
+<tr class="row-even"><td>BOARD_WIFI_SPI_LINE</td>
+<td>WiFI SPI interface CS line</td>
+</tr>
+<tr class="row-odd"><td>BOARD_SFLASH_SPI_LINE</td>
+<td>SPI flash SPI interface CS line</td>
+</tr>
+<tr class="row-even"><td>BOARD_SYS_TIMER_ID</td>
+<td>System 1 ms interrupt timer ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_SYS_TIMER_INTNO</td>
+<td>System 1 ms timer interrupt vector no</td>
+</tr>
+<tr class="row-even"><td>BOARD_SYS_TIMER_HZ</td>
+<td>System timer count freq. (1KHz as default)</td>
+</tr>
+<tr class="row-odd"><td>BOARD_SPI_FREQ</td>
+<td>Board SPI interface common freq.</td>
+</tr>
+<tr class="row-even"><td>BOARD_SYS_TIMER_MS_HZ</td>
+<td>Board timer count freq.</td>
+</tr>
+<tr class="row-odd"><td>BOARD_SYS_TIMER_MS_CONV</td>
+<td>Converter of board to system timer count freq.</td>
+</tr>
+<tr class="row-even"><td>BOARD_OS_TIMER_ID</td>
+<td>OS kernel timer ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_OS_TIMER_INTNO</td>
+<td>OS kernel timer interrupt no</td>
+</tr>
+<tr class="row-even"><td>BOARD_CPU_CLOCK</td>
+<td>CPU clock of the board</td>
+</tr>
+<tr class="row-odd"><td>BOARD_DEV_CLOCK</td>
+<td>Device clock of the board</td>
+</tr>
+<tr class="row-even"><td>BOARD_LED_MASK</td>
+<td>LED Mask, if 8 LED, mask is 0xff</td>
+</tr>
+<tr class="row-odd"><td>BOARD_LED_CNT</td>
+<td>LED count</td>
+</tr>
+<tr class="row-even"><td>BOARD_BTN_MASK</td>
+<td>Button mask</td>
+</tr>
+<tr class="row-odd"><td>BOARD_BTN_CNT</td>
+<td>Button count</td>
+</tr>
+<tr class="row-even"><td>BOARD_SWT_MASK</td>
+<td>Switch mask</td>
+</tr>
+<tr class="row-odd"><td>BOARD_SWT_CNT</td>
+<td>Switch count</td>
+</tr>
+<tr class="row-even"><td>BOARD_ONBOARD_NTSHELL_ID</td>
+<td>Default NtShell ID</td>
+</tr>
+<tr class="row-odd"><td>OSP_DELAY_OS_COMPAT_ENABLE</td>
+<td>Delay function is OS compact</td>
+</tr>
+<tr class="row-even"><td>OSP_DELAY_OS_COMPAT_DISABLE</td>
+<td>Delay function isn’t OS compact</td>
+</tr>
+<tr class="row-odd"><td>WF_IPADDR_1</td>
+<td>WiFi device static IP address 1</td>
+</tr>
+<tr class="row-even"><td>WF_IPADDR_2</td>
+<td>WiFi device static IP address 2</td>
+</tr>
+<tr class="row-odd"><td>WF_IPADDR_3</td>
+<td>WiFi device static IP address 3</td>
+</tr>
+<tr class="row-even"><td>WF_IPADDR_4</td>
+<td>WiFi device static IP address 4</td>
+</tr>
+<tr class="row-odd"><td>WF_NETMASK_1</td>
+<td>WiFi device static netmask 1</td>
+</tr>
+<tr class="row-even"><td>WF_NETMASK_2</td>
+<td>WiFi device static netmask 2</td>
+</tr>
+<tr class="row-odd"><td>WF_NETMASK_3</td>
+<td>WiFi device static netmask 3</td>
+</tr>
+<tr class="row-even"><td>WF_NETMASK_4</td>
+<td>WiFi device static netmask 4</td>
+</tr>
+<tr class="row-odd"><td>WF_GATEWAY_1</td>
+<td>WiFi device static gateway 1</td>
+</tr>
+<tr class="row-even"><td>WF_GATEWAY_2</td>
+<td>WiFi device static gateway 2</td>
+</tr>
+<tr class="row-odd"><td>WF_GATEWAY_3</td>
+<td>WiFi device static gateway 3</td>
+</tr>
+<tr class="row-even"><td>WF_GATEWAY_4</td>
+<td>WiFi device static gateway 4</td>
+</tr>
+<tr class="row-odd"><td>WF_HOTSPOT_IS_OPEN</td>
+<td>Specify whether WiFi hot spot is open or not</td>
+</tr>
+<tr class="row-even"><td>WF_IPADDR_DHCP</td>
+<td>Use DHCP to get ip or not</td>
+</tr>
+<tr class="row-odd"><td>WF_HOTSPOT_NAME</td>
+<td>WiFi hot spot name</td>
+</tr>
+<tr class="row-even"><td>WF_HOTSPOT_PASSWD</td>
+<td>WiFi hot spot password when not open</td>
+</tr>
+<tr class="row-odd"><td>WF_ENABLE_MANUAL_SET_MAC</td>
+<td>Enable to set MAC manually or not</td>
+</tr>
+<tr class="row-even"><td>WF_MAC_ADDR0</td>
+<td>WiFi MAC address 0 (manual set)</td>
+</tr>
+<tr class="row-odd"><td>WF_MAC_ADDR1</td>
+<td>WiFi MAC address 1 (manual set)</td>
+</tr>
+<tr class="row-even"><td>WF_MAC_ADDR2</td>
+<td>WiFi MAC address 2 (manual set)</td>
+</tr>
+<tr class="row-odd"><td>WF_MAC_ADDR3</td>
+<td>WiFi MAC address 3 (manual set)</td>
+</tr>
+<tr class="row-even"><td>WF_MAC_ADDR4</td>
+<td>WiFi MAC address 4 (manual set)</td>
+</tr>
+<tr class="row-odd"><td>WF_MAC_ADDR5</td>
+<td>WiFi MAC address 5 (manual set)</td>
+</tr>
+<tr class="row-even"><td>BOARD_PMWIFI_0_ID</td>
+<td>Pmod WiFi 0 ID</td>
+</tr>
+<tr class="row-odd"><td>BOARD_PMWIFI_ID_MAX</td>
+<td>Max Pmod WiFi ID</td>
+</tr>
+<tr class="row-even"><td>OSP_GET_CUR_SYSHZ</td>
+<td>Macro to get current syshz</td>
+</tr>
+<tr class="row-odd"><td>OSP_GET_CUR_MS</td>
+<td>Macro to get current ms count</td>
+</tr>
+<tr class="row-even"><td>OSP_GET_CUR_US</td>
+<td>Macro to get current us count</td>
+</tr>
+<tr class="row-odd"><td>OSP_GET_CUR_HWTICKS</td>
+<td>Macro to get current hardware ticks count</td>
+</tr>
+<tr class="row-even"><td>board_init</td>
+<td>Function for common board initialization</td>
+</tr>
+<tr class="row-odd"><td>board_timer_update</td>
+<td>Call in period interrupt when using timer interrupt</td>
+</tr>
+<tr class="row-even"><td>board_delay_ms</td>
+<td>MS delay for OS support</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="axs.html" class="btn btn-neutral float-right" title="ARC Software Development Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../device/wnic.html" class="btn btn-neutral" title="WNIC HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

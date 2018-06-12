@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t" kind="group">
+    <compoundname>DEVICE_HAL_GPIO_DEVSTRUCT</compoundname>
+    <title>GPIO Device Interface Definition</title>
+    <innerclass refid="structdev__gpio__info" prot="public">dev_gpio_info</innerclass>
+    <innerclass refid="structdev__gpio" prot="public">dev_gpio</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga87e9eab1a73f62b5d21cc109b19d5db9" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio__info" kindref="compound">dev_gpio_info</ref></type>
+        <definition>typedef struct dev_gpio_info  DEV_GPIO_INFO</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO_INFO</name>
+        <briefdescription>
+<para>gpio information struct definition </para>        </briefdescription>
+        <detaileddescription>
+<para>informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <simplesect kind="note"><para>Only available for gpio with max 32bits </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="398" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gafd33c433a241a5332253dbe1d2bb6d66" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio__info" kindref="compound">dev_gpio_info</ref> *</type>
+        <definition>typedef struct dev_gpio_info *  DEV_GPIO_INFO_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO_INFO_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="398" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gab39bda9a6b6726d0ccccc7b4742d9d27" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio" kindref="compound">dev_gpio</ref></type>
+        <definition>typedef struct dev_gpio  DEV_GPIO</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO</name>
+        <briefdescription>
+<para>gpio device interface definition </para>        </briefdescription>
+        <detaileddescription>
+<para>define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <simplesect kind="note"><para>all this details are implemented by user in user porting code </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="424" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gae0f24acdf1f85cb06e332306fb6d29bc" prot="public" static="no">
+        <type>struct <ref refid="structdev__gpio" kindref="compound">dev_gpio</ref> *</type>
+        <definition>typedef struct dev_gpio *  DEV_GPIO_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_GPIO_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="424" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gaec3eaf5c7fa6d44a27e58e65a864d8ac" prot="public" static="no">
+        <name>DEV_GPIO_INFO_SET_EXTRA_OBJECT</name>
+        <param><defname>gpio_info_ptr</defname></param>
+        <param><defname>extra_info</defname></param>
+        <initializer>(gpio_info_ptr)-&gt;extra = (void *)(extra_info)</initializer>
+        <briefdescription>
+<para>Set extra information pointer of gpio info. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="400" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gaf04d0e5061e455cf4a79b2eea7d26b4f" prot="public" static="no">
+        <name>DEV_GPIO_INFO_GET_EXTRA_OBJECT</name>
+        <param><defname>gpio_info_ptr</defname></param>
+        <initializer>((gpio_info_ptr)-&gt;extra)</initializer>
+        <briefdescription>
+<para>Get extra information pointer of gpio info. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="402" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="402" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gaed07d1ee12aecd4634df70aeed4e9678" prot="public" static="no">
+        <name>DEV_GPIO_BITS_MTHD_POLL</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+<para>Method of all gpio bits set to poll. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="405" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="405" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga88cc519090f41d765e90e0abf5a98956" prot="public" static="no">
+        <name>DEV_GPIO_BITS_MTHD_INTERRUPT</name>
+        <initializer>(0xFFFFFFFF)</initializer>
+        <briefdescription>
+<para>Method of all gpio bits set to interrupt. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="407" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga38f184480198a34d80ea26240160facb" prot="public" static="no">
+        <name>DEV_GPIO_BITS_MTHD_DEFAULT</name>
+        <initializer>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gaed07d1ee12aecd4634df70aeed4e9678" kindref="member">DEV_GPIO_BITS_MTHD_POLL</ref>)</initializer>
+        <briefdescription>
+<para>Default method of all gpio bits should be poll for first open. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="409" column="9" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="409" bodyend="-1"/>
+        <referencedby refid="dw__gpio_8h_1a14067525e0a0bf4a46bfd3e3627a031b" compoundref="dw__gpio_8c" startline="238" endline="285">dw_gpio_open</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga5127296ba57626bc984aa48d6ee5f010" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_gpio::gpio_open)(uint32_t dir)</definition>
+        <argsstring>)(uint32_t dir)</argsstring>
+        <name>gpio_open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>open gpio device with pre-defined gpio direction</para><para>Open a gpio device with pre-defined io direction. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dir</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>gpio direction for each bit </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Open successfully without any issues </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OPNED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If device was opened before with different parameters, then just increase the <ref refid="structdev__gpio__info_1a44feae265065db66d495eeeff034cc26" kindref="member">opn_cnt</ref> and return <ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_NOSPT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Open settings are not supported </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="419" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="419" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o_1ga458834f7b436dda8ba0dfa15cd302596" compoundref="axc003__gpio_8c" startline="69" endline="87">axc003_gpio_init</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga1c5aeb4ab0898b4d756415644ff65c68" compoundref="emsk__gpio_8c" startline="91" endline="104">emsk_button_init</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gac9f916612edd3260bf1282c25ceea192" compoundref="emsk__gpio_8c" startline="73" endline="88">emsk_led_init</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga17c90e6a42b9c2952d406d0136a390ba" compoundref="emsk__gpio_8c" startline="107" endline="120">emsk_switch_init</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gacbf9ba33414dd4d1dc01995b7c4fc52e" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_gpio::gpio_close)(void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>gpio_close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>close gpio device</para><para>Close an gpio device, just decrease the <ref refid="structdev__gpio__info_1a44feae265065db66d495eeeff034cc26" kindref="member">opn_cnt</ref>, if <ref refid="structdev__gpio__info_1a44feae265065db66d495eeeff034cc26" kindref="member">opn_cnt</ref> equals 0, then close the device <parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Close successfully without any issues(including scenario that device is already closed) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OPNED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is still opened, the device <ref refid="structdev__gpio__info_1a44feae265065db66d495eeeff034cc26" kindref="member">opn_cnt</ref> decreased by 1 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="420" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_gpio::gpio_control)(uint32_t ctrl_cmd, void *param)</definition>
+        <argsstring>)(uint32_t ctrl_cmd, void *param)</argsstring>
+        <name>gpio_control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>control gpio device</para><para>Control an gpio device by ctrl_cmd, with passed param. you can control gpio device using predefined gpio control commands defined using <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref> (which must be implemented by bsp developer), such as <ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1gadf2e3c74bf24056161b11fe605ae2465" kindref="member">change masked gpio direction to input</ref>, and <ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d" kindref="compound">more</ref>. And you can also control gpio device using your own specified commands defined using <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1gafe70e244452c1c2f5235b85cadf602bb" kindref="member">DEV_SET_USRCMD</ref>, but these specified commands should be defined in your own gpio device driver implementation. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ctrl_cmd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d" kindref="compound">control command</ref>, to change or get some thing related to gpio </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">param</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parameters that maybe argument of the command, or return values of the command </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device successfully </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CLSED</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device is not opened </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid for current control command </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_SYS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device failed, due to hardware issues </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_CTX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control device failed, due to different reasons like in transfer state </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_NOSPT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Control command is not supported or not valid, such as interrupt is not supported </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="421" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="421" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga1c5aeb4ab0898b4d756415644ff65c68" compoundref="emsk__gpio_8c" startline="91" endline="104">emsk_button_init</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gac9f916612edd3260bf1282c25ceea192" compoundref="emsk__gpio_8c" startline="73" endline="88">emsk_led_init</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga17c90e6a42b9c2952d406d0136a390ba" compoundref="emsk__gpio_8c" startline="107" endline="120">emsk_switch_init</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga37c8d684dfd11fe1900c93fa1fe7cc0b" compoundref="emsk__gpio_8c" startline="137" endline="144">led_toggle</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga70bd322128648796b6652e4026a2eb91" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_gpio::gpio_write)(uint32_t val, uint32_t mask)</definition>
+        <argsstring>)(uint32_t val, uint32_t mask)</argsstring>
+        <name>gpio_write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>write gpio device with val, only write the masked bits</para><para>Write gpio with val, and only change the masked bits of gpio. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data that need to write to gpio </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>gpio bit mask </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Write gpio with specified value successfully </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="422" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="422" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" compoundref="emsk__gpio_8c" startline="123" endline="134">led_write</referencedby>
+        <referencedby refid="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o_1gae3ae9c28ab249bbd265e14e9bc1ae639" compoundref="axc003__gpio_8c" startline="90" endline="105">leda_write</referencedby>
+        <referencedby refid="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o_1ga40eb42f17565d2858707a521c35d7040" compoundref="axc003__gpio_8c" startline="110" endline="121">ledb_write</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga0583a36e5d0aab4bd914c34bb44832c9" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_gpio::gpio_read)(uint32_t *val, uint32_t mask)</definition>
+        <argsstring>)(uint32_t *val, uint32_t mask)</argsstring>
+        <name>gpio_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>read gpio device val, only read the masked bits</para><para>Read the masked gpio value <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to data need to read from gpio </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>gpio bit mask </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>E_OK</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Read gpio data successfully </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_OBJ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device object is not valid or not exists </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>E_PAR</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter is not valid </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" line="423" column="1" bodyfile="/home/travis/build/qiangg/embarc_osp/device/ip/ip_hal/inc/dev_gpio.h" bodystart="423" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___a_x_s___a_x_c003___d_r_v___g_p_i_o_1ga1321d1f2d3e39b23315285b52acd0852" compoundref="axc003__gpio_8c" startline="124" endline="138">button_read</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" compoundref="emsk__gpio_8c" startline="147" endline="161">led_read</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gacf651d7f9071df560e583ba654d4b3d0" compoundref="emsk__gpio_8c" startline="164" endline="178">switch_read</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>contains definitions of gpio device structure. </para>    </briefdescription>
+    <detaileddescription>
+<para>This structure will be used in user implemented code, which was called <ref refid="group___d_e_v_i_c_e___i_m_p_l" kindref="compound">Device Driver Implement Layer</ref> for gpio to use in implementation code. Application developer should use the GPIO API provided here to access to GPIO devices. BSP developer should follow the API definition to implement GPIO device drivers. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

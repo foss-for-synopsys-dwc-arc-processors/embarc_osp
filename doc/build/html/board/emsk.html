@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARC EM Starter Kit &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC HS Development Kit" href="hsdk.html" />
+    <link rel="prev" title="ARC Software Development Platform" href="axs.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="board.html">Boards</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="board.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="board.html#common-board-initialization-process">Common Board Initialization Process</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="board.html#supported-boards">Supported Boards</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="axs.html">ARC Software Development Platform</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ARC EM Starter Kit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsdk.html">ARC HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nsim.html">ARC Virtual Board based on nSIM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="board.html#board-resource-unified-definitions">Board Resource Unified Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="board.html">Boards</a> &raquo;</li>
+        
+      <li>ARC EM Starter Kit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/board/emsk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arc-em-starter-kit">
+<span id="board-emsk"></span><h1>ARC EM Starter Kit<a class="headerlink" href="#arc-em-starter-kit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The DesignWare® ARC® EM Starter Kit (EMSK, emsk) enables  rapid
+software development, code porting, software debugging, and profiling for ARC
+EM4, EM6 (EMSK 1.1), EM5D and EM7D (EMSK 2.0/2.1), EM9D and EM11D (EMSK
+2.2/2.3) processors.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Caches are not integrated in EM5D (EMSK 2.0/2.1) and EM9D (EMSK 2.2/2.3) configurations. If program code runs in DDR memory, SPI and IIC devices should run at a slower frequency.
+EMSK 1.0 can be upgraded to EMSK 1.1 using EMSK 1.1’s firmware, EMSK 2.0, 2.1 and 2.2 can be upgraded to EMSK 2.3 using EMSK 2.3’s firmware.</p>
+</div>
+<p>The EMSK consists of a hardware platform and a software package, including
+pre-installed FPGA images of different configurations of the ARC EM Processor
+with peripherals.</p>
+<p>The development board is based on a Xilinx Spartan&amp;reg;-6 LX45 FPGA. It
+supports hardware extensions using six 2x6 connectors supporting a total of 48
+user I/O pins (plus power and ground pins) that can be used to connect
+components such as sensors, actuators, memories, displays, buttons, switches,
+and communication devices. A Digilent Pmod™ compatible extension board
+containing a four-channel 12-bit A/D converter with an IIC interface and an AC
+power adapter are included in the package.</p>
+<img alt="EM Starter Kit Board" src="../_images/emsk_board.jpg" />
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="em-core-configurations">
+<h3>EM core configurations<a class="headerlink" href="#em-core-configurations" title="Permalink to this headline">¶</a></h3>
+<p>The FPGA board includes an SPI flash storage device pre-programmed with FPGA
+images containing different configurations of DesignWare® ARC EM cores.</p>
+<p>The FPGA image can be selected using the pins 1 and 2 of the SW1 switch on the
+board:</p>
+<img alt="EM Starter Kit DIP Switch" src="../_images/emsk_dipswitch.jpg" />
+<p>The following tables provide the details of supported EM Core configurations
+for different versions of EMSK board.</p>
+<img alt="EMSK 1.1 - Cores Configurations" src="../_images/emsk-11_emcores.jpg" />
+<img alt="EMSK 2.2 - Cores Configurations" src="../_images/emsk-22_emcores.jpg" />
+<img alt="EMSK 2.3 - Cores Configurations" src="../_images/emsk-23_emcores.jpg" />
+</div>
+<div class="section" id="peripherals">
+<h3>Peripherals<a class="headerlink" href="#peripherals" title="Permalink to this headline">¶</a></h3>
+<p>There are many peripheral devices available, such as SPI master, SPI slave,
+IIC, UART, GPIO. External hardware interface devices can be connected to the
+EMSK using Pmod Connectors. The Pmod connectors are controlled by Pmod mux
+controller.</p>
+<p>The peripheral memory mapping depends on the AHB address width. The
+configuration <em>ARC_EM4_16CR</em> uses an address width of 24 bits. The other
+configurations use an address width of 32 bits. The peripheral connections and
+memory mappings for different versions of EMSK board are shown below:</p>
+<img alt="EMSK 1.1 - Peripheral Connections and Memory Mapping" src="../_images/emsk-11_peripheral_connections.jpg" />
+<img alt="EMSK 2.2 - Peripheral Connections and Memory Mapping" src="../_images/emsk-22_peripheral_connections.jpg" />
+<img alt="EMSK 2.3 - Peripheral Connections and Memory Mapping" src="../_images/emsk-23_peripheral_connections.jpg" />
+</div>
+<div class="section" id="peripherals-interrupts">
+<h3>Peripherals interrupts<a class="headerlink" href="#peripherals-interrupts" title="Permalink to this headline">¶</a></h3>
+<p>Peripherals can generate interrupts to the CPU. The interrupt irq assignments
+are as follows.</p>
+<img alt="Interrupt Assignments" src="../_images/emsk_interrupt_connection.jpg" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hsdk.html" class="btn btn-neutral float-right" title="ARC HS Development Kit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="axs.html" class="btn btn-neutral" title="ARC Software Development Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
