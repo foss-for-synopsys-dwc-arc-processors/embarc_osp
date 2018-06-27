@@ -35,7 +35,7 @@ Follow these steps to run *hello world* in the embARC BSP.
 2. Checking out the embARC BSP code. The embARC BSP source code is hosted in a github repository that supports cloning via git. Use the following scripts to get this repository. And check out a copy of the source code to your local machine. You can download the zip file to get the code in the github as alternative.
 
   .. code-block:: console
-  
+
      # On Windows
      cd %userprofile%
      # On Linux
@@ -45,7 +45,7 @@ Follow these steps to run *hello world* in the embARC BSP.
 
 3. The embARC BSP code is independent with build systems. Various build systems can support embARC BSP code. Using the *hello world* as a base model, the following sections will describe how to build a embARC BSP application. 
 
-.. toctree::
-   :maxdepth: 1
+  .. toctree::
+     :maxdepth: 1
 
-   bsp_build_cmd.rst
+     bsp_build_cmd.rst
