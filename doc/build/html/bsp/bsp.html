@@ -1,0 +1,291 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>embARC BSP &mdash; embARC 2018.01 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build BSP in Command Line" href="bsp_build_cmd.html" />
+    <link rel="prev" title="Release 2015.01" href="../changelog/release_2015.01.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.01
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlwares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">embARC BSP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-guide">User Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bsp_build_cmd.html">Build BSP in Command Line</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>embARC BSP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/bsp/bsp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="embarc-bsp">
+<span id="bsp"></span><h1>embARC BSP<a class="headerlink" href="#embarc-bsp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The embARC <strong>Board support Package</strong> (BSP) is a software distributions aimed at facilitating the development and evaluation of embedded systems based on ARCv2 processors.</p>
+<p>Unlike the <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp">embARC OSP</a> as a full-featured distribution for ARC embedded systems, the embARC BSP is designed to provide a minimalistic board support package for ARC users by defining consistent and simple software interfaces to the processors and onboard devices.</p>
+<p>The embARC BSP code is originated from embARC OSP. The code are reorganized with the same ARC HAL, device HAL and driver implementations for DesignWare IP peripherals. The operating systems, common libraries, middleware components and applications are not included in the embARC BSP. The code in embARC BSP is independent with build system. It can be ported to various build system easily. The lightweight makefile and Eclipse IDE are both supported in embARC BSP as reference.</p>
+<ul class="simple">
+<li>Support MetaWare &amp; GNU toolchains</li>
+<li>Support EMSK 2.3 and TCF file</li>
+<li>Support various build systems and compiling environments, such as simple makefile, ARC MetaWare &amp; GNU IDE, makefile, IDE support</li>
+<li>Use embARC ARC Hardware Abstraction Layer (HAL), C &amp; C++ support, assembly support</li>
+<li>Simple UART and GPIO, I2C, SPI drivers</li>
+<li>No middleware, no OS, no uDMA</li>
+<li>Hello &amp; blinky example (UART, GPIO, timer)</li>
+</ul>
+<img alt="embARC BSP Files" src="../_images/bsp_files.jpg" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The current version of BSP code inherits from embARC OSP 2017.04. Only <a class="reference internal" href="../board/emsk.html#board-emsk"><span class="std std-ref">ARC EM Starter Kit</span></a> is supported in the embARC BSP.</p>
+</div>
+</div>
+<div class="section" id="user-guide">
+<h2>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<p>Follow these steps to run <em>hello world</em> in the embARC BSP.</p>
+<ol class="arabic simple">
+<li>See <a class="reference internal" href="../getting_started/getting_started.html#getting-started"><span class="std std-ref">Getting Started</span></a> to set up the development environment and prepare hardware.</li>
+<li>Checking out the embARC BSP code. The embARC BSP source code is hosted in a github repository that supports cloning via git. Use the following scripts to get this repository. And check out a copy of the source code to your local machine. You can download the zip file to get the code in the github as alternative.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> On Windows
+<span class="go">cd %userprofile%</span>
+<span class="gp">#</span> On Linux
+<span class="go">cd ~</span>
+<span class="gp">#</span> embARC BSP <span class="k">for</span> EMSK
+<span class="go">git clone https://github.com/foss-for-synopsys-dwc-arc-processors/ embarc_emsk_bsp.git embarc_bsp</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>The embARC BSP code is independent with build systems. Various build systems can support embARC BSP code. Using the <em>hello world</em> as a base model, the following sections will describe how to build a embARC BSP application.</li>
+</ol>
+<blockquote>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bsp_build_cmd.html">Build BSP in Command Line</a></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bsp_build_cmd.html" class="btn btn-neutral float-right" title="Build BSP in Command Line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../changelog/release_2015.01.html" class="btn btn-neutral" title="Release 2015.01" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2018.01',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

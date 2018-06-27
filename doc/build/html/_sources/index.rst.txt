@@ -23,6 +23,7 @@ Welcome to embARC Open Software Platform Documentation!
    faq/faq.rst
    contribute/contribute.rst
    changelog/changelog.rst
+   bsp/bsp.rst
    license/license.rst
 
 
