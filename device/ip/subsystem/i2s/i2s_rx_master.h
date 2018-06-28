@@ -40,8 +40,8 @@
 #define IO_I2S_RX_MASTER_SET_FIFO_THRESHOLD     (0x21)
 #define IO_I2S_RX_MASTER_SET_BITCLOCK			(0x22)
 
-extern uint32_t io_i2s_rx_master_open( uint32_t dev_id );
-extern void 	io_i2s_rx_master_close( uint32_t dev_id );
+extern uint32_t io_i2s_rx_master_open(uint32_t dev_id);
+extern void io_i2s_rx_master_close(uint32_t dev_id);
 
 /* Function: 		 io_i2s_rx_master_read
  * Parameters:
@@ -53,7 +53,8 @@ extern void 	io_i2s_rx_master_close( uint32_t dev_id );
  * Returns:
  *   none
  */
-extern void io_i2s_rx_master_read( uint32_t dev_id, uint32_t * data, uint32_t * size );
+extern void io_i2s_rx_master_read(uint32_t dev_id, uint32_t * data,
+				  uint32_t * size);
 
 /* I2S valid IOCTLs
   cmd                     				arg type        arg value
@@ -64,6 +65,7 @@ extern void io_i2s_rx_master_read( uint32_t dev_id, uint32_t * data, uint32_t * 
   IO_I2S_RX_MASTER_SET_SAMPLE_WIDTH		uint32_t 		sample width value 16 or 12 bits (accepts command before first io_i2s_rx_master_read)
   IO_I2S_RX_MASTER_SET_BITCLOCK		uint32_t		0/1 - disable/enable i2s bit clock ans WS (accepts command before first io_i2s_rx_master_read)
 */
-extern void io_i2s_rx_master_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
+extern void io_i2s_rx_master_ioctl(uint32_t dev_id, uint32_t cmd,
+				   void *arg);
 
-#endif /* I2S_RX_MASTER_H_ */
+#endif				/* I2S_RX_MASTER_H_ */

@@ -11,5 +11,3 @@
 #define DSP_SINCOS_PRESENT
 
 #endif
-
-

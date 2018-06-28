@@ -52,10 +52,10 @@
 #define IO_GPIO_GET_GPO						(0x30)
 
 
-extern uint32_t io_gpio_open( uint32_t dev_id );
-extern void io_gpio_close( uint32_t dev_id );
-extern void io_gpio_read( uint32_t dev_id, uint32_t * data );
-extern void io_gpio_write( uint32_t dev_id, uint32_t data );
+extern uint32_t io_gpio_open(uint32_t dev_id);
+extern void io_gpio_close(uint32_t dev_id);
+extern void io_gpio_read(uint32_t dev_id, uint32_t * data);
+extern void io_gpio_write(uint32_t dev_id, uint32_t data);
 
 /* GPIO valid IOCTLs
   cmd                           arg type        arg value
@@ -88,7 +88,7 @@ extern void io_gpio_write( uint32_t dev_id, uint32_t data );
   IO_GPIO_GET_GPO				uint32_t 		Last value written to the port data register using io_gpio_write() service, does not depend on GPIO direction
 												settings and can be different compare to data returened by io_gpio_read() service. 
 */
-extern void io_gpio_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
+extern void io_gpio_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
 
-#endif /* GPIO_H_ */
+#endif				/* GPIO_H_ */

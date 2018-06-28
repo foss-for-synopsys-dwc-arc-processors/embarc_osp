@@ -43,7 +43,7 @@
  *                data observation register
  *
  */
-extern void io_creg_slave_read( uint32_t dev_id, uint32_t * reg_val );
+extern void io_creg_slave_read(uint32_t dev_id, uint32_t * reg_val);
 
 
-#endif /* CREG_SLAVE_H_ */
+#endif				/* CREG_SLAVE_H_ */

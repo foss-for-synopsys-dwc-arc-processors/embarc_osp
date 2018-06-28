@@ -52,36 +52,35 @@
 #ifdef CREG_SLAVE_DEV_PRESENT
 
 /* Addresses of CREG slave instances */
-    static const uint32_t creg_slaves[4] = {
+static const uint32_t creg_slaves[4] = {
 #ifdef IO_CREG_SLV0_PRESENT
-            AR_IO_CREG_SLV0_OBSR,
+    AR_IO_CREG_SLV0_OBSR,
 #else
-			0,
+    0,
 #endif
 #ifdef IO_CREG_SLV1_PRESENT
-            AR_IO_CREG_SLV1_OBSR,
+    AR_IO_CREG_SLV1_OBSR,
 #else
-			0,
+    0,
 #endif
 #ifdef IO_CREG_SLV2_PRESENT
-            AR_IO_CREG_SLV2_OBSR,
+    AR_IO_CREG_SLV2_OBSR,
 #else
-			0,
+    0,
 #endif
 #ifdef IO_CREG_SLV3_PRESENT
-            AR_IO_CREG_SLV3_OBSR
+    AR_IO_CREG_SLV3_OBSR
 #else
-			0,
+    0,
 #endif
-    };
+};
 
 #define     CREG_READ( )         _lr( (unsigned)creg_slaves[dev_id] )
 
-void io_creg_slave_read( uint32_t dev_id, uint32_t * reg_val )
+void io_creg_slave_read(uint32_t dev_id, uint32_t * reg_val)
 {
     *reg_val = CREG_READ();
 }
 
 
 #endif
-

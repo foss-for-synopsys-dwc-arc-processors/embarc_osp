@@ -117,5 +117,3 @@
 #define IO_UART3_INTR (83)
 
 #endif
-
-

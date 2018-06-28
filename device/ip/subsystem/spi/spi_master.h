@@ -50,7 +50,7 @@
 #define IO_SPI_MASTER_SET_RX_DELAY	      	(0x2a)
 #define IO_SPI_MASTER_SET_PACKING		    (0x2b)
 
-#define IO_SPI_MASTER_GET_XFER_SIZE         (0x2c)  // undocumented: for verification purposes
+#define IO_SPI_MASTER_GET_XFER_SIZE         (0x2c)	// undocumented: for verification purposes
 
 
 /* SPI shift register modes */
@@ -77,10 +77,12 @@
 #define SPI_SE_3        (0x04)
 #define SPI_SE_4        (0x08)
 
-extern uint32_t io_spi_master_open( uint32_t dev_id );
-extern void io_spi_master_close( uint32_t dev_id );
-extern void io_spi_master_read( uint32_t dev_id, uint8_t * data, uint32_t * size );
-extern void io_spi_master_write( uint32_t dev_id, uint8_t * data, uint32_t * size );
+extern uint32_t io_spi_master_open(uint32_t dev_id);
+extern void io_spi_master_close(uint32_t dev_id);
+extern void io_spi_master_read(uint32_t dev_id, uint8_t * data,
+			       uint32_t * size);
+extern void io_spi_master_write(uint32_t dev_id, uint8_t * data,
+				uint32_t * size);
 /* I2C master valid IOCTLs
   cmd                           arg type        arg value
   IO_SET_CB_RX                  io_cb_t         Callback function invoked from ISR when read successfully finishes
@@ -113,7 +115,7 @@ extern void io_spi_master_write( uint32_t dev_id, uint8_t * data, uint32_t * siz
   IO_SPI_MASTER_SET_PACKING 	 uint32_t		1|0 - enable|disable data packing in Rx/Tx data buffer. 
 */
 
-extern void io_spi_master_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
+extern void io_spi_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
 
-#endif /* SPI_MASTER_H_ */
+#endif				/* SPI_MASTER_H_ */

@@ -58,38 +58,38 @@
 
 /* PWM typedefs */
 typedef struct _pwm_timer_cfg_t {
-	uint16_t	max;
-	uint16_t    periods;
-	uint8_t     mode;
+    uint16_t max;
+    uint16_t periods;
+    uint8_t mode;
 } io_pwm_timer_cfg_t, *io_pwm_timer_cfg_pt;
 
 typedef struct _pwm_generator_cfg_t {
-	uint8_t		chans_id;
-	uint8_t		polarity;
-	uint16_t	threshold;
-	uint16_t 	deadzone;
+    uint8_t chans_id;
+    uint8_t polarity;
+    uint16_t threshold;
+    uint16_t deadzone;
 } io_pwm_generator_cfg_t, *io_pwm_generator_cfg_pt;
 
 typedef struct _pwm_chan_cfg_t {
-	uint8_t		chan_id;
-	uint8_t		value;
+    uint8_t chan_id;
+    uint8_t value;
 } io_pwm_chan_cfg_t, *io_pwm_chan_cfg_pt;
 
 typedef struct _pwm_trigger_cfg_t {
-	uint8_t		chans_id;
-	uint8_t		width;
-	uint8_t	    mode;
-	uint8_t		is_enabled;
+    uint8_t chans_id;
+    uint8_t width;
+    uint8_t mode;
+    uint8_t is_enabled;
 } io_pwm_trigger_cfg_t, *io_pwm_trigger_cfg_pt;
 
 typedef struct _pwm_fault_cfg_t {
-	uint8_t		chans_id;
-	uint8_t		mode;
-	uint8_t	    mask;
+    uint8_t chans_id;
+    uint8_t mode;
+    uint8_t mask;
 } io_pwm_fault_cfg_t, *io_pwm_fault_cfg_pt;
 
-extern uint32_t io_pwm_open( uint32_t dev_id );
-extern void io_pwm_close( uint32_t dev_id );
+extern uint32_t io_pwm_open(uint32_t dev_id);
+extern void io_pwm_close(uint32_t dev_id);
 /* PWM valid IOCTLs
   cmd                           arg type        	 arg value
   IO_SET_CB_TX                  io_cb_t         	 Callback function invoked from ISR when write successfully finishes
@@ -105,7 +105,7 @@ extern void io_pwm_close( uint32_t dev_id );
   IO_PWM_SET_FAULT_INPUT_POL    io_pwm_chan_cfg_pt		 0 - active-high / 1 - active-low
   IO_PWM_SET_FAULT_CFG          io_pwm_fault_cfg_pt     fault configuration (id : 0-3 = 01/23/45/67, mode [00-disable/01-inactive/10-low/11-high], mask [xyz inputs])
 */
-extern void io_pwm_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
+extern void io_pwm_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
 
-#endif /* PWM_MASTER_H_ */
+#endif				/* PWM_MASTER_H_ */

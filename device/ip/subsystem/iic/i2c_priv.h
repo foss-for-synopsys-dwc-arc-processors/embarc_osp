@@ -90,50 +90,50 @@ typedef _Interrupt void (*I2C_ISR) ();
 
 /* Private data structure maintained by the driver */
 typedef struct i2c_info {
-	uint32_t		reg_base;		// base address of device register set
-	uint8_t			instID;
+    uint32_t reg_base;		// base address of device register set
+    uint8_t instID;
     /* TX & RX Buffer and lengths */
-    uint8_t        *tx_data;
-    uint32_t        tx_size;
-    uint32_t        tx_count;
-	uint32_t	   *p_txsize;
-    uint8_t        *rx_data;
-    uint32_t        rx_size;
-    uint32_t        rx_count;
-	uint32_t	   *p_rxsize;
-    uint32_t        rx_req_count;
-	uint8_t			handling_tx;
-	uint8_t			handling_rx;
-    uint8_t         stop_detected;
-    uint8_t         rd_req_detected;
-    uint16_t        fifo_depth;
-    uint16_t        dmarxchanid, dmatxchanid;
+    uint8_t *tx_data;
+    uint32_t tx_size;
+    uint32_t tx_count;
+    uint32_t *p_txsize;
+    uint8_t *rx_data;
+    uint32_t rx_size;
+    uint32_t rx_count;
+    uint32_t *p_rxsize;
+    uint32_t rx_req_count;
+    uint8_t handling_tx;
+    uint8_t handling_rx;
+    uint8_t stop_detected;
+    uint8_t rd_req_detected;
+    uint16_t fifo_depth;
+    uint16_t dmarxchanid, dmatxchanid;
 #ifdef __Xdmac
-    _Uncached uint32_t *dmarxdescriptor, *dmatxdescriptor;	
-	uint16_t		dmatx_last;
-#endif	
+    _Uncached uint32_t *dmarxdescriptor, *dmatxdescriptor;
+    uint16_t dmatx_last;
+#endif
     /* Callbacks */
-    IO_CB_FUNC		tx_cb;
-    IO_CB_FUNC     	rx_cb;
-    IO_CB_FUNC		err_cb;
+    IO_CB_FUNC tx_cb;
+    IO_CB_FUNC rx_cb;
+    IO_CB_FUNC err_cb;
     /* Interrupt numbers and handlers */
-    uint8_t			vector_err;     
-	uint8_t			vector_rx_avail;
-	uint8_t			vector_tx_req;  
-	uint8_t        	vector_stop_det;
-	uint8_t        	vector_rd_req;       // slave only
-	uint8_t        	vector_restart_det;  // slave only
-	I2C_ISR         isr_err;        
-	I2C_ISR         isr_rx_avail;   
-	I2C_ISR         isr_tx_req;     
-	I2C_ISR         isr_stop_det;     
-	I2C_ISR         isr_rd_req;     
+    uint8_t vector_err;
+    uint8_t vector_rx_avail;
+    uint8_t vector_tx_req;
+    uint8_t vector_stop_det;
+    uint8_t vector_rd_req;	// slave only
+    uint8_t vector_restart_det;	// slave only
+    I2C_ISR isr_err;
+    I2C_ISR isr_rx_avail;
+    I2C_ISR isr_tx_req;
+    I2C_ISR isr_stop_det;
+    I2C_ISR isr_rd_req;
 } i2c_info_t, *i2c_info_pt;
 
 
 /* I2C IOCTLs default values	 	*/
-#define 	I2C_SS_SCL_HIGH_COUNT   (0x0190)//WHY? hw-default is 0x30
-#define 	I2C_SS_SCL_LOW_COUNT    (0x01d6)//WHY? hw-default is 0x38
+#define 	I2C_SS_SCL_HIGH_COUNT   (0x0190)	//WHY? hw-default is 0x30
+#define 	I2C_SS_SCL_LOW_COUNT    (0x01d6)	//WHY? hw-default is 0x38
 #define 	I2C_FS_SCL_HIGH_COUNT   (0x003c)
 #define 	I2C_FS_SCL_LOW_COUNT    (0x0082)
 

@@ -56,8 +56,8 @@
 #define     IO_I2C_MASTER_SET_FS_SCL_LCNT       (0x25)
 
 
-extern uint32_t io_i2c_master_open( uint32_t dev_id );
-extern void io_i2c_master_close( uint32_t dev_id );
+extern uint32_t io_i2c_master_open(uint32_t dev_id);
+extern void io_i2c_master_close(uint32_t dev_id);
 
 /* I2C master valid IOCTLs
   cmd                           arg type        arg value
@@ -77,9 +77,11 @@ extern void io_i2c_master_close( uint32_t dev_id );
   IO_I2C_MASTER_SET_TX_THRESHOLD       uint32_t        threshold level tx fifo
   IO_I2C_MASTER_SET_10BIT_ADDR         uint32_t        0 - 7 bit address, 1 - 10 bit address
 */
-extern void io_i2c_master_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
-extern void io_i2c_master_read( uint32_t dev_id, uint8_t * data, uint32_t * size );
-extern void io_i2c_master_write( uint32_t dev_id, uint8_t * data, uint32_t * size );
+extern void io_i2c_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
+extern void io_i2c_master_read(uint32_t dev_id, uint8_t * data,
+			       uint32_t * size);
+extern void io_i2c_master_write(uint32_t dev_id, uint8_t * data,
+				uint32_t * size);
 
 
-#endif /* I2C_MASTER_H_ */
+#endif				/* I2C_MASTER_H_ */

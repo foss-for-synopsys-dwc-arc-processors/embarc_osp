@@ -43,23 +43,23 @@
 #define	IO_PDM_RX_SET_RER2				(0x23)	// enable/disable stereo channel #2
 #define	IO_PDM_RX_SET_RER3				(0x24)	// enable/disable stereo channel #3
 
-#define IO_PDM_RX_CHAN_ENABLE			(0x30)	// alternative command for channel enable 
+#define IO_PDM_RX_CHAN_ENABLE			(0x30)	// alternative command for channel enable
 #define IO_PDM_RX_CHAN_DISABLE			(0x31)	// alternative command for channel disable
 
 #define	IO_PDM_RX_SET_REN				(0x25)	// set receive enable bit (cannot clear this bit, argument is ignored)
 #define IO_PDM_RX_SET_RR				(0x26)	// set oversampling ratio
-#define	IO_PDM_RX_SET_CIC_N				(0x27) 	// set number of stages 
+#define	IO_PDM_RX_SET_CIC_N				(0x27)	// set number of stages
 #define	IO_PDM_RX_SET_CIC_D				(0x28)	// set CIC delay
 #define	IO_PDM_RX_SET_DCRC				(0x29)	// DC removal control
 #define	IO_PDM_RX_SET_BRC_B0			(0x2a)	// BRC bit range shift, channel 0
 #define	IO_PDM_RX_SET_BRC_B1			(0x2b)	// BRC bit range shift, channel 1
 #define	IO_PDM_RX_SET_BRC_B2			(0x2c)	// BRC bit range shift, channel 2
 #define	IO_PDM_RX_SET_BRC_B3			(0x2d)	// BRC bit range shift, channel 3
-#define	IO_PDM_RX_SET_BRC_CLP			(0x2e) 	// BRC clipping detection (CLPS = step & CLPT = threshold)
+#define	IO_PDM_RX_SET_BRC_CLP			(0x2e)	// BRC clipping detection (CLPS = step & CLPT = threshold)
 #define IO_PDM_RX_SET_FIFO_THRESHOLD	(0x2f)	// FIFO threshold level
 
-extern uint32_t io_pdm_rx_open( uint32_t dev_id );
-extern void 	io_pdm_rx_close( uint32_t dev_id );
+extern uint32_t io_pdm_rx_open(uint32_t dev_id);
+extern void io_pdm_rx_close(uint32_t dev_id);
 
 /* Function: 		 io_pdm_rx_read
  * Parameters:
@@ -73,7 +73,8 @@ extern void 	io_pdm_rx_close( uint32_t dev_id );
  * Notes:
  *					 Data buffer length and data size shall be calculated considering the number of PDM channels enabled. 
  */
-extern void io_pdm_rx_read( uint32_t dev_id, uint32_t * data, uint32_t * size );
+extern void io_pdm_rx_read(uint32_t dev_id, uint32_t * data,
+			   uint32_t * size);
 
 /* PDM valid IOCTLs
   cmd                     		arg type        arg value
@@ -82,6 +83,6 @@ extern void io_pdm_rx_read( uint32_t dev_id, uint32_t * data, uint32_t * size );
   IO_SET_CB_ERR            		io_cb_t         Callback function invoked from ISR whenever input buffer overflow condition whould occur
   IO_PDM_RX_SET_FIFO_THRESHOLD  uint32_t        threshold value for the Rx FIFO	(accepts command before first io_pdm_rx_read)
 */
-extern void io_pdm_rx_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
+extern void io_pdm_rx_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
-#endif /* PDM_RX_H_ */
+#endif				/* PDM_RX_H_ */

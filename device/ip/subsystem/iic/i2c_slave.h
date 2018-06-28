@@ -48,8 +48,8 @@
 #define     IO_I2C_SLAVE_SET_ADDR   (0x10)
 
 
-extern uint32_t io_i2c_slave_open( uint32_t dev_id );
-extern void io_i2c_slave_close( uint32_t dev_id );
+extern uint32_t io_i2c_slave_open(uint32_t dev_id);
+extern void io_i2c_slave_close(uint32_t dev_id);
 /* I2C slave valid IOCTLs
   cmd                           	  arg type        arg value
   IO_SET_CB_RX                  	  io_cb_t         Callback function invoked from ISR when read successfully finishes
@@ -64,9 +64,11 @@ extern void io_i2c_slave_close( uint32_t dev_id );
   IO_I2C_SLAVE_SET_TX_THRESHOLD       uint32_t        threshold level tx fifo
   IO_I2C_SLAVE_SET_10BIT_ADDR         uint32_t        0 - 7 bit address, 1 - 10 bit address
 */
-extern void io_i2c_slave_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
-extern void io_i2c_slave_read( uint32_t dev_id, uint8_t * data, uint32_t * size );
-extern void io_i2c_slave_write( uint32_t dev_id, uint8_t * data, uint32_t * size );
+extern void io_i2c_slave_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
+extern void io_i2c_slave_read(uint32_t dev_id, uint8_t * data,
+			      uint32_t * size);
+extern void io_i2c_slave_write(uint32_t dev_id, uint8_t * data,
+			       uint32_t * size);
 
 
-#endif /* I2C_SLAVE_H_ */
+#endif				/* I2C_SLAVE_H_ */

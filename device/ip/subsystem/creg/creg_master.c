@@ -52,44 +52,43 @@
 #ifdef CREG_MASTER_DEV_PRESENT
 
 /* Addresses of CREG master instances */
-    static const uint32_t creg_masters[4] = {
+static const uint32_t creg_masters[4] = {
 #ifdef IO_CREG_MST0_PRESENT
-            AR_IO_CREG_MST0_CTRL,
+    AR_IO_CREG_MST0_CTRL,
 #else
-			0,
+    0,
 #endif
 #ifdef IO_CREG_MST1_PRESENT
-            AR_IO_CREG_MST1_CTRL,
+    AR_IO_CREG_MST1_CTRL,
 #else
-			0,
+    0,
 #endif
 #ifdef IO_CREG_MST2_PRESENT
-            AR_IO_CREG_MST2_CTRL,
+    AR_IO_CREG_MST2_CTRL,
 #else
-			0,
+    0,
 #endif
 #ifdef IO_CREG_MST3_PRESENT
-            AR_IO_CREG_MST3_CTRL,
+    AR_IO_CREG_MST3_CTRL,
 #else
-			0,
+    0,
 #endif
-    };
+};
 
 #define     CREG_WRITE( x )   _sr( (unsigned)(x), (unsigned)creg_masters[dev_id] )
 #define     CREG_READ( )      _lr( (unsigned)creg_masters[dev_id] )
 
 
-void io_creg_master_read( uint32_t dev_id, uint32_t * reg_val )
+void io_creg_master_read(uint32_t dev_id, uint32_t * reg_val)
 {
     *reg_val = CREG_READ();
 }
 
 
-void io_creg_master_write( uint32_t dev_id, uint32_t reg_val )
+void io_creg_master_write(uint32_t dev_id, uint32_t reg_val)
 {
-    CREG_WRITE( reg_val );
+    CREG_WRITE(reg_val);
 }
 
 
 #endif
-

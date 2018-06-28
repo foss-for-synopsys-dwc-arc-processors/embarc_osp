@@ -34,10 +34,10 @@
 #define IOCTL_H_
 
 
-typedef void (* IO_CB_FUNC)( uint32_t );
+typedef void (*IO_CB_FUNC) (uint32_t);
 
 typedef struct {
-  IO_CB_FUNC  		cb;
+    IO_CB_FUNC cb;
 } io_cb_t;
 
 // IO devices common control commands

@@ -1346,47 +1346,47 @@ extern long dsp_sin(long);
 #pragma Aux_register(0x301, name=>"fpu_status")
 
 // User extension instruction fsmadd
-extern long fsmadd(long,long);
+extern long fsmadd(long, long);
 #pragma intrinsic(fsmadd,opcode=>6,sub_opcode=>5, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fsmsub
-extern long fsmsub(long,long);
+extern long fsmsub(long, long);
 #pragma intrinsic(fsmsub,opcode=>6,sub_opcode=>6, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fsmul
-extern long fsmul(long,long);
+extern long fsmul(long, long);
 #pragma intrinsic(fsmul,opcode=>6,sub_opcode=>0, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fsadd
-extern long fsadd(long,long);
+extern long fsadd(long, long);
 #pragma intrinsic(fsadd,opcode=>6,sub_opcode=>1, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fssub
-extern long fssub(long,long);
+extern long fssub(long, long);
 #pragma intrinsic(fssub,opcode=>6,sub_opcode=>2, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fcvt32
-extern long fcvt32(long,long);
+extern long fcvt32(long, long);
 #pragma intrinsic(fcvt32,opcode=>6,sub_opcode=>8, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fsdiv
-extern long fsdiv(long,long);
+extern long fsdiv(long, long);
 #pragma intrinsic(fsdiv,opcode=>6,sub_opcode=>7, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fscmp
-extern long fscmp(long,long);
+extern long fscmp(long, long);
 #pragma intrinsic(fscmp,opcode=>6,sub_opcode=>3, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fscmp
-extern long fscmp_f(long,long);
+extern long fscmp_f(long, long);
 #pragma intrinsic(fscmp_f,opcode=>6,sub_opcode=>3, set_flags => 1, flags => "zncv", effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fscmpf
-extern long fscmpf(long,long);
+extern long fscmpf(long, long);
 #pragma intrinsic(fscmpf,opcode=>6,sub_opcode=>4, effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fscmpf
-extern long fscmpf_f(long,long);
+extern long fscmpf_f(long, long);
 #pragma intrinsic(fscmpf_f,opcode=>6,sub_opcode=>4, set_flags => 1, flags => "zncv", effects=>"auxreg=0xc8:is_read:is_written; auxreg=0x300:is_read:is_written; auxreg=0x301:is_read:is_written")
 
 // User extension instruction fssqrt
@@ -1411,110 +1411,108 @@ extern long fssqrt(long);
 #pragma Aux_register(0x305, name=>"aux_dpfp2h")
 
 // User extension instruction dmulh11
-extern long dmulh11(long,long);
+extern long dmulh11(long, long);
 #pragma intrinsic(dmulh11,opcode=>6,sub_opcode=>48,blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh11
-extern long dmulh11_f(long,long);
+extern long dmulh11_f(long, long);
 #pragma intrinsic(dmulh11_f,opcode=>6,sub_opcode=>48, set_flags => 1, flags => "zncv",blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh12
-extern long dmulh12(long,long);
+extern long dmulh12(long, long);
 #pragma intrinsic(dmulh12,opcode=>6,sub_opcode=>49,blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh12
-extern long dmulh12_f(long,long);
+extern long dmulh12_f(long, long);
 #pragma intrinsic(dmulh12_f,opcode=>6,sub_opcode=>49, set_flags => 1, flags => "zncv",blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh21
-extern long dmulh21(long,long);
+extern long dmulh21(long, long);
 #pragma intrinsic(dmulh21,opcode=>6,sub_opcode=>50,blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh21
-extern long dmulh21_f(long,long);
+extern long dmulh21_f(long, long);
 #pragma intrinsic(dmulh21_f,opcode=>6,sub_opcode=>50, set_flags => 1, flags => "zncv",blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh22
-extern long dmulh22(long,long);
+extern long dmulh22(long, long);
 #pragma intrinsic(dmulh22,opcode=>6,sub_opcode=>51,blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dmulh22
-extern long dmulh22_f(long,long);
+extern long dmulh22_f(long, long);
 #pragma intrinsic(dmulh22_f,opcode=>6,sub_opcode=>51, set_flags => 1, flags => "zncv",blocking_cycles=> 7, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh11
-extern long daddh11(long,long);
+extern long daddh11(long, long);
 #pragma intrinsic(daddh11,opcode=>6,sub_opcode=>52,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh11
-extern long daddh11_f(long,long);
+extern long daddh11_f(long, long);
 #pragma intrinsic(daddh11_f,opcode=>6,sub_opcode=>52, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh12
-extern long daddh12(long,long);
+extern long daddh12(long, long);
 #pragma intrinsic(daddh12,opcode=>6,sub_opcode=>53,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh12
-extern long daddh12_f(long,long);
+extern long daddh12_f(long, long);
 #pragma intrinsic(daddh12_f,opcode=>6,sub_opcode=>53, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh21
-extern long daddh21(long,long);
+extern long daddh21(long, long);
 #pragma intrinsic(daddh21,opcode=>6,sub_opcode=>54,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh21
-extern long daddh21_f(long,long);
+extern long daddh21_f(long, long);
 #pragma intrinsic(daddh21_f,opcode=>6,sub_opcode=>54, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh22
-extern long daddh22(long,long);
+extern long daddh22(long, long);
 #pragma intrinsic(daddh22,opcode=>6,sub_opcode=>55,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction daddh22
-extern long daddh22_f(long,long);
+extern long daddh22_f(long, long);
 #pragma intrinsic(daddh22_f,opcode=>6,sub_opcode=>55, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh11
-extern long dsubh11(long,long);
+extern long dsubh11(long, long);
 #pragma intrinsic(dsubh11,opcode=>6,sub_opcode=>56,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh11
-extern long dsubh11_f(long,long);
+extern long dsubh11_f(long, long);
 #pragma intrinsic(dsubh11_f,opcode=>6,sub_opcode=>56, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh12
-extern long dsubh12(long,long);
+extern long dsubh12(long, long);
 #pragma intrinsic(dsubh12,opcode=>6,sub_opcode=>57,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh12
-extern long dsubh12_f(long,long);
+extern long dsubh12_f(long, long);
 #pragma intrinsic(dsubh12_f,opcode=>6,sub_opcode=>57, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh21
-extern long dsubh21(long,long);
+extern long dsubh21(long, long);
 #pragma intrinsic(dsubh21,opcode=>6,sub_opcode=>58,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh21
-extern long dsubh21_f(long,long);
+extern long dsubh21_f(long, long);
 #pragma intrinsic(dsubh21_f,opcode=>6,sub_opcode=>58, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh22
-extern long dsubh22(long,long);
+extern long dsubh22(long, long);
 #pragma intrinsic(dsubh22,opcode=>6,sub_opcode=>59,blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dsubh22
-extern long dsubh22_f(long,long);
+extern long dsubh22_f(long, long);
 #pragma intrinsic(dsubh22_f,opcode=>6,sub_opcode=>59, set_flags => 1, flags => "zncv",blocking_cycles=> 5, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dexcl1
-extern long dexcl1(long,long);
+extern long dexcl1(long, long);
 #pragma intrinsic(dexcl1,opcode=>6,sub_opcode=>60, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 // User extension instruction dexcl2
-extern long dexcl2(long,long);
+extern long dexcl2(long, long);
 #pragma intrinsic(dexcl2,opcode=>6,sub_opcode=>61, effects=>"auxreg=0x302:is_read:is_written; auxreg=0x303:is_read:is_written; auxreg=0x304:is_read:is_written; auxreg=0x305:is_read:is_written")
 
 
 #endif
-
-

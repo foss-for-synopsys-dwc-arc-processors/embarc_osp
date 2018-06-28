@@ -43,7 +43,7 @@
  *                data control register
  *
  */
-extern void io_creg_master_read( uint32_t dev_id, uint32_t * reg_val );
+extern void io_creg_master_read(uint32_t dev_id, uint32_t * reg_val);
 
 /* Function:  io_creg_master_write
  * Writes provided value to CREG data control register to be seen on CREG bus
@@ -53,7 +53,7 @@ extern void io_creg_master_read( uint32_t dev_id, uint32_t * reg_val );
  *   reg_val      The value to be written to data control register.
  *
  */
-extern void io_creg_master_write( uint32_t dev_id, uint32_t reg_val );
+extern void io_creg_master_write(uint32_t dev_id, uint32_t reg_val);
 
 
-#endif /* CREG_MASTER_H_ */
+#endif				/* CREG_MASTER_H_ */

@@ -42,9 +42,10 @@
 #define IO_DAC_SET_THRESHOLD		(0x21)
 #define IO_DAC_SET_TX_EDGE			(0x22)
 
-extern uint32_t io_dac_open( uint32_t dev_id );
-extern void io_dac_close( uint32_t dev_id );
-extern void io_dac_write( uint32_t dev_id, uint32_t * data, uint32_t * size );
+extern uint32_t io_dac_open(uint32_t dev_id);
+extern void io_dac_close(uint32_t dev_id);
+extern void io_dac_write(uint32_t dev_id, uint32_t * data,
+			 uint32_t * size);
 /* DAC valid IOCTLs
   cmd                           arg type        arg value
   IO_SET_CB_TX                  io_cb_t         Callback function invoked from ISR when write successfully finishes
@@ -53,7 +54,7 @@ extern void io_dac_write( uint32_t dev_id, uint32_t * data, uint32_t * size );
   IO_DAC_SET_THRESHOLD			uint32_t        threshold, 0..63
   IO_DAC_SET_TX_EDGE			uint32_t        0 - rising edge, 1 - falling edge
 */
-extern void io_dac_ioctl( uint32_t dev_id, uint32_t cmd, void * arg );
+extern void io_dac_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
 
-#endif /* DAC_MASTER_H_ */
+#endif				/* DAC_MASTER_H_ */
