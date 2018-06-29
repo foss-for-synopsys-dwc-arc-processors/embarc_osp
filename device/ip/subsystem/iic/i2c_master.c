@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -58,7 +58,7 @@
 
 #ifdef I2C_DEV_PRESENT
 
-#define I2C_MAX_CNT	(4)
+#define I2C_MAX_CNT (4)
 
 static void i2c_mst_err_ISR_proc(uint32_t dev_id);
 static void i2c_mst_rx_avail_ISR_proc(uint32_t dev_id);
@@ -156,12 +156,12 @@ static void retrieve_rxfifo(i2c_info_pt dev);
 
 #ifdef __Xdmac
 static void create_dma_descriptors_rx(i2c_info_pt dev, uint8_t * dest,
-				      uint32_t size, uint32_t burst);
+                      uint32_t size, uint32_t burst);
 static void create_dma_descriptors_tx(i2c_info_pt dev, uint8_t * src,
-				      uint32_t size, uint32_t burst);
+                      uint32_t size, uint32_t burst);
 static void create_dma_descriptors_tx_for_rx(i2c_info_pt dev,
-					     uint32_t size,
-					     uint32_t burst);
+                         uint32_t size,
+                         uint32_t burst);
 #endif
 
 /* I2C master devices private data structures */
@@ -269,9 +269,9 @@ static i2c_info_t i2c_master_devs[] = {
 };
 
 
-#define     REG_WRITE( reg, x )   _sr( (unsigned)(x), (unsigned)(dev->reg_base + reg) )
-#define     REG_READ( reg )       _lr( (unsigned)(dev->reg_base + reg) )
-#define     REG_WRITE_BITS( reg, x, y, len, pos )   REG_WRITE( reg, ( (((x)          & ~( (~(0xffffffff << len)) << pos ))  \
+#define REG_WRITE( reg, x )   _sr( (unsigned)(x), (unsigned)(dev->reg_base + reg) )
+#define REG_READ( reg )       _lr( (unsigned)(dev->reg_base + reg) )
+#define REG_WRITE_BITS( reg, x, y, len, pos )   REG_WRITE( reg, ( (((x)          & ~( (~(0xffffffff << len)) << pos ))  \
                                                                     | (((y) << pos)  &  ( (~(0xffffffff << len)) << pos ))) ))
 
 
@@ -283,11 +283,11 @@ uint32_t io_i2c_master_open(uint32_t dev_id)
 
     h = 0;
     while ((i2c_master_devs[h].instID != dev_id)
-	   && (i2c_master_devs[h].instID != I2C_MAX_CNT)) {
-	h++;
+       && (i2c_master_devs[h].instID != I2C_MAX_CNT)) {
+    h++;
     }
-    if ((i2c_master_devs[h].instID == I2C_MAX_CNT) || (0 != i2c_handles[dev_id])) {	/* dev_id not part of design, or still open */
-	return 1;
+    if ((i2c_master_devs[h].instID == I2C_MAX_CNT) || (0 != i2c_handles[dev_id])) { /* dev_id not part of design, or still open */
+    return 1;
     }
     i2c_handles[dev_id] = &i2c_master_devs[h];
     dev = i2c_handles[dev_id];
@@ -313,21 +313,21 @@ uint32_t io_i2c_master_open(uint32_t dev_id)
     dev->dmatxdescriptor = &i2c_dmatx_descriptors[8 * h];
 
     if (dev->dmarxchanid != DMA_NONE) {
-	dev->dmarxdescriptor[1] = dev->reg_base + I2C_DATA_CMD;
-	dev->dmarxdescriptor[3] = 0;
+    dev->dmarxdescriptor[1] = dev->reg_base + I2C_DATA_CMD;
+    dev->dmarxdescriptor[3] = 0;
 
-	_setvecti(DMAC_INT_BASE + dev->dmarxchanid, dev->isr_rx_avail);
-	_setvecti(DMAC_ERR_BASE + dev->dmarxchanid, dev->isr_err);
+    _setvecti(DMAC_INT_BASE + dev->dmarxchanid, dev->isr_rx_avail);
+    _setvecti(DMAC_ERR_BASE + dev->dmarxchanid, dev->isr_err);
     }
 
     if (dev->dmatxchanid != DMA_NONE) {
-	dev->dmatxdescriptor[2] = dev->dmatxdescriptor[6] =
-	    dev->reg_base + I2C_DATA_CMD;
-	dev->dmatxdescriptor[3] = (uint32_t) & (dev->dmatxdescriptor[4]);
-	dev->dmatxdescriptor[7] = 0;
+    dev->dmatxdescriptor[2] = dev->dmatxdescriptor[6] =
+        dev->reg_base + I2C_DATA_CMD;
+    dev->dmatxdescriptor[3] = (uint32_t) & (dev->dmatxdescriptor[4]);
+    dev->dmatxdescriptor[7] = 0;
 
-	_setvecti(DMAC_INT_BASE + dev->dmatxchanid, dev->isr_tx_req);
-	_setvecti(DMAC_ERR_BASE + dev->dmatxchanid, dev->isr_err);
+    _setvecti(DMAC_INT_BASE + dev->dmatxchanid, dev->isr_tx_req);
+    _setvecti(DMAC_ERR_BASE + dev->dmatxchanid, dev->isr_err);
     }
 #endif
 
@@ -379,15 +379,15 @@ void io_i2c_master_close(uint32_t dev_id)
 
 #ifdef __Xdmac
     if (dev->dmarxchanid != DMA_NONE) {
-	_setvecti(DMAC_INT_BASE + dev->dmarxchanid, NULL);
-	_setvecti(DMAC_ERR_BASE + dev->dmarxchanid, NULL);
-	_dma_chan_reset(0x1 << dev->dmarxchanid);
+    _setvecti(DMAC_INT_BASE + dev->dmarxchanid, NULL);
+    _setvecti(DMAC_ERR_BASE + dev->dmarxchanid, NULL);
+    _dma_chan_reset(0x1 << dev->dmarxchanid);
     }
 
     if (dev->dmatxchanid != DMA_NONE) {
-	_setvecti(DMAC_INT_BASE + dev->dmatxchanid, NULL);
-	_setvecti(DMAC_ERR_BASE + dev->dmatxchanid, NULL);
-	_dma_chan_reset(0x1 << dev->dmatxchanid);
+    _setvecti(DMAC_INT_BASE + dev->dmatxchanid, NULL);
+    _setvecti(DMAC_ERR_BASE + dev->dmatxchanid, NULL);
+    _dma_chan_reset(0x1 << dev->dmatxchanid);
     }
 #endif
 
@@ -410,54 +410,54 @@ void io_i2c_master_read(uint32_t dev_id, uint8_t * data, uint32_t * size)
 
     /* check whether a master-tx is in progress; if so, postpone until tx completion */
     if (dev->handling_tx == 0) {
-	dev->handling_rx = 1;
+    dev->handling_rx = 1;
 
 #ifdef __Xdmac
-	if (dev->dmarxchanid == DMA_NONE) {
+    if (dev->dmarxchanid == DMA_NONE) {
 #endif
-	    /* write first requests to fifo, assuming size > 0 */
-	    fill_txfifo_for_rx(dev);
-	    /* unmask interrupts: tx-threshold (tx-empty), rx-threshold (rx-full) */
-	    val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY | R_RX_FULL;
-	    REG_WRITE(I2C_INTR_MASK, val);
+        /* write first requests to fifo, assuming size > 0 */
+        fill_txfifo_for_rx(dev);
+        /* unmask interrupts: tx-threshold (tx-empty), rx-threshold (rx-full) */
+        val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY | R_RX_FULL;
+        REG_WRITE(I2C_INTR_MASK, val);
 #ifdef __Xdmac
-	} else {
-	    /* RX descriptor - to fetch data */
-	    if (*size != 0) {
-		/* rx data available; at least one */
-		create_dma_descriptors_rx(dev, data, *size,
-					  (1 + REG_READ(I2C_RX_TL)));
+    } else {
+        /* RX descriptor - to fetch data */
+        if (*size != 0) {
+        /* rx data available; at least one */
+        create_dma_descriptors_rx(dev, data, *size,
+                      (1 + REG_READ(I2C_RX_TL)));
 
-		/* init dma */
-		if (dev->dmarxchanid < DMAC_MEM_CHAN_CNT) {
-		    _dma_chan_desc(dev->dmarxchanid,
-				   &(dev->dmarxdescriptor[0]));
-		} else {
-		    _dma_chan_desc_aux(dev->dmarxchanid,
-				       &(dev->dmarxdescriptor[0]));
-		}
+        /* init dma */
+        if (dev->dmarxchanid < DMAC_MEM_CHAN_CNT) {
+            _dma_chan_desc(dev->dmarxchanid,
+                   &(dev->dmarxdescriptor[0]));
+        } else {
+            _dma_chan_desc_aux(dev->dmarxchanid,
+                       &(dev->dmarxdescriptor[0]));
+        }
 
-		_dma_chan_enable((0x1 << dev->dmarxchanid), 1);
-	    }
-	    /* TX descriptor - for read command and a closing read+stop command */
-	    if (*size != 0) {
-		/* tx data available; at least one, more is uncertain */
-		create_dma_descriptors_tx_for_rx(dev, *size,
-						 (dev->fifo_depth -
-						  REG_READ(I2C_TX_TL)));
+        _dma_chan_enable((0x1 << dev->dmarxchanid), 1);
+        }
+        /* TX descriptor - for read command and a closing read+stop command */
+        if (*size != 0) {
+        /* tx data available; at least one, more is uncertain */
+        create_dma_descriptors_tx_for_rx(dev, *size,
+                         (dev->fifo_depth -
+                          REG_READ(I2C_TX_TL)));
 
-		/* init dma */
-		if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
-		    _dma_chan_desc(dev->dmatxchanid,
-				   &(dev->dmatxdescriptor[0]));
-		} else {
-		    _dma_chan_desc_aux(dev->dmatxchanid,
-				       &(dev->dmatxdescriptor[0]));
-		}
+        /* init dma */
+        if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
+            _dma_chan_desc(dev->dmatxchanid,
+                   &(dev->dmatxdescriptor[0]));
+        } else {
+            _dma_chan_desc_aux(dev->dmatxchanid,
+                       &(dev->dmatxdescriptor[0]));
+        }
 
-		_dma_chan_enable((0x1 << dev->dmatxchanid), 1);
-	    }
-	}
+        _dma_chan_enable((0x1 << dev->dmatxchanid), 1);
+        }
+    }
 #endif
     }
 }
@@ -474,37 +474,37 @@ void io_i2c_master_write(uint32_t dev_id, uint8_t * data, uint32_t * size)
 
     /* check whether a master-rx is in progress; if so, postpone until rx completion */
     if (dev->handling_rx == 0) {
-	dev->handling_tx = 1;
+    dev->handling_tx = 1;
 
 #ifdef __Xdmac
-	if (dev->dmatxchanid == DMA_NONE) {
+    if (dev->dmatxchanid == DMA_NONE) {
 #endif
-	    /* write first bytes to fifo, assuming size > 0 */
-	    fill_txfifo(dev);
-	    /* unmask interrupt: tx-threshold (tx-empty) */
-	    val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY;
-	    REG_WRITE(I2C_INTR_MASK, val);
+        /* write first bytes to fifo, assuming size > 0 */
+        fill_txfifo(dev);
+        /* unmask interrupt: tx-threshold (tx-empty) */
+        val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY;
+        REG_WRITE(I2C_INTR_MASK, val);
 #ifdef __Xdmac
-	} else {
-	    /* TX descriptor - data+write command and a closing data+write+stop command */
-	    if (*size != 0) {
-		/* tx data available; at least one, more is uncertain */
-		create_dma_descriptors_tx(dev, data, *size,
-					  (dev->fifo_depth -
-					   REG_READ(I2C_TX_TL)));
+    } else {
+        /* TX descriptor - data+write command and a closing data+write+stop command */
+        if (*size != 0) {
+        /* tx data available; at least one, more is uncertain */
+        create_dma_descriptors_tx(dev, data, *size,
+                      (dev->fifo_depth -
+                       REG_READ(I2C_TX_TL)));
 
-		/* init dma */
-		if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
-		    _dma_chan_desc(dev->dmatxchanid,
-				   &(dev->dmatxdescriptor[0]));
-		} else {
-		    _dma_chan_desc_aux(dev->dmatxchanid,
-				       &(dev->dmatxdescriptor[0]));
-		}
+        /* init dma */
+        if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
+            _dma_chan_desc(dev->dmatxchanid,
+                   &(dev->dmatxdescriptor[0]));
+        } else {
+            _dma_chan_desc_aux(dev->dmatxchanid,
+                       &(dev->dmatxdescriptor[0]));
+        }
 
-		_dma_chan_enable((0x1 << dev->dmatxchanid), 1);
-	    }
-	}
+        _dma_chan_enable((0x1 << dev->dmatxchanid), 1);
+        }
+    }
 #endif
     }
 }
@@ -518,75 +518,75 @@ void io_i2c_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg)
 
     switch (cmd) {
     case IO_SET_CB_RX:
-	dev->rx_cb = ((io_cb_t *) arg)->cb;
-	break;
+    dev->rx_cb = ((io_cb_t *) arg)->cb;
+    break;
     case IO_SET_CB_TX:
-	dev->tx_cb = ((io_cb_t *) arg)->cb;
-	break;
+    dev->tx_cb = ((io_cb_t *) arg)->cb;
+    break;
     case IO_SET_CB_ERR:
-	dev->err_cb = ((io_cb_t *) arg)->cb;
-	break;
+    dev->err_cb = ((io_cb_t *) arg)->cb;
+    break;
 
     default:
-	{
-	    enable = REG_READ(I2C_ENABLE);
-	    REG_WRITE(I2C_ENABLE, (enable & ~(0x1)));
+    {
+        enable = REG_READ(I2C_ENABLE);
+        REG_WRITE(I2C_ENABLE, (enable & ~(0x1)));
 
-	    switch (cmd) {
-	    case IO_I2C_MASTER_SET_HOLD_TIME_RX:
-		data = REG_READ(I2C_SDA_HOLD);
-		REG_WRITE_BITS(I2C_SDA_HOLD, data, *((uint32_t *) arg), 8,
-			       16);
-		break;
-	    case IO_I2C_MASTER_SET_HOLD_TIME_TX:
-		data = REG_READ(I2C_SDA_HOLD);
-		REG_WRITE_BITS(I2C_SDA_HOLD, data, *((uint32_t *) arg), 16,
-			       0);
-		break;
-	    case IO_I2C_MASTER_SET_SPEED:
-		data = REG_READ(I2C_CON);
-		REG_WRITE_BITS(I2C_CON, data, *((uint32_t *) arg), 2, 1);
-		break;
-	    case IO_I2C_MASTER_SET_10BIT_ADDR:
-		data = REG_READ(I2C_CON);
-		REG_WRITE_BITS(I2C_CON, data, *((uint32_t *) arg), 1, 3);
-		break;
+        switch (cmd) {
+        case IO_I2C_MASTER_SET_HOLD_TIME_RX:
+        data = REG_READ(I2C_SDA_HOLD);
+        REG_WRITE_BITS(I2C_SDA_HOLD, data, *((uint32_t *) arg), 8,
+                   16);
+        break;
+        case IO_I2C_MASTER_SET_HOLD_TIME_TX:
+        data = REG_READ(I2C_SDA_HOLD);
+        REG_WRITE_BITS(I2C_SDA_HOLD, data, *((uint32_t *) arg), 16,
+                   0);
+        break;
+        case IO_I2C_MASTER_SET_SPEED:
+        data = REG_READ(I2C_CON);
+        REG_WRITE_BITS(I2C_CON, data, *((uint32_t *) arg), 2, 1);
+        break;
+        case IO_I2C_MASTER_SET_10BIT_ADDR:
+        data = REG_READ(I2C_CON);
+        REG_WRITE_BITS(I2C_CON, data, *((uint32_t *) arg), 1, 3);
+        break;
 
-	    case IO_I2C_MASTER_SET_SPKLEN:
-		REG_WRITE(I2C_FS_SPKLEN, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_TARGET_ADDR:
-		REG_WRITE(I2C_TAR, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_SS_SCL_HCNT:
-		REG_WRITE(I2C_SS_SCL_HCNT, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_SS_SCL_LCNT:
-		REG_WRITE(I2C_SS_SCL_LCNT, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_FS_SCL_HCNT:
-		REG_WRITE(I2C_FS_SCL_HCNT, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_FS_SCL_LCNT:
-		REG_WRITE(I2C_FS_SCL_LCNT, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_RX_THRESHOLD:
-		REG_WRITE(I2C_RX_TL, *((uint32_t *) arg));
-		break;
-	    case IO_I2C_MASTER_SET_TX_THRESHOLD:
-		REG_WRITE(I2C_TX_TL, *((uint32_t *) arg));
-		break;
+        case IO_I2C_MASTER_SET_SPKLEN:
+        REG_WRITE(I2C_FS_SPKLEN, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_TARGET_ADDR:
+        REG_WRITE(I2C_TAR, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_SS_SCL_HCNT:
+        REG_WRITE(I2C_SS_SCL_HCNT, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_SS_SCL_LCNT:
+        REG_WRITE(I2C_SS_SCL_LCNT, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_FS_SCL_HCNT:
+        REG_WRITE(I2C_FS_SCL_HCNT, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_FS_SCL_LCNT:
+        REG_WRITE(I2C_FS_SCL_LCNT, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_RX_THRESHOLD:
+        REG_WRITE(I2C_RX_TL, *((uint32_t *) arg));
+        break;
+        case IO_I2C_MASTER_SET_TX_THRESHOLD:
+        REG_WRITE(I2C_TX_TL, *((uint32_t *) arg));
+        break;
 
-	    default:
-		break;
-	    }
+        default:
+        break;
+        }
 
-	    while ((0x1 & REG_READ(I2C_ENABLE_STATUS)) != 0);
-	    enable = REG_READ(I2C_ENABLE);
-	    REG_WRITE(I2C_ENABLE, (enable | 0x1));
+        while ((0x1 & REG_READ(I2C_ENABLE_STATUS)) != 0);
+        enable = REG_READ(I2C_ENABLE);
+        REG_WRITE(I2C_ENABLE, (enable | 0x1));
 
-	    break;
-	}
+        break;
+    }
     }
 
 }
@@ -596,15 +596,15 @@ static void i2c_mst_err_ISR_proc(uint32_t dev_id)
     i2c_info_pt dev = i2c_handles[dev_id];
 
     if (REG_READ(I2C_CLR_TX_ABRT)) {
-	if (NULL != dev->err_cb) {
-	    dev->err_cb(dev_id);
-	}
+    if (NULL != dev->err_cb) {
+        dev->err_cb(dev_id);
+    }
     }
 
     if (REG_READ(I2C_CLR_RX_OVER)) {
-	if (NULL != dev->err_cb) {
-	    dev->err_cb(dev_id);
-	}
+    if (NULL != dev->err_cb) {
+        dev->err_cb(dev_id);
+    }
     }
 }
 
@@ -617,17 +617,17 @@ static void i2c_mst_rx_avail_ISR_proc(uint32_t dev_id)
 #ifdef __Xdmac
     if (dev->dmarxchanid == DMA_NONE) {
 #endif
-	/* read data from fifo */
-	retrieve_rxfifo(dev);
-	if (dev->rx_size == dev->rx_count) {	/* read buffer completely filled, mask rx-avail interrupt */
-	    val = REG_READ(I2C_INTR_MASK) & ~R_RX_FULL;
-	    REG_WRITE(I2C_INTR_MASK, val);
-	}
+    /* read data from fifo */
+    retrieve_rxfifo(dev);
+    if (dev->rx_size == dev->rx_count) {    /* read buffer completely filled, mask rx-avail interrupt */
+        val = REG_READ(I2C_INTR_MASK) & ~R_RX_FULL;
+        REG_WRITE(I2C_INTR_MASK, val);
+    }
 #ifdef __Xdmac
     } else {
-	/* DMA RX xfer done */
-	_dma_chan_enable((0x1 << dev->dmarxchanid), 0);
-	_dma_int_clear((0x1 << dev->dmarxchanid));
+    /* DMA RX xfer done */
+    _dma_chan_enable((0x1 << dev->dmarxchanid), 0);
+    _dma_int_clear((0x1 << dev->dmarxchanid));
     }
 #endif
 }
@@ -640,41 +640,41 @@ static void i2c_mst_tx_req_ISR_proc(uint32_t dev_id)
 
     if (dev->handling_tx == 1) {
 #ifdef __Xdmac
-	if (dev->dmatxchanid == DMA_NONE) {
+    if (dev->dmatxchanid == DMA_NONE) {
 #endif
-	    if (dev->tx_size == dev->tx_count) {	/* no data left to put into the fifo, mask tx-threshold (tx-empty) */
-		val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY;
-		REG_WRITE(I2C_INTR_MASK, val);
-	    } else {		/* write data into fifo */
-		fill_txfifo(dev);
-	    }
+        if (dev->tx_size == dev->tx_count) {    /* no data left to put into the fifo, mask tx-threshold (tx-empty) */
+        val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY;
+        REG_WRITE(I2C_INTR_MASK, val);
+        } else {        /* write data into fifo */
+        fill_txfifo(dev);
+        }
 #ifdef __Xdmac
-	} else {
-	    /* DMA TX xfer done */
-	    _dma_chan_enable((0x1 << dev->dmatxchanid), 0);
-	    _dma_int_clear((0x1 << dev->dmatxchanid));
-	}
+    } else {
+        /* DMA TX xfer done */
+        _dma_chan_enable((0x1 << dev->dmatxchanid), 0);
+        _dma_int_clear((0x1 << dev->dmatxchanid));
+    }
 #endif
     }
 
     if (dev->handling_rx == 1) {
 #ifdef __Xdmac
-	if (dev->dmatxchanid == DMA_NONE) {
+    if (dev->dmatxchanid == DMA_NONE) {
 #endif
-	    if (dev->rx_size == dev->rx_req_count) {	/* no data left to put into the fifo, mask tx-threshold (tx-empty) */
-		val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY;
-		REG_WRITE(I2C_INTR_MASK, val);
-	    } else {		/* write data into fifo */
-		fill_txfifo_for_rx(dev);
-	    }
+        if (dev->rx_size == dev->rx_req_count) {    /* no data left to put into the fifo, mask tx-threshold (tx-empty) */
+        val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY;
+        REG_WRITE(I2C_INTR_MASK, val);
+        } else {        /* write data into fifo */
+        fill_txfifo_for_rx(dev);
+        }
 #ifdef __Xdmac
-	} else {
-	    /* DMA TX xfer done */
-	    dev->rx_req_count = dev->rx_size;
+    } else {
+        /* DMA TX xfer done */
+        dev->rx_req_count = dev->rx_size;
 
-	    _dma_chan_enable((0x1 << dev->dmatxchanid), 0);
-	    _dma_int_clear((0x1 << dev->dmatxchanid));
-	}
+        _dma_chan_enable((0x1 << dev->dmatxchanid), 0);
+        _dma_int_clear((0x1 << dev->dmatxchanid));
+    }
 #endif
     }
 
@@ -686,128 +686,128 @@ static void i2c_mst_stop_det_ISR_proc(uint32_t dev_id)
     uint32_t val = 0;
 
     if (dev->handling_tx == 1) {
-	/* tx done */
-	dev->handling_tx = 0;
+    /* tx done */
+    dev->handling_tx = 0;
 
-	dev->tx_data = NULL;
-	if (NULL != dev->tx_cb) {
-	    dev->tx_cb(dev_id);
-	}
+    dev->tx_data = NULL;
+    if (NULL != dev->tx_cb) {
+        dev->tx_cb(dev_id);
+    }
 
-	/* handle pending rx, if any */
-	if (dev->rx_data != NULL) {
-	    dev->handling_rx = 1;
+    /* handle pending rx, if any */
+    if (dev->rx_data != NULL) {
+        dev->handling_rx = 1;
 
 #ifdef __Xdmac
-	    if (dev->dmarxchanid == DMA_NONE) {
+        if (dev->dmarxchanid == DMA_NONE) {
 #endif
-		/* write first requests to fifo, assuming size > 0 */
-		fill_txfifo_for_rx(dev);
-		/* unmask interrupts: tx-threshold (tx-empty), rx-threshold (rx-full) */
-		val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY | R_RX_FULL;
-		REG_WRITE(I2C_INTR_MASK, val);
+        /* write first requests to fifo, assuming size > 0 */
+        fill_txfifo_for_rx(dev);
+        /* unmask interrupts: tx-threshold (tx-empty), rx-threshold (rx-full) */
+        val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY | R_RX_FULL;
+        REG_WRITE(I2C_INTR_MASK, val);
 #ifdef __Xdmac
-	    } else {
-		/* RX descriptor - to fetch data */
-		if (dev->rx_size != 0) {
-		    /* rx data available; at least one */
-		    create_dma_descriptors_rx(dev, dev->rx_data,
-					      dev->rx_size,
-					      (1 + REG_READ(I2C_RX_TL)));
+        } else {
+        /* RX descriptor - to fetch data */
+        if (dev->rx_size != 0) {
+            /* rx data available; at least one */
+            create_dma_descriptors_rx(dev, dev->rx_data,
+                          dev->rx_size,
+                          (1 + REG_READ(I2C_RX_TL)));
 
-		    /* init dma */
-		    if (dev->dmarxchanid < DMAC_MEM_CHAN_CNT) {
-			_dma_chan_desc(dev->dmarxchanid,
-				       &(dev->dmarxdescriptor[0]));
-		    } else {
-			_dma_chan_desc_aux(dev->dmarxchanid,
-					   &(dev->dmarxdescriptor[0]));
-		    }
+            /* init dma */
+            if (dev->dmarxchanid < DMAC_MEM_CHAN_CNT) {
+            _dma_chan_desc(dev->dmarxchanid,
+                       &(dev->dmarxdescriptor[0]));
+            } else {
+            _dma_chan_desc_aux(dev->dmarxchanid,
+                       &(dev->dmarxdescriptor[0]));
+            }
 
-		    _dma_chan_enable((0x1 << dev->dmarxchanid), 1);
-		}
-		/* TX descriptor - for read command and a closing read+stop command */
-		if (dev->rx_size != 0) {
-		    /* tx data available; at least one, more is uncertain */
-		    create_dma_descriptors_tx_for_rx(dev, dev->rx_size,
-						     (dev->fifo_depth -
-						      REG_READ
-						      (I2C_TX_TL)));
+            _dma_chan_enable((0x1 << dev->dmarxchanid), 1);
+        }
+        /* TX descriptor - for read command and a closing read+stop command */
+        if (dev->rx_size != 0) {
+            /* tx data available; at least one, more is uncertain */
+            create_dma_descriptors_tx_for_rx(dev, dev->rx_size,
+                             (dev->fifo_depth -
+                              REG_READ
+                              (I2C_TX_TL)));
 
-		    /* init dma */
-		    if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
-			_dma_chan_desc(dev->dmatxchanid,
-				       &(dev->dmatxdescriptor[0]));
-		    } else {
-			_dma_chan_desc_aux(dev->dmatxchanid,
-					   &(dev->dmatxdescriptor[0]));
-		    }
+            /* init dma */
+            if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
+            _dma_chan_desc(dev->dmatxchanid,
+                       &(dev->dmatxdescriptor[0]));
+            } else {
+            _dma_chan_desc_aux(dev->dmatxchanid,
+                       &(dev->dmatxdescriptor[0]));
+            }
 
-		    _dma_chan_enable((0x1 << dev->dmatxchanid), 1);
-		}
-	    }
+            _dma_chan_enable((0x1 << dev->dmatxchanid), 1);
+        }
+        }
 #endif
-	} else {		/* done, prevent threshold interrupts */
-	    val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY & ~R_RX_FULL;
-	    REG_WRITE(I2C_INTR_MASK, val);
-	}
+    } else {        /* done, prevent threshold interrupts */
+        val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY & ~R_RX_FULL;
+        REG_WRITE(I2C_INTR_MASK, val);
+    }
     } else if (dev->handling_rx == 1) {
 #ifdef __Xdmac
-	if (dev->dmarxchanid == DMA_NONE) {
+    if (dev->dmarxchanid == DMA_NONE) {
 #endif
-	    /* read remaining data from fifo */
-	    retrieve_rxfifo(dev);
+        /* read remaining data from fifo */
+        retrieve_rxfifo(dev);
 #ifdef __Xdmac
-	}
+    }
 #endif
 
-	/* rx done */
-	dev->handling_rx = 0;
+    /* rx done */
+    dev->handling_rx = 0;
 
-	dev->rx_data = NULL;
-	if (NULL != dev->rx_cb) {
-	    dev->rx_cb(dev_id);
-	}
+    dev->rx_data = NULL;
+    if (NULL != dev->rx_cb) {
+        dev->rx_cb(dev_id);
+    }
 
-	/* handle pending tx, if any */
-	if (dev->tx_data != NULL) {
-	    dev->handling_tx = 1;
+    /* handle pending tx, if any */
+    if (dev->tx_data != NULL) {
+        dev->handling_tx = 1;
 
 #ifdef __Xdmac
-	    if (dev->dmatxchanid == DMA_NONE) {
+        if (dev->dmatxchanid == DMA_NONE) {
 #endif
-		/* write first bytes to fifo, assuming size > 0 */
-		fill_txfifo(dev);
-		/* unmask interrupt: tx-threshold (tx-empty) */
-		val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY;
-		REG_WRITE(I2C_INTR_MASK, val);
+        /* write first bytes to fifo, assuming size > 0 */
+        fill_txfifo(dev);
+        /* unmask interrupt: tx-threshold (tx-empty) */
+        val = REG_READ(I2C_INTR_MASK) | R_TX_EMPTY;
+        REG_WRITE(I2C_INTR_MASK, val);
 #ifdef __Xdmac
-	    } else {
-		/* TX descriptor - data+write command and a closing data+write+stop command */
-		if (dev->tx_size != 0) {
-		    /* tx data available; at least one, more is uncertain */
-		    create_dma_descriptors_tx(dev, dev->tx_data,
-					      dev->tx_size,
-					      (dev->fifo_depth -
-					       REG_READ(I2C_TX_TL)));
+        } else {
+        /* TX descriptor - data+write command and a closing data+write+stop command */
+        if (dev->tx_size != 0) {
+            /* tx data available; at least one, more is uncertain */
+            create_dma_descriptors_tx(dev, dev->tx_data,
+                          dev->tx_size,
+                          (dev->fifo_depth -
+                           REG_READ(I2C_TX_TL)));
 
-		    /* init dma */
-		    if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
-			_dma_chan_desc(dev->dmatxchanid,
-				       &(dev->dmatxdescriptor[0]));
-		    } else {
-			_dma_chan_desc_aux(dev->dmatxchanid,
-					   &(dev->dmatxdescriptor[0]));
-		    }
+            /* init dma */
+            if (dev->dmatxchanid < DMAC_MEM_CHAN_CNT) {
+            _dma_chan_desc(dev->dmatxchanid,
+                       &(dev->dmatxdescriptor[0]));
+            } else {
+            _dma_chan_desc_aux(dev->dmatxchanid,
+                       &(dev->dmatxdescriptor[0]));
+            }
 
-		    _dma_chan_enable((0x1 << dev->dmatxchanid), 1);
-		}
-	    }
+            _dma_chan_enable((0x1 << dev->dmatxchanid), 1);
+        }
+        }
 #endif
-	} else {		/* done, prevent threshold interrupts */
-	    val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY & ~R_RX_FULL;
-	    REG_WRITE(I2C_INTR_MASK, val);
-	}
+    } else {        /* done, prevent threshold interrupts */
+        val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY & ~R_RX_FULL;
+        REG_WRITE(I2C_INTR_MASK, val);
+    }
     }
 
     REG_READ(I2C_CLR_STOP_DET);
@@ -820,16 +820,16 @@ static void fill_txfifo(i2c_info_pt dev)
     cnt = dev->tx_size - dev->tx_count;
     free = dev->fifo_depth - REG_READ(I2C_TXFLR);
     if (cnt > free) {
-	cnt = free;
+    cnt = free;
     }
     for (h = 0; h != (cnt - 1); h++) {
-	REG_WRITE(I2C_DATA_CMD, (dev->tx_data[dev->tx_count++]));
+    REG_WRITE(I2C_DATA_CMD, (dev->tx_data[dev->tx_count++]));
     }
-    if ((dev->tx_size - 1) == dev->tx_count) {	/* end of message, insert stop condition */
-	REG_WRITE(I2C_DATA_CMD,
-		  (dev->tx_data[dev->tx_count++] | I2C_STOP_CMD));
-    } else {			/* continue */
-	REG_WRITE(I2C_DATA_CMD, (dev->tx_data[dev->tx_count++]));
+    if ((dev->tx_size - 1) == dev->tx_count) {  /* end of message, insert stop condition */
+    REG_WRITE(I2C_DATA_CMD,
+          (dev->tx_data[dev->tx_count++] | I2C_STOP_CMD));
+    } else {            /* continue */
+    REG_WRITE(I2C_DATA_CMD, (dev->tx_data[dev->tx_count++]));
     }
 }
 
@@ -840,16 +840,16 @@ static void fill_txfifo_for_rx(i2c_info_pt dev)
     cnt = dev->rx_size - dev->rx_req_count;
     free = dev->fifo_depth - REG_READ(I2C_TXFLR);
     if (cnt > free) {
-	cnt = free;
+    cnt = free;
     }
     for (h = 0; h != (cnt - 1); h++) {
-	REG_WRITE(I2C_DATA_CMD, I2C_READ_CMD);
+    REG_WRITE(I2C_DATA_CMD, I2C_READ_CMD);
     }
     dev->rx_req_count += cnt;
-    if (dev->rx_size == dev->rx_req_count) {	/* end of message, insert stop condition */
-	REG_WRITE(I2C_DATA_CMD, (I2C_READ_CMD | I2C_STOP_CMD));
-    } else {			/* continue */
-	REG_WRITE(I2C_DATA_CMD, I2C_READ_CMD);
+    if (dev->rx_size == dev->rx_req_count) {    /* end of message, insert stop condition */
+    REG_WRITE(I2C_DATA_CMD, (I2C_READ_CMD | I2C_STOP_CMD));
+    } else {            /* continue */
+    REG_WRITE(I2C_DATA_CMD, I2C_READ_CMD);
     }
 }
 
@@ -860,18 +860,18 @@ static void retrieve_rxfifo(i2c_info_pt dev)
     cnt = dev->rx_size - dev->rx_count;
     avail = REG_READ(I2C_RXFLR);
     if (cnt > avail) {
-	cnt = avail;
+    cnt = avail;
     }
     for (h = 0; h != cnt; h++) {
-	dev->rx_data[dev->rx_count++] = REG_READ(I2C_DATA_CMD);
+    dev->rx_data[dev->rx_count++] = REG_READ(I2C_DATA_CMD);
     }
 }
 
 #ifdef __Xdmac
-#define     I2C_MST_DMA_RX_CTRL            (0xa0000015)	/* am=b10, i=b1, dw/inc=b000, dtt=b10, r=b1, op=b01 */
-#define     I2C_MST_DMA_TX_FOR_RX_CTRL     (0x0000006f)	/* am=b00, i=b0, dw/inc=b011, dtt=b01, r=b1, op=b11 */
-#define     I2C_MST_DMA_TX_END_CTRL 	   (0x2000006d)	/* am=b00, i=b1, dw/inc=b011, dtt=b01, r=b1, op=b01 */
-#define     I2C_MST_DMA_TX_CTRL            (0x4000000f)	/* am=b01, i=b0, dw/inc=b000, dtt=b01, r=b1, op=b11 */
+#define     I2C_MST_DMA_RX_CTRL            (0xa0000015) /* am=b10, i=b1, dw/inc=b000, dtt=b10, r=b1, op=b01 */
+#define     I2C_MST_DMA_TX_FOR_RX_CTRL     (0x0000006f) /* am=b00, i=b0, dw/inc=b011, dtt=b01, r=b1, op=b11 */
+#define     I2C_MST_DMA_TX_END_CTRL        (0x2000006d) /* am=b00, i=b1, dw/inc=b011, dtt=b01, r=b1, op=b01 */
+#define     I2C_MST_DMA_TX_CTRL            (0x4000000f) /* am=b01, i=b0, dw/inc=b000, dtt=b01, r=b1, op=b11 */
 #define     I2C_MST_DMA_CTRL_SIZE_POS      (8)
 #define     I2C_MST_DMA_CTRL_XFER_POS      (21)
 
@@ -879,56 +879,56 @@ static uint16_t readCommand = I2C_READ_CMD;
 static uint16_t readstopCommand = I2C_READ_CMD | I2C_STOP_CMD;
 
 static void create_dma_descriptors_rx(i2c_info_pt dev, uint8_t * dest,
-				      uint32_t size, uint32_t burst)
+                      uint32_t size, uint32_t burst)
 {
     dev->dmarxdescriptor[0] =
-	I2C_MST_DMA_RX_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS) |
-	((size - 1) << I2C_MST_DMA_CTRL_SIZE_POS);
+    I2C_MST_DMA_RX_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS) |
+    ((size - 1) << I2C_MST_DMA_CTRL_SIZE_POS);
     dev->dmarxdescriptor[2] = (uint32_t) dest + (size - 1);
 }
 
 static void create_dma_descriptors_tx(i2c_info_pt dev, uint8_t * src,
-				      uint32_t size, uint32_t burst)
+                      uint32_t size, uint32_t burst)
 {
     if (size > 1) {
-	dev->dmatxdescriptor[0] =
-	    I2C_MST_DMA_TX_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS) |
-	    ((size - 2) << I2C_MST_DMA_CTRL_SIZE_POS);
-	dev->dmatxdescriptor[1] = (uint32_t) src + (size - 2);
+    dev->dmatxdescriptor[0] =
+        I2C_MST_DMA_TX_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS) |
+        ((size - 2) << I2C_MST_DMA_CTRL_SIZE_POS);
+    dev->dmatxdescriptor[1] = (uint32_t) src + (size - 2);
 
-	dev->dmatx_last = src[size - 1] | I2C_STOP_CMD;
-	dev->dmatxdescriptor[4 + 0] =
-	    I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
-	    | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
-	dev->dmatxdescriptor[4 + 1] = (uint32_t) & (dev->dmatx_last);
-    } else {			/* size == 1 */
-	dev->dmatx_last = src[0] | I2C_STOP_CMD;
-	dev->dmatxdescriptor[0] =
-	    I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
-	    | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
-	dev->dmatxdescriptor[1] = (uint32_t) & (dev->dmatx_last);
+    dev->dmatx_last = src[size - 1] | I2C_STOP_CMD;
+    dev->dmatxdescriptor[4 + 0] =
+        I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
+        | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
+    dev->dmatxdescriptor[4 + 1] = (uint32_t) & (dev->dmatx_last);
+    } else {            /* size == 1 */
+    dev->dmatx_last = src[0] | I2C_STOP_CMD;
+    dev->dmatxdescriptor[0] =
+        I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
+        | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
+    dev->dmatxdescriptor[1] = (uint32_t) & (dev->dmatx_last);
     }
 }
 
 static void create_dma_descriptors_tx_for_rx(i2c_info_pt dev,
-					     uint32_t size, uint32_t burst)
+                         uint32_t size, uint32_t burst)
 {
     if (size > 1) {
-	dev->dmatxdescriptor[0] =
-	    I2C_MST_DMA_TX_FOR_RX_CTRL | (burst <<
-					  I2C_MST_DMA_CTRL_XFER_POS) |
-	    (((size - 1) * 2 - 1) << I2C_MST_DMA_CTRL_SIZE_POS);
-	dev->dmatxdescriptor[1] = (uint32_t) & readCommand;
+    dev->dmatxdescriptor[0] =
+        I2C_MST_DMA_TX_FOR_RX_CTRL | (burst <<
+                      I2C_MST_DMA_CTRL_XFER_POS) |
+        (((size - 1) * 2 - 1) << I2C_MST_DMA_CTRL_SIZE_POS);
+    dev->dmatxdescriptor[1] = (uint32_t) & readCommand;
 
-	dev->dmatxdescriptor[4 + 0] =
-	    I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
-	    | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
-	dev->dmatxdescriptor[4 + 1] = (uint32_t) & readstopCommand;
-    } else {			/* size == 1 */
-	dev->dmatxdescriptor[0] =
-	    I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
-	    | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
-	dev->dmatxdescriptor[1] = (uint32_t) & readstopCommand;
+    dev->dmatxdescriptor[4 + 0] =
+        I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
+        | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
+    dev->dmatxdescriptor[4 + 1] = (uint32_t) & readstopCommand;
+    } else {            /* size == 1 */
+    dev->dmatxdescriptor[0] =
+        I2C_MST_DMA_TX_END_CTRL | (burst << I2C_MST_DMA_CTRL_XFER_POS)
+        | (1 << I2C_MST_DMA_CTRL_SIZE_POS);
+    dev->dmatxdescriptor[1] = (uint32_t) & readstopCommand;
     }
 }
 

@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -36,45 +36,45 @@
 #include "ioctl.h"
 
 /*  EIA SPI device registers */
-#define     CTRL0           (0x00)
-#define     CTRL1           (0x01)	// master only
-#define     SPIEN           (0x02)
-#define     SER          	(0x04)	// master only
-#define     BAUDR           (0x05)	// master only
-#define     TXFTLR          (0x06)
-#define     RXFTLR          (0x07)
-#define     TXFLR           (0x08)
-#define     RXFLR           (0x09)
-#define     SR              (0x0a)
-#define     IMR       		(0x0b)
-#define     ISR       		(0x0c)
-#define     RISR       		(0x0d)
-#define     TXOICR    		(0x0e)
-#define     RXOICR       	(0x0f)
-#define     RXUICR       	(0x10)
-#define     ICR		        (0x12)
-#define		CLK_ENA			(0x16)
-#define     DR              (0x18)
-#define     RX_SAMPLE_DLY   (0x3c)	// master only
+#define CTRL0           (0x00)
+#define CTRL1           (0x01)  // master only
+#define SPIEN           (0x02)
+#define SER             (0x04)  // master only
+#define BAUDR           (0x05)  // master only
+#define TXFTLR          (0x06)
+#define RXFTLR          (0x07)
+#define TXFLR           (0x08)
+#define RXFLR           (0x09)
+#define SR              (0x0a)
+#define IMR             (0x0b)
+#define ISR             (0x0c)
+#define RISR            (0x0d)
+#define TXOICR          (0x0e)
+#define RXOICR          (0x0f)
+#define RXUICR          (0x10)
+#define ICR             (0x12)
+#define CLK_ENA         (0x16)
+#define DR              (0x18)
+#define RX_SAMPLE_DLY   (0x3c)  // master only
 
 
 /* Interrupt Register Fields */
-#define     R_IDLE               	(0x1 << 6)
-#define     R_TX_UNDER              (0x1 << 5)	// slave only
-#define     R_RX_FULL               (0x1 << 4)
-#define     R_RX_OVER               (0x1 << 3)
-#define     R_RX_UNDER              (0x1 << 2)
-#define     R_TX_OVER               (0x1 << 1)
-#define     R_TX_EMPTY              (0x1 << 0)
+#define R_IDLE                  (0x1 << 6)
+#define R_TX_UNDER              (0x1 << 5)  // slave only
+#define R_RX_FULL               (0x1 << 4)
+#define R_RX_OVER               (0x1 << 3)
+#define R_RX_UNDER              (0x1 << 2)
+#define R_TX_OVER               (0x1 << 1)
+#define R_TX_EMPTY              (0x1 << 0)
 
 /* Other macros. */
-#define		DMA_NONE	(0xff)
+#define DMA_NONE    (0xff)
 
 typedef _Interrupt void (*SPI_ISR) ();
 
 /* Private data structure maintained by the driver. */
 typedef struct spi_info_struct {
-    uint32_t reg_base;		/* base address of device register set */
+    uint32_t reg_base;      /* base address of device register set */
     uint8_t instID;
     /* TX & RX Buffer and lengths */
     uint32_t rx_size;
@@ -90,7 +90,7 @@ typedef struct spi_info_struct {
     uint16_t fifo_depth;
     uint16_t dmarxchanid, dmatxchanid;
 #ifdef __Xdmac
-    _Uncached uint32_t *dmarxdescriptor, *dmatxdescriptor;	/* 2 descriptors each: 2nd one for future use */
+    _Uncached uint32_t *dmarxdescriptor, *dmatxdescriptor;  /* 2 descriptors each: 2nd one for future use */
     uint16_t dmarx_last16, dmatx_last16;
     uint32_t dmarx_last32, dmatx_last32;
 #endif
@@ -99,11 +99,11 @@ typedef struct spi_info_struct {
     IO_CB_FUNC rx_cb;
     IO_CB_FUNC err_cb;
     /* Interrupt numbers and handlers */
-    uint8_t rx_vector;		/* ISR vectors */
+    uint8_t rx_vector;      /* ISR vectors */
     uint8_t tx_vector;
     uint8_t err_vector;
     uint8_t idle_vector;
-    SPI_ISR rx_isr;		/* SPI device ISRs */
+    SPI_ISR rx_isr;     /* SPI device ISRs */
     SPI_ISR tx_isr;
     SPI_ISR err_isr;
     SPI_ISR idle_isr;

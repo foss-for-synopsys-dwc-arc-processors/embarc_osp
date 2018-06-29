@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -38,23 +38,23 @@
 
 
 /* DAC control commands */
-#define IO_DAC_SET_DAC_ENA			(0x20)
-#define IO_DAC_SET_THRESHOLD		(0x21)
-#define IO_DAC_SET_TX_EDGE			(0x22)
+#define IO_DAC_SET_DAC_ENA          (0x20)
+#define IO_DAC_SET_THRESHOLD        (0x21)
+#define IO_DAC_SET_TX_EDGE          (0x22)
 
 extern uint32_t io_dac_open(uint32_t dev_id);
 extern void io_dac_close(uint32_t dev_id);
 extern void io_dac_write(uint32_t dev_id, uint32_t * data,
-			 uint32_t * size);
+             uint32_t * size);
 /* DAC valid IOCTLs
   cmd                           arg type        arg value
   IO_SET_CB_TX                  io_cb_t         Callback function invoked from ISR when write successfully finishes
   IO_SET_CB_ERR                 io_cb_t         Callback function invoked from ISR when read/write fails
-  IO_DAC_SET_DAC_ENA			uint32_t        0 - disable DAC, 1 - enable DAC
-  IO_DAC_SET_THRESHOLD			uint32_t        threshold, 0..63
-  IO_DAC_SET_TX_EDGE			uint32_t        0 - rising edge, 1 - falling edge
+  IO_DAC_SET_DAC_ENA            uint32_t        0 - disable DAC, 1 - enable DAC
+  IO_DAC_SET_THRESHOLD          uint32_t        threshold, 0..63
+  IO_DAC_SET_TX_EDGE            uint32_t        0 - rising edge, 1 - falling edge
 */
 extern void io_dac_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
 
-#endif				/* DAC_MASTER_H_ */
+#endif              /* DAC_MASTER_H_ */

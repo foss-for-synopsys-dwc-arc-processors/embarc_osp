@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under

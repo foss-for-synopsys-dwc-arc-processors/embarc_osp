@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -38,14 +38,14 @@
 /* I2S Tx master IO control commands */
 #define IO_I2S_TX_MASTER_SET_SAMPLE_WIDTH       (0x20)
 #define IO_I2S_TX_MASTER_SET_FIFO_THRESHOLD     (0x21)
-#define IO_I2S_TX_MASTER_SET_BITCLOCK			(0x22)
+#define IO_I2S_TX_MASTER_SET_BITCLOCK           (0x22)
 
 extern uint32_t io_i2s_tx_master_open(uint32_t dev_id);
 extern void io_i2s_tx_master_close(uint32_t dev_id);
 
-/* Function: 		 io_i2s_tx_master_write
+/* Function:         io_i2s_tx_master_write
  * Parameters:
- *   dev_id [In]	 Identifier of I2S device instance.
+ *   dev_id [In]     Identifier of I2S device instance.
  *   data   [In]     Address of output buffer where requested number of samples shall be stored
  *   size   [In/Out] Address of variable that holds input buffer size specifying the number of samples to be acquired.
  *                   On invocation of callback, registerd by IO_SET_CB_TX command, the address contains the number
@@ -54,18 +54,18 @@ extern void io_i2s_tx_master_close(uint32_t dev_id);
  *   none
  */
 extern void io_i2s_tx_master_write(uint32_t dev_id, uint32_t * data,
-				   uint32_t * size);
+                   uint32_t * size);
 
 /* I2S valid IOCTLs
-  cmd                     				arg type        arg value
-  IO_SET_CB_TX             				io_cb_t         Callback function invoked from ISR whenever a series of samples
-														is available in the buffer provided by io_i2s_tx_master_read
-  IO_SET_CB_ERR            				io_cb_t         Callback function invoked from ISR whenever input buffer overflow condition whould occur
-  IO_I2S_TX_MASTER_SET_FIFO_THRESHOLD  	uint32_t        threshold value for the Tx FIFO (must be set before actual transmission is started)
-  IO_I2S_TX_MASTER_SET_SAMPLE_WIDTH		uint32_t 		sample width value 16 or 12 bits (must be set before actual transmission is started)
-  IO_I2S_TX_MASTER_SET_BITCLOCK			uint32_t		0/1 - disable/enable i2s bit clock and WS (must be set before actual transmission is started)
+  cmd                                   arg type        arg value
+  IO_SET_CB_TX                          io_cb_t         Callback function invoked from ISR whenever a series of samples
+                                                        is available in the buffer provided by io_i2s_tx_master_read
+  IO_SET_CB_ERR                         io_cb_t         Callback function invoked from ISR whenever input buffer overflow condition whould occur
+  IO_I2S_TX_MASTER_SET_FIFO_THRESHOLD   uint32_t        threshold value for the Tx FIFO (must be set before actual transmission is started)
+  IO_I2S_TX_MASTER_SET_SAMPLE_WIDTH     uint32_t        sample width value 16 or 12 bits (must be set before actual transmission is started)
+  IO_I2S_TX_MASTER_SET_BITCLOCK         uint32_t        0/1 - disable/enable i2s bit clock and WS (must be set before actual transmission is started)
 */
 extern void io_i2s_tx_master_ioctl(uint32_t dev_id, uint32_t cmd,
-				   void *arg);
+                   void *arg);
 
-#endif				/* I2S_TX_MASTER_H_ */
+#endif              /* I2S_TX_MASTER_H_ */

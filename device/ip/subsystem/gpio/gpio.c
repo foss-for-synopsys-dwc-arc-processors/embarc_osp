@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -39,32 +39,32 @@
 
 
 /* EIA GPIO device registers  */
-#define     SWPORTA_DR      (0x00)	/* GPIO Port A Data Register */
-#define     SWPORTA_DDR     (0x04)	/* GPIO Port A Data Direction Register */
-#define     INTEN           (0x30)	/* GPIO Interrupt Enable Register */
-#define     INTMASK         (0x34)	/* GPIO Interrupt Mask Register */
-#define     INTTYPE_LEVEL   (0x38)	/* GPIO Interrupt Type Register */
-#define     INT_POLARITY    (0x3c)	/* GPIO Interrupt Polarity Register */
-#define     INTSTATUS       (0x44)	/* GPIO Interrupt Status Register */
-#define     DEBOUNCE        (0x48)	/* GPIO Debounce Enable Register */
-#define     PORTA_EOI       (0x4c)	/* GPIO Port A Clear Interrupt Register */
-#define     EXT_PORTA       (0x50)	/* GPIO External Port A Register */
-#define     LS_SYNC         (0x60)	/* GPIO Level-Sensitive Sync Enable Register */
-#define     INT_BOTHEDGE    (0x68)	/* GPIO Both Edge Register */
-#define     CLKEN           (0x80)	/* GPIO Clock Enable Register */
+#define SWPORTA_DR      (0x00)  /* GPIO Port A Data Register */
+#define SWPORTA_DDR     (0x04)  /* GPIO Port A Data Direction Register */
+#define INTEN           (0x30)  /* GPIO Interrupt Enable Register */
+#define INTMASK         (0x34)  /* GPIO Interrupt Mask Register */
+#define INTTYPE_LEVEL   (0x38)  /* GPIO Interrupt Type Register */
+#define INT_POLARITY    (0x3c)  /* GPIO Interrupt Polarity Register */
+#define INTSTATUS       (0x44)  /* GPIO Interrupt Status Register */
+#define DEBOUNCE        (0x48)  /* GPIO Debounce Enable Register */
+#define PORTA_EOI       (0x4c)  /* GPIO Port A Clear Interrupt Register */
+#define EXT_PORTA       (0x50)  /* GPIO External Port A Register */
+#define LS_SYNC         (0x60)  /* GPIO Level-Sensitive Sync Enable Register */
+#define INT_BOTHEDGE    (0x68)  /* GPIO Both Edge Register */
+#define CLKEN           (0x80)  /* GPIO Clock Enable Register */
 
 typedef _Interrupt void (*ISR) ();
 
 /* Private data structure maintained by the driver. */
 typedef struct gpio_info_struct {
-    uint32_t reg_base;		/* base address of device register set */
+    uint32_t reg_base;      /* base address of device register set */
     /* Callbacks */
     IO_CB_FUNC rx_cb;
     uint8_t opened;
     uint8_t instID;
     /* Interrupt numbers and handlers */
-    uint8_t vector;		/* GPIO ISR vector */
-    ISR isr;			/* GPIO ISR */
+    uint8_t vector;     /* GPIO ISR vector */
+    ISR isr;            /* GPIO ISR */
     /* Config option */
     uint8_t enableDebounce;
 } gpio_info_t, *gpio_info_pt;
@@ -109,10 +109,10 @@ typedef struct gpio_info_struct {
 
 #ifdef GPIO_DEV_PRESENT
 
-#define GPIO_32_MAX_CNT	(4)
-#define GPIO_8B_MAX_CNT	(4)
-#define GPIO_4B_MAX_CNT	(4)
-#define GPIO_MAX_CNT	((GPIO_32_MAX_CNT) + (GPIO_8B_MAX_CNT) + (GPIO_4B_MAX_CNT))
+#define GPIO_32_MAX_CNT (4)
+#define GPIO_8B_MAX_CNT (4)
+#define GPIO_4B_MAX_CNT (4)
+#define GPIO_MAX_CNT    ((GPIO_32_MAX_CNT) + (GPIO_8B_MAX_CNT) + (GPIO_4B_MAX_CNT))
 
 static void gpio_ISR_proc(uint32_t dev_id);
 
@@ -287,8 +287,8 @@ static gpio_info_t gpio_devs[] = {
 
 
 
-#define     REG_WRITE( reg, x )   _sr( (unsigned)(x), (unsigned)(dev->reg_base + reg) )
-#define     REG_READ( reg )       _lr( (unsigned)(dev->reg_base + reg) )
+#define REG_WRITE( reg, x )   _sr( (unsigned)(x), (unsigned)(dev->reg_base + reg) )
+#define REG_READ( reg )       _lr( (unsigned)(dev->reg_base + reg) )
 
 
 uint32_t io_gpio_open(uint32_t dev_id)
@@ -298,11 +298,11 @@ uint32_t io_gpio_open(uint32_t dev_id)
 
     h = 0;
     while ((gpio_devs[h].instID != dev_id)
-	   && (gpio_devs[h].instID != GPIO_MAX_CNT)) {
-	h++;
+       && (gpio_devs[h].instID != GPIO_MAX_CNT)) {
+    h++;
     }
-    if ((gpio_devs[h].instID == GPIO_MAX_CNT) || (0 != gpio_handles[dev_id])) {	/* dev_id not part of design, or still open */
-	return 1;
+    if ((gpio_devs[h].instID == GPIO_MAX_CNT) || (0 != gpio_handles[dev_id])) { /* dev_id not part of design, or still open */
+    return 1;
     }
     gpio_handles[dev_id] = &gpio_devs[h];
     dev = gpio_handles[dev_id];
@@ -353,57 +353,57 @@ void io_gpio_ioctl(uint32_t dev_id, uint32_t cmd, void *arg)
 
     switch (cmd) {
     case IO_SET_CB_RX:
-	dev->rx_cb = ((io_cb_t *) arg)->cb;
-	break;
+    dev->rx_cb = ((io_cb_t *) arg)->cb;
+    break;
 
     case IO_GPIO_SET_DIRECTION:
-	REG_WRITE(SWPORTA_DDR, *((uint32_t *) arg));
-	break;
+    REG_WRITE(SWPORTA_DDR, *((uint32_t *) arg));
+    break;
 
     case IO_GPIO_SET_INT_ENABLE:
-	REG_WRITE(INTEN, *((uint32_t *) arg));
-	break;
+    REG_WRITE(INTEN, *((uint32_t *) arg));
+    break;
 
     case IO_GPIO_GET_INT_ENABLE:
-	*((uint32_t *) arg) = REG_READ(INTEN);
-	break;
+    *((uint32_t *) arg) = REG_READ(INTEN);
+    break;
 
     case IO_GPIO_SET_INT_MASK:
-	REG_WRITE(INTMASK, *((uint32_t *) arg));
-	break;
+    REG_WRITE(INTMASK, *((uint32_t *) arg));
+    break;
 
     case IO_GPIO_GET_INT_MASK:
-	*((uint32_t *) arg) = REG_READ(INTMASK);
-	break;
+    *((uint32_t *) arg) = REG_READ(INTMASK);
+    break;
 
     case IO_GPIO_SET_INT_TYPE:
-	REG_WRITE(INTTYPE_LEVEL, *((uint32_t *) arg));
-	break;
+    REG_WRITE(INTTYPE_LEVEL, *((uint32_t *) arg));
+    break;
 
     case IO_GPIO_SET_INT_POLARITY:
-	REG_WRITE(INT_POLARITY, *((uint32_t *) arg));
-	break;
+    REG_WRITE(INT_POLARITY, *((uint32_t *) arg));
+    break;
 
     case IO_GPIO_SET_INT_BOTHEDGE:
-	REG_WRITE(INT_BOTHEDGE, *((uint32_t *) arg));
-	break;
+    REG_WRITE(INT_BOTHEDGE, *((uint32_t *) arg));
+    break;
 
     case IO_GPIO_SET_DEBOUNCE:
-	if (dev->enableDebounce == 1) {
-	    REG_WRITE(DEBOUNCE, *((uint32_t *) arg));
-	}
-	break;
+    if (dev->enableDebounce == 1) {
+        REG_WRITE(DEBOUNCE, *((uint32_t *) arg));
+    }
+    break;
 
     case IO_GPIO_GET_DIRECTION:
-	*((uint32_t *) arg) = REG_READ(SWPORTA_DDR);
-	break;
+    *((uint32_t *) arg) = REG_READ(SWPORTA_DDR);
+    break;
 
     case IO_GPIO_GET_GPO:
-	*((uint32_t *) arg) = REG_READ(SWPORTA_DR);
-	break;
+    *((uint32_t *) arg) = REG_READ(SWPORTA_DR);
+    break;
 
     default:
-	break;
+    break;
     }
 }
 
@@ -414,12 +414,12 @@ static void gpio_ISR_proc(uint32_t dev_id)
     uint32_t status = REG_READ(INTSTATUS);
 
     if (!status)
-	return;			/* Spurious interrupts. */
+    return;         /* Spurious interrupts. */
 
     if (_Usually(NULL != dev->rx_cb))
-	dev->rx_cb(status);
+    dev->rx_cb(status);
 
-    REG_WRITE(PORTA_EOI, status);	/* clear status register. */
+    REG_WRITE(PORTA_EOI, status);   /* clear status register. */
 }
 
 

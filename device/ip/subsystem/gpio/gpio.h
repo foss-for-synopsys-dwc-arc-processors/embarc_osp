@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -43,13 +43,13 @@
 #define IO_GPIO_SET_INT_ENABLE              (0x21)
 #define IO_GPIO_GET_INT_ENABLE              (0x22)
 #define IO_GPIO_SET_INT_MASK                (0x23)
-#define IO_GPIO_GET_INT_MASK				(0x24)
+#define IO_GPIO_GET_INT_MASK                (0x24)
 #define IO_GPIO_SET_INT_TYPE                (0x25)
 #define IO_GPIO_SET_INT_POLARITY            (0x26)
 #define IO_GPIO_SET_INT_BOTHEDGE            (0x27)
 #define IO_GPIO_SET_DEBOUNCE                (0x28)
-#define IO_GPIO_GET_DIRECTION				(0x29)
-#define IO_GPIO_GET_GPO						(0x30)
+#define IO_GPIO_GET_DIRECTION               (0x29)
+#define IO_GPIO_GET_GPO                     (0x30)
 
 
 extern uint32_t io_gpio_open(uint32_t dev_id);
@@ -84,11 +84,11 @@ extern void io_gpio_write(uint32_t dev_id, uint32_t data);
   IO_GPIO_SET_DEBOUNCE          uint32_t        Bitmask, where each bit’s value specify if corresponding GPIO signal configured as interrupt source needs
                                                 to be debounced as follows: 0 – no debounce, 1 – enable debounce. Default value of the control is zero
                                                 that corresponds to all GPIO signals aren't debounced on device opening.
-  IO_GPIO_GET_DIRECTION			uint32_t 		Same as IO_GPIO_SET_DIRECTION.
-  IO_GPIO_GET_GPO				uint32_t 		Last value written to the port data register using io_gpio_write() service, does not depend on GPIO direction
-												settings and can be different compare to data returened by io_gpio_read() service. 
+  IO_GPIO_GET_DIRECTION     uint32_t    Same as IO_GPIO_SET_DIRECTION.
+  IO_GPIO_GET_GPO       uint32_t    Last value written to the port data register using io_gpio_write() service, does not depend on GPIO direction
+                        settings and can be different compare to data returened by io_gpio_read() service.
 */
 extern void io_gpio_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
 
-#endif				/* GPIO_H_ */
+#endif        /* GPIO_H_ */

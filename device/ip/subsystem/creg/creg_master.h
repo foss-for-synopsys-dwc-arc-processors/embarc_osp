@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -56,4 +56,4 @@ extern void io_creg_master_read(uint32_t dev_id, uint32_t * reg_val);
 extern void io_creg_master_write(uint32_t dev_id, uint32_t reg_val);
 
 
-#endif				/* CREG_MASTER_H_ */
+#endif              /* CREG_MASTER_H_ */

@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -42,8 +42,8 @@
 #define IO_ADC_SET_SEQ_TABLE            (0x22)
 #define IO_ADC_SET_SEQ_MODE             (0x23)
 #define IO_ADC_SET_SEQ_STOP             (0x24)
-#define IO_ADC_SET_RX_THRESHOLD			(0x25)
-#define IO_ADC_SET_ADC_ENA				(0x26)
+#define IO_ADC_SET_RX_THRESHOLD         (0x25)
+#define IO_ADC_SET_ADC_ENA              (0x26)
 
 #define IO_ADC_INPUT_SINGLE_END       0
 #define IO_ADC_INPUT_DIFF             1
@@ -57,18 +57,18 @@
 
 /* Structure representing AD converter configuration */
 typedef struct {
-    uint32_t in_mode;		/* ADC input mode: single ended or differential */
-    uint32_t out_mode;		/* ADC output mode: parallel or serial */
-    uint32_t serial_dly;	/* Number of adc_clk the first bit of serial output is delayed for after start of convertion */
-    uint32_t capture_mode;	/* ADC controller capture mode: by rising or falling edge of adc_clk */
-    uint32_t sample_width;	/* ADC sample width */
+    uint32_t in_mode;   /* ADC input mode: single ended or differential */
+    uint32_t out_mode;    /* ADC output mode: parallel or serial */
+    uint32_t serial_dly;  /* Number of adc_clk the first bit of serial output is delayed for after start of convertion */
+    uint32_t capture_mode;  /* ADC controller capture mode: by rising or falling edge of adc_clk */
+    uint32_t sample_width;  /* ADC sample width */
 } io_adc_config_t;
 
 
 /* Structure representing ADC sequence table entry. */
 typedef struct {
-    uint32_t sample_dly;	/* delay to be introduced prior to start of convertion, in terms of adc clocks */
-    uint32_t channel_id;	/* ADC input associated with the entry */
+    uint32_t sample_dly;  /* delay to be introduced prior to start of convertion, in terms of adc clocks */
+    uint32_t channel_id;  /* ADC input associated with the entry */
 } io_adc_seq_entry_t;
 
 
@@ -118,4 +118,4 @@ extern void io_adc_read(uint32_t dev_id, uint32_t * data, uint32_t * size);
 */
 extern void io_adc_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
-#endif				/* ADC_H_ */
+#endif        /* ADC_H_ */

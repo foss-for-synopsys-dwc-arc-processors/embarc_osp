@@ -1,7 +1,7 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and 
-* documentation (hereinafter, "Software") is an Unsupported proprietary work 
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between 
+* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+* documentation (hereinafter, "Software") is an Unsupported proprietary work
+* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
 * Synopsys and you.
 *
 * The Software IS NOT an item of Licensed Software or Licensed Product under
@@ -37,23 +37,23 @@
 #include "ioctl.h"
 
 /* I2C working speeds. */
-#define         I2C_STANDARD_SPEED        (0x01)
-#define         I2C_FAST_SPEED            (0x02)
+#define I2C_STANDARD_SPEED        (0x01)
+#define I2C_FAST_SPEED            (0x02)
 
 /* I2C devices common control commands */
-#define     IO_I2C_MASTER_SET_HOLD_TIME_RX      (0x06)
-#define     IO_I2C_MASTER_SET_HOLD_TIME_TX      (0x07)
-#define     IO_I2C_MASTER_SET_SPKLEN            (0x08)
-#define     IO_I2C_MASTER_SET_RX_THRESHOLD      (0x09)
-#define     IO_I2C_MASTER_SET_TX_THRESHOLD      (0x0a)
-#define     IO_I2C_MASTER_SET_10BIT_ADDR        (0x0b)
+#define IO_I2C_MASTER_SET_HOLD_TIME_RX      (0x06)
+#define IO_I2C_MASTER_SET_HOLD_TIME_TX      (0x07)
+#define IO_I2C_MASTER_SET_SPKLEN            (0x08)
+#define IO_I2C_MASTER_SET_RX_THRESHOLD      (0x09)
+#define IO_I2C_MASTER_SET_TX_THRESHOLD      (0x0a)
+#define IO_I2C_MASTER_SET_10BIT_ADDR        (0x0b)
 /* I2C master control commands */
-#define     IO_I2C_MASTER_SET_TARGET_ADDR       (0x20)
-#define     IO_I2C_MASTER_SET_SPEED             (0x21)
-#define     IO_I2C_MASTER_SET_SS_SCL_HCNT       (0x22)
-#define     IO_I2C_MASTER_SET_SS_SCL_LCNT       (0x23)
-#define     IO_I2C_MASTER_SET_FS_SCL_HCNT       (0x24)
-#define     IO_I2C_MASTER_SET_FS_SCL_LCNT       (0x25)
+#define IO_I2C_MASTER_SET_TARGET_ADDR       (0x20)
+#define IO_I2C_MASTER_SET_SPEED             (0x21)
+#define IO_I2C_MASTER_SET_SS_SCL_HCNT       (0x22)
+#define IO_I2C_MASTER_SET_SS_SCL_LCNT       (0x23)
+#define IO_I2C_MASTER_SET_FS_SCL_HCNT       (0x24)
+#define IO_I2C_MASTER_SET_FS_SCL_LCNT       (0x25)
 
 
 extern uint32_t io_i2c_master_open(uint32_t dev_id);
@@ -79,9 +79,9 @@ extern void io_i2c_master_close(uint32_t dev_id);
 */
 extern void io_i2c_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 extern void io_i2c_master_read(uint32_t dev_id, uint8_t * data,
-			       uint32_t * size);
+             uint32_t * size);
 extern void io_i2c_master_write(uint32_t dev_id, uint8_t * data,
-				uint32_t * size);
+        uint32_t * size);
 
 
-#endif				/* I2C_MASTER_H_ */
+#endif        /* I2C_MASTER_H_ */
