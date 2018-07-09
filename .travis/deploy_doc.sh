@@ -9,7 +9,7 @@ die()
     exit 1
 }
 
-set -x
+#set -x
 
 # Make documentation
 echo 'Generating documentation ...'
@@ -35,10 +35,11 @@ if [ "$TRAVIS_BRANCH" != "master" ]; then
     exit 0
 fi
 
+echo 'Push generated documentation to gh-pages branch...'
+
 # Only commit changes when it is not a pull request
 # tar doc
 tar czvf doc.tar.gz build || die
-
 
 git fetch origin || die
 git branch -a || die
@@ -55,12 +56,13 @@ tar xzvf doc.tar.gz || die
 rm -rf doc.tar.gz || die
 
 git add --all || die
-# git commit -s -a -m "Update gh-pages branch, Travis build: $TRAVIS_BUILD_NUMBER, commit: ${TRAVIS_COMMIT}"
-git commit -s -a -m "Update gh-pages branch, Travis build: $TRAVIS_BUILD_NUMBER" || die
+# git commit -s -a -m "Update gh-pages branch, Travis build: $TRAVIS_BUILD_NUMBER, commit: "
+git commit -s -a -m "doc: Push updated generated sphinx documentation of commit ${TRAVIS_COMMIT}" || die
 if [ $? -eq 0 ]; then
+    echo 'Push changes to gh-pages branch.'
     git push ${REPO_LINK} gh-pages:gh-pages > /dev/null 2>&1 || die
 else
-    echo 'No update in gh-pages branch'
+    echo 'No update in gh-pages branch, no need to push changes!'
 fi
 
 exit 0
