@@ -1,6 +1,6 @@
 .. _middleware_layer:
 
-Middlwares
+Middlewares
 ==========
 
 Overview
