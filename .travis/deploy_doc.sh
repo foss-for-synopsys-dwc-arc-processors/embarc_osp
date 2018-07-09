@@ -23,7 +23,7 @@ make doxygen || die
 make html || die
 
 # Check if this is a pull request
-if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
     exit 0
 fi
 
