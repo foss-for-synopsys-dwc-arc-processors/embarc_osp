@@ -428,7 +428,7 @@ Then the secure_symbol.txt should be:
 
 Upon compiling and linking, the following files will be generated:
 
-- linker_xx.ldf: the generated linker script for normal applicatio
+- linker_xx.ldf: the generated linker script for normal application
 
 - the generated linker script for secure binary
 
