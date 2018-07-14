@@ -86,7 +86,7 @@ static void oled_ssd1306_chip_select(DEV_SPI* _oled_spi, bool select)
 #if defined(OS_FREERTOS)
 					vTaskDelay(0);
 #else
-					sleep(1);
+					u8g_Delay(1);
 #endif
 				}
 			} while(1);
