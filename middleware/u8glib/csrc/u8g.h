@@ -691,6 +691,7 @@ uint8_t u8g_com_msp430_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void 
 uint8_t u8g_com_raspberrypi_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);                /* u8g_com_rasperrypi_hw_spi.c */
 uint8_t u8g_com_raspberrypi_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);		/* u8g_com_raspberrypi_ssd_i2c.c */
 
+uint8_t u8g_com_embarc_ssd_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
 uint8_t u8g_com_embarc_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
 
 
@@ -703,6 +704,7 @@ uint8_t u8g_com_embarc_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void
   U8G_COM_T6963
   U8G_COM_FAST_PARALLEL
   U8G_COM_SSD_I2C
+  U8G_COM_SSD_SPI
   U8G_COM_UC_I2C
   
 defined(__18CXX) || defined(__PIC32MX)  
@@ -855,6 +857,17 @@ defined(__18CXX) || defined(__PIC32MX)
 #define U8G_COM_SSD_I2C u8g_com_null_fn
 #endif
 #endif
+
+/* ==== HW SPI, embARC ====*/
+#if defined(PLATFORM_EMBARC)
+#define U8G_COM_SSD_SPI u8g_com_embarc_ssd_spi_fn
+
+#ifndef U8G_COM_SSD_SPI
+#define U8G_COM_SSD_SPI u8g_com_null_fn
+#endif
+
+#endif
+
 
 #ifndef U8G_COM_UC_I2C
 #if defined(__AVR__)
