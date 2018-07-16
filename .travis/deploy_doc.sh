@@ -9,7 +9,7 @@ die()
     exit 1
 }
 
-#set -x
+set -x
 
 # Make documentation
 echo 'Generating documentation ...'
@@ -18,10 +18,12 @@ ln -s ../../../example example || die
 # Generate xml by doxygen
 cd ../..
 mkdir -p build/doxygen/xml || die
-make doxygen || die
+make doxygen > build_doxygen.log || die
 # Generate by sphinx
-make html || die
+make html > build_html.log || die
 
+echo $TRAVIS_BRANCH 
+ech $TRAVIS_PULL_REQUEST
 # Check if this is a pull request
 if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
     echo "Don't push built docs to gh-pages for pull request "
