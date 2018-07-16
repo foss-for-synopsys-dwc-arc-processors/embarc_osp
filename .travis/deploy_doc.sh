@@ -23,7 +23,7 @@ make doxygen > build_doxygen.log || die
 make html > build_html.log || die
 
 echo $TRAVIS_BRANCH 
-ech $TRAVIS_PULL_REQUEST
+echo $TRAVIS_PULL_REQUEST
 # Check if this is a pull request
 if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
     echo "Don't push built docs to gh-pages for pull request "
