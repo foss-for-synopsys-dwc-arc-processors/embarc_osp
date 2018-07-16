@@ -18,21 +18,19 @@ ln -s ../../../example example || die
 # Generate xml by doxygen
 cd ../..
 mkdir -p build/doxygen/xml || die
-make doxygen > build_doxygen.log || die
+make doxygen >&2 build_doxygen.log || die
 # Generate by sphinx
-make html > build_html.log || die
+make html >&2 build_html.log || die
 
-echo $TRAVIS_BRANCH 
-echo $TRAVIS_PULL_REQUEST
 # Check if this is a pull request
-if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
+if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
     echo "Don't push built docs to gh-pages for pull request "
     exit 0
 fi
 
 # Check if this is master branch
 # Only push doc changes to gh-pages when this is master branch
-if [ "$TRAVIS_BRANCH" != "master" ]; then
+if [ "$TRAVIS_BRANCH" != "master" ] ; then
     echo "Don't push built docs to gh-pages for non master branch "
     exit 0
 fi
@@ -41,7 +39,7 @@ echo 'Push generated documentation to gh-pages branch...'
 
 # Only commit changes when it is not a pull request
 # tar doc
-tar czvf doc.tar.gz build || die
+tar czf doc.tar.gz build || die
 
 git fetch origin || die
 git branch -a || die
@@ -54,13 +52,13 @@ git checkout -b gh-pages origin/gh-pages || die
 cd doc || die
 rm -rf embARC_Document.html embARC_Document || rm -rf build
 cp ../../doc.tar.gz . || die
-tar xzvf doc.tar.gz || die
+tar xzf doc.tar.gz || die
 rm -rf doc.tar.gz || die
 
 git add --all || die
 # git commit -s -a -m "Update gh-pages branch, Travis build: $TRAVIS_BUILD_NUMBER, commit: "
 git commit -s -a -m "doc: Push updated generated sphinx documentation of commit ${TRAVIS_COMMIT}" || die
-if [ $? -eq 0 ]; then
+if [ $? -eq 0 ] ; then
     echo 'Push changes to gh-pages branch.'
     git push ${REPO_LINK} gh-pages:gh-pages > /dev/null 2>&1 || die
 else
