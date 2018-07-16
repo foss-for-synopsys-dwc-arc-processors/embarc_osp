@@ -32,7 +32,7 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 
 ### Code of Conduct
 
-This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.html).
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [info@embarc.org](mailto:info@embarc.org).
 
@@ -98,7 +98,7 @@ Include details about your configuration and environment:
 * **Provide name and version of the OS and toolchain you are using**
 * **Provide hardware board and arc core you are using**
 
-#### [Template For Submitting Bug Reports](ISSUE_TEMPLATE.md)
+#### [Template For Submitting Bug Reports](ISSUE_TEMPLATE.html)
 
 ### Suggesting Enhancements
 
@@ -126,7 +126,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 * **List some other text software platform where this enhancement exists.**
 * **Specify the name and version of the OS you're using.**
 
-#### [Template For Submitting Enhancement Suggestions](ISSUE_TEMPLATE.md)
+#### [Template For Submitting Enhancement Suggestions](ISSUE_TEMPLATE.html)
 
 ### Your First Code Contribution
 
