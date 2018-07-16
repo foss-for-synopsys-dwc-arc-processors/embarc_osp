@@ -18,9 +18,9 @@ ln -s ../../../example example || die
 # Generate xml by doxygen
 cd ../..
 mkdir -p build/doxygen/xml || die
-make doxygen >&2 build_doxygen.log || die
+make doxygen &> build_doxygen.log || die
 # Generate by sphinx
-make html >&2 build_html.log || die
+make html &> build_html.log || die
 
 # Check if this is a pull request
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
