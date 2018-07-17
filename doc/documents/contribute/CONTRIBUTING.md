@@ -170,7 +170,7 @@ If you want to read about using embARC OSP or developing board support package, 
 ### C Styleguide
 
 All C source code must adhere to [Linux Kernel Coding Style](https://www.kernel.org/doc/Documentation/CodingStyle).
-Here we use [AStyle tool](http://astyle.sourceforge.net/) to format the source code. The astyle option is provided [here](.astyle/embarc_astylerc).
+Here we use [AStyle tool](http://astyle.sourceforge.net/) to format the source code. The astyle option is provided [here](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.astyle/embarc_astylerc).
 
 To help with writing c source code in editor, you can install plugin for your editor.
 - For sublime-text editor, you can use [SublimeAStyleFormatter](https://packagecontrol.io/packages/SublimeAStyleFormatter) plugin.

@@ -265,7 +265,7 @@ U8glib
 Wakaama
 *******
 
-:Project homepage:  	https://projects.eclipse.org/projects/technology.wakaam
+:Project homepage:  	https://projects.eclipse.org/projects/technology/wakaam
 			https://github.com/eclipse/wakaama
 :Project licensing:  `EPL-1.0`_
  
