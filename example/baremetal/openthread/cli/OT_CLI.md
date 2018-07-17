@@ -1732,4 +1732,4 @@ Done
 Diagnostics module is enabled only when building OpenThread with --enable-diag option.
 Go [diagnostics module][1] for more information.
 
-[1]:./OT_DIAG.md
+[1]:./OT_DIAG.html

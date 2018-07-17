@@ -26,7 +26,7 @@ Detailed Description
     For EMSK1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
     For EMSK 1.0, it can be upgraded to 1.1 by 1.1's firmware. For EMSK 2.0/2.1/2.2, it can be upgraded to 2.3 by 2.3's firmware.
 
-    .. image:: ../../../../pic/bootloader.jpg
+    .. image:: /pic/bootloader.jpg
 
     Here are steps for how to program the secondary bootloader application into onboard SPIFlash (Take EMSK2.3 - ARC EM7D as example) and automatically load and run *boot.hex* or *boot.bin* in SDCard.
 
@@ -34,20 +34,20 @@ Detailed Description
 
     - Program generated secondary bootloader binary file into SPIFlash
         + Insert SDCard to your PC, and copy the binary file *obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin* to SDCard Root, and rename it to *em7d_2bt.bin*
-        + Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the <em><embARC>/example/baremetal/bootloader</em> example, then press any button to stop auto boot process, and enter to ntshell command mode.
+        + Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the *<embARC>/example/baremetal/bootloader* example, then press any button to stop auto boot process, and enter to ntshell command mode.
         + Then use ntshell command *spirw* to program the *em7d_2bt.bin* into spiflash.
             - Firstly, run *spirw* to show help
             - Secondly, run *spirw -i* to check SPIFlash ID, it should be **Device ID = ef4018**
             - Thirdly, run *spirw -w em7d_2bt.bin 0x17f00000 0x17f00004* to program spiflash
             - Check the output message to see if it was programmed successfully.
 
-            .. image:: ../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg
+            .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg
 
         + If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.
         + If the sdcard already contains the *boot.bin* in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.
         + You can goto the next step to generate the *boot.bin* for proper application you want to be auto-loaded in sdcard.
 
-        .. image:: ../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg
+        .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg
 
     - Generate *boot.bin* using any embARC example which ram start address should be 0x10000000 and use bootloader to run it
 
@@ -59,7 +59,7 @@ Detailed Description
         - Operations on the EMSK, GPIO, I2C, SPI flash
         - Operations on ARC processors
         - Automatic boot from SD card, using following instructions:
-            + burn the bin file of bootloader into EMSK spiflash using spirw command <b>spirw -w bootloader.bin 0x17f00000 0x17f00004 </b> with the help of JTAG
+            + burn the bin file of bootloader into EMSK spiflash using spirw command **spirw -w bootloader.bin 0x17f00000 0x17f00004** with the help of JTAG
             + the primary bootloader should be able to load the secondary bootloader
             + put the file you want to boot in the root directory of SD card, name it boot.bin
             + plug in SD card
@@ -72,7 +72,7 @@ Detailed Description
 
         - Type *help* command in ntshell to show the list of supported commands.
 
-    .. image:: ../../../../pic/images/example/baremetal_bootloader/emsk_bootloader.jpg
+    .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader.jpg
 
  * Extra Comments
     - Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send
@@ -142,4 +142,4 @@ Sample Output
 
 The output depends on the *boot.bin*. This sample is using *<embarc_root>/example/freertos/kernel*.
 
-.. image:: ../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg
+.. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg

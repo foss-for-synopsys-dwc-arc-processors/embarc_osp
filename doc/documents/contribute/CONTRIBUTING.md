@@ -32,7 +32,7 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 
 ### Code of Conduct
 
-This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.html).
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [info@embarc.org](mailto:info@embarc.org).
 
@@ -98,7 +98,7 @@ Include details about your configuration and environment:
 * **Provide name and version of the OS and toolchain you are using**
 * **Provide hardware board and arc core you are using**
 
-#### [Template For Submitting Bug Reports](ISSUE_TEMPLATE.md)
+#### [Template For Submitting Bug Reports](ISSUE_TEMPLATE.html)
 
 ### Suggesting Enhancements
 
@@ -126,7 +126,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 * **List some other text software platform where this enhancement exists.**
 * **Specify the name and version of the OS you're using.**
 
-#### [Template For Submitting Enhancement Suggestions](ISSUE_TEMPLATE.md)
+#### [Template For Submitting Enhancement Suggestions](ISSUE_TEMPLATE.html)
 
 ### Your First Code Contribution
 
@@ -170,7 +170,7 @@ If you want to read about using embARC OSP or developing board support package, 
 ### C Styleguide
 
 All C source code must adhere to [Linux Kernel Coding Style](https://www.kernel.org/doc/Documentation/CodingStyle).
-Here we use [AStyle tool](http://astyle.sourceforge.net/) to format the source code. The astyle option is provided [here](.astyle/embarc_astylerc).
+Here we use [AStyle tool](http://astyle.sourceforge.net/) to format the source code. The astyle option is provided [here](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/blob/master/.astyle/embarc_astylerc).
 
 To help with writing c source code in editor, you can install plugin for your editor.
 - For sublime-text editor, you can use [SublimeAStyleFormatter](https://packagecontrol.io/packages/SublimeAStyleFormatter) plugin.
