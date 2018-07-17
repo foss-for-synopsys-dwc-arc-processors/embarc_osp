@@ -216,7 +216,7 @@
 <dd><p class="first">As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA, a simple primary bootloader is also loaded in ICCM. Through the primary bootloader, the application or secondary bootloader can be loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.</p>
 <p>For EMSK1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
 For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.2, it can be upgraded to 2.3 by 2.3’s firmware.</p>
-<img alt="example/example/baremetal/bootloader/../../../../pic/bootloader.jpg" src="example/example/baremetal/bootloader/../../../../pic/bootloader.jpg" />
+<img alt="../../../../_images/bootloader.jpg" src="../../../../_images/bootloader.jpg" />
 <p>Here are steps for how to program the secondary bootloader application into onboard SPIFlash (Take EMSK2.3 - ARC EM7D as example) and automatically load and run <em>boot.hex</em> or <em>boot.bin</em> in SDCard.</p>
 <ul>
 <li><p class="first">Generate a secondary bootloader binary file</p>
@@ -226,7 +226,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <dd><ul class="first">
 <li><p class="first">Insert SDCard to your PC, and copy the binary file <em>obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin</em> to SDCard Root, and rename it to <em>em7d_2bt.bin</em></p>
 </li>
-<li><p class="first">Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the &lt;em&gt;&lt;embARC&gt;/example/baremetal/bootloader&lt;/em&gt; example, then press any button to stop auto boot process, and enter to ntshell command mode.</p>
+<li><p class="first">Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the <em>&lt;embARC&gt;/example/baremetal/bootloader</em> example, then press any button to stop auto boot process, and enter to ntshell command mode.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Then use ntshell command <em>spirw</em> to program the <em>em7d_2bt.bin</em> into spiflash.</dt>
@@ -236,7 +236,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <li>Thirdly, run <em>spirw -w em7d_2bt.bin 0x17f00000 0x17f00004</em> to program spiflash</li>
 <li>Check the output message to see if it was programmed successfully.</li>
 </ul>
-<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg" class="last" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg" />
+<img alt="../../../../_images/emsk_bootloader_program2splflash.jpg" class="last" src="../../../../_images/emsk_bootloader_program2splflash.jpg" />
 </dd>
 </dl>
 </li>
@@ -247,7 +247,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <li><p class="first">You can goto the next step to generate the <em>boot.bin</em> for proper application you want to be auto-loaded in sdcard.</p>
 </li>
 </ul>
-<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg" class="last" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg" />
+<img alt="../../../../_images/emsk_bootloader_onspiflash.jpg" class="last" src="../../../../_images/emsk_bootloader_onspiflash.jpg" />
 </dd>
 </dl>
 </li>
@@ -271,7 +271,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <li><dl class="first docutils">
 <dt>Automatic boot from SD card, using following instructions:</dt>
 <dd><ul class="first last">
-<li>burn the bin file of bootloader into EMSK spiflash using spirw command &lt;b&gt;spirw -w bootloader.bin 0x17f00000 0x17f00004 &lt;/b&gt; with the help of JTAG</li>
+<li>burn the bin file of bootloader into EMSK spiflash using spirw command <strong>spirw -w bootloader.bin 0x17f00000 0x17f00004</strong> with the help of JTAG</li>
 <li>the primary bootloader should be able to load the secondary bootloader</li>
 <li>put the file you want to boot in the root directory of SD card, name it boot.bin</li>
 <li>plug in SD card</li>
@@ -294,7 +294,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 </ul>
 </dd>
 </dl>
-<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader.jpg" class="last" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader.jpg" />
+<img alt="../../../../_images/emsk_bootloader.jpg" class="last" src="../../../../_images/emsk_bootloader.jpg" />
 </dd>
 </dl>
 </li>
@@ -385,7 +385,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
 <p>The output depends on the <em>boot.bin</em>. This sample is using <em>&lt;embarc_root&gt;/example/freertos/kernel</em>.</p>
-<img alt="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg" src="example/example/baremetal/bootloader/../../../../pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg" />
+<img alt="../../../../_images/emsk_bootloader_loadbootbin.jpg" src="../../../../_images/emsk_bootloader_loadbootbin.jpg" />
 </div>
 </div>
 </div>

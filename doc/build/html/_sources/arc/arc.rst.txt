@@ -76,7 +76,7 @@ The following pre-defined work is done in ``board_main`` function:
 * OS specific initialization if ``ENABLE_OS`` is defined
 
   * create main task for user ``main`` function
-  * create WiFi task if ·``MID_LWIP`` is enabled and WiFi module is used
+  * create WiFi task if ``MID_LWIP`` is enabled and WiFi module is used
 
 * jump to ``main`` function.
 
