@@ -30,8 +30,8 @@ Build Example for EMSK
       mv linker_mw.ld arc_core.ld
       # ARC GNU on Windows
       mv arc_core_config.h gcc.arg ../../../../example/hello/arcgnu
-      cp ld\linker_gnu.ld ../../../../../example/hello/arcgnu
-      cd ..\..\..\..\..\example\hello\arcgnu
+      cp ld\linker_gnu.ld ../../../../example/hello/arcgnu
+      cd ..\..\..\..\example\hello\arcgnu
       mv linker_gnu.ld arc_core.ld
       # MetaWare on Linux
       mv arc_core_config.h ccac.arg ../../../../example/hello/mwdt
@@ -40,8 +40,8 @@ Build Example for EMSK
       mv linker_mw.ld arc_core.ld
       # ARC GNU on Linux
       mv arc_core_config.h gcc.arg ../../../../example/hello/arcgnu
-      cp ld/linker_gnu.ld ../../../../../example/hello/arcgnu
-      cd ../../../../../example/hello/arcgnu
+      cp ld/linker_gnu.ld ../../../../example/hello/arcgnu
+      cd ../../../../example/hello/arcgnu
       mv linker_gnu.ld arc_core.ld      
 
 #. Build the *hello world* example for the EMSK 2.3 board and ARC EM7D.
