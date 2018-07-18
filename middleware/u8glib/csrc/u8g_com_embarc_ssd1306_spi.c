@@ -47,7 +47,7 @@
 #endif
 
 #ifndef SSD1306_SPI_CS
-#define SSD1306_SPI_CS		EMSK_SPI_LINE_1
+#define SSD1306_SPI_CS		DEV_SPI_CS_LINE_1
 #endif
 
 #ifndef SSD1306_USE_CS_PIN
@@ -113,7 +113,7 @@ static void oled_ssd1306_chip_select(DEV_SPI* _oled_spi, bool select)
 #if defined(OS_FREERTOS)
 				vTaskDelay(0);
 #else
-				Sleep(1);
+				u8g_Delay(1);
 #endif	
 			}
 		} while(1);
