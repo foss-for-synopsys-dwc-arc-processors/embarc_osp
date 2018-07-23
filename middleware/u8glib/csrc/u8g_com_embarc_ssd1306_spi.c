@@ -64,7 +64,7 @@
 # endif
 static void oled_ssd1306_chip_select(DEV_SPI* _oled_spi, bool select)
 {
-	static DEV_GPIO *oled_gpio_cs;
+	static DEV_GPIO *oled_gpio_cs = NULL;
 	if(!oled_gpio_cs) {
 		oled_gpio_cs = gpio_get_dev(SSD1306_CS_GPIO);
 		if(oled_gpio_cs) {
@@ -172,14 +172,14 @@ static void oled_ssd1306_hw_reset(void)
 #define OLED_HW_RESET()
 #endif
 
-static DEV_GPIO *oled_gpio_cd;
+static DEV_GPIO *oled_gpio_cd = NULL;
 static void oled_ssd1306_write_mode(bool isdata)
 {
 	if (oled_gpio_cd) {
 		if(isdata)
 			oled_gpio_cd->gpio_write(1<<SSD1306_CD_PIN, 1<<SSD1306_CD_PIN);
 		else
-			oled_gpio_cd->gpio_write(0, 1<<SSD1306_CD_PIN);
+			oled_gpio_cd->gpio_write(0<<SSD1306_CD_PIN, 1<<SSD1306_CD_PIN);
 	}
 }
 
