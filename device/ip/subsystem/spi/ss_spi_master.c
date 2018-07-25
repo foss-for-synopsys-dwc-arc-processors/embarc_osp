@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2016, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -32,60 +32,15 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	BOARD_IOTDK_DRV_DFSS_SPI_OBJ	IOTDK DFSS SPI Object
- * \ingroup	BOARD_IOTDK_DRIVER
- * \brief	IOTDK DFSS SPI Objects
- */
-
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_DFSS_SPI_OBJ
- * \brief	DFSS SPI object instantiation on iotdk
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_DRV_DFSS_SPI_OBJ
- * @{
- */
-#include <string.h>
-
-#include "arc.h"
-#include "arc_builtin.h"
-#include "embARC_toolchain.h"
 #include "embARC_error.h"
+#include "embARC_toolchain.h"
 #include "arc_exception.h"
 
-#include "../../iotdk.h"
-
-#include "dev_spi.h"
-#include "spi_master.h"
-#include "spi_slave.h"
+#include "ip/subsystem/spi/spi_master.h"
+#include "ip/subsystem/spi/ss_spi_master.h"
 
 
-#define FLAG_TX_READY		(1 << 0) /* interrupt tx */
-#define FLAG_RX_READY		(1 << 1) /* interrupt rx */
-#define FLAG_BUSY		(1 << 2)
-#define FLAG_TX_RX		(1 << 3) /* both tx and rx */
-#define FLAG_ERROR		(1 << 4)
-
-typedef volatile struct spi_dev_context
-{
-	uint8_t	dev_id;
-	uint8_t intno_rx;
-	uint8_t intno_tx;
-	uint8_t intno_idle;
-	uint8_t intno_err;
-	uint8_t flags;
-	IO_CB_FUNC int_rx_cb;
-	IO_CB_FUNC int_tx_cb;
-	IO_CB_FUNC int_idle_cb;
-	IO_CB_FUNC int_err_cb;
-	DEV_SPI_INFO *info;
-} SPI_DEV_CONTEXT;
-
-
-static int32_t spi_master_open(SPI_DEV_CONTEXT *ctx, uint32_t mode, uint32_t param)
+int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t mode, uint32_t param)
 {
 	uint32_t dev_id = ctx->dev_id;
 	DEV_SPI_INFO *info = ctx->info;
@@ -120,7 +75,7 @@ static int32_t spi_master_open(SPI_DEV_CONTEXT *ctx, uint32_t mode, uint32_t par
 	io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_PACKING, &val);
 
 	info->freq = param;
-	param = BOARD_SPI_CLK / param;
+	param = ctx->bus_freq / param;
 
 	io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_BAUD, &param);
 	info->opn_cnt++;
@@ -138,8 +93,8 @@ static int32_t spi_master_open(SPI_DEV_CONTEXT *ctx, uint32_t mode, uint32_t par
 
 	return E_OK;
 }
-/** DFSS SPI close */
-static int32_t spi_master_close(SPI_DEV_CONTEXT *ctx)
+
+int32_t ss_spi_master_close(SS_SPI_MASTER_DEV_CONTEXT *ctx)
 {
 	DEV_SPI_INFO *info = ctx->info;
 
@@ -157,8 +112,8 @@ static int32_t spi_master_close(SPI_DEV_CONTEXT *ctx)
 	}
 	return E_OK;
 }
-/** DFSS SPI control */
-static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param)
+
+int32_t ss_spi_master_control(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param)
 {
 	uint32_t dev_id = ctx->dev_id;
 	DEV_SPI_INFO *info = ctx->info;
@@ -168,16 +123,16 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 
 	switch (ctrl_cmd) {
 		case SPI_CMD_SET_TXINT_BUF:
-			if (buf && !(ctx->flags & FLAG_BUSY)) {
+			if (buf && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
 				DEV_SPI_XFER_SET_TXBUF(spi_xfer, buf->buf, buf->ofs, buf->len);
-				ctx->flags |= FLAG_TX_READY;
+				ctx->flags |= SS_SPI_MASTER_FLAG_TX_READY;
 			} else {
 				return E_NOSPT;
 			}
 			break;
 		case SPI_CMD_SET_TXINT:
-			if (val32 && (ctx->flags & FLAG_TX_READY) && !(ctx->flags & FLAG_BUSY)) {
-				ctx->flags |= FLAG_BUSY;
+			if (val32 && (ctx->flags & SS_SPI_MASTER_FLAG_TX_READY) && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
+				ctx->flags |= SS_SPI_MASTER_FLAG_BUSY;
 				val32 = SPI_TRANSMIT_ONLY_MODE;
 				io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 				io_spi_master_write(dev_id, spi_xfer->tx_buf + spi_xfer->tx_ofs,
@@ -188,17 +143,17 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 			break;
 
 		case SPI_CMD_SET_RXINT_BUF:
-			if (buf && !(ctx->flags & FLAG_BUSY)) {
+			if (buf && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
 				DEV_SPI_XFER_SET_RXBUF(spi_xfer, buf->buf, buf->ofs, buf->len);
-				ctx->flags |= FLAG_RX_READY;
+				ctx->flags |= SS_SPI_MASTER_FLAG_RX_READY;
 			} else {
 				return E_NOSPT;
 			}
 			break;
 
 		case SPI_CMD_SET_RXINT:
-			if (val32 && (ctx->flags & FLAG_RX_READY) && !(ctx->flags & FLAG_BUSY)) {
-				ctx->flags |= FLAG_BUSY;
+			if (val32 && (ctx->flags & SS_SPI_MASTER_FLAG_RX_READY) && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
+				ctx->flags |= SS_SPI_MASTER_FLAG_BUSY;
 				val32 = SPI_RECEIVE_ONLY_MODE;
 				io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 				io_spi_master_read(dev_id, spi_xfer->rx_buf + spi_xfer->rx_ofs,
@@ -209,22 +164,22 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 			break;
 
 		case SPI_CMD_TRANSFER_INT:
-			if (param != NULL && !(ctx->flags & FLAG_BUSY)) {
-				ctx->flags = FLAG_BUSY | FLAG_TX_RX;
+			if (param != NULL && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
+				ctx->flags = SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX;
 				*spi_xfer = *((DEV_SPI_TRANSFER *)param);
 
 				if (spi_xfer->rx_len == 0) {
 					val32 = SPI_TRANSMIT_ONLY_MODE;
-					ctx->flags |= FLAG_TX_READY;
+					ctx->flags |= SS_SPI_MASTER_FLAG_TX_READY;
 					io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 					io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
 				} else if (spi_xfer->tx_len == 0) {
 					val32 = SPI_RECEIVE_ONLY_MODE;
-					ctx->flags |= FLAG_RX_READY;
+					ctx->flags |= SS_SPI_MASTER_FLAG_RX_READY;
 					io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 					io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
 				} else if (spi_xfer->rx_ofs == spi_xfer->tx_len && spi_xfer->tx_ofs == 0) {
-					ctx->flags |= (FLAG_RX_READY | FLAG_TX_READY);
+					ctx->flags |= (SS_SPI_MASTER_FLAG_RX_READY | SS_SPI_MASTER_FLAG_TX_READY);
 					val32 = SPI_RECEIVE_AFTER_TRANSMIT_MODE;
 					io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 					io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
@@ -235,7 +190,7 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 						return E_NOSPT;
 					}
 
-					ctx->flags |= (FLAG_RX_READY | FLAG_TX_READY);
+					ctx->flags |= (SS_SPI_MASTER_FLAG_RX_READY | SS_SPI_MASTER_FLAG_TX_READY);
 					DEV_SPI_XFER_INIT(spi_xfer);
 
 					val32 = SPI_TRANSMIT_RECEIVE_MODE;
@@ -250,7 +205,7 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 			break;
 
 		case SPI_CMD_TRANSFER_POLLING:
-			if (param != NULL && !(ctx->flags & FLAG_BUSY)) {
+			if (param != NULL && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
 
 				if (arc_locked()) {
 					/*
@@ -265,28 +220,28 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 
 				while (spi_xfer != NULL) {
 					if (spi_xfer->rx_len == 0) {
-						ctx->flags = FLAG_BUSY;
+						ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
 						val32 = SPI_TRANSMIT_ONLY_MODE;
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
 
-						while (ctx->flags & FLAG_BUSY);
+						while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
 					} else if (spi_xfer->tx_len == 0) {
-						ctx->flags = FLAG_BUSY;
+						ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
 						val32 = SPI_RECEIVE_ONLY_MODE;
 
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
 
-						while (ctx->flags & FLAG_BUSY);
+						while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
 					} else if (spi_xfer->rx_ofs == spi_xfer->tx_len && spi_xfer->tx_ofs == 0) {
-						ctx->flags = FLAG_BUSY | FLAG_TX_RX;
+						ctx->flags = SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX;
 						val32 = SPI_RECEIVE_AFTER_TRANSMIT_MODE;
 
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
 						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
-						while (ctx->flags & (FLAG_BUSY | FLAG_TX_RX));
+						while (ctx->flags & (SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX));
 					} else {
 
 						if (spi_xfer->tx_ofs != 0 || spi_xfer->rx_ofs != 0) {
@@ -295,17 +250,17 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 
 						DEV_SPI_XFER_INIT(spi_xfer);
 
-						ctx->flags = FLAG_BUSY | FLAG_TX_RX;
+						ctx->flags = SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX;
 						val32 = SPI_TRANSMIT_RECEIVE_MODE;
 
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->tot_len);
 						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tot_len);
 
-						while (ctx->flags & (FLAG_BUSY | FLAG_TX_RX));
+						while (ctx->flags & (SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX));
 					}
 
-					if (ctx->flags & FLAG_ERROR) {
+					if (ctx->flags & SS_SPI_MASTER_FLAG_ERROR) {
 						ctx->flags = 0;
 						return E_SYS;
 					}
@@ -367,7 +322,7 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 
 		case SPI_CMD_MST_SET_FREQ:
 			info->freq = val32;
-			val32 = BOARD_SPI_CLK / val32;
+			val32 = ctx->bus_freq / val32;
 			io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_BAUD, &val32);
 			break;
 
@@ -388,15 +343,15 @@ static int32_t spi_master_control(SPI_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void 
 	}
 	return E_OK;
 }
-/** DFSS SPI write */
-static int32_t spi_master_write(SPI_DEV_CONTEXT *ctx, const void *data, uint32_t len)
+
+int32_t ss_spi_master_write(SS_SPI_MASTER_DEV_CONTEXT*ctx, const void *data, uint32_t len)
 {
 	uint32_t dev_id = ctx->dev_id;
 	uint32_t len_  = len;
 	uint32_t val32 = SPI_TRANSMIT_ONLY_MODE;
 
 	/* spi busy */
-	if (ctx->flags & FLAG_BUSY) {
+	if (ctx->flags & SS_SPI_MASTER_FLAG_BUSY) {
 		return E_NORES;
 	}
 
@@ -408,14 +363,14 @@ static int32_t spi_master_write(SPI_DEV_CONTEXT *ctx, const void *data, uint32_t
 		return E_SYS;
 	}
 
-	ctx->flags = FLAG_BUSY;
+	ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
 	io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 	io_spi_master_write(dev_id, (uint8_t *) data, &len_);
 
 	/* wait finished: spi int enable & no cpu lock */
-	while (ctx->flags & FLAG_BUSY);
+	while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
 
-	if (ctx->flags & FLAG_ERROR) {
+	if (ctx->flags & SS_SPI_MASTER_FLAG_ERROR) {
 		ctx->flags = 0;
 		return E_SYS;
 	}
@@ -423,14 +378,14 @@ static int32_t spi_master_write(SPI_DEV_CONTEXT *ctx, const void *data, uint32_t
 	ctx->flags = 0;
 	return E_OK;
 }
-/** DFSS SPI  read */
-static int32_t spi_master_read(SPI_DEV_CONTEXT *ctx, void *data, uint32_t len)
+
+int32_t ss_spi_master_read(SS_SPI_MASTER_DEV_CONTEXT*ctx, void *data, uint32_t len)
 {
 	uint32_t dev_id = ctx->dev_id;
 	uint32_t len_ = len;
 	uint32_t val32 = SPI_RECEIVE_ONLY_MODE;
 
-	if (ctx->flags & FLAG_BUSY) {
+	if (ctx->flags & SS_SPI_MASTER_FLAG_BUSY) {
 		return E_NORES;
 	}
 
@@ -442,14 +397,14 @@ static int32_t spi_master_read(SPI_DEV_CONTEXT *ctx, void *data, uint32_t len)
 		return E_SYS;
 	}
 
-	ctx->flags = FLAG_BUSY;
+	ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
 
 	io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 	io_spi_master_read(dev_id, (uint8_t *)data, &len_);
 
-	while (ctx->flags & FLAG_BUSY);
+	while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
 
-	if (ctx->flags & FLAG_ERROR) {
+	if (ctx->flags & SS_SPI_MASTER_FLAG_ERROR) {
 		ctx->flags = 0;
 		return E_SYS;
 	}
@@ -457,311 +412,54 @@ static int32_t spi_master_read(SPI_DEV_CONTEXT *ctx, void *data, uint32_t len)
 	return 0;
 }
 
-/**
- * \name	IOTDK DFSS SPI 0 Object Instantiation
- * @{
- */
-#if (USE_DFSS_SPI_0)
-static void spi_tx_cb0(uint32_t dev_id);
-static void spi_rx_cb0(uint32_t dev_id);
-static void spi_err_cb0(uint32_t dev_id);
-
-static DEV_SPI dfss_spi_0; /*!< dfss spi object */
-
-static SPI_DEV_CONTEXT spi_context0 = {
-	DFSS_SPI_0_ID,
-	IO_SPI_MST0_INT_RX_AVAIL,
-	IO_SPI_MST0_INT_TX_REQ,
-	IO_SPI_MST0_INT_IDLE,
-	IO_SPI_MST0_INT_ERR,
-	0,
-	spi_rx_cb0,
-	spi_tx_cb0,
-	spi_err_cb0,
-};
-
-static void spi_tx_cb0(uint32_t dev_id)
+void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 {
-	SPI_DEV_CONTEXT *ctx = &spi_context0;
 	DEV_SPI_INFO *info = ctx->info;
 	DEV_SPI_TRANSFER *spi_xfer = &(info->xfer);
 
-	if (ctx->flags & FLAG_TX_RX) {
+	if (ctx->flags & SS_SPI_MASTER_FLAG_TX_RX) {
 		if (spi_xfer->rx_len == 0) {
-			ctx->flags &= ~FLAG_TX_RX;
+			ctx->flags &= ~SS_SPI_MASTER_FLAG_TX_RX;
 
-			if (ctx->flags & FLAG_TX_READY && info->spi_cbs.xfer_cb) {
+			if (ctx->flags & SS_SPI_MASTER_FLAG_TX_READY && info->spi_cbs.xfer_cb) {
 				info->spi_cbs.xfer_cb(info);
 			}
 		}
-	} else if (ctx->flags & FLAG_TX_READY && info->spi_cbs.tx_cb) {
+	} else if (ctx->flags & SS_SPI_MASTER_FLAG_TX_READY && info->spi_cbs.tx_cb) {
 		info->spi_cbs.tx_cb(info);
 	}
 
-	ctx->flags &= ~(FLAG_TX_READY | FLAG_BUSY);
+	ctx->flags &= ~(SS_SPI_MASTER_FLAG_TX_READY | SS_SPI_MASTER_FLAG_BUSY);
 
 }
 
-static void spi_rx_cb0(uint32_t dev_id)
+void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 {
-	SPI_DEV_CONTEXT *ctx = &spi_context0;
 	DEV_SPI_INFO *info = ctx->info;
 
-	if (ctx->flags & FLAG_TX_RX) {
-		if (ctx->flags & FLAG_RX_READY && info->spi_cbs.xfer_cb) {
+	if (ctx->flags & SS_SPI_MASTER_FLAG_TX_RX) {
+		if (ctx->flags & SS_SPI_MASTER_FLAG_RX_READY && info->spi_cbs.xfer_cb) {
 			info->spi_cbs.xfer_cb(info);
 		}
-		ctx->flags &= ~(FLAG_RX_READY | FLAG_TX_READY | FLAG_BUSY | FLAG_TX_RX);
+		ctx->flags &= ~(SS_SPI_MASTER_FLAG_RX_READY | SS_SPI_MASTER_FLAG_TX_READY |
+				SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX);
 
 	} else {
-		if (ctx->flags & FLAG_RX_READY && info->spi_cbs.rx_cb) {
+		if (ctx->flags & SS_SPI_MASTER_FLAG_RX_READY && info->spi_cbs.rx_cb) {
 			info->spi_cbs.rx_cb(info);
 		}
 
-		ctx->flags &= ~(FLAG_RX_READY | FLAG_BUSY);
+		ctx->flags &= ~(SS_SPI_MASTER_FLAG_RX_READY | SS_SPI_MASTER_FLAG_BUSY);
 	}
 }
 
-static void spi_err_cb0(uint32_t dev_id)
+void ss_spi_master_err_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 {
-	SPI_DEV_CONTEXT *ctx = &spi_context0;
 	DEV_SPI_INFO *info = ctx->info;
 
-	ctx->flags = FLAG_ERROR;
+	ctx->flags = SS_SPI_MASTER_FLAG_ERROR;
 
 	if (info->spi_cbs.err_cb) {
 		info->spi_cbs.err_cb(info);
 	}
 }
-
-
-/** subsystem spi 0 open */
-static int32_t dfss_spi_0_open(uint32_t mode, uint32_t param)
-{
-	return spi_master_open(&spi_context0, mode, param);
-}
-/** subsystem spi 0 close */
-static int32_t dfss_spi_0_close (void)
-{
-	return spi_master_close(&spi_context0);
-}
-/** subsystem spi 0 control */
-static int32_t dfss_spi_0_control(uint32_t ctrl_cmd, void *param)
-{
-	return spi_master_control(&spi_context0, ctrl_cmd, param);
-}
-/** subsystem spi 0 write */
-static int32_t dfss_spi_0_write(const void *data, uint32_t len)
-{
-	return spi_master_write(&spi_context0, data, len);
-}
-/** subsystem spi 0 close */
-static int32_t dfss_spi_0_read(void *data, uint32_t len)
-{
-	return spi_master_read(&spi_context0, data, len);
-}
-/** subsystem spi 0 interrupt routine */
-
-/** install subsystem spi 0 to system */
-static void dfss_spi_0_install(void)
-{
-	DEV_SPI *dfss_spi_ptr = &dfss_spi_0;
-	DEV_SPI_INFO *info = &(dfss_spi_0.spi_info);
-
-	spi_context0.info = info;
-	/** spi info init */
-	info->status = DEV_DISABLED;
-	info->freq = 1000000;
-	info->opn_cnt = 0;
-	info->mode = DEV_MASTER_MODE;
-	info->clk_mode = SPI_CLK_MODE_DEFAULT;
-	info->slave = SPI_SLAVE_NOT_SELECTED;
-	info->dfs = SPI_DFS_DEFAULT;
-	info->dummy = 0xff;
-	info->spi_ctrl = (void *)&spi_context0;
-
-	/** spi dev init */
-	dfss_spi_ptr->spi_open = dfss_spi_0_open;
-	dfss_spi_ptr->spi_close = dfss_spi_0_close;
-	dfss_spi_ptr->spi_control = dfss_spi_0_control;
-	dfss_spi_ptr->spi_write = dfss_spi_0_write;
-	dfss_spi_ptr->spi_read = dfss_spi_0_read;
-}
-#endif /* USE_DFSS_SPI_0 */
-
-
-/**
- * \name	IOTDK DFSS SPI 0 Object Instantiation
- * @{
- */
-#if (USE_DFSS_SPI_1)
-static void spi_tx_cb1(uint32_t dev_id);
-static void spi_rx_cb1(uint32_t dev_id);
-static void spi_err_cb1(uint32_t dev_id);
-
-static DEV_SPI dfss_spi_1; /*!< dfss spi object */
-
-static SPI_DEV_CONTEXT spi_context1 = {
-	DFSS_SPI_1_ID,
-	IO_SPI_MST1_INT_RX_AVAIL,
-	IO_SPI_MST1_INT_TX_REQ,
-	IO_SPI_MST1_INT_IDLE,
-	IO_SPI_MST1_INT_ERR,
-	0,
-	spi_rx_cb1,
-	spi_tx_cb1,
-	spi_err_cb1,
-};
-
-static void spi_tx_cb1(uint32_t dev_id)
-{
-	SPI_DEV_CONTEXT *ctx = &spi_context1;
-	DEV_SPI_INFO *info = ctx->info;
-	DEV_SPI_TRANSFER *spi_xfer = &(info->xfer);
-
-	if (ctx->flags & FLAG_TX_RX) {
-		if (spi_xfer->rx_len == 0) {
-			ctx->flags &= ~FLAG_TX_RX;
-
-			if (ctx->flags & FLAG_TX_READY && info->spi_cbs.xfer_cb) {
-				info->spi_cbs.xfer_cb(info);
-			}
-		}
-	} else if (ctx->flags & FLAG_TX_READY && info->spi_cbs.tx_cb) {
-		info->spi_cbs.tx_cb(info);
-	}
-
-	ctx->flags &= ~(FLAG_TX_READY | FLAG_BUSY);
-}
-
-static void spi_rx_cb1(uint32_t dev_id)
-{
-	SPI_DEV_CONTEXT *ctx = &spi_context1;
-	DEV_SPI_INFO *info = ctx->info;
-
-	if (ctx->flags & FLAG_TX_RX) {
-		if (ctx->flags & FLAG_RX_READY && info->spi_cbs.xfer_cb) {
-			info->spi_cbs.xfer_cb(info);
-		}
-		ctx->flags &= ~(FLAG_RX_READY | FLAG_TX_READY | FLAG_BUSY | FLAG_TX_RX);
-
-	} else {
-		if (ctx->flags & FLAG_RX_READY && info->spi_cbs.rx_cb) {
-			info->spi_cbs.rx_cb(info);
-		}
-
-		ctx->flags &= ~(FLAG_RX_READY | FLAG_BUSY);
-	}
-}
-
-static void spi_err_cb1(uint32_t dev_id)
-{
-	SPI_DEV_CONTEXT *ctx = &spi_context1;
-	DEV_SPI_INFO *info = ctx->info;
-
-	ctx->flags = FLAG_ERROR;
-	if (info->spi_cbs.err_cb) {
-		info->spi_cbs.err_cb(info);
-	}
-}
-
-
-/** subsystem spi 1 open */
-static int32_t dfss_spi_1_open(uint32_t mode, uint32_t param)
-{
-	return spi_master_open(&spi_context1, mode, param);
-}
-/** subsystem spi 1 close */
-static int32_t dfss_spi_1_close (void)
-{
-	return spi_master_close(&spi_context1);
-}
-/** subsystem spi 1 control */
-static int32_t dfss_spi_1_control(uint32_t ctrl_cmd, void *param)
-{
-	return spi_master_control(&spi_context1, ctrl_cmd, param);
-}
-/** subsystem spi 1 write */
-static int32_t dfss_spi_1_write(const void *data, uint32_t len)
-{
-	return spi_master_write(&spi_context1, data, len);
-}
-/** subsystem spi 1 close */
-static int32_t dfss_spi_1_read(void *data, uint32_t len)
-{
-	return spi_master_read(&spi_context1, data, len);
-}
-
-/** install subsystem spi 1 to system */
-static void dfss_spi_1_install(void)
-{
-	DEV_SPI *dfss_spi_ptr = &dfss_spi_1;
-	DEV_SPI_INFO *info = &(dfss_spi_1.spi_info);
-
-	spi_context1.info = info;
-	/** spi info init */
-	info->status = DEV_DISABLED;
-	info->freq = 1000000;
-	info->opn_cnt = 0;
-	info->mode = DEV_MASTER_MODE;
-	info->clk_mode = SPI_CLK_MODE_DEFAULT;
-	info->slave = SPI_SLAVE_NOT_SELECTED;
-	info->dfs = SPI_DFS_DEFAULT;
-	info->dummy = 0xff;
-	info->spi_ctrl = (void *)&spi_context1;
-
-	/** spi dev init */
-	dfss_spi_ptr->spi_open = dfss_spi_1_open;
-	dfss_spi_ptr->spi_close = dfss_spi_1_close;
-	dfss_spi_ptr->spi_control = dfss_spi_1_control;
-	dfss_spi_ptr->spi_write = dfss_spi_1_write;
-	dfss_spi_ptr->spi_read = dfss_spi_1_read;
-}
-#endif /* USE_DFSS_SPI_1 */
-/** @} end of name */
-
-/** get one subsystem device structure */
-DEV_SPI_PTR spi_get_dev(int32_t spi_id)
-{
-	static uint32_t install_flag = 0;
-
-	/* install device objects */
-	if (install_flag == 0) {
-		install_flag = 1;
-		dfss_spi_all_install();
-	}
-
-	switch (spi_id) {
-#if (USE_DFSS_SPI_0)
-		case DFSS_SPI_0_ID:
-			return &dfss_spi_0;
-			break;
-#endif
-
-#if (USE_DFSS_SPI_1)
-		case DFSS_SPI_1_ID:
-			return &dfss_spi_1;
-			break;
-#endif
-		default:
-			break;
-	}
-	return NULL;
-}
-
-/**
- * \brief	install all spi objects
- * \note	\b MUST be called during system init
- */
-void dfss_spi_all_install(void)
-{
-#if (USE_DFSS_SPI_0)
-	dfss_spi_0_install();
-#endif
-
-#if (USE_DFSS_SPI_1)
-	dfss_spi_1_install();
-#endif
-}
-
-/** @} end of group BOARD_IOTDK_DRV_DFSS_SPI_OBJ */

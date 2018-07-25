@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,69 +27,52 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_DFSS_IIC_OBJ
- * \brief	header file of dfss iic object instantiation
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_DRV_DFSS_IIC_OBJ
- * @{
- */
-#ifndef _DFSS_IIC_OBJ_H_
-#define _DFSS_IIC_OBJ_H_
+#ifndef _DFSS_UART_H_
+#define _DFSS_UART_H_
 
 #include "io_config.h"
+#include "ip/ip_hal/inc/dev_uart.h"
 
-/**
- * \name	DFSS IIC Object Number
- * @{
- */
-#define DFSS_IIC_NUM		(3)	/*!< DFSS IIC valid number */
-/** @} end of name */
-
-/**
- * \name	DFSS IIC Object ID Macros
- * @{
- */
-#define DFSS_IIC_0_ID		0	/*!< IIC 0 ID macro */
-#define DFSS_IIC_1_ID		1	/*!< IIC 1 ID macro */
-/** @} end of name */
-
-/**
- * \name	DFSS IIC Object Control Macros, only IIC master in Huangshan
- * @{
- */
-#ifdef IO_I2C_MST0_PRESENT
-#define USE_DFSS_IIC_0		1	/*!< enable use DFSS IIC 0 */
+#ifdef IO_UART0_PRESENT
+#define USE_DFSS_UART_0				1	/*!< enable use DFSS UART 0 */
 #else
-#define USE_DFSS_IIC_0		0	/*!< enable use DFSS IIC 0 */
+#define USE_DFSS_UART_0				0	/*!< disable use DFSS UART 0 */
 #endif
 
-#ifdef IO_I2C_MST1_PRESENT
-#define USE_DFSS_IIC_1		1	/*!< enable use DFSS IIC 1 */
+#ifdef IO_UART1_PRESENT
+#define USE_DFSS_UART_1				1	/*!< enable use DFSS UART 1 */
 #else
-#define USE_DFSS_IIC_1		0	/*!< enable use DFSS IIC 1 */
+#define USE_DFSS_UART_1				0	/*!< disable use DFSS UART 1 */
 #endif
 
-#ifdef IO_I2C_MST2_PRESENT
-#define USE_DFSS_IIC_2		1	/*!< enable use DFSS IIC 2 */
+#ifdef IO_UART2_PRESENT
+#define USE_DFSS_UART_2				1	/*!< enable use DFSS UART 2 */
 #else
-#define USE_DFSS_IIC_2		0	/*!< enable use DFSS IIC 2 */
+#define USE_DFSS_UART_2				0	/*!< disable use DFSS UART 2 */
 #endif
-/** @} end of name */
+
+#ifdef IO_UART3_PRESENT
+#define USE_DFSS_UART_3				1	/*!< enable use DFSS UART 3 */
+#else
+#define USE_DFSS_UART_3				0	/*!< disable use DFSS UART 3 */
+#endif
+
+
+#define DFSS_UART_NUM	(4)	/*!< DFSS UART valid number */
+
+#define DFSS_UART_0_ID		0	/*!< UART 0 ID macro */
+#define DFSS_UART_1_ID		1	/*!< UART 1 ID macro */
+#define DFSS_UART_2_ID		2	/*!< UART 2 ID macro */
+#define DFSS_UART_3_ID		3	/*!< UART 3 ID macro */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern void dfss_iic_all_install(void);
+extern void dfss_uart_all_install(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _DFSS_IIC_OBJ_H_ */
-
-/** @} end of group BOARD_IOTDK_IIC_OBJ */
+#endif /* _DFSS_UARTH_ */

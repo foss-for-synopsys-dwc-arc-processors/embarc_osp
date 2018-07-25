@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,42 +27,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_DFSS_SPI_OBJ
- * \brief	header file of dfss spi object instantiation
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_DRV_DFSS_SPI_OBJ
- * @{
- */
 #ifndef _DFSS_SPI_OBJ_H_
 #define _DFSS_SPI_OBJ_H_
 
 #include "io_config.h"
+#include "ip/ip_hal/inc/dev_spi.h"
 
-/**
- * \name	DFSS SPI Object Number
- * @{
- */
+
 #define DFSS_SPI_NUM		(4)	/*!< DFSS SPI valid number */
-/** @} end of name */
 
-/**
- * \name	DFSS SPI Object ID Macros
- * @{
- */
+
 #define DFSS_SPI_0_ID		0	/*!< SPI 0 id macro (io_spi_mst0) */
 #define DFSS_SPI_1_ID		1	/*!< SPI 1 id macro (io_spi_mst1) */
 #define DFSS_SPI_2_ID		2	/*!< SPI 2 id macro (io_spi_mst2) */
 #define DFSS_SPI_3_ID		3	/*!< SPI 3 id macro (io_spi_slv0) */
-/** @} end of name */
 
-/**
- * \name	DFSS SPI Object Control Macros
- * @{
- */
 #ifdef IO_SPI_MST0_PRESENT
 #define USE_DFSS_SPI_0		1	/*!< enable use DFSS SPI 0 */
 #else
@@ -86,7 +65,6 @@
 #else
 #define USE_DFSS_SPI_3		0	/*!< disable use DFSS SPI 3 */
 #endif
-/** @} end of name */
 
 #ifdef __cplusplus
 extern "C" {

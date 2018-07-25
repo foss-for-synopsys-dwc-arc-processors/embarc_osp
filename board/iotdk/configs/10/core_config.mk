@@ -9,10 +9,10 @@
 # Select core of IoTDK
 ##
 CUR_CORE ?= arcem9d
-ONCHIP_IP_LIST		?= dfss/gpio \
-			dfss/iic \
-			dfss/uart \
-			dfss/spi \
-			dfss/dmac \
+ONCHIP_IP_LIST		?= subsystem/gpio \
+			subsystem/uart \
+			subsystem/spi \
+			sybsystem/iic \
 			designware/i2s \
 			designware/sdio
+# dfss/dmac \

@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,25 +27,37 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef _DW_I2S_OBJ_H_
-#define _DW_I2S_OBJ_H_
+#ifndef _SS_GPIO_H_
+#define _SS_GPIO_H_
+/* the wrapper of subsystem gpio driver */
 
-#include "ip/ip_hal/inc/dev_i2s.h"
+#include "ip/ip_hal/inc/ioctl.h"
+#include "ip/ip_hal/inc/dev_gpio.h"
 
-#define DW_I2S_0_ID		0	/*!< I2S 0 ID macro */
-#define DW_I2S_1_ID		1	/*!< I2S 1 ID macro */
+typedef struct ss_gpio_dev_context
+{
+	uint32_t reg_base;
 
-#define USE_DW_I2S_0		1	/*!< enable use DesignWare I2S 0 as TX */
-#define USE_DW_I2S_1		1	/*!< enable use DesignWare I2S 1 as TX */
+	uint8_t	dev_id;
+	uint8_t width;
+	uint8_t	intno;
+	uint8_t reserved;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+	IO_CB_FUNC	int_cb;
+	DEV_GPIO_HANDLER *handlers;
+	DEV_GPIO_INFO	*info;
+	uint32_t	int_bit_type;
+	uint32_t	int_bit_polarity;
+	uint32_t	int_bit_debounce;
+} SS_GPIO_DEV_CONTEXT;
 
-extern DEV_I2S_PTR i2s_get_dev(int32_t i2s_id);
 
-#ifdef __cplusplus
-}
-#endif
 
-#endif /* _DW_I2S_OBJ_H_ */
+extern int32_t ss_gpio_open(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir);
+extern int32_t ss_gpio_close(SS_GPIO_DEV_CONTEXT *ctx);
+extern int32_t ss_gpio_control(SS_GPIO_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param);
+extern int32_t ss_gpio_write(SS_GPIO_DEV_CONTEXT *ctx, uint32_t val, uint32_t mask);
+extern int32_t ss_gpio_read(SS_GPIO_DEV_CONTEXT *ctx, uint32_t *val, uint32_t mask);
+extern void ss_gpio_int_cb(SS_GPIO_DEV_CONTEXT *ctx, uint32_t param);
+
+#endif /* _SS_GPIO_H_ */

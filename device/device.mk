@@ -1,7 +1,7 @@
 # devices root declaration
 DEVICES_ROOT = $(EMBARC_ROOT)/device
 
-DEV_INCDIR += $(DEVICES_ROOT)/inc $(DEVICES_ROOT)/ip/ip_hal/inc
+DEV_INCDIR += $(DEVICES_ROOT)/inc $(DEVICES_ROOT)/ip/ip_hal/inc $(DEVICES_ROOT)
 
 # onchip ip rules
 ifdef ONCHIP_IP_LIST

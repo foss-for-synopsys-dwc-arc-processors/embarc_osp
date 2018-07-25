@@ -28,48 +28,19 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	BOARD_HUANGSHAN_DRV_DFSS_I2S_OBJ	Huangshan DFSS I2S Object
- * \ingroup	BOARD_HUANGSHAN_DRIVER
- * \brief	Huangshan DFSS I2S Objects
- * \details
- *		Realize the Huangshan DFSS I2S object using DFSS I2S device driver
- */
-
-/**
- * \file
- * \ingroup	BOARD_HUANGSHAN_DRV_DFSS_I2S_OBJ
- * \brief	DFSS I2S object instantiation on IoTDK
- */
-
-/**
- * \addtogroup	BOARD_HUANGSHAN_DRV_DFSS_I2SSS_OBJ
- * @{
- */
-#include "arc.h"
-#include "arc_builtin.h"
-#include "arc_exception.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "board.h"
+#include "iotdk_hardware.h"
 
-#include "dw_i2s.h"
-#include "dw_i2s_hal.h"
+#include "ip/designware/i2s/dw_i2s.h"
+#include "ip/designware/i2s/dw_i2s_hal.h"
 #include "dw_i2s_obj.h"
 
-// #ifdef DEBUG
-// #undef DEBUG
-// #endif
-#define DEBUG
-#include "embARC_debug.h"
 
 void dw_i2s_all_install(void);
 
-/**
- * \name	EMSK DesignWare I2S 0 (TX) Object Instantiation
- * @{
- */
+
 #if (USE_DW_I2S_0)
 static void dw_i2s_0_isr(void *ptr);
 #define DW_I2S_0_REFCLK		(24.576)			/*!< DW I2S audio reference clock (MHz) */
@@ -81,9 +52,9 @@ static void dw_i2s_0_isr(void *ptr);
 //#define DW_I2S_0_SCLKG		(DW_I2S_SCLKG_24_CLK)	/*!< DW I2S SCLK gate */
 #define DW_I2S_0_SCLKG		(0)				/*!< DW I2S SCLK gate */
 
-DEV_I2S	dw_i2s_0;						/*!< DW I2S object */
-DW_I2S_TX_CTRL dw_i2s_0_ctrl;					/*!< DW I2S 0 ctrl */
-DW_I2S_CONFIG dw_i2s_0_config;					/*!< DW I2S 0 config */
+static DEV_I2S	dw_i2s_0;						/*!< DW I2S object */
+static DW_I2S_TX_CTRL dw_i2s_0_ctrl;			/*!< DW I2S 0 ctrl */
+static DW_I2S_CONFIG dw_i2s_0_config;			/*!< DW I2S 0 config */
 
 /** DesignWare I2S 0 open */
 static int32_t dw_i2s_0_open (uint32_t mode, uint32_t param)
@@ -161,12 +132,7 @@ static void dw_i2s_0_install(void)
 	dw_i2s_ptr->i2s_read = NULL;
 }
 #endif /* USE_DW_I2S_0 */
-/** @} end of name */
 
-/**
- * \name	Huangshan DesignWare I2S RX (1) Object Instantiation
- * @{
- */
 #if (USE_DW_I2S_1)
 static void dw_i2s_1_isr(void *ptr);
 #define DW_I2S_1_REFCLK		(24.576)			/*!< DW I2S audio reference clock (MHz) */
@@ -178,9 +144,9 @@ static void dw_i2s_1_isr(void *ptr);
 //#define DW_I2S_1_SCLKG		(DW_I2S_SCLKG_24_CLK)	/*!< DW I2S SCLK gate */
 #define DW_I2S_1_SCLKG		(0)		/*!< DW I2S SCLK gate */
 
-DEV_I2S	dw_i2s_1;						/*!< DW I2S object */
-DW_I2S_RX_CTRL dw_i2s_1_ctrl;					/*!< DW I2S 1 ctrl */
-DW_I2S_CONFIG dw_i2s_1_config;					/*!< DW I2S 1 config */
+static DEV_I2S	dw_i2s_1;						/*!< DW I2S object */
+static DW_I2S_RX_CTRL dw_i2s_1_ctrl;			/*!< DW I2S 1 ctrl */
+static DW_I2S_CONFIG dw_i2s_1_config;			/*!< DW I2S 1 config */
 
 /** DesignWare I2S 1 open */
 static int32_t dw_i2s_1_open (uint32_t mode, uint32_t param)
@@ -258,7 +224,6 @@ static void dw_i2s_1_install(void)
 	dw_i2s_ptr->i2s_read = dw_i2s_1_read;
 }
 #endif /* USE_DW_I2S_1 */
-/** @} end of name */
 
 /** get one designware device structure */
 DEV_I2S_PTR i2s_get_dev(int32_t i2s_id)
@@ -301,5 +266,3 @@ void dw_i2s_all_install(void)
 	dw_i2s_1_install();
 #endif
 }
-
-/** @} end of group BOARD_EMSK_DRV_DW_I2S_OBJ */

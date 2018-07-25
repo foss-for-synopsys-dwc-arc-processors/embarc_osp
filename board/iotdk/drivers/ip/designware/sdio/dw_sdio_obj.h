@@ -30,6 +30,7 @@
 #ifndef _DW_SDIO_OBJ_H_
 #define _DW_SDIO_OBJ_H_
 
+#include "ip/ip_hal/inc/dev_sdio.h"
 
 #define DW_SDIO_NUM 		(1)
 

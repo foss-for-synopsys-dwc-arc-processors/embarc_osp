@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2016, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,25 +27,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_DFSS_GPIO_OBJ
- * \brief	header file of dfss gpio object instantiation on iotdk
- */
-
-/**
- * \addtogroup	BOARD_EMSK_DRV_DFSS_GPIO_OBJ
- * @{
- */
 #ifndef _DFSS_GPIO_OBJ_H_
 #define _DFSS_GPIO_OBJ_H_
 
 #include "io_config.h"
+#include "ip/ip_hal/inc/dev_gpio.h"
 
-/**
- * \name	DFSS GPIO Port Bank Control Macros
- * @{
- */
 #define DFSS_GPIO_0_ID			0	/* GPIO 0 ID macro (io_gpio0) */
 #define DFSS_GPIO_1_ID			1	/* GPIO 1 ID macro (io_gpio1) */
 #define DFSS_GPIO_2_ID			2	/* GPIO 2 ID macro (io_gpio2) */
@@ -101,7 +88,6 @@
 #define USE_DFSS_GPIO_8B3		0	/* disable use DFSS GPIO 8B 3 */
 #endif
 
-/** @} end of name */
 
 #ifdef __cplusplus
 extern "C" {
@@ -114,5 +100,3 @@ extern void dfss_gpio_all_install(void);
 #endif
 
 #endif /* _DFSS_GPIO_OBJ_H_*/
-
-/** @} end of group BOARD_IOTDK_DRV_DFSS_GPIO_OBJ */

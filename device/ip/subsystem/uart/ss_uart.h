@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2016, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,70 +27,41 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_DFSS_UART
- * \brief	header file of DFSS uart object instantiation on emsk
- */
+#ifndef _SS_UART_H_
+#define _SS_UART_H_
+/* the wrapper of subsystem uart driver */
 
-/**
- * \addtogroup	BOARD_IOTDK_DRV_DFSS_UART
- * @{
- */
-#ifndef _DFSS_UART_H_
-#define _DFSS_UART_H_
+#include "ip/ip_hal/inc/ioctl.h"
+#include "ip/ip_hal/inc/dev_uart.h"
 
-#include "dev_uart.h"
+#define SS_UART_FLAG_TX	(1 << 0) /* interrupt tx */
+#define SS_UART_FLAG_RX	(1 << 1) /* interrupt rx */
+#define SS_UART_FLAG_BUSY	(1 << 2)
+#define SS_UART_FLAG_TX_RX	(1 << 3) /* both tx and rx */
+#define SS_UART_FLAG_ERROR	(1 << 4)
 
-#ifdef IO_UART0_PRESENT
-#define USE_DFSS_UART_0				1	/*!< enable use DFSS UART 0 */
-#else
-#define USE_DFSS_UART_0				0	/*!< disable use DFSS UART 0 */
-#endif
 
-#ifdef IO_UART1_PRESENT
-#define USE_DFSS_UART_1				1	/*!< enable use DFSS UART 1 */
-#else
-#define USE_DFSS_UART_1				0	/*!< disable use DFSS UART 1 */
-#endif
+typedef struct ss_uart_dev_context
+{
+	uint32_t reg_base;
+	uint8_t dev_id;
+	uint8_t	intno;
+	volatile uint16_t 	flags;
 
-#ifdef IO_UART2_PRESENT
-#define USE_DFSS_UART_2				1	/*!< enable use DFSS UART 2 */
-#else
-#define USE_DFSS_UART_2				0	/*!< disable use DFSS UART 2 */
-#endif
+	uint32_t bus_freq;
+	IO_CB_FUNC	tx_cb;
+	IO_CB_FUNC	rx_cb;
+	IO_CB_FUNC	err_cb;
+	DEV_UART_INFO *info;
+} SS_UART_DEV_CONTEXT;
 
-#ifdef IO_UART3_PRESENT
-#define USE_DFSS_UART_3				1	/*!< enable use DFSS UART 3 */
-#else
-#define USE_DFSS_UART_3				0	/*!< disable use DFSS UART 3 */
-#endif
+extern int32_t ss_uart_open(SS_UART_DEV_CONTEXT *ctx, uint32_t baud);
+extern int32_t ss_uart_close(SS_UART_DEV_CONTEXT *ctx);
+extern int32_t ss_uart_control(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param);
+extern int32_t ss_uart_write(SS_UART_DEV_CONTEXT *ctx, const void *data, uint32_t len);
+extern int32_t ss_uart_read(SS_UART_DEV_CONTEXT *ctx, void *data, uint32_t len);
+extern void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param);
+extern void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param);
+extern void ss_uart_err_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param);
 
-/**
- * \name	DFSS UART Number
- * @{
- */
-#define DFSS_UART_NUM	(4)	/*!< DFSS UART valid number */
-/** @} end of name */
-
-/**
- * \name	DFSS UART Object ID Macros
- * @{
- */
-#define DFSS_UART_0_ID		0	/*!< UART 0 ID macro */
-#define DFSS_UART_1_ID		1	/*!< UART 1 ID macro */
-#define DFSS_UART_2_ID		2	/*!< UART 2 ID macro */
-#define DFSS_UART_3_ID		3	/*!< UART 3 ID macro */
-/** @} end of name */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void dfss_uart_all_install(void);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* _DFSS_UARTH_ */
+#endif /* _SS_UART_H_ */

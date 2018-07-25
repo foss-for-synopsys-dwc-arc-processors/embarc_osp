@@ -27,17 +27,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-#include "arc.h"
-#include "arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "arc_exception.h"
+#include "iotdk_hardware.h"
 
-#include "board.h"
-
-#include "dw_sdio.h"
+#include "ip/designware/sdio/dw_sdio.h"
 #include "dw_sdio_obj.h"
 
 #if (USE_DW_SDIO_0)
