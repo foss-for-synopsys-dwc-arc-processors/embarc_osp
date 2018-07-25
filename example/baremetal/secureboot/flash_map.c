@@ -171,7 +171,7 @@ int flash_area_write(const struct flash_area *area, uint32_t off,
 int flash_area_erase(const struct flash_area *area, uint32_t off, uint32_t len)
 {
     BOOT_LOG_DBG("erase area=%d, off=%#x, len=%#x", area->fa_id, off, len);
-    memset((void *)(area->fa_off + off), 0, len);
+    memset((void *)(area->fa_off + off), 0xff, len);
     return 0;
 }
 
