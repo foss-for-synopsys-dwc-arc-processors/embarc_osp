@@ -172,6 +172,8 @@
 #include "bootutil/bootutil.h"
 #include "bootutil/image.h"
 
+#include "test.h"
+
 #define BOOT_CFG_FILE_NAME	"boot.json"
 #define BOOT_FILE_NAME		"0:\\boot.bin"          /*!< default autoload full file name */
 #define RAM_STARTADDRESS	0x10000000		/*!< default ram start address of boot.bin */
@@ -226,6 +228,12 @@ int main(void)
 	uint32_t boot_json[1000];
 	struct boot_rsp rsp;
 	fp_t fp;
+
+	/* start test*/
+	//test_slot0();
+	// test_slot0_good_slot1();
+	//test_slot0_bad_slot1();
+	//test_aborted_swap();
 
 	/* No USE_BOARD_MAIN */
 	board_init();

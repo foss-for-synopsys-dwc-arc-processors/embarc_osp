@@ -24,7 +24,7 @@ APPL_CSRC_DIR = . ./mcuboot/bootutil/src
 APPL_ASMSRC_DIR = .
 
 # application include dirs
-APPL_INC_DIR = . ./mcuboot/include ./mcuboot/bootutil/include
+APPL_INC_DIR = . ./mcuboot/include ./mcuboot/bootutil/include ./mcuboot/bootutil/src
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
