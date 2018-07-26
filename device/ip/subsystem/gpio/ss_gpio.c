@@ -62,12 +62,14 @@ int32_t ss_gpio_open(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir)
 	ctx->int_bit_type = 0;
 	ctx->int_bit_polarity = 0;
 	ctx->int_bit_debounce = 0;
-	cb.cb = ctx->int_cb;
+	cb.cb = (IO_CB_FUNC)ctx->int_cb;
 	io_gpio_ioctl(ctx->dev_id, IO_SET_CB_RX, &cb);
 	io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_ENABLE, &info->method);
 	io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_DIRECTION, &info->direction);
 	io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_POLARITY, &ctx->int_bit_polarity);
 	io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_DEBOUNCE, &ctx->int_bit_debounce);
+
+	int_enable(ctx->intno);
 
 	return ret;
 }
@@ -198,13 +200,13 @@ int32_t ss_gpio_read(SS_GPIO_DEV_CONTEXT *ctx, uint32_t *val, uint32_t mask)
 }
 
 
-void ss_gpio_int_cb(SS_GPIO_DEV_CONTEXT *ctx, uint32_t param)
+void ss_gpio_int_cb(SS_GPIO_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_GPIO_INFO *info = ctx->info;
 	uint32_t i;
 
 	for (i = 0; i < ctx->width; i++) {
-		if ((param & (1 << i)) && ctx->handlers[i]) {
+		if ((uint32_t)param & (1 << i) && ctx->handlers[i]) {
 			ctx->handlers[i](info);
 		}
 	}

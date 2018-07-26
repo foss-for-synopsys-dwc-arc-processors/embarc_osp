@@ -327,11 +327,11 @@ int32_t ss_iic_master_open(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 			info->speed_mode = IIC_SPEED_FAST;
 		}
 
-		callback.cb = ctx->int_rx_cb;
+		callback.cb = (IO_CB_FUNC)ctx->int_rx_cb;
 		io_i2c_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
-		callback.cb = ctx->int_tx_cb;
+		callback.cb = (IO_CB_FUNC)ctx->int_tx_cb;
 		io_i2c_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
-		callback.cb = ctx->int_err_cb;
+		callback.cb = (IO_CB_FUNC)ctx->int_err_cb;
 		io_i2c_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
 
 		info->opn_cnt++;
@@ -430,7 +430,7 @@ int32_t ss_iic_master_read(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uin
 }
 
 
-void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
+void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_IIC_INFO *info = ctx->info;
 
@@ -442,7 +442,7 @@ void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 	}
 }
 
-void ss_iic_master_rx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
+void ss_iic_master_rx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_UART_INFO *info = ctx->info;
 
@@ -454,7 +454,7 @@ void ss_iic_master_rx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 	}
 }
 
-void ss_iic_master_err_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
+void ss_iic_master_err_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_UART_INFO *info = ctx->info;
 

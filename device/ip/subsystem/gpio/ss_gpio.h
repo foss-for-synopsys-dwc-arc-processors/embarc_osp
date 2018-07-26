@@ -31,7 +31,6 @@
 #define _SS_GPIO_H_
 /* the wrapper of subsystem gpio driver */
 
-#include "ip/ip_hal/inc/ioctl.h"
 #include "ip/ip_hal/inc/dev_gpio.h"
 
 typedef struct ss_gpio_dev_context
@@ -43,7 +42,7 @@ typedef struct ss_gpio_dev_context
 	uint8_t	intno;
 	uint8_t reserved;
 
-	IO_CB_FUNC	int_cb;
+	DEV_CALLBACK	int_cb;
 	DEV_GPIO_HANDLER *handlers;
 	DEV_GPIO_INFO	*info;
 	uint32_t	int_bit_type;
@@ -58,6 +57,6 @@ extern int32_t ss_gpio_close(SS_GPIO_DEV_CONTEXT *ctx);
 extern int32_t ss_gpio_control(SS_GPIO_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param);
 extern int32_t ss_gpio_write(SS_GPIO_DEV_CONTEXT *ctx, uint32_t val, uint32_t mask);
 extern int32_t ss_gpio_read(SS_GPIO_DEV_CONTEXT *ctx, uint32_t *val, uint32_t mask);
-extern void ss_gpio_int_cb(SS_GPIO_DEV_CONTEXT *ctx, uint32_t param);
+extern void ss_gpio_int_cb(SS_GPIO_DEV_CONTEXT *ctx, void *param);
 
 #endif /* _SS_GPIO_H_ */

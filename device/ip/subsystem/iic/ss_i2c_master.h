@@ -31,7 +31,6 @@
 #define _SS_I2C_MASTER_H_
 /* the wrapper of subsystem i2c master driver */
 
-#include "ip/ip_hal/inc/ioctl.h"
 #include "ip/ip_hal/inc/dev_iic.h"
 
 #define SS_I2C_MASTER_FLAG_TX_READY	(1 << 0) /* interrupt tx */
@@ -63,9 +62,9 @@ typedef struct ss_iic_master_dev_context
 	uint8_t int_tx_req;	/* Interrupt TX_REQ */
 	uint8_t int_stop_det; 	/* Interrupt STOP_DET */
 
-	IO_CB_FUNC int_rx_cb;
-	IO_CB_FUNC int_tx_cb;
-	IO_CB_FUNC int_err_cb;
+	DEV_CALLBACK int_rx_cb;
+	DEV_CALLBACK int_tx_cb;
+	DEV_CALLBACK int_err_cb;
 
 	volatile uint32_t flags;	/*  flag */
 	DEV_IIC_INFO *info;		/* IIC device information */
@@ -76,9 +75,9 @@ extern int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ct
 extern int32_t ss_iic_master_open(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param);
 extern int32_t ss_iic_master_write(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uint32_t len);
 extern int32_t ss_iic_master_read(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uint32_t len);
-extern void ss_iic_master_rx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param);
-extern void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param);
-extern void ss_iic_master_err_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param);
+extern void ss_iic_master_rx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param);
+extern void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param);
+extern void ss_iic_master_err_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param);
 
 
 #endif /* _SS_I2C_MASTER_H_ */

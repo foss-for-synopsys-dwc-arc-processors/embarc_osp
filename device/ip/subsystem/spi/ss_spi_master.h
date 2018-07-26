@@ -36,7 +36,6 @@
 
 /* the wrapper of subsystem spi master driver */
 
-#include "ip/ip_hal/inc/ioctl.h"
 #include "ip/ip_hal/inc/dev_spi.h"
 
 #define SS_SPI_MASTER_FLAG_TX_READY		(1 << 0) /* interrupt tx */
@@ -59,10 +58,9 @@ typedef struct ss_spi_master_dev_context
 	uint32_t bus_freq;
 	volatile uint32_t flags;
 
-	IO_CB_FUNC int_rx_cb;
-	IO_CB_FUNC int_tx_cb;
-	IO_CB_FUNC int_idle_cb;
-	IO_CB_FUNC int_err_cb;
+	DEV_CALLBACK int_rx_cb;
+	DEV_CALLBACK int_tx_cb;
+	DEV_CALLBACK int_err_cb;
 	DEV_SPI_INFO *info;
 } SS_SPI_MASTER_DEV_CONTEXT;
 
@@ -71,9 +69,9 @@ extern int32_t ss_spi_master_close(SS_SPI_MASTER_DEV_CONTEXT *ctx);
 extern int32_t ss_spi_master_control(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t ctrl_cmd, void *param);
 extern int32_t ss_spi_master_write(SS_SPI_MASTER_DEV_CONTEXT*ctx, const void *data, uint32_t len);
 extern int32_t ss_spi_master_read(SS_SPI_MASTER_DEV_CONTEXT*ctx, void *data, uint32_t len);
-extern void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param);
-extern void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param);
-extern void ss_spi_master_err_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param);
+extern void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param);
+extern void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param);
+extern void ss_spi_master_err_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param);
 
 
 #endif /* _SS_SPI_MASTER_H_ */

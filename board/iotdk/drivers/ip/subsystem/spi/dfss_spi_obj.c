@@ -42,9 +42,9 @@
 
 
 #if (USE_DFSS_SPI_0)
-static void spi_tx_cb0(uint32_t param);
-static void spi_rx_cb0(uint32_t param);
-static void spi_err_cb0(uint32_t param);
+static void spi_tx_cb0(void *param);
+static void spi_rx_cb0(void *param);
+static void spi_err_cb0(void *param);
 
 static DEV_SPI dfss_spi_0;
 
@@ -62,17 +62,17 @@ static SS_SPI_MASTER_DEV_CONTEXT spi_master_context0 = {
 	spi_err_cb0,
 };
 
-static void spi_tx_cb0(uint32_t param)
+static void spi_tx_cb0(void *param)
 {
 	ss_spi_master_tx_cb(&spi_master_context0, param);
 }
 
-static void spi_rx_cb0(uint32_t param)
+static void spi_rx_cb0(void *param)
 {
 	ss_spi_master_rx_cb(&spi_master_context0, param);
 }
 
-static void spi_err_cb0(uint32_t param)
+static void spi_err_cb0(void *param)
 {
 	ss_spi_master_err_cb(&spi_master_context0, param);
 }
@@ -131,9 +131,9 @@ static void dfss_spi_0_install(void)
 
 #if (USE_DFSS_SPI_1)
 
-static void spi_tx_cb1(uint32_t param);
-static void spi_rx_cb1(uint32_t param);
-static void spi_err_cb1(uint32_t param);
+static void spi_tx_cb1(void *param);
+static void spi_rx_cb1(void *param);
+static void spi_err_cb1(void *param);
 
 static DEV_SPI dfss_spi_1;
 
@@ -151,17 +151,17 @@ static SS_SPI_MASTER_DEV_CONTEXT spi_master_context1 = {
 	spi_err_cb1,
 };
 
-static void spi_tx_cb1(uint32_t param)
+static void spi_tx_cb1(void *param)
 {
 	ss_spi_master_tx_cb(&spi_master_context1, param);
 }
 
-static void spi_rx_cb1(uint32_t param)
+static void spi_rx_cb1(void *param)
 {
 	ss_spi_master_rx_cb(&spi_master_context1, param);
 }
 
-static void spi_err_cb1(uint32_t param)
+static void spi_err_cb1(void *param)
 {
 	ss_spi_master_err_cb(&spi_master_context1, param);
 }

@@ -48,14 +48,20 @@ typedef struct {
 
 /* the following are necessary definitions in embARC_OSP */
 #include "arc_exception.h"
+#include "arc_builtin.h"
 
 #undef _Interrupt
 #define _Interrupt
 
+#define _setvecti(x, y)  int_handler_install(x, y);
+
+#if defined(__GNU__)
 #undef _Uncached
 #define _Uncached volatile
-
-#define _setvecti(x, y)  {int_handler_install(x, y); int_enable(x);}
+#define _Usually(x) 	_arc_usually(x)
+#define _sr(x, y) 		_arc_aux_write(x, y)
+#define _lr(x)			_arc_aux_read(x)
+#endif
 
 #undef __Xdmac
 

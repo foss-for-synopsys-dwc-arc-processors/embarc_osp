@@ -36,7 +36,7 @@
 
 #if (USE_DFSS_GPIO_8B0)
 
-static void gpio_int_cb0(uint32_t param);
+static void gpio_int_cb0(void *param);
 static DEV_GPIO		gpio_0;
 static DEV_GPIO_HANDLER gpio_int_handlers0[8];
 static SS_GPIO_DEV_CONTEXT gpio_context0 = {
@@ -46,7 +46,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context0 = {
 };
 
 
-static void gpio_int_cb0(uint32_t param)
+static void gpio_int_cb0(void *param)
 {
 	ss_gpio_int_cb(&gpio_context0, param);
 }
@@ -98,7 +98,7 @@ static void dfss_gpio_0_install(void)
 
 #if USE_DFSS_GPIO_8B1
 
-static void gpio_int_cb1(uint32_t param);
+static void gpio_int_cb1(void *param);
 static DEV_GPIO		gpio_1;
 static DEV_GPIO_HANDLER gpio_int_handlers1[8];
 static SS_GPIO_DEV_CONTEXT gpio_context1 = {
@@ -107,7 +107,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context1 = {
 	0, gpio_int_cb1, gpio_int_handlers1,0
 };
 
-static void gpio_int_cb1(uint32_t param)
+static void gpio_int_cb1(void *param)
 {
 	ss_gpio_int_cb(&gpio_context1, param);
 }
@@ -160,7 +160,7 @@ static void dfss_gpio_1_install(void)
 
 #if USE_DFSS_GPIO_8B2
 
-static void gpio_int_cb2(uint32_t param);
+static void gpio_int_cb2(void *param);
 static DEV_GPIO		gpio_2;
 static DEV_GPIO_HANDLER gpio_int_handlers2[8];
 static SS_GPIO_DEV_CONTEXT gpio_context2 = {
@@ -169,7 +169,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context2 = {
 	0, gpio_int_cb2, gpio_int_handlers2,0
 };
 
-static void gpio_int_cb2(uint32_t param)
+static void gpio_int_cb2(void *param)
 {
 	ss_gpio_int_cb(&gpio_context2, param);
 }
@@ -221,7 +221,7 @@ static void dfss_gpio_2_install(void)
 
 #if USE_DFSS_GPIO_8B3
 
-static void gpio_int_cb3(uint32_t param);
+static void gpio_int_cb3(void *param);
 static DEV_GPIO		gpio_3;
 static DEV_GPIO_HANDLER gpio_int_handlers3[8];
 static SS_GPIO_DEV_CONTEXT gpio_context3 = {
@@ -230,7 +230,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context3 = {
 	0, gpio_int_cb3, gpio_int_handlers3,0
 };
 
-static void gpio_int_cb3(uint32_t param)
+static void gpio_int_cb3(void *param)
 {
 	ss_gpio_int_cb(&gpio_context3, param);
 }
@@ -282,7 +282,7 @@ static void dfss_gpio_3_install(void)
 
 #if USE_DFSS_GPIO_4B0
 
-static void gpio_int_cb4(uint32_t param);
+static void gpio_int_cb4(void *param);
 static DEV_GPIO		gpio_4;
 static DEV_GPIO_HANDLER gpio_int_handlers4[4];
 static SS_GPIO_DEV_CONTEXT gpio_context4 = {
@@ -291,7 +291,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context4 = {
 	0, gpio_int_cb4, gpio_int_handlers4,0
 };
 
-static void gpio_int_cb4(uint32_t param)
+static void gpio_int_cb4(void *param)
 {
 	ss_gpio_int_cb(&gpio_context4, param);
 }
@@ -344,7 +344,7 @@ static void dfss_gpio_4_install(void)
 
 #if USE_DFSS_GPIO_4B1
 
-static void gpio_int_cb5(uint32_t param);
+static void gpio_int_cb5(void *param);
 static DEV_GPIO		gpio_5;
 static DEV_GPIO_HANDLER gpio_int_handlers5[4];
 static SS_GPIO_DEV_CONTEXT gpio_context5 = {
@@ -353,7 +353,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context5 = {
 	0, gpio_int_cb5, gpio_int_handlers5,0
 };
 
-static void gpio_int_cb5(uint32_t param)
+static void gpio_int_cb5(void *param)
 {
 	ss_gpio_int_cb(&gpio_context5, param);
 }
@@ -407,7 +407,7 @@ static void dfss_gpio_5_install(void)
 
 #if USE_DFSS_GPIO_4B2
 
-static void gpio_int_cb6(uint32_t param);
+static void gpio_int_cb6(void *param);
 static DEV_GPIO		gpio_6;
 static DEV_GPIO_HANDLER gpio_int_handlers6[4];
 static SS_GPIO_DEV_CONTEXT gpio_context6 = {
@@ -416,7 +416,7 @@ static SS_GPIO_DEV_CONTEXT gpio_context6 = {
 	0, gpio_int_cb6, gpio_int_handlers6,0
 };
 
-static void gpio_int_cb6(uint32_t param)
+static void gpio_int_cb6(void *param)
 {
 	ss_gpio_int_cb(&gpio_context6, param);
 }

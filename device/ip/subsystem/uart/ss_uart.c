@@ -221,13 +221,13 @@ int32_t ss_uart_open(SS_UART_DEV_CONTEXT *ctx, uint32_t baud)
 		return E_SYS;
 	}
 
-	callback.cb = ctx->tx_cb;
+	callback.cb = (IO_CB_FUNC)ctx->tx_cb;
 	io_uart_ioctl(dev_id, IO_SET_CB_TX, &callback);
 
-	callback.cb = ctx->rx_cb;
+	callback.cb = (IO_CB_FUNC)ctx->rx_cb;
 	io_uart_ioctl(dev_id, IO_SET_CB_RX, &callback);
 
-	callback.cb = ctx->err_cb;
+	callback.cb = (IO_CB_FUNC)ctx->err_cb;
 	io_uart_ioctl(dev_id, IO_SET_CB_ERR, &callback);
 
 	info->dps_format = dps_format_default;
@@ -240,8 +240,9 @@ int32_t ss_uart_open(SS_UART_DEV_CONTEXT *ctx, uint32_t baud)
 
 	ctx->flags = 0;
 
-
 	info->baudrate = baud;
+
+	int_enable(ctx->intno);
 
 	return ret;
 }
@@ -369,7 +370,7 @@ int32_t ss_uart_read(SS_UART_DEV_CONTEXT *ctx, void *data, uint32_t len)
 	return len;
 }
 
-void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param)
+void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_UART_INFO *info = ctx->info;
 
@@ -381,7 +382,7 @@ void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param)
 	}
 }
 
-void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param)
+void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_UART_INFO *info = ctx->info;
 
@@ -393,7 +394,7 @@ void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param)
 	}
 }
 
-void ss_uart_err_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param)
+void ss_uart_err_cb(SS_UART_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_UART_INFO *info = ctx->info;
 

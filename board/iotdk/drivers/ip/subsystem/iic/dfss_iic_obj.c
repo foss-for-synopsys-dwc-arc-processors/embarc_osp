@@ -38,9 +38,9 @@
 
 #if (USE_DFSS_IIC_0)
 
-static void iic_tx_cb0(uint32_t param);
-static void iic_rx_cb0(uint32_t param);
-static void iic_err_cb0(uint32_t param);
+static void iic_tx_cb0(void *param);
+static void iic_rx_cb0(void *param);
+static void iic_err_cb0(void *param);
 
 #define DFSS_IIC_0_TARADDR	(0)
 
@@ -59,17 +59,17 @@ static SS_IIC_MASTER_DEV_CONTEXT iic_master_context0 = {
 };
 
 
-static void iic_tx_cb0(uint32_t param)
+static void iic_tx_cb0(void *param)
 {
 	ss_iic_master_tx_cb(&iic_master_context0, param);
 }
 
-static void iic_rx_cb0(uint32_t param)
+static void iic_rx_cb0(void *param)
 {
 	ss_iic_master_rx_cb(&iic_master_context0, param);
 }
 
-static void iic_err_cb0(uint32_t param)
+static void iic_err_cb0(void *param)
 {
 	ss_iic_master_err_cb(&iic_master_context0, param);
 }
@@ -126,9 +126,9 @@ static void dfss_iic_0_install(void)
 /** @} end of name */
 
 #if (USE_DFSS_IIC_1)
-static void iic_tx_cb1(uint32_t param);
-static void iic_rx_cb1(uint32_t param);
-static void iic_err_cb1(uint32_t param);
+static void iic_tx_cb1(void *param);
+static void iic_rx_cb1(void *param);
+static void iic_err_cb1(void *param);
 
 #define DFSS_IIC_1_TARADDR	(0)
 
@@ -147,17 +147,17 @@ static SS_IIC_MASTER_DEV_CONTEXT iic_master_context1 = {
 };
 
 
-static void iic_tx_cb1(uint32_t param)
+static void iic_tx_cb1(void *param)
 {
 	ss_iic_master_tx_cb(&iic_master_context1, param);
 }
 
-static void iic_rx_cb1(uint32_t param)
+static void iic_rx_cb1(void *param)
 {
 	ss_iic_master_rx_cb(&iic_master_context1, param);
 }
 
-static void iic_err_cb1(uint32_t param)
+static void iic_err_cb1(void *param)
 {
 	ss_iic_master_err_cb(&iic_master_context1, param);
 }

@@ -43,9 +43,9 @@
 
 #if (USE_DFSS_UART_0)
 
-static void uart_tx_cb0(uint32_t param);
-static void uart_rx_cb0(uint32_t param);
-static void uart_err_cb0(uint32_t param);
+static void uart_tx_cb0(void *param);
+static void uart_rx_cb0(void *param);
+static void uart_err_cb0(void *param);
 
 static DEV_UART dfss_uart_0;
 
@@ -60,17 +60,17 @@ static SS_UART_DEV_CONTEXT uart_context0 = {
 	uart_err_cb0,
 };
 
-static void uart_tx_cb0(uint32_t param)
+static void uart_tx_cb0(void *param)
 {
 	ss_uart_tx_cb(&uart_context0, param);
 }
 
-static void uart_rx_cb0(uint32_t param)
+static void uart_rx_cb0(void *param)
 {
 	ss_uart_rx_cb(&uart_context0, param);
 }
 
-static void uart_err_cb0(uint32_t param)
+static void uart_err_cb0(void *param)
 {
 	ss_uart_err_cb(&uart_context0, param);
 }
@@ -126,9 +126,9 @@ static void dfss_uart_0_install(void)
 
 #if USE_DFSS_UART_1
 
-static void uart_tx_cb1(uint32_t param);
-static void uart_rx_cb1(uint32_t param);
-static void uart_err_cb1(uint32_t param);
+static void uart_tx_cb1(void *param);
+static void uart_rx_cb1(void *param);
+static void uart_err_cb1(void *param);
 
 static DEV_UART dfss_uart_1;
 
@@ -143,17 +143,17 @@ static SS_UART_DEV_CONTEXT uart_context1 = {
 	uart_err_cb1,
 };
 
-static void uart_tx_cb1(uint32_t param)
+static void uart_tx_cb1(void *param)
 {
 	ss_uart_tx_cb(&uart_context1, param);
 }
 
-static void uart_rx_cb1(uint32_t param)
+static void uart_rx_cb1(void *param)
 {
 	ss_uart_rx_cb(&uart_context1, param);
 }
 
-static void uart_err_cb1(uint32_t param)
+static void uart_err_cb1(void *param)
 {
 	ss_uart_err_cb(&uart_context1, param);
 }
@@ -207,9 +207,9 @@ static void dfss_uart_1_install(void)
 
 #if USE_DFSS_UART_2
 
-static void uart_tx_cb2(uint32_t param);
-static void uart_rx_cb2(uint32_t param);
-static void uart_err_cb2(uint32_t param);
+static void uart_tx_cb2(void *param);
+static void uart_rx_cb2(void *param);
+static void uart_err_cb2(void *param);
 
 static DEV_UART dfss_uart_2;
 
@@ -224,17 +224,17 @@ static SS_UART_DEV_CONTEXT uart_context2 = {
 	uart_err_cb2,
 };
 
-static void uart_tx_cb2(uint32_t param)
+static void uart_tx_cb2(void *param)
 {
 	ss_uart_tx_cb(&uart_context2, param);
 }
 
-static void uart_rx_cb2(uint32_t param)
+static void uart_rx_cb2(void *param)
 {
 	ss_uart_rx_cb(&uart_context2, param);
 }
 
-static void uart_err_cb2(uint32_t param)
+static void uart_err_cb2(void *param)
 {
 	ss_uart_err_cb(&uart_context2, param);
 }
@@ -288,9 +288,9 @@ static void dfss_uart_2_install(void)
 
 #if USE_DFSS_UART_3
 
-static void uart_tx_cb3(uint32_t param);
-static void uart_rx_cb3(uint32_t param);
-static void uart_err_cb3(uint32_t param);
+static void uart_tx_cb3(void *param);
+static void uart_rx_cb3(void *param);
+static void uart_err_cb3(void *param);
 
 static DEV_UART dfss_uart_3;
 
@@ -305,17 +305,17 @@ static SS_UART_DEV_CONTEXT uart_context3 = {
 	uart_err_cb3,
 };
 
-static void uart_tx_cb3(uint32_t param)
+static void uart_tx_cb3(void *param)
 {
 	ss_uart_tx_cb(&uart_context3, param);
 }
 
-static void uart_rx_cb3(uint32_t param)
+static void uart_rx_cb3(void *param)
 {
 	ss_uart_rx_cb(&uart_context3, param);
 }
 
-static void uart_err_cb3(uint32_t param)
+static void uart_err_cb3(void *param)
 {
 	ss_uart_err_cb(&uart_context3, param);
 }

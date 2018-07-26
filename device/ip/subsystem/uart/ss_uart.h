@@ -31,7 +31,6 @@
 #define _SS_UART_H_
 /* the wrapper of subsystem uart driver */
 
-#include "ip/ip_hal/inc/ioctl.h"
 #include "ip/ip_hal/inc/dev_uart.h"
 
 #define SS_UART_FLAG_TX	(1 << 0) /* interrupt tx */
@@ -45,13 +44,16 @@ typedef struct ss_uart_dev_context
 {
 	uint32_t reg_base;
 	uint8_t dev_id;
+
 	uint8_t	intno;
 	volatile uint16_t 	flags;
 
 	uint32_t bus_freq;
-	IO_CB_FUNC	tx_cb;
-	IO_CB_FUNC	rx_cb;
-	IO_CB_FUNC	err_cb;
+
+	DEV_CALLBACK tx_cb;
+	DEV_CALLBACK rx_cb;
+	DEV_CALLBACK err_cb;
+
 	DEV_UART_INFO *info;
 } SS_UART_DEV_CONTEXT;
 
@@ -60,8 +62,8 @@ extern int32_t ss_uart_close(SS_UART_DEV_CONTEXT *ctx);
 extern int32_t ss_uart_control(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param);
 extern int32_t ss_uart_write(SS_UART_DEV_CONTEXT *ctx, const void *data, uint32_t len);
 extern int32_t ss_uart_read(SS_UART_DEV_CONTEXT *ctx, void *data, uint32_t len);
-extern void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param);
-extern void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param);
-extern void ss_uart_err_cb(SS_UART_DEV_CONTEXT *ctx, uint32_t param);
+extern void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, void *param);
+extern void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, void *param);
+extern void ss_uart_err_cb(SS_UART_DEV_CONTEXT *ctx, void *param);
 
 #endif /* _SS_UART_H_ */

@@ -63,11 +63,11 @@ int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t mode, uint3
 		return E_SYS;
 	}
 
-	callback.cb = ctx->int_rx_cb;
+	callback.cb = (IO_CB_FUNC)ctx->int_rx_cb;
 	io_spi_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
-	callback.cb = ctx->int_tx_cb;
+	callback.cb = (IO_CB_FUNC)ctx->int_tx_cb;
 	io_spi_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
-	callback.cb = ctx->int_err_cb;
+	callback.cb = (IO_CB_FUNC)ctx->int_err_cb;
 	io_spi_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
 
 	io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_DFS, &info->dfs);
@@ -412,7 +412,7 @@ int32_t ss_spi_master_read(SS_SPI_MASTER_DEV_CONTEXT*ctx, void *data, uint32_t l
 	return 0;
 }
 
-void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
+void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_SPI_INFO *info = ctx->info;
 	DEV_SPI_TRANSFER *spi_xfer = &(info->xfer);
@@ -433,7 +433,7 @@ void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 
 }
 
-void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
+void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_SPI_INFO *info = ctx->info;
 
@@ -453,7 +453,7 @@ void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 	}
 }
 
-void ss_spi_master_err_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t param)
+void ss_spi_master_err_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_SPI_INFO *info = ctx->info;
 
