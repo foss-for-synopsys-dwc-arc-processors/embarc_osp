@@ -322,8 +322,6 @@ def build_result_combine(results,formal_result=None):
 	else:
 		return formal_result
 
-
-
 def build_makefiles_project(app_paths, config):
 	apps_results = {}
 	apps_status = []
@@ -349,7 +347,7 @@ def build_makefiles_project(app_paths, config):
 
 if __name__ == '__main__':
 
-	cwd_path = os.getcwd() # /.travis
+	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
 	make_config = get_config(sys.argv[1])
 	print make_config
