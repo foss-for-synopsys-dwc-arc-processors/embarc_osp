@@ -46,7 +46,7 @@
 
 /* System clock domains */
 #define BOARD_REF_CLK		(16000000U)
-#define BOARD_DFSS_CORE_CLK	(150000000U)		/* iotdk DFSS clock (including ARC EM) */
+#define BOARD_DFSS_CORE_CLK	(72000000U)		/* iotdk DFSS clock (including ARC EM) */
 #define BOARD_DFSS_IO_CLK	BOARD_REF_CLK		/* iotdk DFSS IO peripherals clock */
 #define BOARD_DFSS_AHB_CLK	BOARD_DFSS_CORE_CLK	/* iotdk top-level AHB peripherals clock as DFSS */
 #define BOARD_DFSS_APB_CLK	BOARD_REF_CLK		/* iotdk top-level APB peripherals clock as DFSS */
