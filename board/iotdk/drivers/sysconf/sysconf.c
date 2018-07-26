@@ -61,6 +61,7 @@ static const PLL_CONF pll_configuration[] = {
 	{300, PLL_CONF_VAL(4, 75, 0)}, /* 300 Mhz */
 	{25,  PLL_CONF_VAL(2, 25, 3)},  /* 25 Mhz */
 	{72,  PLL_CONF_VAL(8, 144, 2)}, /* 72 Mhz */
+	{144, PLL_CONF_VAL(8, 144, 1)}, /* 144 Mhz */
 	{180, PLL_CONF_VAL(8, 180, 1)}, /* 180 Mhz */
 };
 
