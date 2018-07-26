@@ -20,11 +20,11 @@ script:
 
 matrix:
   include:
-    - env: TOOLCHAIN="sphinx" BOARD="none" OSP_ROOT="none" GNU_VER="none"
+    - env: TOOLCHAIN="sphinx" OSP_ROOT="none" GNU_VER="none"
       os: linux
-    - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2017.09"
+    - env: TOOLCHAIN="gnu"  OSP_ROOT="." GNU_VER="2017.09"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03"
+    - env: TOOLCHAIN="gnu"  OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal/arc_feature"
       os: linux
       compiler: gcc

@@ -13,11 +13,11 @@ set -x
     bash apply_embARC_patch.sh || die
     cd .travis || die
 
-    [ $TOOLCHAIN != sphinx -o $BOARD != none -o $OSP_ROOT != none -o $GNU_VER != none ] || {
+    if [ $TOOLCHAIN == sphinx ] ; then
         bash deploy_doc.sh || die
-    }
-    [ $TOOLCHAIN == sphinx -o $BOARD != emsk -o $OSP_ROOT == none -o $GNU_VER == none ] || {
+    else
+        BUILD_OPTS="OSP_ROOT=${OSP_ROOT} TOOLCHAIN=${TOOLCHAIN} BOARD=${BOARD} BD_VER=${BD_VER} CUR_CORE=${CUR_CORE} GNU_VER=${GNU_VER} EXAMPLES=${EXAMPLES}"
+        python build.py ${BUILD_OPTS} || die
+    fi
 
-        python build.py "OSP_ROOT=${OSP_ROOT} TOOLCHAIN=${TOOLCHAIN} BOARD=${BOARD} BD_VER=${BD_VER} CUR_CORE=${CUR_CORE} GNU_VER=${GNU_VER}" || die
-    }
 }

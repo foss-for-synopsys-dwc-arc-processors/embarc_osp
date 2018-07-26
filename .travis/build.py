@@ -9,14 +9,14 @@ import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
 from colorama import init,Fore
-example = {"arc_feature_cache":"baremetal/arc_feature/cache",
-		"arc_feature_timer_interrupt":"baremetal/arc_feature/timer_interrupt",
-		"arc_feature_udma":"baremetal/arc_feature/udma",
-		"ble_hm1x":"baremetal/ble_hm1x",
-		"blinky":"baremetal/blinky",
-		"cxx":"baremetal/cxx",
-		"graphic_u8glib":"baremetal/graphic_u8glib",
-		"kernel":"freertos/kernel"
+example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
+		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
+		"arc_feature_udma":"example/baremetal/arc_feature/udma",
+		"ble_hm1x":"example/baremetal/ble_hm1x",
+		"blinky":"example/baremetal/blinky",
+		"cxx":"example/baremetal/cxx",
+		"graphic_u8glib":"example/baremetal/graphic_u8glib",
+		"kernel":"example/freertos/kernel"
 		}
 '''
 "bootloader":"baremetal/bootloader",
@@ -178,7 +178,10 @@ def build_makefile_project(app_path, config):
 	board = make_configs["BOARD"]
 	bd_ver = make_configs["BD_VER"]
 	cur_core = make_configs["CUR_CORE"]
-	gnu_ver = make_configs["GNU_VER"]
+	if "GNU_VER" in make_configs:
+		gnu_ver = make_configs["GNU_VER"]
+	else:
+		gnu_ver = "2017.09"
 
 	print os.getcwd()
 
@@ -202,7 +205,7 @@ def build_makefile_project(app_path, config):
 			sys.stdout.flush()
 
 			os.system("make " + " clean")
-			result["status"] = os.system("make" + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
+			result["status"] = os.system("make SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
 			result["app"] = app_path
 			result["conf"] = conf_key
 			result["toolchain"] = toolchain
@@ -328,14 +331,43 @@ def build_result_combine(results,formal_result=None):
 	else:
 		return formal_result
 
+def get_apps(path):
+	result = []
+	for root, dirs, files in os.walk(path):
+		dirs[:] = [d for d in dirs  if not d.startswith('.')]
+		for f in files:
+			if f in MakefileNames:
+				result.append(root)
+	return result
+
+def get_exampes_from_input(paths):
+	results = []
+	paths_list = paths.split(",")
+	for path in paths_list:
+		apps = get_apps(path)
+		results.extend(apps)
+	sorted(set(results), key=results.index)
+	return results
+
 def build_makefiles_project(app_paths, config):
 	apps_results = {}
 	apps_status = []
 	count = 0
 	app_count = 0
 	results_list = []
+	if "EXAMPLES" in config and config["EXAMPLES"]:
+		examples_path = config.pop("EXAMPLES")
+		app_paths_list = get_exampes_from_input(examples_path)
+		key_list = []
+		i = 0
+		if i < len(app_paths_list):
+			key_list.append(str(i))
+
+		app_paths = dict(zip(key_list, app_paths_list))
+
+
 	for (app, app_path) in app_paths.items():
-		app_path = os.path.join("example", app_path)
+		
 		status, results, build_count = build_project_configs(app_path, config)
 		apps_results[app_path] = results
 		apps_status.append(status)
