@@ -19,4 +19,5 @@ set -x
     sudo pip install recommonmark || die
     sudo pip install sphinx_rtd_theme || die
     pip install PrettyTable || die
+    pip install colorama || die
 }

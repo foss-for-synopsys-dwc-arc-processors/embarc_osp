@@ -8,7 +8,7 @@ import tarfile
 import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
-
+from colorama import init,Fore
 example = {"arc_feature_cache":"baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"baremetal/arc_feature/udma",
@@ -291,8 +291,14 @@ def show_results(results):
 	print "ALL results:"
 	print pt
 
+	init(autoreset=True)
 	for result in failed_results:
 		if len(result) > 0:
+			i = 0
+			if i < len(result):
+
+				result[i] = Fore.RED + result[i]
+				i += 1
 			failed_pt.add_row(result)
 
 	print "Failed result:"
