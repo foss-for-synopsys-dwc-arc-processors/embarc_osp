@@ -8,7 +8,7 @@ import tarfile
 import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
-from colorama import init,Fore
+from colorama import Fore
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"example/baremetal/arc_feature/udma",
@@ -107,6 +107,23 @@ def get_makefile(app_path):
 			return makefile_path
 	return None
 
+def is_embarc_makefile(app_path):
+	for makefile in MakefileNames:
+		makefile_path = os.path.join(app_path, makefile)
+		if os.path.exists(makefile_path) and os.path.isfile(makefile_path):
+			with open(makefile_path) as f:
+				embarc_root = False
+				appl = False
+				lines = f.read().splitlines()
+				for line in lines:
+					if "EMBARC_ROOT" in line:
+						embarc_root = True
+					if "APPL" in line:
+						appl = True
+					if embarc_root and appl:
+						return True
+				return False
+
 def get_config(config): # from input to get the config dict{"TOOLCHAIN":,"BOARD":,"BD_VER":,"CUR_CORE":}
 	make_configs = dict()
 	if type(config) == list:
@@ -198,22 +215,30 @@ def build_makefile_project(app_path, config):
 	if tcf_path != None:
 		makefile_found = get_makefile(app_path)
 		if makefile_found != None:
-			isMakeProject = True
-			# Record current folder
-			cur_dir = os.getcwd()
-			# Change to application makefile folder
-			os.chdir(app_path)
-			# Build application, clean it first
-			print "Build Application {} with Configuration {}".format(app_path, config)
-			sys.stdout.flush()
+			if is_embarc_makefile(makefile_found):
+			    isMakeProject = True
+			    # Record current folder
+			    cur_dir = os.getcwd()
+			    # Change to application makefile folder
+			    os.chdir(app_path)
+			    # Build application, clean it first
+			    print "Build Application {} with Configuration {}".format(app_path, config)
+			    sys.stdout.flush()
 
-			os.system("make " + " clean")
-			result["status"] = os.system("make SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
-			result["app"] = app_path
-			result["conf"] = conf_key
-			result["toolchain"] = toolchain
-			result["gnu_ver"] = gnu_ver
-			os.chdir(cur_dir)
+			    os.system("make " + " clean")
+			    result["status"] = os.system("make SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
+			    result["app"] = app_path
+			    result["conf"] = conf_key
+			    result["toolchain"] = toolchain
+			    result["gnu_ver"] = gnu_ver
+			    os.chdir(cur_dir)
+			else:
+				result["status"] = 1
+				result["app"] = Fore.RED + app_path
+				result["conf"] = conf_key
+				result["toolchain"] = toolchain
+				result["gnu_ver"] = gnu_ver
+
 	else:
 		isMakeProject = False
 	return isMakeProject, result
@@ -297,7 +322,7 @@ def show_results(results):
 	print "ALL results:"
 	print pt
 
-	init(autoreset=True)
+	
 	for result in failed_results:
 		if len(result) > 0:
 			list_key = range(len(result))
@@ -416,7 +441,6 @@ def reference_result(results,gnu_ver):
 
 	
 if __name__ == '__main__':
-
 	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
 	make_config = get_config(sys.argv[1:])
