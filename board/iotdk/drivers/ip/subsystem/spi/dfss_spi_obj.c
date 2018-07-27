@@ -102,7 +102,6 @@ static int32_t dfss_spi_0_read(void *data, uint32_t len)
 	return ss_spi_master_read(&spi_master_context0, data, len);
 }
 
-
 static void dfss_spi_0_install(void)
 {
 	DEV_SPI *dfss_spi_ptr = &dfss_spi_0;

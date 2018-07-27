@@ -77,4 +77,3 @@ extern void dfss_spi_all_install(void);
 #endif
 
 #endif /* _DFSS_SPI_OBJ_H_ */
-/** @} end of group BOARD_IOTDK_DRV_DFSS_SPI_OBJ */

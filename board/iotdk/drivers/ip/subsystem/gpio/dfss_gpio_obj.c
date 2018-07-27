@@ -31,7 +31,10 @@
 #include "embARC_error.h"
 
 #include "iotdk_hardware.h"
+
+#include "dfss_gpio_obj.h"
 #include "ip/subsystem/gpio/ss_gpio.h"
+
 
 
 #if (USE_DFSS_GPIO_8B0)

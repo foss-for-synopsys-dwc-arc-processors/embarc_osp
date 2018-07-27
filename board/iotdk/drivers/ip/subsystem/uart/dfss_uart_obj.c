@@ -367,7 +367,6 @@ static void dfss_uart_3_install(void)
 
 #endif /* USE_DFSS_UART_3 */
 
-/** get one DFSS device structure */
 DEV_UART_PTR uart_get_dev(int32_t uart_id)
 {
 	static uint32_t install_flag = 0;

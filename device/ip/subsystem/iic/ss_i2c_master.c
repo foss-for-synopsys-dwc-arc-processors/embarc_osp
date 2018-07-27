@@ -429,7 +429,6 @@ int32_t ss_iic_master_read(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uin
 	return len;
 }
 
-
 void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_IIC_INFO *info = ctx->info;

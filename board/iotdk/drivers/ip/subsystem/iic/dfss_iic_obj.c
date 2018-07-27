@@ -74,33 +74,32 @@ static void iic_err_cb0(void *param)
 	ss_iic_master_err_cb(&iic_master_context0, param);
 }
 
-/** DFSS IIC 0 open */
 static int32_t dfss_iic_0_open(uint32_t mode, uint32_t param)
 {
 	(void)mode;
 	return ss_iic_master_open(&iic_master_context0, param);
 }
-/** DFSS IIC 0 close */
+
 static int32_t dfss_iic_0_close(void)
 {
 	return ss_iic_master_close(&iic_master_context0);
 }
-/** DFSS IIC 0 control */
+
 static int32_t dfss_iic_0_control(uint32_t ctrl_cmd, void *param)
 {
 	return ss_iic_master_control(&iic_master_context0, ctrl_cmd, param);
 }
-/** DFSS IIC 0 write */
+
 static int32_t dfss_iic_0_write(const void *data, uint32_t len)
 {
 	return ss_iic_master_write(&iic_master_context0, data, len);
 }
-/** DFSS IIC 0 read */
+
 static int32_t dfss_iic_0_read(void *data, uint32_t len)
 {
 	return ss_iic_master_read(&iic_master_context0, data, len);
 }
-/** install DFSS IIC 0 to system */
+
 static void dfss_iic_0_install(void)
 {
 	DEV_IIC *dfss_iic_ptr = &dfss_iic_0;
@@ -123,7 +122,6 @@ static void dfss_iic_0_install(void)
 
 }
 #endif /* USE_DFSS_IIC_0 */
-/** @} end of name */
 
 #if (USE_DFSS_IIC_1)
 static void iic_tx_cb1(void *param);
@@ -211,7 +209,6 @@ static void dfss_iic_1_install(void)
 }
 #endif /* USE_DFSS_IIC_1 */
 
-/** get one designware device structure */
 DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 {
 	static uint32_t install_flag = 0;
