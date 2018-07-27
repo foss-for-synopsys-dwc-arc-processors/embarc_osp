@@ -42,13 +42,14 @@ example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
 default_root = "."
+cache_folder = "/home/travis/.cache/result"
 
 def download_file(url, path):
     try:
     	urllib.urlretrieve(url, path)
     except Exception:
     	
-    	print "This file from {} can't be download".format(url)
+    	print "This file from %s can't be download"%(url)
     	sys.exit(1)
     	
 def download_gnu(version="2017.09", path=None):
@@ -108,8 +109,14 @@ def get_makefile(app_path):
 
 def get_config(config): # from input to get the config dict{"TOOLCHAIN":,"BOARD":,"BD_VER":,"CUR_CORE":}
 	make_configs = dict()
-	for make_config in config.split(" "):
+	if type(config) == list:
+		pass
+	else:
+		config = config.split(" ")
+	for make_config in config:
 		[config_name,value] = make_config.split("=")
+		if value == "":
+			value = None
 		make_configs[config_name] = value
 	return make_configs
 
@@ -178,11 +185,7 @@ def build_makefile_project(app_path, config):
 	board = make_configs["BOARD"]
 	bd_ver = make_configs["BD_VER"]
 	cur_core = make_configs["CUR_CORE"]
-	if "GNU_VER" in make_configs:
-		gnu_ver = make_configs["GNU_VER"]
-	else:
-		gnu_ver = "2017.09"
-
+	gnu_ver = make_configs["GNU_VER"]
 	print os.getcwd()
 
 	conf_key = board + "_" + bd_ver + "_" + cur_core
@@ -230,23 +233,23 @@ def build_project_configs(app_path, config):
 	toolchain = "gnu"
 	build_count = 0
 	status = True
-	if "GNU_VER" in make_configs:
+	if "GNU_VER" in make_configs and make_configs["GNU_VER"] is not None:
 		gnu_ver = make_configs["GNU_VER"]
 	add_gnu(gnu_ver)
 	os.chdir(work_path)
-	if "TOOLCHAIN" in make_configs:
+	if "TOOLCHAIN" in make_configs and make_configs["TOOLCHAIN"] is not None:
 		toolchain = make_configs["TOOLCHAIN"]
-	if "OSP_ROOT" in make_configs:
+	if "OSP_ROOT" in make_configs and make_configs["OSP_ROOT"] is not None:
 		osp_root = make_configs["OSP_ROOT"]
-	if "BOARD" in make_configs:
+	if "BOARD" in make_configs and make_configs["BOARD"] is not None:
 		board_input = make_configs["BOARD"]
 	boards = get_boards(osp_root, board_input)
-	if "BD_VER" in make_configs: 
+	if "BD_VER" in make_configs and make_configs["BD_VER"] is not None: 
 		bd_ver_input = make_configs["BD_VER"]
 	for board in boards:
 		version = get_board_version(osp_root, board, bd_version=bd_ver_input)
 		bd_vers[board] = version
-	if "CUR_CORE" in make_configs:
+	if "CUR_CORE" in make_configs and make_configs["CUR_CORE"] is not None:
 		cur_core_input = make_configs["CUR_CORE"]
 	for (board, versions) in bd_vers.items():
 		cur_cors[board] = dict()
@@ -297,11 +300,10 @@ def show_results(results):
 	init(autoreset=True)
 	for result in failed_results:
 		if len(result) > 0:
-			i = 0
-			if i < len(result):
+			list_key = range(len(result))
+			for i in list_key:
 
 				result[i] = Fore.RED + result[i]
-				i += 1
 			failed_pt.add_row(result)
 
 	print "Failed result:"
@@ -349,7 +351,7 @@ def get_exampes_from_input(paths):
 	sorted(set(results), key=results.index)
 	return results
 
-def build_makefiles_project(app_paths, config):
+def build_makefiles_project(config):
 	apps_results = {}
 	apps_status = []
 	count = 0
@@ -358,12 +360,10 @@ def build_makefiles_project(app_paths, config):
 	if "EXAMPLES" in config and config["EXAMPLES"]:
 		examples_path = config.pop("EXAMPLES")
 		app_paths_list = get_exampes_from_input(examples_path)
-		key_list = []
-		i = 0
-		if i < len(app_paths_list):
-			key_list.append(str(i))
-
+		key_list = range(len(app_paths_list))
 		app_paths = dict(zip(key_list, app_paths_list))
+	else:
+		app_paths = example
 
 
 	for (app, app_path) in app_paths.items():
@@ -373,27 +373,64 @@ def build_makefiles_project(app_paths, config):
 		apps_status.append(status)
 		count += build_count
 		app_count += 1
+	gnu_ver = config["GNU_VER"]
+
+	cmp_result = reference_result(apps_results, gnu_ver)
+
 	print "There are {} projects, and they are compiled for {} times".format(app_count, count)
 	for (app_path, result) in apps_results.items():
 		print "{} : ".format(app_path)
+
 		formal_result = build_result_combine(result)
 		results_list.extend(formal_result)
 
 	show_results(results_list)
 	sys.stdout.flush()
-	return apps_status
+	# return apps_status
+	return cmp_result
 
+def reference_result(results,gnu_ver):
+	work_path = os.getcwd()
+	results_dict = dict()
+	results_dict[gnu_ver] = results
+	reference_result = None
+	cmp_result = None
+	
+	try:
+		os.chdir(cache_folder)
+		json_file = gnu_ver + ".json"
+		if json_file not in os.listdir(os.getcwd()):
+			with open(json_file, "w") as f:
+				json.dump(results_dict, f)
+				reference_result = results_dict
+			cmp_result = 0
+		else:
+			with open(json_file, "r") as f:
+				reference_result = json.load(f)
+				print "reference_result: "
+				print reference_result
+				cmp_result = cmp(reference_result, results)
+		return cmp_result
+	except Exception:
+		print "Can not find the cache file"
+
+	
 if __name__ == '__main__':
 
 	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
-	make_config = get_config(sys.argv[1])
+	make_config = get_config(sys.argv[1:])
 	print make_config
+	sys.stdout.flush()
 	os.chdir(osp_path)
-	apps_status = build_makefiles_project(example, make_config)
+	if not os.path.exists(cache_folder):
+		os.makedirs(cache_folder)
+	else:
+		print "cache files"
+		print os.listdir(cache_folder)
+	apps_status = build_makefiles_project(make_config)
 	os.chdir(cwd_path)
-	for status in apps_status:
-		if status is False:
-			print "build failed"
-			sys.exit(1)
-	sys.exit(0)
+	if apps_status == 0:
+		sys.exit(0)
+	else:
+		sys.exit(0)
