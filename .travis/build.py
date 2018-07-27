@@ -107,22 +107,19 @@ def get_makefile(app_path):
 			return makefile_path
 	return None
 
-def is_embarc_makefile(app_path):
-	for makefile in MakefileNames:
-		makefile_path = os.path.join(app_path, makefile)
-		if os.path.exists(makefile_path) and os.path.isfile(makefile_path):
-			with open(makefile_path) as f:
-				embarc_root = False
-				appl = False
-				lines = f.read().splitlines()
-				for line in lines:
-					if "EMBARC_ROOT" in line:
-						embarc_root = True
-					if "APPL" in line:
-						appl = True
-					if embarc_root and appl:
-						return True
-				return False
+def is_embarc_makefile(makefile_path):
+	with open(makefile_path) as f:
+		embarc_root = False
+		appl = False
+		lines = f.read().splitlines()
+		for line in lines:
+			if "EMBARC_ROOT" in line:
+				embarc_root = True
+			if "APPL" in line:
+				appl = True
+			if embarc_root and appl:
+				return True
+		return False
 
 def get_config(config): # from input to get the config dict{"TOOLCHAIN":,"BOARD":,"BD_VER":,"CUR_CORE":}
 	make_configs = dict()
@@ -215,7 +212,7 @@ def build_makefile_project(app_path, config):
 	if tcf_path != None:
 		makefile_found = get_makefile(app_path)
 		if makefile_found != None:
-			if is_embarc_makefile(makefile_found):
+			if is_embarc_makefile(app_path):
 			    isMakeProject = True
 			    # Record current folder
 			    cur_dir = os.getcwd()
@@ -432,8 +429,6 @@ def reference_result(results,gnu_ver):
 		else:
 			with open(json_file, "r") as f:
 				reference_result = json.load(f)
-				print "reference_result: "
-				print reference_result
 				cmp_result = cmp(reference_result, results)
 		return cmp_result
 	except Exception:
