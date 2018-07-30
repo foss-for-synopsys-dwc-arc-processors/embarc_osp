@@ -21,6 +21,9 @@ ENTRY(_start)
 SECTIONS {
 
 	GROUP : {
+		.image_head: {
+			. = . + IMAGE_HEAD_SIZE;
+		}
 		.init_bootstrap:{
 			*(.init_vector)
 			*(.init_bootstrap)

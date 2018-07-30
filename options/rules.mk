@@ -85,7 +85,7 @@ vpath %.cpp $(ALL_CXXSRC_DIRS)
 vpath %.S $(ALL_ASMSRC_DIRS)
 vpath %.s $(ALL_ASMSRC_DIRS)
 
-.PHONY : all build dump dasm bin hex size clean boardclean distclean run gui cfg opt info spopt infodirs infosrcs infoobjs help
+.PHONY : all build dump dasm bin hex size clean boardclean distclean run gui cfg opt info spopt infodirs infosrcs infoobjs help mcuboot
 
 all : $(APPL_FULL_NAME).elf
 
@@ -249,6 +249,9 @@ run : $(APPL_FULL_NAME).elf
 gui : $(APPL_FULL_NAME).elf
 	@$(ECHO) "Download & Debug $<"
 	$(DBG) $(DBG_HW_FLAGS) $< $(CMD_LINE)
+
+mcuboot : $(APPL_FULL_NAME).bin $(LIB_MCUBOOT).bin
+	$(SIGN) $(SIGN_OPT)
 
 ifeq ($(BOARD), nsim)
 ifeq ($(DBG), arc-elf32-gdb)
