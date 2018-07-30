@@ -333,7 +333,7 @@ def show_results(results):
 				result[i] = Fore.RED + result[i]
 				
 			failed_pt.add_row(result)
-			print(result)
+			
 
 	print Fore.RED + "Failed result:"
 	print failed_pt
