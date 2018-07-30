@@ -8,7 +8,7 @@ import tarfile
 import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
-from colorama import Fore
+from colorama import init,Fore
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"example/baremetal/arc_feature/udma",
@@ -211,8 +211,9 @@ def build_makefile_project(app_path, config):
 	tcf_path = tcf_found[tcf_name]
 	if tcf_path != None:
 		makefile_found = get_makefile(app_path)
+		
 		if makefile_found != None:
-			if is_embarc_makefile(app_path):
+			if is_embarc_makefile(makefile_found):
 			    isMakeProject = True
 			    # Record current folder
 			    cur_dir = os.getcwd()
@@ -231,8 +232,8 @@ def build_makefile_project(app_path, config):
 			    os.chdir(cur_dir)
 			else:
 				result["status"] = 1
-				result["app"] = Fore.RED + app_path
-				result["conf"] = conf_key
+				result["app"] = app_path
+				result["conf"] = Fore.YELLOW + conf_key
 				result["toolchain"] = toolchain
 				result["gnu_ver"] = gnu_ver
 
@@ -307,6 +308,10 @@ def show_results(results):
 		status = result.pop("status")
 		if status != 0:
 			result["PASS"] = "NO"
+			t = result["conf"]
+			t.replace("\n", "\n" + Fore.RED)
+			t = Fore.RED + t
+			result["conf"] = t
 			failed_results.append([v for (k, v) in result.items()])
 
 		else:
@@ -326,9 +331,11 @@ def show_results(results):
 			for i in list_key:
 
 				result[i] = Fore.RED + result[i]
+				
 			failed_pt.add_row(result)
+			print(result)
 
-	print "Failed result:"
+	print Fore.RED + "Failed result:"
 	print failed_pt
 
 def build_result_combine(results,formal_result=None):
@@ -342,7 +349,7 @@ def build_result_combine(results,formal_result=None):
 	for result in results[1:]:
 		conf = result.pop("conf")
 		if cmp(first_result, result) == 0:
-			t = t + "\n" + conf
+			t = t + "\n"  + conf
 		else:
 			result["conf"] = conf
 			other_results.append(result)
@@ -436,16 +443,16 @@ def reference_result(results,gnu_ver):
 
 	
 if __name__ == '__main__':
+
 	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
 	make_config = get_config(sys.argv[1:])
-	print make_config
 	sys.stdout.flush()
 	os.chdir(osp_path)
 	if not os.path.exists(cache_folder):
 		os.makedirs(cache_folder)
 	else:
-		print "cache files"
+		print Fore.BLUE + "cache files"
 		print os.listdir(cache_folder)
 	apps_status = build_makefiles_project(make_config)
 	os.chdir(cwd_path)
