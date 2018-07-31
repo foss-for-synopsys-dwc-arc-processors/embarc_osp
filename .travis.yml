@@ -1,15 +1,17 @@
 language: python
+python: 2.7
 
 sudo: required
 dist: trusty
 
+cache:
+  pip: true
+  directories:
+    - $HOME/.cache/result
 # Blacklist
 branches:
   except:
     - gh-pages
-
-python:
-  - "3.6"
 
 before_install:
   - bash .travis/before_install.sh
@@ -22,32 +24,11 @@ script:
 
 matrix:
   include:
-    - env: TOOLCHAIN="sphinx" BOARD="none" BD_VER="none" CUR_CORE="none"
+    - env: TOOLCHAIN="sphinx" OSP_ROOT="none" GNU_VER="none"
       os: linux
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" CUR_CORE="arcem4"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" CUR_CORE="arcem6"
+    - env: TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2017.09"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" CUR_CORE="arcem7d"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" CUR_CORE="arcem9d"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" CUR_CORE="arcem11d"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" CUR_CORE="arcem7d"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" CUR_CORE="arcem9d"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" CUR_CORE="arcem11d"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="hsdk" BD_VER="10" CUR_CORE="archs38_c0"
+    - env: TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal/arc_feature"
       os: linux
       compiler: gcc
