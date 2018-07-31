@@ -32,10 +32,22 @@ matrix:
     - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos"
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos"
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos"
+      os: linux
+      compiler: gcc
+    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos"
       os: linux
       compiler: gcc
     - env: TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal/arc_feature"
