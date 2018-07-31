@@ -38,6 +38,7 @@
 #define _DW_IIC_H_
 
 #include "dev_iic.h"
+#include "arc_exception.h"
 
 /**
  * If this header file is included,
