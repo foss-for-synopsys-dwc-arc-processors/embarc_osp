@@ -224,7 +224,7 @@ def build_makefile_project(app_path, config):
 			    sys.stdout.flush()
 
 			    os.system("make " + " clean")
-			    result["status"] = os.system("make SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
+			    result["status"] = os.system("make -j SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
 			    result["app"] = app_path
 			    result["conf"] = conf_key
 			    result["toolchain"] = toolchain
