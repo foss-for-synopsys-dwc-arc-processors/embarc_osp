@@ -11,4 +11,4 @@
 ##
 CORE ?= em11d_dfss
 
-ONCHIP_IP_LIST ?= designware/spi designware/uart designware/gpio designware/sdio
+ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio designware/sdio subsystem/spi

@@ -27,36 +27,54 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef _DW_SPI_OBJ_H_
-#define _DW_SPI_OBJ_H_
+#ifndef _DFSS_SPI_OBJ_H_
+#define _DFSS_SPI_OBJ_H_
 
-#include "dw_spi.h"
+#include "io_config.h"
+#include "ip/ip_hal/inc/dev_spi.h"
 
-#define DW_SPI_NUM		(2)	/*!< DesignWare SPI valid number */
 
+#define DFSS_SPI_NUM		(4)	/*!< DFSS SPI valid number */
 
-/**
- * Designware SPI Object ID Macros
- */
-#define DW_SPI_BASE_ID	0
-#define DW_SPI_0_ID		0	/*!< SPI 0 id macro (master node) */
-#define DW_SPI_1_ID		1	/*!< SPI 1 id macro (slave node) */
+#define DFSS_SPI_BASE_ID	10
+#define DFSS_SPI_0_ID		10	/*!< SPI 0 id macro (io_spi_mst0) */
+#define DFSS_SPI_1_ID		11	/*!< SPI 1 id macro (io_spi_mst1) */
+#define DFSS_SPI_2_ID		12	/*!< SPI 2 id macro (io_spi_mst2) */
+#define DFSS_SPI_3_ID		13	/*!< SPI 3 id macro (io_spi_slv0) */
 
-/**
- * Designware SPI Object Control Macros
- */
-#define USE_DW_SPI_0		1	/*!< enable use designware SPI 0 */
-#define USE_DW_SPI_1		0	/*!< enable use designware SPI 1 */
+#ifdef IO_SPI_MST0_PRESENT
+#define USE_DFSS_SPI_0		1	/*!< enable use DFSS SPI 0 */
+#else
+#define USE_DFSS_SPI_0		0	/*!< disable use DFSS SPI 0 */
+#endif
+
+#ifdef IO_SPI_MST1_PRESENT
+#define USE_DFSS_SPI_1		1	/*!< enable use DFSS SPI 1 */
+#else
+#define USE_DFSS_SPI_1		0	/*!< disable use DFSS SPI 1 */
+#endif
+
+#ifdef IO_SPI_MST2_PRESENT
+#define USE_DFSS_SPI_2		1	/*!< enable use DFSS SPI 2 */
+#else
+#define USE_DFSS_SPI_2		0	/*!< disable use DFSS SPI 2 */
+#endif
+
+#ifdef IO_SPI_SLV0_PRESENT
+#define USE_DFSS_SPI_3		1	/*!< enable use DFSS SPI 3 */
+#else
+#define USE_DFSS_SPI_3		0	/*!< disable use DFSS SPI 3 */
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern DEV_SPI_PTR dw_spi_get_dev(int32_t);
-extern void dw_spi_all_install(void);
+extern DEV_SPI_PTR dfss_spi_get_dev(int32_t);
+extern void dfss_spi_all_install(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _DW_SPI_OBJ_H_ */
+#endif /* _DFSS_SPI_OBJ_H_ */

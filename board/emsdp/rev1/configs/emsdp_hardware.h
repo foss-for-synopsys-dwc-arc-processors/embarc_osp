@@ -31,6 +31,7 @@
 #define __EMSDP_HARDWARE_H__
 
 #include "arc_feature_config.h"
+#include "apexextensions.h"
 
 /**
  * Clock Definitions
@@ -39,6 +40,7 @@
 
 #define EMSDP_UART_REF_CLOCK			(100000000U)
 #define EMSDP_AUDIO_REF_CLOCK			(24576000U)
+#define EMSDP_SPI_REF_CLOCK				(20000000U)
 
 #if (defined(FAST_UART) )
 	#define EMSDP_UART_BAUDRATE		(6250000U)
