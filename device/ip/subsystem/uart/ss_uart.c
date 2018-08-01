@@ -277,7 +277,12 @@ int32_t ss_uart_control(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param
 		case UART_CMD_SET_DPS_FORMAT:
 			return set_dps(dev_id, (UART_DPS_FORMAT *)param);
 		case UART_CMD_GET_RXAVAIL:
-			*((uint32_t *)param) = 1;
+			if (REG_READ(UART_LSR) & 0x1) {
+				/* at least one byte */
+				*((uint32_t *)param) = 1;
+			} else {
+				*((uint32_t *)param) = 0;
+			}
 			return  E_OK;
 		case UART_CMD_SET_RXCB:
 			info->uart_cbs.rx_cb = param;
@@ -352,12 +357,12 @@ int32_t ss_uart_read(SS_UART_DEV_CONTEXT *ctx, void *data, uint32_t len)
 	if (arc_locked() || arc_int_active()) {
 		io_uart_poll_read(ctx, (uint8_t *) data, &len);
 	} else {
-		ctx->flags = SS_UART_FLAG_BUSY;
+		ctx->flags = SS_UART_FLAG_RX;
 
 		io_uart_read(dev_id, (uint8_t *) data, &len);
 
 		/* wait finished: uart int enable & no cpu lock */
-		while (ctx->flags & SS_UART_FLAG_BUSY);
+		while (ctx->flags & SS_UART_FLAG_RX);
 
 		if (ctx->flags & SS_UART_FLAG_ERROR) {
 			ctx->flags = 0;
@@ -398,7 +403,7 @@ void ss_uart_err_cb(SS_UART_DEV_CONTEXT *ctx, void *param)
 {
 	DEV_UART_INFO *info = ctx->info;
 
-	ctx->flags |= SS_UART_FLAG_ERROR;
+	ctx->flags = SS_UART_FLAG_ERROR;
 
 	if (info->uart_cbs.err_cb) {
 		info->uart_cbs.err_cb(info);
