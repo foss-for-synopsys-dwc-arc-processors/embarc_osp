@@ -37,6 +37,7 @@
 #include "drivers/ip/designware/uart/dw_uart_obj.h"
 #include "drivers/ip/designware/gpio/dw_gpio_obj.h"
 #include "drivers/ip/designware/sdio/dw_sdio_obj.h"
+#include "drivers/ip/subsystem/spi/dfss_spi_obj.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/pmwifi/pmwifi.h"
 
@@ -51,7 +52,7 @@
 #define BOARD_CONSOLE_UART_BAUD			UART_BAUDRATE_115200
 
 #ifndef BOARD_SPI_FREQ
-#define BOARD_SPI_FREQ					(20000000)
+#define BOARD_SPI_FREQ					EMSDP_SPI_REF_CLOCK
 #endif
 #define BOARD_RSI_SPI_ID				DW_SPI_0_ID
 #define BOARD_RSI_SPI_CS				0

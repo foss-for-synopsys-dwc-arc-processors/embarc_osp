@@ -219,7 +219,7 @@ static void dw_spi_1_install(void)
 #endif /* USE_DW_SPI_1 */
 
 /** get one designware device structure */
-DEV_SPI_PTR spi_get_dev(int32_t spi_id)
+DEV_SPI_PTR dw_spi_get_dev(int32_t spi_id)
 {
 	static uint32_t install_flag = 0;
 
