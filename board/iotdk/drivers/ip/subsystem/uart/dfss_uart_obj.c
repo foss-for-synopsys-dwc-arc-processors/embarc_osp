@@ -261,7 +261,7 @@ static int32_t dfss_uart_2_write(const void *data, uint32_t len)
 
 static int32_t dfss_uart_2_read(void *data, uint32_t len)
 {
-	return ss_uart_read(&uart_context0, data, len);
+	return ss_uart_read(&uart_context2, data, len);
 }
 
 static void dfss_uart_2_install(void)
