@@ -49,6 +49,7 @@
 #include "drivers/ip/subsystem/uart/dfss_uart_obj.h"
 #include "drivers/ip/subsystem/spi/dfss_spi_obj.h"
 #include "drivers/ip/subsystem/gpio/dfss_gpio_obj.h"
+#include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/sysconf/sysconf.h"
 #include "common/iotdk_timer.h"
