@@ -12,7 +12,7 @@ CUR_CORE ?= arcem9d
 ONCHIP_IP_LIST		?= subsystem/gpio \
 			subsystem/uart \
 			subsystem/spi \
-			sybsystem/iic \
+			subsystem/iic \
 			designware/i2s \
 			designware/sdio
 # dfss/dmac \
