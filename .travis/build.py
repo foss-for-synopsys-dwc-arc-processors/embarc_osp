@@ -486,12 +486,22 @@ def reference_results(results, gnu_ver, update=None):
 				cmp_result = cmp(reference_result, results_dict)
 				if cmp_result != 0:
 					reference_result_list = reference_result[gnu_ver]
-					cmp_list = 0
-					for ref in reference_result_list:
-						if ref in results:
-							cmp_list += 1
-					if cmp_list != len(reference_result_list):
+					if len(reference_result_list) == len(results):
 						cmp_item_reference = 1
+					elif len(reference_result_list) < len(results):
+						cmp_list = 0
+						for ref in reference_result_list:
+							if ref in results:
+								cmp_list += 1
+						if cmp_list != len(reference_result_list):
+							cmp_item_reference = 1
+					else:
+						cmp_list = 0
+						for result in results:
+							if reuslt in reference_result_list:
+								cmp_list += 1
+						if cmp_list != len(results):
+							cmp_item_reference = 1
 
 		return cmp_result, cmp_item_reference
 		
