@@ -137,7 +137,7 @@ static void spi_err_cb1(void *param);
 static DEV_SPI dfss_spi_1;
 
 static SS_SPI_MASTER_DEV_CONTEXT spi_master_context1 = {
-	AR_IO_SPI_MST1_CTRLR1,
+	AR_IO_SPI_MST1_CTRLR0,
 	DFSS_SPI_1_ID,
 	IO_SPI_MST1_INT_RX_AVAIL,
 	IO_SPI_MST1_INT_TX_REQ,
