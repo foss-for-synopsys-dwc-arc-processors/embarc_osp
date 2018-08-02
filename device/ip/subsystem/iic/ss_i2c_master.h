@@ -33,11 +33,11 @@
 
 #include "ip/ip_hal/inc/dev_iic.h"
 
-#define SS_I2C_MASTER_FLAG_TX_READY	(1 << 0) /* interrupt tx */
-#define SS_I2C_MASTER_FLAG_RX_READY	(1 << 1) /* interrupt rx */
-#define SS_I2C_MASTER_FLAG_BUSY		(1 << 2)
-#define SS_I2C_MASTER_FLAG_TX_RX	(1 << 3) /* both tx and rx */
-#define SS_I2C_MASTER_FLAG_ERROR	(1 << 4)
+#define SS_IIC_MASTER_FLAG_TX		(1 << 0) /* interrupt tx */
+#define SS_IIC_MASTER_FLAG_RX		(1 << 1) /* interrupt rx */
+#define SS_IIC_MASTER_FLAG_BUSY		(1 << 2)
+#define SS_IIC_MASTER_FLAG_TX_RX	(1 << 3) /* both tx and rx */
+#define SS_IIC_MASTER_FLAG_ERROR	(1 << 4)
 
 #define IC_TX_RX_FIFO_SIZE		16	/* TX/RX FIFO size in hardware */
 
@@ -46,11 +46,11 @@
 #define IC_STATUS_RFNE			(0x08)	/* (1 << 3) */
 
 /* interrupt callback routines select macros definitions */
-#define DFSS_IIC_RDY_SND		(0x1)	/* ready to send callback */
-#define DFSS_IIC_RDY_RCV		(0x2)	/* ready to receive callback */
+#define SS_IIC_MASTER_RDY_SND		(0x1)	/* ready to send callback */
+#define SS_IIC_MASTER_RDY_RCV		(0x2)	/* ready to receive callback */
 
 /** check expressions used in DFSS IIC driver implementation */
-#define DFSS_IIC_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define SS_IIC_MASTER_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 typedef struct ss_iic_master_dev_context
 {

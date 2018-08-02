@@ -35,61 +35,53 @@
 
 #include "ip/subsystem/iic/i2c_master.h"
 #include "ip/subsystem/iic/ss_i2c_master.h"
-#include "ip/subsystem/ii2c/i2c_priv.h"
+#include "ip/subsystem/iic/i2c_priv.h"
 
 
-Inline void ss_iic_master_write_reg(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t reg, uint32_t val)
-{
-	_arc_aux_write(ctx->reg_base + reg, val);
-}
-
-Inline uint32_t ss_iic_master_read_reg(uint32_t dev_id, uint32_t reg)
-{
-	return (_arc_aux_read(ctx->reg_base + reg));
-}
+#define REG_READ(x) 		_arc_aux_read((ctx->reg_base + x))
+#define REG_WRITE(x, y) 	_arc_aux_write((ctx->reg_base + x), y)
 
 
 /** test whether iic is ready to write, 1 ready, 0 not ready */
 Inline int32_t ss_iic_master_putready(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	uint32_t status = ss_iic_master_read_reg(ctx, I2C_STATUS);
+	uint32_t status = REG_READ(I2C_STATUS);
 	return ((status & IC_STATUS_TFNF) != 0);
 }
 
 /** test whether iic is ready to receive, 1 ready, 0 not ready */
 Inline int32_t ss_iic_master_getready(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	uint32_t status = ss_iic_master_read_reg(ctx, I2C_STATUS);
+	uint32_t status = REG_READ(I2C_STATUS);
 	return ((status & IC_STATUS_RFNE) != 0);
 }
 
-/** Disable designware iic bit interrupt with mask */
+/** mask iic interrupt */
 Inline void ss_iic_mask_interrupt(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t mask)
 {
-	uint32_t intr_mask = ss_iic_master_read_reg(ctx, I2C_INTR_MASK);
-	ss_iic_master_write_reg(ctx, I2C_INTR_MASK, intr_mask & (~mask));
+	uint32_t intr_mask = REG_READ(I2C_INTR_MASK);
+	REG_WRITE(I2C_INTR_MASK, intr_mask & (~mask));
 }
 
 
 static void ss_iic_master_enable_device(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
 	DEV_IIC_INFO *info = ctx->info;
-	uint32_t enable = ss_iic_master_read_reg(ctx, I2C_ENABLE);
+	uint32_t enable = REG_READ(I2C_ENABLE);
 
 	if (((enable & 0x1) & DEV_ENABLED) == 0) {
-		ss_iic_master_write_reg(ctx, I2C_ENABLE, (enable | 0x1));
+		REG_WRITE(I2C_ENABLE, (enable | 0x1));
 		info->status |= DEV_ENABLED;
 	}
 }
 
-
 static void ss_iic_master_disable_device(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	uint32_t enable = ss_iic_master_read_reg(ctx, I2C_ENABLE);
+	uint32_t enable = REG_READ(I2C_ENABLE);
 
-	ss_iic_master_write_reg(ctx, I2C_ENABLE, (enable & (~(0x1))));
+	REG_WRITE(I2C_ENABLE, (enable & (~(0x1))));
 
-	while ((0x1 & ss_iic_master_read_reg(ctx, I2C_ENABLE_STATUS)) != 0);
+	while ((0x1 & REG_READ(I2C_ENABLE_STATUS)) != 0);
 }
 
 /* reset IIC master */
@@ -107,15 +99,14 @@ static void ss_iic_master_reset_device(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 	io_i2c_master_open(ctx->dev_id);
 }
 
-/** Disable iic master interrupt for transmit or receive */
+/** disable iic master interrupt for transmit or receive */
 static void ss_iic_master_dis_cbr(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t cbrtn)
 {
-	switch (cbrtn)
-	{
-		case SS_IIC_RDY_SND:
+	switch (cbrtn) {
+		case SS_IIC_MASTER_RDY_SND:
 			ss_iic_mask_interrupt(ctx, R_TX_EMPTY);
 			break;
-		case SS_IIC_RDY_RCV:
+		case SS_IIC_MASTER_RDY_RCV:
 			ss_iic_mask_interrupt(ctx, R_TX_EMPTY | R_RX_FULL);
 			break;
 		default:
@@ -124,28 +115,28 @@ static void ss_iic_master_dis_cbr(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t cbrtn
 }
 
 /* flush TX FIFO */
-Inline ss_iic_master_flush_tx(SS_IIC_MASTER_DEV_CONTEXT *ctx)
+Inline void ss_iic_master_flush_tx(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	(void *) ctx;
+
 }
 
 /* flush RX FIFO */
-Inline ss_iic_master_flush_rx(SS_IIC_MASTER_DEV_CONTEXT *ctx)
+Inline void ss_iic_master_flush_rx(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	(void *) ctx;
+
 }
 
-/* Get available transmit fifo count */
-Inline ss_iic_master_get_txavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
+/* get available transmit FIFO count */
+Inline uint32_t ss_iic_master_get_txavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	uint32_t flr = ss_iic_master_read_reg(ctx, I2C_TXFLR);
+	uint32_t flr = REG_READ(I2C_TXFLR);
 	return (int32_t)(IC_TX_RX_FIFO_SIZE - flr);
 }
 
-/* Get available receive fifo count */
-Inline ss_iic_master_get_rxavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
+/* get available receive FIFO count */
+Inline uint32_t ss_iic_master_get_rxavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
-	uint32_t flr = ss_iic_master_read_reg(ctx, I2C_RXFLR);
+	uint32_t flr = REG_READ(I2C_RXFLR);
 	return (int32_t)flr;
 }
 
@@ -162,8 +153,7 @@ int32_t ss_iic_master_close(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 		int_disable(ctx->int_rx_avail);
 		int_disable(ctx->int_tx_req);
 		int_disable(ctx->int_stop_det);
-	}
-	else {
+	} else {
 		ret = E_CLSED;
 	}
 
@@ -182,27 +172,27 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 	switch (ctrl_cmd)
 	{
 		case IIC_CMD_GET_STATUS:
-			SS_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			SS_IIC_MASTER_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
 			*((int32_t *)param) = iic_info_ptr->status;
 			break;
 		case IIC_CMD_ENA_DEV:
-			ss_iic_master_enable_device(dev_id);
+			ss_iic_master_enable_device(ctx);
 			break;
 		case IIC_CMD_DIS_DEV:
-			ss_iic_master_disable_device(dev_id);
+			ss_iic_master_disable_device(ctx);
 			break;
 		case IIC_CMD_RESET:
-			ss_iic_master_reset_device(dev_id);
+			ss_iic_master_reset_device(ctx);
 			break;
 		case IIC_CMD_FLUSH_TX:
-			ss_iic_master_flush_tx(dev_id);
+			ss_iic_master_flush_tx(ctx);
 			break;
 		case IIC_CMD_FLUSH_RX:
-			ss_iic_master_flush_rx(dev_id);
+			ss_iic_master_flush_rx(ctx);
 			break;
 		case IIC_CMD_SET_ADDR_MODE:
 			val32 = (uint32_t)param;
-			SS_IIC_CHECK_EXP((val32==IIC_7BIT_ADDRESS) || (val32==IIC_10BIT_ADDRESS), E_PAR);
+			SS_IIC_MASTER_CHECK_EXP((val32==IIC_7BIT_ADDRESS) || (val32==IIC_10BIT_ADDRESS), E_PAR);
 			if (val32==IIC_10BIT_ADDRESS) {
 				arg = 1;
 				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
@@ -215,25 +205,25 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 			iic_info_ptr->addr_mode = val32;
 			break;
 		case IIC_CMD_GET_RXAVAIL:
-			SS_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = ss_iic_master_get_rxavail(dev_id);
+			SS_IIC_MASTER_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			*((int32_t *)param) = ss_iic_master_get_rxavail(ctx);
 			break;
 		case IIC_CMD_GET_TXAVAIL:
-			SS_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = ss_iic_master_get_txavail(dev_id);
+			SS_IIC_MASTER_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			*((int32_t *)param) = ss_iic_master_get_txavail(ctx);
 			break;
 		case IIC_CMD_SET_TXCB:
-			SS_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+			SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
 			callback.cb = param;
 			io_i2c_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
 			break;
 		case IIC_CMD_SET_RXCB:
-			SS_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+			SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
 			callback.cb = param;
 			io_i2c_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
 			break;
 		case IIC_CMD_SET_ERRCB:
-			SS_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+			SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
 			callback.cb = param;
 			io_i2c_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
 			break;
@@ -246,17 +236,17 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 		case IIC_CMD_SET_TXINT:
 			val32 = (uint32_t)param;
 			if (val32 == 0) {
-				ss_iic_master_dis_cbr(dev_id, ss_iic_RDY_SND);
+				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_SND);
 			} else {
-				ss_iic_master_dis_cbr(dev_id, ss_iic_RDY_SND);
+				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_SND);
 			}
 			break;
 		case IIC_CMD_SET_RXINT:
 			val32 = (uint32_t)param;
 			if (val32 == 0) {
-				ss_iic_master_dis_cbr(dev_id, ss_iic_RDY_RCV);
+				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_RCV);
 			} else {
-				ss_iic_master_dis_cbr(dev_id, ss_iic_RDY_RCV);
+				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_RCV);
 			}
 			break;
 		case IIC_CMD_SET_TXINT_BUF:
@@ -267,7 +257,7 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 			break;
 		case IIC_CMD_MST_SET_SPEED_MODE:
 			val32 = (uint32_t)param;
-			SS_IIC_CHECK_EXP((val32>=IIC_SPEED_STANDARD) && (val32<=IIC_SPEED_FAST), E_PAR);
+			SS_IIC_MASTER_CHECK_EXP((val32>=IIC_SPEED_STANDARD) && (val32<=IIC_SPEED_FAST), E_PAR);
 			if (val32 == IIC_SPEED_STANDARD) {
 				arg = 1;
 				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
@@ -301,7 +291,6 @@ error_exit:
 	return ercd;
 }
 
-
 /* param: speed mode, 1-standard mode, 2-fast mode, 2 as default in hardware */
 int32_t ss_iic_master_open(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 {
@@ -312,10 +301,10 @@ int32_t ss_iic_master_open(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t param)
 	int32_t int_e = 0;
 	uint32_t arg;
 
-	SS_IIC_CHECK_EXP((param >= IIC_SPEED_STANDARD) && (param <= IIC_SPEED_FAST), E_PAR);
+	SS_IIC_MASTER_CHECK_EXP((param >= IIC_SPEED_STANDARD) && (param <= IIC_SPEED_FAST), E_PAR);
 
 	if (info->opn_cnt == 0) {
-		SS_IIC_CHECK_EXP(io_i2c_master_open(dev_id) == 0, E_SYS);
+		SS_IIC_MASTER_CHECK_EXP(io_i2c_master_open(dev_id) == 0, E_SYS);
 
 		if (param == IIC_SPEED_STANDARD) {
 			arg = 1;
@@ -370,20 +359,21 @@ int32_t ss_iic_master_write(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, ui
 	if (arc_locked()) {
 		/*
 		 * not allow to be called in isr or cpu is locked.
-		 * Beacue the bottom drvier is simply interrupt driven
+		 * because the bottom driver is simply interrupt driven
 		 */
 		return E_SYS;
 	}
 
 	xlen = len;
 
-	ctx->flags = SS_I2C_MASTER_FLAG_TX;
+	ctx->flags = SS_IIC_MASTER_FLAG_TX;
+
 	io_i2c_master_write(dev_id, (uint8_t *)data, &xlen);
 
 	/* wait finished: i2c master int enable & no cpu lock */
-	while (ctx->flags & SS_I2C_MASTER_FLAG_TX);
+	while (ctx->flags & SS_IIC_MASTER_FLAG_TX);
 
-	if (ctx->flags & SS_I2C_MASTER_FLAG_ERROR) {
+	if (ctx->flags & SS_IIC_MASTER_FLAG_ERROR) {
 		ctx->flags = 0;
 		return E_SYS;
 	}
@@ -405,21 +395,21 @@ int32_t ss_iic_master_read(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uin
 	if (arc_locked()) {
 		/*
 		 * not allow to be called in isr or cpu is locked.
-		 * Beacue the bottom drvier is simply interrupt driven
+		 * because the bottom driver is simply interrupt driven
 		 */
 		return E_SYS;
 	}
 
 	xlen = len;
 
-	ctx->flags = SS_I2C_MASTER_FLAG_TX;
+	ctx->flags = SS_IIC_MASTER_FLAG_RX;
 
 	io_i2c_master_read(dev_id, (uint8_t *)data, &xlen);
 
 	/* wait finished: i2c master int enable & no cpu lock */
-	while (ctx->flags & SS_I2C_MASTER_FLAG_RX);
+	while (ctx->flags & SS_IIC_MASTER_FLAG_RX);
 
-	if (ctx->flags & SS_I2C_MASTER_FLAG_ERROR) {
+	if (ctx->flags & SS_IIC_MASTER_FLAG_ERROR) {
 		ctx->flags = 0;
 		return E_SYS;
 	}
@@ -443,23 +433,23 @@ void ss_iic_master_tx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 
 void ss_iic_master_rx_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 {
-	DEV_UART_INFO *info = ctx->info;
+	DEV_IIC_INFO *info = ctx->info;
 
 	if (ctx->flags & SS_IIC_MASTER_FLAG_RX) {
 		ctx->flags &= ~SS_IIC_MASTER_FLAG_RX;
-		if (info->uart_cbs.rx_cb) {
-			info->uart_cbs.rx_cb(info);
+		if (info->iic_cbs.rx_cb) {
+			info->iic_cbs.rx_cb(info);
 		}
 	}
 }
 
 void ss_iic_master_err_cb(SS_IIC_MASTER_DEV_CONTEXT *ctx, void *param)
 {
-	DEV_UART_INFO *info = ctx->info;
+	DEV_IIC_INFO *info = ctx->info;
 
-	ctx->flags |= SS_UART_FLAG_ERROR;
+	ctx->flags |= SS_IIC_MASTER_FLAG_ERROR;
 
-	if (info->uart_cbs.err_cb) {
-		info->uart_cbs.err_cb(info);
+	if (info->iic_cbs.err_cb) {
+		info->iic_cbs.err_cb(info);
 	}
 }
