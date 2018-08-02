@@ -73,91 +73,6 @@ uint32_t get_generic_mux(void)
 	return (uint32_t) mux_regs[GENERIC_MUX_CTRL];
 }
 
-int32_t io_mikro_config(uint32_t config)
-{
-	/* no mikro interface */
-	return E_NOSPT;
-}
-
-int32_t io_arduino_config_spi(uint32_t config)
-{
-	/* no arduino interface */
-	return E_NOSPT;
-}
-
-int32_t io_arduino_config_uart(uint32_t config)
-{
-	/* no arduino interface */
-	return E_NOSPT;
-}
-
-int32_t io_arduino_config_i2c(uint32_t config)
-{
-	/* no arduino interface */
-	return E_NOSPT;
-}
-
-int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
-{
-	/* no arduino interface */
-	return E_NOSPT;
-}
-
-
-int32_t io_pmod_config(uint32_t pmod, uint32_t type, uint32_t config)
-{
-	// uint32_t val = get_pmod_mux();
-	// switch (pmod) {
-	// case PMOD_1: /* PMOD GPIO, PMOD_UART */
-	// 	if (type == PMOD_GPIO) {
-	// 		val &= ~(PM1_UR_UART_0 | PM1_LR_SPI_S);
-	// 	} else if (type == PMOD_UART) {
-	// 		val |= PM1_UR_UART_0;
-	// 	} else {
-	// 		return E_NOSPT;
-	// 	}
-	// 	break;
-	// case PMOD_2: /* PMOD GPIO, PMOD_I2C */
-	// case PMOD_3:
-	// case PMOD_4:
-	// 	pmod--;
-	// 	pmod <<= 2; /* (pmode - 1) * 4*/
-	// 	if (type == PMOD_GPIO) {
-	// 		val &= ~(1 << pmod);
-	// 	} else if (type == PMOD_I2C) {
-	// 		val |= (1 << pmod);
-	// 	} else {
-	// 		return E_NOSPT;
-	// 	}
-	// 	break;
-	// case PMOD_5: /* PMOD GPIO, PMOD_SPI */
-	// 	if (type == PMOD_GPIO) {
-	// 		val &= ~(PM5_UR_SPI_M1);
-	// 	} else if (type == PMOD_SPI) {
-	// 		val |= PM5_UR_SPI_M1;
-	// 	} else {
-	// 		return E_NOSPT;
-	// 	}
-	// 	break;
-	// case PMOD_6: /* PMOD GPIO, PMOD_SPI */
-	// 	if (type == PMOD_GPIO) {
-	// 		val &= ~(PM6_UR_SPI_M0);
-	// 	} else if (type == PMOD_SPI) {
-	// 		val |= PM6_UR_SPI_M0;
-	// 	} else {
-	// 		return E_NOSPT;
-	// 	}
-	// 	break;
-	// default:
-	// 	return E_PAR;
-	// }
-
-	// set_pmod_mux(val);
-
-	// return E_OK;
-	return E_NOSPT;
-}
-
 void io_mux_init(void)
 {
 	mux_regs = (MUX_REG *)(EMSDP_CREG_BASE | EMSDP_CREG_PMOD_MUX_OFFSET);
@@ -173,12 +88,19 @@ void io_mux_init(void)
 	 *   - PM_B: GPIO, I2C, SPI, Type3 Uart2, Type4 Uart2, PWM_1, PWM_2
 	 *   - PM_C: GPIO, I2C, SPI, Type3 Uart3, Type4 Uart3, PWM_1, PWM_2
 	 */
-	set_pmod_mux( PM_A_CFG1_UART1b	\
-				| PM_A_CFG2_GPIO	\
-				| PM_B_CFG1_I2C		\
-				| PM_B_CFG2_GPIO	\
-				| PM_C_CFG1_GPIO	\
-				| PM_C_CFG2_GPIO );
+	set_pmod_mux(PM_A_CFG0_SPI	\
+			|	PM_A_CFG1_GPIO	\
+			|	PM_B_CFG0_I2C	\
+			|	PM_B_CFG1_GPIO	\
+			|	PM_C_CFG0_GPIO	\
+			|	PM_C_CFG1_GPIO );
 
+	set_arduino_mux(ARDUINO_CFG0_GPIO	\
+				|	ARDUINO_CFG1_GPIO	\
+				|	ARDUINO_CFG2_GPIO	\
+				|	ARDUINO_CFG3_GPIO	\
+				|	ARDUINO_CFG4_GPIO	\
+				|	ARDUINO_CFG5_SPI	\
+				|	ARDUINO_CFG6_I2C	);
 }
 

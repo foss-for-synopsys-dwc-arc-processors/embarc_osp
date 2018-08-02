@@ -53,51 +53,83 @@
 /**
  * Default pin muxer settings
  */
-#define PMOD_MUX_CTRL_DEFAULT		(0)		/*!< all pins are configured as GPIO inputs */
-#define ARDUINO_MUX_CTRL_DEFAULT	(0)		/*!< normal Arduino mode */
+#define PMOD_MUX_CTRL_DEFAULT		(0)		/*!< all pins are configured as GPIO inputs as default */
+#define ARDUINO_MUX_CTRL_DEFAULT	(0)		/*!< Default Arduino mode */
 #define GENERIC_MUX_CTRL_DEFAULT	(0)		/*!< Default generic mux mode */
 
 /**
  * PMOD A Multiplexor
  */
-#define PM_A_CFG1_GPIO		((0)<< MUX_SEL0_OFFSET)
-#define PM_A_CFG1_I2C		((1)<< MUX_SEL0_OFFSET)
-#define PM_A_CFG1_SPI		((2)<< MUX_SEL0_OFFSET)
-#define PM_A_CFG1_UART1a	((3)<< MUX_SEL0_OFFSET)
-#define PM_A_CFG1_UART1b	((4)<< MUX_SEL0_OFFSET)
-#define PM_A_CFG1_PWM1		((5)<< MUX_SEL0_OFFSET)
-#define PM_A_CFG1_PWM2		((6)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_GPIO		((0)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_I2C		((1)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_SPI		((2)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_UART1a	((3)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_UART1b	((4)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_PWM1		((5)<< MUX_SEL0_OFFSET)
+#define PM_A_CFG0_PWM2		((6)<< MUX_SEL0_OFFSET)
 
-#define PM_A_CFG2_GPIO		((0)<< MUX_SEL1_OFFSET)
+#define PM_A_CFG1_GPIO		((0)<< MUX_SEL1_OFFSET)
 
 
 /**
  * PMOD B Multiplexor
  */
-#define PM_B_CFG1_GPIO		((0)<< MUX_SEL2_OFFSET)
-#define PM_B_CFG1_I2C		((1)<< MUX_SEL2_OFFSET)
-#define PM_B_CFG1_SPI		((2)<< MUX_SEL2_OFFSET)
-#define PM_B_CFG1_UART2a	((3)<< MUX_SEL2_OFFSET)
-#define PM_B_CFG1_UART2b	((4)<< MUX_SEL2_OFFSET)
-#define PM_B_CFG1_PWM1		((5)<< MUX_SEL2_OFFSET)
-#define PM_B_CFG1_PWM2		((6)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_GPIO		((0)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_I2C		((1)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_SPI		((2)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_UART2a	((3)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_UART2b	((4)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_PWM1		((5)<< MUX_SEL2_OFFSET)
+#define PM_B_CFG0_PWM2		((6)<< MUX_SEL2_OFFSET)
 
-#define PM_B_CFG2_GPIO		((0)<< MUX_SEL3_OFFSET)
+#define PM_B_CFG1_GPIO		((0)<< MUX_SEL3_OFFSET)
 
 
 /**
  * PMOD C Multiplexor
  */
-#define PM_C_CFG1_GPIO		((0)<< MUX_SEL4_OFFSET)
-#define PM_C_CFG1_I2C		((1)<< MUX_SEL4_OFFSET)
-#define PM_C_CFG1_SPI		((2)<< MUX_SEL4_OFFSET)
-#define PM_C_CFG1_UART3a	((3)<< MUX_SEL4_OFFSET)
-#define PM_C_CFG1_UART3b	((4)<< MUX_SEL4_OFFSET)
-#define PM_C_CFG1_PWM1		((5)<< MUX_SEL4_OFFSET)
-#define PM_C_CFG1_PWM2		((6)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_GPIO		((0)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_I2C		((1)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_SPI		((2)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_UART3a	((3)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_UART3b	((4)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_PWM1		((5)<< MUX_SEL4_OFFSET)
+#define PM_C_CFG0_PWM2		((6)<< MUX_SEL4_OFFSET)
 
-#define PM_C_CFG2_GPIO		((0)<< MUX_SEL5_OFFSET)
+#define PM_C_CFG1_GPIO		((0)<< MUX_SEL5_OFFSET)
 
+/**
+ * Arduino Multiplexor
+ */
+#define ARDUINO_CFG0_GPIO		((0)<< MUX_SEL0_OFFSET)
+#define ARDUINO_CFG0_UART		((1)<< MUX_SEL0_OFFSET)
+
+#define ARDUINO_CFG1_GPIO		((0)<< MUX_SEL1_OFFSET)
+#define ARDUINO_CFG1_PWM		((1)<< MUX_SEL1_OFFSET)
+
+#define ARDUINO_CFG2_GPIO		((0)<< MUX_SEL2_OFFSET)
+#define ARDUINO_CFG2_PWM		((1)<< MUX_SEL2_OFFSET)
+
+#define ARDUINO_CFG3_GPIO		((0)<< MUX_SEL3_OFFSET)
+#define ARDUINO_CFG3_PWM		((1)<< MUX_SEL3_OFFSET)
+
+#define ARDUINO_CFG4_GPIO		((0)<< MUX_SEL4_OFFSET)
+#define ARDUINO_CFG4_PWM		((1)<< MUX_SEL4_OFFSET)
+
+#define ARDUINO_CFG5_GPIO		((0)<< MUX_SEL5_OFFSET)
+#define ARDUINO_CFG5_SPI		((1)<< MUX_SEL5_OFFSET)
+#define ARDUINO_CFG5_PWM1		((2)<< MUX_SEL5_OFFSET)
+#define ARDUINO_CFG5_PWM2		((3)<< MUX_SEL5_OFFSET)
+#define ARDUINO_CFG5_PWM3		((4)<< MUX_SEL5_OFFSET)
+
+#define ARDUINO_CFG6_GPIO		((0)<< MUX_SEL6_OFFSET)
+#define ARDUINO_CFG6_I2C		((1)<< MUX_SEL6_OFFSET)
+
+//TODO:
+/**
+ * Generic  Multiplexor
+ * GPIO | EBI | Host-IF | DBG
+ */
 
 typedef volatile uint32_t MUX_REG;
 
