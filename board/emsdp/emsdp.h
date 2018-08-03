@@ -38,6 +38,7 @@
 #include "drivers/ip/designware/gpio/dw_gpio_obj.h"
 #include "drivers/ip/designware/sdio/dw_sdio_obj.h"
 #include "drivers/ip/subsystem/spi/dfss_spi_obj.h"
+#include "drivers/ip/subsystem/gpio/dfss_gpio_obj.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/pmwifi/pmwifi.h"
 

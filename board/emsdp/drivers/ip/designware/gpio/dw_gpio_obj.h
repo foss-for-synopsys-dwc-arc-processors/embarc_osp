@@ -60,6 +60,7 @@
 extern "C" {
 #endif
 
+extern DEV_GPIO_PTR dw_gpio_get_dev(int32_t);
 extern void dw_gpio_all_install(void);
 
 #ifdef __cplusplus
