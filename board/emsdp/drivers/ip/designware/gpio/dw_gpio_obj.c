@@ -286,7 +286,7 @@ static void portd_install(void)
 	port_ptr->gpio_read = portd_read;
 }
 #endif
-DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
+DEV_GPIO_PTR dw_gpio_get_dev(int32_t gpio_id)
 {
 	static uint32_t install_flag = 0;
 
