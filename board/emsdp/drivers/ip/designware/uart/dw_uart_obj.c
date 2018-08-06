@@ -177,7 +177,7 @@ static void dw_uart_1_install(void)
 }
 #endif /* USE_DW_UART_1 */
 
-DEV_UART_PTR uart_get_dev(int32_t uart_id)
+DEV_UART_PTR dw_uart_get_dev(int32_t uart_id)
 {
 	static uint32_t install_flag = 0;
 

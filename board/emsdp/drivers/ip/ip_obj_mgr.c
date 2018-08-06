@@ -102,3 +102,56 @@ DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
 	}
 	return NULL;
 }
+
+DEV_UART_PTR uart_get_dev(int32_t uart_id){
+
+	switch(uart_id){
+#if (USE_DW_UART_0)
+		case DW_UART_0_ID:
+#endif
+#if (USE_DW_UART_1)
+		case DW_UART_1_ID:
+#endif
+			return dw_uart_get_dev(uart_id);
+			break;
+
+#if USE_DFSS_UART_0
+		case DFSS_UART_0_ID:
+#endif
+#if USE_DFSS_UART_1
+		case DFSS_UART_1_ID:
+#endif
+#if USE_DFSS_UART_2
+		case DFSS_UART_2_ID:
+#endif
+#if USE_DFSS_UART_3
+		case DFSS_UART_3_ID:
+#endif
+			return dfss_uart_get_dev(uart_id);
+			break;
+		default:
+			break;
+	}
+	return NULL;
+}
+
+
+DEV_IIC_PTR iic_get_dev(int32_t iic_id)
+{
+	switch (iic_id) {
+#if USE_DFSS_IIC_0
+		case DFSS_IIC_0_ID:
+#endif
+#if USE_DFSS_IIC_1
+		case DFSS_IIC_1_ID:
+#endif
+#if USE_DFSS_IIC_2
+		case DFSS_IIC_2_ID:
+#endif
+			return dfss_iic_get_dev(iic_id);
+			break;
+		default:
+			break;
+	}
+	return NULL;
+}
