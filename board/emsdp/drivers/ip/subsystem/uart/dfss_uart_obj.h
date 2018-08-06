@@ -27,38 +27,54 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef _DW_UART_OBJ_H_
-#define _DW_UART_OBJ_H_
+#ifndef _DFSS_UART_H_
+#define _DFSS_UART_H_
 
-#include "dw_uart.h"
+#include "io_config.h"
+#include "ip/ip_hal/inc/dev_uart.h"
 
-/**
- * DesignWare UART Object Number
- */
-#define DW_UART_NUM	(2)	/*!< DesignWare UART valid number */
+#ifdef IO_UART0_PRESENT
+#define USE_DFSS_UART_0				1	/*!< enable use DFSS UART 0 */
+#else
+#define USE_DFSS_UART_0				0	/*!< disable use DFSS UART 0 */
+#endif
 
-/**
- * Designware UART Object ID Macros
- */
-#define DW_UART_0_ID	0	/*!< uart 0 id macro */
-#define DW_UART_1_ID	1	/*!< uart 1 id macro */
+#ifdef IO_UART1_PRESENT
+#define USE_DFSS_UART_1				1	/*!< enable use DFSS UART 1 */
+#else
+#define USE_DFSS_UART_1				0	/*!< disable use DFSS UART 1 */
+#endif
 
-/**
- * Designware UART Object Control Macros
- */
-#define USE_DW_UART_0	1     	/*!< enable use designware uart 0 */
-#define USE_DW_UART_1	1     	/*!< enable use designware uart 1 */
+#ifdef IO_UART2_PRESENT
+#define USE_DFSS_UART_2				1	/*!< enable use DFSS UART 2 */
+#else
+#define USE_DFSS_UART_2				0	/*!< disable use DFSS UART 2 */
+#endif
 
+#ifdef IO_UART3_PRESENT
+#define USE_DFSS_UART_3				1	/*!< enable use DFSS UART 3 */
+#else
+#define USE_DFSS_UART_3				0	/*!< disable use DFSS UART 3 */
+#endif
+
+
+#define DFSS_UART_NUM	(4)	/*!< DFSS UART valid number */
+
+#define DFSS_UART_BASE_ID	10
+#define DFSS_UART_0_ID		10	/*!< UART 0 ID macro */
+#define DFSS_UART_1_ID		11	/*!< UART 1 ID macro */
+#define DFSS_UART_2_ID		12	/*!< UART 2 ID macro */
+#define DFSS_UART_3_ID		13	/*!< UART 3 ID macro */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern DEV_UART_PTR dw_uart_get_dev(int32_t);
-extern void dw_uart_all_install(void);
+extern DEV_UART_PTR dfss_uart_get_dev(int32_t);
+extern void dfss_uart_all_install(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _DW_UART_OBJ_H_ */
+#endif /* _DFSS_UARTH_ */
