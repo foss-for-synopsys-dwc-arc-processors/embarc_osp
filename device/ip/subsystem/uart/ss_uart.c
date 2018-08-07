@@ -75,10 +75,12 @@ Inline int32_t set_hwfc(uint32_t dev_id, uint32_t control)
 
 Inline int32_t set_baud(SS_UART_DEV_CONTEXT *ctx, uint32_t baud)
 {
-	uint32_t param;;
+	uint32_t param;
+	DEV_UART_INFO *info = ctx->info;
 
 	param = SS_UART_BAUD2DIV(ctx->bus_freq, baud);
 	io_uart_ioctl(ctx->dev_id, IO_UART_SET_DLx, &param);
+	info->baudrate = baud;
 
 	return E_OK;
 }
