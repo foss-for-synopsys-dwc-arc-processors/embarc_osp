@@ -337,7 +337,7 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 				else:
 					result = True
 			else:
-				result = True
+				result = False
 			
 	elif filesuffix == ".ini":
 		conf = ConfigParser()
@@ -354,7 +354,7 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 			else:
 				result = True
 		else:
-			result = True
+			result = False
 	return result
 
 def show_results(results):
