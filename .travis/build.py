@@ -8,7 +8,8 @@ import tarfile
 import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
-from colorama import init,Fore, Back
+from colorama import init, Fore, Back
+import ConfigParser
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"example/baremetal/arc_feature/udma",
@@ -268,6 +269,11 @@ def build_project_configs(app_path, config):
 	toolchain = "gnu"
 	build_count = 0
 	status = True
+	expected_file = None
+	expected_different = dict()
+	if "EXPECTED_RESULT" in make_configs and make_configs["EXPECTED_RESULT"] is not None:
+		expected_file = make_configs["EXPECTED_RESULT"]
+
 	if "GNU_VER" in make_configs and make_configs["GNU_VER"] is not None:
 		gnu_ver = make_configs["GNU_VER"]
 
@@ -306,13 +312,53 @@ def build_project_configs(app_path, config):
 					build_count += 1
 					if result["status"] != 0:
 						status = False
+						if expected_file is not None:
+							expected_different[app_path] = []
+							expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
+							if not expected_status:
+								print "This application compile failed, but the expected result is pass"
+								expected_different[app_path].append([app_path, board, bd_ver, cur_core])
 
 					results.append(result)
-	return status, results, build_count
+	return status, results, build_count, expected_different
+
+def get_expected_result(expected_file, app_path, board, bd_ver):
+	result = None
+	filesuffix = os.path.splitext(expected_file)[1]
+	if filesuffix == ".json":
+		with open(expected_file, "r") as f:
+			expected_result = json.load(f)
+			if app_path in expected_result:
+				if board in expected_result[app_path]:
+					if bd_ver in expected_result[app_path][board]:
+						result = False
+					else:
+						result = True
+				else:
+					result = True
+			else:
+				result = True
+			
+	elif filesuffix == ".ini":
+		conf = ConfigParser()
+		conf.read(expected_file)
+		sections = conf.sections()
+		if app_path in sections:
+			options = conf.options(app_path)
+			if board in options:
+				items = conf.get(app_path, board)
+				if bd_ver in items:
+					result = False
+				else:
+					result = True
+			else:
+				result = True
+		else:
+			result = True
+	return result
 
 def show_results(results):
 	columns = ['TOOLCHAIN', 'APP', "GNU_VER", 'CONF', 'PASS']
-	pt = PrettyTable(columns)
 	failed_pt = PrettyTable(columns)
 	failed_results = []
 	success_results = []
@@ -417,6 +463,7 @@ def build_makefiles_project(config):
 	gnu_ver = "2017.09"
 	work_path = os.getcwd()
 	update_json = None
+	expected_differents = dict()
 	if "EXAMPLES" in config and config["EXAMPLES"]:
 		examples_path = config.pop("EXAMPLES")
 		app_paths_list = get_exampes_from_input(examples_path)
@@ -433,7 +480,7 @@ def build_makefiles_project(config):
 	os.chdir(work_path)
 	for (app, app_path) in app_paths.items():
 		
-		status, results, build_count = build_project_configs(app_path, config)
+		status, results, build_count , expected_different= build_project_configs(app_path, config)
 		application_failed = application_all_failed(results)
 		if application_failed == 1:
 			print Back.RED + "{} failed with all configurations".format(app_path)
@@ -442,6 +489,8 @@ def build_makefiles_project(config):
 		apps_status.append(status)
 		count += build_count
 		app_count += 1
+		if app_path in expected_different and len(expected_different[app_path]) > 0:
+			expected_differents[app_path] = expected_different[app_path]
 	
 
 	cmp_result, cmp_item_reference = reference_results(apps_results, gnu_ver, update = update_json)
@@ -457,7 +506,7 @@ def build_makefiles_project(config):
 
 	show_results(results_list)
 	sys.stdout.flush()
-	return cmp_result ,cmp_item_reference, applications_failed
+	return cmp_result ,cmp_item_reference, applications_failed, expected_differents
 
 def reference_results(results, gnu_ver, update=None):
 	work_path = os.getcwd()
@@ -508,7 +557,16 @@ def reference_results(results, gnu_ver, update=None):
 	except Exception:
 		print "Can not find the cache file"
 
-	
+def show_differents(results):
+	columns = ['APP', 'BOARD', "BD_VER", 'CUR_CORE']
+	pt = PrettyTable(columns)
+	for (k, v) in results.items():
+		for configuration in v:
+			pt.add_row(configuration)
+	print pt
+	sys.stdout.flush()
+
+
 if __name__ == '__main__':
 
 	cwd_path = os.getcwd()
@@ -521,7 +579,7 @@ if __name__ == '__main__':
 	else:
 		print Fore.BLUE + "cache files"
 		print os.listdir(cache_folder)
-	apps_status,cmp_item_reference, applications_failed = build_makefiles_project(make_config)
+	apps_status, cmp_item_reference, applications_failed, expected_differents = build_makefiles_project(make_config)
 	os.chdir(cwd_path)
 	if "embbarc_applications" in os.listdir(os.getcwd()):
 		os.chdir(os.path.dirname(cwd_path))
@@ -529,14 +587,9 @@ if __name__ == '__main__':
 	if key in applications_failed:
 		print "an application failed with all configurations"
 		sys.stdout.flush()
+	if len(expected_differents) > 0:
+
+		print "these applications failed with some configuration: "
+		print expected_differents.keys()
+		show_differents(expected_differents)
 		sys.exit(1)
-	if apps_status == 0:
-		sys.exit(0)
-	else:
-		if cmp_item_reference != 0:
-			print "Some results are different from the reference_result "
-			sys.exit(1)
-		else:
-			print Fore.YELLOW + "All results in reference_result are same as the results of this time, but some results are not in reference_result"
-			print Fore.YELLOW + "Update the reference_result with the UPDATE_JSON"
-			sys.exit(0)
