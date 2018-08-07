@@ -271,6 +271,7 @@ def build_project_configs(app_path, config):
 	status = True
 	expected_file = None
 	expected_different = dict()
+
 	if "EXPECTED_RESULT" in make_configs and make_configs["EXPECTED_RESULT"] is not None:
 		expected_file = make_configs["EXPECTED_RESULT"]
 
@@ -298,6 +299,9 @@ def build_project_configs(app_path, config):
 			cur_cors[board][version] = cors
 	for board in cur_cors:
 		for bd_ver in cur_cors[board]:
+			core_failed = 0
+			core_num = len(cur_cors[board][bd_ver])
+			may_compare = []
 			for cur_core in cur_cors[board][bd_ver]:
 				make_config["OSP_ROOT"] = osp_root
 				make_config["BOARD"] = board
@@ -312,18 +316,23 @@ def build_project_configs(app_path, config):
 					build_count += 1
 					if result["status"] != 0:
 						status = False
-						if expected_file is not None:
-							expected_different[app_path] = []
-							expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
-							if not expected_status:
-								print "This application compile failed, but the expected result is pass"
-								expected_different[app_path].append([app_path, board, bd_ver, cur_core])
-
+						core_failed += 1
 					results.append(result)
+					may_compare.append(result)
+
+			if core_failed == core_num:
+				if expected_file is not None:
+					expected_different[app_path] = []
+					expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
+					if not expected_status:
+						print "This application compile failed, but the expected result is pass"
+						expected_different[app_path].append(may_compare)
+						
+
 	return status, results, build_count, expected_different
 
 def get_expected_result(expected_file, app_path, board, bd_ver):
-	result = None
+	result = False
 	filesuffix = os.path.splitext(expected_file)[1]
 	if filesuffix == ".json":
 		with open(expected_file, "r") as f:
@@ -335,7 +344,7 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 					else:
 						result = True
 				else:
-					result = True
+					result = False
 			else:
 				result = False
 			
@@ -352,17 +361,19 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 				else:
 					result = True
 			else:
-				result = True
+				result = False
 		else:
 			result = False
 	return result
 
-def show_results(results):
+def show_results(results, expected=None):
 	columns = ['TOOLCHAIN', 'APP', "GNU_VER", 'CONF', 'PASS']
 	failed_pt = PrettyTable(columns)
 	failed_results = []
 	success_results = []
+	expected_results = []
 	success_pt = PrettyTable(columns)
+	expected_pt = PrettyTable(columns)
 
 	for result in results:
 		status = result.pop("status")
@@ -377,6 +388,10 @@ def show_results(results):
 		else:
 			result["PASS"] = "YES"
 			success_results.append([v for (k, v) in result.items()])
+		if expected is not None:
+			expected_results.append([v for (k, v) in result.items()])
+
+
 
 	print "Successfull results"
 	for result in success_results:
@@ -399,6 +414,13 @@ def show_results(results):
 	print Fore.RED + "Failed result:"
 	print failed_pt
 	sys.stdout.flush()
+	for result in expected_results:
+		if len(result) > 0:
+			expected_pt.add_row(result)
+	if len(expected_results) > 0:
+		print "these applications failed with some bd_ver: "
+		print expected_pt
+
 
 def build_result_combine(results,formal_result=None):
 	first_result = results[0]
@@ -480,7 +502,7 @@ def build_makefiles_project(config):
 	os.chdir(work_path)
 	for (app, app_path) in app_paths.items():
 		
-		status, results, build_count , expected_different= build_project_configs(app_path, config)
+		status, results, build_count , expected_different = build_project_configs(app_path, config)
 		application_failed = application_all_failed(results)
 		if application_failed == 1:
 			print Back.RED + "{} failed with all configurations".format(app_path)
@@ -506,6 +528,7 @@ def build_makefiles_project(config):
 
 	show_results(results_list)
 	sys.stdout.flush()
+
 	return cmp_result ,cmp_item_reference, applications_failed, expected_differents
 
 def reference_results(results, gnu_ver, update=None):
@@ -557,15 +580,6 @@ def reference_results(results, gnu_ver, update=None):
 	except Exception:
 		print "Can not find the cache file"
 
-def show_differents(results):
-	columns = ['APP', 'BOARD', "BD_VER", 'CUR_CORE']
-	pt = PrettyTable(columns)
-	for (k, v) in results.items():
-		for configuration in v:
-			pt.add_row(configuration)
-	print pt
-	sys.stdout.flush()
-
 
 if __name__ == '__main__':
 
@@ -591,5 +605,4 @@ if __name__ == '__main__':
 
 		print "these applications failed with some configuration: "
 		print expected_differents.keys()
-		show_differents(expected_differents)
 		sys.exit(1)
