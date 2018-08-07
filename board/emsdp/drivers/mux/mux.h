@@ -125,11 +125,14 @@
 #define ARDUINO_CFG6_GPIO		((0)<< MUX_SEL6_OFFSET)
 #define ARDUINO_CFG6_I2C		((1)<< MUX_SEL6_OFFSET)
 
-//TODO:
 /**
  * Generic  Multiplexor
  * GPIO | EBI | Host-IF | DBG
  */
+#define GENERIC_CFG0_GPIO		((0)<< MUX_SEL0_OFFSET)
+#define GENERIC_CFG0_EBI		((1)<< MUX_SEL0_OFFSET)
+#define GENERIC_CFG0_HOSTIF		((2)<< MUX_SEL0_OFFSET)
+#define GENERIC_CFG0_DBG		((3)<< MUX_SEL0_OFFSET)
 
 typedef volatile uint32_t MUX_REG;
 
