@@ -356,42 +356,36 @@ void uart3_clk_divisor(uint8_t div)
 void arduino_pin_mux(uint8_t pin, uint8_t function)
 {
 	volatile uint32_t val;
-	if (pin > ARDUINO_A3 || function > ARDUINO_FUNC_3RD) {
+	if (pin > ARDUINO_A5 || function > ARDUINO_FUNC_3RD) {
 		return;
 	}
 
-	if (pin == ARDUINO_D10_HIDDEN || pin == ARDUINO_D11_HIDDEN ||
-	    pin == ARDUINO_A4_HIDDEN  || pin == ARDUINO_A5_HIDDEN  ||
-	    pin == ARDUINO_RESERVED) {
+	if (pin == ARDUINO_RESERVED || pin == ARDUINO_SPI_MASK || 
+	   pin == ARDUINO_IIC_MASK) {
 		return;
 	}
 
 	val = sysconf_reg_ptr->ARDUINO_MUX;
 
-	if (function == ARDUINO_FUNC_GPIO) {
-		val &= (~(1 << pin));
-		if (pin == ARDUINO_D10 || pin == ARDUINO_D11) {
-			val &= (~(0x3 << ARDUINO_D10_HIDDEN));
-		} else if (pin == ARDUINO_A4 || pin == ARDUINO_A5) {
-			val &= (~(0x3 << ARDUINO_A4_HIDDEN));
+	if (pin == ARDUINO_D10 || pin == ARDUINO_D11) {
+		if (function == ARDUINO_FUNC_2ND) {//SPI function
+			val |= (1 << ARDUINO_SPI_MASK);
+		} else {
+			val &= (~(1 << ARDUINO_SPI_MASK));
 		}
-	} else if (function == ARDUINO_FUNC_2ND) {
-		val |= (1 << pin);
-	} else {
-		if (pin == ARDUINO_D10) {
-			val &= (~(1 << ARDUINO_D10));
-			val |= (1 << ARDUINO_D10_HIDDEN);
-		} else if (pin == ARDUINO_D11) {
-			val &= (~(1 << ARDUINO_D11));
-			val |= (1 << ARDUINO_D11_HIDDEN);
-		} else if (pin == ARDUINO_A4) {
-			val &= (~(1 << ARDUINO_A4));
-			val |= (1 << ARDUINO_A4_HIDDEN);
-		} else if (pin == ARDUINO_A5) {
-			val &= (~(1 << ARDUINO_A5));
-			val |= (1 << ARDUINO_A5_HIDDEN);
+	} else if (pin == ARDUINO_A4 || pin == ARDUINO_A5) {
+		if (function == ARDUINO_FUNC_2ND) {//IIC function
+			val |= (1 << ARDUINO_IIC_MASK);
+		} else {
+			val &= (~(1 << ARDUINO_IIC_MASK));
 		}
 	}
+
+	if (function == ARDUINO_FUNC_GPIO) {
+		val &= (~(1 << pin));
+	} else if (function == ARDUINO_FUNC_2ND || function == ARDUINO_FUNC_3RD) {
+		val |= (1 << pin);
+	} 
 
 	sysconf_reg_ptr->ARDUINO_MUX = val;
 }

@@ -140,23 +140,21 @@ typedef volatile struct sysconf_reg {
 /* arduino pinmux definition */
 #define ARDUINO_D0			0x0
 #define ARDUINO_D1			0x0
-#define ARDUINO_D10			0x1
-#define ARDUINO_D11			0x1
+#define ARDUINO_SPI_MASK    0x1
 #define ARDUINO_D3			0x2
 #define ARDUINO_D5			0x3
 #define ARDUINO_D6			0x4
 #define ARDUINO_D9			0x5
-#define ARDUINO_D10_HIDDEN		0x6
-#define ARDUINO_D11_HIDDEN		0x7
-#define ARDUINO_A4			0x8
-#define ARDUINO_A5			0x8
-#define ARDUINO_RESERVED		0x9
+#define ARDUINO_D10		    0x6
+#define ARDUINO_D11		    0x7
+#define ARDUINO_IIC_MASK    0x8
+#define ARDUINO_RESERVED	0x9
 #define ARDUINO_A0			0xA
 #define ARDUINO_A1 			0xB
 #define ARDUINO_A2			0xC
 #define ARDUINO_A3 			0xD
-#define ARDUINO_A4_HIDDEN		0xE
-#define ARDUINO_A5_HIDDEN		0xF
+#define ARDUINO_A4		    0xE
+#define ARDUINO_A5		    0xF
 
 #define ARDUINO_FUNC_GPIO		0x0
 #define ARDUINO_FUNC_2ND		0x1
