@@ -292,8 +292,8 @@ def build_project_configs(app_path, config):
 	expected_different = dict()
 	expected_different[app_path] = []
 
-	if "EXPECTED_RESULT" in make_configs and make_configs["EXPECTED_RESULT"] is not None:
-		expected_file = make_configs["EXPECTED_RESULT"]
+	if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
+		expected_file = make_configs["EXPECTED"]
 
 	if "GNU_VER" in make_configs and make_configs["GNU_VER"] is not None:
 		gnu_ver = make_configs["GNU_VER"]
