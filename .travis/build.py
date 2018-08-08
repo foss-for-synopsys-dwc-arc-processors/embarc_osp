@@ -9,7 +9,7 @@ import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
 from colorama import init, Fore, Back
-import ConfigParser
+from configparser import ConfigParser
 import copy
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
