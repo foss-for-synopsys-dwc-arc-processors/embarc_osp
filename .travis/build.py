@@ -10,6 +10,7 @@ from sys import stderr, stdout
 from prettytable import PrettyTable
 from colorama import init, Fore, Back
 import ConfigParser
+import copy
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"example/baremetal/arc_feature/udma",
@@ -45,6 +46,24 @@ MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
 default_root = "."
 cache_folder = "/home/travis/.cache/result"
 cache_gnu = "/home/travis/.cache/toolcahin"
+class TailRecurseException:
+	def __init__(self, args, kwargs):
+		self.args = args
+		self.kwargs = kwargs
+def tail_call_optimized(g):
+	def func(*args, **kwargs):
+		f = sys._getframe()
+		if f.f_back and f.f_back.f_back and f.f_back.f_back.f_code == f.f_code:
+			raise TailRecurseException(args, kwargs)
+		else:
+			while 1:
+				try:
+					return g(*args, **kwargs)
+				except TailRecurseException as e:
+					args = e.args
+					kwargs = e.kwargs
+	func.__doc__ = g.__doc__
+	return func
 
 def download_file(url, path):
     try:
@@ -322,11 +341,14 @@ def build_project_configs(app_path, config):
 
 			if core_failed == core_num:
 				if expected_file is not None:
-					expected_different[app_path] = []
 					expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
 					if not expected_status:
 						print "This application compile failed, but the expected result is pass"
-						expected_different[app_path].append(may_compare)
+						expected_different[app_path] = may_compare
+				else:
+					print "now not have expected file"
+					expected_different[app_path] = may_compare
+
 						
 
 	return status, results, build_count, expected_different
@@ -371,10 +393,9 @@ def show_results(results, expected=None):
 	failed_pt = PrettyTable(columns)
 	failed_results = []
 	success_results = []
-	expected_results = []
+	expected_results = None
 	success_pt = PrettyTable(columns)
 	expected_pt = PrettyTable(columns)
-
 	for result in results:
 		status = result.pop("status")
 		if status != 0:
@@ -388,12 +409,18 @@ def show_results(results, expected=None):
 		else:
 			result["PASS"] = "YES"
 			success_results.append([v for (k, v) in result.items()])
-		if expected is not None:
-			expected_results.append([v for (k, v) in result.items()])
 
+	if expected is not None:
+		expected_results = failed_results
+		for result in expected_results:
+			if len(result) > 0:
+				expected_pt.add_row(result)
+		if len(expected_results) > 0:
+			print "these applications failed with some bd_ver: "
+			print expected_pt
+			sys.stdout.flush()
+			return
 
-
-	print "Successfull results"
 	for result in success_results:
 		if len(result) > 0:
 			success_pt.add_row(result)
@@ -414,18 +441,11 @@ def show_results(results, expected=None):
 	print Fore.RED + "Failed result:"
 	print failed_pt
 	sys.stdout.flush()
-	for result in expected_results:
-		if len(result) > 0:
-			expected_pt.add_row(result)
-	if len(expected_results) > 0:
-		print "these applications failed with some bd_ver: "
-		print expected_pt
 
-
-def build_result_combine(results,formal_result=None):
+@tail_call_optimized
+def build_result_combine(results=None, formal_result=None):
 	first_result = results[0]
-	t = first_result.pop("conf")
-	first_result = results[0]
+	t = first_result.pop("conf")#first_result = results[0]
 	other_results = []
 	if formal_result is None:
 		formal_result = []
@@ -475,6 +495,14 @@ def application_all_failed(results):
 	else:
 		return 0
 
+def build_result_combine_tail(results):
+	results_list = []
+	for (app_path, result) in results.items():
+		formal_results = build_result_combine(result)
+		results_list.extend(formal_results)
+	return results_list
+
+
 def build_makefiles_project(config):
 	apps_results = {}
 	apps_status = []
@@ -485,7 +513,8 @@ def build_makefiles_project(config):
 	gnu_ver = "2017.09"
 	work_path = os.getcwd()
 	update_json = None
-	expected_differents = dict()
+	diff_expected_differents = dict()
+	expected_differents_list = []
 	if "EXAMPLES" in config and config["EXAMPLES"]:
 		examples_path = config.pop("EXAMPLES")
 		app_paths_list = get_exampes_from_input(examples_path)
@@ -502,7 +531,7 @@ def build_makefiles_project(config):
 	os.chdir(work_path)
 	for (app, app_path) in app_paths.items():
 		
-		status, results, build_count , expected_different = build_project_configs(app_path, config)
+		status, results, build_count, expected_different = build_project_configs(app_path, config)
 		application_failed = application_all_failed(results)
 		if application_failed == 1:
 			print Back.RED + "{} failed with all configurations".format(app_path)
@@ -512,24 +541,21 @@ def build_makefiles_project(config):
 		count += build_count
 		app_count += 1
 		if app_path in expected_different and len(expected_different[app_path]) > 0:
-			expected_differents[app_path] = expected_different[app_path]
+			diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
+
+	print diff_expected_differents
 	
 
 	cmp_result, cmp_item_reference = reference_results(apps_results, gnu_ver, update = update_json)
 
 	print "There are {} projects, and they are compiled for {} times".format(app_count, count)
-	for (app_path, result) in apps_results.items():
-		print "{} : ".format(app_path)
-
-
-
-		formal_result = build_result_combine(result)
-		results_list.extend(formal_result)
-
+	print "app results:  {} ".format(apps_results)
+	results_list = build_result_combine_tail(apps_results)
 	show_results(results_list)
-	sys.stdout.flush()
+	expected_differents_list = build_result_combine_tail(diff_expected_differents)
+	show_results(expected_differents_list, expected=True)
 
-	return cmp_result ,cmp_item_reference, applications_failed, expected_differents
+	return cmp_result ,cmp_item_reference, applications_failed, diff_expected_differents
 
 def reference_results(results, gnu_ver, update=None):
 	work_path = os.getcwd()
@@ -599,7 +625,7 @@ if __name__ == '__main__':
 		os.chdir(os.path.dirname(cwd_path))
 	key = 1
 	if key in applications_failed:
-		print "an application failed with all configurations"
+		print "there are some applications failed with all configurations"
 		sys.stdout.flush()
 	if len(expected_differents) > 0:
 
