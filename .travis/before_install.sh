@@ -21,4 +21,5 @@ set -x
     pip install sphinx_rtd_theme || die
     pip install PrettyTable || die
     pip install colorama || die
+    pip install configparser || die
 }
