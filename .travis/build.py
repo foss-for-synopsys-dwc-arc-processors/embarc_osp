@@ -290,6 +290,7 @@ def build_project_configs(app_path, config):
 	status = True
 	expected_file = None
 	expected_different = dict()
+	expected_different[app_path] = []
 
 	if "EXPECTED_RESULT" in make_configs and make_configs["EXPECTED_RESULT"] is not None:
 		expected_file = make_configs["EXPECTED_RESULT"]
@@ -344,10 +345,10 @@ def build_project_configs(app_path, config):
 					expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
 					if not expected_status:
 						print "This application compile failed, but the expected result is pass"
-						expected_different[app_path] = may_compare
+						expected_different[app_path].extend(may_compare)
 				else:
 					print "now not have expected file"
-					expected_different[app_path] = may_compare
+					expected_different[app_path].extend(may_compare)
 
 						
 
@@ -543,13 +544,9 @@ def build_makefiles_project(config):
 		if app_path in expected_different and len(expected_different[app_path]) > 0:
 			diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
 
-	print diff_expected_differents
-	
-
 	cmp_result, cmp_item_reference = reference_results(apps_results, gnu_ver, update = update_json)
 
 	print "There are {} projects, and they are compiled for {} times".format(app_count, count)
-	print "app results:  {} ".format(apps_results)
 	results_list = build_result_combine_tail(apps_results)
 	show_results(results_list)
 	expected_differents_list = build_result_combine_tail(diff_expected_differents)
