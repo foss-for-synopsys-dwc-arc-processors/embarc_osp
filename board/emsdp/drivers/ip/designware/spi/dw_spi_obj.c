@@ -128,14 +128,14 @@ static void dw_spi_0_install(void)
 
 #if (USE_DW_SPI_1)
 static void dw_spi_1_isr(void *ptr);
-#define DW_SPI_1_BASE		(EMSDP_SPI_BASE)		/*!< designware spi 1 relative baseaddr */
+#define DW_SPI_1_BASE		(EMSDP_FLASH_BASE)		/*!< designware spi 1 relative baseaddr */
 #define DW_SPI_1_INTNO		(EMSDP_SPI1_INTR)	/*!< designware spi 1 interrupt number  */
 #define DW_SPI_1_RX_SAMPLEDLY	0			/*!< designware spi 1 RXD Sample Delay  */
 
 #define DW_SPI_1_TX_FIFO_LEN	(32)
 #define DW_SPI_1_RX_FIFO_LEN	(32)
 
-#define DW_SPI_1_SUPPORTED_MODE	DW_SPI_SLAVE_SUPPORTED
+#define DW_SPI_1_SUPPORTED_MODE	DW_SPI_MASTER_SUPPORTED
 
 static DEV_SPI			dw_spi_1;			/*!< designware spi 1 object */
 static DW_SPI_CTRL		dw_spi_1_ctrl;			/*!< designware spi 1 ctrl */
@@ -190,7 +190,7 @@ static void dw_spi_1_install(void)
 	dw_spi_info_ptr->status = DEV_DISABLED;
 	dw_spi_info_ptr->freq = 1000;
 	dw_spi_info_ptr->opn_cnt = 0;
-	dw_spi_info_ptr->mode = DEV_SLAVE_MODE;
+	dw_spi_info_ptr->mode = DEV_MASTER_MODE;
 	dw_spi_info_ptr->clk_mode = SPI_CLK_MODE_DEFAULT;
 	dw_spi_info_ptr->slave = SPI_SLAVE_NOT_SELECTED;
 	dw_spi_info_ptr->dfs = SPI_DFS_DEFAULT;
