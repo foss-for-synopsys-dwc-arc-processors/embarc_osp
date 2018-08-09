@@ -119,7 +119,7 @@ static int cmd_lwm2m_server(int argc, char **argv, void *extobj)
 		return E_OK;
 	}
 
-	if (!lwip_pmwifi_isup()) {
+	if (!lwip_wifi_isup()) {
 		CMD_DEBUG("Wifi is not ready for lwM2M server.\r\n");
 		goto error_exit;
 	}
