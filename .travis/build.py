@@ -421,27 +421,28 @@ def show_results(results, expected=None):
 			print expected_pt
 			sys.stdout.flush()
 			return
+	else:
 
-	for result in success_results:
-		if len(result) > 0:
-			success_pt.add_row(result)
-	print Fore.GREEN + "Successfull results"
-	print success_pt
-	sys.stdout.flush()
+		for result in success_results:
+			if len(result) > 0:
+				success_pt.add_row(result)
+		print Fore.GREEN + "Successfull results"
+		print success_pt
+		sys.stdout.flush()
 
-	for result in failed_results:
-		if len(result) > 0:
-			list_key = range(len(result))
-			for i in list_key:
+		for result in failed_results:
+			if len(result) > 0:
+				list_key = range(len(result))
+				for i in list_key:
 
-				result[i] = Fore.RED + result[i]
+					result[i] = Fore.RED + result[i]
+					
+				failed_pt.add_row(result)
 				
-			failed_pt.add_row(result)
-			
 
-	print Fore.RED + "Failed result:"
-	print failed_pt
-	sys.stdout.flush()
+		print Fore.RED + "Failed result:"
+		print failed_pt
+		sys.stdout.flush()
 
 @tail_call_optimized
 def build_result_combine(results=None, formal_result=None):
