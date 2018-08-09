@@ -53,6 +53,8 @@
 #define AUX_MPU_ATTR_MASK (0xFFB)
 #elif ARC_FEATURE_MPU_VERSION == 4
 #define AUX_MPU_ATTR_MASK (0xFF81F9)
+#else
+#define AUX_MPU_ATTR_MASK (0xFFFFFFFF)
 #endif
 
 #define AUX_MPU_ATTR_UE  0x008    /* allow user execution */
