@@ -4,12 +4,24 @@ python: 2.7
 sudo: required
 dist: trusty
 
+env:
+  global:
+    - >
+      STATUS=$'curl -so/dev/null --user "$EMBARC_BOT" --request POST
+      https://api.github.com/repos/$TRAVIS_REPO_SLUG/statuses/${TRAVIS_PULL_REQUEST_SHA:-$TRAVIS_COMMIT}
+      --data @- << DATA\n{
+      "state": "$0",
+      "description": "$1",
+      "context": "travis-ci/$NAME",
+      "target_url": "https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID"
+      }\nDATA'
+
 cache:
   pip: true
   directories:
     - $HOME/.cache/result
     - $HOME/.cache/toolchain
-# Blacklist
+
 branches:
   except:
     - gh-pages
@@ -20,40 +32,59 @@ before_install:
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "Huaqi.Fang@synopsys.com"
 
+after_success:
+  - bash -c "$STATUS" success "Local $NAME testing has passed"
+
+after_failure:
+  - bash -c "$STATUS" failure "Local $NAME testing has failed"
+
 script:
   - bash .travis/script.sh
+  
 
 matrix:
   include:
-    - env: TOOLCHAIN="sphinx" OSP_ROOT="none" GNU_VER="none"
-      os: linux
-    - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
-      os: linux
-      compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="doc" TOOLCHAIN="sphinx" OSP_ROOT="none" GNU_VER="none"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="baremetal-gnu-201709-emsk" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="baremetal-gnu-201803-emsk" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="freertos-emsk-11-2017" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="freertos-emsk-11-2018" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="freertos-emsk-22-2017" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="freertos-emsk-22-2018" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="freertos-emsk-23-2017" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
-    - env: TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
+
+    - env: NAME="freertos-emsk-23-2018" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+      os: linux
+      compiler: gcc
+
+    - env: NAME="arc_feature-2017" TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
+      os: linux
+      compiler: gcc
+
+    - env: NAME="arc_feature-2018" TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
