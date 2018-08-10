@@ -1,6 +1,18 @@
 #define __ASSEMBLY__
 #include "secureshield_board_config.h"
 
+#ifdef CONTAINER_ROM_OBJS_LIST
+#define BACKGROUND_ROM_OBJS_LIST EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST)
+#else
+#define BACKGROUND_ROM_OBJS_LIST
+#endif
+
+#ifdef CONTAINER_RAM_OBJS_LIST
+#define BACKGROUND_RAM_OBJS_LIST EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST)
+#else
+#define BACKGROUND_RAM_OBJS_LIST
+#endif
+
 MEMORY {
 	NORMAL_ROM :	ORIGIN = NORMAL_ROM_START,	LENGTH = NORMAL_ROM_SIZE
 	SECURE_ROM :	ORIGIN = SECURE_ROM_START,	LENGTH = SECURE_ROM_SIZE
@@ -64,6 +76,7 @@ SECTIONS
 		_f_ram_secureshieldruntime = .;
 
 		KEEP(*(.ram.secureshield.secure))
+		KEEP(*(.ram.secureshield.stack))
 
 #if  SECURESHIELD_VERSION == 1
 		_e_ram_secureshieldruntime = _f_ram_secureshieldruntime + CONTAINER_SIZE_ALIGNMENT(. - _f_ram_secureshieldruntime);
@@ -102,7 +115,7 @@ SECTIONS
 	.text : ALIGN(4)
 	{
 		_f_text = .;
-		*(EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .text EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .text.* EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .gnu.linkonce.t.*)
+		*(BACKGROUND_ROM_OBJS_LIST .text BACKGROUND_ROM_OBJS_LIST .text.* BACKGROUND_ROM_OBJS_LIST .gnu.linkonce.t.*)
 		_e_text = .;
 	} > NORMAL_ROM
 
@@ -136,7 +149,7 @@ SECTIONS
 		LONG(0)
 		__DTOR_END__ = .;
 
-		*(EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .rodata EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .rodata.* EXCLUDE_FILE(CONTAINER_ROM_OBJS_LIST) .gnu.linkonce.r.*)
+		*(BACKGROUND_ROM_OBJS_LIST .rodata BACKGROUND_ROM_OBJS_LIST .rodata.* BACKGROUND_ROM_OBJS_LIST .gnu.linkonce.r.*)
 		_e_rodata = .;
 	} > NORMAL_ROM
 #if  SECURESHIELD_VERSION == 1
@@ -152,17 +165,17 @@ SECTIONS
 	} > NORMAL_ROM
 #endif
 	SECURESHIELD_REGION_CONTAINERS_ROM
-#endif	
+#endif
 
 	. = ORIGIN(NORMAL_RAM);
 
 	.data : ALIGN(4)
 	{	_f_data_background_container = .;
 		_f_data = .;
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data.* EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.d.*)
+		*(BACKGROUND_RAM_OBJS_LIST .data BACKGROUND_RAM_OBJS_LIST .data.* BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.d.*)
 		_f_sdata = .;
 		__SDATA_BEGIN__ = .;
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .sdata EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .sdata.* EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.s.*)
+		*(BACKGROUND_RAM_OBJS_LIST .sdata BACKGROUND_RAM_OBJS_LIST .sdata.* BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.s.*)
 		_e_sdata = .;
 		_e_data = .;
 		_e_data_background_container = .;
@@ -176,14 +189,14 @@ SECTIONS
 		PROVIDE (___sbss_start = .);
 		_f_bss = .;
 		_f_sbss = .;
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .dynsbss)
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .sbss EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .sbss.*  EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.sb.*)
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .scommon)
+		*(BACKGROUND_RAM_OBJS_LIST .dynsbss)
+		*(BACKGROUND_RAM_OBJS_LIST .sbss BACKGROUND_RAM_OBJS_LIST .sbss.*  BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.sb.*)
+		*(BACKGROUND_RAM_OBJS_LIST .scommon)
 		_e_sbss = .;
 		PROVIDE (__sbss_end = .);
 		PROVIDE (___sbss_end = .);
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .dynbss)
-		*(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .bss EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .bss.* EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.b.*)
+		*(BACKGROUND_RAM_OBJS_LIST .dynbss)
+		*(BACKGROUND_RAM_OBJS_LIST .bss BACKGROUND_RAM_OBJS_LIST .bss.* BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.b.*)
 		*( COMMON)
 		_e_bss = .;
 	} > NORMAL_RAM
