@@ -54,7 +54,7 @@
 #include "drivers/sysconf/sysconf.h"
 #include "common/iotdk_timer.h"
 #include "drivers/pmwifi/pmwifi.h"
-
+#include "drivers/smic/smic_adc/smic_adc.h"
 #include "iotdk_hardware.h"
 
 /*-----------------------------------------------------------------------------*/
