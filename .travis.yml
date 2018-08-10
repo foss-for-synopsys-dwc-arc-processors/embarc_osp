@@ -45,46 +45,46 @@ script:
 matrix:
   include:
 
-    - env: NAME="doc" TOOLCHAIN="sphinx" OSP_ROOT="none" GNU_VER="none"
+    - env: NAME="sphinx_doc" TOOLCHAIN="sphinx" OSP_ROOT="none" GNU_VER="none"
       os: linux
       compiler: gcc
 
-    - env: NAME="baremetal-gnu-201709-emsk" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
+    - env: NAME="baremetal-emsk-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="baremetal-gnu-201803-emsk" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
+    - env: NAME="baremetal-emsk-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-11-2017" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+    - env: NAME="freertos-emsk_11-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-11-2018" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+    - env: NAME="freertos-emsk_11-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-22-2017" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+    - env: NAME="freertos-emsk_22-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-22-2018" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+    - env: NAME="freertos-emsk_22-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-23-2017" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+    - env: NAME="freertos-emsk_23-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-23-2018" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
+    - env: NAME="freertos-emsk_23-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="arc_feature-2017" TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
+    - env: NAME="arc_feature-gnu-201709" TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2017.09" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="arc_feature-2018" TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
+    - env: NAME="arc_feature-gnu-201803" TOOLCHAIN="gnu" OSP_ROOT="." GNU_VER="2018.03" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".travis/expected.ini"
       os: linux
       compiler: gcc
