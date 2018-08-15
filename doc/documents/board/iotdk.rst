@@ -14,8 +14,8 @@ I/O functions and fast math (trigonometric) accelerator.
 .. image:: /pic/iotdk_board.jpg
     :alt: DesignWare ARC IoT Development Kit        
 
-DesignWare ARC IoT Development Kit contains the following components:
-=====================================================================
+Components:
+---------------------------------------------------------------------
 
 - ARC IoT ASIC:
     - EM9D based Data Fusion subsystem
@@ -45,8 +45,8 @@ DesignWare ARC IoT Development Kit contains the following components:
 .. image:: /pic/iotdk_chip.jpg
     :alt: ARC IoTDK Chip Block Diagram
 
-The ARC IoT ASIC provides the following main features:
-======================================================
+Features:
+------------------------------------------------------
 
 - DesignWare ARC Data Fusion Subsystem
     - EM9D Core @ 144 MHz
@@ -81,8 +81,8 @@ The ARC IoT ASIC provides the following main features:
     - 2 PWM timers (1 timer for channel 1/2/3 and 1 timer for channel 4/5/6)
 - ADC interface, 16-channel single-ended 12-bit ADC
 
-The ARC IOT ASIC Clocks
-=======================
+Clocks
+-----------------------
 
 The ARC IoT ASIC uses a single 16MHz reference clock from which all the main system clocks are generated. 
 The clock generation is centralized in the SYSCONFIG module. The SYSCONFIG module implements a single PLL 
@@ -92,7 +92,7 @@ and integer dividers which allows for accurate fine-tuning of the system clocks 
     :alt: ARC IoTDK Clock Architecture
 
 Configuration switches
-======================
+----------------------
 
 1. FWU switch (This switch is used for Firmware Updates)
     Ensure that this switch is set to “off” as depicted on the left (default position).
@@ -117,15 +117,15 @@ Configuration switches
     either continues execution of the Uboot bootloader or starts executing the Firmware Update procedure.
 
 Extension Interfaces
-====================
+--------------------
 
 To bring your application context around the ARC IoTDK, the following peripheral module standards are supported:
 
 .. image:: /pic/iotdk_extension_interfaces.jpg
     :alt: ARC IoTDK Extension Interfaces
 
-Digilent Pmod™ (2x)
--------------------
+**Digilent Pmod™ (2x)**
+
 
 The ARC IoTDK features two 12-pin Pmod connectors Pmod_B and Pmod_C. The functionality of the Pmod connectors 
 is programmable and includes GPIO [6] and SPI [15] for Pmod_B and GPIO [6] and UART [14] for Pmod_C. 
@@ -155,8 +155,8 @@ B12    3V3           GND                C12    3V3           GND
 =====  ============  ============       =====  ============  ============
 
 
-MikroBUS (1x)
--------------
+**MikroBUS (1x)**
+
 
 The ARC IoTDK features a set of MikroBUS headers. The picture below shows the relevant function assignments, 
 fully compatible with the MikroBUS standard [2]. The MikroBUS headers enable the addition of Click 
@@ -170,8 +170,8 @@ ARDUINO_MUX register
 .. image:: /pic/iotdk_mikrobus_headers.jpg
     :alt: ARC IoTDK MikroBUS Headers
 
-Arduino (1x)
-------------
+**Arduino (1x)**
+
 
 The ARC IoTDK provides an Arduino shield interface. The picture below shows the relevant function assignments. 
 The Arduino shield interface is compatible with the Arduino UNO R3 with the following exceptions: 5 Volt shields are not supported, 
@@ -208,8 +208,8 @@ IO12   Bit 1	    gpio8b_3[0]	           spi2_miso   gpio8b_3[0]
 IO13   Bit 1	    gpio8b_3[1]	           spi2_clk    gpio8b_3[1]
 ====== ============ ===================== ============ ============
 
-2x18 Pin Extension Header
--------------------------
+**2x18 Pin Extension Header**
+
 
 .. image:: /pic/iotdk_2x18_pin_extension_header.jpg
     :alt: ARC IoTDK 2x18 Pin Extension Header
