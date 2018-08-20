@@ -5,15 +5,17 @@ die() {
     exit 1
 }
 
-set -x
+if [ $TRAVIS == true ] ; then
+    set -x
+    [ $TRAVIS_OS_NAME != linux ] || {
+        sudo apt-get update || die
+        sudo apt-get install lib32z1 || die
+        sudo apt-get install dos2unix || die
+        sudo apt-get install doxygen || die
+    }
+fi
 
-
-[ $TRAVIS_OS_NAME != linux ] || {
-    mkdir -p $HOME/.cache/result
-    sudo apt-get update || die
-    sudo apt-get install lib32z1 || die
-    sudo apt-get install dos2unix || die
-    sudo apt-get install doxygen || die
+{
     pip install --upgrade pip || die
     pip install git+https://github.com/sphinx-doc/sphinx || die
     pip install breathe || die
