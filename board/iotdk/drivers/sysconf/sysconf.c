@@ -65,6 +65,8 @@ static const PLL_CONF pll_configuration[] = {
 	{180, PLL_CONF_VAL(8, 180, 1)}, /* 180 Mhz */
 };
 
+
+void eflash_clk_div(uint8_t div);
 /**
  * PLL Fout = Fin * M/ (N *n NO)
  *
@@ -97,6 +99,7 @@ void pll_conf_reg(uint32_t val)
 	sysconf_reg_ptr->AHBCLKDIV_SEL |= 1;
 	/* AHB clk divisor = 1 */
 	sysconf_reg_ptr->AHBCLKDIV = 0x1;
+	eflash_clk_div(2);
 }
 
 
@@ -360,7 +363,7 @@ void arduino_pin_mux(uint8_t pin, uint8_t function)
 		return;
 	}
 
-	if (pin == ARDUINO_RESERVED || pin == ARDUINO_SPI_MASK || 
+	if (pin == ARDUINO_RESERVED || pin == ARDUINO_SPI_MASK ||
 	   pin == ARDUINO_IIC_MASK) {
 		return;
 	}
@@ -385,7 +388,7 @@ void arduino_pin_mux(uint8_t pin, uint8_t function)
 		val &= (~(1 << pin));
 	} else if (function == ARDUINO_FUNC_2ND || function == ARDUINO_FUNC_3RD) {
 		val |= (1 << pin);
-	} 
+	}
 
 	sysconf_reg_ptr->ARDUINO_MUX = val;
 }
@@ -410,4 +413,9 @@ void pwm_timer_pause(uint32_t id, uint32_t pause)
 	}
 
 	sysconf_reg_ptr->TIMER_PAUSE = val;
+}
+
+void eflash_clk_div(uint8_t div)
+{
+	sysconf_reg_ptr->AHBCLKDIV |= (div << 8);
 }
