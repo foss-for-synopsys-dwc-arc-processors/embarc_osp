@@ -223,7 +223,7 @@ def build_project_configs(app_path, config):
 	expected_file = None
 	expected_different = dict()
 	expected_different[app_path] = []
-	parallel = 1
+	parallel = "1"
 
 	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
 		parallel = make_configs["PARALLEL"]
