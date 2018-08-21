@@ -66,7 +66,6 @@ static const PLL_CONF pll_configuration[] = {
 };
 
 
-void eflash_clk_div(uint8_t div);
 /**
  * PLL Fout = Fin * M/ (N *n NO)
  *
@@ -99,9 +98,7 @@ void pll_conf_reg(uint32_t val)
 	sysconf_reg_ptr->AHBCLKDIV_SEL |= 1;
 	/* AHB clk divisor = 1 */
 	sysconf_reg_ptr->AHBCLKDIV = 0x1;
-	eflash_clk_div(2);
 }
-
 
 int32_t pll_fout_config(uint32_t freq)
 {
@@ -123,9 +120,16 @@ int32_t pll_fout_config(uint32_t freq)
 
 	pll_conf_reg(pll_configuration[i].pll);
 
+
+	/* config eflash clk, must be < 100 Mhz */
+	if (freq > 100) {
+		eflash_clk_div(2);
+	} else {
+		eflash_clk_div(1);
+	}
+
 	return 0;
 }
-
 
 void ahb_clk_divisor(uint8_t div)
 {
@@ -315,7 +319,6 @@ void dvfs_clk_divisor(uint8_t level, uint8_t div)
 			(sysconf_reg_ptr->DVFS_CLKDIV & 0x00ffffff) | (div << 24);
 	}
 }
-
 
 void dvfs_vdd_config(uint8_t level, uint8_t val)
 {

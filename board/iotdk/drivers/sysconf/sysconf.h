@@ -191,6 +191,7 @@ extern void uart3_clk_divisor(uint8_t div);
 extern void pmode_mux_config(uint8_t val);
 extern void arduino_pin_mux(uint8_t pin, uint8_t function);
 extern void reset_powerdown_vector(uint32_t addr);
+extern void eflash_clk_div(uint8_t div);
 
 
 #ifdef __cplusplus
