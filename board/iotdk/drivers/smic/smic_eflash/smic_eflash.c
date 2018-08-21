@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -36,134 +36,19 @@
 
 #include "smic_eflash.h"
 
-#define SMIC_EFLASH_CHECK_EXP_NORTN(EXPR)		    CHECK_EXP_NOERCD(EXPR, error_exit)
-#define SMIC_EFLASH_CHECK_EXP(EXPR, ERROR_CODE)    CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define SMIC_EFLASH_CHECK_EXP_NORTN(EXPR)	CHECK_EXP_NOERCD(EXPR, error_exit)
+#define SMIC_EFLASH_CHECK_EXP(EXPR, ERROR_CODE) CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
-#define FMC_BUSY_MASK	(1<<5)
+#define FMC_BUSY_MASK   (1<<5)
 
-typedef enum
-{
-	FMC_CMD_DEFT		= 0,	// default
-	FMC_CMD_READ		= 1,	// Flash Read
-	FMC_CMD_PROG		= 2,	// Flash Program
-	FMC_CMD_PAGE_ERASE	= 3,	// Code Flash page erase (512bytes per page)
-	FMC_CMD_MACRO_ERASE	= 7		// Erase whole code flash
-}E_FMC_CMD;
+typedef enum {
+	FMC_CMD_DEFT        = 0, // default
+	FMC_CMD_READ        = 1, // Flash Read
+	FMC_CMD_PROG        = 2, // Flash Program
+	FMC_CMD_PAGE_ERASE  = 3, // Code Flash page erase (512bytes per page)
+	FMC_CMD_MACRO_ERASE = 7  // Erase whole code flash
+} E_FMC_CMD;
 
-static void smic_eflash_set_lock(SMIC_EFLASH_DEF_PTR obj, E_FMC_LOCK lock);
-static void smic_eflash_macro_erase(SMIC_EFLASH_DEF_PTR obj);
-static void smic_eflash_page_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t ofst);
-
-int32_t smic_eflash_open(SMIC_EFLASH_DEF_PTR obj)
-{
-    int32_t ercd = E_OK;
-    SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
-    SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt == 0, E_OPNED);
-
-    obj->eflash_open_cnt++;
-    smic_eflash_set_lock(obj, FMC_UNLOCK);
-    obj->eflash_lock = FMC_UNLOCK;
-
-error_exit:
-    return ercd;
-}
-
-
-int32_t smic_eflash_close(SMIC_EFLASH_DEF_PTR obj)
-{
-    int32_t ercd = E_OK;
-    SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
-    SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
-
-    obj->eflash_open_cnt = 0;
-    smic_eflash_set_lock(obj, FMC_LOCK);
-    obj->eflash_lock = FMC_LOCK;
-
-error_exit:
-    return ercd;
-}
-
-
-int32_t smic_eflash_read(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
-{
-    int32_t ercd = E_OK;
-    uint32_t i;
-	uint8_t *p_addr = (uint8_t *)(EFLASH_BASE_ADDR + addr);
-    SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
-    SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
-
-    for (i = 0; i < len; i++)
-	{
-		*val++ = *p_addr++;
-	}
-
-error_exit:
-    return ercd;
-}
-
-
-int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
-{
-    int32_t ercd = E_OK;
-    uint32_t i;
-	uint8_t *p_addr = (uint8_t *)(EFLASH_BASE_ADDR + addr);
-    SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
-    SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
-
-    for (i = 0; i < len; i++)
-	{
-	    *p_addr++ = *val++;
-        while (1)
-        {
-            if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK)
-            {
-                break;
-            }
-        }
-	}
-
-error_exit:
-    return ercd;
-}
-
-
-int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *param)
-{
-    int32_t ercd = E_OK;
-    SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
-    SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
-    if(ctrl_cmd != SMIC_EFLASH_SET_LOCK && ctrl_cmd != SMIC_EFLASH_GET_LOCK &&
-       ctrl_cmd != SMIC_EFLASH_PAGE_ERASE && ctrl_cmd != SMIC_EFLASH_MACRO_ERASE &&
-       ctrl_cmd != SMIC_EFLASH_GET_INFO) {
-           ercd = E_PAR;
-           goto error_exit;
-       }
-    switch (ctrl_cmd) {
-        case SMIC_EFLASH_SET_LOCK:
-            SMIC_EFLASH_CHECK_EXP(*((E_FMC_LOCK *)param) != FMC_LOCK && \
-            *((E_FMC_LOCK *)param) != FMC_UNLOCK, E_PAR);
-            obj->eflash_reg->FMCLOCK = *((E_FMC_LOCK *)param);
-            obj->eflash_lock = *((E_FMC_LOCK *)param);
-            break;
-        case SMIC_EFLASH_GET_LOCK:
-            *((E_FMC_LOCK *)param) = obj->eflash_lock;
-            break;
-        case SMIC_EFLASH_PAGE_ERASE:
-            smic_eflash_page_erase(obj, *((uint32_t*)param));
-            break;
-        case SMIC_EFLASH_MACRO_ERASE:
-            smic_eflash_macro_erase(obj);
-            break;
-        case SMIC_EFLASH_GET_INFO:
-            ((SMIC_EFLASH_INFO *)param)->eflash_page_cnt = obj->eflash_page_cnt;
-            ((SMIC_EFLASH_INFO *)param)->eflash_page_size = obj->eflash_page_size;
-            break;
-        default:
-            break;
-    }
-error_exit:
-    return ercd;
-}
 
 static void smic_eflash_set_lock(SMIC_EFLASH_DEF_PTR obj, E_FMC_LOCK lock)
 {
@@ -172,15 +57,11 @@ static void smic_eflash_set_lock(SMIC_EFLASH_DEF_PTR obj, E_FMC_LOCK lock)
 
 static void smic_eflash_macro_erase(SMIC_EFLASH_DEF_PTR obj)
 {
-
-
 	obj->eflash_reg->FMCADR = EFLASH_BASE_ADDR + 0;
 	obj->eflash_reg->FMCCMD = FMC_CMD_MACRO_ERASE;
 
-	while (1)
-	{
-		if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK)
-		{
+	while (1) {
+		if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK) {
 			break;
 		}
 	}
@@ -188,16 +69,123 @@ static void smic_eflash_macro_erase(SMIC_EFLASH_DEF_PTR obj)
 
 static void smic_eflash_page_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t ofst)
 {
-
-
 	obj->eflash_reg->FMCADR = EFLASH_BASE_ADDR + ofst;
 	obj->eflash_reg->FMCCMD = FMC_CMD_PAGE_ERASE;
 
-	while (1)
-	{
-		if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK)
-		{
+	while (1) {
+		if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK) {
 			break;
 		}
 	}
+}
+
+int32_t smic_eflash_open(SMIC_EFLASH_DEF_PTR obj)
+{
+	int32_t ercd = E_OK;
+
+	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt == 0, E_OPNED);
+
+	obj->eflash_open_cnt++;
+	smic_eflash_set_lock(obj, FMC_UNLOCK);
+	obj->eflash_lock = FMC_UNLOCK;
+
+error_exit:
+	return ercd;
+}
+
+int32_t smic_eflash_close(SMIC_EFLASH_DEF_PTR obj)
+{
+	int32_t ercd = E_OK;
+
+	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
+
+	obj->eflash_open_cnt = 0;
+	smic_eflash_set_lock(obj, FMC_LOCK);
+	obj->eflash_lock = FMC_LOCK;
+
+error_exit:
+	return ercd;
+}
+
+int32_t smic_eflash_read(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
+{
+	int32_t ercd = E_OK;
+	uint32_t i;
+	uint8_t *p_addr = (uint8_t *)(EFLASH_BASE_ADDR + addr);
+
+	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
+
+	for (i = 0; i < len; i++) {
+		*val++ = *p_addr++;
+	}
+
+error_exit:
+	return ercd;
+}
+
+int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
+{
+	int32_t ercd = E_OK;
+	uint32_t i;
+	uint8_t *p_addr = (uint8_t *)(EFLASH_BASE_ADDR + addr);
+
+	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
+
+	for (i = 0; i < len; i++) {
+		*p_addr++ = *val++;
+		while (1) {
+			if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK) {
+				break;
+			}
+		}
+	}
+
+error_exit:
+	return ercd;
+}
+
+int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *param)
+{
+	int32_t ercd = E_OK;
+
+	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
+
+	if(ctrl_cmd != SMIC_EFLASH_SET_LOCK && ctrl_cmd != SMIC_EFLASH_GET_LOCK &&
+	   ctrl_cmd != SMIC_EFLASH_PAGE_ERASE && ctrl_cmd != SMIC_EFLASH_MACRO_ERASE &&
+	   ctrl_cmd != SMIC_EFLASH_GET_INFO) {
+		ercd = E_PAR;
+		goto error_exit;
+	}
+
+	switch (ctrl_cmd) {
+		case SMIC_EFLASH_SET_LOCK:
+			SMIC_EFLASH_CHECK_EXP(*((E_FMC_LOCK *)param) != FMC_LOCK && \
+			*((E_FMC_LOCK *)param) != FMC_UNLOCK, E_PAR);
+			obj->eflash_reg->FMCLOCK = *((E_FMC_LOCK *)param);
+			obj->eflash_lock = *((E_FMC_LOCK *)param);
+			break;
+		case SMIC_EFLASH_GET_LOCK:
+			*((E_FMC_LOCK *)param) = obj->eflash_lock;
+			break;
+		case SMIC_EFLASH_PAGE_ERASE:
+			smic_eflash_page_erase(obj, *((uint32_t*)param));
+			break;
+		case SMIC_EFLASH_MACRO_ERASE:
+			smic_eflash_macro_erase(obj);
+			break;
+		case SMIC_EFLASH_GET_INFO:
+			((SMIC_EFLASH_INFO *)param)->eflash_page_cnt = obj->eflash_page_cnt;
+			((SMIC_EFLASH_INFO *)param)->eflash_page_size = obj->eflash_page_size;
+			break;
+		default:
+			break;
+	}
+
+error_exit:
+	return ercd;
 }

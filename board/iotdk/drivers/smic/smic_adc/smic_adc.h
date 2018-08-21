@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -33,7 +33,7 @@
 #include "arc_exception.h"
 
 #define ADC_CRTL_BASE           0xF0007000
-#define ADC_CHANNEL_MAX			16
+#define ADC_CHANNEL_MAX		16
 #define ADC_INT_NUM             97
 
 #define SMIC_ADC_SET_MODE       0
@@ -45,9 +45,8 @@
 extern "C" {
 #endif
 
-typedef volatile struct smic_adc_reg
-{
-	//ADC control register 
+typedef volatile struct smic_adc_reg {
+	//ADC control register
 	uint32_t ADCCON;//(0x00)
 	//ADC scan control register
 	uint32_t ADCSCAN;//(0x04)
@@ -64,8 +63,8 @@ typedef volatile struct smic_adc_reg
 	//RESERVED
 	uint32_t RESERVED[2];//(0x38 0x3C)
 	//ADC channel 8 data register
-	uint32_t ADCD8_15[8];//(0x40)	
-}SMIC_ADC_REG, *SMIC_ADC_REG_PTR;
+	uint32_t ADCD8_15[8];//(0x40)
+} SMIC_ADC_REG, *SMIC_ADC_REG_PTR;
 
 typedef enum {
 	ADC_MODE_SINGLE	= 0,
@@ -74,33 +73,33 @@ typedef enum {
 
 
 typedef void (*SMIC_ADC_CALLBACK)(void *ptr);
+
 typedef struct{
 	uint8_t channel;
 	SMIC_ADC_CALLBACK isr;
-}SMIC_ADC_CALLBACK_BIT;
+} SMIC_ADC_CALLBACK_BIT;
+
 typedef volatile struct{
-    SMIC_ADC_REG_PTR      adc_reg;
-    SMIC_ADC_MODE         adc_mode;
-	uint8_t               adc_channel_max;   
-	uint8_t               adc_open_cnt; 
-	uint8_t               adc_intno;
-	uint16_t              adc_ready_flag;
-	uint16_t              adc_data[ADC_CHANNEL_MAX];    
-	SMIC_ADC_CALLBACK     adc_callback[ADC_CHANNEL_MAX];
-	INT_HANDLER			  adc_handle;
-}SMIC_ADC_DEF, *SMIC_ADC_DEF_PTR;
-
-
+	SMIC_ADC_REG_PTR adc_reg;
+	SMIC_ADC_MODE adc_mode;
+	uint8_t adc_channel_max;
+	uint8_t adc_open_cnt;
+	uint8_t adc_intno;
+	uint16_t adc_ready_flag;
+	uint16_t adc_data[ADC_CHANNEL_MAX];
+	SMIC_ADC_CALLBACK adc_callback[ADC_CHANNEL_MAX];
+	INT_HANDLER adc_handle;
+} SMIC_ADC_DEF, *SMIC_ADC_DEF_PTR;
 
 
 #define ADC_DEFINE(NAME, INT_NUM, REG_BASE, HANDLE) \
 	SMIC_ADC_DEF __ ## NAME = { \
-			.adc_mode = ADC_MODE_SINGLE, \
-			.adc_channel_max = ADC_CHANNEL_MAX, \
-			.adc_open_cnt = 0, \
-			.adc_intno = INT_NUM, \
-			.adc_handle = HANDLE, \
-			.adc_reg = (SMIC_ADC_REG_PTR)REG_BASE, \
+		.adc_mode = ADC_MODE_SINGLE, \
+		.adc_channel_max = ADC_CHANNEL_MAX, \
+		.adc_open_cnt = 0, \
+		.adc_intno = INT_NUM, \
+		.adc_handle = HANDLE, \
+		.adc_reg = (SMIC_ADC_REG_PTR)REG_BASE, \
 	}; \
 	SMIC_ADC_DEF_PTR NAME = &__ ## NAME
 
@@ -114,4 +113,4 @@ extern int32_t smic_adc_int_isr(SMIC_ADC_DEF_PTR obj, void *ptr);
 }
 #endif
 
-#endif
+#endif /* _SMIC_ADC_H_ */
