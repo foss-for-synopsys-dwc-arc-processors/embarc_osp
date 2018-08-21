@@ -161,8 +161,7 @@ def build_makefile_project(app_path, config):
 	bd_ver = make_configs["BD_VER"]
 	cur_core = make_configs["CUR_CORE"]
 	toolchain_ver = make_configs["TOOLCHAIN_VER"]
-	print os.getcwd()
-
+	parallel = make_configs["PARALLEL"]
 	conf_key = board + "_" + bd_ver + "_" + cur_core
 
 	tcf_name = cur_core + ".tcf"
@@ -184,7 +183,7 @@ def build_makefile_project(app_path, config):
 			    print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
 			    print Style.RESET_ALL
 			    sys.stdout.flush()
-			    make_cmd = "make -j SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
+			    make_cmd = "make -j " + parallel + " SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
 			    cleancommand = make_cmd + " clean"
 			    os.system(cleancommand)
 			    buildcommand = make_cmd
@@ -224,7 +223,10 @@ def build_project_configs(app_path, config):
 	expected_file = None
 	expected_different = dict()
 	expected_different[app_path] = []
+	parallel = 1
 
+	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
+		parallel = make_configs["PARALLEL"]
 	if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
 		expected_file = make_configs["EXPECTED"]
 
@@ -262,6 +264,7 @@ def build_project_configs(app_path, config):
 				make_config["CUR_CORE"] = cur_core
 				make_config["TOOLCHAIN"] = toolchain
 				make_config["TOOLCHAIN_VER"] = toolchain_ver
+				make_config["PARALLEL"] = parallel
 				isMakefileProject, result = build_makefile_project(app_path, make_config)
 				if isMakefileProject is False:
 					print "Application {} doesn't have makefile".format(app_path)
@@ -502,6 +505,7 @@ def get_options_parser():
 	parser.add_argument("--toolchian_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
 	parser.add_argument("-e", "--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
 	parser.add_argument("-f", "--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
+	parser.add_argument("-p", "--parallel", dest="parallel", type=int, help=("Compile the application in parallel"), metavar="NUMBER")
 	options = parser.parse_args()
 	if options.osp_root:
 		configs["OSP_ROOT"] = options.osp_root
@@ -519,13 +523,15 @@ def get_options_parser():
 		configs["EXAMPLES"] = options.examples
 	if options.expected:
 		configs["EXPECTED"] = options.expected
+	if options.parallel:
+		configs["parallel"] = options.parallel
 	return configs
 
 if __name__ == '__main__':
 
 	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
-	make_config = get_options_parser() #get_config(sys.argv[1:])
+	make_config = get_config(sys.argv[1:]) #get_options_parser() #
 	sys.stdout.flush()
 	os.chdir(osp_path)
 	applications_failed, expected_differents = build_makefiles_project(make_config)

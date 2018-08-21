@@ -16,10 +16,12 @@ fi
 
 {
     pip install --upgrade pip || die
-    pip install git+https://github.com/sphinx-doc/sphinx || die
-    pip install breathe || die
-    pip install recommonmark || die
-    pip install sphinx_rtd_theme || die
+    [ $TRAVIS == true ] && {
+        pip install git+https://github.com/sphinx-doc/sphinx || die
+        pip install breathe || die
+        pip install recommonmark || die
+        pip install sphinx_rtd_theme || die   
+    }
     pip install PrettyTable || die
     pip install colorama || die
     pip install configparser || die
