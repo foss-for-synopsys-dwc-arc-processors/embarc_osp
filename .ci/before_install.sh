@@ -6,7 +6,6 @@ die() {
 }
 
 if [ $TRAVIS == true ] ; then
-    set -x
     [ $TRAVIS_OS_NAME != linux ] || {
         sudo apt-get update || die
         sudo apt-get install lib32z1 || die

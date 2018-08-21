@@ -8,6 +8,7 @@ from prettytable import PrettyTable
 from colorama import init, Fore, Back, Style
 from configparser import ConfigParser
 import copy
+import argparse
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"example/baremetal/arc_feature/udma",
@@ -41,7 +42,6 @@ example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
 default_root = "."
-cache_folder = ".cache/result"
 
 class TailRecurseException:
 	def __init__(self, args, kwargs):
@@ -161,7 +161,7 @@ def build_makefile_project(app_path, config):
 	board = make_configs["BOARD"]
 	bd_ver = make_configs["BD_VER"]
 	cur_core = make_configs["CUR_CORE"]
-	gnu_ver = make_configs["TOOLCHAIN_VER"]
+	toolchain_ver = make_configs["TOOLCHAIN_VER"]
 	print os.getcwd()
 
 	conf_key = board + "_" + bd_ver + "_" + cur_core
@@ -194,14 +194,14 @@ def build_makefile_project(app_path, config):
 			    result["app"] = app_path
 			    result["conf"] = conf_key
 			    result["toolchain"] = toolchain
-			    result["gnu_ver"] = gnu_ver
+			    result["toolchain_ver"] = toolchain_ver
 			    os.chdir(cur_dir)
 			else:
 				result["status"] = 1
 				result["app"] = app_path
 				result["conf"] = Fore.YELLOW + conf_key
 				result["toolchain"] = toolchain
-				result["gnu_ver"] = gnu_ver
+				result["toolchain_ver"] = toolchain_ver
 
 	else:
 		isMakeProject = False
@@ -214,7 +214,7 @@ def build_project_configs(app_path, config):
 	board_input = None
 	bd_ver_input = None
 	cur_core_input = None
-	gnu_ver = "2017.09"
+	toolchain_ver = "2017.09"
 	bd_vers = dict()
 	cur_cors = dict()
 	make_config = dict()
@@ -230,7 +230,7 @@ def build_project_configs(app_path, config):
 		expected_file = make_configs["EXPECTED"]
 
 	if "TOOLCHAIN_VER" in make_configs and make_configs["TOOLCHAIN_VER"] is not None:
-		gnu_ver = make_configs["TOOLCHAIN_VER"]
+		toolchain_ver = make_configs["TOOLCHAIN_VER"]
 
 	if "TOOLCHAIN" in make_configs and make_configs["TOOLCHAIN"] is not None:
 		toolchain = make_configs["TOOLCHAIN"]
@@ -262,7 +262,7 @@ def build_project_configs(app_path, config):
 				make_config["BD_VER"] = bd_ver
 				make_config["CUR_CORE"] = cur_core
 				make_config["TOOLCHAIN"] = toolchain
-				make_config["TOOLCHAIN_VER"] = gnu_ver
+				make_config["TOOLCHAIN_VER"] = toolchain_ver
 				isMakefileProject, result = build_makefile_project(app_path, make_config)
 				if isMakefileProject is False:
 					print "Application {} doesn't have makefile".format(app_path)
@@ -448,7 +448,7 @@ def build_makefiles_project(config):
 	app_count = 0
 	results_list = []
 	applications_failed =[]
-	gnu_ver = "2017.09"
+	toolchain_ver = "2017.09"
 	work_path = os.getcwd()
 	update_json = None
 	diff_expected_differents = dict()
@@ -461,7 +461,7 @@ def build_makefiles_project(config):
 	else:
 		app_paths = example
 	if "TOOLCHAIN_VER" in config and config["TOOLCHAIN_VER"] is not None:
-		gnu_ver = config["TOOLCHAIN_VER"]
+		toolchain_ver = config["TOOLCHAIN_VER"]
 	if "UPDATE_JSON" in config and config["UPDATE_JSON"] is not None:
 		update_json = config["UPDATE_JSON"]
 
@@ -480,7 +480,7 @@ def build_makefiles_project(config):
 		if app_path in expected_different and len(expected_different[app_path]) > 0:
 			diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
 
-	#cmp_result, cmp_item_reference = reference_results(apps_results, gnu_ver, update = update_json)
+
 
 	print "There are {} projects, and they are compiled for {} times".format(app_count, count)
 	results_list = build_result_combine_tail(apps_results)
@@ -490,72 +490,48 @@ def build_makefiles_project(config):
 
 	return applications_failed, diff_expected_differents
 
-def reference_results(results, gnu_ver, update=None):
-	work_path = os.getcwd()
-	results_dict = dict()
-	results_dict[gnu_ver] = results
-	reference_result = None
-	cmp_result = None
-	sys.stdout.flush()
-	cmp_item_reference = 0
-	
-	try:
-		os.chdir(cache_folder)
-		json_file = gnu_ver + ".json"
-		if json_file not in os.listdir(os.getcwd()):
-			with open(json_file, "w") as f:
-				json.dump(results_dict, f)
-				reference_result = results_dict
-			cmp_result = 0
-		else:
-			if update is not None:
-				with open(json_file, "w") as f:
-					json.dump(results_dict, f)
-					return 0 ,cmp_item_reference
-			with open(json_file, "r") as f:
-				reference_result = json.load(f)
-				cmp_result = cmp(reference_result, results_dict)
-				if cmp_result != 0:
-					reference_result_list = reference_result[gnu_ver]
-					if len(reference_result_list) == len(results):
-						cmp_item_reference = 1
-					elif len(reference_result_list) < len(results):
-						cmp_list = 0
-						for ref in reference_result_list:
-							if ref in results:
-								cmp_list += 1
-						if cmp_list != len(reference_result_list):
-							cmp_item_reference = 1
-					else:
-						cmp_list = 0
-						for result in results:
-							if reuslt in reference_result_list:
-								cmp_list += 1
-						if cmp_list != len(results):
-							cmp_item_reference = 1
-
-		return cmp_result, cmp_item_reference
-		
-	except Exception:
-		print "Can not find the cache file"
-
+def get_options_parser():
+	configs = dict()
+	toolchainlist = ["gnu", "mw"]
+	boardlist = ["emsk", "nsim", "axs", "hsdk"]
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-r", "--osp_root", dest="osp_root",default=None, help=("the path of embarc_osp"), metavar="OSP_ROOT")
+	parser.add_argument("-t", "--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
+	parser.add_argument("-b", "--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
+	parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
+	parser.add_argument("-c", "--cur_core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
+	parser.add_argument("--toolchian_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
+	parser.add_argument("-e", "--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
+	parser.add_argument("-f", "--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
+	options = parser.parse_args()
+	if options.osp_root:
+		configs["OSP_ROOT"] = options.osp_root
+	if options.toolchain:
+		configs["TOOLCHAIN"] = options.toolchain
+	if options.board:
+		configs["BOARD"] = options.board
+	if options.bd_ver:
+		configs["BD_VER"] = options.bd_ver
+	if options.cur_core:
+		configs["CUR_CORE"] = options.cur_core
+	if options.toolchain_ver:
+		configs["TOOLCHAIN_VER"] = options.toolchain_ver
+	if options.examples:
+		configs["EXAMPLES"] = options.examples
+	if options.expected:
+		configs["EXPECTED"] = options.expected
+	return configs
 
 if __name__ == '__main__':
 
 	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
-	make_config = get_config(sys.argv[1:])
+	make_config = get_options_parser() #get_config(sys.argv[1:])
 	sys.stdout.flush()
 	os.chdir(osp_path)
-	if not os.path.exists(cache_folder):
-		os.makedirs(cache_folder)
-	else:
-		print Fore.BLUE + "cache files"
-		print os.listdir(cache_folder)
-		print Style.RESET_ALL
 	applications_failed, expected_differents = build_makefiles_project(make_config)
 	os.chdir(cwd_path)
-	if "embbarc_applications" in os.listdir(os.getcwd()):
+	if "embarc_applications" in os.listdir(os.getcwd()):
 		os.chdir(os.path.dirname(cwd_path))
 	key = 1
 	if key in applications_failed:

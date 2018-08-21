@@ -6,15 +6,17 @@ import os
 import sys
 import shutil
 from colorama import init, Fore, Back, Style
-cache_gnu = ".cache/toolchain"
+import argparse
+
 def download_file(url, path):
     try:
     	urllib.urlretrieve(url, path)
+    	return 0
     except Exception as e:
     	print e
     	print "This file from %s can't be download"%(url)
     	sys.stdout.flush()
-    	sys.exit(1)
+    	return 1
     	
 def download_gnu(version="2017.09", path=None):
 	baseurl = "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/"
@@ -33,10 +35,9 @@ def download_gnu(version="2017.09", path=None):
 		print Style.RESET_ALL
 		sys.stdout.flush()
 	else:
-		download_file(url, gnu_tgz_path)
-	if not tarfile.is_tarfile(gnu_tgz_path):
-		os.remove(gnu_tgz_path)
-		download_file(url, gnu_tgz_path)
+		result = download_file(url, gnu_tgz_path)
+		if result:
+			gnu_tgz_path = None
 	return gnu_tgz_path
 
 
@@ -64,7 +65,7 @@ def untar(file, path):
 		return file_name
 	except Exception as e:
 		print e
-		sys.exit(1)
+
 
 def extract_file(file, path):
 	extract_file_name = None
@@ -83,10 +84,12 @@ def extract_file(file, path):
 
 
 
-def add_gnu(version, path=None):
+def store_gnu_toolchain(version, path=None):
 	gnu_tgz_path = download_gnu(version, path)
 	gnu_root_path = None
 	gnu_file_path = None
+	if gnu_tgz_path is None:
+		print "Can't download gnu {} ".format(version)
 	if not version in os.listdir(path):
 		try:
 			gnu_file_path = extract_file(gnu_tgz_path, path)
@@ -96,7 +99,20 @@ def add_gnu(version, path=None):
 			gnu_root_path = os.path.join(path, version)
 			shutil.move(gnu_file_path, gnu_root_path)
 
+def get_options_parser():
+	configs = dict()
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-v", "--gnu", dest="gnu", default="2017.09", help=("the version of gnu"), metavar="GNU_VERSION")
+	parser.add_argument("-c", "--cache", dest="cache", default=".cache/toolchain", help=("the cache path"), metavar="TOOLCHAIN_CACHE_FOLDER")
+
+	options = parser.parse_args()
+	if options.gnu:
+		configs["gnu"] = options.gnu
+	if options.cache:
+		configs["cache"] = options.cache
+
+	return configs
 
 if __name__ == '__main__':
-	gnu_version = os.sys.argv[1]
-	add_gnu(gnu_version, cache_gnu)
+	configs = get_options_parser()
+	store_gnu_toolchain(configs["gnu"], configs["cache"])
