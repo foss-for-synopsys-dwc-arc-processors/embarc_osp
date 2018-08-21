@@ -24,9 +24,10 @@ fi
                 ARC_DEV_TOOL_ROOT="${TOOLCHAIN_CACHE_FOLDER}/${TOOLCHAIN_VER}"
             fi
         fi
+    elif [ $TOOLCHAIN == sphinx ]; then
+        
     else
         die "Toolchain not supported in travis ci"
-
     fi
 }
 

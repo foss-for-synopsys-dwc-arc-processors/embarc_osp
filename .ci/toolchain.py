@@ -31,7 +31,7 @@ def download_gnu(version="2017.09", path=None):
 		os.makedirs(path)
 	if gnu_tgz in os.listdir(path):
 		print Fore.BLUE + "toochain cache"
-		print os.listdir(cache_gnu)
+		print os.listdir(path)
 		print Style.RESET_ALL
 		sys.stdout.flush()
 	else:

@@ -41,7 +41,6 @@ example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 '''
 
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
-default_root = "."
 
 class TailRecurseException:
 	def __init__(self, args, kwargs):
@@ -210,7 +209,7 @@ def build_makefile_project(app_path, config):
 def build_project_configs(app_path, config):
 	work_path = os.getcwd()
 	make_configs = config
-	osp_root = default_root
+	osp_root = None
 	board_input = None
 	bd_ver_input = None
 	cur_core_input = None
@@ -495,7 +494,7 @@ def get_options_parser():
 	toolchainlist = ["gnu", "mw"]
 	boardlist = ["emsk", "nsim", "axs", "hsdk"]
 	parser = argparse.ArgumentParser()
-	parser.add_argument("-r", "--osp_root", dest="osp_root",default=None, help=("the path of embarc_osp"), metavar="OSP_ROOT")
+	parser.add_argument("-r", "--osp_root", dest="osp_root",default=".", help=("the path of embarc_osp"), metavar="OSP_ROOT")
 	parser.add_argument("-t", "--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
 	parser.add_argument("-b", "--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
 	parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
