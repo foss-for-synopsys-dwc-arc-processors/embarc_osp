@@ -183,7 +183,7 @@ def build_makefile_project(app_path, config):
 			    print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
 			    print Style.RESET_ALL
 			    sys.stdout.flush()
-			    make_cmd = "make -j " + parallel + " SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
+			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
 			    cleancommand = make_cmd + " clean"
 			    os.system(cleancommand)
 			    buildcommand = make_cmd
@@ -223,7 +223,7 @@ def build_project_configs(app_path, config):
 	expected_file = None
 	expected_different = dict()
 	expected_different[app_path] = []
-	parallel = "1"
+	parallel = ""
 
 	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
 		parallel = make_configs["PARALLEL"]
@@ -497,15 +497,15 @@ def get_options_parser():
 	toolchainlist = ["gnu", "mw"]
 	boardlist = ["emsk", "nsim", "axs", "hsdk"]
 	parser = argparse.ArgumentParser()
-	parser.add_argument("-r", "--osp_root", dest="osp_root",default=".", help=("the path of embarc_osp"), metavar="OSP_ROOT")
-	parser.add_argument("-t", "--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
-	parser.add_argument("-b", "--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
+	parser.add_argument("--osp_root", dest="osp_root",default=".", help=("the path of embarc_osp"), metavar="OSP_ROOT")
+	parser.add_argument("--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
+	parser.add_argument("--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
 	parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
-	parser.add_argument("-c", "--cur_core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
-	parser.add_argument("--toolchian_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
-	parser.add_argument("-e", "--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
-	parser.add_argument("-f", "--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
-	parser.add_argument("-p", "--parallel", dest="parallel", type=int, help=("Compile the application in parallel"), metavar="NUMBER")
+	parser.add_argument("--cur_core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
+	parser.add_argument("--toolchain_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
+	parser.add_argument("--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
+	parser.add_argument("--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
+	parser.add_argument("-j", "--parallel", dest="parallel", type=int, help=("Compile the application in parallel"), metavar="NUMBER")
 	options = parser.parse_args()
 	if options.osp_root:
 		configs["OSP_ROOT"] = options.osp_root
