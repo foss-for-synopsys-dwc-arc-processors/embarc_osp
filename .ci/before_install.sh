@@ -5,8 +5,8 @@ die() {
     exit 1
 }
 
-if [ $TRAVIS == true ] ; then
-    [ $TRAVIS_OS_NAME != linux ] || {
+if [ "${TRAVIS}" == "true" ] ; then
+    [ "${TRAVIS_OS_NAME}" != "linux" ] || {
         sudo apt-get update || die
         sudo apt-get install lib32z1 || die
         sudo apt-get install dos2unix || die
@@ -16,7 +16,7 @@ fi
 
 {
     pip install --upgrade pip || die
-    [ $TRAVIS == true ] && {
+    [ "${TRAVIS}" == "true" ] && {
         pip install git+https://github.com/sphinx-doc/sphinx || die
         pip install breathe || die
         pip install recommonmark || die

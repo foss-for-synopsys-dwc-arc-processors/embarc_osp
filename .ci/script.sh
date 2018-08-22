@@ -15,8 +15,8 @@ if [ "${TOOLCHAIN}" == "gnu" ]; then
 else
     ARC_DEV_TOOL_ROOT="${ARC_DEV_MW_ROOT}/mwdt_${TOOLCHAIN_VER}/linux/ARC"
 fi
-[ $TRAVIS == true ] && {
-    if [ $TOOLCHAIN == gnu ]; then
+[ "${TRAVIS}" == "true" ] && {
+    if [ "${TOOLCHAIN}" == "sphinx" ]; then
 
         python .ci/toolchain.py -v $TOOLCHAIN_VER -c $TOOLCHAIN_CACHE_FOLDER  || die
         if [ -d $TOOLCHAIN_CACHE_FOLDER ] ;then
@@ -24,14 +24,14 @@ fi
                 ARC_DEV_TOOL_ROOT="${TOOLCHAIN_CACHE_FOLDER}/${TOOLCHAIN_VER}"
             fi
         fi
-    elif [ $TOOLCHAIN == sphinx ]; then
+    elif [ "${TOOLCHAIN}" == "sphinx" ]; then
         echo "Toolchain for building documnet"
     else
         die "Toolchain not supported in travis ci"
     fi
 }
 
-if [ $TOOLCHAIN != sphinx ] ; then
+if [ "${TOOLCHAIN}" != "sphinx" ] ; then
     if [ -d $ARC_DEV_TOOL_ROOT ] ; then
         bash .ci/linux_env_set_arc.sh -t $TOOLCHAIN -r $ARC_DEV_TOOL_ROOT || die
         [ ! -e "arctool.env" ] && die "arctool.env doesn't exist"
@@ -43,8 +43,8 @@ if [ $TOOLCHAIN != sphinx ] ; then
 fi
 git checkout -- . || die
 
-if [ $TOOLCHAIN != sphinx ]; then
-    if [ $TOOLCHAIN == gnu ]; then
+if [ "${TOOLCHAIN}" != "sphinx" ]; then
+    if [ "${TOOLCHAIN}" == "gnu" ]; then
         arc-elf32-gcc -v || die "ARC GNU toolchain is not installed correctly"
     else
         ccac -v || die "MWDT toolchain is not installed correctly"
@@ -54,7 +54,7 @@ fi
 echo "Using ${TOOLCHAIN}-${TOOLCHAIN_VER}" || die
 bash apply_embARC_patch.sh || die
 cd .ci || die
-if [ $TOOLCHAIN == sphinx ] ; then
+if [ "${TOOLCHAIN}" == "sphinx" ] ; then
     bash deploy_doc.sh || die
 else
     BUILD_OPTS="OSP_ROOT=${OSP_ROOT} TOOLCHAIN=${TOOLCHAIN} BOARD=${BOARD} BD_VER=${BD_VER} CUR_CORE=${CUR_CORE} TOOLCHAIN_VER=${TOOLCHAIN_VER} EXAMPLES=${EXAMPLES} EXPECTED=${EXPECTED} PARALLEL=${PARALLEL}"
