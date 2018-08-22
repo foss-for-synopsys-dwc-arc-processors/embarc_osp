@@ -538,12 +538,10 @@ if __name__ == '__main__':
 	os.chdir(cwd_path)
 	if "embarc_applications" in os.listdir(os.getcwd()):
 		os.chdir(os.path.dirname(cwd_path))
-	key = 1
-	if key in applications_failed:
-		print "there are some applications failed with all configurations"
-		sys.stdout.flush()
-	if len(expected_differents) > 0:
 
+	if  not len(expected_differents) > 0:
+		print "All the applications build as expected"
+	else:
 		print "these applications failed with some configuration: "
 		print expected_differents.keys()
 		sys.exit(1)

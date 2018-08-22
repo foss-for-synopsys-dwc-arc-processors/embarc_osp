@@ -4,7 +4,7 @@ die() {
     exit 1
 }
 
-set -x
+# set -x
 
 TOOLCHAIN_CACHE_FOLDER=".cache/toolchain"
 ARC_DEV_GNU_ROOT="/u/arcgnu_verif/gnu_builds"
