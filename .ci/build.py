@@ -3,12 +3,12 @@ import json
 import os
 import sys
 import shutil
-import zipfile
-import tarfile
-import urllib
 from sys import stderr, stdout
 from prettytable import PrettyTable
-from colorama import init,Fore
+from colorama import init, Fore, Back, Style
+from configparser import ConfigParser
+import copy
+import argparse
 example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 		"arc_feature_timer_interrupt":"example/baremetal/arc_feature/timer_interrupt",
 		"arc_feature_udma":"example/baremetal/arc_feature/udma",
@@ -41,64 +41,25 @@ example = {"arc_feature_cache":"example/baremetal/arc_feature/cache",
 '''
 
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
-default_root = "."
-cache_folder = "/home/travis/.cache/result"
 
-def download_file(url, path):
-    try:
-    	urllib.urlretrieve(url, path)
-    except Exception:
-    	
-    	print "This file from %s can't be download"%(url)
-    	sys.exit(1)
-    	
-def download_gnu(version="2017.09", path=None):
-	baseurl = "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/"
-	url = baseurl + "arc-" + version + "-release/arc_gnu_"  + version+ "_prebuilt_elf32_le_linux_install.tar.gz"
-	if path is not None:
-		path = os.path.join(path , "arc_gnu_" + version +"_prebuilt_elf32_le_linux_install.tar.gz")
-	else:
-		path = os.path.join(os.getcwd(), "arc_gnu_" + version +"_prebuilt_elf32_le_linux_install.tar.gz")
-	download_file(url, path)
-	gnu = "arc_gnu_" + version + "_prebuilt_elf32_le_linux_install.tar.gz"
-	return gnu
-
-def unzip(file, path):
-	try:
-		pack = zipfile.ZipFile(file, "r")
-		pack.extractall(path)
-		pack.close()
-	except Exception:
-		sys.exit(1)
-
-def untar(file, path):
-	try:
-		pack = tarfile.open(file, "r:gz")
-		files = pack.getnames()
-		for file in files:
-			pack.extract(file, path)
-		pack.close()
-	except Exception:
-		sys.exit(1)
-
-def extract_file(file, path):
-	filename, filesuffix = os.path.splitext(file)
-	if filesuffix == ".gz":
-		untar(file, path)
-	elif filesuffix == ".zip":
-		unzip(file, path)
-	else:
-		print "This file {} can't be extracted".format(file)
-
-
-def add_gnu(version, path=None):
-	os.chdir("/")
-	os.chdir("tmp")
-	gnu = download_gnu(version, path)
-	extract_file(gnu, os.getcwd())
-	gnu_bin_path = os.path.join(gnu.split(".")[0],"bin")
-	# add_env_path(os.path.join(os.getcwd(), gnu_bin_path))
-	os.system("arc-elf32-gcc --version")
+class TailRecurseException:
+	def __init__(self, args, kwargs):
+		self.args = args
+		self.kwargs = kwargs
+def tail_call_optimized(g):
+	def func(*args, **kwargs):
+		f = sys._getframe()
+		if f.f_back and f.f_back.f_back and f.f_back.f_back.f_code == f.f_code:
+			raise TailRecurseException(args, kwargs)
+		else:
+			while 1:
+				try:
+					return g(*args, **kwargs)
+				except TailRecurseException as e:
+					args = e.args
+					kwargs = e.kwargs
+	func.__doc__ = g.__doc__
+	return func
 
 def get_makefile(app_path):
 	for makefile in MakefileNames:
@@ -199,9 +160,8 @@ def build_makefile_project(app_path, config):
 	board = make_configs["BOARD"]
 	bd_ver = make_configs["BD_VER"]
 	cur_core = make_configs["CUR_CORE"]
-	gnu_ver = make_configs["GNU_VER"]
-	print os.getcwd()
-
+	toolchain_ver = make_configs["TOOLCHAIN_VER"]
+	parallel = make_configs["PARALLEL"]
 	conf_key = board + "_" + bd_ver + "_" + cur_core
 
 	tcf_name = cur_core + ".tcf"
@@ -220,22 +180,26 @@ def build_makefile_project(app_path, config):
 			    # Change to application makefile folder
 			    os.chdir(app_path)
 			    # Build application, clean it first
-			    print "Build Application {} with Configuration {}".format(app_path, config)
+			    print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
+			    print Style.RESET_ALL
 			    sys.stdout.flush()
-
-			    os.system("make " + " clean")
-			    result["status"] = os.system("make SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain)
+			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
+			    cleancommand = make_cmd + " clean"
+			    os.system(cleancommand)
+			    buildcommand = make_cmd
+			    print Fore.GREEN + "{}".format(buildcommand)
+			    result["status"] = os.system(buildcommand)
 			    result["app"] = app_path
 			    result["conf"] = conf_key
 			    result["toolchain"] = toolchain
-			    result["gnu_ver"] = gnu_ver
+			    result["toolchain_ver"] = toolchain_ver
 			    os.chdir(cur_dir)
 			else:
 				result["status"] = 1
 				result["app"] = app_path
 				result["conf"] = Fore.YELLOW + conf_key
 				result["toolchain"] = toolchain
-				result["gnu_ver"] = gnu_ver
+				result["toolchain_ver"] = toolchain_ver
 
 	else:
 		isMakeProject = False
@@ -244,11 +208,11 @@ def build_makefile_project(app_path, config):
 def build_project_configs(app_path, config):
 	work_path = os.getcwd()
 	make_configs = config
-	osp_root = default_root
+	osp_root = None
 	board_input = None
 	bd_ver_input = None
 	cur_core_input = None
-	gnu_ver = "2017.09"
+	toolchain_ver = "2017.09"
 	bd_vers = dict()
 	cur_cors = dict()
 	make_config = dict()
@@ -256,10 +220,19 @@ def build_project_configs(app_path, config):
 	toolchain = "gnu"
 	build_count = 0
 	status = True
-	if "GNU_VER" in make_configs and make_configs["GNU_VER"] is not None:
-		gnu_ver = make_configs["GNU_VER"]
-	add_gnu(gnu_ver)
-	os.chdir(work_path)
+	expected_file = None
+	expected_different = dict()
+	expected_different[app_path] = []
+	parallel = ""
+
+	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
+		parallel = make_configs["PARALLEL"]
+	if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
+		expected_file = make_configs["EXPECTED"]
+
+	if "TOOLCHAIN_VER" in make_configs and make_configs["TOOLCHAIN_VER"] is not None:
+		toolchain_ver = make_configs["TOOLCHAIN_VER"]
+
 	if "TOOLCHAIN" in make_configs and make_configs["TOOLCHAIN"] is not None:
 		toolchain = make_configs["TOOLCHAIN"]
 	if "OSP_ROOT" in make_configs and make_configs["OSP_ROOT"] is not None:
@@ -281,13 +254,17 @@ def build_project_configs(app_path, config):
 			cur_cors[board][version] = cors
 	for board in cur_cors:
 		for bd_ver in cur_cors[board]:
+			core_failed = 0
+			core_num = len(cur_cors[board][bd_ver])
+			may_compare = []
 			for cur_core in cur_cors[board][bd_ver]:
 				make_config["OSP_ROOT"] = osp_root
 				make_config["BOARD"] = board
 				make_config["BD_VER"] = bd_ver
 				make_config["CUR_CORE"] = cur_core
 				make_config["TOOLCHAIN"] = toolchain
-				make_config["GNU_VER"] = gnu_ver
+				make_config["TOOLCHAIN_VER"] = toolchain_ver
+				make_config["PARALLEL"] = parallel
 				isMakefileProject, result = build_makefile_project(app_path, make_config)
 				if isMakefileProject is False:
 					print "Application {} doesn't have makefile".format(app_path)
@@ -295,15 +272,67 @@ def build_project_configs(app_path, config):
 					build_count += 1
 					if result["status"] != 0:
 						status = False
-
+						core_failed += 1
 					results.append(result)
-	return status, results, build_count
+					may_compare.append(result)
 
-def show_results(results):
-	columns = ['TOOLCHAIN', 'APP', "GNU_VER", 'CONF', 'PASS']
-	pt = PrettyTable(columns)
+			if core_failed == core_num:
+				if expected_file is not None:
+					expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
+					if not expected_status:
+						print "This application compile failed, but the expected result is pass"
+						expected_different[app_path].extend(may_compare)
+				else:
+					print "now not have expected file"
+					expected_different[app_path].extend(may_compare)
+
+						
+
+	return status, results, build_count, expected_different
+
+def get_expected_result(expected_file, app_path, board, bd_ver):
+	result = False
+	filesuffix = os.path.splitext(expected_file)[1]
+	if filesuffix == ".json":
+		with open(expected_file, "r") as f:
+			expected_result = json.load(f)
+			if app_path in expected_result:
+				if board in expected_result[app_path]:
+					if bd_ver in expected_result[app_path][board]:
+						result = False
+					else:
+						result = True
+				else:
+					result = False
+			else:
+				result = False
+			
+	elif filesuffix == ".ini":
+		conf = ConfigParser()
+		conf.read(expected_file)
+		sections = conf.sections()
+		if app_path in sections:
+			options = conf.options(app_path)
+			if board in options:
+				items = conf.get(app_path, board)
+				if bd_ver in items:
+					result = False
+				else:
+					result = True
+			else:
+				result = False
+		else:
+			result = False
+	return result
+
+def show_results(results, expected=None):
+	columns = ['TOOLCHAIN', 'APP', "TOOLCHAIN_VER", 'CONF', 'PASS']
 	failed_pt = PrettyTable(columns)
 	failed_results = []
+	success_results = []
+	expected_results = None
+	success_pt = PrettyTable(columns)
+	expected_pt = PrettyTable(columns)
 	for result in results:
 		status = result.pop("status")
 		if status != 0:
@@ -316,32 +345,47 @@ def show_results(results):
 
 		else:
 			result["PASS"] = "YES"
+			success_results.append([v for (k, v) in result.items()])
 
-		result_list = [v for (k, v) in result.items()]
+	if expected is not None:
+		expected_results = failed_results
+		for result in expected_results:
+			if len(result) > 0:
+				expected_pt.add_row(result)
+		if len(expected_results) > 0:
+			print "these applications failed with some bd_ver: "
+			print expected_pt
+			sys.stdout.flush()
+			return
+	else:
 
-		
-		pt.add_row(result_list)
-	print "ALL results:"
-	print pt
+		for result in success_results:
+			if len(result) > 0:
+				success_pt.add_row(result)
+		print Fore.GREEN + "Successfull results"
+		print success_pt
+		print Style.RESET_ALL
+		sys.stdout.flush()
 
-	
-	for result in failed_results:
-		if len(result) > 0:
-			list_key = range(len(result))
-			for i in list_key:
+		for result in failed_results:
+			if len(result) > 0:
+				list_key = range(len(result))
+				for i in list_key:
 
-				result[i] = Fore.RED + result[i]
+					result[i] = Fore.RED + result[i]
+					
+				failed_pt.add_row(result)
 				
-			failed_pt.add_row(result)
-			
 
-	print Fore.RED + "Failed result:"
-	print failed_pt
+		print Fore.RED + "Failed result:"
+		print failed_pt
+		print Style.RESET_ALL
+		sys.stdout.flush()
 
-def build_result_combine(results,formal_result=None):
+@tail_call_optimized
+def build_result_combine(results=None, formal_result=None):
 	first_result = results[0]
-	t = first_result.pop("conf")
-	first_result = results[0]
+	t = first_result.pop("conf")#first_result = results[0]
 	other_results = []
 	if formal_result is None:
 		formal_result = []
@@ -380,12 +424,37 @@ def get_exampes_from_input(paths):
 	sorted(set(results), key=results.index)
 	return results
 
+def application_all_failed(results):
+	count = len(results)
+	i = 0
+	for result in results:
+		if result["status"] != 0:
+			i += 1
+	if i == count:
+		return 1
+	else:
+		return 0
+
+def build_result_combine_tail(results):
+	results_list = []
+	for (app_path, result) in results.items():
+		formal_results = build_result_combine(result)
+		results_list.extend(formal_results)
+	return results_list
+
+
 def build_makefiles_project(config):
 	apps_results = {}
 	apps_status = []
 	count = 0
 	app_count = 0
 	results_list = []
+	applications_failed =[]
+	toolchain_ver = "2017.09"
+	work_path = os.getcwd()
+	update_json = None
+	diff_expected_differents = dict()
+	expected_differents_list = []
 	if "EXAMPLES" in config and config["EXAMPLES"]:
 		examples_path = config.pop("EXAMPLES")
 		app_paths_list = get_exampes_from_input(examples_path)
@@ -393,70 +462,86 @@ def build_makefiles_project(config):
 		app_paths = dict(zip(key_list, app_paths_list))
 	else:
 		app_paths = example
-
+	if "TOOLCHAIN_VER" in config and config["TOOLCHAIN_VER"] is not None:
+		toolchain_ver = config["TOOLCHAIN_VER"]
+	if "UPDATE_JSON" in config and config["UPDATE_JSON"] is not None:
+		update_json = config["UPDATE_JSON"]
 
 	for (app, app_path) in app_paths.items():
 		
-		status, results, build_count = build_project_configs(app_path, config)
+		status, results, build_count, expected_different = build_project_configs(app_path, config)
+		application_failed = application_all_failed(results)
+		if application_failed == 1:
+			print Back.RED + "{} failed with all configurations".format(app_path)
+			print Style.RESET_ALL
+		applications_failed.append(application_failed)
 		apps_results[app_path] = results
 		apps_status.append(status)
 		count += build_count
 		app_count += 1
-	gnu_ver = config["GNU_VER"]
+		if app_path in expected_different and len(expected_different[app_path]) > 0:
+			diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
 
-	cmp_result = reference_result(apps_results, gnu_ver)
+
 
 	print "There are {} projects, and they are compiled for {} times".format(app_count, count)
-	for (app_path, result) in apps_results.items():
-		print "{} : ".format(app_path)
-
-		formal_result = build_result_combine(result)
-		results_list.extend(formal_result)
-
+	results_list = build_result_combine_tail(apps_results)
 	show_results(results_list)
-	sys.stdout.flush()
-	# return apps_status
-	return cmp_result
+	expected_differents_list = build_result_combine_tail(diff_expected_differents)
+	show_results(expected_differents_list, expected=True)
 
-def reference_result(results,gnu_ver):
-	work_path = os.getcwd()
-	results_dict = dict()
-	results_dict[gnu_ver] = results
-	reference_result = None
-	cmp_result = None
-	
-	try:
-		os.chdir(cache_folder)
-		json_file = gnu_ver + ".json"
-		if json_file not in os.listdir(os.getcwd()):
-			with open(json_file, "w") as f:
-				json.dump(results_dict, f)
-				reference_result = results_dict
-			cmp_result = 0
-		else:
-			with open(json_file, "r") as f:
-				reference_result = json.load(f)
-				cmp_result = cmp(reference_result, results)
-		return cmp_result
-	except Exception:
-		print "Can not find the cache file"
+	return applications_failed, diff_expected_differents
 
-	
+def get_options_parser():
+	configs = dict()
+	toolchainlist = ["gnu", "mw"]
+	boardlist = ["emsk", "nsim", "axs", "hsdk"]
+	parser = argparse.ArgumentParser()
+	parser.add_argument("--osp_root", dest="osp_root",default=".", help=("the path of embarc_osp"), metavar="OSP_ROOT")
+	parser.add_argument("--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
+	parser.add_argument("--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
+	parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
+	parser.add_argument("--cur_core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
+	parser.add_argument("--toolchain_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
+	parser.add_argument("--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
+	parser.add_argument("--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
+	parser.add_argument("-j", "--parallel", dest="parallel", type=int, help=("Compile the application in parallel"), metavar="NUMBER")
+	options = parser.parse_args()
+	if options.osp_root:
+		configs["OSP_ROOT"] = options.osp_root
+	if options.toolchain:
+		configs["TOOLCHAIN"] = options.toolchain
+	if options.board:
+		configs["BOARD"] = options.board
+	if options.bd_ver:
+		configs["BD_VER"] = options.bd_ver
+	if options.cur_core:
+		configs["CUR_CORE"] = options.cur_core
+	if options.toolchain_ver:
+		configs["TOOLCHAIN_VER"] = options.toolchain_ver
+	if options.examples:
+		configs["EXAMPLES"] = options.examples
+	if options.expected:
+		configs["EXPECTED"] = options.expected
+	if options.parallel:
+		configs["parallel"] = options.parallel
+	return configs
+
 if __name__ == '__main__':
 
 	cwd_path = os.getcwd()
 	osp_path = os.path.dirname(cwd_path)
-	make_config = get_config(sys.argv[1:])
+	make_config = get_config(sys.argv[1:]) #get_options_parser() #
 	sys.stdout.flush()
 	os.chdir(osp_path)
-	if not os.path.exists(cache_folder):
-		os.makedirs(cache_folder)
-	else:
-		print Fore.BLUE + "cache files"
-		print os.listdir(cache_folder)
-	apps_status = build_makefiles_project(make_config)
+	applications_failed, expected_differents = build_makefiles_project(make_config)
 	os.chdir(cwd_path)
-	if apps_status == 0:
-		sys.exit(0)
+	if "embarc_applications" in os.listdir(os.getcwd()):
+		os.chdir(os.path.dirname(cwd_path))
+
+	if  not len(expected_differents) > 0:
+		print "All the applications build as expected"
 	else:
-		sys.exit(0)
+		print "these applications failed with some configuration: "
+		print expected_differents.keys()
+		sys.exit(1)

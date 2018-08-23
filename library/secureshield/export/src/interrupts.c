@@ -59,7 +59,7 @@ int32_t secureshield_int_enabled(uint32_t intno)
 	}
 }
 
-int32_t secureshield_int_pri_set(uint32_t intno, int intpri)
+int32_t secureshield_int_pri_set(uint32_t intno, int32_t intpri)
 {
 	if (_arc_in_user_mode() == 0) {
 		return int_pri_set(intno,intpri);
@@ -173,7 +173,7 @@ int32_t secureshield_int_enabled(uint32_t intno)
 	return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_ENABLED, intno);
 }
 
-int32_t secureshield_int_pri_set(uint32_t intno, int intpri)
+int32_t secureshield_int_pri_set(uint32_t intno, int32_t intpri)
 {
 	return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_INT_EXC, "", SECURESHIELD_INT_EXC_PRI_SET, intno, intpri);
 }
