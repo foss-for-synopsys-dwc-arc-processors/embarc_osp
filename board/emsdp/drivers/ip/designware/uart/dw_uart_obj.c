@@ -28,10 +28,7 @@
  *
 --------------------------------------------- */
 #include "embARC_toolchain.h"
-
-
 #include "dw_uart_obj.h"
-
 #include "emsdp/emsdp.h"
 
 #define DW_UART_FIFO_LEN	32

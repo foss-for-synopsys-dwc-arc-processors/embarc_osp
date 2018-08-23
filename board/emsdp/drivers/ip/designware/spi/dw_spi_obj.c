@@ -28,9 +28,7 @@
  *
 --------------------------------------------- */
 #include "embARC_toolchain.h"
-
 #include "dw_spi_obj.h"
-
 #include "emsdp/emsdp.h"
 
 #if (USE_DW_SPI_0)

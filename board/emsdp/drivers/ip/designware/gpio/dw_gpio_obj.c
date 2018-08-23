@@ -28,9 +28,7 @@
  *
 --------------------------------------------- */
 #include "embARC_toolchain.h"
-
 #include "dw_gpio_obj.h"
-
 #include "emsdp/emsdp.h"
 
 #if (USE_DW_GPIO_PORT_A)

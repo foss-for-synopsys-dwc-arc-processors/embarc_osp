@@ -28,9 +28,7 @@
  *
 --------------------------------------------- */
 #include "embARC_toolchain.h"
-
 #include "dw_sdio_obj.h"
-
 #include "emsdp/emsdp.h"
 
 #if (USE_DW_SDIO_0)

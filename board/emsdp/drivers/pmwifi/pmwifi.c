@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -113,6 +113,7 @@ static int32_t rswifi_0_set_macaddr(uint8_t *mac)
 {
 	return rs9113_set_macaddr(&rswifi_0_wnic, mac);
 }
+
 static int32_t rswifi_0_get_macaddr(uint8_t *mac)
 {
 	return rs9113_get_macaddr(&rswifi_0_wnic, mac);
@@ -318,4 +319,5 @@ void rswifi_all_install(void)
 	rswifi_0_install();
 #endif
 }
+
 #endif  /* MID_LWIP && MID_LWIP_CONTRIB */

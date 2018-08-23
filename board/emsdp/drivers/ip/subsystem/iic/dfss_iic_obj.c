@@ -316,6 +316,11 @@ DEV_IIC_PTR dfss_iic_get_dev(int32_t iic_id)
 			return &dfss_iic_1;
 			break;
 #endif
+#if USE_DFSS_IIC_2
+		case DFSS_IIC_2_ID:
+			return &dfss_iic_2;
+			break;
+#endif
 		default:
 			break;
 	}
@@ -333,5 +338,8 @@ void dfss_iic_all_install(void)
 #endif
 #if USE_DFSS_IIC_1
 	dfss_iic_1_install();
+#endif
+#if USE_DFSS_IIC_2
+	dfss_iic_2_install();
 #endif
 }

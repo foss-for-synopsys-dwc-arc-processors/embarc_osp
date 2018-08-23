@@ -27,51 +27,34 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
+#ifndef _DFSS_I2S_OBJ_H_
+#define _DFSS_I2S_OBJ_H_
 
-#ifndef _DFSS_IIC_OBJ_H_
-#define _DFSS_IIC_OBJ_H_
+#include "ip/ip_hal/inc/dev_i2s.h"
 
-#include "io_config.h"
-#include "ip/ip_hal/inc/dev_iic.h"
+#define DFSS_I2S_0_ID		0	/*!< I2S 0 ID macro */
+#define DFSS_I2S_1_ID		1	/*!< I2S 1 ID macro */
 
-
-#define DFSS_IIC_NUM		(3)	/*!< DFSS IIC valid number */
-
-
-#define DFSS_IIC_BASE_ID	10	/*!< IIC 1 ID macro */
-#define DFSS_IIC_0_ID		10	/*!< IIC 0 ID macro */		//I2C master for on board I2C IC (codec, 9D sensor)
-#define DFSS_IIC_1_ID		11	/*!< IIC 1 ID macro */		//I2C master for Arduino
-#define DFSS_IIC_2_ID		12	/*!< IIC 1 ID macro */		//I2C master for PMOD
-
-
-#ifdef IO_I2C_MST0_PRESENT
-#define USE_DFSS_IIC_0		1	/*!< enable use DFSS IIC 0 */
+#ifdef IO_I2S_TX_MST0_PRESENT
+#define USE_DFSS_I2S_0		1	/*!< enable use DFSS I2S 0 as TX */
 #else
-#define USE_DFSS_IIC_0		0	/*!< enable use DFSS IIC 0 */
+#define USE_DFSS_I2S_0		0	/*!< disable use DFSS I2S 0 as TX */
 #endif
 
-#ifdef IO_I2C_MST1_PRESENT
-#define USE_DFSS_IIC_1		1	/*!< enable use DFSS IIC 1 */
+#ifdef IO_I2S_RX_MST0_PRESENT
+#define USE_DFSS_I2S_1		1	/*!< enable use DFSS I2S 1 as RX */
 #else
-#define USE_DFSS_IIC_1		0	/*!< enable use DFSS IIC 1 */
+#define USE_DFSS_I2S_1		0	/*!< disable use DFSS I2S 1 as RX */
 #endif
-
-#ifdef IO_I2C_MST2_PRESENT
-#define USE_DFSS_IIC_2		1	/*!< enable use DFSS IIC 2 */
-#else
-#define USE_DFSS_IIC_2		0	/*!< enable use DFSS IIC 2 */
-#endif
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern DEV_IIC_PTR dfss_iic_get_dev(int32_t);
-extern void dfss_iic_all_install(void);
+extern DEV_I2S_PTR dfss_i2s_get_dev(int32_t i2s_id);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _DFSS_IIC_OBJ_H_ */
+#endif /* _DFSS_I2S_OBJ_H_ */

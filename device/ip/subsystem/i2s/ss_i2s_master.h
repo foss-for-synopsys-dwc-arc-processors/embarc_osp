@@ -27,51 +27,49 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
+#ifndef _SS_I2S_MASTER_H_
+#define _SS_I2S_MASTER_H_
+/* the wrapper of subsystem i2s master driver */
 
-#ifndef _DFSS_IIC_OBJ_H_
-#define _DFSS_IIC_OBJ_H_
+#include "ip/ip_hal/inc/dev_i2s.h"
 
-#include "io_config.h"
-#include "ip/ip_hal/inc/dev_iic.h"
+#define SS_I2S_TX		1
+#define SS_I2S_RX		2
 
+#define SS_I2S_MASTER_FLAG_TX		(1 << 0) /* interrupt tx */
+#define SS_I2S_MASTER_FLAG_RX		(1 << 1) /* interrupt rx */
+#define SS_I2S_MASTER_FLAG_BUSY		(1 << 2)
 
-#define DFSS_IIC_NUM		(3)	/*!< DFSS IIC valid number */
+#define SS_I2S_MASTER_FLAG_TX_ERROR	(1 << 5)
+#define SS_I2S_MASTER_FLAG_RX_ERROR	(1 << 6)
 
+typedef struct ss_i2s_mst_dev_context
+{
+	uint32_t reg_base;
 
-#define DFSS_IIC_BASE_ID	10	/*!< IIC 1 ID macro */
-#define DFSS_IIC_0_ID		10	/*!< IIC 0 ID macro */		//I2C master for on board I2C IC (codec, 9D sensor)
-#define DFSS_IIC_1_ID		11	/*!< IIC 1 ID macro */		//I2C master for Arduino
-#define DFSS_IIC_2_ID		12	/*!< IIC 1 ID macro */		//I2C master for PMOD
+	uint8_t	dev_id;
+	uint8_t io_mode;
 
+	uint8_t int_tx_req;	/* Interrupt number of TX_REQ */
+	uint8_t int_tx_err;	/* Interrupt number of TX_ERR */
+	uint8_t int_rx_avil;/* Interrupt number of RX_AVIL */
+	uint8_t int_rx_err; /* Interrupt number of RX_ERR */
 
-#ifdef IO_I2C_MST0_PRESENT
-#define USE_DFSS_IIC_0		1	/*!< enable use DFSS IIC 0 */
-#else
-#define USE_DFSS_IIC_0		0	/*!< enable use DFSS IIC 0 */
-#endif
+	DEV_CALLBACK int_tx_cb;
+	DEV_CALLBACK int_rx_cb;
+	DEV_CALLBACK int_err_cb;
 
-#ifdef IO_I2C_MST1_PRESENT
-#define USE_DFSS_IIC_1		1	/*!< enable use DFSS IIC 1 */
-#else
-#define USE_DFSS_IIC_1		0	/*!< enable use DFSS IIC 1 */
-#endif
+	volatile uint32_t flags;	/*  flag */
+	DEV_I2S_INFO_PTR info;
+} SS_I2S_MST_DEV_CONTEXT;
 
-#ifdef IO_I2C_MST2_PRESENT
-#define USE_DFSS_IIC_2		1	/*!< enable use DFSS IIC 2 */
-#else
-#define USE_DFSS_IIC_2		0	/*!< enable use DFSS IIC 2 */
-#endif
+extern int32_t ss_i2s_mst_open(SS_I2S_MST_DEV_CONTEXT *ctx, uint32_t mode, uint32_t param);
+extern int32_t ss_i2s_mst_close(SS_I2S_MST_DEV_CONTEXT *ctx);
+extern int32_t ss_i2s_mst_read(SS_I2S_MST_DEV_CONTEXT *ctx, void *data, uint32_t len);
+extern int32_t ss_i2s_mst_write(SS_I2S_MST_DEV_CONTEXT *ctx, void *data, uint32_t len);
+extern int32_t ss_i2s_mst_control(SS_I2S_MST_DEV_CONTEXT *ctx, uint32_t cmd, void *param);
+extern void ss_i2s_mst_int_tx_cb(SS_I2S_MST_DEV_CONTEXT *ctx, void *param);
+extern void ss_i2s_mst_int_rx_cb(SS_I2S_MST_DEV_CONTEXT *ctx, void *param);
+extern void ss_i2s_mst_int_err_cb(SS_I2S_MST_DEV_CONTEXT *ctx, void *param);
 
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern DEV_IIC_PTR dfss_iic_get_dev(int32_t);
-extern void dfss_iic_all_install(void);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* _DFSS_IIC_OBJ_H_ */
+#endif /* _SS_I2S_MASTER_H_*/

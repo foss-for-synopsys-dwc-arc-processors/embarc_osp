@@ -39,8 +39,8 @@
 #define SF_WRITE_ENABLE		0x06
 #define SF_WRITE_DISABLE	0x04
 #define SF_SECTOR_ERASE		0xD8
-#define SF_PAGE_WRITE		0x02 //0x32  //Quad Page Program (untested)
-#define SF_PAGE_READ		0x03 //0x6B  //Quad Page Read (untested)
+#define SF_PAGE_WRITE		0x02 //0x32  //Quad Page Program (TODO: unsupported)
+#define SF_PAGE_READ		0x03 //0x6B  //Quad Page Read (TODO: unsupported)
 
 #define FL256S_NOT_VALID	(0xFFFFFFFF)
 
@@ -308,7 +308,6 @@ int32_t fl256s_read(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, void *d
 	uint8_t local_buf[4];
 	DEV_SPI_TRANSFER cmd_xfer;
 	DEV_SPI_TRANSFER data_xfer;
-
 	uint32_t first = 0;
 	uint32_t size_orig = size;
 
@@ -337,7 +336,6 @@ int32_t fl256s_read(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, void *d
 		if (_spi_send_cmd(dev, &cmd_xfer) != 0) {
 			return -1;
 		}
-
 		size -= first;
 		address += first;
 		data += first;

@@ -41,6 +41,7 @@
 #include "drivers/ip/subsystem/gpio/dfss_gpio_obj.h"
 #include "drivers/ip/subsystem/uart/dfss_uart_obj.h"
 #include "drivers/ip/subsystem/iic/dfss_iic_obj.h"
+#include "drivers/ip/subsystem/i2s/dfss_i2s_obj.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/pmwifi/pmwifi.h"
 
