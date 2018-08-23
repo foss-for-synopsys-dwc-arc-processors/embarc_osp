@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config_list>
-  <tool_config version="1.0.69" mwdt_version="M-2017.03" />
+  <tool_config version="1.0.71" mwdt_version="M-2017.03" />
   <configuration name="BCRs" filename="bcr_contents.txt">
     <string><![CDATA[
 	0x4	0x44		IDENTITY
@@ -32,7 +32,7 @@
 	0xf0	0x101063	SUBSYS_BUILD
 	0xf1	0x101		CORE_CONFIG
 	0xf2	0x104		RTT_BUILD
-	0xf3	0x34c6001	IRQ_BUILD
+	0xf3	0x34d6101	IRQ_BUILD
 	0xf5	0x8080104	PCT_BUILD
 	0xf6	0x6f0004	CC_BUILD
 	0xff	0x2003		SMART_BUILD
@@ -43,6 +43,26 @@
 	0xa06	0x111		SUBSYS_IO_2_BUILD
 	0xa1e	0x100000	SUBSYS_UAUX_OFFSET
 	0xa1f	0x80000000	SUBSYS_APEX_OFFSET
+]]></string>
+  </configuration>
+  <configuration name="build_version_info" filename="build_version_info.txt">
+    <string><![CDATA[
+Version Information:
+    ARChitect N-2018.03
+    IP Libraries:
+        ARCv2EM            v5.0.24
+        ARC Data Fusion IP Subsystem DSP  v1.1.6
+        ARC Data Fusion IP Subsystem INFRA  v1.1.6
+        ARC Data Fusion IP Subsystem IO  v1.1.6
+        ARC Data Fusion IP Subsystem SPEECH  v1.1.6
+        ARC Debug          v2.1.9
+        ARC RTT            v2.0.31
+        ARC xCAM           v4.3.1
+        ARConnect          v2.1.18
+        ARCv2EM_CCT        v5.0.24
+        EMDK_BOARD         v1.0.0
+        Implementation     v5.0.24
+        Tool Configuration  v1.0.71
 ]]></string>
   </configuration>
   <configuration name="mw_compiler" filename="ccac.arg">
@@ -111,9 +131,9 @@
 	-mpuv4 
 	-mpu_sid 
 	-mpu_regions=8 
-	-interrupts=96 
+	-interrupts=97 
 	-interrupt_priorities=4 
-	-ext_interrupts=76 
+	-ext_interrupts=77 
 	-interrupt_base=0x400 
 	-sec_interrupt_base=0x0 
 	-dcache=16384,32,2,a 
@@ -180,9 +200,9 @@
 	mpu_sid_option=1
 	mpu_regions=8
 	mpu_version=4
-	nsim_isa_number_of_interrupts=96
+	nsim_isa_number_of_interrupts=97
 	nsim_isa_number_of_levels=4
-	nsim_isa_number_of_external_interrupts=76
+	nsim_isa_number_of_external_interrupts=77
 	nsim_isa_intvbase_preset=0x400
 	nsim_isa_intvbase_preset_s=0x0
 	dcache=16384,32,2,a
@@ -249,9 +269,9 @@
 	processor.mpuv4=1
 	processor.mpu_sid=1
 	processor.mpu.regions=8
-	processor.interrupts=96
+	processor.interrupts=97
 	processor.interrupt_priorities=4
-	processor.ext_interrupts=76
+	processor.ext_interrupts=77
 	processor.interrupt_base=0x400
 	processor.sec_interrupt_base=0x0
 	processor.dcache.size=16384
@@ -285,7 +305,7 @@
   </configuration>
   <configuration name="architect" filename="build_configuration.txt">
     <string><![CDATA[
-######## project_emdk_em7d_esp_dfss --- com.arc.templates.project.Empty.1_0 ########
+######## project_emdk_em7d_esp_dfss_rc3 --- com.arc.templates.project.Empty.1_0 ########
 
 # BuildHTMLDocs --- Creates custom HTML documentation in the 'docs' directory.
 -build_html_docs true
@@ -594,7 +614,7 @@
 # prot_pipelined --- Check the box if CCM memories are configured for ECC, and you want single-bit errors to be corrected, written back to memory, and re-fetched. When unchecked, single bit errors are corrected when read from memory, but the offending memory location itself is not corrected with a writeback, no influence on Cache protection
 -prot_pipelined false
 
-# cct_test_ena --- When ECC is configured, this option enables automatic generation of error conditions in relevant testbench memories to exercise error detection and correction features
+# cct_test_ena --- When ECC is configured, this option enables single bit error injection in CCT RAM models to demonstrate ECC protection on the RAMs. When enabled, the RAM models can only be used in HDL CCT simulation (no xCAM support) and are not intended for use in SoC level integration.
 -cct_test_ena false
 
 # err_prot_ehce --- Enabled enhanced ECC architecture for CCM. Instruction fetch with single bit error is not replayed; ecc cac modules are shared to reduce area and timing opt.
@@ -1469,13 +1489,13 @@
 -create com.arc.hardware.Interrupt_Controller.1_0 "System.CPUisle.ARCv2EM.Interrupt Controller"
 
 # number_of_interrupts --- This is the total number of interrupts available to the core.  Some interrupts are allocated statically to a specific interrupt line (for example, timer interrupts).  For more information on Interrupt and register-file options, see DesignWare ARCv2 ISA Programmers Reference Manual.
--number_of_interrupts 96
+-number_of_interrupts 97
 
 # number_of_levels --- Priority levels in the interrupt controller.
 -number_of_levels 4
 
 # external_interrupts --- This is the total number of interrupt pins available for external system components.  This parameter must be less than the total number of interrupts.
--external_interrupts 76
+-external_interrupts 77
 
 # firq_option --- This enables the fast-interrupts option, (priority level 0 interrupts), which uses an alternate register bank (if configured) instead of saving the context to memory.
 -firq_option false
@@ -1658,7 +1678,7 @@
 -cct_no_hostlink false
 
 # has_subsystem_cct_flow --- 
-# This option is created for the internal sub-system team. The option is only visible with the arc dev license. The above option will check for the presence of subsystem component in the build configuration and suitably modifies the Makefile for the sub-system environment.
+# The above option will check for the presence of subsystem component in the build configuration and suitably modifies the Makefile for the sub-system environment.
 # 	
 -has_subsystem_cct_flow false
 
@@ -1904,7 +1924,7 @@
     <string><![CDATA[
 .ifndef __core_config_s
 	.define __core_config_s, 1
-	.define _TOOL_CONFIG_VER, 10069
+	.define _TOOL_CONFIG_VER, 10071
 	.define	core_config_cir_identity,0x00000044
 	.define	core_config_cir_identity_chipid,0
 	.define	core_config_cir_identity_arcnum,0
@@ -1915,6 +1935,9 @@
 	.define	core_config_bcr_bcr_ver,0x00000002
 	.define	core_config_bcr_bcr_ver_version,2
 	.define	core_config_bcr_vecbase_ac_build,0x00000410
+	.define	core_config_bcr_vecbase_ac_build_version,4
+	.define	core_config_bcr_vecbase_ac_build_vector_config,0
+	.define	core_config_bcr_vecbase_ac_build_addr,1
 	.define	core_config_bcr_mpu_build,0x00030804
 	.define	core_config_bcr_mpu_build_i,1
 	.define	core_config_bcr_mpu_build_s,1
@@ -1929,7 +1952,7 @@
 	.define	core_config_bcr_rf_build_d,0
 	.define	core_config_bcr_sec_vecbase_build,0x00000001
 	.define	core_config_bcr_sec_vecbase_build_addr,0
-	.define	core_config_bcr_sec_vecbase_build_res,0
+	.define	core_config_bcr_sec_vecbase_build_vector_config,0
 	.define	core_config_bcr_sec_vecbase_build_version,1
 	.define	core_config_bcr_d_cache_build,0x00215105
 	.define	core_config_bcr_d_cache_build_version,5
@@ -2055,6 +2078,7 @@
 	.define	core_config_bcr_sec_build_rpm,0
 	.define	core_config_bcr_sec_build_ceb,0
 	.define	core_config_bcr_sec_build_cem,0
+	.define	core_config_bcr_sec_build_ut,0
 	.define	core_config_bcr_sec_build_rpo,0
 	.define	core_config_bcr_sec_build_rds,0
 	.define	core_config_bcr_sec_build_ris,0
@@ -2067,6 +2091,10 @@
 	.define	core_config_bcr_sec_build_ed,0
 	.define	core_config_bcr_sec_build_version,5
 	.define	core_config_bcr_subsys_build,0x00101063
+	.define	core_config_bcr_subsys_build_version_major,0
+	.define	core_config_bcr_subsys_build_version_minor,2
+	.define	core_config_bcr_subsys_build_version_build,6
+	.define	core_config_bcr_subsys_build_type,3
 	.define	core_config_bcr_core_config,0x00000101
 	.define	core_config_bcr_core_config_turbo_boost,1
 	.define	core_config_bcr_core_config_version,1
@@ -2075,13 +2103,13 @@
 	.define	core_config_bcr_rtt_build_fl,0
 	.define	core_config_bcr_rtt_build_pi,1
 	.define	core_config_bcr_rtt_build_version,4
-	.define	core_config_bcr_irq_build,0x034c6001
+	.define	core_config_bcr_irq_build,0x034d6101
 	.define	core_config_bcr_irq_build_raz,0
 	.define	core_config_bcr_irq_build_nmi,0
 	.define	core_config_bcr_irq_build_f,0
 	.define	core_config_bcr_irq_build_p,3
-	.define	core_config_bcr_irq_build_exts,76
-	.define	core_config_bcr_irq_build_irqs,96
+	.define	core_config_bcr_irq_build_exts,77
+	.define	core_config_bcr_irq_build_irqs,97
 	.define	core_config_bcr_irq_build_version,1
 	.define	core_config_bcr_pct_build,0x08080104
 	.define	core_config_bcr_pct_build_version,4
@@ -2150,12 +2178,12 @@
 	.define	core_config_mpu_sid,1
 	.define	core_config_mpu_regions,8
 	.define	core_config_interrupts_present,1
-	.define	core_config_interrupts_number,96
+	.define	core_config_interrupts_number,97
 	.define	core_config_interrupts_priorities,4
-	.define	core_config_interrupts_externals,76
-	.define	core_config_interrupts,96
+	.define	core_config_interrupts_externals,77
+	.define	core_config_interrupts,97
 	.define	core_config_interrupt_priorities,4
-	.define	core_config_ext_interrupts,76
+	.define	core_config_ext_interrupts,77
 	.define	core_config_interrupts_base,0x400
 	.define	core_config_interrupts_sec_base,0x0
 	.define	core_config_dcache_present,1
@@ -2200,7 +2228,7 @@
     <string><![CDATA[
 #ifndef __core_config_h
 	#define __core_config_h  1
-	#define _TOOL_CONFIG_VER 10069
+	#define _TOOL_CONFIG_VER 10071
 	#define	core_config_cir_identity	0x00000044
 	#define	core_config_cir_identity_chipid	0
 	#define	core_config_cir_identity_arcnum	0
@@ -2211,6 +2239,9 @@
 	#define	core_config_bcr_bcr_ver	0x00000002
 	#define	core_config_bcr_bcr_ver_version	2
 	#define	core_config_bcr_vecbase_ac_build	0x00000410
+	#define	core_config_bcr_vecbase_ac_build_version	4
+	#define	core_config_bcr_vecbase_ac_build_vector_config	0
+	#define	core_config_bcr_vecbase_ac_build_addr	1
 	#define	core_config_bcr_mpu_build	0x00030804
 	#define	core_config_bcr_mpu_build_i	1
 	#define	core_config_bcr_mpu_build_s	1
@@ -2225,7 +2256,7 @@
 	#define	core_config_bcr_rf_build_d	0
 	#define	core_config_bcr_sec_vecbase_build	0x00000001
 	#define	core_config_bcr_sec_vecbase_build_addr	0
-	#define	core_config_bcr_sec_vecbase_build_res	0
+	#define	core_config_bcr_sec_vecbase_build_vector_config	0
 	#define	core_config_bcr_sec_vecbase_build_version	1
 	#define	core_config_bcr_d_cache_build	0x00215105
 	#define	core_config_bcr_d_cache_build_version	5
@@ -2351,6 +2382,7 @@
 	#define	core_config_bcr_sec_build_rpm	0
 	#define	core_config_bcr_sec_build_ceb	0
 	#define	core_config_bcr_sec_build_cem	0
+	#define	core_config_bcr_sec_build_ut	0
 	#define	core_config_bcr_sec_build_rpo	0
 	#define	core_config_bcr_sec_build_rds	0
 	#define	core_config_bcr_sec_build_ris	0
@@ -2363,6 +2395,10 @@
 	#define	core_config_bcr_sec_build_ed	0
 	#define	core_config_bcr_sec_build_version	5
 	#define	core_config_bcr_subsys_build	0x00101063
+	#define	core_config_bcr_subsys_build_version_major	0
+	#define	core_config_bcr_subsys_build_version_minor	2
+	#define	core_config_bcr_subsys_build_version_build	6
+	#define	core_config_bcr_subsys_build_type	3
 	#define	core_config_bcr_core_config	0x00000101
 	#define	core_config_bcr_core_config_turbo_boost	1
 	#define	core_config_bcr_core_config_version	1
@@ -2371,13 +2407,13 @@
 	#define	core_config_bcr_rtt_build_fl	0
 	#define	core_config_bcr_rtt_build_pi	1
 	#define	core_config_bcr_rtt_build_version	4
-	#define	core_config_bcr_irq_build	0x034c6001
+	#define	core_config_bcr_irq_build	0x034d6101
 	#define	core_config_bcr_irq_build_raz	0
 	#define	core_config_bcr_irq_build_nmi	0
 	#define	core_config_bcr_irq_build_f	0
 	#define	core_config_bcr_irq_build_p	3
-	#define	core_config_bcr_irq_build_exts	76
-	#define	core_config_bcr_irq_build_irqs	96
+	#define	core_config_bcr_irq_build_exts	77
+	#define	core_config_bcr_irq_build_irqs	97
 	#define	core_config_bcr_irq_build_version	1
 	#define	core_config_bcr_pct_build	0x08080104
 	#define	core_config_bcr_pct_build_version	4
@@ -2446,12 +2482,12 @@
 	#define	core_config_mpu_sid	1
 	#define	core_config_mpu_regions	8
 	#define	core_config_interrupts_present	1
-	#define	core_config_interrupts_number	96
+	#define	core_config_interrupts_number	97
 	#define	core_config_interrupts_priorities	4
-	#define	core_config_interrupts_externals	76
-	#define	core_config_interrupts	96
+	#define	core_config_interrupts_externals	77
+	#define	core_config_interrupts	97
 	#define	core_config_interrupt_priorities	4
-	#define	core_config_ext_interrupts	76
+	#define	core_config_ext_interrupts	77
 	#define	core_config_interrupts_base	0x400
 	#define	core_config_interrupts_sec_base	0x0
 	#define	core_config_dcache_present	1
@@ -2504,6 +2540,9 @@
 	core_config.bcr.bcr_ver=0x00000002
 	core_config.bcr.bcr_ver.version=2
 	core_config.bcr.vecbase_ac_build=0x00000410
+	core_config.bcr.vecbase_ac_build.version=4
+	core_config.bcr.vecbase_ac_build.vector_config=0
+	core_config.bcr.vecbase_ac_build.addr=1
 	core_config.bcr.mpu_build=0x00030804
 	core_config.bcr.mpu_build.i=1
 	core_config.bcr.mpu_build.s=1
@@ -2518,7 +2557,7 @@
 	core_config.bcr.rf_build.d=0
 	core_config.bcr.sec_vecbase_build=0x00000001
 	core_config.bcr.sec_vecbase_build.addr=0
-	core_config.bcr.sec_vecbase_build.res=0
+	core_config.bcr.sec_vecbase_build.vector_config=0
 	core_config.bcr.sec_vecbase_build.version=1
 	core_config.bcr.d_cache_build=0x00215105
 	core_config.bcr.d_cache_build.version=5
@@ -2644,6 +2683,7 @@
 	core_config.bcr.sec_build.rpm=0
 	core_config.bcr.sec_build.ceb=0
 	core_config.bcr.sec_build.cem=0
+	core_config.bcr.sec_build.ut=0
 	core_config.bcr.sec_build.rpo=0
 	core_config.bcr.sec_build.rds=0
 	core_config.bcr.sec_build.ris=0
@@ -2656,6 +2696,10 @@
 	core_config.bcr.sec_build.ed=0
 	core_config.bcr.sec_build.version=5
 	core_config.bcr.subsys_build=0x00101063
+	core_config.bcr.subsys_build.version_major=0
+	core_config.bcr.subsys_build.version_minor=2
+	core_config.bcr.subsys_build.version_build=6
+	core_config.bcr.subsys_build.type=3
 	core_config.bcr.core_config=0x00000101
 	core_config.bcr.core_config.turbo_boost=1
 	core_config.bcr.core_config.version=1
@@ -2664,13 +2708,13 @@
 	core_config.bcr.rtt_build.fl=0
 	core_config.bcr.rtt_build.pi=1
 	core_config.bcr.rtt_build.version=4
-	core_config.bcr.irq_build=0x034c6001
+	core_config.bcr.irq_build=0x034d6101
 	core_config.bcr.irq_build.raz=0
 	core_config.bcr.irq_build.nmi=0
 	core_config.bcr.irq_build.f=0
 	core_config.bcr.irq_build.p=3
-	core_config.bcr.irq_build.exts=76
-	core_config.bcr.irq_build.irqs=96
+	core_config.bcr.irq_build.exts=77
+	core_config.bcr.irq_build.irqs=97
 	core_config.bcr.irq_build.version=1
 	core_config.bcr.pct_build=0x08080104
 	core_config.bcr.pct_build.version=4
@@ -2739,12 +2783,12 @@
 	core_config.mpu_sid=1
 	core_config.mpu.regions=8
 	core_config.interrupts.present=1
-	core_config.interrupts.number=96
+	core_config.interrupts.number=97
 	core_config.interrupts.priorities=4
-	core_config.interrupts.externals=76
-	core_config.interrupts=96
+	core_config.interrupts.externals=77
+	core_config.interrupts=97
 	core_config.interrupt_priorities=4
-	core_config.ext_interrupts=76
+	core_config.ext_interrupts=77
 	core_config.interrupts.base=0x400
 	core_config.interrupts.sec_base=0x0
 	core_config.dcache.present=1
@@ -2833,10 +2877,10 @@ SECTIONS {
        .heap? ALIGN(4) SIZE(DEFINED _HEAPSIZE?_HEAPSIZE:0): {}
 	} > SYSTEM3
     GROUP BLOCK(4) : {
-        .vectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:752): {} = FILL(0xa5a5a5a5,4)
+        .vectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:760): {} = FILL(0xa5a5a5a5,4)
         } > IVT
     GROUP BLOCK(4) : {
-        .nvectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:752): {} = FILL(0xa5a5a5a5,4)
+        .nvectors (TEXT) SIZE(DEFINED _IVTSIZE?_IVTSIZE:760): {} = FILL(0xa5a5a5a5,4)
         } > NIVT
     }
 
