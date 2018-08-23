@@ -26,9 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-11-10
- * \author Wayne Ren(Wei.Ren@synopsys.com)
 --------------------------------------------- */
 #ifndef _RN4020_H_
 #define _RN4020_H_
@@ -162,7 +159,7 @@ typedef struct rn4020_def {
 
 
 EMBARC_WEAK extern void rn4020_on_realtime_read(RN4020_DEF_PTR rn4020, uint16_t handle);
-EMBARC_WEAK extern void rn4020_on_write(RN4020_DEF_PTR rn4020, uint16_t handle, uint8_t* data);
+EMBARC_WEAK extern void rn4020_on_write(RN4020_DEF_PTR rn4020, uint16_t handle, uint8_t *data);
 EMBARC_WEAK extern void rn4020_connected_changed(RN4020_DEF_PTR rn4020, uint8_t connected);
 
 extern int32_t rn4020_setup(RN4020_DEF_PTR rn4020);
@@ -170,27 +167,27 @@ extern int32_t rn4020_reset_to_factory(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_set_services(RN4020_DEF_PTR rn4020, uint32_t services);
 extern int32_t rn4020_set_features(RN4020_DEF_PTR rn4020, uint32_t features);
 extern int32_t rn4020_reset(RN4020_DEF_PTR rn4020);
-extern int32_t rn4020_set_dev_name_mac(RN4020_DEF_PTR rn4020, const char* name);
-extern int32_t rn4020_set_dev_name(RN4020_DEF_PTR rn4020, const char* name);
-extern int32_t rn4020_set_manufacturer_name(RN4020_DEF_PTR rn4020, const char * nam);
+extern int32_t rn4020_set_dev_name_mac(RN4020_DEF_PTR rn4020, const char *name);
+extern int32_t rn4020_set_dev_name(RN4020_DEF_PTR rn4020, const char *name);
+extern int32_t rn4020_set_manufacturer_name(RN4020_DEF_PTR rn4020, const char *name);
 extern int32_t rn4020_advertise(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_remove_bond(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_refresh_handle_uuid_table(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_clear_private(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_is_connected(RN4020_DEF_PTR rn4020);
-extern int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t* uuid);
-extern int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t* uuid, uint8_t property,
+extern int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t *uuid);
+extern int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, uint8_t property,
 				 uint8_t size,uint8_t security);
-extern void rn4020_uuid_to_string(char* dest, const uint8_t* uuid, uint8_t len);
+extern void rn4020_uuid_to_string(char *dest, const uint8_t *uuid, uint8_t len);
 extern RN4020_HANDLE_UUID_ITEM* rn4020_lookup_handle(RN4020_DEF_PTR rn4020, uint16_t handle);
 extern uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM* item, uint16_t uuid);
 extern uint8_t rn4020_handle_match_uuid128(RN4020_HANDLE_UUID_ITEM* item, const uint8_t* uuid);
 extern void rn4020_tick(RN4020_DEF_PTR rn4020);
-extern void rn4020_send(RN4020_DEF_PTR rn4020, const char* line);
+extern void rn4020_send(RN4020_DEF_PTR rn4020, const char *line);
 
-extern int32_t rn4020_server_write_pub_char(RN4020_DEF_PTR rn4020, uint16_t uuid, const uint8_t* data, uint32_t len);
-extern int32_t rn4020_server_write_prv_char(RN4020_DEF_PTR rn4020, const uint8_t* uuid, const uint8_t* data, uint32_t len);
-extern int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020, uint16_t handle, const uint8_t* data, uint32_t len);
+extern int32_t rn4020_server_write_pub_char(RN4020_DEF_PTR rn4020, uint16_t uuid, const uint8_t *data, uint32_t len);
+extern int32_t rn4020_server_write_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, const uint8_t *data, uint32_t len);
+extern int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020, uint16_t handle, const uint8_t *data, uint32_t len);
 
 /**
  * level 0x00 (0%) - 0x64 (100%)
@@ -198,4 +195,4 @@ extern int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020, uint16
 extern int32_t rn4020_battery_set_level(RN4020_DEF_PTR rn4020, uint8_t level);
 
 
-#endif /* _RN40240_H_ */
+#endif /* _RN4020_H_ */

@@ -78,7 +78,7 @@ static void _rn4020_set_state(RN4020_DEF_PTR rn4020, RN4020_STATE new_state)
 static void _rn4020_get_line(RN4020_DEF_PTR rn4020)
 {
 	DEV_UART_PTR uart;
-	uint8_t  data;
+	uint8_t data;
 
 	uart = uart_get_dev(rn4020->uart);
 
@@ -97,7 +97,7 @@ static void _rn4020_get_line(RN4020_DEF_PTR rn4020)
 	}
 }
 
-static void _rn4020_parse_uuid_str(const char * str, uint8_t str_len, uint8_t * uuid, uint8_t * uuid_len)
+static void _rn4020_parse_uuid_str(const char *str, uint8_t str_len, uint8_t *uuid, uint8_t *uuid_len)
 {
 	char temp[3];
 	uint8_t str_index, dest_index;
@@ -112,10 +112,10 @@ static void _rn4020_parse_uuid_str(const char * str, uint8_t str_len, uint8_t * 
 	*uuid_len = dest_index;
 }
 
-static uint8_t _rn4020_parse_handle_uuid_line(const char * line, RN4020_HANDLE_UUID_ITEM* item)
+static uint8_t _rn4020_parse_handle_uuid_line(const char *line, RN4020_HANDLE_UUID_ITEM *item)
 {
-	const char * uuid_ptr;
-	const char * comma_ptr;
+	const char *uuid_ptr;
+	const char *comma_ptr;
 	char handle[5];
 
 	/* skip two spaces */
@@ -143,7 +143,7 @@ static void _rn4020_set_connected(RN4020_DEF_PTR rn4020, uint8_t connected)
 	rn4020_connected_changed(rn4020, connected);
 }
 
-static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char * line)
+static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char *line)
 {
 	char handle_str[5];
 	uint16_t handle;
@@ -240,7 +240,7 @@ static int32_t _rn4020_wait_for_ready(RN4020_DEF_PTR rn4020)
 	return E_SYS;
 }
 
-static int32_t _rn4020_cmd_aok(RN4020_DEF_PTR rn4020, const char * cmd)
+static int32_t _rn4020_cmd_aok(RN4020_DEF_PTR rn4020, const char *cmd)
 {
 	_rn4020_set_state(rn4020, RN4020_STATE_WAITING_FOR_AOK);
 	rn4020_send(rn4020, cmd);
@@ -248,8 +248,8 @@ static int32_t _rn4020_cmd_aok(RN4020_DEF_PTR rn4020, const char * cmd)
 }
 
 static int32_t _rn4020_server_write_char(RN4020_DEF_PTR rn4020,
-			const uint8_t * uuid, uint8_t uuid_len,
-			const uint8_t * data, uint32_t data_len)
+			const uint8_t *uuid, uint8_t uuid_len,
+			const uint8_t *data, uint32_t data_len)
 {
 	char line[RN4020_PRIVATE_UUID_HEX_STRING_LENGTH + 3];
 
@@ -262,7 +262,6 @@ static int32_t _rn4020_server_write_char(RN4020_DEF_PTR rn4020,
 	uart->uart_write(line, strlen(line));
 	uart->uart_write(",", 1);
 
-
 	for (uint32_t i = 0; i < data_len; i++) {
 		sprintf(line, "%02X", data[i]);
 		uart->uart_write(line, 2);
@@ -271,8 +270,6 @@ static int32_t _rn4020_server_write_char(RN4020_DEF_PTR rn4020,
 
 	return _rn4020_wait_for_ready(rn4020);
 }
-
-
 
 #ifdef RN4020_INTERRUPT_DRIVERN
 static void _rn4020_rx_cb(uint32_t data)
@@ -330,7 +327,6 @@ int32_t rn4020_setup(RN4020_DEF_PTR rn4020)
 		gpio_cmd->gpio_control(GPIO_CMD_DIS_BIT_INT,
 			 (void *)(1 << rn4020->pin_cmd));
 	}
-
 
 	gpio_wake_hw->gpio_write(0, 1 << rn4020->pin_wake_hw);
 	gpio_wake_sw->gpio_write(0, 1 << rn4020->pin_wake_sw);
@@ -398,21 +394,21 @@ int32_t rn4020_set_features(RN4020_DEF_PTR rn4020, uint32_t features)
 	return _rn4020_cmd_aok(rn4020, line);
 }
 
-int32_t rn4020_set_dev_name_mac(RN4020_DEF_PTR rn4020, const char * name)
+int32_t rn4020_set_dev_name_mac(RN4020_DEF_PTR rn4020, const char *name)
 {
 	char line[15];
 	snprintf(line, 15, "S-,%s", name);
 	return _rn4020_cmd_aok(rn4020, line);
 }
 
-int32_t rn4020_set_dev_name(RN4020_DEF_PTR rn4020, const char * name)
+int32_t rn4020_set_dev_name(RN4020_DEF_PTR rn4020, const char *name)
 {
 	char line[15];
 	snprintf(line, 15, "SN,%s", name);
 	return _rn4020_cmd_aok(rn4020, line);
 }
 
-int32_t rn4020_set_manufacturer_name(RN4020_DEF_PTR rn4020, const char * name)
+int32_t rn4020_set_manufacturer_name(RN4020_DEF_PTR rn4020, const char *name)
 {
 	char line[15];
 	snprintf(line, 15, "SDN,%s", name);
@@ -450,7 +446,7 @@ int32_t rn4020_clear_private(RN4020_DEF_PTR rn4020)
 	return _rn4020_cmd_aok(rn4020, "PZ");
 }
 
-int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t * uuid)
+int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t *uuid)
 {
 	char line[RN4020_PRIVATE_UUID_HEX_STRING_LENGTH+5];
 	strcpy(line, "PS,");
@@ -458,11 +454,11 @@ int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t * uuid)
   	return _rn4020_cmd_aok(rn4020, line);
 }
 
-int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t * uuid, uint8_t property,
+int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, uint8_t property,
 				 uint8_t size, uint8_t security)
 {
 	char line[50];
-	char * dest;
+	char *dest;
 	strcpy(line, "PC,");
 	rn4020_uuid_to_string(line + 3, uuid, RN4020_PRIVATE_UUID_LENGTH_BYTES);
 	dest = line + strlen(line);
@@ -475,7 +471,7 @@ int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t * uuid, uint8_t
 	return _rn4020_cmd_aok(rn4020, line);
 }
 
-void rn4020_uuid_to_string(char * dest, const uint8_t * uuid, uint8_t len)
+void rn4020_uuid_to_string(char *dest, const uint8_t *uuid, uint8_t len)
 {
 	for (int i = 0; i < len; i++) {
 		sprintf(dest, "%02X", uuid[i]);
@@ -483,9 +479,9 @@ void rn4020_uuid_to_string(char * dest, const uint8_t * uuid, uint8_t len)
 	}
 }
 
-RN4020_HANDLE_UUID_ITEM* rn4020_handle_uuid_item(RN4020_DEF_PTR rn4020, uint16_t handle)
+RN4020_HANDLE_UUID_ITEM * rn4020_handle_uuid_item(RN4020_DEF_PTR rn4020, uint16_t handle)
 {
-	RN4020_HANDLE_UUID_ITEM*  item;
+	RN4020_HANDLE_UUID_ITEM *item;
 
 	for (int i = 0; i < rn4020->handle_uuid_cnt; i++) {
 		item = &rn4020->handle_uuid_table[i];
@@ -496,7 +492,7 @@ RN4020_HANDLE_UUID_ITEM* rn4020_handle_uuid_item(RN4020_DEF_PTR rn4020, uint16_t
 	return NULL;
 }
 
-uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM* item, uint16_t uuid)
+uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM *item, uint16_t uuid)
 {
 	uint16_t item_uuid;
 
@@ -507,7 +503,7 @@ uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM* item, uint16_t uuid)
 	return item_uuid == uuid;
 }
 
-uint8_t rn4020_handle_match_uuid128(RN4020_HANDLE_UUID_ITEM* item, const uint8_t * uuid)
+uint8_t rn4020_handle_match_uuid128(RN4020_HANDLE_UUID_ITEM *item, const uint8_t *uuid)
 {
 	if (item->uuid_len != RN4020_PRIVATE_UUID_LENGTH_BYTES) {
 		return false;
@@ -531,12 +527,12 @@ EMBARC_WEAK void rn4020_on_realtime_read(RN4020_DEF_PTR rn4020, uint16_t handle)
 	EMBARC_PRINTF("real time read: 0x%04X\n", handle);
 }
 
-EMBARC_WEAK void rn4020_on_write(RN4020_DEF_PTR rn4020, uint16_t handle, uint8_t * data)
+EMBARC_WEAK void rn4020_on_write(RN4020_DEF_PTR rn4020, uint16_t handle, uint8_t *data)
 {
 	EMBARC_PRINTF("write: 0x%04X:%s ", handle, data);
 }
 
-void rn4020_send(RN4020_DEF_PTR rn4020, const char * line)
+void rn4020_send(RN4020_DEF_PTR rn4020, const char *line)
 {
 	DEV_UART_PTR uart = uart_get_dev(rn4020->uart);
 
@@ -545,7 +541,7 @@ void rn4020_send(RN4020_DEF_PTR rn4020, const char * line)
 	DBG("tx: %s\n", line);
 }
 
-int32_t rn4020_server_write_pub_char(RN4020_DEF_PTR rn4020, uint16_t uuid, const uint8_t * data, uint32_t len)
+int32_t rn4020_server_write_pub_char(RN4020_DEF_PTR rn4020, uint16_t uuid, const uint8_t *data, uint32_t len)
 {
 	uint8_t uuid_data[2];
 
@@ -555,13 +551,13 @@ int32_t rn4020_server_write_pub_char(RN4020_DEF_PTR rn4020, uint16_t uuid, const
 	return _rn4020_server_write_char(rn4020, uuid_data, 2, data, len);
 }
 
-int32_t rn4020_server_write_prv_char(RN4020_DEF_PTR rn4020, const uint8_t * uuid, const uint8_t * data, uint32_t len)
+int32_t rn4020_server_write_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, const uint8_t *data, uint32_t len)
 {
 	return _rn4020_server_write_char(rn4020, uuid, RN4020_PRIVATE_UUID_LENGTH_BYTES, data, len);
 }
 
 int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020,
-		 uint16_t handle, const uint8_t * data, uint32_t len)
+		 uint16_t handle, const uint8_t *data, uint32_t len)
 {
 	char line[20];
 	DEV_UART_PTR uart = uart_get_dev(rn4020->uart);
