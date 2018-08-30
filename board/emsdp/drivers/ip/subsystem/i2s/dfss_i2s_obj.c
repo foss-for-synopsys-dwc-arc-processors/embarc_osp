@@ -64,8 +64,6 @@
 
 #include "dfss_i2s_obj.h"
 #include "ip/subsystem/i2s/ss_i2s_master.h"
-// #include "ip/designware/i2s/dfss_i2s.h"
-// #include "ip/designware/i2s/dfss_i2s_hal.h"
 
 
 void dfss_i2s_all_install(void);
@@ -95,21 +93,19 @@ SS_I2S_MST_DEV_CONTEXT i2s_master_context0 = {
 };
 
 static void dfss_i2s_0_isr(void *ptr);
-#define DFSS_I2S_0_REFCLK		(12.228)			/*!< DFSS I2S audio reference clock (MHz) */
-#define DFSS_I2S_0_RELBASE	(BASE_ADDR_I2S_TX)		/*!< DFSS I2S 0 relative baseaddr */
-#define DFSS_I2S_0_MODE_EN	(DFSS_I2S_MASTER_SUPPORTED)	/*!< DFSS I2S master/slave enabled */
-#define DFSS_I2S_0_TX_FIFO_LEN	(16)				/*!< DFSS I2S FIFO Length */
-#define DFSS_I2S_0_CHANNELS	(DFSS_I2S_CHANNEL0_SUPPORTED)	/*!< DFSS I2S supported channels*/
-#define DFSS_I2S_0_WS_LEN		(DFSS_I2S_WSS_32_CLK)		/*!< DFSS I2S word select length*/
-//#define DFSS_I2S_0_SCLKG		(DFSS_I2S_SCLKG_24_CLK)	/*!< DFSS I2S SCLK gate */
-#define DFSS_I2S_0_SCLKG		(0)				/*!< DFSS I2S SCLK gate */
 
-// static DW_I2S_TX_CTRL_PTR dfss_i2s_0_ctrl;			/*!< DFSS I2S 0 ctrl */
-// static DFSS_I2S_CONFIG dfss_i2s_0_config;			/*!< DFSS I2S 0 config */
+void _regWrite (uint32_t addr, uint32_t val)
+{
+	volatile uint32_t *reg;
 
+	reg = (volatile uint32_t *) addr;
+
+	*reg = val;
+}
 /** DesignWare I2S 0 open */
 static int32_t dfss_i2s_0_open (uint32_t mode, uint32_t param)
 {
+	_regWrite(EMSDP_CRU_BASE + 0x1A8, EMSDP_AUDIO_REF_CLOCK/(32*param));
 	return ss_i2s_mst_open(&i2s_master_context0, mode, param);
 }
 /** DesignWare I2S 0 close */
@@ -145,47 +141,18 @@ static void dfss_i2s_0_err_cb0(void *param)
 /** Install DesignWare I2S 0 to system */
 static void dfss_i2s_0_install(void)
 {
-	uint32_t i2s_abs_base = 0;
 	DEV_I2S_PTR dfss_i2s_ptr = &dfss_i2s_0;
 	DEV_I2S_INFO_PTR dfss_i2s_info_ptr = &(dfss_i2s_0.i2s_info);
 
 	i2s_master_context0.info = dfss_i2s_info_ptr;
-	// DW_I2S_TX_CTRL_PTR *dfss_i2s_ctrl_ptr = &dfss_i2s_0_ctrl;
-	// DFSS_I2S_CONFIG *dfss_i2s_config_ptr = &dfss_i2s_0_config;
-	// DFSS_I2S_TX_REG *dfss_i2s_reg_ptr;
 
 	/* Info init */
-	// dfss_i2s_info_ptr->i2s_ctrl = (void *)dfss_i2s_ctrl_ptr;//TODO
-	// dfss_i2s_info_ptr->i2s_config = (void *)dfss_i2s_config_ptr;//TODO
 	dfss_i2s_info_ptr->opn_cnt = 0;
 	dfss_i2s_info_ptr->status = DEV_DISABLED;
 	dfss_i2s_info_ptr->device = I2S_DEVICE_TRANSMITTER;
 	dfss_i2s_info_ptr->mode = DEV_MASTER_MODE;
 	dfss_i2s_info_ptr->cur_state = I2S_FREE;
 	dfss_i2s_info_ptr->err_state = I2S_ERR_NONE;
-
-	/*
-	 * get absolute designware base address
-	 */
-	// i2s_abs_base = (uint32_t)BASE_ADDR_I2S_TX; // Memory address
-	// dfss_i2s_reg_ptr = (DFSS_I2S_TX_REG *)i2s_abs_base;
-
-	/* I2S ctrl init */
-	// dfss_i2s_ctrl_ptr->dfss_i2s_regs = dfss_i2s_reg_ptr;
-	/* Variables which should be set during object implementation */
-	// dfss_i2s_config_ptr->support_modes = DFSS_I2S_0_MODE_EN;
-	// dfss_i2s_config_ptr->fifo_len = DFSS_I2S_0_TX_FIFO_LEN;
-	// dfss_i2s_config_ptr->channels = DFSS_I2S_0_CHANNELS;
-	// dfss_i2s_config_ptr->ws_length = DFSS_I2S_0_WS_LEN;
-	// dfss_i2s_config_ptr->sclk_gate = DFSS_I2S_0_SCLKG;
-	// dfss_i2s_config_ptr->data_res[0] = I2S_AUD_DATA_16B;
-	// // sample rate 16KHz as default, the clock divider should be 1538/(32*2) in I2S_WS_LENGTH = 32
-	// dfss_i2s_config_ptr->sample_rate[0] = I2S_AUD_SR_16K;
-	// dfss_i2s_config_ptr->intno[0] = (INTNO_I2S_TX_OR_0_INTR<<16) | INTNO_I2S_TX_EMP_0_INTR;
-	// dfss_i2s_config_ptr->dfss_i2s_int_handler = dfss_i2s_0_isr;
-
-	/* Variables which always change during I2S operation */
-	// dfss_i2s_ctrl_ptr->int_status[0] = 0;
 
 	/** I2S dev init */
 	dfss_i2s_ptr->i2s_open = dfss_i2s_0_open;
@@ -220,21 +187,11 @@ SS_I2S_MST_DEV_CONTEXT i2s_master_context1 = {
 };
 
 static void dfss_i2s_1_isr(void *ptr);
-#define DFSS_I2S_1_REFCLK		(12.228)			/*!< DFSS I2S audio reference clock (MHz) */
-#define DFSS_I2S_1_RELBASE	(BASE_ADDR_I2S_RX)		/*!< DFSS I2S 0 relative baseaddr */
-#define DFSS_I2S_1_MODE_EN	(DFSS_I2S_MASTER_SUPPORTED)	/*!< DFSS I2S master enabled */
-#define DFSS_I2S_1_RX_FIFO_LEN	(16)				/*!< DFSS I2S FIFO Length */
-#define DFSS_I2S_1_CHANNELS	(DFSS_I2S_CHANNEL0_SUPPORTED)	/*!< DFSS I2S supported channels*/
-#define DFSS_I2S_1_WS_LEN		(DFSS_I2S_WSS_32_CLK)		/*!< DFSS I2S word select length*/
-//#define DFSS_I2S_1_SCLKG		(DFSS_I2S_SCLKG_24_CLK)	/*!< DFSS I2S SCLK gate */
-#define DFSS_I2S_1_SCLKG		(0)		/*!< DFSS I2S SCLK gate */
-
-// static DFSS_I2S_RX_CTRL dfss_i2s_1_ctrl;			/*!< DFSS I2S 1 ctrl */
-// static DFSS_I2S_CONFIG dfss_i2s_1_config;			/*!< DFSS I2S 1 config */
 
 /** DesignWare I2S 1 open */
 static int32_t dfss_i2s_1_open (uint32_t mode, uint32_t param)
 {
+	_regWrite(EMSDP_CRU_BASE + 0x1A8, EMSDP_AUDIO_REF_CLOCK/(32*param));
 	return ss_i2s_mst_open(&i2s_master_context1, mode, param);
 }
 /** DesignWare I2S 1 close */
@@ -270,46 +227,17 @@ static void dfss_i2s_1_err_cb1(void *param)
 /** Install DesignWare I2S 1 to system */
 static void dfss_i2s_1_install(void)
 {
-	uint32_t i2s_abs_base = 0;
 	DEV_I2S *dfss_i2s_ptr = &dfss_i2s_1;
 	DEV_I2S_INFO *dfss_i2s_info_ptr = &(dfss_i2s_1.i2s_info);
 	i2s_master_context1.info = dfss_i2s_info_ptr;
-	// DFSS_I2S_RX_CTRL *dfss_i2s_ctrl_ptr = &dfss_i2s_1_ctrl;
-	// DFSS_I2S_CONFIG *dfss_i2s_config_ptr = &dfss_i2s_1_config;
-	// DFSS_I2S_RX_REG *dfss_i2s_reg_ptr;
 
 	/* Info init */
-	// dfss_i2s_info_ptr->i2s_ctrl = (void *)dfss_i2s_ctrl_ptr;
-	// dfss_i2s_info_ptr->i2s_config = (void *)dfss_i2s_config_ptr;
 	dfss_i2s_info_ptr->opn_cnt = 0;
 	dfss_i2s_info_ptr->status = DEV_DISABLED;
 	dfss_i2s_info_ptr->device = I2S_DEVICE_RECEIVER;
 	dfss_i2s_info_ptr->mode = DEV_MASTER_MODE;
 	dfss_i2s_info_ptr->cur_state = I2S_FREE;
 	dfss_i2s_info_ptr->err_state = I2S_ERR_NONE;
-
-	/*
-	 * get absolute designware base address
-	 */
-	// i2s_abs_base = (uint32_t)BASE_ADDR_I2S_RX; // Memory address
-	// dfss_i2s_reg_ptr = (DFSS_I2S_RX_REG *)i2s_abs_base;
-
-	/* I2S ctrl init */
-	// dfss_i2s_ctrl_ptr->dfss_i2s_regs = dfss_i2s_reg_ptr;
-	// /* Variables which should be set during object implementation */
-	// dfss_i2s_config_ptr->support_modes = DFSS_I2S_1_MODE_EN;
-	// dfss_i2s_config_ptr->fifo_len = DFSS_I2S_1_RX_FIFO_LEN;
-	// dfss_i2s_config_ptr->channels = DFSS_I2S_1_CHANNELS;
-	// dfss_i2s_config_ptr->ws_length = DFSS_I2S_1_WS_LEN;
-	// dfss_i2s_config_ptr->sclk_gate = DFSS_I2S_1_SCLKG;
-	// dfss_i2s_config_ptr->data_res[0] = I2S_AUD_DATA_16B;
-	// // sample rate 16KHz as default, the clock divider should be 1538/(32*2) in I2S_WS_LENGTH = 32
-	// dfss_i2s_config_ptr->sample_rate[0] = I2S_AUD_SR_16K;
-	// dfss_i2s_config_ptr->intno[0] = (INTNO_I2S_RX_OR_0_INTR<<16) | INTNO_I2S_RX_DA_0_INTR;
-	// dfss_i2s_config_ptr->dfss_i2s_int_handler = dfss_i2s_1_isr;
-
-	/* Variables which always change during I2S operation */
-	// dfss_i2s_ctrl_ptr->int_status[0] = 0;
 
 	/** I2S dev init */
 	dfss_i2s_ptr->i2s_open = dfss_i2s_1_open;
