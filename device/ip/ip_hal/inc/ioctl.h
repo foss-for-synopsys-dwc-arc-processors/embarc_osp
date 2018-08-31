@@ -59,7 +59,7 @@ typedef struct {
 #undef _Uncached
 #define _Uncached volatile
 #define _Usually(x) 	_arc_usually(x)
-#define _sr(x, y) 		_arc_aux_write(x, y)
+#define _sr(x, y) 		_arc_aux_write(y, x)
 #define _lr(x)			_arc_aux_read(x)
 #endif
 
