@@ -60,9 +60,9 @@ COMMON_COMPILE_PREREQUISITES += $(BOARD_IOTDK_DIR)/configs/core_compiler.mk
 include $(BOARD_IOTDK_DIR)/configs/core_compiler.mk
 
 ## Board Related Settings, GNU is not supported
-OPENOCD_CFG_FILE ?= 
+OPENOCD_CFG_FILE ?= $(BOARD_IOTDK_DIR)/configs/openocd/snps_iotdk.cfg
 
-OPENOCD_OPTIONS ?= 
+OPENOCD_OPTIONS ?= -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 
 ## Build Rules
 # onchip ip object rules
