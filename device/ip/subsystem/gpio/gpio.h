@@ -63,26 +63,26 @@ extern void io_gpio_write(uint32_t dev_id, uint32_t data);
                                                 GPIO inputs configured to operate as interrupts. The callback's argument is initialized
                                                 with bitmask where each bit represents corresponding GPIO signal and is set to 1 if
                                                 that signal raises interrupt.
-  IO_GPIO_SET_DIRECTION         uint32_t        Bitmask, where each bit’s value controls the direction of the corresponding GPIO signal as follows:
-                                                0 – input, 1 – output. Default value of the control is zero that corresponds to all signals are inputs
+  IO_GPIO_SET_DIRECTION         uint32_t        Bitmask, where each bit's value controls the direction of the corresponding GPIO signal as follows:
+                                                0 - input, 1 - output. Default value of the control is zero that corresponds to all signals are inputs
                                                 on device opening.
-  IO_GPIO_SET_INT_ENABLE        uint32_t        Bitmask, where each bit’s value specifies if corresponding GPIO input shall act as interrupt or as a normal
-  (IO_GPIO_GET_INT_ENABLE)                      GPIO signal as follows: 0 – normal signal, 1 – interrupt. Default value of the control is zero that corresponds
+  IO_GPIO_SET_INT_ENABLE        uint32_t        Bitmask, where each bit's value specifies if corresponding GPIO input shall act as interrupt or as a normal
+  (IO_GPIO_GET_INT_ENABLE)                      GPIO signal as follows: 0 - normal signal, 1 - interrupt. Default value of the control is zero that corresponds
                                                 to all inputs are normal GPIO signals on device opening.
-  IO_GPIO_SET_INT_MASK          uint32_t        Bitmask, where each bit’s value specifies if corresponding GPIO interrupt signal is masked:
-  (IO_GPIO_GET_INT_MASK)                        0 – unmasked, 1 – masked. Default value of the control is zero that corresponds to
+  IO_GPIO_SET_INT_MASK          uint32_t        Bitmask, where each bit's value specifies if corresponding GPIO interrupt signal is masked:
+  (IO_GPIO_GET_INT_MASK)                        0 - unmasked, 1 - masked. Default value of the control is zero that corresponds to
                                                 all interrupts are unmasked on device opening.
-  IO_GPIO_SET_INT_TYPE          uint32_t        Bitmask, where each bit’s value specifies the type of corresponding GPIO interrupt as follows:
-                                                0 – level-sensitive, 1 – edge-sensitive. Default value of the control is zero that corresponds to
+  IO_GPIO_SET_INT_TYPE          uint32_t        Bitmask, where each bit's value specifies the type of corresponding GPIO interrupt as follows:
+                                                0 - level-sensitive, 1 - edge-sensitive. Default value of the control is zero that corresponds to
                                                 all interrupts are level-sensitive on device opening.
-  IO_GPIO_SET_INT_POLARITY      uint32_t        Bitmask, where each bit’s value specifies the polarity of corresponding GPIO interrupt as follows:
-                                                0 – active-low (falling edge), 1 – active-high(raising edge). Default value of the control is zero
+  IO_GPIO_SET_INT_POLARITY      uint32_t        Bitmask, where each bit's value specifies the polarity of corresponding GPIO interrupt as follows:
+                                                0 - active-low (falling edge), 1 - active-high(raising edge). Default value of the control is zero
                                                 that corresponds to all interrupts are active-low on device opening.
-  IO_GPIO_SET_INT_BOTHEDGE      uint32_t        Bitmask, where each bit’s value specifies the type of corresponding GPIO interrupt as follows:
-                                                0 – interrupt defined by INT_TYPE and INT_POLARITY, 1 – interrupt edge sensitive for both rising and falling edge
+  IO_GPIO_SET_INT_BOTHEDGE      uint32_t        Bitmask, where each bit's value specifies the type of corresponding GPIO interrupt as follows:
+                                                0 - interrupt defined by INT_TYPE and INT_POLARITY, 1 - interrupt edge sensitive for both rising and falling edge
                                                 that corresponds to all interrupts are defined by INT_TYPE and INT_POLARITY.
-  IO_GPIO_SET_DEBOUNCE          uint32_t        Bitmask, where each bit’s value specify if corresponding GPIO signal configured as interrupt source needs
-                                                to be debounced as follows: 0 – no debounce, 1 – enable debounce. Default value of the control is zero
+  IO_GPIO_SET_DEBOUNCE          uint32_t        Bitmask, where each bit's value specify if corresponding GPIO signal configured as interrupt source needs
+                                                to be debounced as follows: 0 - no debounce, 1 - enable debounce. Default value of the control is zero
                                                 that corresponds to all GPIO signals aren't debounced on device opening.
   IO_GPIO_GET_DIRECTION     uint32_t    Same as IO_GPIO_SET_DIRECTION.
   IO_GPIO_GET_GPO       uint32_t    Last value written to the port data register using io_gpio_write() service, does not depend on GPIO direction
