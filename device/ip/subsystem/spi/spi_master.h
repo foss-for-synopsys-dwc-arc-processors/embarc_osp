@@ -89,13 +89,13 @@ extern void io_spi_master_write(uint32_t dev_id, uint8_t * data,
   IO_SET_CB_TX                  io_cb_t         Callback function invoked from ISR when write successfully finishes
   IO_SET_CB_ERR                 io_cb_t         Callback function invoked from ISR when read/write fails
   IO_SPI_MASTER_SET_SRL_MODE    uint32_t        SPI shift register operation mode:
-                                                SPI_NORMAL_SRL_MODE – normal operation mode, Tx to Rx register loop disabled
-                                                SPI_TEST_SRL_MODE – test operation mode, Tx to Rx register loop enabled
+                                                SPI_NORMAL_SRL_MODE - normal operation mode, Tx to Rx register loop disabled
+                                                SPI_TEST_SRL_MODE - test operation mode, Tx to Rx register loop enabled
   IO_SPI_MASTER_SET_TRANSFER_MODE   uint32_t    SPI transfer mode:
-                                                SPI_TRAMSMIT_RECEIVE_MODE – transmit and receive
-                                                SPI_TRANSMIT_ONLY_MODE – transmit only
-                                                SPI_RECEIVE_ONLY_MODE – receive only
-                                                SPI_EEPROM_RDONLY_MODE – EEPROM read
+                                                SPI_TRAMSMIT_RECEIVE_MODE - transmit and receive
+                                                SPI_TRANSMIT_ONLY_MODE - transmit only
+                                                SPI_RECEIVE_ONLY_MODE - receive only
+                                                SPI_EEPROM_RDONLY_MODE - EEPROM read
   IO_SPI_MASTER_SET_BAUD         uint32_t       SPI clock divider corresponding to desired bitrate, in the range from 2 to 65534
   IO_SPI_MASTER_SET_SCPH         uint32_t       SPI closk phase:
                                                 SPI_SCPH_LOW - inactive state of SPI clock is low
