@@ -18,9 +18,9 @@ ln -s ../../../example example || die "Create symbolic link failed"
 # Generate xml by doxygen
 cd ../..
 mkdir -p build/doxygen/xml || die "Unable to create build/doxygen/xml folder"
-make doxygen &> build_doxygen.log || (tail -n 100 build_doxygen.log ; die "Build doxygen xml failed")
+make doxygen &> build_doxygen.log || tail -n 100 build_doxygen.log && die "Build doxygen xml failed"
 # Generate by sphinx, if fail will display last 100 lines of build log
-make html &> build_html.log || (tail -n 100 build_html.log ; die "Build sphinx documentation failed")
+make html &> build_html.log || tail -n 100 build_html.log && die "Build sphinx documentation failed"
 
 # Check if this is a pull request
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
