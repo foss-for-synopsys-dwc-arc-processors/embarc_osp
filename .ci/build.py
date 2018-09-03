@@ -46,6 +46,7 @@ class TailRecurseException:
 	def __init__(self, args, kwargs):
 		self.args = args
 		self.kwargs = kwargs
+
 def tail_call_optimized(g):
 	def func(*args, **kwargs):
 		f = sys._getframe()
@@ -95,45 +96,75 @@ def get_config(config): # from input to get the config dict{"TOOLCHAIN":,"BOARD"
 		make_configs[config_name] = value
 	return make_configs
 
+def board_version_config(osp_root, board, bd_version=None):
+	board_path = os.path.join(osp_root, "board", board)
+	bd_vers = dict()
+	if os.path.exists(board_path):
+		files = os.listdir(board_path)
+		if "configs" in files:
+			versions = os.listdir(os.path.join(board_path, "configs"))
+			for version in versions:
+				version_path = os.path.join(board_path, "configs", version)
+				if os.path.isdir(version_path):
+					bd_vers[version] = version_path
+		else:
+			versions = os.listdir(board_path)
+			for version in versions:
+				path = os.path.join(board_path, version)
+				if os.path.isdir(path) and "configs" in os.listdir(path):
+					version_path = os.path.join(board_path, version, "configs")
+					bd_vers[version] = version_path
+	if bd_version is not None:
+		if bd_vers.has_key(bd_version):
+			bd_ver = {bd_version: bd_vers[bd_version]}
+			return bd_ver
+	return bd_vers
+
 def get_tcf(osp_root, board, bd_version, cur_core):
 	result = dict()
 	tcf_name = cur_core + ".tcf"
-	board_path = "board/" + board + "/configs/" + bd_version + "/tcf/"
-	tcf_path = os.path.join(osp_root, board_path, tcf_name)
-	result[tcf_name] = None
-	if os.path.exists(tcf_path) and os.path.isfile(tcf_path):
-		result[tcf_name] = tcf_path
+	board_version_path_dict = copy.deepcopy(board_version_config(osp_root, board, bd_version))
+	board_path = board_version_path_dict[bd_version]
+
+	cur_core_file = cur_core + ".tcf"
+	result[cur_core] = None
+	if os.path.exists(board_path):
+		for root, dirs, files in os.walk(board_path, topdown=True):
+			if cur_core_file in files:
+				result[tcf_name] = os.path.join(root, cur_core_file)
 	return result
+
 
 def get_tcfs(osp_root, board, bd_version, cur_core=None):
 	result = []
-	board_path = "board/" + board + "/configs/" + bd_version + "/tcf/"
-	tcfs_path = os.path.join(osp_root, board_path)
-	if os.path.exists(tcfs_path):
+	board_version_path_dict = board_version_config(osp_root, board, bd_version)
+	board_path = board_version_path_dict [bd_version]
+	
+	if os.path.exists(board_path):
 		if cur_core is not None:
 			cur_core_file = cur_core + ".tcf"
-			if cur_core_file in os.listdir(tcfs_path):
-				result.append(cur_core)
-				return result
-		for file in os.listdir(tcfs_path):
-			filename, filesuffix = os.path.splitext(file)
-			if not filesuffix == ".tcf":
-				continue
-			result.append(filename)
+			for root, dirs, files in os.walk(board_path, topdown=True):
+				if cur_core_file in files:
+					cur_core_path = os.path.join(root,cur_core_file)
+					result.append(cur_core)
+					
+		else:
+			for root, dirs, files in os.walk(board_path, topdown=True):
+				for file in files:
+					filename, filesuffix = os.path.splitext(file)
+					if not filesuffix == ".tcf":
+						continue
+					result.append(filename)
 	return result
+
 
 def get_board_version(osp_root, board, bd_version=None):
 	result = []
-	board_path = "board/" + board + "/configs/"
+	board_path = "board/" + board
 	ver_path = os.path.join(osp_root, board_path)
 	if os.path.exists(ver_path):
-		if bd_version is not None:
-			if bd_version in os.listdir(board_path):
-				result.append(bd_version)
-				return result
-		for file in os.listdir(ver_path):
-			if os.path.isdir(os.path.join(ver_path, file)):
-				result.append(file)
+		bd_vers_dict = board_version_config(osp_root, board, bd_version)
+		result.extend(bd_vers_dict.keys())
 	return result
 
 def get_boards(osp_root, board=None):
@@ -252,6 +283,7 @@ def build_project_configs(app_path, config):
 		for version in versions:
 			cors = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
 			cur_cors[board][version] = cors
+
 	for board in cur_cors:
 		for bd_ver in cur_cors[board]:
 			core_failed = 0
