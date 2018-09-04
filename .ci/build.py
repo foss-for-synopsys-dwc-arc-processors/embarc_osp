@@ -262,7 +262,7 @@ def build_project_configs(app_path, config):
 	expected_different[app_path] = []
 	parallel = ""
 
-	core_key = "CORE" if make_configs.has_key("CORE")
+	core_key = "CORE" if make_configs.has_key("CORE") else "CUR_CORE"
 	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
 		parallel = make_configs["PARALLEL"]
 	if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
