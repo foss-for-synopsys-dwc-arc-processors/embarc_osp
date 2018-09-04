@@ -219,7 +219,7 @@ def build_makefile_project(app_path, config):
 			    print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
 			    print Style.RESET_ALL
 			    sys.stdout.flush()
-			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " +build_conf #" BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
+			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + build_conf #" BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
 			    cleancommand = make_cmd + " clean"
 			    os.system(cleancommand)
 			    buildcommand = make_cmd
@@ -244,6 +244,7 @@ def build_makefile_project(app_path, config):
 def build_project_configs(app_path, config):
 	work_path = os.getcwd()
 	make_configs = config
+	core_key = "CUR_CORE"
 	osp_root = None
 	board_input = None
 	bd_ver_input = None
@@ -261,6 +262,7 @@ def build_project_configs(app_path, config):
 	expected_different[app_path] = []
 	parallel = ""
 
+	core_key = "CORE" if make_configs.has_key("CORE")
 	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
 		parallel = make_configs["PARALLEL"]
 	if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
@@ -281,11 +283,9 @@ def build_project_configs(app_path, config):
 	for board in boards:
 		version = get_board_version(osp_root, board, bd_version=bd_ver_input)
 		bd_vers[board] = version
-	if "CORE" in make_configs and make_configs["CORE"] is not None:
-		cur_core_input = make_configs["CORE"]
-	else:
-		if "CUR_CORE" in make_configs and make_configs["CUR_CORE"] is not None:
-			cur_core_input = make_configs["CUR_CORE"]
+	if core_key in make_configs and make_configs[core_key] is not None:
+		cur_core_input = make_configs[core_key]
+
 	for (board, versions) in bd_vers.items():
 		cur_cors[board] = dict()
 		for version in versions:
@@ -301,7 +301,7 @@ def build_project_configs(app_path, config):
 				make_config["OSP_ROOT"] = osp_root
 				make_config["BOARD"] = board
 				make_config["BD_VER"] = bd_ver
-				make_config["CUR_CORE"] = cur_core
+				make_config[core_key] = cur_core
 				make_config["TOOLCHAIN"] = toolchain
 				make_config["TOOLCHAIN_VER"] = toolchain_ver
 				make_config["PARALLEL"] = parallel
