@@ -251,7 +251,7 @@ def build_project_configs(app_path, config):
 	cur_core_input = None
 	toolchain_ver = "2017.09"
 	bd_vers = dict()
-	cur_cors = dict()
+	cur_cores = dict()
 	make_config = dict()
 	results = []
 	toolchain = "gnu"
@@ -287,17 +287,17 @@ def build_project_configs(app_path, config):
 		cur_core_input = make_configs[core_key]
 
 	for (board, versions) in bd_vers.items():
-		cur_cors[board] = dict()
+		cur_cores[board] = dict()
 		for version in versions:
-			cors = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
-			cur_cors[board][version] = cors
+			cores = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
+			cur_cores[board][version] = cores
 
-	for board in cur_cors:
-		for bd_ver in cur_cors[board]:
+	for board in cur_cores:
+		for bd_ver in cur_cores[board]:
 			core_failed = 0
-			core_num = len(cur_cors[board][bd_ver])
+			core_num = len(cur_cores[board][bd_ver])
 			may_compare = []
-			for cur_core in cur_cors[board][bd_ver]:
+			for cur_core in cur_cores[board][bd_ver]:
 				make_config["OSP_ROOT"] = osp_root
 				make_config["BOARD"] = board
 				make_config["BD_VER"] = bd_ver
