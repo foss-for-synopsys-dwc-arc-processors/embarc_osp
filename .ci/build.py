@@ -184,20 +184,25 @@ def build_makefile_project(app_path, config):
 	result = dict()
 	isMakeProject = False
 
-	make_configs = config #get_config(config)
+	make_configs = copy.deepcopy(config)
 	print make_configs
-	osp_root = make_configs["OSP_ROOT"]
+	core_key = "CORE" if make_configs.has_key("CORE") else "CUR_CORE"
+	
+	osp_root = make_configs.pop("OSP_ROOT")
+	toolchain_ver = make_configs.pop("TOOLCHAIN_VER")
+	parallel = make_configs.pop("PARALLEL")
+
 	toolchain = make_configs["TOOLCHAIN"]
 	board = make_configs["BOARD"]
 	bd_ver = make_configs["BD_VER"]
-	cur_core = make_configs["CUR_CORE"]
-	toolchain_ver = make_configs["TOOLCHAIN_VER"]
-	parallel = make_configs["PARALLEL"]
+	cur_core = make_configs[core_key]
+	
 	conf_key = board + "_" + bd_ver + "_" + cur_core
-
 	tcf_name = cur_core + ".tcf"
 	tcf_found = get_tcf(osp_root, board, bd_ver, cur_core)
 	print "tcf_path:%s" % (tcf_found)
+	build_conf_list = ["%s=%s" % (key, value) for (key, value) in make_configs.items()]
+	build_conf = " ".join(build_conf_list)
 
 	tcf_path = tcf_found[tcf_name]
 	if tcf_path != None:
@@ -214,7 +219,7 @@ def build_makefile_project(app_path, config):
 			    print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
 			    print Style.RESET_ALL
 			    sys.stdout.flush()
-			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
+			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " +build_conf #" BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
 			    cleancommand = make_cmd + " clean"
 			    os.system(cleancommand)
 			    buildcommand = make_cmd
