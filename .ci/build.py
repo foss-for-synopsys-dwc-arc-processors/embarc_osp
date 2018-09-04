@@ -276,8 +276,11 @@ def build_project_configs(app_path, config):
 	for board in boards:
 		version = get_board_version(osp_root, board, bd_version=bd_ver_input)
 		bd_vers[board] = version
-	if "CUR_CORE" in make_configs and make_configs["CUR_CORE"] is not None:
-		cur_core_input = make_configs["CUR_CORE"]
+	if "CORE" in make_configs and make_configs["CORE"] is not None:
+		cur_core_input = make_configs["CORE"]
+	else:
+		if "CUR_CORE" in make_configs and make_configs["CUR_CORE"] is not None:
+			cur_core_input = make_configs["CUR_CORE"]
 	for (board, versions) in bd_vers.items():
 		cur_cors[board] = dict()
 		for version in versions:
@@ -533,7 +536,7 @@ def get_options_parser():
 	parser.add_argument("--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
 	parser.add_argument("--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
 	parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
-	parser.add_argument("--cur_core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
+	parser.add_argument("--core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
 	parser.add_argument("--toolchain_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
 	parser.add_argument("--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
 	parser.add_argument("--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
@@ -548,7 +551,7 @@ def get_options_parser():
 	if options.bd_ver:
 		configs["BD_VER"] = options.bd_ver
 	if options.cur_core:
-		configs["CUR_CORE"] = options.cur_core
+		configs["CORE"] = options.cur_core
 	if options.toolchain_ver:
 		configs["TOOLCHAIN_VER"] = options.toolchain_ver
 	if options.examples:
