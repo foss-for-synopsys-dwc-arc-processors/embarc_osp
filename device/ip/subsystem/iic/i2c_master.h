@@ -54,7 +54,7 @@
 #define IO_I2C_MASTER_SET_SS_SCL_LCNT       (0x23)
 #define IO_I2C_MASTER_SET_FS_SCL_HCNT       (0x24)
 #define IO_I2C_MASTER_SET_FS_SCL_LCNT       (0x25)
-
+#define IO_I2C_MASTER_SET_NEXT_COND         (0x26)
 
 extern uint32_t io_i2c_master_open(uint32_t dev_id);
 extern void io_i2c_master_close(uint32_t dev_id);

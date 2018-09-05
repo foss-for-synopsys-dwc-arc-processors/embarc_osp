@@ -281,6 +281,15 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 			}
 			break;
 		case IIC_CMD_MST_SET_NEXT_COND:
+			val32 = (uint32_t) param;
+			if (val32 == IIC_MODE_STOP) {
+				arg = I2C_STOP_CMD;
+			} else if (val32 == IIC_MODE_RESTART) {
+				arg = I2C_RESTART_CMD;
+			} else {
+				arg = 0;
+			}
+			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_NEXT_COND, &arg);
 			break;
 		default:
 			ercd = E_NOSPT;

@@ -108,6 +108,7 @@ typedef struct i2c_info {
     uint8_t rd_req_detected;
     uint16_t fifo_depth;
     uint16_t dmarxchanid, dmatxchanid;
+    uint16_t next_cond;
 #ifdef __Xdmac
     _Uncached uint32_t *dmarxdescriptor, *dmatxdescriptor;
     uint16_t dmatx_last;

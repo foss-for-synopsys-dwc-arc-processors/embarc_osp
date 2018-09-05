@@ -301,6 +301,7 @@ uint32_t io_i2c_master_open(uint32_t dev_id)
     /* initialize */
     dev->handling_tx = dev->handling_rx = 0;
     dev->tx_data = dev->rx_data = NULL;
+    dev->next_cond = I2C_STOP_CMD;
 
     /* set interrupt vector */
     _setvecti(dev->vector_err, dev->isr_err);
@@ -335,7 +336,7 @@ uint32_t io_i2c_master_open(uint32_t dev_id)
     REG_WRITE(I2C_ENABLE, 0x1);
 
     /* unmask error interrupt: stop-detection, tx-abort, rx-over */
-    REG_WRITE(I2C_INTR_MASK, R_STOP_DET | R_TX_ABRT | R_RX_OVER);
+    REG_WRITE(I2C_INTR_MASK, R_TX_ABRT | R_RX_OVER);
 
     return 0;
 }
@@ -526,6 +527,9 @@ void io_i2c_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg)
     case IO_SET_CB_ERR:
     dev->err_cb = ((io_cb_t *) arg)->cb;
     break;
+    case IO_I2C_MASTER_SET_NEXT_COND:
+    dev->next_cond = (uint16_t)*((uint32_t *) arg);
+    break;
 
     default:
     {
@@ -622,6 +626,12 @@ static void i2c_mst_rx_avail_ISR_proc(uint32_t dev_id)
     if (dev->rx_size == dev->rx_count) {    /* read buffer completely filled, mask rx-avail interrupt */
         val = REG_READ(I2C_INTR_MASK) & ~R_RX_FULL;
         REG_WRITE(I2C_INTR_MASK, val);
+
+        dev->handling_rx = 0;
+        dev->rx_data = NULL;
+        if (NULL != dev->rx_cb) {
+            dev->rx_cb(dev_id);
+        }
     }
 #ifdef __Xdmac
     } else {
@@ -643,10 +653,16 @@ static void i2c_mst_tx_req_ISR_proc(uint32_t dev_id)
     if (dev->dmatxchanid == DMA_NONE) {
 #endif
         if (dev->tx_size == dev->tx_count) {    /* no data left to put into the fifo, mask tx-threshold (tx-empty) */
-        val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY;
-        REG_WRITE(I2C_INTR_MASK, val);
+            val = REG_READ(I2C_INTR_MASK) & ~R_TX_EMPTY;
+            REG_WRITE(I2C_INTR_MASK, val);
+            /* tx done */
+            dev->handling_tx = 0;
+            dev->tx_data = NULL;
+            if (NULL != dev->tx_cb) {
+                dev->tx_cb(dev_id);
+            }
         } else {        /* write data into fifo */
-        fill_txfifo(dev);
+            fill_txfifo(dev);
         }
 #ifdef __Xdmac
     } else {
@@ -827,7 +843,7 @@ static void fill_txfifo(i2c_info_pt dev)
     }
     if ((dev->tx_size - 1) == dev->tx_count) {  /* end of message, insert stop condition */
     REG_WRITE(I2C_DATA_CMD,
-          (dev->tx_data[dev->tx_count++] | I2C_STOP_CMD));
+          (dev->tx_data[dev->tx_count++] | dev->next_cond));
     } else {            /* continue */
     REG_WRITE(I2C_DATA_CMD, (dev->tx_data[dev->tx_count++]));
     }
@@ -847,7 +863,7 @@ static void fill_txfifo_for_rx(i2c_info_pt dev)
     }
     dev->rx_req_count += cnt;
     if (dev->rx_size == dev->rx_req_count) {    /* end of message, insert stop condition */
-    REG_WRITE(I2C_DATA_CMD, (I2C_READ_CMD | I2C_STOP_CMD));
+    REG_WRITE(I2C_DATA_CMD, (I2C_READ_CMD | dev->next_cond));
     } else {            /* continue */
     REG_WRITE(I2C_DATA_CMD, I2C_READ_CMD);
     }
