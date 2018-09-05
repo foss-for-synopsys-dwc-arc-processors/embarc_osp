@@ -100,6 +100,8 @@ _clear_bss_loop:
 	cmp	r0, r1
 	jlt	_clear_bss_loop
 
+_init_phase2:
+
 	mov 	r0, sp
 
 	/* switch to secureshield runtime stack */
@@ -114,7 +116,6 @@ _clear_bss_loop:
 
 	mov 	gp, _f_sdata
 
-_init_phase2:
 
 #if defined(__MW__)
 	jl	_init
