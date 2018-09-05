@@ -38,30 +38,30 @@
 #include "board.h"
 
 //****************************************
-#define	SMPLRT_DIV		0x19
-#define	CONFIG			0x1A
-#define	GYRO_CONFIG		0x1B
+#define	SMPLRT_DIV	0x19
+#define	CONFIG		0x1A
+#define	GYRO_CONFIG	0x1B
 #define	ACCEL_CONFIG	0x1C
-#define	ACCEL_CONFIG_2  0x1D 
-#define INT_PIN_CFG     0x37
-#define	PWR_MGMT_1		0x6B
-#define MAG_CTRL        0x0A
+#define	ACCEL_CONFIG_2	0x1D
+#define INT_PIN_CFG	0x37
+#define INT_ENABLE	0x38
+#define USER_CTRL	0x6A
+#define	PWR_MGMT_1	0x6B
+#define PWR_MGMT_2 	0x6C
+#define MAG_CTRL	0x0A
 
-#define MPU_WIM			0x75
-#define MPU_ID          0x71
+#define MPU_WIM		0x75
+#define MPU_ID		0x71
 
-#define MAG_WIM         0x00
-#define MAG_ID          0x48
+#define MAG_WIM		0x00
+#define MAG_ID		0x48
 
 #define	ACCEL_XOUT_H	0x3B
-#define	GYRO_XOUT_H		0x43		
-#define MAG_XOUT_L		0x03
+#define	GYRO_XOUT_H	0x43
+#define MAG_XOUT_L	0x03
 
 
 #define MPU9250_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
-
-static uint8_t mag_flag = 0;
-static uint8_t mpu_flag = 0;
 
 static int32_t _mpu_reg_write(MPU9250_DEF_PTR obj, uint32_t slaveaddr, uint8_t regaddr, uint8_t *val, uint8_t len)
 {
@@ -85,7 +85,6 @@ static int32_t _mpu_reg_write(MPU9250_DEF_PTR obj, uint32_t slaveaddr, uint8_t r
 error_exit:
 	return ercd;
 }
-
 
 static int32_t _mpu_reg_read(MPU9250_DEF_PTR obj, uint32_t slaveaddr, uint8_t regaddr, uint8_t *val, uint8_t len)
 {
@@ -111,7 +110,6 @@ error_exit:
 	return ercd;
 }
 
-
 int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 {
 	int32_t ercd = E_OK;
@@ -120,29 +118,36 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	MPU9250_CHECK_EXP_NORTN(iic_obj!=NULL);
+	MPU9250_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
 		config = 0x80;
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, PWR_MGMT_1, &config, 1);//0x6B
-		
+		board_delay_ms(100, OSP_DELAY_OS_COMPAT_DISABLE);
+
+		/*
+		 * get stable time source; Auto select clock source to be PLL gyroscope reference if ready
+		 * else use the internal oscillator
+		 */
+		config = 0x01;
+		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, PWR_MGMT_1, &config, 1);
 		config = 0x00;
-		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, PWR_MGMT_1, &config, 1);//0x6B
+		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, PWR_MGMT_2, &config, 1);
+		/* no i2c master */
+		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, USER_CTRL, &config, 1);
+		board_delay_ms(200, OSP_DELAY_OS_COMPAT_DISABLE);
 
 		ercd = _mpu_reg_read(obj, obj->mpu_slvaddr, MPU_WIM, data, 1);
-		if(data[0] == MPU_ID)
-		{
-			EMBARC_PRINTF("mpu init success\r\n");
-			mpu_flag = 1;
-		}else{
-			EMBARC_PRINTF("mpu init failed\r\n");
-			mpu_flag = 0;
+
+		if (data[0] != MPU_ID) {
+			dbg_printf(DBG_MORE_INFO,"mpu init failed\r\n");
+			return E_SYS;
 		}
-		
+
 		config = 0x07;//SAMPLE_RATE=Internal_Sample_Rate(1khz) / (1 + SMPLRT_DIV)
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, SMPLRT_DIV, &config, 1);//Sample Rate Divider
-		
+
 		config = 0x06;
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, CONFIG, &config, 1);//DLPF config: 5Hz
 
@@ -151,34 +156,28 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 
 		config = 0x00;
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, ACCEL_CONFIG, &config, 1);// +-2g
-		
+
 		config = 0x08;
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, ACCEL_CONFIG_2, &config, 1);//1.13kHz
 
-		config = 0x02; //set passby
+		config = 0x2; //set passby
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, INT_PIN_CFG, &config, 1);
+		board_delay_ms(100, OSP_DELAY_OS_COMPAT_DISABLE);
 
 		ercd = _mpu_reg_read(obj, obj->mag_slvaddr, MAG_WIM, data, 1);//read mag who i am;
 
-		if(data[0] == MAG_ID)
-		{
-			EMBARC_PRINTF("mag init success\r\n");
-			mag_flag = 1;
-		}else{
-			EMBARC_PRINTF("mag init failed\r\n");
-			mag_flag = 0;
+		if (data[0] != MAG_ID) {
+			dbg_printf(DBG_MORE_INFO,"mpu init failed\r\n");
+			return E_SYS;
 		}
 
 		config = 0x01;
 		ercd = _mpu_reg_write(obj, obj->mag_slvaddr, MAG_CTRL, &config, 1);//mag single measurement mode
-
-
 	}
 
 error_exit:
 	return ercd;
 }
-
 
 int32_t mpu9250_sensor_deinit(MPU9250_DEF_PTR obj)
 {
@@ -190,7 +189,6 @@ int32_t mpu9250_sensor_deinit(MPU9250_DEF_PTR obj)
 error_exit:
 	return ercd;
 }
-
 
 int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 {

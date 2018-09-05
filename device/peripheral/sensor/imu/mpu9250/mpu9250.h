@@ -37,7 +37,7 @@
 #define MPU9250_IIC_ADDRESS	(0x68 + (MPU9250_AD0_PIN << 1))
 
 #define TEMP_I2C_SLAVE_ADDRESS	MPU9250_IIC_ADDRESS
-#define MAG_IIC_ADDRESS    0x0C
+#define MAG_IIC_ADDRESS 	0x0C
 #ifdef __cplusplus
 extern "C" {
 #endif
