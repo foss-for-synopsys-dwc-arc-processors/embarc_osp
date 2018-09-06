@@ -1,12 +1,12 @@
 .. _getting_started_with_hs_development_kit:
 
-Getting Started with HS Development Kit
+Getting Started with the ARC HS Development Kit
 =======================================
 
 Supported Hardware
 ##################
 
-The ARC HS Development Kit (HSDK) features an SoC from Synopsys featuring a quad-core ARC HS Processor (HS38x4) and integrated support for a rich set of peripherals including Ethernet, WiFi, Bluetooth, USB, I2C, SPI and UART. It is supported with tools and software necessary for Linux, RTOS and bare metal applications development. Linux distributions can be built for the platform using standard build systems (buildroot, Yocto/OE, OpenWrt) while RTOS & bare metal applications can be developed using the embARC Open Software Platform (OSP). I/O functionality can be extended using Digilent® Peripheral Modules (Pmods™), as well as Arduino Shields and mikrobus modules.
+The ARC HS Development Kit (HSDK) uses an SoC from Synopsys featuring a quad-core ARC HS Processor (HS38x4) and integrated support for a rich set of peripherals including Ethernet, WiFi, Bluetooth, USB, I2C, SPI and UART. It is supported with tools and software necessary for Linux, RTOS and bare metal applications development. Linux distributions can be built for the platform using standard build systems (buildroot, Yocto/OE, OpenWrt) while RTOS & bare metal applications can be developed using the embARC Open Software Platform (OSP). I/O functionality can be extended using Digilent® Peripheral Modules (Pmods™), as well as Arduino Shields and mikrobus modules.
 
 Setting Up HSDK
 ###############
@@ -27,7 +27,7 @@ Setting Up HSDK
 
 #. You can use any terminal emulation program to view UART output from the HSDK. The USB connection provides both the debug channel and RS232 transport. Use Tera Term in Windows as an example.
 
-   * Determine which COM port the EMSK is using.
+   * Determine which COM port the HSDK is using.
 
       * Open the **Windows Control Panel** and select **Device Manager** in a Windows environment.
       * Expand **Ports (COM and LPT)** in the list. Select **USB Serial Port (COM x)** and Note the COM port number for the ARC board.
