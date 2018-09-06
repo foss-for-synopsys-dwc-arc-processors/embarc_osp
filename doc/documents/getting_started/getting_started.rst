@@ -6,11 +6,11 @@ Getting Started
 Use this guide to get started with your :ref:`embARC OSP <introduction_embarc_osp>`
 development.
 
-Checking Out the embARC OSP Code
+Checking Out the embARC OSP source code
 ################################
 
 The embARC OSP source code is hosted in a GitHub repository that supports
-cloning via git. There are scripts and such in this repo that you'll need to set up your development environment, and we'll be using Git to get this repo. If you don't have Git installed, see the beginning of the OS-specific instructions below for help.
+cloning via git. There are scripts and such in this repo that you'll need to set up your development environment, and we'll be using Git to get this repo. If you don't have Git installed, please refer to the beginning of the host OS-specific getting started instructions below for help.
 
 We'll begin by using Git to clone the repository anonymously.
 
@@ -26,34 +26,34 @@ We'll begin by using Git to clone the repository anonymously.
 You have successfully checked out a copy of the source code to your local
 machine.
 
-Set Up the Development Environment
+Setting Up the Development Environment
 ##################################
 
-The embARC supports these operating systems.
+The embARC OSP platform supports the following development machine operating systems:
 
 * Microsoft Windows 10 / Windows 7
 * Ubuntu 16.04
 
-Use the following procedure to create a new development environment.
+Use the following procedure to create a new development environment
 
 .. toctree::
    :maxdepth: 1
 
    software_requirement.rst
 
-.. note:: The embARC OSP uses make/gmake as a build tool. They are provided in the ARC development tools.
+.. note:: The embARC OSP uses make/gmake as a build tool snd these are provided as part of the ARC development tools.
 
 .. _building_a_sample_application:
 
 Building a Sample Application
 #############################
 
-Using the ``blinky`` as a base model, the following section will describe how
-to build a embARC OSP application. The following sections contain the commands
-of using ARC GNU toolchain in a Windows environment. Please use the
+Using the ``blinky`` example, the following section will describe how
+to build an embARC OSP application. The following sections contain the commands
+used for the ARC GNU toolchain in a Windows environment. Please use the
 appropriate commands for your OS.
 
-Follow these steps to build a sample application.
+Follow these steps to build a sample application
 
 1. Make sure the ARC GNU toolchain is installed in your environment, see :ref:`software_requirement`.
 
@@ -74,7 +74,7 @@ Follow these steps to build a sample application.
 Hardware Preparation
 ####################
 
-Use the following procedures to prepare ARC boards to run/debug the embARC applications.
+Use the following procedures to prepare your ARC board to run/debug the embARC applications.
 
 .. toctree::
    :maxdepth: 1
@@ -92,7 +92,7 @@ See the following procedures to check peripherals and board settings. The periph
 Running a Sample Application
 ############################
 
-Follow these steps to run a sample application.
+Follow these steps to run the sample application.
 
 #. Make sure the *blinky* example has been built successfully in :ref:`building_a_sample_application`. Get the .elf file ``blinky_gnu_arcem11d.elf`` in ``<blinky>\obj_emsk_23\gnu_arcem11d``.
 
@@ -105,7 +105,7 @@ Follow these steps to run a sample application.
    cd embarc_osp\example\baremetal\blinky
    make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d run
 
-.. note:: No peripheral modules are required to run ``blinky`` example.
+.. note:: No peripheral modules are required to run the ``blinky`` example.
 
 
 Advanced Topics
