@@ -8,7 +8,7 @@ Development Environment
 * Windows 10 / Windows 7
 * Ubuntu 16.04
 
-.. note:: IF youneed assistance with a different host environment, please file a GitHub Issue to get support from the embARC development team.
+.. note:: IF you need assistance with a different host environment, please file a GitHub Issue to get support from the embARC development team.
 
 Software Requirement
 ####################
