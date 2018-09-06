@@ -1,37 +1,36 @@
 .. _add_new_board:
 
-Add New Board
+Adding a New Board
 #############
 
-Here, we will add a new board named ``virtual`` to show the steps to add a new
-board in embARC OSP.
+This section describes the process to add a new board named ``myboard`` in embARC OSP.
 
-1. Create a sub folder under ``board`` and name it as ``virtual``. Create two
-new files ``virtual.mk`` and ``virtual.h`` in this folder.
+1. Create a sub-folder under ``board`` folder and named ``myboard``. Create two
+new files ``myboard.mk`` and ``myboard.h`` in this folder.
 
-2. Create necessary sub-folders and files under ``virtual``. The ``virtual`` BSP is consisted of these sub-folders and files. Here, there are 3 folders, ``common``, ``config`` and ``drivers``.
+2. Create necessary sub-folders and files under ``myboard``. The BSP for ``myboard`` is made up of these sub-folders and files. There are 3 folders required, ``common``, ``config`` and ``drivers``.
 
-	* ``common``: the common routines of ``virtual`` are in this folder. ``board_init`` function and ``board_timer_xxx`` functions are suggested to be here.
+	* ``common``: contains the common routines for ``myboard``. The ``board_init`` function and ``board_timer_xxx`` functions should also be implemented in this folder.
 
-	* ``configs``: the board config information is in this folder, including
+	* ``configs``: contains board configuration information, including
 
-	        - memory information in ``target_memory.h``
-	        - ``*.tcf`` file has information for arc configuration, compiler option etc..
-	        - ``virtual_hardware.h`` has necessary hardware definitions, e.g., peripheral address, interrupt number assignment.
-	        - ``*.mk`` files, which should be included in ``virtual.mk`` are necessary build system information.
-	        - other necessary files
+	        - ``target_memory.h`` file containing memory information
+	        - ``*.tcf`` file containing information about the arc configuration, compiler options, etc.
+	        - ``myboard_hardware.h`` file containing necessary hardware definitions, e.g., peripheral address, interrupt number assignments, etc.
+	        - ``*.mk`` files, to be included in ``myboard.mk`` with required build system information.
+	        - any other required files
 
-	* ``drivers``: the on-board drivers implementation of ``virtual`` board
+	* ``drivers``: contains on-board driver implementations for ``myboard`` board
 
-3. Modify the ``virtual.mk``. The necessary information should be added in
-   ``virtual.mk``, such as source folders, including folders, object output
+3. Modify ``myboard.mk``.  Add necessary information in
+   ``virtual.mk``, such as source folders, include folders, object output
    folders and make rules. The build system will automatically compile all the
-   source files (.c, .s) in the added folders and create library named
-   ``libvirtual.a`` finally.
+   source files (.c, .s) in the added folders and finally create a library named
+   ``libmyboard.a``.
 
-4. Modify the ``virtual.h`` and add it into ``board.h``. ``virtual.h`` is the
-   only place to expose board specific information, e.g., function
+4. Modify the ``myboard.h`` and add it into ``board.h``. ``myboard.h`` is the
+   only place where board specific information should be exposed, e.g., function
    declaration, hardware definitions, macros.
 
 .. note::
-   For details, please take other exist board support folder like ``<embARC>/board/emss`` for reference.
+   For details, please refer to other existing board support folders such as ``<embARC>/board/emsk`` for reference.
