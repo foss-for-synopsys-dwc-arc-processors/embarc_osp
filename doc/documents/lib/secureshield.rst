@@ -1,6 +1,6 @@
 .. _lib_secureshield:
 
-SecureShiled
+SecureShield
 ############
 
 SecureShield enables the execution of applications in isolated, Trusted
