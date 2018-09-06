@@ -65,7 +65,7 @@ The BSP Layer currently supports the following boards.
    nsim.rst
 
 
-* AXS board support can be found in ``board/ax``, detailed in ARC AXS Software
+* AXS board support can be found in ``board/axs``, detailed in ARC AXS Software
   Development Platform (AXS). It includes the following sub-folders:
 
   * :file:`common`: AXS board initialization functions and 1 ms interrupt timer function

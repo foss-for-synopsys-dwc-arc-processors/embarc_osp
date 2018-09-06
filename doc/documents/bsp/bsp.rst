@@ -6,7 +6,7 @@ embARC BSP
 Overview
 ########
 
-The embARC **Board support Package** (BSP) is a software distributions aimed at facilitating the development and evaluation of embedded systems based on ARCv2 processors. 
+The embARC **Board support Package** (BSP) is a software distributions aimed at facilitating the development and evaluation of embedded systems based on ARCv2 processors.
 
 Unlike the `embARC OSP <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp>`_ as a full-featured distribution for ARC embedded systems, the embARC BSP is designed to provide a minimalistic board support package for ARC users by defining consistent and simple software interfaces to the processors and onboard devices.
 
@@ -30,7 +30,7 @@ User Guide
 
 Follow these steps to run *hello world* in the embARC BSP.
 
-1. See :ref:`getting_started` to set up the development environment and prepare hardware. 
+1. See :ref:`getting_started` to set up the development environment and prepare hardware.
 
 2. Checking out the embARC BSP code. The embARC BSP source code is hosted in a github repository that supports cloning via git. Use the following scripts to get this repository. And check out a copy of the source code to your local machine. You can download the zip file to get the code in the github as alternative.
 

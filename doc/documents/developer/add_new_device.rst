@@ -8,7 +8,7 @@ Add On-Chip IP
 
 If the HAL of the new device is defined, follow the steps below.
 
-* Create a subfolder in *device/ip*.
+* Create a sub-folder in *device/ip*.
 * Implement the driver according to the device HAL definition and existing DesignWare IP implementations.
 * Add corresponding makefile.
 
