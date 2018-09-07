@@ -91,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middlewares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middleware Packages</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="library.html">Libraries</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="c_lib.html">C Library Support</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SecureShield</a><ul>
@@ -203,14 +203,14 @@ APEX extension instructions and registers.</p>
 <h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="secureshield-runtime">
 <h3>SecureShield Runtime<a class="headerlink" href="#secureshield-runtime" title="Permalink to this headline">¶</a></h3>
-<p>SecurrShield runtime is a kind of microvisor implementation for ARC EM
-Processors with MPU to manage containers, analogous to RTOS kernel managing
+<p>SecureShield runtime is a microvisor implementation for ARC EM
+Processors with MPU to manage containers, analogous to an RTOS kernel managing
 tasks.</p>
 </div>
 <div class="section" id="container">
 <h3>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h3>
 <p>A container defines a sandbox for an application. The container provides the
-trusted execution environment for application code runs in. Containers are
+trusted execution environment the application code runs in. Containers are
 designed to be isolated from each other. Each container has its own space
 attributes, including the stack area (required), context area (optional),
 resources (peripherals, interrupt, auxiliary registers). A container context
@@ -219,7 +219,7 @@ defined in the container configuration.</p>
 <img alt="Containers in SecureShield" src="../_images/secureshield_containers.jpg" />
 <div class="section" id="secure-containers">
 <h4>Secure Containers<a class="headerlink" href="#secure-containers" title="Permalink to this headline">¶</a></h4>
-<p>Secure containers have a secure privilege level, meaning that Secure
+<p>Secure containers have a secure privilege level, meaning that secure
 containers are trusted and can access all the resources in the system. Bugs or
 malware in a secure container can compromise the system so a container that is
 configured as secure can not be changed at runtime.</p>
@@ -349,7 +349,7 @@ access-control attribute is listed as follow.</p>
 </tr>
 <tr class="row-odd"><td>SECURESHIELD_AC_AUX</td>
 <td>(aux start address, size)</td>
-<td>Allocate an auxilliary address space</td>
+<td>Allocate an auxiliary address space</td>
 </tr>
 </tbody>
 </table>
@@ -381,7 +381,7 @@ access-control attribute is listed as follow.</p>
 <td>Write with kernel privilege</td>
 </tr>
 <tr class="row-odd"><td>SECURESHIELD_AC_KREAD</td>
-<td>Read with kernel Privilege</td>
+<td>Read with kernel privilege</td>
 </tr>
 <tr class="row-even"><td>SECURESHIELD_AC_SIZE_ROUND_UP</td>
 <td>The resource size should be rounded up</td>
@@ -492,19 +492,19 @@ consisting of secure containers, is in secure memory (secure rom and ram). In
 each world, containers are isolated with each other through MPU, an address
 alignment is also required. Besides secure containers, SecureShield runtime,
 can be viewed as a special secure container, is in secure memory with a fixed
-position. SecureShiled runtime will be compiled and linked independently with
+position. SecureShield runtime will be compiled and linked independently with
 the application, so it’s a black box to application.</p>
 <img alt="SecureShield application memory map" src="../_images/secureshield_memory_map.jpg" />
 </div>
 <div class="section" id="compile-and-link-flow">
 <h2>Compile and Link Flow<a class="headerlink" href="#compile-and-link-flow" title="Permalink to this headline">¶</a></h2>
 <p>Different with common one shot compile and link, there are two compiles and
-links in SecureShiled application, one for SecureShield runtime, one for
+links in SecureShield application, one for SecureShield runtime, one for
 application.</p>
 <div class="section" id="phase1-secureshield-runtime-compile-and-link">
 <h3>Phase1: SecureShield runtime compile and link<a class="headerlink" href="#phase1-secureshield-runtime-compile-and-link" title="Permalink to this headline">¶</a></h3>
 <p>The compile and link flow is shown as follow</p>
-<img alt="SecureShiled runtime compile and link" src="../_images/secureshield_1st_compile.jpg" />
+<img alt="SecureShield runtime compile and link" src="../_images/secureshield_1st_compile.jpg" />
 </div>
 <div class="section" id="phase2-application-compile-and-link">
 <h3>Phase2: Application compile and link<a class="headerlink" href="#phase2-application-compile-and-link" title="Permalink to this headline">¶</a></h3>
@@ -521,7 +521,7 @@ application.</p>
 <li>LIB_SEL += secureshield, select SecureShield library</li>
 <li>-DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism
 which will override the ARC HAL API in arc_exception.h, arc_builtin.h and
-arc_exception.h with the secureshield API</li>
+arc_exception.h with the SecureShield API</li>
 <li>APPL_SECURE_CSRC_DIR (optional), the directories of C source files which
 need to be compiled and linked with SecureShield runtime</li>
 <li>SECURE_SYMBOL_LIST (optional ), the file of symbols need to be exported to

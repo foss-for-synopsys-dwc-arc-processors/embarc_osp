@@ -1,6 +1,6 @@
 .. _middleware_layer:
 
-Middlewares
+Middleware Packages
 ==========
 
 Overview
@@ -17,4 +17,3 @@ use in embARC OSP.
     iot.rst
     network_stack.rst
     misc.rst
-

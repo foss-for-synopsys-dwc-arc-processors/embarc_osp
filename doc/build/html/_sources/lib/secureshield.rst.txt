@@ -21,15 +21,15 @@ Terminology
 SecureShield Runtime
 --------------------
 
-SecurrShield runtime is a kind of microvisor implementation for ARC EM
-Processors with MPU to manage containers, analogous to RTOS kernel managing
+SecureShield runtime is a microvisor implementation for ARC EM
+Processors with MPU to manage containers, analogous to an RTOS kernel managing
 tasks.
 
 Container
 ---------
 
 A container defines a sandbox for an application. The container provides the
-trusted execution environment for application code runs in. Containers are
+trusted execution environment the application code runs in. Containers are
 designed to be isolated from each other. Each container has its own space
 attributes, including the stack area (required), context area (optional),
 resources (peripherals, interrupt, auxiliary registers). A container context
@@ -42,7 +42,7 @@ defined in the container configuration.
 Secure Containers
 ^^^^^^^^^^^^^^^^^
 
-Secure containers have a secure privilege level, meaning that Secure
+Secure containers have a secure privilege level, meaning that secure
 containers are trusted and can access all the resources in the system. Bugs or
 malware in a secure container can compromise the system so a container that is
 configured as secure can not be changed at runtime.
@@ -285,7 +285,7 @@ consisting of secure containers, is in secure memory (secure rom and ram). In
 each world, containers are isolated with each other through MPU, an address
 alignment is also required. Besides secure containers, SecureShield runtime,
 can be viewed as a special secure container, is in secure memory with a fixed
-position. SecureShiled runtime will be compiled and linked independently with
+position. SecureShield runtime will be compiled and linked independently with
 the application, so it's a black box to application.
 
 
@@ -296,7 +296,7 @@ Compile and Link Flow
 =====================
 
 Different with common one shot compile and link, there are two compiles and
-links in SecureShiled application, one for SecureShield runtime, one for
+links in SecureShield application, one for SecureShield runtime, one for
 application.
 
 Phase1: SecureShield runtime compile and link
@@ -305,7 +305,7 @@ Phase1: SecureShield runtime compile and link
 The compile and link flow is shown as follow
 
 .. image:: /pic/secureshield_1st_compile.jpg
-    :alt: SecureShiled runtime compile and link
+    :alt: SecureShield runtime compile and link
 
 Phase2: Application compile and link
 ------------------------------------
@@ -324,7 +324,7 @@ Steps to Create a SecureShield Application
 
 - -DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism
   which will override the ARC HAL API in arc_exception.h, arc_builtin.h and
-  arc_exception.h with the secureshield API
+  arc_exception.h with the SecureShield API
 
 - APPL_SECURE_CSRC_DIR (optional), the directories of C source files which
   need to be compiled and linked with SecureShield runtime
