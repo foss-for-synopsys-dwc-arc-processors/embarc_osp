@@ -34,6 +34,7 @@
 
 #include "ip/subsystem/uart/uart.h"
 #include "ip/subsystem/uart/ss_uart.h"
+#include "io_config.h"
 
 
 /* APEX UART device registers  */
@@ -142,11 +143,11 @@ static void io_uart_poll_write(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t
 
     /* disbale tx interrupt */
     old_val = REG_READ(UART_IER);
-    REG_WRITE( UART_IER, old_val & ~0x82);
+    REG_WRITE( UART_IER, (old_val & ~0x2) | 0x80);
 
     len = *size;
     while (i < len) {
-        while (!(REG_READ(UART_LSR) & 0x20)); // wait THR empty
+        while ((REG_READ(UART_LSR) & 0x20)); // wait THR empty
         REG_WRITE(UART_THR, data[i++]);
     }
 
@@ -155,22 +156,14 @@ static void io_uart_poll_write(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t
 
 static void io_uart_poll_read(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t *size)
 {
-    uint32_t old_val;
     uint32_t i = 0;
     uint32_t len;
-
-
-    /* disbale rx interrupt */
-    old_val = REG_READ(UART_IER);
-    REG_WRITE(UART_IER, old_val & ~0x1);
 
     len = *size;
     while (i < len) {
         while (!(REG_READ(UART_LSR) & 0x1)); // wait data ready
         data[i++] = REG_READ(UART_RBR);
     }
-
-    REG_WRITE(UART_IER, old_val);
 }
 
 static void io_uart_rx_int(SS_UART_DEV_CONTEXT *ctx, uint32_t enable)
@@ -286,6 +279,19 @@ int32_t ss_uart_control(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param
 				*((uint32_t *)param) = 0;
 			}
 			return  E_OK;
+		case UART_CMD_GET_TXAVAIL:
+			int_val = REG_READ(UART_LSR);
+			if (int_val & 0x40) {
+				*((uint32_t *)param) = IO_UART0_FS;
+			} else {
+				if (int_val & 0x20) {
+					/* FIFO full */
+					*((uint32_t *)param) = 0;
+				} else {
+					*((uint32_t *)param) = 1;
+				}
+			}
+			return  E_OK;
 		case UART_CMD_SET_RXCB:
 			info->uart_cbs.rx_cb = param;
 			return E_OK;
@@ -304,19 +310,29 @@ int32_t ss_uart_control(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param
 		case UART_CMD_SET_TXINT_BUF:
 			if (param != NULL) {
 				devbuf = (DEV_BUFFER *)param;
+				info->tx_buf = *devbuf;
+				info->tx_buf.ofs = 0;
 				io_uart_write(dev_id, (uint8_t *)(devbuf->buf),
 						 &(devbuf->len));
 			} else {
-				io_uart_write(dev_id, NULL, 0);
+				info->tx_buf.buf = NULL;
+				info->tx_buf.len = 0;
+				info->tx_buf.ofs = 0;
+				io_uart_write(dev_id, NULL, &(info->tx_buf.len));
 			}
 			break;
 		case UART_CMD_SET_RXINT_BUF:
 			if (param != NULL) {
 				devbuf = (DEV_BUFFER *)param;
+				info->rx_buf = *devbuf;
+				info->rx_buf.ofs = 0;
 				io_uart_read(dev_id, (uint8_t *)(devbuf->buf),
 						 &(devbuf->len));
 			} else {
-				io_uart_read(dev_id, NULL, 0);
+				info->rx_buf.buf = NULL;
+				info->rx_buf.len = 0;
+				info->rx_buf.ofs = 0;
+				io_uart_read(dev_id, NULL, &(info->rx_buf.len));
 			}
 			break;
 		case UART_CMD_BREAK_SET:
@@ -383,9 +399,8 @@ void ss_uart_tx_cb(SS_UART_DEV_CONTEXT *ctx, void *param)
 
 	if (ctx->flags & SS_UART_FLAG_TX) {
 		ctx->flags &= ~SS_UART_FLAG_TX;
-		if (info->uart_cbs.tx_cb) {
-			info->uart_cbs.tx_cb(info);
-		}
+	} else if (info->uart_cbs.tx_cb) {
+		info->uart_cbs.tx_cb(info);
 	}
 }
 
@@ -395,9 +410,8 @@ void ss_uart_rx_cb(SS_UART_DEV_CONTEXT *ctx, void *param)
 
 	if (ctx->flags & SS_UART_FLAG_RX) {
 		ctx->flags &= ~SS_UART_FLAG_RX;
-		if (info->uart_cbs.rx_cb) {
-			info->uart_cbs.rx_cb(info);
-		}
+	} else if (info->uart_cbs.rx_cb) {
+		info->uart_cbs.rx_cb(info);
 	}
 }
 
