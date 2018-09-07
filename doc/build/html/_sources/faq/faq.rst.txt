@@ -81,7 +81,7 @@ Usage Guide FAQ
 
 	* **OpenOCD** on Linux requires the configuration files in a UNIX file format with LF line terminators. Convert the configuration files to UNIX file format.
 
-* **How to set the JTAG frequecncy to match the target CPU frequecncy?**
+* **How to set the JTAG frequecncy to match the target CPU frequency?**
 
 	* Sometimes the CPU frequency and JTAG frequency don't match in the ARC core configurations, e.g., when you add a new ARC board. It is necessary to set the JTAG frequency to match the CPU frequency of the selected core configuration.
 	* For the MetaWare toolchain, pass a make option called **DIG_SPEED** (in Hz) to set the JTAG frequency, like ``DIG_SPEED=5000000``. For the EMSK 2.2, the **DIG_SPEED** is hard-coded in *board/emsk/configs/22/emsk_22.mk*.

@@ -83,7 +83,7 @@ ID allocations & other related definitions are in ``dw_uart_obj.h``.
 External Peripheral Drivers
 ###########################
 
-The external peripheral drivers are placed in ``device/periphreal`` folder. embARC OSP already
+The external peripheral drivers are placed in ``device/peripheral`` folder. embARC OSP already
 include some common external peripheral drivers, especially PMOD modules.
 
 * MRF24J40, a 802.15.4 based transceiver.

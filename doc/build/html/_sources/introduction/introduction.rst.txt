@@ -14,7 +14,7 @@ consistent and simple software interfaces to the processor and peripherals,
 together with ports of several well known FOSS embedded software stacks to
 |arc|.
 
-`embARC OSP <https://embarc.org>`__ provides a solid starting foundation for
+`embARC OSP <https://embarc.org>`__ provides a starting foundation for
 embedded developers, simplifying development and improving time-to-market
 through software reuse.
 
@@ -73,7 +73,7 @@ in the block diagram below.
 - :ref:`Board Support Package (BSP) Layer<board_bsp>` provides support for
   different boards based on the ARCv2 processors.
 
-- :ref:`OS Layer<os_layer>` provides embedded operating-system support,
+- :ref:`OS Layer<os_layer>` provides embedded operating system support,
   including options for traditional Real-Time Operating Systems (RTOSs).
 
 - :ref:`Library Layer<library_layer>` provides basic common library support
@@ -81,7 +81,7 @@ in the block diagram below.
   library.
 
 - :ref:`Middleware Layer<middleware_layer>` includes mainstream embedded
-  software-stack solutions, including FAT file system, network stack, simple
+  software stack solutions, including FAT file system, network stack, simple
   shell/Command Line Interface (CLI), IoT protocols, lightweight graphics, IoT
   cloud connectivity and more.
 
@@ -95,7 +95,7 @@ Toolchain Support
 The embARC OSP software is supported by the following toolchain offerings from Synopsys:
 
 - The `DesignWare ARC MetaWare Development Toolkit <http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware>`__
-  builds upon a 25-year legacy of industry-leading compiler and debugger products.
+  builds on a long legacy of industry-leading compiler and debugger products for embedded applications.
   It is a complete solution that contains all the components needed to support the
   development, debugging, and tuning of embedded applications for the |arc|.
 

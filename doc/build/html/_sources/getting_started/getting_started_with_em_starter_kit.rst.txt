@@ -8,12 +8,12 @@ Supported Hardware
 
 The ARC EM Starter Kit (EMSK) is an FPGA-based solution for rapid software development, code porting, software debugging, and profiling, preloaded with images for the ARC EM Family of processors. It can be extended using Digilent® Peripheral Modules (Pmods™).
 
-EMSK 1.1, 2.2 and 2.3 are supported in embARC OSP.
+EMSK v1.1 and v2.3 are supported in embARC OSP.
 
 Setting Up EMSK
 ###############
 
-#. The EMSK has a bank of DIP switches labeled SW1 that you use for selecting a configuration. For example, to select ARC EM11D for EMSK 2.3, set bit 2 to the ON position (down), and the others to OFF (up) as shown.
+#. The EMSK has a bank of DIP switches labeled SW1 that are used to select a configuration. For example, to select ARC EM11D for EMSK 2.3, set bit 2 to the ON position (down), and the others to OFF (up) as shown.
 
 .. figure:: /pic/images/getting_started/emsk23_dipswitch.jpg
    :scale: 40 %
@@ -22,11 +22,11 @@ Setting Up EMSK
 
 For exact DIP switch settings for various ARC EM Starter Kit versions, refer to EM Starter Kit section in provided embARC documentation. For complete ARC EM Starter Kit information, see the **EM Starter Kit User's Guide** provided with the ARC EM Starter Kit.
 
-#. Connect the USB cable to connector J7 on the EMSK and to a spare USB port on your development host. If using the Ashling Opella-XD for ARC Debug Probe, connect it to the J15 connector.
+#. Connect the USB cable to connector J7 on the EMSK to USB port on your development host. If using the Ashling Opella-XD for ARC Debug Probe, connect it to the J15 connector on EMSK.
 
-.. note:: Despite the fact that EMSK 2.3 can be powered by connector J7, it is recommended to use an AC adapter to supply power of the board.
+.. note:: Despite the fact that EMSK 2.3 can be powered by connector J7, it is recommended to always use an AC adapter to supply power of the board.
 
-#. You can use any terminal emulation program to view UART output from the EMSK. The USB connection provides both the debug channel and RS232 transport. Use PuTTY in Windows as an example.
+#. You can use any terminal emulation program to view UART output from the EMSK. The USB connection provides both the debug channel and RS232 transport. Use PuTTY application on Windows as an example.
 
    * Determine which COM port the EMSK is using.
 

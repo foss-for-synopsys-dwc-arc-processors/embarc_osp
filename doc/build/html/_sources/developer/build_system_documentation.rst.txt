@@ -1,34 +1,36 @@
 .. _build_system_documentation:
 
-Build System Documentaion
+Build System Documentation
 =========================
 
 Overview
 ########
 
-The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system. All embARC components are compiled into libraries, which are then merged into one final library called **libembarc.a**. The application objects are then linked against **libembarc.a** to produce the target .elf file.
+The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system. All embARC components are compiled into libraries,
+which are then merged into one final library called **libembarc.a**. The application objects are then linked against **libembarc.a** to produce the target .elf file.
 
 .. figure:: /pic/images/developer/build_system_documentation/build.jpg
    :scale: 40 %
 
    embARC build system
 
-The **options** directory under the embARC root contains the common makefiles as shown below.
+The **options** directory under the embARC root folder contains the common makefiles as shown below.
 
 * :file:`debug.mk`: target debug options for the MetaWare debugger, which supports Ashling OpellaXD and Digilent USB-JTAG connections.
 * :file:`files.mk`: files and directory collections in embARC.
 * :file:`options.mk`: entry makefile with common definitions, path definitions, other makefiles, and so on.
 * :file:`rule.mk`: make targets and rules.
 * :file:`scripts.mk`: common makefile functions
-* :file:`toolchain.mk`: General definitions for toolchain, including **toolchain_gnu.mk** for ARC GNU toolchain and **toolchain_mw.mk** for MetaWare toolchain.
+* :file:`toolchain.mk`: General toolchain definitions, including **toolchain_gnu.mk** for the ARC GNU toolchain and **toolchain_mw.mk** for the MetaWare toolchain.
 * :file:`toolchain_gnu.mk` & :file:`toolchain_mw.mk`: toolchain specific compile and link options
 
 Make Targets
 ############
 
-embARC build system is based on make. It can be used for both ARC MetaWare and GNU toolchains, both Windows and Linux, multiple ARC cores and boards.
+embARC build system is based on make. It can be used for both the MetaWare and ARC GNU toolchains, Windows and Linux development hosts, and multiple ARC cores and boards.
 
-There are several targets to make and run embARC examples on the command line. These make targets are defined in *options/rules.mk*. All the commands below use the default make options provided in the embARC application makefile.
+There are several targets to make and run embARC examples on the command line. These make targets are defined in *options/rules.mk*. All the commands below use the default make options 
+provided in the embARC application makefile.
 
 * **make help**: Show help document about how to use make in embARC.
 * **make all**: Compile and link the target program.

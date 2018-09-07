@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build System Documentaion &mdash; embARC 2018.01 documentation</title>
+  <title>Build System Documentation &mdash; embARC 2018.01 documentation</title>
   
 
   
@@ -97,7 +97,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="developer_guides.html">Developer Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="coding_style.html">Coding style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application_development.html">Application Development</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build System Documentaion</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build System Documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#make-targets">Make Targets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#make-options">Make Options</a><ul>
@@ -163,7 +163,7 @@
         
           <li><a href="developer_guides.html">Developer Guides</a> &raquo;</li>
         
-      <li>Build System Documentaion</li>
+      <li>Build System Documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,30 +182,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="build-system-documentaion">
-<span id="build-system-documentation"></span><h1>Build System Documentaion<a class="headerlink" href="#build-system-documentaion" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="build-system-documentation">
+<span id="id1"></span><h1>Build System Documentation<a class="headerlink" href="#build-system-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system. All embARC components are compiled into libraries, which are then merged into one final library called <strong>libembarc.a</strong>. The application objects are then linked against <strong>libembarc.a</strong> to produce the target .elf file.</p>
-<div class="figure" id="id1">
+<p>The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system. All embARC components are compiled into libraries,
+which are then merged into one final library called <strong>libembarc.a</strong>. The application objects are then linked against <strong>libembarc.a</strong> to produce the target .elf file.</p>
+<div class="figure" id="id2">
 <a class="reference internal image-reference" href="../_images/build.jpg"><img alt="../_images/build.jpg" src="../_images/build.jpg" style="width: 570.8px; height: 352.4px;" /></a>
 <p class="caption"><span class="caption-text">embARC build system</span></p>
 </div>
-<p>The <strong>options</strong> directory under the embARC root contains the common makefiles as shown below.</p>
+<p>The <strong>options</strong> directory under the embARC root folder contains the common makefiles as shown below.</p>
 <ul class="simple">
 <li><code class="file docutils literal notranslate"><span class="pre">debug.mk</span></code>: target debug options for the MetaWare debugger, which supports Ashling OpellaXD and Digilent USB-JTAG connections.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">files.mk</span></code>: files and directory collections in embARC.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">options.mk</span></code>: entry makefile with common definitions, path definitions, other makefiles, and so on.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">rule.mk</span></code>: make targets and rules.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">scripts.mk</span></code>: common makefile functions</li>
-<li><code class="file docutils literal notranslate"><span class="pre">toolchain.mk</span></code>: General definitions for toolchain, including <strong>toolchain_gnu.mk</strong> for ARC GNU toolchain and <strong>toolchain_mw.mk</strong> for MetaWare toolchain.</li>
+<li><code class="file docutils literal notranslate"><span class="pre">toolchain.mk</span></code>: General toolchain definitions, including <strong>toolchain_gnu.mk</strong> for the ARC GNU toolchain and <strong>toolchain_mw.mk</strong> for the MetaWare toolchain.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">toolchain_gnu.mk</span></code> &amp; <code class="file docutils literal notranslate"><span class="pre">toolchain_mw.mk</span></code>: toolchain specific compile and link options</li>
 </ul>
 </div>
 <div class="section" id="make-targets">
 <h2>Make Targets<a class="headerlink" href="#make-targets" title="Permalink to this headline">¶</a></h2>
-<p>embARC build system is based on make. It can be used for both ARC MetaWare and GNU toolchains, both Windows and Linux, multiple ARC cores and boards.</p>
-<p>There are several targets to make and run embARC examples on the command line. These make targets are defined in <em>options/rules.mk</em>. All the commands below use the default make options provided in the embARC application makefile.</p>
+<p>embARC build system is based on make. It can be used for both the MetaWare and ARC GNU toolchains, Windows and Linux development hosts, and multiple ARC cores and boards.</p>
+<p>There are several targets to make and run embARC examples on the command line. These make targets are defined in <em>options/rules.mk</em>. All the commands below use the default make options
+provided in the embARC application makefile.</p>
 <ul class="simple">
 <li><strong>make help</strong>: Show help document about how to use make in embARC.</li>
 <li><strong>make all</strong>: Compile and link the target program.</li>
@@ -232,8 +234,8 @@
 <ul class="simple">
 <li><strong>BOARD</strong>: Select the target board. The default value of this option is defined in <em>board/board.mk</em>. Optional values as below, default value is emsk. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span></code> selects the EMSK board as the target board.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id2">
-<caption><span class="caption-text">Make option - BOARD</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id3">
+<caption><span class="caption-text">Make option - BOARD</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">BOARD</th>
 <th class="head">Description</th>
@@ -275,8 +277,8 @@
 </div></blockquote>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id3">
-<caption><span class="caption-text">Make option - BD_VER</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id4">
+<caption><span class="caption-text">Make option - BD_VER</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">BOARD</th>
 <th class="head">Location of BD_VER Definition</th>
@@ -307,8 +309,8 @@
 <div><ul class="simple">
 <li>For EMSK 1.1, the default value of this option is <strong>arcem6</strong> defined in <em>&lt;embARC&gt;/board/emsk/configs/11/core_config.mk</em>.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id4">
-<caption><span class="caption-text">Make option - CUR_CORE for EMSK 1.1</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id5">
+<caption><span class="caption-text">Make option - CUR_CORE for EMSK 1.1</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">CUR_CORE</th>
 <th class="head">Description</th>
@@ -332,8 +334,8 @@
 <ul class="simple">
 <li>For EMSK 2.2, the default value of this option is defined in <em>&lt;embARC&gt;/board/emsk/configs/22/core_config.mk</em>. For EMSK 2.3, the default value of this option is defined in <em>board/emsk/configs/23/core_config.mk</em>. The default value for EMSK 2.2 and 2.3 is <strong>arcem7d</strong>.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id5">
-<caption><span class="caption-text">Make option - CUR_CORE for EMSK 2.2 &amp; 2.3</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id6">
+<caption><span class="caption-text">Make option - CUR_CORE for EMSK 2.2 &amp; 2.3</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">CUR_CORE</th>
 <th class="head">Description</th>
@@ -354,8 +356,8 @@
 <ul class="simple">
 <li>For AXS, the default value of this option is <strong>archs36</strong> defined in <em>&lt;embARC&gt;/board/axs/configs/103/core_config.mk</em>.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id6">
-<caption><span class="caption-text">Make option - CUR_CORE for AXS</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id7">
+<caption><span class="caption-text">Make option - CUR_CORE for AXS</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">CUR_CORE</th>
 <th class="head">Description</th>
@@ -370,8 +372,8 @@
 <ul class="simple">
 <li>For nSIM 1506, the default value of this option is <strong>arcemfull</strong> defined in <em>&lt;embARC&gt;/board/nsim/configs/1506/core_config.mk</em>.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id7">
-<caption><span class="caption-text">Make option - CUR_CORE for nSIM 1506</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id8">
+<caption><span class="caption-text">Make option - CUR_CORE for nSIM 1506</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">CUR_CORE</th>
 <th class="head">Description</th>
@@ -392,8 +394,8 @@
 <ul class="simple">
 <li>For nSIM 10, the default value of this option is <strong>arcem</strong> defined in <em>&lt;embARC&gt;/board/nsim/configs/10/core_config.mk</em>.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id8">
-<caption><span class="caption-text">Make option - CUR_CORE for nSIM 10</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id9">
+<caption><span class="caption-text">Make option - CUR_CORE for nSIM 10</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">CUR_CORE</th>
 <th class="head">Description</th>
@@ -411,8 +413,8 @@
 <ul class="simple">
 <li>For nSIM 10, the default value of this option is <strong>archs38_c0</strong> defined in <em>&lt;embARC&gt;/board/hsdk/configs/10/core_config.mk</em>.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id9">
-<caption><span class="caption-text">Make option - CUR_CORE for HSDK</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id10">
+<caption><span class="caption-text">Make option - CUR_CORE for HSDK</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">CUR_CORE</th>
 <th class="head">Description</th>
@@ -438,8 +440,8 @@
 <li><p class="first"><strong>TOOLCHAIN</strong>: Select the toolchain to compile the embARC software. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">TOOLCHAIN=gnu</span></code> selects the ARC GNU toolchain to compile embARC applications for EMSK 2.3, ARC EM11d. The default value of this option is <strong>mw</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em></p>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id10">
-<caption><span class="caption-text">Make option - TOOLCHAIN</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id11">
+<caption><span class="caption-text">Make option - TOOLCHAIN</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">TOOLCHAIN</th>
 <th class="head">Description</th>
@@ -466,8 +468,8 @@
 <li><p class="first"><strong>V</strong>: Control whether to show verbose compiling information. The default value of this option is <strong>0</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id11">
-<caption><span class="caption-text">Make option - V</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id12">
+<caption><span class="caption-text">Make option - V</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">V</th>
 <th class="head">Description</th>
@@ -517,8 +519,8 @@
 </div></blockquote>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id12">
-<caption><span class="caption-text">Make option - JTAG</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id13">
+<caption><span class="caption-text">Make option - JTAG</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">JTAG</th>
 <th class="head">Description</th>
@@ -540,8 +542,8 @@
 <ul class="simple">
 <li><strong>OS_SEL</strong>: Select operating system. This option should be defined in your application makefile. Set this option in the makefiles if OS services are required.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id13">
-<caption><span class="caption-text">Make option - OS_SEL</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id14">
+<caption><span class="caption-text">Make option - OS_SEL</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">JTAG</th>
 <th class="head">Description</th>
@@ -580,8 +582,8 @@
 </div></blockquote>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id14">
-<caption><span class="caption-text">Make option - MID_SEL</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id15">
+<caption><span class="caption-text">Make option - MID_SEL</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Middleware</th>
 <th class="head">MID_SEL</th>
@@ -669,8 +671,8 @@
 <ul class="simple">
 <li><strong>LIB_SEL</strong>: Select libraries to be used in the embARC application. This option should be defined in your application makefile. All available libraries are located in <em>&lt;embARC&gt;/library</em>. <em>clib*</em> is set as default.</li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id15">
-<caption><span class="caption-text">Make option - LIB_SEL</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-auto docutils" id="id16">
+<caption><span class="caption-text">Make option - LIB_SEL</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">LIB_SEL</th>
 <th class="head">Description</th>
@@ -841,7 +843,6 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

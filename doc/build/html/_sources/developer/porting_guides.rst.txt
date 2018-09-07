@@ -3,7 +3,7 @@
 Porting Guides
 ==============
 
-This section contains details regarding add new components (board, device, middlware, OS) in to embARC OSP
+This section contains details regarding add new components (board, device, middleware, OS) to the embARC OSP
 
 .. toctree::
    :maxdepth: 1

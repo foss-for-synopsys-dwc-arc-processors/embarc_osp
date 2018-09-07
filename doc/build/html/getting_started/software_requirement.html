@@ -87,8 +87,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-code">Checking Out the embARC OSP Code</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#set-up-the-development-environment">Set Up the Development Environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-source-code">Checking Out the embARC OSP source code</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#setting-up-the-development-environment">Setting Up the Development Environment</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Software Requirement</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#development-environment">Development Environment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Software Requirement</a></li>
@@ -191,7 +191,7 @@
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Should you wish to use it in other environments, please contact embARC support team.</p>
+<p class="last">IF you need assistance with a different host environment, please file a GitHub Issue to get support from the embARC development team.</p>
 </div>
 </div>
 <div class="section" id="id2">
@@ -199,13 +199,13 @@
 <ul>
 <li><dl class="first docutils">
 <dt><a class="reference external" href="https://www.synopsys.com/designware-ip/processor-solutions/arc-processors/arc-development-tools.html">ARC Development Tools</a></dt>
-<dd><p class="first last">Choose <strong>MetaWare Toolkit</strong> and/or <strong>ARC GNU Toolchain</strong> from the following list according to your requirement.</p>
+<dd><p class="first last">Choose <strong>MetaWare Toolkit</strong> and/or <strong>ARC GNU Toolchain</strong> from the following list according to your requirement:</p>
 </dd>
 </dl>
 <ul class="simple">
 <li>MetaWare Toolkit<ul>
 <li><a class="reference external" href="http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware">Premium MetaWare Development Toolkit (2017.09)</a>
-The DesignWare ARC MetaWare Development Toolkit builds upon a 25-year legacy of industry-leading compiler and debugger products. It is a complete solution that contains all the components needed to support the development, debugging and tuning of embedded applications for the DesignWare ARC processors.</li>
+The DesignWare ARC MetaWare Development Toolkit builds upon a long legacy of industry-leading compiler and debugger products. It is a complete solution that contains all the components needed to support the development, debugging and tuning of embedded applications for the DesignWare ARC processors.</li>
 <li><a class="reference external" href="http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware">DesignWare ARC MetaWare Toolkit Lite (2017.09)</a>
 A demonstration/evaluation version of the MetaWare Development Toolkit is available for free from the Synopsys website. MetaWare Lite is a functioning demonstration of the MetaWare Development Toolkit, but has a number of restrictions, including a code-size limit of 32 Kilobytes and no runtime library sources. It is available for Microsoft Windows only.</li>
 </ul>
@@ -224,12 +224,12 @@ The ARC GNU Toolchain offers all of the benefits of open source tools, including
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If using embARC with GNU toolchain on Windows, install <a class="reference external" href="http://zadig.akeo.ie">Zadig</a> to replace FTDI driver with WinUSB driver. See <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a> for more information.</p>
+<p class="last">If using embARC OSP with the ARC GNU toolchain on Windows, install <a class="reference external" href="http://zadig.akeo.ie">Zadig</a> to replace FTDI driver with WinUSB driver. See <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a> for more information.</p>
 </div>
-<p>Check the following items and set development environment.</p>
+<p>Check the following items and set your development environment</p>
 <ul class="simple">
 <li>Make sure the paths of the above required tools for the MetaWare toolkit and ARC GNU toolchain are added to the system variable <strong>PATH</strong> in your environment variables.</li>
-<li>We recommend users to install ARC GNU IDE to default location. Otherwise you need to make additional changes as below.<ul>
+<li>We recommend users install the ARC GNU IDE in the default location. If installing to a different location, you will need to make additional changes as described below.<ul>
 <li>If running and debugging embARC applications using <strong>arc-elf32-gdb</strong> and <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/openocd">OpenOCD for ARC</a>, make sure 1) the path of <strong>OpenOCD</strong> is added to the <strong>PATH</strong> in your environment variables, and 2) modify <strong>OPENOCD_SCRIPT_ROOT variable</strong> in <em>&lt;embARC&gt;/options/toolchain/toolchain_gnu.mk</em> according to your <strong>OpenOCD</strong> root path.</li>
 <li>If running GNU program with using the GNU toolchain on Linux, modify the <strong>OpenOCD</strong> configuration file as Linux format with LF line terminators. <strong>dos2unix</strong> can be used to convert it.</li>
 </ul>
@@ -237,10 +237,10 @@ The ARC GNU Toolchain offers all of the benefits of open source tools, including
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Check the version of your toolchain. The embARC software build system is purely makefile-based. make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).</p>
+<p class="last">Check the version of your toolchain. The embARC OSP build system is purely makefile-based. make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).</p>
 </div>
 <ul>
-<li><p class="first">Download extra third-party source code and apply embARC patches.</p>
+<li><p class="first">Download extra third-party source code and apply embARC OSP patches.</p>
 <blockquote>
 <div><ul>
 <li><p class="first">Install required tools</p>
@@ -249,14 +249,14 @@ The ARC GNU Toolchain offers all of the benefits of open source tools, including
 <li>Windowns: <strong>Cygwin</strong>/<strong>MSYS2</strong>, <strong>git</strong>, <strong>dos2unix</strong></li>
 </ul>
 </li>
-<li><p class="first">Set network environment</p>
+<li><p class="first">Set up network environment</p>
 <blockquote>
 <div><ul class="simple">
 <li>Connection to <a class="reference external" href="https://github.com">GitHub</a> and <a class="reference external" href="http://git.eclipse.org/c/">Eclipse Git repositories</a> to clone source code from them</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Running scripts to apply patches</p>
+<li><p class="first">Run scripts to apply patches</p>
 <blockquote>
 <div><ul class="simple">
 <li>Make sure the <em>&lt;embARC&gt;/apply_embARC_patch.sh</em> file is Unix format. If not, use <strong>dos2unix</strong> to convert it first.</li>
@@ -334,7 +334,6 @@ The ARC GNU Toolchain offers all of the benefits of open source tools, including
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add New OS &mdash; embARC 2018.01 documentation</title>
+  <title>Adding support for a new OS &mdash; embARC 2018.01 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="embARC Documentation Generation" href="documentation_generation.html" />
-    <link rel="prev" title="Add New Middleware" href="add_new_middleware.html" /> 
+    <link rel="prev" title="Adding a New Middleware Package" href="add_new_middleware.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -97,12 +97,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="developer_guides.html">Developer Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="coding_style.html">Coding style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application_development.html">Application Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentation</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="porting_guides.html">Porting Guides</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="add_new_board.html">Add New Board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_device.html">Add New Device</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_middleware.html">Add New Middleware</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Add New OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_board.html">Adding a New Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_device.html">Adding a New Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_middleware.html">Adding a New Middleware Package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding support for a new OS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_generation.html">embARC Documentation Generation</a></li>
@@ -162,7 +162,7 @@
         
           <li><a href="porting_guides.html">Porting Guides</a> &raquo;</li>
         
-      <li>Add New OS</li>
+      <li>Adding support for a new OS</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,15 +181,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="add-new-os">
-<span id="id1"></span><h1>Add New OS<a class="headerlink" href="#add-new-os" title="Permalink to this headline">¶</a></h1>
-<p>Follow the steps below to add a new OS.</p>
+  <div class="section" id="adding-support-for-a-new-os">
+<span id="add-new-os"></span><h1>Adding support for a new OS<a class="headerlink" href="#adding-support-for-a-new-os" title="Permalink to this headline">¶</a></h1>
+<p>Follow the steps below to add a new OS to embARC OSP.</p>
 <ul class="simple">
 <li>Include <strong>&lt;target-os&gt;.mk</strong> in <strong>os.mk</strong>. Add corresponding definitions such as OS_ID, OS_CSRDIR, OS_ASMSRCDIR, and OS_INCDIR.</li>
-<li>Add necessary definitions in os_hal_inc.h, such as the header-files path of <strong>&lt;target-os&gt;</strong> and the definition of os_hal_exc_init. The <strong>os_hal_exc_init()</strong> function is provided to initialize the exceptionand interrupt-related features of <strong>&lt;target-os&gt;</strong>.</li>
+<li>Add necessary definitions in os_hal_inc.h, such as the header-files path of <strong>&lt;target-os&gt;</strong> and the definition of os_hal_exc_init. The <strong>os_hal_exc_init()</strong> function is provided to initialize the exception and interrupt-related features of <strong>&lt;target-os&gt;</strong>.</li>
 <li>Create a sub-folder named <strong>&lt;target-os&gt;</strong> and add <strong>&lt;target_os&gt;.mk</strong> into it.</li>
-<li>In <strong>&lt;target-os&gt;.mk</strong>, add how to build the <strong>&lt;target-os&gt;</strong> and generate the <strong>lib&lt;target-os&gt;.a</strong>, such as modules and definitions. FreeRTOS.mk is a simple template.</li>
-<li>Refer to other embARC supported OSes as reference.</li>
+<li>In <strong>&lt;target-os&gt;.mk</strong>, add commands to build the <strong>&lt;target-os&gt;</strong> and generate the <strong>lib&lt;target-os&gt;.a</strong>, such as modules and definitions. FreeRTOS.mk can be used as a template.</li>
 </ul>
 </div>
 
@@ -204,7 +203,7 @@
         <a href="documentation_generation.html" class="btn btn-neutral float-right" title="embARC Documentation Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="add_new_middleware.html" class="btn btn-neutral" title="Add New Middleware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="add_new_middleware.html" class="btn btn-neutral" title="Adding a New Middleware Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -246,7 +245,6 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

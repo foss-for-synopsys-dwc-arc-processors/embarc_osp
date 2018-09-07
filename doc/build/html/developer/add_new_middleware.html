@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add New Middleware &mdash; embARC 2018.01 documentation</title>
+  <title>Adding a New Middleware Package &mdash; embARC 2018.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Add New OS" href="add_new_os.html" />
-    <link rel="prev" title="Add New Device" href="add_new_device.html" /> 
+    <link rel="next" title="Adding support for a new OS" href="add_new_os.html" />
+    <link rel="prev" title="Adding a New Device" href="add_new_device.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -97,12 +97,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="developer_guides.html">Developer Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="coding_style.html">Coding style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application_development.html">Application Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentation</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="porting_guides.html">Porting Guides</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="add_new_board.html">Add New Board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_device.html">Add New Device</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Add New Middleware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_os.html">Add New OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_board.html">Adding a New Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_device.html">Adding a New Device</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a New Middleware Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_os.html">Adding support for a new OS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_generation.html">embARC Documentation Generation</a></li>
@@ -162,7 +162,7 @@
         
           <li><a href="porting_guides.html">Porting Guides</a> &raquo;</li>
         
-      <li>Add New Middleware</li>
+      <li>Adding a New Middleware Package</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,15 +181,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="add-new-middleware">
-<span id="id1"></span><h1>Add New Middleware<a class="headerlink" href="#add-new-middleware" title="Permalink to this headline">¶</a></h1>
-<p>Follow the steps below to add new middleware.</p>
+  <div class="section" id="adding-a-new-middleware-package">
+<span id="add-new-middleware"></span><h1>Adding a New Middleware Package<a class="headerlink" href="#adding-a-new-middleware-package" title="Permalink to this headline">¶</a></h1>
+<p>Follow the steps below to add support for a new middleware package to embARC OSP.</p>
 <ul class="simple">
 <li>Create a sub-folder named &lt;target-middleware&gt; in middleware.</li>
-<li>Create <strong>&lt;target-middleware&gt;.mk</strong> in the folder <strong>&lt;target-middlware&gt;</strong>. Note that the .mk file name must be the same as the folder’s so that the build system can find the new makefile.</li>
-<li>Add necessary definitions in <strong>&lt;target-middleware&gt;.mk</strong>, such as folders (MID_INCDIR, MID_CSRDIR,  MID_ASM_DIR), source files (MID_XXX_CSRCS,
-MID_XXX_ASMSRCS), and MID_DEFINES.</li>
-<li>Use the other middleware makefiles for reference.</li>
+<li>Create <strong>&lt;target-middleware&gt;.mk</strong> in the folder <strong>&lt;target-middleware&gt;</strong>. Note that the .mk file name must be the same as the folder’s name so that the build system can find the new makefile.</li>
+<li>Add necessary definitions in <strong>&lt;target-middleware&gt;.mk</strong>, such as folders (MID_INCDIR, MID_CSRDIR, MID_ASM_DIR), source files (MID_XXX_CSRCS, MID_XXX_ASMSRCS), and MID_DEFINES.</li>
+<li>Please use existing middleware makefiles as a reference for additional information.</li>
 </ul>
 </div>
 
@@ -201,10 +200,10 @@ MID_XXX_ASMSRCS), and MID_DEFINES.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="add_new_os.html" class="btn btn-neutral float-right" title="Add New OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="add_new_os.html" class="btn btn-neutral float-right" title="Adding support for a new OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="add_new_device.html" class="btn btn-neutral" title="Add New Device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="add_new_device.html" class="btn btn-neutral" title="Adding a New Device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -246,7 +245,6 @@ MID_XXX_ASMSRCS), and MID_DEFINES.</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

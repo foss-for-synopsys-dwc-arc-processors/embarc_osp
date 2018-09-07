@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add New Board &mdash; embARC 2018.01 documentation</title>
+  <title>Adding a New Board &mdash; embARC 2018.01 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Add New Device" href="add_new_device.html" />
+    <link rel="next" title="Adding a New Device" href="add_new_device.html" />
     <link rel="prev" title="Porting Guides" href="porting_guides.html" /> 
 
   
@@ -97,12 +97,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="developer_guides.html">Developer Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="coding_style.html">Coding style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application_development.html">Application Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentation</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="porting_guides.html">Porting Guides</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Add New Board</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_device.html">Add New Device</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_middleware.html">Add New Middleware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_os.html">Add New OS</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a New Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_device.html">Adding a New Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_middleware.html">Adding a New Middleware Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_os.html">Adding support for a new OS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_generation.html">embARC Documentation Generation</a></li>
@@ -162,7 +162,7 @@
         
           <li><a href="porting_guides.html">Porting Guides</a> &raquo;</li>
         
-      <li>Add New Board</li>
+      <li>Adding a New Board</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,48 +181,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="add-new-board">
-<span id="id1"></span><h1>Add New Board<a class="headerlink" href="#add-new-board" title="Permalink to this headline">¶</a></h1>
-<p>Here, we will add a new board named <code class="docutils literal notranslate"><span class="pre">virtual</span></code> to show the steps to add a new
-board in embARC OSP.</p>
-<p>1. Create a sub folder under <code class="docutils literal notranslate"><span class="pre">board</span></code> and name it as <code class="docutils literal notranslate"><span class="pre">virtual</span></code>. Create two
-new files <code class="docutils literal notranslate"><span class="pre">virtual.mk</span></code> and <code class="docutils literal notranslate"><span class="pre">virtual.h</span></code> in this folder.</p>
+  <div class="section" id="adding-a-new-board">
+<span id="add-new-board"></span><h1>Adding a New Board<a class="headerlink" href="#adding-a-new-board" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the process to add a new board named <code class="docutils literal notranslate"><span class="pre">myboard</span></code> in embARC OSP.</p>
+<p>1. Create a sub-folder under <code class="docutils literal notranslate"><span class="pre">board</span></code> folder and named <code class="docutils literal notranslate"><span class="pre">myboard</span></code>. Create two
+new files <code class="docutils literal notranslate"><span class="pre">myboard.mk</span></code> and <code class="docutils literal notranslate"><span class="pre">myboard.h</span></code> in this folder.</p>
 <ol class="arabic" start="2">
-<li><p class="first">Create necessary sub-folders and files under <code class="docutils literal notranslate"><span class="pre">virtual</span></code>. The <code class="docutils literal notranslate"><span class="pre">virtual</span></code> BSP is consisted of these sub-folers and files. Here, there are 3 folders, <code class="docutils literal notranslate"><span class="pre">common</span></code>, <code class="docutils literal notranslate"><span class="pre">config</span></code> and <code class="docutils literal notranslate"><span class="pre">drivers</span></code>.</p>
+<li><p class="first">Create necessary sub-folders and files under <code class="docutils literal notranslate"><span class="pre">myboard</span></code>. The BSP for <code class="docutils literal notranslate"><span class="pre">myboard</span></code> is made up of these sub-folders and files. There are 3 folders required, <code class="docutils literal notranslate"><span class="pre">common</span></code>, <code class="docutils literal notranslate"><span class="pre">config</span></code> and <code class="docutils literal notranslate"><span class="pre">drivers</span></code>.</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">common</span></code>: the common routines of <code class="docutils literal notranslate"><span class="pre">virtual</span></code> are in this folder. <code class="docutils literal notranslate"><span class="pre">board_init</span></code> function and <code class="docutils literal notranslate"><span class="pre">board_timer_xxx</span></code> functions are suggested to be here.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">common</span></code>: contains the common routines for <code class="docutils literal notranslate"><span class="pre">myboard</span></code>. The <code class="docutils literal notranslate"><span class="pre">board_init</span></code> function and <code class="docutils literal notranslate"><span class="pre">board_timer_xxx</span></code> functions should also be implemented in this folder.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">configs</span></code>: the board config inforamtion is in this folder, including</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">configs</span></code>: contains board configuration information, including</p>
 <blockquote>
 <div><ul class="simple">
-<li>memory information in <code class="docutils literal notranslate"><span class="pre">target_memory.h</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">*.tcf</span></code> file has information for arc configuration, compiler option etc..</li>
-<li><code class="docutils literal notranslate"><span class="pre">virtual_hardware.h</span></code> has necessary hardware definitions, e.g., perpheral address, interrupt number assignment.</li>
-<li><code class="docutils literal notranslate"><span class="pre">*.mk</span></code> files, which should be included in <code class="docutils literal notranslate"><span class="pre">virtual.mk</span></code> are necessary build system information.</li>
-<li>other necessary files</li>
+<li><code class="docutils literal notranslate"><span class="pre">target_memory.h</span></code> file containing memory information</li>
+<li><code class="docutils literal notranslate"><span class="pre">*.tcf</span></code> file containing information about the arc configuration, compiler options, etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">myboard_hardware.h</span></code> file containing necessary hardware definitions, e.g., peripheral address, interrupt number assignments, etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">*.mk</span></code> files, to be included in <code class="docutils literal notranslate"><span class="pre">myboard.mk</span></code> with required build system information.</li>
+<li>any other required files</li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">drivers</span></code>: the on-board drivers implementation of <code class="docutils literal notranslate"><span class="pre">virtual</span></code> board</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">drivers</span></code>: contains on-board driver implementations for <code class="docutils literal notranslate"><span class="pre">myboard</span></code> board</p>
 </li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Modify the <code class="docutils literal notranslate"><span class="pre">virtual.mk</span></code>. The necessary information should be added in
-<code class="docutils literal notranslate"><span class="pre">virtual.mk</span></code>, such as source folders, including folders, object output
+<li><p class="first">Modify <code class="docutils literal notranslate"><span class="pre">myboard.mk</span></code>.  Add necessary information in
+<code class="docutils literal notranslate"><span class="pre">virtual.mk</span></code>, such as source folders, include folders, object output
 folders and make rules. The build system will automatically compile all the
-source files (.c, .s) in the added folders and create library named
-<code class="docutils literal notranslate"><span class="pre">libvirtual.a</span></code> finally.</p>
+source files (.c, .s) in the added folders and finally create a library named
+<code class="docutils literal notranslate"><span class="pre">libmyboard.a</span></code>.</p>
 </li>
-<li><p class="first">Modify the <code class="docutils literal notranslate"><span class="pre">virtual.h</span></code> and add it into <code class="docutils literal notranslate"><span class="pre">board.h</span></code>. <code class="docutils literal notranslate"><span class="pre">virtual.h</span></code> is the
-only place to expose board sepcific informaton, e.g., function
-declarataion, hardware definitions, macros.</p>
+<li><p class="first">Modify the <code class="docutils literal notranslate"><span class="pre">myboard.h</span></code> and add it into <code class="docutils literal notranslate"><span class="pre">board.h</span></code>. <code class="docutils literal notranslate"><span class="pre">myboard.h</span></code> is the
+only place where board specific information should be exposed, e.g., function
+declaration, hardware definitions, macros.</p>
 </li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For details, please take other exist board support folder like <code class="docutils literal notranslate"><span class="pre">&lt;embARC&gt;/board/emss</span></code> for reference.</p>
+<p class="last">For details, please refer to other existing board support folders such as <code class="docutils literal notranslate"><span class="pre">&lt;embARC&gt;/board/emsk</span></code> for reference.</p>
 </div>
 </div>
 
@@ -234,7 +233,7 @@ declarataion, hardware definitions, macros.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="add_new_device.html" class="btn btn-neutral float-right" title="Add New Device" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="add_new_device.html" class="btn btn-neutral float-right" title="Adding a New Device" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="porting_guides.html" class="btn btn-neutral" title="Porting Guides" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -279,7 +278,6 @@ declarataion, hardware definitions, macros.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

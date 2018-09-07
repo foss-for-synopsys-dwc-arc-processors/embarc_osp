@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Add New Device &mdash; embARC 2018.01 documentation</title>
+  <title>Adding a New Device &mdash; embARC 2018.01 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Add New Middleware" href="add_new_middleware.html" />
-    <link rel="prev" title="Add New Board" href="add_new_board.html" /> 
+    <link rel="next" title="Adding a New Middleware Package" href="add_new_middleware.html" />
+    <link rel="prev" title="Adding a New Board" href="add_new_board.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -97,16 +97,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="developer_guides.html">Developer Guides</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="coding_style.html">Coding style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="application_development.html">Application Development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentaion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_system_documentation.html">Build System Documentation</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="porting_guides.html">Porting Guides</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="add_new_board.html">Add New Board</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Add New Device</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#add-on-chip-ip">Add On-Chip IP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-on-board-or-external-peripheral">Add On-Board or External Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_board.html">Adding a New Board</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding a New Device</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-support-for-on-chip-ip">Adding support for On-Chip IP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-support-for-an-on-board-or-external-peripheral">Adding support for an On-Board or External Peripheral</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_middleware.html">Add New Middleware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_new_os.html">Add New OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_middleware.html">Adding a New Middleware Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="add_new_os.html">Adding support for a new OS</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="documentation_generation.html">embARC Documentation Generation</a></li>
@@ -166,7 +166,7 @@
         
           <li><a href="porting_guides.html">Porting Guides</a> &raquo;</li>
         
-      <li>Add New Device</li>
+      <li>Adding a New Device</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -185,29 +185,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="add-new-device">
-<span id="id1"></span><h1>Add New Device<a class="headerlink" href="#add-new-device" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="add-on-chip-ip">
-<h2>Add On-Chip IP<a class="headerlink" href="#add-on-chip-ip" title="Permalink to this headline">¶</a></h2>
-<p>If the HAL of the new device is defined, follow the steps below.</p>
+  <div class="section" id="adding-a-new-device">
+<span id="add-new-device"></span><h1>Adding a New Device<a class="headerlink" href="#adding-a-new-device" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="adding-support-for-on-chip-ip">
+<h2>Adding support for On-Chip IP<a class="headerlink" href="#adding-support-for-on-chip-ip" title="Permalink to this headline">¶</a></h2>
+<p>If the HAL for the new device is already defined in embARC OSP, follow the steps below.</p>
 <ul class="simple">
-<li>Create a subfolder in <em>device/ip</em>.</li>
+<li>Create a sub-folder in <em>device/ip</em>.</li>
 <li>Implement the driver according to the device HAL definition and existing DesignWare IP implementations.</li>
-<li>Add corresponding makefile.</li>
+<li>Add the corresponding makefile.</li>
 </ul>
 <p>If the HAL of the new device is not defined, follow the steps below.</p>
 <ul class="simple">
 <li>Create a header file in <em>device/ip/ip_hal</em>.</li>
 <li>Add the HAL definition for the new device.</li>
 <li>Implement the driver according to the device HAL definition.</li>
-<li>Add corresponding makefile.</li>
+<li>Add the corresponding makefile.</li>
 </ul>
 </div>
-<div class="section" id="add-on-board-or-external-peripheral">
-<h2>Add On-Board or External Peripheral<a class="headerlink" href="#add-on-board-or-external-peripheral" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-support-for-an-on-board-or-external-peripheral">
+<h2>Adding support for an On-Board or External Peripheral<a class="headerlink" href="#adding-support-for-an-on-board-or-external-peripheral" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Add the driver in device/peripheral folder according to the class of peripheral. For example, a flash device xxx should be in the folder <em>device/peripheral/flash/xxx</em> folder.</li>
-<li>Add corresponding makefile.</li>
+<li>Add the corresponding makefile.</li>
 </ul>
 </div>
 </div>
@@ -220,10 +220,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="add_new_middleware.html" class="btn btn-neutral float-right" title="Add New Middleware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="add_new_middleware.html" class="btn btn-neutral float-right" title="Adding a New Middleware Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="add_new_board.html" class="btn btn-neutral" title="Add New Board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="add_new_board.html" class="btn btn-neutral" title="Adding a New Board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -265,7 +265,6 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

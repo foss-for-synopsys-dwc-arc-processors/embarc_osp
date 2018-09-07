@@ -9,16 +9,16 @@ Build Example for EMSK
 #. Generate board configuration files and move them to the application folder. Use following commands for the EMSK 2.3 board and ARC EM7D as an example.
 
    .. code-block:: console
-   
+
       # EMSK 2.3, ARC EM7D on Windows
       cd embarc_bsp\board\emsk\configs\23
       # EMSK 2.3, ARC EM7D on Linux
       cd embarc_bsp/board/emsk/configs/23
       # MetaWare
-      tcftool arcem7d.tcf -q -x C_defines,arc_core_config.h -x ccac.arg   
+      tcftool arcem7d.tcf -q -x C_defines,arc_core_config.h -x ccac.arg
       # ARC GNU
       tcftool arcem7d.tcf -q -x C_defines,arc_core_config.h -x gcc.arg
-   
+
 #. Move linker script and copy *arc_core_config.h* and *.arg* to the application folder.
 
    .. code-block:: console
@@ -42,12 +42,12 @@ Build Example for EMSK
       mv arc_core_config.h gcc.arg ../../../../example/hello/arcgnu
       cp ld/linker_gnu.ld ../../../../example/hello/arcgnu
       cd ../../../../example/hello/arcgnu
-      mv linker_gnu.ld arc_core.ld      
+      mv linker_gnu.ld arc_core.ld
 
 #. Build the *hello world* example for the EMSK 2.3 board and ARC EM7D.
 
    .. code-block:: console
-      
+
       # MetaWare
       gmake
       # ARC GNU

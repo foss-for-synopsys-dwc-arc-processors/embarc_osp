@@ -30,7 +30,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ARC Processors" href="../arc/arc.html" />
-    <link rel="prev" title="Getting Started with HS Development Kit" href="getting_started_with_hs_development_kit.html" /> 
+    <link rel="prev" title="Getting Started with the ARC HS Development Kit" href="getting_started_with_hs_development_kit.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,12 +87,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-code">Checking Out the embARC OSP Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#set-up-the-development-environment">Set Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-source-code">Checking Out the embARC OSP source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setting-up-the-development-environment">Setting Up the Development Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-a-sample-application">Building a Sample Application</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#hardware-preparation">Hardware Preparation</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="getting_started_with_em_starter_kit.html">Getting Started with EM Starter Kit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="getting_started_with_hs_development_kit.html">Getting Started with HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_hs_development_kit.html">Getting Started with the ARC HS Development Kit</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Hardware Requirement</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#board-requirement">Board Requirement</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#board-connections">Board Connections</a></li>
@@ -199,10 +199,10 @@
 </ul>
 </li>
 </ul>
-<p>See <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a> for more board information. You can also add your own boards in <a class="reference internal" href="../developer/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
+<p>See <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a> for more board information. You can also find instructions on how to add your own board in <a class="reference internal" href="../developer/porting_guides.html#porting-guides"><span class="std std-ref">Porting Guides</span></a>.</p>
 <ul class="simple">
 <li>Peripherals<ul>
-<li>Wireless<ul>
+<li>Wireless Communications<ul>
 <li><a class="reference external" href="http://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/">Digilent Pmod WiFi with Microchip MRF24WG0MA</a></li>
 <li><a class="reference external" href="https://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/">Digilent Pmod RF2 with Microchip MRF24J40MA</a></li>
 <li><a class="reference external" href="http://www.microchip.com/wwwproducts/en/RN4020">BLE Microchip RN4020</a></li>
@@ -233,7 +233,7 @@
 </ul>
 </li>
 </ul>
-<p>Not every peripheral is required for the embARC OSP examples. Choose peripherals according to your applications. You can also add your own peripherals in the embARC OSP.</p>
+<p>Not every peripheral listed above is required for by embARC OSP examples. Choose peripherals according to your application’s requirements. You can also add your own peripherals in the embARC OSP.</p>
 </div>
 <div class="section" id="board-connections">
 <h2>Board Connections<a class="headerlink" href="#board-connections" title="Permalink to this headline">¶</a></h2>
@@ -244,14 +244,14 @@
 <li>BLE HM-10 is connected to the Pmod J1 connector.</li>
 <li>Pmod AD2 is connected to the Pmod J2 connector.</li>
 <li>Pmod TMP2/TMP3 is connected to the Pmod J2 connector.</li>
-<li>SSD1306 OLED module is connected to the Pmod J2 or J4 connector depending on your application.</li>
+<li>SSD1306 OLED module is connected to the Pmod J2 or J4 connector, depending on your application.</li>
 <li>SD Card plugged into card slot J9.</li>
 </ul>
 </li>
 </ul>
 <div class="figure" id="id2">
 <span id="emsk-board-settings"></span><a class="reference internal image-reference" href="../_images/emsk_board_settings.jpg"><img alt="emsk board setting" src="../_images/emsk_board_settings.jpg" style="width: 616.0px; height: 654.4px;" /></a>
-<p class="caption"><span class="caption-text">EMSK board connection</span></p>
+<p class="caption"><span class="caption-text">EMSK board connections</span></p>
 </div>
 <p>All versions of EMSK have the same board connections.</p>
 <div class="admonition note">
@@ -302,7 +302,7 @@
 <dl class="docutils">
 <dt>The IP address settings should be adjusted according to your hotspot settings.</dt>
 <dd><ul class="first simple">
-<li>For example, if your hotspot IP address is 192.168.1.1, your WiFi hotspot name is “synopsys”, and password is “12345678”, change the settings as shown below. Make sure the IP address (WF_IPADDR_x) doesn’t conflict with other WiFi devices in the same network.</li>
+<li>For example, if your hotspot IP address is 192.168.1.1, your WiFi hotspot name is “myhotspot”, and password is “12345678”, change the settings as shown below. Make sure the IP address (WF_IPADDR_x) doesn’t conflict with other WiFi devices in the same network.</li>
 </ul>
 <div class="last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define WF_IPADDR_1                   (192)</span>
 <span class="cp">#define WF_IPADDR_2                   (168)</span>
@@ -323,7 +323,7 @@
 
 <span class="cp">#define WF_IPADDR_DHCP                (1)</span>
 
-<span class="cp">#define WF_HOTSPOT_NAME               &quot;synopsys&quot;</span>
+<span class="cp">#define WF_HOTSPOT_NAME               &quot;myhotspot&quot;</span>
 <span class="cp">#define WF_HOTSPOT_PASSWD             &quot;12345678&quot;</span>
 </pre></div>
 </div>
@@ -347,7 +347,7 @@
         <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="getting_started_with_hs_development_kit.html" class="btn btn-neutral" title="Getting Started with HS Development Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="getting_started_with_hs_development_kit.html" class="btn btn-neutral" title="Getting Started with the ARC HS Development Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -389,7 +389,6 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
