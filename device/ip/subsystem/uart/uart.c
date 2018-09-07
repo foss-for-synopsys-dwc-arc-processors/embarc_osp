@@ -300,6 +300,8 @@ uint32_t io_uart_open(uint32_t dev_id)
     dev = uart_handles[dev_id];
 
     REG_WRITE(UART_CLKEN, 0x1);
+    REG_WRITE(UART_IER, 0x0);
+    REG_READ(UART_RBR);
 
     /* when there are fifos available, always enable and reset these */
     if (dev->fifo_depth != 0) {
@@ -396,6 +398,7 @@ void io_uart_read(uint32_t dev_id, uint8_t * data, uint32_t * size)
 #ifdef __Xdmac
     if (dev->dmarxchanid == DMA_NONE) {
 #endif
+    if (dev->rx_size > 0) {
     if ((dev->fifo_depth != 0) && (dev->rx_size < dev->rx_threshold)) {
         /* temporary reset the rx_threshold to 1 */
         REG_WRITE(UART_FCR, (((dev->fcr_mirror & ~0xC) << 4) | 0x01));
@@ -403,6 +406,7 @@ void io_uart_read(uint32_t dev_id, uint8_t * data, uint32_t * size)
     /* enable ERBFI and ELSI interrupt */
     val = REG_READ(UART_IER) | 0x5;
     REG_WRITE(UART_IER, val);
+    }
 #ifdef __Xdmac
     } else {            /* DMA: create descriptor */
     if (dev->rx_size != 0) {
@@ -469,6 +473,7 @@ void io_uart_write(uint32_t dev_id, uint8_t * data, uint32_t * size)
          && (dev->nCTS_state == nCTS_LOW))) {
         /* write first bytes to fifo (if any) */
         cnt = dev->tx_size - dev->tx_count;
+        if (cnt > 0) {
         if (dev->fifo_depth == 0) { /* fifos are not available */
         cnt = 1;
         } else if (cnt > dev->fifo_depth) { /* fifos enabled (and by definition != FIFO_NONE) */
@@ -480,6 +485,7 @@ void io_uart_write(uint32_t dev_id, uint8_t * data, uint32_t * size)
         /* enable ETBEI interrupt and enable use of interrupt for TX threshold */
         val = REG_READ(UART_IER) | 0x82;
         REG_WRITE(UART_IER, val);
+        }
     }
 #ifdef __Xdmac
     } else {
@@ -662,6 +668,14 @@ static void uart_isr_proc(uint32_t dev_id)
     switch (intid) {
     case 0x2:
         {           /* tx empty */
+        if (dev->tx_data == NULL) {
+            if (dev->tx_cb != 0) {
+                dev->tx_cb(dev_id);
+            } else {
+                val = REG_READ(UART_IER) & ~0x82;
+                REG_WRITE(UART_IER, val);
+            }
+        } else {
         if (dev->tx_count == dev->tx_size) {    /* disable ETBEI interrupt (and disable threshold interrupt IER[7]) */
             val = REG_READ(UART_IER) & ~0x82;
             REG_WRITE(UART_IER, val);
@@ -688,10 +702,18 @@ static void uart_isr_proc(uint32_t dev_id)
                   (dev->tx_data[dev->tx_count++]));
             }
         }
+        }
         break;
         }
     case 0x4:
         {           /* rx data available; at least one, more is uncertain */
+        if (dev->rx_data == NULL) {
+            if (dev->rx_cb != 0) {
+                dev->rx_cb(dev_id);
+            } else {
+                REG_READ(UART_RBR);
+            }
+        } else {
         if (dev->fifo_depth == 0) {
             dev->rx_data[dev->rx_count++] = REG_READ(UART_RBR);
         } else {
@@ -723,6 +745,7 @@ static void uart_isr_proc(uint32_t dev_id)
             if (dev->rx_cb != 0) {
             dev->rx_cb(dev_id);
             }
+        }
         }
         break;
         }
