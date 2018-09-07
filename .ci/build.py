@@ -46,6 +46,7 @@ class TailRecurseException:
 	def __init__(self, args, kwargs):
 		self.args = args
 		self.kwargs = kwargs
+
 def tail_call_optimized(g):
 	def func(*args, **kwargs):
 		f = sys._getframe()
@@ -95,45 +96,75 @@ def get_config(config): # from input to get the config dict{"TOOLCHAIN":,"BOARD"
 		make_configs[config_name] = value
 	return make_configs
 
+def board_version_config(osp_root, board, bd_version=None):
+	board_path = os.path.join(osp_root, "board", board)
+	bd_vers = dict()
+	if os.path.exists(board_path):
+		files = os.listdir(board_path)
+		if "configs" in files:
+			versions = os.listdir(os.path.join(board_path, "configs"))
+			for version in versions:
+				version_path = os.path.join(board_path, "configs", version)
+				if os.path.isdir(version_path):
+					bd_vers[version] = version_path
+		else:
+			versions = os.listdir(board_path)
+			for version in versions:
+				path = os.path.join(board_path, version)
+				if os.path.isdir(path) and "configs" in os.listdir(path):
+					version_path = os.path.join(board_path, version, "configs")
+					bd_vers[version] = version_path
+	if bd_version is not None:
+		if bd_vers.has_key(bd_version):
+			bd_ver = {bd_version: bd_vers[bd_version]}
+			return bd_ver
+	return bd_vers
+
 def get_tcf(osp_root, board, bd_version, cur_core):
 	result = dict()
 	tcf_name = cur_core + ".tcf"
-	board_path = "board/" + board + "/configs/" + bd_version + "/tcf/"
-	tcf_path = os.path.join(osp_root, board_path, tcf_name)
-	result[tcf_name] = None
-	if os.path.exists(tcf_path) and os.path.isfile(tcf_path):
-		result[tcf_name] = tcf_path
+	board_version_path_dict = copy.deepcopy(board_version_config(osp_root, board, bd_version))
+	board_path = board_version_path_dict[bd_version]
+
+	cur_core_file = cur_core + ".tcf"
+	result[cur_core] = None
+	if os.path.exists(board_path):
+		for root, dirs, files in os.walk(board_path, topdown=True):
+			if cur_core_file in files:
+				result[tcf_name] = os.path.join(root, cur_core_file)
 	return result
+
 
 def get_tcfs(osp_root, board, bd_version, cur_core=None):
 	result = []
-	board_path = "board/" + board + "/configs/" + bd_version + "/tcf/"
-	tcfs_path = os.path.join(osp_root, board_path)
-	if os.path.exists(tcfs_path):
+	board_version_path_dict = board_version_config(osp_root, board, bd_version)
+	board_path = board_version_path_dict [bd_version]
+	
+	if os.path.exists(board_path):
 		if cur_core is not None:
 			cur_core_file = cur_core + ".tcf"
-			if cur_core_file in os.listdir(tcfs_path):
-				result.append(cur_core)
-				return result
-		for file in os.listdir(tcfs_path):
-			filename, filesuffix = os.path.splitext(file)
-			if not filesuffix == ".tcf":
-				continue
-			result.append(filename)
+			for root, dirs, files in os.walk(board_path, topdown=True):
+				if cur_core_file in files:
+					cur_core_path = os.path.join(root,cur_core_file)
+					result.append(cur_core)
+					
+		else:
+			for root, dirs, files in os.walk(board_path, topdown=True):
+				for file in files:
+					filename, filesuffix = os.path.splitext(file)
+					if not filesuffix == ".tcf":
+						continue
+					result.append(filename)
 	return result
+
 
 def get_board_version(osp_root, board, bd_version=None):
 	result = []
-	board_path = "board/" + board + "/configs/"
+	board_path = "board/" + board
 	ver_path = os.path.join(osp_root, board_path)
 	if os.path.exists(ver_path):
-		if bd_version is not None:
-			if bd_version in os.listdir(board_path):
-				result.append(bd_version)
-				return result
-		for file in os.listdir(ver_path):
-			if os.path.isdir(os.path.join(ver_path, file)):
-				result.append(file)
+		bd_vers_dict = board_version_config(osp_root, board, bd_version)
+		result.extend(bd_vers_dict.keys())
 	return result
 
 def get_boards(osp_root, board=None):
@@ -153,20 +184,25 @@ def build_makefile_project(app_path, config):
 	result = dict()
 	isMakeProject = False
 
-	make_configs = config #get_config(config)
+	make_configs = copy.deepcopy(config)
 	print make_configs
-	osp_root = make_configs["OSP_ROOT"]
+	core_key = "CORE" if make_configs.has_key("CORE") else "CUR_CORE"
+	
+	osp_root = make_configs.pop("OSP_ROOT")
+	toolchain_ver = make_configs.pop("TOOLCHAIN_VER")
+	parallel = make_configs.pop("PARALLEL")
+
 	toolchain = make_configs["TOOLCHAIN"]
 	board = make_configs["BOARD"]
 	bd_ver = make_configs["BD_VER"]
-	cur_core = make_configs["CUR_CORE"]
-	toolchain_ver = make_configs["TOOLCHAIN_VER"]
-	parallel = make_configs["PARALLEL"]
+	cur_core = make_configs[core_key]
+	
 	conf_key = board + "_" + bd_ver + "_" + cur_core
-
 	tcf_name = cur_core + ".tcf"
 	tcf_found = get_tcf(osp_root, board, bd_ver, cur_core)
 	print "tcf_path:%s" % (tcf_found)
+	build_conf_list = ["%s=%s" % (key, value) for (key, value) in make_configs.items()]
+	build_conf = " ".join(build_conf_list)
 
 	tcf_path = tcf_found[tcf_name]
 	if tcf_path != None:
@@ -183,7 +219,7 @@ def build_makefile_project(app_path, config):
 			    print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
 			    print Style.RESET_ALL
 			    sys.stdout.flush()
-			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + " BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
+			    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + build_conf #" BOARD=" + board +" BD_VER=" + bd_ver + " CUR_CORE=" + cur_core +" TOOLCHAIN=" + toolchain
 			    cleancommand = make_cmd + " clean"
 			    os.system(cleancommand)
 			    buildcommand = make_cmd
@@ -208,13 +244,14 @@ def build_makefile_project(app_path, config):
 def build_project_configs(app_path, config):
 	work_path = os.getcwd()
 	make_configs = config
+	core_key = "CUR_CORE"
 	osp_root = None
 	board_input = None
 	bd_ver_input = None
 	cur_core_input = None
 	toolchain_ver = "2017.09"
 	bd_vers = dict()
-	cur_cors = dict()
+	cur_cores = dict()
 	make_config = dict()
 	results = []
 	toolchain = "gnu"
@@ -225,6 +262,7 @@ def build_project_configs(app_path, config):
 	expected_different[app_path] = []
 	parallel = ""
 
+	core_key = "CORE" if make_configs.has_key("CORE") else "CUR_CORE"
 	if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
 		parallel = make_configs["PARALLEL"]
 	if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
@@ -245,23 +283,25 @@ def build_project_configs(app_path, config):
 	for board in boards:
 		version = get_board_version(osp_root, board, bd_version=bd_ver_input)
 		bd_vers[board] = version
-	if "CUR_CORE" in make_configs and make_configs["CUR_CORE"] is not None:
-		cur_core_input = make_configs["CUR_CORE"]
+	if core_key in make_configs and make_configs[core_key] is not None:
+		cur_core_input = make_configs[core_key]
+
 	for (board, versions) in bd_vers.items():
-		cur_cors[board] = dict()
+		cur_cores[board] = dict()
 		for version in versions:
-			cors = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
-			cur_cors[board][version] = cors
-	for board in cur_cors:
-		for bd_ver in cur_cors[board]:
+			cores = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
+			cur_cores[board][version] = cores
+
+	for board in cur_cores:
+		for bd_ver in cur_cores[board]:
 			core_failed = 0
-			core_num = len(cur_cors[board][bd_ver])
+			core_num = len(cur_cores[board][bd_ver])
 			may_compare = []
-			for cur_core in cur_cors[board][bd_ver]:
+			for cur_core in cur_cores[board][bd_ver]:
 				make_config["OSP_ROOT"] = osp_root
 				make_config["BOARD"] = board
 				make_config["BD_VER"] = bd_ver
-				make_config["CUR_CORE"] = cur_core
+				make_config[core_key] = cur_core
 				make_config["TOOLCHAIN"] = toolchain
 				make_config["TOOLCHAIN_VER"] = toolchain_ver
 				make_config["PARALLEL"] = parallel
@@ -501,7 +541,7 @@ def get_options_parser():
 	parser.add_argument("--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
 	parser.add_argument("--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)),metavar="BOARD")
 	parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
-	parser.add_argument("--cur_core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
+	parser.add_argument("--core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
 	parser.add_argument("--toolchain_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
 	parser.add_argument("--examples", dest="examples", default=None, help=("the path of applications that will be built"), metavar="EXAMPLES")
 	parser.add_argument("--expected", dest="expected", default=None, help=("the path of the expected file that include the results"), metavar="EXPECTED")
@@ -516,7 +556,7 @@ def get_options_parser():
 	if options.bd_ver:
 		configs["BD_VER"] = options.bd_ver
 	if options.cur_core:
-		configs["CUR_CORE"] = options.cur_core
+		configs["CORE"] = options.cur_core
 	if options.toolchain_ver:
 		configs["TOOLCHAIN_VER"] = options.toolchain_ver
 	if options.examples:
