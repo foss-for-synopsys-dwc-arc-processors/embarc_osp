@@ -1,6 +1,6 @@
 .. _bsp_build_cmd:
 
-Build BSP in Command Line
+Building the BSP from the Command Line
 =========================
 
 Build Example for EMSK
@@ -19,7 +19,7 @@ Build Example for EMSK
       # ARC GNU
       tcftool arcem7d.tcf -q -x C_defines,arc_core_config.h -x gcc.arg
 
-#. Move linker script and copy *arc_core_config.h* and *.arg* to the application folder.
+#. Move the linker script and copy *arc_core_config.h* and *.arg* to the application folder.
 
    .. code-block:: console
 
