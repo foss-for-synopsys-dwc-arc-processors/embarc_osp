@@ -27,9 +27,9 @@ boards based on |arc|. The layer contains the following functions:
   Unified definitions are provided such as UART used to print messages, SD card
   interface, buttons, LEDs.
 
-- **Linker script for boards** Linker script now is auto-generated from
-  template using the ICCM/DCCM and DDR memory information. embARC OSP provides template
-  for both gnu and metaware tool, located in ``board`` folder, called
+- **Linker script for boards** Linker script is auto-generated from
+  template using the ICCM/DCCM and DDR memory information. embARC OSP provides templates
+  for both ARC GNU and MetaWare toolchains, located in ``board`` folder, called
   ``linker_template_gnu.ld`` and ``linker_template_mw.ld``.
 
 Common Board Initialization Process
@@ -46,7 +46,7 @@ The common ``board_main`` function in ``board.c`` will do the following operatio
   - Initialize other required board resources such as mux controller.
 
 - xprintf library setup to provide printf functionality
-- Initialization of fatfs if FatFs middleware is selected
+- Initialization of FatFs if FatFs middleware is selected
 - Initialization of FreeRTOS tasks if defined
 - Go to ``main`` function
 

@@ -94,7 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#board-level-start-up">Board level start up</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#exceptions-and-interrupts-management">Exceptions and Interrupts Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exception-and-interrupt-management">Exception and Interrupt Management</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#arc-exceptions-and-interrupts">ARC exceptions and interrupts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exception-and-interrupt-processing-framework">Exception and interrupt processing framework</a></li>
 </ul>
@@ -191,17 +191,17 @@
 <span id="arc-hal"></span><h1>ARC Processors<a class="headerlink" href="#arc-processors" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The ARC <strong>Hardware Abstraction Layer</strong> (HAL) provides hardware abstraction for
-DesignWare® ARC® processors. In this layer, the following functions are provided:</p>
+<p>The ARC <strong>Hardware Abstraction Layer</strong> (HAL) (embarc_osp/arc folder) provides hardware abstraction for
+DesignWare® ARC® processors. The following functionality is provided by the ARC HAL:</p>
 <ul class="simple">
 <li><a class="reference internal" href="#arc-hal-start"><span class="std std-ref">Start up</span></a>: common startup routines or templates to handle necessary
-initializations after power on, reset, and so on.</li>
+initializations after power on, reset, etc.</li>
 <li><a class="reference internal" href="#arc-hal-exc-int"><span class="std std-ref">Exception and interrupt management</span></a>: a standard exception and interrupt
 processing model and related resource definitions.</li>
 <li><a class="reference internal" href="#arc-hal-builtin"><span class="std std-ref">Unified intrinsic/built-in functions</span></a>: covering both the MetaWare and GNU
 toolchains.</li>
-<li><a class="reference internal" href="#arc-hal-res-def"><span class="std std-ref">Unified resource definitions</span></a>: registers, data types, macros, and so on.</li>
-<li><a class="reference internal" href="#arc-hal-res-access"><span class="std std-ref">Access to the resources</span></a>: internal timers, cache, auxiliary registers,
+<li><a class="reference internal" href="#arc-hal-res-def"><span class="std std-ref">Unified resource definitions</span></a>: registers, data types, macros, etc.</li>
+<li><a class="reference internal" href="#arc-hal-res-access"><span class="std std-ref">Access to core resources</span></a>: internal timers, cache, auxiliary registers,
 and build configuration registers.</li>
 </ul>
 </div>
@@ -216,12 +216,12 @@ which runs in three stages:</p>
 <img alt="processor-level start up" src="../_images/startup.jpg" />
 <ul class="simple">
 <li>Stage 1: Hardware Initialization<ul>
-<li>Initialize necessayr status and registers.</li>
+<li>Initialize necessary status and registers.</li>
 <li>Initialize system clock (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</li>
 <li>Initialize memory controller (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</li>
 </ul>
 </li>
-<li>Stage 2: C Run-time Initialization<ul>
+<li>Stage 2: C Runtime Initialization<ul>
 <li>Initialize the stack.</li>
 <li>Copy section, e.g. data section, text section if necessary.</li>
 <li>Clear Block Started by Symbol (BSS) section.</li>
@@ -243,8 +243,8 @@ which runs in three stages:</p>
 <li>board-level hardware initialization in <code class="docutils literal notranslate"><span class="pre">board_init</span></code></li>
 <li>Middleware initialization<ul>
 <li>initialize the <code class="docutils literal notranslate"><span class="pre">xprintf</span></code> function to have a console output</li>
-<li>initialize the FatFs and mount the sd card if <code class="docutils literal notranslate"><span class="pre">MID_FATFS</span></code> is enabled</li>
-<li>initialize NT-Shel if <code class="docutils literal notranslate"><span class="pre">MID_NTSHELL</span></code> is enabled</li>
+<li>initialize the FatFs and mount the SD card if <code class="docutils literal notranslate"><span class="pre">MID_FATFS</span></code> is enabled</li>
+<li>initialize NT-Shell if <code class="docutils literal notranslate"><span class="pre">MID_NTSHELL</span></code> is enabled</li>
 </ul>
 </li>
 <li>OS specific initialization if <code class="docutils literal notranslate"><span class="pre">ENABLE_OS</span></code> is defined<ul>
@@ -260,8 +260,8 @@ which runs in three stages:</p>
 </div>
 </div>
 </div>
-<div class="section" id="exceptions-and-interrupts-management">
-<span id="arc-hal-exc-int"></span><h2>Exceptions and Interrupts Management<a class="headerlink" href="#exceptions-and-interrupts-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exception-and-interrupt-management">
+<span id="arc-hal-exc-int"></span><h2>Exception and Interrupt Management<a class="headerlink" href="#exception-and-interrupt-management" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arc-exceptions-and-interrupts">
 <h3>ARC exceptions and interrupts<a class="headerlink" href="#arc-exceptions-and-interrupts" title="Permalink to this headline">¶</a></h3>
 <p>DesignWare® ARC® processors are designed to allow exceptions to be taken and handled by

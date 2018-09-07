@@ -6,11 +6,11 @@ ARC Processors
 Overview
 ########
 
-The ARC **Hardware Abstraction Layer** (HAL) provides hardware abstraction for
-|arc|. In this layer, the following functions are provided:
+The ARC **Hardware Abstraction Layer** (HAL) (embarc_osp/arc folder) provides hardware abstraction for
+|arc|. The following functionality is provided by the ARC HAL:
 
 - :ref:`Start up <arc_hal_start>`: common startup routines or templates to handle necessary
-  initializations after power on, reset, and so on.
+  initializations after power on, reset, etc.
 
 - :ref:`Exception and interrupt management <arc_hal_exc_int>`: a standard exception and interrupt
   processing model and related resource definitions.
@@ -18,9 +18,9 @@ The ARC **Hardware Abstraction Layer** (HAL) provides hardware abstraction for
 - :ref:`Unified intrinsic/built-in functions <arc_hal_builtin>`: covering both the MetaWare and GNU
   toolchains.
 
-- :ref:`Unified resource definitions <arc_hal_res_def>`: registers, data types, macros, and so on.
+- :ref:`Unified resource definitions <arc_hal_res_def>`: registers, data types, macros, etc.
 
-- :ref:`Access to the resources <arc_hal_res_access>`: internal timers, cache, auxiliary registers,
+- :ref:`Access to core resources <arc_hal_res_access>`: internal timers, cache, auxiliary registers,
   and build configuration registers.
 
 .. _arc_hal_start:
@@ -42,11 +42,11 @@ which runs in three stages:
 
 - Stage 1: Hardware Initialization
 
-  * Initialize necessayr status and registers.
+  * Initialize necessary status and registers.
   * Initialize system clock (if necessary, in user defined ``hardware_init_hook``).
   * Initialize memory controller (if necessary, in user defined ``hardware_init_hook``).
 
-- Stage 2: C Run-time Initialization
+- Stage 2: C Runtime Initialization
 
   * Initialize the stack.
   * Copy section, e.g. data section, text section if necessary.
@@ -70,8 +70,8 @@ The following pre-defined work is done in ``board_main`` function:
 * Middleware initialization
 
   * initialize the ``xprintf`` function to have a console output
-  * initialize the FatFs and mount the sd card if ``MID_FATFS`` is enabled
-  * initialize NT-Shel if ``MID_NTSHELL`` is enabled
+  * initialize the FatFs and mount the SD card if ``MID_FATFS`` is enabled
+  * initialize NT-Shell if ``MID_NTSHELL`` is enabled
 
 * OS specific initialization if ``ENABLE_OS`` is defined
 
@@ -84,7 +84,7 @@ The following pre-defined work is done in ``board_main`` function:
 
 .. _arc_hal_exc_int:
 
-Exceptions and Interrupts Management
+Exception and Interrupt Management
 ####################################
 
 ARC exceptions and interrupts

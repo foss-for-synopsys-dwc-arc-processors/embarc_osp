@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ARC Virtual Board based on nSIM &mdash; embARC 2018.01 documentation</title>
+  <title>Virtual Board based on ARC nSIM &mdash; embARC 2018.01 documentation</title>
   
 
   
@@ -97,7 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="emsk.html">ARC EM Starter Kit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hsdk.html">ARC HS Development Kit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ARC Virtual Board based on nSIM</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtual Board based on ARC nSIM</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#how-to-run-in-embarc">How to Run in embARC</a></li>
 </ul>
@@ -164,7 +164,7 @@
         
           <li><a href="board.html">Boards</a> &raquo;</li>
         
-      <li>ARC Virtual Board based on nSIM</li>
+      <li>Virtual Board based on ARC nSIM</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,8 +183,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="arc-virtual-board-based-on-nsim">
-<span id="board-nsim"></span><h1>ARC Virtual Board based on nSIM<a class="headerlink" href="#arc-virtual-board-based-on-nsim" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="virtual-board-based-on-arc-nsim">
+<span id="board-nsim"></span><h1>Virtual Board based on ARC nSIM<a class="headerlink" href="#virtual-board-based-on-arc-nsim" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The DesignWare® ARC® nSIM Instruction Set Simulator provides an instruction
@@ -203,18 +203,18 @@ module, interrupt and exception module.</p>
 <div class="section" id="how-to-run-in-embarc">
 <h2>How to Run in embARC<a class="headerlink" href="#how-to-run-in-embarc" title="Permalink to this headline">¶</a></h2>
 <p>For example, go to <code class="docutils literal notranslate"><span class="pre">example/baremetal/arc_feature/timer_interrupt</span></code>, then build
-this application for <code class="docutils literal notranslate"><span class="pre">nSIM</span> <span class="pre">-</span> <span class="pre">10</span> <span class="pre">-</span> <span class="pre">arcem</span></code> using metaware or arc gnu
+this application for <code class="docutils literal notranslate"><span class="pre">nSIM</span> <span class="pre">-</span> <span class="pre">10</span> <span class="pre">-</span> <span class="pre">arcem</span></code> using MetaWare or ARC GNU
 toolchain. Here are the steps for running or debugging this application in
 nSIM.</p>
-<div class="section" id="use-metaware-toolchain">
-<h3>Use Metaware toolchain<a class="headerlink" href="#use-metaware-toolchain" title="Permalink to this headline">¶</a></h3>
-<p>Here are the steps for Metaware toolchain, running in nSIM environment.</p>
+<div class="section" id="using-the-metaware-toolchain">
+<h3>Using the MetaWare toolchain<a class="headerlink" href="#using-the-metaware-toolchain" title="Permalink to this headline">¶</a></h3>
+<p>Here are the steps for MetaWare toolchain, running in nSIM environment.</p>
 <ul class="simple">
 <li>Step 1: Open one command terminal in this application folder.</li>
 <li>Step 2: Build and run this application using this command: <code class="docutils literal notranslate"><span class="pre">gmake</span> <span class="pre">BOARD=nsim</span>
 <span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">run</span></code></li>
 </ul>
-<p>Then you will get the following output:</p>
+<p>The following output will be printed on the console:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
 <span class="go"> ____                                _ ____</span>
 <span class="go">|  _ \ _____      _____ _ __ ___  __| | __ ) _   _</span>
@@ -248,13 +248,13 @@ nSIM.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="use-arc-gnu-toolchain">
-<h3>Use ARC GNU toolchain<a class="headerlink" href="#use-arc-gnu-toolchain" title="Permalink to this headline">¶</a></h3>
-<p>If you want to run or debug embARC application using ARC GNU toolchain, you also need to install nSIM tool.</p>
+<div class="section" id="using-the-arc-gnu-toolchain">
+<h3>Using the ARC GNU toolchain<a class="headerlink" href="#using-the-arc-gnu-toolchain" title="Permalink to this headline">¶</a></h3>
+<p>If you want to run or debug embARC application using the ARC GNU toolchain, you also need to install nSIM tool.</p>
 <ul class="simple">
 <li>Make sure that you have installed nSIM tool to your OS, and you can run
 <code class="docutils literal notranslate"><span class="pre">nsimdrv</span></code> command in command line.</li>
-<li>For running or debugging embARC application using ARC GNU toolchain, you
+<li>For running or debugging embARC application using the ARC GNU toolchain, you
 need to run two commands in two command terminals, here take nsim-10-arcem
 core configuration for application <code class="docutils literal notranslate"><span class="pre">example/baremetal/arc_feature/timer_interrupt</span></code>.<ul>
 <li>Step 1: Open two command terminals in this application folder.</li>
@@ -266,7 +266,7 @@ core configuration for application <code class="docutils literal notranslate"><s
 </ul>
 </li>
 </ul>
-<p>Then you will get the following output:</p>
+<p>The following output will be printed on the console:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
 <span class="go"> ____                                _ ____</span>
 <span class="go">|  _ \ _____      _____ _ __ ___  __| | __ ) _   _</span>
@@ -301,8 +301,8 @@ core configuration for application <code class="docutils literal notranslate"><s
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Only for ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
-Most middlewares in embARC are not available for nSIM since there is no external peripheral for nSIM.</p>
+<p class="last">For the ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
+Most middleware packages in embARC are not supported with nSIM since there is no external peripheral for nSIM.</p>
 </div>
 </div>
 </div>

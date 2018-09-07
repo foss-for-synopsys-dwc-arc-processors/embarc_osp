@@ -1,6 +1,6 @@
 .. _board_nsim:
 
-ARC Virtual Board based on nSIM
+Virtual Board based on ARC nSIM
 ===============================
 
 Introduction
@@ -22,22 +22,21 @@ How to Run in embARC
 --------------------
 
 For example, go to ``example/baremetal/arc_feature/timer_interrupt``, then build
-this application for ``nSIM - 10 - arcem`` using metaware or arc gnu
+this application for ``nSIM - 10 - arcem`` using MetaWare or ARC GNU
 toolchain. Here are the steps for running or debugging this application in
 nSIM.
 
-Use Metaware toolchain
+Using the MetaWare toolchain
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Here are the steps for Metaware toolchain, running in nSIM environment.
+Here are the steps for MetaWare toolchain, running in nSIM environment.
 
 - Step 1: Open one command terminal in this application folder.
 
 - Step 2: Build and run this application using this command: ``gmake BOARD=nsim
   BD_VER=10 CUR_CORE=arcem TOOLCHAIN=mw run``
 
-
-Then you will get the following output:
+The following output will be printed on the console:
 
 .. code-block:: console
 
@@ -72,15 +71,15 @@ Then you will get the following output:
         enable timer 0 watchdog
         ---end----
 
-Use ARC GNU toolchain
+Using the ARC GNU toolchain
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you want to run or debug embARC application using ARC GNU toolchain, you also need to install nSIM tool.
+If you want to run or debug embARC application using the ARC GNU toolchain, you also need to install nSIM tool.
 
 - Make sure that you have installed nSIM tool to your OS, and you can run
   ``nsimdrv`` command in command line.
 
-- For running or debugging embARC application using ARC GNU toolchain, you
+- For running or debugging embARC application using the ARC GNU toolchain, you
   need to run two commands in two command terminals, here take nsim-10-arcem
   core configuration for application ``example/baremetal/arc_feature/timer_interrupt``.
 
@@ -94,7 +93,7 @@ If you want to run or debug embARC application using ARC GNU toolchain, you also
 
   + Step 4: Exit the debug process by exiting these two commands.
 
-Then you will get the following output:
+The following output will be printed on the console:
 
 .. code-block:: console
 
@@ -130,8 +129,5 @@ Then you will get the following output:
     ---end----
 
 .. note::
-	Only for ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
-	Most middlewares in embARC are not available for nSIM since there is no external peripheral for nSIM.
-
-
-
+	For the ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
+	Most middleware packages in embARC are not supported with nSIM since there is no external peripheral for nSIM.

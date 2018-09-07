@@ -101,7 +101,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="hsdk.html">ARC HS Development Kit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nsim.html">ARC Virtual Board based on nSIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nsim.html">Virtual Board based on ARC nSIM</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="board.html#board-resource-unified-definitions">Board Resource Unified Definitions</a></li>
@@ -187,14 +187,13 @@
 <span id="board-emsk"></span><h1>ARC EM Starter Kit<a class="headerlink" href="#arc-em-starter-kit" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The DesignWare® ARC® EM Starter Kit (EMSK, emsk) enables  rapid
+<p>The DesignWare® ARC® EM Starter Kit (EMSK, emsk) enables rapid
 software development, code porting, software debugging, and profiling for ARC
-EM4, EM6 (EMSK 1.1), EM5D and EM7D (EMSK 2.0/2.1), EM9D and EM11D (EMSK
-2.2/2.3) processors.</p>
+EM4, EM6 (EMSK 1.1), EM5D, EM7D, EM9D and EM11D (EMSK 2.3) processors.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Caches are not integrated in EM5D (EMSK 2.0/2.1) and EM9D (EMSK 2.2/2.3) configurations. If program code runs in DDR memory, SPI and IIC devices should run at a slower frequency.
-EMSK 1.0 can be upgraded to EMSK 1.1 using EMSK 1.1’s firmware, EMSK 2.0, 2.1 and 2.2 can be upgraded to EMSK 2.3 using EMSK 2.3’s firmware.</p>
+<p class="last">Caches are not integrated in EM5D and EM9D configurations. If program code runs in DDR memory, SPI and IIC devices should run at a slower frequency.
+EMSK 1.0 must be upgraded to EMSK 1.1 using EMSK 1.1’s firmware, EMSK 2.0, 2.1 and 2.2 must be upgraded to EMSK 2.3 using EMSK 2.3’s firmware.</p>
 </div>
 <p>The EMSK consists of a hardware platform and a software package, including
 pre-installed FPGA images of different configurations of the ARC EM Processor
@@ -212,15 +211,14 @@ power adapter are included in the package.</p>
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="em-core-configurations">
 <h3>EM core configurations<a class="headerlink" href="#em-core-configurations" title="Permalink to this headline">¶</a></h3>
-<p>The FPGA board includes an SPI flash storage device pre-programmed with FPGA
+<p>The FPGA board includes a SPI flash storage device pre-programmed with FPGA
 images containing different configurations of DesignWare® ARC EM cores.</p>
 <p>The FPGA image can be selected using the pins 1 and 2 of the SW1 switch on the
 board:</p>
 <img alt="EM Starter Kit DIP Switch" src="../_images/emsk_dipswitch.jpg" />
 <p>The following tables provide the details of supported EM Core configurations
-for different versions of EMSK board.</p>
+for different suported versions of EMSK board.</p>
 <img alt="EMSK 1.1 - Cores Configurations" src="../_images/emsk-11_emcores.jpg" />
-<img alt="EMSK 2.2 - Cores Configurations" src="../_images/emsk-22_emcores.jpg" />
 <img alt="EMSK 2.3 - Cores Configurations" src="../_images/emsk-23_emcores.jpg" />
 </div>
 <div class="section" id="peripherals">
@@ -232,9 +230,8 @@ controller.</p>
 <p>The peripheral memory mapping depends on the AHB address width. The
 configuration <em>ARC_EM4_16CR</em> uses an address width of 24 bits. The other
 configurations use an address width of 32 bits. The peripheral connections and
-memory mappings for different versions of EMSK board are shown below:</p>
+memory mappings for different supported versions of EMSK board are shown below:</p>
 <img alt="EMSK 1.1 - Peripheral Connections and Memory Mapping" src="../_images/emsk-11_peripheral_connections.jpg" />
-<img alt="EMSK 2.2 - Peripheral Connections and Memory Mapping" src="../_images/emsk-22_peripheral_connections.jpg" />
 <img alt="EMSK 2.3 - Peripheral Connections and Memory Mapping" src="../_images/emsk-23_peripheral_connections.jpg" />
 </div>
 <div class="section" id="peripherals-interrupts">

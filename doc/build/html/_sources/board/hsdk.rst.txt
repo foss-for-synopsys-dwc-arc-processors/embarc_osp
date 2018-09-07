@@ -21,7 +21,7 @@ The ARC HS Development Kit features the following components:
 - ARC HS SoC:
   - Quad Core HS38x4 Processor
   - DDR3 memory controller
-  - GPU (Vivante)
+  - GPU
   - USB, Ethernet, SDIO
   - DesignWare APB Peripherals (consult HSDK documentation for complete details)
 - Memory / Storage:
@@ -47,9 +47,9 @@ The ARC HS Development Kit features the following components:
     :alt: ARC HSDK Block Diagram
 
 .. image:: /pic/hsdk_chip.jpg
-    :alt: ARC HS Development Chip Block Diagram
+    :alt: ARC HS System on Chip (SoC) Block Diagram
 
-The HS Development Chip provides the following main features:
+The ARC HS SoC provides the following main features:
 
 - Flexible, customizable IC architecture
 
