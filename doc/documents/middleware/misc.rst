@@ -1,6 +1,6 @@
 .. _misc_middlewares:
 
-Misc. Middlewares
+Misc. Middleware Packages
 #################
 
 

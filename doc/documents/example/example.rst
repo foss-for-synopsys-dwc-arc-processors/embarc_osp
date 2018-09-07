@@ -5,7 +5,9 @@ Examples
 
 Overview
 ########
-The embARC platform comes with a large range of examples using the various OS, middleware and peripherals supported in embARC. These examples provide a useful reference and starting point for embARC developers for their own applications. The .elf files of the following examples can be loaded through JTAG, or the .bin files through SD card by secondary bootloader.
+The embARC OSP platform comes with a large collection of examples using OS, middleware and peripherals supported in embARC OSP. These examples provide a useful
+ reference and starting point for embARC developers for their own applications. The .elf files of the following examples can be loaded through JTAG, or the .bin
+ files through SD card by secondary bootloader.
 
 .. toctree::
    :maxdepth: 1
@@ -47,7 +49,8 @@ The embARC platform comes with a large range of examples using the various OS, m
    example/freertos/sec/mbedtls/ssl/server2                 :ref:`example_sec_mbedtls_ssl_server2`
    =======================================================  =============================================
 
-The repository `embARC Applications <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications>`_ contains various applications based on `embARC OSP <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp>`_, developed by the embARC team and community.
+The repository `embARC Applications <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications>`_ contains various applications based
+on `embARC OSP <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp>`_, developed by the embARC team and community.
 
 * `AWS IoT Smarthome Application <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome>`_
 * `AWS IoT Smarthome Multi-node Application <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_applications/tree/master/aws_iot_smarthome_multinode>`_
@@ -57,7 +60,7 @@ The repository `embARC Applications <https://github.com/foss-for-synopsys-dwc-ar
 
 Application Note
 ################
-The following application notes provide step-by-step instructions on a broad range of topics to familiarize you with the use of embARC.
+The following application notes provide step-by-step instructions on a broad range of topics to familiarize you with the use of embARC OSP.
 
 * `Quick start guide <https://www.embarc.org/pdf/20150710_embARC_application_note_quick_start_guide.pdf>`_
 * `Adding a new NT-Shell command <https://www.embarc.org/pdf/20150710_embARC_application_note_ntshell_newcmd.pdf>`_
@@ -65,5 +68,5 @@ The following application notes provide step-by-step instructions on a broad ran
 * `Timer and ISR <https://www.embarc.org/pdf/20150805_embARC_application_note_timer_and_isr.pdf>`_
 * `Using a secondary bootloader on the EMSK <https://www.embarc.org/pdf/20150710_embARC_application_note_secondary_bootloader.pdf>`_
 * `Using a smart home IoT application with EMSK <https://www.embarc.org/pdf/embARC_appnote_how_to_use_smart_home_iot.pdf>`_
-  
-.. note:: Confirm that the version of the embARC and board is the correct one as noted in the application note documents
+
+.. note:: Confirm that the version of embARC OSP and board is the correct one as noted in the application note documents

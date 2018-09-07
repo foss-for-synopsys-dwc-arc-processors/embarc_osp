@@ -14,12 +14,12 @@ Usage Guide FAQ
 	* If **WF_EVENT_CONNECTION_FAILED** is printed in the terminal when embARC startup, wait at least two minutes for reconnection. The EMSK can reconnect to the WiFi hotspot if your WiFi hotspot setting is right.
 	* Using the make/gmake in the MetaWare and ARC GNU toolchain is highly recommended in the embARC OSP.
 	* Make sure the source code file is not in UTF-16 format. If the UTF-16 format is used, compiling may fail with the error message **cc1.exe: out of memory allocating 838860800 bytes**.
-	* When building and downloading a program with the Metaware toolchain, it is recommended to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause a compile failure when checking the license of the compiler. It depends on your network environment.
+	* When building and downloading a program with the MetaWare toolchain, it is recommended to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause a compile failure when checking the license of the compiler. It depends on your network environment.
 
 * **Here are some tips when you are using the ARC GNU toolchain.**
 
 	* Install EMSK Digilent JTAG drivers on Windows for the ARC GNU toolchain. See `How to Use OpenOCD on Windows <https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows>`_ for more information.
-	* Installing the Digilent JTAG drivers for the ARC GNU toolchain affects the usage of Metaware debugger. If you want to switch to using the MetaWare debugger, uninstall the Digilent JTAG drivers for the ARC GNU toolchain. Then install the drivers provided by Digilent.
+	* Installing the Digilent JTAG drivers for the ARC GNU toolchain affects the usage of MetaWare debugger. If you want to switch to using the MetaWare debugger, uninstall the Digilent JTAG drivers for the ARC GNU toolchain. Then install the drivers provided by Digilent.
 	* Different board has different driver name. There are two drivers for the onboard FTDI chip, one for JTAG and the other for USB. Choose and update the JTAG driver only.
 	* System reboot might be needed.
 
@@ -81,7 +81,7 @@ Usage Guide FAQ
 
 	* **OpenOCD** on Linux requires the configuration files in a UNIX file format with LF line terminators. Convert the configuration files to UNIX file format.
 
-* **How to set the JTAG frequecncy to match the target CPU frequency?**
+* **How to set the JTAG frequency to match the target CPU frequency?**
 
 	* Sometimes the CPU frequency and JTAG frequency don't match in the ARC core configurations, e.g., when you add a new ARC board. It is necessary to set the JTAG frequency to match the CPU frequency of the selected core configuration.
 	* For the MetaWare toolchain, pass a make option called **DIG_SPEED** (in Hz) to set the JTAG frequency, like ``DIG_SPEED=5000000``. For the EMSK 2.2, the **DIG_SPEED** is hard-coded in *board/emsk/configs/22/emsk_22.mk*.
