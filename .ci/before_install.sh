@@ -21,7 +21,7 @@ fi
 {
     pip install --upgrade pip || die
     [ "${TRAVIS}" == "true" ] && {
-        pip install git+https://github.com/sphinx-doc/sphinx || die
+        pip install Sphinx || die
         pip install breathe || die
         pip install recommonmark || die
         pip install sphinx_rtd_theme || die   
