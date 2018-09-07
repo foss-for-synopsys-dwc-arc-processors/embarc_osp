@@ -38,7 +38,6 @@ example = {
 "sec_mbedtls_ssl_server2":"freertos/sec/mbedtls/ssl/server2"
 
 '''
-
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
 
 
