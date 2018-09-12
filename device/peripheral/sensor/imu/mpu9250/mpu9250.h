@@ -32,11 +32,12 @@
 
 #include "dev_iic.h"
 
+#define MPU9250_USE_DMP
+
 
 #define MPU9250_AD0_PIN		0	/*!< I2C Serial Bus Address Selection Pin */
 #define MPU9250_IIC_ADDRESS	(0x68 + (MPU9250_AD0_PIN << 1))
 
-#define TEMP_I2C_SLAVE_ADDRESS	MPU9250_IIC_ADDRESS
 #define MAG_IIC_ADDRESS 	0x0C
 #ifdef __cplusplus
 extern "C" {
@@ -53,6 +54,9 @@ typedef struct {
 	int16_t mag_x;
 	int16_t mag_y;
 	int16_t mag_z;
+	float pitch;
+	float roll;
+	float yaw;
 } MPU9250_DATA, *MPU9250_DATA_PTR;
 
 
@@ -74,7 +78,10 @@ typedef struct {
 extern int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj);
 extern int32_t mpu9250_sensor_deinit(MPU9250_DEF_PTR obj);
 extern int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data);
-
+extern int32_t mpu_iic_read(uint32_t slaveaddr, uint8_t regaddr, uint8_t len, uint8_t *val);
+extern int32_t mpu_iic_write(uint32_t slaveaddr, uint8_t regaddr, uint8_t len, uint8_t *val);
+int mpu_get_ms(unsigned long *count);
+void mpu_delay_ms(uint32_t ms);
 #ifdef __cplusplus
 }
 #endif

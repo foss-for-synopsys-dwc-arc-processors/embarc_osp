@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -37,6 +37,10 @@
 #include "mpu9250.h"
 #include "board.h"
 
+#include "inv_mpu.h"
+#include "inv_mpu_dmp_motion_driver.h"
+#include <math.h>
+#define DEFAULT_MPU_HZ 200
 //****************************************
 #define	SMPLRT_DIV	0x19
 #define	CONFIG		0x1A
@@ -60,6 +64,70 @@
 #define	GYRO_XOUT_H	0x43
 #define MAG_XOUT_L	0x03
 
+#ifdef MPU9250_USE_DMP
+MPU9250_DEF_PTR mpu9250_ptr;
+static signed char gyro_orientation[9] = {1, 0, 0,
+										  0, 1, 0,
+										  0, 0, 1};
+static inline unsigned short inv_row_2_scale(const signed char *row)
+{
+	unsigned short b;
+
+	if (row[0] > 0)
+		b = 0;
+	else if (row[0] < 0)
+		b = 4;
+	else if (row[1] > 0)
+		b = 1;
+	else if (row[1] < 0)
+		b = 5;
+	else if (row[2] > 0)
+		b = 2;
+	else if (row[2] < 0)
+		b = 6;
+	else
+		b = 7;      // error
+	return b;
+}
+
+static inline unsigned short inv_orientation_matrix_to_scalar(const signed char *mtx)
+{
+	unsigned short scalar;
+	/*
+		XYZ  010_001_000 Identity Matrix
+		XZY  001_010_000
+		YXZ  010_000_001
+		YZX  000_010_001
+		ZXY  001_000_010
+		ZYX  000_001_010
+	 */
+	scalar = inv_row_2_scale(mtx);
+	scalar |= inv_row_2_scale(mtx + 3) << 3;
+	scalar |= inv_row_2_scale(mtx + 6) << 6;
+
+
+	return scalar;
+}
+static inline void run_self_test(void)
+{
+	int result;
+	long gyro[3], accel[3];
+	unsigned char i = 0;
+	result = mpu_run_6500_self_test(gyro, accel, 1);
+	EMBARC_PRINTF("mpu run self test, result = %d\r\n");
+	if (result == 0x7) {
+		for(i = 0; i<3; i++) {
+			gyro[i] = (long)(gyro[i] * 32.8f); //convert to +-1000dps
+			accel[i] *= 2048.f; //convert to +-16G
+			accel[i] = accel[i] >> 16;
+			gyro[i] = (long)(gyro[i] >> 16);
+		}
+
+		mpu_set_gyro_bias_reg(gyro);
+		mpu_set_accel_bias_6500_reg(accel);
+	}
+}
+#endif
 
 #define MPU9250_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
 
@@ -113,8 +181,7 @@ error_exit:
 int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 {
 	int32_t ercd = E_OK;
-	uint8_t config;
-	uint8_t data[0];
+
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
@@ -122,6 +189,9 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
+#ifndef MPU9250_USE_DMP
+		uint8_t config;
+		uint8_t data[0];
 		config = 0x80;
 		ercd = _mpu_reg_write(obj, obj->mpu_slvaddr, PWR_MGMT_1, &config, 1);//0x6B
 		board_delay_ms(100, OSP_DELAY_OS_COMPAT_DISABLE);
@@ -173,6 +243,44 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 
 		config = 0x01;
 		ercd = _mpu_reg_write(obj, obj->mag_slvaddr, MAG_CTRL, &config, 1);//mag single measurement mode
+#else
+		mpu9250_ptr = obj;
+		if(!mpu_init())
+		{
+			if(!mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL))
+				EMBARC_PRINTF("mpu_set_sensor complete ......\r\n");
+			mpu_delay_ms(50);
+			if(!mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL))
+				EMBARC_PRINTF("mpu_configure_fifo complete ......\r\n");
+			mpu_delay_ms(50);
+			if(!mpu_set_sample_rate(DEFAULT_MPU_HZ))
+				EMBARC_PRINTF("mpu_set_sample_rate complete ......\r\n");
+			mpu_delay_ms(50);
+			//if(!mpu_set_gyro_bias_reg(gyroZero))
+			//	EMBARC_PRINTF("mpu_set_gyro_bias_reg complete ......\r\n");
+			mpu_delay_ms(50);
+			if(!dmp_load_motion_driver_firmware())
+				EMBARC_PRINTF("dmp_load_motion_driver_firmware complete ......\r\n");
+			mpu_delay_ms(50);
+			if(!dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation)))
+				EMBARC_PRINTF("dmp_set_orientation complete ......\r\n");
+			mpu_delay_ms(50);
+			if(!dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_SEND_RAW_ACCEL |
+									DMP_FEATURE_SEND_RAW_GYRO))
+								//DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_GYRO_CAL))
+				EMBARC_PRINTF("dmp_enable_feature complete ......\r\n");
+			mpu_delay_ms(50);
+			if(!dmp_set_fifo_rate(DEFAULT_MPU_HZ))
+				EMBARC_PRINTF("dmp_set_fifo_rate complete ......\r\n");
+			mpu_delay_ms(50);
+			//run_self_test();
+			mpu_delay_ms(50);
+			if(!mpu_set_dmp_state(1))
+				EMBARC_PRINTF("mpu_set_dmp_state complete ......\r\n");
+			mpu_delay_ms(50);
+		}
+
+#endif
 	}
 
 error_exit:
@@ -193,11 +301,10 @@ error_exit:
 int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 {
 	int32_t ercd = E_OK;
+	MPU9250_CHECK_EXP_NORTN(mp_data!=NULL);
+#ifndef MPU9250_USE_DMP
 	uint8_t data[6];
 	uint8_t config;
-
-	MPU9250_CHECK_EXP_NORTN(mp_data!=NULL);
-
 	ercd = _mpu_reg_read(obj, obj->mpu_slvaddr, GYRO_XOUT_H, data, 6);
 	if (ercd != 6) {
 		ercd = E_OBJ;
@@ -234,7 +341,101 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 	}
 	config = 0x01;
 	ercd = _mpu_reg_write(obj, obj->mag_slvaddr, MAG_CTRL, &config, 1);//mag single measurement mode
-
+#else
+	short gyro[3], accel[3], sensors;
+	float q0=1.0f,q1=0.0f,q2=0.0f,q3=0.0f;
+	unsigned long sensor_timestamp;
+	unsigned char more;
+	long quat[4];
+	float q30 = (float)(1 << 30);
+	if(dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors, &more)==0)
+	{
+		mp_data->gyro_x = gyro[0];
+		mp_data->gyro_y = gyro[1];
+		mp_data->gyro_z = gyro[2];
+		mp_data->accel_x = accel[0];
+		mp_data->accel_y = accel[1];
+		mp_data->accel_z = accel[2];
+		if (sensors & INV_WXYZ_QUAT)
+		{
+			q0=quat[0] / q30;
+			q1=quat[1] / q30;
+			q2=quat[2] / q30;
+			q3=quat[3] / q30;
+			mp_data->pitch = (float)asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3f;
+			mp_data->roll = (float)atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3f;
+			mp_data->yaw = (float)atan2(2*(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * 57.3f;
+			return 0;
+		}
+	}
+#endif
 error_exit:
 	return ercd;
 }
+
+
+#ifdef MPU9250_USE_DMP
+int32_t mpu_iic_write(uint32_t slaveaddr, uint8_t regaddr, uint8_t len, uint8_t *val)
+{
+	int32_t ercd = E_PAR;
+	uint8_t data[1];
+	DEV_IIC_PTR iic_obj = iic_get_dev(mpu9250_ptr->i2c_id);
+
+	dbg_printf(DBG_LESS_INFO, "[%s]%d: obj 0x%x, regaddr 0x%x, val 0x%x\r\n", __FUNCTION__, __LINE__, obj, regaddr, *val);
+	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
+	MPU9250_CHECK_EXP_NORTN(iic_obj!=NULL);
+
+	data[0] = (uint8_t)(regaddr & 0xff);
+
+	iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(slaveaddr));
+
+	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_RESTART));
+	ercd = iic_obj->iic_write(data, 1);
+	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_STOP));
+	ercd = iic_obj->iic_write(val, len);
+	if(ercd == len)
+	{
+		ercd = E_OK;
+	}
+error_exit:
+	return ercd;
+}
+
+int32_t mpu_iic_read(uint32_t slaveaddr, uint8_t regaddr, uint8_t len, uint8_t *val)
+{
+	int32_t ercd = E_PAR;
+	uint8_t data[1];
+	DEV_IIC_PTR iic_obj = iic_get_dev(mpu9250_ptr->i2c_id);
+
+	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
+	MPU9250_CHECK_EXP_NORTN(iic_obj!=NULL);
+
+	data[0] = (uint8_t)(regaddr & 0xff);
+
+
+	iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(slaveaddr));
+
+
+	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_RESTART));
+	ercd = iic_obj->iic_write(data, 1);
+	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_STOP));
+	ercd = iic_obj->iic_read(val, len);
+	if(ercd == len)
+	{
+		ercd = E_OK;
+	}
+error_exit:
+	return ercd;
+}
+
+int mpu_get_ms(unsigned long *count)
+{
+	*count = (unsigned long)OSP_GET_CUR_MS();
+	return 0;
+}
+void mpu_delay_ms(uint32_t ms)
+{
+	board_delay_ms(ms, 0);
+}
+
+#endif

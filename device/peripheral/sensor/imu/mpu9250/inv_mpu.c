@@ -133,10 +133,10 @@ static inline int reg_int_cb(struct int_param_s *int_param)
 #define labs        abs
 #define fabs(x)     (((x)>0)?(x):-(x))
 #elif defined MOTION_DRIVER_TARGET_IOTDK
-#include<math.h>
+#include <math.h>
 #include "embARC.h"
 #include "embARC_debug.h"
-#include "mpu9250_dmp.h"
+#include "mpu9250.h"
 
 #define i2c_write   mpu_iic_write
 #define i2c_read    mpu_iic_read

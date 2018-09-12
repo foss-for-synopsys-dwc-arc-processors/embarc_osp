@@ -94,7 +94,7 @@
 #elif defined MOTION_DRIVER_TARGET_IOTDK
 #include "embARC.h"
 #include "embARC_debug.h"
-#include "mpu9250_dmp.h"
+#include "mpu9250.h"
 #define get_ms      mpu_get_ms
 #else
 #error  Gyro driver is missing the system layer implementations.
