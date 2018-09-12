@@ -27,19 +27,17 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
+#define DEBUG
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "dev_gpio.h"
-#include "dev_uart.h"
+#include "ez_sio.h"
 
 #include "rn4020.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-
-//#define RN4020_INTERRUPT_DRIVERN
 
 #ifdef RN4020_INTERRUPT_DRIVERN
 static RN4020_DEF_PTR rn4020_ptr;
@@ -77,14 +75,12 @@ static void _rn4020_set_state(RN4020_DEF_PTR rn4020, RN4020_STATE new_state)
 
 static void _rn4020_get_line(RN4020_DEF_PTR rn4020)
 {
-	DEV_UART_PTR uart;
-	uint8_t data;
-
-	uart = uart_get_dev(rn4020->uart);
+	char data = 0;
+	uint8_t rd_cnt;
 
 	do {
-		uart->uart_read(&data, 1);
-		if (data != 0) {
+		rd_cnt = ez_sio_read(rn4020->sio_uart, &data, 1);
+		if (rd_cnt != 0 && data != 0) {
 			rn4020->rx_buffer[rn4020->rx_cnt++] = data;
 		}
 	} while (data != '\n' && rn4020->rx_cnt < RN4020_RX_BUFFER_SIZE);
@@ -148,7 +144,7 @@ static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char *line)
 	char handle_str[5];
 	uint16_t handle;
 
-	DBG("rx: %s\n", line);
+	DBG("rx:%s\n", line);
 
 	/*  connection notification from client */
 	if (strcmp(line, "Connected") == 0) {
@@ -158,6 +154,7 @@ static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char *line)
 
 	if (strcmp(line, "Connection End") == 0) {
 		_rn4020_set_connected(rn4020, false);
+		rn4020->need_advertise = 1;
 		return;
 	}
 
@@ -182,6 +179,9 @@ static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char *line)
 		case RN4020_STATE_WAITING_FOR_CMD:
 			if (strcmp(line, "CMD") == 0) {
 				_rn4020_set_state(rn4020, RN4020_STATE_READY);
+				return;
+			}
+			if (strcmp(line, "Reboot") == 0) {
 				return;
 			}
 			break;
@@ -209,7 +209,7 @@ static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char *line)
 				_rn4020_set_state(rn4020, RN4020_STATE_READY);
 				return;
 			} else if (strlen(line) == 4 || strlen(line) == RN4020_PRIVATE_UUID_HEX_STRING_LENGTH) {
-				// service uuid, skip it
+				DBG("service uuid, skip it\r\n");
 				return;
 			}
 			break;
@@ -253,20 +253,18 @@ static int32_t _rn4020_server_write_char(RN4020_DEF_PTR rn4020,
 {
 	char line[RN4020_PRIVATE_UUID_HEX_STRING_LENGTH + 3];
 
-	DEV_UART_PTR uart = uart_get_dev(rn4020->uart);
-
 	rn4020_uuid_to_string(line, uuid, uuid_len);
 	_rn4020_set_state(rn4020, RN4020_STATE_WAITING_FOR_AOK);
 
-	uart->uart_write("SUW,", 4);
-	uart->uart_write(line, strlen(line));
-	uart->uart_write(",", 1);
+	ez_sio_write(rn4020->sio_uart, "SUW,", 4);
+	ez_sio_write(rn4020->sio_uart, line, strlen(line));
+	ez_sio_write(rn4020->sio_uart, ",", 1);
 
 	for (uint32_t i = 0; i < data_len; i++) {
 		sprintf(line, "%02X", data[i]);
-		uart->uart_write(line, 2);
+		ez_sio_write(rn4020->sio_uart, line, 2);
 	}
-	uart->uart_write("\n", 1);
+	ez_sio_write(rn4020->sio_uart, "\n", 1);
 
 	return _rn4020_wait_for_ready(rn4020);
 }
@@ -294,7 +292,6 @@ static void _rn4020_rx_cb(uint32_t data)
 
 int32_t rn4020_setup(RN4020_DEF_PTR rn4020)
 {
-	DEV_UART_PTR uart;
 	DEV_GPIO_PTR gpio_wake_sw;
 	DEV_GPIO_PTR gpio_wake_hw;
 	DEV_GPIO_PTR gpio_cmd;
@@ -332,9 +329,7 @@ int32_t rn4020_setup(RN4020_DEF_PTR rn4020)
 	gpio_wake_sw->gpio_write(0, 1 << rn4020->pin_wake_sw);
 	board_delay_ms(100, 0);
 
-	uart = uart_get_dev(rn4020->uart);
-	uart->uart_open(115200);
-
+	rn4020->sio_uart = ez_sio_open(rn4020->uart, 115200, 1024, 1024);
 #ifdef RN4020_INTERRUPT_DRIVERN
 	rn4020_ptr = rn4020;
 	uart->uart_control(UART_CMD_SET_RXCB, (void *)_rn4020_rx_cb);
@@ -534,10 +529,8 @@ EMBARC_WEAK void rn4020_on_write(RN4020_DEF_PTR rn4020, uint16_t handle, uint8_t
 
 void rn4020_send(RN4020_DEF_PTR rn4020, const char *line)
 {
-	DEV_UART_PTR uart = uart_get_dev(rn4020->uart);
-
-	uart->uart_write(line, strlen(line));
-	uart->uart_write("\n", 1);
+	ez_sio_write(rn4020->sio_uart, (char*)line, strlen(line));
+	ez_sio_write(rn4020->sio_uart, "\n", 1);
 	DBG("tx: %s\n", line);
 }
 
@@ -560,18 +553,17 @@ int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020,
 		 uint16_t handle, const uint8_t *data, uint32_t len)
 {
 	char line[20];
-	DEV_UART_PTR uart = uart_get_dev(rn4020->uart);
 
 	_rn4020_set_state(rn4020, RN4020_STATE_WAITING_FOR_AOK);
 
 	snprintf(line, 20, "SHW,%04X,", handle);
-	uart->uart_write(line, strlen(line));
+	ez_sio_write(rn4020->sio_uart, line, strlen(line));
 
 	for (uint32_t i = 0; i < len; i++) {
 		sprintf(line, "%02X", data[i]);
-		uart->uart_write(line, 2);
+		ez_sio_write(rn4020->sio_uart, line, 2);
 	}
-	uart->uart_write("\n", 1);
+	ez_sio_write(rn4020->sio_uart, "\n", 1);
 
 	return _rn4020_wait_for_ready(rn4020);
 }

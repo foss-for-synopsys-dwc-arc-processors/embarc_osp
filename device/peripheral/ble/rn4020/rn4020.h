@@ -30,6 +30,8 @@
 #ifndef _RN4020_H_
 #define _RN4020_H_
 
+#include "ez_sio.h"
+
 #ifndef RN4020_HANDLE_UUID_TABLE_SIZE
 #define RN4020_HANDLE_UUID_TABLE_SIZE 20
 #endif
@@ -134,8 +136,9 @@ typedef struct rn4020_def {
 	uint8_t pin_wake_hw;
 	uint8_t gpio_cmd;
 	uint8_t pin_cmd;
-
+	EZ_SIO *sio_uart;
 	volatile uint8_t connected;
+	volatile uint8_t need_advertise;
 	volatile RN4020_STATE state;
 
 	uint8_t rx_buffer[RN4020_RX_BUFFER_SIZE];
