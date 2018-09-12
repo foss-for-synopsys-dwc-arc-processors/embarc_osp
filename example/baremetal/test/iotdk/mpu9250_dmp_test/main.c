@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,56 +27,46 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef _MPU9250_H_
-#define _MPU9250_H_
-
-#include "dev_iic.h"
 
 
-#define MPU9250_AD0_PIN		0	/*!< I2C Serial Bus Address Selection Pin */
-#define MPU9250_IIC_ADDRESS	(0x68 + (MPU9250_AD0_PIN << 1))
+#include "embARC.h"
+#include "embARC_debug.h"
+#include "mpu9250_dmp.h"
+#include "stdio.h"
+static MPU9250_DEFINE(mpu9250_sensor, DFSS_IIC_0_ID, TEMP_I2C_SLAVE_ADDRESS);
 
-#define TEMP_I2C_SLAVE_ADDRESS	MPU9250_IIC_ADDRESS
-#define MAG_IIC_ADDRESS 	0x0C
-#ifdef __cplusplus
-extern "C" {
+int main(void)
+{
+	MPU9250_DATA mpu9250_data = { 0 };
+
+
+	mpu9250_sensor_init(mpu9250_sensor);
+	EMBARC_PRINTF("\r\n\r\n\r\n");
+	while (1) {
+		mpu9250_sensor_read(mpu9250_sensor, &mpu9250_data);
+#ifdef MPU9250_USE_DMP
+		char datap[10];
+		char datar[10];
+		char datay[10];
+		sprintf(datap, "%06.1f", mpu9250_data.pitch);
+		sprintf(datar, "%06.1f", mpu9250_data.roll);
+		sprintf(datay, "%06.1f", mpu9250_data.yaw);
+
+		EMBARC_PRINTF("dmp:  pitch=%s,  roll=%s,  yaw=%s \r\n", datap, datar, datay);
+		board_delay_ms(100, 1);
+		EMBARC_PRINTF("\x1b[2k\x1b\x45");
+#else
+		EMBARC_PRINTF("accel   x=%5d,   y=%5d,   z=%5d \r\n", mpu9250_data.accel_x, mpu9250_data.accel_y, mpu9250_data.accel_z);
+		EMBARC_PRINTF("gpro    x=%5d,   y=%5d,   z=%5d \r\n", mpu9250_data.gyro_x, mpu9250_data.gyro_y, mpu9250_data.gyro_z);
+		EMBARC_PRINTF("mag     x=%5d,   y=%5d,   z=%5d \r\n", mpu9250_data.mag_x, mpu9250_data.mag_y, mpu9250_data.mag_z);
+		board_delay_ms(100, 1);
+		EMBARC_PRINTF("\x1b[2k\x1b\x45");
+		EMBARC_PRINTF("\x1b[2k\x1b\x45");
+		EMBARC_PRINTF("\x1b[2k\x1b\x45");
 #endif
+	}
 
-
-typedef struct {
-	int16_t accel_x;
-	int16_t accel_y;
-	int16_t accel_z;
-	int16_t gyro_x;
-	int16_t gyro_y;
-	int16_t gyro_z;
-	int16_t mag_x;
-	int16_t mag_y;
-	int16_t mag_z;
-} MPU9250_DATA, *MPU9250_DATA_PTR;
-
-
-typedef struct {
-	uint32_t i2c_id;
-	uint32_t mpu_slvaddr;
-	uint32_t mag_slvaddr;
-
-} MPU9250_DEF, *MPU9250_DEF_PTR;
-
-#define MPU9250_DEFINE(NAME, I2C_ID, SLAVE_ADDRESS) \
-	MPU9250_DEF __ ## NAME = { \
-			.i2c_id = I2C_ID, \
-			.mpu_slvaddr = SLAVE_ADDRESS, \
-			.mag_slvaddr = MAG_IIC_ADDRESS \
-	}; \
-	MPU9250_DEF_PTR NAME = &__ ## NAME
-
-extern int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj);
-extern int32_t mpu9250_sensor_deinit(MPU9250_DEF_PTR obj);
-extern int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data);
-
-#ifdef __cplusplus
+	return E_SYS;
 }
-#endif
 
-#endif /* _MPU9250_H_ */
+
