@@ -1,9 +1,7 @@
 # Application name
 APPL ?= mpu9250_test
-
 BOARD = iotdk
-
-EXT_DEV_LIST += sensor/imu/mpu9250
+EXT_DEV_LIST += sensor/imu/mpu9250_dmp
 #
 # root dir of embARC
 #
