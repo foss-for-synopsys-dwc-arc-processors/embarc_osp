@@ -33,7 +33,32 @@
 
 #include "rn4020.h"
 
-RN4020_DEFINE(rn4020_ble, DFSS_UART_3_ID, DFSS_GPIO_4B0_ID, 2, DFSS_GPIO_4B0_ID, 1, DFSS_GPIO_4B0_ID, 3);
+#if defined(BOARD_IOTDK)
+#define RN4020_UART_ID DFSS_UART_3_ID
+#define RN4020_WAKE_SW_GPIO DFSS_GPIO_4B0_ID
+#define RN4020_WAKE_SW_PIN 2
+#define RN4020_WAKE_HW_GPIO DFSS_GPIO_4B0_ID
+#define RN4020_WAKE_HW_PIN 1
+#define RN4020_CMD_GPIO DFSS_GPIO_4B0_ID
+#define RN4020_CMD_PIN 3
+
+#else
+/*
+ * pls configure the correct uart and gpio information for your board
+ * and applicaiton
+ */
+#define RN4020_UART_ID 0
+#define RN4020_WAKE_SW_GPIO 0
+#define RN4020_WAKE_SW_PIN 1
+#define RN4020_WAKE_HW_GPIO 0
+#define RN4020_WAKE_HW_PIN 2
+#define RN4020_CMD_GPIO 0
+#define RN4020_CMD_PIN 3
+
+#endif
+
+RN4020_DEFINE(rn4020_ble, RN4020_UART_ID, RN4020_WAKE_SW_GPIO, RN4020_WAKE_SW_PIN
+	, RN4020_WAKE_HW_GPIO, RN4020_WAKE_HW_PIN, RN4020_CMD_GPIO, RN4020_CMD_PIN);
 
 uint8_t test_private_services_uuid[RN4020_PRIVATE_UUID_LENGTH_BYTES] =
 				{0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
