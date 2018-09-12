@@ -31,22 +31,12 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
+EFLASH_DEFINE(eflash_test, EFLASH_CRTL_BASE);
 
 uint8_t g_test_wr_buf[SMIC_EFLASH_PAGE_SIZE];
 uint8_t g_test_rd_buf[SMIC_EFLASH_PAGE_SIZE];
-int eflash_run(void);
-EFLASH_DEFINE(eflash_test, EFLASH_CRTL_BASE);
+
 int main(void)
-{
-	eflash_run();
-	while (1) {
-
-	}
-
-	return E_SYS;
-}
-
-int eflash_run(void)
 {
 	uint32_t page, ofst, i, size;
 	SMIC_EFLASH_INFO eflash_info;
@@ -120,6 +110,6 @@ int eflash_run(void)
 
 	EMBARC_PRINTF("%s\n", __func__);
 
-	return 0;
+	return E_OK;
 }
 

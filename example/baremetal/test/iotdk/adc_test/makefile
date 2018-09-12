@@ -1,6 +1,8 @@
 # Application name
 APPL ?= adc_test
 
+override BOARD = iotdk
+
 #
 # root dir of embARC
 #

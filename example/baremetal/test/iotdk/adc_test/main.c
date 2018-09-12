@@ -31,11 +31,23 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
-void smic_adc_int_handler(void *ptr);
-void smic_adc_ch4_callback(void *ptr);
-
+static void smic_adc_int_handler(void *ptr);
+static void smic_adc_ch4_callback(void *ptr);
 
 ADC_DEFINE(adc_test, ADC_INT_NUM, ADC_CRTL_BASE, smic_adc_int_handler);
+
+
+static void smic_adc_int_handler(void *ptr)
+{
+	smic_adc_int_isr(adc_test, ptr);
+}
+
+static void smic_adc_ch4_callback(void *ptr)
+{
+	EMBARC_PRINTF("\x1b[2k\x1b\x45");//\x1b[18;1H
+	EMBARC_PRINTF("this is adc ch4 callback, ad value = %d\r\n", (uint32_t)ptr);
+}
+
 
 int main(void)
 {
@@ -73,15 +85,4 @@ int main(void)
 	}
 
 	return E_SYS;
-}
-
-void smic_adc_int_handler(void *ptr)
-{
-	smic_adc_int_isr(adc_test, ptr);
-}
-
-void smic_adc_ch4_callback(void *ptr)
-{
-	EMBARC_PRINTF("\x1b[2k\x1b\x45");//\x1b[18;1H
-	EMBARC_PRINTF("this is adc ch4 callback, ad value = %d\r\n", (uint32_t)ptr);
 }

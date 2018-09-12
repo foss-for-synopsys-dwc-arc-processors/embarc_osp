@@ -1,6 +1,8 @@
 # Application name
 APPL ?= eflash_test
 OLEVEL ?= O0
+
+override BOARD = iotdk
 #
 # root dir of embARC
 #

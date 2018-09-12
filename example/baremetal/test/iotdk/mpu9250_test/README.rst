@@ -1,12 +1,12 @@
-.. _example_mpu9250_test:
+.. _example_mpu9250_dmp_test:
 
-MPU9250_Test
+MPU9250_DMP_Test
 ######
 
 Overview
 ********
 
- This example is designed to test MPU9250 sensor in iotdk board.
+ This example is designed to test MPU9250 sensor in iotdk board with MPU9250 internal DMP module.
 
 Detailed Description
 ====================
@@ -17,10 +17,10 @@ Detailed Description
     NO
 
  * Design Concept
-    This example is designed to test MPU9250 sensor in iotdk board.
+    This example is designed to test MPU9250 sensor in iotdk board with MPU9250 internal DMP module.
 
  * Usage Manual
-    Outputs accelerometer, gyroscope, magnetometer raw data get from MPU9250 to the console.
+    Outputs pitch, roll, yaw get from MPU9250 DMP to the console.
 
  * Extra Comments
     NO
@@ -33,7 +33,7 @@ to run this example are as follows:
 
 .. code-block:: console
 
-    $ cd <embarc_root>/example/test/mpu9250_test
+    $ cd <embarc_root>/example/test/mpu9250_dmp_test
     $ make BOARD=iotdk TOOLCHAIN=gnu run
 
 .. note:: Make sure you have selected the correct configuration of iotdk
@@ -57,11 +57,17 @@ Sample Output
         \___|_| |_| |_|_.__/_/   \_\_| \_\\____|
     ------------------------------------------------------------
 
-    embARC Build Time: Sep 12 2018, 15:05:22
+    embARC Build Time: Sep 12 2018, 14:26:39
     Compiler Version: Metaware, 4.2.1 Compatible Clang 4.0.1 (branches/release_40)
+    mpu_set_sensor complete ......
+    mpu_configure_fifo complete ......
+    mpu_set_sample_rate complete ......
+    dmp_load_motion_driver_firmware complete ......
+    dmp_set_orientation complete ......
+    dmp_enable_feature complete ......
+    dmp_set_fifo_rate complete ......
+    mpu_set_dmp_state complete ......
 
 
 
-    accel   x= -200,   y=  248,   z=16040
-    gpro    x=   -9,   y=   -5,   z=  -13
-    mag     x=   37,   y=   12,   z=  -26
+    dmp:  pitch=0000.1,  roll=0000.3,  yaw=-145.2
