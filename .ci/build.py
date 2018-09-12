@@ -2,6 +2,7 @@
 import json
 import os
 import sys
+import requests
 from prettytable import PrettyTable
 from colorama import Fore, Back, Style
 from configparser import ConfigParser
@@ -375,7 +376,7 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 
 
 def show_results(results, expected=None):
-    columns = ['TOOLCHAIN', 'APP', "TOOLCHAIN_VER", 'CONF', 'PASS']
+    columns = ["TOOLCHAIN_VER", 'TOOLCHAIN', 'APP', 'CONF', 'PASS']
     failed_pt = PrettyTable(columns)
     failed_results = []
     success_results = []
@@ -413,6 +414,7 @@ def show_results(results, expected=None):
                 success_pt.add_row(result)
         print Fore.GREEN + "Successfull results"
         print success_pt
+        comment_on_pull_request(success_pt)
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -427,6 +429,7 @@ def show_results(results, expected=None):
 
         print Fore.RED + "Failed result:"
         print failed_pt
+        comment_on_pull_request(failed_pt)
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -529,12 +532,24 @@ def build_makefiles_project(config):
             diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
 
     print "There are {} projects, and they are compiled for {} times".format(app_count, count)
-    results_list = build_result_combine_tail(apps_results)
+    results_list = copy.deepcopy(build_result_combine_tail(apps_results))
     show_results(results_list)
     expected_differents_list = build_result_combine_tail(diff_expected_differents)
     show_results(expected_differents_list, expected=True)
 
     return applications_failed, diff_expected_differents
+
+
+def comment_on_pull_request(comment):
+    pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
+    slug =  os.environ.get("TRAVIS_REPO_SLUG")
+    token = os.environ.get("GH_TOKEN")
+    if all([pr_number, slug, token, comment]):
+        url = 'https://api.github.com/repos/{slug}/issues/{number}/comments'.format(
+            slug=slug, number=pr_number)
+        response = requests.post(url, data=json.dumps({'body': comment}),
+            headers={'Authorization': 'token ' + token})
+        return response.json()
 
 
 def get_options_parser():
@@ -590,4 +605,6 @@ if __name__ == '__main__':
     else:
         print "these applications failed with some configuration: "
         print expected_differents.keys()
+        comment = "applications failed with some configuration: \n" + expected_differents.keys()
+        comment_on_pull_request(comment )
         sys.exit(1)

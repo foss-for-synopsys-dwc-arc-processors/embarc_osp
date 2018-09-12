@@ -64,5 +64,6 @@ if [ $? -eq 0 ] ; then
 else
     echo 'No update in gh-pages branch, no need to push changes!'
 fi
-
+COMMENT=$(make linkcheck)
+bash -c "$COMMENTS"
 exit 0
