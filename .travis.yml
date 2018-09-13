@@ -18,7 +18,7 @@ env:
       
       COMMENT=none
       COMMENTS=$'curl -so/dev/null --user "$EMBARC_BOT" --request POST
-      https://api.github.com/repos/$TRAVIS_REPO_SLUG/issues/2/comments
+      https://api.github.com/repos/$TRAVIS_REPO_SLUG/issues/$TRAVIS_PULL_REQUEST/comments
       --data @- << DATA\n{
       "body": "$COMMENT"
       }\nDATA'
