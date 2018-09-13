@@ -11,7 +11,7 @@ low power IoT applications. It is designed for fast and easy integration
 within a larger system context, including ARC EM9D, an extensive collection of
 I/O functions and fast math (trigonometric) accelerator.
 
-See also this URT for details about the board: `The ARC IoT Development Kit
+See also this URL for details about the board: `The ARC IoT Development Kit
 (IoTDK) <https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit>`_
 
 .. image:: /pic/iotdk_board.jpg
@@ -99,13 +99,13 @@ Configuration switches
 
 1. FWU switch (This switch is used for Firmware Updates)
     Ensure that this switch is set to “off” as depicted on the left (default position).
-    The “off” setting ensures that the EM9D Core starts executing the Uboot bootloader stored in the embedded
-    FLASH. Setting this switch in the “on” position is only required if the Uboot bootloader residing in the
+    The “off” setting ensures that the EM9D Core starts executing the U-Boot bootloader stored in the embedded
+    FLASH. Setting this switch in the “on” position is only required if the U-Boot bootloader residing in the
     embedded FLASH needs to be updated.
 
 2. Clk32_S switch (This switch is used to select the 32.768 KHz clock source)
     Ensure that this switch is set to “off” as depicted on the left (default position)
-    The “off” setting selects the onboard 32.768 KHz Oscillator. The “on” setting selects the 32.768 KHz
+    The “off” setting selects the on-board 32.768 KHz Oscillator. The “on” setting selects the 32.768 KHz
     Crystal (and corresponding Xtal I/O Pads).
 
 3. BSM switch (This switch controls manual or automatic booting of the ARC IoTDK)
@@ -117,7 +117,7 @@ Configuration switches
     Ensure that this switch is set to “off” as depicted on the left (default position)
     The “off” position selects EXEcution mode. The “on” position select HALT mode.
     In case the EM9D continues in EXEcution mode, depending on the FWU switch setting, the Core
-    either continues execution of the Uboot bootloader or starts executing the Firmware Update procedure.
+    either continues execution of the U-Boot bootloader or starts executing the Firmware Update procedure.
 
 Extension Interfaces
 --------------------
