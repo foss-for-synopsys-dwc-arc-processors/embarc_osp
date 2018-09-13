@@ -374,6 +374,17 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
             result = False
     return result
 
+def send_pull_request_comment(results):
+    line = "\n" + "".join([" "]*100)+ "\n"
+    comment = None
+    if len(results)>0:
+        comment = ""
+        for result in results:
+            for k in result:
+                comment += "     "+ k + "    |"
+            comment += line
+        comment_on_pull_request(comment)
+
 
 def show_results(results, expected=None):
     columns = ["TOOLCHAIN_VER", 'TOOLCHAIN', 'APP', 'CONF', 'PASS']
@@ -383,6 +394,7 @@ def show_results(results, expected=None):
     expected_results = None
     success_pt = PrettyTable(columns)
     expected_pt = PrettyTable(columns)
+    
     for result in results:
         status = result.pop("status")
         if status != 0:
@@ -414,7 +426,8 @@ def show_results(results, expected=None):
                 success_pt.add_row(result)
         print Fore.GREEN + "Successfull results"
         print success_pt
-        comment_on_pull_request(success_pt)
+        
+        
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -429,7 +442,7 @@ def show_results(results, expected=None):
 
         print Fore.RED + "Failed result:"
         print failed_pt
-        comment_on_pull_request(failed_pt)
+        send_pull_request_comment(failed_results)
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -605,6 +618,6 @@ if __name__ == '__main__':
     else:
         print "these applications failed with some configuration: "
         print expected_differents.keys()
-        comment = "applications failed with some configuration: \n" + expected_differents.keys()
-        comment_on_pull_request(comment )
+        comment = "applications failed with some configuration: \n" + "\n".join(expected_differents.keys())
+        comment_on_pull_request(comment)
         sys.exit(1)
