@@ -26,6 +26,7 @@ make html &> build_html.log || { tail -n 100 build_html.log ; die "Build sphinx 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
     echo "Don't push built docs to gh-pages for pull request "
     COMMENT=$(make linkcheck 2>&1)
+    echo COMMENT
     bash -c "$COMMENTS"
     exit 0
 fi
