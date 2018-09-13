@@ -38,7 +38,6 @@ static void sio_tx_callback(void *ptr)
 	DEV_UART *uart_obj;
 	DEV_UART_INFO *uart_info;
 	EZ_SIO *sio;
-	uint32_t cpu_status;
 	uint32_t wr_avail, wr_cnt, poped_cnt;
 	uint8_t rbbuf[BUFSZ_LOCAL];
 
@@ -56,15 +55,13 @@ static void sio_tx_callback(void *ptr)
 	uart_obj->uart_control(UART_CMD_GET_TXAVAIL, (void *)(&wr_avail));
 
 	while (wr_avail > 0) {
-		wr_cnt = (wr_avail<BUFSZ_LOCAL) ? wr_avail : BUFSZ_LOCAL;
-		cpu_status = cpu_lock_save();
+		wr_cnt = (wr_avail < BUFSZ_LOCAL) ? wr_avail : BUFSZ_LOCAL;
 		poped_cnt = rb_pop(snd_rb, (rb_buftype *)rbbuf, wr_cnt);
 		if (poped_cnt > 0) {
 			uart_obj->uart_write((void *)rbbuf, poped_cnt);
 		} else { /* no more items in ringbuffer, disable tx interrupt */
 			uart_obj->uart_control(UART_CMD_SET_TXINT, (void *)(DEV_DISABLED));
 		}
-		cpu_unlock_restore(cpu_status);
 		if (poped_cnt != wr_cnt) {
 			break;
 		}
@@ -77,7 +74,6 @@ static void sio_rx_callback(void *ptr)
 	DEV_UART *uart_obj;
 	DEV_UART_INFO *uart_info;
 	EZ_SIO *sio;
-	uint32_t cpu_status;
 	uint32_t rd_avail, rd_cnt, pushed_cnt;
 	uint8_t rbbuf[BUFSZ_LOCAL];
 
@@ -94,15 +90,13 @@ static void sio_rx_callback(void *ptr)
 	rcv_rb = &(sio->rcv_rb);
 	uart_obj->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rd_avail));
 	while (rd_avail > 0) {
-		rd_cnt = (rd_avail<BUFSZ_LOCAL) ? rd_avail : BUFSZ_LOCAL;
-		cpu_status = cpu_lock_save();
+		rd_cnt = (rd_avail < BUFSZ_LOCAL) ? rd_avail : BUFSZ_LOCAL;
 		if (rb_isfull(rcv_rb) == 0) {
 			uart_obj->uart_read((void *)rbbuf, rd_cnt);
 			pushed_cnt = rb_push(rcv_rb, (rb_buftype *)rbbuf, rd_cnt);
 		} else {
 			pushed_cnt = 0;
 		}
-		cpu_unlock_restore(cpu_status);
 		if (pushed_cnt != rd_cnt) {
 			break;
 		}

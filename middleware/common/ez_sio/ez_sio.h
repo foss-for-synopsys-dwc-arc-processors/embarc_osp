@@ -23,7 +23,7 @@
  *
 --------------------------------------------- */
 #ifndef _EZ_SIO_H_
-#define BOARD_EMSK_DRV_EASY_SIO
+#define _EZ_SIO_H_
 
 #include "stdint.h"
 #include "ringbuffer.h"

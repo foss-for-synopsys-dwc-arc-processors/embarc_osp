@@ -71,6 +71,10 @@
 #include "hsdk/hsdk.h"
 #endif /* BOARD_HSDK */
 
+#ifdef BOARD_IOTDK
+#include "iotdk/iotdk.h"
+#endif /* BOARD_IOTDK */
+
 #endif /* _EMBARC_BOARD_H_ */
 
 /** @} end of group BOARD_COMMON */
