@@ -374,16 +374,21 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
             result = False
     return result
 
-def send_pull_request_comment(results):
-    line = "\n" + "".join([" "]*100)+ "\n"
-    comment = None
+def send_pull_request_comment(columns, results):
+    
+    
     if len(results)>0:
+        head = "|".join(columns) + "\n"
+        table_format =  "|".join(["---"]*len(columns)) + "\n"
+        table_head =head +table_format
+        comments = ""
         comment = ""
         for result in results:
             for k in result:
-                comment += "     "+ k + "    |"
-            comment += line
-        comment_on_pull_request(comment)
+                comment += k +" |"
+            comment = comment.rstrip("|") + "\n"
+            comments += comment
+        comment_on_pull_request(table_head + comments)
 
 
 def show_results(results, expected=None):
@@ -442,7 +447,7 @@ def show_results(results, expected=None):
 
         print Fore.RED + "Failed result:"
         print failed_pt
-        send_pull_request_comment(failed_results)
+        send_pull_request_comment(columns,failed_results)
         print Style.RESET_ALL
         sys.stdout.flush()
 
