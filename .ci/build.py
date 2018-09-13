@@ -385,7 +385,7 @@ def send_pull_request_comment(columns, results):
         comment = ""
         for result in results:
             for k in result:
-                comment += k +" |"
+                comment += k.replace(Fore.RED, "") +" |"
             comment = comment.rstrip("|") + "\n"
             comments += comment
         comment_on_pull_request(table_head + comments)
