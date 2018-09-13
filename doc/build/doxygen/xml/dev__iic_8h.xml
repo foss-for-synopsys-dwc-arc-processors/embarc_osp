@@ -5,170 +5,204 @@
     <includes refid="dev__common_8h" local="yes">dev_common.h</includes>
     <includedby refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h" local="yes">dw_iic_obj.h</includedby>
     <includedby refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h" local="yes">dw_iic_obj.h</includedby>
+    <includedby refid="dfss__iic__obj_8h" local="yes">dfss_iic_obj.h</includedby>
     <includedby refid="dw__iic_8h" local="yes">dw_iic.h</includedby>
+    <includedby refid="ss__i2c__master_8h" local="yes">ss_i2c_master.h</includedby>
     <incdepgraph>
-      <node id="1147">
+      <node id="1512">
         <label>stdint.h</label>
       </node>
-      <node id="1146">
+      <node id="1511">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="1147" relation="include">
+        <childnode refid="1512" relation="include">
         </childnode>
       </node>
-      <node id="1145">
+      <node id="1510">
         <label>dev_iic.h</label>
         <link refid="dev_iic.h"/>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1511" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1152">
+      <node id="1517">
         <label>emsk_gpio.c</label>
         <link refid="emsk__gpio_8c"/>
       </node>
-      <node id="1154">
+      <node id="1519">
         <label>dw_spi_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
-      <node id="1170">
+      <node id="1538">
         <label>dw_iic.c</label>
         <link refid="dw__iic_8c"/>
       </node>
-      <node id="1169">
+      <node id="1537">
         <label>dw_iic.h</label>
         <link refid="dw__iic_8h"/>
-        <childnode refid="1150" relation="include">
+        <childnode refid="1515" relation="include">
         </childnode>
-        <childnode refid="1162" relation="include">
+        <childnode refid="1527" relation="include">
         </childnode>
-        <childnode refid="1170" relation="include">
+        <childnode refid="1538" relation="include">
         </childnode>
       </node>
-      <node id="1150">
+      <node id="1535">
+        <label>dfss_iic_obj.c</label>
+        <link refid="dfss__iic__obj_8c_source"/>
+      </node>
+      <node id="1534">
+        <label>dfss_iic_obj.h</label>
+        <link refid="dfss__iic__obj_8h_source"/>
+        <childnode refid="1535" relation="include">
+        </childnode>
+        <childnode refid="1536" relation="include">
+        </childnode>
+      </node>
+      <node id="1515">
         <label>dw_iic_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
-      <node id="1149">
+      <node id="1514">
         <label>dw_iic_obj.h</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h"/>
-        <childnode refid="1150" relation="include">
+        <childnode refid="1515" relation="include">
         </childnode>
-        <childnode refid="1151" relation="include">
+        <childnode refid="1516" relation="include">
         </childnode>
       </node>
-      <node id="1163">
+      <node id="1528">
         <label>dw_sdio_obj.c</label>
-        <link refid="dw__sdio__obj_8c_source"/>
+        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="1164">
+      <node id="1529">
         <label>dw_spi_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
-      <node id="1166">
+      <node id="1536">
+        <label>iotdk.h</label>
+        <link refid="iotdk_8h"/>
+      </node>
+      <node id="1531">
         <label>mux.c</label>
         <link refid="hsdk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="1153">
+      <node id="1518">
         <label>dw_gpio_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="1162">
+      <node id="1540">
+        <label>ss_i2c_master.c</label>
+        <link refid="ss__i2c__master_8c_source"/>
+      </node>
+      <node id="1527">
         <label>dw_iic_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
-      <node id="1157">
-        <label>dw_iic_obj.h</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h"/>
-        <childnode refid="1158" relation="include">
+      <node id="1539">
+        <label>ss_i2c_master.h</label>
+        <link refid="ss__i2c__master_8h_source"/>
+        <childnode refid="1535" relation="include">
         </childnode>
-        <childnode refid="1162" relation="include">
-        </childnode>
-        <childnode refid="1160" relation="include">
+        <childnode refid="1540" relation="include">
         </childnode>
       </node>
-      <node id="1156">
+      <node id="1522">
+        <label>dw_iic_obj.h</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8h"/>
+        <childnode refid="1523" relation="include">
+        </childnode>
+        <childnode refid="1527" relation="include">
+        </childnode>
+        <childnode refid="1525" relation="include">
+        </childnode>
+      </node>
+      <node id="1521">
         <label>mux.c</label>
         <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="1151">
+      <node id="1516">
         <label>emsk.h</label>
         <link refid="emsk_8h"/>
-        <childnode refid="1152" relation="include">
+        <childnode refid="1517" relation="include">
         </childnode>
-        <childnode refid="1153" relation="include">
+        <childnode refid="1518" relation="include">
         </childnode>
-        <childnode refid="1150" relation="include">
+        <childnode refid="1515" relation="include">
         </childnode>
-        <childnode refid="1154" relation="include">
+        <childnode refid="1519" relation="include">
         </childnode>
-        <childnode refid="1155" relation="include">
+        <childnode refid="1520" relation="include">
         </childnode>
-        <childnode refid="1156" relation="include">
+        <childnode refid="1521" relation="include">
         </childnode>
       </node>
-      <node id="1155">
+      <node id="1520">
         <label>dw_uart_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
-      <node id="1161">
+      <node id="1526">
         <label>dw_gpio_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="1160">
+      <node id="1525">
         <label>hsdk.h</label>
         <link refid="hsdk_8h"/>
-        <childnode refid="1159" relation="include">
+        <childnode refid="1524" relation="include">
         </childnode>
-        <childnode refid="1161" relation="include">
+        <childnode refid="1526" relation="include">
         </childnode>
-        <childnode refid="1162" relation="include">
+        <childnode refid="1527" relation="include">
         </childnode>
-        <childnode refid="1163" relation="include">
+        <childnode refid="1528" relation="include">
         </childnode>
-        <childnode refid="1164" relation="include">
+        <childnode refid="1529" relation="include">
         </childnode>
-        <childnode refid="1165" relation="include">
+        <childnode refid="1530" relation="include">
         </childnode>
-        <childnode refid="1166" relation="include">
+        <childnode refid="1531" relation="include">
         </childnode>
-        <childnode refid="1167" relation="include">
+        <childnode refid="1532" relation="include">
         </childnode>
-        <childnode refid="1168" relation="include">
+        <childnode refid="1533" relation="include">
         </childnode>
       </node>
-      <node id="1167">
+      <node id="1532">
         <label>ntshell_io_uart.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="1168">
+      <node id="1533">
         <label>pmwifi.c</label>
         <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
-      <node id="1159">
+      <node id="1524">
         <label>hsdk_io.c</label>
         <link refid="hsdk__io_8c"/>
       </node>
-      <node id="1158">
+      <node id="1523">
         <label>hsdk_io.h</label>
         <link refid="hsdk__io_8h"/>
-        <childnode refid="1159" relation="include">
+        <childnode refid="1524" relation="include">
         </childnode>
-        <childnode refid="1160" relation="include">
+        <childnode refid="1525" relation="include">
         </childnode>
       </node>
-      <node id="1148">
+      <node id="1513">
         <label>dev_iic.h</label>
         <link refid="dev_iic.h"/>
-        <childnode refid="1149" relation="include">
+        <childnode refid="1514" relation="include">
         </childnode>
-        <childnode refid="1157" relation="include">
+        <childnode refid="1522" relation="include">
         </childnode>
-        <childnode refid="1169" relation="include">
+        <childnode refid="1534" relation="include">
+        </childnode>
+        <childnode refid="1537" relation="include">
+        </childnode>
+        <childnode refid="1539" relation="include">
         </childnode>
       </node>
-      <node id="1165">
+      <node id="1530">
         <label>dw_uart_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>

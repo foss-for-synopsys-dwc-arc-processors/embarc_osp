@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i" kind="group">
+    <compoundname>BOARD_IOTDK_DRV_PMODWIFI</compoundname>
+    <title>IOTDK PMOD WIFI Driver</title>
+    <innerfile refid="iotdk_2drivers_2pmwifi_2pmwifi_8c">iotdk/drivers/pmwifi/pmwifi.c</innerfile>
+    <innerfile refid="iotdk_2drivers_2pmwifi_2pmwifi_8h">iotdk/drivers/pmwifi/pmwifi.h</innerfile>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdev__wnic" kindref="compound">DEV_WNIC_PTR</ref></type>
+        <definition>DEV_WNIC_PTR wnic_get_dev</definition>
+        <argsstring>(int32_t wnic_id)</argsstring>
+        <name>wnic_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>wnic_id</declname>
+        </param>
+        <briefdescription>
+<para>get one wnic device structure </para>        </briefdescription>
+        <detaileddescription>
+<para>get an <ref refid="structdev__wnic" kindref="compound">wnic device</ref> by wnic device id. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="591" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="591" bodyend="611"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" compoundref="emsk_2drivers_2pmwifi_2pmwifi_8c" startline="1075" endline="1083">pmwifi_all_install</references>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pmwifi_all_install</definition>
+        <argsstring>(void)</argsstring>
+        <name>pmwifi_all_install</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>install all wnic objects </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><bold>MUST</bold> be called during system init </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="617" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="617" bodyend="622"/>
+        <referencedby refid="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga4ea6fc486b6808c2c88e8116dde30a05" compoundref="iotdk_2drivers_2pmwifi_2pmwifi_8c" startline="591" endline="611">wnic_get_dev</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gad72dbcf6d0153db1b8d8a58001feed83" prot="public" static="no">
+        <name>DEBUG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="69" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga4bdf8da26ddf1b5d1a38298c7d5ae5b8" prot="public" static="no">
+        <name>PMWIFI_CHECK_EXP</name>
+        <param><defname>EXPR</defname></param>
+        <param><defname>ERROR_CODE</defname></param>
+        <initializer><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="72" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga8139f7f574a9b9bad94ea675a4372380" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_SPI_FREQ</name>
+        <initializer>BOARD_SPI_FREQ</initializer>
+        <briefdescription>
+<para>PMOD WIFI SPI FREQ &amp; CLK MODE SETTINGS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="76" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga07b12e5e97685768641beb279853cc76" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_SPI_ID</name>
+        <initializer>DFSS_SPI_1_ID</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="78" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gae453fb2541199fe6299fb6023faebe39" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_SPI_LINE</name>
+        <initializer>BOARD_WIFI_SPI_LINE</initializer>
+        <briefdescription>
+<para>IOTDK uses J7, SPI1. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="80" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga40441d47b25d44958c6f33f536451dd9" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_GPIO_ID</name>
+        <initializer>(DFSS_GPIO_8B0_ID)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="81" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gace57f8bb2f4b58548e76a9c78f74666c" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_INT_PIN</name>
+        <initializer>BOARD_WIFI_0_INT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="83" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gac566a9d17ffebc4fb7bf11213a8cb222" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_RST_PIN</name>
+        <initializer>BOARD_WIFI_0_RST</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="84" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gaa4d17a257d8f95bcee5f31bbacf6e8b6" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_WP_PIN</name>
+        <initializer>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___p_i_n_d_e_f_1ggab250cf93325c17613311c44766920a12a16df4617a020c44a7e883baf8cea7b01" kindref="member">DEV_GPIO_PIN_NC</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="85" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gaea9aee4645a8d1119c79a339a1156e3f" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_HIB_PIN</name>
+        <initializer>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___p_i_n_d_e_f_1ggab250cf93325c17613311c44766920a12a16df4617a020c44a7e883baf8cea7b01" kindref="member">DEV_GPIO_PIN_NC</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="86" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1gaaa3113963c654cb1e0b5eb7e26e018cc" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_PIN_GAP</name>
+        <initializer>(IOTDK_PMWIFI_0_INT_PIN-WF_GPIO_INT_PIN_OFS)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="88" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga87efa56624531fd0906512701e2b69e5" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_ID</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga6fc304e01d225d085eec9417a768de1d" prot="public" static="no">
+        <name>USE_IOTDK_PMWIFI_0</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga7e28996ca81ad527d89dbd029e7918e7" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_MAC_ADDR0</name>
+        <initializer>(0x00)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="51" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga2238cc3d28ccab04782c44b15586fcd4" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_MAC_ADDR1</name>
+        <initializer>(0x1e)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="52" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga9c2578290bfe1e389f2245cbdce96e6f" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_MAC_ADDR2</name>
+        <initializer>(0xc0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="53" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga8f16ec32f181f94fb63ca9f727fba3e7" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_MAC_ADDR3</name>
+        <initializer>(0x0e)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="54" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga1a6cfacf82c17b142e31931afc19d756" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_MAC_ADDR4</name>
+        <initializer>(0x71)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="55" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___p_m_o_d_w_i_f_i_1ga99401a8e9c470ea84dd3a8858178b3d3" prot="public" static="no">
+        <name>IOTDK_PMWIFI_0_MAC_ADDR5</name>
+        <initializer>(0xac)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" line="56" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>IOTDK Pmod Wifi Driver. </para>    </briefdescription>
+    <detaileddescription>
+<para>Realize the IOTDK board PMOD wifi driver based on the wnic device abstract, this driver is based on microchip mrf24g device. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

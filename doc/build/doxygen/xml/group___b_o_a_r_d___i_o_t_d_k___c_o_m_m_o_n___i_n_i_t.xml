@@ -1,0 +1,1306 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t" kind="group">
+    <compoundname>BOARD_IOTDK_COMMON_INIT</compoundname>
+    <title>IOTDK Common Init Module</title>
+    <innerfile refid="iotdk__init_8c">iotdk_init.c</innerfile>
+    <innerfile refid="iotdk__hardware_8h">iotdk_hardware.h</innerfile>
+    <innerfile refid="iotdk_8h">iotdk.h</innerfile>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gadffdd886642df371b25b868ace573fdd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void iotdk_mux_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>iotdk_mux_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" line="62" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Board init routine MUST be called in each application. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" line="73" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" bodystart="73" bodyend="80"/>
+        <references refid="group___b_o_a_r_d___a_x_s__103_1ga77ec960fb2992023cfa6b3e698b2aed8" compoundref="axs__hardware_8h" startline="55">CLK_CPU</references>
+        <references refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1ga5f3a2224475f726cab9c5cab29e561af" compoundref="iotdk__timer_8c" startline="128" endline="137">iotdk_timer_init</references>
+        <references refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" compoundref="arc__timer_8c" startline="201" endline="206">timer_init</references>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga2d400eb191882aeb5b35143ffe7ea9ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_timer_update</definition>
+        <argsstring>(uint32_t precision)</argsstring>
+        <name>board_timer_update</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>precision</declname>
+        </param>
+        <briefdescription>
+<para>Update timer counter and other MS period operation in cycling interrupt and must be called periodically. </para>        </briefdescription>
+        <detaileddescription>
+<para>When the OS timer interrupt is in conflict with the bare-metal timer interrupt, put this function into the OS timer interrupt <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">precision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interrupt-period precision in Hz </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="172" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="84" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gadf80b95e6ceb5c1014e3e1a6f243fe8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void board_delay_ms</definition>
+        <argsstring>(uint32_t ms, uint8_t os_compat)</argsstring>
+        <name>board_delay_ms</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>ms</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>os_compat</declname>
+        </param>
+        <briefdescription>
+<para>provide MS delay function </para>        </briefdescription>
+        <detaileddescription>
+<para>this function needs a 1-MS timer interrupt to work. For bare-metal, it is implemented in this file. For OS, you must call <ref refid="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___i_n_i_t_1ga2d400eb191882aeb5b35143ffe7ea9ef" kindref="member">board_timer_update</ref> in the OS 1-MS timer interrupt when the bare-metal timer interrupt is not ready <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MS to delay </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">os_compat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable or disable When this delay is enabled, use the OS delay function, if one is provided. See OSP_DELAY_OS_COMPAT_ENABLE and OSP_DELAY_OS_COMPAT_DISABLE </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="173" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="181" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac019f96ffa35670f7013ab1e3c91b230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t board_get_hwticks</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_get_hwticks</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>get current cpu hardware ticks </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>hardware</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ticks count in 64 bit format</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hardware</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ticks count in 64bit format </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="174" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="139" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac804f2adaefaef9ae3d123dbe4abb123" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t board_get_cur_us</definition>
+        <argsstring>(void)</argsstring>
+        <name>board_get_cur_us</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>get current passed us since timer init </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>count in 64 bit format</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>count in 64bit format </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="175" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="155" bodyend="165"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga89d66021ccbd9bb8698bce6166c7d755" prot="public" static="no">
+        <name>BOARD_REF_CLK</name>
+        <initializer>(16000000U)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="48" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga74607c79344beae1fb36e57309fa80c6" prot="public" static="no">
+        <name>BOARD_DFSS_CORE_CLK</name>
+        <initializer>(144000000U)		/* iotdk DFSS clock (including ARC EM) */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac28b2cb512e0f8ef779bc567e8a1489b" prot="public" static="no">
+        <name>BOARD_DFSS_IO_CLK</name>
+        <initializer>BOARD_REF_CLK		/* iotdk DFSS IO peripherals clock */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="50" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac83fcd41e666fe50b691c3dbf6d10786" prot="public" static="no">
+        <name>BOARD_DFSS_AHB_CLK</name>
+        <initializer>BOARD_DFSS_CORE_CLK	/* iotdk top-level AHB peripherals clock as DFSS */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="51" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab49d88ff09a910410194be5c3db3b1dc" prot="public" static="no">
+        <name>BOARD_DFSS_APB_CLK</name>
+        <initializer>BOARD_REF_CLK		/* iotdk top-level APB peripherals clock as DFSS */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="52" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaa78b33082505ea7f30f24478aeee36a0" prot="public" static="no">
+        <name>BOARD_APB_CLK</name>
+        <initializer>(BOARD_DFSS_APB_CLK)	/* iotdk top-level APB peripherals clock */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="53" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gadc53823b62f63c0cd767f874fe9cf175" prot="public" static="no">
+        <name>BOARD_SPI_CLK</name>
+        <initializer>(100000000U)		/* iotdk SPI clock*/</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="54" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga77ec960fb2992023cfa6b3e698b2aed8" prot="public" static="no">
+        <name>CLK_CPU</name>
+        <initializer>(BOARD_DFSS_CORE_CLK)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="59" column="10" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga48bc519e39011397519730125fddcb6e" prot="public" static="no">
+        <name>BASE_ADDR_BOOT_SPI</name>
+        <initializer>0x10000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="69" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gacd5a0724b3f2e2b1c860cbc2befd3606" prot="public" static="no">
+        <name>BASE_ADDR_FLASH</name>
+        <initializer>0x40000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="70" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga2aacc69bc0ef027c44947bb702b67832" prot="public" static="no">
+        <name>BASE_ADDR_I2S_TX</name>
+        <initializer>0xF0000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="73" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga4fc274e8a4d49fba4d2c90d3f03082e3" prot="public" static="no">
+        <name>BASE_ADDR_I2S_RX</name>
+        <initializer>0xF0001000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="74" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad20a226d6194879e4347779b2d692d96" prot="public" static="no">
+        <name>BASE_ADDR_I3C</name>
+        <initializer>0xF0002000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="75" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad879d06d69ce2b593ad4ced44c954d85" prot="public" static="no">
+        <name>BASE_ADDR_BOOT_SPI_CTRL</name>
+        <initializer>0xF0003000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="76" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga4dc6832731c3e5d191ea4b90a973575a" prot="public" static="no">
+        <name>BASE_ADDR_RTC</name>
+        <initializer>0xF0005000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="77" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga78e9db3c27c3dcef973ce172138de253" prot="public" static="no">
+        <name>BASE_ADDR_PWM</name>
+        <initializer>0xF0006000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="78" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga853fab7f51f0aec52068fb86e80259f5" prot="public" static="no">
+        <name>BASE_ADDR_ADC</name>
+        <initializer>0xF0007000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="79" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga6b71c51b3cde3c4f17228a7648857746" prot="public" static="no">
+        <name>BASE_ADDR_DMAC</name>
+        <initializer>0xF0008000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="80" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gadca27facb14c6a96067faef24d6c6455" prot="public" static="no">
+        <name>BASE_ADDR_FLASH_CTRL</name>
+        <initializer>0xF0009000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="81" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga82de8e19ce7c14d4d746b4e5b7d26376" prot="public" static="no">
+        <name>BASE_ADDR_SYSCONFIG</name>
+        <initializer>0xF000A000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="82" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaf65516329c452897e4e741c8ad8dad4b" prot="public" static="no">
+        <name>BASE_ADDR_SDIO</name>
+        <initializer>0xF000B000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="83" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad88b4a3c8f010b4cec31614e8ed3e426" prot="public" static="no">
+        <name>INTNO_SPIMST0_SPI_MST_ERR_INTR</name>
+        <initializer>70</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="89" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga61c595098616405abe387129df68334e" prot="public" static="no">
+        <name>INTNO_SPIMST0_SPI_MST_INTR_RX_AVAIL</name>
+        <initializer>71</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="90" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gae88568ee96f1f69e293190c1c4b2b2da" prot="public" static="no">
+        <name>INTNO_SPIMST0_SPI_MST_INTR_TX_REQ</name>
+        <initializer>72</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="91" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga905d868a560b5284ee4d2c42a404252b" prot="public" static="no">
+        <name>INTNO_SPIMST0_SPI_MST_INTR_IDLE</name>
+        <initializer>73</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="92" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3c179b5fddff5b2eb51ee933b5940d93" prot="public" static="no">
+        <name>INTNO_SPIMST1_SPI_MST_ERR_INTR</name>
+        <initializer>74</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="93" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga08a7804d37bfbf82ad384dbca5815b27" prot="public" static="no">
+        <name>INTNO_SPIMST1_SPI_MST_INTR_RX_AVAIL</name>
+        <initializer>75</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="94" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaabc8e541583039d828446c68d59b379c" prot="public" static="no">
+        <name>INTNO_SPIMST1_SPI_MST_INTR_TX_REQ</name>
+        <initializer>76</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="95" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac14c70442c0d07ebe67aec6b9959cec9" prot="public" static="no">
+        <name>INTNO_SPIMST1_SPI_MST_INTR_IDLE</name>
+        <initializer>77</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="96" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga0ed0b79d1c82563070b95525d6369a58" prot="public" static="no">
+        <name>INTNO_SPIMST2_SPI_MST_ERR_INTR</name>
+        <initializer>78</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="97" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaed83429a68eba96744b63ca856ef77c6" prot="public" static="no">
+        <name>INTNO_SPIMST2_SPI_MST_INTR_RX_AVAIL</name>
+        <initializer>79</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="98" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga531609e87a68dab173b271f8d06b9da3" prot="public" static="no">
+        <name>INTNO_SPIMST2_SPI_MST_INTR_TX_REQ</name>
+        <initializer>80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="99" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga2fb786d266f084dd58e8a891916b23b3" prot="public" static="no">
+        <name>INTNO_SPIMST2_SPI_MST_INTR_IDLE</name>
+        <initializer>81</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="100" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaa96f2b524e0376d2a3048299710b036b" prot="public" static="no">
+        <name>INTNO_UART0_UART_INTR</name>
+        <initializer>86</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="102" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3e85260a525b19e180163a9102c05ee8" prot="public" static="no">
+        <name>INTNO_UART1_UART_INTR</name>
+        <initializer>87</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="103" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga6f73dbb8ac604ef2e13789658d250752" prot="public" static="no">
+        <name>INTNO_UART2_UART_INTR</name>
+        <initializer>88</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="104" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga9e4677b7a725c947bab68f5fefa1e665" prot="public" static="no">
+        <name>INTNO_UART3_UART_INTR</name>
+        <initializer>89</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="105" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga2bf3641da3690ef89379705b74509dfc" prot="public" static="no">
+        <name>INTNO_I2S_TX_EMP_0_INTR</name>
+        <initializer>92</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="107" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad4a094b9bb026dc4fad01d4faf56fb1a" prot="public" static="no">
+        <name>INTNO_I2S_TX_OR_0_INTR</name>
+        <initializer>93</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="108" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga9879ea999ca96135eff35e118383216c" prot="public" static="no">
+        <name>INTNO_I2S_RX_DA_0_INTR</name>
+        <initializer>94</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="109" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga693ddbe0b00eb34feffcc4c422424f77" prot="public" static="no">
+        <name>INTNO_I2S_RX_OR_0_INTR</name>
+        <initializer>95</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="110" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaa1f43463da4b09f5037ef17b23c5dc17" prot="public" static="no">
+        <name>INTNO_SDIO</name>
+        <initializer>91</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" line="112" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/configs/10/iotdk_hardware.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga375f6343d75692da616b44c4958e599f" prot="public" static="no">
+        <name>BOARD_SYS_TIMER_ID</name>
+        <initializer><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1gacc9ff9df4a9674a1ce9ba08fc4a4679e" kindref="member">TIMER_0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="63" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga75c72f500916ce679ad4458d61fd3a3e" prot="public" static="no">
+        <name>BOARD_SYS_TIMER_INTNO</name>
+        <initializer><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8512078a0c7ba91d2f2058ca8e66b6" kindref="member">INTNO_TIMER0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="64" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga8c5105538fa26a5c3d6eff92454a8697" prot="public" static="no">
+        <name>BOARD_SYS_TIMER_HZ</name>
+        <initializer>(1000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="65" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga4deac94773cab055391479766cd72cc6" prot="public" static="no">
+        <name>BOARD_SYS_TIMER_MS_HZ</name>
+        <initializer>(1000)</initializer>
+        <briefdescription>
+<para>board timer count frequency (HZ) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="68" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga219862b79fcaa501cea1b068ded35f25" prot="public" static="no">
+        <name>BOARD_SYS_TIMER_MS_CONV</name>
+        <initializer>(<ref refid="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___i_n_i_t_1ga4deac94773cab055391479766cd72cc6" kindref="member">BOARD_SYS_TIMER_MS_HZ</ref>/BOARD_SYS_TIMER_HZ)</initializer>
+        <briefdescription>
+<para>board timer count frequency convention based on the global timer counter </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="70" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga6c7035ed8c0a3208ed60d7dd4426fc9e" prot="public" static="no">
+        <name>BOARD_OS_TIMER_ID</name>
+        <initializer><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1gacc9ff9df4a9674a1ce9ba08fc4a4679e" kindref="member">TIMER_0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="72" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaff8db4f0fddc24033143761ea4a461df" prot="public" static="no">
+        <name>BOARD_OS_TIMER_INTNO</name>
+        <initializer><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8512078a0c7ba91d2f2058ca8e66b6" kindref="member">INTNO_TIMER0</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="73" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5ce41facbc716678c95ac51a44e7a052" prot="public" static="no">
+        <name>BOARD_CPU_CLOCK</name>
+        <initializer><ref refid="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___i_n_i_t_1ga77ec960fb2992023cfa6b3e698b2aed8" kindref="member">CLK_CPU</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="75" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga56e6d6ec3d48ed1eb073e0ed5cec2258" prot="public" static="no">
+        <name>BOARD_DEV_CLOCK</name>
+        <initializer><ref refid="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___i_n_i_t_1ga834959d61bd62205d39308860373b374" kindref="member">CLK_BUS_APB</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="76" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga0925d758144e37de4158bb2faadea9e9" prot="public" static="no">
+        <name>OSP_DELAY_OS_COMPAT_ENABLE</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="78" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga0a78908e297806f4ae43488e59f3e682" prot="public" static="no">
+        <name>OSP_DELAY_OS_COMPAT_DISABLE</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="79" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gabd10baafda4f7905848d2a6741be5888" prot="public" static="no">
+        <name>OSP_GET_CUR_SYSHZ</name>
+        <param></param>
+        <initializer>(<ref refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1gaa279866d285ebf18acb4103eab142f69" kindref="member">gl_iotdk_sys_hz_cnt</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="81" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga1aeaa7e8387adcad735b59293caa0078" prot="public" static="no">
+        <name>OSP_GET_CUR_MS</name>
+        <param></param>
+        <initializer>(<ref refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1ga6662efc07dd0bbe57c1e679ebb751f6e" kindref="member">gl_iotdk_ms_cnt</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="82" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gabfd80da126409074c73a5a633f2909bf" prot="public" static="no">
+        <name>OSP_GET_CUR_US</name>
+        <param></param>
+        <initializer><ref refid="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___i_n_i_t_1gac804f2adaefaef9ae3d123dbe4abb123" kindref="member">board_get_cur_us</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="83" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad5344be95b93a72c0901d34027240b9c" prot="public" static="no">
+        <name>OSP_GET_CUR_HWTICKS</name>
+        <param></param>
+        <initializer><ref refid="group___b_o_a_r_d___n_s_i_m___c_o_m_m_o_n___i_n_i_t_1gac019f96ffa35670f7013ab1e3c91b230" kindref="member">board_get_hwticks</ref>()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="84" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab20582f7885e506d06e5e64363e68ddd" prot="public" static="no">
+        <name>BOARD_TEMP_SENSOR_IIC_ID</name>
+        <initializer>DFSS_IIC_1_ID</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="90" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5c9cd429a7523f442533de1a2a3e0a03" prot="public" static="no">
+        <name>BOARD_TEMP_IIC_SLVADDR</name>
+        <initializer>TEMP_I2C_SLAVE_ADDRESS</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="91" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad894fa48bdb6402ac026de449da74ffd" prot="public" static="no">
+        <name>BOARD_CONSOLE_UART_ID</name>
+        <initializer>DFSS_UART_0_ID</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="93" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab6a5428995eb87c161f554c44e6457ab" prot="public" static="no">
+        <name>BOARD_CONSOLE_UART_BAUD</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___u_a_r_t___b_a_u_d_1ga7ba5033e1e1547d07d7683d0542c1f4a" kindref="member">UART_BAUDRATE_115200</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="94" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga10e936569e85faad73173595811cacd1" prot="public" static="no">
+        <name>BOARD_ONBOARD_NTSHELL_ID</name>
+        <initializer>(IOTDK_NTSHELL_0_ID)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="96" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3a84fcb550e72d6f56488f9c639054fa" prot="public" static="no">
+        <name>BOARD_SPI_FREQ</name>
+        <initializer>(1000000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="100" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga8c22424939dd52a66039ed6e0dc2b394" prot="public" static="no">
+        <name>BOARD_SPI_CLKMODE</name>
+        <initializer>(<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e_1ggab7e00794f1fac3fdb4d4bf9fd0244c7ba61bb9ad4a905372e5df6fe772828858a" kindref="member">SPI_CLK_MODE_0</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="104" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga7fdbbfa16209827cb230b7e28a92dd37" prot="public" static="no">
+        <name>WF_IPADDR_1</name>
+        <initializer>(192)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="107" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3cb7f87be2010a35e47352bea797fbaf" prot="public" static="no">
+        <name>WF_IPADDR_2</name>
+        <initializer>(168)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="108" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3227fa006b1245f5d7bdc553b823eae9" prot="public" static="no">
+        <name>WF_IPADDR_3</name>
+        <initializer>(43)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="109" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gae4d8bd39ae83fd00725d1364e578cb26" prot="public" static="no">
+        <name>WF_IPADDR_4</name>
+        <initializer>(102)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="110" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad8b38f7aeeffaad7469db86650d5e5b8" prot="public" static="no">
+        <name>WF_NETMASK_1</name>
+        <initializer>(255)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="112" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac631f7d54c342a5971a2ce96b2a2fd5a" prot="public" static="no">
+        <name>WF_NETMASK_2</name>
+        <initializer>(255)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="113" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5ea450b203ccd1540cd13bb07ea8ab41" prot="public" static="no">
+        <name>WF_NETMASK_3</name>
+        <initializer>(255)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="114" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga97e54858c85428ec57acab5616152787" prot="public" static="no">
+        <name>WF_NETMASK_4</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="115" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gafff963095feb18f21e06aa534921c0eb" prot="public" static="no">
+        <name>WF_GATEWAY_1</name>
+        <initializer>(192)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="117" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga97071e2cee0ca3566d29c387b390e42e" prot="public" static="no">
+        <name>WF_GATEWAY_2</name>
+        <initializer>(168)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="118" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaa0824841678ded03d1f00a43aea928b3" prot="public" static="no">
+        <name>WF_GATEWAY_3</name>
+        <initializer>(43)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="119" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga32f5761c3bdc91e15062024633f3bfef" prot="public" static="no">
+        <name>WF_GATEWAY_4</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="120" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga94364251911ea47e212ad79233ebb5e0" prot="public" static="no">
+        <name>WF_HOTSPOT_IS_OPEN</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="122" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaf380b71a6f9a7188a40dfd92c925dc39" prot="public" static="no">
+        <name>WF_IPADDR_DHCP</name>
+        <initializer>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="124" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5a633e260ba8bc86461e7665662911a3" prot="public" static="no">
+        <name>WF_HOTSPOT_NAME</name>
+        <initializer>&quot;embARC&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="126" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga8ee6af55664839a23a804c21267cac97" prot="public" static="no">
+        <name>WF_HOTSPOT_PASSWD</name>
+        <initializer>&quot;qazwsxedc&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="127" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga840e5288d289411b1992df0634dacb6e" prot="public" static="no">
+        <name>WF_ENABLE_MANUAL_SET_MAC</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="129" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gabf7bf875fb08ed16a8d62a91a94a3958" prot="public" static="no">
+        <name>WF_MAC_ADDR0</name>
+        <initializer>(IOTDK_PMWIFI_0_MAC_ADDR0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="131" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga609811ce42a95bb4236a084758194ee3" prot="public" static="no">
+        <name>WF_MAC_ADDR1</name>
+        <initializer>(IOTDK_PMWIFI_0_MAC_ADDR1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="132" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab38020a5bf8a6dc4d0a7c43c9bd36a6e" prot="public" static="no">
+        <name>WF_MAC_ADDR2</name>
+        <initializer>(IOTDK_PMWIFI_0_MAC_ADDR2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="133" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga28285b357ef2a9df82488e8584fda806" prot="public" static="no">
+        <name>WF_MAC_ADDR3</name>
+        <initializer>(IOTDK_PMWIFI_0_MAC_ADDR3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="134" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gafd1e445be45818827b55ee83a2c880f0" prot="public" static="no">
+        <name>WF_MAC_ADDR4</name>
+        <initializer>(IOTDK_PMWIFI_0_MAC_ADDR4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="135" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga0e666e3d4456ba928cb3e5c7cc85f170" prot="public" static="no">
+        <name>WF_MAC_ADDR5</name>
+        <initializer>(IOTDK_PMWIFI_0_MAC_ADDR5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="136" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga1449d08043c61fe17c3d04fea549e056" prot="public" static="no">
+        <name>PMWIFI_MRF24G</name>
+        <initializer>0</initializer>
+        <briefdescription>
+<para>Possible Pmod WiFi choices. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="139" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaf9b86ab05a2bb97631e33ff9b1b5ad0d" prot="public" static="no">
+        <name>PMWIFI_RW009</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="140" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5f610d765d2b1871d8776a6a393d2e87" prot="public" static="no">
+        <name>BOARD_PMWIFI_0_ID</name>
+        <initializer>IOTDK_PMWIFI_0_ID</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="143" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab6ec1fb5c5bec8858e2fc533515624f3" prot="public" static="no">
+        <name>BOARD_WIFI_SPI_LINE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="144" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac0c6ad13f094d6af99041f708ccada8c" prot="public" static="no">
+        <name>BOARD_WIFI_0_INT</name>
+        <initializer>4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="145" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga39156f2da6dd5ba06fdcb01ab47232e4" prot="public" static="no">
+        <name>BOARD_WIFI_0_RST</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="146" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5b09cbfef731c53fde9ce2a99c978879" prot="public" static="no">
+        <name>TASK_STACK_SIZE_MAIN</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="148" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga410e1e3163d011941a32f1e6553e2bc3" prot="public" static="no">
+        <name>BOARD_LED_MASK</name>
+        <initializer>(0x0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="151" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga018041af3d60889cd644e597794f5eb8" prot="public" static="no">
+        <name>BOARD_LED_CNT</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="152" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaa505814603a7771eaa2ad9391d14c37e" prot="public" static="no">
+        <name>BOARD_BTN_MASK</name>
+        <initializer>(0x0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="153" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga57560179839c4f117c91714da34376f0" prot="public" static="no">
+        <name>BOARD_BTN_CNT</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="154" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaa6ae795724a84ab21fa3daee084ab0b8" prot="public" static="no">
+        <name>BOARD_SWT_MASK</name>
+        <initializer>(0x0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="155" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga5b8a96b97e9cbc4fdacd2404887028bf" prot="public" static="no">
+        <name>BOARD_SWT_CNT</name>
+        <initializer>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="156" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaef309de77d559239e59411b94038cde0" prot="public" static="no">
+        <name>button_read</name>
+        <param><defname>x</defname></param>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="158" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gaf683276a82151b4bbc88227e2cc65102" prot="public" static="no">
+        <name>led_write</name>
+        <param><defname>x</defname></param>
+        <param><defname>y</defname></param>
+        <initializer>EMBARC_PRINTF(&quot;led out: %x, %x\r\n&quot;, x, y)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" line="159" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/iotdk.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>IOTDK Board Common Init Module. </para>    </briefdescription>
+    <detaileddescription>
+<para>IOTDK timer/gpio/interrupt init process. Device-driver installation is done while getting the device object for the first time. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

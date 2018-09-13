@@ -37,7 +37,7 @@
     <includedby refid="hsdk__timer_8h" local="yes">hsdk_timer.h</includedby>
     <includedby refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c" local="yes">dw_gpio_obj.c</includedby>
     <includedby refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c" local="yes">dw_iic_obj.c</includedby>
-    <includedby refid="dw__sdio__obj_8c" local="yes">dw_sdio_obj.c</includedby>
+    <includedby refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c" local="yes">dw_sdio_obj.c</includedby>
     <includedby refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c" local="yes">dw_spi_obj.c</includedby>
     <includedby refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c" local="yes">dw_uart_obj.c</includedby>
     <includedby refid="hsdk_2drivers_2mux_2mux_8c" local="yes">mux.c</includedby>
@@ -47,9 +47,28 @@
     <includedby refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c" local="yes">ntshell_io_netconn.c</includedby>
     <includedby refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">ntshell_io_uart.c</includedby>
     <includedby refid="hsdk_2drivers_2pmwifi_2pmwifi_8c" local="yes">pmwifi.c</includedby>
-    <includedby refid="sdcard_8c" local="yes">sdcard.c</includedby>
-    <includedby refid="sdcard_8h" local="yes">sdcard.h</includedby>
-    <includedby refid="sdcard__sdio_8c" local="yes">sdcard_sdio.c</includedby>
+    <includedby refid="hsdk_2drivers_2sdcard_2sdcard_8c" local="yes">sdcard.c</includedby>
+    <includedby refid="hsdk_2drivers_2sdcard_2sdcard_8h" local="yes">sdcard.h</includedby>
+    <includedby refid="hsdk_2drivers_2sdcard_2sdcard__sdio_8c" local="yes">sdcard_sdio.c</includedby>
+    <includedby refid="iotdk__timer_8h" local="yes">iotdk_timer.h</includedby>
+    <includedby refid="dw__i2s__obj_8c" local="yes">dw_i2s_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c" local="yes">dw_sdio_obj.c</includedby>
+    <includedby refid="dfss__gpio__obj_8c" local="yes">dfss_gpio_obj.c</includedby>
+    <includedby refid="dfss__iic__obj_8c" local="yes">dfss_iic_obj.c</includedby>
+    <includedby refid="dfss__spi__obj_8c" local="yes">dfss_spi_obj.c</includedby>
+    <includedby refid="dfss__uart__obj_8c" local="yes">dfss_uart_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io_8c" local="yes">ntshell_io.c</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8h" local="yes">ntshell_io_uart.h</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8h" local="yes">ntshell_io_netconn.h</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8c" local="yes">ntshell_io_netconn.c</includedby>
+    <includedby refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8c" local="yes">ntshell_io_uart.c</includedby>
+    <includedby refid="iotdk_2drivers_2pmwifi_2pmwifi_8c" local="yes">pmwifi.c</includedby>
+    <includedby refid="iotdk_2drivers_2sdcard_2sdcard_8c" local="yes">sdcard.c</includedby>
+    <includedby refid="iotdk_2drivers_2sdcard_2sdcard_8h" local="yes">sdcard.h</includedby>
+    <includedby refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8c" local="yes">sdcard_sdio.c</includedby>
+    <includedby refid="smic__adc_8c" local="yes">smic_adc.c</includedby>
+    <includedby refid="smic__eflash_8c" local="yes">smic_eflash.c</includedby>
+    <includedby refid="sysconf_8c" local="yes">sysconf.c</includedby>
     <includedby refid="nsim__timer_8h" local="yes">nsim_timer.h</includedby>
     <includedby refid="nsim_2drivers_2ntshell_2ntshell__io_8c" local="yes">ntshell_io.c</includedby>
     <includedby refid="nsim_2drivers_2ntshell_2ntshell__io__uart_8h" local="yes">ntshell_io_uart.h</includedby>
@@ -57,1074 +76,1559 @@
     <includedby refid="nsim__uart__obj_8c" local="yes">nsim_uart_obj.c</includedby>
     <includedby refid="dev__pinmux_8h" local="yes">dev_pinmux.h</includedby>
     <includedby refid="dw__gpio_8c" local="yes">dw_gpio.c</includedby>
+    <includedby refid="dw__i2s_8c" local="yes">dw_i2s.c</includedby>
     <includedby refid="dw__iic_8c" local="yes">dw_iic.c</includedby>
     <includedby refid="dw__sdio_8c" local="yes">dw_sdio.c</includedby>
     <includedby refid="dw__spi_8c" local="yes">dw_spi.c</includedby>
     <includedby refid="dw__uart_8c" local="yes">dw_uart.c</includedby>
+    <includedby refid="ss__gpio_8c" local="yes">ss_gpio.c</includedby>
+    <includedby refid="ss__i2c__master_8c" local="yes">ss_i2c_master.c</includedby>
+    <includedby refid="ss__spi__master_8c" local="yes">ss_spi_master.c</includedby>
+    <includedby refid="ss__uart_8c" local="yes">ss_uart.c</includedby>
     <incdepgraph>
-      <node id="2317">
+      <node id="2989">
         <label>stdbool.h</label>
       </node>
-      <node id="2314">
+      <node id="2986">
         <label>stdint.h</label>
       </node>
-      <node id="2316">
+      <node id="2988">
         <label>stddef.h</label>
       </node>
-      <node id="2315">
+      <node id="2987">
         <label>limits.h</label>
       </node>
-      <node id="2313">
+      <node id="2985">
         <label>embARC_toolchain.h</label>
         <link refid="embARC_toolchain.h"/>
-        <childnode refid="2314" relation="include">
+        <childnode refid="2986" relation="include">
         </childnode>
-        <childnode refid="2315" relation="include">
+        <childnode refid="2987" relation="include">
         </childnode>
-        <childnode refid="2316" relation="include">
+        <childnode refid="2988" relation="include">
         </childnode>
-        <childnode refid="2317" relation="include">
+        <childnode refid="2989" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2319">
+      <node id="2991">
         <label>malloc.c</label>
         <link refid="malloc_8c_source"/>
       </node>
-      <node id="2376">
+      <node id="3060">
         <label>emsk_gpio.c</label>
         <link refid="emsk__gpio_8c"/>
       </node>
-      <node id="2377">
+      <node id="3061">
         <label>emsk_gpio.h</label>
         <link refid="emsk__gpio_8h"/>
-        <childnode refid="2376" relation="include">
+        <childnode refid="3060" relation="include">
         </childnode>
-        <childnode refid="2378" relation="include">
+        <childnode refid="3062" relation="include">
         </childnode>
       </node>
-      <node id="2354">
+      <node id="3029">
         <label>dw_spi_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
-      <node id="2401">
+      <node id="3119">
         <label>arc_timer.h</label>
         <link refid="arc__timer_8h"/>
-        <childnode refid="2402" relation="include">
+        <childnode refid="3120" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
-        <childnode refid="2404" relation="include">
+        <childnode refid="3122" relation="include">
         </childnode>
-        <childnode refid="2350" relation="include">
+        <childnode refid="3025" relation="include">
         </childnode>
-        <childnode refid="2405" relation="include">
+        <childnode refid="3123" relation="include">
         </childnode>
-        <childnode refid="2352" relation="include">
+        <childnode refid="3027" relation="include">
         </childnode>
-        <childnode refid="2406" relation="include">
+        <childnode refid="3124" relation="include">
         </childnode>
-        <childnode refid="2357" relation="include">
+        <childnode refid="3032" relation="include">
         </childnode>
-        <childnode refid="2365" relation="include">
+        <childnode refid="3040" relation="include">
         </childnode>
-        <childnode refid="2366" relation="include">
+        <childnode refid="3041" relation="include">
+        </childnode>
+        <childnode refid="3049" relation="include">
+        </childnode>
+        <childnode refid="3050" relation="include">
         </childnode>
       </node>
-      <node id="2412">
+      <node id="3137">
         <label>nsim_uart_obj.c</label>
         <link refid="nsim__uart__obj_8c"/>
       </node>
-      <node id="2389">
+      <node id="3073">
         <label>dw_iic.c</label>
         <link refid="dw__iic_8c"/>
       </node>
-      <node id="2390">
+      <node id="3074">
         <label>dw_iic.h</label>
         <link refid="dw__iic_8h"/>
-        <childnode refid="2353" relation="include">
+        <childnode refid="3028" relation="include">
         </childnode>
-        <childnode refid="2360" relation="include">
+        <childnode refid="3035" relation="include">
         </childnode>
-        <childnode refid="2389" relation="include">
+        <childnode refid="3073" relation="include">
         </childnode>
       </node>
-      <node id="2399">
+      <node id="3130">
+        <label>dfss_gpio_obj.c</label>
+        <link refid="dfss__gpio__obj_8c_source"/>
+      </node>
+      <node id="3117">
         <label>arc_mpu.c</label>
         <link refid="arc__mpu_8c_source"/>
-        <childnode refid="2400" relation="include">
+        <childnode refid="3118" relation="include">
         </childnode>
       </node>
-      <node id="2402">
+      <node id="3120">
         <label>arc_timer.c</label>
         <link refid="arc__timer_8c"/>
-        <childnode refid="2403" relation="include">
+        <childnode refid="3121" relation="include">
         </childnode>
       </node>
-      <node id="2349">
+      <node id="3024">
         <label>arc_udma_config.h</label>
         <link refid="arc__udma__config_8h"/>
-        <childnode refid="2325" relation="include">
+        <childnode refid="2997" relation="include">
         </childnode>
       </node>
-      <node id="2321">
+      <node id="2993">
         <label>sys_ops.c</label>
         <link refid="sys__ops_8c_source"/>
       </node>
-      <node id="2366">
+      <node id="3050">
         <label>nsim_timer.c</label>
         <link refid="nsim__timer_8c"/>
       </node>
-      <node id="2421">
+      <node id="3146">
         <label>ntshell_io.c</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io_8c"/>
       </node>
-      <node id="2344">
+      <node id="3019">
         <label>secureshield_container_stack.h</label>
         <link refid="secureshield__container__stack_8h_source"/>
-        <childnode refid="2340" relation="include">
+        <childnode refid="3015" relation="include">
         </childnode>
-        <childnode refid="2345" relation="include">
+        <childnode refid="3020" relation="include">
         </childnode>
-        <childnode refid="2346" relation="include">
+        <childnode refid="3021" relation="include">
         </childnode>
-        <childnode refid="2341" relation="include">
+        <childnode refid="3016" relation="include">
         </childnode>
-        <childnode refid="2342" relation="include">
+        <childnode refid="3017" relation="include">
         </childnode>
-        <childnode refid="2343" relation="include">
+        <childnode refid="3018" relation="include">
         </childnode>
       </node>
-      <node id="2432">
+      <node id="3165">
         <label>nsim_timer.h</label>
         <link refid="nsim__timer_8h"/>
-        <childnode refid="2433" relation="include">
+        <childnode refid="3166" relation="include">
         </childnode>
       </node>
-      <node id="2420">
+      <node id="3145">
         <label>ntshell_io.h</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io_8h"/>
-        <childnode refid="2378" relation="include">
+        <childnode refid="3062" relation="include">
         </childnode>
-        <childnode refid="2421" relation="include">
+        <childnode refid="3146" relation="include">
         </childnode>
       </node>
-      <node id="2373">
+      <node id="3042">
+        <label>pmwifi.c</label>
+        <link refid="iotdk_2drivers_2pmwifi_2pmwifi_8c"/>
+      </node>
+      <node id="3104">
+        <label>pwm.c</label>
+        <link refid="pwm_8c_source"/>
+      </node>
+      <node id="3080">
+        <label>ioctl.h</label>
+        <link refid="ioctl_8h_source"/>
+        <childnode refid="3081" relation="include">
+        </childnode>
+        <childnode refid="3083" relation="include">
+        </childnode>
+        <childnode refid="3085" relation="include">
+        </childnode>
+        <childnode refid="3088" relation="include">
+        </childnode>
+        <childnode refid="3090" relation="include">
+        </childnode>
+        <childnode refid="3092" relation="include">
+        </childnode>
+        <childnode refid="3094" relation="include">
+        </childnode>
+        <childnode refid="3095" relation="include">
+        </childnode>
+        <childnode refid="3098" relation="include">
+        </childnode>
+        <childnode refid="3100" relation="include">
+        </childnode>
+        <childnode refid="3101" relation="include">
+        </childnode>
+        <childnode refid="3103" relation="include">
+        </childnode>
+        <childnode refid="3105" relation="include">
+        </childnode>
+        <childnode refid="3108" relation="include">
+        </childnode>
+        <childnode refid="3110" relation="include">
+        </childnode>
+        <childnode refid="3111" relation="include">
+        </childnode>
+      </node>
+      <node id="3057">
         <label>axs_hardware.h</label>
         <link refid="axs__hardware_8h"/>
-        <childnode refid="2370" relation="include">
+        <childnode refid="3054" relation="include">
         </childnode>
-        <childnode refid="2372" relation="include">
+        <childnode refid="3056" relation="include">
         </childnode>
       </node>
-      <node id="2327">
+      <node id="3131">
+        <label>dfss_iic_obj.c</label>
+        <link refid="dfss__iic__obj_8c_source"/>
+      </node>
+      <node id="3103">
+        <label>pwm.h</label>
+        <link refid="pwm_8h_source"/>
+        <childnode refid="3104" relation="include">
+        </childnode>
+      </node>
+      <node id="3096">
+        <label>i2c_master.c</label>
+        <link refid="i2c__master_8c_source"/>
+      </node>
+      <node id="2999">
         <label>embARC.h</label>
         <link refid="emb_a_r_c_8h"/>
-        <childnode refid="2328" relation="include">
+        <childnode refid="3000" relation="include">
         </childnode>
-        <childnode refid="2331" relation="include">
+        <childnode refid="3003" relation="include">
         </childnode>
-        <childnode refid="2332" relation="include">
+        <childnode refid="3004" relation="include">
         </childnode>
-        <childnode refid="2333" relation="include">
+        <childnode refid="3005" relation="include">
         </childnode>
-        <childnode refid="2334" relation="include">
+        <childnode refid="3006" relation="include">
         </childnode>
-        <childnode refid="2335" relation="include">
+        <childnode refid="3007" relation="include">
+        </childnode>
+        <childnode refid="3008" relation="include">
         </childnode>
       </node>
-      <node id="2353">
+      <node id="3028">
         <label>dw_iic_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
-      <node id="2375">
+      <node id="3095">
+        <label>i2c_master.h</label>
+        <link refid="i2c__master_8h_source"/>
+        <childnode refid="3096" relation="include">
+        </childnode>
+        <childnode refid="3097" relation="include">
+        </childnode>
+      </node>
+      <node id="3059">
         <label>dw_gpio_obj.c</label>
         <link refid="axs_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="2369">
+      <node id="3053">
         <label>dw_gpio_obj.h</label>
         <link refid="axs_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
-        <childnode refid="2370" relation="include">
+        <childnode refid="3054" relation="include">
         </childnode>
-        <childnode refid="2371" relation="include">
+        <childnode refid="3055" relation="include">
         </childnode>
-        <childnode refid="2375" relation="include">
+        <childnode refid="3059" relation="include">
         </childnode>
       </node>
-      <node id="2386">
+      <node id="3070">
         <label>dw_sdio_obj.c</label>
-        <link refid="dw__sdio__obj_8c_source"/>
+        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="2370">
+      <node id="3054">
         <label>axs.h</label>
         <link refid="axs_8h"/>
       </node>
-      <node id="2325">
+      <node id="2997">
         <label>arc_udma.h</label>
         <link refid="arc__udma_8h"/>
-        <childnode refid="2326" relation="include">
+        <childnode refid="2998" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
       </node>
-      <node id="2357">
+      <node id="3102">
+        <label>pdm_rx.c</label>
+        <link refid="pdm__rx_8c_source"/>
+      </node>
+      <node id="3101">
+        <label>pdm_rx.h</label>
+        <link refid="pdm__rx_8h_source"/>
+        <childnode refid="3102" relation="include">
+        </childnode>
+      </node>
+      <node id="3032">
         <label>hsdk_timer.c</label>
         <link refid="hsdk__timer_8c"/>
       </node>
-      <node id="2394">
+      <node id="3078">
         <label>dw_uart.c</label>
         <link refid="dw__uart_8c"/>
       </node>
-      <node id="2425">
+      <node id="3150">
         <label>hsdk_timer.h</label>
         <link refid="hsdk__timer_8h"/>
-        <childnode refid="2385" relation="include">
+        <childnode refid="3069" relation="include">
         </childnode>
       </node>
-      <node id="2395">
+      <node id="3079">
         <label>dw_uart.h</label>
         <link refid="dw__uart_8h"/>
-        <childnode refid="2332" relation="include">
+        <childnode refid="3004" relation="include">
         </childnode>
-        <childnode refid="2351" relation="include">
+        <childnode refid="3026" relation="include">
         </childnode>
-        <childnode refid="2380" relation="include">
+        <childnode refid="3064" relation="include">
         </childnode>
-        <childnode refid="2362" relation="include">
+        <childnode refid="3037" relation="include">
         </childnode>
-        <childnode refid="2394" relation="include">
+        <childnode refid="3078" relation="include">
         </childnode>
       </node>
-      <node id="2361">
+      <node id="3036">
         <label>dw_spi_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
-      <node id="2415">
+      <node id="3140">
         <label>embARC_assert.h</label>
         <link refid="emb_a_r_c__assert_8h"/>
-        <childnode refid="2338" relation="include">
+        <childnode refid="3013" relation="include">
         </childnode>
       </node>
-      <node id="2329">
+      <node id="3164">
+        <label>sysconf.c</label>
+        <link refid="sysconf_8c_source"/>
+      </node>
+      <node id="3009">
+        <label>dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c_source"/>
+      </node>
+      <node id="3001">
         <label>dirent.h</label>
         <link refid="dirent_8h_source"/>
       </node>
-      <node id="2339">
+      <node id="3014">
         <label>secureshield_container_call.h</label>
         <link refid="secureshield__container__call_8h_source"/>
-        <childnode refid="2340" relation="include">
+        <childnode refid="3015" relation="include">
         </childnode>
-        <childnode refid="2341" relation="include">
+        <childnode refid="3016" relation="include">
         </childnode>
-        <childnode refid="2342" relation="include">
+        <childnode refid="3017" relation="include">
         </childnode>
-        <childnode refid="2343" relation="include">
+        <childnode refid="3018" relation="include">
         </childnode>
       </node>
-      <node id="2335">
+      <node id="3007">
         <label>hsdk_interrupt.c</label>
         <link refid="hsdk__interrupt_8c"/>
       </node>
-      <node id="2387">
+      <node id="3046">
+        <label>iotdk.h</label>
+        <link refid="iotdk_8h"/>
+      </node>
+      <node id="3071">
         <label>mux.c</label>
         <link refid="hsdk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="2379">
+      <node id="3135">
+        <label>ntshell_io_uart.c</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
+      </node>
+      <node id="3159">
+        <label>ntshell_io_uart.h</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8h_source"/>
+        <childnode refid="3160" relation="include">
+        </childnode>
+        <childnode refid="3135" relation="include">
+        </childnode>
+      </node>
+      <node id="3063">
         <label>dw_gpio_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="2382">
+      <node id="3066">
         <label>dw_gpio_obj.h</label>
         <link refid="emsk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
-        <childnode refid="2379" relation="include">
+        <childnode refid="3063" relation="include">
         </childnode>
-        <childnode refid="2378" relation="include">
+        <childnode refid="3062" relation="include">
         </childnode>
       </node>
-      <node id="2407">
+      <node id="3125">
         <label>embARC_error.h</label>
         <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
-        <childnode refid="2372" relation="include">
+        <childnode refid="3056" relation="include">
         </childnode>
-        <childnode refid="2351" relation="include">
+        <childnode refid="3026" relation="include">
         </childnode>
-        <childnode refid="2376" relation="include">
+        <childnode refid="3060" relation="include">
         </childnode>
-        <childnode refid="2381" relation="include">
+        <childnode refid="3065" relation="include">
         </childnode>
-        <childnode refid="2408" relation="include">
+        <childnode refid="3126" relation="include">
         </childnode>
-        <childnode refid="2409" relation="include">
+        <childnode refid="3127" relation="include">
         </childnode>
-        <childnode refid="2355" relation="include">
+        <childnode refid="3030" relation="include">
         </childnode>
-        <childnode refid="2356" relation="include">
+        <childnode refid="3031" relation="include">
         </childnode>
-        <childnode refid="2383" relation="include">
+        <childnode refid="3067" relation="include">
         </childnode>
-        <childnode refid="2387" relation="include">
+        <childnode refid="3071" relation="include">
         </childnode>
-        <childnode refid="2410" relation="include">
+        <childnode refid="3128" relation="include">
         </childnode>
-        <childnode refid="2388" relation="include">
+        <childnode refid="3072" relation="include">
         </childnode>
-        <childnode refid="2363" relation="include">
+        <childnode refid="3038" relation="include">
         </childnode>
-        <childnode refid="2364" relation="include">
+        <childnode refid="3039" relation="include">
         </childnode>
-        <childnode refid="2411" relation="include">
+        <childnode refid="3009" relation="include">
         </childnode>
-        <childnode refid="2412" relation="include">
+        <childnode refid="3129" relation="include">
         </childnode>
-        <childnode refid="2367" relation="include">
+        <childnode refid="3130" relation="include">
         </childnode>
-        <childnode refid="2389" relation="include">
+        <childnode refid="3131" relation="include">
         </childnode>
-        <childnode refid="2391" relation="include">
+        <childnode refid="3132" relation="include">
         </childnode>
-        <childnode refid="2392" relation="include">
+        <childnode refid="3133" relation="include">
         </childnode>
-        <childnode refid="2394" relation="include">
+        <childnode refid="3134" relation="include">
+        </childnode>
+        <childnode refid="3135" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3043" relation="include">
+        </childnode>
+        <childnode refid="3045" relation="include">
+        </childnode>
+        <childnode refid="3048" relation="include">
+        </childnode>
+        <childnode refid="3136" relation="include">
+        </childnode>
+        <childnode refid="3137" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3010" relation="include">
+        </childnode>
+        <childnode refid="3073" relation="include">
+        </childnode>
+        <childnode refid="3075" relation="include">
+        </childnode>
+        <childnode refid="3076" relation="include">
+        </childnode>
+        <childnode refid="3078" relation="include">
+        </childnode>
+        <childnode refid="3087" relation="include">
+        </childnode>
+        <childnode refid="3097" relation="include">
+        </childnode>
+        <childnode refid="3107" relation="include">
+        </childnode>
+        <childnode refid="3112" relation="include">
         </childnode>
       </node>
-      <node id="2343">
+      <node id="3018">
         <label>secureshield_sjli.c</label>
         <link refid="secureshield__sjli_8c_source"/>
       </node>
-      <node id="2426">
+      <node id="3151">
         <label>ntshell_io.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io_8c"/>
       </node>
-      <node id="2428">
+      <node id="3153">
         <label>ntshell_io.h</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io_8h"/>
-        <childnode refid="2426" relation="include">
+        <childnode refid="3151" relation="include">
         </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="3069" relation="include">
         </childnode>
       </node>
-      <node id="2396">
+      <node id="3114">
         <label>arc_connect.h</label>
         <link refid="arc__connect_8h"/>
-        <childnode refid="2397" relation="include">
+        <childnode refid="3115" relation="include">
         </childnode>
-        <childnode refid="2335" relation="include">
+        <childnode refid="3007" relation="include">
         </childnode>
       </node>
-      <node id="2341">
+      <node id="3109">
+        <label>spi_slave.c</label>
+        <link refid="spi__slave_8c_source"/>
+      </node>
+      <node id="3016">
         <label>secureshield_vmpu_arc.c</label>
         <link refid="secureshield__vmpu__arc_8c_source"/>
       </node>
-      <node id="2392">
+      <node id="3134">
+        <label>ntshell_io_netconn.c</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8c_source"/>
+      </node>
+      <node id="3110">
+        <label>spi_slave.h</label>
+        <link refid="spi__slave_8h_source"/>
+        <childnode refid="3109" relation="include">
+        </childnode>
+      </node>
+      <node id="3076">
         <label>dw_spi.c</label>
         <link refid="dw__spi_8c"/>
       </node>
-      <node id="2393">
-        <label>dw_spi.h</label>
-        <link refid="dw__spi_8h"/>
-        <childnode refid="2354" relation="include">
+      <node id="3161">
+        <label>ntshell_io_netconn.h</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8h_source"/>
+        <childnode refid="3160" relation="include">
         </childnode>
-        <childnode refid="2361" relation="include">
-        </childnode>
-        <childnode refid="2392" relation="include">
+        <childnode refid="3134" relation="include">
         </childnode>
       </node>
-      <node id="2405">
+      <node id="3045">
+        <label>smic_adc.c</label>
+        <link refid="smic__adc_8c_source"/>
+      </node>
+      <node id="3077">
+        <label>dw_spi.h</label>
+        <link refid="dw__spi_8h"/>
+        <childnode refid="3029" relation="include">
+        </childnode>
+        <childnode refid="3036" relation="include">
+        </childnode>
+        <childnode refid="3076" relation="include">
+        </childnode>
+      </node>
+      <node id="3010">
+        <label>dw_i2s.c</label>
+        <link refid="dw__i2s_8c"/>
+      </node>
+      <node id="3044">
+        <label>smic_adc.h</label>
+        <link refid="smic__adc_8h_source"/>
+        <childnode refid="3045" relation="include">
+        </childnode>
+        <childnode refid="3046" relation="include">
+        </childnode>
+      </node>
+      <node id="3008">
+        <label>dw_i2s.h</label>
+        <link refid="dw__i2s_8h"/>
+        <childnode refid="3009" relation="include">
+        </childnode>
+        <childnode refid="3010" relation="include">
+        </childnode>
+      </node>
+      <node id="3123">
         <label>emsk_init.c</label>
         <link refid="emsk__init_8c"/>
       </node>
-      <node id="2351">
+      <node id="3026">
         <label>dw_uart_obj.c</label>
         <link refid="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
-      <node id="2434">
+      <node id="3167">
         <label>ntshell_io.c</label>
         <link refid="nsim_2drivers_2ntshell_2ntshell__io_8c"/>
       </node>
-      <node id="2436">
+      <node id="3040">
+        <label>iotdk_init.c</label>
+        <link refid="iotdk__init_8c"/>
+      </node>
+      <node id="3169">
         <label>ntshell_io.h</label>
         <link refid="nsim_2drivers_2ntshell_2ntshell__io_8h"/>
-        <childnode refid="2434" relation="include">
+        <childnode refid="3167" relation="include">
         </childnode>
-        <childnode refid="2433" relation="include">
+        <childnode refid="3166" relation="include">
         </childnode>
       </node>
-      <node id="2320">
+      <node id="2992">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="2321" relation="include">
+        <childnode refid="2993" relation="include">
         </childnode>
-        <childnode refid="2322" relation="include">
+        <childnode refid="2994" relation="include">
         </childnode>
-        <childnode refid="2336" relation="include">
+        <childnode refid="3011" relation="include">
         </childnode>
-        <childnode refid="2396" relation="include">
+        <childnode refid="3114" relation="include">
         </childnode>
-        <childnode refid="2398" relation="include">
+        <childnode refid="3116" relation="include">
         </childnode>
-        <childnode refid="2401" relation="include">
+        <childnode refid="3119" relation="include">
         </childnode>
-        <childnode refid="2325" relation="include">
+        <childnode refid="2997" relation="include">
         </childnode>
-        <childnode refid="2407" relation="include">
+        <childnode refid="3125" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
-        <childnode refid="2404" relation="include">
+        <childnode refid="3122" relation="include">
         </childnode>
-        <childnode refid="2350" relation="include">
+        <childnode refid="3025" relation="include">
         </childnode>
-        <childnode refid="2372" relation="include">
+        <childnode refid="3056" relation="include">
         </childnode>
-        <childnode refid="2375" relation="include">
+        <childnode refid="3059" relation="include">
         </childnode>
-        <childnode refid="2351" relation="include">
+        <childnode refid="3026" relation="include">
         </childnode>
-        <childnode refid="2352" relation="include">
+        <childnode refid="3027" relation="include">
         </childnode>
-        <childnode refid="2381" relation="include">
+        <childnode refid="3065" relation="include">
         </childnode>
-        <childnode refid="2378" relation="include">
+        <childnode refid="3062" relation="include">
         </childnode>
-        <childnode refid="2355" relation="include">
+        <childnode refid="3030" relation="include">
         </childnode>
-        <childnode refid="2356" relation="include">
+        <childnode refid="3031" relation="include">
         </childnode>
-        <childnode refid="2406" relation="include">
+        <childnode refid="3124" relation="include">
         </childnode>
-        <childnode refid="2357" relation="include">
+        <childnode refid="3032" relation="include">
         </childnode>
-        <childnode refid="2358" relation="include">
+        <childnode refid="3033" relation="include">
         </childnode>
-        <childnode refid="2413" relation="include">
+        <childnode refid="3138" relation="include">
         </childnode>
-        <childnode refid="2363" relation="include">
+        <childnode refid="3038" relation="include">
         </childnode>
-        <childnode refid="2364" relation="include">
+        <childnode refid="3039" relation="include">
         </childnode>
-        <childnode refid="2365" relation="include">
+        <childnode refid="3040" relation="include">
         </childnode>
-        <childnode refid="2366" relation="include">
+        <childnode refid="3041" relation="include">
         </childnode>
-        <childnode refid="2412" relation="include">
+        <childnode refid="3042" relation="include">
         </childnode>
-        <childnode refid="2414" relation="include">
+        <childnode refid="3043" relation="include">
+        </childnode>
+        <childnode refid="3045" relation="include">
+        </childnode>
+        <childnode refid="3048" relation="include">
+        </childnode>
+        <childnode refid="3049" relation="include">
+        </childnode>
+        <childnode refid="3050" relation="include">
+        </childnode>
+        <childnode refid="3137" relation="include">
+        </childnode>
+        <childnode refid="3139" relation="include">
+        </childnode>
+        <childnode refid="3080" relation="include">
         </childnode>
       </node>
-      <node id="2403">
+      <node id="3121">
         <label>secureshield_arc_timer.c</label>
         <link refid="secureshield__arc__timer_8c_source"/>
       </node>
-      <node id="2400">
+      <node id="3118">
         <label>secureshield_arc_mpu.c</label>
         <link refid="secureshield__arc__mpu_8c_source"/>
       </node>
-      <node id="2433">
+      <node id="3166">
         <label>nsim.h</label>
         <link refid="nsim_8h"/>
-        <childnode refid="2411" relation="include">
+        <childnode refid="3136" relation="include">
         </childnode>
-        <childnode refid="2412" relation="include">
+        <childnode refid="3137" relation="include">
         </childnode>
       </node>
-      <node id="2355">
+      <node id="3132">
+        <label>dfss_spi_obj.c</label>
+        <link refid="dfss__spi__obj_8c_source"/>
+      </node>
+      <node id="3087">
+        <label>ss_gpio.c</label>
+        <link refid="ss__gpio_8c_source"/>
+      </node>
+      <node id="3030">
         <label>pmwifi.c</label>
         <link refid="emsk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
-      <node id="2360">
+      <node id="3097">
+        <label>ss_i2c_master.c</label>
+        <link refid="ss__i2c__master_8c_source"/>
+      </node>
+      <node id="3035">
         <label>dw_iic_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
       </node>
-      <node id="2437">
-        <label>dev_pinmux.h</label>
-        <link refid="dev__pinmux_8h_source"/>
-        <childnode refid="2405" relation="include">
+      <node id="3162">
+        <label>sdcard.c</label>
+        <link refid="iotdk_2drivers_2sdcard_2sdcard_8c"/>
+      </node>
+      <node id="3163">
+        <label>sdcard.h</label>
+        <link refid="iotdk_2drivers_2sdcard_2sdcard_8h"/>
+        <childnode refid="3162" relation="include">
         </childnode>
-        <childnode refid="2381" relation="include">
-        </childnode>
-        <childnode refid="2378" relation="include">
-        </childnode>
-        <childnode refid="2387" relation="include">
-        </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="3046" relation="include">
         </childnode>
       </node>
-      <node id="2397">
+      <node id="3082">
+        <label>adc.c</label>
+        <link refid="adc_8c_source"/>
+      </node>
+      <node id="3081">
+        <label>adc.h</label>
+        <link refid="adc_8h_source"/>
+        <childnode refid="3082" relation="include">
+        </childnode>
+      </node>
+      <node id="3170">
+        <label>dev_pinmux.h</label>
+        <link refid="dev__pinmux_8h_source"/>
+        <childnode refid="3123" relation="include">
+        </childnode>
+        <childnode refid="3065" relation="include">
+        </childnode>
+        <childnode refid="3062" relation="include">
+        </childnode>
+        <childnode refid="3071" relation="include">
+        </childnode>
+        <childnode refid="3069" relation="include">
+        </childnode>
+      </node>
+      <node id="3091">
+        <label>i2s_tx_master.c</label>
+        <link refid="i2s__tx__master_8c_source"/>
+      </node>
+      <node id="3090">
+        <label>i2s_tx_master.h</label>
+        <link refid="i2s__tx__master_8h_source"/>
+        <childnode refid="3091" relation="include">
+        </childnode>
+      </node>
+      <node id="3115">
         <label>arc_connect.c</label>
         <link refid="arc__connect_8c_source"/>
       </node>
-      <node id="2381">
+      <node id="3065">
         <label>mux.c</label>
         <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="2337">
+      <node id="3012">
         <label>embARC_misc.c</label>
         <link refid="emb_a_r_c__misc_8c_source"/>
       </node>
-      <node id="2418">
+      <node id="3143">
         <label>mux.h</label>
         <link refid="mux_8h"/>
-        <childnode refid="2381" relation="include">
+        <childnode refid="3065" relation="include">
         </childnode>
       </node>
-      <node id="2408">
+      <node id="3126">
         <label>ntshell_io_netconn.c</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
       </node>
-      <node id="2422">
+      <node id="3147">
         <label>ntshell_io_netconn.h</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="2420" relation="include">
+        <childnode refid="3145" relation="include">
         </childnode>
-        <childnode refid="2408" relation="include">
+        <childnode refid="3126" relation="include">
         </childnode>
       </node>
-      <node id="2350">
+      <node id="3107">
+        <label>ss_spi_master.c</label>
+        <link refid="ss__spi__master_8c_source"/>
+      </node>
+      <node id="3025">
         <label>axs_timer.c</label>
         <link refid="axs__timer_8c"/>
       </node>
-      <node id="2326">
+      <node id="2998">
         <label>arc_udma.c</label>
         <link refid="arc__udma_8c"/>
       </node>
-      <node id="2416">
+      <node id="3141">
         <label>axs_timer.h</label>
         <link refid="axs__timer_8h"/>
-        <childnode refid="2370" relation="include">
+        <childnode refid="3054" relation="include">
         </childnode>
-        <childnode refid="2404" relation="include">
+        <childnode refid="3122" relation="include">
         </childnode>
       </node>
-      <node id="2356">
+      <node id="3031">
         <label>emsk_sdcard_spi.c</label>
         <link refid="emsk__sdcard__spi_8c"/>
       </node>
-      <node id="2342">
+      <node id="3017">
         <label>secureshield_trap.c</label>
         <link refid="secureshield__trap_8c_source"/>
       </node>
-      <node id="2378">
+      <node id="3062">
         <label>emsk.h</label>
         <link refid="emsk_8h"/>
-        <childnode refid="2376" relation="include">
+        <childnode refid="3060" relation="include">
         </childnode>
-        <childnode refid="2379" relation="include">
+        <childnode refid="3063" relation="include">
         </childnode>
-        <childnode refid="2353" relation="include">
+        <childnode refid="3028" relation="include">
         </childnode>
-        <childnode refid="2354" relation="include">
+        <childnode refid="3029" relation="include">
         </childnode>
-        <childnode refid="2380" relation="include">
+        <childnode refid="3064" relation="include">
         </childnode>
-        <childnode refid="2381" relation="include">
+        <childnode refid="3065" relation="include">
         </childnode>
       </node>
-      <node id="2322">
+      <node id="3089">
+        <label>i2s_rx_master.c</label>
+        <link refid="i2s__rx__master_8c_source"/>
+      </node>
+      <node id="2994">
         <label>arc_cache.h</label>
         <link refid="arc__cache_8h"/>
-        <childnode refid="2323" relation="include">
+        <childnode refid="2995" relation="include">
         </childnode>
-        <childnode refid="2324" relation="include">
+        <childnode refid="2996" relation="include">
         </childnode>
-        <childnode refid="2325" relation="include">
+        <childnode refid="2997" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
       </node>
-      <node id="2424">
+      <node id="3088">
+        <label>i2s_rx_master.h</label>
+        <link refid="i2s__rx__master_8h_source"/>
+        <childnode refid="3089" relation="include">
+        </childnode>
+      </node>
+      <node id="3133">
+        <label>dfss_uart_obj.c</label>
+        <link refid="dfss__uart__obj_8c_source"/>
+      </node>
+      <node id="3106">
+        <label>spi_master.c</label>
+        <link refid="spi__master_8c_source"/>
+      </node>
+      <node id="3105">
+        <label>spi_master.h</label>
+        <link refid="spi__master_8h_source"/>
+        <childnode refid="3106" relation="include">
+        </childnode>
+        <childnode refid="3107" relation="include">
+        </childnode>
+      </node>
+      <node id="3149">
         <label>emsk_sdcard.c</label>
         <link refid="emsk__sdcard_8c"/>
       </node>
-      <node id="2423">
+      <node id="3086">
+        <label>gpio.c</label>
+        <link refid="gpio_8c_source"/>
+      </node>
+      <node id="3148">
         <label>emsk_sdcard.h</label>
         <link refid="emsk__sdcard_8h"/>
-        <childnode refid="2378" relation="include">
+        <childnode refid="3062" relation="include">
         </childnode>
-        <childnode refid="2424" relation="include">
+        <childnode refid="3149" relation="include">
         </childnode>
       </node>
-      <node id="2323">
+      <node id="3085">
+        <label>gpio.h</label>
+        <link refid="gpio_8h_source"/>
+        <childnode refid="3086" relation="include">
+        </childnode>
+        <childnode refid="3087" relation="include">
+        </childnode>
+      </node>
+      <node id="2995">
         <label>arc_cache.c</label>
         <link refid="arc__cache_8c"/>
       </node>
-      <node id="2411">
+      <node id="3136">
         <label>ntshell_io_uart.c</label>
         <link refid="nsim_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="2338">
+      <node id="3013">
         <label>secureshield.h</label>
         <link refid="secureshield_8h_source"/>
-        <childnode refid="2339" relation="include">
+        <childnode refid="3014" relation="include">
         </childnode>
-        <childnode refid="2344" relation="include">
+        <childnode refid="3019" relation="include">
         </childnode>
-        <childnode refid="2340" relation="include">
+        <childnode refid="3015" relation="include">
         </childnode>
-        <childnode refid="2347" relation="include">
+        <childnode refid="3022" relation="include">
         </childnode>
-        <childnode refid="2345" relation="include">
+        <childnode refid="3020" relation="include">
         </childnode>
-        <childnode refid="2346" relation="include">
+        <childnode refid="3021" relation="include">
         </childnode>
-        <childnode refid="2341" relation="include">
+        <childnode refid="3016" relation="include">
         </childnode>
-        <childnode refid="2342" relation="include">
+        <childnode refid="3017" relation="include">
         </childnode>
-        <childnode refid="2343" relation="include">
+        <childnode refid="3018" relation="include">
         </childnode>
       </node>
-      <node id="2435">
+      <node id="3168">
         <label>ntshell_io_uart.h</label>
         <link refid="nsim_2drivers_2ntshell_2ntshell__io__uart_8h"/>
-        <childnode refid="2436" relation="include">
+        <childnode refid="3169" relation="include">
         </childnode>
-        <childnode refid="2411" relation="include">
+        <childnode refid="3136" relation="include">
         </childnode>
       </node>
-      <node id="2372">
+      <node id="3056">
         <label>axc003_gpio.c</label>
         <link refid="axc003__gpio_8c"/>
       </node>
-      <node id="2404">
+      <node id="3122">
         <label>axs_init.c</label>
         <link refid="axs__init_8c"/>
       </node>
-      <node id="2371">
+      <node id="3055">
         <label>axc003_gpio.h</label>
         <link refid="axc003__gpio_8h"/>
-        <childnode refid="2372" relation="include">
+        <childnode refid="3056" relation="include">
         </childnode>
-        <childnode refid="2373" relation="include">
+        <childnode refid="3057" relation="include">
         </childnode>
-        <childnode refid="2374" relation="include">
+        <childnode refid="3058" relation="include">
         </childnode>
       </node>
-      <node id="2324">
+      <node id="2996">
         <label>arc_exception.c</label>
         <link refid="arc__exception_8c"/>
       </node>
-      <node id="2430">
+      <node id="3155">
         <label>sdcard.c</label>
-        <link refid="sdcard_8c"/>
+        <link refid="hsdk_2drivers_2sdcard_2sdcard_8c"/>
       </node>
-      <node id="2431">
+      <node id="3156">
         <label>sdcard.h</label>
-        <link refid="sdcard_8h"/>
-        <childnode refid="2430" relation="include">
+        <link refid="hsdk_2drivers_2sdcard_2sdcard_8h"/>
+        <childnode refid="3155" relation="include">
         </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="3069" relation="include">
         </childnode>
       </node>
-      <node id="2367">
+      <node id="3051">
         <label>dw_gpio.c</label>
         <link refid="dw__gpio_8c"/>
       </node>
-      <node id="2406">
+      <node id="3124">
         <label>hsdk_init.c</label>
         <link refid="hsdk__init_8c"/>
       </node>
-      <node id="2368">
+      <node id="3052">
         <label>dw_gpio.h</label>
         <link refid="dw__gpio_8h"/>
-        <childnode refid="2369" relation="include">
+        <childnode refid="3053" relation="include">
         </childnode>
-        <childnode refid="2372" relation="include">
+        <childnode refid="3056" relation="include">
         </childnode>
-        <childnode refid="2375" relation="include">
+        <childnode refid="3059" relation="include">
         </childnode>
-        <childnode refid="2376" relation="include">
+        <childnode refid="3060" relation="include">
         </childnode>
-        <childnode refid="2377" relation="include">
+        <childnode refid="3061" relation="include">
         </childnode>
-        <childnode refid="2379" relation="include">
+        <childnode refid="3063" relation="include">
         </childnode>
-        <childnode refid="2382" relation="include">
+        <childnode refid="3066" relation="include">
         </childnode>
-        <childnode refid="2383" relation="include">
+        <childnode refid="3067" relation="include">
         </childnode>
-        <childnode refid="2359" relation="include">
+        <childnode refid="3034" relation="include">
         </childnode>
-        <childnode refid="2384" relation="include">
+        <childnode refid="3068" relation="include">
         </childnode>
-        <childnode refid="2367" relation="include">
+        <childnode refid="3051" relation="include">
         </childnode>
       </node>
-      <node id="2380">
+      <node id="3064">
         <label>dw_uart_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
-      <node id="2374">
+      <node id="3058">
         <label>axs_103_init.c</label>
         <link refid="axs__103__init_8c"/>
       </node>
-      <node id="2413">
+      <node id="3138">
         <label>creg_hsdc.c</label>
         <link refid="creg__hsdc_8c_source"/>
       </node>
-      <node id="2359">
+      <node id="3034">
         <label>dw_gpio_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c"/>
       </node>
-      <node id="2358">
+      <node id="3033">
         <label>cgu_hsdc.c</label>
         <link refid="cgu__hsdc_8c_source"/>
       </node>
-      <node id="2384">
+      <node id="3068">
         <label>dw_gpio_obj.h</label>
         <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h"/>
-        <childnode refid="2359" relation="include">
+        <childnode refid="3034" relation="include">
         </childnode>
-        <childnode refid="2385" relation="include">
+        <childnode refid="3069" relation="include">
         </childnode>
       </node>
-      <node id="2385">
+      <node id="3069">
         <label>hsdk.h</label>
         <link refid="hsdk_8h"/>
-        <childnode refid="2383" relation="include">
+        <childnode refid="3067" relation="include">
         </childnode>
-        <childnode refid="2359" relation="include">
+        <childnode refid="3034" relation="include">
         </childnode>
-        <childnode refid="2360" relation="include">
+        <childnode refid="3035" relation="include">
         </childnode>
-        <childnode refid="2386" relation="include">
+        <childnode refid="3070" relation="include">
         </childnode>
-        <childnode refid="2361" relation="include">
+        <childnode refid="3036" relation="include">
         </childnode>
-        <childnode refid="2362" relation="include">
+        <childnode refid="3037" relation="include">
         </childnode>
-        <childnode refid="2387" relation="include">
+        <childnode refid="3071" relation="include">
         </childnode>
-        <childnode refid="2388" relation="include">
+        <childnode refid="3072" relation="include">
         </childnode>
-        <childnode refid="2363" relation="include">
+        <childnode refid="3038" relation="include">
         </childnode>
       </node>
-      <node id="2364">
+      <node id="3039">
         <label>sdcard_sdio.c</label>
-        <link refid="sdcard__sdio_8c"/>
+        <link refid="hsdk_2drivers_2sdcard_2sdcard__sdio_8c"/>
       </node>
-      <node id="2388">
+      <node id="3099">
+        <label>i2c_slave.c</label>
+        <link refid="i2c__slave_8c_source"/>
+      </node>
+      <node id="3100">
+        <label>i2c_slave.h</label>
+        <link refid="i2c__slave_8h_source"/>
+        <childnode refid="3099" relation="include">
+        </childnode>
+      </node>
+      <node id="3072">
         <label>ntshell_io_uart.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="2363">
+      <node id="3038">
         <label>pmwifi.c</label>
         <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
-      <node id="2330">
+      <node id="3002">
         <label>fatfs_dirent.c</label>
         <link refid="fatfs__dirent_8c_source"/>
       </node>
-      <node id="2427">
+      <node id="3152">
         <label>ntshell_io_uart.h</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8h"/>
-        <childnode refid="2428" relation="include">
+        <childnode refid="3153" relation="include">
         </childnode>
-        <childnode refid="2388" relation="include">
+        <childnode refid="3072" relation="include">
         </childnode>
       </node>
-      <node id="2328">
+      <node id="3113">
+        <label>uart.c</label>
+        <link refid="uart_8c_source"/>
+      </node>
+      <node id="3000">
         <label>fatfs_dirent.h</label>
         <link refid="fatfs__dirent_8h_source"/>
-        <childnode refid="2329" relation="include">
+        <childnode refid="3001" relation="include">
         </childnode>
-        <childnode refid="2330" relation="include">
+        <childnode refid="3002" relation="include">
         </childnode>
       </node>
-      <node id="2318">
+      <node id="3111">
+        <label>uart.h</label>
+        <link refid="uart_8h_source"/>
+        <childnode refid="3112" relation="include">
+        </childnode>
+        <childnode refid="3113" relation="include">
+        </childnode>
+      </node>
+      <node id="2990">
         <label>embARC_toolchain.h</label>
         <link refid="embARC_toolchain.h"/>
-        <childnode refid="2319" relation="include">
+        <childnode refid="2991" relation="include">
         </childnode>
-        <childnode refid="2320" relation="include">
+        <childnode refid="2992" relation="include">
         </childnode>
-        <childnode refid="2322" relation="include">
+        <childnode refid="2994" relation="include">
         </childnode>
-        <childnode refid="2336" relation="include">
+        <childnode refid="3011" relation="include">
         </childnode>
-        <childnode refid="2396" relation="include">
+        <childnode refid="3114" relation="include">
         </childnode>
-        <childnode refid="2401" relation="include">
+        <childnode refid="3119" relation="include">
         </childnode>
-        <childnode refid="2325" relation="include">
+        <childnode refid="2997" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
-        <childnode refid="2415" relation="include">
+        <childnode refid="3140" relation="include">
         </childnode>
-        <childnode refid="2416" relation="include">
+        <childnode refid="3141" relation="include">
         </childnode>
-        <childnode refid="2372" relation="include">
+        <childnode refid="3056" relation="include">
         </childnode>
-        <childnode refid="2351" relation="include">
+        <childnode refid="3026" relation="include">
         </childnode>
-        <childnode refid="2376" relation="include">
+        <childnode refid="3060" relation="include">
         </childnode>
-        <childnode refid="2417" relation="include">
+        <childnode refid="3142" relation="include">
         </childnode>
-        <childnode refid="2353" relation="include">
+        <childnode refid="3028" relation="include">
         </childnode>
-        <childnode refid="2354" relation="include">
+        <childnode refid="3029" relation="include">
         </childnode>
-        <childnode refid="2380" relation="include">
+        <childnode refid="3064" relation="include">
         </childnode>
-        <childnode refid="2418" relation="include">
+        <childnode refid="3143" relation="include">
         </childnode>
-        <childnode refid="2419" relation="include">
+        <childnode refid="3144" relation="include">
         </childnode>
-        <childnode refid="2422" relation="include">
+        <childnode refid="3147" relation="include">
         </childnode>
-        <childnode refid="2423" relation="include">
+        <childnode refid="3148" relation="include">
         </childnode>
-        <childnode refid="2421" relation="include">
+        <childnode refid="3146" relation="include">
         </childnode>
-        <childnode refid="2408" relation="include">
+        <childnode refid="3126" relation="include">
         </childnode>
-        <childnode refid="2409" relation="include">
+        <childnode refid="3127" relation="include">
         </childnode>
-        <childnode refid="2355" relation="include">
+        <childnode refid="3030" relation="include">
         </childnode>
-        <childnode refid="2424" relation="include">
+        <childnode refid="3149" relation="include">
         </childnode>
-        <childnode refid="2356" relation="include">
+        <childnode refid="3031" relation="include">
         </childnode>
-        <childnode refid="2383" relation="include">
+        <childnode refid="3067" relation="include">
         </childnode>
-        <childnode refid="2425" relation="include">
+        <childnode refid="3150" relation="include">
         </childnode>
-        <childnode refid="2359" relation="include">
+        <childnode refid="3034" relation="include">
         </childnode>
-        <childnode refid="2360" relation="include">
+        <childnode refid="3035" relation="include">
         </childnode>
-        <childnode refid="2386" relation="include">
+        <childnode refid="3070" relation="include">
         </childnode>
-        <childnode refid="2361" relation="include">
+        <childnode refid="3036" relation="include">
         </childnode>
-        <childnode refid="2362" relation="include">
+        <childnode refid="3037" relation="include">
         </childnode>
-        <childnode refid="2387" relation="include">
+        <childnode refid="3071" relation="include">
         </childnode>
-        <childnode refid="2426" relation="include">
+        <childnode refid="3151" relation="include">
         </childnode>
-        <childnode refid="2427" relation="include">
+        <childnode refid="3152" relation="include">
         </childnode>
-        <childnode refid="2429" relation="include">
+        <childnode refid="3154" relation="include">
         </childnode>
-        <childnode refid="2410" relation="include">
+        <childnode refid="3128" relation="include">
         </childnode>
-        <childnode refid="2388" relation="include">
+        <childnode refid="3072" relation="include">
         </childnode>
-        <childnode refid="2363" relation="include">
+        <childnode refid="3038" relation="include">
         </childnode>
-        <childnode refid="2430" relation="include">
+        <childnode refid="3155" relation="include">
         </childnode>
-        <childnode refid="2431" relation="include">
+        <childnode refid="3156" relation="include">
         </childnode>
-        <childnode refid="2364" relation="include">
+        <childnode refid="3039" relation="include">
         </childnode>
-        <childnode refid="2432" relation="include">
+        <childnode refid="3157" relation="include">
         </childnode>
-        <childnode refid="2434" relation="include">
+        <childnode refid="3009" relation="include">
         </childnode>
-        <childnode refid="2435" relation="include">
+        <childnode refid="3129" relation="include">
         </childnode>
-        <childnode refid="2411" relation="include">
+        <childnode refid="3130" relation="include">
         </childnode>
-        <childnode refid="2412" relation="include">
+        <childnode refid="3131" relation="include">
         </childnode>
-        <childnode refid="2437" relation="include">
+        <childnode refid="3132" relation="include">
         </childnode>
-        <childnode refid="2367" relation="include">
+        <childnode refid="3133" relation="include">
         </childnode>
-        <childnode refid="2389" relation="include">
+        <childnode refid="3158" relation="include">
         </childnode>
-        <childnode refid="2391" relation="include">
+        <childnode refid="3159" relation="include">
         </childnode>
-        <childnode refid="2392" relation="include">
+        <childnode refid="3161" relation="include">
         </childnode>
-        <childnode refid="2394" relation="include">
+        <childnode refid="3134" relation="include">
+        </childnode>
+        <childnode refid="3135" relation="include">
+        </childnode>
+        <childnode refid="3042" relation="include">
+        </childnode>
+        <childnode refid="3162" relation="include">
+        </childnode>
+        <childnode refid="3163" relation="include">
+        </childnode>
+        <childnode refid="3043" relation="include">
+        </childnode>
+        <childnode refid="3045" relation="include">
+        </childnode>
+        <childnode refid="3048" relation="include">
+        </childnode>
+        <childnode refid="3164" relation="include">
+        </childnode>
+        <childnode refid="3165" relation="include">
+        </childnode>
+        <childnode refid="3167" relation="include">
+        </childnode>
+        <childnode refid="3168" relation="include">
+        </childnode>
+        <childnode refid="3136" relation="include">
+        </childnode>
+        <childnode refid="3137" relation="include">
+        </childnode>
+        <childnode refid="3170" relation="include">
+        </childnode>
+        <childnode refid="3051" relation="include">
+        </childnode>
+        <childnode refid="3010" relation="include">
+        </childnode>
+        <childnode refid="3073" relation="include">
+        </childnode>
+        <childnode refid="3075" relation="include">
+        </childnode>
+        <childnode refid="3076" relation="include">
+        </childnode>
+        <childnode refid="3078" relation="include">
+        </childnode>
+        <childnode refid="3087" relation="include">
+        </childnode>
+        <childnode refid="3097" relation="include">
+        </childnode>
+        <childnode refid="3107" relation="include">
+        </childnode>
+        <childnode refid="3112" relation="include">
         </childnode>
       </node>
-      <node id="2331">
+      <node id="3003">
         <label>embARC_syscalls.c</label>
         <link refid="emb_a_r_c__syscalls_8c_source"/>
       </node>
-      <node id="2348">
+      <node id="3023">
         <label>interrupts.c</label>
         <link refid="interrupts_8c_source"/>
       </node>
-      <node id="2398">
+      <node id="3041">
+        <label>iotdk_timer.c</label>
+        <link refid="iotdk__timer_8c"/>
+      </node>
+      <node id="3116">
         <label>arc_mpu.h</label>
         <link refid="arc__mpu_8h_source"/>
-        <childnode refid="2341" relation="include">
+        <childnode refid="3016" relation="include">
         </childnode>
-        <childnode refid="2399" relation="include">
+        <childnode refid="3117" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
       </node>
-      <node id="2410">
+      <node id="3157">
+        <label>iotdk_timer.h</label>
+        <link refid="iotdk__timer_8h"/>
+        <childnode refid="3040" relation="include">
+        </childnode>
+        <childnode refid="3046" relation="include">
+        </childnode>
+      </node>
+      <node id="3129">
+        <label>dw_sdio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="3108">
+        <label>spi_priv.h</label>
+        <link refid="spi__priv_8h_source"/>
+        <childnode refid="3106" relation="include">
+        </childnode>
+        <childnode refid="3109" relation="include">
+        </childnode>
+      </node>
+      <node id="3128">
         <label>ntshell_io_netconn.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
       </node>
-      <node id="2429">
+      <node id="3154">
         <label>ntshell_io_netconn.h</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="2428" relation="include">
+        <childnode refid="3153" relation="include">
         </childnode>
-        <childnode refid="2410" relation="include">
+        <childnode refid="3128" relation="include">
         </childnode>
       </node>
-      <node id="2352">
+      <node id="3027">
         <label>emsk_timer.c</label>
         <link refid="emsk__timer_8c"/>
       </node>
-      <node id="2340">
+      <node id="3015">
         <label>secureshield_int.c</label>
         <link refid="secureshield__int_8c_source"/>
       </node>
-      <node id="2417">
+      <node id="3142">
         <label>emsk_timer.h</label>
         <link refid="emsk__timer_8h"/>
-        <childnode refid="2405" relation="include">
+        <childnode refid="3123" relation="include">
         </childnode>
-        <childnode refid="2378" relation="include">
+        <childnode refid="3062" relation="include">
         </childnode>
       </node>
-      <node id="2333">
+      <node id="3084">
+        <label>dac.c</label>
+        <link refid="dac_8c_source"/>
+      </node>
+      <node id="3083">
+        <label>dac.h</label>
+        <link refid="dac_8h_source"/>
+        <childnode refid="3084" relation="include">
+        </childnode>
+      </node>
+      <node id="3048">
+        <label>smic_eflash.c</label>
+        <link refid="smic__eflash_8c_source"/>
+      </node>
+      <node id="3047">
+        <label>smic_eflash.h</label>
+        <link refid="smic__eflash_8h_source"/>
+        <childnode refid="3048" relation="include">
+        </childnode>
+        <childnode refid="3046" relation="include">
+        </childnode>
+      </node>
+      <node id="3005">
         <label>axs_103_interrupt.c</label>
         <link refid="axs__103__interrupt_8c"/>
       </node>
-      <node id="2391">
+      <node id="3075">
         <label>dw_sdio.c</label>
         <link refid="dw__sdio_8c_source"/>
       </node>
-      <node id="2414">
+      <node id="3139">
         <label>dw_sdio.h</label>
         <link refid="dw__sdio_8h_source"/>
-        <childnode refid="2386" relation="include">
+        <childnode refid="3070" relation="include">
         </childnode>
-        <childnode refid="2391" relation="include">
+        <childnode refid="3129" relation="include">
+        </childnode>
+        <childnode refid="3075" relation="include">
         </childnode>
       </node>
-      <node id="2346">
+      <node id="3098">
+        <label>i2c_priv.h</label>
+        <link refid="i2c__priv_8h_source"/>
+        <childnode refid="3096" relation="include">
+        </childnode>
+        <childnode refid="3099" relation="include">
+        </childnode>
+        <childnode refid="3097" relation="include">
+        </childnode>
+      </node>
+      <node id="3158">
+        <label>ntshell_io.c</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io_8c_source"/>
+      </node>
+      <node id="3160">
+        <label>ntshell_io.h</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io_8h_source"/>
+        <childnode refid="3158" relation="include">
+        </childnode>
+        <childnode refid="3046" relation="include">
+        </childnode>
+      </node>
+      <node id="3021">
         <label>secureshield_vmpu.c</label>
         <link refid="secureshield__vmpu_8c_source"/>
       </node>
-      <node id="2383">
+      <node id="3067">
         <label>hsdk_io.c</label>
         <link refid="hsdk__io_8c"/>
       </node>
-      <node id="2347">
+      <node id="3022">
         <label>secureshield.c</label>
         <link refid="secureshield_8c_source"/>
       </node>
-      <node id="2334">
+      <node id="3006">
         <label>board.c</label>
         <link refid="board_8c_source"/>
       </node>
-      <node id="2409">
+      <node id="3127">
         <label>ntshell_io_uart.c</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="2419">
+      <node id="3144">
         <label>ntshell_io_uart.h</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8h"/>
-        <childnode refid="2420" relation="include">
+        <childnode refid="3145" relation="include">
         </childnode>
-        <childnode refid="2409" relation="include">
+        <childnode refid="3127" relation="include">
         </childnode>
       </node>
-      <node id="2362">
+      <node id="3037">
         <label>dw_uart_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
-      <node id="2336">
+      <node id="3011">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
-        <childnode refid="2337" relation="include">
+        <childnode refid="3012" relation="include">
         </childnode>
-        <childnode refid="2338" relation="include">
+        <childnode refid="3013" relation="include">
         </childnode>
-        <childnode refid="2348" relation="include">
+        <childnode refid="3023" relation="include">
         </childnode>
-        <childnode refid="2321" relation="include">
+        <childnode refid="2993" relation="include">
         </childnode>
-        <childnode refid="2324" relation="include">
+        <childnode refid="2996" relation="include">
         </childnode>
-        <childnode refid="2322" relation="include">
+        <childnode refid="2994" relation="include">
         </childnode>
-        <childnode refid="2349" relation="include">
+        <childnode refid="3024" relation="include">
         </childnode>
-        <childnode refid="2327" relation="include">
+        <childnode refid="2999" relation="include">
         </childnode>
-        <childnode refid="2350" relation="include">
+        <childnode refid="3025" relation="include">
         </childnode>
-        <childnode refid="2351" relation="include">
+        <childnode refid="3026" relation="include">
         </childnode>
-        <childnode refid="2352" relation="include">
+        <childnode refid="3027" relation="include">
         </childnode>
-        <childnode refid="2353" relation="include">
+        <childnode refid="3028" relation="include">
         </childnode>
-        <childnode refid="2354" relation="include">
+        <childnode refid="3029" relation="include">
         </childnode>
-        <childnode refid="2355" relation="include">
+        <childnode refid="3030" relation="include">
         </childnode>
-        <childnode refid="2356" relation="include">
+        <childnode refid="3031" relation="include">
         </childnode>
-        <childnode refid="2357" relation="include">
+        <childnode refid="3032" relation="include">
         </childnode>
-        <childnode refid="2358" relation="include">
+        <childnode refid="3033" relation="include">
         </childnode>
-        <childnode refid="2359" relation="include">
+        <childnode refid="3034" relation="include">
         </childnode>
-        <childnode refid="2360" relation="include">
+        <childnode refid="3035" relation="include">
         </childnode>
-        <childnode refid="2361" relation="include">
+        <childnode refid="3036" relation="include">
         </childnode>
-        <childnode refid="2362" relation="include">
+        <childnode refid="3037" relation="include">
         </childnode>
-        <childnode refid="2363" relation="include">
+        <childnode refid="3038" relation="include">
         </childnode>
-        <childnode refid="2364" relation="include">
+        <childnode refid="3039" relation="include">
         </childnode>
-        <childnode refid="2365" relation="include">
+        <childnode refid="3040" relation="include">
         </childnode>
-        <childnode refid="2366" relation="include">
+        <childnode refid="3041" relation="include">
         </childnode>
-        <childnode refid="2367" relation="include">
+        <childnode refid="3042" relation="include">
         </childnode>
-        <childnode refid="2368" relation="include">
+        <childnode refid="3043" relation="include">
         </childnode>
-        <childnode refid="2389" relation="include">
+        <childnode refid="3044" relation="include">
         </childnode>
-        <childnode refid="2390" relation="include">
+        <childnode refid="3047" relation="include">
         </childnode>
-        <childnode refid="2391" relation="include">
+        <childnode refid="3049" relation="include">
         </childnode>
-        <childnode refid="2392" relation="include">
+        <childnode refid="3050" relation="include">
         </childnode>
-        <childnode refid="2393" relation="include">
+        <childnode refid="3051" relation="include">
         </childnode>
-        <childnode refid="2394" relation="include">
+        <childnode refid="3052" relation="include">
         </childnode>
-        <childnode refid="2395" relation="include">
+        <childnode refid="3010" relation="include">
+        </childnode>
+        <childnode refid="3073" relation="include">
+        </childnode>
+        <childnode refid="3074" relation="include">
+        </childnode>
+        <childnode refid="3075" relation="include">
+        </childnode>
+        <childnode refid="3076" relation="include">
+        </childnode>
+        <childnode refid="3077" relation="include">
+        </childnode>
+        <childnode refid="3078" relation="include">
+        </childnode>
+        <childnode refid="3079" relation="include">
+        </childnode>
+        <childnode refid="3080" relation="include">
+        </childnode>
+        <childnode refid="3097" relation="include">
+        </childnode>
+        <childnode refid="3107" relation="include">
+        </childnode>
+        <childnode refid="3112" relation="include">
         </childnode>
       </node>
-      <node id="2332">
+      <node id="3004">
         <label>secure_console.c</label>
         <link refid="emsk_2common_2secure__console_8c_source"/>
       </node>
-      <node id="2365">
+      <node id="3049">
         <label>nsim_init.c</label>
         <link refid="nsim__init_8c"/>
       </node>
-      <node id="2345">
+      <node id="3020">
         <label>secureshield_sys.c</label>
         <link refid="secureshield__sys_8c_source"/>
+      </node>
+      <node id="3093">
+        <label>i3c_master.c</label>
+        <link refid="i3c__master_8c_source"/>
+      </node>
+      <node id="3092">
+        <label>i3c_master.h</label>
+        <link refid="i3c__master_8h_source"/>
+        <childnode refid="3093" relation="include">
+        </childnode>
+      </node>
+      <node id="3094">
+        <label>i3c_priv.h</label>
+        <link refid="i3c__priv_8h_source"/>
+        <childnode refid="3093" relation="include">
+        </childnode>
+      </node>
+      <node id="3112">
+        <label>ss_uart.c</label>
+        <link refid="ss__uart_8c_source"/>
+      </node>
+      <node id="3043">
+        <label>sdcard_sdio.c</label>
+        <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8c"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">

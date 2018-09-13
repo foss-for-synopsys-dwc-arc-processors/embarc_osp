@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d" kind="group">
+    <compoundname>DEVICE_HAL_I2S_CTRLCMD</compoundname>
+    <title>I2S Device Control Commands</title>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" prot="public" static="no">
+        <name>DEV_SET_I2S_SYSCMD</name>
+        <param><defname>cmd</defname></param>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>((cmd))</initializer>
+        <briefdescription>
+<para>Define I2S control commands for common usage. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="161" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gac4f584df7c0472ab6489b544e330ccb6" prot="public" static="no">
+        <name>DEV_SET_I2S_MST_SYSCMD</name>
+        <param><defname>cmd</defname></param>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0x00010000|(cmd))</initializer>
+        <briefdescription>
+<para>Define I2S control commands for master usage. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="163" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga037a647020b711b88bf56baf09919fed" prot="public" static="no">
+        <name>I2S_CMD_GET_STATUS</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(0)</initializer>
+        <briefdescription>
+<para>Get <ref refid="structdev__i2s__info_1ad048a278c9feb6d8fa7d75e2253f5864" kindref="member">current device status</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : uint32_t *</para></listitem><listitem><para>Param usage : store result of current status</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="172" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="172" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2592a778e686350849092aefaa07d918" prot="public" static="no">
+        <name>I2S_CMD_SET_TXCB</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(1)</initializer>
+        <briefdescription>
+<para>Set <ref refid="structdev__i2s__cbs_1ac9068ac4f5f4f0f76e776d92bf949076" kindref="member">I2S transmit success callback</ref> function when all required bytes are transmitted for interrupt method. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : transmit success callback function for I2S</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="180" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="180" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaaf68019e52d5f886e1e6ff63a15f8de1" prot="public" static="no">
+        <name>I2S_CMD_SET_RXCB</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(2)</initializer>
+        <briefdescription>
+<para>Set <ref refid="structdev__i2s__cbs_1a92fc7de4510fd3712188a40e0b98f74e" kindref="member">I2S receive success callback</ref> function when all required bytes are received for interrupt method. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : receive success callback function for I2S</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="188" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="188" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga45e69392e112fd10f1305e493e72dc1c" prot="public" static="no">
+        <name>I2S_CMD_SET_ERRCB</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(3)</initializer>
+        <briefdescription>
+<para>Set <ref refid="structdev__i2s__cbs_1ab127e42d50952973972d0a7373273d6f" kindref="member">I2S transfer error callback</ref> function when something error happened for interrupt method. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref> * or NULL</para></listitem><listitem><para>Param usage : transfer error callback function for I2S</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="196" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="196" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaad994a18db5d47151d07c42c65c7ad1d" prot="public" static="no">
+        <name>I2S_CMD_SET_TXINT</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(4)</initializer>
+        <briefdescription>
+<para>Enable or disable transmit interrupt. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="203" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="203" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga537794ba30ce41e9976762593aec4f6b" prot="public" static="no">
+        <name>I2S_CMD_SET_RXINT</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(5)</initializer>
+        <briefdescription>
+<para>Enable or disable receive interrupt. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="210" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="210" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2d21ce33c2a315372e8dbb5b05589ee0" prot="public" static="no">
+        <name>I2S_CMD_RESET</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(6)</initializer>
+        <briefdescription>
+<para>Do a software reset for I2S device, it will stop current transfer, and clear error state and bring device to normal state, set next condition to STOP. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="218" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="218" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga8253934e8ddf4b6787eed66dee4fa165" prot="public" static="no">
+        <name>I2S_CMD_FLUSH_TX</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(7)</initializer>
+        <briefdescription>
+<para>Flush I2S device transmit buffer or fifo. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="225" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="225" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gae62dfbb01e2798e7e33a09cff42e83b4" prot="public" static="no">
+        <name>I2S_CMD_FLUSH_RX</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(8)</initializer>
+        <briefdescription>
+<para>Flush I2S device receive buffer or fifo. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : NULL</para></listitem><listitem><para>Param usage :</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="232" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="232" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga24bf675644bb36e8d3e7a5dcca82d405" prot="public" static="no">
+        <name>I2S_CMD_ENA_DEV</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(9)</initializer>
+        <briefdescription>
+<para>Enable I2S device. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : Device channel nummber</para></listitem><listitem><para>Param usage : Specified device channel number</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="239" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="239" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga9e1135e0f8e70f24eacf52f773f3a2e7" prot="public" static="no">
+        <name>I2S_CMD_DIS_DEV</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(10)</initializer>
+        <briefdescription>
+<para>Disable I2S device, when device is disabled, only <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga24bf675644bb36e8d3e7a5dcca82d405" kindref="member">I2S_CMD_ENA_DEV</ref>, <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga9e1135e0f8e70f24eacf52f773f3a2e7" kindref="member">I2S_CMD_DIS_DEV</ref>, <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga037a647020b711b88bf56baf09919fed" kindref="member">I2S_CMD_GET_STATUS</ref> and <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2d21ce33c2a315372e8dbb5b05589ee0" kindref="member">I2S_CMD_RESET</ref> commands can be executed, other commands will return <ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : Device channel nummber</para></listitem><listitem><para>Param usage : Specified device channel number</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="249" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="249" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga1b992d2acdf80fc76c508820985b67f6" prot="public" static="no">
+        <name>I2S_CMD_SET_TXINT_BUF</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(11)</initializer>
+        <briefdescription>
+<para>Set buffer for interrupt transmit, and it will set <ref refid="structdev__i2s__info_1a69d4d988c87fd397a95d65d5e6b5bf7f" kindref="member">tx_buf</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>I2S transmitter command <linebreak/>
+ If setting TX buffer to NULL, when tx interrupt is enabled and entered into tx interrupt, it will automatically disable the tx interrupt, so when you want to transfer something, you need to set the tx buffer to Non-NULL and enable tx interrupt, when the tx buffer is sent, it will disable the tx interrupt and call tx callback function if available.</para></listitem><listitem><para>Param type : DEV_BUFFER * or NULL</para></listitem><listitem><para>Param usage : buffer structure pointer, if param is NULL, then it will set tx_buf to NULL</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="261" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="261" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa204cdf430eb9c973e4304d66bb1b446" prot="public" static="no">
+        <name>I2S_CMD_SET_RXINT_BUF</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(12)</initializer>
+        <briefdescription>
+<para>Set buffer for interrupt receive, and it will set <ref refid="structdev__i2s__info_1a9a724c9b669633d63ce6b717a5a62eab" kindref="member">rx_buf</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>I2S receiver command <linebreak/>
+ Similiar to <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga1b992d2acdf80fc76c508820985b67f6" kindref="member">I2S_CMD_SET_TXINT_BUF</ref></para></listitem><listitem><para>Param type : DEV_BUFFER * or NULL</para></listitem><listitem><para>Param usage : buffer structure pointer, if param is NULL, then it will set rx_buf to NULL</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="270" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="270" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa1affb1cc889d958982be0037863e22c" prot="public" static="no">
+        <name>I2S_CMD_SET_TXCHET_BUF</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(13)</initializer>
+        <briefdescription>
+<para>Set buffer empty threshold in the TX FIFO, these bit program the empty trigger level in the TX FIFO. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>I2S transmitter command <linebreak/>
+ These command is used to set trigger level in the TX FIFO at which empty threshold reached flag/interrupt is generated.</para></listitem><listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : Specified trigger level value (16b) + channel (16b)</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="281" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="281" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga81a3368d5b5c1472a6ec9b3c1038a169" prot="public" static="no">
+        <name>I2S_CMD_SET_RXCHDT_BUF</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6f683a0ac93131c2d5dbf68d727c20d5" kindref="member">DEV_SET_I2S_SYSCMD</ref>(14)</initializer>
+        <briefdescription>
+<para>Set buffer available data threshold in the TX FIFO, these bit program the trigger level in the RX FIFO. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>I2S receiver command <linebreak/>
+ These command is used to set trigger level in the RX FIFO at which received data available flag/interrupt is generated.</para></listitem><listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : Specified trigger level value (16b) + channel (16b)</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="292" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="292" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6e9d48b0520928ca24a7b0ce877c82ea" prot="public" static="no">
+        <name>I2S_CMD_MST_SET_CLK</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gac4f584df7c0472ab6489b544e330ccb6" kindref="member">DEV_SET_I2S_MST_SYSCMD</ref>(0)</initializer>
+        <briefdescription>
+<para>Enable or disable clock for master. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : enable(none-zero) or disable(zero) flag</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="301" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="301" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa53406c0b959b9c557ed8e3e50b2f2c0" prot="public" static="no">
+        <name>I2S_CMD_MST_SET_WSS</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gac4f584df7c0472ab6489b544e330ccb6" kindref="member">DEV_SET_I2S_MST_SYSCMD</ref>(1)</initializer>
+        <briefdescription>
+<para>Program the number of sclk cycles for word select line stays. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : clock cycles</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="308" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="308" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga3c143148075c2346d07e74469e95bb21" prot="public" static="no">
+        <name>I2S_CMD_MST_SET_SCLKG</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gac4f584df7c0472ab6489b544e330ccb6" kindref="member">DEV_SET_I2S_MST_SYSCMD</ref>(2)</initializer>
+        <briefdescription>
+<para>Program the number of gating of sclk cycles for word select line stays. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>Param type : uint32_t</para></listitem><listitem><para>Param usage : gating of sclk cycles</para></listitem><listitem><para>Return value explanation : </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="315" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="315" bodyend="-1"/>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definitions for I2S control command, used in <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga644a0a82aeedb2c8ee2d354efe0a3366" kindref="member">I2S Control</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>These commands defined here can be used in user code directly.<itemizedlist>
+<listitem><para>Parameters Usage<itemizedlist>
+<listitem><para>For passing parameters like integer, just use uint32_t/int32_t to directly pass values</para></listitem><listitem><para>For passing parameters for a structure, please use pointer to pass values</para></listitem><listitem><para>For getting some data, please use pointer to store the return data</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Common Return Values<itemizedlist>
+<listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>, Control device successfully</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>, Device is not opened</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>, Device object is not valid or not exists</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>, Parameter is not valid for current control command</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref>, Control device failed, due to hardware issues such as device is disabled</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" kindref="member">E_CTX</ref>, Control device failed, due to different reasons like in transfer state</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" kindref="member">E_NOSPT</ref>, Control command is not supported or not valid </para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

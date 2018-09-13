@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="ss__gpio_8h" kind="file">
+    <compoundname>ss_gpio.h</compoundname>
+    <includes refid="dev__gpio_8h" local="yes">ip/ip_hal/inc/dev_gpio.h</includes>
+    <includedby refid="dfss__gpio__obj_8c" local="yes">dfss_gpio_obj.c</includedby>
+    <includedby refid="ss__gpio_8c" local="yes">ss_gpio.c</includedby>
+    <incdepgraph>
+      <node id="5564">
+        <label>stdint.h</label>
+      </node>
+      <node id="5563">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="5564" relation="include">
+        </childnode>
+      </node>
+      <node id="5561">
+        <label>ss_gpio.h</label>
+        <link refid="ss_gpio.h"/>
+        <childnode refid="5562" relation="include">
+        </childnode>
+      </node>
+      <node id="5562">
+        <label>ip/ip_hal/inc/dev_gpio.h</label>
+        <link refid="dev__gpio_8h"/>
+        <childnode refid="5563" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5566">
+        <label>dfss_gpio_obj.c</label>
+        <link refid="dfss__gpio__obj_8c_source"/>
+      </node>
+      <node id="5567">
+        <label>ss_gpio.c</label>
+        <link refid="ss__gpio_8c_source"/>
+      </node>
+      <node id="5565">
+        <label>ss_gpio.h</label>
+        <link refid="ss_gpio.h"/>
+        <childnode refid="5566" relation="include">
+        </childnode>
+        <childnode refid="5567" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structss__gpio__dev__context" prot="public">ss_gpio_dev_context</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="ss__gpio_8h_1aab4be365e1c983c63478b301ac008cad" prot="public" static="no">
+        <type>struct <ref refid="structss__gpio__dev__context" kindref="compound">ss_gpio_dev_context</ref></type>
+        <definition>typedef struct ss_gpio_dev_context  SS_GPIO_DEV_CONTEXT</definition>
+        <argsstring></argsstring>
+        <name>SS_GPIO_DEV_CONTEXT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="51" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ss__gpio_8h_1a903928897547768faefdd5889f574596" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_gpio_open</definition>
+        <argsstring>(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir)</argsstring>
+        <name>ss_gpio_open</name>
+        <param>
+          <type><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>dir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="55" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.c" bodystart="40" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__gpio_8h_1a3727c821c7e68a0654f55cb365455cb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_gpio_close</definition>
+        <argsstring>(SS_GPIO_DEV_CONTEXT *ctx)</argsstring>
+        <name>ss_gpio_close</name>
+        <param>
+          <type><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="56" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.c" bodystart="77" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__gpio_8h_1a3107d4678ae8a732cffce1f2cacba12d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_gpio_control</definition>
+        <argsstring>(SS_GPIO_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param)</argsstring>
+        <name>ss_gpio_control</name>
+        <param>
+          <type><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>ctrl_cmd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="57" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.c" bodystart="93" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__gpio_8h_1ace64a4925787665ff8d4c57a52103b5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_gpio_write</definition>
+        <argsstring>(SS_GPIO_DEV_CONTEXT *ctx, uint32_t val, uint32_t mask)</argsstring>
+        <name>ss_gpio_write</name>
+        <param>
+          <type><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="58" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.c" bodystart="180" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__gpio_8h_1a8253544b979ba65734f8a774e1daf42e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t ss_gpio_read</definition>
+        <argsstring>(SS_GPIO_DEV_CONTEXT *ctx, uint32_t *val, uint32_t mask)</argsstring>
+        <name>ss_gpio_read</name>
+        <param>
+          <type><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>mask</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="59" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.c" bodystart="192" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="ss__gpio_8h_1ad9cb4a4d90db62df552f6ece84935558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ss_gpio_int_cb</definition>
+        <argsstring>(SS_GPIO_DEV_CONTEXT *ctx, void *param)</argsstring>
+        <name>ss_gpio_int_cb</name>
+        <param>
+          <type><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h" line="60" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.c" bodystart="203" bodyend="213"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2018,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>1)<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright<sp/>notice,<sp/>this</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>2)<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>3)<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>Synopsys,<sp/>Inc.,<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors<sp/>may</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"></highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SS_GPIO_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_SS_GPIO_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>the<sp/>wrapper<sp/>of<sp/>subsystem<sp/>gpio<sp/>driver<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__gpio_8h" kindref="compound">ip/ip_hal/inc/dev_gpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structss__gpio__dev__context" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structss__gpio__dev__context" kindref="compound">ss_gpio_dev_context</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>reg_base;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d_1gae2dabafacb4a0fa4c5d6b7176b542e72" kindref="member">dev_id</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>width;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>intno;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>reserved;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n_1ga91091c2a8f895b2d00ae61e6b607335e" kindref="member">DEV_CALLBACK</ref><sp/><sp/><sp/><sp/>int_cb;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t_1ga8b480cf689e0b43585d081d51d1b6ff6" kindref="member">DEV_GPIO_HANDLER</ref><sp/>*handlers;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio__info" kindref="compound">DEV_GPIO_INFO</ref><sp/><sp/><sp/>*info;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_bit_type;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_bit_polarity;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_bit_debounce;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/><ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>ss_gpio_open(<ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>dir);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>ss_gpio_close(<ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref><sp/>*ctx);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>ss_gpio_control(<ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>ss_gpio_write(<ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>val,<sp/>uint32_t<sp/>mask);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>ss_gpio_read(<ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref><sp/>*ctx,<sp/>uint32_t<sp/>*val,<sp/>uint32_t<sp/>mask);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ss_gpio_int_cb(<ref refid="structss__gpio__dev__context" kindref="compound">SS_GPIO_DEV_CONTEXT</ref><sp/>*ctx,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SS_GPIO_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/gpio/ss_gpio.h"/>
+  </compounddef>
+</doxygen>

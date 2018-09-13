@@ -3,45 +3,66 @@
   <compounddef id="dev__sdio_8h" kind="file">
     <compoundname>dev_sdio.h</compoundname>
     <includes refid="dev__common_8h" local="yes">dev_common.h</includes>
+    <includedby refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h" local="yes">dw_sdio_obj.h</includedby>
     <includedby refid="dw__sdio_8h" local="yes">dw_sdio.h</includedby>
     <incdepgraph>
-      <node id="1198">
+      <node id="1568">
         <label>stdint.h</label>
       </node>
-      <node id="1197">
+      <node id="1567">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="1198" relation="include">
+        <childnode refid="1568" relation="include">
         </childnode>
       </node>
-      <node id="1196">
+      <node id="1566">
         <label>dev_sdio.h</label>
         <link refid="dev_sdio.h"/>
-        <childnode refid="1197" relation="include">
+        <childnode refid="1567" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1201">
+      <node id="1574">
         <label>dw_sdio_obj.c</label>
-        <link refid="dw__sdio__obj_8c_source"/>
+        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="1199">
+      <node id="1572">
+        <label>iotdk.h</label>
+        <link refid="iotdk_8h"/>
+      </node>
+      <node id="1569">
         <label>dev_sdio.h</label>
         <link refid="dev_sdio.h"/>
-        <childnode refid="1200" relation="include">
+        <childnode refid="1570" relation="include">
+        </childnode>
+        <childnode refid="1573" relation="include">
         </childnode>
       </node>
-      <node id="1202">
+      <node id="1571">
+        <label>dw_sdio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1570">
+        <label>dw_sdio_obj.h</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
+        <childnode refid="1571" relation="include">
+        </childnode>
+        <childnode refid="1572" relation="include">
+        </childnode>
+      </node>
+      <node id="1575">
         <label>dw_sdio.c</label>
         <link refid="dw__sdio_8c_source"/>
       </node>
-      <node id="1200">
+      <node id="1573">
         <label>dw_sdio.h</label>
         <link refid="dw__sdio_8h_source"/>
-        <childnode refid="1201" relation="include">
+        <childnode refid="1574" relation="include">
         </childnode>
-        <childnode refid="1202" relation="include">
+        <childnode refid="1571" relation="include">
+        </childnode>
+        <childnode refid="1575" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

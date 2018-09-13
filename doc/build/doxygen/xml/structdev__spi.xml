@@ -363,31 +363,31 @@
 <para>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <simplesect kind="note"><para>all this details are implemented by user in user porting code </para></simplesect>
 </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="80">
+      <node id="105">
         <label>dev_spi_transfer</label>
         <link refid="structdev__spi__transfer"/>
-        <childnode refid="80" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>+next</edgelabel>
         </childnode>
       </node>
-      <node id="81">
+      <node id="106">
         <label>dev_spi_cbs</label>
         <link refid="structdev__spi__cbs"/>
       </node>
-      <node id="79">
+      <node id="104">
         <label>dev_spi_info</label>
         <link refid="structdev__spi__info"/>
-        <childnode refid="80" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>+xfer</edgelabel>
         </childnode>
-        <childnode refid="81" relation="usage">
+        <childnode refid="106" relation="usage">
           <edgelabel>+spi_cbs</edgelabel>
         </childnode>
       </node>
-      <node id="78">
+      <node id="103">
         <label>dev_spi</label>
         <link refid="structdev__spi"/>
-        <childnode refid="79" relation="usage">
+        <childnode refid="104" relation="usage">
           <edgelabel>+spi_info</edgelabel>
         </childnode>
       </node>
