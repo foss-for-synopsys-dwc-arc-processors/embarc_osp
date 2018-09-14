@@ -6,7 +6,7 @@ ARC Processors
 Overview
 ########
 
-The ARC **Hardware Abstraction Layer** (HAL) (embarc_osp/arc folder) provides hardware abstraction for
+The ARC **Hardware Abstraction Layer** (HAL) (``embarc_osp/arc`` folder) provides hardware abstraction for
 |arc|. The following functionality is provided by the ARC HAL:
 
 - :ref:`Start up <arc_hal_start>`: common startup routines or templates to handle necessary
@@ -127,10 +127,10 @@ Through this framework, you can handle specific exceptions or interrupts by
 installing the desired handlers. This can help you analyze the underlying
 details of saving and operating registers.
 
-For CPU exceptions and interrupts, entry(``exc_entry_cpu`` for CPU exception, ``exc_entry_int`` for interrupts) is called first, then handler is
-called in entry. You can define your own entry using ``exc_entry_install``.
+For CPU exceptions and interrupts, entry(``exc_entry_cpu`` for CPU exception, ``exc_entry_int`` for interrupts) is called first, after some processing then the specific exception handler is
+called in entry. You can define your own entry using ``exc_entry_install`` to replace the default behavior.
 
-A standard interrupt processing model is shown in the picture below.
+For interrupts, a standard interrupt processing model is shown in the picture below.
 
 .. image:: /pic/interrupt.jpg
     :alt: interrupt and exception processing
@@ -155,7 +155,7 @@ In this model, interrupts have the following features:
 For most Real-Time Operating Systems (RTOS), the task/process/thread priority
 is a positive number and starts from 1 (the highest priority).
 
-Negative numbers are used to define a unified priority scheme in embARC.
+Negative numbers are used to define a unified priority scheme in embARC OSP.
 Priority 0 (highest priority) is always assigned to the OS scheduler. A
 higher-priority task can preempt a lower-priority task. The OS scheduler can
 preempt any other tasks. But interrupt handling tasks with negative numbers
@@ -243,6 +243,8 @@ The DMA controller supports the following features:
 * Five data transfer modes (configurable down to one)
 * Internal and external interrupt support
 
+See ``arc_udma.h`` for further details.
+
 MPU
 :::
 
@@ -253,7 +255,7 @@ an associated attribute is not permitted, the ARCv2-based processors raises a
 Protection Violation exception, and this exception prevents the faulting
 instruction from completing.
 
-See ``arc_mpu.h`` for further details
+See ``arc_mpu.h`` for further details.
 
 Related files
 #############

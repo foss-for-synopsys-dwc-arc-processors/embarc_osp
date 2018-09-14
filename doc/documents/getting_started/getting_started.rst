@@ -26,10 +26,13 @@ We'll begin by using Git to clone the repository anonymously.
 You have successfully checked out a copy of the source code to your local
 machine.
 
+If you are not familiar with git or git doesn't work, you can also download the embARC OSP code
+through http. The latest release of embARC OSP is `here <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/releases>`__.
+
 Setting Up the Development Environment
 ##################################
 
-The embARC OSP platform supports the following development machine operating systems:
+The embARC OSP platform supports, but not limited to, the following development machine operating systems:
 
 * Microsoft Windows 10 / Windows 7
 * Ubuntu 16.04
@@ -41,7 +44,7 @@ Use the following procedure to create a new development environment
 
    software_requirement.rst
 
-.. note:: The embARC OSP uses make/gmake as a build tool snd these are provided as part of the ARC development tools.
+.. note:: The embARC OSP uses make/gmake as a build tool and these are provided as part of the ARC development tools.
 
 .. _building_a_sample_application:
 
@@ -82,7 +85,7 @@ Use the following procedures to prepare your ARC board to run/debug the embARC a
    getting_started_with_em_starter_kit.rst
    getting_started_with_hs_development_kit.rst
 
-See the following procedures to check peripherals and board settings. The peripherals are not required for all the embARC examples.
+See the following procedures to check peripherals and board settings. The peripherals are not required for all the embARC OSP examples.
 
 .. toctree::
    :maxdepth: 1

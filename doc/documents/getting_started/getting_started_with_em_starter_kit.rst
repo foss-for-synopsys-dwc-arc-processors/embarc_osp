@@ -8,7 +8,7 @@ Supported Hardware
 
 The ARC EM Starter Kit (EMSK) is an FPGA-based solution for rapid software development, code porting, software debugging, and profiling, preloaded with images for the ARC EM Family of processors. It can be extended using Digilent® Peripheral Modules (Pmods™).
 
-EMSK v1.1 and v2.3 are supported in embARC OSP.
+EMSK v1.1 v2.2 and v2.3 are supported in embARC OSP.
 
 Setting Up EMSK
 ###############

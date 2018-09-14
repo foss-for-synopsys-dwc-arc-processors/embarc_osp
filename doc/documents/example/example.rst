@@ -5,9 +5,12 @@ Examples
 
 Overview
 ########
-The embARC OSP platform comes with a large collection of examples using OS, middleware and peripherals supported in embARC OSP. These examples provide a useful
- reference and starting point for embARC developers for their own applications. The .elf files of the following examples can be loaded through JTAG, or the .bin
- files through SD card by secondary bootloader.
+
+The embARC OSP platform comes with a large collection of examples using OS,
+middleware and peripherals supported in embARC OSP. These examples provide a
+useful  reference and starting point for embARC developers for their own
+applications. The .elf files of the following examples can be loaded through
+JTAG, or the .bin  files through SD card by secondary bootloader.
 
 .. toctree::
    :maxdepth: 1
