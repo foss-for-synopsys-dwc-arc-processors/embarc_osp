@@ -1,7 +1,7 @@
 .. _middleware_layer:
 
 Middleware Packages
-==========
+===================
 
 Overview
 ########

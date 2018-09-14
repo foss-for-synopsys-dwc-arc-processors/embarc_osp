@@ -1,7 +1,7 @@
 .. _add_new_board:
 
 Adding a New Board
-#############
+##################
 
 This section describes the process to add a new board named ``myboard`` in embARC OSP.
 

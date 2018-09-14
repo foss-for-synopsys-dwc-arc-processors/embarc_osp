@@ -7,7 +7,7 @@ Use this guide to get started with your :ref:`embARC OSP <introduction_embarc_os
 development.
 
 Checking Out the embARC OSP source code
-################################
+#######################################
 
 The embARC OSP source code is hosted in a GitHub repository that supports
 cloning via git. There are scripts and such in this repo that you'll need to set up your development environment, and we'll be using Git to get this repo. If you don't have Git installed, please refer to the beginning of the host OS-specific getting started instructions below for help.
@@ -30,7 +30,7 @@ If you are not familiar with git or git doesn't work, you can also download the 
 through http. The latest release of embARC OSP is `here <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp/releases>`__.
 
 Setting Up the Development Environment
-##################################
+######################################
 
 The embARC OSP platform supports, but not limited to, the following development machine operating systems:
 
