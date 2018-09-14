@@ -1,6 +1,6 @@
 .. _example_ble_hm1x:
 
-BLE Moude: HM1X
+BLE Module: HM1X
 ###############
 
 Overview
