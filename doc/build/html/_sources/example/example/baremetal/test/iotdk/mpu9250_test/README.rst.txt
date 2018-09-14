@@ -1,7 +1,7 @@
-.. _example_mpu9250_dmp_test:
+.. _example_mpu9250_test:
 
-MPU9250_DMP_Test
-######
+MPU9250 Test
+############
 
 Overview
 ********
@@ -33,7 +33,7 @@ to run this example are as follows:
 
 .. code-block:: console
 
-    $ cd <embarc_root>/example/test/mpu9250_dmp_test
+    $ cd <embarc_root>/example/test/mpu9250_test
     $ make BOARD=iotdk TOOLCHAIN=gnu run
 
 .. note:: Make sure you have selected the correct configuration of iotdk

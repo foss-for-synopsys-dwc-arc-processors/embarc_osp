@@ -1,7 +1,7 @@
 .. _add_new_middleware:
 
 Adding a New Middleware Package
-##################
+###############################
 
 Follow the steps below to add support for a new middleware package to embARC OSP.
 

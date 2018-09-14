@@ -1,7 +1,7 @@
 .. _add_new_os:
 
 Adding support for a new OS
-##########
+###########################
 
 Follow the steps below to add a new OS to embARC OSP.
 

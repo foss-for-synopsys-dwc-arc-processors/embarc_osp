@@ -1,10 +1,10 @@
 .. _add_new_device :
 
 Adding a New Device
-##############
+###################
 
 Adding support for On-Chip IP
---------------
+-----------------------------
 
 If the HAL for the new device is already defined in embARC OSP, follow the steps below.
 
@@ -20,7 +20,7 @@ If the HAL of the new device is not defined, follow the steps below.
 * Add the corresponding makefile.
 
 Adding support for an On-Board or External Peripheral
------------------------------------
+-----------------------------------------------------
 
 * Add the driver in device/peripheral folder according to the class of peripheral. For example, a flash device xxx should be in the folder *device/peripheral/flash/xxx* folder.
 * Add the corresponding makefile.

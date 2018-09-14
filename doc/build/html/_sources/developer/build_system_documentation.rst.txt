@@ -1,7 +1,7 @@
 .. _build_system_documentation:
 
 Build System Documentation
-=========================
+==========================
 
 Overview
 ########
@@ -29,7 +29,7 @@ Make Targets
 
 embARC build system is based on make. It can be used for both the MetaWare and ARC GNU toolchains, Windows and Linux development hosts, and multiple ARC cores and boards.
 
-There are several targets to make and run embARC examples on the command line. These make targets are defined in *options/rules.mk*. All the commands below use the default make options 
+There are several targets to make and run embARC examples on the command line. These make targets are defined in *options/rules.mk*. All the commands below use the default make options
 provided in the embARC application makefile.
 
 * **make help**: Show help document about how to use make in embARC.
@@ -97,6 +97,8 @@ Most options are located in *<embARC>/options/options.mk*. If you change an opti
    | axs                    | board/axs/axs.mk                 |
    +------------------------+----------------------------------+
    | nsim                   | board/nsim/nsim.mk               |
+   +------------------------+----------------------------------+
+   | iotdk                  | board/iotdk/iotdk.mk             |
    +------------------------+----------------------------------+
    | hsdk                   | board/hsdk/hsdk.mk               |
    +------------------------+----------------------------------+

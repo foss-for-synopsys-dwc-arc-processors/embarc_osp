@@ -1,7 +1,7 @@
 .. _bsp_build_cmd:
 
 Building the BSP from the Command Line
-=========================
+======================================
 
 Build Example for EMSK
 ######################

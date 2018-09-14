@@ -27,7 +27,7 @@ toolchain. Here are the steps for running or debugging this application in
 nSIM.
 
 Using the MetaWare toolchain
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here are the steps for MetaWare toolchain, running in nSIM environment.
 
@@ -72,7 +72,7 @@ The following output will be printed on the console:
         ---end----
 
 Using the ARC GNU toolchain
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to run or debug embARC application using the ARC GNU toolchain, you also need to install nSIM tool.
 

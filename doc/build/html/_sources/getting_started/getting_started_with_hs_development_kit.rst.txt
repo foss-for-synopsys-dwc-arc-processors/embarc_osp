@@ -1,7 +1,7 @@
 .. _getting_started_with_hs_development_kit:
 
 Getting Started with the ARC HS Development Kit
-=======================================
+===============================================
 
 Supported Hardware
 ##################
