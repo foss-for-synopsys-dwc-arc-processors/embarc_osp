@@ -191,7 +191,7 @@
 <span id="arc-hal"></span><h1>ARC Processors<a class="headerlink" href="#arc-processors" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The ARC <strong>Hardware Abstraction Layer</strong> (HAL) (embarc_osp/arc folder) provides hardware abstraction for
+<p>The ARC <strong>Hardware Abstraction Layer</strong> (HAL) (<code class="docutils literal notranslate"><span class="pre">embarc_osp/arc</span></code> folder) provides hardware abstraction for
 DesignWare® ARC® processors. The following functionality is provided by the ARC HAL:</p>
 <ul class="simple">
 <li><a class="reference internal" href="#arc-hal-start"><span class="std std-ref">Start up</span></a>: common startup routines or templates to handle necessary
@@ -294,9 +294,9 @@ to the exception handler and identify exceptions with the same cause code.</li>
 Through this framework, you can handle specific exceptions or interrupts by
 installing the desired handlers. This can help you analyze the underlying
 details of saving and operating registers.</p>
-<p>For CPU exceptions and interrupts, entry(<code class="docutils literal notranslate"><span class="pre">exc_entry_cpu</span></code> for CPU exception, <code class="docutils literal notranslate"><span class="pre">exc_entry_int</span></code> for interrupts) is called first, then handler is
-called in entry. You can define your own entry using <code class="docutils literal notranslate"><span class="pre">exc_entry_install</span></code>.</p>
-<p>A standard interrupt processing model is shown in the picture below.</p>
+<p>For CPU exceptions and interrupts, entry(<code class="docutils literal notranslate"><span class="pre">exc_entry_cpu</span></code> for CPU exception, <code class="docutils literal notranslate"><span class="pre">exc_entry_int</span></code> for interrupts) is called first, after some processing then the specific exception handler is
+called in entry. You can define your own entry using <code class="docutils literal notranslate"><span class="pre">exc_entry_install</span></code> to replace the default behavior.</p>
+<p>For interrupts, a standard interrupt processing model is shown in the picture below.</p>
 <img alt="interrupt and exception processing" src="../_images/interrupt.jpg" />
 <p>In this model, interrupts have the following features:</p>
 <ul class="simple">
@@ -311,7 +311,7 @@ INT_PRI_MIN (lowest, -2 default).</li>
 </ul>
 <p>For most Real-Time Operating Systems (RTOS), the task/process/thread priority
 is a positive number and starts from 1 (the highest priority).</p>
-<p>Negative numbers are used to define a unified priority scheme in embARC.
+<p>Negative numbers are used to define a unified priority scheme in embARC OSP.
 Priority 0 (highest priority) is always assigned to the OS scheduler. A
 higher-priority task can preempt a lower-priority task. The OS scheduler can
 preempt any other tasks. But interrupt handling tasks with negative numbers
@@ -378,6 +378,7 @@ consumption DMA engine for use in the ARC EM 2.0 cores.</p>
 <li>Five data transfer modes (configurable down to one)</li>
 <li>Internal and external interrupt support</li>
 </ul>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_udma.h</span></code> for further details.</p>
 </div>
 <div class="section" id="mpu">
 <h3>MPU<a class="headerlink" href="#mpu" title="Permalink to this headline">¶</a></h3>
@@ -387,7 +388,7 @@ Read, Write, and Execute. If an attempt is made to access a region for which
 an associated attribute is not permitted, the ARCv2-based processors raises a
 Protection Violation exception, and this exception prevents the faulting
 instruction from completing.</p>
-<p>See <code class="docutils literal notranslate"><span class="pre">arc_mpu.h</span></code> for further details</p>
+<p>See <code class="docutils literal notranslate"><span class="pre">arc_mpu.h</span></code> for further details.</p>
 </div>
 </div>
 <div class="section" id="related-files">

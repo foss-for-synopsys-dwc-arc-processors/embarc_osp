@@ -6,19 +6,19 @@ Devices
 Overview
 ########
 
-The device folder in the root of embARC contains the necessary software APIs
+The ``device`` folder in the root of embARC contains the necessary software APIs
 and implementations for common device IP and external peripheral drivers. The
 device layer consists of the following components:
 
 - **Device HAL**: a device hardware abstraction layer including WNIC (Wireless
   Network Interface Controller), UART (Universal Asynchronous
   Receiver/Transmitter), SPI (Serial Peripheral Interface), IIC (Inter-
-  Integrated Circuit), GPIO (General Purpose Input Output) and SDIO (Secure
+  Integrated Circuit), I2S (Inter-IC Sound), GPIO (General Purpose Input Output) and SDIO (Secure
   Digital Input and Output).
 
 - **IP Driver Implementation**: device driver implementations based on the above device
   HAL, including DesignWare IP implementations of UART, IIC, SPI, GPIO and
-  SDIO devices.
+  SDIO devices and Designware ARC Subsystem IP implementation.
 
 - **Peripheral Driver Implementation**: peripheral driver implementations such as
   flash, sensors and PMOD modules.
@@ -45,8 +45,8 @@ The Device HAL provides abstraction for the following devices:
 
 
 These \*.h files provide abstraction APIs and macros that require corresponding
-implementations. embARC provides the device implementations in
-``device/ip/designware``, ``device/peripheral``, and ``board/xxxx/drivers``.
+implementations. embARC OSP provides the device implementations in
+``device/ip/designware``, ``device/ip/subsystem``, ``device/peripheral``, and ``board/xxxx/drivers``.
 
 Different device features are abstracted in the device HAL, such as UART, IIC,
 and SPI. Object-oriented concepts are adopted to provide common device
@@ -59,10 +59,19 @@ The IP drivers are placed in ``device/ip`` folder. Currently, the following
 Designware IP drivers are supported:
 
 * GPIO
+* UART
 * I2C
 * SPI
 * I2S
 * SDIO
+
+and the follong Designware ARC subsystem IP drivers are supported:
+
+* GPIO
+* UART
+* I2C master
+* SPI master
+* I2S master
 
 In the future, more Designware IP drivers will be added, e.g., timer, PWM, ethernet
 
@@ -94,4 +103,6 @@ include some common external peripheral drivers, especially PMOD modules.
 * TCN75, a I2C interface temperature sensor.
 * MRF24G, a SPI WiFi module.
 * RW009, a SPI WiFi module.
+* RN4020, a UART-BLE module.
+* MPU9250, a 9D IMU module.
 

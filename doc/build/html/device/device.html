@@ -184,18 +184,18 @@
 <span id="device-hal"></span><h1>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>The device folder in the root of embARC contains the necessary software APIs
+<p>The <code class="docutils literal notranslate"><span class="pre">device</span></code> folder in the root of embARC contains the necessary software APIs
 and implementations for common device IP and external peripheral drivers. The
 device layer consists of the following components:</p>
 <ul class="simple">
 <li><strong>Device HAL</strong>: a device hardware abstraction layer including WNIC (Wireless
 Network Interface Controller), UART (Universal Asynchronous
 Receiver/Transmitter), SPI (Serial Peripheral Interface), IIC (Inter-
-Integrated Circuit), GPIO (General Purpose Input Output) and SDIO (Secure
+Integrated Circuit), I2S (Inter-IC Sound), GPIO (General Purpose Input Output) and SDIO (Secure
 Digital Input and Output).</li>
 <li><strong>IP Driver Implementation</strong>: device driver implementations based on the above device
 HAL, including DesignWare IP implementations of UART, IIC, SPI, GPIO and
-SDIO devices.</li>
+SDIO devices and Designware ARC Subsystem IP implementation.</li>
 <li><strong>Peripheral Driver Implementation</strong>: peripheral driver implementations such as
 flash, sensors and PMOD modules.</li>
 </ul>
@@ -216,8 +216,8 @@ flash, sensors and PMOD modules.</li>
 </ul>
 </div>
 <p>These *.h files provide abstraction APIs and macros that require corresponding
-implementations. embARC provides the device implementations in
-<code class="docutils literal notranslate"><span class="pre">device/ip/designware</span></code>, <code class="docutils literal notranslate"><span class="pre">device/peripheral</span></code>, and <code class="docutils literal notranslate"><span class="pre">board/xxxx/drivers</span></code>.</p>
+implementations. embARC OSP provides the device implementations in
+<code class="docutils literal notranslate"><span class="pre">device/ip/designware</span></code>, <code class="docutils literal notranslate"><span class="pre">device/ip/subsystem</span></code>, <code class="docutils literal notranslate"><span class="pre">device/peripheral</span></code>, and <code class="docutils literal notranslate"><span class="pre">board/xxxx/drivers</span></code>.</p>
 <p>Different device features are abstracted in the device HAL, such as UART, IIC,
 and SPI. Object-oriented concepts are adopted to provide common device
 operation APIs and device access APIs.</p>
@@ -228,10 +228,19 @@ operation APIs and device access APIs.</p>
 Designware IP drivers are supported:</p>
 <ul class="simple">
 <li>GPIO</li>
+<li>UART</li>
 <li>I2C</li>
 <li>SPI</li>
 <li>I2S</li>
 <li>SDIO</li>
+</ul>
+<p>and the follong Designware ARC subsystem IP drivers are supported:</p>
+<ul class="simple">
+<li>GPIO</li>
+<li>UART</li>
+<li>I2C master</li>
+<li>SPI master</li>
+<li>I2S master</li>
 </ul>
 <p>In the future, more Designware IP drivers will be added, e.g., timer, PWM, ethernet</p>
 <p>Not limited to Designware IP drivers, other IP drivers can be easily supported which
@@ -259,6 +268,8 @@ include some common external peripheral drivers, especially PMOD modules.</p>
 <li>TCN75, a I2C interface temperature sensor.</li>
 <li>MRF24G, a SPI WiFi module.</li>
 <li>RW009, a SPI WiFi module.</li>
+<li>RN4020, a UART-BLE module.</li>
+<li>MPU9250, a 9D IMU module.</li>
 </ul>
 </div>
 </div>
