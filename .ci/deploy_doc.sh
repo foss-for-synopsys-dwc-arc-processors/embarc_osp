@@ -36,7 +36,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
 fi
 
 make linkcheck 2>&1 > make.log
-COMMENT_CONTENT=$(cat make.log)
+COMMENT_CONTENT=$(sed 's/$/&<br>/g' make.log)
 COMMENT_HEAD="# embarc_osp link check result\n***********************\n"
 COMMENT="${COMMENT_HEAD}${COMMENT_CONTENT}"
 
