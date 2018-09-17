@@ -18,7 +18,7 @@ env:
       
       COMMENT=none
       COMMENTS=$'curl -so/dev/null --user "$EMBARC_BOT" --request POST
-      https://api.github.com/repos/$TRAVIS_REPO_SLUG/issues/$TRAVIS_PULL_REQUEST/comments
+      https://api.github.com/repos/wangnuannuan/embarc_osp/issues/1/comments
       --data @- << DATA\n{
       "body": "$COMMENT"
       }\nDATA'
@@ -35,7 +35,7 @@ branches:
 
 before_install:
   - bash .ci/before_install.sh
-  # setup git config
+  # setup git config 
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "Huaqi.Fang@synopsys.com"
 
