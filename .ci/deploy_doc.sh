@@ -37,8 +37,8 @@ fi
 
 make linkcheck 2>&1 > make.log
 COMMENT_CONTENT=$(cat make.txt)
-COMMENT_HEAD="# embarc_osp link check result<br>***********************<br>"
-COMMENT=${COMMENT_HEAD}"${COMMENT_CONTENT}"
+COMMENT_HEAD="# embarc_osp link check result\n***********************\n"
+COMMENT="${COMMENT_HEAD}${COMMENT_CONTENT}"
 
 bash -c "$COMMENTS"
 exit 0
