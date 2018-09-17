@@ -36,10 +36,10 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
 fi
 make linkcheck 2>&1 > make.log
 cat make.log | while read line; do
-    COMMENT_CONTENT=`"$line"`
+    COMMENT=`"$line"`
 done
 COMMENT_HEAD="# embarc_osp link check result\n***********************\n"
-COMMENT=${COMMENT_HEAD}${COMMENT_CONTENT}
+# COMMENT=${COMMENT_HEAD}${COMMENT_CONTENT}
 bash -c "$COMMENTS"
 exit 0
 # Check if this is master branch
