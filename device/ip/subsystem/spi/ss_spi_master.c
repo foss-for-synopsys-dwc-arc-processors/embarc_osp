@@ -220,27 +220,32 @@ int32_t ss_spi_master_control(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 
 				while (spi_xfer != NULL) {
 					if (spi_xfer->rx_len == 0) {
+
 						ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
 						val32 = SPI_TRANSMIT_ONLY_MODE;
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
 
 						while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
+
 					} else if (spi_xfer->tx_len == 0) {
+
 						ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
 						val32 = SPI_RECEIVE_ONLY_MODE;
-
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
 						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
 
 						while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
+
 					} else if (spi_xfer->rx_ofs == spi_xfer->tx_len && spi_xfer->tx_ofs == 0) {
+
 						ctx->flags = SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX;
 						val32 = SPI_RECEIVE_AFTER_TRANSMIT_MODE;
-
 						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
-						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
+						val32 = spi_xfer->tx_len + spi_xfer->rx_len;
+						io_spi_master_read(dev_id, spi_xfer->rx_buf, &val32);
 						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
+
 						while (ctx->flags & (SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX));
 					} else {
 
