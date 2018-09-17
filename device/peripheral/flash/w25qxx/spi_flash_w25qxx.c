@@ -58,13 +58,10 @@
  */
 Inline int32_t spi_send_cmd(W25QXX_DEF_PTR dev, DEV_SPI_TRANSFER *xfer)
 {
-	uint32_t cpu_status;
 	DEV_SPI_PTR spi_flash;
 	int32_t ercd = 0;
 
 	spi_flash = spi_get_dev(dev->spi_master);
-
-	cpu_status = cpu_lock_save();
 
 	/* select device */
 	spi_flash->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID((uint32_t)dev->cs));
@@ -74,7 +71,6 @@ Inline int32_t spi_send_cmd(W25QXX_DEF_PTR dev, DEV_SPI_TRANSFER *xfer)
 	/* deselect device */
 	spi_flash->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID((uint32_t)dev->cs));
 
-	cpu_unlock_restore(cpu_status);
 	return ercd;
 }
 
