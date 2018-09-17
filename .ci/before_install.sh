@@ -29,4 +29,5 @@ fi
     pip install PrettyTable || die
     pip install colorama || die
     pip install configparser || die
+    pip install requests || die
 }
