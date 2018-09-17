@@ -27,7 +27,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
     echo "Don't push built docs to gh-pages for pull request "
     make linkcheck 2>&1 > make.log
     COMMENT_CONTENT=$(sed 's/$/&<br>/g' make.log)
-    COMMENT_HEAD="# embarc_osp link check result\n***********************\n"
+    COMMENT_HEAD="# Sphinx link check result\n***********************\n"
     COMMENT="${COMMENT_HEAD}${COMMENT_CONTENT}"
     bash -c "$COMMENTS"
     exit 0
