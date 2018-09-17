@@ -5,9 +5,9 @@ ARC IoT Development Kit
 
 The ARC IoT Development Kit (IoTDK) Platform supports the `DesignWare ARC Data
 Fusion IP Subsystem (DFSS) <https://www.synopsys.com/dw/ipdir.php?ds=smart-
-data-fusion-subsystem>`__. The DesignWare ARC DFSS is a complete, pre-
-verified, hardware and software solution optimized for a wide range of ultra-
-low power IoT applications. It is designed for fast and easy integration
+data-fusion-subsystem>`__. The DesignWare ARC DFSS is a complete, pre-verified,
+hardware and software solution optimized for a wide range of ultra-low
+power IoT applications. It is designed for fast and easy integration
 within a larger system context, including ARC EM9D, an extensive collection of
 I/O functions and fast math (trigonometric) accelerator.
 
@@ -304,5 +304,5 @@ Flashing
 Although IoTDK has eFlash and spi flash, you cannot directly flash your
 application into IoTDK through debugger. You need other tools/applications
 (e.g., u-boot or embarc bootloader) to do this. The related introduction is
-work in progress.
+working in progress.
 
