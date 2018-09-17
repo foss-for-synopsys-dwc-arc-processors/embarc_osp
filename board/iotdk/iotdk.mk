@@ -64,6 +64,13 @@ OPENOCD_CFG_FILE ?= $(BOARD_IOTDK_DIR)/configs/openocd/snps_iotdk.cfg
 
 OPENOCD_OPTIONS ?= -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 
+## hardware debug options
+# debug speed config, iotdk starts as 16 Mhz, so the max jtag freq. is
+# 8 Mhz, for mdb, the default value is 10 Mhz
+ifeq ($(strip $(DIG_SPEED)), )
+DIG_SPEED = 8000000
+endif
+
 ## Build Rules
 # onchip ip object rules
 ifdef ONCHIP_IP_LIST
