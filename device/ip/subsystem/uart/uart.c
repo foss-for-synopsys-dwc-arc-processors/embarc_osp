@@ -546,7 +546,7 @@ void io_uart_ioctl(uint32_t dev_id, uint32_t cmd, void *arg)
 #endif
     case IO_UART_SET_LCR:
     /* leave the LDAB bit cleared */
-    REG_WRITE(UART_LCR, (*((uint32_t *) arg) & ~((~0x0) << 7)));
+    REG_WRITE(UART_LCR, (*((uint32_t *) arg) & 0x7f));
     break;
     case IO_UART_GET_LCR:
     *((uint32_t *) arg) = REG_READ(UART_LCR);

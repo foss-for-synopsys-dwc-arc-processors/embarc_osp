@@ -42,6 +42,8 @@
 /* Notes:
  *
  */
+#ifdef IO_I2C_SLV0_PRESENT
+#define I2C_DEV_PRESENT
 
 static _Interrupt void i2c_slv0_err_ISR();
 static _Interrupt void i2c_slv0_rx_avail_ISR();
@@ -62,10 +64,6 @@ static _Uncached uint32_t i2c_dmatx_descriptors[8 * 1];
 #define I2C_SLV_DMA_CTRL_SIZE_POS      (8)
 #define I2C_SLV_DMA_CTRL_XFER_POS      (21)
 
-
-#ifdef IO_I2C_SLV0_PRESENT
-
-#define I2C_DEV_PRESENT
 static i2c_info_t i2c_slave_devs[] = {
     {.instID = 0,
      .reg_base = AR_IO_I2C_SLV0_CON,
