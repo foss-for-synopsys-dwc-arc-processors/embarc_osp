@@ -89,7 +89,7 @@ int main(void)
 
 	nt_io = get_ntshell_io(NTSHELL_ID_NET);
 	if (net_ntshell_handle == NULL) {
-		xTaskCreate(ntshell_task, "net_ntshell", 512, (void *)nt_io, TSKPRI_NET_NTSHELL, &net_ntshell_handle);
+		xTaskCreate(ntshell_task, "net_ntshell", 2048, (void *)nt_io, TSKPRI_NET_NTSHELL, &net_ntshell_handle);
 	}
 
 	return 0;

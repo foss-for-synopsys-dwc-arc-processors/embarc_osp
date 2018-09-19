@@ -450,9 +450,11 @@ static void prv_display_objects(char * buffer,
                     break;
                 case LWM2M_CONN_MONITOR_OBJECT_ID:
                     break;
+#if defined(BOARD_EMSK)
                 case LWM2M_FIRMWARE_UPDATE_OBJECT_ID:
                     display_firmware_object(object);
                     break;
+#endif
                 case LWM2M_LOCATION_OBJECT_ID:
                     display_location_object(object);
                     break;
@@ -709,12 +711,14 @@ int lwm2mclient(lwm2m_client_info *client_info)
         return -1;
     }
 
+#if defined(BOARD_EMSK)
     objArray[1] = get_object_firmware();
     if (NULL == objArray[1])
     {
         EMBARC_PRINTF("Failed to create Firmware object\r\n");
         return -1;
     }
+#endif
 
     objArray[2] = get_test_object();
     if (NULL == objArray[2])

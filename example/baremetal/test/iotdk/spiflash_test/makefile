@@ -1,26 +1,18 @@
 # Application name
-APPL ?= freertos_net_ntshell
+APPL ?= spiflash_test
 
-EXT_DEV_LIST += wifi/mrf24g
+override BOARD = iotdk
 
-ifeq ($(BOARD),emsk)
-EXT_DEV_LIST += sensor/temperature/adt7420
-endif
 
+# onboard device rules
+EXT_DEV_LIST += flash/w25qxx
 
 #
 # root dir of embARC
 #
-EMBARC_ROOT = ../../../..
+EMBARC_ROOT = ../../../../..
 
-# Selected OS
-OS_SEL ?= freertos
-# Select Middleware Packages
-MID_SEL += common ntshell lwip lwip-contrib
-ifeq ($(BOARD), emsk)
-MID_SEL += fatfs
-endif
-LWIP_CONTRIB_APPS ?=
+MID_SEL = common
 
 # application source dirs
 APPL_CSRC_DIR = .

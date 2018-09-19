@@ -70,7 +70,7 @@
  * MEM_SIZE: the size of the heap memory. If the application will send
  * a lot of data that needs to be copied, this should be set high.
  */
-#define MEM_SIZE                        (8*1024)
+#define MEM_SIZE                        (4*1024)
 
 
 /*
@@ -307,7 +307,7 @@
  * LWIP_DNS==1: Turn on DNS module. UDP must be available for DNS
  * transport.
  */
-#define LWIP_DNS                        1
+#define LWIP_DNS                        0
 
 /*
    ---------------------------------

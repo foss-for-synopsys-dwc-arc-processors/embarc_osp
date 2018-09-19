@@ -86,7 +86,7 @@
 #define configTICK_RATE_HZ                      ( ( TickType_t ) 1000 )
 #define configMAX_PRIORITIES                    ( 10 )
 #define configMINIMAL_STACK_SIZE                ( ( unsigned short ) 104 )
-#define configTOTAL_HEAP_SIZE                   ( ( size_t ) ( 256 * 1024 ) )
+#define configTOTAL_HEAP_SIZE                   ( ( size_t ) ( 24 * 1024 ) )
 #define configMAX_TASK_NAME_LEN                 ( 10 )
 #define configUSE_TRACE_FACILITY                0
 #define configUSE_16_BIT_TICKS                  0
@@ -101,13 +101,13 @@
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
 
-#define INCLUDE_vTaskPrioritySet                1
-#define INCLUDE_uxTaskPriorityGet               1
-#define INCLUDE_vTaskDelete                     1
+#define INCLUDE_vTaskPrioritySet                0
+#define INCLUDE_uxTaskPriorityGet               0
+#define INCLUDE_vTaskDelete                     0
 #define INCLUDE_vTaskCleanUpResources           0
 #define INCLUDE_vTaskSuspend                    1
 #define INCLUDE_vTaskDelayUntil                 1
 #define INCLUDE_vTaskDelay                      1
-#define INCLUDE_xTaskGetCurrentTaskHandle       1
+#define INCLUDE_xTaskGetCurrentTaskHandle       0
 
 #endif /* FREERTOS_CONFIG_H */
