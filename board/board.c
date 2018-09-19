@@ -77,7 +77,7 @@ static TaskHandle_t task_handle_wifi;
 #ifdef MID_NTSHELL
 
 #ifndef TASK_STACK_SIZE_NTSHELL
-#define TASK_STACK_SIZE_NTSHELL	MIN_STACKSZ(65535)
+#define TASK_STACK_SIZE_NTSHELL	MIN_STACKSZ(4096)
 #endif
 
 #ifndef TASK_PRI_NTSHELL
@@ -88,7 +88,7 @@ static TaskHandle_t task_handle_ntshell;
 #else /* No middleware ntshell,will activate main task */
 
 #ifndef TASK_STACK_SIZE_MAIN
-#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(65535)
+#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(4096)
 #endif
 
 #ifndef TASK_PRI_MAIN

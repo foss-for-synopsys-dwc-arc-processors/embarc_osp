@@ -47,7 +47,7 @@
 #ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
 #define CMD_DEBUG(fmt, ...)			EMBARC_PRINTF(fmt, ##__VA_ARGS__)
 #endif
-#define BOOTLOADER_STARTADDRESS		0x17f00000
+
 #define TSKPRI_LWM2M_CLIENT	(configMAX_PRIORITIES-2)	/**< lwm2m task priority */
 
 /* lwM2M client info */
@@ -56,6 +56,8 @@ static int lwm2m_client_conn_stat = 0;
 static int lwm2m_client_start_flag = 0;
 static TaskHandle_t task_lwm2m_client_handle = NULL;
 
+#if defined(BOARD_EMSK)
+#define BOOTLOADER_STARTADDRESS		0x17f00000
 typedef int (*fp_t)(void);
 
 void go_bootloader(){
@@ -77,6 +79,15 @@ void go_bootloader(){
 
 }
 
+void task_lwm2m_update(void *par)
+{
+	handle_sigint(2);
+	vTaskDelay(2000 / portTICK_RATE_MS);
+	go_bootloader();
+}
+#endif
+
+
 void task_lwm2m_client(void *par)
 {
 	unsigned int cpu_status;
@@ -95,13 +106,6 @@ void task_lwm2m_client(void *par)
 		cpu_unlock_restore(cpu_status);
 		vTaskSuspend(NULL);
 	}
-}
-
-void task_lwm2m_update(void *par)
-{
-	handle_sigint(2);
-	vTaskDelay(2000 / portTICK_RATE_MS);
-	go_bootloader();
 }
 
 #define min(x,y) ((x) < (y) ? (x) : (y))

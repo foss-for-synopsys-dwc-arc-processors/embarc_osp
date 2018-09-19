@@ -16,7 +16,7 @@
  *    David Navarro, Intel Corporation - Please refer to git log
  *    Bosch Software Innovations GmbH - Please refer to git log
  *    Pascal Rieux - Please refer to git log
- *    
+ *
  *******************************************************************************/
 
 /*
@@ -33,7 +33,7 @@
  * 4 update supported objects  read/write
  * 5 update result             read
  */
-
+#if defined(BOARD_EMSK)
 #include "liblwm2m.h"
 
 
@@ -343,3 +343,5 @@ lwm2m_object_t * get_object_firmware(void)
 
     return firmwareObj;
 }
+
+#endif

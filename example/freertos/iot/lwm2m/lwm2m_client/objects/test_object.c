@@ -16,7 +16,7 @@
  *    Fabien Fleutot - Please refer to git log
  *    Axel Lorente - Please refer to git log
  *    Achim Kraus, Bosch Software Innovations GmbH - Please refer to git log
- *    
+ *
  *******************************************************************************/
 
 /*

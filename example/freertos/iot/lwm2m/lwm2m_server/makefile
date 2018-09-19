@@ -1,14 +1,14 @@
 # Application name
 APPL ?= freertos_iot_lwm2m_server
 
-EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
+EXT_DEV_LIST += wifi/mrf24g
 
 ##
 # HEAP & STACK SETTINGS
 # For LwM2M Stack Usage
 ##
-HEAPSZ ?= 81920
-STACKSZ ?= 81920
+HEAPSZ ?= 8192
+STACKSZ ?= 2048
 
 #
 # root dir of embARC
@@ -18,7 +18,7 @@ EMBARC_ROOT = ../../../../..
 # Selected OS
 OS_SEL ?= freertos
 # Select Middleware Packages
-MID_SEL = common lwip lwip-contrib wakaama ntshell fatfs
+MID_SEL = common lwip lwip-contrib wakaama ntshell
 LWIP_CONTRIB_APPS ?=
 
 # application source dirs
@@ -29,7 +29,9 @@ APPL_ASMSRC_DIR = .
 APPL_INC_DIR = .
 
 # application defines
-APPL_DEFINES = -DLWM2M_SERVER_MODE
+APPL_DEFINES += -DLWM2M_SERVER_MODE -DNTSHELL_USE_CMDS_FS=0 \
+	-DNTSHELL_USE_CMDS_ARC=0 -DNTSHELL_USE_CMDS_EXTEND=0 \
+	-DNTSHELL_USE_CMDS_PERIPHERAL=0
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
