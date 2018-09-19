@@ -157,6 +157,9 @@
 
 #define button_read(x) 			1
 #define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
+#define led_read(mask)			(0x0)
+#define led_toggle(mask)
+#define switch_read(mask)		(0x0)
 
 /* iotdk DFSS GPIO configuration */
 // #define BOARD_GPIO_PORT_A			DFSS_GPIO_PORT_A
