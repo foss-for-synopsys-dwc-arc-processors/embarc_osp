@@ -46,6 +46,12 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
 	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
 #endif
+
+#ifdef BOARD_IOTDK
+	{(void *)AR_IO_UART0_RBR_THR_DLL, 0x100, SECURESHIELD_AC_AUX},
+	{default_interrupt_handler, IO_UART0_INTR, SECURESHIELD_AC_IRQ},
+	{(void *)BASE_ADDR_SYSCONFIG, 0x1000, SECURESHIELD_ACDEF_UPERIPH},
+#endif
 	{(void *)0x43, 0x1, SECURESHIELD_AC_AUX},
 	{default_interrupt_handler, INTNO_SWI0, SECURESHIELD_AC_IRQ},
 	{default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ},
