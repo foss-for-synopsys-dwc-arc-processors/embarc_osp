@@ -141,9 +141,9 @@ static void io_uart_poll_write(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t
     uint32_t i = 0;
     uint32_t len;
 
-    /* disbale tx interrupt */
+    /* disbale uart interrupt */
     old_val = REG_READ(UART_IER);
-    REG_WRITE( UART_IER, (old_val & ~0x2) | 0x80);
+    REG_WRITE(UART_IER, 0x80);
 
     len = *size;
     while (i < len) {
@@ -158,12 +158,18 @@ static void io_uart_poll_read(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t 
 {
     uint32_t i = 0;
     uint32_t len;
+    uint32_t old_val;
+
+    old_val = REG_READ(UART_IER);
+    REG_WRITE(UART_IER, 0x80);
 
     len = *size;
     while (i < len) {
         while (!(REG_READ(UART_LSR) & 0x1)); // wait data ready
         data[i++] = REG_READ(UART_RBR);
     }
+
+    REG_WRITE(UART_IER, old_val);
 }
 
 static void io_uart_rx_int(SS_UART_DEV_CONTEXT *ctx, uint32_t enable)
