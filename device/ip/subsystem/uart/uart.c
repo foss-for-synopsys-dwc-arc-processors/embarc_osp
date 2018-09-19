@@ -815,6 +815,11 @@ static void uart_isr_proc(uint32_t dev_id)
 
         break;
         }
+    case 0x7:
+        {
+        val = REG_READ(UART_USR);//update IIR busy status by read Uart Status Register
+        break;
+        }
     default:
         {           /* something wrong; at least, disable interrupts */
         REG_WRITE(UART_IER, 0x0);
