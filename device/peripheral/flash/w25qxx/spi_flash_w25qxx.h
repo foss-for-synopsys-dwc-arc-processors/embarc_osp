@@ -55,6 +55,7 @@ typedef struct w25qxx_t {
 
 	uint32_t page_sz;
 	uint32_t sector_sz;
+	uint8_t write_buf[4+FLASH_PAGE_SIZE];
 } W25QXX_DEF, * W25QXX_DEF_PTR;
 
 #define W25QXX_DEF(name, spi_master_id, cs_line, page, sector) \

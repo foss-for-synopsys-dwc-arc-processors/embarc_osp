@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -28,59 +28,53 @@
  *
 --------------------------------------------- */
 
-#include "embARC.h"
-#include "embARC_debug.h"
+#ifndef _AT_PARSER_H_
+#define _AT_PARSER_H_
 
-#include "spi_flash_w25qxx.h"
+#include "ez_sio.h"
+#include "embARC_error.h"
 
+#define AT_OK 			0
+#define AT_ERROR 		-1
+#define AT_OK_STR		"OK"
+#define AT_ERROR_STR	"ERROR"
 
-W25QXX_DEF(w25q16dv, 0, 0, 0x100, 0x1000);
+#define AT_RX_BUFSIZE	512
+#define AT_TX_BUFSIZE	128
 
-#define DATA_BUF_SIZE 128
-#define SPI_FLASH_ADDRESS 0x1000
+#define AT_NORMAL_TIMEOUT 	100
+#define AT_LONG_TIMEOUT 	5000
+#define AT_EXTRA_TIMEOUT 	20000
 
-uint32_t data_buf[DATA_BUF_SIZE / 4];
+typedef enum {
+	AT_LIST,
+	AT_READ,
+	AT_WRITE,
+	AT_EXECUTE
+}AT_MODE;
 
-int main(void)
-{
-	uint32_t id;
-	int32_t data_len;
-	int32_t i;
+typedef char * AT_STRING;
 
-	w25qxx_init(w25q16dv, 100000);
+/** HM1X object type */
+typedef struct {
+	uint32_t uart_id;
+	EZ_SIO *psio;
+} AT_PARSER_DEF, *AT_PARSER_DEF_PTR;
 
-	id = w25qxx_read_id(w25q16dv);
-	EMBARC_PRINTF("Device ID = %x\r\n",id);
+#define AT_PARSER_DEFINE(NAME, UART_ID) \
+	AT_PARSER_DEF __ ## NAME = { \
+			.uart_id = UART_ID, \
+			.psio = NULL, \
+	}; \
+	AT_PARSER_DEF_PTR NAME = &__ ## NAME
 
-	for (i = 0; i < (DATA_BUF_SIZE / 4); i++) {
-		data_buf[i] = i + (i<<8) + (i<<16) + (i<<24);
-	}
+int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate);
+void	at_parser_deinit(AT_PARSER_DEF_PTR obj);
+int32_t at_read(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt);
+int32_t at_write(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt);
+int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...);
+int32_t at_get_reply(AT_PARSER_DEF_PTR obj, char *buf, uint32_t timeout);
 
-	if (w25qxx_erase(w25q16dv, SPI_FLASH_ADDRESS, 1024) < 0) {
-		EMBARC_PRINTF("errase error \r\n");
-		while (1);
-	}
+int32_t at_test(AT_PARSER_DEF_PTR obj);
 
-	if (w25qxx_write(w25q16dv, SPI_FLASH_ADDRESS, DATA_BUF_SIZE, data_buf) < 0) {
-		EMBARC_PRINTF("write error\r\n");
-		while (1);
-	}
-
-	data_len = w25qxx_read(w25q16dv, SPI_FLASH_ADDRESS, DATA_BUF_SIZE, data_buf);
-
-
-	if (data_len > 0) {
-		EMBARC_PRINTF("read %d bytes\r\n", data_len);
-
-		for (i = 0; i < (DATA_BUF_SIZE / 4); i += 4) {
-			EMBARC_PRINTF("%08X, %08X, %08X, %08X\r\n",
-				data_buf[i + 0], data_buf[i + 1],
-				data_buf[i + 2], data_buf[i + 3]);
-
-		}
-	} else {
-		EMBARC_PRINTF("read error %d\r\n", data_len);
-	}
-
-	while (1);
-}
+#endif /*_AT_PARSER_H_*/
