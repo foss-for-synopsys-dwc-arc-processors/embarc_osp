@@ -47,13 +47,13 @@ int main(void)
 	int32_t data_len;
 	int32_t i;
 
-	w25qxx_init(w25q16dv, 1000000);
+	w25qxx_init(w25q16dv, 100000);
 
 	id = w25qxx_read_id(w25q16dv);
 	EMBARC_PRINTF("Device ID = %x\r\n",id);
 
 	for (i = 0; i < (DATA_BUF_SIZE / 4); i++) {
-		data_buf[i] = i;
+		data_buf[i] = i + (i<<8) + (i<<16) + (i<<24);
 	}
 
 	if (w25qxx_erase(w25q16dv, SPI_FLASH_ADDRESS, 1024) < 0) {
@@ -73,7 +73,7 @@ int main(void)
 		EMBARC_PRINTF("read %d bytes\r\n", data_len);
 
 		for (i = 0; i < (DATA_BUF_SIZE / 4); i += 4) {
-			EMBARC_PRINTF("%x, %x, %x, %x\r\n",
+			EMBARC_PRINTF("%08X, %08X, %08X, %08X\r\n",
 				data_buf[i + 0], data_buf[i + 1],
 				data_buf[i + 2], data_buf[i + 3]);
 
