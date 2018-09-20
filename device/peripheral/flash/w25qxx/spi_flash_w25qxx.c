@@ -33,6 +33,7 @@
 #include "board.h"
 #include "dev_spi.h"
 #include "arc_exception.h"
+#include "string.h"
 
 /**
  * \name W25QXX SPI Flash Commands
@@ -49,6 +50,7 @@
 /** @} end of name */
 
 #define W25QXX_NOT_VALID	(0xFFFFFFFF)
+
 
 /**
  * \brief	spi flash spi send command to operate spi flash
@@ -131,6 +133,7 @@ int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev)
 			local_buf[0] = WRSR; // write status
 			local_buf[1] = 0x00; // write status
 			local_buf[2] = 0x00; // write status
+
 
 			DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, local_buf, 0, 3);
 			DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, NULL, 0, 0);
@@ -312,10 +315,7 @@ int32_t w25qxx_erase(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size)
  */
 int32_t w25qxx_write(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, const void *data)
 {
-
-	uint8_t local_buf[4];
 	DEV_SPI_TRANSFER cmd_xfer;
-	DEV_SPI_TRANSFER data_xfer;
 
 	uint32_t first = 0;
 	uint32_t size_orig = size;
@@ -337,18 +337,20 @@ int32_t w25qxx_write(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, const 
 
 		first = first < size ? first : size;
 
-		local_buf[0] = PP;
-		local_buf[1] = (address >> 16) & 0xff;
-		local_buf[2] = (address >> 8) & 0xff;
-		local_buf[3] = address  & 0xff;
+		dev->write_buf[0] = PP;
+		dev->write_buf[1] = (address >> 16) & 0xff;
+		dev->write_buf[2] = (address >> 8) & 0xff;
+		dev->write_buf[3] = address  & 0xff;
 
-		DEV_SPI_XFER_SET_TXBUF(&data_xfer, data, 0, first);
-		DEV_SPI_XFER_SET_RXBUF(&data_xfer, NULL, 0, 0);
-		DEV_SPI_XFER_SET_NEXT(&data_xfer, NULL);
+		memcpy(&(dev->write_buf[4]), data, first);
 
-		DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, local_buf, 0, 4);
+		// DEV_SPI_XFER_SET_TXBUF(&data_xfer, data, 0, first);
+		// DEV_SPI_XFER_SET_RXBUF(&data_xfer, NULL, 0, 0);
+		// DEV_SPI_XFER_SET_NEXT(&data_xfer, NULL);
+
+		DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, dev->write_buf, 0, 4+first);
 		DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, NULL, 0, 0);
-		DEV_SPI_XFER_SET_NEXT(&cmd_xfer, &data_xfer);
+		DEV_SPI_XFER_SET_NEXT(&cmd_xfer, NULL);
 
 		if (spi_send_cmd(dev, &cmd_xfer) != 0) {
 			return -1;
