@@ -71,7 +71,8 @@
 
 int main(void)
 {
-	EMBARC_PRINTF("Now Open Your Browser Enter The IPAddr Show On Terminal, you will get an webpage servered on EMSK\r\n");
+	EMBARC_PRINTF("Now Open Your Browser Enter The IPAddr Show On Terminal"
+		 ", you will get an webpage servered on your board\r\n");
 	http_server_netconn_init();
 
 	return 0;
