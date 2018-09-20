@@ -97,24 +97,25 @@ and integer dividers which allows for accurate fine-tuning of the system clocks 
 Configuration switches
 ----------------------
 
+.. image:: /pic/iotdk_board_switch.jpg
+    :alt: ARC IoTDK switches
+
+The "On" and "Off" position for all four switches are depicted in the figure above, please see details below for function of each switch:
+
 1. FWU switch (This switch is used for Firmware Updates)
-    Ensure that this switch is set to “off” as depicted on the left (default position).
     The “off” setting ensures that the EM9D Core starts executing the U-Boot bootloader stored in the embedded
     FLASH. Setting this switch in the “on” position is only required if the U-Boot bootloader residing in the
     embedded FLASH needs to be updated.
 
 2. Clk32_S switch (This switch is used to select the 32.768 KHz clock source)
-    Ensure that this switch is set to “off” as depicted on the left (default position)
     The “off” setting selects the on-board 32.768 KHz Oscillator. The “on” setting selects the 32.768 KHz
     Crystal (and corresponding Xtal I/O Pads).
 
 3. BSM switch (This switch controls manual or automatic booting of the ARC IoTDK)
-    Ensure that this switch is set to “off” as depicted on the left (default position).
     The “off” position indicates Manual mode: the ARC IoTDK only starts booting after the START button is pushed. This is the default setting
     The “on” position selects Automatic mode: the ARC IoTDK automatically starts booting after Reset.
 
 4. EXE switch (This switch controls if the EM9D Core continues with EXEcution or jumps into HALT mode)
-    Ensure that this switch is set to “off” as depicted on the left (default position)
     The “off” position selects EXEcution mode. The “on” position select HALT mode.
     In case the EM9D continues in EXEcution mode, depending on the FWU switch setting, the Core
     either continues execution of the U-Boot bootloader or starts executing the Firmware Update procedure.
@@ -236,6 +237,7 @@ To use embARC OSP applications on the IoTDK board, the following items are requi
 Set up the IoTDK
 ****************
 To run embARC OSP applications on IoTDK, you need to setup the board correctly
+
 * Connect the digilent usb cable from your host to the board.
 * (optional) Connect the 5V DC power supply to your board if necessary.
 
@@ -250,8 +252,7 @@ serial output:
 On your development environment, you will need to:
 
 * Open a serial port emulator (i.e. minicom, putty, screen, etc)
-* Specify the tty driver name, for example, on Linux this may be :file:`/dev/ttyUSB1`
-  on Windows this may be *COMx*
+* Specify the tty driver name, for example, on Linux this may be :file:`/dev/ttyUSB1`; on Windows this may be *COMx*
 * Set the communication settings to:
 
 ========= =====
