@@ -50,7 +50,7 @@ static FATFS sd_card_fs;	/* File system object for each logical drive */
 #ifdef OS_FREERTOS
 /* Note: Task size in unit of StackType_t */
 /* Note: Stack size should be small than 65536, since the stack size unit is uint16_t */
-#define MIN_STACKSZ(size)	(MIN_CALC((size)*sizeof(StackType_t), configTOTAL_HEAP_SIZE>>3)/sizeof(StackType_t))
+#define MIN_STACKSZ(size)	(MIN_CALC(size, configTOTAL_HEAP_SIZE) / sizeof(StackType_t))
 
 #ifdef MID_LWIP
 
@@ -88,7 +88,7 @@ static TaskHandle_t task_handle_ntshell;
 #else /* No middleware ntshell,will activate main task */
 
 #ifndef TASK_STACK_SIZE_MAIN
-#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(4096)
+#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(1024)
 #endif
 
 #ifndef TASK_PRI_MAIN
