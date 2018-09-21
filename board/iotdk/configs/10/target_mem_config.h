@@ -32,16 +32,20 @@
 
 #include "arc_feature_config.h"
 
+#ifdef USE_APPL_MEM_CONFIG
+#include "appl_mem_config.h"
+#endif
+
 #define BOOT_SPI_FLASH_SIZE		0x200000
 #define BOOT_SPI_FLASH_BASE		0x10000000
 
 #define ONCHIP_FLASH_SIZE		0x40000
 #define ONCHIP_FLASH_BASE		0x0
 
-
-#ifdef USE_APPL_MEM_CONFIG
-#include "appl_mem_config.h"
-#endif
+#define ARC_X_MEM_START 0xC0000000
+#define ARC_X_MEM_SIZE	0x8000
+#define ARC_Y_MEM_START 0xD0000000
+#define ARC_Y_MEM_SIZE	0x8000
 
 /**
  * The unit of XXXX_SIZE is Byte
