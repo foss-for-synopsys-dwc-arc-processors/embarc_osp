@@ -376,6 +376,8 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 
 
 def send_pull_request_comment(columns, results):
+    job = os.environ.get("NAME")
+    comment_job = "## " + job + "\n"
     if len(results)>0:
         head = "|".join(columns) + "\n"
         table_format =  "|".join(["---"]*len(columns)) + "\n"
@@ -387,7 +389,7 @@ def send_pull_request_comment(columns, results):
                 comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
             comment = comment.rstrip("|") + "\n"
             comments += comment
-        comment_on_pull_request(table_head + comments)
+        comment_on_pull_request(comment_job + table_head + comments)
 
 
 def show_results(results, expected=None):
