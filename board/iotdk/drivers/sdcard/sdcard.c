@@ -75,8 +75,8 @@ uint32_t diskio_get_fattime(void)
 FATFS_DISKIO *get_fatfs_diskio(uint32_t drvid)
 {
 	switch (drvid) {
-#if (USE_HUANGSHAN_SDCARD_SDIO_0)
-		case HUANGSHAN_SDCARD_0_DRVID:
+#if (USE_IOTDK_SDCARD_SDIO_0 )
+		case IOTDK_SDCARD_0_DRVID:
 			return &sdcard_sdio_0_diskio;
 			break;
 #endif

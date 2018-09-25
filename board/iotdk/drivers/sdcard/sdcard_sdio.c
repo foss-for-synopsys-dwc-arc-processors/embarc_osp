@@ -29,9 +29,9 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO	HUANGSHAN SDCard SDIO Interface Driver
+ * \defgroup	BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO	IOTDK SDCard SDIO Interface Driver
  * \ingroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
- * \brief	HUANGSHAN Fatfs SDCard SDIO Interface Driver
+ * \brief	IOTDK Fatfs SDCard SDIO Interface Driver
  * \details
  *		Realize the sdcard driver using spi interface for fatfs, under the abstract of
  *	fatfs diskio.
@@ -40,7 +40,7 @@
 /**
  * \file
  * \ingroup	BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO
- * \brief	sdcard driver using spi interface for fatfs
+ * \brief	sdcard driver using SDIO interface for fatfs
  */
 
 /**
@@ -71,7 +71,7 @@
 
 #define SDCARD_SDIO_ID		0
 
-#if (USE_HUANGSHAN_SDCARD_SDIO_0)
+#if (USE_IOTDK_SDCARD_SDIO_0)
 
 static FS_SDCARD_SDIO_CTRL sdcard_sdio0 = {
 	.id = 0,
@@ -123,7 +123,7 @@ FATFS_DISKIO sdcard_sdio_0_diskio = {
 
 
 
-#endif /* USE_HUANGSHAN_SDCARD_SDIO_0 */
+#endif /* USE_IOTDK_SDCARD_SDIO_0 */
 
 #endif /* MID_FATFS */
 /** @} end of group BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO */
