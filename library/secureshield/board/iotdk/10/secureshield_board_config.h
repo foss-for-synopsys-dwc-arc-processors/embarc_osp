@@ -1,4 +1,4 @@
-/* ------------------------------------------
+/*------------------------------------------
  * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,93 +27,58 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef _TARGET_MEM_CONFIG_H_
-#define _TARGET_MEM_CONFIG_H_
+#ifndef _SECURESHIELD_BOARD_CONFIG_H_
+#define _SECURESHIELD_BOARD_CONFIG_H_
 
-#include "arc_feature_config.h"
+#include "container_config.h"
 
-#ifdef USE_APPL_MEM_CONFIG
-#include "appl_mem_config.h"
-#endif
+#include "secureshield_appl_config.h"
 
-#define BOOT_SPI_FLASH_SIZE		0x200000
-#define BOOT_SPI_FLASH_BASE		0x10000000
-
-#define ONCHIP_FLASH_SIZE		0x40000
-#define ONCHIP_FLASH_BASE		0x0
-
-#define ARC_X_MEM_START 0xC0000000
-#define ARC_X_MEM_SIZE	0x8000
-#define ARC_Y_MEM_START 0xD0000000
-#define ARC_Y_MEM_SIZE	0x8000
-
-/**
- * The unit of XXXX_SIZE is Byte
- * For REGION_ROM, ICCM, EXT_ROM and EXT_RAM are available
- * For REGION_RAM, DCCM and EXT_RAM are available
- */
-#ifdef ARC_FEATURE_ICCM_PRESENT
-#ifndef ICCM_SIZE
-#define ICCM_SIZE	ARC_FEATURE_ICCM_SIZE
-#endif
-#ifndef ICCM_START
-#define ICCM_START	ARC_FEATURE_ICCM_BASE
-#endif
-#else
-#ifndef ICCM_SIZE
-#define ICCM_SIZE	0x40000
-#endif
-#ifndef ICCM_START
-#define ICCM_START	0x20000000
-#endif
+#ifndef CONTAINER_ADDRESS_ALIGNMENT
+#define CONTAINER_ADDRESS_ALIGNMENT	2048
 #endif
 
-#ifdef ARC_FEATURE_DCCM_PRESENT
-#ifndef DCCM_SIZE
-#define DCCM_SIZE	ARC_FEATURE_DCCM_SIZE
-#endif
-#ifndef DCCM_START
-#define DCCM_START	ARC_FEATURE_DCCM_BASE
-#endif
-#else
-#ifndef DCCM_SIZE
-#define DCCM_SIZE	0x20000
-#endif
-#ifndef DCCM_START
-#define DCCM_START	0x80000000
-#endif
+/* rom area for normal world */
+#ifndef NORMAL_ROM_START
+#define NORMAL_ROM_START 0x20000000
 #endif
 
-#ifndef EXT_RAM_START
-#define EXT_RAM_START	0x30000000
+#ifndef NORMAL_ROM_SIZE
+#define NORMAL_ROM_SIZE 0x20000
 #endif
 
-#ifndef EXT_RAM_SIZE
-#define EXT_RAM_SIZE	0x20000
+/* rom area for secure world */
+#ifndef SECURE_ROM_START
+#define SECURE_ROM_START 0x20020000
 #endif
 
-#ifndef EXT_ROM_START
-#define EXT_ROM_START	ONCHIP_FLASH_BASE
+#ifndef SECURE_ROM_SIZE
+#define SECURE_ROM_SIZE 0x20000
 #endif
 
-#ifndef EXT_ROM_SIZE
-#define EXT_ROM_SIZE	ONCHIP_FLASH_SIZE
+/* ram area for normal world */
+#ifndef NORMAL_RAM_START
+#define NORMAL_RAM_START 0x80000000
 #endif
 
-#ifndef REGION_ROM
-#ifdef ARC_FEATURE_ICACHE_PRESENT
-#define REGION_ROM	EXT_RAM
-#else
-#define REGION_ROM	ICCM
-#endif
+#ifndef NORMAL_RAM_SIZE
+#define NORMAL_RAM_SIZE 0x10000
 #endif
 
-#ifndef REGION_RAM
-#ifdef ARC_FEATURE_DCACHE_PRESENT
-#define REGION_RAM	EXT_RAM
-#else
-#define REGION_RAM	DCCM
-#endif
+/* ram area for secure world */
+#ifndef SECURE_RAM_START
+#define	SECURE_RAM_START 0x80010000
 #endif
 
-#endif /* _TARGET_MEM_CONFIG_H_ */
+#ifndef SECURE_RAM_SIZE
+#define SECURE_RAM_SIZE 0x10000
+#endif
+
+
+/* secure ram reserved for secure bin file */
+#ifndef SECURESHIELD_SECURE_RAM_USAGE
+#define SECURESHIELD_SECURE_RAM_USAGE	(SECURE_HEAPSIZE+SECURE_STACKSIZE+10240)
+#endif
+
+
+#endif /* _SECURESHIELD_BOARD_CONFIG_H_ */

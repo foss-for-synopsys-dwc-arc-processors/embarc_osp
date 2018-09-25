@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -28,54 +28,53 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER	embARC LwIP HTTPServer Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_LWIP
- * \brief	embARC Example for LwIP HTTPServer on FreeRTOS
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     * Digilent PMOD WIFI(MRF24WG0MA)
- *
- * ### Design Concept
- *     This example is designed to show how to use LwIP netconn API to serve as a httpserver.
- *
- * ### Usage Manual
- *     The Pmod modules should be connected to \ref EMBARC_BOARD_CONNECTION "EMSK".
- *     This is an example using TCP/IP connection to work as a small web httpserver.
- *
- *     ![ScreenShot of httpserver under freertos](pic/images/example/emsk/emsk_lwip_freertos_httpserver.jpg)
- *
- * ### Extra Comments
- *
- */
+#ifndef _AT_PARSER_H_
+#define _AT_PARSER_H_
 
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER
- * \brief	http server using TCP connection example
- */
+#include "ez_sio.h"
+#include "embARC_error.h"
 
-/**
- * \addtogroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER
- * @{
- */
-#include "embARC.h"
-#include "embARC_debug.h"
+#define AT_OK 			0
+#define AT_ERROR 		-1
+#define AT_OK_STR		"OK"
+#define AT_ERROR_STR	"ERROR"
 
-#include "httpserver-netconn.h"
+#define AT_RX_BUFSIZE	512
+#define AT_TX_BUFSIZE	128
 
-int main(void)
-{
-	EMBARC_PRINTF("Now Open Your Browser Enter The IPAddr Show On Terminal"
-		 ", you will get an webpage servered on your board\r\n");
-	http_server_netconn_init();
+#define AT_NORMAL_TIMEOUT 	100
+#define AT_LONG_TIMEOUT 	5000
+#define AT_EXTRA_TIMEOUT 	20000
 
-	return 0;
-}
+typedef enum {
+	AT_LIST,
+	AT_READ,
+	AT_WRITE,
+	AT_EXECUTE
+}AT_MODE;
 
-/** @} */
+typedef char * AT_STRING;
+
+/** HM1X object type */
+typedef struct {
+	uint32_t uart_id;
+	EZ_SIO *psio;
+} AT_PARSER_DEF, *AT_PARSER_DEF_PTR;
+
+#define AT_PARSER_DEFINE(NAME, UART_ID) \
+	AT_PARSER_DEF __ ## NAME = { \
+			.uart_id = UART_ID, \
+			.psio = NULL, \
+	}; \
+	AT_PARSER_DEF_PTR NAME = &__ ## NAME
+
+int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate);
+void	at_parser_deinit(AT_PARSER_DEF_PTR obj);
+int32_t at_read(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt);
+int32_t at_write(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt);
+int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...);
+int32_t at_get_reply(AT_PARSER_DEF_PTR obj, char *buf, uint32_t timeout);
+
+int32_t at_test(AT_PARSER_DEF_PTR obj);
+
+#endif /*_AT_PARSER_H_*/

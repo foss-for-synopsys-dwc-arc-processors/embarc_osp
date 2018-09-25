@@ -1,26 +1,42 @@
 # Application name
-APPL ?= freertos_net_ntshell
+APPL ?= AT_parser
 
-EXT_DEV_LIST += wifi/mrf24g
+# Optimization Level
+# Please Refer to toolchain_xxx.mk for this option
+OLEVEL ?= O2
 
-ifeq ($(BOARD),emsk)
-EXT_DEV_LIST += sensor/temperature/adt7420
-endif
+##
+# Current Board And Core
+##
+BOARD ?= emsk
+BD_VER ?= 22
+CUR_CORE ?= arcem7d
 
+##
+# select debugging jtag
+##
+JTAG ?= usb
+
+##
+# Set toolchain
+##
+TOOLCHAIN ?= gnu
+
+
+##
+# HEAP & STACK SETTINGS
+##
+#HEAPSZ ?= 81920
+#STACKSZ ?= 81920
 
 #
 # root dir of embARC
 #
-EMBARC_ROOT = ../../../..
-
+EMBARC_ROOT = ../../..
 # Selected OS
 OS_SEL ?= freertos
-# Select Middleware Packages
-MID_SEL += common ntshell lwip lwip-contrib
-ifeq ($(BOARD), emsk)
-MID_SEL += fatfs
-endif
-LWIP_CONTRIB_APPS ?=
+
+MID_SEL = common
 
 # application source dirs
 APPL_CSRC_DIR = .

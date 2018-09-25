@@ -28,54 +28,59 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER	embARC LwIP HTTPServer Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_LWIP
- * \brief	embARC Example for LwIP HTTPServer on FreeRTOS
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     * Digilent PMOD WIFI(MRF24WG0MA)
- *
- * ### Design Concept
- *     This example is designed to show how to use LwIP netconn API to serve as a httpserver.
- *
- * ### Usage Manual
- *     The Pmod modules should be connected to \ref EMBARC_BOARD_CONNECTION "EMSK".
- *     This is an example using TCP/IP connection to work as a small web httpserver.
- *
- *     ![ScreenShot of httpserver under freertos](pic/images/example/emsk/emsk_lwip_freertos_httpserver.jpg)
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER
- * \brief	http server using TCP connection example
- */
-
-/**
- * \addtogroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER
- * @{
- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
-#include "httpserver-netconn.h"
+#include "spi_flash_w25qxx.h"
+
+
+W25QXX_DEF(w25q16dv, 0, 0, 0x100, 0x1000);
+
+#define DATA_BUF_SIZE 128
+#define SPI_FLASH_ADDRESS 0x1000
+
+uint32_t data_buf[DATA_BUF_SIZE / 4];
 
 int main(void)
 {
-	EMBARC_PRINTF("Now Open Your Browser Enter The IPAddr Show On Terminal"
-		 ", you will get an webpage servered on your board\r\n");
-	http_server_netconn_init();
+	uint32_t id;
+	int32_t data_len;
+	int32_t i;
 
-	return 0;
+	w25qxx_init(w25q16dv, 100000);
+
+	id = w25qxx_read_id(w25q16dv);
+	EMBARC_PRINTF("Device ID = %x\r\n",id);
+
+	for (i = 0; i < (DATA_BUF_SIZE / 4); i++) {
+		data_buf[i] = i + (i<<8) + (i<<16) + (i<<24);
+	}
+
+	if (w25qxx_erase(w25q16dv, SPI_FLASH_ADDRESS, 1024) < 0) {
+		EMBARC_PRINTF("errase error \r\n");
+		while (1);
+	}
+
+	if (w25qxx_write(w25q16dv, SPI_FLASH_ADDRESS, DATA_BUF_SIZE, data_buf) < 0) {
+		EMBARC_PRINTF("write error\r\n");
+		while (1);
+	}
+
+	data_len = w25qxx_read(w25q16dv, SPI_FLASH_ADDRESS, DATA_BUF_SIZE, data_buf);
+
+
+	if (data_len > 0) {
+		EMBARC_PRINTF("read %d bytes\r\n", data_len);
+
+		for (i = 0; i < (DATA_BUF_SIZE / 4); i += 4) {
+			EMBARC_PRINTF("%08X, %08X, %08X, %08X\r\n",
+				data_buf[i + 0], data_buf[i + 1],
+				data_buf[i + 2], data_buf[i + 3]);
+
+		}
+	} else {
+		EMBARC_PRINTF("read error %d\r\n", data_len);
+	}
+
+	while (1);
 }
-
-/** @} */
