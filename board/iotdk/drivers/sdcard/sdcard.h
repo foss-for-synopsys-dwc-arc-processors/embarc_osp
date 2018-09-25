@@ -37,14 +37,14 @@
  * \addtogroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
  * @{
  */
-#ifndef _HUANGSHAN_SDCARD_H_
-#define _HUANGSHAN_SDCARD_H_
+#ifndef _IOTDK_SDCARD_H_
+#define _IOTDK_SDCARD_H_
 #include "embARC_toolchain.h"
 
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include "sdcard_sdio.h"
 
-#define HUANGSHAN_SDCARD_0_DRVID		(0)
+#define IOTDK_SDCARD_0_DRVID		(0)
 
 #endif /* MID_FATFS */
 
@@ -57,6 +57,6 @@ extern "C" {
 }
 #endif
 
-#endif /** _HUANGSHAN_SDCARD_H_ */
+#endif /** _IOTDK_SDCARD_H_ */
 
 /** @} end of group BOARD_IOTDK_DRV_MID_FS_SDCARD */
