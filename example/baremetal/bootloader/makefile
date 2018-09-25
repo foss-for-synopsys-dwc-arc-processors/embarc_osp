@@ -1,8 +1,14 @@
 # Application name
-APPL ?= emsk_bootloader
+APPL ?= simple_bootloader
 
+BOARD ?= emsk
+
+ifeq ($(BOARD), emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420
+endif
 
+# 8 KB stack
+STACKSZ = 8192
 ##
 # link script
 #
