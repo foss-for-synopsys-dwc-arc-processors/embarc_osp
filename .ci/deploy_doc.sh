@@ -25,10 +25,12 @@ make html &> build_html.log || { tail -n 100 build_html.log ; die "Build sphinx 
 # Check if this is a pull request
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] ; then
     echo "Don't push built docs to gh-pages for pull request "
-    make linkcheck 2>&1 > make.log
-    COMMENT_CONTENT=$(sed 's/$/&<br>/g' make.log)
-    COMMENT_HEAD="# Sphinx link check result\n***********************\n"
-    COMMENT="${COMMENT_HEAD}${COMMENT_CONTENT}"
+    
+    make linkcheck -k 2>&1
+    COMMENT_CONTENT=$(sed 's/$/&<br>/g' build/linkcheck/output.txt)
+    COMMENT_HEAD="# Sphinx link check result \n***********************\n<pre>"
+    COMMENT_TAIL="</pre>"
+    COMMENT="${COMMENT_HEAD}${COMMENT_CONTENT}${COMMENT_TAIL}"
     bash -c "$COMMENTS"
     exit 0
 fi
