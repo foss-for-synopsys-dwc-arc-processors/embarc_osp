@@ -2,10 +2,49 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o" kind="group">
     <compoundname>BOARD_IOTDK_DRV_MID_FS_SDCARD_SDIO</compoundname>
-    <title>HUANGSHAN SDCard SDIO Interface Driver</title>
+    <title>IOTDK SDCard SDIO Interface Driver</title>
     <innerfile refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8c">iotdk/drivers/sdcard/sdcard_sdio.c</innerfile>
     <innerfile refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h">iotdk/drivers/sdcard/sdcard_sdio.h</innerfile>
       <sectiondef kind="var">
+      <memberdef kind="variable" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga5cb6d132bea3b9cc56e859e9fcaca572" prot="public" static="yes" mutable="no">
+        <type>FS_SDCARD_SDIO_CTRL</type>
+        <definition>FS_SDCARD_SDIO_CTRL sdcard_sdio0</definition>
+        <argsstring></argsstring>
+        <name>sdcard_sdio0</name>
+        <initializer>= {
+	.id = 0,
+	.drv_status = STA_NOINIT
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="76" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga10c47da3d14da5d2ed98fd97fee7527c" prot="public" static="no" mutable="no">
+        <type>FATFS_DISKIO</type>
+        <definition>FATFS_DISKIO sdcard_sdio_0_diskio</definition>
+        <argsstring></argsstring>
+        <name>sdcard_sdio_0_diskio</name>
+        <initializer>= {
+	(void *)&amp;sdcard_sdio0,
+	sdcard_sdio_0_diskio_initialize,
+	sdcard_sdio_0_diskio_status,
+	sdcard_sdio_0_diskio_read,
+	sdcard_sdio_0_diskio_write,
+	sdcard_sdio_0_diskio_ioctl,
+	sdcard_sdio_0_diskio_timerproc
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="114" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="114" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga10c47da3d14da5d2ed98fd97fee7527c" prot="public" static="no" mutable="no">
         <type>FATFS_DISKIO</type>
         <definition>FATFS_DISKIO sdcard_sdio_0_diskio</definition>
@@ -18,6 +57,127 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.h" line="54" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/sdcard/sdcard_sdio.c" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga2db2a1c934b9f9e2d6a1503142595b70" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_sdio_0_diskio_initialize</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_sdio_0_diskio_initialize</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="82" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="82" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1gabcbe6be00a00bc55205d458320a4ed23" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_sdio_0_diskio_status</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_sdio_0_diskio_status</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="88" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga003af33fbfeec84ab1628e9395878661" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_sdio_0_diskio_read</definition>
+        <argsstring>(void *buf, uint32_t sector, uint32_t count)</argsstring>
+        <name>sdcard_sdio_0_diskio_read</name>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>sector</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="93" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="93" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga8cc61e7ef173a31cdeb92f139f50e181" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_sdio_0_diskio_write</definition>
+        <argsstring>(const void *buf, uint32_t sector, uint32_t count)</argsstring>
+        <name>sdcard_sdio_0_diskio_write</name>
+        <param>
+          <type>const void *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>sector</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="98" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1ga0cce240a222451c5d7b34659892d61b0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t sdcard_sdio_0_diskio_ioctl</definition>
+        <argsstring>(uint32_t cmd, void *buf)</argsstring>
+        <name>sdcard_sdio_0_diskio_ioctl</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>cmd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="103" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_d_i_o_1gabdeecb9759a8e13422de2e0b247dae7f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void sdcard_sdio_0_diskio_timerproc</definition>
+        <argsstring>(void)</argsstring>
+        <name>sdcard_sdio_0_diskio_timerproc</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" line="108" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard_sdio.c" bodystart="108" bodyend="111"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -45,7 +205,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>HUANGSHAN Fatfs SDCard SDIO Interface Driver. </para>    </briefdescription>
+<para>IOTDK Fatfs SDCard SDIO Interface Driver. </para>    </briefdescription>
     <detaileddescription>
 <para>Realize the sdcard driver using spi interface for fatfs, under the abstract of fatfs diskio. </para>    </detaileddescription>
   </compounddef>

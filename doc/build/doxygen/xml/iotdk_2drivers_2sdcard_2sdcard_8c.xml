@@ -7,60 +7,60 @@
     <includes refid="iotdk_2drivers_2sdcard_2sdcard_8h" local="yes">sdcard.h</includes>
     <includes local="no">time.h</includes>
     <incdepgraph>
-      <node id="4871">
+      <node id="4887">
         <label>sdcard_sdio.h</label>
         <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h"/>
-        <childnode refid="4869" relation="include">
+        <childnode refid="4885" relation="include">
         </childnode>
       </node>
-      <node id="4868">
+      <node id="4884">
         <label>stdbool.h</label>
       </node>
-      <node id="4865">
+      <node id="4881">
         <label>stdint.h</label>
       </node>
-      <node id="4867">
+      <node id="4883">
         <label>stddef.h</label>
       </node>
-      <node id="4866">
+      <node id="4882">
         <label>limits.h</label>
       </node>
-      <node id="4863">
+      <node id="4879">
         <label>sdcard.c</label>
         <link refid="iotdk/drivers/sdcard/sdcard.c"/>
-        <childnode refid="4864" relation="include">
+        <childnode refid="4880" relation="include">
         </childnode>
-        <childnode refid="4869" relation="include">
+        <childnode refid="4885" relation="include">
         </childnode>
-        <childnode refid="4870" relation="include">
+        <childnode refid="4886" relation="include">
         </childnode>
-        <childnode refid="4872" relation="include">
+        <childnode refid="4888" relation="include">
         </childnode>
       </node>
-      <node id="4870">
+      <node id="4886">
         <label>sdcard.h</label>
         <link refid="iotdk_2drivers_2sdcard_2sdcard_8h"/>
-        <childnode refid="4864" relation="include">
+        <childnode refid="4880" relation="include">
         </childnode>
-        <childnode refid="4871" relation="include">
+        <childnode refid="4887" relation="include">
         </childnode>
       </node>
-      <node id="4869">
+      <node id="4885">
         <label>ff_diskio.h</label>
       </node>
-      <node id="4872">
+      <node id="4888">
         <label>time.h</label>
       </node>
-      <node id="4864">
+      <node id="4880">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="4865" relation="include">
+        <childnode refid="4881" relation="include">
         </childnode>
-        <childnode refid="4866" relation="include">
+        <childnode refid="4882" relation="include">
         </childnode>
-        <childnode refid="4867" relation="include">
+        <childnode refid="4883" relation="include">
         </childnode>
-        <childnode refid="4868" relation="include">
+        <childnode refid="4884" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -162,8 +162,8 @@
 <codeline lineno="75"><highlight class="normal">FATFS_DISKIO<sp/>*get_fatfs_diskio(uint32_t<sp/>drvid)</highlight></codeline>
 <codeline lineno="76"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(drvid)<sp/>{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_HUANGSHAN_SDCARD_SDIO_0)</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>HUANGSHAN_SDCARD_0_DRVID:</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_SDCARD_SDIO_0<sp/>)</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_SDCARD_0_DRVID:</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;sdcard_sdio_0_diskio;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>

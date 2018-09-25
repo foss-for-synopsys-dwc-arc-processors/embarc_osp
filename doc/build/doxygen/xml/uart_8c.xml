@@ -10,101 +10,101 @@
     <includes refid="io__config_8h" local="yes">io_config.h</includes>
     <includes refid="apexextensions_8h" local="yes">apexextensions.h</includes>
     <incdepgraph>
-      <node id="5717">
+      <node id="5764">
         <label>io_config.h</label>
         <link refid="io__config_8h_source"/>
       </node>
-      <node id="5712">
+      <node id="5759">
         <label>stdbool.h</label>
       </node>
-      <node id="5708">
+      <node id="5755">
         <label>ioctl.h</label>
         <link refid="ioctl_8h_source"/>
-        <childnode refid="5709" relation="include">
+        <childnode refid="5756" relation="include">
         </childnode>
-        <childnode refid="5715" relation="include">
+        <childnode refid="5762" relation="include">
         </childnode>
       </node>
-      <node id="5706">
+      <node id="5753">
         <label>stdint.h</label>
       </node>
-      <node id="5704">
+      <node id="5751">
         <label>stdlib.h</label>
       </node>
-      <node id="5718">
+      <node id="5765">
         <label>apexextensions.h</label>
         <link refid="apexextensions_8h_source"/>
       </node>
-      <node id="5705">
+      <node id="5752">
         <label>stddef.h</label>
       </node>
-      <node id="5715">
+      <node id="5762">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="5710" relation="include">
+        <childnode refid="5757" relation="include">
         </childnode>
       </node>
-      <node id="5711">
+      <node id="5758">
         <label>limits.h</label>
       </node>
-      <node id="5716">
+      <node id="5763">
         <label>dmac.h</label>
         <link refid="dmac_8h_source"/>
       </node>
-      <node id="5713">
+      <node id="5760">
         <label>arc.h</label>
         <link refid="arc_8h"/>
-        <childnode refid="5714" relation="include">
+        <childnode refid="5761" relation="include">
         </childnode>
       </node>
-      <node id="5714">
+      <node id="5761">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="5703">
+      <node id="5750">
         <label>uart.c</label>
         <link refid="uart.c"/>
-        <childnode refid="5704" relation="include">
+        <childnode refid="5751" relation="include">
         </childnode>
-        <childnode refid="5705" relation="include">
+        <childnode refid="5752" relation="include">
         </childnode>
-        <childnode refid="5706" relation="include">
+        <childnode refid="5753" relation="include">
         </childnode>
-        <childnode refid="5707" relation="include">
+        <childnode refid="5754" relation="include">
         </childnode>
-        <childnode refid="5716" relation="include">
+        <childnode refid="5763" relation="include">
         </childnode>
-        <childnode refid="5717" relation="include">
+        <childnode refid="5764" relation="include">
         </childnode>
-        <childnode refid="5718" relation="include">
+        <childnode refid="5765" relation="include">
         </childnode>
       </node>
-      <node id="5707">
+      <node id="5754">
         <label>uart.h</label>
         <link refid="uart_8h_source"/>
-        <childnode refid="5708" relation="include">
+        <childnode refid="5755" relation="include">
         </childnode>
       </node>
-      <node id="5710">
+      <node id="5757">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="5706" relation="include">
+        <childnode refid="5753" relation="include">
         </childnode>
-        <childnode refid="5711" relation="include">
+        <childnode refid="5758" relation="include">
         </childnode>
-        <childnode refid="5705" relation="include">
+        <childnode refid="5752" relation="include">
         </childnode>
-        <childnode refid="5712" relation="include">
+        <childnode refid="5759" relation="include">
         </childnode>
       </node>
-      <node id="5709">
+      <node id="5756">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
-        <childnode refid="5710" relation="include">
+        <childnode refid="5757" relation="include">
         </childnode>
-        <childnode refid="5713" relation="include">
+        <childnode refid="5760" relation="include">
         </childnode>
-        <childnode refid="5715" relation="include">
+        <childnode refid="5762" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -903,7 +903,7 @@
 <codeline lineno="546"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="547"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IO_UART_SET_LCR:</highlight></codeline>
 <codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>leave<sp/>the<sp/>LDAB<sp/>bit<sp/>cleared<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_WRITE(UART_LCR,<sp/>(*((uint32_t<sp/>*)<sp/>arg)<sp/>&amp;<sp/>~((~0x0)<sp/>&lt;&lt;<sp/>7)));</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_WRITE(UART_LCR,<sp/>(*((uint32_t<sp/>*)<sp/>arg)<sp/>&amp;<sp/>0x7f));</highlight></codeline>
 <codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IO_UART_GET_LCR:</highlight></codeline>
 <codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/>*((uint32_t<sp/>*)<sp/>arg)<sp/>=<sp/>REG_READ(UART_LCR);</highlight></codeline>
@@ -1172,139 +1172,144 @@
 <codeline lineno="815"><highlight class="normal"></highlight></codeline>
 <codeline lineno="816"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="817"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="818"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="819"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>something<sp/>wrong;<sp/>at<sp/>least,<sp/>disable<sp/>interrupts<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="820"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REG_WRITE(UART_IER,<sp/>0x0);</highlight></codeline>
-<codeline lineno="821"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;err_cb<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="822"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dev-&gt;err_cb(dev_id);</highlight></codeline>
-<codeline lineno="823"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="824"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="825"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="826"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="827"><highlight class="normal"><sp/><sp/><sp/><sp/>intid<sp/>=<sp/>REG_READ(UART_IIR)<sp/>&amp;<sp/>0x0f;</highlight></codeline>
-<codeline lineno="828"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="829"><highlight class="normal"></highlight></codeline>
-<codeline lineno="830"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="831"><highlight class="normal"></highlight></codeline>
-<codeline lineno="832"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uart_dmatx_isr_proc(uint32_t<sp/>dev_id)</highlight></codeline>
-<codeline lineno="833"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="834"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__Xdmac</highlight></codeline>
-<codeline lineno="835"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>uart_info_pt<sp/>dev<sp/>=<sp/>uart_handles[<ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d_1gae2dabafacb4a0fa4c5d6b7176b542e72" kindref="member">dev_id</ref>];</highlight></codeline>
-<codeline lineno="836"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>cnt<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="837"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/>val<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="838"><highlight class="normal"></highlight></codeline>
-<codeline lineno="839"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;tx_count<sp/>==<sp/>dev-&gt;tx_size)<sp/>{</highlight></codeline>
-<codeline lineno="840"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA<sp/>TX<sp/>xfer<sp/>done<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="841"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_chan_enable((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmatxchanid),<sp/>0);</highlight></codeline>
-<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmatxchanid));</highlight></codeline>
+<codeline lineno="818"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0x7:</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="820"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>REG_READ(UART_USR);</highlight><highlight class="comment">//update<sp/>IIR<sp/>busy<sp/>status<sp/>by<sp/>read<sp/>Uart<sp/>Status<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="821"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="822"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="823"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="824"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>something<sp/>wrong;<sp/>at<sp/>least,<sp/>disable<sp/>interrupts<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REG_WRITE(UART_IER,<sp/>0x0);</highlight></codeline>
+<codeline lineno="826"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;err_cb<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="827"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dev-&gt;err_cb(dev_id);</highlight></codeline>
+<codeline lineno="828"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="829"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="830"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="831"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="832"><highlight class="normal"><sp/><sp/><sp/><sp/>intid<sp/>=<sp/>REG_READ(UART_IIR)<sp/>&amp;<sp/>0x0f;</highlight></codeline>
+<codeline lineno="833"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="835"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="836"><highlight class="normal"></highlight></codeline>
+<codeline lineno="837"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uart_dmatx_isr_proc(uint32_t<sp/>dev_id)</highlight></codeline>
+<codeline lineno="838"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="839"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__Xdmac</highlight></codeline>
+<codeline lineno="840"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>uart_info_pt<sp/>dev<sp/>=<sp/>uart_handles[<ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d_1gae2dabafacb4a0fa4c5d6b7176b542e72" kindref="member">dev_id</ref>];</highlight></codeline>
+<codeline lineno="841"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>cnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/>uint32_t<sp/>val<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="843"><highlight class="normal"></highlight></codeline>
-<codeline lineno="844"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>enable<sp/>ETBEI<sp/>interrupt,<sp/>to<sp/>detect<sp/>FIFO<sp/>empty<sp/>for<sp/>end<sp/>of<sp/>tx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/>val<sp/>=<sp/>REG_READ(UART_IER)<sp/>|<sp/>0x2;</highlight></codeline>
-<codeline lineno="846"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_WRITE(UART_IER,<sp/>val);</highlight></codeline>
-<codeline lineno="847"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="848"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>clear<sp/>DMA<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="849"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmatxchanid));</highlight></codeline>
-<codeline lineno="850"><highlight class="normal"></highlight></codeline>
-<codeline lineno="851"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;fifo_depth<sp/>==<sp/>0)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>fifos<sp/>are<sp/>not<sp/>available<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="852"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="853"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="854"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt<sp/>=<sp/>dev-&gt;fifo_depth<sp/>-<sp/>dev-&gt;tx_threshold;</highlight></codeline>
-<codeline lineno="855"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="856"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dma_descriptor_tx(dev,<sp/>cnt,<sp/>dev-&gt;dmatxidx);</highlight></codeline>
-<codeline lineno="857"><highlight class="normal"></highlight></codeline>
-<codeline lineno="858"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxidx<sp/>=<sp/>4<sp/>-<sp/>dev-&gt;dmatxidx;</highlight></codeline>
-<codeline lineno="859"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="860"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="861"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="844"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;tx_count<sp/>==<sp/>dev-&gt;tx_size)<sp/>{</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA<sp/>TX<sp/>xfer<sp/>done<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="846"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_chan_enable((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmatxchanid),<sp/>0);</highlight></codeline>
+<codeline lineno="847"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmatxchanid));</highlight></codeline>
+<codeline lineno="848"><highlight class="normal"></highlight></codeline>
+<codeline lineno="849"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>enable<sp/>ETBEI<sp/>interrupt,<sp/>to<sp/>detect<sp/>FIFO<sp/>empty<sp/>for<sp/>end<sp/>of<sp/>tx<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="850"><highlight class="normal"><sp/><sp/><sp/><sp/>val<sp/>=<sp/>REG_READ(UART_IER)<sp/>|<sp/>0x2;</highlight></codeline>
+<codeline lineno="851"><highlight class="normal"><sp/><sp/><sp/><sp/>REG_WRITE(UART_IER,<sp/>val);</highlight></codeline>
+<codeline lineno="852"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="853"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>clear<sp/>DMA<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="854"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmatxchanid));</highlight></codeline>
+<codeline lineno="855"><highlight class="normal"></highlight></codeline>
+<codeline lineno="856"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;fifo_depth<sp/>==<sp/>0)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>fifos<sp/>are<sp/>not<sp/>available<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="857"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="858"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="859"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cnt<sp/>=<sp/>dev-&gt;fifo_depth<sp/>-<sp/>dev-&gt;tx_threshold;</highlight></codeline>
+<codeline lineno="860"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="861"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dma_descriptor_tx(dev,<sp/>cnt,<sp/>dev-&gt;dmatxidx);</highlight></codeline>
 <codeline lineno="862"><highlight class="normal"></highlight></codeline>
-<codeline lineno="863"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uart_dmarx_isr_proc(uint32_t<sp/>dev_id)</highlight></codeline>
-<codeline lineno="864"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="865"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__Xdmac</highlight></codeline>
-<codeline lineno="866"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>uart_info_pt<sp/>dev<sp/>=<sp/>uart_handles[<ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d_1gae2dabafacb4a0fa4c5d6b7176b542e72" kindref="member">dev_id</ref>];</highlight></codeline>
-<codeline lineno="867"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>val<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="868"><highlight class="normal"></highlight></codeline>
-<codeline lineno="869"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;rx_count<sp/>==<sp/>dev-&gt;rx_size)<sp/>{</highlight></codeline>
-<codeline lineno="870"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Buffer<sp/>transfer<sp/>completed.<sp/>Assert<sp/>RTS<sp/>line<sp/>back<sp/>if<sp/>flow<sp/>control<sp/>is<sp/>enabled<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="871"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;flow_control<sp/>==<sp/>FLOW_CONTROL_ON)<sp/>{</highlight></codeline>
-<codeline lineno="872"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>REG_READ(UART_MCR)<sp/>&amp;<sp/>~0x2;</highlight></codeline>
-<codeline lineno="873"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REG_WRITE(UART_MCR,<sp/>val);</highlight></codeline>
-<codeline lineno="874"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="875"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA<sp/>RX<sp/>xfer<sp/>done<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="876"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_chan_enable((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmarxchanid),<sp/>0);</highlight></codeline>
-<codeline lineno="877"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmarxchanid));</highlight></codeline>
-<codeline lineno="878"><highlight class="normal"></highlight></codeline>
-<codeline lineno="879"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>call<sp/>user<sp/>callback<sp/>function,<sp/>if<sp/>any<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="880"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;rx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="881"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dev-&gt;rx_cb(dev_id);</highlight></codeline>
-<codeline lineno="882"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="883"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="884"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>clear<sp/>DMA<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="885"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmarxchanid));</highlight></codeline>
-<codeline lineno="886"><highlight class="normal"></highlight></codeline>
-<codeline lineno="887"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;fifo_depth<sp/>==<sp/>0)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>fifos<sp/>are<sp/>not<sp/>available<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="888"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="889"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="890"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>dev-&gt;rx_threshold;</highlight></codeline>
-<codeline lineno="891"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="892"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dma_descriptor_rx(dev,<sp/>val,<sp/>dev-&gt;dmarxidx);</highlight></codeline>
-<codeline lineno="893"><highlight class="normal"></highlight></codeline>
-<codeline lineno="894"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxidx<sp/>=<sp/>4<sp/>-<sp/>dev-&gt;dmarxidx;</highlight></codeline>
-<codeline lineno="895"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="896"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="897"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="863"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxidx<sp/>=<sp/>4<sp/>-<sp/>dev-&gt;dmatxidx;</highlight></codeline>
+<codeline lineno="864"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="865"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="866"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="867"><highlight class="normal"></highlight></codeline>
+<codeline lineno="868"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uart_dmarx_isr_proc(uint32_t<sp/>dev_id)</highlight></codeline>
+<codeline lineno="869"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="870"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__Xdmac</highlight></codeline>
+<codeline lineno="871"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>uart_info_pt<sp/>dev<sp/>=<sp/>uart_handles[<ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d_1gae2dabafacb4a0fa4c5d6b7176b542e72" kindref="member">dev_id</ref>];</highlight></codeline>
+<codeline lineno="872"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>val<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="873"><highlight class="normal"></highlight></codeline>
+<codeline lineno="874"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;rx_count<sp/>==<sp/>dev-&gt;rx_size)<sp/>{</highlight></codeline>
+<codeline lineno="875"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Buffer<sp/>transfer<sp/>completed.<sp/>Assert<sp/>RTS<sp/>line<sp/>back<sp/>if<sp/>flow<sp/>control<sp/>is<sp/>enabled<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="876"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;flow_control<sp/>==<sp/>FLOW_CONTROL_ON)<sp/>{</highlight></codeline>
+<codeline lineno="877"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>REG_READ(UART_MCR)<sp/>&amp;<sp/>~0x2;</highlight></codeline>
+<codeline lineno="878"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REG_WRITE(UART_MCR,<sp/>val);</highlight></codeline>
+<codeline lineno="879"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="880"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>DMA<sp/>RX<sp/>xfer<sp/>done<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="881"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_chan_enable((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmarxchanid),<sp/>0);</highlight></codeline>
+<codeline lineno="882"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmarxchanid));</highlight></codeline>
+<codeline lineno="883"><highlight class="normal"></highlight></codeline>
+<codeline lineno="884"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>call<sp/>user<sp/>callback<sp/>function,<sp/>if<sp/>any<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="885"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;rx_cb<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="886"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dev-&gt;rx_cb(dev_id);</highlight></codeline>
+<codeline lineno="887"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="888"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="889"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>clear<sp/>DMA<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="890"><highlight class="normal"><sp/><sp/><sp/><sp/>_dma_int_clear((0x1<sp/>&lt;&lt;<sp/>dev-&gt;dmarxchanid));</highlight></codeline>
+<codeline lineno="891"><highlight class="normal"></highlight></codeline>
+<codeline lineno="892"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dev-&gt;fifo_depth<sp/>==<sp/>0)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>fifos<sp/>are<sp/>not<sp/>available<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="893"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="894"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="895"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>=<sp/>dev-&gt;rx_threshold;</highlight></codeline>
+<codeline lineno="896"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="897"><highlight class="normal"><sp/><sp/><sp/><sp/>create_dma_descriptor_rx(dev,<sp/>val,<sp/>dev-&gt;dmarxidx);</highlight></codeline>
 <codeline lineno="898"><highlight class="normal"></highlight></codeline>
-<codeline lineno="899"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__Xdmac</highlight></codeline>
-<codeline lineno="900"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_RX_END_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xa0000015)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b10,<sp/>i=b1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw/inc=b000,<sp/>dtt=b10,<sp/>r=b1,<sp/>op=b01<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="901"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_RX_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x801fff17)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b10,<sp/>i=b0,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b10,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="902"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_RX_INT_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xa01fff17)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b10,<sp/>i=b1,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b10,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="903"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_TX_END_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x6000000d)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b01,<sp/>i=b1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw/inc=b000,<sp/>dtt=b01,<sp/>r=b1,<sp/>op=b01<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="904"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_TX_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x401fff0f)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b01,<sp/>i=b0,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b01,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="905"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_TX_INT_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x601fff0f)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b01,<sp/>i=b1,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b01,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="906"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_CTRL_SIZE_POS<sp/><sp/><sp/><sp/><sp/><sp/>(8)</highlight></codeline>
-<codeline lineno="907"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_CTRL_XFER_POS<sp/><sp/><sp/><sp/><sp/><sp/>(21)</highlight></codeline>
-<codeline lineno="908"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="909"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>use<sp/>maximum<sp/>block<sp/>size<sp/>of<sp/>4kB<sp/>per<sp/>DMA<sp/>transfer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="910"><highlight class="normal"></highlight></codeline>
-<codeline lineno="911"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create_dma_descriptor_rx(uart_info_pt<sp/>dev,<sp/>uint32_t<sp/>burst,</highlight></codeline>
-<codeline lineno="912"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>idx)</highlight></codeline>
-<codeline lineno="913"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="914"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>0]<sp/>=<sp/>(burst<sp/>&lt;&lt;<sp/>UART_DMA_CTRL_XFER_POS);</highlight></codeline>
-<codeline lineno="915"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((dev-&gt;rx_size<sp/>-<sp/>dev-&gt;rx_count)<sp/>&lt;=<sp/>8<sp/>*<sp/>1024)<sp/>{</highlight></codeline>
-<codeline lineno="916"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>0]<sp/>|=</highlight></codeline>
-<codeline lineno="917"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_RX_END_CTRL<sp/>|<sp/>(((dev-&gt;rx_size<sp/>-<sp/>dev-&gt;rx_count)<sp/>-<sp/>1)<sp/>&lt;&lt;</highlight></codeline>
-<codeline lineno="918"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_CTRL_SIZE_POS);</highlight></codeline>
-<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;rx_count<sp/>=<sp/>dev-&gt;rx_size;</highlight></codeline>
-<codeline lineno="920"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="899"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxidx<sp/>=<sp/>4<sp/>-<sp/>dev-&gt;dmarxidx;</highlight></codeline>
+<codeline lineno="900"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="901"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="902"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="903"><highlight class="normal"></highlight></codeline>
+<codeline lineno="904"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__Xdmac</highlight></codeline>
+<codeline lineno="905"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_RX_END_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xa0000015)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b10,<sp/>i=b1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw/inc=b000,<sp/>dtt=b10,<sp/>r=b1,<sp/>op=b01<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="906"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_RX_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x801fff17)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b10,<sp/>i=b0,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b10,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="907"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_RX_INT_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xa01fff17)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b10,<sp/>i=b1,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b10,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="908"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_TX_END_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x6000000d)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b01,<sp/>i=b1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw/inc=b000,<sp/>dtt=b01,<sp/>r=b1,<sp/>op=b01<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="909"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_TX_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x401fff0f)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b01,<sp/>i=b0,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b01,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="910"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_TX_INT_CTRL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x601fff0f)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>am=b01,<sp/>i=b1,<sp/>size=h1fff,<sp/>dw/inc=b000,<sp/>dtt=b01,<sp/>r=b1,<sp/>op=b11<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="911"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_CTRL_SIZE_POS<sp/><sp/><sp/><sp/><sp/><sp/>(8)</highlight></codeline>
+<codeline lineno="912"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_DMA_CTRL_XFER_POS<sp/><sp/><sp/><sp/><sp/><sp/>(21)</highlight></codeline>
+<codeline lineno="913"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="914"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>use<sp/>maximum<sp/>block<sp/>size<sp/>of<sp/>4kB<sp/>per<sp/>DMA<sp/>transfer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="915"><highlight class="normal"></highlight></codeline>
+<codeline lineno="916"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create_dma_descriptor_rx(uart_info_pt<sp/>dev,<sp/>uint32_t<sp/>burst,</highlight></codeline>
+<codeline lineno="917"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>idx)</highlight></codeline>
+<codeline lineno="918"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>0]<sp/>=<sp/>(burst<sp/>&lt;&lt;<sp/>UART_DMA_CTRL_XFER_POS);</highlight></codeline>
+<codeline lineno="920"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((dev-&gt;rx_size<sp/>-<sp/>dev-&gt;rx_count)<sp/>&lt;=<sp/>8<sp/>*<sp/>1024)<sp/>{</highlight></codeline>
 <codeline lineno="921"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>0]<sp/>|=</highlight></codeline>
-<codeline lineno="922"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((dev-&gt;rx_size<sp/>-<sp/>dev-&gt;rx_count)<sp/>&lt;=</highlight></codeline>
-<codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/>*<sp/>8<sp/>*<sp/>1024<sp/>?<sp/>UART_DMA_RX_CTRL<sp/>:<sp/>UART_DMA_RX_INT_CTRL);</highlight></codeline>
-<codeline lineno="924"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;rx_count<sp/>+=<sp/>8<sp/>*<sp/>1024;</highlight></codeline>
-<codeline lineno="925"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="926"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>2]<sp/>=</highlight></codeline>
-<codeline lineno="927"><highlight class="normal"><sp/><sp/><sp/><sp/>(uint32_t)<sp/>dev-&gt;rx_data<sp/>+<sp/>(dev-&gt;rx_count<sp/>-<sp/>1);</highlight></codeline>
-<codeline lineno="928"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="929"><highlight class="normal"></highlight></codeline>
-<codeline lineno="930"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create_dma_descriptor_tx(uart_info_pt<sp/>dev,<sp/>uint32_t<sp/>burst,</highlight></codeline>
-<codeline lineno="931"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>idx)</highlight></codeline>
-<codeline lineno="932"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="933"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>0]<sp/>=<sp/>(burst<sp/>&lt;&lt;<sp/>UART_DMA_CTRL_XFER_POS);</highlight></codeline>
-<codeline lineno="934"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((dev-&gt;tx_size<sp/>-<sp/>dev-&gt;tx_count)<sp/>&lt;=<sp/>8<sp/>*<sp/>1024)<sp/>{</highlight></codeline>
-<codeline lineno="935"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>0]<sp/>|=</highlight></codeline>
-<codeline lineno="936"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_TX_END_CTRL<sp/>|<sp/>(((dev-&gt;tx_size<sp/>-<sp/>dev-&gt;tx_count)<sp/>-<sp/>1)<sp/>&lt;&lt;</highlight></codeline>
-<codeline lineno="937"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_CTRL_SIZE_POS);</highlight></codeline>
-<codeline lineno="938"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;tx_count<sp/>=<sp/>dev-&gt;tx_size;</highlight></codeline>
-<codeline lineno="939"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="922"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_RX_END_CTRL<sp/>|<sp/>(((dev-&gt;rx_size<sp/>-<sp/>dev-&gt;rx_count)<sp/>-<sp/>1)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_CTRL_SIZE_POS);</highlight></codeline>
+<codeline lineno="924"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;rx_count<sp/>=<sp/>dev-&gt;rx_size;</highlight></codeline>
+<codeline lineno="925"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="926"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>0]<sp/>|=</highlight></codeline>
+<codeline lineno="927"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((dev-&gt;rx_size<sp/>-<sp/>dev-&gt;rx_count)<sp/>&lt;=</highlight></codeline>
+<codeline lineno="928"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/>*<sp/>8<sp/>*<sp/>1024<sp/>?<sp/>UART_DMA_RX_CTRL<sp/>:<sp/>UART_DMA_RX_INT_CTRL);</highlight></codeline>
+<codeline lineno="929"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;rx_count<sp/>+=<sp/>8<sp/>*<sp/>1024;</highlight></codeline>
+<codeline lineno="930"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="931"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmarxdescriptor[idx<sp/>+<sp/>2]<sp/>=</highlight></codeline>
+<codeline lineno="932"><highlight class="normal"><sp/><sp/><sp/><sp/>(uint32_t)<sp/>dev-&gt;rx_data<sp/>+<sp/>(dev-&gt;rx_count<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="933"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="934"><highlight class="normal"></highlight></codeline>
+<codeline lineno="935"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>create_dma_descriptor_tx(uart_info_pt<sp/>dev,<sp/>uint32_t<sp/>burst,</highlight></codeline>
+<codeline lineno="936"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>idx)</highlight></codeline>
+<codeline lineno="937"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="938"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>0]<sp/>=<sp/>(burst<sp/>&lt;&lt;<sp/>UART_DMA_CTRL_XFER_POS);</highlight></codeline>
+<codeline lineno="939"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((dev-&gt;tx_size<sp/>-<sp/>dev-&gt;tx_count)<sp/>&lt;=<sp/>8<sp/>*<sp/>1024)<sp/>{</highlight></codeline>
 <codeline lineno="940"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>0]<sp/>|=</highlight></codeline>
-<codeline lineno="941"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((dev-&gt;tx_size<sp/>-<sp/>dev-&gt;tx_count)<sp/>&lt;=</highlight></codeline>
-<codeline lineno="942"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/>*<sp/>8<sp/>*<sp/>1024<sp/>?<sp/>UART_DMA_TX_CTRL<sp/>:<sp/>UART_DMA_TX_INT_CTRL);</highlight></codeline>
-<codeline lineno="943"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;tx_count<sp/>+=<sp/>8<sp/>*<sp/>1024;</highlight></codeline>
-<codeline lineno="944"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="945"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>1]<sp/>=</highlight></codeline>
-<codeline lineno="946"><highlight class="normal"><sp/><sp/><sp/><sp/>(uint32_t)<sp/>dev-&gt;tx_data<sp/>+<sp/>(dev-&gt;tx_count<sp/>-<sp/>1);</highlight></codeline>
-<codeline lineno="947"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="948"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="949"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="950"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="941"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_TX_END_CTRL<sp/>|<sp/>(((dev-&gt;tx_size<sp/>-<sp/>dev-&gt;tx_count)<sp/>-<sp/>1)<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="942"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UART_DMA_CTRL_SIZE_POS);</highlight></codeline>
+<codeline lineno="943"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;tx_count<sp/>=<sp/>dev-&gt;tx_size;</highlight></codeline>
+<codeline lineno="944"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="945"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>0]<sp/>|=</highlight></codeline>
+<codeline lineno="946"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((dev-&gt;tx_size<sp/>-<sp/>dev-&gt;tx_count)<sp/>&lt;=</highlight></codeline>
+<codeline lineno="947"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/>*<sp/>8<sp/>*<sp/>1024<sp/>?<sp/>UART_DMA_TX_CTRL<sp/>:<sp/>UART_DMA_TX_INT_CTRL);</highlight></codeline>
+<codeline lineno="948"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;tx_count<sp/>+=<sp/>8<sp/>*<sp/>1024;</highlight></codeline>
+<codeline lineno="949"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="950"><highlight class="normal"><sp/><sp/><sp/><sp/>dev-&gt;dmatxdescriptor[idx<sp/>+<sp/>1]<sp/>=</highlight></codeline>
+<codeline lineno="951"><highlight class="normal"><sp/><sp/><sp/><sp/>(uint32_t)<sp/>dev-&gt;tx_data<sp/>+<sp/>(dev-&gt;tx_count<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="952"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="953"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="954"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="955"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/uart/uart.c"/>
   </compounddef>
