@@ -49,12 +49,12 @@ typedef struct dw_sdio_ctrl {
 
 Inline uint32_t dw_sdio_reg_read(DW_SDIO_CTRL_PTR sdio, uint32_t reg)
 {
-	return _arc_read_uncached_32(sdio->reg_base + reg);
+	return _arc_read_uncached_32((void *)((uint32_t)sdio->reg_base + reg));
 }
 
 Inline void dw_sdio_reg_write(DW_SDIO_CTRL_PTR sdio, uint32_t reg, uint32_t val)
 {
-	_arc_write_uncached_32(sdio->reg_base + reg, val);
+	_arc_write_uncached_32((void *)((uint32_t)sdio->reg_base + reg), val);
 }
 
 
