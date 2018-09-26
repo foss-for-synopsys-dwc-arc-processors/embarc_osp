@@ -15,6 +15,13 @@ env:
       "context": "travis-ci/$NAME",
       "target_url": "https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID"
       }\nDATA'
+      
+      COMMENT=none
+      COMMENTS=$'curl -so/dev/null --user "$EMBARC_BOT" --request POST
+      https://api.github.com/repos/$TRAVIS_REPO_SLUG/issues/$TRAVIS_PULL_REQUEST/comments
+      --data @- << DATA\n{
+      "body": "$COMMENT"
+      }\nDATA'
 
 cache:
   pip: true
@@ -28,7 +35,7 @@ branches:
 
 before_install:
   - bash .ci/before_install.sh
-  # setup git config
+  # setup git config 
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "Huaqi.Fang@synopsys.com"
 
