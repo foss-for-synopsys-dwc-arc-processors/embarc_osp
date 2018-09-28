@@ -377,19 +377,25 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 
 def send_pull_request_comment(columns, results):
     job = os.environ.get("NAME")
-    comment_job = "## " + job + "\n"
-    if len(results)>0:
-        head = "|".join(columns) + "\n"
-        table_format =  "|".join(["---"]*len(columns)) + "\n"
-        table_head =head +table_format
-        comments = ""
-        comment = ""
-        for result in results:
-            for k in result:
-                comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
-            comment = comment.rstrip("|") + "\n"
-            comments += comment
-        comment_on_pull_request(comment_job + table_head + comments)
+    pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
+    if all([job, pr_number]):
+        comment_job = "## " + job + "\n"
+        if len(results)>0:
+            head = "|".join(columns) + "\n"
+            table_format =  "|".join(["---"]*len(columns)) + "\n"
+            table_head =head +table_format
+            comments = ""
+            comment = ""
+            for result in results:
+                for k in result:
+                    comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
+                comment = comment.rstrip("|") + "\n"
+                comments += comment
+            comment_on_pull_request(comment_job + table_head + comments)
+    else:
+        print("WARNING:Only send pull request comment in travis ci!")
+
+    pass
 
 
 def show_results(results, expected=None):
@@ -400,7 +406,7 @@ def show_results(results, expected=None):
     expected_results = None
     success_pt = PrettyTable(columns)
     expected_pt = PrettyTable(columns)
-    
+
     for result in results:
         status = result.pop("status")
         if status != 0:
@@ -433,8 +439,8 @@ def show_results(results, expected=None):
                 success_pt.add_row(result)
         print Fore.GREEN + "Successfull results"
         print success_pt
-        
-        
+
+
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -449,7 +455,7 @@ def show_results(results, expected=None):
 
         print Fore.RED + "Failed result:"
         print failed_pt
-        
+
         print Style.RESET_ALL
         sys.stdout.flush()
 
