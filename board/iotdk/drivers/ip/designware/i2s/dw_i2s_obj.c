@@ -238,18 +238,22 @@ DEV_I2S_PTR i2s_get_dev(int32_t i2s_id)
 
 	switch (i2s_id) {
 #if (USE_DW_I2S_0)
+
 		case DW_I2S_0_ID:
 			return &dw_i2s_0;
 			break;
 #endif
 #if (USE_DW_I2S_1)
+
 		case DW_I2S_1_ID:
 			return &dw_i2s_1;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

@@ -93,8 +93,10 @@ static int32_t ntshell_uart_nt_read(NTSHELL_IO *nt_io, void *buf, uint32_t cnt)
 	IOTDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL, E_PAR);
 
 	ercd = cnt;
+
 	do {
 		uart_dev->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rd_avail));
+
 		if (rd_avail > 0) {
 			rd_avail = (rd_avail > cnt) ? cnt : rd_avail;
 			uart_dev->uart_read(buf, rd_avail);

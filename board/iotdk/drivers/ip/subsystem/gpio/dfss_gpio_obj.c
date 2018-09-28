@@ -484,29 +484,38 @@ DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
 
 	switch (gpio_id) {
 #if (USE_DFSS_GPIO_8B0)
+
 		case DFSS_GPIO_8B0_ID: return &gpio_0;
 #endif
 #if (USE_DFSS_GPIO_8B1)
+
 		case DFSS_GPIO_8B1_ID: return &gpio_1;
 #endif
 #if (USE_DFSS_GPIO_8B2)
+
 		case DFSS_GPIO_8B2_ID: return &gpio_2;
 #endif
 #if (USE_DFSS_GPIO_8B3)
+
 		case DFSS_GPIO_8B3_ID: return &gpio_3;
 #endif
 #if (USE_DFSS_GPIO_4B0)
+
 		case DFSS_GPIO_4B0_ID: return &gpio_4;
 #endif
 #if (USE_DFSS_GPIO_4B1)
+
 		case DFSS_GPIO_4B1_ID: return &gpio_5;
 #endif
 #if (USE_DFSS_GPIO_4B2)
+
 		case DFSS_GPIO_4B2_ID: return &gpio_6;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

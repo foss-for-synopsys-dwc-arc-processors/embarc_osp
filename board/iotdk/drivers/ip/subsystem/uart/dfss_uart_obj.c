@@ -379,28 +379,34 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 
 	switch (uart_id) {
 #if USE_DFSS_UART_0
+
 		case DFSS_UART_0_ID:
 			return &dfss_uart_0;
 			break;
 #endif
 #if USE_DFSS_UART_1
+
 		case DFSS_UART_1_ID:
 			return &dfss_uart_1;
 			break;
 #endif
 #if USE_DFSS_UART_2
+
 		case DFSS_UART_2_ID:
 			return &dfss_uart_2;
 			break;
 #endif
 #if USE_DFSS_UART_3
+
 		case DFSS_UART_3_ID:
 			return &dfss_uart_3;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

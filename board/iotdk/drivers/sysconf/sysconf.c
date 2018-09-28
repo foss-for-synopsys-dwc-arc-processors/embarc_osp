@@ -47,7 +47,7 @@ typedef struct pll_conf {
 #define PLL_CONF_VAL(n, m, od) \
 	(((n) << PLLCON_BIT_OFFSET_N) | \
 	((m + 4) << (PLLCON_BIT_OFFSET_M)) | \
-	((od) << PLLCON_BIT_OFFSET_OD)) \
+	((od) << PLLCON_BIT_OFFSET_OD))
 
 
 /* the following configuration is based on Fin = 16 Mhz */
@@ -91,7 +91,7 @@ void pll_conf_reg(uint32_t val)
 	sysconf_reg_ptr->PLLCON = val & (~(1 << PLLCON_BIT_OFFSET_PLLRST));
 
 	while (!(sysconf_reg_ptr->PLLSTAT
-		& (1 << PLLSTAT_BIT_OFFSET_PLLSTB)));
+	         & (1 << PLLSTAT_BIT_OFFSET_PLLSTB)));
 
 	sysconf_reg_ptr->CLKSEL = CLKSEL_PLL;
 	/* from AHB_CLK_DIVIDER, not from DVFSS&PMC */
@@ -217,13 +217,13 @@ void spi_master_clk_divisor(uint8_t id, uint8_t div)
 {
 	if (id == SPI_MASTER_0) {
 		sysconf_reg_ptr->SPI_MST_CLKDIV =
-			(sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffffff00) | div;
+		    (sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffffff00) | div;
 	} else if (id == SPI_MASTER_1) {
 		sysconf_reg_ptr->SPI_MST_CLKDIV =
-			(sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffff00ff) | (div << 8);
+		    (sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffff00ff) | (div << 8);
 	} else if (id == SPI_MASTER_2) {
 		sysconf_reg_ptr->SPI_MST_CLKDIV =
-			(sysconf_reg_ptr->SPI_MST_CLKDIV & 0xff00ffff) | (div << 16);
+		    (sysconf_reg_ptr->SPI_MST_CLKDIV & 0xff00ffff) | (div << 16);
 	}
 }
 
@@ -239,16 +239,16 @@ void gpio8b_dbclk_div(uint8_t bank, uint8_t div)
 {
 	if (bank == GPIO8B_BANK0) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-			(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffffff00) | div;
+		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffffff00) | div;
 	} else if (bank == GPIO8B_BANK1) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffff00ff) | (div << 8);
+		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffff00ff) | (div << 8);
 	} else if (bank == GPIO8B_BANK2) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xff00ffff) | (div << 16);
+		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xff00ffff) | (div << 16);
 	} else if (bank == GPIO8B_BANK3) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0x00ffffff) | (div << 24);
+		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0x00ffffff) | (div << 24);
 	}
 }
 
@@ -264,13 +264,13 @@ void gpio4b_dbclk_div(uint8_t bank, uint8_t div)
 {
 	if (bank == GPIO4B_BANK0) {
 		sysconf_reg_ptr->GPIO4B_DBCLK_DIV =
-			(sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffffff00) | div;
+		    (sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffffff00) | div;
 	} else if (bank == GPIO4B_BANK1) {
 		sysconf_reg_ptr->GPIO4B_DBCLK_DIV =
-		(sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffff00ff) | (div << 8);
+		    (sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffff00ff) | (div << 8);
 	} else if (bank == GPIO4B_BANK2) {
 		sysconf_reg_ptr->GPIO4B_DBCLK_DIV =
-		(sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xff00ffff) | (div << 16);
+		    (sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xff00ffff) | (div << 16);
 	}
 }
 
@@ -307,16 +307,16 @@ void dvfs_clk_divisor(uint8_t level, uint8_t div)
 {
 	if (level == DVFS_PERF_LEVEL0) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-			(sysconf_reg_ptr->DVFS_CLKDIV & 0xffffff00) | div;
+		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xffffff00) | div;
 	} else if (level == DVFS_PERF_LEVEL1) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-			(sysconf_reg_ptr->DVFS_CLKDIV & 0xffff00ff) | (div << 8);
+		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xffff00ff) | (div << 8);
 	} else if (level == DVFS_PERF_LEVEL2) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-			(sysconf_reg_ptr->DVFS_CLKDIV & 0xff00ffff) | (div << 16);
+		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xff00ffff) | (div << 16);
 	} else if (level == DVFS_PERF_LEVEL3) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-			(sysconf_reg_ptr->DVFS_CLKDIV & 0x00ffffff) | (div << 24);
+		    (sysconf_reg_ptr->DVFS_CLKDIV & 0x00ffffff) | (div << 24);
 	}
 }
 
@@ -326,16 +326,16 @@ void dvfs_vdd_config(uint8_t level, uint8_t val)
 
 	if (level == DVFS_PERF_LEVEL0) {
 		sysconf_reg_ptr->DVFS_VDDSET =
-			(sysconf_reg_ptr->DVFS_VDDSET & 0xfffffff0) | val;
+		    (sysconf_reg_ptr->DVFS_VDDSET & 0xfffffff0) | val;
 	} else if (level == DVFS_PERF_LEVEL1) {
 		sysconf_reg_ptr->DVFS_VDDSET =
-			(sysconf_reg_ptr->DVFS_VDDSET & 0xffffff0f) | (val << 4);
+		    (sysconf_reg_ptr->DVFS_VDDSET & 0xffffff0f) | (val << 4);
 	} else if (level == DVFS_PERF_LEVEL2) {
 		sysconf_reg_ptr->DVFS_VDDSET =
-			(sysconf_reg_ptr->DVFS_VDDSET & 0xfffff0ff) | (val << 8);
+		    (sysconf_reg_ptr->DVFS_VDDSET & 0xfffff0ff) | (val << 8);
 	} else if (level == DVFS_PERF_LEVEL3) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-			(sysconf_reg_ptr->DVFS_CLKDIV & 0xffff0fff) | (val << 12);
+		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xffff0fff) | (val << 12);
 	}
 }
 
@@ -362,12 +362,13 @@ void uart3_clk_divisor(uint8_t div)
 void arduino_pin_mux(uint8_t pin, uint8_t function)
 {
 	volatile uint32_t val;
+
 	if (pin > ARDUINO_A5 || function > ARDUINO_FUNC_3RD) {
 		return;
 	}
 
 	if (pin == ARDUINO_RESERVED || pin == ARDUINO_SPI_MASK ||
-	   pin == ARDUINO_IIC_MASK) {
+	    pin == ARDUINO_IIC_MASK) {
 		return;
 	}
 

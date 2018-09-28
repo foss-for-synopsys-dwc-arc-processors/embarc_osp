@@ -220,18 +220,22 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 
 	switch (iic_id) {
 #if USE_DFSS_IIC_0
+
 		case DFSS_IIC_0_ID:
 			return &dfss_iic_0;
 			break;
 #endif
 #if USE_DFSS_IIC_1
+
 		case DFSS_IIC_1_ID:
 			return &dfss_iic_1;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

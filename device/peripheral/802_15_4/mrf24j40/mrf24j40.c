@@ -135,12 +135,9 @@ static int32_t spi_read_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uin
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
-	}
-	else
-	{
+	} else {
 		*val = ret_val;
 	}
 
@@ -176,12 +173,9 @@ static int32_t spi_read_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
-	}
-	else
-	{
+	} else {
 		ercd = E_OK;
 		*val = ret_val;
 	}
@@ -220,8 +214,7 @@ static int32_t spi_write_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
 	}
 
@@ -258,8 +251,7 @@ static int32_t spi_write_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, ui
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
 	}
 
@@ -273,6 +265,7 @@ static void mrf24j40_delay_us(uint32_t us)
 
 	us_delayed = (uint64_t)us;
 	start_us = board_get_cur_us();
+
 	while ((board_get_cur_us() - start_us) < us_delayed);
 }
 
@@ -296,14 +289,13 @@ static int32_t mrf24j40_hard_reset(MRF24J40_DEF *mrf24j40, uint8_t flag)
 
 	MRF_GPIO_SETUP((mrf24j40->gpio_pin_reset), port_reset, pin_reset);
 	DEV_GPIO_PTR dev_gpio_ptr = gpio_get_dev(port_reset);
-	if (flag == 1)
-	{
+
+	if (flag == 1) {
 		result = dev_gpio_ptr->gpio_write((1 << pin_reset), (1 << pin_reset));
-	}
-	else
-	{
+	} else {
 		result = dev_gpio_ptr->gpio_write(0, (1 << pin_reset));
 	}
+
 	MRF_CHECK_EXP(result == E_OK, E_SYS);
 
 error_exit:
@@ -329,8 +321,8 @@ int32_t mrf24j40_read_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8
 	MRF_CHECK_EXP(val != NULL, E_PAR);
 
 	ercd = spi_read_long_ctrl_reg(mrf24j40, addr, &ret_val);
-	if (ercd == E_OK)
-	{
+
+	if (ercd == E_OK) {
 		*val = ret_val;
 	}
 
@@ -357,8 +349,8 @@ int32_t mrf24j40_read_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, uint8
 	MRF_CHECK_EXP(val != NULL, E_PAR);
 
 	ercd = spi_read_short_ctrl_reg(mrf24j40, addr, &ret_val);
-	if (ercd == E_OK)
-	{
+
+	if (ercd == E_OK) {
 		*val = ret_val;
 	}
 
@@ -487,13 +479,13 @@ static int32_t mrf24j40_wake_pin(MRF24J40_DEF *mrf24j40, uint8_t flag)
 
 	MRF_GPIO_SETUP((mrf24j40->gpio_pin_wake), port_wake, pin_wake);
 	DEV_GPIO_PTR dev_gpio_ptr = gpio_get_dev(port_wake);
-	if (flag == 1)
-	{
+
+	if (flag == 1) {
 		result = dev_gpio_ptr->gpio_write((1 << pin_wake), (1 << pin_wake));
-	}
-	else{
+	} else {
 		result = dev_gpio_ptr->gpio_write(0, (1 << pin_wake));
 	}
+
 	MRF_CHECK_EXP(result == E_OK, E_SYS);
 
 error_exit:
@@ -566,8 +558,8 @@ error_exit:
 void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
 {
 	uint8_t softrst_status;
- 	uint8_t rf_state;
- 	uint8_t rxmcr;
+	uint8_t rf_state;
+	uint8_t rxmcr;
 
 	//mrf24j40_cs_pin(1);
 	//mrf24j40_wake_pin(1);
@@ -575,11 +567,11 @@ void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
 
 	mrf24j40_reset(mrf24j40);
 	mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_SOFTRST, (MRF24J40_RSTPWR | MRF24J40_RSTBB | MRF24J40_RSTMAC));
- 	mrf24j40_delay_us(500);
-	do
-	{
+	mrf24j40_delay_us(500);
+
+	do {
 		mrf24j40_read_short_ctrl_reg(mrf24j40, MRF24J40_SOFTRST, &softrst_status);
-	} while((softrst_status & (MRF24J40_RSTPWR | MRF24J40_RSTBB | MRF24J40_RSTMAC)) != 0);
+	} while ((softrst_status & (MRF24J40_RSTPWR | MRF24J40_RSTBB | MRF24J40_RSTMAC)) != 0);
 
 	mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_PACON2, MRF24J40_FIFOEN | MRF24J40_TXONTS(0x18));
 	mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_TXSTBL, MRF24J40_RFSTBL(9) | MRF24J40_MSIFS(5));
@@ -622,10 +614,11 @@ void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
 	mrf24j40_write_long_ctrl_reg(mrf24j40, MRF24J40_RFCON3, 0x0);
 
 	mrf24j40_rf_reset(mrf24j40);
-	do
-	{
+
+	do {
 		mrf24j40_read_long_ctrl_reg(mrf24j40, MRF24J40_RFSTATE, &rf_state);
-	} while(((rf_state >> 5) & 0x05) != 0x05);
+	} while (((rf_state >> 5) & 0x05) != 0x05);
+
 	mrf24j40_rxfifo_flush(mrf24j40);
 }
 
@@ -657,16 +650,16 @@ int32_t mrf24j40_setup(MRF24J40_DEF *mrf24j40)
 	result = gpio_wake_ptr->gpio_open(1 << pin_wake);
 	MRF_CHECK_EXP(result == E_OPNED, E_CLSED);
 	gpio_wake_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-					(void *)(1 << pin_wake));
+	                            (void *)(1 << pin_wake));
 	gpio_wake_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT,
-					(void *)(1 << pin_wake));
+	                            (void *)(1 << pin_wake));
 
 	result = gpio_reset_ptr->gpio_open(1 << pin_reset);
 	MRF_CHECK_EXP(result == E_OPNED, E_CLSED);
 	gpio_reset_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-					(void *)(1 << pin_reset));
+	                             (void *)(1 << pin_reset));
 	gpio_reset_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT,
-					(void *)(1 << pin_reset));
+	                             (void *)(1 << pin_reset));
 
 	/* Flush buffer */
 	memset(&(mrf24j40->rx_buf[0]), 0, sizeof(uint8_t)*MRF24J40_BUF_SIZE);
@@ -808,8 +801,8 @@ static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *
 
 	msg[0] = (uint8_t)(((addr >> 3) & 0x7F) | 0x80);
 	msg[1] = (uint8_t)(((addr << 5) & 0xE0) | (1 << 4));
-	for(i = 0; i < 16; i++)
-	{
+
+	for (i = 0; i < 16; i++) {
 		msg[i+2] = key[0];
 	}
 
@@ -827,8 +820,7 @@ static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
 	}
 
@@ -892,7 +884,8 @@ int32_t mrf24j40_set_channel(MRF24J40_DEF *mrf24j40, int16_t ch)
 	int32_t ercd = E_OK;
 
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
-	MRF_CHECK_EXP(mrf24j40_write_long_ctrl_reg(mrf24j40, MRF24J40_RFCON0, MRF24J40_CHANNEL(ch) | MRF24J40_RFOPT(0x03)) == E_OK, E_SYS);
+	MRF_CHECK_EXP(mrf24j40_write_long_ctrl_reg(mrf24j40, MRF24J40_RFCON0,
+	              MRF24J40_CHANNEL(ch) | MRF24J40_RFOPT(0x03)) == E_OK, E_SYS);
 	MRF_CHECK_EXP(mrf24j40_rf_reset(mrf24j40) == E_OK, E_SYS);
 
 error_exit:
@@ -919,14 +912,13 @@ int32_t mrf24j40_set_promiscuous(MRF24J40_DEF *mrf24j40, uint8_t crc_check)
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
 	MRF_CHECK_EXP((crc_check == 0) || (crc_check == 1), E_OBJ);
 	MRF_CHECK_EXP(mrf24j40_read_short_ctrl_reg(mrf24j40, MRF24J40_RXMCR, &retval) == E_OK, E_SYS);
-	if (!crc_check)
-	{
+
+	if (!crc_check) {
 		retval |= MRF24J40_PROMI;
-	}
-	else
-	{
+	} else {
 		retval &= (~MRF24J40_PROMI);
 	}
+
 	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_RXMCR, retval) == E_OK, E_SYS);
 
 error_exit:
@@ -951,14 +943,13 @@ int32_t mrf24j40_set_coordinator(MRF24J40_DEF *mrf24j40, uint8_t mark)
 
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
 	MRF_CHECK_EXP(mrf24j40_read_short_ctrl_reg(mrf24j40, MRF24J40_RXMCR, &retval) == E_OK, E_SYS);
-	if (!mark)
-	{
+
+	if (!mark) {
 		retval |= MRF24J40_PANCOORD;
-	}
-	else
-	{
+	} else {
 		retval &= (~MRF24J40_PANCOORD);
 	}
+
 	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_RXMCR, retval) == E_OK, E_SYS);
 
 error_exit:
@@ -966,7 +957,8 @@ error_exit:
 
 }
 
-static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *frame, uint8_t hdr_len, uint8_t frame_len)
+static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *frame, uint8_t hdr_len,
+        uint8_t frame_len)
 {
 	int32_t ercd = E_OK;
 	uint8_t msg[frame_len+2+2];
@@ -981,8 +973,8 @@ static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t addre
 	msg[1] = (uint8_t)(((address << 5) & 0xE0) | (1 << 4));
 	msg[2] = (uint8_t)hdr_len;
 	msg[3] = (uint8_t)frame_len;
-	for (i = 0; i < frame_len; i++)
-	{
+
+	for (i = 0; i < frame_len; i++) {
 		msg[i+4] = *frame;
 		frame++;
 	}
@@ -1001,8 +993,7 @@ static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t addre
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
 	}
 
@@ -1038,12 +1029,11 @@ int32_t mrf24j40_txpkt(MRF24J40_DEF *mrf24j40)
 	MRF_CHECK_EXP(mrf24j40_read_short_ctrl_reg(mrf24j40, MRF24J40_TXNCON, &retval) == E_OK, E_SYS);
 	retval &= ~(MRF24J40_TXNSECEN);
 
-	if (IEEE_802_15_4_HAS_SEC(frame[0]))
-	{
+	if (IEEE_802_15_4_HAS_SEC(frame[0])) {
 		retval |= MRF24J40_TXNSECEN;
 	}
-	if (IEEE_802_15_4_WANTS_ACK(frame[0]))
-	{
+
+	if (IEEE_802_15_4_WANTS_ACK(frame[0])) {
 		retval |= MRF24J40_TXNACKREQ;
 	}
 
@@ -1076,7 +1066,8 @@ int32_t mrf24j40_set_cipher(MRF24J40_DEF *mrf24j40, uint8_t rxcipher, uint8_t tx
 	int32_t ercd = E_OK;
 
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
-	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_SECCON0, MRF24J40_RXCIPHER(rxcipher) | MRF24J40_TXNCIPHER(txcipher)) == E_OK, E_SYS);
+	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_SECCON0,
+	              MRF24J40_RXCIPHER(rxcipher) | MRF24J40_TXNCIPHER(txcipher)) == E_OK, E_SYS);
 
 error_exit:
 	return ercd;
@@ -1136,8 +1127,7 @@ static int32_t mrf24j40_rxpkt_frame_write(MRF24J40_DEF *mrf24j40, uint8_t *buf, 
 	cpu_unlock_restore(cpu_status);
 #endif
 
-	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK)))
-	{
+	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
 	}
 
@@ -1182,12 +1172,11 @@ int32_t mrf24j40_rxpkt(MRF24J40_DEF *mrf24j40, uint8_t *plqi, uint8_t *prssi)
 
 	MRF_CHECK_EXP(mrf24j40_rxpkt_frame_write(mrf24j40, frame, mrf24j40->rx_buf[0] + 2) == E_OK, E_SYS);
 
-	if (plqi != NULL)
-	{
+	if (plqi != NULL) {
 		*plqi = mrf24j40->rx_buf[mrf24j40->rx_buf[0] + 1];
 	}
-	if (prssi != NULL)
-	{
+
+	if (prssi != NULL) {
 		*prssi = mrf24j40->rx_buf[mrf24j40->rx_buf[0] + 2];
 	}
 

@@ -128,9 +128,11 @@ static void ntshell_netconn_thread(void *arg)
 	netconn_listen(nt_netconn->local_conn);
 
 	nt_netconn->conn_status = CONN_NOTCONNECT;
+
 	while (1) {
 		ercd = netconn_accept(nt_netconn->local_conn, &temp_conn);
 		nt_netconn->conn_status = CONN_NOTCONNECT;
+
 		if (ercd == ERR_OK) {
 			if (nt_netconn->remote_conn != NULL) { /* kill previous connection */
 				sys_mbox_trypost(&nt_netconn->remote_conn->recvmbox, NULL);
@@ -139,6 +141,7 @@ static void ntshell_netconn_thread(void *arg)
 				netconn_delete(nt_netconn->remote_conn);
 				DBG("Delete old connection\n");
 			}
+
 			DBG("New connection connected\n");
 			nt_netconn->remote_conn = temp_conn;
 			nt_netconn->conn_status = CONN_SUCCESS;
@@ -160,13 +163,15 @@ static int32_t ntshell_netconn_nt_ioinit(NTSHELL_IO_NETCONN *nt_netconn)
 	if (nt_netconn->conn_thread->thread_arg == NULL) {
 		nt_netconn->conn_thread->thread_arg = (void *)nt_netconn;
 	}
+
 	sys_thread_new(nt_netconn->conn_thread->thread_name, nt_netconn->conn_thread->thread, \
-		nt_netconn->conn_thread->thread_arg, nt_netconn->conn_thread->thread_stksz, \
-		nt_netconn->conn_thread->thread_prio);
+	               nt_netconn->conn_thread->thread_arg, nt_netconn->conn_thread->thread_stksz, \
+	               nt_netconn->conn_thread->thread_prio);
 
 	while (nt_netconn->conn_status != CONN_SUCCESS) {
 		sys_msleep(100);
 	}
+
 	ercd = E_OK;
 error_exit:
 	return ercd;
@@ -176,12 +181,15 @@ static int32_t netconn_nt_read_chr_raw(NTSHELL_IO_NETCONN *nt_netconn)
 {
 	int8_t rcv_chr;
 	int ercd;
+
 	if (nt_netconn->conn_status == CONN_SUCCESS) {
 		if (nt_netconn->rcv_ofs >= nt_netconn->rcv_len) {
 			if (nt_netconn->pbuf_rcv != NULL) { /* free it when valid */
 				pbuf_free(nt_netconn->pbuf_rcv);
 			}
+
 			ercd = netconn_recv_tcp_pbuf(nt_netconn->remote_conn, &nt_netconn->pbuf_rcv);
+
 			if (ercd == ERR_OK) {
 				nt_netconn->rcv_ofs = 0;
 				nt_netconn->rcv_len = nt_netconn->pbuf_rcv->tot_len;
@@ -190,17 +198,21 @@ static int32_t netconn_nt_read_chr_raw(NTSHELL_IO_NETCONN *nt_netconn)
 				return E_OBJ;
 			}
 		}
+
 		if (nt_netconn->pbuf_rcv == NULL) {
 			return E_OBJ;
 		}
+
 		pbuf_copy_partial(nt_netconn->pbuf_rcv, &rcv_chr, 1, nt_netconn->rcv_ofs);
 		nt_netconn->rcv_ofs ++;
 		return ((int32_t)rcv_chr) & 0xff;
 	}
+
 	/** error handling */
 	if (nt_netconn->pbuf_rcv != NULL) { /* free it when valid */
 		pbuf_free(nt_netconn->pbuf_rcv);
 	}
+
 	nt_netconn->rcv_ofs = 0;
 	nt_netconn->rcv_len = 0;
 	return E_OBJ;
@@ -210,7 +222,7 @@ static int32_t netconn_nt_read_chr(NTSHELL_IO_NETCONN *nt_netconn)
 	int32_t ch, req;
 
 	while ( (ch = netconn_nt_read_chr_raw(nt_netconn)) == TELNET_OPT_IAC \
-			|| ch == '\0' && ch != E_OBJ) {
+	        || ch == '\0' && ch != E_OBJ) {
 		if (ch != '\0') {
 			switch (ch = netconn_nt_read_chr_raw(nt_netconn)) {
 				case TELNET_OPT_WILL:
@@ -218,19 +230,24 @@ static int32_t netconn_nt_read_chr(NTSHELL_IO_NETCONN *nt_netconn)
 				case TELNET_OPT_DO:
 				case TELNET_OPT_DONT:
 					req = netconn_nt_read_chr_raw(nt_netconn);
+
 					if (req != E_OBJ) {
 						DBG("Telnet Request:%x\n\r", req);
 					} else {
 						return req;
 					}
+
 					break;
+
 				case TELNET_OPT_SB:
 					while ((ch = netconn_nt_read_chr_raw(nt_netconn)) != E_OBJ && ch != TELNET_OPT_IAC) {
 						if ((ch = netconn_nt_read_chr_raw(nt_netconn)) == E_OBJ || ch == TELNET_OPT_SE) {
 							break;
 						}
 					}
+
 					break;
+
 				default:
 					break;
 			}
@@ -251,6 +268,7 @@ static int32_t ntshell_netconn_nt_read(NTSHELL_IO_NETCONN *nt_netconn, void *buf
 
 	while (reacnt < cnt) {
 		ercd = netconn_nt_read_chr(nt_netconn);
+
 		if (ercd == E_OBJ) {
 			sys_msleep(10); /* yield for other process to run */
 			break;
@@ -285,16 +303,20 @@ static int32_t ntshell_netconn_nt_write(NTSHELL_IO_NETCONN *nt_netconn, const vo
 	while (wricnt < cnt) {
 		crlf_snd_save = crlf_snd;
 		sndchr = p_charbuf[wricnt];
+
 		if (crlf_snd && sndchr == '\n' && nt_netconn->conn_ctrl & CONN_CTRL_CRLF) {
 			crlf_snd = 0;
 			sndchr = '\r';
 		} else {
 			crlf_snd = 1;
 		}
+
 		netconn_nt_write_chr(nt_netconn, sndchr);
+
 		if (nt_netconn->conn_status != CONN_SUCCESS) {
 			break;
 		}
+
 		wricnt += crlf_snd;
 	}
 

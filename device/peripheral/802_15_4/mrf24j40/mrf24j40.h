@@ -353,8 +353,7 @@
 #define MRF24J40_SLPCLKDIV(x) 		((x & 0x1F))		/* division ratio: 2^(SLPCLKDIV) */
 
 /* Channel state */
-typedef enum mrf24j40_chstate
-{
+typedef enum mrf24j40_chstate {
 	MRF24J40_EIO = 0,	/* Channel idle */
 	MRF24J40_EBUSY = 1	/* Channel busy */
 } MRF24J40_CHSTATE;
@@ -363,8 +362,7 @@ typedef enum mrf24j40_chstate
 /* DEV_GPIO_PORT_PIN_DEF is used in gpio_pin_xxx definition
 	 spi_pin_cs
  */
-typedef struct mrf24j40_def
-{
+typedef struct mrf24j40_def {
 	/* interface and pin */
 	uint8_t spi;				/* SPI ID */
 	uint32_t spi_cs;			/* SPI CS */
@@ -411,7 +409,8 @@ extern int32_t mrf24j40_set_cipher(MRF24J40_DEF *mrf24j40, uint8_t rxcipher, uin
 extern int32_t mrf24j40_rx_sec_fail(MRF24J40_DEF *mrf24j40, uint8_t *err);
 extern int32_t mrf24j40_rxpkt(MRF24J40_DEF *mrf24j40, uint8_t *plqi, uint8_t *prssi);
 extern int32_t mrf24j40_set_decrypt_start(MRF24J40_DEF *mrf24j40, uint8_t accept);
-extern int32_t mrf24j40_txfifo_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *data, uint8_t hdr_len, uint8_t len);
+extern int32_t mrf24j40_txfifo_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *data, uint8_t hdr_len,
+                                     uint8_t len);
 extern int32_t mrf24j40_set_transmit_trig(MRF24J40_DEF *mrf24j40);
 
 #ifdef __cplusplus

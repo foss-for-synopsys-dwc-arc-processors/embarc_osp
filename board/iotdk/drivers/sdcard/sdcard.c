@@ -76,13 +76,16 @@ FATFS_DISKIO *get_fatfs_diskio(uint32_t drvid)
 {
 	switch (drvid) {
 #if (USE_IOTDK_SDCARD_SDIO_0 )
+
 		case IOTDK_SDCARD_0_DRVID:
 			return &sdcard_sdio_0_diskio;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 #endif /* MID_FATFS */

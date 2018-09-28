@@ -112,7 +112,7 @@ static void sdcard_sdio_0_diskio_timerproc(void)
 
 
 FATFS_DISKIO sdcard_sdio_0_diskio = {
-	(void *)&sdcard_sdio0,
+	(void *) &sdcard_sdio0,
 	sdcard_sdio_0_diskio_initialize,
 	sdcard_sdio_0_diskio_status,
 	sdcard_sdio_0_diskio_read,
@@ -120,8 +120,6 @@ FATFS_DISKIO sdcard_sdio_0_diskio = {
 	sdcard_sdio_0_diskio_ioctl,
 	sdcard_sdio_0_diskio_timerproc
 };
-
-
 
 #endif /* USE_IOTDK_SDCARD_SDIO_0 */
 

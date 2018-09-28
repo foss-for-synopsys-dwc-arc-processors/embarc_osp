@@ -36,8 +36,8 @@
 
 #include "smic_adc.h"
 
-#define SMIC_ADC_CHECK_EXP_NORTN(EXPR)		    CHECK_EXP_NOERCD(EXPR, error_exit)
-#define SMIC_ADC_CHECK_EXP(EXPR, ERROR_CODE)    CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define SMIC_ADC_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define SMIC_ADC_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 int32_t smic_adc_open(SMIC_ADC_DEF_PTR obj)
 {
@@ -149,7 +149,7 @@ int32_t smic_adc_control(SMIC_ADC_DEF_PTR obj, uint32_t ctrl_cmd, void *param)
 	SMIC_ADC_CHECK_EXP(param != NULL, E_PAR);
 
 	if (ctrl_cmd != SMIC_ADC_SET_MODE && ctrl_cmd != SMIC_ADC_GET_MODE &&
-	   ctrl_cmd != SMIC_ADC_SET_CALLBACK && ctrl_cmd != SMIC_ADC_GET_CALLBACK) {
+	    ctrl_cmd != SMIC_ADC_SET_CALLBACK && ctrl_cmd != SMIC_ADC_GET_CALLBACK) {
 		ercd = E_PAR;
 		goto error_exit;
 	}
@@ -157,26 +157,30 @@ int32_t smic_adc_control(SMIC_ADC_DEF_PTR obj, uint32_t ctrl_cmd, void *param)
 	switch (ctrl_cmd) {
 		case SMIC_ADC_SET_MODE:
 			SMIC_ADC_CHECK_EXP(*((SMIC_ADC_MODE *)param) != ADC_MODE_CONTINUOUS && \
-			*((SMIC_ADC_MODE *)param) != ADC_MODE_SINGLE, E_PAR);
+			                   *((SMIC_ADC_MODE *)param) != ADC_MODE_SINGLE, E_PAR);
 			obj->adc_reg->ADCCON |= (*((SMIC_ADC_MODE *)param) << 3);
 			obj->adc_mode = *((SMIC_ADC_MODE *)param);
 			break;
+
 		case SMIC_ADC_GET_MODE:
 			obj->adc_mode = (SMIC_ADC_MODE)((obj->adc_reg->ADCCON & (1 << 3)) >> 3);
 			*((SMIC_ADC_MODE *)param) = obj->adc_mode;
 			break;
+
 		case SMIC_ADC_SET_CALLBACK:
 			SMIC_ADC_CHECK_EXP(((SMIC_ADC_CALLBACK_BIT *)param)->channel >=0 && \
 			((SMIC_ADC_CALLBACK_BIT *)param)->channel < obj->adc_channel_max, E_PAR);
 			obj->adc_callback[((SMIC_ADC_CALLBACK_BIT *)param)->channel] \
 			= ((SMIC_ADC_CALLBACK_BIT *)param)->isr;
 			break;
+
 		case SMIC_ADC_GET_CALLBACK:
 			SMIC_ADC_CHECK_EXP(((SMIC_ADC_CALLBACK_BIT *)param)->channel >=0 && \
 			((SMIC_ADC_CALLBACK_BIT *)param)->channel < obj->adc_channel_max, E_PAR);
 			((SMIC_ADC_CALLBACK_BIT *)param)->isr = \
 			obj->adc_callback[((SMIC_ADC_CALLBACK_BIT *)param)->channel];
 			break;
+
 		default:
 			break;
 	}

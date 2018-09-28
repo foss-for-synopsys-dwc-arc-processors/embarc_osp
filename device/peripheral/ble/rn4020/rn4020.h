@@ -110,8 +110,7 @@
 #define RN4020_BATTERY_MAX_LEVEL   0x64
 
 
-typedef enum rn4020_state
-{
+typedef enum rn4020_state {
 	RN4020_STATE_INITIALIZING,
 	RN4020_STATE_READY,
 	RN4020_STATE_WAITING_FOR_CMD,
@@ -180,11 +179,11 @@ extern int32_t rn4020_clear_private(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_is_connected(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t *uuid);
 extern int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, uint8_t property,
-				 uint8_t size,uint8_t security);
+                                   uint8_t size, uint8_t security);
 extern void rn4020_uuid_to_string(char *dest, const uint8_t *uuid, uint8_t len);
-extern RN4020_HANDLE_UUID_ITEM* rn4020_lookup_handle(RN4020_DEF_PTR rn4020, uint16_t handle);
-extern uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM* item, uint16_t uuid);
-extern uint8_t rn4020_handle_match_uuid128(RN4020_HANDLE_UUID_ITEM* item, const uint8_t* uuid);
+extern RN4020_HANDLE_UUID_ITEM *rn4020_lookup_handle(RN4020_DEF_PTR rn4020, uint16_t handle);
+extern uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM *item, uint16_t uuid);
+extern uint8_t rn4020_handle_match_uuid128(RN4020_HANDLE_UUID_ITEM *item, const uint8_t *uuid);
 extern void rn4020_tick(RN4020_DEF_PTR rn4020);
 extern void rn4020_send(RN4020_DEF_PTR rn4020, const char *line);
 

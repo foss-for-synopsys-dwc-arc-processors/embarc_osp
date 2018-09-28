@@ -137,6 +137,7 @@ int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, 
 
 	for (i = 0; i < len; i++) {
 		*p_addr++ = *val++;
+
 		while (1) {
 			if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK) {
 				break;
@@ -155,9 +156,9 @@ int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *pa
 	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
 
-	if(ctrl_cmd != SMIC_EFLASH_SET_LOCK && ctrl_cmd != SMIC_EFLASH_GET_LOCK &&
-	   ctrl_cmd != SMIC_EFLASH_PAGE_ERASE && ctrl_cmd != SMIC_EFLASH_MACRO_ERASE &&
-	   ctrl_cmd != SMIC_EFLASH_GET_INFO) {
+	if (ctrl_cmd != SMIC_EFLASH_SET_LOCK && ctrl_cmd != SMIC_EFLASH_GET_LOCK &&
+	    ctrl_cmd != SMIC_EFLASH_PAGE_ERASE && ctrl_cmd != SMIC_EFLASH_MACRO_ERASE &&
+	    ctrl_cmd != SMIC_EFLASH_GET_INFO) {
 		ercd = E_PAR;
 		goto error_exit;
 	}
@@ -165,23 +166,28 @@ int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *pa
 	switch (ctrl_cmd) {
 		case SMIC_EFLASH_SET_LOCK:
 			SMIC_EFLASH_CHECK_EXP(*((E_FMC_LOCK *)param) != FMC_LOCK && \
-			*((E_FMC_LOCK *)param) != FMC_UNLOCK, E_PAR);
+			                      *((E_FMC_LOCK *)param) != FMC_UNLOCK, E_PAR);
 			obj->eflash_reg->FMCLOCK = *((E_FMC_LOCK *)param);
 			obj->eflash_lock = *((E_FMC_LOCK *)param);
 			break;
+
 		case SMIC_EFLASH_GET_LOCK:
 			*((E_FMC_LOCK *)param) = obj->eflash_lock;
 			break;
+
 		case SMIC_EFLASH_PAGE_ERASE:
-			smic_eflash_page_erase(obj, *((uint32_t*)param));
+			smic_eflash_page_erase(obj, *((uint32_t *)param));
 			break;
+
 		case SMIC_EFLASH_MACRO_ERASE:
 			smic_eflash_macro_erase(obj);
 			break;
+
 		case SMIC_EFLASH_GET_INFO:
 			((SMIC_EFLASH_INFO *)param)->eflash_page_cnt = obj->eflash_page_cnt;
 			((SMIC_EFLASH_INFO *)param)->eflash_page_size = obj->eflash_page_size;
 			break;
+
 		default:
 			break;
 	}

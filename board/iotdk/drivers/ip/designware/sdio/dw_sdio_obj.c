@@ -41,7 +41,7 @@ static DW_SDIO_CTRL dw_sdio_0_ctrl;
 static DEV_SDIO dw_sdio_0;
 
 
-static void dw_sdio_0_isr(void * ptr)
+static void dw_sdio_0_isr(void *ptr)
 {
 	dw_sdio_isr(&dw_sdio_0, ptr);
 }
@@ -119,13 +119,16 @@ DEV_SDIO_PTR sdio_get_dev(uint32_t sdio_id)
 
 	switch (sdio_id) {
 #if (USE_DW_SDIO_0)
+
 		case DW_SDIO_0_ID:
 			return &dw_sdio_0;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

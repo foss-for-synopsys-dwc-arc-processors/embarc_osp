@@ -33,22 +33,26 @@
 #include "ntshell_io.h"
 
 /** get ntshell interface by index */
-NTSHELL_IO* get_ntshell_io(uint32_t id)
+NTSHELL_IO *get_ntshell_io(uint32_t id)
 {
 	switch (id) {
 #if (USE_IOTDK_NTSHELL_UART_1)
+
 		case IOTDK_NTSHELL_0_ID:
 			return &ntshell_uart_1;
 			break;
 #endif
 #if (USE_IOTDK_NTSHELL_NETCONN_0)
+
 		case IOTDK_NTSHELL_1_ID:
 			return &ntshell_netconn_0;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

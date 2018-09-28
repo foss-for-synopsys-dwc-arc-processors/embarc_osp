@@ -32,14 +32,14 @@
 
 #include "arc_exception.h"
 
-#define ADC_CRTL_BASE           0xF0007000
+#define ADC_CRTL_BASE		0xF0007000
 #define ADC_CHANNEL_MAX		16
-#define ADC_INT_NUM             97
+#define ADC_INT_NUM 		97
 
-#define SMIC_ADC_SET_MODE       0
-#define SMIC_ADC_GET_MODE       1
-#define SMIC_ADC_SET_CALLBACK   2
-#define SMIC_ADC_GET_CALLBACK   3
+#define SMIC_ADC_SET_MODE	0
+#define SMIC_ADC_GET_MODE	1
+#define SMIC_ADC_SET_CALLBACK	2
+#define SMIC_ADC_GET_CALLBACK	3
 
 #ifdef __cplusplus
 extern "C" {
@@ -68,18 +68,18 @@ typedef volatile struct smic_adc_reg {
 
 typedef enum {
 	ADC_MODE_SINGLE	= 0,
-	ADC_MODE_CONTINUOUS	= 1,
+	ADC_MODE_CONTINUOUS = 1,
 } SMIC_ADC_MODE;
 
 
 typedef void (*SMIC_ADC_CALLBACK)(void *ptr);
 
-typedef struct{
+typedef struct {
 	uint8_t channel;
 	SMIC_ADC_CALLBACK isr;
 } SMIC_ADC_CALLBACK_BIT;
 
-typedef volatile struct{
+typedef volatile struct {
 	SMIC_ADC_REG_PTR adc_reg;
 	SMIC_ADC_MODE adc_mode;
 	uint8_t adc_channel_max;

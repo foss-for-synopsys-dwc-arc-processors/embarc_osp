@@ -229,19 +229,23 @@ DEV_SPI_PTR spi_get_dev(int32_t spi_id)
 
 	switch (spi_id) {
 #if (USE_DFSS_SPI_0)
+
 		case DFSS_SPI_0_ID:
 			return &dfss_spi_0;
 			break;
 #endif
 
 #if (USE_DFSS_SPI_1)
+
 		case DFSS_SPI_1_ID:
 			return &dfss_spi_1;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 

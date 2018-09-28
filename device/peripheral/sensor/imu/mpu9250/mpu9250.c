@@ -67,26 +67,29 @@
 #ifdef MPU9250_USE_DMP
 MPU9250_DEF_PTR mpu9250_ptr;
 static signed char gyro_orientation[9] = {1, 0, 0,
-										  0, 1, 0,
-										  0, 0, 1};
+                                          0, 1, 0,
+                                          0, 0, 1
+                                         };
 static inline unsigned short inv_row_2_scale(const signed char *row)
 {
 	unsigned short b;
 
-	if (row[0] > 0)
+	if (row[0] > 0) {
 		b = 0;
-	else if (row[0] < 0)
+	} else if (row[0] < 0) {
 		b = 4;
-	else if (row[1] > 0)
+	} else if (row[1] > 0) {
 		b = 1;
-	else if (row[1] < 0)
+	} else if (row[1] < 0) {
 		b = 5;
-	else if (row[2] > 0)
+	} else if (row[2] > 0) {
 		b = 2;
-	else if (row[2] < 0)
+	} else if (row[2] < 0) {
 		b = 6;
-	else
-		b = 7;      // error
+	} else {
+		b = 7;    // error
+	}
+
 	return b;
 }
 
@@ -115,8 +118,9 @@ static inline void run_self_test(void)
 	unsigned char i = 0;
 	result = mpu_run_6500_self_test(gyro, accel, 1);
 	EMBARC_PRINTF("mpu run self test, result = %d\r\n");
+
 	if (result == 0x7) {
-		for(i = 0; i<3; i++) {
+		for (i = 0; i<3; i++) {
 			gyro[i] = (long)(gyro[i] * 32.8f); //convert to +-1000dps
 			accel[i] *= 2048.f; //convert to +-16G
 			accel[i] = accel[i] >> 16;
@@ -188,6 +192,7 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 	MPU9250_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
+
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
 #ifndef MPU9250_USE_DMP
 		uint8_t config;
@@ -245,38 +250,62 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 		ercd = _mpu_reg_write(obj, obj->mag_slvaddr, MAG_CTRL, &config, 1);//mag single measurement mode
 #else
 		mpu9250_ptr = obj;
-		if(!mpu_init())
-		{
-			if(!mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL))
+
+		if (!mpu_init()) {
+			if (!mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL)) {
 				EMBARC_PRINTF("mpu_set_sensor complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
-			if(!mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL))
+
+			if (!mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL)) {
 				EMBARC_PRINTF("mpu_configure_fifo complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
-			if(!mpu_set_sample_rate(DEFAULT_MPU_HZ))
+
+			if (!mpu_set_sample_rate(DEFAULT_MPU_HZ)) {
 				EMBARC_PRINTF("mpu_set_sample_rate complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
 			//if(!mpu_set_gyro_bias_reg(gyroZero))
 			//	EMBARC_PRINTF("mpu_set_gyro_bias_reg complete ......\r\n");
 			mpu_delay_ms(50);
-			if(!dmp_load_motion_driver_firmware())
+
+			if (!dmp_load_motion_driver_firmware()) {
 				EMBARC_PRINTF("dmp_load_motion_driver_firmware complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
-			if(!dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation)))
+
+			if (!dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation))) {
 				EMBARC_PRINTF("dmp_set_orientation complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
-			if(!dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_SEND_RAW_ACCEL |
-									DMP_FEATURE_SEND_RAW_GYRO))
-								//DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_GYRO_CAL))
+
+			if (!dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_SEND_RAW_ACCEL |
+			                        DMP_FEATURE_SEND_RAW_GYRO))
+				//DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_GYRO_CAL))
+			{
 				EMBARC_PRINTF("dmp_enable_feature complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
-			if(!dmp_set_fifo_rate(DEFAULT_MPU_HZ))
+
+			if (!dmp_set_fifo_rate(DEFAULT_MPU_HZ)) {
 				EMBARC_PRINTF("dmp_set_fifo_rate complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
 			//run_self_test();
 			mpu_delay_ms(50);
-			if(!mpu_set_dmp_state(1))
+
+			if (!mpu_set_dmp_state(1)) {
 				EMBARC_PRINTF("mpu_set_dmp_state complete ......\r\n");
+			}
+
 			mpu_delay_ms(50);
 		}
 
@@ -306,6 +335,7 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 	uint8_t data[6];
 	uint8_t config;
 	ercd = _mpu_reg_read(obj, obj->mpu_slvaddr, GYRO_XOUT_H, data, 6);
+
 	if (ercd != 6) {
 		ercd = E_OBJ;
 		goto error_exit;
@@ -318,6 +348,7 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 	}
 
 	ercd = _mpu_reg_read(obj, obj->mpu_slvaddr, ACCEL_XOUT_H, data, 6);
+
 	if (ercd != 6) {
 		ercd = E_OBJ;
 		goto error_exit;
@@ -330,6 +361,7 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 	}
 
 	ercd = _mpu_reg_read(obj, obj->mag_slvaddr, MAG_XOUT_L, data, 6);
+
 	if (ercd != 6) {
 		ercd = E_OBJ;
 	} else {
@@ -339,6 +371,7 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 		mp_data->mag_y = ((int16_t)data[3] << 8) + ((int16_t)data[2]);
 		mp_data->mag_z = ((int16_t)data[5] << 8) + ((int16_t)data[4]);
 	}
+
 	config = 0x01;
 	ercd = _mpu_reg_write(obj, obj->mag_slvaddr, MAG_CTRL, &config, 1);//mag single measurement mode
 #else
@@ -348,16 +381,16 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 	unsigned char more;
 	long quat[4];
 	float q30 = (float)(1 << 30);
-	if(dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors, &more)==0)
-	{
+
+	if (dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors, &more)==0) {
 		mp_data->gyro_x = gyro[0];
 		mp_data->gyro_y = gyro[1];
 		mp_data->gyro_z = gyro[2];
 		mp_data->accel_x = accel[0];
 		mp_data->accel_y = accel[1];
 		mp_data->accel_z = accel[2];
-		if (sensors & INV_WXYZ_QUAT)
-		{
+
+		if (sensors & INV_WXYZ_QUAT) {
 			q0=quat[0] / q30;
 			q1=quat[1] / q30;
 			q2=quat[2] / q30;
@@ -368,6 +401,7 @@ int32_t mpu9250_sensor_read(MPU9250_DEF_PTR obj, MPU9250_DATA_PTR mp_data)
 			return 0;
 		}
 	}
+
 #endif
 error_exit:
 	return ercd;
@@ -393,10 +427,11 @@ int32_t mpu_iic_write(uint32_t slaveaddr, uint8_t regaddr, uint8_t len, uint8_t 
 	ercd = iic_obj->iic_write(data, 1);
 	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_STOP));
 	ercd = iic_obj->iic_write(val, len);
-	if(ercd == len)
-	{
+
+	if (ercd == len) {
 		ercd = E_OK;
 	}
+
 error_exit:
 	return ercd;
 }
@@ -420,10 +455,11 @@ int32_t mpu_iic_read(uint32_t slaveaddr, uint8_t regaddr, uint8_t len, uint8_t *
 	ercd = iic_obj->iic_write(data, 1);
 	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_STOP));
 	ercd = iic_obj->iic_read(val, len);
-	if(ercd == len)
-	{
+
+	if (ercd == len) {
 		ercd = E_OK;
 	}
+
 error_exit:
 	return ercd;
 }

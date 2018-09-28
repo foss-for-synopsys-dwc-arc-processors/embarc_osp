@@ -47,17 +47,17 @@
 
 // read command
 #define SMIC_BOOTSPI_NOR_CMD_SREAD	0x03	// Normal read
-#define SMIC_BOOTSPI_NOR_CMD_DREAD  0x3B	// Dual read
-#define SMIC_BOOTSPI_NOR_CMD_QREAD  0x6B	// quad read
+#define SMIC_BOOTSPI_NOR_CMD_DREAD	0x3B	// Dual read
+#define SMIC_BOOTSPI_NOR_CMD_QREAD	0x6B	// quad read
 
 // program command
-#define SMIC_BOOTSPI_NOR_CMD_PP  	0x02	// Page Program
+#define SMIC_BOOTSPI_NOR_CMD_PP		0x02	// Page Program
 
 // erase command
-#define SMIC_BOOTSPI_NOR_CMD_SE  	0x20	// Sector Erase
+#define SMIC_BOOTSPI_NOR_CMD_SE		0x20	// Sector Erase
 #define SMIC_BOOTSPI_NOR_CMD_BE_32K	0x52	// 32KB Block Erase
 #define SMIC_BOOTSPI_NOR_CMD_BE_64K	0xD8	// 64KB Block Erase
-#define SMIC_BOOTSPI_NOR_CMD_CE  	0x60	// Chip Erase(0x60/0xC7)
+#define SMIC_BOOTSPI_NOR_CMD_CE		0x60	// Chip Erase(0x60/0xC7)
 
 #define SMIC_BOOTSPI_NOR_RD_ID		0x9F	// JEDEC ID
 
@@ -66,10 +66,10 @@
 #define SMIC_BOOTSPI_NOR_CMD_RST	0x99	// Reset memory
 
 #define SMIC_BOOTSPI_NOR_CMD_RDSR	0x05	// Read status register(macornix)
-											// Read Status Register-1(winbond)
-											// Read Status Register-1(issi)
+// Read Status Register-1(winbond)
+// Read Status Register-1(issi)
 
-#define SMIC_BOOTSPI_NOR_CMD_WREN  	0x06	// Write Enable
+#define SMIC_BOOTSPI_NOR_CMD_WREN	0x06	// Write Enable
 #define SMIC_BOOTSPI_NOR_CMD_WRDI	0x04	// Write Disable
 #define SMIC_BOOTSPI_NOR_CMD_WRSR	0x01	// Write status register
 
@@ -78,12 +78,12 @@ static void bootspi_release_cs(SMIC_BOOTSPI_DEF_PTR obj)
 {
 	uint32_t reg_val;
 	obj->bootspi_reg->MMS = SMIC_BOOTSPI_RMMCS_MASK;
+
 	// check the NBR
-	while (1)
-	{
+	while (1) {
 		reg_val = obj->bootspi_reg->MMS;
-		if ((reg_val & SMIC_BOOTSPI_MMA_MASK) != SMIC_BOOTSPI_MMA_MASK)
-		{
+
+		if ((reg_val & SMIC_BOOTSPI_MMA_MASK) != SMIC_BOOTSPI_MMA_MASK) {
 			break;
 		}
 	}
@@ -93,12 +93,12 @@ static void bootspi_write_data(SMIC_BOOTSPI_DEF_PTR obj, uint8_t data)
 {
 	uint32_t reg_val;
 	obj->bootspi_reg->MMDW = data;
+
 	// check the NBR
-	while (1)
-	{
+	while (1) {
 		reg_val = obj->bootspi_reg->MMS;
-		if (reg_val & SMIC_BOOTSPI_NBR_MASK)
-		{
+
+		if (reg_val & SMIC_BOOTSPI_NBR_MASK) {
 			break;
 		}
 	}
@@ -126,11 +126,10 @@ static uint8_t bootspi_chk_st(SMIC_BOOTSPI_DEF_PTR obj)
 {
 	uint8_t st;
 
-	while (1)
-	{
+	while (1) {
 		st = bootspi_read_st(obj);
-		if ((st&1) == 0)
-		{
+
+		if ((st&1) == 0) {
 			return st;
 		}
 	}
@@ -156,10 +155,11 @@ static void bootspi_read_id(SMIC_BOOTSPI_DEF_PTR obj, uint8_t *p_id, uint32_t si
 
 	bootspi_release_cs(obj);
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_RD_ID);
-	for (i = 0; i < size; i++)
-	{
+
+	for (i = 0; i < size; i++) {
 		p_id[i] = bootspi_read_data(obj);
 	}
+
 	bootspi_release_cs(obj);
 }
 
@@ -186,11 +186,12 @@ static void bootspi_sec_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr)
 	bootspi_release_cs(obj);
 	// issue sector erase command
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_CMD_SE);
+
 	// issue address
-	for (i = 2; i >= 0; i--)
-	{
+	for (i = 2; i >= 0; i--) {
 		bootspi_write_data(obj, (addr >> (i<<3)) & 0xFF);
 	}
+
 	// check status
 	bootspi_chk_st(obj);
 	bootspi_release_cs(obj);
@@ -206,17 +207,16 @@ static void bootspi_blk_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr)
 	bootspi_release_cs(obj);
 	// issue sector erase command
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_CMD_BE_64K);
+
 	// issue address
-	for (i = 2; i >= 0; i--)
-	{
+	for (i = 2; i >= 0; i--) {
 		bootspi_write_data(obj, (addr >> (i<<3)) & 0xFF);
 	}
+
 	// check status
 	bootspi_chk_st(obj);
 	bootspi_release_cs(obj);
 }
-
-
 
 int32_t smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR obj)
 {
@@ -260,16 +260,17 @@ int32_t smic_bootspi_read(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len,
 	bootspi_release_cs(obj);
 	// issue read command
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_CMD_SREAD);
+
 	// issue address
-	for (i = 2; i >= 0; i--)
-	{
+	for (i = 2; i >= 0; i--) {
 		bootspi_write_data(obj, (addr >> (i<<3)) & 0xFF);
 	}
+
 	// read data
-	for (i = 0; i < len; i++)
-	{
+	for (i = 0; i < len; i++) {
 		val[i] = bootspi_read_data(obj);
 	}
+
 	bootspi_release_cs(obj);
 
 	return (int32_t)(len);
@@ -287,16 +288,17 @@ static void bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len,
 	bootspi_release_cs(obj);
 	// issue page program command
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_CMD_PP);
+
 	// issue address
-	for (i = 2; i >= 0; i--)
-	{
+	for (i = 2; i >= 0; i--) {
 		bootspi_write_data(obj, (addr >> (i<<3)) & 0xFF);
 	}
+
 	// write data
-	for (i = 0; i < len; i++)
-	{
+	for (i = 0; i < len; i++) {
 		bootspi_write_data(obj, val[i]);
 	}
+
 	bootspi_release_cs(obj);
 	// check status
 	st = bootspi_chk_st(obj);
@@ -313,6 +315,7 @@ int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len
 	SMIC_BOOTSPI_CHECK_EXP(obj->bootspi_open_cnt != 0, E_OPNED);
 
 	first = SMIC_BOOTSPI_PAGE_SIZE - (addr & (SMIC_BOOTSPI_PAGE_SIZE - 1));
+
 	do {
 		first = first < len ? first : len;
 		bootspi_write(obj, addr, first, val);
@@ -320,7 +323,7 @@ int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len
 		addr += first;
 		val += first;
 		first = SMIC_BOOTSPI_PAGE_SIZE;
-	} while(len);
+	} while (len);
 
 	return (int32_t)(size_orig);
 error_exit:
@@ -334,9 +337,9 @@ int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *
 	SMIC_BOOTSPI_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_BOOTSPI_CHECK_EXP(obj->bootspi_open_cnt != 0, E_OPNED);
 
-	if(ctrl_cmd != SMIC_BOOTSPI_RESET && ctrl_cmd != SMIC_BOOTSPI_READ_ID &&
-	   ctrl_cmd != SMIC_BOOTSPI_CHIP_REASE && ctrl_cmd != SMIC_BOOTSPI_BLK_ERASE &&
-	   ctrl_cmd != SMIC_BOOTSPI_SEC_ERASE) {
+	if (ctrl_cmd != SMIC_BOOTSPI_RESET && ctrl_cmd != SMIC_BOOTSPI_READ_ID &&
+	    ctrl_cmd != SMIC_BOOTSPI_CHIP_REASE && ctrl_cmd != SMIC_BOOTSPI_BLK_ERASE &&
+	    ctrl_cmd != SMIC_BOOTSPI_SEC_ERASE) {
 		ercd = E_PAR;
 		goto error_exit;
 	}
@@ -345,22 +348,27 @@ int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *
 		case SMIC_BOOTSPI_RESET:
 			bootspi_reset(obj);
 			break;
+
 		case SMIC_BOOTSPI_READ_ID:
-			bootspi_read_id(obj, (uint8_t*)param, 3);
+			bootspi_read_id(obj, (uint8_t *)param, 3);
 			break;
+
 		case SMIC_BOOTSPI_CHIP_REASE:
 			bootspi_chip_erase(obj);
 			break;
+
 		case SMIC_BOOTSPI_BLK_ERASE:
 			addr = (uint32_t)param;
 			addr &= ~(SMIC_BOOTSPI_BLK_SIZE-1);
 			bootspi_blk_erase(obj, addr);
 			break;
+
 		case SMIC_BOOTSPI_SEC_ERASE:
 			addr = (uint32_t)param;
 			addr &= ~(SMIC_BOOTSPI_SEC_SIZE-1);
 			bootspi_sec_erase(obj, addr);
 			break;
+
 		default:
 			break;
 	}

@@ -109,12 +109,14 @@ static int32_t pmwifi_0_gpio_open(uint32_t pin_mask, uint32_t pin_dir)
 	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL)<<IOTDK_PMWIFI_0_PIN_GAP);
 	mask = (pin_dir<<IOTDK_PMWIFI_0_PIN_GAP) & pin_mask;
 	ercd = pmwifi_gpio_ptr->gpio_open(mask);
+
 	if (ercd == E_OPNED) {
 		/* direction */
 		pmwifi_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, (void *)mask);
 		mask = (~(pin_dir<<IOTDK_PMWIFI_0_PIN_GAP)) & pin_mask;
 		pmwifi_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)mask);
 	}
+
 	/* Default all set to pull */
 	ercd = pmwifi_gpio_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT, (void *)pin_mask);
 
@@ -210,6 +212,7 @@ static int32_t pmwifi_0_gpio_eint_is_enabled(void)
 
 	mask = (1 << IOTDK_PMWIFI_0_INT_PIN);
 	ercd = pmwifi_gpio_ptr->gpio_control(GPIO_CMD_GET_BIT_MTHD, (void *)(&mthd));
+
 	if (ercd == E_OK) {
 		mthd &= mask;
 		ercd = ((mthd==0) ? WF_EINT_DISABLE:WF_EINT_ENABLE);
@@ -229,6 +232,7 @@ static int32_t pmwifi_0_gpio_eint_control(int32_t state)
 	PMWIFI_CHECK_EXP(pmwifi_gpio_ptr != NULL, E_OBJ);
 
 	mask = (1 << IOTDK_PMWIFI_0_INT_PIN);
+
 	if (state == WF_EINT_ENABLE) {
 		ercd = pmwifi_gpio_ptr->gpio_control(GPIO_CMD_ENA_BIT_INT, (void *)mask);
 	} else {
@@ -286,9 +290,11 @@ static int32_t pmwifi_0_spi_open(uint32_t freq, uint32_t clk_mode)
 	PMWIFI_CHECK_EXP(pmwifi_spi_ptr != NULL, E_OBJ);
 
 	ercd = pmwifi_spi_ptr->spi_open(DEV_MASTER_MODE, freq);
+
 	if ((ercd == E_OPNED) || (ercd == E_OK)) {
 		ercd = pmwifi_spi_ptr->spi_control(SPI_CMD_SET_CLK_MODE, CONV2VOID(clk_mode));
 	}
+
 error_exit:
 	dbg_printf(DBG_LESS_INFO, "[%s]%d: ercd 0x%x\r\n", __FUNCTION__, __LINE__, ercd);
 	return ercd;
@@ -600,13 +606,16 @@ DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
 
 	switch (wnic_id) {
 #if (USE_IOTDK_PMWIFI_0)
+
 		case IOTDK_PMWIFI_0_ID:
 			return &pmwifi_0_wnic;
 			break;
 #endif
+
 		default:
 			break;
 	}
+
 	return NULL;
 }
 
