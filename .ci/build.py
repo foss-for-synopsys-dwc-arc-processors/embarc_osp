@@ -575,6 +575,7 @@ def comment_on_pull_request(comment):
             slug=slug, number=pr_number)
         response = requests.post(url, data=json.dumps({'body': comment}),
             headers={'Authorization': 'token ' + token})
+        print(">>>>Travis send pull request comment to {}, repsonse status code {}.".format(url, response.status_code))
         return response.json()
 
 
