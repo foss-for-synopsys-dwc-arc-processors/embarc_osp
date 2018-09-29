@@ -44,7 +44,7 @@
 #define RAM_STARTADDRESS	0x10000000		/*!< default ram start address of boot.bin */
 #define APP_CFG_ADDR		0x17f00000 		/*!< save the app configuration file name */
 #elif defined(BOARD_IOTDK)
-#define RAM_STARTADDRESS 	EXT_RAM_START
+#define RAM_STARTADDRESS 	ICCM_START
 #define APP_CFG_ADDR 		ARC_X_MEM_START
 #endif
 
@@ -53,9 +53,9 @@
 typedef int (*fp_t)(void);
 
 struct wifi_cfg_t {
-	char* wifi_sel;
-	char* SSID;
-	char* PSK;
+	char *wifi_sel;
+	char *SSID;
+	char *PSK;
 	uint8_t DHCP;
 	uint8_t version;
 	uint8_t address[4];
@@ -110,47 +110,56 @@ int main(void)
 		default_bt_flag = 1;
 	} else {
 		res = f_read(&file, boot_json, file.fsize, &cnt);
+
 		if (res) {
 			EMBARC_PRINTF("read boot cfg file error\r\n");
 			default_bt_flag = 1;
 		}
+
 		f_close(&file);
 	}
 
 	if (default_bt_flag == 0) {
 		JSON_Value *user_data = json_parse_string((const char *)boot_json);
+
 		if (user_data != NULL) {
 			/*parse the boot.json*/
 			const char *str;
 			str = json_object_get_string(json_object(user_data), "boot_file");
+
 			if (str != NULL) {
 				boot_cfg.boot_file = str;
 			}
+
 			str = json_object_get_string(json_object(user_data), "app_cfg");
+
 			if (str != NULL) {
 				boot_cfg.app_cfg = str;
 			}
 
 			uint32_t num;
 			num = json_object_get_number(json_object(user_data), "ram_startaddress");
+
 			if (num != 0) {
 				boot_cfg.ram_startaddress = num;
 			}
 
 			int32_t boo;
 			boo = json_object_get_boolean(json_object(user_data), "ntshell");
+
 			if (boo != -1) {
 				boot_cfg.ntshell = boo;
 			}
 
 			JSON_Object *obj;
 			obj = json_object_get_object(json_object(user_data), "wifi");
+
 			if (obj != NULL) {
 				/*TODO: parse wifi setting*/
 			}
 
 			EMBARC_PRINTF("boot_file:%s\napp_cfg:%s\nram:0x%x\nntshell:%d", \
-			boot_cfg.boot_file, boot_cfg.app_cfg, boot_cfg.ram_startaddress, boot_cfg.ntshell);
+			              boot_cfg.boot_file, boot_cfg.app_cfg, boot_cfg.ram_startaddress, boot_cfg.ntshell);
 		} else {
 			EMBARC_PRINTF("Cannot parse boot.json, please check it. Now use default bootloader\n");
 			default_bt_flag = 1;
@@ -160,17 +169,19 @@ int main(void)
 	if (default_bt_flag == 1) {
 		EMBARC_PRINTF("\r\nPress any button on board to stop auto boot in %d s\r\n", PROMT_DELAY_S);
 		cur_ms = OSP_GET_CUR_MS();
+
 		do {
 			if (((OSP_GET_CUR_MS()-cur_ms)/1000) == cur_cnt) {
 				cur_cnt ++;
 				EMBARC_PRINTF(". ");
 			}
+
 			/* any button pressed */
 			if (button_read(BOARD_BTN_MASK)) {
 				load_flag = 0;
 				break;
 			}
-		} while((OSP_GET_CUR_MS() - cur_ms) < max_promt_ms);
+		} while ((OSP_GET_CUR_MS() - cur_ms) < max_promt_ms);
 	}
 
 	if (default_bt_flag == 0 && boot_cfg.ntshell == 1 || load_flag == 0) {
@@ -183,15 +194,18 @@ int main(void)
 
 	EMBARC_PRINTF("\r\nStart loading %s from sdcard to 0x%x and run...\r\n", boot_cfg.boot_file, boot_cfg.ram_startaddress);
 	led_write(0xF, 0xFF); /* Start to load application */
+
 	if (boot_cfg.boot_file[strlen(boot_cfg.boot_file) - 3] == 'h') {
 		ihex_start();
 		res = ihex_load(IHEX_SD_CARD, (void *)boot_cfg.boot_file);
+
 		if (res != IHEX_END) {
 			EMBARC_PRINTF("%s open or read error\r\n", boot_cfg.boot_file);
 			load_flag = 0;
 		}
 	} else if (boot_cfg.boot_file[strlen(boot_cfg.boot_file) - 3] == 'b') {
 		res = f_open(&file, boot_cfg.boot_file, FA_READ | FA_OPEN_EXISTING);
+
 		if (res) {
 			EMBARC_PRINTF("%s open error\r\n", boot_cfg.boot_file);
 			load_flag = 0;
@@ -199,6 +213,7 @@ int main(void)
 			ram = (void *)boot_cfg.ram_startaddress;
 			res = f_read(&file, ram, file.fsize, &cnt);
 			f_close(&file);
+
 			if (res || ((uint32_t)cnt != file.fsize)) {
 				EMBARC_PRINTF("%s read error\r\n", boot_cfg.boot_file);
 				load_flag = 0;
@@ -216,6 +231,7 @@ int main(void)
 		/** enter ntshell command routine no return */
 		ntshell_task((void *)nt_io);
 	}
+
 	led_write(0xF0, 0xFF); /* Load application finished */
 
 	ram = (void *)APP_CFG_ADDR;
@@ -225,14 +241,12 @@ int main(void)
 	for (int i = NUM_EXC_CPU; i < NUM_EXC_ALL; i++) {
 		int_disable(i);
 	}
+
 	/* set up an enviroment for application */
-	if ((_arc_aux_read(AUX_BCR_I_CACHE) & 0x7) >= 0x2) {
-		//icache_invalidate();
-	}
 	if ((_arc_aux_read(AUX_BCR_D_CACHE) & 0x7) >= 0x2) {
-		//dcache_flush();
 		dcache_invalidate();
 	}
+
 	led_write(0xFF, 0xFF); /* Start application */
 
 	fp = (fp_t)(*((uint32_t *)boot_cfg.ram_startaddress));

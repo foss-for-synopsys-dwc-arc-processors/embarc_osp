@@ -81,12 +81,12 @@ Detailed Description
     - Bootloader example only support arc core configuration which has DDR with cache enabled.
     - Bootloader example runs in DDR ram, not in CCM.
     - Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.
-    - The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run sucessfully
+    - The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run successfully
     - Supported core configurations
         + EMSK 1.1: EM6, EM6GP
         + EMSK 2.2/2.3: EM7D, EM11D
 
-Buidling and Running
+Building and Running
 ********************
 
 - Generate a secondary bootloader binary file
@@ -142,7 +142,7 @@ If the binary file is generated successfully, you will output as follows:
     + Insert SDCard to PC, and copy generated binary file *obj_emsk_23/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
     + Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
 
-.. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration
+.. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above "R") to confirm its configuration
 
 Sample Output
 =============
