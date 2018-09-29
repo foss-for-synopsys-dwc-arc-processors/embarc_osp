@@ -77,6 +77,11 @@ extern CMD_TABLE_T * register_ntshell_cmd_mv(CMD_TABLE_T *prev);
 extern CMD_TABLE_T * register_ntshell_cmd_pwd(CMD_TABLE_T *prev);
 #endif
 
+/*cls register*/
+#if NTSHELL_USE_CMDS_FS_CLS
+extern CMD_TABLE_T * register_ntshell_cmd_cls(CMD_TABLE_T *prev);
+#endif
+
 /*touch register*/
 #if NTSHELL_USE_CMDS_FS_TOUCH
 extern CMD_TABLE_T * register_ntshell_cmd_touch(CMD_TABLE_T *prev);
@@ -95,6 +100,11 @@ extern CMD_TABLE_T * register_ntshell_cmd_disk(CMD_TABLE_T *prev);
 /*load register*/
 #if NTSHELL_USE_CMDS_FS_LOAD
 extern CMD_TABLE_T * register_ntshell_cmd_load(CMD_TABLE_T *prev);
+#endif
+
+/*load register*/
+#if NTSHELL_USE_CMDS_FS_FLASH
+extern CMD_TABLE_T * register_ntshell_cmd_flash(CMD_TABLE_T *prev);
 #endif
 
 /*spirw register*/
@@ -144,6 +154,10 @@ CMD_TABLE_T* ntshell_register_cmds_fs(CMD_TABLE_T *prev)
 #if NTSHELL_USE_CMDS_FS_PWD
 	prev = register_ntshell_cmd_pwd(prev);
 #endif
+	/* cls register */
+#if NTSHELL_USE_CMDS_FS_CLS
+	prev = register_ntshell_cmd_cls(prev);
+#endif
 	/* touch register */
 #if NTSHELL_USE_CMDS_FS_TOUCH
 	prev = register_ntshell_cmd_touch(prev);
@@ -159,6 +173,10 @@ CMD_TABLE_T* ntshell_register_cmds_fs(CMD_TABLE_T *prev)
 	/* load register */
 #if NTSHELL_USE_CMDS_FS_LOAD
 	prev = register_ntshell_cmd_load(prev);
+#endif
+	/* load register */
+#if NTSHELL_USE_CMDS_FS_FLASH
+	prev = register_ntshell_cmd_flash(prev);
 #endif
 	/* spirw register */
 #if NTSHELL_USE_CMDS_FS_SPIRW

@@ -96,6 +96,13 @@ Buidling and Running
     $ cd <embarc_root>/example/baremetal/bootloader
     $ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw bin
 
+- Generate a secondary bootloader binary file for iotdk use eflash
+
+.. code-block:: console
+
+    $ cd <embarc_root>/example/baremetal/bootloader
+    $ gmake BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw LOCATION=eflash bin
+
 If the binary file is generated successfully, you will output as follows:
 
 .. code-block:: console

@@ -74,6 +74,10 @@
 #define NTSHELL_USE_CMDS_FS_PWD		(1) /*!< use commands defined in cmd_pwd.c*/
 #endif
 
+#ifndef NTSHELL_USE_CMDS_FS_CLS
+#define NTSHELL_USE_CMDS_FS_CLS		(1) /*!< use commands defined in cmd_pwd.c*/
+#endif
+
 #ifndef NTSHELL_USE_CMDS_FS_TOUCH
 #define NTSHELL_USE_CMDS_FS_TOUCH	(1) /*!< use commands defined in cmd_touch.c*/
 #endif
@@ -88,6 +92,12 @@
 
 #ifndef NTSHELL_USE_CMDS_FS_LOAD
 #define NTSHELL_USE_CMDS_FS_LOAD	(1) /*!< use commands defined in cmd_load.c*/
+#endif
+
+#if defined(BOARD_IOTDK)
+#ifndef NTSHELL_USE_CMDS_FS_FLASH
+#define NTSHELL_USE_CMDS_FS_FLASH	(1) /*!< use commands defined in cmd_pwd.c*/
+#endif
 #endif
 
 #if defined(BOARD_EMSK)
@@ -117,7 +127,8 @@
 #define NTSHELL_USE_CMDS_FS_DISK	(0) /*!< use commands defined in cmd_disk.c*/
 #define NTSHELL_USE_CMDS_FS_LOAD	(0) /*!< use commands defined in cmd_load.c*/
 #define NTSHELL_USE_CMDS_FS_SPIRW	(0) /*!< use commands defined in cmd_spirw.c*/
-
+#define NTSHELL_USE_CMDS_FS_FLASH	(0) /*!< use commands defined in cmd_pwd.c*/
+#define NTSHELL_USE_CMDS_FS_CLS		(0) /*!< use commands defined in cmd_pwd.c*/
 
 #endif /* NTSHELL_USE_CMDS_FS*/
 

@@ -3,6 +3,12 @@ APPL ?= simple_bootloader
 
 BOARD ?= emsk
 
+LOCATION ?=
+
+ifeq ($(LOCATION), eflash)
+APPL_DEFINES += -DUSE_EFLASH_LOCATION
+endif
+
 ifeq ($(BOARD), emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420
 endif

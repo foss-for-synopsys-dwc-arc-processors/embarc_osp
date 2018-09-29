@@ -235,7 +235,7 @@ int main(void)
 	}
 	led_write(0xFF, 0xFF); /* Start application */
 
-	fp = (fp_t)(boot_cfg.ram_startaddress + 4);
+	fp = (fp_t)(*((uint32_t *)boot_cfg.ram_startaddress));
 	fp();	/* jump to program */
 	return E_SYS;
 }
