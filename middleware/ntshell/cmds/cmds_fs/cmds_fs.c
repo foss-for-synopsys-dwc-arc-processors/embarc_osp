@@ -103,8 +103,8 @@ extern CMD_TABLE_T * register_ntshell_cmd_load(CMD_TABLE_T *prev);
 #endif
 
 /*load register*/
-#if NTSHELL_USE_CMDS_FS_EFLASH
-extern CMD_TABLE_T * register_ntshell_cmd_eflash(CMD_TABLE_T *prev);
+#if NTSHELL_USE_CMDS_FS_FLASH
+extern CMD_TABLE_T * register_ntshell_cmd_flash(CMD_TABLE_T *prev);
 #endif
 
 /*spirw register*/
@@ -175,8 +175,8 @@ CMD_TABLE_T* ntshell_register_cmds_fs(CMD_TABLE_T *prev)
 	prev = register_ntshell_cmd_load(prev);
 #endif
 	/* load register */
-#if NTSHELL_USE_CMDS_FS_EFLASH
-	prev = register_ntshell_cmd_eflash(prev);
+#if NTSHELL_USE_CMDS_FS_FLASH
+	prev = register_ntshell_cmd_flash(prev);
 #endif
 	/* spirw register */
 #if NTSHELL_USE_CMDS_FS_SPIRW

@@ -95,8 +95,8 @@
 #endif
 
 #if defined(BOARD_IOTDK)
-#ifndef NTSHELL_USE_CMDS_FS_EFLASH
-#define NTSHELL_USE_CMDS_FS_EFLASH	(1) /*!< use commands defined in cmd_pwd.c*/
+#ifndef NTSHELL_USE_CMDS_FS_FLASH
+#define NTSHELL_USE_CMDS_FS_FLASH	(1) /*!< use commands defined in cmd_pwd.c*/
 #endif
 #endif
 
@@ -127,7 +127,8 @@
 #define NTSHELL_USE_CMDS_FS_DISK	(0) /*!< use commands defined in cmd_disk.c*/
 #define NTSHELL_USE_CMDS_FS_LOAD	(0) /*!< use commands defined in cmd_load.c*/
 #define NTSHELL_USE_CMDS_FS_SPIRW	(0) /*!< use commands defined in cmd_spirw.c*/
-
+#define NTSHELL_USE_CMDS_FS_FLASH	(0) /*!< use commands defined in cmd_pwd.c*/
+#define NTSHELL_USE_CMDS_FS_CLS		(0) /*!< use commands defined in cmd_pwd.c*/
 
 #endif /* NTSHELL_USE_CMDS_FS*/
 
