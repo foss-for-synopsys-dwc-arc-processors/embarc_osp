@@ -570,9 +570,11 @@ def comment_on_pull_request(comment):
     pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
     slug =  os.environ.get("TRAVIS_REPO_SLUG")
     token = os.environ.get("GH_TOKEN")
-    if pr_number == "false":
-        pr_number = False
-    if all([pr_number, slug, token, comment]):
+    request_config = [pr_number, slug, token, comment]
+    for i in range(len(request_config)):
+        if request_config[i] == "false":
+            request_config[i] = False
+    if all(request_config):
         url = 'https://api.github.com/repos/{slug}/issues/{number}/comments'.format(
             slug=slug, number=pr_number)
         response = requests.post(url, data=json.dumps({'body': comment}),
