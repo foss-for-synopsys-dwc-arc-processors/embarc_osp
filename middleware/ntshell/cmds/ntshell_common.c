@@ -58,32 +58,42 @@ void parse_arg_err(unsigned int errorflag, void *extobj)
 			case FIRST_ARG_ERR   :
 				CMD_DEBUG("1st, ");
 				break;
+
 			case SECOND_ARG_ERR  :
 				CMD_DEBUG("2nd, ");
 				break;
+
 			case THIRD_ARG_ERR   :
 				CMD_DEBUG("3rd, ");
 				break;
+
 			case FOURTH_ARG_ERR  :
 				CMD_DEBUG("4th, ");
 				break;
+
 			case FIFTH_ARG_ERR   :
 				CMD_DEBUG("5th, ");
 				break;
+
 			case SIXTH_ARG_ERR   :
 				CMD_DEBUG("6th, ");
 				break;
+
 			case SEVENTH_ARG_ERR :
 				CMD_DEBUG("7th, ");
 				break;
+
 			case EIGHTH_ARG_ERR  :
 				CMD_DEBUG("8th  ");
 				break;
+
 			default:
 				break;
 		}
+
 		i++;
 	}
+
 	CMD_DEBUG("> Format Error!\r\n");
 }
 
@@ -91,11 +101,11 @@ void parse_arg_err(unsigned int errorflag, void *extobj)
 /* Dump a line of binary dump                   */
 /*----------------------------------------------*/
 void cmds_put_dump (
-	const void* buffer,		/* Pointer to the array to be dumped */
-	unsigned long addr,		/* Heading address value */
-	int32_t len,			/* Number of items to be dumped */
-	int32_t width,			/* Size of the items (DF_CHAR, DF_SHORT, DF_LONG) */
-	void *extobj
+    const void *buffer,		/* Pointer to the array to be dumped */
+    unsigned long addr,		/* Heading address value */
+    int32_t len,			/* Number of items to be dumped */
+    int32_t width,			/* Size of the items (DF_CHAR, DF_SHORT, DF_LONG) */
+    void *extobj
 )
 {
 	int32_t ercd = E_OK;
@@ -113,25 +123,35 @@ void cmds_put_dump (
 	switch (width) {
 		case DW_CHAR:
 			bp = buffer;
+
 			for (i = 0; i < len; i++) {		/* Hexdecimal dump */
 				CMD_DEBUG(" %02X", bp[i]);
 			}
+
 			CMD_DEBUG("  ");
+
 			for (i = 0; i < len; i++) {		/* ASCII dump */
 				CMD_DEBUG("%c", (bp[i] >= ' ' && bp[i] <= '~') ? bp[i] : '.');
 			}
+
 			break;
+
 		case DW_SHORT:
 			sp = buffer;
+
 			do {					/* Hexdecimal dump */
 				CMD_DEBUG(" %04X", *sp++);
 			} while (--len);
+
 			break;
+
 		case DW_LONG:
 			lp = buffer;
+
 			do {					/* Hexdecimal dump */
 				CMD_DEBUG(" %08LX", *lp++);
 			} while (--len);
+
 			break;
 	}
 

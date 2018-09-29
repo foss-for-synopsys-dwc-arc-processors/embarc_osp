@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: cd
- */
+/**
+* \file
+* \brief filesystem operation commands: cd
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_CD
@@ -47,6 +47,7 @@ static void cmd_cd_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... DIR\r\n"
 		"Change the current directory to [dir]\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -68,20 +69,21 @@ static int cmd_cd(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc < 2){
+	if (argc < 2) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
-	}else if(*argv[1] != '-'){
+	} else if (*argv[1] != '-') {
 		check_path(argv[1]);
 		res = f_chdir(argv[1]);
 
-		if(res != FR_OK) {
+		if (res != FR_OK) {
 			fs_put_err(res, extobj);
 			ercd = E_SYS;
 			goto error_exit;
 		}
+
 		return E_OK;
 	}
 
@@ -96,6 +98,7 @@ static int cmd_cd(int argc, char **argv, void *extobj)
 				cmd_cd_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -113,7 +116,7 @@ static CMD_TABLE_T cd_cmd = {"cd", "Change the working directory", cmd_cd, NULL}
 /**
  * register cd command
  */
-CMD_TABLE_T * register_ntshell_cmd_cd(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_cd(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&cd_cmd, prev);
 }

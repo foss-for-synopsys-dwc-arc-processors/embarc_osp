@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief operate PMOD WiFi module
- */
+/**
+* \file
+* \brief operate PMOD WiFi module
+*/
 #include "cmds_extend_cfg.h"
 #if NTSHELL_USE_CMDS_EXTEND_WIFI
 
@@ -88,7 +88,8 @@ static void task_wifi_process(void *par)
 	pmwifi_wnic = (DEV_WNIC *)par;
 
 	pmwifi_wnic->wnic_init(WNIC_NETWORK_TYPE_INFRASTRUCTURE);
-	while(1) {
+
+	while (1) {
 		pmwifi_wnic->period_process(NULL);
 		vTaskDelay(10);
 	}
@@ -102,40 +103,52 @@ int dump_wifi_security(int security, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 	CMD_DEBUG("Security Type: ");
+
 	switch (security) {
 		case AUTH_SECURITY_OPEN                      :
 			CMD_DEBUG(" %s\r\n", "OPEN                     ");
 			break;
+
 		case AUTH_SECURITY_WEP_40                    :
 			CMD_DEBUG(" %s\r\n", "WEP_40                   ");
 			break;
+
 		case AUTH_SECURITY_WEP_104                   :
 			CMD_DEBUG(" %s\r\n", "WEP_104                  ");
 			break;
+
 		case AUTH_SECURITY_WPA_WITH_KEY              :
 			CMD_DEBUG(" %s\r\n", "WPA_WITH_KEY             ");
 			break;
+
 		case AUTH_SECURITY_WPA_WITH_PASS_PHRASE      :
 			CMD_DEBUG(" %s\r\n", "WPA_WITH_PASS_PHRASE     ");
 			break;
+
 		case AUTH_SECURITY_WPA2_WITH_KEY             :
 			CMD_DEBUG(" %s\r\n", "WPA2_WITH_KEY            ");
 			break;
+
 		case AUTH_SECURITY_WPA2_WITH_PASS_PHRASE     :
 			CMD_DEBUG(" %s\r\n", "WPA2_WITH_PASS_PHRASE    ");
 			break;
+
 		case AUTH_SECURITY_WPA_AUTO_WITH_KEY         :
 			CMD_DEBUG(" %s\r\n", "WPA_AUTO_WITH_KEY        ");
 			break;
+
 		case AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE :
 			CMD_DEBUG(" %s\r\n", "WPA_AUTO_WITH_PASS_PHRASE");
 			break;
+
 		case AUTH_SECURITY_WPS_PUSH_BUTTON           :
 			CMD_DEBUG(" %s\r\n", "WPS_PUSH_BUTTON          ");
 			break;
+
 		case AUTH_SECURITY_WPS_PIN                   :
 			CMD_DEBUG(" %s\r\n", "WPS_PIN                  ");
 			break;
+
 		default:
 			CMD_DEBUG(" Not existed\r\n");
 			ercd = -1;
@@ -178,6 +191,7 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 
 	opterr = 0;
 	optind = 1;
+
 	if (argc < 2) {
 		cmd_wifi_help(argv[0], extobj);
 		return E_OK;
@@ -185,10 +199,12 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 
 	while ((opt=getopt(argc, argv, "w:p:t:cdhH?is:")) != -1) {
 		opt_enter_cnt ++;
+
 		switch (opt) {
 			case 'i':
 				init_request = 1;
 				break;
+
 			case 's':
 				if (strcmp("start", optarg) == 0) {
 					scan_request = CMD_SCAN_START;
@@ -199,27 +215,34 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 				} else {
 					scan_request = 0;
 				}
+
 				break;
+
 			case 'c':
 				connect_request = 1;
 				break;
+
 			case 'd':
 				disconnect_request = 1;
 				break;
+
 			case 'w':
 				strcpy((char *)default_ssid, optarg);
 				ssid_is_set = 1;
 				CMD_DEBUG("SSID is updated:%s\r\n", optarg);
 				break;
+
 			case 'p':
 				strcpy((char *)default_key, optarg);
 				key_is_set = 1;
 				CMD_DEBUG("Password is updated:%s\r\n", optarg);
 				break;
+
 			case 't':
 				security_type_temp = security_type;
 				security_type = atoi(optarg);
 				CMD_DEBUG("Security Type is updated");
+
 				if (security_type == AUTH_SECURITY_OPEN) {
 				} else if (security_type == AUTH_SECURITY_WPA_WITH_PASS_PHRASE) {
 				} else if (security_type == AUTH_SECURITY_WPA2_WITH_PASS_PHRASE) {
@@ -228,9 +251,11 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 					CMD_DEBUG(" Unchanged");
 					security_type = security_type_temp;
 				}
+
 				CMD_DEBUG("\r\n");
 				dump_wifi_security(security_type, extobj);
 				break;
+
 			case 'h':
 			case '?':
 			case 'H':
@@ -243,11 +268,13 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 				CMD_DEBUG("unrecognized option:%c\r\n", opt);
 				break;
 		}
+
 		/* any request break the loop */
 		if (scan_request | connect_request | disconnect_request | init_request) {
 			break;
 		}
 	}
+
 	/* no option is selected */
 	if (opt_enter_cnt <= 0) {
 		cmd_wifi_help(argv[0], extobj);
@@ -263,17 +290,21 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 			CMD_DEBUG("Wifi is already initialized\r\n");
 			CMD_DEBUG("--WIFI Default settings--\r\n");
 			CMD_DEBUG("SSID ");
+
 			if (ssid_is_set) {
 				CMD_DEBUG(" : %s\r\n", default_ssid);
 			} else {
 				CMD_DEBUG(" is not set\r\n");
 			}
+
 			CMD_DEBUG("Password ");
+
 			if (key_is_set) {
 				CMD_DEBUG(" : %s\r\n", default_key);
 			} else {
 				CMD_DEBUG(" is not set\r\n");
 			}
+
 			dump_wifi_security(security_type, extobj);
 		}
 	}
@@ -295,17 +326,21 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 					CMD_DEBUG("When scan is finished, it will output one message\r\n");
 					CMD_DEBUG("If you want to scan again, you can stop it first or read scan result successfully\r\n");
 				}
+
 				break;
+
 			case CMD_SCAN_STOP:
 				pmwifi_wnic->stop_scan();
 				during_scan = 0;
 				CMD_DEBUG("Stop scan network\r\n");
 				break;
+
 			case CMD_GET_SCAN_RST:
 				if ((scan_rst_cnt = pmwifi_wnic->get_scan_result_cnt()) <= 0) {
 					CMD_DEBUG("Scan result is not ready\r\n");
 				} else {
 					during_scan = 0;
+
 					for (i = 0; i < scan_rst_cnt; i ++) {
 						if (pmwifi_wnic->get_scan_result(i, &scan_result_data) == E_OK) {
 							CMD_DEBUG("----WIFI HOTSPOT FOUND %d----\r\n", i);
@@ -313,6 +348,7 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 							CMD_DEBUG("SSID:%s\r\n", scan_result_data.ssid);
 							CMD_DEBUG("AP Config: %08b\r\n", scan_result_data.ap_config.apConfig);
 							CMD_DEBUG("Security Type:");
+
 							if (scan_result_data.ap_config.ap_cfg.privacy == 0) {
 								CMD_DEBUG("Open\r\n");
 							} else {
@@ -324,12 +360,14 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 									CMD_DEBUG("WEP Encrypted\r\n");
 								}
 							}
+
 							CMD_DEBUG("RSSI:%d\r\n", scan_result_data.rssi);
 							CMD_DEBUG("BSS Type:%d\r\n", scan_result_data.bsstype);
 							CMD_DEBUG("Channel Number:%d\r\n", scan_result_data.channel);
 						}
 					}
 				}
+
 				break;
 		}
 	}
@@ -339,8 +377,10 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 			if (security_type != AUTH_SECURITY_OPEN && !key_is_set) {
 				CMD_DEBUG("Please set password first, when you want to connect to a secured network\r\n");
 			}
+
 			if (pmwifi_wnic->wnic_connect(security_type, default_ssid, &default_auth_key) == E_OK) {
 				CMD_DEBUG("Start Connect to SSID : %s, ", default_ssid);
+
 				if (security_type == AUTH_SECURITY_OPEN) {
 					CMD_DEBUG("Open Network\r\n");
 				} else {
@@ -358,6 +398,7 @@ static int cmd_wifi(int argc, char **argv, void *extobj)
 		pmwifi_wnic->wnic_disconnect();
 		CMD_DEBUG("Disconnected\r\n");
 	}
+
 	return 0;
 
 error_exit:
@@ -369,7 +410,7 @@ static CMD_TABLE_T wifi_cmd = {"wifi", "wifi operations", cmd_wifi, NULL};
 /**
  * register wifi command
  */
-CMD_TABLE_T * register_ntshell_cmd_wifi(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_wifi(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&wifi_cmd, prev);
 }

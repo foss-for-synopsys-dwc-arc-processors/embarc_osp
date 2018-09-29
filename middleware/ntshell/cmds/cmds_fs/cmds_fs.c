@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief register filesystem operation commands
- */
+/**
+* \file
+* \brief register filesystem operation commands
+*/
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_FS
 #include "cmds_fs_cfg.h"
@@ -39,88 +39,90 @@
 
 /*ls register*/
 #if NTSHELL_USE_CMDS_FS_LS
-extern CMD_TABLE_T * register_ntshell_cmd_ls(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_ls(CMD_TABLE_T *prev);
 #endif
 
 /*cd register*/
 #if NTSHELL_USE_CMDS_FS_CD
-extern CMD_TABLE_T * register_ntshell_cmd_cd(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_cd(CMD_TABLE_T *prev);
 #endif
 
 /*mkdir register*/
 #if NTSHELL_USE_CMDS_FS_MKDIR
-extern CMD_TABLE_T * register_ntshell_cmd_mkdir(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_mkdir(CMD_TABLE_T *prev);
 #endif
 
 /*rm register*/
 #if NTSHELL_USE_CMDS_FS_RM
-extern CMD_TABLE_T * register_ntshell_cmd_rm(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_rm(CMD_TABLE_T *prev);
 #endif
 
 /*cat register*/
 #if NTSHELL_USE_CMDS_FS_CAT
-extern CMD_TABLE_T * register_ntshell_cmd_cat(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_cat(CMD_TABLE_T *prev);
 #endif
 
 /*cp register*/
 #if NTSHELL_USE_CMDS_FS_CP
-extern CMD_TABLE_T * register_ntshell_cmd_cp(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_cp(CMD_TABLE_T *prev);
 #endif
 
 /*mv register*/
 #if NTSHELL_USE_CMDS_FS_MV
-extern CMD_TABLE_T * register_ntshell_cmd_mv(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_mv(CMD_TABLE_T *prev);
 #endif
 
 /*pwd register*/
 #if NTSHELL_USE_CMDS_FS_PWD
-extern CMD_TABLE_T * register_ntshell_cmd_pwd(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_pwd(CMD_TABLE_T *prev);
 #endif
 
 /*cls register*/
 #if NTSHELL_USE_CMDS_FS_CLS
-extern CMD_TABLE_T * register_ntshell_cmd_cls(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_cls(CMD_TABLE_T *prev);
 #endif
 
 /*touch register*/
 #if NTSHELL_USE_CMDS_FS_TOUCH
-extern CMD_TABLE_T * register_ntshell_cmd_touch(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_touch(CMD_TABLE_T *prev);
 #endif
 
 /*ymodem register*/
 #if NTSHELL_USE_CMDS_FS_YMODEM
-extern CMD_TABLE_T * register_ntshell_cmd_ymodem(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_ymodem(CMD_TABLE_T *prev);
 #endif
 
 /*disk register*/
 #if NTSHELL_USE_CMDS_FS_DISK
-extern CMD_TABLE_T * register_ntshell_cmd_disk(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_disk(CMD_TABLE_T *prev);
 #endif
 
 /*load register*/
 #if NTSHELL_USE_CMDS_FS_LOAD
-extern CMD_TABLE_T * register_ntshell_cmd_load(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_load(CMD_TABLE_T *prev);
 #endif
 
 /*load register*/
 #if NTSHELL_USE_CMDS_FS_FLASH
-extern CMD_TABLE_T * register_ntshell_cmd_flash(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_flash(CMD_TABLE_T *prev);
 #endif
 
 /*spirw register*/
 #if NTSHELL_USE_CMDS_FS_SPIRW
-extern CMD_TABLE_T * register_ntshell_cmd_spirw(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_spirw(CMD_TABLE_T *prev);
 #endif
 
 /*mload register*/
 #if NTSHELL_USE_CMDS_FS_MLOAD
-extern CMD_TABLE_T * register_ntshell_cmd_mload(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_mload(CMD_TABLE_T *prev);
 #endif
 
 /** indicate whether the commands were registered */
-CMD_TABLE_T* ntshell_register_cmds_fs(CMD_TABLE_T *prev)
+CMD_TABLE_T *ntshell_register_cmds_fs(CMD_TABLE_T *prev)
 {
-	if (prev == NULL) return NULL;
+	if (prev == NULL) {
+		return NULL;
+	}
 
 	/* ls register */
 #if NTSHELL_USE_CMDS_FS_LS
@@ -174,7 +176,7 @@ CMD_TABLE_T* ntshell_register_cmds_fs(CMD_TABLE_T *prev)
 #if NTSHELL_USE_CMDS_FS_LOAD
 	prev = register_ntshell_cmd_load(prev);
 #endif
-	/* load register */
+	/* flash register */
 #if NTSHELL_USE_CMDS_FS_FLASH
 	prev = register_ntshell_cmd_flash(prev);
 #endif

@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands common source
- */
+/**
+* \file
+* \brief filesystem operation commands common source
+*/
 #ifndef _CMD_FS_COMMON_H_
 #define _CMD_FS_COMMON_H_
 
@@ -49,7 +49,7 @@ extern char working_directory[256];
 extern FIL cmd_files[2];
 
 /*define function*/
-extern char * fs_working_dir(void);
+extern char *fs_working_dir(void);
 extern void put_rc(FRESULT rc);
 extern void fs_put_err(FRESULT rc, void *extobj);
 extern void check_path(char *pathname);

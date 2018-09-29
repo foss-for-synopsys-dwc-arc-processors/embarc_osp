@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands common source
- */
+/**
+* \file
+* \brief filesystem operation commands common source
+*/
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_FS
 
@@ -70,7 +70,7 @@ error_exit:
 	return ;
 }
 /** get filesystem working directory*/
-char * fs_working_dir(void)
+char *fs_working_dir(void)
 {
 	f_getcwd(working_directory, sizeof working_directory);
 
@@ -86,10 +86,11 @@ void check_path(char *pathname)
 	ptr = pathname;
 
 	/*change "\"" to "/" */
-	while(*ptr) {
-		if(*ptr == '\\') {
+	while (*ptr) {
+		if (*ptr == '\\') {
 			*ptr = '/';
 		}
+
 		ptr ++;
 	}
 
@@ -99,16 +100,19 @@ void check_path(char *pathname)
 	len = strlen(pathname);
 
 	i = len - 1;
+
 	/* check whether the path is "./" */
-	if((i == 1) && (ptr[0] == '.') && (ptr[1] == '/')) {
+	if ((i == 1) && (ptr[0] == '.') && (ptr[1] == '/')) {
 		return;
 	}
-	while(i) {
-		if(ptr[i] == '/') {
+
+	while (i) {
+		if (ptr[i] == '/') {
 			ptr[i] = '\0';
 		} else {
 			break;
 		}
+
 		i--;
 	}
 }
@@ -116,7 +120,9 @@ void check_path(char *pathname)
 /** Get new path by concatenating old filename with new directory name */
 char *get_new_filepath(char *new_dir, char *old_name)
 {
-	if (!(new_dir && old_name)) return NULL;
+	if (!(new_dir && old_name)) {
+		return NULL;
+	}
 
 	int len, len_new, i;
 	char *ptr;
@@ -124,23 +130,30 @@ char *get_new_filepath(char *new_dir, char *old_name)
 	len = strlen(old_name);
 	len_new = strlen(new_dir);
 	i = len;
+
 	while (i) {
-		i --;
+		i--;
+
 		if (old_name[i] == '/') {
-			i ++;
+			i++;
 			break;
 		}
 	}
+
 	ptr = malloc((len+len_new-i+3));
+
 	if (ptr == NULL) {
 		return ptr;
 	}
+
 	strcpy(ptr, new_dir);
+
 	/* if new name is a folder path without '/', then add '/' to it */
 	if (ptr[len_new-1] != '/') {
 		ptr[len_new] = '/';
 		ptr[len_new+1] = '\0';
 	}
+
 	strcat(ptr, &old_name[i]);
 	return ptr;
 }

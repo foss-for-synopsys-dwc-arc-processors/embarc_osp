@@ -52,20 +52,11 @@
 #define NTSHELL_USE_CMDS_ARC_MEM		(1) /*!< use commands defined in cmd_mem.c*/
 #endif
 
-#if  defined(__Xswap) || defined(__Xswape)
-
-#ifndef NTSHELL_USE_CMDS_ARC_SWAPE
-#define NTSHELL_USE_CMDS_ARC_SWAPE		(1) /*!< use commands defined in cmd_swape.c*/
-#endif
-
-#endif
-
 #else /* ARC kernel Related commands disabled */
 
 #define NTSHELL_USE_CMDS_ARC_AUX		(0) /*!< don't use commands defined in cmd_aux.c*/
 #define NTSHELL_USE_CMDS_ARC_MAP		(0) /*!< don't use commands defined in cmd_map.c*/
 #define NTSHELL_USE_CMDS_ARC_MEM		(0) /*!< use commands defined in cmd_mem.c*/
-#define NTSHELL_USE_CMDS_ARC_SWAPE		(0) /*!< don't use commands defined in cmd_swape.c*/
 
 #endif /* NTSHELL_USE_CMDS_ARC*/
 

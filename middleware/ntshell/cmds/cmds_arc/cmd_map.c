@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief show the memory map of bootloader
- */
+/**
+* \file
+* \brief show the memory map of bootloader
+*/
 
 #include "cmds_arc_cfg.h"
 #if NTSHELL_USE_CMDS_ARC_MAP
@@ -73,6 +73,7 @@ static void cmd_map_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]\r\n"
 		"Show the memory map of bootloader\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -92,7 +93,7 @@ int cmd_map (int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_map_help(argv[0], extobj);
 		goto error_exit;
 	}
@@ -124,22 +125,26 @@ int cmd_map (int argc, char **argv, void *extobj)
 
 	CMD_DEBUG("**********************************\r\n");
 	size = (int32_t)((int32_t)(&_e_data) - (int32_t)(&_f_data));
+
 	if (size >= (1024)) {
 		xsprintf(str,"%dKB",size/1024);
 	} else {
 		xsprintf(str,"%dbytes",size);
 	}
+
 	CMD_DEBUG("** DATA (%s)\r\n", str);
 	CMD_DEBUG("**********************************\r\n");
 	CMD_DEBUG(" _f_data   = 0x%08x\r\n",(int32_t)&_f_data);
 	CMD_DEBUG(" _e_data   = 0x%08x\r\n",(int32_t)&_e_data);
 
 	size = (int32_t)((int32_t)(&_e_bss) - (int32_t)(&_f_bss));
+
 	if (size >= (1024*1024)) {
 		xsprintf(str,"%dMB",size/1024/1024);
 	} else {
 		xsprintf(str,"%dKB",size/1024);
 	}
+
 	CMD_DEBUG("**********************************\r\n");
 	CMD_DEBUG("** BSS (%s)\r\n", str);
 	CMD_DEBUG("**********************************\r\n");
@@ -147,11 +152,13 @@ int cmd_map (int argc, char **argv, void *extobj)
 	CMD_DEBUG(" _e_bss    = 0x%08x\r\n",(int32_t)&_e_bss);
 
 	size = (int32_t)((int32_t)(&_e_stack) - (int32_t)(&_f_stack));
+
 	if (size >= (1024)) {
 		xsprintf(str,"%dKB",size/1024);
 	} else {
 		xsprintf(str,"%dbytes",size);
 	}
+
 	CMD_DEBUG("**********************************\r\n");
 	CMD_DEBUG("** STACK (%s)\r\n", str );
 	CMD_DEBUG("**********************************\r\n");
@@ -159,11 +166,13 @@ int cmd_map (int argc, char **argv, void *extobj)
 	CMD_DEBUG(" _e_stack  = 0x%08x\r\n",(int32_t)&_e_stack);
 
 	size = (int32_t)((int32_t)(&_e_heap) - (int32_t)(&_f_heap));
+
 	if (size >= (1024)) {
 		xsprintf(str,"%dKB",size/1024);
 	} else {
 		xsprintf(str,"%dbytes",size);
 	}
+
 	CMD_DEBUG("**********************************\r\n");
 	CMD_DEBUG("** HEAP (%s)\r\n", str);
 	CMD_DEBUG("**********************************\r\n");
@@ -179,9 +188,9 @@ static CMD_TABLE_T map_cmd = {"map", "Show the memory map of bootloader", cmd_ma
 /**
  * register map command
  */
-CMD_TABLE_T * register_ntshell_cmd_map(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_map(CMD_TABLE_T *prev)
 {
-    return ntshell_usrcmd_register(&map_cmd, prev);
+	return ntshell_usrcmd_register(&map_cmd, prev);
 }
 
 #endif /* NTSHELL_USE_CMDS_ARC_MAP */

@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief Ymodem command: Ymodem
- */
+/**
+* \file
+* \brief Ymodem command: Ymodem
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_YMODEM
@@ -50,6 +50,7 @@ static void cmd_ymodem_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... SOURCE DEST\r\n"
 		"Ymodem file transfer protocol\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -74,7 +75,7 @@ static int cmd_ymodem(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc < 2) {
+	if (argc < 2) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
@@ -92,11 +93,14 @@ static int cmd_ymodem(int argc, char **argv, void *extobj)
 				cmd_ymodem_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			case 'v':
 				print_flag = 1;
 				break;
+
 			case 'r':
 				ercd = fymodem_receive();
+
 				if (ercd < 0) {
 					ercd = E_SYS;
 					CMD_DEBUG("Can't receive any file\r\n");
@@ -104,18 +108,23 @@ static int cmd_ymodem(int argc, char **argv, void *extobj)
 				} else {
 					CMD_DEBUG("\rReceive file successfully\r\n");
 				}
+
 				break;
+
 			case 'w':
 				filename = optarg;
 				ercd = fymodem_send(filename);
-				if(ercd < 0) {
+
+				if (ercd < 0) {
 					ercd = E_SYS;
 					CMD_DEBUG("Can't send %s, please check if file exists\r\n", filename);
 					goto error_exit;
 				} else {
 					CMD_DEBUG("\rSend file %s successfully\r\n", filename);
 				}
+
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -130,7 +139,7 @@ static CMD_TABLE_T ymodem_cmd = {"ymodem", "Ymodem file transfer protocol", cmd_
 /**
  * register cp command
  */
-CMD_TABLE_T * register_ntshell_cmd_ymodem(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_ymodem(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&ymodem_cmd, prev);
 }

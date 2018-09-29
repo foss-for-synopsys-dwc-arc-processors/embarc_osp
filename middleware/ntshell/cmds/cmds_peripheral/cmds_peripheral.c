@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief register peripheral operation commands
- */
+/**
+* \file
+* \brief register peripheral operation commands
+*/
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_PERIPHERAL
 
@@ -39,15 +39,17 @@
 
 #include "cmds_peripheral_cfg.h"
 
-extern CMD_TABLE_T * register_ntshell_cmd_ledflash(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_adc(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_ledswbtn(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_temp(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_ledflash(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_adc(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_ledswbtn(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_temp(CMD_TABLE_T *prev);
 
 /** indicate whether the commands were registered */
-CMD_TABLE_T* ntshell_register_cmds_peripheral(CMD_TABLE_T *prev)
+CMD_TABLE_T *ntshell_register_cmds_peripheral(CMD_TABLE_T *prev)
 {
-	if (prev == NULL) return NULL;
+	if (prev == NULL) {
+		return NULL;
+	}
 
 	/* ledflash register */
 #if NTSHELL_USE_CMDS_PERIPHERAL_LEDFLASH

@@ -56,6 +56,6 @@
 #define EIGHTH_ARG_ERR  (0x10000000)
 
 extern void parse_arg_err(unsigned int errorflag, void *extobj);
-extern void cmds_put_dump (const void* buffer, unsigned long addr, int32_t len, int32_t width, void *extobj);
+extern void cmds_put_dump (const void *buffer, unsigned long addr, int32_t len, int32_t width, void *extobj);
 
 #endif	/* _NTSHELL_COMMON_H_ */

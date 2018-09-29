@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief register commands
- */
+/**
+* \file
+* \brief register commands
+*/
 
 #include "cmd.h"
 #include "embARC_toolchain.h"
@@ -43,10 +43,17 @@
 #include "cmds_fs.h"
 #include "ntshell_common.h"
 
-/** indicate whether the commands were registered */
-CMD_TABLE_T* ntshell_register_cmds(CMD_TABLE_T *prev)
+EMBARC_WEAK CMD_TABLE_T *ntshell_register_cmds_app(CMD_TABLE_T *prev)
 {
-	if (prev == NULL) return NULL;
+	return prev;
+}
+
+/** indicate whether the commands were registered */
+CMD_TABLE_T *ntshell_register_cmds(CMD_TABLE_T *prev)
+{
+	if (prev == NULL) {
+		return NULL;
+	}
 
 	/* help command was registered default,
 		so just register info command */
@@ -68,6 +75,7 @@ CMD_TABLE_T* ntshell_register_cmds(CMD_TABLE_T *prev)
 #if NTSHELL_USE_CMDS_FS
 	prev = ntshell_register_cmds_fs(prev);
 #endif
-
+	/* register user defined cmds */
+	prev = ntshell_register_cmds_app(prev);
 	return prev;
 }

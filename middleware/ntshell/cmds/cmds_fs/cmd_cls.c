@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: cls
- */
+/**
+* \file
+* \brief filesystem operation commands: cls
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_CLS
@@ -47,6 +47,7 @@ static void cmd_cls_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]...\r\n"
 		"Clear the console output\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -68,7 +69,7 @@ static int cmd_cls(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc == 1) {
+	if (argc == 1) {
 		//working_directory = fs_working_dir();
 		CMD_DEBUG("\x1b[%10A");
 		CMD_DEBUG("\x1b[?2J");
@@ -91,6 +92,7 @@ static int cmd_cls(int argc, char **argv, void *extobj)
 				cmd_cls_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -108,8 +110,8 @@ static CMD_TABLE_T cls_cmd = {"cls", "Clear the console output", cmd_cls, NULL};
 /**
  * register cls command
  */
-CMD_TABLE_T * register_ntshell_cmd_cls(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_cls(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&cls_cmd, prev);
 }
-#endif /*NTSHELL_USE_CMDS_FS_PWD*/
+#endif /*NTSHELL_USE_CMDS_FS_CLS*/

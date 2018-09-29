@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: touch
- */
+/**
+* \file
+* \brief filesystem operation commands: touch
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_TOUCH
@@ -48,6 +48,7 @@ static void cmd_touch_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... FILE\r\n"
 		"A FILE that does not exist is created empty\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -71,20 +72,21 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 
-	if(argc == 1) {
+	if (argc == 1) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
-	} else if(*argv[1] != '-') {
+	} else if (*argv[1] != '-') {
 
 		res = f_open(&cmd_files[0], argv[1], FA_CREATE_NEW);
 
-		if(res != FR_OK) {
+		if (res != FR_OK) {
 			ercd = E_SYS;
 			fs_put_err(res, extobj);
 			goto error_exit;
 		}
+
 		f_close(&cmd_files[0]);
 		return E_OK;
 	}
@@ -100,9 +102,11 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 				cmd_touch_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			case 'v':
 				print_flag = 1;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -111,18 +115,19 @@ static int cmd_touch(int argc, char **argv, void *extobj)
 	}
 
 	/*chech the parameter*/
-	if((optind+1) == argc) {
+	if ((optind+1) == argc) {
 		res = f_open(&cmd_files[0], argv[optind], FA_CREATE_NEW);
 
-		if(res != FR_OK) {
+		if (res != FR_OK) {
 			ercd = E_SYS;
 			fs_put_err(res, extobj);
 			goto error_exit;
 		}
 
-		if(print_flag == 1){
+		if (print_flag == 1) {
 			CMD_DEBUG("%s: created file '%s'\r\n",argv[0], argv[optind]);
 		}
+
 		f_close(&cmd_files[0]);
 	} else {
 		ercd = E_SYS;
@@ -140,7 +145,7 @@ static CMD_TABLE_T touch_cmd = {"touch", "Create a file", cmd_touch, NULL};
 /**
  * register mkdir command
  */
-CMD_TABLE_T * register_ntshell_cmd_touch(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_touch(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&touch_cmd, prev);
 }

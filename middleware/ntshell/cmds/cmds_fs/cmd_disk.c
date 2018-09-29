@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: mv
- */
+/**
+* \file
+* \brief filesystem operation commands: mv
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_DISK
@@ -47,8 +47,8 @@ int32_t disk_initial(int disk_num, void *extobj)
 	VALID_EXTOBJ_NORTN(extobj);
 
 	res = disk_initialize((uint8_t)disk_num);
-	if(res != 0)
-	{
+
+	if (res != 0) {
 		CMD_DEBUG("Disk initialize error! The error code: %d\r\n", res);
 		ercd = E_SYS;
 		goto error_exit;
@@ -76,26 +76,33 @@ int32_t disk_display_status(int disk_num, void *extobj)
 		ercd = E_SYS;
 		goto error_exit;
 	}
+
 	if (disk_ioctl((uint8_t)disk_num, GET_BLOCK_SIZE, &p2) == RES_OK) {
 		CMD_DEBUG("Block size: %lu sectors\r\n", p2);
 	}
+
 	if (disk_ioctl((uint8_t)disk_num, MMC_GET_TYPE, &b) == RES_OK) {
 		CMD_DEBUG("Media type: %u\r\n", b);
 	}
+
 	if (disk_ioctl((uint8_t)disk_num, MMC_GET_CSD, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("CSD:\r\n");
 		cmds_put_dump(cmd_fs_buffer, 0, 16, DW_CHAR, extobj);
 	}
+
 	if (disk_ioctl((uint8_t)disk_num, MMC_GET_CID, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("CID:\r\n");
 		cmds_put_dump(cmd_fs_buffer, 0, 16, DW_CHAR, extobj);
 	}
+
 	if (disk_ioctl((uint8_t)disk_num, MMC_GET_OCR, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("OCR:\r\n");
 		cmds_put_dump(cmd_fs_buffer, 0, 4, DW_CHAR, extobj);
 	}
+
 	if (disk_ioctl((uint8_t)disk_num, MMC_GET_SDSTAT, cmd_fs_buffer) == RES_OK) {
 		CMD_DEBUG("SD Status:\r\n");
+
 		for (s1 = 0; s1 < 64; s1 += 16) {
 			cmds_put_dump(cmd_fs_buffer+s1, s1, 16, DW_CHAR, extobj);
 		}
@@ -140,7 +147,7 @@ static int cmd_disk(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc < 2) {
+	if (argc < 2) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
@@ -151,31 +158,38 @@ static int cmd_disk(int argc, char **argv, void *extobj)
 	optind = 1;
 
 	while ((opt=getopt(argc, argv, "i:s:hH?")) != -1) {
-	switch (opt) {
-		case 'h':
-		case '?':
-		case 'H':
-			cmd_disk_help(argv[0], extobj);
-			goto error_exit;
-			break;
-		case 'i':
-			p1 = atoi(optarg);
-			ercd = disk_initial(p1, extobj);
-			if(ercd != E_OK){
+		switch (opt) {
+			case 'h':
+			case '?':
+			case 'H':
+				cmd_disk_help(argv[0], extobj);
 				goto error_exit;
-			}
-			break;
-		case 's':
-			p1 = atoi(optarg);
-			ercd = disk_display_status(p1, extobj);
-			if(ercd != E_OK){
-				goto error_exit;
-			}
-			break;
-		default:
-			CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
-			CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
-			break;
+				break;
+
+			case 'i':
+				p1 = atoi(optarg);
+				ercd = disk_initial(p1, extobj);
+
+				if (ercd != E_OK) {
+					goto error_exit;
+				}
+
+				break;
+
+			case 's':
+				p1 = atoi(optarg);
+				ercd = disk_display_status(p1, extobj);
+
+				if (ercd != E_OK) {
+					goto error_exit;
+				}
+
+				break;
+
+			default:
+				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
+				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
+				break;
 		}
 	}
 
@@ -190,7 +204,7 @@ static CMD_TABLE_T disk_cmd = {"disk", "Operate the storge device", cmd_disk, NU
  * register disk command
  */
 
-CMD_TABLE_T * register_ntshell_cmd_disk(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_disk(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&disk_cmd, prev);
 }

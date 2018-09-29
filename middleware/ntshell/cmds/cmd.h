@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief header file for cmd registeration
- */
+/**
+* \file
+* \brief header file for cmd registeration
+*/
 
 #ifndef _CMD_H_
 #define _CMD_H_
@@ -39,6 +39,6 @@
 #include "ntshell_usrcmd.h"
 #include "cmd_cfg.h"
 
-CMD_TABLE_T* ntshell_register_cmds(CMD_TABLE_T *prev);
+CMD_TABLE_T *ntshell_register_cmds(CMD_TABLE_T *prev);
 
 #endif /* _CMD_H_ */

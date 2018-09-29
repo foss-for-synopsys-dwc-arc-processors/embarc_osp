@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief the command to access auxiliary registers
- */
+/**
+* \file
+* \brief the command to access auxiliary registers
+*/
 
 
 #include "cmds_arc_cfg.h"
@@ -64,17 +64,22 @@ static void _auxiliary_register_dump(uint32_t start_addr, uint32_t end_addr, voi
 	VALID_EXTOBJ_NORTN(extobj);
 
 	p = start_addr;
+
 	while (p <= end_addr) {
 		CMD_DEBUG("0x%08x: ", p);
+
 		for (x = 0; x < MAXROWS; x++) {
 			val = _arc_aux_read(p);	/* read aux register */
 			CMD_DEBUG("0x%08x  ", val);
 			np = p + 1;
+
 			if (np < p) {
 				brk = 1;
 				break;
 			}
+
 			p = np;
+
 			if (p > end_addr) {
 				break;
 			}
@@ -95,10 +100,12 @@ error_exit:
 static void cmd_lr_help(char *cmd_name, void *extobj)
 {
 	VALID_EXTOBJ_NORTN(extobj);
+
 	if (cmd_name == NULL) {
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... <ADD> <VAL> [NUM]\r\n"
 		"Read auxiliary register\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -130,10 +137,11 @@ static int cmd_lr(int argc, char **argv, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_lr_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 3) || (argc < 2)) {
 		ercd = E_SYS;
@@ -141,13 +149,16 @@ static int cmd_lr(int argc, char **argv, void *extobj)
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
 	}
+
 	argv_tp = (char **)(&argv[1]);
+
 	/* parse 1th argument: start aux reg index */
 	if (xatoi(&argv_tp[0], &val)) {
 		start_addr = (uint32_t) val;
 	} else {
 		arg_err_flag = arg_err_flag | FIRST_ARG_ERR;
 	}
+
 	/* parse 2nd argument: aux reg size that you want to display */
 	if (argc == 3) {
 		if (xatoi(&argv_tp[1], &val)) {
@@ -167,6 +178,7 @@ static int cmd_lr(int argc, char **argv, void *extobj)
 
 	/* calc end address */
 	end_addr = start_addr + size - 1;
+
 	if ((end_addr < start_addr) && (size > 1)) { /* wrap? */
 		end_addr = 0xfffffffc;
 	}
@@ -188,10 +200,12 @@ error_exit:
 static void cmd_sr_help(char *cmd_name, void *extobj)
 {
 	VALID_EXTOBJ_NORTN(extobj);
+
 	if (cmd_name == NULL) {
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... <ADD> <VAL> [NUM]\r\n"
 		"Write auxiliary register\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -220,11 +234,13 @@ static int cmd_sr(int argc, char **argv, void *extobj)
 
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
+
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_sr_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 4) || (argc < 3)) {
 		ercd = E_SYS;
@@ -234,18 +250,21 @@ static int cmd_sr(int argc, char **argv, void *extobj)
 	}
 
 	argv_tp = (char **)(&argv[1]);
+
 	/* parse 1th argument: start aux reg index */
 	if (xatoi(&argv_tp[0], &val)) {
 		start_addr = (uint32_t) val;
 	} else {
 		arg_err_flag = arg_err_flag | FIRST_ARG_ERR;
 	}
+
 	/* parse 2nd argument: reg value */
 	if (xatoi(&argv_tp[1], &val)) {
 		reg_val = (uint32_t) val;
 	} else {
 		arg_err_flag = arg_err_flag | SECOND_ARG_ERR;
 	}
+
 	/* parse 3rd argument: reg amount to write */
 	if (argc == 4) {
 		if (xatoi(&argv_tp[2], &val)) {
@@ -265,6 +284,7 @@ static int cmd_sr(int argc, char **argv, void *extobj)
 
 	/* calc end address */
 	end_addr = start_addr + size - 1;
+
 	if (end_addr < start_addr) { /* wrap? */
 		end_addr = 0xfffffffc;
 	}
@@ -292,7 +312,7 @@ static CMD_TABLE_T sr_cmd = {"sr", "Write auxiliary register", cmd_sr, NULL};
 /**
  * register aux register write or read command
  */
-CMD_TABLE_T * register_ntshell_cmd_aux(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_aux(CMD_TABLE_T *prev)
 {
 	prev = ntshell_usrcmd_register(&lr_cmd, prev);
 	return ntshell_usrcmd_register(&sr_cmd, prev);

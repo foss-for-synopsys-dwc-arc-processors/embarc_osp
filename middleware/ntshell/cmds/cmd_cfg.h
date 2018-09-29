@@ -59,10 +59,8 @@
 #endif /* MID_FATFS */
 
 #ifndef NTSHELL_USE_CMDS_EXTEND
-#define NTSHELL_USE_CMDS_EXTEND		(1)		/*!< use commands defined in cmds_extend */
+#define NTSHELL_USE_CMDS_EXTEND		(0)		/*!< use commands defined in cmds_extend */
 #endif
-
-
 
 #endif /* MID_COMMON */
 

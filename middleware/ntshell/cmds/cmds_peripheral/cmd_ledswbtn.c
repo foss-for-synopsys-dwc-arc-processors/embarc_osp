@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief operate the LEDs through DIP switches and buttons
- */
+/**
+* \file
+* \brief operate the LEDs through DIP switches and buttons
+*/
 
 #include "cmds_peripheral_cfg.h"
 #if NTSHELL_USE_CMDS_PERIPHERAL_LEDSWBTN
@@ -49,13 +49,14 @@ static void cmd_led_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... <VAL>\r\n"
-		"Open or close the 9 leds in the EMSK\r\n"
-		"  -h/H/?    Show the help information\r\n"
-		"  <VAL>     The low nine bits of <VAL> is effective, each bit can control one led, 1--open, 0--close\r\n"
-		"Examples: \r\n"
-		"  led 0x10F Open the 0~3th and 8th leds, close 4~7th leds\r\n"
-		"  led -h    Show the help information\r\n", cmd_name);
+	          "Open or close the 9 leds in the EMSK\r\n"
+	          "  -h/H/?    Show the help information\r\n"
+	          "  <VAL>     The low nine bits of <VAL> is effective, each bit can control one led, 1--open, 0--close\r\n"
+	          "Examples: \r\n"
+	          "  led 0x10F Open the 0~3th and 8th leds, close 4~7th leds\r\n"
+	          "  led -h    Show the help information\r\n", cmd_name);
 error_exit:
 	return;
 }
@@ -72,10 +73,11 @@ static int cmd_led(int argc, char **argv, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_led_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if (argc != 2) {
 		ercd = E_SYS;
@@ -85,6 +87,7 @@ static int cmd_led(int argc, char **argv, void *extobj)
 	}
 
 	argv_tp = (char **)(&argv[1]);
+
 	/* parse 1th argument: led value */
 	if (xatoi(&argv_tp[0], &val)) {
 		led_val = (uint32_t) val;
@@ -115,12 +118,13 @@ static void cmd_btn_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]\r\n"
-		"Read the button status, bit 0: the status of button 'L', bit 1: the button 'R'\r\n"
-		"  -h/H/?    Show the help information\r\n"
-		"Examples: \r\n"
-		"  btn       Show the button status, 1--press the button, \r\n"
-		"  btn -h    Show the help information\r\n", cmd_name);
+	          "Read the button status, bit 0: the status of button 'L', bit 1: the button 'R'\r\n"
+	          "  -h/H/?    Show the help information\r\n"
+	          "Examples: \r\n"
+	          "  btn       Show the button status, 1--press the button, \r\n"
+	          "  btn -h    Show the help information\r\n", cmd_name);
 error_exit:
 	return;
 }
@@ -134,10 +138,11 @@ static int cmd_btn(int argc, char **argv, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_btn_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 1) || (argc < 0)) {
 		ercd = E_SYS;
@@ -162,12 +167,13 @@ static void cmd_swt_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]\r\n"
-		"Read the DIP switch status\r\n"
-		"  -h/H/?    Show the help information\r\n"
-		"Examples: \r\n"
-		"  swt       Show the SIP switch status, 1--ON, 0--OFF\r\n"
-		"  swt -h    Show the help information\r\n", cmd_name);
+	          "Read the DIP switch status\r\n"
+	          "  -h/H/?    Show the help information\r\n"
+	          "Examples: \r\n"
+	          "  swt       Show the SIP switch status, 1--ON, 0--OFF\r\n"
+	          "  swt -h    Show the help information\r\n", cmd_name);
 
 error_exit:
 	return;
@@ -182,10 +188,11 @@ static int cmd_swt(int argc, char **argv, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_swt_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 1) || (argc < 0)) {
 		ercd = E_SYS;
@@ -207,15 +214,16 @@ static void cmd_ledswbtn_help(char *cmd_name, void *extobj)
 	VALID_EXTOBJ_NORTN(extobj);
 
 	if (cmd_name == NULL) {
-	/* cmd_name not valid */
-	return;
+		/* cmd_name not valid */
+		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]\r\n"
-		"Operate the LED through button and switch\r\n"
-		"  -h/H/?    Show the help information\r\n"
-		"Examples: \r\n"
-		"  ledswbtn       Operate the LED through button and switch\r\n"
-		"  ledswbtn -h    Show the help information\r\n", cmd_name);
+	          "Operate the LED through button and switch\r\n"
+	          "  -h/H/?    Show the help information\r\n"
+	          "Examples: \r\n"
+	          "  ledswbtn       Operate the LED through button and switch\r\n"
+	          "  ledswbtn -h    Show the help information\r\n", cmd_name);
 error_exit:
 	return;
 }
@@ -229,10 +237,11 @@ static int cmd_ledswbtn(int argc, char **argv, void *extobj)
 	NTSHELL_IO_GET(extobj);
 
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_ledswbtn_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 1) || (argc < 0)) {
 		ercd = E_SYS;
@@ -248,7 +257,7 @@ static int cmd_ledswbtn(int argc, char **argv, void *extobj)
 
 	do {
 		readval = (switch_read(BOARD_SWT_MASK) << BOARD_BTN_CNT) \
-				| (button_read(BOARD_BTN_MASK));
+		          | (button_read(BOARD_BTN_MASK));
 		led_write(readval, BOARD_LED_MASK);
 		board_delay_ms(10, OSP_DELAY_OS_COMPAT_ENABLE);
 	} while (!(button_read(BOARD_BTN_MASK) & 0x4));
@@ -269,7 +278,7 @@ static CMD_TABLE_T ledswbtn_cmd = {"ledswbtn", "Operate the LED through button a
 /**
 * register led sw btn command
 */
-CMD_TABLE_T * register_ntshell_cmd_ledswbtn(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_ledswbtn(CMD_TABLE_T *prev)
 {
 	prev = ntshell_usrcmd_register(&led_cmd     , prev);
 	prev = ntshell_usrcmd_register(&btn_cmd     , prev);

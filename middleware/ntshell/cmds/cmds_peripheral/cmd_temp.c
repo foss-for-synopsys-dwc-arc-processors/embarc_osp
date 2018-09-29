@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief read the PMOD temperature sensor data
- */
+/**
+* \file
+* \brief read the PMOD temperature sensor data
+*/
 #include "cmds_peripheral_cfg.h"
 #if NTSHELL_USE_CMDS_PERIPHERAL_TEMP
 #include "ntlibc.h"
@@ -98,12 +98,15 @@ static int cmd_temp(int argc, char **argv, void *extobj)
 				cmd_temp_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			case 'c':
 				unit = CELSIUS;
 				break;
+
 			case 'f':
 				unit = FAHRENHEIT;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -115,6 +118,7 @@ static int cmd_temp(int argc, char **argv, void *extobj)
 
 	if ((temp=read_temp(unit)) != -1000) {
 		CMD_DEBUG("Current Temperature:%d.%d", temp/10, temp%10);
+
 		if (unit == FAHRENHEIT) {
 			CMD_DEBUG("F\r\n");
 		} else {
@@ -124,6 +128,7 @@ static int cmd_temp(int argc, char **argv, void *extobj)
 		CMD_DEBUG("ERROR: cannot read data from I2C device\r\n");
 		return -1;
 	}
+
 	return 0;
 
 error_exit:
@@ -143,6 +148,7 @@ int32_t read_temp (int tmp_units)
 	//read from sensor
 	if (adt7420_sensor_read(temp_sensor, &tempf) == E_OK) {
 		tempval = (int32_t)(tempf * 10);
+
 		if (tmp_units == FAHRENHEIT) {
 			//conversion F = 32 + (9/5) * C
 			//t is 0.1c unit
@@ -159,7 +165,7 @@ static CMD_TABLE_T temp_cmd = {"temp", "Show current temperature", cmd_temp, NUL
 /**
  * register temp command
  */
-CMD_TABLE_T * register_ntshell_cmd_temp(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_temp(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&temp_cmd, prev);
 }

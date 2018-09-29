@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: cat
- */
+/**
+* \file
+* \brief filesystem operation commands: cat
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_CAT
@@ -61,38 +61,50 @@ static int32_t fs_cat(char *pathname, int32_t mode, void *extobj)
 
 	for (;;) {
 		res = f_read(&cmd_files[0], cmd_fs_buffer, blen, &s1);
-		if (res || s1 == 0) break;   /* error or eof */
-		if(mode == 1) {
-			for (ptr=(char*)cmd_fs_buffer, ofs = 0; ofs < s1; ptr += 16, ofs += 16) {
-				cmds_put_dump((uint8_t*)ptr, (base_address+ofs), 16, DW_CHAR, extobj);
+
+		if (res || s1 == 0) {
+			break;    /* error or eof */
+		}
+
+		if (mode == 1) {
+			for (ptr=(char *)cmd_fs_buffer, ofs = 0; ofs < s1; ptr += 16, ofs += 16) {
+				cmds_put_dump((uint8_t *)ptr, (base_address+ofs), 16, DW_CHAR, extobj);
 			}
 		} else {
 			CMD_WRITE(cmd_fs_buffer, s1);
 			CMD_DEBUG("\r\n");
 		}
+
 		base_address += blen;
+
 		/* check end of file*/
-		if(s1 < blen) {
+		if (s1 < blen) {
 			CMD_DEBUG("\r\n");
 			break;
 		}
-		for(;;) {
+
+		for (;;) {
 			CMD_DEBUG("Continue ? (y or n)");
 			// xgets(Line, sizeof Line);
 			CMD_READ(line, 1);
 			CMD_DEBUG("\r\n");
 			ptr = line;
-			while (*ptr == ' ') ptr ++;
-			if(line[0] == 'n') {
+
+			while (*ptr == ' ') {
+				ptr++;
+			}
+
+			if (line[0] == 'n') {
 				CMD_DEBUG("\r\n");
 				f_close(&cmd_files[0]);
 				goto error_exit;
-			} else if(line[0] == 'y') {
+			} else if (line[0] == 'y') {
 				CMD_DEBUG("\r\n");
 				break;
 			}
 		}
 	}
+
 	f_close(&cmd_files[0]);
 	return E_OK;
 
@@ -108,6 +120,7 @@ static void cmd_cat_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... FILE\r\n"
 		"Concatenate File, or standard input, to standard output\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -130,16 +143,18 @@ static int cmd_cat(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc < 2) {
+	if (argc < 2) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
-	}else if(*argv[1] != '-') {
+	} else if (*argv[1] != '-') {
 		ercd = fs_cat(argv[1], mode, extobj);
-		if(ercd != E_OK) {
+
+		if (ercd != E_OK) {
 			goto error_exit;
 		}
+
 		return E_OK;
 	}
 
@@ -154,9 +169,11 @@ static int cmd_cat(int argc, char **argv, void *extobj)
 				cmd_cat_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			case 'b':
 				mode = 1;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -165,9 +182,10 @@ static int cmd_cat(int argc, char **argv, void *extobj)
 	}
 
 	/*chech the parameter*/
-	if((optind+1) == argc) {
+	if ((optind+1) == argc) {
 		ercd = fs_cat(argv[optind], mode, extobj);
-		if(ercd != E_OK) {
+
+		if (ercd != E_OK) {
 			goto error_exit;
 		}
 	} else {
@@ -187,7 +205,7 @@ static CMD_TABLE_T cat_cmd = {"cat", "Output file contents", cmd_cat, NULL};
 /**
  * register cat command
  */
-CMD_TABLE_T * register_ntshell_cmd_cat(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_cat(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&cat_cmd, prev);
 }

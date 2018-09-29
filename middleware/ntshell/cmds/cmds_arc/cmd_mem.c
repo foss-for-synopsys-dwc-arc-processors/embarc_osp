@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: mem
- */
+/**
+* \file
+* \brief filesystem operation commands: mem
+*/
 
 #include "cmds_arc_cfg.h"
 #if NTSHELL_USE_CMDS_ARC_MEM
@@ -49,6 +49,7 @@ static void cmd_mem_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... [ADDR] [LENGTH] [VALUE]\r\n"
 		"Read or Write data in the memory\r\n"
 		"  -h/H/?       Show the help information\r\n"
@@ -74,7 +75,7 @@ static int cmd_mem(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc < 2) {
+	if (argc < 2) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
@@ -85,51 +86,69 @@ static int cmd_mem(int argc, char **argv, void *extobj)
 	optind = 1;
 
 	while ((opt=getopt(argc, argv, "d:f:e:hH?")) != -1) {
-	switch (opt) {
-		case 'h':
-		case '?':
-		case 'H':
-			cmd_mem_help(argv[0], extobj);
-			goto error_exit;
-			break;
-		case 'd':
-			if (!xatoi(&argv[2], &ram_address) || !xatoi(&argv[3], &length)){
-				ercd = E_SYS;
-				CMD_DEBUG("Parameter error!\r\n");
+		switch (opt) {
+			case 'h':
+			case '?':
+			case 'H':
+				cmd_mem_help(argv[0], extobj);
 				goto error_exit;
-			}
-			for (ptr = (char*)ram_address; length >= 16 ; ptr += 16, length -= 16)
-				cmds_put_dump(ptr, (uint32_t)ptr, 16, 1, extobj);
-			if (length) cmds_put_dump((uint8_t*)ptr, (uint32_t)ptr, length, 1, extobj);
-			break;
-		case 'f':
-			if (!xatoi(&argv[2], &ram_address) || !xatoi(&argv[3], &length) || !xatoi(&argv[4], &value)){
-				ercd = E_SYS;
-				CMD_DEBUG("Parameter error!\r\n");
-				goto error_exit;
-			}
-			while (length--) {
-				*(uint8_t*)ram_address = (uint8_t)value;
-				ram_address++;
-			}
-			break;
-		case 'e':
-			if (!xatoi(&argv[2], &ram_address) || !xatoi(&argv[3], &value)) {
-				ercd = E_SYS;
-				CMD_DEBUG("Parameter error!\r\n");
-				goto error_exit;
-			}
-			length = argc - 3;
-			while(length--) {
-				*(uint8_t*)ram_address = (uint8_t)value;
-				ram_address++;
-				if(!xatoi(&argv[argc - length], &value)) break;
-			}
-			break;
-		default:
-			CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
-			CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
-			break;
+				break;
+
+			case 'd':
+				if (!xatoi(&argv[2], &ram_address) || !xatoi(&argv[3], &length)) {
+					ercd = E_SYS;
+					CMD_DEBUG("Parameter error!\r\n");
+					goto error_exit;
+				}
+
+				for (ptr = (char *)ram_address; length >= 16 ; ptr += 16, length -= 16) {
+					cmds_put_dump(ptr, (uint32_t)ptr, 16, 1, extobj);
+				}
+
+				if (length) {
+					cmds_put_dump((uint8_t *)ptr, (uint32_t)ptr, length, 1, extobj);
+				}
+
+				break;
+
+			case 'f':
+				if (!xatoi(&argv[2], &ram_address) || !xatoi(&argv[3], &length) || !xatoi(&argv[4], &value)) {
+					ercd = E_SYS;
+					CMD_DEBUG("Parameter error!\r\n");
+					goto error_exit;
+				}
+
+				while (length--) {
+					*(uint8_t *)ram_address = (uint8_t)value;
+					ram_address++;
+				}
+
+				break;
+
+			case 'e':
+				if (!xatoi(&argv[2], &ram_address) || !xatoi(&argv[3], &value)) {
+					ercd = E_SYS;
+					CMD_DEBUG("Parameter error!\r\n");
+					goto error_exit;
+				}
+
+				length = argc - 3;
+
+				while (length--) {
+					*(uint8_t *)ram_address = (uint8_t)value;
+					ram_address++;
+
+					if (!xatoi(&argv[argc - length], &value)) {
+						break;
+					}
+				}
+
+				break;
+
+			default:
+				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
+				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
+				break;
 		}
 	}
 
@@ -143,7 +162,7 @@ static CMD_TABLE_T mem_cmd = {"mem", "Operate the memory", cmd_mem, NULL};
 /**
  * register memory command
  */
-CMD_TABLE_T * register_ntshell_cmd_mem(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_mem(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&mem_cmd, prev);
 }

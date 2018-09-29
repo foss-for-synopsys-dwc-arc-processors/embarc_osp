@@ -60,13 +60,14 @@ static void cmd_ledflash_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... <PERIOD(ms)> [TIMES]\r\n"
-		"Run \r\n"
-		"  -h/H/?    Show the help information\r\n"
-		"  <NUM1> [NUM]    Set the flashing period: <NUM1> ms, run [NUM2] times\r\n"
-		"Examples: \r\n"
-		"  ledflash  500 0x08    Set the flashing period: 500ms, run 8 times\r\n"
-		"  ledflash -h    Show the help information\r\n", cmd_name);
+	          "Run \r\n"
+	          "  -h/H/?    Show the help information\r\n"
+	          "  <NUM1> [NUM]    Set the flashing period: <NUM1> ms, run [NUM2] times\r\n"
+	          "Examples: \r\n"
+	          "  ledflash  500 0x08    Set the flashing period: 500ms, run 8 times\r\n"
+	          "  ledflash -h    Show the help information\r\n", cmd_name);
 error_exit:
 	return;
 }
@@ -82,11 +83,13 @@ static int cmd_ledflash(int argc, char **argv, void *extobj)
 
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
+
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_ledflash_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 3) || (argc < 2)) {
 		ercd = E_SYS;
@@ -94,13 +97,16 @@ static int cmd_ledflash(int argc, char **argv, void *extobj)
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
 	}
+
 	argv_tp = (char **)(&argv[1]);
+
 	/* parse 1th argument: measure period */
 	if (xatoi(&argv_tp[0], &val)) {
 		period_ms = (uint32_t) val;
 	} else {
 		arg_err_flag = arg_err_flag | FIRST_ARG_ERR;
 	}
+
 	/* parse 2nd argument: measure times */
 	if (argc == 3) {
 		if (xatoi(&argv_tp[1], &val)) {
@@ -117,15 +123,18 @@ static int cmd_ledflash(int argc, char **argv, void *extobj)
 		ercd = E_SYS;
 		goto error_exit;
 	}
+
 	if (measure_times == 0) {
 		CMD_DEBUG("ERROR: repeat times is 0. exit LED Sample\r\n");
 		ercd = E_SYS;
 		goto error_exit;
 	}
+
 	if (period_ms > MAX_DELAY) {
 		CMD_DEBUG("WARN: Max Period is %d!\r\n", MAX_DELAY);
 		period_ms = MAX_DELAY;
 	}
+
 	if (measure_times > MAX_TIMES) {
 		CMD_DEBUG("WARN: Max Times is %d!\r\n", MAX_TIMES);
 		measure_times = MAX_TIMES;
@@ -138,21 +147,24 @@ static int cmd_ledflash(int argc, char **argv, void *extobj)
 
 	for (cycle = 0; cycle < measure_times; cycle++) {
 		leds = 0x155;
-		for(i= 0; i < 9; i++) {
+
+		for (i= 0; i < 9; i++) {
 			board_delay_ms(period_ms, OSP_DELAY_OS_COMPAT_ENABLE);
 			leds ^= BOARD_LED_MASK;
 			led_write(leds, BOARD_LED_MASK);
 		}
 
 		leds = 0x01;
-		for(i= 0; i < 9; i++) {
+
+		for (i= 0; i < 9; i++) {
 			board_delay_ms(period_ms, OSP_DELAY_OS_COMPAT_ENABLE);
 			leds = leds << 1;
 			led_write(leds, BOARD_LED_MASK);
 		}
 
 		leds = 0x100;
-		for(i= 0; i < 9; i++) {
+
+		for (i= 0; i < 9; i++) {
 			board_delay_ms(period_ms, OSP_DELAY_OS_COMPAT_ENABLE);
 			leds = BOARD_LED_MASK & ((leds >> 1));
 			led_write(leds, BOARD_LED_MASK);
@@ -162,6 +174,7 @@ static int cmd_ledflash(int argc, char **argv, void *extobj)
 		// switch off all leds
 		led_write(0, BOARD_LED_MASK);
 	}
+
 	CMD_DEBUG("*** Exit LED Example ***\r\n");
 	return E_OK;
 
@@ -173,9 +186,9 @@ static CMD_TABLE_T ledflash_cmd = {"ledflash", "Run led flash example", cmd_ledf
 /**
 * register led flash command
 */
-CMD_TABLE_T * register_ntshell_cmd_ledflash(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_ledflash(CMD_TABLE_T *prev)
 {
-return ntshell_usrcmd_register(&ledflash_cmd, prev);
+	return ntshell_usrcmd_register(&ledflash_cmd, prev);
 }
 
 #endif /* NTSHELL_USE_CMDS_PERIPHERAL_LEDFLASH */

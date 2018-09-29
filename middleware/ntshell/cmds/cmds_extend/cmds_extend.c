@@ -28,22 +28,24 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief register extend operation commands
- */
+/**
+* \file
+* \brief register extend operation commands
+*/
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_EXTEND
 #include "cmds_extend_cfg.h"
 
 #include "embARC.h"
 
-extern CMD_TABLE_T * register_ntshell_cmd_wifi(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_wifi(CMD_TABLE_T *prev);
 
 /** indicate whether the commands were registered */
-CMD_TABLE_T* ntshell_register_cmds_extend(CMD_TABLE_T *prev)
+CMD_TABLE_T *ntshell_register_cmds_extend(CMD_TABLE_T *prev)
 {
-	if (prev == NULL) return NULL;
+	if (prev == NULL) {
+		return NULL;
+	}
 
 	/* wifi register */
 #if NTSHELL_USE_CMDS_EXTEND_WIFI

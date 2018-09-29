@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: mv
- */
+/**
+* \file
+* \brief filesystem operation commands: mv
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_MV
@@ -44,7 +44,7 @@ static int32_t fatfs_rename(char *old_name, char *new_name, void *extobj)
 	int32_t ercd = E_OK;
 	uint8_t res = 0;
 	FILINFO fno;
-	char * ptr = NULL;
+	char *ptr = NULL;
 
 	check_path(old_name);
 	check_path(new_name);
@@ -56,19 +56,22 @@ static int32_t fatfs_rename(char *old_name, char *new_name, void *extobj)
 	res = f_stat(new_name, &fno);
 
 	if ((res == FR_OK) && (((fno.fattrib & AM_DIR) == AM_DIR) || ((fno.fattrib & AM_VOL) == AM_VOL))) {
-	/* new_name is folder or vol */
+		/* new_name is folder or vol */
 		/* get the file name*/
 		ptr = get_new_filepath(new_name, old_name);
+
 		if (ptr == NULL) {
 			ercd = E_SYS;
 			CMD_DEBUG("Out of memory!\r\n");
 			goto error_exit;
 		}
+
 		res = f_rename(old_name, ptr);
 		free(ptr);
 	} else {
 		res = f_rename(old_name, new_name);
 	}
+
 	if (res != FR_OK) {
 		ercd = res;
 		goto error_exit;
@@ -88,6 +91,7 @@ static void cmd_mv_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... SOURCE DEST\r\n"
 		"  Or: %s [OPTION]... SOURCE DIRECTORY\r\n"
 		"Rename SOURCE to DEST, or move SOURCE to DIRECTORY\r\n"
@@ -131,9 +135,11 @@ static int cmd_mv(int argc, char **argv, void *extobj)
 					cmd_mv_help(argv[0], extobj);
 					goto error_exit;
 					break;
+
 				case 'v':
 					print_flag = 1;
 					break;
+
 				default:
 					CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 					CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -141,18 +147,22 @@ static int cmd_mv(int argc, char **argv, void *extobj)
 					break;
 			}
 		}
+
 		valid_ind = 2;
 	}
 
 	/*chech the parameter*/
 	ercd = fatfs_rename(argv[valid_ind], argv[valid_ind+1], extobj);
+
 	if (print_flag == 1) {
 		CMD_DEBUG("%s: Rename or move '%s' -> '%s'\r\n", argv[0], argv[valid_ind], argv[valid_ind+1]);
 	}
+
 	if (ercd != E_OK) {
 		if ((ercd > FR_OK) && (ercd <= FR_INVALID_PARAMETER)) {
 			fs_put_err(ercd, extobj);
 		}
+
 		goto error_exit;
 	}
 
@@ -166,7 +176,7 @@ static CMD_TABLE_T mv_cmd = {"mv", "Rename file or move file", cmd_mv, NULL};
 /**
 * register mv command
 */
-CMD_TABLE_T * register_ntshell_cmd_mv(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_mv(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&mv_cmd, prev);
 }

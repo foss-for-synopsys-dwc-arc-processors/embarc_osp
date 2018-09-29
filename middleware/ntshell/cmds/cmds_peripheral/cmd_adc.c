@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief PMOD ADC sensor demo commands
- */
+/**
+* \file
+* \brief PMOD ADC sensor demo commands
+*/
 
 
 #include "cmds_peripheral_cfg.h"
@@ -64,10 +64,12 @@ static DEV_IIC *adc_iic;
 static void cmd_adc_help(char *cmd_name, void *extobj)
 {
 	VALID_EXTOBJ_NORTN(extobj);
+
 	if (_arc_rarely((cmd_name == NULL))) {
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... <PERIOD(ms)> [TIMES]\r\n"
 		"Read the result from the PMOD ADC sensor, connect PMOD ADC to J2\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -95,11 +97,13 @@ static int cmd_adc(int argc, char **argv, void *extobj)
 
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
+
 	/* show the help information, if the option is "-h" */
-	if(argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
+	if (argc == 2 && ntlibc_strcmp(argv[1],"-h") == 0x00) {
 		cmd_adc_help(argv[0], extobj);
 		goto error_exit;
 	}
+
 	/* the parameter checking */
 	if ((argc > 3) || (argc < 2)) {
 		ercd = E_SYS;
@@ -107,13 +111,16 @@ static int cmd_adc(int argc, char **argv, void *extobj)
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
 	}
+
 	argv_tp = (char **)(&argv[1]);
+
 	/* parse 1th argument: measure period */
 	if (xatoi(&argv_tp[0], &val)) {
 		period_ms = (uint32_t) val;
 	} else {
 		arg_err_flag = arg_err_flag | FIRST_ARG_ERR;
 	}
+
 	/* parse 2nd argument: measure times */
 	if (argc == 3) {
 		if (xatoi(&argv_tp[1], &val)) {
@@ -136,15 +143,18 @@ static int cmd_adc(int argc, char **argv, void *extobj)
 		ercd = E_SYS;
 		goto error_exit;
 	}
+
 	if (measure_times == 0) {
 		CMD_DEBUG("ERROR: Measure times is 0. exit ADC Sample\r\n");
 		ercd = E_SYS;
 		goto error_exit;
 	}
+
 	if (period_ms > MAX_DELAY) {
 		CMD_DEBUG("WARN: Max Measure Period is %d!\r\n", MAX_DELAY);
 		period_ms = MAX_DELAY;
 	}
+
 	if (measure_times > MAX_TIMES) {
 		CMD_DEBUG("WARN: Max Measure Times is %d!\r\n", MAX_TIMES);
 		measure_times = MAX_TIMES;
@@ -164,7 +174,7 @@ static int cmd_adc(int argc, char **argv, void *extobj)
 	param = I2C_SLAVE_ADDR;
 	adc_iic->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(param));
 
-	while(1) {
+	while (1) {
 
 		for (i = 0; i < 4; i++) {
 
@@ -179,7 +189,7 @@ static int cmd_adc(int argc, char **argv, void *extobj)
 				CMD_DEBUG("\r\n*** Exit ADC Sample***\r\n");
 				running = 0;
 				adc_iic->iic_close();
-		 		goto error_exit;
+				goto error_exit;
 			} else {
 				res = read_buf[0];
 				res = ((res << 8) & 0x0F00) | read_buf[1];
@@ -188,16 +198,17 @@ static int cmd_adc(int argc, char **argv, void *extobj)
 		}
 
 		CMD_DEBUG("ch0: data = 0x%-3X, ch1: data = 0x%-3X, ch2: data = 0x%-3X, ch3: data = 0x%-3X \r\n",
-				adc[0], adc[1], adc[2], adc[3]);
+		          adc[0], adc[1], adc[2], adc[3]);
 
 		board_delay_ms(period_ms, OSP_DELAY_OS_COMPAT_ENABLE);
 
-	 	if(((++count) >= measure_times)) {
+		if (((++count) >= measure_times)) {
 			CMD_DEBUG("\r\n*** Exit ADC Sample ***\r\n");
 			running = 0;
-	 		break;
-	 	}
+			break;
+		}
 	}
+
 	adc_iic->iic_close();
 	return E_OK;
 error_exit:
@@ -208,7 +219,7 @@ static CMD_TABLE_T adc_cmd = {"adc", "PMOD ADC sensor demo command", cmd_adc, NU
 /**
  * register adc example command
  */
-CMD_TABLE_T* register_ntshell_cmd_adc(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_adc(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&adc_cmd, prev);
 }

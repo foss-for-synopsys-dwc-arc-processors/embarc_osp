@@ -39,7 +39,7 @@
 #if NTSHELL_USE_CMDS_EXTEND
 
 /* register the commands of the extend operation*/
-extern CMD_TABLE_T* ntshell_register_cmds_extend(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *ntshell_register_cmds_extend(CMD_TABLE_T *prev);
 
 #endif /* NTSHELL_USE_CMDS_EXTEND*/
 

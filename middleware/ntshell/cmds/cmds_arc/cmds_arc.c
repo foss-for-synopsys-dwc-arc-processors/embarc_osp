@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief register arc kernel operation commands
- */
+/**
+* \file
+* \brief register arc kernel operation commands
+*/
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_ARC
 
@@ -39,38 +39,19 @@
 
 #include "cmds_arc_cfg.h"
 
-extern CMD_TABLE_T * register_ntshell_cmd_swape(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_peek(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_map(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_dump(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_bcr(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_aux(CMD_TABLE_T *prev);
-extern CMD_TABLE_T * register_ntshell_cmd_mem(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_map(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_aux(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_mem(CMD_TABLE_T *prev);
 
 /** indicate whether the commands were registered */
-CMD_TABLE_T* ntshell_register_cmds_arc(CMD_TABLE_T *prev)
+CMD_TABLE_T *ntshell_register_cmds_arc(CMD_TABLE_T *prev)
 {
-	if (prev == NULL) return NULL;
-
-	/* swape register */
-#if NTSHELL_USE_CMDS_ARC_SWAPE
-	prev = register_ntshell_cmd_swape(prev);
-#endif
-	/* peek, poke register */
-#if NTSHELL_USE_CMDS_ARC_PEEK
-	prev = register_ntshell_cmd_peek(prev);
-#endif
+	if (prev == NULL) {
+		return NULL;
+	}
 	/* map register */
 #if NTSHELL_USE_CMDS_ARC_MAP
 	prev = register_ntshell_cmd_map(prev);
-#endif
-	/* dump register */
-#if NTSHELL_USE_CMDS_ARC_DUMP
-	prev = register_ntshell_cmd_dump(prev);
-#endif
-	/* bcr register */
-#if NTSHELL_USE_CMDS_ARC_BCR
-	prev = register_ntshell_cmd_bcr(prev);
 #endif
 	/* aux register */
 #if NTSHELL_USE_CMDS_ARC_AUX

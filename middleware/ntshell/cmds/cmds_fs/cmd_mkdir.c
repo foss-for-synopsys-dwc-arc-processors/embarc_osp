@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: mkdir
- */
+/**
+* \file
+* \brief filesystem operation commands: mkdir
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_MKDIR
@@ -47,6 +47,7 @@ static void cmd_mkdir_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]... DIRECTORY\r\n"
 		"Create the DIRECTORY, if it does not already exist\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -70,19 +71,20 @@ static int cmd_mkdir(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc == 1) {
+	if (argc == 1) {
 		ercd = E_SYS;
 		CMD_DEBUG("command error!\r\n");
 		CMD_DEBUG("Try '%s -h' for more information\r\n", argv[0]);
 		goto error_exit;
-	} else if(*argv[1] != '-') {
+	} else if (*argv[1] != '-') {
 		res = f_mkdir(argv[1]);
 
-		if(res != FR_OK) {
+		if (res != FR_OK) {
 			ercd = E_SYS;
 			fs_put_err(res, extobj);
 			goto error_exit;
 		}
+
 		return E_OK;
 	}
 
@@ -97,9 +99,11 @@ static int cmd_mkdir(int argc, char **argv, void *extobj)
 				cmd_mkdir_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			case 'v':
 				print_flag = 1;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -108,16 +112,16 @@ static int cmd_mkdir(int argc, char **argv, void *extobj)
 	}
 
 	/*chech the parameter*/
-	if((optind+1) == argc) {
+	if ((optind+1) == argc) {
 		res = f_mkdir(argv[optind]);
 
-		if(res != FR_OK) {
+		if (res != FR_OK) {
 			ercd = E_SYS;
 			fs_put_err(res, extobj);
 			goto error_exit;
 		}
 
-		if(print_flag == 1){
+		if (print_flag == 1) {
 			CMD_DEBUG("%s: created directory '%s'\r\n",argv[0], argv[optind]);
 		}
 	} else {
@@ -137,7 +141,7 @@ static CMD_TABLE_T mkdir_cmd = {"mkdir", "Create the directory", cmd_mkdir, NULL
 /**
  * register mkdir command
  */
-CMD_TABLE_T * register_ntshell_cmd_mkdir(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_mkdir(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&mkdir_cmd, prev);
 }

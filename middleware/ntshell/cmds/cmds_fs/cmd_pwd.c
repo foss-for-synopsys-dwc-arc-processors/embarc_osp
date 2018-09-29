@@ -28,10 +28,10 @@
  *
 --------------------------------------------- */
 
- /**
- * \file
- * \brief filesystem operation commands: pwd
- */
+/**
+* \file
+* \brief filesystem operation commands: pwd
+*/
 
 #include "cmds_fs_cfg.h"
 #if NTSHELL_USE_CMDS_FS_PWD
@@ -47,6 +47,7 @@ static void cmd_pwd_help(char *cmd_name, void *extobj)
 		/* cmd_name not valid */
 		return;
 	}
+
 	CMD_DEBUG("Usage: %s [OPTION]...\r\n"
 		"Print the name of the current working directory\r\n"
 		"  -h/H/?    Show the help information\r\n"
@@ -68,7 +69,7 @@ static int cmd_pwd(int argc, char **argv, void *extobj)
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 
-	if(argc == 1) {
+	if (argc == 1) {
 		working_directory = fs_working_dir();
 		CMD_DEBUG("%s\r\n", working_directory);
 		return E_OK;
@@ -90,6 +91,7 @@ static int cmd_pwd(int argc, char **argv, void *extobj)
 				cmd_pwd_help(argv[0], extobj);
 				goto error_exit;
 				break;
+
 			default:
 				CMD_DEBUG("%s: unrecognized option:%c\r\n", argv[0], opt);
 				CMD_DEBUG("Try '%s -h' for more information\r\n",argv[0]);
@@ -107,7 +109,7 @@ static CMD_TABLE_T pwd_cmd = {"pwd", "Print the current working directory", cmd_
 /**
  * register pwd command
  */
-CMD_TABLE_T * register_ntshell_cmd_pwd(CMD_TABLE_T *prev)
+CMD_TABLE_T *register_ntshell_cmd_pwd(CMD_TABLE_T *prev)
 {
 	return ntshell_usrcmd_register(&pwd_cmd, prev);
 }
