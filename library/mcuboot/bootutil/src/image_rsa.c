@@ -87,9 +87,14 @@ bootutil_parse_rsakey(mbedtls_rsa_context *ctx, uint8_t **p, uint8_t *end)
         return -4;
     }
 
-    rc = mbedtls_rsa_check_pubkey(ctx);
+    rc = mbedtls_rsa_import(ctx, &ctx->N, NULL, NULL, NULL, &ctx->E);
     if (rc != 0) {
         return -5;
+    }
+
+    rc = mbedtls_rsa_check_pubkey(ctx);
+    if (rc != 0) {
+        return -6;
     }
 
     ctx->len = mbedtls_mpi_size(&ctx->N);
