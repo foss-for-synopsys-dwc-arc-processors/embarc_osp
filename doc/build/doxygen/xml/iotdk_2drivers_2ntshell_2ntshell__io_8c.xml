@@ -5,63 +5,63 @@
     <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
     <includes refid="iotdk_2drivers_2ntshell_2ntshell__io_8h" local="yes">ntshell_io.h</includes>
     <incdepgraph>
-      <node id="4296">
+      <node id="4309">
         <label>stdbool.h</label>
       </node>
-      <node id="4299">
+      <node id="4312">
         <label>ntshell_task.h</label>
       </node>
-      <node id="4293">
+      <node id="4306">
         <label>stdint.h</label>
       </node>
-      <node id="4298">
+      <node id="4311">
         <label>ntshell_io_uart.h</label>
         <link refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8h_source"/>
-        <childnode refid="4292" relation="include">
+        <childnode refid="4305" relation="include">
         </childnode>
-        <childnode refid="4299" relation="include">
+        <childnode refid="4312" relation="include">
         </childnode>
       </node>
-      <node id="4300">
+      <node id="4313">
         <label>ntshell_io_netconn.h</label>
         <link refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8h_source"/>
-        <childnode refid="4292" relation="include">
+        <childnode refid="4305" relation="include">
         </childnode>
-        <childnode refid="4299" relation="include">
+        <childnode refid="4312" relation="include">
         </childnode>
       </node>
-      <node id="4295">
+      <node id="4308">
         <label>stddef.h</label>
       </node>
-      <node id="4294">
+      <node id="4307">
         <label>limits.h</label>
       </node>
-      <node id="4292">
+      <node id="4305">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="4293" relation="include">
+        <childnode refid="4306" relation="include">
         </childnode>
-        <childnode refid="4294" relation="include">
+        <childnode refid="4307" relation="include">
         </childnode>
-        <childnode refid="4295" relation="include">
+        <childnode refid="4308" relation="include">
         </childnode>
-        <childnode refid="4296" relation="include">
+        <childnode refid="4309" relation="include">
         </childnode>
       </node>
-      <node id="4291">
+      <node id="4304">
         <label>ntshell_io.c</label>
         <link refid="iotdk/drivers/ntshell/ntshell_io.c"/>
-        <childnode refid="4292" relation="include">
+        <childnode refid="4305" relation="include">
         </childnode>
-        <childnode refid="4297" relation="include">
+        <childnode refid="4310" relation="include">
         </childnode>
       </node>
-      <node id="4297">
+      <node id="4310">
         <label>ntshell_io.h</label>
         <link refid="iotdk_2drivers_2ntshell_2ntshell__io_8h_source"/>
-        <childnode refid="4298" relation="include">
+        <childnode refid="4311" relation="include">
         </childnode>
-        <childnode refid="4300" relation="include">
+        <childnode refid="4313" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io.c" line="36" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io.c" bodystart="36" bodyend="53"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io.c" line="36" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io.c" bodystart="36" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -123,26 +123,30 @@
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_NTSHELL<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>ntshell<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iotdk_2drivers_2ntshell_2ntshell__io_8h" kindref="compound">ntshell_io.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal">NTSHELL_IO*<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o_1ga12b79a5c5ba42300fa5c34e863e29a7b" kindref="member">get_ntshell_io</ref>(uint32_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">NTSHELL_IO<sp/>*<ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___n_t_s_h_e_l_l___i_o_1ga12b79a5c5ba42300fa5c34e863e29a7b" kindref="member">get_ntshell_io</ref>(uint32_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_NTSHELL_UART_1)</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_NTSHELL_0_ID:</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_uart_1;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_NTSHELL_NETCONN_0)</highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_NTSHELL_1_ID:</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_netconn_0;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_NTSHELL_0_ID:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_uart_1;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_NTSHELL_NETCONN_0)</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_NTSHELL_1_ID:</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;ntshell_netconn_0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ntshell/ntshell_io.c"/>
   </compounddef>

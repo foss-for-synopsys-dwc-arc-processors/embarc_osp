@@ -1511,6 +1511,17 @@
     <member refid="structsmic__adc__reg_1a8979065da64e568cc0fef95fe3563b40" kind="variable"><name>RESERVED</name></member>
     <member refid="structsmic__adc__reg_1a8d5a9b2491b0431d39c1e4016ef4e7db" kind="variable"><name>ADCD8_15</name></member>
   </compound>
+  <compound refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kind="struct"><name>SMIC_BOOTSPI_DEF</name>
+    <member refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f_1aeaeb587751189fb9dd57cb5c8feadc32" kind="variable"><name>bootspi_reg</name></member>
+    <member refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f_1a385f3bb8393f643300f1870f84caab41" kind="variable"><name>bootspi_open_cnt</name></member>
+  </compound>
+  <compound refid="structsmic__bootspi__reg" kind="struct"><name>smic_bootspi_reg</name>
+    <member refid="structsmic__bootspi__reg_1a468a0afe9e7074571b6fea983188f4d2" kind="variable"><name>MMDR</name></member>
+    <member refid="structsmic__bootspi__reg_1aff93103b87e0b2dcbbc60e692b7c1bac" kind="variable"><name>MMDW</name></member>
+    <member refid="structsmic__bootspi__reg_1ac1dae4f29c0e7bb838440482bd1a0d81" kind="variable"><name>MMC</name></member>
+    <member refid="structsmic__bootspi__reg_1a536c6c6741a59f05e84d57a804f5374a" kind="variable"><name>MMS</name></member>
+    <member refid="structsmic__bootspi__reg_1a84187aadf0f343a4b7fc0c0dbd9f1b75" kind="variable"><name>MME</name></member>
+  </compound>
   <compound refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kind="struct"><name>SMIC_EFLASH_DEF</name>
     <member refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f_1a77c010c07f38c802b43d01d1291eacb8" kind="variable"><name>eflash_reg</name></member>
     <member refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f_1a0724ad2f00aac45257a238479293dbc7" kind="variable"><name>eflash_open_cnt</name></member>
@@ -9546,6 +9557,67 @@
     <member refid="smic__adc_8h_1a18fe48d0bf105bca9d8751b40d1baaf8" kind="function"><name>smic_adc_control</name></member>
     <member refid="smic__adc_8h_1ae9bc8f138638ce8c8f0ee27bde30fc67" kind="function"><name>smic_adc_int_isr</name></member>
   </compound>
+  <compound refid="smic__bootspi_8c" kind="file"><name>smic_bootspi.c</name>
+    <member refid="smic__bootspi_8c_1a5e893979b210122ff010d6cd34e3861c" kind="define"><name>SMIC_BOOTSPI_CHECK_EXP_NORTN</name></member>
+    <member refid="smic__bootspi_8c_1a4e9aab619f6fc596189b90fe7dd81abe" kind="define"><name>SMIC_BOOTSPI_CHECK_EXP</name></member>
+    <member refid="smic__bootspi_8c_1a7712f8b2cdd12bc7129c7134a4e7e798" kind="define"><name>SMIC_BOOTSPI_MMA_MASK</name></member>
+    <member refid="smic__bootspi_8c_1aeac46dea0babdc962edb0ae51a2ae310" kind="define"><name>SMIC_BOOTSPI_NBR_MASK</name></member>
+    <member refid="smic__bootspi_8c_1a7e8c7dba9b7e8dc7a0cb115aa9553cd1" kind="define"><name>SMIC_BOOTSPI_RMMCS_MASK</name></member>
+    <member refid="smic__bootspi_8c_1a4a51580a4e70b8561a083f9b4932e975" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_SREAD</name></member>
+    <member refid="smic__bootspi_8c_1a03b0e1aa8f2591b41c6c2ee6bc17863e" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_DREAD</name></member>
+    <member refid="smic__bootspi_8c_1a6dd48cc887b1518a57623860b0e4c295" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_QREAD</name></member>
+    <member refid="smic__bootspi_8c_1a3d08306af0389997cb16a99f3f747d55" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_PP</name></member>
+    <member refid="smic__bootspi_8c_1a2e18b0c9eb3d4eb70d3082e38591f1fa" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_SE</name></member>
+    <member refid="smic__bootspi_8c_1af494c8a965c6222ebaaa50fcda4fadb3" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_BE_32K</name></member>
+    <member refid="smic__bootspi_8c_1aa98c3573ed75ab5d5270c7c3765a4248" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_BE_64K</name></member>
+    <member refid="smic__bootspi_8c_1aac4f2e1165b1e680821ae94da2bfba54" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_CE</name></member>
+    <member refid="smic__bootspi_8c_1ac5eb8de43254638a6d15f5a05d3a1729" kind="define"><name>SMIC_BOOTSPI_NOR_RD_ID</name></member>
+    <member refid="smic__bootspi_8c_1af44c4f2958f6c29da18921f8e47f28ed" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_RSTEN</name></member>
+    <member refid="smic__bootspi_8c_1a8b52e1b647011d0f882c820a3eb66a99" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_RST</name></member>
+    <member refid="smic__bootspi_8c_1aa39ee997276168c6fdc1ab1f4332ddd2" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_RDSR</name></member>
+    <member refid="smic__bootspi_8c_1a46b31f71da768aa78eba70724f5f87cd" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_WREN</name></member>
+    <member refid="smic__bootspi_8c_1aaf024bb608649f42724e9ce1ee8178e7" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_WRDI</name></member>
+    <member refid="smic__bootspi_8c_1acc7befa8f043a81144e227f60d7c956e" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_WRSR</name></member>
+    <member refid="smic__bootspi_8c_1a7538006135701d5962587ef211df7d38" kind="function"><name>bootspi_release_cs</name></member>
+    <member refid="smic__bootspi_8c_1a7bc7e8898922372ea4cc562b7bb31791" kind="function"><name>bootspi_write_data</name></member>
+    <member refid="smic__bootspi_8c_1a0dd6c61a0d8da78ae1ae96cb31b93bdc" kind="function"><name>bootspi_read_data</name></member>
+    <member refid="smic__bootspi_8c_1a08105ee11cbbcad6be7ce41f72c2b33d" kind="function"><name>bootspi_read_st</name></member>
+    <member refid="smic__bootspi_8c_1a832a9afcc6a939155e6614e1d59ab5a3" kind="function"><name>bootspi_chk_st</name></member>
+    <member refid="smic__bootspi_8c_1ab7f60581c34a502135e737b0c4df550b" kind="function"><name>bootspi_reset</name></member>
+    <member refid="smic__bootspi_8c_1a75ca14c25fa155ac754993e17a23cf3f" kind="function"><name>bootspi_read_id</name></member>
+    <member refid="smic__bootspi_8c_1aabf9f96b5b11e83cb710087641790ac4" kind="function"><name>bootspi_chip_erase</name></member>
+    <member refid="smic__bootspi_8c_1aa45b5473ed15dbfd8c3b7b0b40a80841" kind="function"><name>bootspi_sec_erase</name></member>
+    <member refid="smic__bootspi_8c_1a15338a6f7fd697d9204621168ed9781a" kind="function"><name>bootspi_blk_erase</name></member>
+    <member refid="smic__bootspi_8c_1a675d16a7b207bf82a9273ed04e0b7b87" kind="function"><name>smic_bootspi_open</name></member>
+    <member refid="smic__bootspi_8c_1af50d2d035dfdf53d4e8bca0e735d1adb" kind="function"><name>smic_bootspi_close</name></member>
+    <member refid="smic__bootspi_8c_1a9056c649fc7e51bf1027eaf6d934d691" kind="function"><name>smic_bootspi_read</name></member>
+    <member refid="smic__bootspi_8c_1a115efccb3c413e4c9b96854fbe36d31c" kind="function"><name>bootspi_write</name></member>
+    <member refid="smic__bootspi_8c_1a6769c8a1a231f3e5007c7ac5104f888f" kind="function"><name>smic_bootspi_write</name></member>
+    <member refid="smic__bootspi_8c_1a71d43e0234a6b5316f8f0f91ae95e311" kind="function"><name>smic_bootspi_control</name></member>
+  </compound>
+  <compound refid="smic__bootspi_8h" kind="file"><name>smic_bootspi.h</name>
+    <member refid="smic__bootspi_8h_1a85edb294074a5c2033a16aa4cb087331" kind="define"><name>BOOTSPI_CRTL_BASE</name></member>
+    <member refid="smic__bootspi_8h_1af958ed8a003e4a8356e3700434ff4b8b" kind="define"><name>SMIC_BOOTSPI_RESET</name></member>
+    <member refid="smic__bootspi_8h_1a0511846ab766f4230d23e5b7019f9895" kind="define"><name>SMIC_BOOTSPI_READ_ID</name></member>
+    <member refid="smic__bootspi_8h_1ada75f99e52be4ccd7690ba0bb1e62cf7" kind="define"><name>SMIC_BOOTSPI_CHIP_REASE</name></member>
+    <member refid="smic__bootspi_8h_1a210616c8707a928af1b62ccb74931708" kind="define"><name>SMIC_BOOTSPI_BLK_ERASE</name></member>
+    <member refid="smic__bootspi_8h_1a27d010f6bf17639156d34afc01e3e62b" kind="define"><name>SMIC_BOOTSPI_SEC_ERASE</name></member>
+    <member refid="smic__bootspi_8h_1a937db19dc4e2642db8c4144be0f5ebf5" kind="define"><name>SMIC_BOOTSPI_PAGE_SIZE</name></member>
+    <member refid="smic__bootspi_8h_1a9ef3197037e800fc184a084d4d1a491f" kind="define"><name>SMIC_BOOTSPI_SEC_SIZE</name></member>
+    <member refid="smic__bootspi_8h_1a6695ff5c0abd684beea11ffda265dfbb" kind="define"><name>SMIC_BOOTSPI_BLK_SIZE</name></member>
+    <member refid="smic__bootspi_8h_1ae7688f6cae8fdb64f14a52ccf1e6e8da" kind="define"><name>SMIC_BOOTSPI_BLKS_PER_CHIP</name></member>
+    <member refid="smic__bootspi_8h_1a8e9a1f623b406b26318e25cfb1de9781" kind="define"><name>SMIC_BOOTSPI_PAGES_PER_SEC</name></member>
+    <member refid="smic__bootspi_8h_1a14bd26c87b7e445c373908457a4b25bb" kind="define"><name>SMIC_BOOTSPI_SECS_PER_BLK</name></member>
+    <member refid="smic__bootspi_8h_1ad4c2e978f6c06172ef6208430532c27c" kind="define"><name>BOOTSPI_DEFINE</name></member>
+    <member refid="smic__bootspi_8h_1a774d6d0cabb055ed8921907d948e0281" kind="typedef"><name>SMIC_BOOTSPI_REG</name></member>
+    <member refid="smic__bootspi_8h_1a42601314e086695ffd102be53ee0772a" kind="typedef"><name>SMIC_BOOTSPI_REG_PTR</name></member>
+    <member refid="smic__bootspi_8h_1ab70dac3c867283c01afb38674facb295" kind="typedef"><name>SMIC_BOOTSPI_DEF_PTR</name></member>
+    <member refid="smic__bootspi_8h_1a675d16a7b207bf82a9273ed04e0b7b87" kind="function"><name>smic_bootspi_open</name></member>
+    <member refid="smic__bootspi_8h_1af50d2d035dfdf53d4e8bca0e735d1adb" kind="function"><name>smic_bootspi_close</name></member>
+    <member refid="smic__bootspi_8h_1a9056c649fc7e51bf1027eaf6d934d691" kind="function"><name>smic_bootspi_read</name></member>
+    <member refid="smic__bootspi_8h_1a6769c8a1a231f3e5007c7ac5104f888f" kind="function"><name>smic_bootspi_write</name></member>
+    <member refid="smic__bootspi_8h_1a71d43e0234a6b5316f8f0f91ae95e311" kind="function"><name>smic_bootspi_control</name></member>
+  </compound>
   <compound refid="smic__eflash_8c" kind="file"><name>smic_eflash.c</name>
     <member refid="smic__eflash_8c_1a4bf0e0baeae1b60a93ec35a4d21bc5b0" kind="define"><name>SMIC_EFLASH_CHECK_EXP_NORTN</name></member>
     <member refid="smic__eflash_8c_1a34c9be909c47303d57232c921319dddf" kind="define"><name>SMIC_EFLASH_CHECK_EXP</name></member>
@@ -13943,6 +14015,8 @@
   <compound refid="dir_5884f38b13105d01bf9dedcae9e537ab" kind="dir"><name>smic</name>
   </compound>
   <compound refid="dir_76935a77e3b0a0335baa4dce27a5b9f7" kind="dir"><name>smic_adc</name>
+  </compound>
+  <compound refid="dir_e6102a3b3389606c04693c7dcb55b35a" kind="dir"><name>smic_bootspi</name>
   </compound>
   <compound refid="dir_2c3b3043ad27d1843376e9fa8311e356" kind="dir"><name>smic_eflash</name>
   </compound>

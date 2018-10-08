@@ -307,7 +307,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <li>Bootloader example only support arc core configuration which has DDR with cache enabled.</li>
 <li>Bootloader example runs in DDR ram, not in CCM.</li>
 <li>Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.</li>
-<li>The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run sucessfully</li>
+<li>The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run successfully</li>
 <li><dl class="first docutils">
 <dt>Supported core configurations</dt>
 <dd><ul class="first last">
@@ -325,13 +325,20 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="buidling-and-running">
-<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="building-and-running">
+<h2>Building and Running<a class="headerlink" href="#building-and-running" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Generate a secondary bootloader binary file</li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
 <span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+</pre></div>
+</div>
+<ul class="simple">
+<li>Generate a secondary bootloader binary file for iotdk use eflash</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>iotdk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">10</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem9d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw <span class="nv">LOCATION</span><span class="o">=</span>eflash bin
 </pre></div>
 </div>
 <p>If the binary file is generated successfully, you will output as follows:</p>
@@ -380,7 +387,7 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration</p>
+<p class="last">Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirm its configuration</p>
 </div>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
