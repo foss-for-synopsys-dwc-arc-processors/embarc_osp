@@ -2,6 +2,7 @@
 import json
 import os
 import sys
+import requests
 from prettytable import PrettyTable
 from colorama import Fore, Back, Style
 from configparser import ConfigParser
@@ -374,14 +375,38 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
     return result
 
 
+def send_pull_request_comment(columns, results):
+    job = os.environ.get("NAME")
+    pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
+    if all([job, pr_number]):
+        comment_job = "## " + job + "\n"
+        if len(results)>0:
+            head = "|".join(columns) + "\n"
+            table_format =  "|".join(["---"]*len(columns)) + "\n"
+            table_head =head +table_format
+            comments = ""
+            comment = ""
+            for result in results:
+                for k in result:
+                    comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
+                comment = comment.rstrip("|") + "\n"
+                comments += comment
+            comment_on_pull_request(comment_job + table_head + comments)
+    else:
+        print("WARNING:Only send pull request comment in travis ci!")
+
+    pass
+
+
 def show_results(results, expected=None):
-    columns = ['TOOLCHAIN', 'APP', "TOOLCHAIN_VER", 'CONF', 'PASS']
+    columns = ["TOOLCHAIN_VER", 'TOOLCHAIN', 'APP', 'CONF', 'PASS']
     failed_pt = PrettyTable(columns)
     failed_results = []
     success_results = []
     expected_results = None
     success_pt = PrettyTable(columns)
     expected_pt = PrettyTable(columns)
+
     for result in results:
         status = result.pop("status")
         if status != 0:
@@ -398,6 +423,7 @@ def show_results(results, expected=None):
 
     if expected is not None:
         expected_results = failed_results
+        send_pull_request_comment(columns, expected_results)
         for result in expected_results:
             if len(result) > 0:
                 expected_pt.add_row(result)
@@ -413,6 +439,8 @@ def show_results(results, expected=None):
                 success_pt.add_row(result)
         print Fore.GREEN + "Successfull results"
         print success_pt
+
+
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -427,6 +455,7 @@ def show_results(results, expected=None):
 
         print Fore.RED + "Failed result:"
         print failed_pt
+
         print Style.RESET_ALL
         sys.stdout.flush()
 
@@ -529,12 +558,29 @@ def build_makefiles_project(config):
             diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
 
     print "There are {} projects, and they are compiled for {} times".format(app_count, count)
-    results_list = build_result_combine_tail(apps_results)
+    results_list = copy.deepcopy(build_result_combine_tail(apps_results))
     show_results(results_list)
     expected_differents_list = build_result_combine_tail(diff_expected_differents)
     show_results(expected_differents_list, expected=True)
 
     return applications_failed, diff_expected_differents
+
+
+def comment_on_pull_request(comment):
+    pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
+    slug =  os.environ.get("TRAVIS_REPO_SLUG")
+    token = os.environ.get("GH_TOKEN")
+    request_config = [pr_number, slug, token, comment]
+    for i in range(len(request_config)):
+        if request_config[i] == "false":
+            request_config[i] = False
+    if all(request_config):
+        url = 'https://api.github.com/repos/{slug}/issues/{number}/comments'.format(
+            slug=slug, number=pr_number)
+        response = requests.post(url, data=json.dumps({'body': comment}),
+            headers={'Authorization': 'token ' + token})
+        print(">>>>Travis send pull request comment to {}, repsonse status code {}.".format(url, response.status_code))
+        return response.json()
 
 
 def get_options_parser():
@@ -590,4 +636,6 @@ if __name__ == '__main__':
     else:
         print "these applications failed with some configuration: "
         print expected_differents.keys()
+        comment = "applications failed with some configuration: \n" + "\n".join(expected_differents.keys())
+        comment_on_pull_request(comment)
         sys.exit(1)
