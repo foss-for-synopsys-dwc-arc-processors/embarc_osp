@@ -113,6 +113,8 @@
 #define BOARD_PMWIFI_0_ID		EMSDP_RSWIFI_0_ID
 #define BOARD_PMWIFI_ID_MAX		EMSDP_RSWIFI_0_ID
 
+#define BOARD_TEMP_SENSOR_IIC_ID	DFSS_IIC_2_ID
+
 #define OSP_GET_CUR_SYSHZ()				(gl_emsdp_sys_hz_cnt)
 #define OSP_GET_CUR_MS()				(gl_emsdp_ms_cnt)
 #define OSP_GET_CUR_US()				board_get_cur_us()

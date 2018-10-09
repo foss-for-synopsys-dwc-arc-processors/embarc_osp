@@ -47,7 +47,7 @@ static DEV_IIC			dfss_iic_0;
 
 static SS_IIC_MASTER_DEV_CONTEXT iic_master_context0 = {
 	.reg_base = AR_IO_I2C_MST0_CON,
-	.dev_id = 0,
+	.dev_id = DFSS_IIC_0_ID - DFSS_IIC_BASE_ID,
 	.int_err = IO_I2C_MST0_INT_ERR,
 	.int_rx_avail = IO_I2C_MST0_INT_RX_AVAIL,
 	.int_tx_req = IO_I2C_MST0_INT_TX_REQ,
@@ -133,7 +133,7 @@ static DEV_IIC			dfss_iic_1;
 
 static SS_IIC_MASTER_DEV_CONTEXT iic_master_context1 = {
 	.reg_base = AR_IO_I2C_MST1_CON,
-	.dev_id = 0,
+	.dev_id = DFSS_IIC_1_ID - DFSS_IIC_BASE_ID,
 	.int_err = IO_I2C_MST1_INT_ERR,
 	.int_rx_avail = IO_I2C_MST1_INT_RX_AVAIL,
 	.int_tx_req = IO_I2C_MST1_INT_TX_REQ,
@@ -220,7 +220,7 @@ static DEV_IIC			dfss_iic_2;
 
 static SS_IIC_MASTER_DEV_CONTEXT iic_master_context2 = {
 	.reg_base = AR_IO_I2C_MST2_CON,
-	.dev_id = 0,
+	.dev_id = DFSS_IIC_2_ID - DFSS_IIC_BASE_ID,
 	.int_err = IO_I2C_MST2_INT_ERR,
 	.int_rx_avail = IO_I2C_MST2_INT_RX_AVAIL,
 	.int_tx_req = IO_I2C_MST2_INT_TX_REQ,
