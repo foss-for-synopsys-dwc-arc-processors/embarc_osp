@@ -39,7 +39,7 @@ if [ "${TOOLCHAIN}" != "sphinx" ] ; then
         source arctool.env || die
         rm -rf arctool.env || die
     else
-        die "The toolchain path does not exist "
+        die "The toolchain path ${ARC_DEV_TOOL_ROOT} does not exist "
     fi
 fi
 git checkout -- . || die
