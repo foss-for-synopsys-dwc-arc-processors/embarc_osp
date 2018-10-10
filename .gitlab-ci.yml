@@ -4,7 +4,7 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
   OSP_ROOT: "."
   TOOLCHAIN: "gnu"
-  TOOLCHAIN_VER: "2017.09"
+  TOOLCHAIN_VER: "latest"
   EXPECTED: ".ci/expected.ini"
   PARALLEL: ""
 
@@ -23,7 +23,7 @@ stages:
   - build
   - deploy
 
-baremetal-emsk-gnu-201709:
+baremetal-emsk-gnu-latest:
   stage: build
   variables:
     BOARD: "emsk"
@@ -52,7 +52,7 @@ baremetal-emsk-gnu-201803:
     paths:
       - .cache/result
 
-freertos-emsk_11-gnu-201709:
+freertos-emsk_11-gnu-latest:
   stage: build
   variables:
     BOARD: "emsk"
@@ -83,7 +83,7 @@ freertos-emsk_11-gnu-201803:
     paths:
       - .cache/result
 
-freertos-emsk_22-gnu-201709:
+freertos-emsk_22-gnu-latest:
   stage: build
   variables:
     BOARD: "emsk"
@@ -114,7 +114,7 @@ freertos-emsk_22-gnu-201803:
     paths:
       - .cache/result
 
-freertos-emsk_23-gnu-201709:
+freertos-emsk_23-gnu-latest:
   stage: build
   variables:
     BOARD: "emsk"
@@ -147,7 +147,7 @@ freertos-emsk_23-gnu-201803:
     paths:
       - .cache/result
 
-arc_feature-gnu-201709:
+arc_feature-gnu-latest:
   stage: build
   variables:
     EXAMPLES: "example/baremetal/arc_feature"
@@ -174,7 +174,7 @@ arc_feature-gnu-201803:
     paths:
       - .cache/result
 
-baremetal-emsk-mw-201709:
+baremetal-emsk-mw-latest:
   stage: build
   variables:
     BOARD: "emsk"
@@ -189,11 +189,11 @@ baremetal-emsk-mw-201709:
     paths:
       - .cache/result
 
-baremetal-emsk-mw-201803:
+baremetal-emsk-mw-201806:
   stage: build
   variables:
     TOOLCHAIN: "mw"
-    TOOLCHAIN_VER: "2018.03"
+    TOOLCHAIN_VER: "2018.06"
     BOARD: "emsk"
     EXAMPLES: "example/baremetal"
   script:
@@ -205,7 +205,7 @@ baremetal-emsk-mw-201803:
     paths:
       - .cache/result
 
-freertos-emsk_11-mw-201709:
+freertos-emsk_11-mw-latest:
   stage: build
   variables:
     TOOLCHAIN: "mw"
@@ -221,13 +221,13 @@ freertos-emsk_11-mw-201709:
     paths:
       - .cache/result
 
-freertos-emsk_11-mw-201803:
+freertos-emsk_11-mw-201806:
   stage: build
   variables:
     TOOLCHAIN: "mw"
     BOARD: "emsk"
     BD_VER: "11"
-    TOOLCHAIN_VER: "2018.03"
+    TOOLCHAIN_VER: "2018.06"
     EXAMPLES: "example/freertos"
   script:
   - bash .ci/script.sh
@@ -238,7 +238,7 @@ freertos-emsk_11-mw-201803:
     paths:
       - .cache/result
 
-freertos-emsk_22-mw-201709:
+freertos-emsk_22-mw-latest:
   stage: build
   variables:
     TOOLCHAIN: "mw"
@@ -254,13 +254,13 @@ freertos-emsk_22-mw-201709:
     paths:
       - .cache/result
 
-freertos-emsk_22-mw-201803:
+freertos-emsk_22-mw-201806:
   stage: build
   variables:
     TOOLCHAIN: "mw"
     BD_VER: "22"
     BOARD: "emsk"
-    TOOLCHAIN_VER: "2018.03"
+    TOOLCHAIN_VER: "2018.06"
     EXAMPLES: "example/freertos"
   script:
   - bash .ci/script.sh
@@ -271,7 +271,7 @@ freertos-emsk_22-mw-201803:
     paths:
       - .cache/result
 
-freertos-emsk_23-mw-201709:
+freertos-emsk_23-mw-latest:
   stage: build
   variables:
     TOOLCHAIN: "mw"
@@ -288,14 +288,14 @@ freertos-emsk_23-mw-201709:
     paths:
       - .cache/result
 
-freertos-emsk_23-mw-201803:
+freertos-emsk_23-mw-201806:
   stage: build
   variables:
     TOOLCHAIN: "mw"
     BOARD: "emsk"
     BD_VER: "23"
     PARALLEL: 8
-    TOOLCHAIN_VER: "2018.03"
+    TOOLCHAIN_VER: "2018.06"
     EXAMPLES: "example/freertos"
   script:
   - bash .ci/script.sh
@@ -306,7 +306,7 @@ freertos-emsk_23-mw-201803:
     paths:
       - .cache/result
 
-arc_feature-mw-201709:
+arc_feature-mw-latest:
   stage: build
   variables:
     TOOLCHAIN: "mw"
@@ -320,11 +320,11 @@ arc_feature-mw-201709:
     paths:
       - .cache/result
 
-arc_feature-mw-201803:
+arc_feature-mw-201806:
   stage: build
   variables:
     TOOLCHAIN: "mw"
-    TOOLCHAIN_VER: "2018.03"
+    TOOLCHAIN_VER: "2018.06"
     EXAMPLES: "example/baremetal/arc_feature"
   script:
   - bash .ci/script.sh
