@@ -14,6 +14,9 @@ if [ "${TOOLCHAIN}" == "gnu" ] ; then
     ARC_DEV_TOOL_ROOT="${ARC_DEV_GNU_ROOT}/${TOOLCHAIN_VER}/elf32_le_linux"
 else
     ARC_DEV_TOOL_ROOT="${ARC_DEV_MW_ROOT}/mwdt_${TOOLCHAIN_VER}/linux/ARC"
+    if [ ! -d $ARC_DEV_TOOL_ROOT ] ; then
+        ARC_DEV_TOOL_ROOT="${ARC_DEV_MW_ROOT}/${TOOLCHAIN_VER}/linux/ARC"
+    fi
 fi
 [ "${TRAVIS}" == "true" ] && {
     if [ "${TOOLCHAIN}" == "gnu" ] ; then
