@@ -148,28 +148,7 @@ endif
 	TCFGEN  = tcfgen
 	TCFTOOL = tcftool
 
-##
-#   Openocd script root location(OPENOCD_SCRIPT_ROOT)
-#   Please take care with letter case of the path
-#   Please use absolute path and linux slash(/)
-##
-## Set windows Path for Openocd script root
-ifeq "$(HOST_OS)" "Msys"
-	OPENOCD_SCRIPT_ROOT = C:/arc_gnu/share/openocd/scripts
-else
-## Set Cygwin for windows Path for Openocd script root
-ifeq "$(HOST_OS)" "Cygwin"
-	OPENOCD_SCRIPT_ROOT = C:/arc_gnu/share/openocd/scripts
-else
-## Set Linux Path for Openocd script root
-ifeq "$(HOST_OS)" "GNU/Linux"
-	OPENOCD_SCRIPT_ROOT = ~/arc_gnu/share/openocd/scripts
-else
-## Set default Path for Openocd script root
-	OPENOCD_SCRIPT_ROOT = C:/arc_gnu/share/openocd/scripts
-endif
-endif
-endif
+OPENOCD_SCRIPT_ROOT = $(dir $(shell $(CC) --print-prog-name=ld))../../share/openocd/scripts
 
 ## Don't change this line
 override OPENOCD_SCRIPT_ROOT := $(subst \,/, $(strip $(OPENOCD_SCRIPT_ROOT)))
