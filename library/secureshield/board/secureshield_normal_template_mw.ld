@@ -57,7 +57,7 @@ SECTIONS {
 	SECURESHIELD_REGION_SECURE_CONTAINERS_ROM
 #endif
 
-	GROUP : {
+	GROUP (NOLOAD) : {
 		.ram.secureshieldruntime ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : {
 			/* secureshield runtime data */
 			. = ALIGN(4);

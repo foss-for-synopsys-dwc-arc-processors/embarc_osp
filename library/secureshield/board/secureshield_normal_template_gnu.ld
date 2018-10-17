@@ -70,7 +70,7 @@ SECTIONS
 #endif
 
 	. = ORIGIN(SECURE_RAM);
-	.ram.secureshield ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : {
+	.ram.secureshield ALIGN(CONTAINER_ADDRESS_ALIGNMENT) (NOLOAD) : {
 		/* secureshield runtime data */
 		. = ALIGN(4);
 		_f_ram_secureshieldruntime = .;
