@@ -92,6 +92,12 @@ See the following procedures to check peripherals and board settings. The periph
 
    hardware_requirement.rst
 
+
+.. toctree::
+   :maxdepth: 1
+
+   peripheral_preparation.rst
+
 Running a Sample Application
 ############################
 
