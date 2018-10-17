@@ -239,19 +239,16 @@
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>This example outputs to the console. It is supported by all platform. The commands to run this example are as follows:</div></blockquote>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">   $</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/iot/lwm2m/lwm2m_server
-<span class="gp">   $</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
-
-<span class="go">Once download the program to the board, you can run command ``main`` and ``lwm2m_server`` to start up a LwM2M server at default port 5683. You should also take note of server&#39;s IP address which will be used in next step. Once the server is up, run leshan client demo on your PC.</span>
-
-<span class="go">And here is command to run leshan client demo, you need to change the ip address in command according to your lwm2m_server:</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/iot/lwm2m/lwm2m_server
+<span class="gp">$</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">   java -jar leshan-client-demo.jar -u 192.168.137.237</span>
-
-<span class="go">Then, you could try out ``lwm2m_op`` command from server side, and also try to use &#39;w, a, s, d&#39; keys to change the data from leshan client side</span>
+<p>Once download the program to the board, you can run command <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">lwm2m_server</span></code> to start up a LwM2M server at default port 5683. You should also take note of server’s IP address which will be used in next step. Once the server is up, run leshan client demo on your PC.</p>
+<p>And here is command to run leshan client demo, you need to change the ip address in command according to your lwm2m_server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">java -jar leshan-client-demo.jar -u 192.168.137.237</span>
 </pre></div>
 </div>
+<p>Then, you could try out <code class="docutils literal notranslate"><span class="pre">lwm2m_op</span></code> command from server side, and also try to use ‘w, a, s, d’ keys to change the data from leshan client side</p>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
 <blockquote>

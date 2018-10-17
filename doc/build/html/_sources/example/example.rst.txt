@@ -35,6 +35,7 @@ JTAG, or the .bin  files through SD card by secondary bootloader.
    example/baremetal/graphic_u8glib                         :ref:`example_graphic_u8glib`
    example/baremetal/openthread/cli                         :ref:`example_openthread_cli`
    example/baremetal/openthread/ncp                         :ref:`example_openthread_ncp`
+   example/freertos/esp8266_wifi                            :ref:`example_esp8266_wifi`
    example/freertos/iot/coap/coap_server                    :ref:`example_iot_coap_coap_server`
    example/freertos/iot/lwm2m/lwm2m_client                  :ref:`example_iot_lwm2m_lwm2m_client`
    example/freertos/iot/lwm2m/lwm2m_server                  :ref:`example_iot_lwm2m_lwm2m_server`
