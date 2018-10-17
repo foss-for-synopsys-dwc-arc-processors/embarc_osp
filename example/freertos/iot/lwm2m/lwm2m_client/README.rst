@@ -57,7 +57,7 @@ Buidling and Running
     $ cd <embarc_root>/example/freertos/iot/lwm2m/lwm2m_client
     $ make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
- And here is command to run leshan server demo:
+And here is command to run leshan server demo:
 
 .. code-block:: console
 

@@ -42,15 +42,15 @@ Buidling and Running
     $ cd <embarc_root>/example/freertos/iot/lwm2m/lwm2m_server
     $ make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
- Once download the program to the board, you can run command ``main`` and ``lwm2m_server`` to start up a LwM2M server at default port 5683. You should also take note of server's IP address which will be used in next step. Once the server is up, run leshan client demo on your PC.
+Once download the program to the board, you can run command ``main`` and ``lwm2m_server`` to start up a LwM2M server at default port 5683. You should also take note of server's IP address which will be used in next step. Once the server is up, run leshan client demo on your PC.
 
- And here is command to run leshan client demo, you need to change the ip address in command according to your lwm2m_server:
+And here is command to run leshan client demo, you need to change the ip address in command according to your lwm2m_server:
 
 .. code-block:: console
 
     java -jar leshan-client-demo.jar -u 192.168.137.237
 
- Then, you could try out ``lwm2m_op`` command from server side, and also try to use 'w, a, s, d' keys to change the data from leshan client side
+Then, you could try out ``lwm2m_op`` command from server side, and also try to use 'w, a, s, d' keys to change the data from leshan client side
 
 Sample Output
 =============
