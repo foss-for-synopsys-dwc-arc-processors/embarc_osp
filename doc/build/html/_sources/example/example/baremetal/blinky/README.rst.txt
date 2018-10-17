@@ -42,7 +42,7 @@ which have been installed in MetaWare IDE.
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/blinky
-    $ gmake BOARD=nism BD_VER=1506 CUR_CORE=arcemfull TOOLCHAIN=mw run
+    $ gmake BOARD=nsim BD_VER=1506 CUR_CORE=arcemfull TOOLCHAIN=mw run
 
 .. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration
 

@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Peripheral Preparation &mdash; embARC 2018.09 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC Processors" href="../arc/arc.html" />
+    <link rel="prev" title="Hardware Requirement" href="hardware_requirement.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.09
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-source-code">Checking Out the embARC OSP source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setting-up-the-development-environment">Setting Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-a-sample-application">Building a Sample Application</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#hardware-preparation">Hardware Preparation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_em_starter_kit.html">Getting Started with EM Starter Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_hs_development_kit.html">Getting Started with the ARC HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hardware_requirement.html">Hardware Requirement</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Peripheral Preparation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mux-controller-setting">MUX Controller Setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pmod-modules">PMOD Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#running-a-sample-application">Running a Sample Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middleware Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bsp/bsp.html">embARC BSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
+        
+      <li>Peripheral Preparation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/getting_started/peripheral_preparation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="peripheral-preparation">
+<span id="id1"></span><h1>Peripheral Preparation<a class="headerlink" href="#peripheral-preparation" title="Permalink to this headline">¶</a></h1>
+<p>This is a quick manual helping you to connect your peripheral modules with your embARC boards.</p>
+<div class="section" id="mux-controller-setting">
+<h2>MUX Controller Setting<a class="headerlink" href="#mux-controller-setting" title="Permalink to this headline">¶</a></h2>
+<p>On most of embARC boards, pins are multiplexed for various usages: uart, i2c, spi, etc. One pin can not be accessed by different usage simultaneously, that’s where MUX controller comes in.
+We will take PMOD interface as example to explain the setting method. Other interfaces (Andruino, MikroBUS, etc.) can take PMOD as reference, and use the same method for setting.</p>
+<p>1. You need to find mux controller code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/board/[board_type]/drivers/mux</span></code>.
+One exception is board <a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit">The ARC IoT Development Kit (IoTDK)</a> which has fixed pin assignment and does <strong>NOT</strong> have mux controller.</p>
+<p>2. If you are using EMSK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will see it calls <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> with MUX options as parameters.
+MUX options are defined in mux.h and you could change them as you see fit.</p>
+<p>For example, You want to connect your EMSK with two i2c sensor modules. By default setting you only have PM2 as i2c interface.
+So now you have to check mux.h or EMSK manual to see if it support one more i2c interface.
+Notice that there is a <code class="docutils literal notranslate"><span class="pre">PM3_I2C_GPIO_D</span></code> macro in mux.h meaning that PM3 support i2c interface. Now all you need to do is to replace the default PM3 setting in <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> to <code class="docutils literal notranslate"><span class="pre">PM3_I2C_GPIO_D</span></code>.
+Now your code should be like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">set_pmod_mux</span><span class="p">(</span><span class="n">PM1_UR_UART_0</span> <span class="o">|</span> <span class="n">PM1_LR_SPI_S</span>       \
+                        <span class="o">|</span> <span class="n">PM2_I2C_HRI</span>           \
+                        <span class="o">|</span> <span class="n">PM3_I2C_GPIO_D</span>        \
+                        <span class="o">|</span> <span class="n">PM4_I2C_GPIO_D</span>        \
+                        <span class="o">|</span> <span class="n">PM5_UR_SPI_M1</span> <span class="o">|</span> <span class="n">PM5_LR_GPIO_A</span> \
+                        <span class="o">|</span> <span class="n">PM6_UR_SPI_M0</span> <span class="o">|</span> <span class="n">PM6_LR_GPIO_A</span> <span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Notice that <strong>UR</strong> means Upper Layer of Pmod interface and <strong>LR</strong> means Lower Layer of Pmod</p>
+</div>
+<p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will see it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with paramater array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
+By default all pins are set to GPIO, other MUX options are defined in <code class="docutils literal notranslate"><span class="pre">PINMUX_TYPE</span></code> in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To learn what interface your board has, please go to <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a></p>
+</div>
+</div>
+<div class="section" id="pmod-modules">
+<h2>PMOD Modules<a class="headerlink" href="#pmod-modules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pmod-wifi-modules">
+<h3>PMOD WiFi Modules<a class="headerlink" href="#pmod-wifi-modules" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodwifi/start">Pmod WiFi</a> : Primary IC type is MRF24WG, use <strong>SPI</strong> and a few <strong>GPIO</strong> pins for data changing and controlling.
+Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/wifi/mrf24g</span></code>.</p>
+<p>RW009 WiFi : This type of module also uses <strong>SPI</strong> and <strong>GPIO</strong> pins for data changing and controlling.
+Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/wifi/rw009</span></code>.</p>
+</div>
+<div class="section" id="pmod-temperature-module">
+<h3>PMOD Temperature Module<a class="headerlink" href="#pmod-temperature-module" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodtmp2/start">Pmod TMP2</a> : sensor chip type is ADT7420, use <strong>I2C</strong> for data collection.
+Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/sensor/temperature/adt7420</span></code>.</p>
+<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodtmp3/start">Pmod TMP3</a> : sensor chip type is TCN75A, use <strong>I2C</strong> for data collection.
+Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/sensor/temperature/tcn75</span></code>.</p>
+</div>
+<div class="section" id="other-pmod-or-compatible-modules">
+<h3>Other PMOD or Compatible Modules<a class="headerlink" href="#other-pmod-or-compatible-modules" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodad2/start">Pmod AD2</a> : ADC type is AD7991, use <strong>I2C</strong> for data collection.
+Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/adc/ad7991</span></code>.</p>
+<p><a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> : Primary IC type is ESP8266, use <strong>UART</strong> interface for data changing and controlling.
+Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/wifi/slip_esp</span></code>.</p>
+<blockquote>
+<div>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD campatible, which means you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hardware_requirement.html" class="btn btn-neutral" title="Hardware Requirement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

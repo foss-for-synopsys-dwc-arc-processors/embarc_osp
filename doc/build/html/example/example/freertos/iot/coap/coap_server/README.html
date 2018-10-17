@@ -207,7 +207,7 @@
 </li>
 <li><dl class="first docutils">
 <dt>Design Concept</dt>
-<dd>This example is designed to show how CoAP server running on FreeRTOS. We prepared three different resources which are helloworld string, temperature readings and LEDs. To demonstrate the function of CoAP server, we need to use CoAPthon as a CoAP client.</dd>
+<dd>This example is designed to show how CoAP server running on FreeRTOS. We prepared three different resources which are helloworld string, temperature readings, and LEDs. To demonstrate the function of CoAP server, we need to use CoAPthon as a CoAP client.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
@@ -227,11 +227,12 @@
 <div class="section" id="buidling-and-running">
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>This example outputs to the console. It is supported by all platform. The commands to run this example are as follows:</div></blockquote>
+<div>This example outputs to the console. It is supported by all platform. You might need to change mux configurations or connect wires in order to use peripheral modules, see <a class="reference internal" href="../../../../../../getting_started/peripheral_preparation.html#peripheral-preparation"><span class="std std-ref">Peripheral Preparation</span></a>.
+The commands to run this example are as follows:</div></blockquote>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">       $</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/iot/coap/coap_server
 <span class="gp">       $</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
 
-<span class="go">When the WiFi is connected and CoAP server is running, you may run python code shown below. It uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP should be replaced to the ipaddr shown on console.</span>
+<span class="go">When the WiFi is connected and CoAP server is running, you may run python code shown below. You may save this code as a .py file and run it from a new cmd console. The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">coapthon.client.helperclient</span> <span class="kn">import</span> <span class="n">HelperClient</span>
