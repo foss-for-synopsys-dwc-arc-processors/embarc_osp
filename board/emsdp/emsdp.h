@@ -43,6 +43,7 @@
 #include "drivers/ip/subsystem/uart/dfss_uart_obj.h"
 #include "drivers/ip/subsystem/iic/dfss_iic_obj.h"
 #include "drivers/ip/subsystem/i2s/dfss_i2s_obj.h"
+#include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/pmwifi/pmwifi.h"
 
@@ -79,6 +80,10 @@
 
 #define BOARD_CPU_CLOCK					CLK_CPU
 #define BOARD_DEV_CLOCK					CLK_BUS_APB
+
+#define BOARD_ONBOARD_NTSHELL_ID	(EMSDP_NTSHELL_0_ID)
+#define NTSHELL_CONSOLE_ID		(EMSDP_NTSHELL_0_ID)
+#define NTSHELL_NETWORK_ID		(EMSDP_NTSHELL_1_ID)
 
 #define WF_IPADDR_1			(192)
 #define WF_IPADDR_2			(168)
@@ -123,8 +128,12 @@
 
 #define BOARD_LED_MASK					(0xff)
 #define BOARD_LED_CNT					(8)
+#define BOARD_BTN_MASK					(0x0)
+#define BOARD_BTN_CNT					(0)
 #define BOARD_SWT_MASK					(0xf)
 #define BOARD_SWT_CNT					(4)
+
+#define button_read(mask)				(0x0)
 
 #define OSP_DELAY_OS_COMPAT_ENABLE		(1)
 #define OSP_DELAY_OS_COMPAT_DISABLE		(0)
