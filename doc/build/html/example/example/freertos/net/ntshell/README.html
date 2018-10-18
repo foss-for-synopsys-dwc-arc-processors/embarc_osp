@@ -190,30 +190,51 @@
 <div class="section" id="detailed-description">
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><ul class="simple">
+<div><ul>
 <li><dl class="first docutils">
 <dt>Extra Required Tools</dt>
-<dd>NO</dd>
+<dd><p class="first last">NO</p>
+</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Extra Required Peripherals</dt>
-<dd>Digilent PMOD WIFI (MRF24WG0MA)</dd>
+<dd><p class="first last">Digilent PMOD WIFI (MRF24WG0MA)</p>
+</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Design Concept</dt>
-<dd>The Pmod modules should be connected to EMSK. This example is designed to show how to use NT-Shell over network in FreeRTOS</dd>
+<dd><p class="first last">The Pmod modules should be connected to your embARC board. This example is designed to show how to use NT-Shell over network in FreeRTOS.</p>
+</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Usage Manual</dt>
 <dd><dl class="first last docutils">
-<dt>This is an example running NT-Shell command interface ver network, and use telnet to connect to it</dt>
+<dt>This is an example running NT-Shell command interface over network, and use telnet to connect to it:</dt>
 <dd><ul class="first last">
-<li>when program is running and connected to the wifi hotspot, then you can connect your laptop to the same wifi hotspot that emsk connected to</li>
-<li>use telnet command to connect to the ip address of emsk. If there are outputs, then you can run and try out ntshell commands</li>
-<li>some commands require extra peripheral modules, for example command temp require Digilent PMOD TMP2 module in order to mesure temperature</li>
+<li><p class="first">First setup your WiFi AP which your board would connect to. The default SSID is <code class="docutils literal notranslate"><span class="pre">embARC</span></code>, default password is <code class="docutils literal notranslate"><span class="pre">qazwsxedc</span></code>.</p>
+</li>
+<li><p class="first">Run the example program on your board, wait until it is connected to the wifi. When you see the message showing below, type <code class="docutils literal notranslate"><span class="pre">main</span></code> to console to run the main program which is a Telnet server running at port 23 on board’s IP address.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Please run NT-Shell command(main) to start your application.</span>
+<span class="go">main command may required some arguments, please refer to example&#39;s document.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Make sure your PC is in the same IP section of your board. For example, you can connect your laptop to the same wifi which your board is connected to.</p>
+</li>
+<li><p class="first">Open another cmd console / terminal, use telnet command to connect to the ip address of your board. If there are outputs, then you can run and try out ntshell commands. An telnet example is given below, in this example the IP address of the board is <code class="docutils literal notranslate"><span class="pre">192.168.137.108</span></code>.</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> telnet <span class="m">192</span>.168.137.108
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Some commands require extra peripheral modules, for example command temp require Digilent PMOD TMP2 module in order to measure temperature</p>
+</li>
 </ul>
 </dd>
 </dl>
@@ -222,7 +243,8 @@
 </li>
 <li><dl class="first docutils">
 <dt>Extra Comments</dt>
-<dd>NO</dd>
+<dd><p class="first last">NO</p>
+</dd>
 </dl>
 </li>
 </ul>
@@ -238,6 +260,8 @@
 </div>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Here is sample output from ntshell example, highlight lines are user input.</div></blockquote>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
 <span class="go"> ____                                _ ____</span>
 <span class="go">|  _ \ _____      _____ _ __ ___  __| | __ ) _   _</span>
@@ -310,6 +334,11 @@
 <span class="go">Please run NT-Shell command(main) to start your application.</span>
 
 <span class="go">main command may required some arguments, please refer to example&#39;s document.</span>
+<span class="hll"><span class="go">main</span>
+</span><span class="go">NT-Shell for FreeRTOS + LwIP + FatFs</span>
+<span class="go">Now please telnet to the IPAddr @ Port 23, to run ntshell ver telnet</span>
+<span class="go">Command line like this: telnet ipaddr port</span>
+<span class="go">COM1&gt;</span>
 </pre></div>
 </div>
 </div>

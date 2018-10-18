@@ -18,13 +18,26 @@ Detailed Description
     Digilent PMOD WIFI (MRF24WG0MA)
 
  * Design Concept
-    The Pmod modules should be connected to EMSK. This example is designed to show how to use NT-Shell over network in FreeRTOS
+    The Pmod modules should be connected to your embARC board. This example is designed to show how to use NT-Shell over network in FreeRTOS.
 
  * Usage Manual
-    This is an example running NT-Shell command interface ver network, and use telnet to connect to it
-     - when program is running and connected to the wifi hotspot, then you can connect your laptop to the same wifi hotspot that emsk connected to
-     - use telnet command to connect to the ip address of emsk. If there are outputs, then you can run and try out ntshell commands
-     - some commands require extra peripheral modules, for example command temp require Digilent PMOD TMP2 module in order to mesure temperature
+    This is an example running NT-Shell command interface over network, and use telnet to connect to it:
+     - First setup your WiFi AP which your board would connect to. The default SSID is ``embARC``, default password is ``qazwsxedc``.
+     - Run the example program on your board, wait until it is connected to the wifi. When you see the message showing below, type ``main`` to console to run the main program which is a Telnet server running at port 23 on board's IP address.
+
+     	.. code-block:: console
+
+			Please run NT-Shell command(main) to start your application.
+			main command may required some arguments, please refer to example's document.
+
+     - Make sure your PC is in the same IP section of your board. For example, you can connect your laptop to the same wifi which your board is connected to.
+     - Open another cmd console / terminal, use telnet command to connect to the ip address of your board. If there are outputs, then you can run and try out ntshell commands. An telnet example is given below, in this example the IP address of the board is ``192.168.137.108``.
+
+     	.. code-block:: console
+
+			$ telnet 192.168.137.108
+
+     - Some commands require extra peripheral modules, for example command temp require Digilent PMOD TMP2 module in order to measure temperature
 
  * Extra Comments
     NO
@@ -43,7 +56,10 @@ This example outputs to the console. It is supported by all platform. The comman
 Sample Output
 =============
 
+ Here is sample output from ntshell example, highlight lines are user input.
+
 .. code-block:: console
+	:emphasize-lines: 73
 
 	-----------------------------------------------------------
 	 ____                                _ ____
@@ -117,3 +133,8 @@ Sample Output
 	Please run NT-Shell command(main) to start your application.
 
 	main command may required some arguments, please refer to example's document.
+	main
+	NT-Shell for FreeRTOS + LwIP + FatFs
+	Now please telnet to the IPAddr @ Port 23, to run ntshell ver telnet
+	Command line like this: telnet ipaddr port
+	COM1>

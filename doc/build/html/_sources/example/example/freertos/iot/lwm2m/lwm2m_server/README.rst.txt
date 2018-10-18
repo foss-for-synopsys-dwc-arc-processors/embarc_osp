@@ -55,7 +55,7 @@ Then, you could try out ``lwm2m_op`` command from server side, and also try to u
 Sample Output
 =============
 
- Here is sample output from LwM2M server, highlight lines are user imput.
+ Here is sample output from LwM2M server, highlight lines are user input.
 
 .. code-block:: console
 	:emphasize-lines: 72,76
