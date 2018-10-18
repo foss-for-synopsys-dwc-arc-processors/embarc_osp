@@ -32,7 +32,7 @@ Now your code should be like this:
 
 .. note:: Notice that **UR** means Upper Layer of Pmod interface and **LR** means Lower Layer of Pmod
 
-3. If you are using HSDK, go to mux.c and find ``io_mux_init()`` function, you will see it calls ``creg_hsdc_set_gpio_mux()`` with paramater array ``gpio_mux_config`` as MUX options.
+3. If you are using HSDK, go to mux.c and find ``io_mux_init()`` function, you will find it calls ``creg_hsdc_set_gpio_mux()`` with paramater array ``gpio_mux_config`` as MUX options.
 By default all pins are set to GPIO, other MUX options are defined in ``PINMUX_TYPE`` in ``embarc_osp/device/inc/dev_pinmux.h``
 
 .. note:: To learn what interface your board has, please go to :ref:`board_bsp`
@@ -64,4 +64,4 @@ Driver code at ``embarc_osp/device/peripheral/adc/ad7991``.
 
 `ESP01\/ESP01S <http://wiki.ai-thinker.com/esp8266/docs>`_ : Primary IC type is ESP8266, use **UART** interface for data changing and controlling.
 Driver code at ``embarc_osp/device/peripheral/wifi/slip_esp``.
-	The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD campatible, which means you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of `ESP01\/ESP01S <http://wiki.ai-thinker.com/esp8266/docs>`_ and UART (type 4A) part of `Digilent Pmod Spec <https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf>`_ for pin layout.
+	The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD campatible, meaning that you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of `ESP01\/ESP01S <http://wiki.ai-thinker.com/esp8266/docs>`_ and UART (type 4A) part of `Digilent Pmod Spec <https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf>`_ for pin layout.

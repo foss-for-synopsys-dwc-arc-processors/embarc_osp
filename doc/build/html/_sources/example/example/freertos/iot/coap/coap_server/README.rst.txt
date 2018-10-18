@@ -30,7 +30,7 @@ Detailed Description
 Buidling and Running
 ********************
 
- This example outputs to the console. It is supported by all platform. You might need to change mux configurations or connect wires in order to use peripheral modules, see :ref:`peripheral_preparation`.
+ This example outputs to the console. It is supported by all platform. You might need to change MUX configurations or connect wires in order to use peripheral modules, see :ref:`peripheral_preparation`.
  The commands to run this example are as follows:
 
 .. code-block:: console

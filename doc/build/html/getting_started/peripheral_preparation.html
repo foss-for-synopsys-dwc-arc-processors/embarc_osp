@@ -93,6 +93,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#hardware-preparation">Hardware Preparation</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="getting_started_with_em_starter_kit.html">Getting Started with EM Starter Kit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="getting_started_with_hs_development_kit.html">Getting Started with the ARC HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started_with_iot_development_kit.html">Getting Started with IoT Development Kit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hardware_requirement.html">Hardware Requirement</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Peripheral Preparation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#mux-controller-setting">MUX Controller Setting</a></li>
@@ -211,7 +212,7 @@ Now your code should be like this:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Notice that <strong>UR</strong> means Upper Layer of Pmod interface and <strong>LR</strong> means Lower Layer of Pmod</p>
 </div>
-<p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will see it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with paramater array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
+<p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with paramater array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
 By default all pins are set to GPIO, other MUX options are defined in <code class="docutils literal notranslate"><span class="pre">PINMUX_TYPE</span></code> in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -241,7 +242,7 @@ Driver code at <code class="docutils literal notranslate"><span class="pre">emba
 <p><a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> : Primary IC type is ESP8266, use <strong>UART</strong> interface for data changing and controlling.
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/wifi/slip_esp</span></code>.</p>
 <blockquote>
-<div>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD campatible, which means you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</div></blockquote>
+<div>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD campatible, meaning that you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</div></blockquote>
 </div>
 </div>
 </div>
