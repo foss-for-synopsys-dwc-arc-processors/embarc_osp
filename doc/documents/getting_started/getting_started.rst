@@ -84,6 +84,7 @@ Use the following procedures to prepare your ARC board to run/debug the embARC a
 
    getting_started_with_em_starter_kit.rst
    getting_started_with_hs_development_kit.rst
+   getting_started_with_iot_development_kit.rst
 
 See the following procedures to check peripherals and board settings. The peripherals are not required for all the embARC OSP examples.
 
