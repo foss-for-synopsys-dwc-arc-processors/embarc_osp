@@ -42,22 +42,24 @@
 */
 #define AT_ADD_POSTFIX
 
-#define AT_PREFIX 			"AT"
-#define AT_POSTFIX			"\r\n"
+#define AT_PREFIX	"AT"
+#define AT_POSTFIX	"\r\n"
 
-#define AT_TIMENOW()		OSP_GET_CUR_MS()
+#define AT_TIMENOW()	OSP_GET_CUR_MS()
 
 #define AT_MAX_LEN 128
 #define AT_MAX_PARAMETER 8
 
 
-int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate){
+int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate)
+{
 	obj->psio = ez_sio_open(obj->uart_id, baudrate, AT_TX_BUFSIZE, AT_RX_BUFSIZE);
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: obj->psio 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, obj->psio, *obj->psio);
 	return (obj->psio != NULL) ? AT_OK : AT_ERROR;
 }
 
-void at_parser_deinit(AT_PARSER_DEF_PTR obj){
+void at_parser_deinit(AT_PARSER_DEF_PTR obj)
+{
 	ez_sio_close(obj->psio);
 	return;
 }
@@ -75,42 +77,54 @@ int32_t at_write(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt)
 /*
 * please use NULL as last parameter
 */
-int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...){
+int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...)
+{
 	va_list vl;
 	char at_out[AT_MAX_LEN] = AT_PREFIX;
-	char * str = command;
-	if(str == NULL){
+	char *str = command;
+
+	if (str == NULL) {
 		dbg_printf(DBG_MORE_INFO, "[%s]%d: command is NULL, send AT test command\r\n", __FUNCTION__, __LINE__);
 	} else {
 		strcat(at_out,"+");
 		strcat(at_out, command);
-		switch(mode){
-			case AT_LIST:
-				strcat(at_out, "=?");
-				break;
-			case AT_READ:
-				strcat(at_out, "?");
-				break;
-			case AT_WRITE:
-				strcat(at_out, "=");
-				va_start(vl, command);
-				for(int i = 0; i < AT_MAX_PARAMETER; i++){
-					str = va_arg(vl, AT_STRING);
-					if(str == NULL){
-						break;
-					}
-					if(i != 0){
-						strcat(at_out, ",");
-					}
-					strcat(at_out, str);
+
+		switch (mode) {
+		case AT_LIST:
+			strcat(at_out, "=?");
+			break;
+
+		case AT_READ:
+			strcat(at_out, "?");
+			break;
+
+		case AT_WRITE:
+			strcat(at_out, "=");
+			va_start(vl, command);
+
+			for (int i = 0; i < AT_MAX_PARAMETER; i++) {
+				str = va_arg(vl, AT_STRING);
+
+				if (str == NULL) {
+					break;
 				}
-				va_end(vl);
-				break;
-			case AT_EXECUTE:
-			default:
-				break;
+
+				if (i != 0) {
+					strcat(at_out, ",");
+				}
+
+				strcat(at_out, str);
+			}
+
+			va_end(vl);
+			break;
+
+		case AT_EXECUTE:
+		default:
+			break;
 		}
 	}
+
 #ifdef AT_ADD_POSTFIX
 	strcat(at_out, AT_POSTFIX);
 #endif /*AT_ADD_POSTFIX*/
@@ -125,23 +139,29 @@ int32_t at_get_reply(AT_PARSER_DEF_PTR obj, char *buf, uint32_t timeout)
 	uint32_t read_cnt;
 	uint32_t cur_time;
 	cur_time = AT_TIMENOW();
+
 	do {
 		read_cnt = at_read(obj, &buf[cur_ofs], 1);
 		cur_ofs += read_cnt;
 		buf[cur_ofs] = '\0';
-		if ((strstr(buf, AT_OK_STR)!= NULL) || (strstr(buf, AT_ERROR_STR)!= NULL)){
+
+		if ((strstr(buf, AT_OK_STR)!= NULL) || (strstr(buf, AT_ERROR_STR)!= NULL)) {
 			break;
 		}
-	} while((AT_TIMENOW()-cur_time) < timeout);
+	} while ((AT_TIMENOW()-cur_time) < timeout);
+
 	buf[cur_ofs] = '\0';
 	dbg_printf(DBG_LESS_INFO, "[%s]%d: \"%s\" (%d)\r\n", __FUNCTION__, __LINE__, buf, strlen(buf));
-	if (strstr(buf, AT_OK_STR)!= NULL){
+
+	if (strstr(buf, AT_OK_STR)!= NULL) {
 		return AT_OK;
 	}
+
 	return AT_ERROR;
 }
 
-int32_t at_test(AT_PARSER_DEF_PTR obj){
+int32_t at_test(AT_PARSER_DEF_PTR obj)
+{
 	char rcv_buf[64];
 	at_send_cmd(obj, AT_LIST, NULL);
 	return at_get_reply(obj, rcv_buf, AT_NORMAL_TIMEOUT);

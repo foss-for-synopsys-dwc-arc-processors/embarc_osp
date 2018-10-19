@@ -1,5 +1,5 @@
 # Application name
-APPL ?= AT_parser
+APPL ?= esp8266_http_server
 
 # Optimization Level
 # Please Refer to toolchain_xxx.mk for this option
@@ -21,13 +21,6 @@ JTAG ?= usb
 # Set toolchain
 ##
 TOOLCHAIN ?= gnu
-
-
-##
-# HEAP & STACK SETTINGS
-##
-#HEAPSZ ?= 81920
-#STACKSZ ?= 81920
 
 #
 # root dir of embARC

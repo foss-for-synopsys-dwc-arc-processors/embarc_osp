@@ -34,28 +34,28 @@
 #include "ez_sio.h"
 #include "embARC_error.h"
 
-#define AT_OK 			0
-#define AT_ERROR 		-1
-#define AT_OK_STR		"OK"
+#define AT_OK		0
+#define AT_ERROR	-1
+#define AT_OK_STR	"OK"
 #define AT_ERROR_STR	"ERROR"
 
 #define AT_RX_BUFSIZE	512
 #define AT_TX_BUFSIZE	128
 
-#define AT_NORMAL_TIMEOUT 	100
-#define AT_LONG_TIMEOUT 	5000
-#define AT_EXTRA_TIMEOUT 	20000
+#define AT_NORMAL_TIMEOUT	100
+#define AT_LONG_TIMEOUT		5000
+#define AT_EXTRA_TIMEOUT	20000
 
 typedef enum {
 	AT_LIST,
 	AT_READ,
 	AT_WRITE,
 	AT_EXECUTE
-}AT_MODE;
+} AT_MODE;
 
-typedef char * AT_STRING;
+typedef char *AT_STRING;
 
-/** HM1X object type */
+/** AT_PARSER type */
 typedef struct {
 	uint32_t uart_id;
 	EZ_SIO *psio;
@@ -63,13 +63,13 @@ typedef struct {
 
 #define AT_PARSER_DEFINE(NAME, UART_ID) \
 	AT_PARSER_DEF __ ## NAME = { \
-			.uart_id = UART_ID, \
-			.psio = NULL, \
-	}; \
+	                             .uart_id = UART_ID, \
+	                             .psio = NULL, \
+	                           }; \
 	AT_PARSER_DEF_PTR NAME = &__ ## NAME
 
 int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate);
-void	at_parser_deinit(AT_PARSER_DEF_PTR obj);
+void at_parser_deinit(AT_PARSER_DEF_PTR obj);
 int32_t at_read(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt);
 int32_t at_write(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt);
 int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...);
