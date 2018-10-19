@@ -4535,6 +4535,7 @@
     <member refid="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a4158bf1e145c696412b0195b511fdb6f" kind="enumvalue"><name>ARDUINO_SPI</name></member>
     <member refid="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34adc15a63698325d7ff3f4d890ba7465ca" kind="enumvalue"><name>ARDUINO_I2C</name></member>
     <member refid="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a80fcbd987ca5a7f46f025d3a1e58fee9" kind="enumvalue"><name>ARDUINO_PWM</name></member>
+    <member refid="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a8714cafe68f305ea047c7921aeb4fded" kind="enumvalue"><name>ARDUINO_ADC</name></member>
     <member refid="dev__pinmux_8h_1a9b18fb1f28968529182282e40cba3d34a45a1158abe901b3279d37a410af27262" kind="enumvalue"><name>ARDUINO_NONE</name></member>
     <member refid="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088" kind="enum"><name>pinmux_type</name></member>
     <member refid="dev__pinmux_8h_1ab27216a3f0a77e8b2b5c2de349521088a04cdb960e45b3aa128493fd28e15d0d2" kind="enumvalue"><name>PINMUX_TYPE_DEFAULT</name></member>
@@ -8391,6 +8392,19 @@
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___m_u_x_1ga8fc8550242f1a2dee25a8b1612f6bce1" kind="function"><name>io_pmod_config</name></member>
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___m_u_x_1gadbb2990c863c9961339946c92f2fc2d6" kind="function"><name>io_mux_init</name></member>
   </compound>
+  <compound refid="iotdk_2drivers_2mux_2mux_8c" kind="file"><name>iotdk/drivers/mux/mux.c</name>
+    <member refid="iotdk_2drivers_2mux_2mux_8c_1ab6b72e149a03b7cf553916c5301dd4a1" kind="define"><name>MIKRO_MUX_CONFIG</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaea9c8745e17c7340aac1b83ca78f0bd4" kind="function"><name>io_mikro_config</name></member>
+    <member refid="iotdk_2drivers_2mux_2mux_8c_1ac0477e74135e8f4e76128b000f025f00" kind="function"><name>io_arduino_config_pwm</name></member>
+    <member refid="iotdk_2drivers_2mux_2mux_8c_1ac98a8d76ffd2c6c70e8a55fa670090ed" kind="function"><name>io_arduino_config_gpio</name></member>
+    <member refid="iotdk_2drivers_2mux_2mux_8c_1a50cbf2e8a477bc44962b47f4e07075ea" kind="function"><name>io_arduino_config_adc</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8981ef574064d7afe0b09b193834773c" kind="function"><name>io_arduino_config</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaed6d84e2f298582850bade46596b82fc" kind="function"><name>io_arduino_config_spi</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaf4d73821b689e641fe3bea3c1ee3666d" kind="function"><name>io_arduino_config_uart</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga89a57c39917f80eb6379d0d353780729" kind="function"><name>io_arduino_config_i2c</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8fc8550242f1a2dee25a8b1612f6bce1" kind="function"><name>io_pmod_config</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gadbb2990c863c9961339946c92f2fc2d6" kind="function"><name>io_mux_init</name></member>
+  </compound>
   <compound refid="mux_8h" kind="file"><name>mux.h</name>
     <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4c9c0eb890da3157523cacb1092eddbc" kind="define"><name>PMOD_MUX_CTRL_DEFAULT</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga5eb7f84cdeb8a0f092b11e5c238b88b0" kind="define"><name>SPI_MAP_CTRL_DEFAULT</name></member>
@@ -9921,9 +9935,7 @@
     <member refid="sysconf_8c_1aada9e800994307128bd314e1da9f9300" kind="function"><name>dvfs_vdd_config</name></member>
     <member refid="sysconf_8c_1ac2c9e3a1c8528e218193b0cf643fe873" kind="function"><name>dvfs_vwtime_config</name></member>
     <member refid="sysconf_8c_1a3a7a5b9b559e7cda325eb956f3239710" kind="function"><name>pmc_pwwtime_config</name></member>
-    <member refid="sysconf_8c_1abfe082d624d0e83da4c710fc0f6d4235" kind="function"><name>pmode_mux_config</name></member>
     <member refid="sysconf_8c_1a6f66885b7923efc9af11179e1dc53cf9" kind="function"><name>uart3_clk_divisor</name></member>
-    <member refid="sysconf_8c_1a3d6a3872ab9a113735a13f4e7b95505a" kind="function"><name>arduino_pin_mux</name></member>
     <member refid="sysconf_8c_1a2a8bbd2c387432c31fb346c3c3ac0e67" kind="function"><name>reset_powerdown_vector</name></member>
     <member refid="sysconf_8c_1ae524a32d7c963c897deb3815f2f640a3" kind="function"><name>pwm_timer_pause</name></member>
     <member refid="sysconf_8c_1aaf3841435f15e53efaeea3e0c7343ff0" kind="function"><name>eflash_clk_div</name></member>
@@ -9969,32 +9981,24 @@
     <member refid="sysconf_8h_1a227dc857daec30f5467f0c71993e3f30" kind="define"><name>DVFS_PERF_LEVEL1</name></member>
     <member refid="sysconf_8h_1a0323c09027eaa865f2c4f55ddab2f05f" kind="define"><name>DVFS_PERF_LEVEL2</name></member>
     <member refid="sysconf_8h_1a52dc5262337e1accef4b45cff235f2fb" kind="define"><name>DVFS_PERF_LEVEL3</name></member>
-    <member refid="sysconf_8h_1a1baac3b0ae9533782ce1e1a291edbb23" kind="define"><name>PMA_I2C</name></member>
-    <member refid="sysconf_8h_1a70d457321e7afe13b9cda447f1955c7b" kind="define"><name>PMA_GPIO</name></member>
-    <member refid="sysconf_8h_1afb61d1501071820b8d406b520c3d229a" kind="define"><name>PMB_SPI</name></member>
-    <member refid="sysconf_8h_1a6517b97efd48c8cad2c24cd9d557efaa" kind="define"><name>PMB_GPIO</name></member>
-    <member refid="sysconf_8h_1ad9416c5dd20485b218632ae96af2046a" kind="define"><name>PMC_UART</name></member>
-    <member refid="sysconf_8h_1ab413c3465ac3c884a2f8195b86fa3a06" kind="define"><name>PMC_GPIO</name></member>
-    <member refid="sysconf_8h_1a5062780ba42a6ac2c81700676a30548c" kind="define"><name>ARDUINO_D0</name></member>
-    <member refid="sysconf_8h_1a4bec0143dde8539840da2357c3ad72bb" kind="define"><name>ARDUINO_D1</name></member>
-    <member refid="sysconf_8h_1ae22ac636d6ef29714e091f8570178bd6" kind="define"><name>ARDUINO_SPI_MASK</name></member>
-    <member refid="sysconf_8h_1a2f60e0d6f45d6da97dca20cadfc251f0" kind="define"><name>ARDUINO_D3</name></member>
-    <member refid="sysconf_8h_1aedc66a0516c981088fb9e7bf1a7bcf80" kind="define"><name>ARDUINO_D5</name></member>
-    <member refid="sysconf_8h_1ab3b8faa13d5e25474ed41aa2e60dce80" kind="define"><name>ARDUINO_D6</name></member>
-    <member refid="sysconf_8h_1a565149a25db3dd478d04891c80752294" kind="define"><name>ARDUINO_D9</name></member>
-    <member refid="sysconf_8h_1aef416f269d42964127f2c69789c7616e" kind="define"><name>ARDUINO_D10</name></member>
-    <member refid="sysconf_8h_1aac43a85b07d71339c84c3bf0024156db" kind="define"><name>ARDUINO_D11</name></member>
-    <member refid="sysconf_8h_1a3f1b7ae648023132c6670c391bc03e61" kind="define"><name>ARDUINO_IIC_MASK</name></member>
-    <member refid="sysconf_8h_1a4ef794975954493f620f9da620c5804c" kind="define"><name>ARDUINO_RESERVED</name></member>
-    <member refid="sysconf_8h_1a8c361b055851b7e04792fc31645daadf" kind="define"><name>ARDUINO_A0</name></member>
-    <member refid="sysconf_8h_1a170a6c527949ee7b9c8ca6889f2b7235" kind="define"><name>ARDUINO_A1</name></member>
-    <member refid="sysconf_8h_1a5740fce40ca2169045b09dd1a1f4d681" kind="define"><name>ARDUINO_A2</name></member>
-    <member refid="sysconf_8h_1aa1d15a34aa68b68a4ee3d8b079547e5d" kind="define"><name>ARDUINO_A3</name></member>
-    <member refid="sysconf_8h_1ae96ae6ef84deec83a97316656cd037d3" kind="define"><name>ARDUINO_A4</name></member>
-    <member refid="sysconf_8h_1afc4ddb81b2699a6f91911567fc417028" kind="define"><name>ARDUINO_A5</name></member>
-    <member refid="sysconf_8h_1a0efcd44a846ff29417b81e9dd593c039" kind="define"><name>ARDUINO_FUNC_GPIO</name></member>
-    <member refid="sysconf_8h_1a3dedea3cbb5781ba031725a8c786955b" kind="define"><name>ARDUINO_FUNC_2ND</name></member>
-    <member refid="sysconf_8h_1adfb938abf66cd185137772467eaf973c" kind="define"><name>ARDUINO_FUNC_3RD</name></member>
+    <member refid="sysconf_8h_1a32b2ab5bc8a9418d2af6c03d0d16112b" kind="define"><name>PMOD_MUX_PMA</name></member>
+    <member refid="sysconf_8h_1a5583f229ddbb97f3f2ba08c849b7e208" kind="define"><name>PMOD_MUX_PMB</name></member>
+    <member refid="sysconf_8h_1a17f9b6cc7d41d53f1fc4042fade47265" kind="define"><name>PMOD_MUX_PMC</name></member>
+    <member refid="sysconf_8h_1a3639f5c4ceffcd649e5102bff43712fd" kind="define"><name>ARDUINO_MUX_UART</name></member>
+    <member refid="sysconf_8h_1aca8e1ee30a69e75cac0c9393d10858ec" kind="define"><name>ARDUINO_MUX_SPI</name></member>
+    <member refid="sysconf_8h_1ad618b4a65b52c4011b250c26b58e6d00" kind="define"><name>ARDUINO_MUX_PWM0</name></member>
+    <member refid="sysconf_8h_1aee635ceb3139af89bcd2fc55147e6df4" kind="define"><name>ARDUINO_MUX_PWM1</name></member>
+    <member refid="sysconf_8h_1af9e8e95f624f4a4889cea14ad6ddf2b7" kind="define"><name>ARDUINO_MUX_PWM2</name></member>
+    <member refid="sysconf_8h_1a5d7b8f3e84a829e7729dac43a8bdeb00" kind="define"><name>ARDUINO_MUX_PWM3</name></member>
+    <member refid="sysconf_8h_1a4210a0f8a06fc3db8f4430e7167c60db" kind="define"><name>ARDUINO_MUX_PWM4</name></member>
+    <member refid="sysconf_8h_1a0f78781a3080ac3e787754474a98a429" kind="define"><name>ARDUINO_MUX_PWM5</name></member>
+    <member refid="sysconf_8h_1a7cad1b9d29526397edf94d27b8051e7f" kind="define"><name>ARDUINO_MUX_I2C</name></member>
+    <member refid="sysconf_8h_1af6fffcbe909901459232a74e67527d23" kind="define"><name>ARDUINO_MUX_ADC0</name></member>
+    <member refid="sysconf_8h_1a29603b78f2802bbea5fd3a645c6018ec" kind="define"><name>ARDUINO_MUX_ADC1</name></member>
+    <member refid="sysconf_8h_1a7f93d4ca496fcbe196b549e8cb509469" kind="define"><name>ARDUINO_MUX_ADC2</name></member>
+    <member refid="sysconf_8h_1a319ae574a521c9a92ec910e2e620f86b" kind="define"><name>ARDUINO_MUX_ADC3</name></member>
+    <member refid="sysconf_8h_1a6f2d759de682692896ed905e7176b5e7" kind="define"><name>ARDUINO_MUX_ADC4</name></member>
+    <member refid="sysconf_8h_1ab36bb8a1459ebaec97aa2dbbb1ebe15c" kind="define"><name>ARDUINO_MUX_ADC5</name></member>
     <member refid="sysconf_8h_1a8358a39b2c690ce1f00efaf1532e8dd7" kind="define"><name>PWM_TIMER0</name></member>
     <member refid="sysconf_8h_1a283573e273a6cfc2705ec0f518bf5087" kind="define"><name>PWM_TIMER1</name></member>
     <member refid="sysconf_8h_1ab305fa6b428a246896fc2735361f3ef7" kind="define"><name>PWM_TIMER2</name></member>
@@ -10003,6 +10007,7 @@
     <member refid="sysconf_8h_1afdcca415b4a6b1b3dc9b488f80082388" kind="define"><name>PWM_TIMER5</name></member>
     <member refid="sysconf_8h_1a5f7facb034d84544b3cb8da3084ba0df" kind="typedef"><name>SYSCONF_REG</name></member>
     <member refid="sysconf_8h_1a67dd2c52007770151074f72cbde75c48" kind="typedef"><name>SYSCONF_REG_PTR</name></member>
+    <member refid="sysconf_8h_1aa69d8471400ea0a1a8f8caa33db0dce3" kind="variable"><name>sysconf_reg_ptr</name></member>
     <member refid="sysconf_8h_1a95596e2de4d5dae5c9003d2becb34530" kind="function"><name>pll_conf_reg</name></member>
     <member refid="sysconf_8h_1a673957d32354c51a004befa4214a12d3" kind="function"><name>pll_fout_config</name></member>
     <member refid="sysconf_8h_1aa3e2cd4c0424671ed7fa32d8059765b2" kind="function"><name>ahb_clk_divisor</name></member>
@@ -10022,8 +10027,6 @@
     <member refid="sysconf_8h_1ac2c9e3a1c8528e218193b0cf643fe873" kind="function"><name>dvfs_vwtime_config</name></member>
     <member refid="sysconf_8h_1a3a7a5b9b559e7cda325eb956f3239710" kind="function"><name>pmc_pwwtime_config</name></member>
     <member refid="sysconf_8h_1a6f66885b7923efc9af11179e1dc53cf9" kind="function"><name>uart3_clk_divisor</name></member>
-    <member refid="sysconf_8h_1abfe082d624d0e83da4c710fc0f6d4235" kind="function"><name>pmode_mux_config</name></member>
-    <member refid="sysconf_8h_1a3d6a3872ab9a113735a13f4e7b95505a" kind="function"><name>arduino_pin_mux</name></member>
     <member refid="sysconf_8h_1a2a8bbd2c387432c31fb346c3c3ac0e67" kind="function"><name>reset_powerdown_vector</name></member>
     <member refid="sysconf_8h_1aaf3841435f15e53efaeea3e0c7343ff0" kind="function"><name>eflash_clk_div</name></member>
   </compound>
@@ -13969,6 +13972,8 @@
   <compound refid="dir_886e19c93bc421eeee55883ae0f2226b" kind="dir"><name>ip_hal</name>
   </compound>
   <compound refid="dir_e3d620c6b6fdb93ed3bc6186215bde2e" kind="dir"><name>library</name>
+  </compound>
+  <compound refid="dir_90c96542aae62b4ff4ab15a261360351" kind="dir"><name>mux</name>
   </compound>
   <compound refid="dir_7eb868d5dbf7aefa49665aa0ebb398c3" kind="dir"><name>mux</name>
   </compound>
