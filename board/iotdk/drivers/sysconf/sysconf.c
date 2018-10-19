@@ -35,7 +35,7 @@
 
 #define PLL_CLK_IN	(BOARD_REF_CLK / 1000000)  /* PLL clock in */
 
-static SYSCONF_REG_PTR sysconf_reg_ptr = (SYSCONF_REG_PTR)(BASE_ADDR_SYSCONFIG);
+SYSCONF_REG_PTR sysconf_reg_ptr = (SYSCONF_REG_PTR)(BASE_ADDR_SYSCONFIG);
 
 
 typedef struct pll_conf {
@@ -349,52 +349,9 @@ void pmc_pwwtime_config(uint8_t time)
 	sysconf_reg_ptr->PMC_PUWTIME= time;
 }
 
-void pmode_mux_config(uint8_t val)
-{
-	sysconf_reg_ptr->PMOD_MUX = val;
-}
-
 void uart3_clk_divisor(uint8_t div)
 {
 	sysconf_reg_ptr->UART3SCLK_DIV = div;
-}
-
-void arduino_pin_mux(uint8_t pin, uint8_t function)
-{
-	volatile uint32_t val;
-
-	if (pin > ARDUINO_A5 || function > ARDUINO_FUNC_3RD) {
-		return;
-	}
-
-	if (pin == ARDUINO_RESERVED || pin == ARDUINO_SPI_MASK ||
-	    pin == ARDUINO_IIC_MASK) {
-		return;
-	}
-
-	val = sysconf_reg_ptr->ARDUINO_MUX;
-
-	if (pin == ARDUINO_D10 || pin == ARDUINO_D11) {
-		if (function == ARDUINO_FUNC_2ND) {//SPI function
-			val |= (1 << ARDUINO_SPI_MASK);
-		} else {
-			val &= (~(1 << ARDUINO_SPI_MASK));
-		}
-	} else if (pin == ARDUINO_A4 || pin == ARDUINO_A5) {
-		if (function == ARDUINO_FUNC_2ND) {//IIC function
-			val |= (1 << ARDUINO_IIC_MASK);
-		} else {
-			val &= (~(1 << ARDUINO_IIC_MASK));
-		}
-	}
-
-	if (function == ARDUINO_FUNC_GPIO) {
-		val &= (~(1 << pin));
-	} else if (function == ARDUINO_FUNC_2ND || function == ARDUINO_FUNC_3RD) {
-		val |= (1 << pin);
-	}
-
-	sysconf_reg_ptr->ARDUINO_MUX = val;
 }
 
 void reset_powerdown_vector(uint32_t addr)

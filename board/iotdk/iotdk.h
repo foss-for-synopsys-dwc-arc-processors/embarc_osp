@@ -57,6 +57,8 @@
 #include "drivers/smic/smic_adc/smic_adc.h"
 #include "drivers/smic/smic_eflash/smic_eflash.h"
 #include "drivers/smic/smic_bootspi/smic_bootspi.h"
+#include "dev_pinmux.h"
+
 #include "iotdk_hardware.h"
 
 /*-----------------------------------------------------------------------------*/

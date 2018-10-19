@@ -72,6 +72,8 @@ typedef volatile struct sysconf_reg {
 } SYSCONF_REG, *SYSCONF_REG_PTR;
 
 
+extern SYSCONF_REG_PTR sysconf_reg_ptr;
+
 /* CLKSEL_CONST is not described in spec. */
 #define CLKSEL_CONST	(0x5A690000)
 #define CLKSEL_EXT_16M	(0 | CLKSEL_CONST)
@@ -128,37 +130,27 @@ typedef volatile struct sysconf_reg {
 #define DVFS_PERF_LEVEL2		2
 #define DVFS_PERF_LEVEL3		3
 
-/* pmode pinmux definition */
-#define PMA_I2C				0x0
-#define PMA_GPIO			0x1
-#define PMB_SPI				0x0
-#define PMB_GPIO			0x2
-#define PMC_UART			0x0
-#define PMC_GPIO			0x4
+/* pmode mux definition */
+#define PMOD_MUX_PMA			(0x1)
+#define PMOD_MUX_PMB			(0x2)
+#define PMOD_MUX_PMC			(0x4)
 
-
-/* arduino pinmux definition */
-#define ARDUINO_D0			0x0
-#define ARDUINO_D1			0x0
-#define ARDUINO_SPI_MASK    0x1
-#define ARDUINO_D3			0x2
-#define ARDUINO_D5			0x3
-#define ARDUINO_D6			0x4
-#define ARDUINO_D9			0x5
-#define ARDUINO_D10		    0x6
-#define ARDUINO_D11		    0x7
-#define ARDUINO_IIC_MASK    0x8
-#define ARDUINO_RESERVED	0x9
-#define ARDUINO_A0			0xA
-#define ARDUINO_A1 			0xB
-#define ARDUINO_A2			0xC
-#define ARDUINO_A3 			0xD
-#define ARDUINO_A4		    0xE
-#define ARDUINO_A5		    0xF
-
-#define ARDUINO_FUNC_GPIO		0x0
-#define ARDUINO_FUNC_2ND		0x1
-#define ARDUINO_FUNC_3RD		0x2
+/* arduino mux definition */
+#define ARDUINO_MUX_UART		(0x1)
+#define ARDUINO_MUX_SPI			(0x2)
+#define ARDUINO_MUX_PWM0		(0x4)
+#define ARDUINO_MUX_PWM1		(0x8)
+#define ARDUINO_MUX_PWM2		(0x10)
+#define ARDUINO_MUX_PWM3		(0x20)
+#define ARDUINO_MUX_PWM4		(0x40)
+#define ARDUINO_MUX_PWM5		(0x80)
+#define ARDUINO_MUX_I2C			(0x100)
+#define ARDUINO_MUX_ADC0		(0x400)
+#define ARDUINO_MUX_ADC1		(0x800)
+#define ARDUINO_MUX_ADC2		(0x1000)
+#define ARDUINO_MUX_ADC3		(0x2000)
+#define ARDUINO_MUX_ADC4		(0x4000)
+#define ARDUINO_MUX_ADC5		(0x8000)
 
 #define PWM_TIMER0			0
 #define PWM_TIMER1			1
@@ -188,8 +180,6 @@ extern void dvfs_vdd_config(uint8_t level, uint8_t val);
 extern void dvfs_vwtime_config(uint8_t time);
 extern void pmc_pwwtime_config(uint8_t time);
 extern void uart3_clk_divisor(uint8_t div);
-extern void pmode_mux_config(uint8_t val);
-extern void arduino_pin_mux(uint8_t pin, uint8_t function);
 extern void reset_powerdown_vector(uint32_t addr);
 extern void eflash_clk_div(uint8_t div);
 

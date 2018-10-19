@@ -61,8 +61,9 @@
 
 static void iotdk_mux_init(void)
 {
-	pmode_mux_config(PMA_GPIO | PMB_SPI | PMC_UART);
-	arduino_pin_mux(ARDUINO_A4, ARDUINO_FUNC_2ND);
+	io_mux_init();
+	io_pmod_config(PMOD_B, PMOD_SPI, IO_PINMUX_ENABLE);
+	io_pmod_config(PMOD_C, PMOD_UART, IO_PINMUX_ENABLE);
 }
 
 /**
