@@ -92,6 +92,7 @@ typedef enum arduino_type {
 	ARDUINO_SPI,
 	ARDUINO_I2C,
 	ARDUINO_PWM,
+	ARDUINO_ADC,
 	ARDUINO_NONE
 } ARDUINO_TYPE;
 
