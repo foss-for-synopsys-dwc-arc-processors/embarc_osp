@@ -51,12 +51,10 @@ Use the following procedure to create a new development environment
 Building a Sample Application
 #############################
 
-Using the ``blinky`` example, the following section will describe how
-to build an embARC OSP application. The following sections contain the commands
-used for the ARC GNU toolchain in a Windows environment. Please use the
+Using the ``blinky`` example, the following steps, which contains the commands
+used for the ARC GNU toolchain in a Windows environment, will describe how
+to build an embARC OSP application. Please use the
 appropriate commands for your OS.
-
-Follow these steps to build a sample application
 
 1. Make sure the ARC GNU toolchain is installed in your environment, see :ref:`software_requirement`.
 
@@ -110,7 +108,7 @@ Follow these steps to run the sample application.
    cd embarc_osp\example\baremetal\blinky
    make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d run
 
-.. note:: No peripheral modules are required to run the ``blinky`` example.
+.. note:: No peripheral modules are required to run the ``blinky`` example. If there are LEDs on boards, these LED will be used to blink; If there are no LEDs on boards, a blink message will be output in the UART.
 
 See the following manual for information on make/gmake command and embARC makefile system.
 

@@ -1,57 +1,36 @@
-.. _release_2017.12:
+.. _release_2018.09:
 
-Release 2017.12
+Release 2018.09
 ===============
 
-This is the sixth release of the embARC Open Software Platform, release 2017.12.
+This is the seventh release of the embARC Open Software Platform, release 2018.09.
 
 Tool Support
 ############
 
-* Eclipse IDE for GNU Toolchain for ARC Processors, 2017.09
-* MetaWare Development Toolkit, 2017.09
+* GNU Toolchain for ARC Processors, 2018.03
+* MetaWare Development Toolkit, 2018.06
 
 Features and Enhancements
 #########################
 
 * Main new features
-
-  * Add support for new ARC HS Development Kit (HSDK) platform
-  * Reconstruct the device HAL
-
+  * Support for new ARC IoT Development Kit (IoTDK) platform
 * Device HAL updates
-
-  * Add device/peripheral folder for reusable peripheral drivers
-  * Add device/ip folder for on-chip ip, e.g. uart, spi, i2c.
-  * Add Designware SDIO driver
-
+  * Support for ARC Data Fusion and Sensor and Control Subsystem drivers and corresponding wrappers (under device/ip/subsystem)
+  * Support for DesignWare I2S driver
+  * Support for UART-BLE module RN4020
+  * Support for IMU sensor module MPU9250
 * ARC HAL updates
-
-  * Add initial support of arc connect for multi core
-  * Add the io pinmux api for arduino, pmod and mikro bus
-  * Bugs fixed
-
+  * Bugs fixes
 * Board support updates
-
-  * Update the board support according the changes in device HAL
-  * Add ARC HS Development Kit support
-
+  * Support for new ARC IoT Development Kit (IoTDK platform)
 * Middleware updates
-
-  * Remove Xively
-  * Remove Matrixssl
-  * Remove Wolfssl
-
+  * No update
 * OS updates
-
-  * Remove Contiki OS
-
+  * No update
 * Examples update
-
-  * Remove Xively, Matrixssl, Wolfssl and Contiki related examples
-  * Make some examples board-independent
-  * Bug fixes
-
+  * Add new examples for RN420 and MPU9250 modules
 * Documentation updates
 * Bug fixes
 * FOSS notice update

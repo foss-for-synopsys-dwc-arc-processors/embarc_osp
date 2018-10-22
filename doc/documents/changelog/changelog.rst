@@ -27,6 +27,7 @@ embARC OSP Releases
 .. toctree::
    :maxdepth: 1
 
+   release_2018.09.rst
    release_2017.12.rst
    release_2017.03.rst
    release_2016.05.rst

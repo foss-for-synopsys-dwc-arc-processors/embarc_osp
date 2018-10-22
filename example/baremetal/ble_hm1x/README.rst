@@ -1,7 +1,7 @@
 .. _example_ble_hm1x:
 
 BLE Module: HM1X
-###############
+################
 
 Overview
 ********

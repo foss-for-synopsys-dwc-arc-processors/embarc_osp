@@ -60,8 +60,6 @@ in the block diagram below.
    how to obtain these packages for use with embARC
 
    - For secure communication, see :ref:`mbed TLS<middleware_mbedtls>`
-   - FOr MQX support, see :ref:`MQX support<os_mqx>`
-
 
 - :ref:`ARC Hardware Abstraction Layer (ARC HAL)<arc_hal>` provides the
   necessary hardware abstraction for |arc| ISA compatible processors.
