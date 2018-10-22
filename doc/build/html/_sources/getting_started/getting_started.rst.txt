@@ -72,7 +72,7 @@ Follow these steps to build a sample application
 
    make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d
 
-.. note:: **make** for ARC GNU toolchain, **gmake** for MetaWare toolkit
+.. note:: **make** for ARC GNU toolchain, **gmake** for MetaWare toolkit. For more details of commands, see :ref:`makefile_manual`
 
 Hardware Preparation
 ####################
@@ -92,11 +92,6 @@ See the following procedures to check peripherals and board settings. The periph
    :maxdepth: 1
 
    hardware_requirement.rst
-
-
-.. toctree::
-   :maxdepth: 1
-
    peripheral_preparation.rst
 
 Running a Sample Application
@@ -116,6 +111,13 @@ Follow these steps to run the sample application.
    make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d run
 
 .. note:: No peripheral modules are required to run the ``blinky`` example.
+
+See the following manual for information on make/gmake command and embARC makefile system.
+
+.. toctree::
+   :maxdepth: 1
+
+   makefile_manual.rst
 
 
 Advanced Topics

@@ -11,7 +11,7 @@ On most of embARC boards, pins are multiplexed for various usages: uart, i2c, sp
 We will take PMOD interface as example to explain the setting method. Other interfaces (Andruino, MikroBUS, etc.) can take PMOD as reference, and use the same method for setting.
 
 1. You need to find mux controller code at ``embarc_osp/board/[board_type]/drivers/mux``.
-One exception is board `The ARC IoT Development Kit (IoTDK) <https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit>`_ which has fixed pin assignment and does **NOT** have mux controller.
+[board_type] should be replaced to board type name, such as *emsk*, *hsdk* or *iotdk*.
 
 2. If you are using EMSK, go to mux.c and find ``io_mux_init()`` function, you will see it calls ``set_pmod_mux()`` with MUX options as parameters.
 MUX options are defined in mux.h and you could change them as you see fit.
@@ -34,6 +34,13 @@ Now your code should be like this:
 
 3. If you are using HSDK, go to mux.c and find ``io_mux_init()`` function, you will find it calls ``creg_hsdc_set_gpio_mux()`` with paramater array ``gpio_mux_config`` as MUX options.
 By default all pins are set to GPIO, other MUX options are defined in ``PINMUX_TYPE`` in ``embarc_osp/device/inc/dev_pinmux.h``
+
+4. If you are using IoTDK, go to mux.c and find ``int32_t  io_pmod_config(uint32_t pmod, uint32_t type, uint32_t config)`` function.
+All three parameters should use definitions in ``embarc_osp/device/inc/dev_pinmux.h``.
+
+	* The first paramater can be choose from ``PMOD_PORT`` (e.g. *PMOD_A*, *PMOD_B*, *PMOD_C*), other inputs will be ignored.
+	* The second parameter should be in ``PMOD_TYPE``, unsupported options will have no effect.
+	* The third parameter should be ``IO_PINMUX_ENABLE`` or ``IO_PINMUX_DISABLE``, enabling or disabling the mux controller respectively.
 
 .. note:: To learn what interface your board has, please go to :ref:`board_bsp`
 

@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ARC Processors" href="../arc/arc.html" />
+    <link rel="next" title="Makefile Manual" href="makefile_manual.html" />
     <link rel="prev" title="Hardware Requirement" href="hardware_requirement.html" /> 
 
   
@@ -193,7 +193,7 @@
 <p>On most of embARC boards, pins are multiplexed for various usages: uart, i2c, spi, etc. One pin can not be accessed by different usage simultaneously, that’s where MUX controller comes in.
 We will take PMOD interface as example to explain the setting method. Other interfaces (Andruino, MikroBUS, etc.) can take PMOD as reference, and use the same method for setting.</p>
 <p>1. You need to find mux controller code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/board/[board_type]/drivers/mux</span></code>.
-One exception is board <a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit">The ARC IoT Development Kit (IoTDK)</a> which has fixed pin assignment and does <strong>NOT</strong> have mux controller.</p>
+[board_type] should be replaced to board type name, such as <em>emsk</em>, <em>hsdk</em> or <em>iotdk</em>.</p>
 <p>2. If you are using EMSK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will see it calls <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> with MUX options as parameters.
 MUX options are defined in mux.h and you could change them as you see fit.</p>
 <p>For example, You want to connect your EMSK with two i2c sensor modules. By default setting you only have PM2 as i2c interface.
@@ -214,6 +214,15 @@ Now your code should be like this:</p>
 </div>
 <p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with paramater array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
 By default all pins are set to GPIO, other MUX options are defined in <code class="docutils literal notranslate"><span class="pre">PINMUX_TYPE</span></code> in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code></p>
+<p>4. If you are using IoTDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">int32_t</span>&#160; <span class="pre">io_pmod_config(uint32_t</span> <span class="pre">pmod,</span> <span class="pre">uint32_t</span> <span class="pre">type,</span> <span class="pre">uint32_t</span> <span class="pre">config)</span></code> function.
+All three parameters should use definitions in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code>.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The first paramater can be choose from <code class="docutils literal notranslate"><span class="pre">PMOD_PORT</span></code> (e.g. <em>PMOD_A</em>, <em>PMOD_B</em>, <em>PMOD_C</em>), other inputs will be ignored.</li>
+<li>The second parameter should be in <code class="docutils literal notranslate"><span class="pre">PMOD_TYPE</span></code>, unsupported options will have no effect.</li>
+<li>The third parameter should be <code class="docutils literal notranslate"><span class="pre">IO_PINMUX_ENABLE</span></code> or <code class="docutils literal notranslate"><span class="pre">IO_PINMUX_DISABLE</span></code>, enabling or disabling the mux controller respectively.</li>
+</ul>
+</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">To learn what interface your board has, please go to <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a></p>
@@ -255,7 +264,7 @@ Driver code at <code class="docutils literal notranslate"><span class="pre">emba
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="makefile_manual.html" class="btn btn-neutral float-right" title="Makefile Manual" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="hardware_requirement.html" class="btn btn-neutral" title="Hardware Requirement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

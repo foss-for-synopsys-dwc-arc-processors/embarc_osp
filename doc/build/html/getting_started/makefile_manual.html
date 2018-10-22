@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Makefile Manual &mdash; embARC 2018.09 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC Processors" href="../arc/arc.html" />
+    <link rel="prev" title="Peripheral Preparation" href="peripheral_preparation.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.09
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#checking-out-the-embarc-osp-source-code">Checking Out the embARC OSP source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#setting-up-the-development-environment">Setting Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-a-sample-application">Building a Sample Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#hardware-preparation">Hardware Preparation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="getting_started.html#running-a-sample-application">Running a Sample Application</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Makefile Manual</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#commands-details">Commands Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-options">Useful Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../board/board.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middleware Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bsp/bsp.html">embARC BSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
+        
+      <li>Makefile Manual</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/getting_started/makefile_manual.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="makefile-manual">
+<span id="id1"></span><h1>Makefile Manual<a class="headerlink" href="#makefile-manual" title="Permalink to this headline">¶</a></h1>
+<p>This is an introduction to embARC makefile system, which including a set of tools that you could build, run and debug your code with.
+This document also contains a quick manual helping you to find the right command for your project.</p>
+<p>Here are quick in-page links of some mostly used commands:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#help">help</a></li>
+<li><a class="reference internal" href="#cfg">cfg</a></li>
+<li><a class="reference internal" href="#build">build</a></li>
+<li><a class="reference internal" href="#gui">gui</a></li>
+<li><a class="reference internal" href="#run">run</a></li>
+<li><a class="reference internal" href="#distclean">distclean</a></li>
+</ul>
+<div class="section" id="commands-details">
+<h2>Commands Details<a class="headerlink" href="#commands-details" title="Permalink to this headline">¶</a></h2>
+<p>This make system is based on make/gmake. Please make sure your environment meets the <a class="reference internal" href="software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>.</p>
+<div class="section" id="help">
+<span id="id2"></span><h3>help<a class="headerlink" href="#help" title="Permalink to this headline">¶</a></h3>
+<p>This is one of the most useful commands, you could use it whenever you have problem finding the right command.
+Help information will be printed to your console.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make help</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">gmake help</span>
+</pre></div>
+</div>
+<p>In the following part of this manual, we will only use <code class="docutils literal notranslate"><span class="pre">make</span></code> in example, you could change it to <code class="docutils literal notranslate"><span class="pre">gmake</span></code> anytime.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).</p>
+</div>
+<p>Some text</p>
+</div>
+<div class="section" id="cfg">
+<span id="id3"></span><h3>cfg<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h3>
+<p>The basic way of this command is to enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">cfg</span></code>, the makefile system will check and print out current settings as well as supported configurations, showing below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make cfg</span>
+<span class="go">&quot;=======Current Configuration=======&quot;</span>
+<span class="go">&quot;Host OS            : Windows&quot;</span>
+<span class="go">&quot;Board              : emsk&quot;</span>
+<span class="go">&quot;Hardware Version   : 22&quot;</span>
+<span class="go">&quot;Core Configuration : arcem7d&quot;</span>
+<span class="go">&quot;CPU Clock HZ       : &quot;</span>
+<span class="go">&quot;Peripheral Clock HZ: &quot;</span>
+<span class="go">&quot;Build Toolchain    : mw&quot;</span>
+<span class="go">&quot;Optimization Level : O2&quot;</span>
+<span class="go">&quot;Debug Jtag         : usb&quot;</span>
+<span class="go">&quot;======Supported Configurations of emsk-22======&quot;</span>
+<span class="go">&quot;Boards (BOARD)                 : axs emsk hsdk iotdk nsim&quot;</span>
+<span class="go">&quot;Core Configurations (CUR_CORE) : arcem11d arcem7d arcem9d&quot;</span>
+<span class="go">&quot;Build Toolchains (TOOLCHAIN)   : gnu mw&quot;</span>
+<span class="go">&quot;Debug Jtags (JTAG)             : usb opella&quot;</span>
+</pre></div>
+</div>
+<p>At supported Configurations, you can find different choices for your command, the uppercase words in parentheses are paramater names to be used in your command.
+For example, the command below will execute your command for an <em>EMSK</em> board with <em>arcem7d</em> core, toolchain would be <em>gnu</em> and JTAG connection is via <em>USB</em>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=emsk CUR_CORE=arcem7d TOOLCHAIN=gnu JTAG=usb [your command]</span>
+</pre></div>
+</div>
+<p>For the details of command parameters, see <a class="reference internal" href="#useful-options"><span class="std std-ref">Useful Options</span></a></p>
+<dl class="docutils">
+<dt>A handy application to use <code class="docutils literal notranslate"><span class="pre">cfg</span></code>:</dt>
+<dd>Suppose we need to build the project on hsdk, but we are not sure the exact core name.
+Then we could use cfg command with BOARD=hsdk so makefile system could find avaiable cores for us.
+In this case there are <em>archs38_c0 archs38_c1 archs38_c2 archs38_c3</em> available.</dd>
+</dl>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=hsdk cfg</span>
+<span class="go">&quot;=======Current Configuration=======&quot;</span>
+<span class="go">&quot;Host OS            : Windows&quot;</span>
+<span class="go">&quot;Board              : hsdk&quot;</span>
+<span class="go">&quot;Hardware Version   : 10&quot;</span>
+<span class="go">&quot;Core Configuration : archs38_c0&quot;</span>
+<span class="go">&quot;CPU Clock HZ       : &quot;</span>
+<span class="go">&quot;Peripheral Clock HZ: &quot;</span>
+<span class="go">&quot;Build Toolchain    : mw&quot;</span>
+<span class="go">&quot;Optimization Level : O2&quot;</span>
+<span class="go">&quot;Debug Jtag         : usb&quot;</span>
+<span class="go">&quot;======Supported Configurations of hsdk-10======&quot;</span>
+<span class="go">&quot;Boards (BOARD)                 : axs emsk hsdk iotdk nsim&quot;</span>
+<span class="go">&quot;Core Configurations (CUR_CORE) : archs38_c0 archs38_c1 archs38_c2 archs38_c3&quot;</span>
+<span class="go">&quot;Build Toolchains (TOOLCHAIN)   : gnu mw&quot;</span>
+<span class="go">&quot;Debug Jtags (JTAG)             : usb opella&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build">
+<span id="id4"></span><h3>build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
+<p>This command will clean and build the project with selected paramaters.</p>
+<p>Here is a example using EMSK (version 1.1, arcem6 core), compiled with gnu.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=emsk BD_VER=11 CUR_CORE=arcem6 TOOLCHAIN=gnu build</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gui">
+<span id="id5"></span><h3>gui<a class="headerlink" href="#gui" title="Permalink to this headline">¶</a></h3>
+<p>Debug command, will first compile and link the project, then load the project with debugger and start debugging.</p>
+<p>Here is a example using EMSK (version 2.2, arcem9d core), compiled with Metaware and debug via usb connection.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=emsk BD_VER=22 CUR_CORE=arcem9d TOOLCHAIN=mw JTAG=usb [your command]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run">
+<span id="id6"></span><h3>run<a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h3>
+<p>When this command is used, makefile system will first compile and link the project.
+Then it will try to download the project to the board and start running it. If no target board is found, it will return error.</p>
+<p>Here is a example using IoTDK (version 1.0, arcem9d core), compiled with Metaware and debug via usb connection.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw JTAG=usb run</span>
+</pre></div>
+</div>
+<p>You may also use it wiout BD_VER and CUR_CORE options since they are default options.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=iotdk TOOLCHAIN=mw JTAG=usb run</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="distclean">
+<span id="id7"></span><h3>distclean<a class="headerlink" href="#distclean" title="Permalink to this headline">¶</a></h3>
+<p>This command will clean the directory, removing all object files of all boards.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make distclean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="useful-options">
+<span id="id8"></span><h2>Useful Options<a class="headerlink" href="#useful-options" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Boards (<strong>BOARD</strong>): Use this option to check config for different boards. Usually he default BOARD setting is EMSK.</li>
+<li>Core Configurations (<strong>CUR_CORE</strong>): shows available core choices.</li>
+<li>Build Toolchains (<strong>TOOLCHAIN</strong>):To choose from different toolchain.</li>
+<li>Debug Jtags (<strong>JTAG</strong>): In most case the micro-usb interface on board supports JTAG debugging. Ashling’s Opella-XD-ARC is also support by some boards.</li>
+<li>Board version (<strong>BD_VER</strong>): Often used by EMSK which has many versions.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="peripheral_preparation.html" class="btn btn-neutral" title="Peripheral Preparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
