@@ -212,7 +212,7 @@ Now your code should be like this:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Notice that <strong>UR</strong> means Upper Layer of Pmod interface and <strong>LR</strong> means Lower Layer of Pmod</p>
 </div>
-<p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with paramater array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
+<p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with parameter array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
 By default all pins are set to GPIO, other MUX options are defined in <code class="docutils literal notranslate"><span class="pre">PINMUX_TYPE</span></code> in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code></p>
 <p>4. If you are using IoTDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">int32_t</span>&#160; <span class="pre">io_pmod_config(uint32_t</span> <span class="pre">pmod,</span> <span class="pre">uint32_t</span> <span class="pre">type,</span> <span class="pre">uint32_t</span> <span class="pre">config)</span></code> function.
 All three parameters should use definitions in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code>.</p>
@@ -250,8 +250,7 @@ Driver code at <code class="docutils literal notranslate"><span class="pre">emba
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/adc/ad7991</span></code>.</p>
 <p><a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> : Primary IC type is ESP8266, use <strong>UART</strong> interface for data changing and controlling.
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/wifi/slip_esp</span></code>.</p>
-<blockquote>
-<div>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD campatible, meaning that you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</div></blockquote>
+<p>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="http://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</p>
 </div>
 </div>
 </div>

@@ -12,9 +12,8 @@ provded examples and demos, e.g. the example in
 ``<embARC>/example/baremetal/bootloader`` for the EMSK 2.2 board and ARC EM7D
 core configuration.
 
-    1. Go to the example directory, ``cd
-    <embARC>/example/baremetal/bootloader``. ``<embARC>``should be replaced by
-    your actual path such as ``c:/embARC``. Use ``\`` instead of ``/`` in the
+    1. Go to the example directory, ``cd <embARC>/example/baremetal/bootloader`` . ``<embARC>`` should be replaced by
+    your actual path such as ``c:/embARC`` . Use ``\`` instead of ``/`` in the
     Windows environment.
 
     2. Run the ``make`` commands

@@ -3,7 +3,7 @@
 C Library Support
 #################
 
-Provides support for file-related APIs using FatFs, printf() support using a
+Provides support for file-related APIs using FatFs, **printf()** support using a
 UART, and time-related APIs. For details, please refer to the source code in
 ``library/clib``. The C library support implemented in embARC OSP is
 compatible with both the GNU toolchain for ARC Processors and the MetaWare

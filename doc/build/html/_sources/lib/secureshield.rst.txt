@@ -166,11 +166,11 @@ or memory. The access-control attribute describes how it is accessed: secure
 or normal, read/write/execute. The detailed definitions of resource type and
 access-control attribute is listed as follow.
 
-.. csv-table:: Container Resoure Type
+.. csv-table:: Container Resource Type
     :file: container_resources_type.csv
     :header-rows: 1
 
-.. csv-table:: Container Resoure Attribute
+.. csv-table:: Container Resource Attribute
     :file: container_resources_attribute.csv
     :header-rows: 1
 
@@ -211,8 +211,8 @@ services. The following SecureShield runtime services are provided:
             res; \
         })
 
-If SECURESHIELD_VERSION == 1, SECURE_INSTN is trap_s; If SECURESHIELD_VERSION
-== 2, SECURE_INSTN is sjli.
+If SECURESHIELD_VERSION == 1, SECURE_INSTN is **trap_s**; If SECURESHIELD_VERSION
+== 2, SECURE_INSTN is **sjli**.
 
 Container Call
 ^^^^^^^^^^^^^^
