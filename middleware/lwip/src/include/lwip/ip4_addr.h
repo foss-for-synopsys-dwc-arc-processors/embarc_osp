@@ -52,40 +52,9 @@ struct ip4_addr {
   u32_t addr;
 };
 
-/** This is the packed version of ip4_addr_t,
-   used in network headers that are itself packed */
-#ifdef PACK_STRUCT_USE_INCLUDES
-#  include "arch/bpstruct.h"
-#endif
-PACK_STRUCT_BEGIN
-struct ip4_addr_packed {
-  PACK_STRUCT_FIELD(u32_t addr);
-} PACK_STRUCT_STRUCT;
-PACK_STRUCT_END
-#ifdef PACK_STRUCT_USE_INCLUDES
-#  include "arch/epstruct.h"
-#endif
-
 /** ip4_addr_t uses a struct for convenience only, so that the same defines can
  * operate both on ip4_addr_t as well as on ip4_addr_p_t. */
 typedef struct ip4_addr ip4_addr_t;
-typedef struct ip4_addr_packed ip4_addr_p_t;
-
-/**
- * struct ipaddr2 is used in the definition of the ARP packet format in
- * order to support compilers that don't have structure packing.
- */
-#ifdef PACK_STRUCT_USE_INCLUDES
-#  include "arch/bpstruct.h"
-#endif
-PACK_STRUCT_BEGIN
-struct ip4_addr2 {
-  PACK_STRUCT_FIELD(u16_t addrw[2]);
-} PACK_STRUCT_STRUCT;
-PACK_STRUCT_END
-#ifdef PACK_STRUCT_USE_INCLUDES
-#  include "arch/epstruct.h"
-#endif
 
 /* Forward declaration to not include netif.h */
 struct netif;
@@ -131,30 +100,8 @@ struct netif;
 
 #define IP_LOOPBACKNET      127                 /* official! */
 
-
-#if BYTE_ORDER == BIG_ENDIAN
 /** Set an IP address given by the four byte-parts */
-#define IP4_ADDR(ipaddr, a,b,c,d) \
-        (ipaddr)->addr = ((u32_t)((a) & 0xff) << 24) | \
-                         ((u32_t)((b) & 0xff) << 16) | \
-                         ((u32_t)((c) & 0xff) << 8)  | \
-                          (u32_t)((d) & 0xff)
-#else
-/** Set an IP address given by the four byte-parts.
-    Little-endian version that prevents the use of lwip_htonl. */
-#define IP4_ADDR(ipaddr, a,b,c,d) \
-        (ipaddr)->addr = ((u32_t)((d) & 0xff) << 24) | \
-                         ((u32_t)((c) & 0xff) << 16) | \
-                         ((u32_t)((b) & 0xff) << 8)  | \
-                          (u32_t)((a) & 0xff)
-#endif
-
-/** MEMCPY-like copying of IP addresses where addresses are known to be
- * 16-bit-aligned if the port is correctly configured (so a port could define
- * this to copying 2 u16_t's) - no NULL-pointer-checking needed. */
-#ifndef IPADDR2_COPY
-#define IPADDR2_COPY(dest, src) SMEMCPY(dest, src, sizeof(ip4_addr_t))
-#endif
+#define IP4_ADDR(ipaddr, a,b,c,d)  (ipaddr)->addr = PP_HTONL(LWIP_MAKEU32(a,b,c,d))
 
 /** Copy IP address - faster than ip4_addr_set: no NULL check */
 #define ip4_addr_copy(dest, src) ((dest).addr = (src).addr)
@@ -220,22 +167,34 @@ u8_t ip4_addr_netmask_valid(u32_t netmask);
                       (u16_t)((ipaddr) != NULL ? ip4_addr4_16(ipaddr) : 0))
 #define ip4_addr_debug_print_val(debug, ipaddr) \
   ip4_addr_debug_print_parts(debug, \
-                      ip4_addr1_16(&(ipaddr)),       \
-                      ip4_addr2_16(&(ipaddr)),       \
-                      ip4_addr3_16(&(ipaddr)),       \
-                      ip4_addr4_16(&(ipaddr)))
+                      ip4_addr1_16_val(ipaddr),       \
+                      ip4_addr2_16_val(ipaddr),       \
+                      ip4_addr3_16_val(ipaddr),       \
+                      ip4_addr4_16_val(ipaddr))
 
 /* Get one byte from the 4-byte address */
-#define ip4_addr1(ipaddr) (((const u8_t*)(&(ipaddr)->addr))[0])
-#define ip4_addr2(ipaddr) (((const u8_t*)(&(ipaddr)->addr))[1])
-#define ip4_addr3(ipaddr) (((const u8_t*)(&(ipaddr)->addr))[2])
-#define ip4_addr4(ipaddr) (((const u8_t*)(&(ipaddr)->addr))[3])
+#define ip4_addr_get_byte(ipaddr, idx) (((const u8_t*)(&(ipaddr)->addr))[idx])
+#define ip4_addr1(ipaddr) ip4_addr_get_byte(ipaddr, 0)
+#define ip4_addr2(ipaddr) ip4_addr_get_byte(ipaddr, 1)
+#define ip4_addr3(ipaddr) ip4_addr_get_byte(ipaddr, 2)
+#define ip4_addr4(ipaddr) ip4_addr_get_byte(ipaddr, 3)
+/* Get one byte from the 4-byte address, but argument is 'ip4_addr_t',
+ * not a pointer */
+#define ip4_addr_get_byte_val(ipaddr, idx) ((u8_t)(((ipaddr).addr >> (idx * 8)) & 0xff))
+#define ip4_addr1_val(ipaddr) ip4_addr_get_byte_val(ipaddr, 0)
+#define ip4_addr2_val(ipaddr) ip4_addr_get_byte_val(ipaddr, 1)
+#define ip4_addr3_val(ipaddr) ip4_addr_get_byte_val(ipaddr, 2)
+#define ip4_addr4_val(ipaddr) ip4_addr_get_byte_val(ipaddr, 3)
 /* These are cast to u16_t, with the intent that they are often arguments
  * to printf using the U16_F format from cc.h. */
 #define ip4_addr1_16(ipaddr) ((u16_t)ip4_addr1(ipaddr))
 #define ip4_addr2_16(ipaddr) ((u16_t)ip4_addr2(ipaddr))
 #define ip4_addr3_16(ipaddr) ((u16_t)ip4_addr3(ipaddr))
 #define ip4_addr4_16(ipaddr) ((u16_t)ip4_addr4(ipaddr))
+#define ip4_addr1_16_val(ipaddr) ((u16_t)ip4_addr1_val(ipaddr))
+#define ip4_addr2_16_val(ipaddr) ((u16_t)ip4_addr2_val(ipaddr))
+#define ip4_addr3_16_val(ipaddr) ((u16_t)ip4_addr3_val(ipaddr))
+#define ip4_addr4_16_val(ipaddr) ((u16_t)ip4_addr4_val(ipaddr))
 
 #define IP4ADDR_STRLEN_MAX  16
 

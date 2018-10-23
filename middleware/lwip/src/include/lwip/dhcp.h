@@ -68,8 +68,6 @@ struct dhcp
 {
   /** transaction identifier of last sent request */
   u32_t xid;
-  /** incoming msg */
-  struct dhcp_msg *msg_in;
   /** track PCB allocation state */
   u8_t pcb_allocated;
   /** current DHCP state machine state */
@@ -81,9 +79,6 @@ struct dhcp
 #endif
   u8_t subnet_mask_given;
 
-  struct pbuf *p_out; /* pbuf of outcoming msg */
-  struct dhcp_msg *msg_out; /* outgoing msg */
-  u16_t options_out_len; /* outgoing msg options length */
   u16_t request_timeout; /* #ticks with period DHCP_FINE_TIMER_SECS for request timeout */
   u16_t t1_timeout;  /* #ticks with period DHCP_COARSE_TIMER_SECS for renewal time */
   u16_t t2_timeout;  /* #ticks with period DHCP_COARSE_TIMER_SECS for rebind time */
@@ -108,12 +103,13 @@ struct dhcp
 
 void dhcp_set_struct(struct netif *netif, struct dhcp *dhcp);
 /** Remove a struct dhcp previously set to the netif using dhcp_set_struct() */
-#define dhcp_remove_struct(netif) do { (netif)->dhcp = NULL; } while(0)
+#define dhcp_remove_struct(netif) netif_set_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_DHCP, NULL)
 void dhcp_cleanup(struct netif *netif);
 err_t dhcp_start(struct netif *netif);
 err_t dhcp_renew(struct netif *netif);
 err_t dhcp_release(struct netif *netif);
 void dhcp_stop(struct netif *netif);
+void dhcp_release_and_stop(struct netif *netif);
 void dhcp_inform(struct netif *netif);
 void dhcp_network_changed(struct netif *netif);
 #if DHCP_DOES_ARP_CHECK
@@ -131,6 +127,8 @@ void dhcp_fine_tmr(void);
  * See LWIP_DHCP_MAX_NTP_SERVERS */
 extern void dhcp_set_ntp_servers(u8_t num_ntp_servers, const ip4_addr_t* ntp_server_addrs);
 #endif /* LWIP_DHCP_GET_NTP_SRV */
+
+#define netif_dhcp_data(netif) ((struct dhcp*)netif_get_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_DHCP))
 
 #ifdef __cplusplus
 }
