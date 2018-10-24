@@ -32,6 +32,7 @@ JTAG, or the .bin  files through SD card by secondary bootloader.
    example/baremetal/bootloader                             :ref:`example_bootloader`
    example/baremetal/cxx                                    :ref:`example_cxx`
    example/baremetal/dma_spiflash                           :ref:`example_dma_spiflash`
+   example/baremetal/imu_mpu9250                            :ref:`example_mpu9250_test`
    example/baremetal/graphic_u8glib                         :ref:`example_graphic_u8glib`
    example/baremetal/openthread/cli                         :ref:`example_openthread_cli`
    example/baremetal/openthread/ncp                         :ref:`example_openthread_ncp`

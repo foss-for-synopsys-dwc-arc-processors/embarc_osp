@@ -8,4 +8,3 @@ Baremetal examples
     :glob:
 
     */*
-    test/*/*/*

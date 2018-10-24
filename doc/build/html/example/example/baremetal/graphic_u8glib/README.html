@@ -183,6 +183,55 @@
             
   <div class="section" id="graphic-u8glib-example">
 <span id="example-graphic-u8glib"></span><h1>Graphic u8glib Example<a class="headerlink" href="#graphic-u8glib-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This example is a graphic test based on OLED ssd1306 and U8glib.</p>
+<div class="section" id="detailed-description">
+<h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Extra Required Tools</dt>
+<dd>NO</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extra Required Peripherals</dt>
+<dd>PMOD OLED based on SSD1306 128x64 monochrome</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Design Concept</dt>
+<dd>It demonstrates how to use U8glib functions of drawing box, line and ASCII characters. Dynamic graphics are shown in SSD1306.
+And display width &amp; height information is shown in Tera Term</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Usage Manual</dt>
+<dd>Outputs pitch, roll, yaw get from MPU9250 DMP to the console.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extra Comments</dt>
+<dd>NO</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="buidling-and-running">
+<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
+<p>The commands to run this example are as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/graphic_u8glib
+<span class="gp">$</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As IoTDK’s pmod inteface don’t support I2C, please use the i2c pins of arduino interface      mikro bus to connect pmod OLED.</p>
+</div>
+</div>
 </div>
 
 
