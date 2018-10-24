@@ -173,6 +173,9 @@ typedef int (*fp_t)(void);
 
 /**
  * \brief	mcuboot bootloader
+ *          main() is deprecated and replaced by main()
+ *          in example simple bootloader
+ * \deprecated
  */
 int main(void)
 {

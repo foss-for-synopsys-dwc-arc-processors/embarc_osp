@@ -104,6 +104,13 @@ ifneq ($(findstring lwip, $(MID_SEL)), )
 BOARD_HSDK_CSRCDIR += $(BOARD_HSDK_DIR)/drivers/pmwifi
 endif
 
+##
+# set board image information for MCUBoot
+##
+ifneq ($(findstring mcuboot, $(LIB_SEL)), )
+$(error MCUBoot is not support BOARD $(BOARD) now, please check it!)
+endif
+
 BOARD_HSDK_ASMSRCDIR	+= $(BOARD_HSDK_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
 BOARD_HSDK_INCDIR	+= $(BOARD_HSDK_DEV_INCDIR) $(BOARD_CORE_DIR)
 

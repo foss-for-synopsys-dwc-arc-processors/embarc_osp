@@ -85,7 +85,7 @@ vpath %.cpp $(ALL_CXXSRC_DIRS)
 vpath %.S $(ALL_ASMSRC_DIRS)
 vpath %.s $(ALL_ASMSRC_DIRS)
 
-.PHONY : all build dump dasm bin hex size clean boardclean distclean run gui cfg opt info spopt infodirs infosrcs infoobjs help mcuboot
+.PHONY : all build dump dasm bin hex size clean boardclean distclean run gui cfg opt info spopt infodirs infosrcs infoobjs help sign
 
 all : $(APPL_FULL_NAME).elf
 
@@ -108,6 +108,7 @@ help :
 	@$(ECHO) '  dump        - Generate dump information for example'
 	@$(ECHO) '  dasm        - Disassemble object file'
 	@$(ECHO) '  size        - Display size information of object file'
+	@$(ECHO) '  sign        - Sign binary for example with mcuboot scripts'
 	@$(ECHO) 'Clean Targets:'
 	@$(ECHO) '  clean       - Remove object files of selected configuration'
 	@$(ECHO) '  boardclean  - Remove object files of selected board'
@@ -224,6 +225,10 @@ size : $(APPL_FULL_NAME).elf
 	@$(ECHO) "Print Application Program Size"
 	$(Q)$(SIZE) $(SIZE_OPT) $<
 
+sign: $(APPL_FULL_NAME).bin
+	@$(ECHO) "Sign Application with mcuboot scripts"
+	$(Q)$(MCUBOOT_SIGN) $(MCUBOOT_SIGN_OPT)
+
 clean :
 	@$(ECHO) "Clean Workspace For Selected Configuration : $(SELECTED_CONFIG)"
 	-$(IFEXISTDIR) $(subst /,$(PS),$(OUT_DIR)) $(ENDIFEXISTDIR) $(RMD) $(subst /,$(PS),$(OUT_DIR))
@@ -249,9 +254,6 @@ run : $(APPL_FULL_NAME).elf
 gui : $(APPL_FULL_NAME).elf
 	@$(ECHO) "Download & Debug $<"
 	$(DBG) $(DBG_HW_FLAGS) $< $(CMD_LINE)
-
-mcuboot : $(APPL_FULL_NAME).bin $(LIB_MCUBOOT).bin
-	$(SIGN) $(SIGN_OPT)
 
 ifeq ($(BOARD), nsim)
 ifeq ($(DBG), arc-elf32-gdb)

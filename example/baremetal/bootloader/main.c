@@ -30,6 +30,7 @@
 
 #include "embARC.h"
 #include "embARC_debug.h"
+#include "embARC_assert.h"
 
 #include "ntshell_common.h"
 #include "ihex_load.h"
@@ -37,8 +38,16 @@
 
 #include "target_mem_config.h"
 
-#define BOOT_CFG_FILE_NAME	"boot.json"
-#define BOOT_FILE_NAME		"0:\\boot.bin"          /*!< default autoload full file name */
+#if defined(EMBARC_USE_MCUBOOT)
+
+#include "bootutil/bootutil.h"
+#include "bootutil/image.h"
+#include "flash_map/flash_map.h"
+
+#define RAM_STARTADDRESS	FLASH_AREA_IMAGE_0_OFFSET
+#define APP_CFG_ADDR		FLASH_AREA_IMAGE_MCUBOOT_OFFSET + FLASH_AREA_IMAGE_MCUBOOT_SIZE
+
+#else
 
 #if defined(BOARD_EMSK)
 #define RAM_STARTADDRESS	0x10000000		/*!< default ram start address of boot.bin */
@@ -47,6 +56,11 @@
 #define RAM_STARTADDRESS 	ICCM_START
 #define APP_CFG_ADDR 		ARC_X_MEM_START
 #endif
+
+#endif /* !defined(EMBARC_USE_MCUBOOT) */
+
+#define BOOT_CFG_FILE_NAME	"boot.json"
+#define BOOT_FILE_NAME		"0:\\boot.bin"          /*!< default autoload full file name */
 
 #define PROMT_DELAY_S		(5)			/*!< default wait time for autoload */
 
@@ -83,6 +97,49 @@ static NTSHELL_IO *nt_io;
 
 static FIL file;
 
+#if defined(EMBARC_USE_MCUBOOT) && defined(BOARD_EMSK)
+extern uint32_t boot_status_off(const struct flash_area *fap);
+/**
+ * \brief	set the trailers of SLOT0 & SLOT1 as 0xFFFFFFFF
+ *			simulate as the initial state of flash in EMSK ram
+ */
+static int trailer_init(void)
+{
+	int rc = 0;
+	uint32_t off;
+	const struct flash_area *fap = NULL;
+
+	rc = flash_area_open(FLASH_AREA_IMAGE_0, &fap);
+    if (rc != 0) {
+        goto done;
+    }
+
+    off = boot_status_off(fap);
+    memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
+    flash_area_close(fap);
+
+    rc = flash_area_open(FLASH_AREA_IMAGE_1, &fap);
+    if (rc != 0) {
+        goto done;
+    }
+
+    memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
+    flash_area_close(fap);
+
+    rc = flash_area_open(FLASH_AREA_IMAGE_SCRATCH, &fap);
+    if (rc != 0) {
+        goto done;
+    }
+
+    off = boot_status_off(fap);
+    memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
+
+done:
+	flash_area_close(fap);
+	return rc;
+}
+#endif
+
 /**
  * \brief	test bootloader
  */
@@ -97,6 +154,9 @@ int main(void)
 	uint32_t max_promt_ms = PROMT_DELAY_S * 1000;
 	uint32_t boot_json[1000];
 	fp_t fp;
+#if defined(EMBARC_USE_MCUBOOT)
+	struct boot_rsp rsp;
+#endif
 
 	/* No USE_BOARD_MAIN */
 	board_init();
@@ -141,6 +201,10 @@ int main(void)
 			num = json_object_get_number(json_object(user_data), "ram_startaddress");
 
 			if (num != 0) {
+#if defined(EMBARC_USE_MCUBOOT)
+				/* not allow modify start address when mcuboot used */
+				EMBARC_ASSERT(RAM_STARTADDRESS == num);
+#endif
 				boot_cfg.ram_startaddress = num;
 			}
 
@@ -234,6 +298,25 @@ int main(void)
 
 	led_write(0xF0, 0xFF); /* Load application finished */
 
+	fp = (fp_t)(*((uint32_t *)boot_cfg.ram_startaddress));
+
+#if defined(EMBARC_USE_MCUBOOT)
+
+#if defined(BOARD_EMSK)
+	trailer_init();
+#endif
+
+	EMBARC_PRINTF("\r\nStart mcuboot\r\n");
+	res = boot_go(&rsp);
+	if (res != 0) {
+		EMBARC_PRINTF("\r\nsecure boot failed \r\n");
+		EMBARC_PRINTF("\r\nStart normal boot\r\n");
+	} else {
+		EMBARC_PRINTF("\r\nsecure boot successfully \r\n");
+		fp = (fp_t)(*(uint32_t *)(rsp.br_image_off + rsp.br_hdr->ih_hdr_size));
+	}
+#endif
+
 	ram = (void *)APP_CFG_ADDR;
 	memcpy(ram, boot_cfg.app_cfg, strlen(boot_cfg.app_cfg) + 1);
 	cpu_lock();
@@ -249,7 +332,6 @@ int main(void)
 
 	led_write(0xFF, 0xFF); /* Start application */
 
-	fp = (fp_t)(*((uint32_t *)boot_cfg.ram_startaddress));
 	fp();	/* jump to program */
 	return E_SYS;
 }

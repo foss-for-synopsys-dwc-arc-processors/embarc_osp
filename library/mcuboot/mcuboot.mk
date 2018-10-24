@@ -5,7 +5,6 @@ LIB_MCUBOOT_ASMSRCDIR	= $(LIB_MCUBOOT_DIR) $(LIB_MCUBOOT_DIR)/bootutil/src
 LIB_MCUBOOT_CSRCDIR		= $(LIB_MCUBOOT_DIR) $(LIB_MCUBOOT_DIR)/bootutil/src
 LIB_MCUBOOT_INCDIR		= $(LIB_MCUBOOT_DIR)/bootutil/include $(LIB_MCUBOOT_DIR)/include
 
-LIB_MCUBOOT_MAIN_CSRCDIR = $(LIB_MCUBOOT_DIR)/main
 
 # the dir to generate objs
 LIB_MCUBOOT_OBJDIR = $(OUT_DIR)/library/mcuboot
@@ -13,91 +12,43 @@ LIB_MCUBOOT_OBJDIR = $(OUT_DIR)/library/mcuboot
 # find all the srcs in the target dirs
 LIB_MCUBOOT_CSRCS = $(call get_csrcs, $(LIB_MCUBOOT_CSRCDIR))
 LIB_MCUBOOT_ASMSRCS = $(call get_asmsrcs, $(LIB_MCUBOOT_ASMSRCDIR))
-LIB_MCUBOOT_MAIN_CSRCS  = $(call get_csrcs, $(LIB_MCUBOOT_MAIN_CSRCDIR))
 
 # get object files
 LIB_MCUBOOT_COBJS = $(call get_relobjs, $(LIB_MCUBOOT_CSRCS))
 LIB_MCUBOOT_ASMOBJS = $(call get_relobjs, $(LIB_MCUBOOT_ASMSRCS))
 LIB_MCUBOOT_OBJS = $(LIB_MCUBOOT_COBJS) $(LIB_MCUBOOT_ASMOBJS)
-LIB_MCUBOOT_MAIN_COBJS = $(call get_relobjs, $(LIB_MCUBOOT_MAIN_CSRCS))
-LIB_MCUBOOT_ALL_OBJS = $(LIB_MCUBOOT_OBJS) $(LIB_MCUBOOT_MAIN_COBJS)
 
 # get dependency files
-LIB_MCUBOOT_DEPS = $(call get_deps, $(LIB_MCUBOOT_ALL_OBJS))
+LIB_MCUBOOT_DEPS = $(call get_deps, $(LIB_MCUBOOT_OBJS))
 
 # sign tools
 LIB_MCUBOOT_SCRIPT_DIR = $(LIB_MCUBOOT_DIR)/scripts
-SIGNED_IMAGE = $(OUT_DIR)/signed_$(APPL)
-SIGN = $(LIB_MCUBOOT_SCRIPT_DIR)/imgtool.py
-SIGN_OPT = sign --key $(LIB_MCUBOOT_DIR)/root-rsa-2048.pem --header-size 0x400 --align 8 --version 1.2 -S 0x01000000 $(APPL_FULL_NAME).bin $(SIGNED_IMAGE).bin
+MCUBOOT_SIGNED_IMAGE = $(OUT_DIR)/signed_$(APPL)
+MCUBOOT_SIGNED_RSAKEY ?= $(LIB_MCUBOOT_DIR)/root-rsa-2048.pem
+MCUBOOT_SIGN = $(LIB_MCUBOOT_SCRIPT_DIR)/imgtool.py
+MCUBOOT_SIGN_OPT = sign --key $(MCUBOOT_SIGNED_RSAKEY) \
+						--header-size $(IMAGE_HEADER_SIZE) \
+						--align $(IMAGE_FLASH_ALIGN) \
+						--version 1.2 \
+						-S $(IMAGE_SLOT_SIZE) \
+						$(APPL_FULL_NAME).bin $(MCUBOOT_SIGNED_IMAGE).bin
 
 # compile options only valid in this library
-LIB_MCUBOOT_COMPILE_OPT = -DMCUBOOT_COMPILE
-LIB_MCUBOOT_DEFINES += -DUSE_MCUBOOT -DENABLE_BANNER=0 -DMCUBOOT_SIGN_RSA -DMCUBOOT_VALIDATE_SLOT0 -DMCUBOOT_USE_FLASH_AREA_GET_SECTORS -DMBEDTLS_CONFIG_FILE=\"config-boot.h\"
+LIB_MCUBOOT_DEFINES += -DLIB_MCUBOOT -DMCUBOOT_VALIDATE_SLOT0 -DMCUBOOT_USE_FLASH_AREA_GET_SECTORS \
+						-DMCUBOOT_SIGN_RSA -DMBEDTLS_CONFIG_FILE=\"config-boot.h\"
 
 # generate library
-LIB_MCUBOOT = $(OUT_DIR)/mcuboot
+LIB_LIB_MCUBOOT = $(OUT_DIR)/libmcuboot.a
 
-MCUBOOT_LINK_FILE = $(strip $(OUT_DIR)/mcuboot_$(TOOLCHAIN).ldf)
-
-ifeq ($(VALID_TOOLCHAIN), mw)
-MCUBOOT_LINK_OPT	+= $(LCORE_OPT_MW) \
-		-Hnocopyr -Hnosdata -Hnocrt -Hldopt=-Coutput=$(LIB_MCUBOOT).map \
-		-Hldopt=-Csections -Hldopt=-Ccrossfunc -Hldopt=-Csize \
-		 -zstdout $(MCUBOOT_LINK_FILE)
-else
-ifeq ($(VALID_TOOLCHAIN), gnu)
-MCUBOOT_LINK_OPT += $(LCORE_OPT_GNU) -mno-sdata -nostartfiles -Wl,-M,-Map=$(LIB_MCUBOOT).map -lm -Wl,--script=$(MCUBOOT_LINK_FILE)
-endif
+ifeq ($(USE_MCUBOOT), 1)
+# specify in the bootloader
+LIB_MCUBOOT_DEFINES += -DEMBARC_USE_MCUBOOT
 endif
 
-ifeq ($(VALID_TOOLCHAIN), mw)
-DBG_HW_FLAGS += -cmd="symbols $(LIB_MCUBOOT).elf"
-else
-ifeq ($(VALID_TOOLCHAIN), gnu)
-DBG_HW_FLAGS += -ex "add-symbol-file $(LIB_MCUBOOT).elf _f_rom_secureshieldruntime -readnow"
-endif
-endif
-
-#####RULES FOR GENERATING LINK FILE FROM TEMPLATE#####
-.SECONDEXPANSION:
-$(MCUBOOT_LINK_FILE): $(LINKER_SCRIPT_FILE) $$(COMMON_COMPILE_PREREQUISITES)
-	$(TRACE_GEN_LINKFILE)
-	$(Q)$(CC) -c $(ALL_DEFINES) $(LIB_MCUBOOT_COMPILE_OPT) $(LINK_FILE_OPT) $< -o $@
-
-.SECONDEXPANSION:
-$(LIB_MCUBOOT).elf : $(LIB_MCUBOOT_ALL_OBJS) $(CORE_ARG_FILES) $(MCUBOOT_LINK_FILE) $$(COMMON_COMPILE_PREREQUISITES)
-	$(TRACE_LINK)
-	$(Q)$(LD) $(MCUBOOT_LINK_OPT) $(LIB_MCUBOOT_ALL_OBJS) $(EXTRA_OBJS) $(LD_START_GROUPLIB) $(EMBARC_LIB) $(LD_SYSTEMLIBS) $(LD_END_GROUPLIB) -o $@
-
-$(LIB_MCUBOOT).bin: $(LIB_MCUBOOT).elf
-	@$(ECHO) "Generating mcuboot Binary $@"
-	$(Q)$(OBJCOPY) $(ELF2BIN_OPT) $< $@
-
-
-# specific compile rules
-# user can add rules to compile this library
-# if not rules specified to this library, it will use default compiling rules
-
-.SECONDEXPANSION:
-$(LIB_MCUBOOT_MAIN_COBJS): $(OUT_DIR)/%.o :$(EMBARC_ROOT)/%.c $$(COMMON_COMPILE_PREREQUISITES)
-	$(TRACE_COMPILE)
-	$(TRY_MK_OBJDIR)
-	$(Q)$(CC) -c $(COMPILE_OPT) $(LIB_MCUBOOT_COMPILE_OPT) $< -o $@
-
-.SECONDEXPANSION:
-$(LIB_MCUBOOT_COBJS): $(OUT_DIR)/%.o :$(EMBARC_ROOT)/%.c $$(COMMON_COMPILE_PREREQUISITES)
-	$(TRACE_COMPILE)
-	$(TRY_MK_OBJDIR)
-	$(Q)$(CC) -c $(COMPILE_OPT) $(LIB_MCUBOOT_COMPILE_OPT) $< -o $@
-
-.SECONDEXPANSION:
-$(LIB_MCUBOOT_ASMOBJS): $(OUT_DIR)/%.o :$(EMBARC_ROOT)/%.s $$(COMMON_COMPILE_PREREQUISITES)
-	$(TRACE_ASSEMBLE)
-	$(TRY_MK_OBJDIR)
-	$(Q)$(CC) -c $(ASM_OPT) $< -o $@
-
-#---------------at here--------------
+# library generation rule
+$(LIB_LIB_MCUBOOT): $(LIB_MCUBOOT_OBJS)
+	$(TRACE_ARCHIVE)
+	$(Q)$(AR) $(AR_OPT) $@ $(LIB_MCUBOOT_OBJS)
 
 # Library Definitions
 LIB_INCDIR += $(LIB_MCUBOOT_INCDIR)

@@ -79,4 +79,6 @@
 #endif
 #endif
 
+#define IMAGE_HEAD_SIZE 0x0
+
 #endif /* _TARGET_MEM_CONFIG_H_ */

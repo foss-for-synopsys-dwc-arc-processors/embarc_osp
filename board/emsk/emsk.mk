@@ -111,6 +111,15 @@ ifneq ($(findstring lwip, $(MID_SEL)), )
 BOARD_EMSK_CSRCDIR += $(BOARD_EMSK_DIR)/drivers/pmwifi
 endif
 
+##
+# set board image information for MCUBoot
+##
+ifneq ($(findstring mcuboot, $(LIB_SEL)), )
+IMAGE_FLASH_ALIGN ?= 8
+IMAGE_SLOT_SIZE ?= 0x00400000
+IMAGE_HEADER_SIZE ?= 0x400
+endif
+
 BOARD_EMSK_ASMSRCDIR	+= $(BOARD_EMSK_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
 BOARD_EMSK_INCDIR	+= $(BOARD_EMSK_DEV_INCDIR) $(BOARD_CORE_DIR)
 

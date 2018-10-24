@@ -23,6 +23,7 @@ SECTIONS
 {
 	.init :
 	{
+		. = . + IMAGE_HEAD_SIZE;
 		_f_init = .;
 		KEEP (*(.init_vector))
 		KEEP (*(.init_bootstrap))

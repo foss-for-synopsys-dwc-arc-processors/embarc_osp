@@ -1341,7 +1341,6 @@ boot_go(struct boot_rsp *rsp)
     }
 
     rc = boot_validate_slot(0);
-    assert(rc == 0);
     if (rc != 0) {
         rc = BOOT_EBADIMAGE;
         goto out;

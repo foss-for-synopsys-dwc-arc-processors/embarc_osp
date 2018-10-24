@@ -30,10 +30,10 @@
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
 
-#ifdef USE_MCUBOOT
+#ifdef LIB_MCUBOOT
 
 #ifdef USE_APPL_MEM_CONFIG
-#error "Cannot modify memory when mcuboot is enabled."
+#error "Cannot use USE_APPL_MEM_CONFIG to modify memory when mcuboot is enabled."
 #endif
 
 #if defined(MCUBOOT_TARGET_CONFIG)
@@ -53,14 +53,14 @@
 #endif
 
 #define FLASH_DEV_NAME
-#define FLASH_AREA_IMAGE_0_OFFSET		0x10000000
-#define FLASH_AREA_IMAGE_0_SIZE			0x03000000
-#define FLASH_AREA_IMAGE_1_OFFSET		0x13000000
-#define FLASH_AREA_IMAGE_1_SIZE			0x03000000
-#define FLASH_AREA_IMAGE_SCRATCH_OFFSET		0x16000000
-#define FLASH_AREA_IMAGE_SCRATCH_SIZE		0x01000000
+#define FLASH_AREA_IMAGE_0_OFFSET			0x10000000
+#define FLASH_AREA_IMAGE_0_SIZE				0x00400000
+#define FLASH_AREA_IMAGE_1_OFFSET			0x10400000
+#define FLASH_AREA_IMAGE_1_SIZE				0x00400000
+#define FLASH_AREA_IMAGE_SCRATCH_OFFSET		0x10800000
+#define FLASH_AREA_IMAGE_SCRATCH_SIZE		0x00200000
 #define FLASH_AREA_IMAGE_MCUBOOT_OFFSET		0x17000000
-#define FLASH_AREA_IMAGE_MCUBOOT_SIZE		0x00f00000
+#define FLASH_AREA_IMAGE_MCUBOOT_SIZE		0x00200000
 
 
 #if !defined(FLASH_AREA_IMAGE_SECTOR_SIZE)
@@ -100,7 +100,7 @@
 #warning "Target support is incomplete; cannot build mcuboot."
 #endif
 
-#ifdef MCUBOOT_COMPILE
+#ifdef EMBARC_USE_MCUBOOT
 #define EXT_RAM_START	FLASH_AREA_IMAGE_MCUBOOT_OFFSET
 #define EXT_RAM_SIZE	FLASH_AREA_IMAGE_MCUBOOT_SIZE
 #define IMAGE_HEAD_SIZE 0x0
@@ -113,7 +113,7 @@
 #define REGION_ROM	EXT_RAM
 #define REGION_RAM	EXT_RAM
 
-#else
+#else /* !defined(LIB_MCUBOOT) */
 
 #include "arc_feature_config.h"
 
@@ -184,6 +184,6 @@
 
 #define IMAGE_HEAD_SIZE 0x0
 
-#endif /* !defined(USE_MCUBOOT) */
+#endif /* !defined(LIB_MCUBOOT) */
 
 #endif /* _TARGET_MEM_CONFIG_H_ */
