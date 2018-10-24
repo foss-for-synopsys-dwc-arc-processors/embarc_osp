@@ -1,5 +1,5 @@
 # Application name
-APPL ?= mpu9250_test
+APPL ?= imu_mpu9250
 BOARD = iotdk
 EXT_DEV_LIST += sensor/imu/mpu9250
 #

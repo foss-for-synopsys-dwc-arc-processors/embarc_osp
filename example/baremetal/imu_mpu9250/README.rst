@@ -33,7 +33,7 @@ to run this example are as follows:
 
 .. code-block:: console
 
-    $ cd <embarc_root>/example/test/mpu9250_test
+    $ cd <embarc_root>/example/baremetal/imu_9250
     $ make BOARD=iotdk TOOLCHAIN=gnu run
 
 .. note:: Make sure you have selected the correct configuration of iotdk
