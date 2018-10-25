@@ -163,7 +163,7 @@ static int cmd_lwm2m_server(int argc, char **argv, void *extobj)
 	CMD_DEBUG("Start LwM2M server.");
 
 	if (task_lwm2m_server_handle == NULL) {
-		if (xTaskCreate(task_lwm2m_server, "lwm2m server", 20480, \
+		if (xTaskCreate(task_lwm2m_server, "lwm2m server", 8192, \
 			(void *)1, TSKPRI_LWM2M_SERVER, &task_lwm2m_server_handle) != pdPASS) {
 			EMBARC_PRINTF("create lwm2m server failed\r\n");
 		}

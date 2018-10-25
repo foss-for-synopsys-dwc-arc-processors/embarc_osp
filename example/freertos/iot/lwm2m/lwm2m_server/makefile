@@ -10,7 +10,9 @@ EXT_DEV_LIST += wifi/mrf24g
 HEAPSZ ?= 8192
 STACKSZ ?= 2048
 
+ifeq ($(TOOLCHAIN), gnu)
 OLEVEL = Os
+endif
 
 #
 # root dir of embARC
