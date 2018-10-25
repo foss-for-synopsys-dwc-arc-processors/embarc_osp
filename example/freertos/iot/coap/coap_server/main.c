@@ -76,21 +76,26 @@
 #include "embARC_debug.h"
 #include "lwip/netif.h"
 #include "coap.h"
+
+#if defined(BOARD_EMSK)
 #include "adt7420.h"
+#endif
 
 #define min(x,y) ((x) < (y) ? (x) : (y))
 
 #define TSKPRI_COAP_SERVER	(configMAX_PRIORITIES-2)	  /**< coap server task priority */
-#define TSKPRI_TEMPTX		(configMAX_PRIORITIES-3)
 
 static void task_coap_server(void *par);
-static void task_temp_tx(void *par);
 
 static TaskHandle_t task_coap_server_handle = NULL;
-static TaskHandle_t task_temptx_handle = NULL;
-
 static coap_resource_t *temp_resource = NULL;
+
+#if defined(BOARD_EMSK)
+#define TSKPRI_TEMPTX		(configMAX_PRIORITIES-3)
+static TaskHandle_t task_temptx_handle = NULL;
+static void task_temp_tx(void *par);
 static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
+#endif
 
 int main(void)
 {
@@ -132,7 +137,7 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 	coap_opt_iterator_t opt_iter;
 	unsigned char buf[40];
 	size_t len;
-	float temp_val;
+	float temp_val = 10.0;
 	coap_subscription_t *subscription;
 
 	response->hdr->code = COAP_RESPONSE_CODE(205);
@@ -159,9 +164,11 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 	coap_add_option(response, COAP_OPTION_MAXAGE,
 		coap_encode_var_bytes(buf, 60), buf);
 
+#if defined(BOARD_EMSK)
 	if (adt7420_sensor_read(temp, &temp_val) != E_OK) {
 		temp_val = 0.0f;
 	}
+#endif
 
 	len = snprintf((char *)buf,
 			min(sizeof(buf), response->max_size - response->length),
@@ -243,12 +250,15 @@ static void task_coap_server(void *par)
 
 	init_resources(ctx);
 
+#if defined(BOARD_EMSK)
 	if (xTaskCreate(task_temp_tx, "temperature update task", 128, (void *)1,
 		TSKPRI_TEMPTX, &task_temptx_handle) != pdPASS) {
 		EMBARC_PRINTF("create temperature update task failed\r\n");
 		vTaskDelete(NULL);
 		return;
 	}
+#endif
+
 	/**
 	 * every 100 ticks, the server will the incoming data.
 	 * FIXME: add semaphore post in received_package(coap/net.c) to
@@ -262,7 +272,7 @@ static void task_coap_server(void *par)
 	coap_free_context(ctx);
 }
 
-
+#if defined(BOARD_EMSK)
 static void task_temp_tx(void *par)
 {
 	adt7420_sensor_init(temp);
@@ -272,5 +282,6 @@ static void task_temp_tx(void *par)
 		vTaskDelay(2000);
 	}
 }
+#endif
 
 /** @} */
