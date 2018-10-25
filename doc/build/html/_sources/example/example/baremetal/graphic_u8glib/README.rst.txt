@@ -28,7 +28,7 @@ Detailed Description
  * Extra Comments
     NO
 
-Buidling and Running
+Building and Running
 ********************
 
 The commands to run this example are as follows:
