@@ -3,6 +3,8 @@ APPL ?= freertos_net_ntshell
 
 EXT_DEV_LIST += wifi/mrf24g
 
+BOARD ?= emsk
+
 ifeq ($(BOARD),emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420
 endif

@@ -3,6 +3,8 @@ APPL ?= freertos_iot_coap_server
 
 EXT_DEV_LIST += wifi/mrf24g
 
+BOARD ?= emsk
+
 ifeq ($(BOARD), emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420
 endif
