@@ -1,13 +1,22 @@
 #! /usr/bin/env python
-import json
-import os
-import sys
-import requests
+from __future__ import print_function
 from prettytable import PrettyTable
 from colorama import Fore, Back, Style
 from configparser import ConfigParser
-import copy
+from xlsxwriter.workbook import Workbook
+from xlsxwriter.worksheet import Worksheet
+from xlsxwriter.worksheet import convert_cell_args
+import operator
+import collections
+import subprocess
 import argparse
+import requests
+import json
+import os
+import sys
+import copy
+import time
+import contextlib
 example = {
     "arc_feature_cache": "example/baremetal/arc_feature/cache",
     "arc_feature_timer_interrupt": "example/baremetal/arc_feature/timer_interrupt",
@@ -40,6 +49,194 @@ example = {
 
 '''
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
+BUILD_SIZE_SECTION_NAMES = ['text', 'data', 'bss']
+_cwd = os.getcwd()
+
+def getcwd():
+    '''return current working path '''
+    global _cwd
+    return _cwd
+
+@contextlib.contextmanager
+def cd(newdir):
+    '''A function that does cd'''
+    global _cwd
+    prevdir = getcwd()
+    os.chdir(newdir)
+    _cwd = newdir
+    try:
+        yield
+    finally:
+        os.chdir(prevdir)
+        _cwd = prevdir
+
+def excel_string_width(str):
+    string_width = len(str)
+    if string_width == 0:
+        return 0
+    else:
+        return string_width * 1.1
+
+class MyWorksheet(Worksheet):
+
+    @convert_cell_args
+    def write_string(self, row, col, string, cell_format=None):
+        if self._check_dimensions(row, col):
+            return -1
+
+        min_width = 0
+
+        string_width = excel_string_width(string)
+        if string_width > min_width:
+            max_width = self.max_column_widths.get(col, min_width)
+            if string_width > max_width:
+                self.max_column_widths[col] = string_width
+        return super(MyWorksheet, self).write_string(row, col, string, cell_format)
+
+class MyWorkbook(Workbook):
+
+    
+    def add_worksheet(self, name=None):
+        worksheet = super(MyWorkbook, self).add_worksheet(name, MyWorksheet)
+        worksheet.max_column_widths = {}
+
+        return worksheet
+
+    def close(self):
+        for worksheet in self.worksheets():
+            for column, width in worksheet.max_column_widths.items():
+                worksheet.set_column(column, column, width)
+
+        return super(MyWorkbook, self).close()
+
+def get_cache(osp_path):
+    cache = ".cache/result"
+    cache_path = os.path.join(osp_path, cache)
+    if not os.path.exists(cache_path):
+        os.makedirs(cache_path)
+    return cache_path
+
+
+def result_json_artifacts(osp_path, result, file=None):
+    if file:
+        job = file
+    else:
+        job = os.environ.get("CI_JOB_NAME")
+        if not job:
+            job = os.environ.get("NAME")
+    if job:
+        cache_path = get_cache(osp_path)
+        file = job + ".json"
+        file_path = os.path.join(cache_path, file)
+        with open(file_path, "w") as f:
+            json.dump(result, f, indent=4)
+            f.close()
+
+
+def dict_to_excel(datas):
+    print("Start to generate excel")
+    results_board_config = dict()
+    for toolchain_config, results in datas.items():
+        filename = toolchain_config + ".xlsx"
+        workbook = MyWorkbook(filename)
+        sheet_dict = dict()
+        merge_format = workbook.add_format({'bold': True, "align": "center","valign": "vcenter"})
+        merge_format_app = workbook.add_format({"align": "center","valign": "vcenter"})
+        for build in results:
+            config = build.get("config", None)
+            if config:
+                board_config = config["BOARD"] + "_" + config["BD_VER"]
+                if not results_board_config.get(board_config, None):
+                    results_board_config[board_config] = [build]
+                else:
+                    results_board_config[board_config].append(build)
+        for board_config in results_board_config:
+            worksheet = workbook.add_worksheet(board_config)
+            sheet_dict[board_config] = worksheet
+
+        for board_config, build in results_board_config.items():
+            build.sort()
+            worksheet = sheet_dict[board_config]
+            worksheet.merge_range(0, 0, 1, 0, "APP", merge_format)
+            worksheet.set_column(0, 7, 10)
+            worksheet.merge_range(0, 1, 1, 1, "CORE", merge_format)
+            worksheet.merge_range(0, 2, 1, 2, "TIME (s)", merge_format)
+            worksheet.merge_range(0, 3, 1, 3, "GIT COMMIT SHA", merge_format)
+            worksheet.merge_range(0, 4, 0, 6, "SIZE", merge_format)
+            worksheet.write(1, 4, "text")
+            worksheet.write(1, 5, "data")
+            worksheet.write(1, 6, "bss")
+            worksheet.merge_range(0, 7, 1, 7, "PASS", merge_format)
+            worksheet.freeze_panes(1, 0)
+            worksheet.freeze_panes(2, 0)
+            row = 2
+
+            same_app = dict()
+            same_app = collections.OrderedDict()
+            app_name = build[0]["app_path"]
+            i = 0
+            same_app[app_name] = i
+            for app_build in build:
+                if app_name == app_build["app_path"]:
+                    i += 1
+                else:
+                    same_app[app_name] = i
+                    i = 1
+                    app_name = app_build["app_path"]
+                    same_app[app_name] = i
+
+                cell_format = workbook.add_format()
+                failed = "No"
+                if not app_build["code"]:
+                    failed = "Yes"
+                else:
+                    cell_format.set_bg_color("#FFC7CE")
+                worksheet.write(row, 0, app_build["app_path"])
+                worksheet.write(row, 1, app_build["config"]["CUR_CORE"], cell_format)
+                worksheet.write(row, 2, round(app_build["time_cost"], 2), cell_format)
+                worksheet.write(row, 3, app_build["commit_sha"], cell_format)
+                worksheet.write(row, 4, str(app_build["size"].get("text", " ")), cell_format)
+                worksheet.write(row, 5, str(app_build["size"].get("data", " ")), cell_format)
+                worksheet.write(row, 6, str(app_build["size"].get("bss", " ")), cell_format)
+                worksheet.write(row, 7, failed, cell_format)
+                row += 1
+            same_app[app_name] = i
+            s = 2
+            for app, value in same_app.items():
+                if value > 1:
+                    worksheet.merge_range(s, 0, s + value - 1, 0, app, merge_format_app)
+                s += value
+
+        workbook.close()
+
+
+def result_excel_artifacts(osp_path):
+    cache_path = get_cache(osp_path)
+    files = os.listdir(cache_path)
+    datas = dict()
+    for file in files:
+        filename, filesuffix = os.path.splitext(file)
+        if not filesuffix == ".json" or filename =="results":
+            continue
+        file_path = os.path.join(cache_path, file)
+        with open(file_path, "r") as f:
+            results = json.load(f)
+            for app, build_status in results.items():
+                for build in build_status:
+                    config = build.get("config", None)
+                    if config:
+                        toolchain_config = config["TOOLCHAIN"] + "_" + config["TOOLCHAIN_VER"]
+                        if not datas.get(toolchain_config, None):
+                            datas[toolchain_config] = [build]
+                        else:
+                            datas[toolchain_config].append(build)
+                    else:
+                        continue
+            f.close()
+        
+    result_json_artifacts(osp_path, datas, file="results")
+    with cd(cache_path):
+        dict_to_excel(datas)
 
 
 class TailRecurseException:
@@ -117,7 +314,8 @@ def board_version_config(osp_root, board, bd_version=None):
             versions = os.listdir(board_path)
             for version in versions:
                 path = os.path.join(board_path, version)
-                if os.path.isdir(path) and "configs" in os.listdir(path):
+                file_list = os.listdir(path)
+                if os.path.isdir(path) and "configs" in file_list:
                     version_path = os.path.join(board_path, version, "configs")
                     bd_vers[version] = version_path
     if bd_version is not None:
@@ -180,38 +378,60 @@ def get_board_version(osp_root, board, bd_version=None):
 def get_boards(osp_root, board=None):
     result = []
     board_path = os.path.join(osp_root, "board")
+    board_list = os.listdir(board_path)
     if os.path.exists(board_path):
         if board is not None:
-            if board in os.listdir(board_path):
+            if board in board_list:
                 result.append(board)
                 return result
-        for file in os.listdir(board_path):
+        for file in board_list:
             if os.path.isdir(os.path.join(board_path, file)):
                 result.append(file)
     return result
 
+def get_build_size(app_path, build_cmd):
+    size_cmd = ["make"]
+    size_cmd.extend( build_cmd)
+    size_cmd.append("size")
+    build_msg = pquery(size_cmd)
+    build_size = dict()
+    if build_msg:
+        app_size_lines = build_msg.splitlines()
+        if len(app_size_lines) >= 3:
+            app_size_lines = app_size_lines[len(app_size_lines)-2:]
+            section_names = app_size_lines[0].split()
+            section_values = app_size_lines[1].split()
+            for idx, section_name in enumerate(section_names):
+                if section_name in BUILD_SIZE_SECTION_NAMES:
+                    build_size[section_name] = int(section_values[idx])
+    return build_size
 
 def build_makefile_project(app_path, config):
-
     result = dict()
-    isMakeProject = False
+    result = collections.OrderedDict()
+    build_status = dict()
+    build_status["size"] = dict()
+    build_conf_dict = dict()
     make_configs = copy.deepcopy(config)
     core_key = "CORE" if "CORE" in make_configs else "CUR_CORE"
 
-    osp_root = make_configs.pop("OSP_ROOT")
-    toolchain_ver = make_configs.pop("TOOLCHAIN_VER")
-    parallel = make_configs.pop("PARALLEL")
-
-    toolchain = make_configs["TOOLCHAIN"]
-    board = make_configs["BOARD"]
-    bd_ver = make_configs["BD_VER"]
-    cur_core = make_configs[core_key]
-
+    osp_root = make_configs.get("OSP_ROOT", None)
+    toolchain = make_configs.get("TOOLCHAIN", None)
+    build_conf_dict["TOOLCHAIN"] = toolchain
+    parallel = make_configs.get("PARALLEL", False)
+    board = make_configs.get("BOARD", None)
+    build_conf_dict["BOARD"] = board
+    bd_ver = make_configs.get("BD_VER", None)
+    build_conf_dict["BD_VER"] = bd_ver
+    cur_core = make_configs.get(core_key, None)
     conf_key = board + "_" + bd_ver + "_" + cur_core
+    build_conf_dict[core_key] = cur_core
+
     tcf_name = cur_core + ".tcf"
     tcf_found = get_tcf(osp_root, board, bd_ver, cur_core)
-    print "tcf_path:%s" % (tcf_found)
-    build_conf_list = ["%s=%s" % (key, value) for (key, value) in make_configs.items()]
+    print("tcf_path:%s" % (tcf_found))
+
+    build_conf_list = ["%s=%s" % (key, value) for (key, value) in build_conf_dict.items()]
     build_conf = " ".join(build_conf_list)
 
     tcf_path = tcf_found[tcf_name]
@@ -220,124 +440,135 @@ def build_makefile_project(app_path, config):
 
         if makefile_found:
             if is_embarc_makefile(makefile_found):
-                isMakeProject = True
-                # Record current folder
-                cur_dir = os.getcwd()
+                build_status['app_path'] = app_path.replace("\\", "/")
+                build_status["config"] = make_configs
                 # Change to application makefile folder
-                os.chdir(app_path)
-                # Build application, clean it first
-                print Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)
-                print Style.RESET_ALL
-                sys.stdout.flush()
-                make_cmd = "make -j " + str(parallel) + " SILENT=1 " + build_conf
+                with cd(app_path):
+                    # Build application, clean it first
+                    print(Fore.GREEN + "Build Application {} with Configuration {} {}".format(app_path, conf_key, config)) 
+                    print(Style.RESET_ALL)
+                    sys.stdout.flush()
+                    make_cmd = "make -j " + str(parallel) + " SILENT=1 " + build_conf
+                    cleancommand = make_cmd + " clean"
+                    os.system(cleancommand)
 
-                cleancommand = make_cmd + " clean"
-                os.system(cleancommand)
-                buildcommand = make_cmd
-                print Fore.GREEN + "{}".format(buildcommand)
-                result["status"] = os.system(buildcommand)
-                result["app"] = app_path
-                result["conf"] = conf_key
-                result["toolchain"] = toolchain
-                result["toolchain_ver"] = toolchain_ver
-                os.chdir(cur_dir)
+                    buildcommand = make_cmd
+                    print(Fore.GREEN + "{}".format(buildcommand))
+                    print(Style.RESET_ALL)
+                    time_pre =time.time()
+                    build_status["code"] = os.system(buildcommand)
+                    build_status['time_cost'] = (time.time() - time_pre)
+                    if not build_status["code"]:
+                        build_status["size"] = get_build_size(".", build_cmd=build_conf_list)
+
+                    build_status["commit_sha"] = os.environ.get("CI_COMMIT_SHA") or os.environ.get("TRAVIS_COMMIT")
+                    
+                    result["toolchain"] = toolchain
+                    result["toolchain_ver"] = make_configs.get("TOOLCHAIN_VER", None)
+                    result["app"] = app_path
+                    result["conf"] = conf_key
+                    result["status"] = build_status["code"]
             else:
-                result["status"] = 1
-                result["app"] = app_path
-                result["conf"] = Fore.YELLOW + conf_key
-                result["toolchain"] = toolchain
-                result["toolchain_ver"] = toolchain_ver
-
+                build_status['reason'] = 'Application makefile is not a embARC makefile!'
+        else:
+            build_status['reason'] = 'Application makefile donesn\'t exist!'
     else:
-        isMakeProject = False
-    return isMakeProject, result
+        build_status['reason'] = 'Can not find this core'
+    return result, build_status
 
 
-def build_project_configs(app_path, config):
-    make_configs = config
-    core_key = "CUR_CORE"
-    osp_root = None
-    board_input = None
-    bd_ver_input = None
-    cur_core_input = None
-    toolchain_ver = "2017.09"
-    bd_vers = dict()
-    cur_cores = dict()
+def build_project_configs(app_path, configs):
+    make_options = configs["make_options"]
+    app_build_status = dict()
     make_config = dict()
     results = []
-    toolchain = "gnu"
     build_count = 0
     status = True
-    expected_file = None
     expected_different = dict()
     expected_different[app_path] = []
-    parallel = ""
-
-    core_key = "CORE" if "CORE" in make_configs else "CUR_CORE"
-    if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
-        parallel = make_configs["PARALLEL"]
-    if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
-        expected_file = make_configs["EXPECTED"]
-
-    if "TOOLCHAIN_VER" in make_configs and make_configs["TOOLCHAIN_VER"] is not None:
-        toolchain_ver = make_configs["TOOLCHAIN_VER"]
-
-    if "TOOLCHAIN" in make_configs and make_configs["TOOLCHAIN"] is not None:
-        toolchain = make_configs["TOOLCHAIN"]
-    if "OSP_ROOT" in make_configs and make_configs["OSP_ROOT"] is not None:
-        osp_root = make_configs["OSP_ROOT"]
-    if "BOARD" in make_configs and make_configs["BOARD"] is not None:
-        board_input = make_configs["BOARD"]
-    boards = get_boards(osp_root, board_input)
-    if "BD_VER" in make_configs and make_configs["BD_VER"] is not None:
-        bd_ver_input = make_configs["BD_VER"]
-    for board in boards:
-        version = get_board_version(osp_root, board, bd_version=bd_ver_input)
-        bd_vers[board] = version
-    if core_key in make_configs and make_configs[core_key] is not None:
-        cur_core_input = make_configs[core_key]
-
-    for (board, versions) in bd_vers.items():
-        cur_cores[board] = dict()
-        for version in versions:
-            cores = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
-            cur_cores[board][version] = cores
-    for board in cur_cores:
-        for bd_ver in cur_cores[board]:
+    core_key = configs["core_key"]
+    for board in make_options:
+        for bd_ver in make_options[board]:
             core_failed = 0
-            core_num = len(cur_cores[board][bd_ver])
+            core_num = len(make_options[board][bd_ver])
             may_compare = []
-            for cur_core in cur_cores[board][bd_ver]:
-                make_config["OSP_ROOT"] = osp_root
+            for cur_core in make_options[board][bd_ver]:
+                make_config["OSP_ROOT"] = configs["osp_root"]
                 make_config["BOARD"] = board
                 make_config["BD_VER"] = bd_ver
                 make_config[core_key] = cur_core
-                make_config["TOOLCHAIN"] = toolchain
-                make_config["TOOLCHAIN_VER"] = toolchain_ver
-                make_config["PARALLEL"] = parallel
-                isMakefileProject, result = build_makefile_project(app_path, make_config)
-                if isMakefileProject is False:
-                    print "Application {} doesn't have makefile".format(app_path)
+                make_config["TOOLCHAIN"] = configs["toolchain"]["name"]
+                make_config["TOOLCHAIN_VER"] = configs["toolchain"]["version"]
+                make_config["PARALLEL"] = configs["parallel"]
+                make_config["SILENT"] = 1
+                result, build_status = build_makefile_project(app_path, make_config)
+                if not app_build_status.get(app_path, None):
+                    app_build_status[app_path] = [build_status]
                 else:
-                    build_count += 1
-                    if result["status"] != 0:
-                        status = False
-                        core_failed += 1
-                    results.append(result)
-                    may_compare.append(result)
+                    app_build_status[app_path].append(build_status)
+
+                build_count += 1
+                if result["status"] != 0:
+                    status = False
+                    core_failed += 1
+                results.append(result)
+                may_compare.append(result)
 
             if core_failed == core_num:
+                expected_file = configs.get("EXPECTED", None)
                 if expected_file is not None:
                     expected_status = get_expected_result(expected_file, app_path, board, bd_ver)
                     if not expected_status:
-                        print "This application compile failed, but the expected result is pass"
+                        print("This application compile failed, but the expected result is pass")
                         expected_different[app_path].extend(may_compare)
                 else:
-                    print "now not have expected file"
+                    print("now not have expected file")
                     expected_different[app_path].extend(may_compare)
 
-    return status, results, build_count, expected_different
+    return status, results, build_count, expected_different, app_build_status
 
+
+class ProcessException(Exception):
+    pass
+
+
+def pquery(command, output_callback=None, stdin=None, **kwargs):
+    proc = None
+    try:
+        proc = subprocess.Popen(command, bufsize=0, stdout=subprocess.PIPE, stderr=subprocess.PIPE, **kwargs)
+    except OSError as e:
+        if e.args[0] == errno.ENOENT:
+            print(
+                "Could not execute \"%s\".\n"
+                "Please verify that it's installed and accessible from your current path by executing \"%s\".\n" % (command[0], command[0]), e.args[0])
+        else:
+            raise e
+    if proc is None:
+        print(
+                "Could not execute \"%s\".\n"
+                "Please verify that it's installed and accessible from your current path by executing \"%s\".\n" % (command[0], command[0]), e.args[0])
+        return None
+
+    if output_callback:
+        line = ""
+        while 1:
+            s = str(proc.stderr.read(1))
+            line += s
+            if s == '\r' or s == '\n':
+                output_callback(line, s)
+                line = ""
+
+            if proc.returncode is None:
+                proc.poll()
+            else:
+                break
+
+    stdout, _ = proc.communicate(stdin)
+
+    if proc.returncode != 0:
+        raise ProcessException(proc.returncode, command[0], ' '.join(command), getcwd())
+
+    return stdout.decode("utf-8")
 
 def get_expected_result(expected_file, app_path, board, bd_ver):
     result = False
@@ -377,30 +608,36 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
 
 def send_pull_request_comment(columns, results):
     job = os.environ.get("NAME")
-    comment_job = "## " + job + "\n"
-    if len(results)>0:
-        head = "|".join(columns) + "\n"
-        table_format =  "|".join(["---"]*len(columns)) + "\n"
-        table_head =head +table_format
-        comments = ""
-        comment = ""
-        for result in results:
-            for k in result:
-                comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
-            comment = comment.rstrip("|") + "\n"
-            comments += comment
-        comment_on_pull_request(comment_job + table_head + comments)
+    pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
+    if all([job, pr_number]):
+        comment_job = "## " + job + "\n"
+        if len(results)>0:
+            head = "|".join(columns) + "\n"
+            table_format =  "|".join(["---"]*len(columns)) + "\n"
+            table_head =head +table_format
+            comments = ""
+            comment = ""
+            for result in results:
+                for k in result:
+                    comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
+                comment = comment.rstrip("|") + "\n"
+                comments += comment
+            comment_on_pull_request(comment_job + table_head + comments)
+    else:
+        print("WARNING:Only send pull request comment in travis ci!")
+
+    pass
 
 
 def show_results(results, expected=None):
-    columns = ["TOOLCHAIN_VER", 'TOOLCHAIN', 'APP', 'CONF', 'PASS']
+    columns = ['TOOLCHAIN', "TOOLCHAIN_VER", 'APP', 'CONF', 'PASS']
     failed_pt = PrettyTable(columns)
     failed_results = []
     success_results = []
     expected_results = None
     success_pt = PrettyTable(columns)
     expected_pt = PrettyTable(columns)
-    
+
     for result in results:
         status = result.pop("status")
         if status != 0:
@@ -422,8 +659,8 @@ def show_results(results, expected=None):
             if len(result) > 0:
                 expected_pt.add_row(result)
         if len(expected_results) > 0:
-            print "these applications failed with some bd_ver: "
-            print expected_pt
+            print("these applications failed with some bd_ver: ")
+            print(expected_pt)
             sys.stdout.flush()
             return
     else:
@@ -431,11 +668,9 @@ def show_results(results, expected=None):
         for result in success_results:
             if len(result) > 0:
                 success_pt.add_row(result)
-        print Fore.GREEN + "Successfull results"
-        print success_pt
-        
-        
-        print Style.RESET_ALL
+        print(Fore.GREEN + "Successfull results")
+        print(success_pt)
+        print(Style.RESET_ALL)
         sys.stdout.flush()
 
         for result in failed_results:
@@ -447,10 +682,10 @@ def show_results(results, expected=None):
 
                 failed_pt.add_row(result)
 
-        print Fore.RED + "Failed result:"
-        print failed_pt
-        
-        print Style.RESET_ALL
+        print(Fore.RED + "Failed result:")
+        print(failed_pt)
+
+        print(Style.RESET_ALL)
         sys.stdout.flush()
 
 
@@ -464,7 +699,7 @@ def build_result_combine(results=None, formal_result=None):
 
     for result in results[1:]:
         conf = result.pop("conf")
-        if cmp(first_result, result) == 0:
+        if operator.eq(first_result, result):
             t = t + "\n" + conf
         else:
             result["conf"] = conf
@@ -518,15 +753,76 @@ def build_result_combine_tail(results):
         results_list.extend(formal_results)
     return results_list
 
+def parse_config(config):
+    make_configs = config
+    core_key = "CUR_CORE"
+    osp_root = None
+    board_input = None
+    bd_ver_input = None
+    cur_core_input = None
+    toolchain_ver = "2017.09"
+    bd_vers = dict()
+    cur_cores = dict()
+    toolchain = "gnu"
+    expected_file = None
+    parallel = ""
+
+    core_key = "CORE" if "CORE" in make_configs else "CUR_CORE"
+    if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
+        parallel = make_configs["PARALLEL"]
+    if "EXPECTED" in make_configs and make_configs["EXPECTED"] is not None:
+        expected_file = make_configs["EXPECTED"]
+
+    if "TOOLCHAIN_VER" in make_configs and make_configs["TOOLCHAIN_VER"] is not None:
+        toolchain_ver = make_configs["TOOLCHAIN_VER"]
+
+    if "TOOLCHAIN" in make_configs and make_configs["TOOLCHAIN"] is not None:
+        toolchain = make_configs["TOOLCHAIN"]
+    if "OSP_ROOT" in make_configs and make_configs["OSP_ROOT"] is not None:
+        osp_root = make_configs["OSP_ROOT"]
+    if "BOARD" in make_configs and make_configs["BOARD"] is not None:
+        board_input = make_configs["BOARD"]
+    boards = get_boards(osp_root, board_input)
+    if "BD_VER" in make_configs and make_configs["BD_VER"] is not None:
+        bd_ver_input = make_configs["BD_VER"]
+    for board in boards:
+        version = get_board_version(osp_root, board, bd_version=bd_ver_input)
+        bd_vers[board] = version
+    if core_key in make_configs and make_configs[core_key] is not None:
+        cur_core_input = make_configs[core_key]
+
+    for (board, versions) in bd_vers.items():
+        cur_cores[board] = dict()
+        for version in versions:
+            cores = get_tcfs(osp_root, board, version, cur_core=cur_core_input)
+            cur_cores[board][version] = cores
+
+    current_configs = dict()
+    current_configs["make_options"] = cur_cores
+    current_configs["core_key"] = core_key
+    current_configs["parallel"] = parallel
+    current_configs["osp_root"] = osp_root
+    current_configs["toolchain"] = {"name":toolchain, "version": toolchain_ver}
+    current_configs["EXPECTED"] = expected_file
+    return current_configs
+
 
 def build_makefiles_project(config):
     apps_results = {}
     apps_status = []
+    apps_build_status = dict()
     count = 0
     app_count = 0
     results_list = []
     applications_failed = []
     diff_expected_differents = dict()
+
+    
+    if os.environ.get("CI_JOB_NAME") == "deploy_prod":
+        print("Build finish and generate excel")
+        result_excel_artifacts(config.get("OSP_ROOT", "."))
+        sys.exit(0)
+
     expected_differents_list = []
     if "EXAMPLES" in config and config["EXAMPLES"]:
         examples_path = config.pop("EXAMPLES")
@@ -535,14 +831,15 @@ def build_makefiles_project(config):
         app_paths = dict(zip(key_list, app_paths_list))
     else:
         app_paths = example
+    current_configs = parse_config(config)
 
     for (app, app_path) in app_paths.items():
 
-        status, results, build_count, expected_different = build_project_configs(app_path, config)
+        status, results, build_count, expected_different, app_build_status = build_project_configs(app_path, current_configs)
         application_failed = application_all_failed(results)
         if application_failed == 1:
-            print Back.RED + "{} failed with all configurations".format(app_path)
-            print Style.RESET_ALL
+            print(Back.RED + "{} failed with all configurations".format(app_path))
+            print(Style.RESET_ALL)
         applications_failed.append(application_failed)
         apps_results[app_path] = results
         apps_status.append(status)
@@ -550,12 +847,16 @@ def build_makefiles_project(config):
         app_count += 1
         if app_path in expected_different and len(expected_different[app_path]) > 0:
             diff_expected_differents[app_path] = copy.deepcopy(expected_different[app_path])
+        apps_build_status.update(app_build_status)
 
-    print "There are {} projects, and they are compiled for {} times".format(app_count, count)
+    print("There are {} projects, and they are compiled for {} times".format(app_count, count))
     results_list = copy.deepcopy(build_result_combine_tail(apps_results))
     show_results(results_list)
     expected_differents_list = build_result_combine_tail(diff_expected_differents)
     show_results(expected_differents_list, expected=True)
+
+    print("Generate JSON for every job")
+    result_json_artifacts(current_configs["osp_root"], apps_build_status)
 
     return applications_failed, diff_expected_differents
 
@@ -564,11 +865,16 @@ def comment_on_pull_request(comment):
     pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
     slug =  os.environ.get("TRAVIS_REPO_SLUG")
     token = os.environ.get("GH_TOKEN")
-    if all([pr_number, slug, token, comment]):
+    request_config = [pr_number, slug, token, comment]
+    for i in range(len(request_config)):
+        if request_config[i] == "false":
+            request_config[i] = False
+    if all(request_config):
         url = 'https://api.github.com/repos/{slug}/issues/{number}/comments'.format(
             slug=slug, number=pr_number)
         response = requests.post(url, data=json.dumps({'body': comment}),
             headers={'Authorization': 'token ' + token})
+        print(">>>>Travis send pull request comment to {}, repsonse status code {}.".format(url, response.status_code))
         return response.json()
 
 
@@ -609,22 +915,22 @@ def get_options_parser():
 
 
 if __name__ == '__main__':
+    
 
-    cwd_path = os.getcwd()
+    cwd_path = getcwd()
     osp_path = os.path.dirname(cwd_path)
     make_config = get_config(sys.argv[1:])
     sys.stdout.flush()
-    os.chdir(osp_path)
-    applications_failed, expected_differents = build_makefiles_project(make_config)
-    os.chdir(cwd_path)
-    if "embarc_applications" in os.listdir(os.getcwd()):
+    with cd(osp_path):
+        applications_failed, expected_differents = build_makefiles_project(make_config)
+    if "embarc_applications" in os.listdir(getcwd()):
         os.chdir(os.path.dirname(cwd_path))
 
     if not len(expected_differents) > 0:
-        print "All the applications build as expected"
+        print("All the applications build as expected")
     else:
-        print "these applications failed with some configuration: "
-        print expected_differents.keys()
+        print("these applications failed with some configuration: ")
+        print(expected_differents.keys())
         comment = "applications failed with some configuration: \n" + "\n".join(expected_differents.keys())
         comment_on_pull_request(comment)
         sys.exit(1)
