@@ -10,7 +10,7 @@ VALID_CORE = $(call check_item_exist, $(CORE), $(SUPPORTED_CORES))
 
 BOARD_CORE_DIR = $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/$(VALID_CORE)
 
-## Core Configuation Folder ##
+## Core Configuration Folder ##
 CORE_TCF_DIR = $(BOARD_CORE_DIR)/tcf
 CORE_CONFIG_MK = $(BOARD_CORE_DIR)/core_config.mk
 
@@ -29,7 +29,7 @@ override VALID_CORE := $(TCFFILE_NAME)
 endif
 endif
 
-## Check Core Configuation Supported
+## Check Core Configuration Supported
 ifneq ($(TCFFILE_IS_VALID),1)
 ifeq ($(VALID_CORE),)
 $(info BOARD $(BOARD)-$(BD_VER) Core Configurations - $(SUPPORTED_CORES) are supported)
