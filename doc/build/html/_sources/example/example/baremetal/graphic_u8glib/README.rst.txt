@@ -38,4 +38,4 @@ The commands to run this example are as follows:
     $ cd <embarc_root>/example/baremetal/graphic_u8glib
     $ make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
-.. note:: As IoTDK's pmod inteface don't support I2C, please use the i2c pins of arduino interface 	mikro bus to connect pmod OLED.
+.. note:: As IoTDK's pmod interface don't support I2C, please use the i2c pins of arduino interface 	mikro bus to connect pmod OLED.
