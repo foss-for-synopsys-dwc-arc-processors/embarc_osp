@@ -866,6 +866,7 @@ def comment_on_pull_request(comment):
     slug =  os.environ.get("TRAVIS_REPO_SLUG")
     token = os.environ.get("GH_TOKEN")
     request_config = [pr_number, slug, token, comment]
+    print(request_config)
     for i in range(len(request_config)):
         if request_config[i] == "false":
             request_config[i] = False
@@ -922,6 +923,8 @@ if __name__ == '__main__':
     make_config = get_config(sys.argv[1:])
     sys.stdout.flush()
     with cd(osp_path):
+        comment = "test comment "
+        comment_on_pull_request(comment)
         applications_failed, expected_differents = build_makefiles_project(make_config)
     if "embarc_applications" in os.listdir(getcwd()):
         os.chdir(os.path.dirname(cwd_path))
