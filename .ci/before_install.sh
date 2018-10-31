@@ -26,8 +26,10 @@ fi
         pip install recommonmark || die
         pip install sphinx_rtd_theme || die   
     }
+    
     pip install PrettyTable || die
     pip install colorama || die
     pip install configparser || die
     pip install requests || die
+    pip install xlsxwriter || die
 }
