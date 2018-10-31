@@ -653,7 +653,6 @@ def show_results(results, expected=None):
             success_results.append([v for (k, v) in result.items()])
 
     if expected is not None:
-        print("Send wrong result to github")
         expected_results = failed_results
         send_pull_request_comment(columns, expected_results)
         for result in expected_results:
@@ -864,10 +863,9 @@ def build_makefiles_project(config):
 
 def comment_on_pull_request(comment):
     pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
-    slug =  os.environ.get("TRAVIS_REPO_SLUG")
+    slug =  1 # os.environ.get("TRAVIS_REPO_SLUG")
     token = os.environ.get("GH_TOKEN")
     request_config = [pr_number, slug, token, comment]
-    print(request_config)
     for i in range(len(request_config)):
         if request_config[i] == "false":
             request_config[i] = False
