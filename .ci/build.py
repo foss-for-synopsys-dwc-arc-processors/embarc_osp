@@ -863,8 +863,8 @@ def build_makefiles_project(config):
 
 def comment_on_pull_request(comment):
     pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
-    slug =  os.environ.get("TRAVIS_REPO_SLUG")
-    token = os.environ.get("GH_TOKEN")
+    slug = os.environ.get('TRAVIS_REPO_SLUG')
+    token = os.environ.get('GH_TOKEN')
     request_config = [pr_number, slug, token, comment]
     print(request_config)
     for i in range(len(request_config)):
