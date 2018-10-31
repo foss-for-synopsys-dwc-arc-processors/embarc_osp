@@ -301,7 +301,7 @@ int main(void)
 	fp = (fp_t)(*((uint32_t *)boot_cfg.ram_startaddress));
 
 #if defined(EMBARC_USE_MCUBOOT)
-
+	flash_device_open();
 #if defined(BOARD_EMSK)
 	trailer_init();
 #endif
@@ -315,6 +315,8 @@ int main(void)
 		EMBARC_PRINTF("\r\nsecure boot successfully \r\n");
 		fp = (fp_t)(*(uint32_t *)(rsp.br_image_off + rsp.br_hdr->ih_hdr_size));
 	}
+
+	flash_device_close();
 #endif
 
 	ram = (void *)APP_CFG_ADDR;

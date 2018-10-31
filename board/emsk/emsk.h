@@ -51,6 +51,7 @@
 #include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/emsk_sdcard.h"
 #include "drivers/pmwifi/pmwifi.h"
+#include "drivers/flash_obj/flash_obj.h"
 #include "dev_pinmux.h"
 
 #include "common/emsk_timer.h"

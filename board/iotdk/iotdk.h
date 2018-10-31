@@ -59,6 +59,7 @@
 #include "drivers/smic/smic_bootspi/smic_bootspi.h"
 #include "dev_pinmux.h"
 
+#include "drivers/flash_obj/flash_obj.h"
 #include "iotdk_hardware.h"
 
 /*-----------------------------------------------------------------------------*/

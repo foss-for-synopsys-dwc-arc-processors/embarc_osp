@@ -115,6 +115,13 @@ struct flash_sector {
 int flash_device_base(uint8_t fd_id, uintptr_t *ret);
 
 /*
+ * Using flash device.
+ */
+int flash_device_open(void);
+
+void flash_device_close(void);
+
+/*
  * Start using flash area.
  */
 int flash_area_open(uint8_t id, const struct flash_area **area);

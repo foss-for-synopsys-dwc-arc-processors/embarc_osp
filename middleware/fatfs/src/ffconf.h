@@ -89,8 +89,9 @@
 /   950 - Traditional Chinese (DBCS)
 */
 
-
+#ifndef _USE_LFN
 #define	_USE_LFN	1
+#endif
 #define	_MAX_LFN	255
 /* The _USE_LFN option switches the LFN feature.
 /

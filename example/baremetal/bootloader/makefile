@@ -5,7 +5,7 @@ BOARD ?= emsk
 
 LOCATION ?=
 
-# generate mcuboot library
+# use mcuboot in bootloader
 USE_MCUBOOT ?= 1
 
 ifeq ($(LOCATION), eflash)
@@ -39,7 +39,12 @@ ifeq ($(USE_MCUBOOT), 1)
 MID_SEL += mbedtls
 
 # libraries
-LIB_SEL = mcuboot
+LIB_SEL += mcuboot
+
+# decrease bootloader size
+APPL_DEFINES += -DNTSHELL_USE_CMDS_ARC=0 \
+				-DNTSHELL_USE_CMDS_PERIPHERAL=0 \
+				-D_USE_LFN=0
 endif
 
 # application source dirs

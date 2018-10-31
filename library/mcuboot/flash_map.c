@@ -25,6 +25,7 @@
 #include "bl2_util.h"
 
 #include <flash_map/flash_map.h>
+#include "board.h"
 
 #define BOOT_LOG_LEVEL BOOT_LOG_LEVEL_INFO
 #include "bootutil/bootutil_log.h"
@@ -35,7 +36,7 @@
  * Pick a random device ID for it that's unlikely to collide with
  * anything "real".
  */
-#define FLASH_DEVICE_ID 100
+#define FLASH_DEVICE_ID FLASH_DEV_ID
 #define FLASH_DEVICE_BASE CONFIG_FLASH_BASE_ADDRESS
 
 #define FLASH_MAP_ENTRY_MAGIC 0xd00dbeef
@@ -45,6 +46,8 @@ struct flash_map_entry {
     const struct flash_area area;
     unsigned int ref_count;
 };
+
+static DEV_FLASH_PTR flash_dev;
 
 /*
  * The flash area describes essentially the partition table of the
@@ -89,6 +92,22 @@ int flash_device_base(uint8_t fd_id, uintptr_t *ret)
     }
     *ret = FLASH_DEVICE_BASE;
     return 0;
+}
+
+int flash_device_open(void)
+{
+
+    flash_dev = flash_get_dev(FLASH_DEVICE_ID);
+    if(flash_dev == NULL)
+        return -1;
+
+    return flash_dev->flash_open(0, (void *)0);
+}
+
+void flash_device_close(void)
+{
+    flash_dev->flash_close();
+    flash_dev = NULL;
 }
 
 /*
@@ -156,7 +175,7 @@ int flash_area_read(const struct flash_area *area, uint32_t off, void *dst,
             uint32_t len)
 {
     BOOT_LOG_DBG("read  area=%d, off=%#x, len=%#x", area->fa_id, off, len);
-    memcpy(dst, (const void *)(area->fa_off + off), len);
+    flash_dev->flash_read((uint32_t)(area->fa_off + off), dst, len);
     return 0;
 }
 
@@ -164,14 +183,14 @@ int flash_area_write(const struct flash_area *area, uint32_t off,
                      const void *src, uint32_t len)
 {
     BOOT_LOG_DBG("write area=%d, off=%#x, len=%#x", area->fa_id, off, len);
-    memcpy((void *)(area->fa_off + off), (const void *)src, len);
+    flash_dev->flash_write((uint32_t)(area->fa_off + off), (void *)src, len);
     return 0;
 }
 
 int flash_area_erase(const struct flash_area *area, uint32_t off, uint32_t len)
 {
     BOOT_LOG_DBG("erase area=%d, off=%#x, len=%#x", area->fa_id, off, len);
-    memset((void *)(area->fa_off + off), 0xff, len);
+    flash_dev->flash_erase((uint32_t)(area->fa_off + off), len);
     return 0;
 }
 

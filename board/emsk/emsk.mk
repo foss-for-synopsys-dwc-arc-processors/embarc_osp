@@ -96,7 +96,8 @@ BOARD_EMSK_DEV_INCDIR		+= $(DEV_INCDIR)
 
 BOARD_EMSK_CSRCDIR += $(BOARD_EMSK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 			$(BOARD_EMSK_DIR)/common \
-			$(BOARD_EMSK_DIR)/drivers/mux
+			$(BOARD_EMSK_DIR)/drivers/mux \
+			$(BOARD_EMSK_DIR)/drivers/flash_obj
 
 # select dirvers according to middleware
 ifneq ($(findstring ntshell, $(MID_SEL)), )

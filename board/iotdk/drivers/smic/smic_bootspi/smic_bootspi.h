@@ -44,9 +44,10 @@
 #define SMIC_BOOTSPI_BLK_SIZE		0x10000		//64K bytes
 
 #define SMIC_BOOTSPI_BLKS_PER_CHIP 	32
+#define SMIC_BOOTSPI_SECS_PER_CHIP 	512
 
-#define SMIC_BOOTSPI_PAGES_PER_SEC	(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)
-#define SMIC_BOOTSPI_SECS_PER_BLK	(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)
+//#define SMIC_BOOTSPI_PAGES_PER_SEC	(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)
+//#define SMIC_BOOTSPI_SECS_PER_BLK	(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)
 
 
 #ifdef __cplusplus
@@ -83,7 +84,7 @@ extern int32_t smic_bootspi_close(SMIC_BOOTSPI_DEF_PTR obj);
 extern int32_t smic_bootspi_read(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *param);
-
+extern int32_t smic_bootspi_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len);
 #ifdef __cplusplus
 }
 #endif
