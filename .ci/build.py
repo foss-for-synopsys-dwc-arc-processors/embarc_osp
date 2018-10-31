@@ -870,6 +870,7 @@ def comment_on_pull_request(comment):
     for i in range(len(request_config)):
         if request_config[i] == "false":
             request_config[i] = False
+    print(request_config)
     if all(request_config):
         url = 'https://api.github.com/repos/{slug}/issues/{number}/comments'.format(
             slug=slug, number=pr_number)
