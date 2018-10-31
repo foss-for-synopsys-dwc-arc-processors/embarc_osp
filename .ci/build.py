@@ -653,6 +653,7 @@ def show_results(results, expected=None):
             success_results.append([v for (k, v) in result.items()])
 
     if expected is not None:
+        print("Send wrong result to github")
         expected_results = failed_results
         send_pull_request_comment(columns, expected_results)
         for result in expected_results:
@@ -923,8 +924,6 @@ if __name__ == '__main__':
     make_config = get_config(sys.argv[1:])
     sys.stdout.flush()
     with cd(osp_path):
-        comment = "test comment "
-        comment_on_pull_request(comment)
         applications_failed, expected_differents = build_makefiles_project(make_config)
     if "embarc_applications" in os.listdir(getcwd()):
         os.chdir(os.path.dirname(cwd_path))
