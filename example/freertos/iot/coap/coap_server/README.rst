@@ -27,7 +27,7 @@ Detailed Description
  * Extra Comments
     NO
 
-Buidling and Running
+Building and Running
 ********************
 
  This example outputs to the console. It is supported by all platform. You might need to change MUX configurations or connect wires in order to use peripheral modules, see :ref:`peripheral_preparation`.
@@ -38,7 +38,8 @@ Buidling and Running
 	$ cd <embarc_root>/example/freertos/iot/coap/coap_server
 	$ make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
- When the WiFi is connected and CoAP server is running, you may run python code shown below. You may save this code as a .py file and run it from a new cmd console. The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.
+
+When the WiFi is connected and CoAP server is running, you may run python code shown below. You may save this code as a .py file and run it from a new cmd console. The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.
 
 .. code-block:: python
 
@@ -61,6 +62,7 @@ Buidling and Running
 	print(response.pretty_print())
 
 	client.stop()
+
 
 Sample Output
 =============
@@ -109,7 +111,8 @@ Sample Output
 	temperature update running
 	Exit from main function, error code:0....
 
- Output from CoAPthon CoAP client
+
+Output from CoAPthon CoAP client
 
 .. code-block:: console
 
