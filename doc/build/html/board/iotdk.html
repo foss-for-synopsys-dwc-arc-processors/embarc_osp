@@ -240,7 +240,9 @@ I/O functions and fast math (trigonometric) accelerator.</p>
 <dd><ul class="first last">
 <li>Arduino Interface headers (UNO R3 compatible)</li>
 <li>mikroBUS headers</li>
-<li>Pmod Interfaces (2x)</li>
+<li>PMOD Interfaces (2x)
+- PMOD_B (support GPIO and SPI)
+- PMOD_C (support GPIO and UART)</li>
 <li>Extension header (2x 18 pin)</li>
 </ul>
 </dd>
@@ -355,12 +357,12 @@ either continues execution of the U-Boot bootloader or starts executing the Firm
 <h2>Extension Interfaces<a class="headerlink" href="#extension-interfaces" title="Permalink to this headline">¶</a></h2>
 <p>To bring your application context around the ARC IoTDK, the following peripheral module standards are supported:</p>
 <img alt="ARC IoTDK Extension Interfaces" src="../_images/iotdk_extension_interfaces.jpg" />
-<p><strong>Digilent Pmod™ (2x)</strong></p>
-<p>The ARC IoTDK features two 12-pin Pmod connectors Pmod_B and Pmod_C. The functionality of the Pmod connectors
-is programmable and includes GPIO [6] and SPI [15] for Pmod_B and GPIO [6] and UART [14] for Pmod_C.
-After a reset, all ports are configured as GPIO inputs [6].
-The location of the pins on the Pmod connectors is shown:</p>
-<img alt="ARC IoTDK Pinout Diagram of Pmod" src="../_images/iotdk_pinout_diagram_of_pmod.jpg" />
+<p><strong>Digilent PMOD™ (2x)</strong></p>
+<p>The ARC IoTDK features two 12-pin PMOD connectors PMOD_B and PMOD_C. The functionality of the PMOD connectors
+is programmable and includes GPIO and SPI for PMOD_B and GPIO and UART for PMOD_C.
+After a reset, all ports are configured as GPIO inputs.
+The location of the pins on the PMOD connectors is shown:</p>
+<img alt="ARC IoTDK Pinout Diagram of PMOD" src="../_images/iotdk_pinout_diagram_of_pmod.jpg" />
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -469,6 +471,11 @@ The location of the pins on the Pmod connectors is shown:</p>
 </tr>
 </tbody>
 </table>
+<p>To change the pinmux of IoTDK, e.g. (GPIO to SPI for PMOD_B), user can use the pinmux API in <code class="docutils literal notranslate"><span class="pre">dev_pinmux.h</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the examples of embARC OSP, PMOD_B is used to connected SPI devices with PMOD interface, e.g. PMOD WiFI, PMOD_C is used to connected UART devices with PMOD interface, e.g. PMOD BLE.</p>
+</div>
 <p><strong>MikroBUS (1x)</strong></p>
 <p>The ARC IoTDK features a set of MikroBUS headers. The picture below shows the relevant function assignments,
 fully compatible with the MikroBUS standard [2]. The MikroBUS headers enable the addition of Click
@@ -714,7 +721,7 @@ Most shields do not require this ICSP header as the SPI master interface on this
 <img alt="ARC IoTDK 2x18 Pin Extension Header" src="../_images/iotdk_2x18_pin_extension_header.jpg" />
 </div>
 <div class="section" id="programming-and-debugging">
-<h2>Programming and Debugging<a class="headerlink" href="#programming-and-debugging" title="Permalink to this headline">¶</a></h2>
+<span id="getting-started-with-iot-development-kit"></span><h2>Programming and Debugging<a class="headerlink" href="#programming-and-debugging" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="required-hardware-and-software">
 <h3>Required Hardware and Software<a class="headerlink" href="#required-hardware-and-software" title="Permalink to this headline">¶</a></h3>
 <p>To use embARC OSP applications on the IoTDK board, the following items are required</p>
@@ -724,53 +731,64 @@ Most shields do not require this ICSP header as the SPI master interface on this
 standalone, the universal switching power adaptor (110-240V AC to 5V DC),
 can be used to power the board</li>
 <li><a class="reference internal" href="../getting_started/software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>.</li>
-<li>(optional) A collection of Pmods and Arduino modules.</li>
+<li>(optional) A collection of PMODs and Arduino modules.</li>
 </ul>
 </div>
 <div class="section" id="set-up-the-iotdk">
 <h3>Set up the IoTDK<a class="headerlink" href="#set-up-the-iotdk" title="Permalink to this headline">¶</a></h3>
-<p>To run embARC OSP applications on IoTDK, you need to setup the board correctly</p>
-<ul class="simple">
-<li>Connect the digilent usb cable from your host to the board.</li>
-<li>(optional) Connect the 5V DC power supply to your board if necessary.</li>
+<ol class="arabic">
+<li><p class="first">Switch DIP switches to the OFF position (closest to the edge of the board).</p>
+</li>
+<li><p class="first">Connect your PC and IoTDK board with USB cable to micro USB port next to 5V DC power connector on board.</p>
+</li>
+<li><p class="first">(Optional) Connect 5V DC power connector with 5V AC/DC adapter.</p>
+</li>
+<li><p class="first">You can use any terminal emulation program to view UART output from the IoTDK. The USB connection provides both the debug channel and RS232 transport. Use PuTTY application on Windows as an example.</p>
+<ul>
+<li><p class="first">Determine which COM port the IoTDK is using.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Open the <strong>Windows Control Panel</strong> and select <strong>Device Manager</strong> in a Windows environment.</li>
+<li>Expand <strong>Ports (COM and LPT)</strong> in the list. Select <strong>USB Serial Port (COM x)</strong> and note the COM port number for the ARC board.</li>
 </ul>
+</div></blockquote>
+</li>
+<li><p class="first">Configure serial terminal connection.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Launch PuTTY. Select <strong>Serial</strong> under <strong>Connection type</strong> and enter the appropriate COM port string under <strong>Serial line</strong>.</li>
+<li>Choose 115200 baud, 8 bits, 1 stop bit, no parity (115200-8-N-1) in settings.</li>
+<li>You can optionally save your settings so they can be easily retrieved every time PuTTY is launched.</li>
+<li>Click Open to open the console.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">Test serial output with IoTDK.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Press the reset button on the IoTDK board to reset the board and run the uboot.</li>
+<li>Confirm that you can see the message printed to the console as shown below.</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">U-Boot 2018.03-rc3-00028-g161e5eeaa4a4-dirty (Mar 05 2018 - 12:56:14 +0300)</span>
+
+<span class="go">DRAM:  128 KiB</span>
+<span class="go">MMC:   Synopsys Mobile storage: 0</span>
+<span class="go">Loading Environment from FAT... Card did not respond to voltage select!</span>
+<span class="go">** Bad device mmc 0 **</span>
+<span class="go">Failed (-5)</span>
+<span class="go">In:    serial0@80014000</span>
+<span class="go">Out:   serial0@80014000</span>
+<span class="go">Err:   serial0@80014000</span>
+<span class="go">=&gt;</span>
+</pre></div>
 </div>
-<div class="section" id="connecting-serial-output">
-<h3>Connecting Serial Output<a class="headerlink" href="#connecting-serial-output" title="Permalink to this headline">¶</a></h3>
-<p>In the default configuration, embARC OSP’s IoTDK images support serial output
-via the UART0 on the board through digilent USB cable.  To enable
-serial output:</p>
-<p>On your development environment, you will need to:</p>
-<ul class="simple">
-<li>Open a serial port emulator (i.e. minicom, putty, screen, etc)</li>
-<li>Specify the tty driver name, for example, on Linux this may be <code class="file docutils literal notranslate"><span class="pre">/dev/ttyUSB1</span></code>; on Windows this may be <em>COMx</em></li>
-<li>Set the communication settings to:</li>
-</ul>
-<table border="1" class="docutils">
-<colgroup>
-<col width="60%" />
-<col width="40%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameter</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Baud:</td>
-<td>115200</td>
-</tr>
-<tr class="row-odd"><td>Data:</td>
-<td>8 bits</td>
-</tr>
-<tr class="row-even"><td>Parity:</td>
-<td>None</td>
-</tr>
-<tr class="row-odd"><td>Stopbits:</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
+</div></blockquote>
+</li>
+<li><p class="first">(Optional) Connect peripheral modules to the IoTDK as per <a class="reference internal" href="../getting_started/peripheral_preparation.html#peripheral-preparation"><span class="std std-ref">Peripheral Preparation</span></a>.</p>
+</li>
+</ol>
 </div>
 <div class="section" id="building">
 <h3>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
@@ -807,8 +825,7 @@ serial output:</p>
 <h3>Flashing<a class="headerlink" href="#flashing" title="Permalink to this headline">¶</a></h3>
 <p>Although IoTDK has eFlash and spi flash, you cannot directly flash your
 application into IoTDK through debugger. You need other tools/applications
-(e.g., u-boot or embarc bootloader) to do this. The related introduction is
-working in progress.</p>
+(e.g., u-boot or embarc bootloader) to do this. Please refer <a class="reference internal" href="../example/example/baremetal/bootloader/README.html#example-bootloader"><span class="std std-ref">Simple Bootloader</span></a>.</p>
 </div>
 </div>
 </div>

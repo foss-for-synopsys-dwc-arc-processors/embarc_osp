@@ -95,7 +95,11 @@
 <li class="toctree-l2 current"><a class="reference internal" href="board.html#supported-boards">Supported Boards</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="axs.html">ARC Software Development Platform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="emsk.html">ARC EM Starter Kit</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ARC HS Development Kit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ARC HS Development Kit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#extension-interfaces">Extension Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#programming-and-debugging">Programming and Debugging</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="nsim.html">Virtual Board based on ARC nSIM</a></li>
 </ul>
@@ -189,33 +193,58 @@ bootloader) and the embARC OSP distribution for embedded systems. embARC OSP
 source code includes bare metal and FreeRTOS device drivers and example
 applications. Code development is made easy using the MetaWare Development
 Toolkit, MetaWare Lite tools or the ARC GNU Tool Chain.</p>
+<p>See also this URL for details about the board: <a class="reference external" href="https://www.synopsys.com/dw/ipdir.php?ds=arc-hs-development-kit">DesignWare ARC HS Development Kit
+(HSDK)</a></p>
 <img alt="ARC HS Development Kit" src="../_images/hsdk_board.jpg" />
 <p>The ARC HS Development Kit features the following components:</p>
-<ul class="simple">
-<li>ARC HS SoC:
-- Quad Core HS38x4 Processor
-- DDR3 memory controller
-- GPU
-- USB, Ethernet, SDIO
-- DesignWare APB Peripherals (consult HSDK documentation for complete details)</li>
-<li>Memory / Storage:
-- DDR3-1333 (4 GB)
-- 2x SPI Flash (2 MB)
-- I2C EEPROM (3 KB)</li>
-<li>Interfaces:
-- USB2 (2x)
-- Ethernet (10/100/1000)
-- Audio  - line in/out
-- USB Data port (JTAG/UART)
-- Micro-SD Card
-- WIFI/BT module
-- ADC (6 channels)
-- RTT Nexus and JTAG connectors</li>
-<li>Extensions:
-- AXI Tunnel (32-bit, 150 MHz)
-- Arduino  - Interface headers (UNO R3 compatible)
-- mikroBUS headers
-- Pmod Interfaces (3x), PMOD A and PMOD B (12 pins), PMOD C (6 pins)</li>
+<ul>
+<li><p class="first">ARC HS SoC:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Quad Core HS38x4 Processor</li>
+<li>DDR3 memory controller</li>
+<li>GPU</li>
+<li>USB, Ethernet, SDIO</li>
+<li>DesignWare APB Peripherals (consult HSDK documentation for complete details)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Memory / Storage:</dt>
+<dd><ul class="first last simple">
+<li>DDR3-1333 (4 GB)</li>
+<li>2x SPI Flash (2 MB)</li>
+<li>I2C EEPROM (3 KB)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Interfaces:</dt>
+<dd><ul class="first last simple">
+<li>USB2 (2x)</li>
+<li>Ethernet (10/100/1000)</li>
+<li>Audio  - line in/out</li>
+<li>USB Data port (JTAG/UART)</li>
+<li>Micro-SD Card</li>
+<li>WIFI/BT module</li>
+<li>ADC (6 channels)</li>
+<li>RTT Nexus and JTAG connectors</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extensions:</dt>
+<dd><ul class="first last simple">
+<li>AXI Tunnel (32-bit, 150 MHz)</li>
+<li>Arduino  - Interface headers (UNO R3 compatible)</li>
+<li>mikroBUS headers</li>
+<li>PMOD Interfaces (3x), PMOD A and PMOD B (12 pins), PMOD C (6 pins)</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 <img alt="ARC HSDK Block Diagram" src="../_images/hsdk_block_diagram.jpg" />
 <img alt="ARC HS System on Chip (SoC) Block Diagram" src="../_images/hsdk_chip.jpg" />
@@ -258,9 +287,9 @@ Toolkit, MetaWare Lite tools or the ARC GNU Tool Chain.</p>
 <li>256kByte SRAM</li>
 <li>DDR3 interface<ul>
 <li>max speed grade DDR-1600 (800MHz)</li>
-<li>data width 32bit</li>
-<li>max row address width 16bit</li>
-<li>max bank address width 3bit</li>
+<li>data width 32 bits</li>
+<li>max row address width 16 bits</li>
+<li>max bank address width 3 bits</li>
 <li>max 2 memory ranks</li>
 <li>max supported DDR memory size is 4GByte</li>
 </ul>
@@ -281,6 +310,134 @@ Toolkit, MetaWare Lite tools or the ARC GNU Tool Chain.</p>
 <li>PWM interfaces</li>
 <li>JTAG interface</li>
 </ul>
+<div class="section" id="extension-interfaces">
+<h2>Extension Interfaces<a class="headerlink" href="#extension-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>To bring your application context around the ARC HSDK, the following
+peripheral module standards are supported:</p>
+<ul class="simple">
+<li>Digilent PMOD™ (3x)</li>
+<li>MikroBUS (1x)</li>
+<li>Arduino (1x)</li>
+</ul>
+<p>For the details of extension interfaces, please go for the user manual/datasheet of HSDK. Users can change the interface configuration through the pinmux API in <code class="docutils literal notranslate"><span class="pre">dev_pinmux.h</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the examples of embARC OSP, PMOD_B is used to connected SPI devices with PMOD interface, e.g. PMOD WiFI, PMOD_A is used to connected I2C devices with PMOD interface, e.g. PMOD ADC.</p>
+</div>
+</div>
+<div class="section" id="programming-and-debugging">
+<h2>Programming and Debugging<a class="headerlink" href="#programming-and-debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-hardware-and-software">
+<span id="getting-started-with-hs-development-kit"></span><h3>Required Hardware and Software<a class="headerlink" href="#required-hardware-and-software" title="Permalink to this headline">¶</a></h3>
+<p>To use embARC OSP applications on the IoTDK board, the following items are required</p>
+<ul class="simple">
+<li>USB Cable</li>
+<li>The universal switching power adaptor (110-240V AC to 12V DC), can be used to power the board</li>
+<li><a class="reference internal" href="../getting_started/software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>.</li>
+<li>(optional) A collection of PMODs and Arduino modules.</li>
+</ul>
+</div>
+<div class="section" id="set-up-the-hsdk">
+<h3>Set up the HSDK<a class="headerlink" href="#set-up-the-hsdk" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>The HSDK boot switches are shown below. There are multiple configurations, such as boot mirror, boot image location, boot start mode, core selection and multi-core mode. For example, the configurations in the following picture are boot image location: 0x1 (internal ROM), boot start mode: generate cpu_start autonomously after reset, core selection: 0x0 (HS38X4_0), and multi-core mode: 0x0 (signal-core). For complete HSDK information, see the <strong>HS Development Kit User’s Guide</strong> provided with the HSDK.</li>
+</ol>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../_images/hsdk_dip_settings.png"><img alt="../_images/hsdk_dip_settings.png" src="../_images/hsdk_dip_settings.png" style="width: 544.0px; height: 326.4px;" /></a>
+<p class="caption"><span class="caption-text">ARC HSDK DIP switch settings</span></p>
+</div>
+<ol class="arabic simple">
+<li>Connect the USB cable to the HSDK mini-USB connector and to the USB port on your development host. If using the Ashling Opella-XD for ARC Debug Probe or Digilent JTAG-HS2 Probe, connect it to the right connector. Connect the power supply to the board and to the power outlet.</li>
+</ol>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../_images/hsdk_debug_interface.png"><img alt="../_images/hsdk_debug_interface.png" src="../_images/hsdk_debug_interface.png" style="width: 645.0px; height: 287.0px;" /></a>
+<p class="caption"><span class="caption-text">ARC HSDK debug interface</span></p>
+</div>
+<ol class="arabic">
+<li><p class="first">You can use any terminal emulation program to view UART output from the HSDK. The USB connection provides both the debug channel and RS232 transport. Use Tera Term in Windows as an example.</p>
+<ul>
+<li><p class="first">Determine which COM port the HSDK is using.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Open the <strong>Windows Control Panel</strong> and select <strong>Device Manager</strong> in a Windows environment.</li>
+<li>Expand <strong>Ports (COM and LPT)</strong> in the list. Select <strong>USB Serial Port (COM x)</strong> and Note the COM port number for the ARC board.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Configure serial terminal connection.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Launch Tera Term. Select <strong>Serial</strong> in <strong>Setup</strong>. Choose the appropriate COM port string in <strong>Port</strong> and 115200 in <strong>Baud rate</strong>, 8 bits data, 1 stop bit, no parity (115200-8-N-1). Click <strong>OK</strong> to set the port configuration.</li>
+<li>You can optionally save your settings so they can be easily retrieved.</li>
+<li>Select <strong>New connection</strong> in <strong>File</strong> and choose the appropriate COM in <strong>Serial</strong>.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">Test serial output with HSDK.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Press the “RESET” button on the HSDK board to reset the board.</li>
+<li>Confirm that you can see the header and self-test message printed to the console.</li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">********************************</span>
+<span class="go">**       Synopsys, Inc.       **</span>
+<span class="go">**   ARC HS Development Kit   **</span>
+<span class="go">********************************</span>
+<span class="go">** IC revision: Rev 1.0</span>
+<span class="go">Bootloader revision: Jun 12 2016, 08:54:06</span>
+<span class="go">Bootloader location: 0x1 (internal ROM)</span>
+<span class="go">Bootloader aux: 0x9 (sg15E,4Gb,x8,2r)</span>
+<span class="go">Bootloader speedmode: Slow</span>
+<span class="go">Bootloader multicore: 0x0 (Single-core)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">(Optional) Connect the PmodWiFi and PmodRF2 to the HSDK as shown.</p>
+</li>
+</ol>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/hsdk_pmod_connection.png"><img alt="../_images/hsdk_pmod_connection.png" src="../_images/hsdk_pmod_connection.png" style="width: 614.4px; height: 460.8px;" /></a>
+</div>
+</div>
+<div class="section" id="building">
+<h3>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
+<p>Take <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> as an example</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
+<span class="gp">#</span> <span class="k">for</span> ARC GNU toolchain
+<span class="go">make TOOLCHAIN=gnu BOARD=hsdk</span>
+<span class="gp">#</span> <span class="k">for</span> MWDT toolchain
+<span class="go">make TOOLCHAIN=mw BOARD=hsdk</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running">
+<h3>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
+<span class="gp">#</span> <span class="k">for</span> ARC GNU toolchain
+<span class="go">make TOOLCHAIN=gnu BOARD=hsdk run</span>
+<span class="gp">#</span> <span class="k">for</span> MWDT toolchain
+<span class="go">make TOOLCHAIN=mw BOARD=hsdk run</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
+<span class="gp">#</span> <span class="k">for</span> ARC GNU toolchain
+<span class="go">make TOOLCHAIN=gnu BOARD=hsdk gui</span>
+<span class="gp">#</span> <span class="k">for</span> MWDT toolchain
+<span class="go">make TOOLCHAIN=mw BOARD=hsdk gui</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="flashing">
+<h3>Flashing<a class="headerlink" href="#flashing" title="Permalink to this headline">¶</a></h3>
+<p>The related introduction is working in progress.</p>
+</div>
+</div>
 </div>
 
 
