@@ -188,7 +188,7 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>This example is designed to test the cache module of ARC. Besides, it shows how to use ARC Cache API defined in embARC.</div></blockquote>
+<div>This example is designed to test the cache module of DesignWare® ARC® processors. Besides, it shows how to use ARC cache API defined in embARC OSP.</div></blockquote>
 <div class="section" id="detailed-description">
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -205,33 +205,27 @@
 </li>
 <li><dl class="first docutils">
 <dt>Design Concept</dt>
-<dd>This example is designed to test the cache module of ARC. Besides, it shows how to use ARC Cache API defined in embARC.</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Usage Manual</dt>
-<dd>Test cases for ARC cache-related functions defined in arc_cache.h.</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Extra Comments</dt>
-<dd>Only for ARC EM cores that contain cache, so EM4, EM4CR16 on EMSK 1.x, and EM5D, EM9D on EMSK 2.x should NOT run this example</dd>
+<dd>This example is designed to test the cache module of DesignWare® ARC® processors. Besides, it shows how to use ARC Cache API defined in <code class="docutils literal notranslate"><span class="pre">arc_cache.h</span></code>.</dd>
 </dl>
 </li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Hardware support: Only works for DesignWare® ARC® processors that contain cache, please check your DesignWare® ARC® processors configuration before running this example</p>
+</div>
 </div>
 </div>
 <div class="section" id="buidling-and-running">
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
-<p>The commands to run this example are as follows:</p>
+<p>Taking EM Starter Kit as exmaple, the commands to run this example are as follows:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/arc_feature/cache
 <span class="gp">$</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration</p>
+<p class="last">Make sure you have selected the correct configuration of EM Starter Kit via dip switches and that you have reset the board (button above “R”).</p>
 </div>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>

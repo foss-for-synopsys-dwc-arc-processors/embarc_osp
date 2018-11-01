@@ -6,7 +6,7 @@ ARC Cache Example
 Overview
 ********
 
- This example is designed to test the cache module of ARC. Besides, it shows how to use ARC Cache API defined in embARC.
+ This example is designed to test the cache module of |arc|. Besides, it shows how to use ARC cache API defined in |embarc|.
 
 Detailed Description
 ====================
@@ -18,26 +18,22 @@ Detailed Description
     NO
 
  * Design Concept
-    This example is designed to test the cache module of ARC. Besides, it shows how to use ARC Cache API defined in embARC.
+    This example is designed to test the cache module of |arc|. Besides, it shows how to use ARC Cache API defined in ``arc_cache.h``.
 
- * Usage Manual
-    Test cases for ARC cache-related functions defined in arc_cache.h.
-
-
- * Extra Comments
-    Only for ARC EM cores that contain cache, so EM4, EM4CR16 on EMSK 1.x, and EM5D, EM9D on EMSK 2.x should NOT run this example
+.. note::
+    Hardware support: Only works for |arc| that contain cache, please check your |arc| configuration before running this example
 
 Buidling and Running
 ********************
 
-The commands to run this example are as follows:
+Taking |emsk| as exmaple, the commands to run this example are as follows:
 
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/arc_feature/cache
     $ make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
-.. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration
+.. note:: Make sure you have selected the correct configuration of |emsk| via dip switches and that you have reset the board (button above “R”).
 
 Sample Output
 =============

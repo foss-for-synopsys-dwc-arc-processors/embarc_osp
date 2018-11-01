@@ -192,60 +192,46 @@
 <div class="section" id="detailed-description">
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><ul>
+<div><ul class="simple">
 <li><dl class="first docutils">
 <dt>Extra Required Tools</dt>
-<dd><p class="first last">NO</p>
-</dd>
+<dd>NO</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Extra Required Peripherals</dt>
-<dd><p class="first last">NO</p>
-</dd>
+<dd>NO</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>Design Concept</dt>
-<dd><p class="first last">This example is designed to show how to use uDMA API and to compare uDMA copy with memory copy.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Usage Manual</dt>
-<dd><div class="first last line-block">
-<div class="line">You can uncomment the <em>APPL_DEFINES</em> line in this application makefile to overwrite the linker script settings.</div>
-<div class="line">If you uncomment the <em>APPL_DEFINES</em> line, then you can modify the <em>REGION_ROM</em> and <em>REGION_RAM</em> in <em>appl_mem_config.h</em> to proper values.</div>
-<div class="line">If you want to run in DDR, you can set this two values to <em>EXT_RAM</em>.</div>
-<div class="line">When you change this values defined in <em>appl_mem_config.h</em> in this example, you need to clean the project first then rebuilt it.</div>
-</div>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Extra Comments</dt>
-<dd><ul class="first last simple">
-<li>This example only supports EMSK 2.2 and EMSK 2.3.</li>
-<li>the uDMA option is required in core configuration to run this example.</li>
-</ul>
-</dd>
+<dd>This example is designed to show how to use uDMA API and to compare uDMA copy with memory copy.</dd>
 </dl>
 </li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Hardware support: all DesignWare® ARC® processors based platform with uDMA configured</p>
+</div>
 </div>
 </div>
 <div class="section" id="buidling-and-running">
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
-<p>The commands to run this example are as follows:</p>
+<p>Taking EM Starter Kit as exmaple, the commands to run this example are as follows:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/arc_feature/udma
 <span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw run
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration</p>
+<p class="last">Make sure you have selected the correct configuration of EM Starter Kit via dip switches and that you have reset the board (button above “R”).</p>
 </div>
+<p>You can uncomment the <em>APPL_DEFINES</em> line in this application makefile to overwrite the linker script settings.
+If you uncomment the <em>APPL_DEFINES</em> line, then you can modify the <em>REGION_ROM</em> and <em>REGION_RAM</em> in <code class="docutils literal notranslate"><span class="pre">appl_mem_config.h</span></code> to proper values.</p>
+<p>If you want to run in DDR, you can set this two values to <em>EXT_RAM</em>. When you
+change this values defined in <code class="docutils literal notranslate"><span class="pre">appl_mem_config.h</span></code> in this example, you need to
+clean the project first then rebuilt it.</p>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
