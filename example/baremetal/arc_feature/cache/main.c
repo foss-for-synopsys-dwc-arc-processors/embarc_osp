@@ -27,43 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_CACHE	embARC Cache Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC example for testing ARC cache module
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to test the cache module of ARC,
- *     by the way to show how to use ARC Cache API defined in embARC.
- *
- * ### Usage Manual
- *     Test cases for ARC cache-related functions defined in arc_cache.h.
- *     ![ScreenShot of cache under baremetal](pic/images/example/emsk/emsk_cache.jpg)
- *
- * ### Extra Comments
- *     Only for ARC EM cores that contain cache, so EM4, EM4CR16 on EMSK 1.x, and EM5D.
- *     ARC EM SEP on EMSK 2.x shouldn't run this application
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_CACHE
- * \brief	main source of example of cache
- * show the basic operations of cache
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_CACHE
- * @{
- */
-/* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -162,5 +125,3 @@ int main(void)
 
 	return E_SYS;
 }
-
-/** @} */

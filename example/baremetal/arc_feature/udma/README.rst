@@ -20,28 +20,27 @@ Detailed Description
  * Design Concept
     This example is designed to show how to use uDMA API and to compare uDMA copy with memory copy.
 
- * Usage Manual
-    | You can uncomment the *APPL_DEFINES* line in this application makefile to overwrite the linker script settings.
-    | If you uncomment the *APPL_DEFINES* line, then you can modify the *REGION_ROM* and *REGION_RAM* in *appl_mem_config.h* to proper values.
-    | If you want to run in DDR, you can set this two values to *EXT_RAM*.
-    | When you change this values defined in *appl_mem_config.h* in this example, you need to clean the project first then rebuilt it.
-
-
- * Extra Comments
- 	- This example only supports EMSK 2.2 and EMSK 2.3.
- 	- the uDMA option is required in core configuration to run this example.
+.. note::
+    Hardware support: all |arc| based platform with uDMA configured
 
 Buidling and Running
 ********************
 
-The commands to run this example are as follows:
+Taking |emsk| as exmaple, the commands to run this example are as follows:
 
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/arc_feature/udma
     $ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw run
 
-.. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirme its configuration
+.. note:: Make sure you have selected the correct configuration of |emsk| via dip switches and that you have reset the board (button above “R”).
+
+You can uncomment the *APPL_DEFINES* line in this application makefile to overwrite the linker script settings.
+If you uncomment the *APPL_DEFINES* line, then you can modify the *REGION_ROM* and *REGION_RAM* in ``appl_mem_config.h`` to proper values.
+
+If you want to run in DDR, you can set this two values to *EXT_RAM*. When you
+change this values defined in ``appl_mem_config.h`` in this example, you need to
+clean the project first then rebuilt it.
 
 Sample Output
 =============

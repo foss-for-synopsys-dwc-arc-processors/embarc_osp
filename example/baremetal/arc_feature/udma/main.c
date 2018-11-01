@@ -27,44 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_UDMA	embARC ARC uDMA Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC example for testing ARC uDMA feature in baremetal mode
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to show how to use uDMA API and compare uDMA copy with memory copy.
- *
- * ### Usage Manual
- *     ![ScreenShot of uDMA features under baremetal](pic/images/example/emsk/baremetal_arc_feature_udma.jpg)
- *     You can uncomment the *APPL_DEFINES* line in this application makefile to overwrite the linker script settings.
- *     If you uncomment the *APPL_DEFINES* line, then you can modify the *REGION_ROM* and *REGION_RAM* in *appl_mem_config.h* to proper values.
- *     If you want to run in DDR, you can set this two values to *EXT_RAM*.
- *     When you change this values defined in *appl_mem_config.h* in this example, you need to clean the project first then rebuilt it.
- *
- * ### Extra Comments
- *     - This example only supported EMSK 2.2 and EMSK 2.3.
- *     - This example require the core configuration to have uDMA option.
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_UDMA
- * \brief	example of ARC uDMA in baremetal mode
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_UDMA
- * @{
- */
-
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -322,5 +284,3 @@ int main( void )
 	dmac_close();
 	return 0;
 }
-
-/** @} */

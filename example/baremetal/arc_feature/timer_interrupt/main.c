@@ -27,42 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_TIMER_INTERRUPT	embARC ARC Timer and Interrupt Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC example for testing ARC timer and interrupt
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to show how to use ARC timer and interrupt.
- *
- * ### Usage Manual
- *     In the initialization, the timer 0 and timer 1 are enabled and interrupt is configured.
- *     The timer 0 Interrupt Service Routine (ISR) is set as Fast Interrupt Request Queue (FIQ) using int_pri_set().
- *     The timer 0 interrupt is responsed with the highest priority.
- *     ![ScreenShot of timer 0 and timer 1 ISR under baremetal](pic/images/example/emsk/emsk_timer_interrupt.jpg)
- *
- * ### Extra Comments
- *     Please take care of the selected ARC core configuration to make sure FIQ is enabled.
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_TIMER_INTERRUPT
- * \brief	example of ARC timer and interrupt
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_TIMER_INTERRUPT
- * @{
- */
-
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -87,7 +51,6 @@ static void timer1_isr(void *ptr)
 	EMBARC_PRINTF("timer1 interrupt:%d\r\n", t1);
 }
 
-/** main entry for testing arc fiq interrupt */
 int main(void)
 {
 	uint32_t val;
@@ -154,5 +117,3 @@ int main(void)
 	while(1);
 	return E_SYS;
 }
-
-/** @} */
