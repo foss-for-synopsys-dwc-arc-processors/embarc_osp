@@ -100,6 +100,7 @@ extern int32_t smic_eflash_open(SMIC_EFLASH_DEF_PTR obj);
 extern int32_t smic_eflash_close(SMIC_EFLASH_DEF_PTR obj);
 extern int32_t smic_eflash_read(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
+extern int32_t smic_eflash_write_nocheck(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *param);
 extern int32_t smic_eflash_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len);
 

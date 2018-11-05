@@ -46,7 +46,7 @@ void emsk_flash_obj_all_install(void);
 #define EMSK_DDR_RAM_TOTAL_SIZE 0x8000000
 static DEV_FLASH emsk_ddr_ram_obj;
 
-static int32_t emsk_ddr_ram_open(uint32_t param1, void *param2)
+static int32_t emsk_ddr_ram_open()
 {
 	int32_t ercd = E_OK;
 	DEV_FLASH_PTR obj_ptr = &emsk_ddr_ram_obj;
@@ -141,6 +141,27 @@ error_exit:
 	return ercd;
 }
 
+static int32_t emsk_ddr_ram_write_nocheck(uint32_t addr, void *src, uint32_t len)
+{
+	int32_t ercd = E_OK;
+	DEV_FLASH_PTR obj_ptr = &emsk_ddr_ram_obj;
+	DEV_FLASH_INFO_PTR info_ptr = &(obj_ptr->flash_info);
+
+	DW_FLASH_CHECK_EXP(info_ptr->open_cnt > 0, E_CLSED);
+	DW_FLASH_CHECK_EXP(info_ptr->begin_addr <= addr, E_PAR);
+
+	if ((addr + len) > (info_ptr->begin_addr + info_ptr->total_size)) {
+		len = info_ptr->begin_addr + info_ptr->total_size - len;
+	}
+
+	memcpy((void *)addr, (const void *)src, len);
+
+	return len;
+
+error_exit:
+	return ercd;
+}
+
 static int32_t emsk_ddr_ram_erase(uint32_t addr, uint32_t len)
 {
 	int32_t ercd = E_OK;
@@ -177,6 +198,7 @@ static void emsk_ddr_ram_install(void)
 	obj_ptr->flash_close = emsk_ddr_ram_close;
 	obj_ptr->flash_control = emsk_ddr_ram_control;
 	obj_ptr->flash_write = emsk_ddr_ram_write;
+	obj_ptr->flash_write_nocheck = emsk_ddr_ram_write_nocheck;
 	obj_ptr->flash_read = emsk_ddr_ram_read;
 	obj_ptr->flash_erase = emsk_ddr_ram_erase;
 }

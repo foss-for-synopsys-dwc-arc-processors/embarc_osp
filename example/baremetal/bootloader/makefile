@@ -18,6 +18,7 @@ endif
 
 # 16 KB stack
 STACKSZ = 16384
+HEAPSZ = 16384
 ##
 # link script
 #

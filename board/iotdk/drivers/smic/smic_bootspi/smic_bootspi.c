@@ -247,22 +247,7 @@ static void bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len,
 	bootspi_release_cs(obj);
 }
 
-static void smic_bootspi_write_nocheck(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
-{
-	uint32_t first = 0;
 
-	first = SMIC_BOOTSPI_PAGE_SIZE - (addr & (SMIC_BOOTSPI_PAGE_SIZE - 1));
-
-	do {
-		first = first < len ? first : len;
-		bootspi_write(obj, addr, first, val);
-		len -= first;
-		addr += first;
-		val += first;
-		first = SMIC_BOOTSPI_PAGE_SIZE;
-	} while (len);
-
-}
 
 int32_t smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR obj)
 {
@@ -324,7 +309,31 @@ error_exit:
 	return ercd;
 }
 
+int32_t smic_bootspi_write_nocheck(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
+{
+	int32_t ercd = E_OK;
+	uint32_t first = 0;
+	uint32_t size_orig = len;
 
+	SMIC_BOOTSPI_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_BOOTSPI_CHECK_EXP(obj->bootspi_open_cnt != 0, E_OPNED);
+
+	first = SMIC_BOOTSPI_PAGE_SIZE - (addr & (SMIC_BOOTSPI_PAGE_SIZE - 1));
+
+	do {
+		first = first < len ? first : len;
+		bootspi_write(obj, addr, first, val);
+		len -= first;
+		addr += first;
+		val += first;
+		first = SMIC_BOOTSPI_PAGE_SIZE;
+	} while (len);
+
+	return (int32_t)(size_orig);
+
+error_exit:
+	return ercd;
+}
 
 int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
 {
@@ -439,7 +448,7 @@ int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *
 	SMIC_BOOTSPI_CHECK_EXP(obj->bootspi_open_cnt != 0, E_OPNED);
 
 	if (ctrl_cmd != SMIC_BOOTSPI_RESET && ctrl_cmd != SMIC_BOOTSPI_READ_ID &&
-	    ctrl_cmd != SMIC_BOOTSPI_CHIP_REASE && ctrl_cmd != SMIC_BOOTSPI_BLK_ERASE &&
+	    ctrl_cmd != SMIC_BOOTSPI_CHIP_ERASE && ctrl_cmd != SMIC_BOOTSPI_BLK_ERASE &&
 	    ctrl_cmd != SMIC_BOOTSPI_SEC_ERASE) {
 		ercd = E_PAR;
 		goto error_exit;
@@ -454,7 +463,7 @@ int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *
 			bootspi_read_id(obj, (uint8_t *)param, 3);
 			break;
 
-		case SMIC_BOOTSPI_CHIP_REASE:
+		case SMIC_BOOTSPI_CHIP_ERASE:
 			bootspi_chip_erase(obj);
 			break;
 

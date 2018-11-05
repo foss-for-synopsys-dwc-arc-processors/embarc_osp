@@ -83,6 +83,9 @@
 #define BOARD_WIFI_SPI_LINE		EMSK_SPI_LINE_1
 #define BOARD_SFLASH_SPI_LIN		EMSK_SPI_LINE_SFLASH
 
+/** board doesn`t exist flash device */
+#define BOARD_FLASH_EXIST		(0)
+
 #ifndef BOARD_SPI_FREQ
 #define BOARD_SPI_FREQ			(1000000)
 #endif

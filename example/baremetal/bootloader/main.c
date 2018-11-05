@@ -39,15 +39,10 @@
 #include "target_mem_config.h"
 
 #if defined(EMBARC_USE_MCUBOOT)
-
 #include "bootutil/bootutil.h"
 #include "bootutil/image.h"
 #include "flash_map/flash_map.h"
-
-#define RAM_STARTADDRESS	FLASH_AREA_IMAGE_0_OFFSET
-#define APP_CFG_ADDR		FLASH_AREA_IMAGE_MCUBOOT_OFFSET + FLASH_AREA_IMAGE_MCUBOOT_SIZE
-
-#else
+#endif
 
 #if defined(BOARD_EMSK)
 #define RAM_STARTADDRESS	0x10000000		/*!< default ram start address of boot.bin */
@@ -57,7 +52,6 @@
 #define APP_CFG_ADDR 		ARC_X_MEM_START
 #endif
 
-#endif /* !defined(EMBARC_USE_MCUBOOT) */
 
 #define BOOT_CFG_FILE_NAME	"boot.json"
 #define BOOT_FILE_NAME		"0:\\boot.bin"          /*!< default autoload full file name */
@@ -97,13 +91,15 @@ static NTSHELL_IO *nt_io;
 
 static FIL file;
 
-#if defined(EMBARC_USE_MCUBOOT) && defined(BOARD_EMSK)
+#if defined(EMBARC_USE_MCUBOOT)
+
+#if BOARD_FLASH_EXIST == 0
 extern uint32_t boot_status_off(const struct flash_area *fap);
 /**
  * \brief	set the trailers of SLOT0 & SLOT1 as 0xFFFFFFFF
- *			simulate as the initial state of flash in EMSK ram
+ *			simulate as the initial state of flash in ram
  */
-static int trailer_init(void)
+static int image_trailer_init(void)
 {
 	int rc = 0;
 	uint32_t off;
@@ -141,6 +137,37 @@ done:
 #endif
 
 /**
+ * \brief	do secure boot by using mcuboot
+ * \return  0 failed, else the start address of booted image
+ */
+static fp_t secure_boot(void)
+{
+	struct boot_rsp rsp;
+	int res;
+	fp_t fp = 0;
+
+	flash_device_open();
+#if BOARD_FLASH_EXIST == 0
+	image_trailer_init();
+#endif
+
+	EMBARC_PRINTF("\r\nStart mcuboot\r\n");
+	res = boot_go(&rsp);
+	flash_device_close();
+	if (res != 0) {
+		EMBARC_PRINTF("\r\nsecure boot failed \r\n");
+		EMBARC_PRINTF("\r\nStart normal boot\r\n");
+	} else {
+		EMBARC_PRINTF("\r\nsecure boot successfully \r\n");
+		fp = (fp_t)(*(uint32_t *)(rsp.br_image_off + rsp.br_hdr->ih_hdr_size));
+	}
+
+	return fp;
+}
+
+#endif
+
+/**
  * \brief	test bootloader
  */
 int main(void)
@@ -148,21 +175,19 @@ int main(void)
 	uint8_t res;
 	uint32_t cnt;
 	void *ram;
-	uint8_t load_flag = 1;
+	uint8_t boot_flag = 1;
 	uint8_t default_bt_flag = 0;
 	uint32_t cur_ms = 0, cur_cnt = 0;
 	uint32_t max_promt_ms = PROMT_DELAY_S * 1000;
 	uint32_t boot_json[1000];
 	fp_t fp;
-#if defined(EMBARC_USE_MCUBOOT)
-	struct boot_rsp rsp;
-#endif
 
 	/* No USE_BOARD_MAIN */
 	board_init();
 	cpu_unlock();	/* unlock cpu to let interrupt work */
 	boot_cfg.wifi = &wifi_cfg;
-	//read the json to boot_json;
+
+	/* Step 1 - load the config profile from json if existed */
 	res = f_open(&file, BOOT_CFG_FILE_NAME, FA_READ | FA_OPEN_EXISTING);
 
 	if (res) {
@@ -242,13 +267,13 @@ int main(void)
 
 			/* any button pressed */
 			if (button_read(BOARD_BTN_MASK)) {
-				load_flag = 0;
+				boot_flag = 0;
 				break;
 			}
 		} while ((OSP_GET_CUR_MS() - cur_ms) < max_promt_ms);
 	}
 
-	if (default_bt_flag == 0 && boot_cfg.ntshell == 1 || load_flag == 0) {
+	if (default_bt_flag == 0 && boot_cfg.ntshell == 1 || boot_flag == 0) {
 		EMBARC_PRINTF("\r\nStart NTShell Runtime...\r\n");
 		led_write(0x00, 0xFF);
 		nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
@@ -256,6 +281,7 @@ int main(void)
 		ntshell_task((void *)nt_io);
 	}
 
+	/* Step 2 - load image from SDCard to RAM if existed */
 	EMBARC_PRINTF("\r\nStart loading %s from sdcard to 0x%x and run...\r\n", boot_cfg.boot_file, boot_cfg.ram_startaddress);
 	led_write(0xF, 0xFF); /* Start to load application */
 
@@ -265,14 +291,14 @@ int main(void)
 
 		if (res != IHEX_END) {
 			EMBARC_PRINTF("%s open or read error\r\n", boot_cfg.boot_file);
-			load_flag = 0;
+			boot_flag = 0;
 		}
 	} else if (boot_cfg.boot_file[strlen(boot_cfg.boot_file) - 3] == 'b') {
 		res = f_open(&file, boot_cfg.boot_file, FA_READ | FA_OPEN_EXISTING);
 
 		if (res) {
 			EMBARC_PRINTF("%s open error\r\n", boot_cfg.boot_file);
-			load_flag = 0;
+			boot_flag = 0;
 		} else {
 			ram = (void *)boot_cfg.ram_startaddress;
 			res = f_read(&file, ram, file.fsize, &cnt);
@@ -280,44 +306,43 @@ int main(void)
 
 			if (res || ((uint32_t)cnt != file.fsize)) {
 				EMBARC_PRINTF("%s read error\r\n", boot_cfg.boot_file);
-				load_flag = 0;
+				boot_flag = 0;
 			}
 		}
 	} else {
 		EMBARC_PRINTF("%s unknown file type\r\n", boot_cfg.boot_file);
-		load_flag = 0;
-	}
-
-	if (load_flag == 0) {
-		EMBARC_PRINTF("\r\nStart NTShell Runtime...\r\n");
-		led_write(0x00, 0xFF);
-		nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
-		/** enter ntshell command routine no return */
-		ntshell_task((void *)nt_io);
+		boot_flag = 0;
 	}
 
 	led_write(0xF0, 0xFF); /* Load application finished */
 
 	fp = (fp_t)(*((uint32_t *)boot_cfg.ram_startaddress));
 
-#if defined(EMBARC_USE_MCUBOOT)
-	flash_device_open();
-#if defined(BOARD_EMSK)
-	trailer_init();
+	/* Step 3 - optional mcuboot module */
+	if (boot_flag == 1) {
+#if defined(EMBARC_USE_MCUBOOT) && (BOARD_FLASH_EXIST == 0)
+		fp_t sfp = secure_boot();
+		if (sfp != 0) {
+			fp = sfp;
+		}
 #endif
-
-	EMBARC_PRINTF("\r\nStart mcuboot\r\n");
-	res = boot_go(&rsp);
-	if (res != 0) {
-		EMBARC_PRINTF("\r\nsecure boot failed \r\n");
-		EMBARC_PRINTF("\r\nStart normal boot\r\n");
 	} else {
-		EMBARC_PRINTF("\r\nsecure boot successfully \r\n");
-		fp = (fp_t)(*(uint32_t *)(rsp.br_image_off + rsp.br_hdr->ih_hdr_size));
+#if defined(EMBARC_USE_MCUBOOT) && (BOARD_FLASH_EXIST == 1)
+		fp_t sfp = secure_boot();
+		if (sfp != 0) {
+			boot_flag = 1;
+			fp = sfp;
+		}
+#endif
 	}
 
-	flash_device_close();
-#endif
+	if (boot_flag == 0) {
+		EMBARC_PRINTF("\r\nStart NTShell Runtime...\r\n");
+		led_write(0x00, 0xFF);
+		nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
+		/** enter ntshell command routine no return */
+		ntshell_task((void *)nt_io);
+	}
 
 	ram = (void *)APP_CFG_ADDR;
 	memcpy(ram, boot_cfg.app_cfg, strlen(boot_cfg.app_cfg) + 1);
@@ -334,6 +359,7 @@ int main(void)
 
 	led_write(0xFF, 0xFF); /* Start application */
 
-	fp();	/* jump to program */
+	/* Step 4 - jump to program */
+	fp();
 	return E_SYS;
 }

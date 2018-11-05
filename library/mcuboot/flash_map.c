@@ -101,7 +101,7 @@ int flash_device_open(void)
     if(flash_dev == NULL)
         return -1;
 
-    return flash_dev->flash_open(0, (void *)0);
+    return flash_dev->flash_open();
 }
 
 void flash_device_close(void)

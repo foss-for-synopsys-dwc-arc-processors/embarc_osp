@@ -81,21 +81,6 @@ static void smic_eflash_page_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t ofst)
 	}
 }
 
-static void smic_eflash_write_nocheck(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
-{
-	uint32_t i;
-	uint8_t *p_addr = (uint8_t *)(obj->eflash_base_addr + addr);
-
-	for (i = 0; i < len; i++) {
-		*p_addr++ = *val++;
-
-		while (1) {
-			if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK) {
-				break;
-			}
-		}
-	}
-}
 
 int32_t smic_eflash_open(SMIC_EFLASH_DEF_PTR obj)
 {
@@ -146,6 +131,30 @@ int32_t smic_eflash_read(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, u
 		*val++ = *p_addr++;
 	}
 
+	return (int32_t)(len);
+
+error_exit:
+	return ercd;
+}
+
+int32_t smic_eflash_write_nocheck(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)
+{
+	int32_t ercd = E_OK;
+	uint32_t i;
+	uint8_t *p_addr = (uint8_t *)(obj->eflash_base_addr + addr);
+
+	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
+	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
+
+	for (i = 0; i < len; i++) {
+		*p_addr++ = *val++;
+
+		while (1) {
+			if ((obj->eflash_reg->FMCCON & FMC_BUSY_MASK) != FMC_BUSY_MASK) {
+				break;
+			}
+		}
+	}
 	return (int32_t)(len);
 
 error_exit:

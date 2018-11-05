@@ -178,7 +178,7 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 			goto error_exit;
 		}
 
-		smic_bootspi_control(bootspi_test, SMIC_BOOTSPI_CHIP_REASE, NULL);
+		smic_bootspi_control(bootspi_test, SMIC_BOOTSPI_CHIP_ERASE, NULL);
 		uint32_t txlen = file_size;
 		int32_t buf_pt=0;
 

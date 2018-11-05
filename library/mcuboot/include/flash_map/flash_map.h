@@ -121,6 +121,7 @@ int flash_device_open(void);
 
 void flash_device_close(void);
 
+
 /*
  * Start using flash area.
  */

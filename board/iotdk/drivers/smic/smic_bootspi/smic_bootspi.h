@@ -35,7 +35,7 @@
 
 #define SMIC_BOOTSPI_RESET			0
 #define SMIC_BOOTSPI_READ_ID		1
-#define SMIC_BOOTSPI_CHIP_REASE		2
+#define SMIC_BOOTSPI_CHIP_ERASE		2
 #define SMIC_BOOTSPI_BLK_ERASE		3
 #define SMIC_BOOTSPI_SEC_ERASE		4
 
@@ -83,6 +83,7 @@ extern int32_t smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR obj);
 extern int32_t smic_bootspi_close(SMIC_BOOTSPI_DEF_PTR obj);
 extern int32_t smic_bootspi_read(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
+extern int32_t smic_bootspi_write_nocheck(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *param);
 extern int32_t smic_bootspi_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len);
 #ifdef __cplusplus
