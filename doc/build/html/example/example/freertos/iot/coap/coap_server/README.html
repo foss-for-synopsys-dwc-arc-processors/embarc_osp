@@ -233,7 +233,8 @@ The commands to run this example are as follows:</div></blockquote>
 <span class="gp">$</span> make <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>gnu run
 </pre></div>
 </div>
-<p>When the WiFi is connected and CoAP server is running, you may run python code shown below. You may save this code as a .py file and run it from a new cmd console. The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.</p>
+<p>When the WiFi is connected and CoAP server is running, you may run python code shown below.
+The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">coapthon.client.helperclient</span> <span class="kn">import</span> <span class="n">HelperClient</span>
 <span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;192.168.137.65&quot;</span>
 <span class="n">port</span> <span class="o">=</span> <span class="mi">5683</span>
@@ -253,6 +254,11 @@ The commands to run this example are as follows:</div></blockquote>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">())</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You may save this code as a .py file (e.g. <code class="docutils literal notranslate"><span class="pre">CoAP_client.py</span></code>) and run it from a new cmd console. Here is an example of running the python code at a new cmd console:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;py_file_location&gt;
+<span class="gp">$</span> CoAP_client.py
 </pre></div>
 </div>
 <div class="section" id="sample-output">
