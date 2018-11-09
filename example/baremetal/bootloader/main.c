@@ -52,7 +52,6 @@
 #define APP_CFG_ADDR 		ARC_X_MEM_START
 #endif
 
-
 #define BOOT_CFG_FILE_NAME	"boot.json"
 #define BOOT_FILE_NAME		"0:\\boot.bin"          /*!< default autoload full file name */
 
@@ -154,6 +153,7 @@ static fp_t secure_boot(void)
 	EMBARC_PRINTF("\r\nStart mcuboot\r\n");
 	res = boot_go(&rsp);
 	flash_device_close();
+
 	if (res != 0) {
 		EMBARC_PRINTF("\r\nsecure boot failed \r\n");
 		EMBARC_PRINTF("\r\nStart normal boot\r\n");
@@ -277,7 +277,7 @@ int main(void)
 		EMBARC_PRINTF("\r\nStart NTShell Runtime...\r\n");
 		led_write(0x00, 0xFF);
 		nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
-		/** enter ntshell command routine no return */
+		/* enter ntshell command routine no return */
 		ntshell_task((void *)nt_io);
 	}
 

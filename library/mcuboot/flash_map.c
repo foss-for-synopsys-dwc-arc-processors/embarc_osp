@@ -96,7 +96,6 @@ int flash_device_base(uint8_t fd_id, uintptr_t *ret)
 
 int flash_device_open(void)
 {
-
     flash_dev = flash_get_dev(FLASH_DEVICE_ID);
     if(flash_dev == NULL)
         return -1;

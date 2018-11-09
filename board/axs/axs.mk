@@ -68,7 +68,7 @@ include $(BOARD_AXS_DIR)/configs/core_compiler.mk
 # set board image information for MCUBoot
 ##
 ifneq ($(findstring mcuboot, $(LIB_SEL)), )
-$(error MCUBoot is not support BOARD $(BOARD) now, please check it!)
+$(error MCUBoot does not support BOARD $(BOARD) now, please check it!)
 endif
 
 ## Build Rules

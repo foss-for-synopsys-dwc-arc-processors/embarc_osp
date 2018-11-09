@@ -32,8 +32,8 @@
 #include "embARC_error.h"
 #include "arc_exception.h"
 
-#include "..//smic//smic_eflash//smic_eflash.h"
-#include "..//smic//smic_bootspi//smic_bootspi.h"
+#include "iotdk/drivers/smic/smic_eflash/smic_eflash.h"
+#include "iotdk/drivers/smic/smic_bootspi/smic_bootspi.h"
 
 #include "target_mem_config.h"
 #include "flash_obj.h"
@@ -403,24 +403,6 @@ DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 #if (USE_IOTDK_BOOT_SPI_FLASH)
 		case IOTDK_BOOT_SPI_FLASH_ID:
 			return &iotdk_bootspi_obj;
-			break;
-#endif
-
-#if (USE_IOTDK_ICCM)
-		case IOTDK_ICCM_ID:
-			return &iotdk_iccm_obj;
-			break;
-#endif
-
-#if (USE_IOTDK_DCCM)
-		case IOTDK_DCCM_ID:
-			return &iotdk_dccm_obj;
-			break;
-#endif
-
-#if (USE_IOTDK_SRAM)
-		case IOTDK_SRAM_ID:
-			return &iotdk_sram_obj;
 			break;
 #endif
 		default:
