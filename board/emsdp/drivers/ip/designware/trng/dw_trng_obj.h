@@ -31,6 +31,7 @@
 #define _DW_TRNG_OBJ_H_
 
 #include "dw_trng.h"
+#include "dw_nist_trng.h"
 
 #define DW_TRNG_NUM		(1)	/*!< DesignWare TRNG valid number */
 

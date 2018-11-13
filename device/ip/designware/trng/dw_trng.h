@@ -33,6 +33,8 @@
 #include "dev_trng.h"
 #include "arc_exception.h"
 
+#ifndef TRNG_VERSION_NIST
+
 #define DW_TRNG_INVALID_INTNO		(DEV_INTNO_INVALID)
 
 //DesignWare TRNG register structure
@@ -81,9 +83,12 @@ extern int32_t dw_trng_open(DEV_TRNG_PTR trng_obj);
 extern int32_t dw_trng_close(DEV_TRNG_PTR trng_obj);
 extern int32_t dw_trng_control(DEV_TRNG_PTR trng_obj, uint32_t ctrl_cmd, void *param);
 extern int32_t dw_trng_read(DEV_TRNG_PTR trng_obj, uint32_t *data_buf);
+extern void dw_trng_isr(DEV_TRNG_PTR trng_obj, void *ptr);
 
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* TRNG_VERSION_NIST */
 
 #endif /* _DEVICE_DW_TRNG_H_ */

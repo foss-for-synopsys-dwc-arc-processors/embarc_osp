@@ -28,9 +28,12 @@
  *
 --------------------------------------------- */
 
+
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include "dw_trng.h"
+
+#ifndef TRNG_VERSION_NIST
 
 #define DW_TRNG_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
@@ -202,3 +205,9 @@ int32_t dw_trng_read(DEV_TRNG_PTR trng_obj, uint32_t *data_buf){
 error_exit:
 	return ercd;
 }
+
+void dw_trng_isr(DEV_TRNG_PTR trng_obj, void *ptr){
+	//polling mode, isr not implemented
+}
+
+#endif /* TRNG_VERSION_NIST */
