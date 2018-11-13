@@ -56,12 +56,13 @@
 #define EMSDP_WDT_INTR					(106)
 #define EMSDP_DBG_UART_INTR				(107)
 #define EMSDP_SDIO_INTR					(108)
-#define EMSDP_REDPINE_SPI_INTR				(109)
-#define EMSDP_REDPINE_HOST_WAKEUP			(110)
+#define EMSDP_REDPINE_SPI_INTR			(109)
+#define EMSDP_REDPINE_HOST_WAKEUP		(110)
+#define EMSDP_NIST_TRNG_INTR			(111)
 
 //EMSDP Peripheral Subsystem DMA assignments
-#define UART_DMA_TX					(9)
-#define UART_DMA_RX					(10)
+#define UART_DMA_TX						(9)
+#define UART_DMA_RX						(10)
 #define REDPINE_SPI_DMA_TX				(11)
 #define REDPINE_SPI_DMA_RX				(12)
 #define FLASH_SPI_DMA_TX				(13)

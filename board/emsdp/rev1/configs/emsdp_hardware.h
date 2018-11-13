@@ -38,9 +38,9 @@
  */
 #define EMSDP_REF_CLOCK				(100000000U)
 
-#define EMSDP_UART_REF_CLOCK			(100000000U)
-#define EMSDP_AUDIO_REF_CLOCK			(12288000U)
-#define EMSDP_SPI_REF_CLOCK				(20000000U)
+#define EMSDP_UART_REF_CLOCK		(100000000U)
+#define EMSDP_AUDIO_REF_CLOCK		(24576000U)
+#define EMSDP_SPI_REF_CLOCK			(20000000U)
 
 #if (defined(FAST_UART) )
 	#define EMSDP_UART_BAUDRATE		(6250000U)
@@ -53,22 +53,22 @@
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)
 	/*!< Get cpu clock frequency definition from build system */
-	#define CLK_CPU				(BOARD_CPU_FREQ)
+	#define CLK_CPU					(BOARD_CPU_FREQ)
 #elif defined(ARC_FEATURE_CPU_CLOCK_FREQ)
 	/*!< Get cpu clock frequency definition from tcf file */
-	#define CLK_CPU				(40000000U)//(ARC_FEATURE_CPU_CLOCK_FREQ)
+	#define CLK_CPU					(40000000U)//(ARC_FEATURE_CPU_CLOCK_FREQ)
 #else
 	/*!< Default cpu clock frequency */
-	#define CLK_CPU				(50000000U)
+	#define CLK_CPU					(50000000U)
 #endif
 
 /** Peripheral Bus Reference Clock definition */
 #ifdef BOARD_DEV_FREQ
 	/*!< Get peripheral bus reference clock defintion from build system */
-	#define CLK_BUS_APB			(BOARD_DEV_FREQ)
+	#define CLK_BUS_APB				(BOARD_DEV_FREQ)
 #else
 	/*!< Default peripheral bus reference clock defintion */
-	#define CLK_BUS_APB			(100000000U)
+	#define CLK_BUS_APB				(100000000U)
 #endif
 
 //APB Peripheral address map
@@ -82,36 +82,19 @@
 #define EMSDP_TIMERS1_BASE			(0xF0007000U)
 #define EMSDP_SPI_BASE				(0xF0008000U)
 #define EMSDP_UART_BASE				(0xF0009000U)
-#define EMSDP_FLASH_BASE			(0xF000A000U)
 #define EMSDP_SDIO_BASE				(0xF0010000U)
-#define EMSDP_EBI_BASE				(0xF0011000U)
-#define EMSDP_PSRAM_BASE			(0xF0012000U)
-
-#define EMSDP_DSS_SEMC_BASE			(0xE0000000U)
-#define EMSDP_DSS_CREG_BASE			(0xE0001000U)
-#define EMSDP_DSS_GPIO0_BASE			(0xE0002000U)
-#define EMSDP_DSS_TRNG_BASE			(0xE0003000U)
-#define EMSDP_DSS_DBG_UART_BASE			(0xE0004000U)
-#define EMSDP_DSS_TIMERS_BASE			(0xE0005000U)
-#define EMSDP_DSS_SPACC_BASE			(0xE0006000U)
-#define EMSDP_DSS_PKK_BASE			(0xE0007000U)
-#define EMSDP_DSS_EDU_BASE			(0xE8010000U)
-#define EMSDP_DSS_ISO7816_BASE			(0xE8012000U)
-#define EMSDP_DSS_GPIO1_BASE			(0xE8013000U)
-#define EMSDP_DSS_UART_BASE			(0xE8014000U)
-#define EMSDP_DSS_I2C_MST_BASE			(0xE8015000U)
-#define EMSDP_DSS_SPI_SLV_BASE			(0xE8016000U)
-#define EMSDP_DSS_SPI_MST_BASE			(0xE8017000U)
-#define EMSDP_DSS_CRU_BASE			(0xEFFF0000U)
+#define EMSDP_FLASH_BASE			(0xF1000000U)
+#define EMSDP_EBI_BASE				(0xF2000000U)
+#define EMSDP_PSRAM_BASE			(0xF2001000U)
 
 //CREG Control Register Map
 #define EMSDP_CREG_BOOT_OFFSET			(0x0000)
 #define EMSDP_CREG_START_OFFSET			(0x0010)
 #define EMSDP_CREG_PMOD_MUX_OFFSET		(0x0030)
-#define EMSDP_CREG_ARDUINO_MUX_OFFSET		(0x0034)
-#define EMSDP_CREG_GENERIC_MUX_OFFSET		(0x0038)
-#define EMSDP_CREG_IP_SW_RESET_OFFSET		(0x1FF0)
-#define EMSDP_CREG_IP_VERSION_OFFSET		(0x1FF8)
+#define EMSDP_CREG_ARDUINO_MUX_OFFSET	(0x0034)
+#define EMSDP_CREG_GENERIC_MUX_OFFSET	(0x0038)
+#define EMSDP_CREG_IP_SW_RESET_OFFSET	(0x1FF0)
+#define EMSDP_CREG_IP_VERSION_OFFSET	(0x1FF8)
 #define EMSDP_CREG_IP_TYPE_OFFSET		(0x1FFC)
 
 #include "core_hardware.h"

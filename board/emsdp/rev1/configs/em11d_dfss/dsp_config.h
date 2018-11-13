@@ -8,6 +8,8 @@
 #define _dsp_config_H_
 
 
-#define DSP_SINCOS_PRESENT
+#define DSP_TRIG_PRESENT
 
 #endif
+
+
