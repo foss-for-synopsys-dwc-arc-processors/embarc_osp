@@ -46,7 +46,7 @@ typedef struct pll_conf {
 /* why m + 4 is required? from provided source code */
 #define PLL_CONF_VAL(n, m, od) \
 	(((n) << PLLCON_BIT_OFFSET_N) | \
-	((m + 4) << (PLLCON_BIT_OFFSET_M)) | \
+	((m) << (PLLCON_BIT_OFFSET_M)) | \
 	((od) << PLLCON_BIT_OFFSET_OD))
 
 

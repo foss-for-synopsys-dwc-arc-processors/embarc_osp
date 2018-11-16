@@ -45,6 +45,7 @@
 
 #include "drivers/ip/designware/i2s/dw_i2s_obj.h"
 #include "drivers/ip/designware/sdio/dw_sdio_obj.h"
+#include "drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h"
 #include "drivers/ip/subsystem/iic/dfss_iic_obj.h"
 #include "drivers/ip/subsystem/uart/dfss_uart_obj.h"
 #include "drivers/ip/subsystem/spi/dfss_spi_obj.h"

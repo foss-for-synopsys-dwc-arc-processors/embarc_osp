@@ -14,5 +14,6 @@ ONCHIP_IP_LIST		?= subsystem/gpio \
 			subsystem/spi \
 			subsystem/iic \
 			designware/i2s \
-			designware/sdio
+			designware/sdio \
+			designware/pwm_timer
 # dfss/dmac \
