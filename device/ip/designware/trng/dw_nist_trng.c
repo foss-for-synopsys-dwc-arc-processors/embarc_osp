@@ -62,12 +62,12 @@
 #define DW_TRNG_CMD_ZEROIZE			(0xF)
 
 /** Enable designware trng bit interrupt with mask */
-Inline void _dw_trng_unmask_interrupt(DW_TRNG_REG_PTR trng_reg, uint32_t mask){
+Inline void _dw_trng_unmask_reg_interrupt(DW_TRNG_REG_PTR trng_reg, uint32_t mask){
 	trng_reg->IE |= mask;
 }
 
 /** Disable designware trng bit interrupt with mask */
-Inline void _dw_trng_mask_interrupt(DW_TRNG_REG_PTR trng_reg, uint32_t mask){
+Inline void _dw_trng_mask_reg_interrupt(DW_TRNG_REG_PTR trng_reg, uint32_t mask){
 	trng_reg->IE &= ~mask;
 }
 
@@ -98,7 +98,7 @@ static int32_t _dw_trng_cmd(DEV_TRNG_INFO_PTR trng_info_ptr, uint32_t cmd){
 	return ercd;
 }
 
-static void _dw_trng_enable_interrupt(DEV_TRNG_INFO_PTR trng_info_ptr){
+static void _dw_trng_enable_sys_interrupt(DEV_TRNG_INFO_PTR trng_info_ptr){
 	DW_TRNG_CTRL_PTR trng_ctrl_ptr = (DW_TRNG_CTRL_PTR)(trng_info_ptr->trng_ctrl);
 
 	trng_ctrl_ptr->int_status |= DW_TRNG_GINT_ENABLE;
@@ -108,7 +108,7 @@ static void _dw_trng_enable_interrupt(DEV_TRNG_INFO_PTR trng_info_ptr){
 	}
 }
 
-static void _dw_trng_disable_interrupt(DEV_TRNG_INFO_PTR trng_info_ptr){
+static void _dw_trng_disable_sys_interrupt(DEV_TRNG_INFO_PTR trng_info_ptr){
 	DW_TRNG_CTRL_PTR trng_ctrl_ptr = (DW_TRNG_CTRL_PTR)(trng_info_ptr->trng_ctrl);
 
 	if(trng_ctrl_ptr->intno != DW_TRNG_INVALID_INTNO) {
@@ -122,7 +122,7 @@ static int32_t _dw_trng_zeroize(DEV_TRNG_INFO_PTR trng_info_ptr){
 	int32_t ercd = E_OK;
 	DW_TRNG_CTRL_PTR trng_ctrl_ptr = trng_info_ptr->trng_ctrl;
 	DW_TRNG_REG_PTR trng_reg_ptr = (DW_TRNG_REG_PTR) trng_ctrl_ptr->dw_trng_regs;
-	_dw_trng_enable_interrupt(trng_info_ptr);
+	_dw_trng_enable_sys_interrupt(trng_info_ptr);
 	ercd = _dw_trng_cmd(trng_info_ptr, DW_TRNG_CMD_ZEROIZE);
 	return ercd;
 }
@@ -185,8 +185,8 @@ int32_t dw_trng_open(DEV_TRNG_PTR trng_obj){//reseed with internal random seed g
 	/**
 	 * trng interrupt related init
 	 */
-	_dw_trng_disable_interrupt(trng_info_ptr);
-	_dw_trng_unmask_interrupt(trng_reg_ptr, DW_TRNG_INT_ALL);
+	_dw_trng_disable_sys_interrupt(trng_info_ptr);
+	_dw_trng_unmask_reg_interrupt(trng_reg_ptr, DW_TRNG_INT_ALL);
 	_dw_trng_zeroize(trng_info_ptr);
 	// can do a KAT test here to ensure DRBGs are running correctly, need to zeroize afterwards
 	_dw_trng_reseed(trng_info_ptr, NULL);
@@ -205,8 +205,8 @@ int32_t dw_trng_close(DEV_TRNG_PTR trng_obj){
 	DW_TRNG_CTRL_PTR trng_ctrl_ptr = trng_info_ptr->trng_ctrl;
 	DW_TRNG_REG_PTR trng_reg_ptr = (DW_TRNG_REG_PTR) trng_ctrl_ptr->dw_trng_regs;
 
-	_dw_trng_mask_interrupt(trng_reg_ptr, DW_TRNG_INT_ALL);
-	_dw_trng_disable_interrupt(trng_info_ptr);
+	_dw_trng_mask_reg_interrupt(trng_reg_ptr, DW_TRNG_INT_ALL);
+	_dw_trng_disable_sys_interrupt(trng_info_ptr);
 	//clean/release in buffer and out buffer
 	memset(&(trng_info_ptr->in_buf), 0, sizeof(DEV_BUFFER));
 	memset(&(trng_info_ptr->out_buf), 0, sizeof(DEV_BUFFER));
@@ -239,8 +239,17 @@ int32_t dw_trng_control(DEV_TRNG_PTR trng_obj, uint32_t ctrl_cmd, void *param){
 			ercd = _dw_trng_reseed(trng_info_ptr, param);
 			break;
 		case TRNG_CMD_SET_IN_CB:
+			DW_TRNG_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+			trng_info_ptr->trng_cbs.in_cb = param;
+			break;
 		case TRNG_CMD_SET_OUT_CB:
+			DW_TRNG_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+			trng_info_ptr->trng_cbs.out_cb = param;
+			break;
 		case TRNG_CMD_SET_ERR_CB:
+			DW_TRNG_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+			trng_info_ptr->trng_cbs.err_cb = param;
+			break;
 		default:
 			ercd = E_NOSPT;
 			break;
@@ -287,7 +296,7 @@ void dw_trng_isr(DEV_TRNG_PTR trng_obj, void *ptr){
 
 	if(trng_reg_ptr->alarms.illegal_cmd_seq) {
 		dbg_printf(DBG_LESS_INFO, "\r\n!DW_TRNG meet illegal_cmd_seq error: LAST_CMD=0x%x\r\n", trng_reg_ptr->stat.last_cmd);
-		_dw_trng_disable_interrupt(trng_info_ptr);
+		_dw_trng_disable_sys_interrupt(trng_info_ptr);
 		trng_reg_ptr->alarms.illegal_cmd_seq = 1;//Write 1 to clear bit
 		if (trng_info_ptr->trng_cbs.err_cb) {
 			trng_info_ptr->trng_cbs.err_cb(trng_info_ptr);
