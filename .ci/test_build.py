@@ -358,7 +358,7 @@ def build_coverity(app, make_cmd, toolchain):
     return code
 
 
-def build_makefile_project(builder, app_path, config):
+def build_makefile_project(app_path, config):
 
     result = dict()
     result = collections.OrderedDict()
@@ -382,7 +382,7 @@ def build_makefile_project(builder, app_path, config):
 
     build_conf_list = ["%s=%s" % (key, value) for (key, value) in build_conf_dict.items()]
     build_conf = " ".join(build_conf_list)
-    # builder = build.embARC_Builder(osp_root, build_conf_dict)
+    builder = build.embARC_Builder(osp_root, build_conf_dict)
     current_options = builder.buildopts
     make_config_update = list()
     current_options.update(build_conf_dict)
@@ -400,7 +400,7 @@ def build_makefile_project(builder, app_path, config):
             os.system("make opt")
         except Exception as e:
             print(e)
-    #build_status = builder.build_elf(app_path, parallel=parallel, pre_clean=True, post_clean=False)
+    build_status = builder.build_elf(app_path, parallel=parallel, pre_clean=True, post_clean=False)
     build_status["commit_sha"] = os.environ.get("CI_COMMIT_SHA") or os.environ.get("TRAVIS_COMMIT")
     build_status["JOB"] = os.environ.get("CI_JOB_NAME") or os.environ.get("NAME")
     result["toolchain"] = toolchain
@@ -411,7 +411,7 @@ def build_makefile_project(builder, app_path, config):
     return result, build_status
 
 
-def build_project_configs(builder, app_path, configs):
+def build_project_configs(app_path, configs):
     make_options = configs["make_options"]
     app_build_status = dict()
     make_config = dict()
@@ -436,7 +436,7 @@ def build_project_configs(builder, app_path, configs):
                 make_config["PARALLEL"] = configs["parallel"]
                 make_config["COVERITY"] = configs["COVERITY"]
                 make_config["SILENT"] = 1
-                result, build_status = build_makefile_project(builder, app_path, make_config)
+                result, build_status = build_makefile_project(app_path, make_config)
                 if not app_build_status.get(app_path, None):
                     app_build_status[app_path] = [build_status]
                 else:
@@ -740,10 +740,10 @@ def build_makefiles_project(config):
         app_paths = example
     current_configs = parse_config(config)
     '''here init the builder'''
-    builder = build.embARC_Builder(current_configs["osp_root"])
+    # builder = build.embARC_Builder(current_configs["osp_root"])
     for (app, app_path) in app_paths.items():
 
-        status, results, build_count, expected_different, app_build_status = build_project_configs(builder, app_path, current_configs)
+        status, results, build_count, expected_different, app_build_status = build_project_configs(app_path, current_configs)
         application_failed = application_all_failed(results)
         if application_failed == 1:
             print(Back.RED + "{} failed with all configurations".format(app_path))

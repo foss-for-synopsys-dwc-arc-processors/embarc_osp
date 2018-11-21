@@ -58,6 +58,9 @@ fi
 echo "Using ${TOOLCHAIN}-${TOOLCHAIN_VER}" || die
 bash apply_embARC_patch.sh || die
 cd .ci || die
+OSP="."
+TOOLCHAIN="gnu"
+EXAMPLES="example"
 if [ "${TOOLCHAIN}" == "sphinx" ] ; then
     bash deploy_doc.sh || die
 else
