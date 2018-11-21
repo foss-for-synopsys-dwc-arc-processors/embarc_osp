@@ -24,6 +24,7 @@ import copy
 import time
 import contextlib
 import shutil
+import gc
 example = {
     "arc_feature_cache": "example/baremetal/arc_feature/cache",
     "arc_feature_timer_interrupt": "example/baremetal/arc_feature/timer_interrupt",
@@ -408,6 +409,8 @@ def build_makefile_project(app_path, config):
     result["app"] = app_path
     result["conf"] = conf_key
     result["status"] = 0 if build_status["result"] else 1
+    del builder
+    gc.collect()
     return result, build_status
 
 
