@@ -62,5 +62,5 @@ if [ "${TOOLCHAIN}" == "sphinx" ] ; then
     bash deploy_doc.sh || die
 else
     BUILD_OPTS="OSP_ROOT=${OSP_ROOT} TOOLCHAIN=${TOOLCHAIN} BOARD=${BOARD} BD_VER=${BD_VER} CUR_CORE=${CUR_CORE} TOOLCHAIN_VER=${TOOLCHAIN_VER} EXAMPLES=${EXAMPLES} EXPECTED=${EXPECTED} PARALLEL=${PARALLEL}"
-    python test_build.py ${BUILD_OPTS} || die
+    python -m memory_profiler test_build.py ${BUILD_OPTS} || die
 fi

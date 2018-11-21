@@ -33,4 +33,5 @@ fi
     pip install requests || die
     pip install xlsxwriter || die
     pip install embarc_cli==0.1.23 || die
+    pip install memory_profiler || die
 }
