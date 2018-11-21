@@ -357,7 +357,7 @@ def build_coverity(app, make_cmd, toolchain):
     os.system(coverity_commit)
     return code
 
-@profile
+
 def build_makefile_project(app_path, config):
 
     result = dict()
@@ -713,7 +713,7 @@ def parse_config(config):
     current_configs["COVERITY"] = coverity
     return current_configs
 
-
+@profile
 def build_makefiles_project(config):
     apps_results = {}
     apps_status = []
