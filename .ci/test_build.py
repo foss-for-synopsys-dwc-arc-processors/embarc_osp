@@ -105,7 +105,7 @@ def get_cache(osp_path):
 
 def generate_json_file(data, path):
 	with open(path, "w") as f:
-		json.dump(result, f, indent=4)
+		json.dump(data, f, indent=4)
 		f.close()
 
 def result_json_artifacts(osp_path, result, file=None):
