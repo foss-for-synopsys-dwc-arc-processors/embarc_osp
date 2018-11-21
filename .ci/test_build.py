@@ -410,6 +410,8 @@ def build_makefile_project(app_path, config):
     result["conf"] = conf_key
     result["status"] = 0 if build_status["result"] else 1
     del builder
+    for x in locals().keys():
+        del locals()[x]
     gc.collect()
     return result, build_status
 
