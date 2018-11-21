@@ -400,7 +400,7 @@ def build_makefile_project(builder, app_path, config):
             os.system("make opt")
         except Exception as e:
             print(e)
-    build_status = builder.build_elf(app_path, parallel=parallel, pre_clean=True, post_clean=False)
+    #build_status = builder.build_elf(app_path, parallel=parallel, pre_clean=True, post_clean=False)
     build_status["commit_sha"] = os.environ.get("CI_COMMIT_SHA") or os.environ.get("TRAVIS_COMMIT")
     build_status["JOB"] = os.environ.get("CI_JOB_NAME") or os.environ.get("NAME")
     result["toolchain"] = toolchain
