@@ -32,6 +32,6 @@ fi
     pip install configparser || die
     pip install requests || die
     pip install xlsxwriter || die
-    pip install embarc_cli==0.1.23 || die
+    pip install embarc_cli==0.1.24 || die
     pip install memory_profiler || die
 }
