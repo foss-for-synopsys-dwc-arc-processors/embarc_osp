@@ -3,87 +3,94 @@
   <compounddef id="smic__bootspi_8h" kind="file">
     <compoundname>smic_bootspi.h</compoundname>
     <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
+    <includedby refid="iotdk_2drivers_2flash__obj_2flash__obj_8c" local="yes">flash_obj.c</includedby>
     <includedby refid="smic__bootspi_8c" local="yes">smic_bootspi.c</includedby>
     <includedby refid="iotdk_8h" local="yes">iotdk.h</includedby>
     <incdepgraph>
-      <node id="5602">
+      <node id="5846">
         <label>stdbool.h</label>
       </node>
-      <node id="5599">
+      <node id="5843">
         <label>stdint.h</label>
       </node>
-      <node id="5601">
+      <node id="5845">
         <label>stddef.h</label>
       </node>
-      <node id="5605">
+      <node id="5849">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="5598" relation="include">
+        <childnode refid="5842" relation="include">
         </childnode>
       </node>
-      <node id="5600">
+      <node id="5844">
         <label>limits.h</label>
       </node>
-      <node id="5603">
+      <node id="5847">
         <label>arc.h</label>
         <link refid="arc_8h"/>
-        <childnode refid="5604" relation="include">
+        <childnode refid="5848" relation="include">
         </childnode>
       </node>
-      <node id="5604">
+      <node id="5848">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="5596">
+      <node id="5840">
         <label>smic_bootspi.h</label>
         <link refid="smic_bootspi.h"/>
-        <childnode refid="5597" relation="include">
+        <childnode refid="5841" relation="include">
         </childnode>
       </node>
-      <node id="5598">
+      <node id="5842">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="5599" relation="include">
+        <childnode refid="5843" relation="include">
         </childnode>
-        <childnode refid="5600" relation="include">
+        <childnode refid="5844" relation="include">
         </childnode>
-        <childnode refid="5601" relation="include">
+        <childnode refid="5845" relation="include">
         </childnode>
-        <childnode refid="5602" relation="include">
+        <childnode refid="5846" relation="include">
         </childnode>
       </node>
-      <node id="5597">
+      <node id="5841">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
-        <childnode refid="5598" relation="include">
+        <childnode refid="5842" relation="include">
         </childnode>
-        <childnode refid="5603" relation="include">
+        <childnode refid="5847" relation="include">
         </childnode>
-        <childnode refid="5605" relation="include">
+        <childnode refid="5849" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5608">
+      <node id="5851">
+        <label>flash_obj.c</label>
+        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_source"/>
+      </node>
+      <node id="5853">
         <label>iotdk.h</label>
         <link refid="iotdk_8h"/>
-        <childnode refid="5609" relation="include">
+        <childnode refid="5854" relation="include">
         </childnode>
       </node>
-      <node id="5609">
+      <node id="5854">
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="5607">
+      <node id="5852">
         <label>smic_bootspi.c</label>
         <link refid="smic__bootspi_8c_source"/>
       </node>
-      <node id="5606">
+      <node id="5850">
         <label>smic_bootspi.h</label>
         <link refid="smic_bootspi.h"/>
-        <childnode refid="5607" relation="include">
+        <childnode refid="5851" relation="include">
         </childnode>
-        <childnode refid="5608" relation="include">
+        <childnode refid="5852" relation="include">
+        </childnode>
+        <childnode refid="5853" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -123,8 +130,8 @@
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="37" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1ada75f99e52be4ccd7690ba0bb1e62cf7" prot="public" static="no">
-        <name>SMIC_BOOTSPI_CHIP_REASE</name>
+      <memberdef kind="define" id="smic__bootspi_8h_1aca5e404cc4fc2944a847281648c1f353" prot="public" static="no">
+        <name>SMIC_BOOTSPI_CHIP_ERASE</name>
         <initializer>2</initializer>
         <briefdescription>
         </briefdescription>
@@ -200,27 +207,16 @@
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="46" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a8e9a1f623b406b26318e25cfb1de9781" prot="public" static="no">
-        <name>SMIC_BOOTSPI_PAGES_PER_SEC</name>
-        <initializer>(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)</initializer>
+      <memberdef kind="define" id="smic__bootspi_8h_1aa2dfa75f30fbb49851526e31f390811e" prot="public" static="no">
+        <name>SMIC_BOOTSPI_SECS_PER_CHIP</name>
+        <initializer>512</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="48" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="smic__bootspi_8h_1a14bd26c87b7e445c373908457a4b25bb" prot="public" static="no">
-        <name>SMIC_BOOTSPI_SECS_PER_BLK</name>
-        <initializer>(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="49" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__bootspi_8h_1ad4c2e978f6c06172ef6208430532c27c" prot="public" static="no">
         <name>BOOTSPI_DEFINE</name>
@@ -237,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="74" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="74" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="75" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -252,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="67" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="68" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="smic__bootspi_8h_1a42601314e086695ffd102be53ee0772a" prot="public" static="no">
         <type>struct <ref refid="structsmic__bootspi__reg" kindref="compound">smic_bootspi_reg</ref> *</type>
@@ -265,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="67" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="68" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="smic__bootspi_8h_1ab70dac3c867283c01afb38674facb295" prot="public" static="no">
         <type>struct <ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF</ref> *</type>
@@ -278,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="72" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="73" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -297,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="81" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="221" bodyend="235"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="82" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="252" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="smic__bootspi_8h_1af50d2d035dfdf53d4e8bca0e735d1adb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -314,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="82" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="237" bodyend="249"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="83" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="268" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="smic__bootspi_8h_1a9056c649fc7e51bf1027eaf6d934d691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -343,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="83" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="251" bodyend="279"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="84" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="282" bodyend="310"/>
       </memberdef>
       <memberdef kind="function" id="smic__bootspi_8h_1a6769c8a1a231f3e5007c7ac5104f888f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -372,7 +368,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="84" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="308" bodyend="331"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="85" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="338" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="smic__bootspi_8h_1a3bef3ffd8602ea0d0a20dd1b134431a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t smic_bootspi_write_nocheck</definition>
+        <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)</argsstring>
+        <name>smic_bootspi_write_nocheck</name>
+        <param>
+          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="86" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="312" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="smic__bootspi_8h_1a71d43e0234a6b5316f8f0f91ae95e311" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -397,7 +422,32 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="85" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="333" bodyend="378"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="87" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="443" bodyend="488"/>
+      </memberdef>
+      <memberdef kind="function" id="smic__bootspi_8h_1ae2e8120e5443a3c17dbb0516c08b406f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t smic_bootspi_erase</definition>
+        <argsstring>(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len)</argsstring>
+        <name>smic_bootspi_erase</name>
+        <param>
+          <type><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref></type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h" line="88" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.c" bodystart="392" bodyend="441"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -442,7 +492,7 @@
 <codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_RESET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
 <codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_READ_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
-<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_CHIP_REASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_CHIP_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
 <codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLK_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
 <codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SEC_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
 <codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
@@ -451,51 +501,53 @@
 <codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLK_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x10000<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//64K<sp/>bytes</highlight></codeline>
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_BLKS_PER_CHIP<sp/><sp/><sp/><sp/><sp/><sp/>32</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_PAGES_PER_SEC<sp/><sp/><sp/><sp/><sp/><sp/>(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SECS_PER_BLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_BOOTSPI_SECS_PER_CHIP<sp/><sp/><sp/><sp/><sp/><sp/>512</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>SMIC_BOOTSPI_PAGES_PER_SEC<sp/><sp/><sp/><sp/>(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>SMIC_BOOTSPI_SECS_PER_BLK<sp/><sp/><sp/><sp/><sp/>(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="structsmic__bootspi__reg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structsmic__bootspi__reg" kindref="compound">smic_bootspi_reg</ref><sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Data<sp/>Read<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMDR;</highlight><highlight class="comment">//(0x00)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Data<sp/>Write<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMDW;</highlight><highlight class="comment">//(0x04)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Control<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMC;</highlight><highlight class="comment">//(0x08)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Status<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMS;</highlight><highlight class="comment">//(0x0C)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Enable<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MME;</highlight><highlight class="comment">//(0x10)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal">}<sp/>SMIC_BOOTSPI_REG,<sp/>*SMIC_BOOTSPI_REG_PTR;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_REG_PTR<sp/>bootspi_reg;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bootspi_open_cnt;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal">}<sp/><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF</ref>,<sp/>*<ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref>;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOTSPI_DEFINE(NAME,<sp/>REG_BASE)<sp/>\</highlight></codeline>
-<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF<sp/>__<sp/>##<sp/>NAME<sp/>=<sp/>{<sp/>\</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_open_cnt<sp/>=<sp/>0,<sp/>\</highlight></codeline>
-<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_reg<sp/>=<sp/>(SMIC_BOOTSPI_REG_PTR)REG_BASE,<sp/>\</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};<sp/>\</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF_PTR<sp/>NAME<sp/>=<sp/>&amp;__<sp/>##<sp/>NAME</highlight></codeline>
-<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_close(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_read(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SMIC_BOOTSPI_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="structsmic__bootspi__reg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structsmic__bootspi__reg" kindref="compound">smic_bootspi_reg</ref><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Data<sp/>Read<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMDR;</highlight><highlight class="comment">//(0x00)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Data<sp/>Write<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMDW;</highlight><highlight class="comment">//(0x04)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Control<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMC;</highlight><highlight class="comment">//(0x08)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Status<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MMS;</highlight><highlight class="comment">//(0x0C)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Manual<sp/>Mode<sp/>Enable<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>MME;</highlight><highlight class="comment">//(0x10)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}<sp/>SMIC_BOOTSPI_REG,<sp/>*SMIC_BOOTSPI_REG_PTR;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_REG_PTR<sp/>bootspi_reg;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>bootspi_open_cnt;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}<sp/><ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF</ref>,<sp/>*<ref refid="struct_s_m_i_c___b_o_o_t_s_p_i___d_e_f" kindref="compound">SMIC_BOOTSPI_DEF_PTR</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOTSPI_DEFINE(NAME,<sp/>REG_BASE)<sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF<sp/>__<sp/>##<sp/>NAME<sp/>=<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_open_cnt<sp/>=<sp/>0,<sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.bootspi_reg<sp/>=<sp/>(SMIC_BOOTSPI_REG_PTR)REG_BASE,<sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};<sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_BOOTSPI_DEF_PTR<sp/>NAME<sp/>=<sp/>&amp;__<sp/>##<sp/>NAME</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_close(SMIC_BOOTSPI_DEF_PTR<sp/>obj);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_read(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_write_nocheck(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_bootspi_erase(SMIC_BOOTSPI_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SMIC_BOOTSPI_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_bootspi/smic_bootspi.h"/>
   </compounddef>

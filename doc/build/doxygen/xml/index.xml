@@ -114,6 +114,49 @@
     <member refid="unionaux__irq__ctrl__t_1aa30557841e8b3d326543e356cc6b2d7a" kind="variable"><name>bits</name></member>
     <member refid="unionaux__irq__ctrl__t_1ab91a5b8d0783609065f3f21fae0f6d6d" kind="variable"><name>value</name></member>
   </compound>
+  <compound refid="structboot__loader__state" kind="struct"><name>boot_loader_state</name>
+    <member refid="structboot__loader__state_1aa6dec5441403e9b0c8576590efba516e" kind="variable"><name>hdr</name></member>
+    <member refid="structboot__loader__state_1ae272fd57886290326b263a06ccdbf665" kind="variable"><name>area</name></member>
+    <member refid="structboot__loader__state_1a698c69ea1d86eb191124595790799238" kind="variable"><name>sectors</name></member>
+    <member refid="structboot__loader__state_1a7e257f1ef4c4bcf40601e523991d4bd6" kind="variable"><name>num_sectors</name></member>
+    <member refid="structboot__loader__state_1a4ef9a46729e1dcbe6a0d398fb4329f08" kind="variable"><name>imgs</name></member>
+    <member refid="structboot__loader__state_1a9685ab874fc04edf7cfc1c7ff8776d2d" kind="variable"><name>scratch_area</name></member>
+    <member refid="structboot__loader__state_1a955695fb4548debd9ecf56d11144d1fb" kind="variable"><name>write_sz</name></member>
+  </compound>
+  <compound refid="structboot__rsp" kind="struct"><name>boot_rsp</name>
+    <member refid="structboot__rsp_1acb33d4915ee2ab89e5f48c0af9f2d1ec" kind="variable"><name>br_hdr</name></member>
+    <member refid="structboot__rsp_1ad57c70acf024079a403aed49c015bde3" kind="variable"><name>br_flash_dev_id</name></member>
+    <member refid="structboot__rsp_1a73f0ca28e6463aec91edbf84b79eeb4d" kind="variable"><name>br_image_off</name></member>
+  </compound>
+  <compound refid="structboot__status" kind="struct"><name>boot_status</name>
+    <member refid="structboot__status_1adf8455547ae1ee50f6fa199657037166" kind="variable"><name>idx</name></member>
+    <member refid="structboot__status_1a7a6ed1d69b381c06d86c22b0a67ef78c" kind="variable"><name>state</name></member>
+    <member refid="structboot__status_1a2f8f26c9a76f39590b77577c73846233" kind="variable"><name>use_scratch</name></member>
+    <member refid="structboot__status_1aff64c24a2ff11377d716205d9825bd43" kind="variable"><name>swap_size</name></member>
+  </compound>
+  <compound refid="structboot__status__table" kind="struct"><name>boot_status_table</name>
+    <member refid="structboot__status__table_1a3d0db935652bc2fd0cff5800cf6aab67" kind="variable"><name>bst_magic_slot0</name></member>
+    <member refid="structboot__status__table_1a8864bebe39c57afd53a45a3e1a9bb97a" kind="variable"><name>bst_magic_scratch</name></member>
+    <member refid="structboot__status__table_1a24e6314f589fb86983b64f5a21055f54" kind="variable"><name>bst_copy_done_slot0</name></member>
+    <member refid="structboot__status__table_1aaf72998078ab277183c272d323b4ddad" kind="variable"><name>bst_status_source</name></member>
+  </compound>
+  <compound refid="structboot__swap__state" kind="struct"><name>boot_swap_state</name>
+    <member refid="structboot__swap__state_1a35e293beeeabecb91a381dd793ba61d3" kind="variable"><name>magic</name></member>
+    <member refid="structboot__swap__state_1a135c47ae5a43d336d5ab62b5e72417bb" kind="variable"><name>copy_done</name></member>
+    <member refid="structboot__swap__state_1af9fdb9362834412b79bf710a1abafef5" kind="variable"><name>image_ok</name></member>
+  </compound>
+  <compound refid="structboot__swap__table" kind="struct"><name>boot_swap_table</name>
+    <member refid="structboot__swap__table_1a89494ce9c356a17f320b581481d717be" kind="variable"><name>magic_slot0</name></member>
+    <member refid="structboot__swap__table_1a8d3ae5cdf7b26ecaff1b7d8ffcfe80a3" kind="variable"><name>magic_slot1</name></member>
+    <member refid="structboot__swap__table_1aeb837562f711b3da456a8022a6255b34" kind="variable"><name>image_ok_slot0</name></member>
+    <member refid="structboot__swap__table_1a3fad0d5b1a7b791d2e8cd1fd1819892d" kind="variable"><name>image_ok_slot1</name></member>
+    <member refid="structboot__swap__table_1ac9542ddfe1838ecffeaf0059ba3c49e1" kind="variable"><name>copy_done_slot0</name></member>
+    <member refid="structboot__swap__table_1a4ff15e82c1129a1c17b9061cd56d2e8f" kind="variable"><name>swap_type</name></member>
+  </compound>
+  <compound refid="structbootutil__key" kind="struct"><name>bootutil_key</name>
+    <member refid="structbootutil__key_1a91436bcf03996f081abbf9b521138a05" kind="variable"><name>key</name></member>
+    <member refid="structbootutil__key_1acf17b92a11d1d2089f47216e984f3dbf" kind="variable"><name>len</name></member>
+  </compound>
   <compound refid="structcache__config" kind="struct"><name>cache_config</name>
     <member refid="structcache__config_1a808eb59f19a5d5ee1f6cf087d2c26508" kind="variable"><name>ver</name></member>
     <member refid="structcache__config_1a2b852bb394919a676335d739c0e3f4fe" kind="variable"><name>assoc</name></member>
@@ -429,6 +472,24 @@
     <member refid="structdev__buffer_1a9229a6df77f315674f8a9e08809f97c1" kind="variable"><name>buf</name></member>
     <member refid="structdev__buffer_1a39df7479eb803d0ca261490f1b2b677d" kind="variable"><name>len</name></member>
     <member refid="structdev__buffer_1aa3763537ccb4d9fd5619c2d1647397a6" kind="variable"><name>ofs</name></member>
+  </compound>
+  <compound refid="structdev__flash" kind="struct"><name>dev_flash</name>
+    <member refid="structdev__flash_1aef5f8e65fc7660e96e8a4109df8eb270" kind="variable"><name>flash_info</name></member>
+    <member refid="structdev__flash_1a560a58ba4eb12c307bb676aa675c1759" kind="variable"><name>flash_open</name></member>
+    <member refid="structdev__flash_1a01c532e65d6d9c42dbf3a03c590064e5" kind="variable"><name>flash_close</name></member>
+    <member refid="structdev__flash_1a1f570067757057a44b805583d34a1ae8" kind="variable"><name>flash_control</name></member>
+    <member refid="structdev__flash_1ac3a2c0153646be33f2d41d65fa54dc0d" kind="variable"><name>flash_write</name></member>
+    <member refid="structdev__flash_1aad5567e96f3fe2c2bc1ee947283813f9" kind="variable"><name>flash_write_nocheck</name></member>
+    <member refid="structdev__flash_1a6c371d23c12d532f2ccbc60def4de77d" kind="variable"><name>flash_read</name></member>
+    <member refid="structdev__flash_1a2ce7e74630c83b919f0499dcc24f5fad" kind="variable"><name>flash_erase</name></member>
+  </compound>
+  <compound refid="structdev__flash__info" kind="struct"><name>dev_flash_info</name>
+    <member refid="structdev__flash__info_1a6e28f2977f8296e833a1a777b605ef05" kind="variable"><name>begin_addr</name></member>
+    <member refid="structdev__flash__info_1a7bbeab6f24b4bb929ea367d66e98c15f" kind="variable"><name>total_size</name></member>
+    <member refid="structdev__flash__info_1a8afbdd6e3e80c83bd9624bea346071a6" kind="variable"><name>align_size</name></member>
+    <member refid="structdev__flash__info_1a733fb9dba87bc62a4851697f58939df0" kind="variable"><name>page_size</name></member>
+    <member refid="structdev__flash__info_1acf7770fd0cbee5688dbc8ce1226baa08" kind="variable"><name>page_cnt</name></member>
+    <member refid="structdev__flash__info_1a3b2bb1d8d1b9b93b36afe0ce52e9a5fd" kind="variable"><name>open_cnt</name></member>
   </compound>
   <compound refid="structdev__gpio" kind="struct"><name>dev_gpio</name>
     <member refid="structdev__gpio_1ad9ee0de0f2f120a328ceaf891a2e6a6b" kind="variable"><name>gpio_info</name></member>
@@ -1135,6 +1196,22 @@
     <member refid="structfatfs__stat_1a985e4a9dca9a1e4aa79e33f741ea5d65" kind="variable"><name>fatfs_filinfo</name></member>
     <member refid="structfatfs__stat_1a09ca394091e851a40c4674d1894199f8" kind="variable"><name>st_mode</name></member>
   </compound>
+  <compound refid="structflash__area" kind="struct"><name>flash_area</name>
+    <member refid="structflash__area_1acfe73a1f4f00fdf58129b21e5b71f5d4" kind="variable"><name>fa_id</name></member>
+    <member refid="structflash__area_1a5d78c6ab00bab1bd0e825743925216a9" kind="variable"><name>fa_device_id</name></member>
+    <member refid="structflash__area_1af98b8f20c0219bfcdd2fc20037845a99" kind="variable"><name>pad16</name></member>
+    <member refid="structflash__area_1a44fbf0af3ba0e7fa1c3623e7d48e0739" kind="variable"><name>fa_off</name></member>
+    <member refid="structflash__area_1ac580f8ab560582c02f12e96cb67b0e59" kind="variable"><name>fa_size</name></member>
+  </compound>
+  <compound refid="structflash__map__entry" kind="struct"><name>flash_map_entry</name>
+    <member refid="structflash__map__entry_1a44373486c97009f9fd69057ad7791883" kind="variable"><name>magic</name></member>
+    <member refid="structflash__map__entry_1aa51faf67204dd8f78a85f92b5cc89c67" kind="variable"><name>area</name></member>
+    <member refid="structflash__map__entry_1a45cc055ca5354b9e8eb46365af237de0" kind="variable"><name>ref_count</name></member>
+  </compound>
+  <compound refid="structflash__sector" kind="struct"><name>flash_sector</name>
+    <member refid="structflash__sector_1a97421370396c491b90685ed0fc618931" kind="variable"><name>fs_off</name></member>
+    <member refid="structflash__sector_1a69093e5c1e6884b6ae50be44788c53a0" kind="variable"><name>fs_size</name></member>
+  </compound>
   <compound refid="structfpu__ext__frame" kind="struct"><name>fpu_ext_frame</name>
     <member refid="structfpu__ext__frame_1aaa84b35adc0a978604b6bd31a64705a8" kind="variable"><name>fpu_status</name></member>
     <member refid="structfpu__ext__frame_1a01391605af286854f8d599586f511feb" kind="variable"><name>fpu_ctrl</name></member>
@@ -1254,6 +1331,38 @@
     <member refid="structictl__gpio__reg_1a82d1212d31198d3f3ebde9349a012ea0" kind="variable"><name>RAW_INTSTATUS</name></member>
     <member refid="structictl__gpio__reg_1af037d67391e0c39bcd3a4af8081d7ba7" kind="variable"><name>DEBOUNCE</name></member>
     <member refid="structictl__gpio__reg_1ae97cbecc300954cff0a2827ea3e8022d" kind="variable"><name>PORTA_EOI</name></member>
+  </compound>
+  <compound refid="structimage__header" kind="struct"><name>image_header</name>
+    <member refid="structimage__header_1a4e70c37f4aaa89a56315b00ccbf23247" kind="variable"><name>ih_magic</name></member>
+    <member refid="structimage__header_1a211d47bb61bf59ef9437106b3b77aa3c" kind="variable"><name>ih_load_addr</name></member>
+    <member refid="structimage__header_1a44033e9527ebee55ab795189d8169530" kind="variable"><name>ih_hdr_size</name></member>
+    <member refid="structimage__header_1a562acb5a7ebeabadf8171458f96c28b3" kind="variable"><name>_pad2</name></member>
+    <member refid="structimage__header_1aeef33dce80daf19afa12cb54184caca1" kind="variable"><name>ih_img_size</name></member>
+    <member refid="structimage__header_1a2002289455ac4a8b6bcfca84440b7fe1" kind="variable"><name>ih_flags</name></member>
+    <member refid="structimage__header_1a6538aff8880fa799a17ef08044fefd1b" kind="variable"><name>ih_ver</name></member>
+    <member refid="structimage__header_1aa2921fbd1aa0a9ce33c537c78711e94b" kind="variable"><name>_pad3</name></member>
+  </compound>
+  <compound refid="structimage__tlv" kind="struct"><name>image_tlv</name>
+    <member refid="structimage__tlv_1a37e04bd5e1dd8af31b2026f7730daf82" kind="variable"><name>it_type</name></member>
+    <member refid="structimage__tlv_1ad6f1519a7ef6388e50cf9d74907285ca" kind="variable"><name>_pad</name></member>
+    <member refid="structimage__tlv_1ab7a24af378fb96529bc70eb444e1b1e7" kind="variable"><name>it_len</name></member>
+  </compound>
+  <compound refid="structimage__tlv__info" kind="struct"><name>image_tlv_info</name>
+    <member refid="structimage__tlv__info_1a35cd7b9cc1b1f5836cf5628f6f69526e" kind="variable"><name>it_magic</name></member>
+    <member refid="structimage__tlv__info_1ac4aaadd6ccee986a6361ea29ba590493" kind="variable"><name>it_tlv_tot</name></member>
+  </compound>
+  <compound refid="structimage__trailer" kind="struct"><name>image_trailer</name>
+    <member refid="structimage__trailer_1a471b23eb92213e177e0d104031777173" kind="variable"><name>copy_done</name></member>
+    <member refid="structimage__trailer_1a057b4a5ae11501e85aec2ee50ebafdde" kind="variable"><name>pad1</name></member>
+    <member refid="structimage__trailer_1a837ee6fb3615e49b9a87b802b1ecb677" kind="variable"><name>image_ok</name></member>
+    <member refid="structimage__trailer_1a4caaa7bc3bd96181340aa54a29cfe83f" kind="variable"><name>pad2</name></member>
+    <member refid="structimage__trailer_1a0f9f7225f46fefff01d90d3dee65c685" kind="variable"><name>magic</name></member>
+  </compound>
+  <compound refid="structimage__version" kind="struct"><name>image_version</name>
+    <member refid="structimage__version_1a0a7b4e5a497b43880c53160cffeb483f" kind="variable"><name>iv_major</name></member>
+    <member refid="structimage__version_1a61d615bf968f3db207e3fb33f372f72e" kind="variable"><name>iv_minor</name></member>
+    <member refid="structimage__version_1a428c1aaf1273b7ece27e950846ef3c53" kind="variable"><name>iv_revision</name></member>
+    <member refid="structimage__version_1adf9293a8b69ed37401db30b2aa726792" kind="variable"><name>iv_build_num</name></member>
   </compound>
   <compound refid="structint__exc__frame" kind="struct"><name>int_exc_frame</name>
     <member refid="structint__exc__frame_1a6f05b568188b03bc2b3b5cb90d4cbc33" kind="variable"><name>erbta</name></member>
@@ -1475,7 +1584,7 @@
   <compound refid="structsdio__data" kind="struct"><name>sdio_data</name>
     <member refid="structsdio__data_1a7d1bf72e42fd8eb7b9a1cfd4a46cf918" kind="variable"><name>in</name></member>
     <member refid="structsdio__data_1af61568dc7eff04586e0e2987f7ca7cab" kind="variable"><name>out</name></member>
-    <member refid="structsdio__data_1a174b45c59f539b75f8b005cf491539af" kind="variable"><name>@2</name></member>
+    <member refid="structsdio__data_1a3f75251b2f6389eb1a7a8a02623e1a3c" kind="variable"><name>@3</name></member>
     <member refid="structsdio__data_1a38cd7e06046356367fcd1d30bece7c94" kind="variable"><name>flags</name></member>
     <member refid="structsdio__data_1a26eb793b64473b496a79a1ae493806c8" kind="variable"><name>blkcnt</name></member>
     <member refid="structsdio__data_1a0942615eadfd39a23b9637c7071b4ac1" kind="variable"><name>blksz</name></member>
@@ -1528,6 +1637,7 @@
     <member refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f_1a24edbc85c3cc550e260a647d2810172d" kind="variable"><name>eflash_lock</name></member>
     <member refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f_1af4eaf3017820aefe97b9becf38b1ddaf" kind="variable"><name>eflash_page_cnt</name></member>
     <member refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f_1a1c2b9a242ecfb775f3f6be3ce21119c7" kind="variable"><name>eflash_page_size</name></member>
+    <member refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f_1a41429e50354d12b5cb70b24bd3ef2fb3" kind="variable"><name>eflash_base_addr</name></member>
   </compound>
   <compound refid="struct_s_m_i_c___e_f_l_a_s_h___i_n_f_o" kind="struct"><name>SMIC_EFLASH_INFO</name>
     <member refid="struct_s_m_i_c___e_f_l_a_s_h___i_n_f_o_1a576459bbb148c9ce7c9df41a10baf1e1" kind="variable"><name>eflash_page_cnt</name></member>
@@ -3438,6 +3548,12 @@
     <member refid="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___t_i_m_e_r_1gaf5c5c4e97199ea393457754474dbfb92" kind="variable"><name>gl_axs_ms_cnt</name></member>
     <member refid="group___b_o_a_r_d___a_x_s___c_o_m_m_o_n___t_i_m_e_r_1gaeccce732e5de08bf886129fab8e2583f" kind="function"><name>axs_timer_init</name></member>
   </compound>
+  <compound refid="bl2__util_8h" kind="file"><name>bl2_util.h</name>
+    <member refid="bl2__util_8h_1a831cb8468911b8ebdb9b42682778e53d" kind="define"><name>ZERO_OR_COMPILE_ERROR</name></member>
+    <member refid="bl2__util_8h_1aa0be479debd8300ab6b43f4d028ab5da" kind="define"><name>IS_ARRAY</name></member>
+    <member refid="bl2__util_8h_1a70c57aae3eb654e205459b4362c8089a" kind="define"><name>ARRAY_SIZE</name></member>
+    <member refid="bl2__util_8h_1ac5bc561d1bfd1bf68877fe577779bd2f" kind="define"><name>CONTAINER_OF</name></member>
+  </compound>
   <compound refid="board_8c" kind="file"><name>board.c</name>
     <member refid="board_8c_1ad5dec1df4d06d3d73157ea38272c1cec" kind="typedef"><name>MAIN_ARGS</name></member>
     <member refid="board_8c_1ae47081a077cba3104ac7f6dff4459ffa" kind="variable"><name>s_main_args</name></member>
@@ -3456,6 +3572,130 @@
   <compound refid="board__hsdk__declaration_8doc" kind="file"><name>board_hsdk_declaration.doc</name>
   </compound>
   <compound refid="board__nsim__declaration_8doc" kind="file"><name>board_nsim_declaration.doc</name>
+  </compound>
+  <compound refid="bootutil_8h" kind="file"><name>bootutil.h</name>
+    <member refid="bootutil_8h_1abb6482b898e8307074d8aef01b1102b7" kind="define"><name>BOOT_SWAP_TYPE_NONE</name></member>
+    <member refid="bootutil_8h_1a3aa4415c47231a120c4cab455ea0beef" kind="define"><name>BOOT_SWAP_TYPE_TEST</name></member>
+    <member refid="bootutil_8h_1a09ebc9ba28e294e71388480bb9e4f677" kind="define"><name>BOOT_SWAP_TYPE_PERM</name></member>
+    <member refid="bootutil_8h_1a8ca7bd765c6ab669db0774c0b0122494" kind="define"><name>BOOT_SWAP_TYPE_REVERT</name></member>
+    <member refid="bootutil_8h_1a28cb43e6bfacdd285d95751cda80de13" kind="define"><name>BOOT_SWAP_TYPE_FAIL</name></member>
+    <member refid="bootutil_8h_1ab10caf2f498fd5cae5eb1b00675ade11" kind="define"><name>BOOT_SWAP_TYPE_PANIC</name></member>
+    <member refid="bootutil_8h_1ac72fdc1cc35c4ace433c8c6a74fb1019" kind="define"><name>MAX_FLASH_ALIGN</name></member>
+    <member refid="bootutil_8h_1af110755e74710ff30ebac3e09de167d7" kind="define"><name>SPLIT_GO_OK</name></member>
+    <member refid="bootutil_8h_1afb7eb7239160533de4df4fe2c73dda9d" kind="define"><name>SPLIT_GO_NON_MATCHING</name></member>
+    <member refid="bootutil_8h_1a6a9862a8ac48eb9c9090d0438b53dc2a" kind="define"><name>SPLIT_GO_ERR</name></member>
+    <member refid="bootutil_8h_1a1a805c1452ceec2d80e9637dc50f6ecf" kind="variable"><name>BOOT_MAX_ALIGN</name></member>
+    <member refid="bootutil_8h_1a76311eabaf83d2c520fe23b714ae4eb2" kind="function"><name>boot_go</name></member>
+    <member refid="bootutil_8h_1a3e4302edd19c4b31ca6cf67111256833" kind="function"><name>boot_swap_type</name></member>
+    <member refid="bootutil_8h_1a11e3b218d7aec6c1c2cb9406e9c42a5c" kind="function"><name>boot_set_pending</name></member>
+    <member refid="bootutil_8h_1a2880d6bf6773d78fde76dcbfaba45a40" kind="function"><name>boot_set_confirmed</name></member>
+    <member refid="bootutil_8h_1abbbd7f7ac35336dac08a6d3deb945bd1" kind="function"><name>split_go</name></member>
+  </compound>
+  <compound refid="bootutil__log_8h" kind="file"><name>bootutil_log.h</name>
+    <member refid="bootutil__log_8h_1ae3a5d772cdfd46b963503a453d37c93b" kind="define"><name>BOOT_LOG_LEVEL_OFF</name></member>
+    <member refid="bootutil__log_8h_1a5eb9bbdfca796cb9b65f0db12c9263d1" kind="define"><name>BOOT_LOG_LEVEL_ERROR</name></member>
+    <member refid="bootutil__log_8h_1a0d5053c35a32e8020fb37b2d333fb6da" kind="define"><name>BOOT_LOG_LEVEL_WARNING</name></member>
+    <member refid="bootutil__log_8h_1a0084a9f14cec8f3152569edaa22ed397" kind="define"><name>BOOT_LOG_LEVEL_INFO</name></member>
+    <member refid="bootutil__log_8h_1a57761170c1a7fd431527148d4a39d9b6" kind="define"><name>BOOT_LOG_LEVEL_DEBUG</name></member>
+    <member refid="bootutil__log_8h_1af7ea472138d220f02fbf63d6043c6f60" kind="define"><name>BOOT_LOG_LEVEL</name></member>
+    <member refid="bootutil__log_8h_1aa4216cf530fc58b27ceac4988cc138f4" kind="define"><name>BOOT_LOG_ERR</name></member>
+    <member refid="bootutil__log_8h_1a60cc1c39b30454694f3f31f4a1256298" kind="define"><name>BOOT_LOG_WRN</name></member>
+    <member refid="bootutil__log_8h_1ab01debebf25759c06bee57d53d36cdb7" kind="define"><name>BOOT_LOG_INF</name></member>
+    <member refid="bootutil__log_8h_1ad60e6845c2f9df702cc5aa297eb58a7d" kind="define"><name>BOOT_LOG_DBG</name></member>
+    <member refid="bootutil__log_8h_1ad6dbdf4dfc312e731f86541167f9db03" kind="function"><name>sim_log_enabled</name></member>
+  </compound>
+  <compound refid="bootutil__misc_8c" kind="file"><name>bootutil_misc.c</name>
+    <member refid="bootutil__misc_8c_1af7ea472138d220f02fbf63d6043c6f60" kind="define"><name>BOOT_LOG_LEVEL</name></member>
+    <member refid="bootutil__misc_8c_1a2f92f0ea6724396b83e73ad7972d17ed" kind="define"><name>BOOT_SWAP_TABLES_COUNT</name></member>
+    <member refid="bootutil__misc_8c_1a0d6bb8877516ca486c318fa12c129138" kind="variable"><name>boot_current_slot</name></member>
+    <member refid="bootutil__misc_8c_1aa1f7b03be35de7e70c742d53a05cfd0f" kind="variable"><name>boot_img_magic</name></member>
+    <member refid="bootutil__misc_8c_1af318a6002e79bb0964d6bc2a11b9775f" kind="variable"><name>BOOT_MAGIC_SZ</name></member>
+    <member refid="bootutil__misc_8c_1a1a805c1452ceec2d80e9637dc50f6ecf" kind="variable"><name>BOOT_MAX_ALIGN</name></member>
+    <member refid="bootutil__misc_8c_1a2de96bf3ab16b63217245c63b0a16594" kind="variable"><name>boot_swap_tables</name></member>
+    <member refid="bootutil__misc_8c_1a9a9f8517a1ca27deac54045dbb831953" kind="function"><name>boot_magic_code</name></member>
+    <member refid="bootutil__misc_8c_1aa3c6592d9064d3cf390649d5e410a755" kind="function"><name>boot_slots_trailer_sz</name></member>
+    <member refid="bootutil__misc_8c_1af25fba0ce3691fe7ee196e9d01aa2f64" kind="function"><name>boot_scratch_trailer_sz</name></member>
+    <member refid="bootutil__misc_8c_1aae6485d5588871254b6b7698fb4d8040" kind="function"><name>boot_magic_off</name></member>
+    <member refid="bootutil__misc_8c_1a411d9defe1ed0ca5206c3abf6116daaf" kind="function"><name>boot_status_entries</name></member>
+    <member refid="bootutil__misc_8c_1a3e891fb64e54e125ccccd0842731a422" kind="function"><name>boot_status_off</name></member>
+    <member refid="bootutil__misc_8c_1a548b8df6927b43fe44300af367dabc4a" kind="function"><name>boot_copy_done_off</name></member>
+    <member refid="bootutil__misc_8c_1a57cf61ba3be829ac1af1243138c62286" kind="function"><name>boot_image_ok_off</name></member>
+    <member refid="bootutil__misc_8c_1ac96c14db781ac120b37512f7f13d181b" kind="function"><name>boot_swap_size_off</name></member>
+    <member refid="bootutil__misc_8c_1a3cee50afc7101d318c343f1007493f3f" kind="function"><name>boot_read_swap_state</name></member>
+    <member refid="bootutil__misc_8c_1a97c80d8f08c976b436c99f6a5364cafb" kind="function"><name>boot_read_swap_state_by_id</name></member>
+    <member refid="bootutil__misc_8c_1af2d37baf8bc46afbbe6d548f557fb4ae" kind="function"><name>boot_read_swap_size</name></member>
+    <member refid="bootutil__misc_8c_1ade84e4968c02b045e14eaf31498be559" kind="function"><name>boot_write_magic</name></member>
+    <member refid="bootutil__misc_8c_1a9ddb039e4ff43105ff463ad046f5db9c" kind="function"><name>boot_write_flag</name></member>
+    <member refid="bootutil__misc_8c_1a8907dc34cd04fb884e30b3cab0350bba" kind="function"><name>boot_write_copy_done</name></member>
+    <member refid="bootutil__misc_8c_1aac1a2d8248287afbffa3d21cf40fe9cb" kind="function"><name>boot_write_image_ok</name></member>
+    <member refid="bootutil__misc_8c_1a37a42510ae31e9438384714370bb02da" kind="function"><name>boot_write_swap_size</name></member>
+    <member refid="bootutil__misc_8c_1a3e4302edd19c4b31ca6cf67111256833" kind="function"><name>boot_swap_type</name></member>
+    <member refid="bootutil__misc_8c_1a11e3b218d7aec6c1c2cb9406e9c42a5c" kind="function"><name>boot_set_pending</name></member>
+    <member refid="bootutil__misc_8c_1a2880d6bf6773d78fde76dcbfaba45a40" kind="function"><name>boot_set_confirmed</name></member>
+  </compound>
+  <compound refid="bootutil__priv_8h" kind="file"><name>bootutil_priv.h</name>
+    <member refid="bootutil__priv_8h_1ae2bd94bf9bec45dd3bd3de874ec2a9f4" kind="define"><name>BOOT_EFLASH</name></member>
+    <member refid="bootutil__priv_8h_1aff11244883ac258094557f64256d797d" kind="define"><name>BOOT_EFILE</name></member>
+    <member refid="bootutil__priv_8h_1a5014a2f35c9fbbb0174b97284d9e4cca" kind="define"><name>BOOT_EBADIMAGE</name></member>
+    <member refid="bootutil__priv_8h_1a6c38c02ce7768e1414600c6c8039321c" kind="define"><name>BOOT_EBADVECT</name></member>
+    <member refid="bootutil__priv_8h_1a6260237ba8740970392caa880c6efdc6" kind="define"><name>BOOT_EBADSTATUS</name></member>
+    <member refid="bootutil__priv_8h_1a31636c141e303e55c62f15cad1e70674" kind="define"><name>BOOT_ENOMEM</name></member>
+    <member refid="bootutil__priv_8h_1a90a297b1c858444371bf6332c388fd29" kind="define"><name>BOOT_EBADARGS</name></member>
+    <member refid="bootutil__priv_8h_1a6122c32b4f26671771ce3ad5d2b74756" kind="define"><name>BOOT_TMPBUF_SZ</name></member>
+    <member refid="bootutil__priv_8h_1a075c554bdfd23e7782a20eb69f0a9af5" kind="define"><name>BOOT_MAGIC_GOOD</name></member>
+    <member refid="bootutil__priv_8h_1a625383f05678617ea4b20d756b61507e" kind="define"><name>BOOT_MAGIC_BAD</name></member>
+    <member refid="bootutil__priv_8h_1aa88ee375ad2592d66ddcff7b2b9b73d7" kind="define"><name>BOOT_MAGIC_UNSET</name></member>
+    <member refid="bootutil__priv_8h_1a96f5f8a81eb4c94662dd4b500d5f0225" kind="define"><name>BOOT_STATUS_STATE_COUNT</name></member>
+    <member refid="bootutil__priv_8h_1a8decacb414001c6e9dddd12a11d3d118" kind="define"><name>BOOT_STATUS_MAX_ENTRIES</name></member>
+    <member refid="bootutil__priv_8h_1afae425f4e27243395fedaa1884acf01b" kind="define"><name>BOOT_STATUS_SOURCE_NONE</name></member>
+    <member refid="bootutil__priv_8h_1ae12317ef6e1e43434f62cb5064536630" kind="define"><name>BOOT_STATUS_SOURCE_SCRATCH</name></member>
+    <member refid="bootutil__priv_8h_1ae984f0876fb530ebd0bfaeffeee38e74" kind="define"><name>BOOT_STATUS_SOURCE_SLOT0</name></member>
+    <member refid="bootutil__priv_8h_1a2f3845961af4700b238838a487fa589e" kind="define"><name>BOOT_FLAG_IMAGE_OK</name></member>
+    <member refid="bootutil__priv_8h_1ade3eed120878cff1e889156992787ae8" kind="define"><name>BOOT_FLAG_COPY_DONE</name></member>
+    <member refid="bootutil__priv_8h_1a6e1292f491735d41bbbe6e88bd6118a9" kind="define"><name>BOOT_FLAG_SET</name></member>
+    <member refid="bootutil__priv_8h_1a4e313443d0973c55c8d5ff3fbee6c1aa" kind="define"><name>BOOT_FLAG_UNSET</name></member>
+    <member refid="bootutil__priv_8h_1a3f8d6337e4421a49109ba255540b5f7c" kind="define"><name>BOOT_NUM_SLOTS</name></member>
+    <member refid="bootutil__priv_8h_1af500e92a4776274231bba1b521afc206" kind="define"><name>BOOT_MAX_IMG_SECTORS</name></member>
+    <member refid="bootutil__priv_8h_1a3115be45c78c41747674f57c219f9f04" kind="define"><name>BOOT_IMG_AREA</name></member>
+    <member refid="bootutil__priv_8h_1a72778c01c9687b34726c7580a047e197" kind="define"><name>BOOT_SCRATCH_AREA</name></member>
+    <member refid="bootutil__priv_8h_1a298677d33904832a667082a16f688fce" kind="define"><name>BOOT_WRITE_SZ</name></member>
+    <member refid="bootutil__priv_8h_1aa55dea90d283b33bc2937ad1bc7933ef" kind="typedef"><name>boot_sector_t</name></member>
+    <member refid="bootutil__priv_8h_1acdfb767080ec0285cb667a0fc89e30ee" kind="variable"><name>boot_img_magic</name></member>
+    <member refid="bootutil__priv_8h_1af318a6002e79bb0964d6bc2a11b9775f" kind="variable"><name>BOOT_MAGIC_SZ</name></member>
+    <member refid="bootutil__priv_8h_1afdd0bd8e8d104e216bb7d75685045aaf" kind="function"><name>bootutil_verify_sig</name></member>
+    <member refid="bootutil__priv_8h_1aa3c6592d9064d3cf390649d5e410a755" kind="function"><name>boot_slots_trailer_sz</name></member>
+    <member refid="bootutil__priv_8h_1a411d9defe1ed0ca5206c3abf6116daaf" kind="function"><name>boot_status_entries</name></member>
+    <member refid="bootutil__priv_8h_1a3e891fb64e54e125ccccd0842731a422" kind="function"><name>boot_status_off</name></member>
+    <member refid="bootutil__priv_8h_1a3cee50afc7101d318c343f1007493f3f" kind="function"><name>boot_read_swap_state</name></member>
+    <member refid="bootutil__priv_8h_1a97c80d8f08c976b436c99f6a5364cafb" kind="function"><name>boot_read_swap_state_by_id</name></member>
+    <member refid="bootutil__priv_8h_1ade84e4968c02b045e14eaf31498be559" kind="function"><name>boot_write_magic</name></member>
+    <member refid="bootutil__priv_8h_1a78d0083a915cb0daeef25c753e7d0a85" kind="function"><name>boot_write_status</name></member>
+    <member refid="bootutil__priv_8h_1a9df7dc0a6b1050e96b5c78d8f2d2c719" kind="function"><name>boot_schedule_test_swap</name></member>
+    <member refid="bootutil__priv_8h_1a8907dc34cd04fb884e30b3cab0350bba" kind="function"><name>boot_write_copy_done</name></member>
+    <member refid="bootutil__priv_8h_1aac1a2d8248287afbffa3d21cf40fe9cb" kind="function"><name>boot_write_image_ok</name></member>
+    <member refid="bootutil__priv_8h_1a37a42510ae31e9438384714370bb02da" kind="function"><name>boot_write_swap_size</name></member>
+    <member refid="bootutil__priv_8h_1af2d37baf8bc46afbbe6d548f557fb4ae" kind="function"><name>boot_read_swap_size</name></member>
+    <member refid="bootutil__priv_8h_1a797fe715b74b365c4aebc4d3512e55a4" kind="function"><name>boot_img_hdr</name></member>
+    <member refid="bootutil__priv_8h_1a9ea380f6d016f531c29d8ed44394f4ee" kind="function"><name>boot_img_fa_device_id</name></member>
+    <member refid="bootutil__priv_8h_1a1b796fa1a2c3356027d3ed667719735e" kind="function"><name>boot_scratch_fa_device_id</name></member>
+    <member refid="bootutil__priv_8h_1a6c7df6cebe35549d54931d311fde966a" kind="function"><name>boot_img_num_sectors</name></member>
+    <member refid="bootutil__priv_8h_1a7d1ec240ebf14a670d7d00a88035e598" kind="function"><name>boot_img_slot_off</name></member>
+    <member refid="bootutil__priv_8h_1a846d89ea670f768d796bf8a727a6a2a8" kind="function"><name>boot_scratch_area_size</name></member>
+    <member refid="bootutil__priv_8h_1abfca017d8778b2b601fa4fa3fc066dd4" kind="function"><name>boot_img_sector_size</name></member>
+    <member refid="bootutil__priv_8h_1ae206375d273d2f578a77e1d7583a6c3c" kind="function"><name>boot_img_sector_off</name></member>
+    <member refid="bootutil__priv_8h_1a33c1703a7871f07db8c32312019f12e9" kind="function"><name>boot_initialize_area</name></member>
+  </compound>
+  <compound refid="bootutil__test_8h" kind="file"><name>bootutil_test.h</name>
+    <member refid="bootutil__test_8h_1a3b1959b02ecaff1f990bc99005552131" kind="function"><name>boot_test_all</name></member>
+  </compound>
+  <compound refid="caps_8c" kind="file"><name>caps.c</name>
+    <member refid="caps_8c_1a09fbc2b09f6b557445c76a4bee6a87ee" kind="function"><name>bootutil_get_caps</name></member>
+  </compound>
+  <compound refid="caps_8h" kind="file"><name>caps.h</name>
+    <member refid="caps_8h_1a7964f883c40ff293ae017011bdad00ab" kind="define"><name>BOOTUTIL_CAP_RSA2048</name></member>
+    <member refid="caps_8h_1a96380179a8bf06de105858f8d281eadf" kind="define"><name>BOOTUTIL_CAP_SWAP_UPGRADE</name></member>
+    <member refid="caps_8h_1acae5123b6cc67126ee92bb6221ccda02" kind="define"><name>BOOTUTIL_CAP_OVERWRITE_UPGRADE</name></member>
+    <member refid="caps_8h_1a09fbc2b09f6b557445c76a4bee6a87ee" kind="function"><name>bootutil_get_caps</name></member>
   </compound>
   <compound refid="cgu__hsdc_8c" kind="file"><name>cgu_hsdc.c</name>
     <member refid="cgu__hsdc_8c_1a45ba202b05caf39795aeca91b0ae547e" kind="define"><name>TIMEOUT</name></member>
@@ -3674,6 +3914,29 @@
     <member refid="code__gen__macros_8h_1aaa5441426ffa636d160f12ceb34f7cb7" kind="define"><name>_END_OF_ARGUMENTS_</name></member>
     <member refid="code__gen__macros_8h_1ad66f84804d9ee346ee01acca84d4a037" kind="define"><name>MAP</name></member>
     <member refid="code__gen__macros_8h_1a528b7d0384fed3b48bf31041d1ac758e" kind="define"><name>_MAP</name></member>
+  </compound>
+  <compound refid="config-boot_8h" kind="file"><name>config-boot.h</name>
+    <member refid="config-boot_8h_1a59796430b749abc5b4e9a42a5e163257" kind="define"><name>CONFIG_BOOT_VERIFY_RSA_SIGNATURE</name></member>
+    <member refid="config-boot_8h_1a756fb086e76be2a76954beb682195a49" kind="define"><name>MBEDTLS_PLATFORM_C</name></member>
+    <member refid="config-boot_8h_1ae58dba1b4a4c30f8c4d2f0e6080351af" kind="define"><name>MBEDTLS_PLATFORM_MEMORY</name></member>
+    <member refid="config-boot_8h_1aaf9ef263440eefbeed71972dc561d869" kind="define"><name>MBEDTLS_MEMORY_BUFFER_ALLOC_C</name></member>
+    <member refid="config-boot_8h_1a2a65f769524672f1adaf40a037a35fa7" kind="define"><name>MBEDTLS_PLATFORM_EXIT_ALT</name></member>
+    <member refid="config-boot_8h_1a50fe70e2e5da2dda496e0432261136a5" kind="define"><name>MBEDTLS_NO_PLATFORM_ENTROPY</name></member>
+    <member refid="config-boot_8h_1af7975b148abc283e6ee41854637185e1" kind="define"><name>MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES</name></member>
+    <member refid="config-boot_8h_1ad8c34317956c63e2216be18a3591e955" kind="define"><name>MBEDTLS_PLATFORM_PRINTF_ALT</name></member>
+    <member refid="config-boot_8h_1a24884ce4da3fed0ceff29962dd7a01fc" kind="define"><name>MBEDTLS_ENTROPY_C</name></member>
+    <member refid="config-boot_8h_1a035227f1c3c88103fdb13621e9a5df51" kind="define"><name>MBEDTLS_RSA_C</name></member>
+    <member refid="config-boot_8h_1ab9ff33e1da5c1afaf8ce3fc47ab8d577" kind="define"><name>MBEDTLS_PKCS1_V15</name></member>
+    <member refid="config-boot_8h_1ab6d2cedeb9ad2d5f11e008708c922a7d" kind="define"><name>MBEDTLS_ASN1_PARSE_C</name></member>
+    <member refid="config-boot_8h_1a79098f46901a7da949424ca81fcb4be2" kind="define"><name>MBEDTLS_ASN1_WRITE_C</name></member>
+    <member refid="config-boot_8h_1a1cceb2b05fcbf777d24948d63a1aa74c" kind="define"><name>MBEDTLS_BIGNUM_C</name></member>
+    <member refid="config-boot_8h_1a17195cf7384dbcab5bae3f1d2971fb03" kind="define"><name>MBEDTLS_MD_C</name></member>
+    <member refid="config-boot_8h_1a0960129d0cf6e043a1cbc7c41d7c2297" kind="define"><name>MBEDTLS_OID_C</name></member>
+    <member refid="config-boot_8h_1a8cc51fc9b077f5b669bc4dfba0bde43e" kind="define"><name>MBEDTLS_SHA256_C</name></member>
+    <member refid="config-boot_8h_1a98099ce7241e89e42ba34b79e770a0ab" kind="define"><name>MBEDTLS_ECP_MAX_BITS</name></member>
+    <member refid="config-boot_8h_1a02bfffc46b7b2e10c0080d29bb56e6b0" kind="define"><name>MBEDTLS_MPI_MAX_SIZE</name></member>
+    <member refid="config-boot_8h_1a4a5b73bae4d762a05684812ad6c6b1b2" kind="define"><name>MBEDTLS_SSL_MAX_CONTENT_LEN</name></member>
+    <member refid="config-boot_8h_1a3ab9b922c4f1ba4511d7c4f5ef2b2e69" kind="define"><name>MBEDTLS_SSL_CIPHERSUITES</name></member>
   </compound>
   <compound refid="container__call_8h" kind="file"><name>container_call.h</name>
     <member refid="container__call_8h_1aabb41eeb0bbb955743024827da13e928" kind="define"><name>__SECURESHIELD_CONTAINER_CALL_METADATA</name></member>
@@ -4209,6 +4472,17 @@
     <member refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_i_d_1ga7d86b3918abd486e7f2953d6db49ef62" kind="typedef"><name>DEV_ID</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n_1ga1e2d2bd78cfc19bba910da7448cc6fdc" kind="typedef"><name>DEV_BUFFER</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n_1ga91091c2a8f895b2d00ae61e6b607335e" kind="typedef"><name>DEV_CALLBACK</name></member>
+  </compound>
+  <compound refid="dev__flash_8h" kind="file"><name>dev_flash.h</name>
+    <member refid="dev__flash_8h_1aca2843805ffe468e616ce662c39a2ef8" kind="define"><name>DEV_SET_FLASH_SYSCMD</name></member>
+    <member refid="dev__flash_8h_1a8627d639d08dc0b3aa1739316f3f3cde" kind="define"><name>FLASH_CMD_GET_INFO</name></member>
+    <member refid="dev__flash_8h_1a52b0e8f3a1d08c02e640342bc6a9cfb5" kind="define"><name>FLASH_CMD_PAGE_ERASE</name></member>
+    <member refid="dev__flash_8h_1acadf570ad86a264ff249eee44cf12f71" kind="define"><name>FLASH_CMD_CHIP_ERASE</name></member>
+    <member refid="dev__flash_8h_1a6e8ee228fc1a00808b367975270061df" kind="typedef"><name>DEV_FLASH_INFO</name></member>
+    <member refid="dev__flash_8h_1a2fb5d71fa575e61e24a9c571be813a59" kind="typedef"><name>DEV_FLASH_INFO_PTR</name></member>
+    <member refid="dev__flash_8h_1a5099f43a72b69c778bed2ce1f641dbf8" kind="typedef"><name>DEV_FLASH</name></member>
+    <member refid="dev__flash_8h_1a05825412cb451605d2761aa512c7758b" kind="typedef"><name>DEV_FLASH_PTR</name></member>
+    <member refid="dev__flash_8h_1a2a4f794762097fd6adba0ccecfd379de" kind="function"><name>flash_get_dev</name></member>
   </compound>
   <compound refid="dev__gpio_8h" kind="file"><name>dev_gpio.h</name>
     <member refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_f_d_i_r_1ga4956087e24b3fc0ccf1f667b74cb967f" kind="define"><name>GPIO_DIR_INPUT</name></member>
@@ -5429,9 +5703,9 @@
     <member refid="dw__iic_8h_1a877686cd5597e7c567a2f2b6a8eac012" kind="define"><name>MIN_DW_IIC_HS_100PF_LOW_TIME_NS</name></member>
     <member refid="dw__iic_8h_1ac94981d0bc25a25531820d32362c548a" kind="define"><name>MIN_DW_IIC_HS_400PF_HIGH_TIME_NS</name></member>
     <member refid="dw__iic_8h_1a770dbb3cd985f1a2aff1e1cfc912eb36" kind="define"><name>MIN_DW_IIC_HS_400PF_LOW_TIME_NS</name></member>
-    <member refid="dw__iic_8h_1a06fc87d81c62e9abb8790b6e5713c55b" kind="enum"><name>@0</name></member>
-    <member refid="dw__iic_8h_1a06fc87d81c62e9abb8790b6e5713c55ba7511537256969b4e432d679580fd1da4" kind="enumvalue"><name>DW_IIC_CAP_LOADING_100PF</name></member>
-    <member refid="dw__iic_8h_1a06fc87d81c62e9abb8790b6e5713c55baf2d42f77a3c4483d26bdab58689242ea" kind="enumvalue"><name>DW_IIC_CAP_LOADING_400PF</name></member>
+    <member refid="dw__iic_8h_1adf764cbdea00d65edcd07bb9953ad2b7" kind="enum"><name>@1</name></member>
+    <member refid="dw__iic_8h_1adf764cbdea00d65edcd07bb9953ad2b7a7511537256969b4e432d679580fd1da4" kind="enumvalue"><name>DW_IIC_CAP_LOADING_100PF</name></member>
+    <member refid="dw__iic_8h_1adf764cbdea00d65edcd07bb9953ad2b7af2d42f77a3c4483d26bdab58689242ea" kind="enumvalue"><name>DW_IIC_CAP_LOADING_400PF</name></member>
     <member refid="group___d_e_v_i_c_e___d_w___i_i_c___r_e_g_s_t_r_u_c_t_1ga68f539e7b0bf755a2cdf228eb930cfbb" kind="typedef"><name>DW_IIC_REG</name></member>
     <member refid="group___d_e_v_i_c_e___d_w___i_i_c___r_e_g_s_t_r_u_c_t_1ga348046f1cefbd235068db4d341602006" kind="typedef"><name>DW_IIC_REG_PTR</name></member>
     <member refid="dw__iic_8h_1a3cfa7f2089282b5a13b2485aefef5859" kind="typedef"><name>DW_IIC_SPKLEN</name></member>
@@ -6607,6 +6881,7 @@
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga18d726b68df14d3a5d5f3467a565c8db" kind="define"><name>BOARD_SDCARD_SPI_LINE</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gab6ec1fb5c5bec8858e2fc533515624f3" kind="define"><name>BOARD_WIFI_SPI_LINE</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga8ecea4bea3606ec07ee9088d26a13d19" kind="define"><name>BOARD_SFLASH_SPI_LIN</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga658846f2561af188d1cd9fbae2699f60" kind="define"><name>BOARD_FLASH_EXIST</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga3a84fcb550e72d6f56488f9c639054fa" kind="define"><name>BOARD_SPI_FREQ</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga375f6343d75692da616b44c4958e599f" kind="define"><name>BOARD_SYS_TIMER_ID</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga75c72f500916ce679ad4458d61fd3a3e" kind="define"><name>BOARD_SYS_TIMER_INTNO</name></member>
@@ -6869,6 +7144,108 @@
     <member refid="fatfs__dirent_8h_1aced3773f8101ee84dd50f0bcad65adf9" kind="function"><name>readdir</name></member>
     <member refid="fatfs__dirent_8h_1a110a86aa3a95d25abf7bb1639319be1c" kind="function"><name>closedir</name></member>
     <member refid="fatfs__dirent_8h_1a926151575a9629ffc5d7bf71b7249a8a" kind="function"><name>fatfs_stat</name></member>
+  </compound>
+  <compound refid="flash__map_8c" kind="file"><name>flash_map.c</name>
+    <member refid="flash__map_8c_1af7ea472138d220f02fbf63d6043c6f60" kind="define"><name>BOOT_LOG_LEVEL</name></member>
+    <member refid="flash__map_8c_1a79887824ee52a55a1eb934991f486e10" kind="define"><name>FLASH_DEVICE_ID</name></member>
+    <member refid="flash__map_8c_1a0c5c9604317efef4cc51b3909de3f645" kind="define"><name>FLASH_DEVICE_BASE</name></member>
+    <member refid="flash__map_8c_1a6a45df53db93f6a446a5df4d8bec72c6" kind="define"><name>FLASH_MAP_ENTRY_MAGIC</name></member>
+    <member refid="flash__map_8c_1a4181037acb2ff5a66b279019cab42ef7" kind="variable"><name>flash_dev</name></member>
+    <member refid="flash__map_8c_1abbe459a6b0d783198854fb88e27db0ef" kind="variable"><name>part_map</name></member>
+    <member refid="flash__map_8c_1ad12cab135af5300988734485f79db614" kind="function"><name>flash_device_base</name></member>
+    <member refid="flash__map_8c_1a9288a782aa1b1470e032de00282714af" kind="function"><name>flash_device_open</name></member>
+    <member refid="flash__map_8c_1a5a867334ab2a0acd2a26bbfd6f058ca5" kind="function"><name>flash_device_close</name></member>
+    <member refid="flash__map_8c_1ab510e62e8bf312d7e2eb2faa424b6f74" kind="function"><name>flash_area_open</name></member>
+    <member refid="flash__map_8c_1a25693d8a7d75d966936c51181c757291" kind="function"><name>flash_area_close</name></member>
+    <member refid="flash__map_8c_1ae643e6aa7d7a5ceda49b049fcfa0e3fb" kind="function"><name>flash_area_warn_on_open</name></member>
+    <member refid="flash__map_8c_1ac6302d2beec8f307bf9758e3ae85d3cc" kind="function"><name>flash_area_read</name></member>
+    <member refid="flash__map_8c_1a0bb08156103bfafa2a3dd358e737d407" kind="function"><name>flash_area_write</name></member>
+    <member refid="flash__map_8c_1a5e8fe8201f1cca78071ab7f03a8820f5" kind="function"><name>flash_area_erase</name></member>
+    <member refid="flash__map_8c_1ac88a714b7348fb0575f646b3df89e010" kind="function"><name>flash_area_align</name></member>
+    <member refid="flash__map_8c_1abe97adc33eed9f27670c0807932fd586" kind="function"><name>flash_area_id_from_image_slot</name></member>
+    <member refid="flash__map_8c_1a15608373d6835eb56a0654f6454d6bc7" kind="function"><name>validate_idx</name></member>
+    <member refid="flash__map_8c_1a846d2f18dc2fcde3224778f6724c07f1" kind="function"><name>flash_area_to_sectors</name></member>
+    <member refid="flash__map_8c_1ae409bf34d188f409f3fc0e8f394e6ddc" kind="function"><name>flash_area_get_sectors</name></member>
+  </compound>
+  <compound refid="flash__map_8h" kind="file"><name>flash_map.h</name>
+    <member refid="flash__map_8h_1aa2f05d4eb8d1d19694caf78a26bccad8" kind="define"><name>FLASH_AREA_IMAGE_0</name></member>
+    <member refid="flash__map_8h_1a1a973e683138689f41458c0d235cdd36" kind="define"><name>FLASH_AREA_IMAGE_1</name></member>
+    <member refid="flash__map_8h_1af4279d29e49e0c26d6124c71ae9138d0" kind="define"><name>FLASH_AREA_IMAGE_SCRATCH</name></member>
+    <member refid="flash__map_8h_1a12ace61a6e82c0badf87462fa56c0484" kind="variable"><name>cnt</name></member>
+    <member refid="flash__map_8h_1a259135f12595b160058b298f3ce295bd" kind="variable"><name>ret</name></member>
+    <member refid="flash__map_8h_1ad12cab135af5300988734485f79db614" kind="function"><name>flash_device_base</name></member>
+    <member refid="flash__map_8h_1a9288a782aa1b1470e032de00282714af" kind="function"><name>flash_device_open</name></member>
+    <member refid="flash__map_8h_1a5a867334ab2a0acd2a26bbfd6f058ca5" kind="function"><name>flash_device_close</name></member>
+    <member refid="flash__map_8h_1ab510e62e8bf312d7e2eb2faa424b6f74" kind="function"><name>flash_area_open</name></member>
+    <member refid="flash__map_8h_1a25693d8a7d75d966936c51181c757291" kind="function"><name>flash_area_close</name></member>
+    <member refid="flash__map_8h_1ac6302d2beec8f307bf9758e3ae85d3cc" kind="function"><name>flash_area_read</name></member>
+    <member refid="flash__map_8h_1a0bb08156103bfafa2a3dd358e737d407" kind="function"><name>flash_area_write</name></member>
+    <member refid="flash__map_8h_1a5e8fe8201f1cca78071ab7f03a8820f5" kind="function"><name>flash_area_erase</name></member>
+    <member refid="flash__map_8h_1ac88a714b7348fb0575f646b3df89e010" kind="function"><name>flash_area_align</name></member>
+    <member refid="flash__map_8h_1a5c89e0be6c41058beb1c3f87a0c9c94f" kind="function"><name>flash_area_get_sectors</name></member>
+    <member refid="flash__map_8h_1aa5f2b801c22e9a7943960d78e367b4cc" kind="function"><name>__attribute__</name></member>
+    <member refid="flash__map_8h_1abe97adc33eed9f27670c0807932fd586" kind="function"><name>flash_area_id_from_image_slot</name></member>
+    <member refid="flash__map_8h_1a2e8fdeafc3e04e63b813bf7914de4068" kind="function"><name>flash_area_id_to_image_slot</name></member>
+    <member refid="flash__map_8h_1ae643e6aa7d7a5ceda49b049fcfa0e3fb" kind="function"><name>flash_area_warn_on_open</name></member>
+  </compound>
+  <compound refid="emsk_2drivers_2flash__obj_2flash__obj_8c" kind="file"><name>emsk/drivers/flash_obj/flash_obj.c</name>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a9503a444d172094af2877a451e5c4f42" kind="define"><name>DW_FLASH_CHECK_EXP</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1aa64c2d8617bbd5256cbb7ca990831333" kind="define"><name>EMSK_DDR_RAM_BEGIN_ADDR</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1aacddfda07c31d10854daf8e731e78b57" kind="define"><name>EMSK_DDR_RAM_TOTAL_SIZE</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a77e985567e339819ded6ea8f1841a4c1" kind="variable"><name>emsk_ddr_ram_obj</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a50183b8ebe30d9c13c681593d35c0f2e" kind="function"><name>emsk_flash_obj_all_install</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a424c75fb34ad8f2546cbb008276df5f4" kind="function"><name>emsk_ddr_ram_open</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1ac0e407c8751b01d6847986f4bc8ecf33" kind="function"><name>emsk_ddr_ram_close</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a3fb64473d752a677ab572f476b042cd4" kind="function"><name>emsk_ddr_ram_control</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a1bb129e30503e067ca09ad7ae8805035" kind="function"><name>emsk_ddr_ram_read</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a33c326ce315067e94d5c5ddcb852a525" kind="function"><name>emsk_ddr_ram_write</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a887f19feddc168892e4c9320b1f49aa7" kind="function"><name>emsk_ddr_ram_write_nocheck</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a0509d9b5f1d7d169244610c4c09fb6d6" kind="function"><name>emsk_ddr_ram_erase</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a7bb7cbafecc64f308e08974f86d41bdb" kind="function"><name>emsk_ddr_ram_install</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8c_1a2a4f794762097fd6adba0ccecfd379de" kind="function"><name>flash_get_dev</name></member>
+  </compound>
+  <compound refid="iotdk_2drivers_2flash__obj_2flash__obj_8c" kind="file"><name>iotdk/drivers/flash_obj/flash_obj.c</name>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a9503a444d172094af2877a451e5c4f42" kind="define"><name>DW_FLASH_CHECK_EXP</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a8ce0f9fb7b196f208aa9ce4f259b6061" kind="variable"><name>iotdk_eflash_obj</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1ad8d8c7bbe113a1564384dffd8733b21e" kind="variable"><name>iotdk_bootspi_obj</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a8a40e5e53caada407b8891ca7e373916" kind="function"><name>iotdk_flash_obj_all_install</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a4427d5f6aa7664ab90f49c0cd91cb223" kind="function"><name>EFLASH_DEFINE</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a08973f40d6d57575d7f9ac5ed81ceb08" kind="function"><name>iotdk_eflash_open</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a1842e47d39915d5d1cd677aea0c4255b" kind="function"><name>iotdk_eflash_close</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a8107c125c474461098029889f7440c61" kind="function"><name>iotdk_eflash_control</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a742d8e2d16561844968e8c75943b2a86" kind="function"><name>iotdk_eflash_read</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1aa6035eb1b6854f67841d4fbeca7bc49c" kind="function"><name>iotdk_eflash_write</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a51f2be0a6c18f13221ffcb32fe317e1f" kind="function"><name>iotdk_eflash_write_nocheck</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a72b2714fa6b826c413ac7b285682b24f" kind="function"><name>iotdk_eflash_erase</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a194ce5a35796d594315d6686b1fd0e23" kind="function"><name>iotdk_eflash_install</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a66d913a18576426bf850cd49d18bfa8a" kind="function"><name>BOOTSPI_DEFINE</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a56b73f8bf2c23568ed83da3d6871572a" kind="function"><name>iotdk_bootspi_open</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a034a5e3c6c9368f4a3aa0a1c2a8c760d" kind="function"><name>iotdk_bootspi_close</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a4497538a9c22dbd0c71c61c8dace1b7f" kind="function"><name>iotdk_bootspi_control</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1accf4270e1cc9ab5afd548c4b23b92ae0" kind="function"><name>iotdk_bootspi_read</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1ac4a67fb11350e4dd6466f0af843266fa" kind="function"><name>iotdk_bootspi_write</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1af81f27c3de0647703867db4b693b39c5" kind="function"><name>iotdk_bootspi_write_nocheck</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1acc8a7692397dcf5a781e7d28f2a56010" kind="function"><name>iotdk_bootspi_erase</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1ab16a92089a21df685397efb2ac64e5e0" kind="function"><name>iotdk_bootspi_install</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_1a2a4f794762097fd6adba0ccecfd379de" kind="function"><name>flash_get_dev</name></member>
+  </compound>
+  <compound refid="emsk_2drivers_2flash__obj_2flash__obj_8h" kind="file"><name>emsk/drivers/flash_obj/flash_obj.h</name>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8h_1ae496d6e72c32dd4fe281162eb81c135a" kind="define"><name>USE_EMSK_DDR_RAM</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8h_1aa8a3a1a1069c86e863818ec280b2e3b2" kind="define"><name>EMSK_DDR_RAM_ID</name></member>
+    <member refid="emsk_2drivers_2flash__obj_2flash__obj_8h_1a2a4f794762097fd6adba0ccecfd379de" kind="function"><name>flash_get_dev</name></member>
+  </compound>
+  <compound refid="iotdk_2drivers_2flash__obj_2flash__obj_8h" kind="file"><name>iotdk/drivers/flash_obj/flash_obj.h</name>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1ad90893bfaf9d317e58084d9249d5947b" kind="define"><name>USE_IOTDK_EFLASH</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1a4c08677483e10df2f3c52e35d23bd446" kind="define"><name>USE_IOTDK_BOOT_SPI_FLASH</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1ab0fa1d089a82392e7fa5111bc825d2dc" kind="define"><name>USE_IOTDK_ICCM</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1a3ada0692d760d083f63bddee517b6cd4" kind="define"><name>USE_IOTDK_DCCM</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1a2c7e5b3cf853a7e6311ce30e52119983" kind="define"><name>USE_IOTDK_SRAM</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1ace1229207ceb567dc3a6b5c402079f76" kind="define"><name>IOTDK_EFLASH_ID</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1a845e45ff3079019c2000940d653bd207" kind="define"><name>IOTDK_BOOT_SPI_FLASH_ID</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1a35c7fc4ff3ce2e8314a2cccd310ebb56" kind="define"><name>IOTDK_ICCM_ID</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1af1077d4e721e860a3bc675a1cf49214c" kind="define"><name>IOTDK_DCCM_ID</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1aa9080848ccfa512239a7681f50e7e412" kind="define"><name>IOTDK_SRAM_ID</name></member>
+    <member refid="iotdk_2drivers_2flash__obj_2flash__obj_8h_1a2a4f794762097fd6adba0ccecfd379de" kind="function"><name>flash_get_dev</name></member>
   </compound>
   <compound refid="gpio_8c" kind="file"><name>gpio.c</name>
     <member refid="gpio_8c_1a718bc5ae891352905f186911be0daa8a" kind="define"><name>SWPORTA_DR</name></member>
@@ -7833,6 +8210,51 @@
     <member refid="i3c__priv_8h_1a9460c9e6d2814b611e2540f881b8880d" kind="typedef"><name>i3c_info_t</name></member>
     <member refid="i3c__priv_8h_1a95b63564f1d9cbe39d300f786f85db04" kind="typedef"><name>i3c_info_pt</name></member>
   </compound>
+  <compound refid="ignore_8h" kind="file"><name>ignore.h</name>
+    <member refid="ignore_8h_1a58035b972bccf22637817e1e28289eab" kind="define"><name>IGN_1</name></member>
+    <member refid="ignore_8h_1a070ddf774ae6a77994ea0020c98baaa9" kind="define"><name>IGN_2</name></member>
+    <member refid="ignore_8h_1ad01395f868c581292b0a4926226475a0" kind="define"><name>IGN_3</name></member>
+    <member refid="ignore_8h_1a24839230f760f5dd040b4c494aa1028b" kind="define"><name>IGN_4</name></member>
+    <member refid="ignore_8h_1a6207b34198d60cb82067b6904864ef3a" kind="define"><name>IGN_5</name></member>
+    <member refid="ignore_8h_1a8eb67e3c93c9783c4cf2af3948d76bc0" kind="define"><name>IGN_6</name></member>
+    <member refid="ignore_8h_1acf771643205757da02e85e14da99fa67" kind="define"><name>IGN_7</name></member>
+    <member refid="ignore_8h_1af12f803a5fbac5d57791517bbac2ff96" kind="define"><name>IGN_8</name></member>
+    <member refid="ignore_8h_1a2edd4fa350e539bbfae8ceb000a7aa67" kind="define"><name>IGN_9</name></member>
+    <member refid="ignore_8h_1a052dc54867d1cc6a5529a4d9fb97a877" kind="define"><name>IGN_10</name></member>
+    <member refid="ignore_8h_1a00b6e07d8011c7163ae956cb32328522" kind="define"><name>IGN_11</name></member>
+    <member refid="ignore_8h_1aa0b4d97d0a7bc2adb264ba299d7ac14c" kind="define"><name>IGN_12</name></member>
+    <member refid="ignore_8h_1a05e3131df482cd0682a098c1eff59793" kind="define"><name>IGN_13</name></member>
+    <member refid="ignore_8h_1a0439074a47d2df67322096737c32b2f1" kind="define"><name>IGN_14</name></member>
+    <member refid="ignore_8h_1ac3af1113a28098e148353f36aa35f2e4" kind="define"><name>IGN_15</name></member>
+    <member refid="ignore_8h_1a4045a3ca9acd445d87985aae60c4b546" kind="define"><name>IGN_16</name></member>
+    <member refid="ignore_8h_1ad6ca0ca8fc11d821e2e34443eb1580ab" kind="define"><name>IGN_17</name></member>
+    <member refid="ignore_8h_1ae0cc830995f5e8dfbae5de977786cb2b" kind="define"><name>IGN_18</name></member>
+    <member refid="ignore_8h_1a080e572e053e0352e8bc485df5066885" kind="define"><name>IGN_19</name></member>
+    <member refid="ignore_8h_1aa42cb732dfffd6caac178e7756023ca8" kind="define"><name>IGN_20</name></member>
+    <member refid="ignore_8h_1a134bfbf73d87f8a73c3fcf5799dc0cf6" kind="define"><name>GET_MACRO</name></member>
+    <member refid="ignore_8h_1a3af8fb34cb5ff338c261aa0b23ccfc40" kind="define"><name>IGNORE</name></member>
+  </compound>
+  <compound refid="image_8h" kind="file"><name>image.h</name>
+    <member refid="image_8h_1a771d7c22e8d14cf13638f67dc24354af" kind="define"><name>IMAGE_MAGIC</name></member>
+    <member refid="image_8h_1aa366c6c8a65f990239fe42f8facb11e9" kind="define"><name>IMAGE_MAGIC_V1</name></member>
+    <member refid="image_8h_1ad3976f1d9d2dab91b12231ad2164d5a4" kind="define"><name>IMAGE_MAGIC_NONE</name></member>
+    <member refid="image_8h_1af7daf64422fe363f1db3b9ed90ef13f9" kind="define"><name>IMAGE_TLV_INFO_MAGIC</name></member>
+    <member refid="image_8h_1a4f4d2c1b9854b8e45aee1e29f8d1ad43" kind="define"><name>IMAGE_HEADER_SIZE</name></member>
+    <member refid="image_8h_1ad7b28091ab8a72f78a50e84ecbedcbec" kind="define"><name>IMAGE_F_PIC</name></member>
+    <member refid="image_8h_1a783c71960487783080e8e50a64edf678" kind="define"><name>IMAGE_F_NON_BOOTABLE</name></member>
+    <member refid="image_8h_1afa2305b8dc2d1250303d09ad13133293" kind="define"><name>IMAGE_F_RAM_LOAD</name></member>
+    <member refid="image_8h_1adbd235b2439c47180fb5477a887640c2" kind="define"><name>IMAGE_TLV_KEYHASH</name></member>
+    <member refid="image_8h_1aa9a0585cb5e500b1e6c0817e22190aeb" kind="define"><name>IMAGE_TLV_SHA256</name></member>
+    <member refid="image_8h_1a2215c68264993b90bb7ff1580a5f7262" kind="define"><name>IMAGE_TLV_RSA2048_PSS</name></member>
+    <member refid="image_8h_1a4031680ccd36776e1400656024ea1690" kind="function"><name>_Static_assert</name></member>
+    <member refid="image_8h_1a7780247c26eaa774f888ec30340168f8" kind="function"><name>bootutil_img_validate</name></member>
+  </compound>
+  <compound refid="image__rsa_8c" kind="file"><name>image_rsa.c</name>
+  </compound>
+  <compound refid="image__validate_8c" kind="file"><name>image_validate.c</name>
+    <member refid="image__validate_8c_1a088050429ec7199b7dad93db6d142440" kind="function"><name>bootutil_img_hash</name></member>
+    <member refid="image__validate_8c_1a7780247c26eaa774f888ec30340168f8" kind="function"><name>bootutil_img_validate</name></member>
+  </compound>
   <compound refid="interrupts_8c" kind="file"><name>interrupts.c</name>
   </compound>
   <compound refid="io__config_8h" kind="file"><name>io_config.h</name>
@@ -7964,6 +8386,7 @@
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad894fa48bdb6402ac026de449da74ffd" kind="define"><name>BOARD_CONSOLE_UART_ID</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab6a5428995eb87c161f554c44e6457ab" kind="define"><name>BOARD_CONSOLE_UART_BAUD</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga10e936569e85faad73173595811cacd1" kind="define"><name>BOARD_ONBOARD_NTSHELL_ID</name></member>
+    <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga658846f2561af188d1cd9fbae2699f60" kind="define"><name>BOARD_FLASH_EXIST</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3a84fcb550e72d6f56488f9c639054fa" kind="define"><name>BOARD_SPI_FREQ</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga8c22424939dd52a66039ed6e0dc2b394" kind="define"><name>BOARD_SPI_CLKMODE</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga7fdbbfa16209827cb230b7e28a92dd37" kind="define"><name>WF_IPADDR_1</name></member>
@@ -8079,6 +8502,41 @@
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1gaa279866d285ebf18acb4103eab142f69" kind="variable"><name>gl_iotdk_sys_hz_cnt</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1ga6662efc07dd0bbe57c1e679ebb751f6e" kind="variable"><name>gl_iotdk_ms_cnt</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1ga5f3a2224475f726cab9c5cab29e561af" kind="function"><name>iotdk_timer_init</name></member>
+  </compound>
+  <compound refid="keys_8c" kind="file"><name>keys.c</name>
+  </compound>
+  <compound refid="loader_8c" kind="file"><name>loader.c</name>
+    <member refid="loader_8c_1af7ea472138d220f02fbf63d6043c6f60" kind="define"><name>BOOT_LOG_LEVEL</name></member>
+    <member refid="loader_8c_1a9c928e8f02632b03406aadf7cae9e041" kind="define"><name>BOOT_STATUS_TABLES_COUNT</name></member>
+    <member refid="loader_8c_1a7131e8e37174a72aa2be724f575b1f96" kind="define"><name>BOOT_LOG_SWAP_STATE</name></member>
+    <member refid="loader_8c_1a0efa349a6e9c5bf04a1f948c0a80d0ca" kind="variable"><name>boot_data</name></member>
+    <member refid="loader_8c_1a377721ad89ed434a191a9c93205c95e1" kind="variable"><name>boot_status_tables</name></member>
+    <member refid="loader_8c_1a0b8d6dfb725cdf7d735ef91f1588a0a4" kind="function"><name>boot_status_source</name></member>
+    <member refid="loader_8c_1ac3e371370b3995fd36720ef3a7e2127a" kind="function"><name>boot_previous_swap_type</name></member>
+    <member refid="loader_8c_1a7a486bc4a46d117dd4820cf64f8d4a53" kind="function"><name>boot_read_image_size</name></member>
+    <member refid="loader_8c_1a4e3c3e0a07fc3e88e77550d7218d666f" kind="function"><name>boot_read_image_header</name></member>
+    <member refid="loader_8c_1a2dbd56f0ec6c02084fbf3ad7e3ce74e9" kind="function"><name>boot_read_image_headers</name></member>
+    <member refid="loader_8c_1aa91f6240d5f873c94495ced06408f1ec" kind="function"><name>boot_write_sz</name></member>
+    <member refid="loader_8c_1a6ec9055d8259e370e0d050a818888985" kind="function"><name>boot_slots_compatible</name></member>
+    <member refid="loader_8c_1a49b05089f73bc8dc4a2d1d5803a3b730" kind="function"><name>boot_read_sectors</name></member>
+    <member refid="loader_8c_1a373f88736a479bbab94c5f4bd4c23075" kind="function"><name>boot_status_internal_off</name></member>
+    <member refid="loader_8c_1a45743a340fe99c9f9f81af198c686289" kind="function"><name>boot_read_status_bytes</name></member>
+    <member refid="loader_8c_1a21fb574e7be4e060d244673fc28b044e" kind="function"><name>boot_read_status</name></member>
+    <member refid="loader_8c_1a78d0083a915cb0daeef25c753e7d0a85" kind="function"><name>boot_write_status</name></member>
+    <member refid="loader_8c_1af36417709b0573759a2b349314d1a5bc" kind="function"><name>boot_image_check</name></member>
+    <member refid="loader_8c_1ad0ed431756d4b24739b6f6c09068a862" kind="function"><name>boot_validate_slot</name></member>
+    <member refid="loader_8c_1ad2abc112c6cef265be6fc77e45b463ae" kind="function"><name>boot_validated_swap_type</name></member>
+    <member refid="loader_8c_1a829584f57d66cdf345294efbc74275be" kind="function"><name>boot_copy_sz</name></member>
+    <member refid="loader_8c_1a694de16c021a201fe5e511a046dfd6bf" kind="function"><name>boot_erase_sector</name></member>
+    <member refid="loader_8c_1a0f621c9caac0b1fb54dba8bb819ba319" kind="function"><name>boot_copy_sector</name></member>
+    <member refid="loader_8c_1a5ef1de6b920fe6a47ef111190cf80341" kind="function"><name>boot_status_init_by_id</name></member>
+    <member refid="loader_8c_1ac29ff81cf0c64e1e00fbc932ed5c208d" kind="function"><name>boot_erase_last_sector_by_id</name></member>
+    <member refid="loader_8c_1a22faafcea483c3effcc02f3c6eb3e275" kind="function"><name>boot_swap_sectors</name></member>
+    <member refid="loader_8c_1ad37149f271649db2bb871c6fa9ea7443" kind="function"><name>boot_copy_image</name></member>
+    <member refid="loader_8c_1adf897b70350957ef62825a2f022d9b0c" kind="function"><name>boot_set_copy_done</name></member>
+    <member refid="loader_8c_1afad98e728aca383184cbfc2a53055fa7" kind="function"><name>boot_set_image_ok</name></member>
+    <member refid="loader_8c_1ad5a4c2b7ccb9d856b72939ac93de0900" kind="function"><name>boot_swap_if_needed</name></member>
+    <member refid="loader_8c_1a76311eabaf83d2c520fe23b714ae4eb2" kind="function"><name>boot_go</name></member>
   </compound>
   <compound refid="malloc_8c" kind="file"><name>malloc.c</name>
     <member refid="malloc_8c_1afc15a339eab4721df5fcd099004f1840" kind="define"><name>USE_LOCKS</name></member>
@@ -9042,6 +9500,8 @@
     <member refid="pwm_8h_1aff774624c292bf7026b29c9bb1481363" kind="function"><name>io_pwm_close</name></member>
     <member refid="pwm_8h_1a3d8dea7f93de9d4fb114ce504da87c1e" kind="function"><name>io_pwm_ioctl</name></member>
   </compound>
+  <compound refid="requirements_8txt" kind="file"><name>requirements.txt</name>
+  </compound>
   <compound refid="hsdk_2drivers_2sdcard_2sdcard_8c" kind="file"><name>hsdk/drivers/sdcard/sdcard.c</name>
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d_1ga66d0d58d346468558bd28cc00e8ed9c0" kind="function"><name>diskio_get_fattime</name></member>
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d_1gaf6d1a109119befdeedba4784cdc39c9f" kind="function"><name>get_fatfs_diskio</name></member>
@@ -9538,6 +9998,16 @@
     <member refid="secureshield__vmpu__exports_8h_1ad640921c7655953923c4868ff7bb69d9" kind="define"><name>CONTAINER_DEFAUTL_STACK_SIZE</name></member>
     <member refid="secureshield__vmpu__exports_8h_1aece077596153056512a335bccd05fecd" kind="typedef"><name>CONTAINER_AC</name></member>
   </compound>
+  <compound refid="sha256_8h" kind="file"><name>sha256.h</name>
+    <member refid="sha256_8h_1aacc43e416b982f83b1b6d7008f5e3e71" kind="typedef"><name>bootutil_sha256_context</name></member>
+    <member refid="sha256_8h_1ad560173e67b8e6ee47b277a03f1f2713" kind="function"><name>bootutil_sha256_init</name></member>
+    <member refid="sha256_8h_1ac7d625fbd147684d74e180bccf798bb5" kind="function"><name>bootutil_sha256_update</name></member>
+    <member refid="sha256_8h_1a8480856e7ea7dd854ad7ba4be1bcca5a" kind="function"><name>bootutil_sha256_finish</name></member>
+  </compound>
+  <compound refid="sign__key_8h" kind="file"><name>sign_key.h</name>
+    <member refid="sign__key_8h_1a634951795ecb30bc24c644a9314028a2" kind="variable"><name>bootutil_keys</name></member>
+    <member refid="sign__key_8h_1a00a227864bf0e221aab38675bc04e286" kind="variable"><name>bootutil_key_cnt</name></member>
+  </compound>
   <compound refid="smic__adc_8c" kind="file"><name>smic_adc.c</name>
     <member refid="smic__adc_8c_1adf556621c1f00a4165f21562341926a7" kind="define"><name>SMIC_ADC_CHECK_EXP_NORTN</name></member>
     <member refid="smic__adc_8c_1a046254c9205ca12aa1a78c69c8969ad7" kind="define"><name>SMIC_ADC_CHECK_EXP</name></member>
@@ -9592,6 +10062,7 @@
     <member refid="smic__bootspi_8c_1a46b31f71da768aa78eba70724f5f87cd" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_WREN</name></member>
     <member refid="smic__bootspi_8c_1aaf024bb608649f42724e9ce1ee8178e7" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_WRDI</name></member>
     <member refid="smic__bootspi_8c_1acc7befa8f043a81144e227f60d7c956e" kind="define"><name>SMIC_BOOTSPI_NOR_CMD_WRSR</name></member>
+    <member refid="smic__bootspi_8c_1a9c2e83f60731b7542dd0f463a901ee24" kind="variable"><name>g_buf</name></member>
     <member refid="smic__bootspi_8c_1a7538006135701d5962587ef211df7d38" kind="function"><name>bootspi_release_cs</name></member>
     <member refid="smic__bootspi_8c_1a7bc7e8898922372ea4cc562b7bb31791" kind="function"><name>bootspi_write_data</name></member>
     <member refid="smic__bootspi_8c_1a0dd6c61a0d8da78ae1ae96cb31b93bdc" kind="function"><name>bootspi_read_data</name></member>
@@ -9602,26 +10073,27 @@
     <member refid="smic__bootspi_8c_1aabf9f96b5b11e83cb710087641790ac4" kind="function"><name>bootspi_chip_erase</name></member>
     <member refid="smic__bootspi_8c_1aa45b5473ed15dbfd8c3b7b0b40a80841" kind="function"><name>bootspi_sec_erase</name></member>
     <member refid="smic__bootspi_8c_1a15338a6f7fd697d9204621168ed9781a" kind="function"><name>bootspi_blk_erase</name></member>
+    <member refid="smic__bootspi_8c_1a115efccb3c413e4c9b96854fbe36d31c" kind="function"><name>bootspi_write</name></member>
     <member refid="smic__bootspi_8c_1a675d16a7b207bf82a9273ed04e0b7b87" kind="function"><name>smic_bootspi_open</name></member>
     <member refid="smic__bootspi_8c_1af50d2d035dfdf53d4e8bca0e735d1adb" kind="function"><name>smic_bootspi_close</name></member>
     <member refid="smic__bootspi_8c_1a9056c649fc7e51bf1027eaf6d934d691" kind="function"><name>smic_bootspi_read</name></member>
-    <member refid="smic__bootspi_8c_1a115efccb3c413e4c9b96854fbe36d31c" kind="function"><name>bootspi_write</name></member>
+    <member refid="smic__bootspi_8c_1a3bef3ffd8602ea0d0a20dd1b134431a4" kind="function"><name>smic_bootspi_write_nocheck</name></member>
     <member refid="smic__bootspi_8c_1a6769c8a1a231f3e5007c7ac5104f888f" kind="function"><name>smic_bootspi_write</name></member>
+    <member refid="smic__bootspi_8c_1ae2e8120e5443a3c17dbb0516c08b406f" kind="function"><name>smic_bootspi_erase</name></member>
     <member refid="smic__bootspi_8c_1a71d43e0234a6b5316f8f0f91ae95e311" kind="function"><name>smic_bootspi_control</name></member>
   </compound>
   <compound refid="smic__bootspi_8h" kind="file"><name>smic_bootspi.h</name>
     <member refid="smic__bootspi_8h_1a85edb294074a5c2033a16aa4cb087331" kind="define"><name>BOOTSPI_CRTL_BASE</name></member>
     <member refid="smic__bootspi_8h_1af958ed8a003e4a8356e3700434ff4b8b" kind="define"><name>SMIC_BOOTSPI_RESET</name></member>
     <member refid="smic__bootspi_8h_1a0511846ab766f4230d23e5b7019f9895" kind="define"><name>SMIC_BOOTSPI_READ_ID</name></member>
-    <member refid="smic__bootspi_8h_1ada75f99e52be4ccd7690ba0bb1e62cf7" kind="define"><name>SMIC_BOOTSPI_CHIP_REASE</name></member>
+    <member refid="smic__bootspi_8h_1aca5e404cc4fc2944a847281648c1f353" kind="define"><name>SMIC_BOOTSPI_CHIP_ERASE</name></member>
     <member refid="smic__bootspi_8h_1a210616c8707a928af1b62ccb74931708" kind="define"><name>SMIC_BOOTSPI_BLK_ERASE</name></member>
     <member refid="smic__bootspi_8h_1a27d010f6bf17639156d34afc01e3e62b" kind="define"><name>SMIC_BOOTSPI_SEC_ERASE</name></member>
     <member refid="smic__bootspi_8h_1a937db19dc4e2642db8c4144be0f5ebf5" kind="define"><name>SMIC_BOOTSPI_PAGE_SIZE</name></member>
     <member refid="smic__bootspi_8h_1a9ef3197037e800fc184a084d4d1a491f" kind="define"><name>SMIC_BOOTSPI_SEC_SIZE</name></member>
     <member refid="smic__bootspi_8h_1a6695ff5c0abd684beea11ffda265dfbb" kind="define"><name>SMIC_BOOTSPI_BLK_SIZE</name></member>
     <member refid="smic__bootspi_8h_1ae7688f6cae8fdb64f14a52ccf1e6e8da" kind="define"><name>SMIC_BOOTSPI_BLKS_PER_CHIP</name></member>
-    <member refid="smic__bootspi_8h_1a8e9a1f623b406b26318e25cfb1de9781" kind="define"><name>SMIC_BOOTSPI_PAGES_PER_SEC</name></member>
-    <member refid="smic__bootspi_8h_1a14bd26c87b7e445c373908457a4b25bb" kind="define"><name>SMIC_BOOTSPI_SECS_PER_BLK</name></member>
+    <member refid="smic__bootspi_8h_1aa2dfa75f30fbb49851526e31f390811e" kind="define"><name>SMIC_BOOTSPI_SECS_PER_CHIP</name></member>
     <member refid="smic__bootspi_8h_1ad4c2e978f6c06172ef6208430532c27c" kind="define"><name>BOOTSPI_DEFINE</name></member>
     <member refid="smic__bootspi_8h_1a774d6d0cabb055ed8921907d948e0281" kind="typedef"><name>SMIC_BOOTSPI_REG</name></member>
     <member refid="smic__bootspi_8h_1a42601314e086695ffd102be53ee0772a" kind="typedef"><name>SMIC_BOOTSPI_REG_PTR</name></member>
@@ -9630,7 +10102,9 @@
     <member refid="smic__bootspi_8h_1af50d2d035dfdf53d4e8bca0e735d1adb" kind="function"><name>smic_bootspi_close</name></member>
     <member refid="smic__bootspi_8h_1a9056c649fc7e51bf1027eaf6d934d691" kind="function"><name>smic_bootspi_read</name></member>
     <member refid="smic__bootspi_8h_1a6769c8a1a231f3e5007c7ac5104f888f" kind="function"><name>smic_bootspi_write</name></member>
+    <member refid="smic__bootspi_8h_1a3bef3ffd8602ea0d0a20dd1b134431a4" kind="function"><name>smic_bootspi_write_nocheck</name></member>
     <member refid="smic__bootspi_8h_1a71d43e0234a6b5316f8f0f91ae95e311" kind="function"><name>smic_bootspi_control</name></member>
+    <member refid="smic__bootspi_8h_1ae2e8120e5443a3c17dbb0516c08b406f" kind="function"><name>smic_bootspi_erase</name></member>
   </compound>
   <compound refid="smic__eflash_8c" kind="file"><name>smic_eflash.c</name>
     <member refid="smic__eflash_8c_1a4bf0e0baeae1b60a93ec35a4d21bc5b0" kind="define"><name>SMIC_EFLASH_CHECK_EXP_NORTN</name></member>
@@ -9642,19 +10116,22 @@
     <member refid="smic__eflash_8c_1af5fb8f003d0084037d17940d083a2c88ad545e201f44ad4ddf9263bf659b30a89" kind="enumvalue"><name>FMC_CMD_PROG</name></member>
     <member refid="smic__eflash_8c_1af5fb8f003d0084037d17940d083a2c88abe73b30bbf973e20eb2875634c6c6944" kind="enumvalue"><name>FMC_CMD_PAGE_ERASE</name></member>
     <member refid="smic__eflash_8c_1af5fb8f003d0084037d17940d083a2c88aad0203412e6a52a3d98b6a9a4b567b72" kind="enumvalue"><name>FMC_CMD_MACRO_ERASE</name></member>
+    <member refid="smic__eflash_8c_1ad506d0f3e881dfc05dcd24c52cb6845f" kind="variable"><name>g_buf</name></member>
     <member refid="smic__eflash_8c_1aaf2e0e10791a801874a4a32cf8a510ed" kind="function"><name>smic_eflash_set_lock</name></member>
     <member refid="smic__eflash_8c_1a6861e412aaa305e005ada58df6a723a8" kind="function"><name>smic_eflash_macro_erase</name></member>
     <member refid="smic__eflash_8c_1aaf4bce185c2e5dc2290c0c511d30761a" kind="function"><name>smic_eflash_page_erase</name></member>
     <member refid="smic__eflash_8c_1adeb794d466abfcdc5a5bd09029412134" kind="function"><name>smic_eflash_open</name></member>
     <member refid="smic__eflash_8c_1a3e53d4b7c97f275f80674f9916d5f14b" kind="function"><name>smic_eflash_close</name></member>
     <member refid="smic__eflash_8c_1acd225c8bc7cd987ddceeb139da874109" kind="function"><name>smic_eflash_read</name></member>
+    <member refid="smic__eflash_8c_1a9626362671ecf09ad80114aa7ec9c8e2" kind="function"><name>smic_eflash_write_nocheck</name></member>
     <member refid="smic__eflash_8c_1a004dea6ccbba52f2e442dd0f75e24faa" kind="function"><name>smic_eflash_write</name></member>
+    <member refid="smic__eflash_8c_1aaa617c5c02e1b5cb463f061a33aad201" kind="function"><name>smic_eflash_erase</name></member>
     <member refid="smic__eflash_8c_1ac63d60fe7a10d14fc55a30d44dfc9172" kind="function"><name>smic_eflash_control</name></member>
   </compound>
   <compound refid="smic__eflash_8h" kind="file"><name>smic_eflash.h</name>
     <member refid="smic__eflash_8h_1a2f2304a849e4f630349e9eed5349317e" kind="define"><name>EFLASH_CRTL_BASE</name></member>
-    <member refid="smic__eflash_8h_1a13dc5bab222aa4a15e6e747a286719e5" kind="define"><name>BOOT_FROM_ON_CHIP_FLASH</name></member>
-    <member refid="smic__eflash_8h_1aecc30acdac4ce25ed56f3a76bb703616" kind="define"><name>EFLASH_BASE_ADDR</name></member>
+    <member refid="smic__eflash_8h_1a71f32d3487257a2647c998025460b848" kind="define"><name>EFLASH_BASE_ADDR0</name></member>
+    <member refid="smic__eflash_8h_1af1eed3ded0060158545e752a8ee4b682" kind="define"><name>EFLASH_BASE_ADDR1</name></member>
     <member refid="smic__eflash_8h_1a274196010213e1753cd38a89ff8e4465" kind="define"><name>SMIC_EFLASH_SET_LOCK</name></member>
     <member refid="smic__eflash_8h_1a99506955d04c90afde79c9c725ada697" kind="define"><name>SMIC_EFLASH_GET_LOCK</name></member>
     <member refid="smic__eflash_8h_1a339d9c441e5bf58550d678a2bf31150e" kind="define"><name>SMIC_EFLASH_PAGE_ERASE</name></member>
@@ -9673,7 +10150,9 @@
     <member refid="smic__eflash_8h_1a3e53d4b7c97f275f80674f9916d5f14b" kind="function"><name>smic_eflash_close</name></member>
     <member refid="smic__eflash_8h_1acd225c8bc7cd987ddceeb139da874109" kind="function"><name>smic_eflash_read</name></member>
     <member refid="smic__eflash_8h_1a004dea6ccbba52f2e442dd0f75e24faa" kind="function"><name>smic_eflash_write</name></member>
+    <member refid="smic__eflash_8h_1a9626362671ecf09ad80114aa7ec9c8e2" kind="function"><name>smic_eflash_write_nocheck</name></member>
     <member refid="smic__eflash_8h_1ac63d60fe7a10d14fc55a30d44dfc9172" kind="function"><name>smic_eflash_control</name></member>
+    <member refid="smic__eflash_8h_1aaa617c5c02e1b5cb463f061a33aad201" kind="function"><name>smic_eflash_erase</name></member>
   </compound>
   <compound refid="spi__master_8c" kind="file"><name>spi_master.c</name>
   </compound>
@@ -10041,8 +10520,19 @@
     <member refid="axs_2configs_2103_2target__mem__config_8h_1a922e3fda161443f08068f1d8fa4715c1" kind="define"><name>ICCM_START</name></member>
     <member refid="axs_2configs_2103_2target__mem__config_8h_1a3e5ee7d5aebabfd4fc3c7ee0487cff2d" kind="define"><name>DCCM_SIZE</name></member>
     <member refid="axs_2configs_2103_2target__mem__config_8h_1a921559b41125582332ae6cf9d7ba86fb" kind="define"><name>DCCM_START</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a8a0a71f16dd7f61d6e77062b717b09d1" kind="define"><name>EXT_ROM_START</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1ac98d4b3ac64eb855b66e52f86f6d2265" kind="define"><name>EXT_ROM_SIZE</name></member>
     <member refid="axs_2configs_2103_2target__mem__config_8h_1a7341b0b36bbecc4d1e1c921f67316875" kind="define"><name>EXT_RAM_START</name></member>
     <member refid="axs_2configs_2103_2target__mem__config_8h_1a9ee685800a5b27a5c8f4c2da5279fccd" kind="define"><name>EXT_RAM_SIZE</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a04425dd2de73472040200ceab7bd337f" kind="define"><name>REGION_ICCM_START</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1ae5f2d82681b655c7e34d1350bd591188" kind="define"><name>REGION_ICCM_SIZE</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a4f2400b7cc55df372e76e68732ae899a" kind="define"><name>REGION_DCCM_START</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a06bc21a5c2004e4fc416e58884b7b974" kind="define"><name>REGION_DCCM_SIZE</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1ad8f79238a783051c73e39002442e50f7" kind="define"><name>REGION_EXT_ROM_START</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a9e0c1f47ec63f5848126addb90f8f987" kind="define"><name>REGION_EXT_ROM_SIZE</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a093d54517b4059771ffd206aaae9df55" kind="define"><name>REGION_EXT_RAM_START</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a3c70fdd8d6a08cdc879b83e414d5ccb6" kind="define"><name>REGION_EXT_RAM_SIZE</name></member>
+    <member refid="axs_2configs_2103_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="axs_2configs_2103_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="axs_2configs_2103_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -10051,8 +10541,19 @@
     <member refid="emsk_2configs_211_2target__mem__config_8h_1a922e3fda161443f08068f1d8fa4715c1" kind="define"><name>ICCM_START</name></member>
     <member refid="emsk_2configs_211_2target__mem__config_8h_1a3e5ee7d5aebabfd4fc3c7ee0487cff2d" kind="define"><name>DCCM_SIZE</name></member>
     <member refid="emsk_2configs_211_2target__mem__config_8h_1a921559b41125582332ae6cf9d7ba86fb" kind="define"><name>DCCM_START</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a8a0a71f16dd7f61d6e77062b717b09d1" kind="define"><name>EXT_ROM_START</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1ac98d4b3ac64eb855b66e52f86f6d2265" kind="define"><name>EXT_ROM_SIZE</name></member>
     <member refid="emsk_2configs_211_2target__mem__config_8h_1a7341b0b36bbecc4d1e1c921f67316875" kind="define"><name>EXT_RAM_START</name></member>
     <member refid="emsk_2configs_211_2target__mem__config_8h_1a9ee685800a5b27a5c8f4c2da5279fccd" kind="define"><name>EXT_RAM_SIZE</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a04425dd2de73472040200ceab7bd337f" kind="define"><name>REGION_ICCM_START</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1ae5f2d82681b655c7e34d1350bd591188" kind="define"><name>REGION_ICCM_SIZE</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a4f2400b7cc55df372e76e68732ae899a" kind="define"><name>REGION_DCCM_START</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a06bc21a5c2004e4fc416e58884b7b974" kind="define"><name>REGION_DCCM_SIZE</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a093d54517b4059771ffd206aaae9df55" kind="define"><name>REGION_EXT_RAM_START</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a3c70fdd8d6a08cdc879b83e414d5ccb6" kind="define"><name>REGION_EXT_RAM_SIZE</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1ad8f79238a783051c73e39002442e50f7" kind="define"><name>REGION_EXT_ROM_START</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a9e0c1f47ec63f5848126addb90f8f987" kind="define"><name>REGION_EXT_ROM_SIZE</name></member>
+    <member refid="emsk_2configs_211_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="emsk_2configs_211_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="emsk_2configs_211_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -10061,8 +10562,19 @@
     <member refid="emsk_2configs_222_2target__mem__config_8h_1a922e3fda161443f08068f1d8fa4715c1" kind="define"><name>ICCM_START</name></member>
     <member refid="emsk_2configs_222_2target__mem__config_8h_1a3e5ee7d5aebabfd4fc3c7ee0487cff2d" kind="define"><name>DCCM_SIZE</name></member>
     <member refid="emsk_2configs_222_2target__mem__config_8h_1a921559b41125582332ae6cf9d7ba86fb" kind="define"><name>DCCM_START</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a8a0a71f16dd7f61d6e77062b717b09d1" kind="define"><name>EXT_ROM_START</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1ac98d4b3ac64eb855b66e52f86f6d2265" kind="define"><name>EXT_ROM_SIZE</name></member>
     <member refid="emsk_2configs_222_2target__mem__config_8h_1a7341b0b36bbecc4d1e1c921f67316875" kind="define"><name>EXT_RAM_START</name></member>
     <member refid="emsk_2configs_222_2target__mem__config_8h_1a9ee685800a5b27a5c8f4c2da5279fccd" kind="define"><name>EXT_RAM_SIZE</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a04425dd2de73472040200ceab7bd337f" kind="define"><name>REGION_ICCM_START</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1ae5f2d82681b655c7e34d1350bd591188" kind="define"><name>REGION_ICCM_SIZE</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a4f2400b7cc55df372e76e68732ae899a" kind="define"><name>REGION_DCCM_START</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a06bc21a5c2004e4fc416e58884b7b974" kind="define"><name>REGION_DCCM_SIZE</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a093d54517b4059771ffd206aaae9df55" kind="define"><name>REGION_EXT_RAM_START</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a3c70fdd8d6a08cdc879b83e414d5ccb6" kind="define"><name>REGION_EXT_RAM_SIZE</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1ad8f79238a783051c73e39002442e50f7" kind="define"><name>REGION_EXT_ROM_START</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a9e0c1f47ec63f5848126addb90f8f987" kind="define"><name>REGION_EXT_ROM_SIZE</name></member>
+    <member refid="emsk_2configs_222_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="emsk_2configs_222_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="emsk_2configs_222_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -10071,8 +10583,19 @@
     <member refid="emsk_2configs_223_2target__mem__config_8h_1a922e3fda161443f08068f1d8fa4715c1" kind="define"><name>ICCM_START</name></member>
     <member refid="emsk_2configs_223_2target__mem__config_8h_1a3e5ee7d5aebabfd4fc3c7ee0487cff2d" kind="define"><name>DCCM_SIZE</name></member>
     <member refid="emsk_2configs_223_2target__mem__config_8h_1a921559b41125582332ae6cf9d7ba86fb" kind="define"><name>DCCM_START</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a8a0a71f16dd7f61d6e77062b717b09d1" kind="define"><name>EXT_ROM_START</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1ac98d4b3ac64eb855b66e52f86f6d2265" kind="define"><name>EXT_ROM_SIZE</name></member>
     <member refid="emsk_2configs_223_2target__mem__config_8h_1a7341b0b36bbecc4d1e1c921f67316875" kind="define"><name>EXT_RAM_START</name></member>
     <member refid="emsk_2configs_223_2target__mem__config_8h_1a9ee685800a5b27a5c8f4c2da5279fccd" kind="define"><name>EXT_RAM_SIZE</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a04425dd2de73472040200ceab7bd337f" kind="define"><name>REGION_ICCM_START</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1ae5f2d82681b655c7e34d1350bd591188" kind="define"><name>REGION_ICCM_SIZE</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a4f2400b7cc55df372e76e68732ae899a" kind="define"><name>REGION_DCCM_START</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a06bc21a5c2004e4fc416e58884b7b974" kind="define"><name>REGION_DCCM_SIZE</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a093d54517b4059771ffd206aaae9df55" kind="define"><name>REGION_EXT_RAM_START</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a3c70fdd8d6a08cdc879b83e414d5ccb6" kind="define"><name>REGION_EXT_RAM_SIZE</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1ad8f79238a783051c73e39002442e50f7" kind="define"><name>REGION_EXT_ROM_START</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a9e0c1f47ec63f5848126addb90f8f987" kind="define"><name>REGION_EXT_ROM_SIZE</name></member>
+    <member refid="emsk_2configs_223_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="emsk_2configs_223_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="emsk_2configs_223_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -10081,6 +10604,9 @@
     <member refid="hsdk_2configs_210_2target__mem__config_8h_1a9ee685800a5b27a5c8f4c2da5279fccd" kind="define"><name>EXT_RAM_SIZE</name></member>
     <member refid="hsdk_2configs_210_2target__mem__config_8h_1a80919641edad571af7faed5221b92a70" kind="define"><name>SRAM_START</name></member>
     <member refid="hsdk_2configs_210_2target__mem__config_8h_1a10a9c742edabf5e945a1c509b7e1451e" kind="define"><name>SRAM_SIZE</name></member>
+    <member refid="hsdk_2configs_210_2target__mem__config_8h_1a093d54517b4059771ffd206aaae9df55" kind="define"><name>REGION_EXT_RAM_START</name></member>
+    <member refid="hsdk_2configs_210_2target__mem__config_8h_1a3c70fdd8d6a08cdc879b83e414d5ccb6" kind="define"><name>REGION_EXT_RAM_SIZE</name></member>
+    <member refid="hsdk_2configs_210_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="hsdk_2configs_210_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="hsdk_2configs_210_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -10101,6 +10627,13 @@
     <member refid="iotdk_2configs_210_2target__mem__config_8h_1a9ee685800a5b27a5c8f4c2da5279fccd" kind="define"><name>EXT_RAM_SIZE</name></member>
     <member refid="iotdk_2configs_210_2target__mem__config_8h_1a8a0a71f16dd7f61d6e77062b717b09d1" kind="define"><name>EXT_ROM_START</name></member>
     <member refid="iotdk_2configs_210_2target__mem__config_8h_1ac98d4b3ac64eb855b66e52f86f6d2265" kind="define"><name>EXT_ROM_SIZE</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1a04425dd2de73472040200ceab7bd337f" kind="define"><name>REGION_ICCM_START</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1ae5f2d82681b655c7e34d1350bd591188" kind="define"><name>REGION_ICCM_SIZE</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1a4f2400b7cc55df372e76e68732ae899a" kind="define"><name>REGION_DCCM_START</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1a06bc21a5c2004e4fc416e58884b7b974" kind="define"><name>REGION_DCCM_SIZE</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1a093d54517b4059771ffd206aaae9df55" kind="define"><name>REGION_EXT_RAM_START</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1a3c70fdd8d6a08cdc879b83e414d5ccb6" kind="define"><name>REGION_EXT_RAM_SIZE</name></member>
+    <member refid="iotdk_2configs_210_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="iotdk_2configs_210_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="iotdk_2configs_210_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -10109,6 +10642,11 @@
     <member refid="nsim_2configs_210_2target__mem__config_8h_1a922e3fda161443f08068f1d8fa4715c1" kind="define"><name>ICCM_START</name></member>
     <member refid="nsim_2configs_210_2target__mem__config_8h_1a3e5ee7d5aebabfd4fc3c7ee0487cff2d" kind="define"><name>DCCM_SIZE</name></member>
     <member refid="nsim_2configs_210_2target__mem__config_8h_1a921559b41125582332ae6cf9d7ba86fb" kind="define"><name>DCCM_START</name></member>
+    <member refid="nsim_2configs_210_2target__mem__config_8h_1a04425dd2de73472040200ceab7bd337f" kind="define"><name>REGION_ICCM_START</name></member>
+    <member refid="nsim_2configs_210_2target__mem__config_8h_1ae5f2d82681b655c7e34d1350bd591188" kind="define"><name>REGION_ICCM_SIZE</name></member>
+    <member refid="nsim_2configs_210_2target__mem__config_8h_1a4f2400b7cc55df372e76e68732ae899a" kind="define"><name>REGION_DCCM_START</name></member>
+    <member refid="nsim_2configs_210_2target__mem__config_8h_1a06bc21a5c2004e4fc416e58884b7b974" kind="define"><name>REGION_DCCM_SIZE</name></member>
+    <member refid="nsim_2configs_210_2target__mem__config_8h_1a8bb4a874d983174c3683814ad1b508b5" kind="define"><name>IMAGE_HEAD_SIZE</name></member>
     <member refid="nsim_2configs_210_2target__mem__config_8h_1ac6c6ef548a4f1fa514b7c196d4f82802" kind="define"><name>REGION_ROM</name></member>
     <member refid="nsim_2configs_210_2target__mem__config_8h_1a53ff4085e00320a3b2bb4a3acd6223fc" kind="define"><name>REGION_RAM</name></member>
   </compound>
@@ -11414,6 +11952,7 @@
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga18d726b68df14d3a5d5f3467a565c8db" kind="define"><name>BOARD_SDCARD_SPI_LINE</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1gab6ec1fb5c5bec8858e2fc533515624f3" kind="define"><name>BOARD_WIFI_SPI_LINE</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga8ecea4bea3606ec07ee9088d26a13d19" kind="define"><name>BOARD_SFLASH_SPI_LIN</name></member>
+    <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga658846f2561af188d1cd9fbae2699f60" kind="define"><name>BOARD_FLASH_EXIST</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga3a84fcb550e72d6f56488f9c639054fa" kind="define"><name>BOARD_SPI_FREQ</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga375f6343d75692da616b44c4958e599f" kind="define"><name>BOARD_SYS_TIMER_ID</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga75c72f500916ce679ad4458d61fd3a3e" kind="define"><name>BOARD_SYS_TIMER_INTNO</name></member>
@@ -12998,6 +13537,7 @@
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gad894fa48bdb6402ac026de449da74ffd" kind="define"><name>BOARD_CONSOLE_UART_ID</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab6a5428995eb87c161f554c44e6457ab" kind="define"><name>BOARD_CONSOLE_UART_BAUD</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga10e936569e85faad73173595811cacd1" kind="define"><name>BOARD_ONBOARD_NTSHELL_ID</name></member>
+    <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga658846f2561af188d1cd9fbae2699f60" kind="define"><name>BOARD_FLASH_EXIST</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga3a84fcb550e72d6f56488f9c639054fa" kind="define"><name>BOARD_SPI_FREQ</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga8c22424939dd52a66039ed6e0dc2b394" kind="define"><name>BOARD_SPI_CLKMODE</name></member>
     <member refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga7fdbbfa16209827cb230b7e28a92dd37" kind="define"><name>WF_IPADDR_1</name></member>
@@ -13845,6 +14385,10 @@
   </compound>
   <compound refid="dir_7149141a7e3af1ee95dfb0598e371427" kind="dir"><name>board</name>
   </compound>
+  <compound refid="dir_a74b2d6f9bc35318d154aa771c448dca" kind="dir"><name>bootutil</name>
+  </compound>
+  <compound refid="dir_9042d3a68f63d822a96f14b033852832" kind="dir"><name>bootutil</name>
+  </compound>
   <compound refid="dir_66ef1ee3c5355730d52338c4a3a3bbcd" kind="dir"><name>cgu</name>
   </compound>
   <compound refid="dir_fa964afc4d88851eacc98543ed5fcdde" kind="dir"><name>clib</name>
@@ -13909,6 +14453,12 @@
   </compound>
   <compound refid="dir_fc4056b6563532da09280448745fff6e" kind="dir"><name>export</name>
   </compound>
+  <compound refid="dir_c24daf797d2bb1130d3cf4ccdbf49c1e" kind="dir"><name>flash_map</name>
+  </compound>
+  <compound refid="dir_33ee622276030f0f85de023cff77df69" kind="dir"><name>flash_obj</name>
+  </compound>
+  <compound refid="dir_9135e3a630000d98af51870c4d33fb25" kind="dir"><name>flash_obj</name>
+  </compound>
   <compound refid="dir_3a268bae9e4d23014278aa74e65c3e0e" kind="dir"><name>gpio</name>
   </compound>
   <compound refid="dir_4e25a1a942691e5e33cb73ee90eedd1b" kind="dir"><name>gpio</name>
@@ -13955,6 +14505,10 @@
   </compound>
   <compound refid="dir_bfccd401955b95cf8c75461437045ac0" kind="dir"><name>inc</name>
   </compound>
+  <compound refid="dir_6c2d2b84f675159286012dd67dc81c51" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_c3b5b601a2f6203bc31d9e90f4c1b662" kind="dir"><name>include</name>
+  </compound>
   <compound refid="dir_d6635247dbe55b2a7779939e9ad0fd44" kind="dir"><name>iotdk</name>
   </compound>
   <compound refid="dir_c1fa67af9bd47551d4796725361c68ae" kind="dir"><name>iotdk</name>
@@ -13972,6 +14526,8 @@
   <compound refid="dir_886e19c93bc421eeee55883ae0f2226b" kind="dir"><name>ip_hal</name>
   </compound>
   <compound refid="dir_e3d620c6b6fdb93ed3bc6186215bde2e" kind="dir"><name>library</name>
+  </compound>
+  <compound refid="dir_b94e96e165fe43139354ba27a02106ca" kind="dir"><name>mcuboot</name>
   </compound>
   <compound refid="dir_90c96542aae62b4ff4ab15a261360351" kind="dir"><name>mux</name>
   </compound>
@@ -14038,6 +14594,8 @@
   <compound refid="dir_c852d768a4b5dfbe0184765ea904fcb5" kind="dir"><name>src</name>
   </compound>
   <compound refid="dir_8dd1b4669429928c2a1ff75661df0ef1" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="dir_b171a3fd6febcefee7c0f69e60d0f4ec" kind="dir"><name>src</name>
   </compound>
   <compound refid="dir_3d1c799ee62f35ecf252f2e58ffbffe7" kind="dir"><name>startup</name>
   </compound>

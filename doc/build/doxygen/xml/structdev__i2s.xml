@@ -343,29 +343,29 @@
 <para>define I2S device interface, like I2S information structure, fuctions to get I2S info, open/close/control I2S, send/receive data by I2S <simplesect kind="note"><para>all this details are implemented by user in user porting code </para></simplesect>
 </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="78">
+      <node id="102">
         <label>dev_i2s_cbs</label>
         <link refid="structdev__i2s__cbs"/>
       </node>
-      <node id="77">
+      <node id="101">
         <label>dev_i2s_info</label>
         <link refid="structdev__i2s__info"/>
-        <childnode refid="78" relation="usage">
+        <childnode refid="102" relation="usage">
           <edgelabel>+i2s_cbs</edgelabel>
         </childnode>
-        <childnode refid="79" relation="usage">
+        <childnode refid="103" relation="usage">
           <edgelabel>+tx_buf</edgelabel>
           <edgelabel>+rx_buf</edgelabel>
         </childnode>
       </node>
-      <node id="76">
+      <node id="100">
         <label>dev_i2s</label>
         <link refid="structdev__i2s"/>
-        <childnode refid="77" relation="usage">
+        <childnode refid="101" relation="usage">
           <edgelabel>+i2s_info</edgelabel>
         </childnode>
       </node>
-      <node id="79">
+      <node id="103">
         <label>dev_buffer</label>
         <link refid="structdev__buffer"/>
       </node>

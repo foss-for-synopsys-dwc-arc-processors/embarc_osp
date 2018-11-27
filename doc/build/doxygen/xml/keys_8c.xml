@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="keys_8c" kind="file">
+    <compoundname>keys.c</compoundname>
+    <includes refid="sign__key_8h" local="no">bootutil/sign_key.h</includes>
+    <incdepgraph>
+      <node id="4327">
+        <label>stdint.h</label>
+      </node>
+      <node id="4325">
+        <label>keys.c</label>
+        <link refid="keys.c"/>
+        <childnode refid="4326" relation="include">
+        </childnode>
+      </node>
+      <node id="4326">
+        <label>bootutil/sign_key.h</label>
+        <link refid="sign__key_8h_source"/>
+        <childnode refid="4327" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>to<sp/>the<sp/>Apache<sp/>Software<sp/>Foundation<sp/>(ASF)<sp/>under<sp/>one</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>or<sp/>more<sp/>contributor<sp/>license<sp/>agreements.<sp/><sp/>See<sp/>the<sp/>NOTICE<sp/>file</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>distributed<sp/>with<sp/>this<sp/>work<sp/>for<sp/>additional<sp/>information</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>regarding<sp/>copyright<sp/>ownership.<sp/><sp/>The<sp/>ASF<sp/>licenses<sp/>this<sp/>file</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>to<sp/>you<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>&quot;License&quot;);<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>with<sp/>the<sp/>License.<sp/><sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>software<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.<sp/><sp/>See<sp/>the<sp/>License<sp/>for<sp/>the</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and<sp/>limitations</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;bootutil/sign_key.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MCUBOOT_SIGN_RSA)</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>root_pub_der[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>0x30,<sp/>0x82,<sp/>0x01,<sp/>0x0a,<sp/>0x02,<sp/>0x82,<sp/>0x01,<sp/>0x01,<sp/>0x00,<sp/>0xd1,<sp/>0x06,<sp/>0x08,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>0x1a,<sp/>0x18,<sp/>0x44,<sp/>0x2c,<sp/>0x18,<sp/>0xe8,<sp/>0xfb,<sp/>0xfd,<sp/>0xf7,<sp/>0x0d,<sp/>0xa3,<sp/>0x4f,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>0x1f,<sp/>0xbb,<sp/>0xee,<sp/>0x5e,<sp/>0xf9,<sp/>0xaa,<sp/>0xd2,<sp/>0x4b,<sp/>0x18,<sp/>0xd3,<sp/>0x5a,<sp/>0xe9,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>0x6d,<sp/>0x18,<sp/>0x80,<sp/>0x19,<sp/>0xf9,<sp/>0xf0,<sp/>0x9c,<sp/>0x34,<sp/>0x1b,<sp/>0xcb,<sp/>0xf3,<sp/>0xbc,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>0x74,<sp/>0xdb,<sp/>0x42,<sp/>0xe7,<sp/>0x8c,<sp/>0x7f,<sp/>0x10,<sp/>0x53,<sp/>0x7e,<sp/>0x43,<sp/>0x5e,<sp/>0x0d,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>0x57,<sp/>0x2c,<sp/>0x44,<sp/>0xd1,<sp/>0x67,<sp/>0x08,<sp/>0x0f,<sp/>0x0d,<sp/>0xbb,<sp/>0x5c,<sp/>0xee,<sp/>0xec,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>0xb3,<sp/>0x99,<sp/>0xdf,<sp/>0xe0,<sp/>0x4d,<sp/>0x84,<sp/>0x0b,<sp/>0xaa,<sp/>0x77,<sp/>0x41,<sp/>0x60,<sp/>0xed,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>0x15,<sp/>0x28,<sp/>0x49,<sp/>0xa7,<sp/>0x01,<sp/>0xb4,<sp/>0x3c,<sp/>0x10,<sp/>0xe6,<sp/>0x69,<sp/>0x8c,<sp/>0x2f,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>0x5f,<sp/>0xac,<sp/>0x41,<sp/>0x4d,<sp/>0x9e,<sp/>0x5c,<sp/>0x14,<sp/>0xdf,<sp/>0xf2,<sp/>0xf8,<sp/>0xcf,<sp/>0x3d,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>0x1e,<sp/>0x6f,<sp/>0xe7,<sp/>0x5b,<sp/>0xba,<sp/>0xb4,<sp/>0xa9,<sp/>0xc8,<sp/>0x88,<sp/>0x7e,<sp/>0x47,<sp/>0x3c,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>0x94,<sp/>0xc3,<sp/>0x77,<sp/>0x67,<sp/>0x54,<sp/>0x4b,<sp/>0xaa,<sp/>0x8d,<sp/>0x38,<sp/>0x35,<sp/>0xca,<sp/>0x62,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>0x61,<sp/>0x7e,<sp/>0xb7,<sp/>0xe1,<sp/>0x15,<sp/>0xdb,<sp/>0x77,<sp/>0x73,<sp/>0xd4,<sp/>0xbe,<sp/>0x7b,<sp/>0x72,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>0x21,<sp/>0x89,<sp/>0x69,<sp/>0x24,<sp/>0xfb,<sp/>0xf8,<sp/>0x65,<sp/>0x6e,<sp/>0x64,<sp/>0x3e,<sp/>0xc8,<sp/>0x0e,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>0xd7,<sp/>0x85,<sp/>0xd5,<sp/>0x5c,<sp/>0x4a,<sp/>0xe4,<sp/>0x53,<sp/>0x0d,<sp/>0x2f,<sp/>0xff,<sp/>0xb7,<sp/>0xfd,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>0xf3,<sp/>0x13,<sp/>0x39,<sp/>0x83,<sp/>0x3f,<sp/>0xa3,<sp/>0xae,<sp/>0xd2,<sp/>0x0f,<sp/>0xa7,<sp/>0x6a,<sp/>0x9d,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>0xf9,<sp/>0xfe,<sp/>0xb8,<sp/>0xce,<sp/>0xfa,<sp/>0x2a,<sp/>0xbe,<sp/>0xaf,<sp/>0xb8,<sp/>0xe0,<sp/>0xfa,<sp/>0x82,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>0x37,<sp/>0x54,<sp/>0xf4,<sp/>0x3e,<sp/>0xe1,<sp/>0x2b,<sp/>0xd0,<sp/>0xd3,<sp/>0x08,<sp/>0x58,<sp/>0x18,<sp/>0xf6,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>0x5e,<sp/>0x4c,<sp/>0xc8,<sp/>0x88,<sp/>0x81,<sp/>0x31,<sp/>0xad,<sp/>0x5f,<sp/>0xb0,<sp/>0x82,<sp/>0x17,<sp/>0xf2,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>0x8a,<sp/>0x69,<sp/>0x27,<sp/>0x23,<sp/>0xf3,<sp/>0xab,<sp/>0x87,<sp/>0x3e,<sp/>0x93,<sp/>0x1a,<sp/>0x1d,<sp/>0xfe,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>0xe8,<sp/>0xf8,<sp/>0x1a,<sp/>0x24,<sp/>0x66,<sp/>0x59,<sp/>0xf8,<sp/>0x1c,<sp/>0xab,<sp/>0xdc,<sp/>0xce,<sp/>0x68,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>0x1b,<sp/>0x66,<sp/>0x64,<sp/>0x35,<sp/>0xec,<sp/>0xfa,<sp/>0x0d,<sp/>0x11,<sp/>0x9d,<sp/>0xaf,<sp/>0x5c,<sp/>0x3a,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>0xa7,<sp/>0xd1,<sp/>0x67,<sp/>0xc6,<sp/>0x47,<sp/>0xef,<sp/>0xb1,<sp/>0x4b,<sp/>0x2c,<sp/>0x62,<sp/>0xe1,<sp/>0xd1,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>0xc9,<sp/>0x02,<sp/>0x03,<sp/>0x01,<sp/>0x00,<sp/>0x01</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>root_pub_der_len<sp/>=<sp/>270;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;No<sp/>public<sp/>key<sp/>available<sp/>for<sp/>given<sp/>signing<sp/>algorithm.&quot;</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MCUBOOT_SIGN_RSA)</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structbootutil__key" kindref="compound">bootutil_key</ref><sp/>bootutil_keys[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.key<sp/>=<sp/>root_pub_der,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.len<sp/>=<sp/>&amp;root_pub_der_len,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>},</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bootutil_key_cnt<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/keys.c"/>
+  </compounddef>
+</doxygen>

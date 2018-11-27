@@ -1,0 +1,542 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="flash__map_8h" kind="file">
+    <compoundname>flash_map.h</compoundname>
+    <includes local="no">inttypes.h</includes>
+    <includedby refid="bootutil__misc_8c" local="yes">bootutil_misc.c</includedby>
+    <includedby refid="bootutil__priv_8h" local="yes">bootutil_priv.h</includedby>
+    <includedby refid="image__validate_8c" local="yes">image_validate.c</includedby>
+    <includedby refid="loader_8c" local="yes">loader.c</includedby>
+    <includedby refid="flash__map_8c" local="no">flash_map.c</includedby>
+    <incdepgraph>
+      <node id="3611">
+        <label>flash_map.h</label>
+        <link refid="flash_map.h"/>
+        <childnode refid="3612" relation="include">
+        </childnode>
+      </node>
+      <node id="3612">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3613">
+        <label>flash_map.h</label>
+        <link refid="flash_map.h"/>
+        <childnode refid="3614" relation="include">
+        </childnode>
+        <childnode refid="3615" relation="include">
+        </childnode>
+        <childnode refid="3616" relation="include">
+        </childnode>
+        <childnode refid="3617" relation="include">
+        </childnode>
+        <childnode refid="3618" relation="include">
+        </childnode>
+      </node>
+      <node id="3614">
+        <label>bootutil_misc.c</label>
+        <link refid="bootutil__misc_8c_source"/>
+      </node>
+      <node id="3617">
+        <label>loader.c</label>
+        <link refid="loader_8c_source"/>
+      </node>
+      <node id="3616">
+        <label>image_validate.c</label>
+        <link refid="image__validate_8c_source"/>
+      </node>
+      <node id="3618">
+        <label>flash_map.c</label>
+        <link refid="flash__map_8c_source"/>
+      </node>
+      <node id="3615">
+        <label>bootutil_priv.h</label>
+        <link refid="bootutil__priv_8h_source"/>
+        <childnode refid="3614" relation="include">
+        </childnode>
+        <childnode refid="3616" relation="include">
+        </childnode>
+        <childnode refid="3617" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structflash__area" prot="public">flash_area</innerclass>
+    <innerclass refid="structflash__sector" prot="public">flash_sector</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="flash__map_8h_1aa2f05d4eb8d1d19694caf78a26bccad8" prot="public" static="no">
+        <name>FLASH_AREA_IMAGE_0</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>Provides abstraction of flash regions for type of use. </para>        </briefdescription>
+        <detaileddescription>
+<para>I.e. dude where&apos;s my image?</para><para>System will contain a map which contains flash areas. Every region will contain flash identifier, offset within flash and length.</para><para><orderedlist>
+<listitem><para>This system map could be in a file within filesystem (Initializer must know/figure out where the filesystem is at).</para></listitem><listitem><para>Map could be at fixed location for project (compiled to code)</para></listitem><listitem><para>Map could be at specific place in flash (put in place at mfg time).</para></listitem></orderedlist>
+</para><para>Note that the map you use must be valid for BSP it&apos;s for, match the linker scripts when platform executes from flash, and match the target offset specified in download script. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="52" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="flash__map_8h_1a1a973e683138689f41458c0d235cdd36" prot="public" static="no">
+        <name>FLASH_AREA_IMAGE_1</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="53" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="flash__map_8h_1af4279d29e49e0c26d6124c71ae9138d0" prot="public" static="no">
+        <name>FLASH_AREA_IMAGE_SCRATCH</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="54" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="flash__map_8h_1a12ace61a6e82c0badf87462fa56c0484" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int* cnt</definition>
+        <argsstring></argsstring>
+        <name>cnt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="159" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="flash__map_8h_1a259135f12595b160058b298f3ce295bd" prot="public" static="no" mutable="no">
+        <type>int struct <ref refid="structflash__area" kindref="compound">flash_area</ref> *</type>
+        <definition>int struct flash_area* ret</definition>
+        <argsstring></argsstring>
+        <name>ret</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="159" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="flash__map_8h_1ad12cab135af5300988734485f79db614" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_device_base</definition>
+        <argsstring>(uint8_t fd_id, uintptr_t *ret)</argsstring>
+        <name>flash_device_base</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>fd_id</declname>
+        </param>
+        <param>
+          <type>uintptr_t *</type>
+          <declname>ret</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="115" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="86" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a9288a782aa1b1470e032de00282714af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_device_open</definition>
+        <argsstring>(void)</argsstring>
+        <name>flash_device_open</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="120" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="97" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a5a867334ab2a0acd2a26bbfd6f058ca5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void flash_device_close</definition>
+        <argsstring>(void)</argsstring>
+        <name>flash_device_close</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="122" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="106" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1ab510e62e8bf312d7e2eb2faa424b6f74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_open</definition>
+        <argsstring>(uint8_t id, const struct flash_area **area)</argsstring>
+        <name>flash_area_open</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structflash__area" kindref="compound">flash_area</ref> **</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="128" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="116" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a25693d8a7d75d966936c51181c757291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void flash_area_close</definition>
+        <argsstring>(const struct flash_area *area)</argsstring>
+        <name>flash_area_close</name>
+        <param>
+          <type>const struct <ref refid="structflash__area" kindref="compound">flash_area</ref> *</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="130" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="139" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1ac6302d2beec8f307bf9758e3ae85d3cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_read</definition>
+        <argsstring>(const struct flash_area *area, uint32_t off, void *dst, uint32_t len)</argsstring>
+        <name>flash_area_read</name>
+        <param>
+          <type>const struct <ref refid="structflash__area" kindref="compound">flash_area</ref> *</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>off</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="135" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="173" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a0bb08156103bfafa2a3dd358e737d407" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_write</definition>
+        <argsstring>(const struct flash_area *area, uint32_t off, const void *src, uint32_t len)</argsstring>
+        <name>flash_area_write</name>
+        <param>
+          <type>const struct <ref refid="structflash__area" kindref="compound">flash_area</ref> *</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>off</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="138" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="181" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a5e8fe8201f1cca78071ab7f03a8820f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_erase</definition>
+        <argsstring>(const struct flash_area *area, uint32_t off, uint32_t len)</argsstring>
+        <name>flash_area_erase</name>
+        <param>
+          <type>const struct <ref refid="structflash__area" kindref="compound">flash_area</ref> *</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>off</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="141" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="189" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1ac88a714b7348fb0575f646b3df89e010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t flash_area_align</definition>
+        <argsstring>(const struct flash_area *area)</argsstring>
+        <name>flash_area_align</name>
+        <param>
+          <type>const struct <ref refid="structflash__area" kindref="compound">flash_area</ref> *</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="146" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="196" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a5c89e0be6c41058beb1c3f87a0c9c94f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_get_sectors</definition>
+        <argsstring>(int fa_id, uint32_t *count, struct flash_sector *sectors)</argsstring>
+        <name>flash_area_get_sectors</name>
+        <param>
+          <type>int</type>
+          <declname>fa_id</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structflash__sector" kindref="compound">flash_sector</ref> *</type>
+          <declname>sectors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="151" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="287" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1aa5f2b801c22e9a7943960d78e367b4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>__attribute__</definition>
+        <argsstring>((deprecated)) int flash_area_to_sectors(int idx</argsstring>
+        <name>__attribute__</name>
+        <param>
+          <type>(deprecated)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="158" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1abe97adc33eed9f27670c0807932fd586" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_id_from_image_slot</definition>
+        <argsstring>(int slot)</argsstring>
+        <name>flash_area_id_from_image_slot</name>
+        <param>
+          <type>int</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="161" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="205" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1a2e8fdeafc3e04e63b813bf7914de4068" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int flash_area_id_to_image_slot</definition>
+        <argsstring>(int area_id)</argsstring>
+        <name>flash_area_id_to_image_slot</name>
+        <param>
+          <type>int</type>
+          <declname>area_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="162" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="flash__map_8h_1ae643e6aa7d7a5ceda49b049fcfa0e3fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void flash_area_warn_on_open</definition>
+        <argsstring>(void)</argsstring>
+        <name>flash_area_warn_on_open</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h" line="163" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/flash_map.c" bodystart="159" bodyend="171"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Licensed<sp/>to<sp/>the<sp/>Apache<sp/>Software<sp/>Foundation<sp/>(ASF)<sp/>under<sp/>one</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>or<sp/>more<sp/>contributor<sp/>license<sp/>agreements.<sp/><sp/>See<sp/>the<sp/>NOTICE<sp/>file</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>distributed<sp/>with<sp/>this<sp/>work<sp/>for<sp/>additional<sp/>information</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>regarding<sp/>copyright<sp/>ownership.<sp/><sp/>The<sp/>ASF<sp/>licenses<sp/>this<sp/>file</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>to<sp/>you<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>&quot;License&quot;);<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>with<sp/>the<sp/>License.<sp/><sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>software<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.<sp/><sp/>See<sp/>the<sp/>License<sp/>for<sp/>the</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and<sp/>limitations</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>under<sp/>the<sp/>License.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>Original<sp/>code<sp/>taken<sp/>from<sp/>mcuboot<sp/>project<sp/>at:</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>https://github.com/runtimeco/mcuboot</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>Modifications<sp/>are<sp/>Copyright<sp/>(c)<sp/>2018<sp/>Arm<sp/>Limited.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>H_UTIL_FLASH_MAP_</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>H_UTIL_FLASH_MAP_</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor">#include<sp/>&lt;inttypes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FLASH_AREA_IMAGE_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>FLASH_AREA_IMAGE_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>FLASH_AREA_IMAGE_SCRATCH<sp/>3</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="63" refid="structflash__area" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>{</highlight></codeline>
+<codeline lineno="67" refid="structflash__area_1acfe73a1f4f00fdf58129b21e5b71f5d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structflash__area_1acfe73a1f4f00fdf58129b21e5b71f5d4" kindref="member">fa_id</ref>;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="structflash__area_1a5d78c6ab00bab1bd0e825743925216a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structflash__area_1a5d78c6ab00bab1bd0e825743925216a9" kindref="member">fa_device_id</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>pad16;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="structflash__area_1a44fbf0af3ba0e7fa1c3623e7d48e0739" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structflash__area_1a44fbf0af3ba0e7fa1c3623e7d48e0739" kindref="member">fa_off</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="structflash__area_1ac580f8ab560582c02f12e96cb67b0e59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structflash__area_1ac580f8ab560582c02f12e96cb67b0e59" kindref="member">fa_size</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="structflash__sector" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structflash__sector" kindref="compound">flash_sector</ref><sp/>{</highlight></codeline>
+<codeline lineno="99" refid="structflash__sector_1a97421370396c491b90685ed0fc618931" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structflash__sector_1a97421370396c491b90685ed0fc618931" kindref="member">fs_off</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="structflash__sector_1a69093e5c1e6884b6ae50be44788c53a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structflash__sector_1a69093e5c1e6884b6ae50be44788c53a0" kindref="member">fs_size</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/>*<sp/>Retrieve<sp/>a<sp/>memory-mapped<sp/>flash<sp/>device&apos;s<sp/>base<sp/>address.</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/>*<sp/>On<sp/>success,<sp/>the<sp/>address<sp/>will<sp/>be<sp/>stored<sp/>in<sp/>the<sp/>value<sp/>pointed<sp/>to<sp/>by</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/>*<sp/>ret.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>Returns<sp/>0<sp/>on<sp/>success,<sp/>or<sp/>an<sp/>error<sp/>code<sp/>on<sp/>failure.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_device_base(uint8_t<sp/>fd_id,<sp/>uintptr_t<sp/>*ret);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>Using<sp/>flash<sp/>device.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_device_open(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>flash_device_close(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>Start<sp/>using<sp/>flash<sp/>area.</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_open(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>**area);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>flash_area_close(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>*area);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>Read/write/erase.<sp/>Offset<sp/>is<sp/>relative<sp/>from<sp/>beginning<sp/>of<sp/>flash<sp/>area.</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_read(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>*area,<sp/>uint32_t<sp/>off,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dst,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>*area,<sp/>uint32_t<sp/>off,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*src,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_erase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>*area,<sp/>uint32_t<sp/>off,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/>Alignment<sp/>restriction<sp/>for<sp/>flash<sp/>writes.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal">uint8_t<sp/>flash_area_align(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>*area);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*<sp/>Given<sp/>flash<sp/>area<sp/>ID,<sp/>return<sp/>info<sp/>about<sp/>sectors<sp/>within<sp/>the<sp/>area.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_get_sectors(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fa_id,<sp/>uint32_t<sp/>*count,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structflash__sector" kindref="compound">flash_sector</ref><sp/>*sectors);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*<sp/>Similar<sp/>to<sp/>flash_area_get_sectors(),<sp/>but<sp/>return<sp/>the<sp/>values<sp/>in<sp/>an</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*<sp/>array<sp/>of<sp/>struct<sp/>flash_area<sp/>instead.</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal">__attribute__((deprecated))</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">int<sp/>flash_area_to_sectors(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*cnt,<sp/>struct<sp/><ref refid="structflash__area" kindref="compound">flash_area</ref><sp/>*ret);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_id_from_image_slot(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>slot);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flash_area_id_to_image_slot(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>area_id);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>flash_area_warn_on_open(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="166"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="168"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>H_UTIL_FLASH_MAP_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/mcuboot/include/flash_map/flash_map.h"/>
+  </compounddef>
+</doxygen>

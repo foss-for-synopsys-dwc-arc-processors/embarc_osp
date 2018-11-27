@@ -3,87 +3,94 @@
   <compounddef id="smic__eflash_8h" kind="file">
     <compoundname>smic_eflash.h</compoundname>
     <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
+    <includedby refid="iotdk_2drivers_2flash__obj_2flash__obj_8c" local="yes">flash_obj.c</includedby>
     <includedby refid="smic__eflash_8c" local="yes">smic_eflash.c</includedby>
     <includedby refid="iotdk_8h" local="yes">iotdk.h</includedby>
     <incdepgraph>
-      <node id="5631">
+      <node id="5876">
         <label>stdbool.h</label>
       </node>
-      <node id="5628">
+      <node id="5873">
         <label>stdint.h</label>
       </node>
-      <node id="5630">
+      <node id="5875">
         <label>stddef.h</label>
       </node>
-      <node id="5634">
+      <node id="5879">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="5627" relation="include">
+        <childnode refid="5872" relation="include">
         </childnode>
       </node>
-      <node id="5629">
+      <node id="5874">
         <label>limits.h</label>
       </node>
-      <node id="5632">
+      <node id="5877">
         <label>arc.h</label>
         <link refid="arc_8h"/>
-        <childnode refid="5633" relation="include">
+        <childnode refid="5878" relation="include">
         </childnode>
       </node>
-      <node id="5633">
+      <node id="5878">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="5627">
+      <node id="5872">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="5628" relation="include">
+        <childnode refid="5873" relation="include">
         </childnode>
-        <childnode refid="5629" relation="include">
+        <childnode refid="5874" relation="include">
         </childnode>
-        <childnode refid="5630" relation="include">
+        <childnode refid="5875" relation="include">
         </childnode>
-        <childnode refid="5631" relation="include">
+        <childnode refid="5876" relation="include">
         </childnode>
       </node>
-      <node id="5625">
+      <node id="5870">
         <label>smic_eflash.h</label>
         <link refid="smic_eflash.h"/>
-        <childnode refid="5626" relation="include">
+        <childnode refid="5871" relation="include">
         </childnode>
       </node>
-      <node id="5626">
+      <node id="5871">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
-        <childnode refid="5627" relation="include">
+        <childnode refid="5872" relation="include">
         </childnode>
-        <childnode refid="5632" relation="include">
+        <childnode refid="5877" relation="include">
         </childnode>
-        <childnode refid="5634" relation="include">
+        <childnode refid="5879" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5637">
+      <node id="5881">
+        <label>flash_obj.c</label>
+        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_source"/>
+      </node>
+      <node id="5883">
         <label>iotdk.h</label>
         <link refid="iotdk_8h"/>
-        <childnode refid="5638" relation="include">
+        <childnode refid="5884" relation="include">
         </childnode>
       </node>
-      <node id="5638">
+      <node id="5884">
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="5636">
+      <node id="5882">
         <label>smic_eflash.c</label>
         <link refid="smic__eflash_8c_source"/>
       </node>
-      <node id="5635">
+      <node id="5880">
         <label>smic_eflash.h</label>
         <link refid="smic_eflash.h"/>
-        <childnode refid="5636" relation="include">
+        <childnode refid="5881" relation="include">
         </childnode>
-        <childnode refid="5637" relation="include">
+        <childnode refid="5882" relation="include">
+        </childnode>
+        <childnode refid="5883" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -102,18 +109,8 @@
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="34" column="10" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="smic__eflash_8h_1a13dc5bab222aa4a15e6e747a286719e5" prot="public" static="no">
-        <name>BOOT_FROM_ON_CHIP_FLASH</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="36" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="36" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="smic__eflash_8h_1aecc30acdac4ce25ed56f3a76bb703616" prot="public" static="no">
-        <name>EFLASH_BASE_ADDR</name>
+      <memberdef kind="define" id="smic__eflash_8h_1a71f32d3487257a2647c998025460b848" prot="public" static="no">
+        <name>EFLASH_BASE_ADDR0</name>
         <initializer>0x00000000</initializer>
         <briefdescription>
         </briefdescription>
@@ -121,7 +118,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="38" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="38" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="37" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="smic__eflash_8h_1af1eed3ded0060158545e752a8ee4b682" prot="public" static="no">
+        <name>EFLASH_BASE_ADDR1</name>
+        <initializer>0x40000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="39" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1a274196010213e1753cd38a89ff8e4465" prot="public" static="no">
         <name>SMIC_EFLASH_SET_LOCK</name>
@@ -132,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="44" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="44" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="43" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1a99506955d04c90afde79c9c725ada697" prot="public" static="no">
         <name>SMIC_EFLASH_GET_LOCK</name>
@@ -143,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="45" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="45" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="44" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1a339d9c441e5bf58550d678a2bf31150e" prot="public" static="no">
         <name>SMIC_EFLASH_PAGE_ERASE</name>
@@ -154,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="46" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="46" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="45" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1aab5043b9fce32a2c1381121475e9cd4d" prot="public" static="no">
         <name>SMIC_EFLASH_MACRO_ERASE</name>
@@ -165,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="46" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1a12fa41f485379abd91acd98bb10448fc" prot="public" static="no">
         <name>SMIC_EFLASH_GET_INFO</name>
@@ -176,11 +184,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="48" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="48" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1a58d7ecd75a7f1210769655dcc1e38f70" prot="public" static="no">
         <name>SMIC_EFLASH_PAGE_SIZE</name>
-        <initializer>512</initializer>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="49" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="smic__eflash_8h_1a555abeacf4fa95cac97fb7ee71607245" prot="public" static="no">
+        <name>SMIC_EFLASH_PAGE_CNT</name>
+        <initializer>256</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -188,17 +207,6 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="50" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="smic__eflash_8h_1a555abeacf4fa95cac97fb7ee71607245" prot="public" static="no">
-        <name>SMIC_EFLASH_PAGE_CNT</name>
-        <initializer>512</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="51" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8h_1a09cc9211c7deda423dd73e6c5543c705" prot="public" static="no">
         <name>EFLASH_DEFINE</name>
@@ -210,6 +218,7 @@
 		.eflash_lock = FMC_LOCK, \
 		.eflash_page_cnt = SMIC_EFLASH_PAGE_CNT, \
 		.eflash_page_size = SMIC_EFLASH_PAGE_SIZE, \
+		.eflash_base_addr = EFLASH_BASE_ADDR0 \
 	}; \
 	<ref refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kindref="compound">SMIC_EFLASH_DEF_PTR</ref> NAME = &amp;__ ## NAME</initializer>
         <briefdescription>
@@ -246,7 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="70" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="70" bodyend="73"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="69" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" bodystart="69" bodyend="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -261,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="68" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="67" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="smic__eflash_8h_1ac90e47442832178011eb8e18c8967251" prot="public" static="no">
         <type>struct <ref refid="structsmic__eflash__reg" kindref="compound">smic_eflash_reg</ref> *</type>
@@ -274,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="68" column="1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="67" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="smic__eflash_8h_1a2d72f27d6f11a644183fac4a5241036e" prot="public" static="no">
         <type>struct <ref refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kindref="compound">SMIC_EFLASH_DEF</ref> *</type>
@@ -306,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="98" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="82" bodyend="95"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="99" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="85" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8h_1a3e53d4b7c97f275f80674f9916d5f14b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -323,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="99" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="97" bodyend="110"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="100" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="106" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8h_1acd225c8bc7cd987ddceeb139da874109" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -352,7 +361,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="100" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="112" bodyend="127"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="101" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="121" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8h_1a004dea6ccbba52f2e442dd0f75e24faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -381,7 +390,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="101" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="129" bodyend="150"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="102" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="164" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="smic__eflash_8h_1a9626362671ecf09ad80114aa7ec9c8e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t smic_eflash_write_nocheck</definition>
+        <argsstring>(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val)</argsstring>
+        <name>smic_eflash_write_nocheck</name>
+        <param>
+          <type><ref refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kindref="compound">SMIC_EFLASH_DEF_PTR</ref></type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="103" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="140" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8h_1ac63d60fe7a10d14fc55a30d44dfc9172" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -406,7 +444,32 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="102" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="152" bodyend="197"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="104" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="265" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="smic__eflash_8h_1aaa617c5c02e1b5cb463f061a33aad201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t smic_eflash_erase</definition>
+        <argsstring>(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len)</argsstring>
+        <name>smic_eflash_erase</name>
+        <param>
+          <type><ref refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kindref="compound">SMIC_EFLASH_DEF_PTR</ref></type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h" line="105" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="216" bodyend="263"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -449,51 +512,51 @@
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EFLASH_CRTL_BASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xF0009000</highlight></codeline>
 <codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOOT_FROM_ON_CHIP_FLASH</highlight></codeline>
-<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>BOOT_FROM_ON_CHIP_FLASH</highlight></codeline>
-<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EFLASH_BASE_ADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000</highlight></codeline>
-<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EFLASH_BASE_ADDR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x40000000</highlight></codeline>
-<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_SET_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_GET_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_PAGE_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_MACRO_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
-<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_GET_INFO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_PAGE_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>512</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_PAGE_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>512</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="structsmic__eflash__reg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structsmic__eflash__reg" kindref="compound">smic_eflash_reg</ref><sp/>{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Control<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCCON;</highlight><highlight class="comment">//(0x00)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Address<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCADR;</highlight><highlight class="comment">//(0x04)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Data<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCDAT;</highlight><highlight class="comment">//(0x08)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>command<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCCMD;</highlight><highlight class="comment">//(0x0C)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Lock<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCLOCK;</highlight><highlight class="comment">//(0x10)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal">}<sp/>SMIC_EFLASH_REG,<sp/>*SMIC_EFLASH_REG_PTR;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FMC_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FMC_UNLOCK<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x55AA6699</highlight></codeline>
-<codeline lineno="73"><highlight class="normal">}<sp/>E_FMC_LOCK;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75" refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_EFLASH_REG_PTR<sp/>eflash_reg;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>eflash_open_cnt;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>E_FMC_LOCK<sp/>eflash_lock;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>eflash_page_cnt;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>eflash_page_size;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EFLASH_BASE_ADDR0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x00000000</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EFLASH_BASE_ADDR1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x40000000</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_SET_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_GET_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_PAGE_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_MACRO_ERASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_GET_INFO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_PAGE_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1024</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SMIC_EFLASH_PAGE_CNT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>256</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="structsmic__eflash__reg" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">volatile</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structsmic__eflash__reg" kindref="compound">smic_eflash_reg</ref><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Control<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCCON;</highlight><highlight class="comment">//(0x00)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Address<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCADR;</highlight><highlight class="comment">//(0x04)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Data<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCDAT;</highlight><highlight class="comment">//(0x08)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>command<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCCMD;</highlight><highlight class="comment">//(0x0C)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FMC<sp/>Lock<sp/>Register</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>FMCLOCK;</highlight><highlight class="comment">//(0x10)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/>SMIC_EFLASH_REG,<sp/>*SMIC_EFLASH_REG_PTR;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FMC_LOCK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FMC_UNLOCK<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x55AA6699</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}<sp/>E_FMC_LOCK;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_EFLASH_REG_PTR<sp/>eflash_reg;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>eflash_open_cnt;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>E_FMC_LOCK<sp/>eflash_lock;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>eflash_page_cnt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>eflash_page_size;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>eflash_base_addr;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">}<sp/><ref refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kindref="compound">SMIC_EFLASH_DEF</ref>,<sp/>*<ref refid="struct_s_m_i_c___e_f_l_a_s_h___d_e_f" kindref="compound">SMIC_EFLASH_DEF_PTR</ref>;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83" refid="struct_s_m_i_c___e_f_l_a_s_h___i_n_f_o" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -508,21 +571,24 @@
 <codeline lineno="92"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.eflash_lock<sp/>=<sp/>FMC_LOCK,<sp/>\</highlight></codeline>
 <codeline lineno="93"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.eflash_page_cnt<sp/>=<sp/>SMIC_EFLASH_PAGE_CNT,<sp/>\</highlight></codeline>
 <codeline lineno="94"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.eflash_page_size<sp/>=<sp/>SMIC_EFLASH_PAGE_SIZE,<sp/>\</highlight></codeline>
-<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};<sp/>\</highlight></codeline>
-<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_EFLASH_DEF_PTR<sp/>NAME<sp/>=<sp/>&amp;__<sp/>##<sp/>NAME</highlight></codeline>
-<codeline lineno="97"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_open(SMIC_EFLASH_DEF_PTR<sp/>obj);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_close(SMIC_EFLASH_DEF_PTR<sp/>obj);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_read(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_write(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_control(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="106"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="108"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SMIC_EFLASH_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.eflash_base_addr<sp/>=<sp/>EFLASH_BASE_ADDR0<sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};<sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SMIC_EFLASH_DEF_PTR<sp/>NAME<sp/>=<sp/>&amp;__<sp/>##<sp/>NAME</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_open(SMIC_EFLASH_DEF_PTR<sp/>obj);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_close(SMIC_EFLASH_DEF_PTR<sp/>obj);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_read(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_write(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_write_nocheck(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len,<sp/>uint8_t<sp/>*val);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_control(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/>smic_eflash_erase(SMIC_EFLASH_DEF_PTR<sp/>obj,<sp/>uint32_t<sp/>addr,<sp/>uint32_t<sp/>len);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="111"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SMIC_EFLASH_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.h"/>
   </compounddef>
