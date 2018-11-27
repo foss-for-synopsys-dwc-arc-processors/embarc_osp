@@ -27,39 +27,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_EMSK_DRV_DW_PWM_TIMER_OBJ	EMSK DW PWM_TIMER Object
- * \ingroup	BOARD_IOTDK_DRIVER
- * \brief	EMSK Designware UART Objects
- * \details
- *		Realize the EMSK board uart object using Designware uart device driver,
- *	only need to realize some Designware uart structures combine with EMSK uart
- *	hardware resource. just like cpp class instantiation.
- */
-
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
- * \brief	designware uart object instantiation on emsk
- */
-
-
-
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
 #include "iotdk_hardware.h"
 #include "dw_pwm_timer_obj.h"
 
-/**
- * \DW_PWM_TIMER_0	BOARD_EMSK_DRV_DW_UART_OBJ
- * @{
- */
 
-/**
- * EMSK DesignWare PWM_TIMER Group 0 Object Instantiation
- */
 #if (USE_DW_PWM_TIMER_0)
 #define PWM_TIMER_0_CH_0_INTNO	98			/*!< designware pwm_timer group 0 channel 0 interrupt number  */
 static DEV_PWM_TIMER	dw_pwm_timer_0;		/*!< designware pwm_timer object */
@@ -137,7 +111,6 @@ static void dw_pwm_timer_0_install(void)
 	dw_pwm_timer_ptr->pwm_timer_read = NULL;
 }
 #endif /* USE_DW_PWM_TIMER_0 */
-/** @} end of DW_PWM_TIMER_0 */
 
 /**
  * \brief	install all pwm_timer objects
