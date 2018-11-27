@@ -32,6 +32,7 @@
 #include "arc_exception.h"
 
 #include "dw_pwm_timer.h"
+#include "embARC_debug.h"
 
 
 /** check expressions used in DesignWare PWM_TIMER driver implementation */
@@ -174,7 +175,7 @@ error_exit:
 }
 
 /** Read designware pwm_timer device value */
-int32_t dw_pwm_timer_read(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t *mode, uint32_t *count_low, uint32_t *count_high)
+int32_t dw_pwm_timer_read(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)
 {
 	int32_t ercd = E_OK;
 	DEV_PWM_TIMER_INFO_PTR port_info_ptr = &(pwm_timer_obj->pwm_timer_info);
@@ -187,54 +188,86 @@ int32_t dw_pwm_timer_read(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t *m
 	DW_PWM_TIMER_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_PWM_TIMER_CHECK_EXP((ch >= 0)&&(ch < port->ch_num), E_PAR);
 
-	*count_low = dw_pwm_timer_count_get(port, ch);
-	*count_high = dw_pwm_timer_count2_get(port, ch);
+	int32_t count_low = dw_pwm_timer_count_get(port, ch);
+	int32_t count_high = dw_pwm_timer_count2_get(port, ch);
+
 	*mode = port->mode[ch];
-
-error_exit:
-	return ercd;
-}
-
-/** Write designware pwm_timer device value */
-int32_t dw_pwm_timer_write(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t mode, uint32_t count_low, uint32_t count_high)
-{
-	int32_t ercd = E_OK;
-	DEV_PWM_TIMER_INFO_PTR port_info_ptr = &(pwm_timer_obj->pwm_timer_info);
-
-	/* START ERROR CHECK */
-	VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);
-	/* END OF ERROR CHECK */
-
-	DW_PWM_TIMER_CTRL_PTR port = (DW_PWM_TIMER_CTRL_PTR)(port_info_ptr->pwm_timer_ctrl);
-	DW_PWM_TIMER_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
-	DW_PWM_TIMER_CHECK_EXP((ch >= 0)&&(ch < port->ch_num), E_PAR);
-
-	dw_pwm_timer_count_set(port, ch, count_low);
-	dw_pwm_timer_count2_set(port, ch, count_high);
-
-	if (mode == DEV_PWM_TIMER_MODE_TIMER) {
-		port->mode[ch] = mode;
-		dw_pwm_timer_timer_enable(port, ch);
-		dw_pwm_timer_pwm_disable(port, ch);
-		int_enable(port->intno + ch);
-	} else if (mode == DEV_PWM_TIMER_MODE_PWM) {
-		port->mode[ch] = mode;
-		dw_pwm_timer_timer_enable(port, ch);
-		dw_pwm_timer_pwm_enable(port, ch);
-		int_disable(port->intno + ch);
-	} else if (mode == DEV_PWM_TIMER_MODE_CLOSE) {
-		port->mode[ch] = mode;
-		dw_pwm_timer_timer_disable(port, ch);
-		dw_pwm_timer_pwm_disable(port, ch);
-		int_disable(port->intno + ch);
+	if (*mode == DEV_PWM_TIMER_MODE_TIMER) {
+		*dc = 100;
+		if (count_low != 0)
+			*freq = port->clock / (count_low*2);
+		else
+			*freq = 0;
+	} else if (*mode == DEV_PWM_TIMER_MODE_PWM) {
+		if (count_low == 0 && count_high == 0) {
+			*dc = 0;
+			*freq = 0;
+		} else {
+			*dc = (count_high * 100) / (count_high + count_low);
+			*freq = port->clock / (count_high + count_low);
+		}
+	} else {
+		*dc = 0;
+		*freq = 0;
 	}
 
 error_exit:
 	return ercd;
 }
 
+/** Write designware pwm_timer device value */
+int32_t dw_pwm_timer_write(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)
+{
+	int32_t ercd = E_OK;
+	int32_t count, count_high;
+	DEV_PWM_TIMER_INFO_PTR port_info_ptr = &(pwm_timer_obj->pwm_timer_info);
+
+	/* START ERROR CHECK */
+	VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);
+	/* END OF ERROR CHECK */
+
+	DW_PWM_TIMER_CTRL_PTR port = (DW_PWM_TIMER_CTRL_PTR)(port_info_ptr->pwm_timer_ctrl);
+	DW_PWM_TIMER_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
+	DW_PWM_TIMER_CHECK_EXP((ch >= 0)&&(ch < port->ch_num), E_PAR);
+	DW_PWM_TIMER_CHECK_EXP((dc >= 0)&&(dc <= 100), E_PAR);
+
+	if (mode == DEV_PWM_TIMER_MODE_TIMER) {
+		DW_PWM_TIMER_CHECK_EXP(freq > 0, E_PAR);
+		port->mode[ch] = mode;
+
+		count = port->clock / freq;
+		dw_pwm_timer_count_set(port, ch, count/2);
+		dw_pwm_timer_count2_set(port, ch, 0);
+
+		dw_pwm_timer_timer_enable(port, ch);
+		dw_pwm_timer_pwm_disable(port, ch);
+		int_enable(port->intno + ch);
+	} else if (mode == DEV_PWM_TIMER_MODE_PWM) {
+		DW_PWM_TIMER_CHECK_EXP(freq > 0, E_PAR);
+		port->mode[ch] = mode;
+
+		count = port->clock / freq;
+		count_high = (count * dc)/100;
+		dw_pwm_timer_count_set(port, ch, count-count_high);
+		dw_pwm_timer_count2_set(port, ch, count_high);
+		EMBARC_PRINTF("clock = %d, count_low = %d, count_high = %d\r\n",port->clock, count-count_high, count_high);
+		dw_pwm_timer_timer_enable(port, ch);
+		dw_pwm_timer_pwm_enable(port, ch);
+		int_disable(port->intno + ch);
+	} else if (mode == DEV_PWM_TIMER_MODE_CLOSE) {
+		port->mode[ch] = mode;
+		dw_pwm_timer_count_set(port, ch, 0);
+		dw_pwm_timer_count2_set(port, ch, 0);
+		dw_pwm_timer_timer_disable(port, ch);
+		dw_pwm_timer_pwm_disable(port, ch);
+		int_disable(port->intno + ch);
+	}
+error_exit:
+	return ercd;
+}
+
 /** Control designware pwm_timer device */
-int32_t dw_pwm_timer_control(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ctrl_cmd, void *par)
+int32_t dw_pwm_timer_control(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t ctrl_cmd, void *par)
 {
 	int32_t ercd = E_OK;
 	DEV_PWM_TIMER_INFO_PTR port_info_ptr = &(pwm_timer_obj->pwm_timer_info);
@@ -245,52 +278,60 @@ int32_t dw_pwm_timer_control(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ctrl_cmd, vo
 
 	DW_PWM_TIMER_CTRL_PTR port = (DW_PWM_TIMER_CTRL_PTR)(port_info_ptr->pwm_timer_ctrl);
 	DW_PWM_TIMER_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
+	DW_PWM_TIMER_CHECK_EXP((ch>=0)&&(ch<port->ch_num), E_PAR);
 
 	DEV_PWM_TIMER_CFG *cfg_ptr;
-	uint32_t ch;
 	switch (ctrl_cmd) {
 		case PWM_TIMER_CMD_SET_CFG:
 			cfg_ptr = (DEV_PWM_TIMER_CFG *) par;
-			DW_PWM_TIMER_CHECK_EXP((cfg_ptr->ch>=0)&&(cfg_ptr->ch<port->ch_num), E_PAR);
 
-			dw_pwm_timer_count_set(port, cfg_ptr->ch, cfg_ptr->count_low);
-			dw_pwm_timer_count2_set(port, cfg_ptr->ch, cfg_ptr->count_high);
+			dw_pwm_timer_count_set(port, ch, cfg_ptr->count_low);
+			dw_pwm_timer_count2_set(port, ch, cfg_ptr->count_high);
 			if (cfg_ptr->isr_hander != NULL) {
-				port->ch_isr->int_ch_handler_ptr[cfg_ptr->ch] = cfg_ptr->isr_hander;
+				port->ch_isr->int_ch_handler_ptr[ch] = cfg_ptr->isr_hander;
 			}
 			if (cfg_ptr->mode == DEV_PWM_TIMER_MODE_TIMER) {
-				port->mode[cfg_ptr->ch] = cfg_ptr->mode;
-				dw_pwm_timer_timer_enable(port, cfg_ptr->ch);
-				int_enable(port->intno + cfg_ptr->ch);
+				port->mode[ch] = cfg_ptr->mode;
+				dw_pwm_timer_timer_enable(port, ch);
+				int_enable(port->intno + ch);
 			} else if (cfg_ptr->mode == DEV_PWM_TIMER_MODE_PWM) {
-				port->mode[cfg_ptr->ch] = cfg_ptr->mode;
-				dw_pwm_timer_timer_enable(port, cfg_ptr->ch);
-				dw_pwm_timer_pwm_enable(port, cfg_ptr->ch);
+				port->mode[ch] = cfg_ptr->mode;
+				dw_pwm_timer_timer_enable(port, ch);
+				dw_pwm_timer_pwm_enable(port, ch);
 			} else if (cfg_ptr->mode == DEV_PWM_TIMER_MODE_CLOSE) {
-				port->mode[cfg_ptr->ch] = cfg_ptr->mode;
-				dw_pwm_timer_timer_disable(port, cfg_ptr->ch);
-				dw_pwm_timer_pwm_disable(port, cfg_ptr->ch);
+				port->mode[ch] = cfg_ptr->mode;
+				dw_pwm_timer_timer_disable(port, ch);
+				dw_pwm_timer_pwm_disable(port, ch);
 			}
 			break;
 		case PWM_TIMER_CMD_GET_CFG:
 			cfg_ptr = (DEV_PWM_TIMER_CFG *) par;
-			DW_PWM_TIMER_CHECK_EXP((cfg_ptr->ch>=0)&&(cfg_ptr->ch<port->ch_num), E_PAR);
-			cfg_ptr->count_low = dw_pwm_timer_count_get(port, cfg_ptr->ch);
-			cfg_ptr->count_high = dw_pwm_timer_count2_get(port, cfg_ptr->ch);
+			cfg_ptr->count_low = dw_pwm_timer_count_get(port, ch);
+			cfg_ptr->count_high = dw_pwm_timer_count2_get(port, ch);
 			if (cfg_ptr->isr_hander != NULL) {
-				cfg_ptr->isr_hander = port->ch_isr->int_ch_handler_ptr[cfg_ptr->ch];
+				cfg_ptr->isr_hander = port->ch_isr->int_ch_handler_ptr[ch];
 			}
-			cfg_ptr->mode = port->mode[cfg_ptr->ch];
+			cfg_ptr->mode = port->mode[ch];
 			break;
 		case PWM_TIMER_CMD_DIS_CH:
-			ch = (uint32_t) par;
-			DW_PWM_TIMER_CHECK_EXP((ch >= 0)&&(ch < port->ch_num), E_PAR);
 			dw_pwm_timer_timer_disable(port, ch);
 			break;
 		case PWM_TIMER_CMD_ENA_CH:
-			ch = (uint32_t) par;
-			DW_PWM_TIMER_CHECK_EXP((ch >= 0)&&(ch < port->ch_num), E_PAR);
 			dw_pwm_timer_timer_enable(port, ch);
+			break;
+		case PWM_TIMER_CMD_DIS_ISR:
+			int_disable(port->intno + ch);
+			break;
+		case PWM_TIMER_CMD_ENA_ISR:
+			int_enable(port->intno + ch);
+			break;
+		case PWM_TIMER_CMD_SET_ISR:
+			DW_PWM_TIMER_CHECK_EXP((par!=NULL) && CHECK_ALIGN_4BYTES(par), E_PAR);
+			port->ch_isr->int_ch_handler_ptr[ch] = (DEV_PWM_TIMER_HANDLER)par;
+			break;
+		case PWM_TIMER_CMD_GET_ISR:
+			DW_PWM_TIMER_CHECK_EXP((par!=NULL) && CHECK_ALIGN_4BYTES(par), E_PAR);
+			par = (void *)(port->ch_isr->int_ch_handler_ptr[ch]);
 			break;
 		default:
 			ercd = E_NOSPT;

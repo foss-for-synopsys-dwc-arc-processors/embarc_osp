@@ -84,19 +84,19 @@ static int32_t dw_pwm_timer_0_close (void)
 	return dw_pwm_timer_close(&dw_pwm_timer_0);
 }
 /** DesignWare PWM_TIMER 0 control */
-static int32_t dw_pwm_timer_0_control (uint32_t cmd, void *param)
+static int32_t dw_pwm_timer_0_control (uint32_t ch, uint32_t cmd, void *param)
 {
-	return dw_pwm_timer_control(&dw_pwm_timer_0, cmd, param);
+	return dw_pwm_timer_control(&dw_pwm_timer_0, ch, cmd, param);
 }
 /** DesignWare PWM_TIMER 0 write */
-static int32_t dw_pwm_timer_0_write (uint32_t ch, uint32_t mode, uint32_t count_low, uint32_t count_high)
+static int32_t dw_pwm_timer_0_write (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)
 {
-	return dw_pwm_timer_write(&dw_pwm_timer_0, ch, mode, count_low, count_high);
+	return dw_pwm_timer_write(&dw_pwm_timer_0, ch, mode, freq, dc);
 }
 /** DesignWare PWM_TIMER 0 read */
-static int32_t dw_pwm_timer_0_read (uint32_t ch, uint32_t *mode, uint32_t *count_low, uint32_t *count_high)
+static int32_t dw_pwm_timer_0_read (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)
 {
-	return dw_pwm_timer_read(&dw_pwm_timer_0, ch, mode, count_low, count_high);
+	return dw_pwm_timer_read(&dw_pwm_timer_0, ch, mode, freq, dc);
 }
 /** DesignWare PWM_TIMER 0 interrupt routine */
 static void dw_pwm_timer_0_isr(void *ptr)
@@ -118,6 +118,7 @@ static void dw_pwm_timer_0_install(void)
 	dw_pwm_timer_ctrl_ptr->id = DW_PWM_TIMER_0_ID;
 	dw_pwm_timer_ctrl_ptr->regs = (DW_PWM_TIMER_REG_PTR)(BASE_ADDR_PWM);
 	dw_pwm_timer_ctrl_ptr->intno = PWM_TIMER_0_CH_0_INTNO;
+	dw_pwm_timer_ctrl_ptr->clock = BOARD_DFSS_APB_CLK;
 	dw_pwm_timer_ctrl_ptr->ch_num = DW_PWM_TIMER_0_CH_MAX_COUNT;
 	dw_pwm_timer_ctrl_ptr->int_handler = dw_pwm_timer_0_isr;
 

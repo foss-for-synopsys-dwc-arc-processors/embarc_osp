@@ -90,6 +90,14 @@
 
 #define PWM_TIMER_CMD_DIS_CH			DEV_SET_SYSCMD(3)
 
+#define PWM_TIMER_CMD_SET_ISR			DEV_SET_SYSCMD(4)
+
+#define PWM_TIMER_CMD_GET_ISR			DEV_SET_SYSCMD(5)
+
+#define PWM_TIMER_CMD_DIS_ISR			DEV_SET_SYSCMD(6)
+
+#define PWM_TIMER_CMD_ENA_ISR			DEV_SET_SYSCMD(7)
+
 /** PWM_TIMER interrupt handler or Interrupt Service Routine(ISR) */
 typedef void (*DEV_PWM_TIMER_HANDLER) (void *ptr);
 
@@ -113,7 +121,6 @@ typedef enum dev_pwm_timer_mode {
  * PWM_TIMER Device Config Struct
  */
 typedef struct dev_pwm_timer_cfg {
-	uint8_t ch;		/*!< conifg channel*/
 	DEV_PWM_TIMER_MODE mode;		/*!< work mode*/
 	uint16_t count_low;				/*!< count for timer or pwm period low*/
 	uint16_t count_high;			/*!< count for pwm period high*/
@@ -133,9 +140,9 @@ typedef struct dev_pwm_timer {
 	DEV_PWM_TIMER_INFO pwm_timer_info;				/*!< PWM_TIMER device information */
 	int32_t (*pwm_timer_open) (void);				/*!< Open pwm_timer device */
 	int32_t (*pwm_timer_close) (void);				/*!< Close pwm_timer device */
-	int32_t (*pwm_timer_control) (uint32_t cmd, void *param2);	/*!< Control pwm_timer device */
-	int32_t (*pwm_timer_write) (uint32_t ch, uint32_t mode, uint32_t count_low, uint32_t count_high);	/*!< Send data by pwm_timer device(blocked) */
-	int32_t (*pwm_timer_read) (uint32_t ch, uint32_t *mode, uint32_t *count_low, uint32_t *count_high);	/*!< Read data from pwm_timer device(blocked) */
+	int32_t (*pwm_timer_control) (uint32_t ch, uint32_t cmd, void *param2);	/*!< Control pwm_timer device */
+	int32_t (*pwm_timer_write) (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc);	/*!< Send data by pwm_timer device(blocked) */
+	int32_t (*pwm_timer_read) (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc);	/*!< Read data from pwm_timer device(blocked) */
 } DEV_PWM_TIMER, * DEV_PWM_TIMER_PTR;
 
 

@@ -77,6 +77,7 @@ typedef struct dw_pwm_timer_ctrl {
 	DW_PWM_TIMER_REG_PTR regs;			/*!< pwm_timer port register */
 	uint32_t intno;						/*!< pwm_timer interrupt vector number */
 	uint32_t ch_num;					/*!< pwm_timer group channel count */
+	uint32_t clock;						/*!< pwm_timer clock */
 	INT_HANDLER int_handler;			/*!< pwm_timer interrupt handler pointer */
 	DW_PWM_TIMER_CH_ISR_PTR ch_isr;		/*!< pwm_timer group channel callback pointer */
 	DEV_PWM_TIMER_MODE_PTR mode;		/*!< pwm_timer group channel work mode array pointer*/
@@ -95,9 +96,9 @@ extern "C" {
  */
 extern int32_t dw_pwm_timer_open(DEV_PWM_TIMER *pwm_timer_obj);
 extern int32_t dw_pwm_timer_close(DEV_PWM_TIMER *pwm_timer_obj);
-extern int32_t dw_pwm_timer_read(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t *mode, uint32_t *count_low, uint32_t *count_high);
-extern int32_t dw_pwm_timer_write(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t mode, uint32_t count_low, uint32_t count_high);
-extern int32_t dw_pwm_timer_control(DEV_PWM_TIMER *pwm_timer_obj, uint32_t cmd, void *param);
+extern int32_t dw_pwm_timer_read(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc);
+extern int32_t dw_pwm_timer_write(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc);
+extern int32_t dw_pwm_timer_control(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t cmd, void *param);
 extern int32_t dw_pwm_timer_isr_handler(DEV_PWM_TIMER *pwm_timer_obj, void *ptr);
 
 #ifdef __cplusplus
