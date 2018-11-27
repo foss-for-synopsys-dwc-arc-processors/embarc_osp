@@ -59,6 +59,7 @@
 #include "drivers/smic/smic_bootspi/smic_bootspi.h"
 #include "dev_pinmux.h"
 
+#include "drivers/flash_obj/flash_obj.h"
 #include "iotdk_hardware.h"
 
 /*-----------------------------------------------------------------------------*/
@@ -97,6 +98,9 @@
 #define BOARD_CONSOLE_UART_BAUD			UART_BAUDRATE_115200
 
 #define BOARD_ONBOARD_NTSHELL_ID		(IOTDK_NTSHELL_0_ID)
+
+/** board exists flash device */
+#define BOARD_FLASH_EXIST			(1)
 
 /* iotdk DFSS SPI configuration */
 #ifndef BOARD_SPI_FREQ
@@ -158,7 +162,7 @@
 #define BOARD_SWT_MASK			(0x0)
 #define BOARD_SWT_CNT			(0)
 
-#define button_read(x) 			1
+#define button_read(x) 			0
 #define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
 #define led_read(mask)			(0x0)
 #define led_toggle(mask)

@@ -96,7 +96,8 @@ BOARD_IOTDK_CSRCDIR		+= $(BOARD_IOTDK_DEV_CSRCDIR) $(BOARD_CORE_DIR) \
 				$(BOARD_IOTDK_DIR)/drivers/sysconf \
 				$(BOARD_IOTDK_DIR)/drivers/smic/smic_adc \
 				$(BOARD_IOTDK_DIR)/drivers/smic/smic_eflash \
-				$(BOARD_IOTDK_DIR)/drivers/smic/smic_bootspi
+				$(BOARD_IOTDK_DIR)/drivers/smic/smic_bootspi \
+				$(BOARD_IOTDK_DIR)/drivers/flash_obj
 # select dirvers according to middleware
 ifneq ($(findstring ntshell, $(MID_SEL)), )
 BOARD_IOTDK_CSRCDIR 		+= $(BOARD_IOTDK_DIR)/drivers/ntshell
@@ -108,6 +109,16 @@ endif
 
 ifneq ($(findstring lwip, $(MID_SEL)), )
 BOARD_IOTDK_CSRCDIR 		+= $(BOARD_IOTDK_DIR)/drivers/pmwifi
+endif
+
+##
+# set board image information for MCUBoot
+# TODO: needs to modify
+##
+ifneq ($(findstring mcuboot, $(LIB_SEL)), )
+IMAGE_FLASH_ALIGN ?= 8
+IMAGE_SLOT_SIZE ?= 0x000C0000
+IMAGE_HEADER_SIZE ?= 0x400
 endif
 
 BOARD_IOTDK_ASMSRCDIR		+= $(BOARD_IOTDK_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
