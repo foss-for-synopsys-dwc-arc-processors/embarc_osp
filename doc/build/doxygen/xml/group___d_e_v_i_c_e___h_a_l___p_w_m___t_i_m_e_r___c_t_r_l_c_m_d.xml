@@ -1,0 +1,521 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d" kind="group">
+    <compoundname>DEVICE_HAL_PWM_TIMER_CTRLCMD</compoundname>
+    <title>PWM_TIMER Device Control Commands</title>
+    <innerclass refid="structdev__pwm__timer__ch__isr" prot="public">dev_pwm_timer_ch_isr</innerclass>
+    <innerclass refid="structdev__pwm__timer__cfg" prot="public">dev_pwm_timer_cfg</innerclass>
+    <innerclass refid="structdev__pwm__timer__info" prot="public">dev_pwm_timer_info</innerclass>
+    <innerclass refid="structdev__pwm__timer" prot="public">dev_pwm_timer</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga7ad4d8634ea972bfafe4a6517c5a81f8" prot="public" static="no">
+        <name>dev_pwm_timer_mode</name>
+        <enumvalue id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8ae6d703585a9f1825b10e2469e1a238c7" prot="public">
+          <name>DEV_PWM_TIMER_MODE_CLOSE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>mode close </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" prot="public">
+          <name>DEV_PWM_TIMER_MODE_TIMER</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>mode timer </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" prot="public">
+          <name>DEV_PWM_TIMER_MODE_PWM</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>mode pwm </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>PWM_TIMER Device Work Mode Types Enum. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="113" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="113" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga8db6fd35a0475f738f2afa833bcb69d5" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* DEV_PWM_TIMER_HANDLER)(void *ptr)</definition>
+        <argsstring>)(void *ptr)</argsstring>
+        <name>DEV_PWM_TIMER_HANDLER</name>
+        <briefdescription>
+<para>PWM_TIMER interrupt handler or Interrupt Service Routine(ISR) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="102" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf32b115ba79681bb465cc0ff675e09e9" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__ch__isr" kindref="compound">dev_pwm_timer_ch_isr</ref></type>
+        <definition>typedef struct dev_pwm_timer_ch_isr  DEV_PWM_TIMER_CH_ISR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CH_ISR</name>
+        <briefdescription>
+<para>interrupt handler for each pwm_timer channel </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="108" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4fcac9725a7617b75cfe6575efbe87de" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__ch__isr" kindref="compound">dev_pwm_timer_ch_isr</ref> *</type>
+        <definition>typedef struct dev_pwm_timer_ch_isr *  DEV_PWM_TIMER_CH_ISR_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CH_ISR_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="108" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga40c69fe80f0bbdce9278565c5f87c41e" prot="public" static="no">
+        <type>enum <ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga7ad4d8634ea972bfafe4a6517c5a81f8" kindref="member">dev_pwm_timer_mode</ref></type>
+        <definition>typedef enum dev_pwm_timer_mode  DEV_PWM_TIMER_MODE</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_MODE</name>
+        <briefdescription>
+<para>PWM_TIMER Device Work Mode Types Enum. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaea335b179d1ae9b8153a8ccbdb728916" prot="public" static="no">
+        <type>enum <ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga7ad4d8634ea972bfafe4a6517c5a81f8" kindref="member">dev_pwm_timer_mode</ref> *</type>
+        <definition>typedef enum dev_pwm_timer_mode * DEV_PWM_TIMER_MODE_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_MODE_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf911b90bc5d8d3f9be02509358ef0dec" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__cfg" kindref="compound">dev_pwm_timer_cfg</ref></type>
+        <definition>typedef struct dev_pwm_timer_cfg  DEV_PWM_TIMER_CFG</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CFG</name>
+        <briefdescription>
+<para>PWM_TIMER Device Config Struct. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad2426282166ba4bed5d80ac897493c29" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__cfg" kindref="compound">dev_pwm_timer_cfg</ref> *</type>
+        <definition>typedef struct dev_pwm_timer_cfg * DEV_PWM_TIMER_CFG_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CFG_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaabe67107db642e3d3038647a0d14cc89" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__info" kindref="compound">dev_pwm_timer_info</ref></type>
+        <definition>typedef struct dev_pwm_timer_info  DEV_PWM_TIMER_INFO</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_INFO</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga9940e72a57bdb157210298c7d4ed0744" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__info" kindref="compound">dev_pwm_timer_info</ref> *</type>
+        <definition>typedef struct dev_pwm_timer_info *  DEV_PWM_TIMER_INFO_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_INFO_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad0702db577c4ff3e528c53a9b9175e92" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer" kindref="compound">dev_pwm_timer</ref></type>
+        <definition>typedef struct dev_pwm_timer  DEV_PWM_TIMER</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="146" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad0c2d2708d97bea0800b17278df08609" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer" kindref="compound">dev_pwm_timer</ref> *</type>
+        <definition>typedef struct dev_pwm_timer *  DEV_PWM_TIMER_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="146" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga3d269ca29ed5a30cb66b9252baf1e277" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dev_pwm_timer_ch_isr::int_ch_num</definition>
+        <argsstring></argsstring>
+        <name>int_ch_num</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>pwm_timer channel num </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="106" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga5306d8d9360cfacc4d156c8acffa2f1f" prot="public" static="no" mutable="no">
+        <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga8db6fd35a0475f738f2afa833bcb69d5" kindref="member">DEV_PWM_TIMER_HANDLER</ref></type>
+        <definition>DEV_PWM_TIMER_HANDLER dev_pwm_timer_ch_isr::int_ch_handler</definition>
+        <argsstring></argsstring>
+        <name>int_ch_handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>interrupt handler </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="107" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaebfa4bf66433ec5f223c760d4a053a1d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga40c69fe80f0bbdce9278565c5f87c41e" kindref="member">DEV_PWM_TIMER_MODE</ref></type>
+        <definition>DEV_PWM_TIMER_MODE dev_pwm_timer_cfg::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>work mode </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="124" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga01ee89b6503597df05ac7e04cc7f612b" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t dev_pwm_timer_cfg::count_low</definition>
+        <argsstring></argsstring>
+        <name>count_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>count for timer or pwm period low </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="125" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga95da444b025deb0688e62a65f70bce12" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t dev_pwm_timer_cfg::count_high</definition>
+        <argsstring></argsstring>
+        <name>count_high</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>count for pwm period high </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="126" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaa19049c4070f58d5d16dcccf648aa80d" prot="public" static="no" mutable="no">
+        <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga8db6fd35a0475f738f2afa833bcb69d5" kindref="member">DEV_PWM_TIMER_HANDLER</ref></type>
+        <definition>DEV_PWM_TIMER_HANDLER dev_pwm_timer_cfg::isr_hander</definition>
+        <argsstring></argsstring>
+        <name>isr_hander</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>channel ch isr hander </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="127" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gadad83f1e633430752e39973f5dc45979" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* dev_pwm_timer_info::pwm_timer_ctrl</definition>
+        <argsstring></argsstring>
+        <name>pwm_timer_ctrl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="133" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gae51c36b39f401534fae00f2e28ff436d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t dev_pwm_timer_info::opn_cnt</definition>
+        <argsstring></argsstring>
+        <name>opn_cnt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="134" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf7fb260666298ab6f4110b1c1209eb4b" prot="public" static="no" mutable="no">
+        <type><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO</ref></type>
+        <definition>DEV_PWM_TIMER_INFO dev_pwm_timer::pwm_timer_info</definition>
+        <argsstring></argsstring>
+        <name>pwm_timer_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>PWM_TIMER device information </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="140" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4e262cd5ec22e28b615fb21aae4776ce" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_pwm_timer::pwm_timer_open)(void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>pwm_timer_open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open pwm_timer device </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="141" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga06ca58b15c125ab85a5467a16b946158" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_pwm_timer::pwm_timer_close)(void)</definition>
+        <argsstring>)(void)</argsstring>
+        <name>pwm_timer_close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Close pwm_timer device </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="142" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4774713e05dfa69c9105e506c89ebbff" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_pwm_timer::pwm_timer_control)(uint32_t ch, uint32_t cmd, void *param2)</definition>
+        <argsstring>)(uint32_t ch, uint32_t cmd, void *param2)</argsstring>
+        <name>pwm_timer_control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Control pwm_timer device </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="143" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaca656043f520755819f02909a38f50e5" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_pwm_timer::pwm_timer_write)(uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)</definition>
+        <argsstring>)(uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)</argsstring>
+        <name>pwm_timer_write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send data by pwm_timer device(blocked) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="144" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaac1fd059387788ba98b9969860d35cb6" prot="public" static="no" mutable="no">
+        <type>int32_t(*</type>
+        <definition>int32_t(* dev_pwm_timer::pwm_timer_read)(uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)</definition>
+        <argsstring>)(uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)</argsstring>
+        <name>pwm_timer_read</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read data from pwm_timer device(blocked) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="145" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="">
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaeb19d9401495701d33ea770ec122cfd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER_PTR</ref></type>
+        <definition>DEV_PWM_TIMER_PTR pwm_timer_get_dev</definition>
+        <argsstring>(int32_t pwm_timer_id)</argsstring>
+        <name>pwm_timer_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>pwm_timer_id</declname>
+        </param>
+        <briefdescription>
+<para>get an <ref refid="structdev__pwm__timer" kindref="compound">pwm_timer device</ref> by pwm_timer device id. </para>        </briefdescription>
+        <detaileddescription>
+<para>For how to use pwm_timer device hal refer to <ref refid="structdev__pwm__timer" kindref="compound">Functions in pwm_timer device structure</ref> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pwm_timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of pwm_timer, defined by user </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>!NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an <ref refid="structdev__pwm__timer" kindref="compound">pwm_timer device structure</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>failed to find the pwm_timer device by pwm_timer_id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>need to implemented by user in user code</para></simplesect>
+get an <ref refid="structdev__pwm__timer" kindref="compound">pwm_timer device</ref> by pwm_timer device id. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="162" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.c" bodystart="128" bodyend="150"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gacd4dd0179fd19be60dd7835ca95c02d8" prot="public" static="no">
+        <name>PWM_TIMER_CMD_SET_CFG</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="85" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga06f2b83935013182f86896e4c259c35b" prot="public" static="no">
+        <name>PWM_TIMER_CMD_GET_CFG</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="87" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaa8b0ba08914838e2e2a99e7f468fe058" prot="public" static="no">
+        <name>PWM_TIMER_CMD_ENA_CH</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="89" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gacf5b4efaf1ebdd7b965de9bb0bd61760" prot="public" static="no">
+        <name>PWM_TIMER_CMD_DIS_CH</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(3)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="91" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad7d9edeaf04256499793deee13f9006a" prot="public" static="no">
+        <name>PWM_TIMER_CMD_SET_ISR</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="93" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga1a7acd47b7ed55315532d915f7ecf529" prot="public" static="no">
+        <name>PWM_TIMER_CMD_GET_ISR</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(5)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="95" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga688110f35e187f869d072ebf8b956f8c" prot="public" static="no">
+        <name>PWM_TIMER_CMD_DIS_ISR</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="97" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga756650cc9232bf7abfdc005b6f5da383" prot="public" static="no">
+        <name>PWM_TIMER_CMD_ENA_ISR</name>
+        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1ga5560787ca52a8f1846d0aa7457ef45ee" kindref="member">DEV_SET_SYSCMD</ref>(7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="99" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definitions for pwm_timer control command, used in <ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4774713e05dfa69c9105e506c89ebbff" kindref="member">PWM_TIMER IO Control</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>These commands defined here can be used in user code directly.<itemizedlist>
+<listitem><para>Parameters Usage<itemizedlist>
+<listitem><para>For passing parameters like integer, just use uint32_t/int32_t to directly pass values</para></listitem><listitem><para>For passing parameters for a structure, please use pointer to pass values</para></listitem><listitem><para>For getting some data, please use pointer to store the return data</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Common Return Values<itemizedlist>
+<listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>, Control device successfully</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>, Device is not opened</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>, Device object is not valid or not exists</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>, Parameter is not valid for current control command</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" kindref="member">E_SYS</ref>, Control device failed, due to hardware issues such as device is disabled</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" kindref="member">E_CTX</ref>, Control device failed, due to different reasons like in transfer state</para></listitem><listitem><para><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" kindref="member">E_NOSPT</ref>, Control command is not supported or not valid </para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

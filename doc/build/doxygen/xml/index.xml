@@ -574,6 +574,28 @@
     <member refid="structdev__iic__info_1a9646a44d1ef6ae6fe94e8f6499a7ca26" kind="variable"><name>iic_cbs</name></member>
     <member refid="structdev__iic__info_1a9f40d63b98dc84e1e88fe9953f483021" kind="variable"><name>extra</name></member>
   </compound>
+  <compound refid="structdev__pwm__timer" kind="struct"><name>dev_pwm_timer</name>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf7fb260666298ab6f4110b1c1209eb4b" kind="variable"><name>pwm_timer_info</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4e262cd5ec22e28b615fb21aae4776ce" kind="variable"><name>pwm_timer_open</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga06ca58b15c125ab85a5467a16b946158" kind="variable"><name>pwm_timer_close</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4774713e05dfa69c9105e506c89ebbff" kind="variable"><name>pwm_timer_control</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaca656043f520755819f02909a38f50e5" kind="variable"><name>pwm_timer_write</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaac1fd059387788ba98b9969860d35cb6" kind="variable"><name>pwm_timer_read</name></member>
+  </compound>
+  <compound refid="structdev__pwm__timer__cfg" kind="struct"><name>dev_pwm_timer_cfg</name>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaebfa4bf66433ec5f223c760d4a053a1d" kind="variable"><name>mode</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga01ee89b6503597df05ac7e04cc7f612b" kind="variable"><name>count_low</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga95da444b025deb0688e62a65f70bce12" kind="variable"><name>count_high</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaa19049c4070f58d5d16dcccf648aa80d" kind="variable"><name>isr_hander</name></member>
+  </compound>
+  <compound refid="structdev__pwm__timer__ch__isr" kind="struct"><name>dev_pwm_timer_ch_isr</name>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga3d269ca29ed5a30cb66b9252baf1e277" kind="variable"><name>int_ch_num</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga5306d8d9360cfacc4d156c8acffa2f1f" kind="variable"><name>int_ch_handler</name></member>
+  </compound>
+  <compound refid="structdev__pwm__timer__info" kind="struct"><name>dev_pwm_timer_info</name>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gadad83f1e633430752e39973f5dc45979" kind="variable"><name>pwm_timer_ctrl</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gae51c36b39f401534fae00f2e28ff436d" kind="variable"><name>opn_cnt</name></member>
+  </compound>
   <compound refid="structdev__sdio" kind="struct"><name>dev_sdio</name>
     <member refid="structdev__sdio_1a7c9fef3dc00e3c4fe0b90cdc981281a0" kind="variable"><name>sdio_info</name></member>
     <member refid="structdev__sdio_1a771ec3ffdef69b286642002184a2a87a" kind="variable"><name>open</name></member>
@@ -1046,6 +1068,35 @@
   <compound refid="structdw__iic__spklen" kind="struct"><name>dw_iic_spklen</name>
     <member refid="structdw__iic__spklen_1ae3b4730898ef2dc6ba961c1031f99585" kind="variable"><name>fs_spklen</name></member>
     <member refid="structdw__iic__spklen_1a092f8e0f46bab5a07cb282964b45d239" kind="variable"><name>hs_spklen</name></member>
+  </compound>
+  <compound refid="structdw__pwm__timer__ch__isr" kind="struct"><name>dw_pwm_timer_ch_isr</name>
+    <member refid="structdw__pwm__timer__ch__isr_1a68a4c1c3568e410e32fdb7ec9016dc05" kind="variable"><name>int_ch_max_cnt</name></member>
+    <member refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kind="variable"><name>int_ch_handler_ptr</name></member>
+  </compound>
+  <compound refid="structdw__pwm__timer__ch__reg" kind="struct"><name>dw_pwm_timer_ch_reg</name>
+    <member refid="structdw__pwm__timer__ch__reg_1a4dce2faee76fae9f7e11173e063fd01c" kind="variable"><name>LOAD_COUNT</name></member>
+    <member refid="structdw__pwm__timer__ch__reg_1a51b27c28b48a6f36499e4fabf7d09d18" kind="variable"><name>CURRENT_VALUE</name></member>
+    <member refid="structdw__pwm__timer__ch__reg_1a119ba80dd2594a580dc4acb8c8fd0e9a" kind="variable"><name>CONTROL_REG</name></member>
+    <member refid="structdw__pwm__timer__ch__reg_1ad836d5e042a89ee6004c0e93eae35497" kind="variable"><name>EOI</name></member>
+    <member refid="structdw__pwm__timer__ch__reg_1af019d5eae807533e01e0b1fc9a84ac72" kind="variable"><name>INT_STATUS</name></member>
+  </compound>
+  <compound refid="structdw__pwm__timer__ctrl" kind="struct"><name>dw_pwm_timer_ctrl</name>
+    <member refid="structdw__pwm__timer__ctrl_1a03990a36cb50726c23ed7c837acd8bef" kind="variable"><name>id</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kind="variable"><name>regs</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kind="variable"><name>intno</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1af0e5e48b37466efd4c583b9fe28faca6" kind="variable"><name>ch_num</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1aa604fa905274e7a58da6d867995ac72d" kind="variable"><name>clock</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1a569385643764ecbd8335941ee906d02d" kind="variable"><name>int_handler</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kind="variable"><name>ch_isr</name></member>
+    <member refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kind="variable"><name>mode</name></member>
+  </compound>
+  <compound refid="structdw__pwm__timer__reg" kind="struct"><name>dw_pwm_timer_reg</name>
+    <member refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kind="variable"><name>CTRL</name></member>
+    <member refid="structdw__pwm__timer__reg_1a5a5a76be86206270cd764ae5ec9ac489" kind="variable"><name>PWM_TIMERS_INT_STATUS</name></member>
+    <member refid="structdw__pwm__timer__reg_1a09325d1eebcc8a35e5044866553a20fc" kind="variable"><name>PWM_TIMERS_EOI</name></member>
+    <member refid="structdw__pwm__timer__reg_1a519dd6b359004456bf0e70f04abca0bb" kind="variable"><name>PWM_TIMERS_RAWINT_STATUS</name></member>
+    <member refid="structdw__pwm__timer__reg_1ac735f70b5850a47783b2d78267f5fafb" kind="variable"><name>PWM_TIMERS_COMP_VER</name></member>
+    <member refid="structdw__pwm__timer__reg_1a67b2f97f920f45230095d43f592cccbe" kind="variable"><name>LOAD_COUNT2</name></member>
   </compound>
   <compound refid="structdw__sdio__ctrl" kind="struct"><name>dw_sdio_ctrl</name>
     <member refid="structdw__sdio__ctrl_1a87d43f937618fa1fd74828dfca3f5ca4" kind="variable"><name>reg_base</name></member>
@@ -4830,6 +4881,32 @@
     <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaf4d73821b689e641fe3bea3c1ee3666d" kind="function"><name>io_arduino_config_uart</name></member>
     <member refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga89a57c39917f80eb6379d0d353780729" kind="function"><name>io_arduino_config_i2c</name></member>
   </compound>
+  <compound refid="dev__pwm__timer_8h" kind="file"><name>dev_pwm_timer.h</name>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gacd4dd0179fd19be60dd7835ca95c02d8" kind="define"><name>PWM_TIMER_CMD_SET_CFG</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga06f2b83935013182f86896e4c259c35b" kind="define"><name>PWM_TIMER_CMD_GET_CFG</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaa8b0ba08914838e2e2a99e7f468fe058" kind="define"><name>PWM_TIMER_CMD_ENA_CH</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gacf5b4efaf1ebdd7b965de9bb0bd61760" kind="define"><name>PWM_TIMER_CMD_DIS_CH</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad7d9edeaf04256499793deee13f9006a" kind="define"><name>PWM_TIMER_CMD_SET_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga1a7acd47b7ed55315532d915f7ecf529" kind="define"><name>PWM_TIMER_CMD_GET_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga688110f35e187f869d072ebf8b956f8c" kind="define"><name>PWM_TIMER_CMD_DIS_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga756650cc9232bf7abfdc005b6f5da383" kind="define"><name>PWM_TIMER_CMD_ENA_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga7ad4d8634ea972bfafe4a6517c5a81f8" kind="enum"><name>dev_pwm_timer_mode</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8ae6d703585a9f1825b10e2469e1a238c7" kind="enumvalue"><name>DEV_PWM_TIMER_MODE_CLOSE</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" kind="enumvalue"><name>DEV_PWM_TIMER_MODE_TIMER</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" kind="enumvalue"><name>DEV_PWM_TIMER_MODE_PWM</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga8db6fd35a0475f738f2afa833bcb69d5" kind="typedef"><name>DEV_PWM_TIMER_HANDLER</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf32b115ba79681bb465cc0ff675e09e9" kind="typedef"><name>DEV_PWM_TIMER_CH_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4fcac9725a7617b75cfe6575efbe87de" kind="typedef"><name>DEV_PWM_TIMER_CH_ISR_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga40c69fe80f0bbdce9278565c5f87c41e" kind="typedef"><name>DEV_PWM_TIMER_MODE</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaea335b179d1ae9b8153a8ccbdb728916" kind="typedef"><name>DEV_PWM_TIMER_MODE_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf911b90bc5d8d3f9be02509358ef0dec" kind="typedef"><name>DEV_PWM_TIMER_CFG</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad2426282166ba4bed5d80ac897493c29" kind="typedef"><name>DEV_PWM_TIMER_CFG_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaabe67107db642e3d3038647a0d14cc89" kind="typedef"><name>DEV_PWM_TIMER_INFO</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga9940e72a57bdb157210298c7d4ed0744" kind="typedef"><name>DEV_PWM_TIMER_INFO_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad0702db577c4ff3e528c53a9b9175e92" kind="typedef"><name>DEV_PWM_TIMER</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad0c2d2708d97bea0800b17278df08609" kind="typedef"><name>DEV_PWM_TIMER_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaeb19d9401495701d33ea770ec122cfd5" kind="function"><name>pwm_timer_get_dev</name></member>
+  </compound>
   <compound refid="dev__sdio_8h" kind="file"><name>dev_sdio.h</name>
     <member refid="dev__sdio_8h_1af7578a8dfc850f913f87c3854cddafc3" kind="define"><name>SDIO_CMD_SET_BUS_WIDTH</name></member>
     <member refid="dev__sdio_8h_1a51f2557c02f287d6cabb37bd39e98f6f" kind="define"><name>SDIO_CMD_SET_BUS_FREQ</name></member>
@@ -5905,6 +5982,67 @@
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___d_w___i_i_c___o_b_j_1ga2e36257b25f1a40cbaf5f0e1c6cd1bff" kind="define"><name>USE_DW_IIC_1</name></member>
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___d_w___i_i_c___o_b_j_1ga109b45ec9cd2307ae19371455b6abb37" kind="define"><name>USE_DW_IIC_2</name></member>
     <member refid="group___b_o_a_r_d___h_s_d_k___d_r_v___d_w___i_i_c___o_b_j_1gaab099b120feacae6d8ca167725b9ad5f" kind="function"><name>dw_iic_all_install</name></member>
+  </compound>
+  <compound refid="dw__pwm__timer_8c" kind="file"><name>dw_pwm_timer.c</name>
+    <member refid="dw__pwm__timer_8c_1a57075d6811bf99b8efd5d617dc02071d" kind="define"><name>DW_PWM_TIMER_CHECK_EXP</name></member>
+    <member refid="dw__pwm__timer_8c_1aab4c30daed19037e0f17b943ece4f797" kind="define"><name>VALID_CHK_PWM_TIMER_INFO_OBJECT</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga4955875ceff7fb924599b99ddd245e90" kind="function"><name>dw_pwm_timer_int_read_status</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga73f39b23b1d0934cf2a75d764188d515" kind="function"><name>dw_pwm_timer_timer_enable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga345cc17bcfd335aedca1ce8b7faf5bd3" kind="function"><name>dw_pwm_timer_timer_disable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gaaf0b139add593a2ffb45c9c0f66500be" kind="function"><name>dw_pwm_timer_pwm_enable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gafb6e1592e9df678f72b2cd1be3b5def9" kind="function"><name>dw_pwm_timer_pwm_disable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga66ae97ac44d9c837aeead8c1ee2577bb" kind="function"><name>dw_pwm_timer_count_set</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga39bbff41dbb9d3de48050285d500af03" kind="function"><name>dw_pwm_timer_count_get</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gab222d515b5372f6e2b421e621d75ad95" kind="function"><name>dw_pwm_timer_count2_set</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gaeb121c03e379680dadc1a42744a66dbe" kind="function"><name>dw_pwm_timer_count2_get</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga6146e898df284e65c60ce9350780b77a" kind="function"><name>dw_pwm_timer_int_clear_all</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga229e73613a78137691ccc3a754438c78" kind="function"><name>dw_pwm_timer_int_clear</name></member>
+    <member refid="dw__pwm__timer_8c_1abf2b866d8aaac40908b3372ae897b305" kind="function"><name>dw_pwm_timer_open</name></member>
+    <member refid="dw__pwm__timer_8c_1a57ee00e89584d1d5fa12c59f91ea709e" kind="function"><name>dw_pwm_timer_close</name></member>
+    <member refid="dw__pwm__timer_8c_1a1e7bea71974c2210e61595eef2891152" kind="function"><name>dw_pwm_timer_read</name></member>
+    <member refid="dw__pwm__timer_8c_1a62bfd755bd055a3653deb4ce23fe31e5" kind="function"><name>dw_pwm_timer_write</name></member>
+    <member refid="dw__pwm__timer_8c_1ac8c29094e2ce2db6cd8d7dcda5603ae1" kind="function"><name>dw_pwm_timer_control</name></member>
+    <member refid="dw__pwm__timer_8c_1a55d0d88dd401fe63458633160d4e0744" kind="function"><name>dw_pwm_timer_isr_handler</name></member>
+  </compound>
+  <compound refid="dw__pwm__timer_8h" kind="file"><name>dw_pwm_timer.h</name>
+    <member refid="dw__pwm__timer_8h_1a49627b4c5d4940e5dcdb38160f642565" kind="typedef"><name>CH_CTRL</name></member>
+    <member refid="dw__pwm__timer_8h_1a3dfb7ae63727f522daf169352ad65ad7" kind="typedef"><name>DW_PWM_TIMER_REG</name></member>
+    <member refid="dw__pwm__timer_8h_1a42ab2322429789b034397c18f7ff4bc4" kind="typedef"><name>DW_PWM_TIMER_REG_PTR</name></member>
+    <member refid="dw__pwm__timer_8h_1abf2b866d8aaac40908b3372ae897b305" kind="function"><name>dw_pwm_timer_open</name></member>
+    <member refid="dw__pwm__timer_8h_1a57ee00e89584d1d5fa12c59f91ea709e" kind="function"><name>dw_pwm_timer_close</name></member>
+    <member refid="dw__pwm__timer_8h_1a1e7bea71974c2210e61595eef2891152" kind="function"><name>dw_pwm_timer_read</name></member>
+    <member refid="dw__pwm__timer_8h_1a62bfd755bd055a3653deb4ce23fe31e5" kind="function"><name>dw_pwm_timer_write</name></member>
+    <member refid="dw__pwm__timer_8h_1abfd14db51539df2ec35a4e8f1b3ccafd" kind="function"><name>dw_pwm_timer_control</name></member>
+    <member refid="dw__pwm__timer_8h_1a55d0d88dd401fe63458633160d4e0744" kind="function"><name>dw_pwm_timer_isr_handler</name></member>
+    <member refid="dw__pwm__timer_8h_1a384cc309aa779705e9998ea443f319b4" kind="define"><name>DW_PWM_TIMER_CH_MAX_COUNT</name></member>
+    <member refid="dw__pwm__timer_8h_1a807ef6415717b890eb177e2226bddd93" kind="define"><name>DW_PWM_TIMER_INVALID_INTNO</name></member>
+    <member refid="dw__pwm__timer_8h_1a2d88243ff661745ef6b47206197fd4ec" kind="typedef"><name>DW_PWM_TIMER_CH_ISR</name></member>
+    <member refid="dw__pwm__timer_8h_1af8e74793eb2bb45bed92253e365be02e" kind="typedef"><name>DW_PWM_TIMER_CH_ISR_PTR</name></member>
+    <member refid="dw__pwm__timer_8h_1aee1c9566e68f096df06ccab6d6a1f850" kind="typedef"><name>DW_PWM_TIMER_CTRL</name></member>
+    <member refid="dw__pwm__timer_8h_1a3309f2f5b4c4abce92c1768916bd19fb" kind="typedef"><name>DW_PWM_TIMER_CTRL_PTR</name></member>
+  </compound>
+  <compound refid="dw__pwm__timer__obj_8c" kind="file"><name>dw_pwm_timer_obj.c</name>
+    <member refid="dw__pwm__timer__obj_8c_1aecd2cd5eb50ef15455d4856e429246ff" kind="define"><name>PWM_TIMER_0_CH_0_INTNO</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a1efbf71ebffa71dd8b2d9fb0385c6b96" kind="variable"><name>dw_pwm_timer_0</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a4f60827593eaec2dacdd926f3061ee4d" kind="variable"><name>dw_pwm_timer_0_ctrl</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1ab53bd5bc446b707bac59233e8585d179" kind="variable"><name>dw_pwm_timer_0_handler</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1adfe3842f36a2d5046165b7034be11e9f" kind="variable"><name>dw_pwm_timer_0_mode</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1aa15ec941933f48a5c7313e0abe7eb09d" kind="variable"><name>dw_pwm_timer_0_ch_isr</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a2b85851f6d47d6d496be3cc77cf249e2" kind="function"><name>dw_pwm_timer_0_open</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1af5676e4500603a7ec878fe2c11b8dbb0" kind="function"><name>dw_pwm_timer_0_close</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a63023570edde624bb251533e1f4c895a" kind="function"><name>dw_pwm_timer_0_control</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a335b7fefa83ddec2fc7c612c993588b1" kind="function"><name>dw_pwm_timer_0_write</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a65ca3d52e1e03d8d86537d91dbe61e1a" kind="function"><name>dw_pwm_timer_0_read</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a1de2ae900684f733e6c8c51544f747eb" kind="function"><name>dw_pwm_timer_0_isr</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1ad70a3de8bbc98ab1f02c5306dd1bcc28" kind="function"><name>dw_pwm_timer_0_install</name></member>
+    <member refid="dw__pwm__timer__obj_8c_1a1b88b07894e77dfef80089574bceee76" kind="function"><name>dw_pwm_timer_all_install</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaeb19d9401495701d33ea770ec122cfd5" kind="function"><name>pwm_timer_get_dev</name></member>
+  </compound>
+  <compound refid="dw__pwm__timer__obj_8h" kind="file"><name>dw_pwm_timer_obj.h</name>
+    <member refid="dw__pwm__timer__obj_8h_1ae43ba430bef877fde213fa18f8dfc033" kind="define"><name>USE_DW_PWM_TIMER_0</name></member>
+    <member refid="dw__pwm__timer__obj_8h_1a76bf53b7e1194faff56d8163a6a52dd5" kind="define"><name>DW_PWM_TIMER_0_ID</name></member>
+    <member refid="dw__pwm__timer__obj_8h_1ab183cc544586ebc56b4b67c2e080ebac" kind="define"><name>DW_PWM_TIMER_0_CH_MAX_COUNT</name></member>
+    <member refid="dw__pwm__timer__obj_8h_1aeb19d9401495701d33ea770ec122cfd5" kind="function"><name>pwm_timer_get_dev</name></member>
   </compound>
   <compound refid="dw__sdio_8c" kind="file"><name>dw_sdio.c</name>
     <member refid="dw__sdio_8c_1ac6afabdc09a49a433ee19d8a9486056d" kind="define"><name>min</name></member>
@@ -10490,6 +10628,7 @@
     <member refid="sysconf_8h_1a95596e2de4d5dae5c9003d2becb34530" kind="function"><name>pll_conf_reg</name></member>
     <member refid="sysconf_8h_1a673957d32354c51a004befa4214a12d3" kind="function"><name>pll_fout_config</name></member>
     <member refid="sysconf_8h_1aa3e2cd4c0424671ed7fa32d8059765b2" kind="function"><name>ahb_clk_divisor</name></member>
+    <member refid="sysconf_8h_1a72f130b6063ea2693137b58465b9d54c" kind="function"><name>apb_clk_divisor</name></member>
     <member refid="sysconf_8h_1adab43e5a5ea4107e3a6d9b1d87e4bbf0" kind="function"><name>ahb_clk_enable</name></member>
     <member refid="sysconf_8h_1ab93df4f44d26ab129f13d6daf7cbd484" kind="function"><name>ahb_clk_disable</name></member>
     <member refid="sysconf_8h_1a764b037b3698ac75bc71fff238a0b121" kind="function"><name>sdio_clk_divisor</name></member>
@@ -11645,6 +11784,19 @@
     <member refid="group___d_e_v_i_c_e___d_w___i_i_c___i_n_f_o_1gacfcefe0d62276098440b81c0216b0466" kind="define"><name>DW_IIC_MASTER_SUPPORTED</name></member>
     <member refid="group___d_e_v_i_c_e___d_w___i_i_c___i_n_f_o_1ga857d13cb0b37e0aa5efdfd886f5d859f" kind="define"><name>DW_IIC_SLAVE_SUPPORTED</name></member>
     <member refid="group___d_e_v_i_c_e___d_w___i_i_c___i_n_f_o_1gaadca31a022beb763a4e256c264f6bb2f" kind="define"><name>DW_IIC_BOTH_SUPPORTED</name></member>
+  </compound>
+  <compound refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c" kind="group"><name>DEVICE_DW_PWM_TIMER_STATIC</name>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga4955875ceff7fb924599b99ddd245e90" kind="function"><name>dw_pwm_timer_int_read_status</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga73f39b23b1d0934cf2a75d764188d515" kind="function"><name>dw_pwm_timer_timer_enable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga345cc17bcfd335aedca1ce8b7faf5bd3" kind="function"><name>dw_pwm_timer_timer_disable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gaaf0b139add593a2ffb45c9c0f66500be" kind="function"><name>dw_pwm_timer_pwm_enable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gafb6e1592e9df678f72b2cd1be3b5def9" kind="function"><name>dw_pwm_timer_pwm_disable</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga66ae97ac44d9c837aeead8c1ee2577bb" kind="function"><name>dw_pwm_timer_count_set</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga39bbff41dbb9d3de48050285d500af03" kind="function"><name>dw_pwm_timer_count_get</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gab222d515b5372f6e2b421e621d75ad95" kind="function"><name>dw_pwm_timer_count2_set</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1gaeb121c03e379680dadc1a42744a66dbe" kind="function"><name>dw_pwm_timer_count2_get</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga6146e898df284e65c60ce9350780b77a" kind="function"><name>dw_pwm_timer_int_clear_all</name></member>
+    <member refid="group___d_e_v_i_c_e___d_w___p_w_m___t_i_m_e_r___s_t_a_t_i_c_1ga229e73613a78137691ccc3a754438c78" kind="function"><name>dw_pwm_timer_int_clear</name></member>
   </compound>
   <compound refid="group___d_e_v_i_c_e___d_w___s_p_i___d_e_f_i_n_e_s" kind="group"><name>DEVICE_DW_SPI_DEFINES</name>
     <member refid="group___d_e_v_i_c_e___d_w___s_p_i___d_e_f_i_n_e_s_1ga664eb85492db99f8ce76407631a6980e" kind="define"><name>DW_SPI_CHECK_EXP</name></member>
@@ -13795,6 +13947,48 @@
   </compound>
   <compound refid="group___o_s___h_a_l___i_n_c" kind="group"><name>OS_HAL_INC</name>
   </compound>
+  <compound refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d" kind="group"><name>DEVICE_HAL_PWM_TIMER_CTRLCMD</name>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga7ad4d8634ea972bfafe4a6517c5a81f8" kind="enum"><name>dev_pwm_timer_mode</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8ae6d703585a9f1825b10e2469e1a238c7" kind="enumvalue"><name>DEV_PWM_TIMER_MODE_CLOSE</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" kind="enumvalue"><name>DEV_PWM_TIMER_MODE_TIMER</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" kind="enumvalue"><name>DEV_PWM_TIMER_MODE_PWM</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga8db6fd35a0475f738f2afa833bcb69d5" kind="typedef"><name>DEV_PWM_TIMER_HANDLER</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf32b115ba79681bb465cc0ff675e09e9" kind="typedef"><name>DEV_PWM_TIMER_CH_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4fcac9725a7617b75cfe6575efbe87de" kind="typedef"><name>DEV_PWM_TIMER_CH_ISR_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga40c69fe80f0bbdce9278565c5f87c41e" kind="typedef"><name>DEV_PWM_TIMER_MODE</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaea335b179d1ae9b8153a8ccbdb728916" kind="typedef"><name>DEV_PWM_TIMER_MODE_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf911b90bc5d8d3f9be02509358ef0dec" kind="typedef"><name>DEV_PWM_TIMER_CFG</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad2426282166ba4bed5d80ac897493c29" kind="typedef"><name>DEV_PWM_TIMER_CFG_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaabe67107db642e3d3038647a0d14cc89" kind="typedef"><name>DEV_PWM_TIMER_INFO</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga9940e72a57bdb157210298c7d4ed0744" kind="typedef"><name>DEV_PWM_TIMER_INFO_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad0702db577c4ff3e528c53a9b9175e92" kind="typedef"><name>DEV_PWM_TIMER</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad0c2d2708d97bea0800b17278df08609" kind="typedef"><name>DEV_PWM_TIMER_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga3d269ca29ed5a30cb66b9252baf1e277" kind="variable"><name>int_ch_num</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga5306d8d9360cfacc4d156c8acffa2f1f" kind="variable"><name>int_ch_handler</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaebfa4bf66433ec5f223c760d4a053a1d" kind="variable"><name>mode</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga01ee89b6503597df05ac7e04cc7f612b" kind="variable"><name>count_low</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga95da444b025deb0688e62a65f70bce12" kind="variable"><name>count_high</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaa19049c4070f58d5d16dcccf648aa80d" kind="variable"><name>isr_hander</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gadad83f1e633430752e39973f5dc45979" kind="variable"><name>pwm_timer_ctrl</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gae51c36b39f401534fae00f2e28ff436d" kind="variable"><name>opn_cnt</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaf7fb260666298ab6f4110b1c1209eb4b" kind="variable"><name>pwm_timer_info</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4e262cd5ec22e28b615fb21aae4776ce" kind="variable"><name>pwm_timer_open</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga06ca58b15c125ab85a5467a16b946158" kind="variable"><name>pwm_timer_close</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga4774713e05dfa69c9105e506c89ebbff" kind="variable"><name>pwm_timer_control</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaca656043f520755819f02909a38f50e5" kind="variable"><name>pwm_timer_write</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaac1fd059387788ba98b9969860d35cb6" kind="variable"><name>pwm_timer_read</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaeb19d9401495701d33ea770ec122cfd5" kind="function"><name>pwm_timer_get_dev</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gacd4dd0179fd19be60dd7835ca95c02d8" kind="define"><name>PWM_TIMER_CMD_SET_CFG</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga06f2b83935013182f86896e4c259c35b" kind="define"><name>PWM_TIMER_CMD_GET_CFG</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gaa8b0ba08914838e2e2a99e7f468fe058" kind="define"><name>PWM_TIMER_CMD_ENA_CH</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gacf5b4efaf1ebdd7b965de9bb0bd61760" kind="define"><name>PWM_TIMER_CMD_DIS_CH</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1gad7d9edeaf04256499793deee13f9006a" kind="define"><name>PWM_TIMER_CMD_SET_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga1a7acd47b7ed55315532d915f7ecf529" kind="define"><name>PWM_TIMER_CMD_GET_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga688110f35e187f869d072ebf8b956f8c" kind="define"><name>PWM_TIMER_CMD_DIS_ISR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d_1ga756650cc9232bf7abfdc005b6f5da383" kind="define"><name>PWM_TIMER_CMD_ENA_ISR</name></member>
+  </compound>
+  <compound refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r" kind="group"><name>DEVICE_HAL_PWM_TIMER</name>
+  </compound>
   <compound refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e" kind="group"><name>DEVICE_HAL_SPI_CLK_MODE</name>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e_1gab7e00794f1fac3fdb4d4bf9fd0244c7b" kind="enum"><name>spi_clk_mode</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e_1ggab7e00794f1fac3fdb4d4bf9fd0244c7ba60ae806d0aef91816b6f428b70f6ac53" kind="enumvalue"><name>SPI_CPOL_0_CPHA_0</name></member>
@@ -14558,6 +14752,10 @@
   <compound refid="dir_946890b5ad17938803d7490eac11919c" kind="dir"><name>pmwifi</name>
   </compound>
   <compound refid="dir_4ea780820fad0c7540fb25e901f070f0" kind="dir"><name>pwm</name>
+  </compound>
+  <compound refid="dir_0cdc1c6ac5d8a5926372cc321a8f5229" kind="dir"><name>pwm_timer</name>
+  </compound>
+  <compound refid="dir_20c994b06e4a67994cd4ddf079a2ee22" kind="dir"><name>pwm_timer</name>
   </compound>
   <compound refid="dir_146761d312ccbc8fff401bdbbd0df888" kind="dir"><name>sdcard</name>
   </compound>

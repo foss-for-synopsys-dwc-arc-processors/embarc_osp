@@ -5,6 +5,7 @@
     <includes refid="io__config_8h" local="yes">io_config.h</includes>
     <includes refid="apexextensions_8h" local="yes">apexextensions.h</includes>
     <includedby refid="dw__i2s__obj_8c" local="yes">dw_i2s_obj.c</includedby>
+    <includedby refid="dw__pwm__timer__obj_8c" local="yes">dw_pwm_timer_obj.c</includedby>
     <includedby refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c" local="yes">dw_sdio_obj.c</includedby>
     <includedby refid="dfss__gpio__obj_8c" local="yes">dfss_gpio_obj.c</includedby>
     <includedby refid="dfss__iic__obj_8c" local="yes">dfss_iic_obj.c</includedby>
@@ -13,79 +14,85 @@
     <includedby refid="sysconf_8c" local="yes">sysconf.c</includedby>
     <includedby refid="iotdk_8h" local="yes">iotdk.h</includedby>
     <incdepgraph>
-      <node id="4273">
+      <node id="4387">
         <label>io_config.h</label>
         <link refid="io__config_8h_source"/>
       </node>
-      <node id="4272">
+      <node id="4386">
         <label>iotdk_hardware.h</label>
         <link refid="iotdk_hardware.h"/>
-        <childnode refid="4273" relation="include">
+        <childnode refid="4387" relation="include">
         </childnode>
-        <childnode refid="4274" relation="include">
+        <childnode refid="4388" relation="include">
         </childnode>
       </node>
-      <node id="4274">
+      <node id="4388">
         <label>apexextensions.h</label>
         <link refid="apexextensions_8h_source"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4278">
+      <node id="4393">
         <label>dfss_gpio_obj.c</label>
         <link refid="dfss__gpio__obj_8c_source"/>
       </node>
-      <node id="4279">
+      <node id="4394">
         <label>dfss_iic_obj.c</label>
         <link refid="dfss__iic__obj_8c_source"/>
       </node>
-      <node id="4275">
+      <node id="4389">
         <label>iotdk_hardware.h</label>
         <link refid="iotdk_hardware.h"/>
-        <childnode refid="4276" relation="include">
+        <childnode refid="4390" relation="include">
         </childnode>
-        <childnode refid="4277" relation="include">
+        <childnode refid="4391" relation="include">
         </childnode>
-        <childnode refid="4278" relation="include">
+        <childnode refid="4392" relation="include">
         </childnode>
-        <childnode refid="4279" relation="include">
+        <childnode refid="4393" relation="include">
         </childnode>
-        <childnode refid="4280" relation="include">
+        <childnode refid="4394" relation="include">
         </childnode>
-        <childnode refid="4281" relation="include">
+        <childnode refid="4395" relation="include">
         </childnode>
-        <childnode refid="4282" relation="include">
+        <childnode refid="4396" relation="include">
         </childnode>
-        <childnode refid="4283" relation="include">
+        <childnode refid="4397" relation="include">
+        </childnode>
+        <childnode refid="4398" relation="include">
         </childnode>
       </node>
-      <node id="4282">
+      <node id="4397">
         <label>sysconf.c</label>
         <link refid="sysconf_8c_source"/>
       </node>
-      <node id="4276">
+      <node id="4390">
         <label>dw_i2s_obj.c</label>
         <link refid="dw__i2s__obj_8c_source"/>
       </node>
-      <node id="4283">
+      <node id="4398">
         <label>iotdk.h</label>
         <link refid="iotdk_8h"/>
-        <childnode refid="4284" relation="include">
+        <childnode refid="4399" relation="include">
         </childnode>
       </node>
-      <node id="4280">
+      <node id="4395">
         <label>dfss_spi_obj.c</label>
         <link refid="dfss__spi__obj_8c_source"/>
       </node>
-      <node id="4281">
+      <node id="4396">
         <label>dfss_uart_obj.c</label>
         <link refid="dfss__uart__obj_8c_source"/>
       </node>
-      <node id="4284">
+      <node id="4399">
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="4277">
+      <node id="4391">
+        <label>dw_pwm_timer_obj.c</label>
+        <link refid="dw__pwm__timer__obj_8c_source"/>
+      </node>
+      <node id="4392">
         <label>dw_sdio_obj.c</label>
         <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
@@ -115,7 +122,7 @@
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac28b2cb512e0f8ef779bc567e8a1489b" prot="public" static="no">
         <name>BOARD_DFSS_IO_CLK</name>
-        <initializer>BOARD_REF_CLK		/* iotdk DFSS IO peripherals clock */</initializer>
+        <initializer>(BOARD_REF_CLK)		/* iotdk DFSS IO peripherals clock */</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -126,7 +133,7 @@
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gac83fcd41e666fe50b691c3dbf6d10786" prot="public" static="no">
         <name>BOARD_DFSS_AHB_CLK</name>
-        <initializer>BOARD_DFSS_CORE_CLK	/* iotdk top-level AHB peripherals clock as DFSS */</initializer>
+        <initializer>(BOARD_DFSS_CORE_CLK)	/* iotdk top-level AHB peripherals clock as DFSS */</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -137,7 +144,7 @@
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gab49d88ff09a910410194be5c3db3b1dc" prot="public" static="no">
         <name>BOARD_DFSS_APB_CLK</name>
-        <initializer>BOARD_REF_CLK		/* iotdk top-level APB peripherals clock as DFSS */</initializer>
+        <initializer>(BOARD_DFSS_CORE_CLK)		/* iotdk top-level APB peripherals clock as DFSS */</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -597,9 +604,9 @@
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>System<sp/>clock<sp/>domains<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BOARD_REF_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(16000000U)</highlight></codeline>
 <codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_CORE_CLK<sp/><sp/><sp/><sp/><sp/>(144000000U)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>DFSS<sp/>clock<sp/>(including<sp/>ARC<sp/>EM)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_IO_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_REF_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>DFSS<sp/>IO<sp/>peripherals<sp/>clock<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_AHB_CLK<sp/><sp/><sp/><sp/><sp/><sp/>BOARD_DFSS_CORE_CLK<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>AHB<sp/>peripherals<sp/>clock<sp/>as<sp/>DFSS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_APB_CLK<sp/><sp/><sp/><sp/><sp/><sp/>BOARD_REF_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>APB<sp/>peripherals<sp/>clock<sp/>as<sp/>DFSS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_IO_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_REF_CLK)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>DFSS<sp/>IO<sp/>peripherals<sp/>clock<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_AHB_CLK<sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_CORE_CLK)<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>AHB<sp/>peripherals<sp/>clock<sp/>as<sp/>DFSS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_APB_CLK<sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_CORE_CLK)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>APB<sp/>peripherals<sp/>clock<sp/>as<sp/>DFSS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_APB_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_APB_CLK)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>APB<sp/>peripherals<sp/>clock<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SPI_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(100000000U)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>SPI<sp/>clock*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
