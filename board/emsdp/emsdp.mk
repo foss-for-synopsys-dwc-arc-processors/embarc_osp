@@ -59,11 +59,7 @@ COMMON_COMPILE_PREREQUISITES += $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/core_
 include $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/core_compiler.mk
 
 ## Board Related Settings
-ifeq ($(VALID_BD_VER), rev1)
-OPENOCD_CFG_FILE = $(OPENOCD_SCRIPT_ROOT)/board/snps_emsdp_v1.cfg
-else
-OPENOCD_CFG_FILE = $(OPENOCD_SCRIPT_ROOT)/board/snps_emsdp_v2.cfg
-endif
+OPENOCD_CFG_FILE = $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/openocd/snps_emsdp.cfg
 OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 #BOARD_EMSDP_DEFINES += -DBOARD_SPI_FREQ=800000
 
