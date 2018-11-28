@@ -164,6 +164,7 @@ extern void pll_conf_reg(uint32_t val);
 extern int32_t pll_fout_config(uint32_t freq);
 
 extern void ahb_clk_divisor(uint8_t div);
+extern void apb_clk_divisor(uint8_t div);
 extern void ahb_clk_enable(uint8_t dev);
 extern void ahb_clk_disable(uint8_t dev);
 extern void sdio_clk_divisor(uint8_t div);
