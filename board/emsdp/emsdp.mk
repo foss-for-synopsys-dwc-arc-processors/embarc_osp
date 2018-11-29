@@ -11,11 +11,11 @@ BOARD_EMSDP_DIR = $(BOARDS_ROOT)/emsdp
 ##
 # board version definition
 # rev1 stands for revision 1
-# When you don't special BD_VER
+# When you don't specify BD_VER
 # in any other place or through make options
 # it will select a proper BD_VER according to your core
 ##
-SUPPORTED_BD_VERS = rev1
+SUPPORTED_BD_VERS = rev1 rev2
 
 ## Select Board Version
 BD_VER ?= rev1

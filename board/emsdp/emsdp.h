@@ -105,7 +105,7 @@
 #define WF_IPADDR_DHCP			(1)
 
 #define WF_HOTSPOT_NAME			"embARC"
-#define WF_HOTSPOT_PASSWD		"1qaz2wsx3edc"
+#define WF_HOTSPOT_PASSWD		"qazwsxedc"
 
 #define WF_ENABLE_MANUAL_SET_MAC	(0)
 
