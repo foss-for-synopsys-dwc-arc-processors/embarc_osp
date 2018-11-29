@@ -92,7 +92,7 @@ static int32_t dfss_i2s_0_control (uint32_t ctrl_cmd, void *param)
 /** DesignWare I2S 0 write */
 static int32_t dfss_i2s_0_write (const void *data, uint32_t len)
 {
-	return ss_i2s_mst_write(&i2s_master_context0, data, len);
+	return ss_i2s_mst_write(&i2s_master_context0, (void *)data, len);
 }
 /** DesignWare I2S 0 interrupt routine */
 static void dfss_i2s_0_tx_cb0(void *param)

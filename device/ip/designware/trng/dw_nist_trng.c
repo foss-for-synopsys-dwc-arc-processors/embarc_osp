@@ -120,8 +120,8 @@ static void _dw_trng_disable_sys_interrupt(DEV_TRNG_INFO_PTR trng_info_ptr){
 
 static int32_t _dw_trng_zeroize(DEV_TRNG_INFO_PTR trng_info_ptr){
 	int32_t ercd = E_OK;
-	DW_TRNG_CTRL_PTR trng_ctrl_ptr = trng_info_ptr->trng_ctrl;
-	DW_TRNG_REG_PTR trng_reg_ptr = (DW_TRNG_REG_PTR) trng_ctrl_ptr->dw_trng_regs;
+	// DW_TRNG_CTRL_PTR trng_ctrl_ptr = trng_info_ptr->trng_ctrl;
+	// DW_TRNG_REG_PTR trng_reg_ptr = (DW_TRNG_REG_PTR) trng_ctrl_ptr->dw_trng_regs;
 	_dw_trng_enable_sys_interrupt(trng_info_ptr);
 	ercd = _dw_trng_cmd(trng_info_ptr, DW_TRNG_CMD_ZEROIZE);
 	return ercd;
@@ -133,7 +133,7 @@ static int32_t _dw_trng_reseed(DEV_TRNG_INFO_PTR trng_info_ptr, uint32_t *nonce_
 
 	if(nonce_buf != NULL){// Nonce Reseed cmd, need to be run 2~3 time with new nonce depending on chosen security algorithm
 		uint8_t i;
-		uint32_t * npa_data_ptr = &(trng_reg_ptr->NPA_DATA0);
+		volatile uint32_t * npa_data_ptr = &(trng_reg_ptr->NPA_DATA0);
 		_dw_trng_wait_till_idle(trng_reg_ptr);
 		for (i=0; i<16; i++){
 			npa_data_ptr[i] = nonce_buf[i];

@@ -142,8 +142,8 @@ static int32_t lwip_wifi_on_connected(DEV_WNIC *wnic_ptr)
 #if WF_IPADDR_DHCP && !NO_SYS   /* use dhcp to get address */
         netif_set_up(wifi_if->netif);
         netif_set_status_callback(wifi_if->netif, lwip_wifi_status_callback);
-        dhcp_start(wifi_if->netif);
         LWIP_DEBUGF(LWIP_DBG_ON, ("\r\nNow start get ip address using DHCP, Please wait about 30s!\r\n"));
+        dhcp_start(wifi_if->netif);
 #else
         netif_set_status_callback(wifi_if->netif, lwip_wifi_status_callback);
         netif_set_up(wifi_if->netif);

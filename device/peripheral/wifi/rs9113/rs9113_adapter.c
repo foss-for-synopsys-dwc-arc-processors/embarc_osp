@@ -39,7 +39,7 @@
 #include "rs9113_adapter.h"
 #include "rsi_driver.h"
 
-#define DBG_LESS
+#define DBG_MORE
 #include "embARC_debug.h"
 #define RS9113_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
@@ -170,7 +170,7 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 
 	//! Task created for Driver task
 	if(driver_task_handle == NULL){
-	rsi_task_create(rsi_wireless_driver_task, "driver_task", RSI_DRIVER_TASK_STACK_SIZE, NULL, RSI_DRIVER_TASK_PRIORITY, &driver_task_handle);
+		rsi_task_create(rsi_wireless_driver_task, "driver_task", RSI_DRIVER_TASK_STACK_SIZE, NULL, RSI_DRIVER_TASK_PRIORITY, &driver_task_handle);
 	}
 
 	//a short delay to wait the device get ready
@@ -372,8 +372,8 @@ int32_t rs9113_get_scan_result(DEV_WNIC_PTR rs9113_wnic, uint32_t index, WNIC_SC
 
 	memcpy(result->bssid, p_scan_result_temp->bssid, WNIC_BSSID_MAX_LEN);
 	memcpy(result->ssid, p_scan_result_temp->ssid, WNIC_SSID_MAX_LEN);
-	result->ssid[WNIC_SSID_MAX_LEN] = '\0'; /* make end of ssid */
-	result->ssidlen = strlen(result->ssid);
+	result->ssid[WNIC_SSID_MAX_LEN-1] = '\0'; /* make end of ssid */
+	result->ssidlen = strlen((char *)result->ssid);
 	switch(p_scan_result_temp->security_mode){
 		case 0://open
 			apConfig_result.ap_cfg.privacy = 0;
@@ -590,6 +590,7 @@ int32_t rs9113_prepare_tx(DEV_WNIC_PTR rs9113_wnic, uint32_t tx_len)
 	rs9113_pbuf.cur_index = 0;
 
 error_exit:
+	dbg_printf(DBG_MORE_INFO, "rs9113_prepare_tx ret %d\r\n", ercd);
 	return ercd;
 }
 
@@ -612,6 +613,7 @@ int32_t rs9113_add_tx_data(DEV_WNIC_PTR rs9113_wnic, uint8_t *p_buf, uint32_t le
 	ercd = len;
 
 error_exit:
+	dbg_printf(DBG_MORE_INFO, "rs9113_add_tx_data ret %d\r\n", ercd);
 	return ercd;
 }
 

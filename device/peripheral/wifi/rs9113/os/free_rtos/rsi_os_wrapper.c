@@ -394,7 +394,9 @@ rsi_error_t rsi_task_create( rsi_task_function_t task_function,uint8_t *task_nam
 
 void rsi_task_destroy(rsi_task_handle_t *task_handle)
 {
+#if ( INCLUDE_vTaskDelete == 1 )
 	vTaskDelete((TaskHandle_t *) task_handle);
+#endif
 }
 
 
