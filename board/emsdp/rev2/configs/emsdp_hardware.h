@@ -49,6 +49,7 @@
 #endif
 
 #define EMSDP_I2C_CLOCK				(EMSDP_REF_CLOCK)
+#define EMSDP_PWM_TIMER_CLOCK		(EMSDP_REF_CLOCK)
 
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)

@@ -30,7 +30,9 @@
 #ifndef _MUX_H_
 #define _MUX_H_
 
+
 #include "embARC_toolchain.h"
+#include "dev_pinmux.h"
 
 #define MUX_SEL0_OFFSET		(0)
 #define MUX_SEL1_OFFSET		(4)

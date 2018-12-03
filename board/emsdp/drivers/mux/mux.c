@@ -27,7 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "dev_pinmux.h"
 #include "mux_hal.h"
 #include "mux.h"
 #include "embARC_error.h"
@@ -172,6 +171,8 @@ int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
 			} else if(type == ARDUINO_PWM){
 				reg |= ARDUINO_CFG1_PWM;
 			} else {
+				return E_NOSPT;
+			}
 			break;
 		case ARDUINO_PIN_4:
 		case ARDUINO_PIN_5:
@@ -180,7 +181,9 @@ int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
 				reg |= ARDUINO_CFG2_GPIO;
 			} else if(type == ARDUINO_PWM){
 				reg |= ARDUINO_CFG2_PWM;
-			}				return E_NOSPT;
+			} else {
+				return E_NOSPT;
+			}
 			break;
 		case ARDUINO_PIN_6:
 		case ARDUINO_PIN_7:
@@ -189,7 +192,9 @@ int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
 				reg |= ARDUINO_CFG3_GPIO;
 			} else if(type == ARDUINO_PWM){
 				reg |= ARDUINO_CFG3_PWM;
-			}			}
+			} else {
+				return E_NOSPT;
+			}
 			break;
 		case ARDUINO_PIN_8:
 		case ARDUINO_PIN_9:

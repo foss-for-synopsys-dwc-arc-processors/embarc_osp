@@ -11,4 +11,4 @@
 ##
 CORE ?= em6_scss
 
-ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio designware/sdio designware/trng subsystem/spi subsystem/gpio subsystem/uart subsystem/iic subsystem/i2s
+ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio designware/sdio designware/trng designware/pwm_timer subsystem/spi subsystem/gpio subsystem/uart subsystem/iic subsystem/i2s
