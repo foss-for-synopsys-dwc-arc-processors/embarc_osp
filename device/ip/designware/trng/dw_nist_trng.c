@@ -37,7 +37,7 @@
 
 #ifdef TRNG_VERSION_NIST
 
-#define DBG_MORE
+#define DBG_LESS
 #include "embARC_debug.h"
 
 #define DW_TRNG_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
@@ -146,7 +146,6 @@ static int32_t _dw_trng_reseed(DEV_TRNG_INFO_PTR trng_info_ptr, uint32_t *nonce_
 }
 
 static void _dw_trng_get_rand(DW_TRNG_REG_PTR trng_reg_ptr, uint32_t *data){//read from rand0~3
-//(DW_TRNG_REG_PTR trng_reg_ptr, uint32_t *data)
 	if(data != NULL){
 		data[0] = trng_reg_ptr->RAND0;
 		data[1] = trng_reg_ptr->RAND1;
@@ -226,8 +225,6 @@ int32_t dw_trng_control(DEV_TRNG_PTR trng_obj, uint32_t ctrl_cmd, void *param){
 	DW_TRNG_CHECK_EXP(trng_obj != NULL, E_OBJ);
 	DEV_TRNG_INFO_PTR trng_info_ptr = &trng_obj->trng_info;
 	VALID_CHK_TRNG_INFO_OBJECT(trng_info_ptr);
-	DW_TRNG_CTRL_PTR trng_ctrl_ptr = trng_info_ptr->trng_ctrl;
-	DW_TRNG_REG_PTR trng_reg_ptr = (DW_TRNG_REG_PTR) trng_ctrl_ptr->dw_trng_regs;
 
 	//uint32_t val32;	/** to receive unsigned int value */
 
@@ -266,17 +263,12 @@ int32_t dw_trng_read(DEV_TRNG_PTR trng_obj, uint32_t *data_buf){
 	VALID_CHK_TRNG_INFO_OBJECT(trng_info_ptr);
 	DW_TRNG_CTRL_PTR trng_ctrl_ptr = trng_info_ptr->trng_ctrl;
 	DW_TRNG_REG_PTR trng_reg_ptr = (DW_TRNG_REG_PTR) trng_ctrl_ptr->dw_trng_regs;
-	DW_TRNG_CHECK_EXP(data_buf != NULL, E_PAR);
 
 	_dw_trng_cmd(trng_info_ptr, DW_TRNG_CMD_GEN_RANDOM);
-	_dw_trng_wait_till_idle(trng_reg_ptr);
-	_dw_trng_get_rand(trng_reg_ptr, data_buf);
-	//TODO: callback?
-	// while(!_dw_trng_get_istat_rand_rdy(trng_reg_ptr)){
-	// 	//do nothing, wait until random numbers are ready
-	// }
-	// _dw_trng_clear_istat_rand_rdy(trng_reg_ptr);//clear ISTAT.RAND_RDY bit to acknowledge
-	// _dw_trng_get_rand(trng_reg_ptr, data_buf);
+	if(data_buf != NULL){
+		_dw_trng_wait_till_idle(trng_reg_ptr);
+		_dw_trng_get_rand(trng_reg_ptr, data_buf);
+	}
 
 error_exit:
 	return ercd;
@@ -316,6 +308,7 @@ void dw_trng_isr(DEV_TRNG_PTR trng_obj, void *ptr){
 		dbg_printf(DBG_MORE_INFO, "done");
 		if(trng_reg_ptr->stat.last_cmd == DW_TRNG_CMD_GEN_RANDOM){
 			dbg_printf(DBG_MORE_INFO, " --- GEN RANDOM done");
+			trng_info_ptr->byte_generated += 4;//TODO: once too many bytes have been generated, prompt to reseed
 			_dw_iic_mst_int_read(trng_obj);
 		}
 	}

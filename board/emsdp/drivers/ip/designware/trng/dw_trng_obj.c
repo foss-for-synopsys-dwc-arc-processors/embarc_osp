@@ -76,6 +76,8 @@ static void dw_trng_0_install(void){
 	/** trng info init */
 	dw_trng_info_ptr->trng_ctrl = (void *)dw_trng_ctrl_ptr;
 	dw_trng_info_ptr->opn_cnt = 0;
+	dw_trng_info_ptr->length = 4;//default output length is 4 bytes
+	dw_trng_info_ptr->byte_generated = 0;
 
 	/* trng ctrl init */
 	/* Variables which should be set during object implementation */

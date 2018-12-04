@@ -1,4 +1,4 @@
-.. _board_emsk:
+.. _board_emsdp:
 
 ARC EM Software Development Platform
 ====================================
@@ -118,7 +118,7 @@ You may also skip this step if you are using default settings.
 .. note:: Learn more about programming FPGA device in `ARC_EM_SDP_UserGuide`
 
 
-Run Yout First Program
+Run Your First Program
 ^^^^^^^^^^^^^^^^^^^^^^
 By setting up the board, you are now ready to run your first program on ARC EM SDP.
 please refer to example `example_blinky` for further details. Build and download the example using either MetaWare or GNU. The command is shown below:
