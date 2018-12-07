@@ -11,7 +11,7 @@ VALID_CORE = $(call check_item_exist, $(CORE), $(SUPPORTED_CORES))
 
 BOARD_CORE_DIR = $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/$(VALID_CORE)
 
-ONCHIP_IP_LIST ?= designware/spi designware/uart designware/gpio designware/sdio designware/trng designware/pwm_timer subsystem/spi subsystem/gpio subsystem/uart subsystem/iic subsystem/i2s
+ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio designware/sdio designware/trng designware/pwm_timer subsystem/spi subsystem/gpio subsystem/uart subsystem/iic subsystem/i2s
 
 ## Check TCF file existence
 ifneq ($(TCFFILE_IS_VALID),1)
