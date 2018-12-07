@@ -18,7 +18,7 @@ BOARD_EMSDP_DIR = $(BOARDS_ROOT)/emsdp
 SUPPORTED_BD_VERS = rev1 rev2
 
 ## Select Board Version
-BD_VER ?= rev1
+BD_VER ?= rev2
 
 override BD_VER := $(strip $(BD_VER))
 
@@ -59,9 +59,8 @@ COMMON_COMPILE_PREREQUISITES += $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/core_
 include $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/core_compiler.mk
 
 ## Board Related Settings
-OPENOCD_CFG_FILE = $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/openocd/snps_emsdp.cfg
+OPENOCD_CFG_FILE = $(BOARD_EMSDP_DIR)/openocd/snps_emsdp.cfg
 OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
-#BOARD_EMSDP_DEFINES += -DBOARD_SPI_FREQ=800000
 
 
 ##

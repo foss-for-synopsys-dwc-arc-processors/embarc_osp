@@ -1,5 +1,6 @@
 ## Current Supported Core Configurations
-SUPPORTED_CORES := em11d_dfss em6_scss em7d_esp_dfss
+CORE_DIRS = $(sort $(dir $(wildcard $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/*/*.h)))
+SUPPORTED_CORES := $(patsubst $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/%/, %,$(CORE_DIRS))
 
 CORE ?= $(firstword $(SUPPORTED_CORES))
 
@@ -10,16 +11,13 @@ VALID_CORE = $(call check_item_exist, $(CORE), $(SUPPORTED_CORES))
 
 BOARD_CORE_DIR = $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/$(VALID_CORE)
 
-## Core Configuration Folder ##
-CORE_TCF_DIR = $(BOARD_CORE_DIR)/tcf
-CORE_CONFIG_MK = $(BOARD_CORE_DIR)/core_config.mk
-
-include $(CORE_CONFIG_MK)
+ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio designware/sdio designware/trng designware/pwm_timer subsystem/spi subsystem/gpio subsystem/uart subsystem/iic subsystem/i2s
 
 ## Check TCF file existence
 ifneq ($(TCFFILE_IS_VALID),1)
-TCF ?= $(CORE_TCF_DIR)/$(VALID_CORE).tcf
+TCF ?= $(wildcard $(BOARD_CORE_DIR)/*/*.tcf)
 endif
+
 
 ## If CORE is not in SUPPORT_CORES list, then force CORE and VALID_CORE to be TCF filename
 ifeq ($(TCFFILE_IS_VALID),1)
