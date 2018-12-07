@@ -39,7 +39,8 @@ Building and Running
 	$ make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
 
-When the WiFi is connected and CoAP server is running, you may run python code shown below. You may save this code as a .py file and run it from a new cmd console. The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.
+When the WiFi is connected and CoAP server is running, you may run python code shown below.
+The python code uses CoAPthon packet as a CoAP Client and try to get and post resources from server. Please noted that the host IP in python code should be replaced to the ipaddr shown on board uart console before running.
 
 .. code-block:: python
 
@@ -62,6 +63,14 @@ When the WiFi is connected and CoAP server is running, you may run python code s
 	print(response.pretty_print())
 
 	client.stop()
+
+
+You may save this code as a .py file (e.g. ``CoAP_client.py``) and run it from a new cmd console. Here is an example of running the python code at a new cmd console:
+
+.. code-block:: console
+
+	$ cd <py_file_location>
+	$ CoAP_client.py
 
 
 Sample Output

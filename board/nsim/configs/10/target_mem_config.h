@@ -27,6 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
+/**
+ * \file
+ * \ingroup	BOARD_EMSK_COMMON_INIT
+ * \brief	nsim memory resource definitions
+ * \details
+ * - This header file will contain the memory resources on the board
+ * - User can select different region for applications by configuring
+     REGION_ROM and REGION_RAM
+ * - The unit of XXXX_SIZE is Byte
+ */
 
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
@@ -38,9 +48,9 @@
 #endif
 
 /**
- * The unit of XXXX_SIZE is Byte
- * For REGION_ROM, ICCM, EXT_ROM and EXT_RAM are available
- * For REGION_RAM, DCCM and EXT_RAM are available
+ * DO NOT MODIFY THIS PART
+ *
+ * The information of memory devices on the board
  */
 #ifdef ARC_FEATURE_ICCM_PRESENT
 #ifndef ICCM_SIZE
@@ -74,12 +84,37 @@
 #endif
 #endif
 
+/**
+ * The default regions assigned for application to use,
+   by default, each region will use all the space
+   of each memory device
+ * User can config the start address and the size of
+   the regions to limit the application using
+ */
+#ifndef REGION_ICCM_START
+#define REGION_ICCM_START	ICCM_START
+#define REGION_ICCM_SIZE	ICCM_SIZE
+#endif
+
+#ifndef REGION_DCCM_START
+#define REGION_DCCM_START	DCCM_START
+#define REGION_DCCM_SIZE	DCCM_SIZE
+#endif
+
+#define IMAGE_HEAD_SIZE 0x0
+
+/**
+ * The default regions used to generate link script
+ * User can select region by configuring REGION_ROM and REGION_RAM
+ * For REGION_ROM, REGION_ICCM are available
+ * For REGION_RAM, REGION_DCCM are available
+ */
 #ifndef REGION_ROM
-#define REGION_ROM	ICCM
+#define REGION_ROM	REGION_ICCM
 #endif
 
 #ifndef REGION_RAM
-#define REGION_RAM	DCCM
+#define REGION_RAM	REGION_DCCM
 #endif
 
 #endif /* _TARGET_MEM_CONFIG_H_ */

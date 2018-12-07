@@ -33,12 +33,11 @@
 #include "arc_exception.h"
 #define EFLASH_CRTL_BASE 		0xF0009000
 
-#define BOOT_FROM_ON_CHIP_FLASH
-#ifdef BOOT_FROM_ON_CHIP_FLASH
-#define EFLASH_BASE_ADDR		0x00000000
-#else
-#define EFLASH_BASE_ADDR		0x40000000
-#endif
+
+#define EFLASH_BASE_ADDR0		0x00000000
+
+#define EFLASH_BASE_ADDR1		0x40000000
+
 
 
 #define SMIC_EFLASH_SET_LOCK		0
@@ -47,8 +46,8 @@
 #define SMIC_EFLASH_MACRO_ERASE		3
 #define SMIC_EFLASH_GET_INFO		4
 
-#define SMIC_EFLASH_PAGE_SIZE		512
-#define SMIC_EFLASH_PAGE_CNT		512
+#define SMIC_EFLASH_PAGE_SIZE		1024
+#define SMIC_EFLASH_PAGE_CNT		256
 
 #ifdef __cplusplus
 extern "C" {
@@ -78,6 +77,7 @@ typedef struct {
 	E_FMC_LOCK eflash_lock;
 	uint16_t eflash_page_cnt;
 	uint16_t eflash_page_size;
+	uint32_t eflash_base_addr;
 } SMIC_EFLASH_DEF, *SMIC_EFLASH_DEF_PTR;
 
 typedef struct {
@@ -92,6 +92,7 @@ typedef struct {
 		.eflash_lock = FMC_LOCK, \
 		.eflash_page_cnt = SMIC_EFLASH_PAGE_CNT, \
 		.eflash_page_size = SMIC_EFLASH_PAGE_SIZE, \
+		.eflash_base_addr = EFLASH_BASE_ADDR0 \
 	}; \
 	SMIC_EFLASH_DEF_PTR NAME = &__ ## NAME
 
@@ -99,7 +100,9 @@ extern int32_t smic_eflash_open(SMIC_EFLASH_DEF_PTR obj);
 extern int32_t smic_eflash_close(SMIC_EFLASH_DEF_PTR obj);
 extern int32_t smic_eflash_read(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
+extern int32_t smic_eflash_write_nocheck(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, uint8_t *val);
 extern int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *param);
+extern int32_t smic_eflash_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len);
 
 
 #ifdef __cplusplus

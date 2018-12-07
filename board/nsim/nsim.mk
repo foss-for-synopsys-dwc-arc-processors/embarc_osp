@@ -84,6 +84,12 @@ ifneq ($(findstring ntshell, $(MID_SEL)), )
 BOARD_NSIM_CSRCDIR += $(BOARD_NSIM_DIR)/drivers/ntshell
 endif
 
+##
+# set board image information for MCUBoot
+##
+ifneq ($(findstring mcuboot, $(LIB_SEL)), )
+$(error MCUBoot does not support BOARD $(BOARD) now, please check it!)
+endif
 
 BOARD_NSIM_ASMSRCDIR	+= $(BOARD_NSIM_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
 BOARD_NSIM_INCDIR	+= $(BOARD_NSIM_DEV_INCDIR) $(BOARD_CORE_DIR)

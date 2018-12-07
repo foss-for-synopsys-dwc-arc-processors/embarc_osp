@@ -5,6 +5,9 @@ BOARD ?= emsk
 
 LOCATION ?=
 
+# use mcuboot in bootloader
+USE_MCUBOOT ?= 1
+
 ifeq ($(LOCATION), eflash)
 APPL_DEFINES += -DUSE_EFLASH_LOCATION
 endif
@@ -13,13 +16,14 @@ ifeq ($(BOARD), emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420
 endif
 
-# 8 KB stack
-STACKSZ = 8192
+# 16 KB stack
+STACKSZ = 16384
+HEAPSZ = 16384
 ##
 # link script
 #
 
-APPL_DEFINES += -DENABLE_BANNER=0 -DUSE_APPL_MEM_CONFIG
+APPL_DEFINES += -DENABLE_BANNER=0
 
 USE_BOARD_MAIN = 0
 
@@ -30,6 +34,19 @@ EMBARC_ROOT = ../../..
 
 # middlewares
 MID_SEL = common ntshell ihex fatfs parson
+
+ifeq ($(USE_MCUBOOT), 1)
+# middlewares
+MID_SEL += mbedtls
+
+# libraries
+LIB_SEL += mcuboot
+
+# decrease bootloader size
+APPL_DEFINES += -DNTSHELL_USE_CMDS_ARC=0 \
+				-DNTSHELL_USE_CMDS_PERIPHERAL=0 \
+				-D_USE_LFN=0
+endif
 
 # application source dirs
 APPL_CSRC_DIR = .

@@ -52,8 +52,8 @@ static void cmd_flash_help(char *cmd_name, void *extobj)
 		"Write bin file to flash(eflash or bootspi flash)\r\n"
 		"  -h/H/?    Show the help information\r\n"
 		"Examples: \r\n"
-		"  flash -eflash test.bin    Write bin file to eflash\r\n"
-		"  flash -bootspi test.bin    Write bin file to bootspi flash\r\n"
+		"  flash -eflash test.bin   [offset]   Write bin file to eflash\r\n"
+		"  flash -bootspi test.bin  [offset]   Write bin file to bootspi flash\r\n"
 		"  flash -h    Show the help information\r\n", cmd_name);
 
 error_exit:
@@ -70,6 +70,7 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 	int32_t opt;
 	int32_t file_size;
 	uint32_t page_size;
+	uint32_t offset_addr = 0;
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
 	EFLASH_DEFINE(eflash_test, EFLASH_CRTL_BASE);
@@ -90,6 +91,15 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 			goto error_exit;
 		}
 
+		if(argc > 3) {
+			if (xatoi((char **)(&argv[3]), (long *)(&offset_addr)) != 1) {
+				CMD_DEBUG("Please check the go address is valid!\r\n");
+				return E_PAR;
+			}
+		} else {
+			offset_addr = 0;
+		}
+
 		file_size = f_size(&cmd_files[0]);
 
 		if (file_size == -1) {
@@ -103,15 +113,16 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 		smic_eflash_control(eflash_test, SMIC_EFLASH_GET_INFO, (void *)(&eflash_info));
 		page_size = eflash_info.eflash_page_size;
 
-		if (file_size > eflash_info.eflash_page_size * eflash_info.eflash_page_cnt) {
+		if (file_size + offset_addr > eflash_info.eflash_page_size * eflash_info.eflash_page_cnt) {
 			ercd = E_SYS;
-			CMD_DEBUG("filename: %s, file_size = %d > eflash size = %d \r\n", argv[1],
-			          file_size, eflash_info.eflash_page_size * eflash_info.eflash_page_cnt);
+			CMD_DEBUG("filename: %s, file_size = %d > eflash size = %d \r\n", argv[2],
+						file_size +offset_addr, eflash_info.eflash_page_size * eflash_info.eflash_page_cnt);
 			f_close(&cmd_files[0]);
 			smic_eflash_close(eflash_test);
 			goto error_exit;
 		}
-
+		CMD_DEBUG("filename: %s, file_size = %d, offset_addr = 0x%X \r\n", argv[2],
+						file_size, offset_addr);
 		smic_eflash_control(eflash_test, SMIC_EFLASH_MACRO_ERASE, NULL);
 		uint32_t txlen = file_size;
 		int32_t buf_pt=0;
@@ -127,8 +138,8 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 
 			f_lseek(&cmd_files[0], buf_pt);
 			f_read(&cmd_files[0], buffer, send_size, &send_size);
-			smic_eflash_write(eflash_test, buf_pt, send_size, buffer);
-			smic_eflash_read(eflash_test, buf_pt, send_size, buffer_r);
+			smic_eflash_write(eflash_test, buf_pt + offset_addr, send_size, buffer);
+			smic_eflash_read(eflash_test, buf_pt + offset_addr, send_size, buffer_r);
 
 			for (int i = 0; i < send_size; i++) {
 				if (buffer[i] != buffer_r[i]) {
@@ -146,6 +157,7 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 
 		f_close(&cmd_files[0]);
 		smic_eflash_close(eflash_test);
+		CMD_DEBUG("eflash write success !\r\n");
 		return E_OK;
 	} else if (argv[1][0]=='-' && argv[1][1]=='b') {
 		res = f_open(&cmd_files[0], argv[2], FA_READ);
@@ -154,6 +166,15 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 			ercd = E_SYS;
 			fs_put_err(res, extobj);
 			goto error_exit;
+		}
+
+		if(argc > 3) {
+			if (xatoi((char **)(&argv[3]), (long *)(&offset_addr)) != 1) {
+				CMD_DEBUG("Please check the go address is valid!\r\n");
+				return E_PAR;
+			}
+		} else {
+			offset_addr = 0;
 		}
 
 		file_size = f_size(&cmd_files[0]);
@@ -169,16 +190,17 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 		smic_bootspi_control(bootspi_test, SMIC_BOOTSPI_RESET, NULL);
 		page_size = SMIC_BOOTSPI_PAGE_SIZE;
 
-		if (file_size > SMIC_BOOTSPI_BLK_SIZE * SMIC_BOOTSPI_BLKS_PER_CHIP) {
+		if (file_size + offset_addr > SMIC_BOOTSPI_BLK_SIZE * SMIC_BOOTSPI_BLKS_PER_CHIP) {
 			ercd = E_SYS;
-			CMD_DEBUG("filename: %s, file_size = %d > eflash size = %d \r\n", argv[1],
-			          file_size, SMIC_BOOTSPI_BLK_SIZE * SMIC_BOOTSPI_BLKS_PER_CHIP);
+			CMD_DEBUG("filename: %s, file_size = %d > bootspi flash size = %d \r\n", argv[2],
+						file_size, SMIC_BOOTSPI_BLK_SIZE * SMIC_BOOTSPI_BLKS_PER_CHIP);
 			f_close(&cmd_files[0]);
 			smic_bootspi_close(bootspi_test);
 			goto error_exit;
 		}
-
-		smic_bootspi_control(bootspi_test, SMIC_BOOTSPI_CHIP_REASE, NULL);
+		CMD_DEBUG("filename: %s, file_size = %d, offset_addr = 0x%X \r\n", argv[2],
+						file_size, offset_addr);
+		//smic_bootspi_control(bootspi_test, SMIC_BOOTSPI_CHIP_ERASE, NULL);
 		uint32_t txlen = file_size;
 		int32_t buf_pt=0;
 
@@ -193,8 +215,8 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 
 			f_lseek(&cmd_files[0], buf_pt);
 			f_read(&cmd_files[0], buffer, send_size, &send_size);
-			smic_bootspi_write(bootspi_test, buf_pt, send_size, buffer);
-			smic_bootspi_read(bootspi_test, buf_pt, send_size, buffer_r);
+			smic_bootspi_write(bootspi_test, buf_pt + offset_addr, send_size, buffer);
+			smic_bootspi_read(bootspi_test, buf_pt + offset_addr, send_size, buffer_r);
 
 			for (int i = 0; i < send_size; i++) {
 				if (buffer[i] != buffer_r[i]) {
@@ -212,6 +234,7 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 
 		f_close(&cmd_files[0]);
 		smic_bootspi_close(bootspi_test);
+		CMD_DEBUG("bootspi flash write success !\r\n");
 		return E_OK;
 	}
 

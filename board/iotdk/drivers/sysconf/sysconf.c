@@ -46,7 +46,7 @@ typedef struct pll_conf {
 /* why m + 4 is required? from provided source code */
 #define PLL_CONF_VAL(n, m, od) \
 	(((n) << PLLCON_BIT_OFFSET_N) | \
-	((m + 4) << (PLLCON_BIT_OFFSET_M)) | \
+	((m) << (PLLCON_BIT_OFFSET_M)) | \
 	((od) << PLLCON_BIT_OFFSET_OD))
 
 
@@ -94,10 +94,13 @@ void pll_conf_reg(uint32_t val)
 	         & (1 << PLLSTAT_BIT_OFFSET_PLLSTB)));
 
 	sysconf_reg_ptr->CLKSEL = CLKSEL_PLL;
+
+	/* AHB clk divisor = 1, Flash controller clock divider = 2 */
+	sysconf_reg_ptr->AHBCLKDIV = 0x201;
+
 	/* from AHB_CLK_DIVIDER, not from DVFSS&PMC */
 	sysconf_reg_ptr->AHBCLKDIV_SEL |= 1;
-	/* AHB clk divisor = 1 */
-	sysconf_reg_ptr->AHBCLKDIV = 0x1;
+
 }
 
 int32_t pll_fout_config(uint32_t freq)
@@ -378,5 +381,8 @@ void pwm_timer_pause(uint32_t id, uint32_t pause)
 
 void eflash_clk_div(uint8_t div)
 {
-	sysconf_reg_ptr->AHBCLKDIV |= (div << 8);
+	uint32_t val = sysconf_reg_ptr->AHBCLKDIV;
+	val &= (~(7 << 8));
+	val |= (div << 8);
+	sysconf_reg_ptr->AHBCLKDIV = val;
 }
