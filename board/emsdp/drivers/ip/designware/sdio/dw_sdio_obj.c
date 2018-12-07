@@ -92,6 +92,7 @@ static void dw_sdio_0_install(void)
 	dw_sdio_ctrl_ptr->reg_base = (void *) EMSDP_SDIO_BASE;
 	dw_sdio_ctrl_ptr->intno = EMSDP_SDIO_INTR;
 	dw_sdio_ctrl_ptr->ref_clk = 200000000;
+	dw_sdio_ctrl_ptr->fifo_depth = 128;
 
 	dw_sdio_ptr->open = dw_sdio_0_open;
 	dw_sdio_ptr->close = dw_sdio_0_close;
