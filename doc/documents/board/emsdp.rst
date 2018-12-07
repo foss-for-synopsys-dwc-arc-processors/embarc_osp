@@ -70,10 +70,6 @@ The DesignWare ARC EM Software Development Platform contains the following compo
   - Generic Pin Header (52 pins)
 
 
-.. image:: /pic/EMSDP_Block_Diagram.png
-    :alt: EMSDP Block Diagram
-
-
 FPGA
 ^^^^
 
@@ -92,6 +88,9 @@ ARC EM SDP board provides a variety set of peripherals for evaluate and developm
 There are many peripheral devices available, such as SPI, IIC, UART, GPIO.
 Upon these, the ARC EM SDP offers multiple interfaces for audio, USB, micro-SD card, wireless, ADC, motion sensor, etc.
 External hardware modules can also be easily connected to the board though extension interfaces using Pmod Connectors, Arduino, mikro BUS.
+
+.. image:: /pic/emsdp_peripheral_interfaces.jpg
+    :alt: EM SDP Interfaces
 
 Extensions
 ^^^^^^^^^^
@@ -117,6 +116,22 @@ You may also skip this step if you are using default settings.
 
 .. note:: Learn more about programming FPGA device in `ARC_EM_SDP_UserGuide`
 
+Package Preparation
+^^^^^^^^^^^^^^^^^^^
+This section talks about how to add new ARC EM SDP cores into embARC OSP.
+If you are using default cores of ARC EM SDP: *em6_scss*, *em7d_esp_dfss*, and *em11d_dfss*, then you may skip this section.
+
+#. You may download the package from our website. Suppose you want to add a new package called ``em9d_dfss``, your package name would be ``embarc_em9d_dfss.zip``.
+
+#. Download the package and unzip it, you will find four folders: ``/doc``, ``/fpga``, ``/include``, ``/tool_config``. Now create a new folder according to your board revision and package name. In this case *em9d_dfss* is added to *rev2* board, so you should set your directory as this:``/board/emsdp/rev2/configs/em9d_dfss``
+
+#. Copy ``/tool_config`` folder to ``/board/emsdp/rev2/configs/em9d_dfss/tool_config``.
+
+#. Copy all ``/include`` files except ``core_config.h`` to ``/board/emsdp/rev2/configs/em9d_dfss``
+
+#. Rename ``board_emsdp.h`` to ``core_hardware.h``, open the file and delete its contents from line 25 to line 100.
+
+#. You are done importing a new package, build with it to make sure everything is working.
 
 Run Your First Program
 ^^^^^^^^^^^^^^^^^^^^^^
