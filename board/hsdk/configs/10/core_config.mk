@@ -11,6 +11,6 @@
 # CURRENT CORE CONFIGURATION
 # Select the core of HSDK
 ##
-CORE ?= archs38_c0
+CUR_CORE ?= archs38_c0
 ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio \
 		designware/sdio

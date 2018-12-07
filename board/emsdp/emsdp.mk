@@ -35,11 +35,11 @@ TCFFILE_NAME = $(firstword $(basename $(notdir $(TCF))))
 endif
 endif
 
-## If CORE is not in SUPPORTED_BD_VERS list, then force BD_VER and VALID_BD_VER to be rev1
+## If CUR_CORE is not in SUPPORTED_BD_VERS list, then force BD_VER and VALID_BD_VER to be rev2
 ifeq ($(TCFFILE_IS_VALID),1)
 ifeq ($(VALID_BD_VER),)
-override BD_VER := rev1
-override VALID_BD_VER := rev1
+override BD_VER := rev2
+override VALID_BD_VER := rev2
 endif
 endif
 

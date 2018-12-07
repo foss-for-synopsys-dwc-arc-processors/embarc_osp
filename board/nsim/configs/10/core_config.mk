@@ -2,7 +2,7 @@
 # CURRENT CORE CONFIGURATION
 # Select the core configuration loaded into FPGA chip
 ##
-CORE ?= arcem
+CUR_CORE ?= arcem
 
 ##
 # \brief	development board cpu and device running frequency definition(HZ)

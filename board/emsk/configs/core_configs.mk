@@ -15,33 +15,33 @@ ifneq ($(wildcard $(CORE_CONFIG_MK)),)
 COMMON_COMPILE_PREREQUISITES += $(CORE_CONFIG_MK)
 include $(CORE_CONFIG_MK)
 else
-CORE ?= $(firstword $(SUPPORTED_CORES))
+CUR_CORE ?= $(firstword $(SUPPORTED_CORES))
 endif
 
-override CORE := $(strip $(CORE))
+override CUR_CORE := $(strip $(CUR_CORE))
 
 ## Set Valid Core Configuration For Board
-VALID_CORE = $(call check_item_exist, $(CORE), $(SUPPORTED_CORES))
+VALID_CUR_CORE = $(call check_item_exist, $(CUR_CORE), $(SUPPORTED_CORES))
 
 ## Check TCF file existence
 ifneq ($(TCFFILE_IS_VALID),1)
-TCF ?= $(CORE_TCF_DIR)/$(VALID_CORE).tcf
+TCF ?= $(CORE_TCF_DIR)/$(VALID_CUR_CORE).tcf
 endif
 
-## If CORE is not in SUPPORT_CORES list, then force CORE and VALID_CORE to be TCF filename
+## If CUR_CORE is not in SUPPORT_CORES list, then force CUR_CORE and VALID_CUR_CORE to be TCF filename
 ifeq ($(TCFFILE_IS_VALID),1)
-ifeq ($(VALID_CORE),)
-override CORE := $(TCFFILE_NAME)
-override VALID_CORE := $(TCFFILE_NAME)
+ifeq ($(VALID_CUR_CORE),)
+override CUR_CORE := $(TCFFILE_NAME)
+override VALID_CUR_CORE := $(TCFFILE_NAME)
 endif
 endif
 
 ## Check Core Configuration Supported
 ifneq ($(TCFFILE_IS_VALID),1)
-ifeq ($(VALID_CORE),)
+ifeq ($(VALID_CUR_CORE),)
 $(info BOARD $(BOARD)-$(BD_VER) Core Configurations - $(SUPPORTED_CORES) are supported)
-$(error $(CORE) is not supported in $(BOARD)-$(BD_VER), please check it!)
+$(error $(CUR_CORE) is not supported in $(BOARD)-$(BD_VER), please check it!)
 endif
 endif
 
-CORE_DEFINES += -DCURRENT_CORE=$(VALID_CORE)
+CORE_DEFINES += -DCURRENT_CORE=$(VALID_CUR_CORE)

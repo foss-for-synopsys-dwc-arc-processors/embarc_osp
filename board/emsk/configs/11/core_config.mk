@@ -11,5 +11,5 @@
 # CURRENT CORE CONFIGURATION
 # Select the core configuration loaded into FPGA chip
 ##
-CORE ?= arcem6
+CUR_CORE ?= arcem6
 ONCHIP_IP_LIST ?= designware/iic designware/spi designware/uart designware/gpio

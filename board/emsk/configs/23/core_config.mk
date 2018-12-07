@@ -10,7 +10,7 @@
 # CURRENT CORE CONFIGURATION
 # Select the core configuration loaded into FPGA chip
 ##
-CORE ?= arcem7d
+CUR_CORE ?= arcem7d
 
 ## Force uDMA version to be v2
 # For emsk 2.3 the udma controller hardware version is v2
