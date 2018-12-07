@@ -27,7 +27,7 @@ endif
 endif
 
 ## Check Core Configuration Supported
-ifneq ($(TCFFILE_IS_VALID),1)
+ifeq ($(TCFFILE_IS_VALID),1)
 ifeq ($(VALID_CORE),)
 $(info BOARD $(BOARD)-$(BD_VER) Core Configurations - $(SUPPORTED_CORES) are supported)
 $(error $(CORE) is not supported in $(BOARD)-$(BD_VER), please check it!)

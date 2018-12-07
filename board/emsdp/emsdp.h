@@ -68,6 +68,8 @@
 #define BOARD_FLASH_SPI_ID				DW_SPI_1_ID
 #define BOARD_FLASH_SPI_CS				0
 
+#define BOARD_TRNG_ID					DW_TRNG_0_ID
+
 #define BOARD_SYS_TIMER_ID				TIMER_0
 #define BOARD_SYS_TIMER_INTNO			INTNO_TIMER0
 #define BOARD_SYS_TIMER_HZ				(1000)
@@ -143,7 +145,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 extern void board_init(void);
 extern void board_timer_update(uint32_t precision);
