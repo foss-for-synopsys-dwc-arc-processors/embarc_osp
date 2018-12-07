@@ -191,7 +191,7 @@ int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj)
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
 	MPU9250_CHECK_EXP_NORTN(iic_obj != NULL);
 
-	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
+	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_STANDARD);
 
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
 #ifndef MPU9250_USE_DMP
