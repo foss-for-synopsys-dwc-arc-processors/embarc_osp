@@ -73,6 +73,14 @@
 #endif
 #endif
 
+#ifndef EXT_ROM_START
+#define EXT_ROM_START 	0x10000000
+#endif
+
+#ifndef EXT_ROM_SIZE
+#define EXT_ROM_SIZE	0x1000000
+#endif
+
 #ifndef EXT_RAM_START
 #define EXT_RAM_START	0x10000000
 #endif
@@ -81,19 +89,61 @@
 #define EXT_RAM_SIZE	0x1000000
 #endif
 
+/**
+ * The default regions assigned for application to use,
+   by default, each region will use all the space
+   of each memory device
+ * User can config the start address and the size of
+   the regions to limit the application using
+ */
+#ifndef REGION_ICCM_START
+#define REGION_ICCM_START	ICCM_START
+#define REGION_ICCM_SIZE	ICCM_SIZE
+#endif
+
+#ifndef REGION_DCCM_START
+#define REGION_DCCM_START	DCCM_START
+#define REGION_DCCM_SIZE	DCCM_SIZE
+#endif
+
+#ifndef REGION_EXT_RAM_START
+#define REGION_EXT_RAM_START	EXT_RAM_START
+#define REGION_EXT_RAM_SIZE	EXT_RAM_SIZE
+#endif
+
+#ifdef LIB_MCUBOOT
+#error "EMSDP doesnot support MCUBOOT now"
+
+#else /* !defined(LIB_MCUBOOT) */
+
+#ifndef REGION_EXT_ROM_START
+#define REGION_EXT_ROM_START	EXT_ROM_START
+#define REGION_EXT_ROM_SIZE	EXT_ROM_SIZE
+#endif
+
+#define IMAGE_HEAD_SIZE 0x0
+#endif /* LIB_MCUBOOT */
+
+
+/**
+ * The default regions used to generate link script
+ * User can select region by configuring REGION_ROM and REGION_RAM
+ * For REGION_ROM, REGION_ICCM, REGION_EXT_ROM are available
+ * For REGION_RAM, REGION_DCCM and REGION_EXT_RAM are available
+ */
 #ifndef REGION_ROM
 #ifdef ARC_FEATURE_ICACHE_PRESENT
-#define REGION_ROM	EXT_RAM
+#define REGION_ROM	REGION_EXT_ROM
 #else
-#define REGION_ROM	ICCM
+#define REGION_ROM	REGION_ICCM
 #endif
 #endif
 
 #ifndef REGION_RAM
 #ifdef ARC_FEATURE_DCACHE_PRESENT
-#define REGION_RAM	EXT_RAM
+#define REGION_RAM	REGION_EXT_ROM
 #else
-#define REGION_RAM	DCCM
+#define REGION_RAM	REGION_DCCM
 #endif
 #endif
 
