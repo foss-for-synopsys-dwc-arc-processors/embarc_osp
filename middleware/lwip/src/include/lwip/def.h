@@ -34,6 +34,17 @@
  * Author: Adam Dunkels <adam@sics.se>
  *
  */
+
+/**
+ * @defgroup perf Performance measurement
+ * @ingroup sys_layer
+ * All defines related to this section must not be placed in lwipopts.h,
+ * but in arch/perf.h!
+ * Measurement calls made throughout lwip, these can be defined to nothing.
+ * - PERF_START: start measuring something.
+ * - PERF_STOP(x): stop measuring something, and record the result.
+ */
+
 #ifndef LWIP_HDR_DEF_H
 #define LWIP_HDR_DEF_H
 
@@ -57,19 +68,18 @@ extern "C" {
 /* Get the number of entries in an array ('x' must NOT be a pointer!) */
 #define LWIP_ARRAYSIZE(x) (sizeof(x)/sizeof((x)[0]))
 
+/** Create u32_t value from bytes */
+#define LWIP_MAKEU32(a,b,c,d) (((u32_t)((a) & 0xff) << 24) | \
+                               ((u32_t)((b) & 0xff) << 16) | \
+                               ((u32_t)((c) & 0xff) << 8)  | \
+                                (u32_t)((d) & 0xff))
+
 #ifndef NULL
 #ifdef __cplusplus
 #define NULL 0
 #else
 #define NULL ((void *)0)
 #endif
-#endif
-
-/* Endianess-optimized shifting of two u8_t to create one u16_t */
-#if BYTE_ORDER == LITTLE_ENDIAN
-#define LWIP_MAKE_U16(a, b) ((a << 8) | b)
-#else
-#define LWIP_MAKE_U16(a, b) ((b << 8) | a)
 #endif
 
 #if BYTE_ORDER == BIG_ENDIAN
@@ -92,6 +102,18 @@ u32_t lwip_htonl(u32_t x);
 #endif
 #define lwip_ntohl(x) lwip_htonl(x)
 
+/* These macros should be calculated by the preprocessor and are used
+   with compile-time constants only (so that there is no little-endian
+   overhead at runtime). */
+#define PP_HTONS(x) ((u16_t)((((x) & (u16_t)0x00ffU) << 8) | (((x) & (u16_t)0xff00U) >> 8)))
+#define PP_NTOHS(x) PP_HTONS(x)
+#define PP_HTONL(x) ((((x) & (u32_t)0x000000ffUL) << 24) | \
+                     (((x) & (u32_t)0x0000ff00UL) <<  8) | \
+                     (((x) & (u32_t)0x00ff0000UL) >>  8) | \
+                     (((x) & (u32_t)0xff000000UL) >> 24))
+#define PP_NTOHL(x) PP_HTONL(x)
+#endif /* BYTE_ORDER == BIG_ENDIAN */
+
 /* Provide usual function names as macros for users, but this can be turned off */
 #ifndef LWIP_DONT_PROVIDE_BYTEORDER_FUNCTIONS
 #define htons(x) lwip_htons(x)
@@ -99,19 +121,6 @@ u32_t lwip_htonl(u32_t x);
 #define htonl(x) lwip_htonl(x)
 #define ntohl(x) lwip_ntohl(x)
 #endif
-
-/* These macros should be calculated by the preprocessor and are used
-   with compile-time constants only (so that there is no little-endian
-   overhead at runtime). */
-#define PP_HTONS(x) ((((x) & 0xff) << 8) | (((x) & 0xff00) >> 8))
-#define PP_NTOHS(x) PP_HTONS(x)
-#define PP_HTONL(x) ((((x) & 0xff) << 24) | \
-                     (((x) & 0xff00) << 8) | \
-                     (((x) & 0xff0000UL) >> 8) | \
-                     (((x) & 0xff000000UL) >> 24))
-#define PP_NTOHL(x) PP_HTONL(x)
-
-#endif /* BYTE_ORDER == BIG_ENDIAN */
 
 /* Functions that are not available as standard implementations.
  * In cc.h, you can #define these to implementations available on

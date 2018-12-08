@@ -30,8 +30,21 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
-__attribute__ ((aligned(128*64)))
-static unsigned char cache_data[64][128];
+#ifdef BOARD_EMDK
+//EMDK only has 2 way cache, it might have some chances that the cache get switched out before locking,
+//   causing cached data being wrote to memory in advance
+//   If that is the case, please test other lines of cache_data
+#define DCACHE_LINE_NUM		256
+#define DCACHE_LINE_LENGTH 	32
+#else
+#define DCACHE_LINE_NUM		64
+#define DCACHE_LINE_LENGTH 	128
+#endif
+
+#define FILLED_DATA			0xcc
+
+__attribute__ ((aligned(DCACHE_LINE_LENGTH*DCACHE_LINE_NUM)))
+static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH];
 
 /**
  * \brief	call cache related functions
@@ -78,8 +91,8 @@ int main(void)
 	}
 
 	EMBARC_PRINTF("fill the data cache with data\n");
-	for (i = 0; i < 64; i++) {
-		for (j = 0; j < 128 ; j++) {
+	for (i = 0; i < DCACHE_LINE_NUM; i++) {
+		for (j = 0; j < DCACHE_LINE_LENGTH ; j++) {
 			cache_data[i][j] = i;
 		}
 	}
@@ -88,20 +101,20 @@ int main(void)
 	dcache_lock_mlines((unsigned int)cache_data, 8192);
 	EMBARC_PRINTF("invalidate data cache, even it's locked\n");
 	dcache_invalidate_mlines((unsigned int)(cache_data)+4096, 4096);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[60]), _arc_read_uncached_32(cache_data[60]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
 
 	EMBARC_PRINTF("invalidate one cache line\n");
 	dcache_invalidate_line((unsigned int)cache_data);
-	EMBARC_PRINTF("cache the data into one cache line with 0xff\n");
-	for (j = 0 ; j < 128 ; j++) {
-		cache_data[0][j] = 0xff;
+	EMBARC_PRINTF("cache the data into one cache line with 0x%x\n", FILLED_DATA);
+	for (j = 0 ; j < DCACHE_LINE_LENGTH ; j++) {
+		cache_data[0][j] = FILLED_DATA;
 	}
 	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("flush the changed cache line\n");
 	dcache_flush_line((unsigned int)cache_data);
 	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("cached the data into one cache line again with 0x55\n");
-	for (j = 0 ; j < 128 ; j++) {
+	for (j = 0 ; j < DCACHE_LINE_LENGTH ; j++) {
 		cache_data[0][j] = 0x55;
 	}
 	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
@@ -111,15 +124,15 @@ int main(void)
 	dcache_flush();
 	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("refill the cache with data\n");
-	for (i = 32; i < 64; i++) {
-		for (j = 0; j < 128 ; j++) {
+	for (i = DCACHE_LINE_NUM/2; i < DCACHE_LINE_NUM; i++) {
+		for (j = 0; j < DCACHE_LINE_LENGTH ; j++) {
 			cache_data[i][j] = j;
 		}
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[60]), _arc_read_uncached_32(cache_data[60]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
 	EMBARC_PRINTF("flush multiple cache lines\n");
 	dcache_flush_mlines((unsigned int)(cache_data)+5000, 4096);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[60]), _arc_read_uncached_32(cache_data[60]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
 	EMBARC_PRINTF("Cache Test Done\n");
 	while(1);
 

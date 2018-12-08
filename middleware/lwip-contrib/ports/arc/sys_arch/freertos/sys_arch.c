@@ -273,6 +273,17 @@ err_t sys_mbox_trypost(sys_mbox_t *mbox, void *msg)
 	}
 	return ercd;
 }
+
+/** Try to post a message to an mbox - may fail if full or ISR
+ * @param mbox mbox to posts the message
+ * @param msg message to post (ATTENTION: can be NULL) */
+err_t sys_mbox_trypost_fromisr(sys_mbox_t *q, void *msg)
+{
+/** NOTE: The sys_mbox_trypost_fromisr() function was introduced by LWIP
+ * 8fc20142f7b1b18f24fc48187d390187d718ce30 (05.01.2018). */
+	return sys_mbox_trypost(q, msg);
+}
+
 /** Wait for a new message to arrive in the mbox
  * @param mbox mbox to get a message from
  * @param msg pointer where the message is stored

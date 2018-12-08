@@ -32,7 +32,7 @@
 #include "arc_exception.h"
 
 #include "dw_pwm_timer.h"
-#include "embARC_debug.h"
+
 
 
 /** check expressions used in DesignWare PWM_TIMER driver implementation */
@@ -250,7 +250,6 @@ int32_t dw_pwm_timer_write(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t m
 		count_high = (count * dc)/100;
 		dw_pwm_timer_count_set(port, ch, count-count_high);
 		dw_pwm_timer_count2_set(port, ch, count_high);
-		EMBARC_PRINTF("clock = %d, count_low = %d, count_high = %d\r\n",port->clock, count-count_high, count_high);
 		dw_pwm_timer_timer_enable(port, ch);
 		dw_pwm_timer_pwm_enable(port, ch);
 		int_disable(port->intno + ch);

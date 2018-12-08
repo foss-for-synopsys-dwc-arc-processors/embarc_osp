@@ -33,11 +33,11 @@
 #include "mpu9250.h"
 #include "stdio.h"
 
-#if defined(BOARD_IOTDK)
-#define MPU9250_IIC_ID DFSS_IIC_0_ID
-#else
+#if defined(BOARD_EMSK)
 /* pls configure the correct IIC master ID for mpu9250 */
 #define MPU9250_IIC_ID 0
+#else
+#define MPU9250_IIC_ID DFSS_IIC_0_ID
 #endif
 
 static MPU9250_DEFINE(mpu9250_sensor, MPU9250_IIC_ID, MPU9250_IIC_ADDRESS);

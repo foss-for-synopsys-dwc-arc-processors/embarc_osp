@@ -33,6 +33,12 @@
 
 #include "stdlib.h"
 
+#ifdef BOARD_EMSDP
+#define UDMA_TIMER_ID TIMER_0
+#else
+#define UDMA_TIMER_ID TIMER_1
+#endif
+
 #define _MEMORY_FENCE()				_arc_sync()
 #define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
 #define _DCACHE_INVALIDATE_MLINES(addr, size)	dcache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
@@ -186,7 +192,7 @@ int32_t perf_memcpy(uint8_t *src, uint8_t *dst, uint32_t size)
 {
 	uint32_t cycles;
 	init_data(src, dst, size);
-	perf_init(TIMER_1);
+	perf_init(UDMA_TIMER_ID);
 	perf_start();
 	memcpy(dst, src, size);
 	cycles = perf_end();
@@ -201,7 +207,7 @@ int32_t perf_dmacpy(uint8_t *src, uint8_t *dst, uint32_t size)
 {
 	uint32_t cycles;
 	init_data(src, dst, size);
-	perf_init(TIMER_1);
+	perf_init(UDMA_TIMER_ID);
 	perf_start();
 	dma_copy(dst, src, size);
 	cycles = perf_end();
@@ -215,7 +221,7 @@ int32_t perf_dmacpy(uint8_t *src, uint8_t *dst, uint32_t size)
 int32_t perf_overhead(void)
 {
 	uint32_t cycles;
-	perf_init(TIMER_1);
+	perf_init(UDMA_TIMER_ID);
 	perf_start();
 	cycles = perf_end();
 	return cycles;

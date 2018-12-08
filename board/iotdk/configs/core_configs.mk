@@ -1,4 +1,4 @@
-## Core Configuation Folder ##
+## Core Configuration Folder ##
 CORE_TCF_DIR = $(BOARD_CORE_DIR)/tcf
 CORE_CONFIG_MK = $(BOARD_CORE_DIR)/core_config.mk
 

@@ -48,7 +48,12 @@
 
 #include "lwip/def.h"
 #include "lwip/netif.h"
+
+#ifdef WIFI_RS9113
+#include "rswifi_netif.h"
+#else
 #include "pmwifi_netif.h"
+#endif /*WIFI_RS9113*/
 
 #define PMWIFI_MAX_ID		BOARD_PMWIFI_ID_MAX
 

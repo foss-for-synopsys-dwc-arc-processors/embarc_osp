@@ -75,6 +75,10 @@
 #include "iotdk/iotdk.h"
 #endif /* BOARD_IOTDK */
 
+#ifdef BOARD_EMSDP
+#include "emsdp/emsdp.h"
+#endif /* BOARD_EMDK */
+
 #endif /* _EMBARC_BOARD_H_ */
 
 /** @} end of group BOARD_COMMON */

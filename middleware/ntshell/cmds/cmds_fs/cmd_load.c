@@ -52,6 +52,8 @@ extern unsigned int _e_heap;
 #define DEFAULT_LOAD_ADDR 0x10000000
 #elif defined(BOARD_IOTDK)
 #define DEFAULT_LOAD_ADDR 0x20000000
+#elif defined(BOARD_EMSDP)
+#define DEFAULT_LOAD_ADDR 0x10000000
 #endif
 
 static uint32_t default_go_addr = 0;

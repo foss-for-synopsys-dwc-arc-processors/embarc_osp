@@ -1,4 +1,4 @@
-## Core Configuation Folder ##
+## Core Configuration Folder ##
 CORE_TCF_DIR = $(BOARD_CORE_DIR)/tcf
 CORE_CONFIG_MK = $(BOARD_CORE_DIR)/core_config.mk
 CORE_DEBUG_MK = $(BOARD_CORE_DIR)/core_debug.mk
@@ -37,7 +37,7 @@ override VALID_CUR_CORE := $(TCFFILE_NAME)
 endif
 endif
 
-## Check Core Configuation Supported
+## Check Core Configuration Supported
 ifneq ($(TCFFILE_IS_VALID),1)
 ifeq ($(VALID_CUR_CORE),)
 $(info BOARD $(BOARD)-$(BD_VER) Core Configurations - $(SUPPORTED_CORES) are supported)
