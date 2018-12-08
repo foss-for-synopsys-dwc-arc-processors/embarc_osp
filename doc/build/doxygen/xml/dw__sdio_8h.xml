@@ -4,83 +4,146 @@
     <compoundname>dw_sdio.h</compoundname>
     <includes refid="dev__sdio_8h" local="yes">dev_sdio.h</includes>
     <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
+    <includedby refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h" local="yes">dw_sdio_obj.h</includedby>
     <includedby refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c" local="yes">dw_sdio_obj.c</includedby>
     <includedby refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c" local="yes">dw_sdio_obj.c</includedby>
     <includedby refid="dw__sdio_8c" local="yes">dw_sdio.c</includedby>
     <incdepgraph>
-      <node id="2562">
+      <node id="3249">
         <label>stdbool.h</label>
       </node>
-      <node id="2557">
+      <node id="3244">
         <label>stdint.h</label>
       </node>
-      <node id="2561">
+      <node id="3248">
         <label>stddef.h</label>
       </node>
-      <node id="2556">
+      <node id="3243">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="2557" relation="include">
+        <childnode refid="3244" relation="include">
         </childnode>
       </node>
-      <node id="2558">
+      <node id="3245">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="2559" relation="include">
+        <childnode refid="3246" relation="include">
         </childnode>
       </node>
-      <node id="2560">
+      <node id="3247">
         <label>limits.h</label>
       </node>
-      <node id="2555">
+      <node id="3242">
         <label>dev_sdio.h</label>
         <link refid="dev__sdio_8h_source"/>
-        <childnode refid="2556" relation="include">
+        <childnode refid="3243" relation="include">
         </childnode>
       </node>
-      <node id="2559">
+      <node id="3246">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="2557" relation="include">
+        <childnode refid="3244" relation="include">
         </childnode>
-        <childnode refid="2560" relation="include">
+        <childnode refid="3247" relation="include">
         </childnode>
-        <childnode refid="2561" relation="include">
+        <childnode refid="3248" relation="include">
         </childnode>
-        <childnode refid="2562" relation="include">
+        <childnode refid="3249" relation="include">
         </childnode>
       </node>
-      <node id="2554">
+      <node id="3241">
         <label>dw_sdio.h</label>
         <link refid="dw_sdio.h"/>
-        <childnode refid="2555" relation="include">
+        <childnode refid="3242" relation="include">
         </childnode>
-        <childnode refid="2558" relation="include">
+        <childnode refid="3245" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2564">
+      <node id="3252">
+        <label>dw_sdio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="3251">
+        <label>dw_sdio_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
+        <childnode refid="3252" relation="include">
+        </childnode>
+        <childnode refid="3253" relation="include">
+        </childnode>
+      </node>
+      <node id="3260">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="3261">
         <label>dw_sdio_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="2565">
+      <node id="3255">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      </node>
+      <node id="3257">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="3259">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
+      <node id="3258">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      </node>
+      <node id="3253">
+        <label>emsdp.h</label>
+        <link refid="emsdp_8h_source"/>
+        <childnode refid="3254" relation="include">
+        </childnode>
+        <childnode refid="3255" relation="include">
+        </childnode>
+        <childnode refid="3252" relation="include">
+        </childnode>
+        <childnode refid="3256" relation="include">
+        </childnode>
+        <childnode refid="3257" relation="include">
+        </childnode>
+        <childnode refid="3258" relation="include">
+        </childnode>
+        <childnode refid="3259" relation="include">
+        </childnode>
+        <childnode refid="3260" relation="include">
+        </childnode>
+      </node>
+      <node id="3254">
+        <label>emsdp_io.c</label>
+        <link refid="emsdp__io_8c_source"/>
+      </node>
+      <node id="3262">
         <label>dw_sdio_obj.c</label>
         <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="2566">
+      <node id="3263">
         <label>dw_sdio.c</label>
         <link refid="dw__sdio_8c_source"/>
       </node>
-      <node id="2563">
+      <node id="3250">
         <label>dw_sdio.h</label>
         <link refid="dw_sdio.h"/>
-        <childnode refid="2564" relation="include">
+        <childnode refid="3251" relation="include">
         </childnode>
-        <childnode refid="2565" relation="include">
+        <childnode refid="3261" relation="include">
         </childnode>
-        <childnode refid="2566" relation="include">
+        <childnode refid="3262" relation="include">
         </childnode>
+        <childnode refid="3263" relation="include">
+        </childnode>
+      </node>
+      <node id="3256">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structdw__sdio__ctrl" prot="public">dw_sdio_ctrl</innerclass>
@@ -367,12 +430,12 @@
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal">Inline<sp/>uint32_t<sp/>dw_sdio_reg_read(DW_SDIO_CTRL_PTR<sp/>sdio,<sp/>uint32_t<sp/>reg)</highlight></codeline>
 <codeline lineno="51"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaa94be405be89c127168cb98cc47ffdf2" kindref="member">_arc_read_uncached_32</ref>(sdio-&gt;<ref refid="structdw__sdio__ctrl_1a87d43f937618fa1fd74828dfca3f5ca4" kindref="member">reg_base</ref><sp/>+<sp/>reg);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gaa94be405be89c127168cb98cc47ffdf2" kindref="member">_arc_read_uncached_32</ref>((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)((uint32_t)sdio-&gt;<ref refid="structdw__sdio__ctrl_1a87d43f937618fa1fd74828dfca3f5ca4" kindref="member">reg_base</ref><sp/>+<sp/>reg));</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_sdio_reg_write(DW_SDIO_CTRL_PTR<sp/>sdio,<sp/>uint32_t<sp/>reg,<sp/>uint32_t<sp/>val)</highlight></codeline>
 <codeline lineno="56"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gae6a4acaab3f1a05455dfd4a8daa17964" kindref="member">_arc_write_uncached_32</ref>(sdio-&gt;<ref refid="structdw__sdio__ctrl_1a87d43f937618fa1fd74828dfca3f5ca4" kindref="member">reg_base</ref><sp/>+<sp/>reg,<sp/>val);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___b_u_i_l_t_i_n_1gae6a4acaab3f1a05455dfd4a8daa17964" kindref="member">_arc_write_uncached_32</ref>((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)((uint32_t)sdio-&gt;<ref refid="structdw__sdio__ctrl_1a87d43f937618fa1fd74828dfca3f5ca4" kindref="member">reg_base</ref><sp/>+<sp/>reg),<sp/>val);</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>

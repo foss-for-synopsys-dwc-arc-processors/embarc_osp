@@ -60,6 +60,7 @@ The BSP Layer currently supports the following boards.
 
    axs.rst
    emsk.rst
+   emsdp.rst
    hsdk.rst
    iotdk.rst
    nsim.rst
@@ -77,6 +78,12 @@ The BSP Layer currently supports the following boards.
   * :file:`common`: EMSK board initialization functions and 1 ms interrupt timer function
   * :file:`drivers`: Various peripheral drivers for various examples
   * :file:`configs`: Different versions of emsk, and various core configurations for different version
+
+* EM Software Development Package (EM SDP) support can be found in ``board/emsdp``. It includes the following sub-folders.
+
+  * :file:`common`: EMSK board initialization functions and 1 ms interrupt timer function
+  * :file:`drivers`: Various peripheral drivers for various examples
+  * :file:`configs`: Different versions of emsdp, and various core configurations for different version
 
 * HS Development Kit (HSDK) board support can be found in ``board/hsdk``. It includes the following sub-folders.
 

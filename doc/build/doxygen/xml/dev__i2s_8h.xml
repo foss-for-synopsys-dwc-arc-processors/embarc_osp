@@ -3,67 +3,149 @@
   <compounddef id="dev__i2s_8h" kind="file">
     <compoundname>dev_i2s.h</compoundname>
     <includes refid="dev__common_8h" local="yes">dev_common.h</includes>
+    <includedby refid="dfss__i2s__obj_8h" local="yes">dfss_i2s_obj.h</includedby>
     <includedby refid="dw__i2s__obj_8h" local="yes">dw_i2s_obj.h</includedby>
     <includedby refid="dw__i2s_8h" local="yes">dw_i2s.h</includedby>
+    <includedby refid="ss__i2s__master_8h" local="yes">ss_i2s_master.h</includedby>
     <incdepgraph>
-      <node id="1635">
+      <node id="1863">
         <label>stdint.h</label>
       </node>
-      <node id="1634">
+      <node id="1862">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="1635" relation="include">
+        <childnode refid="1863" relation="include">
         </childnode>
       </node>
-      <node id="1633">
+      <node id="1861">
         <label>dev_i2s.h</label>
         <link refid="dev_i2s.h"/>
-        <childnode refid="1634" relation="include">
+        <childnode refid="1862" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1638">
+      <node id="1870">
+        <label>dw_sdio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1866">
+        <label>dfss_i2s_obj.c</label>
+        <link refid="dfss__i2s__obj_8c_source"/>
+      </node>
+      <node id="1865">
+        <label>dfss_i2s_obj.h</label>
+        <link refid="dfss__i2s__obj_8h_source"/>
+        <childnode refid="1866" relation="include">
+        </childnode>
+        <childnode refid="1867" relation="include">
+        </childnode>
+      </node>
+      <node id="1875">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="1883">
+        <label>ss_i2s_master.c</label>
+        <link refid="ss__i2s__master_8c_source"/>
+      </node>
+      <node id="1882">
+        <label>ss_i2s_master.h</label>
+        <link refid="ss__i2s__master_8h_source"/>
+        <childnode refid="1866" relation="include">
+        </childnode>
+        <childnode refid="1883" relation="include">
+        </childnode>
+      </node>
+      <node id="1877">
         <label>dw_i2s_obj.c</label>
         <link refid="dw__i2s__obj_8c_source"/>
       </node>
-      <node id="1637">
+      <node id="1876">
         <label>dw_i2s_obj.h</label>
         <link refid="dw__i2s__obj_8h_source"/>
-        <childnode refid="1638" relation="include">
+        <childnode refid="1877" relation="include">
         </childnode>
-        <childnode refid="1639" relation="include">
+        <childnode refid="1878" relation="include">
         </childnode>
       </node>
-      <node id="1639">
+      <node id="1878">
         <label>iotdk.h</label>
         <link refid="iotdk_8h"/>
-        <childnode refid="1640" relation="include">
+        <childnode refid="1879" relation="include">
         </childnode>
       </node>
-      <node id="1642">
+      <node id="1869">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      </node>
+      <node id="1881">
         <label>dw_i2s.c</label>
         <link refid="dw__i2s_8c"/>
       </node>
-      <node id="1641">
+      <node id="1880">
         <label>dw_i2s.h</label>
         <link refid="dw__i2s_8h"/>
-        <childnode refid="1638" relation="include">
+        <childnode refid="1877" relation="include">
         </childnode>
-        <childnode refid="1642" relation="include">
+        <childnode refid="1881" relation="include">
         </childnode>
       </node>
-      <node id="1640">
+      <node id="1872">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="1874">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
+      <node id="1873">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      </node>
+      <node id="1879">
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="1636">
+      <node id="1864">
         <label>dev_i2s.h</label>
         <link refid="dev_i2s.h"/>
-        <childnode refid="1637" relation="include">
+        <childnode refid="1865" relation="include">
         </childnode>
-        <childnode refid="1641" relation="include">
+        <childnode refid="1876" relation="include">
         </childnode>
+        <childnode refid="1880" relation="include">
+        </childnode>
+        <childnode refid="1882" relation="include">
+        </childnode>
+      </node>
+      <node id="1867">
+        <label>emsdp.h</label>
+        <link refid="emsdp_8h_source"/>
+        <childnode refid="1868" relation="include">
+        </childnode>
+        <childnode refid="1869" relation="include">
+        </childnode>
+        <childnode refid="1870" relation="include">
+        </childnode>
+        <childnode refid="1871" relation="include">
+        </childnode>
+        <childnode refid="1872" relation="include">
+        </childnode>
+        <childnode refid="1873" relation="include">
+        </childnode>
+        <childnode refid="1874" relation="include">
+        </childnode>
+        <childnode refid="1875" relation="include">
+        </childnode>
+      </node>
+      <node id="1868">
+        <label>emsdp_io.c</label>
+        <link refid="emsdp__io_8c_source"/>
+      </node>
+      <node id="1871">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structdev__i2s__cbs" prot="public">dev_i2s_cbs</innerclass>
@@ -790,7 +872,7 @@
 get an <ref refid="structdev__i2s" kindref="compound">i2s device</ref> by i2s device id. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="464" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/ip/designware/i2s/dw_i2s_obj.c" bodystart="229" bodyend="258"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="464" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/ip_obj_mgr.c" bodystart="187" bodyend="202"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -3,47 +3,54 @@
   <compounddef id="ss__gpio_8h" kind="file">
     <compoundname>ss_gpio.h</compoundname>
     <includes refid="dev__gpio_8h" local="yes">ip/ip_hal/inc/dev_gpio.h</includes>
-    <includedby refid="dfss__gpio__obj_8c" local="yes">dfss_gpio_obj.c</includedby>
+    <includedby refid="emsdp_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c" local="yes">dfss_gpio_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c" local="yes">dfss_gpio_obj.c</includedby>
     <includedby refid="ss__gpio_8c" local="yes">ss_gpio.c</includedby>
     <incdepgraph>
-      <node id="6100">
+      <node id="7795">
         <label>stdint.h</label>
       </node>
-      <node id="6099">
+      <node id="7794">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="6100" relation="include">
+        <childnode refid="7795" relation="include">
         </childnode>
       </node>
-      <node id="6097">
+      <node id="7792">
         <label>ss_gpio.h</label>
         <link refid="ss_gpio.h"/>
-        <childnode refid="6098" relation="include">
+        <childnode refid="7793" relation="include">
         </childnode>
       </node>
-      <node id="6098">
+      <node id="7793">
         <label>ip/ip_hal/inc/dev_gpio.h</label>
         <link refid="dev__gpio_8h"/>
-        <childnode refid="6099" relation="include">
+        <childnode refid="7794" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="6102">
+      <node id="7798">
         <label>dfss_gpio_obj.c</label>
-        <link refid="dfss__gpio__obj_8c_source"/>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c_source"/>
       </node>
-      <node id="6103">
+      <node id="7799">
         <label>ss_gpio.c</label>
         <link refid="ss__gpio_8c_source"/>
       </node>
-      <node id="6101">
+      <node id="7796">
         <label>ss_gpio.h</label>
         <link refid="ss_gpio.h"/>
-        <childnode refid="6102" relation="include">
+        <childnode refid="7797" relation="include">
         </childnode>
-        <childnode refid="6103" relation="include">
+        <childnode refid="7798" relation="include">
         </childnode>
+        <childnode refid="7799" relation="include">
+        </childnode>
+      </node>
+      <node id="7797">
+        <label>dfss_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structss__gpio__dev__context" prot="public">ss_gpio_dev_context</innerclass>

@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARC EM Software Development Platform &mdash; embARC 2018.09 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ARC HS Development Kit" href="hsdk.html" />
+    <link rel="prev" title="ARC EM Starter Kit" href="emsk.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> embARC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2018.09
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arc/arc.html">ARC Processors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../device/device.html">Devices</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="board.html">Boards</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="board.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="board.html#common-board-initialization-process">Common Board Initialization Process</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="board.html#supported-boards">Supported Boards</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="axs.html">ARC Software Development Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emsk.html">ARC EM Starter Kit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ARC EM Software Development Platform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsdk.html">ARC HS Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iotdk.html">ARC IoT Development Kit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nsim.html">Virtual Board based on ARC nSIM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="board.html#board-resource-unified-definitions">Board Resource Unified Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../os/os.html">Operating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../middleware/middleware.html">Middleware Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib/library.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example/example.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/developer_guides.html">Developer Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Usage Guide FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contribute to embARC OSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Change Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bsp/bsp.html">embARC BSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">embARC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="board.html">Boards</a> &raquo;</li>
+        
+      <li>ARC EM Software Development Platform</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/board/emsdp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arc-em-software-development-platform">
+<span id="board-emsdp"></span><h1>ARC EM Software Development Platform<a class="headerlink" href="#arc-em-software-development-platform" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The DesignWare® ARC® EM Software Development Platform (EM SDP, emsdp)
+is an FPGA based development platform intended to support ARC licenses in developing their software for the ARC EM processor family and ARC EM Subsystems. It has the support for ARC
+EM4, EM5D, EM6, EM7D, EM9D and EM11D processors. ARC EM Enhanced Security Package (ESP) and ARC EM Subsystems (DFSS, SCSS, DSS) are also supported.</p>
+<p>The EM SDP board includes the following features:</p>
+<ul class="simple">
+<li>Support for selected ARC EM and ARC EM Subsystem configurations</li>
+<li>Drag-and-drop configuration of FPGA device through USB</li>
+<li>Audio PLL capable of generating the most common audio reference clocks</li>
+<li>Analog audio input and output</li>
+<li>MEMs digital microphone stereo input</li>
+<li>16MB Quad-SPI flash memory supporting execute-in-place (XiP)</li>
+<li>16MB Pseudo-Static RAM</li>
+<li>Bluetooth 4.0, Wi-Fi a,b,g,n and 802.15.4 (e.g ZigBee) wireless connectivity</li>
+<li>On board 9-axis motion sensors</li>
+<li>Expansion connectors<ul>
+<li>1x Arduino UNO revision 3, over two connectors</li>
+<li>3x PMOD connector (2x6 header)</li>
+<li>1x MikroBUS</li>
+<li>1x generic pin header</li>
+</ul>
+</li>
+<li>Micro-SD card interface for user data</li>
+<li>Console output via a micro USB® connector</li>
+<li>Multiple debug ports<ul>
+<li>Micro-USB (Digilent® Adept Xilinx® programming)</li>
+<li>Cortex 10-pin Debug Interface (adapter to Ashling® Opella-XD for ARC debug)</li>
+<li>Mictor 38 pin (Ashling Ultra-XD)</li>
+</ul>
+</li>
+<li>Buttons, LEDs and switches</li>
+</ul>
+<p>The DesignWare ARC EM Software Development Platform contains the following components:</p>
+<ul class="simple">
+<li>FPGA<ul>
+<li>Xilinx Kintex-7 XC7325T-2</li>
+</ul>
+</li>
+<li>Memory<ul>
+<li>PSRAM (16 MB)</li>
+<li>SPI Flash (16 MB quad-mode XiP)</li>
+<li>Configuration memory (16 MB SPI flash)</li>
+</ul>
+</li>
+<li>Interfaces<ul>
+<li>Audio line in/out</li>
+<li>USB Data port (JTAG/UART/access to configuration memory)</li>
+<li>Micro-SD Card</li>
+<li>WIFI/BT/Zigbee module</li>
+<li>ADC (eight channels)</li>
+<li>Motion Sensor</li>
+<li>Digital MEMs microphone (2x)</li>
+<li>RTT Nexus, JTAG</li>
+</ul>
+</li>
+<li>Extensions<ul>
+<li>Arduino Interface headers (UNO R3 compatible)</li>
+<li>mikroBUS headers</li>
+<li>Pmod Interfaces (3x)</li>
+<li>Generic Pin Header (52 pins)</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="fpga">
+<h3>FPGA<a class="headerlink" href="#fpga" title="Permalink to this headline">¶</a></h3>
+<p>The FPGA on the ARC EM SDP board is configured by storing an FPGA bitstream into the configuration memory of the ARC EM SDP.
+Drag-and-drop feature enable users to copy an FPGA bitstream from the PC to the configuration memory and programmed into the FPGA.</p>
+</div>
+<div class="section" id="memory">
+<h3>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h3>
+<p>Please refer to <cite>ARC_EM_SDP_UserGuide</cite> for memory map and more details.</p>
+</div>
+<div class="section" id="interfaces">
+<h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
+<p>ARC EM SDP board provides a variety set of peripherals for evaluate and development.
+There are many peripheral devices available, such as SPI, IIC, UART, GPIO.
+Upon these, the ARC EM SDP offers multiple interfaces for audio, USB, micro-SD card, wireless, ADC, motion sensor, etc.
+External hardware modules can also be easily connected to the board though extension interfaces using Pmod Connectors, Arduino, mikro BUS.</p>
+<img alt="EM SDP Interfaces" src="../_images/emsdp_peripheral_interfaces.jpg" />
+</div>
+<div class="section" id="extensions">
+<h3>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h3>
+<p>To bring your application context around the ARC EM SDP, Pmod Connectors, Arduino, mikro BUS are supported.
+All the sets of connections are controlled by mux controller and can be switched by user.
+There are many peripheral devices available, such as SPI, IIC, UART, GPIO.</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up">
+<h3>Setting Up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h3>
+<p>You can use either USB-JTAG or USB-UART interface to communicate with ARC EM SDP board.
+Before the interfaces are used, you must install the required drivers on the computer where you intend to run
+the MetaWare debugger or other serial debug consoles (such as PuTTY or other hyper-terminals).</p>
+<p>The driver is a part of the Digilent Adept tool. You can download the most recent version of
+the Digilent Adept tool from the Digilent website at <a class="reference external" href="http://www.digilentinc.com">http://www.digilentinc.com</a>, and follow the installation instructions provided by Digilent.</p>
+<p>You may also skip this step if you are using default settings.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Learn more about programming FPGA device in <cite>ARC_EM_SDP_UserGuide</cite></p>
+</div>
+</div>
+<div class="section" id="package-preparation">
+<h3>Package Preparation<a class="headerlink" href="#package-preparation" title="Permalink to this headline">¶</a></h3>
+<p>This section talks about how to add new ARC EM SDP cores into embARC OSP.
+If you are using default cores of ARC EM SDP: <em>em6_scss</em>, <em>em7d_esp_dfss</em>, and <em>em11d_dfss</em>, then you may skip this section.</p>
+<ol class="arabic simple">
+<li>You may download the package from our website. Suppose you want to add a new package called <code class="docutils literal notranslate"><span class="pre">em9d_dfss</span></code>, your package name would be <code class="docutils literal notranslate"><span class="pre">embarc_em9d_dfss.zip</span></code>.</li>
+<li>Download the package and unzip it, you will find four folders: <code class="docutils literal notranslate"><span class="pre">/doc</span></code>, <code class="docutils literal notranslate"><span class="pre">/fpga</span></code>, <code class="docutils literal notranslate"><span class="pre">/include</span></code>, <code class="docutils literal notranslate"><span class="pre">/tool_config</span></code>. Now create a new folder according to your board revision and package name. In this case <em>em9d_dfss</em> is added to <em>rev2</em> board, so you should set your directory as this:<code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss</span></code></li>
+<li>Copy <code class="docutils literal notranslate"><span class="pre">/tool_config</span></code> folder to <code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss/tool_config</span></code>.</li>
+<li>Copy all <code class="docutils literal notranslate"><span class="pre">/include</span></code> files except <code class="docutils literal notranslate"><span class="pre">core_config.h</span></code> to <code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss</span></code></li>
+<li>Rename <code class="docutils literal notranslate"><span class="pre">board_emsdp.h</span></code> to <code class="docutils literal notranslate"><span class="pre">core_hardware.h</span></code>, open the file and delete its contents from line 25 to line 100.</li>
+<li>You are done importing a new package, build with it to make sure everything is working.</li>
+</ol>
+</div>
+<div class="section" id="run-your-first-program">
+<h3>Run Your First Program<a class="headerlink" href="#run-your-first-program" title="Permalink to this headline">¶</a></h3>
+<p>By setting up the board, you are now ready to run your first program on ARC EM SDP.
+please refer to example <cite>example_blinky</cite> for further details. Build and download the example using either MetaWare or GNU. The command is shown below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/blinky
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsdp <span class="nv">BD_VER</span><span class="o">=</span>rev1 <span class="nv">CORE</span><span class="o">=</span>em11d_dfss <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw run
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Notice that for CORE option there are multiple core choices, please check <cite>&lt;embarc_root&gt;/board/emsdp/rev1</cite> folder for available cores.</p>
+</div>
+</div>
+<div class="section" id="development-guide">
+<h3>Development Guide<a class="headerlink" href="#development-guide" title="Permalink to this headline">¶</a></h3>
+<p>Please refer to <cite>Developer Guides</cite>.
+You may need to specify peripheral driver (<cite>&lt;embarc_root&gt;/device/peripheral</cite>) for your own code.</p>
+<p>For example, if wifi rs9113 driver is needed, add this line in makefile:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">EXT_DEV_LIST += wifi/rs9113</span>
+</pre></div>
+</div>
+<p>Another example is to add both wifi driver and audio codec driver for an online audio application:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">EXT_DEV_LIST += wifi/rs9113 audio/max9880a</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="contributing">
+<h3>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h3>
+<p>ARC EM SDP is welcome to your contribution. If you found any bug or issue or have suggestions,
+please feel free to raise issues or pull requests at [embARC Open Software Platform](<a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp">https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp</a>) repository on GitHub.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hsdk.html" class="btn btn-neutral float-right" title="ARC HS Development Kit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="emsk.html" class="btn btn-neutral" title="ARC EM Starter Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Synopsys
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

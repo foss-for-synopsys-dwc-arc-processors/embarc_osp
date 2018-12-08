@@ -3,46 +3,53 @@
   <compounddef id="ss__i2c__master_8h" kind="file">
     <compoundname>ss_i2c_master.h</compoundname>
     <includes refid="dev__iic_8h" local="yes">ip/ip_hal/inc/dev_iic.h</includes>
-    <includedby refid="dfss__iic__obj_8c" local="yes">dfss_iic_obj.c</includedby>
+    <includedby refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c" local="yes">dfss_iic_obj.c</includedby>
+    <includedby refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c" local="yes">dfss_iic_obj.c</includedby>
     <includedby refid="ss__i2c__master_8c" local="yes">ss_i2c_master.c</includedby>
     <incdepgraph>
-      <node id="6125">
+      <node id="7821">
         <label>stdint.h</label>
       </node>
-      <node id="6124">
+      <node id="7820">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="6125" relation="include">
+        <childnode refid="7821" relation="include">
         </childnode>
       </node>
-      <node id="6122">
+      <node id="7818">
         <label>ss_i2c_master.h</label>
         <link refid="ss_i2c_master.h"/>
-        <childnode refid="6123" relation="include">
+        <childnode refid="7819" relation="include">
         </childnode>
       </node>
-      <node id="6123">
+      <node id="7819">
         <label>ip/ip_hal/inc/dev_iic.h</label>
         <link refid="dev__iic_8h"/>
-        <childnode refid="6124" relation="include">
+        <childnode refid="7820" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="6127">
+      <node id="7824">
         <label>dfss_iic_obj.c</label>
-        <link refid="dfss__iic__obj_8c_source"/>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c_source"/>
       </node>
-      <node id="6128">
+      <node id="7823">
+        <label>dfss_iic_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c_source"/>
+      </node>
+      <node id="7825">
         <label>ss_i2c_master.c</label>
         <link refid="ss__i2c__master_8c_source"/>
       </node>
-      <node id="6126">
+      <node id="7822">
         <label>ss_i2c_master.h</label>
         <link refid="ss_i2c_master.h"/>
-        <childnode refid="6127" relation="include">
+        <childnode refid="7823" relation="include">
         </childnode>
-        <childnode refid="6128" relation="include">
+        <childnode refid="7824" relation="include">
+        </childnode>
+        <childnode refid="7825" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

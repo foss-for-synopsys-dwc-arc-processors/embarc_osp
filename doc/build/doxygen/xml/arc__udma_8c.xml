@@ -4,103 +4,103 @@
     <compoundname>arc_udma.c</compoundname>
     <includes refid="arc__udma_8h" local="yes">arc_udma.h</includes>
     <incdepgraph>
-      <node id="898">
+      <node id="1040">
         <label>stdbool.h</label>
       </node>
-      <node id="904">
+      <node id="1046">
         <label>arc_udma_config.h</label>
         <link refid="arc__udma__config_8h"/>
-        <childnode refid="900" relation="include">
+        <childnode refid="1042" relation="include">
         </childnode>
-        <childnode refid="903" relation="include">
+        <childnode refid="1045" relation="include">
         </childnode>
       </node>
-      <node id="893">
+      <node id="1035">
         <label>stdint.h</label>
       </node>
-      <node id="892">
+      <node id="1034">
         <label>arc_udma.h</label>
         <link refid="arc__udma_8h"/>
-        <childnode refid="893" relation="include">
+        <childnode refid="1035" relation="include">
         </childnode>
-        <childnode refid="894" relation="include">
+        <childnode refid="1036" relation="include">
         </childnode>
-        <childnode refid="895" relation="include">
+        <childnode refid="1037" relation="include">
         </childnode>
-        <childnode refid="896" relation="include">
+        <childnode refid="1038" relation="include">
         </childnode>
-        <childnode refid="899" relation="include">
+        <childnode refid="1041" relation="include">
         </childnode>
-        <childnode refid="901" relation="include">
+        <childnode refid="1043" relation="include">
         </childnode>
-        <childnode refid="902" relation="include">
+        <childnode refid="1044" relation="include">
         </childnode>
-        <childnode refid="904" relation="include">
+        <childnode refid="1046" relation="include">
         </childnode>
       </node>
-      <node id="894">
+      <node id="1036">
         <label>stddef.h</label>
       </node>
-      <node id="901">
+      <node id="1043">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="896" relation="include">
+        <childnode refid="1038" relation="include">
         </childnode>
       </node>
-      <node id="897">
+      <node id="1039">
         <label>limits.h</label>
       </node>
-      <node id="899">
+      <node id="1041">
         <label>arc.h</label>
         <link refid="arc_8h"/>
-        <childnode refid="900" relation="include">
+        <childnode refid="1042" relation="include">
         </childnode>
       </node>
-      <node id="895">
+      <node id="1037">
         <label>string.h</label>
       </node>
-      <node id="891">
+      <node id="1033">
         <label>arc_udma.c</label>
         <link refid="arc_udma.c"/>
-        <childnode refid="892" relation="include">
+        <childnode refid="1034" relation="include">
         </childnode>
       </node>
-      <node id="902">
+      <node id="1044">
         <label>arc_cache.h</label>
         <link refid="arc__cache_8h"/>
-        <childnode refid="896" relation="include">
+        <childnode refid="1038" relation="include">
         </childnode>
-        <childnode refid="899" relation="include">
+        <childnode refid="1041" relation="include">
         </childnode>
-        <childnode refid="901" relation="include">
+        <childnode refid="1043" relation="include">
         </childnode>
-        <childnode refid="903" relation="include">
+        <childnode refid="1045" relation="include">
         </childnode>
       </node>
-      <node id="900">
+      <node id="1042">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="896">
+      <node id="1038">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="893" relation="include">
+        <childnode refid="1035" relation="include">
         </childnode>
-        <childnode refid="897" relation="include">
+        <childnode refid="1039" relation="include">
         </childnode>
-        <childnode refid="894" relation="include">
+        <childnode refid="1036" relation="include">
         </childnode>
-        <childnode refid="898" relation="include">
+        <childnode refid="1040" relation="include">
         </childnode>
       </node>
-      <node id="903">
+      <node id="1045">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
-        <childnode refid="896" relation="include">
+        <childnode refid="1038" relation="include">
         </childnode>
-        <childnode refid="899" relation="include">
+        <childnode refid="1041" relation="include">
         </childnode>
-        <childnode refid="901" relation="include">
+        <childnode refid="1043" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -1967,7 +1967,7 @@
 <codeline lineno="411"><highlight class="normal"></highlight></codeline>
 <codeline lineno="412" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae06eefba765e595748af588b8d4a0fef" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae06eefba765e595748af588b8d4a0fef" kindref="member">dmac_init</ref>(<ref refid="struct__dma__state" kindref="compound">dma_state_t</ref><sp/>*<sp/>state)</highlight></codeline>
 <codeline lineno="413"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="414"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="415"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
 <codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2049,7 +2049,7 @@
 <codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(desc<sp/>!=<sp/>0);</highlight></codeline>
 <codeline lineno="494"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="495"><highlight class="normal"></highlight></codeline>
-<codeline lineno="496"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="497"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>dmac_valid_channel(int32_t<sp/>channel,<sp/><ref refid="struct__dma__desc" kindref="compound">dma_desc_t</ref><sp/>*<sp/>desc)</highlight></codeline>
 <codeline lineno="498"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="499"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>CORE_DMAC_INTERNAL_VERSION<sp/>==<sp/>1</highlight></codeline>
@@ -2170,7 +2170,7 @@
 <codeline lineno="615" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga8e2f3e09ce52ab0b4491dcc7dbfc354a" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga8e2f3e09ce52ab0b4491dcc7dbfc354a" kindref="member">dmac_config_desc</ref>(<ref refid="struct__dma__desc" kindref="compound">dma_desc_t</ref><sp/>*<sp/>desc,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*src,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*dst,<sp/>uint32_t<sp/>size,</highlight></codeline>
 <codeline lineno="616"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="union__dma__ctrl" kindref="compound">dma_ctrl_t</ref><sp/>*<sp/>ctrl)</highlight></codeline>
 <codeline lineno="617"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="618"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="619"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(desc<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="620"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="621"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2192,7 +2192,7 @@
 <codeline lineno="637"><highlight class="normal"></highlight></codeline>
 <codeline lineno="638" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaa984f158247d9697415e110803b88d89" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaa984f158247d9697415e110803b88d89" kindref="member">dmac_init_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn)</highlight></codeline>
 <codeline lineno="639"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="640"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="641"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="643"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2207,7 +2207,7 @@
 <codeline lineno="652"><highlight class="normal"></highlight></codeline>
 <codeline lineno="653" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga6f154bbe1f60e53ef950cfd83463bfd6" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga6f154bbe1f60e53ef950cfd83463bfd6" kindref="member">dmac_config_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn,<sp/><ref refid="struct__dma__desc" kindref="compound">dma_desc_t</ref><sp/>*<sp/>desc)</highlight></codeline>
 <codeline lineno="654"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="655"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="656"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="657"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="658"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2255,7 +2255,7 @@
 <codeline lineno="700"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>priority)</highlight></codeline>
 <codeline lineno="701"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="702"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>channel;</highlight></codeline>
-<codeline lineno="703"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="703"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="704"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="705"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="706"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2265,7 +2265,7 @@
 <codeline lineno="710"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="711"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel<sp/>=<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" kindref="member">channel</ref>;</highlight></codeline>
 <codeline lineno="712"><highlight class="normal"></highlight></codeline>
-<codeline lineno="713"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="714"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(!((uint32_t)<sp/>channel<sp/>&lt;<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>)))<sp/>{</highlight></codeline>
 <codeline lineno="715"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="716"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2273,7 +2273,7 @@
 <codeline lineno="718"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga4a272ca9971c523015ed6751e7cb9c4c" kindref="member">status</ref><sp/>==<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gga276d4cc1d756d731dfb6ff5af7553056a864f3936f41533a2fef44a17fa1acaa2" kindref="member">DMA_BUSY</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="719"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="720"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="722"><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="722"><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="723"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dmac_valid_channel(channel,<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" kindref="member">desc</ref>)<sp/>!=<sp/>0))<sp/>{</highlight></codeline>
 <codeline lineno="724"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-2;</highlight></codeline>
 <codeline lineno="725"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2317,7 +2317,7 @@
 <codeline lineno="763" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga327765a1898fb1689b29cfb206aabba9" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga327765a1898fb1689b29cfb206aabba9" kindref="member">dmac_stop_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn)</highlight></codeline>
 <codeline lineno="764"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="765"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>channel;</highlight></codeline>
-<codeline lineno="766"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="766"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="767"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="768"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="769"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2326,7 +2326,7 @@
 <codeline lineno="772"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="773"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="774"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel<sp/>=<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" kindref="member">channel</ref>;</highlight></codeline>
-<codeline lineno="775"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="775"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="776"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(!((uint32_t)<sp/>channel<sp/>&lt;<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>)))<sp/>{</highlight></codeline>
 <codeline lineno="777"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="778"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2343,7 +2343,7 @@
 <codeline lineno="789" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafb0b911e1d6f13309597253cdd6e07d6" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafb0b911e1d6f13309597253cdd6e07d6" kindref="member">dmac_clear_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn)</highlight></codeline>
 <codeline lineno="790"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="791"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>channel;</highlight></codeline>
-<codeline lineno="792"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="792"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="793"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="794"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="795"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2353,7 +2353,7 @@
 <codeline lineno="799"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="800"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel<sp/>=<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" kindref="member">channel</ref>;</highlight></codeline>
 <codeline lineno="801"><highlight class="normal"></highlight></codeline>
-<codeline lineno="802"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="802"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="803"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(!((uint32_t)<sp/>channel<sp/>&lt;<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>)))<sp/>{</highlight></codeline>
 <codeline lineno="804"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="805"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2370,7 +2370,7 @@
 <codeline lineno="816" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga2daa51afce8f5eefce45288a8181672b" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga2daa51afce8f5eefce45288a8181672b" kindref="member">dmac_release_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn)</highlight></codeline>
 <codeline lineno="817"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="818"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>channel;</highlight></codeline>
-<codeline lineno="819"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="820"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="821"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="822"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2380,7 +2380,7 @@
 <codeline lineno="826"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="827"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel<sp/>=<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" kindref="member">channel</ref>;</highlight></codeline>
 <codeline lineno="828"><highlight class="normal"></highlight></codeline>
-<codeline lineno="829"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="829"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="830"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(!((uint32_t)<sp/>channel<sp/>&lt;<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>)))<sp/>{</highlight></codeline>
 <codeline lineno="831"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="832"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2397,7 +2397,7 @@
 <codeline lineno="843" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga2ee0fc0dcd0134c3243918961b6b1684" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga2ee0fc0dcd0134c3243918961b6b1684" kindref="member">dmac_wait_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn)</highlight></codeline>
 <codeline lineno="844"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>channel;</highlight></codeline>
-<codeline lineno="846"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="846"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="847"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="848"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="849"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2407,7 +2407,7 @@
 <codeline lineno="853"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="854"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel<sp/>=<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" kindref="member">channel</ref>;</highlight></codeline>
 <codeline lineno="855"><highlight class="normal"></highlight></codeline>
-<codeline lineno="856"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="856"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="857"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(!((uint32_t)<sp/>channel<sp/>&lt;<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>)))<sp/>{</highlight></codeline>
 <codeline lineno="858"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="859"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2423,7 +2423,7 @@
 <codeline lineno="869" refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga5cdbefc94c44553c2e42d016d6cfb54f" refkind="member"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga5cdbefc94c44553c2e42d016d6cfb54f" kindref="member">dmac_check_channel</ref>(<ref refid="struct__dma__channel" kindref="compound">dma_channel_t</ref><sp/>*<sp/>dma_chn)</highlight></codeline>
 <codeline lineno="870"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="871"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>channel;</highlight></codeline>
-<codeline lineno="872"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="872"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="873"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(dma_chn<sp/>==<sp/>NULL))<sp/>{</highlight></codeline>
 <codeline lineno="874"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="875"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2433,7 +2433,7 @@
 <codeline lineno="879"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="880"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel<sp/>=<sp/>dma_chn-&gt;<ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" kindref="member">channel</ref>;</highlight></codeline>
 <codeline lineno="881"><highlight class="normal"></highlight></codeline>
-<codeline lineno="882"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
+<codeline lineno="882"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>UDMA_CHECK_ERRORS</highlight></codeline>
 <codeline lineno="883"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_arc_rarely(!((uint32_t)<sp/>channel<sp/>&lt;<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" kindref="member">DMA_ALL_CHANNEL_NUM</ref>)))<sp/>{</highlight></codeline>
 <codeline lineno="884"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="885"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
