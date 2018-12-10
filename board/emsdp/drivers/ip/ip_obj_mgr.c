@@ -143,16 +143,16 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id){
 			return dw_uart_get_dev(uart_id);
 			break;
 
-#if USE_DFSS_UART_0
+#if (USE_DFSS_UART_0)
 		case DFSS_UART_0_ID:
 #endif
-#if USE_DFSS_UART_1
+#if (USE_DFSS_UART_1)
 		case DFSS_UART_1_ID:
 #endif
-#if USE_DFSS_UART_2
+#if (USE_DFSS_UART_2)
 		case DFSS_UART_2_ID:
 #endif
-#if USE_DFSS_UART_3
+#if (USE_DFSS_UART_3)
 		case DFSS_UART_3_ID:
 #endif
 			return dfss_uart_get_dev(uart_id);
@@ -167,13 +167,13 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id){
 DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 {
 	switch (iic_id) {
-#if USE_DFSS_IIC_0
+#if (USE_DFSS_IIC_0)
 		case DFSS_IIC_0_ID:
 #endif
-#if USE_DFSS_IIC_1
+#if (USE_DFSS_IIC_1)
 		case DFSS_IIC_1_ID:
 #endif
-#if USE_DFSS_IIC_2
+#if (USE_DFSS_IIC_2)
 		case DFSS_IIC_2_ID:
 #endif
 			return dfss_iic_get_dev(iic_id);
@@ -193,6 +193,7 @@ DEV_I2S_PTR i2s_get_dev(int32_t i2s_id)
 #if (USE_DFSS_I2S_1)
 		case DFSS_I2S_1_ID:
 #endif
+		case DFSS_NO_I2S:
 			return dfss_i2s_get_dev(i2s_id);
 			break;
 		default:

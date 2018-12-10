@@ -34,6 +34,7 @@
 
 #define DFSS_I2S_0_ID		0	/*!< I2S 0 ID macro */
 #define DFSS_I2S_1_ID		1	/*!< I2S 1 ID macro */
+#define DFSS_NO_I2S			(-1)/* in case no ID is in use, dfss_i2s_get_dev() should handle this value*/
 
 #ifdef IO_I2S_TX_MST0_PRESENT
 #define USE_DFSS_I2S_0		1	/*!< enable use DFSS I2S 0 as TX */
