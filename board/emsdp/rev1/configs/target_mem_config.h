@@ -74,11 +74,11 @@
 #endif
 
 #ifndef EXT_ROM_START
-#define EXT_ROM_START 	0x10000000
+#define EXT_ROM_START 	0x00000000
 #endif
 
 #ifndef EXT_ROM_SIZE
-#define EXT_ROM_SIZE	0x1000000
+#define EXT_ROM_SIZE	0x40000
 #endif
 
 #ifndef EXT_RAM_START
@@ -133,7 +133,7 @@
  */
 #ifndef REGION_ROM
 #ifdef ARC_FEATURE_ICACHE_PRESENT
-#define REGION_ROM	REGION_EXT_ROM
+#define REGION_ROM	REGION_EXT_RAM
 #else
 #define REGION_ROM	REGION_ICCM
 #endif
@@ -141,7 +141,7 @@
 
 #ifndef REGION_RAM
 #ifdef ARC_FEATURE_DCACHE_PRESENT
-#define REGION_RAM	REGION_EXT_ROM
+#define REGION_RAM	REGION_EXT_RAM
 #else
 #define REGION_RAM	REGION_DCCM
 #endif
