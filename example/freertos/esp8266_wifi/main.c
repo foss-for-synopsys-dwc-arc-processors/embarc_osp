@@ -48,7 +48,7 @@ static char http_html_body_2[] =
     "<p>This Website is used to test the AT command about HttpServer of ESP8266.</p></body></html>";
 
 
-static char http_server_buf[1024];
+static char http_server_buf[2048];
 
 int main(void)
 {
@@ -74,7 +74,7 @@ int main(void)
 	EMBARC_PRINTF("============================ Connect WiFi ============================\n");
 
 	do {
-		esp8266_wifi_scan(esp8266, http_server_buf);
+		esp8266_wifi_scan(esp8266, http_server_buf, WIFI_SSID);
 		EMBARC_PRINTF("Searching for WIFI %s ......\n", WIFI_SSID);
 		board_delay_ms(100, 1);
 	} while (strstr(http_server_buf, WIFI_SSID)==NULL);

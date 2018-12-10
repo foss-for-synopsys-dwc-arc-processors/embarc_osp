@@ -72,13 +72,13 @@ int32_t esp8266_test(ESP8266_DEF_PTR obj);
 
 int32_t esp8266_wifi_mode_get(ESP8266_DEF_PTR obj, bool flash);
 int32_t esp8266_wifi_mode_set(ESP8266_DEF_PTR obj, ESP8266_WIFI_MODE, bool flash);
-int32_t esp8266_wifi_scan(ESP8266_DEF_PTR obj, char * rcv_buf);
+int32_t esp8266_wifi_scan(ESP8266_DEF_PTR obj, char *rcv_buf, char *ssid);
 int32_t esp8266_wifi_connect(ESP8266_DEF_PTR obj, AT_STRING ssid, AT_STRING pwd, bool flash);
 int32_t esp8266_wifi_disconnect(ESP8266_DEF_PTR obj);
 int32_t esp8266_address_get(ESP8266_DEF_PTR obj);
 int32_t esp8266_conn_status(ESP8266_DEF_PTR obj);
 
-int32_t esp8266_dns_lookup(ESP8266_DEF_PTR obj, char * domain_ip, AT_STRING domain_name);
+int32_t esp8266_dns_lookup(ESP8266_DEF_PTR obj, char *domain_ip, AT_STRING domain_name);
 int32_t esp8266_tcp_connect(ESP8266_DEF_PTR obj, AT_STRING server_IP, uint32_t port);
 int32_t esp8266_tcp_server_open(ESP8266_DEF_PTR obj, uint32_t port);
 int32_t esp8266_tcp_server_close(ESP8266_DEF_PTR obj, uint32_t port);
@@ -88,10 +88,10 @@ int32_t esp8266_passthr_start(ESP8266_DEF_PTR obj);
 int32_t esp8266_passthr_end(ESP8266_DEF_PTR obj);
 int32_t esp8266_passthr_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt);
 uint32_t esp8266_normal_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt);
-uint32_t esp8266_connect_write(ESP8266_DEF_PTR obj, char *buf, char* connect, uint32_t cnt);
+uint32_t esp8266_connect_write(ESP8266_DEF_PTR obj, char *buf, char *connect, uint32_t cnt);
 int32_t esp8266_read(ESP8266_DEF_PTR obj, char *buf, uint32_t timeout);
 uint32_t esp8266_nread(ESP8266_DEF_PTR obj, char *buf, uint32_t n);
 
-int32_t esp8266_CIPCLOSE(ESP8266_DEF_PTR obj, char * conn_buf);
+int32_t esp8266_CIPCLOSE(ESP8266_DEF_PTR obj, char *conn_buf);
 
 #endif
