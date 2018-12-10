@@ -62,7 +62,7 @@
       </memberdef>
       <memberdef kind="define" id="emsdp_2rev1_2configs_2target__mem__config_8h_1a8a0a71f16dd7f61d6e77062b717b09d1" prot="public" static="no">
         <name>EXT_ROM_START</name>
-        <initializer>0x10000000</initializer>
+        <initializer>0x00000000</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -73,7 +73,7 @@
       </memberdef>
       <memberdef kind="define" id="emsdp_2rev1_2configs_2target__mem__config_8h_1ac98d4b3ac64eb855b66e52f86f6d2265" prot="public" static="no">
         <name>EXT_ROM_SIZE</name>
-        <initializer>0x1000000</initializer>
+        <initializer>0x40000</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -302,11 +302,11 @@
 <codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EXT_ROM_START</highlight></codeline>
-<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXT_ROM_START<sp/><sp/><sp/>0x10000000</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXT_ROM_START<sp/><sp/><sp/>0x00000000</highlight></codeline>
 <codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EXT_ROM_SIZE</highlight></codeline>
-<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXT_ROM_SIZE<sp/><sp/><sp/><sp/>0x1000000</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>EXT_ROM_SIZE<sp/><sp/><sp/><sp/>0x40000</highlight></codeline>
 <codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="83"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EXT_RAM_START</highlight></codeline>
@@ -348,7 +348,7 @@
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="preprocessor">#ifndef<sp/>REGION_ROM</highlight></codeline>
 <codeline lineno="135"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_ICACHE_PRESENT</highlight></codeline>
-<codeline lineno="136"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>REGION_ROM<sp/><sp/><sp/><sp/><sp/><sp/>REGION_EXT_ROM</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>REGION_ROM<sp/><sp/><sp/><sp/><sp/><sp/>REGION_EXT_RAM</highlight></codeline>
 <codeline lineno="137"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>REGION_ROM<sp/><sp/><sp/><sp/><sp/><sp/>REGION_ICCM</highlight></codeline>
 <codeline lineno="139"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -356,7 +356,7 @@
 <codeline lineno="141"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>REGION_RAM</highlight></codeline>
 <codeline lineno="143"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_DCACHE_PRESENT</highlight></codeline>
-<codeline lineno="144"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>REGION_RAM<sp/><sp/><sp/><sp/><sp/><sp/>REGION_EXT_ROM</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>REGION_RAM<sp/><sp/><sp/><sp/><sp/><sp/>REGION_EXT_RAM</highlight></codeline>
 <codeline lineno="145"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="146"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>REGION_RAM<sp/><sp/><sp/><sp/><sp/><sp/>REGION_DCCM</highlight></codeline>
 <codeline lineno="147"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
