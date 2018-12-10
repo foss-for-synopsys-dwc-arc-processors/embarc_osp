@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#ifndef RS9113_ADAPTER_H_
-#define	RS9113_ADAPTER_H_
+#ifndef _RS9113_ADAPTER_H_
+#define	_RS9113_ADAPTER_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -123,4 +123,4 @@ extern void rs9113_period_process(DEV_WNIC *rs9113_wnic, void *ptr);
 }
 #endif
 
-#endif	/* RS9113_ADAPTER_H_ */
+#endif	/* _RS9113_ADAPTER_H_ */
