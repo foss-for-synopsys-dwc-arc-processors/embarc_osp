@@ -1,16 +1,16 @@
 .. _board_emsdp:
 
-ARC EM Software Development Platform
+|emsdp|
 ====================================
 
 Introduction
 ------------
 
-The DesignWare® ARC® EM Software Development Platform (EM SDP, emsdp)
+The DesignWare® ARC® |emsdp| (emsdp)
 is an FPGA based development platform intended to support ARC licenses in developing their software for the ARC EM processor family and ARC EM Subsystems. It has the support for ARC
 EM4, EM5D, EM6, EM7D, EM9D and EM11D processors. ARC EM Enhanced Security Package (ESP) and ARC EM Subsystems (DFSS, SCSS, DSS) are also supported.
 
-The EM SDP board includes the following features:
+The |emsdp| board includes the following features:
 
 - Support for selected ARC EM and ARC EM Subsystem configurations
 - Drag-and-drop configuration of FPGA device through USB
@@ -39,7 +39,7 @@ The EM SDP board includes the following features:
 - Buttons, LEDs and switches
 
 
-The DesignWare ARC EM Software Development Platform contains the following components:
+The DesignWare |emsdp| contains the following components:
 
 - FPGA
 
@@ -73,7 +73,7 @@ The DesignWare ARC EM Software Development Platform contains the following compo
 FPGA
 ^^^^
 
-The FPGA on the ARC EM SDP board is configured by storing an FPGA bitstream into the configuration memory of the ARC EM SDP.
+The FPGA on the |emsdp| board is configured by storing an FPGA bitstream into the configuration memory of the |emsdp|.
 Drag-and-drop feature enable users to copy an FPGA bitstream from the PC to the configuration memory and programmed into the FPGA.
 
 Memory
@@ -84,18 +84,18 @@ Please refer to `ARC_EM_SDP_UserGuide` for memory map and more details.
 Interfaces
 ^^^^^^^^^^
 
-ARC EM SDP board provides a variety set of peripherals for evaluate and development.
+|emsdp| board provides a variety set of peripherals for evaluate and development.
 There are many peripheral devices available, such as SPI, IIC, UART, GPIO.
-Upon these, the ARC EM SDP offers multiple interfaces for audio, USB, micro-SD card, wireless, ADC, motion sensor, etc.
+Upon these, the |emsdp| offers multiple interfaces for audio, USB, micro-SD card, wireless, ADC, motion sensor, etc.
 External hardware modules can also be easily connected to the board though extension interfaces using Pmod Connectors, Arduino, mikro BUS.
 
 .. image:: /pic/emsdp_peripheral_interfaces.jpg
-    :alt: EM SDP Interfaces
+    :alt: |emsdp| Interfaces
 
 Extensions
 ^^^^^^^^^^
 
-To bring your application context around the ARC EM SDP, Pmod Connectors, Arduino, mikro BUS are supported.
+To bring your application context around the |emsdp|, Pmod Connectors, Arduino, mikro BUS are supported.
 All the sets of connections are controlled by mux controller and can be switched by user.
 There are many peripheral devices available, such as SPI, IIC, UART, GPIO.
 
@@ -105,7 +105,7 @@ Usage
 
 Setting Up
 ^^^^^^^^^^
-You can use either USB-JTAG or USB-UART interface to communicate with ARC EM SDP board.
+You can use either USB-JTAG or USB-UART interface to communicate with |emsdp| board.
 Before the interfaces are used, you must install the required drivers on the computer where you intend to run
 the MetaWare debugger or other serial debug consoles (such as PuTTY or other hyper-terminals).
 
@@ -118,8 +118,8 @@ You may also skip this step if you are using default settings.
 
 Package Preparation
 ^^^^^^^^^^^^^^^^^^^
-This section talks about how to add new ARC EM SDP cores into embARC OSP.
-If you are using default cores of ARC EM SDP: *em6_scss*, *em7d_esp_dfss*, and *em11d_dfss*, then you may skip this section.
+This section talks about how to add new |emsdp| cores into embARC OSP.
+If you are using default cores of |emsdp|: *em6_scss*, *em7d_esp_dfss*, and *em11d_dfss*, then you may skip this section.
 
 #. You may download the package from our website. Suppose you want to add a new package called ``em9d_dfss``, your package name would be ``embarc_em9d_dfss.zip``.
 
@@ -135,7 +135,7 @@ If you are using default cores of ARC EM SDP: *em6_scss*, *em7d_esp_dfss*, and *
 
 Run Your First Program
 ^^^^^^^^^^^^^^^^^^^^^^
-By setting up the board, you are now ready to run your first program on ARC EM SDP.
+By setting up the board, you are now ready to run your first program on |emsdp|.
 please refer to example `example_blinky` for further details. Build and download the example using either MetaWare or GNU. The command is shown below:
 
 .. code-block:: console
@@ -165,7 +165,7 @@ Another example is to add both wifi driver and audio codec driver for an online 
 
 Contributing
 ^^^^^^^^^^^^
-ARC EM SDP is welcome to your contribution. If you found any bug or issue or have suggestions,
+|emsdp| is welcome to your contribution. If you found any bug or issue or have suggestions,
 please feel free to raise issues or pull requests at [embARC Open Software Platform](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp) repository on GitHub.
 
 
