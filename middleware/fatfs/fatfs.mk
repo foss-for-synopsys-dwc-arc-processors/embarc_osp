@@ -1,9 +1,9 @@
 # dir declaration
 MID_FATFS_DIR = $(MIDDLEWARES_ROOT)/fatfs
 
-MID_FATFS_ASMSRCDIR	= $(MID_FATFS_DIR)/src
-MID_FATFS_CSRCDIR	= $(MID_FATFS_DIR)/src $(MID_FATFS_DIR)/src/diskdrv
-MID_FATFS_INCDIR	= $(MID_FATFS_DIR)/src $(MID_FATFS_DIR)/src/diskdrv
+MID_FATFS_ASMSRCDIR	= $(MID_FATFS_DIR)/source
+MID_FATFS_CSRCDIR	= $(MID_FATFS_DIR)/source $(MID_FATFS_DIR)/source/diskdrv
+MID_FATFS_INCDIR	= $(MID_FATFS_DIR)/source $(MID_FATFS_DIR)/source/diskdrv
 
 # find all the source files in the target directories
 MID_FATFS_CSRCS = $(call get_csrcs, $(MID_FATFS_CSRCDIR))

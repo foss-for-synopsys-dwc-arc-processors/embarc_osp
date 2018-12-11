@@ -194,7 +194,7 @@ int main(void)
 		EMBARC_PRINTF("%s open error. use default bootloader\r\n", BOOT_CFG_FILE_NAME);
 		default_bt_flag = 1;
 	} else {
-		res = f_read(&file, boot_json, file.fsize, &cnt);
+		res = f_read(&file, boot_json, f_size(&file), &cnt);
 
 		if (res) {
 			EMBARC_PRINTF("read boot cfg file error\r\n");
@@ -301,10 +301,10 @@ int main(void)
 			boot_flag = 0;
 		} else {
 			ram = (void *)boot_cfg.ram_startaddress;
-			res = f_read(&file, ram, file.fsize, &cnt);
+			res = f_read(&file, ram, f_size(&file), &cnt);
 			f_close(&file);
 
-			if (res || ((uint32_t)cnt != file.fsize)) {
+			if (res || ((uint32_t)cnt != f_size(&file))) {
 				EMBARC_PRINTF("%s read error\r\n", boot_cfg.boot_file);
 				boot_flag = 0;
 			}

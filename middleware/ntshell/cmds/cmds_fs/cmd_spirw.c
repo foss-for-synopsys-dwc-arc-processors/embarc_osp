@@ -110,7 +110,7 @@ static int32_t write_spi_image(FIL *file, uint32_t address, uint32_t ram_address
 	header.head = BOOTIMAGE_HEAD; // 0x68656164 = 'head'
 	header.cpu_type = 0;
 	header.start = address + IMAGE_HEADER_LEN;  // image will be placed next address after the header.
-	header.size = file->fsize;
+	header.size = f_size(file);
 	header.ramaddr = ram_address;
 	header.ramstart = ram_start;
 	header.checksum = 0;
