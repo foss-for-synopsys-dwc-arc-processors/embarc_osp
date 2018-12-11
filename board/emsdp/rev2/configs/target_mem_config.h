@@ -74,11 +74,11 @@
 #endif
 
 #ifndef EXT_ROM_START
-#define EXT_ROM_START 	0x10000000
+#define EXT_ROM_START 	0x00000000
 #endif
 
 #ifndef EXT_ROM_SIZE
-#define EXT_ROM_SIZE	0x1000000
+#define EXT_ROM_SIZE	0x40000
 #endif
 
 #ifndef EXT_RAM_START
