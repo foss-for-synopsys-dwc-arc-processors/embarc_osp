@@ -6,7 +6,7 @@ ARC EM Software Development Platform
 Introduction
 ------------
 
-The DesignWare ARC |emsdp| (emsdp)
+The ARC |emsdp| (emsdp)
 is an FPGA based development platform intended to support ARC licenses in developing their software for the ARC EM processor family and ARC EM Subsystems. It has the support for ARC
 EM4, EM5D, EM6, EM7D, EM9D and EM11D processors. ARC EM Enhanced Security Package (ESP) and ARC EM Subsystems (DFSS, SCSS, DSS) are also supported.
 
