@@ -55,7 +55,7 @@ static SS_SPI_MASTER_DEV_CONTEXT spi_master_context0 = {
 	IO_SPI_MST0_INT_TX_REQ,
 	IO_SPI_MST0_INT_IDLE,
 	IO_SPI_MST0_INT_ERR,
-	BOARD_SPI_FREQ,
+	EMSDP_SPI_REF_CLOCK,
 	0,
 	spi_rx_cb0,
 	spi_tx_cb0,
@@ -110,7 +110,7 @@ static void dfss_spi_0_install(void)
 	spi_master_context0.info = info;
 	/** spi info init */
 	info->status = DEV_DISABLED;
-	info->freq = 2000000;
+	info->freq = 1000000;
 	info->opn_cnt = 0;
 	info->mode = DEV_MASTER_MODE;
 	info->clk_mode = SPI_CLK_MODE_DEFAULT;
@@ -143,7 +143,7 @@ static SS_SPI_MASTER_DEV_CONTEXT spi_master_context1 = {
 	IO_SPI_MST1_INT_TX_REQ,
 	IO_SPI_MST1_INT_IDLE,
 	IO_SPI_MST1_INT_ERR,
-	BOARD_SPI_FREQ,
+	EMSDP_SPI_REF_CLOCK,
 	0,
 	spi_rx_cb1,
 	spi_tx_cb1,
@@ -198,7 +198,7 @@ static void dfss_spi_1_install(void)
 	spi_master_context1.info = info;
 	/** spi info init */
 	info->status = DEV_DISABLED;
-	info->freq = 2000000;
+	info->freq = 1000000;
 	info->opn_cnt = 0;
 	info->mode = DEV_MASTER_MODE;
 	info->clk_mode = SPI_CLK_MODE_DEFAULT;
@@ -232,7 +232,7 @@ static SS_SPI_MASTER_DEV_CONTEXT spi_master_context2 = {
 	IO_SPI_MST2_INT_TX_REQ,
 	IO_SPI_MST2_INT_IDLE,
 	IO_SPI_MST2_INT_ERR,
-	BOARD_SPI_FREQ,
+	EMSDP_SPI_REF_CLOCK,
 	0,
 	spi_rx_cb2,
 	spi_tx_cb2,

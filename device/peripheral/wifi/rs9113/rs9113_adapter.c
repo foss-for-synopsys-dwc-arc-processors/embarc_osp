@@ -164,7 +164,7 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 	rs9113_info->network_type = network_type; /* set network type used next */
 	rswifi_if_ptr = (WIFI_IF_PTR)(rs9113_info->extra);
 
-	ercd = _rs9113_spi_open(BOARD_SPI_FREQ, SPI_CLK_MODE_0);
+	ercd = _rs9113_spi_open(10000000, SPI_CLK_MODE_0);
 	dbg_printf(DBG_MORE_INFO, "_rs9113_spi_open return 0x%x\r\n", ercd);
 	RS9113_CHECK_EXP(ercd == E_OK, E_SYS);
 	//! Driver initialization

@@ -59,8 +59,10 @@
 #define BOARD_CONSOLE_UART_ID			DW_UART_0_ID
 #define BOARD_CONSOLE_UART_BAUD			UART_BAUDRATE_115200
 
+
 #ifndef BOARD_SPI_FREQ
-#define BOARD_SPI_FREQ					EMSDP_SPI_REF_CLOCK
+/* SPI bus working frequency, this value is not EMSDP_SPI_REF_CLOCK */
+#define BOARD_SPI_FREQ					(1000000)
 #endif
 #define BOARD_RSI_SPI_ID				DW_SPI_0_ID
 #define BOARD_RSI_SPI_CS				0
