@@ -72,7 +72,7 @@ Memory Mapped Resources
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 The memory mapped resources are resources that are mapped into memory address
-space, e.g. ram, rom, peripherals (UART/I2/SPI). Memory mapped resources are
+space, e.g. ram, rom, peripherals (UART/I2C/SPI). Memory mapped resources are
 isolated and protected by the MPU.
 
 System Resources
@@ -143,22 +143,22 @@ An access-control table example is shown below:
 .. code-block:: c
 
      static CONTAINER_AC_TABLE g_container_act[] = {
-    	/* memory mapper peripheral, {start_address, size in bytes, type | access} */
+        /* memory mapper peripheral, {start_address, size in bytes, type | access} */
         {(void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
         /* memory, {start_address, size in bytes, type | access} */
-    	{(void *)0x10000, 0x1000, SECURESHIELD_ACDEF_URAM},
-    	/* system resources-interrupt, {interrupt handler, interrupt no, type} */
-    	{default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ},
-    	/* system resources-auxiliary registers, {start_address, size, type}*/
-    	{(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
-    	/* container interface, {interface handler, number of interface handler arguments, type} */
-   	{tst_func4, 4, SECURESHIELD_AC_INTERFACE},
+        {(void *)0x10000, 0x1000, SECURESHIELD_ACDEF_URAM},
+        /* system resources-interrupt, {interrupt handler, interrupt no, type} */
+        {default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ},
+        /* system resources-auxiliary registers, {start_address, size, type}*/
+        {(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
+        /* container interface, {interface handler, number of interface handler arguments, type} */
+    {tst_func4, 4, SECURESHIELD_AC_INTERFACE},
      };
 
 According to this access control table, the container is allocated the
 peripheral area of PIN_MUX, a 0x1000 bytes ram region starting from 0x10000, a
 GPIO interrupt (INTNO_GPIO), an auxiliary-register area starting from 0x21
-with a size of 03. The container also has an interface (tst_func4) to provide
+with a size of 0x3. The container also has an interface (tst_func4) to provide
 the service with 4 arguments in the interface handler function
 
 The resource type describes the kind of resource, such as interrupt, register,
@@ -186,7 +186,7 @@ services. The following SecureShield runtime services are provided:
 
 - container call: call the services provided by other containers
 
-- interrupt management: see secureshield_int_exports.h
+- interrupt management: see ``secureshield_int_exports.h``
 
 - auxiliary-register access and benchmark function: see
   ``secureshield_sys_ops_exports.h``
@@ -223,7 +223,7 @@ interface must first be registered in the access control table. The background
 container has no interface as its resources are shared to all other
 containers.
 
-To call a container interface, container all is required. The following is an
+To call a container interface, container call is required. The following is an
 example.
 
 
@@ -284,7 +284,7 @@ containers, is in normal memory (normal rom and ram). The secure world,
 consisting of secure containers, is in secure memory (secure rom and ram). In
 each world, containers are isolated with each other through MPU, an address
 alignment is also required. Besides secure containers, SecureShield runtime,
-can be viewed as a special secure container, is in secure memory with a fixed
+can be regarded as a special secure container, is in secure memory with a fixed
 position. SecureShield runtime will be compiled and linked independently with
 the application, so it's a black box to application.
 
@@ -329,7 +329,7 @@ Steps to Create a SecureShield Application
 - APPL_SECURE_CSRC_DIR (optional), the directories of C source files which
   need to be compiled and linked with SecureShield runtime
 
-- SECURE_SYMBOL_LIST (optional ), the file of symbols need to be exported to
+- SECURE_SYMBOL_LIST (optional), the file of symbols need to be exported to
   normal application from secure binary
 
 2. Container Memory Configuration File (secureshield_appl_config.h)
@@ -430,11 +430,18 @@ Upon compiling and linking, the following files will be generated:
 
 - linker_xx.ldf: the generated linker script for normal application
 
-- the generated linker script for secure binary
+- secure_linker_xx.ldf: the generated linker script for secure binary
 
 - secureshield_secure.bin/elf: secure binary
 
 - secureshield_secure.syms: the exported secure symbol list
 
+- <app_name>_xx_xx.bin/elf: normal application binary
+
 SecureShield Application Examples
 =================================
+
+* :ref:`example_secureshield_secret_normal`
+* :ref:`example_secureshield_secret_secure`
+* :ref:`example_secureshield_secret_secure_sid`
+* :ref:`example_secureshield_test_case`
