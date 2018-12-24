@@ -31,6 +31,5 @@ COMMON_COMPILE_PREREQUISITES += makefile
 
 ### Options above must be added before include options.mk ###
 # include key embARC build system makefile
-override EMBARC_ROOT := $(strip $(subst \,/,$(EMBARC_ROOT)))
 include $(EMBARC_ROOT)/options/options.mk
 
