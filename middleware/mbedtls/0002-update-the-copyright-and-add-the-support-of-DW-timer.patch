@@ -1,0 +1,243 @@
+From 3dbb8cfe1e5a83ccfb717b04b3178ffe2e4b6e12 Mon Sep 17 00:00:00 2001
+From: Wayne Ren <wei.ren@synopsys.com>
+Date: Sat, 29 Dec 2018 15:16:37 +0800
+Subject: [PATCH 2/2] update the copyright and add the support of DW timer
+
+* update copyright
+* There is no TIMER1 in EMSDP, instead, use DW timer 0 channel 0
+as timer for mbedtls
+
+Signed-off-by: Wayne Ren <wei.ren@synopsys.com>
+---
+ embARC/threading_alt.c | 48 ++++++++++++++++++--------------
+ embARC/threading_alt.h | 50 +++++++++++++++++++---------------
+ embARC/timing_alt.c    | 62 ++++++++++++++++++++++++++++--------------
+ embARC/timing_alt.h    |  6 +---
+ 4 files changed, 98 insertions(+), 68 deletions(-)
+
+diff --git a/embARC/threading_alt.c b/embARC/threading_alt.c
+index 4f830a911..d3467f5c5 100644
+--- a/embARC/threading_alt.c
++++ b/embARC/threading_alt.c
+@@ -1,23 +1,31 @@
+-/*
+- *  Threading abstraction layer
+- *
+- *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+- *  SPDX-License-Identifier: Apache-2.0
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+- *  not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *  http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- *
+- *  This file is part of mbed TLS (https://tls.mbed.org)
+- */
++/* ------------------------------------------
++ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
++
++ * Redistribution and use in source and binary forms, with or without modification,
++ * are permitted provided that the following conditions are met:
++
++ * 1) Redistributions of source code must retain the above copyright notice, this
++ * list of conditions and the following disclaimer.
++
++ * 2) Redistributions in binary form must reproduce the above copyright notice,
++ * this list of conditions and the following disclaimer in the documentation and/or
++ * other materials provided with the distribution.
++
++ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
++ * be used to endorse or promote products derived from this software without
++ * specific prior written permission.
++
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
++ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
++ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++--------------------------------------------- */
+ 
+ #if !defined(MBEDTLS_CONFIG_FILE)
+ #include "mbedtls/config.h"
+diff --git a/embARC/threading_alt.h b/embARC/threading_alt.h
+index 8ffee49df..beb9096e3 100644
+--- a/embARC/threading_alt.h
++++ b/embARC/threading_alt.h
+@@ -1,25 +1,31 @@
+-/**
+- * \file threading.h
+- *
+- * \brief Threading abstraction layer
+- *
+- *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+- *  SPDX-License-Identifier: Apache-2.0
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+- *  not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *  http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- *
+- *  This file is part of mbed TLS (https://tls.mbed.org)
+- */
++/* ------------------------------------------
++ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
++
++ * Redistribution and use in source and binary forms, with or without modification,
++ * are permitted provided that the following conditions are met:
++
++ * 1) Redistributions of source code must retain the above copyright notice, this
++ * list of conditions and the following disclaimer.
++
++ * 2) Redistributions in binary form must reproduce the above copyright notice,
++ * this list of conditions and the following disclaimer in the documentation and/or
++ * other materials provided with the distribution.
++
++ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
++ * be used to endorse or promote products derived from this software without
++ * specific prior written permission.
++
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
++ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
++ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++--------------------------------------------- */
+ #ifndef MBEDTLS_THREADING_ALT_H
+ #define MBEDTLS_THREADING_ALT_H
+ 
+diff --git a/embARC/timing_alt.c b/embARC/timing_alt.c
+index aaa5aab62..b017d9dad 100644
+--- a/embARC/timing_alt.c
++++ b/embARC/timing_alt.c
+@@ -1,23 +1,31 @@
+-/*
+- *  Portable interface to the CPU cycle counter
+- *
+- *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+- *  SPDX-License-Identifier: Apache-2.0
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+- *  not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *  http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+- *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- *
+- *  This file is part of mbed TLS (https://tls.mbed.org)
+- */
++/* ------------------------------------------
++ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
++
++ * Redistribution and use in source and binary forms, with or without modification,
++ * are permitted provided that the following conditions are met:
++
++ * 1) Redistributions of source code must retain the above copyright notice, this
++ * list of conditions and the following disclaimer.
++
++ * 2) Redistributions in binary form must reproduce the above copyright notice,
++ * this list of conditions and the following disclaimer in the documentation and/or
++ * other materials provided with the distribution.
++
++ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
++ * be used to endorse or promote products derived from this software without
++ * specific prior written permission.
++
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
++ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
++ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
++ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
++ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
++ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++--------------------------------------------- */
+ /*
+  * Modified for port to ARC processor
+  */
+@@ -62,17 +70,29 @@ unsigned long mbedtls_timing_get_timer( struct mbedtls_timing_hr_time *val, int
+ 
+ static void mbedtls_alarm_handler(void *param) {
+ 	mbedtls_timing_alarmed = 1;
++#if ARC_FEATURE_TIMER1_PRESENT > 0
+ 	int_disable(INTNO_TIMER1);
++#endif
+ }
+ 
+ 
+ void mbedtls_set_alarm( int seconds )
+ {
+-	mbedtls_timing_alarmed = 0;
++#if ARC_FEATURE_TIMER1_PRESENT > 0
+ 	int_disable(INTNO_TIMER1); /* disable first then enable */
+ 	int_handler_install(INTNO_TIMER1, mbedtls_alarm_handler);
+ 	timer_start(TIMER_1, TIMER_CTRL_IE, 1000 * seconds * (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ));
+ 	int_enable(INTNO_TIMER1);
++#elif defined(BOARD_EMSDP)
++	DEV_PWM_TIMER_PTR timer = pwm_timer_get_dev(DW_PWM_TIMER_0_ID);
++
++	timer->pwm_timer_open();
++
++	timer->pwm_timer_write(0, DEV_PWM_TIMER_MODE_TIMER, 1000 * seconds, 0);
++	timer->pwm_timer_control(0, PWM_TIMER_CMD_SET_ISR, (void *)(mbedtls_alarm_handler));
++	timer->pwm_timer_control(0, PWM_TIMER_CMD_ENA_ISR, (void *)(0));
++#endif
++	mbedtls_timing_alarmed = 0;
+ }
+ 
+ void mbedtls_timing_set_delay( void *data, uint32_t int_ms, uint32_t fin_ms )
+diff --git a/embARC/timing_alt.h b/embARC/timing_alt.h
+index 151765d34..a3463ba91 100644
+--- a/embARC/timing_alt.h
++++ b/embARC/timing_alt.h
+@@ -1,5 +1,5 @@
+ /* ------------------------------------------
+- * Copyright (c) 2015, Synopsys, Inc. All rights reserved.
++ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
+ 
+  * Redistribution and use in source and binary forms, with or without modification,
+  * are permitted provided that the following conditions are met:
+@@ -25,10 +25,6 @@
+  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+- *
+- * \version 2015.10
+- * \date 2015-12-29
+- * \author Wayne Ren(Wei.Ren@synopsys.com)
+ --------------------------------------------- */
+ #ifndef _TIMING_ALT_H_
+ #define _TIMING_ALT_H_
+-- 
+2.17.1.windows.2
+
