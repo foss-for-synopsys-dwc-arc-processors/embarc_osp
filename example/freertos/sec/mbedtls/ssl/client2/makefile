@@ -1,11 +1,17 @@
 # Application name
 APPL ?= mbedtls_ssl_client2
 
-EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
+BOARD ?= emsk
+
+ifeq ($(BOARD), emsdp)
+EXT_DEV_LIST += wifi/rs9113
+else
+EXT_DEV_LIST += wifi/mrf24g
+endif
 
 # Heap Size Settings
-HEAPSZ ?= 1048576
-STACKSZ ?= 1048576
+HEAPSZ ?= 8192
+STACKSZ ?= 2048
 
 APPL_DEFINES  = -DNTCONF_EDITOR_MAXLEN=256 -DMBEDTLS_CONFIG_FILE=\"mbedtls_config.h\"
 
