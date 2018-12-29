@@ -639,7 +639,7 @@ typedef struct rsi_scan_info_s
 
   //! reserved
   uint8_t reserved[2];
-}rsi_scan_info_t;
+} rsi_scan_info_t;
 
 //! multicast command request structure
 typedef struct rsi_req_multicast_filter_info_s

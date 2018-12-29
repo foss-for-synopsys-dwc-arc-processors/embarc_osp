@@ -219,7 +219,7 @@ rsi_error_t rsi_semaphore_create(rsi_semaphore_handle_t *semaphore,uint32_t coun
 
 	*p_semaphore = xSemaphoreCreateBinary();
 
-	if(*semaphore == NULL)
+	if(*p_semaphore == NULL)
 	{
 		return  RSI_ERROR_IN_OS_OPERATION;
 	}

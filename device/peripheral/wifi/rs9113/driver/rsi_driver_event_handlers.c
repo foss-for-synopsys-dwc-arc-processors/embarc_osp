@@ -286,9 +286,9 @@ void rsi_rx_event_handler(void)
   rsi_pkt_t *rx_pkt = NULL;
 #ifdef RSI_SPI_INTR_FIX
 #ifdef RSI_SPI_INTERFACE
-  uint16_t   retval = 0;
-  uint8_t    int_status = 0;
-  rsi_reg_flags_t flags;
+ // uint16_t   retval = 0;
+  //uint8_t    int_status = 0;
+  //rsi_reg_flags_t flags;
 #endif
 #endif
 
