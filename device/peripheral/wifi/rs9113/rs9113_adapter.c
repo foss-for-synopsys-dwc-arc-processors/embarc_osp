@@ -40,7 +40,7 @@
 #include "rs9113_adapter.h"
 #include "rsi_driver.h"
 
-#define DBG_MORE
+#define DBG_LESS
 #include "embARC_debug.h"
 #define RS9113_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 

@@ -6,14 +6,19 @@ BOARD ?= emsk
 ifeq ($(BOARD), emsdp)
 EXT_DEV_LIST += wifi/rs9113
 else
-EXT_DEV_LIST += wifi/mrf24g
+EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420
 endif
 
 # Heap Size Settings
-HEAPSZ ?= 8192
+HEAPSZ ?= 1024*96
 STACKSZ ?= 2048
 
-APPL_DEFINES  = -DMBEDTLS_CONFIG_FILE=\"mbedtls_config.h\"
+APPL_DEFINES  += -DMBEDTLS_CONFIG_FILE=\"mbedtls_config.h\" \
+				 -DTASK_STACK_SIZE_WIFI=1024 \
+				 -DTASK_STACK_SIZE_NTSHELL=4096 \
+				 -DNTSHELL_USE_CMDS_ARC=0 \
+				 -DNTSHELL_USE_CMDS_PERIPHERAL=0
+
 
 #
 # root dir of embARC
