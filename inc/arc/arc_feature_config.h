@@ -265,6 +265,22 @@
 #endif
 #endif
 
+#if !defined(ARC_FEATURE_YCCM_PRESENT)
+#if defined(core_config_xy_config_dccm_y) || defined(core_config_xy_config_dccm_x_y)
+#define ARC_FEATURE_YCCM_PRESENT 	1
+#define ARC_FEATURE_YCCM_BASE		core_config_xy_y_base
+#define ARC_FEATURE_YCCM_SIZE		core_config_xy_size
+#endif
+#endif
+
+#if !defined(ARC_FEATURE_XCCM_PRESENT)
+#if defined(core_config_xy_config_dccm_x) || defined(core_config_xy_config_dccm_x_y)
+#define ARC_FEATURE_XCCM_PRESENT 	1
+#define ARC_FEATURE_XCCM_BASE		core_config_xy_x_base
+#define ARC_FEATURE_XCCM_SIZE		core_config_xy_size
+#endif
+#endif
+
 /** Peripheral memory region(DMP) base address, if dmp configured, this macro will be defined as base address */
 #if !defined(ARC_FEATURE_DMP_PERIPHERAL)
 #if defined(core_config_cir_dmp_peripheral)

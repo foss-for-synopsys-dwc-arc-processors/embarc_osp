@@ -9,6 +9,12 @@ MEMORY
 #if (REGION_DCCM_SIZE !=0)
 	REGION_DCCM :		ORIGIN = REGION_DCCM_START,	LENGTH = REGION_DCCM_SIZE
 #endif
+#if (REGION_XCCM_SIZE != 0)
+	REGION_XCCM :		ORIGIN = REGION_XCCM_START,	LENGTH = REGION_XCCM_SIZE
+#endif
+#if (REGION_YCCM_SIZE != 0)
+	REGION_YCCM :		ORIGIN = REGION_YCCM_START,	LENGTH = REGION_YCCM_SIZE
+#endif
 #if (REGION_EXT_ROM_SIZE != 0)
 	REGION_EXT_ROM :	ORIGIN = REGION_EXT_ROM_START,	LENGTH = REGION_EXT_ROM_SIZE
 #endif
@@ -37,6 +43,23 @@ SECTIONS
 		_e_vector = .;
 	} > REGION_ROM
 
+#if (REGION_XCCM_SIZE != 0)
+	.x_ccm (NOLOAD) : ALIGN(8)
+	{
+		_f_x_ccm = .;
+		*(.x_ccm .x_cmm.*)
+		_e_x_ccm = .;
+	} > REGION_XCCM
+#endif
+
+#if (REGION_YCCM_SIZE != 0)
+	.y_ccm (NOLOAD) : ALIGN(8)
+	{
+		_f_y_ccm = .;
+		*(.y_ccm .y_ccm.*)
+		_e_y_ccm = .;
+	} > REGION_YCCM
+#endif
 	.text : ALIGN(4)
 	{
 		_f_text = .;

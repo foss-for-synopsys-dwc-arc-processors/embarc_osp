@@ -82,7 +82,24 @@
 #endif
 #endif
 
-/* A fake ROM, assigned from RAM */
+#ifdef ARC_FEATURE_XCCM_PRESENT
+#ifndef REGION_XCCM_START
+#define REGION_XCCM_START	ARC_FEATURE_XCCM_BASE
+#endif
+#ifndef REGION_XCCM_SIZE
+#define REGION_XCCM_SIZE	ARC_FEATURE_XCCM_SIZE
+#endif
+#endif
+
+#ifdef ARC_FEATURE_YCCM_PRESENT
+#ifndef REGION_YCCM_START
+#define REGION_YCCM_START	ARC_FEATURE_YCCM_BASE
+#endif
+#ifndef REGION_YCCM_SIZE
+#define REGION_YCCM_SIZE	ARC_FEATURE_YCCM_SIZE
+#endif
+#endif
+
 #ifndef EXT_ROM_START
 #define EXT_ROM_START	0x80000000
 #endif
