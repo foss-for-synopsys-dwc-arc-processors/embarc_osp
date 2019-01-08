@@ -35,11 +35,15 @@
 #include "board.h"
 
 
-/** uart id which HM-10 BLE uses */
-#if defined(BOARD_EMSK)
+/** uart id which esp8266 uses */
+#ifndef ESP8266_UART_ID	//you can define this at board header file (e.g. emsk.h)
+#if defined(BOARD_EMSK) || defined(BOARD_HSDK)
 #define ESP8266_UART_ID		DW_UART_0_ID
-#else
+#elif defined(BOARD_EMSDP)|| defined(BOARD_IOTDK)
 #define ESP8266_UART_ID		DFSS_UART_1_ID
+#else
+#warning esp8266 is not supported on this board!
+#endif
 #endif
 
 typedef enum{
