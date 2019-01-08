@@ -28,40 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_CXX	embARC C++ Support Test Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	Test C++ support in embARC
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to test C++ support in embARC.
- *
- * ### Usage Manual
- *     Here we take EMSK 2.3 EM7D for example, you can run the program using Metaware toolset.
- *     - Re-configure the EMSK 2.3 board to EM7D configuration.
- *     - Command: gmake BD_VER=23 CUR_CORE=arcem7d run
- *     - Running screenshot as follows
- *     ![ScreenShot for C++ support test in embARC](pic/images/example/emsk/baremetal_c++.jpg)
- *
- * ### Extra Comments
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_CXX
- * \brief	main source of this example
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_CXX
- * @{
- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -163,4 +129,3 @@ int main(void)
 		EMBARC_PRINTF("x and y are the same\r\n");
 	}
 }
-/** @} */

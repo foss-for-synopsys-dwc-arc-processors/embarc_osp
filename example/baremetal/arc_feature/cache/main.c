@@ -30,7 +30,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
-#ifdef BOARD_EMDK
+#ifdef BOARD_EMSDP
 //EMDK only has 2 way cache, it might have some chances that the cache get switched out before locking,
 //   causing cached data being wrote to memory in advance
 //   If that is the case, please test other lines of cache_data

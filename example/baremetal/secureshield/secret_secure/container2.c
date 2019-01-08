@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
- * \brief	secureshield secret secure example container2 source file
- */
-
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>

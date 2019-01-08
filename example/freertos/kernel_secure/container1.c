@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
- * \brief	freertos kernel secure example container1 source file
- */
-
 #include <string.h>
 #include <stdio.h>
 #include "embARC.h"

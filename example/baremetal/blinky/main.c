@@ -27,39 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_BLINKY	embARC Blinky Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC example for toggle leds on board
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to test board without any extra peripheral
- *
- * ### Usage Manual
- *     Toggle all leds on board in 1s period
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_BLINKY
- * \brief	main source file for blinky example
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_BLINKY
- * @{
- */
-/* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -80,5 +47,3 @@ int main(void)
 
 	return E_SYS;
 }
-
-/** @} */

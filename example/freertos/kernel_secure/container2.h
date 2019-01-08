@@ -27,11 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
- * \brief	freertos kernel secure example container2 head file
- */
+
 #ifndef CONTAINER2_H
 #define CONTAINER2_H
 

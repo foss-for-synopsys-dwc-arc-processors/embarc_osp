@@ -28,45 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_DMA_SPIFLASH	embARC SPIFlash with uDMA Test Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	Compare SPIFlash working frequency using poll spi and spi with uDMA
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to test SPIFlash driver with uDMA enhanced.
- *
- * ### Usage Manual
- *     Here we take EMSK 2.3 EM9D for example, you can run the program using Metaware toolset.
- *     - Re-configure the EMSK 2.3 board to EM9D configuration.
- *     - Command: gmake BD_VER=23 CUR_CORE=arcem9d run
- *     - Running screenshot as follows
- *     ![ScreenShot for SPIFlash erase/write/read test using uDMA](pic/images/example/emsk/baremetal_dma_spiflash.jpg)
- *
- * ### Extra Comments
- *    - Tested in EMSK 2.3 EM9D, for drivers with DMA, spiflash working frequency can achieve 12Mhz.
- *    - For drivers without DMA, spiflash working frequency can achieve 2Mhz.
- *    - This example will stuck at the max frequency that SPI can achieve at that situation.
- *    - This example required that the ARC core configuration should has uDMA option and DW SPI also enabled DMA interface with uDMA.
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_DMA_SPIFLASH
- * \brief	main source of example of spiflash with dma
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_DMA_SPIFLASH
- * @{
- */
-/* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "spi_flash.h"

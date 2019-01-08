@@ -210,7 +210,7 @@ DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 {
 	static uint32_t install_flag = 0;
 
-	/* intall device objects */
+	/* install device objects */
 	if (install_flag == 0) {
 		install_flag = 1;
 		emsk_flash_obj_all_install();

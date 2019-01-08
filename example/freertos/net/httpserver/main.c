@@ -28,42 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER	embARC LwIP HTTPServer Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_LWIP
- * \brief	embARC Example for LwIP HTTPServer on FreeRTOS
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     * Digilent PMOD WIFI(MRF24WG0MA)
- *
- * ### Design Concept
- *     This example is designed to show how to use LwIP netconn API to serve as a httpserver.
- *
- * ### Usage Manual
- *     The Pmod modules should be connected to \ref EMBARC_BOARD_CONNECTION "EMSK".
- *     This is an example using TCP/IP connection to work as a small web httpserver.
- *
- *     ![ScreenShot of httpserver under freertos](pic/images/example/emsk/emsk_lwip_freertos_httpserver.jpg)
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER
- * \brief	http server using TCP connection example
- */
-
-/**
- * \addtogroup	EMBARC_APP_FREERTOS_NET_HTTPSERVER
- * @{
- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -77,5 +41,3 @@ int main(void)
 
 	return 0;
 }
-
-/** @} */

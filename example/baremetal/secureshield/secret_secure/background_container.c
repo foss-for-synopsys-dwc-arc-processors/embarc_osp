@@ -27,49 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE embARC SecureShield Secret Secure Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC SecureShield secret secure example
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     - Designware nSIM Tool or
- *     - EMSK 2.2 arcem7d configuration
- *
- * ### Design Concept
- *     This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component.
- *     - The secret and password are protected in the context of container 1 which is a container with secure privileges.
- *     - You need to input the right password to get the secret from the non-trusted background container; container 2 is trusted and can access the secret without password.
- *     - The init value of secret and password are stored in the data section of secure container 1. Non-secure containers can not access them directly.
- *     - Secure container 2 can use the container 1 secret internally for implementing other services. The background application can request such a service, without knowing or obtaining the secret itself.
- *     - For demonstration purpose, the background container can obtain the secret as well (using the password). Since the background container stores the result in global, public memory, this is normally not secure and not recommended. Instead see Container 2 for how to securely use the secret.
- *
- * ### Usage Manual
- *     When this example start to run, please try the following ntshell commands:
- *     - Run ntshell command **main -h** to see how to run this example.
- *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
 
- *     ![ScreenShot of secureshield example](pic/images/example/emsk/baremetal_secureshield_secret.jpg)
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
- * \brief	secureshield secret secure example background container source file
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
- * @{
- */
-/* embARC HAL */
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -216,5 +174,3 @@ int main(int argc, char **argv)
 error_exit:
 	return E_OK;
 }
-
-/** @} */

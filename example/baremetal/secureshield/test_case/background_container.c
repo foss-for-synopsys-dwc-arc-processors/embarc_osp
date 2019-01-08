@@ -31,7 +31,6 @@
 #include "embARC_debug.h"
 #include "embARC_assert.h"
 
-
 #include "container1.h"
 #include "container2.h"
 #include "container3.h"

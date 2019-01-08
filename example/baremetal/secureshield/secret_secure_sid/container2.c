@@ -27,11 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
- * \brief	secureshield container 2 implementation
- */
+
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>

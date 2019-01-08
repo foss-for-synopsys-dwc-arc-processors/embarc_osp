@@ -28,58 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_GRAPHIC_U8GLIB	embARC Graphic Example on SSD1306
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \ingroup	EMBARC_APPS_MID_U8GLIB
- * \brief	U8glib graphic test on OLED SSD1306
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     * [PMOD OLED based on SSD1306 128x64 monochrome]
- *
- * ### Design Concept
- *     This example is a graphic test based on OLED ssd1306 and U8glib.
- *
- * ### Usage Manual
- *     - How to connect SSD1306 to \ref EMBARC_BOARD_CONNECTION "EMSK".
- *       \code
- *       SSD1306-I2C-SCL <----> J2-PIN3
- *       SSD1306-I2C-SDA <----> J2-PIN4
- *       SSD1306-GND     <----> J2-PIN5
- *       SSD1306-DV33    <----> J2-PIN6
- *       \endcode
- *
- *     - How to use this example
- *
- *       This example demonstrates how to use U8glib functions of drawing box, line and ASCII characters.
- *       Dynamic graphics are shown in SSD1306.
- *       And display width & height information is shown in Tera Term.
- *
- *     ![ScreenShot of SSD1306](pic/images/example/emsk/emsk_graphic_test_u8glib1.jpg)
- *     ![ScreenShot of u8glib tests in SSD1306](pic/images/example/emsk/emsk_graphic_test_u8glib2.jpg)
- *
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_GRAPHIC_U8GLIB
- * \brief	U8glib graphic test of SSD1306
- *  This example is a graphic test based on OLED SSD1306 and U8glib.
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_GRAPHIC_U8GLIB
- * @{
- */
-
-/* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -190,4 +138,3 @@ int main(void)
 	return E_SYS;
 }
 
-/** @} */

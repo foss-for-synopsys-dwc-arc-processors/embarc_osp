@@ -86,10 +86,8 @@ int main(void)
 		timer_current(TIMER_1, &val);
 		EMBARC_PRINTF("cnt:%d\r\n", val);
 		timer_stop(TIMER_1); /* Stop it first since it might be enabled before */
-#ifndef BOARD_EMSDP
 		int_handler_install(INTNO_TIMER1, timer1_isr);
 		int_enable(INTNO_TIMER1);
-#endif
 	} else {
 		EMBARC_PRINTF("timer 1 is not present\r\n");
 	}
