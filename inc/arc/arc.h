@@ -190,6 +190,7 @@
 #define AUX_STATUS_BIT_L		(12)	/*!< zero-overhead loop enable */
 #define AUX_STATUS_BIT_IE		(31)	/*!< interrupt enable */
 #define AUX_STATUS_BIT_HALT		(0)	/*!< halt bit */
+#define AUX_STATUS_BIT_SC		(14)	/*!< stack check bit */
 
 /* masks correspond to STATUS32 bit-field */
 #define AUX_STATUS_MASK_AE		(1<<AUX_STATUS_BIT_AE)	/*!< mask of AUX_STATUS_BIT_AE */
@@ -214,12 +215,17 @@
 #define AUX_SEC_U_SP			(0x39)	/*!< secure user-mode stack pointer */
 #define AUX_SEC_K_SP			(0x3a)	/*!< secure kernel-mode stack pointer */
 
-/* additional stack checkingh registers for secure mode */
+/* additional stack checking registers for secure mode */
 #define AUX_S_USTACK_BASE		(0x263)
 #define AUX_S_USTACK_TOP		(0x262)
 
 #define AUX_S_KSTACK_BASE		(0x267)
 #define AUX_S_KSTACK_TOP		(0x266)
+
+#define AUX_KSTACK_TOP			(0x264)
+#define AUX_KSTACK_BASE			(0x265)
+#define AUX_USTACK_TOP			(0x260)
+#define AUX_USTACK_BASE			(0x261)
 
 /**
  * \name auxiliary register for hardware counter 0 and 1

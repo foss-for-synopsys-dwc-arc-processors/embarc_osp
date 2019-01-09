@@ -142,6 +142,27 @@ dispatcher:
 dispatcher_0:
 	ld	r1, [pxCurrentTCB]
 	ld	sp, [r1]	/* recover task stack */
+#if ARC_FEATURE_STACK_CHECK
+#if ARC_FEATURE_SEC_PRESENT
+	lr r0, [AUX_SEC_STAT]
+	bclr r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	lr r0, [AUX_STATUS32]
+	bclr r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+	jl	vPortSetStackCheck
+#if ARC_FEATURE_SEC_PRESENT
+	lr r0, [AUX_SEC_STAT]
+	bset r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	lr r0, [AUX_STATUS32]
+	bset r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+#endif
 	POP	r0		/* get critical nesting */
 	st	r0, [ulCriticalNesting]
 	POP	r0		/* get return address  */
@@ -271,6 +292,17 @@ exc_entry_int:
 	bne	irq_handler_1
 /* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
+#if ARC_FEATURE_STACK_CHECK
+#if ARC_FEATURE_SEC_PRESENT
+	lr r0, [AUX_SEC_STAT]
+	bclr r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	lr r0, [AUX_STATUS32]
+	bclr r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+#endif
 irq_handler_1:
 	PUSH	blink
 

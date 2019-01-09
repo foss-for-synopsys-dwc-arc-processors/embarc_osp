@@ -74,6 +74,11 @@
 extern "C" {
 #endif
 
+/* record stack high address for stack check */
+#ifndef configRECORD_STACK_HIGH_ADDRESS
+    #define configRECORD_STACK_HIGH_ADDRESS 1
+#endif
+
 /*-----------------------------------------------------------
  * Port specific definitions.
  *
