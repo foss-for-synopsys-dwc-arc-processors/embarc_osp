@@ -88,7 +88,7 @@ static TaskHandle_t task_handle_ntshell;
 #else /* No middleware ntshell,will activate main task */
 
 #ifndef TASK_STACK_SIZE_MAIN
-#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(1024)
+#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(4096)
 #endif
 
 #ifndef TASK_PRI_MAIN

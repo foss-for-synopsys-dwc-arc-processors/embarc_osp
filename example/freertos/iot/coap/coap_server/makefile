@@ -1,9 +1,13 @@
 # Application name
 APPL ?= freertos_iot_coap_server
 
-EXT_DEV_LIST += wifi/mrf24g
-
 BOARD ?= emsk
+
+ifeq ($(BOARD), emsdp)
+EXT_DEV_LIST += wifi/rs9113
+else
+EXT_DEV_LIST += wifi/mrf24g
+endif
 
 ifeq ($(BOARD), emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420

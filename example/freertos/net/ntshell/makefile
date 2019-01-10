@@ -1,14 +1,17 @@
 # Application name
 APPL ?= freertos_net_ntshell
 
-EXT_DEV_LIST += wifi/mrf24g
-
 BOARD ?= emsk
+
+ifeq ($(BOARD), emsdp)
+EXT_DEV_LIST += wifi/rs9113
+else
+EXT_DEV_LIST += wifi/mrf24g
+endif
 
 ifeq ($(BOARD),emsk)
 EXT_DEV_LIST += sensor/temperature/adt7420
 endif
-
 
 #
 # root dir of embARC

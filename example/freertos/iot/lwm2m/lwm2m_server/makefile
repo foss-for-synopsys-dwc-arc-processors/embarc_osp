@@ -1,7 +1,11 @@
 # Application name
 APPL ?= freertos_iot_lwm2m_server
 
+ifeq ($(BOARD), emsdp)
+EXT_DEV_LIST += wifi/rs9113
+else
 EXT_DEV_LIST += wifi/mrf24g
+endif
 
 ##
 # HEAP & STACK SETTINGS
