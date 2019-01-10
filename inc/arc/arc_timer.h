@@ -56,12 +56,26 @@
 #define SECURE_TIMER_1		1 	/*!< macro name for arc internal secure timer 1 */
 
 /** @} */
-
+#ifdef ARC_FEATURE_TIMER0_VECTOR
 #define INTNO_TIMER0			ARC_FEATURE_TIMER0_VECTOR	/*!< ARC Timer0 */
+#else
+#define INTNO_TIMER0 16
+#endif
+#ifdef ARC_FEATURE_TIMER1_VECTOR
 #define INTNO_TIMER1			ARC_FEATURE_TIMER1_VECTOR	/*!< ARC Timer1 */
+#else
+#define INTNO_TIMER1 17
+#endif
+#ifdef ARC_FEATURE_SEC_TIMER0_VECTOR
 #define INTNO_SECURE_TIMER0		ARC_FEATURE_SEC_TIMER0_VECTOR	/*!< Core Secure Timer 0 */
+#else
+#define INTNO_SECURE_TIMER0 20
+#endif
+#ifdef ARC_FEATURE_TIMER1_VECTOR
 #define INTNO_SECURE_TIMER1		ARC_FEATURE_SEC_TIMER1_VECTOR	/*!< Core Secure Timer 1 */
-
+#else
+#define INTNO_SECURE_TIMER1 21
+#endif
 /**
  * \name bit definition of RTC CTRL reg
  * @{
