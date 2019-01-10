@@ -1,6 +1,6 @@
 ## Current Supported Core Configurations
-CORE_DIRS = $(sort $(dir $(wildcard $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/*/core_hardware.h)))
-SUPPORTED_CORES := $(patsubst $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/%/, %,$(CORE_DIRS))
+CORE_DIRS = $(sort $(dir $(wildcard $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/*/tool_config/arc.tcf)))
+SUPPORTED_CORES := $(patsubst $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/%/tool_config/, %,$(CORE_DIRS))
 
 CUR_CORE ?= $(firstword $(SUPPORTED_CORES))
 
@@ -28,7 +28,7 @@ ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio  \
 
 ## Check TCF file existence
 ifneq ($(TCFFILE_IS_VALID),1)
-TCF ?= $(wildcard $(BOARD_CORE_DIR)/*/*.tcf)
+TCF ?= $(BOARD_CORE_DIR)/tool_config/arc.tcf
 endif
 
 ## If CUR_CORE is not in SUPPORT_CORES list, then force CUR_CORE and VALID_CUR_CORE to be TCF filename
