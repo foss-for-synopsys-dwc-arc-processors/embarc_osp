@@ -51,6 +51,7 @@ extern "C" {
 
 extern void hsdk_io_init(void);
 extern void led_write(uint32_t led_val, uint32_t mask);
+extern uint32_t led_read(uint32_t mask);
 
 // Un-implemented Switch/Button functions
 // extern void hsdk_button_init(void);
