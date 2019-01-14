@@ -6,13 +6,13 @@ Simple Bootloader
 Overview
 ********
 
- This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. And this example itself can be used as ntshell application.
+ This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. By default, this example will validate the binary image based on MCUBoot to do secure boot. And this example itself can be used as ntshell application.
 
 Detailed Description
 ====================
 
  * Extra Required Tools
-    NO
+    - The requirements of MCUBoot image tools
 
  * Extra Required Peripherals
     - SDCard with boot binary(boot.hex or boot.bin)
@@ -20,10 +20,14 @@ Detailed Description
  * Design Concept
     This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. And this example itself can be used as ntshell application.
 
+    This example combines multiple usage cases, including the image is in SD or Flash, and whether or not to use MCUboot. The program flow of this example as following.
+
+    .. image:: /pic/images/example/baremetal_bootloader/boot_loader_flow.jpg
+
  * Usage Manual
     As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA, a simple primary bootloader is also loaded in ICCM. Through the primary bootloader, the application or secondary bootloader can be loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.
 
-    For EMSK1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
+    For EMSK 1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
     For EMSK 1.0, it can be upgraded to 1.1 by 1.1's firmware. For EMSK 2.0/2.1/2.2, it can be upgraded to 2.3 by 2.3's firmware.
 
     .. image:: /pic/bootloader.jpg
@@ -38,8 +42,23 @@ Detailed Description
         + Then use ntshell command *spirw* to program the *em7d_2bt.bin* into spiflash.
             - Firstly, run *spirw* to show help
             - Secondly, run *spirw -i* to check SPIFlash ID, it should be **Device ID = ef4018**
-            - Thirdly, run *spirw -w em7d_2bt.bin 0x17f00000 0x17f00004* to program spiflash
+            - Thirdly, run *spirw -w em7d_2bt.bin ram_addr ram_start* to program spiflash, the *ram_addr* and *ram_start* is the load address and program start address of this bootloader, and they are different in each board, please check they in the table below. Usually, developer creates *appl_mem_config.h* and set **APPL_DEFINES += -DUSE_APPL_MEM_CONFIG** in *makefile* to define the addresses.
             - Check the output message to see if it was programmed successfully.
+
+            .. table:: Examples in embARC OSP
+                :widths: auto
+
+                =======================  ======================  ======================  =======================
+                Board version            Use MCUBoot             ram_addr                ram_start
+                =======================  ======================  ======================  =======================
+                axs                      not support             user definition         user definition
+                emsdp                    not support             user definition         user definition
+                emsk                     true                    0x15000000              0x15000004
+                emsk                     false                   user definition         user definition
+                iotdk                    true                    0x00000000              0x00000004
+                iotdk                    false                   user definition         user definition
+                nsim                     not support             user definition         user definition
+                =======================  ======================  ======================  =======================
 
             .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg
 
@@ -49,7 +68,7 @@ Detailed Description
 
         .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_onspiflash.jpg
 
-    - Generate *boot.bin* using any embARC example which ram start address should be 0x10000000 and use bootloader to run it
+    - When not using MCUBoot, generate *boot.bin* using any embARC example which ram start address should be 0x10000000 and use bootloader to run it
 
     - Know Issues
         + Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.
@@ -59,10 +78,14 @@ Detailed Description
         - Operations on the EMSK, GPIO, I2C, SPI flash
         - Operations on ARC processors
         - Automatic boot from SD card, using following instructions:
-            + burn the bin file of bootloader into EMSK spiflash using spirw command **spirw -w bootloader.bin 0x17f00000 0x17f00004** with the help of JTAG
+            + program the bin file of bootloader into EMSK spiflash using spirw command **spirw -w bootloader.bin ram_addr ram_start** with the help of JTAG
             + the primary bootloader should be able to load the secondary bootloader
             + put the file you want to boot in the root directory of SD card, name it boot.bin
             + plug in SD card
+
+        - Optional secure boot based on MCUBoot:
+            + validate the binary image by SHA-256 hash function and asymmetric encryption RSA algorithm for the integrity check and signature verification
+            + validate the new binary image for upgrade and do firmware upgrade
 
         - LED Status of loading application(boot.bin)
             + Start to load application: LED on board -> 0x0F
@@ -72,7 +95,7 @@ Detailed Description
 
         - Type *help* command in ntshell to show the list of supported commands.
 
-    .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader.jpg
+        .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader.jpg
 
  * Extra Comments
     - Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send
@@ -90,6 +113,8 @@ Building and Running
 ********************
 
 - Generate a secondary bootloader binary file
+
+.. note:: If you want to disable MCUBoot, you should set **USE_MCUBOOT = 0** in your makefile
 
 .. code-block:: console
 
@@ -131,15 +156,28 @@ If the binary file is generated successfully, you will output as follows:
 	"Linking         : " obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.elf
 	"Generating Binary obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin"
 
-- Generate *boot.bin* using any embARC example which ram start address should be 0x10000000 and use bootloader to run it
+- Generate *boot.bin* using any embARC example
     + Here take *<embarc_root>/example/freertos/kernel* for example
+
+    + When using MCUBoot, you should modify **LIB_SEL += mcuboot** in your makefile to enable MCUBoot. And you should use the imgtool to sign the generated binary
 
     .. code-block:: console
 
-    	$ cd <embarc_root>/example/freertos/kernel
-   		$ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw bin
+        $ cd <embarc_root>/example/freertos/kernel
+        $ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw bin
+        $ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw sign
 
-    + Insert SDCard to PC, and copy generated binary file *obj_emsk_23/gnu_arcem7d/freertos_kernel_gnu_arcem7d.bin* to SDCard Root, and rename it to boot.bin
+      Or you can use sign command directly, which will generate binary firstly and sign it
+
+    + When not using MCUBoot, the example ram start address should be 0x10000000
+
+    .. code-block:: console
+
+        $ cd <embarc_root>/example/freertos/kernel
+        $ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw bin
+
+    + Insert SDCard to PC, and copy generated binary file *obj_emsk_22/mw_arcem7d/freertos_kernel_mw_arcem7d.bin* to SDCard Root, and rename it to boot.bin
+      Please note that when using MCUBoot, the origin binary name is *obj_emsk_22/mw_arcem7d/signed_freertos_kernel.bin*
     + Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
 
 .. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above "R") to confirm its configuration
@@ -150,3 +188,5 @@ Sample Output
 The output depends on the *boot.bin*. This sample is using *<embarc_root>/example/freertos/kernel*.
 
 .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_loadbootbin.jpg
+
+.. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_mcuboot.jpg

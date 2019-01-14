@@ -7,6 +7,7 @@ Board Requirement
 #################
 * ARC Board
 
+  * ARC Software Development Platform
   * `ARC EM Starter Kit <https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit>`_
   * `ARC HS Development Kit <https://www.synopsys.com/dw/ipdir.php?ds=arc-hs-development-kit>`_
   * AXS Board
