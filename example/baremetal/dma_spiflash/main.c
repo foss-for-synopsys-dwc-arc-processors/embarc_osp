@@ -30,6 +30,7 @@
 
 #include "embARC.h"
 #include "embARC_debug.h"
+#if defined(BOARD_EMSK)
 #include "spi_flash.h"
 #include "spi_flash_w25qxx.h"
 
@@ -221,5 +222,10 @@ static unsigned int perf_end(void)
 		return (0xFFFFFFFF - start + end);
 	}
 }
-
-/** @} */
+#else
+int main(void)
+{
+	EMBARC_PRINTF("\r\n\r\ndma_spiflash example only support EMSK board!\r\n");
+	while(1);
+}
+#endif //BOARD_EMSK

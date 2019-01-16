@@ -32,6 +32,9 @@ Detailed Description
     - This example will stuck at the max frequency that SPI can achieve at that situation.
     - This example required that the ARC core configuration should has uDMA option and DW SPI also enabled DMA interface with uDMA
 
+.. note::
+   this example only support |emsdp| board.
+
 Sample Output
 =============
 
