@@ -79,7 +79,7 @@ Drag-and-drop feature enable users to copy an FPGA bitstream from the PC to the 
 Memory
 ^^^^^^
 
-Please refer to `ARC_EM_SDP_UserGuide` for memory map and more details.
+Please refer to `ARC_EM_SDP_User Guide` for memory map and more details.
 
 Interfaces
 ^^^^^^^^^^
