@@ -270,8 +270,8 @@ will be <code class="docutils literal notranslate"><span class="pre">emsk</span>
 option can also be given in cmd line       If not specified, the default value
 will be <code class="docutils literal notranslate"><span class="pre">22</span></code> for board <code class="docutils literal notranslate"><span class="pre">emsk</span></code>.</p>
 </li>
-<li><p class="first">Change the core configuration: change the value of <strong>CUR_CORE</strong> to
-<strong>arcem7d</strong> This option can also be given in cmd line       If not specified,
+<li><p class="first">Change the core configuration: change the value of <code class="docutils literal notranslate"><span class="pre">CUR_CORE</span></code> to
+<code class="docutils literal notranslate"><span class="pre">arcem7d</span></code>. This option can also be given in cmd line. If not specified,
 the default value will <code class="docutils literal notranslate"><span class="pre">arcem7d</span></code> for board <code class="docutils literal notranslate"><span class="pre">emsk</span></code> and version <code class="docutils literal notranslate"><span class="pre">22</span></code>.</p>
 </li>
 <li><p class="first">Change the embARC OSP root: change the value of <code class="docutils literal notranslate"><span class="pre">EMBARC_ROOT</span></code> to
@@ -308,13 +308,13 @@ application folder (-I).</li>
 <li><p class="first">Set your application defined macros: Change the value of <code class="docutils literal notranslate"><span class="pre">APPL_DEFINES</span></code>.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For example, if define <code class="docutils literal notranslate"><span class="pre">APPLICATION=1</span></code>, set APPL_DEFINES to <code class="docutils literal notranslate"><span class="pre">-DAPPLICATION=1</span></code>.</li>
+<li>For example, if define <code class="docutils literal notranslate"><span class="pre">APPLICATION=1</span></code>, set <code class="docutils literal notranslate"><span class="pre">APPL_DEFINES</span></code> to <code class="docutils literal notranslate"><span class="pre">-DAPPLICATION=1</span></code>.</li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 </div></blockquote>
-<p>Then <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">world</span></code> application’s makefile will be like this</p>
+<p>Then <code class="docutils literal notranslate"><span class="pre">hello_world</span></code> application’s makefile will be like this</p>
 <blockquote>
 <div><div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c">## embARC application makefile template ##</span>
 <span class="c">### You can copy this file to your application folder</span>
@@ -419,7 +419,7 @@ application folder (-I).</li>
 your PC. Open <code class="docutils literal notranslate"><span class="pre">PuTTY</span></code> or <code class="docutils literal notranslate"><span class="pre">Tera-term</span></code>, and connect to the right COM
 port. Set the baudrate to <strong>115200 bps</strong>.</li>
 <li>Enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">run</span></code> in the command line to run this application.</li>
-<li>Enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">gui</span></code> in the command line to debug this application. Press <strong>CTRL + C</strong> to stop the program. Enter <code class="docutils literal notranslate"><span class="pre">q</span></code> to exit the debugger. See the GDB manual for how to debug an application using arc-elf32-gdb.</li>
+<li>Enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">gui</span></code> in the command line to debug this application. Press <strong>CTRL + C</strong> to stop the program. Enter <code class="docutils literal notranslate"><span class="pre">q</span></code> to exit the debugger. See the <a class="reference external" href="https://sourceware.org/gdb/current/onlinedocs/gdb/">GDB manual</a> for how to debug an application using arc-elf32-gdb.</li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -471,10 +471,10 @@ also refer to other embARC examples, e.g.,
 </div>
 <div class="section" id="debug-multiple-boards">
 <span id="application-development-debug-multiple-boards"></span><h2>Debug Multiple Boards<a class="headerlink" href="#debug-multiple-boards" title="Permalink to this headline">¶</a></h2>
-<p>Multiple EMSK boards are required to run or debug application code on a single PC for some examples in embARC, especially the Pmod RF examples. Here are alternative ways for two EMSK boards running and debugging with using one PC.</p>
+<p>Multiple EMSK boards are required to run or debug application code on a single PC for some examples in embARC, especially the Pmod RF examples. Here are alternative ways for two EMSK boards running and debugging with one PC.</p>
 <ul class="simple">
 <li>MetaWare Toolchain<ul>
-<li>In command-line mode, Ashling JTAG and USB-JTAG are necessary rather than multi-USB JTAGs. One node runs <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">xxxx</span> <span class="pre">JTAG=opella</span> <span class="pre">xx</span></code>. the other node runs <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">xxxx</span> <span class="pre">JTAG=usb</span> <span class="pre">xx</span></code>.</li>
+<li>In command-line mode, Ashling JTAG and USB-JTAG are necessary rather than multi-USB JTAGs. One node runs <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">xxxx</span> <span class="pre">JTAG=opella</span> <span class="pre">xx</span></code>, the other node runs <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">xxxx</span> <span class="pre">JTAG=usb</span> <span class="pre">xx</span></code>.</li>
 <li>In IDE mode, change the debugger configuration in one of the two nodes for Ashling JTAG. Because the Digilent JTAG Cable is the default option.</li>
 <li>Another way for command-line mode is to modify the DIG_NAME option to choose different boards. DIG_NAME is a MetaWare debugger property corresponding to <code class="docutils literal notranslate"><span class="pre">-prop=dig_device=name</span></code>.</li>
 </ul>
@@ -487,7 +487,7 @@ also refer to other embARC examples, e.g.,
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The following methods only support two boards, e.g., one EMSK 1.x and one EMSK 2.x. Two EMSK 1.x boards or two EMSK 2.x boards are not supported.</p>
+<p class="last">The above methods only support two boards, e.g., one EMSK 1.x and one EMSK 2.x. Two EMSK 1.x boards or two EMSK 2.x boards are not supported.</p>
 </div>
 </div>
 </div>
@@ -537,6 +537,7 @@ also refer to other embARC examples, e.g.,
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

@@ -183,6 +183,60 @@
             
   <div class="section" id="freertos-mbed-ssl-example-ssl-client">
 <span id="example-sec-mbedtls-ssl-client2"></span><h1>FreeRTOS mbed SSL Example: SSL Client<a class="headerlink" href="#freertos-mbed-ssl-example-ssl-client" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This example takes reference from mbedtls <a href="#id1"><span class="problematic" id="id2">**</span></a>ssL_client2 ** to test ssl client functionality.</p>
+<div class="section" id="detailed-description">
+<h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Extra Required Tools</p>
+</li>
+<li><p class="first">Extra Required Peripherals</p>
+<blockquote>
+<div><ul class="simple">
+<li>Digilent PMOD WIFI(MRF24WG0MA)</li>
+<li>SD Card to store certification file, key file</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">EMSDP has board WiFi module, no need to use PMOD WiFI.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The memory footprint of this example is larger then
+the default configuration of IoT Development Kit. Without optimization ,
+this example doesnot support IoT Development Kit</p>
+</div>
+</div>
+</div>
+<div class="section" id="buidling-and-running">
+<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
+<p>1. Before building this example, it’s required to get the mbedtls code and
+apply specific patch through the <code class="docutils literal notranslate"><span class="pre">apply_embarc_patch.sh</span></code> by the following
+commands</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd &lt;embarc_root&gt;/middleware/mbedtls</span>
+<span class="go">sh apply_embarc_patch.sh</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>In pc node or mbedtls ssl server node, run the server application to listen.</li>
+</ol>
+<p>3. Copy the <code class="docutils literal notranslate"><span class="pre">tests</span></code> dir in <code class="docutils literal notranslate"><span class="pre">middleware/mbedtls</span></code> into the SD card of secure
+server node, it will load CA file and key file.</p>
+<p>4. Here the mbedtls ssl server node’s ip address is 192.168.43.76, we can get
+it from console output of uart. When initialization finished and network
+connected, run <strong>main server_addr=192.168.43.76 auth_mode=optional</strong> in
+ntshell, it will try to do ssl communication.</p>
+<div class="section" id="sample-output">
+<h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -230,6 +284,7 @@
         <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../../../_static/language_data.js"></script>
     
 
   

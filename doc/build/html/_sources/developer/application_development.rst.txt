@@ -75,8 +75,8 @@ Here, we will show how to create a new application in embARC OSP,  taking a simp
       option can also be given in cmd line       If not specified, the default value
       will be ``22`` for board ``emsk``.
 
-    * Change the core configuration: change the value of **CUR_CORE** to
-      **arcem7d** This option can also be given in cmd line       If not specified,
+    * Change the core configuration: change the value of ``CUR_CORE`` to
+      ``arcem7d``. This option can also be given in cmd line. If not specified,
       the default value will ``arcem7d`` for board ``emsk`` and version ``22``.
 
     * Change the embARC OSP root: change the value of ``EMBARC_ROOT`` to
@@ -111,9 +111,9 @@ Here, we will show how to create a new application in embARC OSP,  taking a simp
 
     * Set your application defined macros: Change the value of ``APPL_DEFINES``.
 
-        * For example, if define ``APPLICATION=1``, set APPL_DEFINES to ``-DAPPLICATION=1``.
+        * For example, if define ``APPLICATION=1``, set ``APPL_DEFINES`` to ``-DAPPLICATION=1``.
 
-   Then ``hello world`` application's makefile will be like this
+   Then ``hello_world`` application's makefile will be like this
 
     .. code-block:: makefile
 
@@ -215,7 +215,7 @@ Here, we will show how to create a new application in embARC OSP,  taking a simp
 
     * Enter ``make run`` in the command line to run this application.
 
-    * Enter ``make gui`` in the command line to debug this application. Press **CTRL + C** to stop the program. Enter ``q`` to exit the debugger. See the GDB manual for how to debug an application using arc-elf32-gdb.
+    * Enter ``make gui`` in the command line to debug this application. Press **CTRL + C** to stop the program. Enter ``q`` to exit the debugger. See the `GDB manual <https://sourceware.org/gdb/current/onlinedocs/gdb/>`_ for how to debug an application using arc-elf32-gdb.
 
 .. note::
 
@@ -264,11 +264,11 @@ A embARC "helloworld" application has been created and tested. This section prov
 
 Debug Multiple Boards
 #####################
-Multiple EMSK boards are required to run or debug application code on a single PC for some examples in embARC, especially the Pmod RF examples. Here are alternative ways for two EMSK boards running and debugging with using one PC.
+Multiple EMSK boards are required to run or debug application code on a single PC for some examples in embARC, especially the Pmod RF examples. Here are alternative ways for two EMSK boards running and debugging with one PC.
 
 * MetaWare Toolchain
 
-  * In command-line mode, Ashling JTAG and USB-JTAG are necessary rather than multi-USB JTAGs. One node runs ``make TOOLCHAIN=mw xxxx JTAG=opella xx``. the other node runs ``make TOOLCHAIN=mw xxxx JTAG=usb xx``.
+  * In command-line mode, Ashling JTAG and USB-JTAG are necessary rather than multi-USB JTAGs. One node runs ``make TOOLCHAIN=mw xxxx JTAG=opella xx``, the other node runs ``make TOOLCHAIN=mw xxxx JTAG=usb xx``.
   * In IDE mode, change the debugger configuration in one of the two nodes for Ashling JTAG. Because the Digilent JTAG Cable is the default option.
   * Another way for command-line mode is to modify the DIG_NAME option to choose different boards. DIG_NAME is a MetaWare debugger property corresponding to ``-prop=dig_device=name``.
 
@@ -277,4 +277,4 @@ Multiple EMSK boards are required to run or debug application code on a single P
   * In command-line mode, all nodes run ``make TOOLCHAIN=gnu xxx JTAG=usb xx``. OpenOCD selects the right board automatically. OpenOCD supports multi-USB-JTAG.
   * In IDE mode, all projects share the same port for the OpenOCD configuration. The same GNU debugger port (49105) is used. To avoid a conflict with GNU debugger ports, set the different GNU debugger ports in the debug configuration.
 
-.. note:: The following methods only support two boards, e.g., one EMSK 1.x and one EMSK 2.x. Two EMSK 1.x boards or two EMSK 2.x boards are not supported.
+.. note:: The above methods only support two boards, e.g., one EMSK 1.x and one EMSK 2.x. Two EMSK 1.x boards or two EMSK 2.x boards are not supported.

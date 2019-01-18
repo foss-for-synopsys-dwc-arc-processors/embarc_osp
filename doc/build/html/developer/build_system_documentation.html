@@ -199,7 +199,7 @@ which are then merged into one final library called <strong>libembarc.a</strong>
 <li><code class="file docutils literal notranslate"><span class="pre">options.mk</span></code>: entry makefile with common definitions, path definitions, other makefiles, and so on.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">rule.mk</span></code>: make targets and rules.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">scripts.mk</span></code>: common makefile functions</li>
-<li><code class="file docutils literal notranslate"><span class="pre">toolchain.mk</span></code>: General toolchain definitions, including <strong>toolchain_gnu.mk</strong> for the ARC GNU toolchain and <strong>toolchain_mw.mk</strong> for the MetaWare toolchain.</li>
+<li><code class="file docutils literal notranslate"><span class="pre">toolchain.mk</span></code>: general toolchain definitions, including <strong>toolchain_gnu.mk</strong> for the ARC GNU toolchain and <strong>toolchain_mw.mk</strong> for the MetaWare toolchain.</li>
 <li><code class="file docutils literal notranslate"><span class="pre">toolchain_gnu.mk</span></code> &amp; <code class="file docutils literal notranslate"><span class="pre">toolchain_mw.mk</span></code>: toolchain specific compile and link options</li>
 </ul>
 </div>
@@ -304,7 +304,7 @@ provided in the embARC application makefile.</p>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The BD_VER must match the target EMSK version. For example, programs built for 1.1 cannot run on an EMSK 2.x board.</p>
+<p class="last">The BD_VER must match the target BOARD version. For example, programs built for 1.1 cannot run on an EMSK 2.x board.</p>
 </div>
 <ul>
 <li><p class="first"><strong>CUR_CORE</strong>: Select the core configuration for the specified board version. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem11d</span></code> selects the arcem11d core configuration for emsk 2.3.</p>
@@ -414,7 +414,7 @@ provided in the embARC application makefile.</p>
 </tbody>
 </table>
 <ul class="simple">
-<li>For nSIM 10, the default value of this option is <strong>archs38_c0</strong> defined in <em>&lt;embARC&gt;/board/hsdk/configs/10/core_config.mk</em>.</li>
+<li>For HSDK, the default value of this option is <strong>archs38_c0</strong> defined in <em>&lt;embARC&gt;/board/hsdk/configs/10/core_config.mk</em>.</li>
 </ul>
 <table border="1" class="colwidths-auto docutils" id="id10">
 <caption><span class="caption-text">Make option - CUR_CORE for HSDK</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
@@ -838,6 +838,7 @@ provided in the embARC application makefile.</p>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

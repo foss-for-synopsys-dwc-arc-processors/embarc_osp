@@ -8,3 +8,4 @@ Libraries
 
     c_lib.rst
     secureshield.rst
+    mcuboot.rst

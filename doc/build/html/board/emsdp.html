@@ -235,7 +235,7 @@ EM4, EM5D, EM6, EM7D, EM9D and EM11D processors. ARC EM Enhanced Security Packag
 <li>Audio line in/out</li>
 <li>USB Data port (JTAG/UART/access to configuration memory)</li>
 <li>Micro-SD Card</li>
-<li>WIFI/BT/Zigbee module</li>
+<li>Wi-Fi/BT/Zigbee module</li>
 <li>ADC (eight channels)</li>
 <li>Motion Sensor</li>
 <li>Digital MEMs microphone (2x)</li>
@@ -257,7 +257,7 @@ Drag-and-drop feature enable users to copy an FPGA bitstream from the PC to the 
 </div>
 <div class="section" id="memory">
 <h3>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h3>
-<p>Please refer to <cite>ARC_EM_SDP_UserGuide</cite> for memory map and more details.</p>
+<p>Please refer to <cite>ARC_EM_SDP_User Guide</cite> for memory map and more details.</p>
 </div>
 <div class="section" id="interfaces">
 <h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
@@ -294,12 +294,19 @@ the Digilent Adept tool from the Digilent website at <a class="reference externa
 <p>This section talks about how to add new EM Software Development Platform cores into embARC OSP.
 If you are using default cores of EM Software Development Platform: <em>em6_scss</em>, <em>em7d_esp_dfss</em>, and <em>em11d_dfss</em>, then you may skip this section.</p>
 <ol class="arabic simple">
-<li>You may download the package from our website. Suppose you want to add a new package called <code class="docutils literal notranslate"><span class="pre">em9d_dfss</span></code>, your package name would be <code class="docutils literal notranslate"><span class="pre">embarc_em9d_dfss.zip</span></code>.</li>
+<li>You may download the package from our website. Suppose you want to add a new package called <code class="docutils literal notranslate"><span class="pre">em9d_dfss</span></code>, your package name would be <code class="docutils literal notranslate"><span class="pre">emsdp_em9d_dfss.zip</span></code>.</li>
 <li>Download the package and unzip it, you will find four folders: <code class="docutils literal notranslate"><span class="pre">/doc</span></code>, <code class="docutils literal notranslate"><span class="pre">/fpga</span></code>, <code class="docutils literal notranslate"><span class="pre">/include</span></code>, <code class="docutils literal notranslate"><span class="pre">/tool_config</span></code>. Now create a new folder according to your board revision and package name. In this case <em>em9d_dfss</em> is added to <em>rev2</em> board, so you should set your directory as this:<code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss</span></code></li>
-<li>Copy <code class="docutils literal notranslate"><span class="pre">/tool_config</span></code> folder to <code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss/tool_config</span></code>.</li>
-<li>Copy all <code class="docutils literal notranslate"><span class="pre">/include</span></code> files except <code class="docutils literal notranslate"><span class="pre">core_config.h</span></code> to <code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss</span></code></li>
-<li>Rename <code class="docutils literal notranslate"><span class="pre">board_emsdp.h</span></code> to <code class="docutils literal notranslate"><span class="pre">core_hardware.h</span></code>, open the file and delete its contents from line 25 to line 100.</li>
-<li>You are done importing a new package, build with it to make sure everything is working.</li>
+<li>Copy the content of unzipped folder to <code class="docutils literal notranslate"><span class="pre">/board/emsdp/rev2/configs/em9d_dfss</span></code>. It would be like:</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">em9d_dfss</span>
+<span class="go">├─doc</span>
+<span class="go">├─fpga</span>
+<span class="go">├─include</span>
+<span class="go">└─tool_config</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>You are done importing a new package, flash the bit file into board and build with it to make sure everything is working.</li>
 </ol>
 </div>
 <div class="section" id="run-your-first-program">
@@ -307,19 +314,19 @@ If you are using default cores of EM Software Development Platform: <em>em6_scss
 <p>By setting up the board, you are now ready to run your first program on EM Software Development Platform.
 please refer to example <cite>example_blinky</cite> for further details. Build and download the example using either MetaWare or GNU. The command is shown below:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/blinky
-<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsdp <span class="nv">BD_VER</span><span class="o">=</span>rev1 <span class="nv">CORE</span><span class="o">=</span>em11d_dfss <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw run
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsdp <span class="nv">BD_VER</span><span class="o">=</span>rev2 <span class="nv">CORE</span><span class="o">=</span>em11d_dfss <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw run
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Notice that for CORE option there are multiple core choices, please check <cite>&lt;embarc_root&gt;/board/emsdp/rev1</cite> folder for available cores.</p>
+<p class="last">Notice that for CORE option there are multiple core choices, please check <cite>&lt;embarc_root&gt;/board/emsdp/rev2</cite> folder for available cores.</p>
 </div>
 </div>
 <div class="section" id="development-guide">
 <h3>Development Guide<a class="headerlink" href="#development-guide" title="Permalink to this headline">¶</a></h3>
 <p>Please refer to <cite>Developer Guides</cite>.
 You may need to specify peripheral driver (<cite>&lt;embarc_root&gt;/device/peripheral</cite>) for your own code.</p>
-<p>For example, if wifi rs9113 driver is needed, add this line in makefile:</p>
+<p>For example, if Wi-Fi rs9113 driver is needed, add this line in makefile:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">EXT_DEV_LIST += wifi/rs9113</span>
 </pre></div>
 </div>
@@ -381,6 +388,7 @@ please feel free to raise issues or pull requests at [embARC Open Software Platf
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
 
   

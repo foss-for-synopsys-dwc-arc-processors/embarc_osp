@@ -183,6 +183,55 @@
             
   <div class="section" id="freertos-mbed-tls-example-dtls-server">
 <span id="example-sec-mbedtls-dtls-server"></span><h1>FreeRTOS mbed TLS Example: DTLS Server<a class="headerlink" href="#freertos-mbed-tls-example-dtls-server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This example takes reference from mbedtls <strong>dtls_server</strong> to test dtls client functionality.</p>
+<div class="section" id="detailed-description">
+<h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Extra Required Tools</p>
+</li>
+<li><p class="first">Extra Required Peripherals</p>
+<blockquote>
+<div><ul class="simple">
+<li>Digilent PMOD WIFI(MRF24WG0MA)</li>
+<li>SD Card to store certification file, key file</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">EMSDP has board WiFi module, no need to use PMOD WiFI.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The memory footprint of this example is larger then
+the default configuration of IoT Development Kit. Without optimization ,this example doesnot support IoT Development Kit</p>
+</div>
+</div>
+</div>
+<div class="section" id="buidling-and-running">
+<h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Before building this example, it’s required to get the mbedtls code and apply specific patch through the <code class="docutils literal notranslate"><span class="pre">apply_embarc_patch.sh</span></code> by the following commands</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd &lt;embarc_root&gt;/middleware/mbedtls</span>
+<span class="go">sh apply_embarc_patch.sh</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Copy the <code class="docutils literal notranslate"><span class="pre">tests</span></code> dir in <code class="docutils literal notranslate"><span class="pre">middleware/mbedtls</span></code> into the SD card of secure server node, it will load CA file and key file.</li>
+<li>When initialization finished and network connected, run <strong>main</strong> in ntshell, it will try to do dtls communication.</li>
+<li>In pc node or mbedtls dtls_client node, run the client application to connect to the server node.</li>
+</ol>
+<div class="section" id="sample-output">
+<h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -230,6 +279,7 @@
         <script type="text/javascript" src="../../../../../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../../../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../../../_static/language_data.js"></script>
     
 
   
