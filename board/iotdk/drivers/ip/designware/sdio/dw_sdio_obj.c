@@ -31,7 +31,6 @@
 #include "embARC_error.h"
 
 #include "iotdk_hardware.h"
-
 #include "ip/designware/sdio/dw_sdio.h"
 #include "dw_sdio_obj.h"
 
@@ -95,7 +94,7 @@ static void dw_sdio_0_install(void)
 
 	dw_sdio_ctrl_ptr->reg_base = (void *) BASE_ADDR_SDIO;
 	dw_sdio_ctrl_ptr->intno = INTNO_SDIO;
-	dw_sdio_ctrl_ptr->ref_clk = 100000000;
+	dw_sdio_ctrl_ptr->ref_clk = CLK_CPU;
 	dw_sdio_ctrl_ptr->fifo_depth = 128;
 
 	dw_sdio_ptr->open = dw_sdio_0_open;

@@ -483,7 +483,7 @@ static int32_t sdio_write_blocks(FS_SDCARD_SDIO_CTRL_PTR sd_dev, const void *buf
 		if (sd_dev->card_info.version & SDCARD_CT_SDC) {
 			cmd.cmdidx = CMD55;
 			cmd.resp_type = SDIO_RSP_R1;
-			cmd.arg = 0;
+			cmd.arg = sd_dev->card_info.rca << 16;;
 
 			ret = sd_host->cmd_poll(&cmd, NULL);
 
@@ -515,6 +515,19 @@ static int32_t sdio_write_blocks(FS_SDCARD_SDIO_CTRL_PTR sd_dev, const void *buf
 	if (ret < 0) {
 		return ret;
 	}
+
+	if (blkcnt > 1) {
+		cmd.cmdidx = CMD12;
+		cmd.arg = 0;
+		cmd.resp_type= SDIO_RSP_R1b;
+
+		ret = sd_host->cmd_poll(&cmd, NULL);
+		if (ret < 0 ) {
+			DBG("fail to send stop cmd\r\n");
+			return ret;
+		}
+	}
+
 
 	return blkcnt;
 }

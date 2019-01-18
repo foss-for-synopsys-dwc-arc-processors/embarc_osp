@@ -198,6 +198,8 @@
 
 
 #define DWSDIO_STATUS_BIT_FIFO	(17)
+#define DWSDIO_STATUS_FIFO_FULL (0x8)
+#define DWSDIO_STATUS_FIFO_EMPTY (0x4)
 #define DWSDIO_STATUS_MASK_FIFO (0x3ffe0000)
 
 /* status bit */
@@ -211,9 +213,8 @@
 #define DWSDIO_FIFOTH_BIT_DMA_M_SIZE 28
 #define DWSDIO_FIFOTH_MASK_DMA_M_SIZE  (0x7 << DWSDIO_FIFOTH_BIT_DMA_M_SIZE)
 #define DWSDIO_FIFOTH_M_SIZE(x)		((x) << DWSDIO_FIFOTH_BIT_DMA_M_SIZE)
-#define DWSDIO_FIFOTH_TX_WMASK(x) 	((x))
-#define DWSDIO_FIFOTH_RX_WMASK(x) 	((x) << DWSDIO_FIFOTH_BIT_RX_WMARK)
-
+#define DWSDIO_FIFOTH_TX_WMASK(x)	((x))
+#define DWSDIO_FIFOTH_RX_WMASK(x)	((x) << DWSDIO_FIFOTH_BIT_RX_WMARK)
 
 /* interrupt status bit */
 #define DWSDIO_INT_CAD		(0x1U)		//Card Detected
@@ -237,7 +238,6 @@
 				DWSDIO_INT_FRUN | DWSDIO_INT_DCRC)
 #define DWSDIO_INT_DATA_TMO	(DWSDIO_INT_DRTO | DWSDIO_INT_HTO)
 
-
-#define DWSDIO_ENUMERATION_FREQ 	(400000) /* 400 Khz for card enumeration */
+#define DWSDIO_ENUMERATION_FREQ	(400000) /* 400 Khz for card enumeration */
 
 #endif /* _DW_SDIO_HAL_H_ */
