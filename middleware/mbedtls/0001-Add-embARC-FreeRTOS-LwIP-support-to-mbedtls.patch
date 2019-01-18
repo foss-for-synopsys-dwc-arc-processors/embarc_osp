@@ -1,37 +1,37 @@
-From 77dd67234edd55942f9ddb4eef2deba0b4b84569 Mon Sep 17 00:00:00 2001
+From 0d228d14b1fb16f909ab03ff45b4635b90494ca8 Mon Sep 17 00:00:00 2001
 From: XiangcaiHuang <xiangcai@synopsys.com>
 Date: Thu, 17 Aug 2017 11:21:12 +0800
-Subject: [PATCH] Add embARC (FreeRTOS+LwIP) support to mbedtls
+Subject: [PATCH 1/2] Add embARC (FreeRTOS+LwIP) support to mbedtls
 
 ---
- library/net_sockets.c => embARC/net_alt.c |  94 ++-------------------
- embARC/threading_alt.c                    |  80 ++++++++++++++++++
- embARC/threading_alt.h                    |  65 ++++++++++++++
- embARC/timing_alt.c                       | 111 ++++++++++++++++++++++++
- embARC/timing_alt.h                       | 136 ++++++++++++++++++++++++++++++
- library/ssl_srv.c                         |   2 +
- library/ssl_tls.c                         |  21 ++++-
- library/threading.c                       |  11 +++
- 8 files changed, 434 insertions(+), 86 deletions(-)
- rename library/net_sockets.c => embARC/net_alt.c (85%)
+ library/net_sockets.c => embARC/net_alt.c |  99 ++--------------
+ embARC/threading_alt.c                    |  80 +++++++++++++
+ embARC/threading_alt.h                    |  65 +++++++++++
+ embARC/timing_alt.c                       | 111 ++++++++++++++++++
+ embARC/timing_alt.h                       | 136 ++++++++++++++++++++++
+ library/ssl_tls.c                         |  18 +++
+ library/threading.c                       |  11 ++
+ 7 files changed, 431 insertions(+), 89 deletions(-)
+ rename library/net_sockets.c => embARC/net_alt.c (86%)
  create mode 100644 embARC/threading_alt.c
  create mode 100644 embARC/threading_alt.h
  create mode 100644 embARC/timing_alt.c
  create mode 100644 embARC/timing_alt.h
 
 diff --git a/library/net_sockets.c b/embARC/net_alt.c
-similarity index 85%
+similarity index 86%
 rename from library/net_sockets.c
 rename to embARC/net_alt.c
-index cc06cbf..5c0bf0c 100644
+index 816b1303d..751ec3cb3 100644
 --- a/library/net_sockets.c
 +++ b/embARC/net_alt.c
-@@ -27,98 +27,26 @@
+@@ -32,104 +32,29 @@
  
  #if defined(MBEDTLS_NET_C)
  
 -#if !defined(unix) && !defined(__unix__) && !defined(__unix) && \
--    !defined(__APPLE__) && !defined(_WIN32)
+-    !defined(__APPLE__) && !defined(_WIN32) && !defined(__QNXNTO__) && \
+-    !defined(__HAIKU__)
 -#error "This module only works on Unix and Windows, see MBEDTLS_NET_C in config.h"
 -#endif
 -
@@ -45,15 +45,18 @@ index cc06cbf..5c0bf0c 100644
 +#include "mbedtls/net.h"
  
  #include <string.h>
--
+ 
 -#if (defined(_WIN32) || defined(_WIN32_WCE)) && !defined(EFIX64) && \
 -    !defined(EFI32)
 -
--#ifdef _WIN32_WINNT
+-#define IS_EINTR( ret ) ( ( ret ) == WSAEINTR )
+-
+-#if !defined(_WIN32_WINNT) || (_WIN32_WINNT < 0x0501)
 -#undef _WIN32_WINNT
--#endif
 -/* Enables getaddrinfo() & Co */
 -#define _WIN32_WINNT 0x0501
+-#endif
+-
 -#include <ws2tcpip.h>
 -
 -#include <winsock2.h>
@@ -67,8 +70,8 @@ index cc06cbf..5c0bf0c 100644
 -#endif
 -#endif /* _MSC_VER */
 -
--#define read(fd,buf,len)        recv(fd,(char*)buf,(int) len,0)
--#define write(fd,buf,len)       send(fd,(char*)buf,(int) len,0)
+-#define read(fd,buf,len)        recv( fd, (char*)( buf ), (int)( len ), 0 )
+-#define write(fd,buf,len)       send( fd, (char*)( buf ), (int)( len ), 0 )
 -#define close(fd)               closesocket(fd)
 -
 -static int wsa_init_done = 0;
@@ -86,10 +89,12 @@ index cc06cbf..5c0bf0c 100644
  #include <netdb.h>
  #include <errno.h>
  
+ #define IS_EINTR( ret ) ( ( ret ) == EINTR )
+ 
 -#endif /* ( _WIN32 || _WIN32_WCE ) && !EFIX64 && !EFI32 */
 -
 -/* Some MS functions want int and MSVC warns if we pass size_t,
-- * but the standard fucntions use socklen_t, so cast only for MSVC */
+- * but the standard functions use socklen_t, so cast only for MSVC */
 -#if defined(_MSC_VER)
 -#define MSVC_INT_CAST   (int)
 -#else
@@ -129,16 +134,20 @@ index cc06cbf..5c0bf0c 100644
      return( 0 );
  }
  
-@@ -272,7 +200,7 @@ static int net_would_block( const mbedtls_net_context *ctx )
+@@ -286,10 +211,10 @@ static int net_would_block( const mbedtls_net_context *ctx )
      /*
       * Never return 'WOULD BLOCK' on a non-blocking socket
       */
 -    if( ( fcntl( ctx->fd, F_GETFL ) & O_NONBLOCK ) != O_NONBLOCK )
 +    if( ( fcntl( ctx->fd, F_GETFL, 0 ) & O_NONBLOCK ) != O_NONBLOCK )
-         return( 0 );
+     {
+         errno = err;
+-        return( 0 );
++        return ( 0 );
+     }
  
-     switch( errno )
-@@ -301,14 +229,8 @@ int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
+     switch( errno = err )
+@@ -318,14 +243,8 @@ int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
  
      struct sockaddr_storage client_addr;
  
@@ -153,7 +162,7 @@ index cc06cbf..5c0bf0c 100644
  
      /* Is this a TCP or UDP socket? */
      if( getsockopt( bind_ctx->fd, SOL_SOCKET, SO_TYPE,
-@@ -394,6 +316,7 @@ int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
+@@ -411,6 +330,7 @@ int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
          }
          else
          {
@@ -161,7 +170,7 @@ index cc06cbf..5c0bf0c 100644
              struct sockaddr_in6 *addr6 = (struct sockaddr_in6 *) &client_addr;
              *ip_len = sizeof( addr6->sin6_addr.s6_addr );
  
-@@ -401,6 +324,7 @@ int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
+@@ -418,6 +338,7 @@ int mbedtls_net_accept( mbedtls_net_context *bind_ctx,
                  return( MBEDTLS_ERR_NET_BUFFER_TOO_SMALL );
  
              memcpy( client_ip, &addr6->sin6_addr.s6_addr, *ip_len);
@@ -169,7 +178,7 @@ index cc06cbf..5c0bf0c 100644
          }
      }
  
-@@ -417,7 +341,7 @@ int mbedtls_net_set_block( mbedtls_net_context *ctx )
+@@ -434,7 +355,7 @@ int mbedtls_net_set_block( mbedtls_net_context *ctx )
      u_long n = 0;
      return( ioctlsocket( ctx->fd, FIONBIO, &n ) );
  #else
@@ -178,7 +187,7 @@ index cc06cbf..5c0bf0c 100644
  #endif
  }
  
-@@ -428,7 +352,7 @@ int mbedtls_net_set_nonblock( mbedtls_net_context *ctx )
+@@ -445,7 +366,7 @@ int mbedtls_net_set_nonblock( mbedtls_net_context *ctx )
      u_long n = 1;
      return( ioctlsocket( ctx->fd, FIONBIO, &n ) );
  #else
@@ -189,7 +198,7 @@ index cc06cbf..5c0bf0c 100644
  
 diff --git a/embARC/threading_alt.c b/embARC/threading_alt.c
 new file mode 100644
-index 0000000..4f830a9
+index 000000000..4f830a911
 --- /dev/null
 +++ b/embARC/threading_alt.c
 @@ -0,0 +1,80 @@
@@ -275,7 +284,7 @@ index 0000000..4f830a9
 +#endif /* MBEDTLS_THREADING_C */
 diff --git a/embARC/threading_alt.h b/embARC/threading_alt.h
 new file mode 100644
-index 0000000..8ffee49
+index 000000000..8ffee49df
 --- /dev/null
 +++ b/embARC/threading_alt.h
 @@ -0,0 +1,65 @@
@@ -347,7 +356,7 @@ index 0000000..8ffee49
 \ No newline at end of file
 diff --git a/embARC/timing_alt.c b/embARC/timing_alt.c
 new file mode 100644
-index 0000000..aaa5aab
+index 000000000..aaa5aab62
 --- /dev/null
 +++ b/embARC/timing_alt.c
 @@ -0,0 +1,111 @@
@@ -464,7 +473,7 @@ index 0000000..aaa5aab
 +
 diff --git a/embARC/timing_alt.h b/embARC/timing_alt.h
 new file mode 100644
-index 0000000..151765d
+index 000000000..151765d34
 --- /dev/null
 +++ b/embARC/timing_alt.h
 @@ -0,0 +1,136 @@
@@ -604,24 +613,11 @@ index 0000000..151765d
 +#endif
 +
 +#endif /* timing.h */
-diff --git a/library/ssl_srv.c b/library/ssl_srv.c
-index fc0d2d7..b5ea02c 100644
---- a/library/ssl_srv.c
-+++ b/library/ssl_srv.c
-@@ -3016,6 +3016,8 @@ curve_matching_done:
- #endif /* MBEDTLS_KEY_EXCHANGE_DHE_RSA_ENABLED) ||
-           MBEDTLS_KEY_EXCHANGE_ECDHE_RSA_ENABLED ||
-           MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED */
-+    // mask dead store of p
-+    (void)p;
- 
-     ssl->out_msglen  = 4 + n;
-     ssl->out_msgtype = MBEDTLS_SSL_MSG_HANDSHAKE;
 diff --git a/library/ssl_tls.c b/library/ssl_tls.c
-index 84a04ae..2153c80 100644
+index 38690fa66..fbdfc7683 100644
 --- a/library/ssl_tls.c
 +++ b/library/ssl_tls.c
-@@ -3608,6 +3608,24 @@ static int ssl_parse_record_header( mbedtls_ssl_context *ssl )
+@@ -4119,6 +4119,24 @@ static int ssl_parse_record_header( mbedtls_ssl_context *ssl )
                                          "expected %d, received %d",
                                          ssl->in_epoch, rec_epoch ) );
  
@@ -646,21 +642,11 @@ index 84a04ae..2153c80 100644
  #if defined(MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE) && defined(MBEDTLS_SSL_SRV_C)
              /*
               * Check for an epoch 0 ClientHello. We can't use in_msg here to
-@@ -3737,7 +3755,8 @@ int mbedtls_ssl_read_record( mbedtls_ssl_context *ssl )
- 
-         ret = mbedtls_ssl_handle_message_type( ssl );
- 
--    } while( MBEDTLS_ERR_SSL_NON_FATAL == ret );
-+    } while( MBEDTLS_ERR_SSL_NON_FATAL == ret ||
-+             ( MBEDTLS_ERR_SSL_WANT_READ == ret && ssl->in_msglen ) );
- 
-     if( 0 != ret )
-     {
 diff --git a/library/threading.c b/library/threading.c
-index 83ec01a..92ae7ee 100644
+index 7c90c7c59..30d65b926 100644
 --- a/library/threading.c
 +++ b/library/threading.c
-@@ -82,6 +82,16 @@ int (*mbedtls_mutex_unlock)( mbedtls_threading_mutex_t * ) = threading_mutex_unl
+@@ -120,6 +120,16 @@ int (*mbedtls_mutex_unlock)( mbedtls_threading_mutex_t * ) = threading_mutex_unl
  #endif /* MBEDTLS_THREADING_PTHREAD */
  
  #if defined(MBEDTLS_THREADING_ALT)
@@ -677,7 +663,7 @@ index 83ec01a..92ae7ee 100644
  static int threading_mutex_fail( mbedtls_threading_mutex_t *mutex )
  {
      ((void) mutex );
-@@ -97,6 +107,7 @@ void (*mbedtls_mutex_init)( mbedtls_threading_mutex_t * ) = threading_mutex_dumm
+@@ -135,6 +145,7 @@ void (*mbedtls_mutex_init)( mbedtls_threading_mutex_t * ) = threading_mutex_dumm
  void (*mbedtls_mutex_free)( mbedtls_threading_mutex_t * ) = threading_mutex_dummy;
  int (*mbedtls_mutex_lock)( mbedtls_threading_mutex_t * ) = threading_mutex_fail;
  int (*mbedtls_mutex_unlock)( mbedtls_threading_mutex_t * ) = threading_mutex_fail;
@@ -686,5 +672,5 @@ index 83ec01a..92ae7ee 100644
  /*
   * Set functions pointers and initialize global mutexes
 -- 
-2.13.2.windows.1
+2.18.0.windows.1
 

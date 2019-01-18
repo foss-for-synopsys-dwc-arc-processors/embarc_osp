@@ -32,24 +32,27 @@
 
 #include "arc_feature_config.h"
 #include "apexextensions.h"
+#include "board_emsdp.h"
 
+#undef DBG_init
+#undef DBG_print
+#undef DGB_getChar
+#undef DBG_finish
+#undef DBG_finish_with_error
+#undef BDG_install
 /**
  * Clock Definitions
  */
-#define EMSDP_REF_CLOCK				(100000000U)
-
-#define EMSDP_UART_REF_CLOCK		(100000000U)
-#define EMSDP_AUDIO_REF_CLOCK		(24576000U)
-#define EMSDP_SPI_REF_CLOCK			(20000000U)
-
-#if (defined(FAST_UART) )
-	#define EMSDP_UART_BAUDRATE		(6250000U)
-#else
-	#define EMSDP_UART_BAUDRATE		(115200)
+#ifndef EMSDP_PWM_TIMER_CLOCK
+#define EMSDP_PWM_TIMER_CLOCK		(EMSDP_REF_CLOCK)
+#endif
+#ifndef EMSDP_SPI_CLOCK
+#define EMSDP_SPI_REF_CLOCK 		(EMSDP_REF_CLOCK)
 #endif
 
-#define EMSDP_I2C_CLOCK				(EMSDP_REF_CLOCK)
-#define EMSDP_PWM_TIMER_CLOCK		(EMSDP_REF_CLOCK)
+#ifndef EMSDP_I2C_CLOCK
+#define EMSDP_I2C_CLOCK			(EMSDP_REF_CLOCK)
+#endif
 
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)
@@ -72,21 +75,6 @@
 	#define CLK_BUS_APB				(100000000U)
 #endif
 
-//APB Peripheral address map
-#define EMSDP_CRU_BASE				(0xF0000000U)
-#define EMSDP_CREG_BASE				(0xF0001000U)
-#define EMSDP_GPIO_BASE				(0xF0002000U)
-#define EMSDP_TRNG_BASE				(0xF0003000U)
-#define EMSDP_DBG_UART_BASE			(0xF0004000U)
-#define EMSDP_WDT_BASE				(0xF0005000U)
-#define EMSDP_TIMERS0_BASE			(0xF0006000U)
-#define EMSDP_TIMERS1_BASE			(0xF0007000U)
-#define EMSDP_SPI_BASE				(0xF0008000U)
-#define EMSDP_UART_BASE				(0xF0009000U)
-#define EMSDP_SDIO_BASE				(0xF0010000U)
-#define EMSDP_FLASH_BASE			(0xF1000000U)
-#define EMSDP_EBI_BASE				(0xF2000000U)
-#define EMSDP_PSRAM_BASE			(0xF2001000U)
 
 //CREG Control Register Map
 #define EMSDP_CREG_BOOT_OFFSET			(0x0000)
@@ -97,7 +85,5 @@
 #define EMSDP_CREG_IP_SW_RESET_OFFSET	(0x1FF0)
 #define EMSDP_CREG_IP_VERSION_OFFSET	(0x1FF8)
 #define EMSDP_CREG_IP_TYPE_OFFSET		(0x1FFC)
-
-#include "core_hardware.h"
 
 #endif //__EMSDP_HARDWARE_H__

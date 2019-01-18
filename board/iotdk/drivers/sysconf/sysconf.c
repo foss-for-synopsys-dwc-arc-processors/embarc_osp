@@ -131,6 +131,8 @@ int32_t pll_fout_config(uint32_t freq)
 		eflash_clk_div(1);
 	}
 
+	sdio_clk_divisor(1);
+
 	return 0;
 }
 
@@ -204,7 +206,7 @@ void apb_clk_disable(uint8_t dev)
  */
 void sdio_clk_divisor(uint8_t div)
 {
-	sysconf_reg_ptr->SDIO_REFCLK_DIV;
+	sysconf_reg_ptr->SDIO_REFCLK_DIV = div;
 }
 
 

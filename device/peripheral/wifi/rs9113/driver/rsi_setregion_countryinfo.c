@@ -48,7 +48,7 @@ void extract_setregionap_country_info(rsi_req_set_region_ap_t *rsi_set_region_ap
 {
   //! The given domain rules are generic rules for some of the countries
   //! USER can configure the domain regulations for the respective countries
-  uint8_t region_code;
+  uint8_t region_code = 0;
 
   if(!strcmp(RSI_COUNTRY_CODE,"US "))
     region_code = REGION_US;

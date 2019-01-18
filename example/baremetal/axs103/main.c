@@ -27,41 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_AXS103	embARC AXS 103 board test Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \ingroup	EMBARC_APPS_BOARD_AXS
- * \brief	embARC example for testing AXS 103 board function
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to test the AXS 103 hardware board.
- *
- * ### Usage Manual
- *     Configure your axs 103 hardware according the hardware user manual,
- *     then run it, and see the uart console output.
- *     ![ScreenShot of axs 103 board test under baremetal](pic/images/example/emsk/baremetal_arc_feature_axs103.jpg)
- *
- * ### Extra Comments
- *     Tested and supported on v1.1 firmware version of AXS103.
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_AXS103
- * \brief	main source of example
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_ARC_FEATURE_AXS103
- * @{
- */
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -131,5 +96,3 @@ int main(void)
 	while(1);
 	return E_SYS;
 }
-
-/** @} */

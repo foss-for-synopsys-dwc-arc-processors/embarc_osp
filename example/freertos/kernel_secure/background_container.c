@@ -27,45 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	EMBARC_APP_FREERTOS_KERNEL_SECURE	embARC FreeRTOS kernel example with secureshield
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	Test FreeRTOS working with secureshield runtime
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *
- * ### Design Concept
- *     This example is designed to show how FreeRTOS is integrated with SecureShield.
- *     Here, trap_s is used to trigger a task context switch request. So application
- *     should not use trap exception.
- *
- *     As container switch is not with task switch. So during a container call, task scheduler
- *     should be suspended to avoid a task context.
- *
- * ### Usage Manual
- *     Here we take EMSK 2.3 EM7D for example, you can run the program using Metaware toolset.
- *     - Re-configure the EMSK 2.3 board to EM7D configuration.
- *     - Command: gmake BOARD=emsk BD_VER=23 CUR_CORE=arcem7d run
- *     - Running screenshot as follows
- *     ![ScreenShot for FreeRTOS kernel with secureshield in embARC](pic/images/example/emsk/freertos_kernel_secure.jpg)
- *
- * ### Extra Comments
- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
- * \brief	main source of this example
- */
-
-/**
- * \addtogroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
- * @{
- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -276,5 +238,3 @@ static void interrupt_low_pri(void *p_exinf)
 	t_nest_int = perf_end();
 	perf_start();
 }
-
-/** @} */

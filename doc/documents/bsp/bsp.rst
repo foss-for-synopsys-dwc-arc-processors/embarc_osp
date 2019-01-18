@@ -49,7 +49,7 @@ alternative.
      # On Linux
      cd ~
      # embARC BSP for EMSK
-     git clone https://github.com/foss-for-synopsys-dwc-arc-processors/ embarc_emsk_bsp.git embarc_bsp
+     git clone https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_emsk_bsp.git embarc_bsp
 
 3. The embARC BSP code is independent with build systems. Various build systems can support embARC BSP code. Using the *hello world* as a base model,
 the following sections will describe how to build a embARC BSP application.

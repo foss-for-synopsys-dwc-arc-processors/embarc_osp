@@ -21,7 +21,7 @@ The **options** directory under the embARC root folder contains the common makef
 * :file:`options.mk`: entry makefile with common definitions, path definitions, other makefiles, and so on.
 * :file:`rule.mk`: make targets and rules.
 * :file:`scripts.mk`: common makefile functions
-* :file:`toolchain.mk`: General toolchain definitions, including **toolchain_gnu.mk** for the ARC GNU toolchain and **toolchain_mw.mk** for the MetaWare toolchain.
+* :file:`toolchain.mk`: general toolchain definitions, including **toolchain_gnu.mk** for the ARC GNU toolchain and **toolchain_mw.mk** for the MetaWare toolchain.
 * :file:`toolchain_gnu.mk` & :file:`toolchain_mw.mk`: toolchain specific compile and link options
 
 Make Targets
@@ -103,7 +103,7 @@ Most options are located in *<embARC>/options/options.mk*. If you change an opti
    | hsdk                   | board/hsdk/hsdk.mk               |
    +------------------------+----------------------------------+
 
-.. note:: The BD_VER must match the target EMSK version. For example, programs built for 1.1 cannot run on an EMSK 2.x board.
+.. note:: The BD_VER must match the target BOARD version. For example, programs built for 1.1 cannot run on an EMSK 2.x board.
 
 * **CUR_CORE**: Select the core configuration for the specified board version. For example, ``make BOARD=emsk BD_VER=23 CUR_CORE=arcem11d`` selects the arcem11d core configuration for emsk 2.3.
 
@@ -170,7 +170,7 @@ Most options are located in *<embARC>/options/options.mk*. If you change an opti
              archs                   ARC HS core
            ======================  ========================================
 
-        * For nSIM 10, the default value of this option is **archs38_c0** defined in *<embARC>/board/hsdk/configs/10/core_config.mk*.
+        * For HSDK, the default value of this option is **archs38_c0** defined in *<embARC>/board/hsdk/configs/10/core_config.mk*.
 
         .. table:: Make option - CUR_CORE for HSDK
            :widths: auto

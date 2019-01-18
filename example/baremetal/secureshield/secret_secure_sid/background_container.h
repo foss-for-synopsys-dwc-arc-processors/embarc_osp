@@ -27,11 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
- * \brief	secureshield background container header file
- */
+
 #ifndef BACKGROUND_CONTAINER_H
 #define BACKGROUND_CONTAINER_H
 

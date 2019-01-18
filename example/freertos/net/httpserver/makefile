@@ -1,8 +1,11 @@
 # Application name
 APPL ?= freertos_net_httpserver
 
+ifeq ($(BOARD), emsdp)
+EXT_DEV_LIST += wifi/rs9113
+else
 EXT_DEV_LIST += wifi/mrf24g
-
+endif
 
 #
 # root dir of embARC

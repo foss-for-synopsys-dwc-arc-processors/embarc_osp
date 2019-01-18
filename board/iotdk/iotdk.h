@@ -153,8 +153,6 @@
 #define BOARD_WIFI_0_INT		4
 #define BOARD_WIFI_0_RST		5
 
-#define TASK_STACK_SIZE_MAIN		1024
-
 // Un-implemented LED/Switch/Button functions and macros
 #define BOARD_LED_MASK			(0x0)
 #define BOARD_LED_CNT			(0)

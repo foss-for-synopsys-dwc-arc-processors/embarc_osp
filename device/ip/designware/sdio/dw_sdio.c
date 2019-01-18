@@ -27,7 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include "arc_exception.h"
@@ -60,7 +59,10 @@ Inline void dw_sdio_fifo_read_poll(DW_SDIO_CTRL_PTR sdio, uint32_t *buf, uint32_
 	uint32_t i;
 
 	while (size) {
-		len = dw_sdio_reg_read(sdio, DWSDIO_REG_STATUS);
+		do {
+			len = dw_sdio_reg_read(sdio, DWSDIO_REG_STATUS);
+		} while (len & DWSDIO_STATUS_FIFO_EMPTY);
+
 		len = (len & DWSDIO_STATUS_MASK_FIFO) >> DWSDIO_STATUS_BIT_FIFO;
 
 		len = min(size, len);
@@ -96,8 +98,11 @@ Inline void dw_sdio_fifo_write_poll(DW_SDIO_CTRL_PTR sdio, uint32_t *buf, uint32
 	uint32_t i;
 	uint32_t fifo_depth = sdio->fifo_depth;
 
- 	while (size) {
- 		len = dw_sdio_reg_read(sdio, DWSDIO_REG_STATUS);
+	while (size) {
+		do {
+			len = dw_sdio_reg_read(sdio, DWSDIO_REG_STATUS);
+		} while (len & DWSDIO_STATUS_FIFO_FULL);
+
 		len = fifo_depth - ((len & DWSDIO_STATUS_MASK_FIFO) >> DWSDIO_STATUS_BIT_FIFO);
 		len = min(size, len);
 
@@ -187,7 +192,6 @@ static int32_t dw_sdio_bus_freq_set(DW_SDIO_CTRL_PTR sdio, uint32_t card_number,
 
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CLKSRC, 0);
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CLKDIV, div);
-
 
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CMD, DWSDIO_CMD_PRV_DAT_WAIT |
 			DWSDIO_CMD_UPD_CLK | DWSDIO_CMD_START |  DWSDIO_CMD_USE_HOLD_REG);
@@ -284,7 +288,6 @@ static int32_t dw_sdio_data_transfer_poll(DW_SDIO_CTRL_PTR sdio, SDIO_DATA_PTR d
 {
 	uint32_t size;
 	uint32_t status;
-	int32_t ret;
 	uint32_t timeout = 1000;
 	uint32_t start = OSP_GET_CUR_MS();
 
@@ -295,21 +298,21 @@ static int32_t dw_sdio_data_transfer_poll(DW_SDIO_CTRL_PTR sdio, SDIO_DATA_PTR d
 
 		if (status & (DWSDIO_INT_DATA_ERR | DWSDIO_INT_DATA_TMO)) {
 			DBG("%s:, data transfer error!\r\n", __func__);
-			ret = E_SYS;
-			break;
-		}
-
-		if (data->flags == SDIO_DATA_READ && (status & DWSDIO_INT_RXDR)) {
-			dw_sdio_fifo_read_poll(sdio, (uint32_t *)data->in, size);
-			dw_sdio_reg_write(sdio, DWSDIO_REG_RINTSTS, DWSDIO_INT_RXDR);
-		} else if (data->flags == SDIO_DATA_WRITE && (status & DWSDIO_INT_TXDR)) {
-			dw_sdio_fifo_write_poll(sdio, (uint32_t *)data->out, size);
-			dw_sdio_reg_write(sdio, DWSDIO_REG_RINTSTS, DWSDIO_INT_TXDR);
+			return E_SYS;
 		}
 
 		if (status & DWSDIO_INT_DTO) {
-			ret = E_OK;
-			break;
+			return E_OK;
+		}
+
+		if (data->flags == SDIO_DATA_READ && (status & DWSDIO_INT_RXDR) && size) {
+			dw_sdio_fifo_read_poll(sdio, (uint32_t *)data->in, size);
+			size = 0;
+			dw_sdio_reg_write(sdio, DWSDIO_REG_RINTSTS, DWSDIO_INT_RXDR);
+		} else if (data->flags == SDIO_DATA_WRITE && (status & DWSDIO_INT_TXDR) && size) {
+			dw_sdio_fifo_write_poll(sdio, (uint32_t *)data->out, size);
+			size = 0;
+			dw_sdio_reg_write(sdio, DWSDIO_REG_RINTSTS, DWSDIO_INT_TXDR);
 		}
 
 		if ((OSP_GET_CUR_MS() - start) > timeout) {
@@ -317,8 +320,6 @@ static int32_t dw_sdio_data_transfer_poll(DW_SDIO_CTRL_PTR sdio, SDIO_DATA_PTR d
 			return E_TMOUT;
 		}
 	}
-
-	return ret;
 }
 
 void dw_sdio_isr(DEV_SDIO *sdio_obj, void *ptr)
@@ -419,7 +420,6 @@ int32_t dw_sdio_cmd_poll(DEV_SDIO *sdio_obj, SDIO_CMD_PTR cmd, SDIO_DATA_PTR dat
 		return E_SYS;
 	}
 
-
 	if (cmd->resp_type & SDIO_RSP_PRESENT) {
 		if (cmd->resp_type & SDIO_RSP_136) {
 			cmd->resp[0] = dw_sdio_reg_read(sdio, DWSDIO_REG_RESP3);
@@ -509,9 +509,9 @@ int32_t dw_sdio_cd(DEV_SDIO *sdio_obj, uint32_t card_number)
 	 * Some use 0 (CD pin to GNU) to indicate card detect.
 	 */
 #ifdef DWSDIO_CARD_DETECT_HIGH_LEVEL
-	val = dw_sdio_reg_read(sdio,  DWSDIO_REG_CDETECT);
+	val = dw_sdio_reg_read(sdio, DWSDIO_REG_CDETECT);
 #else
-	val = ~dw_sdio_reg_read(sdio,  DWSDIO_REG_CDETECT);
+	val = ~dw_sdio_reg_read(sdio, DWSDIO_REG_CDETECT);
 #endif
 
 	if ((val & (1 << card_number)) == (1 << card_number)) {
@@ -523,13 +523,12 @@ int32_t dw_sdio_cd(DEV_SDIO *sdio_obj, uint32_t card_number)
 
 int32_t dw_sdio_wp(DEV_SDIO *sdio_obj, uint32_t card_number)
 {
-
 	uint32_t val;
 
 	DEV_SDIO_INFO_PTR sdio_info_ptr = &(sdio_obj->sdio_info);
 	DW_SDIO_CTRL_PTR sdio = (DW_SDIO_CTRL_PTR)sdio_info_ptr->sdio_ctrl;
 
-	val = dw_sdio_reg_read(sdio,  DWSDIO_REG_WRTPRT);
+	val = dw_sdio_reg_read(sdio, DWSDIO_REG_WRTPRT);
 
 	if ((val & (1 << card_number)) == (1 << card_number)) {
 		return 1; /* the specific card is write-protect */
@@ -554,8 +553,8 @@ int32_t dw_sdio_control(DEV_SDIO *sdio_obj, SDIO_CTRL_CMD_PTR ctrl_cmd, void *pa
 			dw_sdio_bus_type_set(sdio, card, (uint32_t)param);
 			break;
 		case SDIO_CMD_SET_BUS_FREQ:
-		 	dw_sdio_bus_freq_set(sdio, card, (uint32_t)param);
-		 	break;
+			dw_sdio_bus_freq_set(sdio, card, (uint32_t)param);
+			break;
 		/* \todo add more cmds */
 		default:
 			ret = E_PAR;

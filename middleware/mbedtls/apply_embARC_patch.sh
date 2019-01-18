@@ -2,7 +2,7 @@
 
 ## REPO CONFIGURATION
 REPO_LINK="https://github.com/ARMmbed/mbedtls.git"
-REPO_COMMIT="mbedtls-2.4.1"
+REPO_COMMIT="mbedtls-2.16.0"
 SRC_DIRS="library,include"
 
 PREV_DIR=$(pwd)

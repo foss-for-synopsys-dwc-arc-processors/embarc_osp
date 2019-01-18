@@ -23,6 +23,7 @@
  * Includes
  */
 #include "rsi_driver.h"
+#include <stdlib.h>
 
 
 /**

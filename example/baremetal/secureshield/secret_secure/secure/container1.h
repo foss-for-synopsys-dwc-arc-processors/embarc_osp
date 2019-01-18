@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
- * \brief	secureshield secret secure example container1 head file
- */
-
 #ifndef CONTAINER1_H
 #define CONTAINER1_H
 

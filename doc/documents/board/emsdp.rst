@@ -56,7 +56,7 @@ The |emsdp| contains the following components:
   - Audio line in/out
   - USB Data port (JTAG/UART/access to configuration memory)
   - Micro-SD Card
-  - WIFI/BT/Zigbee module
+  - Wi-Fi/BT/Zigbee module
   - ADC (eight channels)
   - Motion Sensor
   - Digital MEMs microphone (2x)
@@ -79,7 +79,7 @@ Drag-and-drop feature enable users to copy an FPGA bitstream from the PC to the 
 Memory
 ^^^^^^
 
-Please refer to `ARC_EM_SDP_UserGuide` for memory map and more details.
+Please refer to `ARC_EM_SDP_User Guide` for memory map and more details.
 
 Interfaces
 ^^^^^^^^^^
@@ -121,17 +121,22 @@ Package Preparation
 This section talks about how to add new |emsdp| cores into embARC OSP.
 If you are using default cores of |emsdp|: *em6_scss*, *em7d_esp_dfss*, and *em11d_dfss*, then you may skip this section.
 
-#. You may download the package from our website. Suppose you want to add a new package called ``em9d_dfss``, your package name would be ``embarc_em9d_dfss.zip``.
+#. You may download the package from our website. Suppose you want to add a new package called ``em9d_dfss``, your package name would be ``emsdp_em9d_dfss.zip``.
 
 #. Download the package and unzip it, you will find four folders: ``/doc``, ``/fpga``, ``/include``, ``/tool_config``. Now create a new folder according to your board revision and package name. In this case *em9d_dfss* is added to *rev2* board, so you should set your directory as this:``/board/emsdp/rev2/configs/em9d_dfss``
 
-#. Copy ``/tool_config`` folder to ``/board/emsdp/rev2/configs/em9d_dfss/tool_config``.
+#. Copy the content of unzipped folder to ``/board/emsdp/rev2/configs/em9d_dfss``. It would be like:
 
-#. Copy all ``/include`` files except ``core_config.h`` to ``/board/emsdp/rev2/configs/em9d_dfss``
+.. code-block:: console
 
-#. Rename ``board_emsdp.h`` to ``core_hardware.h``, open the file and delete its contents from line 25 to line 100.
+    em9d_dfss
+    ├─doc
+    ├─fpga
+    ├─include
+    └─tool_config
 
-#. You are done importing a new package, build with it to make sure everything is working.
+
+#. You are done importing a new package, flash the bit file into board and build with it to make sure everything is working.
 
 Run Your First Program
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -141,16 +146,16 @@ please refer to example `example_blinky` for further details. Build and download
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/blinky
-    $ gmake BOARD=emsdp BD_VER=rev1 CORE=em11d_dfss TOOLCHAIN=mw run
+    $ gmake BOARD=emsdp BD_VER=rev2 CORE=em11d_dfss TOOLCHAIN=mw run
 
-.. note:: Notice that for CORE option there are multiple core choices, please check `<embarc_root>/board/emsdp/rev1` folder for available cores.
+.. note:: Notice that for CORE option there are multiple core choices, please check `<embarc_root>/board/emsdp/rev2` folder for available cores.
 
 Development Guide
 ^^^^^^^^^^^^^^^^^
 Please refer to `Developer Guides`.
 You may need to specify peripheral driver (`<embarc_root>/device/peripheral`) for your own code.
 
-For example, if wifi rs9113 driver is needed, add this line in makefile:
+For example, if Wi-Fi rs9113 driver is needed, add this line in makefile:
 
 .. code-block:: console
 

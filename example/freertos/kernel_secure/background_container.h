@@ -27,11 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
- * \brief	background container head file
- */
 
 #ifndef BACKGROUND_CONTAINER_H
 #define BACKGROUND_CONTAINER_H

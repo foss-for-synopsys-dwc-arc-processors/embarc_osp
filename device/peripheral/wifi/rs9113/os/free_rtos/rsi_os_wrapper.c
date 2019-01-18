@@ -26,11 +26,7 @@
  * Include files
  * */
 #include <rsi_driver.h>
-#include <FreeRTOS.h>
-#include <semphr.h>
-#include <projdefs.h>
-#include <task.h>
-
+#include "embARC.h"
 
 /*==============================================*/
 /**
@@ -136,7 +132,7 @@ rsi_error_t rsi_mutex_lock(volatile rsi_mutex_handle_t *mutex)
 	{
 		timeout_ms = portMAX_DELAY;
 	}
-	if(xSemaphoreTake(*mutex, timeout_ms) == pdPASS)
+	if(xSemaphoreTake((QueueHandle_t)*mutex, timeout_ms) == pdPASS)
 	{
 		return RSI_ERROR_NONE;
 	}
@@ -159,11 +155,26 @@ rsi_error_t rsi_mutex_lock(volatile rsi_mutex_handle_t *mutex)
  */
 rsi_error_t rsi_mutex_unlock(volatile rsi_mutex_handle_t *mutex)
 {
+	BaseType_t xHigherPriorityTaskWoken;
+
 	if(mutex == NULL)
 	{
 		return RSI_ERROR_INVALID_PARAM;
 	}
-	if(xSemaphoreGive(*mutex) == pdPASS)
+
+	if (arc_int_active()) {
+		xSemaphoreGiveFromISR((QueueHandle_t)*mutex, &xHigherPriorityTaskWoken);
+		if(xHigherPriorityTaskWoken != pdFALSE) {
+			portYIELD_FROM_ISR();
+			return RSI_ERROR_NONE;
+		}
+	} else {
+		if(xSemaphoreGive((QueueHandle_t)*mutex) == pdPASS)
+		{
+			return RSI_ERROR_NONE;
+		}
+	}
+	if(xSemaphoreGive((QueueHandle_t)*mutex) == pdPASS)
 	{
 		return RSI_ERROR_NONE;
 	}
@@ -219,7 +230,7 @@ rsi_error_t rsi_semaphore_create(rsi_semaphore_handle_t *semaphore,uint32_t coun
 
 	*p_semaphore = xSemaphoreCreateBinary();
 
-	if(*semaphore == NULL)
+	if(*p_semaphore == NULL)
 	{
 		return  RSI_ERROR_IN_OS_OPERATION;
 	}
@@ -275,7 +286,7 @@ rsi_error_t rsi_semaphore_wait(rsi_semaphore_handle_t *semaphore, uint32_t timeo
 	{
 		timeout_ms = portMAX_DELAY;
 	}
-	if(xSemaphoreTake(*semaphore, timeout_ms) == pdPASS)
+	if(xSemaphoreTake((QueueHandle_t)*semaphore, timeout_ms) == pdPASS)
 	{
 		return RSI_ERROR_NONE;
 	}
@@ -301,13 +312,23 @@ rsi_error_t rsi_semaphore_wait(rsi_semaphore_handle_t *semaphore, uint32_t timeo
 
 rsi_error_t rsi_semaphore_post(rsi_semaphore_handle_t *semaphore)
 {
+	BaseType_t xHigherPriorityTaskWoken;
 	if(semaphore == NULL)
 	{
 		return RSI_ERROR_INVALID_PARAM;
 	}
-	if(xSemaphoreGive(*semaphore) == pdPASS)
-	{
-		return RSI_ERROR_NONE;
+
+	if (arc_int_active()) {
+		xSemaphoreGiveFromISR(*semaphore, &xHigherPriorityTaskWoken);
+		if(xHigherPriorityTaskWoken != pdFALSE) {
+			portYIELD_FROM_ISR();
+			return RSI_ERROR_NONE;
+		}
+	} else {
+		if(xSemaphoreGive(*semaphore) == pdPASS)
+		{
+			return RSI_ERROR_NONE;
+		}
 	}
 	return RSI_ERROR_IN_OS_OPERATION;
 

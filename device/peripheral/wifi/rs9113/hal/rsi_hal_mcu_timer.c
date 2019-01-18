@@ -1,34 +1,39 @@
-/**
- * @file       rsi_hal_mcu_timer.c
- * @version    0.1
- * @date       15 Aug 2015
- *
- * Copyright(C) Redpine Signals 2015
- * All rights reserved by Redpine Signals.
- *
- * @section License
- * This program should be used on your own responsibility.
- * Redpine Signals assumes no responsibility for any losses
- * incurred by customers or third parties arising from the use of this file.
- *
- * @brief HAL TIMER: Functions related to HAL timers
- *
- * @section Description
- * This file contains the list of functions for configuring the microcontroller timers.
- * Following are list of API's which need to be defined in this file.
- *
- */
+/* ------------------------------------------
+ * Copyright (c) 2018, Synopsys, Inc. All rights reserved.
 
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+
+ * 1) Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+
+ * 2) Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation and/or
+ * other materials provided with the distribution.
+
+ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+--------------------------------------------- */
 
 /**
  * Includes
  */
 
 #include "rsi_driver.h"
-#include "embARC_error.h"
-#include "arc_timer.h"
-#include "board.h"
-//#include "embARC.h"
+#include "embARC.h"
 
 
 
@@ -85,16 +90,10 @@ int32_t rsi_timer_start(uint8_t timer_node, uint8_t mode, uint8_t type, uint32_t
 
 int32_t rsi_timer_stop(uint8_t timer_node)
 {
-
 	//! Stop the timer
 	// timer_stop(timer_node);
 	return 0;
-
-
 }
-
-
-
 
 /*===================================================*/
 /**
@@ -109,20 +108,12 @@ int32_t rsi_timer_stop(uint8_t timer_node)
 
 uint32_t rsi_timer_read(uint8_t timer_node)
 {
-
 	volatile uint32_t timer_val = 0;
 
 	//! read the timer and return timer value
 	// timer_current(timer_node, (void *)(&timer_val));
 	return timer_val;
-
-
 }
-
-
-
-
-
 
 /*===================================================*/
 /**
@@ -136,15 +127,9 @@ uint32_t rsi_timer_read(uint8_t timer_node)
  */
 void rsi_delay_us(uint32_t delay_us)
 {
-
     //! call the API for delay in micro seconds
-
 	return;
-
 }
-
-
-
 
 /*===================================================*/
 /**
@@ -158,8 +143,6 @@ void rsi_delay_us(uint32_t delay_us)
  */
 void rsi_delay_ms(uint32_t delay_ms)
 {
-
-
 	//! call the API for delay in milli seconds
 
 #ifdef OS_FREERTOS
@@ -167,19 +150,5 @@ void rsi_delay_ms(uint32_t delay_ms)
 #else
 	board_delay_ms(delay_ms, OSP_DELAY_OS_COMPAT_ENABLE);
 #endif
-
 	return;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-

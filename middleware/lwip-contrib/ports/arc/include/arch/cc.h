@@ -66,6 +66,8 @@
 // Extra defintion needed by Metaware Toolchain
 #ifdef __MW__
 
+#define SZT_F  "d"
+
 #endif /* __MW__ */
 
 /* Define platform endianness */

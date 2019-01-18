@@ -95,7 +95,7 @@ void rsi_common_set_status(int32_t status)
 int32_t rsi_driver_init(uint8_t *buffer, uint32_t length)
 {
   uint32_t        actual_length=0;
-  int32_t         status = RSI_SUCCESS;
+  //int32_t         status = RSI_SUCCESS;
 
   //! Memset user buffer
   memset(buffer, 0, length);

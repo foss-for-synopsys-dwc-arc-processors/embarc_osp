@@ -57,9 +57,10 @@
 #include "projdefs.h"
 #include "queue.h"
 #include "semphr.h"
-#include "StackMacros.h"
+#include "stack_macros.h"
 #include "task.h"
 #include "timers.h"
+#include "stream_buffer.h"
 
 #include "arc_freertos_exceptions.h"
 

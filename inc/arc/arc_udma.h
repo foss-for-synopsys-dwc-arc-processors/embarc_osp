@@ -209,8 +209,8 @@ typedef enum _dma_ctrl_am {
 
 /** DMA channel priority enumeration */
 typedef enum _dma_chn_prio {
-	DMA_CHN_NORM_PRIO = 0,	/*!< High priority */
-	DMA_CHN_HIGH_PRIO = 1	/*!< Normal priority */
+	DMA_CHN_NORM_PRIO = 0,	/*!< Normal priority */
+	DMA_CHN_HIGH_PRIO = 1	/*!< High priority */
 } dma_chn_prio_t;
 
 

@@ -75,7 +75,7 @@ int32_t esp8266_test(ESP8266_DEF_PTR obj)
 
 int32_t esp8266_wifi_mode_get(ESP8266_DEF_PTR obj, bool flash)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
 	uint32_t ret = 0;
@@ -95,7 +95,7 @@ int32_t esp8266_wifi_mode_get(ESP8266_DEF_PTR obj, bool flash)
 
 int32_t esp8266_wifi_mode_set(ESP8266_DEF_PTR obj, ESP8266_WIFI_MODE mode, bool flash)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	char mode_str[4]= {0};
 	sprintf(mode_str, "%d", mode);
 	at_send_cmd(obj->p_at, AT_WRITE, flash?"CWMODE_DEF":"CWMODE_CUR", mode_str, NULL);
@@ -105,7 +105,7 @@ int32_t esp8266_wifi_mode_set(ESP8266_DEF_PTR obj, ESP8266_WIFI_MODE mode, bool 
 /* rcv_buf should be large enough for scan result */
 int32_t esp8266_wifi_scan(ESP8266_DEF_PTR obj, char *rcv_buf, char *ssid)
 {
-	char cmd_str[64]= {0};
+	char cmd_str[512]= {0};
 	sprintf(cmd_str, "CWLAP=%s", ssid);
 	at_send_cmd(obj->p_at, AT_EXECUTE, cmd_str);
 	return at_get_reply(obj->p_at, rcv_buf, AT_LONG_TIMEOUT);
@@ -127,7 +127,7 @@ int32_t esp8266_wifi_scan(ESP8266_DEF_PTR obj, char *rcv_buf, char *ssid)
 */
 int32_t esp8266_wifi_connect(ESP8266_DEF_PTR obj, AT_STRING ssid, AT_STRING pwd, bool flash)
 {
-	char rcv_buf[256];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
 	uint32_t ret = 0;
@@ -155,7 +155,7 @@ int32_t esp8266_wifi_connect(ESP8266_DEF_PTR obj, AT_STRING ssid, AT_STRING pwd,
 
 int32_t esp8266_wifi_disconnect(ESP8266_DEF_PTR obj)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	at_send_cmd(p_at, AT_EXECUTE, "CWQAP");
 
@@ -169,7 +169,7 @@ int32_t esp8266_wifi_disconnect(ESP8266_DEF_PTR obj)
 
 int32_t esp8266_address_get(ESP8266_DEF_PTR obj)
 {
-	char rcv_buf[128];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	at_send_cmd(p_at, AT_EXECUTE, "CIFSR");
 	return at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT);
@@ -185,7 +185,7 @@ int32_t esp8266_address_get(ESP8266_DEF_PTR obj)
 */
 int32_t esp8266_conn_status(ESP8266_DEF_PTR obj)
 {
-	char rcv_buf[256];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
 	uint32_t ret = 0;
@@ -205,7 +205,7 @@ int32_t esp8266_conn_status(ESP8266_DEF_PTR obj)
 
 int32_t esp8266_dns_lookup(ESP8266_DEF_PTR obj, char *domain_ip, AT_STRING domain_name)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
 	int len=0;
@@ -231,7 +231,7 @@ int32_t esp8266_dns_lookup(ESP8266_DEF_PTR obj, char *domain_ip, AT_STRING domai
 
 int32_t esp8266_tcp_connect(ESP8266_DEF_PTR obj, AT_STRING server_IP, uint32_t port)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	char IP_Str[32], port_Str[16];
 	sprintf(IP_Str, "\"%s\"", server_IP);
 	sprintf(port_Str, "%d", port);
@@ -241,7 +241,7 @@ int32_t esp8266_tcp_connect(ESP8266_DEF_PTR obj, AT_STRING server_IP, uint32_t p
 
 static int32_t esp8266_tcp_server(ESP8266_DEF_PTR obj, uint32_t mode, uint32_t port)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	char mode_buf[5];
 	char port_buf[10];
 
@@ -255,7 +255,7 @@ static int32_t esp8266_tcp_server(ESP8266_DEF_PTR obj, uint32_t mode, uint32_t p
 
 int32_t esp8266_tcp_server_open(ESP8266_DEF_PTR obj, uint32_t port)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	at_send_cmd(p_at, AT_WRITE, "CIPMUX", "1", NULL);
 
@@ -271,7 +271,7 @@ int32_t esp8266_tcp_server_close(ESP8266_DEF_PTR obj, uint32_t port)
 
 int32_t esp8266_transmission_mode(ESP8266_DEF_PTR obj, ESP8266_TRANS_MODE mode)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	uint32_t ret;
 	char mode_str[4]= {0};
 	sprintf(mode_str, "%d", mode);
@@ -288,7 +288,7 @@ int32_t esp8266_transmission_mode(ESP8266_DEF_PTR obj, ESP8266_TRANS_MODE mode)
 
 int32_t esp8266_passthr_start(ESP8266_DEF_PTR obj)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 
 	if (obj->wifi_connected) {
 		if (esp8266_transmission_mode(obj, ESP8266_PASSTHR)==AT_OK) {
@@ -327,7 +327,7 @@ int32_t esp8266_passthr_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 
 uint32_t esp8266_normal_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	char cnt_str[16]= {0};
 
 	if (obj->wifi_connected) {
@@ -353,7 +353,7 @@ uint32_t esp8266_normal_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 
 uint32_t esp8266_connect_write(ESP8266_DEF_PTR obj, char *buf, char *connect, uint32_t cnt)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	char cnt_str[16]= {0};
 
 	if (obj->wifi_connected) {
@@ -412,7 +412,7 @@ uint32_t esp8266_nread(ESP8266_DEF_PTR obj, char *buf, uint32_t n)
 //at_httpserver
 int32_t esp8266_CIPCLOSE(ESP8266_DEF_PTR obj, char *conn_buf)
 {
-	char rcv_buf[64];
+	char rcv_buf[512];
 	at_send_cmd(obj->p_at, AT_WRITE, "CIPCLOSE", conn_buf, NULL);
 	return at_get_reply(obj->p_at, rcv_buf, AT_EXTRA_TIMEOUT);
 }

@@ -414,6 +414,12 @@
 
 #endif
 
+#if !defined(ARC_FEATURE_STACK_CHECK)
+#if core_config_stack_check
+#define ARC_FEATURE_STACK_CHECK 	1
+#endif
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

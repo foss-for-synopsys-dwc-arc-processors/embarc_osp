@@ -27,52 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID embARC Secureshield Secret with SID Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC Secureshield secret with SID example
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     - Designware nSIM Tool or EMSK 2.3 arcem7d configuration
- *
- * ### Design Concept
- *     This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component.
- *     - The secret and password are protected in the context of container 1 which is a container with secure privileges.
- *     - You need to input the right password to get the secret from the non-trusted background container; container 2 is trusted and can access the secret without password.
- *     - The init value of secret and password are stored in the data section of secure container 1. Non-secure containers can not access them directly.
- *     - Secure container 2 can use the container 1 secret internally for implementing other services. The background application can request such a service, without knowing or obtaining the secret itself.
- *     - For demonstration purpose, the background container can obtain the secret as well (using the password). Since the background container stores the result in global, public memory, this is normally not secure and not recommended. Instead see Container 2 for how to securely use the secret.
- *     - The difference between this example and secret secure example is MPU reprogramming is avoidded through SID enabled. All containers MPU configuration will be loaded into MPU hardware.
- *
- * ### Usage Manual
- *     Here we take EMSK 2.3 EM7D for example, you can run the program using Metaware toolset.
- *     - Re-configure the EMSK 2.3 board to EM7D configuration.
- *     - Command: gmake BOARD=emsk BD_VER=23 CUR_CORE=arcem7d run
- *
- *     When this example start to run, please try the following ntshell commands:
- *     - Run ntshell command **main -h** to see how to run this example.
- *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
- *     ![ScreenShot of secureshield v2 sid example](pic/images/example/emsk/baremetal_secureshield_secret_v2_sid.jpg)
- *
- * ### Extra Comments
- *
- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
- * \brief	secureshield background container and main application
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
- * @{
- */
-/* embARC HAL */
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -219,5 +174,3 @@ int main(int argc, char **argv)
 error_exit:
 	return E_OK;
 }
-
-/** @} */

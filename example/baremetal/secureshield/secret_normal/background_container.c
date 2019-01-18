@@ -27,49 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL embARC Secureshield Secret Normal Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC Secureshield secret normal example
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     - Designware nSIM Tool or
- *     - EMSK 2.2 arcem7d configuration / EMSK 2.3 arcem7d configuration
- *
- * ### Design Concept
- *     This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component. It's similar to the 'secret' example, but protects the secrets differently:
- *     - all containers are normal containers, no secure privileges.
- *     - to initialize the secret data in container 1, a private const data section is used; others cannot access this data. In an application with secure persistent storage like EEPROM or flash, it would be stored there.
- *     - a shared memory region is created for container 1 and container 2 to exchange data; others cannot access this region.
- *     - an application specific linker script is created to show how shared memory is created and how the initialization data is protected.
- *     - for further information on the application, see the 'secret' application
- *
- * ### Usage Manual
- *     When this example start to run, please try the following ntshell commands:
- *     - Run ntshell command **main -h** to see how to run this example.
- *     - Run ntshell command **main -p embarc** or **main -t** to get the secret.
- *
- *     ![ScreenShot of secureshield example](pic/images/example/emsk/baremetal_secureshield_secret2.jpg)
- *
- * ### Extra Comments
- *
- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL
- * \brief	secureshield secret normal example source file
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_NORMAL
- * @{
- */
-/* embARC HAL */
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -213,5 +171,3 @@ int main(int argc, char **argv)
 error_exit:
 	return E_OK;
 }
-
-/** @} */

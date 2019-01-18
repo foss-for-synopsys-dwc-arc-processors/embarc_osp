@@ -774,60 +774,61 @@ void term_handler( int sig )
 }
 #endif
 
+unsigned char buf[IO_BUF_LEN];
+#if defined(MBEDTLS_KEY_EXCHANGE__SOME__PSK_ENABLED)
+unsigned char psk[MBEDTLS_PSK_MAX_LEN];
+size_t psk_len = 0;
+psk_entry *psk_info = NULL;
+#endif
+const char *pers = "ssl_server2";
+unsigned char client_ip[16] = { 0 };
+size_t cliip_len;
+#if defined(MBEDTLS_SSL_COOKIE_C)
+mbedtls_ssl_cookie_ctx cookie_ctx;
+#endif
+mbedtls_entropy_context entropy;
+mbedtls_ctr_drbg_context ctr_drbg;
+mbedtls_ssl_context ssl;
+mbedtls_ssl_config conf;
+#if defined(MBEDTLS_TIMING_C)
+mbedtls_timing_delay_context timer;
+#endif
+#if defined(MBEDTLS_SSL_RENEGOTIATION)
+unsigned char renego_period[8] = { 0 };
+#endif
+#if defined(MBEDTLS_X509_CRT_PARSE_C)
+uint32_t flags;
+mbedtls_x509_crt cacert;
+mbedtls_x509_crt srvcert;
+mbedtls_pk_context pkey;
+mbedtls_x509_crt srvcert2;
+mbedtls_pk_context pkey2;
+int key_cert_init = 0, key_cert_init2 = 0;
+#endif
+#if defined(MBEDTLS_DHM_C) && defined(MBEDTLS_FS_IO)
+mbedtls_dhm_context dhm;
+#endif
+#if defined(MBEDTLS_SSL_CACHE_C)
+mbedtls_ssl_cache_context cache;
+#endif
+#if defined(MBEDTLS_SSL_SESSION_TICKETS)
+mbedtls_ssl_ticket_context ticket_ctx;
+#endif
+#if defined(SNI_OPTION)
+sni_entry *sni_info = NULL;
+#endif
+#if defined(MBEDTLS_SSL_ALPN)
+const char *alpn_list[10];
+#endif
+#if defined(MBEDTLS_MEMORY_BUFFER_ALLOC_C)
+unsigned char alloc_buf[100000];
+#endif
+
 int main( int argc, char *argv[] )
 {
     int ret = 0, len, written, frags, exchanges_left;
     int version_suites[4][2];
-    unsigned char buf[IO_BUF_LEN];
-#if defined(MBEDTLS_KEY_EXCHANGE__SOME__PSK_ENABLED)
-    unsigned char psk[MBEDTLS_PSK_MAX_LEN];
-    size_t psk_len = 0;
-    psk_entry *psk_info = NULL;
-#endif
-    const char *pers = "ssl_server2";
-    unsigned char client_ip[16] = { 0 };
-    size_t cliip_len;
-#if defined(MBEDTLS_SSL_COOKIE_C)
-    mbedtls_ssl_cookie_ctx cookie_ctx;
-#endif
 
-    mbedtls_entropy_context entropy;
-    mbedtls_ctr_drbg_context ctr_drbg;
-    mbedtls_ssl_context ssl;
-    mbedtls_ssl_config conf;
-#if defined(MBEDTLS_TIMING_C)
-    mbedtls_timing_delay_context timer;
-#endif
-#if defined(MBEDTLS_SSL_RENEGOTIATION)
-    unsigned char renego_period[8] = { 0 };
-#endif
-#if defined(MBEDTLS_X509_CRT_PARSE_C)
-    uint32_t flags;
-    mbedtls_x509_crt cacert;
-    mbedtls_x509_crt srvcert;
-    mbedtls_pk_context pkey;
-    mbedtls_x509_crt srvcert2;
-    mbedtls_pk_context pkey2;
-    int key_cert_init = 0, key_cert_init2 = 0;
-#endif
-#if defined(MBEDTLS_DHM_C) && defined(MBEDTLS_FS_IO)
-    mbedtls_dhm_context dhm;
-#endif
-#if defined(MBEDTLS_SSL_CACHE_C)
-    mbedtls_ssl_cache_context cache;
-#endif
-#if defined(MBEDTLS_SSL_SESSION_TICKETS)
-    mbedtls_ssl_ticket_context ticket_ctx;
-#endif
-#if defined(SNI_OPTION)
-    sni_entry *sni_info = NULL;
-#endif
-#if defined(MBEDTLS_SSL_ALPN)
-    const char *alpn_list[10];
-#endif
-#if defined(MBEDTLS_MEMORY_BUFFER_ALLOC_C)
-    unsigned char alloc_buf[100000];
-#endif
 
     int i;
     char *p, *q;

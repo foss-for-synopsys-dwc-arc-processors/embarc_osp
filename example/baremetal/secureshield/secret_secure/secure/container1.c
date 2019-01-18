@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE
- * \brief	secureshield secret secure example container1 source file
- */
-
 #undef LIB_SECURESHIELD_OVERRIDES
 #include <string.h>
 #include <stdio.h>

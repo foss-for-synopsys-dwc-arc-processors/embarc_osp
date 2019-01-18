@@ -420,7 +420,7 @@ Inline uint32_t arc_locked(void)
 }
 
 /**
- * \brief  lock cpu and staus
+ * \brief  lock cpu and status
  *
  * \returns cpu status
  */

@@ -629,7 +629,7 @@ int32_t rsi_wlan_connect_async(int8_t *ssid, rsi_security_mode_t sec_type, void 
 
 #endif
         //! Send EAP command for EAP security
-        if((wlan_cb->opermode == RSI_WLAN_ENTERPRISE_CLIENT_MODE))
+        if(wlan_cb->opermode == RSI_WLAN_ENTERPRISE_CLIENT_MODE)
         {
 
           credentials = (rsi_eap_credentials_t *)secret_key;

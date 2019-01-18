@@ -27,64 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	EMBARC_APP_BAREMETAL_BLE_HM1X	embARC BLE_HM1X Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_BAREMETAL
- * \brief	embARC example for BLE HM10 device via UART
- *
- * \details
- * ### Extra Required Tools
- *     * BLE APP on SmartPhone:
- *       - Android: BLE Android ComAssistant
- *       - iOS: [LightBlue](http://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8)
- *
- * ### Extra Required Peripherals
- *     * UART Based BLE Device HM-10
- *
- * ### Design Concept
- *     This example is designed to test how to operate UART-based BLE device HM10 via UART
- *     and demonstrate how to use HM-10 BLE API defined in hm1x.h.
- *
- * ### Usage Manual
- *     - How to connect HM-10 to \ref EMBARC_BOARD_CONNECTION "EMSK".
- *       \code
- *       HM10-DV33 <----> J1-PIN6
- *       HM10-GND  <----> J1-PIN5
- *       HM10-TXD  <----> J1-PIN4
- *       HM10-RXD  <----> J1-PIN3
- *       \endcode
- *
- *     - How to use this example
- *
- *       This example demonstrates how to use the API of HM-10
- *        located in *device/peripheral/ble*, the APIs contains information about send AT command and receive response,
- *        and read or write data to BLE device. \n
- *       The example performs tests on the HM-10 BLE device using different uart baudrate,
- *        which take approximately 2 minutes, then the device will enter to receive and send mode.
- *        Users can use a BLE-UART APP on their smartphone which must support BLE,
- *        for android please use BLE Android ComAssistant,
- *        for iOS please use [LightBlue](http://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8).
- *
- * ![ScreenShot of ble_hm1x-uart message under baremetal](pic/images/example/emsk/emsk_ble_hm1x.jpg)
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_BLE_HM1X
- * \brief  example of how to use HM-10 BLE device
- *  This example shows how to use hm1x api declared in hm1x.h in baremetal.
- */
-
-/**
- * \addtogroup	EMBARC_APP_BAREMETAL_BLE_HM1X
- * @{
- */
-
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -235,5 +177,3 @@ int main(void)
 
 	return E_SYS;	/* system error */
 }
-
-/** @} */

@@ -27,11 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_KERNEL_SECURE
- * \brief	freertos kernel secure example container2 source file
- */
 
 #include "embARC.h"
 #include "embARC_debug.h"

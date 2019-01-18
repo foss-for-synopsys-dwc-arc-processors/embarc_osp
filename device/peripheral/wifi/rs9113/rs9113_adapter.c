@@ -40,7 +40,7 @@
 #include "rs9113_adapter.h"
 #include "rsi_driver.h"
 
-#define DBG_MORE
+#define DBG_LESS
 #include "embARC_debug.h"
 #define RS9113_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
@@ -185,8 +185,9 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 
 	//! Task created for Driver task
 	if (driver_task_handle == NULL) {
-		rsi_task_create(rsi_wireless_driver_task, "driver_task", RSI_DRIVER_TASK_STACK_SIZE, NULL, RSI_DRIVER_TASK_PRIORITY,
-		                &driver_task_handle);
+		rsi_task_create((rsi_task_function_t)rsi_wireless_driver_task,
+		 (uint8_t *)"driver_task", RSI_DRIVER_TASK_STACK_SIZE, NULL,
+		  RSI_DRIVER_TASK_PRIORITY, &driver_task_handle);
 	}
 
 	//a short delay to wait the device get ready
@@ -196,7 +197,7 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 	dbg_printf(DBG_MORE_INFO, "rsi_wireless_init return 0x%x\r\n", ercd);
 	RS9113_CHECK_EXP(ercd == E_OK, E_SYS);
 	//register rs9113 on receive callback function
-	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, rswifi_on_input);
+	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, (void *)rswifi_on_input);
 
 	rs9113_info->power_status = WNIC_POWER_NORMAL;
 	rs9113_info->init_status = WNIC_INIT_SUCCESSFUL;  /* stop initialization process */
@@ -373,9 +374,10 @@ error_exit:
 	return ercd;
 }
 
-static rsi_scan_info_t *p_scan_result =  &(scan_result.scan_info);
+
 int32_t rs9113_get_scan_result(DEV_WNIC_PTR rs9113_wnic, uint32_t index, WNIC_SCAN_RESULT *result)
 {
+	static rsi_scan_info_t *p_scan_result =  (rsi_scan_info_t *)(&(scan_result.scan_info));
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rs9113_info;
 	rsi_scan_info_t *p_scan_result_temp;
@@ -547,7 +549,7 @@ int32_t rs9113_wnic_connect(DEV_WNIC_PTR rs9113_wnic, uint32_t security, const u
 	}
 
 	//register rs9113 on receive callback function
-	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, rswifi_on_input);
+	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, (void *)rswifi_on_input);
 	rs9113_info->mac_status = WNIC_MAC_NOT_UPDATED;
 	rs9113_info->conn_status = WNIC_CONNECTED;
 	rs9113_on_ops = &(rs9113_wnic->wnic_on_ops);

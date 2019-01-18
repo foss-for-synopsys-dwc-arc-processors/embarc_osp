@@ -10,12 +10,12 @@
 BOARD_EMSDP_DIR = $(BOARDS_ROOT)/emsdp
 ##
 # board version definition
-# rev1 stands for revision 1
+# rev2 stands for revision 2
 # When you don't specify BD_VER
 # in any other place or through make options
 # it will select a proper BD_VER according to your core
 ##
-SUPPORTED_BD_VERS = rev1 rev2
+SUPPORTED_BD_VERS = rev2
 
 ## Select Board Version
 BD_VER ?= rev2
@@ -101,7 +101,9 @@ BOARD_EMSDP_CSRCDIR += $(BOARD_EMSDP_DIR)/drivers/pmwifi
 endif
 
 BOARD_EMSDP_ASMSRCDIR	+= $(BOARD_EMSDP_DEV_ASMSRCDIR) $(BOARD_CORE_DIR)
-BOARD_EMSDP_INCDIR	+= $(BOARD_EMSDP_DEV_INCDIR) $(BOARD_CORE_DIR) $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs
+BOARD_EMSDP_INCDIR	+= $(BOARD_EMSDP_DEV_INCDIR) \
+			$(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs \
+			$(BOARD_CORE_DIR)/include
 
 
 # find all the source files in the target directories

@@ -800,15 +800,16 @@ int32_t rsi_driver_wlan_send_cmd(rsi_wlan_cmd_request_t cmd, rsi_pkt_t *pkt)
 int32_t rsi_driver_process_wlan_recv_cmd(rsi_pkt_t *pkt)
 {
   uint8_t  cmd_type;
-  uint8_t  ip_version,sockID,sock_id;
+  //uint8_t  ip_version,sockID,sock_id;
   int32_t  status = RSI_SUCCESS;
   uint16_t copy_length;
   uint8_t  *host_desc;
   uint8_t  *payload;
   uint16_t payload_length;
-  uint16_t length;
-  uint8_t  buffers_freed;
+  //uint16_t length;
+  //uint8_t  buffers_freed;
   int8_t wlan_pkt_pending = 0;
+
 
   //! Get wlan cb struct pointer
   rsi_wlan_cb_t *rsi_wlan_cb = rsi_driver_cb->wlan_cb;

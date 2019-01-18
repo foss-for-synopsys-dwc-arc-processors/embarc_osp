@@ -3,12 +3,7 @@
 
 #ifdef BOARD_EMSK
 #define REGION_EXT_RAM_START	0x17F00000	/* boootloader application start address */
-#define REGION_EXT_RAM_SIZE	0x100000	/* the mem space covered by bootloader */
+#define REGION_EXT_RAM_SIZE		0x100000	/* the mem space covered by bootloader */
 #endif
 
-#ifdef BOARD_IOTDK
-#ifdef USE_EFLASH_LOCATION
-#define REGION_ROM	REGION_EXT_ROM
-#endif
-#endif
 #endif

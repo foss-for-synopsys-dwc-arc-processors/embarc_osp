@@ -204,7 +204,7 @@ void rsi_ascii_dev_address_to_6bytes_rev(uint8_t *hex_addr, int8_t *ascii_mac_ad
 
 int8_t hex_to_ascii (uint8_t  hex_num)
 {
-	uint8_t  ascii;
+	uint8_t  ascii = 0;
 
 	switch (hex_num & 0x0F) {
 	case 0:

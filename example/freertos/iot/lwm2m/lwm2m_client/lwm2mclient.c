@@ -81,7 +81,11 @@
 int g_reboot = 0;
 static int g_quit = 0;
 
+#if defined(BOARD_EMSK)
 #define OBJ_COUNT 9
+#else
+#define OBJ_COUNT 8
+#endif
 lwm2m_object_t * objArray[OBJ_COUNT];
 
 // only backup security and server objects
@@ -711,25 +715,16 @@ int lwm2mclient(lwm2m_client_info *client_info)
         return -1;
     }
 
-#if defined(BOARD_EMSK)
-    objArray[1] = get_object_firmware();
+    objArray[1] = get_test_object();
     if (NULL == objArray[1])
-    {
-        EMBARC_PRINTF("Failed to create Firmware object\r\n");
-        return -1;
-    }
-#endif
-
-    objArray[2] = get_test_object();
-    if (NULL == objArray[2])
     {
         EMBARC_PRINTF("Failed to create test object\r\n");
         return -1;
     }
 
     int serverId = 123;
-    objArray[3] = get_server_object(serverId, "U", lifetime, false);
-    if (NULL == objArray[3])
+    objArray[2] = get_server_object(serverId, "U", lifetime, false);
+    if (NULL == objArray[2])
     {
         EMBARC_PRINTF("Failed to create server object\r\n");
         return -1;
@@ -737,57 +732,66 @@ int lwm2mclient(lwm2m_client_info *client_info)
 
     char serverUri[50];
     sprintf(serverUri, "coap://%s:%s", server, serverPort);
-    objArray[4] = get_security_object(serverId, serverUri, false);
-    if (NULL == objArray[4])
+    objArray[3] = get_security_object(serverId, serverUri, false);
+    if (NULL == objArray[3])
     {
         EMBARC_PRINTF("Failed to create security object\r\n");
         return -1;
     }
-    data.securityObjP = objArray[4];
+    data.securityObjP = objArray[3];
 
-    objArray[5] = get_object_location();
-    if (NULL == objArray[5])
+    objArray[4] = get_object_location();
+    if (NULL == objArray[4])
     {
         EMBARC_PRINTF("Failed to create location object\r\n");
         return -1;
     }
 
-    objArray[6] = get_object_conn_m();
-    if (NULL == objArray[6])
+    objArray[5] = get_object_conn_m();
+    if (NULL == objArray[5])
     {
         EMBARC_PRINTF("Failed to create connectivity monitoring object\r\n");
         return -1;
     }
 
-    objArray[7] = get_object_conn_s();
-    if (NULL == objArray[7])
+    objArray[6] = get_object_conn_s();
+    if (NULL == objArray[6])
     {
         EMBARC_PRINTF("Failed to create connectivity statistics object\r\n");
         return -1;
     }
 
     int instId = 0;
-    objArray[8] = acc_ctrl_create_object();
-    if (NULL == objArray[8])
+    objArray[7] = acc_ctrl_create_object();
+    if (NULL == objArray[7])
     {
         EMBARC_PRINTF("Failed to create Access Control object\r\n");
         return -1;
     }
-    else if (acc_ctrl_obj_add_inst(objArray[8], instId, 3, 0, serverId)==false)
+    else if (acc_ctrl_obj_add_inst(objArray[7], instId, 3, 0, serverId)==false)
     {
         EMBARC_PRINTF("Failed to create Access Control object instance\r\n");
         return -1;
     }
-    else if (acc_ctrl_oi_add_ac_val(objArray[8], instId, 0, 0b000000000001111)==false)
+    else if (acc_ctrl_oi_add_ac_val(objArray[7], instId, 0, 0b000000000001111)==false)
     {
         EMBARC_PRINTF("Failed to create Access Control ACL default resource\r\n");
         return -1;
     }
-    else if (acc_ctrl_oi_add_ac_val(objArray[8], instId, 999, 0b000000000000001)==false)
+    else if (acc_ctrl_oi_add_ac_val(objArray[7], instId, 999, 0b000000000000001)==false)
     {
         EMBARC_PRINTF("Failed to create Access Control ACL resource for serverId: 999\r\n");
         return -1;
     }
+
+#if defined(BOARD_EMSK)
+    objArray[8] = get_object_firmware();
+    if (NULL == objArray[8])
+    {
+        EMBARC_PRINTF("Failed to create Firmware object\r\n");
+        return -1;
+    }
+#endif
     /*
      * The liblwm2m library is now initialized with the functions that will be in
      * charge of communication

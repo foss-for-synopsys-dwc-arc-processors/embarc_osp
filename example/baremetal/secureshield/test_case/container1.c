@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_TEST_CASE
- * \brief	secureshield test case example container1 source file
- */
-
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"

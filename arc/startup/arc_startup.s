@@ -191,6 +191,23 @@ _s3_clear_bss_loop:
 	cmp	r0, r1
 	jlt	_s3_clear_bss_loop
 
+#if ARC_FEATURE_STACK_CHECK
+	mov r0, _e_stack
+	mov r1, _f_stack
+#if ARC_FEATURE_SEC_PRESENT
+	sr r1, [AUX_S_KSTACK_TOP]
+	sr r0, [AUX_S_KSTACK_BASE]
+	lr r0, [AUX_SEC_STAT]
+	bset r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	sr r1, [AUX_KSTACK_TOP]
+	sr r0, [AUX_KSTACK_BASE]
+	lr r0, [AUX_STATUS32]
+	bset r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+#endif
 /* STAGE 3: go to main */
 
 _arc_reset_call_main:

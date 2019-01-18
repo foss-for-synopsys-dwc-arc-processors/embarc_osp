@@ -27,47 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	EMBARC_APP_FREERTOS_NET_NTSHELL	embARC Net Example on NT-Shell
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_LWIP
- * \ingroup	EMBARC_APPS_MID_NTSHELL
- * \ingroup	EMBARC_APPS_MID_FATFS
- * \brief	embARC Example for NT-Shell on LwIP and FreeRTOS
- *
- * \details
- * ### Extra Required Tools
- *
- * ### Extra Required Peripherals
- *     * Digilent PMOD WIFI(MRF24WG0MA)
- *     * Digilent PMOD TMP2
- *
- * ### Design Concept
- *     The Pmod modules should be connected to \ref EMBARC_BOARD_CONNECTION "EMSK".
- *     This example is designed to show how to use NT-Shell over network in FreeRTOS.
- *
- * ### Usage Manual
- *     This is an example running NT-Shell command interface ver network, and use telnet to connect to it
- *     - when program is running and connected to the wifi hotspot, then you can connect your laptop to the same wifi hotspot that emsk connected to
- *     - use *telnet* command to connect to the ip address of emsk, and see the output then you can run some ntshell commands, but this is not quite stable to be used
- *
- *     ![ScreenShot of NT-Shell under FreeRTOS](/doc/documents/pic/images/example/emsk/emsk_lwip_freertos_ntshell.jpg)
- *
- * ### Extra Comments
- *
- */
-
-/**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_NET_NTSHELL
- * \brief	main source of LwIP NT-Shell example
- */
-
-/**
- * \addtogroup	EMBARC_APP_FREERTOS_NET_NTSHELL
- * @{
- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -94,4 +53,3 @@ int main(void)
 
 	return 0;
 }
-/** @} */

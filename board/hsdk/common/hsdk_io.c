@@ -123,6 +123,20 @@ error_exit:
 	return;
 }
 
+/** read led value, on for 1, off for 0 */
+uint32_t led_read(uint32_t mask)
+{
+	uint32_t value;
+
+	cy8c95xx_readport(&cy8c95xx_obj, CY8C95XX_PORT_1, (uint8_t *)&value);
+	value &= mask;
+
+	return value;
+
+error_exit:
+	return 0;
+}
+
 /** hsdk on board io init */
 void hsdk_io_init(void)
 {

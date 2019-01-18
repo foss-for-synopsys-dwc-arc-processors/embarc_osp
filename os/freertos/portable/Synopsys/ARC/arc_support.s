@@ -98,7 +98,7 @@ dispatch:
 	mov	r1, dispatch_r
 	PUSH	r1			/* save return address */
 	ld	r0, [pxCurrentTCB]
-	b	dispatcher
+	bl	dispatcher
 
 /* return routine when task dispatch happened in task context */
 dispatch_r:
@@ -142,6 +142,27 @@ dispatcher:
 dispatcher_0:
 	ld	r1, [pxCurrentTCB]
 	ld	sp, [r1]	/* recover task stack */
+#if ARC_FEATURE_STACK_CHECK
+#if ARC_FEATURE_SEC_PRESENT
+	lr r0, [AUX_SEC_STAT]
+	bclr r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	lr r0, [AUX_STATUS32]
+	bclr r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+	jl	vPortSetStackCheck
+#if ARC_FEATURE_SEC_PRESENT
+	lr r0, [AUX_SEC_STAT]
+	bset r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	lr r0, [AUX_STATUS32]
+	bset r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+#endif
 	POP	r0		/* get critical nesting */
 	st	r0, [ulCriticalNesting]
 	POP	r0		/* get return address  */
@@ -175,8 +196,7 @@ exc_entry_cpu:
 	ld	r0, [exc_nest_count]
 	add	r1, r0, 1
 	st	r1, [exc_nest_count]
-	cmp	r0, 0
-	bne	exc_handler_1
+	brne	r0, 0, exc_handler_1
 /* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
 exc_handler_1:
@@ -201,8 +221,7 @@ ret_exc:
 	st	r0, [r1]
 
 	ld	r0, [context_switch_reqflg]
-	cmp	r0, 0
-	bne	ret_exc_2
+	brne	r0, 0, ret_exc_2
 ret_exc_1:	/* return from non-task context, interrupts or exceptions are nested */
 
 	EXCEPTION_EPILOGUE
@@ -215,8 +234,7 @@ ret_exc_2:
 	st	r0, [context_switch_reqflg]
 
 	ld	r0, [pxCurrentTCB]
-	cmp	r0, 0
-	beq	ret_exc_r_1
+	breq	r0, 0, ret_exc_1
 
 	SAVE_CALLEE_REGS	/* save callee save registers */
 
@@ -227,7 +245,7 @@ ret_exc_2:
 	mov	r1, ret_exc_r	/* save return address */
 	PUSH	r1
 
-	b	dispatcher	/* r0->pxCurrentTCB */
+	bl	dispatcher	/* r0->pxCurrentTCB */
 
 ret_exc_r:
 	/* recover exception status */
@@ -236,7 +254,6 @@ ret_exc_r:
 	kflag	r0
 
 	RESTORE_CALLEE_REGS	/* recover registers */
-ret_exc_r_1:
 	EXCEPTION_EPILOGUE
 	rtie
 
@@ -267,10 +284,20 @@ exc_entry_int:
 	st	r2, [exc_nest_count]
 	seti	/* enable higher priority interrupt */
 
-	cmp	r3, 0
-	bne	irq_handler_1
+	brne	r3, 0, irq_handler_1
 /* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
+#if ARC_FEATURE_STACK_CHECK
+#if ARC_FEATURE_SEC_PRESENT
+	lr r0, [AUX_SEC_STAT]
+	bclr r0, r0, AUX_SEC_STAT_BIT_SSC
+	sflag r0
+#else
+	lr r0, [AUX_STATUS32]
+	bclr r0, r0, AUX_STATUS_BIT_SC
+	kflag r0
+#endif
+#endif
 irq_handler_1:
 	PUSH	blink
 
@@ -302,8 +329,7 @@ ret_int:
 	st	r0, [r1]
 
 	ld	r0, [context_switch_reqflg]
-	cmp	r0, 0
-	bne	ret_int_2
+	brne	r0, 0, ret_int_2
 ret_int_1:	/* return from non-task context */
 	INTERRUPT_EPILOGUE
 	rtie
@@ -314,8 +340,7 @@ ret_int_2:
 	st	r0, [context_switch_reqflg]
 
 	ld	r0, [pxCurrentTCB]
-	cmp	r0, 0
-	beq	ret_int_r_1
+	breq 	r0, 0, ret_int_1
 
 	lr	r10, [AUX_IRQ_ACT]
 	PUSH	r10
@@ -326,16 +351,10 @@ ret_int_2:
 	mov	r1, ret_int_r	/* save return address */
 	PUSH	r1
 
-	b	dispatcher	/* r0->pxCurrentTCB */
+	bl	dispatcher	/* r0->pxCurrentTCB */
 
 ret_int_r:
 	RESTORE_CALLEE_REGS	/* recover registers */
-ret_int_r_1:
-	/*
-	 * whether to call the task exception routine
-	 * as it is jumped from dispatch, TCB is already in r1
-	 */
-	/* recover AUX_IRQ_ACT */
 	POPAX	AUX_IRQ_ACT
 	INTERRUPT_EPILOGUE
 	rtie

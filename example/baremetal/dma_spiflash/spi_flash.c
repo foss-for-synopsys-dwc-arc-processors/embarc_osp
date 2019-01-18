@@ -1,3 +1,4 @@
+#if defined(BOARD_EMSK)
 #include <stdint.h>
 #include "board.h"
 #include "spi_flash.h"
@@ -541,3 +542,4 @@ int32_t spiflash_write(uint32_t address, uint32_t size, const void *data)
 
 	return (int32_t)(size_orig);
 }
+#endif//#if defined(BOARD_EMSK)
