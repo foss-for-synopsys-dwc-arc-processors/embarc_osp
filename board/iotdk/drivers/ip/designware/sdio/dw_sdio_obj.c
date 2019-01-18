@@ -96,6 +96,7 @@ static void dw_sdio_0_install(void)
 	dw_sdio_ctrl_ptr->reg_base = (void *) BASE_ADDR_SDIO;
 	dw_sdio_ctrl_ptr->intno = INTNO_SDIO;
 	dw_sdio_ctrl_ptr->ref_clk = 100000000;
+	dw_sdio_ctrl_ptr->fifo_depth = 128;
 
 	dw_sdio_ptr->open = dw_sdio_0_open;
 	dw_sdio_ptr->close = dw_sdio_0_close;
