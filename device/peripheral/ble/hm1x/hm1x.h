@@ -31,7 +31,16 @@
 
 
 /** uart id which HM-10 BLE uses */
+#ifndef HM_1X_UART_ID	//you can define this at board header file (e.g. emsk.h)
+#if defined(BOARD_EMSK) || defined(BOARD_HSDK)
 #define HM_1X_UART_ID		DW_UART_0_ID
+#elif defined(BOARD_EMSDP)|| defined(BOARD_IOTDK)
+#define HM_1X_UART_ID		DFSS_UART_1_ID
+#else
+#warning hm1x is not supported on this board!
+#endif
+#endif
+
 /**
  * HM1X working role: master or slave
  */
