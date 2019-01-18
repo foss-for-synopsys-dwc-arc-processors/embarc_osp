@@ -159,7 +159,7 @@ If the binary file is generated successfully, you will output as follows:
 - Generate *boot.bin* using any embARC example
     + Here take *<embarc_root>/example/freertos/kernel* for example
 
-    + When using MCUBoot, you should modify **LIB_SEL += mcuboot** in your makefile to enable MCUBoot. And you should use the imgtool to sign the generated binary
+    + When using MCUBoot, you should modify **LIB_SEL += mcuboot** and **MID_SEL += mbedtls** in your makefile to enable MCUBoot. And you should use the imgtool to sign the generated binary
 
     .. code-block:: console
 
