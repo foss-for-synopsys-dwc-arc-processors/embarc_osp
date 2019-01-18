@@ -44,7 +44,7 @@
 #define FILLED_DATA			0xcc
 
 __attribute__ ((aligned(DCACHE_LINE_LENGTH*DCACHE_LINE_NUM)))
-static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH];
+static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH] = {0xFF};
 
 /**
  * \brief	call cache related functions
