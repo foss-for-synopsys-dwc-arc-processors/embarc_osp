@@ -20,6 +20,9 @@ EMBARC_ROOT = ../../..
 LIB_SEL = secureshield
 MID_SEL = common
 
+# secureshield doesn't support stack check now
+APPL_DEFINES  = -DARC_FEATURE_STACK_CHECK=0
+
 # application source dirs
 APPL_CSRC_DIR = .
 APPL_ASMSRC_DIR = .
