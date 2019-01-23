@@ -44,7 +44,7 @@ For nSIM, the commands to run this example are as follows:
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/secureshield/secret_secure_sid
-    $ gmake BOARD=nsim BD_VER=1506 CUR_CORE=arcemsecureshield TOOLCHAIN=mw run
+    $ gmake BOARD=nsim BD_VER=10 CUR_CORE=arcsem TOOLCHAIN=mw run
 
 For EMSK 2.3, the commands to run this example are as follows:
 
