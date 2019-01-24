@@ -47,6 +47,7 @@ SECTIONS {
 			_f_data = .;
 			_f_sdata = .;
 			*(.sdata)
+			*(.sbss)
 			_e_sdata = .;
 			*(TYPE data)
 		}

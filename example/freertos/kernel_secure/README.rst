@@ -28,12 +28,21 @@ Detailed Description
   - Re-configure the EMSK 2.3 board to EM7D configuration.
   - run the following commands
 
+For nSIM, the commands to run this example are as follows:
+
+.. code-block:: console
+
+    $ cd <embarc_root>/example/freertos/kernel_secure
+    $ gmake BOARD=nsim BD_VER=10 CUR_CORE=arcsem TOOLCHAIN=mw run
+
+For EMSK 2.3, the commands to run this example are as follows:
+
 .. code-block:: console
 
     $ cd <embarc_root>/example/freertos/kernel_secure
     $ make BOARD=emsk BD_VER=23 CUR_CORE=arcem7d TOOLCHAIN=gnu run
 
-.. note:: This example is only valid for arc processors with SecureShield feature (Currently, emsk 2.3 arcem7d)
+.. note:: This example is only valid for arc processors with SecureShield feature (Currently, emsk 2.3 arcem7d and nsim arcsem)
 
 
 Sample Output

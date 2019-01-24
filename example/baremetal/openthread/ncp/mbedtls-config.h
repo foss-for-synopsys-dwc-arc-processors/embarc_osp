@@ -33,6 +33,7 @@
 #include <openthread/config.h>
 #include <openthread/platform/logging.h>
 #include <openthread/platform/memory.h>
+#include <stdio.h>
 
 #if defined(_WIN32)
 #include <stdarg.h>
@@ -189,7 +190,7 @@ __inline int windows_kernel_snprintf(char * s, size_t n, const char * format, ..
 //#define MBEDTLS_PLATFORM_TIME_ALT
 //#define MBEDTLS_PLATFORM_FPRINTF_ALT
 //#define MBEDTLS_PLATFORM_PRINTF_ALT
-//#define MBEDTLS_PLATFORM_SNPRINTF_ALT
+#define MBEDTLS_PLATFORM_SNPRINTF_ALT
 //#define MBEDTLS_PLATFORM_NV_SEED_ALT
 
 /**
@@ -2557,7 +2558,7 @@ __inline int windows_kernel_snprintf(char * s, size_t n, const char * format, ..
 //#define MBEDTLS_PLATFORM_STD_FPRINTF      fprintf /**< Default fprintf to use, can be undefined */
 //#define MBEDTLS_PLATFORM_STD_PRINTF        printf /**< Default printf to use, can be undefined */
 /* Note: your snprintf must correclty zero-terminate the buffer! */
-//#define MBEDTLS_PLATFORM_STD_SNPRINTF    snprintf /**< Default snprintf to use, can be undefined */
+#define MBEDTLS_PLATFORM_STD_SNPRINTF    snprintf /**< Default snprintf to use, can be undefined */
 //#define MBEDTLS_PLATFORM_STD_EXIT_SUCCESS       0 /**< Default exit value to use, can be undefined */
 //#define MBEDTLS_PLATFORM_STD_EXIT_FAILURE       1 /**< Default exit value to use, can be undefined */
 //#define MBEDTLS_PLATFORM_STD_NV_SEED_READ   mbedtls_platform_std_nv_seed_read /**< Default nv_seed_read function to use, can be undefined */
