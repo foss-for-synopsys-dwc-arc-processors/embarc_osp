@@ -195,7 +195,6 @@
 <blockquote>
 <div><ul class="simple">
 <li>Digilent PMOD WIFI(MRF24WG0MA)</li>
-<li>SD Card to store certification file, key file</li>
 </ul>
 </div></blockquote>
 </li>
@@ -222,13 +221,82 @@ the default configuration of IoT Development Kit. Without optimization ,this exa
 </div>
 <ol class="arabic simple" start="2">
 <li>In pc node or mbedtls dtls_server node, run the server application to listen.</li>
-<li>Copy the <code class="docutils literal notranslate"><span class="pre">tests</span></code> dir in <code class="docutils literal notranslate"><span class="pre">middleware/mbedtls</span></code> into the SD card of secure server node, it will load CA file and key file.</li>
 <li>Change SERVER_NAME and SERVER_ADDR in dtls_client.c to the dtls_server node’s IP address. And build this application again.</li>
 <li>When initialization finished and network connected, run <strong>main</strong> in ntshell, it will try to do dtls communication.</li>
 </ol>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
+<span class="go"> ____                                _ ____</span>
+<span class="go">|  _ \ _____      _____ _ __ ___  __| | __ ) _   _</span>
+<span class="go">| |_) / _ \ \ /\ / / _ \ &#39;__/ _ \/ _` |  _ \| | | |</span>
+<span class="go">|  __/ (_) \ V  V /  __/ | |  __/ (_| | |_) | |_| |</span>
+<span class="go">|_|   \___/ \_/\_/ \___|_|  \___|\__,_|____/ \__, |</span>
+<span class="go">                                             |___/</span>
+<span class="go">                     _       _    ____   ____</span>
+<span class="go">       ___ _ __ ___ | |__   / \  |  _ \ / ___|</span>
+<span class="go">      / _ \ &#39;_ ` _ \| &#39;_ \ / _ \ | |_) | |</span>
+<span class="go">     |  __/ | | | | | |_) / ___ \|  _ &lt;| |___</span>
+<span class="go">      \___|_| |_| |_|_.__/_/   \_\_| \_\\____|</span>
+<span class="go">------------------------------------------------------------</span>
+
+<span class="go">embARC Build Time: Jan 23 2019, 10:57:51</span>
+<span class="go">Compiler Version: Metaware, 4.2.1 Compatible Clang 6.0.1 (branches/release_60)</span>
+<span class="go">FatFS initialized successfully!</span>
+<span class="go">Start Init LWIP</span>
+<span class="go">ntshell command info(Information) was registered!</span>
+<span class="go">ntshell command main(Call main function) was registered!</span>
+<span class="go">ntshell command ls(List information about files) was registered!</span>
+<span class="go">ntshell command cd(Change the working directory) was registered!</span>
+<span class="go">ntshell command rm(Remove the file or the folder) was registered!</span>
+<span class="go">ntshell command mkdir(Create the directory) was registered!</span>
+<span class="go">ntshell command cat(Output file contents) was registered!</span>
+<span class="go">ntshell command cp(Copy source to destination) was registered!</span>
+<span class="go">ntshell command mv(Rename file or move file) was registered!</span>
+<span class="go">ntshell command pwd(Print the current working directory) was registered!</span>
+<span class="go">ntshell command cls(Clear the console output) was registered!</span>
+<span class="go">ntshell command touch(Create a file) was registered!</span>
+<span class="go">ntshell command ymodem(Ymodem file transfer protocol) was registered!</span>
+<span class="go">ntshell command disk(Operate the storge device) was registered!</span>
+<span class="go">ntshell command load(Load .bin/.hex file from SD card to ram at specified address) was registered!</span>
+<span class="go">ntshell command go(Run the program at the specified address) was registered!</span>
+<span class="go">NTShell Task StartUp</span>
+<span class="go">COM1&gt;RS9113 MAC ADDRESS:00-00-00-00-00-00</span>
+
+<span class="go">Now trying to connect to WIFI hotspot, please wait about 30s!</span>
+<span class="go">RS9113 MAC ADDRESS:88-da-1a-0b-5e-4c</span>
+<span class="go">Link is UP!</span>
+
+<span class="go">Now start get ip address using DHCP, Please wait about 30s!</span>
+
+<span class="go">-----WIFI IP ADDRESS INFO-----</span>
+<span class="go">ipaddr 192.168.137.46 netmask 255.255.255.0 gw 192.168.137.1</span>
+<span class="go">dns server 0 :192.168.137.1</span>
+<span class="go">dns server 1 :0.0.0.0</span>
+<span class="go">-----------------------------------</span>
+<span class="go">WiFi connected</span>
+<span class="go">Please run NT-Shell command(main) to start your application.</span>
+<span class="go">main command may required some arguments, please refer to example&#39;s document.</span>
+<span class="go">main</span>
+
+<span class="go">. Seeding the random number generator... ok</span>
+<span class="go">. Loading the CA root certificate ... ok (0 skipped)</span>
+<span class="go">. Connecting to udp/192.168.43.252/4433... ok</span>
+<span class="go">. Setting up the DTLS structure... ok</span>
+<span class="go">. Performing the SSL/TLS handshake... ok</span>
+<span class="go">. Verifying peer X.509 certificate... failed</span>
+<span class="go">! The certificate Common Name (CN) does not match with the expected CN</span>
+<span class="go">! The certificate is signed with an unacceptable hash.</span>
+
+<span class="gp">&gt;</span> Write to server: <span class="m">9</span> bytes written
+
+<span class="go">Echo this</span>
+
+<span class="go">&lt; Read from server: 9 bytes read</span>
+
+<span class="go">Echo this</span>
+
+<span class="go">. Closing the connection... done</span>
 </pre></div>
 </div>
 </div>
