@@ -78,15 +78,8 @@ SECTIONS
 		_f_sdata = .;
 		__SDATA_BEGIN__ = .;
 		*(.sdata .sdata.* .gnu.linkonce.s.*)
-		_e_sdata = .;
-		_e_data = .;
-	} > REGION_RAM AT > REGION_ROM
-
-	.bss (NOLOAD) : ALIGN(8)
-	{
 		PROVIDE (__sbss_start = .);
 		PROVIDE (___sbss_start = .);
-		_f_bss = .;
 		_f_sbss = .;
 		*(.dynsbss)
 		*(.sbss .sbss.* .gnu.linkonce.sb.*)
@@ -94,7 +87,13 @@ SECTIONS
 		_e_sbss = .;
 		PROVIDE (__sbss_end = .);
 		PROVIDE (___sbss_end = .);
+		_e_sdata = .;
+		_e_data = .;
+	} > REGION_RAM AT > REGION_ROM
 
+	.bss (NOLOAD) : ALIGN(8)
+	{
+		_f_bss = .;
 		*(.dynbss)
 		*(.bss .bss.* .gnu.linkonce.b.*)
 		*(COMMON)

@@ -176,6 +176,15 @@ SECTIONS
 		_f_sdata = .;
 		__SDATA_BEGIN__ = .;
 		*(BACKGROUND_RAM_OBJS_LIST .sdata BACKGROUND_RAM_OBJS_LIST .sdata.* BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.s.*)
+		PROVIDE (__sbss_start = .);
+		PROVIDE (___sbss_start = .);
+		_f_sbss = .;
+		*(BACKGROUND_RAM_OBJS_LIST .dynsbss)
+		*(BACKGROUND_RAM_OBJS_LIST .sbss BACKGROUND_RAM_OBJS_LIST .sbss.*  BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.sb.*)
+		*(BACKGROUND_RAM_OBJS_LIST .scommon)
+		_e_sbss = .;
+		PROVIDE (__sbss_end = .);
+		PROVIDE (___sbss_end = .);
 		_e_sdata = .;
 		_e_data = .;
 		_e_data_background_container = .;
@@ -185,16 +194,7 @@ SECTIONS
 	.bss (NOLOAD) : ALIGN(4)
 	{
 		_f_bss_background_container = .;
-		PROVIDE (__sbss_start = .);
-		PROVIDE (___sbss_start = .);
 		_f_bss = .;
-		_f_sbss = .;
-		*(BACKGROUND_RAM_OBJS_LIST .dynsbss)
-		*(BACKGROUND_RAM_OBJS_LIST .sbss BACKGROUND_RAM_OBJS_LIST .sbss.*  BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.sb.*)
-		*(BACKGROUND_RAM_OBJS_LIST .scommon)
-		_e_sbss = .;
-		PROVIDE (__sbss_end = .);
-		PROVIDE (___sbss_end = .);
 		*(BACKGROUND_RAM_OBJS_LIST .dynbss)
 		*(BACKGROUND_RAM_OBJS_LIST .bss BACKGROUND_RAM_OBJS_LIST .bss.* BACKGROUND_RAM_OBJS_LIST .gnu.linkonce.b.*)
 		*( COMMON)
