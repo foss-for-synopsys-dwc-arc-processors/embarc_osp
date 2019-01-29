@@ -12,7 +12,7 @@ import argparse
 from xlsxwriter.workbook import Workbook
 from xlsxwriter.worksheet import Worksheet
 from xlsxwriter.worksheet import convert_cell_args
-from embarc_tools.download_manager import cd, getcwd, delete_dir_files
+from embarc_tools.download_manager import cd, delete_dir_files
 from embarc_tools.osp import osp
 from embarc_tools.builder import build
 import collections
@@ -30,6 +30,7 @@ example = {
 
 
 MakefileNames = ['Makefile', 'makefile', 'GNUMakefile']
+
 
 def excel_string_width(str):
     string_width = len(str)
@@ -69,14 +70,12 @@ class MyWorkbook(Workbook):
         return super(MyWorkbook, self).close()
 
 
-
 def get_cache(osp_path):
     cache = ".cache/result"
     cache_path = os.path.join(osp_path, cache)
     if not os.path.exists(cache_path):
         os.makedirs(cache_path)
     return cache_path
-
 
 
 def generate_json_file(data, path):
@@ -104,7 +103,6 @@ def result_json_artifacts(osp_path, result, file=None):
         generate_json_file(result, file_path)
 
 
-
 def takeApp(elem):
     return elem["app_path"]
 
@@ -118,22 +116,21 @@ def dict_to_excel(datas):
         filename = toolchain_config + ".xlsx"
         workbook = MyWorkbook(filename)
         sheet_dict = dict()
-        merge_format = workbook.add_format({'bold': True, "align": "center","valign": "vcenter"})
+        merge_format = workbook.add_format({'bold': True, "align": "center", "valign": "vcenter"})
 
-
-        for build in results:
-            config = build.get("config", None)
+        for build_result in results:
+            config = build_result.get("config", None)
             if config:
                 board_config = config["BOARD"] + "_" + config["BD_VER"]
                 if not results_board_config.get(board_config, None):
-                    results_board_config[board_config] = [build]
+                    results_board_config[board_config] = [build_result]
                 else:
-                    results_board_config[board_config].append(build)
+                    results_board_config[board_config].append(build_result)
         for board_config in results_board_config:
             worksheet = workbook.add_worksheet(board_config)
             sheet_dict[board_config] = worksheet
-        for board_config, build in results_board_config.items():
-            build.sort(key=takeApp)
+        for board_config, build_result in results_board_config.items():
+            build_result.sort(key=takeApp)
             worksheet = sheet_dict[board_config]
             worksheet.merge_range(0, 0, 1, 0, "APP", merge_format)
             worksheet.set_column(0, 7, 10)
@@ -153,7 +150,7 @@ def dict_to_excel(datas):
             same_app = dict()
             failed_count = dict()
             same_app = collections.OrderedDict()
-            for app_build in build:
+            for app_build in build_result:
                 app_name = app_build["app_path"]
                 if same_app.get(app_name, None):
                     same_app[app_name] = same_app[app_name] + 1
@@ -162,7 +159,7 @@ def dict_to_excel(datas):
                     same_app[app_name] = 1
                     failed_count[app_name] = 0
 
-                cell_format = workbook.add_format({"align": "center","valign": "vcenter"})
+                cell_format = workbook.add_format({"align": "center", "valign": "vcenter"})
                 failed = "No"
                 if not app_build["code"]:
                     failed = "Yes"
@@ -181,8 +178,8 @@ def dict_to_excel(datas):
                 row += 1
             s = 2
             for app, value in same_app.items():
-                merge_format_app = workbook.add_format({"align": "center","valign": "vcenter"})
-                if value==failed_count[app]:
+                merge_format_app = workbook.add_format({"align": "center", "valign": "vcenter"})
+                if value == failed_count[app]:
                     if not failed_summarize.get(toolchain_config, None):
                         failed_summarize[toolchain_config] = dict()
                     if not failed_summarize[toolchain_config].get(board_config, None):
@@ -196,7 +193,6 @@ def dict_to_excel(datas):
     return failed_summarize
 
 
-
 def result_excel_artifacts(osp_path):
     cache_path = get_cache(osp_path)
     files = os.listdir(cache_path)
@@ -204,20 +200,20 @@ def result_excel_artifacts(osp_path):
     failed_summarize = None
     for file in files:
         filename, filesuffix = os.path.splitext(file)
-        if not filesuffix == ".json" or filename =="results":
+        if not filesuffix == ".json" or filename == "results":
             continue
         file_path = os.path.join(cache_path, file)
         with open(file_path, "r") as f:
             results = json.load(f)
             for app, build_status in results.items():
-                for build in build_status:
-                    config = build.get("config", None)
+                for build_result in build_status:
+                    config = build_result.get("config", None)
                     if config:
                         toolchain_config = config["TOOLCHAIN"] + "_" + config["TOOLCHAIN_VER"]
                         if not datas.get(toolchain_config, None):
-                            datas[toolchain_config] = [build]
+                            datas[toolchain_config] = [build_result]
                         else:
-                            datas[toolchain_config].append(build)
+                            datas[toolchain_config].append(build_result)
                     else:
                         continue
             f.close()
@@ -226,7 +222,6 @@ def result_excel_artifacts(osp_path):
     with cd(cache_path):
         failed_summarize = dict_to_excel(datas)
     result_json_artifacts(osp_path, failed_summarize, file="failed_results")
-
 
 
 class TailRecurseException(Exception):
@@ -251,7 +246,6 @@ def tail_call_optimized(g):
     return func
 
 
-
 def parse_config(config):
     make_configs = config
     core_key = "CUR_CORE"
@@ -269,7 +263,6 @@ def parse_config(config):
     json_path = os.path.join(os.path.expanduser("~"), '.embarc_cli')
     delete_dir_files(json_path, dir=True)
     embarc_osp = osp.OSP()
-
 
     core_key = "CORE" if "CORE" in make_configs else "CUR_CORE"
     if "PARALLEL" in make_configs and make_configs["PARALLEL"] is not None:
@@ -290,7 +283,6 @@ def parse_config(config):
         board_input = make_configs["BOARD"]
     support_boards = embarc_osp.supported_boards(osp_root)
 
-
     boards = [board_input] if board_input in support_boards else support_boards
     if "BD_VER" in make_configs and make_configs["BD_VER"] is not None:
         bd_ver_input = make_configs["BD_VER"]
@@ -310,11 +302,10 @@ def parse_config(config):
     current_configs["core_key"] = core_key
     current_configs["parallel"] = parallel
     current_configs["osp_root"] = osp_root
-    current_configs["toolchain"] = {"name":toolchain, "version": toolchain_ver}
+    current_configs["toolchain"] = {"name": toolchain, "version": toolchain_ver}
     current_configs["EXPECTED"] = expected_file
     current_configs["COVERITY"] = coverity
     return current_configs
-
 
 
 def is_embarc_makefile(makefile_path):
@@ -332,7 +323,6 @@ def is_embarc_makefile(makefile_path):
         return False
 
 
-
 def get_config(config):
     make_configs = dict()
     if type(config) == list:
@@ -345,7 +335,6 @@ def get_config(config):
             value = None
         make_configs[config_name] = value
     return make_configs
-
 
 
 def get_expected_result(expected_file, app_path, board, bd_ver):
@@ -372,21 +361,20 @@ def get_expected_result(expected_file, app_path, board, bd_ver):
     return result
 
 
-
 def send_pull_request_comment(columns, results):
     job = os.environ.get("NAME")
     pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
     if all([job, pr_number]):
         comment_job = "## " + job + "\n"
-        if len(results)>0:
+        if len(results) > 0:
             head = "|".join(columns) + "\n"
-            table_format =  "|".join(["---"]*len(columns)) + "\n"
-            table_head =head +table_format
+            table_format = "|".join(["---"]*len(columns)) + "\n"
+            table_head = head + table_format
             comments = ""
             comment = ""
             for result in results:
                 for k in result:
-                    comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") +" |"
+                    comment += (k.replace(Fore.RED, "")).replace("\n", "<br>") + " |"
                 comment = comment.rstrip("|") + "\n"
                 comments += comment
             comment_on_pull_request(comment_job + table_head + comments)
@@ -397,7 +385,7 @@ def send_pull_request_comment(columns, results):
 
 
 def show_results(results, expected=None):
-    columns = [ 'TOOLCHAIN',"TOOLCHAIN_VER", 'APP', 'CONF', 'PASS']
+    columns = ['TOOLCHAIN', "TOOLCHAIN_VER", 'APP', 'CONF', 'PASS']
     failed_pt = PrettyTable(columns)
     failed_results = []
     success_results = []
@@ -476,7 +464,6 @@ def build_result_combine(results=None, formal_result=None):
         return formal_result
 
 
-
 def get_apps(path):
     result = []
     for root, dirs, files in os.walk(path):
@@ -506,7 +493,6 @@ def build_result_combine_tail(results):
     return results_list
 
 
-
 def get_applications(config):
     app_paths = None
     if "EXAMPLES" in config and config["EXAMPLES"]:
@@ -517,7 +503,6 @@ def get_applications(config):
     else:
         app_paths = example
     return app_paths
-
 
 
 def startBuild(app, config, builder):
@@ -533,22 +518,20 @@ def startBuild(app, config, builder):
 
     # builder.build_target(app, target=str("clean"), parallel=config["PARALLEL"])
     if os.environ.get("COVERITY", None) == "true":
-        build_status = builder.build_target(app, target=str("all"), parallel=config["PARALLEL"], coverity=True, silent = True) # builder.get_build_size(app, parallel=config["PARALLEL"], silent = True)
-
+        build_status = builder.build_target(app, target=str("all"), parallel=config["PARALLEL"], coverity=True, silent=True)
     else:
-        build_status = builder.get_build_size(app, parallel=config["PARALLEL"], silent = True)
+        build_status = builder.get_build_size(app, parallel=config["PARALLEL"], silent=True)
 
     board = builder.buildopts.get("BOARD")
     bd_ver = builder.buildopts.get("BD_VER")
     core = builder.buildopts.get("CUR_CORE")
-    build_conf = board + "_"  + bd_ver + "_" + core
+    build_conf = board + "_" + bd_ver + "_" + core
 
     build_status["commit_sha"] = os.environ.get("CI_COMMIT_SHA") or os.environ.get("TRAVIS_COMMIT")
     build_status["JOB"] = os.environ.get("CI_JOB_NAME") or os.environ.get("NAME")
     build_status["status"] = 0 if build_status["result"] else 1
     build_status["conf"] = build_conf
     return build_status
-
 
 
 def BuildApp(app, config):
@@ -581,7 +564,7 @@ def BuildApp(app, config):
                 CurrentBuildConfig[core_key] = cur_core
                 CurrentBuildConfig["TOOLCHAIN"] = toolchain["name"]
                 CurrentBuildConfig["TOOLCHAIN_VER"] = toolchain["version"]
-                CurrentBuildConfig["PARALLEL"] = None if parallel=="" else parallel
+                CurrentBuildConfig["PARALLEL"] = None if parallel == "" else parallel
 
                 build_status = startBuild(app, CurrentBuildConfig, builder)
                 if not app_build_status.get(app, None):
@@ -616,12 +599,10 @@ def BuildApp(app, config):
     return app_build_results, expected_different, app_build_status
 
 
-
-
 def comment_on_pull_request(comment):
 
     pr_number = os.environ.get("TRAVIS_PULL_REQUEST")
-    slug =  os.environ.get("TRAVIS_REPO_SLUG")
+    slug = os.environ.get("TRAVIS_REPO_SLUG")
     token = os.environ.get("GH_TOKEN")
     request_config = [pr_number, slug, token, comment]
     for i in range(len(request_config)):
@@ -636,15 +617,14 @@ def comment_on_pull_request(comment):
         return response.json()
 
 
-
 def get_options_parser():
     configs = dict()
     toolchainlist = ["gnu", "mw"]
     boardlist = ["emsk", "nsim", "axs", "hsdk"]
     parser = argparse.ArgumentParser()
     parser.add_argument("--osp_root", dest="osp_root", default=".", help=("the path of embarc_osp"), metavar="OSP_ROOT")
-    parser.add_argument("--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" %', '.join(toolchainlist)), metavar="TOOLCHAIN")
-    parser.add_argument("--board", dest="board", default=None, help=("build using the given BOARD (%s)" %', '.join(boardlist)), metavar="BOARD")
+    parser.add_argument("--toolchain", dest="toolchain", default=None, help=("build using the given TOOLCHAIN (%s)" % ', '.join(toolchainlist)), metavar="TOOLCHAIN")
+    parser.add_argument("--board", dest="board", default=None, help=("build using the given BOARD (%s)" % ', '.join(boardlist)), metavar="BOARD")
     parser.add_argument("--bd_ver", dest="bd_ver", default=None, help=("build using the given BOARD VERSION"), metavar="BOARD VERSION")
     parser.add_argument("--core", dest="cur_core", default=None, help=("build using the given core"), metavar="CUR_CORE")
     parser.add_argument("--toolchain_ver", dest="toolchain_ver", default=None, help=("build using the given toolchian verion"), metavar="TOOLCHAIN_VER")
@@ -715,6 +695,7 @@ def main(config):
         comment = "applications failed with some configuration: \n" + "\n".join(apps_expected_different.keys())
         comment_on_pull_request(comment)
         sys.exit(1)
+
 
 if __name__ == '__main__':
 
