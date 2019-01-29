@@ -22,6 +22,9 @@ env:
       --data @- << DATA\n{
       "body": "$COMMENT"
       }\nDATA'
+    - TOOLCHAIN_VER="latest"
+    - OSP_ROOT="."
+    - EXAMPLES="example/baremetal,example/freertos" 
 
 cache:
   pip: true
@@ -56,42 +59,34 @@ matrix:
       os: linux
       compiler: gcc
 
-    - env: NAME="baremetal-emsk-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." TOOLCHAIN_VER="2017.09" EXAMPLES="example/baremetal" EXPECTED=".ci/expected.ini"
+    - env: NAME="emsk-11-gnu-latest" TOOLCHAIN="gnu"  BOARD="emsk" BD_VER="11" EXPECTED=".ci/expected.ini" PARALLEL=8
       os: linux
       compiler: gcc
 
-    - env: NAME="baremetal-emsk-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" OSP_ROOT="." TOOLCHAIN_VER="2018.03" EXAMPLES="example/baremetal" EXPECTED=".ci/expected.ini"
+    - env: NAME="emsk-22-gnu-latest" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" EXPECTED=".ci/expected.ini" PARALLEL=8
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk_11-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." TOOLCHAIN_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".ci/expected.ini"
+    - env: NAME="baremetal-emsk-23-gnu-latest" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" EXPECTED=".ci/expected.ini" PARALLEL=8 EXAMPLES="example/baremetal" 
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk_11-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11" OSP_ROOT="." TOOLCHAIN_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".ci/expected.ini"
+    - env: NAME="freertos-emsk-23-gnu-latest" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" EXPECTED=".ci/expected.ini" PARALLEL=8 EXAMPLES="example/freertos" 
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk_22-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." TOOLCHAIN_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".ci/expected.ini"
+    - env: NAME="hsdk-gnu-latest" TOOLCHAIN="gnu" BOARD="hsdk" EXPECTED=".ci/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk_22-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" OSP_ROOT="." TOOLCHAIN_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".ci/expected.ini"
+    - env: NAME="iotdk-gnu-latest" TOOLCHAIN="gnu" BOARD="iotdk" EXPECTED=".ci/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk_23-gnu-201709" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." TOOLCHAIN_VER="2017.09" EXAMPLES="example/freertos" EXPECTED=".ci/expected.ini" PARALLEL=8
+    - env: NAME="nsim-gnu-latest" TOOLCHAIN="gnu"  BOARD="nsim" EXPECTED=".ci/expected.ini"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk_23-gnu-201803" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" OSP_ROOT="." TOOLCHAIN_VER="2018.03" EXAMPLES="example/freertos" EXPECTED=".ci/expected.ini" PARALLEL=8
-      os: linux
-      compiler: gcc
-
-    - env: NAME="arc_feature-gnu-201709" TOOLCHAIN="gnu" OSP_ROOT="." TOOLCHAIN_VER="2017.09" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".ci/expected.ini"
-      os: linux
-      compiler: gcc
-
-    - env: NAME="arc_feature-gnu-201803" TOOLCHAIN="gnu" OSP_ROOT="." TOOLCHAIN_VER="2018.03" EXAMPLES="example/baremetal/arc_feature" EXPECTED=".ci/expected.ini"
+    - env: NAME="emsdp-gnu-latest" TOOLCHAIN="gnu"  BOARD="emsdp" EXPECTED=".ci/expected.ini"
       os: linux
       compiler: gcc
