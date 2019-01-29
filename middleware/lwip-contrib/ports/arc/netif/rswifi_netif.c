@@ -294,6 +294,7 @@ rswifi_if_init(struct netif *netif)
 	}
 	rswifi_if_ptr->ready = false;
 	rswifi_if_ptr->wnic->wnic_info.extra = (void *)rswifi_if_ptr;
+	rswifi_if_ptr->wnic->wnic_info.ctrl = (void *)rswifi_on_input;
 
 #if LWIP_NETIF_HOSTNAME
 	/* Initialize interface hostname */

@@ -35,7 +35,6 @@
 //TODO: move SPI related part to emdk\drivers\pmwifi
 /* include board.h for SPI wiring and frequency */
 #include "board.h"
-#include "rswifi_netif.h"
 
 #include "rs9113_adapter.h"
 #include "rsi_driver.h"
@@ -60,6 +59,7 @@ static void *driver_task_handle = NULL;
 
 #define RSI_BUFFER_USE_MALLOC 0
 #if RSI_BUFFER_USE_MALLOC
+static uint8_t *rs_buffer;
 #else
 static uint8_t rs_buffer[RSI_WLAN_CTRL_BUFFER_SIZE];
 #endif /*RSI_BUFFER_USE_MALLOC*/
@@ -103,18 +103,16 @@ static int32_t _rs9113_wnic_deinit(DEV_WNIC_PTR rs9113_wnic)
 {
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rs9113_info;
-	WIFI_IF_PTR rswifi_if_ptr;
 
 	RS9113_CHECK_EXP(rs9113_wnic!=NULL, E_OBJ);
 
 	rs9113_info = &(rs9113_wnic->wnic_info);
-	rswifi_if_ptr = (WIFI_IF_PTR)(rs9113_info->extra);
 	ercd = rsi_wireless_deinit();
 
 #if RSI_BUFFER_USE_MALLOC
 
-	if (rswifi_if_ptr->rsi_buffer != NULL) {
-		free(rswifi_if_ptr->rsi_buffer);
+	if (rs_buffer != NULL) {
+		free(rs_buffer);
 	}
 
 #else
@@ -150,7 +148,6 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 	int32_t ercd = E_OK;
 	DEV_WNIC_INFO *rs9113_info;
 	DEV_WNIC_ON_OPS *rs9113_on_ops;
-	WIFI_IF_PTR rswifi_if_ptr;
 
 	RS9113_CHECK_EXP(rs9113_wnic!=NULL, E_OBJ);
 	rs9113_info = &(rs9113_wnic->wnic_info);
@@ -162,19 +159,17 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 
 	rs9113_info->init_status = WNIC_DURING_INITIALIZATION;  /* start initialization process */
 	rs9113_info->network_type = network_type; /* set network type used next */
-	rswifi_if_ptr = (WIFI_IF_PTR)(rs9113_info->extra);
 
 	ercd = _rs9113_spi_open(10000000, SPI_CLK_MODE_0);
 	dbg_printf(DBG_MORE_INFO, "_rs9113_spi_open return 0x%x\r\n", ercd);
 	RS9113_CHECK_EXP(ercd == E_OK, E_SYS);
 	//! Driver initialization
 #if RSI_BUFFER_USE_MALLOC
-	rswifi_if_ptr->rsi_buffer = malloc(RSI_WLAN_CTRL_BUFFER_SIZE);
+	rs_buffer = malloc(RSI_WLAN_CTRL_BUFFER_SIZE);
 #else
-	rswifi_if_ptr->rsi_buffer = &rs_buffer;
 #endif
-	RS9113_CHECK_EXP(rswifi_if_ptr->rsi_buffer != NULL, E_NOMEM);
-	ercd = rsi_driver_init(rswifi_if_ptr->rsi_buffer, RSI_WLAN_CTRL_BUFFER_SIZE);
+	RS9113_CHECK_EXP(rs_buffer != NULL, E_NOMEM);
+	ercd = rsi_driver_init(rs_buffer, RSI_WLAN_CTRL_BUFFER_SIZE);
 	dbg_printf(DBG_MORE_INFO, "rsi_driver_init return 0x%x\r\n", ercd);
 	RS9113_CHECK_EXP((ercd >= 0) && (ercd <= RSI_WLAN_CTRL_BUFFER_SIZE), E_SYS);
 
@@ -197,7 +192,7 @@ int32_t rs9113_wnic_init(DEV_WNIC_PTR rs9113_wnic, uint32_t network_type)
 	dbg_printf(DBG_MORE_INFO, "rsi_wireless_init return 0x%x\r\n", ercd);
 	RS9113_CHECK_EXP(ercd == E_OK, E_SYS);
 	//register rs9113 on receive callback function
-	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, (void *)rswifi_on_input);
+	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, (void *)rs9113_info->ctrl);
 
 	rs9113_info->power_status = WNIC_POWER_NORMAL;
 	rs9113_info->init_status = WNIC_INIT_SUCCESSFUL;  /* stop initialization process */
@@ -549,7 +544,7 @@ int32_t rs9113_wnic_connect(DEV_WNIC_PTR rs9113_wnic, uint32_t security, const u
 	}
 
 	//register rs9113 on receive callback function
-	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, (void *)rswifi_on_input);
+	rsi_wlan_register_callbacks(RSI_WLAN_DATA_RECEIVE_NOTIFY_CB, (void *)rs9113_info->ctrl);
 	rs9113_info->mac_status = WNIC_MAC_NOT_UPDATED;
 	rs9113_info->conn_status = WNIC_CONNECTED;
 	rs9113_on_ops = &(rs9113_wnic->wnic_on_ops);

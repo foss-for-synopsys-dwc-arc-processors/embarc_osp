@@ -54,7 +54,7 @@ typedef struct wifi_if {
   DEV_WNIC        *wnic;
   struct netif    *netif;
   struct eth_addr *ethaddr;
-  void * rsi_buffer;
+  // void * rsi_buffer;
   /* Add whatever per-interface state that is needed here. */
 #if NO_SYS
   volatile int32_t on_output_cnt;
