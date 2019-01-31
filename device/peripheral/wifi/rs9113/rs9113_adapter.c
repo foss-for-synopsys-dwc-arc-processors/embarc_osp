@@ -312,7 +312,7 @@ int32_t rs9113_start_scan(DEV_WNIC_PTR rs9113_wnic)
 	rs9113_info->scan_status = WNIC_DURING_SCAN;
 	rs9113_info->busy_status = WNIC_IS_BUSY;
 	ercd = rsi_wlan_scan(NULL, 0, &scan_result, sizeof(rsi_rsp_scan_t));
-	dbg_printf(DBG_MORE_INFO, "rsi_wlan_get return %d\r\n", ercd);
+	dbg_printf(DBG_MORE_INFO, "rsi_wlan_scan return %d\r\n", ercd);
 	rs9113_info->scan_results = scan_result.scan_count[0];
 	rs9113_info->scan_status = WNIC_SCAN_FINISHED;
 	rs9113_info->busy_status = WNIC_IS_FREE;
@@ -569,19 +569,13 @@ int32_t rs9113_poll_conn_status(DEV_WNIC_PTR rs9113_wnic)
 	rs9113_info = &(rs9113_wnic->wnic_info);
 	RS9113_CHECK_EXP((rs9113_info->init_status==WNIC_INIT_SUCCESSFUL), E_CLSED);
 
-	if (rs9113_info->busy_status == WNIC_IS_BUSY) {
+	if ((rs9113_info->busy_status == WNIC_IS_BUSY) || (rs9113_info->conn_status == WNIC_CONNECTED)){
 		ercd = rs9113_info->conn_status;
-		goto error_exit;
-	}
-
-	if (rs9113_info->conn_status == WNIC_CONNECTED) {
-		ercd = WNIC_CONNECTED;
 		goto error_exit;
 	}
 
 	ercd = rsi_wlan_get_status();
 	dbg_printf(DBG_MORE_INFO, "rsi_wlan_get_status ret %d\r\n", ercd);
-	rs9113_info->conn_status = ercd;
 
 error_exit:
 	return ercd;
@@ -731,9 +725,9 @@ int32_t rs9113_wnic_reset(DEV_WNIC_PTR rs9113_wnic)
 	rs9113_info = &(rs9113_wnic->wnic_info);
 	RS9113_CHECK_EXP((rs9113_info->init_status==WNIC_INIT_SUCCESSFUL), E_CLSED);
 
-	ercd = _rs9113_wnic_deinit(rs9113_wnic);
+	ercd = rsi_wireless_deinit();
 	RS9113_CHECK_EXP(ercd == E_OK, ercd);
-	ercd = rs9113_wnic_init(rs9113_wnic, rs9113_info->network_type);
+	ercd = rsi_wireless_init(0, 0);
 
 error_exit:
 	return ercd;

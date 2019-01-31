@@ -119,10 +119,10 @@ void rsi_hal_intr_clear(void)
 uint8_t rsi_hal_intr_pin_status(void)
 {
 
-	volatile uint8_t status = 0;
-
+	// volatile uint8_t status = 0;
+	return int_probe(EMSDP_REDPINE_HOST_WAKEUP) ? 1 : 0;
 	//! Return interrupt pin  status(high(1) /low (0))
 
-	return status;
+	// return status;
 }
 
