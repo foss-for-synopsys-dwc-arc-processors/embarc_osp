@@ -89,7 +89,7 @@
       </node>
       <node id="5734">
         <label>iotdk_timer.h</label>
-        <link refid="iotdk__timer_8h"/>
+        <link refid="iotdk__timer_8h_source"/>
         <childnode refid="5722" relation="include">
         </childnode>
       </node>
@@ -109,7 +109,7 @@
       </node>
     </incdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1gadffdd886642df371b25b868ace573fdd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="iotdk__init_8c_1adffdd886642df371b25b868ace573fdd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>static void iotdk_mux_init</definition>
         <argsstring>(void)</argsstring>
@@ -123,9 +123,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" line="62" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" bodystart="62" bodyend="67"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" line="43" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" bodystart="43" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void board_init</definition>
         <argsstring>(void)</argsstring>
@@ -140,14 +140,13 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" line="74" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" bodystart="74" bodyend="81"/>
-        <references refid="group___b_o_a_r_d___a_x_s__103_1ga77ec960fb2992023cfa6b3e698b2aed8" compoundref="axs__hardware_8h" startline="55">CLK_CPU</references>
-        <references refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1ga5f3a2224475f726cab9c5cab29e561af" compoundref="iotdk__timer_8c" startline="128" endline="137">iotdk_timer_init</references>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" line="55" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c" bodystart="55" bodyend="62"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga77ec960fb2992023cfa6b3e698b2aed8" compoundref="11_2emsk__hardware_8h" startline="55">CLK_CPU</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" compoundref="arc__timer_8c" startline="201" endline="206">timer_init</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>common iotdk init module </para>    </briefdescription>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
@@ -183,32 +182,31 @@
 <codeline lineno="30"><highlight class="comment"><sp/>*<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED</highlight></codeline>
 <codeline lineno="31"><highlight class="comment"><sp/>*<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="33"><highlight class="comment">---------------------------------------------<sp/>*/</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__timer_8h" kindref="compound">arc_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__debug_8h" kindref="compound">embARC_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iotdk__timer_8h" kindref="compound">iotdk_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>iotdk_mux_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_mux_init();</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_pmod_config(PMOD_B,<sp/>PMOD_SPI,<sp/>IO_PINMUX_ENABLE);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_pmod_config(PMOD_C,<sp/>PMOD_UART,<sp/>IO_PINMUX_ENABLE);</highlight></codeline>
-<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="75"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>cpu<sp/>to<sp/>CLK_CPU<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pll_fout_config(<ref refid="group___b_o_a_r_d___a_x_s__103_1ga77ec960fb2992023cfa6b3e698b2aed8" kindref="member">CLK_CPU</ref>/1000000);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" kindref="member">timer_init</ref>();</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iotdk_mux_init();</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___i_o_t_d_k___c_o_m_m_o_n___t_i_m_e_r_1ga5f3a2224475f726cab9c5cab29e561af" kindref="member">iotdk_timer_init</ref>();</highlight></codeline>
-<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__timer_8h" kindref="compound">arc_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__debug_8h" kindref="compound">embARC_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;iotdk_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>iotdk_mux_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_mux_init();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_pmod_config(PMOD_B,<sp/>PMOD_SPI,<sp/>IO_PINMUX_ENABLE);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_pmod_config(PMOD_C,<sp/>PMOD_UART,<sp/>IO_PINMUX_ENABLE);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>cpu<sp/>to<sp/>CLK_CPU<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pll_fout_config(<ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga77ec960fb2992023cfa6b3e698b2aed8" kindref="member">CLK_CPU</ref>/1000000);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" kindref="member">timer_init</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iotdk_mux_init();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iotdk_timer_init();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/common/iotdk_init.c"/>
   </compounddef>

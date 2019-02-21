@@ -633,7 +633,7 @@
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>emsdp_led_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="50"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_port<sp/>=<sp/><ref refid="group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(EMSDP_LED_PORT);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_port<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(EMSDP_LED_PORT);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_GPIO_CHECK_EXP_NORTN(led_port<sp/>!=<sp/>NULL);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
@@ -642,7 +642,7 @@
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_port-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga628f933ae67d4f0acdedffd3b8b3ae99" kindref="member">GPIO_CMD_DIS_BIT_INT</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(EMSDP_LED_MASK));</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_write(0,<sp/>BOARD_LED_MASK);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" kindref="member">led_write</ref>(0,<sp/>BOARD_LED_MASK);</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal">error_exit:</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -650,7 +650,7 @@
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>emsdp_switch_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>switch_port<sp/>=<sp/><ref refid="group___b_o_a_r_d___a_x_s___d_r_v___d_w___g_p_i_o___o_b_j_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(EMSDP_SWITCH_PORT);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>switch_port<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(EMSDP_SWITCH_PORT);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_GPIO_CHECK_EXP_NORTN(switch_port<sp/>!=<sp/>NULL);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
@@ -663,7 +663,7 @@
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>led_write(uint32_t<sp/>led_val,<sp/>uint32_t<sp/>mask)</highlight></codeline>
+<codeline lineno="83" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" kindref="member">led_write</ref>(uint32_t<sp/>led_val,<sp/>uint32_t<sp/>mask)</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_GPIO_CHECK_EXP_NORTN(led_port<sp/>!=<sp/>NULL);</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
@@ -676,7 +676,7 @@
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga37c8d684dfd11fe1900c93fa1fe7cc0b" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>led_toggle(uint32_t<sp/>mask)</highlight></codeline>
+<codeline lineno="97" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga37c8d684dfd11fe1900c93fa1fe7cc0b" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga37c8d684dfd11fe1900c93fa1fe7cc0b" kindref="member">led_toggle</ref>(uint32_t<sp/>mask)</highlight></codeline>
 <codeline lineno="98"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_GPIO_CHECK_EXP_NORTN(led_port<sp/>!=<sp/>NULL);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led_port-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga1bdac03e82e12781a8196fd300753a4d" kindref="member">GPIO_CMD_TOGGLE_BITS</ref>,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1gaf3c5dc8db3ff175533e07d6a7c275520" kindref="member">CONV2VOID</ref>(mask));</highlight></codeline>
@@ -685,7 +685,7 @@
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" refkind="member"><highlight class="normal">uint32_t<sp/>led_read(uint32_t<sp/>mask)</highlight></codeline>
+<codeline lineno="107" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" refkind="member"><highlight class="normal">uint32_t<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" kindref="member">led_read</ref>(uint32_t<sp/>mask)</highlight></codeline>
 <codeline lineno="108"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>value;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
@@ -701,7 +701,7 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gacf651d7f9071df560e583ba654d4b3d0" refkind="member"><highlight class="normal">uint32_t<sp/>switch_read(uint32_t<sp/>mask)</highlight></codeline>
+<codeline lineno="124" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gacf651d7f9071df560e583ba654d4b3d0" refkind="member"><highlight class="normal">uint32_t<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gacf651d7f9071df560e583ba654d4b3d0" kindref="member">switch_read</ref>(uint32_t<sp/>mask)</highlight></codeline>
 <codeline lineno="125"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>value;</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
