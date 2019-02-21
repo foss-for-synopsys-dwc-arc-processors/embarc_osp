@@ -28,27 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	BOARD_HSDK_DRV_DW_SPI_OBJ	HSDK DW SPI Object
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Designware SPI Objects
- * \details
- *		realize the HSDK board spi object using designware spi device driver,
- *	only need to realize some designware spi structures combine with HSDK spi
- *	hardware resource. just like cpp class instantiation.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_SPI_OBJ
- * \brief	designware spi object instantiation on hsdk
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_SPI_OBJ
- * @{
- */
-
 #include "embARC_toolchain.h"
 #include "arc_exception.h"
 
@@ -432,5 +411,3 @@ void dw_spi_all_install(void)
 	dw_spi_2_install();
 #endif
 }
-
-/** @} end of group BOARD_HSDK_DRV_DW_SPI_OBJ */

@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN	HSDK NTShell NETCONN IO Driver
- * \ingroup	BOARD_HSDK_DRV_MID_NTSHELL_IO
- * \brief	HSDK NTShell Middleware NET Connection IO Driver
- * \details
- *		Implementation of middleware ntshell ntshell_io netconn driver, use net connection as
- *	ntshell interface.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN
- * \brief	middleware ntshell io netconn interface driver
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN
- * @{
- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include <stdarg.h>
@@ -405,5 +385,3 @@ NTSHELL_IO ntshell_netconn_0 = {
 #endif /** USE_HSDK_NTSHELL_NETCONN_0 */
 
 #endif /** MID_NTSHELL MID_LWIP */
-
-/** @} end of group BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN */

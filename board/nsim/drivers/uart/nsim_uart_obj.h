@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_NSIM_DRV_UART_OBJ
- * \brief	header file of uart object instantiation in nsim
- */
-
-/**
- * \addtogroup	BOARD_NSIM_DRV_UART_OBJ
- * @{
- */
 #ifndef _NSIM_UART_OBJ_H_
 #define _NSIM_UART_OBJ_H_
 

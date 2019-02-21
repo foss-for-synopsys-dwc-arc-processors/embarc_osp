@@ -28,26 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	BOARD_HSDK_DRV_DW_IIC_OBJ	HSDK DW IIC Object
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Designware IIC Objects
- * \details
- *		Realize the HSDK board iic object using designware iic device driver,
- *	only need to realize some designware iic structures combine with HSDK iic
- *	hardware resource. just like cpp class instantiation.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_IIC_OBJ
- * \brief	designware iic object instantiation on hsdk
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_IIC_OBJ
- * @{
- */
 #include "embARC_toolchain.h"
 #include "arc_exception.h"
 

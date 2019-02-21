@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_HSDK_COMMON_INIT
- * \brief	hsdk resource definitions
- */
-
-/**
- * \addtogroup BOARD_HSDK_COMMON_INIT
- * @{
- */
 #ifndef _HSDK_H_
 #define _HSDK_H_
 
@@ -165,5 +154,3 @@ extern uint64_t board_get_cur_us(void);
 #endif
 
 #endif	/* _HSDK_H_ */
-
-/** @} end of group BOARD_HSDK_COMMON_INIT */

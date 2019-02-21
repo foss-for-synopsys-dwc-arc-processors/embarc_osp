@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_UART_OBJ
- * \brief	header file of designware uart object instantiation on hsdk
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_UART_OBJ
- * @{
- */
 #ifndef _DW_UART_OBJ_H_
 #define _DW_UART_OBJ_H_
 

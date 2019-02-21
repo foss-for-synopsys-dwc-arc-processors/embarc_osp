@@ -27,32 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_AXS_DRV_DW_GPIO_OBJ	AXS DW GPIO Object
- * \ingroup	BOARD_AXS_DRIVER
- * \brief	AXS Designware GPIO Objects
- * \details
- *		Implement the AXS board GPIO object using the DesignWare GPIO device driver.
- *	Only need to implement some DesignWare GPIO structures and combine with AXS GPIO
- *	hardware resources, like in C++ class instantiation.
- *  For example, in C++, define a class called gpio
- *	class gpio {
- *
- *	};
- *	then instantiate the gpio class:
- *	gpio axs_gpio_a;
- */
-
-/**
- * \file
- * \ingroup	BOARD_AXS_DRV_DW_GPIO_OBJ
- * \brief	DesignWare GPIO object instantiation on AXS
- */
-
-/**
- * \addtogroup	BOARD_AXS_DRV_DW_GPIO_OBJ
- * @{
- */
 #include "arc.h"
 #include "arc_builtin.h"
 #include "dw_gpio.h"
@@ -220,5 +194,3 @@ void dw_gpio_all_install(void)
 	cpu_portb_install();
 #endif
 }
-
-/** @} end of group BOARD_AXS_DRV_DW_GPIO_OBJ */

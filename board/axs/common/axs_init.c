@@ -27,25 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_AXS_COMMON_INIT	AXS Common Init Module
- * \ingroup	BOARD_AXS_COMMON
- * \brief	AXS Board Common Init Module
- * \details
- * 		AXS timer/gpio/interrupt init process. Device-driver installation is done while
- *	getting the device object for the first time.
- */
-
-/**
- * \file
- * \ingroup	BOARD_AXS_COMMON_INIT
- * \brief	common axs init module
- */
-
-/**
- * \addtogroup	BOARD_AXS_COMMON_INIT
- * @{
- */
 #include "arc_builtin.h"
 #include "arc.h"
 #include "arc_timer.h"
@@ -65,5 +46,3 @@ void board_init(void)
 	axs_hardware_init();
 	axs_timer_init();
 }
-
-/** @} end of group BOARD_AXS_COMMON_INIT */

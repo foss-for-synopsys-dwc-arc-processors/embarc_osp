@@ -27,27 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_AXS_AXC003_DRV_GPIO	AXC003 GPIO Driver
- * \ingroup	BOARD_AXS_AXC003
- * \brief	AXC003 Onboard GPIO Peripherals Driver
- * \details
- *		Implementation of AXC003 on-board button, led, dip switch driver,
- *	this is for better use, you don't have to get a gpio object before operating
- *	led,button,switch, because some basic functions for usage are provided.
- */
-
-/**
- * \file
- * \ingroup	BOARD_AXS_AXC003_DRV_GPIO
- * \brief	all on axc003 board gpio device init and operate functions
- * \details	this gpio devices are button, led,7-segment display
- */
-
-/**
- * \addtogroup	BOARD_AXS_AXC003_DRV_GPIO
- * @{
- */
 #include "arc.h"
 #include "arc_builtin.h"
 #include "embARC_toolchain.h"
@@ -198,5 +177,3 @@ void seven_seg_write(uint32_t val)
 error_exit:
 	return;
 }
-
-/** @} end of group BOARD_AXS_AXC003_DRV_GPIO */

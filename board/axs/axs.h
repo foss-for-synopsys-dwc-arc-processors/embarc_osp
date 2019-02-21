@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_AXS_COMMON_INIT
- * \brief	axs resource definitions
- */
-
-/**
- * \addtogroup BOARD_AXS_COMMON_INIT
- * @{
- */
 #ifndef _AXS_H_
 #define _AXS_H_
 
@@ -111,5 +100,3 @@ extern uint64_t board_get_cur_us(void);
 #endif
 
 #endif	/* _AXS_H_ */
-
-/** @} end of group BOARD_AXS_COMMON_INIT */

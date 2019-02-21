@@ -27,24 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_AXS_103_INTERRUPT	AXS 103 Interrupt Management
- * \ingroup	BOARD_AXS_103
- * \brief
- * \details
- */
-
-/**
- * \file
- * \ingroup	BOARD_AXS_103_INTERRUPT
- * \brief	to add
- * \details	to add
- */
-
-/**
- * \addtogroup	BOARD_AXS_103_INTERRUPT
- * @{
- */
 #include "embARC.h"
 #include "axs_103_interrupt.h"
 
@@ -575,4 +557,3 @@ void axs_interrupt_init(void)
 	int_handler_install(INTNO_ICTL_CPU, dw_ictl_int_isr);
 	int_enable(INTNO_ICTL_CPU);
 }
-/** @} end of group BOARD_AXS_103_INTERRUPT */

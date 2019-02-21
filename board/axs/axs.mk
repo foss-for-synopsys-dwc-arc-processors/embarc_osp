@@ -1,10 +1,4 @@
 ##
-# \defgroup 	MK_BOARD_AXS	ARC Explorer System Board Related Makefile Configurations
-# \ingroup	MK_BOARD
-# \brief	makefile related to axs board configurations
-##
-
-##
 # \brief	current board directory definition
 ##
 BOARD_AXS_DIR = $(BOARDS_ROOT)/axs

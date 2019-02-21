@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_FS_SDCARD
- * \brief	header file of sdcard driver for fatfs of hsdk board
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_FS_SDCARD
- * @{
- */
 #ifndef _HSDK_SDCARD_H_
 #define _HSDK_SDCARD_H_
 #include "embARC_toolchain.h"
@@ -59,5 +49,3 @@ extern void hsdk_sdcard_1ms_update(void);
 #endif
 
 #endif /** _HSDK_SDCARD_H_ */
-
-/** @} end of group BOARD_HSDK_DRV_MID_FS_SDCARD */

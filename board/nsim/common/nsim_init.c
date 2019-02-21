@@ -27,23 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_NSIM_COMMON_INIT	NSIM Common Init Module
- * \ingroup	BOARD_NSIM_COMMON
- * \brief	NSIM Common Init Module
- * \details
- */
-
-/**
- * \file
- * \ingroup	BOARD_NSIM_COMMON_INIT
- * \brief	common nsim init module
- */
-
-/**
- * \addtogroup	BOARD_NSIM_COMMON_INIT
- * @{
- */
 #include "arc_builtin.h"
 #include "arc.h"
 #include "arc_timer.h"
@@ -61,6 +44,3 @@ void board_init(void)
 	timer_init();
 	nsim_timer_init();
 }
-
-/** @} end of group BOARD_NSIM_COMMON_INIT */
-

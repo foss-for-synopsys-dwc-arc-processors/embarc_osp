@@ -27,23 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_NSIM_DRV_UART_OBJ	NSIM UART Object
- * \ingroup	BOARD_NSIM_DRIVER
- * \brief	NSIM UART Objects
- * \details
- */
-
-/**
- * \file
- * \ingroup	BOARD_NSIM_DRV_UART_OBJ
- */
-
-/**
- * \addtogroup	BOARD_NSIM_DRV_UART_OBJ
- * @{
- */
 #include <stdio.h>
 #include "arc.h"
 #include "arc_builtin.h"
@@ -151,5 +134,3 @@ void nsim_uart_all_install(void)
 	nsim_uart_0_install();
 #endif
 }
-
-/** @} end of group BOARD_NSIM_DRV_UART_OBJ */

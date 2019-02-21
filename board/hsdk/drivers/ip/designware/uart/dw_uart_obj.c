@@ -28,26 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	BOARD_HSDK_DRV_DW_UART_OBJ	HSDK DW UART Object
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Designware UART Objects
- * \details
- *		Realize the HSDK board uart object using Designware uart device driver,
- *	only need to realize some Designware uart structures combine with HSDK uart
- *	hardware resource. just like cpp class instantiation.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_UART_OBJ
- * \brief	designware uart object instantiation on hsdk
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_UART_OBJ
- * @{
- */
 #include "embARC_toolchain.h"
 #include "arc_exception.h"
 
@@ -425,5 +405,3 @@ void dw_uart_all_install(void)
 	dw_uart_3_install();
 #endif
 }
-
-/** @} end of group BOARD_HSDK_DRV_DW_UART_OBJ */

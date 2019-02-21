@@ -27,32 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_HSDK_DRV_DW_GPIO_OBJ	HSDK DW GPIO Object
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Designware GPIO Objects
- * \details
- *	Implement the HSDK board GPIO object using the DesignWare GPIO device driver.
- *	Only need to implement some DesignWare GPIO structures and combine with HSDK GPIO
- *	hardware resources, like in C++ class instantiation.
- *  For example, in C++, define a class called gpio
- *	class gpio {
- *
- *	};
- *	then instantiate the gpio class:
- *	gpio hsdk_gpio_a;
- */
 
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_GPIO_OBJ
- * \brief	DesignWare GPIO object instantiation on HSDK
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_GPIO_OBJ
- * @{
- */
 #include "embARC_toolchain.h"
 #include "arc_exception.h"
 
@@ -186,5 +161,3 @@ void dw_gpio_all_install(void)
 	cpu_porta_install();
 #endif
 }
-
-/** @} end of group BOARD_HSDK_DRV_DW_GPIO_OBJ */

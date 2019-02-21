@@ -31,26 +31,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_IOTDK_COMMON_TIMER	IOTDK Common Timer Module
- * \ingroup	BOARD_IOTDK_COMMON
- * \brief	provide basic board timer-related functions
- * \details
- * 		Provide a 1 MS (default) timer interrupt,
- *	provide a 64-bit counter value (no clear) count in the timer interrupt,
- *	provide MS-precision delay, with OS enabled-support delay
- */
-
-/**
- * \file
- * \ingroup	BOARD_IOTDK_COMMON_TIMER
- * \brief	provide iotdk board timer-related functions
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_COMMON_TIMER
- * @{
- */
 #include "arc_builtin.h"
 #include "arc.h"
 #include "arc_timer.h"
@@ -199,5 +179,3 @@ void board_delay_ms(uint32_t ms, uint8_t os_compat)
 	start_us = board_get_cur_us();
 	while ((board_get_cur_us() - start_us) < us_delayed);
 }
-
-/** @} end of group BOARD_IOTDK_COMMON_TIMER */

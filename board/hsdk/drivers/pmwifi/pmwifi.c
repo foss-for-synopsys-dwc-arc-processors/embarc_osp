@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_HSDK_DRV_PMODWIFI	HSDK PMOD WIFI Driver
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Pmod Wifi Driver
- * \details
- *		Realize the HSDK board PMOD wifi driver based on the wnic device abstract,
- *	this driver is based on microchip mrf24g device.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_PMODWIFI
- * \brief	pmod wifi driver for hsdk board
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_PMODWIFI
- * @{
- */
 #if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
 #include <stddef.h>
 #include <string.h>
@@ -847,4 +827,3 @@ void pmwifi_all_install(void)
 #endif
 }
 #endif  /* MID_LWIP && MID_LWIP_CONTRIB */
-/** @} end of group BOARD_HSDK_DRV_PMODWIFI */

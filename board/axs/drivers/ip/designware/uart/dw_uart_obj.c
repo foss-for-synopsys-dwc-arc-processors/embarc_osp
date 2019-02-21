@@ -27,27 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_AXS_DRV_DW_UART_OBJ	AXS DW UART Object
- * \ingroup	BOARD_AXS_DRIVER
- * \brief	AXS Designware UART Objects
- * \details
- *		Realize the AXS board uart object using Designware uart device driver,
- *	only need to realize some Designware uart structures combine with AXS uart
- *	hardware resource. just like cpp class instantiation.
- */
-
-/**
- * \file
- * \ingroup	BOARD_AXS_DRV_DW_UART_OBJ
- * \brief	designware uart object instantiation on axs
- */
-
-/**
- * \addtogroup	BOARD_AXS_DRV_DW_UART_OBJ
- * @{
- */
 #include "arc.h"
 #include "arc_builtin.h"
 #include "embARC_toolchain.h"
@@ -314,5 +293,3 @@ void dw_uart_all_install(void)
 	dw_uart_2_install();
 #endif
 }
-
-/** @} end of group BOARD_AXS_DRV_DW_UART_OBJ */

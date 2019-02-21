@@ -27,25 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_HSDK_COMMON_INIT	HSDK Common Init Module
- * \ingroup	BOARD_HSDK_COMMON
- * \brief	HSDK Board Common Init Module
- * \details
- * 		HSDK timer/gpio/interrupt init process. Device-driver installation is done while
- *	getting the device object for the first time.
- */
 
-/**
- * \file
- * \ingroup	BOARD_HSDK_COMMON_INIT
- * \brief	common hsdk init module
- */
-
-/**
- * \addtogroup	BOARD_HSDK_COMMON_INIT
- * @{
- */
 #include "arc_builtin.h"
 #include "arc.h"
 #include "arc_timer.h"
@@ -65,5 +47,3 @@ void board_init(void)
 	hsdk_timer_init();
 	hsdk_io_init();
 }
-
-/** @} end of group BOARD_HSDK_COMMON_INIT */

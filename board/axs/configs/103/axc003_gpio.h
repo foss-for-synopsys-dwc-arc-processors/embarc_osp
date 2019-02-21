@@ -27,15 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_AXS_AXC003_DRV_GPIO
- * \brief	axc003 board gpio related functions header
- */
-/**
- * \addtogroup	BOARD_AXS_AXC003_DRV_GPIO
- * @{
- */
 #ifndef _AXC003_GPIO_H_
 #define _AXC003_GPIO_H_
 
@@ -131,5 +122,3 @@ extern void button_install_isr(uint32_t offset, void (*isr_ptr)(void *ptr));
 #endif
 
 #endif /* _AXC003_GPIO_H_ */
-
-/** @} end of group BOARD_AXS_AXC003_DRV_GPIO */

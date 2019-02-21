@@ -31,24 +31,6 @@
 #include "axs_103_interrupt.h"
 
 /**
- * \defgroup	BOARD_AXS_103_INIT	AXS 103 hardware init
- * \ingroup	BOARD_AXS_103
- * \brief	AXS 103 Hardware Init
- * \details
- */
-
-/**
- * \file
- * \ingroup	BOARD_AXS_103_INIT
- * \brief	to add
- * \details	to add
- */
-
-/**
- * \addtogroup	BOARD_AXS_AXC003_DRV_GPIO
- * @{
- */
-/**
  * \brief       axs hardware initialization
  */
 void axs_hardware_init(void)
@@ -56,5 +38,3 @@ void axs_hardware_init(void)
 	axc003_gpio_init();
 	axs_interrupt_init();
 }
-
-/** @} end of group BOARD_AXS_103_INIT */

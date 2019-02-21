@@ -27,27 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_HSDK_DRV_MID_NTSHELL_IO	HSDK NTShell Middleware IO Driver
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK NTShell Middleware IO Driver
- * \details
- *		Realize the driver which the middleware ntshell need, the driver implementation
- *	is based on the standard of ntshell_io structure, the ntshell io can be uart,
- *	network and other similar io driver.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_NTSHELL_IO
- * \brief	middleware ntshell io interface driver
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_NTSHELL_IO
- * @{
- */
 #include "embARC_toolchain.h"
 
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
@@ -74,5 +53,3 @@ NTSHELL_IO* get_ntshell_io(uint32_t id)
 }
 
 #endif /** MID_NTSHELL */
-
-/** @} end of group BOARD_HSDK_DRV_MID_NTSHELL_IO */

@@ -1,10 +1,4 @@
 ##
-# \defgroup 	MK_BOARD_NSIM	NSIM Related Makefile Configurations
-# \ingroup	MK_BOARD
-# \brief	makefile related to nsim configurations
-##
-
-##
 # \brief	current board directory definition
 ##
 BOARD_NSIM_DIR = $(BOARDS_ROOT)/nsim

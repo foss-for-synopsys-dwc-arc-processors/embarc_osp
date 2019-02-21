@@ -1,10 +1,4 @@
 ##
-# \defgroup 	MK_BOARD_IOTDK	IoTDK Board Related Makefile Configurations
-# \ingroup	MK_BOARD
-# \brief	makefile related to IoTDK board configurations
-##
-
-##
 # \brief	current board directory definition
 ##
 BOARD_IOTDK_DIR = $(BOARDS_ROOT)/iotdk

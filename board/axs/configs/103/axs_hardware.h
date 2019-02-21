@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_AXS_103
- * \brief	AXS 103 hardware resource definitions
- */
-
-/**
- * \addtogroup BOARD_AXS_103
- * @{
- */
 #ifndef _AXS_HARDWARE_H_
 #define _AXS_HARDWARE_H_
 
@@ -182,5 +171,3 @@ extern void axs_hardware_init(void);
 #endif
 
 #endif	/* _AXS_HARDWARE_H_ */
-
-/** @} end of group BOARD_AXS_103 */

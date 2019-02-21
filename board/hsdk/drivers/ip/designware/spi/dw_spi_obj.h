@@ -27,16 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_SPI_OBJ
- * \brief	header file of designware spi object instantiation on hsdk
- */
 
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_SPI_OBJ
- * @{
- */
 #ifndef _DW_SPI_OBJ_H_
 #define _DW_SPI_OBJ_H_
 
@@ -78,4 +69,3 @@ extern void dw_spi_all_install(void);
 #endif
 
 #endif /* _DW_SPI_OBJ_H_ */
-/** @} end of group BOARD_HSDK_DRV_DW_SPI_OBJ */

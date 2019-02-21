@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_NSIM_DRV_MID_NTSHELL_IO_UART	NSIM NTShell UART IO Driver
- * \ingroup	BOARD_NSIM_DRV_MID_NTSHELL_IO
- * \brief	NSIM NTShell Middleware UART IO Driver
- * \details
- *		Implementation of the middleware ntshell ntshell_io uart driver, use uart as ntshell
- *	interface.
- */
-
-/**
- * \file
- * \ingroup	BOARD_NSIM_DRV_MID_NTSHELL_IO_UART
- * \brief	middleware ntshell io uart interface driver
- */
-
-/**
- * \addtogroup	BOARD_NSIM_DRV_MID_NTSHELL_IO_UART
- * @{
- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include <stdarg.h>
@@ -227,5 +207,3 @@ NTSHELL_IO ntshell_uart_1 = {
 #endif /** USE_NSIM_NTSHELL_UART_1 */
 
 #endif /** MID_NTSHELL */
-
-/** @} end of group BOARD_NSIM_DRV_MID_NTSHELL_IO_UART */

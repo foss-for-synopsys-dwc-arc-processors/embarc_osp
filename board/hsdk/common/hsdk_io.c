@@ -27,25 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_HSDK_DRV_IO	HSDK IO Expander
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Onboard IO Peripherals Driver
- * \details
- *		Implementation of HSDK on-board button, led, dip switch driver,
- *	this is for better use, you don't have to get a gpio object before operating
- *	led,button,switch, because some basic functions for usage are provided.
- */
 
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_IO
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_IO
- * @{
- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 

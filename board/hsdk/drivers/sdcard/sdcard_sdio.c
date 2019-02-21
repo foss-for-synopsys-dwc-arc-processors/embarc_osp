@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO	HSDK SDCard SDIO Interface Driver
- * \ingroup	BOARD_HSDK_DRV_MID_FS_SDCARD
- * \brief	HSDK Fatfs SDCard SDIO Interface Driver
- * \details
- *		Realize the sdcard driver using spi interface for fatfs, under the abstract of
- *	fatfs diskio.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO
- * \brief	sdcard driver using spi interface for fatfs
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO
- * @{
- */
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include <stddef.h>
 #include <string.h>
@@ -121,4 +101,3 @@ FATFS_DISKIO sdcard_sdio_0_diskio = {
 #endif /* USE_HSDK_SDCARD_SDIO_0 */
 
 #endif /* MID_FATFS */
-/** @} end of group BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO */

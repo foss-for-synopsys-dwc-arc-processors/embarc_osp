@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_AXS_103_INTERRUPT
- * \brief	to add
- * \details	to add
- */
-
-/**
- * \addtogroup	BOARD_AXS_103_INTERRUPT
- * @{
- */
 #ifndef _AXS_103_INTERRUPT_H_
 
 #ifdef __cplusplus
@@ -51,4 +40,3 @@ extern void axs_interrupt_init(void);
 #endif
 
 #endif /* AXS_103_INTERRUPT_H_ */
-/** @} end of group BOARD_AXS_103_INTERRUPT */

@@ -1,10 +1,4 @@
 ##
-# \defgroup 	MK_BOARD_HSDK	EM Starter Kit Board Related Makefile Configurations
-# \ingroup	MK_BOARD
-# \brief	makefile related to hsdk board configurations
-##
-
-##
 # \brief	current board directory definition
 ##
 BOARD_HSDK_DIR = $(BOARDS_ROOT)/hsdk

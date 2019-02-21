@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN
- * \brief	header file of middleware ntshell io netconn interface driver
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN
- * @{
- */
 #ifndef _NTSHELL_IO_NETCONN_H_
 #define _NTSHELL_IO_NETCONN_H_
 
@@ -65,5 +55,3 @@ extern NTSHELL_IO ntshell_netconn_0;
 #endif /** MID_NTSHELL  MID_LWIP */
 
 #endif /** _NTSHELL_IO_NETCONN_H_ */
-
-/** @} end of group BOARD_HSDK_DRV_MID_NTSHELL_IO_NETCONN */

@@ -27,17 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_IOTDK_COMMON_INIT
- * \brief	iotdk hardware resource definitions
- */
 
-/**
- * \addtogroup BOARD_IOTDK_COMMON_INIT
- * @{
- */
 #ifndef _IOTDK_HARDWARE_H_
 #define _IOTDK_HARDWARE_H_
 
@@ -112,5 +102,3 @@
 #define INTNO_SDIO				91
 
 #endif	/* _IOTDK_HARDWARE_H_ */
-
-/** @} end of group BOARD_IOTDK_COMMON_INIT  */

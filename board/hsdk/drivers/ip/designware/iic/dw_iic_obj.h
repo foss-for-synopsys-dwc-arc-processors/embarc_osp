@@ -27,16 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_DW_IIC_OBJ
- * \brief	header file of designware iic object instantiation on hsdk
- */
 
-/**
- * \addtogroup	BOARD_HSDK_DRV_DW_IIC_OBJ
- * @{
- */
 #ifndef _DW_IIC_OBJ_H_
 #define _DW_IIC_OBJ_H_
 
@@ -78,5 +69,3 @@ extern void dw_iic_all_install(void);
 #endif
 
 #endif /* _DW_IIC_OBJ_H_ */
-
-/** @} end of group BOARD_HSDK_IIC_OBJ */

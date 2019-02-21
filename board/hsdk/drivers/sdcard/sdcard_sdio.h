@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO
- * \brief	header file of sdcard driver using sdio interface for fatfs
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO
- * @{
- */
 #ifndef _HSDK_SDCARD_SDIO_H_
 #define _HSDK_SDCARD_SDIO_H_
 
@@ -61,5 +51,3 @@ extern FATFS_DISKIO sdcard_sdio_0_diskio;
 #endif /* MID_FATFS */
 
 #endif /** _HSDK_SDCARD_SDIO_H_ */
-
-/** @} end of group BOARD_HSDK_DRV_MID_FS_SDCARD_SDIO */

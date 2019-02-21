@@ -27,16 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_COMMON_TIMER
- * \brief	hsdk timer functions header
- */
 
-/**
- * \addtogroup BOARD_HSDK_COMMON_TIMER
- * @{
- */
 #ifndef _HSDK_TIMER_
 #define _HSDK_TIMER_
 
@@ -56,5 +47,3 @@ extern void hsdk_timer_init(void);
 #endif
 
 #endif /* _HSDK_TIMER_ */
-
-/** @} end of group BOARD_HSDK_COMMON_TIMER */

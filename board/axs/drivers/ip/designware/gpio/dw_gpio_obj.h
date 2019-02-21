@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_AXS_DRV_DW_GPIO_OBJ
- * \brief	header file of designware gpio object instantiation on axs
- */
-
-/**
- * \addtogroup	BOARD_AXS_DRV_DW_GPIO_OBJ
- * @{
- */
 #ifndef _DW_GPIO_OBJ_H_
 #define _DW_GPIO_OBJ_H_
 
@@ -80,5 +70,3 @@ extern void dw_gpio_all_install(void);
 #endif
 
 #endif /* _DW_GPIO_OBJ_H_*/
-
-/** @} end of group BOARD_AXS_DRV_DW_GPIO_OBJ */

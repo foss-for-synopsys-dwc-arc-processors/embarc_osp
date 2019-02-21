@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_NSIM_COMMON_INIT
- * \brief	nsim resource definitions
- */
-
-/**
- * \addtogroup BOARD_NSIM_COMMON_INIT
- * @{
- */
 #ifndef _NSIM_H_
 #define _NSIM_H_
 
@@ -118,6 +107,3 @@ extern uint64_t board_get_cur_us(void);
 #endif
 
 #endif	/* _NSIM_H_ */
-
-/** @} end of group BOARD_NSIM_COMMON_INIT */
-

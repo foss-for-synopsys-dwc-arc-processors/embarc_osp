@@ -27,7 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
 #ifndef _IOTDK_FLASH_OBJ_H_
 #define _IOTDK_FLASH_OBJ_H_
 

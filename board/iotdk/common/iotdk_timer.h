@@ -27,16 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_IOTDK_COMMON_TIMER
- * \brief	iotdk timer functions header
- */
 
-/**
- * \addtogroup BOARD_IOTDK_COMMON_TIMER
- * @{
- */
 #ifndef _IOTDK_TIMER_
 #define _IOTDK_TIMER_
 
@@ -56,5 +47,3 @@ extern void iotdk_timer_init(void);
 #endif
 
 #endif /* _IOTDK_TIMER_ */
-
-/** @} end of group BOARD_IOTDK_COMMON_TIMER */

@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_HSDK_DRV_MUX	HSDK Mux Driver
- * \ingroup	BOARD_HSDK_DRIVER
- * \brief	HSDK Mux Controller Driver
- * \details
- *		Mux controller is the hardware external pin connection
- *	controller, it can distribute the external port pins into different
- *	functions like general input/output, spi, iic, uart and so on.
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MUX
- * \brief	hsdk mux controller driver
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MUX
- * @{
- */
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
@@ -479,5 +459,3 @@ void io_mux_init(void)
 			gpio_mux_config[i].val);
 	}
 }
-
-/** @} end of group BOARD_HSDK_DRV_MUX */

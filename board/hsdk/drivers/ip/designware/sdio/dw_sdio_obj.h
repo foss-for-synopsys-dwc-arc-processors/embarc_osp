@@ -49,4 +49,4 @@ extern void dw_sdio_all_install(void);
 #endif
 
 
-#endif
+#endif /* _DW_SDIO_OBJ_H_ */

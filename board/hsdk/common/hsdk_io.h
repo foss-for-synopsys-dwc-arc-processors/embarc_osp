@@ -27,15 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_IO
- * \brief	HSDK board IO related functions header
- */
-/**
- * \addtogroup	BOARD_HSDK_DRV_IO
- * @{
- */
+
 #ifndef _HSDK_IO_H_
 #define _HSDK_IO_H_
 
@@ -64,5 +56,3 @@ extern uint32_t led_read(uint32_t mask);
 #endif
 
 #endif /* _HSDK_IO_H_ */
-
-/** @} end of group BOARD_HSDK_DRV_IO */

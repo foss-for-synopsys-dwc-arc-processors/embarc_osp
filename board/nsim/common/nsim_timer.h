@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_NSIM_COMMON_TIMER
- * \brief	nsim timer functions header
- */
-
-/**
- * \addtogroup BOARD_NSIM_COMMON_TIMER
- * @{
- */
 #ifndef _NSIM_TIMER_
 #define _NSIM_TIMER_
 
@@ -56,5 +46,3 @@ extern void nsim_timer_init(void);
 #endif
 
 #endif /* _NSIM_TIMER_ */
-
-/** @} end of group BOARD_NSIM_COMMON_TIMER */

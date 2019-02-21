@@ -31,25 +31,6 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_IOTDK_COMMON_INIT	IOTDK Common Init Module
- * \ingroup	BOARD_IOTDK_COMMON
- * \brief	IOTDK Board Common Init Module
- * \details
- *		IOTDK timer/gpio/interrupt init process. Device-driver installation is done while
- *	getting the device object for the first time.
- */
-
-/**
- * \file
- * \ingroup	BOARD_IOTDK_COMMON_INIT
- * \brief	common iotdk init module
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_COMMON_INIT
- * @{
- */
 #include "arc_builtin.h"
 #include "arc.h"
 #include "arc_timer.h"
@@ -79,5 +60,3 @@ void board_init(void)
 	iotdk_mux_init();
 	iotdk_timer_init();
 }
-
-/** @} end of group BOARD_IOTDK_COMMON_INIT */

@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_NSIM_DRV_MID_NTSHELL_IO
- * \brief	header file of middleware ntshell io interface driver
- */
-
-/**
- * \addtogroup	BOARD_NSIM_DRV_MID_NTSHELL_IO
- * @{
- */
 #ifndef _NTSHELL_IO_H_
 #define _NTSHELL_IO_H_
 
@@ -47,5 +37,3 @@
 #endif /** MID_NTSHELL */
 
 #endif /** _NTSHELL_IO_H_ */
-
-/** @} end of group BOARD_NSIM_DRV_MID_NTSHELL_IO */

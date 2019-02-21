@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_UART
- * \brief	header file of middleware ntshell io uart interface driver
- */
-
-/**
- * \addtogroup	BOARD_HSDK_DRV_MID_NTSHELL_IO_UART
- * @{
- */
 #ifndef _NTSHELL_IO_UART_H_
 #define _NTSHELL_IO_UART_H_
 
@@ -62,5 +52,3 @@ extern NTSHELL_IO ntshell_uart_1;
 #endif /** MID_NTSHELL */
 
 #endif /** _NTSHELL_IO_UART_H_ */
-
-/** @} end of group BOARD_HSDK_DRV_MID_NTSHELL_IO_UART */
