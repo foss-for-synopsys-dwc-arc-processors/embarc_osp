@@ -70,19 +70,21 @@ static int32_t nsim_uart_0_write(const void *data, uint32_t len)
 static int32_t nsim_uart_0_read(void *data, uint32_t len)
 {
 	unsigned int i;
-	unsigned char c;
+	int c;
 
-	i = len;
-
-	while(i--) {
+	for (i = 0; i < len; i++) {
 		c = getchar();
+		if (c < 0) {
+			break;
+		}
 		if (c == 10) {
 			c = 13;
 		}
-		*((unsigned char *)data) = c;
+		*((unsigned char *)data) = (unsigned char)c;
 		data++;
 	}
-	return len;
+
+	return i;
 }
 
 /** install nsim uart 0 to system */
