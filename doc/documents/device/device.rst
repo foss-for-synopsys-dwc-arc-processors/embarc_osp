@@ -42,9 +42,11 @@ The Device HAL provides abstraction for the following devices:
    uart.rst
    sdio.rst
    wnic.rst
+   trng.rst
+   pwm_timer.rst
 
 
-These \*.h files provide abstraction APIs and macros that require corresponding
+These \*.h files in ``device/inc`` and ``device/ip/up_hal/inc`` provide abstraction APIs and macros that require corresponding
 implementations. embARC OSP provides the device implementations in
 ``device/ip/designware``, ``device/ip/subsystem``, ``device/peripheral``, and ``board/xxxx/drivers``.
 
@@ -59,11 +61,13 @@ The IP drivers are placed in ``device/ip`` folder. Currently, the following
 Designware IP drivers are supported:
 
 * GPIO
-* UART
-* I2C
-* SPI
 * I2S
+* I2C
+* PWM_TIMER
 * SDIO
+* SPI
+* TRNG
+* UART
 
 and the follong Designware ARC subsystem IP drivers are supported:
 
@@ -73,7 +77,7 @@ and the follong Designware ARC subsystem IP drivers are supported:
 * SPI master
 * I2S master
 
-In the future, more Designware IP drivers will be added, e.g., timer, PWM, ethernet
+In the future, more Designware IP drivers will be added, e.g., USB, ethernet
 
 Not limited to Designware IP drivers, other IP drivers can be easily supported which
 can take Designware IP drivers as a reference.

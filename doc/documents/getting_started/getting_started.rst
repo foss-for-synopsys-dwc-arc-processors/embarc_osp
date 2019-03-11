@@ -80,6 +80,7 @@ Use the following procedures to prepare your ARC board to run/debug the embARC a
 * :ref:`Getting started with EM starter kit <getting_started_with_em_starter_kit>`
 * :ref:`Getting started with HS development kit <getting_started_with_hs_development_kit>`
 * :ref:`Getting started with IoT Development kit <getting_started_with_iot_development_kit>`
+* :ref:`Getting started with ARC EM Software Development Platform <getting_started_with_arc_em_software_development_platform>`
 
 See the following procedures to check peripherals and board settings. The peripherals are not required for all the embARC OSP examples.
 
