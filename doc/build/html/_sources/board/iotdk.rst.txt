@@ -78,7 +78,6 @@ Features:
 - Real Time Clock (RTC) running at reference clock of 32.678 kHz
 - I2S TX/RX interface
 - SDIO interface (2x)
-- I3C interface
 - USB 2.0 OTG interface
 - JTAG interface for debug
 - PWM interface
