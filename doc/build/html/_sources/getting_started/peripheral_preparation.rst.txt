@@ -42,6 +42,11 @@ All three parameters should use definitions in ``embarc_osp/device/inc/dev_pinmu
 	* The second parameter should be in ``PMOD_TYPE``, unsupported options will have no effect.
 	* The third parameter should be ``IO_PINMUX_ENABLE`` or ``IO_PINMUX_DISABLE``, enabling or disabling the mux controller respectively.
 
+5. If you are using EMSDP, go to mux.c and find ``io_mux_init()`` function, you will find it calls ``set_pmod_mux()`` with MUX options as parameters.
+MUX options are defined in mux.h and you could change them as you see fit.
+
+.. note:: In EMSDP, notice that **CFG0** means Upper Layer of Pmod interface and **CFG1** means Lower Layer of Pmod
+
 .. note:: To learn what interface your board has, please go to :ref:`board_bsp`
 
 PMOD Modules
@@ -72,4 +77,4 @@ Driver code at ``embarc_osp/device/peripheral/adc/ad7991``.
 `ESP01\/ESP01S <http://wiki.ai-thinker.com/esp8266/docs>`_ : Primary IC type is ESP8266, use **UART** interface for data changing and controlling.
 Driver code at ``embarc_osp/device/peripheral/wifi/slip_esp``.
 
-The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you could wire it to PMOD interface on board. You need to connect GCC(embARC) to GCC(ESP) , 3.3V(embARC) to VCC, RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of `ESP01\/ESP01S <http://wiki.ai-thinker.com/esp8266/docs>`_ and UART (type 4A) part of `Digilent Pmod Spec <https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf>`_ for pin layout.
+The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you could wire it to PMOD interface on board. You need to connect GND(embARC) to GND(ESP) , 3.3V(embARC) to VCC(ESP), RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of `ESP01\/ESP01S <http://wiki.ai-thinker.com/esp8266/docs>`_ and UART (type 4A) part of `Digilent Pmod Spec <https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf>`_ for pin layout.

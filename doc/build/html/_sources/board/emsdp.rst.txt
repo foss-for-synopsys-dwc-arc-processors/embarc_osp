@@ -138,6 +138,8 @@ If you are using default cores of |emsdp|: *em6_scss*, *em7d_esp_dfss*, and *em1
 
 #. You are done importing a new package, flash the bit file into board and build with it to make sure everything is working.
 
+.. _getting_started_with_arc_em_software_development_platform:
+
 Run Your First Program
 ^^^^^^^^^^^^^^^^^^^^^^
 By setting up the board, you are now ready to run your first program on |emsdp|.

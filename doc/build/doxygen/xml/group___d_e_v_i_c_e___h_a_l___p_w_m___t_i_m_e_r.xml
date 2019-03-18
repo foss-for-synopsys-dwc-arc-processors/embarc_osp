@@ -4,7 +4,182 @@
     <compoundname>DEVICE_HAL_PWM_TIMER</compoundname>
     <title>PWM_TIMER Device HAL Interface</title>
     <innerfile refid="dev__pwm__timer_8h">dev_pwm_timer.h</innerfile>
+    <innerclass refid="structdev__pwm__timer__ch__isr" prot="public">dev_pwm_timer_ch_isr</innerclass>
+    <innerclass refid="structdev__pwm__timer__cfg" prot="public">dev_pwm_timer_cfg</innerclass>
     <innergroup refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___c_t_r_l_c_m_d">PWM_TIMER Device Control Commands</innergroup>
+    <innergroup refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t">PWM_TIMER Device Interface Definition</innergroup>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga7ad4d8634ea972bfafe4a6517c5a81f8" prot="public" static="no">
+        <name>dev_pwm_timer_mode</name>
+        <enumvalue id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8ae6d703585a9f1825b10e2469e1a238c7" prot="public">
+          <name>DEV_PWM_TIMER_MODE_CLOSE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>mode close </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" prot="public">
+          <name>DEV_PWM_TIMER_MODE_TIMER</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>mode timer </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" prot="public">
+          <name>DEV_PWM_TIMER_MODE_PWM</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>mode pwm </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>PWM_TIMER Device Work Mode Types Enum. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="115" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="115" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga8db6fd35a0475f738f2afa833bcb69d5" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* DEV_PWM_TIMER_HANDLER)(void *ptr)</definition>
+        <argsstring>)(void *ptr)</argsstring>
+        <name>DEV_PWM_TIMER_HANDLER</name>
+        <briefdescription>
+<para>PWM_TIMER interrupt handler or Interrupt Service Routine(ISR) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="104" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gaf32b115ba79681bb465cc0ff675e09e9" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__ch__isr" kindref="compound">dev_pwm_timer_ch_isr</ref></type>
+        <definition>typedef struct dev_pwm_timer_ch_isr  DEV_PWM_TIMER_CH_ISR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CH_ISR</name>
+        <briefdescription>
+<para>interrupt handler for each pwm_timer channel </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="110" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga4fcac9725a7617b75cfe6575efbe87de" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__ch__isr" kindref="compound">dev_pwm_timer_ch_isr</ref> *</type>
+        <definition>typedef struct dev_pwm_timer_ch_isr *  DEV_PWM_TIMER_CH_ISR_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CH_ISR_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="110" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga40c69fe80f0bbdce9278565c5f87c41e" prot="public" static="no">
+        <type>enum <ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga7ad4d8634ea972bfafe4a6517c5a81f8" kindref="member">dev_pwm_timer_mode</ref></type>
+        <definition>typedef enum dev_pwm_timer_mode  DEV_PWM_TIMER_MODE</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_MODE</name>
+        <briefdescription>
+<para>PWM_TIMER Device Work Mode Types Enum. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gaea335b179d1ae9b8153a8ccbdb728916" prot="public" static="no">
+        <type>enum <ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga7ad4d8634ea972bfafe4a6517c5a81f8" kindref="member">dev_pwm_timer_mode</ref> *</type>
+        <definition>typedef enum dev_pwm_timer_mode * DEV_PWM_TIMER_MODE_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_MODE_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gaf911b90bc5d8d3f9be02509358ef0dec" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__cfg" kindref="compound">dev_pwm_timer_cfg</ref></type>
+        <definition>typedef struct dev_pwm_timer_cfg  DEV_PWM_TIMER_CFG</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CFG</name>
+        <briefdescription>
+<para>PWM_TIMER Device Config Struct. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="130" column="1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gad2426282166ba4bed5d80ac897493c29" prot="public" static="no">
+        <type>struct <ref refid="structdev__pwm__timer__cfg" kindref="compound">dev_pwm_timer_cfg</ref> *</type>
+        <definition>typedef struct dev_pwm_timer_cfg * DEV_PWM_TIMER_CFG_PTR</definition>
+        <argsstring></argsstring>
+        <name>DEV_PWM_TIMER_CFG_PTR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="130" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gaeb19d9401495701d33ea770ec122cfd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER_PTR</ref></type>
+        <definition>DEV_PWM_TIMER_PTR pwm_timer_get_dev</definition>
+        <argsstring>(int32_t pwm_timer_id)</argsstring>
+        <name>pwm_timer_get_dev</name>
+        <param>
+          <type>int32_t</type>
+          <declname>pwm_timer_id</declname>
+        </param>
+        <briefdescription>
+<para>get an <ref refid="structdev__pwm__timer" kindref="compound">pwm_timer device</ref> by pwm_timer device id. </para>        </briefdescription>
+        <detaileddescription>
+<para>For how to use pwm_timer device hal refer to <ref refid="structdev__pwm__timer" kindref="compound">Functions in pwm_timer device structure</ref> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pwm_timer_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of pwm_timer, defined by user </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="retval"><parameteritem>
+<parameternamelist>
+<parametername>!NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an <ref refid="structdev__pwm__timer" kindref="compound">pwm_timer device structure</ref> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>NULL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>failed to find the pwm_timer device by pwm_timer_id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>need to implemented by user in user code</para></simplesect>
+get an <ref refid="structdev__pwm__timer" kindref="compound">pwm_timer device</ref> by pwm_timer device id. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_pwm_timer.h" line="245" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.c" bodystart="208" bodyend="236"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
 <para>Definitions for pwm_timer device hardware layer (<ref refid="dev__pwm__timer_8h" kindref="compound">dev_pwm_timer.h</ref>) </para>    </briefdescription>
     <detaileddescription>

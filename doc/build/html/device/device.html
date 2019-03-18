@@ -100,6 +100,8 @@
 <li class="toctree-l3"><a class="reference internal" href="uart.html">UART HAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sdio.html">SDIO HAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wnic.html">WNIC HAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trng.html">TRNG HAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pwm_timer.html">PWM_TIMER HAL</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ip-drivers">IP Drivers</a></li>
@@ -215,9 +217,11 @@ flash, sensors and PMOD modules.</li>
 <li class="toctree-l1"><a class="reference internal" href="uart.html">UART HAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdio.html">SDIO HAL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wnic.html">WNIC HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trng.html">TRNG HAL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pwm_timer.html">PWM_TIMER HAL</a></li>
 </ul>
 </div>
-<p>These *.h files provide abstraction APIs and macros that require corresponding
+<p>These *.h files in <code class="docutils literal notranslate"><span class="pre">device/inc</span></code> and <code class="docutils literal notranslate"><span class="pre">device/ip/up_hal/inc</span></code> provide abstraction APIs and macros that require corresponding
 implementations. embARC OSP provides the device implementations in
 <code class="docutils literal notranslate"><span class="pre">device/ip/designware</span></code>, <code class="docutils literal notranslate"><span class="pre">device/ip/subsystem</span></code>, <code class="docutils literal notranslate"><span class="pre">device/peripheral</span></code>, and <code class="docutils literal notranslate"><span class="pre">board/xxxx/drivers</span></code>.</p>
 <p>Different device features are abstracted in the device HAL, such as UART, IIC,
@@ -230,11 +234,13 @@ operation APIs and device access APIs.</p>
 Designware IP drivers are supported:</p>
 <ul class="simple">
 <li>GPIO</li>
-<li>UART</li>
-<li>I2C</li>
-<li>SPI</li>
 <li>I2S</li>
+<li>I2C</li>
+<li>PWM_TIMER</li>
 <li>SDIO</li>
+<li>SPI</li>
+<li>TRNG</li>
+<li>UART</li>
 </ul>
 <p>and the follong Designware ARC subsystem IP drivers are supported:</p>
 <ul class="simple">
@@ -244,7 +250,7 @@ Designware IP drivers are supported:</p>
 <li>SPI master</li>
 <li>I2S master</li>
 </ul>
-<p>In the future, more Designware IP drivers will be added, e.g., timer, PWM, ethernet</p>
+<p>In the future, more Designware IP drivers will be added, e.g., USB, ethernet</p>
 <p>Not limited to Designware IP drivers, other IP drivers can be easily supported which
 can take Designware IP drivers as a reference.</p>
 </div>

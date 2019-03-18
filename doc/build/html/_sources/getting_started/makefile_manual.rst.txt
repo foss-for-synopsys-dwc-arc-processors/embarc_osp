@@ -41,7 +41,47 @@ In the following part of this manual, we will only use ``make`` in example, you 
 
 .. note:: make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).
 
-Some text
+.. code-block:: console
+
+	make help
+	"Build Targets for selected configuration:"
+	"  all         - Build example"
+	"  bin         - Build and Generate binary for example"
+	"  hex         - Build and Generate Intel Hex File for example"
+	"  build       - Clean first then compile example"
+	"  dump        - Generate dump information for example"
+	"  dasm        - Disassemble object file"
+	"  size        - Display size information of object file"
+	"  sign        - Sign binary for example with mcuboot scripts"
+	"Clean Targets:"
+	"  clean       - Remove object files of selected configuration"
+	"  boardclean  - Remove object files of selected board"
+	"  distclean   - Remove object files of all boards"
+	"Debug & Run Targets for selected configuration:"
+	"  run         - Use MDB & JTAG to download and run object elf file"
+	"  gui         - Use MDB & JTAG to download and debug object elf file"
+	"Other Targets:"
+	"  cfg         - Display build target configuration"
+	"  opt         - Display Current MAKE options"
+	"  spopt       - Display Supported MAKE options"
+	"Available Configurations:"
+	"  BOARD=<board_name>                           - Specify the board(axs emsdp emsk hsdk iotdk nsim)"
+	"  BD_VER=<board_ver>                           - Specify the board verison"
+	"  OLEVEL=Os|O0|O1|O2|O3                       - Specify Optimization level"
+	"  CUR_CORE=<core configuration>                - Specify core configuration"
+	"  TCF=path/to/your tcf                        - Specify customized tcf file"
+	"  TOOLCHAIN=mw|gnu                            - Specify toolchain"
+	"  JTAG=usb|opella                             - Specify Hardware Debugger(Digilent JTAG or Ashling Opella-XD JTAG)"
+	"  OUT_DIR_ROOT=.|xxx                          - Specify where to generate object files"
+	"  SILENT=0|1                                  - Disable or enable message output"
+	"  V=0|1                                       - Disable or enable verbose compiling information"
+	"  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in"
+	"  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes"
+	"  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes"
+	"Example Usage:"
+	"  make all                                                                - build example in current directory using default configuration"
+	"  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)"
+	"  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TCF=mytcfpath all            - build example using configuration (emsk, 22, arcem7d) using the tcf defined in TCF option"
 
 .. _cfg:
 

@@ -215,7 +215,47 @@ Help information will be printed to your console.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).</p>
 </div>
-<p>Some text</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make help</span>
+<span class="go">&quot;Build Targets for selected configuration:&quot;</span>
+<span class="go">&quot;  all         - Build example&quot;</span>
+<span class="go">&quot;  bin         - Build and Generate binary for example&quot;</span>
+<span class="go">&quot;  hex         - Build and Generate Intel Hex File for example&quot;</span>
+<span class="go">&quot;  build       - Clean first then compile example&quot;</span>
+<span class="go">&quot;  dump        - Generate dump information for example&quot;</span>
+<span class="go">&quot;  dasm        - Disassemble object file&quot;</span>
+<span class="go">&quot;  size        - Display size information of object file&quot;</span>
+<span class="go">&quot;  sign        - Sign binary for example with mcuboot scripts&quot;</span>
+<span class="go">&quot;Clean Targets:&quot;</span>
+<span class="go">&quot;  clean       - Remove object files of selected configuration&quot;</span>
+<span class="go">&quot;  boardclean  - Remove object files of selected board&quot;</span>
+<span class="go">&quot;  distclean   - Remove object files of all boards&quot;</span>
+<span class="go">&quot;Debug &amp; Run Targets for selected configuration:&quot;</span>
+<span class="go">&quot;  run         - Use MDB &amp; JTAG to download and run object elf file&quot;</span>
+<span class="go">&quot;  gui         - Use MDB &amp; JTAG to download and debug object elf file&quot;</span>
+<span class="go">&quot;Other Targets:&quot;</span>
+<span class="go">&quot;  cfg         - Display build target configuration&quot;</span>
+<span class="go">&quot;  opt         - Display Current MAKE options&quot;</span>
+<span class="go">&quot;  spopt       - Display Supported MAKE options&quot;</span>
+<span class="go">&quot;Available Configurations:&quot;</span>
+<span class="go">&quot;  BOARD=&lt;board_name&gt;                           - Specify the board(axs emsdp emsk hsdk iotdk nsim)&quot;</span>
+<span class="go">&quot;  BD_VER=&lt;board_ver&gt;                           - Specify the board verison&quot;</span>
+<span class="go">&quot;  OLEVEL=Os|O0|O1|O2|O3                       - Specify Optimization level&quot;</span>
+<span class="go">&quot;  CUR_CORE=&lt;core configuration&gt;                - Specify core configuration&quot;</span>
+<span class="go">&quot;  TCF=path/to/your tcf                        - Specify customized tcf file&quot;</span>
+<span class="go">&quot;  TOOLCHAIN=mw|gnu                            - Specify toolchain&quot;</span>
+<span class="go">&quot;  JTAG=usb|opella                             - Specify Hardware Debugger(Digilent JTAG or Ashling Opella-XD JTAG)&quot;</span>
+<span class="go">&quot;  OUT_DIR_ROOT=.|xxx                          - Specify where to generate object files&quot;</span>
+<span class="go">&quot;  SILENT=0|1                                  - Disable or enable message output&quot;</span>
+<span class="go">&quot;  V=0|1                                       - Disable or enable verbose compiling information&quot;</span>
+<span class="go">&quot;  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in&quot;</span>
+<span class="go">&quot;  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes&quot;</span>
+<span class="go">&quot;  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes&quot;</span>
+<span class="go">&quot;Example Usage:&quot;</span>
+<span class="go">&quot;  make all                                                                - build example in current directory using default configuration&quot;</span>
+<span class="go">&quot;  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)&quot;</span>
+<span class="go">&quot;  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TCF=mytcfpath all            - build example using configuration (emsk, 22, arcem7d) using the tcf defined in TCF option&quot;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cfg">
 <span id="id3"></span><h3>cfg<a class="headerlink" href="#cfg" title="Permalink to this headline">¶</a></h3>
