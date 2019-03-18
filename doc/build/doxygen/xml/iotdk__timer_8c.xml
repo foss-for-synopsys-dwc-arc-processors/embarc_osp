@@ -9,88 +9,88 @@
     <includes refid="board_8h" local="yes">board.h</includes>
     <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
     <incdepgraph>
-      <node id="5742">
+      <node id="5729">
         <label>stdbool.h</label>
       </node>
-      <node id="5745">
+      <node id="5732">
         <label>arc_timer.h</label>
         <link refid="arc__timer_8h"/>
-        <childnode refid="5743" relation="include">
+        <childnode refid="5730" relation="include">
         </childnode>
-        <childnode refid="5737" relation="include">
+        <childnode refid="5724" relation="include">
         </childnode>
-        <childnode refid="5738" relation="include">
+        <childnode refid="5725" relation="include">
         </childnode>
       </node>
-      <node id="5739">
+      <node id="5726">
         <label>stdint.h</label>
       </node>
-      <node id="5748">
+      <node id="5735">
         <label>os_hal_inc.h</label>
         <link refid="os__hal__inc_8h"/>
       </node>
-      <node id="5741">
+      <node id="5728">
         <label>stddef.h</label>
       </node>
-      <node id="5737">
+      <node id="5724">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="5738" relation="include">
+        <childnode refid="5725" relation="include">
         </childnode>
       </node>
-      <node id="5740">
+      <node id="5727">
         <label>limits.h</label>
       </node>
-      <node id="5743">
+      <node id="5730">
         <label>arc.h</label>
         <link refid="arc_8h"/>
-        <childnode refid="5744" relation="include">
+        <childnode refid="5731" relation="include">
         </childnode>
       </node>
-      <node id="5744">
+      <node id="5731">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="5738">
+      <node id="5725">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="5739" relation="include">
+        <childnode refid="5726" relation="include">
         </childnode>
-        <childnode refid="5740" relation="include">
+        <childnode refid="5727" relation="include">
         </childnode>
-        <childnode refid="5741" relation="include">
+        <childnode refid="5728" relation="include">
         </childnode>
-        <childnode refid="5742" relation="include">
+        <childnode refid="5729" relation="include">
         </childnode>
       </node>
-      <node id="5736">
+      <node id="5723">
         <label>iotdk_timer.c</label>
         <link refid="iotdk_timer.c"/>
-        <childnode refid="5737" relation="include">
+        <childnode refid="5724" relation="include">
         </childnode>
-        <childnode refid="5743" relation="include">
+        <childnode refid="5730" relation="include">
         </childnode>
-        <childnode refid="5745" relation="include">
+        <childnode refid="5732" relation="include">
         </childnode>
-        <childnode refid="5746" relation="include">
+        <childnode refid="5733" relation="include">
         </childnode>
-        <childnode refid="5747" relation="include">
+        <childnode refid="5734" relation="include">
         </childnode>
-        <childnode refid="5748" relation="include">
+        <childnode refid="5735" relation="include">
         </childnode>
       </node>
-      <node id="5747">
+      <node id="5734">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
-      <node id="5746">
+      <node id="5733">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
-        <childnode refid="5738" relation="include">
+        <childnode refid="5725" relation="include">
         </childnode>
-        <childnode refid="5743" relation="include">
+        <childnode refid="5730" relation="include">
         </childnode>
-        <childnode refid="5737" relation="include">
+        <childnode refid="5724" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -419,11 +419,11 @@
 <codeline lineno="108"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>iotdk_timer_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="109"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga4e1c7f5b50bb6c2066d9536aa82c86e7" kindref="member">timer_present</ref>(BOARD_SYS_TIMER_ID))<sp/>{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___h_s_d_k___i_n_t_e_r_r_u_p_t_1gaa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(BOARD_SYS_TIMER_INTNO);<sp/></highlight><highlight class="comment">/*<sp/>disable<sp/>first<sp/>then<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1aa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(BOARD_SYS_TIMER_INTNO);<sp/></highlight><highlight class="comment">/*<sp/>disable<sp/>first<sp/>then<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga92d3c2a8a703078234357e7bce5a5c48" kindref="member">int_handler_install</ref>(BOARD_SYS_TIMER_INTNO,<sp/>iotdk_timer_isr);</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga6abd8670e2fcdeb2a95954064cd1f91e" kindref="member">timer_start</ref>(BOARD_SYS_TIMER_ID,<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga3d86ac7ea9125720c6117abaae649e1a" kindref="member">TIMER_CTRL_IE</ref>|<ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga454b737cdb6a609764ef011654f471f2" kindref="member">TIMER_CTRL_NH</ref>,<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r_1ga3985c9c07cb4b53afed42d9db350ab20" kindref="member">cyc_hz_count</ref>);<sp/><sp/></highlight><highlight class="comment">/*<sp/>start<sp/>1ms<sp/>timer<sp/>interrupt<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___h_s_d_k___i_n_t_e_r_r_u_p_t_1gab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(BOARD_SYS_TIMER_INTNO);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1ab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(BOARD_SYS_TIMER_INTNO);</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="117"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>

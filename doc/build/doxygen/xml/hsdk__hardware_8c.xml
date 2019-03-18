@@ -5,31 +5,31 @@
     <includes refid="hsdk__hardware_8h" local="yes">hsdk_hardware.h</includes>
     <includes refid="hsdk__interrupt_8h" local="yes">hsdk_interrupt.h</includes>
     <incdepgraph>
-      <node id="5167">
+      <node id="5154">
         <label>hsdk_interrupt.h</label>
-        <link refid="hsdk__interrupt_8h"/>
+        <link refid="hsdk__interrupt_8h_source"/>
       </node>
-      <node id="5164">
+      <node id="5151">
         <label>hsdk_hardware.c</label>
         <link refid="hsdk_hardware.c"/>
-        <childnode refid="5165" relation="include">
+        <childnode refid="5152" relation="include">
         </childnode>
-        <childnode refid="5167" relation="include">
+        <childnode refid="5154" relation="include">
         </childnode>
       </node>
-      <node id="5165">
+      <node id="5152">
         <label>hsdk_hardware.h</label>
-        <link refid="hsdk__hardware_8h"/>
-        <childnode refid="5166" relation="include">
+        <link refid="hsdk__hardware_8h_source"/>
+        <childnode refid="5153" relation="include">
         </childnode>
       </node>
-      <node id="5166">
+      <node id="5153">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___i_n_i_t_1ga36a06770dfe3e551388ab82d68aa103f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hsdk__hardware_8c_1a36a06770dfe3e551388ab82d68aa103f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void hsdk_hardware_init</definition>
         <argsstring>(void)</argsstring>
@@ -38,19 +38,18 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>hsdk hardware initialization </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/configs/10/hsdk_hardware.c" line="50" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/configs/10/hsdk_hardware.c" bodystart="50" bodyend="53"/>
-        <referencedby refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" compoundref="hsdk__init_8c" startline="42" endline="49">board_init</referencedby>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/configs/10/hsdk_hardware.c" line="33" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/configs/10/hsdk_hardware.c" bodystart="33" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>to add </para>    </briefdescription>
+    </briefdescription>
     <detaileddescription>
-<para>to add </para>    </detaileddescription>
+    </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/*<sp/>------------------------------------------</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2017,<sp/>Synopsys,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
@@ -81,14 +80,13 @@
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hsdk__hardware_8h" kindref="compound">hsdk_hardware.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hsdk__interrupt_8h" kindref="compound">hsdk_interrupt.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hsdk_hardware.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hsdk_interrupt.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___i_n_i_t_1ga36a06770dfe3e551388ab82d68aa103f" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___h_s_d_k___c_o_m_m_o_n___i_n_i_t_1ga36a06770dfe3e551388ab82d68aa103f" kindref="member">hsdk_hardware_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hsdk_interrupt_init();</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>hsdk_hardware_init(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hsdk_interrupt_init();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/configs/10/hsdk_hardware.c"/>
   </compounddef>

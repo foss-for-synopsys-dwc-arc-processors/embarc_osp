@@ -65,90 +65,154 @@
     <includedby refid="ss__spi__master_8c" local="yes">ss_spi_master.c</includedby>
     <includedby refid="ss__uart_8c" local="yes">ss_uart.c</includedby>
     <incdepgraph>
-      <node id="4116">
+      <node id="4103">
         <label>stdbool.h</label>
       </node>
-      <node id="4111">
+      <node id="4098">
         <label>stdint.h</label>
       </node>
-      <node id="4110">
+      <node id="4097">
         <label>embARC_error.h</label>
         <link refid="embARC_error.h"/>
+        <childnode refid="4098" relation="include">
+        </childnode>
+        <childnode refid="4099" relation="include">
+        </childnode>
+      </node>
+      <node id="4102">
+        <label>stddef.h</label>
+      </node>
+      <node id="4099">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="4100" relation="include">
+        </childnode>
+      </node>
+      <node id="4101">
+        <label>limits.h</label>
+      </node>
+      <node id="4100">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="4098" relation="include">
+        </childnode>
+        <childnode refid="4101" relation="include">
+        </childnode>
+        <childnode refid="4102" relation="include">
+        </childnode>
+        <childnode refid="4103" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4132">
+        <label>emsk_gpio.c</label>
+        <link refid="emsk__gpio_8c"/>
+      </node>
+      <node id="4161">
+        <label>nsim_uart_obj.c</label>
+        <link refid="nsim__uart__obj_8c_source"/>
+      </node>
+      <node id="4123">
+        <label>dfss_i2s_obj.c</label>
+        <link refid="dfss__i2s__obj_8c_source"/>
+      </node>
+      <node id="4163">
+        <label>dw_iic.c</label>
+        <link refid="dw__iic_8c_source"/>
+      </node>
+      <node id="4127">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="4148">
+        <label>dfss_gpio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c_source"/>
+      </node>
+      <node id="4121">
+        <label>dw_pwm_timer_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8c_source"/>
+      </node>
+      <node id="4155">
+        <label>pmwifi.c</label>
+        <link refid="iotdk_2drivers_2pmwifi_2pmwifi_8c_source"/>
+      </node>
+      <node id="4149">
+        <label>dfss_iic_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c_source"/>
+      </node>
+      <node id="4133">
+        <label>flash_obj.c</label>
+        <link refid="emsk_2drivers_2flash__obj_2flash__obj_8c_source"/>
+      </node>
+      <node id="4105">
+        <label>embARC.h</label>
+        <link refid="emb_a_r_c_8h"/>
+        <childnode refid="4106" relation="include">
+        </childnode>
+        <childnode refid="4109" relation="include">
+        </childnode>
+        <childnode refid="4110" relation="include">
+        </childnode>
         <childnode refid="4111" relation="include">
         </childnode>
         <childnode refid="4112" relation="include">
         </childnode>
-      </node>
-      <node id="4115">
-        <label>stddef.h</label>
-      </node>
-      <node id="4112">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
         <childnode refid="4113" relation="include">
-        </childnode>
-      </node>
-      <node id="4114">
-        <label>limits.h</label>
-      </node>
-      <node id="4113">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="4111" relation="include">
         </childnode>
         <childnode refid="4114" relation="include">
         </childnode>
         <childnode refid="4115" relation="include">
         </childnode>
-        <childnode refid="4116" relation="include">
-        </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
       <node id="4145">
-        <label>emsk_gpio.c</label>
-        <link refid="emsk__gpio_8c"/>
+        <label>flash_obj.c</label>
+        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_source"/>
       </node>
-      <node id="4174">
-        <label>nsim_uart_obj.c</label>
-        <link refid="nsim__uart__obj_8c_source"/>
+      <node id="4169">
+        <label>dw_uart.c</label>
+        <link refid="dw__uart_8c_source"/>
       </node>
-      <node id="4136">
-        <label>dfss_i2s_obj.c</label>
-        <link refid="dfss__i2s__obj_8c_source"/>
+      <node id="4168">
+        <label>dw_trng.c</label>
+        <link refid="dw__trng_8c_source"/>
       </node>
-      <node id="4176">
-        <label>dw_iic.c</label>
-        <link refid="dw__iic_8c"/>
+      <node id="4171">
+        <label>ss_i2s_master.c</label>
+        <link refid="ss__i2s__master_8c_source"/>
+      </node>
+      <node id="4116">
+        <label>dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c_source"/>
+      </node>
+      <node id="4107">
+        <label>dirent.h</label>
+        <link refid="dirent_8h_source"/>
+      </node>
+      <node id="4114">
+        <label>hsdk_interrupt.c</label>
+        <link refid="hsdk__interrupt_8c_source"/>
       </node>
       <node id="4140">
         <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+        <link refid="hsdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="4161">
-        <label>dfss_gpio_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c_source"/>
+      <node id="4154">
+        <label>ntshell_io_uart.c</label>
+        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
       </node>
-      <node id="4134">
-        <label>dw_pwm_timer_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8c_source"/>
-      </node>
-      <node id="4168">
-        <label>pmwifi.c</label>
-        <link refid="iotdk_2drivers_2pmwifi_2pmwifi_8c"/>
-      </node>
-      <node id="4162">
-        <label>dfss_iic_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c_source"/>
-      </node>
-      <node id="4146">
-        <label>flash_obj.c</label>
-        <link refid="emsk_2drivers_2flash__obj_2flash__obj_8c_source"/>
-      </node>
-      <node id="4118">
-        <label>embARC.h</label>
-        <link refid="emb_a_r_c_8h"/>
+      <node id="4104">
+        <label>embARC_error.h</label>
+        <link refid="embARC_error.h"/>
+        <childnode refid="4105" relation="include">
+        </childnode>
+        <childnode refid="4118" relation="include">
+        </childnode>
         <childnode refid="4119" relation="include">
+        </childnode>
+        <childnode refid="4120" relation="include">
+        </childnode>
+        <childnode refid="4121" relation="include">
         </childnode>
         <childnode refid="4122" relation="include">
         </childnode>
@@ -164,47 +228,9 @@
         </childnode>
         <childnode refid="4128" relation="include">
         </childnode>
-      </node>
-      <node id="4158">
-        <label>flash_obj.c</label>
-        <link refid="iotdk_2drivers_2flash__obj_2flash__obj_8c_source"/>
-      </node>
-      <node id="4182">
-        <label>dw_uart.c</label>
-        <link refid="dw__uart_8c"/>
-      </node>
-      <node id="4181">
-        <label>dw_trng.c</label>
-        <link refid="dw__trng_8c_source"/>
-      </node>
-      <node id="4184">
-        <label>ss_i2s_master.c</label>
-        <link refid="ss__i2s__master_8c_source"/>
-      </node>
-      <node id="4129">
-        <label>dw_i2s_obj.c</label>
-        <link refid="dw__i2s__obj_8c_source"/>
-      </node>
-      <node id="4120">
-        <label>dirent.h</label>
-        <link refid="dirent_8h_source"/>
-      </node>
-      <node id="4127">
-        <label>hsdk_interrupt.c</label>
-        <link refid="hsdk__interrupt_8c"/>
-      </node>
-      <node id="4153">
-        <label>mux.c</label>
-        <link refid="hsdk_2drivers_2mux_2mux_8c_source"/>
-      </node>
-      <node id="4167">
-        <label>ntshell_io_uart.c</label>
-        <link refid="iotdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
-      </node>
-      <node id="4117">
-        <label>embARC_error.h</label>
-        <link refid="embARC_error.h"/>
-        <childnode refid="4118" relation="include">
+        <childnode refid="4129" relation="include">
+        </childnode>
+        <childnode refid="4130" relation="include">
         </childnode>
         <childnode refid="4131" relation="include">
         </childnode>
@@ -236,6 +262,8 @@
         </childnode>
         <childnode refid="4145" relation="include">
         </childnode>
+        <childnode refid="4116" relation="include">
+        </childnode>
         <childnode refid="4146" relation="include">
         </childnode>
         <childnode refid="4147" relation="include">
@@ -262,8 +290,6 @@
         </childnode>
         <childnode refid="4158" relation="include">
         </childnode>
-        <childnode refid="4129" relation="include">
-        </childnode>
         <childnode refid="4159" relation="include">
         </childnode>
         <childnode refid="4160" relation="include">
@@ -271,6 +297,8 @@
         <childnode refid="4161" relation="include">
         </childnode>
         <childnode refid="4162" relation="include">
+        </childnode>
+        <childnode refid="4117" relation="include">
         </childnode>
         <childnode refid="4163" relation="include">
         </childnode>
@@ -296,242 +324,214 @@
         </childnode>
         <childnode refid="4174" relation="include">
         </childnode>
-        <childnode refid="4175" relation="include">
-        </childnode>
-        <childnode refid="4130" relation="include">
-        </childnode>
-        <childnode refid="4176" relation="include">
-        </childnode>
-        <childnode refid="4177" relation="include">
-        </childnode>
-        <childnode refid="4178" relation="include">
-        </childnode>
-        <childnode refid="4179" relation="include">
-        </childnode>
-        <childnode refid="4180" relation="include">
-        </childnode>
-        <childnode refid="4181" relation="include">
-        </childnode>
-        <childnode refid="4182" relation="include">
-        </childnode>
-        <childnode refid="4183" relation="include">
-        </childnode>
-        <childnode refid="4184" relation="include">
-        </childnode>
-        <childnode refid="4185" relation="include">
-        </childnode>
-        <childnode refid="4186" relation="include">
-        </childnode>
-        <childnode refid="4187" relation="include">
-        </childnode>
       </node>
-      <node id="4166">
+      <node id="4153">
         <label>ntshell_io_netconn.c</label>
         <link refid="iotdk_2drivers_2ntshell_2ntshell__io__netconn_8c_source"/>
       </node>
-      <node id="4179">
+      <node id="4166">
         <label>dw_spi.c</label>
-        <link refid="dw__spi_8c"/>
+        <link refid="dw__spi_8c_source"/>
       </node>
-      <node id="4170">
+      <node id="4157">
         <label>smic_adc.c</label>
         <link refid="smic__adc_8c_source"/>
       </node>
-      <node id="4130">
+      <node id="4117">
         <label>dw_i2s.c</label>
-        <link refid="dw__i2s_8c"/>
+        <link refid="dw__i2s_8c_source"/>
       </node>
-      <node id="4143">
+      <node id="4130">
         <label>pmwifi.c</label>
         <link refid="emsdp_2drivers_2pmwifi_2pmwifi_8c_source"/>
       </node>
-      <node id="4128">
+      <node id="4115">
         <label>dw_i2s.h</label>
-        <link refid="dw__i2s_8h"/>
-        <childnode refid="4129" relation="include">
+        <link refid="dw__i2s_8h_source"/>
+        <childnode refid="4116" relation="include">
         </childnode>
-        <childnode refid="4130" relation="include">
+        <childnode refid="4117" relation="include">
         </childnode>
       </node>
-      <node id="4132">
+      <node id="4119">
         <label>dw_uart_obj.c</label>
         <link refid="axs_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
       </node>
-      <node id="4139">
+      <node id="4126">
         <label>dfss_uart_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c_source"/>
       </node>
-      <node id="4137">
+      <node id="4124">
         <label>dfss_iic_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8c_source"/>
       </node>
-      <node id="4183">
+      <node id="4170">
         <label>ss_gpio.c</label>
         <link refid="ss__gpio_8c_source"/>
       </node>
-      <node id="4163">
+      <node id="4150">
         <label>dfss_spi_obj.c</label>
         <link refid="iotdk_2drivers_2ip_2subsystem_2spi_2dfss__spi__obj_8c_source"/>
       </node>
-      <node id="4150">
+      <node id="4137">
         <label>pmwifi.c</label>
         <link refid="emsk_2drivers_2pmwifi_2pmwifi_8c"/>
       </node>
-      <node id="4185">
+      <node id="4172">
         <label>ss_i2c_master.c</label>
         <link refid="ss__i2c__master_8c_source"/>
       </node>
-      <node id="4135">
+      <node id="4122">
         <label>dfss_gpio_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8c_source"/>
       </node>
-      <node id="4147">
+      <node id="4134">
         <label>mux.c</label>
         <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="4141">
+      <node id="4128">
         <label>ntshell_io_netconn.c</label>
         <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
       </node>
-      <node id="4148">
+      <node id="4135">
         <label>ntshell_io_netconn.c</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io__netconn_8c"/>
       </node>
-      <node id="4186">
+      <node id="4173">
         <label>ss_spi_master.c</label>
         <link refid="ss__spi__master_8c_source"/>
       </node>
-      <node id="4151">
+      <node id="4138">
         <label>emsk_sdcard_spi.c</label>
         <link refid="emsk__sdcard__spi_8c"/>
       </node>
-      <node id="4142">
+      <node id="4129">
         <label>ntshell_io_uart.c</label>
         <link refid="emsdp_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="4164">
+      <node id="4151">
         <label>dfss_uart_obj.c</label>
         <link refid="iotdk_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8c_source"/>
       </node>
-      <node id="4165">
+      <node id="4152">
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="4173">
+      <node id="4160">
         <label>ntshell_io_uart.c</label>
         <link refid="nsim_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
       </node>
-      <node id="4131">
+      <node id="4118">
         <label>axc003_gpio.c</label>
         <link refid="axc003__gpio_8c_source"/>
       </node>
-      <node id="4175">
+      <node id="4162">
         <label>dw_gpio.c</label>
-        <link refid="dw__gpio_8c"/>
-      </node>
-      <node id="4157">
-        <label>sdcard_sdio.c</label>
-        <link refid="hsdk_2drivers_2sdcard_2sdcard__sdio_8c_source"/>
-      </node>
-      <node id="4180">
-        <label>dw_nist_trng.c</label>
-        <link refid="dw__nist__trng_8c_source"/>
+        <link refid="dw__gpio_8c_source"/>
       </node>
       <node id="4144">
         <label>sdcard_sdio.c</label>
+        <link refid="hsdk_2drivers_2sdcard_2sdcard__sdio_8c_source"/>
+      </node>
+      <node id="4167">
+        <label>dw_nist_trng.c</label>
+        <link refid="dw__nist__trng_8c_source"/>
+      </node>
+      <node id="4131">
+        <label>sdcard_sdio.c</label>
         <link refid="emsdp_2drivers_2sdcard_2sdcard__sdio_8c_source"/>
       </node>
-      <node id="4171">
+      <node id="4158">
         <label>smic_bootspi.c</label>
         <link refid="smic__bootspi_8c_source"/>
       </node>
-      <node id="4159">
+      <node id="4146">
         <label>dw_pwm_timer_obj.c</label>
         <link refid="iotdk_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8c_source"/>
       </node>
-      <node id="4155">
+      <node id="4142">
         <label>ntshell_io_uart.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
       </node>
-      <node id="4156">
+      <node id="4143">
         <label>pmwifi.c</label>
         <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c_source"/>
       </node>
-      <node id="4121">
+      <node id="4108">
         <label>fatfs_dirent.c</label>
         <link refid="fatfs__dirent_8c_source"/>
       </node>
-      <node id="4119">
+      <node id="4106">
         <label>fatfs_dirent.h</label>
         <link refid="fatfs__dirent_8h_source"/>
-        <childnode refid="4120" relation="include">
+        <childnode refid="4107" relation="include">
         </childnode>
-        <childnode refid="4121" relation="include">
+        <childnode refid="4108" relation="include">
         </childnode>
       </node>
-      <node id="4138">
+      <node id="4125">
         <label>dfss_spi_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2subsystem_2spi_2dfss__spi__obj_8c_source"/>
       </node>
-      <node id="4122">
+      <node id="4109">
         <label>embARC_syscalls.c</label>
         <link refid="emb_a_r_c__syscalls_8c_source"/>
       </node>
-      <node id="4133">
+      <node id="4120">
         <label>emsdp_io.c</label>
         <link refid="emsdp__io_8c_source"/>
       </node>
-      <node id="4160">
+      <node id="4147">
         <label>dw_sdio_obj.c</label>
         <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="4154">
+      <node id="4141">
         <label>ntshell_io_netconn.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__netconn_8c_source"/>
       </node>
-      <node id="4172">
+      <node id="4159">
         <label>smic_eflash.c</label>
         <link refid="smic__eflash_8c_source"/>
       </node>
-      <node id="4125">
+      <node id="4112">
         <label>axs_103_interrupt.c</label>
         <link refid="axs__103__interrupt_8c_source"/>
       </node>
-      <node id="4178">
+      <node id="4165">
         <label>dw_sdio.c</label>
         <link refid="dw__sdio_8c_source"/>
       </node>
-      <node id="4152">
+      <node id="4139">
         <label>hsdk_io.c</label>
         <link refid="hsdk__io_8c_source"/>
       </node>
-      <node id="4126">
+      <node id="4113">
         <label>board.c</label>
         <link refid="board_8c_source"/>
       </node>
-      <node id="4149">
+      <node id="4136">
         <label>ntshell_io_uart.c</label>
         <link refid="emsk_2drivers_2ntshell_2ntshell__io__uart_8c"/>
       </node>
-      <node id="4124">
+      <node id="4111">
         <label>secure_console.c</label>
         <link refid="iotdk_2common_2secure__console_8c_source"/>
       </node>
-      <node id="4123">
+      <node id="4110">
         <label>secure_console.c</label>
         <link refid="emsk_2common_2secure__console_8c_source"/>
       </node>
-      <node id="4177">
+      <node id="4164">
         <label>dw_pwm_timer.c</label>
         <link refid="dw__pwm__timer_8c_source"/>
       </node>
-      <node id="4187">
+      <node id="4174">
         <label>ss_uart.c</label>
         <link refid="ss__uart_8c_source"/>
       </node>
-      <node id="4169">
+      <node id="4156">
         <label>sdcard_sdio.c</label>
-        <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8c"/>
+        <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="user-defined">
@@ -546,44 +546,19 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="55" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="55" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1a14a05d1eec248e95cb142d6419c1a095" compoundref="dw__gpio_8c" startline="513" endline="549">dw_gpio_bit_isr_handler</referencedby>
-        <referencedby refid="dw__gpio_8h_1a9380ba6d879c34a642e949b3d4b63b38" compoundref="dw__gpio_8c" startline="288" endline="324">dw_gpio_close</referencedby>
-        <referencedby refid="dw__gpio_8h_1aded8e591ccd8f0c63e0516dc7776d3f7" compoundref="dw__gpio_8c" startline="370" endline="470">dw_gpio_control</referencedby>
-        <referencedby refid="dw__gpio_8h_1a21733bb0557ceb1ec260ce52d31b4f1f" compoundref="dw__gpio_8c" startline="473" endline="510">dw_gpio_isr_handler</referencedby>
-        <referencedby refid="dw__gpio_8h_1a14067525e0a0bf4a46bfd3e3627a031b" compoundref="dw__gpio_8c" startline="238" endline="285">dw_gpio_open</referencedby>
-        <referencedby refid="dw__gpio_8h_1a16f24a522be708f9ce711efd42cddabf" compoundref="dw__gpio_8c" startline="327" endline="347">dw_gpio_read</referencedby>
-        <referencedby refid="dw__gpio_8h_1a48005fdc99ba27845d549b06eb2049d9" compoundref="dw__gpio_8c" startline="350" endline="367">dw_gpio_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga9d7c24093650665f8fa04e3548b9f713" compoundref="dw__i2s_8c" startline="1627" endline="1686">dw_i2s_close</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga7b75a256555426e52cf2584c78b98c7b" compoundref="dw__i2s_8c" startline="2179" endline="2198">dw_i2s_isr_rx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gaf4cb924b26c2588b8bdd238961413636" compoundref="dw__i2s_8c" startline="2153" endline="2172">dw_i2s_isr_tx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1413" endline="1618">dw_i2s_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2076" endline="2146">dw_i2s_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1988" endline="2062">dw_i2s_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga0d998694893c2cb383ff14e0d0bb7fc7" compoundref="dw__iic_8c" startline="1273" endline="1301">dw_iic_close</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1gacd0ef0be9b50cb36286b1ec5ca663d64" compoundref="dw__iic_8c" startline="1679" endline="1700">dw_iic_isr</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1170" endline="1264">dw_iic_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1609" endline="1672">dw_iic_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1538" endline="1595">dw_iic_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga99b253b213971a4cdcb3677f9b93d4ef" compoundref="dw__spi_8c" startline="540" endline="557">dw_spi_abort_rx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga13376fc00966113150380726f41066f2" compoundref="dw__spi_8c" startline="520" endline="537">dw_spi_abort_tx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1gaa9b6277c2a4ded8ccd4cc9e601dcc33d" compoundref="dw__spi_8c" startline="560" endline="577">dw_spi_abort_xfer</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga3b3007ebdf775be7cb571b56a7bebe1f" compoundref="dw__spi_8c" startline="919" endline="948">dw_spi_close</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga164c2e79cf1a1d57e49b1c892786c042" compoundref="dw__spi_8c" startline="396" endline="431">dw_spi_dis_cbr</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga51bf6f3fc316c5ac639067bd49fee9b5" compoundref="dw__spi_8c" startline="438" endline="468">dw_spi_ena_cbr</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gacd146c38391a37a6eeab52760e1b96ee" compoundref="dw__spi_8c" startline="1289" endline="1346">dw_spi_isr</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga237c47561c92859edb1272a2446732d8" compoundref="dw__spi_8c" startline="825" endline="910">dw_spi_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gaee5f5374c61563d6958326c2d492bee8" compoundref="dw__spi_8c" startline="1251" endline="1282">dw_spi_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga9e48dc7a593319092a35da4d4fc94f02" compoundref="dw__spi_8c" startline="144" endline="151">dw_spi_snd_dat</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gac28e8d5fb9a3b015086e05c7eb98d736" compoundref="dw__spi_8c" startline="1207" endline="1238">dw_spi_write</referencedby>
-        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
-        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
-        <referencedby refid="dw__uart_8h_1a931f15b8f8a5a29ab3a7344aa3cb10d2" compoundref="dw__uart_8c" startline="894" endline="980">dw_uart_isr</referencedby>
-        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
-        <referencedby refid="dw__uart_8h_1a9f48bb55260aea46433c78bfd0935c69" compoundref="dw__uart_8c" startline="861" endline="887">dw_uart_read</referencedby>
-        <referencedby refid="dw__uart_8h_1a66f55a5d83c8d575ff0c2add94e6ec51" compoundref="dw__uart_8c" startline="823" endline="849">dw_uart_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga9d7c24093650665f8fa04e3548b9f713" compoundref="dw__i2s_8c" startline="1613" endline="1672">dw_i2s_close</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga7b75a256555426e52cf2584c78b98c7b" compoundref="dw__i2s_8c" startline="2165" endline="2184">dw_i2s_isr_rx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gaf4cb924b26c2588b8bdd238961413636" compoundref="dw__i2s_8c" startline="2139" endline="2158">dw_i2s_isr_tx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1399" endline="1604">dw_i2s_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2062" endline="2132">dw_i2s_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1974" endline="2048">dw_i2s_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga0d998694893c2cb383ff14e0d0bb7fc7" compoundref="dw__iic_8c" startline="1262" endline="1290">dw_iic_close</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1gacd0ef0be9b50cb36286b1ec5ca663d64" compoundref="dw__iic_8c" startline="1668" endline="1689">dw_iic_isr</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1159" endline="1253">dw_iic_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1598" endline="1661">dw_iic_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1527" endline="1584">dw_iic_write</referencedby>
         <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" compoundref="hsdk_2drivers_2pmwifi_2pmwifi_8c" startline="819" endline="828">pmwifi_all_install</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" prot="public" static="no">
@@ -596,21 +571,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="56" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="56" bodyend="-1"/>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1413" endline="1618">dw_i2s_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2076" endline="2146">dw_i2s_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1988" endline="2062">dw_i2s_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1170" endline="1264">dw_iic_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1609" endline="1672">dw_iic_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1538" endline="1595">dw_iic_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga237c47561c92859edb1272a2446732d8" compoundref="dw__spi_8c" startline="825" endline="910">dw_spi_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gaee5f5374c61563d6958326c2d492bee8" compoundref="dw__spi_8c" startline="1251" endline="1282">dw_spi_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gac28e8d5fb9a3b015086e05c7eb98d736" compoundref="dw__spi_8c" startline="1207" endline="1238">dw_spi_write</referencedby>
-        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
-        <referencedby refid="dw__uart_8h_1a9f48bb55260aea46433c78bfd0935c69" compoundref="dw__uart_8c" startline="861" endline="887">dw_uart_read</referencedby>
-        <referencedby refid="dw__uart_8h_1a66f55a5d83c8d575ff0c2add94e6ec51" compoundref="dw__uart_8c" startline="823" endline="849">dw_uart_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1399" endline="1604">dw_i2s_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2062" endline="2132">dw_i2s_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1974" endline="2048">dw_i2s_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1159" endline="1253">dw_iic_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1598" endline="1661">dw_iic_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1527" endline="1584">dw_iic_write</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" prot="public" static="no">
         <name>E_NOSPT</name>
@@ -622,16 +590,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="57" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="57" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1a14a05d1eec248e95cb142d6419c1a095" compoundref="dw__gpio_8c" startline="513" endline="549">dw_gpio_bit_isr_handler</referencedby>
-        <referencedby refid="dw__gpio_8h_1aded8e591ccd8f0c63e0516dc7776d3f7" compoundref="dw__gpio_8c" startline="370" endline="470">dw_gpio_control</referencedby>
-        <referencedby refid="dw__gpio_8h_1a21733bb0557ceb1ec260ce52d31b4f1f" compoundref="dw__gpio_8c" startline="473" endline="510">dw_gpio_isr_handler</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1413" endline="1618">dw_i2s_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1170" endline="1264">dw_iic_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga237c47561c92859edb1272a2446732d8" compoundref="dw__spi_8c" startline="825" endline="910">dw_spi_open</referencedby>
-        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1399" endline="1604">dw_i2s_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1159" endline="1253">dw_iic_open</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1gade1c4cfe0d52374a5bcce6d80bc6cb67" prot="public" static="no">
         <name>E_RSFN</name>
@@ -665,26 +627,16 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="60" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="60" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1aded8e591ccd8f0c63e0516dc7776d3f7" compoundref="dw__gpio_8c" startline="370" endline="470">dw_gpio_control</referencedby>
-        <referencedby refid="dw__gpio_8h_1a16f24a522be708f9ce711efd42cddabf" compoundref="dw__gpio_8c" startline="327" endline="347">dw_gpio_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga7b75a256555426e52cf2584c78b98c7b" compoundref="dw__i2s_8c" startline="2179" endline="2198">dw_i2s_isr_rx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gaf4cb924b26c2588b8bdd238961413636" compoundref="dw__i2s_8c" startline="2153" endline="2172">dw_i2s_isr_tx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1413" endline="1618">dw_i2s_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2076" endline="2146">dw_i2s_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1988" endline="2062">dw_i2s_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1170" endline="1264">dw_iic_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1609" endline="1672">dw_iic_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1538" endline="1595">dw_iic_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga237c47561c92859edb1272a2446732d8" compoundref="dw__spi_8c" startline="825" endline="910">dw_spi_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gaee5f5374c61563d6958326c2d492bee8" compoundref="dw__spi_8c" startline="1251" endline="1282">dw_spi_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gac28e8d5fb9a3b015086e05c7eb98d736" compoundref="dw__spi_8c" startline="1207" endline="1238">dw_spi_write</referencedby>
-        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
-        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
-        <referencedby refid="dw__uart_8h_1a9f48bb55260aea46433c78bfd0935c69" compoundref="dw__uart_8c" startline="861" endline="887">dw_uart_read</referencedby>
-        <referencedby refid="dw__uart_8h_1a66f55a5d83c8d575ff0c2add94e6ec51" compoundref="dw__uart_8c" startline="823" endline="849">dw_uart_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga7b75a256555426e52cf2584c78b98c7b" compoundref="dw__i2s_8c" startline="2165" endline="2184">dw_i2s_isr_rx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gaf4cb924b26c2588b8bdd238961413636" compoundref="dw__i2s_8c" startline="2139" endline="2158">dw_i2s_isr_tx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1399" endline="1604">dw_i2s_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2062" endline="2132">dw_i2s_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1974" endline="2048">dw_i2s_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1159" endline="1253">dw_iic_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1598" endline="1661">dw_iic_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1527" endline="1584">dw_iic_write</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1gaf1ebd563e58c090b310f82eb13176e02" prot="public" static="no">
         <name>E_ID</name>
@@ -707,20 +659,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="62" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="62" bodyend="-1"/>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga7b75a256555426e52cf2584c78b98c7b" compoundref="dw__i2s_8c" startline="2179" endline="2198">dw_i2s_isr_rx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gaf4cb924b26c2588b8bdd238961413636" compoundref="dw__i2s_8c" startline="2153" endline="2172">dw_i2s_isr_tx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2076" endline="2146">dw_i2s_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1988" endline="2062">dw_i2s_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga99b253b213971a4cdcb3677f9b93d4ef" compoundref="dw__spi_8c" startline="540" endline="557">dw_spi_abort_rx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga13376fc00966113150380726f41066f2" compoundref="dw__spi_8c" startline="520" endline="537">dw_spi_abort_tx</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1gaa9b6277c2a4ded8ccd4cc9e601dcc33d" compoundref="dw__spi_8c" startline="560" endline="577">dw_spi_abort_xfer</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga164c2e79cf1a1d57e49b1c892786c042" compoundref="dw__spi_8c" startline="396" endline="431">dw_spi_dis_cbr</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga51bf6f3fc316c5ac639067bd49fee9b5" compoundref="dw__spi_8c" startline="438" endline="468">dw_spi_ena_cbr</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gaee5f5374c61563d6958326c2d492bee8" compoundref="dw__spi_8c" startline="1251" endline="1282">dw_spi_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gac28e8d5fb9a3b015086e05c7eb98d736" compoundref="dw__spi_8c" startline="1207" endline="1238">dw_spi_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga7b75a256555426e52cf2584c78b98c7b" compoundref="dw__i2s_8c" startline="2165" endline="2184">dw_i2s_isr_rx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gaf4cb924b26c2588b8bdd238961413636" compoundref="dw__i2s_8c" startline="2139" endline="2158">dw_i2s_isr_tx</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2062" endline="2132">dw_i2s_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1974" endline="2048">dw_i2s_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1gacfe7844cd775e0feb1456095958f045e" prot="public" static="no">
         <name>E_MACV</name>
@@ -798,14 +742,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="69" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="69" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1a9380ba6d879c34a642e949b3d4b63b38" compoundref="dw__gpio_8c" startline="288" endline="324">dw_gpio_close</referencedby>
-        <referencedby refid="dw__gpio_8h_1aded8e591ccd8f0c63e0516dc7776d3f7" compoundref="dw__gpio_8c" startline="370" endline="470">dw_gpio_control</referencedby>
-        <referencedby refid="dw__gpio_8h_1a14067525e0a0bf4a46bfd3e3627a031b" compoundref="dw__gpio_8c" startline="238" endline="285">dw_gpio_open</referencedby>
-        <referencedby refid="dw__gpio_8h_1a16f24a522be708f9ce711efd42cddabf" compoundref="dw__gpio_8c" startline="327" endline="347">dw_gpio_read</referencedby>
-        <referencedby refid="dw__gpio_8h_1a48005fdc99ba27845d549b06eb2049d9" compoundref="dw__gpio_8c" startline="350" endline="367">dw_gpio_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2076" endline="2146">dw_i2s_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1988" endline="2062">dw_i2s_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___s_t_a_t_i_c_1ga9e48dc7a593319092a35da4d4fc94f02" compoundref="dw__spi_8c" startline="144" endline="151">dw_spi_snd_dat</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2062" endline="2132">dw_i2s_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1974" endline="2048">dw_i2s_write</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1ga83828efe60511a2f7f2acce60a10965f" prot="public" static="no">
         <name>E_NOEXS</name>
@@ -905,16 +843,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="78" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="78" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1a9380ba6d879c34a642e949b3d4b63b38" compoundref="dw__gpio_8c" startline="288" endline="324">dw_gpio_close</referencedby>
-        <referencedby refid="dw__gpio_8h_1a14067525e0a0bf4a46bfd3e3627a031b" compoundref="dw__gpio_8c" startline="238" endline="285">dw_gpio_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga9d7c24093650665f8fa04e3548b9f713" compoundref="dw__i2s_8c" startline="1627" endline="1686">dw_i2s_close</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1413" endline="1618">dw_i2s_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga0d998694893c2cb383ff14e0d0bb7fc7" compoundref="dw__iic_8c" startline="1273" endline="1301">dw_iic_close</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1170" endline="1264">dw_iic_open</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga3b3007ebdf775be7cb571b56a7bebe1f" compoundref="dw__spi_8c" startline="919" endline="948">dw_spi_close</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga237c47561c92859edb1272a2446732d8" compoundref="dw__spi_8c" startline="825" endline="910">dw_spi_open</referencedby>
-        <referencedby refid="dw__uart_8h_1a40287dfa053b6bc49bcaf66c35d73b1c" compoundref="dw__uart_8c" startline="618" endline="646">dw_uart_close</referencedby>
-        <referencedby refid="dw__uart_8h_1a49c3f35887ad36260c0576c58614db71" compoundref="dw__uart_8c" startline="551" endline="609">dw_uart_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga9d7c24093650665f8fa04e3548b9f713" compoundref="dw__i2s_8c" startline="1613" endline="1672">dw_i2s_close</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga6a4534490dd26815ce82893adb36867c" compoundref="dw__i2s_8c" startline="1399" endline="1604">dw_i2s_open</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga0d998694893c2cb383ff14e0d0bb7fc7" compoundref="dw__iic_8c" startline="1262" endline="1290">dw_iic_close</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1gad75471c3a8e98385a58d6b887316f8f5" compoundref="dw__iic_8c" startline="1159" endline="1253">dw_iic_open</referencedby>
         <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga1c5aeb4ab0898b4d756415644ff65c68" compoundref="emsk__gpio_8c" startline="91" endline="104">emsk_button_init</referencedby>
         <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gac9f916612edd3260bf1282c25ceea192" compoundref="emsk__gpio_8c" startline="73" endline="88">emsk_led_init</referencedby>
         <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga17c90e6a42b9c2952d406d0136a390ba" compoundref="emsk__gpio_8c" startline="107" endline="120">emsk_switch_init</referencedby>
@@ -929,21 +861,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="79" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="79" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1aded8e591ccd8f0c63e0516dc7776d3f7" compoundref="dw__gpio_8c" startline="370" endline="470">dw_gpio_control</referencedby>
-        <referencedby refid="dw__gpio_8h_1a16f24a522be708f9ce711efd42cddabf" compoundref="dw__gpio_8c" startline="327" endline="347">dw_gpio_read</referencedby>
-        <referencedby refid="dw__gpio_8h_1a48005fdc99ba27845d549b06eb2049d9" compoundref="dw__gpio_8c" startline="350" endline="367">dw_gpio_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2076" endline="2146">dw_i2s_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1988" endline="2062">dw_i2s_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1609" endline="1672">dw_iic_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1538" endline="1595">dw_iic_write</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gaee5f5374c61563d6958326c2d492bee8" compoundref="dw__spi_8c" startline="1251" endline="1282">dw_spi_read</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1gac28e8d5fb9a3b015086e05c7eb98d736" compoundref="dw__spi_8c" startline="1207" endline="1238">dw_spi_write</referencedby>
-        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
-        <referencedby refid="dw__uart_8h_1a9f48bb55260aea46433c78bfd0935c69" compoundref="dw__uart_8c" startline="861" endline="887">dw_uart_read</referencedby>
-        <referencedby refid="dw__uart_8h_1a66f55a5d83c8d575ff0c2add94e6ec51" compoundref="dw__uart_8c" startline="823" endline="849">dw_uart_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" compoundref="dw__i2s_8c" startline="2062" endline="2132">dw_i2s_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1gafefa16859094c71c6aa91918acc3a017" compoundref="dw__i2s_8c" startline="1974" endline="2048">dw_i2s_write</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga4f612550978cf8c1543325ed9b4a5dbd" compoundref="dw__iic_8c" startline="1598" endline="1661">dw_iic_read</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga303d46be4dadd7fedf77e96e1144d14e" compoundref="dw__iic_8c" startline="1527" endline="1584">dw_iic_write</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1112,11 +1035,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" line="143" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/embARC_error.h" bodystart="143" bodyend="-1"/>
-        <referencedby refid="dw__gpio_8h_1aded8e591ccd8f0c63e0516dc7776d3f7" compoundref="dw__gpio_8c" startline="370" endline="470">dw_gpio_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1702" endline="1973">dw_i2s_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___f_u_n_c_d_l_r_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1317" endline="1524">dw_iic_control</referencedby>
-        <referencedby refid="group___d_e_v_i_c_e___d_w___s_p_i___f_u_n_c_d_l_r_1ga9d8a5b3a14d5b4ef1ca1dfdc082854d2" compoundref="dw__spi_8c" startline="963" endline="1194">dw_spi_control</referencedby>
-        <referencedby refid="dw__uart_8h_1aad6c59b900e3f9b72b1eac4ca889f317" compoundref="dw__uart_8c" startline="662" endline="811">dw_uart_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
+        <referencedby refid="group___d_e_v_i_c_e___d_w___i_i_c___i_m_p_l_e_m_e_n_t_1ga9b0726e986686e7279abb1c4005ce93d" compoundref="dw__iic_8c" startline="1306" endline="1513">dw_iic_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___e_m_b_a_r_c___e_r_r_o_r_1gae1eff54744e2c82cdf941d9cbfbc3897" prot="public" static="no">
         <name>CHECK_ALIGN_8BYTES</name>

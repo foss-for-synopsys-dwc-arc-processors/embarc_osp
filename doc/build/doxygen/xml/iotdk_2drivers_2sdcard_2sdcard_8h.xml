@@ -7,74 +7,74 @@
     <includedby refid="iotdk_2drivers_2sdcard_2sdcard_8c" local="yes">sdcard.c</includedby>
     <includedby refid="iotdk_8h" local="yes">iotdk.h</includedby>
     <incdepgraph>
-      <node id="6994">
+      <node id="6981">
         <label>sdcard_sdio.h</label>
-        <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h"/>
-        <childnode refid="6995" relation="include">
+        <link refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h_source"/>
+        <childnode refid="6982" relation="include">
         </childnode>
       </node>
-      <node id="6993">
+      <node id="6980">
         <label>stdbool.h</label>
       </node>
-      <node id="6990">
+      <node id="6977">
         <label>stdint.h</label>
       </node>
-      <node id="6992">
+      <node id="6979">
         <label>stddef.h</label>
       </node>
-      <node id="6991">
+      <node id="6978">
         <label>limits.h</label>
       </node>
-      <node id="6988">
+      <node id="6975">
         <label>sdcard.h</label>
         <link refid="iotdk/drivers/sdcard/sdcard.h"/>
-        <childnode refid="6989" relation="include">
+        <childnode refid="6976" relation="include">
         </childnode>
-        <childnode refid="6994" relation="include">
+        <childnode refid="6981" relation="include">
         </childnode>
       </node>
-      <node id="6995">
+      <node id="6982">
         <label>ff_diskio.h</label>
       </node>
-      <node id="6989">
+      <node id="6976">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="6990" relation="include">
+        <childnode refid="6977" relation="include">
         </childnode>
-        <childnode refid="6991" relation="include">
+        <childnode refid="6978" relation="include">
         </childnode>
-        <childnode refid="6992" relation="include">
+        <childnode refid="6979" relation="include">
         </childnode>
-        <childnode refid="6993" relation="include">
+        <childnode refid="6980" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="6998">
+      <node id="6985">
         <label>iotdk.h</label>
         <link refid="iotdk_8h_source"/>
-        <childnode refid="6999" relation="include">
+        <childnode refid="6986" relation="include">
         </childnode>
       </node>
-      <node id="6997">
+      <node id="6984">
         <label>sdcard.c</label>
-        <link refid="iotdk_2drivers_2sdcard_2sdcard_8c"/>
+        <link refid="iotdk_2drivers_2sdcard_2sdcard_8c_source"/>
       </node>
-      <node id="6996">
+      <node id="6983">
         <label>sdcard.h</label>
         <link refid="iotdk/drivers/sdcard/sdcard.h"/>
-        <childnode refid="6997" relation="include">
+        <childnode refid="6984" relation="include">
         </childnode>
-        <childnode refid="6998" relation="include">
+        <childnode refid="6985" relation="include">
         </childnode>
       </node>
-      <node id="6999">
+      <node id="6986">
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
-      <memberdef kind="define" id="group___b_o_a_r_d___i_o_t_d_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d_1ga413e1cd142bc99eb7f8e28fcec447b46" prot="public" static="no">
+      <memberdef kind="define" id="iotdk_2drivers_2sdcard_2sdcard_8h_1a413e1cd142bc99eb7f8e28fcec447b46" prot="public" static="no">
         <name>IOTDK_SDCARD_0_DRVID</name>
         <initializer>(0)</initializer>
         <briefdescription>
@@ -83,11 +83,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard.h" line="47" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard.h" bodystart="47" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard.h" line="37" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>header file of sdcard driver for fatfs of hsdk board </para>    </briefdescription>
+    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
@@ -119,28 +119,28 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor">#ifndef<sp/>_IOTDK_SDCARD_H_</highlight></codeline>
-<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_IOTDK_SDCARD_H_</highlight></codeline>
-<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_FATFS<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>fatfs<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iotdk_2drivers_2sdcard_2sdcard__sdio_8h" kindref="compound">sdcard_sdio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_SDCARD_0_DRVID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
-<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MID_FATFS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_IOTDK_SDCARD_H_</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_IOTDK_SDCARD_H_</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_FATFS<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>fatfs<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;sdcard_sdio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_SDCARD_0_DRVID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MID_FATFS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/iotdk/drivers/sdcard/sdcard.h"/>
   </compounddef>

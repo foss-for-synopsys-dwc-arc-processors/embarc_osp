@@ -7,38 +7,96 @@
     <includedby refid="emsdp_2drivers_2sdcard_2sdcard_8c" local="yes">sdcard.c</includedby>
     <includedby refid="emsdp_8h" local="yes">emsdp.h</includedby>
     <incdepgraph>
-      <node id="6954">
+      <node id="6941">
         <label>stdbool.h</label>
       </node>
-      <node id="6951">
+      <node id="6938">
         <label>stdint.h</label>
       </node>
-      <node id="6949">
+      <node id="6936">
         <label>sdcard.h</label>
         <link refid="emsdp/drivers/sdcard/sdcard.h"/>
-        <childnode refid="6950" relation="include">
+        <childnode refid="6937" relation="include">
         </childnode>
-        <childnode refid="6955" relation="include">
+        <childnode refid="6942" relation="include">
         </childnode>
       </node>
-      <node id="6953">
+      <node id="6940">
         <label>stddef.h</label>
       </node>
-      <node id="6952">
+      <node id="6939">
         <label>limits.h</label>
       </node>
-      <node id="6956">
+      <node id="6943">
         <label>ff_diskio.h</label>
       </node>
-      <node id="6955">
+      <node id="6942">
         <label>sdcard_sdio.h</label>
         <link refid="emsdp_2drivers_2sdcard_2sdcard__sdio_8h_source"/>
-        <childnode refid="6956" relation="include">
+        <childnode refid="6943" relation="include">
         </childnode>
       </node>
-      <node id="6950">
+      <node id="6937">
         <label>embARC_toolchain.h</label>
         <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="6938" relation="include">
+        </childnode>
+        <childnode refid="6939" relation="include">
+        </childnode>
+        <childnode refid="6940" relation="include">
+        </childnode>
+        <childnode refid="6941" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6949">
+        <label>dw_sdio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="6954">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="6945">
+        <label>sdcard.c</label>
+        <link refid="emsdp_2drivers_2sdcard_2sdcard_8c_source"/>
+      </node>
+      <node id="6944">
+        <label>sdcard.h</label>
+        <link refid="emsdp/drivers/sdcard/sdcard.h"/>
+        <childnode refid="6945" relation="include">
+        </childnode>
+        <childnode refid="6946" relation="include">
+        </childnode>
+      </node>
+      <node id="6948">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      </node>
+      <node id="6951">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="6953">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
+      <node id="6952">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      </node>
+      <node id="6946">
+        <label>emsdp.h</label>
+        <link refid="emsdp_8h_source"/>
+        <childnode refid="6947" relation="include">
+        </childnode>
+        <childnode refid="6948" relation="include">
+        </childnode>
+        <childnode refid="6949" relation="include">
+        </childnode>
+        <childnode refid="6950" relation="include">
+        </childnode>
         <childnode refid="6951" relation="include">
         </childnode>
         <childnode refid="6952" relation="include">
@@ -48,69 +106,11 @@
         <childnode refid="6954" relation="include">
         </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="6962">
-        <label>dw_sdio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="6967">
-        <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
-      </node>
-      <node id="6958">
-        <label>sdcard.c</label>
-        <link refid="emsdp_2drivers_2sdcard_2sdcard_8c_source"/>
-      </node>
-      <node id="6957">
-        <label>sdcard.h</label>
-        <link refid="emsdp/drivers/sdcard/sdcard.h"/>
-        <childnode refid="6958" relation="include">
-        </childnode>
-        <childnode refid="6959" relation="include">
-        </childnode>
-      </node>
-      <node id="6961">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
-      </node>
-      <node id="6964">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
-      </node>
-      <node id="6966">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
-      </node>
-      <node id="6965">
-        <label>dw_uart_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
-      </node>
-      <node id="6959">
-        <label>emsdp.h</label>
-        <link refid="emsdp_8h_source"/>
-        <childnode refid="6960" relation="include">
-        </childnode>
-        <childnode refid="6961" relation="include">
-        </childnode>
-        <childnode refid="6962" relation="include">
-        </childnode>
-        <childnode refid="6963" relation="include">
-        </childnode>
-        <childnode refid="6964" relation="include">
-        </childnode>
-        <childnode refid="6965" relation="include">
-        </childnode>
-        <childnode refid="6966" relation="include">
-        </childnode>
-        <childnode refid="6967" relation="include">
-        </childnode>
-      </node>
-      <node id="6960">
+      <node id="6947">
         <label>emsdp_io.c</label>
         <link refid="emsdp__io_8c_source"/>
       </node>
-      <node id="6963">
+      <node id="6950">
         <label>dw_spi_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
       </node>
@@ -185,7 +185,7 @@
 <codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MID_FATFS<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>fatfs<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emsdp_2drivers_2sdcard_2sdcard__sdio_8h" kindref="compound">sdcard_sdio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;sdcard_sdio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMSDP_SDCARD_0_DRVID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
 <codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
