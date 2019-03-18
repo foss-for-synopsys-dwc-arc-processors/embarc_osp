@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_IOTDK_DRV_PMODWIFI	IOTDK PMOD WIFI Driver
- * \ingroup	BOARD_IOTDK_DRIVER
- * \brief	IOTDK Pmod Wifi Driver
- * \details
- *		Realize the IOTDK board PMOD wifi driver based on the wnic device abstract,
- *	this driver is based on microchip mrf24g device.
- */
-
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_PMODWIFI
- * \brief	pmod wifi driver for IOTDK board
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_DRV_PMODWIFI
- * @{
- */
 #if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
 #include <stddef.h>
 #include <string.h>
@@ -630,4 +610,3 @@ void pmwifi_all_install(void)
 #endif
 }
 #endif  /* MID_LWIP && MID_LWIP_CONTRIB */
-/** @} end of group BOARD_IOTDK_DRV_PMODWIFI */

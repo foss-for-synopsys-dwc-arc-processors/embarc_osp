@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_SLIP_ESP
- * \brief	esp_slip_router driver
- */
-
 #ifndef _SLIP_ESP_H_
 #define _SLIP_ESP_H_
 

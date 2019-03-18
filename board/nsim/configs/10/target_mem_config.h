@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_EMSK_COMMON_INIT
- * \brief	nsim memory resource definitions
- * \details
- * - This header file will contain the memory resources on the board
- * - User can select different region for applications by configuring
-     REGION_ROM and REGION_RAM
- * - The unit of XXXX_SIZE is Byte
- */
-
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
 

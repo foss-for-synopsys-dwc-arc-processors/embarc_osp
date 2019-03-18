@@ -26,17 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-10-10
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
-
-/**
- * \file
- * \ingroup	DEVICE_DW_I2S
- * \brief	DesignWare I2S driver hardware description related header file
- * \details	detailed hardware related definitions of DesignWare I2S driver
- */
 
 #ifndef _DEVICE_DW_I2S_HAL_H_
 #define _DEVICE_DW_I2S_HAL_H_
@@ -130,7 +120,5 @@
 
 /** RTXDMA (Reset Transmitter Block DMA Register) */
 #define DW_I2S_RTXDMA_RTXDMA			1
-
-/** @} */
 
 #endif /* _DEVICE_DW_I2S_HAL_H_ */

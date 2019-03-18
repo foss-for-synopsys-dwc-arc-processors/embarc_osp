@@ -27,20 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- *
- * \brief	PMOD AD2 ADC Driver
- * \details
- *		Realize driver for PMOD AD2 ADC using I2C driver.
- */
-
-/**
- * \file
- * \brief	pmod AD2 ADC(ad7991) driver
- */
-
-
 //#define DBG_MORE
 
 #include "arc.h"

@@ -30,26 +30,7 @@
 #include "hsdk_hardware.h"
 #include "hsdk_interrupt.h"
 
-/**
- * \defgroup	BOARD_HSDK_HARDWARE	HSDK hardware init
- * \ingroup	BOARD_HSDK
- * \brief	HSDK Hardware Init
- * \details
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_HARDWARE
- * \brief	to add
- * \details	to add
- */
-
-/**
- * \brief       hsdk hardware initialization
- */
 void hsdk_hardware_init(void)
 {
 	hsdk_interrupt_init();
 }
-
-/** @} end of group BOARD_HSDK_HARDWARE */

@@ -28,17 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	DEVICE_DW_SPI	Designware SPI Driver
- * \ingroup	DEVICE_DW
- * \brief	Designware SPI Driver Implementation
- */
-
-/**
- * \file
- * \brief	DesignWare SPI driver implementation based on device hal layer definition (\ref dev_spi.h)
- * \ingroup	DEVICE_DW_SPI
- */
 #include <string.h>
 
 #include "embARC_toolchain.h"
@@ -50,10 +39,7 @@
 #include "dw_spi.h"
 
 /**
- * \defgroup	DEVICE_DW_SPI_DEFINES	DesignWare SPI Driver Macros
- * \ingroup	DEVICE_DW_SPI
- * \brief	DesignWare SPI driver macros used in spi driver
- * @{
+ * DesignWare SPI driver macros used in spi driver
  */
 /** check expressions used in DesignWare SPI driver implementation */
 #define DW_SPI_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
@@ -70,24 +56,15 @@
 #endif
 
 /**
- * \defgroup	DEVICE_DW_SPI_DEF_CBR	DesignWare SPI Interrupt Callback Routine Select Marcos
- * \ingroup	DEVICE_DW_SPI_DEFINES
- * \brief	DesignWare SPI interrupt callback routines select macros definitions
- * @{
+ * DesignWare SPI interrupt callback routines select macros definitions
  */
 #define DW_SPI_RDY_SND					(1U)	/*!< ready to send callback */
 #define DW_SPI_RDY_RCV					(2U)	/*!< ready to receive callback */
 #define DW_SPI_RDY_XFER					(3U)	/*!< ready to transfer callback */
-/** @} */
-
-/** @} */
 
 /**
- * \defgroup	DEVICE_DW_SPI_STATIC	DesignWare SPI Driver Static Functions
- * \ingroup	DEVICE_DW_SPI
- * \brief	Static or inline functions, variables for DesignWare SPI handle spi operations,
+ * Static or inline functions, variables for DesignWare SPI handle spi operations,
  * 	only used in this file.
- * @{
  */
 
 /** Disable designware spi device */
@@ -807,8 +784,6 @@ static uint32_t dw_spi_poll_transfer(DEV_SPI_INFO *spi_info_ptr)
 	return len>>1;
 }
 
-/** @} */
-
 /**
  * \brief	open a designware spi device
  * \param[in]	spi_obj	spi object pointer
@@ -1344,6 +1319,3 @@ void dw_spi_isr(DEV_SPI *spi_obj, void *ptr)
 error_exit:
 	return;
 }
-/** @} */ /* DEVICE_DW_SPI_IMPLEMENT */
-
-/** @} */ /* DEVICE_DW_SPI */

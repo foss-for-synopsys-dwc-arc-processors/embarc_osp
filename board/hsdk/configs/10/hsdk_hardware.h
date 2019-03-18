@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_HSDK_COMMON_INIT
- * \brief	hsdk hardware resource definitions
- */
-
-/**
- * \addtogroup BOARD_HSDK_COMMON_INIT
- * @{
- */
 #ifndef _HSDK_HARDWARE_H_
 #define _HSDK_HARDWARE_H_
 
@@ -269,5 +258,3 @@ extern void hsdk_hardware_init(void);
 #endif
 
 #endif	/* _HSDK_HARDWARE_H_ */
-
-/** @} end of group BOARD_HSDK_COMMON_INIT */

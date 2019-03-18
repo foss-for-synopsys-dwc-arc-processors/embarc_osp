@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include <stdint.h>
 
+#include <stdint.h>
 
 /** uart id which HM-10 BLE uses */
 #ifndef HM_1X_UART_ID	//you can define this at board header file (e.g. emsk.h)
@@ -111,5 +111,3 @@ extern int32_t hm1x_set_baud(HM1X_DEF_PTR obj, uint32_t baudrate);
 #ifdef __cplusplus
 }
 #endif
-
-/** @} end of group BOARD_EMSK_DRV_BLE_HM1X */

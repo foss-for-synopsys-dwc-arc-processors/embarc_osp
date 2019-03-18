@@ -28,17 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	DEVICE_DW_UART	Designware UART Driver
- * \ingroup	DEVICE_DW
- * \brief	Designware UART Driver Implementation
- */
-
-/**
- * \file
- * \ingroup	DEVICE_DW_UART
- * \brief	DesignWare UART driver implementation based on device hal layer definition (\ref dev_uart.h)
- */
 #include <string.h>
 
 #include "embARC_toolchain.h"
@@ -51,9 +40,7 @@
 
 
 /**
- * \name	DesignWare UART Driver Macros
- * \brief	DesignWare UART driver macros used in uart driver
- * @{
+ * DesignWare UART driver macros used in uart driver
  */
 /** check expressions used in DesignWare UART driver implementation */
 #define DW_UART_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
@@ -70,22 +57,14 @@
 #define DW_UART_BAUD2DIV(perifreq, baud)		((perifreq) / ((baud)*16))
 
 /**
- * \name	DesignWare UART Interrupt Callback Routine Select Marcos
- * \brief	DesignWare UART interrupt callback routines select macros definitions
- * @{
+ * DesignWare UART interrupt callback routines select macros definitions
  */
 #define DW_UART_RDY_SND					(1U)	/*!< ready to send callback */
 #define DW_UART_RDY_RCV					(2U)	/*!< ready to receive callback */
-/** @} */
-
-/** @} */
 
 /**
- * \defgroup	DEVICE_DW_UART_STATIC	DesignWare UART Driver Static Functions
- * \ingroup	DEVICE_DW_UART
- * \brief	Static or inline functions, variables for DesignWare UART handle uart operations,
+ * Static or inline functions, variables for DesignWare UART handle uart operations,
  * 	only used in this file
- * @{
  */
 const uint8_t dw_uart_databits[] = { \
 	DW_UART_LCR_WORD_LEN5, DW_UART_LCR_WORD_LEN6, \

@@ -28,22 +28,13 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	DEVICE_DW_IIC
- * \brief	DesignWare UART driver hardware description related header file
- * \details	detailed hardware related definitions of DesignWare UART driver
- */
-
 #ifndef _DEVICE_DW_UART_HAL_H_
 #define _DEVICE_DW_UART_HAL_H_
 
 /* DW APB UART bit definitions */
 
 /**
- * \name	DesignWare UART HAL IER Marcos
- * \brief	DesignWare UART hal IER related macros
- * @{
+ * DesignWare UART hal IER related macros
  */
 /* IER */
 #define DW_UART_IER_DATA_AVAIL			(0x01)
@@ -51,12 +42,9 @@
 #define DW_UART_IER_LINE_STATUS			(0x04)
 #define DW_UART_IER_MDM_STATUS			(0x08)
 #define DW_UART_IER_PTIME			(0x80)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL IIR Marcos
- * \brief	DesignWare UART hal IIR related macros
- * @{
+ * DesignWare UART hal IIR related macros
  */
 /* IIR */
 /* IIR READ */
@@ -84,12 +72,9 @@
 #define DW_UART_IIR_TRIGGER_LEVEL_1_4_FULL	(0x40)
 #define DW_UART_IIR_TRIGGER_LEVEL_1_2_FULL	(0x80)
 #define DW_UART_IIR_TRIGGER_LEVEL_2_LESS_FULL	(0xC0)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL LCR Marcos
- * \brief	DesignWare UART hal LCR related macros
- * @{
+ * DesignWare UART hal LCR related macros
  */
 /* LCR */
 #define DW_UART_LCR_WORD_LEN_MASK		(0x03)
@@ -118,12 +103,8 @@
 #define DW_UART_LCR_PARITY_MARK			(0x28)
 #define DW_UART_LCR_PARITY_SPACE		(0x38)
 
-/** @} */
-
 /**
- * \name	DesignWare UART HAL MCR Marcos
- * \brief	DesignWare UART hal MCR related macros
- * @{
+ * DesignWare UART hal MCR related macros
  */
 /* MCR */
 #define DW_UART_MCR_DTR				(0x01)
@@ -131,12 +112,9 @@
 #define DW_UART_MCR_LOOPBACK			(0x10)
 #define DW_UART_MCR_AFCE			(0x20)
 #define DW_UART_MCR_SIRE			(0x40)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL LSR Marcos
- * \brief	DesignWare UART hal LSR related macros
- * @{
+ * DesignWare UART hal LSR related macros
  */
 /* LSR */
 #define DW_UART_LSR_DR				(0x01)
@@ -147,12 +125,9 @@
 #define DW_UART_LSR_TXD_EMPTY			(0x20)
 #define DW_UART_LSR_TX_STATUS			(0x40)
 #define DW_UART_LSR_RX_FIFOERR			(0x80)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL MSR Marcos
- * \brief	DesignWare UART hal MSR related macros
- * @{
+ * DesignWare UART hal MSR related macros
  */
 /* MSR */
 #define DW_UART_MSR_DCTS			(0x01)
@@ -163,12 +138,9 @@
 #define DW_UART_MSR_DSR				(0x20)
 #define DW_UART_MSR_RIC				(0x40)
 #define DW_UART_MSR_DCD				(0x80)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL FCR Marcos
- * \brief	DesignWare UART hal FCR related macros
- * @{
+ * DesignWare UART hal FCR related macros
  */
 /* FCR */
 #define DW_UART_FCR_FEN				(0x01)
@@ -176,12 +148,9 @@
 #define DW_UART_FCR_TFR				(0x04)
 #define DW_UART_FCR_DMS				(0x08)
 #define DW_UART_FCR_RTL				(0xC0)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL USR Marcos
- * \brief	DesignWare UART hal USR related macros
- * @{
+ * DesignWare UART hal USR related macros
  */
 /* USR */
 #define DW_UART_USR_BUSY			(0x01)
@@ -189,62 +158,46 @@
 #define DW_UART_USR_TFE				(0x04)
 #define DW_UART_USR_RFNE			(0x08)
 #define DW_UART_USR_RFF				(0x10)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL SFE Marcos
- * \brief	DesignWare UART hal SFE related macros
- * @{
+ * DesignWare UART hal SFE related macros
  */
 /* SFE */
 #define DW_UART_SFE_SHADOW_FIFO_ENABLE		(0x01)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL SRR Marcos
- * \brief	DesignWare UART hal SRR related macros
- * @{
+ * DesignWare UART hal SRR related macros
  */
 /* SRR */
 #define DW_UART_SRR_UR				(0x01)
 #define DW_UART_SRR_RFR				(0x02)
 #define DW_UART_SRR_XFR				(0x04)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL SRT Marcos
- * \brief	DesignWare UART hal SRT related macros
- * @{
+ * DesignWare UART hal SRT related macros
  */
 /* SRT */
 #define DW_UART_SRT_TRIGGER_LEVEL_1_CHAR	(0x00)
 #define DW_UART_SRT_TRIGGER_LEVEL_1_4_FULL	(0x01)
 #define DW_UART_SRT_TRIGGER_LEVEL_1_2_FULL	(0x02)
 #define DW_UART_SRT_TRIGGER_LEVEL_2_LESS_FULL	(0x03)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL STET Marcos
- * \brief	DesignWare UART hal STET related macros
- * @{
+ * DesignWare UART hal STET related macros
  */
 /* STET*/
 #define DW_UART_STET_FIFO_EMPTY			(0x00)
 #define DW_UART_STET_2_CHARS_IN_FIFO		(0x01)
 #define DW_UART_STET_1_4_FULL			(0x02)
 #define DW_UART_STET_1_2_FULL			(0x03)
-/** @} */
 
 /**
- * \name	DesignWare UART HAL CPR Marcos
- * \brief	DesignWare UART hal CPR related macros
- * @{
+ * DesignWare UART hal CPR related macros
  */
 /* CPR*/
 #define DW_UART_CPR_FIFO_STAT			(1<<10)
 #define DW_UART_CPR_FIFO_MODE_OFS		(16)
 #define DW_UART_CPR_FIFO_MODE_MASK		(0xFF)
 #define DW_UART_CPR_FIFO_MODE			(0xFF0000)
-/** @} */
 
 #endif /* _DEVICE_DW_UART_HAL_H_ */

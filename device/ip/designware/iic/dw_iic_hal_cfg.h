@@ -28,14 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	DEVICE_DW_IIC
- * \brief	DesignWare IIC driver hardware description
- * 	related header file configuration file
- * \details	configuration file to enable or disable some function of iic
- */
-
 #ifndef _DEVICE_DW_IIC_HAL_CFG_H_
 #define _DEVICE_DW_IIC_HAL_CFG_H_
 

@@ -28,13 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \brief	designware gpio driver
- * \ingroup	DEVICE_DW_GPIO
- * \brief	Designware GPIO driver header file
- */
-
 #ifndef _DW_GPIO_H_
 #define _DW_GPIO_H_
 

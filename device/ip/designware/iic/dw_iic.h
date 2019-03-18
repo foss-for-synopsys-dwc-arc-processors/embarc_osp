@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \brief	designware iic driver header file
- * \ingroup	DEVICE_DW_IIC
- */
-
 #ifndef _DW_IIC_H_
 #define _DW_IIC_H_
 
@@ -47,18 +41,10 @@
  */
 #define DEVICE_USE_DESIGNWARE_IIC
 
-/**
- * \defgroup	DEVICE_DW_IIC_INFO	DesignWare IIC Related Information
- * \ingroup	DEVICE_DW_IIC
- * \brief	Defines some macros of DesignWare IIC need.
- * \details	macros like, iic number
- * @{
- */
 #define DW_IIC_MASTER_SUPPORTED		(0x1)	/*!< Support Designware IIC Master Mode */
 #define DW_IIC_SLAVE_SUPPORTED		(0x2)	/*!< Support Designware IIC Slave Mode */
 /*!< Support Designware IIC Both Master and Slave Mode */
 #define DW_IIC_BOTH_SUPPORTED		(DW_IIC_MASTER_SUPPORTED|DW_IIC_SLAVE_SUPPORTED)
-/** @} */
 
 #define DW_IIC_INVALID_INTNO		(DEV_INTNO_INVALID)
 
@@ -67,13 +53,7 @@ enum {
 	DW_IIC_CAP_LOADING_400PF
 };
 
-/**
- * \defgroup	DEVICE_DW_IIC_REGSTRUCT		DesignWare IIC Register Structure
- * \ingroup	DEVICE_DW_IIC
- * \brief	contains definitions of DesignWare IIC register structure.
- * \details	detailed description of DesignWare IIC register information
- * @{
- */
+
 /**
  * \brief	DesignWare IIC register structure
  * \details	Detailed struct description of DesignWare IIC
@@ -212,13 +192,6 @@ typedef struct dw_iic_ctrl {
 extern "C" {
 #endif
 
-/**
- * \defgroup	DEVICE_DW_IIC_FUNCDLR	DesignWare IIC Function Declaration
- * \ingroup	DEVICE_DW_IIC
- * \brief	Contains declarations of designware iic functions.
- * \details	This are only used in iic object implementation source file
- * @{
- */
 extern int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param);
 extern int32_t dw_iic_close (DEV_IIC *iic_obj);
 extern int32_t dw_iic_control (DEV_IIC *iic_obj, uint32_t ctrl_cmd, void *param);
@@ -229,7 +202,5 @@ extern void dw_iic_isr(DEV_IIC *iic_obj, void *ptr);
 #ifdef __cplusplus
 }
 #endif
-
-/** @} */
 
 #endif /* _DW_IIC_H_ */

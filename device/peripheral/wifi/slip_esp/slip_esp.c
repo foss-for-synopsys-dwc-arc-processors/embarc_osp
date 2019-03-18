@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_SLIP_ESP
- * \brief	esp_slip_router driver
- */
-
 #include <string.h>
 #include "embARC.h"
 #include "slip_esp.h"

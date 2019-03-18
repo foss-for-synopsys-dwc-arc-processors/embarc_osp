@@ -27,10 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \brief	header file of emsk pmod AD2 ADC driver
- */
 
 #ifndef _AD7991_H_
 #define _AD7991_H_

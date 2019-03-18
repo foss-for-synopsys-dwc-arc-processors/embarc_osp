@@ -27,10 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \brief	header file of adt7420 pmod temperature sensor driver
- */
 
 #ifndef _ADT7420_H_
 #define _ADT7420_H_

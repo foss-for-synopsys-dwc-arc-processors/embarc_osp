@@ -27,26 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_IOTDK_DRV_MID_FS_SDCARD	IOTDK Fatfs Middleware SDCard Driver
- * \ingroup	BOARD_IOTDK_DRIVER
- * \brief	IOTDK Fatfs Middleware SDCard Interface Driver
- * \details
- *		Realize the sdcard driver for fatfs based on the middleware fatfs diskio abstract
- *	layer, sdcard interface can be spi or sdio and so on.
- */
-
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
- * \brief	sdcard driver for fatfs of hsdk board
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_DRV_MID_FS_SDCARD
- * @{
- */
 #include "embARC_toolchain.h"
 
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
@@ -89,5 +69,3 @@ FATFS_DISKIO *get_fatfs_diskio(uint32_t drvid)
 	return NULL;
 }
 #endif /* MID_FATFS */
-
-/** @} end of group BOARD_IOTDK_DRV_MID_FS_SDCARD */

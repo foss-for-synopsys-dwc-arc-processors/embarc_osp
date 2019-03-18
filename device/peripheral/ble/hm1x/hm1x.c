@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \brief	HM-1X BLE driver
- * \details	Implement hm-1x ble driver.
- */
-
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include "hm1x.h"
@@ -54,7 +48,7 @@
 #define MAX_RESP_LENGTH		32
 
 #define AT_TEST_PREFIX		"AT"
-#define OK_PREFIX			"OK"
+#define OK_PREFIX		"OK"
 #define AT_CMD_PREFIX		"AT+"
 #define OK_SET_PREFIX		"OK+Set:"
 #define OK_GET_PREFIX		"OK+Get:"

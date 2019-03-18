@@ -27,10 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \brief	adt7420 pmod temperature sensor driver
- */
+
 #include "arc.h"
 #include "arc_builtin.h"
 #include "embARC_toolchain.h"

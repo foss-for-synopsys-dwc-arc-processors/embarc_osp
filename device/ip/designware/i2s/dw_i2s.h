@@ -26,16 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-10-10
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
-
-/**
- * \file
- * \brief	designware I2S driver header file
- * \ingroup	DEVICE_DW_I2S
- */
 
 #ifndef _DW_I2S_H_
 #define _DW_I2S_H_

@@ -28,14 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	DEVICE_DW_SPI
- * \brief	DesignWare SPI driver hardware description
- * 	related header file configuration file
- * \details	configuration file to enable or disable some function of spi
- */
-
 #ifndef _DEVICE_DW_SPI_HAL_CFG_H_
 #define _DEVICE_DW_SPI_HAL_CFG_H_
 

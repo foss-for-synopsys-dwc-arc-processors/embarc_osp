@@ -27,16 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_IOTDK_DRV_PMODWIFI
- * \brief	header file of pmod wifi driver for iotdk board
- */
-
-/**
- * \addtogroup	BOARD_IOTDK_DRV_PMODWIFI
- * @{
- */
 #ifndef _PMWIFI_H_
 #define _PMWIFI_H_
 
@@ -67,5 +57,3 @@ extern void pmwifi_all_install(void);
 
 #endif  /* MID_LWIP && MID_LWIP_CONTRIB */
 #endif /* _PMWIFI_H_ */
-
-/** @} end of group BOARD_IOTDK_DRV_PMODWIFI */

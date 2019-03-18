@@ -27,17 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \ingroup	BOARD_HSDK_INTERRUPT
- * \brief	to add
- * \details	to add
- */
-
-/**
- * \addtogroup	BOARD_HSDK_INTERRUPT
- * @{
- */
 #ifndef _HSDK_INTERRUPT_H_
 
 #ifdef __cplusplus
@@ -51,4 +40,3 @@ extern void hsdk_interrupt_init(void);
 #endif
 
 #endif /* HSDK_INTERRUPT_H_ */
-/** @} end of group BOARD_HSDK_INTERRUPT */

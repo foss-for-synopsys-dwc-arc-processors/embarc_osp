@@ -27,10 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \file
- * \brief	header file of tcn75 temperature sensor driver
- */
 
 #ifndef _TCN75_H_
 #define _TCN75_H_

@@ -26,29 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.12
- * \date 2017-11-30
- * \author Shuai Wang(Shuai.Wang1@synopsys.com)
 --------------------------------------------- */
-
-/**
- * \defgroup	BOARD_PERIPHER_DRV_CS4344	Peripheral Driver Pmod I2S CS4344
- * \ingroup	BOARD_PERIPHER_DRIVER
- * \brief	Pmod I2S CS4344 peripheral driver
- * \details
- *		Implement driver for Pmod I2S CS4344 using DesignWare I2S driver.
- */
-
-/**
- * \file
- * \ingroup	BOARD_PERIPHER_DRV_CS4344
- * \brief	Pmod I2S CS4344 peripheral driver
- */
-
-/**
- * \addtogroup	BOARD_PERIPHER_DRV_CS4344
- * @{
- */
 #include "cs4344.h"
 #include "embARC_debug.h"
 
@@ -191,4 +169,3 @@ void cs4344_rx_flush_fifo(void)
 {
 	dev_i2s_tx_p->i2s_control(I2S_CMD_FLUSH_RX,(void *)NULL);
 }
-/** @} end of group BOARD_PERIPHER_DRV_CS4344 */

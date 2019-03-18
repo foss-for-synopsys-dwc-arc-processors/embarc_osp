@@ -27,24 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- * \defgroup	BOARD_HSDK_INTERRUPT	HSDK Interrupt Management
- * \ingroup	BOARD_HSDK
- * \brief
- * \details
- */
-
-/**
- * \file
- * \ingroup	BOARD_HSDK_INTERRUPT
- * \brief	to add
- * \details	to add
- */
-
-/**
- * \addtogroup	BOARD_HSDK_INTERRUPT
- * @{
- */
 #include "embARC.h"
 #include "arc_connect.h"
 #include "hsdk_interrupt.h"
@@ -376,4 +358,3 @@ void hsdk_interrupt_init(void)
 		}
 	}
 }
-/** @} end of group BOARD_HSDK_INTERRUPT */

@@ -28,17 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	DEVICE_DW_IIC	Designware IIC Driver
- * \ingroup	DEVICE_DW
- * \brief	Designware IIC Driver Implementation
- */
-
-/**
- * \file
- * \brief	Designware iic driver
- * \ingroup	DEVICE_DW_IIC
- */
 #include <string.h>
 
 #include "embARC_toolchain.h"

@@ -33,8 +33,6 @@
 
 #include "dw_pwm_timer.h"
 
-
-
 /** check expressions used in DesignWare PWM_TIMER driver implementation */
 #define DW_PWM_TIMER_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
@@ -46,13 +44,6 @@
  		}
 #endif
 
-/**
- * \defgroup	DEVICE_DW_PWM_TIMER_STATIC	DesignWare PWM_TIMER Driver Static Functions
- * \ingroup	DEVICE_DW_PWM_TIMER
- * \brief	Static or inline functions, variables for DesignWare PWM_TIMER handle register operations,
- * 	only used in this file
- * @{
- */
 Inline uint32_t dw_pwm_timer_int_read_status(DW_PWM_TIMER_CTRL_PTR port)
 {
 	return port->regs->PWM_TIMERS_INT_STATUS;
@@ -109,7 +100,6 @@ static void dw_pwm_timer_int_clear(DW_PWM_TIMER_CTRL_PTR port, uint32_t ch)
 	int32_t reg_val;
 	reg_val = port->regs->CTRL[ch].EOI;
 }
-/** @} end of group DEVICE_DW_PWM_TIMER_STATIC */
 
 /* interface for DEV_PWM_TIMER */
 /** Open designware pwm_timer device */

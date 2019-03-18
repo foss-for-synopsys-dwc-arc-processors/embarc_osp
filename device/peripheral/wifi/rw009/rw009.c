@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_RW009
- * \brief	rw009 wifi module driver
- */
-
 #include <string.h>
 #include "embARC.h"
 #include "rw009.h"

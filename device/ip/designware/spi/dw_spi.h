@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \brief	DesignWare SPI driver header file
- * \ingroup	DEVICE_DW_SPI
- */
-
 #ifndef _DEVICE_DW_SPI_H_
 #define _DEVICE_DW_SPI_H_
 
@@ -63,11 +57,7 @@
 #define DW_SPI_INVALID_INTNO		(DEV_INTNO_INVALID)
 
 /**
- * \defgroup	DEVICE_DW_SPI_REGSTRUCT		DesignWare SPI Register Structure
- * \ingroup	DEVICE_DW_SPI
- * \brief	contains definitions of DesignWare SPI register structure.
- * \details	detailed description of DesignWare SPI register information
- * @{
+ * detailed description of DesignWare SPI register information
  */
 /**
  * \brief	DesignWare SPI register structure
@@ -136,7 +126,6 @@ typedef volatile struct dw_spi_reg
 	/** 0xF0, RxD Sample Delay Register */
 	uint32_t RX_SAMPLE_DLY;
 } DW_SPI_REG, *DW_SPI_REG_PTR;
-/** @} */
 
 /** Designware SPI Message Transfer */
 typedef struct dw_spi_transfer {
@@ -171,25 +160,15 @@ typedef struct dw_spi_ctrl {
 extern "C" {
 #endif
 
-/**
- * \defgroup	DEVICE_DW_SPI_FUNCDLR		DesignWare SPI Function Declaration
- * \ingroup	DEVICE_DW_SPI
- * \brief	contains declarations of designware spi functions.
- * \details	This are only used in \ref dw_spi_obj.c
- * @{
- */
 extern int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param);
 extern int32_t dw_spi_close (DEV_SPI *spi_obj);
 extern int32_t dw_spi_control (DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param);
 extern int32_t dw_spi_write (DEV_SPI *spi_obj, const void *data, uint32_t len);
 extern int32_t dw_spi_read (DEV_SPI *spi_obj, void *data, uint32_t len);
 extern void dw_spi_isr(DEV_SPI *spi_obj, void *ptr);
-/** @} */
 
 #ifdef __cplusplus
 }
 #endif
-
-/** @} */
 
 #endif /* _DEVICE_DW_SPI_H_ */

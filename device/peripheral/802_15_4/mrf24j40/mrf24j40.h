@@ -28,16 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_RF_MRF24J40
- * \brief	header file of Pmod MRF24J40MA driver for EMSK board
- */
-
-/**
- * \addtogroup	BOARD_EMSK_DRV_RF_MRF24J40
- * @{
- */
 #ifndef _MRF24J40_H_
 #define _MRF24J40_H_
 
@@ -418,5 +408,3 @@ extern int32_t mrf24j40_set_transmit_trig(MRF24J40_DEF *mrf24j40);
 #endif
 
 #endif /* _MRF24J40_H_ */
-
-/** @} end of group BOARD_EMSK_DRV_RF_MRF24J40 */

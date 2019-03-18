@@ -28,12 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_RW009
- * \brief	rw009 wifi module driver
- */
-
 #ifndef _RW009_H_
 #define _RW009_H_
 

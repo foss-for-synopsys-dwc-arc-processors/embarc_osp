@@ -26,22 +26,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * \version 2017.03
- * \date 2017-10-10
- * \author Qiang Gu(Qiang.Gu@synopsys.com)
 --------------------------------------------- */
 
-/**
- * \defgroup	DEVICE_DW_I2S	Designware I2S Driver
- * \ingroup	DEVICE_DW
- * \brief	Designware I2S Driver Implementation
- */
-
-/**
- * \file
- * \brief	Designware I2S driver
- * \ingroup	DEVICE_DW_I2S
- */
 #include <string.h>
 
 #include "embARC_toolchain.h"
@@ -2196,4 +2182,3 @@ void dw_i2s_isr_rx(DEV_I2S *i2s_obj, void *ptr)
 error_exit:
 	return;
 }
-/** @} end of group DEVICE_DW_I2S_IMPLEMENT */

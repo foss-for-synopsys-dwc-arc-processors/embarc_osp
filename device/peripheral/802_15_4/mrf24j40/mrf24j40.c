@@ -28,25 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	BOARD_EMSK_DRV_RF_MRF24J40	EMSK RF-MRF24J40 Driver
- * \ingroup	BOARD_EMSK_DRV_RF
- * \brief	EMSK RF MRF24J40 driver
- * \details
- *		Implement the MRF24J40 driver using the DesignWare SPI device driver.
- */
-
-/**
- * \file
- * \ingroup	BOARD_EMSK_DRV_RF_MRF24J40
- * \brief	RF MRF24J40 driver
- * \details	Implement MRF24J40 driver.
- */
-
-/**
- * \addtogroup	BOARD_EMSK_DRV_RF_MRF24J40
- * @{
- */
 #include <stddef.h>
 #include <string.h>
 #include <stdlib.h>
@@ -1254,5 +1235,3 @@ int32_t mrf24j40_set_transmit_trig(MRF24J40_DEF *mrf24j40)
 error_exit:
 	return ercd;
 }
-
-/** @} end of group BOARD_EMSK_DRV_RF_MRF24J40 */

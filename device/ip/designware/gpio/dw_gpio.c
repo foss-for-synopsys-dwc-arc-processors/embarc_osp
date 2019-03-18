@@ -28,18 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \defgroup	DEVICE_DW_GPIO	Designware GPIO Driver
- * \ingroup	DEVICE_DW
- * \brief	Designware GPIO Driver Implementation
- */
-
-/**
- * \file
- * \brief	designware gpio driver
- * \ingroup	DEVICE_DW_GPIO
- * \brief	Designware GPIO driver
- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include "arc_exception.h"
@@ -58,13 +46,6 @@
  		}
 #endif
 
-/**
- * \defgroup	DEVICE_DW_GPIO_STATIC	DesignWare GPIO Driver Static Functions
- * \ingroup	DEVICE_DW_GPIO
- * \brief	Static or inline functions, variables for DesignWare GPIO handle gpio operations,
- * 	only used in this file
- * @{
- */
 Inline uint32_t dw_gpio_read_ext(DW_GPIO_PORT_PTR port)
 {
 	return  port->regs->EXT_PORTS[port->no];

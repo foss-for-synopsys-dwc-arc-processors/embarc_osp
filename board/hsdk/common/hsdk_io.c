@@ -124,5 +124,3 @@ void hsdk_io_init(void)
 {
 	hsdk_led_init();
 }
-
-/** @} end of group BOARD_HSDK_DRV_IO */

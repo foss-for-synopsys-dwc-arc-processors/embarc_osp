@@ -28,11 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \brief      tcn75 temperature sensor driver
- */
-
 #include "arc.h"
 #include "arc_builtin.h"
 #include "embARC_toolchain.h"

@@ -28,13 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	DEVICE_DW_IIC
- * \brief	DesignWare IIC driver hardware description related header file
- * \details	detailed hardware related definitions of DesignWare IIC driver
- */
-
 #ifndef _DEVICE_DW_IIC_HAL_H_
 #define _DEVICE_DW_IIC_HAL_H_
 
@@ -177,7 +170,5 @@
 
 /* Combined bits for iic abort source as slave */
 #define IIC_SLV_ABRT_LOST_BUS		(IC_TX_ABRT_ARB_LOST|IC_TX_ABRT_SLV_ARBLOST)
-
-/** @} */
 
 #endif /* _DEVICE_DW_IIC_HAL_H_ */

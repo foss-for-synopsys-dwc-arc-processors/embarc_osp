@@ -28,13 +28,6 @@
  *
 --------------------------------------------- */
 
-/**
- * \file
- * \ingroup	DEVICE_DW_UART
- * \brief	DesignWare UART driver header file
- * \details     detailed definitions of designware uart driver
- */
-
 #ifndef _DW_UART_H_
 #define _DW_UART_H_
 
@@ -49,9 +42,7 @@
 #define DEVICE_USE_DESIGNWARE_UART
 
 /**
- * \name	DesignWare UART Register Structure
- * \brief	contains definitions of DesignWare UART register structure.
- * @{
+ * contains definitions of DesignWare UART register structure.
  */
 /**
  * \brief	DesignWare UART register structure
@@ -91,7 +82,6 @@ typedef volatile struct dw_uart_reg {
 	uint32_t UCV;		/*!< UART Component Version */
 	uint32_t CTR;		/*!< Component typw register */
 } DW_UART_REG, *DW_UART_REG_PTR;
-/** @} */
 
 #define DW_UART_GINT_DISABLED	(0)		/*!< designware interrupt disabled for control uart irq/fiq */
 #define DW_UART_GINT_ENABLE	(1<<0)		/*!< designware interrupt enabled for control uart irq/fiq */
@@ -118,19 +108,12 @@ typedef struct dw_uart_ctrl {
 extern "C" {
 #endif
 
-/**
- * \name	DesignWare UART Function Declaration
- * \brief	contains declarations of designware uart functions.
- * \details	This are only used in uart object implementation source file
- * @{
- */
 extern int32_t dw_uart_open (DEV_UART *uart_obj, uint32_t baud);
 extern int32_t dw_uart_close (DEV_UART *uart_obj);
 extern int32_t dw_uart_control (DEV_UART *uart_obj, uint32_t ctrl_cmd, void *param);
 extern int32_t dw_uart_write (DEV_UART *uart_obj, const void *data, uint32_t len);
 extern int32_t dw_uart_read (DEV_UART *uart_obj, void *data, uint32_t len);
 extern void dw_uart_isr(DEV_UART *uart_obj, void *ptr);
-/** @} */
 
 #ifdef __cplusplus
 }
