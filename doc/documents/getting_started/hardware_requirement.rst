@@ -10,7 +10,6 @@ Board Requirement
   * ARC Software Development Platform
   * `ARC EM Starter Kit <https://www.synopsys.com/dw/ipdir.php?ds=arc_em_starter_kit>`_
   * `ARC HS Development Kit <https://www.synopsys.com/dw/ipdir.php?ds=arc-hs-development-kit>`_
-  * AXS Board
   * `ARC IoT Development Kit <https://www.synopsys.com/dw/ipdir.php?ds=arc_iot_development_kit>`_
   * `ARC AXS <https://www.synopsys.com/dw/ipdir.php?ds=arc-software-development-platform>`_
   * `ARC Virtual Board based on nSIM <https://www.synopsys.com/dw/ipdir.php?ds=sim_nSIM>`_

@@ -98,6 +98,8 @@
 
 #define PWM_TIMER_CMD_ENA_ISR			DEV_SET_SYSCMD(7)
 
+/** @} */
+
 /** PWM_TIMER interrupt handler or Interrupt Service Routine(ISR) */
 typedef void (*DEV_PWM_TIMER_HANDLER) (void *ptr);
 
@@ -128,7 +130,21 @@ typedef struct dev_pwm_timer_cfg {
 } DEV_PWM_TIMER_CFG, *DEV_PWM_TIMER_CFG_PTR;
 
 
-
+/**
+ * \defgroup	DEVICE_HAL_PWM_TIMER_DEVSTRUCT	PWM_TIMER Device Interface Definition
+ * \ingroup	DEVICE_HAL_PWM_TIMER
+ * \brief	Contains definitions of pwm_timer device interface structure.
+ * \details	This structure will be used in user implemented code, which was called
+ *     \ref DEVICE_IMPL "Device Driver Implement Layer" for pwm_timer to use in implementation code.
+ *     Application developer should use the PWM_TIMER API provided here to access to PWM_TIMER devices.
+ *     BSP developer should follow the API definition to implement PWM_TIMER device drivers.
+ * @{
+ */
+/**
+ * \brief	PWM_TIMER information struct definition
+ * \details	informations about pwm_timer open count, working status,
+ *     pwm_timer registers and ctrl structure
+ */
 typedef struct dev_pwm_timer_info {
 	void *pwm_timer_ctrl;
 	uint32_t opn_cnt;
@@ -136,14 +152,81 @@ typedef struct dev_pwm_timer_info {
 	//uint32_t mode;
 } DEV_PWM_TIMER_INFO, * DEV_PWM_TIMER_INFO_PTR;
 
+/**
+ * \brief	PWM_TIMER device interface definition
+ * \details	Define pwm_timer device interface, like pwm_timer information structure,
+ * 	provide functions to open/close/control pwm_timer, send/receive data by pwm_timer
+ * \note	All this details are implemented by user in user porting code
+ */
 typedef struct dev_pwm_timer {
 	DEV_PWM_TIMER_INFO pwm_timer_info;				/*!< PWM_TIMER device information */
 	int32_t (*pwm_timer_open) (void);				/*!< Open pwm_timer device */
 	int32_t (*pwm_timer_close) (void);				/*!< Close pwm_timer device */
 	int32_t (*pwm_timer_control) (uint32_t ch, uint32_t cmd, void *param2);	/*!< Control pwm_timer device */
-	int32_t (*pwm_timer_write) (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc);	/*!< Send data by pwm_timer device(blocked) */
-	int32_t (*pwm_timer_read) (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc);	/*!< Read data from pwm_timer device(blocked) */
+	int32_t (*pwm_timer_write) (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc);	/*!< Set the configuration of pwm_timer*/
+	int32_t (*pwm_timer_read) (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc);	/*!< Read the configuration of pwm_timer*/
 } DEV_PWM_TIMER, * DEV_PWM_TIMER_PTR;
+/**
+ * \fn		int32_t (* dev_pwm_timer::pwm_timer_open) (void)
+ * \details	open pwm_timer device
+ * \retval	E_OK	Open successfully without any issues
+ * \retval	E_OPNED	If device was opened before with different parameters,
+ *			then just increase the \ref dev_pwm_timer_info::opn_cnt "opn_cnt" and return \ref E_OPNED
+ * \retval	E_OBJ	Device object is not valid
+ * \retval	E_PAR	Parameter is not valid
+ * \retval	E_NOSPT	Open settings are not supported
+ */
+
+/**
+ * \fn		int32_t (* dev_pwm_timer::pwm_timer_close) (void)
+ * \details	close an pwm_timer device, just decrease the \ref dev_pwm_timer_info::opn_cnt "opn_cnt",
+ *      if \ref dev_pwm_timer_info::opn_cnt "opn_cnt" equals 0, then close the device
+ * \retval	E_OK	Close successfully without any issues(including scenario that device is already closed)
+ * \retval	E_OPNED	Device is still opened, the device \ref dev_pwm_timer_info::opn_cnt "opn_cnt" decreased by 1
+ * \retval	E_OBJ	Device object is not valid
+ */
+
+/**
+ * \fn		int32_t (* dev_pwm_timer::pwm_timer_control) (uint32_t ch, uint32_t cmd, void *param2)
+ * \details	control an pwm_timer device [channel number: ch] by \ref ctrl_cmd, with passed \ref param.
+ * \param[in]		ch			channel number of pwm_timer to control, must >= 0
+ * \param[in]		ctrl_cmd	control command, to change or get some thing related to pwm_timer
+ * \param[in,out]	param		parameters that maybe argument of the command, or return values of the command
+ * \retval	E_OK	Control device successfully
+ * \retval	E_CLSED	Device is not opened
+ * \retval	E_OBJ	Device object is not valid or not exists
+ * \retval	E_PAR	Parameter is not valid for current control command
+ * \retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
+ * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
+ * \retval	E_NOSPT	Control command is not supported or not valid
+ */
+
+/**
+ * \fn		int32_t (* dev_pwm_timer::pwm_timer_write) (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)
+ * \details	set the configuration of pwm_timer.
+ * \param[in]	ch		channel number of pwm_timer to write, must >= 0
+ * \param[in]	mode	set the mode of pwm_timer, must not be NULL
+ * \param[in]	freq	set the frequency of pwm_timer, must not be NULL
+ * \param[in]	dc		set the duty cycle of pwm_timer, must not be NULL
+ * \retval	E_OK	set device successfully
+ * \retval	E_OBJ	Device object is not valid or not exists
+ * \retval	E_PAR	Parameter is not valid
+ * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
+ */
+
+/**
+ * \fn		int32_t (* dev_pwm_timer::pwm_timer_read) (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)
+ * \details	read the configuration of pwm_timer.
+ * \param[in]	ch		channel number of pwm_timer to read, must >= 0
+ * \param[out]	mode	pointer to data mode of pwm_timer, must not be NULL
+ * \param[out]	freq	pointer to data frequency of pwm_timer, must not be NULL
+ * \param[out]	dc		pointer to data duty cycle of pwm_timer, must not be NULL
+ * \retval	E_OK	Read device successfully
+ * \retval	E_OBJ	Device object is not valid or not exists
+ * \retval	E_PAR	Parameter is not valid
+ * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
+ */
+/** @} */
 
 
 
@@ -165,4 +248,5 @@ extern DEV_PWM_TIMER_PTR pwm_timer_get_dev(int32_t pwm_timer_id);
 }
 #endif
 
+/** @} */
 #endif /* _DEVICE_HAL_PWM_TIMER_H_ */
