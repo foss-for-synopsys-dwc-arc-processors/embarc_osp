@@ -110,7 +110,7 @@ Before the interfaces are used, you must install the required drivers on the com
 the MetaWare debugger or other serial debug consoles (such as PuTTY or other hyper-terminals).
 
 The driver is a part of the Digilent Adept tool. You can download the most recent version of
-the Digilent Adept tool from the Digilent website at http://www.digilentinc.com, and follow the installation instructions provided by Digilent.
+the Digilent Adept tool from the Digilent website at https://store.digilentinc.com, and follow the installation instructions provided by Digilent.
 
 You may also skip this step if you are using default settings.
 

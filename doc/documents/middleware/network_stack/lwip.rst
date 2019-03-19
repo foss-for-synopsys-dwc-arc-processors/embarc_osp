@@ -21,4 +21,4 @@ features include:
 - Add-on applications: HTTP server, SNTP client, SMTP client, ping, NetBIOS
   nameserver.
 
-lwIP is licensed under a BSD-style license: http://lwip.wikia.com/wiki/License.
+lwIP is licensed under a BSD-style license: https://lwip.fandom.com/wiki/License.

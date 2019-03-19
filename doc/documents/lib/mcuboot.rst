@@ -1,4 +1,4 @@
-.. _lib_c_lib:
+.. _lib_mcuboot:
 
 MCUBoot
 #######
@@ -49,4 +49,4 @@ If you want to use a new one please reference `manage keys manual`_ to generate 
 
 .. note:: By default, embARC configures MCUBoot in the bootloader to use RSA as asymmetric encryption function. So make sure to generate the rsa-2048 keys.
 
-.. _manage keys manual: https://github.com/JuulLabs-OSS/mcuboot/blob/master/docs/imgtool.md#managing-keys
+.. _manage keys manual: https://github.com/JuulLabs-OSS/mcuboot/blob/master/docs/imgtool.md
