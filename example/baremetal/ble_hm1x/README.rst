@@ -13,7 +13,7 @@ Detailed Description
  * Extra Required Tools
     BLE APP on SmartPhone:
         - Android: BLE Android ComAssistant
-        - iOS: `LightBlue <http://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8>`_
+        - iOS: `LightBlue <https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8>`_
 
  * Extra Required Peripherals
     UART Based BLE Device HM-10

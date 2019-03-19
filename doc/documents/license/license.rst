@@ -62,7 +62,7 @@ FOSS Packages
 embARC
 ******
 
-:Project homepage:	http://www.embarc.org/
+:Project homepage:	https://embarc.org/
 
 :Project licensing:
 			| Copyright (c) 2017, Synopsys, Inc. All rights reserved.
@@ -85,7 +85,7 @@ AWS IoT Device C SDK
 Doxygen
 *******
 
-:Project homepage: http://www.doxygen.org/
+:Project homepage: http://www.doxygen.nl/
 :Project licensing: https://github.com/doxygen/doxygen/blob/master/LICENSE
 :LICENSE: `GPL-2.0`_
  
@@ -93,13 +93,13 @@ Dlmalloc
 ********
 
 :Project homepage: http://g.oswego.edu/dl/html/malloc.html
-:Project licensing: http://creativecommons.org/publicdomain/zero/1.0/ 
+:Project licensing: http://g.oswego.edu/dl/html/malloc.html
 :LICENSE: `Creative Commons CC0 1.0 Universal`_
  
 FatFS
 
 :Project homepage: http://elm-chan.org/fsw/ff/00index_e.html
-:Project licensing: | http://elm-chan.org/fsw/ff/en/appnote.html#license00readme:
+:Project licensing: | http://elm-chan.org/:
 		    | AGREEMENTS
 		    | FatFs module is an open source software to implement FAT file system to small embedded systems. This is a free software and is opened for education, research and commercial developments under license policy of following trems.
 		    | Copyright (C) 2014, ChaN, all right reserved.
@@ -110,8 +110,8 @@ FatFS
 FreeRTOS
 ********
 
-:Project homepage: http://www.freertos.org/
-:Project licensing: 	| http://www.freertos.org/a00114.html
+:Project homepage: https://www.freertos.org/
+:Project licensing: 	| https://www.freertos.org/a00114.html
 			| The FreeRTOS.org source code is licensed by the modified GNU General Public License (GPL) text provided below.  The FreeRTOS download also includes demo application source code, some of which is provided by third parties AND IS LICENSED SEPARATELY FROM FREERTOS.ORG.
 			| For the avoidance of any doubt refer to the comment included at the top of each source and header file for license and copyright information.
 			| This is a list of files for which Real Time Engineers Ltd are not the copyright owner and are NOT COVERED BY THE GPL.
@@ -120,9 +120,9 @@ FreeRTOS
 			| 3) The lwIP TCP/IP stack the copyright of which is held by the Swedish Institute of Computer Science.  Users must ensure the open source license conditions stated at the top of each lwIP source file is understood and adhered to.
 			| 4) Various peripheral driver source files and binaries provided by silicon manufacturers and tool vendors.  Permission has been granted by the various copyright holders for these files to be included in the FreeRTOS download.  Users must ensure license conditions are adhered to for any use other than compilation of the FreeRTOS demo applications.
 			| 5) The files contained within FreeRTOS\Demo\WizNET_DEMO_TERN_186\tern_code, which are slightly modified versions of code provided by and copyright to Tern Inc.
-			| Errors and omissions should be reported to Richard Barry, contact details for whom can be obtained from http://www.FreeRTOS.org.
+			| Errors and omissions should be reported to Richard Barry, contact details for whom can be obtained from https://www.freertos.org.
 			| The GPL license text follows.
-			| A special exception to the GPL is included to allow you to distribute a combined work that includes FreeRTOS without being obliged to provide the source code for any proprietary components.  See the licensing section of http://www.FreeRTOS.org for full details.  The exception text is also included at the bottom of this file. `GPL-2.0`_
+			| A special exception to the GPL is included to allow you to distribute a combined work that includes FreeRTOS without being obliged to provide the source code for any proprietary components.  See the licensing section of https://www.freertos.org for full details.  The exception text is also included at the bottom of this file. `GPL-2.0`_
 			| The FreeRTOS GPL Exception Text:
 			| Any FreeRTOS source code, whether modified or in it’s original release form, or whether in whole or in part, can only be distributed by you under the terms of the GNU General Public License plus this exception. An independent module is a module which is not derived from or based on FreeRTOS.
 			| Clause 1:
@@ -137,7 +137,7 @@ FreeRTOS
 GMSL
 ****
 
-:Project homepage: http://gmsl.sourceforge.net/
+:Project homepage: https://sourceforge.net/projects/gmsl/
 :Project licensing: 	| BSD License
 			| Copyright (c) 2005-2014 John Graham-Cumming
 			| Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -161,8 +161,8 @@ iHex
 LibCoAP
 *******
 
-:Project homepage: http://libcoap.sourceforge.net/
-:Project licensing:  https://github.com/obgm/libcoap#license-information  
+:Project homepage: https://libcoap.net/
+:Project licensing:  https://github.com/obgm/libcoap  
 :LICENSE:
 		| libcoap is published as open-source software without any warranty of any kind. Use is permitted under the terms of the GNU General Public License (GPL), Version 2 or higher, OR the revised BSD license.
 		| `GPL-2.0`_ – See Appendix A for full license text.
@@ -177,8 +177,8 @@ LibCoAP
 lwIP
 ****
 
-:Project homepage: http://savannah.nongnu.org/projects/lwip/
-:Project licensing: 	| http://lwip.wikia.com/wiki/License
+:Project homepage: https://savannah.nongnu.org/projects/lwip/
+:Project licensing: 	| https://lwip.fandom.com/wiki/License
 			| lwIP is licenced under the BSD licence:
 			| Copyright (c) 2001-2004 Swedish Institute of Computer Science.  All rights reserved.
 			| Redistribution and use in source and binary forms, with or without modification,  are permitted provided that the following conditions are met:
@@ -203,13 +203,13 @@ MQTT
 :Project licensing:  	| Source code header:
 			| Copyright (c) 2009, 2013 IBM Corp.
 			| All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 and Eclipse Distribution License v1.0 which accompany this distribution.
-			| The Eclipse Public License is available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse Distribution License is available at http://www.eclipse.org/org/documents/edl-v10.php.
+			| The Eclipse Public License is available at https://www.eclipse.org/legal/epl-v10.html and the Eclipse Distribution License is available at https://www.eclipse.org/org/documents/edl-v10.php.
 			| epl-v10: `EPL-1.0`_
  
 MRF24WG0MA PMOD WiFi
 ********************
 
-:Project homepage: http://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/
+:Project homepage: https://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/
 :Project licensing:	| From source code headers (e.g., MRF24GAdaptor.c):
 			| ************************************************************************
 			| Author: Keith Vogel                                           
@@ -227,8 +227,8 @@ MRF24WG0MA PMOD WiFi
 NT-Shell
 ********
 
-:Project homepage: http://cubeatsystems.com/ntshell/
-:Project licensing: | http://cubeatsystems.com/ntshell/license.html
+:Project homepage: https://www.cubeatsystems.com/ntshell/
+:Project licensing: | https://www.cubeatsystems.com/ntshell/license.html
 			| The license
 			| • vtparse, vtparse_table are in the public domain.
 			| • ntshell, ntopt, ntlibc, text_editor, text_history are in the MIT license.
@@ -254,7 +254,7 @@ Parson
 ******
 
 :Project homepage:  https://github.com/kgabis/parson
-:Project licensing: http://opensource.org/licenses/mit-license.php
+:Project licensing: https://opensource.org/licenses/mit-license.php
  
 U8glib
 ******

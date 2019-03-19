@@ -20,9 +20,9 @@ See :ref:`board_bsp` for more board information. You can also find instructions 
 
   * Wireless Communications
 
-    * `Digilent Pmod WiFi with Microchip MRF24WG0MA <http://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/>`_
+    * `Digilent Pmod WiFi with Microchip MRF24WG0MA <https://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/>`_
     * `Digilent Pmod RF2 with Microchip MRF24J40MA <https://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/>`_
-    * `BLE Microchip RN4020 <http://www.microchip.com/wwwproducts/en/RN4020>`_
+    * `BLE Microchip RN4020 <https://www.microchip.com/wwwproducts/en/RN4020>`_
     * `BLE Huamao HM-10 <http://www.huamaosoft.cn/bluetooth.asp?id=1>`_
     * WiFi RW009
 
@@ -34,7 +34,7 @@ See :ref:`board_bsp` for more board information. You can also find instructions 
 
   * Audio & Display
 
-    * `Digilent Pmod I2S with Cirrus Logic CS4344 <https://store.digilentinc.com/pmod-i2s-stereo-audio-output/>`_
+    * `Digilent Pmod I2S with Cirrus Logic CS4344 <https://store.digilentinc.com/pmod-i2s-stereo-audio-output-retired/>`_
     * `SSD1306 Monochrome OLED Graphic Display <http://www.solomon-systech.com/en/product/display-ic/oled-driver-controller/ssd1306/>`_
 
   * Storage

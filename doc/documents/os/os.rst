@@ -39,4 +39,4 @@ de-facto standard solution for microcontrollers and small microprocessors.
 
 .. note:: It's also possible to integrate other RTOS into embARC OSP
 
-.. _FreeRTOS: http://freertos.org
+.. _FreeRTOS: https://freertos.org
