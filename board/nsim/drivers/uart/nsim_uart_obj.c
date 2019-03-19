@@ -35,10 +35,8 @@
 
 #include "nsim/nsim.h"
 
-
 /**
- * \name	NSIM UART 0 Object Instantiation
- * @{
+ * NSIM UART 0 Object Instantiation
  */
 #if (USE_NSIM_UART_0)
 
@@ -101,7 +99,6 @@ static void nsim_uart_0_install(void)
 
 }
 #endif /* USE_DW_UART_0 */
-/** @} end of name */
 
 /** get one uart device structure */
 DEV_UART_PTR uart_get_dev(int32_t uart_id)

@@ -46,18 +46,8 @@
 	#define CLK_CPU			(ARC_FEATURE_CPU_CLOCK_FREQ)
 #else
 	/*!< Default cpu clock frequency */
-	#define CLK_CPU			(20000000)
+	#define CLK_CPU			(1000000)
 #endif
-
-/** Peripheral Bus Reference Clock definition */
-#ifdef BOARD_DEV_FREQ
-	/*!< Get peripheral bus reference clock defintion from build system */
-	#define CLK_BUS_APB		(BOARD_DEV_FREQ)
-#else
-	/*!< Default peripheral bus reference clock defintion */
-	#define CLK_BUS_APB		(50000000U)
-#endif
-
 
 /* common macros must be defined by all boards */
 

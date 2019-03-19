@@ -33,25 +33,19 @@
 #include "dev_uart.h"
 
 /**
- * \name	NSIM UART Object Number
- * @{
+ * NSIM UART Object Number
  */
 #define DW_UART_NUM	(1)	/*!< NSIM UART valid number */
-/** @} end of name */
 
 /**
- * \name    NSIM UART Object ID Macros
- * @{
+ * NSIM UART Object ID Macros
  */
-#define NSIM_UART_0_ID	0	/*!< uart 0 id macro */
-/** @} end of name */
+#define NSIM_UART_0_ID	(0)	/*!< uart 0 id macro */
 
 /**
- * \name	NSIM UART Object Control Macros
- * @{
+ * NSIM UART Object Control Macros
  */
-#define USE_NSIM_UART_0	1     	/*!< enable use nsim uart 0 (stdio) */
-/** @} end of name */
+#define USE_NSIM_UART_0	(1)	/*!< enable use nsim uart 0 (stdio) */
 
 #ifdef __cplusplus
 extern "C" {
