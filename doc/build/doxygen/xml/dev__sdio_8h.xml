@@ -6,85 +6,89 @@
     <includedby refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h" local="yes">dw_sdio_obj.h</includedby>
     <includedby refid="dw__sdio_8h" local="yes">dw_sdio.h</includedby>
     <incdepgraph>
-      <node id="1966">
+      <node id="1964">
         <label>stdint.h</label>
       </node>
-      <node id="1965">
+      <node id="1963">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="1966" relation="include">
+        <childnode refid="1964" relation="include">
         </childnode>
       </node>
-      <node id="1964">
+      <node id="1962">
         <label>dev_sdio.h</label>
         <link refid="dev_sdio.h"/>
-        <childnode refid="1965" relation="include">
+        <childnode refid="1963" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1974">
+      <node id="1972">
         <label>dw_sdio_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="1973">
+      <node id="1971">
         <label>dw_sdio_obj.h</label>
         <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
+        <childnode refid="1972" relation="include">
+        </childnode>
+        <childnode refid="1973" relation="include">
+        </childnode>
+      </node>
+      <node id="1980">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="1981">
+        <label>dw_sdio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1968">
+        <label>iotdk.h</label>
+        <link refid="iotdk_8h_source"/>
+        <childnode refid="1969" relation="include">
+        </childnode>
+      </node>
+      <node id="1975">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      </node>
+      <node id="1977">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="1979">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
+      <node id="1978">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      </node>
+      <node id="1969">
+        <label>mux.c</label>
+        <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="1965">
+        <label>dev_sdio.h</label>
+        <link refid="dev_sdio.h"/>
+        <childnode refid="1966" relation="include">
+        </childnode>
+        <childnode refid="1970" relation="include">
+        </childnode>
+      </node>
+      <node id="1973">
+        <label>emsdp.h</label>
+        <link refid="emsdp_8h_source"/>
         <childnode refid="1974" relation="include">
         </childnode>
         <childnode refid="1975" relation="include">
         </childnode>
-      </node>
-      <node id="1982">
-        <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
-      </node>
-      <node id="1983">
-        <label>dw_sdio_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="1970">
-        <label>iotdk.h</label>
-        <link refid="iotdk_8h_source"/>
-        <childnode refid="1971" relation="include">
-        </childnode>
-      </node>
-      <node id="1977">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
-      </node>
-      <node id="1979">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
-      </node>
-      <node id="1981">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
-      </node>
-      <node id="1980">
-        <label>dw_uart_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
-      </node>
-      <node id="1971">
-        <label>mux.c</label>
-        <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
-      </node>
-      <node id="1967">
-        <label>dev_sdio.h</label>
-        <link refid="dev_sdio.h"/>
-        <childnode refid="1968" relation="include">
-        </childnode>
         <childnode refid="1972" relation="include">
         </childnode>
-      </node>
-      <node id="1975">
-        <label>emsdp.h</label>
-        <link refid="emsdp_8h_source"/>
         <childnode refid="1976" relation="include">
         </childnode>
         <childnode refid="1977" relation="include">
-        </childnode>
-        <childnode refid="1974" relation="include">
         </childnode>
         <childnode refid="1978" relation="include">
         </childnode>
@@ -92,44 +96,40 @@
         </childnode>
         <childnode refid="1980" relation="include">
         </childnode>
+      </node>
+      <node id="1974">
+        <label>emsdp_io.c</label>
+        <link refid="emsdp__io_8c_source"/>
+      </node>
+      <node id="1967">
+        <label>dw_sdio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1966">
+        <label>dw_sdio_obj.h</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
+        <childnode refid="1967" relation="include">
+        </childnode>
+        <childnode refid="1968" relation="include">
+        </childnode>
+      </node>
+      <node id="1982">
+        <label>dw_sdio.c</label>
+        <link refid="dw__sdio_8c_source"/>
+      </node>
+      <node id="1970">
+        <label>dw_sdio.h</label>
+        <link refid="dw__sdio_8h_source"/>
+        <childnode refid="1971" relation="include">
+        </childnode>
         <childnode refid="1981" relation="include">
+        </childnode>
+        <childnode refid="1967" relation="include">
         </childnode>
         <childnode refid="1982" relation="include">
         </childnode>
       </node>
       <node id="1976">
-        <label>emsdp_io.c</label>
-        <link refid="emsdp__io_8c_source"/>
-      </node>
-      <node id="1969">
-        <label>dw_sdio_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="1968">
-        <label>dw_sdio_obj.h</label>
-        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1970" relation="include">
-        </childnode>
-      </node>
-      <node id="1984">
-        <label>dw_sdio.c</label>
-        <link refid="dw__sdio_8c_source"/>
-      </node>
-      <node id="1972">
-        <label>dw_sdio.h</label>
-        <link refid="dw__sdio_8h_source"/>
-        <childnode refid="1973" relation="include">
-        </childnode>
-        <childnode refid="1983" relation="include">
-        </childnode>
-        <childnode refid="1969" relation="include">
-        </childnode>
-        <childnode refid="1984" relation="include">
-        </childnode>
-      </node>
-      <node id="1978">
         <label>dw_spi_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
       </node>

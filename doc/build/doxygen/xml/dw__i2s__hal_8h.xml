@@ -6,32 +6,32 @@
     <includedby refid="dw__i2s__obj_8c" local="yes">dw_i2s_obj.c</includedby>
     <includedby refid="dw__i2s_8c" local="yes">dw_i2s.c</includedby>
     <incdepgraph>
-      <node id="2811">
+      <node id="2809">
         <label>dw_i2s_hal_cfg.h</label>
         <link refid="dw__i2s__hal__cfg_8h_source"/>
+      </node>
+      <node id="2808">
+        <label>dw_i2s_hal.h</label>
+        <link refid="dw_i2s_hal.h"/>
+        <childnode refid="2809" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2811">
+        <label>dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c_source"/>
+      </node>
+      <node id="2812">
+        <label>dw_i2s.c</label>
+        <link refid="dw__i2s_8c_source"/>
       </node>
       <node id="2810">
         <label>dw_i2s_hal.h</label>
         <link refid="dw_i2s_hal.h"/>
         <childnode refid="2811" relation="include">
         </childnode>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="2813">
-        <label>dw_i2s_obj.c</label>
-        <link refid="dw__i2s__obj_8c_source"/>
-      </node>
-      <node id="2814">
-        <label>dw_i2s.c</label>
-        <link refid="dw__i2s_8c_source"/>
-      </node>
-      <node id="2812">
-        <label>dw_i2s_hal.h</label>
-        <link refid="dw_i2s_hal.h"/>
-        <childnode refid="2813" relation="include">
-        </childnode>
-        <childnode refid="2814" relation="include">
+        <childnode refid="2812" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
