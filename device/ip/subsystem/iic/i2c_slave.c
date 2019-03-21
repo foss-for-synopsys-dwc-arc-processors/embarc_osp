@@ -35,7 +35,6 @@
 #include <stdlib.h>
 #include "i2c_slave.h"
 #include "i2c_priv.h"
-#include "dmac.h"
 #include "io_config.h"
 #include "apexextensions.h"
 

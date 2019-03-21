@@ -34,7 +34,6 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "dac.h"
-#include "dmac.h"
 #include "io_config.h"
 #include "apexextensions.h"
 

@@ -35,7 +35,6 @@
 #include <stdlib.h>
 #include "i3c_master.h"
 #include "i3c_priv.h"
-#include "dmac.h"
 #include "io_config.h"
 #include "apexextensions.h"
 #include <stdio.h>

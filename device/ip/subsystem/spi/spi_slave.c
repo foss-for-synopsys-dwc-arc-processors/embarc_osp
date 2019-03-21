@@ -35,7 +35,6 @@
 #include <stdint.h>
 #include "spi_slave.h"
 #include "spi_priv.h"
-#include "dmac.h"
 #include "io_config.h"
 #include "apexextensions.h"
 
