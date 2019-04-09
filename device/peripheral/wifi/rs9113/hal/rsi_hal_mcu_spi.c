@@ -78,11 +78,11 @@ int16_t rsi_spi_transfer(uint8_t *tx_buff, uint8_t *rx_buff, uint16_t transfer_l
 	DEV_SPI_XFER_SET_RXBUF(&spi_xfer, rx_buff, 0, (rx_buff == NULL) ? 0 : transfer_length);
 	DEV_SPI_XFER_SET_NEXT(&spi_xfer, NULL);
 
-	ercd = rsi_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	uint32_t status = cpu_lock_save();
+	ercd = rsi_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ercd = rsi_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&spi_xfer));
-	cpu_unlock_restore(status);
 	ercd = rsi_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
+	cpu_unlock_restore(status);
 
 error_exit:
 	return ercd;
