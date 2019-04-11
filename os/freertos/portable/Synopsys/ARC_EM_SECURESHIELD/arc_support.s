@@ -159,9 +159,10 @@ ret_exc:
 	mov	r1, exc_nest_count
 	ld	r0, [r1]
 	sub	r0, r0, 1
-	cmp	r0, 0
-	bne.d	ret_exc_r_1
-	st	r0, [r1]
+	st 	r0, [r1]
+	brne	r0, 0, ret_exc_r_1
+	lr	r1, [AUX_IRQ_ACT] /* nest interrupt case */
+	brne	r1, 0, ret_exc_r_1
 
 	ld	r0, [context_switch_reqflg]
 	cmp	r0, 0
@@ -196,15 +197,13 @@ exc_entry_int:
 	add	r2, r3, 1
 	st	r2, [exc_nest_count]
 	seti	/* enable higher priority interrupt */
-	cmp	r3, 0
-	bne	irq_handler_1
+	brne	r3, 0, irq_handler_1
 /* change to exception stack if interrupt happened in task context */
 	mov	sp, _e_stack
 irq_handler_1:
 	PUSH	blink
 
 	lr	r0, [AUX_IRQ_CAUSE]
-	sr	r0, [AUX_IRQ_SELECT]
 	mov	r1, exc_int_handler_table
 	ld.as	r2, [r1, r0]	/* r2 = exc_int_handler_table + irqno *4 */
 /* handle software triggered interrupt */
@@ -223,9 +222,16 @@ ret_int:
 	mov	r1, exc_nest_count
 	ld	r0, [r1]
 	sub	r0, r0, 1
-	cmp	r0, 0
-	bne.d	ret_int_r_1
 	st	r0, [r1]
+
+/* if there are multi-bits set in IRQ_ACT, it's still in nest interrupt */
+	lr	r0, [AUX_IRQ_CAUSE]
+	sr	r0, [AUX_IRQ_SELECT]
+	lr 	r3, [AUX_IRQ_PRIORITY]
+	lr	r1, [AUX_IRQ_ACT]
+	bclr	r2, r1, r3
+	cmp	r2, 0
+	bne	ret_int_r_1
 
 	ld	r0, [context_switch_reqflg]
 	cmp	r0, 0
