@@ -112,7 +112,7 @@
 <codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="116"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>init<sp/>stack<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_RGF_BANKED_REGS<sp/>&gt;=<sp/>16<sp/>&amp;&amp;<sp/>ARC_FEATURE_RGF_BANKED_REGS<sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>ARC_FEATURE_FIRQ<sp/>==<sp/>1</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_RGF_BANKED_REGS<sp/>&gt;=<sp/>16<sp/>&amp;&amp;<sp/>ARC_FEATURE_FIRQ<sp/>==<sp/>1</highlight></codeline>
 <codeline lineno="119"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>_STACKSIZE<sp/>&lt;<sp/>512</highlight></codeline>
 <codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;not<sp/>enough<sp/>stack<sp/>size<sp/>for<sp/>irq<sp/>and<sp/>firq&quot;</highlight></codeline>
 <codeline lineno="121"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -123,14 +123,14 @@
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>or<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>r0,<sp/>0x10000</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/>r0</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>set<sp/>sp,<sp/>gp,<sp/>fp<sp/>in<sp/>bank1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_f_stack+256</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>gp,<sp/>_f_sdata</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>fp,<sp/>0</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>come<sp/>back<sp/>to<sp/>bank0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_STATUS32]</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bic<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r0,<sp/>0x70000</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/>r0</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack-256</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>stack<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
