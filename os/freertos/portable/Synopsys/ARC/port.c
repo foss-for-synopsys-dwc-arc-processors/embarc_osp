@@ -113,6 +113,7 @@ static void prvSetupTimerInterrupt(void)
 	timer_start(BOARD_OS_TIMER_ID, TIMER_CTRL_IE | TIMER_CTRL_NH, cyc);
 
 	int_handler_install(BOARD_OS_TIMER_INTNO, (INT_HANDLER)vKernelTick);
+	int_pri_set(BOARD_OS_TIMER_INTNO, INT_PRI_MIN);
 	int_enable(BOARD_OS_TIMER_INTNO);
 }
 
