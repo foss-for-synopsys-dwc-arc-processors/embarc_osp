@@ -125,6 +125,8 @@ typedef volatile struct dw_spi_reg
 	uint32_t DRS[35];
 	/** 0xF0, RxD Sample Delay Register */
 	uint32_t RX_SAMPLE_DLY;
+	/** 0xF4, SPI Control Register */
+	uint32_t SPI_CTRLR0;
 } DW_SPI_REG, *DW_SPI_REG_PTR;
 
 /** Designware SPI Message Transfer */

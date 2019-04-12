@@ -53,6 +53,7 @@ typedef struct {
 typedef struct fl256s_t {
 	uint8_t spi_master;
 	uint8_t cs;
+	uint8_t quad_en;
 	uint32_t spi_freq;
 
 	uint32_t page_sz;
@@ -75,12 +76,15 @@ extern "C" {
 extern uint32_t fl256s_read_status(FL256S_DEF_PTR dev);
 extern uint32_t fl256s_read_id(FL256S_DEF_PTR dev);
 extern int32_t fl256s_read(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, void *data);
+extern int32_t fl256s_quad_read(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, void *data);
 extern int32_t fl256s_write_enable(FL256S_DEF_PTR dev);
 extern int32_t fl256s_write_disable(FL256S_DEF_PTR dev);
 extern int32_t fl256s_erase(FL256S_DEF_PTR dev, uint32_t address, uint32_t size);
 extern int32_t fl256s_write(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, const void *data);
 extern int32_t fl256s_wait_ready(FL256S_DEF_PTR dev);
 extern int32_t fl256s_init(FL256S_DEF_PTR dev, uint32_t freq);
+extern int32_t fl256s_quad_enable(FL256S_DEF_PTR dev);
+extern int32_t fl256s_quad_disable(FL256S_DEF_PTR dev);
 
 #ifdef __cplusplus
 }
