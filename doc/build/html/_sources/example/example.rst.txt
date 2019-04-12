@@ -67,11 +67,11 @@ Application Note
 ################
 The following application notes provide step-by-step instructions on a broad range of topics to familiarize you with the use of embARC OSP.
 
-* `Quick start guide <https://www.embarc.org/pdf/20150710_embARC_application_note_quick_start_guide.pdf>`_
-* `Adding a new NT-Shell command <https://www.embarc.org/pdf/20150710_embARC_application_note_ntshell_newcmd.pdf>`_
-* `How to create your own peripheral modules for use with the ARC EMSK and embARC <https://www.embarc.org/pdf/20151013_embARC_application_note_create_module_EMSK_embARC_v3.pdf>`_
-* `Timer and ISR <https://www.embarc.org/pdf/20150805_embARC_application_note_timer_and_isr.pdf>`_
-* `Using a secondary bootloader on the EMSK <https://www.embarc.org/pdf/20150710_embARC_application_note_secondary_bootloader.pdf>`_
-* `Using a smart home IoT application with EMSK <https://www.embarc.org/pdf/embARC_appnote_how_to_use_smart_home_iot.pdf>`_
+* `Quick start guide <https://embarc.org/pdf/20150710_embARC_application_note_quick_start_guide.pdf>`_
+* `Adding a new NT-Shell command <https://embarc.org/pdf/20150710_embARC_application_note_ntshell_newcmd.pdf>`_
+* `How to create your own peripheral modules for use with the ARC EMSK and embARC <https://embarc.org/pdf/20151013_embARC_application_note_create_module_EMSK_embARC_v3.pdf>`_
+* `Timer and ISR <https://embarc.org/pdf/20150805_embARC_application_note_timer_and_isr.pdf>`_
+* `Using a secondary bootloader on the EMSK <https://embarc.org/pdf/20150710_embARC_application_note_secondary_bootloader.pdf>`_
+* `Using a smart home IoT application with EMSK <https://embarc.org/pdf/embARC_appnote_how_to_use_smart_home_iot.pdf>`_
 
 .. note:: Confirm that the version of embARC OSP and board is the correct one as noted in the application note documents

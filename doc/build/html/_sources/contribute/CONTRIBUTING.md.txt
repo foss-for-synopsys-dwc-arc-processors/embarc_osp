@@ -38,7 +38,7 @@ Please report unacceptable behavior to [info@embarc.org](mailto:info@embarc.org)
 
 ### Create GitHub account and sign Contribution Agreement
 
-Make sure you have a [GitHub account](https://github.com/signup/free). If your contribution was developed during employment or while contracting for a third-party, ensure that such owner or contracting party has provided explicit approval for your contribution to the Synopsys project under the terms of the Synopsys Contributor License Agreement.
+Make sure you have a [GitHub account](https://github.com/join). If your contribution was developed during employment or while contracting for a third-party, ensure that such owner or contracting party has provided explicit approval for your contribution to the Synopsys project under the terms of the Synopsys Contributor License Agreement.
 
 Submit the [Synopsys Contributor License Agreement](https://www.clahub.com/agreements/foss-for-synopsys-dwc-arc-processors/embarc_osp) on CLAhub.com.
 
@@ -79,11 +79,11 @@ Explain the problem and include additional details to help maintainers reproduce
 
 * **Use a clear and descriptive title** for the issue to identify the problem.
 * **Describe the exact steps which reproduce the problem** in as many details as possible. For example, start by explaining which release or commit of embARC OSP you are using, and how you use embARC OSP, e.g. which command exactly you used in the terminal. When listing steps, **don't just say what you did, but explain how you did it**. For example, if you run a command, explain which terminal you use and the directory where you run the command?
-* **Provide specific examples to demonstrate the steps**. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you're providing snippets in the issue, use [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
+* **Provide specific examples to demonstrate the steps**. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you're providing snippets in the issue, use [Markdown code blocks](https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github).
 * **Describe the behavior you observed after following the steps** and point out the exact problem with that behavior.
 * **Explain which behavior you expected to see instead and why.**
-* **Include screenshots and animated GIFs** which show you following the described steps and clearly demonstrate the problem. You can try to **record the GIF of the steps to reproduce the bug**. You can use [licecap](http://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [silentcast](https://github.com/colinkeenan/silentcast) or [byzanz](https://github.com/GNOME/byzanz) on Linux.
-* **If you're reporting embARC OSP compilation failures**, include a verbose compiling log. Include the compiling log in the issue in a [code block](https://help.github.com/articles/markdown-basics/#multiple-lines), a [file attachment](https://help.github.com/articles/file-attachments-on-issues-and-pull-requests/), or put it in a [gist](https://gist.github.com/) and provide link to that gist.
+* **Include screenshots and animated GIFs** which show you following the described steps and clearly demonstrate the problem. You can try to **record the GIF of the steps to reproduce the bug**. You can use [licecap](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [silentcast](https://github.com/colinkeenan/silentcast) on Linux.
+* **If you're reporting embARC OSP compilation failures**, include a verbose compiling log. Include the compiling log in the issue in a [code block](https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github), a [file attachment](https://help.github.com/en/articles/file-attachments-on-issues-and-pull-requests), or put it in a [gist](https://gist.github.com/discover) and provide link to that gist.
 * **If the problem happens randomly**, describe what you were doing before the problem happened and share more information using the guidelines below.
 
 Provide more context by answering these questions:
@@ -119,9 +119,9 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 * **Use a clear and descriptive title** for the issue to identify the suggestion.
 * **Provide a step-by-step description of the suggested enhancement** in as many details as possible.
-* **Provide specific examples to demonstrate the steps**. Include copy/pasteable snippets which you use in those examples, as [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
+* **Provide specific examples to demonstrate the steps**. Include copy/pasteable snippets which you use in those examples, as [Markdown code blocks](https://help.github.com/en/articles/getting-started-with-writing-and-formatting-on-github).
 * **Describe the current behavior** and **explain which behavior you expected to see instead** and why.
-* **Include screenshots and animated GIFs** which show you following the described steps and clearly demonstrate the problem. You can try to **record the GIF of the steps to reproduce the bug**. You can use [licecap](http://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [silentcast](https://github.com/colinkeenan/silentcast) or [byzanz](https://github.com/GNOME/byzanz) on Linux.
+* **Include screenshots and animated GIFs** which show you following the described steps and clearly demonstrate the problem. You can try to **record the GIF of the steps to reproduce the bug**. You can use [licecap](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [silentcast](https://github.com/colinkeenan/silentcast) on Linux.
 * **Explain why this enhancement would be useful** to most embARC OSP users and isn't something that already existed as similiar feature.
 * **List some other text software platform where this enhancement exists.**
 * **Specify the name and version of the OS you're using.**
@@ -132,7 +132,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 Unsure where to begin contributing to embARC OSP? You can start by looking through the existing issues.
 
-If you want to read about using embARC OSP or developing board support package, peripheral drivers, libraries, middlewares or applications in embARC OSP, the [embARC OSP documentation](http://foss-for-synopsys-dwc-arc-processors.github.io/embarc_osp) is free and available online.
+If you want to read about using embARC OSP or developing board support package, peripheral drivers, libraries, middlewares or applications in embARC OSP, the [embARC OSP documentation](https://embarc.org/embarc_osp) is free and available online.
 
 ### Pull Requests
 
@@ -146,7 +146,7 @@ If you want to read about using embARC OSP or developing board support package, 
 
 ### Git Commit Messages
 
-* Following the [good commit guideline](http://chris.beams.io/posts/git-commit/).
+* Following the [good commit guideline](https://chris.beams.io/posts/git-commit/).
 * Use the present tense ("Add feature" not "Added feature")
 * Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
 * Limit the first line to 72 characters or less
@@ -177,7 +177,7 @@ To help with writing c source code in editor, you can install plugin for your ed
 
 ### Documentation Styleguide
 
-* Use [Doxygen](http://www.stack.nl/~dimitri/doxygen/index.html).
+* Use [Doxygen](http://www.doxygen.nl).
     - To help with documentation in source code, you can install doxygen plugins for your editor.
         + For sublime-text editor, you can use [Doc​Blockr](https://packagecontrol.io/packages/DocBlockr) plugin.
 * Use [Markdown](https://daringfireball.net/projects/markdown).
@@ -212,7 +212,7 @@ To help with writing c source code in editor, you can install plugin for your ed
 
 This section lists the labels we use to help us track and manage issues and pull requests. Most labels are used across all embARC repositories.
 
-[GitHub search](https://help.github.com/articles/searching-issues/) makes it easy to use labels for finding groups of issues or pull requests you're interested in.
+[GitHub search](https://help.github.com/en/articles/searching-issues-and-pull-requests) makes it easy to use labels for finding groups of issues or pull requests you're interested in.
 
 The labels are loosely grouped by their purpose, but it's not required that every issue have a label from every group or that an issue can't have more than one label from the same group.
 

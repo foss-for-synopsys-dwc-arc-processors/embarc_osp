@@ -92,7 +92,7 @@ Toolchain Support
 
 The embARC OSP software is supported by the following toolchain offerings from Synopsys:
 
-- The `DesignWare ARC MetaWare Development Toolkit <http://www.synopsys.com/dw/ipdir.php?ds=sw_metaware>`__
+- The `DesignWare ARC MetaWare Development Toolkit <https://www.synopsys.com/dw/ipdir.php?ds=sw_metaware>`__
   builds on a long legacy of industry-leading compiler and debugger products for embedded applications.
   It is a complete solution that contains all the components needed to support the
   development, debugging, and tuning of embedded applications for the |arc|.
