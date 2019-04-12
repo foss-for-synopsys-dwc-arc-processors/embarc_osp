@@ -641,6 +641,12 @@
     <member refid="structdev__spi__info_1a4c002198bcf2ecbc687a6052b2a3efc0" kind="variable"><name>extra</name></member>
     <member refid="structdev__spi__info_1a8acdb76bded55ba8963294c8f1963a87" kind="variable"><name>dummy</name></member>
   </compound>
+  <compound refid="struct_d_e_v___s_p_i___p_a_k" kind="struct"><name>DEV_SPI_PAK</name>
+    <member refid="struct_d_e_v___s_p_i___p_a_k_1a8da632343353f1cbdb4bf05dc97cef3c" kind="variable"><name>cmd</name></member>
+    <member refid="struct_d_e_v___s_p_i___p_a_k_1a1dd2d69e0f776a472512429afa26d74f" kind="variable"><name>addr32</name></member>
+    <member refid="struct_d_e_v___s_p_i___p_a_k_1ae4b687dc87b5b30d6f9787830542ad40" kind="variable"><name>data_ptr</name></member>
+    <member refid="struct_d_e_v___s_p_i___p_a_k_1af31566b6d0c12d73fc97e3f657c7e79b" kind="variable"><name>data_len</name></member>
+  </compound>
   <compound refid="structdev__spi__transfer" kind="struct"><name>dev_spi_transfer</name>
     <member refid="structdev__spi__transfer_1a848ccf4b83c3f0ea1ea73f7ae3cc5cbe" kind="variable"><name>next</name></member>
     <member refid="structdev__spi__transfer_1a447ff59149a2a0dc87a493b2bf4c6c5a" kind="variable"><name>tot_len</name></member>
@@ -1166,6 +1172,7 @@
     <member refid="structdw__spi__reg_1afbb06fc70f276d455bc00569410f927f" kind="variable"><name>DATAREG</name></member>
     <member refid="structdw__spi__reg_1abe6fdf42c7e298fea2489ca8a1484f0d" kind="variable"><name>DRS</name></member>
     <member refid="structdw__spi__reg_1a2f05651446c66144e070a11e621e8a15" kind="variable"><name>RX_SAMPLE_DLY</name></member>
+    <member refid="structdw__spi__reg_1a0c76c8b30eb8c8c22ad4642c3a15b6ec" kind="variable"><name>SPI_CTRLR0</name></member>
   </compound>
   <compound refid="structdw__spi__transfer" kind="struct"><name>dw_spi_transfer</name>
     <member refid="structdw__spi__transfer_1af5e42d21864b1b79be8b30c6dab5f909" kind="variable"><name>xfer_len</name></member>
@@ -5829,6 +5836,7 @@
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga0a6862a5bb74f4998cec6312984942c0" kind="define"><name>SPI_CMD_DIS_DEV</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga44a95a4b812f719c9f7d8384ca78f777" kind="define"><name>SPI_CMD_GET_TXAVAIL</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga94705749900008c3264905b1a58f182f" kind="define"><name>SPI_CMD_GET_RXAVAIL</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga86287f8d9c8efa08b8d1326d9e3ac930" kind="define"><name>SPI_CMD_QUAD_READ</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga3917a1fd406a1d67750f3d0f2fd4d767" kind="define"><name>SPI_CMD_MST_SEL_DEV</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga8f6ad6c20c16aa1a0dcd696f27a7af5c" kind="define"><name>SPI_CMD_MST_DSEL_DEV</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga3800261c450f77f92c20cad49d64de72" kind="define"><name>SPI_CMD_MST_SET_FREQ</name></member>
@@ -5893,6 +5901,7 @@
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___s_l_a_v_e___s_e_l_e_c_t_1ga7d07447042da216ee1e5d133ca92a597" kind="typedef"><name>DEV_SPI_CS_LINE</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga296ca50563d3df910743a6c1001946c6" kind="typedef"><name>DEV_SPI_TRANSFER</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gaf45a8c9a363591c178f7f75c7294b58a" kind="typedef"><name>DEV_SPI_TRANSFER_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9c2b7129610aeae9da3fd46ab8dc9f36" kind="typedef"><name>DEV_SPI_PAK_PTR</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga8125d4a1fd02b56a694d3520ed38b734" kind="typedef"><name>DEV_SPI_INFO</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gaf88f5afa1d6c3d109ac2f9c3a61fb229" kind="typedef"><name>DEV_SPI_INFO_PTR</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gadd86dcfed5b39e0bf5b74c47b4b2971a" kind="typedef"><name>DEV_SPI</name></member>
@@ -7371,6 +7380,7 @@
     <member refid="dw__spi_8c_1a8d3a45aa64f7dd9b14f40b18fcae3919" kind="function"><name>dw_spi_getready</name></member>
     <member refid="dw__spi_8c_1a6d66cd6c3eaba037154e736f58dfbcf4" kind="function"><name>dw_spi_putdata</name></member>
     <member refid="dw__spi_8c_1a00cb98e695bed7d57996ead9045fde9e" kind="function"><name>dw_spi_getdata</name></member>
+    <member refid="dw__spi_8c_1a19b6740d4f734f3fc2a69ab55262e245" kind="function"><name>dw_spi_rxflr</name></member>
     <member refid="dw__spi_8c_1a9e48dc7a593319092a35da4d4fc94f02" kind="function"><name>dw_spi_snd_dat</name></member>
     <member refid="dw__spi_8c_1a05bc724c1c055eca037105abcb0f19e9" kind="function"><name>dw_spi_rcv_dat</name></member>
     <member refid="dw__spi_8c_1a06b11673e907e024bbb65d7b81cea844" kind="function"><name>dw_spi_psnd_dat</name></member>
@@ -7380,6 +7390,8 @@
     <member refid="dw__spi_8c_1afdf09b6b30236c9d40d6ea99403a19f8" kind="function"><name>dw_spi_mask_interrupt</name></member>
     <member refid="dw__spi_8c_1a65bf7cbedbee2e8d5172c2339a324dac" kind="function"><name>dw_spi_set_freq</name></member>
     <member refid="dw__spi_8c_1a0305ff165506cdfe268f93fddbb1b2ac" kind="function"><name>dw_spi_set_dfs</name></member>
+    <member refid="dw__spi_8c_1ac52a17a3ec0fc0dbec50daee59426ffb" kind="function"><name>dw_spi_quad_enable</name></member>
+    <member refid="dw__spi_8c_1a42e730391dc4891287d3a9ddd15d7920" kind="function"><name>dw_spi_quad_disable</name></member>
     <member refid="dw__spi_8c_1a042199c4dae99c4f4c05220920640fb0" kind="function"><name>dw_spi_select_clockmode</name></member>
     <member refid="dw__spi_8c_1a31292fa0db0de072a31990cc62cbca34" kind="function"><name>dw_spi_set_clockmode</name></member>
     <member refid="dw__spi_8c_1a63eb95bacc25186e3eb8efe1d0b71e56" kind="function"><name>dw_spi_select_slave</name></member>
@@ -7412,6 +7424,7 @@
     <member refid="dw__spi_8c_1a27248c2c4699a3d5bf2636dcf1e23768" kind="function"><name>dw_spi_init_transfer</name></member>
     <member refid="dw__spi_8c_1a8c953586f2545b558dfa24248ea5ac07" kind="function"><name>dw_spi_chk_xfer_aligned</name></member>
     <member refid="dw__spi_8c_1aa46331b8e4916df9b5fd358a8e4aa6d4" kind="function"><name>dw_spi_poll_transfer</name></member>
+    <member refid="dw__spi_8c_1ac877de39c7f5ddd12bc520056d6ac825" kind="function"><name>dw_spi_quad_receive</name></member>
     <member refid="dw__spi_8c_1a237c47561c92859edb1272a2446732d8" kind="function"><name>dw_spi_open</name></member>
     <member refid="dw__spi_8c_1a3b3007ebdf775be7cb571b56a7bebe1f" kind="function"><name>dw_spi_close</name></member>
     <member refid="dw__spi_8c_1a9d8a5b3a14d5b4ef1ca1dfdc082854d2" kind="function"><name>dw_spi_control</name></member>
@@ -14541,6 +14554,7 @@
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga0a6862a5bb74f4998cec6312984942c0" kind="define"><name>SPI_CMD_DIS_DEV</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga44a95a4b812f719c9f7d8384ca78f777" kind="define"><name>SPI_CMD_GET_TXAVAIL</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga94705749900008c3264905b1a58f182f" kind="define"><name>SPI_CMD_GET_RXAVAIL</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga86287f8d9c8efa08b8d1326d9e3ac930" kind="define"><name>SPI_CMD_QUAD_READ</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga3917a1fd406a1d67750f3d0f2fd4d767" kind="define"><name>SPI_CMD_MST_SEL_DEV</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga8f6ad6c20c16aa1a0dcd696f27a7af5c" kind="define"><name>SPI_CMD_MST_DSEL_DEV</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga3800261c450f77f92c20cad49d64de72" kind="define"><name>SPI_CMD_MST_SET_FREQ</name></member>
@@ -14551,6 +14565,7 @@
   <compound refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t" kind="group"><name>DEVICE_HAL_SPI_DEVSTRUCT</name>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga296ca50563d3df910743a6c1001946c6" kind="typedef"><name>DEV_SPI_TRANSFER</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gaf45a8c9a363591c178f7f75c7294b58a" kind="typedef"><name>DEV_SPI_TRANSFER_PTR</name></member>
+    <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9c2b7129610aeae9da3fd46ab8dc9f36" kind="typedef"><name>DEV_SPI_PAK_PTR</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga8125d4a1fd02b56a694d3520ed38b734" kind="typedef"><name>DEV_SPI_INFO</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gaf88f5afa1d6c3d109ac2f9c3a61fb229" kind="typedef"><name>DEV_SPI_INFO_PTR</name></member>
     <member refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gadd86dcfed5b39e0bf5b74c47b4b2971a" kind="typedef"><name>DEV_SPI</name></member>
