@@ -110,6 +110,11 @@ Inline int32_t dw_spi_getdata(DW_SPI_REG *spi_reg_ptr)
 {
 	return (int32_t)spi_reg_ptr->DATAREG;
 }
+/** get receive FIFO level*/
+Inline int32_t dw_spi_rxflr(DW_SPI_REG *spi_reg_ptr)
+{
+	return (int32_t)spi_reg_ptr->RXFLR;
+}
 /**
  * \brief	send data by spi when available,
  * 	mostly used in interrupt method, non-blocked function
@@ -206,6 +211,31 @@ static int32_t dw_spi_set_dfs(DW_SPI_REG *spi_reg_ptr, uint32_t dfs)
 	dw_spi_enable(spi_reg_ptr);
 
 	return 0;
+}
+
+/** Designware spi enable quad mode*/
+static void dw_spi_quad_enable(DW_SPI_REG *spi_reg_ptr, uint32_t len)
+{
+	dw_spi_disable(spi_reg_ptr);
+
+	spi_reg_ptr->CTRLR0 |=  ((0x2 << 21) | (0x2 << 8));//Quad Frame Format.
+	spi_reg_ptr->SPI_CTRLR0 = (0x8 << 11) | (0x2 << 8) | (0x6 << 2) | (0x0 << 0);
+						//8 wait cycles | 8bit instruction | 24bit address | instruction and address sent in standard mode.
+	spi_reg_ptr->CTRLR1 = len;
+
+	dw_spi_enable(spi_reg_ptr);
+}
+
+/** Designware spi disable quad mode*/
+static void dw_spi_quad_disable(DW_SPI_REG *spi_reg_ptr)
+{
+	dw_spi_disable(spi_reg_ptr);
+
+	spi_reg_ptr->CTRLR0 &= ~((0x3 << 21) | (0x3 << 8));
+	spi_reg_ptr->CTRLR1 = 0;
+	spi_reg_ptr->CTRLR0 = 0;
+
+	dw_spi_enable(spi_reg_ptr);
 }
 
 /** Choose proper designware spi clock mode setting value */
@@ -784,6 +814,47 @@ static uint32_t dw_spi_poll_transfer(DEV_SPI_INFO *spi_info_ptr)
 	return len>>1;
 }
 
+
+
+
+static uint32_t dw_spi_quad_receive(DEV_SPI_INFO *spi_info_ptr, DEV_SPI_PAK_PTR pak)
+{
+	uint32_t len = 0;
+	uint8_t i = 0;
+	DW_SPI_CTRL *spi_ctrl_ptr = (DW_SPI_CTRL_PTR)(spi_info_ptr->spi_ctrl);
+	DW_SPI_REG *spi_reg_ptr = (DW_SPI_REG *)(spi_ctrl_ptr->dw_spi_regs);
+
+	spi_info_ptr->status |= DEV_IN_XFER;
+
+	dw_spi_quad_enable(spi_reg_ptr, pak->data_len -1);
+
+	dw_spi_psnd_dat(spi_reg_ptr, pak->cmd);
+	dw_spi_psnd_dat(spi_reg_ptr, pak->addr32);
+
+	for (i = 0; i < pak->data_len; i ++) {
+		dw_spi_psnd_dat(spi_reg_ptr, 0xFF);
+		while (dw_spi_busy(spi_reg_ptr));
+
+		if (dw_spi_getready(spi_reg_ptr)) {
+			while (dw_spi_rxflr(spi_reg_ptr)) {
+				pak->data_ptr[len++] = (uint8_t)dw_spi_getdata(spi_reg_ptr);
+				if (len == pak->data_len) {
+					break;
+				}
+			}
+		}
+		if (len == pak->data_len) {
+			break;
+		}
+	}
+
+	dw_spi_quad_disable(spi_reg_ptr);
+	spi_info_ptr->status &= ~DEV_IN_XFER;
+	return len;
+}
+
+/** @} */
+
 /**
  * \brief	open a designware spi device
  * \param[in]	spi_obj	spi object pointer
@@ -1110,6 +1181,9 @@ int32_t dw_spi_control (DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param)
 			} else {
 				ercd = E_PAR;
 			}
+			break;
+		case SPI_CMD_QUAD_READ:
+			dw_spi_quad_receive(spi_info_ptr, (DEV_SPI_PAK_PTR)param);
 			break;
 		case SPI_CMD_TRANSFER_INT:
 			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);

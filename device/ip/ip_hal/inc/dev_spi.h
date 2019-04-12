@@ -303,7 +303,13 @@
  * - Return value explanation :
  */
 #define SPI_CMD_GET_RXAVAIL			DEV_SET_SPI_SYSCMD(23)
-
+/**
+ * start the transfer by quad read
+ * - Param type : \ref DEV_SPI_PAK *
+ * - Param usage :
+ * - Return value explanation :
+ */
+#define SPI_CMD_QUAD_READ			DEV_SET_SPI_SYSCMD(24)
 
 /* ++++ Master only commands for SPI Device ++++ */
 /**
@@ -488,6 +494,20 @@ struct dev_spi_transfer {
 							+ (xfer)->rx_ofs) ;	\
 					DEV_SPI_XFER_CALC_TOTLEN(xfer);		\
 				}
+
+/**
+ * \brief	spi read and write data structure used by \ref SPI_CMD_QUAD_READ
+ * 	spi write cmd and address then read data
+ *
+ */
+typedef struct {
+	uint8_t cmd;
+	uint32_t addr32;
+	uint8_t *data_ptr;
+	uint32_t data_len;
+
+} DEV_SPI_PAK, *DEV_SPI_PAK_PTR;
+
 /**
  * \brief	spi information struct definition
  * \details	informations about spi open state, working state,
