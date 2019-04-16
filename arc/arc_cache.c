@@ -412,3 +412,13 @@ void arc_cache_init(void)
 	}
 
 }
+
+/**
+ * \brief  initialize cache
+ * invalidate icache and dcache
+ */
+void arc_cache_invalidate(void)
+{
+	dcache_invalidate();
+	icache_invalidate();
+}

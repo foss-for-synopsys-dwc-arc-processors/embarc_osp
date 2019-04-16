@@ -144,8 +144,8 @@ DBG_HW_FLAGS += -ex "add-symbol-file $(SECURESHIELD_SECURE).elf _f_rom_secureshi
 endif
 endif
 
-SECURE_LIBS += $(OUT_DIR)/arc/startup/arc_cxx_support.o $(SECURE_APPL_LIBS) \
-	 	$(BOARD_LIB) $(MID_LIBS) $(OS_LIBS) $(LIB_LIB_CLIB)
+SECURE_LIBS += $(OUT_DIR)/arc/startup/arc_cxx_support.o $(OUT_DIR)/arc/arc_cache.o \
+		$(SECURE_APPL_LIBS) $(BOARD_LIB) $(MID_LIBS) $(OS_LIBS) $(LIB_LIB_CLIB)
 
 ##### SECURE  APPLICATION C/ASM/CPP SOURCE FILE COMPILING RULES#####
 .SECONDEXPANSION:

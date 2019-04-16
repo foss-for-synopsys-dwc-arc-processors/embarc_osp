@@ -135,6 +135,7 @@ _init_phase2:
 	j 	_exit_loop
 _next_stage:
 	jl 	secureshield_init
+	jl	arc_cache_invalidate
 
 	pop 	gp
 	pop 	blink

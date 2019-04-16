@@ -309,6 +309,7 @@ extern int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t d
 extern int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data);
 extern int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data);
 extern void arc_cache_init(void);
+extern void arc_cache_invalidate(void);
 
 #ifdef __cplusplus
 }
