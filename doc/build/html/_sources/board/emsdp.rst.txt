@@ -100,6 +100,8 @@ All the sets of connections are controlled by mux controller and can be switched
 There are many peripheral devices available, such as SPI, IIC, UART, GPIO.
 
 
+.. _getting_started_with_arc_em_software_development_platform:
+
 Usage
 -----
 
@@ -137,8 +139,6 @@ If you are using default cores of |emsdp|: *em6_scss*, *em7d_esp_dfss*, and *em1
 
 
 #. You are done importing a new package, flash the bit file into board and build with it to make sure everything is working.
-
-.. _getting_started_with_arc_em_software_development_platform:
 
 Run Your First Program
 ^^^^^^^^^^^^^^^^^^^^^^
