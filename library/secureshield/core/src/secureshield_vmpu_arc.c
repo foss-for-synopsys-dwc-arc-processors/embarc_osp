@@ -619,8 +619,10 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		return;
 	}
 
+	g_container_context[container_id].cfg = container_cfg;
 
 	size = VMPU_REGION_SIZE(container_cfg->text_start, container_cfg->rodata_end);
+
 	if (size != 0) {
 		vmpu_ac_mem(container_id, container_cfg->text_start, size, text_attribute);
 	}
@@ -634,8 +636,6 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_start, container_cfg->bss_end));
 		}
 	}
-
-	g_container_context[container_id].cfg = container_cfg;
 
 	/* handle background container */
 	if (!container_id) {
@@ -670,6 +670,8 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		return;
 	}
 
+	g_container_context[container_id].cfg = container_cfg;
+
 	size = VMPU_REGION_SIZE(container_cfg->text_start, container_cfg->text_end);
 	if (size != 0) {
 		vmpu_ac_mem(container_id, container_cfg->text_start, size, SECURESHIELD_ACDEF_UTEXT | secure);
@@ -689,8 +691,6 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 			memset(container_cfg->bss_start, 0, VMPU_REGION_SIZE(container_cfg->bss_start, container_cfg->bss_end));
 		}
 	}
-
-	g_container_context[container_id].cfg = container_cfg;
 
 	/* initialize the status of container, stack pointer and status register */
 	if (!container_id) {
