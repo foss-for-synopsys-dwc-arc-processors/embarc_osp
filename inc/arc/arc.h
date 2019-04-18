@@ -384,6 +384,7 @@
 #define AUX_IC_IVIL			(0x19)	/*!< invalidate instruction cache line */
 #define AUX_IC_RAM_ADDR			(0x1a)	/*!< instruction cache external access address */
 #define AUX_IC_TAG			(0x1b)	/*!< instruction cache tag access */
+#define AUX_IC_XTAG			(0x1c)	/*!< instruction cache secure bit tag */
 #define AUX_IC_DATA			(0x1d)	/*!< instruction cache data access */
 #define AUX_DC_IVDC			(0x47)	/*!< invalidate data cache */
 #define AUX_DC_CTRL			(0x48)	/*!< data cache control register */
@@ -393,6 +394,7 @@
 #define AUX_DC_FLDL			(0x4c)	/*!< flush data line */
 #define AUX_DC_RAM_ADDR			(0x58)	/*!< data cache external access address */
 #define AUX_DC_TAG			(0x59)	/*!< data cache tag access */
+#define AUX_DC_XTAG			(0x5a)	/*!< data cache secure bit tag */
 #define AUX_DC_DATA			(0x5b)	/*!< data cache data access */
 /** @} */
 
