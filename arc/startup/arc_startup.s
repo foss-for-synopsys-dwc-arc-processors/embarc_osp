@@ -216,8 +216,6 @@ _arc_reset_call_main:
 	jlne	[r0]
 /* board level library init */
 #ifdef	LIB_SECURESHIELD
-	/* init cache */
-	jl	arc_cache_init
 	jl 	secureshield_start
 #if SECURESHIELD_VERSION == 2
 	jl 	secureshield_except_bit_clear
