@@ -213,69 +213,67 @@
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlne<sp/><sp/><sp/><sp/>[r0]</highlight></codeline>
 <codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>board<sp/>level<sp/>library<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="218"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>LIB_SECURESHIELD</highlight></codeline>
-<codeline lineno="219"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>cache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__cache_8c_1a6bda12adc92ba421f24f6e836051db9c" kindref="member">arc_cache_init</ref></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_start</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SECURESHIELD_VERSION<sp/>==<sp/>2</highlight></codeline>
-<codeline lineno="223"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_except_bit_clear</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="225"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="226"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>early<sp/>init<sp/>of<sp/>interrupt<sp/>and<sp/>exception<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga0d83599ed3aa340e40e593d5556e811f" kindref="member">exc_int_init</ref></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>cache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__cache_8c_1a6bda12adc92ba421f24f6e836051db9c" kindref="member">arc_cache_init</ref></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="231"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
-<codeline lineno="233"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>_init</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__GNU__)</highlight></codeline>
-<codeline lineno="235"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_global_ctors_aux</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_init_array_aux</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="238"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>board_main<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>board-level<sp/>main<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
-<codeline lineno="240"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>_fini</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__GNU__)</highlight></codeline>
-<codeline lineno="242"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_global_dtors_aux</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="244"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_loop</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_halt</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
-<codeline lineno="247"><highlight class="normal">_exit_halt:</highlight></codeline>
-<codeline lineno="248"><highlight class="normal">_exit_loop:</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga289482433da15b3faa9af6ab2b6547e3" kindref="member">AUX_STATUS_MASK_HALT</ref></highlight></codeline>
+<codeline lineno="219"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_start</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SECURESHIELD_VERSION<sp/>==<sp/>2</highlight></codeline>
+<codeline lineno="221"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_except_bit_clear</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="223"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="224"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>early<sp/>init<sp/>of<sp/>interrupt<sp/>and<sp/>exception<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga0d83599ed3aa340e40e593d5556e811f" kindref="member">exc_int_init</ref></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>cache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__cache_8c_1a6bda12adc92ba421f24f6e836051db9c" kindref="member">arc_cache_init</ref></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="229"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
+<codeline lineno="231"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>_init</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__GNU__)</highlight></codeline>
+<codeline lineno="233"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_global_ctors_aux</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_init_array_aux</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="236"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>board_main<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>board-level<sp/>main<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
+<codeline lineno="238"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>_fini</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__GNU__)</highlight></codeline>
+<codeline lineno="240"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_global_dtors_aux</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="242"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_loop</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_halt</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">_exit_halt:</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">_exit_loop:</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga289482433da15b3faa9af6ab2b6547e3" kindref="member">AUX_STATUS_MASK_HALT</ref></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_exit_loop</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight></codeline>
-<codeline lineno="255"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
-<codeline lineno="256"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_init,<sp/>_fini</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init&quot;</highlight><highlight class="normal">,text</highlight></codeline>
-<codeline lineno="258"><highlight class="normal">_init:</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_init</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini&quot;</highlight><highlight class="normal">,<sp/>text</highlight></codeline>
-<codeline lineno="270"><highlight class="normal">_fini:</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_fini</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="281"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_exit_loop</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
+<codeline lineno="254"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_init,<sp/>_fini</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init&quot;</highlight><highlight class="normal">,text</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">_init:</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_init</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini&quot;</highlight><highlight class="normal">,<sp/>text</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">_fini:</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_fini</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="279"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/startup/arc_startup.s"/>
   </compounddef>
