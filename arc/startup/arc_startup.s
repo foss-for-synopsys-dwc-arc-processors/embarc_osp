@@ -208,6 +208,9 @@ _s3_clear_bss_loop:
 	kflag r0
 #endif
 #endif
+#ifdef LIB_EMBARC_MLI
+	jl	_embarc_mli_startup
+#endif
 /* STAGE 3: go to main */
 
 _arc_reset_call_main:

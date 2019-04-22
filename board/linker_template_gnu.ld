@@ -43,6 +43,10 @@ SECTIONS
 		_e_vector = .;
 	} > REGION_ROM
 
+#if defined(LIB_EMBARC_MLI)
+#include <linker_template_mli_gnu.ld>
+#endif
+
 #if (REGION_XCCM_SIZE != 0)
 	.x_ccm (NOLOAD) : ALIGN(8)
 	{
