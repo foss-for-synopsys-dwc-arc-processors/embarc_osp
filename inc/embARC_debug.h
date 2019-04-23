@@ -41,6 +41,11 @@
 extern "C" {
 #endif
 
+//comment this to disable exception readable dumping. By doing so could save some code space
+#ifndef CONFIG_ARC_EXCEPTION_DEBUG
+#define CONFIG_ARC_EXCEPTION_DEBUG
+#endif
+
 #ifndef EMBARC_PRINTF
 	#ifdef MID_COMMON
 		#include "xprintf.h"

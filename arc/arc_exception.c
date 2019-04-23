@@ -57,6 +57,250 @@
  *
  */
 
+#ifdef CONFIG_ARC_EXCEPTION_DEBUG
+/* For EV_ProtV, the numbering/semantics of the parameter are consistent across
+ * several codes, although not all combination will be reported.
+ *
+ * These codes and parameters do not have associated* names in
+ * the technical manual, just switch on the values in Table 6-5
+ */
+static void dump_protv_access_err(uint32_t parameter)
+{
+	switch (parameter) {
+	case 0x1:
+		EMBARC_PRINTF("code protection scheme");
+		break;
+	case 0x2:
+		EMBARC_PRINTF("stack checking scheme");
+		break;
+	case 0x4:
+		EMBARC_PRINTF("MPU");
+		break;
+	case 0x8:
+		EMBARC_PRINTF("MMU");
+		break;
+	case 0x10:
+		EMBARC_PRINTF("NVM");
+		break;
+	case 0x24:
+		EMBARC_PRINTF("Secure MPU");
+		break;
+	case 0x44:
+		EMBARC_PRINTF("Secure MPU with SID mismatch");
+		break;
+	default:
+		EMBARC_PRINTF("unknown parameter");
+		break;
+	}
+}
+
+static void dump_protv_exception(uint32_t cause, uint32_t parameter)
+{
+	switch (cause) {
+	case 0x0:
+		EMBARC_PRINTF("Instruction fetch violation: ");
+		dump_protv_access_err(parameter);
+		break;
+	case 0x1:
+		EMBARC_PRINTF("Memory read protection violation: ");
+		dump_protv_access_err(parameter);
+		break;
+	case 0x2:
+		EMBARC_PRINTF("Memory write protection violation: ");
+		dump_protv_access_err(parameter);
+		break;
+	case 0x3:
+		EMBARC_PRINTF("Memory read-modify-write violation: ");
+		dump_protv_access_err(parameter);
+		break;
+	case 0x10:
+		EMBARC_PRINTF("Normal vector table in secure memory");
+		break;
+	case 0x11:
+		EMBARC_PRINTF("NS handler code located in S memory");
+		break;
+	case 0x12:
+		EMBARC_PRINTF("NSC Table Range Violation");
+		break;
+	default:
+		EMBARC_PRINTF("unknown cause");
+		break;
+	}
+}
+
+static void dump_machine_check_exception(uint32_t cause, uint32_t parameter)
+{
+	switch (cause) {
+	case 0x0:
+		EMBARC_PRINTF("double fault");
+		break;
+	case 0x1:
+		EMBARC_PRINTF("overlapping TLB entries");
+		break;
+	case 0x2:
+		EMBARC_PRINTF("fatal TLB error");
+		break;
+	case 0x3:
+		EMBARC_PRINTF("fatal cache error");
+		break;
+	case 0x4:
+		EMBARC_PRINTF("internal memory error on instruction fetch");
+		break;
+	case 0x5:
+		EMBARC_PRINTF("internal memory error on data fetch");
+		break;
+	case 0x6:
+		EMBARC_PRINTF("illegal overlapping MPU entries");
+		if (parameter == 0x1) {
+			EMBARC_PRINTF(" (jump and branch target)");
+		}
+		break;
+	case 0x10:
+		EMBARC_PRINTF("secure vector table not located in secure memory");
+		break;
+	case 0x11:
+		EMBARC_PRINTF("NSC jump table not located in secure memory");
+		break;
+	case 0x12:
+		EMBARC_PRINTF("secure handler code not located in secure memory");
+		break;
+	case 0x13:
+		EMBARC_PRINTF("NSC target address not located in secure memory");
+		break;
+	case 0x80:
+		EMBARC_PRINTF("uncorrectable ECC or parity error in vector memory");
+		break;
+	default:
+		EMBARC_PRINTF("unknown cause");
+		break;
+	}
+}
+
+static void dump_privilege_exception(uint32_t cause, uint32_t parameter)
+{
+	switch (cause) {
+	case 0x0:
+		EMBARC_PRINTF("Privilege violation");
+		break;
+	case 0x1:
+		EMBARC_PRINTF("disabled extension");
+		break;
+	case 0x2:
+		EMBARC_PRINTF("action point hit");
+		break;
+	case 0x10:
+		switch (parameter) {
+		case 0x1:
+			EMBARC_PRINTF("N to S return using incorrect return mechanism");
+			break;
+		case 0x2:
+			EMBARC_PRINTF("N to S return with incorrect operating mode");
+			break;
+		case 0x3:
+			EMBARC_PRINTF("IRQ/exception return fetch from wrong mode");
+			break;
+		case 0x4:
+			EMBARC_PRINTF("attempt to halt secure processor in NS mode");
+			break;
+		case 0x20:
+			EMBARC_PRINTF("attempt to access secure resource from normal mode");
+			break;
+		case 0x40:
+			EMBARC_PRINTF("SID violation on resource access (APEX/UAUX/key NVM)");
+			break;
+		default:
+			EMBARC_PRINTF("unknown parameter");
+			break;
+		}
+		break;
+	case 0x13:
+		switch (parameter) {
+		case 0x20:
+			EMBARC_PRINTF("attempt to access secure APEX feature from NS mode");
+			break;
+		case 0x40:
+			EMBARC_PRINTF("SID violation on access to APEX feature");
+			break;
+		default:
+			EMBARC_PRINTF("unknown parameter");
+			break;
+		}
+		break;
+	default:
+		EMBARC_PRINTF("unknown cause");
+		break;
+	}
+}
+
+static void dump_exception_info(uint32_t vector, uint32_t cause, uint32_t param)
+{
+	if (vector >= 0x10 && vector <= 0xFF) {
+		EMBARC_PRINTF("interrupt %d\n", vector);
+		return;
+	}
+
+	/* Names are exactly as they appear in Designware ARCv2 ISA
+	 * Programmer's reference manual for easy searching
+	 */
+	switch (vector) {
+		case EXC_NO_RESET:
+			EMBARC_PRINTF("Reset");
+			break;
+		case EXC_NO_MEM_ERR:
+			EMBARC_PRINTF("Memory Error");
+			break;
+		case EXC_NO_INS_ERR:
+			EMBARC_PRINTF("Instruction Error");
+			break;
+		case EXC_NO_MAC_CHK:
+			EMBARC_PRINTF("EV_MachineCheck: ");
+			dump_machine_check_exception(cause, param);
+			break;
+		case EXC_NO_TLB_MISS_I:
+			EMBARC_PRINTF("EV_TLBMissI");
+			break;
+		case EXC_NO_TLB_MISS_D:
+			EMBARC_PRINTF("EV_TLBMissD");
+			break;
+		case EXC_NO_PRO_VIO:
+			EMBARC_PRINTF("EV_ProtV: ");
+			dump_protv_exception(cause, param);
+			break;
+		case EXC_NO_PRI_VIO:
+			EMBARC_PRINTF("EV_PrivilegeV: ");
+			dump_privilege_exception(cause, param);
+			break;
+		case EXC_NO_SWI:
+			EMBARC_PRINTF("EV_SWI");
+			break;
+		case EXC_NO_TRAP:
+			EMBARC_PRINTF("EV_Trap");
+			break;
+		case EXC_NO_EXT:
+			EMBARC_PRINTF("EV_Extension");
+			break;
+		case EXC_NO_DIV_ZER0:
+			EMBARC_PRINTF("EV_DivZero");
+			break;
+		case EXC_NO_DC_ERR:
+			EMBARC_PRINTF("EV_DCError");
+			break;
+		case EXC_NO_MAL_ALIGN:
+			EMBARC_PRINTF("EV_Misaligned");
+			break;
+		case EXC_NO_VEC_UNIT:
+			EMBARC_PRINTF("EV_VecUnit");
+			break;
+		default:
+			EMBARC_PRINTF("unknown exception vector");
+			break;
+	}
+
+	EMBARC_PRINTF("\n");
+}
+
+#endif /* CONFIG_ARC_EXCEPTION_DEBUG */
+
 /**
  * \ingroup ARC_HAL_EXCEPTION_CPU
  * \brief  default cpu exception handler
@@ -67,14 +311,21 @@ static void exc_handler_default(void *p_excinf)
 	uint32_t excpt_cause_reg = 0;
 	uint32_t excpt_ret_reg = 0;
 	uint32_t exc_no = 0;
+	uint32_t exc_cause = 0;
+	uint32_t exc_param = 0;
 
 	excpt_cause_reg = _arc_aux_read(AUX_ECR);
 	excpt_ret_reg = _arc_aux_read(AUX_ERRET);
 	exc_no = (excpt_cause_reg >> 16) & 0xff;
+	exc_cause = (excpt_cause_reg >> 8) & 0xff;
+	exc_param = (excpt_cause_reg >> 0) & 0xff;
 
 	dbg_printf(DBG_LESS_INFO, "default cpu exception handler\r\n");
 	dbg_printf(DBG_LESS_INFO, "exc_no:%d, last sp:0x%08x, ecr:0x%08x, eret:0x%08x\r\n",
 		exc_no, (uint32_t)p_excinf, excpt_cause_reg, excpt_ret_reg);
+#ifdef CONFIG_ARC_EXCEPTION_DEBUG
+	dump_exception_info(exc_no, exc_cause, exc_param);
+#endif
 #if SECURESHIELD_VERSION == 2
 	while (1);
 #else

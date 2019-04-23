@@ -65,8 +65,8 @@
 #define EXC_NO_DIV_ZER0			(11)	/*!< divide by zero */
 #define EXC_NO_DC_ERR			(12)	/*!< data cache consistency error */
 #define EXC_NO_MAL_ALIGN		(13)	/*!< misaligned data access */
-#define EXC_NO_RESERVE0			(14)	/*!< reserved */
-#define EXC_NO_RESERVE1			(15)	/*!< reserved */
+#define EXC_NO_VEC_UNIT			(14)	/*!< vector unit exception (Vector stack pointer check violation is detected in the vector unit.) */
+#define EXC_NO_RESERVE0			(15)	/*!< reserved */
 
 /* extension interrupts */
 #define EXC_NO_16			(16)	/*!< interrupt vector 16 */
@@ -111,8 +111,8 @@
 #define EXC_VECTOR_DIV_ZER0		(0x2c)	/*!< EXC_NO_DIV_ZER0 offset */
 #define EXC_VECTOR_DC_ERR		(0x30)	/*!< EXC_NO_DC_ERR offset */
 #define EXC_VECTOR_MAL_ALIGN		(0x34)	/*!< EXC_NO_MAL_ALIGN offset */
-#define EXC_VECTOR_RESERVE0		(0x38)	/*!< EXC_NO_RESERVE0 offset */
-#define EXC_VECTOR_RESERVE1		(0x3c)	/*!< EXC_NO_RESERVE1 offset */
+#define EXC_VECTOR_VEC_UNIT		(0x38)	/*!< EXC_NO_VEC_UNIT offset */
+#define EXC_VECTOR_RESERVE0		(0x3c)	/*!< EXC_NO_RESERVE0 offset */
 /** @} */
 
 /**
