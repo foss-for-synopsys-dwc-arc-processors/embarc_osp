@@ -48,12 +48,6 @@
 #define ONCHIP_FLASH_SIZE	0x40000
 #define ONCHIP_FLASH_BASE	0x0
 
-#define ARC_X_MEM_START 0xC0000000
-#define ARC_X_MEM_SIZE	0x8000
-
-#define ARC_Y_MEM_START 0xD0000000
-#define ARC_Y_MEM_SIZE	0x8000
-
 #ifdef ARC_FEATURE_ICCM_PRESENT
 #ifndef ICCM_SIZE
 #define ICCM_SIZE	ARC_FEATURE_ICCM_SIZE
@@ -122,6 +116,11 @@
 #ifndef REGION_EXT_RAM_START
 #define REGION_EXT_RAM_START	EXT_RAM_START
 #define REGION_EXT_RAM_SIZE		EXT_RAM_SIZE
+#endif
+
+#ifndef REGION_EXT_ROM_START
+#define REGION_EXT_ROM_START	EXT_ROM_START
+#define REGION_EXT_ROM_SIZE		EXT_ROM_SIZE
 #endif
 
 /* When the mcuboot used, need to set the specific memory layout of ROM */
