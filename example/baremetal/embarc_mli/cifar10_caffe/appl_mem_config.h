@@ -3,12 +3,6 @@
 
 #if defined(BOARD_EMSK)
 /* arcem9d only */
-#ifndef __MW__
-/* GNU toolchain needs more memory */
-#define REGION_ROM      REGION_EXT_ROM
-#define REGION_RAM      REGION_EXT_RAM
-#endif
-
 
 #define REGION_MLI_ROM		REGION_ROM
 #define REGION_MLI_DATA		REGION_DCCM
@@ -20,13 +14,6 @@
 #define REGION_MLI_YDATA	REGION_YCCM
 
 #elif defined(BOARD_IOTDK)
-#ifndef __MW__
-/* GNU toolchain needs more memory */
-#define EXT_ROM_START	BOOT_SPI_FLASH_BASE
-#define EXT_ROM_SIZE	BOOT_SPI_FLASH_SIZE
-#define REGION_ROM	REGION_EXT_ROM
-#define REGION_RAM	REGION_EXT_RAM
-#endif
 
 #define REGION_MLI_ROM		REGION_ROM
 #define REGION_MLI_DATA		REGION_DCCM
@@ -38,12 +25,6 @@
 #define REGION_MLI_YDATA	REGION_YCCM
 
 #elif defined(BOARD_EMSDP)
-
-#ifndef __MW__
-/* GNU toolchain needs more memory */
-#define REGION_ROM      REGION_EXT_RAM
-#define REGION_RAM      REGION_EXT_RAM
-#endif
 
 #define REGION_MLI_ROM		REGION_ROM
 #define REGION_MLI_DATA		REGION_DCCM
