@@ -169,13 +169,14 @@ endif
 ##
 	## Common Options
 	MKDEP_OPT	= -MMD -MT $@ -MF $@.d
-	COMMON_COMPILE_OPT = -mno-sdata $(OPT_OLEVEL) $(CDEBUG_OPTION) $(ALL_DEFINES) $(ALL_INCLUDES) $(MKDEP_OPT)
+	COMMON_COMPILE_OPT = -ffunction-sections -fdata-sections -mno-sdata \
+			$(OPT_OLEVEL) $(CDEBUG_OPTION) $(ALL_DEFINES) $(ALL_INCLUDES) $(MKDEP_OPT)
 
 	## C/CPP/ASM/LINK Options
 	COMPILE_OPT	+= $(CCORE_OPT_GNU)   $(ADT_COPT)   $(COMMON_COMPILE_OPT) -std=gnu99
 	CXX_COMPILE_OPT	+= $(CXXCORE_OPT_GNU) $(ADT_CXXOPT) $(COMMON_COMPILE_OPT)
 	ASM_OPT		+= $(ACORE_OPT_GNU)   $(ADT_AOPT)   $(COMMON_COMPILE_OPT) -x assembler-with-cpp
-	LINK_OPT	+= $(LCORE_OPT_GNU)   $(ADT_LOPT) \
+	LINK_OPT	+= $(LCORE_OPT_GNU)   $(ADT_LOPT) -Wl,--gc-sections \
 				-mno-sdata -nostartfiles $(LMAP_OPTION) -lm -Wl,--script=$(APPL_LINK_FILE)
 
 	## Link File Generation Options
