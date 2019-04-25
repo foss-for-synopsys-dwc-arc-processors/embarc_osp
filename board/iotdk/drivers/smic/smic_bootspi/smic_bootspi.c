@@ -38,7 +38,7 @@
 #include "string.h"
 
 // QSPI status
-#define SMIC_BOOTSPI_CHECK_EXP_NORTN(EXPR)	CHECK_EXP_NOERCD(EXPR, error_exit)
+#define SMIC_BOOTSPI_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
 #define SMIC_BOOTSPI_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 #define SMIC_BOOTSPI_MMA_MASK		(1<<0)
@@ -73,7 +73,8 @@
 #define SMIC_BOOTSPI_NOR_CMD_WRDI	0x04	// Write Disable
 #define SMIC_BOOTSPI_NOR_CMD_WRSR	0x01	// Write status register
 
-static uint8_t g_buf[SMIC_BOOTSPI_SEC_SIZE] = { 0 };
+/* \todo try to not use static mem */
+static uint8_t g_buf[SMIC_BOOTSPI_SEC_SIZE];
 
 
 static void bootspi_release_cs(SMIC_BOOTSPI_DEF_PTR obj)
@@ -94,6 +95,7 @@ static void bootspi_release_cs(SMIC_BOOTSPI_DEF_PTR obj)
 static void bootspi_write_data(SMIC_BOOTSPI_DEF_PTR obj, uint8_t data)
 {
 	uint32_t reg_val;
+
 	obj->bootspi_reg->MMDW = data;
 
 	// check the NBR
@@ -112,7 +114,7 @@ static uint8_t bootspi_read_data(SMIC_BOOTSPI_DEF_PTR obj)
 	return (obj->bootspi_reg->MMDR & 0xFF);
 }
 
-static uint8_t bootspi_read_st(SMIC_BOOTSPI_DEF_PTR obj)
+static uint8_t bootspi_read_status(SMIC_BOOTSPI_DEF_PTR obj)
 {
 	uint8_t st;
 
@@ -124,15 +126,15 @@ static uint8_t bootspi_read_st(SMIC_BOOTSPI_DEF_PTR obj)
 	return st;
 }
 
-static uint8_t bootspi_chk_st(SMIC_BOOTSPI_DEF_PTR obj)
+static uint8_t bootspi_chk_status(SMIC_BOOTSPI_DEF_PTR obj)
 {
-	uint8_t st;
+	uint8_t status;
 
 	while (1) {
-		st = bootspi_read_st(obj);
+		status = bootspi_read_status(obj);
 
-		if ((st&1) == 0) {
-			return st;
+		if (!(status & 0x1)) {
+			return status;
 		}
 	}
 }
@@ -147,7 +149,7 @@ static void bootspi_reset(SMIC_BOOTSPI_DEF_PTR obj)
 	// issue reset command
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_CMD_RST);
 	// check status
-	bootspi_chk_st(obj);
+	bootspi_chk_status(obj);
 	bootspi_release_cs(obj);
 }
 
@@ -174,7 +176,7 @@ static void bootspi_chip_erase(SMIC_BOOTSPI_DEF_PTR obj)
 	// issue chip erase command
 	bootspi_write_data(obj, SMIC_BOOTSPI_NOR_CMD_CE);
 	// check status
-	bootspi_chk_st(obj);
+	bootspi_chk_status(obj);
 	bootspi_release_cs(obj);
 }
 
@@ -195,7 +197,7 @@ static void bootspi_sec_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr)
 	}
 
 	// check status
-	bootspi_chk_st(obj);
+	bootspi_chk_status(obj);
 	bootspi_release_cs(obj);
 }
 
@@ -216,7 +218,7 @@ static void bootspi_blk_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr)
 	}
 
 	// check status
-	bootspi_chk_st(obj);
+	bootspi_chk_status(obj);
 	bootspi_release_cs(obj);
 }
 
@@ -243,11 +245,9 @@ static void bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len,
 
 	bootspi_release_cs(obj);
 	// check status
-	st = bootspi_chk_st(obj);
+	st = bootspi_chk_status(obj);
 	bootspi_release_cs(obj);
 }
-
-
 
 int32_t smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR obj)
 {
@@ -349,23 +349,23 @@ int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len
 
 	sec_pos = addr / SMIC_BOOTSPI_SEC_SIZE;
 	sec_off = addr % SMIC_BOOTSPI_SEC_SIZE;
-	sec_remain = SMIC_BOOTSPI_SEC_SIZE -sec_off;
+	sec_remain = SMIC_BOOTSPI_SEC_SIZE - sec_off;
 
 	if (len <= sec_remain) {
 		sec_remain = len;
 	}
 
 	while (1) {
-		smic_bootspi_read(obj, sec_pos*SMIC_BOOTSPI_SEC_SIZE, SMIC_BOOTSPI_SEC_SIZE, g_buf);
+		smic_bootspi_read(obj, sec_pos * SMIC_BOOTSPI_SEC_SIZE, SMIC_BOOTSPI_SEC_SIZE, g_buf);
 		for (i = 0; i < sec_remain; i++) {
-			if (g_buf[sec_off +i] != 0xFF) break;
+			if (g_buf[sec_off + i] != 0xFF) break;
 		}
 		if (i < sec_remain) {
-			smic_bootspi_control(obj, SMIC_BOOTSPI_SEC_ERASE, (void *)(sec_pos*SMIC_BOOTSPI_SEC_SIZE));
+			smic_bootspi_control(obj, SMIC_BOOTSPI_SEC_ERASE, (void *)(sec_pos * SMIC_BOOTSPI_SEC_SIZE));
 			for (i = 0; i < sec_remain; i++) {
-				g_buf[sec_off +i] = val[i];
+				g_buf[sec_off + i] = val[i];
 			}
-			smic_bootspi_write_nocheck(obj, sec_pos*SMIC_BOOTSPI_SEC_SIZE, SMIC_BOOTSPI_SEC_SIZE, g_buf);
+			smic_bootspi_write_nocheck(obj, sec_pos * SMIC_BOOTSPI_SEC_SIZE, SMIC_BOOTSPI_SEC_SIZE, g_buf);
 		} else {
 			smic_bootspi_write_nocheck(obj, addr, sec_remain, val);
 		}
@@ -377,10 +377,11 @@ int32_t smic_bootspi_write(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len
 			val += sec_remain;
 			addr += sec_remain;
 			len -= sec_remain;
-			if (len > SMIC_BOOTSPI_SEC_SIZE)
+			if (len > SMIC_BOOTSPI_SEC_SIZE) {
 				sec_remain = SMIC_BOOTSPI_SEC_SIZE;
-			else
+			} else {
 				sec_remain = len;
+			}
 		}
 	}
 
@@ -412,12 +413,12 @@ int32_t smic_bootspi_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len
 	while (1) {
 		smic_bootspi_read(obj, sec_pos*SMIC_BOOTSPI_SEC_SIZE, SMIC_BOOTSPI_SEC_SIZE, g_buf);
 		for (i = 0; i < sec_remain; i++) {
-			if (g_buf[sec_off +i] != 0xFF) break;
+			if (g_buf[sec_off + i] != 0xFF) break;
 		}
 		if (i < sec_remain) {
 			smic_bootspi_control(obj, SMIC_BOOTSPI_SEC_ERASE, (void *)(sec_pos*SMIC_BOOTSPI_SEC_SIZE));
 			for (i = 0; i < sec_remain; i++) {
-				g_buf[sec_off +i] = 0xFF;
+				g_buf[sec_off + i] = 0xFF;
 			}
 			smic_bootspi_write_nocheck(obj, sec_pos*SMIC_BOOTSPI_SEC_SIZE, SMIC_BOOTSPI_SEC_SIZE, g_buf);
 		}
@@ -428,10 +429,11 @@ int32_t smic_bootspi_erase(SMIC_BOOTSPI_DEF_PTR obj, uint32_t addr, uint32_t len
 			sec_off = 0;
 			addr += sec_remain;
 			len -= sec_remain;
-			if (len > SMIC_BOOTSPI_SEC_SIZE)
+			if (len > SMIC_BOOTSPI_SEC_SIZE) {
 				sec_remain = SMIC_BOOTSPI_SEC_SIZE;
-			else
+			} else {
 				sec_remain = len;
+			}
 		}
 	}
 
@@ -444,15 +446,9 @@ int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *
 {
 	int32_t ercd = E_OK;
 	uint32_t addr = 0;
+
 	SMIC_BOOTSPI_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_BOOTSPI_CHECK_EXP(obj->bootspi_open_cnt != 0, E_OPNED);
-
-	if (ctrl_cmd != SMIC_BOOTSPI_RESET && ctrl_cmd != SMIC_BOOTSPI_READ_ID &&
-	    ctrl_cmd != SMIC_BOOTSPI_CHIP_ERASE && ctrl_cmd != SMIC_BOOTSPI_BLK_ERASE &&
-	    ctrl_cmd != SMIC_BOOTSPI_SEC_ERASE) {
-		ercd = E_PAR;
-		goto error_exit;
-	}
 
 	switch (ctrl_cmd) {
 		case SMIC_BOOTSPI_RESET:
@@ -480,6 +476,7 @@ int32_t smic_bootspi_control(SMIC_BOOTSPI_DEF_PTR obj, uint32_t ctrl_cmd, void *
 			break;
 
 		default:
+			ercd = E_PAR;
 			break;
 	}
 
