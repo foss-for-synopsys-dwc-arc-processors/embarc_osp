@@ -514,6 +514,7 @@ def startBuild(app, config, builder):
 
     build_conf = str()
     build_status = None
+    builder.make_options = " "
 
     # builder.build_target(app, target=str("clean"), parallel=config["PARALLEL"])
     if os.environ.get("COVERITY", None) == "true":
