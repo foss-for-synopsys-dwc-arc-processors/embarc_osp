@@ -216,6 +216,7 @@ error_exit:
 	return ercd;
 }
 
+/* \todo no need to erase at arbitrary address, erase unit PAGE */
 int32_t smic_eflash_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len)
 {
 	int32_t ercd = E_OK;
@@ -237,14 +238,14 @@ int32_t smic_eflash_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len)
 	}
 
 	while (1) {
-		smic_eflash_read(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
+		smic_eflash_read(obj, sec_pos * SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
 		for (i = 0; i < sec_remain; i++) {
-			if (g_buf[sec_off +i] != 0xFF) break;
+			if (g_buf[sec_off + i] != 0xFF) break;
 		}
 		if (i < sec_remain) {
-			smic_eflash_control(obj, SMIC_EFLASH_PAGE_ERASE, (void *)(sec_pos*SMIC_EFLASH_PAGE_SIZE));
+			smic_eflash_control(obj, SMIC_EFLASH_PAGE_ERASE, (void *)(sec_pos * SMIC_EFLASH_PAGE_SIZE));
 			for (i = 0; i < sec_remain; i++) {
-				g_buf[sec_off +i] = 0xFF;
+				g_buf[sec_off + i] = 0xFF;
 			}
 			smic_eflash_write_nocheck(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
 		}
