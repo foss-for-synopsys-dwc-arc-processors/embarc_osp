@@ -29,16 +29,3 @@ else
 $(info TOOLCHAIN - $(SUPPORTED_TOOLCHAINS) are supported)
 $(error Toolchain $(TOOLCHAIN) is not supported, please check it!)
 endif
-
-ifeq ($(VALID_TOOLCHAIN), mw)
-TOOLCHAIN_ID = METAWARE
-else
-ifeq ($(VALID_TOOLCHAIN), gnu)
-TOOLCHAIN_ID = ARC_GNU
-else
-TOOLCHAIN_ID = NONE
-endif
-endif
-
-## TOOLCHAIN Defines, some defined in toolchain_xxx.mk
-TOOLCHAIN_DEFINES += -DTOOLCHAIN=$(TOOLCHAIN_ID)
