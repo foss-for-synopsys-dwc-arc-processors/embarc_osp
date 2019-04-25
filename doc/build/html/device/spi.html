@@ -297,9 +297,9 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv47DEV_SPI">
 <span id="_CPPv37DEV_SPI"></span><span id="_CPPv27DEV_SPI"></span><span id="DEV_SPI"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gadd86dcfed5b39e0bf5b74c47b4b2971a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv47dev_spi" title="dev_spi">dev_spi</a> <code class="descname">DEV_SPI</code><a class="headerlink" href="#_CPPv47DEV_SPI" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>spi device interface definition </p>
-<p>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <dl class="docutils">
-<dt><strong>Note</strong></dt>
-<dd>all this details are implemented by user in user porting code </dd>
+<p>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+</dd>
 </dl>
 </p>
 </dd></dl>
@@ -316,21 +316,19 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv4N7dev_spi8spi_openE">
 <span id="_CPPv3N7dev_spi8spi_openE"></span><span id="_CPPv2N7dev_spi8spi_openE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gab6b6fc8a280ce9652f6245ba803a4f8c"></span>int32_t (*<code class="descname">spi_open</code>)<span class="sig-paren">(</span>uint32_t mode, uint32_t param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_spi8spi_openE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>open spi device in master/slave mode, \ when in master mode, param stands for frequency, \ when in slave mode, param stands for clock mode</p>
-<p>open an spi device with selected mode (master or slave) with defined param <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">mode</span></code>: working mode (master or slave) </li>
-<li><code class="docutils literal notranslate"><span class="pre">param</span></code>: When mode is DEV_MASTER_MODE, param stands for frequency, when mode is DEV_SLAVE_MODE, param stands for slave clock mode </li>
+<p>open an spi device with selected mode (master or slave) with defined param <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">mode</span></code>: working mode (master or slave) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">param</span></code>: When mode is DEV_MASTER_MODE, param stands for frequency, when mode is DEV_SLAVE_MODE, param stands for slave clock mode </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
 </ul>
 </dd>
 </dl>
@@ -341,12 +339,11 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv4N7dev_spi9spi_closeE">
 <span id="_CPPv3N7dev_spi9spi_closeE"></span><span id="_CPPv2N7dev_spi9spi_closeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga1c550a415224864ca189f3b18a58c5d2"></span>int32_t (*<code class="descname">spi_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_spi9spi_closeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>close spi device</p>
-<p>close an spi device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="docutils">
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </li>
+<p>close an spi device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
 </ul>
 </dd>
 </dl>
@@ -357,22 +354,20 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv4N7dev_spi11spi_controlE">
 <span id="_CPPv3N7dev_spi11spi_controlE"></span><span id="_CPPv2N7dev_spi11spi_controlE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9a3ba6c5fbec77ee3555e07fb08667d7"></span>int32_t (*<code class="descname">spi_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_spi11spi_controlE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>control spi device</p>
-<p>control an spi device by ctrl_cmd, with passed param. you can control spi device using predefined spi control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set spi master frequency, flush tx and more. And you can also control spi device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own spi device driver implementation. <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to spi </li>
-<li><code class="docutils literal notranslate"><span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command, must not be NULL </li>
+<p>control an spi device by ctrl_cmd, with passed param. you can control spi device using predefined spi control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set spi master frequency, flush tx and more. And you can also control spi device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own spi device driver implementation. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to spi </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command, must not be NULL </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
 </ul>
 </dd>
 </dl>
@@ -383,20 +378,18 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv4N7dev_spi9spi_writeE">
 <span id="_CPPv3N7dev_spi9spi_writeE"></span><span id="_CPPv2N7dev_spi9spi_writeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gab9f3777682db6132b89f59fe6759a6d5"></span>int32_t (*<code class="descname">spi_write</code>)<span class="sig-paren">(</span><em class="property">const</em> void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_spi9spi_writeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send data to spi device (blocking method)</p>
-<p>send data through spi with defined len to slave device . <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: pointer to data need to send by spi </li>
-<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: length of data to be sent </li>
+<p>send data through spi with defined len to slave device . <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">data</span></code>: pointer to data need to send by spi </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be sent </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
 </ul>
 </dd>
 </dl>
@@ -407,20 +400,18 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv4N7dev_spi8spi_readE">
 <span id="_CPPv3N7dev_spi8spi_readE"></span><span id="_CPPv2N7dev_spi8spi_readE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga8fe6f9502c789cb9344686028d9455c0"></span>int32_t (*<code class="descname">spi_read</code>)<span class="sig-paren">(</span>void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_spi8spi_readE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read data from spi device (blocking method)</p>
-<p>receive data of defined len through spi from slave device . <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: pointer to data need to received by spi </li>
-<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: length of data to be received </li>
+<p>receive data of defined len through spi from slave device . <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data</span></code>: pointer to data need to received by spi </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be received </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
 </ul>
 </dd>
 </dl>
@@ -451,9 +442,9 @@ driver to implement. Here is a diagram for the spi interface.</p>
 <dt id="_CPPv47dev_spi">
 <span id="_CPPv37dev_spi"></span><span id="_CPPv27dev_spi"></span><span id="dev_spi"></span><span class="target" id="structdev__spi"></span><em class="property">struct </em><code class="descname">dev_spi</code><a class="headerlink" href="#_CPPv47dev_spi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_spi.h&gt;</em><p>spi device interface definition </p>
-<p>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <dl class="docutils">
-<dt><strong>Note</strong></dt>
-<dd>all this details are implemented by user in user porting code </dd>
+<p>define spi device interface, like spi information structure, fuctions to get spi info, open/close/control spi, send/receive data by spi <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+</dd>
 </dl>
 </p>
 </dd></dl>

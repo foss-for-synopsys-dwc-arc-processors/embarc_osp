@@ -187,43 +187,44 @@
 <p>The <strong>Board Support Package (BSP) Layer</strong> provides support for different
 boards based on DesignWare® ARC® processors. The layer contains the following functions:</p>
 <ul class="simple">
-<li><strong>Drivers instantiation</strong>   In embARC OSP, an object-oriented design is applied
+<li><p><strong>Drivers instantiation</strong>   In embARC OSP, an object-oriented design is applied
 for device drivers. The peripheral driver implementations are similar to the
 definition of class in the device abstraction layer. So the peripheral drivers
 should be instantiated for every board.   For example, <code class="docutils literal notranslate"><span class="pre">dw_gpio_obj.c</span></code> /
 <code class="docutils literal notranslate"><span class="pre">dw_gpio_obj.h</span></code> is the instantiation of the DesignWare GPIO driver
 implementation in device abstraction layer, which contains the information of
-register address, interrupt number, etc.</li>
-<li><strong>Common board initialization process</strong> A standard bootup process is
+register address, interrupt number, etc.</p></li>
+<li><p><strong>Common board initialization process</strong> A standard bootup process is
 defined for each board. The entry of this process is <code class="docutils literal notranslate"><span class="pre">board_main</span></code> defined
 in <code class="docutils literal notranslate"><span class="pre">board/board.c</span></code>, it will cover board initialization, os environment
 setup, fatfs and ntshell initialization, finally it will enter to <code class="docutils literal notranslate"><span class="pre">main</span></code>
-function if required.</li>
-<li><strong>Board resource unified definition</strong>  Most boards share common peripherals.
+function if required.</p></li>
+<li><p><strong>Board resource unified definition</strong>  Most boards share common peripherals.
 Unified definitions are provided such as UART used to print messages, SD card
-interface, buttons, LEDs.</li>
-<li><strong>Linker script for boards</strong> Linker script is auto-generated from
+interface, buttons, LEDs.</p></li>
+<li><p><strong>Linker script for boards</strong> Linker script is auto-generated from
 template using the ICCM/DCCM and DDR memory information. embARC OSP provides templates
 for both ARC GNU and MetaWare toolchains, located in <code class="docutils literal notranslate"><span class="pre">board</span></code> folder, called
-<code class="docutils literal notranslate"><span class="pre">linker_template_gnu.ld</span></code> and <code class="docutils literal notranslate"><span class="pre">linker_template_mw.ld</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">linker_template_gnu.ld</span></code> and <code class="docutils literal notranslate"><span class="pre">linker_template_mw.ld</span></code>.</p></li>
 </ul>
 </div>
 <div class="section" id="common-board-initialization-process">
 <h2>Common Board Initialization Process<a class="headerlink" href="#common-board-initialization-process" title="Permalink to this headline">¶</a></h2>
 <p>The common <code class="docutils literal notranslate"><span class="pre">board_main</span></code> function in <code class="docutils literal notranslate"><span class="pre">board.c</span></code> will do the following operations:</p>
 <ul class="simple">
-<li>Board initialization steps - defined in <code class="docutils literal notranslate"><span class="pre">board_init</span></code> function.<ul>
-<li>Install required device driver objects, such as UART/SPI/IIC device objects.</li>
-<li>Clear and disable all interrupts.</li>
-<li>Initialize 1 ms timer interrupt.</li>
-<li>Initialize some peripherals if used.</li>
-<li>Initialize other required board resources such as mux controller.</li>
+<li><p>Board initialization steps - defined in <code class="docutils literal notranslate"><span class="pre">board_init</span></code> function.</p>
+<ul>
+<li><p>Install required device driver objects, such as UART/SPI/IIC device objects.</p></li>
+<li><p>Clear and disable all interrupts.</p></li>
+<li><p>Initialize 1 ms timer interrupt.</p></li>
+<li><p>Initialize some peripherals if used.</p></li>
+<li><p>Initialize other required board resources such as mux controller.</p></li>
 </ul>
 </li>
-<li>xprintf library setup to provide printf functionality</li>
-<li>Initialization of FatFs if FatFs middleware is selected</li>
-<li>Initialization of FreeRTOS tasks if defined</li>
-<li>Go to <code class="docutils literal notranslate"><span class="pre">main</span></code> function</li>
+<li><p>xprintf library setup to provide printf functionality</p></li>
+<li><p>Initialization of FatFs if FatFs middleware is selected</p></li>
+<li><p>Initialization of FreeRTOS tasks if defined</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">main</span></code> function</p></li>
 </ul>
 </div>
 <div class="section" id="supported-boards">
@@ -240,242 +241,248 @@ for both ARC GNU and MetaWare toolchains, located in <code class="docutils liter
 </ul>
 </div>
 <ul class="simple">
-<li>AXS board support can be found in <code class="docutils literal notranslate"><span class="pre">board/axs</span></code>, detailed in ARC AXS Software
-Development Platform (AXS). It includes the following sub-folders:<ul>
-<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: AXS board initialization functions and 1 ms interrupt timer function</li>
-<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
-<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of axs, and various core configurations for different version</li>
+<li><p>AXS board support can be found in <code class="docutils literal notranslate"><span class="pre">board/axs</span></code>, detailed in ARC AXS Software
+Development Platform (AXS). It includes the following sub-folders:</p>
+<ul>
+<li><p><code class="file docutils literal notranslate"><span class="pre">common</span></code>: AXS board initialization functions and 1 ms interrupt timer function</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of axs, and various core configurations for different version</p></li>
 </ul>
 </li>
-<li>EM Starter Kit (EMSK) support can be found in <code class="docutils literal notranslate"><span class="pre">board/emsk</span></code>. It includes the following sub-folders.<ul>
-<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: EMSK board initialization functions and 1 ms interrupt timer function</li>
-<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
-<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of emsk, and various core configurations for different version</li>
+<li><p>EM Starter Kit (EMSK) support can be found in <code class="docutils literal notranslate"><span class="pre">board/emsk</span></code>. It includes the following sub-folders.</p>
+<ul>
+<li><p><code class="file docutils literal notranslate"><span class="pre">common</span></code>: EMSK board initialization functions and 1 ms interrupt timer function</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of emsk, and various core configurations for different version</p></li>
 </ul>
 </li>
-<li>EM Software Development Package (EM SDP) support can be found in <code class="docutils literal notranslate"><span class="pre">board/emsdp</span></code>. It includes the following sub-folders.<ul>
-<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: EMSK board initialization functions and 1 ms interrupt timer function</li>
-<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
-<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of emsdp, and various core configurations for different version</li>
+<li><p>EM Software Development Package (EM SDP) support can be found in <code class="docutils literal notranslate"><span class="pre">board/emsdp</span></code>. It includes the following sub-folders.</p>
+<ul>
+<li><p><code class="file docutils literal notranslate"><span class="pre">common</span></code>: EMSK board initialization functions and 1 ms interrupt timer function</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of emsdp, and various core configurations for different version</p></li>
 </ul>
 </li>
-<li>HS Development Kit (HSDK) board support can be found in <code class="docutils literal notranslate"><span class="pre">board/hsdk</span></code>. It includes the following sub-folders.<ul>
-<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: HSDK board initialization functions and 1 ms interrupt timer function</li>
-<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
-<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Support for different board versions (if applicable), and support for different core configurations for each board version (if applicable)</li>
+<li><p>HS Development Kit (HSDK) board support can be found in <code class="docutils literal notranslate"><span class="pre">board/hsdk</span></code>. It includes the following sub-folders.</p>
+<ul>
+<li><p><code class="file docutils literal notranslate"><span class="pre">common</span></code>: HSDK board initialization functions and 1 ms interrupt timer function</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Support for different board versions (if applicable), and support for different core configurations for each board version (if applicable)</p></li>
 </ul>
 </li>
-<li>IoT Development Kit (IoTDK) board support can be found in <code class="docutils literal notranslate"><span class="pre">board/iotdk</span></code>. It includes the following sub-folders.<ul>
-<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: IoTDK board initialization functions and 1 ms interrupt timer function</li>
-<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</li>
-<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Support for different board versions (if applicable), and support for different core configurations for each board version (if applicable)</li>
+<li><p>IoT Development Kit (IoTDK) board support can be found in <code class="docutils literal notranslate"><span class="pre">board/iotdk</span></code>. It includes the following sub-folders.</p>
+<ul>
+<li><p><code class="file docutils literal notranslate"><span class="pre">common</span></code>: IoTDK board initialization functions and 1 ms interrupt timer function</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Various peripheral drivers for various examples</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Support for different board versions (if applicable), and support for different core configurations for each board version (if applicable)</p></li>
 </ul>
 </li>
-<li>nSIM virtual board support can be found in <code class="docutils literal notranslate"><span class="pre">board/nsim</span></code>. It includes the following sub-folders.<ul>
-<li><code class="file docutils literal notranslate"><span class="pre">common</span></code>: nSIM virtual board initialization functions and 1 ms interrupt timer function</li>
-<li><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Basic hostlink UART driver for message input and output</li>
-<li><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of nsim, and various core configurations for different version</li>
+<li><p>nSIM virtual board support can be found in <code class="docutils literal notranslate"><span class="pre">board/nsim</span></code>. It includes the following sub-folders.</p>
+<ul>
+<li><p><code class="file docutils literal notranslate"><span class="pre">common</span></code>: nSIM virtual board initialization functions and 1 ms interrupt timer function</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">drivers</span></code>: Basic hostlink UART driver for message input and output</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">configs</span></code>: Different versions of nsim, and various core configurations for different version</p></li>
 </ul>
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">MetaWare license is required for nSIM virtual board.</p>
+<p class="admonition-title">Note</p>
+<p>MetaWare license is required for nSIM virtual board.</p>
 </div>
 </div>
 <div class="section" id="board-resource-unified-definitions">
 <h2>Board Resource Unified Definitions<a class="headerlink" href="#board-resource-unified-definitions" title="Permalink to this headline">¶</a></h2>
 <p>The board resource definitions are defined in <code class="docutils literal notranslate"><span class="pre">board.h</span></code>, where the hardware header files of each board are included. The following are the common board resources definitions. For each board, it can implement these definitions according to its own configurations. Through these common definitions, the code re-usability is improved.</p>
-<table border="1" class="colwidths-auto docutils" id="id1">
+<table class="colwidths-auto docutils align-center" id="id1">
 <caption><span class="caption-text">Board resource definition</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Resource Definitions</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resource Definitions</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>BOARD_CONSOLE_UART_ID</td>
-<td>Console UART ID</td>
+<tbody>
+<tr class="row-even"><td><p>BOARD_CONSOLE_UART_ID</p></td>
+<td><p>Console UART ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_ADC_IIC_ID</td>
-<td>AD converter IIC interface ID</td>
+<tr class="row-odd"><td><p>BOARD_ADC_IIC_ID</p></td>
+<td><p>AD converter IIC interface ID</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_TEMP_SENSOR_IIC_ID</td>
-<td>Temperature sensor IIC interface ID</td>
+<tr class="row-even"><td><p>BOARD_TEMP_SENSOR_IIC_ID</p></td>
+<td><p>Temperature sensor IIC interface ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_TEMP_IIC_SLVADDR</td>
-<td>Temperature sensor IIC slave address</td>
+<tr class="row-odd"><td><p>BOARD_TEMP_IIC_SLVADDR</p></td>
+<td><p>Temperature sensor IIC slave address</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_SDCARD_SPI_ID</td>
-<td>SD card SPI interface ID</td>
+<tr class="row-even"><td><p>BOARD_SDCARD_SPI_ID</p></td>
+<td><p>SD card SPI interface ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_WIFI_SPI_ID</td>
-<td>WiFi SPI interface ID</td>
+<tr class="row-odd"><td><p>BOARD_WIFI_SPI_ID</p></td>
+<td><p>WiFi SPI interface ID</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_SFLASH_SPI_ID</td>
-<td>SPI flash SPI interface ID</td>
+<tr class="row-even"><td><p>BOARD_SFLASH_SPI_ID</p></td>
+<td><p>SPI flash SPI interface ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_SDCARD_SPI_LINE</td>
-<td>SD card SPI interface CS line</td>
+<tr class="row-odd"><td><p>BOARD_SDCARD_SPI_LINE</p></td>
+<td><p>SD card SPI interface CS line</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_WIFI_SPI_LINE</td>
-<td>WiFI SPI interface CS line</td>
+<tr class="row-even"><td><p>BOARD_WIFI_SPI_LINE</p></td>
+<td><p>WiFI SPI interface CS line</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_SFLASH_SPI_LINE</td>
-<td>SPI flash SPI interface CS line</td>
+<tr class="row-odd"><td><p>BOARD_SFLASH_SPI_LINE</p></td>
+<td><p>SPI flash SPI interface CS line</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_SYS_TIMER_ID</td>
-<td>System 1 ms interrupt timer ID</td>
+<tr class="row-even"><td><p>BOARD_SYS_TIMER_ID</p></td>
+<td><p>System 1 ms interrupt timer ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_SYS_TIMER_INTNO</td>
-<td>System 1 ms timer interrupt vector no</td>
+<tr class="row-odd"><td><p>BOARD_SYS_TIMER_INTNO</p></td>
+<td><p>System 1 ms timer interrupt vector no</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_SYS_TIMER_HZ</td>
-<td>System timer count freq. (1KHz as default)</td>
+<tr class="row-even"><td><p>BOARD_SYS_TIMER_HZ</p></td>
+<td><p>System timer count freq. (1KHz as default)</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_SPI_FREQ</td>
-<td>Board SPI interface common freq.</td>
+<tr class="row-odd"><td><p>BOARD_SPI_FREQ</p></td>
+<td><p>Board SPI interface common freq.</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_SYS_TIMER_MS_HZ</td>
-<td>Board timer count freq.</td>
+<tr class="row-even"><td><p>BOARD_SYS_TIMER_MS_HZ</p></td>
+<td><p>Board timer count freq.</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_SYS_TIMER_MS_CONV</td>
-<td>Converter of board to system timer count freq.</td>
+<tr class="row-odd"><td><p>BOARD_SYS_TIMER_MS_CONV</p></td>
+<td><p>Converter of board to system timer count freq.</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_OS_TIMER_ID</td>
-<td>OS kernel timer ID</td>
+<tr class="row-even"><td><p>BOARD_OS_TIMER_ID</p></td>
+<td><p>OS kernel timer ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_OS_TIMER_INTNO</td>
-<td>OS kernel timer interrupt no</td>
+<tr class="row-odd"><td><p>BOARD_OS_TIMER_INTNO</p></td>
+<td><p>OS kernel timer interrupt no</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_CPU_CLOCK</td>
-<td>CPU clock of the board</td>
+<tr class="row-even"><td><p>BOARD_CPU_CLOCK</p></td>
+<td><p>CPU clock of the board</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_DEV_CLOCK</td>
-<td>Device clock of the board</td>
+<tr class="row-odd"><td><p>BOARD_DEV_CLOCK</p></td>
+<td><p>Device clock of the board</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_LED_MASK</td>
-<td>LED Mask, if 8 LED, mask is 0xff</td>
+<tr class="row-even"><td><p>BOARD_LED_MASK</p></td>
+<td><p>LED Mask, if 8 LED, mask is 0xff</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_LED_CNT</td>
-<td>LED count</td>
+<tr class="row-odd"><td><p>BOARD_LED_CNT</p></td>
+<td><p>LED count</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_BTN_MASK</td>
-<td>Button mask</td>
+<tr class="row-even"><td><p>BOARD_BTN_MASK</p></td>
+<td><p>Button mask</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_BTN_CNT</td>
-<td>Button count</td>
+<tr class="row-odd"><td><p>BOARD_BTN_CNT</p></td>
+<td><p>Button count</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_SWT_MASK</td>
-<td>Switch mask</td>
+<tr class="row-even"><td><p>BOARD_SWT_MASK</p></td>
+<td><p>Switch mask</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_SWT_CNT</td>
-<td>Switch count</td>
+<tr class="row-odd"><td><p>BOARD_SWT_CNT</p></td>
+<td><p>Switch count</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_ONBOARD_NTSHELL_ID</td>
-<td>Default NtShell ID</td>
+<tr class="row-even"><td><p>BOARD_ONBOARD_NTSHELL_ID</p></td>
+<td><p>Default NtShell ID</p></td>
 </tr>
-<tr class="row-odd"><td>OSP_DELAY_OS_COMPAT_ENABLE</td>
-<td>Delay function is OS compact</td>
+<tr class="row-odd"><td><p>OSP_DELAY_OS_COMPAT_ENABLE</p></td>
+<td><p>Delay function is OS compact</p></td>
 </tr>
-<tr class="row-even"><td>OSP_DELAY_OS_COMPAT_DISABLE</td>
-<td>Delay function isn’t OS compact</td>
+<tr class="row-even"><td><p>OSP_DELAY_OS_COMPAT_DISABLE</p></td>
+<td><p>Delay function isn’t OS compact</p></td>
 </tr>
-<tr class="row-odd"><td>WF_IPADDR_1</td>
-<td>WiFi device static IP address 1</td>
+<tr class="row-odd"><td><p>WF_IPADDR_1</p></td>
+<td><p>WiFi device static IP address 1</p></td>
 </tr>
-<tr class="row-even"><td>WF_IPADDR_2</td>
-<td>WiFi device static IP address 2</td>
+<tr class="row-even"><td><p>WF_IPADDR_2</p></td>
+<td><p>WiFi device static IP address 2</p></td>
 </tr>
-<tr class="row-odd"><td>WF_IPADDR_3</td>
-<td>WiFi device static IP address 3</td>
+<tr class="row-odd"><td><p>WF_IPADDR_3</p></td>
+<td><p>WiFi device static IP address 3</p></td>
 </tr>
-<tr class="row-even"><td>WF_IPADDR_4</td>
-<td>WiFi device static IP address 4</td>
+<tr class="row-even"><td><p>WF_IPADDR_4</p></td>
+<td><p>WiFi device static IP address 4</p></td>
 </tr>
-<tr class="row-odd"><td>WF_NETMASK_1</td>
-<td>WiFi device static netmask 1</td>
+<tr class="row-odd"><td><p>WF_NETMASK_1</p></td>
+<td><p>WiFi device static netmask 1</p></td>
 </tr>
-<tr class="row-even"><td>WF_NETMASK_2</td>
-<td>WiFi device static netmask 2</td>
+<tr class="row-even"><td><p>WF_NETMASK_2</p></td>
+<td><p>WiFi device static netmask 2</p></td>
 </tr>
-<tr class="row-odd"><td>WF_NETMASK_3</td>
-<td>WiFi device static netmask 3</td>
+<tr class="row-odd"><td><p>WF_NETMASK_3</p></td>
+<td><p>WiFi device static netmask 3</p></td>
 </tr>
-<tr class="row-even"><td>WF_NETMASK_4</td>
-<td>WiFi device static netmask 4</td>
+<tr class="row-even"><td><p>WF_NETMASK_4</p></td>
+<td><p>WiFi device static netmask 4</p></td>
 </tr>
-<tr class="row-odd"><td>WF_GATEWAY_1</td>
-<td>WiFi device static gateway 1</td>
+<tr class="row-odd"><td><p>WF_GATEWAY_1</p></td>
+<td><p>WiFi device static gateway 1</p></td>
 </tr>
-<tr class="row-even"><td>WF_GATEWAY_2</td>
-<td>WiFi device static gateway 2</td>
+<tr class="row-even"><td><p>WF_GATEWAY_2</p></td>
+<td><p>WiFi device static gateway 2</p></td>
 </tr>
-<tr class="row-odd"><td>WF_GATEWAY_3</td>
-<td>WiFi device static gateway 3</td>
+<tr class="row-odd"><td><p>WF_GATEWAY_3</p></td>
+<td><p>WiFi device static gateway 3</p></td>
 </tr>
-<tr class="row-even"><td>WF_GATEWAY_4</td>
-<td>WiFi device static gateway 4</td>
+<tr class="row-even"><td><p>WF_GATEWAY_4</p></td>
+<td><p>WiFi device static gateway 4</p></td>
 </tr>
-<tr class="row-odd"><td>WF_HOTSPOT_IS_OPEN</td>
-<td>Specify whether WiFi hot spot is open or not</td>
+<tr class="row-odd"><td><p>WF_HOTSPOT_IS_OPEN</p></td>
+<td><p>Specify whether WiFi hot spot is open or not</p></td>
 </tr>
-<tr class="row-even"><td>WF_IPADDR_DHCP</td>
-<td>Use DHCP to get ip or not</td>
+<tr class="row-even"><td><p>WF_IPADDR_DHCP</p></td>
+<td><p>Use DHCP to get ip or not</p></td>
 </tr>
-<tr class="row-odd"><td>WF_HOTSPOT_NAME</td>
-<td>WiFi hot spot name</td>
+<tr class="row-odd"><td><p>WF_HOTSPOT_NAME</p></td>
+<td><p>WiFi hot spot name</p></td>
 </tr>
-<tr class="row-even"><td>WF_HOTSPOT_PASSWD</td>
-<td>WiFi hot spot password when not open</td>
+<tr class="row-even"><td><p>WF_HOTSPOT_PASSWD</p></td>
+<td><p>WiFi hot spot password when not open</p></td>
 </tr>
-<tr class="row-odd"><td>WF_ENABLE_MANUAL_SET_MAC</td>
-<td>Enable to set MAC manually or not</td>
+<tr class="row-odd"><td><p>WF_ENABLE_MANUAL_SET_MAC</p></td>
+<td><p>Enable to set MAC manually or not</p></td>
 </tr>
-<tr class="row-even"><td>WF_MAC_ADDR0</td>
-<td>WiFi MAC address 0 (manual set)</td>
+<tr class="row-even"><td><p>WF_MAC_ADDR0</p></td>
+<td><p>WiFi MAC address 0 (manual set)</p></td>
 </tr>
-<tr class="row-odd"><td>WF_MAC_ADDR1</td>
-<td>WiFi MAC address 1 (manual set)</td>
+<tr class="row-odd"><td><p>WF_MAC_ADDR1</p></td>
+<td><p>WiFi MAC address 1 (manual set)</p></td>
 </tr>
-<tr class="row-even"><td>WF_MAC_ADDR2</td>
-<td>WiFi MAC address 2 (manual set)</td>
+<tr class="row-even"><td><p>WF_MAC_ADDR2</p></td>
+<td><p>WiFi MAC address 2 (manual set)</p></td>
 </tr>
-<tr class="row-odd"><td>WF_MAC_ADDR3</td>
-<td>WiFi MAC address 3 (manual set)</td>
+<tr class="row-odd"><td><p>WF_MAC_ADDR3</p></td>
+<td><p>WiFi MAC address 3 (manual set)</p></td>
 </tr>
-<tr class="row-even"><td>WF_MAC_ADDR4</td>
-<td>WiFi MAC address 4 (manual set)</td>
+<tr class="row-even"><td><p>WF_MAC_ADDR4</p></td>
+<td><p>WiFi MAC address 4 (manual set)</p></td>
 </tr>
-<tr class="row-odd"><td>WF_MAC_ADDR5</td>
-<td>WiFi MAC address 5 (manual set)</td>
+<tr class="row-odd"><td><p>WF_MAC_ADDR5</p></td>
+<td><p>WiFi MAC address 5 (manual set)</p></td>
 </tr>
-<tr class="row-even"><td>BOARD_PMWIFI_0_ID</td>
-<td>Pmod WiFi 0 ID</td>
+<tr class="row-even"><td><p>BOARD_PMWIFI_0_ID</p></td>
+<td><p>Pmod WiFi 0 ID</p></td>
 </tr>
-<tr class="row-odd"><td>BOARD_PMWIFI_ID_MAX</td>
-<td>Max Pmod WiFi ID</td>
+<tr class="row-odd"><td><p>BOARD_PMWIFI_ID_MAX</p></td>
+<td><p>Max Pmod WiFi ID</p></td>
 </tr>
-<tr class="row-even"><td>OSP_GET_CUR_SYSHZ</td>
-<td>Macro to get current syshz</td>
+<tr class="row-even"><td><p>OSP_GET_CUR_SYSHZ</p></td>
+<td><p>Macro to get current syshz</p></td>
 </tr>
-<tr class="row-odd"><td>OSP_GET_CUR_MS</td>
-<td>Macro to get current ms count</td>
+<tr class="row-odd"><td><p>OSP_GET_CUR_MS</p></td>
+<td><p>Macro to get current ms count</p></td>
 </tr>
-<tr class="row-even"><td>OSP_GET_CUR_US</td>
-<td>Macro to get current us count</td>
+<tr class="row-even"><td><p>OSP_GET_CUR_US</p></td>
+<td><p>Macro to get current us count</p></td>
 </tr>
-<tr class="row-odd"><td>OSP_GET_CUR_HWTICKS</td>
-<td>Macro to get current hardware ticks count</td>
+<tr class="row-odd"><td><p>OSP_GET_CUR_HWTICKS</p></td>
+<td><p>Macro to get current hardware ticks count</p></td>
 </tr>
-<tr class="row-even"><td>board_init</td>
-<td>Function for common board initialization</td>
+<tr class="row-even"><td><p>board_init</p></td>
+<td><p>Function for common board initialization</p></td>
 </tr>
-<tr class="row-odd"><td>board_timer_update</td>
-<td>Call in period interrupt when using timer interrupt</td>
+<tr class="row-odd"><td><p>board_timer_update</p></td>
+<td><p>Call in period interrupt when using timer interrupt</p></td>
 </tr>
-<tr class="row-even"><td>board_delay_ms</td>
-<td>MS delay for OS support</td>
+<tr class="row-even"><td><p>board_delay_ms</p></td>
+<td><p>MS delay for OS support</p></td>
 </tr>
 </tbody>
 </table>

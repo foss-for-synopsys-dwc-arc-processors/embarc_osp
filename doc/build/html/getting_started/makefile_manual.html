@@ -189,12 +189,12 @@
 This document also contains a quick manual helping you to find the right command for your project.</p>
 <p>Here are quick in-page links of some mostly used commands:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#help">help</a></li>
-<li><a class="reference internal" href="#cfg">cfg</a></li>
-<li><a class="reference internal" href="#build">build</a></li>
-<li><a class="reference internal" href="#gui">gui</a></li>
-<li><a class="reference internal" href="#run">run</a></li>
-<li><a class="reference internal" href="#distclean">distclean</a></li>
+<li><p><a class="reference internal" href="#help">help</a></p></li>
+<li><p><a class="reference internal" href="#cfg">cfg</a></p></li>
+<li><p><a class="reference internal" href="#build">build</a></p></li>
+<li><p><a class="reference internal" href="#gui">gui</a></p></li>
+<li><p><a class="reference internal" href="#run">run</a></p></li>
+<li><p><a class="reference internal" href="#distclean">distclean</a></p></li>
 </ul>
 <div class="section" id="commands-details">
 <h2>Commands Details<a class="headerlink" href="#commands-details" title="Permalink to this headline">¶</a></h2>
@@ -212,8 +212,8 @@ Help information will be printed to your console.</p>
 </div>
 <p>In the following part of this manual, we will only use <code class="docutils literal notranslate"><span class="pre">make</span></code> in example, you could change it to <code class="docutils literal notranslate"><span class="pre">gmake</span></code> anytime.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).</p>
+<p class="admonition-title">Note</p>
+<p>make/gmake is provided in the MetaWare toolkit (gmake) and ARC GNU toolchain (make).</p>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make help</span>
 <span class="go">&quot;Build Targets for selected configuration:&quot;</span>
@@ -284,11 +284,11 @@ For example, the command below will execute your command for an <em>EMSK</em> bo
 </pre></div>
 </div>
 <p>For the details of command parameters, see <a class="reference internal" href="#useful-options"><span class="std std-ref">Useful Options</span></a></p>
-<dl class="docutils">
-<dt>A handy application to use <code class="docutils literal notranslate"><span class="pre">cfg</span></code>:</dt>
-<dd>Suppose we need to build the project on hsdk, but we are not sure the exact core name.
+<dl class="simple">
+<dt>A handy application to use <code class="docutils literal notranslate"><span class="pre">cfg</span></code>:</dt><dd><p>Suppose we need to build the project on hsdk, but we are not sure the exact core name.
 Then we could use cfg command with BOARD=hsdk so makefile system could find avaiable cores for us.
-In this case there are <em>archs38_c0 archs38_c1 archs38_c2 archs38_c3</em> available.</dd>
+In this case there are <em>archs38_c0 archs38_c1 archs38_c2 archs38_c3</em> available.</p>
+</dd>
 </dl>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make BOARD=hsdk cfg</span>
 <span class="go">&quot;=======Current Configuration=======&quot;</span>
@@ -349,11 +349,11 @@ Then it will try to download the project to the board and start running it. If n
 <div class="section" id="useful-options">
 <span id="id8"></span><h2>Useful Options<a class="headerlink" href="#useful-options" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Boards (<strong>BOARD</strong>): Use this option to check config for different boards. Usually he default BOARD setting is EMSK.</li>
-<li>Core Configurations (<strong>CUR_CORE</strong>): shows available core choices.</li>
-<li>Build Toolchains (<strong>TOOLCHAIN</strong>):To choose from different toolchain.</li>
-<li>Debug Jtags (<strong>JTAG</strong>): In most case the micro-usb interface on board supports JTAG debugging. Ashling’s Opella-XD-ARC is also support by some boards.</li>
-<li>Board version (<strong>BD_VER</strong>): Often used by EMSK which has many versions.</li>
+<li><p>Boards (<strong>BOARD</strong>): Use this option to check config for different boards. Usually he default BOARD setting is EMSK.</p></li>
+<li><p>Core Configurations (<strong>CUR_CORE</strong>): shows available core choices.</p></li>
+<li><p>Build Toolchains (<strong>TOOLCHAIN</strong>):To choose from different toolchain.</p></li>
+<li><p>Debug Jtags (<strong>JTAG</strong>): In most case the micro-usb interface on board supports JTAG debugging. Ashling’s Opella-XD-ARC is also support by some boards.</p></li>
+<li><p>Board version (<strong>BD_VER</strong>): Often used by EMSK which has many versions.</p></li>
 </ol>
 </div>
 </div>

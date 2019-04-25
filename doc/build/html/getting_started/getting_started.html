@@ -210,8 +210,8 @@ through http. The latest release of embARC OSP is <a class="reference external" 
 <h2>Setting Up the Development Environment<a class="headerlink" href="#setting-up-the-development-environment" title="Permalink to this headline">¶</a></h2>
 <p>The embARC OSP platform supports, but not limited to, the following development machine operating systems:</p>
 <ul class="simple">
-<li>Microsoft Windows 10 / Windows 7</li>
-<li>Ubuntu 16.04</li>
+<li><p>Microsoft Windows 10 / Windows 7</p></li>
+<li><p>Ubuntu 16.04</p></li>
 </ul>
 <p>Use the following procedure to create a new development environment</p>
 <div class="toctree-wrapper compound">
@@ -220,8 +220,8 @@ through http. The latest release of embARC OSP is <a class="reference external" 
 </ul>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The embARC OSP uses make/gmake as a build tool and these are provided as part of the ARC development tools.</p>
+<p class="admonition-title">Note</p>
+<p>The embARC OSP uses make/gmake as a build tool and these are provided as part of the ARC development tools.</p>
 </div>
 </div>
 <div class="section" id="building-a-sample-application">
@@ -231,31 +231,31 @@ used for the ARC GNU toolchain in a Windows environment, will describe how
 to build an embARC OSP application. Please use the
 appropriate commands for your OS.</p>
 <ol class="arabic simple">
-<li>Make sure the ARC GNU toolchain is installed in your environment, see <a class="reference internal" href="software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>.</li>
-<li>Navigate to <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example located at embARC OSP directory.</li>
+<li><p>Make sure the ARC GNU toolchain is installed in your environment, see <a class="reference internal" href="software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>.</p></li>
+<li><p>Navigate to <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example located at embARC OSP directory.</p></li>
 </ol>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Build the <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example for the EMSK 2.3 board and ARC EM11D.</li>
+<li><p>Build the <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example for the EMSK 2.3 board and ARC EM11D.</p></li>
 </ol>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><strong>make</strong> for ARC GNU toolchain, <strong>gmake</strong> for MetaWare toolkit. For more details of commands, see <a class="reference internal" href="makefile_manual.html#makefile-manual"><span class="std std-ref">Makefile Manual</span></a></p>
+<p class="admonition-title">Note</p>
+<p><strong>make</strong> for ARC GNU toolchain, <strong>gmake</strong> for MetaWare toolkit. For more details of commands, see <a class="reference internal" href="makefile_manual.html#makefile-manual"><span class="std std-ref">Makefile Manual</span></a></p>
 </div>
 </div>
 <div class="section" id="hardware-preparation">
 <h2>Hardware Preparation<a class="headerlink" href="#hardware-preparation" title="Permalink to this headline">¶</a></h2>
 <p>Use the following procedures to prepare your ARC board to run/debug the embARC applications.</p>
 <ul class="simple">
-<li><a class="reference internal" href="../board/emsk.html#getting-started-with-em-starter-kit"><span class="std std-ref">Getting started with EM starter kit</span></a></li>
-<li><a class="reference internal" href="../board/hsdk.html#getting-started-with-hs-development-kit"><span class="std std-ref">Getting started with HS development kit</span></a></li>
-<li><a class="reference internal" href="../board/iotdk.html#getting-started-with-iot-development-kit"><span class="std std-ref">Getting started with IoT Development kit</span></a></li>
-<li><a class="reference internal" href="../board/emsdp.html#getting-started-with-arc-em-software-development-platform"><span class="std std-ref">Getting started with ARC EM Software Development Platform</span></a></li>
+<li><p><a class="reference internal" href="../board/emsk.html#getting-started-with-em-starter-kit"><span class="std std-ref">Getting started with EM starter kit</span></a></p></li>
+<li><p><a class="reference internal" href="../board/hsdk.html#getting-started-with-hs-development-kit"><span class="std std-ref">Getting started with HS development kit</span></a></p></li>
+<li><p><a class="reference internal" href="../board/iotdk.html#getting-started-with-iot-development-kit"><span class="std std-ref">Getting started with IoT Development kit</span></a></p></li>
+<li><p><a class="reference internal" href="../board/emsdp.html#getting-started-with-arc-em-software-development-platform"><span class="std std-ref">Getting started with ARC EM Software Development Platform</span></a></p></li>
 </ul>
 <p>See the following procedures to check peripherals and board settings. The peripherals are not required for all the embARC OSP examples.</p>
 <div class="toctree-wrapper compound">
@@ -269,17 +269,17 @@ appropriate commands for your OS.</p>
 <h2>Running a Sample Application<a class="headerlink" href="#running-a-sample-application" title="Permalink to this headline">¶</a></h2>
 <p>Follow these steps to run the sample application.</p>
 <ol class="arabic simple">
-<li>Make sure the <em>blinky</em> example has been built successfully in <a class="reference internal" href="#building-a-sample-application"><span class="std std-ref">Building a Sample Application</span></a>. Get the .elf file <code class="docutils literal notranslate"><span class="pre">blinky_gnu_arcem11d.elf</span></code> in <code class="docutils literal notranslate"><span class="pre">&lt;blinky&gt;\obj_emsk_23\gnu_arcem11d</span></code>.</li>
-<li>Follow to steps in <a class="reference internal" href="../board/emsk.html#getting-started-with-em-starter-kit"><span class="std std-ref">Programming and Debugging</span></a> to set and connect EMSK 2.3 with EM11D to your local machine.</li>
-<li>Navigate to the embARC OSP directory and run <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example.</li>
+<li><p>Make sure the <em>blinky</em> example has been built successfully in <a class="reference internal" href="#building-a-sample-application"><span class="std std-ref">Building a Sample Application</span></a>. Get the .elf file <code class="docutils literal notranslate"><span class="pre">blinky_gnu_arcem11d.elf</span></code> in <code class="docutils literal notranslate"><span class="pre">&lt;blinky&gt;\obj_emsk_23\gnu_arcem11d</span></code>.</p></li>
+<li><p>Follow to steps in <a class="reference internal" href="../board/emsk.html#getting-started-with-em-starter-kit"><span class="std std-ref">Programming and Debugging</span></a> to set and connect EMSK 2.3 with EM11D to your local machine.</p></li>
+<li><p>Navigate to the embARC OSP directory and run <a class="reference internal" href="../example/example/baremetal/blinky/README.html#example-blinky"><span class="std std-ref">Blinky</span></a> example.</p></li>
 </ol>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd embarc_osp\example\baremetal\blinky</span>
 <span class="go">make TOOLCHAIN=gnu BOARD=emsk BD_VER=23 CUR_CORE=arcem11d run</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">No peripheral modules are required to run the <code class="docutils literal notranslate"><span class="pre">blinky</span></code> example. If there are LEDs on boards, these LED will be used to blink; If there are no LEDs on boards, a blink message will be output in the UART.</p>
+<p class="admonition-title">Note</p>
+<p>No peripheral modules are required to run the <code class="docutils literal notranslate"><span class="pre">blinky</span></code> example. If there are LEDs on boards, these LED will be used to blink; If there are no LEDs on boards, a blink message will be output in the UART.</p>
 </div>
 <p>See the following manual for information on make/gmake command and embARC makefile system.</p>
 <div class="toctree-wrapper compound">

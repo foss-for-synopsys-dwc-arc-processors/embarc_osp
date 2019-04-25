@@ -193,54 +193,61 @@
 <div class="section" id="tool-support">
 <h2>Tool Support<a class="headerlink" href="#tool-support" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Eclipse IDE for GNU Toolchain for ARC Processors, 2017.09</li>
-<li>MetaWare Development Toolkit, 2017.09</li>
+<li><p>Eclipse IDE for GNU Toolchain for ARC Processors, 2017.09</p></li>
+<li><p>MetaWare Development Toolkit, 2017.09</p></li>
 </ul>
 </div>
 <div class="section" id="features-and-enhancements">
 <h2>Features and Enhancements<a class="headerlink" href="#features-and-enhancements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Main new features<ul>
-<li>Add support for new ARC HS Development Kit (HSDK) platform</li>
-<li>Reconstruct the device HAL</li>
+<li><p>Main new features</p>
+<ul>
+<li><p>Add support for new ARC HS Development Kit (HSDK) platform</p></li>
+<li><p>Reconstruct the device HAL</p></li>
 </ul>
 </li>
-<li>Device HAL updates<ul>
-<li>Add device/peripheral folder for reusable peripheral drivers</li>
-<li>Add device/ip folder for on-chip ip, e.g. uart, spi, i2c.</li>
-<li>Add Designware SDIO driver</li>
+<li><p>Device HAL updates</p>
+<ul>
+<li><p>Add device/peripheral folder for reusable peripheral drivers</p></li>
+<li><p>Add device/ip folder for on-chip ip, e.g. uart, spi, i2c.</p></li>
+<li><p>Add Designware SDIO driver</p></li>
 </ul>
 </li>
-<li>ARC HAL updates<ul>
-<li>Add initial support of arc connect for multi core</li>
-<li>Add the io pinmux api for arduino, pmod and mikro bus</li>
-<li>Bugs fixed</li>
+<li><p>ARC HAL updates</p>
+<ul>
+<li><p>Add initial support of arc connect for multi core</p></li>
+<li><p>Add the io pinmux api for arduino, pmod and mikro bus</p></li>
+<li><p>Bugs fixed</p></li>
 </ul>
 </li>
-<li>Board support updates<ul>
-<li>Update the board support according the changes in device HAL</li>
-<li>Add ARC HS Development Kit support</li>
+<li><p>Board support updates</p>
+<ul>
+<li><p>Update the board support according the changes in device HAL</p></li>
+<li><p>Add ARC HS Development Kit support</p></li>
 </ul>
 </li>
-<li>Middleware updates<ul>
-<li>Remove Xively</li>
-<li>Remove Matrixssl</li>
-<li>Remove Wolfssl</li>
+<li><p>Middleware updates</p>
+<ul>
+<li><p>Remove Xively</p></li>
+<li><p>Remove Matrixssl</p></li>
+<li><p>Remove Wolfssl</p></li>
 </ul>
 </li>
-<li>OS updates<ul>
-<li>Remove Contiki OS</li>
+<li><p>OS updates</p>
+<ul>
+<li><p>Remove Contiki OS</p></li>
 </ul>
 </li>
-<li>Examples update<ul>
-<li>Remove Xively, Matrixssl, Wolfssl and Contiki related examples</li>
-<li>Make some examples board-independent</li>
-<li>Bug fixes</li>
+<li><p>Examples update</p>
+<ul>
+<li><p>Remove Xively, Matrixssl, Wolfssl and Contiki related examples</p></li>
+<li><p>Make some examples board-independent</p></li>
+<li><p>Bug fixes</p></li>
 </ul>
 </li>
-<li>Documentation updates</li>
-<li>Bug fixes</li>
-<li>FOSS notice update</li>
+<li><p>Documentation updates</p></li>
+<li><p>Bug fixes</p></li>
+<li><p>FOSS notice update</p></li>
 </ul>
 </div>
 <div class="section" id="how-to-use">
@@ -250,14 +257,14 @@
 <div class="section" id="known-issues">
 <h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>This release has changed a lot in device layer, with the peripheral layer introduced, many examples which rely on old peripheral drivers in emsk will not be compatible with new embARC OSP, please modify it.</li>
-<li>Make version &gt;=4.0 is not supported. Please use make version 3.81 or 3.82</li>
-<li>For Wifi applications, the Digilent pmod Wifi with Microchip part MRF24WG0MA should be used. Pmods built with MRF24WB0MA have been shown to experience problems and are NOT supported.</li>
-<li>Please don’t put embARC source code too deep in your directory, because some examples can’t be compiled due to too long command line not supported in Windows.</li>
-<li>Since brand new device hal API is upgraded, your application that use the old device hal API need to be upgraded.</li>
-<li>Secureshield library need MPU hardware module on EMSK, check your hardware configuration of EMSK before using it.</li>
-<li>Please use the recommended tool versions for metaware and arc gnu.</li>
-<li>For ARC GNU, an utility called <strong>tcftool</strong> from Metaware toolset is required for tcf build support. You can get it from Metaware Lite and copy it to ARC GNU’s folder such as <em>C:/arc_gnu/bin/</em>.</li>
+<li><p>This release has changed a lot in device layer, with the peripheral layer introduced, many examples which rely on old peripheral drivers in emsk will not be compatible with new embARC OSP, please modify it.</p></li>
+<li><p>Make version &gt;=4.0 is not supported. Please use make version 3.81 or 3.82</p></li>
+<li><p>For Wifi applications, the Digilent pmod Wifi with Microchip part MRF24WG0MA should be used. Pmods built with MRF24WB0MA have been shown to experience problems and are NOT supported.</p></li>
+<li><p>Please don’t put embARC source code too deep in your directory, because some examples can’t be compiled due to too long command line not supported in Windows.</p></li>
+<li><p>Since brand new device hal API is upgraded, your application that use the old device hal API need to be upgraded.</p></li>
+<li><p>Secureshield library need MPU hardware module on EMSK, check your hardware configuration of EMSK before using it.</p></li>
+<li><p>Please use the recommended tool versions for metaware and arc gnu.</p></li>
+<li><p>For ARC GNU, an utility called <strong>tcftool</strong> from Metaware toolset is required for tcf build support. You can get it from Metaware Lite and copy it to ARC GNU’s folder such as <em>C:/arc_gnu/bin/</em>.</p></li>
 </ul>
 </div>
 </div>

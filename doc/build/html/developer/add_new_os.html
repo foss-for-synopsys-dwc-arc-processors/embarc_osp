@@ -187,10 +187,10 @@
 <span id="add-new-os"></span><h1>Adding support for a new OS<a class="headerlink" href="#adding-support-for-a-new-os" title="Permalink to this headline">¶</a></h1>
 <p>Follow the steps below to add a new OS to embARC OSP.</p>
 <ul class="simple">
-<li>Include <strong>&lt;target-os&gt;.mk</strong> in <strong>os.mk</strong>. Add corresponding definitions such as OS_ID, OS_CSRDIR, OS_ASMSRCDIR, and OS_INCDIR.</li>
-<li>Add necessary definitions in os_hal_inc.h, such as the header-files path of <strong>&lt;target-os&gt;</strong> and the definition of os_hal_exc_init. The <strong>os_hal_exc_init()</strong> function is provided to initialize the exception and interrupt-related features of <strong>&lt;target-os&gt;</strong>.</li>
-<li>Create a sub-folder named <strong>&lt;target-os&gt;</strong> and add <strong>&lt;target_os&gt;.mk</strong> into it.</li>
-<li>In <strong>&lt;target-os&gt;.mk</strong>, add commands to build the <strong>&lt;target-os&gt;</strong> and generate the <strong>lib&lt;target-os&gt;.a</strong>, such as modules and definitions. FreeRTOS.mk can be used as a template.</li>
+<li><p>Include <strong>&lt;target-os&gt;.mk</strong> in <strong>os.mk</strong>. Add corresponding definitions such as OS_ID, OS_CSRDIR, OS_ASMSRCDIR, and OS_INCDIR.</p></li>
+<li><p>Add necessary definitions in os_hal_inc.h, such as the header-files path of <strong>&lt;target-os&gt;</strong> and the definition of os_hal_exc_init. The <strong>os_hal_exc_init()</strong> function is provided to initialize the exception and interrupt-related features of <strong>&lt;target-os&gt;</strong>.</p></li>
+<li><p>Create a sub-folder named <strong>&lt;target-os&gt;</strong> and add <strong>&lt;target_os&gt;.mk</strong> into it.</p></li>
+<li><p>In <strong>&lt;target-os&gt;.mk</strong>, add commands to build the <strong>&lt;target-os&gt;</strong> and generate the <strong>lib&lt;target-os&gt;.a</strong>, such as modules and definitions. FreeRTOS.mk can be used as a template.</p></li>
 </ul>
 </div>
 

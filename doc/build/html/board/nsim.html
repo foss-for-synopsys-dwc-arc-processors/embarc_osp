@@ -199,8 +199,8 @@ implemented in embARC, where hostlink IO is used for message input and output.
 ARC related functions can be tested using nSIM such as internal timer, cache
 module, interrupt and exception module.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Metaware license is required to install nSIM or Metaware IDE for nSIM simulation.</p>
+<p class="admonition-title">Note</p>
+<p>Metaware license is required to install nSIM or Metaware IDE for nSIM simulation.</p>
 </div>
 </div>
 <div class="section" id="how-to-run-in-embarc">
@@ -213,9 +213,9 @@ nSIM.</p>
 <h3>Using the MetaWare toolchain<a class="headerlink" href="#using-the-metaware-toolchain" title="Permalink to this headline">¶</a></h3>
 <p>Here are the steps for MetaWare toolchain, running in nSIM environment.</p>
 <ul class="simple">
-<li>Step 1: Open one command terminal in this application folder.</li>
-<li>Step 2: Build and run this application using this command: <code class="docutils literal notranslate"><span class="pre">gmake</span> <span class="pre">BOARD=nsim</span>
-<span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">run</span></code></li>
+<li><p>Step 1: Open one command terminal in this application folder.</p></li>
+<li><p>Step 2: Build and run this application using this command: <code class="docutils literal notranslate"><span class="pre">gmake</span> <span class="pre">BOARD=nsim</span>
+<span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=mw</span> <span class="pre">run</span></code></p></li>
 </ul>
 <p>The following output will be printed on the console:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">-----------------------------------------------------------</span>
@@ -255,17 +255,18 @@ nSIM.</p>
 <h3>Using the ARC GNU toolchain<a class="headerlink" href="#using-the-arc-gnu-toolchain" title="Permalink to this headline">¶</a></h3>
 <p>If you want to run or debug embARC application using the ARC GNU toolchain, you also need to install nSIM tool.</p>
 <ul class="simple">
-<li>Make sure that you have installed nSIM tool to your OS, and you can run
-<code class="docutils literal notranslate"><span class="pre">nsimdrv</span></code> command in command line.</li>
-<li>For running or debugging embARC application using the ARC GNU toolchain, you
+<li><p>Make sure that you have installed nSIM tool to your OS, and you can run
+<code class="docutils literal notranslate"><span class="pre">nsimdrv</span></code> command in command line.</p></li>
+<li><p>For running or debugging embARC application using the ARC GNU toolchain, you
 need to run two commands in two command terminals, here take nsim-10-arcem
-core configuration for application <code class="docutils literal notranslate"><span class="pre">example/baremetal/arc_feature/timer_interrupt</span></code>.<ul>
-<li>Step 1: Open two command terminals in this application folder.</li>
-<li>Step 2: Start nsim debug server using this command:<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=nsim</span>
-<span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">nsim</span></code></li>
-<li>Step 3: Run or debug this application using this command: <code class="docutils literal notranslate"><span class="pre">make</span>
-<span class="pre">BOARD=nsim</span> <span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">run</span></code></li>
-<li>Step 4: Exit the debug process by exiting these two commands.</li>
+core configuration for application <code class="docutils literal notranslate"><span class="pre">example/baremetal/arc_feature/timer_interrupt</span></code>.</p>
+<ul>
+<li><p>Step 1: Open two command terminals in this application folder.</p></li>
+<li><p>Step 2: Start nsim debug server using this command:<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=nsim</span>
+<span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">nsim</span></code></p></li>
+<li><p>Step 3: Run or debug this application using this command: <code class="docutils literal notranslate"><span class="pre">make</span>
+<span class="pre">BOARD=nsim</span> <span class="pre">BD_VER=10</span> <span class="pre">CUR_CORE=arcem</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">run</span></code></p></li>
+<li><p>Step 4: Exit the debug process by exiting these two commands.</p></li>
 </ul>
 </li>
 </ul>
@@ -303,8 +304,8 @@ core configuration for application <code class="docutils literal notranslate"><s
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For the ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
+<p class="admonition-title">Note</p>
+<p>For the ARC GNU toolchain, you need to run two commands to debug or run application in nSIM.
 Most middleware packages in embARC are not supported with nSIM since there is no external peripheral for nSIM.</p>
 </div>
 </div>

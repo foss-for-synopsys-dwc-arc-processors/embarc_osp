@@ -234,9 +234,9 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv48DEV_UART">
 <span id="_CPPv38DEV_UART"></span><span id="_CPPv28DEV_UART"></span><span id="DEV_UART"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8e8dd2c66ea7a119aec01e976ff4d6b4"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_uart" title="dev_uart">dev_uart</a> <code class="descname">DEV_UART</code><a class="headerlink" href="#_CPPv48DEV_UART" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>UART device interface definition. </p>
-<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <dl class="docutils">
-<dt><strong>Note</strong></dt>
-<dd>All this details are implemented by user in user porting code </dd>
+<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
+</dd>
 </dl>
 </p>
 </dd></dl>
@@ -253,19 +253,17 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv4N8dev_uart9uart_openE">
 <span id="_CPPv3N8dev_uart9uart_openE"></span><span id="_CPPv2N8dev_uart9uart_openE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga00f4f8769a030124d548f65895d2ff87"></span>int32_t (*<code class="descname">uart_open</code>)<span class="sig-paren">(</span>uint32_t baud<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_uart9uart_openE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Open uart device</p>
-<p>open an uart device with defined baudrate <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">baud</span></code>: initial baudrate of uart, must &gt; 0 </li>
+<p>open an uart device with defined baudrate <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">baud</span></code>: initial baudrate of uart, must &gt; 0 </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
 </ul>
 </dd>
 </dl>
@@ -276,12 +274,11 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv4N8dev_uart10uart_closeE">
 <span id="_CPPv3N8dev_uart10uart_closeE"></span><span id="_CPPv2N8dev_uart10uart_closeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gae615fe682e9ce8147c0f31b40dfc6438"></span>int32_t (*<code class="descname">uart_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_uart10uart_closeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Close uart device</p>
-<p>close an uart device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="docutils">
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </li>
+<p>close an uart device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
 </ul>
 </dd>
 </dl>
@@ -292,22 +289,20 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv4N8dev_uart12uart_controlE">
 <span id="_CPPv3N8dev_uart12uart_controlE"></span><span id="_CPPv2N8dev_uart12uart_controlE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga7cd1bf12f5d9ca4663980883d01c092a"></span>int32_t (*<code class="descname">uart_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_uart12uart_controlE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Control uart device</p>
-<p>control an uart device by ctrl_cmd, with passed param. you can control uart device using predefined uart control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as change baudrate, flush output and more. And you can also control uart device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own uart device driver implementation. <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to uart </li>
-<li><code class="docutils literal notranslate"><span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command </li>
+<p>control an uart device by ctrl_cmd, with passed param. you can control uart device using predefined uart control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as change baudrate, flush output and more. And you can also control uart device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own uart device driver implementation. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to uart </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
 </ul>
 </dd>
 </dl>
@@ -318,19 +313,17 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv4N8dev_uart10uart_writeE">
 <span id="_CPPv3N8dev_uart10uart_writeE"></span><span id="_CPPv2N8dev_uart10uart_writeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gadb3f65e65636442af53578c64f2ea2a4"></span>int32_t (*<code class="descname">uart_write</code>)<span class="sig-paren">(</span><em class="property">const</em> void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_uart10uart_writeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send data by uart device(blocked)</p>
-<p>send data through uart with defined len(blocked). <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: pointer to data need to send by uart, must not be NULL </li>
-<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: length of data to be sent, must &gt; 0 </li>
+<p>send data through uart with defined len(blocked). <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">data</span></code>: pointer to data need to send by uart, must not be NULL </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be sent, must &gt; 0 </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
 </ul>
 </dd>
 </dl>
@@ -341,19 +334,17 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv4N8dev_uart9uart_readE">
 <span id="_CPPv3N8dev_uart9uart_readE"></span><span id="_CPPv2N8dev_uart9uart_readE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8fa470ea11eca6e728e802b64501cbb5"></span>int32_t (*<code class="descname">uart_read</code>)<span class="sig-paren">(</span>void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_uart9uart_readE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read data from uart device(blocked)</p>
-<p>receive data of defined len through uart(blocked). <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: pointer to data need to received by uart, must not be NULL </li>
-<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: length of data to be received, must &gt; 0 </li>
+<p>receive data of defined len through uart(blocked). <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data</span></code>: pointer to data need to received by uart, must not be NULL </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be received, must &gt; 0 </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
 </ul>
 </dd>
 </dl>
@@ -372,9 +363,9 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <dt id="_CPPv48dev_uart">
 <span id="_CPPv38dev_uart"></span><span id="_CPPv28dev_uart"></span><span id="dev_uart"></span><span class="target" id="structdev__uart"></span><em class="property">struct </em><code class="descname">dev_uart</code><a class="headerlink" href="#_CPPv48dev_uart" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_uart.h&gt;</em><p>UART device interface definition. </p>
-<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <dl class="docutils">
-<dt><strong>Note</strong></dt>
-<dd>All this details are implemented by user in user porting code </dd>
+<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
+</dd>
 </dl>
 </p>
 </dd></dl>

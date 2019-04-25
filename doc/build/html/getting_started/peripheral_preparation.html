@@ -208,8 +208,8 @@ Now your code should be like this:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Notice that <strong>UR</strong> means Upper Layer of Pmod interface and <strong>LR</strong> means Lower Layer of Pmod</p>
+<p class="admonition-title">Note</p>
+<p>Notice that <strong>UR</strong> means Upper Layer of Pmod interface and <strong>LR</strong> means Lower Layer of Pmod</p>
 </div>
 <p>3. If you are using HSDK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">creg_hsdc_set_gpio_mux()</span></code> with parameter array <code class="docutils literal notranslate"><span class="pre">gpio_mux_config</span></code> as MUX options.
 By default all pins are set to GPIO, other MUX options are defined in <code class="docutils literal notranslate"><span class="pre">PINMUX_TYPE</span></code> in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code></p>
@@ -217,20 +217,20 @@ By default all pins are set to GPIO, other MUX options are defined in <code clas
 All three parameters should use definitions in <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/inc/dev_pinmux.h</span></code>.</p>
 <blockquote>
 <div><ul class="simple">
-<li>The first paramater can be choose from <code class="docutils literal notranslate"><span class="pre">PMOD_PORT</span></code> (e.g. <em>PMOD_A</em>, <em>PMOD_B</em>, <em>PMOD_C</em>), other inputs will be ignored.</li>
-<li>The second parameter should be in <code class="docutils literal notranslate"><span class="pre">PMOD_TYPE</span></code>, unsupported options will have no effect.</li>
-<li>The third parameter should be <code class="docutils literal notranslate"><span class="pre">IO_PINMUX_ENABLE</span></code> or <code class="docutils literal notranslate"><span class="pre">IO_PINMUX_DISABLE</span></code>, enabling or disabling the mux controller respectively.</li>
+<li><p>The first paramater can be choose from <code class="docutils literal notranslate"><span class="pre">PMOD_PORT</span></code> (e.g. <em>PMOD_A</em>, <em>PMOD_B</em>, <em>PMOD_C</em>), other inputs will be ignored.</p></li>
+<li><p>The second parameter should be in <code class="docutils literal notranslate"><span class="pre">PMOD_TYPE</span></code>, unsupported options will have no effect.</p></li>
+<li><p>The third parameter should be <code class="docutils literal notranslate"><span class="pre">IO_PINMUX_ENABLE</span></code> or <code class="docutils literal notranslate"><span class="pre">IO_PINMUX_DISABLE</span></code>, enabling or disabling the mux controller respectively.</p></li>
 </ul>
 </div></blockquote>
 <p>5. If you are using EMSDP, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> with MUX options as parameters.
 MUX options are defined in mux.h and you could change them as you see fit.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In EMSDP, notice that <strong>CFG0</strong> means Upper Layer of Pmod interface and <strong>CFG1</strong> means Lower Layer of Pmod</p>
+<p class="admonition-title">Note</p>
+<p>In EMSDP, notice that <strong>CFG0</strong> means Upper Layer of Pmod interface and <strong>CFG1</strong> means Lower Layer of Pmod</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To learn what interface your board has, please go to <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a></p>
+<p class="admonition-title">Note</p>
+<p>To learn what interface your board has, please go to <a class="reference internal" href="../board/board.html#board-bsp"><span class="std std-ref">Boards</span></a></p>
 </div>
 </div>
 <div class="section" id="pmod-modules">

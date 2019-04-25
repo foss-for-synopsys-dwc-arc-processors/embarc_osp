@@ -197,68 +197,61 @@
 </div>
 </div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The NCP status can not be shown on the terminal via UART, it might show messy code.</p>
+<p class="admonition-title">Note</p>
+<p>The NCP status can not be shown on the terminal via UART, it might show messy code.</p>
 </div>
 <div class="section" id="detailed-description">
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
-<li><dl class="first docutils">
-<dt>Extra Required Tools</dt>
-<dd><p class="first last">NO</p>
+<li><dl class="simple">
+<dt>Extra Required Tools</dt><dd><p>NO</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Required Peripherals</dt>
-<dd><ul class="first last simple">
-<li>2 x EMSK</li>
-<li>2 x Digilent PMOD RF2 (MRF24J40)</li>
-<li>2 x SD card</li>
+<li><dl class="simple">
+<dt>Extra Required Peripherals</dt><dd><ul class="simple">
+<li><p>2 x EMSK</p></li>
+<li><p>2 x Digilent PMOD RF2 (MRF24J40)</p></li>
+<li><p>2 x SD card</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Design Concept</dt>
-<dd><ul class="first last simple">
-<li>This example is an OpenThread Network Co-Processor (NCP) application on PMOD RF2 (MRF24J40).</li>
-<li>This example can serve as a low-power wireless Network Co-Processor (NCP) to join Thread network and communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems.</li>
-<li>This example can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.</li>
-<li>For more information about NCP and wpantund, see README.md for reference.</li>
+<li><dl class="simple">
+<dt>Design Concept</dt><dd><ul class="simple">
+<li><p>This example is an OpenThread Network Co-Processor (NCP) application on PMOD RF2 (MRF24J40).</p></li>
+<li><p>This example can serve as a low-power wireless Network Co-Processor (NCP) to join Thread network and communicate with Userspace WPAN Network Daemon (wpantund) on Unix-like operating systems.</p></li>
+<li><p>This example can be used along with OpenThread wpantund to provide Internet connectivity to the Thread network.</p></li>
+<li><p>For more information about NCP and wpantund, see README.md for reference.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Usage Manual</dt>
-<dd><ul class="first last simple">
-<li>See ref EMBARC_BOARD_CONNECTION “EMSK” to connect PMOD RF2 (MRF24J40).</li>
-<li><dl class="first docutils">
-<dt>How to use this example</dt>
-<dd><ul class="first last">
-<li>Program the secondary bootloader application into onboard SPI flash of EMSKs.</li>
-<li>Generate boot.bin of the Openthread NCP example using “make bin”.</li>
-<li><dl class="first docutils">
-<dt>Run an Openthread CLI example first with boot.bin from SD card, see <cite>cliREADME.md</cite> for more information.</dt>
-<dd><ul class="first last">
-<li>Insert SD Card back to one EMSK. It will run the CLI example. Press the reset button to reboot it. Wait for loading boot.bin from</li>
-<li>Enter “1” and press Enter button in the Tera Term. Enter the number here to generate pseudo random number for OpenThread.</li>
-<li>Enter the following commands in the two terminal windows, “panid 0x1234”, “ifconfig up”, “thread start”, to start Thread process.</li>
-<li>Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the leader.</li>
+<li><dl class="simple">
+<dt>Usage Manual</dt><dd><ul class="simple">
+<li><p>See ref EMBARC_BOARD_CONNECTION “EMSK” to connect PMOD RF2 (MRF24J40).</p></li>
+<li><dl class="simple">
+<dt>How to use this example</dt><dd><ul>
+<li><p>Program the secondary bootloader application into onboard SPI flash of EMSKs.</p></li>
+<li><p>Generate boot.bin of the Openthread NCP example using “make bin”.</p></li>
+<li><dl class="simple">
+<dt>Run an Openthread CLI example first with boot.bin from SD card, see <cite>cliREADME.md</cite> for more information.</dt><dd><ul>
+<li><p>Insert SD Card back to one EMSK. It will run the CLI example. Press the reset button to reboot it. Wait for loading boot.bin from</p></li>
+<li><p>Enter “1” and press Enter button in the Tera Term. Enter the number here to generate pseudo random number for OpenThread.</p></li>
+<li><p>Enter the following commands in the two terminal windows, “panid 0x1234”, “ifconfig up”, “thread start”, to start Thread process.</p></li>
+<li><p>Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, it will be the leader.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Run Openthread NCP example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable the secondary bootloader.</dt>
-<dd><ul class="first last">
-<li>Insert the other SD card to the other EMSK. It will run the NCP example. Press the reset button to reboot it. Wait for loading bo</li>
-<li>Enter <strong>2</strong> and press Enter button in the NCP’s Tera Term.</li>
-<li>After entering <strong>2</strong> in the NCP’s Tera Term, the NCP will start up automatically. It will show you some messy code in the last line, just ignore it.</li>
-<li>Install and Run OpenThread wpantund, and join the NCP to the Thread network created by CLI. See README.md for more information.</li>
-<li>Ping to each other between Linux host and CLI Node.</li>
+<li><dl class="simple">
+<dt>Run Openthread NCP example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable the secondary bootloader.</dt><dd><ul>
+<li><p>Insert the other SD card to the other EMSK. It will run the NCP example. Press the reset button to reboot it. Wait for loading bo</p></li>
+<li><p>Enter <strong>2</strong> and press Enter button in the NCP’s Tera Term.</p></li>
+<li><p>After entering <strong>2</strong> in the NCP’s Tera Term, the NCP will start up automatically. It will show you some messy code in the last line, just ignore it.</p></li>
+<li><p>Install and Run OpenThread wpantund, and join the NCP to the Thread network created by CLI. See README.md for more information.</p></li>
+<li><p>Ping to each other between Linux host and CLI Node.</p></li>
 </ul>
 </dd>
 </dl>
@@ -271,9 +264,8 @@
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Comments</dt>
-<dd><div class="first last line-block">
+<li><dl>
+<dt>Extra Comments</dt><dd><div class="line-block">
 <div class="line">Use AC adapter to ensure a steady power supply.</div>
 <div class="line">The self-boot mode preparation is included in the above steps.</div>
 <div class="line">“make run” is not supported because EMSK boards are both v2.x and it can lead to conflict. See sect_example_usage_HowToDebugMultiBoards “how to debug multiple boards in embARC” for more information.</div>
@@ -290,11 +282,13 @@
 <div class="section" id="buidling-and-running">
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>See the usage manual.</div></blockquote>
+<div><p>See the usage manual.</p>
+</div></blockquote>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>See the usage manual.</div></blockquote>
+<div><p>See the usage manual.</p>
+</div></blockquote>
 </div>
 </div>
 </div>

@@ -196,15 +196,15 @@
 <p>The ARC <strong>Hardware Abstraction Layer</strong> (HAL) (<code class="docutils literal notranslate"><span class="pre">embarc_osp/arc</span></code> folder) provides hardware abstraction for
 DesignWare® ARC® processors. The following functionality is provided by the ARC HAL:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#arc-hal-start"><span class="std std-ref">Start up</span></a>: common startup routines or templates to handle necessary
-initializations after power on, reset, etc.</li>
-<li><a class="reference internal" href="#arc-hal-exc-int"><span class="std std-ref">Exception and interrupt management</span></a>: a standard exception and interrupt
-processing model and related resource definitions.</li>
-<li><a class="reference internal" href="#arc-hal-builtin"><span class="std std-ref">Unified intrinsic/built-in functions</span></a>: covering both the MetaWare and GNU
-toolchains.</li>
-<li><a class="reference internal" href="#arc-hal-res-def"><span class="std std-ref">Unified resource definitions</span></a>: registers, data types, macros, etc.</li>
-<li><a class="reference internal" href="#arc-hal-res-access"><span class="std std-ref">Access to core resources</span></a>: internal timers, cache, auxiliary registers,
-and build configuration registers.</li>
+<li><p><a class="reference internal" href="#arc-hal-start"><span class="std std-ref">Start up</span></a>: common startup routines or templates to handle necessary
+initializations after power on, reset, etc.</p></li>
+<li><p><a class="reference internal" href="#arc-hal-exc-int"><span class="std std-ref">Exception and interrupt management</span></a>: a standard exception and interrupt
+processing model and related resource definitions.</p></li>
+<li><p><a class="reference internal" href="#arc-hal-builtin"><span class="std std-ref">Unified intrinsic/built-in functions</span></a>: covering both the MetaWare and GNU
+toolchains.</p></li>
+<li><p><a class="reference internal" href="#arc-hal-res-def"><span class="std std-ref">Unified resource definitions</span></a>: registers, data types, macros, etc.</p></li>
+<li><p><a class="reference internal" href="#arc-hal-res-access"><span class="std std-ref">Access to core resources</span></a>: internal timers, cache, auxiliary registers,
+and build configuration registers.</p></li>
 </ul>
 </div>
 <div class="section" id="start-up-in-embarc-osp">
@@ -217,22 +217,25 @@ program jumps to the <code class="docutils literal notranslate"><span class="pre
 which runs in three stages:</p>
 <img alt="processor-level start up" src="../_images/startup.jpg" />
 <ul class="simple">
-<li>Stage 1: Hardware Initialization<ul>
-<li>Initialize necessary status and registers.</li>
-<li>Initialize system clock (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</li>
-<li>Initialize memory controller (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</li>
+<li><p>Stage 1: Hardware Initialization</p>
+<ul>
+<li><p>Initialize necessary status and registers.</p></li>
+<li><p>Initialize system clock (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</p></li>
+<li><p>Initialize memory controller (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">hardware_init_hook</span></code>).</p></li>
 </ul>
 </li>
-<li>Stage 2: C Runtime Initialization<ul>
-<li>Initialize the stack.</li>
-<li>Copy section, e.g. data section, text section if necessary.</li>
-<li>Clear Block Started by Symbol (BSS) section.</li>
+<li><p>Stage 2: C Runtime Initialization</p>
+<ul>
+<li><p>Initialize the stack.</p></li>
+<li><p>Copy section, e.g. data section, text section if necessary.</p></li>
+<li><p>Clear Block Started by Symbol (BSS) section.</p></li>
 </ul>
 </li>
-<li>Stage 3: Go to <code class="docutils literal notranslate"><span class="pre">board_main()</span></code><ul>
-<li>Early initialization of software (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">software_init_hook</span></code>).</li>
-<li>Call arc_exc_init, or other initialization functions.</li>
-<li>Jump to <code class="docutils literal notranslate"><span class="pre">board_main()</span></code> function.</li>
+<li><p>Stage 3: Go to <code class="docutils literal notranslate"><span class="pre">board_main()</span></code></p>
+<ul>
+<li><p>Early initialization of software (if necessary, in user defined <code class="docutils literal notranslate"><span class="pre">software_init_hook</span></code>).</p></li>
+<li><p>Call arc_exc_init, or other initialization functions.</p></li>
+<li><p>Jump to <code class="docutils literal notranslate"><span class="pre">board_main()</span></code> function.</p></li>
 </ul>
 </li>
 </ul>
@@ -242,23 +245,25 @@ which runs in three stages:</p>
 <p>The board level start up process is implemented <code class="docutils literal notranslate"><span class="pre">board.c</span></code> with an entry of <code class="docutils literal notranslate"><span class="pre">board_main</span></code>.</p>
 <p>The following pre-defined work is done in <code class="docutils literal notranslate"><span class="pre">board_main</span></code> function:</p>
 <ul class="simple">
-<li>board-level hardware initialization in <code class="docutils literal notranslate"><span class="pre">board_init</span></code></li>
-<li>Middleware initialization<ul>
-<li>initialize the <code class="docutils literal notranslate"><span class="pre">xprintf</span></code> function to have a console output</li>
-<li>initialize the FatFs and mount the SD card if <code class="docutils literal notranslate"><span class="pre">MID_FATFS</span></code> is enabled</li>
-<li>initialize NT-Shell if <code class="docutils literal notranslate"><span class="pre">MID_NTSHELL</span></code> is enabled</li>
+<li><p>board-level hardware initialization in <code class="docutils literal notranslate"><span class="pre">board_init</span></code></p></li>
+<li><p>Middleware initialization</p>
+<ul>
+<li><p>initialize the <code class="docutils literal notranslate"><span class="pre">xprintf</span></code> function to have a console output</p></li>
+<li><p>initialize the FatFs and mount the SD card if <code class="docutils literal notranslate"><span class="pre">MID_FATFS</span></code> is enabled</p></li>
+<li><p>initialize NT-Shell if <code class="docutils literal notranslate"><span class="pre">MID_NTSHELL</span></code> is enabled</p></li>
 </ul>
 </li>
-<li>OS specific initialization if <code class="docutils literal notranslate"><span class="pre">ENABLE_OS</span></code> is defined<ul>
-<li>create main task for user <code class="docutils literal notranslate"><span class="pre">main</span></code> function</li>
-<li>create WiFi task if <code class="docutils literal notranslate"><span class="pre">MID_LWIP</span></code> is enabled and WiFi module is used</li>
+<li><p>OS specific initialization if <code class="docutils literal notranslate"><span class="pre">ENABLE_OS</span></code> is defined</p>
+<ul>
+<li><p>create main task for user <code class="docutils literal notranslate"><span class="pre">main</span></code> function</p></li>
+<li><p>create WiFi task if <code class="docutils literal notranslate"><span class="pre">MID_LWIP</span></code> is enabled and WiFi module is used</p></li>
 </ul>
 </li>
-<li>jump to <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</li>
+<li><p>jump to <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">User can undefine the macro <code class="docutils literal notranslate"><span class="pre">EMBARC_USE_BOARD_MAIN</span></code> to bypass the pre-defined board-level initialization and do customized initialization.</p>
+<p class="admonition-title">Note</p>
+<p>User can undefine the macro <code class="docutils literal notranslate"><span class="pre">EMBARC_USE_BOARD_MAIN</span></code> to bypass the pre-defined board-level initialization and do customized initialization.</p>
 </div>
 </div>
 </div>
@@ -279,14 +284,14 @@ device interrupts and are always asynchronous.</p>
 <span class="pre">but</span> <span class="pre">not</span> <span class="pre">DCCM</span></code>) with an alignment 1024 bytes. Every exception contains the
 following information:</p>
 <ul class="simple">
-<li>Vector Name is a symbolic equivalent of the vector number.</li>
-<li>Vector Number is a unique eight-bit index in the exception or interrupt
+<li><p>Vector Name is a symbolic equivalent of the vector number.</p></li>
+<li><p>Vector Number is a unique eight-bit index in the exception or interrupt
 vector table. Vector Offset is an offset value calculated as four times the
 vector number (vector offset = 4*vector_number), which is used to determine
-the position of the appropriate exception or interrupt service routine.</li>
-<li>Cause Code is an eight-bit number to identify the exact cause of an exception.</li>
-<li>Parameter is an eight-bit field to pass a single parameter from the exception
-to the exception handler and identify exceptions with the same cause code.</li>
+the position of the appropriate exception or interrupt service routine.</p></li>
+<li><p>Cause Code is an eight-bit number to identify the exact cause of an exception.</p></li>
+<li><p>Parameter is an eight-bit field to pass a single parameter from the exception
+to the exception handler and identify exceptions with the same cause code.</p></li>
 </ul>
 <p>For more details, see the <code class="docutils literal notranslate"><span class="pre">ARCv2</span> <span class="pre">ISA</span> <span class="pre">Programmer's</span> <span class="pre">Reference</span> <span class="pre">Manual</span> <span class="pre">(PRM)</span></code>.</p>
 </div>
@@ -302,14 +307,14 @@ called in entry. You can define your own entry using <code class="docutils liter
 <img alt="interrupt and exception processing" src="../_images/interrupt.jpg" />
 <p>In this model, interrupts have the following features:</p>
 <ul class="simple">
-<li>Devices request interrupts through their own interrupt vectors and they can
-share the same interrupt vectors.</li>
-<li>An interrupt can be level-sensitive or pulse-sensitive.</li>
-<li>An interrupt can be enabled (unmasked) and disabled (masked).</li>
-<li>The priority of each interrupt can be programmed by software.</li>
-<li>Interrupt priority order is from INT_PRI_HIGH (highest, -1 default) to
-INT_PRI_MIN (lowest, -2 default).</li>
-<li>CPU lock and unlock are used to disable and enable interrupt processing.</li>
+<li><p>Devices request interrupts through their own interrupt vectors and they can
+share the same interrupt vectors.</p></li>
+<li><p>An interrupt can be level-sensitive or pulse-sensitive.</p></li>
+<li><p>An interrupt can be enabled (unmasked) and disabled (masked).</p></li>
+<li><p>The priority of each interrupt can be programmed by software.</p></li>
+<li><p>Interrupt priority order is from INT_PRI_HIGH (highest, -1 default) to
+INT_PRI_MIN (lowest, -2 default).</p></li>
+<li><p>CPU lock and unlock are used to disable and enable interrupt processing.</p></li>
 </ul>
 <p>For most Real-Time Operating Systems (RTOS), the task/process/thread priority
 is a positive number and starts from 1 (the highest priority).</p>
@@ -372,13 +377,13 @@ and unlock cache lines and to access cache-internal RAM.</p>
 consumption DMA engine for use in the ARC EM 2.0 cores.</p>
 <p>The DMA controller supports the following features:</p>
 <ul class="simple">
-<li>1 to 16 independent programmable DMA channels (number of channels is configurable)</li>
-<li>User-programmable prioritization scheme for all available channels</li>
-<li>Concurrent operation with the CPU</li>
-<li>Software/Hardware–triggered DMA transfers</li>
-<li>Two addressing modes</li>
-<li>Five data transfer modes (configurable down to one)</li>
-<li>Internal and external interrupt support</li>
+<li><p>1 to 16 independent programmable DMA channels (number of channels is configurable)</p></li>
+<li><p>User-programmable prioritization scheme for all available channels</p></li>
+<li><p>Concurrent operation with the CPU</p></li>
+<li><p>Software/Hardware–triggered DMA transfers</p></li>
+<li><p>Two addressing modes</p></li>
+<li><p>Five data transfer modes (configurable down to one)</p></li>
+<li><p>Internal and external interrupt support</p></li>
 </ul>
 <p>See <code class="docutils literal notranslate"><span class="pre">arc_udma.h</span></code> for further details.</p>
 </div>
@@ -396,41 +401,41 @@ instruction from completing.</p>
 <div class="section" id="related-files">
 <h2>Related files<a class="headerlink" href="#related-files" title="Permalink to this headline">¶</a></h2>
 <p>The files relevant to the ARC HAL are described in the table below.</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="49%" />
-<col width="51%" />
+<col style="width: 49%" />
+<col style="width: 51%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>File/Folder</td>
-<td>Content</td>
+<tbody>
+<tr class="row-odd"><td><p>File/Folder</p></td>
+<td><p>Content</p></td>
 </tr>
-<tr class="row-even"><td>arc.h, arc_em.h, arc_hs.h</td>
-<td>Processor resources definition</td>
+<tr class="row-even"><td><p>arc.h, arc_em.h, arc_hs.h</p></td>
+<td><p>Processor resources definition</p></td>
 </tr>
-<tr class="row-odd"><td>arc_asm_common.h</td>
-<td>Common macro definitions for assembly code</td>
+<tr class="row-odd"><td><p>arc_asm_common.h</p></td>
+<td><p>Common macro definitions for assembly code</p></td>
 </tr>
-<tr class="row-even"><td>arc_builtin.h</td>
-<td>Compiler built-in and helper functions</td>
+<tr class="row-even"><td><p>arc_builtin.h</p></td>
+<td><p>Compiler built-in and helper functions</p></td>
 </tr>
-<tr class="row-odd"><td>arc_cache.c, arc_cache.h</td>
-<td>ARC cache module</td>
+<tr class="row-odd"><td><p>arc_cache.c, arc_cache.h</p></td>
+<td><p>ARC cache module</p></td>
 </tr>
-<tr class="row-even"><td>arc_exc_asm.s</td>
-<td>Assembly part of exception handling</td>
+<tr class="row-even"><td><p>arc_exc_asm.s</p></td>
+<td><p>Assembly part of exception handling</p></td>
 </tr>
-<tr class="row-odd"><td>arc_startup.s</td>
-<td>Common startup routine</td>
+<tr class="row-odd"><td><p>arc_startup.s</p></td>
+<td><p>Common startup routine</p></td>
 </tr>
-<tr class="row-even"><td>arc_timer.c, arc_timer.h</td>
-<td>ARC internal timer module</td>
+<tr class="row-even"><td><p>arc_timer.c, arc_timer.h</p></td>
+<td><p>ARC internal timer module</p></td>
 </tr>
-<tr class="row-odd"><td>arc_udma.c, arc_udma.h, arc_udma_config.h</td>
-<td>ARC uDMA module</td>
+<tr class="row-odd"><td><p>arc_udma.c, arc_udma.h, arc_udma_config.h</p></td>
+<td><p>ARC uDMA module</p></td>
 </tr>
-<tr class="row-even"><td>arc_mpu.c, arc_mpu.h</td>
-<td>ARC MPU module</td>
+<tr class="row-even"><td><p>arc_mpu.c, arc_mpu.h</p></td>
+<td><p>ARC MPU module</p></td>
 </tr>
 </tbody>
 </table>

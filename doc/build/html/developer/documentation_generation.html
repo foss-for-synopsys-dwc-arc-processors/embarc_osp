@@ -183,45 +183,45 @@
 <div class="section" id="building-document-in-windows">
 <h2>Building Document in Windows<a class="headerlink" href="#building-document-in-windows" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">Install <a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx</a> in the Windows machine.</p>
+<li><p>Install <a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx</a> in the Windows machine.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>sphinx-build --version
 <span class="go">Sphinx (sphinx-build) 1.6.3</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Install <a class="reference external" href="http://www.doxygen.nl/">Doxygen</a> in the Windows machine.</p>
+<li><p>Install <a class="reference external" href="http://www.doxygen.nl/">Doxygen</a> in the Windows machine.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>doxygen --version
 <span class="go">1.8.13</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Open a command prompt as administrator. Go to <em>&lt;embARC&gt;/doc/documents/example</em>. Enter <code class="docutils literal notranslate"><span class="pre">mklink</span> <span class="pre">/D</span> <span class="pre">example</span> <span class="pre">..\..\..\example</span></code> to create a folder link to <em>&lt;embARC&gt;/example</em>.</p>
+<li><p>Open a command prompt as administrator. Go to <em>&lt;embARC&gt;/doc/documents/example</em>. Enter <code class="docutils literal notranslate"><span class="pre">mklink</span> <span class="pre">/D</span> <span class="pre">example</span> <span class="pre">..\..\..\example</span></code> to create a folder link to <em>&lt;embARC&gt;/example</em>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>mklink /D example ..<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\e</span>xample
 <span class="go">symbolic link created for example &lt;&lt;===&gt;&gt; ..\..\..\example</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">create</span> <span class="pre">a</span> <span class="pre">file</span> <span class="pre">when</span> <span class="pre">that</span> <span class="pre">file</span> <span class="pre">already</span> <span class="pre">exists.</span></code>, it means you have already have a file or folder <em>example</em>. Make sure the link is accessible to <em>&lt;embARC&gt;/example</em>.</p>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">create</span> <span class="pre">a</span> <span class="pre">file</span> <span class="pre">when</span> <span class="pre">that</span> <span class="pre">file</span> <span class="pre">already</span> <span class="pre">exists.</span></code>, it means you have already have a file or folder <em>example</em>. Make sure the link is accessible to <em>&lt;embARC&gt;/example</em>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>mklink /D example ..<span class="se">\.</span>.<span class="se">\.</span>.<span class="se">\e</span>xample
 <span class="go">Cannot create a file when that file already exists.</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Go to <em>&lt;embARC&gt;/doc</em> and generate xml files by Doxygen.</p>
+<li><p>Go to <em>&lt;embARC&gt;/doc</em> and generate xml files by Doxygen.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>mkdir build<span class="se">\d</span>oxygen<span class="se">\x</span>ml
 <span class="gp">&gt;</span>make doxygen
 </pre></div>
 </div>
 </li>
-<li><p class="first">Go to <em>&lt;embARC&gt;/doc</em> and enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> to generate html. The html files are in <em>&lt;embARC&gt;/doc/build/html</em>.</p>
+<li><p>Go to <em>&lt;embARC&gt;/doc</em> and enter <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> to generate html. The html files are in <em>&lt;embARC&gt;/doc/build/html</em>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span>make html
 </pre></div>
 </div>
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Enter <code class="docutils literal notranslate"><span class="pre">make</span></code> in <em>&lt;embARC&gt;/doc</em> to see the details of make target.</p>
+<p class="admonition-title">Note</p>
+<p>Enter <code class="docutils literal notranslate"><span class="pre">make</span></code> in <em>&lt;embARC&gt;/doc</em> to see the details of make target.</p>
 </div>
 </div>
 </div>

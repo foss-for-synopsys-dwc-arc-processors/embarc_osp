@@ -169,89 +169,84 @@
   <div class="section" id="usage-guide-faq">
 <span id="id1"></span><h1>Usage Guide FAQ<a class="headerlink" href="#usage-guide-faq" title="Permalink to this headline">¶</a></h1>
 <ul>
-<li><p class="first"><strong>Here are some tips when running some examples unsuccessfully.</strong></p>
+<li><p><strong>Here are some tips when running some examples unsuccessfully.</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>Check the board version, core configuration and toolchain version.</li>
-<li>Check the WiFi hotspot name and password settings in <em>board/board.h</em>.</li>
-<li>Make sure that peripherals are connected to the right ports, such as Pmod WiFi, Pmod TMP2, Pmod RF2, and SD card.</li>
-<li>The MetaWare toolchain works better than the ARC GNU toolchain.</li>
-<li>Check if your PC or laptop is connected to the same WiFi hotspot as EMSK.</li>
-<li>If you are running a Telnet commands on your PC to test embARC examples, shut down the Telnet process in the Task Manager.</li>
-<li>If <strong>WF_EVENT_CONNECTION_FAILED</strong> is printed in the terminal when embARC startup, wait at least two minutes for reconnection. The EMSK can reconnect to the WiFi hotspot if your WiFi hotspot setting is right.</li>
-<li>Using the make/gmake in the MetaWare and ARC GNU toolchain is highly recommended in the embARC OSP.</li>
-<li>Make sure the source code file is not in UTF-16 format. If the UTF-16 format is used, compiling may fail with the error message <strong>cc1.exe: out of memory allocating 838860800 bytes</strong>.</li>
-<li>When building and downloading a program with the MetaWare toolchain, it is recommended to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause a compile failure when checking the license of the compiler. It depends on your network environment.</li>
+<li><p>Check the board version, core configuration and toolchain version.</p></li>
+<li><p>Check the WiFi hotspot name and password settings in <em>board/board.h</em>.</p></li>
+<li><p>Make sure that peripherals are connected to the right ports, such as Pmod WiFi, Pmod TMP2, Pmod RF2, and SD card.</p></li>
+<li><p>The MetaWare toolchain works better than the ARC GNU toolchain.</p></li>
+<li><p>Check if your PC or laptop is connected to the same WiFi hotspot as EMSK.</p></li>
+<li><p>If you are running a Telnet commands on your PC to test embARC examples, shut down the Telnet process in the Task Manager.</p></li>
+<li><p>If <strong>WF_EVENT_CONNECTION_FAILED</strong> is printed in the terminal when embARC startup, wait at least two minutes for reconnection. The EMSK can reconnect to the WiFi hotspot if your WiFi hotspot setting is right.</p></li>
+<li><p>Using the make/gmake in the MetaWare and ARC GNU toolchain is highly recommended in the embARC OSP.</p></li>
+<li><p>Make sure the source code file is not in UTF-16 format. If the UTF-16 format is used, compiling may fail with the error message <strong>cc1.exe: out of memory allocating 838860800 bytes</strong>.</p></li>
+<li><p>When building and downloading a program with the MetaWare toolchain, it is recommended to disconnect PC/EMSK from the WiFi hotspot. Connecting to the WiFi hotspot may cause a compile failure when checking the license of the compiler. It depends on your network environment.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Here are some tips when you are using the ARC GNU toolchain.</strong></p>
+<li><p><strong>Here are some tips when you are using the ARC GNU toolchain.</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>Install EMSK Digilent JTAG drivers on Windows for the ARC GNU toolchain. See <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a> for more information.</li>
-<li>Installing the Digilent JTAG drivers for the ARC GNU toolchain affects the usage of MetaWare debugger. If you want to switch to using the MetaWare debugger, uninstall the Digilent JTAG drivers for the ARC GNU toolchain. Then install the drivers provided by Digilent.</li>
-<li>Different board has different driver name. There are two drivers for the onboard FTDI chip, one for JTAG and the other for USB. Choose and update the JTAG driver only.</li>
-<li>System reboot might be needed.</li>
+<li><p>Install EMSK Digilent JTAG drivers on Windows for the ARC GNU toolchain. See <a class="reference external" href="https://github.com/foss-for-synopsys-dwc-arc-processors/arc_gnu_eclipse/wiki/How-to-Use-OpenOCD-on-Windows">How to Use OpenOCD on Windows</a> for more information.</p></li>
+<li><p>Installing the Digilent JTAG drivers for the ARC GNU toolchain affects the usage of MetaWare debugger. If you want to switch to using the MetaWare debugger, uninstall the Digilent JTAG drivers for the ARC GNU toolchain. Then install the drivers provided by Digilent.</p></li>
+<li><p>Different board has different driver name. There are two drivers for the onboard FTDI chip, one for JTAG and the other for USB. Choose and update the JTAG driver only.</p></li>
+<li><p>System reboot might be needed.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Why cannot build the embARC after changing the version of embARC OSP, or pulling source code from Github?</strong></p>
+<li><p><strong>Why cannot build the embARC after changing the version of embARC OSP, or pulling source code from Github?</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>Check the embARC OSP version and ARC toolchain version carefully in <a class="reference internal" href="../getting_started/software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>. The embARC OSP doesn’t check the toolchain version compatibility.</li>
+<li><p>Check the embARC OSP version and ARC toolchain version carefully in <a class="reference internal" href="../getting_started/software_requirement.html#software-requirement"><span class="std std-ref">Software Requirement</span></a>. The embARC OSP doesn’t check the toolchain version compatibility.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Why cannot run an example with minor changes in the source code/configuration again?</strong></p>
+<li><p><strong>Why cannot run an example with minor changes in the source code/configuration again?</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>The generated files are not cleaned automatically when changing some code or configurations.</li>
-<li>If you can run any of the examples provided in the first time. But for the second time, no response is sent back. Try to clean the project with <cite>make clean</cite>, set the board configuration and build the example again.</li>
+<li><p>The generated files are not cleaned automatically when changing some code or configurations.</p></li>
+<li><p>If you can run any of the examples provided in the first time. But for the second time, no response is sent back. Try to clean the project with <cite>make clean</cite>, set the board configuration and build the example again.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Here are some tips when you are using WiFi in the embARC OSP?</strong></p>
+<li><p><strong>Here are some tips when you are using WiFi in the embARC OSP?</strong></p>
 <blockquote>
 <div><ul>
-<li><p class="first">Make sure your Pmod WiFi connects to the right Pmod connector, J5. Then Check the hotspot settings in &lt;board_name&gt;/&lt;board_name&gt;.h, e.g., emsk/emsk.h.</p>
-</li>
-<li><p class="first">Make sure your WiFi setting is correct.</p>
+<li><p>Make sure your Pmod WiFi connects to the right Pmod connector, J5. Then Check the hotspot settings in &lt;board_name&gt;/&lt;board_name&gt;.h, e.g., emsk/emsk.h.</p></li>
+<li><p>Make sure your WiFi setting is correct.</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><strong>WF_HOTSPOT_IS_OPEN</strong></p>
+<li><p><strong>WF_HOTSPOT_IS_OPEN</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>1: WiFi hotspot is non-encrypted</li>
-<li>0: WiFi hotspot is encrypted, you must set the right WF_HOTSPOT_NAME and WF_HOTSPOT_PASSWD</li>
+<li><p>1: WiFi hotspot is non-encrypted</p></li>
+<li><p>0: WiFi hotspot is encrypted, you must set the right WF_HOTSPOT_NAME and WF_HOTSPOT_PASSWD</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>WF_HOTSPOT_NAME</strong>: the SSID name of your WiFi hotspot</p>
-</li>
-<li><p class="first"><strong>WF_HOTSPOT_PASSWD</strong>: the password of your WIFI hotspot</p>
-</li>
-<li><p class="first">If your WIFI hotspot is encrypted, you must set it to WPA/WPA2 PSK encrypted.</p>
-</li>
+<li><p><strong>WF_HOTSPOT_NAME</strong>: the SSID name of your WiFi hotspot</p></li>
+<li><p><strong>WF_HOTSPOT_PASSWD</strong>: the password of your WIFI hotspot</p></li>
+<li><p>If your WIFI hotspot is encrypted, you must set it to WPA/WPA2 PSK encrypted.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Running the WiFi examples on EMSK is recommended in the current version.</p>
-</li>
+<li><p>Running the WiFi examples on EMSK is recommended in the current version.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Why are the IP addresses different when running in bare metal and RTOS?</strong></p>
+<li><p><strong>Why are the IP addresses different when running in bare metal and RTOS?</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>Running examples under an RTOS (FreeRTOS) enables DHCP to get the IP address from the DHCP server. So the IP address under an RTOS is automatically assigned.</li>
-<li>Set the right IP address, gateway, and netmask in <em>board/board.h</em> when using baremetal.</li>
+<li><p>Running examples under an RTOS (FreeRTOS) enables DHCP to get the IP address from the DHCP server. So the IP address under an RTOS is automatically assigned.</p></li>
+<li><p>Set the right IP address, gateway, and netmask in <em>board/board.h</em> when using baremetal.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>How can I check whether the Pmod WiFi is connected to a hotspot?</strong></p>
+<li><p><strong>How can I check whether the Pmod WiFi is connected to a hotspot?</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>When the WIFI Pmod is connected to a hotspot, EMSK prints a message on the terminal.</li>
+<li><p>When the WIFI Pmod is connected to a hotspot, EMSK prints a message on the terminal.</p></li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WF_EVENT_CONNECTION_SUCCESSFUL.</span>
 <span class="go">When connecting fails, the message is WF_EVENT_CONNECTION_FAILED. The common message for lwIP examples is shown below.</span>
@@ -267,37 +262,35 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>Sometimes the board may hang when using the WiFi module. The board can prints a message <strong>WF_EVENT_ERROR:XXXXXX</strong> or gives no output. If the board hangs, recommend to power down the board, download and run your program again.</li>
+<li><p>Sometimes the board may hang when using the WiFi module. The board can prints a message <strong>WF_EVENT_ERROR:XXXXXX</strong> or gives no output. If the board hangs, recommend to power down the board, download and run your program again.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>How to run multi-node examples in the embARC OSP</strong></p>
+<li><p><strong>How to run multi-node examples in the embARC OSP</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>For the EMSK boards, a recommended way is generating binary file for your applications, for example, <cite>make TOOLCHAIN=gnu BD_VER=22 CUR_CORE=arcem7d bin</cite>. Rename it to <em>boot.bin</em> and copy it to the SDCard. Then use <strong>emsk_bootloader</strong> as a secondary bootloader to load <em>boot.bin</em> on the SDCard, where the EMSK SPI Flash is programmed.</li>
+<li><p>For the EMSK boards, a recommended way is generating binary file for your applications, for example, <cite>make TOOLCHAIN=gnu BD_VER=22 CUR_CORE=arcem7d bin</cite>. Rename it to <em>boot.bin</em> and copy it to the SDCard. Then use <strong>emsk_bootloader</strong> as a secondary bootloader to load <em>boot.bin</em> on the SDCard, where the EMSK SPI Flash is programmed.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Why do the make TOOLCHAIN=gnu run or make TOOLCHAIN=gnu gui commands fail on Linux host?</strong></p>
+<li><p><strong>Why do the make TOOLCHAIN=gnu run or make TOOLCHAIN=gnu gui commands fail on Linux host?</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>OpenOCD</strong> on Linux requires the configuration files in a UNIX file format with LF line terminators. Convert the configuration files to UNIX file format.</li>
+<li><p><strong>OpenOCD</strong> on Linux requires the configuration files in a UNIX file format with LF line terminators. Convert the configuration files to UNIX file format.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>How to set the JTAG frequency to match the target CPU frequency?</strong></p>
+<li><p><strong>How to set the JTAG frequency to match the target CPU frequency?</strong></p>
 <blockquote>
 <div><ul>
-<li><p class="first">Sometimes the CPU frequency and JTAG frequency don’t match in the ARC core configurations, e.g., when you add a new ARC board. It is necessary to set the JTAG frequency to match the CPU frequency of the selected core configuration.</p>
-</li>
-<li><p class="first">For the MetaWare toolchain, pass a make option called <strong>DIG_SPEED</strong> (in Hz) to set the JTAG frequency, like <code class="docutils literal notranslate"><span class="pre">DIG_SPEED=5000000</span></code>. For the EMSK 2.2, the <strong>DIG_SPEED</strong> is hard-coded in <em>board/emsk/configs/22/emsk_22.mk</em>.</p>
-</li>
-<li><p class="first">For the ARC GNU toolchain, change the value of adapter_khz(in KHz) in the openocd file of EMSK to set the JTAG frequency.</p>
+<li><p>Sometimes the CPU frequency and JTAG frequency don’t match in the ARC core configurations, e.g., when you add a new ARC board. It is necessary to set the JTAG frequency to match the CPU frequency of the selected core configuration.</p></li>
+<li><p>For the MetaWare toolchain, pass a make option called <strong>DIG_SPEED</strong> (in Hz) to set the JTAG frequency, like <code class="docutils literal notranslate"><span class="pre">DIG_SPEED=5000000</span></code>. For the EMSK 2.2, the <strong>DIG_SPEED</strong> is hard-coded in <em>board/emsk/configs/22/emsk_22.mk</em>.</p></li>
+<li><p>For the ARC GNU toolchain, change the value of adapter_khz(in KHz) in the openocd file of EMSK to set the JTAG frequency.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For EMSK 1.x, the openocd config file is located in <em>&lt;ARC_GNU&gt;/share/openocd/scripts/board/snps_em_sk_v1.cfg</em>.</li>
-<li>For EMSK2.x, the openocd config file is located in <em>&lt;ARC_GNU&gt;/share/openocd/scripts/board/snps_em_sk.cfg</em>.</li>
-<li><em>&lt;ARC_GNU&gt;</em> is the installation directory of the ARC GNU toolchain.</li>
+<li><p>For EMSK 1.x, the openocd config file is located in <em>&lt;ARC_GNU&gt;/share/openocd/scripts/board/snps_em_sk_v1.cfg</em>.</p></li>
+<li><p>For EMSK2.x, the openocd config file is located in <em>&lt;ARC_GNU&gt;/share/openocd/scripts/board/snps_em_sk.cfg</em>.</p></li>
+<li><p><em>&lt;ARC_GNU&gt;</em> is the installation directory of the ARC GNU toolchain.</p></li>
 </ul>
 </div></blockquote>
 </li>

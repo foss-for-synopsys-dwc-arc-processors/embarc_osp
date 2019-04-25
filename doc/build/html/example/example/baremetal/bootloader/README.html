@@ -188,193 +188,174 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. By default, this example will validate the binary image based on MCUBoot to do secure boot. And this example itself can be used as ntshell application.</div></blockquote>
+<div><p>This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. By default, this example will validate the binary image based on MCUBoot to do secure boot. And this example itself can be used as ntshell application.</p>
+</div></blockquote>
 <div class="section" id="detailed-description">
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
-<li><dl class="first docutils">
-<dt>Extra Required Tools</dt>
-<dd><ul class="first last simple">
-<li>The requirements of MCUBoot image tools</li>
+<li><dl class="simple">
+<dt>Extra Required Tools</dt><dd><ul class="simple">
+<li><p>The requirements of MCUBoot image tools</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Required Peripherals</dt>
-<dd><ul class="first last simple">
-<li>SDCard with boot binary(boot.hex or boot.bin)</li>
+<li><dl class="simple">
+<dt>Extra Required Peripherals</dt><dd><ul class="simple">
+<li><p>SDCard with boot binary(boot.hex or boot.bin)</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Design Concept</dt>
-<dd><p class="first">This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. And this example itself can be used as ntshell application.</p>
+<li><dl>
+<dt>Design Concept</dt><dd><p>This example is designed to work as a secondary bootloader for embARC, it will load boot.hex or boot.bin on SDCard and run that program. And this example itself can be used as ntshell application.</p>
 <p>This example combines multiple usage cases, including the image is in SD or Flash, and whether or not to use MCUboot. The program flow of this example as following.</p>
-<img alt="../../../../_images/boot_loader_flow.jpg" class="last" src="../../../../_images/boot_loader_flow.jpg" />
+<img alt="../../../../_images/boot_loader_flow.jpg" src="../../../../_images/boot_loader_flow.jpg" />
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Usage Manual</dt>
-<dd><p class="first">As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA, a simple primary bootloader is also loaded in ICCM. Through the primary bootloader, the application or secondary bootloader can be loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.</p>
+<li><dl>
+<dt>Usage Manual</dt><dd><p>As shown in the following picture, when the EMSK configuration in SPI flash is loaded into the FPGA, a simple primary bootloader is also loaded in ICCM. Through the primary bootloader, the application or secondary bootloader can be loaded into external memory (DDR memory), bootloader start address is 0x17F00004, ram address is 0x17F00000.</p>
 <p>For EMSK 1.x, bootloader core configuration must be arcem6, for EMSK2.x, bootloader core configuration must be arcem7d.
 For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.2, it can be upgraded to 2.3 by 2.3’s firmware.</p>
 <img alt="../../../../_images/bootloader.jpg" src="../../../../_images/bootloader.jpg" />
 <p>Here are steps for how to program the secondary bootloader application into onboard SPIFlash (Take EMSK2.3 - ARC EM7D as example) and automatically load and run <em>boot.hex</em> or <em>boot.bin</em> in SDCard.</p>
 <ul>
-<li><p class="first">Generate a secondary bootloader binary file</p>
-</li>
-<li><dl class="first docutils">
-<dt>Program generated secondary bootloader binary file into SPIFlash</dt>
-<dd><ul class="first">
-<li><p class="first">Insert SDCard to your PC, and copy the binary file <em>obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin</em> to SDCard Root, and rename it to <em>em7d_2bt.bin</em></p>
-</li>
-<li><p class="first">Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the <em>&lt;embARC&gt;/example/baremetal/bootloader</em> example, then press any button to stop auto boot process, and enter to ntshell command mode.</p>
-</li>
-<li><dl class="first docutils">
-<dt>Then use ntshell command <em>spirw</em> to program the <em>em7d_2bt.bin</em> into spiflash.</dt>
-<dd><ul class="first simple">
-<li>Firstly, run <em>spirw</em> to show help</li>
-<li>Secondly, run <em>spirw -i</em> to check SPIFlash ID, it should be <strong>Device ID = ef4018</strong></li>
-<li>Thirdly, run <em>spirw -w em7d_2bt.bin ram_addr ram_start</em> to program spiflash, the <em>ram_addr</em> and <em>ram_start</em> is the load address and program start address of this bootloader, and they are different in each board, please check they in the table below. Usually, developer creates <em>appl_mem_config.h</em> and set <strong>APPL_DEFINES += -DUSE_APPL_MEM_CONFIG</strong> in <em>makefile</em> to define the addresses.</li>
-<li>Check the output message to see if it was programmed successfully.</li>
+<li><p>Generate a secondary bootloader binary file</p></li>
+<li><dl>
+<dt>Program generated secondary bootloader binary file into SPIFlash</dt><dd><ul>
+<li><p>Insert SDCard to your PC, and copy the binary file <em>obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin</em> to SDCard Root, and rename it to <em>em7d_2bt.bin</em></p></li>
+<li><p>Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the <em>&lt;embARC&gt;/example/baremetal/bootloader</em> example, then press any button to stop auto boot process, and enter to ntshell command mode.</p></li>
+<li><dl>
+<dt>Then use ntshell command <em>spirw</em> to program the <em>em7d_2bt.bin</em> into spiflash.</dt><dd><ul class="simple">
+<li><p>Firstly, run <em>spirw</em> to show help</p></li>
+<li><p>Secondly, run <em>spirw -i</em> to check SPIFlash ID, it should be <strong>Device ID = ef4018</strong></p></li>
+<li><p>Thirdly, run <em>spirw -w em7d_2bt.bin ram_addr ram_start</em> to program spiflash, the <em>ram_addr</em> and <em>ram_start</em> is the load address and program start address of this bootloader, and they are different in each board, please check they in the table below. Usually, developer creates <em>appl_mem_config.h</em> and set <strong>APPL_DEFINES += -DUSE_APPL_MEM_CONFIG</strong> in <em>makefile</em> to define the addresses.</p></li>
+<li><p>Check the output message to see if it was programmed successfully.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id1">
+<table class="colwidths-auto docutils align-center" id="id1">
 <caption><span class="caption-text">Examples in embARC OSP</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Board version</th>
-<th class="head">Use MCUBoot</th>
-<th class="head">ram_addr</th>
-<th class="head">ram_start</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Board version</p></th>
+<th class="head"><p>Use MCUBoot</p></th>
+<th class="head"><p>ram_addr</p></th>
+<th class="head"><p>ram_start</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>axs</td>
-<td>not support</td>
-<td>user definition</td>
-<td>user definition</td>
+<tbody>
+<tr class="row-even"><td><p>axs</p></td>
+<td><p>not support</p></td>
+<td><p>user definition</p></td>
+<td><p>user definition</p></td>
 </tr>
-<tr class="row-odd"><td>emsdp</td>
-<td>not support</td>
-<td>user definition</td>
-<td>user definition</td>
+<tr class="row-odd"><td><p>emsdp</p></td>
+<td><p>not support</p></td>
+<td><p>user definition</p></td>
+<td><p>user definition</p></td>
 </tr>
-<tr class="row-even"><td>emsk</td>
-<td>true</td>
-<td>0x15000000</td>
-<td>0x15000004</td>
+<tr class="row-even"><td><p>emsk</p></td>
+<td><p>true</p></td>
+<td><p>0x15000000</p></td>
+<td><p>0x15000004</p></td>
 </tr>
-<tr class="row-odd"><td>emsk</td>
-<td>false</td>
-<td>user definition</td>
-<td>user definition</td>
+<tr class="row-odd"><td><p>emsk</p></td>
+<td><p>false</p></td>
+<td><p>user definition</p></td>
+<td><p>user definition</p></td>
 </tr>
-<tr class="row-even"><td>iotdk</td>
-<td>true</td>
-<td>0x00000000</td>
-<td>0x00000004</td>
+<tr class="row-even"><td><p>iotdk</p></td>
+<td><p>true</p></td>
+<td><p>0x00000000</p></td>
+<td><p>0x00000004</p></td>
 </tr>
-<tr class="row-odd"><td>iotdk</td>
-<td>false</td>
-<td>user definition</td>
-<td>user definition</td>
+<tr class="row-odd"><td><p>iotdk</p></td>
+<td><p>false</p></td>
+<td><p>user definition</p></td>
+<td><p>user definition</p></td>
 </tr>
-<tr class="row-even"><td>nsim</td>
-<td>not support</td>
-<td>user definition</td>
-<td>user definition</td>
+<tr class="row-even"><td><p>nsim</p></td>
+<td><p>not support</p></td>
+<td><p>user definition</p></td>
+<td><p>user definition</p></td>
 </tr>
 </tbody>
 </table>
-<img alt="../../../../_images/emsk_bootloader_program2splflash.jpg" class="last" src="../../../../_images/emsk_bootloader_program2splflash.jpg" />
+<img alt="../../../../_images/emsk_bootloader_program2splflash.jpg" src="../../../../_images/emsk_bootloader_program2splflash.jpg" />
 </dd>
 </dl>
 </li>
-<li><p class="first">If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.</p>
-</li>
-<li><p class="first">If the sdcard already contains the <em>boot.bin</em> in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.</p>
-</li>
-<li><p class="first">You can goto the next step to generate the <em>boot.bin</em> for proper application you want to be auto-loaded in sdcard.</p>
-</li>
+<li><p>If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.</p></li>
+<li><p>If the sdcard already contains the <em>boot.bin</em> in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.</p></li>
+<li><p>You can goto the next step to generate the <em>boot.bin</em> for proper application you want to be auto-loaded in sdcard.</p></li>
 </ul>
-<img alt="../../../../_images/emsk_bootloader_onspiflash.jpg" class="last" src="../../../../_images/emsk_bootloader_onspiflash.jpg" />
+<img alt="../../../../_images/emsk_bootloader_onspiflash.jpg" src="../../../../_images/emsk_bootloader_onspiflash.jpg" />
 </dd>
 </dl>
 </li>
-<li><p class="first">When not using MCUBoot, generate <em>boot.bin</em> using any embARC example which ram start address should be 0x10000000 and use bootloader to run it</p>
-</li>
-<li><dl class="first docutils">
-<dt>Know Issues</dt>
-<dd><ul class="first last simple">
-<li>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.</li>
+<li><p>When not using MCUBoot, generate <em>boot.bin</em> using any embARC example which ram start address should be 0x10000000 and use bootloader to run it</p></li>
+<li><dl class="simple">
+<dt>Know Issues</dt><dd><ul class="simple">
+<li><p>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send request in forum about this mcs file.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<dl class="last docutils">
-<dt><strong>The secondary bootloader is a complement of the primary bootloader, and provides the following functions:</strong></dt>
-<dd><ul class="first simple">
-<li>File operations on SD card</li>
-<li>Operations on the EMSK, GPIO, I2C, SPI flash</li>
-<li>Operations on ARC processors</li>
-<li><dl class="first docutils">
-<dt>Automatic boot from SD card, using following instructions:</dt>
-<dd><ul class="first last">
-<li>program the bin file of bootloader into EMSK spiflash using spirw command <strong>spirw -w bootloader.bin ram_addr ram_start</strong> with the help of JTAG</li>
-<li>the primary bootloader should be able to load the secondary bootloader</li>
-<li>put the file you want to boot in the root directory of SD card, name it boot.bin</li>
-<li>plug in SD card</li>
+<dl>
+<dt><strong>The secondary bootloader is a complement of the primary bootloader, and provides the following functions:</strong></dt><dd><ul class="simple">
+<li><p>File operations on SD card</p></li>
+<li><p>Operations on the EMSK, GPIO, I2C, SPI flash</p></li>
+<li><p>Operations on ARC processors</p></li>
+<li><dl class="simple">
+<dt>Automatic boot from SD card, using following instructions:</dt><dd><ul>
+<li><p>program the bin file of bootloader into EMSK spiflash using spirw command <strong>spirw -w bootloader.bin ram_addr ram_start</strong> with the help of JTAG</p></li>
+<li><p>the primary bootloader should be able to load the secondary bootloader</p></li>
+<li><p>put the file you want to boot in the root directory of SD card, name it boot.bin</p></li>
+<li><p>plug in SD card</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Optional secure boot based on MCUBoot:</dt>
-<dd><ul class="first last">
-<li>validate the binary image by SHA-256 hash function and asymmetric encryption RSA algorithm for the integrity check and signature verification</li>
-<li>validate the new binary image for upgrade and do firmware upgrade</li>
+<li><dl class="simple">
+<dt>Optional secure boot based on MCUBoot:</dt><dd><ul>
+<li><p>validate the binary image by SHA-256 hash function and asymmetric encryption RSA algorithm for the integrity check and signature verification</p></li>
+<li><p>validate the new binary image for upgrade and do firmware upgrade</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>LED Status of loading application(boot.bin)</dt>
-<dd><ul class="first last">
-<li>Start to load application: LED on board -&gt; 0x0F</li>
-<li>Load application finished: LED on board -&gt; 0xFF, if application is running normally, LED will quickly change to 0x0</li>
-<li>Load application failed: LED on board -&gt; 0xAA</li>
-<li>Skip loading application, and enter to NTShell runtime: LED on board -&gt; 0x0</li>
+<li><dl class="simple">
+<dt>LED Status of loading application(boot.bin)</dt><dd><ul>
+<li><p>Start to load application: LED on board -&gt; 0x0F</p></li>
+<li><p>Load application finished: LED on board -&gt; 0xFF, if application is running normally, LED will quickly change to 0x0</p></li>
+<li><p>Load application failed: LED on board -&gt; 0xAA</p></li>
+<li><p>Skip loading application, and enter to NTShell runtime: LED on board -&gt; 0x0</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li>Type <em>help</em> command in ntshell to show the list of supported commands.</li>
+<li><p>Type <em>help</em> command in ntshell to show the list of supported commands.</p></li>
 </ul>
-<img alt="../../../../_images/emsk_bootloader.jpg" class="last" src="../../../../_images/emsk_bootloader.jpg" />
+<img alt="../../../../_images/emsk_bootloader.jpg" src="../../../../_images/emsk_bootloader.jpg" />
 </dd>
 </dl>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Comments</dt>
-<dd><ul class="first last simple">
-<li>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send</li>
-<li>Make sure that the bootloader can only load application for extract the same core you built for.</li>
-<li>Currently the 2nd bootloader ran in a different place(end of DDR) in DDR which has no conflict with other normal examples placed at start of DDR.</li>
-<li>Bootloader example only support arc core configuration which has DDR with cache enabled.</li>
-<li>Bootloader example runs in DDR ram, not in CCM.</li>
-<li>Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.</li>
-<li>The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run successfully</li>
-<li><dl class="first docutils">
-<dt>Supported core configurations</dt>
-<dd><ul class="first last">
-<li>EMSK 1.1: EM6, EM6GP</li>
-<li>EMSK 2.2/2.3: EM7D, EM11D</li>
+<li><dl class="simple">
+<dt>Extra Comments</dt><dd><ul class="simple">
+<li><p>Bootrom of EMSK1.x is not able to load secondary bootloader on SPIFlash, you need a modified EMSK1.x mcs file to enable this function, please send</p></li>
+<li><p>Make sure that the bootloader can only load application for extract the same core you built for.</p></li>
+<li><p>Currently the 2nd bootloader ran in a different place(end of DDR) in DDR which has no conflict with other normal examples placed at start of DDR.</p></li>
+<li><p>Bootloader example only support arc core configuration which has DDR with cache enabled.</p></li>
+<li><p>Bootloader example runs in DDR ram, not in CCM.</p></li>
+<li><p>Bootloader example itself can be treated as a ntshell example, you can run some ntshell commands using this example.</p></li>
+<li><p>The bootloader example is also built optimized for the ARC core you selected, so the example built for one specified core may not run successfully</p></li>
+<li><dl class="simple">
+<dt>Supported core configurations</dt><dd><ul>
+<li><p>EMSK 1.1: EM6, EM6GP</p></li>
+<li><p>EMSK 2.2/2.3: EM7D, EM11D</p></li>
 </ul>
 </dd>
 </dl>
@@ -390,18 +371,18 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <div class="section" id="building-and-running">
 <h2>Building and Running<a class="headerlink" href="#building-and-running" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Generate a secondary bootloader binary file</li>
+<li><p>Generate a secondary bootloader binary file</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you want to disable MCUBoot, you should set <strong>USE_MCUBOOT = 0</strong> in your makefile</p>
+<p class="admonition-title">Note</p>
+<p>If you want to disable MCUBoot, you should set <strong>USE_MCUBOOT = 0</strong> in your makefile</p>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
 <span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
 </pre></div>
 </div>
 <ul class="simple">
-<li>Generate a secondary bootloader binary file for iotdk use eflash</li>
+<li><p>Generate a secondary bootloader binary file for iotdk use eflash</p></li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
 <span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>iotdk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">10</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem9d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw <span class="nv">LOCATION</span><span class="o">=</span>eflash bin
@@ -434,11 +415,10 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 </pre></div>
 </div>
 <ul>
-<li><dl class="first docutils">
-<dt>Generate <em>boot.bin</em> using any embARC example</dt>
-<dd><ul class="first simple">
-<li>Here take <em>&lt;embarc_root&gt;/example/freertos/kernel</em> for example</li>
-<li>When using MCUBoot, you should modify <strong>LIB_SEL += mcuboot</strong> and <strong>MID_SEL += mbedtls</strong> in your makefile to enable MCUBoot. And you should use the imgtool to sign the generated binary</li>
+<li><dl>
+<dt>Generate <em>boot.bin</em> using any embARC example</dt><dd><ul class="simple">
+<li><p>Here take <em>&lt;embarc_root&gt;/example/freertos/kernel</em> for example</p></li>
+<li><p>When using MCUBoot, you should modify <strong>LIB_SEL += mcuboot</strong> and <strong>MID_SEL += mbedtls</strong> in your makefile to enable MCUBoot. And you should use the imgtool to sign the generated binary</p></li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">  $</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
 <span class="gp">  $</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
@@ -448,24 +428,24 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 </pre></div>
 </div>
 <ul class="simple">
-<li>When not using MCUBoot, the example ram start address should be 0x10000000</li>
+<li><p>When not using MCUBoot, the example ram start address should be 0x10000000</p></li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
 <span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
 </pre></div>
 </div>
-<ul class="last simple">
-<li>Insert SDCard to PC, and copy generated binary file <em>obj_emsk_22/mw_arcem7d/freertos_kernel_mw_arcem7d.bin</em> to SDCard Root, and rename it to boot.bin
-Please note that when using MCUBoot, the origin binary name is <em>obj_emsk_22/mw_arcem7d/signed_freertos_kernel.bin</em></li>
-<li>Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter <strong>C</strong>, and wait for autoload.</li>
+<ul class="simple">
+<li><p>Insert SDCard to PC, and copy generated binary file <em>obj_emsk_22/mw_arcem7d/freertos_kernel_mw_arcem7d.bin</em> to SDCard Root, and rename it to boot.bin
+Please note that when using MCUBoot, the origin binary name is <em>obj_emsk_22/mw_arcem7d/signed_freertos_kernel.bin</em></p></li>
+<li><p>Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter <strong>C</strong>, and wait for autoload.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirm its configuration</p>
+<p class="admonition-title">Note</p>
+<p>Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above “R”) to confirm its configuration</p>
 </div>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>

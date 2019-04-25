@@ -301,18 +301,18 @@ constitute a triplet: {attribute1, attribute2, type|access}.</p>
 </pre></div>
 </div>
 <p>An access-control table example is shown below:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span> static CONTAINER_AC_TABLE g_container_act[] = {
-    /* memory mapper peripheral, {start_address, size in bytes, type | access} */
-    {(void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-    /* memory, {start_address, size in bytes, type | access} */
-    {(void *)0x10000, 0x1000, SECURESHIELD_ACDEF_URAM},
-    /* system resources-interrupt, {interrupt handler, interrupt no, type} */
-    {default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ},
-    /* system resources-auxiliary registers, {start_address, size, type}*/
-    {(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
-    /* container interface, {interface handler, number of interface handler arguments, type} */
-{tst_func4, 4, SECURESHIELD_AC_INTERFACE},
- };
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span> <span class="k">static</span> <span class="n">CONTAINER_AC_TABLE</span> <span class="n">g_container_act</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="cm">/* memory mapper peripheral, {start_address, size in bytes, type | access} */</span>
+    <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)(</span><span class="n">PERIPHERAL_ADDR_BASE</span> <span class="o">+</span> <span class="n">REL_REGBASE_PINMUX</span><span class="p">),</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">SECURESHIELD_ACDEF_UPERIPH</span><span class="p">},</span>
+    <span class="cm">/* memory, {start_address, size in bytes, type | access} */</span>
+    <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x10000</span><span class="p">,</span> <span class="mh">0x1000</span><span class="p">,</span> <span class="n">SECURESHIELD_ACDEF_URAM</span><span class="p">},</span>
+    <span class="cm">/* system resources-interrupt, {interrupt handler, interrupt no, type} */</span>
+    <span class="p">{</span><span class="n">default_interrupt_handler</span><span class="p">,</span> <span class="n">INTNO_GPIO</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_IRQ</span><span class="p">},</span>
+    <span class="cm">/* system resources-auxiliary registers, {start_address, size, type}*/</span>
+    <span class="p">{(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x21</span><span class="p">,</span> <span class="mh">0x3</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_AUX</span><span class="p">},</span>
+    <span class="cm">/* container interface, {interface handler, number of interface handler arguments, type} */</span>
+<span class="p">{</span><span class="n">tst_func4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">SECURESHIELD_AC_INTERFACE</span><span class="p">},</span>
+ <span class="p">};</span>
 </pre></div>
 </div>
 <p>According to this access control table, the container is allocated the
@@ -324,82 +324,82 @@ the service with 4 arguments in the interface handler function</p>
 or memory. The access-control attribute describes how it is accessed: secure
 or normal, read/write/execute. The detailed definitions of resource type and
 access-control attribute is listed as follow.</p>
-<table border="1" class="docutils" id="id1">
+<table class="docutils align-center" id="id1">
 <caption><span class="caption-text">Container Resource Type</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Basic Resource Type</th>
-<th class="head">Parameters</th>
-<th class="head">Comments</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Basic Resource Type</p></th>
+<th class="head"><p>Parameters</p></th>
+<th class="head"><p>Comments</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>SECURESHIELD_AC_MEMORY</td>
-<td>(start_address, size)</td>
-<td>Allocate a memory region</td>
+<tbody>
+<tr class="row-even"><td><p>SECURESHIELD_AC_MEMORY</p></td>
+<td><p>(start_address, size)</p></td>
+<td><p>Allocate a memory region</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_PERIPHERAL</td>
-<td>(start_address, size)</td>
-<td>Allocate a memory-mapped peripheral are</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_PERIPHERAL</p></td>
+<td><p>(start_address, size)</p></td>
+<td><p>Allocate a memory-mapped peripheral are</p></td>
 </tr>
-<tr class="row-even"><td>SECURESHIELD_AC_IRQ</td>
-<td>(interrupt_handler, interrupt no</td>
-<td>Allocate an interrupt</td>
+<tr class="row-even"><td><p>SECURESHIELD_AC_IRQ</p></td>
+<td><p>(interrupt_handler, interrupt no</p></td>
+<td><p>Allocate an interrupt</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_AUX</td>
-<td>(aux start address, size)</td>
-<td>Allocate an auxiliary address space</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_AUX</p></td>
+<td><p>(aux start address, size)</p></td>
+<td><p>Allocate an auxiliary address space</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils" id="id2">
+<table class="docutils align-center" id="id2">
 <caption><span class="caption-text">Container Resource Attribute</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Resource Access Attribute</th>
-<th class="head">Comments</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Resource Access Attribute</p></th>
+<th class="head"><p>Comments</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>SECURESHIELD_AC_UEXECUTE</td>
-<td>Execution with user privilege</td>
+<tbody>
+<tr class="row-even"><td><p>SECURESHIELD_AC_UEXECUTE</p></td>
+<td><p>Execution with user privilege</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_UWRITE</td>
-<td>Write with user privilege</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_UWRITE</p></td>
+<td><p>Write with user privilege</p></td>
 </tr>
-<tr class="row-even"><td>SECURESHIELD_AC_UREAD</td>
-<td>Read with user privilege</td>
+<tr class="row-even"><td><p>SECURESHIELD_AC_UREAD</p></td>
+<td><p>Read with user privilege</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_KEXECUTE</td>
-<td>Execution with kernel privilege</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_KEXECUTE</p></td>
+<td><p>Execution with kernel privilege</p></td>
 </tr>
-<tr class="row-even"><td>SECURESHIELD_AC_KWRITE</td>
-<td>Write with kernel privilege</td>
+<tr class="row-even"><td><p>SECURESHIELD_AC_KWRITE</p></td>
+<td><p>Write with kernel privilege</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_KREAD</td>
-<td>Read with kernel privilege</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_KREAD</p></td>
+<td><p>Read with kernel privilege</p></td>
 </tr>
-<tr class="row-even"><td>SECURESHIELD_AC_SIZE_ROUND_UP</td>
-<td>The resource size should be rounded up</td>
+<tr class="row-even"><td><p>SECURESHIELD_AC_SIZE_ROUND_UP</p></td>
+<td><p>The resource size should be rounded up</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_SIZE_ROUND_DOWN</td>
-<td>the resource size should be rounded down</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_SIZE_ROUND_DOWN</p></td>
+<td><p>the resource size should be rounded down</p></td>
 </tr>
-<tr class="row-even"><td>SECURESHIELD_AC_SHARED</td>
-<td>the resource is a shared resource (no implementation now)</td>
+<tr class="row-even"><td><p>SECURESHIELD_AC_SHARED</p></td>
+<td><p>the resource is a shared resource (no implementation now)</p></td>
 </tr>
-<tr class="row-odd"><td>SECURESHIELD_AC_SECURE</td>
-<td>the resource is a secure resource</td>
+<tr class="row-odd"><td><p>SECURESHIELD_AC_SECURE</p></td>
+<td><p>the resource is a secure resource</p></td>
 </tr>
-<tr class="row-even"><td>SECURESHIELD_AC_NORMAL</td>
-<td>the resource is a normal resource</td>
+<tr class="row-even"><td><p>SECURESHIELD_AC_NORMAL</p></td>
+<td><p>the resource is a normal resource</p></td>
 </tr>
 </tbody>
 </table>
@@ -413,10 +413,10 @@ and invoked as a normal function call. The secure call is the only
 communication interface for a container to call the SecureShield runtime
 services. The following SecureShield runtime services are provided:</p>
 <ul class="simple">
-<li>container call: call the services provided by other containers</li>
-<li>interrupt management: see <code class="docutils literal notranslate"><span class="pre">secureshield_int_exports.h</span></code></li>
-<li>auxiliary-register access and benchmark function: see
-<code class="docutils literal notranslate"><span class="pre">secureshield_sys_ops_exports.h</span></code></li>
+<li><p>container call: call the services provided by other containers</p></li>
+<li><p>interrupt management: see <code class="docutils literal notranslate"><span class="pre">secureshield_int_exports.h</span></code></p></li>
+<li><p>auxiliary-register access and benchmark function: see
+<code class="docutils literal notranslate"><span class="pre">secureshield_sys_ops_exports.h</span></code></p></li>
 </ul>
 <img alt="Secure call" src="../_images/secureshield_secure_call.jpg" />
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define SECURESHIELD_SECURE_CALL(id, metadata, ...) \</span>
@@ -473,13 +473,13 @@ the following container call should be made:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Container calls can be nested, i.e., in a container interface, another
 container call can be made. But the target container should not be the
 caller container, i.e.,  <strong>a loop of container call is not allowed !</strong></p>
 <p>Also, container call is not allowed to be made in the interrupt and
 exception handler</p>
-<p class="last">Because SecureShield runtime is not integrated with OS, in the container
+<p>Because SecureShield runtime is not integrated with OS, in the container
 call which will cause container switch, task scheduler should be disabled
 to avoid task switch.</p>
 </div>
@@ -518,32 +518,32 @@ application.</p>
 <div class="section" id="steps-to-create-a-secureshield-application">
 <h2>Steps to Create a SecureShield Application<a class="headerlink" href="#steps-to-create-a-secureshield-application" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>makefiles</li>
+<li><p>makefiles</p></li>
 </ol>
 <ul class="simple">
-<li>LIB_SEL += secureshield, select SecureShield library</li>
-<li>-DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism
+<li><p>LIB_SEL += secureshield, select SecureShield library</p></li>
+<li><p>-DLIB_SECURESHIELD_OVERRIDES, this definition will enable override mechanism
 which will override the ARC HAL API in arc_exception.h, arc_builtin.h and
-arc_exception.h with the SecureShield API</li>
-<li>APPL_SECURE_CSRC_DIR (optional), the directories of C source files which
-need to be compiled and linked with SecureShield runtime</li>
-<li>SECURE_SYMBOL_LIST (optional), the file of symbols need to be exported to
-normal application from secure binary</li>
+arc_exception.h with the SecureShield API</p></li>
+<li><p>APPL_SECURE_CSRC_DIR (optional), the directories of C source files which
+need to be compiled and linked with SecureShield runtime</p></li>
+<li><p>SECURE_SYMBOL_LIST (optional), the file of symbols need to be exported to
+normal application from secure binary</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li>Container Memory Configuration File (secureshield_appl_config.h)</li>
+<li><p>Container Memory Configuration File (secureshield_appl_config.h)</p></li>
 </ol>
 <p>secureshield_appl_config.h includes the application information to generate
 the correct memory map</p>
 <ul class="simple">
-<li>SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in
-NORMAL_ROM</li>
-<li>SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in
-NORMAL_RAM</li>
-<li>SECURE_REGION_CONTAINERS_SCURE_ROM : the regions need to be generated in
-SECURE_ROM  (secure containers only)</li>
-<li>SECURE_REGION_CONTAINERS_SECURE_RAM : the regions need to be generated in
-SECURE_RAM (secure containers only)</li>
+<li><p>SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in
+NORMAL_ROM</p></li>
+<li><p>SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in
+NORMAL_RAM</p></li>
+<li><p>SECURE_REGION_CONTAINERS_SCURE_ROM : the regions need to be generated in
+SECURE_ROM  (secure containers only)</p></li>
+<li><p>SECURE_REGION_CONTAINERS_SECURE_RAM : the regions need to be generated in
+SECURE_RAM (secure containers only)</p></li>
 </ul>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* tell linker script template the rom region information of containers */</span>
 <span class="cp">#define SECURESHIELD_REGION_CONTAINERS_ROM \</span>
@@ -585,20 +585,20 @@ script if LIB_SECURESHIELD_VERSION=2</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Container Access Control Configuration</li>
+<li><p>Container Access Control Configuration</p></li>
 </ol>
 <p>The container access control configuration is recommended to be in a specific
 file named container_cfg.c</p>
 <ol class="arabic simple" start="4">
-<li>Coding</li>
+<li><p>Coding</p></li>
 </ol>
 <p>A recommended SecureShield application is :</p>
 <ul class="simple">
-<li>one container, one source file or directory, e.g container1 in container1.c</li>
-<li>files compiled with SecureShield runtime are in specific directory, e.g. secure</li>
+<li><p>one container, one source file or directory, e.g container1 in container1.c</p></li>
+<li><p>files compiled with SecureShield runtime are in specific directory, e.g. secure</p></li>
 </ul>
 <ol class="arabic simple" start="5">
-<li>Define the exported secure symbols</li>
+<li><p>Define the exported secure symbols</p></li>
 </ol>
 <p>secure_symbol.txt contains the symbols (container interface) exported to normal application from secure binary. This file is only required when normal application needs to call the symbol in secure binary. It also needs to be defined in makefile.
 For example, the following container (container4) will be compiled and linked with secure binary, it has two interfaces:</p>
@@ -614,24 +614,24 @@ For example, the following container (container4) will be compiled and linked wi
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Compile and Debug</li>
+<li><p>Compile and Debug</p></li>
 </ol>
 <p>Upon compiling and linking, the following files will be generated:</p>
 <ul class="simple">
-<li>linker_xx.ldf: the generated linker script for normal application</li>
-<li>secure_linker_xx.ldf: the generated linker script for secure binary</li>
-<li>secureshield_secure.bin/elf: secure binary</li>
-<li>secureshield_secure.syms: the exported secure symbol list</li>
-<li>&lt;app_name&gt;_xx_xx.bin/elf: normal application binary</li>
+<li><p>linker_xx.ldf: the generated linker script for normal application</p></li>
+<li><p>secure_linker_xx.ldf: the generated linker script for secure binary</p></li>
+<li><p>secureshield_secure.bin/elf: secure binary</p></li>
+<li><p>secureshield_secure.syms: the exported secure symbol list</p></li>
+<li><p>&lt;app_name&gt;_xx_xx.bin/elf: normal application binary</p></li>
 </ul>
 </div>
 <div class="section" id="secureshield-application-examples">
 <h2>SecureShield Application Examples<a class="headerlink" href="#secureshield-application-examples" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="../example/example/baremetal/secureshield/secret_normal/README.html#example-secureshield-secret-normal"><span class="std std-ref">SecureShield Secret Normal</span></a></li>
-<li><a class="reference internal" href="../example/example/baremetal/secureshield/secret_secure/README.html#example-secureshield-secret-secure"><span class="std std-ref">SecureShield Secret Secure</span></a></li>
-<li><a class="reference internal" href="../example/example/baremetal/secureshield/secret_secure_sid/README.html#example-secureshield-secret-secure-sid"><span class="std std-ref">SecureShield Secret Secure SID</span></a></li>
-<li><a class="reference internal" href="../example/example/baremetal/secureshield/test_case/README.html#example-secureshield-test-case"><span class="std std-ref">SecureShield Test Case</span></a></li>
+<li><p><a class="reference internal" href="../example/example/baremetal/secureshield/secret_normal/README.html#example-secureshield-secret-normal"><span class="std std-ref">SecureShield Secret Normal</span></a></p></li>
+<li><p><a class="reference internal" href="../example/example/baremetal/secureshield/secret_secure/README.html#example-secureshield-secret-secure"><span class="std std-ref">SecureShield Secret Secure</span></a></p></li>
+<li><p><a class="reference internal" href="../example/example/baremetal/secureshield/secret_secure_sid/README.html#example-secureshield-secret-secure-sid"><span class="std std-ref">SecureShield Secret Secure SID</span></a></p></li>
+<li><p><a class="reference internal" href="../example/example/baremetal/secureshield/test_case/README.html#example-secureshield-test-case"><span class="std std-ref">SecureShield Test Case</span></a></p></li>
 </ul>
 </div>
 </div>

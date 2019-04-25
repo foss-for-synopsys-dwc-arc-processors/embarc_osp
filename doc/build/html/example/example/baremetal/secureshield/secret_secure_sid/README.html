@@ -194,49 +194,45 @@
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><dl class="first docutils">
-<dt>Extra Required Tools</dt>
-<dd>NO</dd>
+<li><dl class="simple">
+<dt>Extra Required Tools</dt><dd><p>NO</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Required Peripherals</dt>
-<dd>NO</dd>
+<li><dl class="simple">
+<dt>Extra Required Peripherals</dt><dd><p>NO</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Design Concept</dt>
-<dd><dl class="first last docutils">
-<dt>This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component.</dt>
-<dd><ul class="first last">
-<li>The secret and password are protected in the context of container 1 which is a container with secure privileges.</li>
-<li>You need to input the right password to get the secret from the non-trusted background container; container 2 is trusted and can access the secret without password.</li>
-<li>The init value of secret and password are stored in the data section of secure container 1. Non-secure containers can not access them directly.</li>
-<li>Secure container 2 can use the container 1 secret internally for implementing other services. The background application can request such a service, without knowing or obtaining the secret itself.</li>
-<li>For demonstration purpose, the background container can obtain the secret as well (using the password). Since the background container stores the result in global, public memory, this is normally not secure and not recommended. Instead see Container 2 for how to securely use the secret.</li>
-<li>The difference between this example and secret secure example is MPU reprogramming is avoidded through SID enabled. All containers MPU configuration will be loaded into MPU hardware.</li>
+<li><dl class="simple">
+<dt>Design Concept</dt><dd><dl class="simple">
+<dt>This example is designed to show how data could be protected with SecureShield. The application demonstrates a secure keystore component.</dt><dd><ul>
+<li><p>The secret and password are protected in the context of container 1 which is a container with secure privileges.</p></li>
+<li><p>You need to input the right password to get the secret from the non-trusted background container; container 2 is trusted and can access the secret without password.</p></li>
+<li><p>The init value of secret and password are stored in the data section of secure container 1. Non-secure containers can not access them directly.</p></li>
+<li><p>Secure container 2 can use the container 1 secret internally for implementing other services. The background application can request such a service, without knowing or obtaining the secret itself.</p></li>
+<li><p>For demonstration purpose, the background container can obtain the secret as well (using the password). Since the background container stores the result in global, public memory, this is normally not secure and not recommended. Instead see Container 2 for how to securely use the secret.</p></li>
+<li><p>The difference between this example and secret secure example is MPU reprogramming is avoidded through SID enabled. All containers MPU configuration will be loaded into MPU hardware.</p></li>
 </ul>
 </dd>
 </dl>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Usage Manual</dt>
-<dd><dl class="first last docutils">
-<dt>When this example start to run, please try the following ntshell commands:</dt>
-<dd><ul class="first last">
-<li>Run ntshell command main -h to see how to run this example.</li>
-<li>Run ntshell command main -p embarc or main -t to get the secret.</li>
+<li><dl class="simple">
+<dt>Usage Manual</dt><dd><dl class="simple">
+<dt>When this example start to run, please try the following ntshell commands:</dt><dd><ul>
+<li><p>Run ntshell command main -h to see how to run this example.</p></li>
+<li><p>Run ntshell command main -p embarc or main -t to get the secret.</p></li>
 </ul>
 </dd>
 </dl>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Comments</dt>
-<dd>NO</dd>
+<li><dl class="simple">
+<dt>Extra Comments</dt><dd><p>NO</p>
+</dd>
 </dl>
 </li>
 </ul>

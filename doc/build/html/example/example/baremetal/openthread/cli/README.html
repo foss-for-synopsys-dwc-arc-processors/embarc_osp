@@ -200,25 +200,22 @@
 <h3>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
-<li><dl class="first docutils">
-<dt>Extra Required Tools</dt>
-<dd><p class="first last">NO</p>
+<li><dl class="simple">
+<dt>Extra Required Tools</dt><dd><p>NO</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Required Peripherals</dt>
-<dd><ul class="first last simple">
-<li>2 x EMSK</li>
-<li>2 x Digilent PMOD RF2 (MRF24J40)</li>
-<li>1 x SD card</li>
+<li><dl class="simple">
+<dt>Extra Required Peripherals</dt><dd><ul class="simple">
+<li><p>2 x EMSK</p></li>
+<li><p>2 x Digilent PMOD RF2 (MRF24J40)</p></li>
+<li><p>1 x SD card</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Design Concept</dt>
-<dd><div class="first last line-block">
+<li><dl>
+<dt>Design Concept</dt><dd><div class="line-block">
 <div class="line">This example is an OpenThread Command Line Interface (CLI) application on PMOD RF2 (MRF24J40).</div>
 <div class="line">The mesh network is established, and IPv6 is configured with using bi-/multi-boards as Thread nodes.</div>
 <div class="line">The node status can be shown on the terminal via UART. There are dozens of commands supported in the CLI example.</div>
@@ -227,26 +224,23 @@
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Usage Manual</dt>
-<dd><ul class="first last simple">
-<li>See EMBARC_BOARD_CONNECTION “EMSK” to connect PMOD RF2 (MRF24J40).</li>
-<li><dl class="first docutils">
-<dt>How to use this example</dt>
-<dd><ul class="first last">
-<li>Program the secondary bootloader application into onboard SPI flash of EMSKs.</li>
-<li>Generate boot.bin of the Openthread CLI example using “make bin”.</li>
-<li><dl class="first docutils">
-<dt>Run Openthread CLI example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable the secondary bootloader.</dt>
-<dd><ul class="first last">
-<li>Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.</li>
-<li>Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.</li>
-<li>Enter “1” and press Enter button in one Tera Term. Enter “2” and press Enter button in the other one.
-The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.</li>
-<li>Enter the following commands in the two terminal windows, “panid 0x1234”, “ifconfig up”, “thread start”, to start
-start Thread process.</li>
-<li>Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.</li>
-<li>Enter other commands in the OpenThread CLI reference (OT_CLI.md) to get more information. For example, “ipaddr” is used to show the IP address of the Thread node. Enter “ipaddr” in one ternimal to get the Thread node IP address, such as <strong>fe80:0:0:0:f065:44eb:ef9f:57c8</strong>. Enter “ping fe80:0:0:0:f065:44eb:ef9f:57c8” in the other ternimal to ping the Thread node. The Internet Control Messages Protocol (ICMP) is implemented in the OpenThread for <strong>ping</strong> command.</li>
+<li><dl class="simple">
+<dt>Usage Manual</dt><dd><ul class="simple">
+<li><p>See EMBARC_BOARD_CONNECTION “EMSK” to connect PMOD RF2 (MRF24J40).</p></li>
+<li><dl class="simple">
+<dt>How to use this example</dt><dd><ul>
+<li><p>Program the secondary bootloader application into onboard SPI flash of EMSKs.</p></li>
+<li><p>Generate boot.bin of the Openthread CLI example using “make bin”.</p></li>
+<li><dl class="simple">
+<dt>Run Openthread CLI example with boot.bin from SD card. Make sure Bit 4 of the onboard DIP switch is ON to enable the secondary bootloader.</dt><dd><ul>
+<li><p>Insert SD Card back to one EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.</p></li>
+<li><p>Get SD card from one EMSK and insert it to the other EMSK. Press the reset button to reboot it. Wait for loading boot.bin from SD card.</p></li>
+<li><p>Enter “1” and press Enter button in one Tera Term. Enter “2” and press Enter button in the other one.
+The number will not be shown directly in the Tera Term until pressing Enter button from the keyboard.</p></li>
+<li><p>Enter the following commands in the two terminal windows, “panid 0x1234”, “ifconfig up”, “thread start”, to start
+start Thread process.</p></li>
+<li><p>Wait 20 seconds for completing Thread configuration. Enter “state” to see the state of the node, one leader and one router.</p></li>
+<li><p>Enter other commands in the OpenThread CLI reference (OT_CLI.md) to get more information. For example, “ipaddr” is used to show the IP address of the Thread node. Enter “ipaddr” in one ternimal to get the Thread node IP address, such as <strong>fe80:0:0:0:f065:44eb:ef9f:57c8</strong>. Enter “ping fe80:0:0:0:f065:44eb:ef9f:57c8” in the other ternimal to ping the Thread node. The Internet Control Messages Protocol (ICMP) is implemented in the OpenThread for <strong>ping</strong> command.</p></li>
 </ul>
 </dd>
 </dl>
@@ -259,9 +253,8 @@ start Thread process.</li>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Extra Comments</dt>
-<dd><div class="first last line-block">
+<li><dl>
+<dt>Extra Comments</dt><dd><div class="line-block">
 <div class="line">A few seconds are required to make connections of Thread nodes.</div>
 <div class="line">Use AC adapter to ensure a steady power supply.</div>
 <div class="line">Open two Tera Term emulators to connect EMSKs with different COM ports.</div>
@@ -280,11 +273,13 @@ start Thread process.</li>
 <div class="section" id="buidling-and-running">
 <h2>Buidling and Running<a class="headerlink" href="#buidling-and-running" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>See the usage manual.</div></blockquote>
+<div><p>See the usage manual.</p>
+</div></blockquote>
 <div class="section" id="sample-output">
 <h3>Sample Output<a class="headerlink" href="#sample-output" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>See the usage manual.</div></blockquote>
+<div><p>See the usage manual.</p>
+</div></blockquote>
 </div>
 </div>
 </div>

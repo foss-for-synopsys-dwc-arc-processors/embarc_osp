@@ -234,9 +234,9 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv47DEV_IIC">
 <span id="_CPPv37DEV_IIC"></span><span id="_CPPv27DEV_IIC"></span><span id="DEV_IIC"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t_1gaf976c496ff5f91bfaa0eeb8383fbdd5a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv47dev_iic" title="dev_iic">dev_iic</a> <code class="descname">DEV_IIC</code><a class="headerlink" href="#_CPPv47DEV_IIC" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>iic device interface definition </p>
-<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <dl class="docutils">
-<dt><strong>Note</strong></dt>
-<dd>all this details are implemented by user in user porting code </dd>
+<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+</dd>
 </dl>
 </p>
 </dd></dl>
@@ -253,21 +253,19 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv4N7dev_iic8iic_openE">
 <span id="_CPPv3N7dev_iic8iic_openE"></span><span id="_CPPv2N7dev_iic8iic_openE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t_1ga0d6e561d2179ad140a99cc270d4ae958"></span>int32_t (*<code class="descname">iic_open</code>)<span class="sig-paren">(</span>uint32_t mode, uint32_t param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_iic8iic_openE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>open iic device in master/slave mode, \ when in master mode, param stands for speed mode, \ when in slave mode, param stands for slave address</p>
-<p>open an iic device with selected mode (master or slave) with defined param <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">mode</span></code>: working mode (master or slave) </li>
-<li><code class="docutils literal notranslate"><span class="pre">param</span></code>: When mode is DEV_MASTER_MODE, param stands for speed mode, when mode is DEV_SLAVE_MODE, param stands for slave device 7bit address </li>
+<p>open an iic device with selected mode (master or slave) with defined param <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">mode</span></code>: working mode (master or slave) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">param</span></code>: When mode is DEV_MASTER_MODE, param stands for speed mode, when mode is DEV_SLAVE_MODE, param stands for slave device 7bit address </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
 </ul>
 </dd>
 </dl>
@@ -278,12 +276,11 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv4N7dev_iic9iic_closeE">
 <span id="_CPPv3N7dev_iic9iic_closeE"></span><span id="_CPPv2N7dev_iic9iic_closeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t_1ga0bcfec862c7286995496cd125b0192e2"></span>int32_t (*<code class="descname">iic_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_iic9iic_closeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>close iic device</p>
-<p>close an iic device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="docutils">
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </li>
+<p>close an iic device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
 </ul>
 </dd>
 </dl>
@@ -294,22 +291,20 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv4N7dev_iic11iic_controlE">
 <span id="_CPPv3N7dev_iic11iic_controlE"></span><span id="_CPPv2N7dev_iic11iic_controlE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t_1gae81e4eb8e99d15f417da9f63bf7fe7fd"></span>int32_t (*<code class="descname">iic_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_iic11iic_controlE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>control iic device</p>
-<p>control an iic device by ctrl_cmd, with passed param. you can control iic device using predefined iic control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set iic speed mode, flush tx and more. And you can also control iic device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own iic device driver implementation. <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to iic </li>
-<li><code class="docutils literal notranslate"><span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command, must not be NULL </li>
+<p>control an iic device by ctrl_cmd, with passed param. you can control iic device using predefined iic control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as set iic speed mode, flush tx and more. And you can also control iic device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own iic device driver implementation. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to iic </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command, must not be NULL </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
 </ul>
 </dd>
 </dl>
@@ -320,20 +315,18 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv4N7dev_iic9iic_writeE">
 <span id="_CPPv3N7dev_iic9iic_writeE"></span><span id="_CPPv2N7dev_iic9iic_writeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t_1gac8d366fcedfd479e5f00c4680e89e2c6"></span>int32_t (*<code class="descname">iic_write</code>)<span class="sig-paren">(</span><em class="property">const</em> void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_iic9iic_writeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>send data by iic device (blocking method)</p>
-<p>send data through iic with defined len to slave device which slave address is slv_addr. <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: pointer to data need to send by iic </li>
-<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: length of data to be sent </li>
+<p>send data through iic with defined len to slave device which slave address is slv_addr. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">data</span></code>: pointer to data need to send by iic </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be sent </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method, it might can’t send that much due to different error state. </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method, it might can’t send that much due to different error state. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
 </ul>
 </dd>
 </dl>
@@ -344,20 +337,18 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv4N7dev_iic8iic_readE">
 <span id="_CPPv3N7dev_iic8iic_readE"></span><span id="_CPPv2N7dev_iic8iic_readE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___i_i_c___d_e_v_s_t_r_u_c_t_1gaf907d1ec86dd20714b655241f9804adb"></span>int32_t (*<code class="descname">iic_read</code>)<span class="sig-paren">(</span>void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7dev_iic8iic_readE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read data from iic device (blocking method)</p>
-<p>receive data of defined len through iic from slave device which slave address is slv_addr. <dl class="docutils">
-<dt><strong>Parameters</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">data</span></code>: pointer to data need to received by iic </li>
-<li><code class="docutils literal notranslate"><span class="pre">len</span></code>: length of data to be received </li>
+<p>receive data of defined len through iic from slave device which slave address is slv_addr. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data</span></code>: pointer to data need to received by iic </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be received </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt>
-<dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method, it might can’t send that much due to different error state. </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </li>
-<li><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </li>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method, it might can’t send that much due to different error state. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Device is still in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
 </ul>
 </dd>
 </dl>
@@ -376,9 +367,9 @@ driver to implement. Here is a diagram for the i2c interface.</p>
 <dt id="_CPPv47dev_iic">
 <span id="_CPPv37dev_iic"></span><span id="_CPPv27dev_iic"></span><span id="dev_iic"></span><span class="target" id="structdev__iic"></span><em class="property">struct </em><code class="descname">dev_iic</code><a class="headerlink" href="#_CPPv47dev_iic" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_iic.h&gt;</em><p>iic device interface definition </p>
-<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <dl class="docutils">
-<dt><strong>Note</strong></dt>
-<dd>all this details are implemented by user in user porting code </dd>
+<p>define iic device interface, like iic information structure, fuctions to get iic info, open/close/control iic, send/receive data by iic <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+</dd>
 </dl>
 </p>
 </dd></dl>

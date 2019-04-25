@@ -190,19 +190,19 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system. All embARC components are compiled into libraries,
 which are then merged into one final library called <strong>libembarc.a</strong>. The application objects are then linked against <strong>libembarc.a</strong> to produce the target .elf file.</p>
-<div class="figure" id="id2">
-<a class="reference internal image-reference" href="../_images/build.jpg"><img alt="../_images/build.jpg" src="../_images/build.jpg" style="width: 570.8px; height: 352.4px;" /></a>
-<p class="caption"><span class="caption-text">embARC build system</span></p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/build.jpg"><img alt="../_images/build.jpg" src="../_images/build.jpg" style="width: 570.8000000000001px; height: 352.40000000000003px;" /></a>
+<p class="caption"><span class="caption-text">embARC build system</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <strong>options</strong> directory under the embARC root folder contains the common makefiles as shown below.</p>
 <ul class="simple">
-<li><code class="file docutils literal notranslate"><span class="pre">debug.mk</span></code>: target debug options for the MetaWare debugger, which supports Ashling OpellaXD and Digilent USB-JTAG connections.</li>
-<li><code class="file docutils literal notranslate"><span class="pre">files.mk</span></code>: files and directory collections in embARC.</li>
-<li><code class="file docutils literal notranslate"><span class="pre">options.mk</span></code>: entry makefile with common definitions, path definitions, other makefiles, and so on.</li>
-<li><code class="file docutils literal notranslate"><span class="pre">rule.mk</span></code>: make targets and rules.</li>
-<li><code class="file docutils literal notranslate"><span class="pre">scripts.mk</span></code>: common makefile functions</li>
-<li><code class="file docutils literal notranslate"><span class="pre">toolchain.mk</span></code>: general toolchain definitions, including <strong>toolchain_gnu.mk</strong> for the ARC GNU toolchain and <strong>toolchain_mw.mk</strong> for the MetaWare toolchain.</li>
-<li><code class="file docutils literal notranslate"><span class="pre">toolchain_gnu.mk</span></code> &amp; <code class="file docutils literal notranslate"><span class="pre">toolchain_mw.mk</span></code>: toolchain specific compile and link options</li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">debug.mk</span></code>: target debug options for the MetaWare debugger, which supports Ashling OpellaXD and Digilent USB-JTAG connections.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">files.mk</span></code>: files and directory collections in embARC.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">options.mk</span></code>: entry makefile with common definitions, path definitions, other makefiles, and so on.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">rule.mk</span></code>: make targets and rules.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">scripts.mk</span></code>: common makefile functions</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">toolchain.mk</span></code>: general toolchain definitions, including <strong>toolchain_gnu.mk</strong> for the ARC GNU toolchain and <strong>toolchain_mw.mk</strong> for the MetaWare toolchain.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">toolchain_gnu.mk</span></code> &amp; <code class="file docutils literal notranslate"><span class="pre">toolchain_mw.mk</span></code>: toolchain specific compile and link options</p></li>
 </ul>
 </div>
 <div class="section" id="make-targets">
@@ -211,20 +211,20 @@ which are then merged into one final library called <strong>libembarc.a</strong>
 <p>There are several targets to make and run embARC examples on the command line. These make targets are defined in <em>options/rules.mk</em>. All the commands below use the default make options
 provided in the embARC application makefile.</p>
 <ul class="simple">
-<li><strong>make help</strong>: Show help document about how to use make in embARC.</li>
-<li><strong>make all</strong>: Compile and link the target program.</li>
-<li><strong>make build</strong>: Clean current configuration object files and rebuild configuration.</li>
-<li><strong>make run</strong>: Compile and link the target program. For the MetaWare toolchain, call the MetaWare debugger (MDB) to load the target program to ARC board. For the ARC GNU toolchain, call arc-elf32-gdb and OpenOCD to load the target program to ARC board.</li>
-<li><strong>make gui</strong>: Compile and link the target program. Launch the MetaWare debugger (MDB) in GUI mode for the MetaWare toolchain or arc-elf32-gdb in command-line mode for the ARC GNU toolchain to debug the target program.</li>
-<li><strong>make clean</strong>: Clean object files for current build configuration.</li>
-<li><strong>make boardclean</strong>: Clean all object files for currently selected board.</li>
-<li><strong>make distclean</strong>: Clean all object files for different configurations.</li>
-<li><strong>make cfg</strong>: Print current configurations of embARC.</li>
-<li><strong>make opt</strong>: Print detailed configuration properties of embARC.</li>
+<li><p><strong>make help</strong>: Show help document about how to use make in embARC.</p></li>
+<li><p><strong>make all</strong>: Compile and link the target program.</p></li>
+<li><p><strong>make build</strong>: Clean current configuration object files and rebuild configuration.</p></li>
+<li><p><strong>make run</strong>: Compile and link the target program. For the MetaWare toolchain, call the MetaWare debugger (MDB) to load the target program to ARC board. For the ARC GNU toolchain, call arc-elf32-gdb and OpenOCD to load the target program to ARC board.</p></li>
+<li><p><strong>make gui</strong>: Compile and link the target program. Launch the MetaWare debugger (MDB) in GUI mode for the MetaWare toolchain or arc-elf32-gdb in command-line mode for the ARC GNU toolchain to debug the target program.</p></li>
+<li><p><strong>make clean</strong>: Clean object files for current build configuration.</p></li>
+<li><p><strong>make boardclean</strong>: Clean all object files for currently selected board.</p></li>
+<li><p><strong>make distclean</strong>: Clean all object files for different configurations.</p></li>
+<li><p><strong>make cfg</strong>: Print current configurations of embARC.</p></li>
+<li><p><strong>make opt</strong>: Print detailed configuration properties of embARC.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If running <em>&lt;embARC&gt;/example/baremetal/bootloader</em> with <strong>make run</strong> in the command line, the default make options are enabled in the embARC application makefile. Run <strong>make cfg</strong> to see the configuration for this application.</p>
+<p class="admonition-title">Note</p>
+<p>If running <em>&lt;embARC&gt;/example/baremetal/bootloader</em> with <strong>make run</strong> in the command line, the default make options are enabled in the embARC application makefile. Run <strong>make cfg</strong> to see the configuration for this application.</p>
 </div>
 </div>
 <div class="section" id="make-options">
@@ -234,352 +234,345 @@ provided in the embARC application makefile.</p>
 <h3>Options to Set Using Make Command<a class="headerlink" href="#options-to-set-using-make-command" title="Permalink to this headline">¶</a></h3>
 <p>Most options are located in <em>&lt;embARC&gt;/options/options.mk</em>. If you change an option value in <em>&lt;embARC&gt;/options/options.mk</em>, it will affect all the applications. You can set the value of the options in your own application makefile for the specified hardware.</p>
 <ul class="simple">
-<li><strong>BOARD</strong>: Select the target board. The default value of this option is defined in <em>board/board.mk</em>. Optional values as below, default value is emsk. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span></code> selects the EMSK board as the target board.</li>
+<li><p><strong>BOARD</strong>: Select the target board. The default value of this option is defined in <em>board/board.mk</em>. Optional values as below, default value is emsk. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span></code> selects the EMSK board as the target board.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id3">
+<table class="colwidths-auto docutils align-center" id="id3">
 <caption><span class="caption-text">Make option - BOARD</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">BOARD</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>BOARD</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>emsk</td>
-<td>EM Starter Kit</td>
+<tbody>
+<tr class="row-even"><td><p>emsk</p></td>
+<td><p>EM Starter Kit</p></td>
 </tr>
-<tr class="row-odd"><td>axs</td>
-<td>AXS Board</td>
+<tr class="row-odd"><td><p>axs</p></td>
+<td><p>AXS Board</p></td>
 </tr>
-<tr class="row-even"><td>nsim</td>
-<td>Virtual Board based on nSIM</td>
+<tr class="row-even"><td><p>nsim</p></td>
+<td><p>Virtual Board based on nSIM</p></td>
 </tr>
-<tr class="row-odd"><td>hsdk</td>
-<td>ARC HS Development Kit</td>
+<tr class="row-odd"><td><p>hsdk</p></td>
+<td><p>ARC HS Development Kit</p></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p class="first"><strong>BD_VER</strong>: Select the board version. The default value of this option is defined in one of the following makefiles according to the <strong>BOARD</strong> option. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=22</span></code> selects 2.2 as the EMSK target board version.</p>
+<li><p><strong>BD_VER</strong>: Select the board version. The default value of this option is defined in one of the following makefiles according to the <strong>BOARD</strong> option. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=22</span></code> selects 2.2 as the EMSK target board version.</p>
 <blockquote>
 <div><ul>
-<li><p class="first">For the EMSK board, three versions are supported in embARC: 1.1, 2.2, and 2.3. The optional values of <strong>BD_VER</strong> are 11, 22 and 23. The default value of BD_VER for the emsk board is 22.</p>
+<li><p>For the EMSK board, three versions are supported in embARC: 1.1, 2.2, and 2.3. The optional values of <strong>BD_VER</strong> are 11, 22 and 23. The default value of BD_VER for the emsk board is 22.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For EMSK 2.0, 2.1 and 2.2, you can upgrade the firmware version to 2.3, and for EMSK 1.0, you can upgrade the firmware version to 1.1.</li>
+<li><p>For EMSK 2.0, 2.1 and 2.2, you can upgrade the firmware version to 2.3, and for EMSK 1.0, you can upgrade the firmware version to 1.1.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">For the AXS board, one version is supported: 103. The optional value of <strong>BD_VER</strong> is 103. The default value of <strong>BD_VER</strong> for the AXS board is 103.</p>
-</li>
-<li><p class="first">For the nSIM board, two versions are supported: 10, 1506. The optional value of <strong>BD_VER</strong> is 1506 and 10. The default value of <strong>BD_VER</strong> for the nSIM board is 1506.</p>
-</li>
-<li><p class="first">For the HSDK board, one version is supported: 10. The optional value of <strong>BD_VER</strong> is 10. The default value of <strong>BD_VER</strong> for the HSDK board is 10.</p>
-</li>
+<li><p>For the AXS board, one version is supported: 103. The optional value of <strong>BD_VER</strong> is 103. The default value of <strong>BD_VER</strong> for the AXS board is 103.</p></li>
+<li><p>For the nSIM board, two versions are supported: 10, 1506. The optional value of <strong>BD_VER</strong> is 1506 and 10. The default value of <strong>BD_VER</strong> for the nSIM board is 1506.</p></li>
+<li><p>For the HSDK board, one version is supported: 10. The optional value of <strong>BD_VER</strong> is 10. The default value of <strong>BD_VER</strong> for the HSDK board is 10.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id4">
+<table class="colwidths-auto docutils align-center" id="id4">
 <caption><span class="caption-text">Make option - BD_VER</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">BOARD</th>
-<th class="head">Location of BD_VER Definition</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>BOARD</p></th>
+<th class="head"><p>Location of BD_VER Definition</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>emsk</td>
-<td>board/emsk/emsk.mk</td>
+<tbody>
+<tr class="row-even"><td><p>emsk</p></td>
+<td><p>board/emsk/emsk.mk</p></td>
 </tr>
-<tr class="row-odd"><td>axs</td>
-<td>board/axs/axs.mk</td>
+<tr class="row-odd"><td><p>axs</p></td>
+<td><p>board/axs/axs.mk</p></td>
 </tr>
-<tr class="row-even"><td>nsim</td>
-<td>board/nsim/nsim.mk</td>
+<tr class="row-even"><td><p>nsim</p></td>
+<td><p>board/nsim/nsim.mk</p></td>
 </tr>
-<tr class="row-odd"><td>iotdk</td>
-<td>board/iotdk/iotdk.mk</td>
+<tr class="row-odd"><td><p>iotdk</p></td>
+<td><p>board/iotdk/iotdk.mk</p></td>
 </tr>
-<tr class="row-even"><td>hsdk</td>
-<td>board/hsdk/hsdk.mk</td>
+<tr class="row-even"><td><p>hsdk</p></td>
+<td><p>board/hsdk/hsdk.mk</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The BD_VER must match the target BOARD version. For example, programs built for 1.1 cannot run on an EMSK 2.x board.</p>
+<p class="admonition-title">Note</p>
+<p>The BD_VER must match the target BOARD version. For example, programs built for 1.1 cannot run on an EMSK 2.x board.</p>
 </div>
 <ul>
-<li><p class="first"><strong>CUR_CORE</strong>: Select the core configuration for the specified board version. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem11d</span></code> selects the arcem11d core configuration for emsk 2.3.</p>
+<li><p><strong>CUR_CORE</strong>: Select the core configuration for the specified board version. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem11d</span></code> selects the arcem11d core configuration for emsk 2.3.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For EMSK 1.1, the default value of this option is <strong>arcem6</strong> defined in <em>&lt;embARC&gt;/board/emsk/configs/11/core_config.mk</em>.</li>
+<li><p>For EMSK 1.1, the default value of this option is <strong>arcem6</strong> defined in <em>&lt;embARC&gt;/board/emsk/configs/11/core_config.mk</em>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id5">
+<table class="colwidths-auto docutils align-center" id="id5">
 <caption><span class="caption-text">Make option - CUR_CORE for EMSK 1.1</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CUR_CORE</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUR_CORE</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>arcem4</td>
-<td>ARC EM4 core</td>
+<tbody>
+<tr class="row-even"><td><p>arcem4</p></td>
+<td><p>ARC EM4 core</p></td>
 </tr>
-<tr class="row-odd"><td>arcem4cr16</td>
-<td>ARC EM4CR16 core</td>
+<tr class="row-odd"><td><p>arcem4cr16</p></td>
+<td><p>ARC EM4CR16 core</p></td>
 </tr>
-<tr class="row-even"><td>arcem6</td>
-<td>ARC EM6 core</td>
+<tr class="row-even"><td><p>arcem6</p></td>
+<td><p>ARC EM6 core</p></td>
 </tr>
-<tr class="row-odd"><td>arcem6gp</td>
-<td>ARC EM6GP core</td>
+<tr class="row-odd"><td><p>arcem6gp</p></td>
+<td><p>ARC EM6GP core</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li>For EMSK 2.2, the default value of this option is defined in <em>&lt;embARC&gt;/board/emsk/configs/22/core_config.mk</em>. For EMSK 2.3, the default value of this option is defined in <em>board/emsk/configs/23/core_config.mk</em>. The default value for EMSK 2.2 and 2.3 is <strong>arcem7d</strong>.</li>
+<li><p>For EMSK 2.2, the default value of this option is defined in <em>&lt;embARC&gt;/board/emsk/configs/22/core_config.mk</em>. For EMSK 2.3, the default value of this option is defined in <em>board/emsk/configs/23/core_config.mk</em>. The default value for EMSK 2.2 and 2.3 is <strong>arcem7d</strong>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id6">
+<table class="colwidths-auto docutils align-center" id="id6">
 <caption><span class="caption-text">Make option - CUR_CORE for EMSK 2.2 &amp; 2.3</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CUR_CORE</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUR_CORE</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>arcem7d</td>
-<td>ARC EM7D core</td>
+<tbody>
+<tr class="row-even"><td><p>arcem7d</p></td>
+<td><p>ARC EM7D core</p></td>
 </tr>
-<tr class="row-odd"><td>arcem9d</td>
-<td>ARC EM9D core</td>
+<tr class="row-odd"><td><p>arcem9d</p></td>
+<td><p>ARC EM9D core</p></td>
 </tr>
-<tr class="row-even"><td>arcem11d</td>
-<td>ARC EM11D core</td>
+<tr class="row-even"><td><p>arcem11d</p></td>
+<td><p>ARC EM11D core</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li>For AXS, the default value of this option is <strong>archs36</strong> defined in <em>&lt;embARC&gt;/board/axs/configs/103/core_config.mk</em>.</li>
+<li><p>For AXS, the default value of this option is <strong>archs36</strong> defined in <em>&lt;embARC&gt;/board/axs/configs/103/core_config.mk</em>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id7">
+<table class="colwidths-auto docutils align-center" id="id7">
 <caption><span class="caption-text">Make option - CUR_CORE for AXS</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CUR_CORE</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUR_CORE</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>archs36</td>
-<td>ARC HS36 core</td>
+<tbody>
+<tr class="row-even"><td><p>archs36</p></td>
+<td><p>ARC HS36 core</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li>For nSIM 1506, the default value of this option is <strong>arcemfull</strong> defined in <em>&lt;embARC&gt;/board/nsim/configs/1506/core_config.mk</em>.</li>
+<li><p>For nSIM 1506, the default value of this option is <strong>arcemfull</strong> defined in <em>&lt;embARC&gt;/board/nsim/configs/1506/core_config.mk</em>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id8">
+<table class="colwidths-auto docutils align-center" id="id8">
 <caption><span class="caption-text">Make option - CUR_CORE for nSIM 1506</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CUR_CORE</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUR_CORE</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>arcemfull</td>
-<td>ARC EM core with full features</td>
+<tbody>
+<tr class="row-even"><td><p>arcemfull</p></td>
+<td><p>ARC EM core with full features</p></td>
 </tr>
-<tr class="row-odd"><td>archs</td>
-<td>ARC HS core</td>
+<tr class="row-odd"><td><p>archs</p></td>
+<td><p>ARC HS core</p></td>
 </tr>
-<tr class="row-even"><td>arcemsecureshield</td>
-<td>ARC EM core with secure feature</td>
+<tr class="row-even"><td><p>arcemsecureshield</p></td>
+<td><p>ARC EM core with secure feature</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li>For nSIM 10, the default value of this option is <strong>arcem</strong> defined in <em>&lt;embARC&gt;/board/nsim/configs/10/core_config.mk</em>.</li>
+<li><p>For nSIM 10, the default value of this option is <strong>arcem</strong> defined in <em>&lt;embARC&gt;/board/nsim/configs/10/core_config.mk</em>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id9">
+<table class="colwidths-auto docutils align-center" id="id9">
 <caption><span class="caption-text">Make option - CUR_CORE for nSIM 10</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CUR_CORE</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUR_CORE</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>arcem</td>
-<td>ARC EM core</td>
+<tbody>
+<tr class="row-even"><td><p>arcem</p></td>
+<td><p>ARC EM core</p></td>
 </tr>
-<tr class="row-odd"><td>archs</td>
-<td>ARC HS core</td>
+<tr class="row-odd"><td><p>archs</p></td>
+<td><p>ARC HS core</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
-<li>For HSDK, the default value of this option is <strong>archs38_c0</strong> defined in <em>&lt;embARC&gt;/board/hsdk/configs/10/core_config.mk</em>.</li>
+<li><p>For HSDK, the default value of this option is <strong>archs38_c0</strong> defined in <em>&lt;embARC&gt;/board/hsdk/configs/10/core_config.mk</em>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id10">
+<table class="colwidths-auto docutils align-center" id="id10">
 <caption><span class="caption-text">Make option - CUR_CORE for HSDK</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CUR_CORE</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CUR_CORE</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>archs38_c0</td>
-<td>ARC HS38x4 core 0</td>
+<tbody>
+<tr class="row-even"><td><p>archs38_c0</p></td>
+<td><p>ARC HS38x4 core 0</p></td>
 </tr>
-<tr class="row-odd"><td>archs38_c1</td>
-<td>ARC HS38x4 core 1</td>
+<tr class="row-odd"><td><p>archs38_c1</p></td>
+<td><p>ARC HS38x4 core 1</p></td>
 </tr>
-<tr class="row-even"><td>archs38_c2</td>
-<td>ARC HS38x4 core 2</td>
+<tr class="row-even"><td><p>archs38_c2</p></td>
+<td><p>ARC HS38x4 core 2</p></td>
 </tr>
-<tr class="row-odd"><td>archs38_c3</td>
-<td>ARC HS38x4 core 3</td>
+<tr class="row-odd"><td><p>archs38_c3</p></td>
+<td><p>ARC HS38x4 core 3</p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>TOOLCHAIN</strong>: Select the toolchain to compile the embARC software. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">TOOLCHAIN=gnu</span></code> selects the ARC GNU toolchain to compile embARC applications for EMSK 2.3, ARC EM11d. The default value of this option is <strong>mw</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em></p>
-</li>
+<li><p><strong>TOOLCHAIN</strong>: Select the toolchain to compile the embARC software. For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">TOOLCHAIN=gnu</span></code> selects the ARC GNU toolchain to compile embARC applications for EMSK 2.3, ARC EM11d. The default value of this option is <strong>mw</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em></p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id11">
+<table class="colwidths-auto docutils align-center" id="id11">
 <caption><span class="caption-text">Make option - TOOLCHAIN</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">TOOLCHAIN</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>TOOLCHAIN</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>mw</td>
-<td>MetaWare Development Toolkit</td>
+<tbody>
+<tr class="row-even"><td><p>mw</p></td>
+<td><p>MetaWare Development Toolkit</p></td>
 </tr>
-<tr class="row-odd"><td>gnu</td>
-<td>ARC GNU Development Toolset</td>
+<tr class="row-odd"><td><p>gnu</p></td>
+<td><p>ARC GNU Development Toolset</p></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p class="first"><strong>DIG_NAME</strong>: Specify the Digilent USB JTAG name. The default value of this option is empty defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p>
+<li><p><strong>DIG_NAME</strong>: Specify the Digilent USB JTAG name. The default value of this option is empty defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p>
 <blockquote>
 <div><ul class="simple">
-<li>It is not necessary to set it when just one JTAG is connected to your PC. It is useful when more than one EMSK JTAG cable is connected to your PC, for example, to debug two EMSK boards using one PC. See <a class="reference internal" href="application_development.html#application-development-debug-multiple-boards"><span class="std std-ref">Debug Multiple Boards</span></a> for details.</li>
-<li>This option is only available when the MetaWare toolchain is selected. This option is a simple wrapper of the <strong>-prop=dig_device=name</strong> option for the MetaWare debugger (mdb). See <em>MetaWare Debugger User’s Guide</em> for details.</li>
+<li><p>It is not necessary to set it when just one JTAG is connected to your PC. It is useful when more than one EMSK JTAG cable is connected to your PC, for example, to debug two EMSK boards using one PC. See <a class="reference internal" href="application_development.html#application-development-debug-multiple-boards"><span class="std std-ref">Debug Multiple Boards</span></a> for details.</p></li>
+<li><p>This option is only available when the MetaWare toolchain is selected. This option is a simple wrapper of the <strong>-prop=dig_device=name</strong> option for the MetaWare debugger (mdb). See <em>MetaWare Debugger User’s Guide</em> for details.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>V</strong>: Control whether to show verbose compiling information. The default value of this option is <strong>0</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p>
-</li>
+<li><p><strong>V</strong>: Control whether to show verbose compiling information. The default value of this option is <strong>0</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id12">
+<table class="colwidths-auto docutils align-center" id="id12">
 <caption><span class="caption-text">Make option - V</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">V</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>V</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>0</td>
-<td>Show basic compiling information</td>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Show basic compiling information</p></td>
 </tr>
-<tr class="row-odd"><td>1</td>
-<td>Show verbose information</td>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Show verbose information</p></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p class="first"><strong>TCF</strong>: Select the tool configuration file (tcf). You can choose the specified tcf file by this option for the target board and core configuration.</p>
+<li><p><strong>TCF</strong>: Select the tool configuration file (tcf). You can choose the specified tcf file by this option for the target board and core configuration.</p>
 <blockquote>
 <div><ul class="simple">
-<li>This option uses absolute file path or relative file path (relative to where your application makefile located) to specify the tcf file .</li>
-<li>This option is not supported for the nSIM 1506 board.</li>
-<li>For example, when the current board and core is EMSK 2.3 and ARC EM7D, you can pass your own tcf file arcem.tcf to replace the default one. Copy arcem.tcf file into the folder where application makefile located. Run <code class="docutils literal notranslate"><span class="pre">gmake</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem7d</span> <span class="pre">TCF=arcem.tcf</span></code> to select it.</li>
+<li><p>This option uses absolute file path or relative file path (relative to where your application makefile located) to specify the tcf file .</p></li>
+<li><p>This option is not supported for the nSIM 1506 board.</p></li>
+<li><p>For example, when the current board and core is EMSK 2.3 and ARC EM7D, you can pass your own tcf file arcem.tcf to replace the default one. Copy arcem.tcf file into the folder where application makefile located. Run <code class="docutils literal notranslate"><span class="pre">gmake</span> <span class="pre">BD_VER=23</span> <span class="pre">CUR_CORE=arcem7d</span> <span class="pre">TCF=arcem.tcf</span></code> to select it.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">When selecting you own tcf file, clean the project before build it.</p>
+<p class="admonition-title">Note</p>
+<p>When selecting you own tcf file, clean the project before build it.</p>
 </div>
 </div>
 <div class="section" id="options-coded-in-application-makefile">
 <h3>Options Coded in Application Makefile<a class="headerlink" href="#options-coded-in-application-makefile" title="Permalink to this headline">¶</a></h3>
 <p><strong>ARC related Options</strong></p>
 <ul>
-<li><p class="first"><strong>OLEVEL</strong>: Select the compiler optimization level, including <strong>O</strong>, <strong>O0</strong>, <strong>O1</strong>, <strong>O2</strong>, <strong>O3</strong>, <strong>Os</strong>, <strong>Os1</strong>, <strong>Oz</strong>, <strong>Ofast</strong>, <strong>Og</strong>. The default value of this option is defined in <em>&lt;embARC&gt;/options/options.mk</em>. The OLEVEL can be blank to not select any optimization, like <strong>OLEVEL=</strong>.</p>
+<li><p><strong>OLEVEL</strong>: Select the compiler optimization level, including <strong>O</strong>, <strong>O0</strong>, <strong>O1</strong>, <strong>O2</strong>, <strong>O3</strong>, <strong>Os</strong>, <strong>Os1</strong>, <strong>Oz</strong>, <strong>Ofast</strong>, <strong>Og</strong>. The default value of this option is defined in <em>&lt;embARC&gt;/options/options.mk</em>. The OLEVEL can be blank to not select any optimization, like <strong>OLEVEL=</strong>.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=22</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">OLEVEL=O2</span></code> selects optimization level <strong>O2</strong> of the ARC GNU toolchain to compile embARC applications for EMSK 2.2 and ARC EM11D.</li>
+<li><p>For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=22</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">OLEVEL=O2</span></code> selects optimization level <strong>O2</strong> of the ARC GNU toolchain to compile embARC applications for EMSK 2.2 and ARC EM11D.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>JTAG</strong>: Select the JTAG probe to load and debug the target program. The default value of this option is <strong>usb</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p>
+<li><p><strong>JTAG</strong>: Select the JTAG probe to load and debug the target program. The default value of this option is <strong>usb</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=22</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">OLEVEL=O2</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">run</span></code> selects the ARC GNU toolchain to compile embARC applications with optimization level O2 for EMSK 2.2, ARC EM11D, and load the applications using Digilent USB JTAG.</li>
+<li><p>For example, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BOARD=emsk</span> <span class="pre">BD_VER=22</span> <span class="pre">CUR_CORE=arcem11d</span> <span class="pre">OLEVEL=O2</span> <span class="pre">TOOLCHAIN=gnu</span> <span class="pre">run</span></code> selects the ARC GNU toolchain to compile embARC applications with optimization level O2 for EMSK 2.2, ARC EM11D, and load the applications using Digilent USB JTAG.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id13">
+<table class="colwidths-auto docutils align-center" id="id13">
 <caption><span class="caption-text">Make option - JTAG</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">JTAG</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>JTAG</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>usb</td>
-<td>Digilent USB JTAG cable</td>
+<tbody>
+<tr class="row-even"><td><p>usb</p></td>
+<td><p>Digilent USB JTAG cable</p></td>
 </tr>
-<tr class="row-odd"><td>opella</td>
-<td>Ashling Opella-XD JTAG probe</td>
+<tr class="row-odd"><td><p>opella</p></td>
+<td><p>Ashling Opella-XD JTAG probe</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><strong>opella</strong> is only supported for the MetaWare Development Toolkit.</p>
+<p class="admonition-title">Note</p>
+<p><strong>opella</strong> is only supported for the MetaWare Development Toolkit.</p>
 </div>
 <ul class="simple">
-<li><strong>OS_SEL</strong>: Select operating system. This option should be defined in your application makefile. Set this option in the makefiles if OS services are required.</li>
+<li><p><strong>OS_SEL</strong>: Select operating system. This option should be defined in your application makefile. Set this option in the makefiles if OS services are required.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id14">
+<table class="colwidths-auto docutils align-center" id="id14">
 <caption><span class="caption-text">Make option - OS_SEL</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">JTAG</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>JTAG</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>freertos</td>
-<td>FreeRTOS Runtime</td>
+<tbody>
+<tr class="row-even"><td><p>freertos</p></td>
+<td><p>FreeRTOS Runtime</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Leave the <strong>OS_SEL</strong> value blank <strong>OS_SEL=</strong> to use bare-metal runtime.</p>
+<p class="admonition-title">Note</p>
+<p>Leave the <strong>OS_SEL</strong> value blank <strong>OS_SEL=</strong> to use bare-metal runtime.</p>
 </div>
 <ul>
-<li><p class="first"><strong>MID_SEL</strong>: Select middleware to be used in embARC application. This option should be defined in your application makefile.</p>
+<li><p><strong>MID_SEL</strong>: Select middleware to be used in embARC application. This option should be defined in your application makefile.</p>
 <blockquote>
 <div><ul>
-<li><p class="first">All available middleware packages are located in <em>&lt;embARC&gt;/middleware</em>. You can access them by their folder name, such as <strong>ntshell</strong> or <strong>fatfs</strong>.</p>
-</li>
-<li><p class="first"><strong>√</strong> means this middleware is supported in this environment, and <strong>x</strong> means not supported.</p>
-</li>
-<li><p class="first">Middleware dependencies</p>
+<li><p>All available middleware packages are located in <em>&lt;embARC&gt;/middleware</em>. You can access them by their folder name, such as <strong>ntshell</strong> or <strong>fatfs</strong>.</p></li>
+<li><p><strong>√</strong> means this middleware is supported in this environment, and <strong>x</strong> means not supported.</p></li>
+<li><p>Middleware dependencies</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>aws</strong> middleware required mbedtls middleware.</li>
-<li><strong>coap</strong>, <strong>mqtt</strong>, and <strong>lwm2m</strong> are only for FreeRTOS. and require <strong>lwip</strong> and <strong>lwip-contrib</strong>.</li>
-<li><strong>mbedtls</strong> require <strong>fatfs</strong> middleware to provide file access in some cases.</li>
-<li><strong>lwip</strong> middleware is only for FreeRTOS.</li>
-<li><strong>openthread</strong> middleware requires <strong>mbedtls</strong> to support encryption.</li>
+<li><p><strong>aws</strong> middleware required mbedtls middleware.</p></li>
+<li><p><strong>coap</strong>, <strong>mqtt</strong>, and <strong>lwm2m</strong> are only for FreeRTOS. and require <strong>lwip</strong> and <strong>lwip-contrib</strong>.</p></li>
+<li><p><strong>mbedtls</strong> require <strong>fatfs</strong> middleware to provide file access in some cases.</p></li>
+<li><p><strong>lwip</strong> middleware is only for FreeRTOS.</p></li>
+<li><p><strong>openthread</strong> middleware requires <strong>mbedtls</strong> to support encryption.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -587,209 +580,208 @@ provided in the embARC application makefile.</p>
 </div></blockquote>
 </li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id15">
+<table class="colwidths-auto docutils align-center" id="id15">
 <caption><span class="caption-text">Make option - MID_SEL</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Middleware</th>
-<th class="head">MID_SEL</th>
-<th class="head">Baremetal</th>
-<th class="head">FreeRTOS</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Middleware</p></th>
+<th class="head"><p>MID_SEL</p></th>
+<th class="head"><p>Baremetal</p></th>
+<th class="head"><p>FreeRTOS</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>AWS IoT Device SDK</td>
-<td>aws</td>
-<td>x</td>
-<td>√</td>
+<tbody>
+<tr class="row-even"><td><p>AWS IoT Device SDK</p></td>
+<td><p>aws</p></td>
+<td><p>x</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>CoAP</td>
-<td>coap</td>
-<td>x</td>
-<td>√</td>
+<tr class="row-odd"><td><p>CoAP</p></td>
+<td><p>coap</p></td>
+<td><p>x</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-even"><td>Common</td>
-<td>common</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-even"><td><p>Common</p></td>
+<td><p>common</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>FatFs</td>
-<td>fatfs</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-odd"><td><p>FatFs</p></td>
+<td><p>fatfs</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-even"><td>HTTP Parser</td>
-<td>http_parser</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-even"><td><p>HTTP Parser</p></td>
+<td><p>http_parser</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>iHex</td>
-<td>ihex</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-odd"><td><p>iHex</p></td>
+<td><p>ihex</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-even"><td>JSON</td>
-<td>parson</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-even"><td><p>JSON</p></td>
+<td><p>parson</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>lwIP</td>
-<td>lwip lwip-contrib</td>
-<td>x</td>
-<td>√</td>
+<tr class="row-odd"><td><p>lwIP</p></td>
+<td><p>lwip lwip-contrib</p></td>
+<td><p>x</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-even"><td>LwM2M</td>
-<td>wakaama</td>
-<td>x</td>
-<td>√</td>
+<tr class="row-even"><td><p>LwM2M</p></td>
+<td><p>wakaama</p></td>
+<td><p>x</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>mbed TLS</td>
-<td>mbedtls</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-odd"><td><p>mbed TLS</p></td>
+<td><p>mbedtls</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-even"><td>MQTT</td>
-<td>mqtt</td>
-<td>x</td>
-<td>√</td>
+<tr class="row-even"><td><p>MQTT</p></td>
+<td><p>mqtt</p></td>
+<td><p>x</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>Nt-Shell</td>
-<td>ntshell</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-odd"><td><p>Nt-Shell</p></td>
+<td><p>ntshell</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-even"><td>OpenThread</td>
-<td>openthread</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-even"><td><p>OpenThread</p></td>
+<td><p>openthread</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
-<tr class="row-odd"><td>U8glib</td>
-<td>u8glib</td>
-<td>√</td>
-<td>√</td>
+<tr class="row-odd"><td><p>U8glib</p></td>
+<td><p>u8glib</p></td>
+<td><p>√</p></td>
+<td><p>√</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is recommended to include <strong>common</strong> middleware to provide basic printf() functionality using xprintf().</p>
+<p class="admonition-title">Note</p>
+<p>It is recommended to include <strong>common</strong> middleware to provide basic printf() functionality using xprintf().</p>
 </div>
 <ul class="simple">
-<li><strong>LIB_SEL</strong>: Select libraries to be used in the embARC application. This option should be defined in your application makefile. All available libraries are located in <em>&lt;embARC&gt;/library</em>. <em>clib*</em> is set as default.</li>
+<li><p><strong>LIB_SEL</strong>: Select libraries to be used in the embARC application. This option should be defined in your application makefile. All available libraries are located in <em>&lt;embARC&gt;/library</em>. <em>clib*</em> is set as default.</p></li>
 </ul>
-<table border="1" class="colwidths-auto docutils" id="id16">
+<table class="colwidths-auto docutils align-center" id="id16">
 <caption><span class="caption-text">Make option - LIB_SEL</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">LIB_SEL</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>LIB_SEL</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>clib</td>
-<td>C Library Support</td>
+<tbody>
+<tr class="row-even"><td><p>clib</p></td>
+<td><p>C Library Support</p></td>
 </tr>
-<tr class="row-odd"><td>secureshield</td>
-<td>SecureShield Library</td>
+<tr class="row-odd"><td><p>secureshield</p></td>
+<td><p>SecureShield Library</p></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p class="first"><strong>APPL_LIBS</strong>: Set extra required application libraries to be linked. This option should be defined in your application makefile.</p>
+<li><p><strong>APPL_LIBS</strong>: Set extra required application libraries to be linked. This option should be defined in your application makefile.</p>
 <blockquote>
 <div><ul class="simple">
-<li>This <strong>APP_LIBS</strong> option collects extra linker option to include extra libraries to be linked.</li>
-<li>For example, <strong>APPL_LIBS = -lm</strong> means linking math library to target program. <strong>-lm</strong> only support the ARC GNU toolchain.</li>
+<li><p>This <strong>APP_LIBS</strong> option collects extra linker option to include extra libraries to be linked.</p></li>
+<li><p>For example, <strong>APPL_LIBS = -lm</strong> means linking math library to target program. <strong>-lm</strong> only support the ARC GNU toolchain.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>HEAPSZ</strong>: Set application heap size in bytes. This option should be defined in your application makefile. The default value of this option is <strong>8192</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>. It means the heap size of the application is set to 8192 bytes by default.</p>
+<li><p><strong>HEAPSZ</strong>: Set application heap size in bytes. This option should be defined in your application makefile. The default value of this option is <strong>8192</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>. It means the heap size of the application is set to 8192 bytes by default.</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>HEAPSZ</strong> is useful for baremetal applications. For FreeRTOS applications, you can define the RTOS heap size by setting <strong>configTOTAL_HEAP_SIZE</strong> in <em>FreeRTOSConfig.h</em>.</li>
+<li><p><strong>HEAPSZ</strong> is useful for baremetal applications. For FreeRTOS applications, you can define the RTOS heap size by setting <strong>configTOTAL_HEAP_SIZE</strong> in <em>FreeRTOSConfig.h</em>.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>STACKSZ</strong>: Set application stack size in bytes. This option should be defined in your application makefile. The default value of this option is <strong>8192</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>. It means the stack size of the application is set to 8192 bytes as default.</p>
+<li><p><strong>STACKSZ</strong>: Set application stack size in bytes. This option should be defined in your application makefile. The default value of this option is <strong>8192</strong> defined in <em>&lt;embARC&gt;/options/options.mk</em>. It means the stack size of the application is set to 8192 bytes as default.</p>
 <blockquote>
 <div><ul class="simple">
-<li>For baremetal and Contiki applications, <strong>STACKSZ</strong> is useful for baremetal applications. For FreeRTOS applications, you can define the minimum RTOS task stack size by setting <strong>configMINIMAL_STACK_SIZE</strong> in <em>FreeRTOSConfig.h</em>, and define each task’s stack size in the application source code.</li>
+<li><p>For baremetal and Contiki applications, <strong>STACKSZ</strong> is useful for baremetal applications. For FreeRTOS applications, you can define the minimum RTOS task stack size by setting <strong>configMINIMAL_STACK_SIZE</strong> in <em>FreeRTOSConfig.h</em>, and define each task’s stack size in the application source code.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>USE_BOARD_MAIN</strong>: Control which board init process is used. The default value of this option is <strong>1</strong> defined in <em>&lt;embARC&gt;/board/board.mk</em>.</p>
+<li><p><strong>USE_BOARD_MAIN</strong>: Control which board init process is used. The default value of this option is <strong>1</strong> defined in <em>&lt;embARC&gt;/board/board.mk</em>.</p>
 <blockquote>
 <div><ul class="simple">
-<li>When <strong>USE_BOARD_MAIN</strong> is 0, it uses the normal board init process, compatible with previous embARC releases; you must do board_init yourself.</li>
-<li>When <strong>USE_BOARD_MAIN</strong> is 1, embARC initializes fatfs, ntshell, and lwip with WiFi and creates a FreeRTOS task for main(). You can write applications or create new tasks in the main() function. When ntshell is enabled, the main() function needs to be triggered by the ntshell main command.</li>
+<li><p>When <strong>USE_BOARD_MAIN</strong> is 0, it uses the normal board init process, compatible with previous embARC releases; you must do board_init yourself.</p></li>
+<li><p>When <strong>USE_BOARD_MAIN</strong> is 1, embARC initializes fatfs, ntshell, and lwip with WiFi and creates a FreeRTOS task for main(). You can write applications or create new tasks in the main() function. When ntshell is enabled, the main() function needs to be triggered by the ntshell main command.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For more details about how this new process is implemented, see &lt;embARC&gt;/board/board.c. In most embARC examples, you don’t need to change <strong>USE_BOARD_MAIN</strong> to 0.</p>
+<p class="admonition-title">Note</p>
+<p>For more details about how this new process is implemented, see &lt;embARC&gt;/board/board.c. In most embARC examples, you don’t need to change <strong>USE_BOARD_MAIN</strong> to 0.</p>
 </div>
 <ul>
-<li><p class="first"><strong>EXT_DEV_LIST</strong>: Select peripheral device drivers used in your application.</p>
+<li><p><strong>EXT_DEV_LIST</strong>: Select peripheral device drivers used in your application.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Use <strong>EXT_DEV_LIST</strong> in the example’s makefile. If more than one peripheral device drivers are selected, please use space between each other, like <strong>EXT_DEV_LIST += EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420</strong>.</li>
-<li>Optional values for <strong>EXT_DEV_LIST</strong> can be found in <em>&lt;embARC&gt;/device/peripheral</em>. Select the target peripheral device drivers relative path, and add it to <strong>EXT_DEV_LIST</strong>.</li>
-<li>Some onboard peripheral device drivers are already selected according to the target board, you can check it in the target board makefile, such as <em>&lt;embARC&gt;/board/emsk/emsk.mk</em>.</li>
+<li><p>Use <strong>EXT_DEV_LIST</strong> in the example’s makefile. If more than one peripheral device drivers are selected, please use space between each other, like <strong>EXT_DEV_LIST += EXT_DEV_LIST += wifi/mrf24g sensor/temperature/adt7420</strong>.</p></li>
+<li><p>Optional values for <strong>EXT_DEV_LIST</strong> can be found in <em>&lt;embARC&gt;/device/peripheral</em>. Select the target peripheral device drivers relative path, and add it to <strong>EXT_DEV_LIST</strong>.</p></li>
+<li><p>Some onboard peripheral device drivers are already selected according to the target board, you can check it in the target board makefile, such as <em>&lt;embARC&gt;/board/emsk/emsk.mk</em>.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">WIFI_SEL is not available now. If choosing different WiFi, you need to change the EXT_DEV_LIST in your example makefile.</p>
+<p class="admonition-title">Note</p>
+<p>WIFI_SEL is not available now. If choosing different WiFi, you need to change the EXT_DEV_LIST in your example makefile.</p>
 </div>
 <ul class="simple">
-<li><strong>EMBARC_ROOT</strong>: Set embARC source-code root directory path. This option should be defined in your application makefile to specify the path of the embARC source-code root. The path can be relative or absolute.</li>
+<li><p><strong>EMBARC_ROOT</strong>: Set embARC source-code root directory path. This option should be defined in your application makefile to specify the path of the embARC source-code root. The path can be relative or absolute.</p></li>
 </ul>
 <p><strong>Application related Options</strong></p>
 <ul>
-<li><p class="first"><strong>APPL</strong>: Set embARC application name. <strong>APPL</strong> should be defined in your application makefile.</p>
-</li>
-<li><p class="first"><strong>APPL_CSRC_DIR</strong>: Set the path of application C source-code directories. <strong>APPL_CSRC_DIR</strong> should be defined in your application makefile.</p>
+<li><p><strong>APPL</strong>: Set embARC application name. <strong>APPL</strong> should be defined in your application makefile.</p></li>
+<li><p><strong>APPL_CSRC_DIR</strong>: Set the path of application C source-code directories. <strong>APPL_CSRC_DIR</strong> should be defined in your application makefile.</p>
 <blockquote>
 <div><ul class="simple">
-<li>All C source-code directory paths including subfolders should be added.</li>
-<li>C source-code files should be suffixed with c or C, such as .c or .C.</li>
-<li>The paths are separated by whitespace.</li>
+<li><p>All C source-code directory paths including subfolders should be added.</p></li>
+<li><p>C source-code files should be suffixed with c or C, such as .c or .C.</p></li>
+<li><p>The paths are separated by whitespace.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>APPL_ASMSRC_DIR</strong>: Set the path of application assembly source-code directories. <strong>APPL_ASMSRC_DIR</strong> should be defined in your application makefile.</p>
+<li><p><strong>APPL_ASMSRC_DIR</strong>: Set the path of application assembly source-code directories. <strong>APPL_ASMSRC_DIR</strong> should be defined in your application makefile.</p>
 <blockquote>
 <div><ul class="simple">
-<li>All Assembly source-code directory paths including subfolders should be added.</li>
-<li>Assembly source-code files should be suffixed with s or S, such as .s or .S.</li>
-<li>The paths are separated by whitespace.</li>
+<li><p>All Assembly source-code directory paths including subfolders should be added.</p></li>
+<li><p>Assembly source-code files should be suffixed with s or S, such as .s or .S.</p></li>
+<li><p>The paths are separated by whitespace.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>APPL_INC_DIR</strong>: Set the path of application include-file directories. <strong>APPL_INC_DIR</strong> should be defined in your application makefile.</p>
+<li><p><strong>APPL_INC_DIR</strong>: Set the path of application include-file directories. <strong>APPL_INC_DIR</strong> should be defined in your application makefile.</p>
 <blockquote>
 <div><ul class="simple">
-<li>All include-file directory paths including subfolders need to be added.</li>
-<li>The paths are separated by whitespace.</li>
+<li><p>All include-file directory paths including subfolders need to be added.</p></li>
+<li><p>The paths are separated by whitespace.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>APPL_DEFINES</strong>: Set extra macros defined from makefile for this application.  <strong>APPL_DEFINES</strong> should be defined in your application makefile.</p>
+<li><p><strong>APPL_DEFINES</strong>: Set extra macros defined from makefile for this application.  <strong>APPL_DEFINES</strong> should be defined in your application makefile.</p>
 <blockquote>
 <div><ul class="simple">
-<li>All macro definitions are separated by whitespace.</li>
-<li>For example, if you want to define USE_EMBARC=1, then you should set the value to -DUSE_EMBARC=1.</li>
+<li><p>All macro definitions are separated by whitespace.</p></li>
+<li><p>For example, if you want to define USE_EMBARC=1, then you should set the value to -DUSE_EMBARC=1.</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <p><strong>Additional compiler, assembler, and linker options</strong></p>
 <ul class="simple">
-<li><strong>ADT_COPT</strong>: Additional compiler options. See the compiler manual for help.</li>
-<li><strong>ADT_AOPT</strong>: Additional assembler options. See the assembler manual for help.</li>
-<li><strong>ADT_LOPT</strong>: Additional linker options. See the linker manual for help.</li>
+<li><p><strong>ADT_COPT</strong>: Additional compiler options. See the compiler manual for help.</p></li>
+<li><p><strong>ADT_AOPT</strong>: Additional assembler options. See the assembler manual for help.</p></li>
+<li><p><strong>ADT_LOPT</strong>: Additional linker options. See the linker manual for help.</p></li>
 </ul>
 </div>
 </div>
