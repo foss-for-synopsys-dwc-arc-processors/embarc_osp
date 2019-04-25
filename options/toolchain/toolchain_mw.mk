@@ -144,14 +144,14 @@ endif
 	## Common Options
 	MKDEP_OPT	= -MMD -MT $@ -MF $@.d
 	### Disable small data and disable optimization for closely coupled memory (a Harvard architecture)
-	COMMON_COMPILE_OPT = -Hnoccm -Hnosdata -Wincompatible-pointer-types -Hnocopyr \
+	COMMON_COMPILE_OPT = -Hnoccm -Hnosdata -Wincompatible-pointer-types -Hnocopyr -Hpurge \
 				$(OPT_OLEVEL) $(CDEBUG_OPTION) $(ALL_DEFINES) $(ALL_INCLUDES) $(MKDEP_OPT)
 
 	## C/CPP/ASM/LINK Options
 	COMPILE_OPT	+= $(CCORE_OPT_MW)   $(ADT_COPT)   $(COMMON_COMPILE_OPT) -Hnocplus
 	CXX_COMPILE_OPT	+= $(CXXCORE_OPT_MW) $(ADT_CXXOPT) $(COMMON_COMPILE_OPT)
 	ASM_OPT		+= $(ACORE_OPT_MW)   $(ADT_AOPT)   $(COMMON_COMPILE_OPT) -Hasmcpp
-	LINK_OPT	+= $(LCORE_OPT_MW)   $(ADT_LOPT)   \
+	LINK_OPT	+= $(LCORE_OPT_MW)   $(ADT_LOPT) -Hpurge\
 				-Hnocopyr -Hnosdata -Hnocrt $(LMAP_OPTION) $(APPL_LINK_FILE)
 
 	## Link File Generation Options
