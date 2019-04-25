@@ -32,7 +32,7 @@ def store_gnu_toolchain(version, path):
     gnu_root_path = None
     gnu_file_path = None
     if gnu_tgz_path is None:
-        print "Can't download gnu {} ".format(version)
+        print("Can't download gnu {} ".format(version))
 
     new_path = os.path.join(path, gnu_version)
     if gnu_version not in os.listdir(path):
