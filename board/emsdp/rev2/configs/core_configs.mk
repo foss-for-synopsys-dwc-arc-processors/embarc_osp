@@ -46,5 +46,3 @@ $(info BOARD $(BOARD)-$(BD_VER) Core Configurations - $(SUPPORTED_CORES) are sup
 $(error $(CUR_CORE) is not supported in $(BOARD)-$(BD_VER), please check it!)
 endif
 endif
-
-CORE_DEFINES += -DCURRENT_CORE=$(VALID_CUR_CORE)
