@@ -41,7 +41,7 @@
 #define BOARD_DFSS_AHB_CLK	(BOARD_DFSS_CORE_CLK)	/* iotdk top-level AHB peripherals clock as DFSS */
 #define BOARD_DFSS_APB_CLK	(BOARD_DFSS_CORE_CLK)		/* iotdk top-level APB peripherals clock as DFSS */
 #define BOARD_APB_CLK 		(BOARD_DFSS_APB_CLK)	/* iotdk top-level APB peripherals clock */
-#define BOARD_SPI_CLK		(100000000U)		/* iotdk SPI clock*/
+#define BOARD_SPI_CLK		(BOARD_DFSS_AHB_CLK)		/* iotdk SPI clock*/
 
 /* CPU clock frequency definition */
 #ifdef BOARD_DFSS_CORE_CLK

@@ -42,7 +42,7 @@
 
 #if (USE_IOTDK_EFLASH)
 static DEV_FLASH iotdk_eflash_obj;
-EFLASH_DEFINE(eflash, EFLASH_CRTL_BASE);
+EFLASH_DEFINE(eflash, EFLASH_CTRL_BASE);
 
 static int32_t iotdk_eflash_open(void)
 {
@@ -205,7 +205,7 @@ static void iotdk_eflash_install(void)
 
 #if (USE_IOTDK_BOOT_SPI_FLASH)
 static DEV_FLASH iotdk_bootspi_obj;
-BOOTSPI_DEFINE(bootspi, BOOTSPI_CRTL_BASE);
+BOOTSPI_DEFINE(bootspi, BOOTSPI_CTRL_BASE);
 
 static int32_t iotdk_bootspi_open(void)
 {

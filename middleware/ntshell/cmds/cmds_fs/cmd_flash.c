@@ -73,8 +73,8 @@ static int cmd_flash(int argc, char **argv, void *extobj)
 	uint32_t offset_addr = 0;
 	VALID_EXTOBJ(extobj, -1);
 	NTSHELL_IO_GET(extobj);
-	EFLASH_DEFINE(eflash_test, EFLASH_CRTL_BASE);
-	BOOTSPI_DEFINE(bootspi_test, BOOTSPI_CRTL_BASE);
+	EFLASH_DEFINE(eflash_test, EFLASH_CTRL_BASE);
+	BOOTSPI_DEFINE(bootspi_test, BOOTSPI_CTRL_BASE);
 	SMIC_EFLASH_INFO eflash_info;
 
 	if (argc == 1) {
