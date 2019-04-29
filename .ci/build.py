@@ -12,7 +12,7 @@ import argparse
 from xlsxwriter.workbook import Workbook
 from xlsxwriter.worksheet import Worksheet
 from xlsxwriter.worksheet import convert_cell_args
-from embarc_tools.download_manager import cd, delete_dir_files
+from embarc_tools.utils import cd, delete_dir_files
 from embarc_tools.osp import osp
 from embarc_tools.builder import build
 import collections
@@ -514,7 +514,7 @@ def startBuild(app, config, builder):
 
     build_conf = str()
     build_status = None
-    builder.make_options = " ".join(CurrentBuildConfigString)
+    builder.make_options = " "
 
     # builder.build_target(app, target=str("clean"), parallel=config["PARALLEL"])
     if os.environ.get("COVERITY", None) == "true":

@@ -90,3 +90,10 @@ matrix:
     - env: NAME="emsdp-gnu-latest" TOOLCHAIN="gnu"  BOARD="emsdp" EXPECTED=".ci/expected.ini"
       os: linux
       compiler: gcc
+
+notifications:
+  email:
+    recipients:
+      - jingru@synopsys.com
+    on_success: never
+    on_failure: always
