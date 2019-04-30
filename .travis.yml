@@ -43,6 +43,7 @@ before_install:
   - >
     if [ "TRAVIS_PULL_REQUEST" != "false" ]; then
       git checkout remotes/origin/master -- .ci
+    fi
   - bash .ci/before_install.sh
 
 after_success:
