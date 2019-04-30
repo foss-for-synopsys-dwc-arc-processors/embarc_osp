@@ -41,8 +41,11 @@ before_install:
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "Huaqi.Fang@synopsys.com"
   - >
-    if [ "TRAVIS_PULL_REQUEST" != "false" ]; then
-      git checkout remotes/origin/master -- .ci
+    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+      diff=$(git diff FETCH_HEAD master .ci)
+      if [ "$diff" != ""]; then
+        git checkout remotes/origin/master -- .ci
+      fi
     fi
   - bash .ci/before_install.sh
 
