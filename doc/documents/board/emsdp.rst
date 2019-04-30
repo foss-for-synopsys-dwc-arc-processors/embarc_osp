@@ -112,7 +112,7 @@ Before the interfaces are used, you must install the required drivers on the com
 the MetaWare debugger or other serial debug consoles (such as PuTTY or other hyper-terminals).
 
 The driver is a part of the Digilent Adept tool. You can download the most recent version of
-the Digilent Adept tool from the Digilent website at https://store.digilentinc.com, and follow the installation instructions provided by Digilent.
+the Digilent Adept tool from the `Digilent website <https://store.digilentinc.com>`_, and follow the installation instructions provided by Digilent.
 
 You may also skip this step if you are using default settings.
 
@@ -120,37 +120,46 @@ You may also skip this step if you are using default settings.
 
 Package Preparation
 ^^^^^^^^^^^^^^^^^^^
-This section talks about how to add new |emsdp| cores into embARC OSP.
-If you are using default cores of |emsdp|: *em6_scss*, *em7d_esp_dfss*, and *em11d_dfss*, then you may skip this section.
+This section talks about how to add new |emsdp| cores into embARC OSP. Please notice that the existing em11d_dfss core configure files are for test and example purpose, we strongly suggest you to follow the steps in this section.
 
-#. You may download the package from our website. Suppose you want to add a new package called ``em9d_dfss``, your package name would be ``emsdp_em9d_dfss.zip``.
+#. You may download the package from our website: `DesignWare ARC EM Software Development Platform <https://www.synopsys.com/dw/ipdir.php?ds=arc-em-software-development-platform>`_. Suppose you want to add a new package called ``em11d_dfss``, then the name of your downloaded package would be ``emsdp_em11d_dfss.zip``.
 
-#. Download the package and unzip it, you will find four folders: ``/doc``, ``/fpga``, ``/include``, ``/tool_config``. Now create a new folder according to your board revision and package name. In this case *em9d_dfss* is added to *rev2* board, so you should set your directory as this:``/board/emsdp/rev2/configs/em9d_dfss``
+#. Unzip the .zip file, you will find four folders: ``/doc``, ``/fpga``, ``/include``, ``/tool_config``. Now create a new folder according to your board revision and package name. In this case *em11d_dfss* is added to *rev2* board, so you should set your directory as this:``/board/emsdp/rev2/configs/em11d_dfss``
 
-#. Copy the content of unzipped folder to ``/board/emsdp/rev2/configs/em9d_dfss``. It would be like:
+#. Copy the contents of unzipped folder to ``/board/emsdp/rev2/configs/em11d_dfss``. It would be like:
 
-.. code-block:: console
+    .. code-block:: console
 
-    em9d_dfss
-    ├─doc
-    ├─fpga
-    ├─include
-    └─tool_config
+        em11d_dfss
+        ├─doc
+        ├─fpga
+        ├─include
+        └─tool_config
 
 
-#. You are done importing a new package, flash the bit file into board and build with it to make sure everything is working.
+#. You are done importing a new package, flash the bit file into your board and then build with it to make sure everything is working.
 
-Run Your First Program
-^^^^^^^^^^^^^^^^^^^^^^
-By setting up the board, you are now ready to run your first program on |emsdp|.
-please refer to example `example_blinky` for further details. Build and download the example using either MetaWare or GNU. The command is shown below:
+Build and Run Your First Program
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+By setting up the board, you are now ready to run your first program on |emsdp|. There are two way to run your program.
+The first way is to use debugger, please refer to example `example_blinky` for further details. Build and download the example using either MetaWare or GNU. The command is shown below:
 
-.. code-block:: console
+    .. code-block:: console
 
-    $ cd <embarc_root>/example/baremetal/blinky
-    $ gmake BOARD=emsdp BD_VER=rev2 CORE=em11d_dfss TOOLCHAIN=mw run
+        $ cd <embarc_root>/example/baremetal/blinky
+        $ gmake BOARD=emsdp BD_VER=rev2 CORE=em11d_dfss TOOLCHAIN=mw run
 
 .. note:: Notice that for CORE option there are multiple core choices, please check `<embarc_root>/board/emsdp/rev2` folder for available cores.
+
+The second way is to use a micro-SD card, the bootloader on |emsdp| is capable to find and run prebuilt bin file that is named as ``app.bin``.
+Build the example using either MetaWare or GNU with the command shown below:
+
+    .. code-block:: console
+
+        $ cd <embarc_root>/example/baremetal/blinky
+        $ gmake BOARD=emsdp BD_VER=rev2 CORE=em11d_dfss TOOLCHAIN=mw bin
+
+After building succeed, you will find ``blinky_mw_em11d_dfss.bin`` at ``<embarc_root>/example/baremetal/blinky/obj_emsdp_rev2/mw_em11d_dfss``. Rename the bin file to ``app.bin`` and copy to the root directory of a micro-SD card. Insert the micro-SD card to |emsdp| board and press start button to run.
 
 Development Guide
 ^^^^^^^^^^^^^^^^^
@@ -159,21 +168,21 @@ You may need to specify peripheral driver (`<embarc_root>/device/peripheral`) fo
 
 For example, if Wi-Fi rs9113 driver is needed, add this line in makefile:
 
-.. code-block:: console
+    .. code-block:: console
 
-    EXT_DEV_LIST += wifi/rs9113
+        EXT_DEV_LIST += wifi/rs9113
 
 Another example is to add both wifi driver and audio codec driver for an online audio application:
 
-.. code-block:: console
+    .. code-block:: console
 
-    EXT_DEV_LIST += wifi/rs9113 audio/max9880a
+        EXT_DEV_LIST += wifi/rs9113 audio/max9880a
 
 
 Contributing
 ^^^^^^^^^^^^
 |emsdp| is welcome to your contribution. If you found any bug or issue or have suggestions,
-please feel free to raise issues or pull requests at [embARC Open Software Platform](https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp) repository on GitHub.
+please feel free to raise issues or pull requests at `embARC Open Software Platform <https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_osp>`_ repository on GitHub.
 
 
 
