@@ -43,7 +43,7 @@ before_install:
   - >
     if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
       diff=$(git diff FETCH_HEAD master .ci)
-      if [ "$diff" != ""]; then
+      if [ "$diff" != "" ]; then
         git checkout remotes/origin/master -- .ci
       fi
     fi
