@@ -78,9 +78,6 @@
 #define EMSK_SDCARD_SPI_0_FREQ		BOARD_SPI_FREQ
 #define EMSK_SDCARD_SPI_0_CLKMODE	SPI_CLK_MODE_0
 
-#define EMSK_SDCARD_SPI_0_CPULOCK_ENABLE
-
-
 static int32_t sdcard_spi_card_is_writeprotect(void)
 {
 	return 0;
@@ -124,7 +121,7 @@ static void sdcard_spi_0_diskio_timerproc(void)
 static FS_SDCARD_SPI_CTRL sdcard_spi_0_ctrl = {
 	0, 0, 0,
 	SDCARD_SPI_FREQ_400K, EMSK_SDCARD_SPI_0_FREQ, EMSK_SDCARD_SPI_0_CLKMODE,
-	DW_SPI_0_ID, BOARD_SDCARD_SPI_LINE,
+	DW_SPI_0_ID, BOARD_SDCARD_SPI_LINE, 0,
 	sdcard_spi_card_is_writeprotect,
 	sdcard_spi_card_is_inserted
 };

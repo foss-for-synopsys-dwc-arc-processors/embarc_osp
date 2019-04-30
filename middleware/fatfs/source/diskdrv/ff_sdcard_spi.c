@@ -45,6 +45,9 @@
 
 #define SDCARD_SPI_CHECK_EXP(EXPR, ERROR_CODE)	 CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
+#ifndef SDCARD_SPI_CPULOCK_ENABLE
+#define SDCARD_SPI_CPULOCK_ENABLE
+#endif
 
 /** wait sdcard ready for command or data transfer, if success return E_OK, else return E_SYS */
 static int32_t sdcard_spi_wait_ready(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint32_t wt)
@@ -70,6 +73,7 @@ static int32_t sdcard_spi_deselect(FS_SDCARD_SPI_CTRL_PTR sd_ctrl)
 	DEV_SPI_PTR spi;
 
 	spi = spi_get_dev(sd_ctrl->spi_master);
+
 
 	spi->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID((uint32_t)sd_ctrl->cs));
 	spi->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID((uint32_t)sd_ctrl->cs));
@@ -103,9 +107,6 @@ static int32_t sdcard_spi_select(FS_SDCARD_SPI_CTRL_PTR sd_ctrl)
 /** read data block by spi , ok return E_OK */
 static int32_t sdcard_spi_read_block(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint8_t *buf, uint32_t cnt)
 {
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	uint32_t  cpu_status;
-#endif
 	uint8_t token = 0;
 	uint8_t crc[2];
 	uint64_t cur_time = 0;
@@ -128,15 +129,8 @@ static int32_t sdcard_spi_read_block(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint8_t *bu
 		return E_SYS;
 	}
 
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	spi->spi_read((void *)buf, cnt); /* Read Data Block */
 	spi->spi_read((void *)crc, 2);   /* Discard CRC */
-
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	cpu_unlock_status(cpu_status);
-#endif
 
 	return E_OK;
 }
@@ -144,9 +138,6 @@ static int32_t sdcard_spi_read_block(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint8_t *bu
 /** write data block by spi , ok return E_OK */
 static int32_t sdcard_spi_write_block(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, const uint8_t *buf, uint32_t cnt, uint8_t token)
 {
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	uint32_t  cpu_status;
-#endif
 	uint8_t resp[3];
 
 	DEV_SPI_PTR spi;
@@ -161,16 +152,10 @@ static int32_t sdcard_spi_write_block(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, const uint
 	}
 	spi->spi_write((const void *)&token, 1);
 	if (token != 0xfd) {
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-		cpu_status = cpu_lock_save();
-#endif
 
 		spi->spi_write((const void *)buf, cnt); /* Write Data Block */
 		spi->spi_read((void *)resp, 3);   /* Discard CRC and read response */
 
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-		cpu_unlock_status(cpu_status);
-#endif
 		if ((resp[2] & 0x1f) != 0x5) {
 			return E_SYS;
 		}
@@ -181,9 +166,6 @@ static int32_t sdcard_spi_write_block(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, const uint
 /** send sdcard spi command */
 static uint8_t sdcard_spi_send_cmd(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint8_t cmd, uint32_t arg)
 {
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	uint32_t  cpu_status;
-#endif
 	uint8_t res = 0;
 	uint8_t buf[8];
 	uint8_t cnt;
@@ -220,9 +202,6 @@ static uint8_t sdcard_spi_send_cmd(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint8_t cmd, 
 		cnt = 6;
 	}
 
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	spi->spi_write((const void *)buf, cnt); /* Write Command Data */
 
 	cnt = 10;		/* Wait for response (10 bytes max) */
@@ -230,17 +209,11 @@ static uint8_t sdcard_spi_send_cmd(FS_SDCARD_SPI_CTRL_PTR sd_ctrl, uint8_t cmd, 
 		spi->spi_read((void *)(&res), 1);
 	} while ((res & 0x80) && (--cnt));
 
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	cpu_unlock_status(cpu_status);
-#endif
 	return res;   /* Return received response */
 }
 
 int32_t sdcard_spi_diskio_initialize(FATFS_DISKIO_PTR diskio)
 {
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	uint32_t  cpu_status;
-#endif
 	int32_t ercd = E_OK;
 	FS_SDCARD_SPI_CTRL_PTR sd_ctrl;
 	uint8_t n, cmd, ty, ocr[4];
@@ -278,9 +251,6 @@ int32_t sdcard_spi_diskio_initialize(FATFS_DISKIO_PTR diskio)
 
 	sdcard_spi_select(sd_ctrl);
 
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	for (n = 0; n < 10; n++) { /* Send 80 dummy clocks */
 		buf[n] = 0xff;
 	}
@@ -324,9 +294,6 @@ int32_t sdcard_spi_diskio_initialize(FATFS_DISKIO_PTR diskio)
 		}
 	}
 	sd_ctrl->card_type = ty; /* Card type */
-#ifdef SDCARD_SPI_CPULOCK_ENABLE
-	cpu_unlock_status(cpu_status);
-#endif
 	sdcard_spi_deselect(sd_ctrl);
 
 	if (ty) { /* OK */

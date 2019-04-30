@@ -44,6 +44,7 @@ static void dw_spi_0_isr(void *ptr);
 
 static DEV_SPI			dw_spi_0;			/*!< designware spi object */
 static DW_SPI_CTRL		dw_spi_0_ctrl;			/*!< designware spi 0 ctrl */
+static uint32_t dw_spi_0_cs_status;
 
 static int32_t dw_spi_0_open (uint32_t mode, uint32_t param)
 {
@@ -57,7 +58,17 @@ static int32_t dw_spi_0_close (void)
 
 static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
 {
-	return dw_spi_control(&dw_spi_0, ctrl_cmd, param);
+	int32_t ercd;
+
+	ercd = dw_spi_control(&dw_spi_0, ctrl_cmd, param);
+
+	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
+		dw_spi_0_cs_status = cpu_lock_save();
+	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
+		cpu_lock_restore(dw_spi_0_cs_status);
+	}
+
+	return ercd;
 }
 
 static int32_t dw_spi_0_write (const void *data, uint32_t len)
@@ -137,7 +148,7 @@ static void dw_spi_1_isr(void *ptr);
 
 static DEV_SPI			dw_spi_1;			/*!< designware spi 1 object */
 static DW_SPI_CTRL		dw_spi_1_ctrl;			/*!< designware spi 1 ctrl */
-
+static uint32_t dw_spi_1_cs_status;
 
 static int32_t dw_spi_1_open (uint32_t mode, uint32_t param)
 {
@@ -151,7 +162,17 @@ static int32_t dw_spi_1_close (void)
 
 static int32_t dw_spi_1_control (uint32_t ctrl_cmd, void *param)
 {
-	return dw_spi_control(&dw_spi_1, ctrl_cmd, param);
+	int32_t ercd;
+
+	ercd = dw_spi_control(&dw_spi_1, ctrl_cmd, param);
+
+	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
+		dw_spi_1_cs_status = cpu_lock_save();
+	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
+		cpu_lock_restore(dw_spi_1_cs_status);
+	}
+
+	return ercd;
 }
 
 static int32_t dw_spi_1_write (const void *data, uint32_t len)

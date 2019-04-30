@@ -81,15 +81,17 @@ int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t mode, uint3
 	info->opn_cnt++;
 	ctx->flags = 0;
 
+/* cs pin will toggle when FIFO is empty, to avoid this, spi master operation
+ * should not be interruptted by others. so set int pri to INT_PRI_MIN
+ */
 	int_enable(ctx->intno_rx);
-	int_pri_set(ctx->intno_rx, INT_PRI_MIN + 1);
+	int_pri_set(ctx->intno_rx, INT_PRI_MIN);
 	int_enable(ctx->intno_tx);
-	int_pri_set(ctx->intno_tx, INT_PRI_MIN + 1);
+	int_pri_set(ctx->intno_tx, INT_PRI_MIN);
 	int_enable(ctx->intno_idle);
-	int_pri_set(ctx->intno_idle, INT_PRI_MIN + 1);
+	int_pri_set(ctx->intno_idle, INT_PRI_MIN);
 	int_enable(ctx->intno_err);
-	int_pri_set(ctx->intno_err, INT_PRI_MIN + 1);
-
+	int_pri_set(ctx->intno_err, INT_PRI_MIN);
 
 	return E_OK;
 }

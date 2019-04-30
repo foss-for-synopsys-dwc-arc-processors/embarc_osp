@@ -77,6 +77,8 @@ DEV_SPI			dw_spi_0;			/*!< designware spi object */
 DW_SPI_CTRL		dw_spi_0_ctrl;			/*!< designware spi 0 ctrl */
 #if HW_VERSION >= 22
 static uint32_t spi_mst_cs_ctrl_creg = 0;
+#else
+static uint32_t dw_spi_0_cs_status;
 #endif
 
 /** designware spi 0 open */
@@ -92,18 +94,23 @@ static int32_t dw_spi_0_close (void)
 /** designware spi 0 control */
 static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
 {
-#if HW_VERSION >= 22
+
 	int32_t ercd;
 	ercd = dw_spi_control(&dw_spi_0, ctrl_cmd, param);
+#if HW_VERSION >= 22
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
 		_arc_write_uncached_32((void *)spi_mst_cs_ctrl_creg, 1 << ((uint32_t)param));
 	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
 		_arc_write_uncached_32((void *)spi_mst_cs_ctrl_creg, 0);
 	}
-	return ercd;
 #else
-	return dw_spi_control(&dw_spi_0, ctrl_cmd, param);
+	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
+		dw_spi_0_cs_status = cpu_lock_save();
+	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
+		cpu_lock_restore(dw_spi_0_cs_status);
+	}
 #endif
+	return ercd;
 }
 /** designware spi 0 write */
 static int32_t dw_spi_0_write (const void *data, uint32_t len)

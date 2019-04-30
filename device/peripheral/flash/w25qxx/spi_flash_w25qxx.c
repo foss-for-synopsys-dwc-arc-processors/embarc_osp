@@ -63,6 +63,7 @@ Inline int32_t spi_send_cmd(W25QXX_DEF_PTR dev, DEV_SPI_TRANSFER *xfer)
 	DEV_SPI_PTR spi_flash;
 	int32_t ercd = 0;
 
+
 	spi_flash = spi_get_dev(dev->spi_master);
 
 	/* select device */

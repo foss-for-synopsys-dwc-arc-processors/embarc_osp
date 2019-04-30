@@ -50,8 +50,6 @@
 #define DEBUG
 #include "embARC_debug.h"
 
-/* Enable CPU lock in SPI transmission */
-#define EMSK_PMRF_0_SPI_CPULOCK_ENABLE
 
 #define MRF_CHECK_EXP(EXPR, ERROR_CODE)			CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 #define MRF_GPIO_SETUP(port_pin, port, pin)		{ \
@@ -94,7 +92,6 @@ static int32_t spi_read_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uin
 	uint8_t ret_val = 0;
 	int32_t ret0, ret1, ret2;
 	DEV_SPI_TRANSFER dev_spi_xfer;
-	uint32_t cpu_status;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
@@ -106,15 +103,9 @@ static int32_t spi_read_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, uin
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, &ret_val, 2, 1);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
@@ -133,7 +124,6 @@ static int32_t spi_read_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	uint8_t ret_val = 0;
 	int32_t ret0, ret1, ret2;
 	DEV_SPI_TRANSFER dev_spi_xfer;
-	uint32_t cpu_status;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
@@ -144,15 +134,9 @@ static int32_t spi_read_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, &ret_val, 1, 1);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
@@ -171,7 +155,6 @@ static int32_t spi_write_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	uint8_t msg[4];
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
-	uint32_t cpu_status;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
@@ -185,15 +168,9 @@ static int32_t spi_write_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, 4, 0);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
@@ -209,7 +186,6 @@ static int32_t spi_write_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, ui
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
 	uint8_t msg[3];
-	uint32_t cpu_status;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
@@ -222,15 +198,9 @@ static int32_t spi_write_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, ui
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, 3, 0);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
@@ -774,7 +744,6 @@ static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *
 	uint8_t msg[16+2];
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
-	uint32_t cpu_status;
 	uint8_t i;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
@@ -791,15 +760,9 @@ static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, 18, 0);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
@@ -945,7 +908,6 @@ static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t addre
 	uint8_t msg[frame_len+2+2];
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
-	uint32_t cpu_status;
 	uint8_t i = 0;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
@@ -964,15 +926,9 @@ static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t addre
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, frame_len+2+2, 0);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
@@ -1086,7 +1042,6 @@ static int32_t mrf24j40_rxpkt_frame_write(MRF24J40_DEF *mrf24j40, uint8_t *buf, 
 	uint8_t msg[length];
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
-	uint32_t cpu_status;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
@@ -1098,15 +1053,9 @@ static int32_t mrf24j40_rxpkt_frame_write(MRF24J40_DEF *mrf24j40, uint8_t *buf, 
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, buf, 2, length);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_status = cpu_lock_save();
-#endif
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
 	ret1 = dev_spi_ptr->spi_control(SPI_CMD_TRANSFER_POLLING, CONV2VOID(&dev_spi_xfer));
 	ret2 = dev_spi_ptr->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID(cs_line));
-#ifdef EMSK_PMRF_0_SPI_CPULOCK_ENABLE
-	cpu_unlock_restore(cpu_status);
-#endif
 
 	if (!((ret0 == E_OK) && (ret1 == E_OK) && (ret2 == E_OK))) {
 		ercd = E_SYS;
