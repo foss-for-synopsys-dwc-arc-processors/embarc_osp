@@ -37,10 +37,13 @@ branches:
     - gh-pages
 
 before_install:
-  - bash .ci/before_install.sh
   # setup git config 
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "Huaqi.Fang@synopsys.com"
+  - >
+    if [ "TRAVIS_PULL_REQUEST" != "false" ]; then
+      git checkout remotes/origin/master -- .ci
+  - bash .ci/before_install.sh
 
 after_success:
   - bash -c "$STATUS" success "Local $NAME testing has passed"
