@@ -72,7 +72,7 @@ ifdef ONCHIP_IP_LIST
 endif
 
 # onboard device rules
-EXT_DEV_LIST += flash/w25qxx
+EXT_DEV_LIST +=
 
 include $(EMBARC_ROOT)/device/device.mk
 
