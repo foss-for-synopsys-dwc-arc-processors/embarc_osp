@@ -75,9 +75,7 @@ static void dw_spi_0_isr(void *ptr);
 
 DEV_SPI			dw_spi_0;			/*!< designware spi object */
 DW_SPI_CTRL		dw_spi_0_ctrl;			/*!< designware spi 0 ctrl */
-#if HW_VERSION >= 22
-static uint32_t spi_mst_cs_ctrl_creg = 0;
-#else
+#if HW_VERSION < 22
 static uint32_t dw_spi_0_cs_status;
 #endif
 
@@ -94,14 +92,13 @@ static int32_t dw_spi_0_close (void)
 /** designware spi 0 control */
 static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
 {
-
 	int32_t ercd;
 	ercd = dw_spi_control(&dw_spi_0, ctrl_cmd, param);
 #if HW_VERSION >= 22
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
-		_arc_write_uncached_32((void *)spi_mst_cs_ctrl_creg, 1 << ((uint32_t)param));
+		_arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 1 << ((uint32_t)param));
 	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
-		_arc_write_uncached_32((void *)spi_mst_cs_ctrl_creg, 0);
+		_arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 0);
 	}
 #else
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
@@ -140,10 +137,6 @@ static void dw_spi_0_install(void)
 	 * get absolute designware base address
 	 */
 	spi_abs_base = (uint32_t)PERIPHERAL_BASE + DW_SPI_0_RELBASE;
-
-#if HW_VERSION >= 22
-	spi_mst_cs_ctrl_creg = spi_abs_base + REL_REGBASE_SPI_MST_CS_CTRL;
-#endif
 
 	dw_spi_reg_ptr = (DW_SPI_REG *)spi_abs_base;
 
