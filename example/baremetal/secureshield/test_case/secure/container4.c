@@ -37,7 +37,7 @@
 #include "secureshield_sys.h"
 #include "secureshield_int.h"
 
-
+#ifndef BOARD_EMSDP
 void timer1_interrupt1(void *p_exinf)
 {
 	uint32_t val;
@@ -46,10 +46,11 @@ void timer1_interrupt1(void *p_exinf)
 	_arc_aux_write(AUX_TIMER1_CTRL, val);
 	//secure_int_sw_trigger(INTNO_SWI3);
 }
-
+#endif
 
 int tst_func_sec1(void)
 {
+#ifndef BOARD_EMSDP
 	_arc_aux_write(AUX_TIMER1_CTRL, 0);
 	_arc_aux_write(AUX_TIMER1_LIMIT, 5000);
 	_arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE|TIMER_CTRL_NH);
@@ -57,6 +58,7 @@ int tst_func_sec1(void)
 	secure_int_handler_install(INTNO_TIMER1, timer1_interrupt1);
 	secure_int_pri_set(INTNO_TIMER1, INT_PRI_MIN);
 	secure_int_enable(INTNO_TIMER1);
+#endif
 	secure_int_sw_trigger(INTNO_SWI3);
 
 	return 7;
