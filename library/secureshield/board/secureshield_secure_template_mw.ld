@@ -14,7 +14,7 @@ SECTIONS {
 
 		.text ALIGN(4): {
 			_f_text = .;
-			KEEP(*(.secureshield_init))
+			KEEP(*(.secureshield_init .secureshield_init.*))
 			*(TYPE text)
 			_e_text = .;
 		}

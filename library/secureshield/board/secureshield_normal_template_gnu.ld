@@ -29,25 +29,25 @@ SECTIONS
 		/* secureshield code and rodata */
 		. = ALIGN(4);
 		_f_rom_secureshieldruntime = .;
-		KEEP(*(.rom.secureshield.secure))
+		KEEP(*(.rom.secureshield.secure .rom.secureshield.secure.*))
 
 		/* the following are secureshield application configuration */
 		_f_cfg_secureshield = .;
 		/* secureshield container configuration tables */
 		. = ALIGN(32);
 		__secureshield_cfgtbl_start = .;
-		KEEP(*(.keep.secureshield.cfgtbl))
+		KEEP(*(.keep.secureshield.cfgtbl .keep.secureshield.cfgtbl.*))
 		. = ALIGN(32);
 		__secureshield_cfgtbl_end = .;
 
 		/* pointers to secureshield secure shields configuration tables */
 		/* note: no further alignment here, we need to have the exact list of pointers */
 		__secureshield_cfgtbl_ptr_start = .;
-		KEEP(*(.keep.secureshield.cfgtbl_ptr_first))
-		KEEP(*(.keep.secureshield.cfgtbl_ptr))
+		KEEP(*(.keep.secureshield.cfgtbl_ptr_first .keep.secureshield.cfgtbl_ptr_first.*))
+		KEEP(*(.keep.secureshield.cfgtbl_ptr .keep.secureshield.cfgtbl_ptr.*))
 		__secureshield_cfgtbl_ptr_end = .;
 
-		KEEP(*(.keep.secureshield.ac_table))
+		KEEP(*(.keep.secureshield.ac_table .keep.secureshield.ac_table.*))
 
 		. = ALIGN(32);
 
@@ -75,8 +75,8 @@ SECTIONS
 		. = ALIGN(4);
 		_f_ram_secureshieldruntime = .;
 
-		KEEP(*(.ram.secureshield.secure))
-		KEEP(*(.ram.secureshield.stack))
+		KEEP(*(.ram.secureshield.secure .ram.secureshield.secure.*))
+		KEEP(*(.ram.secureshield.stack .ram.secureshield.stack.*))
 
 #if  SECURESHIELD_VERSION == 1
 		_e_ram_secureshieldruntime = _f_ram_secureshieldruntime + CONTAINER_SIZE_ALIGNMENT(. - _f_ram_secureshieldruntime);
@@ -100,15 +100,15 @@ SECTIONS
 	{
 		_f_text_background_container = .;
 		_f_init = .;
-		KEEP (*(.init_vector))
-		KEEP (*(.init_bootstrap))
+		KEEP (*(.init_vector .init_vector.*))
+		KEEP (*(.init_bootstrap .init_bootstrap.*))
 		_e_init = .;
 	} > NORMAL_ROM
 
 	.vector : ALIGN(1024)
 	{
 		_f_vector = .;
-		*(.vector)
+		*(.vector .vector.*)
 		_e_vector = .;
 	} > NORMAL_ROM
 
