@@ -67,6 +67,8 @@ secureshield_config:
 	/* start and end address of list of pointers to containers configuration tables */
 	.long __secureshield_cfgtbl_ptr_start
 	.long __secureshield_cfgtbl_ptr_end
+	/* the following code is used to gurantee background_container_xxx will be linked */
+	.long background_container_ptr
 
 .section .ram.secureshield.secure, "aw", @nobits
 	.space SECURESHIELD_SECURE_RAM_USAGE
