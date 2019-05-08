@@ -144,7 +144,7 @@ endif
 	## Common Options
 	MKDEP_OPT	= -MMD -MT $@ -MF $@.d
 	### Disable small data and disable optimization for closely coupled memory (a Harvard architecture)
-	COMMON_COMPILE_OPT = -Hnoccm -Hnosdata -Wincompatible-pointer-types -Hnocopyr -Hpurge \
+	COMMON_COMPILE_OPT = -Hnoccm -Hnosdata -Wincompatible-pointer-types -Hnocopyr -Hpurge -fdata-sections\
 				$(OPT_OLEVEL) $(CDEBUG_OPTION) $(ALL_DEFINES) $(ALL_INCLUDES) $(MKDEP_OPT)
 
 	## C/CPP/ASM/LINK Options
