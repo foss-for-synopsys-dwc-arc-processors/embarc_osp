@@ -6,7 +6,7 @@ embARC apply patch
 
 This script scans for the set of patches in this git repository and attempts to apply them to the `embARC` branch.
 
-The default options will scan in directories `<EMBARC_ROOT>/library`, `<EMBARC_ROOT>/middleware` and `<EMBARC_ROOT>/os`  for patches.
+The default options will scan in directories ``<EMBARC_ROOT>/library``, ``<EMBARC_ROOT>/middleware`` and ``<EMBARC_ROOT>/os``  for patches.
 
 To run the script in the local tree, follow the steps below:
 ::
