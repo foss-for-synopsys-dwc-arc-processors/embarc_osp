@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>{{name}}</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		{% for path in virtual_folders %}
+		<link>
+			<name>{{path}}</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		{% endfor %}
+		{% for path in links_folder %}
+		<link>
+			<name>embARC/{{path}}</name>
+			<type>2</type>
+			<locationURI>OSP_ROOT/{{path}}</locationURI>
+		</link>
+		{% endfor %}
+		{% for path in links_file %}
+		<link>
+			<name>embARC/{{path}}</name>
+			<type>1</type>
+			<locationURI>OSP_ROOT/{{path}}</locationURI>
+		</link>
+		{% endfor %}
+
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>OSP_ROOT</name>
+			<value>file:/{{root}}</value>
+		</variable>
+	</variableList>
+</projectDescription>

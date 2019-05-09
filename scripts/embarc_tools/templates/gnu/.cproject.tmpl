@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		{% for core, settings in core.items() %}
+		<cconfiguration id="org.eclipse.cdt.cross.arc.gnu.linux.elf.debug.{{settings.id}}">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.cross.arc.gnu.linux.elf.debug.{{settings.id}}" moduleId="org.eclipse.cdt.core.settings" name="{{core}}">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.arc.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arc.gnu.buildArtefactType.application" description="{{settings.description}}" id="org.eclipse.cdt.cross.arc.gnu.linux.elf.debug.{{settings.id}}" name="{{core}}" parent="org.eclipse.cdt.cross.arc.gnu.linux.elf.debug">
+					<folderInfo id="org.eclipse.cdt.cross.arc.gnu.linux.elf.debug.{{settings.id}}." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.cross.arc.gnu.linux.elf.toolchain.debug.1518186599" name="GNU Toolchain for ARC EM" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.toolchain.debug">
+							<option id="org.eclipse.cdt.cross.arc.gnu.linux.option.debugging.level.2042344771" name="Debug level" superClass="org.eclipse.cdt.cross.arc.gnu.linux.option.debugging.level" value="org.eclipse.cdt.cross.arc.gnu.base.option.debugging.level.max" valueType="enumerated"/>
+							<targetPlatform id="org.eclipse.cdt.cross.arc.gnu.linux.elf.platform.debug.589546950" isAbstract="false" name="All Platform" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.platform.debug"/>
+							<builder buildPath="${workspace_loc:/{{name}}}" cleanBuildTarget="{{build_command}} clean" id="org.eclipse.cdt.cross.arc.gnu.linux.elf.builder.debug.1840405665" incrementalBuildTarget="{{build_command}} all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="ARC GNU Make builder for Linux hosts" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.builder.debug"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.assembler.debug.420501660" name="ARC ELF32 GCC Assembler" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.assembler.debug">
+								<option id="org.eclipse.cdt.cross.arc.gnu.assembler.option.include.paths.1349156369" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arc.gnu.assembler.option.include.paths" valueType="includePath">
+									{% for path in includes %}
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/{{path}}}&quot;"/>
+									{% endfor %}
+								</option>
+								<option id="org.eclipse.cdt.cross.arc.gnu.assembler.option.preprocessor.def.311605714" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arc.gnu.assembler.option.preprocessor.def" valueType="definedSymbols">
+									{% for value in defines %}
+									<listOptionValue builtIn="false" value="{{value}}"/>
+									{% endfor %}
+								</option>
+								<inputType id="org.eclipse.cdt.cross.arc.gnu.linux.assembler.base.input.1466071146" superClass="org.eclipse.cdt.cross.arc.gnu.linux.assembler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.c.compiler.debug.448240261" name="ARC ELF32 GCC C Compiler" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.c.compiler.debug">
+								<option id="org.eclipse.cdt.cross.arc.gnu.c.compiler.option.include.paths.79614265" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.arc.gnu.c.compiler.option.include.paths" valueType="includePath">
+								{% for path in includes %}
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/{{path}}}&quot;"/>
+								{% endfor %}
+								</option>
+								<option id="org.eclipse.cdt.cross.arc.gnu.c.compiler.option.preprocessor.def.1347816001" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arc.gnu.c.compiler.option.preprocessor.def" valueType="definedSymbols">
+									{% for value in defines %}
+									<listOptionValue builtIn="false" value="{{value}}"/>
+									{% endfor %}
+								</option>
+								<option id="org.eclipse.cdt.cross.arc.gnu.c.compiler.option.optimization.level.1856088319" name="Optimization level" superClass="org.eclipse.cdt.cross.arc.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.arc.gnu.base.option.optimization.level.none" valueType="enumerated"/>
+								<inputType id="org.eclipse.cdt.cross.arc.gnu.linux.c.compiler.base.input.1213319901" superClass="org.eclipse.cdt.cross.arc.gnu.linux.c.compiler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.cpp.compiler.debug.1443248443" name="ARC ELF32 GCC C++ Compiler" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.cpp.compiler.debug"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.c.linker.debug.1864971900" name="ARC ELF32 GCC C Linker" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.c.linker.debug"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.cpp.linker.debug.116146273" name="ARC ELF32 GCC C++ Linker" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.cpp.linker.debug"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.archiver.base.668982224" name="ARC ELF32 GCC Archiver" superClass="org.eclipse.cdt.cross.arc.gnu.linux.archiver.base"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.createflash.debug.2095919826" name="ARC ELF32 GNU Create Flash Image" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.createflash.debug"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.elf.createlisting.debug.207593566" name="ARC ELF32 GNU Create Listing" superClass="org.eclipse.cdt.cross.arc.gnu.linux.elf.createlisting.debug"/>
+							<tool id="org.eclipse.cdt.cross.arc.gnu.linux.printsize.base.615400078" name="ARC ELF32 GNU Print Size" superClass="org.eclipse.cdt.cross.arc.gnu.linux.printsize.base"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		{% endfor %}
+
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="baremetal_arc_feature_cache.org.eclipse.cdt.cross.arc.gnu.linux.elf.1234567890" name="ARC Cross ELF32 Target Application" projectType="org.eclipse.cdt.cross.arc.gnu.linux.elf"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		{% for core, settings in core.items() %}
+		<configuration configurationName="{{core}}">
+			<resource resourceType="PROJECT" workspacePath="/{{name}}"/>
+		</configuration>
+		{% endfor %}
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

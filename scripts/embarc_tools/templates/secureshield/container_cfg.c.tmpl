@@ -1,0 +1,67 @@
+/*------------------------------------------
+ * Copyright (c) {{build_year}}, Synopsys, Inc. All rights reserved.
+
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+
+ * 1) Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+
+ * 2) Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation and/or
+ * other materials provided with the distribution.
+
+ * 3) Neither the name of the Synopsys, Inc., nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+--------------------------------------------- */
+
+#include "embARC.h"
+
+{% for item in containers %}
+#include "{{item.container_name}}.h"
+{%- endfor %}
+
+{% for item in predefine %}
+#define {{item.define_name}}	{{item.define_value}}
+{%- endfor %}
+
+{% for item in shared_memory %}
+extern uint8_t _f_data_{{item.region_name}}[];
+{%- endfor %}
+
+/* General container set-up and main application */
+{% for item in containers %}
+static CONTAINER_AC_TABLE g_{{item.container_name}}_act[] = {
+	{%- for ac in item.ac_list %}
+		{%- if ac.ac == "shared_memory" %}
+	{(void *)(_f_data_{{ac.para1}}), {{ac.para2}}, SECURESHIELD_ACDEF_URAM | SECURESHIELD_AC_SHARED},
+		{%- else %}
+	{(void *)({{ac.para1}}), {{ac.para2}}, {{ac.ac}}},
+		{%- endif %}
+	{%- endfor %}
+};
+
+/* set the access control table of {{item.container_name}} */
+{%- if item.is_background_container %}
+SECURESHIELD_CONTAINER_BACKGROUND(g_{{item.container_name}}_act);
+{% else %}
+SECURESHIELD_CONTAINER_CONFIG({{item.container_name}}, g_{{item.container_name}}_act, {{item.stack_size}}
+{%- if item.is_secure -%}
+, SECURESHIELD_CONTAINER_SECURE
+{%- endif -%}
+);
+{% endif %}
+{%- endfor %}

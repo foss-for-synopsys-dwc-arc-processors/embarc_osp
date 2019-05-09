@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		{% for core, settings in core.items() %}
+		<cconfiguration id="com.arc.cdt.toolchain.av2em.exeReleaseToolChain.{{settings.id}}">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.arc.cdt.toolchain.av2em.exeReleaseToolChain.{{settings.id}}" moduleId="org.eclipse.cdt.core.settings" name="{{core}}">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arc.cdt.toolchain.ARCLinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arc.cdt.toolchain.ARCCompilerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.arc.cdt.toolchain.ARCAssemblerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="{{settings.description}}" id="com.arc.cdt.toolchain.av2em.exeReleaseToolChain.{{settings.id}}" name="{{core}}" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="com.arc.cdt.toolchain.av2em.exeReleaseToolChain.{{settings.id}}.233171701" name="/" resourcePath="">
+						<toolChain id="com.arc.cdt.toolchain.av2em.exeReleaseToolChain.1487233303" superClass="com.arc.cdt.toolchain.av2em.exeReleaseToolChain">
+							<targetPlatform id="hcTargetPlatform.1529162684" isAbstract="false" name="Generic platform" superClass="hcTargetPlatform"/>
+							<builder buildPath="${workspace_loc:/{{name}}}" cleanBuildTarget="{{build_command}} clean" id="makeBuilder.751345405" incrementalBuildTarget="{{build_command}} all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="makeBuilder"/>
+							<tool id="arc.cdt.toolchain.av2em.exeCompilerRelease.129548542" superClass="arc.cdt.toolchain.av2em.exeCompilerRelease">
+								<option id="arc.compiler.options.defines.435704226" superClass="arc.compiler.options.defines" valueType="definedSymbols">
+									{% for value in defines %}
+									<listOptionValue builtIn="false" value="{{value}}"/>
+									{% endfor %}
+								</option>
+								<option id="arc.compiler.options.target.version.1334645829" superClass="arc.compiler.options.target.version" value="arc.compiler.options.target.arcv2em" valueType="enumerated"/>
+								<option id="arc.compiler.options.include_dirs.1228429424" superClass="arc.compiler.options.include_dirs" valueType="includePath">
+									{% for path in includes %}
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/{{path}}}&quot;"/>
+									{% endfor %}
+								</option>
+								<inputType id="com.arc.cdt.toolchain.arc.ccac.inputTypeCPP.1032524315" name="MetaWare C++ Input" superClass="com.arc.cdt.toolchain.arc.ccac.inputTypeCPP"/>
+								<inputType id="com.arc.cdt.toolchain.arc.ccac.inputTypeC.2041362630" name="MetaWare C Input" superClass="com.arc.cdt.toolchain.arc.ccac.inputTypeC"/>
+							</tool>
+							<tool id="com.arc.cdt.toolchain.av2em.asmReleaseExe.440907144" superClass="com.arc.cdt.toolchain.av2em.asmReleaseExe">
+								<option id="arc.compiler.options.target.asm.version.1933911098" superClass="arc.compiler.options.target.asm.version" value="arc.compiler.options.target.arcv2em" valueType="enumerated"/>
+								<option id="com.arc.cdt.toolchain.asm.option.defines.1819127972" superClass="com.arc.cdt.toolchain.asm.option.defines" valueType="definedSymbols">
+									{% for value in defines %}
+									<listOptionValue builtIn="false" value="{{value}}"/>
+									{% endfor %}
+								</option>
+								<option id="com.arc.cdt.toolchain.asm.option.includes.2054907828" superClass="com.arc.cdt.toolchain.asm.option.includes" valueType="includePath">
+									{% for path in includes %}
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/{{path}}}&quot;"/>
+									{% endfor %}
+								</option>
+								<inputType id="com.arc.cdt.toolchain.asminput.858043310" name="Assembler Inputs" superClass="com.arc.cdt.toolchain.asminput"/>
+							</tool>
+							<tool id="com.arc.cdt.toolchain.av2em.exelinkerRelease.1017992306" superClass="com.arc.cdt.toolchain.av2em.exelinkerRelease">
+								<option id="arc.linker.options.target.version.1752828879" superClass="arc.linker.options.target.version" value="arc.compiler.options.target.arcv2em" valueType="enumerated"/>
+								<inputType id="com.arc.cdt.toolchain.linker.input.630852400" name="Linker Input" superClass="com.arc.cdt.toolchain.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.arc.cdt.toolchain.arc.archiver.1019452839" superClass="com.arc.cdt.toolchain.arc.archiver"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		{% endfor %}
+
+
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="baremetal_arc_feature_cache.null.123456789" name="baremetal_arc_feature_cache"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		{% for core, settings in core.items() %}
+		<configuration configurationName="{{core}}">
+			<resource resourceType="PROJECT" workspacePath="/{{name}}"/>
+		</configuration>
+		{% endfor %}
+	</storageModule>
+</cproject>
