@@ -16,6 +16,7 @@ SECTIONS {
 			_f_text = .;
 			KEEP(*(.secureshield_init .secureshield_init.*))
 			*(TYPE text)
+			*(.text*)
 			_e_text = .;
 		}
 

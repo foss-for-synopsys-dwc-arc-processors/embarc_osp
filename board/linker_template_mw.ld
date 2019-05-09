@@ -40,6 +40,7 @@ SECTIONS {
 		.text ALIGN(4): {
 			_f_text = .;
 			*(TYPE text)
+			*(.text*)
 			_e_text = .;
 		}
 
