@@ -15,10 +15,11 @@ To run the script in the local tree, follow the steps below:
 The embARC patch script accepts the following optional arguments:
 
 	-h, --help         show this help message
-	----patch-roots    Directories to search for patch files.
+	----patch-roots    
+			   Directories to search for patch files.
     	                   All .patch files in these directories 
     	                   will be processed.
-	--embarc-root          Specify the embARC_osp directory
+	--embarc-root      Specify the embARC_osp directory
 
 
 .. note::
