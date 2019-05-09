@@ -16,9 +16,9 @@ The embARC patch script accepts the following optional arguments:
 
 	-h, --help         show this help message
 	----patch-roots    Directories to search for patch files.
-    	               All .patch files in these directories 
-    	               will be processed.
-    --embarc-root      Specify the embARC_osp directory
+    	                   All .patch files in these directories 
+    	                   will be processed.
+    --embarc-root          Specify the embARC_osp directory
 
 
 .. note::
