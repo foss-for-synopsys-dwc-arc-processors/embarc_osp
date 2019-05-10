@@ -46,8 +46,8 @@
 #define SMIC_EFLASH_MACRO_ERASE		3
 #define SMIC_EFLASH_GET_INFO		4
 
-#define SMIC_EFLASH_PAGE_SIZE		1024
-#define SMIC_EFLASH_PAGE_CNT		256
+#define SMIC_EFLASH_PAGE_SIZE		512
+#define SMIC_EFLASH_PAGE_CNT		512
 
 #ifdef __cplusplus
 extern "C" {
