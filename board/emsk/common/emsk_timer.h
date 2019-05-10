@@ -50,6 +50,7 @@ extern volatile uint64_t gl_emsk_sys_hz_cnt;
 extern volatile uint32_t gl_emsk_ms_cnt;
 
 extern void emsk_timer_init(void);
+extern uint64_t calibrate_delay(void);
 
 #ifdef __cplusplus
 }

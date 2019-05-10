@@ -166,6 +166,7 @@ extern "C" {
 
 extern void board_init(void);
 extern void board_timer_update(uint32_t precision);
+extern void board_delay_us(uint32_t us);
 extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
 extern uint64_t board_get_hwticks(void);
 extern uint64_t board_get_cur_us(void);

@@ -67,12 +67,110 @@
 /** emsk board timer interrupt reset count */
 static uint32_t cyc_hz_count = (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ);
 
+const uint32_t us_loop_count = ((BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ) / 1000);
+
 /** emsk board timer counter in timer interrupt */
 volatile uint64_t gl_emsk_sys_hz_cnt = 0;
 /** emsk board 1ms counter */
 volatile uint32_t gl_emsk_ms_cnt = 0;
 
+volatile uint64_t gl_loops_per_jiffy = 1;
+
+volatile uint32_t gl_count = 1;
+
 #define HZ_COUNT_CONV(precision, base)	((precision)/(base))
+
+#define LPS_PREC 8
+#if 0
+void board_delay_us(uint32_t usecs)
+{
+	__asm__ __volatile__(
+	"	.align 4					\n"
+	"	.extern us_loop_count 		\n"
+	"	cmp %0, 0					\n"
+	"	jeq	1f						\n"
+	"	ld %%r1, [us_loop_count] 	\n"
+	"	mpy %%r1, %%r1, %0			\n"
+	"	mov %%lp_count, %%r1		\n"
+	"	lp  1f						\n"
+	"	nop							\n"
+	"1:								\n"
+	:
+	: "r"(usecs)
+	: "lp_count", "r1");
+}
+uint64_t calibrate_delay(void)
+{
+	return cyc_hz_count;
+}
+#else
+void board_delay_us(uint32_t usecs)
+{
+	__asm__ __volatile__(
+
+	"	.extern gl_loops_per_jiffy 		\n"
+	"	.extern gl_count 				\n"
+	"	cmp %0, 0						\n"
+	"	jeq	1f							\n"
+	"	ld %%r1, [gl_loops_per_jiffy] 	\n"
+	"	mpy %%r1, %%r1, %0				\n"
+	"	ld %%r2, [gl_count] 			\n"
+	"	divu %%r1, %%r1, %%r2			\n"
+	"	.align 4						\n"
+	"	mov %%lp_count, %%r1			\n"
+	"	lp  1f							\n"
+	"	nop								\n"
+	"1:									\n"
+	:
+	: "r"(usecs)
+	: "lp_count", "r1", "r2");
+}
+uint64_t calibrate_delay(void)
+{
+	unsigned long ticks, loopbit;
+	int lps_precision = LPS_PREC;
+	volatile uint64_t loops_per_jiffy;
+
+	loops_per_jiffy = (1<<4);
+	gl_loops_per_jiffy = 1;
+	gl_count = 1;
+
+	//printf("Calibrating delay loop... [cyc_hz_count = %lu] ", cyc_hz_count);
+
+	while ((loops_per_jiffy <<= 1) != 0) {
+		/* wait for "start of" clock tick */
+		ticks = OSP_GET_CUR_MS();
+		while (ticks == OSP_GET_CUR_MS())
+			/* nothing */;
+		/* Go .. */
+		ticks = OSP_GET_CUR_MS();
+		board_delay_us(loops_per_jiffy);
+		ticks = OSP_GET_CUR_MS() - ticks;
+		if (ticks)
+			break;
+	}
+	loops_per_jiffy >>= 1;
+	loopbit = loops_per_jiffy;
+	//printf(" [loopbit = %lu] ", loopbit);
+
+	while (lps_precision-- && (loopbit >>= 1)) {
+		loops_per_jiffy |= loopbit;
+		ticks = OSP_GET_CUR_MS();
+		while (ticks == OSP_GET_CUR_MS())
+			/* nothing */;
+		ticks = OSP_GET_CUR_MS();
+		board_delay_us(loops_per_jiffy);
+		if (OSP_GET_CUR_MS() != ticks)	/* longer than 1 tick */
+			loops_per_jiffy &= ~loopbit;
+	}
+	//printf("BogoMIPS (lpj=%lu)\r\n",loops_per_jiffy);
+	gl_loops_per_jiffy = loops_per_jiffy;
+	gl_count = 1000;
+	return loops_per_jiffy;
+}
+#endif
+
+
 
 /**
  * \brief	Update timer counter and other MS period operation
@@ -133,6 +231,14 @@ void emsk_timer_init(void)
 		timer_start(BOARD_SYS_TIMER_ID, TIMER_CTRL_IE|TIMER_CTRL_NH, cyc_hz_count);  /* start 1ms timer interrupt */
 
 		int_enable(BOARD_SYS_TIMER_INTNO);
+		if (arc_locked()) {
+			arc_unlock();
+			calibrate_delay();
+			arc_lock();
+		} else {
+			calibrate_delay();
+		}
+
 	}
 }
 
