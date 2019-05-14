@@ -170,6 +170,38 @@ static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 }
 
 /**
+ * \brief mpu region address check
+ * \details search all mpu regions to check if the region address is confict with that
+ *          allow shared memory
+ * \return 0 no confict, 1 exist conflict
+ */
+static uint32_t mem_region_checks(uint32_t start, uint32_t end, CONTAINER_AC ac)
+{
+	const MPU_REGION *region;
+	uint32_t base, size;
+
+#if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
+	if (ac & SECURESHIELD_AC_SHARED)
+		SECURESHIELD_HALT("Secureshield does not support shared memory when SID is enabled!");
+#endif
+
+	for (uint32_t i = 0; i < g_mpu_region_count; i++) {
+		region = &g_mpu_list[i];
+		base = region->base;
+		size = region->size;
+
+		if (((start >= base) && (start < (base + size))) ||
+			((end >= base) && (end < (base + size))) ||
+			((start < base) && (end >= (base + size)))) {
+			if (!((region->ac & SECURESHIELD_AC_SHARED) &&
+					(ac & SECURESHIELD_AC_SHARED)))
+				return 1;
+		}
+	}
+	return 0;
+}
+
+/**
  * \brief get the bits according to size
  * \param[in] size
  * \return bits
@@ -557,6 +589,11 @@ void vmpu_ac_mem(uint8_t container_id, void* addr, uint32_t size, CONTAINER_AC a
 
 	if (g_mpu_region_count >= MPU_REGION_COUNT) {
 		SECURESHIELD_HALT("vmpu_ac_mem ran out of regions");
+		return ;
+	}
+
+	if (mem_region_checks((uint32_t)addr, (uint32_t)addr + size - 1, ac)) {
+		SECURESHIELD_HALT("vmpu_ac_mem memory region address error, check the configuration\n");
 		return ;
 	}
 
