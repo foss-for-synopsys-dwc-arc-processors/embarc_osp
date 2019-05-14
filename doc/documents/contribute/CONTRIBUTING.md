@@ -32,7 +32,7 @@ These guidelines must be followed when submitting contributions to Synopsys proj
 
 ### Code of Conduct
 
-This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.html).
+This project adheres to the Contributor Covenant [code of conduct](./CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [info@embarc.org](mailto:info@embarc.org).
 
@@ -98,7 +98,7 @@ Include details about your configuration and environment:
 * **Provide name and version of the OS and toolchain you are using**
 * **Provide hardware board and arc core you are using**
 
-#### [Template For Submitting Bug Reports](ISSUE_TEMPLATE.html)
+#### [Template For Submitting Bug Reports](./ISSUE_TEMPLATE.md)
 
 ### Suggesting Enhancements
 
@@ -126,7 +126,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 * **List some other text software platform where this enhancement exists.**
 * **Specify the name and version of the OS you're using.**
 
-#### [Template For Submitting Enhancement Suggestions](ISSUE_TEMPLATE.html)
+#### [Template For Submitting Enhancement Suggestions](./ISSUE_TEMPLATE.md)
 
 ### Your First Code Contribution
 
@@ -217,4 +217,4 @@ This section lists the labels we use to help us track and manage issues and pull
 The labels are loosely grouped by their purpose, but it's not required that every issue have a label from every group or that an issue can't have more than one label from the same group.
 
 ## Special Thanks to the Atom Project
-The contribution guideline takes a lot of reference from the [Atom Contribution Guideline](https://github.com/atom/atom/blob/master/CONTRIBUTING.md).
+<p>The contribution guideline takes a lot of reference from the <a class="reference external" href="https://github.com/atom/atom/blob/master/CONTRIBUTING">Atom Contribution Guideline</a>.</p>
