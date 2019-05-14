@@ -18,69 +18,63 @@
     <includes local="yes">lwip/pbuf.h</includes>
     <includes refid="emb_a_r_c__debug_8h" local="yes">embARC_debug.h</includes>
     <incdepgraph>
-      <node id="6287">
+      <node id="6290">
         <label>stdbool.h</label>
       </node>
-      <node id="6290">
+      <node id="6293">
         <label>stdarg.h</label>
       </node>
-      <node id="6295">
+      <node id="6298">
         <label>ntshell_task.h</label>
       </node>
-      <node id="6284">
+      <node id="6287">
         <label>stdint.h</label>
       </node>
-      <node id="6291">
+      <node id="6294">
         <label>dev_uart.h</label>
         <link refid="dev__uart_8h"/>
+        <childnode refid="6295" relation="include">
+        </childnode>
+      </node>
+      <node id="6302">
+        <label>lwip/debug.h</label>
+      </node>
+      <node id="6291">
+        <label>embARC_error.h</label>
+        <link refid="emb_a_r_c__error_8h"/>
+        <childnode refid="6287" relation="include">
+        </childnode>
         <childnode refid="6292" relation="include">
         </childnode>
       </node>
-      <node id="6299">
-        <label>lwip/debug.h</label>
-      </node>
-      <node id="6288">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="6284" relation="include">
-        </childnode>
-        <childnode refid="6289" relation="include">
-        </childnode>
-      </node>
-      <node id="6286">
+      <node id="6289">
         <label>stddef.h</label>
       </node>
-      <node id="6292">
+      <node id="6295">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
-        <childnode refid="6284" relation="include">
+        <childnode refid="6287" relation="include">
         </childnode>
       </node>
-      <node id="6289">
+      <node id="6292">
         <label>arc_builtin.h</label>
         <link refid="arc__builtin_8h"/>
-        <childnode refid="6283" relation="include">
+        <childnode refid="6286" relation="include">
         </childnode>
       </node>
-      <node id="6285">
+      <node id="6288">
         <label>limits.h</label>
       </node>
-      <node id="6282">
+      <node id="6285">
         <label>ntshell_io_netconn.c</label>
         <link refid="emsdp/drivers/ntshell/ntshell_io_netconn.c"/>
-        <childnode refid="6283" relation="include">
-        </childnode>
-        <childnode refid="6288" relation="include">
-        </childnode>
-        <childnode refid="6290" relation="include">
+        <childnode refid="6286" relation="include">
         </childnode>
         <childnode refid="6291" relation="include">
         </childnode>
         <childnode refid="6293" relation="include">
         </childnode>
         <childnode refid="6294" relation="include">
-        </childnode>
-        <childnode refid="6295" relation="include">
         </childnode>
         <childnode refid="6296" relation="include">
         </childnode>
@@ -98,53 +92,59 @@
         </childnode>
         <childnode refid="6303" relation="include">
         </childnode>
-      </node>
-      <node id="6294">
-        <label>ntshell_io_netconn.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="6283" relation="include">
+        <childnode refid="6304" relation="include">
         </childnode>
-        <childnode refid="6295" relation="include">
+        <childnode refid="6305" relation="include">
         </childnode>
-      </node>
-      <node id="6300">
-        <label>lwip/def.h</label>
+        <childnode refid="6306" relation="include">
+        </childnode>
       </node>
       <node id="6297">
-        <label>lwip/opt.h</label>
-      </node>
-      <node id="6303">
-        <label>embARC_debug.h</label>
-        <link refid="emb_a_r_c__debug_8h"/>
-        <childnode refid="6293" relation="include">
-        </childnode>
-      </node>
-      <node id="6293">
-        <label>xprintf.h</label>
-      </node>
-      <node id="6283">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="6284" relation="include">
-        </childnode>
-        <childnode refid="6285" relation="include">
-        </childnode>
+        <label>ntshell_io_netconn.h</label>
+        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
         <childnode refid="6286" relation="include">
         </childnode>
-        <childnode refid="6287" relation="include">
+        <childnode refid="6298" relation="include">
         </childnode>
       </node>
-      <node id="6302">
-        <label>lwip/pbuf.h</label>
+      <node id="6303">
+        <label>lwip/def.h</label>
       </node>
-      <node id="6298">
-        <label>lwip/mem.h</label>
+      <node id="6300">
+        <label>lwip/opt.h</label>
+      </node>
+      <node id="6306">
+        <label>embARC_debug.h</label>
+        <link refid="emb_a_r_c__debug_8h"/>
+        <childnode refid="6296" relation="include">
+        </childnode>
       </node>
       <node id="6296">
+        <label>xprintf.h</label>
+      </node>
+      <node id="6286">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="6287" relation="include">
+        </childnode>
+        <childnode refid="6288" relation="include">
+        </childnode>
+        <childnode refid="6289" relation="include">
+        </childnode>
+        <childnode refid="6290" relation="include">
+        </childnode>
+      </node>
+      <node id="6305">
+        <label>lwip/pbuf.h</label>
+      </node>
+      <node id="6301">
+        <label>lwip/mem.h</label>
+      </node>
+      <node id="6299">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
-      <node id="6301">
+      <node id="6304">
         <label>lwip/api.h</label>
       </node>
     </incdepgraph>

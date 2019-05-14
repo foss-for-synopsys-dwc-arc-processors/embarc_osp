@@ -7,29 +7,66 @@
     <includes refid="emsk__timer_8h" local="yes">emsk_timer.h</includes>
     <includes refid="dev__pinmux_8h" local="yes">dev_pinmux.h</includes>
     <incdepgraph>
-      <node id="4836">
+      <node id="4839">
         <label>stdbool.h</label>
       </node>
-      <node id="4828">
+      <node id="4831">
         <label>arc_timer.h</label>
         <link refid="arc__timer_8h"/>
-        <childnode refid="4829" relation="include">
+        <childnode refid="4832" relation="include">
         </childnode>
+        <childnode refid="4834" relation="include">
+        </childnode>
+        <childnode refid="4835" relation="include">
+        </childnode>
+      </node>
+      <node id="4836">
+        <label>stdint.h</label>
+      </node>
+      <node id="4838">
+        <label>stddef.h</label>
+      </node>
+      <node id="4830">
+        <label>emsk_init.c</label>
+        <link refid="emsk_init.c"/>
         <childnode refid="4831" relation="include">
         </childnode>
-        <childnode refid="4832" relation="include">
+        <childnode refid="4840" relation="include">
+        </childnode>
+        <childnode refid="4841" relation="include">
+        </childnode>
+        <childnode refid="4842" relation="include">
+        </childnode>
+      </node>
+      <node id="4834">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="4835" relation="include">
+        </childnode>
+      </node>
+      <node id="4837">
+        <label>limits.h</label>
+      </node>
+      <node id="4842">
+        <label>dev_pinmux.h</label>
+        <link refid="dev__pinmux_8h_source"/>
+        <childnode refid="4835" relation="include">
+        </childnode>
+      </node>
+      <node id="4832">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="4833" relation="include">
         </childnode>
       </node>
       <node id="4833">
-        <label>stdint.h</label>
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
       </node>
       <node id="4835">
-        <label>stddef.h</label>
-      </node>
-      <node id="4827">
-        <label>emsk_init.c</label>
-        <link refid="emsk_init.c"/>
-        <childnode refid="4828" relation="include">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="4836" relation="include">
         </childnode>
         <childnode refid="4837" relation="include">
         </childnode>
@@ -38,50 +75,13 @@
         <childnode refid="4839" relation="include">
         </childnode>
       </node>
-      <node id="4831">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="4832" relation="include">
-        </childnode>
-      </node>
-      <node id="4834">
-        <label>limits.h</label>
-      </node>
-      <node id="4839">
-        <label>dev_pinmux.h</label>
-        <link refid="dev__pinmux_8h_source"/>
-        <childnode refid="4832" relation="include">
-        </childnode>
-      </node>
-      <node id="4829">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="4830" relation="include">
-        </childnode>
-      </node>
-      <node id="4830">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="4832">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="4833" relation="include">
-        </childnode>
-        <childnode refid="4834" relation="include">
-        </childnode>
-        <childnode refid="4835" relation="include">
-        </childnode>
-        <childnode refid="4836" relation="include">
-        </childnode>
-      </node>
-      <node id="4838">
+      <node id="4841">
         <label>emsk_timer.h</label>
         <link refid="emsk__timer_8h"/>
-        <childnode refid="4832" relation="include">
+        <childnode refid="4835" relation="include">
         </childnode>
       </node>
-      <node id="4837">
+      <node id="4840">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
@@ -105,7 +105,7 @@
         <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/common/emsk_init.c" line="60" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsk/common/emsk_init.c" bodystart="60" bodyend="66"/>
         <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gaa1c3c3474fcd341b7f0c8c2dd8318e97" compoundref="emsk__gpio_8c" startline="65" endline="70">emsk_gpio_init</references>
         <references refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r_1gaa39776349a5b6abdebd9ea209b6d4f8e" compoundref="emsk__timer_8c" startline="128" endline="137">emsk_timer_init</references>
-        <references refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" compoundref="arc__timer_8c" startline="201" endline="206">timer_init</references>
+        <references refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" compoundref="arc__timer_8c" startline="210" endline="215">timer_init</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
