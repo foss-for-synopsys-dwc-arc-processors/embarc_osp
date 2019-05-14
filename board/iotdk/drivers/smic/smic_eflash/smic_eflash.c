@@ -35,6 +35,7 @@
 #include "embARC_debug.h"
 
 #include "smic_eflash.h"
+#include "stdlib.h"
 
 #define SMIC_EFLASH_CHECK_EXP_NORTN(EXPR)	CHECK_EXP_NOERCD(EXPR, error_exit)
 #define SMIC_EFLASH_CHECK_EXP(EXPR, ERROR_CODE) CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
@@ -48,9 +49,6 @@ typedef enum {
 	FMC_CMD_PAGE_ERASE  = 3, // Code Flash page erase (512bytes per page)
 	FMC_CMD_MACRO_ERASE = 7  // Erase whole code flash
 } E_FMC_CMD;
-
-
-static uint8_t g_buf[SMIC_EFLASH_PAGE_SIZE] = { 0 };
 
 static void smic_eflash_set_lock(SMIC_EFLASH_DEF_PTR obj, E_FMC_LOCK lock)
 {
@@ -196,28 +194,34 @@ int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, 
 	uint16_t sec_pos;
 	uint16_t sec_off;
 	uint16_t sec_remain;
+	uint8_t *m_buf;
+
 	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
 
+	m_buf = malloc(SMIC_EFLASH_PAGE_SIZE);
+
+	SMIC_EFLASH_CHECK_EXP(m_buf != NULL, E_NOMEM);
+
 	sec_pos = addr / SMIC_EFLASH_PAGE_SIZE;
 	sec_off = addr % SMIC_EFLASH_PAGE_SIZE;
-	sec_remain = SMIC_EFLASH_PAGE_SIZE -sec_off;
+	sec_remain = SMIC_EFLASH_PAGE_SIZE - sec_off;
 
 	if (len <= sec_remain) {
 		sec_remain = len;
 	}
 
 	while (1) {
-		smic_eflash_read(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
+		smic_eflash_read(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, m_buf);
 		for (i = 0; i < sec_remain; i++) {
-			if (g_buf[sec_off +i] != 0xFF) break;
+			if (m_buf[sec_off +i] != 0xFF) break;
 		}
 		if (i < sec_remain) {
 			smic_eflash_control(obj, SMIC_EFLASH_PAGE_ERASE, (void *)(sec_pos*SMIC_EFLASH_PAGE_SIZE));
 			for (i = 0; i < sec_remain; i++) {
-				g_buf[sec_off +i] = val[i];
+				m_buf[sec_off +i] = val[i];
 			}
-			smic_eflash_write_nocheck(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
+			smic_eflash_write_nocheck(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, m_buf);
 		} else {
 			smic_eflash_write_nocheck(obj, addr, sec_remain, val);
 		}
@@ -229,12 +233,15 @@ int32_t smic_eflash_write(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len, 
 			val += sec_remain;
 			addr += sec_remain;
 			len -= sec_remain;
-			if (len > SMIC_EFLASH_PAGE_SIZE)
+			if (len > SMIC_EFLASH_PAGE_SIZE) {
 				sec_remain = SMIC_EFLASH_PAGE_SIZE;
-			else
+			} else {
 				sec_remain = len;
+			}
 		}
 	}
+	free(m_buf);
+
 	return (int32_t)(size_orig);
 error_exit:
 	return ercd;
@@ -248,28 +255,34 @@ int32_t smic_eflash_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len)
 	uint16_t sec_pos;
 	uint16_t sec_off;
 	uint16_t sec_remain;
+	uint8_t *m_buf;
+
 	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
 
+	m_buf = malloc(SMIC_EFLASH_PAGE_SIZE);
+
+	SMIC_EFLASH_CHECK_EXP(m_buf != NULL, E_NOMEM);
+
 	sec_pos = addr / SMIC_EFLASH_PAGE_SIZE;
 	sec_off = addr % SMIC_EFLASH_PAGE_SIZE;
-	sec_remain = SMIC_EFLASH_PAGE_SIZE -sec_off;
+	sec_remain = SMIC_EFLASH_PAGE_SIZE - sec_off;
 
 	if (len <= sec_remain) {
 		sec_remain = len;
 	}
 
 	while (1) {
-		smic_eflash_read(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
+		smic_eflash_read(obj, sec_pos * SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, m_buf);
 		for (i = 0; i < sec_remain; i++) {
-			if (g_buf[sec_off +i] != 0xFF) break;
+			if (m_buf[sec_off + i] != 0xFF) break;
 		}
 		if (i < sec_remain) {
-			smic_eflash_control(obj, SMIC_EFLASH_PAGE_ERASE, (void *)(sec_pos*SMIC_EFLASH_PAGE_SIZE));
+			smic_eflash_control(obj, SMIC_EFLASH_PAGE_ERASE, (void *)(sec_pos * SMIC_EFLASH_PAGE_SIZE));
 			for (i = 0; i < sec_remain; i++) {
-				g_buf[sec_off +i] = 0xFF;
+				m_buf[sec_off + i] = 0xFF;
 			}
-			smic_eflash_write_nocheck(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, g_buf);
+			smic_eflash_write_nocheck(obj, sec_pos*SMIC_EFLASH_PAGE_SIZE, SMIC_EFLASH_PAGE_SIZE, m_buf);
 		}
 		if (len == sec_remain) {
 			break;
@@ -278,12 +291,15 @@ int32_t smic_eflash_erase(SMIC_EFLASH_DEF_PTR obj, uint32_t addr, uint32_t len)
 			sec_off = 0;
 			addr += sec_remain;
 			len -= sec_remain;
-			if (len > SMIC_EFLASH_PAGE_SIZE)
+			if (len > SMIC_EFLASH_PAGE_SIZE) {
 				sec_remain = SMIC_EFLASH_PAGE_SIZE;
-			else
+			} else {
 				sec_remain = len;
+			}
 		}
 	}
+	free(m_buf);
+
 	return (int32_t)(size_orig);
 error_exit:
 	return ercd;
@@ -295,13 +311,6 @@ int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *pa
 
 	SMIC_EFLASH_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_EFLASH_CHECK_EXP(obj->eflash_open_cnt != 0, E_OPNED);
-
-	if (ctrl_cmd != SMIC_EFLASH_SET_LOCK && ctrl_cmd != SMIC_EFLASH_GET_LOCK &&
-	    ctrl_cmd != SMIC_EFLASH_PAGE_ERASE && ctrl_cmd != SMIC_EFLASH_MACRO_ERASE &&
-	    ctrl_cmd != SMIC_EFLASH_GET_INFO) {
-		ercd = E_PAR;
-		goto error_exit;
-	}
 
 	switch (ctrl_cmd) {
 		case SMIC_EFLASH_SET_LOCK:
@@ -329,6 +338,7 @@ int32_t smic_eflash_control(SMIC_EFLASH_DEF_PTR obj, uint32_t ctrl_cmd, void *pa
 			break;
 
 		default:
+			ercd = E_PAR;
 			break;
 	}
 

@@ -40,26 +40,26 @@
 
 #define DW_FLASH_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
-void iotdk_flash_obj_all_install(void);
-
 #if (USE_IOTDK_EFLASH)
 static DEV_FLASH iotdk_eflash_obj;
-EFLASH_DEFINE(eflash, EFLASH_CRTL_BASE);
+EFLASH_DEFINE(eflash, EFLASH_CTRL_BASE);
 
-static int32_t iotdk_eflash_open()
+static int32_t iotdk_eflash_open(void)
 {
 	int32_t ercd = E_OK;
 	DEV_FLASH_PTR obj_ptr = &iotdk_eflash_obj;
 	DEV_FLASH_INFO_PTR info_ptr = &(obj_ptr->flash_info);
+
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt == 0, E_OPNED);
+
 	info_ptr->open_cnt++;
-	smic_eflash_open(eflash);
+	ercd = smic_eflash_open(eflash);
 
 error_exit:
 	return ercd;
 }
 
-static int32_t iotdk_eflash_close()
+static int32_t iotdk_eflash_close(void)
 {
 	int32_t ercd = E_OK;
 	DEV_FLASH_PTR obj_ptr = &iotdk_eflash_obj;
@@ -68,12 +68,11 @@ static int32_t iotdk_eflash_close()
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt != 0, E_OK);
 
 	info_ptr->open_cnt--;
-	smic_eflash_close(eflash);
+	ercd = smic_eflash_close(eflash);
 
 error_exit:
 	return ercd;
 }
-
 
 static int32_t iotdk_eflash_control(uint32_t cmd, void *param)
 {
@@ -90,18 +89,17 @@ static int32_t iotdk_eflash_control(uint32_t cmd, void *param)
 			break;
 
 		case FLASH_CMD_PAGE_ERASE:
-			smic_eflash_control(eflash, SMIC_EFLASH_PAGE_ERASE, param);
+			ercd = smic_eflash_control(eflash, SMIC_EFLASH_PAGE_ERASE, param);
 			break;
 
 		case FLASH_CMD_CHIP_ERASE:
-			smic_eflash_control(eflash, SMIC_EFLASH_MACRO_ERASE, param);
+			ercd = smic_eflash_control(eflash, SMIC_EFLASH_MACRO_ERASE, param);
 			break;
 
 		default:
+			ercd = E_NOSPT;
 			break;
 	}
-
-
 
 error_exit:
 	return ercd;
@@ -120,9 +118,7 @@ static int32_t iotdk_eflash_read(uint32_t addr, void *dst, uint32_t len)
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 
-	smic_eflash_read(eflash, addr, len, dst);
-
-	return len;
+	ercd = smic_eflash_read(eflash, addr, len, dst);
 
 error_exit:
 	return ercd;
@@ -141,9 +137,7 @@ static int32_t iotdk_eflash_write(uint32_t addr, void *src, uint32_t len)
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 
-	smic_eflash_write(eflash, addr, len, src);
-
-	return len;
+	ercd = smic_eflash_write(eflash, addr, len, src);
 
 error_exit:
 	return ercd;
@@ -162,9 +156,7 @@ static int32_t iotdk_eflash_write_nocheck(uint32_t addr, void *src, uint32_t len
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 
-	smic_eflash_write_nocheck(eflash, addr, len, src);
-
-	return len;
+	ercd = smic_eflash_write_nocheck(eflash, addr, len, src);
 
 error_exit:
 	return ercd;
@@ -183,13 +175,12 @@ static int32_t iotdk_eflash_erase(uint32_t addr, uint32_t len)
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 
-	smic_eflash_erase(eflash, addr, len);
-
-	return len;
+	ercd = smic_eflash_erase(eflash, addr, len);
 
 error_exit:
 	return ercd;
 }
+
 static void iotdk_eflash_install(void)
 {
 	DEV_FLASH_PTR obj_ptr = &iotdk_eflash_obj;
@@ -214,30 +205,33 @@ static void iotdk_eflash_install(void)
 
 #if (USE_IOTDK_BOOT_SPI_FLASH)
 static DEV_FLASH iotdk_bootspi_obj;
-BOOTSPI_DEFINE(bootspi, BOOTSPI_CRTL_BASE);
+BOOTSPI_DEFINE(bootspi, BOOTSPI_CTRL_BASE);
 
-static int32_t iotdk_bootspi_open()
+static int32_t iotdk_bootspi_open(void)
 {
 	int32_t ercd = E_OK;
 	DEV_FLASH_PTR obj_ptr = &iotdk_bootspi_obj;
 	DEV_FLASH_INFO_PTR info_ptr = &(obj_ptr->flash_info);
+
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt == 0, E_OPNED);
+
 	info_ptr->open_cnt++;
-	smic_bootspi_open(bootspi);
+	ercd = smic_bootspi_open(bootspi);
 
 error_exit:
 	return ercd;
 }
 
-static int32_t iotdk_bootspi_close()
+static int32_t iotdk_bootspi_close(void)
 {
 	int32_t ercd = E_OK;
 	DEV_FLASH_PTR obj_ptr = &iotdk_bootspi_obj;
 	DEV_FLASH_INFO_PTR info_ptr = &(obj_ptr->flash_info);
+
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt != 0, E_OK);
 
 	info_ptr->open_cnt--;
-	smic_bootspi_close(bootspi);
+	ercd = smic_bootspi_close(bootspi);
 
 error_exit:
 	return ercd;
@@ -258,18 +252,17 @@ static int32_t iotdk_bootspi_control(uint32_t cmd, void *param)
 			break;
 
 		case FLASH_CMD_PAGE_ERASE:
-			smic_bootspi_control(bootspi, SMIC_BOOTSPI_SEC_ERASE, param);
+			ercd = smic_bootspi_control(bootspi, SMIC_BOOTSPI_SEC_ERASE, param);
 			break;
 
 		case FLASH_CMD_CHIP_ERASE:
-			smic_bootspi_control(bootspi, SMIC_BOOTSPI_CHIP_ERASE, param);
+			ercd = smic_bootspi_control(bootspi, SMIC_BOOTSPI_CHIP_ERASE, param);
 			break;
 
 		default:
+			ercd = E_NOSPT;
 			break;
 	}
-
-
 
 error_exit:
 	return ercd;
@@ -288,9 +281,8 @@ static int32_t iotdk_bootspi_read(uint32_t addr, void *dst, uint32_t len)
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 	addr -= info_ptr->begin_addr;
-	smic_bootspi_read(bootspi, addr, len, dst);
 
-	return len;
+	ercd = smic_bootspi_read(bootspi, addr, len, dst);
 
 error_exit:
 	return ercd;
@@ -309,9 +301,7 @@ static int32_t iotdk_bootspi_write(uint32_t addr, void *src, uint32_t len)
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 	addr -= info_ptr->begin_addr;
-	smic_bootspi_write(bootspi, addr, len, src);
-
-	return len;
+	ercd = smic_bootspi_write(bootspi, addr, len, src);
 
 error_exit:
 	return ercd;
@@ -330,9 +320,7 @@ static int32_t iotdk_bootspi_write_nocheck(uint32_t addr, void *src, uint32_t le
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 	addr -= info_ptr->begin_addr;
-	smic_bootspi_write_nocheck(bootspi, addr, len, src);
-
-	return len;
+	ercd = smic_bootspi_write_nocheck(bootspi, addr, len, src);
 
 error_exit:
 	return ercd;
@@ -351,13 +339,12 @@ static int32_t iotdk_bootspi_erase(uint32_t addr, uint32_t len)
 		len = info_ptr->begin_addr + info_ptr->total_size - len;
 	}
 	addr -= info_ptr->begin_addr;
-	smic_bootspi_erase(bootspi, addr, len);
-
-	return len;
+	ercd = smic_bootspi_erase(bootspi, addr, len);
 
 error_exit:
 	return ercd;
 }
+
 static void iotdk_bootspi_install(void)
 {
 	DEV_FLASH_PTR obj_ptr = &iotdk_bootspi_obj;
@@ -380,7 +367,16 @@ static void iotdk_bootspi_install(void)
 }
 #endif
 
+static void iotdk_flash_obj_all_install(void)
+{
+#if (USE_IOTDK_EFLASH)
+	iotdk_eflash_install();
+#endif
 
+#if (USE_IOTDK_BOOT_SPI_FLASH)
+	iotdk_bootspi_install();
+#endif
+}
 
 DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 {
@@ -408,16 +404,4 @@ DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 			break;
 	}
 	return NULL;
-}
-
-
-void iotdk_flash_obj_all_install(void)
-{
-#if (USE_IOTDK_EFLASH)
-	iotdk_eflash_install();
-#endif
-
-#if (USE_IOTDK_BOOT_SPI_FLASH)
-	iotdk_bootspi_install();
-#endif
 }

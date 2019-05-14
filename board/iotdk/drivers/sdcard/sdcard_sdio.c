@@ -58,7 +58,6 @@ static FS_SDCARD_SDIO_CTRL sdcard_sdio0 = {
 	.drv_status = STA_NOINIT
 };
 
-
 static int32_t sdcard_sdio_0_diskio_initialize(void)
 {
 	sdcard_sdio0.host = (void *)sdio_get_dev(SDCARD_SDIO_ID);
