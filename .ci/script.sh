@@ -56,7 +56,8 @@ if [ "${TOOLCHAIN}" != "sphinx" ] ; then
 fi
 
 echo "Using ${TOOLCHAIN}-${TOOLCHAIN_VER}" || die
-bash apply_embARC_patch.sh || die
+# bash apply_embARC_patch.sh || die
+python ./scripts/patch.py --embarc-root. || die
 cd .ci || die
 if [ "${TOOLCHAIN}" == "sphinx" ] ; then
     bash deploy_doc.sh || die
