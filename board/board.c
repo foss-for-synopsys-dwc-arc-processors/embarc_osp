@@ -180,6 +180,7 @@ void board_main(void)
 	board_init();
 /* board level middlware init */
 
+	timer_calibrate_delay(BOARD_CPU_CLOCK);
 
 #ifdef MID_COMMON
 	xprintf_setup();
