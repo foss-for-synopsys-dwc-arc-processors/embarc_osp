@@ -35,6 +35,15 @@
  * \todo RTC support should be improved if RTC is enabled
  */
 #include "arc_timer.h"
+#include "arc_exception.h"
+
+#define LPS_PREC 8
+
+volatile uint64_t gl_loops_per_jiffy = 1;
+volatile uint32_t gl_count = 1;
+
+
+
 
 
 /**
@@ -362,4 +371,87 @@ void secure_timer_init(void)
 	secure_timer_stop(SECURE_TIMER_1);
 }
 #endif /* ARC_FEATURE_SEC_TIMER1_PRESENT && ARC_FEATURE_SEC_TIMER0_PRESENT */
+
+/**
+ * \brief  provide US delay function
+ *
+ * \param[in] usecs US to delay
+ */
+void arc_delay_us(uint32_t usecs)
+{
+	__asm__ __volatile__(
+
+	"	.extern gl_loops_per_jiffy 		\n"
+	"	.extern gl_count 				\n"
+	"	cmp %0, 0						\n"
+	"	jeq	1f							\n"
+	"	ld %%r1, [gl_loops_per_jiffy] 	\n"
+	"	mpy %%r1, %%r1, %0				\n"
+	"	ld %%r2, [gl_count] 			\n"
+	"	divu %%r1, %%r1, %%r2			\n"
+	"	.align 4						\n"
+	"	mov %%lp_count, %%r1			\n"
+	"	lp  1f							\n"
+	"	nop								\n"
+	"1:									\n"
+	:
+	: "r"(usecs)
+	: "lp_count", "r1", "r2");
+}
+
+/**
+ * \brief  calibrate delay
+ *
+ * \param[in] board cpu clock
+ * \return loops_per_jiffy
+ */
+uint64_t timer_calibrate_delay(uint32_t cpu_clock)
+{
+	unsigned long loopbit;
+	int lps_precision = LPS_PREC;
+	volatile uint64_t loops_per_jiffy;
+	uint32_t timer0_limit;
+	uint32_t status;
+
+	gl_loops_per_jiffy = 1;
+	gl_count = 1;
+
+	cpu_clock /= 1000;
+
+	status = cpu_lock_save();
+
+	timer0_limit = _arc_aux_read(AUX_TIMER0_LIMIT);
+	_arc_aux_write(AUX_TIMER0_LIMIT, 0xFFFFFFFF);
+
+	loops_per_jiffy = (1 << 4);
+	while ((loops_per_jiffy <<= 1) != 0) {
+
+		_arc_aux_write(AUX_TIMER0_CNT, 0);
+		arc_delay_us(loops_per_jiffy);
+		if (_arc_aux_read(AUX_TIMER0_CNT) > cpu_clock) {
+			break;
+		}
+	}
+
+	loops_per_jiffy >>= 1;
+	loopbit = loops_per_jiffy;
+	while (lps_precision-- && (loopbit >>= 1)) {
+
+		loops_per_jiffy |= loopbit;
+		_arc_aux_write(AUX_TIMER0_CNT, 0);
+		arc_delay_us(loops_per_jiffy);
+		if (_arc_aux_read(AUX_TIMER0_CNT) > cpu_clock) {
+			loops_per_jiffy &= ~loopbit;
+		}
+	}
+
+	gl_loops_per_jiffy = loops_per_jiffy;
+	gl_count = 1000;
+
+	_arc_aux_write(AUX_TIMER0_CNT, 0);
+	_arc_aux_write(AUX_TIMER0_LIMIT, timer0_limit);
+	cpu_unlock_restore(status);
+
+	return loops_per_jiffy;
+}
 
