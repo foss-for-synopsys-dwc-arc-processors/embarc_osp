@@ -166,7 +166,7 @@
       </memberdef>
       <memberdef kind="define" id="iotdk__hardware_8h_1adc53823b62f63c0cd767f874fe9cf175" prot="public" static="no">
         <name>BOARD_SPI_CLK</name>
-        <initializer>(100000000U)		/* iotdk SPI clock*/</initializer>
+        <initializer>(BOARD_DFSS_AHB_CLK)		/* iotdk SPI clock*/</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -609,7 +609,7 @@
 <codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_AHB_CLK<sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_CORE_CLK)<sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>AHB<sp/>peripherals<sp/>clock<sp/>as<sp/>DFSS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_DFSS_APB_CLK<sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_CORE_CLK)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>APB<sp/>peripherals<sp/>clock<sp/>as<sp/>DFSS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_APB_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_APB_CLK)<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>top-level<sp/>APB<sp/>peripherals<sp/>clock<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SPI_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(100000000U)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>SPI<sp/>clock*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BOARD_SPI_CLK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(BOARD_DFSS_AHB_CLK)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>iotdk<sp/>SPI<sp/>clock*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>CPU<sp/>clock<sp/>frequency<sp/>definition<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>BOARD_DFSS_CORE_CLK</highlight></codeline>
