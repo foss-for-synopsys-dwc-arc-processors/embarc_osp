@@ -26,6 +26,7 @@ fi
         pip install recommonmark || die
         pip install sphinx_rtd_theme || die   
     }
+    pip install GitPython || die
     pip install embarc_cli || die
     pip install configparser || die
     pip install requests || die
