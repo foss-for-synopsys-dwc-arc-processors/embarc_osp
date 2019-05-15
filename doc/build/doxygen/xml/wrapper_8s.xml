@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/src/wrapper.s" line="71" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/src/wrapper.s" bodystart="39" bodyend="-1"/>
+        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/src/wrapper.s" line="73" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/src/wrapper.s" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -154,9 +154,11 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>start<sp/>and<sp/>end<sp/>address<sp/>of<sp/>list<sp/>of<sp/>pointers<sp/>to<sp/>containers<sp/>configuration<sp/>tables<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.long<sp/>__secureshield_cfgtbl_ptr_start</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.long<sp/>__secureshield_cfgtbl_ptr_end</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal">.section<sp/>.ram.secureshield.secure,<sp/></highlight><highlight class="stringliteral">&quot;aw&quot;</highlight><highlight class="normal">,<sp/>@nobits</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.space<sp/>SECURESHIELD_SECURE_RAM_USAGE</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>the<sp/>following<sp/>code<sp/>is<sp/>used<sp/>to<sp/>gurantee<sp/>background_container_xxx<sp/>will<sp/>be<sp/>linked<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.long<sp/>background_container_ptr</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">.section<sp/>.ram.secureshield.secure,<sp/></highlight><highlight class="stringliteral">&quot;aw&quot;</highlight><highlight class="normal">,<sp/>@nobits</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.space<sp/>SECURESHIELD_SECURE_RAM_USAGE</highlight></codeline>
     </programlisting>
     <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/library/secureshield/export/src/wrapper.s"/>
   </compounddef>
