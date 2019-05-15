@@ -32,7 +32,6 @@
 #include "iotdk_hardware.h"
 #include "sysconf.h"
 
-
 #define PLL_CLK_IN	(BOARD_REF_CLK / 1000000)  /* PLL clock in */
 
 SYSCONF_REG_PTR sysconf_reg_ptr = (SYSCONF_REG_PTR)(BASE_ADDR_SYSCONFIG);
@@ -43,12 +42,10 @@ typedef struct pll_conf {
 	uint32_t pll;
 } PLL_CONF;
 
-/* why m + 4 is required? from provided source code */
 #define PLL_CONF_VAL(n, m, od) \
 	(((n) << PLLCON_BIT_OFFSET_N) | \
 	((m) << (PLLCON_BIT_OFFSET_M)) | \
 	((od) << PLLCON_BIT_OFFSET_OD))
-
 
 /* the following configuration is based on Fin = 16 Mhz */
 static const PLL_CONF pll_configuration[] = {
@@ -64,7 +61,6 @@ static const PLL_CONF pll_configuration[] = {
 	{144, PLL_CONF_VAL(8, 144, 1)}, /* 144 Mhz */
 	{180, PLL_CONF_VAL(8, 180, 1)}, /* 180 Mhz */
 };
-
 
 /**
  * PLL Fout = Fin * M/ (N *n NO)
@@ -208,7 +204,6 @@ void sdio_clk_divisor(uint8_t div)
 {
 	sysconf_reg_ptr->SDIO_REFCLK_DIV = div;
 }
-
 
 /**
  * \brief       configure the spi master's clk divisor
