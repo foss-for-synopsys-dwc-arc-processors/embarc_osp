@@ -25,15 +25,15 @@ SECTIONS
 	{
 		. = . + IMAGE_HEAD_SIZE;
 		_f_init = .;
-		KEEP (*(.init_vector))
-		KEEP (*(.init_bootstrap))
+		KEEP (*(.init_vector .init_vector.*))
+		KEEP (*(.init_bootstrap .init_bootstrap.*))
 		_e_init = .;
 	} > REGION_ROM
 
 	.vector : ALIGN(1024)
 	{
 		_f_vector = .;
-		*(.vector)
+		*(.vector .vector.*)
 		_e_vector = .;
 	} > REGION_ROM
 

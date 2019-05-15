@@ -13,7 +13,7 @@ SECTIONS {
 
 	.text :  ALIGN(4) {
 		_f_text = .;
-		KEEP(*(.secureshield_init))
+		KEEP(*(.secureshield_init .secureshield_init.*))
 		*(.text .text.* .gnu.linkonce.t.*)
 		_e_text = .;
 	} > SECURE_ROM
