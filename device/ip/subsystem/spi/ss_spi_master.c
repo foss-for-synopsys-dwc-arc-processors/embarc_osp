@@ -81,15 +81,17 @@ int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t mode, uint3
 	info->opn_cnt++;
 	ctx->flags = 0;
 
+/* cs pin will toggle when FIFO is empty, to avoid this, spi master operation
+ * should not be interruptted by others. so set int pri to INT_PRI_MIN
+ */
 	int_enable(ctx->intno_rx);
-	int_pri_set(ctx->intno_rx, INT_PRI_MIN + 1);
+	int_pri_set(ctx->intno_rx, INT_PRI_MIN);
 	int_enable(ctx->intno_tx);
-	int_pri_set(ctx->intno_tx, INT_PRI_MIN + 1);
+	int_pri_set(ctx->intno_tx, INT_PRI_MIN);
 	int_enable(ctx->intno_idle);
-	int_pri_set(ctx->intno_idle, INT_PRI_MIN + 1);
+	int_pri_set(ctx->intno_idle, INT_PRI_MIN);
 	int_enable(ctx->intno_err);
-	int_pri_set(ctx->intno_err, INT_PRI_MIN + 1);
-
+	int_pri_set(ctx->intno_err, INT_PRI_MIN);
 
 	return E_OK;
 }
@@ -206,73 +208,14 @@ int32_t ss_spi_master_control(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 
 		case SPI_CMD_TRANSFER_POLLING:
 			if (param != NULL && !(ctx->flags & SS_SPI_MASTER_FLAG_BUSY)) {
-
-				if (arc_locked()) {
-					/*
-					 * not allow to be called in isr or cpu is locked.
-					 * Beacue the bottom drvier is simply interrupt driven
-					 */
-					return E_SYS;
-				}
-
-				*spi_xfer = *((DEV_SPI_TRANSFER *)param);
-
-
+				spi_xfer = (DEV_SPI_TRANSFER *)param;
 				while (spi_xfer != NULL) {
-					if (spi_xfer->rx_len == 0) {
-
-						ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
-						val32 = SPI_TRANSMIT_ONLY_MODE;
-						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
-						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
-
-						while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
-
-					} else if (spi_xfer->tx_len == 0) {
-
-						ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
-						val32 = SPI_RECEIVE_ONLY_MODE;
-						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
-						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->rx_len);
-
-						while (ctx->flags & SS_SPI_MASTER_FLAG_BUSY);
-
-					} else if (spi_xfer->rx_ofs == spi_xfer->tx_len && spi_xfer->tx_ofs == 0) {
-
-						ctx->flags = SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX;
-						val32 = SPI_RECEIVE_AFTER_TRANSMIT_MODE;
-						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
-						val32 = spi_xfer->tx_len + spi_xfer->rx_len;
-						io_spi_master_read(dev_id, spi_xfer->rx_buf, &val32);
-						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tx_len);
-
-						while (ctx->flags & (SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX));
-					} else {
-
-						if (spi_xfer->tx_ofs != 0 || spi_xfer->rx_ofs != 0) {
-							return E_NOSPT;
-						}
-
-						DEV_SPI_XFER_INIT(spi_xfer);
-
-						ctx->flags = SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX;
-						val32 = SPI_TRANSMIT_RECEIVE_MODE;
-
-						io_spi_master_ioctl(dev_id, IO_SPI_MASTER_SET_TRANSFER_MODE, &val32);
-						io_spi_master_read(dev_id, spi_xfer->rx_buf, &spi_xfer->tot_len);
-						io_spi_master_write(dev_id, spi_xfer->tx_buf, &spi_xfer->tot_len);
-
-						while (ctx->flags & (SS_SPI_MASTER_FLAG_BUSY | SS_SPI_MASTER_FLAG_TX_RX));
-					}
-
-					if (ctx->flags & SS_SPI_MASTER_FLAG_ERROR) {
-						ctx->flags = 0;
-						return E_SYS;
-					}
-					ctx->flags = 0;
+					ctx->flags = SS_SPI_MASTER_FLAG_BUSY;
+					DEV_SPI_XFER_INIT(spi_xfer);
+					io_spi_master_polling(dev_id, spi_xfer);
+					ctx->flags &= ~SS_SPI_MASTER_FLAG_BUSY;
 					spi_xfer = spi_xfer->next;
 				}
-
 			} else {
 				return E_NOSPT;
 			}

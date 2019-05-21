@@ -849,6 +849,49 @@ static void retrieve_rxfifo(spi_info_pt dev)
 
 }
 
+
+void io_spi_master_polling(uint32_t dev_id, DEV_SPI_TRANSFER *xfer)
+{
+    spi_info_pt dev = spi_handles[dev_id];
+    uint8_t tmp;
+    uint32_t tx_left, tx_free;
+    uint32_t rx_left, rx_avail;
+
+    REG_WRITE(SPIEN, 0);
+    REG_WRITE(SPIEN, 1); /* disable then enable SPI to reset the TX and RX FIFO */
+
+    while (xfer->tx_idx < xfer->tot_len || xfer->rx_idx < xfer->tot_len) {
+        tx_left = (xfer->tot_len - xfer->tx_idx);
+        tx_free = dev->fifo_depth - REG_READ(TXFLR);
+        if (tx_free > tx_left) {
+            tx_free = tx_left;
+        }
+        while (tx_free) {
+            if (xfer->tx_idx >= xfer->tx_ofs && xfer->tx_idx < xfer->tx_totlen) {
+                REG_WRITE(DR, xfer->tx_buf[xfer->tx_idx]);
+            } else {
+                REG_WRITE(DR, 0xFF);
+            }
+            xfer->tx_idx++;
+            tx_free--;
+        }
+        rx_left = (xfer->tot_len - xfer->rx_idx);
+        rx_avail = REG_READ(RXFLR);
+        if (rx_avail > rx_left) {
+            rx_avail = rx_left;
+        }
+        while (rx_avail) {
+            if (xfer->rx_idx >= xfer->rx_ofs && xfer->rx_idx < xfer->rx_totlen) {
+                xfer->rx_buf[xfer->rx_idx - xfer->rx_ofs] = (uint8_t)REG_READ(DR);
+            } else {
+                tmp = (uint8_t)REG_READ(DR);
+            }
+            xfer->rx_idx++;
+            rx_avail--;
+        }
+    }
+}
+
 #ifdef __Xdmac
 #define     SPI_MST_DMA_RX_CTRL            (0x80000017) /* am=b10, i=b0, dw/inc=b..., dtt=b10, r=b1, op=b11 */
 #define     SPI_MST_DMA_RX_END_CTRL        (0xa0000015) /* am=b10, i=b1, dw/inc=b..., dtt=b10, r=b1, op=b01 */
