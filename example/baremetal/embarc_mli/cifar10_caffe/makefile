@@ -12,15 +12,6 @@ APPL_DEFINES = -DUSE_APPL_MEM_CONFIG -DV2DSP_XY -DMODEL_BIT_DEPTH=8
 #
 EMBARC_ROOT = ../../../..
 
-# use -Hpurge option to optimize the code size
-ifeq ($(TOOLCHAIN), gnu)
-ADT_COPT += -ffunction-sections -fdata-sections
-ADT_LOPT += -Wl,--gc-sections
-else
-ADT_COPT += -Hpurge
-ADT_LOPT += -Hpurge
-endif
-
 LIB_SEL = embarc_mli
 MID_SEL = common
 
