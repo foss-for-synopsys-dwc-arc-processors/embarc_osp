@@ -35,6 +35,7 @@
 		.mli_rom ALIGN(8): {
 			_f_mli_rom = .;
 			"*libmli*.a*"(TYPE text)
+			"*libmli*.a*"(.text*)
 			"*libmli*.a*"(TYPE lit)
 			_e_mli_rom = .;
 		}
@@ -65,7 +66,7 @@
 	GROUP : {
 		.mli_model_p2 ALIGN(8): {
 			_f_mli_model_p2 = .;
-			*(.mli_model_p2)
+			*(.mli_model_p2 .mli_model_p2.*)
 			_e_mli_model_p2 = .;
 		}
 	} > REGION_MLI_MODEL_P2 AT > REGION_ROM
@@ -75,7 +76,7 @@
 	GROUP : {
 		.mli_model ALIGN(8): {
 			_f_mli_model = .;
-			*(.mli_model)
+			*(.mli_model .mli_model.*)
 			_e_mli_model = .;
 		}
 	} > REGION_MLI_MODEL AT > REGION_ROM
