@@ -1062,7 +1062,16 @@ static void dw_i2s_rx_read_left_hold_reg(DW_I2S_RX_CTRL *i2s_rx_ctrl_ptr, uint32
 	{
 		case DW_I2S_CHANNEL0:
 			*data = (uint32_t)DW_I2S_LRBR0_LRBR0(i2s_rx_regs_ptr->LRBR0);
-		/* Todo: add more channel support */
+			break;
+		case DW_I2S_CHANNEL1:
+			*data = (uint32_t)DW_I2S_LRBR0_LRBR0(i2s_rx_regs_ptr->LRBR1);
+			break;		
+		case DW_I2S_CHANNEL2:
+			*data = (uint32_t)DW_I2S_LRBR0_LRBR0(i2s_rx_regs_ptr->LRBR2);
+			break;
+		case DW_I2S_CHANNEL3:
+			*data = (uint32_t)DW_I2S_LRBR0_LRBR0(i2s_rx_regs_ptr->LRBR3);
+			break;
 		default:
 			break;
 	}
@@ -1078,7 +1087,16 @@ static void dw_i2s_rx_read_right_hold_reg(DW_I2S_RX_CTRL *i2s_rx_ctrl_ptr, uint3
 	{
 		case DW_I2S_CHANNEL0:
 			*data = (uint32_t)DW_I2S_RRBR0_RRBR0(i2s_rx_regs_ptr->RRBR0);
-		/* Todo: add more channel support */
+			break;
+		case DW_I2S_CHANNEL1:
+			*data = (uint32_t)DW_I2S_RRBR0_RRBR0(i2s_rx_regs_ptr->RRBR1);
+			break;                                                   
+		case DW_I2S_CHANNEL2:
+			*data = (uint32_t)DW_I2S_RRBR0_RRBR0(i2s_rx_regs_ptr->RRBR2);
+			break;
+		case DW_I2S_CHANNEL3:
+			*data = (uint32_t)DW_I2S_RRBR0_RRBR0(i2s_rx_regs_ptr->RRBR3);
+			break;
 		default:
 			break;
 	}
@@ -1290,6 +1308,9 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 	DW_I2S_RX_CTRL *i2s_rx_ctrl_ptr = (DW_I2S_RX_CTRL *)(i2s_info_ptr->i2s_ctrl);
 	DW_I2S_RX_REG *i2s_rx_regs_ptr = i2s_rx_ctrl_ptr->dw_i2s_regs;
 
+	DW_I2S_CONFIG *i2s_config_ptr = (DW_I2S_CONFIG *)(i2s_info_ptr->i2s_config);
+
+    uint32_t channels = i2s_config_ptr->channels;
 	uint32_t empty_trig = dw_i2s_rx_get_rxchdt(i2s_rx_regs_ptr,0),buf;
 	int32_t i = 0,buf_ofs = i2s_info_ptr->rx_buf.ofs*empty_trig;
 	int32_t count_pair;
@@ -1309,10 +1330,34 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 			for (i = 0;i < 16;i++)
 			{
 #ifdef DW_I2S_DATA_LENGTH_16
-				dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-				buff[2*(i+buf_ofs)] = (uint16_t)buf;
-				dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-				buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+				if (channels & DW_I2S_CHANNEL0_SUPPORTED)
+				{
+					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+					buff[2*(i+buf_ofs)] = (uint16_t)buf;
+					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+					buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+				}
+				if (channels & DW_I2S_CHANNEL1_SUPPORTED)
+				{
+					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+					buff[2*(i+buf_ofs)] = (uint16_t)buf;
+					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+					buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+				}
+				if (channels & DW_I2S_CHANNEL2_SUPPORTED)
+				{
+					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+					buff[2*(i+buf_ofs)] = (uint16_t)buf;
+					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+					buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+				}
+				if (channels & DW_I2S_CHANNEL3_SUPPORTED)
+				{
+					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+					buff[2*(i+buf_ofs)] = (uint16_t)buf;
+					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+					buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+				}
 #else
 				dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buff[2*(i+buf_ofs)], DW_I2S_CHANNEL0);
 				dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buff[1+2*(i+buf_ofs)], DW_I2S_CHANNEL0);
@@ -1326,10 +1371,34 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 				for (i = 0; i < empty_trig; i++)
 				{
 #ifdef DW_I2S_DATA_LENGTH_16
-					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-					buff[2*(i+buf_ofs)] = (uint16_t)buf;
-					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-					buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					if (channels & DW_I2S_CHANNEL0_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+						buff[2*(i+buf_ofs)] = (uint16_t)buf;
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+						buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}
+					if (channels & DW_I2S_CHANNEL1_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+						buff[2*(i+buf_ofs)] = (uint16_t)buf;
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+						buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}
+					if (channels & DW_I2S_CHANNEL2_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+						buff[2*(i+buf_ofs)] = (uint16_t)buf;
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+						buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}
+					if (channels & DW_I2S_CHANNEL3_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+						buff[2*(i+buf_ofs)] = (uint16_t)buf;
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+						buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}
 #else
 					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buff[2*(i+buf_ofs)], DW_I2S_CHANNEL0);
 					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buff[1+2*(i+buf_ofs)], DW_I2S_CHANNEL0);
@@ -1337,17 +1406,60 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 				}
 				i2s_info_ptr->rx_buf.ofs += 1;
 				i2s_info_ptr->rx_buf.len -= empty_trig * 2;
-				dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL0);
-				dw_i2s_rx_enable_interrupt(i2s_info_ptr,DW_I2S_CHANNEL0);
+            
+				if (channels & DW_I2S_CHANNEL0_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL0);
+					dw_i2s_rx_enable_interrupt(i2s_info_ptr,DW_I2S_CHANNEL0);
+				}   
+				if (channels & DW_I2S_CHANNEL1_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL1);
+					dw_i2s_rx_enable_interrupt(i2s_info_ptr,DW_I2S_CHANNEL1);
+				}   
+				if (channels & DW_I2S_CHANNEL2_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL2);
+					dw_i2s_rx_enable_interrupt(i2s_info_ptr,DW_I2S_CHANNEL2);
+				}   
+				if (channels & DW_I2S_CHANNEL3_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL3);
+					dw_i2s_rx_enable_interrupt(i2s_info_ptr,DW_I2S_CHANNEL3);
+				}   
 			} else {
 				count_pair = i2s_info_ptr->rx_buf.len>>1;
 				for (i = 0;i < count_pair;i++)
 				{
 #ifdef DW_I2S_DATA_LENGTH_16
-					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-					buff[2*(i+buf_ofs)] = (uint16_t)buf;
-					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-					buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					if (channels & DW_I2S_CHANNEL0_SUPPORTED)
+					{
+							dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+							buff[2*(i+buf_ofs)] = (uint16_t)buf;
+							dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+							buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}   
+					if (channels & DW_I2S_CHANNEL1_SUPPORTED)
+					{
+							dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+							buff[2*(i+buf_ofs)] = (uint16_t)buf;
+							dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+							buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}   
+					if (channels & DW_I2S_CHANNEL2_SUPPORTED)
+					{
+							dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+							buff[2*(i+buf_ofs)] = (uint16_t)buf;
+							dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+							buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}   
+					if (channels & DW_I2S_CHANNEL3_SUPPORTED)
+					{
+							dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+							buff[2*(i+buf_ofs)] = (uint16_t)buf;
+							dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+							buff[1+2*(i+buf_ofs)] = (uint16_t)buf;
+					}   
 #else
 					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buff[2*(i+buf_ofs)], DW_I2S_CHANNEL0);
 					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buff[1+2*(i+buf_ofs)], DW_I2S_CHANNEL0);
@@ -1356,11 +1468,44 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 				/* if the length of remainning data is less than empty_trig*2,fill 0 */
 				for (i = count_pair;i < empty_trig;i++)
 				{
-					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+					if (channels & DW_I2S_CHANNEL0_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
+					}   
+					if (channels & DW_I2S_CHANNEL1_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL1);
+					}   
+					if (channels & DW_I2S_CHANNEL2_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL2);
+					}   
+					if (channels & DW_I2S_CHANNEL3_SUPPORTED)
+					{
+						dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+						dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL3);
+					}   
 				}
 				i2s_info_ptr->rx_buf.len=0;
-				dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL0);
+				if (channels & DW_I2S_CHANNEL0_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL0);
+				}   
+				if (channels & DW_I2S_CHANNEL1_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL1);
+				}   
+				if (channels & DW_I2S_CHANNEL2_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL2);
+				}   
+				if (channels & DW_I2S_CHANNEL3_SUPPORTED)
+				{
+					dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL3);
+				}   
 			}
 			/*the ofs is used to judge the next number of data to send to fifos*/
 			//empty_trig = dw_i2s_tx_get_txchet(i2s_tx_regs_ptr, DW_I2S_CHANNEL0);
@@ -1743,6 +1888,8 @@ int32_t dw_i2s_control (DEV_I2S *i2s_obj, uint32_t ctrl_cmd, void *param)
 			break;
 		case I2S_CMD_ENA_DEV:
 			val32 = (uint32_t)param;
+			val16_0 = (uint16_t)((val32 & 0xffff0000) >> 16); // trigger level
+			val16_1 = (uint16_t)(val32 & 0x0000ffff); // channel number
 			if (DW_I2S_CHANNEL_CHECK(val16_1,channels))
 			{
 				dw_i2s_enable_device(i2s_info_ptr, val32);
@@ -1755,6 +1902,8 @@ int32_t dw_i2s_control (DEV_I2S *i2s_obj, uint32_t ctrl_cmd, void *param)
 			break;
 		case I2S_CMD_DIS_DEV:
 			val32 = (uint32_t)param;
+			val16_0 = (uint16_t)((val32 & 0xffff0000) >> 16); // trigger level
+			val16_1 = (uint16_t)(val32 & 0x0000ffff); // channel number
 			if (DW_I2S_CHANNEL_CHECK(val16_1,channels))
 			{
 				dw_i2s_disable_device(i2s_info_ptr, val32);
@@ -2171,11 +2320,6 @@ void dw_i2s_isr_rx(DEV_I2S *i2s_obj, void *ptr)
 	uint32_t channels = i2s_config_ptr->channels;
 	DW_I2S_CHECK_EXP((i2s_info_ptr->cur_state == I2S_FREE), E_CTX)
 	/* END OF ERROR CHECK */
-	DW_I2S_CHECK_EXP(((channels & DW_I2S_CHANNEL0_SUPPORTED) == 1) && \
-				((channels & DW_I2S_CHANNEL1_SUPPORTED) == 0) && \
-				((channels & DW_I2S_CHANNEL2_SUPPORTED) == 0) && \
-				((channels & DW_I2S_CHANNEL3_SUPPORTED) == 0), E_PAR);
-	/* End state Check */
 
 	i2s_info_ptr->cur_state = I2S_IN_RX;
 	dw_i2s_mst_int_rx(i2s_obj);

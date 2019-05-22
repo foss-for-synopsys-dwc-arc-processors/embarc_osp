@@ -187,6 +187,14 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 DEV_I2S_PTR i2s_get_dev(int32_t i2s_id)
 {
 	switch (i2s_id) {
+#if (USE_DW_I2S_0)
+		case DW_I2S_0_ID:
+#endif
+#if (USE_DW_I2S_1)
+		case DW_I2S_1_ID:
+#endif
+			return dw_i2s_get_dev(i2s_id);
+			break;
 #if (USE_DFSS_I2S_0)
 		case DFSS_I2S_0_ID:
 #endif

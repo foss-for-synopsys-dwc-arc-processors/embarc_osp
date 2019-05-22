@@ -212,28 +212,87 @@ typedef struct Pcm1865_Settings
    uint8_t  val;
 } Pcm1865_Settings_t;
 
+/**
+* TDM 
+*/
 const Pcm1865_Settings_t settings_tdm_master[] = 
 {
-   {PCM186X_CLK_CTRL,      0x91},    //Set as timing master on PCM1865 
-   {PCM186X_BCK_DIV,       0x00},    //Set BCLK Divider from SCK to 1 on PCM1865 96 kHz for LR CLK
-   {PCM186X_LRK_DIV,	      0xFF},    //Set BCK to LRCLK ratio to 256 
-   {PCM186X_GPIO1_0_CTRL,  0x05},    //Gpio0 = DOUT2, polarity normal, Gpio1 = gpio
-   {PCM186X_PCM_CFG,       0x03},    //set for TDM mode with 32 bit data slots
-   {PCM186X_TDM_TX_SEL,    0x01},    //Set for 4 channel TDM 
-   {PCM186X_TDM_TX_OFFSET, 0x01},    //Data offset from LRCLK rising edge. Set to 0x81 for the second four words, 0x01 for the first four
-}; 
+   //CLK
+   {PCM186X_CLK_CTRL,         0x91},   //reg 32, Set as timing master on PCM1865 (Xtal + Master + Enable)
+   {PCM186X_BCK_DIV,          0x00},   //reg 38, Set BCLK Divider from SCK to 1 on PCM1865 96 kHz for LR CLK
+   {PCM186X_LRK_DIV,	         0xFF},   //reg 39, Set BCK to LRCLK ratio to 256 
+   //GPIO
+   {PCM186X_GPIO1_0_CTRL,     0x05},   //reg 16, Gpio0 = DOUT2, polarity normal, Gpio1 = gpio
+   //TDM mode
+   {PCM186X_PCM_CFG,          0x03},   //reg 11, set for TDM mode with 32 bit data slots
+   {PCM186X_TDM_TX_SEL,       0x01},   //reg 12, Set for 4 channel TDM 
+   {PCM186X_TDM_TX_OFFSET,    0x01},   //reg 13, Data offset from LRCLK rising edge. Set to 0x81 for the second four words, 0x01 for the first four
+};
 
 #define  SETTINGS_TDM_MASTER_LENGTH    (sizeof(settings_tdm_master) / sizeof(settings_tdm_master[0]))
 
 const Pcm1865_Settings_t settings_tdm_slave[] = 
 {
-   {PCM186X_GPIO1_0_CTRL,  0x05},    //Gpio0 = DOUT2, polarity normal, Gpio1 = gpio
-   {PCM186X_PCM_CFG,       0x03},    //set for TDM mode with 32 bit data slots
-   {PCM186X_TDM_TX_SEL,    0X01},    //Set for 4 channel TDM 
-   {PCM186X_TDM_TX_OFFSET, 0x81},    //Data offset from LRCLK rising edge. Set to 0x81 for the second four words, 0x01 for the first four
-}; 
+   {PCM186X_GPIO1_0_CTRL,     0x05},   //reg 16, Gpio0 = DOUT2, polarity normal, Gpio1 = gpio
+   {PCM186X_PCM_CFG,          0x03},   //reg 11, set for TDM mode with 32 bit data slots
+   {PCM186X_TDM_TX_SEL,       0x01},   //reg 12, Set for 4 channel TDM 
+   {PCM186X_TDM_TX_OFFSET,    0x81},   //reg 13, Data offset from LRCLK rising edge. Set to 0x81 for the second four words, 0x01 for the first four
+};
 
 #define  SETTINGS_TDM_SLAVE_LENGTH     (sizeof(settings_tdm_slave) / sizeof(settings_tdm_slave[0]))
+
+/**
+* I2S
+*/
+const Pcm1865_Settings_t settings_i2s_master[] = 
+{
+//Example1: Bit/Ws clk
+   {PCM186X_LRK_DIV,          0x3F},   //reg 39. LRCK = BCLK/64
+   {PCM186X_BCK_DIV,          0x07},   //reg 38, BCLK = 1/8 XTal = 3.07 MHz, LRCK = BCLK/64 = ~48 KHz (value 64 = default of 0x27/39)
+
+//Example2:  Bit/Ws clk, but loosing: channel0 and 1
+//   {PCM186X_LRK_DIV,          0x3F},   //reg 39. LRCK = BCLK/64
+//   {PCM186X_BCK_DIV,	        0x0F},   //reg 38, BCLK = 1/16 XTal = 1.53 MHz, LRCK = BCLK/64 = ~24 KHz -> Losing channel0 and 1 !!!!!
+
+//Example3: Bit/Ws clk
+//   {PCM186X_LRK_DIV,          0x1F},   //reg 39. LRCK = BCLK/32
+//   {PCM186X_BCK_DIV,	        0x0F},   //reg 38, BCLK = 1/16 XTal = 1.53 MHz, LRCK = BCLK/32 = ~48 KHz
+
+   {PCM186X_PGA_VAL_CH1_L,    0x40},   //reg 1, PGA CH1_L=32 dB
+   {PCM186X_PGA_VAL_CH1_R,    0x40},   //reg 2, PGA CH1_R=32 dB
+   {PCM186X_PGA_VAL_CH2_L,    0x40},   //reg 3, PGA CH2_L=32 dB
+   {PCM186X_PGA_VAL_CH2_R,    0x40},   //reg 4, PGA CH2_R=32 dB
+   {PCM186X_ADC1_INPUT_SEL_L, 0x41},   //reg 6, CH1_L=normal
+   {PCM186X_ADC1_INPUT_SEL_R, 0x41},   //reg 7, CH1_R=normal
+   {PCM186X_ADC2_INPUT_SEL_L, 0x42},   //reg 8, CH2_L=normal
+   {PCM186X_ADC2_INPUT_SEL_R, 0x43},   //reg 9, CH2_R=normal
+   //GPIO
+   {PCM186X_GPIO1_0_CTRL,     0x05},   //reg 16, Gpio0 = DOUT2, polarity normal, Gpio1 = gpio
+   //I2S mode
+   {PCM186X_PCM_CFG,          0x4C},   //reg 11, set FMT=I2S, 16bit
+   //Enable
+   {PCM186X_CLK_CTRL,         0x91},   //reg 32, Set as timing master on PCM1865 (Xtal, Master, Enable)
+}; 
+
+#define  SETTINGS_I2S_MASTER_LENGTH    (sizeof(settings_i2s_master) / sizeof(settings_i2s_master[0]))
+
+const Pcm1865_Settings_t settings_i2s_slave[] = 
+{
+   {PCM186X_PGA_VAL_CH1_L,    0x40},   //reg 1, PGA CH1_L=32 dB
+   {PCM186X_PGA_VAL_CH1_R,    0x40},   //reg 2, PGA CH1_R=32 dB
+   {PCM186X_PGA_VAL_CH2_L,    0x40},   //reg 3, PGA CH2_L=32 dB
+   {PCM186X_PGA_VAL_CH2_R,    0x40},   //reg 4, PGA CH2_R=32 dB
+   {PCM186X_ADC1_INPUT_SEL_L, 0x41},   //reg 6, CH1_L
+   {PCM186X_ADC1_INPUT_SEL_R, 0x41},   //reg 7, CH1_R
+   {PCM186X_ADC2_INPUT_SEL_L, 0x42},   //reg 8, CH2_L
+   {PCM186X_ADC2_INPUT_SEL_R, 0x43},   //reg 9, CH2_R
+   //GPIO
+   {PCM186X_GPIO1_0_CTRL,     0x05},   //reg 16, Gpio0 = DOUT2, polarity normal, Gpio1 = gpio
+   //I2S mode
+   {PCM186X_PCM_CFG,          0x4C},   //reg 11, set FMT=I2S, 16bit 
+}; 
+
+#define  SETTINGS_I2S_SLAVE_LENGTH     (sizeof(settings_i2s_slave) / sizeof(settings_i2s_slave[0]))
 
 /**
 * Locals
@@ -332,6 +391,16 @@ int pcm1865_init (Pcm1865_Device_t id, int config)
       case PCM1865_CONFIG_TDM_SLAVE:
          ptr      = (Pcm1865_Settings_t *)settings_tdm_slave;
          length   = SETTINGS_TDM_SLAVE_LENGTH; 
+         break;
+
+      case PCM1865_CONFIG_I2S_MASTER:
+         ptr      = (Pcm1865_Settings_t *)settings_i2s_master;
+         length   = SETTINGS_I2S_MASTER_LENGTH; 
+         break;
+
+      case PCM1865_CONFIG_I2S_SLAVE:
+         ptr      = (Pcm1865_Settings_t *)settings_i2s_slave;
+         length   = SETTINGS_I2S_SLAVE_LENGTH; 
          break;
 
       default:

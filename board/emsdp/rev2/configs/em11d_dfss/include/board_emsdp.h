@@ -57,6 +57,7 @@
 #define EMSDP_TIMERS1_BASE                                (0xF0007000U)
 #define EMSDP_SPI_BASE                                    (0xF0008000U)
 #define EMSDP_UART_BASE                                   (0xF0009000U)
+#define EMSDP_I2S_BASE                                    (0xF000A000U)
 #define EMSDP_SDIO_BASE                                   (0xF0010000U)
 #define EMSDP_FLASH_BASE                                  (0xF1000000U)
 #define EMSDP_EBI_BASE                                    (0xF2000000U)
@@ -102,7 +103,7 @@
 #define EMSDP_TIMER1_EXCP                                    (17)
 
 #define EMSDP_MAX_NUM_EXCP                                   (24)
-#define EMSDP_MAX_NUM_ISR                                    (80)
+#define EMSDP_MAX_NUM_ISR                                    (88)
 
 
 //EMSDP Peripheral Subsystem Interrupt assignments
@@ -136,6 +137,14 @@
 #define EMSDP_REDPINE_HOST_WAKEUP                             (110)
 #define EMSDP_NIST_TRNG_INTR                                  (111)
 
+#define EMSDP_I2S_RX_DA0_INTR                                 (112)
+#define EMSDP_I2S_RX_DA1_INTR                                 (113)
+#define EMSDP_I2S_RX_DA2_INTR                                 (114)
+#define EMSDP_I2S_RX_DA3_INTR                                 (115)
+#define EMSDP_I2S_RX_OR0_INTR                                 (116)
+#define EMSDP_I2S_RX_OR1_INTR                                 (117)
+#define EMSDP_I2S_RX_OR2_INTR                                 (118)
+#define EMSDP_I2S_RX_OR3_INTR                                 (119)
 
 //EMSDP Peripheral Subsystem DMA assignments
 #define UART_DMA_TX                                           (9)
@@ -144,5 +153,5 @@
 #define REDPINE_SPI_DMA_RX                                    (12)
 #define FLASH_SPI_DMA_TX                                      (13)
 #define FLASH_SPI_DMA_RX                                      (14)
-
+#define I2S_DMA_RX                                            (13) 
 #endif //__BOARD_EMSDP_H__

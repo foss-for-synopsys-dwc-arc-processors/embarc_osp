@@ -38,6 +38,7 @@
 #include "drivers/ip/designware/gpio/dw_gpio_obj.h"
 #include "drivers/ip/designware/sdio/dw_sdio_obj.h"
 #include "drivers/ip/designware/trng/dw_trng_obj.h"
+#include "drivers/ip/designware/i2s/dw_i2s_obj.h"
 #include "drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h"
 #include "drivers/ip/subsystem/spi/dfss_spi_obj.h"
 #include "drivers/ip/subsystem/gpio/dfss_gpio_obj.h"

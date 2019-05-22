@@ -4,11 +4,13 @@
 #include "embARC_debug.h"
 #include "emsdp/drivers/mux/mux.h"
 #include "pcm1865.h"
+#include "dw_i2s.h"
 
 //For reading key
 static   DEV_UART_PTR            uart_console;
 static   DEV_PWM_TIMER_PTR       pwm_timer;
 static   DEV_GPIO_PTR            gpio;
+static   DEV_I2S_PTR             i2s;
 
 /**
 * Mux
@@ -49,7 +51,7 @@ static int set_pwmSignal (void)
 }
 
 /**
-* Interrupts from audio codec devices
+* Interrupts from audio devices
 */
 static int enable_int (Pcm1865_Device_t id)
 {
@@ -111,6 +113,69 @@ static int set_gpio (void)
    return (errcnt);
 }
 
+/**
+* I2S part
+*/
+typedef void (*DEV_I2S_HANDLER) (void *ptr);
+
+#define NUM_OF_I2S_SAMPLES       (1024*128)
+
+//Enable not all channels only channel3-ISR is connected to core
+#define I2S_CHANNEL              (DW_I2S_CHANNEL3)
+
+#ifdef DW_I2S_DATA_LENGTH_16
+   static uint16_t         i2s_sample_buffer[NUM_OF_I2S_SAMPLES];
+#else
+   static uint32_t         i2s_sample_buffer[NUM_OF_I2S_SAMPLES];
+#endif
+static DW_I2S_BUFFER       i2s_dev_buffer;
+
+//Handler
+volatile uint32_t i2s_hdlr_cnt = 0;
+
+////////////////////////////////////////////////////////////////////////////////
+//REMARK !!!!!
+//I2S Interrupt is blocking the while (1) loop !!!!!!!!!!!!!!!
+////////////////////////////////////////////////////////////////////////////////
+
+static DEV_I2S_HANDLER i2s_hdlr (void)
+{
+//   EMBARC_PRINTF("@@ I2S_hdlr() @@\n\r");
+   i2s_hdlr_cnt++;
+   
+   return (0);   
+}
+
+static int set_i2s (void)
+{
+   int errcnt = 0;
+
+#ifdef DW_I2S_DATA_LENGTH_16
+   i2s_dev_buffer.buf = (uint16_t *)&i2s_sample_buffer[0];
+#else   
+   i2s_dev_buffer.buf = (uint32_t *)&i2s_sample_buffer[0];
+#endif   
+   i2s_dev_buffer.ofs = 0;
+   i2s_dev_buffer.len = NUM_OF_I2S_SAMPLES;
+
+   i2s = i2s_get_dev(DW_I2S_0_ID);   
+	errcnt += i2s->i2s_open(DEV_SLAVE_MODE, I2S_DEVICE_RECEIVER);
+	errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT, CONV2VOID(I2S_CHANNEL));  //Install int
+	errcnt += i2s->i2s_control(I2S_CMD_SET_RXCB, &i2s_hdlr);                //Install handler
+   errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT_BUF, &i2s_dev_buffer);     //Install buffers
+
+   return (errcnt);
+}
+
+static int enable_i2s (void)
+{
+   int errcnt = 0;
+
+	errcnt += i2s->i2s_control(I2S_CMD_ENA_DEV, CONV2VOID(I2S_CHANNEL));    //Start channel0 (0) / channel3 (3)
+   
+   return (errcnt);
+}
+
 static void show_help (void)
 {
    EMBARC_PRINTF("==== Help ====\n\r");
@@ -120,6 +185,7 @@ static void show_help (void)
    EMBARC_PRINTF("press 4: Show content master PCM page253\n\r");
    EMBARC_PRINTF("press 5: Show content master PCM Vram\n\r");
    EMBARC_PRINTF("press r: Reset master & slave PCM\n\r");
+   EMBARC_PRINTF("press n: Show number of interrupts received\n\r");
    EMBARC_PRINTF("press i: Init  master & slave PCM\n\r");
    EMBARC_PRINTF("press h: This help\n\r");
 }
@@ -133,7 +199,7 @@ int main(void)
    #error example only valid on emsdp board
 #endif
 
-	EMBARC_PRINTF("SILENSE add-on board access example\r\n");
+	EMBARC_PRINTF("Silense Access Test\r\n");
 
    //Program mux towards PCB
    if (set_arduinoMux() != 0)
@@ -153,7 +219,7 @@ int main(void)
       EMBARC_PRINTF(" Error, cannot open I2C bus for pcm\n\r");
    }
 
-   //Reset both audio codec devices
+   //Reset both audio devices
    if (pcm1865_reset (Pcm1865_Device_Master) != 0)
    {
       EMBARC_PRINTF("Error, cannot reset master pcm device\n\r");
@@ -164,17 +230,23 @@ int main(void)
    }
    board_delay_ms(100, 1);
 
-   //Init both audio codec devices
-   if (pcm1865_init (Pcm1865_Device_Master, PCM1865_CONFIG_TDM_MASTER) != 0)
+   //Init I2S
+   if (set_i2s () != 0)
+   {
+      EMBARC_PRINTF("Error, cannot program i2s\n\r");
+   }
+
+   //Init both audio devices-> generates interrupts
+   if (pcm1865_init (Pcm1865_Device_Master, PCM1865_CONFIG_I2S_MASTER) != 0)
    {
       EMBARC_PRINTF("Error, cannot init pcm-1865 master\r\n");
    }
-   if (pcm1865_init (Pcm1865_Device_Slave, PCM1865_CONFIG_TDM_SLAVE) != 0)
+   if (pcm1865_init (Pcm1865_Device_Slave, PCM1865_CONFIG_I2S_SLAVE) != 0)
    {
       EMBARC_PRINTF("Error, cannot init pcm-1865 slave\r\n");
    }
    board_delay_ms(200, 1);
-   
+
    //Don't forget this, otherwise no ISR on D4 and D0
    enable_int(Pcm1865_Device_Master);
    enable_int(Pcm1865_Device_Slave);
@@ -185,7 +257,7 @@ int main(void)
       EMBARC_PRINTF("Error, cannot program gpio\n\r");
    }
 
-   //See if connection to audio codec devices is OK
+   //See if connection to audio devices is OK
    //(void)pcm1865_showVRam(Pcm1865_Device_Master);   
    //(void)pcm1865_showPage(Pcm1865_Device_Master, PCM186X_PAGE0);            
 
@@ -197,6 +269,12 @@ int main(void)
    //Final before loop
    show_help();
 
+   //Start I2S
+   if (enable_i2s() != 0)
+   {
+      EMBARC_PRINTF("Error, cannot enable i2s\n\r");
+   }
+   
    while (1)
    {
       uint32_t value;
@@ -261,11 +339,11 @@ int main(void)
 
             case 'i':
                EMBARC_PRINTF("Init\n\r");
-               if (pcm1865_init (Pcm1865_Device_Master, PCM1865_CONFIG_TDM_MASTER) != 0)
+               if (pcm1865_init (Pcm1865_Device_Master, PCM1865_CONFIG_I2S_MASTER) != 0)
                {
                   EMBARC_PRINTF("Error, cannot init pcm-1865 master\r\n");
                }
-               if (pcm1865_init (Pcm1865_Device_Slave, PCM1865_CONFIG_TDM_SLAVE) != 0)
+               if (pcm1865_init (Pcm1865_Device_Slave, PCM1865_CONFIG_I2S_SLAVE) != 0)
                {
                   EMBARC_PRINTF("Error, cannot init pcm-1865 slave\r\n");
                }
@@ -275,6 +353,10 @@ int main(void)
                //Don't forget this, otherwise no ISR
                enable_int(Pcm1865_Device_Master);
                enable_int(Pcm1865_Device_Slave);
+               break;
+
+            case 'n':
+               EMBARC_PRINTF("Num of I2S int: %d\r\n", i2s_hdlr_cnt);
                break;
 
             case 'h':

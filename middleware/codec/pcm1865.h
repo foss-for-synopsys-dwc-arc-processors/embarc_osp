@@ -185,6 +185,8 @@ typedef enum
 */
 #define PCM1865_CONFIG_TDM_MASTER         (0)
 #define PCM1865_CONFIG_TDM_SLAVE          (1)
+#define PCM1865_CONFIG_I2S_MASTER         (2)
+#define PCM1865_CONFIG_I2S_SLAVE          (3)
 
 extern int  pcm1865_initI2c               (void);
 
@@ -199,6 +201,7 @@ extern int  pcm1865_readRamAddr           (Pcm1865_Device_t id, Pcm1865_VirtualR
 extern int  pcm1865_showPage              (Pcm1865_Device_t id, int page);
 
 extern int  pcm1865_showVRam              (Pcm1865_Device_t id);
+
 
 #endif
 

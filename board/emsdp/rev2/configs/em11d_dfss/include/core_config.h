@@ -257,7 +257,7 @@
 	#define	core_config_mpu	1
 	#define	core_config_mpu_regions	16
 	#define	core_config_interrupts_present	1
-	#define	core_config_interrupts_number	96
+	#define	core_config_interrupts_number	104
 	#define	core_config_interrupts_priorities	4
 	#define	core_config_interrupts_externals	77
 	#define	core_config_interrupts	96
