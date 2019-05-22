@@ -78,9 +78,6 @@
 #define EMSK_SDCARD_SPI_0_FREQ		BOARD_SPI_FREQ
 #define EMSK_SDCARD_SPI_0_CLKMODE	SPI_CLK_MODE_0
 
-#define EMSK_SDCARD_SPI_0_CPULOCK_ENABLE
-
-
 static int32_t sdcard_spi_card_is_writeprotect(void)
 {
 	return 0;

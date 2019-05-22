@@ -35,6 +35,7 @@
 
 
 #include "ioctl.h"
+#include "ip/ip_hal/inc/dev_spi.h"
 
 
 /* SPI control commands */
@@ -117,5 +118,6 @@ extern void io_spi_master_write(uint32_t dev_id, uint8_t * data,
 
 extern void io_spi_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
 
+extern void io_spi_master_polling(uint32_t dev_id, DEV_SPI_TRANSFER *xfer);
 
 #endif              /* SPI_MASTER_H_ */

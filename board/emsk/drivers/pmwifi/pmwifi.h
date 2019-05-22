@@ -45,18 +45,8 @@
 #include "dev_wnic.h"
 
 #define EMSK_PMWIFI_0_ID		0
-#define EMSK_SLIPWIFI_0_ID		1
 
-#ifdef  USE_SLIP
-#define USE_EMSK_PMWIFI_0		0
-#define USE_EMSK_SLIPWIFI_0		1
-#else
 #define USE_EMSK_PMWIFI_0		1
-#define USE_EMSK_SLIPWIFI_0		0
-#endif
-
-/* configurations for RW009 */
-#define RW009_SPI_CPULOCK_ENABLE
 
 #define EMSK_PMWIFI_0_MAC_ADDR0		(0x00)
 #define EMSK_PMWIFI_0_MAC_ADDR1		(0x1e)

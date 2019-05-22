@@ -301,7 +301,6 @@ static int32_t pmwifi_0_spi_cs(int32_t cs)
 	DEV_SPI *pmwifi_spi_ptr;
 	uint32_t cs_line = IOTDK_PMWIFI_0_SPI_LINE;
 
-
 	pmwifi_spi_ptr = spi_get_dev(IOTDK_PMWIFI_0_SPI_ID);
 	PMWIFI_CHECK_EXP(pmwifi_spi_ptr != NULL, E_OBJ);
 
@@ -567,7 +566,7 @@ WF_OPS_PTR get_wf_ops(void)
 	return &pmwifi_0_ops;
 }
 
-#else /* PMWIFI_RW009 */
+#else
 #error "no wifi module selected"
 #endif
 
