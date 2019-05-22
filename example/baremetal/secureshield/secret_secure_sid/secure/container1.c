@@ -55,7 +55,7 @@ uint8_t container1_secret[SECRET_LEN+1] = {'i', ' ','l', 'o', 'v', 'e', ' ', 'e'
 
 SECRET_CONTEXT container1_context;
 
-
+#ifndef BOARD_EMSDP
 static void timer1_interrupt1(void *p_exinf)
 {
 	uint32_t val;
@@ -64,7 +64,7 @@ static void timer1_interrupt1(void *p_exinf)
 	_arc_aux_write(AUX_TIMER1_CTRL, val);
 	//Asm("kflag 1");
 }
-
+#endif
 
 
 int32_t init_secret(void)
@@ -79,7 +79,7 @@ int32_t init_secret(void)
 		ctx->pwd = container1_pwd;
 		ctx->secret = container1_secret;
 
-
+#ifndef BOARD_EMSDP
 		_arc_aux_write(AUX_TIMER1_CTRL, 0);
 		_arc_aux_write(AUX_TIMER1_LIMIT, 5000);
 		_arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE|TIMER_CTRL_NH);
@@ -88,6 +88,7 @@ int32_t init_secret(void)
 		secure_int_handler_install(INTNO_TIMER1, timer1_interrupt1);
 		secure_int_pri_set(INTNO_TIMER1, INT_PRI_MIN);
 		secure_int_enable(INTNO_TIMER1);
+#endif
 	}
 
 	secure_int_sw_trigger(INTNO_SWI);

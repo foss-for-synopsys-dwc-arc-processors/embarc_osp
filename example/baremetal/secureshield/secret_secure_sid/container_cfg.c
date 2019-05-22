@@ -60,6 +60,14 @@ static CONTAINER_AC_TABLE g_main_container_act[] = {
 	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
 	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
 #endif
+
+#ifdef BOARD_EMSDP
+	{(void *)(EMSDP_CREG_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
+	{(void *)(EMSDP_DBG_UART_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
+	{(void *)(EMSDP_GPIO_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
+	{default_interrupt_handler, EMSDP_DBG_UART_INTR, SECURESHIELD_AC_IRQ},
+#endif
+
 	{soft_interrupt1, INTNO_SWI, SECURESHIELD_AC_IRQ},
 	{default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ}
 };
