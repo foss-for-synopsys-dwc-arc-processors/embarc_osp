@@ -1353,12 +1353,6 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buff[1+2*(i+buf_ofs)], DW_I2S_CHANNEL0);
 #endif
 				}
-				/* if the length of remainning data is less than empty_trig*2,fill 0 */
-				for (i = count_pair;i < empty_trig;i++)
-				{
-					dw_i2s_rx_read_left_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-					dw_i2s_rx_read_right_hold_reg(i2s_rx_ctrl_ptr, &buf, DW_I2S_CHANNEL0);
-				}
 				i2s_info_ptr->rx_buf.len=0;
 				dw_i2s_rx_clear_overrun_interrupt(i2s_rx_regs_ptr, DW_I2S_CHANNEL0);
 			}

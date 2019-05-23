@@ -317,6 +317,13 @@ typedef enum iic_slave_state {
  * - Return value explanation :
  */
 #define IIC_CMD_GET_RXAVAIL			DEV_SET_IIC_SYSCMD(17)
+/**
+ * Set the required IRQ priority level
+ * - Param type : int32_t 
+ * - Param usage : 
+ * - Return value explanation :
+ */
+#define IIC_CMD_SET_IRQ_PRIO		DEV_SET_IIC_SYSCMD(18)
 
 /* ++++ Master only commands for IIC Device ++++ */
 /**

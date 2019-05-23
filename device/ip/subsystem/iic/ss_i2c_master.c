@@ -140,6 +140,13 @@ Inline uint32_t ss_iic_master_get_rxavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 	return (int32_t)flr;
 }
 
+/* set IRQ priority */
+Inline void ss_iic_set_irq_priority(uint32_t vector, uint32_t priority)
+{
+	_arc_aux_write(0x40b, vector); 		/*IRQ_SELECT*/  
+	_arc_aux_write(0x206, priority); 	/*IRQ_LEVEL*/   
+}
+
 int32_t ss_iic_master_close(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
 	int32_t ret = E_OK;
@@ -254,6 +261,13 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 			break;
 		case IIC_CMD_SET_RXINT_BUF:
 			ercd = E_NOSPT;
+			break;
+		case IIC_CMD_SET_IRQ_PRIO:
+			val32 = (uint32_t)param;
+			ss_iic_set_irq_priority(ctx->int_err, val32);
+			ss_iic_set_irq_priority(ctx->int_rx_avail, val32);
+			ss_iic_set_irq_priority(ctx->int_tx_req, val32);
+			ss_iic_set_irq_priority(ctx->int_stop_det, val32);
 			break;
 		case IIC_CMD_MST_SET_SPEED_MODE:
 			val32 = (uint32_t)param;
