@@ -158,10 +158,10 @@ static int set_i2s (void)
    i2s_dev_buffer.ofs = 0;
    i2s_dev_buffer.len = NUM_OF_I2S_SAMPLES;
 
-   i2s = i2s_get_dev(DW_I2S_0_ID);   
-	errcnt += i2s->i2s_open(DEV_SLAVE_MODE, I2S_DEVICE_RECEIVER);
-	errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT, CONV2VOID(I2S_CHANNEL));  //Install int
-	errcnt += i2s->i2s_control(I2S_CMD_SET_RXCB, &i2s_hdlr);                //Install handler
+   i2s = i2s_get_dev(DW_I2S_RX_ID);   
+   errcnt += i2s->i2s_open(DEV_SLAVE_MODE, I2S_DEVICE_RECEIVER);
+   errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT, CONV2VOID(I2S_CHANNEL));  //Install int
+   errcnt += i2s->i2s_control(I2S_CMD_SET_RXCB, &i2s_hdlr);                //Install handler
    errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT_BUF, &i2s_dev_buffer);     //Install buffers
 
    return (errcnt);

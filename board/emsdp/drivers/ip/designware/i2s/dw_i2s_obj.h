@@ -32,30 +32,14 @@
 
 #include "ip/ip_hal/inc/dev_i2s.h"
 
-//-- Old code: emsdp has two types of I2S: dw and dfss
-//#define DW_I2S_0_ID		0	/*!< I2S 0 ID macro */
-//#define DW_I2S_1_ID		1	/*!< I2S 1 ID macro */
-//-- New code
-#define DW_I2S_0_ID		2	/*!< I2S 0 ID macro */
-#define DW_I2S_1_ID		3	/*!< I2S 1 ID macro */
-//-- end of mod
-
-#define USE_DW_I2S_0		1	/*!< enable use DesignWare I2S 0 as TX */
-//-- Old code
-//#define USE_DW_I2S_1		1	/*!< enable use DesignWare I2S 1 as TX */
-//-- New code
-#define USE_DW_I2S_1		0	/*!< enable use DesignWare I2S 1 as TX */
-//-- end of mod
+#define DW_I2S_RX_ID		2	/*!< DW I2S RX ID macro, start at 2 since 0 and 1 have already been assigned */
+#define USE_DW_I2S_RX		1	/*!< enable use DesignWare I2S RX */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-//-- Old code
-//extern DEV_I2S_PTR i2s_get_dev(int32_t i2s_id);
-//-- New code: otherwise conflict with dfss drivers
 extern DEV_I2S_PTR dw_i2s_get_dev(int32_t i2s_id);
-//-- end of mod
 
 #ifdef __cplusplus
 }
