@@ -76,6 +76,73 @@ memory mappings for different supported versions of EMSK board are shown below:
 .. image:: /pic/emsk-23_peripheral_connections.jpg
     :alt: EMSK 2.3 - Peripheral Connections and Memory Mapping
 
+PMOD pins Definition
+********************
+
+The location of the pins on the PMOD connectors is shown:
+
+.. image:: /pic/iotdk_pinout_diagram_of_pmod.jpg
+    :alt: ARC EMSK Pinout Diagram of PMOD
+
+=====  ============  ============       =====  ============  ============
+POMD1(J1)                               POMD2(J2)
+---------------------------------       ---------------------------------
+Pins    CFG1         CFG2               Pin    CFG1          CFG2
+=====  ============  ============       =====  ============  ============
+1      Port C[8]     UART1_CTS          1      Port C[12]    run_req
+2      Port C[9]     UART1_TXD          2      Port C[13]    run_ack
+3      Port C[10]    UART1_RXD          3      Port C[14]    I2C0_SCL
+4      Port C[11]    UART1_RTS          4      Port C[15]    I2C0_SDA
+5      GND           GND                5      GND           GND
+6      3V3           3V3                6      3V3           3V3
+7      Port A[8]     SPI1_CS_N          7      Port A[12]    halt_req
+8      Port A[9]     SPI1_MOSI          8      Port A[13]    halt_ack
+9      Port A[10]    SPI1_MISO          9      Port A[14]    N.C
+10     Port A[11]    SPI1_SCLK          10     Port A[15]    N.C
+11     GND           GND                11     GND           GND
+12     3V3           3V3                12     3V3           3V3
+=====  ============  ============       =====  ============  ============
+
+=====  ============  ============       =====  ============  ============
+POMD3(J3)                               POMD4(J4)
+---------------------------------       ---------------------------------
+Pins    CFG1         CFG2               Pin    CFG1          CFG2
+=====  ============  ============       =====  ============  ============
+1      Port C[16]    N.C                1      Port C[20]    Port D[4]
+2      Port C[17]    N.C                2      Port C[21]    Port D[5]
+3      Port C[18]    N.C                3      Port C[22]    I2C1_SCL
+4      Port C[19]    N.C                4      Port C[23]    i2C1_SDA
+5      GND           GND                5      GND           GND
+6      3V3           3V3                6      3V3           3V3
+7      Port A[16]    N.C                7      Port A[20]    Port D[6]
+8      Port A[17]    N.C                8      Port A[21]    Port D[7]
+9      Port A[18]    N.C                9      Port A[22]    N.C
+10     Port A[19]    N.C                10     Port A[23]    N.C
+11     GND           GND                11     GND           GND
+12     3V3           3V3                12     3V3           3V3
+=====  ============  ============       =====  ============  ============
+
+=====  ============  ============       =====  ============  ============
+POMD5(J5)                               POMD6(J6)
+---------------------------------       ---------------------------------
+Pins    CFG1         CFG2               Pin    CFG1          CFG2
+=====  ============  ============       =====  ============  ============
+1      Port C[24]    SPI0_CS1_N         1      Port C[28]    SPI0_CS0_N
+2      Port C[25]    SPI0_MOSI          2      Port C[29]    SPI0_MOSI
+3      Port C[26]    SPI0_MISO          3      Port C[30]    SPI0_MISO
+4      Port C[27]    SPI0_SCLK          4      Port C[31]    SPI0_SCLK
+5      GND           GND                5      GND           GND
+6      3V3           3V3                6      3V3           3V3
+7      Port A[24]    UART2_CTS          7      Port A[28]    SPI0_CS1_N
+8      Port A[25]    UART2_TXD          8      Port A[29]    SPI0_CS2_N
+9      Port A[26]    UART2_RXD          9      Port A[30]    halt
+10     Port A[27]    UART2_RTS          10     Port A[31]    sleep
+11     GND           GND                11     GND           GND
+12     3V3           3V3                12     3V3           3V3
+=====  ============  ============       =====  ============  ============
+
+
+
 Peripherals interrupts
 **********************
 
