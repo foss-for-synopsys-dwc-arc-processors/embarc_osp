@@ -245,13 +245,13 @@ extern "C" {
 #define GEN_CONTAINER_ROM_SECTION(container_name, size, ...) \
 		.container_name.rom ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_text_##container_name = .;		\
-		*(.container_name.text)			\
+		*(.container_name.text .container_name.text.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_TEXT(__VA_ARGS__)		\
 		)()					\
 		_e_text_##container_name = .;		\
 		_f_rodata_##container_name = .; 	\
-		*(.container_name.rodata)		\
+		*(.container_name.rodata .container_name.rodata.*)	\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
@@ -261,7 +261,7 @@ extern "C" {
 #define GEN_CONTAINER_RAM_SECTION(container_name, size, ...) \
 		.container_name.ram.data ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_data_##container_name = .;		\
-		*(.container_name.data)			\
+		*(.container_name.data .container_name.data.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_DATA(__VA_ARGS__)		\
 		)()					\
@@ -269,7 +269,7 @@ extern "C" {
 		} > NORMAL_RAM AT > NORMAL_ROM		\
 		.container_name.ram.bss : {		\
 		_f_bss_##container_name = .;		\
-		*(.container_name.bss)			\
+		*(.container_name.bss .container_name.bss.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
@@ -280,13 +280,13 @@ extern "C" {
 #define GEN_SECURE_CONTAINER_ROM_SECTION(container_name, size, ...) \
 		.container_name.rom ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_text_##container_name = .;		\
-		*(.container_name.text)			\
+		*(.container_name.text .container_name.text.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_TEXT(__VA_ARGS__)		\
 		)()					\
 		_e_text_##container_name = .;		\
 		_f_rodata_##container_name = .; 	\
-		*(.container_name.rodata)		\
+		*(.container_name.rodata .container_name.rodata.*)	\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
@@ -296,7 +296,7 @@ extern "C" {
 #define GEN_SECURE_CONTAINER_RAM_SECTION(container_name, size, ...) \
 		.container_name.ram.data ALIGN(CONTAINER_SIZE_ALIGNMENT(size)) : { \
 		_f_data_##container_name = .;		\
-		*(.container_name.data)			\
+		*(.container_name.data .container_name.data.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_DATA(__VA_ARGS__)		\
 		)()					\
@@ -304,7 +304,7 @@ extern "C" {
 		} > SECURE_RAM AT > SECURE_ROM		\
 		.container_name.ram.bss : {		\
 		_f_bss_##container_name = .;		\
-		*(.container_name.bss)			\
+		*(.container_name.bss .container_name.bss.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
@@ -317,14 +317,14 @@ extern "C" {
 #define GEN_CONTAINER_ROM_SECTION(container_name, size, ...) \
 		.container_name.rom ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : { \
 		_f_text_##container_name = .;		\
-		*(.container_name.text)			\
+		*(.container_name.text .container_name.text.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_TEXT(__VA_ARGS__)		\
 		)()					\
 		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		_e_text_##container_name = .;		\
 		_f_rodata_##container_name = .; 	\
-		*(.container_name.rodata)		\
+		*(.container_name.rodata .container_name.rodata.*)	\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
@@ -334,7 +334,7 @@ extern "C" {
 #define GEN_CONTAINER_RAM_SECTION(container_name, size, ...) \
 		.container_name.ram.data ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : { \
 		_f_data_##container_name = .;		\
-		*(.container_name.data)			\
+		*(.container_name.data .container_name.data.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_DATA(__VA_ARGS__)		\
 		)()					\
@@ -342,7 +342,7 @@ extern "C" {
 		} > NORMAL_RAM AT > NORMAL_ROM		\
 		.container_name.ram.bss : {		\
 		_f_bss_##container_name = .;		\
-		*(.container_name.bss)			\
+		*(.container_name.bss .container_name.bss.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
@@ -353,14 +353,14 @@ extern "C" {
 #define GEN_SECURE_CONTAINER_ROM_SECTION(container_name, size, ...) \
 		.container_name.rom ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : { \
 		_f_text_##container_name = .;		\
-		*(.container_name.text)			\
+		*(.container_name.text .container_name.text.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_TEXT(__VA_ARGS__)		\
 		)()					\
 		. = ALIGN(CONTAINER_ADDRESS_ALIGNMENT); \
 		_e_text_##container_name = .;		\
 		_f_rodata_##container_name = .; 	\
-		*(.container_name.rodata)		\
+		*(.container_name.rodata .container_name.rodata.*)	\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_RODATA(__VA_ARGS__)	\
 		)()					\
@@ -370,7 +370,7 @@ extern "C" {
 #define GEN_SECURE_CONTAINER_RAM_SECTION(container_name, size, ...) \
 		.container_name.ram.data ALIGN(CONTAINER_ADDRESS_ALIGNMENT) : {	\
 		_f_data_##container_name = .;		\
-		*(.container_name.data)			\
+		*(.container_name.data .container_name.data.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_DATA(__VA_ARGS__)		\
 		)()					\
@@ -378,7 +378,7 @@ extern "C" {
 		} > SECURE_RAM AT > SECURE_ROM		\
 		.container_name.ram.bss : {		\
 		_f_bss_##container_name = .;		\
-		*(.container_name.bss)			\
+		*(.container_name.bss .container_name.bss.*)		\
 		IF_ELSE(HAS_ARGS(__VA_ARGS__))(		\
 			OBJS_BSS(__VA_ARGS__)		\
 		)()					\
