@@ -143,7 +143,7 @@ The location of the pins on the PMOD connectors is shown:
 =====  ============  ============       =====  ============  ============
 POMD_B                                  POMD_C
 ---------------------------------       ---------------------------------
-Pin    GPIO          SPI                Pin    GPIO          SPI
+Pin    GPIO          SPI                Pin    GPIO          UART
 =====  ============  ============       =====  ============  ============
 B1     gpio8b_0[0]   SPI1_CS_N[0]       C1     gpio8b_1[0]   UART1_CTS
 B2     gpio8b_0[1]   SPI1_MOSI          C2     gpio8b_1[1]   UART1_TXD
@@ -156,7 +156,7 @@ B8     gpio8b_0[5]   gpio8b_0[5]        C8     gpio8b_1[5]   gpio8b_1[5]
 B9     N.C           N.C                C9     N.C           N.C
 B10    N.C           N.C                C10    N.C           N.C
 B11    GND           GND                C11    GND           GND
-B12    3V3           GND                C12    3V3           GND
+B12    3V3           3V3                C12    3V3           3V3
 =====  ============  ============       =====  ============  ============
 
 To change the pinmux of IoTDK, e.g. (GPIO to SPI for PMOD_B), user can use the pinmux API in ``dev_pinmux.h``.
