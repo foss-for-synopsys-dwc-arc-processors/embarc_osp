@@ -238,6 +238,335 @@ memory mappings for different supported versions of EMSK board are shown below:<
 <img alt="EMSK 1.1 - Peripheral Connections and Memory Mapping" src="../_images/emsk-11_peripheral_connections.jpg" />
 <img alt="EMSK 2.3 - Peripheral Connections and Memory Mapping" src="../_images/emsk-23_peripheral_connections.jpg" />
 </div>
+<div class="section" id="pmod-pins-definition">
+<h3>PMOD pins Definition<a class="headerlink" href="#pmod-pins-definition" title="Permalink to this headline">¶</a></h3>
+<p>The location of the pins on the PMOD connectors is shown:</p>
+<img alt="ARC EMSK Pinout Diagram of PMOD" src="../_images/iotdk_pinout_diagram_of_pmod.jpg" />
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>POMD1(J1)</p></th>
+<th class="head" colspan="3"><p>POMD2(J2)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>Pins</p></th>
+<th class="head"><p>CFG1</p></th>
+<th class="head"><p>CFG2</p></th>
+<th class="head"><p>Pin</p></th>
+<th class="head"><p>CFG1</p></th>
+<th class="head"><p>CFG2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Port C[8]</p></td>
+<td><p>UART1_CTS</p></td>
+<td><p>1</p></td>
+<td><p>Port C[12]</p></td>
+<td><p>run_req</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Port C[9]</p></td>
+<td><p>UART1_TXD</p></td>
+<td><p>2</p></td>
+<td><p>Port C[13]</p></td>
+<td><p>run_ack</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Port C[10]</p></td>
+<td><p>UART1_RXD</p></td>
+<td><p>3</p></td>
+<td><p>Port C[14]</p></td>
+<td><p>I2C0_SCL</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Port C[11]</p></td>
+<td><p>UART1_RTS</p></td>
+<td><p>4</p></td>
+<td><p>Port C[15]</p></td>
+<td><p>I2C0_SDA</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>5</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>6</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Port A[8]</p></td>
+<td><p>SPI1_CS_N</p></td>
+<td><p>7</p></td>
+<td><p>Port A[12]</p></td>
+<td><p>halt_req</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Port A[9]</p></td>
+<td><p>SPI1_MOSI</p></td>
+<td><p>8</p></td>
+<td><p>Port A[13]</p></td>
+<td><p>halt_ack</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Port A[10]</p></td>
+<td><p>SPI1_MISO</p></td>
+<td><p>9</p></td>
+<td><p>Port A[14]</p></td>
+<td><p>N.C</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Port A[11]</p></td>
+<td><p>SPI1_SCLK</p></td>
+<td><p>10</p></td>
+<td><p>Port A[15]</p></td>
+<td><p>N.C</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>11</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>12</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>POMD3(J3)</p></th>
+<th class="head" colspan="3"><p>POMD4(J4)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>Pins</p></th>
+<th class="head"><p>CFG1</p></th>
+<th class="head"><p>CFG2</p></th>
+<th class="head"><p>Pin</p></th>
+<th class="head"><p>CFG1</p></th>
+<th class="head"><p>CFG2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Port C[16]</p></td>
+<td><p>N.C</p></td>
+<td><p>1</p></td>
+<td><p>Port C[20]</p></td>
+<td><p>Port D[4]</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Port C[17]</p></td>
+<td><p>N.C</p></td>
+<td><p>2</p></td>
+<td><p>Port C[21]</p></td>
+<td><p>Port D[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Port C[18]</p></td>
+<td><p>N.C</p></td>
+<td><p>3</p></td>
+<td><p>Port C[22]</p></td>
+<td><p>I2C1_SCL</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Port C[19]</p></td>
+<td><p>N.C</p></td>
+<td><p>4</p></td>
+<td><p>Port C[23]</p></td>
+<td><p>i2C1_SDA</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>5</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>6</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Port A[16]</p></td>
+<td><p>N.C</p></td>
+<td><p>7</p></td>
+<td><p>Port A[20]</p></td>
+<td><p>Port D[6]</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Port A[17]</p></td>
+<td><p>N.C</p></td>
+<td><p>8</p></td>
+<td><p>Port A[21]</p></td>
+<td><p>Port D[7]</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Port A[18]</p></td>
+<td><p>N.C</p></td>
+<td><p>9</p></td>
+<td><p>Port A[22]</p></td>
+<td><p>N.C</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Port A[19]</p></td>
+<td><p>N.C</p></td>
+<td><p>10</p></td>
+<td><p>Port A[23]</p></td>
+<td><p>N.C</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>11</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>12</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>POMD5(J5)</p></th>
+<th class="head" colspan="3"><p>POMD6(J6)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>Pins</p></th>
+<th class="head"><p>CFG1</p></th>
+<th class="head"><p>CFG2</p></th>
+<th class="head"><p>Pin</p></th>
+<th class="head"><p>CFG1</p></th>
+<th class="head"><p>CFG2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Port C[24]</p></td>
+<td><p>SPI0_CS1_N</p></td>
+<td><p>1</p></td>
+<td><p>Port C[28]</p></td>
+<td><p>SPI0_CS0_N</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Port C[25]</p></td>
+<td><p>SPI0_MOSI</p></td>
+<td><p>2</p></td>
+<td><p>Port C[29]</p></td>
+<td><p>SPI0_MOSI</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Port C[26]</p></td>
+<td><p>SPI0_MISO</p></td>
+<td><p>3</p></td>
+<td><p>Port C[30]</p></td>
+<td><p>SPI0_MISO</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Port C[27]</p></td>
+<td><p>SPI0_SCLK</p></td>
+<td><p>4</p></td>
+<td><p>Port C[31]</p></td>
+<td><p>SPI0_SCLK</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>5</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>6</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Port A[24]</p></td>
+<td><p>UART2_CTS</p></td>
+<td><p>7</p></td>
+<td><p>Port A[28]</p></td>
+<td><p>SPI0_CS1_N</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Port A[25]</p></td>
+<td><p>UART2_TXD</p></td>
+<td><p>8</p></td>
+<td><p>Port A[29]</p></td>
+<td><p>SPI0_CS2_N</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Port A[26]</p></td>
+<td><p>UART2_RXD</p></td>
+<td><p>9</p></td>
+<td><p>Port A[30]</p></td>
+<td><p>halt</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Port A[27]</p></td>
+<td><p>UART2_RTS</p></td>
+<td><p>10</p></td>
+<td><p>Port A[31]</p></td>
+<td><p>sleep</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>11</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+<td><p>12</p></td>
+<td><p>3V3</p></td>
+<td><p>3V3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="peripherals-interrupts">
 <h3>Peripherals interrupts<a class="headerlink" href="#peripherals-interrupts" title="Permalink to this headline">¶</a></h3>
 <p>Peripherals can generate interrupts to the CPU. The interrupt irq assignments
