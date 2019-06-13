@@ -1,6 +1,7 @@
 #ifndef _PCM1865_H_
 #define _PCM1865_H_
 
+
 #define I2C_DEVICE_ADDRESS_PCM1865_MST    (0x94 >> 1)
 #define I2C_DEVICE_ADDRESS_PCM1865_SLV    (0x96 >> 1)
 #define I2C_TIMEOUT                       (20000)
