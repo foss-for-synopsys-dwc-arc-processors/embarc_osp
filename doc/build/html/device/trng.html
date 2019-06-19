@@ -198,20 +198,20 @@ driver to implement. Here is a diagram for the trng interface.</p>
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="group">
 <dt>
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t"></span><em>group</em> <code class="descname">DEVICE_HAL_TRNG_DEVSTRUCT</code></dt>
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_TRNG_DEVSTRUCT</code></dt>
 <dd><p>Contains definitions of trng device interface structure. </p>
 <p>This structure will be used in user implemented code, which was called Device Driver Implement Layer for trng to use in implementation code. Application developer should use the TRNG API provided here to access to TRNG devices. BSP developer should follow the API definition to implement TRNG device drivers. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Defines</p>
 <dl class="macro">
 <dt id="c.DEV_TRNG_INFO_SET_EXTRA_OBJECT">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gab09960371ab78fc25db2c0c3271f2dfb"></span><code class="descname">DEV_TRNG_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span>trng_info_ptr, extra_info<span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gab09960371ab78fc25db2c0c3271f2dfb"></span><code class="sig-name descname">DEV_TRNG_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span>trng_info_ptr, extra_info<span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set extra information pointer of trng info. </p>
 </dd></dl>
 
 <dl class="macro">
 <dt id="c.DEV_TRNG_INFO_GET_EXTRA_OBJECT">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga3e1b027e9e19df14f940828cd2eacac3"></span><code class="descname">DEV_TRNG_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span>trng_info_ptr<span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga3e1b027e9e19df14f940828cd2eacac3"></span><code class="sig-name descname">DEV_TRNG_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span>trng_info_ptr<span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get extra information pointer of trng info. </p>
 </dd></dl>
 
@@ -220,24 +220,24 @@ driver to implement. Here is a diagram for the trng interface.</p>
 <p class="breathe-sectiondef-title rubric">Typedefs</p>
 <dl class="type">
 <dt id="_CPPv413DEV_TRNG_INFO">
-<span id="_CPPv313DEV_TRNG_INFO"></span><span id="_CPPv213DEV_TRNG_INFO"></span><span id="DEV_TRNG_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga9ad887f71481fc3ec6b4a913a6837d0a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info">dev_trng_info</a> <code class="descname">DEV_TRNG_INFO</code><a class="headerlink" href="#_CPPv413DEV_TRNG_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv313DEV_TRNG_INFO"></span><span id="_CPPv213DEV_TRNG_INFO"></span><span id="DEV_TRNG_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga9ad887f71481fc3ec6b4a913a6837d0a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info">dev_trng_info</a> <code class="sig-name descname">DEV_TRNG_INFO</code><a class="headerlink" href="#_CPPv413DEV_TRNG_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>TRNG information struct definition. </p>
 <p>informations about trng open count, working status, baudrate, trng registers and ctrl structure, trng dps format </p>
 </dd></dl>
 
 <dl class="type">
 <dt id="_CPPv417DEV_TRNG_INFO_PTR">
-<span id="_CPPv317DEV_TRNG_INFO_PTR"></span><span id="_CPPv217DEV_TRNG_INFO_PTR"></span><span id="DEV_TRNG_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga78deb4b193aea1614270c55d8d9ab5b3"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info">dev_trng_info</a> *<code class="descname">DEV_TRNG_INFO_PTR</code><a class="headerlink" href="#_CPPv417DEV_TRNG_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv317DEV_TRNG_INFO_PTR"></span><span id="_CPPv217DEV_TRNG_INFO_PTR"></span><span id="DEV_TRNG_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga78deb4b193aea1614270c55d8d9ab5b3"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info">dev_trng_info</a> *<code class="sig-name descname">DEV_TRNG_INFO_PTR</code><a class="headerlink" href="#_CPPv417DEV_TRNG_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="type">
 <dt id="_CPPv48DEV_TRNG">
-<span id="_CPPv38DEV_TRNG"></span><span id="_CPPv28DEV_TRNG"></span><span id="DEV_TRNG"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad76ef8e2bfd608b5fe53450e3e41cff4"></span><em class="property">typedef </em><em class="property">struct</em> dev_trng <code class="descname">DEV_TRNG</code><a class="headerlink" href="#_CPPv48DEV_TRNG" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv38DEV_TRNG"></span><span id="_CPPv28DEV_TRNG"></span><span id="DEV_TRNG"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad76ef8e2bfd608b5fe53450e3e41cff4"></span><em class="property">typedef </em><em class="property">struct</em> dev_trng <code class="sig-name descname">DEV_TRNG</code><a class="headerlink" href="#_CPPv48DEV_TRNG" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="type">
 <dt id="_CPPv412DEV_TRNG_PTR">
-<span id="_CPPv312DEV_TRNG_PTR"></span><span id="_CPPv212DEV_TRNG_PTR"></span><span id="DEV_TRNG_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga8899a6956a8a5e626e659bf674a8f9e6"></span><em class="property">typedef </em><em class="property">struct</em> dev_trng *<code class="descname">DEV_TRNG_PTR</code><a class="headerlink" href="#_CPPv412DEV_TRNG_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv312DEV_TRNG_PTR"></span><span id="_CPPv212DEV_TRNG_PTR"></span><span id="DEV_TRNG_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga8899a6956a8a5e626e659bf674a8f9e6"></span><em class="property">typedef </em><em class="property">struct</em> dev_trng *<code class="sig-name descname">DEV_TRNG_PTR</code><a class="headerlink" href="#_CPPv412DEV_TRNG_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -245,7 +245,7 @@ driver to implement. Here is a diagram for the trng interface.</p>
 <p class="breathe-sectiondef-title rubric">Variables</p>
 <dl class="member">
 <dt id="_CPPv4N8dev_trng9trng_openE">
-<span id="_CPPv3N8dev_trng9trng_openE"></span><span id="_CPPv2N8dev_trng9trng_openE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga04c9d8c088c7010eb15c98c903d84a46"></span>int32_t (*<code class="descname">trng_open</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng9trng_openE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8dev_trng9trng_openE"></span><span id="_CPPv2N8dev_trng9trng_openE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga04c9d8c088c7010eb15c98c903d84a46"></span>int32_t (*<code class="sig-name descname">trng_open</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng9trng_openE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Open trng device</p>
 <p>open trng device <dl class="simple">
 <dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -262,7 +262,7 @@ driver to implement. Here is a diagram for the trng interface.</p>
 
 <dl class="member">
 <dt id="_CPPv4N8dev_trng10trng_closeE">
-<span id="_CPPv3N8dev_trng10trng_closeE"></span><span id="_CPPv2N8dev_trng10trng_closeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gac0bedc6bb3255a9676ddb1acfdaec88f"></span>int32_t (*<code class="descname">trng_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng10trng_closeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8dev_trng10trng_closeE"></span><span id="_CPPv2N8dev_trng10trng_closeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gac0bedc6bb3255a9676ddb1acfdaec88f"></span>int32_t (*<code class="sig-name descname">trng_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng10trng_closeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Close trng device</p>
 <p>close an trng device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
 <dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -277,7 +277,7 @@ driver to implement. Here is a diagram for the trng interface.</p>
 
 <dl class="member">
 <dt id="_CPPv4N8dev_trng12trng_controlE">
-<span id="_CPPv3N8dev_trng12trng_controlE"></span><span id="_CPPv2N8dev_trng12trng_controlE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gaee9b6fb38769538998861284a95d38f1"></span>int32_t (*<code class="descname">trng_control</code>)<span class="sig-paren">(</span>uint32_t ch, uint32_t cmd, void *param2<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng12trng_controlE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8dev_trng12trng_controlE"></span><span id="_CPPv2N8dev_trng12trng_controlE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gaee9b6fb38769538998861284a95d38f1"></span>int32_t (*<code class="sig-name descname">trng_control</code>)<span class="sig-paren">(</span>uint32_t ch, uint32_t cmd, void *param2<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng12trng_controlE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Control trng device</p>
 <p>control an trng device [channel number: ch] by ctrl_cmd, with passed param. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -302,7 +302,7 @@ driver to implement. Here is a diagram for the trng interface.</p>
 
 <dl class="member">
 <dt id="_CPPv4N8dev_trng9trng_readE">
-<span id="_CPPv3N8dev_trng9trng_readE"></span><span id="_CPPv2N8dev_trng9trng_readE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad41050fa27c5915ae7ea6540f3e9aea2"></span>int32_t (*<code class="descname">trng_read</code>)<span class="sig-paren">(</span>uint32_t *data_buf<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng9trng_readE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8dev_trng9trng_readE"></span><span id="_CPPv2N8dev_trng9trng_readE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad41050fa27c5915ae7ea6540f3e9aea2"></span>int32_t (*<code class="sig-name descname">trng_read</code>)<span class="sig-paren">(</span>uint32_t *data_buf<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_trng9trng_readE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read data from trng device(blocked)</p>
 <p>read the configuration of trng. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -323,7 +323,7 @@ driver to implement. Here is a diagram for the trng interface.</p>
 </div>
 <dl class="class">
 <dt id="_CPPv413dev_trng_info">
-<span id="_CPPv313dev_trng_info"></span><span id="_CPPv213dev_trng_info"></span><span id="dev_trng_info"></span><span class="target" id="structdev__trng__info"></span><em class="property">struct </em><code class="descname">dev_trng_info</code><a class="headerlink" href="#_CPPv413dev_trng_info" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv313dev_trng_info"></span><span id="_CPPv213dev_trng_info"></span><span id="dev_trng_info"></span><span class="target" id="structdev__trng__info"></span><em class="property">struct </em><code class="sig-name descname">dev_trng_info</code><a class="headerlink" href="#_CPPv413dev_trng_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_trng.h&gt;</em><p>TRNG information struct definition. </p>
 <p>informations about trng open count, working status, baudrate, trng registers and ctrl structure, trng dps format </p>
 </dd></dl>
