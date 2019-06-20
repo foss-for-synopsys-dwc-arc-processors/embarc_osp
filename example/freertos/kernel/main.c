@@ -70,11 +70,15 @@ static void task2(void *par);
 static void trap_exception(void *p_excinf);
 static void soft_interrupt(void *p_excinf);
 
-#ifdef INTNO_I2C0
-	#define SWI_INTNO		INTNO_I2C0
-#else
-	#define SWI_INTNO		20
-#endif
+/*
+ * use the last external interrupt as software trigger interrupt
+ * pls do not conflict with other interrupt, e.g.
+ * INTNO 16 is for timer 0 (cannot be used)
+ * INTNO 17 is for timer 1 (cnnnot be used)
+ * the INTNO for console
+ */
+#define SWI_INTNO		(NUM_EXC_ALL - 1)
+
 
 #define TSK_PRIOR_HI		(configMAX_PRIORITIES-1)
 #define TSK_PRIOR_LO		(configMAX_PRIORITIES-2)
