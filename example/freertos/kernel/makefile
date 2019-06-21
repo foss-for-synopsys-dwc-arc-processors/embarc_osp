@@ -11,6 +11,10 @@ EMBARC_ROOT = ../../..
 
 MID_SEL = common
 
+# for benchmark purporse, no stack check, no code density, no dsp and fpu
+APPL_DEFINES = -DARC_FEATURE_STACK_CHECK=0 -DARC_FEATURE_FPU_DSP_CONTEXT=0 \
+		-DARC_FEATURE_CODE_DENSITY=0
+
 # application source dirs
 APPL_CSRC_DIR = .
 APPL_ASMSRC_DIR = .
