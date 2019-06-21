@@ -125,25 +125,25 @@
 <codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal">.macro<sp/>SAVE_R58_R59</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU)<sp/>||<sp/>defined(ARC_FEATURE_DSP)<sp/>||<sp/>ARC_FEATURE_MPU_OPTION_NUM<sp/>&gt;<sp/>6</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU<sp/>||<sp/>ARC_FEATURE_DSP<sp/>||<sp/>ARC_FEATURE_MPU_OPTION_NUM<sp/>&gt;<sp/>6</highlight></codeline>
 <codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSH<sp/>r58</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSH<sp/>r59</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="normal">.endm</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal">.macro<sp/>RESTORE_R58_R59</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU)<sp/>||<sp/>defined(ARC_FEATURE_DSP)<sp/>||<sp/>ARC_FEATURE_MPU_OPTION_NUM<sp/>&gt;<sp/>6</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU<sp/>||<sp/>ARC_FEATURE_DSP<sp/>||<sp/>ARC_FEATURE_MPU_OPTION_NUM<sp/>&gt;<sp/>6</highlight></codeline>
 <codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POP<sp/>r59</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POP<sp/>r58</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="103"><highlight class="preprocessor"></highlight><highlight class="normal">.endm</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal">.macro<sp/>SAVE_FPU_REGS</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU</highlight></codeline>
 <codeline lineno="107"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gab36ce671533833575ed9b8d87e32f6e0" kindref="member">AUX_FPU_CTRL</ref></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga7ce59403d2526a3364dbedb99cc42a8c" kindref="member">AUX_FPU_STATUS</ref></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU_DA)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU_DA</highlight></codeline>
 <codeline lineno="111"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga616f0313e67ae4c49b487f9ebc9b6e7a" kindref="member">AUX_FPU_DPFP1L</ref></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaabb2ae442702984e8eb6f5751060badc" kindref="member">AUX_FPU_DPFP1H</ref></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gae1bfd0d69364ba93e3baf416989d2cf1" kindref="member">AUX_FPU_DPFP2L</ref></highlight></codeline>
@@ -154,9 +154,9 @@
 <codeline lineno="118"><highlight class="preprocessor"></highlight><highlight class="normal">.endm</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal">.macro<sp/>RESTORE_FPU_REGS</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU</highlight></codeline>
 <codeline lineno="122"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU_DA)</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU_DA</highlight></codeline>
 <codeline lineno="124"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga6a2fd14c1b49ed57e3531640902873dc" kindref="member">AUX_FPU_DPFP2H</ref></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gae1bfd0d69364ba93e3baf416989d2cf1" kindref="member">AUX_FPU_DPFP2L</ref></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaabb2ae442702984e8eb6f5751060badc" kindref="member">AUX_FPU_DPFP1H</ref></highlight></codeline>
@@ -170,14 +170,14 @@
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal">.macro<sp/>SAVE_DSP_REGS</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_DSP)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_DSP</highlight></codeline>
 <codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_DSP_CTRL</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_ACC0_LO</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_ACC0_GLO</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_ACC0_HI</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_ACC0_GHI</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_DSP_COMPLEX)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_DSP_COMPLEX</highlight></codeline>
 <codeline lineno="145"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_DSP_BFLY0</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/>AUX_DSP_FFT_CTRL</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -186,9 +186,9 @@
 <codeline lineno="150"><highlight class="preprocessor"></highlight><highlight class="normal">.endm</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal">.macro<sp/>RESTORE_DSP_REGS</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_DSP)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_DSP</highlight></codeline>
 <codeline lineno="154"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_DSP_COMPLEX)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_DSP_COMPLEX</highlight></codeline>
 <codeline lineno="156"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/>AUX_DSP_FFT_CTRL</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/>AUX_DSP_BFLY0</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -291,9 +291,9 @@
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r13,<sp/>0</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU_DSP_CONTEXT</highlight></codeline>
 <codeline lineno="257"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU)</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU</highlight></codeline>
 <codeline lineno="259"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU_DA)</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU_DA</highlight></codeline>
 <codeline lineno="261"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga6a2fd14c1b49ed57e3531640902873dc" kindref="member">AUX_FPU_DPFP2H</ref>]</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gae1bfd0d69364ba93e3baf416989d2cf1" kindref="member">AUX_FPU_DPFP2L</ref>]</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaabb2ae442702984e8eb6f5751060badc" kindref="member">AUX_FPU_DPFP1H</ref>]</highlight></codeline>
@@ -303,9 +303,9 @@
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gab36ce671533833575ed9b8d87e32f6e0" kindref="member">AUX_FPU_CTRL</ref>]</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ARC_FEATURE_FPU<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="269"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_DSP)</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_DSP</highlight></codeline>
 <codeline lineno="271"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_DSP_COMPLEX)</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_DSP_COMPLEX</highlight></codeline>
 <codeline lineno="273"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[AUX_DSP_FFT_CTRL]</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[AUX_DSP_BFLY0]</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -316,7 +316,7 @@
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>0,<sp/>[AUX_DSP_CTRL]</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ARC_FEATURE_DSP<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="282"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="283"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_FPU)<sp/>||<sp/>defined(ARC_FEATURE_DSP)<sp/>||<sp/>ARC_FEATURE_MPU_OPTION_NUM<sp/>&gt;<sp/>6</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_FPU<sp/>||<sp/>ARC_FEATURE_DSP<sp/>||<sp/>ARC_FEATURE_MPU_OPTION_NUM<sp/>&gt;<sp/>6</highlight></codeline>
 <codeline lineno="284"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r59,<sp/>0</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r58,<sp/>0</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -468,7 +468,7 @@
 <codeline lineno="432"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="433"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>#ifndef<sp/>ARC_FEATURE_RGF_BANKED_REGS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="434"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="435"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="436"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="437"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="438"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE_LP_REGS</highlight></codeline>
@@ -476,7 +476,7 @@
 <codeline lineno="440"><highlight class="normal"></highlight></codeline>
 <codeline lineno="441"><highlight class="normal">.macro<sp/>RESTORE_FIQ_EXC_REGS</highlight></codeline>
 <codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RESTORE_LP_REGS</highlight></codeline>
-<codeline lineno="443"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="444"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RESTORE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="445"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="446"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
@@ -574,7 +574,7 @@
 <codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSH<sp/><sp/><sp/><sp/>r1</highlight></codeline>
 <codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSH<sp/><sp/><sp/><sp/>r0</highlight></codeline>
 <codeline lineno="540"><highlight class="normal"></highlight></codeline>
-<codeline lineno="541"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="542"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="543"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="544"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE_LP_REGS</highlight></codeline>
@@ -600,7 +600,7 @@
 <codeline lineno="564"><highlight class="normal"></highlight></codeline>
 <codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RESTORE_LP_REGS</highlight></codeline>
 <codeline lineno="566"><highlight class="normal"></highlight></codeline>
-<codeline lineno="567"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="568"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RESTORE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="569"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="570"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POP<sp/><sp/><sp/><sp/><sp/>r0</highlight></codeline>
@@ -630,7 +630,7 @@
 <codeline lineno="594"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>normal<sp/>version<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="595"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>exception<sp/>prologue,<sp/>create<sp/>the<sp/>same<sp/>frame<sp/>of<sp/>interrupt<sp/>manually<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="596"><highlight class="normal">.macro<sp/>EXCEPTION_PROLOGUE</highlight></codeline>
-<codeline lineno="597"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="597"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="598"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.as<sp/><sp/><sp/>r10,<sp/>[sp,<sp/>-11]<sp/><sp/></highlight><highlight class="comment">/*<sp/>save<sp/>r10<sp/>first,<sp/>free<sp/>up<sp/>a<sp/>register*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="599"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="600"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.as<sp/><sp/><sp/>r10,<sp/>[sp,<sp/>-8]</highlight></codeline>
@@ -638,7 +638,7 @@
 <codeline lineno="602"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga49fee03f8e12dad45b431f328fcad731" kindref="member">AUX_ERSTATUS</ref></highlight></codeline>
 <codeline lineno="603"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PUSHAX<sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gafbc5603e557abbf645d214d67f8b4966" kindref="member">AUX_ERRET</ref></highlight></codeline>
 <codeline lineno="604"><highlight class="normal"></highlight></codeline>
-<codeline lineno="605"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="605"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="606"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="607"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="608"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE_LP_REGS</highlight></codeline>
@@ -698,14 +698,14 @@
 <codeline lineno="662"><highlight class="normal"></highlight></codeline>
 <codeline lineno="663"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RESTORE_LP_REGS</highlight></codeline>
 <codeline lineno="664"><highlight class="normal"></highlight></codeline>
-<codeline lineno="665"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="665"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="666"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RESTORE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="667"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="668"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="669"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gafbc5603e557abbf645d214d67f8b4966" kindref="member">AUX_ERRET</ref></highlight></codeline>
 <codeline lineno="670"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>POPAX<sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga49fee03f8e12dad45b431f328fcad731" kindref="member">AUX_ERSTATUS</ref></highlight></codeline>
 <codeline lineno="671"><highlight class="normal"></highlight></codeline>
-<codeline lineno="672"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
+<codeline lineno="672"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_CODE_DENSITY</highlight></codeline>
 <codeline lineno="673"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.as<sp/><sp/><sp/>r10,<sp/>[sp,<sp/>-11]<sp/><sp/></highlight><highlight class="comment">/*<sp/>restore<sp/>r10<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="674"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
 <codeline lineno="675"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.as<sp/><sp/><sp/>r10,<sp/>[sp,<sp/>-8]</highlight></codeline>
