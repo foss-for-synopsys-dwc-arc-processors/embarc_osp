@@ -610,7 +610,9 @@ void secureshield_int_init(void)
 	ictrl.bits.save_blink = 1;
 	ictrl.bits.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
 	ictrl.bits.save_u_to_u = 0;		/* user context saved on kernel stack */
+#if ARC_FEATURE_CODE_DENSITY
 	ictrl.bits.save_idx_regs = 1;		/* JLI, LDI, EI */
+#endif
 
 #if SECURESHIELD_VERSION == 1
 	_arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)secureshield_exc_entry_table);

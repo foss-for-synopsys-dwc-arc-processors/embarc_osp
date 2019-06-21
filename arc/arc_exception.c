@@ -414,7 +414,10 @@ void exc_int_init(void)
 	ictrl.bits.save_blink = 1;
 	ictrl.bits.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
 	ictrl.bits.save_u_to_u = 0;		/* user ctxt saved on kernel stack */
+
+#if ARC_FEATURE_CODE_DENSITY
 	ictrl.bits.save_idx_regs = 1;		/* JLI, LDI, EI */
+#endif
 
 	status = arc_lock_save();
 	for (i = NUM_EXC_CPU; i < NUM_EXC_ALL; i++) {

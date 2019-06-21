@@ -77,7 +77,7 @@ typedef struct int_exc_frame {
 
 	uint32_t lp_end, lp_start, lp_count;
 
-#ifdef ARC_FEATURE_CODE_DENSITY
+#if ARC_FEATURE_CODE_DENSITY
 	uint32_t ei, ldi, jli;
 #endif
 
@@ -114,7 +114,7 @@ typedef struct int_exc_frame {
 
 	uint32_t lp_end, lp_start, lp_count;
 
-#ifdef ARC_FEATURE_CODE_DENSITY
+#if ARC_FEATURE_CODE_DENSITY
 	uint32_t ei, ldi, jli;
 #endif
 
@@ -125,7 +125,7 @@ typedef struct int_exc_frame {
 
 typedef struct dsp_ext_frame {
 	/*  todo xy memory support */
-#if defined(ARC_FEATURE_DSP_COMPLEX)
+#if ARC_FEATURE_DSP_COMPLEX
 	uint32_t dsp_fft_ctrl;
 	uint32_t dsp_bfly0;
 #endif
@@ -138,7 +138,7 @@ typedef struct dsp_ext_frame {
 } EMBARC_PACKED DSP_EXT_FRAME;
 
 typedef struct fpu_ext_frame {
-#if defined(ARC_FEATURE_FPU_DA)
+#if ARC_FEATURE_FPU_DA
 	uint32_t dpfp2h;
 	uint32_t dpfp2l;
 	uint32_t dpfp1h;
@@ -154,15 +154,15 @@ typedef struct callee_frame {
 
 #if ARC_FEATURE_FPU_DSP_CONTEXT
 
-#if defined(ARC_FEATURE_DSP)
+#if ARC_FEATURE_DSP
 	DSP_EXT_FRAME dsp_regs;
 #endif
 
-#if defined(ARC_FEATURE_FPU)
+#if ARC_FEATURE_FPU
 	FPU_EXT_FRAME fpu_ext_regs;
 #endif
 
-#if defined(ARC_FEATURE_DSP) || defined(ARC_FEATURE_FPU) || ARC_FEATURE_MPU_OPTION_NUM > 6
+#if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
 	/* accl and acch, common for mpy_option >6 and fpu_fma option */
 	uint32_t r59;
 	uint32_t r58;

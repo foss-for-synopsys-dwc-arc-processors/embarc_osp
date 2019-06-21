@@ -123,7 +123,9 @@
 /** Code density option, if enabled, ARC_FEATURE_CODE_DENSITY will be defined */
 #if !defined(ARC_FEATURE_CODE_DENSITY)
 #if defined(core_config_code_density) && core_config_code_density == 1
-#define ARC_FEATURE_CODE_DENSITY
+#define ARC_FEATURE_CODE_DENSITY	1
+#else
+#define ARC_FEATURE_CODE_DENSITY	0
 #endif
 #endif
 

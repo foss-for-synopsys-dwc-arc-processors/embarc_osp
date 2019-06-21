@@ -168,9 +168,9 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x01010101;	/* R1 */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) pvParameters;	/* R0 */	
+	*pxTopOfStack = ( StackType_t ) pvParameters;	/* R0 */
 
-#ifdef ARC_FEATURE_CODE_DENSITY
+#if ARC_FEATURE_CODE_DENSITY
 	/* code density related regs */
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x00000000;	/* JLI_BASE*/
@@ -192,7 +192,7 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x12121212;	/* R12 */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) &_f_sdata;	/* gp */	
+	*pxTopOfStack = ( StackType_t ) &_f_sdata;	/* gp */
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x00000000;	/* fp */
 	pxTopOfStack--;
@@ -233,20 +233,20 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 
 #if ARC_FEATURE_FPU_DSP_CONTEXT
 
-#if defined(ARC_FEATURE_DSP) || defined(ARC_FEATURE_FPU) || ARC_FEATURE_MPU_OPTION_NUM > 6
+#if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x58585858;	/* R58 */
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) 0x59595959;	/* R58 */
 #endif
 
-#if defined(ARC_FEATURE_FPU) 
+#if ARC_FEATURE_FPU
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_CTRL);	/* AUX_FPU_CTRL */
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_STATUS);	/* AUX_FPU_STATUS */
 
-#if defined(ARC_FEATURE_FPU_DA)
+#if ARC_FEATURE_FPU_DA
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP1L);	/* AUX_FPU_DPFP1L */
 	pxTopOfStack--;
@@ -259,7 +259,7 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 
 #endif /* ARC_FEATURE_FPU */
 
-#if defined(ARC_FEATURE_DSP)
+#if ARC_FEATURE_DSP
 	pxTopOfStack--;
 	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_CTRL);	/* AUX_DSP_CTRL */
 	pxTopOfStack--;
@@ -281,7 +281,7 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 #endif /* ARC_FEATURE_DSP */
 
 #endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
-	
+
 	pxTopOfStack--;
 	*pxTopOfStack = (StackType_t) portNO_CRITICAL_NESTING;
 
