@@ -303,7 +303,6 @@ irq_handler_1:
 	PUSH	blink
 
 	lr	r0, [AUX_IRQ_CAUSE]
-	sr	r0, [AUX_IRQ_SELECT]
 	mov	r1, exc_int_handler_table
 	ld.as	r2, [r1, r0]	/* r2 = exc_int_handler_table + irqno *4 */
 /* handle software triggered interrupt */
