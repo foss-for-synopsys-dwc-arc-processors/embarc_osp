@@ -42,10 +42,6 @@
 volatile uint64_t gl_loops_per_jiffy = 1;
 volatile uint32_t gl_count = 1;
 
-
-
-
-
 /**
  * \brief  check whether the specific timer present
  * \param[in] no timer number
@@ -54,6 +50,7 @@ volatile uint32_t gl_count = 1;
 int32_t timer_present(const uint32_t no)
 {
 	uint32_t bcr = _arc_aux_read(AUX_BCR_TIMERS);
+
 	switch (no) {
 		case TIMER_0:
 			bcr = (bcr >> 8) & 1;
@@ -82,10 +79,6 @@ int32_t timer_present(const uint32_t no)
  */
 int32_t timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
-	if (timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case TIMER_0:
 			_arc_aux_write(AUX_TIMER0_CTRL, 0);
@@ -117,10 +110,6 @@ int32_t timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
  */
 int32_t timer_stop(const uint32_t no)
 {
-	if (timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case TIMER_0 :
 			_arc_aux_write(AUX_TIMER0_CTRL, 0);
@@ -151,10 +140,6 @@ int32_t timer_stop(const uint32_t no)
  */
 int32_t timer_current(const uint32_t no, void *val)
 {
-	if (timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case TIMER_0 :
 			*((uint32_t *)val) = _arc_aux_read(AUX_TIMER0_CNT);
@@ -182,10 +167,6 @@ int32_t timer_int_clear(const uint32_t no)
 {
 	uint32_t val;
 
-	if (timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case TIMER_0 :
 			val = _arc_aux_read(AUX_TIMER0_CTRL);
@@ -209,9 +190,17 @@ int32_t timer_int_clear(const uint32_t no)
  */
 void timer_init(void)
 {
-	timer_stop(TIMER_0);
-	timer_stop(TIMER_1);
-	timer_stop(TIMER_RTC);
+	if (timer_present(TIMER_0)) {
+		timer_stop(TIMER_0);
+	}
+
+	if (timer_present(TIMER_1)) {
+		timer_stop(TIMER_1);
+	}
+
+	if (timer_present(TIMER_RTC)) {
+		timer_stop(TIMER_RTC);
+	}
 }
 
 
@@ -224,6 +213,7 @@ void timer_init(void)
 int32_t secure_timer_present(const uint32_t no)
 {
 	uint32_t bcr = _arc_aux_read(AUX_BCR_TIMERS);
+
 	switch (no) {
 		case SECURE_TIMER_0:
 			bcr = (bcr >> 11) & 1;
@@ -249,10 +239,6 @@ int32_t secure_timer_present(const uint32_t no)
  */
 int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
-	if (secure_timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case SECURE_TIMER_0:
 			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
@@ -281,10 +267,6 @@ int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_
  */
 int32_t secure_timer_stop(const uint32_t no)
 {
-	if (secure_timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case SECURE_TIMER_0 :
 			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
@@ -312,10 +294,6 @@ int32_t secure_timer_stop(const uint32_t no)
  */
 int32_t secure_timer_current(const uint32_t no, void *val)
 {
-	if (secure_timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case SECURE_TIMER_0 :
 			*((uint32_t *)val) = _arc_aux_read(AUX_SECURE_TIMER0_CNT);
@@ -340,10 +318,6 @@ int32_t secure_timer_int_clear(const uint32_t no)
 {
 	uint32_t val;
 
-	if (secure_timer_present(no) == 0) {
-		return -1;
-	}
-
 	switch (no) {
 		case SECURE_TIMER_0 :
 			val = _arc_aux_read(AUX_SECURE_TIMER0_CTRL);
@@ -367,8 +341,13 @@ int32_t secure_timer_int_clear(const uint32_t no)
  */
 void secure_timer_init(void)
 {
-	secure_timer_stop(SECURE_TIMER_0);
-	secure_timer_stop(SECURE_TIMER_1);
+	if (secure_timer_present(SECURE_TIMER_0)) {
+		secure_timer_stop(SECURE_TIMER_0);
+	}
+
+	if (secure_timer_present(SECURE_TIMER_1)) {
+		secure_timer_stop(SECURE_TIMER_1);
+	}
 }
 #endif /* ARC_FEATURE_SEC_TIMER1_PRESENT && ARC_FEATURE_SEC_TIMER0_PRESENT */
 
@@ -382,18 +361,18 @@ void arc_delay_us(uint32_t usecs)
 	__asm__ __volatile__(
 
 	"	.extern gl_loops_per_jiffy 		\n"
-	"	.extern gl_count 				\n"
-	"	cmp %0, 0						\n"
-	"	jeq	1f							\n"
-	"	ld %%r1, [gl_loops_per_jiffy] 	\n"
-	"	mpy %%r1, %%r1, %0				\n"
+	"	.extern gl_count 			\n"
+	"	cmp %0, 0				\n"
+	"	jeq	1f				\n"
+	"	ld %%r1, [gl_loops_per_jiffy]		\n"
+	"	mpy %%r1, %%r1, %0			\n"
 	"	ld %%r2, [gl_count] 			\n"
 	"	divu %%r1, %%r1, %%r2			\n"
-	"	.align 4						\n"
+	"	.align 4				\n"
 	"	mov %%lp_count, %%r1			\n"
-	"	lp  1f							\n"
-	"	nop								\n"
-	"1:									\n"
+	"	lp  1f					\n"
+	"	nop					\n"
+	"1:						\n"
 	:
 	: "r"(usecs)
 	: "lp_count", "r1", "r2");
@@ -454,4 +433,3 @@ uint64_t timer_calibrate_delay(uint32_t cpu_clock)
 
 	return loops_per_jiffy;
 }
-
