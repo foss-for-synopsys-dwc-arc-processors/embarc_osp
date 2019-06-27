@@ -135,11 +135,12 @@ static int sample_count = 0;
 /** performance timer initialization */
 static void perf_init(unsigned int id)
 {
-	if (timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
-		EMBARC_PRINTF("perf timer init failed\r\n");
-
+	if (timer_present(id) == 0) {
+		EMBARC_PRINTF("perf timer %d is not present\r\n", id);
 		while (1);
 	}
+
+	timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF);
 
 	perf_id = id;
 }
