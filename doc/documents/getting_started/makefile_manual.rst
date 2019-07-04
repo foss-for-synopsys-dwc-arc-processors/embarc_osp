@@ -110,7 +110,7 @@ The basic way of this command is to enter ``make cfg``, the makefile system will
 	"Debug Jtags (JTAG)             : usb opella"
 
 At supported Configurations, you can find different choices for your command, the uppercase words in parentheses are paramater names to be used in your command.
-For example, the command below will execute your command for an *EMSK* board with *arcem7d* core, toolchain would be *gnu* and JTAG connection is via *USB*.
+For example, the command below will execute your command for an *EMSK* board with *arcem7d* core, toolchain will be *gnu* and JTAG connection is via *USB*.
 
 .. code-block:: console
 
@@ -151,7 +151,7 @@ build
 
 This command will clean and build the project with selected paramaters.
 
-Here is a example using EMSK (version 1.1, arcem6 core), compiled with gnu.
+Here is an example using EMSK (version 1.1, arcem6 core), compiled with gnu.
 
 .. code-block:: console
 
@@ -164,7 +164,7 @@ gui
 
 Debug command, will first compile and link the project, then load the project with debugger and start debugging.
 
-Here is a example using EMSK (version 2.2, arcem9d core), compiled with Metaware and debug via usb connection.
+Here is an example using EMSK (version 2.2, arcem9d core), compiled with Metaware and debug via usb connection.
 
 .. code-block:: console
 
@@ -178,13 +178,13 @@ run
 When this command is used, makefile system will first compile and link the project.
 Then it will try to download the project to the board and start running it. If no target board is found, it will return error.
 
-Here is a example using IoTDK (version 1.0, arcem9d core), compiled with Metaware and debug via usb connection.
+Here is an example using IoTDK (version 1.0, arcem9d core), compiled with Metaware and debug via usb connection.
 
 .. code-block:: console
 
 	make BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw JTAG=usb run
 
-You may also use it wiout BD_VER and CUR_CORE options since they are default options.
+You may also use it without BD_VER and CUR_CORE options since they are default options.
 
 .. code-block:: console
 
@@ -207,9 +207,9 @@ This command will clean the directory, removing all object files of all boards.
 Useful Options
 ##############
 
-#. Boards (**BOARD**): Use this option to check config for different boards. Usually he default BOARD setting is EMSK.
-#. Core Configurations (**CUR_CORE**): shows available core choices.
-#. Build Toolchains (**TOOLCHAIN**):To choose from different toolchain.
-#. Debug Jtags (**JTAG**): In most case the micro-usb interface on board supports JTAG debugging. Ashling's Opella-XD-ARC is also support by some boards.
+#. Boards (**BOARD**): Use this option to check config for different boards. Usually the default BOARD setting is EMSK.
+#. Core Configurations (**CUR_CORE**): Shows available core choices.
+#. Build Toolchains (**TOOLCHAIN**):To choose from different toolchains.
+#. Debug Jtags (**JTAG**): In most case the micro-usb interface on board supports JTAG debugging. Ashling's Opella-XD-ARC is also supported by some boards.
 #. Board version (**BD_VER**): Often used by EMSK which has many versions.
 
