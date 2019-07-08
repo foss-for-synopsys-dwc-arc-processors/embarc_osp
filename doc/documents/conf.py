@@ -181,7 +181,12 @@ breathe_default_project = "embARC_osp"
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
 
-
+linkcheck_ignore = [
+    'http://www.huamaosoft.cn/bluetooth.asp?id=1',
+    'http://elm-chan.org/',
+    'http://elm-chan.org/fsw/ff/00index_e.html',
+    'http://elm-chan.org/fsw/strf/xprintf.html',
+]
 
 rst_epilog =  u"""
 .. |arc| replace:: DesignWare® ARC® processors
