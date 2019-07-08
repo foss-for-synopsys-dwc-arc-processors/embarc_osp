@@ -12,7 +12,7 @@ import argparse
 from xlsxwriter.workbook import Workbook
 from xlsxwriter.worksheet import Worksheet
 from xlsxwriter.worksheet import convert_cell_args
-from embarc_tools.download_manager import cd, delete_dir_files
+from embarc_tools.utils import cd, delete_dir_files
 from embarc_tools.osp import osp
 from embarc_tools.builder import build
 import collections
