@@ -19,7 +19,7 @@ The EMSK consists of a hardware platform and a software package, including
 pre-installed FPGA images of different configurations of the ARC EM Processor
 with peripherals.
 
-The development board is based on a Xilinx Spartan&reg;-6 LX45 FPGA. It
+The development board is based on a Xilinx Spartan-6 LX45 FPGA. It
 supports hardware extensions using six 2x6 connectors supporting a total of 48
 user I/O pins (plus power and ground pins) that can be used to connect
 components such as sensors, actuators, memories, displays, buttons, switches,
@@ -96,7 +96,7 @@ Required Hardware and Software
 To use embARC OSP applications on the IoTDK board, the following items are required
 
 * USB Cable
-* The USB cable provides power to the board (maximum 500 mA); however, if the board is to run
+* The USB cable provides power to the board (maximum 500 mA). However, if the board is to run
   standalone, the universal switching power adaptor (110-240V AC to 5V DC),
   can be used to power the board
 * :ref:`software_requirement`.

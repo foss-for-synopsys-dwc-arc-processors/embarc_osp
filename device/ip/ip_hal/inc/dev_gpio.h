@@ -32,7 +32,7 @@
  * \defgroup	DEVICE_HAL_GPIO		GPIO Device HAL Interface
  * \ingroup	DEVICE_HAL_DEF
  * \brief	definitions for gpio device hardware layer (\ref dev_gpio.h)
- * \details	provide interfaces for gpio driver to implement
+ * \details	Provide interfaces for gpio driver to implement
  *  Here is a diagram for the gpio interface.
  *
  *  \htmlonly
@@ -382,7 +382,7 @@ typedef struct dev_gpio_bit_isr {
  */
 /**
  * \brief	gpio information struct definition
- * \details	informations about gpio open count, working status
+ * \details	Informations about gpio open count, working status
  * 	gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio
  * \note	Only available for gpio with max 32bits
  */
@@ -410,9 +410,9 @@ typedef struct dev_gpio_info {
 
 /**
  * \brief	gpio device interface definition
- * \details	define gpio device interface, like gpio information structure,
+ * \details	Define gpio device interface, like gpio information structure,
  * 	fuctions to open/close/control gpio, write or read data via gpio
- * \note	all this details are implemented by user in user porting code
+ * \note	All this details are implemented by user in user porting code
  */
 typedef struct dev_gpio {
 	DEV_GPIO_INFO gpio_info;		/*!< gpio device information */
@@ -437,7 +437,7 @@ typedef struct dev_gpio {
 
 /**
  * \fn		int32_t (* dev_gpio::gpio_close) (void)
- * \details	Close an gpio device, just decrease the \ref dev_gpio_info::opn_cnt "opn_cnt",
+ * \details	Close a gpio device, just decrease the \ref dev_gpio_info::opn_cnt "opn_cnt",
  *      if \ref dev_gpio_info::opn_cnt "opn_cnt" equals 0, then close the device
  * \retval	E_OK	Close successfully without any issues(including scenario that device is already closed)
  * \retval	E_OPNED	Device is still opened, the device \ref dev_gpio_info::opn_cnt "opn_cnt" decreased by 1
@@ -446,7 +446,7 @@ typedef struct dev_gpio {
 
 /**
  * \fn		int32_t (* dev_gpio::gpio_control) (uint32_t ctrl_cmd, void *param)
- * \details	Control an gpio device by \ref ctrl_cmd, with passed \ref param.
+ * \details	Control a gpio device by \ref ctrl_cmd, with passed \ref param.
  * 	you can control gpio device using predefined gpio control commands defined using \ref DEV_SET_SYSCMD
  * 	(which must be implemented by bsp developer), such as \ref GPIO_CMD_SET_BIT_DIR_INPUT
  * 	"change masked gpio direction to input", and \ref DEVICE_HAL_GPIO_CTRLCMD "more".
@@ -495,7 +495,7 @@ extern "C" {
  * \param[in]	gpio_id	id of gpio, defined by user
  * \retval	!NULL	pointer to an \ref dev_gpio "gpio device structure"
  * \retval	NULL	failed to find the gpio device by \ref gpio_id
- * \note	need to implemented by user in user code
+ * \note	Need to implemented by user in user code
  */
 extern DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id);
 
