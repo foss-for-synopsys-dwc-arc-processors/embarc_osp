@@ -1,5 +1,5 @@
 language: python
-python: 2.7
+python: 3.6
 
 sudo: required
 dist: trusty
@@ -37,10 +37,17 @@ branches:
     - gh-pages
 
 before_install:
-  - bash .ci/before_install.sh
   # setup git config 
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "Huaqi.Fang@synopsys.com"
+  - >
+    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+      diff=$(git diff FETCH_HEAD master .ci)
+      if [ "$diff" == "" ]; then
+        git checkout remotes/origin/master -- .ci
+      fi
+    fi
+  - bash .ci/before_install.sh
 
 after_success:
   - bash -c "$STATUS" success "Local $NAME testing has passed"
@@ -90,3 +97,10 @@ matrix:
     - env: NAME="emsdp-gnu-latest" TOOLCHAIN="gnu"  BOARD="emsdp" EXPECTED=".ci/expected.ini"
       os: linux
       compiler: gcc
+
+notifications:
+  email:
+    recipients:
+      - jingru@synopsys.com
+    on_success: never
+    on_failure: always
