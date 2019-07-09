@@ -23,7 +23,7 @@ See :ref:`board_bsp` for more board information. You can also find instructions 
     * `Digilent Pmod WiFi with Microchip MRF24WG0MA <https://store.digilentinc.com/pmodwifi-wifi-interface-802-11g/>`_
     * `Digilent Pmod RF2 with Microchip MRF24J40MA <https://store.digilentinc.com/pmod-rf2-ieee-802-15-rf-transceiver/>`_
     * `BLE Microchip RN4020 <https://www.microchip.com/wwwproducts/en/RN4020>`_
-    * `BLE Huamao HM-10 <http://www.huamaosoft.cn/bluetooth.asp?id=1>`_
+    * `BLE Huamao HM-10 <https://components101.com/wireless/hm-10-bluetooth-module>`_
     * WiFi RW009
 
   * Sensor
