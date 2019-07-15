@@ -4,13 +4,67 @@
 #include "embARC_debug.h"
 #include "emsdp/drivers/mux/mux.h"
 #include "pcm1865.h"
-#include "dw_i2s.h"
 
 //For reading key
 static   DEV_UART_PTR            uart_console;
 static   DEV_PWM_TIMER_PTR       pwm_timer;
 static   DEV_GPIO_PTR            gpio;
 static   DEV_I2S_PTR             i2s;
+
+
+/**
+* Dump buffer
+*/
+#define HEXDUMP_COLS    16
+
+void hex_show (void *mem, int len)
+{
+   unsigned int i, j;
+
+   for (i = 0; i < len + ((len % HEXDUMP_COLS) ? (HEXDUMP_COLS - len % HEXDUMP_COLS) : 0); i++)
+   {
+      /* print offset */
+      if (i % HEXDUMP_COLS == 0)
+      {
+         EMBARC_PRINTF("0x%04x: ", i);
+      }
+ 
+      /* print hex data */
+      if (i < len)
+      {
+         EMBARC_PRINTF("%02x ", 0xFF & ((char*)mem)[i]);
+      }
+      else /* end of block, just aligning for ASCII dump */
+      {
+         EMBARC_PRINTF("   ");
+      }
+                
+      /* print ASCII dump */
+      if (i % HEXDUMP_COLS == (HEXDUMP_COLS - 1))
+      {
+         for (j = i - (HEXDUMP_COLS - 1); j <= i; j++)
+         {
+            if (j >= len) /* end of block, not really printing */
+            {
+               EMBARC_PRINTF(" ");
+            }
+            else 
+            {
+               if (isprint(((char*)mem)[j])) /* printable char */
+               {
+                  EMBARC_PRINTF ("%c", 0xFF & ((char*)mem)[j]);        
+               }
+               else /* other char */
+               {
+                  EMBARC_PRINTF (".");
+               }
+            }   
+         }
+         EMBARC_PRINTF("\n\r");
+      }
+   }
+}
+
 
 /**
 * Mux
@@ -120,18 +174,21 @@ typedef void (*DEV_I2S_HANDLER) (void *ptr);
 
 #define NUM_OF_I2S_SAMPLES       (1024*128)
 
-//Enable not all channels only channel3-ISR is connected to core
-#define I2S_CHANNEL              (DW_I2S_CHANNEL3)
-
-#ifdef DW_I2S_DATA_LENGTH_16
-   static uint16_t         i2s_sample_buffer[NUM_OF_I2S_SAMPLES];
-#else
-   static uint32_t         i2s_sample_buffer[NUM_OF_I2S_SAMPLES];
-#endif
-static DW_I2S_BUFFER       i2s_dev_buffer;
+#pragma Data(DATA, "buffer_area")
+   #ifdef DW_I2S_DATA_LENGTH_16
+      static uint16_t         i2s_sample_buffer[NUM_OF_I2S_SAMPLES];
+      #pragma align_to(1024,  i2s_sample_buffer)
+   #else
+      static uint32_t         i2s_sample_buffer[NUM_OF_I2S_SAMPLES];
+      #pragma align_to(1024,  i2s_sample_buffer)
+   #endif
+#pragma Data()
+   
+static uint32_t         i2s_sample_buffer_len;
 
 //Handler
-volatile uint32_t i2s_hdlr_cnt = 0;
+volatile uint32_t i2s_hdlr_cnt      = 0;
+volatile uint32_t i2s_err_hdlr_cnt  = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
 //REMARK !!!!!
@@ -140,41 +197,35 @@ volatile uint32_t i2s_hdlr_cnt = 0;
 
 static DEV_I2S_HANDLER i2s_hdlr (void)
 {
-//   EMBARC_PRINTF("@@ I2S_hdlr() @@\n\r");
+   EMBARC_PRINTF("@@ I2S_hdlr() @@\n\r");
    i2s_hdlr_cnt++;
    
    return (0);   
 }
 
+static DEV_I2S_HANDLER i2s_err_hdlr (void)
+{
+   EMBARC_PRINTF("@@ i2s_err_hdlr() @@\n\r");
+   i2s_err_hdlr_cnt++;
+   
+   return (0);   
+}
+
+
 static int set_i2s (void)
 {
    int errcnt = 0;
 
-#ifdef DW_I2S_DATA_LENGTH_16
-   i2s_dev_buffer.buf = (uint16_t *)&i2s_sample_buffer[0];
-#else   
-   i2s_dev_buffer.buf = (uint32_t *)&i2s_sample_buffer[0];
-#endif   
-   i2s_dev_buffer.ofs = 0;
-   i2s_dev_buffer.len = NUM_OF_I2S_SAMPLES;
-
-   i2s = i2s_get_dev(DW_I2S_RX_ID);   
-   errcnt += i2s->i2s_open(DEV_SLAVE_MODE, I2S_DEVICE_RECEIVER);
-   errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT, CONV2VOID(I2S_CHANNEL));  //Install int
-   errcnt += i2s->i2s_control(I2S_CMD_SET_RXCB, &i2s_hdlr);                //Install handler
-   errcnt += i2s->i2s_control(I2S_CMD_SET_RXINT_BUF, &i2s_dev_buffer);     //Install buffers
+   i2s = dw_i2s_slv_get_dev(0);   
+	errcnt += i2s->i2s_open(DEV_SLAVE_MODE, I2S_DEVICE_RECEIVER);
+	errcnt += i2s->i2s_control(I2S_CMD_SET_RXCB,    &i2s_hdlr);             //Install CB handler
+	errcnt += i2s->i2s_control(I2S_CMD_SET_ERRCB,   &i2s_err_hdlr);         //Install Error CB handler
+	errcnt += i2s->i2s_control(I2S_CMD_SLV_SET_SAMPLE_WIDTH, CONV2VOID(2)); //2 = 16 bits
+	errcnt += i2s->i2s_control(I2S_CMD_SLV_SET_FIFO_THRS, CONV2VOID(0));    //0 = 1 bit
 
    return (errcnt);
 }
 
-static int enable_i2s (void)
-{
-   int errcnt = 0;
-
-	errcnt += i2s->i2s_control(I2S_CMD_ENA_DEV, CONV2VOID(I2S_CHANNEL));    //Start channel0 (0) / channel3 (3)
-   
-   return (errcnt);
-}
 
 static void show_help (void)
 {
@@ -185,8 +236,9 @@ static void show_help (void)
    EMBARC_PRINTF("press 4: Show content master PCM page253\n\r");
    EMBARC_PRINTF("press 5: Show content master PCM Vram\n\r");
    EMBARC_PRINTF("press r: Reset master & slave PCM\n\r");
-   EMBARC_PRINTF("press n: Show number of interrupts received\n\r");
    EMBARC_PRINTF("press i: Init  master & slave PCM\n\r");
+   EMBARC_PRINTF("press n: Show number of interrupts received\n\r");
+   EMBARC_PRINTF("press z: Read buffer of samples\n\r");
    EMBARC_PRINTF("press h: This help\n\r");
 }
 
@@ -269,12 +321,6 @@ int main(void)
    //Final before loop
    show_help();
 
-   //Start I2S
-   if (enable_i2s() != 0)
-   {
-      EMBARC_PRINTF("Error, cannot enable i2s\n\r");
-   }
-   
    while (1)
    {
       uint32_t value;
@@ -356,7 +402,25 @@ int main(void)
                break;
 
             case 'n':
-               EMBARC_PRINTF("Num of I2S int: %d\r\n", i2s_hdlr_cnt);
+               EMBARC_PRINTF("Num of I2S int: %d, Num of Err I2S int: %d\r\n", i2s_hdlr_cnt, i2s_err_hdlr_cnt);
+               break;
+
+            case 'z':
+               {
+                  //Read
+                  i2s_sample_buffer_len = 0x400;
+	               (void)i2s->i2s_read((void *)(i2s_sample_buffer), i2s_sample_buffer_len);
+                  //Show samples
+                  hex_show((uint8_t *)i2s_sample_buffer, i2s_sample_buffer_len);
+                  //Close
+	               (void)i2s->i2s_close();
+                  
+                  //Init for next read
+                  if (set_i2s() != 0)
+                  {
+                     EMBARC_PRINTF("Error, cannot init i2s\n\r");
+                  }                  
+               }
                break;
 
             case 'h':

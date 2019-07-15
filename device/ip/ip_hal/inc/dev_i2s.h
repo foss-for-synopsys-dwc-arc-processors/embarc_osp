@@ -311,6 +311,14 @@ typedef enum i2s_error_state {
  */
 #define I2S_CMD_MST_SET_SCLKG		DEV_SET_I2S_MST_SYSCMD(2)
 
+/**
+ * I2S Slave commands
+ */
+#define I2S_CMD_SLV_SET_FIFO_THRS	   		DEV_SET_I2S_MST_SYSCMD(8)
+
+#define I2S_CMD_SLV_SET_SAMPLE_WIDTH			DEV_SET_I2S_MST_SYSCMD(9)
+
+
 /** @} */
 
 /**

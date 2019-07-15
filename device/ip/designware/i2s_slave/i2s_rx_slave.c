@@ -3,11 +3,11 @@
 #include <stdint.h>
 #include "board.h"
 #include "i2s_rx_slave.h"
-#include "dmac.h"
-
+//-- old code
+//#include "dmac.h"
 //-- New code
-//#include "embARC.h"
-//#include "embARC_debug.h"
+#include "embARC.h"
+#include "embARC_debug.h"
 
 #define IO_I2S_RX_SLV0_PRESENT
 #define IO_I2S_RX_SLV0_FS           8

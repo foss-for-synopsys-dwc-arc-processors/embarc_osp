@@ -21,7 +21,7 @@ COMMON_COMPILE_PREREQUISITES += $(CORE_CONFIG_MK)
 include $(CORE_CONFIG_MK)
 endif
 
-ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio  \
+ONCHIP_IP_LIST ?= . designware/spi designware/uart designware/gpio designware\i2s_slave \
 		designware/sdio designware/trng designware/pwm_timer designware/i2s \
 		subsystem/spi subsystem/gpio subsystem/uart subsystem/iic \
 		subsystem/i2s
