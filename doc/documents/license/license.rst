@@ -92,8 +92,8 @@ Doxygen
 Dlmalloc
 ********
 
-:Project homepage: http://g.oswego.edu/dl/html/malloc.html
-:Project licensing: http://g.oswego.edu/dl/html/malloc.html
+:Project homepage: http://gee.cs.oswego.edu/dl/html/malloc.html
+:Project licensing: http://gee.cs.oswego.edu/dl/html/malloc.html
 :LICENSE: `Creative Commons CC0 1.0 Universal`_
  
 FatFS
