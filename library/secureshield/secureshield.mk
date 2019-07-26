@@ -31,8 +31,12 @@ endif
 
 LIB_SECURESHIELD_INCDIR		+= $(LIB_SECURESHIELD_DIR)/core/inc
 
-
-
+# USE_SECURESHIELD_APPL_GEN is from embarc cli, which indicate the application configuration generator works success
+ifeq ($(USE_SECURESHIELD_APPL_GEN), 1)
+LIB_SECURESHIELD_AUTOGEN_DIR = $(APPL_CSRC_DIR)
+SECURESHIELD_NORMAL_LINKER_SCRIPT_FILE  ?= $(LIB_SECURESHIELD_AUTOGEN_DIR)/linker_normal_temp.ld
+SECURESHIELD_SECUR_LINKER_SCRIPT_FILE ?= $(LIB_SECURESHIELD_AUTOGEN_DIR)/linker_secure_temp.ld
+else
 ifeq ($(VALID_TOOLCHAIN), mw)
 SECURESHIELD_NORMAL_LINKER_SCRIPT_FILE  ?= $(LIB_SECURESHIELD_DIR)/board/secureshield_normal_template_mw.ld
 SECURESHIELD_SECUR_LINKER_SCRIPT_FILE ?= $(LIB_SECURESHIELD_DIR)/board/secureshield_secure_template_mw.ld
@@ -40,7 +44,7 @@ else
 SECURESHIELD_NORMAL_LINKER_SCRIPT_FILE ?= $(LIB_SECURESHIELD_DIR)/board/secureshield_normal_template_gnu.ld
 SECURESHIELD_SECUR_LINKER_SCRIPT_FILE ?= $(LIB_SECURESHIELD_DIR)/board/secureshield_secure_template_gnu.ld
 endif
-
+endif
 
 override LINKER_SCRIPT_FILE  = $(SECURESHIELD_NORMAL_LINKER_SCRIPT_FILE)
 

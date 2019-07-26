@@ -1,0 +1,240 @@
+[
+	{
+		"board" : "emsk",
+		"secureshield_version" : 2,
+		"address_alignment": 2048,
+		"predefine" : [
+				{	"define_name" : "PERIPHERAL_ADDR_BASE",
+					"define_value" : "0xf0000000"
+				}
+			],
+		"containers" : [
+				{"container_name" : "background_container",
+				"is_background_container" : true,
+				"is_secure" : false,
+				"ac_list" : [
+						{	"para1" : "PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "PERIPHERAL_ADDR_BASE + REL_REGBASE_UART1",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "PERIPHERAL_ADDR_BASE + REL_REGBASE_GPIO0",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "INTNO_GPIO",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "INTNO_UART1",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "INTNO_TIMER0",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						},
+						{	"para1" : "soft_interrupt1",
+							"para2" : "INTNO_SWI",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						}
+					]
+				},
+				{"container_name" : "container1",
+				"is_background_container" : false,
+				"is_secure" : true,
+				"ac_list" : [
+						{	"para1" : "init_secret",
+							"para2" : "0",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						},
+						{	"para1" : "operate_secret",
+							"para2" : "3",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						}
+					],
+				"stack_size" : "1024"
+				},
+				{"container_name" : "container2",
+				"is_background_container" : false,
+				"is_secure" : false,
+				"ac_list" : [
+						{	"para1" : "trusted_ops",
+							"para2" : "0",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						}
+					],
+				"stack_size" : "1024"
+				}
+			],
+		"memory" : [
+				{	"region_name" : "NORMAL_ROM_START",
+					"region_size" : "0x11000000"
+				},
+				{	"region_name" : "NORMAL_ROM_SIZE",
+					"region_size" : "0x00200000"
+				},
+				{	"region_name" : "NORMAL_RAM_START",
+					"region_size" : "0x11400000"
+				},
+				{	"region_name" : "NORMAL_RAM_SIZE",
+					"region_size" : "0x00100000"
+				},
+				{	"region_name" : "SECURE_ROM_START",
+					"region_size" : "0x11200000"
+				},
+				{	"region_name" : "SECURE_ROM_SIZE",
+					"region_size" : "0x00200000"
+				},
+				{	"region_name" : "SECURE_RAM_START",
+					"region_size" : "0x11500000"
+				},
+				{	"region_name" : "SECURE_RAM_SIZE",
+					"region_size" : "0x00100000"
+				}
+			],
+		"shared_memory" : [
+			]
+	},
+	{
+		"board" : "iotdk",
+		"secureshield_version" : 1,
+		"address_alignment": 2048,
+		"predefine" : [
+			],
+		"containers" : [
+				{"container_name" : "background_container",
+				"is_background_container" : true,
+				"is_secure" : false,
+				"ac_list" : [
+						{	"para1" : "BASE_ADDR_SYSCONFIG",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "0x21",
+							"para2" : "0x3",
+							"ac" : "SECURESHIELD_AC_AUX"
+						},
+						{	"para1" : "0x100",
+							"para2" : "0x6",
+							"ac" : "SECURESHIELD_AC_AUX"
+						},
+						{	"para1" : "0x75",
+							"para2" : "0x1",
+							"ac" : "SECURESHIELD_AC_AUX"
+						},
+						{	"para1" : "AR_IO_UART0_RBR_THR_DLL",
+							"para2" : "0x100",
+							"ac" : "SECURESHIELD_AC_AUX"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "IO_UART0_INTR",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "INTNO_TIMER0",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						},
+						{	"para1" : "soft_interrupt1",
+							"para2" : "INTNO_SWI",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						}
+					]
+				},
+				{"container_name" : "container1",
+				"is_background_container" : false,
+				"is_secure" : true,
+				"ac_list" : [
+						{	"para1" : "init_secret",
+							"para2" : "0",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						},
+						{	"para1" : "operate_secret",
+							"para2" : "3",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						}
+					],
+				"stack_size" : "1024"
+				},
+				{"container_name" : "container2",
+				"is_background_container" : false,
+				"is_secure" : false,
+				"ac_list" : [
+						{	"para1" : "trusted_ops",
+							"para2" : "0",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						}
+					],
+				"stack_size" : "1024"
+				}
+			],
+		"shared_memory" : [
+			]
+	},
+	{
+		"board" : "emsdp",
+		"secureshield_version" : 2,
+		"address_alignment": 2048,
+		"predefine" : [
+			],
+		"containers" : [
+				{"container_name" : "background_container",
+				"is_background_container" : true,
+				"is_secure" : false,
+				"ac_list" : [
+						{	"para1" : "EMSDP_CREG_BASE",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "EMSDP_DBG_UART_BASE",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "EMSDP_GPIO_BASE",
+							"para2" : "0x1000",
+							"ac" : "SECURESHIELD_ACDEF_UPERIPH"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "EMSDP_DBG_UART_INTR",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						},
+						{	"para1" : "default_interrupt_handler",
+							"para2" : "INTNO_TIMER0",
+							"ac" : "SECURESHIELD_AC_IRQ"
+						}
+					]
+				},
+				{"container_name" : "container1",
+				"is_background_container" : false,
+				"is_secure" : true,
+				"ac_list" : [
+						{	"para1" : "init_secret",
+							"para2" : "0",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						},
+						{	"para1" : "operate_secret",
+							"para2" : "3",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						}
+					],
+				"stack_size" : "1024"
+				},
+				{"container_name" : "container2",
+				"is_background_container" : false,
+				"is_secure" : false,
+				"ac_list" : [
+						{	"para1" : "trusted_ops",
+							"para2" : "0",
+							"ac" : "SECURESHIELD_AC_INTERFACE"
+						}
+					],
+				"stack_size" : "1024"
+				}
+			],
+		"shared_memory" : [
+			]
+	}
+]
