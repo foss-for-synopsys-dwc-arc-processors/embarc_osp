@@ -182,7 +182,8 @@ breathe_default_project = "embARC_osp"
 intersphinx_mapping = {'https://docs.python.org/': None}
 
 linkcheck_ignore = [
-    'http://www.solomon-systech.com/en/product/display-ic/oled-driver-controller/ssd1306/', 
+    'http://www.solomon-systech.com/en/product/display-ic/oled-driver-controller/ssd1306/',
+    'http://elm-chan.org/', 
 ]
 
 rst_epilog =  u"""
