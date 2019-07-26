@@ -191,7 +191,7 @@
             
   <div class="section" id="gpio-hal">
 <span id="device-hal-gpio"></span><h1>GPIO HAL<a class="headerlink" href="#gpio-hal" title="Permalink to this headline">¶</a></h1>
-<p>The GPIO HAL definitions is in <code class="docutils literal notranslate"><span class="pre">dev_gpio.h</span></code>, it provide interfaces for gpio
+<p>The GPIO HAL definitions are in <code class="docutils literal notranslate"><span class="pre">dev_gpio.h</span></code>, it provides interfaces for gpio
 driver to implement. Here is a diagram for the gpio interface.</p>
 <img alt="GPIO HAL" src="../_images/dev_gpio_hal.jpg" />
 <div class="section" id="definitions">
@@ -240,7 +240,7 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <dt id="_CPPv413DEV_GPIO_INFO">
 <span id="_CPPv313DEV_GPIO_INFO"></span><span id="_CPPv213DEV_GPIO_INFO"></span><span id="DEV_GPIO_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga87e9eab1a73f62b5d21cc109b19d5db9"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_gpio_info" title="dev_gpio_info">dev_gpio_info</a> <code class="sig-name descname">DEV_GPIO_INFO</code><a class="headerlink" href="#_CPPv413DEV_GPIO_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>gpio information struct definition </p>
-<p>informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <dl class="simple">
+<p>Informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <dl class="simple">
 <dt><strong>Note</strong></dt><dd><p>Only available for gpio with max 32bits </p>
 </dd>
 </dl>
@@ -256,8 +256,8 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <dt id="_CPPv48DEV_GPIO">
 <span id="_CPPv38DEV_GPIO"></span><span id="_CPPv28DEV_GPIO"></span><span id="DEV_GPIO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gab39bda9a6b6726d0ccccc7b4742d9d27"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_gpio" title="dev_gpio">dev_gpio</a> <code class="sig-name descname">DEV_GPIO</code><a class="headerlink" href="#_CPPv48DEV_GPIO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>gpio device interface definition </p>
-<p>define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+<p>Define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
 </dd>
 </dl>
 </p>
@@ -296,7 +296,7 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <dt id="_CPPv4N8dev_gpio10gpio_closeE">
 <span id="_CPPv3N8dev_gpio10gpio_closeE"></span><span id="_CPPv2N8dev_gpio10gpio_closeE"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gacbf9ba33414dd4d1dc01995b7c4fc52e"></span>int32_t (*<code class="sig-name descname">gpio_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8dev_gpio10gpio_closeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>close gpio device</p>
-<p>Close an gpio device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<p>Close a gpio device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
 <dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
@@ -376,7 +376,7 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <dt id="_CPPv413dev_gpio_info">
 <span id="_CPPv313dev_gpio_info"></span><span id="_CPPv213dev_gpio_info"></span><span id="dev_gpio_info"></span><span class="target" id="structdev__gpio__info"></span><em class="property">struct </em><code class="sig-name descname">dev_gpio_info</code><a class="headerlink" href="#_CPPv413dev_gpio_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_gpio.h&gt;</em><p>gpio information struct definition </p>
-<p>informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <dl class="simple">
+<p>Informations about gpio open count, working status gpio registers and control block, gpio io direction and interrupt/poll for each bit of gpio <dl class="simple">
 <dt><strong>Note</strong></dt><dd><p>Only available for gpio with max 32bits </p>
 </dd>
 </dl>
@@ -387,8 +387,8 @@ driver to implement. Here is a diagram for the gpio interface.</p>
 <dt id="_CPPv48dev_gpio">
 <span id="_CPPv38dev_gpio"></span><span id="_CPPv28dev_gpio"></span><span id="dev_gpio"></span><span class="target" id="structdev__gpio"></span><em class="property">struct </em><code class="sig-name descname">dev_gpio</code><a class="headerlink" href="#_CPPv48dev_gpio" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_gpio.h&gt;</em><p>gpio device interface definition </p>
-<p>define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>all this details are implemented by user in user porting code </p>
+<p>Define gpio device interface, like gpio information structure, fuctions to open/close/control gpio, write or read data via gpio <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
 </dd>
 </dl>
 </p>

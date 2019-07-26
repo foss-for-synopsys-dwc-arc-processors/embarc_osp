@@ -194,8 +194,8 @@ We will take PMOD interface as example to explain the setting method. Other inte
 <p>1. You need to find mux controller code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/board/[board_type]/drivers/mux</span></code>.
 [board_type] should be replaced to board type name, such as <em>emsk</em>, <em>hsdk</em> or <em>iotdk</em>.</p>
 <p>2. If you are using EMSK, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will see it calls <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> with MUX options as parameters.
-MUX options are defined in mux.h and you could change them as you see fit.</p>
-<p>For example, You want to connect your EMSK with two i2c sensor modules. By default setting you only have PM2 as i2c interface.
+MUX options are defined in mux.h and you can change them as you see fit.</p>
+<p>For example, you want to connect your EMSK with two i2c sensor modules. By default setting you only have PM2 as i2c interface.
 So now you have to check mux.h or EMSK manual to see if it support one more i2c interface.
 Notice that there is a <code class="docutils literal notranslate"><span class="pre">PM3_I2C_GPIO_D</span></code> macro in mux.h meaning that PM3 support i2c interface. Now all you need to do is to replace the default PM3 setting in <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> to <code class="docutils literal notranslate"><span class="pre">PM3_I2C_GPIO_D</span></code>.
 Now your code should be like this:</p>
@@ -223,7 +223,7 @@ All three parameters should use definitions in <code class="docutils literal not
 </ul>
 </div></blockquote>
 <p>5. If you are using EMSDP, go to mux.c and find <code class="docutils literal notranslate"><span class="pre">io_mux_init()</span></code> function, you will find it calls <code class="docutils literal notranslate"><span class="pre">set_pmod_mux()</span></code> with MUX options as parameters.
-MUX options are defined in mux.h and you could change them as you see fit.</p>
+MUX options are defined in mux.h and you can change them as you see fit.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In EMSDP, notice that <strong>CFG0</strong> means Upper Layer of Pmod interface and <strong>CFG1</strong> means Lower Layer of Pmod</p>
@@ -244,9 +244,9 @@ Driver code at <code class="docutils literal notranslate"><span class="pre">emba
 </div>
 <div class="section" id="pmod-temperature-module">
 <h3>PMOD Temperature Module<a class="headerlink" href="#pmod-temperature-module" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodtmp2/start">Pmod TMP2</a> : sensor chip type is ADT7420, use <strong>I2C</strong> for data collection.
+<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodtmp2/start">Pmod TMP2</a> : Sensor chip type is ADT7420, use <strong>I2C</strong> for data collection.
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/sensor/temperature/adt7420</span></code>.</p>
-<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodtmp3/start">Pmod TMP3</a> : sensor chip type is TCN75A, use <strong>I2C</strong> for data collection.
+<p><a class="reference external" href="https://reference.digilentinc.com/reference/pmod/pmodtmp3/start">Pmod TMP3</a> : Sensor chip type is TCN75A, use <strong>I2C</strong> for data collection.
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/sensor/temperature/tcn75</span></code>.</p>
 </div>
 <div class="section" id="other-pmod-or-compatible-modules">
@@ -255,7 +255,7 @@ Driver code at <code class="docutils literal notranslate"><span class="pre">emba
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/adc/ad7991</span></code>.</p>
 <p><a class="reference external" href="https://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> : Primary IC type is ESP8266, use <strong>UART</strong> interface for data changing and controlling.
 Driver code at <code class="docutils literal notranslate"><span class="pre">embarc_osp/device/peripheral/wifi/slip_esp</span></code>.</p>
-<p>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you could wire it to PMOD interface on board. You need to connect GND(embARC) to GND(ESP) , 3.3V(embARC) to VCC(ESP), RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="https://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</p>
+<p>The ESP01/ESP01S module is not originally a PMOD module, however it is PMOD compatible, meaning that you can wire it to PMOD interface on board. You need to connect GND(embARC) to GND(ESP) , 3.3V(embARC) to VCC(ESP), RXD(embARC) to TXD(ESP), and TXD(embARC) to RXD(ESP), respectively. Please take reference from datasheet of <a class="reference external" href="https://wiki.ai-thinker.com/esp8266/docs">ESP01/ESP01S</a> and UART (type 4A) part of <a class="reference external" href="https://www.digilentinc.com/Pmods/Digilent-Pmod_%20Interface_Specification.pdf">Digilent Pmod Spec</a> for pin layout.</p>
 </div>
 </div>
 </div>

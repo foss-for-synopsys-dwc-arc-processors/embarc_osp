@@ -12,7 +12,7 @@ Development Environment
 
 Software Requirement
 ####################
-* `ARC Development Tools <https://www.synopsys.com/designware-ip/processor-solutions/arc-processors/arc-development-tools.html>`_
+* `ARC Development Tools <https://www.synopsys.com/designware-ip/processor-solutions/arc-development-tools.html>`_
     Choose **MetaWare Toolkit** and/or **ARC GNU Toolchain** from the following list according to your requirement:
 
   * MetaWare Toolkit
