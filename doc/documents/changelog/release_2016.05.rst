@@ -26,7 +26,7 @@ Features and Enhancements
 
 * Add library support
 
-  * `dlmalloc <http://g.oswego.edu/dl/html/malloc.html>`_
+  * `dlmalloc <http://gee.cs.oswego.edu/dl/html/malloc.html>`_
   * MetaWare standard c library for MetaWare toolchain
   * newlib c library for ARC GNU toolchain
 
