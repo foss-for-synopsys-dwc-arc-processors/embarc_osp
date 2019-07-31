@@ -88,6 +88,7 @@
 .endm
 #endif
 
+/* macro to save accl regs */
 .macro SAVE_R58_R59
 #if ARC_FEATURE_FPU || ARC_FEATURE_DSP || ARC_FEATURE_MPU_OPTION_NUM > 6
 	PUSH r58
@@ -95,6 +96,7 @@
 #endif
 .endm
 
+/* macro to restore accl regs */
 .macro RESTORE_R58_R59
 #if ARC_FEATURE_FPU || ARC_FEATURE_DSP || ARC_FEATURE_MPU_OPTION_NUM > 6
 	POP r59
@@ -102,6 +104,7 @@
 #endif
 .endm
 
+/* macro to save fpu related regs */
 .macro SAVE_FPU_REGS
 #if ARC_FEATURE_FPU
 	PUSHAX AUX_FPU_CTRL
@@ -117,6 +120,7 @@
 #endif
 .endm
 
+/* macro to restore fpu related regs */
 .macro RESTORE_FPU_REGS
 #if ARC_FEATURE_FPU
 
@@ -132,7 +136,7 @@
 
 .endm
 
-
+/* macro to save dsp related regs */
 .macro SAVE_DSP_REGS
 #if ARC_FEATURE_DSP
 	PUSHAX AUX_DSP_CTRL
@@ -149,6 +153,7 @@
 #endif
 .endm
 
+/* macro to restore dsp related regs */
 .macro RESTORE_DSP_REGS
 #if ARC_FEATURE_DSP
 
@@ -196,7 +201,6 @@
 #endif
 
 #if ARC_FEATURE_FPU_DSP_CONTEXT
-	SAVE_R58_R59
 	SAVE_FPU_REGS
 	SAVE_DSP_REGS
 #endif
@@ -208,7 +212,6 @@
 #if ARC_FEATURE_FPU_DSP_CONTEXT
 	RESTORE_DSP_REGS
 	RESTORE_FPU_REGS
-	RESTORE_R58_R59
 #endif
 
 #if defined(ARC_ENABLE_EXTRA_CALLEE)
@@ -237,6 +240,7 @@
 	POP	r13
 .endm
 
+/* macro to clear callee regs */
 .macro CLEAR_CALLEE_REGS
 #ifndef ARC_FEATURE_RF16
 	mov	r25, 0
@@ -280,14 +284,10 @@
 	sr 	0, [AUX_DSP_CTRL]
 #endif /* ARC_FEATURE_DSP */
 
-#if ARC_FEATURE_FPU || ARC_FEATURE_DSP || ARC_FEATURE_MPU_OPTION_NUM > 6
-	mov 	r59, 0
-	mov	r58, 0
-#endif
-
 #endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
 .endm
 
+/* macro to clear scratch regs */
 .macro CLEAR_SCRATCH_REGS
 	mov	r1, 0
 	mov 	r2, 0
@@ -302,6 +302,10 @@
 	mov	r11, 0
 	mov	r12, 0
 
+#if ARC_FEATURE_FPU || ARC_FEATURE_DSP || ARC_FEATURE_MPU_OPTION_NUM > 6
+	mov 	r59, 0
+	mov	r58, 0
+#endif
 	mov 	fp, 0
 	mov 	r29, 0
 	mov 	r30, 0
@@ -322,6 +326,7 @@
 
 .endm
 
+/* macro to save r0 to r12 */
 .macro SAVE_R0_TO_R12
 	PUSH    r0
 	PUSH    r1
@@ -340,6 +345,7 @@
 	PUSH    r12
 .endm
 
+/* macro to restore r0 to r12 */
 .macro RESTORE_R0_TO_R12
 	POP	r12
 	POP	r11
@@ -358,27 +364,30 @@
 	POP	r0
 .endm
 
+/* macro to save code density regs */
 .macro SAVE_CODE_DENSITY
 	PUSHAX	AUX_JLI_BASE
 	PUSHAX	AUX_LDI_BASE
 	PUSHAX	AUX_EI_BASE
 .endm
 
+/* macro to restore code density regs */
 .macro RESTORE_CODE_DENSITY
 	POPAX	AUX_EI_BASE
 	POPAX	AUX_LDI_BASE
 	POPAX	AUX_JLI_BASE
 .endm
 
-/* todo: check the contents of NON_SCRATCH_REGS in debug */
+/* macro to save all non-caller saved regs */
 .macro SAVE_NONSCRATCH_REGS
-/* r0-r12 are saved by caller function */
+/* caller saved regs are saved by caller function */
 	PUSH	gp
 	PUSH	fp
 	PUSH	blink
 	SAVE_CALLEE_REGS
 .endm
 
+/* macro to restore all non-caller saved regs */
 .macro RESTORE_NONSCRATCH_REGS
 	RESTORE_CALLEE_REGS
 	POP	blink
@@ -386,10 +395,12 @@
 	POP	gp
 .endm
 
-
+/* macro to save regs  in firq */
 .macro SAVE_FIQ_EXC_REGS
 #ifndef ARC_FEATURE_RGF_BANKED_REGS
 	SAVE_R0_TO_R12
+
+	SAVE_R58_R59
 
 	PUSH	gp
 	PUSH	fp
@@ -423,6 +434,8 @@
 	PUSH	r12
 #endif
 
+	SAVE_R58_R59
+
 #if ARC_FEATURE_RGF_BANKED_REGS == 4 || ARC_FEATURE_BANKED_REGS == 8
 	PUSH	gp
 	PUSH	fp
@@ -438,6 +451,7 @@
 	SAVE_LP_REGS
 .endm
 
+/* macro  to restore reg in firq */
 .macro RESTORE_FIQ_EXC_REGS
 	RESTORE_LP_REGS
 #if ARC_FEATURE_CODE_DENSITY
@@ -449,6 +463,8 @@
 	POP	r30
 	POP	fp
 	POP	gp
+
+	RESTORE_R58_R59
 
 	RESTORE_R0_TO_R12
 #else
@@ -464,6 +480,8 @@
 	POP	fp
 	POP	gp
 #endif
+
+	RESTORE_R58_R59
 
 #if ARC_FEATURE_RGF_BANKED_REGS == 4
 	POP	r12
@@ -492,6 +510,7 @@
 /* normal interrupt prologue, pc, status and r0-r11 are saved by hardware */
 .macro INTERRUPT_PROLOGUE
 	PUSH	r12
+	SAVE_R58_R59
 	PUSH	gp
 	PUSH	fp
 	PUSH	ilink
@@ -509,6 +528,7 @@
 	POP	ilink
 	POP	fp
 	POP	gp
+	RESTORE_R58_R59
 	POP	r12
 .endm
 
@@ -544,6 +564,7 @@
 	SAVE_LP_REGS
 
 	PUSH	r12
+	SAVE_R58_R59
 	PUSH	gp
 	PUSH	fp
 	PUSH	ilink
@@ -560,6 +581,7 @@
 	POP	ilink
 	POP	fp
 	POP	gp
+	RESTORE_R58_R59
 	POP	r12
 
 	RESTORE_LP_REGS
@@ -583,7 +605,6 @@
 	POP	r11
 
 	POP	blink
-
 
 	POPAX	AUX_ERRET
 	add 	sp, sp, 4  /* slot for SEC_STAT */
@@ -625,6 +646,7 @@
 	PUSH	r0
 
 	PUSH	r12
+	SAVE_R58_R59
 	PUSH	gp
 	PUSH	fp
 	PUSH	ilink
@@ -641,6 +663,7 @@
 	POP	ilink
 	POP	fp
 	POP	gp
+	RESTORE_R58_R59
 	POP	r12
 
 	POP	r0

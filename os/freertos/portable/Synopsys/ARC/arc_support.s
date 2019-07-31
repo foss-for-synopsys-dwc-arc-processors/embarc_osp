@@ -450,8 +450,12 @@ ret_firq_2:
 #if ARC_FEATURE_CODE_DENSITY
 	RESTORE_CODE_DENSITY
 #endif
+	RESTORE_R58_R59
 #endif
 
+/* when BANKED_REGS == 16, r4-r9 wiil be also saved in fast irq stack
+ * so pop them out
+ */
 #if  ARC_FEATURE_RGF_BANKED_REGS == 16 && !defined(ARC_FEATURE_RF16)
 	POP		r9
 	POP		r8
@@ -460,6 +464,10 @@ ret_firq_2:
 	POP		r5
 	POP		r4
 #endif
+
+/* for other cases, unbanked regs are already in interrupted context's stack,
+ * so just need to save and pop the banked regs
+ */
 
 /* save the interruptted context */
 #if ARC_FEATURE_RGF_BANKED_REGS > 0
@@ -483,9 +491,10 @@ ret_firq_2:
 	PUSH	r3
 	PUSH	r12
 #elif ARC_FEATURE_RGF_BANKED_REGS >= 16
-/* nothing is saved */
+/* nothing is saved, */
 	SAVE_R0_TO_R12
 
+	SAVE_R58_R59
 	PUSH	gp
 	PUSH	fp
 	PUSH	r30		/* general purpose */
@@ -543,6 +552,7 @@ ret_firq_r:
 	POP	fp
 	POP	gp
 
+	RESTORE_R58_R59
 	RESTORE_R0_TO_R12
 #endif /* ARC_FEATURE_RGF_BANKED_REGS  */
 #else
