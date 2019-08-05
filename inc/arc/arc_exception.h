@@ -73,6 +73,12 @@ typedef struct int_exc_frame {
 	uint32_t fp;	/* r27 */
 	uint32_t gp;	/* r26 */
 
+#if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
+	/* accl and acch, common for mpy_option >6 and fpu_fma option */
+	uint32_t r59;
+	uint32_t r58;
+#endif
+
 	uint32_t r12;
 
 	uint32_t lp_end, lp_start, lp_count;
@@ -102,6 +108,11 @@ typedef struct int_exc_frame {
 	uint32_t fp;	/* r27 */
 	uint32_t gp;	/* r26 */
 
+#if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
+	/* accl and acch, common for mpy_option >6 and fpu_fma option */
+	uint32_t r59;
+	uint32_t r58;
+#endif
 	uint32_t r12;
 
 	uint32_t r0, r1, r2, r3;
@@ -160,12 +171,6 @@ typedef struct callee_frame {
 
 #if ARC_FEATURE_FPU
 	FPU_EXT_FRAME fpu_ext_regs;
-#endif
-
-#if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
-	/* accl and acch, common for mpy_option >6 and fpu_fma option */
-	uint32_t r59;
-	uint32_t r58;
 #endif
 
 #endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
