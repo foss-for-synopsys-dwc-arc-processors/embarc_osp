@@ -37,7 +37,7 @@ The embARC OSP platform supports, but not limited to, the following development 
 * Microsoft Windows 10 / Windows 7
 * Ubuntu 16.04
 
-Use the following procedure to create a new development environment
+Use the following procedure to create a new development environment. Please DO follow the instructions introduced in the document below in order to acquire third party middleware.
 
 .. toctree::
    :maxdepth: 1
