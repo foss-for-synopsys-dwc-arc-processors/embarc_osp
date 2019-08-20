@@ -332,80 +332,186 @@ Steps to Create a SecureShield Application
 - SECURE_SYMBOL_LIST (optional), the file of symbols need to be exported to
   normal application from secure binary
 
-2. Container Memory Configuration File (secureshield_appl_config.h)
+2. Container Configuration File (secureshield_appl_config.json)
 
-secureshield_appl_config.h includes the application information to generate
-the correct memory map
+secureshield_appl_config.json includes the application information to generate
+the correct containers and memory map
 
-- SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in
-  NORMAL_ROM
+- board: the board to build and run secureshield application on
 
-- SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in
-  NORMAL_RAM
+- secureshield_version : the secureshield version
 
-- SECURE_REGION_CONTAINERS_SCURE_ROM : the regions need to be generated in
-  SECURE_ROM  (secure containers only)
+- address_alignment : the data structure of secureshield application need to be
+  aligned on
 
-- SECURE_REGION_CONTAINERS_SECURE_RAM : the regions need to be generated in
-  SECURE_RAM (secure containers only)
+- predefine : define PERIPHERAL_ADDR_BASE required by PINMUX, UART1 and GPIO0
 
+- containers : define containers set-up and main application
+
+- memory : memory map of a secureShield application
+
+- shared_memory : resources are shared in memory map
+
+.. code-block:: python
+
+    "board" : "emsk",
+    "secureshield_version" : 2,
+    "address_alignment": 2048,
+    "predefine" : [
+            {	"define_name" : "PERIPHERAL_ADDR_BASE",
+                "define_value" : "0xf0000000"
+            }
+        ],
+    "containers" : [
+            {"container_name" : "background_container",
+            "is_background_container" : true,
+            "is_secure" : false,
+            "ac_list" : [
+                    {	"para1" : "PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX",
+                        "para2" : "0x1000",
+                        "ac" : "SECURESHIELD_ACDEF_UPERIPH"
+                    },
+                    {	"para1" : "PERIPHERAL_ADDR_BASE + REL_REGBASE_UART1",
+                        "para2" : "0x1000",
+                        "ac" : "SECURESHIELD_ACDEF_UPERIPH"
+                    },
+                    {	"para1" : "PERIPHERAL_ADDR_BASE + REL_REGBASE_GPIO0",
+                        "para2" : "0x1000",
+                        "ac" : "SECURESHIELD_ACDEF_UPERIPH"
+                    },
+                    {	"para1" : "default_interrupt_handler",
+                        "para2" : "INTNO_GPIO",
+                        "ac" : "SECURESHIELD_AC_IRQ"
+                    },
+                    {	"para1" : "default_interrupt_handler",
+                        "para2" : "INTNO_UART1",
+                        "ac" : "SECURESHIELD_AC_IRQ"
+                    },
+                    {	"para1" : "default_interrupt_handler",
+                        "para2" : "INTNO_TIMER0",
+                        "ac" : "SECURESHIELD_AC_IRQ"
+                    }
+                ]
+            },
+            {"container_name" : "container1",
+            "is_background_container" : false,
+            "is_secure" : false,
+            "ac_list" : [
+                    {	"para1" : "init_secret",
+                        "para2" : "0",
+                        "ac" : "SECURESHIELD_AC_INTERFACE"
+                    },
+                    {	"para1" : "operate_secret",
+                        "para2" : "3",
+                        "ac" : "SECURESHIELD_AC_INTERFACE"
+                    },
+                    {	"para1" : "container12_shared",
+                        "para2" : "SECRET_LEN",
+                        "ac" : "shared_memory"
+                    }
+                ],
+            "stack_size" : "1024"
+            },
+            {"container_name" : "container2",
+            "is_background_container" : false,
+            "is_secure" : false,
+            "ac_list" : [
+                    {	"para1" : "trusted_ops",
+                        "para2" : "0",
+                        "ac" : "SECURESHIELD_AC_INTERFACE"
+                    },
+                    {	"para1" : "container12_shared",
+                        "para2" : "SECRET_LEN",
+                        "ac" : "shared_memory"
+                    }
+                ],
+            "stack_size" : "1024"
+            }
+        ],
+    "memory" : [
+            {	"region_name" : "NORMAL_ROM_START",
+                "region_size" : "0x11000000"
+            },
+            {	"region_name" : "NORMAL_ROM_SIZE",
+                "region_size" : "0x00200000"
+            },
+            {	"region_name" : "NORMAL_RAM_START",
+                "region_size" : "0x11400000"
+            },
+            {	"region_name" : "NORMAL_RAM_SIZE",
+                "region_size" : "0x00100000"
+            },
+            {	"region_name" : "SECURE_ROM_START",
+                "region_size" : "0x11200000"
+            },
+            {	"region_name" : "SECURE_ROM_SIZE",
+                "region_size" : "0x00200000"
+            },
+            {	"region_name" : "SECURE_RAM_START",
+                "region_size" : "0x11500000"
+            },
+            {	"region_name" : "SECURE_RAM_SIZE",
+                "region_size" : "0x00100000"
+            }
+        ],
+    "shared_memory" : [
+            {	"region_name" : "container12_shared",
+                "is_secure" : false,
+                "is_rom" : false}
+        ]
+
+The above configuration will generate the following generate the following sections in final linker
+script
 
 .. code-block:: c
 
-    /* tell linker script template the rom region information of containers */
-    #define SECURESHIELD_REGION_CONTAINERS_ROM \
-                        GEN_CONTAINER_ROM_SECTION(container1, 2048, *container1.o*)
+     .container1.ram.data ALIGN(32) : {
+      _f_data_container1 = .;
+      *(.container1.data .container1.data.*)
+      _e_data_container1 = .;
+     } > NORMAL_RAM AT > NORMAL_ROM
+     .container1.ram.bss : {
+      _f_bss_container1 = .;
+      *(.container1.bss .container1.bss.*)
+      _e_bss_container1 = ALIGN(32);
+     } > NORMAL_RAM
+     _f_data_load_container1 = LOADADDR(.container1.ram.data);
 
-    /* tell linker script template the ram region information of containers */
-    #define SECURESHIELD_REGION_CONTAINERS_RAM \
-                        GEN_CONTAINER_RAM_SECTION(container1, 2048, *container1.o*)
+     .container2.ram.data ALIGN(32) : {
+      _f_data_container2 = .;
+      *(.container2.data .container2.data.*)
+      _e_data_container2 = .;
+     } > NORMAL_RAM AT > NORMAL_ROM
+     .container2.ram.bss : {
+      _f_bss_container2 = .;
+      *(.container2.bss .container2.bss.*)
+      _e_bss_container2 = ALIGN(32);
+     } > NORMAL_RAM
+     _f_data_load_container2 = LOADADDR(.container2.ram.data);
 
-The above code segment will generate the following sections in final linker
-script if LIB_SECURESHIELD_VERSION=2
+     .container12_shared.ram.data ALIGN(32) : {
+      _f_data_container12_shared = .;
+      *(.container12_shared.data .container12_shared.data.*)
+      _e_data_container12_shared = .;
+     } > NORMAL_RAM AT > NORMAL_ROM
+     .container12_shared.ram.bss : {
+      _f_bss_container12_shared = .;
+      *(.container12_shared.bss .container12_shared.bss.*)
+      _e_bss_container12_shared = ALIGN(32);
+     } > NORMAL_RAM
+     _f_data_load_container12_shared = LOADADDR(.container12_shared.ram.data);
 
-.. code-block:: c
-
-    .rom.container1 ALIGN(128): {
-        _f_text_container1 = .;
-        *(.text.container1)
-        "*container1.o*"(TYPE text)
-        . = ALIGN(128);
-        _e_text_container1 = .;
-        _f_rodata_container1 = .;
-        *(.rodata.container1)
-        "*container1.o*"(TYPE lit)
-        . = ALIGN(128);
-        _e_rodata_container1 = .;
-        } > NORMAL_ROM
-    .ram.data.container1 ALIGN(128) : {
-            _f_data_container1 = .;
-             *(.data.container1)
-              "*container1.o*"(TYPE data)
-               _e_data_container1 = .;
-        } > NORMAL_RAM AT > NORMAL_ROM
-    .ram.bss.container1 : {
-          _f_bss_container1 = .;
-           *(.bss.container1)
-            "*container1.o*"(TYPE BSS)
-             . = ALIGN(128);
-              _e_bss_container1 = .;
-        } > NORMAL_RAM
-        _f_data_load_container1 = LOADADDR(.ram.data.container1);
-
-3. Container Access Control Configuration
-
-The container access control configuration is recommended to be in a specific
-file named container_cfg.c
-
-4. Coding
+3. Coding
 
 A recommended SecureShield application is :
+
+- one configuration file `secureshield_appl_config.json`, with which to generate include file and link script by embARC CLI
 
 - one container, one source file or directory, e.g container1 in container1.c
 
 - files compiled with SecureShield runtime are in specific directory, e.g. secure
 
-5. Define the exported secure symbols
+4. Define the exported secure symbols
 
 secure_symbol.txt contains the symbols (container interface) exported to normal application from secure binary. This file is only required when normal application needs to call the symbol in secure binary. It also needs to be defined in makefile.
 For example, the following container (container4) will be compiled and linked with secure binary, it has two interfaces:
@@ -424,7 +530,7 @@ Then the secure_symbol.txt should be:
     tst_func_sec1
     tst_func_sec2
 
-6. Compile and Debug
+5. Compile and Debug
 
 Upon compiling and linking, the following files will be generated:
 
