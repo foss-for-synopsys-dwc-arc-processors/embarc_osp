@@ -62,6 +62,8 @@ Detailed Description
 
             .. image:: /pic/images/example/baremetal_bootloader/emsk_bootloader_program2splflash.jpg
 
+        .. note:: for iotdk board, use **flash** command to program the **bootloader.bin** into eflash: **flash -eflash bootloader.bin**. run **flash -h** to show help.
+
         + If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.
         + If the sdcard already contains the *boot.bin* in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.
         + You can goto the next step to generate the *boot.bin* for proper application you want to be auto-loaded in sdcard.
@@ -125,8 +127,9 @@ Building and Running
 
 .. code-block:: console
 
+    //remember to set APPL_DEFINES += -DUSE_APPL_MEM_CONFIG in makefile
     $ cd <embarc_root>/example/baremetal/bootloader
-    $ gmake BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw LOCATION=eflash bin
+    $ gmake BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw bin
 
 If the binary file is generated successfully, you will output as follows:
 

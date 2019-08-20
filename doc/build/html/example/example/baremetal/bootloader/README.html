@@ -285,6 +285,12 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 </dd>
 </dl>
 </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>for iotdk board, use <strong>flash</strong> command to program the <strong>bootloader.bin</strong> into eflash: <strong>flash -eflash bootloader.bin</strong>. run <strong>flash -h</strong> to show help.</p>
+</div>
+<ul class="simple">
 <li><p>If programmed successfully, when the board is reset, make sure Bit 4 of the onboard DIP switch is ON to enable secondary bootloader run.</p></li>
 <li><p>If the sdcard already contains the <em>boot.bin</em> in it, the bootloader will automatically load it from sdcard, if not, it will enter to ntshell mode.</p></li>
 <li><p>You can goto the next step to generate the <em>boot.bin</em> for proper application you want to be auto-loaded in sdcard.</p></li>
@@ -384,8 +390,9 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <ul class="simple">
 <li><p>Generate a secondary bootloader binary file for iotdk use eflash</p></li>
 </ul>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
-<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>iotdk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">10</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem9d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw <span class="nv">LOCATION</span><span class="o">=</span>eflash bin
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">//remember to set APPL_DEFINES += -DUSE_APPL_MEM_CONFIG in makefile</span>
+<span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>iotdk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">10</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem9d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
 </pre></div>
 </div>
 <p>If the binary file is generated successfully, you will output as follows:</p>
