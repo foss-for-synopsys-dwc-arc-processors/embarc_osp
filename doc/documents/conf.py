@@ -59,7 +59,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'embARC'
-copyright = u'2018, Synopsys'
+copyright = u'2019, Synopsys'
 author = u'Synopsys'
 today_fmt = '%Y'
 
