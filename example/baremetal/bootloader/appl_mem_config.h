@@ -6,4 +6,8 @@
 #define REGION_EXT_RAM_SIZE		0x100000	/* the mem space covered by bootloader */
 #endif
 
+#ifdef BOARD_IOTDK
+#define REGION_ROM	REGION_EXT_ROM
+#endif
+
 #endif
