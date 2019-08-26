@@ -531,73 +531,176 @@ need to be compiled and linked with SecureShield runtime</p></li>
 normal application from secure binary</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>Container Memory Configuration File (secureshield_appl_config.h)</p></li>
+<li><p>Container Configuration File (secureshield_appl_config.json)</p></li>
 </ol>
-<p>secureshield_appl_config.h includes the application information to generate
-the correct memory map</p>
+<p>secureshield_appl_config.json includes the application information to generate
+the correct containers and memory map</p>
 <ul class="simple">
-<li><p>SECURE_REGION_CONTAINERS_ROM : the regions need to be generated in
-NORMAL_ROM</p></li>
-<li><p>SECURE_REGION_CONTAINERS_RAM : the regions need to be generated in
-NORMAL_RAM</p></li>
-<li><p>SECURE_REGION_CONTAINERS_SCURE_ROM : the regions need to be generated in
-SECURE_ROM  (secure containers only)</p></li>
-<li><p>SECURE_REGION_CONTAINERS_SECURE_RAM : the regions need to be generated in
-SECURE_RAM (secure containers only)</p></li>
+<li><p>board: the board to build and run secureshield application on</p></li>
+<li><p>secureshield_version : the secureshield version</p></li>
+<li><p>address_alignment : the data structure of secureshield application need to be
+aligned on</p></li>
+<li><p>predefine : define PERIPHERAL_ADDR_BASE required by PINMUX, UART1 and GPIO0</p></li>
+<li><p>containers : define containers set-up and main application</p></li>
+<li><p>memory : memory map of a secureShield application</p></li>
+<li><p>shared_memory : resources are shared in memory map</p></li>
 </ul>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* tell linker script template the rom region information of containers */</span>
-<span class="cp">#define SECURESHIELD_REGION_CONTAINERS_ROM \</span>
-<span class="cp">                    GEN_CONTAINER_ROM_SECTION(container1, 2048, *container1.o*)</span>
-
-<span class="cm">/* tell linker script template the ram region information of containers */</span>
-<span class="cp">#define SECURESHIELD_REGION_CONTAINERS_RAM \</span>
-<span class="cp">                    GEN_CONTAINER_RAM_SECTION(container1, 2048, *container1.o*)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;board&quot;</span> <span class="p">:</span> <span class="s2">&quot;emsk&quot;</span><span class="p">,</span>
+<span class="s2">&quot;secureshield_version&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="s2">&quot;address_alignment&quot;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>
+<span class="s2">&quot;predefine&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>   <span class="s2">&quot;define_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;PERIPHERAL_ADDR_BASE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;define_value&quot;</span> <span class="p">:</span> <span class="s2">&quot;0xf0000000&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="s2">&quot;containers&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;container_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;background_container&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_background_container&quot;</span> <span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;is_secure&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;ac_list&quot;</span> <span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x1000&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_ACDEF_UPERIPH&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;PERIPHERAL_ADDR_BASE + REL_REGBASE_UART1&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x1000&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_ACDEF_UPERIPH&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;PERIPHERAL_ADDR_BASE + REL_REGBASE_GPIO0&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x1000&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_ACDEF_UPERIPH&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;default_interrupt_handler&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;INTNO_GPIO&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_AC_IRQ&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;default_interrupt_handler&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;INTNO_UART1&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_AC_IRQ&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;default_interrupt_handler&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;INTNO_TIMER0&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_AC_IRQ&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;container_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;container1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_background_container&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;is_secure&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;ac_list&quot;</span> <span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;init_secret&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_AC_INTERFACE&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;operate_secret&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_AC_INTERFACE&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;container12_shared&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECRET_LEN&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;shared_memory&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;stack_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;1024&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;container_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;container2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;is_background_container&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;is_secure&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;ac_list&quot;</span> <span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;trusted_ops&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURESHIELD_AC_INTERFACE&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>   <span class="s2">&quot;para1&quot;</span> <span class="p">:</span> <span class="s2">&quot;container12_shared&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;para2&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECRET_LEN&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ac&quot;</span> <span class="p">:</span> <span class="s2">&quot;shared_memory&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">&quot;stack_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;1024&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="s2">&quot;memory&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;NORMAL_ROM_START&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x11000000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;NORMAL_ROM_SIZE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x00200000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;NORMAL_RAM_START&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x11400000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;NORMAL_RAM_SIZE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x00100000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURE_ROM_START&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x11200000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURE_ROM_SIZE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x00200000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURE_RAM_START&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x11500000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;SECURE_RAM_SIZE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;region_size&quot;</span> <span class="p">:</span> <span class="s2">&quot;0x00100000&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="s2">&quot;shared_memory&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>   <span class="s2">&quot;region_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;container12_shared&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;is_secure&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;is_rom&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+    <span class="p">]</span>
 </pre></div>
 </div>
-<p>The above code segment will generate the following sections in final linker
-script if LIB_SECURESHIELD_VERSION=2</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">rom</span><span class="p">.</span><span class="n">container1</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span><span class="o">:</span> <span class="p">{</span>
-    <span class="n">_f_text_container1</span> <span class="o">=</span> <span class="p">.;</span>
-    <span class="o">*</span><span class="p">(.</span><span class="n">text</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
-    <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">text</span><span class="p">)</span>
-    <span class="p">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
-    <span class="n">_e_text_container1</span> <span class="o">=</span> <span class="p">.;</span>
-    <span class="n">_f_rodata_container1</span> <span class="o">=</span> <span class="p">.;</span>
-    <span class="o">*</span><span class="p">(.</span><span class="n">rodata</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
-    <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">lit</span><span class="p">)</span>
-    <span class="p">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
-    <span class="n">_e_rodata_container1</span> <span class="o">=</span> <span class="p">.;</span>
-    <span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
-<span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">container1</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> <span class="o">:</span> <span class="p">{</span>
-        <span class="n">_f_data_container1</span> <span class="o">=</span> <span class="p">.;</span>
-         <span class="o">*</span><span class="p">(.</span><span class="n">data</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
-          <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">data</span><span class="p">)</span>
-           <span class="n">_e_data_container1</span> <span class="o">=</span> <span class="p">.;</span>
-    <span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span> <span class="n">AT</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
-<span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">bss</span><span class="p">.</span><span class="nl">container1</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="n">_f_bss_container1</span> <span class="o">=</span> <span class="p">.;</span>
-       <span class="o">*</span><span class="p">(.</span><span class="n">bss</span><span class="p">.</span><span class="n">container1</span><span class="p">)</span>
-        <span class="s">&quot;*container1.o*&quot;</span><span class="p">(</span><span class="n">TYPE</span> <span class="n">BSS</span><span class="p">)</span>
-         <span class="p">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
-          <span class="n">_e_bss_container1</span> <span class="o">=</span> <span class="p">.;</span>
-    <span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span>
-    <span class="n">_f_data_load_container1</span> <span class="o">=</span> <span class="n">LOADADDR</span><span class="p">(.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">container1</span><span class="p">);</span>
+<p>The above configuration will generate the following generate the following sections in final linker
+script</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">container1</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="o">:</span> <span class="p">{</span>
+ <span class="n">_f_data_container1</span> <span class="o">=</span> <span class="p">.;</span>
+ <span class="o">*</span><span class="p">(.</span><span class="n">container1</span><span class="p">.</span><span class="n">data</span> <span class="p">.</span><span class="n">container1</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="o">*</span><span class="p">)</span>
+ <span class="n">_e_data_container1</span> <span class="o">=</span> <span class="p">.;</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span> <span class="n">AT</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
+<span class="p">.</span><span class="n">container1</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="nl">bss</span> <span class="p">:</span> <span class="p">{</span>
+ <span class="n">_f_bss_container1</span> <span class="o">=</span> <span class="p">.;</span>
+ <span class="o">*</span><span class="p">(.</span><span class="n">container1</span><span class="p">.</span><span class="n">bss</span> <span class="p">.</span><span class="n">container1</span><span class="p">.</span><span class="n">bss</span><span class="p">.</span><span class="o">*</span><span class="p">)</span>
+ <span class="n">_e_bss_container1</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span>
+<span class="n">_f_data_load_container1</span> <span class="o">=</span> <span class="n">LOADADDR</span><span class="p">(.</span><span class="n">container1</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+
+<span class="p">.</span><span class="n">container2</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="o">:</span> <span class="p">{</span>
+ <span class="n">_f_data_container2</span> <span class="o">=</span> <span class="p">.;</span>
+ <span class="o">*</span><span class="p">(.</span><span class="n">container2</span><span class="p">.</span><span class="n">data</span> <span class="p">.</span><span class="n">container2</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="o">*</span><span class="p">)</span>
+ <span class="n">_e_data_container2</span> <span class="o">=</span> <span class="p">.;</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span> <span class="n">AT</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
+<span class="p">.</span><span class="n">container2</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="nl">bss</span> <span class="p">:</span> <span class="p">{</span>
+ <span class="n">_f_bss_container2</span> <span class="o">=</span> <span class="p">.;</span>
+ <span class="o">*</span><span class="p">(.</span><span class="n">container2</span><span class="p">.</span><span class="n">bss</span> <span class="p">.</span><span class="n">container2</span><span class="p">.</span><span class="n">bss</span><span class="p">.</span><span class="o">*</span><span class="p">)</span>
+ <span class="n">_e_bss_container2</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span>
+<span class="n">_f_data_load_container2</span> <span class="o">=</span> <span class="n">LOADADDR</span><span class="p">(.</span><span class="n">container2</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+
+<span class="p">.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="o">:</span> <span class="p">{</span>
+ <span class="n">_f_data_container12_shared</span> <span class="o">=</span> <span class="p">.;</span>
+ <span class="o">*</span><span class="p">(.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">data</span> <span class="p">.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="o">*</span><span class="p">)</span>
+ <span class="n">_e_data_container12_shared</span> <span class="o">=</span> <span class="p">.;</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span> <span class="n">AT</span> <span class="o">&gt;</span> <span class="n">NORMAL_ROM</span>
+<span class="p">.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="nl">bss</span> <span class="p">:</span> <span class="p">{</span>
+ <span class="n">_f_bss_container12_shared</span> <span class="o">=</span> <span class="p">.;</span>
+ <span class="o">*</span><span class="p">(.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">bss</span> <span class="p">.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">bss</span><span class="p">.</span><span class="o">*</span><span class="p">)</span>
+ <span class="n">_e_bss_container12_shared</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
+<span class="p">}</span> <span class="o">&gt;</span> <span class="n">NORMAL_RAM</span>
+<span class="n">_f_data_load_container12_shared</span> <span class="o">=</span> <span class="n">LOADADDR</span><span class="p">(.</span><span class="n">container12_shared</span><span class="p">.</span><span class="n">ram</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Container Access Control Configuration</p></li>
-</ol>
-<p>The container access control configuration is recommended to be in a specific
-file named container_cfg.c</p>
-<ol class="arabic simple" start="4">
 <li><p>Coding</p></li>
 </ol>
 <p>A recommended SecureShield application is :</p>
 <ul class="simple">
+<li><p>one configuration file <cite>secureshield_appl_config.json</cite>, with which to generate include file and link script by embARC CLI</p></li>
 <li><p>one container, one source file or directory, e.g container1 in container1.c</p></li>
 <li><p>files compiled with SecureShield runtime are in specific directory, e.g. secure</p></li>
 </ul>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="4">
 <li><p>Define the exported secure symbols</p></li>
 </ol>
 <p>secure_symbol.txt contains the symbols (container interface) exported to normal application from secure binary. This file is only required when normal application needs to call the symbol in secure binary. It also needs to be defined in makefile.
@@ -613,7 +716,7 @@ For example, the following container (container4) will be compiled and linked wi
 <span class="n">tst_func_sec2</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="5">
 <li><p>Compile and Debug</p></li>
 </ol>
 <p>Upon compiling and linking, the following files will be generated:</p>

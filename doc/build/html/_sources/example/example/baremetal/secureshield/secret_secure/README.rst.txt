@@ -42,14 +42,14 @@ For nSIM, the commands to run this example are as follows:
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/secureshield/secret_secure
-    $ gmake BOARD=nsim BD_VER=10 CUR_CORE=arcsem TOOLCHAIN=mw run
+    $ embarc build BOARD=nsim BD_VER=10 CUR_CORE=arcsem TOOLCHAIN=mw run
 
 For EMSK 2.2, the commands to run this example are as follows:
 
 .. code-block:: console
 
     $ cd <embarc_root>/example/baremetal/secureshield/secret_secure
-    $ gmake LIB_SECURESHIELD_VERSION=1 BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw run
+    $ embarc build LIB_SECURESHIELD_VERSION=1 BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw run
 
 Sample Output
 =============
