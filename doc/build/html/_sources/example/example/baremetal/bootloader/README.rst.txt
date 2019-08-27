@@ -37,7 +37,7 @@ Detailed Description
     - Generate a secondary bootloader binary file
 
     - Program generated secondary bootloader binary file into SPIFlash
-        + Insert SDCard to your PC, and copy the binary file *obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin* to SDCard Root, and rename it to *em7d_2bt.bin*
+        + Insert SDCard to your PC, and copy the binary file *obj_emsk_23/gnu_arcem7d/simple_bootloader_gnu_arcem7d.bin* to SDCard Root, and rename it to *em7d_2bt.bin*
         + Insert the SDCard to EMSK Board, please choose the right core configuration, build and run the *<embARC>/example/baremetal/bootloader* example, then press any button to stop auto boot process, and enter to ntshell command mode.
         + Then use ntshell command *spirw* to program the *em7d_2bt.bin* into spiflash.
             - Firstly, run *spirw* to show help
@@ -159,6 +159,13 @@ If the binary file is generated successfully, you will output as follows:
 	"Linking         : " obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.elf
 	"Generating Binary obj_emsk_23/gnu_arcem7d/emsk_bootloader_gnu_arcem7d.bin"
 
+- build and run ntshell application:
+
+    //remember to remove APPL_DEFINES += -DUSE_APPL_MEM_CONFIG in makefile
+    $ cd <embarc_root>/example/baremetal/bootloader
+    $ gmake BOARD=emsk BD_VER=22 CUR_CORE=arcem7d TOOLCHAIN=mw run
+    $ gmake BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw run
+
 - Generate *boot.bin* using any embARC example
     + Here take *<embarc_root>/example/freertos/kernel* for example
 
@@ -183,7 +190,7 @@ If the binary file is generated successfully, you will output as follows:
       Please note that when using MCUBoot, the origin binary name is *obj_emsk_22/mw_arcem7d/signed_freertos_kernel.bin*
     + Insert SDCard back to EMSK, make sure bit 4 of DIP Switch is ON, and press re-configure button above letter **C**, and wait for autoload.
 
-.. note:: Make sure you have selected the correct configuration of EMSK via dipswitches and that you have reset the board (button above "R") to confirm its configuration
+.. note:: Make sure you have selected the correct configuration of EMSK via DIP switches and that you have reset the board (button above "R") to confirm its configuration
 
 Sample Output
 =============
