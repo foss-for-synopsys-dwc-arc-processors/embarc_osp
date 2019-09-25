@@ -1,20 +1,23 @@
+COMPONENTS = mc bmain
 
 .PHONY: default clean 
 
 export NSIM_MULTICORE=1
+SHELL=/bin/bash
+
+BOARD := nsim
+CUR_CORE := archs
+Verb := @
+MDB := mdb
 
 default: exe
-exe:
-	(cd bmain; make)
-	(cd mc; make)
+
+exe: 
+	for f in $(COMPONENTS); do make -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) ; done
 
 clean:
-	(cd bmain; make clean)
-	(cd mc; make clean)
+	for f in $(COMPONENTS); do make -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) clean ; done
 
-#Verb := @
-Verb := 
-MDB := mdb
 
 define configure_mdb_core
   $(Verb) $(MDB) $(CONNECT_OPT)$(2) -pset=$(1) -psetname=$(CPU_PREFIX)$(1) $(MDB_CORE_OPT) $(TARGET)

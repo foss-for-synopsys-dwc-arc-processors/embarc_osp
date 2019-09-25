@@ -6,8 +6,8 @@ APPL ?= bmain
 #
 EMBARC_ROOT = ../../..
 
-BOARD=nsim
-CUR_CORE=archs
+BOARD ?= nsim
+CUR_CORE ?= archs
 TCF=archs38_c0.tcf
 
 MID_SEL = common
