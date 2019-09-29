@@ -27,62 +27,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
- */
+#ifndef _NSIM_TIMER_
+#define _NSIM_TIMER_
 
-/**
- * \addtogroup BOARD_COMMON
- * @{
- */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#include "embARC_toolchain.h"
 
-/** you can add your board configuration as BOARD_EMSK defined up */
-
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
-
-#ifdef BOARD_MYSIM
-#include "mysim/mysim.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+extern volatile uint64_t gl_nsim_sys_hz_cnt;
+extern volatile uint32_t gl_nsim_ms_cnt;
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+extern void nsim_timer_init(void);
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+#ifdef __cplusplus
+}
+#endif
 
-#ifdef BOARD_EMSDP
-#include "emsdp/emsdp.h"
-#endif /* BOARD_EMDK */
-
-#endif /* _EMBARC_BOARD_H_ */
-
-/** @} end of group BOARD_COMMON */
+#endif /* _NSIM_TIMER_ */

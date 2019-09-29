@@ -27,62 +27,34 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
- */
+#ifndef _NSIM_UART_OBJ_H_
+#define _NSIM_UART_OBJ_H_
+
+#include "dev_uart.h"
 
 /**
- * \addtogroup BOARD_COMMON
- * @{
+ * NSIM UART Object Number
  */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
+#define DW_UART_NUM	(1)	/*!< NSIM UART valid number */
+
 /**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
+ * NSIM UART Object ID Macros
  */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#define NSIM_UART_0_ID	(0)	/*!< uart 0 id macro */
 
-/** you can add your board configuration as BOARD_EMSK defined up */
+/**
+ * NSIM UART Object Control Macros
+ */
+#define USE_NSIM_UART_0	(1)	/*!< enable use nsim uart 0 (stdio) */
 
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
-
-#ifdef BOARD_MYSIM
-#include "mysim/mysim.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+extern void nsim_uart_all_install(void);
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifdef __cplusplus
+}
+#endif
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
-
-#ifdef BOARD_EMSDP
-#include "emsdp/emsdp.h"
-#endif /* BOARD_EMDK */
-
-#endif /* _EMBARC_BOARD_H_ */
-
-/** @} end of group BOARD_COMMON */
+#endif /* _NSIM_UART_OBJ_H_ */

@@ -27,62 +27,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
- */
+#include "embARC_toolchain.h"
 
-/**
- * \addtogroup BOARD_COMMON
- * @{
- */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#ifdef MID_NTSHELL /* only available when enable ntshell middleware */
+#include "ntshell_io.h"
 
-/** you can add your board configuration as BOARD_EMSK defined up */
-
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
-
-#ifdef BOARD_MYSIM
-#include "mysim/mysim.h"
+/** get ntshell interface by index */
+NTSHELL_IO* get_ntshell_io(uint32_t id)
+{
+	switch (id) {
+#if (USE_NSIM_NTSHELL_UART_1)
+		case NSIM_NTSHELL_0_ID:
+			return &ntshell_uart_1;
+			break;
 #endif
+		default:
+			break;
+	}
+	return NULL;
+}
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
-
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
-
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
-
-#ifdef BOARD_EMSDP
-#include "emsdp/emsdp.h"
-#endif /* BOARD_EMDK */
-
-#endif /* _EMBARC_BOARD_H_ */
-
-/** @} end of group BOARD_COMMON */
+#endif /** MID_NTSHELL */

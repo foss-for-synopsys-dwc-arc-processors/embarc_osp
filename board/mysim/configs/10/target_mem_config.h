@@ -27,62 +27,83 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-/**
- *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
- * - This header file will contain board related settings for different boards.
- * - Each board configurations are put in its own header file, like emsk/emsk.h
- * - If you want to change the configuration, you need to go to related header file, e.g.
- *   if you want to change EMSK board settings, you need to go to emsk/emsk.h
- * - In embARC 2015.05, all the settings are in this board.h, but now it moved to related board header file
- */
+#ifndef _TARGET_MEM_CONFIG_H_
+#define _TARGET_MEM_CONFIG_H_
 
-/**
- * \addtogroup BOARD_COMMON
- * @{
- */
-#ifndef _EMBARC_BOARD_H_
-#define _EMBARC_BOARD_H_
-/**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
- *	they are used by middleware and other applications
- */
-/** here is a sample of EMSK board resource definitions */
-#ifdef BOARD_EMSK
-#include "emsk/emsk.h"
-#endif /* BOARD_EMSK */
+#include "arc_feature_config.h"
 
-/** you can add your board configuration as BOARD_EMSK defined up */
-
-/** nsim related definition */
-#ifdef BOARD_NSIM
-#include "nsim/nsim.h"
-#endif /* BOARD_NSIM */
-
-#ifdef BOARD_MYSIM
-#include "mysim/mysim.h"
+#ifdef USE_APPL_MEM_CONFIG
+#include "appl_mem_config.h"
 #endif
 
-#ifdef BOARD_AXS
-#include "axs/axs.h"
-#endif /* BOARD_AXS */
+/**
+ * DO NOT MODIFY THIS PART
+ *
+ * The information of memory devices on the board
+ */
+#ifdef ARC_FEATURE_ICCM_PRESENT
+#ifndef ICCM_SIZE
+#define ICCM_SIZE	ARC_FEATURE_ICCM_SIZE
+#endif
+#ifndef ICCM_START
+#define ICCM_START	ARC_FEATURE_ICCM_BASE
+#endif
+#else
+#ifndef ICCM_SIZE
+#define ICCM_SIZE	0x80000000
+#endif
+#ifndef ICCM_START
+#define ICCM_START	0x0
+#endif
+#endif
 
-#ifdef BOARD_HSDK
-#include "hsdk/hsdk.h"
-#endif /* BOARD_HSDK */
+#ifdef ARC_FEATURE_DCCM_PRESENT
+#ifndef DCCM_SIZE
+#define DCCM_SIZE	ARC_FEATURE_DCCM_SIZE
+#endif
+#ifndef DCCM_START
+#define DCCM_START	ARC_FEATURE_DCCM_BASE
+#endif
+#else
+#ifndef DCCM_SIZE
+#define DCCM_SIZE	0x80000000
+#endif
+#ifndef DCCM_START
+#define DCCM_START	0x80000000
+#endif
+#endif
 
-#ifdef BOARD_IOTDK
-#include "iotdk/iotdk.h"
-#endif /* BOARD_IOTDK */
+/**
+ * The default regions assigned for application to use,
+   by default, each region will use all the space
+   of each memory device
+ * User can config the start address and the size of
+   the regions to limit the application using
+ */
+#ifndef REGION_ICCM_START
+#define REGION_ICCM_START	ICCM_START
+#define REGION_ICCM_SIZE	ICCM_SIZE
+#endif
 
-#ifdef BOARD_EMSDP
-#include "emsdp/emsdp.h"
-#endif /* BOARD_EMDK */
+#ifndef REGION_DCCM_START
+#define REGION_DCCM_START	DCCM_START
+#define REGION_DCCM_SIZE	DCCM_SIZE
+#endif
 
-#endif /* _EMBARC_BOARD_H_ */
+#define IMAGE_HEAD_SIZE 0x0
 
-/** @} end of group BOARD_COMMON */
+/**
+ * The default regions used to generate link script
+ * User can select region by configuring REGION_ROM and REGION_RAM
+ * For REGION_ROM, REGION_ICCM are available
+ * For REGION_RAM, REGION_DCCM are available
+ */
+#ifndef REGION_ROM
+#define REGION_ROM	REGION_ICCM
+#endif
+
+#ifndef REGION_RAM
+#define REGION_RAM	REGION_DCCM
+#endif
+
+#endif /* _TARGET_MEM_CONFIG_H_ */
