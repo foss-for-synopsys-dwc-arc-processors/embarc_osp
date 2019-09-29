@@ -1,23 +1,25 @@
 COMPONENTS = mc bmain
 
-.PHONY: default clean 
-
 export NSIM_MULTICORE=1
 SHELL=/bin/bash
-
+ROOT=.
+export LINKER_SCRIPT_FILE=$(abspath $(ROOT)/common/linker_template_mw.ld)
 BOARD := nsim
 CUR_CORE := archs
 Verb := @
 MDB := mdb
 
+.PHONY: default clean 
 default: exe
 
 exe: 
-	for f in $(COMPONENTS); do make -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) ; done
+	for f in $(COMPONENTS); do $(MAKE) -C $$f LINKER_SCRIPT_FILE=$(LINKER_SCRIPT_FILE) BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) ; done
 
 clean:
-	for f in $(COMPONENTS); do make -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) clean ; done
+	for f in $(COMPONENTS); do $(MAKE) -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) clean ; done
 
+print-%: 
+	@for f in $(COMPONENTS); do echo $$f; $(MAKE) -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) print-$* ; done
 
 define configure_mdb_core
   $(Verb) $(MDB) $(CONNECT_OPT)$(2) -pset=$(1) -psetname=$(CPU_PREFIX)$(1) $(MDB_CORE_OPT) $(TARGET)
@@ -30,3 +32,4 @@ sim: exe
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
 	#$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
 	$(MDB) $(MDB_OPT) -multifiles=bmain
+

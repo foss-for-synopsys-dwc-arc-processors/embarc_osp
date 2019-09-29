@@ -21,6 +21,7 @@ APPL_INC_DIR = .
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
+print-%: ;  @echo $* = $($*)
 
 ### Options above must be added before include options.mk ###
 # include key embARC build system makefile
