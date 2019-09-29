@@ -5,6 +5,8 @@ APPL ?= mc
 # root dir of embARC
 #
 EMBARC_ROOT = ../../..
+ROOT ?= ..
+LINKER_SCRIPT_FILE ?= $(ROOT)/common/linker_template_mw.ld
 
 BOARD ?= nsim
 CUR_CORE ?= archs
@@ -18,6 +20,9 @@ APPL_ASMSRC_DIR = .
 
 # application include dirs
 APPL_INC_DIR = .
+
+# name the app
+APPL_DEFINES += -DAPPL_MC
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile

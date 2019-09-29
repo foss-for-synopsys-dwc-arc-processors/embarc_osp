@@ -29,6 +29,7 @@
 --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
+#include <stdio.h>
 
 #define LED_TOGGLE_MASK		BOARD_LED_MASK
 
@@ -38,6 +39,7 @@
 int main(void)
 {
 	uint16_t led_toggle_val = LED_TOGGLE_MASK;
+    printf("mc has started\n");
 
 	while (1) {
 		led_write(led_toggle_val, BOARD_LED_MASK);

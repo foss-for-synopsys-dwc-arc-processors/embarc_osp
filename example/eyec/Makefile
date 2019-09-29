@@ -29,7 +29,8 @@ NSIM_CONNECT_OPT=-nsim -DLL=$(TOOLSDIR)arccli,shmem=1234
 MDB_OPT=-OK -nosplash -prelaunch="${NSIM_HOME}/bin/arcsrv${EXE} -DLL=${NSIM_HOME}/lib/libsim -shmem=1234" -prelaunchwd= -prelaunchdelay=2000
 
 sim: exe
-	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
-	#$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
-	$(MDB) $(MDB_OPT) -multifiles=bmain
+	/bin/rm -rf $(ROOT)/.sc.project
+	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
+	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
+	$(MDB) $(MDB_OPT) -multifiles=bmain,mc
 
