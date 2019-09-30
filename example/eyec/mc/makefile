@@ -16,10 +16,13 @@ MID_SEL = common
 
 # application source dirs
 APPL_CSRC_DIR = .
+APPL_CXXSRCS += $(ROOT)/common/shared_data.cpp
+
 APPL_ASMSRC_DIR = .
 
 # application include dirs
 APPL_INC_DIR = .
+APPL_INC_DIR += $(ROOT)/common
 
 # name the app
 APPL_DEFINES += -DAPPL_MC

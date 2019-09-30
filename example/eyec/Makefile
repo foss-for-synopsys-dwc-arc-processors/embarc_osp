@@ -9,7 +9,12 @@ CUR_CORE := archs
 Verb := @
 MDB := mdb
 
-.PHONY: default clean 
+ifeq ($(USE_CL), 1)
+	MDB_CL := -cl
+else
+	MDB_CL := 
+endif
+.PHONY: default clean sim run
 default: exe
 
 exe: 
@@ -32,5 +37,7 @@ sim: exe
 	/bin/rm -rf $(ROOT)/.sc.project
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
-	$(MDB) $(MDB_OPT) -multifiles=bmain,mc
+	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=bmain,mc
 
+run: MDB_CL=-cl 
+run: sim

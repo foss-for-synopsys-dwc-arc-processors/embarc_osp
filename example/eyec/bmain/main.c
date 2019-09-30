@@ -30,6 +30,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 #include <stdio.h>
+#include "shared_data.h"
 
 #define LED_TOGGLE_MASK		BOARD_LED_MASK
 
@@ -41,6 +42,10 @@ int main(void)
 	uint16_t led_toggle_val = LED_TOGGLE_MASK;
 
     printf("main has started\n");
+    printf("main: shared_data size %u at %p\n", sizeof(g_shared_data), &g_shared_data);
+    uint32_t id = _lr(0x4);
+    printf("main: id = 0x%x\n", id);
+
 	while (1) {
 		led_write(led_toggle_val, BOARD_LED_MASK);
 		led_toggle_val = ~led_toggle_val;
