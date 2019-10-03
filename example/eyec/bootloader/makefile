@@ -1,5 +1,5 @@
 # Application name
-APPL ?= bmain
+APPL ?= bootloader
 
 #
 # root dir of embARC
@@ -11,20 +11,17 @@ LINKER_SCRIPT_FILE ?= $(ROOT)/common/linker_template_mw.ld
 BOARD ?= nsim
 CUR_CORE ?= archs
 
-MID_SEL = common
 
 # application source dirs
 APPL_CSRC_DIR = .
-APPL_CXXSRCS += $(ROOT)/common/shared_data.cpp
 
 APPL_ASMSRC_DIR = .
 
 # application include dirs
 APPL_INC_DIR = .
-APPL_INC_DIR += $(ROOT)/common
 
 # name the app
-APPL_DEFINES += -DAPPL_M0
+APPL_DEFINES += -DBOOTLOADER
 
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
