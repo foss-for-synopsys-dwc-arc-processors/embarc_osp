@@ -10,7 +10,6 @@ LINKER_SCRIPT_FILE ?= $(ROOT)/common/linker_template_mw.ld
 
 BOARD ?= nsim
 CUR_CORE ?= archs
-TCF=mc.tcf
 
 MID_SEL = common
 

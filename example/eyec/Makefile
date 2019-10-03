@@ -1,9 +1,10 @@
-COMPONENTS = mc bmain
+COMPONENTS = mc bmain bootloader
 
 export NSIM_MULTICORE=1
 SHELL=/bin/bash
 ROOT=.
 export LINKER_SCRIPT_FILE=$(abspath $(ROOT)/common/linker_template_mw.ld)
+export TCF=$(abspath $(ROOT)/common/archs38_c0.tcf)
 BOARD := nsim
 CUR_CORE := archs
 Verb := @
@@ -38,6 +39,12 @@ sim: exe
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
 	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=bmain,mc
+
+bl: exe
+	/bin/rm -rf $(ROOT)/.sc.project
+	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_10/mw_archs/bootloader_mw_archs.elf
+	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_10/mw_archs/bootloader_mw_archs.elf
+	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1
 
 run: MDB_CL=-cl 
 run: sim
