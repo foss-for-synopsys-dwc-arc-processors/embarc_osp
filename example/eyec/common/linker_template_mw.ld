@@ -1,5 +1,10 @@
 #define __ASSEMBLY__
-#include <target_mem_config.h>
+#define ROM_BASE 0x0
+#define ROM_SIZE (128 * 1024)
+#define RAM_BASE (1 * 1024 * 1024)
+#define RAM_SIZE (
+
+
 
 #define SYS_MEM_BASE 0x0
 #define SYS_MEM_SIZE (8 * 1024 * 1024)
@@ -27,9 +32,6 @@ ENTRY(_start)
 SECTIONS {
 
 	GROUP : {
-		.image_head: {
-			. = . + IMAGE_HEAD_SIZE;
-		}
 		.init_bootstrap:{
 			*(.init_vector .init_vector.*)
 			*(.init_bootstrap .init_bootstrap.*)

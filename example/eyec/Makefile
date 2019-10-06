@@ -42,8 +42,8 @@ sim: exe
 
 bl: exe
 	/bin/rm -rf $(ROOT)/.sc.project
-	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_10/mw_archs/bootloader_mw_archs.elf
-	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_10/mw_archs/bootloader_mw_archs.elf
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
 	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1
 
 run: MDB_CL=-cl 
