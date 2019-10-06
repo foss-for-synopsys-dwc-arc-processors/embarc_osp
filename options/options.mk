@@ -208,16 +208,18 @@ APPL_LINK_FILE = $(strip $(OUT_DIR)/linker_$(TOOLCHAIN).ldf)
 #   INCLUDE target specific configuration makefiles
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/options/rules.mk
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/options/toolchain.mk
+ifndef BOOTLODAER
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/options/debug.mk
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/options/files.mk
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/arc/arc.mk
 COMMON_COMPILE_PREREQUISITES += $(EMBARC_ROOT)/board/board.mk
-
+endif
 # include toolchain settings
 include $(EMBARC_ROOT)/options/toolchain.mk
 
 ################# Components of embARC ###################################
 # board specific settings
+ifndef BOOTLOADER
 include $(EMBARC_ROOT)/board/board.mk
 
 # ARC HAL
@@ -235,7 +237,7 @@ endif
 
 # middleware makefile
 include $(EMBARC_ROOT)/middleware/middleware.mk
-
+endif
 ############## Post processing #############################################
 # source directories and include directories settings
 include $(EMBARC_ROOT)/options/files.mk

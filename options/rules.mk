@@ -34,7 +34,9 @@ ALL_GENERATED_DIRS_TMPFILES = $(sort $(call get_mkdir_tmps, $(ALL_GENERATED_DIRS
 # Collect all libraries
 ##
 ALL_LIBS = $(BOARD_LIB) $(MID_LIBS) $(OS_LIBS) $(CPU_LIBS) $(LIB_LIBS)
+ifndef BOOTLOADER
 EMBARC_LIB = $(OUT_DIR)/libembarc.a
+endif
 
 ##
 # Collect Dependency Files
