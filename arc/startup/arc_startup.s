@@ -54,11 +54,12 @@
 
 /* initial vector table */
 	.section .init_vector, "a"
-	.long _arc_reset
+        /*.long _arc_reset*/
 	.section .init_bootstrap, "ax"
 	.global _arc_reset
 	.global _start
 	.align 4
+	b _arc_reset
 _start:
 _arc_reset:
 _arc_reset_stage1:

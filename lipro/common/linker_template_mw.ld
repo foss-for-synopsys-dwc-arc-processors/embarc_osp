@@ -1,29 +1,18 @@
 #define __ASSEMBLY__
-#define ROM_BASE 0x0
-#define ROM_SIZE (128 * 1024)
-#define RAM_BASE (1 * 1024 * 1024)
-#define RAM_SIZE (
-
-
-
-#define SYS_MEM_BASE 0x0
-#define SYS_MEM_SIZE (8 * 1024 * 1024)
-#define M0_BASE SYS_MEM_BASE
-#define M0_SIZE (1024 * 1024)
-#define MC_BASE (M0_BASE + M0_SIZE)
-#define MC_SIZE (1024 * 1024)
-#define SHARED_SIZE (1024 * 1024)
-#define SHARED_BASE (SYS_MEM_BASE + SYS_MEM_SIZE - SHARED_SIZE)
+#include "lipro_memmap.h"
 
 MEMORY {
 #if defined(BOOTLOADER)
-    REGION_SYS_MEM: ORIGIN = M0_BASE, LENGTH = M0_SIZE
+    REGION_CODE: ORIGIN = BL_CODE_START, LENGTH = BL_CODE_SIZE
+    REGION_DATA: ORIGIN = BL_DATA_START, LENGTH = BL_DATA_SIZE
 #elif defined(APPL_M0)
-    REGION_SYS_MEM: ORIGIN = M0_BASE, LENGTH = M0_SIZE
+    REGION_CODE: ORIGIN = MP_CODE_START, LENGTH = MP_CODE_SIZE
+    REGION_DATA: ORIGIN = MP_DATA_START, LENGTH = MP_DATA_SIZE
 #elif defined(APPL_MC)
-    REGION_SYS_MEM: ORIGIN = MC_BASE, LENGTH = MC_SIZE
+    REGION_CODE: ORIGIN = MC_CODE_START, LENGTH = MC_CODE_SIZE
+    REGION_DATA: ORIGIN = MC_DATA_START, LENGTH = MC_DATA_SIZE
 #endif
-    REGION_SHARED: ORIGIN = SHARED_BASE, LENGTH = SHARED_SIZE
+    REGION_SHARED: ORIGIN = SHARED_DATA_START, LENGTH = SHARED_DATA_SIZE
 }
 
 
@@ -66,10 +55,6 @@ SECTIONS {
 			_e_rodata = .;
 		}
 
-	} > REGION_SYS_MEM
-
-
-	GROUP : {
 		.data ALIGN(8): {
 			_f_data = .;
 			_f_sdata = .;
@@ -82,7 +67,7 @@ SECTIONS {
 			*(.tls*)
 			_e_data = .;
 		}
-	} > REGION_SYS_MEM
+        } > REGION_CODE
 
 	GROUP (NOLOAD) : {
 		.bss ALIGN(8): {
@@ -92,7 +77,7 @@ SECTIONS {
 		}
 		.stack ALIGN(4) SIZE(_STACKSIZE): {}
 		.heap? ALIGN(4) SIZE(_HEAPSIZE): {}
-	} > REGION_SYS_MEM
+	} > REGION_DATA
 
     GROUP : {
         .shared_data : {}

@@ -4,7 +4,7 @@ APPL ?= mc
 #
 # root dir of embARC
 #
-EMBARC_ROOT = ../../..
+EMBARC_ROOT = ../..
 ROOT ?= ..
 LINKER_SCRIPT_FILE ?= $(ROOT)/common/linker_template_mw.ld
 

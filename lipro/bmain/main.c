@@ -50,7 +50,7 @@ int main(void)
 		led_write(led_toggle_val, BOARD_LED_MASK);
 		led_toggle_val = ~led_toggle_val;
 		board_delay_ms(400, 1);
-                printf ("counter is %lu\n", g_shared_data.counter);
+                printf ("counter is %d\n", g_shared_data.counter);
 	}
 
 	return E_SYS;

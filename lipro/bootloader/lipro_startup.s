@@ -53,7 +53,8 @@
 .extern	board_main
 .extern exc_entry_table
 */
-        
+.extern main        
+       
 /* initial vector table */
 	.section .init_vector, "a"
 	.long _arc_reset
@@ -254,6 +255,7 @@ _arc_reset_call_main:
 /* OMER        
 	jl	board_main	// board-level main 
 */
+        jl      main
 #if defined(__MW__)
 	jl	_fini
 #elif defined(__GNU__)

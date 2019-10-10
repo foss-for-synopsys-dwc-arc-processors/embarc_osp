@@ -1,4 +1,5 @@
-COMPONENTS = mc bmain bootloader
+COMPONENTS = mc bmain
+ALL_COMPONENTS = $(COMPONENTS) bootloader
 
 export NSIM_MULTICORE=1
 SHELL=/bin/bash
@@ -21,8 +22,15 @@ default: exe
 exe: 
 	for f in $(COMPONENTS); do $(MAKE) -C $$f LINKER_SCRIPT_FILE=$(LINKER_SCRIPT_FILE) BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) ; done
 
+bootloader: exe
+	tools/make_flash.py common/img_config.json flash.bin
+	cp flash.bin bootloader
+	touch bootloader/flash.s
+	$(MAKE) -C bootloader LINKER_SCRIPT_FILE=$(LINKER_SCRIPT_FILE) BOARD=$(BOARD) CUR_CORE=$(CUR_CORE)
+
 clean:
-	for f in $(COMPONENTS); do $(MAKE) -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) clean ; done
+	for f in $(ALL_COMPONENTS); do $(MAKE) -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) clean ; done
+	rm -f flash.bin bootloader/flash.bin
 
 print-%: 
 	@for f in $(COMPONENTS); do echo $$f; $(MAKE) -C $$f BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) print-$* ; done
@@ -40,9 +48,9 @@ sim: exe
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
 	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=bmain,mc
 
-bl: exe
+bl: exe bootloader
 	/bin/rm -rf $(ROOT)/.sc.project
-	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf" -prop="__HOSTLINK__=0x128d00" @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
 	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
 	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1
 
