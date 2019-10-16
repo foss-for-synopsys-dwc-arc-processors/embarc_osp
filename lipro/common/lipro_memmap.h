@@ -1,0 +1,27 @@
+#ifndef _LIPRO_MEMMAP_H
+#define _LIPRO_MEMMAP_H
+
+#define ROM_BASE 0
+#define ROM_SIZE (128 * 1024)
+#define RAM_BASE (1 * 1024 * 1024)
+#define RAM_SIZE (8 * 1024 * 1024)
+
+#define BL_CODE_START ROM_BASE
+#define BL_CODE_SIZE  ROM_SIZE
+#define BL_DATA_START RAM_BASE
+#define BL_DATA_SIZE  (128 * 1024)
+
+#define MP_CODE_START (BL_DATA_START + BL_DATA_SIZE)
+#define MP_CODE_SIZE  (512 * 1024)
+#define MP_DATA_START (MP_CODE_START + MP_CODE_SIZE)
+#define MP_DATA_SIZE  (512 * 1024)
+
+#define MC_CODE_START (MP_DATA_START + MP_DATA_SIZE)
+#define MC_CODE_SIZE  (512 * 1024)
+#define MC_DATA_START (MC_CODE_START + MC_CODE_SIZE)
+#define MC_DATA_SIZE  (512 * 1024)
+
+#define SHARED_DATA_START (MC_DATA_START + MC_DATA_SIZE)
+#define SHARED_DATA_SIZE  (128 * 1024)
+                  
+#endif // _LIPRO_MEMMAP_H
