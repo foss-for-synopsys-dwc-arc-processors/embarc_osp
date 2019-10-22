@@ -1,4 +1,4 @@
-COMPONENTS = mc bmain
+COMPONENTS = mc bmain extensions
 ALL_COMPONENTS = $(COMPONENTS) bootloader
 
 export NSIM_MULTICORE=1
@@ -50,8 +50,8 @@ sim: exe
 
 bl: exe bootloader
 	/bin/rm -rf $(ROOT)/.sc.project
-	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf" -prop="__HOSTLINK__=0x128d00" @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
-	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 @bootloader/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf" @mp.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 -cmd="symbols mc/obj_nsim_10/mw_archs/mc_mw_archs.elf" @mc.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
 	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1
 
 run: MDB_CL=-cl 

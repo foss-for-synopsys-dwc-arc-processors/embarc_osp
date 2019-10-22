@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-libnames = ['os', 'sys', 'json', 'cffi']
+libnames = ['os', 'sys', 'json', 'cffi', 'subprocess']
 for libname in libnames:       
     try:
         lib = __import__(libname)
@@ -45,6 +45,9 @@ for module in config:
     man[0].modules[module_count].module_id = int(module['module_id'])
     print(module['module_name'].upper()+'_CODE_START' + " = " + str(eval(module['module_name'].upper()+'_CODE_START')))
     man[0].modules[module_count].memory_address = eval(module['module_name'].upper()+'_CODE_START')
+    hl_addr = subprocess.check_output("nmac " + module['src'] + " | grep __HOSTLINK__", shell=True).decode("utf-8").split()[0]
+    with open(module['module_name']+'.arg', 'w') as f:
+        f.write("-prop=__HOSTLINK__=0x" + hl_addr +"\n")
     flash_offset += len(bindata)
     binary_data.extend(bindata)
     module_count += 1
