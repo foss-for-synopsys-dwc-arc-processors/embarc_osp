@@ -30,7 +30,7 @@ man = ffi.new('manifest_t[1]')
 module_count = 0
 flash_offset = ffi.sizeof(man)
 binary_data=bytearray()
-    
+num_cores=4
 
 with open(sys.argv[1]) as f:
     config = json.loads(f.read())
@@ -45,9 +45,10 @@ for module in config:
     man[0].modules[module_count].module_id = int(module['module_id'])
     print(module['module_name'].upper()+'_CODE_START' + " = " + str(eval(module['module_name'].upper()+'_CODE_START')))
     man[0].modules[module_count].memory_address = eval(module['module_name'].upper()+'_CODE_START')
-    hl_addr = subprocess.check_output("nmac " + module['src'] + " | grep __HOSTLINK__", shell=True).decode("utf-8").split()[0]
-    with open(module['module_name']+'.arg', 'w') as f:
-        f.write("-prop=__HOSTLINK__=0x" + hl_addr +"\n")
+    if man[0].modules[module_count].module_id < num_cores:
+        hl_addr = subprocess.check_output("nmac " + module['src'] + " | grep __HOSTLINK__", shell=True).decode("utf-8").split()[0]
+        with open(module['module_name']+'.arg', 'w') as f:
+            f.write("-prop=__HOSTLINK__=0x" + hl_addr +"\n")
     flash_offset += len(bindata)
     binary_data.extend(bindata)
     module_count += 1

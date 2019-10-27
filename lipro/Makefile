@@ -1,4 +1,4 @@
-COMPONENTS = mc bmain extensions
+COMPONENTS = mc bmain extensions second_stage
 ALL_COMPONENTS = $(COMPONENTS) bootloader
 
 export NSIM_MULTICORE=1

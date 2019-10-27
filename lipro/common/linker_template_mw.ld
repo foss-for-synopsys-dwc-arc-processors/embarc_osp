@@ -11,8 +11,12 @@ MEMORY {
 #elif defined(APPL_MC)
     REGION_CODE: ORIGIN = MC_CODE_START, LENGTH = MC_CODE_SIZE
     REGION_DATA: ORIGIN = MC_DATA_START, LENGTH = MC_DATA_SIZE
+#elif defined(APPL_SECOND_STAGE)
+    REGION_CODE: ORIGIN = SSTG_CODE_START, LENGTH = SSTG_CODE_SIZE
+    REGION_DATA: ORIGIN = SSTG_DATA_START, LENGTH = SSTG_DATA_SIZE
+    #undef _STACKSIZE
+    #define _STACKSIZE 4096
 #endif
-    REGION_SHARED: ORIGIN = SHARED_DATA_START, LENGTH = SHARED_DATA_SIZE
 }
 
 
@@ -54,18 +58,19 @@ SECTIONS {
 
 			_e_rodata = .;
 		}
-
-		.data ALIGN(8): {
-			_f_data = .;
-			_f_sdata = .;
-			*(.sdata)
-			*(.sbss)
-			_e_sdata = .;
-			*(TYPE data)
-		}
 		.tls ALIGN(8): {
 			*(.tls*)
 			_e_data = .;
+		} 
+                .sdata: { 
+			_f_sdata = .;
+			/**(.sdata)
+			*(.sbss)*/
+			_e_sdata = .;                    
+                }
+		.data ALIGN(8): {
+			_f_data = .;
+			*(TYPE data)
 		}
         } > REGION_CODE
 
@@ -79,10 +84,9 @@ SECTIONS {
 		.heap? ALIGN(4) SIZE(_HEAPSIZE): {}
 	} > REGION_DATA
 
-    GROUP : {
-        .shared_data : {}
-    } > REGION_SHARED
 
+        _shared_data_addr = SHARED_DATA_START;
+        _second_stage_addr = SSTG_CODE_START;
 	_f_stack = ADDR(.stack);
 	_e_stack = ADDR(.stack) + SIZEOF(.stack);
 	_f_heap = ADDR(.heap);

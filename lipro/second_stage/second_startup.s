@@ -115,20 +115,7 @@ _arc_reset_stage2:
 /* OMER CHECK ID */        
         lr      r0, [AUX_IDENTITY]       
         xbfu    r0, r0, 8, 8
-        ror     r1, r0, 30
-        add     r2, core_ready, r1
-        mov     r3, 0
-        st.di   r3, [r2, 0]
-        cmp_s   r0,4
-        flag.cc 0
-        breq_s  r0, 0, _arc_reset_core0_only
-        /* OMER loop until ready */
-_arc_slave_core_loop_wa:   
-        ld.di   r3, [r2, 0]
-        breq_s  r3, 0, _arc_slave_core_loop_wa        
-        bl      _second_stage_addr
-
-_arc_reset_core0_only:  
+        ror     r1, r0, 22
 
  /* use the new vector table to replace the old one */
            
@@ -140,28 +127,9 @@ _arc_reset_core0_only:
 #endif
 */
 /* init stack */
-#if ARC_FEATURE_RGF_BANKED_REGS >= 16 && ARC_FEATURE_FIRQ == 1
-#if _STACKSIZE < 512
-#error "not enough stack size for irq and firq"
-#endif
-
-/* switch to register bank1 */
-	lr      r0, [AUX_STATUS32]
-	bic     r0, r0, 0x70000
-	or      r0, r0, 0x10000
-	kflag   r0
-/* set sp, gp, fp in bank1 */
-	mov     sp, _f_stack+256
-	mov     gp, _f_sdata
-	mov     fp, 0
-/* come back to bank0 */
-	lr      r0, [AUX_STATUS32]
-	bic     r0, r0, 0x70000
-	kflag   r0
-	mov	sp, _e_stack
-#else
 	mov	sp, _e_stack	/* init stack pointer */
-#endif
+        add     sp, sp, r1
+
 	mov	gp, _f_sdata	/* init small-data base register */
 	mov	fp, 0		/* init fp register */
 

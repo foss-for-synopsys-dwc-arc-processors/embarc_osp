@@ -15,6 +15,7 @@ typedef struct _module_entry_t {
         uint32_t size_in_bytes;
         uint32_t flash_address;
         uint32_t memory_address;
+        uint32_t load_address;
         uint8_t  hash[HASH_SIZE];
 } module_entry_t;
 

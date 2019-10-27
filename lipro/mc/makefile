@@ -15,7 +15,7 @@ MID_SEL = common
 
 # application source dirs
 APPL_CSRC_DIR = .
-APPL_CXXSRCS += $(ROOT)/common/shared_data.cpp
+APPL_CSRCS += $(ROOT)/common/shared_data.c
 
 APPL_ASMSRC_DIR = .
 
