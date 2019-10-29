@@ -7,8 +7,8 @@
 	0x60	0x2		BCR_VER
 	0x68	0x10		VECBASE_AC_BUILD
 	0x6a	0x3		DATA_UNCACHED
+	0x6d	0x1002		MPU_BUILD
 	0x6e	0xc902		RF_BUILD
-	0x6f	0x4e21a4a	MMU_BUILD
 	0x72	0x14227105	D_CACHE_BUILD
 	0x75	0x10704		TIMER_BUILD
 	0x76	0x605		AP_BUILD
@@ -94,13 +94,9 @@
 	-bpu_bc_tag_size=18 
 	-bpu_tosq_entries=8 
 	-bpu_fb_entries=2 
-	-smart_stack_entries=64 
-	-mmuv4 
-	-mmu_pgsz=8K 
-	-mmu_ntlb_entries=1024 
-	-mmu_stlb_entries=16 
-	-mmu_super_pgsz=2M 
-	-mmu_pae40 
+	-smart_stack_entries=64
+        -mpu
+        -mpu_regions=16
 	-interrupts=72 
 	-interrupt_priorities=2 
 	-ext_interrupts=70 
@@ -163,13 +159,8 @@
 	nsim_bpu_tosq_entries=8
 	nsim_bpu_fb_entries=2
 	nsim_isa_smart_stack_entries=64
-	nsim_mmu=4
-	mmu_pagesize=8K
-	mmu_ntlb_ways=4
-	mmu_ntlb_sets=256
-	mmu_stlb_entries=16
-	mmu_super_pagesize=2M
-	mmu_pae40_enabled=1
+        mpu_version=2
+        mpu_regions=16
 	nsim_isa_number_of_interrupts=72
 	nsim_isa_number_of_levels=2
 	nsim_isa_number_of_external_interrupts=70
@@ -232,12 +223,6 @@
 	processor.bpu_tosq_entries=8
 	processor.bpu_fb_entries=2
 	processor.smart_stack_entries=64
-	processor.mmuv4=1
-	processor.mmu_pgsz=8K
-	processor.mmu_ntlb_entries=1024
-	processor.mmu_stlb_entries=16
-	processor.mmu_super_pgsz=2M
-	processor.mmu_pae40=1
 	processor.interrupts=72
 	processor.interrupt_priorities=2
 	processor.ext_interrupts=70
@@ -881,29 +866,13 @@
 -rtt_feature_level full
 
 
-######## Memory Management Unit --- com.arc.hardware.HS.Memory_Management_Unit.1_0 ########
+######## Memory Protection Unit --- com.arc.hardware.HS.Memory_Protection_Unit.1_0 ########
 
-# Create Memory Management Unit
--create com.arc.hardware.HS.Memory_Management_Unit.1_0 "System.Cluster.CPUisle__0.ARCv2HS.Memory Management Unit"
+# Create Memory Protection Unit
+-create com.arc.hardware.HS.Memory_Protection_Unit.1_0 "System.Cluster.CPUisle.ARCv2HS.Memory Protection Unit"
 
-# mmu_ntlb_num_entries --- This is the number of joint TLB normal page entries.
--mmu_ntlb_num_entries 1024
-
-# mmu_page_size_sel0 --- This is the page size of each joint TLB normal page.
--mmu_page_size_sel0 8K
-
-# mmu_stlb_num_entries --- This is the number of joint TLB super page entries.
--mmu_stlb_num_entries 16
-
-# mmu_page_size_sel1 --- This is the page size of each joint TLB super page.
--mmu_page_size_sel1 2M
-
-# mmu_pae_enabled --- If enabled, PAE provides for a 40-bit physical memory address.
--mmu_pae_enabled true
-
-# mmu_shared_lib --- If enabled, the shared-library ASID feature is supported.
--mmu_shared_lib true
-
+# mpu_num_regions --- Number of configured memory regions.
+-mpu_num_regions 16
 
 ######## Performance Monitor --- com.arc.hardware.HS.Performance_Monitor.1_0 ########
 
@@ -1246,29 +1215,13 @@
 -rtt_feature_level full
 
 
-######## Memory Management Unit --- com.arc.hardware.HS.Memory_Management_Unit.1_0 ########
+######## Memory Protection Unit --- com.arc.hardware.HS.Memory_Protection_Unit.1_0 ########
 
-# Create Memory Management Unit
--create com.arc.hardware.HS.Memory_Management_Unit.1_0 "System.Cluster.CPUisle__1.ARCv2HS.Memory Management Unit"
+# Create Memory Protection Unit
+-create com.arc.hardware.HS.Memory_Protection_Unit.1_0 "System.Cluster.CPUisle.ARCv2HS.Memory Protection Unit"
 
-# mmu_ntlb_num_entries --- This is the number of joint TLB normal page entries.
--mmu_ntlb_num_entries 1024
-
-# mmu_page_size_sel0 --- This is the page size of each joint TLB normal page.
--mmu_page_size_sel0 8K
-
-# mmu_stlb_num_entries --- This is the number of joint TLB super page entries.
--mmu_stlb_num_entries 16
-
-# mmu_page_size_sel1 --- This is the page size of each joint TLB super page.
--mmu_page_size_sel1 2M
-
-# mmu_pae_enabled --- If enabled, PAE provides for a 40-bit physical memory address.
--mmu_pae_enabled true
-
-# mmu_shared_lib --- If enabled, the shared-library ASID feature is supported.
--mmu_shared_lib true
-
+# mpu_num_regions --- Number of configured memory regions.
+-mpu_num_regions 16
 
 ######## Performance Monitor --- com.arc.hardware.HS.Performance_Monitor.1_0 ########
 
@@ -1575,29 +1528,13 @@
 -rtt_feature_level full
 
 
-######## Memory Management Unit --- com.arc.hardware.HS.Memory_Management_Unit.1_0 ########
+######## Memory Protection Unit --- com.arc.hardware.HS.Memory_Protection_Unit.1_0 ########
 
-# Create Memory Management Unit
--create com.arc.hardware.HS.Memory_Management_Unit.1_0 "System.Cluster.CPUisle__2.ARCv2HS.Memory Management Unit"
+# Create Memory Protection Unit
+-create com.arc.hardware.HS.Memory_Protection_Unit.1_0 "System.Cluster.CPUisle.ARCv2HS.Memory Protection Unit"
 
-# mmu_ntlb_num_entries --- This is the number of joint TLB normal page entries.
--mmu_ntlb_num_entries 1024
-
-# mmu_page_size_sel0 --- This is the page size of each joint TLB normal page.
--mmu_page_size_sel0 8K
-
-# mmu_stlb_num_entries --- This is the number of joint TLB super page entries.
--mmu_stlb_num_entries 16
-
-# mmu_page_size_sel1 --- This is the page size of each joint TLB super page.
--mmu_page_size_sel1 2M
-
-# mmu_pae_enabled --- If enabled, PAE provides for a 40-bit physical memory address.
--mmu_pae_enabled true
-
-# mmu_shared_lib --- If enabled, the shared-library ASID feature is supported.
--mmu_shared_lib true
-
+# mpu_num_regions --- Number of configured memory regions.
+-mpu_num_regions 16
 
 ######## Performance Monitor --- com.arc.hardware.HS.Performance_Monitor.1_0 ########
 
@@ -1940,29 +1877,13 @@
 -rtt_feature_level full
 
 
-######## Memory Management Unit --- com.arc.hardware.HS.Memory_Management_Unit.1_0 ########
+######## Memory Protection Unit --- com.arc.hardware.HS.Memory_Protection_Unit.1_0 ########
 
-# Create Memory Management Unit
--create com.arc.hardware.HS.Memory_Management_Unit.1_0 "System.Cluster.CPUisle__3.ARCv2HS.Memory Management Unit"
+# Create Memory Protection Unit
+-create com.arc.hardware.HS.Memory_Protection_Unit.1_0 "System.Cluster.CPUisle.ARCv2HS.Memory Protection Unit"
 
-# mmu_ntlb_num_entries --- This is the number of joint TLB normal page entries.
--mmu_ntlb_num_entries 1024
-
-# mmu_page_size_sel0 --- This is the page size of each joint TLB normal page.
--mmu_page_size_sel0 8K
-
-# mmu_stlb_num_entries --- This is the number of joint TLB super page entries.
--mmu_stlb_num_entries 16
-
-# mmu_page_size_sel1 --- This is the page size of each joint TLB super page.
--mmu_page_size_sel1 2M
-
-# mmu_pae_enabled --- If enabled, PAE provides for a 40-bit physical memory address.
--mmu_pae_enabled true
-
-# mmu_shared_lib --- If enabled, the shared-library ASID feature is supported.
--mmu_shared_lib true
-
+# mpu_num_regions --- Number of configured memory regions.
+-mpu_num_regions 16
 
 ######## Performance Monitor --- com.arc.hardware.HS.Performance_Monitor.1_0 ########
 
@@ -2299,17 +2220,11 @@
 	.define	core_config_bcr_rf_build_r,0
 	.define	core_config_bcr_rf_build_b,1
 	.define	core_config_bcr_rf_build_d,3
-	.define	core_config_bcr_mmu_build,0x04e21a4a
-	.define	core_config_bcr_mmu_build_version,4
-	.define	core_config_bcr_mmu_build_sl,1
-	.define	core_config_bcr_mmu_build_psz1,12
-	.define	core_config_bcr_mmu_build_psz0,4
-	.define	core_config_bcr_mmu_build_pae,1
-	.define	core_config_bcr_mmu_build_ja,2
-	.define	core_config_bcr_mmu_build_je,2
-	.define	core_config_bcr_mmu_build_jes,1
-	.define	core_config_bcr_mmu_build_itlb,1
-	.define	core_config_bcr_mmu_build_dtlb,2
+        .define core_config_bcr_mpu_build,0x00001002
+        .define core_config_bcr_mpu_build_i,0
+        .define core_config_bcr_mpu_build_s,0
+        .define core_config_bcr_mpu_build_regions,16
+        .define core_config_bcr_mpu_build_version,2        
 	.define	core_config_bcr_d_cache_build,0x14227105
 	.define	core_config_bcr_d_cache_build_version,5
 	.define	core_config_bcr_d_cache_build_assoc,1
@@ -2501,15 +2416,9 @@
 	.define	core_config_bpu_tosq_entries,8
 	.define	core_config_bpu_fb_entries,2
 	.define	core_config_smart_stack_entries,64
-	.define	core_config_mmuv4_present,1
-	.define	core_config_mmuv4,1
-	.define	core_config_mmu_pgsz,8192
-	.define	core_config_mmu_pgsz_KM,"8K"
-	.define	core_config_mmu_ntlb_entries,1024
-	.define	core_config_mmu_stlb_entries,16
-	.define	core_config_mmu_super_pgsz,2097152
-	.define	core_config_mmu_super_pgsz_KM,"2M"
-	.define	core_config_mmu_pae40,1
+        .define core_config_mpu_present,1
+        .define core_config_mpu,1
+        .define core_config_mpu_regions,16
 	.define	core_config_interrupts_present,1
 	.define	core_config_interrupts_number,72
 	.define	core_config_interrupts_priorities,2
@@ -2568,17 +2477,11 @@
 	#define	core_config_bcr_rf_build_r	0
 	#define	core_config_bcr_rf_build_b	1
 	#define	core_config_bcr_rf_build_d	3
-	#define	core_config_bcr_mmu_build	0x04e21a4a
-	#define	core_config_bcr_mmu_build_version	4
-	#define	core_config_bcr_mmu_build_sl	1
-	#define	core_config_bcr_mmu_build_psz1	12
-	#define	core_config_bcr_mmu_build_psz0	4
-	#define	core_config_bcr_mmu_build_pae	1
-	#define	core_config_bcr_mmu_build_ja	2
-	#define	core_config_bcr_mmu_build_je	2
-	#define	core_config_bcr_mmu_build_jes	1
-	#define	core_config_bcr_mmu_build_itlb	1
-	#define	core_config_bcr_mmu_build_dtlb	2
+        #define core_config_bcr_mpu_build       0x00001002
+        #define core_config_bcr_mpu_build_i     0
+        #define core_config_bcr_mpu_build_s     0
+        #define core_config_bcr_mpu_build_regions       16
+        #define core_config_bcr_mpu_build_version       2
 	#define	core_config_bcr_d_cache_build	0x14227105
 	#define	core_config_bcr_d_cache_build_version	5
 	#define	core_config_bcr_d_cache_build_assoc	1
@@ -2770,15 +2673,9 @@
 	#define	core_config_bpu_tosq_entries	8
 	#define	core_config_bpu_fb_entries	2
 	#define	core_config_smart_stack_entries	64
-	#define	core_config_mmuv4_present	1
-	#define	core_config_mmuv4	1
-	#define	core_config_mmu_pgsz	8192
-	#define	core_config_mmu_pgsz_KM	"8K"
-	#define	core_config_mmu_ntlb_entries	1024
-	#define	core_config_mmu_stlb_entries	16
-	#define	core_config_mmu_super_pgsz	2097152
-	#define	core_config_mmu_super_pgsz_KM	"2M"
-	#define	core_config_mmu_pae40	1
+        #define core_config_mpu_present 1
+        #define core_config_mpu 1
+        #define core_config_mpu_regions 16        
 	#define	core_config_interrupts_present	1
 	#define	core_config_interrupts_number	72
 	#define	core_config_interrupts_priorities	2
@@ -2835,17 +2732,11 @@
 	core_config.bcr.rf_build.r=0
 	core_config.bcr.rf_build.b=1
 	core_config.bcr.rf_build.d=3
-	core_config.bcr.mmu_build=0x04e21a4a
-	core_config.bcr.mmu_build.version=4
-	core_config.bcr.mmu_build.sl=1
-	core_config.bcr.mmu_build.psz1=12
-	core_config.bcr.mmu_build.psz0=4
-	core_config.bcr.mmu_build.pae=1
-	core_config.bcr.mmu_build.ja=2
-	core_config.bcr.mmu_build.je=2
-	core_config.bcr.mmu_build.jes=1
-	core_config.bcr.mmu_build.itlb=1
-	core_config.bcr.mmu_build.dtlb=2
+        core_config.bcr.mpu_build=0x00001002
+        core_config.bcr.mpu_build.i=0
+        core_config.bcr.mpu_build.s=0
+        core_config.bcr.mpu_build.regions=16
+        core_config.bcr.mpu_build.version=2       
 	core_config.bcr.d_cache_build=0x14227105
 	core_config.bcr.d_cache_build.version=5
 	core_config.bcr.d_cache_build.assoc=1
@@ -3037,13 +2928,9 @@
 	core_config.bpu_tosq_entries=8
 	core_config.bpu_fb_entries=2
 	core_config.smart_stack_entries=64
-	core_config.mmuv4.present=1
-	core_config.mmuv4=1
-	core_config.mmu_pgsz=8K
-	core_config.mmu_ntlb_entries=1024
-	core_config.mmu_stlb_entries=16
-	core_config.mmu_super_pgsz=2M
-	core_config.mmu_pae40=1
+        core_config.mpu.present=1
+        core_config.mpu=1
+        core_config.mpu.regions=16        
 	core_config.interrupts.present=1
 	core_config.interrupts.number=72
 	core_config.interrupts.priorities=2

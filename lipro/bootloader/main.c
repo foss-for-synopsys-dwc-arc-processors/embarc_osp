@@ -2,23 +2,30 @@
 #include "arc.h"
 #include "manifest.h"
 #include "flash_drv.h"
-#include "shared_data.h"
+#include "lipro_common_defs.h"
 
-#define CORE_NUM 4
-volatile unsigned long core_ready[CORE_NUM];
+volatile unsigned long core_ready[NUM_CORES];
 extern char _second_stage_addr[];
 
-int main()
+void release_core(uint32_t core_id)
+{
+        core_ready[core_id] = 1;
+}
+
+
+int bl_main()
 {
         flash_read((void *)&gp_shared_data->manifest, 0, sizeof(manifest_t));
-        int i;
+        uint32_t i;
         for (i = 0; i < MAX_MODULES; ++i) {
                 if (gp_shared_data->manifest.modules[i].module_id != 0) {
-                        flash_read((void*)gp_shared_data->manifest.modules[i].memory_address, gp_shared_data->manifest.modules[i].flash_address, gp_shared_data->manifest.modules[i].size_in_bytes);
+                        flash_read((void*)gp_shared_data->manifest.modules[i].load_address, gp_shared_data->manifest.modules[i].flash_address, gp_shared_data->manifest.modules[i].size_in_bytes);
                 }
         }
-        for (i = 0; i < CORE_NUM; ++i) {
-                core_ready[i] = 1;
+        for (i = 0; i < NUM_CORES; ++i) {
+                release_core(i);
         }
-        ((void(*)())_second_stage_addr)();
+        uint32_t reset_vector = *(uint32_t *)_second_stage_addr;
+        ((void(*)())reset_vector)();
+        return -1;
 }

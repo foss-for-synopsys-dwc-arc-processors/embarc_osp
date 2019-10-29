@@ -23,8 +23,7 @@ exe:
 	for f in $(COMPONENTS); do $(MAKE) -C $$f LINKER_SCRIPT_FILE=$(LINKER_SCRIPT_FILE) BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) ; done
 
 bootloader: exe
-	tools/make_flash.py common/img_config.json flash.bin
-	cp flash.bin bootloader
+	tools/make_flash.py common/img_config.json bootloader/flash.bin
 	touch bootloader/flash.s
 	$(MAKE) -C bootloader LINKER_SCRIPT_FILE=$(LINKER_SCRIPT_FILE) BOARD=$(BOARD) CUR_CORE=$(CUR_CORE)
 
@@ -52,7 +51,9 @@ bl: exe bootloader
 	/bin/rm -rf $(ROOT)/.sc.project
 	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf" @mp.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
 	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 -cmd="symbols mc/obj_nsim_10/mw_archs/mc_mw_archs.elf" @mc.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
-	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1
+	@rm mp.arg mc.arg
+	$(Verb) $(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1 -cmd="symbols second_stage/obj_nsim_/mw_archs/second_stage_mw_archs.elf"
+
 
 run: MDB_CL=-cl 
 run: sim

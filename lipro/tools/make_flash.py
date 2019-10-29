@@ -43,8 +43,12 @@ for module in config:
     man[0].modules[module_count].flash_address = flash_offset
     man[0].modules[module_count].size_in_bytes = len(bindata)
     man[0].modules[module_count].module_id = int(module['module_id'])
-    print(module['module_name'].upper()+'_CODE_START' + " = " + str(eval(module['module_name'].upper()+'_CODE_START')))
-    man[0].modules[module_count].memory_address = eval(module['module_name'].upper()+'_CODE_START')
+    print(module['memory_address'] + " = " + hex(eval(module['memory_address'])))
+    man[0].modules[module_count].memory_address = eval(module['memory_address'])
+    if 'load_address' in module:
+        man[0].modules[module_count].load_address = eval(module['load_address'])
+    else:
+        man[0].modules[module_count].load_address = man[0].modules[module_count].memory_address
     if man[0].modules[module_count].module_id < num_cores:
         hl_addr = subprocess.check_output("nmac " + module['src'] + " | grep __HOSTLINK__", shell=True).decode("utf-8").split()[0]
         with open(module['module_name']+'.arg', 'w') as f:

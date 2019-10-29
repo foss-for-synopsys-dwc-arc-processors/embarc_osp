@@ -42,9 +42,8 @@
 
 #define __ASSEMBLY__
 #include "arc.h"
-#include "lipro_memmap.h"
         
-	.file "arc_startup.s"
+.file "arc_startup.s"
 
 .weak	_f_sdata		/* start of small data, defined in link script */
 /* OMER
@@ -54,12 +53,11 @@
 .extern	board_main
 .extern exc_entry_table
 */
-.extern main        
-.extern core_ready
-.extern _second_stage_addr        
+.extern sstg_main        
         
 /* initial vector table */
 	.section .init_vector, "a"
+        .long _arc_reset
 	.section .init_bootstrap, "ax"
 	.global _arc_reset
 	.global _start
@@ -232,7 +230,7 @@ _arc_reset_call_main:
 /* OMER        
 	jl	board_main	// board-level main 
 */
-        jl      main
+        jl      sstg_main
 #if defined(__MW__)
 	jl	_fini
 #elif defined(__GNU__)
