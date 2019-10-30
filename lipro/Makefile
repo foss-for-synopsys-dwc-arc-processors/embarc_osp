@@ -1,4 +1,4 @@
-COMPONENTS = mc bmain main 0 extensions second_stage
+COMPONENTS = mc main0 second_stage
 
 ALL_COMPONENTS = $(COMPONENTS) bootloader
 
@@ -23,6 +23,7 @@ default: exe
 exe: 
 	for f in $(COMPONENTS); do $(MAKE) -C $$f LINKER_SCRIPT_FILE=$(LINKER_SCRIPT_FILE) BOARD=$(BOARD) CUR_CORE=$(CUR_CORE) ; done
 
+
 bootloader: exe
 	tools/make_flash.py common/img_config.json bootloader/flash.bin
 	touch bootloader/flash.s
@@ -43,15 +44,8 @@ NSIM_CONNECT_OPT=-nsim -DLL=$(TOOLSDIR)arccli,shmem=1234
 MDB_OPT=-OK -nosplash -prelaunch="${NSIM_HOME}/bin/arcsrv${EXE} -DLL=${NSIM_HOME}/lib/libsim -shmem=1234" -prelaunchwd= -prelaunchdelay=2000
 
 
-main0: 
 
 sim: exe
-	/bin/rm -rf $(ROOT)/.sc.project
-	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
-	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
-	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=bmain,mc
-
-sim_tx: exe
 	/bin/rm -rf $(ROOT)/.sc.project
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=main0 @main0/obj_nsim_10/mw_archs/embARC_generated/mdb.arg main0/obj_nsim_10/mw_archs/main0_mw_archs.elf
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
@@ -60,10 +54,11 @@ sim_tx: exe
 
 bl: exe bootloader
 	/bin/rm -rf $(ROOT)/.sc.project
-	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf" @mp.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols main0/obj_nsim_10/mw_archs/main0_mw_archs.elf" @mp.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
 	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 -cmd="symbols mc/obj_nsim_10/mw_archs/mc_mw_archs.elf" @mc.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
 	@rm mp.arg mc.arg
 	$(Verb) $(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1 -cmd="symbols second_stage/obj_nsim_/mw_archs/second_stage_mw_archs.elf"
+
 
 
 run: MDB_CL=-cl 

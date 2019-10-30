@@ -22,7 +22,7 @@ void blink_thread_func(ULONG param)
 		led_write(led_toggle_val, (uint8_t)BOARD_LED_MASK);	
 		tx_thread_sleep(tick_delay);	
         mycounter++;
-        EMBARC_PRINTF ("shared counter is %d, my counter is %d\n", g_shared_data.counter, mycounter);
+        EMBARC_PRINTF ("shared counter is %d, my counter is %d\n", gp_shared_data->counter, mycounter);
 
 	}
 }
@@ -51,7 +51,7 @@ void tx_application_define(void * first_unused_memory)
 
 
     printf("main: tx_application_define has started\n");
-    printf("main: tx_application_define: shared_data size %u at %p\n", sizeof(g_shared_data), &g_shared_data);
+    printf("main: tx_application_define: shared_data size %u at %p\n", sizeof(shared_data_t), gp_shared_data);
     uint32_t id = _lr(0x4);
     printf("main: tx_application_define: id = 0x%x\n", id);
 

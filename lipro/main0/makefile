@@ -15,11 +15,11 @@ MID_SEL = common
 
 # application source dirs
 APPL_CSRC_DIR = .
-APPL_CXXSRCS += $(ROOT)/common/shared_data.cpp
+APPL_CSRCS += $(ROOT)/common/shared_data.c
 
 APPL_ASMSRC_DIR = .
 
-TX_DIR = $(EMBARC_ROOT)/3rd_party/threadx/tx
+TX_DIR = $(ROOT)/lipro_thirdparty/threadx
 TX_INC_DIR = $(TX_DIR)
 TX_LIB_DIR = $(TX_DIR)/build
 
@@ -36,6 +36,11 @@ APPL_DEFINES += -DAPPL_M0
 # include current project makefile
 COMMON_COMPILE_PREREQUISITES += makefile
 print-%: ;  @echo $* = $($*)
+
+$(TX_LIB_DIR)/tx.a:
+	$(MAKE) -C $(TX_LIB_DIR)
+
+
 
 ### Options above must be added before include options.mk ###
 # include key embARC build system makefile

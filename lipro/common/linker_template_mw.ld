@@ -66,10 +66,6 @@ SECTIONS {
 			_e_rodata = .;
 		}
 
-		.sdata ALIGN(8): {
-			_f_sdata = .;
-			_e_sdata = .;		
-		}
 		.data ALIGN(8): {
 			_f_data = .;
 
@@ -80,12 +76,10 @@ SECTIONS {
 			*(.tls*)
 			_e_data = .;
 		} 
-                .sdata: { 
+        .sdata: { 
 			_f_sdata = .;
-			/**(.sdata)
-			*(.sbss)*/
 			_e_sdata = .;                    
-                }
+         }
 		.data ALIGN(8): {
 			_f_data = .;
 			*(TYPE data)
