@@ -15,8 +15,14 @@ void release_core(uint32_t core_id)
 
 int bl_main()
 {
-        flash_read((void *)&gp_shared_data->manifest, 0, sizeof(manifest_t));
         uint32_t i;
+
+        for (i = 0; i < NUM_CORES; ++i) {
+                gp_shared_data->core_init_complete[i] = 0;
+        }
+        
+        flash_read((void *)&gp_shared_data->manifest, 0, sizeof(manifest_t));
+
         for (i = 0; i < MAX_MODULES; ++i) {
                 if (gp_shared_data->manifest.modules[i].module_id != 0) {
                         flash_read((void*)gp_shared_data->manifest.modules[i].load_address, gp_shared_data->manifest.modules[i].flash_address, gp_shared_data->manifest.modules[i].size_in_bytes);

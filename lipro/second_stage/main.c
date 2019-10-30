@@ -72,7 +72,7 @@ void mpu_config(const core_mpu_config_t* pmpu_cfg)
 int sstg_main(void)
 {
         uint32_t core_id = (_lr(AUX_IDENTITY) >> 8) & 0xff;
-        uint32_t i;
+        uint32_t i, j;
 
         mpu_config(&(mpu_cfg[core_id]));
 
@@ -83,6 +83,16 @@ int sstg_main(void)
                                 memcpy((void *)pmodule->memory_address, (void *)pmodule->load_address, pmodule->size_in_bytes);
                         }                        
                         uint32_t reset_vector = *(uint32_t *)pmodule->memory_address;
+
+                        gp_shared_data->core_init_complete[core_id] = 1;
+
+                        // wait for all cores to complete initialization
+                        for (j = 0; j < NUM_CORES; ++j) {
+                                while (gp_shared_data->core_init_complete[core_id] == 0)
+                                        ;
+                        }
+
+                        // jump in
                         ((void(*)())reset_vector)();
                 }
         }
