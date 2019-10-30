@@ -1,4 +1,5 @@
-COMPONENTS = mc bmain extensions second_stage
+COMPONENTS = mc bmain main 0 extensions second_stage
+
 ALL_COMPONENTS = $(COMPONENTS) bootloader
 
 export NSIM_MULTICORE=1
@@ -41,11 +42,21 @@ endef
 NSIM_CONNECT_OPT=-nsim -DLL=$(TOOLSDIR)arccli,shmem=1234
 MDB_OPT=-OK -nosplash -prelaunch="${NSIM_HOME}/bin/arcsrv${EXE} -DLL=${NSIM_HOME}/lib/libsim -shmem=1234" -prelaunchwd= -prelaunchdelay=2000
 
+
+main0: 
+
 sim: exe
 	/bin/rm -rf $(ROOT)/.sc.project
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=bmain @bmain/obj_nsim_10/mw_archs/embARC_generated/mdb.arg bmain/obj_nsim_10/mw_archs/bmain_mw_archs.elf
 	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
 	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=bmain,mc
+
+sim_tx: exe
+	/bin/rm -rf $(ROOT)/.sc.project
+	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=1 -psetname=main0 @main0/obj_nsim_10/mw_archs/embARC_generated/mdb.arg main0/obj_nsim_10/mw_archs/main0_mw_archs.elf
+	$(Verb) $(MDB) $(NSIM_CONNECT_OPT) -pset=2 -psetname=mc @mc/obj_nsim_10/mw_archs/embARC_generated/mdb.arg mc/obj_nsim_10/mw_archs/mc_mw_archs.elf
+	$(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=main0,mc
+
 
 bl: exe bootloader
 	/bin/rm -rf $(ROOT)/.sc.project
