@@ -34,12 +34,19 @@ SECTIONS {
 			*(.vector .vector.*)
 			_e_vector = .;
 		}
+
+		.ivt ALIGN(1024): {
+			_f_ivt = .;
+			*(.ivt*)
+		}
+
 		.text ALIGN(4): {
 			_f_text = .;
 			*(TYPE text)
 			*(.text*)
 			_e_text = .;
 		}
+
 
 		.rodata  ALIGN(4): {
 			_f_rodata = .;
@@ -58,16 +65,21 @@ SECTIONS {
 
 			_e_rodata = .;
 		}
+
+		.data ALIGN(8): {
+			_f_data = .;
+
+			*(TYPE data)
+		}
+
 		.tls ALIGN(8): {
 			*(.tls*)
 			_e_data = .;
 		} 
-                .sdata: { 
+        .sdata: { 
 			_f_sdata = .;
-			/**(.sdata)
-			*(.sbss)*/
 			_e_sdata = .;                    
-                }
+         }
 		.data ALIGN(8): {
 			_f_data = .;
 			*(TYPE data)

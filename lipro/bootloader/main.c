@@ -21,7 +21,7 @@ int bl_main()
                 gp_shared_data->core_init_complete[i] = 0;
         }
         
-        flash_read((void *)&gp_shared_data->manifest, 0, sizeof(manifest_t));
+        flash_read((void *)&(gp_shared_data->manifest), 0, sizeof(manifest_t));
 
         for (i = 0; i < MAX_MODULES; ++i) {
                 if (gp_shared_data->manifest.modules[i].module_id != 0) {
