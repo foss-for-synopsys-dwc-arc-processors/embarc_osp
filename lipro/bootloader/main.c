@@ -4,12 +4,13 @@
 #include "flash_drv.h"
 #include "lipro_common_defs.h"
 
-volatile unsigned long core_ready[NUM_CORES];
 extern char _second_stage_addr[];
 
-void release_core(uint32_t core_id)
+static void unhalt_core(uint32_t core_id)
 {
-        core_ready[core_id] = 1;
+        volatile uint32_t* pmu_base = (volatile uint32_t*)0x40000000;
+        pmu_base[2 * core_id] = *(uint32_t *)_second_stage_addr;
+        pmu_base[2 * core_id + 1] = 1;
 }
 
 
@@ -28,9 +29,8 @@ int bl_main()
                         flash_read((void*)gp_shared_data->manifest.modules[i].load_address, gp_shared_data->manifest.modules[i].flash_address, gp_shared_data->manifest.modules[i].size_in_bytes);
                 }
         }
-        for (i = 0; i < NUM_CORES; ++i) {
-                release_core(i);
-        }
+        
+        unhalt_core(1);
         uint32_t reset_vector = *(uint32_t *)_second_stage_addr;
         ((void(*)())reset_vector)();
         return -1;

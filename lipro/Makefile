@@ -1,4 +1,4 @@
-COMPONENTS = mc main0 second_stage
+COMPONENTS = mc main0 second_stage extensions
 
 ALL_COMPONENTS = $(COMPONENTS) bootloader
 
@@ -40,8 +40,8 @@ define configure_mdb_core
   $(Verb) $(MDB) $(CONNECT_OPT)$(2) -pset=$(1) -psetname=$(CPU_PREFIX)$(1) $(MDB_CORE_OPT) $(TARGET)
 endef
 
-NSIM_CONNECT_OPT=-nsim -DLL=$(TOOLSDIR)arccli,shmem=1234
-MDB_OPT=-OK -nosplash -prelaunch="${NSIM_HOME}/bin/arcsrv${EXE} -DLL=${NSIM_HOME}/lib/libsim -shmem=1234" -prelaunchwd= -prelaunchdelay=2000
+NSIM_CONNECT_OPT=-nsim #-DLL=$(TOOLSDIR)arccli,shmem=1234
+MDB_OPT=-OK -nosplash #-prelaunch="${NSIM_HOME}/bin/arcsrv${EXE} -DLL=${NSIM_HOME}/lib/libsim -shmem=1234" -prelaunchwd= -prelaunchdelay=2000
 
 
 
@@ -54,8 +54,8 @@ sim: exe
 
 bl: exe bootloader
 	/bin/rm -rf $(ROOT)/.sc.project
-	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0 -cmd="symbols main0/obj_nsim_10/mw_archs/main0_mw_archs.elf" @mp.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
-	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1 -cmd="symbols mc/obj_nsim_10/mw_archs/mc_mw_archs.elf" @mc.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf -prop=nsim_ext=extensions/pmu.so
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=1 -psetname=core0  -prop=nsim_ext=extensions/pmu.so -cmd="symbols main0/obj_nsim_10/mw_archs/main0_mw_archs.elf" @mp.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
+	$(Verb) $(MDB) -nogoifmain $(NSIM_CONNECT_OPT) -pset=2 -psetname=core1  -prop=nsim_ext=extensions/pmu.so -cmd="symbols mc/obj_nsim_10/mw_archs/mc_mw_archs.elf" @mc.arg @bootloader/obj_nsim_/mw_archs/embARC_generated/mdb.arg bootloader/obj_nsim_/mw_archs/bootloader_mw_archs.elf
 	@rm mp.arg mc.arg
 	$(Verb) $(MDB) $(MDB_OPT) $(MDB_CL) -multifiles=core0,core1 -cmd="symbols second_stage/obj_nsim_/mw_archs/second_stage_mw_archs.elf"
 

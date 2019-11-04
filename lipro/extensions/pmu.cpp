@@ -10,87 +10,99 @@
 
 #define OEM_USE_OF_NSIM_HEADER_FILES 1
 #define BUILDING_DLL
-#include "api/ext/api_ext.h"
 
-struct PMUExtension : ARC_nsimext {
+
+#define NUM_CORES 4
+#define PMU_MEM_BASE 0x40000000
+
+#include <cstddef>
+#include <string.h>
+#include "api/ext/api_ext.h"
+#include "api/ext/api_ext_mem.h"
+
+struct PMUExtension : ARC_nsimext_mem_api {
 private:
         ARC_nsimext_simulator_access* sim_access;
-        static ARC_nsimext_simulator_access* sa_array[4];
-        uint32       my_aux_reg_list[3];
-        
-        uint32       auxr;
-        
+        static ARC_nsimext_simulator_access* sa_array[NUM_CORES];
+
+        static struct core_ctrl {
+                uint32 reset_address;
+                uint32 control;
+        } cores_ctrl[NUM_CORES];
 public:
-        PMUExtension()
-                : auxr(0)
-        {
-                my_aux_reg_list[0] = 0x4242;
-                my_aux_reg_list[1] = 0x4242;
-                my_aux_reg_list[2] = 0;
-                
-        }
 
         void destroy() {
                 delete this;
         }
-        
+
         uint32 version() {
-                return ARC_NSIMEXT_BASE_VERSION;
+                return ARC_NSIMEXT_MEM_API_BASE_VERSION;
         }
-        
+
         const char* get_name() {
                 return "PMUExtension";
         }
         
+
         void set_simulator_access(ARC_nsimext_simulator_access* sa) {
                 sim_access = sa;
                 uint32 id;
                 sa->read_aux_reg(4, &id, from_execution);
                 id = (id >> 8) & 0xff;
                 sa_array[id] = sa;
-                sa->printf(0, "*****pmu.so set_simulator access: this=%p, id=%x, sa = %p\n", this, id, sa);
-        }
-        
-        uint32 prepare_for_new_simulation() {
-                auxr = 0;
-                return 1;
-        }
-        /*** Extension aux register ***/
-        
-        uint32* aux_reg_list() {
-                return my_aux_reg_list;
-        }
-        
-        uint32 read_aux_reg(uint32 r, uint32 *value, uint8 context) {
-                *value = auxr;
-                return 1;
+                sa->printf(0, "*****pmu.so MEM EXT set_simulator access: this=%p, id=%x, sa = %p\n", this, id, sa);
         }
 
-        uint32 write_aux_reg(uint32 r, uint32 value, uint8 context) {
-                auxr=value;
-                uint32 status32;
-                sim_access->printf(0, "aux reg written\n");
-                sa_array[1]->read_aux_reg(0xA, &status32, from_execution);
-                sim_access->printf(0, "read status32 %x from core 1\n", status32);
-                status32 &= ~1;
-                sa_array[1]->write_aux_reg(0xA, 0, from_agent);
-                sa_array[1]->read_aux_reg(0xA, &status32, from_execution);
-                sim_access->printf(0, "read status32 %x from core 1\n", status32);
-                return 1;
+        uint64 range_begin() {
+                return PMU_MEM_BASE;
+        }
+
+        uint64 range_end() {
+                return PMU_MEM_BASE + sizeof(cores_ctrl) - 1;
+        }
+
+        uint32 read(ARC_ext_mem_trans* trans) {
+                uint8* reg_mem = (uint8*)cores_ctrl;
+                uint32 offset = (uint32)trans->address - PMU_MEM_BASE;
+                memcpy(trans->data_ptr, reg_mem + offset, trans->data_length);
+                return 1;                
         }
         
+        uint32 write(ARC_ext_mem_trans* trans) { 
+                uint8* reg_mem = (uint8*)cores_ctrl;
+                uint32 offset = (uint32)trans->address - PMU_MEM_BASE;
+                memcpy(reg_mem + offset, trans->data_ptr, trans->data_length);
+
+                if (offset % sizeof(core_ctrl) == offsetof(core_ctrl, control)) {
+                        //writing to control register
+                        uint32 core_id = offset / sizeof(core_ctrl);                        
+                        uint32 status32;
+ 
+                        sim_access->printf(0, "reseting core %d to address %p\n", core_id, cores_ctrl[core_id].reset_address);
+                       
+                        sa_array[core_id]->write_aux_reg(0x6, cores_ctrl[core_id].reset_address, from_agent);
+                        sa_array[core_id]->read_aux_reg(0xA, &status32, from_agent);
+                        status32 &= ~1;
+                        sa_array[core_id]->write_aux_reg(0xA, status32, from_agent);
+                }
+                return 1;
+        }
 };
 
-ARC_nsimext_simulator_access* PMUExtension::sa_array[4] = {0};
+
+
+ARC_nsimext_simulator_access* PMUExtension::sa_array[NUM_CORES] = {0};
+struct PMUExtension::core_ctrl PMUExtension::cores_ctrl[NUM_CORES] = {0};
+
 
 #ifdef __cplusplus
 extern "C" {
-#endif
-        DLLEXPORT ARC_nsimext* get_ARC_nsimext_interface() {
-                ARC_nsimext *ext = new PMUExtension;  /* create extension object */
+        #endif
+        DLLEXPORT ARC_nsimext_mem_api* get_ARC_nsimext_mem_interface() {
+                ARC_nsimext_mem_api *ext = new PMUExtension;  /* create extension object */
                 return ext;
         }
-        
-#ifdef __cplusplus
+
+        #ifdef __cplusplus
 }
 #endif
