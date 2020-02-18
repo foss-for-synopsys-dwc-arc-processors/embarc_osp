@@ -358,24 +358,21 @@ void secure_timer_init(void)
  */
 void arc_delay_us(uint32_t usecs)
 {
-	__asm__ __volatile__(
+	if (usecs == 0) {
+		return;
+	}
 
-	"	.extern gl_loops_per_jiffy 		\n"
-	"	.extern gl_count 			\n"
-	"	cmp %0, 0				\n"
-	"	jeq	1f				\n"
-	"	ld %%r1, [gl_loops_per_jiffy]		\n"
-	"	mpy %%r1, %%r1, %0			\n"
-	"	ld %%r2, [gl_count] 			\n"
-	"	divu %%r1, %%r1, %%r2			\n"
-	"	.align 4				\n"
-	"	mov %%lp_count, %%r1			\n"
-	"	lp  1f					\n"
-	"	nop					\n"
-	"1:						\n"
-	:
-	: "r"(usecs)
-	: "lp_count", "r1", "r2");
+	usecs = usecs * gl_loops_per_jiffy / gl_count;
+
+	__asm__ __volatile__ (
+		"	.align 4				\n"
+		"	mov %%lp_count, %0			\n"
+		"	lp  1f					\n"
+		"	nop					\n"
+		"1:						\n"
+		:
+		: "r" (usecs)
+		: "lp_count");
 }
 
 /**
