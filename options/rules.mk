@@ -121,10 +121,10 @@ help :
 	@$(ECHO) '  opt         - Display Current MAKE options'
 	@$(ECHO) '  spopt       - Display Supported MAKE options'
 	@$(ECHO) 'Available Configurations:'
-	@$(ECHO) '  BOARD=<board_name>                   	- Specify the board($(SUPPORTED_BOARDS))'
-	@$(ECHO) '  BD_VER=<board_ver>            		- Specify the board verison'
+	@$(ECHO) '  BOARD=<board_name>                          - Specify the board($(SUPPORTED_BOARDS))'
+	@$(ECHO) '  BD_VER=<board_ver>                          - Specify the board verison'
 	@$(ECHO) '  OLEVEL=Os|O0|O1|O2|O3                       - Specify Optimization level'
-	@$(ECHO) '  CUR_CORE=<core configuration>		- Specify core configuration'
+	@$(ECHO) '  CUR_CORE=<core configuration>               - Specify core configuration'
 	@$(ECHO) '  TCF=path/to/your tcf                        - Specify customized tcf file'
 	@$(ECHO) '  TOOLCHAIN=mw|gnu                            - Specify toolchain'
 	@$(ECHO) '  JTAG=usb|opella                             - Specify Hardware Debugger(Digilent JTAG or Ashling Opella-XD JTAG)'
@@ -134,6 +134,7 @@ help :
 	@$(ECHO) '  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in'
 	@$(ECHO) '  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes'
 	@$(ECHO) '  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes'
+	@$(ECHO) '  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, xxx stands for the relative path of linker script file to current directory'
 	@$(ECHO) 'Example Usage:'
 	@$(ECHO) '  make all                                                                - build example in current directory using default configuration'
 	@$(ECHO) '  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)'
@@ -155,6 +156,7 @@ cfg :
 	@$(ECHO) 'Core Configurations (CUR_CORE) : $(SUPPORTED_CORES)'
 	@$(ECHO) 'Build Toolchains (TOOLCHAIN)   : $(SUPPORTED_TOOLCHAINS)'
 	@$(ECHO) 'Debug Jtags (JTAG)             : $(SUPPORTED_JTAGS)'
+	@$(ECHO) 'Linker Script (LINKER_SCRIPT_FILE): $(LINKER_SCRIPT_FILE)'
 
 opt :
 	@$(ECHO) ======CURRENT CONFIGURATION=====
@@ -164,6 +166,7 @@ opt :
 	@$(ECHO) TOOLCHAIN : $(TOOLCHAIN)
 	@$(ECHO) OLEVEL : $(OLEVEL)
 	@$(ECHO) JTAG : $(JTAG)
+	@$(ECHO) LINKER_SCRIPT_FILE : $(LINKER_SCRIPT_FILE)
 	@$(ECHO) EMBARC_ROOT : $(EMBARC_ROOT)
 	@$(ECHO) OUT_DIR_ROOT : $(OUT_DIR_ROOT)
 	@$(ECHO) COMPILE_OPT : $(subst $(MKDEP_OPT), , $(COMPILE_OPT))
