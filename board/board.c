@@ -100,6 +100,14 @@ static TaskHandle_t task_handle_main;
 
 #endif /* OS_FREERTOS */
 
+#ifdef OS_UCOS
+
+#define MAIN_TASK_PRIO		10
+#define MAIN_STK_SIZE		256
+OS_STK MAIN_TASK_STK[MAIN_STK_SIZE];
+
+#endif /* OS_UCOS */
+
 #if defined(OS_FREERTOS) && defined(MID_LWIP)
 static void task_wifi(void *par)
 {
@@ -169,6 +177,11 @@ static void task_main(void *par)
 	while (1) {
 		vTaskSuspend(NULL);
 	}
+#elif defined(OS_UCOS)
+	EMBARC_PRINTF("Exit from main function, error code:%d....\r\n", ercd);
+	while (1) {
+		OSTaskSuspend(OS_PRIO_SELF);
+	}
 #else
 	while (1);
 #endif
@@ -176,6 +189,7 @@ static void task_main(void *par)
 
 void board_main(void)
 {
+
 /* board level hardware init */
 	board_init();
 /* board level middlware init */
@@ -198,6 +212,14 @@ void board_main(void)
 	os_hal_exc_init();
 #endif
 
+#ifdef OS_UCOS
+/*
+ * his function is used to initialize the internals of uC/OS-II and MUST be called
+ * prior to creating any uC/OS-II object and, prior to calling OSStart().
+ */
+	OSInit();
+#endif
+
 /* NTSHELL related initialization */
 /* For OS situation,  ntshell task will be created; for baremetal ntshell_task will be executed */
 #ifdef MID_NTSHELL
@@ -217,6 +239,8 @@ void board_main(void)
 #ifdef OS_FREERTOS
 	xTaskCreate((TaskFunction_t)task_main, "main", TASK_STACK_SIZE_MAIN,
 			(void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
+#elif defined OS_UCOS
+	OSTaskCreate(task_main, (void *)(&s_main_args), (OS_STK *)&MAIN_TASK_STK[MAIN_STK_SIZE - 1], MAIN_TASK_PRIO);
 #else /* No os and ntshell */
 	cpu_unlock();	/* unlock cpu to let interrupt work */
 #endif
@@ -230,6 +254,8 @@ void board_main(void)
 
 #ifdef OS_FREERTOS
 	vTaskStartScheduler();
+#elif defined OS_UCOS
+	OSStart();
 #endif
 
 	task_main((void *)(&s_main_args));

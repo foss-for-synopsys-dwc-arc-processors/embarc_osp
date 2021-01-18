@@ -169,6 +169,10 @@ void board_delay_ms(uint32_t ms, uint8_t os_compat)
 #ifdef OS_FREERTOS
 		vTaskDelay(ms);
 		return;
+#elif defined OS_UCOS
+		ms = (uint64_t)(ms * OS_TICKS_PER_SEC / 1000);
+		OSTimeDly(ms);
+		return;
 #endif
 	}
 #endif

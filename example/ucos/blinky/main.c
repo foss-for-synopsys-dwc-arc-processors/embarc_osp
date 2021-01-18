@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2021, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -27,64 +27,53 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
+#include "embARC.h"
+#include "embARC_debug.h"
+
+#define LED_TOGGLE_MASK		BOARD_LED_MASK
+
+
+
+#define LED0_TASK_PRIO	7
+#define LED0_STK_SIZE	256
+OS_STK LED0_TASK_STK[LED0_STK_SIZE];
+void led0_task(void *pdata);
+
+#define LED1_TASK_PRIO	6
+#define LED1_STK_SIZE	256
+OS_STK LED1_TASK_STK[LED1_STK_SIZE];
+void led1_task(void *pdata);
 
 /**
- * \defgroup	OS_HAL_INC 		OS Header File required by embARC
- * \ingroup 	OS_HAL
- * \brief 		include all os related header file, and define common interface for different os
- * @{
- *
- * \file        os_hal_inc.h
- * \brief       os hal header file
- *
+ * \brief	Test hardware board without any peripheral
  */
-/**
- * @todo add comments and documents to describe the macros
- * @note the following macros must use the same name, because
- *       they are used by middleware and other applications
- */
-#ifdef ENABLE_OS
+int main(void)
+{
+	OS_CPU_SR cpu_sr = 0;
+	OS_ENTER_CRITICAL();
+	OSSchedLock();
+	OSTaskCreate(led0_task, (void *)0, (OS_STK*)&LED0_TASK_STK[LED0_STK_SIZE - 1], LED0_TASK_PRIO);
+	OSTaskCreate(led1_task, (void *)0, (OS_STK*)&LED1_TASK_STK[LED1_STK_SIZE - 1], LED1_TASK_PRIO);
+	OSSchedUnlock();
+	OS_EXIT_CRITICAL();
 
-/** OS_FREERTOS   */
-#ifdef OS_FREERTOS
-/** header files need to include */
-#include "FreeRTOS.h"
-#include "croutine.h"
-#include "event_groups.h"
-#include "list.h"
-#include "mpu_wrappers.h"
-#include "portable.h"
-#include "projdefs.h"
-#include "queue.h"
-#include "semphr.h"
-#include "stack_macros.h"
-#include "task.h"
-#include "timers.h"
-#include "stream_buffer.h"
+	return E_SYS;
+}
 
-#include "arc_freertos_exceptions.h"
+void led0_task(void *pdata)
+{
+	while (1)
+	{
+		EMBARC_PRINTF("led0_task\r\n");
+		board_delay_ms(1000, 1);
+	};
+}
 
-/** global macros that may need */
-#define os_hal_exc_init()		freertos_exc_init()
-
-#endif	/* OS_FREERTOS */
-
-/** OS_UCOS   */
-#ifdef OS_UCOS
-/** header files need to include */
-#include "ucos_ii.h"
-#include "os_trace.h"
-
-/** global macros that may need */
-#define os_hal_exc_init()		ucos_exc_init()
-
-#endif	/* OS_UCOS */
-
-#else /* NO OS */
-
-/** global macros that may need */
-#define os_hal_exc_init()
-
-#endif 	/* ENABLE_OS */
-
-/** @} */ /* OS_HAL_INC */
+void led1_task(void *pdata)
+{
+	while (1)
+	{
+		EMBARC_PRINTF("led1_task\r\n");
+		board_delay_ms(2000, 1);
+	};
+}
