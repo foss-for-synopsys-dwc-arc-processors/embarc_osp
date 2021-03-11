@@ -155,7 +155,7 @@ endif
 				-Hnocopyr -Hnosdata -Hnocrt $(LMAP_OPTION) $(APPL_LINK_FILE)
 
 	## Link File Generation Options
-	LINK_FILE_OPT	+= -Hnocopyr -Hasmcpp -Hasext=ld,met -Hnoarcexlib -Hnoarcsimd -E -P -nostdsysteminc -undef -D__MW__ $(ALL_INCLUDES)
+	LINK_FILE_OPT	+= -Hnocopyr -Hasmcpp -Hasext=ld,met -Hnoarcexlib -Hnoarcsimd -E -nostdsysteminc -undef -D__MW__ $(ALL_INCLUDES)
 	LINK_FILE_DEPOPT = $(LINK_FILE_OPT) -DENABLE_GENERATE_DEPENDCY_FILE $(MKDEP_OPT)
 
 	## Other Options
