@@ -78,7 +78,7 @@ SECTIONS {
 			*(.tls*)
 			_e_data = .;
 		}
-	} > REGION_RAM AT > REGION_ROM
+	} > REGION_RAM
 
 	GROUP (NOLOAD) : {
 		.bss ALIGN(8): {
