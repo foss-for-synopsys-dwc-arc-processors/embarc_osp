@@ -1,39 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Makefile Manual &mdash; embARC 2019.06 documentation</title>
   
 
   
-  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
+
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ARC Processors" href="../arc/arc.html" />
@@ -78,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,6 +126,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -156,11 +161,13 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
         
@@ -169,7 +176,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/getting_started/makefile_manual.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -237,10 +244,10 @@ Help information will be printed to your console.</p>
 <span class="go">&quot;  opt         - Display Current MAKE options&quot;</span>
 <span class="go">&quot;  spopt       - Display Supported MAKE options&quot;</span>
 <span class="go">&quot;Available Configurations:&quot;</span>
-<span class="go">&quot;  BOARD=&lt;board_name&gt;                           - Specify the board(axs emsdp emsk hsdk iotdk nsim)&quot;</span>
-<span class="go">&quot;  BD_VER=&lt;board_ver&gt;                           - Specify the board verison&quot;</span>
+<span class="go">&quot;  BOARD=&lt;board_name&gt;                          - Specify the board(axs emsdp emsk hsdk iotdk nsim)&quot;</span>
+<span class="go">&quot;  BD_VER=&lt;board_ver&gt;                          - Specify the board verison&quot;</span>
 <span class="go">&quot;  OLEVEL=Os|O0|O1|O2|O3                       - Specify Optimization level&quot;</span>
-<span class="go">&quot;  CUR_CORE=&lt;core configuration&gt;                - Specify core configuration&quot;</span>
+<span class="go">&quot;  CUR_CORE=&lt;core configuration&gt;               - Specify core configuration&quot;</span>
 <span class="go">&quot;  TCF=path/to/your tcf                        - Specify customized tcf file&quot;</span>
 <span class="go">&quot;  TOOLCHAIN=mw|gnu                            - Specify toolchain&quot;</span>
 <span class="go">&quot;  JTAG=usb|opella                             - Specify Hardware Debugger(Digilent JTAG or Ashling Opella-XD JTAG)&quot;</span>
@@ -250,6 +257,7 @@ Help information will be printed to your console.</p>
 <span class="go">&quot;  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in&quot;</span>
 <span class="go">&quot;  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes&quot;</span>
 <span class="go">&quot;  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes&quot;</span>
+<span class="go">&quot;  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, xxx stands for the relative path of linker script file to current directory&quot;</span>
 <span class="go">&quot;Example Usage:&quot;</span>
 <span class="go">&quot;  make all                                                                - build example in current directory using default configuration&quot;</span>
 <span class="go">&quot;  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)&quot;</span>
@@ -276,6 +284,7 @@ Help information will be printed to your console.</p>
 <span class="go">&quot;Core Configurations (CUR_CORE) : arcem11d arcem7d arcem9d&quot;</span>
 <span class="go">&quot;Build Toolchains (TOOLCHAIN)   : gnu mw&quot;</span>
 <span class="go">&quot;Debug Jtags (JTAG)             : usb opella&quot;</span>
+<span class="go">&quot;Linker Script (LINKER_SCRIPT_FILE): ../../../board/linker_template_mw.ld&quot;</span>
 </pre></div>
 </div>
 <p>At supported Configurations, you can find different choices for your command, the uppercase words in parentheses are paramater names to be used in your command.
@@ -363,29 +372,29 @@ Then it will try to download the project to the board and start running it. If n
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="peripheral_preparation.html" class="btn btn-neutral float-left" title="Peripheral Preparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../arc/arc.html" class="btn btn-neutral float-right" title="ARC Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="peripheral_preparation.html" class="btn btn-neutral float-left" title="Peripheral Preparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Synopsys
+        &#169; Copyright 2019, Synopsys.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -393,7 +402,6 @@ Then it will try to download the project to the board and start running it. If n
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

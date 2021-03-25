@@ -65,10 +65,10 @@ In the following part of this manual, we will only use ``make`` in example, you 
 	"  opt         - Display Current MAKE options"
 	"  spopt       - Display Supported MAKE options"
 	"Available Configurations:"
-	"  BOARD=<board_name>                           - Specify the board(axs emsdp emsk hsdk iotdk nsim)"
-	"  BD_VER=<board_ver>                           - Specify the board verison"
+	"  BOARD=<board_name>                          - Specify the board(axs emsdp emsk hsdk iotdk nsim)"
+	"  BD_VER=<board_ver>                          - Specify the board verison"
 	"  OLEVEL=Os|O0|O1|O2|O3                       - Specify Optimization level"
-	"  CUR_CORE=<core configuration>                - Specify core configuration"
+	"  CUR_CORE=<core configuration>               - Specify core configuration"
 	"  TCF=path/to/your tcf                        - Specify customized tcf file"
 	"  TOOLCHAIN=mw|gnu                            - Specify toolchain"
 	"  JTAG=usb|opella                             - Specify Hardware Debugger(Digilent JTAG or Ashling Opella-XD JTAG)"
@@ -78,6 +78,7 @@ In the following part of this manual, we will only use ``make`` in example, you 
 	"  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in"
 	"  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes"
 	"  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes"
+	"  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, xxx stands for the relative path of linker script file to current directory"
 	"Example Usage:"
 	"  make all                                                                - build example in current directory using default configuration"
 	"  make BOARD=emsk BD_VER=22 CUR_CORE=arcem7d OLEVEL=O2 TOOLCHAIN=gnu all  - build example using configuration (emsk, 22, arcem7d, O2, gnu)"
@@ -108,6 +109,7 @@ The basic way of this command is to enter ``make cfg``, the makefile system will
 	"Core Configurations (CUR_CORE) : arcem11d arcem7d arcem9d"
 	"Build Toolchains (TOOLCHAIN)   : gnu mw"
 	"Debug Jtags (JTAG)             : usb opella"
+	"Linker Script (LINKER_SCRIPT_FILE): ../../../board/linker_template_mw.ld"
 
 At supported Configurations, you can find different choices for your command, the uppercase words in parentheses are paramater names to be used in your command.
 For example, the command below will execute your command for an *EMSK* board with *arcem7d* core, toolchain will be *gnu* and JTAG connection is via *USB*.
