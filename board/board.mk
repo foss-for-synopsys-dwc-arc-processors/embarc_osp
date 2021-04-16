@@ -30,12 +30,6 @@ endif
 
 EXTRA_BOARD_DEFINES += $(BOARD_MAIN_DEFINES)
 
-ifeq ($(VALID_TOOLCHAIN), mw)
-LINKER_SCRIPT_FILE ?= $(BOARDS_ROOT)/linker_template_mw.ld
-else
-LINKER_SCRIPT_FILE ?= $(BOARDS_ROOT)/linker_template_gnu.ld
-endif
-
 ## CPU_FREQ & DEV_FREQ defined in each board support file ##
 
 ## Set Valid Board
