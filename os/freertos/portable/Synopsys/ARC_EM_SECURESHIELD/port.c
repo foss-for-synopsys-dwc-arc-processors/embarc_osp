@@ -75,8 +75,8 @@
 #include "task.h"
 #include "FreeRTOSConfig.h"
 
-#include "arc_exception.h"
-#include "arc_timer.h"
+#include "arc/arc_exception.h"
+#include "arc/arc_timer.h"
 #include "board.h"
 
 #include "arc_freertos_exceptions.h"

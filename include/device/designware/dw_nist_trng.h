@@ -30,8 +30,8 @@
 #ifndef _DEVICE_DW_NIST_TRNG_H_
 #define _DEVICE_DW_NIST_TRNG_H_
 
-#include "dev_trng.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_trng.h"
+#include "arc/arc_exception.h"
 
 #ifdef TRNG_VERSION_NIST
 

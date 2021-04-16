@@ -31,7 +31,7 @@
 #define _SS_I2S_MASTER_H_
 /* the wrapper of subsystem i2s master driver */
 
-#include "ip/ip_hal/inc/dev_i2s.h"
+#include "device/ip_hal/dev_i2s.h"
 
 #define SS_I2S_TX		1
 #define SS_I2S_RX		2

@@ -60,7 +60,7 @@
 #ifndef _DEVICE_HAL_PWM_TIMER_H_
 #define _DEVICE_HAL_PWM_TIMER_H_
 
-#include "dev_common.h"
+#include "device/dev_common.h"
 
 /**
  * \defgroup	DEVICE_HAL_PWM_TIMER_CTRLCMD		PWM_TIMER Device Control Commands

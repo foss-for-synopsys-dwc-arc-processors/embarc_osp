@@ -36,7 +36,7 @@
 
 /* the wrapper of subsystem spi master driver */
 
-#include "ip/ip_hal/inc/dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 
 #define SS_SPI_MASTER_FLAG_TX_READY		(1 << 0) /* interrupt tx */
 #define SS_SPI_MASTER_FLAG_RX_READY		(1 << 1) /* interrupt rx */

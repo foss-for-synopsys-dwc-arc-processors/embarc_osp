@@ -31,8 +31,8 @@
 #ifndef _DW_IIC_H_
 #define _DW_IIC_H_
 
-#include "dev_iic.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_iic.h"
+#include "arc/arc_exception.h"
 
 /**
  * If this header file is included,

@@ -31,7 +31,7 @@
 #define _SS_GPIO_H_
 /* the wrapper of subsystem gpio driver */
 
-#include "ip/ip_hal/inc/dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 
 typedef struct ss_gpio_dev_context
 {

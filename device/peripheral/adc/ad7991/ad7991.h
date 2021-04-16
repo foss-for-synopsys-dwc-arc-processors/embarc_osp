@@ -31,7 +31,7 @@
 #ifndef _AD7991_H_
 #define _AD7991_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 /**
  * PMOD AD2 board (AD7991) has to choose its voltage reference form power supply, or external on board 2.048V Voltage Reference (ADR380) or VIN4 (Ch3)

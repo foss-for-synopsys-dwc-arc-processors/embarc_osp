@@ -33,10 +33,10 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_uart_hal.h"
-#include "dw_uart.h"
+#include "device/designware/dw_uart_hal.h"
+#include "device/designware/dw_uart.h"
 
 
 /**

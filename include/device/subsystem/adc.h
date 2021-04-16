@@ -33,7 +33,7 @@
 #ifndef ADC_H_
 #define ADC_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 
 /* ADC control commands */

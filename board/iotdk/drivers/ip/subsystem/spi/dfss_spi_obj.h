@@ -31,7 +31,7 @@
 #define _DFSS_SPI_OBJ_H_
 
 #include "io_config.h"
-#include "ip/ip_hal/inc/dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 
 
 #define DFSS_SPI_NUM		(4)	/*!< DFSS SPI valid number */

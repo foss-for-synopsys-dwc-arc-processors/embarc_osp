@@ -33,10 +33,10 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_spi_hal.h"
-#include "dw_spi.h"
+#include "device/designware/dw_spi_hal.h"
+#include "device/designware/dw_spi.h"
 
 /**
  * DesignWare SPI driver macros used in spi driver

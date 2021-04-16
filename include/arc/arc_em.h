@@ -42,7 +42,7 @@
 #ifndef _ARC_HAL_EM_H_
 #define _ARC_HAL_EM_H_
 
-#include "arc.h"
+#include "arc/arc.h"
 
 #define AUX_ACC0_LO		(0x580)
 #define AUX_ACC0_GLO		(0x581)

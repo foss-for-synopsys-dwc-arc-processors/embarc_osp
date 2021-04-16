@@ -30,8 +30,8 @@
 #ifndef _EMSDP_H_
 #define _EMSDP_H_
 
-#include "arc_em.h"
-#include "arc_builtin.h"
+#include "arc/arc_em.h"
+#include "arc/arc_builtin.h"
 
 #include "drivers/ip/designware/spi/dw_spi_obj.h"
 #include "drivers/ip/designware/uart/dw_uart_obj.h"

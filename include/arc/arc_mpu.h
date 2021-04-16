@@ -30,8 +30,8 @@
 #ifndef _ARC_HAL_MPU_H_
 #define _ARC_HAL_MPU_H_
 
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 
 #ifndef ARC_FEATURE_MPU_VERSION
 #define ARC_FEATURE_MPU_VERSION 2

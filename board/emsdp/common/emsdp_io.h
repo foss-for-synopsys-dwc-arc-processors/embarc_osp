@@ -30,7 +30,7 @@
 #ifndef _EMSDP_GPIO_H_
 #define _EMSDP_GPIO_H_
 
-#include "dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 
 /**
  * EMSDP LED Port Configuration

@@ -31,7 +31,7 @@
 #define _SS_UART_H_
 /* the wrapper of subsystem uart driver */
 
-#include "ip/ip_hal/inc/dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 
 #define SS_UART_FLAG_TX	(1 << 0) /* interrupt tx */
 #define SS_UART_FLAG_RX	(1 << 1) /* interrupt rx */

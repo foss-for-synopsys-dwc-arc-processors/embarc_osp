@@ -29,13 +29,13 @@
 --------------------------------------------- */
 //#define DBG_MORE
 
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include "embARC_debug.h"
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 #include "ad7991.h"
 #include "board.h"
 

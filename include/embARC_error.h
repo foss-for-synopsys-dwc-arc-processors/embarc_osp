@@ -43,7 +43,7 @@
 #define _EMBARC_ERROR_H_
 
 #include <stdint.h>
-#include "arc_builtin.h"
+#include "arc/arc_builtin.h"
 
 #ifdef __cplusplus
 extern "C" {

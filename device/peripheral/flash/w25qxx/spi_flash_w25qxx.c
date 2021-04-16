@@ -31,8 +31,8 @@
 
 #include "embARC_error.h"
 #include "board.h"
-#include "dev_spi.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_spi.h"
+#include "arc/arc_exception.h"
 #include "string.h"
 
 /**

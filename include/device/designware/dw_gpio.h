@@ -31,8 +31,8 @@
 #ifndef _DW_GPIO_H_
 #define _DW_GPIO_H_
 
-#include "dev_gpio.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_gpio.h"
+#include "arc/arc_exception.h"
 
 #define DW_GPIO_PORT_A				(0)
 #define DW_GPIO_PORT_B				(1)

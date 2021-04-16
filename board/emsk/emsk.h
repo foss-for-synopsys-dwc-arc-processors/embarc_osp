@@ -41,8 +41,8 @@
 #ifndef _EMSK_H_
 #define _EMSK_H_
 
-#include "arc_em.h"
-#include "arc_builtin.h"
+#include "arc/arc_em.h"
+#include "arc/arc_builtin.h"
 
 #include "drivers/ip/designware/iic/dw_iic_obj.h"
 #include "drivers/ip/designware/spi/dw_spi_obj.h"
@@ -52,7 +52,7 @@
 #include "drivers/sdcard/emsk_sdcard.h"
 #include "drivers/pmwifi/pmwifi.h"
 #include "drivers/flash_obj/flash_obj.h"
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 
 #include "common/emsk_timer.h"
 #include "common/emsk_gpio.h"

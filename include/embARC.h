@@ -43,12 +43,12 @@
 #include "embARC_error.h"
 
 /* ARC HAL */
-#include "arc_builtin.h"
-#include "arc_timer.h"
-#include "arc_exception.h"
-#include "arc_cache.h"
-#include "arc_udma.h"
-#include "arc_mpu.h"
+#include "arc/arc_builtin.h"
+#include "arc/arc_timer.h"
+#include "arc/arc_exception.h"
+#include "arc/arc_cache.h"
+#include "arc/arc_udma.h"
+#include "arc/arc_mpu.h"
 
 #include "board.h"
 

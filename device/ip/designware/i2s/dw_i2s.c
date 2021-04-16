@@ -33,10 +33,10 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_i2s_hal.h"
-#include "dw_i2s.h"
+#include "device/designware/dw_i2s_hal.h"
+#include "device/designware/dw_i2s.h"
 
 /** check expressions used in DesignWare I2S driver implementation */
 #define DW_I2S_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)

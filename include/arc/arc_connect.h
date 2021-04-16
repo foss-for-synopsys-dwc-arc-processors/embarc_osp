@@ -38,8 +38,8 @@
 #define _ARC_CONNECT_H_
 
 #include "embARC_toolchain.h"
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 
 #ifdef __cplusplus
 extern "C" {

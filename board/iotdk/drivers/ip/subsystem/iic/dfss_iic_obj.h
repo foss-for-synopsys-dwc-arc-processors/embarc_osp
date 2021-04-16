@@ -32,7 +32,7 @@
 #define _DFSS_IIC_OBJ_H_
 
 #include "io_config.h"
-#include "ip/ip_hal/inc/dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 
 #define DFSS_IIC_NUM		(3)	/*!< DFSS IIC valid number */

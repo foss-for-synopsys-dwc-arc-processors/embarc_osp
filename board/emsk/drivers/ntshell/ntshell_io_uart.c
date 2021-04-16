@@ -52,7 +52,7 @@
 #include <stdarg.h>
 
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 #include "xprintf.h"
 
 #include "ntshell_io_uart.h"

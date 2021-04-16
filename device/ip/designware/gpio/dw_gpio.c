@@ -30,9 +30,9 @@
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_gpio.h"
+#include "device/designware/dw_gpio.h"
 
 
 /** check expressions used in DesignWare GPIO driver implementation */

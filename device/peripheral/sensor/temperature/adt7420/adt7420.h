@@ -31,7 +31,7 @@
 #ifndef _ADT7420_H_
 #define _ADT7420_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 /**
  * I2C address of PmodTmp2 (ADT7420) can be selected via jumpers: 0x48, 0x49, 0x4A, 0x4B

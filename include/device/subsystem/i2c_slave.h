@@ -33,7 +33,7 @@
 #ifndef I2C_SLAVE_H_
 #define I2C_SLAVE_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 
 /* I2C devices common control commands */

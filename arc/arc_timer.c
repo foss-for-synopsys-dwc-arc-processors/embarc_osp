@@ -34,8 +34,8 @@
  * \brief  implementation of internal timer related functions
  * \todo RTC support should be improved if RTC is enabled
  */
-#include "arc_timer.h"
-#include "arc_exception.h"
+#include "arc/arc_timer.h"
+#include "arc/arc_exception.h"
 
 #define LPS_PREC 8
 

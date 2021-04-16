@@ -33,7 +33,7 @@
 #ifndef PDM_RX_H_
 #define PDM_RX_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 /* PDM Rx IO control commands */
 #define IO_SET_CB_CLIP                  (0x20)

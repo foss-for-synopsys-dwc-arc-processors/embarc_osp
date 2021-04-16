@@ -31,7 +31,7 @@
 #ifndef _EMSK_FLASH_OBJ_H_
 #define _EMSK_FLASH_OBJ_H_
 
-#include "dev_flash.h"
+#include "device/dev_flash.h"
 
 #define USE_EMSK_DDR_RAM		1
 

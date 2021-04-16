@@ -29,7 +29,7 @@
 --------------------------------------------- */
 #include "embARC_toolchain.h"
 
-#include "dw_sdio.h"
+#include "device/designware/dw_sdio.h"
 #include "dw_sdio_obj.h"
 
 #include "hsdk/hsdk.h"

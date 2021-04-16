@@ -30,7 +30,7 @@
 #ifndef _IOTDK_FLASH_OBJ_H_
 #define _IOTDK_FLASH_OBJ_H_
 
-#include "dev_flash.h"
+#include "device/dev_flash.h"
 
 #define USE_IOTDK_EFLASH				1
 #define USE_IOTDK_BOOT_SPI_FLASH		1

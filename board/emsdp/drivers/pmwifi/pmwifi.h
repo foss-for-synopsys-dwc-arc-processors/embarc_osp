@@ -32,7 +32,7 @@
 
 #if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
 
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 
 #define EMSDP_RSWIFI_0_ID		0
 

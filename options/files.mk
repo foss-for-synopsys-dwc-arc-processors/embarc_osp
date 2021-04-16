@@ -13,7 +13,7 @@ DEVHAL_INCDIR		=
 EXTRA_ASMSRCDIR		+=
 EXTRA_CSRCDIR		+=
 EXTRA_CXXSRCDIR		+=
-EXTRA_INCDIR		+= $(EMBARC_ROOT)/inc $(EMBARC_ROOT)/inc/arc $(EMBARC_GENERATED_DIR)
+EXTRA_INCDIR		+= $(EMBARC_ROOT)/include $(EMBARC_GENERATED_DIR)
 
 ###############################################################################
 ## ALL ##

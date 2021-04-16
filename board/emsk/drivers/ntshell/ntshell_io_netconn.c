@@ -54,7 +54,7 @@
 #if defined(MID_NTSHELL) && defined(MID_LWIP) \
 	&& defined(ENABLE_OS)  /* only available when enable ntshell & lwip middleware */
 
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 #include "xprintf.h"
 
 #include "ntshell_io_netconn.h"

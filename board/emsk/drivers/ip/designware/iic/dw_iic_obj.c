@@ -50,9 +50,9 @@
  */
 #include "embARC_toolchain.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_iic.h"
+#include "device/designware/dw_iic.h"
 #include "dw_iic_obj.h"
 
 #include "emsk/emsk.h"

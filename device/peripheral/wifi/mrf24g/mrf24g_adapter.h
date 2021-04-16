@@ -69,7 +69,7 @@
 extern "C" {
 #endif
 
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 
 typedef struct MACADDR_T
 {

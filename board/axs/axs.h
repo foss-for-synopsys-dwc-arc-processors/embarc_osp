@@ -30,7 +30,7 @@
 #ifndef _AXS_H_
 #define _AXS_H_
 
-#include "arc_hs.h"
+#include "arc/arc_hs.h"
 
 #include "drivers/ip/designware/uart/dw_uart_obj.h"
 #include "drivers/ip/designware/gpio/dw_gpio_obj.h"

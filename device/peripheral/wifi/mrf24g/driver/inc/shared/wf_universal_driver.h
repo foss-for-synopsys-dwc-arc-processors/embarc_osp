@@ -53,7 +53,7 @@
 #include "wf_stubs.h"
 #include "../../wf_customize.h"
 
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 
 #ifdef __cplusplus
 extern "C" {

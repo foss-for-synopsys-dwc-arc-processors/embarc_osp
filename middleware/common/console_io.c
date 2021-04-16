@@ -36,7 +36,7 @@
 
 #include "embARC.h"
 
-#include "arc_builtin.h"
+#include "arc/arc_builtin.h"
 
 #ifdef __GNU__
 extern void gnu_printf_setup(void);

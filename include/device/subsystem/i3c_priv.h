@@ -33,7 +33,7 @@
 #ifndef I3C_PRIV_H_
 #define I3C_PRIV_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 /****************************************************************************
  *

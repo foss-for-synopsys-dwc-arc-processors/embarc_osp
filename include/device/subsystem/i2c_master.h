@@ -34,7 +34,7 @@
 #define I2C_MASTER_H_
 
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 /* I2C working speeds. */
 #define I2C_STANDARD_SPEED        (0x01)

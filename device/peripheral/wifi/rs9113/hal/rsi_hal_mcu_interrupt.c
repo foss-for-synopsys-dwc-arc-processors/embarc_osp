@@ -23,7 +23,7 @@
 /**
  * Includes
  */
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "board.h"
 #include "rsi_driver.h"
 

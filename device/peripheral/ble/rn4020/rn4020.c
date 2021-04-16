@@ -30,7 +30,7 @@
 #define DEBUG
 #include "embARC.h"
 #include "embARC_debug.h"
-#include "dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 #include "ez_sio.h"
 
 #include "rn4020.h"

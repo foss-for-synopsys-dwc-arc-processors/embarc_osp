@@ -65,7 +65,7 @@
  *
  */
 #include "string.h"
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 

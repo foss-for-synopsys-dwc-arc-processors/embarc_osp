@@ -28,7 +28,7 @@
  *
 --------------------------------------------- */
 #include "embARC.h"
-#include "arc_connect.h"
+#include "arc/arc_connect.h"
 #include "hsdk_interrupt.h"
 #include "hsdk_hardware.h"
 

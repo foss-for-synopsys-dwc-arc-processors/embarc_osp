@@ -30,12 +30,12 @@
 
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 
-#include "ip/subsystem/iic/i2c_master.h"
-#include "ip/subsystem/iic/ss_i2c_master.h"
-#include "ip/subsystem/iic/i2c_priv.h"
+#include "device/subsystem/i2c_master.h"
+#include "device/subsystem/ss_i2c_master.h"
+#include "device/subsystem/i2c_priv.h"
 
 
 #define REG_READ(x) 		_arc_aux_read((ctx->reg_base + x))

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc_connect.h"
+#include "arc/arc_connect.h"
 
 uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP *op)
 {

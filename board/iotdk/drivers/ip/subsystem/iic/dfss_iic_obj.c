@@ -33,7 +33,7 @@
 #include "iotdk_hardware.h"
 
 #include "dfss_iic_obj.h"
-#include "ip/subsystem/iic/ss_i2c_master.h"
+#include "device/subsystem/ss_i2c_master.h"
 
 #if (USE_DFSS_IIC_0)
 

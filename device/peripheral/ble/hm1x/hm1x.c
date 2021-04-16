@@ -35,7 +35,7 @@
 #include "stdio.h"
 #include "string.h"
 
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 #include "board.h"
 
 #define HM1X_TIMENOW()		OSP_GET_CUR_MS()

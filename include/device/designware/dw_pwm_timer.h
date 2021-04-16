@@ -30,8 +30,8 @@
 #ifndef _DW_PWM_TIMER_H_
 #define _DW_PWM_TIMER_H_
 
-#include "dev_pwm_timer.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_pwm_timer.h"
+#include "arc/arc_exception.h"
 
 #define	DW_PWM_TIMER_CH_MAX_COUNT		8
 

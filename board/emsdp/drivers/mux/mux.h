@@ -32,7 +32,7 @@
 
 
 #include "embARC_toolchain.h"
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 
 #define MUX_SEL0_OFFSET		(0)
 #define MUX_SEL1_OFFSET		(4)

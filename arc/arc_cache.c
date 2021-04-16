@@ -34,7 +34,7 @@
  * \brief implementation of cache related functions
  */
 #undef LIB_SECURESHIELD_OVERRIDES
-#include "arc_cache.h"
+#include "arc/arc_cache.h"
 
 struct cache_config {
 	uint8_t ver;			/* version */

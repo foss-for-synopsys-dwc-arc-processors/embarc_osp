@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc_mpu.h"
+#include "arc/arc_mpu.h"
 
 #define CALC_REGION_END_ADDR(start, size) \
 		(start + size - (1 << ARC_FEATURE_MPU_ALIGNMENT_BITS))

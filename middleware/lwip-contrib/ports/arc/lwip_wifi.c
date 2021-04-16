@@ -65,8 +65,8 @@
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "dev_wnic.h"
-#include "arc_exception.h"
+#include "device/dev_wnic.h"
+#include "arc/arc_exception.h"
 
 #include "netif/slipif.h"
 #include "lwip_wifi.h"

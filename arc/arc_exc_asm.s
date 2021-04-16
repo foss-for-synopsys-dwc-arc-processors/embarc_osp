@@ -57,8 +57,8 @@
 /** @cond EXCEPTION_ASM */
 
 #define __ASSEMBLY__
-#include "arc.h"
-#include "arc_asm_common.h"
+#include "arc/arc.h"
+#include "arc/arc_asm_common.h"
 
 	.file "arc_exc_asm.s"
 

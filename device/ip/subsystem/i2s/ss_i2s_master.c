@@ -32,9 +32,9 @@
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
 
-#include "ip/subsystem/i2s/i2s_rx_master.h"
-#include "ip/subsystem/i2s/i2s_tx_master.h"
-#include "ip/subsystem/i2s/ss_i2s_master.h"
+#include "device/subsystem/i2s_rx_master.h"
+#include "device/subsystem/i2s_tx_master.h"
+#include "device/subsystem/ss_i2s_master.h"
 
 /** check expressions used in DFSS I2S driver implementation */
 #define SS_I2S_MASTER_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)

@@ -79,7 +79,7 @@
 #include "semphr.h"
 #include "task.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "embARC_toolchain.h"
 #include "embARC_debug.h"
 

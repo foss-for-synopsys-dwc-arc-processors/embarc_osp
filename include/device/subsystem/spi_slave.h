@@ -33,7 +33,7 @@
 #ifndef SPI_SLAVE_H_
 #define SPI_SLAVE_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 
 /* SPI slave control commands */

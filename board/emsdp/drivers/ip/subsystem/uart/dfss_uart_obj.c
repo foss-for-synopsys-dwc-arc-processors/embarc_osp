@@ -37,7 +37,7 @@
 #include "board.h"
 
 #include "dfss_uart_obj.h"
-#include "ip/subsystem/uart/ss_uart.h"
+#include "device/subsystem//ss_uart.h"
 
 /*******************************************************************************/
 

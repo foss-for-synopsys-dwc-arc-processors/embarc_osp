@@ -29,9 +29,9 @@
 --------------------------------------------- */
 
 #include "embARC_toolchain.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_gpio.h"
+#include "device/designware/dw_gpio.h"
 #include "dw_gpio_obj.h"
 
 #include "hsdk/hsdk.h"

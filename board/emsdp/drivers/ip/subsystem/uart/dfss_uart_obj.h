@@ -31,7 +31,7 @@
 #define _DFSS_UART_H_
 
 #include "io_config.h"
-#include "ip/ip_hal/inc/dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 
 #ifdef IO_UART0_PRESENT
 #define USE_DFSS_UART_0				1	/*!< enable use DFSS UART 0 */

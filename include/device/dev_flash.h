@@ -30,7 +30,7 @@
 #ifndef _DEV_FLASH_H_
 #define _DEV_FLASH_H_
 
-#include "dev_common.h"
+#include "device/dev_common.h"
 
 #define DEV_SET_FLASH_SYSCMD(cmd)	DEV_SET_SYSCMD((cmd))
 

@@ -34,7 +34,7 @@
 #define DAC_MASTER_H_
 
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 
 /* DAC control commands */

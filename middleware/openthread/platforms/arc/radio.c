@@ -41,7 +41,7 @@
 #include "embARC_error.h"
 #include "mrf24j40.h"
 
-#include "dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 #include <string.h>
 
 #include <stdio.h>

@@ -47,8 +47,8 @@ typedef struct {
 
 
 /* the following are necessary definitions in embARC_OSP */
-#include "arc_exception.h"
-#include "arc_builtin.h"
+#include "arc/arc_exception.h"
+#include "arc/arc_builtin.h"
 
 #undef _Interrupt
 #define _Interrupt

@@ -30,7 +30,7 @@
 #ifndef _DEV_SDIO_H_
 #define _DEV_SDIO_H_
 
-#include  "dev_common.h"
+#include "device/dev_common.h"
 
 #define SDIO_CMD_SET_BUS_WIDTH 	DEV_SET_SYSCMD(1)  /* set bus width */
 #define SDIO_CMD_SET_BUS_FREQ	DEV_SET_SYSCMD(2) /* set bus freq */

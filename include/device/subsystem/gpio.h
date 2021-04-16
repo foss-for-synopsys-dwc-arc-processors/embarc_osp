@@ -34,7 +34,7 @@
 #define GPIO_H_
 
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 // convenience macro to get unique device IDs for 32b/8b/4b GPIO; max nr of instances per kind = 4
 #define IO_GPIO_DEV_ID(id,width)            (uint8_t)((width==32) ? (id) : (12-width+id))

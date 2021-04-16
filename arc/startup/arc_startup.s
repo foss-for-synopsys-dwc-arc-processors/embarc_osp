@@ -41,7 +41,7 @@
 /** @cond STARTUP_ASM */
 
 #define __ASSEMBLY__
-#include "arc.h"
+#include "arc/arc.h"
 
 	.file "arc_startup.s"
 

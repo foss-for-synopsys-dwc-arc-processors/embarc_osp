@@ -38,7 +38,7 @@
 #ifndef _DEVICE_HAL_TRNG_H_
 #define _DEVICE_HAL_TRNG_H_
 
-#include "dev_common.h"
+#include "device/dev_common.h"
 
 #define TRNG_VERSION_NIST				//switch between DW_NIST_TRNG version and DW_TRNG version: define this value to choose NIST, otherwise undefine it.
 

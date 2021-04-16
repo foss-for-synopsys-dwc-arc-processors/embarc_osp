@@ -30,10 +30,10 @@
 
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "ip/subsystem/uart/uart.h"
-#include "ip/subsystem/uart/ss_uart.h"
+#include "device/subsystem/uart.h"
+#include "device/subsystem/ss_uart.h"
 #include "io_config.h"
 
 

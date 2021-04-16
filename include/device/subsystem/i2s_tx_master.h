@@ -33,7 +33,7 @@
 #ifndef I2S_TX_MASTER_H_
 #define I2S_TX_MASTER_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 /* I2S Tx master IO control commands */
 #define IO_I2S_TX_MASTER_SET_SAMPLE_WIDTH       (0x20)

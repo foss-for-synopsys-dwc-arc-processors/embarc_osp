@@ -37,7 +37,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "arc_builtin.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 

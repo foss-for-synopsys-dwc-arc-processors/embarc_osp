@@ -30,7 +30,7 @@
 #ifndef __EMSDP_HARDWARE_H__
 #define __EMSDP_HARDWARE_H__
 
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 #include "apexextensions.h"
 #include "board_emsdp.h"
 

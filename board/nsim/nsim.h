@@ -30,8 +30,8 @@
 #ifndef _NSIM_H_
 #define _NSIM_H_
 
-#include "arc_feature_config.h"
-#include "arc_em.h"
+#include "arc/arc_feature_config.h"
+#include "arc/arc_em.h"
 
 #include "drivers/uart/nsim_uart_obj.h"
 #include "drivers/ntshell/ntshell_io.h"

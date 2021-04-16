@@ -42,7 +42,7 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 #include "ssd1306_app_config.h"
 
 #ifndef SSD1306_I2C_ID
@@ -60,7 +60,7 @@
 #endif
 
 #if SSD1306_USE_RST_PIN
-#include "dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 
 
 #ifndef SSD1306_RST_GPIO

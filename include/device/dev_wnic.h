@@ -57,7 +57,7 @@
 #ifndef _DEVICE_HAL_WNIC_H_
 #define _DEVICE_HAL_WNIC_H_
 
-#include "dev_common.h"
+#include "device/dev_common.h"
 
 /**
  * \defgroup	DEVICE_HAL_WNIC_CTRLCMD	WNIC Device Control Command

@@ -57,7 +57,7 @@
 #ifndef _DEVICE_HAL_SPI_H_
 #define _DEVICE_HAL_SPI_H_
 
-#include "dev_common.h"
+#include "device/dev_common.h"
 
 
 /**

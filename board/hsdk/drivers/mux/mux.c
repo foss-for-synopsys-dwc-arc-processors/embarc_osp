@@ -31,7 +31,7 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 #include "hsdk/hsdk.h"
 
 #define GPIO_MUX_CONFIG_NUM 8

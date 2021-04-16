@@ -30,7 +30,7 @@
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 
 #include "target_mem_config.h"

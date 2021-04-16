@@ -28,7 +28,7 @@
  *
 --------------------------------------------- */
 #undef LIB_SECURESHIELD_OVERRIDES
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "secureshield_lib.h"
 
 #if SECURESHIELD_VERSION == 1

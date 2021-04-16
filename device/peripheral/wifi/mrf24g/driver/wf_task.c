@@ -41,7 +41,7 @@
 //==============================================================================
 //                                  INCLUDES
 //==============================================================================
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 
 #include "./inc/shared/wf_universal_driver.h"
 #include "./inc/internal/wf_global_includes.h"

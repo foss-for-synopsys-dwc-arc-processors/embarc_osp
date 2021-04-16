@@ -30,7 +30,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "arc_builtin.h"
+#include "arc/arc_builtin.h"
 #include "creg_hsdc.h"
 
 void creg_hsdc_init_device(CREG_HSDC_STRUCT_PTR creg_regs)

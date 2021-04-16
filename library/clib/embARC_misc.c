@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "embARC_syscalls.h"
 
 /**

@@ -34,7 +34,7 @@
 #define UART_H_
 
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 
 /* UART control commands */

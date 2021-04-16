@@ -23,12 +23,12 @@
  * Includes
  */
 #include "rsi_driver.h"
-#include "dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 #include "board.h"
 #include "embARC_error.h"
 //#define DEBUG
 #include "embARC_debug.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 /**
  * Global Variables

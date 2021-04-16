@@ -31,8 +31,8 @@
 #ifndef _DEVICE_DW_SPI_H_
 #define _DEVICE_DW_SPI_H_
 
-#include "dev_spi.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_spi.h"
+#include "arc/arc_exception.h"
 
 /**
  * if this header file is included,

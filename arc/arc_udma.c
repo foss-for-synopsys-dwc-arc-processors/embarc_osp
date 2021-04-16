@@ -37,7 +37,7 @@
  * \addtogroup ARC_HAL_MISC_UDMA
  * @{
  */
-#include "arc_udma.h"
+#include "arc/arc_udma.h"
 
 /** Uncomment this macro to enable uDMA driver check errors */
 //#define UDMA_CHECK_ERRORS

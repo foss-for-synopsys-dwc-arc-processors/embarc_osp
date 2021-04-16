@@ -29,9 +29,9 @@
 --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_pwm_timer.h"
+#include "device/designware/dw_pwm_timer.h"
 
 /** check expressions used in DesignWare PWM_TIMER driver implementation */
 #define DW_PWM_TIMER_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)

@@ -30,7 +30,7 @@
 #ifndef _DW_SPI_OBJ_H_
 #define _DW_SPI_OBJ_H_
 
-#include "dw_spi.h"
+#include "device/designware/dw_spi.h"
 
 #define DW_SPI_NUM		(2)	/*!< DesignWare SPI valid number */
 

@@ -33,7 +33,7 @@
 #ifndef SPI_PRIV_H_
 #define SPI_PRIV_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 /*  EIA SPI device registers */
 #define CTRL0           (0x00)

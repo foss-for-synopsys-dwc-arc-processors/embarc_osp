@@ -37,8 +37,8 @@
 #include "board.h"
 
 #include "dfss_spi_obj.h"
-#include "ip/subsystem/spi/ss_spi_master.h"
-#include "ip/subsystem/spi/ss_spi_slave.h"
+#include "device/subsystem/ss_spi_master.h"
+#include "device/subsystem/ss_spi_slave.h"
 
 
 #if (USE_DFSS_SPI_0)

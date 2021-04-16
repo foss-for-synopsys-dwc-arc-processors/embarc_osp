@@ -2,9 +2,9 @@
 #include <stdint.h>
 #include "board.h"
 #include "spi_flash.h"
-#include "arc_udma.h"
+#include "arc/arc_udma.h"
 #include "dw_spi_hal.h"
-#include "dw_spi.h"
+#include "device/designware/dw_spi.h"
 #include "spi_flash_w25qxx.h"
 
 #define _MEMORY_FENCE()				_arc_sync()

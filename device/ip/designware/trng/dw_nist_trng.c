@@ -30,10 +30,10 @@
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "string.h"
 
-#include "dw_nist_trng.h"
+#include "device/designware/dw_nist_trng.h"
 
 #ifdef TRNG_VERSION_NIST
 

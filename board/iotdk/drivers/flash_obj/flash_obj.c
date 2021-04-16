@@ -29,7 +29,7 @@
 --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "iotdk/drivers/smic/smic_eflash/smic_eflash.h"
 #include "iotdk/drivers/smic/smic_bootspi/smic_bootspi.h"

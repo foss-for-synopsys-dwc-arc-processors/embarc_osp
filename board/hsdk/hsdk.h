@@ -30,7 +30,7 @@
 #ifndef _HSDK_H_
 #define _HSDK_H_
 
-#include "arc_hs.h"
+#include "arc/arc_hs.h"
 
 #include "drivers/ip/designware/iic/dw_iic_obj.h"
 #include "drivers/ip/designware/spi/dw_spi_obj.h"
@@ -44,7 +44,7 @@
 #include "drivers/cgu/cgu_hsdc.h"
 #include "common/hsdk_timer.h"
 #include "common/hsdk_io.h"
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 
 #include "hsdk_hardware.h"
 

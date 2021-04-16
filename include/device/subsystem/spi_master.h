@@ -34,8 +34,8 @@
 #define SPI_MASTER_H_
 
 
-#include "ioctl.h"
-#include "ip/ip_hal/inc/dev_spi.h"
+#include "device/ip_hal/ioctl.h"
+#include "device/ip_hal/dev_spi.h"
 
 
 /* SPI control commands */

@@ -30,8 +30,8 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "arc_builtin.h"
-#include "arc_exception.h"
+#include "arc/arc_builtin.h"
+#include "arc/arc_exception.h"
 #include "cgu_hsdc.h"
 #include "embARC_debug.h"
 

@@ -29,8 +29,8 @@
 --------------------------------------------- */
 #include "string.h"
 #include "stdlib.h"
-#include "dev_spi.h"
-#include "dev_wnic.h"
+#include "device/ip_hal/dev_spi.h"
+#include "device/dev_wnic.h"
 #include "embARC_error.h"
 //TODO: move SPI related part to emdk\drivers\pmwifi
 /* include board.h for SPI wiring and frequency */

@@ -31,7 +31,7 @@
 #ifndef _DW_I2S_H_
 #define _DW_I2S_H_
 
-#include "dev_i2s.h"
+#include "device/ip_hal/dev_i2s.h"
 #include "stdio.h"
 /* embARC HAL */
 #include "embARC.h"

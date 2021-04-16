@@ -31,8 +31,8 @@
 #ifndef _DW_UART_H_
 #define _DW_UART_H_
 
-#include "dev_uart.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_uart.h"
+#include "arc/arc_exception.h"
 
 /**
  * if this header file is included,

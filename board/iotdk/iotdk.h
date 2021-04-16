@@ -31,7 +31,7 @@
 #ifndef _IOTDK_H_
 #define _IOTDK_H_
 
-#include "arc_em.h"
+#include "arc/arc_em.h"
 
 #include "drivers/ip/designware/i2s/dw_i2s_obj.h"
 #include "drivers/ip/designware/sdio/dw_sdio_obj.h"
@@ -48,7 +48,7 @@
 #include "drivers/smic/smic_adc/smic_adc.h"
 #include "drivers/smic/smic_eflash/smic_eflash.h"
 #include "drivers/smic/smic_bootspi/smic_bootspi.h"
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 
 #include "drivers/flash_obj/flash_obj.h"
 #include "iotdk_hardware.h"

@@ -61,7 +61,7 @@
 #ifndef _DEVICE_HAL_UART_H_
 #define _DEVICE_HAL_UART_H_
 
-#include "dev_common.h"
+#include "device/dev_common.h"
 
 /**
  * \defgroup	DEVICE_HAL_UART_BAUD	UART Device Baudrate Definitions

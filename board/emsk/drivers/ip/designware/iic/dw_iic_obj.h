@@ -40,7 +40,7 @@
 #ifndef _DW_IIC_OBJ_H_
 #define _DW_IIC_OBJ_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 /**
  * \name	DesignWare IIC Object Number

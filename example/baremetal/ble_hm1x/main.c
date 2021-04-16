@@ -31,7 +31,7 @@
 #include "embARC_debug.h"
 
 #include "board.h"
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 #include "hm1x.h"
 
 uint32_t baudrate_list[] = {4800, 9600, 19200, 38400, 57600, 115200};

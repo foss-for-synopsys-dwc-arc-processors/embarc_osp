@@ -30,7 +30,7 @@
 #ifndef _SMIC_ADC_H_
 #define _SMIC_ADC_H_
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #define ADC_CRTL_BASE		0xF0007000
 #define ADC_CHANNEL_MAX		16

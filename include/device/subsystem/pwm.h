@@ -34,7 +34,7 @@
 #define PWM_MASTER_H_
 
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 
 /* PWM control commands */

@@ -31,7 +31,7 @@
 #define _DFSS_GPIO_OBJ_H_
 
 #include "io_config.h"
-#include "ip/ip_hal/inc/dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 
 #define DFSS_GPIO_BASE_ID		10
 #define DFSS_GPIO_0_ID			10	/* GPIO 0 ID macro (io_gpio0) */

@@ -28,4 +28,4 @@
  *
 --------------------------------------------- */
 #undef LIB_SECURESHIELD_OVERRIDES
-#include "arc_mpu.c"
+#include "arc/arc_mpu.c"

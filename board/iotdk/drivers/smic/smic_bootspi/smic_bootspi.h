@@ -30,7 +30,7 @@
 #ifndef _SMIC_BOOTSPI_H_
 #define _SMIC_BOOTSPI_H_
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #define BOOTSPI_CTRL_BASE 		0xF0003000
 
 #define SMIC_BOOTSPI_RESET			0

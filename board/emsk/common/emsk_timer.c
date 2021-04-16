@@ -47,10 +47,10 @@
  * \addtogroup	BOARD_EMSK_COMMON_TIMER
  * @{
  */
-#include "arc_builtin.h"
-#include "arc.h"
-#include "arc_timer.h"
-#include "arc_exception.h"
+#include "arc/arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_timer.h"
+#include "arc/arc_exception.h"
 
 #include "board.h"
 

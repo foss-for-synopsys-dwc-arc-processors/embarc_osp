@@ -29,10 +29,10 @@
 --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "board.h"
-#include "dw_sdio_hal.h"
-#include "dw_sdio.h"
+#include "device/designware/dw_sdio_hal.h"
+#include "device/designware/dw_sdio.h"
 #include "embARC_debug.h"
 
 

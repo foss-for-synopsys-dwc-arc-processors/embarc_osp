@@ -38,9 +38,9 @@
 #define _ARC_HAL_CACHE_H_
 
 #include "embARC_toolchain.h"
-#include "arc.h"
-#include "arc_builtin.h"
-#include "arc_exception.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
+#include "arc/arc_exception.h"
 
 /**
  * \name instruction cache control register related definition

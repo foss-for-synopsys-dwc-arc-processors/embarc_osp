@@ -30,7 +30,7 @@
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
 
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 
 #ifdef USE_APPL_MEM_CONFIG
 #include "appl_mem_config.h"

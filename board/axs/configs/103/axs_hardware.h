@@ -30,7 +30,7 @@
 #ifndef _AXS_HARDWARE_H_
 #define _AXS_HARDWARE_H_
 
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)

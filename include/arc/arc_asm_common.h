@@ -38,7 +38,7 @@
 #ifndef _ARC_HAL_ASM_COMMON_H_
 #define _ARC_HAL_ASM_COMMON_H_
 
-#include "arc.h"
+#include "arc/arc.h"
 
 /* Note on the LD/ST addr modes with addr reg wback
  *

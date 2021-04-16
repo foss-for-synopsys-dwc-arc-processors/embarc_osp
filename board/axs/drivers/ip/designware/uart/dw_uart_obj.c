@@ -27,14 +27,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dw_uart.h"
+#include "device/designware/dw_uart.h"
 #include "dw_uart_obj.h"
 
 #include "../../axs.h"

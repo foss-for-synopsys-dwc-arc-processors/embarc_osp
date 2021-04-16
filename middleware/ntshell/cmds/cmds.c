@@ -35,7 +35,7 @@
 
 #include "cmd.h"
 #include "embARC_toolchain.h"
-#include "arc_builtin.h"
+#include "arc/arc_builtin.h"
 
 #include "cmds_arc.h"
 #include "cmds_peripheral.h"

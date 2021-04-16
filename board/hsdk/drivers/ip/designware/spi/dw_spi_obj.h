@@ -31,7 +31,7 @@
 #ifndef _DW_SPI_OBJ_H_
 #define _DW_SPI_OBJ_H_
 
-#include "dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 
 /**
  * \name	DesignWare SPI Object Number

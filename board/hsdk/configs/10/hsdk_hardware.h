@@ -30,7 +30,7 @@
 #ifndef _HSDK_HARDWARE_H_
 #define _HSDK_HARDWARE_H_
 
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 
 #define HSDC_KHZ(khz)				((khz)*1000)
 #define HSDC_MHZ(mhz)				(HSDC_KHZ(mhz)*1000)

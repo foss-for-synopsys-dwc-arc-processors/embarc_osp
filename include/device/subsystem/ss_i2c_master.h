@@ -31,7 +31,7 @@
 #define _SS_I2C_MASTER_H_
 /* the wrapper of subsystem i2c master driver */
 
-#include "ip/ip_hal/inc/dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 #define SS_IIC_MASTER_FLAG_TX		(1 << 0) /* interrupt tx */
 #define SS_IIC_MASTER_FLAG_RX		(1 << 1) /* interrupt rx */

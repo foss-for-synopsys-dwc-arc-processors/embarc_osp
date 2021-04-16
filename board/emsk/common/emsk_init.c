@@ -46,10 +46,10 @@
  * \addtogroup	BOARD_EMSK_COMMON_INIT
  * @{
  */
-#include "arc_timer.h"
+#include "arc/arc_timer.h"
 #include "board.h"
 #include "emsk_timer.h"
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 
 
 /**

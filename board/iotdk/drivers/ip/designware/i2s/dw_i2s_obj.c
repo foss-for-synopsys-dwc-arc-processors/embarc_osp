@@ -32,8 +32,8 @@
 
 #include "iotdk_hardware.h"
 
-#include "ip/designware/i2s/dw_i2s.h"
-#include "ip/designware/i2s/dw_i2s_hal.h"
+#include "device/designware/dw_i2s.h"
+#include "device/designware/dw_i2s_hal.h"
 #include "dw_i2s_obj.h"
 
 

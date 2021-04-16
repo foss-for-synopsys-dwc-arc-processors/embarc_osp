@@ -30,8 +30,8 @@
 #ifndef _DW_SDIO_H_
 #define _DW_SDIO_H_
 
-#include "dev_sdio.h"
-#include "arc_builtin.h"
+#include "device/ip_hal/dev_sdio.h"
+#include "arc/arc_builtin.h"
 
 
 /**

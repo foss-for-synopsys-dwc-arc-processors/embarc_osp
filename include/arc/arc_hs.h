@@ -42,7 +42,7 @@
 #ifndef _ARC_HAL_HS_H_
 #define _ARC_HAL_HS_H_
 
-#include "arc.h"
+#include "arc/arc.h"
 
 #define AUX_TLBPD0		(0x460)
 #define AUX_TLBPD1		(0x461)

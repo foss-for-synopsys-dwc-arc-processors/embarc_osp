@@ -33,7 +33,7 @@
 #include "iotdk_hardware.h"
 
 #include "dfss_gpio_obj.h"
-#include "ip/subsystem/gpio/ss_gpio.h"
+#include "device/subsystem/ss_gpio.h"
 
 
 

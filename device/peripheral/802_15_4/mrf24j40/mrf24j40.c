@@ -32,19 +32,19 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "board.h"
 
 #ifdef ENABLE_OS
 #include "os_hal_inc.h"
 #endif
 
-#include "dev_gpio.h"
-#include "dev_spi.h"
+#include "device/ip_hal/dev_gpio.h"
+#include "device/ip_hal/dev_spi.h"
 #include "mrf24j40.h"
 
 #define DEBUG

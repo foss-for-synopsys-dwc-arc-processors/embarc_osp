@@ -33,7 +33,7 @@
 #include "embARC_debug.h"
 
 #include "board.h"
-#include "dev_sdio.h"
+#include "device/ip_hal/dev_sdio.h"
 #include "ff_sdcard_sdio.h"
 
 

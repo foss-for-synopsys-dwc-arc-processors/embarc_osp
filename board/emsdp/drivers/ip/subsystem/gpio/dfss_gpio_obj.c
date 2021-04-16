@@ -33,7 +33,7 @@
 #include "board.h"
 
 #include "dfss_gpio_obj.h"
-#include "ip/subsystem/gpio/ss_gpio.h"
+#include "device/subsystem/ss_gpio.h"
 
 
 #if (USE_DFSS_GPIO_0)

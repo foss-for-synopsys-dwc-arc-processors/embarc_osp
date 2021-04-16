@@ -30,7 +30,7 @@
 #ifndef _DW_I2S_OBJ_H_
 #define _DW_I2S_OBJ_H_
 
-#include "ip/ip_hal/inc/dev_i2s.h"
+#include "device/ip_hal/dev_i2s.h"
 
 #define DW_I2S_0_ID		0	/*!< I2S 0 ID macro */
 #define DW_I2S_1_ID		1	/*!< I2S 1 ID macro */

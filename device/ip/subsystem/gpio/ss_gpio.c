@@ -33,8 +33,8 @@
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
 
-#include "ip/subsystem/gpio/gpio.h"
-#include "ip/subsystem/gpio/ss_gpio.h"
+#include "device/subsystem/gpio.h"
+#include "device/subsystem/ss_gpio.h"
 
 
 int32_t ss_gpio_open(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir)

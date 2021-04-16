@@ -37,7 +37,7 @@
 #endif
 #include "secureshield_container_stack.h"
 #include "secureshield_container_call.h"
-#include "arc_mpu.h"
+#include "arc/arc_mpu.h"
 
 
 /* Maximu MPU region count that can be defined in container configuration */

@@ -34,7 +34,7 @@
 #include "board.h"
 
 #include "dfss_i2s_obj.h"
-#include "ip/subsystem/i2s/ss_i2s_master.h"
+#include "device/subsystem/ss_i2s_master.h"
 
 
 void dfss_i2s_all_install(void);

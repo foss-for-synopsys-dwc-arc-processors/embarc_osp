@@ -27,10 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc_timer.h"
+#include "arc/arc_timer.h"
 #include "board.h"
 #include "emsdp_timer.h"
-#include "dev_pinmux.h"
+#include "device/dev_pinmux.h"
 
 
 /**

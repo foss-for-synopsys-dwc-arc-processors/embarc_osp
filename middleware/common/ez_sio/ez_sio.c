@@ -25,7 +25,7 @@
 #include <stdlib.h>
 
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "ez_sio.h"
 
 #define BUFSZ_LOCAL	32

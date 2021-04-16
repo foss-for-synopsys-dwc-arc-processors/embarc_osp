@@ -33,7 +33,7 @@
 #include "container_config.h"
 
 #include "secureshield_appl_config.h"
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 
 /* CONTAINER_ADDRESS_ALIGNMENT is the max value of (32, dcache_line_size, icache_line_size) */
 #ifndef CONTAINER_ADDRESS_ALIGNMENT

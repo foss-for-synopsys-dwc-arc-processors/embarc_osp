@@ -31,7 +31,7 @@
 #include "embARC_error.h"
 
 #include "iotdk_hardware.h"
-#include "ip/designware/sdio/dw_sdio.h"
+#include "device/designware/dw_sdio.h"
 #include "dw_sdio_obj.h"
 
 #if (USE_DW_SDIO_0)

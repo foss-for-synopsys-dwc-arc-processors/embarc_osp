@@ -56,7 +56,7 @@ typedef u32_t sys_prot_t;
 #ifndef SYS_ARCH_PROTECT
 #if SYS_LIGHTWEIGHT_PROT
 /** arc exception provide lock save & restore */
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #endif /* SYS_LIGHTWEIGHT_PROT */
 #endif /* SYS_ARCH_PROTECT */
 

@@ -34,10 +34,10 @@
 
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "ip/subsystem/spi/spi_master.h"
-#include "ip/subsystem/spi/ss_spi_master.h"
+#include "device/subsystem/spi_master.h"
+#include "device/subsystem/ss_spi_master.h"
 
 
 int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t mode, uint32_t param)

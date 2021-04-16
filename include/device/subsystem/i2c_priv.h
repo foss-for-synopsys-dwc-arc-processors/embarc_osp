@@ -33,7 +33,7 @@
 #ifndef I2C_PRIV_H_
 #define I2C_PRIV_H_
 
-#include "ioctl.h"
+#include "device/ip_hal/ioctl.h"
 
 /*  EIA I2C device registers */
 #define I2C_CON                 (0x00)

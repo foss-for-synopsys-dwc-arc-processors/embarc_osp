@@ -43,7 +43,7 @@
 #ifndef _ARC_HAL_CORE_H_
 #define _ARC_HAL_CORE_H_
 
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 
 /**
  * \name exception number definitions

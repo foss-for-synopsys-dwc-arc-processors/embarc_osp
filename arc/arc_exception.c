@@ -34,8 +34,8 @@
  * \brief C Implementation of exception and interrupt management
  */
 #undef LIB_SECURESHIELD_OVERRIDES
-#include "arc_exception.h"
-#include "arc_cache.h"
+#include "arc/arc_exception.h"
+#include "arc/arc_cache.h"
 
 #define	 DBG_LESS
 #include "embARC_debug.h"

@@ -30,7 +30,7 @@
 #ifndef _SMIC_EFLASH_H_
 #define _SMIC_EFLASH_H_
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #define EFLASH_CTRL_BASE 		0xF0009000
 #define EFLASH_BASE_ADDR0		0x00000000

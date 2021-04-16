@@ -38,7 +38,7 @@
 #include "lwip/sio.h"
 #include "ez_sio.h"
 #include "embARC_error.h"
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 
 #define SLIP_BAUDRATE 	UART_BAUDRATE_230400
 #define SLIP_TX_BUFSIZE	512

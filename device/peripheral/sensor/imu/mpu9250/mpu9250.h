@@ -30,7 +30,7 @@
 #ifndef _MPU9250_H_
 #define _MPU9250_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 #define MPU9250_USE_DMP
 

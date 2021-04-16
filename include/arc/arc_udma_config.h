@@ -41,8 +41,8 @@
 #ifndef _ARC_UDMA_CONFIG_H_
 #define _ARC_UDMA_CONFIG_H_
 
-#include "arc_feature_config.h"
-#include "arc_exception.h"
+#include "arc/arc_feature_config.h"
+#include "arc/arc_exception.h"
 
 /*------ Available uDMA driver configurations */
 #ifndef DMA_MULTI_IRQ
