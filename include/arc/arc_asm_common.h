@@ -40,6 +40,23 @@
 
 #include "arc/arc.h"
 
+/* the assembly macro definitions in ARC GNU and MWDT are
+ * different, so need different processing
+ */
+#if defined(__GNU__)
+#define MACRO_ARG(x) \x
+#define ASM_MACRO1(name, arg1) name arg1
+#define ASM_MACRO2(name, arg1, arg2) name arg1 arg2
+#define ASM_MACRO3(name, arg1, arg2, arg3) name arg1 arg, agr3
+#define ASM_MACRO4(name, arg1, arg2, arg3, arg4) name arg1 arg2 arg3 arg4
+#else
+#define MACRO_ARG(x) x
+#define ASM_MACRO1(name, arg1) name, arg1
+#define ASM_MACRO2(name, arg1, arg2) name, arg1, arg2
+#define ASM_MACRO3(name, arg1, arg2, arg3) name, arg1, arg2, agr3
+#define ASM_MACRO4(name, arg1, arg2, arg3, arg4) name, arg1, arg2, arg3, arg4
+#endif
+
 /* Note on the LD/ST addr modes with addr reg wback
  *
  * LD.a same as LD.aw
@@ -50,43 +67,23 @@
  * LD.ab   reg1, [reg2, x]  => Post Incr
  *      Eff Addr for load = [reg2]
  */
-#if defined(__GNU__)
-.macro PUSH reg
-	st.a	\reg, [sp, -4]
+.macro ASM_MACRO1(PUSH, reg)
+	st.a MACRO_ARG(reg), [sp, -4]
 .endm
 
-.macro PUSHAX aux
-	lr	r10, [\aux]
-	PUSH	r10
+.macro ASM_MACRO1(PUSHAX, aux)
+	lr r10, [MACRO_ARG(aux)]
+	PUSH r10
 .endm
 
-.macro POP reg
-	ld.ab	\reg, [sp, 4]
+.macro ASM_MACRO1(POP, reg)
+	ld.ab MACRO_ARG(reg), [sp, 4]
 .endm
 
-.macro POPAX aux
-	POP	r10
-	sr	r10, [\aux]
+.macro ASM_MACRO1(POPAX, aux)
+	POP r10
+	sr r10, [MACRO_ARG(aux)]
 .endm
-#else
-.macro PUSH, reg
-	st.a	reg, [sp, -4]
-.endm
-
-.macro PUSHAX, aux
-	lr	r10, [aux]
-	PUSH	r10
-.endm
-
-.macro POP, reg
-    ld.ab   reg, [sp, 4]
-.endm
-
-.macro POPAX, aux
-	POP	r10
-	sr	r10, [aux]
-.endm
-#endif
 
 /* macro to save accl regs */
 .macro SAVE_R58_R59
