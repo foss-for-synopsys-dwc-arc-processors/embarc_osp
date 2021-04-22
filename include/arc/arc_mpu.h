@@ -150,7 +150,7 @@ typedef struct arc_mpu_region {
 
 Inline uint8_t arc_mpu_regions(void)
 {
-	uint32_t num = _arc_aux_read(AUX_BCR_MPU);
+	uint32_t num = arc_aux_read(AUX_BCR_MPU);
 
 	num = (num & 0xFF00) >> 8;
 
@@ -166,5 +166,3 @@ extern int32_t arc_mpu_in_region(uint32_t index, uint32_t start, uint32_t size);
 extern int32_t arc_mpu_probe(uint32_t addr);
 
 #endif /* _ARC_HAL_MPU_H_ */
-
-

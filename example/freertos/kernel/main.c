@@ -237,7 +237,7 @@ static void task1(void *par)
 		x.t_t2_t1 = perf_end();
 		//// 2-S: Task1 --> Int
 		perf_start();
-		_arc_aux_write(AUX_IRQ_HINT, SWI_INTNO); /*!< activate soft_interrupt */
+		arc_aux_write(AUX_IRQ_HINT, SWI_INTNO); /*!< activate soft_interrupt */
 		//// 5-E: Int --> Task1
 		x.t_int_t1 = perf_end();
 

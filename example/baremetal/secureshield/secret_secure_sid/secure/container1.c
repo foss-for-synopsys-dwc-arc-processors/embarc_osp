@@ -59,9 +59,9 @@ SECRET_CONTEXT container1_context;
 static void timer1_interrupt1(void *p_exinf)
 {
 	uint32_t val;
-	val = _arc_aux_read(AUX_TIMER1_CTRL);
+	val = arc_aux_read(AUX_TIMER1_CTRL);
 	val &= ~TIMER_CTRL_IP;
-	_arc_aux_write(AUX_TIMER1_CTRL, val);
+	arc_aux_write(AUX_TIMER1_CTRL, val);
 	//Asm("kflag 1");
 }
 #endif
@@ -80,10 +80,10 @@ int32_t init_secret(void)
 		ctx->secret = container1_secret;
 
 #ifndef BOARD_EMSDP
-		_arc_aux_write(AUX_TIMER1_CTRL, 0);
-		_arc_aux_write(AUX_TIMER1_LIMIT, 5000);
-		_arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE|TIMER_CTRL_NH);
-		_arc_aux_write(AUX_TIMER1_CNT, 0);
+		arc_aux_write(AUX_TIMER1_CTRL, 0);
+		arc_aux_write(AUX_TIMER1_LIMIT, 5000);
+		arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE|TIMER_CTRL_NH);
+		arc_aux_write(AUX_TIMER1_CNT, 0);
 
 		secure_int_handler_install(INTNO_TIMER1, timer1_interrupt1);
 		secure_int_pri_set(INTNO_TIMER1, INT_PRI_MIN);

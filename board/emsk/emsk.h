@@ -62,7 +62,7 @@
 #ifdef ARC_FEATURE_DMP_PERIPHERAL
 #define PERIPHERAL_BASE		ARC_FEATURE_DMP_PERIPHERAL
 #else
-#define PERIPHERAL_BASE		_arc_aux_read(AUX_DMP_PERIPHERAL)
+#define PERIPHERAL_BASE		arc_aux_read(AUX_DMP_PERIPHERAL)
 #endif
 
 /* common macros must be defined by all boards */

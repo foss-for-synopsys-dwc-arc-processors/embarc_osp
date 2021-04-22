@@ -57,7 +57,7 @@ int main(void)
 	unsigned int int_bcr;
 
 	EMBARC_PRINTF("ARC timer and interrupt\r\n");
-	int_bcr = _arc_lr_reg(AUX_BCR_IRQ);
+	int_bcr = arc_aux_read(AUX_BCR_IRQ);
 	EMBARC_PRINTF("interrupt number:%d, ", (unsigned char)(int_bcr >> 8));
 	EMBARC_PRINTF("extern interrupts:%d, ", (unsigned char)(int_bcr >> 16));
 	EMBARC_PRINTF("interrupt priorities:%d, ", (unsigned char)((int_bcr >> 24) & 0xf) + 1);

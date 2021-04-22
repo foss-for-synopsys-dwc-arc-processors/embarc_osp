@@ -37,20 +37,20 @@ uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP *op)
 	regval = op->cmd | ((op->param)<<8);
 	switch (op->type) {
 		case ARC_CONNECT_CMD_TYPE_CMD_ONLY:
-			_arc_sr_reg(AUX_CONNECT_CMD, regval);
+			arc_aux_write(AUX_CONNECT_CMD, regval);
 			break;
 		case ARC_CONNECT_CMD_TYPE_CMD_RETURN:
-			_arc_sr_reg(AUX_CONNECT_CMD, regval);
-			return _arc_lr_reg(AUX_CONNECT_READBACK);
+			arc_aux_write(AUX_CONNECT_CMD, regval);
+			return arc_aux_read(AUX_CONNECT_READBACK);
 			break;
 		case ARC_CONNECT_CMD_TYPE_CMD_WDATA:
-			_arc_sr_reg(AUX_CONNECT_WDATA, op->wdata);
-			_arc_sr_reg(AUX_CONNECT_CMD, regval);
+			arc_aux_write(AUX_CONNECT_WDATA, op->wdata);
+			arc_aux_write(AUX_CONNECT_CMD, regval);
 			break;
 		case ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN:
-			_arc_sr_reg(AUX_CONNECT_WDATA, op->wdata);
-			_arc_sr_reg(AUX_CONNECT_CMD, regval);
-			return _arc_lr_reg(AUX_CONNECT_READBACK);
+			arc_aux_write(AUX_CONNECT_WDATA, op->wdata);
+			arc_aux_write(AUX_CONNECT_CMD, regval);
+			return arc_aux_read(AUX_CONNECT_READBACK);
 			break;
 		default:
 			break;

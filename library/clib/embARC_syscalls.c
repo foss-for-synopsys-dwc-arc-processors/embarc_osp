@@ -115,7 +115,7 @@ static int stdio_write(const char *buffer, unsigned int length)
 #if EMBARC_CFG_STDIO_CRLF
 	unsigned int i = 0;
 	while (i < length) {
-		if (_arc_rarely(buffer[i] == '\n')) {
+		if (arc_compiler_rarely(buffer[i] == '\n')) {
 			stdio_write_char('\r');
 		}
 		stdio_write_char(buffer[i]);

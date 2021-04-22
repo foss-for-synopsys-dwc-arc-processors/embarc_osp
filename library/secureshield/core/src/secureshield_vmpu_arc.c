@@ -677,8 +677,8 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	/* handle background container */
 	if (!container_id) {
 		/* container 0 is background container, it uses the default stack, just set the secure stack*/
-		_arc_aux_write(AUX_USER_SP, (uint32_t)container_cfg->stack_secure);
-		_arc_aux_write(AUX_ERSTATUS, g_container_context[0].cpu_status);
+		arc_aux_write(AUX_USER_SP, (uint32_t)container_cfg->stack_secure);
+		arc_aux_write(AUX_ERSTATUS, g_container_context[0].cpu_status);
 	} else {
 		if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
 			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
@@ -732,7 +732,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	/* initialize the status of container, stack pointer and status register */
 	if (!container_id) {
 		/* container 0 is background container, it uses the default stack */
-		_arc_aux_write(AUX_SEC_K_SP, (uint32_t)container_cfg->stack_secure);
+		arc_aux_write(AUX_SEC_K_SP, (uint32_t)container_cfg->stack_secure);
 	} else {
 		/* \todo init cpu status ? */
 		if (secure == SECURESHIELD_AC_SECURE) {
@@ -879,7 +879,7 @@ void vmpu_arch_init(void)
 
 	g_mpu_slot = ARC_MPU_RESERVED_REGIONS;
 
-	mpu_cfg = _arc_aux_read(AUX_BCR_MPU);
+	mpu_cfg = arc_aux_read(AUX_BCR_MPU);
 	SECURESHIELD_DBG("MPU version:%x, regions:%d\r\n", mpu_cfg & 0xff, (mpu_cfg >> 8) & 0xff);
 	SECURESHIELD_DBG("MPU ALIGNMENT=0x%x\r\n", 1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS);
 

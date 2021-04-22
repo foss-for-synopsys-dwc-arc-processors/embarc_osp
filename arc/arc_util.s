@@ -35,9 +35,9 @@
 	.file "arc_utils.s"
 
 	.text
-	.global _arc_in_user_mode
+	.global arc_in_user_mode
 	.align 4
-_arc_in_user_mode:
+arc_in_user_mode:
 	lr r0, [AUX_STATUS32]
 	bbit1 r0, 20, 1f
 	bset r1, r0, 20

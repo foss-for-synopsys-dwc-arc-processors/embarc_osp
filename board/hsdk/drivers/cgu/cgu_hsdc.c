@@ -106,7 +106,7 @@ static int32_t cgu_wait_for_lock(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pl
 		if ( (*ptr & CGU_HSDC_STS_PLL_LOCK) != CGU_HSDC_STS_PLL_LOCK) {
 			break;  //it is unlocked after reprogramming
 		}
-		_arc_nop();
+		arc_nop();
 		cnt--;
 	}
 
@@ -116,7 +116,7 @@ static int32_t cgu_wait_for_lock(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pl
 		if ( (*ptr & CGU_HSDC_STS_PLL_LOCK) == CGU_HSDC_STS_PLL_LOCK) {
 			return 0; //ok
 		}
-		_arc_nop();
+		arc_nop();
 		cnt--;
 	}
 
@@ -219,7 +219,7 @@ int32_t cgu_hsdc_set_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_CONFIG_T *co
 			int_handler_install(config->intnum+2, cgu_pll_error_handler);  //Lockerror
 
 			*ptr = cgu_pll_ctrl_reg(&ctrl);
-			_arc_sync();
+			arc_sync();
 
 			//Interrupt method: wait for interrupt
 			while ((cgu_pll_locked == 0) && (cgu_pll_error == 0));
@@ -228,7 +228,7 @@ int32_t cgu_hsdc_set_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_CONFIG_T *co
 		} else {
 			//use polling method: bootloader
 			*ptr = cgu_pll_ctrl_reg(&ctrl);
-			_arc_sync();
+			arc_sync();
 
 			return cgu_wait_for_lock(cgu_regs, config->pll);
 		}
@@ -347,7 +347,7 @@ uint32_t cgu_hsdc_measure_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pll, 
 		//       artefact from the user we first do one dummy measurement inside the diver function
 		//start dummy measurement
 		*ptr = CGU_HSDC_FMEAS_START;
-		_arc_sync();
+		arc_sync();
 
 		//wait till done bit is "1"
 		reg = *ptr;
@@ -357,7 +357,7 @@ uint32_t cgu_hsdc_measure_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pll, 
 
 		//start measurement
 		*ptr = CGU_HSDC_FMEAS_START;
-		_arc_sync();
+		arc_sync();
 
 		//wait till done bit is "1"
 		reg = *ptr;
@@ -370,7 +370,7 @@ uint32_t cgu_hsdc_measure_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pll, 
 
 		//stop measurement
 		*ptr = 0;
-		_arc_sync();
+		arc_sync();
 
 		rcnt = ((reg & CGU_HSDC_FMEAS_RCNT) >> 0);
 		fcnt = ((reg & CGU_HSDC_FMEAS_FCNT) >> 15);
@@ -418,7 +418,7 @@ int32_t cgu_hsdc_set_idiv(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_IDIV_T idiv, ui
 		//Calculate offset 0x00 / 0x10 / 0x20 / ...
 		ptr += (uint32_t)(n) * 4;  //offset
 		*ptr = (uint8_t)div;       //divider
-		_arc_sync();
+		arc_sync();
 		return 0;
 	}
 
@@ -507,7 +507,7 @@ uint32_t cgu_hsdc_measure_clk(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_FMEAS_T fme
 
 		//start dummy measurement
 		*ptr = CGU_HSDC_FMEAS_START;
-		_arc_sync();
+		arc_sync();
 
 		//wait till done bit is "1"
 		reg = *ptr;
@@ -517,7 +517,7 @@ uint32_t cgu_hsdc_measure_clk(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_FMEAS_T fme
 
 		//start measurement
 		*ptr = CGU_HSDC_FMEAS_START;
-		_arc_sync();
+		arc_sync();
 
 		//wait till done bit is "1"
 		reg = *ptr;
@@ -530,7 +530,7 @@ uint32_t cgu_hsdc_measure_clk(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_FMEAS_T fme
 
 		//stop measurement
 		*ptr = 0;
-		_arc_sync();
+		arc_sync();
 
 		rcnt = ((reg & CGU_HSDC_FMEAS_RCNT) >> 0);
 		fcnt = ((reg & CGU_HSDC_FMEAS_FCNT) >> 15);
@@ -552,7 +552,7 @@ void cgu_hsdc_sw_reset_ctrl(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_RSTCTRL_T ctr
 		ptr += (uint32_t)(ctrl) * 8;
 
 		*ptr = rst;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -564,7 +564,7 @@ void cgu_hsdc_sw_reset(CGU_HSDC_STRUCT_PTR cgu_regs, uint32_t delay)
 	reg &= ~(CGU_HSDC_SW_RESET_DELAY_MASK); //clr
 	reg |= (delay << CGU_HSDC_SW_RESET_DELAY_POS);
 	cgu_regs->CGU_IP_SW_RESET = (reg | CGU_HSDC_SW_RESET);
-	_arc_sync();
+	arc_sync();
 
 	//wait till reset bit is back to 0
 	reg = cgu_regs->CGU_IP_SW_RESET;

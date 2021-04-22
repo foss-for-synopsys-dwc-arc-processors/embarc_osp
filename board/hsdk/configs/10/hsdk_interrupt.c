@@ -48,7 +48,7 @@ static void arc_connect_int_isr(void *ptr)
 	uint32_t i;
 	uint32_t core;
 
-	core = (_arc_lr_reg(AUX_IDENTITY) >> 8) & 0xff;
+	core = (arc_aux_read(AUX_IDENTITY) >> 8) & 0xff;
 
 	for (i=HSDC_CREG_SW0_ISR; i<HSDK_MAX_NUM_ISR; i++) {
 		reg = arc_connect_idu_read_mask(i-HSDK_MAX_NUM_EXCP);
@@ -346,7 +346,7 @@ void hsdk_interrupt_init(void)
 	uint32_t i;
 	uint32_t core;
 
-	core = (_arc_lr_reg(AUX_IDENTITY) >> 8) & 0xff;
+	core = (arc_aux_read(AUX_IDENTITY) >> 8) & 0xff;
 
 	for (i = HSDK_MAX_NUM_EXCP; i < HSDK_MAX_NUM_ISR; i ++) {
 		if ( (i == HSDC_CREG_UPDATE_ISR) || (i == HSDC_CGU_PLL_LOCK_ISR) \

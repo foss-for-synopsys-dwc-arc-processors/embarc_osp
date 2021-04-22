@@ -48,8 +48,8 @@
 /* use uart 0 as secure console */
 #define SECURE_UART_REG_BASE AR_IO_UART0_RBR_THR_DLL
 
-#define REG_READ(x)		_arc_aux_read((SECURE_UART_REG_BASE + x))
-#define REG_WRITE(x, y)		_arc_aux_write((SECURE_UART_REG_BASE + x), y)
+#define REG_READ(x)			arc_aux_read((SECURE_UART_REG_BASE + x))
+#define REG_WRITE(x, y)		arc_aux_write((SECURE_UART_REG_BASE + x), y)
 
 #define SS_UART_BAUD2DIV(perifreq, baud) ((perifreq) / ((baud)*16) + 1)
 

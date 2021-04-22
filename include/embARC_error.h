@@ -118,7 +118,7 @@ extern "C" {
  * \param   EXIT_LABEL a label to go when error happens
  */
 #define CHECK_EXP(EXPR, ERCD, ERROR_CODE, EXIT_LABEL) 	{	\
-		if (_arc_rarely(!(EXPR))) { 			\
+		if (arc_compiler_rarely(!(EXPR))) { 			\
 			ERCD = (ERROR_CODE);			\
 			goto EXIT_LABEL;			\
 		}						\
@@ -131,7 +131,7 @@ extern "C" {
  * \retval
  */
 #define CHECK_EXP_NOERCD(EXPR, EXIT_LABEL) {			\
-		if (_arc_rarely(!(EXPR))) { 			\
+		if (arc_compiler_rarely(!(EXPR))) { 			\
 			goto EXIT_LABEL;			\
 		}						\
 	}

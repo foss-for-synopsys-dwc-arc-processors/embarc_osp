@@ -242,40 +242,40 @@ StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t px
 
 #if ARC_FEATURE_FPU
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_CTRL);	/* AUX_FPU_CTRL */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_FPU_CTRL);	/* AUX_FPU_CTRL */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_STATUS);	/* AUX_FPU_STATUS */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_FPU_STATUS);	/* AUX_FPU_STATUS */
 
 #if ARC_FEATURE_FPU_DA
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP1L);	/* AUX_FPU_DPFP1L */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_FPU_DPFP1L);	/* AUX_FPU_DPFP1L */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP1H);	/* AUX_FPU_DPFP1H */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_FPU_DPFP1H);	/* AUX_FPU_DPFP1H */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP2L);	/* AUX_FPU_DPFP2L */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_FPU_DPFP2L);	/* AUX_FPU_DPFP2L */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_FPU_DPFP2H);	/* AUX_FPU_DPFP2H */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_FPU_DPFP2H);	/* AUX_FPU_DPFP2H */
 #endif
 
 #endif /* ARC_FEATURE_FPU */
 
 #if ARC_FEATURE_DSP
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_CTRL);	/* AUX_DSP_CTRL */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_DSP_CTRL);	/* AUX_DSP_CTRL */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_LO);	/* AUX_ACC0_LO */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_ACC0_LO);	/* AUX_ACC0_LO */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_GLO);	/* AUX_ACC0_GLO */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_ACC0_GLO);	/* AUX_ACC0_GLO */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_HI);	/* AUX_ACC0_HI */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_ACC0_HI);	/* AUX_ACC0_HI */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_ACC0_GHI);	/* AUX_ACC0_GHI */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_ACC0_GHI);	/* AUX_ACC0_GHI */
 
 #if defined(ARC_FEATURE_DSP_COMPLEX)
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_BFLY0);	/* AUX_DSP_BFLY0 */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_DSP_BFLY0);	/* AUX_DSP_BFLY0 */
 	pxTopOfStack--;
-	*pxTopOfStack = ( StackType_t ) _arc_aux_read(AUX_DSP_FFT_CTRL);/* AUX_DSP_FFT_CTRL */
+	*pxTopOfStack = ( StackType_t ) arc_aux_read(AUX_DSP_FFT_CTRL);/* AUX_DSP_FFT_CTRL */
 #endif
 
 #endif /* ARC_FEATURE_DSP */

@@ -158,7 +158,7 @@ static void task1(void * par)
 {
 	while(1) {
 		perf_start();
-		_arc_aux_write(AUX_IRQ_HINT, INTNO_LOW_PRI);	/*!< activate low priority interrupt */
+		arc_aux_write(AUX_IRQ_HINT, INTNO_LOW_PRI);	/*!< activate low priority interrupt */
 		t_t2_t1 = perf_end();
 
 		EMBARC_PRINTF("The performance data is:\r\n");
@@ -234,7 +234,7 @@ static void interrupt_low_pri(void *p_exinf)
 {
 	t_t1_int = perf_end();
 	perf_start();
-	_arc_aux_write(AUX_IRQ_HINT, INTNO_HIGH_PRI);	/*!< activate high priority interrupt */
+	arc_aux_write(AUX_IRQ_HINT, INTNO_HIGH_PRI);	/*!< activate high priority interrupt */
 	t_nest_int = perf_end();
 	perf_start();
 }

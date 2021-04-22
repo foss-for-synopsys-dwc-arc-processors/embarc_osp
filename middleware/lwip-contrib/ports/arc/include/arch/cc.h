@@ -109,8 +109,8 @@
 // byte-swapping
 #include "arc/arc_builtin.h"
 #define LWIP_PLATFORM_BYTESWAP 1
-#define LWIP_PLATFORM_HTONS(x) ((u16_t)_arc_swap16((s16_t)(x)))
-#define LWIP_PLATFORM_HTONL(x) ((u32_t)_arc_swap32((s32_t)(x)))
+#define LWIP_PLATFORM_HTONS(x) ((u16_t)arc_swap16((s16_t)(x)))
+#define LWIP_PLATFORM_HTONL(x) ((u32_t)arc_swap32((s32_t)(x)))
 #endif /* LWIP_USE_BUILTIN_SWAPE */
 
 /**

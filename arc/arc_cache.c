@@ -69,10 +69,10 @@ int32_t icache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 
 	status = cpu_lock_save();
 	do {
-		_arc_aux_write(AUX_IC_IVIL, start_addr);
-		Asm("nop_s");
-		Asm("nop_s");
-		Asm("nop_s");
+		arc_aux_write(AUX_IC_IVIL, start_addr);
+		arc_nop();
+		arc_nop();
+		arc_nop();
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
 	cpu_unlock_restore(status);
@@ -104,8 +104,8 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 
 	status = cpu_lock_save();
 	do {
-		_arc_aux_write(AUX_IC_LIL, start_addr);
-		if(_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
+		arc_aux_write(AUX_IC_LIL, start_addr);
+		if(arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
 			start_addr += line_size;
 		} else {
 			ercd = -1;	/* the operation failed */
@@ -128,12 +128,12 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 {
-	if (_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS) {
+	if (arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
-	_arc_aux_write(AUX_IC_RAM_ADDR, cache_addr);
-	_arc_aux_write(AUX_IC_TAG, tag );
-	_arc_aux_write(AUX_IC_DATA, data);
+	arc_aux_write(AUX_IC_RAM_ADDR, cache_addr);
+	arc_aux_write(AUX_IC_TAG, tag );
+	arc_aux_write(AUX_IC_DATA, data);
 
 	return 0;
 }
@@ -148,12 +148,12 @@ int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
  */
 int32_t icache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 {
-	if (_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS) {
+	if (arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
-	_arc_aux_write(AUX_IC_RAM_ADDR, cache_addr);
-	*tag = _arc_aux_read(AUX_IC_TAG);
-	*data = _arc_aux_read(AUX_IC_DATA);
+	arc_aux_write(AUX_IC_RAM_ADDR, cache_addr);
+	*tag = arc_aux_read(AUX_IC_TAG);
+	*data = arc_aux_read(AUX_IC_DATA);
 
 	return 0;
 }
@@ -168,13 +168,13 @@ int32_t icache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
  */
 int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 {
-	if (!(_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS)) {
+	if (!(arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS)) {
 		return -1;
 	}
-	_arc_aux_write(AUX_IC_RAM_ADDR, mem_addr);
-	if(_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
-		*tag = _arc_aux_read(AUX_IC_TAG);
-		*data = _arc_aux_read(AUX_IC_DATA);
+	arc_aux_write(AUX_IC_RAM_ADDR, mem_addr);
+	if(arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
+		*tag = arc_aux_read(AUX_IC_TAG);
+		*data = arc_aux_read(AUX_IC_DATA);
 	} else {
 		return -1;	/* the specified memory is not in icache */
 	}
@@ -205,12 +205,12 @@ int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 
 	status = cpu_lock_save();
 	do {
-		_arc_aux_write(AUX_DC_IVDL, start_addr);
-		Asm("nop_s");
-		Asm("nop_s");
-		Asm("nop_s");
+		arc_aux_write(AUX_DC_IVDL, start_addr);
+		arc_nop();
+		arc_nop();
+		arc_nop();
 		/* wait for flush completion */
-		while (_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+		while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
 	cpu_unlock_restore(status);
@@ -242,12 +242,12 @@ int32_t dcache_flush_mlines(uint32_t start_addr, uint32_t size)
 
 	status = cpu_lock_save();
 	do {
-		_arc_aux_write(AUX_DC_FLDL, start_addr);
-		Asm("nop_s");
-		Asm("nop_s");
-		Asm("nop_s");
+		arc_aux_write(AUX_DC_FLDL, start_addr);
+		arc_nop();
+		arc_nop();
+		arc_nop();
 		/* wait for flush completion */
-		while (_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+		while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
 	cpu_unlock_restore(status);
@@ -279,9 +279,9 @@ int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
 
 	status = cpu_lock_save();
 	do {
-		_arc_aux_write(AUX_DC_LDL, start_addr);
-		Asm("nop_s");
-		if(_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
+		arc_aux_write(AUX_DC_LDL, start_addr);
+		arc_nop();
+		if(arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
 			start_addr += line_size;
 		} else {
 			ercd = -1;	/* the operation failed */
@@ -303,13 +303,13 @@ int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 {
-	if (_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS) {
+	if (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
 
-	_arc_aux_write(AUX_DC_RAM_ADDR, cache_addr);
-	_arc_aux_write(AUX_DC_TAG, tag);
-	_arc_aux_write(AUX_DC_DATA, data);
+	arc_aux_write(AUX_DC_RAM_ADDR, cache_addr);
+	arc_aux_write(AUX_DC_TAG, tag);
+	arc_aux_write(AUX_DC_DATA, data);
 
 	return 0;
 }
@@ -324,13 +324,13 @@ int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
  */
 int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 {
-	if (_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS) {
+	if (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
 
-	_arc_aux_write(AUX_DC_RAM_ADDR, cache_addr);
-	*tag = _arc_aux_read(AUX_DC_TAG);
-	*data = _arc_aux_read(AUX_DC_DATA);
+	arc_aux_write(AUX_DC_RAM_ADDR, cache_addr);
+	*tag = arc_aux_read(AUX_DC_TAG);
+	*data = arc_aux_read(AUX_DC_DATA);
 
 	return 0;
 }
@@ -345,14 +345,14 @@ int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
  */
 int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 {
-	if (!(_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS)) {
+	if (!(arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS)) {
 		return -1;
 	}
 
-	_arc_aux_write(AUX_DC_RAM_ADDR, mem_addr);
-	if(_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
-		*tag = _arc_aux_read(AUX_DC_TAG);
-		*data = _arc_aux_read(AUX_DC_DATA);
+	arc_aux_write(AUX_DC_RAM_ADDR, mem_addr);
+	if(arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
+		*tag = arc_aux_read(AUX_DC_TAG);
+		*data = arc_aux_read(AUX_DC_DATA);
 	} else {
 		return -1;	/* the specified memory is not in dcache */
 	}
@@ -369,7 +369,7 @@ void arc_cache_init(void)
 {
 	uint32_t build_cfg;
 
-	build_cfg = _arc_aux_read(AUX_BCR_D_CACHE);
+	build_cfg = arc_aux_read(AUX_BCR_D_CACHE);
 
 	dcache_config.ver = build_cfg & 0xff;
 
@@ -382,7 +382,7 @@ void arc_cache_init(void)
 		dcache_config.line = 16 << ((build_cfg >> 16) & 0xf);
 	}
 
-	build_cfg = _arc_aux_read(AUX_BCR_I_CACHE);
+	build_cfg = arc_aux_read(AUX_BCR_I_CACHE);
 
 	icache_config.ver = build_cfg & 0xff;
 

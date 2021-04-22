@@ -353,7 +353,7 @@ int main(void)
 	}
 
 	/* set up an enviroment for application */
-	if ((_arc_aux_read(AUX_BCR_D_CACHE) & 0x7) >= 0x2) {
+	if ((arc_aux_read(AUX_BCR_D_CACHE) & 0x7) >= 0x2) {
 		dcache_invalidate();
 	}
 

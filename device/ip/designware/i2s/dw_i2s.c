@@ -1202,7 +1202,7 @@ static void delay(uint32_t delay_cycle){
 	uint32_t i,j;
 	for(j=0;j<delay_cycle;j++){
 		for(i=0;i<100;i++){
-			_arc_nop();
+			arc_nop();
 		}
 	}
 }

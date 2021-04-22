@@ -58,9 +58,9 @@ typedef struct {
 #if defined(__GNU__)
 #undef _Uncached
 #define _Uncached volatile
-#define _Usually(x) 	_arc_usually(x)
-#define _sr(x, y) 		_arc_aux_write(y, x)
-#define _lr(x)			_arc_aux_read(x)
+#define _Usually(x) 	arc_compiler_usually(x)
+#define _sr(x, y) 		arc_aux_write(y, x)
+#define _lr(x)			arc_aux_read(x)
 #endif
 
 #undef __Xdmac

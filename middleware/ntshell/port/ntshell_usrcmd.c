@@ -96,7 +96,7 @@ static int usrcmd_ntopt_callback(int argc, char **argv, void *extobj)
      * if no arguments input just return
      * you may just type enter here
      */
-    if (_arc_rarely((argc == 0) || (extobj == NULL))) {
+    if (arc_compiler_rarely((argc == 0) || (extobj == NULL))) {
         return 0;
     }
     p_nt_io = (NTSHELL_IO *)extobj;
@@ -136,7 +136,7 @@ static int usrcmd_help(int argc, char **argv, void *extobj)
     NTSHELL_IO *p_nt_io;
     CMD_TABLE_T *cmd_t;
 
-    if (_arc_rarely((extobj == NULL))) {
+    if (arc_compiler_rarely((extobj == NULL))) {
         return -1;
     }
 
@@ -173,7 +173,7 @@ static int usrcmd_info(int argc, char **argv, void *extobj)
     int major, minor, release;
     NTSHELL_IO *p_nt_io;
 
-    if (_arc_rarely((extobj == NULL))) {
+    if (arc_compiler_rarely((extobj == NULL))) {
         return -1;
     }
     p_nt_io = (NTSHELL_IO *)extobj;
@@ -210,8 +210,8 @@ static int usrcmd_info(int argc, char **argv, void *extobj)
  */
 CMD_TABLE_T* ntshell_usrcmd_register(CMD_TABLE_T *new, CMD_TABLE_T *prev)
 {
-    if ( _arc_usually((new!=NULL) && (prev!=NULL)) ) {
-        if (_arc_usually((new->cmd != NULL) && (new->func!=NULL))) {
+    if ( arc_compiler_usually((new!=NULL) && (prev!=NULL)) ) {
+        if (arc_compiler_usually((new->cmd != NULL) && (new->func!=NULL))) {
             while (prev->next != NULL) {
                 if (ntlibc_strcmp(prev->cmd, new->cmd) == 0) {
                     dbg_printf(DBG_MORE_INFO, "ntshell command %s already existed!\r\n", prev->cmd);
@@ -242,7 +242,7 @@ CMD_TABLE_T* ntshell_usrcmd_register(CMD_TABLE_T *new, CMD_TABLE_T *prev)
  */
 CMD_TABLE_T* ntshell_usrcmd_tail(CMD_TABLE_T *cmd_t)
 {
-    if ( _arc_usually(cmd_t!=NULL) ) { /* find the tail */
+    if ( arc_compiler_usually(cmd_t!=NULL) ) { /* find the tail */
         while (cmd_t->next != NULL) {
             cmd_t = cmd_t->next;
         }
@@ -253,7 +253,7 @@ CMD_TABLE_T* ntshell_usrcmd_tail(CMD_TABLE_T *cmd_t)
 
 /** Goto main function in ntshell */
 static int usrcmd_goto_main(int argc, char **argv, void *extobj) {
-	return _arc_goto_main(argc, argv);
+	return arc_goto_main(argc, argv);
 }
 
 static CMD_TABLE_T main_cmd = {"main", "Call main function", usrcmd_goto_main, NULL};

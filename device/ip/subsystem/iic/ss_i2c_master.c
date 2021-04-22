@@ -38,8 +38,8 @@
 #include "device/subsystem/i2c_priv.h"
 
 
-#define REG_READ(x) 		_arc_aux_read((ctx->reg_base + x))
-#define REG_WRITE(x, y) 	_arc_aux_write((ctx->reg_base + x), y)
+#define REG_READ(x) 		arc_aux_read((ctx->reg_base + x))
+#define REG_WRITE(x, y) 	arc_aux_write((ctx->reg_base + x), y)
 
 
 /** test whether iic is ready to write, 1 ready, 0 not ready */

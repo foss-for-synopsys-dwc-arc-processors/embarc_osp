@@ -59,7 +59,7 @@ int main(void)
 	volatile register int i = 0;
 	volatile register int j = 0;
 
-	build_cfg = _arc_aux_read(AUX_BCR_D_CACHE);
+	build_cfg = arc_aux_read(AUX_BCR_D_CACHE);
 
 	cache_ver = build_cfg & 0xff;
 
@@ -70,7 +70,7 @@ int main(void)
 		/* show data cache info */
 		EMBARC_PRINTF("Data cache, ver:%d, capacity:%d, ways:%d, line len:%d\n",
 				cache_ver, cache_size, cache_ways, cache_llen);
-		build_cfg = _arc_aux_read(AUX_BCR_I_CACHE);
+		build_cfg = arc_aux_read(AUX_BCR_I_CACHE);
 	} else {
 		EMBARC_PRINTF("Test Error: no data cache\n");
 		while(1);
@@ -96,12 +96,12 @@ int main(void)
 			cache_data[i][j] = i;
 		}
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("lock the data in data cache\n");
 	dcache_lock_mlines((unsigned int)cache_data, 8192);
 	EMBARC_PRINTF("invalidate data cache, even it's locked\n");
 	dcache_invalidate_mlines((unsigned int)(cache_data)+4096, 4096);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
 
 	EMBARC_PRINTF("invalidate one cache line\n");
 	dcache_invalidate_line((unsigned int)cache_data);
@@ -109,30 +109,30 @@ int main(void)
 	for (j = 0 ; j < DCACHE_LINE_LENGTH ; j++) {
 		cache_data[0][j] = FILLED_DATA;
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("flush the changed cache line\n");
 	dcache_flush_line((unsigned int)cache_data);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("cached the data into one cache line again with 0x55\n");
 	for (j = 0 ; j < DCACHE_LINE_LENGTH ; j++) {
 		cache_data[0][j] = 0x55;
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("lock the changed cache line\n");
 	dcache_lock_line((unsigned int)cache_data);
 	EMBARC_PRINTF("flush the whole data chache, the locked line won't be flushed\n");
 	dcache_flush();
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("refill the cache with data\n");
 	for (i = DCACHE_LINE_NUM/2; i < DCACHE_LINE_NUM; i++) {
 		for (j = 0; j < DCACHE_LINE_LENGTH ; j++) {
 			cache_data[i][j] = j;
 		}
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
 	EMBARC_PRINTF("flush multiple cache lines\n");
 	dcache_flush_mlines((unsigned int)(cache_data)+5000, 4096);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
 	EMBARC_PRINTF("Cache Test Done\n");
 	while(1);
 

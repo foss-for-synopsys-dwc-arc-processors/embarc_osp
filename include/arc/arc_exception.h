@@ -220,7 +220,7 @@ extern uint32_t exc_nest_count;
  */
 Inline void arc_vector_base_write(const void * vec_base)
 {
-	_arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)vec_base);
+	arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)vec_base);
 }
 
 /**
@@ -230,7 +230,7 @@ Inline void arc_vector_base_write(const void * vec_base)
  */
 Inline uint32_t arc_vector_base_read(void)
 {
-	return _arc_aux_read(AUX_INT_VECT_BASE);
+	return arc_aux_read(AUX_INT_VECT_BASE);
 }
 
 /**
@@ -262,8 +262,8 @@ Inline uint32_t exc_sense(void)
  */
 Inline void arc_int_disable(const uint32_t intno)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	_arc_aux_write(AUX_IRQ_ENABLE, 0);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	arc_aux_write(AUX_IRQ_ENABLE, 0);
 }
 
 /**
@@ -273,8 +273,8 @@ Inline void arc_int_disable(const uint32_t intno)
  */
 Inline void arc_int_enable(const uint32_t intno)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	_arc_aux_write(AUX_IRQ_ENABLE, 1);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	arc_aux_write(AUX_IRQ_ENABLE, 1);
 }
 
 /**
@@ -285,8 +285,8 @@ Inline void arc_int_enable(const uint32_t intno)
  */
 Inline uint32_t arc_int_enabled(const uint32_t intno)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	return _arc_aux_read(AUX_IRQ_ENABLE);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	return arc_aux_read(AUX_IRQ_ENABLE);
 }
 
 /**
@@ -296,7 +296,7 @@ Inline uint32_t arc_int_enabled(const uint32_t intno)
  */
 Inline uint32_t arc_int_ipm_get(void)
 {
-	return ((_arc_aux_read(AUX_STATUS32) >> 1) & 0x0f);
+	return ((arc_aux_read(AUX_STATUS32) >> 1) & 0x0f);
 }
 
 /**
@@ -307,7 +307,7 @@ Inline uint32_t arc_int_ipm_get(void)
 Inline void arc_int_ipm_set(uint32_t intpri)
 {
 	volatile uint32_t status;
-	status = _arc_aux_read(AUX_STATUS32) & ~0x1e;
+	status = arc_aux_read(AUX_STATUS32) & ~0x1e;
 
 	status = status | ((intpri << 1) & 0x1e);
 	/* sr cannot write AUX_STATUS32 */
@@ -321,8 +321,8 @@ Inline void arc_int_ipm_set(uint32_t intpri)
  */
 Inline uint32_t arc_int_pri_get(const uint32_t intno)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	return _arc_aux_read(AUX_IRQ_PRIORITY) & 0xf;
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	return arc_aux_read(AUX_IRQ_PRIORITY) & 0xf;
 }
 
 /**
@@ -333,8 +333,8 @@ Inline uint32_t arc_int_pri_get(const uint32_t intno)
  */
 Inline void arc_int_pri_set(const uint32_t intno, uint32_t intpri)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	_arc_aux_write(AUX_IRQ_PRIORITY, intpri | (_arc_aux_read(AUX_IRQ_PRIORITY) & 0xfffffff0));
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	arc_aux_write(AUX_IRQ_PRIORITY, intpri | (arc_aux_read(AUX_IRQ_PRIORITY) & 0xfffffff0));
 }
 
 /**
@@ -346,13 +346,13 @@ Inline void arc_int_pri_set(const uint32_t intno, uint32_t intpri)
 Inline void arc_int_secure_set(const uint32_t intno, uint32_t secure)
 {
 
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
 
 	if (secure) {
-		_arc_aux_write(AUX_IRQ_PRIORITY, _arc_aux_read(AUX_IRQ_PRIORITY) |
+		arc_aux_write(AUX_IRQ_PRIORITY, arc_aux_read(AUX_IRQ_PRIORITY) |
 			(1 << AUX_IRQ_PRIORITY_BIT_S));
 	} else {
-		_arc_aux_write(AUX_IRQ_PRIORITY, _arc_aux_read(AUX_IRQ_PRIORITY) & 0xf);
+		arc_aux_write(AUX_IRQ_PRIORITY, arc_aux_read(AUX_IRQ_PRIORITY) & 0xf);
 	}
 
 }
@@ -366,8 +366,8 @@ Inline void arc_int_secure_set(const uint32_t intno, uint32_t secure)
  */
 Inline uint32_t arc_int_probe(const uint32_t intno)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	return _arc_aux_read(AUX_IRQ_PENDING);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	return arc_aux_read(AUX_IRQ_PENDING);
 }
 
 /**
@@ -377,7 +377,7 @@ Inline uint32_t arc_int_probe(const uint32_t intno)
  */
 Inline void arc_int_sw_trigger(const uint32_t intno)
 {
-	_arc_aux_write(AUX_IRQ_HINT, intno);
+	arc_aux_write(AUX_IRQ_HINT, intno);
 }
 
 /**
@@ -388,8 +388,8 @@ Inline void arc_int_sw_trigger(const uint32_t intno)
  */
 Inline void arc_int_level_config(const uint32_t intno, const uint32_t level)
 {
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	_arc_aux_write(AUX_IRQ_TRIGGER, level);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	arc_aux_write(AUX_IRQ_TRIGGER, level);
 }
 
 /**
@@ -397,8 +397,7 @@ Inline void arc_int_level_config(const uint32_t intno, const uint32_t level)
  */
 Inline void arc_lock(void)
 {
-	Asm("clri");
-	Asm("":::"memory");
+	arc_clri();
 }
 
 /**
@@ -406,8 +405,7 @@ Inline void arc_lock(void)
  */
 Inline void arc_unlock(void)
 {
-	Asm("":::"memory");
-	Asm("seti");
+	arc_seti(0);
 }
 
 /**
@@ -417,7 +415,7 @@ Inline void arc_unlock(void)
  */
 Inline uint32_t arc_locked(void)
 {
-	if (_arc_aux_read(AUX_STATUS32) & AUX_STATUS_MASK_IE) {
+	if (arc_aux_read(AUX_STATUS32) & AUX_STATUS_MASK_IE) {
 		return 0;
 	} else {
 		return 1;
@@ -431,7 +429,7 @@ Inline uint32_t arc_locked(void)
  */
 Inline uint32_t arc_lock_save(void)
 {
-	return _arc_clri();
+	return arc_clri();
 }
 
 /**
@@ -441,7 +439,7 @@ Inline uint32_t arc_lock_save(void)
  */
 Inline void arc_unlock_restore(const uint32_t status)
 {
-	_arc_seti(status);
+	arc_seti(status);
 }
 
 
@@ -452,7 +450,7 @@ Inline void arc_unlock_restore(const uint32_t status)
  */
 Inline uint32_t arc_int_active(void)
 {
-	if (_arc_aux_read(AUX_IRQ_ACT) == 0) {
+	if (arc_aux_read(AUX_IRQ_ACT) == 0) {
 		return 0;
 	} else {
 		return 1;
@@ -513,14 +511,14 @@ extern void exc_entry_firq(void);
 extern void exc_entry_int(void);
 /** @}*/
 
-/* excetpion related apis */
+/* exception related APIs */
 extern void exc_int_init(void);
 extern int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY entry);
 extern EXC_ENTRY exc_entry_get(const uint32_t excno);
 extern int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER handler);
 extern EXC_HANDLER exc_handler_get(const uint32_t excno);
 
-/* interrupt related apis */
+/* interrupt related APIs */
 extern int32_t int_disable(const uint32_t intno);
 extern int32_t int_enable(const uint32_t intno);
 extern int32_t int_enabled(const uint32_t intno);

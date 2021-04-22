@@ -57,7 +57,7 @@
 #define EXTRA_TASK_NUM 0
 #endif
 
-#define _MEMORY_FENCE()				_arc_sync()
+#define _MEMORY_FENCE()				arc_sync()
 #define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
 #define _DCACHE_INVALIDATE_MLINES(addr, size)	dcache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
 #define _ICACHE_INVALIDATE_MLINES(addr, size)	icache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))

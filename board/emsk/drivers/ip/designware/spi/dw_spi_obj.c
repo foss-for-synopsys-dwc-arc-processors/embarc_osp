@@ -96,9 +96,9 @@ static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
 	ercd = dw_spi_control(&dw_spi_0, ctrl_cmd, param);
 #if HW_VERSION >= 23
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
-		_arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 1 << ((uint32_t)param));
+		arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 1 << ((uint32_t)param));
 	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
-		_arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 0);
+		arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 0);
 	}
 #else
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {

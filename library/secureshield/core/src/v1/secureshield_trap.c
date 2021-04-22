@@ -93,7 +93,7 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 	/* push the calling container and set the callee container */
 	/* the left registers of src container will be saved later, reserve space here */
 	if (container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_SIZE,
-		(uint32_t *)_arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id) != 0) {
+		(uint32_t *)arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id) != 0) {
 		return 0;
 	}
 
@@ -144,7 +144,7 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
 	dst_id = g_container_stack_curr_id;
 
 	if (container_stack_pop(dst_id, (uint32_t *)dst_frame - ARC_CALLEE_FRAME_SIZE,
-		(uint32_t *)_arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0) {
+		(uint32_t *)arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0) {
 		return 0;
 	}
 
@@ -174,7 +174,7 @@ uint32_t secureshield_trap_handler(void *exc_frame)
 
 	SECURESHIELD_ASSERT(trap_frame != NULL);
 
-	trap_id = _arc_aux_read(AUX_ECR) & SECURESHIELD_TRAP_ID_MASK;
+	trap_id = arc_aux_read(AUX_ECR) & SECURESHIELD_TRAP_ID_MASK;
 
 	switch (trap_id) {
 		case SECURESHIELD_SECURE_CALL_SYS:

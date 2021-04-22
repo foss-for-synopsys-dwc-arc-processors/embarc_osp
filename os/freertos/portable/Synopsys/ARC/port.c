@@ -313,11 +313,11 @@ void vPortSetStackCheck(TaskHandle_t old, TaskHandle_t new)
 
 	if (new != NULL) {
 #if ARC_FEATURE_SEC_PRESENT
-		_arc_aux_write(AUX_S_KSTACK_BASE, (uint32_t)(new->pxEndOfStack));
-		_arc_aux_write(AUX_S_KSTACK_TOP, (uint32_t)(new->pxStack));
+		arc_aux_write(AUX_S_KSTACK_BASE, (uint32_t)(new->pxEndOfStack));
+		arc_aux_write(AUX_S_KSTACK_TOP, (uint32_t)(new->pxStack));
 #else
-		_arc_aux_write(AUX_KSTACK_BASE, (uint32_t)(new->pxEndOfStack));
-		_arc_aux_write(AUX_KSTACK_TOP, (uint32_t)(new->pxStack));
+		arc_aux_write(AUX_KSTACK_BASE, (uint32_t)(new->pxEndOfStack));
+		arc_aux_write(AUX_KSTACK_TOP, (uint32_t)(new->pxStack));
 #endif
 	}
 }

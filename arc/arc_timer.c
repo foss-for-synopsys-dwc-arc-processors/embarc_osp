@@ -49,7 +49,7 @@ volatile uint32_t gl_count = 1;
  */
 int32_t timer_present(const uint32_t no)
 {
-	uint32_t bcr = _arc_aux_read(AUX_BCR_TIMERS);
+	uint32_t bcr = arc_aux_read(AUX_BCR_TIMERS);
 
 	switch (no) {
 		case TIMER_0:
@@ -81,19 +81,19 @@ int32_t timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
 	switch (no) {
 		case TIMER_0:
-			_arc_aux_write(AUX_TIMER0_CTRL, 0);
-			_arc_aux_write(AUX_TIMER0_LIMIT, val);
-			_arc_aux_write(AUX_TIMER0_CTRL, mode);
-			_arc_aux_write(AUX_TIMER0_CNT, 0);
+			arc_aux_write(AUX_TIMER0_CTRL, 0);
+			arc_aux_write(AUX_TIMER0_LIMIT, val);
+			arc_aux_write(AUX_TIMER0_CTRL, mode);
+			arc_aux_write(AUX_TIMER0_CNT, 0);
 			break;
 		case TIMER_1:
-			_arc_aux_write(AUX_TIMER1_CTRL, 0);
-			_arc_aux_write(AUX_TIMER1_LIMIT, val);
-			_arc_aux_write(AUX_TIMER1_CTRL, mode);
-			_arc_aux_write(AUX_TIMER1_CNT, 0);
+			arc_aux_write(AUX_TIMER1_CTRL, 0);
+			arc_aux_write(AUX_TIMER1_LIMIT, val);
+			arc_aux_write(AUX_TIMER1_CTRL, mode);
+			arc_aux_write(AUX_TIMER1_CNT, 0);
 			break;
 		case TIMER_RTC:
-			_arc_aux_write(AUX_RTC_CTRL, mode);
+			arc_aux_write(AUX_RTC_CTRL, mode);
 			break;
 		default:
 			return -1;
@@ -112,17 +112,17 @@ int32_t timer_stop(const uint32_t no)
 {
 	switch (no) {
 		case TIMER_0 :
-			_arc_aux_write(AUX_TIMER0_CTRL, 0);
-			_arc_aux_write(AUX_TIMER0_LIMIT,0);
-			_arc_aux_write(AUX_TIMER0_CNT, 0);
+			arc_aux_write(AUX_TIMER0_CTRL, 0);
+			arc_aux_write(AUX_TIMER0_LIMIT,0);
+			arc_aux_write(AUX_TIMER0_CNT, 0);
 			break;
 		case TIMER_1:
-			_arc_aux_write(AUX_TIMER1_CTRL, 0);
-			_arc_aux_write(AUX_TIMER1_LIMIT,0);
-			_arc_aux_write(AUX_TIMER1_CNT, 0);
+			arc_aux_write(AUX_TIMER1_CTRL, 0);
+			arc_aux_write(AUX_TIMER1_LIMIT,0);
+			arc_aux_write(AUX_TIMER1_CNT, 0);
 			break;
 		case TIMER_RTC:
-			_arc_aux_write(AUX_RTC_CTRL, TIMER_RTC_CLEAR);
+			arc_aux_write(AUX_RTC_CTRL, TIMER_RTC_CLEAR);
 			break;
 		default:
 			return -1;
@@ -142,13 +142,13 @@ int32_t timer_current(const uint32_t no, void *val)
 {
 	switch (no) {
 		case TIMER_0 :
-			*((uint32_t *)val) = _arc_aux_read(AUX_TIMER0_CNT);
+			*((uint32_t *)val) = arc_aux_read(AUX_TIMER0_CNT);
 			break;
 		case TIMER_1 :
-			*((uint32_t *)val) = _arc_aux_read(AUX_TIMER1_CNT);
+			*((uint32_t *)val) = arc_aux_read(AUX_TIMER1_CNT);
 			break;
 		case TIMER_RTC:
-			*((uint64_t *)val) = _arc_aux_read(AUX_RTC_LOW);
+			*((uint64_t *)val) = arc_aux_read(AUX_RTC_LOW);
 			break;
 		default :
 			return -1;
@@ -169,14 +169,14 @@ int32_t timer_int_clear(const uint32_t no)
 
 	switch (no) {
 		case TIMER_0 :
-			val = _arc_aux_read(AUX_TIMER0_CTRL);
+			val = arc_aux_read(AUX_TIMER0_CTRL);
 			val &= ~TIMER_CTRL_IP;
-			_arc_aux_write(AUX_TIMER0_CTRL, val);
+			arc_aux_write(AUX_TIMER0_CTRL, val);
 			break;
 		case TIMER_1 :
-			val = _arc_aux_read(AUX_TIMER1_CTRL);
+			val = arc_aux_read(AUX_TIMER1_CTRL);
 			val &= ~TIMER_CTRL_IP;
-			_arc_aux_write(AUX_TIMER1_CTRL, val);
+			arc_aux_write(AUX_TIMER1_CTRL, val);
 			break;
 		default :
 			return -1;
@@ -212,7 +212,7 @@ void timer_init(void)
  */
 int32_t secure_timer_present(const uint32_t no)
 {
-	uint32_t bcr = _arc_aux_read(AUX_BCR_TIMERS);
+	uint32_t bcr = arc_aux_read(AUX_BCR_TIMERS);
 
 	switch (no) {
 		case SECURE_TIMER_0:
@@ -241,16 +241,16 @@ int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_
 {
 	switch (no) {
 		case SECURE_TIMER_0:
-			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
-			_arc_aux_write(AUX_SECURE_TIMER0_LIMIT, val);
-			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, mode);
-			_arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
+			arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
+			arc_aux_write(AUX_SECURE_TIMER0_LIMIT, val);
+			arc_aux_write(AUX_SECURE_TIMER0_CTRL, mode);
+			arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
 			break;
 		case SECURE_TIMER_1:
-			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
-			_arc_aux_write(AUX_SECURE_TIMER1_LIMIT, val);
-			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, mode);
-			_arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
+			arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
+			arc_aux_write(AUX_SECURE_TIMER1_LIMIT, val);
+			arc_aux_write(AUX_SECURE_TIMER1_CTRL, mode);
+			arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
 			break;
 		default:
 			return -1;
@@ -269,14 +269,14 @@ int32_t secure_timer_stop(const uint32_t no)
 {
 	switch (no) {
 		case SECURE_TIMER_0 :
-			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
-			_arc_aux_write(AUX_SECURE_TIMER0_LIMIT,0);
-			_arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
+			arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
+			arc_aux_write(AUX_SECURE_TIMER0_LIMIT,0);
+			arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
 			break;
 		case SECURE_TIMER_1:
-			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
-			_arc_aux_write(AUX_SECURE_TIMER1_LIMIT,0);
-			_arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
+			arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
+			arc_aux_write(AUX_SECURE_TIMER1_LIMIT,0);
+			arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
 			break;
 		default:
 			return -1;
@@ -296,10 +296,10 @@ int32_t secure_timer_current(const uint32_t no, void *val)
 {
 	switch (no) {
 		case SECURE_TIMER_0 :
-			*((uint32_t *)val) = _arc_aux_read(AUX_SECURE_TIMER0_CNT);
+			*((uint32_t *)val) = arc_aux_read(AUX_SECURE_TIMER0_CNT);
 			break;
 		case SECURE_TIMER_1 :
-			*((uint32_t *)val) = _arc_aux_read(AUX_SECURE_TIMER1_CNT);
+			*((uint32_t *)val) = arc_aux_read(AUX_SECURE_TIMER1_CNT);
 			break;
 		default :
 			return -1;
@@ -320,14 +320,14 @@ int32_t secure_timer_int_clear(const uint32_t no)
 
 	switch (no) {
 		case SECURE_TIMER_0 :
-			val = _arc_aux_read(AUX_SECURE_TIMER0_CTRL);
+			val = arc_aux_read(AUX_SECURE_TIMER0_CTRL);
 			val &= ~TIMER_CTRL_IP;
-			_arc_aux_write(AUX_SECURE_TIMER0_CTRL, val);
+			arc_aux_write(AUX_SECURE_TIMER0_CTRL, val);
 			break;
 		case SECURE_TIMER_1 :
-			val = _arc_aux_read(AUX_SECURE_TIMER1_CTRL);
+			val = arc_aux_read(AUX_SECURE_TIMER1_CTRL);
 			val &= ~TIMER_CTRL_IP;
-			_arc_aux_write(AUX_SECURE_TIMER1_CTRL, val);
+			arc_aux_write(AUX_SECURE_TIMER1_CTRL, val);
 			break;
 		default :
 			return -1;
@@ -396,15 +396,15 @@ uint64_t timer_calibrate_delay(uint32_t cpu_clock)
 
 	status = cpu_lock_save();
 
-	timer0_limit = _arc_aux_read(AUX_TIMER0_LIMIT);
-	_arc_aux_write(AUX_TIMER0_LIMIT, 0xFFFFFFFF);
+	timer0_limit = arc_aux_read(AUX_TIMER0_LIMIT);
+	arc_aux_write(AUX_TIMER0_LIMIT, 0xFFFFFFFF);
 
 	loops_per_jiffy = (1 << 4);
 	while ((loops_per_jiffy <<= 1) != 0) {
 
-		_arc_aux_write(AUX_TIMER0_CNT, 0);
+		arc_aux_write(AUX_TIMER0_CNT, 0);
 		arc_delay_us(loops_per_jiffy);
-		if (_arc_aux_read(AUX_TIMER0_CNT) > cpu_clock) {
+		if (arc_aux_read(AUX_TIMER0_CNT) > cpu_clock) {
 			break;
 		}
 	}
@@ -414,9 +414,9 @@ uint64_t timer_calibrate_delay(uint32_t cpu_clock)
 	while (lps_precision-- && (loopbit >>= 1)) {
 
 		loops_per_jiffy |= loopbit;
-		_arc_aux_write(AUX_TIMER0_CNT, 0);
+		arc_aux_write(AUX_TIMER0_CNT, 0);
 		arc_delay_us(loops_per_jiffy);
-		if (_arc_aux_read(AUX_TIMER0_CNT) > cpu_clock) {
+		if (arc_aux_read(AUX_TIMER0_CNT) > cpu_clock) {
 			loops_per_jiffy &= ~loopbit;
 		}
 	}
@@ -424,8 +424,8 @@ uint64_t timer_calibrate_delay(uint32_t cpu_clock)
 	gl_loops_per_jiffy = loops_per_jiffy;
 	gl_count = 1000;
 
-	_arc_aux_write(AUX_TIMER0_CNT, 0);
-	_arc_aux_write(AUX_TIMER0_LIMIT, timer0_limit);
+	arc_aux_write(AUX_TIMER0_CNT, 0);
+	arc_aux_write(AUX_TIMER0_LIMIT, timer0_limit);
 	cpu_unlock_restore(status);
 
 	return loops_per_jiffy;

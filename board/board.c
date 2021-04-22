@@ -158,10 +158,10 @@ static void task_main(void *par)
 
 	if ((par == NULL) || (((int)par) & 0x3)) {
 	/* null or aligned not to 4 bytes */
-		ercd = _arc_goto_main(0, NULL);
+		ercd = arc_goto_main(0, NULL);
 	} else {
 		MAIN_ARGS *main_arg = (MAIN_ARGS *)par;
-		ercd = _arc_goto_main(main_arg->argc, main_arg->argv);
+		ercd = arc_goto_main(main_arg->argc, main_arg->argv);
 	}
 
 #if defined(OS_FREERTOS)
@@ -242,9 +242,9 @@ static void enter_to_main(MAIN_ARGS *main_arg)
 {
 	if (main_arg == NULL) {
 	/* null or aligned not to 4 bytes */
-		_arc_goto_main(0, NULL);
+		arc_goto_main(0, NULL);
 	} else {
-		_arc_goto_main(main_arg->argc, main_arg->argv);
+		arc_goto_main(main_arg->argc, main_arg->argv);
 	}
 }
 

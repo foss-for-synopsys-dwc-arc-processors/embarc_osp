@@ -55,10 +55,10 @@ extern void _arc_reset(void);
 void system_reboot()
 {
 /* impossible to reboot, because data section is different now and many static variable are changed */
-    // if ((_arc_aux_read(AUX_BCR_I_CACHE) & 0x7) >= 0x2) {
+    // if ((arc_aux_read(AUX_BCR_I_CACHE) & 0x7) >= 0x2) {
     //     icache_invalidate();
     // }
-    // if ((_arc_aux_read(AUX_BCR_D_CACHE) & 0x7) >= 0x2) {
+    // if ((arc_aux_read(AUX_BCR_D_CACHE) & 0x7) >= 0x2) {
     //     dcache_invalidate();
     //     dcache_flush();
     // }

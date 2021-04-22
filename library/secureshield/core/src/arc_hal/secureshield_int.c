@@ -150,8 +150,8 @@ static void secureshield_exc_handler_privilege_v(void *frame)
 	uint8_t cause_code;
 	uint8_t parameter;
 
-	excpt_cause_reg = _arc_aux_read(AUX_ECR);
-	excpt_ret_reg = _arc_aux_read(AUX_ERRET);
+	excpt_cause_reg = arc_aux_read(AUX_ECR);
+	excpt_ret_reg = arc_aux_read(AUX_ERRET);
 
 	parameter = excpt_cause_reg & 0xff;
 	cause_code = (excpt_cause_reg >> 8) & 0xff;
@@ -194,8 +194,8 @@ static void secureshield_exc_handler_protect_v(void *frame)
 	uint8_t parameter;
 	int32_t ret = -1;
 
-	excpt_cause_reg = _arc_aux_read(AUX_ECR);
-	excpt_ret_reg = _arc_aux_read(AUX_ERRET);
+	excpt_cause_reg = arc_aux_read(AUX_ECR);
+	excpt_ret_reg = arc_aux_read(AUX_ERRET);
 
 	parameter = excpt_cause_reg & 0xff;
 	cause_code = (excpt_cause_reg >> 8) & 0xff;
@@ -220,7 +220,7 @@ static void secureshield_exc_handler_protect_v(void *frame)
 			SECURESHIELD_DBG("memory read violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
-				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 1);
+				ret = vmpu_fault_recovery_mpu(arc_aux_read(AUX_EFA), 1);
 			}
 			break;
 		case AUX_ECR_C_PROTV_STORE:
@@ -231,7 +231,7 @@ static void secureshield_exc_handler_protect_v(void *frame)
 			SECURESHIELD_DBG("memory write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
-				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 2);
+				ret = vmpu_fault_recovery_mpu(arc_aux_read(AUX_EFA), 2);
 			}
 			break;
 		case AUX_ECR_C_PROTV_XCHG:
@@ -242,7 +242,7 @@ static void secureshield_exc_handler_protect_v(void *frame)
 			SECURESHIELD_DBG("memory read-modify-write violation, parameter:0x%x\r\n"
 				, parameter);
 			if (parameter & 0x04) {
-				ret = vmpu_fault_recovery_mpu(_arc_aux_read(AUX_EFA), 3);
+				ret = vmpu_fault_recovery_mpu(arc_aux_read(AUX_EFA), 3);
 			}
 			break;
 #if SECURESHIELD_VERSION == 2
@@ -281,8 +281,8 @@ static void secureshield_exc_handler_default(void *frame)
 	uint32_t excpt_ret_reg;
 	uint32_t vector_no;
 
-	excpt_cause_reg = _arc_aux_read(AUX_ECR);
-	excpt_ret_reg = _arc_aux_read(AUX_ERRET);
+	excpt_cause_reg = arc_aux_read(AUX_ECR);
+	excpt_ret_reg = arc_aux_read(AUX_ERRET);
 	vector_no = (excpt_cause_reg >> 16) & 0xff;
 
 	SECURESHIELD_DBG("default cpu exception handler\r\n");
@@ -458,8 +458,8 @@ int32_t secure_int_enabled(uint32_t intno)
 		return -1;
 	}
 
-	_arc_aux_write(AUX_IRQ_SELECT, intno);
-	return _arc_aux_read(AUX_IRQ_ENABLE);
+	arc_aux_write(AUX_IRQ_SELECT, intno);
+	return arc_aux_read(AUX_IRQ_ENABLE);
 }
 
 /**
@@ -615,30 +615,30 @@ void secureshield_int_init(void)
 #endif
 
 #if SECURESHIELD_VERSION == 1
-	_arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)secureshield_exc_entry_table);
+	arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)secureshield_exc_entry_table);
 #elif SECURESHIELD_VERSION == 2
-	_arc_aux_write(AUX_INT_VECT_BASE_S, (uint32_t)secureshield_exc_entry_table);
+	arc_aux_write(AUX_INT_VECT_BASE_S, (uint32_t)secureshield_exc_entry_table);
 #endif
 	for (i = NUM_EXC_CPU;i < NUM_EXC_ALL; i++)
 	{
 		/* interrupt level triggered, disabled, priority is the lowest */
-		_arc_aux_write(AUX_IRQ_SELECT, i);
-		_arc_aux_write(AUX_IRQ_ENABLE, 0);
-		_arc_aux_write(AUX_IRQ_TRIGGER, 0);
+		arc_aux_write(AUX_IRQ_SELECT, i);
+		arc_aux_write(AUX_IRQ_ENABLE, 0);
+		arc_aux_write(AUX_IRQ_TRIGGER, 0);
 #if SECURESHIELD_VERSION == 1
-		_arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
+		arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
 #elif SECURESHIELD_VERSION == 2
-		_arc_aux_write(AUX_IRQ_PRIORITY, (INT_PRI_MAX - INT_PRI_MIN) |
+		arc_aux_write(AUX_IRQ_PRIORITY, (INT_PRI_MAX - INT_PRI_MIN) |
 			(1 << AUX_IRQ_PRIORITY_BIT_S));
 #endif
 	}
 
-	_arc_aux_write(AUX_IRQ_CTRL, *(uint32_t *)&ictrl);
+	arc_aux_write(AUX_IRQ_CTRL, *(uint32_t *)&ictrl);
 	arc_int_ipm_set(INT_PRI_MAX - INT_PRI_MIN);
 
 #if SECURESHIELD_VERSION == 2
 	/* all exceptions are handled in secure world, except swi and trap exception */
-	_arc_aux_write(AUX_SEC_EXCEPT, 0xfcff);
+	arc_aux_write(AUX_SEC_EXCEPT, 0xfcff);
 #endif
 }
 
@@ -701,11 +701,11 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 	INT_HANDLER handler;
 
 	/* reuse src_id*/
-	src_id = _arc_aux_read(AUX_IRQ_CAUSE);
+	src_id = arc_aux_read(AUX_IRQ_CAUSE);
 
 	/* if triggered by software, clear it */
-	if (src_id == _arc_aux_read(AUX_IRQ_HINT)) {
-		_arc_aux_write(AUX_IRQ_HINT, 0);
+	if (src_id == arc_aux_read(AUX_IRQ_HINT)) {
+		arc_aux_write(AUX_IRQ_HINT, 0);
 	}
 
 	/* verify IRQ access privileges */
@@ -738,7 +738,7 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 		vmpu_switch(src_id, dst_id);
 		/* save current state */
 		container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
-			(uint32_t *)_arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
+			(uint32_t *)arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
 		/* gather information from current state */
 
 		if (!container_is_secure(dst_id)) {
@@ -747,24 +747,24 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 			dst_container_user_sp = 0;
 		}
 
-		_arc_aux_write(AUX_ERRET, (uint32_t)handler);
-		_arc_aux_write(AUX_ERSTATUS, g_container_context[dst_id].cpu_status);
+		arc_aux_write(AUX_ERRET, (uint32_t)handler);
+		arc_aux_write(AUX_ERSTATUS, g_container_context[dst_id].cpu_status);
 
 		return (uint32_t)g_container_context[dst_id].cur_sp;
 
 	} else {
 		if (container_is_secure(src_id)) {
-			_arc_aux_write(AUX_MPU_EN, 0x40000000);
+			arc_aux_write(AUX_MPU_EN, 0x40000000);
 			arc_unlock_restore(src_frame->status32);
 			handler(0);
 
 			return 0;
 		} else {
 			container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
-			(uint32_t *)_arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
-			_arc_aux_write(AUX_ERRET, (uint32_t)handler);
-			_arc_aux_write(AUX_ERSTATUS, src_frame->status32);
-			dst_container_user_sp = (uint32_t *)_arc_aux_read(AUX_USER_SP);
+			(uint32_t *)arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
+			arc_aux_write(AUX_ERRET, (uint32_t)handler);
+			arc_aux_write(AUX_ERSTATUS, src_frame->status32);
+			dst_container_user_sp = (uint32_t *)arc_aux_read(AUX_USER_SP);
 
 			return (uint32_t)g_container_context[dst_id].cur_sp;
 		}
@@ -785,7 +785,7 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 	dst_id = g_container_stack_curr_id;
 
 	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE,
-		(uint32_t *)_arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0 ) {
+		(uint32_t *)arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0 ) {
 		return 0;
 	}
 
@@ -797,7 +797,7 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 	}
 
 	/* clear the first set bit in AUX_IRQ_ACT to simulate the quit of interrupt */
-	//_arc_sr_reg(AUX_IRQ_ACT, _arc_lr_reg(AUX_IRQ_ACT) & ~(1 << _arc_lr_reg(AUX_IRQ_PRIORITY)));
+	//arc_aux_write(AUX_IRQ_ACT, arc_aux_read(AUX_IRQ_ACT) & ~(1 << arc_aux_read(AUX_IRQ_PRIORITY)));
 	/* Asm is more effective, it requires bitscan option is enabled */
 	Asm(
 	" lr %%r0, [%[irq_act]]\n"
@@ -877,11 +877,11 @@ void * secureshield_interrupt_handle(uint32_t *sp)
 	INT_HANDLER_CALL_FRAME *dst_frame;
 
 	/* reuse src_id and dst_id */
-	src_id = _arc_aux_read(AUX_IRQ_CAUSE);
+	src_id = arc_aux_read(AUX_IRQ_CAUSE);
 
 	/* if triggered by software, clear it */
-	if (src_id == _arc_aux_read(AUX_IRQ_HINT)) {
-		_arc_aux_write(AUX_IRQ_HINT, 0);
+	if (src_id == arc_aux_read(AUX_IRQ_HINT)) {
+		arc_aux_write(AUX_IRQ_HINT, 0);
 	}
 
 	/* verify IRQ access privileges */
@@ -908,11 +908,11 @@ void * secureshield_interrupt_handle(uint32_t *sp)
 		vmpu_switch(src_id, dst_id);
 
 		container_stack_push(src_id, (uint32_t *)sp - ARC_CALLEE_FRAME_SIZE,
-			(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), _arc_aux_read(AUX_STATUS32),
+			(uint32_t *)arc_aux_read(AUX_KERNEL_SP), arc_aux_read(AUX_STATUS32),
 			 dst_id);
 
 		if (container_is_secure(src_id)) {
-			g_container_context[0].normal_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
+			g_container_context[0].normal_sp = (uint32_t *)arc_aux_read(AUX_KERNEL_SP);
 		}
 
 		dst_frame = (INT_HANDLER_CALL_FRAME *)
@@ -932,7 +932,7 @@ void * secureshield_interrupt_handle(uint32_t *sp)
 		return (void *) dst_frame;
 	} else {
 		/* enable MPU */
-		_arc_aux_write(AUX_MPU_EN, 0);
+		arc_aux_write(AUX_MPU_EN, 0);
 		Asm("seti");
 		handler(0);
 		Asm("clri");
@@ -951,8 +951,8 @@ void *secureshield_interrupt_handle_return(uint32_t* sp)
 
 	dst_id = g_container_stack_curr_id;
 
-	container_stack_pop(dst_id, sp, (uint32_t *)_arc_aux_read(AUX_KERNEL_SP),
-			_arc_aux_read(AUX_STATUS32));
+	container_stack_pop(dst_id, sp, (uint32_t *)arc_aux_read(AUX_KERNEL_SP),
+			arc_aux_read(AUX_STATUS32));
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
 

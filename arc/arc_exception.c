@@ -314,8 +314,8 @@ static void exc_handler_default(void *p_excinf)
 	uint32_t exc_cause = 0;
 	uint32_t exc_param = 0;
 
-	excpt_cause_reg = _arc_aux_read(AUX_ECR);
-	excpt_ret_reg = _arc_aux_read(AUX_ERRET);
+	excpt_cause_reg = arc_aux_read(AUX_ECR);
+	excpt_ret_reg = arc_aux_read(AUX_ERRET);
 	exc_no = (excpt_cause_reg >> 16) & 0xff;
 	exc_cause = (excpt_cause_reg >> 8) & 0xff;
 	exc_param = (excpt_cause_reg >> 0) & 0xff;
@@ -329,7 +329,7 @@ static void exc_handler_default(void *p_excinf)
 #if SECURESHIELD_VERSION == 2
 	while (1);
 #else
-	Asm("kflag 1");
+	arc_kflag(1);
 #endif
 }
 
@@ -343,13 +343,13 @@ static void int_handler_default(void *p_excinf)
 {
 	uint32_t int_cause_reg = 0;
 
-	int_cause_reg = _arc_aux_read(AUX_IRQ_CAUSE);
+	int_cause_reg = arc_aux_read(AUX_IRQ_CAUSE);
 	dbg_printf(DBG_LESS_INFO, "default interrupt handler\r\n");
 	dbg_printf(DBG_LESS_INFO, "last sp:0x%08x, icause:0x%08x\r\n", (uint32_t)p_excinf, int_cause_reg);
 #if SECURESHIELD_VERSION == 2
 	while (1);
 #else
-	Asm("kflag 1");
+	arc_kflag(1);
 #endif
 }
 
@@ -423,16 +423,16 @@ void exc_int_init(void)
 	status = arc_lock_save();
 	for (i = NUM_EXC_CPU; i < NUM_EXC_ALL; i++) {
 		/* interrupt level triggered, disabled, priority is the lowest */
-		_arc_aux_write(AUX_IRQ_SELECT, i);
-		_arc_aux_write(AUX_IRQ_ENABLE, 0);
-		_arc_aux_write(AUX_IRQ_TRIGGER, 0);
+		arc_aux_write(AUX_IRQ_SELECT, i);
+		arc_aux_write(AUX_IRQ_ENABLE, 0);
+		arc_aux_write(AUX_IRQ_TRIGGER, 0);
 #if defined(ARC_FEATURE_SEC_PRESENT) && (SECURESHIELD_VERSION < 2)
-		_arc_aux_write(AUX_IRQ_PRIORITY, (1 << AUX_IRQ_PRIORITY_BIT_S)|(INT_PRI_MAX - INT_PRI_MIN));
+		arc_aux_write(AUX_IRQ_PRIORITY, (1 << AUX_IRQ_PRIORITY_BIT_S)|(INT_PRI_MAX - INT_PRI_MIN));
 #else
-		_arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
+		arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
 #endif
 	}
-	_arc_aux_write(AUX_IRQ_CTRL, ictrl.value);
+	arc_aux_write(AUX_IRQ_CTRL, ictrl.value);
 
 	arc_unlock_restore(status);
 
@@ -460,9 +460,9 @@ int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY entry)
 	EXC_ENTRY *table;
 
 #if defined(ARC_FEATURE_SEC_PRESENT) && (SECURESHIELD_VERSION < 2)
-	table = (EXC_ENTRY *)_arc_aux_read(AUX_INT_VECT_BASE_S);
+	table = (EXC_ENTRY *)arc_aux_read(AUX_INT_VECT_BASE_S);
 #else
-	table = (EXC_ENTRY *)_arc_aux_read(AUX_INT_VECT_BASE);
+	table = (EXC_ENTRY *)arc_aux_read(AUX_INT_VECT_BASE);
 #endif
 
 	if (excno < NUM_EXC_ALL && entry != NULL
@@ -472,12 +472,12 @@ int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY entry)
 		/* FIXME, here maybe icache is dirty, need to be invalidated */
 		table[excno] = entry;
 
-		if (_arc_aux_read(AUX_BCR_D_CACHE) > 0x2) {
+		if (arc_aux_read(AUX_BCR_D_CACHE) > 0x2) {
 		/* dcache is available */
 			dcache_flush_line((uint32_t)&table[excno]);
 		}
 
-		if (_arc_aux_read(AUX_BCR_D_CACHE) > 0x2) {
+		if (arc_aux_read(AUX_BCR_D_CACHE) > 0x2) {
 		/* icache is available */
 			icache_invalidate_line((uint32_t)&table[excno]);
 		}
@@ -573,8 +573,8 @@ int32_t int_enable(const uint32_t intno)
 int32_t int_enabled(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
-		_arc_aux_write(AUX_IRQ_SELECT, intno);
-		return _arc_aux_read(AUX_IRQ_ENABLE);
+		arc_aux_write(AUX_IRQ_SELECT, intno);
+		return arc_aux_read(AUX_IRQ_ENABLE);
 	}
 
 	return -1;

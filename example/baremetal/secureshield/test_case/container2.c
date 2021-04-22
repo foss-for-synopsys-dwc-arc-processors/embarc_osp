@@ -50,7 +50,7 @@ int tst_func3(int arg1, int arg2, int arg3)
 	ret = container_call(container3, tst_func4, 1, 2, 3, 4);
 	ret = container_call(container4, tst_func_sec1);
 	/* secure container can directly access the system resources */
-	_arc_aux_read(AUX_TIMER0_CNT);
+	arc_aux_read(AUX_TIMER0_CNT);
 	arc_int_enable(INTNO_SWI2);
 	arc_int_sw_trigger(INTNO_SWI2);
 	arc_int_sw_trigger(INTNO_SWI1);
@@ -77,7 +77,7 @@ void soft_interrupt2(void *p_exinf)
 	//EMBARC_PRINTF("soft interrupt2 is raised\r\n");
 	/*
 	 * if secure container is not really in secure state,
-	 * _arc_lr_reg will raise an exception
+	 * arc_aux_read will raise an exception
 	 */
-	_arc_aux_read(AUX_IRQ_CTRL);
+	arc_aux_read(AUX_IRQ_CTRL);
 }

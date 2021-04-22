@@ -45,6 +45,7 @@
 #define _ARC_HAL_BUILTIN_H_
 
 #include "embARC_toolchain.h"
+#include "arc/arc.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,235 +53,217 @@ extern "C" {
 
 #if defined (__MW__)	/* Metaware toolchain */
 
-#define _arc_nop			_nop 	/*!< no operation, generate a nop instruction produces a single NOP instruction in the compiled code */
-
-#define _arc_brk			_brk 	/*!< generate a brk instruction */
-
-#define _arc_clri			_clri  	/*!< generate a clri instruction */
-
-#define _arc_seti(c)			_seti(c) /*!< generate a seti instruction */
-
-#define	_arc_core_write(regno, val)	_core_write(val, regno)	/*!< write core register */
-
-#define _arc_core_read(regno)		_core_read(regno)	/*!< read core register */
-
-#define _arc_lr_reg(aux)		_lr(aux)	/*!< read auxiliary register */
-
-#define _arc_sr_reg(aux, val)		_sr(val, aux)	/*!< write auxiliary register */
-
-#define _arc_sleep(a)			_sleep(a)	/*!< generate a sleep instruction */
-
-#define _arc_flag(a)			_flag(a)	/*!< generate a flag instruction */
-
-#define _arc_kflag(a)
-
-#define _arc_sync			_sync 		/*!< generate a sync instruction */
-
 /*
- * !< _arc_usually (expr) evaluates expression expr and
+ * !< arc_compiler_usually (expr) evaluates expression expr and
  * informs the compiler that the value is usually true.
  */
-#define _arc_usually(a)			_Usually((a))
+#define arc_compiler_usually(a)			_Usually((a))
 
 /*
- * !< _arc_rarely (expr) evaluates expression expr and
+ * !< arc_compiler_rarely (expr) evaluates expression expr and
  * informs the compiler that the value is rarely true.
  */
-#define _arc_rarely(a)			_Rarely((a))
-
-#if 0
-/**
- * \brief 	Reverses the byte order of the 16-bit operand,
- *  		reversing the endianness of the value.
- *    		Not for ARC HS family
- */
-#define _arc_swap16(a)			_swap16(a)
-/**
- * \brief 	Reverses the byte order of the 32-bit operand,
- *  		reversing the endianness of the value.
- *    		Not for ARC HS family
- */
-#define _arc_swap32(a)			_swap32(a)
-#else
-Inline uint32_t _arc_swap32(uint32_t val) {
-	uint32_t v;
-
-	Asm("swape %0, %1" :"=r"(v): "r"(val));
-	return v;
-}
-
-Inline uint16_t _arc_swap16(uint32_t val) {
-	uint32_t temp;
-	uint32_t v;
-
-	Asm("swape %0, %1" :"=r"(temp): "r"(val));
-	Asm("lsr16 %0, %1" :"=r"(v): "r"(temp));
-	return (unsigned short)v;
-}
-#endif
-
-/**
- * \brief 	Each call to _swi() generates one
- * 			software interrupt instruction (SWI) for processors
- * 			to support the SWI instruction.
- */
-#define _arc_swi				_swi
-
-/* \todo add more builtin functions of metaware tool */
+#define arc_compiler_rarely(a)			_Rarely((a))
 
 #elif defined (__GNU__) /* GNU toolchain */
 
-#define _arc_nop				__builtin_arc_nop
-#define _arc_brk				__builtin_arc_brk
-#define _arc_seti(c)				__builtin_arc_seti(c)
-#define _arc_core_write(regno, val)		__builtin_arc_core_write(regno,val)
-#define _arc_core_read(regno)			__builtin_arc_core_read(regno)
-#define _arc_flag(a)				__builtin_arc_flag(a)
-#define _arc_kflag(a)				__builtin_arc_kflag(a)
-#define _arc_lr_reg(aux)			__builtin_arc_lr(aux)
-/* don't uncomment this now */
-//#define _arc_sr_reg(aux, val)			__builtin_arc_sr(aux, val)
-#define _arc_sleep(a)				__builtin_arc_sleep(a)
-//#define _arc_sync				__builtin_arc_sync
-
 /**
- * \brief _arc_usually (expr) evaluates expression expr and
+ * @brief arc_compiler_usually(expr) evaluates expression expr and
  * 		  informs the compiler that the value is usually true.
  */
-#define _arc_usually(a)				__builtin_expect((int)(a), 1)
+#define arc_compiler_usually(a)         __builtin_expect((int32_t)(a), 1)
 
 /**
- * \brief _arc_rarely (expr) evaluates expression expr and
+ * @brief arc_compiler_rarely(expr) evaluates expression expr and
  *	informs the compiler that the value is rarely true.
  */
-#define _arc_rarely(a)				__builtin_expect((int)(a), 0)
-
-/**
- * \brief 	Each call to _swi() generates one
- * 			software interrupt instruction (SWI) for processors
- * 			to support the SWI instruction.
- */
-#define _arc_swi 				__builtin_arc_swi
-
-Inline uint32_t _arc_clri(void) {
-	uint32_t v;
-
-	Asm("clri %0" :"=r"(v));
-	return v;
-
-}
-/* \todo add more builtin functions of gnu tool */
-
-Inline uint32_t _arc_swap32(uint32_t val) {
-	uint32_t v;
-
-	Asm("swape %0, %1" :"=r"(v): "r"(val));
-	return v;
-}
-
-Inline uint16_t _arc_swap16(uint32_t val) {
-	uint32_t temp;
-	uint32_t v;
-
-	Asm("swape %0, %1" :"=r"(temp): "r"(val));
-	Asm("lsr16 %0, %1" :"=r"(v): "r"(temp));
-	return (unsigned short)v;
-}
-
-Inline void _arc_sync(void) {
-	Asm("sync");
-}
-
-
-/**
- * \note Following is a workaround for arc gcc
- *       built-in function __builtin_arc_sr.
- *       But it is wrong in GCC arc-4.8-R3-rc3 and shouldn't be used.
- */
-
-/*
- * The auxiliary register address is specified as a long immediate operand by caller.
- * e.g.
- *    write_aux_reg(0x69, some_val);
- * This generates the tightest code.
- */
-#define write_aux_reg(reg_imm, val)	\
-({					\
-	Asm(		\
-	"	sr   %0, [%1]	\n"	\
-	:				\
-	: "ir"(val), "r"(reg_imm));	\
-})
-
-#define _arc_sr_reg(aux, val)			write_aux_reg(aux, val)
+#define arc_compiler_rarely(a)          __builtin_expect((int32_t)(a), 0)
 
 #endif
 
-/* \todo add more helper functions here, such as memory operation */
+/**
+ * @brief Read auxiliary register
+ *
+ * @param aux auxiliary register address
+ * @return value of auxiliary register
+ */
+Inline uint32_t arc_aux_read(uint32_t aux)
+{
+	uint32_t ret;
 
-#define _arc_aux_read(aux)			_arc_lr_reg(aux)
-#define _arc_aux_write(aux, val)		_arc_sr_reg(aux, val)
+	Asm("lr %0, [%1]"
+		: "=r" (ret)
+		: "r" (aux));
+
+	return ret;
+}
 
 /**
- * \name cache related helper function
+ * @brief Write auxiliary register
+ *
+ * @param aux auxiliary register address
+ * @param val Value to write
+ */
+Inline void arc_aux_write(uint32_t aux, uint32_t val)
+{
+	Asm(
+		"sr   %0, [%1]	\n"
+		:
+		: "ir" (val), "r" (aux));
+}
+
+/**
+ * @brief Call brk instruction
+ * stop the core through a brk instruction
+ */
+Inline void arc_brk(void)
+{
+	Asm("brk");
+}
+
+/**
+ * @brief Call sync instruction
+ *
+ */
+Inline void arc_sync(void)
+{
+	Asm("sync");
+}
+
+/**
+ * @brief Call kflag instruction to change status32
+ *
+ * @param flag Flag to set in status32
+ */
+Inline void arc_kflag(uint32_t flag)
+{
+	/*sr cannot write AUX_STATUS32 */
+	Asm("kflag %0" ::"ir" (flag));
+}
+
+/**
+ * @brief Call nop_s function
+ * flush the pipeline by nop_s instruction
+ */
+Inline void arc_nop(void)
+{
+	Asm("nop_s");
+}
+
+/**
+ * @brief Call clri instruction
+ * call a clri instruction to disable interrupt
+ * @return interrupt related bits in status32
+ */
+Inline uint32_t arc_clri(void)
+{
+	uint32_t v;
+
+	Asm("clri %0" : "=r" (v):: "memory");
+	return v;
+}
+
+/**
+ * @brief Call seti instruction
+ * call a set instruction to change interrupt status
+ * @param key  interrupt status
+ */
+Inline void arc_seti(uint32_t key)
+{
+	Asm("seti %0" : : "ir" (key) : "memory");
+}
+
+/**
+ * @brief Swap bytes order of a 32-bits value
+ *
+ * @param val Target value
+ * @return Swapped value
+ */
+Inline uint32_t arc_swap32(uint32_t val)
+{
+	uint32_t v;
+
+	Asm("swape %0, %1" : "=r" (v) : "r" (val));
+	return v;
+}
+
+/**
+ * @brief Swap bytes order of a 32-bits value and return high 16-bits
+ *
+ * @param val Target value
+ * @return High 16 bits of the swapped value
+ */
+Inline uint16_t arc_swap16(uint32_t val)
+{
+	uint32_t temp;
+	uint32_t v;
+
+	Asm("swape %0, %1" : "=r" (temp) : "r" (val));
+	Asm("lsr16 %0, %1" : "=r" (v) : "r" (temp));
+	return (uint16_t)v;
+}
+
+/**
+ * @name cache related helper function
  * @{
  */
 
 /**
- * \brief  read memory and bypass the cache
- * \param[in] ptr memory address
- * \return value in the memory
+ * @brief  Read memory and bypass the cache
+ * @param[in] ptr Memory address
+ * @return Date in the memory
  */
-Inline uint32_t _arc_read_uncached_32(void *ptr)
+Inline uint32_t arc_read_uncached_32(void *ptr)
 {
-	uint32_t __ret;
+	uint32_t ret;
 
-	Asm("ld.di %0, [%1]":"=r"(__ret):"r"(ptr));
-	return __ret;
+	Asm("ld.di %0, [%1]" : "=r" (ret) : "r" (ptr));
+	return ret;
 }
 
 /**
- * \brief  write memory and bypass the cache
- * \param[in] ptr memory address
- * \param[in] data  vaule to be written
+ * @brief  Write memory and bypass the cache
+ * @param[in] ptr memory address
+ * @param[in] data  vaule to be written
  */
-Inline void _arc_write_uncached_32(void *ptr, uint32_t data)
+Inline void arc_write_uncached_32(void *ptr, uint32_t data)
 {
-	Asm("st.di %0, [%1]":: "r"(data), "r"(ptr));
+	Asm("st.di %0, [%1]" :: "r" (data), "r" (ptr));
 }
 
 /**
- * \brief  read memory with cache
- * \param[in] ptr memory address
- * \returns value in the memory
+ * @brief  Read memory with cache
+ * @param[in] ptr Memory address
+ * @returns Date in the memory
  */
-Inline uint32_t _arc_read_cached_32(void *ptr)
+Inline uint32_t arc_read_cached_32(void *ptr)
 {
-	uint32_t __ret;
+	uint32_t ret;
 
-	Asm("ld %0, [%1]":"=r"(__ret):"r"(ptr));
-	return __ret;
+	Asm("ld %0, [%1]" : "=r" (ret) : "r" (ptr));
+	return ret;
 }
 
 /**
- * \brief  read memory with cache
- * \param[in] ptr memory address
- * \param[in] data vaule to be written
- * \return description
+ * @brief  Read memory with cache
+ * @param[in] ptr Memory address
+ * @param[in] data Data to be written
+ * @return Description
  */
-Inline void _arc_write_cached_32(void *ptr, uint32_t data)
+Inline void arc_write_cached_32(void *ptr, uint32_t data)
 {
-	Asm("st %0, [%1]":: "r"(data), "r"(ptr));
+	Asm("st %0, [%1]" :: "r" (data), "r" (ptr));
 }
 
 /**
- * \brief go to main function with proper arguments
- * \param  argc argument count
- * \param  argv argument content array
- * \retval return value of main function
+ * @brief Go to main function with proper arguments
+ * @param  argc Argument count
+ * @param  argv Argument content array
+ * @retval Return value of main function
  */
-Inline int32_t _arc_goto_main(int argc, char **argv) {
-	int32_t __ret;
+Inline int32_t arc_goto_main(int32_t argc, char **argv)
+{
+	int32_t ret;
 
 	Asm(
 		"mov %%r0, %1\n"
@@ -289,46 +272,48 @@ Inline int32_t _arc_goto_main(int argc, char **argv) {
 		"jl main\n"
 		"pop_s %%blink\n"
 		"mov %0, %%r0"
-		:"=r"(__ret): "r"(argc), "r"(argv));
-	return (int32_t)__ret;
+		: "=r" (ret) : "r" (argc), "r" (argv));
+	return (int32_t)ret;
 }
 
 /**
  *
- * \brief find most significant bit set in a 32-bit word
+ * @brief Find most significant bit set in a 32-bit word
  *
  * This routine finds the first bit set starting from the most significant bit
  * in the argument passed in and returns the index of that bit. Bits are
  * numbered starting at 1 from the least significant bit. A return value of
  * zero indicates that the value passed is zero.
  *
- * \return most significant bit set, 0 if @a val is 0
+ * @return Most significant bit set, 0 if @a val is 0
  */
-Inline uint32_t _arc_find_msb(uint32_t val) {
+Inline uint32_t arc_find_msb(uint32_t val)
+{
 	uint32_t bit;
 
 	Asm(
 		/* BITSCAN_OPTION is required */
 		"fls.f %0, %1;\n"
 		"add.nz %0, %0, 1;\n"
-		: "=r"(bit)
-		: "r"(val));
+		: "=r" (bit)
+		: "r" (val));
 
 	return bit;
 }
 
 /**
  *
- * \brief find least significant bit set in a 32-bit word
+ * @brief Find least significant bit set in a 32-bit word
  *
  * This routine finds the first bit set starting from the least significant bit
  * in the argument passed in and returns the index of that bit.  Bits are
  * numbered starting at 1 from the least significant bit.  A return value of
  * zero indicates that the value passed is zero.
  *
- * \return least significant bit set, 0 if @a val is 0
+ * @return Least significant bit set, 0 if @a val is 0
  */
-Inline uint32_t _arc_find_lsb(uint32_t val) {
+Inline uint32_t arc_find_lsb(uint32_t val)
+{
 	uint32_t bit;
 
 	Asm(
@@ -336,10 +321,28 @@ Inline uint32_t _arc_find_lsb(uint32_t val) {
 		"ffs.f %0, %1;\n"
 		"add.nz %0, %0, 1;\n"
 		"mov.z %0, 0;\n"
-		: "=&r"(bit)
-		: "r"(val));
+		: "=&r" (bit)
+		: "r" (val));
 
 	return bit;
+}
+
+/**
+ * @brief Read core id
+ *
+ * @return Core id
+ */
+Inline uint32_t arc_core_id(void)
+{
+	uint32_t ret;
+
+	Asm(
+		"lr %0, [%1]\n"
+		"xbfu %0, %0, 0xe8\n"
+		: "=r" (ret)
+		: "i" (AUX_IDENTITY));
+
+	return ret;
 }
 
 #ifdef __cplusplus

@@ -63,8 +63,8 @@
 #define I2S_RXDMA       0x1c0		/*!< (0x1C0) : Receiver Block DMA Register */
 #define I2S_TXDMA       0x1c8
 
-#define REG_READ(x) 		_arc_aux_read((ctx->reg_base + x))
-#define REG_WRITE(x, y) 	_arc_aux_write((ctx->reg_base + x), y)
+#define REG_READ(x) 		arc_aux_read((ctx->reg_base + x))
+#define REG_WRITE(x, y) 	arc_aux_write((ctx->reg_base + x), y)
 
 
 static void ss_i2s_master_reset(SS_I2S_MST_DEV_CONTEXT *ctx){

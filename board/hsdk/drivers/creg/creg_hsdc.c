@@ -109,7 +109,7 @@ void creg_hsdc_set_slave(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst,
 			reg &= ~(0x0FU << (4*(uint32_t)c_ap)); //clear
 			reg |= (slv    << (4*(uint32_t)c_ap)); //set
 			*ptr = reg;                            //write
-			_arc_sync();
+			arc_sync();
 		}
 	}
 }
@@ -168,7 +168,7 @@ void creg_hsdc_set_offset(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst
 			reg &= ~(0x0FU << (4*(uint32_t)c_ap)); //clear
 			reg |= (offset << (4*(uint32_t)c_ap)); //set
 			*ptr = reg;                            //write
-			_arc_sync();
+			arc_sync();
 		}
 	}
 }
@@ -211,17 +211,17 @@ void creg_hsdc_update(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_MASTER_T mst)
 		//Calculate offset + 0x14
 		ptr += (mst*8) + 5;
 		*ptr = A_UPDATE;
-		_arc_sync();
+		arc_sync();
 
 		//wait some time
-		_arc_nop();
-		_arc_nop();
-		_arc_nop();
-		_arc_nop();
-		_arc_nop();
-		_arc_nop();
-		_arc_nop();
-		_arc_nop();
+		arc_nop();
+		arc_nop();
+		arc_nop();
+		arc_nop();
+		arc_nop();
+		arc_nop();
+		arc_nop();
+		arc_nop();
 	}
 }
 
@@ -235,7 +235,7 @@ void creg_hsdc_set_pae(CREG_HSDC_STRUCT_PTR creg_regs, uint32_t pae)
 	//Calculate offset
 	ptr += (CREG_HSDC_MASTER_NONE*8);
 	*ptr = pae;
-	_arc_sync();
+	arc_sync();
 }
 
 void creg_hsdc_update_pae(CREG_HSDC_STRUCT_PTR creg_regs)
@@ -248,17 +248,17 @@ void creg_hsdc_update_pae(CREG_HSDC_STRUCT_PTR creg_regs)
 	//Calculate offset + 0x14
 	ptr += (CREG_HSDC_MASTER_NONE*8) + 5;
 	*ptr = A_UPDATE;
-	_arc_sync();
+	arc_sync();
 
 	//wait some time
-	_arc_nop();
-	_arc_nop();
-	_arc_nop();
-	_arc_nop();
-	_arc_nop();
-	_arc_nop();
-	_arc_nop();
-	_arc_nop();
+	arc_nop();
+	arc_nop();
+	arc_nop();
+	arc_nop();
+	arc_nop();
+	arc_nop();
+	arc_nop();
+	arc_nop();
 }
 
 /**
@@ -289,7 +289,7 @@ int32_t creg_hsdc_program_aperture(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_APE
 		if (config->intnum != 0) {
 			//interrupt driven
 			while ( (creg_upd == 0) && (loop > 0) ) {
-				_arc_nop();
+				arc_nop();
 				loop--;
 			}
 
@@ -299,7 +299,7 @@ int32_t creg_hsdc_program_aperture(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_APE
 		} else {
 			//polling driven
 			while (loop > 0) {
-				_arc_nop();
+				arc_nop();
 				loop--;
 			}
 		}
@@ -318,7 +318,7 @@ void creg_hsdc_clr_ena_irq(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_CORE_T core
 	if (core < CREG_HSDC_CORE_NONE) {
 		//write only reg
 		creg_regs->CREG_IRQ_CLR_ENABLE = (0x01U << core);
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -327,7 +327,7 @@ void creg_hsdc_set_ena_irq(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_CORE_T core
 	if (core < CREG_HSDC_CORE_NONE) {
 		//write only reg (enable)
 		creg_regs->CREG_IRQ_SET_ENABLE = (0x01U << core);
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -336,7 +336,7 @@ void creg_hsdc_set_sts_irq(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_CORE_T core
 	if (core < CREG_HSDC_CORE_NONE) {
 		//write only reg (raise software ISR)
 		creg_regs->CREG_IRQ_SET_STATUS = (0x01U << core);
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -363,7 +363,7 @@ void creg_hsdc_clr_sts_irq(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_CORE_T core
 	if (core < CREG_HSDC_CORE_NONE) {
 		//write only reg (in isr)
 		creg_regs->CREG_IRQ_CLR_STATUS = (0x01U << core);
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -384,7 +384,7 @@ void creg_hsdc_set_tunnel_priority(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_TUN
 		reg &= ~(0x3U);
 		reg |= pr;
 		creg_regs->CREG_TUN_CTRL = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -397,7 +397,7 @@ void creg_hsdc_set_tunnel_pd_mode(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_TUNN
 		reg &= ~(0x10U);
 		reg |= (pd<<4);
 		creg_regs->CREG_TUN_CTRL = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -422,7 +422,7 @@ void creg_hsdc_set_tunnel_io_mode(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_TUNN
 		reg |= (odt<<30);
 		reg |= (sr<<28);
 		creg_regs->CREG_TUN_IO_CTRL = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -437,7 +437,7 @@ void creg_hsdc_set_ddr_latency(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_DDRHOST
 		reg &= ~(0xFFU << (port*8));
 		reg |= ((uint32_t)latency << (port*8));
 		creg_regs->CREG_DDR_LATENCY = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -449,7 +449,7 @@ void creg_hsdc_set_sram_latency(CREG_HSDC_STRUCT_PTR creg_regs, uint8_t latency)
 	reg &= ~(0xFFU);           //clr
 	reg |=  (uint32_t)latency;       //set
 	creg_regs->CREG_SRAM_LATENCY = reg;
-	_arc_sync();
+	arc_sync();
 }
 
 void creg_hsdc_set_spi_cs_ctrl(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_SPISEL_T sel, CREG_HSDC_SPICSSEL_T cs, CREG_HSDC_SPICSCTRL_T ctrl)
@@ -461,7 +461,7 @@ void creg_hsdc_set_spi_cs_ctrl(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_SPISEL_
 		reg &= ~(0x03U << ((sel*8)+(cs*2)));   //clr
 		reg |=  (ctrl  << ((sel*8)+(cs*2)));   //set
 		creg_regs->CREG_SPI_CS_CTRL = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -469,7 +469,7 @@ void creg_hsdc_set_i2s_clk_ctrl (CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_I2SCL
 {
 	if (sel < CREG_HSDC_I2SCLKCTRL_NONE) {
 		creg_regs->CREG_I2S_CLK_CTRL = sel;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -485,7 +485,7 @@ void creg_hsdc_set_gpio_mux(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_GPIOSEL_T 
 		reg &= ~(0x07U << (sel*3)); //clr
 		reg |=  (mux   << (sel*3)); //set
 		creg_regs->CREG_GPIO_MUX = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -498,7 +498,7 @@ void creg_hsdc_set_dbg_mux(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_DBGSEL_T se
 		reg &= ~(0x01U << sel); //clr
 		reg |=  (mux   << sel); //set
 		creg_regs->CREG_GPIO_DBG_MUX = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -515,7 +515,7 @@ void creg_hsdc_set_dma_mux(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_DMAFCSEL_T 
 		reg &= ~(0x0FU << (sel*4)); //clr
 		reg |= (mux    << (sel*4)); //set
 		creg_regs->CREG_DMA_MUX = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -526,7 +526,7 @@ void creg_hsdc_set_dma_mux(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_DMAFCSEL_T 
 void creg_hsdc_set_arc_clk_div(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_ARCCLKDIV_T div)
 {
 	creg_regs->CREG_ARC_CLK_CTRL = div;
-	_arc_sync();
+	arc_sync();
 }
 
 CREG_HSDC_ARCCLKDIV_T creg_hsdc_get_arc_clk_div(CREG_HSDC_STRUCT_PTR creg_regs)
@@ -548,7 +548,7 @@ void creg_hsdc_start_core(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_START_T *sta
 		(start->polarity << POLARITY_POS) |
 		(start->multicoremode   << MULTI_CORE_POS));
 	creg_regs->CREG_CPU_START = reg;
-	_arc_sync();
+	arc_sync();
 }
 
 //for Wdt test
@@ -560,7 +560,7 @@ void creg_hsdc_set_start_mode (CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_STARTMO
 	reg &= ~(START_MODE_MASK);
 	reg |= (mode << START_MODE_POS);
 	creg_regs->CREG_CPU_START = reg;
-	_arc_sync();
+	arc_sync();
 }
 
 void creg_hsdc_get_debug_uart_mode(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_DEBUGUARTMODE_T *mode)
@@ -586,7 +586,7 @@ void creg_hsdc_set_ddr_enable(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_DDRCTRL_
 		reg &= ~(0x01U << ctrl);            //clr
 		reg |= ((enable & 0x01U) << ctrl);  //set
 		creg_regs->CREG_DDR_CTRL = reg;
-		_arc_sync();
+		arc_sync();
 	}
 }
 
@@ -618,7 +618,7 @@ void creg_hsdc_set_boot_mirror(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_BOOTMIR
 	reg &= 0x3FC;         //clear
 	reg |= (mirror << 0); //set
 	*ptr = reg;           //write
-	_arc_sync();
+	arc_sync();
 }
 
 void creg_hsdc_get_image_location(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_IMAGELOCATION_T *location)
@@ -645,7 +645,7 @@ void creg_hsdc_set_aux(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_AUX_T aux)
 	reg &= 0x3F;        //clear
 	reg |= (aux << 6);  //set
 	*ptr = reg;         //write
-	_arc_sync();
+	arc_sync();
 }
 
 void creg_hsdc_sw_reset(CREG_HSDC_STRUCT_PTR creg_regs)
@@ -654,7 +654,7 @@ void creg_hsdc_sw_reset(CREG_HSDC_STRUCT_PTR creg_regs)
 
 	//reset
 	creg_regs->CREG_IP_SW_RESET = RESET_MASK;
-	_arc_sync();
+	arc_sync();
 
 	//wait till bit is cleared
 	reg = creg_regs->CREG_IP_SW_RESET;
@@ -674,6 +674,6 @@ void creg_hsdc_set_kernel_entrypoint(CREG_HSDC_STRUCT_PTR creg_regs, CREG_HSDC_C
 		//Calculate offset (0x0, 0x4, 0x8 or 0xC)
 		ptr += core;
 		*ptr = address;
-		_arc_sync();
+		arc_sync();
 	}
 }

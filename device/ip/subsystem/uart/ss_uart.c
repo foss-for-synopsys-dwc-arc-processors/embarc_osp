@@ -53,8 +53,8 @@
 #define UART_CLKEN  (0xc0)
 
 
-#define REG_READ(x) 		_arc_aux_read((ctx->reg_base + x))
-#define REG_WRITE(x, y) 	_arc_aux_write((ctx->reg_base + x), y)
+#define REG_READ(x) 		arc_aux_read((ctx->reg_base + x))
+#define REG_WRITE(x, y) 	arc_aux_write((ctx->reg_base + x), y)
 
 /** convert uart baudrate to subsystem divisor */
 #define SS_UART_BAUD2DIV(perifreq, baud)		((perifreq) / ((baud)*16) + 1)

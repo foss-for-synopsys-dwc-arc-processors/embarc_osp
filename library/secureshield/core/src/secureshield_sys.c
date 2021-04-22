@@ -122,7 +122,7 @@ uint32_t secure_arc_lr_reg(uint32_t addr)
 		return 0xffffffff;
 	}
 
-	return _arc_lr_reg(addr);
+	return arc_aux_read(addr);
 }
 
 /**
@@ -133,7 +133,7 @@ uint32_t secure_arc_lr_reg(uint32_t addr)
 void secure_arc_sr_reg(uint32_t addr, uint32_t val)
 {
 	if (_secureshield_aux_check(g_active_container, addr) == 0) {
-		_arc_sr_reg(addr, val);
+		arc_aux_write(addr, val);
 	}
 }
 
