@@ -234,10 +234,6 @@ static void dump_privilege_exception(uint32_t cause, uint32_t parameter)
 
 static void dump_exception_info(uint32_t vector, uint32_t cause, uint32_t param)
 {
-	if (vector >= 0x10 && vector <= 0xFF) {
-		EMBARC_PRINTF("interrupt %d\n", vector);
-		return;
-	}
 
 	/* Names are exactly as they appear in Designware ARCv2 ISA
 	 * Programmer's reference manual for easy searching
