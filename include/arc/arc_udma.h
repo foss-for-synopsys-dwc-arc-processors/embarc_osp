@@ -244,9 +244,6 @@ typedef struct _dma_state {
 #endif
 } dma_state_t;
 
-// **********************************
-// ********   High level API   ******
-// **********************************
 
 /**
  * \brief       Init uDMA controller with a valid dma_state_t structure

@@ -39,9 +39,6 @@
  */
 #include "arc/arc_udma.h"
 
-/** Uncomment this macro to enable uDMA driver check errors */
-//#define UDMA_CHECK_ERRORS
-
 static dma_state_t *g_dmac = NULL;
 
 #ifdef OS_FREERTOS
@@ -53,11 +50,14 @@ static dma_state_t *g_dmac = NULL;
 #endif
 
 
-/*----- MACRO START */
-#define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
-#define _MEMORY_FENCE()				arc_sync()
+#if ARC_FEATURE_DCACHE_PRESENT
+#define DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
+#else
+#define DCACHE_FLUSH_MLINES(addr, size)
+#endif
+#define MEMORY_FENCE()				arc_sync()
 
-#define _INT_LEVEL_SENS				0
+#define DMA_INT_LEVEL_SENS				0
 
 #if DMA_MULTI_IRQ /* Multiple-Internal interrupt case */
 #define DMA_INT_OK_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START)
@@ -66,14 +66,13 @@ static dma_state_t *g_dmac = NULL;
 #define DMA_INT_OK_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START)
 #define DMA_INT_ERR_VECTOR(channel)		((channel)+DMA_IRQ_NUM_START+1)
 #endif
-/*----- MACRO END */
 
 //! Interrupt about DMA transaction completion
 /*! Sets the the "complete" status for completed DMA transaction and
  *! starts next transaction from queue. Reset DMA completion IRQ flags
  */
-static void _dmac_interrupt_completed(void *ptr);
-static void _dmac_interrupt_completed_channel(uint32_t channel);
+static void dmac_interrupt_completed(void *ptr);
+static void dmac_interrupt_completed_channel(uint32_t channel);
 
 
 //! Interrupt about DMA transaction completion with error
@@ -239,12 +238,28 @@ static dma_status_t _dmac_wait_mask(uint32_t mask)
 	return DMA_BUSY;
 }
 
+/* calc the true size of dma area, e.g. data width: 1 byte, address inc: 2 bytes
+ * ---data0---
+ * ---gap0---
+ * --data1---
+ * --gap1---
+ * case: 1 byte, address inc: 4 bytes
+ * ---data0---
+ * ---gap0---
+ * ---gap0---
+ * ---gap0---
+ * ---data1---
+ * ---gap1---
+ * ---gap1---
+ * ---gap1---
+ */
 static uint32_t _dmac_memory_addr_gap(uint32_t dmac_mode)
 {
 	uint32_t size = (dmac_mode & DMACTRLx_SIZE_MASK) >> DMACTRLx_SIZE_OFS;
 	uint32_t dwinc = (dmac_mode & DMACTRLx_DWINC_MASK) >> DMACTRLx_DWINC_OFS;
 
 	switch (dwinc) {
+		/* the following are cases needed to be adjusted */
 		case DMA_DW1INC2:
 			size <<= 1;
 			break;
@@ -296,9 +311,6 @@ static uint32_t _dmac_aux_addr_gap(uint32_t dmac_mode)
 	return size;
 }
 
-//#define USE_DMA_CALC_ADDR
-
-#ifndef USE_DMA_CALC_ADDR /* converted to 1 function called _dmac_calc_addr */
 static uint32_t _dmac_calc_dst_endaddr(uint32_t dst_addr, uint32_t dmac_mode)
 {
 	/*
@@ -333,25 +345,6 @@ static uint32_t _dmac_calc_src_endaddr(uint32_t src_addr, uint32_t dmac_mode)
 
 	return src_addr;
 }
-#else
-static void _dmac_calc_addr(uint32_t *src_addr, uint32_t *dst_addr, uint32_t mode)
-{
-	if (arc_compiler_usually(mode & DMACTRLx_AM(1))) { /* Source address incremented */
-		if (arc_compiler_rarely(DMACTRLx_DTT(0x2) & mode)) {   /* Source is Auxiliary */
-			*src_addr += _dmac_aux_addr_gap(mode);
-		} else {    /* Source is Memory */
-			*src_addr += _dmac_memory_addr_gap(mode);
-		}
-	}
-	if (arc_compiler_usually(mode & DMACTRLx_AM(2))) { /* Destination address incremented */
-		if (arc_compiler_rarely(DMACTRLx_DTT(0x1) & mode)) {   /* Destination is Auxiliary */
-			*dst_addr += _dmac_aux_addr_gap(mode);
-		} else {    /* Destination is Memory */
-			*dst_addr += _dmac_memory_addr_gap(mode);
-		}
-	}
-}
-#endif
 
 static void _dmac_set_desc(dma_desc_t * desc, void *source, void *dest, uint32_t size,
                            uint32_t dmac_mode)
@@ -362,14 +355,9 @@ static void _dmac_set_desc(dma_desc_t * desc, void *source, void *dest, uint32_t
 	dmac_mode &= ~DMACTRLx_SIZE_MASK;
 	dmac_mode |= DMACTRLx_SIZE(size);
 
-#ifndef USE_DMA_CALC_ADDR
 	src_addr = _dmac_calc_src_endaddr((uint32_t)source, dmac_mode);
 	dst_addr = _dmac_calc_dst_endaddr((uint32_t)dest, dmac_mode);
-#else /* use dma_calc_addr */
-	src_addr = (uint32_t)source;
-	dst_addr = (uint32_t)dest;
-	_dmac_calc_addr(&src_addr, &dst_addr, dmac_mode);
-#endif
+
 	desc->DMACTRLx = dmac_mode;
 	desc->DMASARx = src_addr;
 	desc->DMADARx = dst_addr;
@@ -386,24 +374,24 @@ static void _dmac_fill_descriptor(uint32_t channel, dma_desc_t * desc)
 #if CORE_DMAC_INTERNAL_VERSION > 1
 		uint32_t *dma_llps = (uint32_t *) arc_aux_read(AUX_DMACBASE);
 		dma_llps[channel] = desc->DMALLPx;
-		_MEMORY_FENCE();
+		MEMORY_FENCE();
 		//arc_write_uncached_32((void *)(&dma_llps[channel]), desc->DMALLPx);
-		_DCACHE_FLUSH_MLINES((void *)(&dma_llps[channel]), sizeof(uint32_t));
+		DCACHE_FLUSH_MLINES((void *)(&dma_llps[channel]), sizeof(uint32_t));
 #endif
 	} else {
 #if CORE_DMAC_INTERNAL_VERSION > 1
 		uint32_t *dma_ptrs = (uint32_t *) arc_aux_read(AUX_DMACBASE);
 		dma_ptrs[channel] = (uint32_t)desc;
-		_MEMORY_FENCE();
+		MEMORY_FENCE();
 		//arc_write_uncached_32((void *)(&dma_ptrs[channel]), (uint32_t)desc);
-		_DCACHE_FLUSH_MLINES((void *)(&dma_ptrs[channel]), sizeof(uint32_t));
+		DCACHE_FLUSH_MLINES((void *)(&dma_ptrs[channel]), sizeof(uint32_t));
 #else
 		dma_desc_t *dmac_desc = (dma_desc_t *) arc_aux_read(AUX_DMACBASE);
 		dmac_desc = (dma_desc_t *) (&dmac_desc[channel]);
 		/* more efficient to let compiler do this copy */
 		*dmac_desc = *desc;
-		_MEMORY_FENCE();
-		_DCACHE_FLUSH_MLINES((void *)dmac_desc, sizeof(dma_desc_t));
+		MEMORY_FENCE();
+		DCACHE_FLUSH_MLINES((void *)dmac_desc, sizeof(dma_desc_t));
 #endif
 	}
 }
@@ -411,11 +399,9 @@ static void _dmac_fill_descriptor(uint32_t channel, dma_desc_t * desc)
 
 int32_t dmac_init(dma_state_t * state)
 {
-#ifdef UDMA_CHECK_ERRORS
 	if (state == NULL) {
 		return -1;
 	}
-#endif
 
 	g_dmac = state;
 
@@ -437,23 +423,23 @@ int32_t dmac_init(dma_state_t * state)
 
 
 #if !DMA_MULTI_IRQ
-	int_level_config(DMA_INT_OK_VECTOR(0), _INT_LEVEL_SENS);
+	int_level_config(DMA_INT_OK_VECTOR(0), DMA_INT_LEVEL_SENS);
 	int_enable(DMA_INT_OK_VECTOR(0));
-	int_handler_install(DMA_INT_OK_VECTOR(0), _dmac_interrupt_completed);
+	int_handler_install(DMA_INT_OK_VECTOR(0), dmac_interrupt_completed);
 	int_pri_set(DMA_INT_OK_VECTOR(0), DMA_IRQ_PRIO);
 
-	int_level_config(DMA_INT_ERR_VECTOR(0), _INT_LEVEL_SENS);
+	int_level_config(DMA_INT_ERR_VECTOR(0), DMA_INT_LEVEL_SENS);
 	int_enable(DMA_INT_ERR_VECTOR(0));
 	int_handler_install(DMA_INT_ERR_VECTOR(0), _dmac_interrupt_error);
 	int_pri_set(DMA_INT_ERR_VECTOR(0), DMA_IRQ_PRIO);
 #else
 	for (int32_t i = 0; i < DMA_ALL_CHANNEL_NUM; i++) {
-		int_level_config(DMA_INT_OK_VECTOR(i), _INT_LEVEL_SENS);
+		int_level_config(DMA_INT_OK_VECTOR(i), DMA_INT_LEVEL_SENS);
 		int_enable(DMA_INT_OK_VECTOR(i));
-		int_handler_install(DMA_INT_OK_VECTOR(i), _dmac_interrupt_completed);
+		int_handler_install(DMA_INT_OK_VECTOR(i), dmac_interrupt_completed);
 		int_pri_set(DMA_INT_OK_VECTOR(i), DMA_IRQ_PRIO);
 
-		int_level_config(DMA_INT_ERR_VECTOR(i), _INT_LEVEL_SENS);
+		int_level_config(DMA_INT_ERR_VECTOR(i), DMA_INT_LEVEL_SENS);
 		int_enable(DMA_INT_ERR_VECTOR(i));
 		int_handler_install(DMA_INT_ERR_VECTOR(i), _dmac_interrupt_error);
 		int_pri_set(DMA_INT_ERR_VECTOR(i), DMA_IRQ_PRIO);
@@ -487,13 +473,12 @@ static void _dmac_process_desc(dma_desc_t * desc, uint32_t int_enable)
 		 * TODO: Make sure all linked DMA channel descriptors
 		 * stored into memory, not just in data cache
 		 */
-		_MEMORY_FENCE();
-		_DCACHE_FLUSH_MLINES((void *)desc, sizeof(dma_desc_t));
+		MEMORY_FENCE();
+		DCACHE_FLUSH_MLINES((void *)desc, sizeof(dma_desc_t));
 		desc = (dma_desc_t *) desc->DMALLPx;
 	} while (desc != 0);
 }
 
-#ifdef UDMA_CHECK_ERRORS
 static int32_t dmac_valid_channel(int32_t channel, dma_desc_t * desc)
 {
 #if CORE_DMAC_INTERNAL_VERSION == 1
@@ -506,10 +491,8 @@ static int32_t dmac_valid_channel(int32_t channel, dma_desc_t * desc)
 #endif
 	return 0;
 }
-#endif
 
-
-static void _dmac_interrupt_completed_channel(uint32_t channel)
+static void dmac_interrupt_completed_channel(uint32_t channel)
 {
 	_dmac_irq_clear(channel);
 	_dmac_disable_channel(channel);
@@ -549,7 +532,7 @@ static void _dma_claim_channel(int32_t channel, dma_channel_t * dma_chn,
 }
 
 #if !DMA_MULTI_IRQ
-static void _dmac_interrupt_completed(void *ptr)
+static void dmac_interrupt_completed(void *ptr)
 {
 	// In complete interrupt, the DMACIRQ and DMACSTAT1 complete bit are both set
 	uint32_t status = _dmac_complete_status();
@@ -557,7 +540,7 @@ static void _dmac_interrupt_completed(void *ptr)
 	for (int channel = 0; channel < DMA_ALL_CHANNEL_NUM;
 	                ++channel, status >>= 1) {
 		if (arc_compiler_rarely(status & 0x1)) {
-			_dmac_interrupt_completed_channel(channel);
+			dmac_interrupt_completed_channel(channel);
 		}
 	}
 }
@@ -575,13 +558,13 @@ static void _dmac_interrupt_error(void *ptr)
 	}
 }
 #else
-static void _dmac_interrupt_completed(void *ptr)
+static void dmac_interrupt_completed(void *ptr)
 {
 	uint32_t channel;
 
 	channel = arc_aux_read(AUX_IRQ_CAUSE) - DMA_IRQ_NUM_START;
 
-	_dmac_interrupt_completed_channel(channel);
+	dmac_interrupt_completed_channel(channel);
 }
 
 static void _dmac_interrupt_error(void *ptr)
@@ -615,11 +598,10 @@ void dmac_close(void)
 int32_t dmac_config_desc(dma_desc_t * desc, void *src, void *dst, uint32_t size,
 			dma_ctrl_t * ctrl)
 {
-#ifdef UDMA_CHECK_ERRORS
+
 	if (arc_compiler_rarely(desc == NULL)) {
 		return -1;
 	}
-#endif
 
 	_dmac_set_desc(desc, src, dst, size, ctrl->value);
 
@@ -637,11 +619,9 @@ int32_t dmac_desc_add_linked(dma_desc_t * head, dma_desc_t * next)
 
 int32_t dmac_init_channel(dma_channel_t * dma_chn)
 {
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
-#endif
 	dma_chn->desc = NULL;
 	dma_chn->source = DMA_REQ_SOFT;
 	dma_chn->callback = NULL;
@@ -652,11 +632,9 @@ int32_t dmac_init_channel(dma_channel_t * dma_chn)
 
 int32_t dmac_config_channel(dma_channel_t * dma_chn, dma_desc_t * desc)
 {
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
-#endif
 	dma_chn->desc = desc;
 	return 0;
 }
@@ -700,30 +678,24 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 			uint32_t priority)
 {
 	int32_t channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
 	if (arc_compiler_rarely(dma_chn->desc == NULL)) {
 		return -1;
 	}
-#endif
 	channel = dma_chn->channel;
 
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
-#endif
 	if (arc_compiler_rarely(dma_chn->status == DMA_BUSY)) {
 		return -1;
 	}
 	/** Check if aux based registers and linked transfer is not supported */
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dmac_valid_channel(channel, dma_chn->desc) != 0)) {
 		return -2;
 	}
-#endif
 
 	dma_chn->callback = callback;
 	dma_chn->priority = priority;
@@ -763,20 +735,16 @@ int32_t dmac_start_channel(dma_channel_t * dma_chn, dma_callback_t callback,
 int32_t dmac_stop_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
 	if (arc_compiler_rarely(dma_chn->desc == NULL)) {
 		return -1;
 	}
-#endif
 	channel = dma_chn->channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
-#endif
 
 	_dmac_disable_channel(channel);
 	_dmac_clear_error(channel);
@@ -789,21 +757,17 @@ int32_t dmac_stop_channel(dma_channel_t * dma_chn)
 int32_t dmac_clear_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
 	if (arc_compiler_rarely(dma_chn->desc == NULL)) {
 		return -1;
 	}
-#endif
 	channel = dma_chn->channel;
 
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
-#endif
 
 	_dmac_clear_error(channel);
 	_dmac_disable_channel(channel);
@@ -816,21 +780,17 @@ int32_t dmac_clear_channel(dma_channel_t * dma_chn)
 int32_t dmac_release_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
 	if (arc_compiler_rarely(dma_chn->desc == NULL)) {
 		return -1;
 	}
-#endif
 	channel = dma_chn->channel;
 
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
-#endif
 
 	_dmac_clear_error(channel);
 	_dmac_disable_channel(channel);
@@ -843,21 +803,17 @@ int32_t dmac_release_channel(dma_channel_t * dma_chn)
 int32_t dmac_wait_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
 	if (arc_compiler_rarely(dma_chn->desc == NULL)) {
 		return -1;
 	}
-#endif
 	channel = dma_chn->channel;
 
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
-#endif
 	while (dma_chn->status == DMA_BUSY) {
 		if (arc_compiler_usually(dma_chn->int_enable == DMA_INT_DISABLE)) {
 			dma_chn->status = _dmac_wait_channel(channel);
@@ -869,21 +825,17 @@ int32_t dmac_wait_channel(dma_channel_t * dma_chn)
 int32_t dmac_check_channel(dma_channel_t * dma_chn)
 {
 	int32_t channel;
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(dma_chn == NULL)) {
 		return -1;
 	}
 	if (arc_compiler_rarely(dma_chn->desc == NULL)) {
 		return -1;
 	}
-#endif
 	channel = dma_chn->channel;
 
-#ifdef UDMA_CHECK_ERRORS
 	if (arc_compiler_rarely(!((uint32_t) channel < DMA_ALL_CHANNEL_NUM))) {
 		return -1;
 	}
-#endif
 	if (arc_compiler_usually(dma_chn->int_enable == DMA_INT_DISABLE)) {
 		dma_chn->status = _dmac_wait_channel(channel);
 	}
