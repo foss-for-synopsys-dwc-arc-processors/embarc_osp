@@ -55,15 +55,13 @@ static struct cache_config icache_config, dcache_config;
  */
 int32_t icache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 {
-	if (!icache_available()) return -1;
+	uint32_t end_addr;
+	uint32_t line_size;
+	uint32_t status;
 
 	if ((size == 0) || (size > icache_config.capacity)) {
 		return -1;
 	}
-
-	uint32_t end_addr;
-	uint32_t line_size;
-	uint32_t status;
 
 	line_size = (uint32_t)(icache_config.line);
 	end_addr = start_addr + size - 1;
@@ -91,16 +89,14 @@ int32_t icache_invalidate_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 {
-	if (!icache_available()) return -1;
-
-	if ((size == 0) || (size > icache_config.capacity)) {
-		return -1;
-	}
-
 	uint32_t end_addr;
 	uint32_t line_size;
 	uint32_t status;
 	int32_t ercd = 0;
+
+	if ((size == 0) || (size > icache_config.capacity)) {
+		return -1;
+	}
 
 	line_size = (uint32_t)(icache_config.line);
 	end_addr = start_addr + size - 1;
@@ -121,6 +117,7 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 	return ercd;
 }
 
+#if ARC_FEATURE_ICACHE_FEATURE == 2
 /**
  * \brief directly write icache internal ram
  *
@@ -131,8 +128,6 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 {
-	if (!icache_available()) return -1;
-
 	if (_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
@@ -153,8 +148,6 @@ int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
  */
 int32_t icache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 {
-	if (!icache_available()) return -1;
-
 	if (_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
@@ -175,8 +168,6 @@ int32_t icache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
  */
 int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 {
-	if (!icache_available()) return -1;
-
 	if (!(_arc_aux_read(AUX_IC_CTRL) & IC_CTRL_INDIRECT_ACCESS)) {
 		return -1;
 	}
@@ -189,6 +180,7 @@ int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 	}
 	return 0;
  }
+ #endif
 
 /**
  * \brief invalidate multi data cache lines
@@ -199,8 +191,6 @@ int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
  */
 int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 {
-	if (!dcache_available()) return -1;
-
 	uint32_t end_addr;
 	uint32_t line_size;
 	uint32_t status;
@@ -238,15 +228,13 @@ int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t dcache_flush_mlines(uint32_t start_addr, uint32_t size)
 {
-	if (!dcache_available()) return -1;
+	uint32_t end_addr;
+	uint32_t line_size;
+	uint32_t status;
 
 	if ((size == 0) || (size > dcache_config.capacity)) {
 		return -1;
 	}
-
-	uint32_t end_addr;
-	uint32_t line_size;
-	uint32_t status;
 
 	line_size = (uint32_t)(dcache_config.line);
 	end_addr = start_addr + size - 1;
@@ -276,16 +264,14 @@ int32_t dcache_flush_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
 {
-	if (!dcache_available()) return -1;
-
-	if ((size == 0) || (size > dcache_config.capacity)) {
-		return -1;
-	}
-
 	uint32_t end_addr;
 	uint32_t line_size;
 	uint32_t status;
 	int32_t ercd = 0;
+
+	if ((size == 0) || (size > dcache_config.capacity)) {
+		return -1;
+	}
 
 	line_size = (uint32_t)(dcache_config.line);
 	end_addr = start_addr + size - 1;
@@ -317,11 +303,10 @@ int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
  */
 int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 {
-	if (!dcache_available()) return -1;
-
 	if (_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
+
 	_arc_aux_write(AUX_DC_RAM_ADDR, cache_addr);
 	_arc_aux_write(AUX_DC_TAG, tag);
 	_arc_aux_write(AUX_DC_DATA, data);
@@ -339,11 +324,10 @@ int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
  */
 int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 {
-	if (!dcache_available()) return -1;
-
 	if (_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS) {
 		return -1;
 	}
+
 	_arc_aux_write(AUX_DC_RAM_ADDR, cache_addr);
 	*tag = _arc_aux_read(AUX_DC_TAG);
 	*data = _arc_aux_read(AUX_DC_DATA);
@@ -361,11 +345,10 @@ int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
  */
 int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 {
-	if (!dcache_available()) return -1;
-
 	if (!(_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_INDIRECT_ACCESS)) {
 		return -1;
 	}
+
 	_arc_aux_write(AUX_DC_RAM_ADDR, mem_addr);
 	if(_arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
 		*tag = _arc_aux_read(AUX_DC_TAG);
@@ -373,6 +356,7 @@ int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 	} else {
 		return -1;	/* the specified memory is not in dcache */
 	}
+
 	return 0;
  }
 
