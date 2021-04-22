@@ -64,10 +64,6 @@ extern "C" {
 
 #define Inline	static __inline__		/* inline function */
 
-#ifndef __cplusplus				/* C++ supports asm */
-#define asm	__asm__				/* inline asm */
-#endif /* __cplusplus */
-
 #define Asm	__asm__ volatile		/* inline asm (no optimization) */
 
 
