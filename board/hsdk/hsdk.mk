@@ -54,9 +54,8 @@ COMMON_COMPILE_PREREQUISITES += $(BOARD_HSDK_DIR)/configs/core_compiler.mk
 include $(BOARD_HSDK_DIR)/configs/core_compiler.mk
 
 ## Board Related Settings
-OPENOCD_CFG_FILE = $(OPENOCD_SCRIPT_ROOT)/board/snps_hsdk.cfg
+OPENOCD_CFG_FILE = $(BOARD_HSDK_DIR)/configs/openocd.cfg
 
-OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 
 ## Build Rules
 # onchip ip object rules

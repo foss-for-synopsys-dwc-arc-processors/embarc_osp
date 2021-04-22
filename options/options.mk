@@ -70,6 +70,15 @@ JTAG ?= usb
 DIG_NAME ?=
 
 ##
+# Digilent JTAG Number Specify
+# This is especially useful if you have more than one
+# Digilent device connected to your host.
+# You can open digilent adept tool to see what digilent
+# jtag is connected
+##
+DIG_NUM ?=
+
+##
 # Digilent JTAG Choice Select(Only for Metaware)
 # Simple wrapper of -prop=dig_device_choice=N option of Metaware Debugger(mdb)
 ##

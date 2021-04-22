@@ -49,7 +49,5 @@ ifneq ($(wildcard $(CORE_DEBUG_MK)),)
 COMMON_COMPILE_PREREQUISITES += $(CORE_DEBUG_MK)
 include $(CORE_DEBUG_MK)
 else
-OPENOCD_CFG_FILE ?= $(OPENOCD_SCRIPT_ROOT)/board/snps_axs103_hs36.cfg
+OPENOCD_CFG_FILE ?= $(BOARD_CORE_DIR)/openocd/snps_axs103_hs36.cfg
 endif
-
-OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)

@@ -60,7 +60,6 @@ include $(BOARD_EMSDP_DIR)/$(VALID_BD_VER)/configs/core_compiler.mk
 
 ## Board Related Settings
 OPENOCD_CFG_FILE = $(BOARD_EMSDP_DIR)/openocd/snps_emsdp.cfg
-OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 
 
 ##

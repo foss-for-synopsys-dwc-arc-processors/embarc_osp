@@ -132,6 +132,7 @@ help :
 	@$(ECHO) '  SILENT=0|1                                  - Disable or enable message output'
 	@$(ECHO) '  V=0|1                                       - Disable or enable verbose compiling information'
 	@$(ECHO) '  DIG_NAME=xxx                                - Specify Digilent JTAG which to be used, most useful when more than one Digilent USB-JTAG plugged in'
+	@$(ECHO) '  DIG_NUM=xxx                                 - Specify device serial number which to be used for OpenOCD, most useful when more than one device plugged in'
 	@$(ECHO) '  HEAPSZ=xxx                                  - Specify heap size for program, xxx stands for size in bytes'
 	@$(ECHO) '  STACKSZ=xxx                                 - Specify stack size for program, xxx stands for size in bytes'
 	@$(ECHO) '  LINKER_SCRIPT_FILE=xxx                      - Specify customized linker script, xxx stands for the relative path of linker script file to current directory'
