@@ -25,8 +25,10 @@ SECTIONS {
 			. = . + IMAGE_HEAD_SIZE;
 		}
 		.init_bootstrap:{
+			_f_init = .;
 			*(.init_vector .init_vector.*)
 			*(.init_bootstrap .init_bootstrap.*)
+			_e_init = .;
 		}
 		.vector ALIGN(1024): {
 			_f_vector = .;
