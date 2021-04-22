@@ -394,6 +394,7 @@ typedef union {
 	uint32_t value;
 } aux_irq_ctrl_t;
 
+extern uint8_t _f_stack[];
 /**
  * \ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
  * \brief  initialize the exception and interrupt handling
@@ -437,6 +438,14 @@ void exc_int_init(void)
 
 	/** ipm should be set after cpu unlock restore to avoid reset of the status32 value */
 	arc_int_ipm_set((INT_PRI_MAX - INT_PRI_MIN));
+
+#if ARC_FEATURE_RGF_BANKED_REGS >= 16 && ARC_FEATURE_FIRQ == 1
+#if _STACKSIZE < 512
+#error "not enough stack size for irq and firq"
+#endif
+	/* top 256 bytes of stack used as firq stack */
+	arc_firq_stack_set(_f_stack + 256);
+#endif
 }
 
 /**
@@ -769,3 +778,37 @@ INT_HANDLER int_handler_get(const uint32_t intno)
 	return NULL;
 }
 #endif /* EMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT */
+
+/**
+ * @brief  Set the stack pointer for firq handling
+ *
+ * @param[in] firq_sp stack pointer
+ */
+void arc_firq_stack_set(uint8_t *firq_sp)
+{
+	uint32_t status = arc_lock_save();
+
+	Asm(
+/* only ilink will not be banked, so use ilink as channel
+ * between 2 banks
+ */
+		"mov %%ilink, %0		\n\t"
+		"lr %0, [%1]			\n\t"
+		"or %0, %0, %2			\n\t"
+		"kflag %0			\n\t"
+		"mov %%sp, %%ilink		\n\t"
+/* switch back to bank0, use ilink to avoid the pollution of
+ * bank1's gp regs.
+ */
+		"lr %%ilink, [%1]		\n\t"
+		"and %%ilink, %%ilink, %3	\n\t"
+		"kflag %%ilink			\n\t"
+		:
+		: "r" (firq_sp), "i" (AUX_STATUS32),
+		"i" (AUX_STATUS_RB(1)),
+		"i" (~AUX_STATUS_RB(7))
+		);
+
+	arc_unlock_restore(status);
+}
+/** @} end of group ARC_HAL_EXCEPTION_CPU */

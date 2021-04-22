@@ -191,6 +191,7 @@
 #define AUX_STATUS_BIT_IE		(31)	/*!< interrupt enable */
 #define AUX_STATUS_BIT_HALT		(0)	/*!< halt bit */
 #define AUX_STATUS_BIT_SC		(14)	/*!< stack check bit */
+#define AUX_STATUS_RB(x)		((x) << 16) /*!< register bank */
 
 /* masks correspond to STATUS32 bit-field */
 #define AUX_STATUS_MASK_AE		(1<<AUX_STATUS_BIT_AE)	/*!< mask of AUX_STATUS_BIT_AE */

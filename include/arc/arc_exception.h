@@ -538,6 +538,7 @@ extern void cpu_unlock_restore(const uint32_t status);
 extern int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler);
 extern INT_HANDLER int_handler_get(const uint32_t intno);
 extern int32_t int_secure_set(const uint32_t intno, uint32_t secure);
+extern void arc_firq_stack_set(uint8_t *firq_sp);
 
 #ifdef __cplusplus
 }
