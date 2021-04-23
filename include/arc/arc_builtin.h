@@ -81,6 +81,24 @@ extern "C" {
 
 #endif
 
+/* memory barrier */
+Inline void arc_mb(void)
+{
+	Asm("dmb 3\n" : : : "memory");
+}
+
+/* read memory barrier */
+Inline void arc_rmb(void)
+{
+	Asm("dmb 1\n" : : : "memory");
+}
+
+/* write memory barrier */
+Inline void arc_wmb(void)
+{
+	Asm("dmb 2\n" : : : "memory");
+}
+
 /**
  * @brief Read auxiliary register
  *

@@ -67,6 +67,9 @@ typedef enum {
 	ARC_CONNECT_CMD_MSG_SRAM_READ			= 0x28,
 	ARC_CONNECT_CMD_MSG_SRAM_READ_INC		= 0x29,
 	ARC_CONNECT_CMD_MSG_SRAM_READ_IMM		= 0x2a,
+	ARC_CONNECT_CMD_MSG_SRAM_SET_ECC_CTRL       = 0x2b,
+	ARC_CONNECT_CMD_MSG_SRAM_READ_ECC_CTRL      = 0x2c,
+
 
 	ARC_CONNECT_CMD_DEBUG_RESET			= 0x31,
 	ARC_CONNECT_CMD_DEBUG_HALT			= 0x32,
@@ -172,35 +175,81 @@ typedef enum {
 
 extern uint32_t arc_connect_check_core_id(void);
 
+/* inter-core interrupt related functions */
+extern void arc_connect_ici_generate(uint32_t core_id);
+extern void arc_connect_ici_ack(uint32_t core_id);
+extern uint32_t arc_connect_ici_read_status(uint32_t core_id);
+extern uint32_t arc_connect_ici_check_src(void);
+
+/* inter-core semaphore related functions */
+extern uint32_t arc_connect_ics_take(uint32_t sem_id);
+extern void arc_connect_ics_release(uint32_t sem_id);
+extern void arc_connect_ics_force_release(uint32_t sem_id);
+
+/* inter-core message related functions */
+extern void arc_connect_icm_addr_set(uint32_t addr);
+extern uint32_t arc_connect_icm_addr_read(void);
+extern void arc_connect_icm_addr_offset_set(uint32_t offset);
+extern uint32_t arc_connect_icm_addr_offset_read(void);
+extern void arc_connect_icm_msg_write(uint32_t data);
+extern void arc_connect_icm_msg_inc_write(uint32_t data);
+extern void arc_connect_icm_msg_imm_write(uint32_t addr, uint32_t data);
+extern uint32_t arc_connect_icm_msg_read(void);
+extern uint32_t arc_connect_icm_msg_inc_read(void);
+extern uint32_t arc_connect_icm_msg_imm_read(uint32_t addr);
+extern void arc_connect_icm_ecc_ctrl_set(uint32_t val);
+extern uint32_t arc_connect_icm_ecc_ctrl_read(void);
+
+/* inter-core debug related functions */
+extern void arc_connect_debug_reset(uint32_t cores);
+extern void arc_connect_debug_halt(uint32_t cores);
+extern void arc_connect_debug_run(uint32_t cores);
+extern void arc_connect_debug_mask_set(uint32_t cores, uint32_t mask);
+extern uint32_t arc_connect_debug_mask_read(uint32_t cores);
+extern void arc_connect_debug_select_set(uint32_t cores);
+extern uint32_t arc_connect_debug_select_read(void);
+extern uint32_t arc_connect_debug_en_read(void);
+extern uint32_t arc_connect_debug_cmd_read(void);
+extern uint32_t arc_connect_debug_core_read(void);
+
+/* global free-running counter(gfrc) related functions */
+extern void arc_connect_gfrc_clear(void);
+extern uint32_t arc_connect_gfrc_lo_read(void);
+extern uint32_t arc_connect_gfrc_hi_read(void);
+extern void arc_connect_gfrc_enable(void);
+extern void arc_connect_gfrc_disable(void);
+extern void arc_connect_gfrc_core_set(uint32_t core);
+extern uint32_t arc_connect_gfrc_halt_read(void);
+extern uint32_t arc_connect_gfrc_core_read(void);
+
+/* power domain management related functions */
+extern void arc_connect_pdm_pm_set(uint32_t group, uint32_t cmd);
+extern uint32_t arc_connect_pdm_pdstatus_read(uint32_t group);
+
+/* power management unit related functions */
+extern void arc_connect_pmu_pucnt_set(uint32_t cnt);
+extern uint32_t arc_connect_pmu_pucnt_read(void);
+extern void arc_connect_pmu_rstcnt_set(uint32_t cnt);
+extern uint32_t arc_connect_pmu_rstcnt_read(void);
+extern void arc_connect_pmu_pdccnt_set(uint32_t cnt);
+extern uint32_t arc_connect_pmu_pdccnt_read(void);
+
+/* interrupt distribute unit related functions */
 extern void arc_connect_idu_enable(void);
-
 extern void arc_connect_idu_disable(void);
-
 extern uint32_t arc_connect_idu_read_enable(void);
-
 extern void arc_connect_idu_set_mode(uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode);
-
 extern uint32_t arc_connect_idu_read_mode(uint32_t irq_num);
-
 extern void arc_connect_idu_set_dest(uint32_t irq_num, uint32_t target_core);
-
 extern uint32_t arc_connect_idu_read_dest(uint32_t irq_num);
-
 extern void arc_connect_idu_gen_cirq(uint32_t irq_num);
-
 extern void arc_connect_idu_ack_cirq(uint32_t irq_num);
-
 extern uint32_t arc_connect_idu_check_status(uint32_t irq_num);
-
 extern uint32_t arc_connect_idu_check_source(uint32_t irq_num);
-
 extern void arc_connect_idu_set_mask(uint32_t irq_num, uint32_t mask);
-
 extern uint32_t arc_connect_idu_read_mask(uint32_t irq_num);
-
 extern uint32_t arc_connect_idu_check_first(uint32_t irq_num);
-
-extern void arc_connect_init_isr(uint32_t core, uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode);
+extern void arc_connect_idu_config_irq(uint32_t core, uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode);
 
 #ifdef __cplusplus
 }

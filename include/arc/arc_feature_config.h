@@ -422,6 +422,17 @@
 #endif
 #endif
 
+/* multi processors/cores related features */
+#if  !defined(ARC_FEATURE_MP_NUM_CPUS)
+#define ARC_FEATURE_MP_NUM_CPUS 1
+#endif
+
+#if !defined(ARC_FEATURE_CONNECT_PRESENT)
+#if defined(core_config_connect_idu) && core_config_connect_idu > 1
+#define ARC_FEATURE_CONNECT_PRESENT 1
+#endif
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

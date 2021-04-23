@@ -85,6 +85,12 @@
 	sr r10, [MACRO_ARG(aux)]
 .endm
 
+/* macro to get the cpu id */
+.macro 	ASM_MACRO1(GET_CORE_ID, reg)
+	lr MACRO_ARG(reg), [AUX_IDENTITY]
+	xbfu MACRO_ARG(reg), MACRO_ARG(reg), 0xe8
+.endm
+
 /* macro to save accl regs */
 .macro SAVE_R58_R59
 #if ARC_FEATURE_FPU || ARC_FEATURE_DSP || ARC_FEATURE_MPU_OPTION_NUM > 6

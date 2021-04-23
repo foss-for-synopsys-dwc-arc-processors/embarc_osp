@@ -42,6 +42,7 @@
 
 #define __ASSEMBLY__
 #include "arc/arc.h"
+#include "arc/arc_asm_common.h"
 
 	.file "arc_startup.s"
 
@@ -116,6 +117,24 @@ _arc_reset_stage2:
 
 	mov	gp, _f_sdata	/* init small-data base register */
 	mov	fp, 0		/* init fp register */
+
+#if ARC_FEATURE_MP_NUM_CPUS > 1
+	GET_CORE_ID r0
+	breq r0, 0, _master_core_startup
+
+_slave_core_wait:
+	ld r1, [arc_cpu_wake_flag]
+	brne r0, r1, _slave_core_wait
+
+	ld sp, [arc_cpu_sp]
+	/* signal master core that slave core runs */
+	st 0, [arc_cpu_wake_flag]
+
+	j arc_slave_start
+
+_master_core_startup:
+#endif
+	mov	sp, _e_stack	/* init stack pointer */
 
 _arc_reset_stage3:
 _s3_copy_text:
