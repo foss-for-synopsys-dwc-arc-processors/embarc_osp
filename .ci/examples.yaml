@@ -1,0 +1,105 @@
+examples:
+    example.baremetal.blinky:
+        build_only: false
+    example.baremetal.arc_feature.udma:
+        build_only: false
+        platform_exclude: axs
+    example.baremetal.arc_feature.cache:
+        build_only: false
+        platform_exclude: axs nsim
+    example.baremetal.arc_feature.timer_interrupt:
+        build_only: false
+    example.baremetal.dma_spiflash:
+        build_only: true
+        platform_exclude:
+            emsk: 11 22
+    example.baremetal.imu_mpu9250:
+        build_only: true
+        platform_exclude: nsim
+    example.baremetal.ble_hm1x:
+        build_only: true
+        platform_exclude: nsim
+    example.baremetal.graphic_u8glib:
+        build_only: true
+        platform_exclude: nsim
+    example.baremetal.ble_rn4020:
+        build_only: true
+        platform_exclude: nsim
+    example.baremetal.openthread.ncp:
+        build_only: true
+        platform_exclude: nsim emsdp iotdk
+    example.baremetal.openthread.cli:
+        build_only: true
+        platform_exclude: emsdp axs nsim
+    example.baremetal.secureshield.secret_secure_sid:
+        skip: true
+        tags: secureshield
+        extra_args: USE_SECURESHIELD_APPL_GEN=1
+        build_only: true
+        platform_allow:
+            emsk: 23
+            nsim: 10
+            iotdk: 10
+    example.baremetal.secureshield.secret_secure:
+        skip: true
+        tags: secureshield
+        extra_args: USE_SECURESHIELD_APPL_GEN=1
+        build_only: true
+        platform_allow:
+            emsk: 23
+            iotdk: 10
+    example.baremetal.secureshield.secret_normal:
+        skip: true
+        tags: secureshield
+        extra_args: USE_SECURESHIELD_APPL_GEN=1
+        build_only: true
+        platform_allow:
+            emsk: 23
+            iotdk: 10
+    example.baremetal.secureshield.test_case:
+        tags: secureshield
+        build_only: true
+        platform_allow:
+            emsk: 23
+            nsim: 10
+            iotdk: 10
+    example.baremetal.axs103:
+        build_only: true
+        platform_allow: axs
+    example.baremetal.bootloader:
+        build_only: true
+        platform_exclude: emsdp hsdk axs nsim
+    example.freertos.kernel_secure:
+        build_only: true
+        platform_allow:
+            emsk: 23
+    example.freertos.sec.mbedtls.ssl.client2:
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.sec.mbedtls.ssl.server2:
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.sec.mbedtls.dtls.client:
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.sec.mbedtls.dtls.server:
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.net.httpserver:
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.net.ntshell:
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.esp8266_wifi:
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.iot.coap.coap_server:
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.iot.lwm2m.lwm2m_client:
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.iot.lwm2m.lwm2m_server:
+        build_only: true
+        platform_exclude: nsim
