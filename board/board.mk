@@ -54,6 +54,12 @@ BOARD_ID = $(call uc,BOARD_$(VALID_BOARD))
 COMMON_COMPILE_PREREQUISITES += $(BOARDS_ROOT)/$(VALID_BOARD)/$(VALID_BOARD).mk
 include $(BOARDS_ROOT)/$(VALID_BOARD)/$(VALID_BOARD).mk
 
+ifneq ($(strip $(DIG_NUM)), )
+OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -c 'set _FTDI_SERIAL $(DIG_NUM)' -f $(OPENOCD_CFG_FILE)
+else
+OPENOCD_OPTIONS  = -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
+endif
+
 ##
 # \brief	add defines for board
 ##

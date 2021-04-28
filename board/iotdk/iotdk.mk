@@ -56,7 +56,6 @@ include $(BOARD_IOTDK_DIR)/configs/core_compiler.mk
 ## Board Related Settings, GNU is not supported
 OPENOCD_CFG_FILE ?= $(BOARD_IOTDK_DIR)/configs/openocd/snps_iotdk.cfg
 
-OPENOCD_OPTIONS ?= -s $(OPENOCD_SCRIPT_ROOT) -f $(OPENOCD_CFG_FILE)
 
 ## hardware debug options
 # debug speed config, iotdk starts as 16 Mhz, so the max jtag freq. is
