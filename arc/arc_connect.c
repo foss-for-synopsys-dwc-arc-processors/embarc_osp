@@ -30,7 +30,7 @@
 #include "arc/arc_connect.h"
 #include "arc/arc_mp.h"
 
-static ARC_SPINLOCK arc_connect_lock;
+static ARC_SPINLOCK_T arc_connect_lock;
 
 /**
  * \brief execute arc connect cmd
@@ -38,7 +38,7 @@ static ARC_SPINLOCK arc_connect_lock;
  * \param op, pointer to arc connect operation
  * \return result of arc connect cmd
  */
-static uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP *op)
+static uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP_T *op)
 
 {
 	uint32_t regval = 0;
@@ -81,7 +81,7 @@ static uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP *op)
  */
 uint32_t arc_connect_check_core_id(void)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_CHECK_CORE_ID, 0);
 
@@ -94,7 +94,7 @@ uint32_t arc_connect_check_core_id(void)
  */
 void arc_connect_idu_enable(void)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_ONLY_OP_SET(&op, ARC_CONNECT_CMD_IDU_ENABLE, 0);
 
@@ -107,7 +107,7 @@ void arc_connect_idu_enable(void)
  */
 void arc_connect_idu_disable(void)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_ONLY_OP_SET(&op, ARC_CONNECT_CMD_IDU_DISABLE, 0);
 
@@ -121,7 +121,7 @@ void arc_connect_idu_disable(void)
  */
 uint32_t arc_connect_idu_read_enable(void)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_READ_ENABLE, 0);
 
@@ -137,7 +137,7 @@ uint32_t arc_connect_idu_read_enable(void)
  */
 void arc_connect_idu_set_mode(uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_WDATA_OP_SET(&op, ARC_CONNECT_CMD_IDU_SET_MODE, \
 		irq_num, (distri_mode|(trigger_mode<<4)));
@@ -153,7 +153,7 @@ void arc_connect_idu_set_mode(uint32_t irq_num, uint16_t trigger_mode, uint16_t 
  */
 uint32_t arc_connect_idu_read_mode(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_READ_ENABLE, irq_num);
 
@@ -168,7 +168,7 @@ uint32_t arc_connect_idu_read_mode(uint32_t irq_num)
  */
 void arc_connect_idu_set_dest(uint32_t irq_num, uint32_t target_core)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_WDATA_OP_SET(&op, ARC_CONNECT_CMD_IDU_SET_DEST, irq_num, target_core);
 
@@ -183,7 +183,7 @@ void arc_connect_idu_set_dest(uint32_t irq_num, uint32_t target_core)
  */
 uint32_t arc_connect_idu_read_dest(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_READ_DEST, irq_num);
 
@@ -197,7 +197,7 @@ uint32_t arc_connect_idu_read_dest(uint32_t irq_num)
  */
 void arc_connect_idu_gen_cirq(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_ONLY_OP_SET(&op, ARC_CONNECT_CMD_IDU_GEN_CIRQ, irq_num);
 
@@ -211,7 +211,7 @@ void arc_connect_idu_gen_cirq(uint32_t irq_num)
  */
 void arc_connect_idu_ack_cirq(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_ONLY_OP_SET(&op, ARC_CONNECT_CMD_IDU_ACK_CIRQ, irq_num);
 
@@ -226,7 +226,7 @@ void arc_connect_idu_ack_cirq(uint32_t irq_num)
  */
 uint32_t arc_connect_idu_check_status(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_CHECK_STATUS, irq_num);
 
@@ -241,7 +241,7 @@ uint32_t arc_connect_idu_check_status(uint32_t irq_num)
  */
 uint32_t arc_connect_idu_check_source(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_CHECK_SOURCE, irq_num);
 
@@ -256,7 +256,7 @@ uint32_t arc_connect_idu_check_source(uint32_t irq_num)
  */
 void arc_connect_idu_set_mask(uint32_t irq_num, uint32_t mask)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_WDATA_OP_SET(&op, ARC_CONNECT_CMD_IDU_SET_MASK, irq_num, mask);
 
@@ -271,7 +271,7 @@ void arc_connect_idu_set_mask(uint32_t irq_num, uint32_t mask)
  */
 uint32_t arc_connect_idu_read_mask(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_READ_MASK, irq_num);
 
@@ -286,7 +286,7 @@ uint32_t arc_connect_idu_read_mask(uint32_t irq_num)
  */
 uint32_t arc_connect_idu_check_first(uint32_t irq_num)
 {
-	ARC_CONNECT_OP op;
+	ARC_CONNECT_OP_T op;
 
 	ARC_CONNECT_CMD_RETURN_OP_SET(&op, ARC_CONNECT_CMD_IDU_CHECK_FIRST, irq_num);
 

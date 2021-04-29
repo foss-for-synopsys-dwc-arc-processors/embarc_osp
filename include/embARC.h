@@ -46,9 +46,21 @@
 #include "arc/arc_builtin.h"
 #include "arc/arc_timer.h"
 #include "arc/arc_exception.h"
+#if ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT
 #include "arc/arc_cache.h"
+#endif
+#if ARC_FEATURE_DMAC_PRESENT
 #include "arc/arc_udma.h"
+#endif
+#if ARC_FEATURE_MPU_PRESENT
 #include "arc/arc_mpu.h"
+#endif
+#if ARC_FEATURE_CONNECT_PRESENT
+#include "arc/arc_connect.h"
+#endif
+#if ARC_FEATURE_MP_NUM_CPUS > 1
+#include "arc/arc_mp.h"
+#endif
 
 #include "board.h"
 

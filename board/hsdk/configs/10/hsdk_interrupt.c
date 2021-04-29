@@ -352,9 +352,9 @@ void hsdk_interrupt_init(void)
 		if ( (i == HSDC_CREG_UPDATE_ISR) || (i == HSDC_CGU_PLL_LOCK_ISR) \
 			|| (i == HSDC_CGU_PLL_UNLOCK_ISR)  || (i == HSDC_CGU_PLL_LOCKERROR_ISR) \
 			|| (i == HSDC_TUNNEL_ISR) ) {
-			arc_connect_init_isr(1<<core, i-HSDK_MAX_NUM_EXCP, ARC_CONNECT_INTRPT_TRIGGER_EDGE, ARC_CONNECT_DISTRI_MODE_FIRST_ACK);
+			arc_connect_idu_config_irq(1 << core, i - HSDK_MAX_NUM_EXCP, ARC_CONNECT_INTRPT_TRIGGER_EDGE, ARC_CONNECT_DISTRI_MODE_FIRST_ACK);
 		} else {
-			arc_connect_init_isr(1<<core, i-HSDK_MAX_NUM_EXCP, ARC_CONNECT_INTRPT_TRIGGER_LEVEL, ARC_CONNECT_DISTRI_MODE_FIRST_ACK);
+			arc_connect_idu_config_irq(1 << core, i - HSDK_MAX_NUM_EXCP, ARC_CONNECT_INTRPT_TRIGGER_LEVEL, ARC_CONNECT_DISTRI_MODE_FIRST_ACK);
 		}
 	}
 }

@@ -55,6 +55,17 @@
 #endif
 #endif
 
+#define ARC_FEATURE_ARC_EM          0x4
+#define ARC_FEATURE_ARC_HS          0x5
+
+#if !defined(ARC_FEATURE_ARC_FAMILY)
+#if defined(core_config_cir_identity_family)
+#define ARC_FEATURE_ARC_FAMILY      core_config_cir_identity_family
+#else
+#define ARC_FEATURE_ARC_FAMILY      ARC_FEATURE_ARC_EM
+#endif
+#endif
+
 /** ARC CPU Clock Frequency in Hz unit */
 #if !defined(ARC_FEATURE_CPU_CLOCK_FREQ)
 #if defined(core_config_clock_speed)

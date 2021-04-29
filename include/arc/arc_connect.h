@@ -37,8 +37,6 @@
 #ifndef _ARC_CONNECT_H_
 #define _ARC_CONNECT_H_
 
-#include "embARC_toolchain.h"
-#include "arc/arc.h"
 #include "arc/arc_builtin.h"
 
 #ifdef __cplusplus
@@ -130,25 +128,19 @@ typedef struct arc_connect_op {
 	ARC_CONNECT_CMD_TYPE type;
 	uint32_t param;
 	uint32_t wdata;
-} ARC_CONNECT_OP;
+} ARC_CONNECT_OP_T;
 
-typedef enum {
-	ARC_CONNECT_INTRPT_TRIGGER_LEVEL = 0,
-	ARC_CONNECT_INTRPT_TRIGGER_EDGE = 1
-} ARC_CONNECT_INTRPT_TRIGGER_MODE;
+#define ARC_CONNECT_INTRPT_TRIGGER_LEVEL    0
+#define ARC_CONNECT_INTRPT_TRIGGER_EDGE     1
 
-typedef enum {
-	ARC_CONNECT_DISTRI_MODE_ROUND_ROBIN = 0,
-	ARC_CONNECT_DISTRI_MODE_FIRST_ACK = 1,
-	ARC_CONNECT_DISTRI_ALL_DEST = 2
-} ARC_CONNECT_DISTRI_MODE;
+#define ARC_CONNECT_DISTRI_MODE_ROUND_ROBIN  0
+#define ARC_CONNECT_DISTRI_MODE_FIRST_ACK    1
+#define ARC_CONNECT_DISTRI_ALL_DEST          2
 
-typedef enum {
-	ARC_CONNECT_CORE_0 = 1,
-	ARC_CONNECT_CORE_1 = 2,
-	ARC_CONNECT_CORE_2 = 4,
-	ARC_CONNECT_CORE_3 = 8
-} ARC_CONNECT_CORE_MASK;
+#define ARC_CONNECT_CORE_0  1
+#define ARC_CONNECT_CORE_1  2
+#define ARC_CONNECT_CORE_2  4
+#define ARC_CONNECT_CORE_3  8
 
 #define ARC_CONNECT_OP_SET(op, cmd_v, type_v, param_v, wdata_v)			{ \
 		(op)->cmd = (ARC_CONNECT_CMD)(cmd_v);				\
