@@ -20,15 +20,9 @@ fi
 
 {
     pip install --upgrade pip || die
-    [ "${TRAVIS}" == "true" ] && {
-        pip install Sphinx || die
-        pip install breathe || die
-        pip install recommonmark || die
-        pip install sphinx_rtd_theme || die   
-    }
-    pip install GitPython || die
     pip install embarc_cli || die
-    pip install configparser || die
-    pip install requests || die
-    pip install XlsxWriter || die
+    pip install GitPython || die
+    pip install psutil || die
+    pip install PyYAML || die
+    pip install pyserial || die
 }
