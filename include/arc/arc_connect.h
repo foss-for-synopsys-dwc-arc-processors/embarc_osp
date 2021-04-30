@@ -39,6 +39,7 @@
 
 #include "arc/arc_builtin.h"
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -246,5 +247,6 @@ extern void arc_connect_idu_config_irq(uint32_t core, uint32_t irq_num, uint16_t
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* _ARC_CONNECT_H_*/

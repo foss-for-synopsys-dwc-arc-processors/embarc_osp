@@ -47,6 +47,7 @@
 #include "embARC_toolchain.h"
 #include "arc/arc.h"
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -81,19 +82,28 @@ extern "C" {
 
 #endif
 
-/* memory barrier */
+/**
+ * \brief do a memory barrier
+ *
+ */
 Inline void arc_mb(void)
 {
 	Asm("dmb 3\n" : : : "memory");
 }
 
-/* read memory barrier */
+/**
+ * \brief read memory barrier
+ *
+ */
 Inline void arc_rmb(void)
 {
 	Asm("dmb 1\n" : : : "memory");
 }
 
-/* write memory barrier */
+/**
+ * \brief write memory barrier
+ *
+ */
 Inline void arc_wmb(void)
 {
 	Asm("dmb 2\n" : : : "memory");
@@ -371,6 +381,8 @@ Inline uint32_t arc_core_id(void)
 #define OVERRIDE_ARC_HAL_BUILTIN_H
 #include "secureshield_overrides.h"
 #endif
+
+#endif  /* __ASSEMBLY__ */
 
 /** @} */
 #endif /* _ARC_HAL_BUILTIN_H_ */

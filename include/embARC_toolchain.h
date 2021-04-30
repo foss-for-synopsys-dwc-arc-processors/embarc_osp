@@ -42,11 +42,10 @@
 #ifndef _EMBARC_TOOLCHAIN_H_
 #define _EMBARC_TOOLCHAIN_H_
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#ifndef __ASSEMBLY__
 
 #include <stdint.h>	/* C99 standard lib */
 #include <limits.h>	/* C99 standard lib */
@@ -108,12 +107,12 @@ extern "C" {
 #else
 #error "unsupported toolchain"
 #endif
-#endif /* __ASSEMBLY__ */
 
 
 #ifdef __cplusplus
 }
 #endif
+#endif /* __ASSEMBLY__ */
 
 #endif /* _EMBARC_TOOLCHAIN_H_ */
 /** }@ */

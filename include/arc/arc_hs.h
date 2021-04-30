@@ -109,6 +109,8 @@
 
 
 /** \todo add hs series specific definitions here */
+
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -116,6 +118,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* _ARC_HAL_HS_H_ */
 /** }@*/

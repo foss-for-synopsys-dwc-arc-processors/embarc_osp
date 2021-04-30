@@ -37,6 +37,7 @@
 #ifndef _EMBARC_ASSERT_H_
 #define _EMBARC_ASSERT_H_
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -91,5 +92,6 @@ Inline void embARC_halt(const char *exptext, const char *file, uint32_t line)
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* DEBUG_H_ */

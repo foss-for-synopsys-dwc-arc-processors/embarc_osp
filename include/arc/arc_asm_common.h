@@ -40,6 +40,7 @@
 
 #include "arc/arc.h"
 
+#ifdef __ASSEMBLY__
 /* the assembly macro definitions in ARC GNU and MWDT are
  * different, so need different processing
  */
@@ -704,5 +705,6 @@
 
 #endif /* ARC_FEATURE_SEC_PRESENT */
 
+#endif  /* __ASSEMBLY__ */
 #endif	/* _ARC_HAL_ASM_COMMON_H */
 /** @endcond */

@@ -98,7 +98,7 @@
 #define TIMER_CTRL_IP		(1 << 3)	/*!< interrupt pending */
 
 /** @} */
-
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -121,6 +121,7 @@ extern void secure_timer_init(void);
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif	/* _ARC_HAL_TIMER_H_ */
 /** }@*/

@@ -54,17 +54,47 @@
 #include "os_hal_inc.h"
 #endif
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#ifndef CORE_DMAC_INTERNAL_VERSION
+/** Version of the DMA controller */
+#define CORE_DMAC_INTERNAL_VERSION      2
+#endif
+
+#ifndef DMA_MULTI_IRQ
+/** Multiple interrupts for DMA */
+#define DMA_MULTI_IRQ                   0
+#endif
+
+#ifndef DMA_IRQ_PRIO
+/** DMA IRQ priority */
+#define DMA_IRQ_PRIO                    (INT_PRI_MIN)
+#endif
+
+#ifndef DMA_IRQ_NUM_START
+/** DMA IRQ start vector */
+#define DMA_IRQ_NUM_START               20
+#endif
+
 #ifndef DMA_ALL_CHANNEL_NUM
 /*!< Number of all DMA channels */
-#define DMA_ALL_CHANNEL_NUM			CORE_DMAC_CHANNELS
+#ifdef  CORE_DMAC_CHANNELS
+#define DMA_ALL_CHANNEL_NUM             CORE_DMAC_CHANNELS
+#else
+#define DMA_ALL_CHANNEL_NUM             2
 #endif
+#endif
+
 #ifndef DMA_REGISTER_CHANNEL_NUM
 /*!< Number of all aux-register based DMA channels */
-#define DMA_REGISTER_CHANNEL_NUM		CORE_DMAC_REGISTERS
+#ifdef  CORE_DMAC_REGISTERS
+#define DMA_REGISTER_CHANNEL_NUM        CORE_DMAC_REGISTERS
+#else
+#define DMA_REGISTER_CHANNEL_NUM        0
+#endif
 #endif
 
 /*!< Mask of all DMA channels at the most */
@@ -471,6 +501,7 @@ extern int32_t dmac_clear_channel(dma_channel_t *dma_chn);
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* _ARC_UDMA_H_ */
 /** }@*/

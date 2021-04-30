@@ -72,6 +72,11 @@
 #define DC_CTRL_OP_SUCCEEDED			0x4	/*!< data cache operation succeeded */
 /** @} */
 
+#ifndef __ASSEMBLY__
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * \name instruction cache related inline function
  * @{
@@ -275,10 +280,6 @@ Inline void dcache_access_mode(uint32_t mode)
 
 /** @} */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 /**
  * \name declarations of cache related functions
  * @{
@@ -299,6 +300,7 @@ extern void arc_cache_init(void);
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 /** @} */
 #endif	/* _ARC_HAL_CACHE_H_ */

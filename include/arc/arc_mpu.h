@@ -129,6 +129,11 @@
 #define REGION_2G       0xE02
 #define REGION_4G       0xE03
 
+#ifndef __ASSEMBLY__
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Region definition data structure */
 typedef struct arc_mpu_region {
 	/* Region Name */
@@ -164,5 +169,10 @@ extern void arc_mpu_region(uint32_t index, uint32_t base, uint32_t size,
 extern void arc_mpu_default(uint32_t region_attr);
 extern int32_t arc_mpu_in_region(uint32_t index, uint32_t start, uint32_t size);
 extern int32_t arc_mpu_probe(uint32_t addr);
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* _ARC_HAL_MPU_H_ */

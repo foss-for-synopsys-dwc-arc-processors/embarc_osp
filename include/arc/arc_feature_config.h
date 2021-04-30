@@ -444,6 +444,7 @@
 #endif
 #endif
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -457,6 +458,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* _ARC_FEATURE_CONFIG_H_ */
 

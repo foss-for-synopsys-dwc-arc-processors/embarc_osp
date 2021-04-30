@@ -45,6 +45,7 @@
 #include <stdint.h>
 #include "arc/arc_builtin.h"
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -148,6 +149,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* _EMBARC_ERROR_H_ */
 /** @} end of group EMBARC_ERROR */

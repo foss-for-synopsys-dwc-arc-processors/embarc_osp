@@ -37,6 +37,7 @@
 #ifndef _EMBARC_DEBUG_H_
 #define _EMBARC_DEBUG_H_
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -97,5 +98,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif /* DEBUG_H_ */

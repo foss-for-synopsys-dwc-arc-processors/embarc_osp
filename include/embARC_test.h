@@ -56,6 +56,7 @@
 #ifndef _EMBARC_TEST_H_
 #define _EMBARC_TEST_H_
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -167,6 +168,7 @@ extern int unit_test_run(const char * test_suite);
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #endif	/*_EMBARC_TEST_H_ */
 /** @} end of group EMBARC_TEST */

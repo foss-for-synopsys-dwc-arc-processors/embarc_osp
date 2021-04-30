@@ -476,23 +476,22 @@
 
 /** @} */
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifndef __ASSEMBLY__
 /* add type definition and function declaration here */
 /**
  * \brief check whether process is in user mode
  * \retval 0 kernel mode, 1 user mode
  */
 extern unsigned int arc_in_user_mode(void);
-#endif	/* assembly */
 
 #ifdef __cplusplus
 }
 #endif
-
+#endif	/* assembly */
 
 #endif	/* _ARC_HAL_CORE_H_ */
 

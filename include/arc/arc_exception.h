@@ -41,6 +41,7 @@
 #include "arc/arc.h"
 #include "arc/arc_builtin.h"
 
+#ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -541,6 +542,7 @@ extern void arc_firq_stack_set(uint8_t *firq_sp);
 #ifdef __cplusplus
 }
 #endif
+#endif  /* __ASSEMBLY__ */
 
 #if defined(LIB_SECURESHIELD) && defined(LIB_SECURESHIELD_OVERRIDES) && (SECURESHIELD_VERSION == 1)
 #define OVERRIDE_ARC_HAL_EXCEPTION_H
