@@ -59,22 +59,25 @@ extern void _exit_loop();
 #define ASSERT_FORMAT "%s: Line %d: assert(%s) failed.\r\n"
 #define HALT_FORMAT "%s: Line %d: halt reason:"
 
-
+/**
+ * \brief abort current execution
+ * processor will jump to _exit_loop
+ */
 Inline void embARC_abort(void)
 {
 	_exit_loop();
 }
 
+/**
+ * \brief output assert message
+ *
+ * \param exptext  expression text
+ * \param file file name
+ * \param line line number
+ */
 Inline void embARC_assert(const char *exptext, const char *file, uint32_t line)
 {
 	EMBARC_PRINTF(ASSERT_FORMAT, file, line, exptext);
-	_exit_loop();
-}
-
-Inline void embARC_halt(const char *exptext, const char *file, uint32_t line)
-{
-	EMBARC_PRINTF(HALT_FORMAT, file, line);
-	EMBARC_PRINTF("%s\r\n", exptext);
 	_exit_loop();
 }
 
@@ -86,7 +89,7 @@ Inline void embARC_halt(const char *exptext, const char *file, uint32_t line)
 			EMBARC_PRINTF(HALT_FORMAT, __FILE__, __LINE__); \
 			EMBARC_PRINTF(fmt, ##__VA_ARGS__); \
 			EMBARC_PRINTF("\r\n"); \
-			Asm("flag 1"); \
+			_exit_loop(); \
 		})
 
 #ifdef __cplusplus
