@@ -61,6 +61,9 @@
 #if ARC_FEATURE_MP_NUM_CPUS > 1
 #include "arc/arc_mp.h"
 #endif
+#if ARC_FEATURE_XY_MEM
+#include "arc/arc_xy_agu.h"
+#endif
 
 #include "board.h"
 

@@ -451,7 +451,6 @@
 #define AUX_DSP_FFT_CTRL		(0x59e)
 #define AUX_DSP_CTRL 			(0x59f)
 
-
 /** @} */
 
 /**
@@ -473,6 +472,43 @@
 #define AUX_SMART_CONTROL		(0x700) /*!< SmaRT Control Register, SMART_CONTROL */
 #define AUX_SMART_DATA			(0x701) /*!< SmaRT Data Register, SMART_DATA */
 
+/** @} */
+
+/**
+ * \name Address Generation Unit (AGU) related auxiliary register
+ * @{
+ */
+#define AUX_AGU_BUILD                   (0xcc)
+#define AUX_AGU_AP0                     (0x5c0)
+#define AUX_AGU_AP1                     (0x5c1)
+#define AUX_AGU_AP2                     (0x5c2)
+#define AUX_AGU_AP3                     (0x5c3)
+#define AUX_AGU_AP4                     (0x5c4)
+#define AUX_AGU_AP5                     (0x5c5)
+#define AUX_AGU_AP6                     (0x5c6)
+#define AUX_AGU_AP7                     (0x5c7)
+#define AUX_AGU_AP8                     (0x5c8)
+#define AUX_AGU_AP9                     (0x5c9)
+#define AUX_AGU_APA                     (0x5ca)
+#define AUX_AGU_APB                     (0x5cb)
+
+#define AUX_AGU_OS0                     (0x5d0)
+#define AUX_AGU_OS1                     (0x5d1)
+#define AUX_AGU_OS2                     (0x5d2)
+#define AUX_AGU_OS3                     (0x5d3)
+#define AUX_AGU_OS4                     (0x5d4)
+#define AUX_AGU_OS5                     (0x5d5)
+#define AUX_AGU_OS6                     (0x5d6)
+#define AUX_AGU_OS7                     (0x5d7)
+
+#define AUX_AGU_MOD0                    (0x5e0)
+#define AUX_AGU_MOD1                    (0x5e1)
+#define AUX_AGU_MOD2                    (0x5e2)
+#define AUX_AGU_MOD3                    (0x5e3)
+#define AUX_AGU_MOD4                    (0x5e4)
+#define AUX_AGU_MOD5                    (0x5e5)
+#define AUX_AGU_MOD6                    (0x5e6)
+#define AUX_AGU_MOD7                    (0x5e7)
 
 /** @} */
 
