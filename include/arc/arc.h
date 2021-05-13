@@ -175,6 +175,7 @@
 #define AUX_SEC_STAT_BIT_IRM		(3)
 #define AUX_SEC_STAT_BIT_SUE		(4)
 #define AUX_SEC_STAT_BIT_NIC		(5)
+#define AUX_SEC_STAT_BIT_ERM    (31)
 
 /**
  * \name status register STATUS32
@@ -184,22 +185,34 @@
 #define AUX_STATUS32_P0			(0xb)
 
 /* STATUS32 bit-field definition */
-#define AUX_STATUS_BIT_AE		(5)	/*!< processor is in an exception */
-#define AUX_STATUS_BIT_DE		(6)	/*!< delayed branch is pending */
-#define AUX_STATUS_BIT_U		(7)	/*!< user mode */
-#define AUX_STATUS_BIT_L		(12)	/*!< zero-overhead loop enable */
-#define AUX_STATUS_BIT_IE		(31)	/*!< interrupt enable */
-#define AUX_STATUS_BIT_HALT		(0)	/*!< halt bit */
-#define AUX_STATUS_BIT_SC		(14)	/*!< stack check bit */
-#define AUX_STATUS_RB(x)		((x) << 16) /*!< register bank */
+#define AUX_STATUS_BIT_AE       (5)             /*!< processor is in an exception */
+#define AUX_STATUS_BIT_DE       (6)             /*!< delayed branch is pending */
+#define AUX_STATUS_BIT_U        (7)             /*!< user mode */
+#define AUX_STATUS_BIT_L        (12)            /*!< zero-overhead loop enable */
+#define AUX_STATUS_BIT_IE       (31)            /*!< interrupt enable */
+#define AUX_STATUS_BIT_HALT     (0)             /*!< halt bit */
+#define AUX_STATUS_BIT_SC       (14)            /*!< stack check bit */
+#define AUX_STATUS_BIT_AD       (19)            /*!< alignment check bit */
+#define AUX_STATUS_BIT_US       (20)            /*!< user sleep mode enable bit */
+#define AUX_STATUS_RB(x)        ((x) << 16)     /*!< register bank */
 
 /* masks correspond to STATUS32 bit-field */
-#define AUX_STATUS_MASK_AE		(1<<AUX_STATUS_BIT_AE)	/*!< mask of AUX_STATUS_BIT_AE */
-#define AUX_STATUS_MASK_DE		(1<<AUX_STATUS_BIT_DE)	/*!< mask of AUX_STATUS_BIT_DE */
-#define AUX_STATUS_MASK_U		(1<<AUX_STATUS_BIT_U)	/*!< mask of AUX_STATUS_BIT_U */
-#define AUX_STATUS_MASK_L		(1<<AUX_STATUS_BIT_L)	/*!< mask of AUX_STATUS_BIT_L */
-#define AUX_STATUS_MASK_IE		(1<<AUX_STATUS_BIT_IE)	/*!< mask of AUX_STATUS_BIT_IE */
-#define AUX_STATUS_MASK_HALT		(1<<AUX_STATUS_BIT_HALT) /*!< mask of AUX_STATUS_BIT_HALT */
+#define AUX_STATUS_MASK_AE      (1 << AUX_STATUS_BIT_AE)        /*!< mask of AUX_STATUS_BIT_AE */
+#define AUX_STATUS_MASK_DE      (1 << AUX_STATUS_BIT_DE)        /*!< mask of AUX_STATUS_BIT_DE */
+#define AUX_STATUS_MASK_U       (1 << AUX_STATUS_BIT_U)         /*!< mask of AUX_STATUS_BIT_U */
+#define AUX_STATUS_MASK_L       (1 << AUX_STATUS_BIT_L)         /*!< mask of AUX_STATUS_BIT_L */
+#define AUX_STATUS_MASK_IE      (1 << AUX_STATUS_BIT_IE)        /*!< mask of AUX_STATUS_BIT_IE */
+#define AUX_STATUS_MASK_HALT    (1 << AUX_STATUS_BIT_HALT)      /*!< mask of AUX_STATUS_BIT_HALT */
+#define AUX_STATUS_MASK_SC      (1 << AUX_STATUS_BIT_SC)        /*!< mask of AUX_STATUS_BIT_SC */
+#define AUX_STATUS_MASK_AD      (1 << AUX_STATUS_BIT_AD)        /*!< mask of AUX_STATUS_BIT_AD */
+#define AUX_STATUS_MASK_US      (1 << AUX_STATUS_BIT_US)        /*!< mask of AUX_STATUS_BIT_US */
+
+#ifdef ARC_FEATURE_UNALIGNED
+#define STATUS32_RESET_VALUE    (AUX_STATUS_MASK_AD | AUX_STATUS_MASK_US)
+#else
+#define STATUS32_RESET_VALUE    (AUX_STATUS_MASK_US)
+#endif
+
 /** @} */
 
 /**
@@ -397,6 +410,44 @@
 #define AUX_DC_TAG			(0x59)	/*!< data cache tag access */
 #define AUX_DC_XTAG			(0x5a)	/*!< data cache secure bit tag */
 #define AUX_DC_DATA			(0x5b)	/*!< data cache data access */
+
+#define AUX_SLC_CACHE_CONFIG     (0x901)     /*!< configuration information for L2 Cache */
+#define AUX_SLC_CACHE_ECC_CONFIG (0x902)     /*!< configuration information for L2 Cache ECC configurations */
+#define AUX_SLC_CTRL             (0x903)     /*!< L2 Cache control register */
+#define AUX_SLC_FLUSH            (0x904)     /*!< L2 Cache flush register */
+#define AUX_SLC_INV              (0x905)     /*!< L2 Cache invalidate register */
+#define AUX_SLC_LINE_LOCK        (0x90E)     /*!< L2 Cache Line Lock Register */
+#define AUX_SLC_LINE_LOCK1       (0x90F)     /*!< L2 Cache Line Lock Register for upper bits */
+#define AUX_SLC_LINE_INV         (0x910)     /*!< L2 Cache Line Invalidate register */
+#define AUX_SLC_LINE_INV1        (0x911)     /*!< L2 Cache Line Invalidate register for upper bits */
+#define AUX_SLC_LINE_FLUSH       (0x912)     /*!< L2 Cache Line Flush register */
+#define AUX_SLC_LINE_FLUSH1      (0x913)     /*!< L2 Cache Line Flush register for upper bits */
+#define AUX_SLC_RGN_START        (0x914)     /*!< L2 Cache Line Operation Start Address Register */
+#define AUX_SLC_RGN_START1       (0x915)     /*!< L2 Cache Line Operation Start Address Register for upper bits */
+#define AUX_SLC_RGN_END          (0x916)     /*!< L2 Cache Line Operation End Address Register */
+#define AUX_SLC_RGN_END1         (0x917)     /*!< L2 Cache Line Operation End Address Register for upper bits */
+#define AUX_SLC_LINE_ADDR        (0x918)     /*!< L2 Cache RAM Access Register */
+#define AUX_SLC_LINE_ADDR1       (0x919)     /*!< L2 Cache RAM Access Register */
+#define AUX_SLC_DIRECT_IDX       (0x91A)     /*!< L2 Cache Direct Index Register */
+#define AUX_SLC_TAG_DATA         (0x91B)     /*!< L2 Cache TAG Register */
+#define AUX_SLC_TAG_DATA1        (0x91C)     /*!< L2 Cache TAG Register */
+#define AUX_SLC_STATUS_DATA      (0x91D)     /*!< L2 Cache Status Register */
+#define AUX_SLC_DATA0            (0x91F)     /*!< L2 Cache Data Register */
+#define AUX_SLC_DATA1            (0x920)
+#define AUX_SLC_DATA2            (0x921)
+#define AUX_SLC_DATA3            (0x922)
+#define AUX_SLC_FAULT_ADDR       (0x923)     /*!< L2 Cache Fault Address Register */
+#define AUX_SLC_FAULT_ADDR1      (0x924)     /*!< L2 Cache Fault Address Register for upper bits */
+#define AUX_SLC_FAULT_STAT       (0x925)     /*!< L2 Cache Fault Status Register */
+#define AUX_SLC_PM_CMD           (0x926)     /*!< L2 Cache Performance Monitor Command Register */
+#define AUX_SLC_PM_EVENT         (0x927)     /*!< L2 Cache Performance Monitor Event Register */
+#define AUX_SLC_PM_OVF           (0x928)     /*!< L2 Cache Performance Counter Overflow Register */
+#define AUX_SLC_PM_CNT0          (0x929)     /*!< L2 Cache Performance Monitor Count0 Register */
+#define AUX_SLC_PM_CNT1          (0x92A)     /*!< L2 Cache Performance Monitor Count0 Register for upper bits */
+#define AUX_SLC_CACHE_LOCK_BASE  (0x906)     /*!< L2 Cache Way-Lock Register */
+#define AUX_SLC_CACHE_LOCK_BASE1 (0x92E)     /*!< L2 Cache Way-Lock Register */
+#define AUX_SLC_ECC_SBE_CNT      (0x93C)     /*!< L2 Cache SBE Counter Register */
+// other SLC registers are not supported yet
 /** @} */
 
 /**
@@ -460,10 +511,6 @@
 #define AUX_IDENTITY			(0x4) 	/*!< identity register */
 #define AUX_DMP_PERIPHERAL		(0x20a) /*!< peripheral memory region */
 #define AUX_XFLAGS			(0x44f) /*!< user extension flags register */
-
-#define AUX_MCIP_CMD			(0x600) /*!< ARConnect Command Register, CONNECT_CMD */
-#define AUX_MCIP_WDATA			(0x601) /*!< ARConnect Write Data Register, CONNECT_WDATA */
-#define AUX_MCIP_READBACK		(0x602) /*!< ARConnect Read Data Register, CONNECT_READBACK */
 
 #define AUX_CONNECT_CMD			(0x600) /*!< ARConnect Command Register, CONNECT_CMD */
 #define AUX_CONNECT_WDATA		(0x601) /*!< ARConnect Write Data Register, CONNECT_WDATA */

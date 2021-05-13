@@ -449,12 +449,6 @@
 extern "C" {
 #endif
 
-#ifdef ARC_FEATURE_UNALIGNED
-#define STATUS32_RESET_VALUE		(1<<19)
-#else
-#define STATUS32_RESET_VALUE		(0)
-#endif
-
 #ifdef __cplusplus
 }
 #endif

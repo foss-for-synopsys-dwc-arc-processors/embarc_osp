@@ -44,11 +44,8 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>
-#include "embARC_toolchain.h"
-#include "arc/arc.h"
 #include "arc/arc_builtin.h"
 #include "arc/arc_cache.h"
-#include "arc/arc_udma_config.h"
 
 #ifdef OS_FREERTOS
 #include "os_hal_inc.h"
