@@ -72,7 +72,7 @@ int main(void)
 				cache_ver, cache_size, cache_ways, cache_llen);
 		build_cfg = _arc_aux_read(AUX_BCR_I_CACHE);
 	} else {
-		EMBARC_PRINTF("no data cache, error!\n");
+		EMBARC_PRINTF("Test Error: no data cache\n");
 		while(1);
 	}
 
