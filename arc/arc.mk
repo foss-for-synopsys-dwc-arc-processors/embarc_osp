@@ -1,5 +1,6 @@
 ## CPU Related ##
 # CPU root declaration
+ARC_ISA_VER ?= 2
 CPUS_ROOT = $(EMBARC_ROOT)/arc
 
 EXTRA_CSRCDIR += $(EMBARC_ROOT)/arc/startup

@@ -9,6 +9,7 @@
 ##
 OS_FREERTOS_DIR = $(OSES_ROOT_DIR)/freertos
 FREERTOS_HEAP_SEL = 2
+OS_HEAP_SEL ?= 4
 
 ##
 # \brief 		freertos port sources and includes definition
@@ -19,11 +20,21 @@ OS_FREERTOS_PORT_CSRCDIR	= $(OS_FREERTOS_DIR)/portable/Synopsys/ARC_EM_SECURESHI
 OS_FREERTOS_PORT_ASMSRCDIR	= $(OS_FREERTOS_DIR)/portable/Synopsys/ARC_EM_SECURESHIELD
 OS_FREERTOS_PORT_INCDIR		= $(OS_FREERTOS_DIR)/portable/Synopsys/ARC_EM_SECURESHIELD
 else
-OS_FREERTOS_PORT_CSRCDIR	= $(OS_FREERTOS_DIR)/portable/Synopsys/ARC \
-				$(OS_FREERTOS_DIR)/portable
-OS_FREERTOS_PORT_ASMSRCDIR	= $(OS_FREERTOS_DIR)/portable/Synopsys/ARC
-OS_FREERTOS_PORT_INCDIR		= $(OS_FREERTOS_DIR)/portable/Synopsys/ARC
+ifeq ($(ARC_ISA_VER), 2)
+OS_FREERTOS_PORT_CSRCDIR	= $(OS_FREERTOS_DIR)/portable/ThirdParty/GCC/ARC_EM_HS
+OS_FREERTOS_PORT_ASMSRCDIR	= $(OS_FREERTOS_DIR)/portable/ThirdParty/GCC/ARC_EM_HS
+OS_FREERTOS_PORT_INCDIR		= $(OS_FREERTOS_DIR)/portable/ThirdParty/GCC/ARC_EM_HS
+else
+ifeq ($(ARC_ISA_VER), 1)
+OS_FREERTOS_PORT_CSRCDIR	= $(OS_FREERTOS_DIR)/portable/ThirdParty/GCC/ARC_v1
+OS_FREERTOS_PORT_ASMSRCDIR	= $(OS_FREERTOS_DIR)/portable/ThirdParty/GCC/ARC_v1
+OS_FREERTOS_PORT_INCDIR		= $(OS_FREERTOS_DIR)/portable/ThirdParty/GCC/ARC_v1
+else
+$(error ISA version $(ARC_ISA_VER) is not supported)
+endif  # ($(ARC_ISA_VER), 1)
+endif  # ($(ARC_ISA_VER), 2)
 endif
+
 ##
 # \brief 		freertos os related source and header
 ##
@@ -35,6 +46,7 @@ OS_FREERTOS_INCDIR	= $(OS_FREERTOS_PORT_INCDIR) $(OS_FREERTOS_DIR)/include
 OS_FREERTOS_CSRCS = $(call get_csrcs, $(OS_FREERTOS_CSRCDIR))
 OS_FREERTOS_ASMSRCS = $(call get_asmsrcs, $(OS_FREERTOS_ASMSRCDIR))
 
+OS_FREERTOS_CSRCS += $(OS_FREERTOS_DIR)/portable/MemMang/heap_$(OS_HEAP_SEL).c
 # get object files
 OS_FREERTOS_COBJS = $(call get_relobjs, $(OS_FREERTOS_CSRCS))
 OS_FREERTOS_ASMOBJS = $(call get_relobjs, $(OS_FREERTOS_ASMSRCS))
