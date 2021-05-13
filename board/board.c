@@ -44,16 +44,16 @@ static FATFS sd_card_fs;	/* File system object for each logical drive */
 
 #if defined(EMBARC_USE_BOARD_MAIN)
 /*--- When new embARC Startup process is used----*/
-#define MIN_CALC(x, y)		(((x)<(y))?(x):(y))
-#define MAX_CALC(x, y)		(((x)>(y))?(x):(y))
 
 #ifdef OS_FREERTOS
+
+#define MIN_CALC(x, y)		(((x)<(y))?(x):(y))
+#define MAX_CALC(x, y)		(((x)>(y))?(x):(y))
 /* Note: Task size in unit of StackType_t */
 /* Note: Stack size should be small than 65536, since the stack size unit is uint16_t */
 #define MIN_STACKSZ(size)	(MIN_CALC(size, configTOTAL_HEAP_SIZE) / sizeof(StackType_t))
 
 #ifdef MID_LWIP
-
 #include "lwip_wifi.h"
 
 #ifndef TASK_WIFI_PERIOD
@@ -98,9 +98,8 @@ static TaskHandle_t task_handle_main;
 
 #endif /* MID_NTSHELL */
 
-#endif /* OS_FREERTOS */
 
-#if defined(OS_FREERTOS) && defined(MID_LWIP)
+#ifdef MID_LWIP
 static void task_wifi(void *par)
 {
 	WNIC_AUTH_KEY auth_key;
@@ -145,12 +144,12 @@ static void task_wifi(void *par)
 		vTaskDelay(TASK_WIFI_PERIOD);
 	}
 }
-#endif
+#endif /* MID_LWIP */
 
 static void task_main(void *par)
 {
 	int ercd;
-#if defined(OS_FREERTOS) && defined(MID_LWIP) && !defined(MID_NTSHELL)
+#if defined(MID_LWIP) && !defined(MID_NTSHELL)
 	EMBARC_PRINTF("Enter to main function....\r\n");
 	EMBARC_PRINTF("Wait until WiFi connected...\r\n");
 	vTaskSuspend(NULL);
@@ -164,28 +163,19 @@ static void task_main(void *par)
 		ercd = arc_goto_main(main_arg->argc, main_arg->argv);
 	}
 
-#if defined(OS_FREERTOS)
 	EMBARC_PRINTF("Exit from main function, error code:%d....\r\n", ercd);
 	while (1) {
 		vTaskSuspend(NULL);
 	}
-#else
-	while (1);
-#endif
 }
+#endif /* OS_FREERTOS */
 
-void board_main(void)
+EMBARC_WEAK void platform_main(void)
 {
-/* board level hardware init */
-	board_init();
-/* board level middlware init */
-
-	timer_calibrate_delay(BOARD_CPU_CLOCK);
-
 #ifdef MID_COMMON
 	xprintf_setup();
 #endif
-
+	//platform_print_banner();
 #ifdef MID_FATFS
 	if(f_mount(&sd_card_fs, "", 0) != FR_OK) {
 		EMBARC_PRINTF("FatFS failed to initialize!\r\n");
@@ -198,61 +188,73 @@ void board_main(void)
 	os_hal_exc_init();
 #endif
 
-/* NTSHELL related initialization */
-/* For OS situation,  ntshell task will be created; for baremetal ntshell_task will be executed */
 #ifdef MID_NTSHELL
 	NTSHELL_IO *nt_io;
 	nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
+#endif
 
 #ifdef OS_FREERTOS
+#ifdef MID_NTSHELL
 	xTaskCreate((TaskFunction_t)ntshell_task, "ntshell-console", TASK_STACK_SIZE_NTSHELL,
 			(void *)nt_io, TASK_PRI_NTSHELL, &task_handle_ntshell);
-#else
-	cpu_unlock();	/* unlock cpu to let interrupt work */
-	/** enter ntshell command routine no return */
-	ntshell_task((void *)nt_io);
 #endif
-
-#else /* No ntshell */
-#ifdef OS_FREERTOS
-	xTaskCreate((TaskFunction_t)task_main, "main", TASK_STACK_SIZE_MAIN,
-			(void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
-#else /* No os and ntshell */
-	cpu_unlock();	/* unlock cpu to let interrupt work */
-#endif
-
-#endif /* MID_NTSHELL */
-
-#if defined(OS_FREERTOS) && defined (MID_LWIP)
+#ifdef MID_LWIP
 	xTaskCreate((TaskFunction_t)task_wifi, "wifi-conn", TASK_STACK_SIZE_WIFI,
 			(void *)1, TASK_PRI_WIFI, &task_handle_wifi);
 #endif
-
-#ifdef OS_FREERTOS
+	xTaskCreate((TaskFunction_t)task_main, "main", TASK_STACK_SIZE_MAIN,
+			(void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
+	//vTaskStartScheduler() Will not return unless a task calls vTaskEndScheduler
 	vTaskStartScheduler();
+#else /* OS_FREERTOS not defined */
+	cpu_unlock();	/* unlock cpu to let interrupt work */
+#ifdef MID_NTSHELL
+	/** enter ntshell command routine no return */
+	ntshell_task((void *)nt_io);
+	//no return
 #endif
+	// task_main((void *)(&s_main_args));
+	arc_goto_main(0, NULL);
+#endif /* OS_FREERTOS */
+}
 
-	task_main((void *)(&s_main_args));
+EMBARC_WEAK void board_main(void)
+{
+#if defined(__MW__)
+	/* Metaware toolchain C++ init */
+	arc_mwdt_init();
+#elif defined(__GNU__)
+	/* ARC GNU toolchain C++ init */
+	arc_gnu_do_global_ctors_aux();
+	arc_gnu_do_init_array_aux();
+#endif
+	/* init core level interrupt & exception management */
+	exc_int_init();
+	/* init cache */
+	arc_cache_init();
+	/* necessary board level init */
+	board_init();
+	/* Initialise bare-metal board timer and interrupt */
+	// board_timer_init();
+	timer_calibrate_delay(BOARD_CPU_CLOCK);
+	/* platform (e.g RTOS, baremetal)level init */
+	platform_main();
 /* board level exit */
+#if defined(__MW__)
+	arc_mwdt_fini();
+#elif defined(__GNU__)
+	arc_gnu_do_global_dtors_aux();
+#endif
 }
 
 #else /*-- Old embARC Startup process */
 
-static void enter_to_main(MAIN_ARGS *main_arg)
-{
-	if (main_arg == NULL) {
-	/* null or aligned not to 4 bytes */
-		arc_goto_main(0, NULL);
-	} else {
-		arc_goto_main(main_arg->argc, main_arg->argv);
-	}
-}
-
-void board_main(void)
+EMBARC_WEAK void platform_main(void)
 {
 #ifdef MID_COMMON
 	xprintf_setup();
 #endif
+	//platform_print_banner();
 #ifdef MID_FATFS
 	if(f_mount(&sd_card_fs, "", 0) != FR_OK) {
 		EMBARC_PRINTF("FatFS failed to initialize!\r\n");
@@ -260,6 +262,30 @@ void board_main(void)
 		EMBARC_PRINTF("FatFS initialized successfully!\r\n");
 	}
 #endif
-	enter_to_main(&s_main_args);
+	//cpu_unlock();
+	arc_goto_main(0, NULL);
+}
+
+EMBARC_WEAK void board_main(void)
+{
+#if defined(__MW__)
+/* Metaware toolchain C++ init */
+	arc_mwdt_init();
+#elif defined(__GNU__)
+/* ARC GNU toolchain C++ init */
+	arc_gnu_do_global_ctors_aux();
+	arc_gnu_do_init_array_aux();
+#endif
+	/* init core level interrupt & exception management */
+	exc_int_init();
+	/* init cache */
+	arc_cache_init();
+
+	platform_main();
+#if defined(__MW__)
+	arc_mwdt_fini();
+#elif defined(__GNU__)
+	arc_gnu_do_global_dtors_aux();
+#endif
 }
 #endif /* EMBARC_USE_BOARD_MAIN */

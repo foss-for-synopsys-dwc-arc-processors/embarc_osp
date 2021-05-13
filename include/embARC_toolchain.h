@@ -99,10 +99,38 @@ extern "C" {
 #if defined(__GNU__)
 /* GNU tool specific definitions */
 
+/**
+ * @brief call c++ class constructors
+ *
+ */
+extern void arc_gnu_do_global_ctors_aux(void);
+
+/**
+ * @brief call c++ initialization arrary
+ *
+ */
+extern void arc_gnu_do_init_array_aux(void);
+
+/**
+ * @brief call c++ class deconstructors
+ *
+ */
+extern void arc_gnu_do_global_dtors_aux(void);
 
 #elif defined(__MW__)
 /* Metaware tool specific definitions */
 /* Metaware toolchain related definitions */
+/**
+ * @brief call c++ related initialization
+ *
+ */
+extern void arc_mwdt_init(void);
+
+/**
+ * @brief call c++ related finish processing
+ *
+ */
+extern void arc_mwdt_fini(void);
 
 #else
 #error "unsupported toolchain"

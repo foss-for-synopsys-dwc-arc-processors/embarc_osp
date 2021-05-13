@@ -79,6 +79,19 @@
 #include "emsdp/emsdp.h"
 #endif /* BOARD_EMDK */
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void board_init(void);
+extern void platform_main(void);
+extern void board_main(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* _EMBARC_BOARD_H_ */
 
 /** @} end of group BOARD_COMMON */

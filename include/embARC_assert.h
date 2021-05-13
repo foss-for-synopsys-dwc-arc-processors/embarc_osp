@@ -37,19 +37,11 @@
 #ifndef _EMBARC_ASSERT_H_
 #define _EMBARC_ASSERT_H_
 
+#include "embARC_debug.h"
+
 #ifndef __ASSEMBLY__
 #ifdef __cplusplus
 extern "C" {
-#endif
-
-#ifndef EMBARC_PRINTF
-	#ifdef MID_COMMON
-		#include "xprintf.h"
-		#define EMBARC_PRINTF xprintf
-	#else
-		#include <stdio.h>
-		#define EMBARC_PRINTF printf
-	#endif
 #endif
 
 #include "embARC_toolchain.h"

@@ -48,7 +48,6 @@
 
 .weak	_f_sdata		/* start of small data, defined in link script */
 .weak	init_hardware_hook	/* app hardware init hook */
-.weak	init_software_hook	/* app software init hook */
 
 .extern	board_main
 .extern exc_entry_table
@@ -207,34 +206,17 @@ _s3_clear_bss_loop:
 /* STAGE 3: go to main */
 
 _arc_reset_call_main:
-	mov	r0, init_software_hook
-	cmp	r0, 0
-	jlne	[r0]
+
 /* board level library init */
 #ifdef	LIB_SECURESHIELD
 	jl 	secureshield_start
 #if SECURESHIELD_VERSION == 2
 	jl 	secureshield_except_bit_clear
 #endif
-#else
-/* early init of interrupt and exception */
-	jl	exc_int_init
-	/* init cache */
-	jl	arc_cache_init
-#endif
-
-#if defined(__MW__)
-	jl	_init
-#elif defined(__GNU__)
-	jl	__do_global_ctors_aux
-	jl	__do_init_array_aux
 #endif
 	jl	board_main	/* board-level main */
-#if defined(__MW__)
-	jl	_fini
-#elif defined(__GNU__)
-	jl	__do_global_dtors_aux
-#endif
+	b	_exit_loop
+
 	.global _exit_loop
 	.global _exit_halt
 	.align 4
@@ -247,10 +229,10 @@ _exit_loop:
 	b	_exit_loop
 
 #if defined(__MW__)
-	.global _init, _fini
+	.global arc_mwdt_init, arc_mwdt_fini
 	.section ".init",text
-_init:
-	.cfa_bf	_init
+arc_mwdt_init:
+	.cfa_bf	arc_mwdt_init
 	push	%blink
 	.cfa_push	{%blink}
 
@@ -261,7 +243,7 @@ _init:
 	.cfa_ef
 
 	.section ".fini", text
-_fini:
+arc_mwdt_fini:
 	.cfa_bf	_fini
 	push	%blink
 	.cfa_push	{%blink}

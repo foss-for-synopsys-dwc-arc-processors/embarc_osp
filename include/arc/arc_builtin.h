@@ -26,18 +26,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
- * \file
- * \ingroup ARC_HAL_BUILTIN
- * \brief header file of builtin and helper functions
+ * @file
+ * @ingroup ARC_HAL_BUILTIN
+ * @brief Header file of builtin and helper functions
  *
  * The Metaware toolchain and the GNU toolchain are supported. The details please go to see the file.
  */
 
 /**
- * \addtogroup	ARC_HAL_BUILTIN
+ * @addtogroup	ARC_HAL_BUILTIN
  * @{
  */
 
@@ -52,38 +52,27 @@
 extern "C" {
 #endif
 
-#if defined (__MW__)	/* Metaware toolchain */
-
-/*
- * !< arc_compiler_usually (expr) evaluates expression expr and
- * informs the compiler that the value is usually true.
- */
-#define arc_compiler_usually(a)			_Usually((a))
-
-/*
- * !< arc_compiler_rarely (expr) evaluates expression expr and
- * informs the compiler that the value is rarely true.
- */
-#define arc_compiler_rarely(a)			_Rarely((a))
+#if defined (__MW__)    /* Metaware toolchain */
 
 #elif defined (__GNU__) /* GNU toolchain */
+
+#endif
 
 /**
  * @brief arc_compiler_usually(expr) evaluates expression expr and
  * 		  informs the compiler that the value is usually true.
  */
-#define arc_compiler_usually(a)         __builtin_expect((int32_t)(a), 1)
+#define arc_compiler_usually(a)         __builtin_expect(!!(a), 1)
 
 /**
  * @brief arc_compiler_rarely(expr) evaluates expression expr and
  *	informs the compiler that the value is rarely true.
  */
-#define arc_compiler_rarely(a)          __builtin_expect((int32_t)(a), 0)
-
-#endif
+#define arc_compiler_rarely(a)          __builtin_expect(!!(a), 0)
 
 /**
- * \brief do a memory barrier
+ * @fn void arc_mb(void)
+ * @brief Do memory barrier
  *
  */
 Inline void arc_mb(void)
@@ -92,7 +81,8 @@ Inline void arc_mb(void)
 }
 
 /**
- * \brief read memory barrier
+ * @fn void arc_rmb(void)
+ * @brief Read memory barrier
  *
  */
 Inline void arc_rmb(void)
@@ -101,7 +91,8 @@ Inline void arc_rmb(void)
 }
 
 /**
- * \brief write memory barrier
+ * @fn void arc_wmb(void)
+ * @brief Write memory barrier
  *
  */
 Inline void arc_wmb(void)
@@ -110,6 +101,7 @@ Inline void arc_wmb(void)
 }
 
 /**
+ * @fn uint32_t arc_aux_read(uint32_t aux)
  * @brief Read auxiliary register
  *
  * @param aux auxiliary register address
@@ -120,13 +112,14 @@ Inline uint32_t arc_aux_read(uint32_t aux)
 	uint32_t ret;
 
 	Asm("lr %0, [%1]"
-		: "=r" (ret)
-		: "r" (aux));
+	    : "=r" (ret)
+	    : "r" (aux));
 
 	return ret;
 }
 
 /**
+ * @fn void arc_aux_write(uint32_t aux, uint32_t val)
  * @brief Write auxiliary register
  *
  * @param aux auxiliary register address
@@ -141,6 +134,7 @@ Inline void arc_aux_write(uint32_t aux, uint32_t val)
 }
 
 /**
+ * @fn void arc_brk(void)
  * @brief Call brk instruction
  * stop the core through a brk instruction
  */
@@ -150,6 +144,7 @@ Inline void arc_brk(void)
 }
 
 /**
+ * @fn void arc_sync(void)
  * @brief Call sync instruction
  *
  */
@@ -159,6 +154,7 @@ Inline void arc_sync(void)
 }
 
 /**
+ * @fn void arc_kflag(uint32_t flag)
  * @brief Call kflag instruction to change status32
  *
  * @param flag Flag to set in status32
@@ -170,6 +166,7 @@ Inline void arc_kflag(uint32_t flag)
 }
 
 /**
+ * @fn void arc_nop(void)
  * @brief Call nop_s function
  * flush the pipeline by nop_s instruction
  */
@@ -179,6 +176,7 @@ Inline void arc_nop(void)
 }
 
 /**
+ * @fn uint32_t arc_clri(void)
  * @brief Call clri instruction
  * call a clri instruction to disable interrupt
  * @return interrupt related bits in status32
@@ -192,6 +190,7 @@ Inline uint32_t arc_clri(void)
 }
 
 /**
+ * @fn void arc_seti(uint32_t key)
  * @brief Call seti instruction
  * call a set instruction to change interrupt status
  * @param key  interrupt status
@@ -202,6 +201,7 @@ Inline void arc_seti(uint32_t key)
 }
 
 /**
+ * @fn uint32_t arc_swap32(uint32_t val)
  * @brief Swap bytes order of a 32-bits value
  *
  * @param val Target value
@@ -216,6 +216,7 @@ Inline uint32_t arc_swap32(uint32_t val)
 }
 
 /**
+ * @fn uint16_t arc_swap16(uint32_t val)
  * @brief Swap bytes order of a 32-bits value and return high 16-bits
  *
  * @param val Target value
@@ -237,9 +238,10 @@ Inline uint16_t arc_swap16(uint32_t val)
  */
 
 /**
+ * @fn arc_read_uncached_32(void *ptr)
  * @brief  Read memory and bypass the cache
- * @param[in] ptr Memory address
- * @return Date in the memory
+ * @param ptr Memory address
+ * @return data in the memory
  */
 Inline uint32_t arc_read_uncached_32(void *ptr)
 {
@@ -250,9 +252,10 @@ Inline uint32_t arc_read_uncached_32(void *ptr)
 }
 
 /**
+ * @fn arc_write_uncached_32(void *ptr, uint32_t data)
  * @brief  Write memory and bypass the cache
- * @param[in] ptr memory address
- * @param[in] data  vaule to be written
+ * @param ptr memory address
+ * @param data value to be written
  */
 Inline void arc_write_uncached_32(void *ptr, uint32_t data)
 {
@@ -260,9 +263,10 @@ Inline void arc_write_uncached_32(void *ptr, uint32_t data)
 }
 
 /**
+ * @fn arc_read_cached_32(void *ptr)
  * @brief  Read memory with cache
- * @param[in] ptr Memory address
- * @returns Date in the memory
+ * @param ptr Memory address
+ * @returns data in the memory
  */
 Inline uint32_t arc_read_cached_32(void *ptr)
 {
@@ -273,10 +277,10 @@ Inline uint32_t arc_read_cached_32(void *ptr)
 }
 
 /**
+ * @fn void arc_write_cached_32(void *ptr, uint32_t data)
  * @brief  Read memory with cache
- * @param[in] ptr Memory address
- * @param[in] data Data to be written
- * @return Description
+ * @param ptr Memory address
+ * @param data Data to be written
  */
 Inline void arc_write_cached_32(void *ptr, uint32_t data)
 {
@@ -284,9 +288,10 @@ Inline void arc_write_cached_32(void *ptr, uint32_t data)
 }
 
 /**
+ * @fn int32_t arc_goto_main(int32_t argc, char **argv)
  * @brief Go to main function with proper arguments
- * @param  argc Argument count
- * @param  argv Argument content array
+ * @param argc Argument count
+ * @param argv Argument content array
  * @retval Return value of main function
  */
 Inline int32_t arc_goto_main(int32_t argc, char **argv)
@@ -305,7 +310,7 @@ Inline int32_t arc_goto_main(int32_t argc, char **argv)
 }
 
 /**
- *
+ * @fn uint32_t arc_find_msb(uint32_t val)
  * @brief Find most significant bit set in a 32-bit word
  *
  * This routine finds the first bit set starting from the most significant bit
@@ -330,7 +335,7 @@ Inline uint32_t arc_find_msb(uint32_t val)
 }
 
 /**
- *
+ * @fn uint32_t arc_find_lsb(uint32_t val)
  * @brief Find least significant bit set in a 32-bit word
  *
  * This routine finds the first bit set starting from the least significant bit
@@ -356,6 +361,7 @@ Inline uint32_t arc_find_lsb(uint32_t val)
 }
 
 /**
+ * @fn uint32_t arc_core_id(void)
  * @brief Read core id
  *
  * @return Core id
