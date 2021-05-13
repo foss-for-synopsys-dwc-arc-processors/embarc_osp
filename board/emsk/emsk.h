@@ -54,7 +54,6 @@
 #include "drivers/flash_obj/flash_obj.h"
 #include "device/dev_pinmux.h"
 
-#include "common/emsk_timer.h"
 #include "common/emsk_gpio.h"
 
 #include "emsk_hardware.h"
@@ -117,9 +116,6 @@
 #define NTSHELL_CONSOLE_ID		(EMSK_NTSHELL_0_ID)
 #define NTSHELL_NETWORK_ID		(EMSK_NTSHELL_1_ID)
 
-#define OSP_DELAY_OS_COMPAT_ENABLE	(1)
-#define OSP_DELAY_OS_COMPAT_DISABLE	(0)
-
 #define WF_IPADDR_1			(192)
 #define WF_IPADDR_2			(168)
 #define WF_IPADDR_3			(43)
@@ -154,25 +150,6 @@
 #define BOARD_PMWIFI_0_ID		EMSK_PMWIFI_0_ID
 #define BOARD_PMWIFI_ID_MAX		EMSK_PMWIFI_0_ID
 #define BOARD_SLIPWIFI_0_ID		EMSK_SLIPWIFI_0_ID
-
-#define OSP_GET_CUR_SYSHZ()		(gl_emsk_sys_hz_cnt)
-#define OSP_GET_CUR_MS()		(gl_emsk_ms_cnt)
-#define OSP_GET_CUR_US()		board_get_cur_us()
-#define OSP_GET_CUR_HWTICKS()		board_get_hwticks()
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void board_init(void);
-extern void board_timer_update(uint32_t precision);
-extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
-extern uint64_t board_get_hwticks(void);
-extern uint64_t board_get_cur_us(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif	/* _EMSK_H_ */
 

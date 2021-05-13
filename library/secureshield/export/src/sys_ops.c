@@ -100,11 +100,11 @@ static void temp_trap_handler(void)
  */
 void secureshield_except_bit_clear(void)
 {
-    EXC_HANDLER prev_trap_handler;
+    EXC_HANDLER_T prev_trap_handler;
 
     exc_nest_count = 1;
     prev_trap_handler = exc_handler_get(EXC_NO_TRAP);
-    exc_handler_install(EXC_NO_TRAP, (EXC_HANDLER)temp_trap_handler);
+    exc_handler_install(EXC_NO_TRAP, (EXC_HANDLER_T)temp_trap_handler);
     Asm("trap_s 0");
     exc_nest_count = 0;
     exc_handler_install(EXC_NO_TRAP, prev_trap_handler);

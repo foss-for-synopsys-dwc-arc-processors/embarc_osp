@@ -78,7 +78,7 @@ typedef struct dw_pwm_timer_ctrl {
 	uint32_t intno;						/*!< pwm_timer interrupt vector number */
 	uint32_t ch_num;					/*!< pwm_timer group channel count */
 	uint32_t clock;						/*!< pwm_timer clock */
-	INT_HANDLER int_handler;			/*!< pwm_timer interrupt handler pointer */
+	INT_HANDLER_T int_handler;			/*!< pwm_timer interrupt handler pointer */
 	DW_PWM_TIMER_CH_ISR_PTR ch_isr;		/*!< pwm_timer group channel callback pointer */
 	DEV_PWM_TIMER_MODE_PTR mode;		/*!< pwm_timer group channel work mode array pointer*/
 } DW_PWM_TIMER_CTRL, *DW_PWM_TIMER_CTRL_PTR;

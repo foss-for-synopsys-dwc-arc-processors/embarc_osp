@@ -106,7 +106,7 @@ typedef struct dw_gpio_port {
 	DW_GPIO_REG_PTR	regs;			/*!< gpio port register */
 	uint32_t intno;				/*!< gpio interrupt vector number */
 	uint32_t valid_bit_mask;		/*!< valid bit mask of gpio port */
-	INT_HANDLER int_handler;		/*!< gpio interrupt handler */
+	INT_HANDLER_T int_handler;		/*!< gpio interrupt handler */
 	DW_GPIO_BIT_ISR_PTR gpio_bit_isr;	/*!< gpio bit handler struct */
 } DW_GPIO_PORT, *DW_GPIO_PORT_PTR;
 

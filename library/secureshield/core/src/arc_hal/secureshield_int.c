@@ -68,15 +68,15 @@ typedef struct int_handler_call_frame {
 
 /** secure world exception entry table */
 EMBARC_ALIGNED(1024)
-const EXC_ENTRY secureshield_exc_entry_table[NUM_EXC_ALL] = {
-	[0] = (EXC_ENTRY)NORMAL_ROM_START,
+const EXC_ENTRY_T secureshield_exc_entry_table[NUM_EXC_ALL] = {
+	[0] = (EXC_ENTRY_T)NORMAL_ROM_START,
 	[1 ... NUM_EXC_CPU-1] = secureshield_exc_entry_cpu,
 	[NUM_EXC_CPU ... NUM_EXC_ALL-1] = secureshield_exc_entry_int
  };
 
 
 /** secure world exception handler table */
-EXC_HANDLER secureshield_exc_handler_table[NUM_EXC_CPU] = {
+EXC_HANDLER_T secureshield_exc_handler_table[NUM_EXC_CPU] = {
 	secureshield_exc_handler_default,	/* Reset */
 	secureshield_exc_handler_default,	/* Memory Error */
 	secureshield_exc_handler_default,	/* Instruction Error */
@@ -367,7 +367,7 @@ static int32_t secure_int_ac_check(uint32_t intno)
  * \param[in]  handler interrupt handler
  * \return     0 ok, -1 failed
  */
-int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
+int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER_T handler)
 {
 
 	SECURESHIELD_INT_HANDLER* exc;
@@ -388,7 +388,7 @@ int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
 	}
 
 
-	exc->handler = (EXC_HANDLER) handler;
+	exc->handler = (EXC_HANDLER_T) handler;
 	exc->id = handler ? g_active_container : 0;
 
 
@@ -405,7 +405,7 @@ int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler)
  * \param[in]  intno interrupt no.
  * \return interrupt handler
  */
-INT_HANDLER secure_int_handler_get(uint32_t intno)
+INT_HANDLER_T secure_int_handler_get(uint32_t intno)
 {
 	if (secure_int_ac_check(intno) != 0) {
 		return NULL;
@@ -650,7 +650,7 @@ void secureshield_int_init(void)
  * \param[in]  intno        interrupt no.
  * \return 0 ok, -1 failed
  */
-int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER handler, uint32_t intno)
+int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER_T handler, uint32_t intno)
 {
 	SECURESHIELD_INT_HANDLER* exc;
 
@@ -698,7 +698,7 @@ uint32_t* dst_container_user_sp;
 uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 {
 	uint32_t src_id, dst_id;
-	INT_HANDLER handler;
+	INT_HANDLER_T handler;
 
 	/* reuse src_id*/
 	src_id = arc_aux_read(AUX_IRQ_CAUSE);
@@ -822,7 +822,7 @@ void secureshield_int_ops(INT_EXC_FRAME *frame)
 			frame->r0 = (uint32_t)secure_int_handler_get(frame->r1);
 			break;
 		case SECURESHIELD_INT_EXC_INSTALL:
-			frame->r0 = secure_int_handler_install(frame->r1, (INT_HANDLER)frame->r2);
+			frame->r0 = secure_int_handler_install(frame->r1, (INT_HANDLER_T)frame->r2);
 			break;
 		case SECURESHIELD_INT_EXC_ENABLE:
 			frame->r0 = secure_int_enable(frame->r1);
@@ -873,7 +873,7 @@ void secureshield_int_ops(INT_EXC_FRAME *frame)
 void * secureshield_interrupt_handle(uint32_t *sp)
 {
 	uint32_t src_id, dst_id;
-	INT_HANDLER handler;
+	INT_HANDLER_T handler;
 	INT_HANDLER_CALL_FRAME *dst_frame;
 
 	/* reuse src_id and dst_id */
@@ -977,7 +977,7 @@ int32_t secureshield_int_ops(uint32_t ops, uint32_t par1, uint32_t par2)
 			ret = (int32_t)secure_int_handler_get(par1);
 			break;
 		case SECURESHIELD_INT_EXC_INSTALL:
-			ret = secure_int_handler_install(par1, (INT_HANDLER)par2);
+			ret = secure_int_handler_install(par1, (INT_HANDLER_T)par2);
 			break;
 		case SECURESHIELD_INT_EXC_ENABLE:
 			ret = secure_int_enable(par1);
@@ -1030,5 +1030,5 @@ void cpu_lock() EMBARC_LINKTO(secure_cpu_lock);
 void cpu_unlock() EMBARC_LINKTO(secure_cpu_unlock);
 uint32_t cpu_lock_save(void) EMBARC_LINKTO(secure_cpu_lock);
 void cpu_unlock_restore(const uint32_t status) EMBARC_LINKTO(secure_cpu_unlock);
-int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler) EMBARC_LINKTO(secure_int_handler_install);
-INT_HANDLER int_handler_get(const uint32_t intno) EMBARC_LINKTO(secure_int_handler_get);
+int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler) EMBARC_LINKTO(secure_int_handler_install);
+INT_HANDLER_T int_handler_get(const uint32_t intno) EMBARC_LINKTO(secure_int_handler_get);

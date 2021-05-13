@@ -37,7 +37,7 @@ volatile static uint8_t t1 = 0;
 /** arc timer 0 interrupt routine */
 static void timer0_isr(void *ptr)
 {
-	timer_int_clear(TIMER_0);
+	arc_timer_int_clear(TIMER_0);
 	t0++;
 	if (t1 == 0) {
 		t1 = 1;
@@ -75,11 +75,11 @@ int main(void)
 		EMBARC_PRINTF("fiq disabled\r\n");
 	}
 
-	if (timer_present(TIMER_0)) {
+	if (arc_timer_present(TIMER_0)) {
 		EMBARC_PRINTF("timer 0 is present\r\n");
-		timer_current(TIMER_0, &val);
+		arc_timer_current(TIMER_0, &val);
 		EMBARC_PRINTF("cnt:%d\r\n", val);
-		timer_stop(TIMER_0); /* Stop it first since it might be enabled before */
+		arc_timer_stop(TIMER_0); /* Stop it first since it might be enabled before */
 		int_handler_install(INTNO_TIMER0, timer0_isr);
 		/* to enable fiq, interrupt priority must be the highest */
 		int_pri_set(INTNO_TIMER0, INT_PRI_MIN);
@@ -91,7 +91,7 @@ int main(void)
 	button_install_isr(AXC003_BUTTON_SW2504_OFFSET, sw2504_int_isr);
 
 
-	timer_start(TIMER_0, TIMER_CTRL_IE, BOARD_CPU_CLOCK);
+	arc_timer_start(TIMER_0, TIMER_CTRL_IE, BOARD_CPU_CLOCK);
 
 	while(1);
 	return E_SYS;

@@ -464,27 +464,27 @@ Inline uint32_t arc_int_active(void)
  * @{
  */
 /**
- * \typedef EXC_ENTRY
+ * \typedef EXC_ENTRY_T
  * \brief  the data type for exception entry
  */
-typedef void (*EXC_ENTRY) (void);
+typedef void (*EXC_ENTRY_T) (void);
 /**
- * \typedef EXC_HANDLER
+ * \typedef EXC_HANDLER_T
  * \brief  the data type for exception handler
  */
-typedef	void (*EXC_HANDLER) (void *exc_frame);
+typedef	void (*EXC_HANDLER_T) (void *exc_frame);
 /** @}*/
 
 
 /**
  * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \typedef INT_HANDLER
+ * \typedef INT_HANDLER_T
  * \brief  the data type for interrupt handler
  */
-typedef void (*INT_HANDLER) (void *ptr);
+typedef void (*INT_HANDLER_T) (void *ptr);
 
-extern EXC_ENTRY exc_entry_table[NUM_EXC_ALL];
-extern EXC_HANDLER exc_int_handler_table[NUM_EXC_ALL];
+extern EXC_ENTRY_T exc_entry_table[NUM_EXC_ALL];
+extern EXC_HANDLER_T exc_int_handler_table[NUM_EXC_ALL];
 
 /** \ingroup ARC_HAL_EXCEPTION_CPU
  * @{
@@ -514,10 +514,10 @@ extern void exc_entry_int(void);
 
 /* exception related APIs */
 extern void exc_int_init(void);
-extern int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY entry);
-extern EXC_ENTRY exc_entry_get(const uint32_t excno);
-extern int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER handler);
-extern EXC_HANDLER exc_handler_get(const uint32_t excno);
+extern int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY_T entry);
+extern EXC_ENTRY_T exc_entry_get(const uint32_t excno);
+extern int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER_T handler);
+extern EXC_HANDLER_T exc_handler_get(const uint32_t excno);
 
 /* interrupt related APIs */
 extern int32_t int_disable(const uint32_t intno);
@@ -534,8 +534,8 @@ extern void cpu_lock(void);
 extern void cpu_unlock(void);
 extern uint32_t cpu_lock_save(void);
 extern void cpu_unlock_restore(const uint32_t status);
-extern int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler);
-extern INT_HANDLER int_handler_get(const uint32_t intno);
+extern int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler);
+extern INT_HANDLER_T int_handler_get(const uint32_t intno);
 extern int32_t int_secure_set(const uint32_t intno, uint32_t secure);
 extern void arc_firq_stack_set(uint8_t *firq_sp);
 

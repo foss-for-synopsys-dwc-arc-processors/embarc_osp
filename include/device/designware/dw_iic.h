@@ -151,7 +151,7 @@ typedef struct dw_iic_ctrl {
 	uint32_t iic_master_code;	/*!< value for IC_HS_MADDR */
 	uint32_t retry_cnt;		/*!< retry count for TX or RX */
 	uint32_t intno;			/*!< iic interrupt vector number */
-	INT_HANDLER dw_iic_int_handler;	/*!< iic interrupt handler */
+	INT_HANDLER_T dw_iic_int_handler;	/*!< iic interrupt handler */
 	DW_IIC_SPKLEN iic_spklen;	/*!< iic spike suppression length settings */
 	DW_IIC_SCL_CNT iic_scl_cnt;	/*!< iic scl count settings */
 	/* Variables which always change during iic operation */

@@ -103,20 +103,20 @@
 extern "C" {
 #endif
 
-extern int32_t timer_present(const uint32_t no);
-extern int32_t timer_start(const uint32_t no, const uint32_t mode, const uint32_t val);
-extern int32_t timer_stop(const uint32_t no);
-extern int32_t timer_current(const uint32_t no, void* val);
-extern int32_t timer_int_clear(const uint32_t no);
-extern void timer_init(void);
+extern int32_t arc_timer_present(const uint32_t no);
+extern int32_t arc_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val);
+extern int32_t arc_timer_stop(const uint32_t no);
+extern int32_t arc_timer_current(const uint32_t no, void* val);
+extern int32_t arc_timer_int_clear(const uint32_t no);
+extern void arc_timer_init(void);
 extern void arc_delay_us(uint32_t usecs);
-extern uint64_t timer_calibrate_delay(uint32_t cpu_clock);
-extern int32_t secure_timer_present(const uint32_t no);
-extern int32_t secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val);
-extern int32_t secure_timer_stop(const uint32_t no);
-extern int32_t secure_timer_current(const uint32_t no, void* val);
-extern int32_t secure_timer_int_clear(const uint32_t no);
-extern void secure_timer_init(void);
+extern uint64_t arc_timer_calibrate_delay(uint32_t cpu_clock);
+extern int32_t arc_secure_timer_present(const uint32_t no);
+extern int32_t arc_secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val);
+extern int32_t arc_secure_timer_stop(const uint32_t no);
+extern int32_t arc_secure_timer_current(const uint32_t no, void* val);
+extern int32_t arc_secure_timer_int_clear(const uint32_t no);
+extern void arc_secure_timer_init(void);
 
 #ifdef __cplusplus
 }

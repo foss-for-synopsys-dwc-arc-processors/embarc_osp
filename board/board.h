@@ -79,18 +79,31 @@
 #include "emsdp/emsdp.h"
 #endif /* BOARD_EMDK */
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 extern void board_init(void);
+extern void board_timer_update(uint32_t precision);
+extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
+extern uint64_t board_get_hwticks(void);
+extern uint64_t board_get_cur_us(void);
+extern uint64_t board_get_cur_syshz(void);
+extern uint32_t board_get_cur_ms(void);
 extern void platform_main(void);
 extern void board_main(void);
 
 #ifdef __cplusplus
 }
 #endif
+
+#define OSP_DELAY_OS_COMPAT_ENABLE	(1)
+#define OSP_DELAY_OS_COMPAT_DISABLE	(0)
+
+#define GET_CUR_SYSHZ()         bord_get_cur_syshz()
+#define GET_CUR_MS()            board_get_cur_ms()
+#define GET_CUR_US()            board_get_cur_us()
+#define GET_CUR_HWTICKS()       board_get_hwticks()
 
 #endif /* _EMBARC_BOARD_H_ */
 

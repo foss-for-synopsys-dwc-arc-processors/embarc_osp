@@ -41,6 +41,5 @@
  */
 void board_init(void)
 {
-	timer_init();
-	nsim_timer_init();
+	arc_timer_init();
 }

@@ -192,7 +192,7 @@ uint32_t flash_poll_test(uint32_t freq)
 /** performance timer initialization */
 static void perf_init(unsigned int id)
 {
-	if (timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
+	if (arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
 		EMBARC_PRINTF("perf timer init failed\r\n");
 		while(1);
 	}
@@ -202,7 +202,7 @@ static void perf_init(unsigned int id)
 /** performance timer start */
 static void perf_start(void)
 {
-	if (timer_current(perf_id, (void *)(&start)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&start)) < 0) {
 		start = 0;
 	}
 }
@@ -212,7 +212,7 @@ static unsigned int perf_end(void)
 {
 	unsigned int end = 0;
 
-	if (timer_current(perf_id, (void *)(&end)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&end)) < 0) {
 		return 0;
 	}
 

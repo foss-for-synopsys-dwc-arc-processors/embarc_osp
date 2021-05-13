@@ -71,11 +71,6 @@ exc_entry_cpu:
 
 	EXCEPTION_PROLOGUE
 
-/* exc_nest_count +1 */
-	ld	r0, [exc_nest_count]
-	add	r0, r0, 1
-	st	r0, [exc_nest_count]
-
 /* find the exception cause */
 	lr	r0, [AUX_ECR]
 	lsr	r0, r0, 16
@@ -87,11 +82,6 @@ exc_entry_cpu:
 	mov	r0, sp
 	jl	[r2]
 exc_return:
-
-/* exc_nest_count -1 */
-	ld	r0, [exc_nest_count]
-	sub	r0, r0, 1
-	st	r0, [exc_nest_count]
 
 	EXCEPTION_EPILOGUE
 	rtie
@@ -119,14 +109,6 @@ exc_entry_int:
 /* save scratch regs */
 	INTERRUPT_PROLOGUE
 
-/* critical area */
-/* exc_nest_count is designed to record the nest interrupts */
-	clri
-	ld	r0, [exc_nest_count]
-	add	r0, r0, 1
-	st	r0, [exc_nest_count]
-	seti
-
 	lr	r0, [AUX_IRQ_CAUSE]
 	mov	r1, exc_int_handler_table
 /* r2 = _kernel_exc_tbl + irqno *4 */
@@ -144,13 +126,6 @@ irq_hint_handled:
 	mov	r0, sp
 	jl	[r2]
 int_return:
-/* critical area */
-/* exc_nest_count is designed to record the nest interrupts */
-	clri
-	ld	r0, [exc_nest_count]
-	sub	r0, r0, 1
-	st	r0, [exc_nest_count]
-	seti
 
 	INTERRUPT_EPILOGUE
 	rtie
@@ -161,11 +136,6 @@ int_return:
 	.align 4
 exc_entry_firq:
 	SAVE_FIQ_EXC_REGS
-
-/* firq's priority is the highest */
-	ld	r0, [exc_nest_count]
-	add	r0, r0, 1
-	st	r0, [exc_nest_count]
 
 	lr	r0, [AUX_IRQ_CAUSE]
 	mov	r1, exc_int_handler_table
@@ -185,11 +155,6 @@ firq_hint_handled:
 	jl	[r2]
 
 firq_return:
-
-/* exc_nest_count -1 */
-	ld	r0, [exc_nest_count]
-	sub	r0, r0, 1
-	st	r0, [exc_nest_count]
 
 	RESTORE_FIQ_EXC_REGS
 	rtie

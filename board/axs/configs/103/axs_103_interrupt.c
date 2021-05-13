@@ -186,7 +186,7 @@ static void axs_103_int_handler_default(void *ptr)
 
 static ICTL_GPIO_REG_PTR ictl_gpio_ptr = (ICTL_GPIO_REG_PTR)(REGBASE_ICTL_CPU);
 static DW_ICTL_REG_PTR dw_ictl_ptr = (DW_ICTL_REG_PTR)(REGBASE_ICTL);
-static INT_HANDLER axs_103_int_handler_table[NUM_INT_ALL] = {
+static INT_HANDLER_T axs_103_int_handler_table[NUM_INT_ALL] = {
 	[0 ... NUM_INT_ALL-1] = axs_103_int_handler_default
 };
 
@@ -490,7 +490,7 @@ void cpu_unlock_restore(const uint32_t status)
  * \param[in] intno	interrupt number
  * \param[in] handler interrupt handler to install
  */
-int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)
+int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 {
 	uint32_t ictl = intno >> 8;
 
@@ -515,7 +515,7 @@ int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)
  * \param[in] intno interrupt number
  * \return the installed interrupt handler or NULL
  */
-INT_HANDLER int_handler_get(const uint32_t intno)
+INT_HANDLER_T int_handler_get(const uint32_t intno)
 {
 	uint32_t ictl = intno >> 8;
 

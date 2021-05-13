@@ -43,7 +43,6 @@
 #include "drivers/ntshell/ntshell_io.h"
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/sysconf/sysconf.h"
-#include "common/iotdk_timer.h"
 #include "drivers/pmwifi/pmwifi.h"
 #include "drivers/smic/smic_adc/smic_adc.h"
 #include "drivers/smic/smic_eflash/smic_eflash.h"
@@ -69,14 +68,6 @@
 
 #define BOARD_CPU_CLOCK				CLK_CPU
 #define BOARD_DEV_CLOCK				CLK_BUS_APB
-
-#define OSP_DELAY_OS_COMPAT_ENABLE		(1)
-#define OSP_DELAY_OS_COMPAT_DISABLE		(0)
-
-#define OSP_GET_CUR_SYSHZ()			(gl_iotdk_sys_hz_cnt)
-#define OSP_GET_CUR_MS()			(gl_iotdk_ms_cnt)
-#define OSP_GET_CUR_US()			board_get_cur_us()
-#define OSP_GET_CUR_HWTICKS()			board_get_hwticks()
 
 /*-----------------------------------------------------------------------------*/
 
@@ -162,19 +153,5 @@
 // #define BOARD_GPIO_PORT_B			DFSS_GPIO_PORT_B
 // #define BOARD_GPIO_PORT_C			DFSS_GPIO_PORT_C
 // #define BOARD_GPIO_PORT_D			DFSS_GPIO_PORT_D
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void board_init(void);
-extern void board_timer_update(uint32_t precision);
-extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
-extern uint64_t board_get_hwticks(void);
-extern uint64_t board_get_cur_us(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif	/* _IOTDK_H_ */

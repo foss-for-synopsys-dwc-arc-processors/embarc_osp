@@ -98,7 +98,7 @@ typedef struct dw_uart_ctrl {
 	uint32_t dw_uart_regbase;		/*!< uart ip register base */
 	uint32_t dw_apb_bus_freq;		/*!< uart ip apb bus frequency */
 	uint32_t intno;				/*!< uart interrupt vector number */
-	INT_HANDLER dw_uart_int_handler;	/*!< uart interrupt handler */
+	INT_HANDLER_T dw_uart_int_handler;	/*!< uart interrupt handler */
 	uint32_t tx_fifo_len;			/*!< transmit fifo length, set by user in object implementation */
 	uint32_t rx_fifo_len;			/*!< receive fifo length, set by user in object implementation */
 	uint32_t int_status;			/*!< interrupt status for designware uart */

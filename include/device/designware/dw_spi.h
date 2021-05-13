@@ -152,7 +152,7 @@ typedef struct dw_spi_ctrl {
 	uint32_t rx_sampledly;		/*!< RxD Sample Delay */
 	uint32_t tx_fifo_len;		/*!< transmit fifo length */
 	uint32_t rx_fifo_len;		/*!< receive fifo length */
-	INT_HANDLER dw_spi_int_handler;	/*!< spi interrupt handler */
+	INT_HANDLER_T dw_spi_int_handler;	/*!< spi interrupt handler */
 	/* Variables which always change during spi operation */
 	uint32_t int_status;		/*!< spi interrupt status */
 	DW_SPI_TRANSFER dw_xfer;	/*!< designware spi transfer */

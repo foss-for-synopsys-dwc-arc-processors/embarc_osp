@@ -68,7 +68,7 @@ static void dw_uart_0_isr(void *ptr);
 
 DEV_UART		dw_uart_0;			/*!< designware uart object */
 DW_UART_CTRL	dw_uart_0_ctrl = {			/*!< designware uart 0 ctrl */
-	0, CLK_BUS_APB, DW_UART_0_INTNO, (INT_HANDLER)dw_uart_0_isr,
+	0, CLK_BUS_APB, DW_UART_0_INTNO, (INT_HANDLER_T)dw_uart_0_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
@@ -144,7 +144,7 @@ static void dw_uart_1_isr(void *ptr);
 
 DEV_UART		dw_uart_1;			/*!< designware uart 1 object */
 DW_UART_CTRL	dw_uart_1_ctrl = {			/*!< designware uart 1 ctrl */
-	0, CLK_BUS_APB, DW_UART_1_INTNO, (INT_HANDLER)dw_uart_1_isr,
+	0, CLK_BUS_APB, DW_UART_1_INTNO, (INT_HANDLER_T)dw_uart_1_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
@@ -219,7 +219,7 @@ static void dw_uart_2_isr(void *ptr);
 
 DEV_UART		dw_uart_2;			/*!< designware uart 2 object */
 DW_UART_CTRL	dw_uart_2_ctrl = {			/*!< designware uart 2 ctrl */
-	0, CLK_BUS_APB, DW_UART_2_INTNO, (INT_HANDLER)dw_uart_2_isr,
+	0, CLK_BUS_APB, DW_UART_2_INTNO, (INT_HANDLER_T)dw_uart_2_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 

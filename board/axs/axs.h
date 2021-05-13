@@ -35,8 +35,6 @@
 #include "drivers/ip/designware/uart/dw_uart_obj.h"
 #include "drivers/ip/designware/gpio/dw_gpio_obj.h"
 
-#include "common/axs_timer.h"
-
 #include "axs_hardware.h"
 
 /* common macros must be defined by all boards */
@@ -63,14 +61,6 @@
 #define NTSHELL_CONSOLE_ID		(AXS_NTSHELL_0_ID)
 //#define NTSHELL_NETWORK_ID		(AXS_NTSHELL_1_ID)
 
-#define OSP_DELAY_OS_COMPAT_ENABLE	(1)
-#define OSP_DELAY_OS_COMPAT_DISABLE	(0)
-
-#define OSP_GET_CUR_SYSHZ()		(gl_axs_sys_hz_cnt)
-#define OSP_GET_CUR_MS()		(gl_axs_ms_cnt)
-#define OSP_GET_CUR_US()		board_get_cur_us()
-#define OSP_GET_CUR_HWTICKS()		board_get_hwticks()
-
 // Un-implemented LED/Switch/Button functions and macros
 #define BOARD_LED_MASK			(0x0)
 #define BOARD_LED_CNT			(0)
@@ -84,19 +74,5 @@
 #define led_toggle(mask)
 #define switch_read(mask)		(0x0)
 #define button_read(mask)		(0x0)
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void board_init(void);
-extern void board_timer_update(uint32_t precision);
-extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
-extern uint64_t board_get_hwticks(void);
-extern uint64_t board_get_cur_us(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif	/* _AXS_H_ */

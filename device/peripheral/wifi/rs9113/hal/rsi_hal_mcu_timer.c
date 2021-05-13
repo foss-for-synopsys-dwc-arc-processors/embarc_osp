@@ -66,12 +66,12 @@ int32_t rsi_timer_start(uint8_t timer_node, uint8_t mode, uint8_t type, uint32_t
 // 	} else {
 // 		int_no = INTNO_TIMER0 ;
 // 	}
-// 	timer_present(timer_node);
-// 	timer_init();
+// 	arc_timer_present(timer_node);
+// 	arc_timer_init();
 // 	//! register the call back
 // 	int_handler_install(int_no, rsi_timer_expiry_handler);
 // 	//! Start timer
-// 	timer_start(timer_node, mode, duration);
+// 	arc_timer_start(timer_node, mode, duration);
 	return 0;
 }
 
@@ -91,7 +91,7 @@ int32_t rsi_timer_start(uint8_t timer_node, uint8_t mode, uint8_t type, uint32_t
 int32_t rsi_timer_stop(uint8_t timer_node)
 {
 	//! Stop the timer
-	// timer_stop(timer_node);
+	// arc_timer_stop(timer_node);
 	return 0;
 }
 
@@ -111,7 +111,7 @@ uint32_t rsi_timer_read(uint8_t timer_node)
 	volatile uint32_t timer_val = 0;
 
 	//! read the timer and return timer value
-	// timer_current(timer_node, (void *)(&timer_val));
+	// arc_timer_current(timer_node, (void *)(&timer_val));
 	return timer_val;
 }
 

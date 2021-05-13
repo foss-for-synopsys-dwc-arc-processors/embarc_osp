@@ -33,11 +33,11 @@
 
 #if 0
 #if defined(ARC_FEATURE_SEC_TIMER1_PRESENT) || defined(ARC_FEATURE_SEC_TIMER0_PRESENT)
-int32_t timer_present(const uint32_t no) EMBARC_LINKTO(secure_timer_present);
-int32_t timer_start(const uint32_t no, const uint32_t mode, const uint32_t val) EMBARC_LINKTO(secure_timer_start);
-int32_t timer_stop(const uint32_t no) EMBARC_LINKTO(secure_timer_stop);
-int32_t timer_current(const uint32_t no, void *val) EMBARC_LINKTO(secure_timer_current);
-int32_t timer_int_clear(const uint32_t no) EMBARC_LINKTO(secure_timer_int_clear);
-void timer_init(void) EMBARC_LINKTO(secure_timer_init);
+int32_t arc_timer_present(const uint32_t no) EMBARC_LINKTO(arc_secure_timer_present);
+int32_t arc_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val) EMBARC_LINKTO(arc_secure_timer_start);
+int32_t arc_timer_stop(const uint32_t no) EMBARC_LINKTO(arc_secure_timer_stop);
+int32_t arc_timer_current(const uint32_t no, void *val) EMBARC_LINKTO(arc_secure_timer_current);
+int32_t arc_timer_int_clear(const uint32_t no) EMBARC_LINKTO(arc_secure_timer_int_clear);
+void arc_timer_init(void) EMBARC_LINKTO(arc_secure_timer_init);
 #endif
 #endif

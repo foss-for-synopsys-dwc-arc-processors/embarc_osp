@@ -42,7 +42,7 @@
 #include "drivers/sdcard/sdcard.h"
 #include "drivers/creg/creg_hsdc.h"
 #include "drivers/cgu/cgu_hsdc.h"
-#include "common/hsdk_timer.h"
+
 #include "common/hsdk_io.h"
 #include "device/dev_pinmux.h"
 
@@ -85,9 +85,6 @@
 #define NTSHELL_CONSOLE_ID		(HSDK_NTSHELL_0_ID)
 #define NTSHELL_NETWORK_ID		(HSDK_NTSHELL_1_ID)
 
-#define OSP_DELAY_OS_COMPAT_ENABLE	(1)
-#define OSP_DELAY_OS_COMPAT_DISABLE	(0)
-
 #define WF_IPADDR_1			(192)
 #define WF_IPADDR_2			(168)
 #define WF_IPADDR_3			(43)
@@ -122,11 +119,6 @@
 #define BOARD_PMWIFI_0_ID		HSDK_PMWIFI_0_ID
 #define BOARD_PMWIFI_ID_MAX		HSDK_PMWIFI_0_ID
 
-#define OSP_GET_CUR_SYSHZ()		(gl_hsdk_sys_hz_cnt)
-#define OSP_GET_CUR_MS()		(gl_hsdk_ms_cnt)
-#define OSP_GET_CUR_US()		board_get_cur_us()
-#define OSP_GET_CUR_HWTICKS()		board_get_hwticks()
-
 #define BOARD_LED_MASK			(0xff)
 #define BOARD_LED_CNT			(4)
 
@@ -138,19 +130,5 @@
 
 #define switch_read(mask)		(0x0)
 #define button_read(mask)		(0x0)
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void board_init(void);
-extern void board_timer_update(uint32_t precision);
-extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
-extern uint64_t board_get_hwticks(void);
-extern uint64_t board_get_cur_us(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif	/* _HSDK_H_ */

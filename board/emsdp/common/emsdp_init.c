@@ -40,8 +40,7 @@
  */
 void board_init(void)
 {
-	timer_init();
 	io_mux_init();
-	emsdp_timer_init();
 	emsdp_io_init();
+	arc_timer_init();
 }

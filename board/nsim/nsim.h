@@ -35,7 +35,6 @@
 
 #include "drivers/uart/nsim_uart_obj.h"
 #include "drivers/ntshell/ntshell_io.h"
-#include "common/nsim_timer.h"
 
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)
@@ -70,30 +69,8 @@
 
 #define BOARD_CPU_CLOCK			CLK_CPU
 
-#define OSP_DELAY_OS_COMPAT_ENABLE	(1)
-#define OSP_DELAY_OS_COMPAT_DISABLE	(0)
-
-#define OSP_GET_CUR_SYSHZ()		(gl_nsim_sys_hz_cnt)
-#define OSP_GET_CUR_MS()		(gl_nsim_ms_cnt)
-#define OSP_GET_CUR_US()		board_get_cur_us()
-#define OSP_GET_CUR_HWTICKS()		board_get_hwticks()
-
 #define button_read(x) 			1
 #define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
 #define BOARD_LED_MASK			0xff
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void board_init(void);
-extern void board_timer_update(uint32_t precision);
-extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
-extern uint64_t board_get_hwticks(void);
-extern uint64_t board_get_cur_us(void);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif	/* _NSIM_H_ */

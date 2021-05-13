@@ -67,7 +67,7 @@ static uint32_t perf_id = 0xFF;
 /** performance timer initialization */
 static void perf_init(uint32_t id)
 {
-	if (timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
+	if (arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
 		EMBARC_PRINTF("perf timer init failed\r\n");
 		while(1);
 	}
@@ -77,7 +77,7 @@ static void perf_init(uint32_t id)
 /** performance timer start */
 static void perf_start(void)
 {
-	if (timer_current(perf_id, (void *)(&start)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&start)) < 0) {
 		start = 0;
 	}
 }
@@ -87,7 +87,7 @@ uint32_t perf_end(void)
 {
 	uint32_t end = 0;
 
-	if (timer_current(perf_id, (void *)(&end)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&end)) < 0) {
 		return 0;
 	}
 

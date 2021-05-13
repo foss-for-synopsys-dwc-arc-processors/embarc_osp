@@ -32,14 +32,14 @@
 
 
 typedef struct {
-	INT_HANDLER handler;	/* interrupt handler function */
+	INT_HANDLER_T handler;	/* interrupt handler function */
 	uint8_t id;		/* the container it belongs to */
 	uint8_t enabled;	/* enabled status */
 } SECURESHIELD_INT_HANDLER;
 
 
-extern EXC_ENTRY secureshield_entry_table[];
-extern EXC_HANDLER secureshield_exc_handler_table[];
+extern EXC_ENTRY_T secureshield_entry_table[];
+extern EXC_HANDLER_T secureshield_exc_handler_table[];
 extern SECURESHIELD_INT_HANDLER secureshield_int_handler_table[];
 
 extern int32_t secure_int_disable(uint32_t intno);
@@ -47,8 +47,8 @@ extern int32_t secure_int_enable(uint32_t intno);
 extern int32_t secure_int_enabled(uint32_t intno);
 extern int32_t secure_int_pri_set(uint32_t intno, int intpri);
 extern int32_t secure_int_pri_get(uint32_t intno);
-extern int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER handler);
-extern INT_HANDLER secure_int_handler_get(uint32_t intno);
+extern int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER_T handler);
+extern INT_HANDLER_T secure_int_handler_get(uint32_t intno);
 extern int32_t secure_int_sw_trigger(uint32_t intno);
 extern int32_t secure_int_probe(uint32_t intno);
 extern int32_t secure_int_level_config(uint32_t intno, uint32_t level);

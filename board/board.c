@@ -30,6 +30,12 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
+#define MAX_SYS_COUNTER_VALUE       (0xffffffff)
+
+#ifndef BOARD_SYS_TIMER_HZ
+#define BOARD_SYS_TIMER_HZ      (1000)
+#endif
+
 typedef struct main_args {
 	int argc;
 	char *argv[];
@@ -38,6 +44,44 @@ typedef struct main_args {
 /** Change this to pass your own arguments to main functions */
 MAIN_ARGS s_main_args = {1, {"main"}};
 
+/** board timer interrupt reset count */
+static uint32_t cyc_hz_count = (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ);
+
+/** board timer counter in timer interrupt */
+static volatile uint64_t gl_sys_hz_cnt = 0;
+/** board 1ms counter */
+static volatile uint32_t gl_ms_cnt = 0;
+
+#define HZ_COUNT_CONV(precision, base)  ((precision) / (base))
+
+/**
+ * @brief Board bare-metal timer interrupt.
+ *  Interrupt frequency is based on the defined @ref BOARD_SYS_TIMER_HZ
+ */
+static void board_timer_isr(void *ptr)
+{
+	arc_timer_int_clear(BOARD_SYS_TIMER_ID);
+
+	board_timer_update(BOARD_SYS_TIMER_HZ);
+}
+
+/**
+ * @brief Initialise bare-metal board timer and interrupt
+ * @details
+ * This function is called in @ref board_init, and
+ * it initializes the 1-MS timer interrupt for bare-metal mode
+ */
+static void board_timer_init(void)
+{
+	if (arc_timer_present(BOARD_SYS_TIMER_ID)) {
+		int_disable(BOARD_SYS_TIMER_INTNO);                                             /* disable first then enable */
+		int_handler_install(BOARD_SYS_TIMER_INTNO, board_timer_isr);
+		arc_timer_start(BOARD_SYS_TIMER_ID, TIMER_CTRL_IE | TIMER_CTRL_NH, cyc_hz_count);   /* start 1ms timer interrupt */
+
+		int_enable(BOARD_SYS_TIMER_INTNO);
+	}
+	arc_timer_calibrate_delay(BOARD_CPU_CLOCK);
+}
 #if defined(MID_FATFS)
 static FATFS sd_card_fs;	/* File system object for each logical drive */
 #endif /* MID_FATFS */
@@ -235,8 +279,7 @@ EMBARC_WEAK void board_main(void)
 	/* necessary board level init */
 	board_init();
 	/* Initialise bare-metal board timer and interrupt */
-	// board_timer_init();
-	timer_calibrate_delay(BOARD_CPU_CLOCK);
+	board_timer_init();
 	/* platform (e.g RTOS, baremetal)level init */
 	platform_main();
 /* board level exit */
@@ -289,3 +332,116 @@ EMBARC_WEAK void board_main(void)
 #endif
 }
 #endif /* EMBARC_USE_BOARD_MAIN */
+
+
+/**
+ * @brief Update timer counter and other MS period operation
+ * in cycling interrupt and must be called periodically.
+ * @param precision interrupt-period precision in Hz
+ */
+void board_timer_update(uint32_t precision)
+{
+	static uint32_t sys_hz_update = 0;
+	static uint32_t sys_ms_update = 0;
+	uint32_t hz_conv = 0;
+
+	/** count sys hz */
+	hz_conv = HZ_COUNT_CONV(precision, BOARD_SYS_TIMER_HZ);
+	sys_hz_update++;
+	if (sys_hz_update >= hz_conv) {
+		sys_hz_update = 0;
+		gl_sys_hz_cnt++;
+	}
+
+	/** count ms */
+	hz_conv = HZ_COUNT_CONV(precision, BOARD_SYS_TIMER_MS_HZ);
+	sys_ms_update++;
+	if (sys_ms_update >= hz_conv) {
+		sys_ms_update = 0;
+		gl_ms_cnt++;
+	}
+}
+
+/**
+ * @brief Get current timer's counter value in ticks
+ * @retval Ticks count in 64 bit format
+ */
+uint64_t board_get_hwticks(void)
+{
+	uint32_t sub_ticks;
+	uint64_t total_ticks;
+
+	arc_timer_current(TIMER_0, &sub_ticks);
+
+	total_ticks = (uint64_t)GET_CUR_MS() * (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ);
+	total_ticks += (uint64_t)sub_ticks;
+
+	return total_ticks;
+}
+
+/**
+ * @brief Get current passed us since timer init
+ * @retval us Count in 64 bit format
+ */
+uint64_t board_get_cur_us(void)
+{
+	uint32_t sub_us;
+	uint64_t total_us;
+
+	arc_timer_current(TIMER_0, &sub_us);
+
+	sub_us = ((uint64_t)sub_us * 1000000) / BOARD_CPU_CLOCK;
+	total_us = ((uint64_t)GET_CUR_MS()) * 1000 + (uint64_t)sub_us;
+
+	return total_us;
+}
+
+/**
+ * @brief Get current passed ms since timer init
+ * @retval ms Count in 32 bit format
+ */
+uint32_t board_get_cur_ms(void)
+{
+	return gl_ms_cnt;
+}
+
+/**
+ * @brief Get board timer counter in timer interrupt
+ * @retval Count in 64 bit format
+ */
+uint64_t board_get_cur_syshz(void)
+{
+	return gl_sys_hz_cnt;
+}
+
+/**
+ * \brief	provide MS delay function
+ * \details
+ * 		this function needs a 1-MS timer interrupt to work.
+ * 	For bare-metal, it is implemented in this file.
+ * 	For OS, you must call \ref board_timer_update in
+ * 	the OS 1-MS timer interrupt when the bare-metal timer interrupt
+ * 	is not ready
+ * \param[in]	ms		MS to delay
+ * \param[in]	os_compat	Enable or disable
+ *	When this delay is enabled, use the OS delay function, if one is provided.
+ *	See \ref OSP_DELAY_OS_COMPAT_ENABLE and
+ *	\ref OSP_DELAY_OS_COMPAT_DISABLE
+ */
+void board_delay_ms(uint32_t ms, uint8_t os_compat)
+{
+	uint64_t start_us, us_delayed;
+
+#ifdef ENABLE_OS
+	if (os_compat == OSP_DELAY_OS_COMPAT_ENABLE) {
+		/** \todo add different os delay functions */
+#ifdef OS_FREERTOS
+		vTaskDelay(ms);
+		return;
+#endif
+	}
+#endif
+	us_delayed = ((uint64_t)ms * 1000);
+	start_us = board_get_cur_us();
+	while ((board_get_cur_us() - start_us) < us_delayed);
+}

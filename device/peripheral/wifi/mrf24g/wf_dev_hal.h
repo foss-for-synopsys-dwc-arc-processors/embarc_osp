@@ -89,7 +89,7 @@ typedef struct wf_gpio_ops {
 
 /** \brief mrf24wg device timer related operation */
 typedef struct wf_timer_ops {
-	int32_t (*timer_init) (uint32_t freq);	/*!< init timer with freq */
+	int32_t (*arc_timer_init) (uint32_t freq);	/*!< init timer with freq */
 	uint32_t (*timer_read_ms) (void);	/*!< get timer count ms */
 	void (*timer_delay) (uint32_t ms);	/*!< delay ms */
 } WF_TIMER_OPS, * WF_TIMER_OPS_PTR;

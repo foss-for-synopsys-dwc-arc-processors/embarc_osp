@@ -59,10 +59,9 @@
  */
 void board_init(void)
 {
-	timer_init();
 	io_mux_init();
 	emsk_gpio_init();
-	emsk_timer_init();
+	arc_timer_init();
 }
 
 /** @} end of group BOARD_EMSK_COMMON_INIT */

@@ -71,7 +71,7 @@ typedef volatile struct dw_trng_reg {
 typedef struct dw_trng_ctrl {
 	DW_TRNG_REG_PTR	dw_trng_regs;			/*!< dw trng register */
 	uint32_t intno;							/*!< interrupt vector number */
-	INT_HANDLER dw_trng_int_handler;		/*!< interrupt handler */
+	INT_HANDLER_T dw_trng_int_handler;		/*!< interrupt handler */
 	uint32_t int_status;					/*!< interrupt status */
 } DW_TRNG_CTRL, *DW_TRNG_CTRL_PTR;
 

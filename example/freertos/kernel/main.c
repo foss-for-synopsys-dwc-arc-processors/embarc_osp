@@ -135,12 +135,12 @@ static int sample_count = 0;
 /** performance timer initialization */
 static void perf_init(unsigned int id)
 {
-	if (timer_present(id) == 0) {
+	if (arc_timer_present(id) == 0) {
 		EMBARC_PRINTF("perf timer %d is not present\r\n", id);
 		while (1);
 	}
 
-	timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF);
+	arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF);
 
 	perf_id = id;
 }
@@ -148,7 +148,7 @@ static void perf_init(unsigned int id)
 /** performance timer start */
 static void perf_start(void)
 {
-	if (timer_current(perf_id, (void *)(&start)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&start)) < 0) {
 		start = 0;
 	}
 }
@@ -158,7 +158,7 @@ static unsigned int perf_end(void)
 {
 	unsigned int end = 0;
 
-	if (timer_current(perf_id, (void *)(&end)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&end)) < 0) {
 		return 0;
 	}
 
@@ -178,7 +178,7 @@ int main(void)
 	EMBARC_PRINTF("Benchmark will run %d times, please wait about %d ms\r\n", MAX_SAMPLES, (TASK_DELAY_MS*MAX_SAMPLES));
 
 	// Register interrupts
-	int_handler_install(SWI_INTNO, (EXC_HANDLER)soft_interrupt);
+	int_handler_install(SWI_INTNO, (EXC_HANDLER_T)soft_interrupt);
 	//int_pri_set(SWI_INTNO, INT_PRI_MIN);
 	int_enable(SWI_INTNO);
 

@@ -350,7 +350,7 @@ static void int_handler_default(void *p_excinf)
 }
 
 __attribute__ ((aligned(1024), section(".vector")))
-EXC_ENTRY exc_entry_table[NUM_EXC_ALL] = {
+EXC_ENTRY_T exc_entry_table[NUM_EXC_ALL] = {
  	[0] = _arc_reset,
  	[1 ... NUM_EXC_CPU-1] = exc_entry_cpu,
 	[NUM_EXC_CPU ... NUM_EXC_ALL-1] = exc_entry_int
@@ -360,18 +360,10 @@ EXC_ENTRY exc_entry_table[NUM_EXC_ALL] = {
  * \brief the cpu exception and interrupt exception handler table
  * called in exc_entry_default and exc_entry_int
  */
-EXC_HANDLER exc_int_handler_table[NUM_EXC_ALL] = {
+EXC_HANDLER_T exc_int_handler_table[NUM_EXC_ALL] = {
 	 [0 ... NUM_EXC_CPU-1] = exc_handler_default,
 	 [NUM_EXC_CPU ... NUM_EXC_ALL-1] = int_handler_default
 };
-
-/**
- * \var exc_nest_count
- * \brief the counter for exc/int processing, =0 no int/exc
- * >1 in int/exc processing
- * @}
- */
-uint32_t exc_nest_count;
 
 typedef struct aux_irq_ctrl_field {
 	/* note: little endian */
@@ -450,15 +442,15 @@ void exc_int_init(void)
  * \param[in] excno exception number
  * \param[in] entry the entry of exception to install
  */
-int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY entry)
+int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY_T entry)
 {
 	uint32_t status;
-	EXC_ENTRY *table;
+	EXC_ENTRY_T *table;
 
 #if defined(ARC_FEATURE_SEC_PRESENT) && (SECURESHIELD_VERSION < 2)
-	table = (EXC_ENTRY *)arc_aux_read(AUX_INT_VECT_BASE_S);
+	table = (EXC_ENTRY_T *)arc_aux_read(AUX_INT_VECT_BASE_S);
 #else
-	table = (EXC_ENTRY *)arc_aux_read(AUX_INT_VECT_BASE);
+	table = (EXC_ENTRY_T *)arc_aux_read(AUX_INT_VECT_BASE);
 #endif
 
 	if (excno < NUM_EXC_ALL && entry != NULL
@@ -489,7 +481,7 @@ int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY entry)
  * \param[in] excno exception number
  * \return the installed CPU exception entry
  */
-EXC_ENTRY exc_entry_get(const uint32_t excno)
+EXC_ENTRY_T exc_entry_get(const uint32_t excno)
 {
 	if (excno < NUM_EXC_ALL) {
 		return exc_entry_table[excno];
@@ -503,7 +495,7 @@ EXC_ENTRY exc_entry_get(const uint32_t excno)
  * \param[in] excno	exception number
  * \param[in] handler the handler of exception to install
  */
-int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER handler)
+int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER_T handler)
 {
 	if (excno < NUM_EXC_ALL && handler != NULL) {
 		exc_int_handler_table[excno] = handler;
@@ -519,7 +511,7 @@ int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER handler)
  * \param[in] excno	exception number
  * \return the installed exception handler or NULL
  */
-EXC_HANDLER exc_handler_get(const uint32_t excno)
+EXC_HANDLER_T exc_handler_get(const uint32_t excno)
 {
 	if (excno < NUM_EXC_ALL) {
 		return exc_int_handler_table[excno];
@@ -749,7 +741,7 @@ void cpu_unlock_restore(const uint32_t status)
  * \param[in] intno	interrupt number
  * \param[in] handler interrupt handler to install
  */
-int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)
+int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 {
 	/*!< \todo parameter check ? */
 	if (intno >= NUM_EXC_CPU) {
@@ -765,7 +757,7 @@ int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)
  * \param[in] intno interrupt number
  * \return the installed interrupt handler or NULL
  */
-INT_HANDLER int_handler_get(const uint32_t intno)
+INT_HANDLER_T int_handler_get(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU) {
 		return exc_handler_get(intno);

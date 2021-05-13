@@ -297,7 +297,7 @@ typedef struct dw_i2s_config {
 	uint32_t data_res[4];				/*!< Desired audio data resolution, which can be \ref I2S_AUD_DATA_RES, related WLEN */
 	uint32_t sample_rate[4];			/*!< Audio sampling rate, which can be \ref I2S_AUD_SAMPLE_RATE, related to audio reference clk */
 	uint32_t intno[4];					/*!< I2S interrupt vector number, bit0-15 tx_emp_intr/rx_da_intr, bit16-31 tx_or_intr/rx_or_intr */
-	INT_HANDLER dw_i2s_int_handler;		/*!< I2S interrupt handler */
+	INT_HANDLER_T dw_i2s_int_handler;		/*!< I2S interrupt handler */
 } DW_I2S_CONFIG, *DW_I2S_CONFIG_PTR;
 
 /**

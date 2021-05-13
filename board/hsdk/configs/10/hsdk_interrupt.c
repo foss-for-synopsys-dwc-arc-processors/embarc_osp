@@ -38,7 +38,7 @@ static void hsdk_int_handler_default(void *ptr)
 	ptr = ptr;
 }
 
-static INT_HANDLER hsdk_int_handler_table[ARC_CONNECT_NUM_INT_ALL] = {
+static INT_HANDLER_T hsdk_int_handler_table[ARC_CONNECT_NUM_INT_ALL] = {
 	[0 ... ARC_CONNECT_NUM_INT_ALL-1] = hsdk_int_handler_default
 };
 
@@ -306,7 +306,7 @@ void cpu_unlock_restore(const uint32_t status)
  * \param[in] intno	interrupt number
  * \param[in] handler interrupt handler to install
  */
-int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)
+int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 {
 	if (intno >= NUM_EXC_CPU) {
 		if (intno >= HSDK_MAX_NUM_EXCP) {
@@ -328,7 +328,7 @@ int32_t int_handler_install(const uint32_t intno, INT_HANDLER handler)
  * \param[in] intno interrupt number
  * \return the installed interrupt handler or NULL
  */
-INT_HANDLER int_handler_get(const uint32_t intno)
+INT_HANDLER_T int_handler_get(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU) {
 		if (intno >= HSDK_MAX_NUM_EXCP) {

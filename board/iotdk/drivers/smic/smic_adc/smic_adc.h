@@ -88,7 +88,7 @@ typedef volatile struct {
 	uint16_t adc_ready_flag;
 	uint16_t adc_data[ADC_CHANNEL_MAX];
 	SMIC_ADC_CALLBACK adc_callback[ADC_CHANNEL_MAX];
-	INT_HANDLER adc_handle;
+	INT_HANDLER_T adc_handle;
 } SMIC_ADC_DEF, *SMIC_ADC_DEF_PTR;
 
 
