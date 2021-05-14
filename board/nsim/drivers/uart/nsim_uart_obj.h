@@ -51,7 +51,7 @@
 extern "C" {
 #endif
 
-extern void nsim_uart_all_install(void);
+// Declaration of functions here
 
 #ifdef __cplusplus
 }

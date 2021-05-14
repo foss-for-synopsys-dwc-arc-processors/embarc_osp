@@ -15,10 +15,6 @@ BD_VER ?= 10
 
 override BD_VER := $(strip $(BD_VER))
 
-## Extra Hostlink Options
-LCORE_OPT_MW  += -Hhostlink
-LCORE_OPT_GNU += --specs=nsim.specs
-
 ## Set Valid Board Version
 VALID_BD_VER = $(call check_item_exist, $(BD_VER), $(SUPPORTED_BD_VERS))
 
@@ -56,6 +52,10 @@ include $(BOARD_NSIM_DIR)/configs/core_configs.mk
 COMMON_COMPILE_PREREQUISITES += $(BOARD_NSIM_DIR)/configs/core_compiler.mk
 include $(BOARD_NSIM_DIR)/configs/core_compiler.mk
 
+# onchip ip object rules
+ifdef ONCHIP_IP_LIST
+	BOARD_EMSK_DEV_CSRCDIR += $(foreach ONCHIP_IP_OBJ, $(ONCHIP_IP_LIST), $(addprefix $(BOARD_EMSK_DIR)/drivers/ip/, $(ONCHIP_IP_OBJ)))
+endif
 
 include $(EMBARC_ROOT)/device/device.mk
 
@@ -101,7 +101,7 @@ BOARD_NSIM_OBJS = $(BOARD_NSIM_COBJS) $(BOARD_NSIM_ASMOBJS)
 BOARD_NSIM_DEPS = $(call get_deps, $(BOARD_NSIM_OBJS))
 
 # extra macros to be defined
-BOARD_NSIM_DEFINES += $(CORE_DEFINES) -D_HOSTLINK_ -D_NSIM_
+BOARD_NSIM_DEFINES += $(CORE_DEFINES) -D_NSIM_
 
 # genearte library
 BOARD_LIB_NSIM = $(OUT_DIR)/libboard_nsim.a

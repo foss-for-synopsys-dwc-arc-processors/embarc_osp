@@ -16,7 +16,7 @@ ACORE_OPT_GNU   += $(COMMON_CORE_OPT_GNU)
 LCORE_OPT_GNU   += $(COMMON_CORE_OPT_GNU)
 
 ## Metaware Debugger and nSIM Related Options ##
-MDB_NSIM_OPT += @$(EMBARC_GENERATED_DIR)/$(GENE_MDB_ARG)
+MDB_NSIM_OPT += -prop=nsim_mem-dev=uart0,kind=dwuart,base=0xf0000000,irq=24 @$(EMBARC_GENERATED_DIR)/$(GENE_MDB_ARG)
 
-NSIMDRV_OPT = -propsfile $(EMBARC_GENERATED_DIR)/$(GENE_NSIM_PROPS)
+NSIMDRV_OPT = -p nsim_mem-dev=uart0,kind=dwuart,base=0xf0000000,irq=24 -propsfile $(EMBARC_GENERATED_DIR)/$(GENE_NSIM_PROPS)
 endif
