@@ -100,10 +100,10 @@ extern void board_main(void);
 #define OSP_DELAY_OS_COMPAT_ENABLE	(1)
 #define OSP_DELAY_OS_COMPAT_DISABLE	(0)
 
-#define GET_CUR_SYSHZ()         bord_get_cur_syshz()
-#define GET_CUR_MS()            board_get_cur_ms()
-#define GET_CUR_US()            board_get_cur_us()
-#define GET_CUR_HWTICKS()       board_get_hwticks()
+#define OSP_GET_CUR_SYSHZ()         bord_get_cur_syshz()
+#define OSP_GET_CUR_MS()            board_get_cur_ms()
+#define OSP_GET_CUR_US()            board_get_cur_us()
+#define OSP_GET_CUR_HWTICKS()       board_get_hwticks()
 
 #endif /* _EMBARC_BOARD_H_ */
 

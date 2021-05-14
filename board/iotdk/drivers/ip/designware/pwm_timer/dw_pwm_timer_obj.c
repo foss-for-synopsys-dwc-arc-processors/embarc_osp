@@ -27,11 +27,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
 #include "dw_pwm_timer_obj.h"
+
+#include "iotdk/iotdk.h"
 
 
 #if (USE_DW_PWM_TIMER_0)

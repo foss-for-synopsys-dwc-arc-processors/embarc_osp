@@ -34,6 +34,16 @@
 #include "embARC_toolchain.h"
 #include "device/dev_pinmux.h"
 
+/**
+ * Mux Control Register Index
+ */
+#define PMOD_MUX_CTRL   0       /*!< 32-bits, offset 0x0,
+	                               This register controls mapping of the peripheral device signals on Pmod connectors */
+
+#define ARDUINO_MUX_CTRL    1   /*!< 32-bits, offset 0x4 */
+
+#define GENERIC_MUX_CTRL    2   /*!< 32-bits, offset 0x8 */
+
 #define MUX_SEL0_OFFSET		(0)
 #define MUX_SEL1_OFFSET		(4)
 #define MUX_SEL2_OFFSET		(8)

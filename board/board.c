@@ -373,7 +373,7 @@ uint64_t board_get_hwticks(void)
 
 	arc_timer_current(TIMER_0, &sub_ticks);
 
-	total_ticks = (uint64_t)GET_CUR_MS() * (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ);
+	total_ticks = (uint64_t)OSP_GET_CUR_MS() * (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ);
 	total_ticks += (uint64_t)sub_ticks;
 
 	return total_ticks;
@@ -391,7 +391,7 @@ uint64_t board_get_cur_us(void)
 	arc_timer_current(TIMER_0, &sub_us);
 
 	sub_us = ((uint64_t)sub_us * 1000000) / BOARD_CPU_CLOCK;
-	total_us = ((uint64_t)GET_CUR_MS()) * 1000 + (uint64_t)sub_us;
+	total_us = ((uint64_t)OSP_GET_CUR_MS()) * 1000 + (uint64_t)sub_us;
 
 	return total_us;
 }

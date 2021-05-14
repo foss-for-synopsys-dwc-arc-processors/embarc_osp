@@ -31,14 +31,11 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
-
 #include "dfss_spi_obj.h"
-#include "device/subsystem/ss_spi_master.h"
-#include "device/subsystem/ss_spi_slave.h"
+#include "ss_spi_master.h"
+#include "ss_spi_slave.h"
+
+#include "iotdk/iotdk.h"
 
 
 #if (USE_DFSS_SPI_0)

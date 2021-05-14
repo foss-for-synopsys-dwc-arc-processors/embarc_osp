@@ -28,10 +28,7 @@
  *
 --------------------------------------------- */
 
-#include "embARC_toolchain.h"
-#include "arc/arc_exception.h"
-
-#include "device/designware/dw_spi.h"
+#include "dw_spi.h"
 #include "dw_spi_obj.h"
 
 #include "hsdk/hsdk.h"

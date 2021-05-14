@@ -27,7 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
 #include "dw_trng_obj.h"
 #include "emsdp/emsdp.h"
 

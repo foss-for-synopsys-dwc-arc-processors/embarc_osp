@@ -31,13 +31,10 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "board.h"
+#include "emsdp/emsdp.h"
 
 #include "dfss_uart_obj.h"
-#include "device/subsystem//ss_uart.h"
+#include "ss_uart.h"
 
 /*******************************************************************************/
 

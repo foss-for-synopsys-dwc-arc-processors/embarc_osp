@@ -28,7 +28,6 @@
  *
 --------------------------------------------- */
 
-#include "embARC_toolchain.h"
 #include "embARC_error.h"
 
 #include "iotdk/iotdk.h"

@@ -27,7 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
 #include "emsdp/emsdp.h"
 
 DEV_SPI_PTR spi_get_dev(int32_t spi_id)

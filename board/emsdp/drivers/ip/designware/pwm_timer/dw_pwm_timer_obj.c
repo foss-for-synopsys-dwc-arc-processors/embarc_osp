@@ -27,9 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
 #include "emsdp_hardware.h"
 #include "dw_pwm_timer_obj.h"
 

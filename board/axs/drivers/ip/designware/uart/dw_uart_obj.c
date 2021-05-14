@@ -27,17 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc/arc.h"
-#include "arc/arc_builtin.h"
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "arc/arc_exception.h"
-
-#include "device/designware/dw_uart.h"
+#include "dw_uart.h"
 #include "dw_uart_obj.h"
 
-#include "../../axs.h"
+#include "axs/axs.h"
 
 #define DW_UART_FIFO_LEN	32
 /**
@@ -243,6 +236,22 @@ static void dw_uart_2_install(void)
 #endif /* USE_DW_UART_2 */
 /** @} end of name */
 
+/**
+ * \brief	install all uart objects
+ * \note	\b MUST be called during system init
+ */
+void dw_uart_all_install(void)
+{
+#if (USE_DW_UART_0)
+	dw_uart_0_install();
+#endif
+#if (USE_DW_UART_1)
+	dw_uart_1_install();
+#endif
+#if (USE_DW_UART_2)
+	dw_uart_2_install();
+#endif
+}
 
 /** get one designware device structure */
 DEV_UART_PTR uart_get_dev(int32_t uart_id)
@@ -275,21 +284,4 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 			break;
 	}
 	return NULL;
-}
-
-/**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
- */
-void dw_uart_all_install(void)
-{
-#if (USE_DW_UART_0)
-	dw_uart_0_install();
-#endif
-#if (USE_DW_UART_1)
-	dw_uart_1_install();
-#endif
-#if (USE_DW_UART_2)
-	dw_uart_2_install();
-#endif
 }

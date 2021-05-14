@@ -47,12 +47,8 @@
  * \addtogroup	BOARD_EMSK_DRV_MUX
  * @{
  */
-#include "device/dev_pinmux.h"
-#include "mux_hal.h"
 #include "mux.h"
 #include "embARC_error.h"
-#include "arc/arc.h"
-#include "arc/arc_builtin.h"
 #include "../../emsk.h"
 
 static MUX_REG *mux_regs;

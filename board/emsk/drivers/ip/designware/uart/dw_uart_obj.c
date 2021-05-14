@@ -48,7 +48,6 @@
  * \addtogroup	BOARD_EMSK_DRV_DW_UART_OBJ
  * @{
  */
-#include "embARC_toolchain.h"
 
 #include "dw_uart.h"
 #include "dw_uart_obj.h"
@@ -283,6 +282,23 @@ static void dw_uart_2_install(void)
 #endif /* USE_DW_UART_2 */
 /** @} end of name */
 
+/**
+ * \brief	install all uart objects
+ * \note	\b MUST be called during system init
+ */
+void dw_uart_all_install(void)
+{
+#if (USE_DW_UART_0)
+	dw_uart_0_install();
+#endif
+#if (USE_DW_UART_1)
+	dw_uart_1_install();
+#endif
+#if (USE_DW_UART_2)
+	dw_uart_2_install();
+#endif
+}
+
 /** get one designware device structure */
 DEV_UART_PTR uart_get_dev(int32_t uart_id)
 {
@@ -314,23 +330,6 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 			break;
 	}
 	return NULL;
-}
-
-/**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
- */
-void dw_uart_all_install(void)
-{
-#if (USE_DW_UART_0)
-	dw_uart_0_install();
-#endif
-#if (USE_DW_UART_1)
-	dw_uart_1_install();
-#endif
-#if (USE_DW_UART_2)
-	dw_uart_2_install();
-#endif
 }
 
 /** @} end of group BOARD_EMSK_DRV_DW_UART_OBJ */

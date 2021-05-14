@@ -31,13 +31,10 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
-
 #include "dfss_uart_obj.h"
-#include "device/subsystem//ss_uart.h"
+#include "ss_uart.h"
+
+#include "iotdk/iotdk.h"
 
 /*******************************************************************************/
 
@@ -367,6 +364,26 @@ static void dfss_uart_3_install(void)
 
 #endif /* USE_DFSS_UART_3 */
 
+/**
+ * \brief	install all uart objects
+ * \note	\b MUST be called during system init
+ */
+void dfss_uart_all_install(void)
+{
+#if (USE_DFSS_UART_0)
+	dfss_uart_0_install();
+#endif
+#if (USE_DFSS_UART_1)
+	dfss_uart_1_install();
+#endif
+#if (USE_DFSS_UART_2)
+	dfss_uart_2_install();
+#endif
+#if (USE_DFSS_UART_3)
+	dfss_uart_3_install();
+#endif
+}
+
 DEV_UART_PTR uart_get_dev(int32_t uart_id)
 {
 	static uint32_t install_flag = 0;
@@ -408,24 +425,4 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 	}
 
 	return NULL;
-}
-
-/**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
- */
-void dfss_uart_all_install(void)
-{
-#if (USE_DFSS_UART_0)
-	dfss_uart_0_install();
-#endif
-#if (USE_DFSS_UART_1)
-	dfss_uart_1_install();
-#endif
-#if (USE_DFSS_UART_2)
-	dfss_uart_2_install();
-#endif
-#if (USE_DFSS_UART_3)
-	dfss_uart_3_install();
-#endif
 }

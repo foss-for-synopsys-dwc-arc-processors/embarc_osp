@@ -48,11 +48,8 @@
  * \addtogroup	BOARD_EMSK_DRV_DW_IIC_OBJ
  * @{
  */
-#include "embARC_toolchain.h"
 
-#include "arc/arc_exception.h"
-
-#include "device/designware/dw_iic.h"
+#include "dw_iic.h"
 #include "dw_iic_obj.h"
 
 #include "emsk/emsk.h"

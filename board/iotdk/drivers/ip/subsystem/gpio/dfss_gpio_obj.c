@@ -27,13 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
-
 #include "dfss_gpio_obj.h"
-#include "device/subsystem/ss_gpio.h"
+#include "ss_gpio.h"
+
+#include "iotdk/iotdk.h"
 
 
 

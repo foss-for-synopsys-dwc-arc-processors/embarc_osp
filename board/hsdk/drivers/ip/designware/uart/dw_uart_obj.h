@@ -64,7 +64,7 @@
 extern "C" {
 #endif
 
-extern void dw_uart_all_install(void);
+// Declaration of functions here
 
 #ifdef __cplusplus
 }

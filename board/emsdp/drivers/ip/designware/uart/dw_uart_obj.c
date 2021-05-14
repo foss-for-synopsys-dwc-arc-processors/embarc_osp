@@ -27,7 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
 #include "dw_uart_obj.h"
 #include "emsdp/emsdp.h"
 
@@ -174,6 +173,20 @@ static void dw_uart_1_install(void)
 }
 #endif /* USE_DW_UART_1 */
 
+/**
+ * \brief	install all uart objects
+ * \note	\b MUST be called during system init
+ */
+void dw_uart_all_install(void)
+{
+#if (USE_DW_UART_0)
+	dw_uart_0_install();
+#endif
+#if (USE_DW_UART_1)
+	dw_uart_1_install();
+#endif
+}
+
 DEV_UART_PTR dw_uart_get_dev(int32_t uart_id)
 {
 	static uint32_t install_flag = 0;
@@ -199,18 +212,4 @@ DEV_UART_PTR dw_uart_get_dev(int32_t uart_id)
 			break;
 	}
 	return NULL;
-}
-
-/**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
- */
-void dw_uart_all_install(void)
-{
-#if (USE_DW_UART_0)
-	dw_uart_0_install();
-#endif
-#if (USE_DW_UART_1)
-	dw_uart_1_install();
-#endif
 }

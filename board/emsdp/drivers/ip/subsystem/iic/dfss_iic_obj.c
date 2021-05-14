@@ -27,13 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "board.h"
+#include "emsdp/emsdp.h"
 
 #include "dfss_iic_obj.h"
-#include "device/subsystem/ss_i2c_master.h"
+#include "ss_i2c_master.h"
 
 #if (USE_DFSS_IIC_0)
 

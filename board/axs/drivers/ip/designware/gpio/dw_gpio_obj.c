@@ -27,12 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc/arc.h"
-#include "arc/arc_builtin.h"
-#include "device/designware/dw_gpio.h"
+#include "dw_gpio.h"
 #include "dw_gpio_obj.h"
 
-#include "../../axs.h"
+#include "axs/axs.h"
 /*
  * Uncomment this to enable default
  * gpio bit handler output message

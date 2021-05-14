@@ -27,9 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
 
-#include "device/designware/dw_sdio.h"
+#include "dw_sdio.h"
 #include "dw_sdio_obj.h"
 
 #include "hsdk/hsdk.h"

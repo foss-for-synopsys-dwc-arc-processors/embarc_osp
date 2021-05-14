@@ -48,11 +48,8 @@
  * \addtogroup	BOARD_EMSK_DRV_DW_SPI_OBJ
  * @{
  */
-#include "embARC_toolchain.h"
 
-#include "arc/arc_exception.h"
-
-#include "device/designware/dw_spi.h"
+#include "dw_spi.h"
 #include "dw_spi_obj.h"
 
 #include "emsk/emsk.h"

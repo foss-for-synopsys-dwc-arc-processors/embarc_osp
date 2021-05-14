@@ -54,8 +54,8 @@
 extern "C" {
 #endif
 
+// Declaration of functions here
 extern DEV_UART_PTR dw_uart_get_dev(int32_t);
-extern void dw_uart_all_install(void);
 
 #ifdef __cplusplus
 }

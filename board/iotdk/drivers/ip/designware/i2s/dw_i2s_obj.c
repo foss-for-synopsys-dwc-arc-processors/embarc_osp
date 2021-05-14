@@ -27,13 +27,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
+#include "iotdk/iotdk.h"
 
-#include "iotdk_hardware.h"
-
-#include "device/designware/dw_i2s.h"
-#include "device/designware/dw_i2s_hal.h"
+#include "dw_i2s.h"
 #include "dw_i2s_obj.h"
 
 
