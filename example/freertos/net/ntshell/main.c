@@ -26,17 +26,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
 
 static TaskHandle_t net_ntshell_handle = NULL;
-#define TSKPRI_NET_NTSHELL	(configMAX_PRIORITIES-3)	  /**< net ntshell task priority */
+#define TSKPRI_NET_NTSHELL      (configMAX_PRIORITIES - 3)          /**< net ntshell task priority */
 
 /* according to the board, configure the right ntshell id */
 
-#define NTSHELL_ID_NET		1
+#define NTSHELL_ID_NET          1
 
 int main(void)
 {

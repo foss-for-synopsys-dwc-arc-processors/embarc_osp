@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	DEVICE_HAL_IIC	IIC Device HAL Interface
@@ -70,59 +70,59 @@
  */
 /** IIC Bus possible speed modes */
 typedef enum iic_speed_mode {
-	IIC_SPEED_STANDARD = 0,	/*!< Bidirectional, Standard-mode (Sm), with a bit rate up to 100 kbit/s */
-	IIC_SPEED_FAST     = 1,	/*!< Bidirectional, Fast-mode (Fm), with a bit rate up to 400 kbit/s */
-	IIC_SPEED_FASTPLUS = 2,	/*!< Bidirectional, Fast-mode Plus (Fm+), with a bit rate up to 1 Mbit/s */
-	IIC_SPEED_HIGH     = 3,	/*!< Bidirectional, High-speed mode (Hs-mode), with a bit rate up to 3.4 Mbit/s */
-	IIC_SPEED_ULTRA    = 4	/*!< Unidirectional(Write only), Ultra Fast-mode (UFm), with a bit rate up to 5 Mbit/s */
+	IIC_SPEED_STANDARD      = 0,    /*!< Bidirectional, Standard-mode (Sm), with a bit rate up to 100 kbit/s */
+	IIC_SPEED_FAST          = 1,    /*!< Bidirectional, Fast-mode (Fm), with a bit rate up to 400 kbit/s */
+	IIC_SPEED_FASTPLUS      = 2,    /*!< Bidirectional, Fast-mode Plus (Fm+), with a bit rate up to 1 Mbit/s */
+	IIC_SPEED_HIGH          = 3,    /*!< Bidirectional, High-speed mode (Hs-mode), with a bit rate up to 3.4 Mbit/s */
+	IIC_SPEED_ULTRA         = 4     /*!< Unidirectional(Write only), Ultra Fast-mode (UFm), with a bit rate up to 5 Mbit/s */
 } IIC_SPEED_MODE;
 
 /** IIC next Condition */
 typedef enum iic_next_condtion {
-	IIC_MODE_STOP    = 0,	/*!< Send a STOP condition after write/read operation */
-	IIC_MODE_RESTART = 1	/*!< Send a RESTART condition after write/read operation */
+	IIC_MODE_STOP           = 0,    /*!< Send a STOP condition after write/read operation */
+	IIC_MODE_RESTART        = 1     /*!< Send a RESTART condition after write/read operation */
 } IIC_NEXT_CONDTION;
 
 /** IIC Error State */
 typedef enum iic_error_state {
-	IIC_ERR_NONE       = 0,	/*!< Currently in iic device free state */
-	IIC_ERR_LOST_BUS   = 1,	/*!< Master or slave lost bus during operation */
-	IIC_ERR_ADDR_NOACK = 2,	/*!< Slave address is sent but not addressed by any slave devices */
-	IIC_ERR_DATA_NOACK = 3,	/*!< Data in transfer is not acked when it should be acked */
-	IIC_ERR_TIMEOUT    = 4,	/*!< Transfer timeout, no more data is received or sent */
-	IIC_ERR_MSTSTOP    = 5,	/*!< Slave received a STOP condition from master device */
-	IIC_ERR_UNDEF      = 6	/*!< Undefined error cases */
+	IIC_ERR_NONE            = 0,    /*!< Currently in iic device free state */
+	IIC_ERR_LOST_BUS        = 1,    /*!< Master or slave lost bus during operation */
+	IIC_ERR_ADDR_NOACK      = 2,    /*!< Slave address is sent but not addressed by any slave devices */
+	IIC_ERR_DATA_NOACK      = 3,    /*!< Data in transfer is not acked when it should be acked */
+	IIC_ERR_TIMEOUT         = 4,    /*!< Transfer timeout, no more data is received or sent */
+	IIC_ERR_MSTSTOP         = 5,    /*!< Slave received a STOP condition from master device */
+	IIC_ERR_UNDEF           = 6     /*!< Undefined error cases */
 } IIC_ERROR_STATE;
 
 /** IIC Working State */
 typedef enum iic_working_state {
-	IIC_FREE  = 0,	/*!< Currently in iic device free state */
-	IIC_IN_TX = 1,	/*!< Currently in iic master transmit state */
-	IIC_IN_RX = 2	/*!< Currently in iic master receive state */
+	IIC_FREE        = 0,    /*!< Currently in iic device free state */
+	IIC_IN_TX       = 1,    /*!< Currently in iic master transmit state */
+	IIC_IN_RX       = 2     /*!< Currently in iic master receive state */
 } IIC_WORKING_STATE;
 
 /** IIC Addressing Mode */
 typedef enum iic_address_mode {
-	IIC_7BIT_ADDRESS  = 0,	/*!< Use 7bit address mode */
-	IIC_10BIT_ADDRESS = 1	/*!< Use 10bit address mode */
+	IIC_7BIT_ADDRESS        = 0,    /*!< Use 7bit address mode */
+	IIC_10BIT_ADDRESS       = 1     /*!< Use 10bit address mode */
 } IIC_ADDRESS_MODE;
 
 /** IIC Slave State */
 typedef enum iic_slave_state {
-	IIC_SLAVE_STATE_FREE     = 0,		/*!< None state, in free */
-	IIC_SLAVE_STATE_START    = (1<<1),	/*!< Start or Restart condition, clear it when read */
-	IIC_SLAVE_STATE_STOP     = (1<<2),	/*!< Stop condition, clear it when read */
-	IIC_SLAVE_STATE_RD_REQ   = (1<<3),	/*!< Read request from master, this will trigger the slave transmit callback */
-	IIC_SLAVE_STATE_RD_DONE  = (1<<4),	/*!< Read request done from master, clear it when read */
-	IIC_SLAVE_STATE_WR_REQ   = (1<<5),	/*!< Write request from master, this will trigger the slave receive callback */
-	IIC_SLAVE_STATE_GC_REQ   = (1<<6),	/*!< General call request from master */
-	IIC_SLAVE_STATE_ERROR    = (1<<7)	/*!< Error, clear it when read */
+	IIC_SLAVE_STATE_FREE    = 0,            /*!< None state, in free */
+	IIC_SLAVE_STATE_START   = (1 << 1),     /*!< Start or Restart condition, clear it when read */
+	IIC_SLAVE_STATE_STOP    = (1 << 2),     /*!< Stop condition, clear it when read */
+	IIC_SLAVE_STATE_RD_REQ  = (1 << 3),     /*!< Read request from master, this will trigger the slave transmit callback */
+	IIC_SLAVE_STATE_RD_DONE = (1 << 4),     /*!< Read request done from master, clear it when read */
+	IIC_SLAVE_STATE_WR_REQ  = (1 << 5),     /*!< Write request from master, this will trigger the slave receive callback */
+	IIC_SLAVE_STATE_GC_REQ  = (1 << 6),     /*!< General call request from master */
+	IIC_SLAVE_STATE_ERROR   = (1 << 7)      /*!< Error, clear it when read */
 } IIC_SLAVE_STATE;
 
 /** 7bit IIC address mask */
-#define IIC_7BIT_ADDRESS_MASK		(0x7F)
+#define IIC_7BIT_ADDRESS_MASK           (0x7F)
 /** 10bit IIC address mask */
-#define IIC_10BIT_ADDRESS_MASK		(0x3FF)
+#define IIC_10BIT_ADDRESS_MASK          (0x3FF)
 /** @} */
 
 /**
@@ -146,11 +146,11 @@ typedef enum iic_slave_state {
  */
 
 /** Define IIC control commands for common usage */
-#define DEV_SET_IIC_SYSCMD(cmd)		DEV_SET_SYSCMD((cmd))
+#define DEV_SET_IIC_SYSCMD(cmd)         DEV_SET_SYSCMD((cmd))
 /** Define IIC control commands for master usage */
-#define DEV_SET_IIC_MST_SYSCMD(cmd)	DEV_SET_SYSCMD(0x00004000|(cmd))
+#define DEV_SET_IIC_MST_SYSCMD(cmd)     DEV_SET_SYSCMD(0x00004000 | (cmd))
 /** Define IIC control commands for slave usage */
-#define DEV_SET_IIC_SLV_SYSCMD(cmd)	DEV_SET_SYSCMD(0x00008000|(cmd))
+#define DEV_SET_IIC_SLV_SYSCMD(cmd)     DEV_SET_SYSCMD(0x00008000 | (cmd))
 
 /* ++++ Common commands for IIC Device ++++ */
 /**
@@ -159,14 +159,14 @@ typedef enum iic_slave_state {
  * - Param usage : store result of current status
  * - Return value explanation :
  */
-#define IIC_CMD_GET_STATUS			DEV_SET_IIC_SYSCMD(0)
+#define IIC_CMD_GET_STATUS                      DEV_SET_IIC_SYSCMD(0)
 /**
  * Set \ref dev_iic_info::addr_mode "iic addressing mode".
  * - Param type : uint32_t
  * - Param usage : iic addressing mode, possible values can be found \ref IIC_ADDRESS_MODE "here"
  * - Return value explanation :
  */
-#define IIC_CMD_SET_ADDR_MODE			DEV_SET_IIC_SYSCMD(1)
+#define IIC_CMD_SET_ADDR_MODE                   DEV_SET_IIC_SYSCMD(1)
 /**
  * Set \ref dev_iic_cbs::tx_cb "iic transmit success callback" function
  * when all required bytes are transmitted for interrupt method
@@ -174,7 +174,7 @@ typedef enum iic_slave_state {
  * - Param usage : transmit success callback function for iic
  * - Return value explanation :
  */
-#define IIC_CMD_SET_TXCB			DEV_SET_IIC_SYSCMD(2)
+#define IIC_CMD_SET_TXCB                        DEV_SET_IIC_SYSCMD(2)
 /**
  * Set \ref dev_iic_cbs::rx_cb "iic receive success callback" function
  * when all required bytes are received for interrupt method
@@ -182,7 +182,7 @@ typedef enum iic_slave_state {
  * - Param usage : receive success callback function for iic
  * - Return value explanation :
  */
-#define IIC_CMD_SET_RXCB			DEV_SET_IIC_SYSCMD(3)
+#define IIC_CMD_SET_RXCB                        DEV_SET_IIC_SYSCMD(3)
 /**
  * Set \ref dev_iic_cbs::err_cb "iic transfer error callback" function
  * when something error happened for interrupt method
@@ -190,7 +190,7 @@ typedef enum iic_slave_state {
  * - Param usage : transfer error callback function for iic
  * - Return value explanation :
  */
-#define IIC_CMD_SET_ERRCB			DEV_SET_IIC_SYSCMD(4)
+#define IIC_CMD_SET_ERRCB                       DEV_SET_IIC_SYSCMD(4)
 /**
  * Set buffer for interrupt transmit, and it will set \ref dev_iic_info::tx_buf "tx_buf".
  * - IIC master mode use case  \n
@@ -208,7 +208,7 @@ typedef enum iic_slave_state {
  * - Param usage : buffer structure pointer, if param is NULL, then it will set tx_buf to NULL
  * - Return value explanation :
  */
-#define IIC_CMD_SET_TXINT_BUF			DEV_SET_IIC_SYSCMD(5)
+#define IIC_CMD_SET_TXINT_BUF                   DEV_SET_IIC_SYSCMD(5)
 /**
  * Set buffer for interrupt receive, and it will set \ref dev_iic_info::rx_buf "rx_buf"
  * - IIC master mode use case  \n
@@ -219,7 +219,7 @@ typedef enum iic_slave_state {
  * - Param usage : buffer structure pointer, if param is NULL, then it will set rx_buf to NULL
  * - Return value explanation :
  */
-#define IIC_CMD_SET_RXINT_BUF			DEV_SET_IIC_SYSCMD(6)
+#define IIC_CMD_SET_RXINT_BUF                   DEV_SET_IIC_SYSCMD(6)
 /**
  * Enable or disable transmit interrupt,
  * for master mode, only one of tx and rx interrupt can be enabled,
@@ -228,7 +228,7 @@ typedef enum iic_slave_state {
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define IIC_CMD_SET_TXINT			DEV_SET_IIC_SYSCMD(7)
+#define IIC_CMD_SET_TXINT                       DEV_SET_IIC_SYSCMD(7)
 /**
  * Enable or disable receive interrupt,
  * for master mode, only one of tx and rx interrupt can be enabled,
@@ -237,7 +237,7 @@ typedef enum iic_slave_state {
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define IIC_CMD_SET_RXINT			DEV_SET_IIC_SYSCMD(8)
+#define IIC_CMD_SET_RXINT                       DEV_SET_IIC_SYSCMD(8)
 /**
  * Abort current interrupt transmit operation if tx interrupt enabled,
  * it will disable transmit interrupt, and set \ref DEV_IN_TX_ABRT
@@ -248,7 +248,7 @@ typedef enum iic_slave_state {
  * - Param usage :
  * - Return value explanation :
  */
-#define IIC_CMD_ABORT_TX			DEV_SET_IIC_SYSCMD(9)
+#define IIC_CMD_ABORT_TX                        DEV_SET_IIC_SYSCMD(9)
 /**
  * Abort current interrupt receive operation if rx interrupt enabled,
  * it will disable receive interrupt, and set \ref DEV_IN_TX_ABRT
@@ -259,7 +259,7 @@ typedef enum iic_slave_state {
  * - Param usage :
  * - Return value explanation :
  */
-#define IIC_CMD_ABORT_RX			DEV_SET_IIC_SYSCMD(10)
+#define IIC_CMD_ABORT_RX                        DEV_SET_IIC_SYSCMD(10)
 /**
  * Do a software reset for IIC device, it will stop current transfer,
  * and clear error state and bring device to normal state, set next condition to STOP
@@ -267,28 +267,28 @@ typedef enum iic_slave_state {
  * - Param usage :
  * - Return value explanation :
  */
-#define IIC_CMD_RESET				DEV_SET_IIC_SYSCMD(11)
+#define IIC_CMD_RESET                           DEV_SET_IIC_SYSCMD(11)
 /**
  * Flush iic device transmit buffer or fifo
  * - Param type : NULL
  * - Param usage :
  * - Return value explanation :
  */
-#define IIC_CMD_FLUSH_TX			DEV_SET_IIC_SYSCMD(12)
+#define IIC_CMD_FLUSH_TX                        DEV_SET_IIC_SYSCMD(12)
 /**
  * Flush iic device receive buffer or fifo
  * - Param type : NULL
  * - Param usage :
  * - Return value explanation :
  */
-#define IIC_CMD_FLUSH_RX			DEV_SET_IIC_SYSCMD(13)
+#define IIC_CMD_FLUSH_RX                        DEV_SET_IIC_SYSCMD(13)
 /**
  * Enable iic device
  * - Param type : NULL
  * - Param usage : param is not required
  * - Return value explanation :
  */
-#define IIC_CMD_ENA_DEV				DEV_SET_IIC_SYSCMD(14)
+#define IIC_CMD_ENA_DEV                         DEV_SET_IIC_SYSCMD(14)
 /**
  * Disable iic device, when device is disabled,
  * only \ref IIC_CMD_ENA_DEV, \ref IIC_CMD_DIS_DEV,
@@ -298,7 +298,7 @@ typedef enum iic_slave_state {
  * - Param usage : param is not required
  * - Return value explanation :
  */
-#define IIC_CMD_DIS_DEV				DEV_SET_IIC_SYSCMD(15)
+#define IIC_CMD_DIS_DEV                         DEV_SET_IIC_SYSCMD(15)
 /**
  * Get how many bytes space in iic are available to transmit,
  * this can be used in interrupt callback functions,
@@ -307,7 +307,7 @@ typedef enum iic_slave_state {
  * - Param usage : store the write available bytes, > 0 for available bytes, 0 for not available
  * - Return value explaination :
  */
-#define IIC_CMD_GET_TXAVAIL			DEV_SET_IIC_SYSCMD(16)
+#define IIC_CMD_GET_TXAVAIL                     DEV_SET_IIC_SYSCMD(16)
 /**
  * Get how many bytes in iic are available to receive,
  * this can be used in interrupt callback functions,
@@ -316,7 +316,7 @@ typedef enum iic_slave_state {
  * - Param usage : store the read available bytes, > 0 for available bytes, 0 for not available
  * - Return value explanation :
  */
-#define IIC_CMD_GET_RXAVAIL			DEV_SET_IIC_SYSCMD(17)
+#define IIC_CMD_GET_RXAVAIL                     DEV_SET_IIC_SYSCMD(17)
 
 /* ++++ Master only commands for IIC Device ++++ */
 /**
@@ -326,7 +326,7 @@ typedef enum iic_slave_state {
  * and if passing mode is not supported, it will choose a lower supported speed mode
  * - Return value explanation :
  */
-#define IIC_CMD_MST_SET_SPEED_MODE		DEV_SET_IIC_MST_SYSCMD(0)
+#define IIC_CMD_MST_SET_SPEED_MODE              DEV_SET_IIC_MST_SYSCMD(0)
 /**
  * Set next condition for following transmit or receive operation.
  * For example, you can change next condition before iic_read or iic_write,
@@ -336,15 +336,14 @@ typedef enum iic_slave_state {
  * - Param usage : next condition can be \ref IIC_NEXT_CONDTION
  * - Return value explanation :
  */
-#define IIC_CMD_MST_SET_NEXT_COND		DEV_SET_IIC_MST_SYSCMD(1)
+#define IIC_CMD_MST_SET_NEXT_COND               DEV_SET_IIC_MST_SYSCMD(1)
 /**
  * Set target slave device address for selecting slave device
  * - Param type : uint32_t
  * - Param usage : target slave address value
  * - Return value explanation :
  */
-#define IIC_CMD_MST_SET_TAR_ADDR		DEV_SET_IIC_MST_SYSCMD(2)
-
+#define IIC_CMD_MST_SET_TAR_ADDR                DEV_SET_IIC_MST_SYSCMD(2)
 
 /* ++++ Slave only commands for IIC Device ++++ */
 /**
@@ -353,14 +352,14 @@ typedef enum iic_slave_state {
  * - Param usage : slave address value
  * - Return value explanation :
  */
-#define IIC_CMD_SLV_SET_SLV_ADDR		DEV_SET_IIC_SLV_SYSCMD(0)
+#define IIC_CMD_SLV_SET_SLV_ADDR                DEV_SET_IIC_SLV_SYSCMD(0)
 /**
  * Get \ref iic_slave_state "slave state" when working as slave iic device
  * - Param type : uint32_t *
  * - Param usage : slave state
  * - Return value explanation :
  */
-#define IIC_CMD_SLV_GET_SLV_STATE		DEV_SET_IIC_SLV_SYSCMD(1)
+#define IIC_CMD_SLV_GET_SLV_STATE               DEV_SET_IIC_SLV_SYSCMD(1)
 
 /** @} */
 
@@ -371,9 +370,9 @@ typedef enum iic_slave_state {
  * @{
  */
 typedef struct dev_iic_cbs {
-	DEV_CALLBACK tx_cb;	/*!< iic data transmit success required bytes callback */
-	DEV_CALLBACK rx_cb;	/*!< iic data receive success required bytes callback */
-	DEV_CALLBACK err_cb;	/*!< iic error callback */
+	DEV_CALLBACK tx_cb;     /*!< iic data transmit success required bytes callback */
+	DEV_CALLBACK rx_cb;     /*!< iic data receive success required bytes callback */
+	DEV_CALLBACK err_cb;    /*!< iic error callback */
 } DEV_IIC_CBS, *DEV_IIC_CBS_PTR;
 /** @} */
 
@@ -391,30 +390,30 @@ typedef struct dev_iic_cbs {
  * 	baurate, iic registers, working method, interrupt number
  */
 typedef struct dev_iic_info {
-	void *iic_ctrl;		/*!< iic control related pointer, implemented by bsp developer, and this should be set during iic object implementation */
-	uint32_t opn_cnt;	/*!< iic open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
-	uint32_t status;	/*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
-	uint32_t mode;		/*!< current working mode, which can be \ref DEV_MASTER_MODE "master mode" or \ref DEV_SLAVE_MODE "slave mode" */
-	uint32_t speed_mode;	/*!< current working \ref IIC_SPEED_MODE "iic speed mode" */
-	uint32_t cur_state;	/*!< \ref IIC_WORKING_STATE "current working state for iic device", this should be \ref IIC_FREE for first open */
-	uint32_t err_state;	/*!< \ref IIC_ERROR_STATE "current error state for iic device", this should be \ref IIC_ERR_NONE for first open */
-	uint32_t addr_mode;	/*!< \ref IIC_ADDRESS_MODE "current addressing mode", this should be \ref IIC_7BIT_ADDRESS for first open */
-	uint32_t slv_addr;	/*!< slave address when working as slave iic device, this should be 0 for first open */
-	uint32_t tar_addr;	/*!< target slave device address when addressing that slave device, this should be 0 for first open */
-	uint32_t next_cond;	/*!< \ref IIC_NEXT_CONDTION "next condition for master transmit or receive", \
-					possible values are STOP or RESTART, it should be STOP for first open */
-	DEV_BUFFER tx_buf;	/*!< transmit buffer via interrupt, this should be all zero for first open */
-	DEV_BUFFER rx_buf;	/*!< receive buffer via interrupt, this should be all zero for first open */
-	DEV_IIC_CBS iic_cbs;	/*!< iic callbacks, for both master and slave mode, this should be all NULL for first open */
-	void *extra;		/*!< a extra pointer to get hook to applications which should not used by bsp developer,
-					this should be NULL for first open and you can \ref DEV_IIC_INFO_SET_EXTRA_OBJECT "set"
-					or \ref DEV_IIC_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
-} DEV_IIC_INFO, * DEV_IIC_INFO_PTR;
+	void *iic_ctrl;         /*!< iic control related pointer, implemented by bsp developer, and this should be set during iic object implementation */
+	uint32_t opn_cnt;       /*!< iic open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
+	uint32_t status;        /*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
+	uint32_t mode;          /*!< current working mode, which can be \ref DEV_MASTER_MODE "master mode" or \ref DEV_SLAVE_MODE "slave mode" */
+	uint32_t speed_mode;    /*!< current working \ref IIC_SPEED_MODE "iic speed mode" */
+	uint32_t cur_state;     /*!< \ref IIC_WORKING_STATE "current working state for iic device", this should be \ref IIC_FREE for first open */
+	uint32_t err_state;     /*!< \ref IIC_ERROR_STATE "current error state for iic device", this should be \ref IIC_ERR_NONE for first open */
+	uint32_t addr_mode;     /*!< \ref IIC_ADDRESS_MODE "current addressing mode", this should be \ref IIC_7BIT_ADDRESS for first open */
+	uint32_t slv_addr;      /*!< slave address when working as slave iic device, this should be 0 for first open */
+	uint32_t tar_addr;      /*!< target slave device address when addressing that slave device, this should be 0 for first open */
+	uint32_t next_cond;     /*!< \ref IIC_NEXT_CONDTION "next condition for master transmit or receive", \
+	                                possible values are STOP or RESTART, it should be STOP for first open */
+	DEV_BUFFER tx_buf;      /*!< transmit buffer via interrupt, this should be all zero for first open */
+	DEV_BUFFER rx_buf;      /*!< receive buffer via interrupt, this should be all zero for first open */
+	DEV_IIC_CBS iic_cbs;    /*!< iic callbacks, for both master and slave mode, this should be all NULL for first open */
+	void *extra;            /*!< a extra pointer to get hook to applications which should not used by bsp developer,
+	                                this should be NULL for first open and you can \ref DEV_IIC_INFO_SET_EXTRA_OBJECT "set"
+	                                or \ref DEV_IIC_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
+} DEV_IIC_INFO, *DEV_IIC_INFO_PTR;
 
 /** Set extra information pointer of iic info */
-#define DEV_IIC_INFO_SET_EXTRA_OBJECT(iic_info_ptr, extra_info)		(iic_info_ptr)->extra = (void *)(extra_info)
+#define DEV_IIC_INFO_SET_EXTRA_OBJECT(iic_info_ptr, extra_info)         (iic_info_ptr)->extra = (void *)(extra_info)
 /** Get extra information pointer of iic info */
-#define DEV_IIC_INFO_GET_EXTRA_OBJECT(iic_info_ptr)			((iic_info_ptr)->extra)
+#define DEV_IIC_INFO_GET_EXTRA_OBJECT(iic_info_ptr)                     ((iic_info_ptr)->extra)
 
 /**
  * \brief	iic device interface definition
@@ -423,15 +422,15 @@ typedef struct dev_iic_info {
  * \note	all this details are implemented by user in user porting code
  */
 typedef struct dev_iic {
-	DEV_IIC_INFO iic_info;					/*!< iic device information */
-	int32_t (*iic_open) (uint32_t mode, uint32_t param);	/*!< open iic device in master/slave mode, \
-									when in master mode, param stands for speed mode, \
-									when in slave mode, param stands for slave address */
-	int32_t (*iic_close) (void);				/*!< close iic device */
-	int32_t (*iic_control) (uint32_t ctrl_cmd, void *param);/*!< control iic device */
-	int32_t (*iic_write) (const void *data, uint32_t len);	/*!< send data by iic device (blocking method) */
-	int32_t (*iic_read) (void *data, uint32_t len);		/*!< read data from iic device (blocking method) */
-} DEV_IIC, * DEV_IIC_PTR;
+	DEV_IIC_INFO iic_info;                                  /*!< iic device information */
+	int32_t (*iic_open)(uint32_t mode, uint32_t param);     /*!< open iic device in master/slave mode, \
+	                                                                when in master mode, param stands for speed mode, \
+	                                                                when in slave mode, param stands for slave address */
+	int32_t (*iic_close)(void);                             /*!< close iic device */
+	int32_t (*iic_control)(uint32_t ctrl_cmd, void *param); /*!< control iic device */
+	int32_t (*iic_write)(const void *data, uint32_t len);   /*!< send data by iic device (blocking method) */
+	int32_t (*iic_read)(void *data, uint32_t len);          /*!< read data from iic device (blocking method) */
+} DEV_IIC, *DEV_IIC_PTR;
 
 /**
  * \fn		int32_t (* dev_iic::iic_open) (uint32_t mode, uint32_t param)

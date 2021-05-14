@@ -30,7 +30,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SS_SPI_SLAVE_H_
 #define _SS_SPI_SLAVE_H_
 

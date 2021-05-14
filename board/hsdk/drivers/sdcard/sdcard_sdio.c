@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include <stddef.h>
 #include <string.h>
@@ -48,7 +48,7 @@
 
 #include "sdcard_sdio.h"
 
-#define SDCARD_SDIO_ID		0
+#define SDCARD_SDIO_ID          0
 
 #if (USE_HSDK_SDCARD_SDIO_0)
 
@@ -98,6 +98,6 @@ FATFS_DISKIO sdcard_sdio_0_diskio = {
 	sdcard_sdio_0_diskio_timerproc
 };
 
-#endif /* USE_HSDK_SDCARD_SDIO_0 */
+#endif  /* USE_HSDK_SDCARD_SDIO_0 */
 
-#endif /* MID_FATFS */
+#endif  /* MID_FATFS */

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
@@ -38,19 +38,19 @@ NTSHELL_IO *get_ntshell_io(uint32_t id)
 	switch (id) {
 #if (USE_IOTDK_NTSHELL_UART_1)
 
-		case IOTDK_NTSHELL_0_ID:
-			return &ntshell_uart_1;
-			break;
+	case IOTDK_NTSHELL_0_ID:
+		return &ntshell_uart_1;
+		break;
 #endif
 #if (USE_IOTDK_NTSHELL_NETCONN_0)
 
-		case IOTDK_NTSHELL_1_ID:
-			return &ntshell_netconn_0;
-			break;
+	case IOTDK_NTSHELL_1_ID:
+		return &ntshell_netconn_0;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

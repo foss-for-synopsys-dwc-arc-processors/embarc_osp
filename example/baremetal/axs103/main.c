@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -56,13 +56,11 @@ static void sw2504_int_isr(void *ptr)
 	EMBARC_PRINTF("sw2504 is pressed\r\n");
 }
 
-
 /** main entry for testing arc fiq interrupt */
 int main(void)
 {
 	uint32_t val;
 	unsigned int int_bcr;
-
 
 	EMBARC_PRINTF("ARC timer and interrupt\r\n");
 	int_bcr = arc_aux_read(AUX_BCR_IRQ);
@@ -90,9 +88,10 @@ int main(void)
 
 	button_install_isr(AXC003_BUTTON_SW2504_OFFSET, sw2504_int_isr);
 
-
 	arc_timer_start(TIMER_0, TIMER_CTRL_IE, BOARD_CPU_CLOCK);
 
-	while(1);
+	while (1) {
+		;
+	}
 	return E_SYS;
 }

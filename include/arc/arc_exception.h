@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -52,27 +52,26 @@ extern "C" {
  */
 #ifndef NUM_EXC_CPU
 /*!< number of CPU exceptions */
-#define NUM_EXC_CPU		16
+#define NUM_EXC_CPU             16
 #endif
 
 #ifndef NUM_EXC_INT
 /*!< number of interrupt exceptions, defined in arc_feature_config.h */
-#define NUM_EXC_INT		9
+#define NUM_EXC_INT             9
 #endif
 
 /*!< total number of exceptions */
-#define NUM_EXC_ALL		(NUM_EXC_CPU + NUM_EXC_INT)
-
+#define NUM_EXC_ALL             (NUM_EXC_CPU + NUM_EXC_INT)
 
 #ifdef ARC_FEATURE_SEC_PRESENT
 typedef struct int_exc_frame {
 	uint32_t erbta;
 
-	uint32_t r30;	/* r30 is useless, skipped? */
-	uint32_t ilink;	/* r29 is useless, skipped?*/
+	uint32_t r30;   /* r30 is useless, skipped? */
+	uint32_t ilink; /* r29 is useless, skipped?*/
 	/* r28 is sp, saved other place */
-	uint32_t fp;	/* r27 */
-	uint32_t gp;	/* r26 */
+	uint32_t fp;    /* r27 */
+	uint32_t gp;    /* r26 */
 
 #if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
 	/* accl and acch, common for mpy_option >6 and fpu_fma option */
@@ -94,7 +93,7 @@ typedef struct int_exc_frame {
 #endif
 	uint32_t r10, r11;
 
-	uint32_t blink;	/* r31 */
+	uint32_t blink; /* r31 */
 	uint32_t ret;
 	uint32_t sec_stat;
 	uint32_t status32;
@@ -103,11 +102,11 @@ typedef struct int_exc_frame {
 typedef struct int_exc_frame {
 	uint32_t erbta;
 
-	uint32_t r30;	/* r30 is useless, skipped? */
-	uint32_t ilink;	/* r29 is useless, skipped?*/
+	uint32_t r30;   /* r30 is useless, skipped? */
+	uint32_t ilink; /* r29 is useless, skipped?*/
 	/* r28 is sp, saved other place */
-	uint32_t fp;	/* r27 */
-	uint32_t gp;	/* r26 */
+	uint32_t fp;    /* r27 */
+	uint32_t gp;    /* r26 */
 
 #if ARC_FEATURE_DSP || ARC_FEATURE_FPU || ARC_FEATURE_MPU_OPTION_NUM > 6
 	/* accl and acch, common for mpy_option >6 and fpu_fma option */
@@ -122,7 +121,7 @@ typedef struct int_exc_frame {
 #endif
 	uint32_t r10, r11;
 
-	uint32_t blink;	/* r31 */
+	uint32_t blink; /* r31 */
 
 	uint32_t lp_end, lp_start, lp_count;
 
@@ -160,7 +159,7 @@ typedef struct fpu_ext_frame {
 	uint32_t fpu_status;
 	uint32_t fpu_ctrl;
 
-} EMBARC_PACKED  FPU_EXT_FRAME;
+} EMBARC_PACKED FPU_EXT_FRAME;
 
 typedef struct callee_frame {
 
@@ -207,10 +206,9 @@ typedef struct processor_frame {
 	INT_EXC_FRAME exc_frame;
 } EMBARC_PACKED PROCESSOR_FRAME;
 
-#define ARC_PROCESSOR_FRAME_SIZE	(sizeof(PROCESSOR_FRAME) / sizeof(uint32_t))
-#define ARC_EXC_FRAME_SIZE		(sizeof(INT_EXC_FRAME) / sizeof(uint32_t))
-#define ARC_CALLEE_FRAME_SIZE		(sizeof(CALLEE_FRAME) / sizeof(uint32_t))
-
+#define ARC_PROCESSOR_FRAME_SIZE        (sizeof(PROCESSOR_FRAME) / sizeof(uint32_t))
+#define ARC_EXC_FRAME_SIZE              (sizeof(INT_EXC_FRAME) / sizeof(uint32_t))
+#define ARC_CALLEE_FRAME_SIZE           (sizeof(CALLEE_FRAME) / sizeof(uint32_t))
 
 extern uint32_t exc_nest_count;
 
@@ -219,7 +217,7 @@ extern uint32_t exc_nest_count;
  *
  * \param[in] vec_base the target vector base
  */
-Inline void arc_vector_base_write(const void * vec_base)
+Inline void arc_vector_base_write(const void *vec_base)
 {
 	arc_aux_write(AUX_INT_VECT_BASE, (uint32_t)vec_base);
 }
@@ -252,10 +250,10 @@ Inline uint32_t exc_sense(void)
  * @{
  */
 #ifndef INT_PRI_MIN
-#define INT_PRI_MIN	(-2)		/*!< the minimum interrupt priority */
+#define INT_PRI_MIN     (-2)            /*!< the minimum interrupt priority */
 #endif
 
-#define INT_PRI_MAX (-1)		/*!< the maximum interrupt priority */
+#define INT_PRI_MAX (-1)                /*!< the maximum interrupt priority */
 /**
  * \brief disable the specific interrupt
  *
@@ -308,11 +306,12 @@ Inline uint32_t arc_int_ipm_get(void)
 Inline void arc_int_ipm_set(uint32_t intpri)
 {
 	volatile uint32_t status;
+
 	status = arc_aux_read(AUX_STATUS32) & ~0x1e;
 
 	status = status | ((intpri << 1) & 0x1e);
 	/* sr cannot write AUX_STATUS32 */
-	Asm("kflag %0"::"ir"(status));
+	Asm("kflag %0" ::"ir" (status));
 }
 
 /**
@@ -351,7 +350,7 @@ Inline void arc_int_secure_set(const uint32_t intno, uint32_t secure)
 
 	if (secure) {
 		arc_aux_write(AUX_IRQ_PRIORITY, arc_aux_read(AUX_IRQ_PRIORITY) |
-			(1 << AUX_IRQ_PRIORITY_BIT_S));
+			      (1 << AUX_IRQ_PRIORITY_BIT_S));
 	} else {
 		arc_aux_write(AUX_IRQ_PRIORITY, arc_aux_read(AUX_IRQ_PRIORITY) & 0xf);
 	}
@@ -443,7 +442,6 @@ Inline void arc_unlock_restore(const uint32_t status)
 	arc_seti(status);
 }
 
-
 /**
  * \brief  interrupt is active ?
  *
@@ -472,9 +470,8 @@ typedef void (*EXC_ENTRY_T) (void);
  * \typedef EXC_HANDLER_T
  * \brief  the data type for exception handler
  */
-typedef	void (*EXC_HANDLER_T) (void *exc_frame);
+typedef void (*EXC_HANDLER_T) (void *exc_frame);
 /** @}*/
-
 
 /**
  * \ingroup ARC_HAL_EXCEPTION_INTERRUPT

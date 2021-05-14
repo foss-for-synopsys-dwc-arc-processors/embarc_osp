@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
@@ -36,7 +36,7 @@
 static DEV_GPIO *led_port;
 static DEV_GPIO *switch_port;
 
-#define EMSDP_GPIO_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define EMSDP_GPIO_CHECK_EXP_NORTN(EXPR)                CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /** emsdp on board gpio init */
 void emsdp_io_init(void)

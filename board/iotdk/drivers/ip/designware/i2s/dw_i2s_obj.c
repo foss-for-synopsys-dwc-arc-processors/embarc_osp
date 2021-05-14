@@ -26,48 +26,46 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "iotdk/iotdk.h"
 
 #include "dw_i2s.h"
 #include "dw_i2s_obj.h"
 
-
 void dw_i2s_all_install(void);
-
 
 #if (USE_DW_I2S_0)
 static void dw_i2s_0_isr(void *ptr);
-#define DW_I2S_0_REFCLK		(24.576)			/*!< DW I2S audio reference clock (MHz) */
-#define DW_I2S_0_RELBASE	(BASE_ADDR_I2S_TX)		/*!< DW I2S 0 relative baseaddr */
-#define DW_I2S_0_MODE_EN	(DW_I2S_MASTER_SUPPORTED)	/*!< DW I2S master/slave enabled */
-#define DW_I2S_0_TX_FIFO_LEN	(16)				/*!< DW I2S FIFO Length */
-#define DW_I2S_0_CHANNELS	(DW_I2S_CHANNEL0_SUPPORTED)	/*!< DW I2S supported channels*/
-#define DW_I2S_0_WS_LEN		(DW_I2S_WSS_32_CLK)		/*!< DW I2S word select length*/
-//#define DW_I2S_0_SCLKG		(DW_I2S_SCLKG_24_CLK)	/*!< DW I2S SCLK gate */
-#define DW_I2S_0_SCLKG		(0)				/*!< DW I2S SCLK gate */
+#define DW_I2S_0_REFCLK         (24.576)                        /*!< DW I2S audio reference clock (MHz) */
+#define DW_I2S_0_RELBASE        (BASE_ADDR_I2S_TX)              /*!< DW I2S 0 relative baseaddr */
+#define DW_I2S_0_MODE_EN        (DW_I2S_MASTER_SUPPORTED)       /*!< DW I2S master/slave enabled */
+#define DW_I2S_0_TX_FIFO_LEN    (16)                            /*!< DW I2S FIFO Length */
+#define DW_I2S_0_CHANNELS       (DW_I2S_CHANNEL0_SUPPORTED)     /*!< DW I2S supported channels*/
+#define DW_I2S_0_WS_LEN         (DW_I2S_WSS_32_CLK)             /*!< DW I2S word select length*/
+// #define DW_I2S_0_SCLKG		(DW_I2S_SCLKG_24_CLK)	/*!< DW I2S SCLK gate */
+#define DW_I2S_0_SCLKG          (0)                             /*!< DW I2S SCLK gate */
 
-static DEV_I2S	dw_i2s_0;						/*!< DW I2S object */
-static DW_I2S_TX_CTRL dw_i2s_0_ctrl;			/*!< DW I2S 0 ctrl */
-static DW_I2S_CONFIG dw_i2s_0_config;			/*!< DW I2S 0 config */
+static DEV_I2S dw_i2s_0;                                        /*!< DW I2S object */
+static DW_I2S_TX_CTRL dw_i2s_0_ctrl;                            /*!< DW I2S 0 ctrl */
+static DW_I2S_CONFIG dw_i2s_0_config;                           /*!< DW I2S 0 config */
 
 /** DesignWare I2S 0 open */
-static int32_t dw_i2s_0_open (uint32_t mode, uint32_t param)
+static int32_t dw_i2s_0_open(uint32_t mode, uint32_t param)
 {
 	return dw_i2s_open(&dw_i2s_0, mode, param);
 }
 /** DesignWare I2S 0 close */
-static int32_t dw_i2s_0_close (void)
+static int32_t dw_i2s_0_close(void)
 {
 	return dw_i2s_close(&dw_i2s_0);
 }
 /** DesignWare I2S 0 control */
-static int32_t dw_i2s_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_i2s_0_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_i2s_control(&dw_i2s_0, ctrl_cmd, param);
 }
 /** DesignWare I2S 0 write */
-static int32_t dw_i2s_0_write (const void *data, uint32_t len)
+static int32_t dw_i2s_0_write(const void *data, uint32_t len)
 {
 	return dw_i2s_write(&dw_i2s_0, data, len, DW_I2S_CHANNEL0);
 }
@@ -113,7 +111,7 @@ static void dw_i2s_0_install(void)
 	dw_i2s_config_ptr->data_res[0] = I2S_AUD_DATA_16B;
 	// sample rate 16KHz as default, the clock divider should be 1538/(32*2) in I2S_WS_LENGTH = 32
 	dw_i2s_config_ptr->sample_rate[0] = I2S_AUD_SR_16K;
-	dw_i2s_config_ptr->intno[0] = (INTNO_I2S_TX_OR_0_INTR<<16) | INTNO_I2S_TX_EMP_0_INTR;
+	dw_i2s_config_ptr->intno[0] = (INTNO_I2S_TX_OR_0_INTR << 16) | INTNO_I2S_TX_EMP_0_INTR;
 	dw_i2s_config_ptr->dw_i2s_int_handler = dw_i2s_0_isr;
 
 	/* Variables which always change during I2S operation */
@@ -130,36 +128,36 @@ static void dw_i2s_0_install(void)
 
 #if (USE_DW_I2S_1)
 static void dw_i2s_1_isr(void *ptr);
-#define DW_I2S_1_REFCLK		(24.576)			/*!< DW I2S audio reference clock (MHz) */
-#define DW_I2S_1_RELBASE	(BASE_ADDR_I2S_RX)		/*!< DW I2S 0 relative baseaddr */
-#define DW_I2S_1_MODE_EN	(DW_I2S_MASTER_SUPPORTED)	/*!< DW I2S master enabled */
-#define DW_I2S_1_RX_FIFO_LEN	(16)				/*!< DW I2S FIFO Length */
-#define DW_I2S_1_CHANNELS	(DW_I2S_CHANNEL0_SUPPORTED)	/*!< DW I2S supported channels*/
-#define DW_I2S_1_WS_LEN		(DW_I2S_WSS_32_CLK)		/*!< DW I2S word select length*/
-//#define DW_I2S_1_SCLKG		(DW_I2S_SCLKG_24_CLK)	/*!< DW I2S SCLK gate */
-#define DW_I2S_1_SCLKG		(0)		/*!< DW I2S SCLK gate */
+#define DW_I2S_1_REFCLK         (24.576)                        /*!< DW I2S audio reference clock (MHz) */
+#define DW_I2S_1_RELBASE        (BASE_ADDR_I2S_RX)              /*!< DW I2S 0 relative baseaddr */
+#define DW_I2S_1_MODE_EN        (DW_I2S_MASTER_SUPPORTED)       /*!< DW I2S master enabled */
+#define DW_I2S_1_RX_FIFO_LEN    (16)                            /*!< DW I2S FIFO Length */
+#define DW_I2S_1_CHANNELS       (DW_I2S_CHANNEL0_SUPPORTED)     /*!< DW I2S supported channels*/
+#define DW_I2S_1_WS_LEN         (DW_I2S_WSS_32_CLK)             /*!< DW I2S word select length*/
+// #define DW_I2S_1_SCLKG		(DW_I2S_SCLKG_24_CLK)	/*!< DW I2S SCLK gate */
+#define DW_I2S_1_SCLKG          (0)                             /*!< DW I2S SCLK gate */
 
-static DEV_I2S	dw_i2s_1;						/*!< DW I2S object */
-static DW_I2S_RX_CTRL dw_i2s_1_ctrl;			/*!< DW I2S 1 ctrl */
-static DW_I2S_CONFIG dw_i2s_1_config;			/*!< DW I2S 1 config */
+static DEV_I2S dw_i2s_1;                                        /*!< DW I2S object */
+static DW_I2S_RX_CTRL dw_i2s_1_ctrl;                            /*!< DW I2S 1 ctrl */
+static DW_I2S_CONFIG dw_i2s_1_config;                           /*!< DW I2S 1 config */
 
 /** DesignWare I2S 1 open */
-static int32_t dw_i2s_1_open (uint32_t mode, uint32_t param)
+static int32_t dw_i2s_1_open(uint32_t mode, uint32_t param)
 {
 	return dw_i2s_open(&dw_i2s_1, mode, param);
 }
 /** DesignWare I2S 1 close */
-static int32_t dw_i2s_1_close (void)
+static int32_t dw_i2s_1_close(void)
 {
 	return dw_i2s_close(&dw_i2s_1);
 }
 /** DesignWare I2S 1 control */
-static int32_t dw_i2s_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_i2s_1_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_i2s_control(&dw_i2s_1, ctrl_cmd, param);
 }
 /** DesignWare I2S 1 read */
-static int32_t dw_i2s_1_read (void *data, uint32_t len)
+static int32_t dw_i2s_1_read(void *data, uint32_t len)
 {
 	return dw_i2s_read(&dw_i2s_1, data, len, DW_I2S_CHANNEL0);
 }
@@ -205,7 +203,7 @@ static void dw_i2s_1_install(void)
 	dw_i2s_config_ptr->data_res[0] = I2S_AUD_DATA_16B;
 	// sample rate 16KHz as default, the clock divider should be 1538/(32*2) in I2S_WS_LENGTH = 32
 	dw_i2s_config_ptr->sample_rate[0] = I2S_AUD_SR_16K;
-	dw_i2s_config_ptr->intno[0] = (INTNO_I2S_RX_OR_0_INTR<<16) | INTNO_I2S_RX_DA_0_INTR;
+	dw_i2s_config_ptr->intno[0] = (INTNO_I2S_RX_OR_0_INTR << 16) | INTNO_I2S_RX_DA_0_INTR;
 	dw_i2s_config_ptr->dw_i2s_int_handler = dw_i2s_1_isr;
 
 	/* Variables which always change during I2S operation */
@@ -234,19 +232,19 @@ DEV_I2S_PTR i2s_get_dev(int32_t i2s_id)
 	switch (i2s_id) {
 #if (USE_DW_I2S_0)
 
-		case DW_I2S_0_ID:
-			return &dw_i2s_0;
-			break;
+	case DW_I2S_0_ID:
+		return &dw_i2s_0;
+		break;
 #endif
 #if (USE_DW_I2S_1)
 
-		case DW_I2S_1_ID:
-			return &dw_i2s_1;
-			break;
+	case DW_I2S_1_ID:
+		return &dw_i2s_1;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

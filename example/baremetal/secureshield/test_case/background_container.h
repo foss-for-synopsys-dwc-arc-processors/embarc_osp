@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef BACKGROUND_CONTAINER_H
 #define BACKGROUND_CONTAINER_H
 
@@ -35,7 +35,6 @@ typedef struct {
 	uint8_t secret[128];
 	uint8_t initialized;
 } TEST_CONTEXT;
-
 
 extern void default_interrupt_handler(void *p_exinf);
 extern void soft_interrupt0(void *p_exinf);

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _NSIM_UART_OBJ_H_
 #define _NSIM_UART_OBJ_H_
 
@@ -35,17 +35,17 @@
 /**
  * NSIM UART Object Number
  */
-#define DW_UART_NUM	(1)	/*!< NSIM UART valid number */
+#define DW_UART_NUM     (1)     /*!< NSIM UART valid number */
 
 /**
  * NSIM UART Object ID Macros
  */
-#define NSIM_UART_0_ID	(0)	/*!< uart 0 id macro */
+#define NSIM_UART_0_ID  (0)     /*!< uart 0 id macro */
 
 /**
  * NSIM UART Object Control Macros
  */
-#define USE_NSIM_UART_0	(1)	/*!< enable use nsim uart 0 (stdio) */
+#define USE_NSIM_UART_0 (1)     /*!< enable use nsim uart 0 (stdio) */
 
 #ifdef __cplusplus
 extern "C" {

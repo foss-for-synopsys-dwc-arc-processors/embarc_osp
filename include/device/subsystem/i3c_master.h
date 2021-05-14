@@ -1,34 +1,34 @@
 /* ==========================================================================
-* Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
-* documentation (hereinafter, "Software") is an Unsupported proprietary work
-* of Synopsys, Inc. unless otherwise expressly agreed to in writing between
-* Synopsys and you.
-*
-* The Software IS NOT an item of Licensed Software or Licensed Product under
-* any End User Software License Agreement or Agreement for Licensed Product
-* with Synopsys or any supplement thereto. You are permitted to use and
-* redistribute this Software in source and binary forms, with or without
-* modification, provided that redistributions of source code must retain this
-* notice. You may not view, use, disclose, copy or distribute this file or
-* any information contained herein except pursuant to this license grant from
-* Synopsys. If you do not agree with this notice, including the disclaimer
-* below, then you are not authorized to use the Software.
-*
-* THIS SOFTWARE IS BEING DISTRIBUTED BY SYNOPSYS SOLELY ON AN "AS IS" BASIS
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE HEREBY DISCLAIMED. IN NO EVENT SHALL SYNOPSYS BE LIABLE FOR ANY DIRECT,
-* INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-* (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-* OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
-* DAMAGE.
-* ========================================================================== */
+ * Synopsys DesignWare Sensor and Control IP Subsystem IO Software Driver and
+ * documentation (hereinafter, "Software") is an Unsupported proprietary work
+ * of Synopsys, Inc. unless otherwise expressly agreed to in writing between
+ * Synopsys and you.
+ *
+ * The Software IS NOT an item of Licensed Software or Licensed Product under
+ * any End User Software License Agreement or Agreement for Licensed Product
+ * with Synopsys or any supplement thereto. You are permitted to use and
+ * redistribute this Software in source and binary forms, with or without
+ * modification, provided that redistributions of source code must retain this
+ * notice. You may not view, use, disclose, copy or distribute this file or
+ * any information contained herein except pursuant to this license grant from
+ * Synopsys. If you do not agree with this notice, including the disclaimer
+ * below, then you are not authorized to use the Software.
+ *
+ * THIS SOFTWARE IS BEING DISTRIBUTED BY SYNOPSYS SOLELY ON AN "AS IS" BASIS
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE HEREBY DISCLAIMED. IN NO EVENT SHALL SYNOPSYS BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+ * DAMAGE.
+ * ========================================================================== */
 /*==========================================================================
-* Library DW_DFSS-2.1.13
-* ========================================================================== */
+ * Library DW_DFSS-2.1.13
+ * ========================================================================== */
 
 #ifndef I3C_MASTER_H_
 #define I3C_MASTER_H_
@@ -36,28 +36,24 @@
 #include "device/ip_hal/ioctl.h"
 
 /****************************************************************************
- *
- * Public header for I3C Master driver
- * Defines:
- * - Public API functions
- * - I/O Control commands
- * - Useful constants for I/O Control parameters
- *
- ****************************************************************************/
-
+*
+* Public header for I3C Master driver
+* Defines:
+* - Public API functions
+* - I/O Control commands
+* - Useful constants for I/O Control parameters
+*
+****************************************************************************/
 
 // Public API functions
 
 extern uint32_t io_i3c_master_open(uint32_t dev_id);
 extern void io_i3c_master_close(uint32_t dev_id);
 extern void io_i3c_master_ioctl(uint32_t dev_id, uint32_t cmd, void *arg);
-extern void io_i3c_master_read(uint32_t dev_id, uint8_t * data,
-                   uint32_t * size);
-extern void io_i3c_master_write(uint32_t dev_id, uint8_t * data,
-                uint32_t * size);
-
-
-
+extern void io_i3c_master_read(uint32_t dev_id, uint8_t *data,
+			       uint32_t *size);
+extern void io_i3c_master_write(uint32_t dev_id, uint8_t *data,
+				uint32_t *size);
 
 // I3C Master I/O Control command values
 
@@ -88,8 +84,6 @@ extern void io_i3c_master_write(uint32_t dev_id, uint8_t * data,
 // Peripheral Control
 #define IO_I3C_MASTER_RESET                     0x15    // Soft-Reset the I3C peripheral
 
-
-
 // Threshold field values for IO_I3C_MASTER_SET_*_THLD
 
 #define I3C_THLD_CTRL_THLD_1    0x00
@@ -100,8 +94,5 @@ extern void io_i3c_master_write(uint32_t dev_id, uint8_t * data,
 #define I3C_THLD_CTRL_THLD_64   0x05
 #define I3C_THLD_CTRL_THLD_128  0x06
 #define I3C_THLD_CTRL_THLD_256  0x07
-
-
-
 
 #endif              // I3C_MASTER_H_

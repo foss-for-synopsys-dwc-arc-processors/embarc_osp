@@ -26,25 +26,25 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SPI_FLASH_W25QXX_H_
 #define _SPI_FLASH_W25QXX_H_
 
-#define FLASH_PAGE_SIZE		0x100
-#define FLASH_SECTOR_SIZE	0x1000
+#define FLASH_PAGE_SIZE         0x100
+#define FLASH_SECTOR_SIZE       0x1000
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
 /** flash data type */
 typedef struct {
-	uint32_t head;		/*!< 0x68656164 ='head' */
-	uint32_t cpu_type;	/*!< = 0 - all images, reserved for future */
-	uint32_t start;		/*!< start address of application image in spi flash */
-	uint32_t size;		/*!< size of image in bytes */
-	uint32_t ramaddr;	/*!< address of ram for loading image */
-	uint32_t ramstart;	/*!< start address of application in RAM !!!! */
-	uint32_t checksum;	/*!< checksum of all bytes in image */
+	uint32_t head;          /*!< 0x68656164 ='head' */
+	uint32_t cpu_type;      /*!< = 0 - all images, reserved for future */
+	uint32_t start;         /*!< start address of application image in spi flash */
+	uint32_t size;          /*!< size of image in bytes */
+	uint32_t ramaddr;       /*!< address of ram for loading image */
+	uint32_t ramstart;      /*!< start address of application in RAM !!!! */
+	uint32_t checksum;      /*!< checksum of all bytes in image */
 } image_t;
 
 /** w25qxx object type */
@@ -55,17 +55,17 @@ typedef struct w25qxx_t {
 
 	uint32_t page_sz;
 	uint32_t sector_sz;
-	uint8_t write_buf[4+FLASH_PAGE_SIZE];
-} W25QXX_DEF, * W25QXX_DEF_PTR;
+	uint8_t write_buf[4 + FLASH_PAGE_SIZE];
+} W25QXX_DEF, *W25QXX_DEF_PTR;
 
 #define W25QXX_DEF(name, spi_master_id, cs_line, page, sector) \
-	W25QXX_DEF __ ## name = { \
-		.spi_master = spi_master_id, \
-		.cs = cs_line, \
-		.page_sz = page, \
-		.sector_sz = sector \
-	}; \
-	W25QXX_DEF_PTR name = &__ ## name \
+	W25QXX_DEF __ ## name = {			       \
+		.spi_master = spi_master_id,		       \
+		.cs = cs_line,				       \
+		.page_sz = page,			       \
+		.sector_sz = sector			       \
+	};						       \
+	W25QXX_DEF_PTR name = &__ ## name		       \
 
 #ifdef __cplusplus
 extern "C" {

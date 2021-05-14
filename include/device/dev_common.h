@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	DEVICE_HAL_COMMON	Common Device Layer Definitions
@@ -59,14 +59,14 @@
 /*
  * macros for device open and close state
  */
-#define DEV_CLOSED				(0)	/*!< Indicate that device was closed */
-#define DEV_OPENED				(1)	/*!< Indicate that the device was opened */
+#define DEV_CLOSED                              (0)     /*!< Indicate that device was closed */
+#define DEV_OPENED                              (1)     /*!< Indicate that the device was opened */
 
 /*
  * macros for device good and error state
  */
-#define DEV_GOOD				(0)	/*!< Indicate device is good */
-#define DEV_ERROR				(1)	/*!< Indicate device error */
+#define DEV_GOOD                                (0)     /*!< Indicate device is good */
+#define DEV_ERROR                               (1)     /*!< Indicate device error */
 /** @} */
 
 /**
@@ -82,8 +82,8 @@
 /*
  * macros for device working method
  */
-#define DEV_POLL_METHOD				(0)	/*!< Indicate that the device running in poll method */
-#define DEV_INTERRUPT_METHOD			(1)	/*!< Indicate that the device running in interrupt method */
+#define DEV_POLL_METHOD                         (0)     /*!< Indicate that the device running in poll method */
+#define DEV_INTERRUPT_METHOD                    (1)     /*!< Indicate that the device running in interrupt method */
 /** @} */
 
 /**
@@ -98,8 +98,8 @@
 /*
  * macros for device working mode
  */
-#define DEV_MASTER_MODE				(0)	/*!< Indicate that the device working as master */
-#define DEV_SLAVE_MODE				(1)	/*!< Indicate that the device working as slave */
+#define DEV_MASTER_MODE                         (0)     /*!< Indicate that the device working as master */
+#define DEV_SLAVE_MODE                          (1)     /*!< Indicate that the device working as slave */
 /** @} */
 
 /**
@@ -108,16 +108,15 @@
  * \brief	definitions for device status, 1 bit for 1 function
  * @{
  */
-#define DEV_DISABLED				(0)	/*!< Bit 0 for device enabled state, disabled */
-#define DEV_ENABLED				(1<<0)	/*!< Bit 0 for device enabled state, enabled */
-#define DEV_IN_TX				(1<<1)	/*!< Bit 1 for device in transmit state */
-#define DEV_IN_RX				(1<<2)	/*!< Bit 2 for device in receive state */
-#define DEV_IN_XFER				(1<<3)	/*!< Bit 3 for device in transfer state */
-#define DEV_IN_TX_ABRT				(1<<4)	/*!< Bit 4 for device in transmit abort state */
-#define DEV_IN_RX_ABRT				(1<<5)	/*!< Bit 5 for device in receive abort state */
-#define DEV_IN_XFER_ABRT			(1<<6)	/*!< Bit 6 for device in transfer abort state */
+#define DEV_DISABLED                            (0)             /*!< Bit 0 for device enabled state, disabled */
+#define DEV_ENABLED                             (1 << 0)        /*!< Bit 0 for device enabled state, enabled */
+#define DEV_IN_TX                               (1 << 1)        /*!< Bit 1 for device in transmit state */
+#define DEV_IN_RX                               (1 << 2)        /*!< Bit 2 for device in receive state */
+#define DEV_IN_XFER                             (1 << 3)        /*!< Bit 3 for device in transfer state */
+#define DEV_IN_TX_ABRT                          (1 << 4)        /*!< Bit 4 for device in transmit abort state */
+#define DEV_IN_RX_ABRT                          (1 << 5)        /*!< Bit 5 for device in receive abort state */
+#define DEV_IN_XFER_ABRT                        (1 << 6)        /*!< Bit 6 for device in transfer abort state */
 /** @} */
-
 
 /**
  * \defgroup	DEVICE_HAL_COMMON_DEVID		Common Device ID
@@ -127,21 +126,21 @@
  * @{
  */
 typedef enum dev_id {
-	DEV_ID_0 = 0,			/*!< Device ID as 0, which is the first ID */
-	DEV_ID_1 = 1,			/*!< Device ID as 1 */
-	DEV_ID_2 = 2,			/*!< Device ID as 2 */
-	DEV_ID_3 = 3,			/*!< Device ID as 3 */
-	DEV_ID_4 = 4,			/*!< Device ID as 4 */
-	DEV_ID_5 = 5,			/*!< Device ID as 5 */
-	DEV_ID_6 = 6,			/*!< Device ID as 6 */
-	DEV_ID_7 = 7,			/*!< Device ID as 7 */
-	DEV_ID_8 = 8,			/*!< Device ID as 8 */
-	DEV_ID_9 = 9,			/*!< Device ID as 9 */
-	DEV_ID_10 = 10,			/*!< Device ID as 10 */
-	DEV_ID_INV = 0xFFFFFFFF		/*!< Invalid Device ID */
+	DEV_ID_0        = 0,            /*!< Device ID as 0, which is the first ID */
+	DEV_ID_1        = 1,            /*!< Device ID as 1 */
+	DEV_ID_2        = 2,            /*!< Device ID as 2 */
+	DEV_ID_3        = 3,            /*!< Device ID as 3 */
+	DEV_ID_4        = 4,            /*!< Device ID as 4 */
+	DEV_ID_5        = 5,            /*!< Device ID as 5 */
+	DEV_ID_6        = 6,            /*!< Device ID as 6 */
+	DEV_ID_7        = 7,            /*!< Device ID as 7 */
+	DEV_ID_8        = 8,            /*!< Device ID as 8 */
+	DEV_ID_9        = 9,            /*!< Device ID as 9 */
+	DEV_ID_10       = 10,           /*!< Device ID as 10 */
+	DEV_ID_INV      = 0xFFFFFFFF    /*!< Invalid Device ID */
 } DEV_ID;
 /** Device ID definition, start from 0 */
-#define DEV_ID_DEF(id)			(id)
+#define DEV_ID_DEF(id)                  (id)
 /** @} */
 
 /**
@@ -153,7 +152,7 @@ typedef enum dev_id {
  * in outside of device driver, maybe done in the device
  * object instantiation
  */
-#define DEV_INTNO_INVALID		(0xFFFFFFFF)
+#define DEV_INTNO_INVALID               (0xFFFFFFFF)
 
 /**
  * \defgroup	DEVICE_HAL_COMMON_DEFCMD	Common Device Defining Command
@@ -172,29 +171,29 @@ typedef enum dev_id {
 /*
  * macros for control command base
  */
-#define DEV_SYS_CMDBSE				(0x00000000)		/*!< default system device control command base(defined by embARC) */
-#define DEV_USR_CMDBSE				(0x80000000)		/*!< default user device control command base(defined by user) in user implementing */
-#define DEV_SET_SYSCMD(cmd)			(DEV_SYS_CMDBSE|(cmd))	/*!< set device system control command */
-#define DEV_SET_USRCMD(cmd)			(DEV_USR_CMDBSE|(cmd))	/*!< set device user control command */
+#define DEV_SYS_CMDBSE                          (0x00000000)                    /*!< default system device control command base(defined by embARC) */
+#define DEV_USR_CMDBSE                          (0x80000000)                    /*!< default user device control command base(defined by user) in user implementing */
+#define DEV_SET_SYSCMD(cmd)                     (DEV_SYS_CMDBSE | (cmd))        /*!< set device system control command */
+#define DEV_SET_USRCMD(cmd)                     (DEV_USR_CMDBSE | (cmd))        /*!< set device user control command */
 
-#define CONV2VOID(param)			((void *)(param))	/*!< convert param into void * type */
+#define CONV2VOID(param)                        ((void *)(param))               /*!< convert param into void * type */
 /** @} */
 
 /**
  * Common Device Buffer Structure
  */
 typedef struct dev_buffer {
-	void *buf;	/*!< buffer pointer */
-	uint32_t len;	/*!< buffer length in bytes */
-	uint32_t ofs;	/*!< current offset in buffer */
+	void *buf;      /*!< buffer pointer */
+	uint32_t len;   /*!< buffer length in bytes */
+	uint32_t ofs;   /*!< current offset in buffer */
 } DEV_BUFFER;
 
 /** Init device buffer */
-#define DEV_BUFFER_INIT(devbuf, buffer, size)	{		\
-					(devbuf)->buf = (void *)(buffer);	\
-					(devbuf)->len = (uint32_t)(size);	\
-					(devbuf)->ofs = (uint32_t)(0);		\
-				}
+#define DEV_BUFFER_INIT(devbuf, buffer, size)   { \
+		(devbuf)->buf = (void *)(buffer); \
+		(devbuf)->len = (uint32_t)(size); \
+		(devbuf)->ofs = (uint32_t)(0);	  \
+}
 
 /**
  *   Device callback function typedef.

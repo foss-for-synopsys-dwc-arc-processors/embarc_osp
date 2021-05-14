@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _NTSHELL_IO_NETCONN_H_
 #define _NTSHELL_IO_NETCONN_H_
 
@@ -36,9 +36,9 @@
 	&& defined(ENABLE_OS)  /* only available when enable ntshell & lwip middleware */
 #include "ntshell_task.h"
 
-#define USE_IOTDK_NTSHELL_NETCONN_0	1
+#define USE_IOTDK_NTSHELL_NETCONN_0     1
 
-#define NT_NETCONN_0_PRIO		9
+#define NT_NETCONN_0_PRIO               9
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,8 +52,8 @@ extern NTSHELL_IO ntshell_netconn_0;
 }
 #endif
 
-#endif /** MID_NTSHELL  MID_LWIP */
+#endif  /** MID_NTSHELL  MID_LWIP */
 
-#endif /** _NTSHELL_IO_NETCONN_H_ */
+#endif  /** _NTSHELL_IO_NETCONN_H_ */
 
 /** @} end of group BOARD_IOTDK_DRV_MID_NTSHELL_IO_NETCONN */

@@ -26,23 +26,21 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "emsdp/emsdp.h"
 
 #include "dfss_i2s_obj.h"
 #include "ss_i2s_master.h"
 
-
 void dfss_i2s_all_install(void);
 
-
-#if (USE_DFSS_I2S_0)	//TX
+#if (USE_DFSS_I2S_0)    // TX
 
 static void dfss_i2s_0_tx_cb0(void *param);
 static void dfss_i2s_0_rx_cb0(void *param);
 static void dfss_i2s_0_err_cb0(void *param);
 
-static DEV_I2S	dfss_i2s_0;						/*!< DFSS I2S object */
+static DEV_I2S dfss_i2s_0;                                              /*!< DFSS I2S object */
 SS_I2S_MST_DEV_CONTEXT i2s_master_context0 = {
 	.reg_base = AR_IO_I2S_TX_MST0_IER,
 
@@ -61,7 +59,7 @@ SS_I2S_MST_DEV_CONTEXT i2s_master_context0 = {
 
 static void dfss_i2s_0_isr(void *ptr);
 
-void _regWrite (uint32_t addr, uint32_t val)
+void _regWrite(uint32_t addr, uint32_t val)
 {
 	volatile uint32_t *reg;
 
@@ -70,23 +68,23 @@ void _regWrite (uint32_t addr, uint32_t val)
 	*reg = val;
 }
 /** DesignWare I2S 0 open */
-static int32_t dfss_i2s_0_open (uint32_t mode, uint32_t param)
+static int32_t dfss_i2s_0_open(uint32_t mode, uint32_t param)
 {
-	_regWrite(EMSDP_CRU_BASE + 0x1A8, EMSDP_AUDIO_REF_CLOCK/(32*param));
+	_regWrite(EMSDP_CRU_BASE + 0x1A8, EMSDP_AUDIO_REF_CLOCK / (32 * param));
 	return ss_i2s_mst_open(&i2s_master_context0, mode, param);
 }
 /** DesignWare I2S 0 close */
-static int32_t dfss_i2s_0_close (void)
+static int32_t dfss_i2s_0_close(void)
 {
 	return ss_i2s_mst_close(&i2s_master_context0);
 }
 /** DesignWare I2S 0 control */
-static int32_t dfss_i2s_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dfss_i2s_0_control(uint32_t ctrl_cmd, void *param)
 {
 	return ss_i2s_mst_control(&i2s_master_context0, ctrl_cmd, param);
 }
 /** DesignWare I2S 0 write */
-static int32_t dfss_i2s_0_write (const void *data, uint32_t len)
+static int32_t dfss_i2s_0_write(const void *data, uint32_t len)
 {
 	return ss_i2s_mst_write(&i2s_master_context0, (void *)data, len);
 }
@@ -130,13 +128,13 @@ static void dfss_i2s_0_install(void)
 }
 #endif /* USE_DFSS_I2S_0 */
 
-#if (USE_DFSS_I2S_1)	//RX
+#if (USE_DFSS_I2S_1)    // RX
 
 static void dfss_i2s_1_tx_cb1(void *param);
 static void dfss_i2s_1_rx_cb1(void *param);
 static void dfss_i2s_1_err_cb1(void *param);
 
-static DEV_I2S	dfss_i2s_1;						/*!< DFSS I2S object */
+static DEV_I2S dfss_i2s_1;                                              /*!< DFSS I2S object */
 SS_I2S_MST_DEV_CONTEXT i2s_master_context1 = {
 	.reg_base = AR_IO_I2S_RX_MST0_IER,
 
@@ -156,23 +154,23 @@ SS_I2S_MST_DEV_CONTEXT i2s_master_context1 = {
 static void dfss_i2s_1_isr(void *ptr);
 
 /** DesignWare I2S 1 open */
-static int32_t dfss_i2s_1_open (uint32_t mode, uint32_t param)
+static int32_t dfss_i2s_1_open(uint32_t mode, uint32_t param)
 {
-	_regWrite(EMSDP_CRU_BASE + 0x1A8, EMSDP_AUDIO_REF_CLOCK/(32*param));
+	_regWrite(EMSDP_CRU_BASE + 0x1A8, EMSDP_AUDIO_REF_CLOCK / (32 * param));
 	return ss_i2s_mst_open(&i2s_master_context1, mode, param);
 }
 /** DesignWare I2S 1 close */
-static int32_t dfss_i2s_1_close (void)
+static int32_t dfss_i2s_1_close(void)
 {
 	return ss_i2s_mst_close(&i2s_master_context1);
 }
 /** DesignWare I2S 1 control */
-static int32_t dfss_i2s_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dfss_i2s_1_control(uint32_t ctrl_cmd, void *param)
 {
 	return ss_i2s_mst_control(&i2s_master_context1, ctrl_cmd, param);
 }
 /** DesignWare I2S 1 read */
-static int32_t dfss_i2s_1_read (void *data, uint32_t len)
+static int32_t dfss_i2s_1_read(void *data, uint32_t len)
 {
 	return ss_i2s_mst_read(&i2s_master_context1, data, len);
 }
@@ -196,6 +194,7 @@ static void dfss_i2s_1_install(void)
 {
 	DEV_I2S *dfss_i2s_ptr = &dfss_i2s_1;
 	DEV_I2S_INFO *dfss_i2s_info_ptr = &(dfss_i2s_1.i2s_info);
+
 	i2s_master_context1.info = dfss_i2s_info_ptr;
 
 	/* Info init */
@@ -228,17 +227,17 @@ DEV_I2S_PTR dfss_i2s_get_dev(int32_t i2s_id)
 
 	switch (i2s_id) {
 #if (USE_DFSS_I2S_0)
-		case DFSS_I2S_0_ID:
-			return &dfss_i2s_0;
-			break;
+	case DFSS_I2S_0_ID:
+		return &dfss_i2s_0;
+		break;
 #endif
 #if (USE_DFSS_I2S_1)
-		case DFSS_I2S_1_ID:
-			return &dfss_i2s_1;
-			break;
+	case DFSS_I2S_1_ID:
+		return &dfss_i2s_1;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

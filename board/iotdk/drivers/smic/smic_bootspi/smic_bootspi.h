@@ -26,45 +26,44 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SMIC_BOOTSPI_H_
 #define _SMIC_BOOTSPI_H_
 
 #include "arc/arc_exception.h"
-#define BOOTSPI_CTRL_BASE 		0xF0003000
+#define BOOTSPI_CTRL_BASE               0xF0003000
 
-#define SMIC_BOOTSPI_RESET			0
-#define SMIC_BOOTSPI_READ_ID		1
-#define SMIC_BOOTSPI_CHIP_ERASE		2
-#define SMIC_BOOTSPI_BLK_ERASE		3
-#define SMIC_BOOTSPI_SEC_ERASE		4
+#define SMIC_BOOTSPI_RESET                      0
+#define SMIC_BOOTSPI_READ_ID            1
+#define SMIC_BOOTSPI_CHIP_ERASE         2
+#define SMIC_BOOTSPI_BLK_ERASE          3
+#define SMIC_BOOTSPI_SEC_ERASE          4
 
-#define SMIC_BOOTSPI_PAGE_SIZE		0x100		//256 bytes
-#define SMIC_BOOTSPI_SEC_SIZE		0x1000		//4K  bytes
-#define SMIC_BOOTSPI_BLK_SIZE		0x10000		//64K bytes
+#define SMIC_BOOTSPI_PAGE_SIZE          0x100           // 256 bytes
+#define SMIC_BOOTSPI_SEC_SIZE           0x1000          // 4K  bytes
+#define SMIC_BOOTSPI_BLK_SIZE           0x10000         // 64K bytes
 
-#define SMIC_BOOTSPI_BLKS_PER_CHIP 	32
-#define SMIC_BOOTSPI_SECS_PER_CHIP 	512
+#define SMIC_BOOTSPI_BLKS_PER_CHIP      32
+#define SMIC_BOOTSPI_SECS_PER_CHIP      512
 
-//#define SMIC_BOOTSPI_PAGES_PER_SEC	(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)
-//#define SMIC_BOOTSPI_SECS_PER_BLK	(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)
-
+// #define SMIC_BOOTSPI_PAGES_PER_SEC	(SMIC_BOOTSPI_SECTOR_SIZE/SMIC_BOOTSPI_PAGE_SIZE)
+// #define SMIC_BOOTSPI_SECS_PER_BLK	(SMIC_BOOTSPI_BLK_SIZE/SMIC_BOOTSPI_SEC_SIZE)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 typedef volatile struct smic_bootspi_reg {
-	//Manual Mode Data Read Register
-	uint32_t MMDR;//(0x00)
-	//Manual Mode Data Write Register
-	uint32_t MMDW;//(0x04)
-	//Manual Mode Control Register
-	uint32_t MMC;//(0x08)
-	//Manual Mode Status Register
-	uint32_t MMS;//(0x0C)
-	//Manual Mode Enable Register
-	uint32_t MME;//(0x10)
+	// Manual Mode Data Read Register
+	uint32_t MMDR;  // (0x00)
+	// Manual Mode Data Write Register
+	uint32_t MMDW;  // (0x04)
+	// Manual Mode Control Register
+	uint32_t MMC;   // (0x08)
+	// Manual Mode Status Register
+	uint32_t MMS;   // (0x0C)
+	// Manual Mode Enable Register
+	uint32_t MME;   // (0x10)
 } SMIC_BOOTSPI_REG, *SMIC_BOOTSPI_REG_PTR;
 
 typedef struct {
@@ -72,11 +71,11 @@ typedef struct {
 	uint8_t bootspi_open_cnt;
 } SMIC_BOOTSPI_DEF, *SMIC_BOOTSPI_DEF_PTR;
 
-#define BOOTSPI_DEFINE(NAME, REG_BASE) \
-	SMIC_BOOTSPI_DEF __ ## NAME = { \
-		.bootspi_open_cnt = 0, \
+#define BOOTSPI_DEFINE(NAME, REG_BASE)			       \
+	SMIC_BOOTSPI_DEF __ ## NAME = {			       \
+		.bootspi_open_cnt = 0,			       \
 		.bootspi_reg = (SMIC_BOOTSPI_REG_PTR)REG_BASE, \
-	}; \
+	};						       \
 	SMIC_BOOTSPI_DEF_PTR NAME = &__ ## NAME
 
 extern int32_t smic_bootspi_open(SMIC_BOOTSPI_DEF_PTR obj);

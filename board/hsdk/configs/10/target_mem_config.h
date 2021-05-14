@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
 
@@ -44,21 +44,20 @@
  * core2 and core 4 of HSDK has both cache and ccm
  */
 
-
 #ifndef EXT_RAM_START
-#define EXT_RAM_START	0x80000000
+#define EXT_RAM_START   0x80000000
 #endif
 
 #ifndef EXT_RAM_SIZE
-#define EXT_RAM_SIZE	0x10000000
+#define EXT_RAM_SIZE    0x10000000
 #endif
 
 #ifndef SRAM_START
-#define SRAM_START	0x10000000
+#define SRAM_START      0x10000000
 #endif
 
 #ifndef SRAM_SIZE
-#define SRAM_SIZE	0x40000
+#define SRAM_SIZE       0x40000
 #endif
 
 /**
@@ -69,8 +68,8 @@
    the regions to limit the application using
  */
 #ifndef REGION_EXT_RAM_START
-#define REGION_EXT_RAM_START	EXT_RAM_START
-#define REGION_EXT_RAM_SIZE		EXT_RAM_SIZE
+#define REGION_EXT_RAM_START    EXT_RAM_START
+#define REGION_EXT_RAM_SIZE             EXT_RAM_SIZE
 #endif
 
 #define IMAGE_HEAD_SIZE 0x0
@@ -83,17 +82,17 @@
  */
 #ifndef REGION_ROM
 #ifdef ARC_FEATURE_ICACHE_PRESENT
-#define REGION_ROM	REGION_EXT_RAM
+#define REGION_ROM      REGION_EXT_RAM
 #else
-#define REGION_ROM	REGION_ICCM
+#define REGION_ROM      REGION_ICCM
 #endif
 #endif
 
 #ifndef REGION_RAM
 #ifdef ARC_FEATURE_DCACHE_PRESENT
-#define REGION_RAM	REGION_EXT_RAM
+#define REGION_RAM      REGION_EXT_RAM
 #else
-#define REGION_RAM	REGION_DCCM
+#define REGION_RAM      REGION_DCCM
 #endif
 #endif
 

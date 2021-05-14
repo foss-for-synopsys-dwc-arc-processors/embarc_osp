@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "container1.h"
@@ -36,40 +36,40 @@
 /* General container set-up and main application */
 
 static CONTAINER_AC_TABLE g_container1_act[] = {
-	{init_secret, 0, SECURESHIELD_AC_INTERFACE},
-	{operate_secret, 3, SECURESHIELD_AC_INTERFACE}
- };
+	{ init_secret, 0, SECURESHIELD_AC_INTERFACE },
+	{ operate_secret, 3, SECURESHIELD_AC_INTERFACE }
+};
 
 static CONTAINER_AC_TABLE g_container2_act[] = {
-	{trusted_ops, 0, SECURESHIELD_AC_INTERFACE}
+	{ trusted_ops, 0, SECURESHIELD_AC_INTERFACE }
 };
 
 static CONTAINER_AC_TABLE g_main_container_act[] = {
 #ifdef BOARD_EMSK
 #define PERIPHERAL_ADDR_BASE 0xf0000000
 	/* PINMUX, UART1 and GPIO0 are required */
-	{(void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-	{(void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_UART1), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-	{(void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_GPIO0), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-	{default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ},
-	{default_interrupt_handler, INTNO_UART1, SECURESHIELD_AC_IRQ},
+	{ (void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_PINMUX), 0x1000, SECURESHIELD_ACDEF_UPERIPH },
+	{ (void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_UART1), 0x1000, SECURESHIELD_ACDEF_UPERIPH },
+	{ (void *)(PERIPHERAL_ADDR_BASE + REL_REGBASE_GPIO0), 0x1000, SECURESHIELD_ACDEF_UPERIPH },
+	{ default_interrupt_handler, INTNO_GPIO, SECURESHIELD_AC_IRQ },
+	{ default_interrupt_handler, INTNO_UART1, SECURESHIELD_AC_IRQ },
 #endif
 	/* Timer1, Timer 0, RTC and TIMIE BCR are accessible for background container*/
 #if SECURESHIELD_VERSION == 1
-	{(void *)0x21, 0x3, SECURESHIELD_AC_AUX},
-	{(void *)0x100, 0x6, SECURESHIELD_AC_AUX},
-	{(void *)0x75, 0x1, SECURESHIELD_AC_AUX},
+	{ (void *)0x21, 0x3, SECURESHIELD_AC_AUX },
+	{ (void *)0x100, 0x6, SECURESHIELD_AC_AUX },
+	{ (void *)0x75, 0x1, SECURESHIELD_AC_AUX },
 #endif
 
 #ifdef BOARD_EMSDP
-	{(void *)(EMSDP_CREG_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-	{(void *)(EMSDP_DBG_UART_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-	{(void *)(EMSDP_GPIO_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH},
-	{default_interrupt_handler, EMSDP_DBG_UART_INTR, SECURESHIELD_AC_IRQ},
+	{ (void *)(EMSDP_CREG_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH },
+	{ (void *)(EMSDP_DBG_UART_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH },
+	{ (void *)(EMSDP_GPIO_BASE), 0x1000, SECURESHIELD_ACDEF_UPERIPH },
+	{ default_interrupt_handler, EMSDP_DBG_UART_INTR, SECURESHIELD_AC_IRQ },
 #endif
 
-	{soft_interrupt1, INTNO_SWI, SECURESHIELD_AC_IRQ},
-	{default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ}
+	{ soft_interrupt1, INTNO_SWI, SECURESHIELD_AC_IRQ },
+	{ default_interrupt_handler, INTNO_TIMER0, SECURESHIELD_AC_IRQ }
 };
 
 /* set the access control table of background container */

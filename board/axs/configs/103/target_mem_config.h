@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
 
@@ -41,62 +41,62 @@
  *
  * The information of memory devices on the board
  */
-#define SRAM_CPU_START	0x0
+#define SRAM_CPU_START  0x0
 #define SRAM_CPU_LENGTH 0x20000
 
-#define SRAM_MB_START	0x20000000
-#define SRAM_MB_LENGTH	0x20000
+#define SRAM_MB_START   0x20000000
+#define SRAM_MB_LENGTH  0x20000
 
-#define ROM_CPU_START 	0x30000000
-#define ROM_CPU_LENGTH	0x8000
+#define ROM_CPU_START   0x30000000
+#define ROM_CPU_LENGTH  0x8000
 
 #ifdef ARC_FEATURE_ICCM_PRESENT
 #ifndef ICCM_SIZE
-#define ICCM_SIZE	ARC_FEATURE_ICCM_SIZE
+#define ICCM_SIZE       ARC_FEATURE_ICCM_SIZE
 #endif
 #ifndef ICCM_START
-#define ICCM_START	ARC_FEATURE_ICCM_BASE
+#define ICCM_START      ARC_FEATURE_ICCM_BASE
 #endif
 #else
 #ifndef ICCM_SIZE
-#define ICCM_SIZE	0x40000
+#define ICCM_SIZE       0x40000
 #endif
 #ifndef ICCM_START
-#define ICCM_START	0x10000000
+#define ICCM_START      0x10000000
 #endif
 #endif
 
 #ifdef ARC_FEATURE_DCCM_PRESENT
 #ifndef DCCM_SIZE
-#define DCCM_SIZE	ARC_FEATURE_DCCM_SIZE
+#define DCCM_SIZE       ARC_FEATURE_DCCM_SIZE
 #endif
 #ifndef DCCM_START
-#define DCCM_START	ARC_FEATURE_DCCM_BASE
+#define DCCM_START      ARC_FEATURE_DCCM_BASE
 #endif
 #else
 #ifndef DCCM_SIZE
-#define DCCM_SIZE	0x40000
+#define DCCM_SIZE       0x40000
 #endif
 #ifndef DCCM_START
-#define DCCM_START	0xC0000000
+#define DCCM_START      0xC0000000
 #endif
 #endif
 
 /* A fake ROM, assigned from RAM */
 #ifndef EXT_ROM_START
-#define EXT_ROM_START	0x80000000
+#define EXT_ROM_START   0x80000000
 #endif
 
 #ifndef EXT_ROM_SIZE
-#define EXT_ROM_SIZE	0x6000000
+#define EXT_ROM_SIZE    0x6000000
 #endif
 
 #ifndef EXT_RAM_START
-#define EXT_RAM_START	0x86000000
+#define EXT_RAM_START   0x86000000
 #endif
 
 #ifndef EXT_RAM_SIZE
-#define EXT_RAM_SIZE	0x2000000
+#define EXT_RAM_SIZE    0x2000000
 #endif
 
 /**
@@ -107,23 +107,23 @@
    the regions to limit the application using
  */
 #ifndef REGION_ICCM_START
-#define REGION_ICCM_START	ICCM_START
-#define REGION_ICCM_SIZE	ICCM_SIZE
+#define REGION_ICCM_START       ICCM_START
+#define REGION_ICCM_SIZE        ICCM_SIZE
 #endif
 
 #ifndef REGION_DCCM_START
-#define REGION_DCCM_START	DCCM_START
-#define REGION_DCCM_SIZE	DCCM_SIZE
+#define REGION_DCCM_START       DCCM_START
+#define REGION_DCCM_SIZE        DCCM_SIZE
 #endif
 
 #ifndef REGION_EXT_ROM_START
-#define REGION_EXT_ROM_START	EXT_ROM_START
-#define REGION_EXT_ROM_SIZE		EXT_ROM_SIZE
+#define REGION_EXT_ROM_START    EXT_ROM_START
+#define REGION_EXT_ROM_SIZE             EXT_ROM_SIZE
 #endif
 
 #ifndef REGION_EXT_RAM_START
-#define REGION_EXT_RAM_START	EXT_RAM_START
-#define REGION_EXT_RAM_SIZE		EXT_RAM_SIZE
+#define REGION_EXT_RAM_START    EXT_RAM_START
+#define REGION_EXT_RAM_SIZE             EXT_RAM_SIZE
 #endif
 
 #define IMAGE_HEAD_SIZE 0x0
@@ -136,17 +136,17 @@
  */
 #ifndef REGION_ROM
 #ifdef ARC_FEATURE_ICACHE_PRESENT
-#define REGION_ROM	REGION_EXT_ROM
+#define REGION_ROM      REGION_EXT_ROM
 #else
-#define REGION_ROM	REGION_ICCM
+#define REGION_ROM      REGION_ICCM
 #endif
 #endif
 
 #ifndef REGION_RAM
 #ifdef ARC_FEATURE_DCACHE_PRESENT
-#define REGION_RAM	REGION_EXT_RAM
+#define REGION_RAM      REGION_EXT_RAM
 #else
-#define REGION_RAM	REGION_DCCM
+#define REGION_RAM      REGION_DCCM
 #endif
 #endif
 

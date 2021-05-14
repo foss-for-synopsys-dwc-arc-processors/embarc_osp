@@ -26,18 +26,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include "arc/arc_exception.h"
 
-
 #include "target_mem_config.h"
 #include "flash_obj.h"
 #include <string.h>
 
-#define DW_FLASH_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define DW_FLASH_CHECK_EXP(EXPR, ERROR_CODE)            CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 void emsk_flash_obj_all_install(void);
 
@@ -87,13 +86,11 @@ static int32_t emsk_ddr_ram_control(uint32_t cmd, void *param)
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt > 0, E_CLSED);
 
 	switch (cmd) {
-		case FLASH_CMD_GET_INFO:
-			((DEV_FLASH_INFO *)param)->begin_addr = info_ptr->begin_addr;
-			((DEV_FLASH_INFO *)param)->total_size = info_ptr->total_size;
+	case FLASH_CMD_GET_INFO:
+		((DEV_FLASH_INFO *)param)->begin_addr = info_ptr->begin_addr;
+		((DEV_FLASH_INFO *)param)->total_size = info_ptr->total_size;
 		break;
 	}
-
-
 
 error_exit:
 	return ercd;
@@ -204,8 +201,6 @@ static void emsk_ddr_ram_install(void)
 }
 #endif
 
-
-
 DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 {
 	static uint32_t install_flag = 0;
@@ -219,17 +214,16 @@ DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 	switch (flash_id) {
 #if (USE_EMSK_DDR_RAM)
 
-		case EMSK_DDR_RAM_ID:
-			return &emsk_ddr_ram_obj;
-			break;
+	case EMSK_DDR_RAM_ID:
+		return &emsk_ddr_ram_obj;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;
 }
-
 
 void emsk_flash_obj_all_install(void)
 {

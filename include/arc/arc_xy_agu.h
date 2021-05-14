@@ -55,7 +55,7 @@ extern "C" {
 #define US_EXPAND_OS_NAME(reg_id)  AUX_AGU_OS  ## reg_id
 #define US_EXPAND_AP_NAME(reg_id)  AUX_AGU_AP  ## reg_id
 
-#define ARC_AGU_MOD_SET(agu_mod, ptr_id, data_type, addressing) \
+#define ARC_AGU_MOD_SET(agu_mod, ptr_id, data_type, addressing)	\
 	arc_aux_write(US_EXPAND_MOD_NAME(agu_mod), (uint32_t)(ptr_id | data_type | addressing))
 #define ARC_AGU_OS_SET(os_id, offset) \
 	arc_aux_write(US_EXPAND_OS_NAME(os_id), (uint32_t)offset)
@@ -295,10 +295,10 @@ extern "C" {
 	for (agu_temp_idx = 0; agu_temp_idx < mod_num; agu_temp_idx++) agu_temp_mod[agu_temp_idx] = _lr(AGU_AUX_MOD0 + agu_temp_idx); \
 	for (agu_temp_idx = 0; agu_temp_idx < os_num; agu_temp_idx++) agu_temp_os[agu_temp_idx] = _lr(AGU_AUX_OS0 + agu_temp_idx); {}
 
-#define ARC_AGU_RESTORE_REGS()														       \
-	for (agu_temp_idx = 0; agu_temp_idx < agu_temp_ap_num; agu_temp_idx++) _sr (agu_temp_ap[agu_temp_idx], AGU_AUX_AP0 + agu_temp_idx);    \
-	for (agu_temp_idx = 0; agu_temp_idx < agu_temp_mod_num; agu_temp_idx++) _sr (agu_temp_mod[agu_temp_idx], AGU_AUX_MOD0 + agu_temp_idx); \
-	for (agu_temp_idx = 0; agu_temp_idx < agu_temp_os_num; agu_temp_idx++) _sr (agu_temp_os[agu_temp_idx], AGU_AUX_OS0 + agu_temp_idx); {}
+#define ARC_AGU_RESTORE_REGS()														      \
+	for (agu_temp_idx = 0; agu_temp_idx < agu_temp_ap_num; agu_temp_idx++) _sr(agu_temp_ap[agu_temp_idx], AGU_AUX_AP0 + agu_temp_idx);    \
+	for (agu_temp_idx = 0; agu_temp_idx < agu_temp_mod_num; agu_temp_idx++) _sr(agu_temp_mod[agu_temp_idx], AGU_AUX_MOD0 + agu_temp_idx); \
+	for (agu_temp_idx = 0; agu_temp_idx < agu_temp_os_num; agu_temp_idx++) _sr(agu_temp_os[agu_temp_idx], AGU_AUX_OS0 + agu_temp_idx); {}
 
 #ifdef __cplusplus
 }

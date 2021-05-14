@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _ESP8266_H_
 #define _ESP8266_H_
@@ -34,40 +34,39 @@
 #include "at_parser.h"
 #include "board.h"
 
-
 /** uart id which esp8266 uses */
-#ifndef ESP8266_UART_ID	//you can define this at board header file (e.g. emsk.h)
+#ifndef ESP8266_UART_ID // you can define this at board header file (e.g. emsk.h)
 #if defined(BOARD_EMSK) || defined(BOARD_HSDK)
-#define ESP8266_UART_ID		DW_UART_0_ID
-#elif defined(BOARD_EMSDP)|| defined(BOARD_IOTDK)
-#define ESP8266_UART_ID		DFSS_UART_1_ID
+#define ESP8266_UART_ID         DW_UART_0_ID
+#elif defined(BOARD_EMSDP) || defined(BOARD_IOTDK)
+#define ESP8266_UART_ID         DFSS_UART_1_ID
 #else
 #warning esp8266 is not supported on this board!
 #endif
 #endif
 
-typedef enum{
+typedef enum {
 	ESP8266_STA=1,
 	ESP8266_AP,
 	ESP8266_AP_STA
-}ESP8266_WIFI_MODE;
+} ESP8266_WIFI_MODE;
 
-typedef enum{
+typedef enum {
 	ESP8266_NORMALSEND=0,
 	ESP8266_PASSTHR
-}ESP8266_TRANS_MODE;
+} ESP8266_TRANS_MODE;
 
-typedef struct{
+typedef struct {
 	AT_PARSER_DEF_PTR p_at;
-	//add other members here if needed
+	// add other members here if needed
 	bool wifi_connected;
 	ESP8266_TRANS_MODE trans_mode;
-}ESP8266_DEF, *ESP8266_DEF_PTR;
+} ESP8266_DEF, *ESP8266_DEF_PTR;
 
-#define ESP8266_DEFINE(NAME) \
+#define ESP8266_DEFINE(NAME)	   \
 	ESP8266_DEF __ ## NAME = { \
-			.p_at = NULL, \
-	}; \
+		.p_at = NULL,	   \
+	};			   \
 	ESP8266_DEF_PTR NAME = &__ ## NAME
 
 int32_t esp8266_init(ESP8266_DEF_PTR obj, uint32_t baudrate);

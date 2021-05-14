@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -75,18 +75,18 @@ Inline void embARC_assert(const char *exptext, const char *file, uint32_t line)
 
 /* check whether the expr is true */
 #define EMBARC_ASSERT(expr) \
-		((void)(!(expr) ? (embARC_assert(#expr, __FILE__, __LINE__), 0) : 0))
+	((void)(!(expr) ? (embARC_assert(#expr, __FILE__, __LINE__), 0) : 0))
 
-#define EMBARC_HALT(fmt, ...)	({ \
-			EMBARC_PRINTF(HALT_FORMAT, __FILE__, __LINE__); \
-			EMBARC_PRINTF(fmt, ##__VA_ARGS__); \
-			EMBARC_PRINTF("\r\n"); \
-			_exit_loop(); \
-		})
+#define EMBARC_HALT(fmt, ...)   ({				\
+		EMBARC_PRINTF(HALT_FORMAT, __FILE__, __LINE__);	\
+		EMBARC_PRINTF(fmt, ##__VA_ARGS__);		\
+		EMBARC_PRINTF("\r\n");				\
+		_exit_loop();					\
+	})
 
 #ifdef __cplusplus
 }
 #endif
 #endif  /* __ASSEMBLY__ */
 
-#endif /* DEBUG_H_ */
+#endif  /* DEBUG_H_ */

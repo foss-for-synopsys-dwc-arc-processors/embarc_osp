@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dw_gpio.h"
 #include "dw_gpio_obj.h"
 
@@ -38,8 +38,8 @@
  */
 
 #if (USE_CPU_DW_GPIO_PORT_A)
-static DEV_GPIO		cpu_port_a;
-static DW_GPIO_PORT	cpu_dw_gpio_port_a;
+static DEV_GPIO cpu_port_a;
+static DW_GPIO_PORT cpu_dw_gpio_port_a;
 static DEV_GPIO_HANDLER cpu_dw_gpio_bit_handler_a[HSDK_CPU_GPIO_A_INT_MAX_COUNT];
 static DW_GPIO_BIT_ISR cpu_dw_gpio_bit_isr_a = {
 	HSDK_CPU_GPIO_A_INT_MAX_COUNT, cpu_dw_gpio_bit_handler_a
@@ -59,25 +59,26 @@ static int32_t cpu_porta_control(uint32_t ctrl_cmd, void *param)
 {
 	uint32_t val32;
 	uint32_t i;
+
 	switch (ctrl_cmd) {
-		case GPIO_CMD_ENA_BIT_INT:
-			val32 = (uint32_t)param;
-			for (i = 0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i ++) {
-				if ((1<<i) & val32) {
-					int_enable(HSDC_GPIO0_ISR + i);
-				}
+	case GPIO_CMD_ENA_BIT_INT:
+		val32 = (uint32_t)param;
+		for (i = 0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
+			if ((1 << i) & val32) {
+				int_enable(HSDC_GPIO0_ISR + i);
 			}
-			break;
-		case GPIO_CMD_DIS_BIT_INT:
-			val32 = (uint32_t)param;
-			for (i = 0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i ++) {
-				if ((1<<i) & val32) {
-					int_disable(HSDC_GPIO0_ISR + i);
-				}
+		}
+		break;
+	case GPIO_CMD_DIS_BIT_INT:
+		val32 = (uint32_t)param;
+		for (i = 0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
+			if ((1 << i) & val32) {
+				int_disable(HSDC_GPIO0_ISR + i);
 			}
-			break;
-		default:
-			break;
+		}
+		break;
+	default:
+		break;
 	}
 	return dw_gpio_control(&cpu_port_a, ctrl_cmd, param);
 }
@@ -116,7 +117,7 @@ static void cpu_porta_install(void)
 	dw_port_ptr->intno = DW_GPIO_INVALID_INTNO; /* pass invalid interrupt number */
 	dw_port_ptr->int_handler = cpu_porta_isr;
 
-	for (i=0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
+	for (i = 0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
 		int_handler_install(HSDC_GPIO0_ISR + i, cpu_porta_isr);
 		int_disable(HSDC_GPIO0_ISR + i);
 		cpu_dw_gpio_bit_isr_a.int_bit_handler_ptr[i] = NULL;
@@ -143,10 +144,10 @@ DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
 
 	switch (gpio_id) {
 #if (USE_CPU_DW_GPIO_PORT_A)
-		case CPU_DW_GPIO_PORT_A: return &cpu_port_a;
+	case CPU_DW_GPIO_PORT_A: return &cpu_port_a;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

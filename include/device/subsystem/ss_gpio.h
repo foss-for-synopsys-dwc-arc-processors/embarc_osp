@@ -26,31 +26,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SS_GPIO_H_
 #define _SS_GPIO_H_
 /* the wrapper of subsystem gpio driver */
 
 #include "device/ip_hal/dev_gpio.h"
 
-typedef struct ss_gpio_dev_context
-{
+typedef struct ss_gpio_dev_context {
 	uint32_t reg_base;
 
-	uint8_t	dev_id;
+	uint8_t dev_id;
 	uint8_t width;
-	uint8_t	intno;
+	uint8_t intno;
 	uint8_t reserved;
 
-	DEV_CALLBACK	int_cb;
+	DEV_CALLBACK int_cb;
 	DEV_GPIO_HANDLER *handlers;
-	DEV_GPIO_INFO	*info;
-	uint32_t	int_bit_type;
-	uint32_t	int_bit_polarity;
-	uint32_t	int_bit_debounce;
+	DEV_GPIO_INFO   *info;
+	uint32_t int_bit_type;
+	uint32_t int_bit_polarity;
+	uint32_t int_bit_debounce;
 } SS_GPIO_DEV_CONTEXT;
-
-
 
 extern int32_t ss_gpio_open(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir);
 extern int32_t ss_gpio_close(SS_GPIO_DEV_CONTEXT *ctx);

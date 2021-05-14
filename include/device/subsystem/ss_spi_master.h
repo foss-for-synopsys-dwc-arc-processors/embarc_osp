@@ -30,7 +30,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SS_SPI_MASTER_H_
 #define _SS_SPI_MASTER_H_
 
@@ -38,15 +38,13 @@
 
 #include "device/ip_hal/dev_spi.h"
 
-#define SS_SPI_MASTER_FLAG_TX_READY		(1 << 0) /* interrupt tx */
-#define SS_SPI_MASTER_FLAG_RX_READY		(1 << 1) /* interrupt rx */
-#define SS_SPI_MASTER_FLAG_BUSY			(1 << 2)
-#define SS_SPI_MASTER_FLAG_TX_RX		(1 << 3) /* both tx and rx */
-#define SS_SPI_MASTER_FLAG_ERROR		(1 << 4)
+#define SS_SPI_MASTER_FLAG_TX_READY             (1 << 0)        /* interrupt tx */
+#define SS_SPI_MASTER_FLAG_RX_READY             (1 << 1)        /* interrupt rx */
+#define SS_SPI_MASTER_FLAG_BUSY                 (1 << 2)
+#define SS_SPI_MASTER_FLAG_TX_RX                (1 << 3)        /* both tx and rx */
+#define SS_SPI_MASTER_FLAG_ERROR                (1 << 4)
 
-
-typedef struct ss_spi_master_dev_context
-{
+typedef struct ss_spi_master_dev_context {
 	uint32_t reg_base;
 	uint32_t dev_id;
 
@@ -64,14 +62,13 @@ typedef struct ss_spi_master_dev_context
 	DEV_SPI_INFO *info;
 } SS_SPI_MASTER_DEV_CONTEXT;
 
-extern int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t mode, uint32_t param);
+extern int32_t ss_spi_master_open(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t mode, uint32_t param);
 extern int32_t ss_spi_master_close(SS_SPI_MASTER_DEV_CONTEXT *ctx);
-extern int32_t ss_spi_master_control(SS_SPI_MASTER_DEV_CONTEXT * ctx, uint32_t ctrl_cmd, void *param);
-extern int32_t ss_spi_master_write(SS_SPI_MASTER_DEV_CONTEXT*ctx, const void *data, uint32_t len);
-extern int32_t ss_spi_master_read(SS_SPI_MASTER_DEV_CONTEXT*ctx, void *data, uint32_t len);
+extern int32_t ss_spi_master_control(SS_SPI_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param);
+extern int32_t ss_spi_master_write(SS_SPI_MASTER_DEV_CONTEXT *ctx, const void *data, uint32_t len);
+extern int32_t ss_spi_master_read(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *data, uint32_t len);
 extern void ss_spi_master_tx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param);
 extern void ss_spi_master_rx_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param);
 extern void ss_spi_master_err_cb(SS_SPI_MASTER_DEV_CONTEXT *ctx, void *param);
-
 
 #endif /* _SS_SPI_MASTER_H_ */

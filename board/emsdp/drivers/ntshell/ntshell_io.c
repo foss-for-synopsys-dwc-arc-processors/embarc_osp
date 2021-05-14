@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO	EMSDP NTShell Middleware IO Driver
@@ -54,21 +54,21 @@
 #include "ntshell_io.h"
 
 /** get ntshell interface by index */
-NTSHELL_IO* get_ntshell_io(uint32_t id)
+NTSHELL_IO *get_ntshell_io(uint32_t id)
 {
 	switch (id) {
 #if (USE_EMSDP_NTSHELL_UART_1)
-		case EMSDP_NTSHELL_0_ID:
-			return &ntshell_uart_1;
-			break;
+	case EMSDP_NTSHELL_0_ID:
+		return &ntshell_uart_1;
+		break;
 #endif
 #if (USE_EMSDP_NTSHELL_NETCONN_0)
-		case EMSDP_NTSHELL_1_ID:
-			return &ntshell_netconn_0;
-			break;
+	case EMSDP_NTSHELL_1_ID:
+		return &ntshell_netconn_0;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

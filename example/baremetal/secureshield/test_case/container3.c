@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"
@@ -38,7 +38,7 @@ TEST_CONTEXT container3_context;
 int tst_func4(int arg1, int arg2, int arg3, int arg4)
 {
 	EMBARC_PRINTF("tst_func4 in container 3, arguments are:%d,%d,%d,%d\r\n",
-		arg1, arg2, arg3, arg4);
+		      arg1, arg2, arg3, arg4);
 	/* container 3 initializes its own context */
 	container3_context.initialized = 1;
 	if (secureshield_int_enable(INTNO_SWI3) != 0) {
@@ -56,15 +56,14 @@ int tst_func4(int arg1, int arg2, int arg3, int arg4)
 int tst_func6(int arg1, int arg2, int arg3, int arg4, int arg5, int arg6)
 {
 	EMBARC_PRINTF("tst_func6 in container 3, arguments are:%d,%d,%d,%d,%d,%d\r\n",
-		arg1, arg2, arg3, arg4, arg5, arg6);
+		      arg1, arg2, arg3, arg4, arg5, arg6);
 	/*
-    	 * here timer interrupt belonging to background container will come out,
+	 * here timer interrupt belonging to background container will come out,
 	 * test the case of interrupt handling with container switch
 	 */
 	board_delay_ms(100, 0);
 	return 6;
 }
-
 
 void soft_interrupt3(void *p_exinf)
 {

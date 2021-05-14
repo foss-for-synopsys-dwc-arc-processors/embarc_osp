@@ -26,40 +26,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SS_I2S_MASTER_H_
 #define _SS_I2S_MASTER_H_
 /* the wrapper of subsystem i2s master driver */
 
 #include "device/ip_hal/dev_i2s.h"
 
-#define SS_I2S_TX		1
-#define SS_I2S_RX		2
+#define SS_I2S_TX               1
+#define SS_I2S_RX               2
 
-#define SS_I2S_MASTER_FLAG_TX		(1 << 0) /* interrupt tx */
-#define SS_I2S_MASTER_FLAG_RX		(1 << 1) /* interrupt rx */
-#define SS_I2S_MASTER_FLAG_BUSY		(1 << 2)
+#define SS_I2S_MASTER_FLAG_TX           (1 << 0)        /* interrupt tx */
+#define SS_I2S_MASTER_FLAG_RX           (1 << 1)        /* interrupt rx */
+#define SS_I2S_MASTER_FLAG_BUSY         (1 << 2)
 
-#define SS_I2S_MASTER_FLAG_TX_ERROR	(1 << 5)
-#define SS_I2S_MASTER_FLAG_RX_ERROR	(1 << 6)
+#define SS_I2S_MASTER_FLAG_TX_ERROR     (1 << 5)
+#define SS_I2S_MASTER_FLAG_RX_ERROR     (1 << 6)
 
-typedef struct ss_i2s_mst_dev_context
-{
+typedef struct ss_i2s_mst_dev_context {
 	uint32_t reg_base;
 
-	uint8_t	dev_id;
+	uint8_t dev_id;
 	uint8_t io_mode;
 
-	uint8_t int_tx_req;	/* Interrupt number of TX_REQ */
-	uint8_t int_tx_err;	/* Interrupt number of TX_ERR */
-	uint8_t int_rx_avil;/* Interrupt number of RX_AVIL */
-	uint8_t int_rx_err; /* Interrupt number of RX_ERR */
+	uint8_t int_tx_req;     /* Interrupt number of TX_REQ */
+	uint8_t int_tx_err;     /* Interrupt number of TX_ERR */
+	uint8_t int_rx_avil;    /* Interrupt number of RX_AVIL */
+	uint8_t int_rx_err;     /* Interrupt number of RX_ERR */
 
 	DEV_CALLBACK int_tx_cb;
 	DEV_CALLBACK int_rx_cb;
 	DEV_CALLBACK int_err_cb;
 
-	volatile uint32_t flags;	/*  flag */
+	volatile uint32_t flags;        /*  flag */
 	DEV_I2S_INFO_PTR info;
 } SS_I2S_MST_DEV_CONTEXT;
 

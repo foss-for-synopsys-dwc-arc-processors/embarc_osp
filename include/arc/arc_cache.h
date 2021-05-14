@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -47,11 +47,11 @@
  * \todo this definitions will be reviewed.
  * @{
  */
-#define IC_CTRL_IC_ENABLE			0x0	/*!< enable instruction cache */
-#define IC_CTRL_IC_DISABLE			0x1	/*!< disable instruction cache */
-#define IC_CTRL_DIRECT_ACCESS			0x0	/*!< direct access mode */
-#define IC_CTRL_INDIRECT_ACCESS			0x20	/*!< indirect access mode */
-#define IC_CTRL_OP_SUCCEEDED			0x8	/*!< instruction cache operation succeeded */
+#define IC_CTRL_IC_ENABLE                       0x0     /*!< enable instruction cache */
+#define IC_CTRL_IC_DISABLE                      0x1     /*!< disable instruction cache */
+#define IC_CTRL_DIRECT_ACCESS                   0x0     /*!< direct access mode */
+#define IC_CTRL_INDIRECT_ACCESS                 0x20    /*!< indirect access mode */
+#define IC_CTRL_OP_SUCCEEDED                    0x8     /*!< instruction cache operation succeeded */
 /** @} */
 
 /**
@@ -60,16 +60,16 @@
  * @{
  */
 #define IC_CTRL_I
-#define DC_CTRL_DC_ENABLE			0x0	/*!< enable data cache */
-#define DC_CTRL_DC_DISABLE			0x1	/*!< disable data cache */
-#define DC_CTRL_INVALID_ONLY			0x0	/*!< invalid data cache only */
-#define DC_CTRL_INVALID_FLUSH			0x40	/*!< invalid and flush data cache */
-#define DC_CTRL_ENABLE_FLUSH_LOCKED		0x80	/*!< the locked data cache can be flushed */
-#define DC_CTRL_DISABLE_FLUSH_LOCKED		0x0	/*!< the locked data cache cannot be flushed */
-#define DC_CTRL_FLUSH_STATUS			0x100	/*!< flush status */
-#define DC_CTRL_DIRECT_ACCESS			0x0	/*!< direct access mode  */
-#define DC_CTRL_INDIRECT_ACCESS			0x20	/*!< indirect access mode */
-#define DC_CTRL_OP_SUCCEEDED			0x4	/*!< data cache operation succeeded */
+#define DC_CTRL_DC_ENABLE                       0x0     /*!< enable data cache */
+#define DC_CTRL_DC_DISABLE                      0x1     /*!< disable data cache */
+#define DC_CTRL_INVALID_ONLY                    0x0     /*!< invalid data cache only */
+#define DC_CTRL_INVALID_FLUSH                   0x40    /*!< invalid and flush data cache */
+#define DC_CTRL_ENABLE_FLUSH_LOCKED             0x80    /*!< the locked data cache can be flushed */
+#define DC_CTRL_DISABLE_FLUSH_LOCKED            0x0     /*!< the locked data cache cannot be flushed */
+#define DC_CTRL_FLUSH_STATUS                    0x100   /*!< flush status */
+#define DC_CTRL_DIRECT_ACCESS                   0x0     /*!< direct access mode  */
+#define DC_CTRL_INDIRECT_ACCESS                 0x20    /*!< indirect access mode */
+#define DC_CTRL_OP_SUCCEEDED                    0x4     /*!< data cache operation succeeded */
 /** @} */
 
 #ifndef __ASSEMBLY__
@@ -97,7 +97,9 @@ Inline uint8_t icache_available(void)
  */
 Inline void icache_enable(uint32_t icache_en_mask)
 {
-	if (!icache_available()) return;
+	if (!icache_available()) {
+		return;
+	}
 	arc_aux_write(AUX_IC_CTRL, icache_en_mask);
 }
 
@@ -142,7 +144,7 @@ Inline void icache_invalidate_line(uint32_t address)
 Inline int32_t icache_lock_line(uint32_t address)
 {
 	arc_aux_write(AUX_IC_LIL, address);
-	if(arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
+	if (arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
 		return 0;
 	} else {
 		return -1;
@@ -161,7 +163,6 @@ Inline void icache_access_mode(uint32_t mode)
 		arc_aux_write(AUX_IC_CTRL, arc_aux_read(AUX_IC_CTRL) & (~IC_CTRL_INDIRECT_ACCESS));
 	}
 }
-
 
 /** @} */
 
@@ -189,7 +190,9 @@ Inline void dcache_invalidate(void)
 	status = cpu_lock_save();
 	arc_aux_write(AUX_DC_IVDC, 1);
 	/* wait for flush completion */
-	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
+		;
+	}
 	cpu_unlock_restore(status);
 }
 
@@ -232,7 +235,9 @@ Inline void dcache_flush(void)
 	status = cpu_lock_save();
 	arc_aux_write(AUX_DC_FLSH, 1);
 	/* wait for flush completion */
-	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
+		;
+	}
 	cpu_unlock_restore(status);
 }
 
@@ -246,7 +251,9 @@ Inline void dcache_flush_line(uint32_t address)
 
 	status = cpu_lock_save();
 	arc_aux_write(AUX_DC_FLDL, address);
-	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
+		;
+	}
 	cpu_unlock_restore(status);
 }
 
@@ -258,7 +265,7 @@ Inline void dcache_flush_line(uint32_t address)
 Inline int dcache_lock_line(uint32_t address)
 {
 	arc_aux_write(AUX_DC_LDL, address);
-	if(arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
+	if (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
 		return 0;
 	} else {
 		return -1;
@@ -303,4 +310,4 @@ extern void arc_cache_init(void);
 #endif  /* __ASSEMBLY__ */
 
 /** @} */
-#endif	/* _ARC_HAL_CACHE_H_ */
+#endif  /* _ARC_HAL_CACHE_H_ */

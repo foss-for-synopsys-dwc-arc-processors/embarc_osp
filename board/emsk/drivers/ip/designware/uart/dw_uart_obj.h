@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \file
  * \ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
@@ -47,9 +47,9 @@
  * @{
  */
 #if defined(HW_VERSION) && (HW_VERSION > 11)
-#define DW_UART_NUM	(3)	/*!< DesignWare UART valid number */
+#define DW_UART_NUM     (3)     /*!< DesignWare UART valid number */
 #else
-#define DW_UART_NUM	(2)	/*!< DesignWare UART valid number */
+#define DW_UART_NUM     (2)     /*!< DesignWare UART valid number */
 #endif
 /** @} end of name */
 
@@ -57,19 +57,19 @@
  * \name	Designware UART Object ID Macros
  * @{
  */
-#define DW_UART_0_ID	0	/*!< uart 0 id macro */
-#define DW_UART_1_ID	1	/*!< uart 1 id macro */
-#define DW_UART_2_ID	2	/*!< uart 2 id macro */
+#define DW_UART_0_ID    0       /*!< uart 0 id macro */
+#define DW_UART_1_ID    1       /*!< uart 1 id macro */
+#define DW_UART_2_ID    2       /*!< uart 2 id macro */
 /** @} end of name */
 
 /**
  * \name	Designware UART Object Control Macros
  * @{
  */
-#define USE_DW_UART_0	1     	/*!< enable use designware uart 0 */
-#define USE_DW_UART_1	1     	/*!< enable use designware uart 1 */
+#define USE_DW_UART_0   1       /*!< enable use designware uart 0 */
+#define USE_DW_UART_1   1       /*!< enable use designware uart 1 */
 #if defined(HW_VERSION) && (HW_VERSION > 11)
-#define USE_DW_UART_2	1     	/*!< enable use designware uart 2 */
+#define USE_DW_UART_2   1       /*!< enable use designware uart 2 */
 #endif
 
 /** @} end of name */

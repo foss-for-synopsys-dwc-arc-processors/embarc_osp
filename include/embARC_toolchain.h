@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -47,52 +47,49 @@
 extern "C" {
 #endif
 
-#include <stdint.h>	/* C99 standard lib */
-#include <limits.h>	/* C99 standard lib */
-#include <stddef.h>	/* C99 standard lib */
-#include <stdbool.h> 	/* C99 standard lib */
+#include <stdint.h>     /* C99 standard lib */
+#include <limits.h>     /* C99 standard lib */
+#include <stddef.h>     /* C99 standard lib */
+#include <stdbool.h>    /* C99 standard lib */
 
 /*
  *  macro definitions of compiler extend function
  */
-#ifndef __cplusplus				/* C++ supports inline */
-#if __STDC_VERSION__ < 199901L			/* C99 supports inline */
-#define inline	__inline__			/* inline function */
+#ifndef __cplusplus                             /* C++ supports inline */
+#if __STDC_VERSION__ < 199901L                  /* C99 supports inline */
+#define inline  __inline__                      /* inline function */
 #endif /* __STDC_VERSION__ < 199901L */
 #endif /* __cplusplus */
 
-#define Inline	static __inline__		/* inline function */
+#define Inline  static __inline__               /* inline function */
 
-#define Asm	__asm__ volatile		/* inline asm (no optimization) */
-
+#define Asm     __asm__ volatile                /* inline asm (no optimization) */
 
 /* compiler attributes */
-#define EMBARC_FORCEINLINE	__attribute__((always_inline))
-#define EMBARC_NOINLINE		__attribute__((noinline))
-#define EMBARC_PACKED		__attribute__((packed))
-#define EMBARC_WEAK		__attribute__((weak))
-#define EMBARC_ALIAS(f)		__attribute__((weak, alias (#f)))
-#define EMBARC_LINKTO(f)	__attribute__((alias (#f)))
-#define EMBARC_NORETURN		__attribute__((noreturn))
-#define EMBARC_NAKED		__attribute__((naked))	/* function without return */
-#define EMBARC_ALIGNED(x)	__attribute__((aligned(x)))
-
+#define EMBARC_FORCEINLINE      __attribute__((always_inline))
+#define EMBARC_NOINLINE         __attribute__((noinline))
+#define EMBARC_PACKED           __attribute__((packed))
+#define EMBARC_WEAK             __attribute__((weak))
+#define EMBARC_ALIAS(f)         __attribute__((weak, alias(#f)))
+#define EMBARC_LINKTO(f)        __attribute__((alias(#f)))
+#define EMBARC_NORETURN         __attribute__((noreturn))
+#define EMBARC_NAKED            __attribute__((naked))  /* function without return */
+#define EMBARC_ALIGNED(x)       __attribute__((aligned(x)))
 
 /* array count macro */
-#define EMBARC_ARRAY_COUNT(x) (sizeof(x)/sizeof(x[0]))
+#define EMBARC_ARRAY_COUNT(x) (sizeof(x) / sizeof(x[0]))
 
 /* convert macro argument to string */
 /* note: this needs one level of indirection, accomplished with the helper macro
  *       __EMBARC_TO_STRING */
 #define __EMBARC_TO_STRING(x) #x
 #define EMBARC_TO_STRING(x)   __EMBARC_TO_STRING(x)
-#define EMBARC_CLZ(x)		(x == 0 ? 32 : __builtin_clz(x))
-#define EMBARC_BITS(x)		(32 - EMBARC_CLZ(x))
+#define EMBARC_CLZ(x)           (x == 0 ? 32 : __builtin_clz(x))
+#define EMBARC_BITS(x)          (32 - EMBARC_CLZ(x))
 /* x must be > 0 */
-#define EMBARC_POW2_CEIL(x) ((1 << (31 - EMBARC_CLZ(x))) < x ?  \
-		1 << (31 - EMBARC_CLZ(x) + 1) : \
-		1 << (31 - EMBARC_CLZ(x)))
-
+#define EMBARC_POW2_CEIL(x) ((1 << (31 - EMBARC_CLZ(x))) < x ? \
+			     1 << (31 - EMBARC_CLZ(x) + 1) :   \
+			     1 << (31 - EMBARC_CLZ(x)))
 
 #define DIV_ROUND_UP(x, y)  (((x) + (y) - 1) / (y))
 
@@ -136,11 +133,10 @@ extern void arc_mwdt_fini(void);
 #error "unsupported toolchain"
 #endif
 
-
 #ifdef __cplusplus
 }
 #endif
-#endif /* __ASSEMBLY__ */
+#endif  /* __ASSEMBLY__ */
 
-#endif /* _EMBARC_TOOLCHAIN_H_ */
+#endif  /* _EMBARC_TOOLCHAIN_H_ */
 /** }@ */

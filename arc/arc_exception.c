@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -37,7 +37,7 @@
 #include "arc/arc_exception.h"
 #include "arc/arc_cache.h"
 
-#define	 DBG_LESS
+#define  DBG_LESS
 #include "embARC_debug.h"
 
 /**
@@ -239,57 +239,57 @@ static void dump_exception_info(uint32_t vector, uint32_t cause, uint32_t param)
 	 * Programmer's reference manual for easy searching
 	 */
 	switch (vector) {
-		case EXC_NO_RESET:
-			EMBARC_PRINTF("Reset");
-			break;
-		case EXC_NO_MEM_ERR:
-			EMBARC_PRINTF("Memory Error");
-			break;
-		case EXC_NO_INS_ERR:
-			EMBARC_PRINTF("Instruction Error");
-			break;
-		case EXC_NO_MAC_CHK:
-			EMBARC_PRINTF("EV_MachineCheck: ");
-			dump_machine_check_exception(cause, param);
-			break;
-		case EXC_NO_TLB_MISS_I:
-			EMBARC_PRINTF("EV_TLBMissI");
-			break;
-		case EXC_NO_TLB_MISS_D:
-			EMBARC_PRINTF("EV_TLBMissD");
-			break;
-		case EXC_NO_PRO_VIO:
-			EMBARC_PRINTF("EV_ProtV: ");
-			dump_protv_exception(cause, param);
-			break;
-		case EXC_NO_PRI_VIO:
-			EMBARC_PRINTF("EV_PrivilegeV: ");
-			dump_privilege_exception(cause, param);
-			break;
-		case EXC_NO_SWI:
-			EMBARC_PRINTF("EV_SWI");
-			break;
-		case EXC_NO_TRAP:
-			EMBARC_PRINTF("EV_Trap");
-			break;
-		case EXC_NO_EXT:
-			EMBARC_PRINTF("EV_Extension");
-			break;
-		case EXC_NO_DIV_ZER0:
-			EMBARC_PRINTF("EV_DivZero");
-			break;
-		case EXC_NO_DC_ERR:
-			EMBARC_PRINTF("EV_DCError");
-			break;
-		case EXC_NO_MAL_ALIGN:
-			EMBARC_PRINTF("EV_Misaligned");
-			break;
-		case EXC_NO_VEC_UNIT:
-			EMBARC_PRINTF("EV_VecUnit");
-			break;
-		default:
-			EMBARC_PRINTF("unknown exception vector");
-			break;
+	case EXC_NO_RESET:
+		EMBARC_PRINTF("Reset");
+		break;
+	case EXC_NO_MEM_ERR:
+		EMBARC_PRINTF("Memory Error");
+		break;
+	case EXC_NO_INS_ERR:
+		EMBARC_PRINTF("Instruction Error");
+		break;
+	case EXC_NO_MAC_CHK:
+		EMBARC_PRINTF("EV_MachineCheck: ");
+		dump_machine_check_exception(cause, param);
+		break;
+	case EXC_NO_TLB_MISS_I:
+		EMBARC_PRINTF("EV_TLBMissI");
+		break;
+	case EXC_NO_TLB_MISS_D:
+		EMBARC_PRINTF("EV_TLBMissD");
+		break;
+	case EXC_NO_PRO_VIO:
+		EMBARC_PRINTF("EV_ProtV: ");
+		dump_protv_exception(cause, param);
+		break;
+	case EXC_NO_PRI_VIO:
+		EMBARC_PRINTF("EV_PrivilegeV: ");
+		dump_privilege_exception(cause, param);
+		break;
+	case EXC_NO_SWI:
+		EMBARC_PRINTF("EV_SWI");
+		break;
+	case EXC_NO_TRAP:
+		EMBARC_PRINTF("EV_Trap");
+		break;
+	case EXC_NO_EXT:
+		EMBARC_PRINTF("EV_Extension");
+		break;
+	case EXC_NO_DIV_ZER0:
+		EMBARC_PRINTF("EV_DivZero");
+		break;
+	case EXC_NO_DC_ERR:
+		EMBARC_PRINTF("EV_DCError");
+		break;
+	case EXC_NO_MAL_ALIGN:
+		EMBARC_PRINTF("EV_Misaligned");
+		break;
+	case EXC_NO_VEC_UNIT:
+		EMBARC_PRINTF("EV_VecUnit");
+		break;
+	default:
+		EMBARC_PRINTF("unknown exception vector");
+		break;
 	}
 
 	EMBARC_PRINTF("\n");
@@ -318,17 +318,18 @@ static void exc_handler_default(void *p_excinf)
 
 	dbg_printf(DBG_LESS_INFO, "default cpu exception handler\r\n");
 	dbg_printf(DBG_LESS_INFO, "exc_no:%d, last sp:0x%08x, ecr:0x%08x, eret:0x%08x\r\n",
-		exc_no, (uint32_t)p_excinf, excpt_cause_reg, excpt_ret_reg);
+		   exc_no, (uint32_t)p_excinf, excpt_cause_reg, excpt_ret_reg);
 #ifdef CONFIG_ARC_EXCEPTION_DEBUG
 	dump_exception_info(exc_no, exc_cause, exc_param);
 #endif
 #if SECURESHIELD_VERSION == 2
-	while (1);
+	while (1) {
+		;
+	}
 #else
 	arc_kflag(1);
 #endif
 }
-
 
 /**
  * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
@@ -343,7 +344,9 @@ static void int_handler_default(void *p_excinf)
 	dbg_printf(DBG_LESS_INFO, "default interrupt handler\r\n");
 	dbg_printf(DBG_LESS_INFO, "last sp:0x%08x, icause:0x%08x\r\n", (uint32_t)p_excinf, int_cause_reg);
 #if SECURESHIELD_VERSION == 2
-	while (1);
+	while (1) {
+		;
+	}
 #else
 	arc_kflag(1);
 #endif
@@ -351,30 +354,30 @@ static void int_handler_default(void *p_excinf)
 
 __attribute__ ((aligned(1024), section(".vector")))
 EXC_ENTRY_T exc_entry_table[NUM_EXC_ALL] = {
- 	[0] = _arc_reset,
- 	[1 ... NUM_EXC_CPU-1] = exc_entry_cpu,
-	[NUM_EXC_CPU ... NUM_EXC_ALL-1] = exc_entry_int
- };
+	[0] = _arc_reset,
+	[1 ... NUM_EXC_CPU - 1] = exc_entry_cpu,
+	[NUM_EXC_CPU ... NUM_EXC_ALL - 1] = exc_entry_int
+};
 /**
  * \var exc_int_handler_table
  * \brief the cpu exception and interrupt exception handler table
  * called in exc_entry_default and exc_entry_int
  */
 EXC_HANDLER_T exc_int_handler_table[NUM_EXC_ALL] = {
-	 [0 ... NUM_EXC_CPU-1] = exc_handler_default,
-	 [NUM_EXC_CPU ... NUM_EXC_ALL-1] = int_handler_default
+	[0 ... NUM_EXC_CPU - 1] = exc_handler_default,
+	[NUM_EXC_CPU ... NUM_EXC_ALL - 1] = int_handler_default
 };
 
 typedef struct aux_irq_ctrl_field {
 	/* note: little endian */
-	uint32_t save_nr_gpr_pairs: 5;	/** Indicates number of general-purpose register pairs saved, from 0 to 8/16 */
-	uint32_t res: 4;		/** Reserved */
-	uint32_t save_blink: 1;		/** Indicates whether to save and restore BLINK */
-	uint32_t save_lp_regs: 1;	/** Indicates whether to save and restore loop registers (LP_COUNT, LP_START, LP_END) */
-	uint32_t save_u_to_u: 1;	/** Indicates if user context is saved to user stack */
-	uint32_t res2: 1;		/** Reserved */
-	uint32_t save_idx_regs: 1;	/** Indicates whether to save and restore code-density registers (EI_BASE, JLI_BASE, LDI_BASE) */
-	uint32_t res3: 18;		/** Reserved */
+	uint32_t save_nr_gpr_pairs : 5;         /** Indicates number of general-purpose register pairs saved, from 0 to 8/16 */
+	uint32_t res : 4;                       /** Reserved */
+	uint32_t save_blink : 1;                /** Indicates whether to save and restore BLINK */
+	uint32_t save_lp_regs : 1;              /** Indicates whether to save and restore loop registers (LP_COUNT, LP_START, LP_END) */
+	uint32_t save_u_to_u : 1;               /** Indicates if user context is saved to user stack */
+	uint32_t res2 : 1;                      /** Reserved */
+	uint32_t save_idx_regs : 1;             /** Indicates whether to save and restore code-density registers (EI_BASE, JLI_BASE, LDI_BASE) */
+	uint32_t res3 : 18;                     /** Reserved */
 } aux_irq_ctrl_field_t;
 
 typedef union {
@@ -396,16 +399,16 @@ void exc_int_init(void)
 	ictrl.value = 0;
 
 #ifndef ARC_FEATURE_RF16
-	ictrl.bits.save_nr_gpr_pairs = 6;	/* r0 to r11 (r12 saved manually) */
+	ictrl.bits.save_nr_gpr_pairs = 6;       /* r0 to r11 (r12 saved manually) */
 #else
-	ictrl.bits.save_nr_gpr_pairs = 3;	/* r0 to r3, r10, r11  */
+	ictrl.bits.save_nr_gpr_pairs = 3;       /* r0 to r3, r10, r11  */
 #endif
 	ictrl.bits.save_blink = 1;
-	ictrl.bits.save_lp_regs = 1;		/* LP_COUNT, LP_START, LP_END */
-	ictrl.bits.save_u_to_u = 0;		/* user ctxt saved on kernel stack */
+	ictrl.bits.save_lp_regs = 1;            /* LP_COUNT, LP_START, LP_END */
+	ictrl.bits.save_u_to_u = 0;             /* user ctxt saved on kernel stack */
 
 #if ARC_FEATURE_CODE_DENSITY
-	ictrl.bits.save_idx_regs = 1;		/* JLI, LDI, EI */
+	ictrl.bits.save_idx_regs = 1;           /* JLI, LDI, EI */
 #endif
 
 	status = arc_lock_save();
@@ -415,7 +418,7 @@ void exc_int_init(void)
 		arc_aux_write(AUX_IRQ_ENABLE, 0);
 		arc_aux_write(AUX_IRQ_TRIGGER, 0);
 #if defined(ARC_FEATURE_SEC_PRESENT) && (SECURESHIELD_VERSION < 2)
-		arc_aux_write(AUX_IRQ_PRIORITY, (1 << AUX_IRQ_PRIORITY_BIT_S)|(INT_PRI_MAX - INT_PRI_MIN));
+		arc_aux_write(AUX_IRQ_PRIORITY, (1 << AUX_IRQ_PRIORITY_BIT_S) | (INT_PRI_MAX - INT_PRI_MIN));
 #else
 		arc_aux_write(AUX_IRQ_PRIORITY, INT_PRI_MAX - INT_PRI_MIN);
 #endif
@@ -454,19 +457,19 @@ int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY_T entry)
 #endif
 
 	if (excno < NUM_EXC_ALL && entry != NULL
-		&& table[excno] != entry) {
+	    && table[excno] != entry) {
 		status = cpu_lock_save();
 		/* directly write to mem, as arc gets exception handler from mem not from cache */
 		/* FIXME, here maybe icache is dirty, need to be invalidated */
 		table[excno] = entry;
 
 		if (arc_aux_read(AUX_BCR_D_CACHE) > 0x2) {
-		/* dcache is available */
+			/* dcache is available */
 			dcache_flush_line((uint32_t)&table[excno]);
 		}
 
 		if (arc_aux_read(AUX_BCR_D_CACHE) > 0x2) {
-		/* icache is available */
+			/* icache is available */
 			icache_invalidate_line((uint32_t)&table[excno]);
 		}
 		cpu_unlock_restore(status);
@@ -519,7 +522,6 @@ EXC_HANDLER_T exc_handler_get(const uint32_t excno)
 
 	return NULL;
 }
-
 
 #ifndef EMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
 /**
@@ -578,7 +580,6 @@ int32_t int_ipm_get(void)
 	return ((int32_t)arc_int_ipm_get() + INT_PRI_MIN);
 }
 
-
 /**
  * \brief  set the interrupt priority mask
  *
@@ -592,9 +593,8 @@ int32_t int_ipm_set(int32_t intpri)
 		return 0;
 	}
 
-	return  -1;
+	return -1;
 }
-
 
 /**
  * \brief  get current interrupt priority mask
@@ -611,7 +611,6 @@ int32_t int_pri_get(const uint32_t intno)
 	return 0;
 }
 
-
 /**
  * \brief set interrupt priority
  *
@@ -626,7 +625,7 @@ int32_t int_pri_set(const uint32_t intno, int32_t intpri)
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
 		status = cpu_lock_save();
 		intpri = intpri - INT_PRI_MIN;
-		arc_int_pri_set(intno,(uint32_t)intpri);
+		arc_int_pri_set(intno, (uint32_t)intpri);
 		cpu_unlock_restore(status);
 		return 0;
 	}
@@ -650,7 +649,6 @@ int32_t int_secure_set(const uint32_t intno, uint32_t secure)
 
 }
 
-
 /**
  * \brief  probe the pending status of interrupt
  *
@@ -665,7 +663,6 @@ int32_t int_probe(const uint32_t intno)
 	}
 	return -1;
 }
-
 
 /**
  * \brief  trigger the interrupt in software
@@ -697,7 +694,6 @@ int32_t int_level_config(const uint32_t intno, const uint32_t level)
 	}
 	return -1;
 }
-
 
 /**
  * \brief  lock cpu, disable interrupts

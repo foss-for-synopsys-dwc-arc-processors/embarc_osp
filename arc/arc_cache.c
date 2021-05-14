@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -37,12 +37,11 @@
 #include "arc/arc_cache.h"
 
 struct cache_config {
-	uint8_t ver;			/* version */
-	uint8_t assoc;			/* Cache Associativity */
-	uint16_t line; 			/* cache line/block size */
-	uint32_t capacity;		/* capacity */
+	uint8_t ver;                    /* version */
+	uint8_t assoc;                  /* Cache Associativity */
+	uint16_t line;                  /* cache line/block size */
+	uint32_t capacity;              /* capacity */
 };
-
 
 static struct cache_config icache_config, dcache_config;
 
@@ -105,10 +104,10 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 	status = cpu_lock_save();
 	do {
 		arc_aux_write(AUX_IC_LIL, start_addr);
-		if(arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
+		if (arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
 			start_addr += line_size;
 		} else {
-			ercd = -1;	/* the operation failed */
+			ercd = -1;      /* the operation failed */
 			break;
 		}
 	} while (start_addr <= end_addr);
@@ -132,7 +131,7 @@ int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 		return -1;
 	}
 	arc_aux_write(AUX_IC_RAM_ADDR, cache_addr);
-	arc_aux_write(AUX_IC_TAG, tag );
+	arc_aux_write(AUX_IC_TAG, tag);
 	arc_aux_write(AUX_IC_DATA, data);
 
 	return 0;
@@ -172,14 +171,14 @@ int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 		return -1;
 	}
 	arc_aux_write(AUX_IC_RAM_ADDR, mem_addr);
-	if(arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
+	if (arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
 		*tag = arc_aux_read(AUX_IC_TAG);
 		*data = arc_aux_read(AUX_IC_DATA);
 	} else {
-		return -1;	/* the specified memory is not in icache */
+		return -1;      /* the specified memory is not in icache */
 	}
 	return 0;
- }
+}
  #endif
 
 /**
@@ -210,7 +209,9 @@ int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 		arc_nop();
 		arc_nop();
 		/* wait for flush completion */
-		while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+		while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
+			;
+		}
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
 	cpu_unlock_restore(status);
@@ -247,7 +248,9 @@ int32_t dcache_flush_mlines(uint32_t start_addr, uint32_t size)
 		arc_nop();
 		arc_nop();
 		/* wait for flush completion */
-		while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS);
+		while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
+			;
+		}
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
 	cpu_unlock_restore(status);
@@ -281,10 +284,10 @@ int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
 	do {
 		arc_aux_write(AUX_DC_LDL, start_addr);
 		arc_nop();
-		if(arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
+		if (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
 			start_addr += line_size;
 		} else {
-			ercd = -1;	/* the operation failed */
+			ercd = -1;      /* the operation failed */
 			break;
 		}
 	} while (start_addr <= end_addr);
@@ -350,15 +353,15 @@ int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 	}
 
 	arc_aux_write(AUX_DC_RAM_ADDR, mem_addr);
-	if(arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
+	if (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
 		*tag = arc_aux_read(AUX_DC_TAG);
 		*data = arc_aux_read(AUX_DC_DATA);
 	} else {
-		return -1;	/* the specified memory is not in dcache */
+		return -1;      /* the specified memory is not in dcache */
 	}
 
 	return 0;
- }
+}
 
 /**
  * \brief  initialize cache
@@ -375,7 +378,7 @@ void arc_cache_init(void)
 
 	if (dcache_config.ver >= 0x04) { /* ARCv2 */
 		dcache_enable(DC_CTRL_DISABLE_FLUSH_LOCKED |
-			DC_CTRL_INDIRECT_ACCESS | DC_CTRL_INVALID_FLUSH);
+			      DC_CTRL_INDIRECT_ACCESS | DC_CTRL_INVALID_FLUSH);
 		dcache_invalidate();
 		dcache_config.assoc = 1 << ((build_cfg >> 8) & 0xf);
 		dcache_config.capacity = 512 << ((build_cfg >> 12) & 0xf);

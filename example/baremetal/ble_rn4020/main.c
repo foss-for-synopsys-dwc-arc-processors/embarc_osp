@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -58,18 +58,19 @@
 #endif
 
 RN4020_DEFINE(rn4020_ble, RN4020_UART_ID, RN4020_WAKE_SW_GPIO, RN4020_WAKE_SW_PIN
-	, RN4020_WAKE_HW_GPIO, RN4020_WAKE_HW_PIN, RN4020_CMD_GPIO, RN4020_CMD_PIN);
+	      , RN4020_WAKE_HW_GPIO, RN4020_WAKE_HW_PIN, RN4020_CMD_GPIO, RN4020_CMD_PIN);
 
 uint8_t test_private_services_uuid[RN4020_PRIVATE_UUID_LENGTH_BYTES] =
-				{0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
+{ 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF };
 
 uint8_t test_private_characteristic_0_uuid[RN4020_PRIVATE_UUID_LENGTH_BYTES] =
-				{0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F};
+{ 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F };
 
 uint8_t test_private_characteristic_1_uuid[RN4020_PRIVATE_UUID_LENGTH_BYTES] =
-				{0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F};
+{ 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F };
 
-int main(void) {
+int main(void)
+{
 
 	uint8_t battery = 100;
 
@@ -79,25 +80,23 @@ int main(void) {
 	rn4020_reset_to_factory(rn4020_ble);
 	rn4020_set_dev_name(rn4020_ble, "embARC");
 
-
 	rn4020_set_services(rn4020_ble, RN4020_SERVICE_DEVICE_INFORMATION |
-					    RN4020_SERVICE_BATTERY | RN4020_SERVICE_USER_DEFINED);
-
+			    RN4020_SERVICE_BATTERY | RN4020_SERVICE_USER_DEFINED);
 
 	rn4020_clear_private(rn4020_ble);
 	rn4020_add_prv_service(rn4020_ble, test_private_services_uuid);
 	rn4020_add_prv_char(rn4020_ble, test_private_characteristic_0_uuid,
-			RN4020_PRIVATE_CHAR_PROP_NOTIFY | RN4020_PRIVATE_CHAR_PROP_READ,
-			5, RN4020_PRIVATE_CHAR_SEC_NONE);
+			    RN4020_PRIVATE_CHAR_PROP_NOTIFY | RN4020_PRIVATE_CHAR_PROP_READ,
+			    5, RN4020_PRIVATE_CHAR_SEC_NONE);
 	rn4020_add_prv_char(rn4020_ble, test_private_characteristic_1_uuid,
-			RN4020_PRIVATE_CHAR_PROP_WRITE | RN4020_PRIVATE_CHAR_PROP_READ,
-			5, RN4020_PRIVATE_CHAR_SEC_NONE);
+			    RN4020_PRIVATE_CHAR_PROP_WRITE | RN4020_PRIVATE_CHAR_PROP_READ,
+			    5, RN4020_PRIVATE_CHAR_SEC_NONE);
 
 	rn4020_set_features(rn4020_ble, RN4020_FEATURE_SERVER_ONLY);
-	//rn4020_remove_bond(rn4020_ble);
+	// rn4020_remove_bond(rn4020_ble);
 	rn4020_reset(rn4020_ble);
 
-	//rn4020_refresh_handle_uuid_table(rn4020_ble);
+	// rn4020_refresh_handle_uuid_table(rn4020_ble);
 
 	rn4020_advertise(rn4020_ble);
 
@@ -105,11 +104,10 @@ int main(void) {
 
 	while (1) {
 		rn4020_battery_set_level(rn4020_ble, battery--);
-		//rn4020_server_write_prv_char(rn4020_ble, test_private_characteristic_0_uuid, &battery, 1);
-		//rn4020_advertise(rn4020_ble);
+		// rn4020_server_write_prv_char(rn4020_ble, test_private_characteristic_0_uuid, &battery, 1);
+		// rn4020_advertise(rn4020_ble);
 		board_delay_ms(2000, 0);
-		if(rn4020_ble->need_advertise)
-		{
+		if (rn4020_ble->need_advertise) {
 			rn4020_ble->need_advertise = 0;
 			rn4020_advertise(rn4020_ble);
 		}

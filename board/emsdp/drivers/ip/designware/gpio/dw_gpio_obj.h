@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_GPIO_OBJ_H_
 #define _DW_GPIO_OBJ_H_
 
@@ -35,26 +35,26 @@
 /**
  * Designware GPIO Port Bank Control Macros
  */
-#define USE_DW_GPIO_PORT_A		1
-#define USE_DW_GPIO_PORT_B		1
-#define USE_DW_GPIO_PORT_C		1
-#define USE_DW_GPIO_PORT_D		1
+#define USE_DW_GPIO_PORT_A              1
+#define USE_DW_GPIO_PORT_B              1
+#define USE_DW_GPIO_PORT_C              1
+#define USE_DW_GPIO_PORT_D              1
 
 /**
  * Designware GPIO Port Interrupt Available Number Macros
  */
-#define EMSDP_GPIO_A_INT_MAX_COUNT	32
-#define EMSDP_GPIO_B_INT_MAX_COUNT	0
-#define EMSDP_GPIO_C_INT_MAX_COUNT	0
-#define EMSDP_GPIO_D_INT_MAX_COUNT	0
+#define EMSDP_GPIO_A_INT_MAX_COUNT      32
+#define EMSDP_GPIO_B_INT_MAX_COUNT      0
+#define EMSDP_GPIO_C_INT_MAX_COUNT      0
+#define EMSDP_GPIO_D_INT_MAX_COUNT      0
 
 /**
  * Designware GPIO Port Available Bits Macros
  */
-#define EMSDP_GPIO_A_VALID_MASK		DW_GPIO_MASK_ALL
-#define EMSDP_GPIO_B_VALID_MASK		DW_GPIO_MASK_ALL
-#define EMSDP_GPIO_C_VALID_MASK		DW_GPIO_MASK_ALL
-#define EMSDP_GPIO_D_VALID_MASK		DW_GPIO_MASK_ALL
+#define EMSDP_GPIO_A_VALID_MASK         DW_GPIO_MASK_ALL
+#define EMSDP_GPIO_B_VALID_MASK         DW_GPIO_MASK_ALL
+#define EMSDP_GPIO_C_VALID_MASK         DW_GPIO_MASK_ALL
+#define EMSDP_GPIO_D_VALID_MASK         DW_GPIO_MASK_ALL
 
 #ifdef __cplusplus
 extern "C" {

@@ -26,49 +26,49 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dw_uart.h"
 #include "dw_uart_obj.h"
 
 #include "axs/axs.h"
 
-#define DW_UART_FIFO_LEN	32
+#define DW_UART_FIFO_LEN        32
 /**
  * \name	AXS DesignWare UART 0 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_0)
 static void dw_uart_0_isr(void *ptr);
-#define DW_UART_0_INTNO		(ICTL_INTNO_UART0)	/*!< designware uart 0 interrupt number  */
+#define DW_UART_0_INTNO         (ICTL_INTNO_UART0)      /*!< designware uart 0 interrupt number  */
 
-DEV_UART		dw_uart_0;			/*!< designware uart object */
-DW_UART_CTRL	dw_uart_0_ctrl = {			/*!< designware uart 0 ctrl */
+DEV_UART dw_uart_0;                                     /*!< designware uart object */
+DW_UART_CTRL dw_uart_0_ctrl = {                         /*!< designware uart 0 ctrl */
 	REGBASE_UART0, CLK_UART, DW_UART_0_INTNO, (INT_HANDLER_T)dw_uart_0_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
 /** designware uart 0 open */
-static int32_t dw_uart_0_open (uint32_t baud)
+static int32_t dw_uart_0_open(uint32_t baud)
 {
 	return dw_uart_open(&dw_uart_0, baud);
 }
 /** designware uart 0 close */
-static int32_t dw_uart_0_close (void)
+static int32_t dw_uart_0_close(void)
 {
 	return dw_uart_close(&dw_uart_0);
 }
 /** designware uart 0 control */
-static int32_t dw_uart_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_uart_0_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_uart_control(&dw_uart_0, ctrl_cmd, param);
 }
 /** designware uart 0 write */
-static int32_t dw_uart_0_write (const void *data, uint32_t len)
+static int32_t dw_uart_0_write(const void *data, uint32_t len)
 {
 	return dw_uart_write(&dw_uart_0, data, len);
 }
 /** designware uart 0 close */
-static int32_t dw_uart_0_read (void *data, uint32_t len)
+static int32_t dw_uart_0_read(void *data, uint32_t len)
 {
 	return dw_uart_read(&dw_uart_0, data, len);
 }
@@ -83,7 +83,6 @@ static void dw_uart_0_install(void)
 	DEV_UART *dw_uart_ptr = &dw_uart_0;
 	DEV_UART_INFO *dw_uart_info_ptr = &(dw_uart_0.uart_info);
 	DW_UART_CTRL *dw_uart_ctrl_ptr = &dw_uart_0_ctrl;
-
 
 	/** uart info init */
 	dw_uart_info_ptr->uart_ctrl = (void *)dw_uart_ctrl_ptr;
@@ -108,36 +107,36 @@ static void dw_uart_0_install(void)
  */
 #if (USE_DW_UART_1)
 static void dw_uart_1_isr(void *ptr);
-#define DW_UART_1_INTNO		(ICTL_INTNO_UART1)	/*!< designware uart 1 interrupt number  */
+#define DW_UART_1_INTNO         (ICTL_INTNO_UART1)      /*!< designware uart 1 interrupt number  */
 
-DEV_UART		dw_uart_1;			/*!< designware uart 1 object */
-DW_UART_CTRL	dw_uart_1_ctrl = {			/*!< designware uart 1 ctrl */
+DEV_UART dw_uart_1;                                     /*!< designware uart 1 object */
+DW_UART_CTRL dw_uart_1_ctrl = {                         /*!< designware uart 1 ctrl */
 	REGBASE_UART1, CLK_UART, DW_UART_1_INTNO, (INT_HANDLER_T)dw_uart_1_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
 /** designware uart 1 open */
-static int32_t dw_uart_1_open (uint32_t baud)
+static int32_t dw_uart_1_open(uint32_t baud)
 {
 	return dw_uart_open(&dw_uart_1, baud);
 }
 /** designware uart 1 close */
-static int32_t dw_uart_1_close (void)
+static int32_t dw_uart_1_close(void)
 {
 	return dw_uart_close(&dw_uart_1);
 }
 /** designware uart 1 control */
-static int32_t dw_uart_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_uart_1_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_uart_control(&dw_uart_1, ctrl_cmd, param);
 }
 /** designware uart 1 write */
-static int32_t dw_uart_1_write (const void *data, uint32_t len)
+static int32_t dw_uart_1_write(const void *data, uint32_t len)
 {
 	return dw_uart_write(&dw_uart_1, data, len);
 }
 /** designware uart 1 close */
-static int32_t dw_uart_1_read (void *data, uint32_t len)
+static int32_t dw_uart_1_read(void *data, uint32_t len)
 {
 	return dw_uart_read(&dw_uart_1, data, len);
 }
@@ -175,36 +174,36 @@ static void dw_uart_1_install(void)
  */
 #if (USE_DW_UART_2)
 static void dw_uart_2_isr(void *ptr);
-#define DW_UART_2_INTNO		(ICTL_INTNO_UART2)	/*!< designware uart 2 interrupt number  */
+#define DW_UART_2_INTNO         (ICTL_INTNO_UART2)      /*!< designware uart 2 interrupt number  */
 
-DEV_UART	dw_uart_2;				/*!< designware uart 2 object */
-DW_UART_CTRL	dw_uart_2_ctrl = {			/*!< designware uart 2 ctrl */
+DEV_UART dw_uart_2;                                     /*!< designware uart 2 object */
+DW_UART_CTRL dw_uart_2_ctrl = {                         /*!< designware uart 2 ctrl */
 	REGBASE_UART2, CLK_UART, DW_UART_2_INTNO, (INT_HANDLER_T)dw_uart_2_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
 /** designware uart 2 open */
-static int32_t dw_uart_2_open (uint32_t baud)
+static int32_t dw_uart_2_open(uint32_t baud)
 {
 	return dw_uart_open(&dw_uart_2, baud);
 }
 /** designware uart 2 close */
-static int32_t dw_uart_2_close (void)
+static int32_t dw_uart_2_close(void)
 {
 	return dw_uart_close(&dw_uart_2);
 }
 /** designware uart 2 control */
-static int32_t dw_uart_2_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_uart_2_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_uart_control(&dw_uart_2, ctrl_cmd, param);
 }
 /** designware uart 1 write */
-static int32_t dw_uart_2_write (const void *data, uint32_t len)
+static int32_t dw_uart_2_write(const void *data, uint32_t len)
 {
 	return dw_uart_write(&dw_uart_2, data, len);
 }
 /** designware uart 2 close */
-static int32_t dw_uart_2_read (void *data, uint32_t len)
+static int32_t dw_uart_2_read(void *data, uint32_t len)
 {
 	return dw_uart_read(&dw_uart_2, data, len);
 }
@@ -266,22 +265,22 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 
 	switch (uart_id) {
 #if (USE_DW_UART_0)
-		case DW_UART_0_ID:
-			return &dw_uart_0;
-			break;
+	case DW_UART_0_ID:
+		return &dw_uart_0;
+		break;
 #endif
 #if (USE_DW_UART_1)
-		case DW_UART_1_ID:
-			return &dw_uart_1;
-			break;
+	case DW_UART_1_ID:
+		return &dw_uart_1;
+		break;
 #endif
 #if (USE_DW_UART_2)
-		case DW_UART_2_ID:
-			return &dw_uart_2;
-			break;
+	case DW_UART_2_ID:
+		return &dw_uart_2;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

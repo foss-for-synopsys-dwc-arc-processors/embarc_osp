@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -34,62 +34,72 @@
 template <typename R>
 class test_item {
 public:
-	R get_value() const;
-	void set_value(R x);
+R get_value() const;
+void set_value(R x);
 
-	bool same_value(const test_item &target) const
-	{
-		return value == target.value;
-	}
-	test_item(): value(1), id(2) {}
-	test_item(R init_value): value(init_value), id(3){}
-	test_item(R init_value, R init_id): value(init_value), id(init_id){}
+bool same_value(const test_item &target) const
+{
+	return value == target.value;
+}
+test_item() : value(1), id(2)
+{
+}
+test_item(R init_value) : value(init_value), id(3)
+{
+}
+test_item(R init_value, R init_id) : value(init_value), id(init_id)
+{
+}
 private:
-	R value;
-	R id;
+R value;
+R id;
 };
 
 template<int i>
 class B
 {
 public:
-	int num()
-	{
-		return i * B<i-1>().num();
-	}
+int num()
+{
+	return i * B<i - 1>().num();
+}
 };
 
 template<>
 class B <1>
 {
 public:
-	int num()
-	{
-		return 1;
-	}
+int num()
+{
+	return 1;
+}
 };
 
-
-template<typename T, int i=1>
+template<typename T, int i = 1>
 class someComputing {
 public:
-	typedef volatile T* retType;
-	enum { retValume = i + someComputing<T, i-1>::retValume }; // recursion
-	static void f() { EMBARC_PRINTF("someComputing: i=%d\n", i); }
+typedef volatile T *retType;
+enum { retValume = i + someComputing<T, i - 1>::retValume };       // recursion
+static void f()
+{
+	EMBARC_PRINTF("someComputing: i=%d\n", i);
+}
 };
 
 template<typename T> // template specialization, end condition
 class someComputing<T, 0> {
 public:
-	enum { retValume = 0 };
+enum { retValume = 0 };
 };
 
 template<typename T>
 class codeComputing {
 public:
-	static void f() { T::f(); }
+static void f()
+{
+	T::f();
+}
 };
-
 
 template <typename R> R test_item<R>:: get_value() const
 {
@@ -108,16 +118,17 @@ int main(void)
 {
 	test_item<int> x;
 	test_item<int> z(4);
-	test_item<int> w(5,0);
+	test_item<int> w(5, 0);
 
 	int i = B<5>().num();
-	someComputing<int>::retType a=0;
+	someComputing<int>::retType a = 0;
 
-	EMBARC_PRINTF("a is %d\n",sizeof(a));
+	EMBARC_PRINTF("a is %d\n", sizeof(a));
 	EMBARC_PRINTF("i:%d\n", i);
 	i = someComputing<int, 256>::retValume;
 	EMBARC_PRINTF("i is:%d\n", i);
 	codeComputing< someComputing<int, 99> >::f();
+
 	EMBARC_PRINTF("x:%d\n", x.get_value());
 	EMBARC_PRINTF("y:%d\n", y.get_value());
 	x.set_value(3);

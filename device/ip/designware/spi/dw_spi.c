@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <string.h>
 
@@ -42,25 +42,25 @@
  * DesignWare SPI driver macros used in spi driver
  */
 /** check expressions used in DesignWare SPI driver implementation */
-#define DW_SPI_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define DW_SPI_CHECK_EXP(EXPR, ERROR_CODE)              CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 /** convert DesignWare frequence to divisor */
-#define DW_SPI_FREQ2DV(perifreq, spifreq)		((perifreq) / (spifreq))
+#define DW_SPI_FREQ2DV(perifreq, spifreq)               ((perifreq) / (spifreq))
 
 #ifndef DISABLE_DEVICE_OBJECT_VALID_CHECK
 /** valid check of spi info object */
-#define VALID_CHK_SPI_INFO_OBJECT(spiinfo_obj_ptr)		{			\
-			DW_SPI_CHECK_EXP((spiinfo_obj_ptr)!=NULL, E_OBJ);		\
-			DW_SPI_CHECK_EXP(((spiinfo_obj_ptr)->spi_ctrl)!=NULL, E_OBJ);	\
- 		}
+#define VALID_CHK_SPI_INFO_OBJECT(spiinfo_obj_ptr)              {		\
+		DW_SPI_CHECK_EXP((spiinfo_obj_ptr) != NULL, E_OBJ);		\
+		DW_SPI_CHECK_EXP(((spiinfo_obj_ptr)->spi_ctrl) != NULL, E_OBJ);	\
+}
 #endif
 
 /**
  * DesignWare SPI interrupt callback routines select macros definitions
  */
-#define DW_SPI_RDY_SND					(1U)	/*!< ready to send callback */
-#define DW_SPI_RDY_RCV					(2U)	/*!< ready to receive callback */
-#define DW_SPI_RDY_XFER					(3U)	/*!< ready to transfer callback */
+#define DW_SPI_RDY_SND                                  (1U)    /*!< ready to send callback */
+#define DW_SPI_RDY_RCV                                  (2U)    /*!< ready to receive callback */
+#define DW_SPI_RDY_XFER                                 (3U)    /*!< ready to transfer callback */
 
 /**
  * Static or inline functions, variables for DesignWare SPI handle spi operations,
@@ -149,7 +149,9 @@ Inline int32_t dw_spi_rcv_dat(DW_SPI_REG *spi_reg_ptr)
 Inline void dw_spi_psnd_dat(DW_SPI_REG *spi_reg_ptr, int32_t data)
 {
 	/** wait until spi is ready to send */
-	while (!dw_spi_putready(spi_reg_ptr)); /* blocked */
+	while (!dw_spi_putready(spi_reg_ptr)) {
+		;                              /* blocked */
+	}
 	/** send char */
 	dw_spi_putdata(spi_reg_ptr, data);
 }
@@ -161,7 +163,9 @@ Inline void dw_spi_psnd_dat(DW_SPI_REG *spi_reg_ptr, int32_t data)
 Inline int32_t dw_spi_prcv_dat(DW_SPI_REG *spi_reg_ptr)
 {
 	/** wait until spi is ready to receive */
-	while (!dw_spi_getready(spi_reg_ptr)); /* blocked */
+	while (!dw_spi_getready(spi_reg_ptr)) {
+		;                              /* blocked */
+	}
 	/** receive data */
 	return dw_spi_getdata(spi_reg_ptr);
 }
@@ -202,12 +206,15 @@ Inline void dw_spi_set_freq(DW_SPI_CTRL *spi_ctrl_ptr, uint32_t freq)
 static int32_t dw_spi_set_dfs(DW_SPI_REG *spi_reg_ptr, uint32_t dfs)
 {
 	uint32_t ctrl0_reg;
-	if ((dfs <= 3) || (dfs > 16)) return -1;
+
+	if ((dfs <= 3) || (dfs > 16)) {
+		return -1;
+	}
 
 	dw_spi_disable(spi_reg_ptr);
 	ctrl0_reg = spi_reg_ptr->CTRLR0;
 	ctrl0_reg &= ~(DW_SPI_CTRLR0_DFS_MASK);
-	spi_reg_ptr->CTRLR0 = ctrl0_reg | (dfs-1);
+	spi_reg_ptr->CTRLR0 = ctrl0_reg | (dfs - 1);
 	dw_spi_enable(spi_reg_ptr);
 
 	return 0;
@@ -218,9 +225,9 @@ static void dw_spi_quad_enable(DW_SPI_REG *spi_reg_ptr, uint32_t len)
 {
 	dw_spi_disable(spi_reg_ptr);
 
-	spi_reg_ptr->CTRLR0 |=  ((0x2 << 21) | (0x2 << 8));//Quad Frame Format.
+	spi_reg_ptr->CTRLR0 |=  ((0x2 << 21) | (0x2 << 8));// Quad Frame Format.
 	spi_reg_ptr->SPI_CTRLR0 = (0x8 << 11) | (0x2 << 8) | (0x6 << 2) | (0x0 << 0);
-						//8 wait cycles | 8bit instruction | 24bit address | instruction and address sent in standard mode.
+	// 8 wait cycles | 8bit instruction | 24bit address | instruction and address sent in standard mode.
 	spi_reg_ptr->CTRLR1 = len;
 
 	dw_spi_enable(spi_reg_ptr);
@@ -261,9 +268,11 @@ Inline int32_t dw_spi_set_clockmode(DW_SPI_REG *spi_reg_ptr, uint32_t clk_mode)
 Inline int32_t dw_spi_select_slave(DW_SPI_REG *spi_reg_ptr, uint32_t slv_line)
 {
 	/* check if spi busy */
-	if (dw_spi_busy(spi_reg_ptr)) return -1;
+	if (dw_spi_busy(spi_reg_ptr)) {
+		return -1;
+	}
 
-	spi_reg_ptr->SER = 1<<slv_line;
+	spi_reg_ptr->SER = 1 << slv_line;
 	return 0;
 }
 
@@ -271,7 +280,9 @@ Inline int32_t dw_spi_select_slave(DW_SPI_REG *spi_reg_ptr, uint32_t slv_line)
 Inline int32_t dw_spi_deselect_slave(DW_SPI_REG *spi_reg_ptr, uint32_t slv_line)
 {
 	/* check if spi busy */
-	if (dw_spi_busy(spi_reg_ptr)) return -1;
+	if (dw_spi_busy(spi_reg_ptr)) {
+		return -1;
+	}
 
 	spi_reg_ptr->SER = 0;
 	return 0;
@@ -356,7 +367,7 @@ static void dw_spi_hw_init(DW_SPI_CTRL *spi_ctrl_ptr, uint32_t clk_mode, uint32_
 	spi_reg_ptr->IMR = 0;
 
 	ctrl0_reg = DW_SPI_CTRLR0_FRF_MOTOROLA | DW_SPI_TMOD_TRANSMIT_RECEIVE \
-			| dw_spi_select_clockmode(clk_mode) | (dfs - 1) | DW_SPI_CTRLR0_SLV_OE_ENABLE;
+		    | dw_spi_select_clockmode(clk_mode) | (dfs - 1) | DW_SPI_CTRLR0_SLV_OE_ENABLE;
 	spi_reg_ptr->CTRLR0 = ctrl0_reg;
 	spi_reg_ptr->CTRLR1 = 0;
 
@@ -394,7 +405,6 @@ static void dw_spi_disable_device(DEV_SPI_INFO *spi_info_ptr)
 	spi_info_ptr->status &= ~DEV_ENABLED;
 }
 
-
 /**
  * \brief	disable designware spi send or receive interrupt
  * \param[in]	DEV_SPI_INFO 	*spi_info_ptr
@@ -407,20 +417,20 @@ static int32_t dw_spi_dis_cbr(DEV_SPI_INFO *spi_info_ptr, uint32_t cbrtn)
 
 	if ((spi_info_ptr->status & DW_SPI_IN_XFER) != 0) { /* only in transfer need do check */
 		switch (cbrtn) {
-			case DW_SPI_RDY_SND:
-				DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == DW_SPI_IN_TX, E_CTX);
-				spi_info_ptr->status &= ~(DW_SPI_IN_TX);
-				break;
-			case DW_SPI_RDY_RCV:
-				DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == DW_SPI_IN_RX, E_CTX);
-				spi_info_ptr->status &= ~(DW_SPI_IN_RX);
-				break;
-			case DW_SPI_RDY_XFER:
-				DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == DW_SPI_IN_XFER, E_CTX);
-				spi_info_ptr->status &= ~(DW_SPI_IN_XFER);
-				break;
-			default:
-				break;
+		case DW_SPI_RDY_SND:
+			DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == DW_SPI_IN_TX, E_CTX);
+			spi_info_ptr->status &= ~(DW_SPI_IN_TX);
+			break;
+		case DW_SPI_RDY_RCV:
+			DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == DW_SPI_IN_RX, E_CTX);
+			spi_info_ptr->status &= ~(DW_SPI_IN_RX);
+			break;
+		case DW_SPI_RDY_XFER:
+			DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == DW_SPI_IN_XFER, E_CTX);
+			spi_info_ptr->status &= ~(DW_SPI_IN_XFER);
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -449,17 +459,17 @@ static int32_t dw_spi_ena_cbr(DEV_SPI_INFO *spi_info_ptr, uint32_t cbrtn)
 
 	DW_SPI_CHECK_EXP((spi_info_ptr->status & DW_SPI_IN_XFER) == 0, E_CTX);
 	switch (cbrtn) {
-		case DW_SPI_RDY_SND:
-			spi_info_ptr->status |= DW_SPI_IN_TX;
-			break;
-		case DW_SPI_RDY_RCV:
-			spi_info_ptr->status |= DW_SPI_IN_RX;
-			break;
-		case DW_SPI_RDY_XFER:
-			spi_info_ptr->status |= DW_SPI_IN_XFER;
-			break;
-		default:
-			break;
+	case DW_SPI_RDY_SND:
+		spi_info_ptr->status |= DW_SPI_IN_TX;
+		break;
+	case DW_SPI_RDY_RCV:
+		spi_info_ptr->status |= DW_SPI_IN_RX;
+		break;
+	case DW_SPI_RDY_XFER:
+		spi_info_ptr->status |= DW_SPI_IN_XFER;
+		break;
+	default:
+		break;
 	}
 	dw_spi_unmask_interrupt(spi_ctrl_ptr->dw_spi_regs, DW_SPI_IMR_XFER);
 
@@ -686,8 +696,8 @@ static int32_t dw_spi_writer(DEV_SPI_INFO *spi_info_ptr)
 				break;
 			}
 		}
-		if ( (dw_xfer->tx_xfer->tx_idx >= dw_xfer->tx_xfer->tx_ofs) \
-			&& (dw_xfer->tx_xfer->tx_idx < dw_xfer->tx_xfer->tx_totlen)) {
+		if ((dw_xfer->tx_xfer->tx_idx >= dw_xfer->tx_xfer->tx_ofs) \
+		    && (dw_xfer->tx_xfer->tx_idx < dw_xfer->tx_xfer->tx_totlen)) {
 			if (dw_xfer->nbytes == 1) {
 				tx_w = (int32_t)(*(int8_t *)(dw_xfer->tx_xfer->tx_buf));
 			} else {
@@ -700,9 +710,9 @@ static int32_t dw_spi_writer(DEV_SPI_INFO *spi_info_ptr)
 		dw_spi_putdata(spi_reg_ptr, tx_w);
 		dw_xfer->tx_xfer->tx_idx += dw_xfer->nbytes;
 		dw_xfer->tx_idx += dw_xfer->nbytes;
-		tx_max --;
+		tx_max--;
 	}
-	return ((tx_cnt-tx_max) * dw_xfer->nbytes);
+	return ((tx_cnt - tx_max) * dw_xfer->nbytes);
 }
 
 static int32_t dw_spi_reader(DEV_SPI_INFO *spi_info_ptr)
@@ -725,8 +735,8 @@ static int32_t dw_spi_reader(DEV_SPI_INFO *spi_info_ptr)
 			}
 		}
 		rx_w = dw_spi_getdata(spi_reg_ptr);
-		if ( (dw_xfer->rx_xfer->rx_idx >= dw_xfer->rx_xfer->rx_ofs) \
-			&& (dw_xfer->rx_xfer->rx_idx < dw_xfer->rx_xfer->rx_totlen) ) {
+		if ((dw_xfer->rx_xfer->rx_idx >= dw_xfer->rx_xfer->rx_ofs) \
+		    && (dw_xfer->rx_xfer->rx_idx < dw_xfer->rx_xfer->rx_totlen)) {
 			if (dw_xfer->nbytes == 1) {
 				*(int8_t *)(dw_xfer->rx_xfer->rx_buf) = rx_w;
 			} else {
@@ -736,22 +746,24 @@ static int32_t dw_spi_reader(DEV_SPI_INFO *spi_info_ptr)
 		}
 		dw_xfer->rx_xfer->rx_idx += dw_xfer->nbytes;
 		dw_xfer->rx_idx += dw_xfer->nbytes;
-		rx_max --;
+		rx_max--;
 	}
-	return ((rx_cnt-rx_max) * dw_xfer->nbytes);
+	return ((rx_cnt - rx_max) * dw_xfer->nbytes);
 }
 
 Inline uint32_t dw_spi_nbytes(uint32_t dfs)
 {
 	uint32_t nbytes = 1;
 
-	if (dfs > 8) nbytes = 2;
+	if (dfs > 8) {
+		nbytes = 2;
+	}
 	return nbytes;
 }
 
 static void dw_spi_init_transfer(DW_SPI_CTRL *spi_ctrl_ptr, DEV_SPI_TRANSFER *xfer, uint32_t dfs)
 {
-	DW_SPI_TRANSFER *dw_xfer= &(spi_ctrl_ptr->dw_xfer);
+	DW_SPI_TRANSFER *dw_xfer = &(spi_ctrl_ptr->dw_xfer);
 	uint32_t tot_len = 0;
 
 	dw_xfer->tx_xfer = xfer;
@@ -773,7 +785,10 @@ static void dw_spi_init_transfer(DW_SPI_CTRL *spi_ctrl_ptr, DEV_SPI_TRANSFER *xf
 static int32_t dw_spi_chk_xfer_aligned(DEV_SPI_TRANSFER *xfer, uint32_t dfs)
 {
 	uint32_t align_bytes = 1;
-	if (xfer == NULL) return -1;
+
+	if (xfer == NULL) {
+		return -1;
+	}
 
 	if (dfs > 8) {
 		align_bytes = 2;
@@ -784,15 +799,27 @@ static int32_t dw_spi_chk_xfer_aligned(DEV_SPI_TRANSFER *xfer, uint32_t dfs)
 	while (xfer) {
 		/* check tx buffer align status */
 		if (xfer->tx_len != 0) {
-			if (xfer->tx_len % align_bytes) return -1;
-			if (xfer->tx_ofs % align_bytes) return -1;
-			if (!CHECK_ALIGN_BYTES(xfer->tx_buf, align_bytes)) return -1;
+			if (xfer->tx_len % align_bytes) {
+				return -1;
+			}
+			if (xfer->tx_ofs % align_bytes) {
+				return -1;
+			}
+			if (!CHECK_ALIGN_BYTES(xfer->tx_buf, align_bytes)) {
+				return -1;
+			}
 		}
 		/* check tx buffer align status */
 		if (xfer->rx_len != 0) {
-			if (xfer->rx_len % align_bytes) return -1;
-			if (xfer->rx_ofs % align_bytes) return -1;
-			if (!CHECK_ALIGN_BYTES(xfer->rx_buf, align_bytes)) return -1;
+			if (xfer->rx_len % align_bytes) {
+				return -1;
+			}
+			if (xfer->rx_ofs % align_bytes) {
+				return -1;
+			}
+			if (!CHECK_ALIGN_BYTES(xfer->rx_buf, align_bytes)) {
+				return -1;
+			}
 		}
 		xfer = xfer->next;
 	}
@@ -811,11 +838,8 @@ static uint32_t dw_spi_poll_transfer(DEV_SPI_INFO *spi_info_ptr)
 	}
 	spi_info_ptr->status &= ~DEV_IN_XFER;
 
-	return len>>1;
+	return len >> 1;
 }
-
-
-
 
 static uint32_t dw_spi_quad_receive(DEV_SPI_INFO *spi_info_ptr, DEV_SPI_PAK_PTR pak)
 {
@@ -826,14 +850,16 @@ static uint32_t dw_spi_quad_receive(DEV_SPI_INFO *spi_info_ptr, DEV_SPI_PAK_PTR 
 
 	spi_info_ptr->status |= DEV_IN_XFER;
 
-	dw_spi_quad_enable(spi_reg_ptr, pak->data_len -1);
+	dw_spi_quad_enable(spi_reg_ptr, pak->data_len - 1);
 
 	dw_spi_psnd_dat(spi_reg_ptr, pak->cmd);
 	dw_spi_psnd_dat(spi_reg_ptr, pak->addr32);
 
-	for (i = 0; i < pak->data_len; i ++) {
+	for (i = 0; i < pak->data_len; i++) {
 		dw_spi_psnd_dat(spi_reg_ptr, 0xFF);
-		while (dw_spi_busy(spi_reg_ptr));
+		while (dw_spi_busy(spi_reg_ptr)) {
+			;
+		}
 
 		if (dw_spi_getready(spi_reg_ptr)) {
 			while (dw_spi_rxflr(spi_reg_ptr)) {
@@ -868,7 +894,7 @@ static uint32_t dw_spi_quad_receive(DEV_SPI_INFO *spi_info_ptr, DEV_SPI_PAK_PTR 
  * \retval	E_PAR	Parameter is not valid
  * \retval	E_NOSPT	Open settings are not supported
  */
-int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
+int32_t dw_spi_open(DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 {
 	int32_t ercd = E_OK;
 	uint32_t param2check;
@@ -878,11 +904,11 @@ int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 
 	/* START ERROR CHECK */
 	VALID_CHK_SPI_INFO_OBJECT(spi_info_ptr);
-	DW_SPI_CHECK_EXP((mode==DEV_MASTER_MODE)||(mode==DEV_SLAVE_MODE), E_PAR);
-	if (mode == DEV_SLAVE_MODE) { /* clock mode should be in the enum structure */
-		DW_SPI_CHECK_EXP((param>=SPI_CPOL_0_CPHA_0) && (param<=SPI_CPOL_1_CPHA_1), E_PAR);
-	} else { /* frequence should > 0 */
-		DW_SPI_CHECK_EXP(param>0, E_PAR);
+	DW_SPI_CHECK_EXP((mode == DEV_MASTER_MODE) || (mode == DEV_SLAVE_MODE), E_PAR);
+	if (mode == DEV_SLAVE_MODE) {   /* clock mode should be in the enum structure */
+		DW_SPI_CHECK_EXP((param >= SPI_CPOL_0_CPHA_0) && (param <= SPI_CPOL_1_CPHA_1), E_PAR);
+	} else {                        /* frequence should > 0 */
+		DW_SPI_CHECK_EXP(param > 0, E_PAR);
 	}
 	/* END OF ERROR CHECK */
 
@@ -890,8 +916,8 @@ int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 
 	/* Check supported modes, master or slave */
 	support_modes = spi_ctrl_ptr->support_modes;
-	DW_SPI_CHECK_EXP( (((support_modes)&DW_SPI_MASTER_SUPPORTED)&&(mode == DEV_MASTER_MODE)) || \
-				(((support_modes)&DW_SPI_SLAVE_SUPPORTED)&&(mode == DEV_SLAVE_MODE)), E_NOSPT);
+	DW_SPI_CHECK_EXP((((support_modes) & DW_SPI_MASTER_SUPPORTED) && (mode == DEV_MASTER_MODE)) || \
+			 (((support_modes) & DW_SPI_SLAVE_SUPPORTED) && (mode == DEV_SLAVE_MODE)), E_NOSPT);
 
 	/** Check opened before use case */
 	if (spi_info_ptr->opn_cnt > 0) {
@@ -899,12 +925,12 @@ int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 			/* current working mode is different from passing mode */
 			return E_SYS;
 		}
-		if (mode == DEV_MASTER_MODE) { /* param is freq when as master */
+		if (mode == DEV_MASTER_MODE) {  /* param is freq when as master */
 			param2check = spi_info_ptr->freq;
-		} else { /* param is clk_mode when as slave */
+		} else {                        /* param is clk_mode when as slave */
 			param2check = spi_info_ptr->clk_mode;
 		}
-		spi_info_ptr->opn_cnt ++;
+		spi_info_ptr->opn_cnt++;
 		if (param != param2check) { /* open with different speed mode */
 			return E_OPNED;
 		} else {
@@ -912,7 +938,7 @@ int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 		}
 	}
 	/* auto increase open count */
-	spi_info_ptr->opn_cnt ++;
+	spi_info_ptr->opn_cnt++;
 
 	/* Do FIFO Length get before init */
 #if DW_SPI_CALC_FIFO_LEN_ENABLE
@@ -962,7 +988,7 @@ error_exit:
  * \retval	E_OPNED	Device is still opened, the device \ref dev_spi_info::opn_cnt "opn_cnt" decreased by 1
  * \retval	E_OBJ	Device object is not valid
  */
-int32_t dw_spi_close (DEV_SPI *spi_obj)
+int32_t dw_spi_close(DEV_SPI *spi_obj)
 {
 	int32_t ercd = E_OK;
 	DEV_SPI_INFO *spi_info_ptr = &(spi_obj->spi_info);
@@ -972,7 +998,7 @@ int32_t dw_spi_close (DEV_SPI *spi_obj)
 	DW_SPI_CHECK_EXP(spi_info_ptr->opn_cnt > 0, E_OK);
 	/* END OF ERROR CHECK */
 
-	spi_info_ptr->opn_cnt --;
+	spi_info_ptr->opn_cnt--;
 	if (spi_info_ptr->opn_cnt == 0) {
 		DW_SPI_CTRL *spi_ctrl_ptr = (DW_SPI_CTRL *)(spi_info_ptr->spi_ctrl);
 
@@ -1006,7 +1032,7 @@ error_exit:
  * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
  * \retval	E_NOSPT	Control command is not supported or not valid
  */
-int32_t dw_spi_control (DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param)
+int32_t dw_spi_control(DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param)
 {
 	int32_t ercd = E_OK;
 	DEV_SPI_INFO *spi_info_ptr = &(spi_obj->spi_info);
@@ -1029,213 +1055,212 @@ int32_t dw_spi_control (DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param)
 		 * only SPI_CMD_ENA_DEV, SPI_CMD_DIS_DEV, SPI_CMD_GET_STATUS, SPI_CMD_RESET
 		 * are available, other commands will return E_SYS
 		 */
-		if ((ctrl_cmd != SPI_CMD_ENA_DEV) && \
-			(ctrl_cmd != SPI_CMD_DIS_DEV) && \
-			(ctrl_cmd != SPI_CMD_GET_STATUS) && \
-			(ctrl_cmd != SPI_CMD_RESET) ) {
+		if ((ctrl_cmd != SPI_CMD_ENA_DEV) &&	\
+		    (ctrl_cmd != SPI_CMD_DIS_DEV) &&	\
+		    (ctrl_cmd != SPI_CMD_GET_STATUS) &&	\
+		    (ctrl_cmd != SPI_CMD_RESET)) {
 			return E_SYS;
 		}
 	}
 
 	switch (ctrl_cmd) {
-		/* Commmon commands for both master and slave mode */
-		case SPI_CMD_GET_STATUS:
-			DW_SPI_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = spi_info_ptr->status;
-			break;
-		case SPI_CMD_SET_CLK_MODE:
+	/* Commmon commands for both master and slave mode */
+	case SPI_CMD_GET_STATUS:
+		DW_SPI_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = spi_info_ptr->status;
+		break;
+	case SPI_CMD_SET_CLK_MODE:
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		val32 = (uint32_t)param;
+		DW_SPI_CHECK_EXP((val32 >= SPI_CPOL_0_CPHA_0) && (val32 <= SPI_CPOL_1_CPHA_1), E_PAR);
+		if (dw_spi_set_clockmode(spi_reg_ptr, val32) == 0) {
+			spi_info_ptr->clk_mode = val32;
+		} else {
+			ercd = E_SYS;
+		}
+		break;
+	case SPI_CMD_ENA_DEV:
+		dw_spi_enable_device(spi_info_ptr);
+		break;
+	case SPI_CMD_DIS_DEV:
+		dw_spi_disable_device(spi_info_ptr);
+		break;
+	case SPI_CMD_RESET:
+		dw_spi_reset_device(spi_info_ptr);
+		break;
+	case SPI_CMD_FLUSH_TX:
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		dw_spi_flush_tx(spi_reg_ptr);
+		break;
+	case SPI_CMD_FLUSH_RX:
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		dw_spi_flush_rx(spi_reg_ptr);
+		break;
+	case SPI_CMD_SET_DFS:
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		val32 = (uint32_t)param;
+		DW_SPI_CHECK_EXP(val32 > 0, E_PAR);
+		if (dw_spi_set_dfs(spi_reg_ptr, val32) == 0) {
+			spi_info_ptr->dfs = val32;
+		} else {
+			ercd = E_SYS;
+		}
+		break;
+	case SPI_CMD_SET_DUMMY_DATA:
+		val32 = (uint32_t)param;
+		spi_info_ptr->dummy = val32;
+		break;
+	case SPI_CMD_GET_RXAVAIL:         /* Notice in bytes unit */
+		DW_SPI_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = dw_spi_get_rxavail(spi_ctrl_ptr) * dw_spi_nbytes(spi_info_ptr->dfs);
+		break;
+	case SPI_CMD_GET_TXAVAIL:         /* Notice in bytes unit */
+		DW_SPI_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = dw_spi_get_txavail(spi_ctrl_ptr) * dw_spi_nbytes(spi_info_ptr->dfs);
+		break;
+	case SPI_CMD_SET_TXCB:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		spi_info_ptr->spi_cbs.tx_cb = param;
+		break;
+	case SPI_CMD_SET_RXCB:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		spi_info_ptr->spi_cbs.rx_cb = param;
+		break;
+	case SPI_CMD_SET_XFERCB:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		spi_info_ptr->spi_cbs.xfer_cb = param;
+		break;
+	case SPI_CMD_SET_ERRCB:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		spi_info_ptr->spi_cbs.err_cb = param;
+		break;
+	case SPI_CMD_ABORT_TX:
+		ercd = dw_spi_abort_tx(spi_obj);
+		break;
+	case SPI_CMD_ABORT_RX:
+		ercd = dw_spi_abort_rx(spi_obj);
+		break;
+	case SPI_CMD_ABORT_XFER:
+		ercd = dw_spi_abort_xfer(spi_obj);
+		break;
+	case SPI_CMD_SET_TXINT:
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			ercd = dw_spi_dis_cbr(spi_info_ptr, DW_SPI_RDY_SND);
+		} else {
+			ercd = dw_spi_ena_cbr(spi_info_ptr, DW_SPI_RDY_SND);
+		}
+		break;
+	case SPI_CMD_SET_RXINT:
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			ercd = dw_spi_dis_cbr(spi_info_ptr, DW_SPI_RDY_RCV);
+		} else {
+			ercd = dw_spi_ena_cbr(spi_info_ptr, DW_SPI_RDY_RCV);
+		}
+		break;
+	case SPI_CMD_SET_TXINT_BUF:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			DEV_SPI_XFER_SET_TXBUF(spi_xfer, devbuf->buf, 0, devbuf->len);
+			DEV_SPI_XFER_SET_RXBUF(spi_xfer, NULL, devbuf->len, 0);
+			DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
+			DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned(spi_xfer, spi_info_ptr->dfs) == 0, E_PAR);
+			dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
+		} else {
+			DEV_SPI_XFER_SET_TXBUF(spi_xfer, NULL, 0, 0);
+			DEV_SPI_XFER_SET_RXBUF(spi_xfer, NULL, 0, 0);
+			DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
+			dw_spi_init_transfer(spi_ctrl_ptr, NULL, spi_info_ptr->dfs);
+		}
+		break;
+	case SPI_CMD_SET_RXINT_BUF:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			DEV_SPI_XFER_SET_TXBUF(spi_xfer, NULL, devbuf->len, 0);
+			DEV_SPI_XFER_SET_RXBUF(spi_xfer, devbuf->buf, 0, devbuf->len);
+			DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
+			/* Check transfer align */
+			DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned(spi_xfer, spi_info_ptr->dfs) == 0, E_PAR);
+			dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
+		} else {
+			DEV_SPI_XFER_SET_TXBUF(spi_xfer, NULL, 0, 0);
+			DEV_SPI_XFER_SET_RXBUF(spi_xfer, NULL, 0, 0);
+			DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
+			dw_spi_init_transfer(spi_ctrl_ptr, NULL, spi_info_ptr->dfs);
+		}
+		break;
+	case SPI_CMD_TRANSFER_POLLING:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		if (param != NULL) {
+			/* Check transfer align */
+			DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned((DEV_SPI_TRANSFER *)param, spi_info_ptr->dfs) == 0, E_PAR);
+			*spi_xfer = *((DEV_SPI_TRANSFER *)param);
+			dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
+			/* Transfer data by poll */
+			dw_spi_poll_transfer(spi_info_ptr);
+		} else {
+			ercd = E_PAR;
+		}
+		break;
+	case SPI_CMD_QUAD_READ:
+		dw_spi_quad_receive(spi_info_ptr, (DEV_SPI_PAK_PTR)param);
+		break;
+	case SPI_CMD_TRANSFER_INT:
+		DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		if (param != NULL) {
 			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			val32 = (uint32_t)param;
-			DW_SPI_CHECK_EXP((val32>=SPI_CPOL_0_CPHA_0) && (val32<=SPI_CPOL_1_CPHA_1), E_PAR);
-			if (dw_spi_set_clockmode(spi_reg_ptr, val32) == 0) {
-				spi_info_ptr->clk_mode = val32;
-			} else {
-				ercd = E_SYS;
-			}
-			break;
-		case SPI_CMD_ENA_DEV:
-			dw_spi_enable_device(spi_info_ptr);
-			break;
-		case SPI_CMD_DIS_DEV:
-			dw_spi_disable_device(spi_info_ptr);
-			break;
-		case SPI_CMD_RESET:
-			dw_spi_reset_device(spi_info_ptr);
-			break;
-		case SPI_CMD_FLUSH_TX:
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			dw_spi_flush_tx(spi_reg_ptr);
-			break;
-		case SPI_CMD_FLUSH_RX:
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			dw_spi_flush_rx(spi_reg_ptr);
-			break;
-		case SPI_CMD_SET_DFS:
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			val32 = (uint32_t)param;
-			DW_SPI_CHECK_EXP(val32>0, E_PAR);
-			if (dw_spi_set_dfs(spi_reg_ptr, val32) == 0) {
-				spi_info_ptr->dfs = val32;
-			} else {
-				ercd = E_SYS;
-			}
-			break;
-		case SPI_CMD_SET_DUMMY_DATA:
-			val32 = (uint32_t)param;
-			spi_info_ptr->dummy = val32;
-			break;
-		case SPI_CMD_GET_RXAVAIL: /* Notice in bytes unit */
-			DW_SPI_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dw_spi_get_rxavail(spi_ctrl_ptr) * dw_spi_nbytes(spi_info_ptr->dfs);
-			break;
-		case SPI_CMD_GET_TXAVAIL: /* Notice in bytes unit */
-			DW_SPI_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dw_spi_get_txavail(spi_ctrl_ptr) * dw_spi_nbytes(spi_info_ptr->dfs);
-			break;
-		case SPI_CMD_SET_TXCB:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			spi_info_ptr->spi_cbs.tx_cb = param;
-			break;
-		case SPI_CMD_SET_RXCB:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			spi_info_ptr->spi_cbs.rx_cb = param;
-			break;
-		case SPI_CMD_SET_XFERCB:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			spi_info_ptr->spi_cbs.xfer_cb = param;
-			break;
-		case SPI_CMD_SET_ERRCB:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			spi_info_ptr->spi_cbs.err_cb = param;
-			break;
-		case SPI_CMD_ABORT_TX:
-			ercd = dw_spi_abort_tx(spi_obj);
-			break;
-		case SPI_CMD_ABORT_RX:
-			ercd = dw_spi_abort_rx(spi_obj);
-			break;
-		case SPI_CMD_ABORT_XFER:
-			ercd = dw_spi_abort_xfer(spi_obj);
-			break;
-		case SPI_CMD_SET_TXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				ercd = dw_spi_dis_cbr(spi_info_ptr, DW_SPI_RDY_SND);
-			} else {
-				ercd = dw_spi_ena_cbr(spi_info_ptr, DW_SPI_RDY_SND);
-			}
-			break;
-		case SPI_CMD_SET_RXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				ercd = dw_spi_dis_cbr(spi_info_ptr, DW_SPI_RDY_RCV);
-			} else {
-				ercd = dw_spi_ena_cbr(spi_info_ptr, DW_SPI_RDY_RCV);
-			}
-			break;
-		case SPI_CMD_SET_TXINT_BUF:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				DEV_SPI_XFER_SET_TXBUF(spi_xfer, devbuf->buf, 0, devbuf->len);
-				DEV_SPI_XFER_SET_RXBUF(spi_xfer, NULL, devbuf->len, 0);
-				DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
-				DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned(spi_xfer, spi_info_ptr->dfs) == 0, E_PAR);
-				dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
-			} else {
-				DEV_SPI_XFER_SET_TXBUF(spi_xfer, NULL, 0, 0);
-				DEV_SPI_XFER_SET_RXBUF(spi_xfer, NULL, 0, 0);
-				DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
-				dw_spi_init_transfer(spi_ctrl_ptr, NULL, spi_info_ptr->dfs);
-			}
-			break;
-		case SPI_CMD_SET_RXINT_BUF:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				DEV_SPI_XFER_SET_TXBUF(spi_xfer, NULL, devbuf->len, 0);
-				DEV_SPI_XFER_SET_RXBUF(spi_xfer, devbuf->buf, 0, devbuf->len);
-				DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
-				/* Check transfer align */
-				DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned(spi_xfer, spi_info_ptr->dfs) == 0, E_PAR);
-				dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
-			} else {
-				DEV_SPI_XFER_SET_TXBUF(spi_xfer, NULL, 0, 0);
-				DEV_SPI_XFER_SET_RXBUF(spi_xfer, NULL, 0, 0);
-				DEV_SPI_XFER_SET_NEXT(spi_xfer, NULL);
-				dw_spi_init_transfer(spi_ctrl_ptr, NULL, spi_info_ptr->dfs);
-			}
-			break;
-		case SPI_CMD_TRANSFER_POLLING:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			if (param != NULL) {
-				/* Check transfer align */
-				DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned((DEV_SPI_TRANSFER *)param, spi_info_ptr->dfs) == 0, E_PAR);
-				*spi_xfer = *((DEV_SPI_TRANSFER *)param);
-				dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
-				/* Transfer data by poll */
-				dw_spi_poll_transfer(spi_info_ptr);
-			} else {
-				ercd = E_PAR;
-			}
-			break;
-		case SPI_CMD_QUAD_READ:
-			dw_spi_quad_receive(spi_info_ptr, (DEV_SPI_PAK_PTR)param);
-			break;
-		case SPI_CMD_TRANSFER_INT:
-			DW_SPI_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			if (param != NULL) {
-				DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-				/* Check transfer align */
-				DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned((DEV_SPI_TRANSFER *)param, spi_info_ptr->dfs) == 0, E_PAR);
-				*spi_xfer = *((DEV_SPI_TRANSFER *)param);
-				dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
-				/* Transfer data by interrupt */
-				ercd = dw_spi_ena_cbr(spi_info_ptr, DW_SPI_RDY_XFER);
-			} else {
-				ercd = dw_spi_dis_cbr(spi_info_ptr, DW_SPI_RDY_XFER);
-			}
-			break;
+			/* Check transfer align */
+			DW_SPI_CHECK_EXP(dw_spi_chk_xfer_aligned((DEV_SPI_TRANSFER *)param, spi_info_ptr->dfs) == 0, E_PAR);
+			*spi_xfer = *((DEV_SPI_TRANSFER *)param);
+			dw_spi_init_transfer(spi_ctrl_ptr, spi_xfer, spi_info_ptr->dfs);
+			/* Transfer data by interrupt */
+			ercd = dw_spi_ena_cbr(spi_info_ptr, DW_SPI_RDY_XFER);
+		} else {
+			ercd = dw_spi_dis_cbr(spi_info_ptr, DW_SPI_RDY_XFER);
+		}
+		break;
 
-		/* Master mode only commands */
-		case SPI_CMD_MST_SET_FREQ:
-			DW_SPI_CHECK_EXP(spi_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			val32 = (uint32_t)param;
-			DW_SPI_CHECK_EXP(val32>0, E_PAR);
-			dw_spi_set_freq(spi_ctrl_ptr, val32);
-			spi_info_ptr->freq = val32;
-			break;
-		case SPI_CMD_MST_SEL_DEV:
-			DW_SPI_CHECK_EXP(spi_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			val32 = (uint32_t)param;
-			if (dw_spi_select_slave(spi_reg_ptr, val32) == 0) {
-				spi_info_ptr->slave = val32;
-			} else {
-				ercd = E_SYS;
-			}
-			break;
-		case SPI_CMD_MST_DSEL_DEV:
-			DW_SPI_CHECK_EXP(spi_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
-			DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-			val32 = (uint32_t)param;
-			if (dw_spi_deselect_slave(spi_reg_ptr, val32) == 0) {
-				spi_info_ptr->slave = SPI_SLAVE_NOT_SELECTED;
-			} else {
-				ercd = E_SYS;
-			}
-			break;
+	/* Master mode only commands */
+	case SPI_CMD_MST_SET_FREQ:
+		DW_SPI_CHECK_EXP(spi_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		val32 = (uint32_t)param;
+		DW_SPI_CHECK_EXP(val32 > 0, E_PAR);
+		dw_spi_set_freq(spi_ctrl_ptr, val32);
+		spi_info_ptr->freq = val32;
+		break;
+	case SPI_CMD_MST_SEL_DEV:
+		DW_SPI_CHECK_EXP(spi_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		val32 = (uint32_t)param;
+		if (dw_spi_select_slave(spi_reg_ptr, val32) == 0) {
+			spi_info_ptr->slave = val32;
+		} else {
+			ercd = E_SYS;
+		}
+		break;
+	case SPI_CMD_MST_DSEL_DEV:
+		DW_SPI_CHECK_EXP(spi_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
+		DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
+		val32 = (uint32_t)param;
+		if (dw_spi_deselect_slave(spi_reg_ptr, val32) == 0) {
+			spi_info_ptr->slave = SPI_SLAVE_NOT_SELECTED;
+		} else {
+			ercd = E_SYS;
+		}
+		break;
 
-		/* Slave mode only commands */
+	/* Slave mode only commands */
 
-
-		default:
-			ercd = E_NOSPT;
-			break;
+	default:
+		ercd = E_NOSPT;
+		break;
 	}
 
 error_exit:
@@ -1253,7 +1278,7 @@ error_exit:
  * \retval	E_CTX	Device is still in transfer state
  * \retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
  */
-int32_t dw_spi_write (DEV_SPI *spi_obj, const void *data, uint32_t len)
+int32_t dw_spi_write(DEV_SPI *spi_obj, const void *data, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_SPI_INFO *spi_info_ptr = &(spi_obj->spi_info);
@@ -1263,8 +1288,8 @@ int32_t dw_spi_write (DEV_SPI *spi_obj, const void *data, uint32_t len)
 	DW_SPI_CHECK_EXP(spi_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_SPI_CHECK_EXP(spi_info_ptr->status & DEV_ENABLED, E_SYS);
 	DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-	DW_SPI_CHECK_EXP(data!=NULL, E_PAR);
-	DW_SPI_CHECK_EXP(len>0, E_PAR);
+	DW_SPI_CHECK_EXP(data != NULL, E_PAR);
+	DW_SPI_CHECK_EXP(len > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
 	DW_SPI_CTRL *spi_ctrl_ptr = (DW_SPI_CTRL_PTR)(spi_info_ptr->spi_ctrl);
@@ -1297,7 +1322,7 @@ error_exit:
  * \retval	E_CLSED		spi was closed, not available for control
  * \retval	<0		other error code not defined here
  */
-int32_t dw_spi_read (DEV_SPI *spi_obj, void *data, uint32_t len)
+int32_t dw_spi_read(DEV_SPI *spi_obj, void *data, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_SPI_INFO *spi_info_ptr = &(spi_obj->spi_info);
@@ -1307,8 +1332,8 @@ int32_t dw_spi_read (DEV_SPI *spi_obj, void *data, uint32_t len)
 	DW_SPI_CHECK_EXP(spi_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_SPI_CHECK_EXP(spi_info_ptr->status & DEV_ENABLED, E_SYS);
 	DW_SPI_CHECK_EXP((spi_info_ptr->status & DEV_IN_XFER) == 0, E_CTX);
-	DW_SPI_CHECK_EXP(data!=NULL, E_PAR);
-	DW_SPI_CHECK_EXP(len>0, E_PAR);
+	DW_SPI_CHECK_EXP(data != NULL, E_PAR);
+	DW_SPI_CHECK_EXP(len > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
 	DW_SPI_CTRL *spi_ctrl_ptr = (DW_SPI_CTRL_PTR)(spi_info_ptr->spi_ctrl);
@@ -1351,11 +1376,13 @@ void dw_spi_isr(DEV_SPI *spi_obj, void *ptr)
 
 	isr_status = spi_reg_ptr->ISR;
 
-	if (!isr_status) return;
+	if (!isr_status) {
+		return;
+	}
 	if (spi_ctrl_ptr->dw_xfer.xfer_len == 0) {
 		dw_spi_disable_interrupt(spi_info_ptr);
 	} else {
-		if (isr_status & (DW_SPI_IMR_TXOIM|DW_SPI_IMR_RXOIM|DW_SPI_IMR_RXUIM)) {
+		if (isr_status & (DW_SPI_IMR_TXOIM | DW_SPI_IMR_RXOIM | DW_SPI_IMR_RXUIM)) {
 			dw_spi_clear_interrupt_all(spi_reg_ptr);
 			dw_spi_disable_interrupt(spi_info_ptr);
 			if (spi_info_ptr->spi_cbs.err_cb) {

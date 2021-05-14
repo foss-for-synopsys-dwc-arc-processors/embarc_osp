@@ -26,65 +26,65 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "dw_spi.h"
 #include "dw_spi_obj.h"
 
 #include "hsdk/hsdk.h"
 
-#define DW_SPI_DEFAULT_FREQ		1000000
+#define DW_SPI_DEFAULT_FREQ             1000000
 /**
  * \name	HSDK DesignWare SPI 0 Object Instantiation
  * @{
  */
 #if (USE_DW_SPI_0)
 static void dw_spi_0_isr(void *ptr);
-#define DW_SPI_0_REGBASE	(HSDC_SPI0_REGBASE)		/*!< designware spi 0 relative baseaddr */
-#define DW_SPI_0_INTNO		(HSDC_SPI0_ISR)			/*!< designware spi 0 interrupt number  */
-#define DW_SPI_0_CLK		(HSDC_CLK_SYS_PLL_SPIREF)	/*!< designware spi 0 clock  */
-#define DW_SPI_0_RX_SAMPLEDLY	0				/*!< designware spi 0 RXD Sample Delay  */
+#define DW_SPI_0_REGBASE        (HSDC_SPI0_REGBASE)             /*!< designware spi 0 relative baseaddr */
+#define DW_SPI_0_INTNO          (HSDC_SPI0_ISR)                 /*!< designware spi 0 interrupt number  */
+#define DW_SPI_0_CLK            (HSDC_CLK_SYS_PLL_SPIREF)       /*!< designware spi 0 clock  */
+#define DW_SPI_0_RX_SAMPLEDLY   0                               /*!< designware spi 0 RXD Sample Delay  */
 
-#define DW_SPI_0_TX_FIFO_LEN	(32)
-#define DW_SPI_0_RX_FIFO_LEN	(32)
+#define DW_SPI_0_TX_FIFO_LEN    (32)
+#define DW_SPI_0_RX_FIFO_LEN    (32)
 
-#define DW_SPI_0_SUPPORTED_MODE	DW_SPI_MASTER_SUPPORTED
+#define DW_SPI_0_SUPPORTED_MODE DW_SPI_MASTER_SUPPORTED
 
-DEV_SPI			dw_spi_0;			/*!< designware spi object */
-DW_SPI_CTRL		dw_spi_0_ctrl;			/*!< designware spi 0 ctrl */
+DEV_SPI dw_spi_0;                                       /*!< designware spi object */
+DW_SPI_CTRL dw_spi_0_ctrl;                              /*!< designware spi 0 ctrl */
 
 /** designware spi 0 open */
-static int32_t dw_spi_0_open (uint32_t mode, uint32_t param)
+static int32_t dw_spi_0_open(uint32_t mode, uint32_t param)
 {
 	return dw_spi_open(&dw_spi_0, mode, param);
 }
 /** designware spi 0 close */
-static int32_t dw_spi_0_close (void)
+static int32_t dw_spi_0_close(void)
 {
 	return dw_spi_close(&dw_spi_0);
 }
 /** designware spi 0 control */
-static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_spi_0_control(uint32_t ctrl_cmd, void *param)
 {
 	switch (ctrl_cmd) {
-		case SPI_CMD_MST_SEL_DEV:
-			creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
-				CREG_HSDC_SPISEL_0, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE0);
-			break;
-		case SPI_CMD_MST_DSEL_DEV:
-			creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
-				CREG_HSDC_SPISEL_0, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE1);
-			break;
+	case SPI_CMD_MST_SEL_DEV:
+		creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
+					  CREG_HSDC_SPISEL_0, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE0);
+		break;
+	case SPI_CMD_MST_DSEL_DEV:
+		creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
+					  CREG_HSDC_SPISEL_0, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE1);
+		break;
 	}
 	return dw_spi_control(&dw_spi_0, ctrl_cmd, param);
 }
 /** designware spi 0 write */
-static int32_t dw_spi_0_write (const void *data, uint32_t len)
+static int32_t dw_spi_0_write(const void *data, uint32_t len)
 {
 	return dw_spi_write(&dw_spi_0, data, len);
 }
 /** designware spi 0 close */
-static int32_t dw_spi_0_read (void *data, uint32_t len)
+static int32_t dw_spi_0_read(void *data, uint32_t len)
 {
 	return dw_spi_read(&dw_spi_0, data, len);
 }
@@ -149,51 +149,51 @@ static void dw_spi_0_install(void)
  */
 #if (USE_DW_SPI_1)
 static void dw_spi_1_isr(void *ptr);
-#define DW_SPI_1_REGBASE	(HSDC_SPI1_REGBASE)		/*!< designware spi 1 relative baseaddr */
-#define DW_SPI_1_INTNO		(HSDC_SPI1_ISR)			/*!< designware spi 1 interrupt number  */
-#define DW_SPI_1_CLK		(HSDC_CLK_SYS_PLL_SPIREF)	/*!< designware spi 1 clock  */
-#define DW_SPI_1_RX_SAMPLEDLY	0				/*!< designware spi 1 RXD Sample Delay  */
+#define DW_SPI_1_REGBASE        (HSDC_SPI1_REGBASE)             /*!< designware spi 1 relative baseaddr */
+#define DW_SPI_1_INTNO          (HSDC_SPI1_ISR)                 /*!< designware spi 1 interrupt number  */
+#define DW_SPI_1_CLK            (HSDC_CLK_SYS_PLL_SPIREF)       /*!< designware spi 1 clock  */
+#define DW_SPI_1_RX_SAMPLEDLY   0                               /*!< designware spi 1 RXD Sample Delay  */
 
-#define DW_SPI_1_TX_FIFO_LEN	(32)
-#define DW_SPI_1_RX_FIFO_LEN	(32)
+#define DW_SPI_1_TX_FIFO_LEN    (32)
+#define DW_SPI_1_RX_FIFO_LEN    (32)
 
-#define DW_SPI_1_SUPPORTED_MODE	DW_SPI_MASTER_SUPPORTED
+#define DW_SPI_1_SUPPORTED_MODE DW_SPI_MASTER_SUPPORTED
 
-DEV_SPI			dw_spi_1;			/*!< designware spi 1 object */
-DW_SPI_CTRL		dw_spi_1_ctrl;			/*!< designware spi 1 ctrl */
+DEV_SPI dw_spi_1;                                       /*!< designware spi 1 object */
+DW_SPI_CTRL dw_spi_1_ctrl;                              /*!< designware spi 1 ctrl */
 
 /** designware spi 1 open */
-static int32_t dw_spi_1_open (uint32_t mode, uint32_t param)
+static int32_t dw_spi_1_open(uint32_t mode, uint32_t param)
 {
 	return dw_spi_open(&dw_spi_1, mode, param);
 }
 /** designware spi 1 close */
-static int32_t dw_spi_1_close (void)
+static int32_t dw_spi_1_close(void)
 {
 	return dw_spi_close(&dw_spi_1);
 }
 /** designware spi 1 control */
-static int32_t dw_spi_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_spi_1_control(uint32_t ctrl_cmd, void *param)
 {
 	switch (ctrl_cmd) {
-		case SPI_CMD_MST_SEL_DEV:
-			creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
-				CREG_HSDC_SPISEL_1, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE0);
-			break;
-		case SPI_CMD_MST_DSEL_DEV:
-			creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
-				CREG_HSDC_SPISEL_1, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE1);
-			break;
+	case SPI_CMD_MST_SEL_DEV:
+		creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
+					  CREG_HSDC_SPISEL_1, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE0);
+		break;
+	case SPI_CMD_MST_DSEL_DEV:
+		creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
+					  CREG_HSDC_SPISEL_1, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE1);
+		break;
 	}
 	return dw_spi_control(&dw_spi_1, ctrl_cmd, param);
 }
 /** designware spi 1 write */
-static int32_t dw_spi_1_write (const void *data, uint32_t len)
+static int32_t dw_spi_1_write(const void *data, uint32_t len)
 {
 	return dw_spi_write(&dw_spi_1, data, len);
 }
 /** designware spi 1 close */
-static int32_t dw_spi_1_read (void *data, uint32_t len)
+static int32_t dw_spi_1_read(void *data, uint32_t len)
 {
 	return dw_spi_read(&dw_spi_1, data, len);
 }
@@ -257,51 +257,51 @@ static void dw_spi_1_install(void)
  */
 #if (USE_DW_SPI_2)
 static void dw_spi_2_isr(void *ptr);
-#define DW_SPI_2_REGBASE	(HSDC_SPI2_REGBASE)		/*!< designware spi 2 relative baseaddr */
-#define DW_SPI_2_INTNO		(HSDC_SPI2_ISR)			/*!< designware spi 2 interrupt number  */
-#define DW_SPI_2_CLK		(HSDC_CLK_SYS_PLL_SPIREF)	/*!< designware spi 2 clock  */
-#define DW_SPI_2_RX_SAMPLEDLY	0				/*!< designware spi 2 RXD Sample Delay  */
+#define DW_SPI_2_REGBASE        (HSDC_SPI2_REGBASE)             /*!< designware spi 2 relative baseaddr */
+#define DW_SPI_2_INTNO          (HSDC_SPI2_ISR)                 /*!< designware spi 2 interrupt number  */
+#define DW_SPI_2_CLK            (HSDC_CLK_SYS_PLL_SPIREF)       /*!< designware spi 2 clock  */
+#define DW_SPI_2_RX_SAMPLEDLY   0                               /*!< designware spi 2 RXD Sample Delay  */
 
-#define DW_SPI_2_TX_FIFO_LEN	(32)
-#define DW_SPI_2_RX_FIFO_LEN	(32)
+#define DW_SPI_2_TX_FIFO_LEN    (32)
+#define DW_SPI_2_RX_FIFO_LEN    (32)
 
-#define DW_SPI_2_SUPPORTED_MODE	DW_SPI_MASTER_SUPPORTED
+#define DW_SPI_2_SUPPORTED_MODE DW_SPI_MASTER_SUPPORTED
 
-DEV_SPI			dw_spi_2;			/*!< designware spi 2 object */
-DW_SPI_CTRL		dw_spi_2_ctrl;			/*!< designware spi 2 ctrl */
+DEV_SPI dw_spi_2;                                       /*!< designware spi 2 object */
+DW_SPI_CTRL dw_spi_2_ctrl;                              /*!< designware spi 2 ctrl */
 
 /** designware spi 2 open */
-static int32_t dw_spi_2_open (uint32_t mode, uint32_t param)
+static int32_t dw_spi_2_open(uint32_t mode, uint32_t param)
 {
 	return dw_spi_open(&dw_spi_2, mode, param);
 }
 /** designware spi 2 close */
-static int32_t dw_spi_2_close (void)
+static int32_t dw_spi_2_close(void)
 {
 	return dw_spi_close(&dw_spi_2);
 }
 /** designware spi 2 control */
-static int32_t dw_spi_2_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_spi_2_control(uint32_t ctrl_cmd, void *param)
 {
 	switch (ctrl_cmd) {
-		case SPI_CMD_MST_SEL_DEV:
-			creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
-				CREG_HSDC_SPISEL_2, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE0);
-			break;
-		case SPI_CMD_MST_DSEL_DEV:
-			creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
-				CREG_HSDC_SPISEL_2, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE1);
-			break;
+	case SPI_CMD_MST_SEL_DEV:
+		creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
+					  CREG_HSDC_SPISEL_2, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE0);
+		break;
+	case SPI_CMD_MST_DSEL_DEV:
+		creg_hsdc_set_spi_cs_ctrl((CREG_HSDC_STRUCT_PTR)(HSDC_CREG_REGBASE), \
+					  CREG_HSDC_SPISEL_2, (CREG_HSDC_SPICSSEL_T)param, CREG_HSDC_SPICSCTRL_CSBYCREGVALUE1);
+		break;
 	}
 	return dw_spi_control(&dw_spi_2, ctrl_cmd, param);
 }
 /** designware spi 2 write */
-static int32_t dw_spi_2_write (const void *data, uint32_t len)
+static int32_t dw_spi_2_write(const void *data, uint32_t len)
 {
 	return dw_spi_write(&dw_spi_2, data, len);
 }
 /** designware spi 2 close */
-static int32_t dw_spi_2_read (void *data, uint32_t len)
+static int32_t dw_spi_2_read(void *data, uint32_t len)
 {
 	return dw_spi_read(&dw_spi_2, data, len);
 }
@@ -372,22 +372,22 @@ DEV_SPI_PTR spi_get_dev(int32_t spi_id)
 
 	switch (spi_id) {
 #if (USE_DW_SPI_0)
-		case DW_SPI_0_ID:
-			return &dw_spi_0;
-			break;
+	case DW_SPI_0_ID:
+		return &dw_spi_0;
+		break;
 #endif
 #if (USE_DW_SPI_1)
-		case DW_SPI_1_ID:
-			return &dw_spi_1;
-			break;
+	case DW_SPI_1_ID:
+		return &dw_spi_1;
+		break;
 #endif
 #if (USE_DW_SPI_2)
-		case DW_SPI_2_ID:
-			return &dw_spi_2;
-			break;
+	case DW_SPI_2_ID:
+		return &dw_spi_2;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

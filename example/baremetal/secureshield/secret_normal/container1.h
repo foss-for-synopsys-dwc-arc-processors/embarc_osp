@@ -26,34 +26,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef CONTAINER1_H
 #define CONTAINER1_H
 
 // memory region for secret data shared between container 1 and 2
-#define CONTAINER_12_SHARED_ORIGIN	((uint32_t)_f_data_container12_shared)
-#define CONTAINER_12_SHARED_LENGTH	2048
+#define CONTAINER_12_SHARED_ORIGIN      ((uint32_t)_f_data_container12_shared)
+#define CONTAINER_12_SHARED_LENGTH      2048
 
-#define SECRET_LEN	64
-#define PWD_LEN		6
+#define SECRET_LEN      64
+#define PWD_LEN         6
 
-#define GET_SECRET	1
-#define SET_PWD		2
-#define SET_SECRET	3
+#define GET_SECRET      1
+#define SET_PWD         2
+#define SET_SECRET      3
 
 typedef struct {
-	uint8_t secret[SECRET_LEN+1];
-	uint8_t pwd[PWD_LEN+1];
+	uint8_t secret[SECRET_LEN + 1];
+	uint8_t pwd[PWD_LEN + 1];
 	uint8_t initialized;
 	uint8_t fails;
 } SECRET_CONTEXT;
 
-
 extern uint8_t _f_data_container12_shared[];
 extern uint8_t _e_bss_container12_shared[];
 
-
 extern int32_t init_secret(void);
-extern int32_t operate_secret(char* pwd, uint32_t cmd, char * data);
+extern int32_t operate_secret(char *pwd, uint32_t cmd, char *data);
 #endif

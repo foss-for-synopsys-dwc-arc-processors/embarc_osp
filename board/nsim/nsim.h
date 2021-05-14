@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _NSIM_H_
 #define _NSIM_H_
 
@@ -38,39 +38,39 @@
 
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)
-	/*!< Get cpu clock frequency definition from build system */
-	#define CLK_CPU			(BOARD_CPU_FREQ)
+/*!< Get cpu clock frequency definition from build system */
+	#define CLK_CPU                 (BOARD_CPU_FREQ)
 #elif defined(ARC_FEATURE_CPU_CLOCK_FREQ)
-	/*!< Get cpu clock frequency definition from tcf file */
-	#define CLK_CPU			(ARC_FEATURE_CPU_CLOCK_FREQ)
+/*!< Get cpu clock frequency definition from tcf file */
+	#define CLK_CPU                 (ARC_FEATURE_CPU_CLOCK_FREQ)
 #else
-	/*!< Default cpu clock frequency */
-	#define CLK_CPU			(1000000)
+/*!< Default cpu clock frequency */
+	#define CLK_CPU                 (1000000)
 #endif
 
 /* common macros must be defined by all boards */
 
-#define BOARD_CONSOLE_UART_ID		NSIM_UART_0_ID
-#define BOARD_CONSOLE_UART_BAUD		115200
-#define BOARD_ONBOARD_NTSHELL_ID	NSIM_NTSHELL_0_ID
-#define NTSHELL_CONSOLE_ID		(NSIM_NTSHELL_0_ID)
+#define BOARD_CONSOLE_UART_ID           NSIM_UART_0_ID
+#define BOARD_CONSOLE_UART_BAUD         115200
+#define BOARD_ONBOARD_NTSHELL_ID        NSIM_NTSHELL_0_ID
+#define NTSHELL_CONSOLE_ID              (NSIM_NTSHELL_0_ID)
 
-#define BOARD_SYS_TIMER_ID		TIMER_0
-#define BOARD_SYS_TIMER_INTNO		INTNO_TIMER0
-#define BOARD_SYS_TIMER_HZ		(1000)
+#define BOARD_SYS_TIMER_ID              TIMER_0
+#define BOARD_SYS_TIMER_INTNO           INTNO_TIMER0
+#define BOARD_SYS_TIMER_HZ              (1000)
 
 /** board timer 1ms means what HZ count */
-#define BOARD_SYS_TIMER_MS_HZ		(1000)
+#define BOARD_SYS_TIMER_MS_HZ           (1000)
 /** board ms counter convention based on the global timer counter */
-#define BOARD_SYS_TIMER_MS_CONV		(BOARD_SYS_TIMER_MS_HZ/BOARD_SYS_TIMER_HZ)
+#define BOARD_SYS_TIMER_MS_CONV         (BOARD_SYS_TIMER_MS_HZ / BOARD_SYS_TIMER_HZ)
 
-#define BOARD_OS_TIMER_ID		TIMER_0
-#define BOARD_OS_TIMER_INTNO		INTNO_TIMER0
+#define BOARD_OS_TIMER_ID               TIMER_0
+#define BOARD_OS_TIMER_INTNO            INTNO_TIMER0
 
-#define BOARD_CPU_CLOCK			CLK_CPU
+#define BOARD_CPU_CLOCK                 CLK_CPU
 
-#define button_read(x) 			1
-#define led_write(x, y)			EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
-#define BOARD_LED_MASK			0xff
+#define button_read(x)                  1
+#define led_write(x, y)                 EMBARC_PRINTF("led out: %x, %x\r\n", x, y)
+#define BOARD_LED_MASK                  0xff
 
-#endif	/* _NSIM_H_ */
+#endif  /* _NSIM_H_ */

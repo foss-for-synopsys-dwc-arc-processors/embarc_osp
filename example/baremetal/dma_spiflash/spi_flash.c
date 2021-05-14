@@ -7,28 +7,28 @@
 #include "device/designware/dw_spi.h"
 #include "spi_flash_w25qxx.h"
 
-#define _MEMORY_FENCE()				arc_sync()
-#define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
-#define _DCACHE_INVALIDATE_MLINES(addr, size)	dcache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
-#define _ICACHE_INVALIDATE_MLINES(addr, size)	icache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
+#define _MEMORY_FENCE()                         arc_sync()
+#define _DCACHE_FLUSH_MLINES(addr, size)        dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
+#define _DCACHE_INVALIDATE_MLINES(addr, size)   dcache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
+#define _ICACHE_INVALIDATE_MLINES(addr, size)   icache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
 
 /**
  * \name	SPI Flash Commands
  * @{
  */
-#define RDID	0x9F	/*!<read chip ID */
-#define RDSR	0x05	/*!< read status register */
-#define WRSR	0x01	/*!< write status register */
-#define WREN	0x06	/*!< write enablewaitDeviceReady */
-#define WRDI	0x04	/*!< write disable */
-#define READ	0x03	/*!< read data bytes */
-#define SE	0x20	/*!< sector erase */
-#define PP	0x02	/*!< page program */
+#define RDID    0x9F    /*!<read chip ID */
+#define RDSR    0x05    /*!< read status register */
+#define WRSR    0x01    /*!< write status register */
+#define WREN    0x06    /*!< write enablewaitDeviceReady */
+#define WRDI    0x04    /*!< write disable */
+#define READ    0x03    /*!< read data bytes */
+#define SE      0x20    /*!< sector erase */
+#define PP      0x02    /*!< page program */
 /** @} end of name */
-#define SPI_FLASH_NOT_VALID	(0xFFFFFFFF)
+#define SPI_FLASH_NOT_VALID     (0xFFFFFFFF)
 
-#define SPI_TX_UDMA_CHN		0
-#define SPI_RX_UDMA_CHN		1
+#define SPI_TX_UDMA_CHN         0
+#define SPI_RX_UDMA_CHN         1
 
 typedef struct spi_xfer SPI_XFER, *SPI_XFER_PTR;
 /**
@@ -52,19 +52,19 @@ static volatile DW_SPI_REG *spi_reg = (DW_SPI_REG *)0xF0006000U;
 static dma_state_t udma;
 static dma_channel_t dma_chn_tx, dma_chn_rx;
 
-#define SPIFLASH_LINE_CS	5
-
+#define SPIFLASH_LINE_CS        5
 
 int32_t spi_init(uint32_t freq)
 {
 	spi_reg->SSIENR = DW_SPI_SSI_DISABLE;
 	/* Clear interrupts */
 	uint32_t ctrl0_reg = spi_reg->ICR;
+
 	/* Mask all interrupts */
 	spi_reg->IMR = 0;
 
 	ctrl0_reg = DW_SPI_CTRLR0_FRF_MOTOROLA | DW_SPI_TMOD_TRANSMIT_RECEIVE \
-			 | 7 | DW_SPI_CTRLR0_SLV_OE_ENABLE;
+		    | 7 | DW_SPI_CTRLR0_SLV_OE_ENABLE;
 	spi_reg->CTRLR0 = ctrl0_reg;
 	spi_reg->CTRLR1 = 0;
 
@@ -74,7 +74,8 @@ int32_t spi_init(uint32_t freq)
 	spi_reg->DMATDLR = 0;
 	spi_reg->DMARDLR = 0;
 
-	uint32_t sck_divisor = 50000000/freq;
+	uint32_t sck_divisor = 50000000 / freq;
+
 	spi_reg->BAUDR = sck_divisor;
 
 	/* Set threshold values for both tx and rx */
@@ -96,8 +97,8 @@ void spi_dma_prepare(void)
 
 }
 
-#define SPI_XFER_LIST_LEN	2
-#define SPI_XFER_ARB_SZ		16
+#define SPI_XFER_LIST_LEN       2
+#define SPI_XFER_ARB_SZ         16
 void spi_xfer_callback(void *param)
 {
 
@@ -107,6 +108,7 @@ void flush_xfer_data(SPI_XFER *xfer)
 {
 	SPI_XFER *cur_xfer = xfer;
 	uint8_t i = 0;
+
 	while (cur_xfer) {
 		if (cur_xfer->tx_buf) {
 			_MEMORY_FENCE();
@@ -116,7 +118,7 @@ void flush_xfer_data(SPI_XFER *xfer)
 			_MEMORY_FENCE();
 			_DCACHE_FLUSH_MLINES((void *)(cur_xfer->rx_buf), cur_xfer->len);
 		}
-		i ++;
+		i++;
 		if (i >= SPI_XFER_LIST_LEN) {
 			break;
 		}
@@ -128,6 +130,7 @@ void invalidate_xfer_data(SPI_XFER *xfer)
 {
 	SPI_XFER *cur_xfer = xfer;
 	uint8_t i = 0;
+
 	while (cur_xfer) {
 		if (cur_xfer->tx_buf) {
 			_MEMORY_FENCE();
@@ -137,7 +140,7 @@ void invalidate_xfer_data(SPI_XFER *xfer)
 			_MEMORY_FENCE();
 			_DCACHE_INVALIDATE_MLINES((void *)(cur_xfer->rx_buf), cur_xfer->len);
 		}
-		i ++;
+		i++;
 		if (i >= SPI_XFER_LIST_LEN) {
 			break;
 		}
@@ -187,17 +190,17 @@ int32_t spi_xfer(SPI_XFER *xfer)
 			DMA_CTRL_SET_AM(&dma_ctrl_rx, DMA_AM_SRCNOT_DSTNOT);
 			dmac_config_desc(&dma_desc_rx[i], (void *)(&spi_reg->DATAREG), (void *)(&rxtemp), cur_xfer->len, &dma_ctrl_rx);
 		}
-		i ++;
+		i++;
 		if (i >= SPI_XFER_LIST_LEN) {
 			break;
 		}
 		cur_xfer = cur_xfer->next;
 	}
-	dmac_desc_add_linked(&dma_desc_tx[i-1], NULL);
-	dmac_desc_add_linked(&dma_desc_rx[i-1], NULL);
-	for (j = i; j > 1; j --) {
-		dmac_desc_add_linked(&dma_desc_tx[j-2], &dma_desc_tx[j-1]);
-		dmac_desc_add_linked(&dma_desc_rx[j-2], &dma_desc_rx[j-1]);
+	dmac_desc_add_linked(&dma_desc_tx[i - 1], NULL);
+	dmac_desc_add_linked(&dma_desc_rx[i - 1], NULL);
+	for (j = i; j > 1; j--) {
+		dmac_desc_add_linked(&dma_desc_tx[j - 2], &dma_desc_tx[j - 1]);
+		dmac_desc_add_linked(&dma_desc_rx[j - 2], &dma_desc_rx[j - 1]);
 	}
 	/* Init and configure dma channel transfer with transfer descriptor */
 	dmac_config_channel(&dma_chn_tx, &dma_desc_tx[0]);
@@ -215,12 +218,12 @@ int32_t spi_xfer(SPI_XFER *xfer)
 	/* select device */
 	spi_reg->SSIENR = DW_SPI_SSI_DISABLE;
 	spi_reg->DMACR = 0;
-	spi_reg->DMATDLR = 32-SPI_XFER_ARB_SZ;
-	spi_reg->DMARDLR = SPI_XFER_ARB_SZ-1;
+	spi_reg->DMATDLR = 32 - SPI_XFER_ARB_SZ;
+	spi_reg->DMARDLR = SPI_XFER_ARB_SZ - 1;
 	flush_xfer_data(xfer);
 	dmac_start_channel(&dma_chn_rx, xfer_cb, DMA_CHN_HIGH_PRIO);
 	dmac_start_channel(&dma_chn_tx, xfer_cb, DMA_CHN_HIGH_PRIO);
-	spi_reg->SER = 1<<SPIFLASH_LINE_CS;
+	spi_reg->SER = 1 << SPIFLASH_LINE_CS;
 	spi_reg->SSIENR = DW_SPI_SSI_ENABLE;
 	/* enable rx and tx dma */
 	spi_reg->DMACR = 3;
@@ -363,6 +366,7 @@ int32_t spiflash_read(uint32_t address, uint32_t size, void *data)
 int32_t spiflash_wait_ready(void)
 {
 	uint32_t status = 0x01;
+
 	do {
 		status = spiflash_read_status();
 		if (status == SPI_FLASH_NOT_VALID) {
@@ -383,6 +387,7 @@ int32_t spiflash_write_enable(void)
 	SPI_XFER cmd_xfer;
 
 	uint32_t status = 0;
+
 	do {
 		local_buf[0] = WREN;
 
@@ -400,10 +405,10 @@ int32_t spiflash_write_enable(void)
 		}
 		// clear protection bits
 		//  Write Protect. and Write Enable.
-		if( (status & 0xfc) && (status & 0x02) ) {
-			local_buf[0] = WRSR; // write status
-			local_buf[1] = 0x00; // write status
-			local_buf[2] = 0x00; // write status
+		if ((status & 0xfc) && (status & 0x02)) {
+			local_buf[0] = WRSR;    // write status
+			local_buf[1] = 0x00;    // write status
+			local_buf[2] = 0x00;    // write status
 
 			cmd_xfer.tx_buf = local_buf;
 			cmd_xfer.rx_buf = NULL;
@@ -415,11 +420,10 @@ int32_t spiflash_write_enable(void)
 			}
 			status = 0;
 		}
-	} while ( status != 0x02);
+	} while (status != 0x02);
 
 	return 0;
 }
-
 
 /**
  * \brief 	flash erase in sectors
@@ -468,7 +472,7 @@ int32_t spiflash_erase(uint32_t address, uint32_t size)
 
 		address += FLASH_SECTOR_SIZE;
 		count++;
-	} while(address <= last_address);
+	} while (address <= last_address);
 	if (spiflash_wait_ready() != 0) {
 		return -1;
 	}
@@ -542,4 +546,4 @@ int32_t spiflash_write(uint32_t address, uint32_t size, const void *data)
 
 	return (int32_t)(size_orig);
 }
-#endif//#if defined(BOARD_EMSK)
+#endif// #if defined(BOARD_EMSK)

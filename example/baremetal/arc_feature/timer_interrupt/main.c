@@ -26,11 +26,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
-
 
 volatile static int t0 = 0;
 volatile static int t1 = 0;
@@ -94,15 +93,19 @@ int main(void)
 
 	if (arc_timer_present(TIMER_0)) {
 		arc_timer_start(TIMER_0, TIMER_CTRL_IE, BOARD_CPU_CLOCK);
-		while (t0 < 2);
+		while (t0 < 2) {
+			;
+		}
 		arc_timer_stop(TIMER_0);
 		arc_timer_current(TIMER_0, &val);
 		EMBARC_PRINTF("stop timer0, cnt:%d\r\n", val);
 	}
 
 	if (arc_timer_present(TIMER_1)) {
-		arc_timer_start(TIMER_1, TIMER_CTRL_IE, 2*BOARD_CPU_CLOCK);
-		while (t1 < 2);
+		arc_timer_start(TIMER_1, TIMER_CTRL_IE, 2 * BOARD_CPU_CLOCK);
+		while (t1 < 2) {
+			;
+		}
 		arc_timer_stop(TIMER_1);
 		arc_timer_current(TIMER_1, &val);
 		EMBARC_PRINTF("stop timer1, cnt:%d\r\n", val);
@@ -110,10 +113,13 @@ int main(void)
 
 	if (arc_timer_present(TIMER_0)) {
 		EMBARC_PRINTF("enable timer 0 watchdog\r\n");
-		arc_timer_start(TIMER_0, TIMER_CTRL_W, 5*BOARD_CPU_CLOCK);
+		arc_timer_start(TIMER_0, TIMER_CTRL_W, 5 * BOARD_CPU_CLOCK);
 	}
 
 	EMBARC_PRINTF("Timer Test Done\n");
-	while(1);
+	while(1) {
+		;
+	}
+
 	return E_SYS;
 }

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \file
  * \ingroup	BOARD_EMSK_DRV_GPIO
@@ -45,30 +45,30 @@
  * \name	EMSK LED Port Configuration
  * @{
  */
-#define EMSK_LED_OFFSET		(0)
-#define EMSK_LED_MASK		((0x1ff) << EMSK_LED_OFFSET)
-#define EMSK_LED_PORT		(DEV_GPIO_PORT_B)
-#define EMSK_LED_DIR		((0x1ff) << EMSK_LED_OFFSET)
+#define EMSK_LED_OFFSET         (0)
+#define EMSK_LED_MASK           ((0x1ff) << EMSK_LED_OFFSET)
+#define EMSK_LED_PORT           (DEV_GPIO_PORT_B)
+#define EMSK_LED_DIR            ((0x1ff) << EMSK_LED_OFFSET)
 /** @} end of name */
 
 /**
  * \name	EMSK Switch Port Configuration
  * @{
  */
-#define EMSK_SWITCH_OFFSET	(0)
-#define EMSK_SWITCH_MASK	((0xf) << EMSK_SWITCH_OFFSET)
-#define EMSK_SWITCH_PORT	(DEV_GPIO_PORT_C)
-#define EMSK_SWITCH_DIR		((0x0) << EMSK_SWITCH_OFFSET)
+#define EMSK_SWITCH_OFFSET      (0)
+#define EMSK_SWITCH_MASK        ((0xf) << EMSK_SWITCH_OFFSET)
+#define EMSK_SWITCH_PORT        (DEV_GPIO_PORT_C)
+#define EMSK_SWITCH_DIR         ((0x0) << EMSK_SWITCH_OFFSET)
 /** @} end of name */
 
 /**
  * \name	EMSK Button Port Configuration
  * @{
  */
-#define EMSK_BUTTON_OFFSET	(0)
-#define EMSK_BUTTON_MASK	((0x7) << EMSK_BUTTON_OFFSET)
-#define EMSK_BUTTON_PORT	(DEV_GPIO_PORT_A)
-#define EMSK_BUTTON_DIR		((0x0) << EMSK_BUTTON_OFFSET)
+#define EMSK_BUTTON_OFFSET      (0)
+#define EMSK_BUTTON_MASK        ((0x7) << EMSK_BUTTON_OFFSET)
+#define EMSK_BUTTON_PORT        (DEV_GPIO_PORT_A)
+#define EMSK_BUTTON_DIR         ((0x0) << EMSK_BUTTON_OFFSET)
 /** @} end of name */
 
 #ifdef __cplusplus

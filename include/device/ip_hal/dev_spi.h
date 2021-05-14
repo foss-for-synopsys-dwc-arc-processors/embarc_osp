@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	DEVICE_HAL_SPI	SPI Device HAL Interface
@@ -59,7 +59,6 @@
 
 #include "device/dev_common.h"
 
-
 /**
  * \defgroup	DEVICE_HAL_SPI_CTRLCMD		SPI Device Control Commands
  * \ingroup	DEVICE_HAL_SPI
@@ -90,12 +89,11 @@
  */
 
 /** Define SPI control commands for common usage */
-#define DEV_SET_SPI_SYSCMD(cmd)		DEV_SET_SYSCMD((cmd))
+#define DEV_SET_SPI_SYSCMD(cmd)         DEV_SET_SYSCMD((cmd))
 /** Define SPI control commands for master usage */
-#define DEV_SET_SPI_MST_SYSCMD(cmd)	DEV_SET_SYSCMD(0x00001000|(cmd))
+#define DEV_SET_SPI_MST_SYSCMD(cmd)     DEV_SET_SYSCMD(0x00001000 | (cmd))
 /** Define SPI control commands for slave usage */
-#define DEV_SET_SPI_SLV_SYSCMD(cmd)	DEV_SET_SYSCMD(0x00002000|(cmd))
-
+#define DEV_SET_SPI_SLV_SYSCMD(cmd)     DEV_SET_SYSCMD(0x00002000 | (cmd))
 
 /* ++++ Common commands for SPI Device ++++ */
 /**
@@ -104,28 +102,28 @@
  * - Param usage : store result of current status
  * - Return value explanation :
  */
-#define SPI_CMD_GET_STATUS			DEV_SET_SPI_SYSCMD(0)
+#define SPI_CMD_GET_STATUS                      DEV_SET_SPI_SYSCMD(0)
 /**
  * set the \ref dev_spi_info::clk_mode "clock mode" of spi transfer
  * - Param type : uint32_t
  * - Param usage : spi clock mode to choose clock phase and clock polarity
  * - Return value explanation :
  */
-#define SPI_CMD_SET_CLK_MODE			DEV_SET_SPI_SYSCMD(1)
+#define SPI_CMD_SET_CLK_MODE                    DEV_SET_SPI_SYSCMD(1)
 /**
  * set spi \ref dev_spi_info::dfs "data frame size"
  * - Param type : uint32_t
  * - Param usage : should > 0
  * - Return value explanation : If dfs is not supported, then return \ref E_SYS
  */
-#define SPI_CMD_SET_DFS				DEV_SET_SPI_SYSCMD(2)
+#define SPI_CMD_SET_DFS                         DEV_SET_SPI_SYSCMD(2)
 /**
  * set the \ref dev_spi_info::dummy "dummy data" during spi transfer
  * - Param type : uint32_t
  * - Param usage : dummy data to transfer
  * - Return value explanation :
  */
-#define SPI_CMD_SET_DUMMY_DATA			DEV_SET_SPI_SYSCMD(3)
+#define SPI_CMD_SET_DUMMY_DATA                  DEV_SET_SPI_SYSCMD(3)
 /**
  * Set \ref dev_spi_cbs::tx_cb "spi transmit success callback" function
  * when all required bytes are transmitted for interrupt method
@@ -133,7 +131,7 @@
  * - Param usage : transmit success callback function for spi
  * - Return value explanation :
  */
-#define SPI_CMD_SET_TXCB			DEV_SET_SPI_SYSCMD(4)
+#define SPI_CMD_SET_TXCB                        DEV_SET_SPI_SYSCMD(4)
 /**
  * Set \ref dev_spi_cbs::rx_cb "spi receive success callback" function
  * when all required bytes are received for interrupt method
@@ -141,7 +139,7 @@
  * - Param usage : receive success callback function for spi
  * - Return value explanation :
  */
-#define SPI_CMD_SET_RXCB			DEV_SET_SPI_SYSCMD(5)
+#define SPI_CMD_SET_RXCB                        DEV_SET_SPI_SYSCMD(5)
 /**
  * Set \ref dev_spi_cbs::xfer_cb "spi transfer success callback" function
  * when all required transfer are done for interrupt method
@@ -149,7 +147,7 @@
  * - Param usage : transfer success callback function for spi
  * - Return value explanation :
  */
-#define SPI_CMD_SET_XFERCB			DEV_SET_SPI_SYSCMD(6)
+#define SPI_CMD_SET_XFERCB                      DEV_SET_SPI_SYSCMD(6)
 /**
  * Set \ref dev_spi_cbs::err_cb "spi transfer error callback" function
  * when something error happened for interrupt method
@@ -157,7 +155,7 @@
  * - Param usage : transfer error callback function for spi
  * - Return value explanation :
  */
-#define SPI_CMD_SET_ERRCB			DEV_SET_SPI_SYSCMD(7)
+#define SPI_CMD_SET_ERRCB                       DEV_SET_SPI_SYSCMD(7)
 /**
  * Set buffer in interrupt transmit, and it will set \ref dev_spi_info::xfer "spi tranfer".
  * - SPI master and slave mode use case  \n
@@ -169,7 +167,7 @@
  * - Param usage : buffer structure pointer, if param is NULL, then it will set xfer to empty
  * - Return value explanation :
  */
-#define SPI_CMD_SET_TXINT_BUF			DEV_SET_SPI_SYSCMD(8)
+#define SPI_CMD_SET_TXINT_BUF                   DEV_SET_SPI_SYSCMD(8)
 /**
  * Set buffer in interrupt receive, and it will set \ref dev_spi_info::xfer "spi tranfer".
  * - SPI master mode use case  \n
@@ -180,7 +178,7 @@
  * - Param usage : buffer structure pointer, if param is NULL, then it will set xfer to empty
  * - Return value explanation :
  */
-#define SPI_CMD_SET_RXINT_BUF			DEV_SET_SPI_SYSCMD(9)
+#define SPI_CMD_SET_RXINT_BUF                   DEV_SET_SPI_SYSCMD(9)
 /**
  * Enable or disable transmit interrupt,
  * for master mode, only one of tx and rx interrupt can be enabled,
@@ -189,7 +187,7 @@
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define SPI_CMD_SET_TXINT			DEV_SET_SPI_SYSCMD(10)
+#define SPI_CMD_SET_TXINT                       DEV_SET_SPI_SYSCMD(10)
 /**
  * Enable or disable receive interrupt,
  * for master mode, only one of tx and rx interrupt can be enabled,
@@ -198,21 +196,21 @@
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define SPI_CMD_SET_RXINT			DEV_SET_SPI_SYSCMD(11)
+#define SPI_CMD_SET_RXINT                       DEV_SET_SPI_SYSCMD(11)
 /**
  * start the transfer by polling
  * - Param type : \ref DEV_SPI_TRANSFER *
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_TRANSFER_POLLING		DEV_SET_SPI_SYSCMD(12)
+#define SPI_CMD_TRANSFER_POLLING                DEV_SET_SPI_SYSCMD(12)
 /**
  * start the transfer by interrupt
  * - Param type : \ref DEV_SPI_TRANSFER * or NULL
  * - Param usage : If NULL, it will disable transfer interrupt, if not NULL, it will enable transfer interrupt
  * - Return value explanation :
  */
-#define SPI_CMD_TRANSFER_INT			DEV_SET_SPI_SYSCMD(13)
+#define SPI_CMD_TRANSFER_INT                    DEV_SET_SPI_SYSCMD(13)
 /**
  * Abort current interrupt transmit operation if tx interrupt enabled,
  * it will disable transmit interrupt, and set \ref DEV_IN_TX_ABRT
@@ -223,7 +221,7 @@
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_ABORT_TX			DEV_SET_SPI_SYSCMD(14)
+#define SPI_CMD_ABORT_TX                        DEV_SET_SPI_SYSCMD(14)
 /**
  * Abort current interrupt receive operation if rx interrupt enabled,
  * it will disable receive interrupt, and set \ref DEV_IN_TX_ABRT
@@ -234,7 +232,7 @@
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_ABORT_RX			DEV_SET_SPI_SYSCMD(15)
+#define SPI_CMD_ABORT_RX                        DEV_SET_SPI_SYSCMD(15)
 /**
  * Abort current interrupt transfer operation if transfer is issued,
  * it will disable transfer interrupt, and set \ref DEV_IN_XFER_ABRT
@@ -245,7 +243,7 @@
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_ABORT_XFER			DEV_SET_SPI_SYSCMD(16)
+#define SPI_CMD_ABORT_XFER                      DEV_SET_SPI_SYSCMD(16)
 /**
  * Do a software reset for SPI device, it will stop current transfer,
  * and clear error state and bring device to normal state, set next condition to STOP
@@ -253,28 +251,28 @@
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_RESET				DEV_SET_SPI_SYSCMD(17)
+#define SPI_CMD_RESET                           DEV_SET_SPI_SYSCMD(17)
 /**
  * Flush spi tx fifo, this will clear the data in tx fifo
  * - Param type : NULL
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_FLUSH_TX			DEV_SET_SPI_SYSCMD(18)
+#define SPI_CMD_FLUSH_TX                        DEV_SET_SPI_SYSCMD(18)
 /**
  * Flush spi rx fifo, this will clear the data in rx fifo
  * - Param type : NULL
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_FLUSH_RX			DEV_SET_SPI_SYSCMD(19)
+#define SPI_CMD_FLUSH_RX                        DEV_SET_SPI_SYSCMD(19)
 /**
  * Enable spi device
  * - Param type : NULL
  * - Param usage : param is not required
  * - Return value explanation :
  */
-#define SPI_CMD_ENA_DEV				DEV_SET_SPI_SYSCMD(20)
+#define SPI_CMD_ENA_DEV                         DEV_SET_SPI_SYSCMD(20)
 /**
  * Disable spi device, when device is disabled,
  * only \ref SPI_CMD_ENA_DEV, \ref SPI_CMD_DIS_DEV,
@@ -284,7 +282,7 @@
  * - Param usage : param is not required
  * - Return value explanation :
  */
-#define SPI_CMD_DIS_DEV				DEV_SET_SPI_SYSCMD(21)
+#define SPI_CMD_DIS_DEV                         DEV_SET_SPI_SYSCMD(21)
 /**
  * Get how many bytes space in spi are available to transmit,
  * this can be used in interrupt callback functions,
@@ -293,7 +291,7 @@
  * - Param usage : store the write available bytes, > 0 for available bytes, 0 for not available
  * - Return value explanation :
  */
-#define SPI_CMD_GET_TXAVAIL			DEV_SET_SPI_SYSCMD(22)
+#define SPI_CMD_GET_TXAVAIL                     DEV_SET_SPI_SYSCMD(22)
 /**
  * Get how many bytes in spi are available to receive,
  * this can be used in interrupt callback functions,
@@ -302,14 +300,14 @@
  * - Param usage : store the read available bytes, > 0 for available bytes, 0 for not available
  * - Return value explanation :
  */
-#define SPI_CMD_GET_RXAVAIL			DEV_SET_SPI_SYSCMD(23)
+#define SPI_CMD_GET_RXAVAIL                     DEV_SET_SPI_SYSCMD(23)
 /**
  * start the transfer by quad read
  * - Param type : \ref DEV_SPI_PAK *
  * - Param usage :
  * - Return value explanation :
  */
-#define SPI_CMD_QUAD_READ			DEV_SET_SPI_SYSCMD(24)
+#define SPI_CMD_QUAD_READ                       DEV_SET_SPI_SYSCMD(24)
 
 /* ++++ Master only commands for SPI Device ++++ */
 /**
@@ -318,22 +316,21 @@
  * - Param usage : the number of spi slave device to select
  * - Return value explanation : return \ref E_SYS when selection can't be done, return \ref E_CTX during transfer
  */
-#define SPI_CMD_MST_SEL_DEV			DEV_SET_SPI_MST_SYSCMD(0)
+#define SPI_CMD_MST_SEL_DEV                     DEV_SET_SPI_MST_SYSCMD(0)
 /**
  *  de-select spi slave device
  * - Param type : uint32_t
  * - Param usage : the number of spi slave device to de-select
  * - Return value explanation : return \ref E_SYS when selection can't be done, return \ref E_CTX during transfer
  */
-#define SPI_CMD_MST_DSEL_DEV			DEV_SET_SPI_MST_SYSCMD(1)
- /**
+#define SPI_CMD_MST_DSEL_DEV                    DEV_SET_SPI_MST_SYSCMD(1)
+/**
  * Set \ref dev_spi_info::freq "spi frequency".
  * - Param type : uint32_t
  * - Param usage : spi freq
  * - Return value explanation : no return
  */
-#define SPI_CMD_MST_SET_FREQ			DEV_SET_SPI_MST_SYSCMD(2)
-
+#define SPI_CMD_MST_SET_FREQ                    DEV_SET_SPI_MST_SYSCMD(2)
 
 /* ++++ Slave only commands for SPI Device ++++ */
 
@@ -348,10 +345,10 @@
  * @{
  */
 typedef struct dev_spi_cbs {
-	DEV_CALLBACK tx_cb;	/*!< spi data transmit success required bytes callback */
-	DEV_CALLBACK rx_cb;	/*!< spi data receive success required bytes callback */
-	DEV_CALLBACK err_cb;	/*!< spi error callback */
-	DEV_CALLBACK xfer_cb;	/*!< transfer callback */
+	DEV_CALLBACK tx_cb;     /*!< spi data transmit success required bytes callback */
+	DEV_CALLBACK rx_cb;     /*!< spi data receive success required bytes callback */
+	DEV_CALLBACK err_cb;    /*!< spi error callback */
+	DEV_CALLBACK xfer_cb;   /*!< transfer callback */
 } DEV_SPI_CBS, *DEV_SPI_CBS_PTR;
 /** @} */
 
@@ -363,21 +360,21 @@ typedef struct dev_spi_cbs {
  */
 /** SPI Clock Mode */
 typedef enum spi_clk_mode {
-	SPI_CPOL_0_CPHA_0 = 0,	/*!< Inactive state of serial clock is low, serial clock toggles in middle of first data bit */
-	SPI_CPOL_0_CPHA_1 = 1,	/*!< Inactive state of serial clock is low, serial clock toggles at start of first data bit  */
-	SPI_CPOL_1_CPHA_0 = 2,	/*!< Inactive state of serial clock is high, serial clock toggles in middle of first data bit */
-	SPI_CPOL_1_CPHA_1 = 3,	/*!< Inactive state of serial clock is high, serial clock toggles at start of first data bit */
+	SPI_CPOL_0_CPHA_0       = 0,                    /*!< Inactive state of serial clock is low, serial clock toggles in middle of first data bit */
+	SPI_CPOL_0_CPHA_1       = 1,                    /*!< Inactive state of serial clock is low, serial clock toggles at start of first data bit  */
+	SPI_CPOL_1_CPHA_0       = 2,                    /*!< Inactive state of serial clock is high, serial clock toggles in middle of first data bit */
+	SPI_CPOL_1_CPHA_1       = 3,                    /*!< Inactive state of serial clock is high, serial clock toggles at start of first data bit */
 
-	SPI_CLK_MODE_0    = SPI_CPOL_0_CPHA_0,	/*!< Equal to \ref SPI_CPOL_0_CPHA_0 */
-	SPI_CLK_MODE_1    = SPI_CPOL_0_CPHA_1,	/*!< Equal to \ref SPI_CPOL_0_CPHA_1 */
-	SPI_CLK_MODE_2    = SPI_CPOL_1_CPHA_0,	/*!< Equal to \ref SPI_CPOL_1_CPHA_0 */
-	SPI_CLK_MODE_3    = SPI_CPOL_1_CPHA_1	/*!< Equal to \ref SPI_CPOL_1_CPHA_1 */
+	SPI_CLK_MODE_0          = SPI_CPOL_0_CPHA_0,    /*!< Equal to \ref SPI_CPOL_0_CPHA_0 */
+	SPI_CLK_MODE_1          = SPI_CPOL_0_CPHA_1,    /*!< Equal to \ref SPI_CPOL_0_CPHA_1 */
+	SPI_CLK_MODE_2          = SPI_CPOL_1_CPHA_0,    /*!< Equal to \ref SPI_CPOL_1_CPHA_0 */
+	SPI_CLK_MODE_3          = SPI_CPOL_1_CPHA_1     /*!< Equal to \ref SPI_CPOL_1_CPHA_1 */
 } SPI_CLK_MODE;
 
-typedef SPI_CLK_MODE			DEV_SPI_CLK_MODE;
+typedef SPI_CLK_MODE DEV_SPI_CLK_MODE;
 
 /*!< Default SPI device clock mode */
-#define SPI_CLK_MODE_DEFAULT		SPI_CPOL_0_CPHA_0
+#define SPI_CLK_MODE_DEFAULT            SPI_CPOL_0_CPHA_0
 /** @} */
 
 /**
@@ -387,40 +384,40 @@ typedef SPI_CLK_MODE			DEV_SPI_CLK_MODE;
  * @{
  */
 /** SPI Slave Select Line, start from 0 */
-#define DEV_SPI_CS_LINE_DEF(line)		(line)
+#define DEV_SPI_CS_LINE_DEF(line)               (line)
 typedef enum dev_spi_cs_line {
-	DEV_SPI_CS_LINE_0 = 0,		/*!< SPI slave select line 0  */
-	DEV_SPI_CS_LINE_1,		/*!< SPI slave select line 1  */
-	DEV_SPI_CS_LINE_2,		/*!< SPI slave select line 2  */
-	DEV_SPI_CS_LINE_3,		/*!< SPI slave select line 3  */
-	DEV_SPI_CS_LINE_4,		/*!< SPI slave select line 4  */
-	DEV_SPI_CS_LINE_5,		/*!< SPI slave select line 5  */
-	DEV_SPI_CS_LINE_6,		/*!< SPI slave select line 6  */
-	DEV_SPI_CS_LINE_7,		/*!< SPI slave select line 7  */
-	DEV_SPI_CS_LINE_8,		/*!< SPI slave select line 8  */
-	DEV_SPI_CS_LINE_9,		/*!< SPI slave select line 9  */
-	DEV_SPI_CS_LINE_10,		/*!< SPI slave select line 10 */
-	DEV_SPI_CS_LINE_11,		/*!< SPI slave select line 11 */
-	DEV_SPI_CS_LINE_12,		/*!< SPI slave select line 12 */
-	DEV_SPI_CS_LINE_13,		/*!< SPI slave select line 13 */
-	DEV_SPI_CS_LINE_14,		/*!< SPI slave select line 14 */
-	DEV_SPI_CS_LINE_15,		/*!< SPI slave select line 15 */
-	DEV_SPI_CS_LINE_16,		/*!< SPI slave select line 16 */
-	DEV_SPI_CS_LINE_17,		/*!< SPI slave select line 17 */
-	DEV_SPI_CS_LINE_18,		/*!< SPI slave select line 18 */
-	DEV_SPI_CS_LINE_19,		/*!< SPI slave select line 19 */
-	DEV_SPI_CS_LINE_20,		/*!< SPI slave select line 20 */
-	DEV_SPI_CS_LINE_21,		/*!< SPI slave select line 21 */
-	DEV_SPI_CS_LINE_22,		/*!< SPI slave select line 22 */
-	DEV_SPI_CS_LINE_23,		/*!< SPI slave select line 23 */
-	DEV_SPI_CS_LINE_24,		/*!< SPI slave select line 24 */
-	DEV_SPI_CS_LINE_25,		/*!< SPI slave select line 25 */
-	DEV_SPI_CS_LINE_26,		/*!< SPI slave select line 26 */
-	DEV_SPI_CS_LINE_27,		/*!< SPI slave select line 27 */
-	DEV_SPI_CS_LINE_28,		/*!< SPI slave select line 28 */
-	DEV_SPI_CS_LINE_29,		/*!< SPI slave select line 29 */
-	DEV_SPI_CS_LINE_30,		/*!< SPI slave select line 30 */
-	DEV_SPI_CS_LINE_31		/*!< SPI slave select line 31 */
+	DEV_SPI_CS_LINE_0 = 0,          /*!< SPI slave select line 0  */
+	DEV_SPI_CS_LINE_1,              /*!< SPI slave select line 1  */
+	DEV_SPI_CS_LINE_2,              /*!< SPI slave select line 2  */
+	DEV_SPI_CS_LINE_3,              /*!< SPI slave select line 3  */
+	DEV_SPI_CS_LINE_4,              /*!< SPI slave select line 4  */
+	DEV_SPI_CS_LINE_5,              /*!< SPI slave select line 5  */
+	DEV_SPI_CS_LINE_6,              /*!< SPI slave select line 6  */
+	DEV_SPI_CS_LINE_7,              /*!< SPI slave select line 7  */
+	DEV_SPI_CS_LINE_8,              /*!< SPI slave select line 8  */
+	DEV_SPI_CS_LINE_9,              /*!< SPI slave select line 9  */
+	DEV_SPI_CS_LINE_10,             /*!< SPI slave select line 10 */
+	DEV_SPI_CS_LINE_11,             /*!< SPI slave select line 11 */
+	DEV_SPI_CS_LINE_12,             /*!< SPI slave select line 12 */
+	DEV_SPI_CS_LINE_13,             /*!< SPI slave select line 13 */
+	DEV_SPI_CS_LINE_14,             /*!< SPI slave select line 14 */
+	DEV_SPI_CS_LINE_15,             /*!< SPI slave select line 15 */
+	DEV_SPI_CS_LINE_16,             /*!< SPI slave select line 16 */
+	DEV_SPI_CS_LINE_17,             /*!< SPI slave select line 17 */
+	DEV_SPI_CS_LINE_18,             /*!< SPI slave select line 18 */
+	DEV_SPI_CS_LINE_19,             /*!< SPI slave select line 19 */
+	DEV_SPI_CS_LINE_20,             /*!< SPI slave select line 20 */
+	DEV_SPI_CS_LINE_21,             /*!< SPI slave select line 21 */
+	DEV_SPI_CS_LINE_22,             /*!< SPI slave select line 22 */
+	DEV_SPI_CS_LINE_23,             /*!< SPI slave select line 23 */
+	DEV_SPI_CS_LINE_24,             /*!< SPI slave select line 24 */
+	DEV_SPI_CS_LINE_25,             /*!< SPI slave select line 25 */
+	DEV_SPI_CS_LINE_26,             /*!< SPI slave select line 26 */
+	DEV_SPI_CS_LINE_27,             /*!< SPI slave select line 27 */
+	DEV_SPI_CS_LINE_28,             /*!< SPI slave select line 28 */
+	DEV_SPI_CS_LINE_29,             /*!< SPI slave select line 29 */
+	DEV_SPI_CS_LINE_30,             /*!< SPI slave select line 30 */
+	DEV_SPI_CS_LINE_31              /*!< SPI slave select line 31 */
 } DEV_SPI_CS_LINE;
 /** @} */
 
@@ -452,48 +449,48 @@ struct dev_spi_transfer {
 	uint32_t rx_len;
 	/* Should auto set to proper value during set buffer value */
 	uint32_t tx_idx;
-	uint32_t tx_totlen;	/** tx_totlen = tx_len + tx_ofs */
+	uint32_t tx_totlen;     /** tx_totlen = tx_len + tx_ofs */
 	uint32_t rx_idx;
-	uint32_t rx_totlen;	/** rx_totlen = rx_len + rx_ofs */
+	uint32_t rx_totlen;     /** rx_totlen = rx_len + rx_ofs */
 };
 
 /** Set tx buffer of device spi transfer */
-#define DEV_SPI_XFER_SET_TXBUF(xfer, buf, ofs, len)		{		\
-					(xfer)->tx_buf = (uint8_t *)(buf);	\
-					(xfer)->tx_len = (uint32_t)(len);	\
-					(xfer)->tx_ofs = (uint32_t)(ofs);	\
-					(xfer)->tx_idx = 0;			\
-					(xfer)->tx_totlen = ( (uint32_t)(len) 	\
-							+ (uint32_t)(ofs) ) ;	\
-				}
+#define DEV_SPI_XFER_SET_TXBUF(xfer, buf, ofs, len)             { \
+		(xfer)->tx_buf = (uint8_t *)(buf);		  \
+		(xfer)->tx_len = (uint32_t)(len);		  \
+		(xfer)->tx_ofs = (uint32_t)(ofs);		  \
+		(xfer)->tx_idx = 0;				  \
+		(xfer)->tx_totlen = ((uint32_t)(len)		  \
+				     + (uint32_t)(ofs));	  \
+}
 
 /** Set rx buffer of device spi transfer */
-#define DEV_SPI_XFER_SET_RXBUF(xfer, buf, ofs, len)		{		\
-					(xfer)->rx_buf = (uint8_t *)(buf);	\
-					(xfer)->rx_len = (uint32_t)(len);	\
-					(xfer)->rx_ofs = (uint32_t)(ofs);	\
-					(xfer)->rx_idx = 0;			\
-					(xfer)->rx_totlen = ( (uint32_t)(len) 	\
-							+ (uint32_t)(ofs) ) ;	\
-				}
+#define DEV_SPI_XFER_SET_RXBUF(xfer, buf, ofs, len)             { \
+		(xfer)->rx_buf = (uint8_t *)(buf);		  \
+		(xfer)->rx_len = (uint32_t)(len);		  \
+		(xfer)->rx_ofs = (uint32_t)(ofs);		  \
+		(xfer)->rx_idx = 0;				  \
+		(xfer)->rx_totlen = ((uint32_t)(len)		  \
+				     + (uint32_t)(ofs));	  \
+}
 
 /** Calculate total length of current transfer without next transfer */
-#define DEV_SPI_XFER_CALC_TOTLEN(xfer)		(xfer)->tot_len =	\
-				((xfer)->tx_totlen > (xfer)->rx_totlen) ? (xfer)->tx_totlen : (xfer)->rx_totlen ;
+#define DEV_SPI_XFER_CALC_TOTLEN(xfer)          (xfer)->tot_len = \
+	((xfer)->tx_totlen > (xfer)->rx_totlen) ? (xfer)->tx_totlen : (xfer)->rx_totlen;
 
 /** Set next SPI transfer */
-#define DEV_SPI_XFER_SET_NEXT(xfer, next_xfer)	(xfer)->next = (next_xfer);
+#define DEV_SPI_XFER_SET_NEXT(xfer, next_xfer)  (xfer)->next = (next_xfer);
 
 /** Init spi transfer */
-#define DEV_SPI_XFER_INIT(xfer)					{		\
-					(xfer)->tx_idx = 0;			\
-					(xfer)->rx_idx = 0;			\
-					(xfer)->tx_totlen = ((xfer)->tx_len  	\
-							+ (xfer)->tx_ofs) ;	\
-					(xfer)->rx_totlen = ((xfer)->rx_len  	\
-							+ (xfer)->rx_ofs) ;	\
-					DEV_SPI_XFER_CALC_TOTLEN(xfer);		\
-				}
+#define DEV_SPI_XFER_INIT(xfer)                                 { \
+		(xfer)->tx_idx = 0;				  \
+		(xfer)->rx_idx = 0;				  \
+		(xfer)->tx_totlen = ((xfer)->tx_len		  \
+				     + (xfer)->tx_ofs);		  \
+		(xfer)->rx_totlen = ((xfer)->rx_len		  \
+				     + (xfer)->rx_ofs);		  \
+		DEV_SPI_XFER_CALC_TOTLEN(xfer);			  \
+}
 
 /**
  * \brief	spi read and write data structure used by \ref SPI_CMD_QUAD_READ
@@ -514,31 +511,31 @@ typedef struct {
  * 	frequency, spi registers, working method, interrupt number
  */
 typedef struct dev_spi_info {
-	void *spi_ctrl;		/*!< spi control related */
-	uint32_t status;	/*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
-	uint32_t freq;		/*!< spi working baudrate */
-	uint8_t mode;		/*!< spi working mode (master/slave) */
-	uint8_t clk_mode;	/*!< spi clock phase and polarity, this should be \ref SPI_CLK_MODE_DEFAULT for first open */
-	uint8_t opn_cnt;	/*!< spi open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
-	uint8_t slave;		/*!< current selected slave device no, start from 0, this should be \ref SPI_SLAVE_NOT_SELECTED for first open */
-	uint8_t dfs;		/*!< data frame size, this should be \ref SPI_DFS_DEFAULT for first open */
+	void *spi_ctrl;         /*!< spi control related */
+	uint32_t status;        /*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
+	uint32_t freq;          /*!< spi working baudrate */
+	uint8_t mode;           /*!< spi working mode (master/slave) */
+	uint8_t clk_mode;       /*!< spi clock phase and polarity, this should be \ref SPI_CLK_MODE_DEFAULT for first open */
+	uint8_t opn_cnt;        /*!< spi open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
+	uint8_t slave;          /*!< current selected slave device no, start from 0, this should be \ref SPI_SLAVE_NOT_SELECTED for first open */
+	uint8_t dfs;            /*!< data frame size, this should be \ref SPI_DFS_DEFAULT for first open */
 
-	DEV_SPI_TRANSFER xfer;	/*!< spi transfer, this should be set to all zero for first open */
-	DEV_SPI_CBS spi_cbs;	/*!< spi callbacks, for both master and slave mode, this should be all NULL for first open */
-	void *extra;		/*!< a extra pointer to get hook to applications which should not used by bsp developer,
-					this should be NULL for first open and you can \ref DEV_SPI_INFO_SET_EXTRA_OBJECT "set"
-					or \ref DEV_SPI_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
-	uint32_t dummy;		/*!< dummy write data when send and receive, this should be \ref SPI_DUMMY_DEFAULT for first open */
-} DEV_SPI_INFO, * DEV_SPI_INFO_PTR;
+	DEV_SPI_TRANSFER xfer;  /*!< spi transfer, this should be set to all zero for first open */
+	DEV_SPI_CBS spi_cbs;    /*!< spi callbacks, for both master and slave mode, this should be all NULL for first open */
+	void *extra;            /*!< a extra pointer to get hook to applications which should not used by bsp developer,
+	                                this should be NULL for first open and you can \ref DEV_SPI_INFO_SET_EXTRA_OBJECT "set"
+	                                or \ref DEV_SPI_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
+	uint32_t dummy;         /*!< dummy write data when send and receive, this should be \ref SPI_DUMMY_DEFAULT for first open */
+} DEV_SPI_INFO, *DEV_SPI_INFO_PTR;
 
 /** Set extra information pointer of spi info */
-#define DEV_SPI_INFO_SET_EXTRA_OBJECT(spi_info_ptr, extra_info)		(spi_info_ptr)->extra = (void *)(extra_info)
+#define DEV_SPI_INFO_SET_EXTRA_OBJECT(spi_info_ptr, extra_info)         (spi_info_ptr)->extra = (void *)(extra_info)
 /** Get extra information pointer of spi info */
-#define DEV_SPI_INFO_GET_EXTRA_OBJECT(spi_info_ptr)			((spi_info_ptr)->extra)
+#define DEV_SPI_INFO_GET_EXTRA_OBJECT(spi_info_ptr)                     ((spi_info_ptr)->extra)
 
-#define SPI_DFS_DEFAULT				8		/*!< Default spi data frame size */
-#define SPI_SLAVE_NOT_SELECTED			(0xFF)		/*!< Slave is not selected */
-#define SPI_DUMMY_DEFAULT			(0xFF)		/*!< default dummy value for first open */
+#define SPI_DFS_DEFAULT                         8               /*!< Default spi data frame size */
+#define SPI_SLAVE_NOT_SELECTED                  (0xFF)          /*!< Slave is not selected */
+#define SPI_DUMMY_DEFAULT                       (0xFF)          /*!< default dummy value for first open */
 
 /**
  * \brief	spi device interface definition
@@ -547,15 +544,15 @@ typedef struct dev_spi_info {
  * \note	all this details are implemented by user in user porting code
  */
 typedef struct dev_spi {
-	DEV_SPI_INFO spi_info;						/*!< spi device information */
-	int32_t (*spi_open) (uint32_t mode, uint32_t param);		/*!< open spi device in master/slave mode, \
-									when in master mode, param stands for frequency, \
-									when in slave mode, param stands for clock mode */
-	int32_t (*spi_close) (void);					/*!< close spi device */
-	int32_t (*spi_control) (uint32_t ctrl_cmd, void *param);	/*!< control spi device */
-	int32_t (*spi_write) (const void *data, uint32_t len);		/*!< send data to spi device (blocking method) */
-	int32_t (*spi_read) (void *data, uint32_t len);			/*!< read data from spi device (blocking method) */
-} DEV_SPI, * DEV_SPI_PTR;
+	DEV_SPI_INFO spi_info;                                          /*!< spi device information */
+	int32_t (*spi_open)(uint32_t mode, uint32_t param);             /*!< open spi device in master/slave mode, \
+	                                                                   when in master mode, param stands for frequency, \
+	                                                                   when in slave mode, param stands for clock mode */
+	int32_t (*spi_close)(void);                                     /*!< close spi device */
+	int32_t (*spi_control)(uint32_t ctrl_cmd, void *param);         /*!< control spi device */
+	int32_t (*spi_write)(const void *data, uint32_t len);           /*!< send data to spi device (blocking method) */
+	int32_t (*spi_read)(void *data, uint32_t len);                  /*!< read data from spi device (blocking method) */
+} DEV_SPI, *DEV_SPI_PTR;
 
 /**
  * \fn		int32_t (* dev_spi::spi_open) (uint32_t mode, uint32_t param)

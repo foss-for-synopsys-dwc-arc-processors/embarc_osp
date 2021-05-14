@@ -21,16 +21,15 @@
 #ifndef __BOARD_EMSDP_H__
 #define __BOARD_EMSDP_H__
 
-
-/**							     
- * Clock							     
+/**
+ * Clock
  */
 #define EMSDP_REF_CLOCK                                   (100000000)
 
 #define EMSDP_UART_REF_CLOCK                              (100000000)
 #define EMSDP_AUDIO_REF_CLOCK                              (24576000)
 
-#if (defined(FAST_UART) )
+#if (defined(FAST_UART))
    #define EMSDP_UART_BAUDRATE                               (6250000)
 #else
    #define EMSDP_UART_BAUDRATE                               (115200)
@@ -38,7 +37,7 @@
 
 #define EMSDP_I2C_CLOCK                                      (EMSDP_REF_CLOCK)
 
-//APB Peripheral address map				     
+// APB Peripheral address map
 #define EMSDP_CRU_BASE                                       (0xF0000000U)
 #define EMSDP_CREG_BASE                                      (0xF0001000U)
 #define EMSDP_GPIO_BASE                                      (0xF0002000U)
@@ -54,28 +53,26 @@
 #define EMSDP_EBI_BASE                                       (0xF2000000U)
 #define EMSDP_PSRAM_BASE                                     (0xF2001000U)
 
-
 /**
-* Mapping of printf information
-*/
-   #define DBG_init  							            dbg_init
+ * Mapping of printf information
+ */
+   #define DBG_init                                                                 dbg_init
    #define DBG_print                                        dbg_printf
-   #define DBG_getChar(x)							                                 \
-   {									                                                \
-      DW_UART_STRUCT_PTR   uart  = (DW_UART_STRUCT_PTR)  (DBG_PORT);          \
-      x = dw_uart_getChar(uart);						                              \
-   }
+   #define DBG_getChar(x)						    \
+	{								    \
+		DW_UART_STRUCT_PTR uart = (DW_UART_STRUCT_PTR)  (DBG_PORT); \
+		x = dw_uart_getChar(uart);				    \
+	}
    #define DBG_finish()
-   #define DBG_finish_with_error()      
-   #define DBG_install(x)                                                     \
-   {                                                                          \
-      DW_UART_STRUCT_PTR   uart  = (DW_UART_STRUCT_PTR)  (DBG_PORT);          \
-      uart->IER.DATA32 = DW_UART_IER_DATA_AVAIL;                              \
-      board_installHandler(x, DBG_ISR);                                       \
-   }   
-   
+   #define DBG_finish_with_error()
+   #define DBG_install(x)						    \
+	{								    \
+		DW_UART_STRUCT_PTR uart = (DW_UART_STRUCT_PTR)  (DBG_PORT); \
+		uart->IER.DATA32 = DW_UART_IER_DATA_AVAIL;		    \
+		board_installHandler(x, DBG_ISR);			    \
+	}
 
-//ARC Exceptions
+// ARC Exceptions
 #define EMSDP_RESET_EXCP                                     (0)
 #define EMSDP_MEMORY_ERROR_EXCP                              (1)
 #define EMSDP_INSTRUCTION_ERROR_EXCP                         (2)
@@ -91,15 +88,14 @@
 #define EMSDP_EVDCERROR_EXCP                                 (12)
 #define EMSDP_EVMALIGNED_EXCP                                (13)
 
-//ARC External private interrupts (low interrupts)
+// ARC External private interrupts (low interrupts)
 #define EMSDP_TIMER0_EXCP                                    (16)
 #define EMSDP_TIMER1_EXCP                                    (17)
 
 #define EMSDP_MAX_NUM_EXCP                                   (24)
 #define EMSDP_MAX_NUM_ISR                                    (80)
 
-
-//EMSDP Peripheral Subsystem Interrupt assignments
+// EMSDP Peripheral Subsystem Interrupt assignments
 #define EMSDP_SPI0_INTR                                       (84)
 #define EMSDP_SPI1_INTR                                       (85)
 #define EMSDP_GPIO_INTR0                                       (86)
@@ -130,8 +126,7 @@
 #define EMSDP_REDPINE_HOST_WAKEUP                                       (111)
 #define EMSDP_NIST_TRNG_INTR                                       (112)
 
-
-//EMSDP Peripheral Subsystem DMA assignments
+// EMSDP Peripheral Subsystem DMA assignments
 #define UART_DMA_TX                                       (9)
 #define UART_DMA_RX                                       (10)
 #define REDPINE_SPI_DMA_TX                                       (11)
@@ -139,4 +134,4 @@
 #define FLASH_SPI_DMA_TX                                       (13)
 #define FLASH_SPI_DMA_RX                                       (14)
 
-#endif //__BOARD_EMSDP_H__
+#endif // __BOARD_EMSDP_H__

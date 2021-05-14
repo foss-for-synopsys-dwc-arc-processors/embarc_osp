@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \file
  * \ingroup	BOARD_EMSK_DRV_MID_FS_SDCARD_SPI
@@ -43,12 +43,12 @@
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include "ff_diskio.h"
 
-#define USE_EMSK_SDCARD_SPI_0 	1
+#define USE_EMSK_SDCARD_SPI_0   1
 
-#define SDCARD_SPI_FREQ_400K		(400000)	/*!< sdcard spi freq:400KHz */
-#define SDCARD_SPI_FREQ_1M		(1000000)	/*!< sdcard spi freq:2MHz */
-#define SDCARD_SPI_FREQ_2M		(2000000)	/*!< sdcard spi freq:2MHz */
-#define SDCARD_SPI_FREQ_4M 		(4000000)	/*!< sdcard spi freq:4MHz */
+#define SDCARD_SPI_FREQ_400K            (400000)        /*!< sdcard spi freq:400KHz */
+#define SDCARD_SPI_FREQ_1M              (1000000)       /*!< sdcard spi freq:2MHz */
+#define SDCARD_SPI_FREQ_2M              (2000000)       /*!< sdcard spi freq:2MHz */
+#define SDCARD_SPI_FREQ_4M              (4000000)       /*!< sdcard spi freq:4MHz */
 
 #ifdef __cplusplus
 extern "C" {
@@ -62,10 +62,8 @@ extern FATFS_DISKIO sdcard_spi_0_diskio;
 }
 #endif
 
+#endif  /* MID_FATFS */
 
-
-#endif /* MID_FATFS */
-
-#endif /** _EMSK_SDCARD_SPI_H_ */
+#endif  /** _EMSK_SDCARD_SPI_H_ */
 
 /** @} end of group BOARD_EMSK_DRV_MID_FS_SDCARD_SPI */

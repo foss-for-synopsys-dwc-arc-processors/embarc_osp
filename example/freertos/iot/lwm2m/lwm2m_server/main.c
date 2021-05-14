@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \defgroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER	embARC LwIP LwM2M Server Example
  * \ingroup	EMBARC_APPS_TOTAL
@@ -74,13 +74,14 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
-extern CMD_TABLE_T * register_ntshell_cmd_lwm2m_server(CMD_TABLE_T *prev);
+extern CMD_TABLE_T *register_ntshell_cmd_lwm2m_server(CMD_TABLE_T *prev);
 static volatile int main_run_flag = 0;
 
 int main(void)
 {
 
 	NTSHELL_IO *nt_io;
+
 	nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
 
 	EMBARC_PRINTF("Start FreeRTOS LwM2M Client Demo by run lwm2m_server and lwm2m_op command\r\n");

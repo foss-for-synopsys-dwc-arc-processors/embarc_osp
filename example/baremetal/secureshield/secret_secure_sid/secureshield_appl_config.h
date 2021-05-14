@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \file
  * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_SECURE_SID
@@ -70,14 +70,14 @@
 
 // CONTAINER_RAM_OBJS_LIST is only for ARC_GNU
 // This macro wii exclude the specified container objs from background container in linking,
-//(EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST)
-//.data. EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.d.*)
+// (EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .data EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST)
+// .data. EXCLUDE_FILE(CONTAINER_RAM_OBJS_LIST) .gnu.linkonce.d.*)
 #define CONTAINER_RAM_OBJS_LIST *container2.o
 
 /* tell linker script template, there is a region named container2 in normal rom, its size is 0 bytes */
-#define SECURESHIELD_REGION_CONTAINERS_ROM GEN_CONTAINER_ROM_SECTION(container2, 2048, *container2.o*)
+#define SECURESHIELD_REGION_CONTAINERS_ROM GEN_CONTAINER_ROM_SECTION(container2, 2048, *container2.o *)
 
 /* tell linker script template, there is a region named container1 in normal ram, its size is 2048 bytes */
-#define SECURESHIELD_REGION_CONTAINERS_RAM GEN_CONTAINER_RAM_SECTION(container2, 2048, *container2.o*)
+#define SECURESHIELD_REGION_CONTAINERS_RAM GEN_CONTAINER_RAM_SECTION(container2, 2048, *container2.o *)
 
 #endif /* _SECURESHIELD_APPL_CONFIG_H_ */

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dw_gpio.h"
 #include "dw_gpio_obj.h"
 
@@ -38,8 +38,8 @@
  */
 
 #if (USE_CPU_DW_GPIO_PORT_A)
-static DEV_GPIO		cpu_port_a;
-static DW_GPIO_PORT	cpu_dw_gpio_port_a;
+static DEV_GPIO cpu_port_a;
+static DW_GPIO_PORT cpu_dw_gpio_port_a;
 static DEV_GPIO_HANDLER cpu_dw_gpio_bit_handler_a[AXS_CPU_GPIO_A_INT_MAX_COUNT];
 static DW_GPIO_BIT_ISR cpu_dw_gpio_bit_isr_a = {
 	AXS_CPU_GPIO_A_INT_MAX_COUNT, cpu_dw_gpio_bit_handler_a
@@ -94,7 +94,7 @@ static void cpu_porta_install(void)
 	dw_port_ptr->intno = INTNO_ICTL_MB;
 	dw_port_ptr->int_handler = cpu_porta_isr;
 
-	for (i=0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
+	for (i = 0; i < cpu_dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
 		cpu_dw_gpio_bit_isr_a.int_bit_handler_ptr[i] = NULL;
 	}
 	dw_port_ptr->gpio_bit_isr = &cpu_dw_gpio_bit_isr_a;
@@ -108,8 +108,8 @@ static void cpu_porta_install(void)
 #endif
 
 #if (USE_CPU_DW_GPIO_PORT_B)
-static DEV_GPIO		cpu_port_b;
-static DW_GPIO_PORT	cpu_dw_gpio_port_b;
+static DEV_GPIO cpu_port_b;
+static DW_GPIO_PORT cpu_dw_gpio_port_b;
 
 static int32_t cpu_portb_open(uint32_t dir)
 {
@@ -172,13 +172,13 @@ DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
 
 	switch (gpio_id) {
 #if (USE_CPU_DW_GPIO_PORT_A)
-		case CPU_DW_GPIO_PORT_A: return &cpu_port_a;
+	case CPU_DW_GPIO_PORT_A: return &cpu_port_a;
 #endif
 #if (USE_CPU_DW_GPIO_PORT_B)
-		case CPU_DW_GPIO_PORT_B: return &cpu_port_b;
+	case CPU_DW_GPIO_PORT_B: return &cpu_port_b;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

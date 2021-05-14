@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _PMWIFI_H_
 #define _PMWIFI_H_
 
@@ -34,16 +34,16 @@
 
 #include "device/dev_wnic.h"
 
-#define IOTDK_PMWIFI_0_ID		0
+#define IOTDK_PMWIFI_0_ID               0
 
-#define USE_IOTDK_PMWIFI_0		1
+#define USE_IOTDK_PMWIFI_0              1
 
-#define IOTDK_PMWIFI_0_MAC_ADDR0		(0x00)
-#define IOTDK_PMWIFI_0_MAC_ADDR1		(0x1e)
-#define IOTDK_PMWIFI_0_MAC_ADDR2		(0xc0)
-#define IOTDK_PMWIFI_0_MAC_ADDR3		(0x0e)
-#define IOTDK_PMWIFI_0_MAC_ADDR4		(0x71)
-#define IOTDK_PMWIFI_0_MAC_ADDR5		(0xac)
+#define IOTDK_PMWIFI_0_MAC_ADDR0                (0x00)
+#define IOTDK_PMWIFI_0_MAC_ADDR1                (0x1e)
+#define IOTDK_PMWIFI_0_MAC_ADDR2                (0xc0)
+#define IOTDK_PMWIFI_0_MAC_ADDR3                (0x0e)
+#define IOTDK_PMWIFI_0_MAC_ADDR4                (0x71)
+#define IOTDK_PMWIFI_0_MAC_ADDR5                (0xac)
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,4 +56,4 @@ extern void pmwifi_all_install(void);
 #endif
 
 #endif  /* MID_LWIP && MID_LWIP_CONTRIB */
-#endif /* _PMWIFI_H_ */
+#endif  /* _PMWIFI_H_ */

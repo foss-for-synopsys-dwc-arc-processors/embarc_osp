@@ -26,26 +26,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
 #include "arc/arc_exception.h"
 
-
 #include "device/subsystem/i2c_master.h"
 #include "device/subsystem/ss_i2c_master.h"
 #include "device/subsystem/i2c_priv.h"
 
-
-#define REG_READ(x) 		arc_aux_read((ctx->reg_base + x))
-#define REG_WRITE(x, y) 	arc_aux_write((ctx->reg_base + x), y)
-
+#define REG_READ(x)             arc_aux_read((ctx->reg_base + x))
+#define REG_WRITE(x, y)         arc_aux_write((ctx->reg_base + x), y)
 
 /** test whether iic is ready to write, 1 ready, 0 not ready */
 Inline int32_t ss_iic_master_putready(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
 	uint32_t status = REG_READ(I2C_STATUS);
+
 	return ((status & IC_STATUS_TFNF) != 0);
 }
 
@@ -53,6 +51,7 @@ Inline int32_t ss_iic_master_putready(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 Inline int32_t ss_iic_master_getready(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
 	uint32_t status = REG_READ(I2C_STATUS);
+
 	return ((status & IC_STATUS_RFNE) != 0);
 }
 
@@ -60,9 +59,9 @@ Inline int32_t ss_iic_master_getready(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 Inline void ss_iic_mask_interrupt(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t mask)
 {
 	uint32_t intr_mask = REG_READ(I2C_INTR_MASK);
+
 	REG_WRITE(I2C_INTR_MASK, intr_mask & (~mask));
 }
-
 
 static void ss_iic_master_enable_device(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
@@ -81,7 +80,9 @@ static void ss_iic_master_disable_device(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 
 	REG_WRITE(I2C_ENABLE, (enable & (~(0x1))));
 
-	while ((0x1 & REG_READ(I2C_ENABLE_STATUS)) != 0);
+	while ((0x1 & REG_READ(I2C_ENABLE_STATUS)) != 0) {
+		;
+	}
 }
 
 /* reset IIC master */
@@ -103,14 +104,14 @@ static void ss_iic_master_reset_device(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 static void ss_iic_master_dis_cbr(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t cbrtn)
 {
 	switch (cbrtn) {
-		case SS_IIC_MASTER_RDY_SND:
-			ss_iic_mask_interrupt(ctx, R_TX_EMPTY);
-			break;
-		case SS_IIC_MASTER_RDY_RCV:
-			ss_iic_mask_interrupt(ctx, R_TX_EMPTY | R_RX_FULL);
-			break;
-		default:
-			break;
+	case SS_IIC_MASTER_RDY_SND:
+		ss_iic_mask_interrupt(ctx, R_TX_EMPTY);
+		break;
+	case SS_IIC_MASTER_RDY_RCV:
+		ss_iic_mask_interrupt(ctx, R_TX_EMPTY | R_RX_FULL);
+		break;
+	default:
+		break;
 	}
 }
 
@@ -130,6 +131,7 @@ Inline void ss_iic_master_flush_rx(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 Inline uint32_t ss_iic_master_get_txavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
 	uint32_t flr = REG_READ(I2C_TXFLR);
+
 	return (int32_t)(IC_TX_RX_FIFO_SIZE - flr);
 }
 
@@ -137,6 +139,7 @@ Inline uint32_t ss_iic_master_get_txavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 Inline uint32_t ss_iic_master_get_rxavail(SS_IIC_MASTER_DEV_CONTEXT *ctx)
 {
 	uint32_t flr = REG_READ(I2C_RXFLR);
+
 	return (int32_t)flr;
 }
 
@@ -169,131 +172,130 @@ int32_t ss_iic_master_control(SS_IIC_MASTER_DEV_CONTEXT *ctx, uint32_t ctrl_cmd,
 	DEV_IIC_INFO *iic_info_ptr = ctx->info;
 	io_cb_t callback;
 
-	switch (ctrl_cmd)
-	{
-		case IIC_CMD_GET_STATUS:
-			SS_IIC_MASTER_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = iic_info_ptr->status;
-			break;
-		case IIC_CMD_ENA_DEV:
-			ss_iic_master_enable_device(ctx);
-			break;
-		case IIC_CMD_DIS_DEV:
-			ss_iic_master_disable_device(ctx);
-			break;
-		case IIC_CMD_RESET:
-			ss_iic_master_reset_device(ctx);
-			break;
-		case IIC_CMD_FLUSH_TX:
-			ss_iic_master_flush_tx(ctx);
-			break;
-		case IIC_CMD_FLUSH_RX:
-			ss_iic_master_flush_rx(ctx);
-			break;
-		case IIC_CMD_SET_ADDR_MODE:
-			val32 = (uint32_t)param;
-			SS_IIC_MASTER_CHECK_EXP((val32==IIC_7BIT_ADDRESS) || (val32==IIC_10BIT_ADDRESS), E_PAR);
-			if (val32==IIC_10BIT_ADDRESS) {
-				arg = 1;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
-				iic_info_ptr->addr_mode = IIC_10BIT_ADDRESS;
-			} else {
-				arg = 0;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
-				iic_info_ptr->addr_mode = IIC_7BIT_ADDRESS;
-			}
-			iic_info_ptr->addr_mode = val32;
-			break;
-		case IIC_CMD_GET_RXAVAIL:
-			SS_IIC_MASTER_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = ss_iic_master_get_rxavail(ctx);
-			break;
-		case IIC_CMD_GET_TXAVAIL:
-			SS_IIC_MASTER_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = ss_iic_master_get_txavail(ctx);
-			break;
-		case IIC_CMD_SET_TXCB:
-			SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			callback.cb = param;
-			io_i2c_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
-			break;
-		case IIC_CMD_SET_RXCB:
-			SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			callback.cb = param;
-			io_i2c_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
-			break;
-		case IIC_CMD_SET_ERRCB:
-			SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			callback.cb = param;
-			io_i2c_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
-			break;
-		case IIC_CMD_ABORT_TX:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_ABORT_RX:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_SET_TXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_SND);
-			} else {
-				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_SND);
-			}
-			break;
-		case IIC_CMD_SET_RXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_RCV);
-			} else {
-				ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_RCV);
-			}
-			break;
-		case IIC_CMD_SET_TXINT_BUF:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_SET_RXINT_BUF:
-			ercd = E_NOSPT;
-			break;
-		case IIC_CMD_MST_SET_SPEED_MODE:
-			val32 = (uint32_t)param;
-			SS_IIC_MASTER_CHECK_EXP((val32>=IIC_SPEED_STANDARD) && (val32<=IIC_SPEED_FAST), E_PAR);
-			if (val32 == IIC_SPEED_STANDARD) {
-				arg = 1;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
-				iic_info_ptr->speed_mode = IIC_SPEED_STANDARD;
-			} else {
-				arg = 2;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
-				iic_info_ptr->speed_mode = IIC_SPEED_FAST;
-			}
-			break;
-		case IIC_CMD_MST_SET_TAR_ADDR:
-			if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
-				val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
-			} else {
-				val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
-			}
-			if (val32 != iic_info_ptr->tar_addr) {
-				arg = val32;
-				io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_TARGET_ADDR, &arg);
-				iic_info_ptr->tar_addr = val32;
-			}
-			break;
-		case IIC_CMD_MST_SET_NEXT_COND:
-			val32 = (uint32_t) param;
-			if (val32 == IIC_MODE_STOP) {
-				arg = I2C_STOP_CMD;
-			} else if (val32 == IIC_MODE_RESTART) {
-				arg = I2C_RESTART_CMD;
-			} else {
-				arg = 0;
-			}
-			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_NEXT_COND, &arg);
-			break;
-		default:
-			ercd = E_NOSPT;
-			break;
+	switch (ctrl_cmd) {
+	case IIC_CMD_GET_STATUS:
+		SS_IIC_MASTER_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = iic_info_ptr->status;
+		break;
+	case IIC_CMD_ENA_DEV:
+		ss_iic_master_enable_device(ctx);
+		break;
+	case IIC_CMD_DIS_DEV:
+		ss_iic_master_disable_device(ctx);
+		break;
+	case IIC_CMD_RESET:
+		ss_iic_master_reset_device(ctx);
+		break;
+	case IIC_CMD_FLUSH_TX:
+		ss_iic_master_flush_tx(ctx);
+		break;
+	case IIC_CMD_FLUSH_RX:
+		ss_iic_master_flush_rx(ctx);
+		break;
+	case IIC_CMD_SET_ADDR_MODE:
+		val32 = (uint32_t)param;
+		SS_IIC_MASTER_CHECK_EXP((val32 == IIC_7BIT_ADDRESS) || (val32 == IIC_10BIT_ADDRESS), E_PAR);
+		if (val32 == IIC_10BIT_ADDRESS) {
+			arg = 1;
+			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
+			iic_info_ptr->addr_mode = IIC_10BIT_ADDRESS;
+		} else {
+			arg = 0;
+			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_10BIT_ADDR, &arg);
+			iic_info_ptr->addr_mode = IIC_7BIT_ADDRESS;
+		}
+		iic_info_ptr->addr_mode = val32;
+		break;
+	case IIC_CMD_GET_RXAVAIL:
+		SS_IIC_MASTER_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = ss_iic_master_get_rxavail(ctx);
+		break;
+	case IIC_CMD_GET_TXAVAIL:
+		SS_IIC_MASTER_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = ss_iic_master_get_txavail(ctx);
+		break;
+	case IIC_CMD_SET_TXCB:
+		SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		callback.cb = param;
+		io_i2c_master_ioctl(dev_id, IO_SET_CB_TX, &callback);
+		break;
+	case IIC_CMD_SET_RXCB:
+		SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		callback.cb = param;
+		io_i2c_master_ioctl(dev_id, IO_SET_CB_RX, &callback);
+		break;
+	case IIC_CMD_SET_ERRCB:
+		SS_IIC_MASTER_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		callback.cb = param;
+		io_i2c_master_ioctl(dev_id, IO_SET_CB_ERR, &callback);
+		break;
+	case IIC_CMD_ABORT_TX:
+		ercd = E_NOSPT;
+		break;
+	case IIC_CMD_ABORT_RX:
+		ercd = E_NOSPT;
+		break;
+	case IIC_CMD_SET_TXINT:
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_SND);
+		} else {
+			ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_SND);
+		}
+		break;
+	case IIC_CMD_SET_RXINT:
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_RCV);
+		} else {
+			ss_iic_master_dis_cbr(ctx, SS_IIC_MASTER_RDY_RCV);
+		}
+		break;
+	case IIC_CMD_SET_TXINT_BUF:
+		ercd = E_NOSPT;
+		break;
+	case IIC_CMD_SET_RXINT_BUF:
+		ercd = E_NOSPT;
+		break;
+	case IIC_CMD_MST_SET_SPEED_MODE:
+		val32 = (uint32_t)param;
+		SS_IIC_MASTER_CHECK_EXP((val32 >= IIC_SPEED_STANDARD) && (val32 <= IIC_SPEED_FAST), E_PAR);
+		if (val32 == IIC_SPEED_STANDARD) {
+			arg = 1;
+			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
+			iic_info_ptr->speed_mode = IIC_SPEED_STANDARD;
+		} else {
+			arg = 2;
+			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_SPEED, &arg);
+			iic_info_ptr->speed_mode = IIC_SPEED_FAST;
+		}
+		break;
+	case IIC_CMD_MST_SET_TAR_ADDR:
+		if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
+			val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
+		} else {
+			val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
+		}
+		if (val32 != iic_info_ptr->tar_addr) {
+			arg = val32;
+			io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_TARGET_ADDR, &arg);
+			iic_info_ptr->tar_addr = val32;
+		}
+		break;
+	case IIC_CMD_MST_SET_NEXT_COND:
+		val32 = (uint32_t) param;
+		if (val32 == IIC_MODE_STOP) {
+			arg = I2C_STOP_CMD;
+		} else if (val32 == IIC_MODE_RESTART) {
+			arg = I2C_RESTART_CMD;
+		} else {
+			arg = 0;
+		}
+		io_i2c_master_ioctl(dev_id, IO_I2C_MASTER_SET_NEXT_COND, &arg);
+		break;
+	default:
+		ercd = E_NOSPT;
+		break;
 	}
 
 error_exit:
@@ -380,7 +382,9 @@ int32_t ss_iic_master_write(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, ui
 	io_i2c_master_write(dev_id, (uint8_t *)data, &xlen);
 
 	/* wait finished: i2c master int enable & no cpu lock */
-	while (ctx->flags & SS_IIC_MASTER_FLAG_TX);
+	while (ctx->flags & SS_IIC_MASTER_FLAG_TX) {
+		;
+	}
 
 	if (ctx->flags & SS_IIC_MASTER_FLAG_ERROR) {
 		ctx->flags = 0;
@@ -416,7 +420,9 @@ int32_t ss_iic_master_read(SS_IIC_MASTER_DEV_CONTEXT *ctx, const void *data, uin
 	io_i2c_master_read(dev_id, (uint8_t *)data, &xlen);
 
 	/* wait finished: i2c master int enable & no cpu lock */
-	while (ctx->flags & SS_IIC_MASTER_FLAG_RX);
+	while (ctx->flags & SS_IIC_MASTER_FLAG_RX) {
+		;
+	}
 
 	if (ctx->flags & SS_IIC_MASTER_FLAG_ERROR) {
 		ctx->flags = 0;

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -42,7 +42,7 @@ typedef struct main_args {
 } MAIN_ARGS;
 
 /** Change this to pass your own arguments to main functions */
-MAIN_ARGS s_main_args = {1, {"main"}};
+MAIN_ARGS s_main_args = { 1, { "main" } };
 
 /** board timer interrupt reset count */
 static uint32_t cyc_hz_count = (BOARD_CPU_CLOCK / BOARD_SYS_TIMER_HZ);
@@ -74,16 +74,16 @@ static void board_timer_isr(void *ptr)
 static void board_timer_init(void)
 {
 	if (arc_timer_present(BOARD_SYS_TIMER_ID)) {
-		int_disable(BOARD_SYS_TIMER_INTNO);                                             /* disable first then enable */
+		int_disable(BOARD_SYS_TIMER_INTNO);                                                     /* disable first then enable */
 		int_handler_install(BOARD_SYS_TIMER_INTNO, board_timer_isr);
-		arc_timer_start(BOARD_SYS_TIMER_ID, TIMER_CTRL_IE | TIMER_CTRL_NH, cyc_hz_count);   /* start 1ms timer interrupt */
+		arc_timer_start(BOARD_SYS_TIMER_ID, TIMER_CTRL_IE | TIMER_CTRL_NH, cyc_hz_count);       /* start 1ms timer interrupt */
 
 		int_enable(BOARD_SYS_TIMER_INTNO);
 	}
 	arc_timer_calibrate_delay(BOARD_CPU_CLOCK);
 }
 #if defined(MID_FATFS)
-static FATFS sd_card_fs;	/* File system object for each logical drive */
+static FATFS sd_card_fs;        /* File system object for each logical drive */
 #endif /* MID_FATFS */
 
 #if defined(EMBARC_USE_BOARD_MAIN)
@@ -91,26 +91,26 @@ static FATFS sd_card_fs;	/* File system object for each logical drive */
 
 #ifdef OS_FREERTOS
 
-#define MIN_CALC(x, y)		(((x)<(y))?(x):(y))
-#define MAX_CALC(x, y)		(((x)>(y))?(x):(y))
+#define MIN_CALC(x, y)          (((x) < (y))?(x):(y))
+#define MAX_CALC(x, y)          (((x) > (y))?(x):(y))
 /* Note: Task size in unit of StackType_t */
 /* Note: Stack size should be small than 65536, since the stack size unit is uint16_t */
-#define MIN_STACKSZ(size)	(MIN_CALC(size, configTOTAL_HEAP_SIZE) / sizeof(StackType_t))
+#define MIN_STACKSZ(size)       (MIN_CALC(size, configTOTAL_HEAP_SIZE) / sizeof(StackType_t))
 
 #ifdef MID_LWIP
 #include "lwip_wifi.h"
 
 #ifndef TASK_WIFI_PERIOD
-#define TASK_WIFI_PERIOD	50 /* WiFi connection task polling period, unit: kernel ticks */
+#define TASK_WIFI_PERIOD        50 /* WiFi connection task polling period, unit: kernel ticks */
 #endif
 
 #ifndef TASK_STACK_SIZE_WIFI
 /* WiFi task stack size */
-#define TASK_STACK_SIZE_WIFI	MIN_STACKSZ(1024)
+#define TASK_STACK_SIZE_WIFI    MIN_STACKSZ(1024)
 #endif
 
 #ifndef TASK_PRI_WIFI
-#define TASK_PRI_WIFI		(configMAX_PRIORITIES-1) /* WiFi task priority */
+#define TASK_PRI_WIFI           (configMAX_PRIORITIES - 1) /* WiFi task priority */
 #endif
 
 static DEV_WNIC *wifi_wnic;
@@ -121,33 +121,32 @@ static TaskHandle_t task_handle_wifi;
 #ifdef MID_NTSHELL
 
 #ifndef TASK_STACK_SIZE_NTSHELL
-#define TASK_STACK_SIZE_NTSHELL	MIN_STACKSZ(4096)
+#define TASK_STACK_SIZE_NTSHELL MIN_STACKSZ(4096)
 #endif
 
 #ifndef TASK_PRI_NTSHELL
-#define TASK_PRI_NTSHELL	1	/* NTSHELL task priority */
+#define TASK_PRI_NTSHELL        1       /* NTSHELL task priority */
 #endif
 static TaskHandle_t task_handle_ntshell;
 
 #else /* No middleware ntshell,will activate main task */
 
 #ifndef TASK_STACK_SIZE_MAIN
-#define TASK_STACK_SIZE_MAIN	MIN_STACKSZ(4096)
+#define TASK_STACK_SIZE_MAIN    MIN_STACKSZ(4096)
 #endif
 
 #ifndef TASK_PRI_MAIN
-#define TASK_PRI_MAIN		1	/* Main task priority */
+#define TASK_PRI_MAIN           1       /* Main task priority */
 #endif
 static TaskHandle_t task_handle_main;
 
 #endif /* MID_NTSHELL */
 
-
 #ifdef MID_LWIP
 static void task_wifi(void *par)
 {
 	WNIC_AUTH_KEY auth_key;
-	int flag=0;
+	int flag = 0;
 
 #ifdef USE_SLIP
 	wifi_wnic = wnic_get_dev(BOARD_SLIPWIFI_0_ID);
@@ -174,11 +173,13 @@ static void task_wifi(void *par)
 #else
 		wifi_wnic->wnic_connect(AUTH_SECURITY_WPA_AUTO_WITH_PASS_PHRASE, (const uint8_t *)WF_HOTSPOT_NAME, &auth_key);
 #endif
-		if ((flag == 0) && lwip_wifi_isup()){
+		if ((flag == 0) && lwip_wifi_isup()) {
 			flag = 1;
 			EMBARC_PRINTF("WiFi connected \r\n");
 #ifndef MID_NTSHELL /* resume main task when ntshell task is not defined */
-			if (task_handle_main) vTaskResume(task_handle_main);
+			if (task_handle_main) {
+				vTaskResume(task_handle_main);
+			}
 #else
 			EMBARC_PRINTF("Please run NT-Shell command(main) to start your application.\r\n");
 			EMBARC_PRINTF("main command may required some arguments, please refer to example's document.\r\n");
@@ -193,6 +194,7 @@ static void task_wifi(void *par)
 static void task_main(void *par)
 {
 	int ercd;
+
 #if defined(MID_LWIP) && !defined(MID_NTSHELL)
 	EMBARC_PRINTF("Enter to main function....\r\n");
 	EMBARC_PRINTF("Wait until WiFi connected...\r\n");
@@ -200,7 +202,7 @@ static void task_main(void *par)
 #endif
 
 	if ((par == NULL) || (((int)par) & 0x3)) {
-	/* null or aligned not to 4 bytes */
+		/* null or aligned not to 4 bytes */
 		ercd = arc_goto_main(0, NULL);
 	} else {
 		MAIN_ARGS *main_arg = (MAIN_ARGS *)par;
@@ -219,9 +221,9 @@ EMBARC_WEAK void platform_main(void)
 #ifdef MID_COMMON
 	xprintf_setup();
 #endif
-	//platform_print_banner();
+	// platform_print_banner();
 #ifdef MID_FATFS
-	if(f_mount(&sd_card_fs, "", 0) != FR_OK) {
+	if (f_mount(&sd_card_fs, "", 0) != FR_OK) {
 		EMBARC_PRINTF("FatFS failed to initialize!\r\n");
 	} else {
 		EMBARC_PRINTF("FatFS initialized successfully!\r\n");
@@ -240,22 +242,22 @@ EMBARC_WEAK void platform_main(void)
 #ifdef OS_FREERTOS
 #ifdef MID_NTSHELL
 	xTaskCreate((TaskFunction_t)ntshell_task, "ntshell-console", TASK_STACK_SIZE_NTSHELL,
-			(void *)nt_io, TASK_PRI_NTSHELL, &task_handle_ntshell);
+		    (void *)nt_io, TASK_PRI_NTSHELL, &task_handle_ntshell);
 #endif
 #ifdef MID_LWIP
 	xTaskCreate((TaskFunction_t)task_wifi, "wifi-conn", TASK_STACK_SIZE_WIFI,
-			(void *)1, TASK_PRI_WIFI, &task_handle_wifi);
+		    (void *)1, TASK_PRI_WIFI, &task_handle_wifi);
 #endif
 	xTaskCreate((TaskFunction_t)task_main, "main", TASK_STACK_SIZE_MAIN,
-			(void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
-	//vTaskStartScheduler() Will not return unless a task calls vTaskEndScheduler
+		    (void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
+	// vTaskStartScheduler() Will not return unless a task calls vTaskEndScheduler
 	vTaskStartScheduler();
 #else /* OS_FREERTOS not defined */
-	cpu_unlock();	/* unlock cpu to let interrupt work */
+	cpu_unlock();   /* unlock cpu to let interrupt work */
 #ifdef MID_NTSHELL
 	/** enter ntshell command routine no return */
 	ntshell_task((void *)nt_io);
-	//no return
+	// no return
 #endif
 	// task_main((void *)(&s_main_args));
 	arc_goto_main(0, NULL);
@@ -297,15 +299,15 @@ EMBARC_WEAK void platform_main(void)
 #ifdef MID_COMMON
 	xprintf_setup();
 #endif
-	//platform_print_banner();
+	// platform_print_banner();
 #ifdef MID_FATFS
-	if(f_mount(&sd_card_fs, "", 0) != FR_OK) {
+	if (f_mount(&sd_card_fs, "", 0) != FR_OK) {
 		EMBARC_PRINTF("FatFS failed to initialize!\r\n");
 	} else {
 		EMBARC_PRINTF("FatFS initialized successfully!\r\n");
 	}
 #endif
-	//cpu_unlock();
+	// cpu_unlock();
 	arc_goto_main(0, NULL);
 }
 
@@ -332,7 +334,6 @@ EMBARC_WEAK void board_main(void)
 #endif
 }
 #endif /* EMBARC_USE_BOARD_MAIN */
-
 
 /**
  * @brief Update timer counter and other MS period operation
@@ -443,5 +444,7 @@ void board_delay_ms(uint32_t ms, uint8_t os_compat)
 #endif
 	us_delayed = ((uint64_t)ms * 1000);
 	start_us = board_get_cur_us();
-	while ((board_get_cur_us() - start_us) < us_delayed);
+	while ((board_get_cur_us() - start_us) < us_delayed) {
+		;
+	}
 }

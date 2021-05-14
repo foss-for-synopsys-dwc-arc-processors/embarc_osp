@@ -26,31 +26,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dw_trng_obj.h"
 #include "emsdp/emsdp.h"
 
-
 #if (USE_DW_TRNG_0)
-#define DW_TRNG_0_BASE	(EMSDP_TRNG_BASE)
-#define DW_TRNG_0_INTNO	(EMSDP_NIST_TRNG_INTR)
+#define DW_TRNG_0_BASE  (EMSDP_TRNG_BASE)
+#define DW_TRNG_0_INTNO (EMSDP_NIST_TRNG_INTR)
 
-static DEV_TRNG			dw_trng_0;			/*!< designware trng object */
-static DW_TRNG_CTRL		dw_trng_0_ctrl;		/*!< designware trng 0 ctrl */
+static DEV_TRNG dw_trng_0;                              /*!< designware trng object */
+static DW_TRNG_CTRL dw_trng_0_ctrl;                     /*!< designware trng 0 ctrl */
 
-static int32_t dw_trng_0_open(void){
+static int32_t dw_trng_0_open(void)
+{
 	return dw_trng_open(&dw_trng_0);
 }
 
-static int32_t dw_trng_0_close(void){
+static int32_t dw_trng_0_close(void)
+{
 	return dw_trng_close(&dw_trng_0);
 }
 
-static int32_t dw_trng_0_control(uint32_t ctrl_cmd, void *param){
+static int32_t dw_trng_0_control(uint32_t ctrl_cmd, void *param)
+{
 	return dw_trng_control(&dw_trng_0, ctrl_cmd, param);
 }
 
-static int32_t dw_trng_0_read(uint32_t *data_buf){
+static int32_t dw_trng_0_read(uint32_t *data_buf)
+{
 	return dw_trng_read(&dw_trng_0, data_buf);
 }
 
@@ -59,7 +62,8 @@ static void dw_trng_0_isr(void *ptr)
 	dw_trng_isr(&dw_trng_0, ptr);
 }
 
-static void dw_trng_0_install(void){
+static void dw_trng_0_install(void)
+{
 	uint32_t trng_abs_base = 0;
 	DEV_TRNG_PTR dw_trng_ptr = &dw_trng_0;
 	DEV_TRNG_INFO_PTR dw_trng_info_ptr = &dw_trng_0.trng_info;
@@ -75,7 +79,7 @@ static void dw_trng_0_install(void){
 	/** trng info init */
 	dw_trng_info_ptr->trng_ctrl = (void *)dw_trng_ctrl_ptr;
 	dw_trng_info_ptr->opn_cnt = 0;
-	dw_trng_info_ptr->length = 4;//default output length is 4 bytes
+	dw_trng_info_ptr->length = 4;// default output length is 4 bytes
 	dw_trng_info_ptr->byte_generated = 0;
 
 	/* trng ctrl init */
@@ -93,7 +97,7 @@ static void dw_trng_0_install(void){
 	dw_trng_ptr->trng_read = dw_trng_0_read;
 
 }
-#endif	/* USE_DW_TRNG_0 */
+#endif  /* USE_DW_TRNG_0 */
 
 /** get one designware device structure */
 DEV_TRNG_PTR dw_trng_get_dev(int32_t trng_id)
@@ -108,12 +112,12 @@ DEV_TRNG_PTR dw_trng_get_dev(int32_t trng_id)
 
 	switch (trng_id) {
 #if (USE_DW_TRNG_0)
-		case DW_TRNG_0_ID:
-			return &dw_trng_0;
-			break;
+	case DW_TRNG_0_ID:
+		return &dw_trng_0;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

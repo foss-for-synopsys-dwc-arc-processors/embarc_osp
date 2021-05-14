@@ -26,37 +26,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_GPIO_OBJ_H_
 #define _DW_GPIO_OBJ_H_
 
 #include "dw_gpio.h"
 
-
-#define CPU_DW_GPIO_PORT_A	1
-#define CPU_DW_GPIO_PORT_B	2
+#define CPU_DW_GPIO_PORT_A      1
+#define CPU_DW_GPIO_PORT_B      2
 
 /**
  * \name	Designware GPIO Port Bank Control Macros
  * @{
  */
-#define USE_CPU_DW_GPIO_PORT_A		1
-#define USE_CPU_DW_GPIO_PORT_B		1
+#define USE_CPU_DW_GPIO_PORT_A          1
+#define USE_CPU_DW_GPIO_PORT_B          1
 /** @} end of name */
 
 /**
  * \name	Designware GPIO Port Interrupt Available Number Macros
  * @{
  */
-#define AXS_CPU_GPIO_A_INT_MAX_COUNT	32
+#define AXS_CPU_GPIO_A_INT_MAX_COUNT    32
 /** @} end of name */
 
 /**
  * \name	Designware GPIO Port Available Bits Macros
  * @{
  */
-#define AXS_CPU_GPIO_A_VALID_MASK		0xF19C63
-#define AXS_CPU_GPIO_B_VALID_MASK		DW_GPIO_MASK_ALL
+#define AXS_CPU_GPIO_A_VALID_MASK               0xF19C63
+#define AXS_CPU_GPIO_B_VALID_MASK               DW_GPIO_MASK_ALL
 /** @} end of name */
 
 #ifdef __cplusplus

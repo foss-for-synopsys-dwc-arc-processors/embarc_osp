@@ -26,11 +26,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _NTSHELL_IO_H_
 #define _NTSHELL_IO_H_
 
-#define NSIM_NTSHELL_0_ID		0
+#define NSIM_NTSHELL_0_ID               0
 
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
 #include "ntshell_io_uart.h"

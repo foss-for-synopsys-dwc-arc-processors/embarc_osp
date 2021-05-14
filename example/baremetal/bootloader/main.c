@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -45,17 +45,17 @@
 #endif
 
 #if defined(BOARD_EMSK)
-#define RAM_STARTADDRESS	0x10000000		/*!< default ram start address of boot.bin */
-#define APP_CFG_ADDR		0x17f00000 		/*!< save the app configuration file name */
+#define RAM_STARTADDRESS        0x10000000              /*!< default ram start address of boot.bin */
+#define APP_CFG_ADDR            0x17f00000              /*!< save the app configuration file name */
 #elif defined(BOARD_IOTDK)
-#define RAM_STARTADDRESS 	ICCM_START
-#define APP_CFG_ADDR 		ARC_X_MEM_START
+#define RAM_STARTADDRESS        ICCM_START
+#define APP_CFG_ADDR            ARC_X_MEM_START
 #endif
 
-#define BOOT_CFG_FILE_NAME	"boot.json"
-#define BOOT_FILE_NAME		"0:\\boot.bin"          /*!< default autoload full file name */
+#define BOOT_CFG_FILE_NAME      "boot.json"
+#define BOOT_FILE_NAME          "0:\\boot.bin"          /*!< default autoload full file name */
 
-#define PROMT_DELAY_S		(5)			/*!< default wait time for autoload */
+#define PROMT_DELAY_S           (5)                     /*!< default wait time for autoload */
 
 typedef int (*fp_t)(void);
 
@@ -105,29 +105,29 @@ static int image_trailer_init(void)
 	const struct flash_area *fap = NULL;
 
 	rc = flash_area_open(FLASH_AREA_IMAGE_0, &fap);
-    if (rc != 0) {
-        goto done;
-    }
+	if (rc != 0) {
+		goto done;
+	}
 
-    off = boot_status_off(fap);
-    memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
-    flash_area_close(fap);
+	off = boot_status_off(fap);
+	memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
+	flash_area_close(fap);
 
-    rc = flash_area_open(FLASH_AREA_IMAGE_1, &fap);
-    if (rc != 0) {
-        goto done;
-    }
+	rc = flash_area_open(FLASH_AREA_IMAGE_1, &fap);
+	if (rc != 0) {
+		goto done;
+	}
 
-    memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
-    flash_area_close(fap);
+	memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
+	flash_area_close(fap);
 
-    rc = flash_area_open(FLASH_AREA_IMAGE_SCRATCH, &fap);
-    if (rc != 0) {
-        goto done;
-    }
+	rc = flash_area_open(FLASH_AREA_IMAGE_SCRATCH, &fap);
+	if (rc != 0) {
+		goto done;
+	}
 
-    off = boot_status_off(fap);
-    memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
+	off = boot_status_off(fap);
+	memset((void *)(fap->fa_off + off), 0xFF, fap->fa_size - off);
 
 done:
 	flash_area_close(fap);
@@ -184,7 +184,7 @@ int main(void)
 
 	/* No USE_BOARD_MAIN */
 	board_init();
-	cpu_unlock();	/* unlock cpu to let interrupt work */
+	cpu_unlock();   /* unlock cpu to let interrupt work */
 	boot_cfg.wifi = &wifi_cfg;
 
 	/* Step 1 - load the config profile from json if existed */
@@ -247,8 +247,8 @@ int main(void)
 				/*TODO: parse wifi setting*/
 			}
 
-			EMBARC_PRINTF("boot_file:%s\napp_cfg:%s\nram:0x%x\nntshell:%d", \
-			              boot_cfg.boot_file, boot_cfg.app_cfg, boot_cfg.ram_startaddress, boot_cfg.ntshell);
+			EMBARC_PRINTF("boot_file:%s\napp_cfg:%s\nram:0x%x\nntshell:%d",	\
+				      boot_cfg.boot_file, boot_cfg.app_cfg, boot_cfg.ram_startaddress, boot_cfg.ntshell);
 		} else {
 			EMBARC_PRINTF("Cannot parse boot.json, please check it. Now use default bootloader\n");
 			default_bt_flag = 1;
@@ -260,8 +260,8 @@ int main(void)
 		cur_ms = OSP_GET_CUR_MS();
 
 		do {
-			if (((OSP_GET_CUR_MS()-cur_ms)/1000) == cur_cnt) {
-				cur_cnt ++;
+			if (((OSP_GET_CUR_MS() - cur_ms) / 1000) == cur_cnt) {
+				cur_cnt++;
 				EMBARC_PRINTF(". ");
 			}
 

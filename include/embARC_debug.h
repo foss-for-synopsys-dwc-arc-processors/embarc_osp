@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -42,7 +42,7 @@
 extern "C" {
 #endif
 
-//comment this to disable exception readable dumping. By doing so could save some code space
+// comment this to disable exception readable dumping. By doing so could save some code space
 #ifndef CONFIG_ARC_EXCEPTION_DEBUG
 #define CONFIG_ARC_EXCEPTION_DEBUG
 #endif
@@ -68,29 +68,28 @@ extern "C" {
 #if defined(DEBUG)
 #if defined(DEBUG_HOSTLINK)
 #include <stdio.h>
-#define DBG(fmt, ...)	printf(fmt, ##__VA_ARGS__)
+#define DBG(fmt, ...)   printf(fmt, ##__VA_ARGS__)
 #else
-#define DBG(fmt, ...)	EMBARC_PRINTF(fmt, ##__VA_ARGS__)
+#define DBG(fmt, ...)   EMBARC_PRINTF(fmt, ##__VA_ARGS__)
 #endif
 #else
 #define DBG(fmt, ...)
 #endif
 
-#define DBG_LESS_INFO	0x01    /* less debug  messages */
-#define DBG_MORE_INFO	0x02    /* more debug  messages */
-
+#define DBG_LESS_INFO   0x01    /* less debug  messages */
+#define DBG_MORE_INFO   0x02    /* more debug  messages */
 
 #if defined (DBG_LESS)
-#define DBG_TYPE		(DBG_LESS_INFO)
+#define DBG_TYPE                (DBG_LESS_INFO)
 #elif defined (DBG_MORE)
-#define DBG_TYPE		((DBG_LESS_INFO) | (DBG_MORE_INFO))
+#define DBG_TYPE                ((DBG_LESS_INFO) | (DBG_MORE_INFO))
 #else
-#define DBG_TYPE 		0
+#define DBG_TYPE                0
 #endif
 
 #if DBG_TYPE > 0
 #define dbg_printf(type, fmt, ...) \
-		if (((type) & DBG_TYPE))  { EMBARC_PRINTF(fmt, ##__VA_ARGS__); }
+	if (((type) & DBG_TYPE)) { EMBARC_PRINTF(fmt, ##__VA_ARGS__); }
 #else
 #define dbg_printf(type, fmt, ...)
 #endif
@@ -100,4 +99,4 @@ extern "C" {
 #endif
 #endif  /* __ASSEMBLY__ */
 
-#endif /* DEBUG_H_ */
+#endif  /* DEBUG_H_ */

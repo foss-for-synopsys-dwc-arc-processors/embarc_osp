@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -36,7 +36,7 @@
 int main(void)
 {
 	EMBARC_PRINTF("Now Open Your Browser Enter The IPAddr Show On Terminal"
-		 ", you will get an webpage servered on your board\r\n");
+		      ", you will get an webpage servered on your board\r\n");
 	http_server_netconn_init();
 
 	return 0;

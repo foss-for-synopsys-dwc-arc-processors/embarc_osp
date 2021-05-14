@@ -26,16 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _NTSHELL_IO_H_
 #define _NTSHELL_IO_H_
 
-#define HSDK_NTSHELL_0_ID		0
-#define HSDK_NTSHELL_1_ID		1
+#define HSDK_NTSHELL_0_ID               0
+#define HSDK_NTSHELL_1_ID               1
 
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
 #include "ntshell_io_uart.h"
 #include "ntshell_io_netconn.h"
-#endif /** MID_NTSHELL */
+#endif  /** MID_NTSHELL */
 
-#endif /** _NTSHELL_IO_H_ */
+#endif  /** _NTSHELL_IO_H_ */

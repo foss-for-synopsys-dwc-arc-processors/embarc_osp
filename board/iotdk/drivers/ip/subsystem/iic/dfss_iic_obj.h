@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _DFSS_IIC_OBJ_H_
 #define _DFSS_IIC_OBJ_H_
@@ -34,32 +34,28 @@
 #include "io_config.h"
 #include "device/ip_hal/dev_iic.h"
 
+#define DFSS_IIC_NUM            (3)     /*!< DFSS IIC valid number */
 
-#define DFSS_IIC_NUM		(3)	/*!< DFSS IIC valid number */
-
-
-#define DFSS_IIC_0_ID		0	/*!< IIC 0 ID macro */
-#define DFSS_IIC_1_ID		1	/*!< IIC 1 ID macro */
-
+#define DFSS_IIC_0_ID           0       /*!< IIC 0 ID macro */
+#define DFSS_IIC_1_ID           1       /*!< IIC 1 ID macro */
 
 #ifdef IO_I2C_MST0_PRESENT
-#define USE_DFSS_IIC_0		1	/*!< enable use DFSS IIC 0 */
+#define USE_DFSS_IIC_0          1       /*!< enable use DFSS IIC 0 */
 #else
-#define USE_DFSS_IIC_0		0	/*!< enable use DFSS IIC 0 */
+#define USE_DFSS_IIC_0          0       /*!< enable use DFSS IIC 0 */
 #endif
 
 #ifdef IO_I2C_MST1_PRESENT
-#define USE_DFSS_IIC_1		1	/*!< enable use DFSS IIC 1 */
+#define USE_DFSS_IIC_1          1       /*!< enable use DFSS IIC 1 */
 #else
-#define USE_DFSS_IIC_1		0	/*!< enable use DFSS IIC 1 */
+#define USE_DFSS_IIC_1          0       /*!< enable use DFSS IIC 1 */
 #endif
 
 #ifdef IO_I2C_MST2_PRESENT
-#define USE_DFSS_IIC_2		1	/*!< enable use DFSS IIC 2 */
+#define USE_DFSS_IIC_2          1       /*!< enable use DFSS IIC 2 */
 #else
-#define USE_DFSS_IIC_2		0	/*!< enable use DFSS IIC 2 */
+#define USE_DFSS_IIC_2          0       /*!< enable use DFSS IIC 2 */
 #endif
-
 
 #ifdef __cplusplus
 extern "C" {

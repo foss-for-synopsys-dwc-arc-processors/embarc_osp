@@ -26,36 +26,37 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "spi_flash_fl256s.h"
 
-//#define DBG_MORE
+// #define DBG_MORE
 #include "embARC_debug.h"
 
-#define RDID	0x9F	/*!<read chip ID */
-#define RDSR1	0x05	/*!< read status register-1 */
-#define WRSR1	0x01	/*!< write status registe-1 */
-#define RDSR2	0x07	/*!< read status register-2 */
-#define RDCR	0x35	/*!< read config register */
-#define WREN	0x06	/*!< write enablewaitDeviceReady */
-#define WRDI	0x04	/*!< write disable */
-#define READ	0x03	/*!< read data bytes */
-#define QORD	0x6B
-#define SE		0x20	/*!< sector erase */
-#define PP		0x02	/*!< page program */
-#define QPP		0x32	/*!< page program */
+#define RDID    0x9F            /*!<read chip ID */
+#define RDSR1   0x05            /*!< read status register-1 */
+#define WRSR1   0x01            /*!< write status registe-1 */
+#define RDSR2   0x07            /*!< read status register-2 */
+#define RDCR    0x35            /*!< read config register */
+#define WREN    0x06            /*!< write enablewaitDeviceReady */
+#define WRDI    0x04            /*!< write disable */
+#define READ    0x03            /*!< read data bytes */
+#define QORD    0x6B
+#define SE              0x20    /*!< sector erase */
+#define PP              0x02    /*!< page program */
+#define QPP             0x32    /*!< page program */
 
-#define FL256S_NOT_VALID	(0xFFFFFFFF)
+#define FL256S_NOT_VALID        (0xFFFFFFFF)
 
-Inline int32_t _spi_send_cmd(FL256S_DEF_PTR dev, DEV_SPI_TRANSFER *xfer){
+Inline int32_t _spi_send_cmd(FL256S_DEF_PTR dev, DEV_SPI_TRANSFER *xfer)
+{
 	uint32_t cpu_status;
 	DEV_SPI_PTR spi_flash;
 	int32_t ercd = 0;
 
 	spi_flash = spi_get_dev(dev->spi_master);
 
-	//cpu_status = cpu_lock_save();
+	// cpu_status = cpu_lock_save();
 
 	/* select device */
 	spi_flash->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID((uint32_t)dev->cs));
@@ -65,18 +66,19 @@ Inline int32_t _spi_send_cmd(FL256S_DEF_PTR dev, DEV_SPI_TRANSFER *xfer){
 	/* deselect device */
 	spi_flash->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID((uint32_t)dev->cs));
 
-	//cpu_unlock_restore(cpu_status);
+	// cpu_unlock_restore(cpu_status);
 	return ercd;
 }
 
-Inline int32_t _spi_send_cmd_quad(FL256S_DEF_PTR dev, DEV_SPI_PAK_PTR pak_ptr){
+Inline int32_t _spi_send_cmd_quad(FL256S_DEF_PTR dev, DEV_SPI_PAK_PTR pak_ptr)
+{
 	uint32_t cpu_status;
 	DEV_SPI_PTR spi_flash;
 	int32_t ercd = 0;
 
 	spi_flash = spi_get_dev(dev->spi_master);
 
-	//cpu_status = cpu_lock_save();
+	// cpu_status = cpu_lock_save();
 
 	/* select device */
 	spi_flash->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID((uint32_t)dev->cs));
@@ -87,15 +89,15 @@ Inline int32_t _spi_send_cmd_quad(FL256S_DEF_PTR dev, DEV_SPI_PAK_PTR pak_ptr){
 	/* deselect device */
 	spi_flash->spi_control(SPI_CMD_MST_DSEL_DEV, CONV2VOID((uint32_t)dev->cs));
 
-	//cpu_unlock_restore(cpu_status);
+	// cpu_unlock_restore(cpu_status);
 	return ercd;
 }
 
 uint32_t fl256s_read_reg(FL256S_DEF_PTR dev, uint8_t reg, uint8_t *data, uint32_t len)
 {
 
-	DEV_SPI_TRANSFER cmd_xfer = {0};
-	DEV_SPI_TRANSFER data_xfer = {0};
+	DEV_SPI_TRANSFER cmd_xfer = { 0 };
+	DEV_SPI_TRANSFER data_xfer = { 0 };
 
 	DEV_SPI_XFER_SET_TXBUF(&data_xfer, NULL, 0, 0);
 	DEV_SPI_XFER_SET_RXBUF(&data_xfer, data, 0, len);
@@ -104,7 +106,6 @@ uint32_t fl256s_read_reg(FL256S_DEF_PTR dev, uint8_t reg, uint8_t *data, uint32_
 	DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, &reg, 0, 1);
 	DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, NULL, 0, 0);
 	DEV_SPI_XFER_SET_NEXT(&cmd_xfer, &data_xfer);
-
 
 	if (_spi_send_cmd(dev, &cmd_xfer) == 0) {
 		return len;
@@ -116,8 +117,8 @@ uint32_t fl256s_read_reg(FL256S_DEF_PTR dev, uint8_t reg, uint8_t *data, uint32_
 uint32_t fl256s_write_reg(FL256S_DEF_PTR dev, uint8_t reg, uint8_t *data, uint32_t len)
 {
 
-	DEV_SPI_TRANSFER cmd_xfer = {0};
-	DEV_SPI_TRANSFER data_xfer = {0};
+	DEV_SPI_TRANSFER cmd_xfer = { 0 };
+	DEV_SPI_TRANSFER data_xfer = { 0 };
 
 	DEV_SPI_XFER_SET_TXBUF(&data_xfer, data, 0, len);
 	DEV_SPI_XFER_SET_RXBUF(&data_xfer, NULL, 0, 0);
@@ -126,7 +127,6 @@ uint32_t fl256s_write_reg(FL256S_DEF_PTR dev, uint8_t reg, uint8_t *data, uint32
 	DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, &reg, 0, 1);
 	DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, NULL, 0, 0);
 	DEV_SPI_XFER_SET_NEXT(&cmd_xfer, &data_xfer);
-
 
 	if (_spi_send_cmd(dev, &cmd_xfer) == 0) {
 		return len;
@@ -138,13 +138,14 @@ uint32_t fl256s_write_reg(FL256S_DEF_PTR dev, uint8_t reg, uint8_t *data, uint32
 int32_t fl256s_quad_enable(FL256S_DEF_PTR dev)
 {
 	uint32_t status = 0;
-	uint8_t w_data[2] = {0};
+	uint8_t w_data[2] = { 0 };
 	uint8_t r_data = 0;
+
 	status = fl256s_read_reg(dev, RDCR, &r_data, 1);
 	if (status == FL256S_NOT_VALID) {
 		return -1;
 	}
-	if (!(r_data&0x02)) {
+	if (!(r_data & 0x02)) {
 		w_data[1] = r_data | 0x02;
 		status = fl256s_read_reg(dev, RDSR1, &r_data, 1);
 		if (status == FL256S_NOT_VALID) {
@@ -168,13 +169,14 @@ int32_t fl256s_quad_enable(FL256S_DEF_PTR dev)
 int32_t fl256s_quad_disable(FL256S_DEF_PTR dev)
 {
 	uint32_t status = 0;
-	uint8_t w_data[2] = {0};
+	uint8_t w_data[2] = { 0 };
 	uint8_t r_data = 0;
+
 	status = fl256s_read_reg(dev, RDCR, &r_data, 1);
 	if (status == FL256S_NOT_VALID) {
 		return -1;
 	}
-	if (r_data&0x02) {
+	if (r_data & 0x02) {
 		w_data[1] = r_data & 0xFD;
 		status = fl256s_read_reg(dev, RDSR1, &r_data, 1);
 		if (status == FL256S_NOT_VALID) {
@@ -195,7 +197,8 @@ int32_t fl256s_quad_disable(FL256S_DEF_PTR dev)
 	return 0;
 }
 
-uint32_t fl256s_read_id(FL256S_DEF_PTR dev){
+uint32_t fl256s_read_id(FL256S_DEF_PTR dev)
+{
 	uint32_t id = 0;
 	uint8_t local_buf[5];
 	DEV_SPI_TRANSFER cmd_xfer;
@@ -206,7 +209,7 @@ uint32_t fl256s_read_id(FL256S_DEF_PTR dev){
 	DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, local_buf, 0, 5);
 	DEV_SPI_XFER_SET_NEXT(&cmd_xfer, NULL);
 
-	if(_spi_send_cmd(dev, &cmd_xfer) == 0) {
+	if (_spi_send_cmd(dev, &cmd_xfer) == 0) {
 		id = (local_buf[1] << 24) | (local_buf[2] << 16) | (local_buf[3] << 8) | local_buf[4];
 	} else {
 		id = FL256S_NOT_VALID;
@@ -216,20 +219,23 @@ uint32_t fl256s_read_id(FL256S_DEF_PTR dev){
 	return id;
 }
 
-int32_t fl256s_wait_ready(FL256S_DEF_PTR dev){
+int32_t fl256s_wait_ready(FL256S_DEF_PTR dev)
+{
 	uint32_t status = 0x01;
 	uint8_t r_data = 0;
+
 	do {
 		status = fl256s_read_reg(dev, RDSR1, &r_data, 1);
 		if (status == FL256S_NOT_VALID) {
 			return -1;
 		}
-	} while (r_data & 0x01);//Status Register 1 Bit 0
+	} while (r_data & 0x01);// Status Register 1 Bit 0
 
 	return 0;
 }
 
-int32_t fl256s_init(FL256S_DEF_PTR dev, uint32_t freq){
+int32_t fl256s_init(FL256S_DEF_PTR dev, uint32_t freq)
+{
 	DEV_SPI_PTR spi_flash;
 	int32_t ercd = 0;
 
@@ -238,19 +244,21 @@ int32_t fl256s_init(FL256S_DEF_PTR dev, uint32_t freq){
 
 	ercd = spi_flash->spi_open(DEV_MASTER_MODE, freq);
 
-	if(ercd != E_OK && ercd != E_OPNED) {
+	if (ercd != E_OK && ercd != E_OPNED) {
 		return ercd;
 	}
 
-	//spi_flash->spi_control(SPI_CMD_SET_DUMMY_DATA, CONV2VOID(0xFF));
+	// spi_flash->spi_control(SPI_CMD_SET_DUMMY_DATA, CONV2VOID(0xFF));
 	ercd = fl256s_wait_ready(dev);
 	dbg_printf(DBG_MORE_INFO, "fl256s_wait_ready ret %d\r\n", ercd);
 	return E_OK;
 }
 
-int32_t fl256s_write_enable(FL256S_DEF_PTR dev){
+int32_t fl256s_write_enable(FL256S_DEF_PTR dev)
+{
 	uint32_t status = 0;
 	uint8_t w_data, r_data = 0;
+
 	do {
 		status = fl256s_write_reg(dev, WREN, &w_data, 0);
 		if (status == FL256S_NOT_VALID) {
@@ -264,7 +272,7 @@ int32_t fl256s_write_enable(FL256S_DEF_PTR dev){
 		}
 		// clear protection bits
 		//  Write Protect. and Write Enable.
-		if( (r_data & 0xfc) && (r_data & 0x02) ) {
+		if ((r_data & 0xfc) && (r_data & 0x02)) {
 			w_data = 0;
 
 			status = fl256s_write_reg(dev, WRSR1, &w_data, 1);
@@ -273,14 +281,16 @@ int32_t fl256s_write_enable(FL256S_DEF_PTR dev){
 			}
 			r_data = 0;
 		}
-	} while ( r_data != 0x02);
+	} while (r_data != 0x02);
 
 	return 0;
 }
 
-int32_t fl256s_write_disable(FL256S_DEF_PTR dev){
+int32_t fl256s_write_disable(FL256S_DEF_PTR dev)
+{
 	uint32_t status = 0;
 	uint8_t w_data, r_data = 0;
+
 	do {
 		status = fl256s_write_reg(dev, WRDI, &w_data, 0);
 		if (status == FL256S_NOT_VALID) {
@@ -296,12 +306,11 @@ int32_t fl256s_write_disable(FL256S_DEF_PTR dev){
 		if (status == FL256S_NOT_VALID) {
 			return -1;
 		}
-	} while (r_data & 0x02);//Status Register 1 Bit 1
+	} while (r_data & 0x02);// Status Register 1 Bit 1
 
 	return 0;
 
 }
-
 
 int32_t fl256s_erase(FL256S_DEF_PTR dev, uint32_t address, uint32_t size)
 {
@@ -340,7 +349,7 @@ int32_t fl256s_erase(FL256S_DEF_PTR dev, uint32_t address, uint32_t size)
 
 		address += dev->sector_sz;
 		count++;
-	} while(address <= last_address);
+	} while (address <= last_address);
 
 	if (fl256s_wait_ready(dev) != 0) {
 		return -1;
@@ -352,8 +361,8 @@ int32_t fl256s_erase(FL256S_DEF_PTR dev, uint32_t address, uint32_t size)
 	return (int32_t)count;
 }
 
-
-int32_t fl256s_write(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, const void *data){
+int32_t fl256s_write(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, const void *data)
+{
 
 	uint8_t local_buf[4];
 	DEV_SPI_TRANSFER cmd_xfer;
@@ -413,7 +422,8 @@ int32_t fl256s_write(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, const 
 	return (int32_t)(size_orig);
 }
 
-int32_t fl256s_read(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, void *data){
+int32_t fl256s_read(FL256S_DEF_PTR dev, uint32_t address, uint32_t size, void *data)
+{
 	uint8_t local_buf[4];
 	DEV_SPI_TRANSFER cmd_xfer;
 	DEV_SPI_TRANSFER data_xfer;

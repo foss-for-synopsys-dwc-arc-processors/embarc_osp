@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	DEVICE_HAL_I2S		I2S Device HAL Interface
@@ -67,12 +67,12 @@
  * @{
  */
 typedef enum i2s_aud_data_res {
-	I2S_AUD_DATA_NA    = 0, /*!< N/A data resolution */
-	I2S_AUD_DATA_12B   = 1,	/*!< 12 bits audio data resolution */
-	I2S_AUD_DATA_16B   = 2,	/*!< 16 bits audio data resolution */
-	I2S_AUD_DATA_20B   = 3,	/*!< 20 bits audio data resolution */
-	I2S_AUD_DATA_24B   = 4,	/*!< 24 bits audio data resolution */
-	I2S_AUD_DATA_32B   = 5	/*!< 32 bits audio data resolution */
+	I2S_AUD_DATA_NA         = 0,    /*!< N/A data resolution */
+	I2S_AUD_DATA_12B        = 1,    /*!< 12 bits audio data resolution */
+	I2S_AUD_DATA_16B        = 2,    /*!< 16 bits audio data resolution */
+	I2S_AUD_DATA_20B        = 3,    /*!< 20 bits audio data resolution */
+	I2S_AUD_DATA_24B        = 4,    /*!< 24 bits audio data resolution */
+	I2S_AUD_DATA_32B        = 5     /*!< 32 bits audio data resolution */
 } I2S_AUD_DATA_RES;
 /** @} */
 
@@ -83,13 +83,13 @@ typedef enum i2s_aud_data_res {
  * @{
  */
 typedef enum i2s_aud_sample_rate {
-	I2S_AUD_SR_NA     = 0, /*!< N/A audio sample rate */
-	I2S_AUD_SR_16K    = 1, /*!< 16KHz audio sample rate */
-	I2S_AUD_SR_32K    = 2, /*!< 32KHz audio sample rate */
-	I2S_AUD_SR_44_1K  = 3, /*!< 44.1KHz audio sample rate */
-	I2S_AUD_SR_48K    = 4, /*!< 48KHz audio sample rate */
-	I2S_AUD_SR_96K    = 5, /*!< 96KHz audio sample rate */
-	I2S_AUD_SR_192K   = 6  /*!< 192KHz audio sample rate */
+	I2S_AUD_SR_NA           = 0,    /*!< N/A audio sample rate */
+	I2S_AUD_SR_16K          = 1,    /*!< 16KHz audio sample rate */
+	I2S_AUD_SR_32K          = 2,    /*!< 32KHz audio sample rate */
+	I2S_AUD_SR_44_1K        = 3,    /*!< 44.1KHz audio sample rate */
+	I2S_AUD_SR_48K          = 4,    /*!< 48KHz audio sample rate */
+	I2S_AUD_SR_96K          = 5,    /*!< 96KHz audio sample rate */
+	I2S_AUD_SR_192K         = 6     /*!< 192KHz audio sample rate */
 } I2S_AUD_SAMPLE_RATE;
 /** @} */
 
@@ -100,8 +100,8 @@ typedef enum i2s_aud_sample_rate {
  * @{
  */
 typedef enum i2s_device_type {
-	I2S_DEVICE_TRANSMITTER  = 0,	/*!< I2S TX device */
-	I2S_DEVICE_RECEIVER 	= 1	/*!< I2S RX device */
+	I2S_DEVICE_TRANSMITTER  = 0,    /*!< I2S TX device */
+	I2S_DEVICE_RECEIVER     = 1     /*!< I2S RX device */
 } I2S_DEVICE_TYPE;
 /** @} */
 
@@ -112,9 +112,9 @@ typedef enum i2s_device_type {
  * @{
  */
 typedef enum i2s_working_state {
-	I2S_FREE  = 0,	/*!< Currently in I2S device free state */
-	I2S_IN_TX = 1,	/*!< Currently in I2S master transmit state */
-	I2S_IN_RX = 2	/*!< Currently in I2S master receive state */
+	I2S_FREE        = 0,    /*!< Currently in I2S device free state */
+	I2S_IN_TX       = 1,    /*!< Currently in I2S master transmit state */
+	I2S_IN_RX       = 2     /*!< Currently in I2S master receive state */
 } I2S_WORKING_STATE;
 /** @} */
 
@@ -125,10 +125,10 @@ typedef enum i2s_working_state {
  * @{
  */
 typedef enum i2s_error_state {
-	I2S_ERR_NONE       = 0,	/*!< Currently in I2S device free state */
-	I2S_ERR_RX_OVERRUN = 1, /*!< RX FIFO data overrun */
-	I2S_ERR_TX_OVERRUN = 2,	/*!< TX FIFO data overrun */
-	I2S_ERR_UNDEF      = 3	/*!< Undefined error cases */
+	I2S_ERR_NONE            = 0,    /*!< Currently in I2S device free state */
+	I2S_ERR_RX_OVERRUN      = 1,    /*!< RX FIFO data overrun */
+	I2S_ERR_TX_OVERRUN      = 2,    /*!< TX FIFO data overrun */
+	I2S_ERR_UNDEF           = 3     /*!< Undefined error cases */
 } I2S_ERROR_STATE;
 /** @} */
 
@@ -155,9 +155,9 @@ typedef enum i2s_error_state {
  */
 
 /** Define I2S control commands for common usage */
-#define DEV_SET_I2S_SYSCMD(cmd)		DEV_SET_SYSCMD((cmd))
+#define DEV_SET_I2S_SYSCMD(cmd)         DEV_SET_SYSCMD((cmd))
 /** Define I2S control commands for master usage */
-#define DEV_SET_I2S_MST_SYSCMD(cmd)	DEV_SET_SYSCMD(0x00010000|(cmd))
+#define DEV_SET_I2S_MST_SYSCMD(cmd)     DEV_SET_SYSCMD(0x00010000 | (cmd))
 
 /* ++++ Common commands for SPI Device ++++ */
 /**
@@ -166,7 +166,7 @@ typedef enum i2s_error_state {
  * - Param usage : store result of current status
  * - Return value explanation :
  */
-#define I2S_CMD_GET_STATUS			DEV_SET_I2S_SYSCMD(0)
+#define I2S_CMD_GET_STATUS                      DEV_SET_I2S_SYSCMD(0)
 /**
  * Set \ref dev_i2s_cbs::tx_cb "I2S transmit success callback" function
  * when all required bytes are transmitted for interrupt method
@@ -174,7 +174,7 @@ typedef enum i2s_error_state {
  * - Param usage : transmit success callback function for I2S
  * - Return value explanation :
  */
-#define I2S_CMD_SET_TXCB			DEV_SET_I2S_SYSCMD(1)
+#define I2S_CMD_SET_TXCB                        DEV_SET_I2S_SYSCMD(1)
 /**
  * Set \ref dev_i2s_cbs::rx_cb "I2S receive success callback" function
  * when all required bytes are received for interrupt method
@@ -182,7 +182,7 @@ typedef enum i2s_error_state {
  * - Param usage : receive success callback function for I2S
  * - Return value explanation :
  */
-#define I2S_CMD_SET_RXCB			DEV_SET_I2S_SYSCMD(2)
+#define I2S_CMD_SET_RXCB                        DEV_SET_I2S_SYSCMD(2)
 /**
  * Set \ref dev_i2s_cbs::err_cb "I2S transfer error callback" function
  * when something error happened for interrupt method
@@ -190,21 +190,21 @@ typedef enum i2s_error_state {
  * - Param usage : transfer error callback function for I2S
  * - Return value explanation :
  */
-#define I2S_CMD_SET_ERRCB			DEV_SET_I2S_SYSCMD(3)
+#define I2S_CMD_SET_ERRCB                       DEV_SET_I2S_SYSCMD(3)
 /**
  * Enable or disable transmit interrupt
  * - Param type : uint32_t
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define I2S_CMD_SET_TXINT			DEV_SET_I2S_SYSCMD(4)
+#define I2S_CMD_SET_TXINT                       DEV_SET_I2S_SYSCMD(4)
 /**
  * Enable or disable receive interrupt
  * - Param type : uint32_t
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define I2S_CMD_SET_RXINT			DEV_SET_I2S_SYSCMD(5)
+#define I2S_CMD_SET_RXINT                       DEV_SET_I2S_SYSCMD(5)
 /**
  * Do a software reset for I2S device, it will stop current transfer,
  * and clear error state and bring device to normal state, set next condition to STOP
@@ -212,28 +212,28 @@ typedef enum i2s_error_state {
  * - Param usage :
  * - Return value explanation :
  */
-#define I2S_CMD_RESET				DEV_SET_I2S_SYSCMD(6)
+#define I2S_CMD_RESET                           DEV_SET_I2S_SYSCMD(6)
 /**
  * Flush I2S device transmit buffer or fifo
  * - Param type : NULL
  * - Param usage :
  * - Return value explanation :
  */
-#define I2S_CMD_FLUSH_TX			DEV_SET_I2S_SYSCMD(7)
+#define I2S_CMD_FLUSH_TX                        DEV_SET_I2S_SYSCMD(7)
 /**
  * Flush I2S device receive buffer or fifo
  * - Param type : NULL
  * - Param usage :
  * - Return value explanation :
  */
-#define I2S_CMD_FLUSH_RX			DEV_SET_I2S_SYSCMD(8)
+#define I2S_CMD_FLUSH_RX                        DEV_SET_I2S_SYSCMD(8)
 /**
  * Enable I2S device
  * - Param type : Device channel nummber
  * - Param usage : Specified device channel number
  * - Return value explanation :
  */
-#define I2S_CMD_ENA_DEV				DEV_SET_I2S_SYSCMD(9)
+#define I2S_CMD_ENA_DEV                         DEV_SET_I2S_SYSCMD(9)
 /**
  * Disable I2S device, when device is disabled,
  * only \ref I2S_CMD_ENA_DEV, \ref I2S_CMD_DIS_DEV,
@@ -243,7 +243,7 @@ typedef enum i2s_error_state {
  * - Param usage : Specified device channel number
  * - Return value explanation :
  */
-#define I2S_CMD_DIS_DEV				DEV_SET_I2S_SYSCMD(10)
+#define I2S_CMD_DIS_DEV                         DEV_SET_I2S_SYSCMD(10)
 /**
  * Set buffer for interrupt transmit, and it will set \ref dev_i2s_info::tx_buf "tx_buf".
  * - I2S transmitter command \n
@@ -255,7 +255,7 @@ typedef enum i2s_error_state {
  * - Param usage : buffer structure pointer, if param is NULL, then it will set tx_buf to NULL
  * - Return value explanation :
  */
-#define I2S_CMD_SET_TXINT_BUF			DEV_SET_I2S_SYSCMD(11)
+#define I2S_CMD_SET_TXINT_BUF                   DEV_SET_I2S_SYSCMD(11)
 /**
  * Set buffer for interrupt receive, and it will set \ref dev_i2s_info::rx_buf "rx_buf"
  * - I2S receiver command \n
@@ -264,7 +264,7 @@ typedef enum i2s_error_state {
  * - Param usage : buffer structure pointer, if param is NULL, then it will set rx_buf to NULL
  * - Return value explanation :
  */
-#define I2S_CMD_SET_RXINT_BUF			DEV_SET_I2S_SYSCMD(12)
+#define I2S_CMD_SET_RXINT_BUF                   DEV_SET_I2S_SYSCMD(12)
 
 /**
  * Set buffer empty threshold in the TX FIFO, these bit program the empty trigger level in the TX FIFO
@@ -275,7 +275,7 @@ typedef enum i2s_error_state {
  * - Param usage : Specified trigger level value (16b) + channel (16b)
  * - Return value explanation :
  */
-#define I2S_CMD_SET_TXCHET_BUF			DEV_SET_I2S_SYSCMD(13)
+#define I2S_CMD_SET_TXCHET_BUF                  DEV_SET_I2S_SYSCMD(13)
 
 /**
  * Set buffer available data threshold in the TX FIFO, these bit program the trigger level in the RX FIFO
@@ -286,7 +286,7 @@ typedef enum i2s_error_state {
  * - Param usage : Specified trigger level value  (16b) + channel (16b)
  * - Return value explanation :
  */
-#define I2S_CMD_SET_RXCHDT_BUF			DEV_SET_I2S_SYSCMD(14)
+#define I2S_CMD_SET_RXCHDT_BUF                  DEV_SET_I2S_SYSCMD(14)
 
 /* ++++ Master only commands for I2S Device ++++ */
 /**
@@ -295,21 +295,21 @@ typedef enum i2s_error_state {
  * - Param usage : enable(none-zero) or disable(zero) flag
  * - Return value explanation :
  */
-#define I2S_CMD_MST_SET_CLK			DEV_SET_I2S_MST_SYSCMD(0)
+#define I2S_CMD_MST_SET_CLK                     DEV_SET_I2S_MST_SYSCMD(0)
 /**
  * Program the number of sclk cycles for word select line stays
  * - Param type : uint32_t
  * - Param usage : clock cycles
  * - Return value explanation :
  */
-#define I2S_CMD_MST_SET_WSS			DEV_SET_I2S_MST_SYSCMD(1)
+#define I2S_CMD_MST_SET_WSS                     DEV_SET_I2S_MST_SYSCMD(1)
 /**
  * Program the number of gating of sclk cycles for word select line stays
  * - Param type : uint32_t
  * - Param usage : gating of sclk cycles
  * - Return value explanation :
  */
-#define I2S_CMD_MST_SET_SCLKG		DEV_SET_I2S_MST_SYSCMD(2)
+#define I2S_CMD_MST_SET_SCLKG           DEV_SET_I2S_MST_SYSCMD(2)
 
 /** @} */
 
@@ -320,9 +320,9 @@ typedef enum i2s_error_state {
  * @{
  */
 typedef struct dev_i2s_cbs {
-	DEV_CALLBACK tx_cb;	/*!< I2S data transmit success required bytes callback */
-	DEV_CALLBACK rx_cb;	/*!< I2S data receive success required bytes callback */
-	DEV_CALLBACK err_cb;	/*!< I2S error callback */
+	DEV_CALLBACK tx_cb;     /*!< I2S data transmit success required bytes callback */
+	DEV_CALLBACK rx_cb;     /*!< I2S data receive success required bytes callback */
+	DEV_CALLBACK err_cb;    /*!< I2S error callback */
 } DEV_I2S_CBS, *DEV_I2S_CBS_PTR;
 /** @} */
 
@@ -340,26 +340,26 @@ typedef struct dev_i2s_cbs {
  * 	baurate, I2S registers, working method, interrupt number
  */
 typedef struct dev_i2s_info {
-	void *i2s_ctrl;		/*!< I2S control related pointer, implemented by BSP developer, and this should be set during i2s object implementation */
-	void *i2s_config;	/*!< I2S device configuration, implemented by BSP developer, and this shoud be set in object implementation */
-	uint32_t opn_cnt;	/*!< I2S open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
-	uint32_t status;	/*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
-	uint32_t device;	/*!< device type, refer to \ref I2S_DEVICE_TYPE, this should be set for object initialization */
-	uint32_t mode;		/*!< current working mode, which can be \ref DEV_MASTER_MODE "master mode" or \ref DEV_SLAVE_MODE "slave mode" */
-	uint32_t cur_state;	/*!< \ref I2S_WORKING_STATE "current working state for I2S device", this should be \ref I2S_FREE for first open */
-	uint32_t err_state;	/*!< \ref I2S_ERROR_STATE "current error state for I2S device", this should be \ref I2S_ERR_NONE for first open */
-	DEV_BUFFER tx_buf;	/*!< transmit buffer via interrupt, this should be all zero for first open */
-	DEV_BUFFER rx_buf;	/*!< receive buffer via interrupt, this should be all zero for first open */
-	DEV_I2S_CBS i2s_cbs;	/*!< I2S callbacks, for both master and slave mode, this should be all NULL for first open */
-	void *extra;		/*!< a extra pointer to get hook to applications which should not used by BSP developer,
-					this should be NULL for first open and you can \ref DEV_I2I_INFO_SET_EXTRA_OBJECT "set"
-					or \ref DEV_I2S_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
-} DEV_I2S_INFO, * DEV_I2S_INFO_PTR;
+	void *i2s_ctrl;         /*!< I2S control related pointer, implemented by BSP developer, and this should be set during i2s object implementation */
+	void *i2s_config;       /*!< I2S device configuration, implemented by BSP developer, and this shoud be set in object implementation */
+	uint32_t opn_cnt;       /*!< I2S open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
+	uint32_t status;        /*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
+	uint32_t device;        /*!< device type, refer to \ref I2S_DEVICE_TYPE, this should be set for object initialization */
+	uint32_t mode;          /*!< current working mode, which can be \ref DEV_MASTER_MODE "master mode" or \ref DEV_SLAVE_MODE "slave mode" */
+	uint32_t cur_state;     /*!< \ref I2S_WORKING_STATE "current working state for I2S device", this should be \ref I2S_FREE for first open */
+	uint32_t err_state;     /*!< \ref I2S_ERROR_STATE "current error state for I2S device", this should be \ref I2S_ERR_NONE for first open */
+	DEV_BUFFER tx_buf;      /*!< transmit buffer via interrupt, this should be all zero for first open */
+	DEV_BUFFER rx_buf;      /*!< receive buffer via interrupt, this should be all zero for first open */
+	DEV_I2S_CBS i2s_cbs;    /*!< I2S callbacks, for both master and slave mode, this should be all NULL for first open */
+	void *extra;            /*!< a extra pointer to get hook to applications which should not used by BSP developer,
+	                                this should be NULL for first open and you can \ref DEV_I2I_INFO_SET_EXTRA_OBJECT "set"
+	                                or \ref DEV_I2S_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
+} DEV_I2S_INFO, *DEV_I2S_INFO_PTR;
 
 /** Set extra information pointer of I2S */
-#define DEV_I2S_INFO_SET_EXTRA_OBJECT(i2s_info_ptr, extra_info)		(i2s_info_ptr)->extra = (void *)(extra_info)
+#define DEV_I2S_INFO_SET_EXTRA_OBJECT(i2s_info_ptr, extra_info)         (i2s_info_ptr)->extra = (void *)(extra_info)
 /** Get extra information pointer of I2S */
-#define DEV_I2S_INFO_GET_EXTRA_OBJECT(i2s_info_ptr)			((i2s_info_ptr)->extra)
+#define DEV_I2S_INFO_GET_EXTRA_OBJECT(i2s_info_ptr)                     ((i2s_info_ptr)->extra)
 
 /**
  * \brief	I2S device interface definition
@@ -368,15 +368,15 @@ typedef struct dev_i2s_info {
  * \note	all this details are implemented by user in user porting code
  */
 typedef struct dev_i2s {
-	DEV_I2S_INFO i2s_info;					/*!< I2S device information */
-	int32_t (*i2s_open) (uint32_t mode, uint32_t param);	/*!< open I2S device in master/slave mode, \
-									when in master mode, param stands for speed mode, \
-									when in slave mode, param stands for slave address */
-	int32_t (*i2s_close) (void);				/*!< close I2S device */
-	int32_t (*i2s_control) (uint32_t ctrl_cmd, void *param);/*!< control i2s device */
-	int32_t (*i2s_write) (const void *data, uint32_t len);	/*!< send data by i2s TX device (blocking method) */
-	int32_t (*i2s_read) (void *data, uint32_t len);		/*!< read data from i2s RX device (blocking method) */
-} DEV_I2S, * DEV_I2S_PTR;
+	DEV_I2S_INFO i2s_info;                                  /*!< I2S device information */
+	int32_t (*i2s_open)(uint32_t mode, uint32_t param);     /*!< open I2S device in master/slave mode, \
+	                                                                when in master mode, param stands for speed mode, \
+	                                                                when in slave mode, param stands for slave address */
+	int32_t (*i2s_close)(void);                             /*!< close I2S device */
+	int32_t (*i2s_control)(uint32_t ctrl_cmd, void *param); /*!< control i2s device */
+	int32_t (*i2s_write)(const void *data, uint32_t len);   /*!< send data by i2s TX device (blocking method) */
+	int32_t (*i2s_read)(void *data, uint32_t len);          /*!< read data from i2s RX device (blocking method) */
+} DEV_I2S, *DEV_I2S_PTR;
 
 /**
  * \fn		int32_t (* dev_i2s::i2s_open) (uint32_t mode, uint32_t param)

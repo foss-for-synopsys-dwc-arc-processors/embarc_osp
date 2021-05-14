@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \defgroup	BOARD_EMSK_DRV_MUX	EMSK Mux Driver
  * \ingroup	BOARD_EMSK_DRIVER
@@ -107,10 +107,10 @@ int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
 	return E_NOSPT;
 }
 
-
 int32_t io_pmod_config(uint32_t pmod, uint32_t type, uint32_t config)
 {
 	uint32_t val = get_pmod_mux();
+
 	switch (pmod) {
 	case PMOD_1: /* PMOD GPIO, PMOD_UART */
 		if (type == PMOD_GPIO) {
@@ -181,12 +181,12 @@ void io_mux_init(void)
 	 *   - PM5 J5: Upper row as SPI Master, lower row as Port A
 	 *   - PM6 J6: Upper row as SPI Master, lower row as Port A
 	 */
-	set_pmod_mux(PM1_UR_UART_0 | PM1_LR_SPI_S	\
-				| PM2_I2C_HRI		\
-				| PM3_GPIO_AC		\
-				| PM4_I2C_GPIO_D	\
-				| PM5_UR_SPI_M1 | PM5_LR_GPIO_A	\
-				| PM6_UR_SPI_M0 | PM6_LR_GPIO_A );
+	set_pmod_mux(PM1_UR_UART_0 | PM1_LR_SPI_S    \
+		     | PM2_I2C_HRI		     \
+		     | PM3_GPIO_AC		     \
+		     | PM4_I2C_GPIO_D		     \
+		     | PM5_UR_SPI_M1 | PM5_LR_GPIO_A \
+		     | PM6_UR_SPI_M0 | PM6_LR_GPIO_A);
 
 	/**
 	 * PM1 upper row as UART

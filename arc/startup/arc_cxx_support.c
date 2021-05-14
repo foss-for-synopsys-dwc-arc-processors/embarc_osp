@@ -42,7 +42,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -148,8 +148,8 @@ extern func_ptr __init_array_end[0];
 void __do_init_array_aux(void)
 {
 	for (func_ptr *func = __init_array_start;
-		func < __init_array_end;
-		func++) {
+	     func < __init_array_end;
+	     func++) {
 		(*func)();
 	}
 }

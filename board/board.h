@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  *
  * \file
@@ -97,8 +97,8 @@ extern void board_main(void);
 }
 #endif
 
-#define OSP_DELAY_OS_COMPAT_ENABLE	(1)
-#define OSP_DELAY_OS_COMPAT_DISABLE	(0)
+#define OSP_DELAY_OS_COMPAT_ENABLE      (1)
+#define OSP_DELAY_OS_COMPAT_DISABLE     (0)
 
 #define OSP_GET_CUR_SYSHZ()         bord_get_cur_syshz()
 #define OSP_GET_CUR_MS()            board_get_cur_ms()

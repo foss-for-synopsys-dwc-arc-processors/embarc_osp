@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _DEVICE_DW_SPI_H_
 #define _DEVICE_DW_SPI_H_
@@ -41,20 +41,20 @@
  */
 #define DEVICE_USE_DESIGNWARE_SPI
 
-#define DW_SPI_IN_FREE			(0)					/*!< Currently not in spi transfer */
-#define DW_SPI_IN_XFER			(DEV_IN_TX|DEV_IN_RX|DEV_IN_XFER)	/*!< Currently in spi transfer */
-#define DW_SPI_IN_TX			(DEV_IN_TX|DEV_IN_XFER)			/*!< Currently in spi tx */
-#define DW_SPI_IN_RX			(DEV_IN_RX|DEV_IN_XFER)			/*!< Currently in spi rx */
+#define DW_SPI_IN_FREE                  (0)                                     /*!< Currently not in spi transfer */
+#define DW_SPI_IN_XFER                  (DEV_IN_TX | DEV_IN_RX | DEV_IN_XFER)   /*!< Currently in spi transfer */
+#define DW_SPI_IN_TX                    (DEV_IN_TX | DEV_IN_XFER)               /*!< Currently in spi tx */
+#define DW_SPI_IN_RX                    (DEV_IN_RX | DEV_IN_XFER)               /*!< Currently in spi rx */
 
-#define DW_SPI_GINT_DISABLED		(0)		/*!< designware interrupt disabled for control spi irq/fiq */
-#define DW_SPI_GINT_ENABLE		(1<<0)		/*!< designware interrupt enabled for control spi irq/fiq */
+#define DW_SPI_GINT_DISABLED            (0)                                     /*!< designware interrupt disabled for control spi irq/fiq */
+#define DW_SPI_GINT_ENABLE              (1 << 0)                                /*!< designware interrupt enabled for control spi irq/fiq */
 
-#define DW_SPI_MASTER_SUPPORTED		(0x1)	/*!< Support Designware SPI Master Mode */
-#define DW_SPI_SLAVE_SUPPORTED		(0x2)	/*!< Support Designware SPI Slave Mode */
+#define DW_SPI_MASTER_SUPPORTED         (0x1)                                   /*!< Support Designware SPI Master Mode */
+#define DW_SPI_SLAVE_SUPPORTED          (0x2)                                   /*!< Support Designware SPI Slave Mode */
 /*!< Support Designware SPI Both Master and Slave Mode */
-#define DW_SPI_BOTH_SUPPORTED		(DW_SPI_MASTER_SUPPORTED|DW_SPI_SLAVE_SUPPORTED)
+#define DW_SPI_BOTH_SUPPORTED           (DW_SPI_MASTER_SUPPORTED | DW_SPI_SLAVE_SUPPORTED)
 
-#define DW_SPI_INVALID_INTNO		(DEV_INTNO_INVALID)
+#define DW_SPI_INVALID_INTNO            (DEV_INTNO_INVALID)
 
 /**
  * detailed description of DesignWare SPI register information
@@ -64,8 +64,7 @@
  * \details	Detailed struct description of DesignWare SPI
  * 	block register information, implementation of dev_spi_info::spi_regs
  */
-typedef volatile struct dw_spi_reg
-{
+typedef volatile struct dw_spi_reg {
 	/*!< Control Register */
 	/*!< SPI Control Register 0  (0x0) */
 	uint32_t CTRLR0;
@@ -144,29 +143,29 @@ typedef struct dw_spi_transfer {
  * \details	implement of dev_spi_info::dev_spi_info
  */
 typedef struct dw_spi_ctrl {
-	DW_SPI_REG *dw_spi_regs;	/*!< spi register */
+	DW_SPI_REG *dw_spi_regs;                /*!< spi register */
 	/* Variables which should be set during object implementation */
-	uint32_t support_modes;		/*!< supported spi modes */
-	uint32_t intno;			/*!< interrupt no */
-	uint32_t dw_apb_bus_freq;	/*!< spi ip apb bus frequency */
-	uint32_t rx_sampledly;		/*!< RxD Sample Delay */
-	uint32_t tx_fifo_len;		/*!< transmit fifo length */
-	uint32_t rx_fifo_len;		/*!< receive fifo length */
-	INT_HANDLER_T dw_spi_int_handler;	/*!< spi interrupt handler */
+	uint32_t support_modes;                 /*!< supported spi modes */
+	uint32_t intno;                         /*!< interrupt no */
+	uint32_t dw_apb_bus_freq;               /*!< spi ip apb bus frequency */
+	uint32_t rx_sampledly;                  /*!< RxD Sample Delay */
+	uint32_t tx_fifo_len;                   /*!< transmit fifo length */
+	uint32_t rx_fifo_len;                   /*!< receive fifo length */
+	INT_HANDLER_T dw_spi_int_handler;       /*!< spi interrupt handler */
 	/* Variables which always change during spi operation */
-	uint32_t int_status;		/*!< spi interrupt status */
-	DW_SPI_TRANSFER dw_xfer;	/*!< designware spi transfer */
+	uint32_t int_status;                    /*!< spi interrupt status */
+	DW_SPI_TRANSFER dw_xfer;                /*!< designware spi transfer */
 } DW_SPI_CTRL, *DW_SPI_CTRL_PTR;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern int32_t dw_spi_open (DEV_SPI *spi_obj, uint32_t mode, uint32_t param);
-extern int32_t dw_spi_close (DEV_SPI *spi_obj);
-extern int32_t dw_spi_control (DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param);
-extern int32_t dw_spi_write (DEV_SPI *spi_obj, const void *data, uint32_t len);
-extern int32_t dw_spi_read (DEV_SPI *spi_obj, void *data, uint32_t len);
+extern int32_t dw_spi_open(DEV_SPI *spi_obj, uint32_t mode, uint32_t param);
+extern int32_t dw_spi_close(DEV_SPI *spi_obj);
+extern int32_t dw_spi_control(DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param);
+extern int32_t dw_spi_write(DEV_SPI *spi_obj, const void *data, uint32_t len);
+extern int32_t dw_spi_read(DEV_SPI *spi_obj, void *data, uint32_t len);
 extern void dw_spi_isr(DEV_SPI *spi_obj, void *ptr);
 
 #ifdef __cplusplus

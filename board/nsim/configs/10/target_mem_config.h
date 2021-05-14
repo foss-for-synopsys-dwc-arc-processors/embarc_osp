@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _TARGET_MEM_CONFIG_H_
 #define _TARGET_MEM_CONFIG_H_
 
@@ -43,33 +43,33 @@
  */
 #ifdef ARC_FEATURE_ICCM_PRESENT
 #ifndef ICCM_SIZE
-#define ICCM_SIZE	ARC_FEATURE_ICCM_SIZE
+#define ICCM_SIZE       ARC_FEATURE_ICCM_SIZE
 #endif
 #ifndef ICCM_START
-#define ICCM_START	ARC_FEATURE_ICCM_BASE
+#define ICCM_START      ARC_FEATURE_ICCM_BASE
 #endif
 #else
 #ifndef ICCM_SIZE
-#define ICCM_SIZE	0x80000000
+#define ICCM_SIZE       0x80000000
 #endif
 #ifndef ICCM_START
-#define ICCM_START	0x0
+#define ICCM_START      0x0
 #endif
 #endif
 
 #ifdef ARC_FEATURE_DCCM_PRESENT
 #ifndef DCCM_SIZE
-#define DCCM_SIZE	ARC_FEATURE_DCCM_SIZE
+#define DCCM_SIZE       ARC_FEATURE_DCCM_SIZE
 #endif
 #ifndef DCCM_START
-#define DCCM_START	ARC_FEATURE_DCCM_BASE
+#define DCCM_START      ARC_FEATURE_DCCM_BASE
 #endif
 #else
 #ifndef DCCM_SIZE
-#define DCCM_SIZE	0x80000000
+#define DCCM_SIZE       0x80000000
 #endif
 #ifndef DCCM_START
-#define DCCM_START	0x80000000
+#define DCCM_START      0x80000000
 #endif
 #endif
 
@@ -81,13 +81,13 @@
    the regions to limit the application using
  */
 #ifndef REGION_ICCM_START
-#define REGION_ICCM_START	ICCM_START
-#define REGION_ICCM_SIZE	ICCM_SIZE
+#define REGION_ICCM_START       ICCM_START
+#define REGION_ICCM_SIZE        ICCM_SIZE
 #endif
 
 #ifndef REGION_DCCM_START
-#define REGION_DCCM_START	DCCM_START
-#define REGION_DCCM_SIZE	DCCM_SIZE
+#define REGION_DCCM_START       DCCM_START
+#define REGION_DCCM_SIZE        DCCM_SIZE
 #endif
 
 #define IMAGE_HEAD_SIZE 0x0
@@ -99,11 +99,11 @@
  * For REGION_RAM, REGION_DCCM are available
  */
 #ifndef REGION_ROM
-#define REGION_ROM	REGION_ICCM
+#define REGION_ROM      REGION_ICCM
 #endif
 
 #ifndef REGION_RAM
-#define REGION_RAM	REGION_DCCM
+#define REGION_RAM      REGION_DCCM
 #endif
 
 #endif /* _TARGET_MEM_CONFIG_H_ */

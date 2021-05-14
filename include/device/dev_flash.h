@@ -26,20 +26,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DEV_FLASH_H_
 #define _DEV_FLASH_H_
 
 #include "device/dev_common.h"
 
-#define DEV_SET_FLASH_SYSCMD(cmd)	DEV_SET_SYSCMD((cmd))
+#define DEV_SET_FLASH_SYSCMD(cmd)       DEV_SET_SYSCMD((cmd))
 
-#define FLASH_CMD_GET_INFO		DEV_SET_FLASH_SYSCMD(0)
+#define FLASH_CMD_GET_INFO              DEV_SET_FLASH_SYSCMD(0)
 
-#define FLASH_CMD_PAGE_ERASE		DEV_SET_FLASH_SYSCMD(1)
+#define FLASH_CMD_PAGE_ERASE            DEV_SET_FLASH_SYSCMD(1)
 
-#define FLASH_CMD_CHIP_ERASE		DEV_SET_FLASH_SYSCMD(2)
-
+#define FLASH_CMD_CHIP_ERASE            DEV_SET_FLASH_SYSCMD(2)
 
 typedef struct dev_flash_info {
 	uint32_t begin_addr;
@@ -52,15 +51,14 @@ typedef struct dev_flash_info {
 
 typedef struct dev_flash {
 	DEV_FLASH_INFO flash_info;
-	int32_t (*flash_open) (void);
-	int32_t (*flash_close) (void);
-	int32_t (*flash_control) (uint32_t ctrl_cmd, void *param);
-	int32_t (*flash_write) (uint32_t addr, void *src, uint32_t len);
-	int32_t (*flash_write_nocheck) (uint32_t addr, void *src, uint32_t len);
-	int32_t (*flash_read) (uint32_t addr, void *dst, uint32_t len);
-	int32_t (*flash_erase) (uint32_t addr, uint32_t len);
+	int32_t (*flash_open)(void);
+	int32_t (*flash_close)(void);
+	int32_t (*flash_control)(uint32_t ctrl_cmd, void *param);
+	int32_t (*flash_write)(uint32_t addr, void *src, uint32_t len);
+	int32_t (*flash_write_nocheck)(uint32_t addr, void *src, uint32_t len);
+	int32_t (*flash_read)(uint32_t addr, void *dst, uint32_t len);
+	int32_t (*flash_erase)(uint32_t addr, uint32_t len);
 } DEV_FLASH, *DEV_FLASH_PTR;
-
 
 #ifdef __cplusplus
 extern "C" {

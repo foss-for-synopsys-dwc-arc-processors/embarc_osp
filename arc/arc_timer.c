@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -52,20 +52,20 @@ int32_t arc_timer_present(const uint32_t no)
 	uint32_t bcr = arc_aux_read(AUX_BCR_TIMERS);
 
 	switch (no) {
-		case TIMER_0:
-			bcr = (bcr >> 8) & 1;
-			break;
-		case TIMER_1:
-			bcr = (bcr >> 9) & 1;
-			break;
-		case TIMER_RTC:
-			bcr = (bcr >> 10) & 1;
-			break;
-		default:
-			bcr = 0;
-			/* illegal argument so return false */
-			break;
-		}
+	case TIMER_0:
+		bcr = (bcr >> 8) & 1;
+		break;
+	case TIMER_1:
+		bcr = (bcr >> 9) & 1;
+		break;
+	case TIMER_RTC:
+		bcr = (bcr >> 10) & 1;
+		break;
+	default:
+		bcr = 0;
+		/* illegal argument so return false */
+		break;
+	}
 
 	return (int)bcr;
 }
@@ -80,23 +80,23 @@ int32_t arc_timer_present(const uint32_t no)
 int32_t arc_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
 	switch (no) {
-		case TIMER_0:
-			arc_aux_write(AUX_TIMER0_CTRL, 0);
-			arc_aux_write(AUX_TIMER0_LIMIT, val);
-			arc_aux_write(AUX_TIMER0_CTRL, mode);
-			arc_aux_write(AUX_TIMER0_CNT, 0);
-			break;
-		case TIMER_1:
-			arc_aux_write(AUX_TIMER1_CTRL, 0);
-			arc_aux_write(AUX_TIMER1_LIMIT, val);
-			arc_aux_write(AUX_TIMER1_CTRL, mode);
-			arc_aux_write(AUX_TIMER1_CNT, 0);
-			break;
-		case TIMER_RTC:
-			arc_aux_write(AUX_RTC_CTRL, mode);
-			break;
-		default:
-			return -1;
+	case TIMER_0:
+		arc_aux_write(AUX_TIMER0_CTRL, 0);
+		arc_aux_write(AUX_TIMER0_LIMIT, val);
+		arc_aux_write(AUX_TIMER0_CTRL, mode);
+		arc_aux_write(AUX_TIMER0_CNT, 0);
+		break;
+	case TIMER_1:
+		arc_aux_write(AUX_TIMER1_CTRL, 0);
+		arc_aux_write(AUX_TIMER1_LIMIT, val);
+		arc_aux_write(AUX_TIMER1_CTRL, mode);
+		arc_aux_write(AUX_TIMER1_CNT, 0);
+		break;
+	case TIMER_RTC:
+		arc_aux_write(AUX_RTC_CTRL, mode);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -111,21 +111,21 @@ int32_t arc_timer_start(const uint32_t no, const uint32_t mode, const uint32_t v
 int32_t arc_timer_stop(const uint32_t no)
 {
 	switch (no) {
-		case TIMER_0 :
-			arc_aux_write(AUX_TIMER0_CTRL, 0);
-			arc_aux_write(AUX_TIMER0_LIMIT,0);
-			arc_aux_write(AUX_TIMER0_CNT, 0);
-			break;
-		case TIMER_1:
-			arc_aux_write(AUX_TIMER1_CTRL, 0);
-			arc_aux_write(AUX_TIMER1_LIMIT,0);
-			arc_aux_write(AUX_TIMER1_CNT, 0);
-			break;
-		case TIMER_RTC:
-			arc_aux_write(AUX_RTC_CTRL, TIMER_RTC_CLEAR);
-			break;
-		default:
-			return -1;
+	case TIMER_0:
+		arc_aux_write(AUX_TIMER0_CTRL, 0);
+		arc_aux_write(AUX_TIMER0_LIMIT, 0);
+		arc_aux_write(AUX_TIMER0_CNT, 0);
+		break;
+	case TIMER_1:
+		arc_aux_write(AUX_TIMER1_CTRL, 0);
+		arc_aux_write(AUX_TIMER1_LIMIT, 0);
+		arc_aux_write(AUX_TIMER1_CNT, 0);
+		break;
+	case TIMER_RTC:
+		arc_aux_write(AUX_RTC_CTRL, TIMER_RTC_CLEAR);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -141,17 +141,17 @@ int32_t arc_timer_stop(const uint32_t no)
 int32_t arc_timer_current(const uint32_t no, void *val)
 {
 	switch (no) {
-		case TIMER_0 :
-			*((uint32_t *)val) = arc_aux_read(AUX_TIMER0_CNT);
-			break;
-		case TIMER_1 :
-			*((uint32_t *)val) = arc_aux_read(AUX_TIMER1_CNT);
-			break;
-		case TIMER_RTC:
-			*((uint64_t *)val) = arc_aux_read(AUX_RTC_LOW);
-			break;
-		default :
-			return -1;
+	case TIMER_0:
+		*((uint32_t *)val) = arc_aux_read(AUX_TIMER0_CNT);
+		break;
+	case TIMER_1:
+		*((uint32_t *)val) = arc_aux_read(AUX_TIMER1_CNT);
+		break;
+	case TIMER_RTC:
+		*((uint64_t *)val) = arc_aux_read(AUX_RTC_LOW);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -168,18 +168,18 @@ int32_t arc_timer_int_clear(const uint32_t no)
 	uint32_t val;
 
 	switch (no) {
-		case TIMER_0 :
-			val = arc_aux_read(AUX_TIMER0_CTRL);
-			val &= ~TIMER_CTRL_IP;
-			arc_aux_write(AUX_TIMER0_CTRL, val);
-			break;
-		case TIMER_1 :
-			val = arc_aux_read(AUX_TIMER1_CTRL);
-			val &= ~TIMER_CTRL_IP;
-			arc_aux_write(AUX_TIMER1_CTRL, val);
-			break;
-		default :
-			return -1;
+	case TIMER_0:
+		val = arc_aux_read(AUX_TIMER0_CTRL);
+		val &= ~TIMER_CTRL_IP;
+		arc_aux_write(AUX_TIMER0_CTRL, val);
+		break;
+	case TIMER_1:
+		val = arc_aux_read(AUX_TIMER1_CTRL);
+		val &= ~TIMER_CTRL_IP;
+		arc_aux_write(AUX_TIMER1_CTRL, val);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -203,7 +203,6 @@ void arc_timer_init(void)
 	}
 }
 
-
 #if defined(ARC_FEATURE_SEC_TIMER1_PRESENT) || defined(ARC_FEATURE_SEC_TIMER0_PRESENT)
 /**
  * \brief  check whether the specific secure timer present
@@ -215,16 +214,16 @@ int32_t arc_secure_timer_present(const uint32_t no)
 	uint32_t bcr = arc_aux_read(AUX_BCR_TIMERS);
 
 	switch (no) {
-		case SECURE_TIMER_0:
-			bcr = (bcr >> 11) & 1;
-			break;
-		case SECURE_TIMER_1:
-			bcr = (bcr >> 12) & 1;
-			break;
-		default:
-			bcr = 0;
-			/* illegal argument so return false */
-			break;
+	case SECURE_TIMER_0:
+		bcr = (bcr >> 11) & 1;
+		break;
+	case SECURE_TIMER_1:
+		bcr = (bcr >> 12) & 1;
+		break;
+	default:
+		bcr = 0;
+		/* illegal argument so return false */
+		break;
 	}
 
 	return (int)bcr;
@@ -240,20 +239,20 @@ int32_t arc_secure_timer_present(const uint32_t no)
 int32_t arc_secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
 	switch (no) {
-		case SECURE_TIMER_0:
-			arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
-			arc_aux_write(AUX_SECURE_TIMER0_LIMIT, val);
-			arc_aux_write(AUX_SECURE_TIMER0_CTRL, mode);
-			arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
-			break;
-		case SECURE_TIMER_1:
-			arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
-			arc_aux_write(AUX_SECURE_TIMER1_LIMIT, val);
-			arc_aux_write(AUX_SECURE_TIMER1_CTRL, mode);
-			arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
-			break;
-		default:
-			return -1;
+	case SECURE_TIMER_0:
+		arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
+		arc_aux_write(AUX_SECURE_TIMER0_LIMIT, val);
+		arc_aux_write(AUX_SECURE_TIMER0_CTRL, mode);
+		arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
+		break;
+	case SECURE_TIMER_1:
+		arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
+		arc_aux_write(AUX_SECURE_TIMER1_LIMIT, val);
+		arc_aux_write(AUX_SECURE_TIMER1_CTRL, mode);
+		arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -268,18 +267,18 @@ int32_t arc_secure_timer_start(const uint32_t no, const uint32_t mode, const uin
 int32_t arc_secure_timer_stop(const uint32_t no)
 {
 	switch (no) {
-		case SECURE_TIMER_0 :
-			arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
-			arc_aux_write(AUX_SECURE_TIMER0_LIMIT,0);
-			arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
-			break;
-		case SECURE_TIMER_1:
-			arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
-			arc_aux_write(AUX_SECURE_TIMER1_LIMIT,0);
-			arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
-			break;
-		default:
-			return -1;
+	case SECURE_TIMER_0:
+		arc_aux_write(AUX_SECURE_TIMER0_CTRL, 0);
+		arc_aux_write(AUX_SECURE_TIMER0_LIMIT, 0);
+		arc_aux_write(AUX_SECURE_TIMER0_CNT, 0);
+		break;
+	case SECURE_TIMER_1:
+		arc_aux_write(AUX_SECURE_TIMER1_CTRL, 0);
+		arc_aux_write(AUX_SECURE_TIMER1_LIMIT, 0);
+		arc_aux_write(AUX_SECURE_TIMER1_CNT, 0);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -295,14 +294,14 @@ int32_t arc_secure_timer_stop(const uint32_t no)
 int32_t arc_secure_timer_current(const uint32_t no, void *val)
 {
 	switch (no) {
-		case SECURE_TIMER_0 :
-			*((uint32_t *)val) = arc_aux_read(AUX_SECURE_TIMER0_CNT);
-			break;
-		case SECURE_TIMER_1 :
-			*((uint32_t *)val) = arc_aux_read(AUX_SECURE_TIMER1_CNT);
-			break;
-		default :
-			return -1;
+	case SECURE_TIMER_0:
+		*((uint32_t *)val) = arc_aux_read(AUX_SECURE_TIMER0_CNT);
+		break;
+	case SECURE_TIMER_1:
+		*((uint32_t *)val) = arc_aux_read(AUX_SECURE_TIMER1_CNT);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;
@@ -319,18 +318,18 @@ int32_t arc_secure_timer_int_clear(const uint32_t no)
 	uint32_t val;
 
 	switch (no) {
-		case SECURE_TIMER_0 :
-			val = arc_aux_read(AUX_SECURE_TIMER0_CTRL);
-			val &= ~TIMER_CTRL_IP;
-			arc_aux_write(AUX_SECURE_TIMER0_CTRL, val);
-			break;
-		case SECURE_TIMER_1 :
-			val = arc_aux_read(AUX_SECURE_TIMER1_CTRL);
-			val &= ~TIMER_CTRL_IP;
-			arc_aux_write(AUX_SECURE_TIMER1_CTRL, val);
-			break;
-		default :
-			return -1;
+	case SECURE_TIMER_0:
+		val = arc_aux_read(AUX_SECURE_TIMER0_CTRL);
+		val &= ~TIMER_CTRL_IP;
+		arc_aux_write(AUX_SECURE_TIMER0_CTRL, val);
+		break;
+	case SECURE_TIMER_1:
+		val = arc_aux_read(AUX_SECURE_TIMER1_CTRL);
+		val &= ~TIMER_CTRL_IP;
+		arc_aux_write(AUX_SECURE_TIMER1_CTRL, val);
+		break;
+	default:
+		return -1;
 	}
 
 	return 0;

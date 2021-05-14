@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <string.h>
 
@@ -39,14 +39,14 @@
 #include "device/designware/dw_iic.h"
 
 /** check expressions used in DesignWare IIC driver implementation */
-#define DW_IIC_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define DW_IIC_CHECK_EXP(EXPR, ERROR_CODE)              CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 #ifndef DISABLE_DEVICE_OBJECT_VALID_CHECK
 /** valid check of iic info object */
-#define VALID_CHK_IIC_INFO_OBJECT(iicinfo_obj_ptr)		{			\
-			DW_IIC_CHECK_EXP((iicinfo_obj_ptr)!=NULL, E_OBJ);		\
-			DW_IIC_CHECK_EXP(((iicinfo_obj_ptr)->iic_ctrl)!=NULL, E_OBJ);	\
- 		}
+#define VALID_CHK_IIC_INFO_OBJECT(iicinfo_obj_ptr)              {		\
+		DW_IIC_CHECK_EXP((iicinfo_obj_ptr) != NULL, E_OBJ);		\
+		DW_IIC_CHECK_EXP(((iicinfo_obj_ptr)->iic_ctrl) != NULL, E_OBJ);	\
+}
 #endif
 
 /**
@@ -54,8 +54,8 @@
  * \brief	DesignWare IIC interrupt callback routines select macros definitions
  * @{
  */
-#define DW_IIC_RDY_SND					(1U)	/*!< ready to send callback */
-#define DW_IIC_RDY_RCV					(2U)	/*!< ready to receive callback */
+#define DW_IIC_RDY_SND                                  (1U)    /*!< ready to send callback */
+#define DW_IIC_RDY_RCV                                  (2U)    /*!< ready to receive callback */
 /** @} */
 
 /**
@@ -225,6 +225,7 @@ Inline void dw_iic_set_speedmode(DW_IIC_REG *iic_reg_ptr, uint32_t speedmode)
 Inline void dw_iic_set_working_mode(DW_IIC_REG *iic_reg_ptr, uint32_t mode)
 {
 	uint32_t ic_con_val;
+
 	dw_iic_disable(iic_reg_ptr);
 	ic_con_val = iic_reg_ptr->IC_CON & (~IC_CON_MST_SLV_MODE_MASK);
 	if (mode == DEV_MASTER_MODE) {
@@ -257,18 +258,18 @@ void dw_iic_calc_spklen(uint32_t clk_khz, DW_IIC_SPKLEN *spklen)
 
 	if (clk_khz <= 1000000) {
 		clk_ns = 1000000 / clk_khz;
-		spklen->fs_spklen = DW_IIC_FS_SPKLEN_NS/clk_ns;
+		spklen->fs_spklen = DW_IIC_FS_SPKLEN_NS / clk_ns;
 		if ((DW_IIC_FS_SPKLEN_NS % clk_ns) != 0) {
 			spklen->fs_spklen += 1;
 		}
-		spklen->hs_spklen = DW_IIC_HS_SPKLEN_NS/clk_ns;
+		spklen->hs_spklen = DW_IIC_HS_SPKLEN_NS / clk_ns;
 		if ((DW_IIC_HS_SPKLEN_NS % clk_ns) != 0) {
 			spklen->hs_spklen += 1;
 		}
 	} else {
 		clk_ns = clk_khz / 1000000;
-		spklen->fs_spklen = DW_IIC_FS_SPKLEN_NS*clk_ns;
-		spklen->hs_spklen = DW_IIC_HS_SPKLEN_NS*clk_ns;
+		spklen->fs_spklen = DW_IIC_FS_SPKLEN_NS * clk_ns;
+		spklen->hs_spklen = DW_IIC_HS_SPKLEN_NS * clk_ns;
 	}
 }
 
@@ -280,57 +281,57 @@ void dw_iic_calc_sclcnt(uint32_t clk_khz, uint32_t caploading, DW_IIC_SCL_CNT *s
 
 	if (clk_khz <= 1000000) {
 		// Calculate CNT values for SS
-		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_HIGH_TIME_NS/clk_ns;
+		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_HIGH_TIME_NS / clk_ns;
 		if ((MIN_DW_IIC_SS_HIGH_TIME_NS % clk_ns) != 0) {
 			scl_cnt->ss_scl_hcnt += 1;
 		}
-		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_LOW_TIME_NS/clk_ns;
+		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_LOW_TIME_NS / clk_ns;
 		if ((MIN_DW_IIC_SS_LOW_TIME_NS % clk_ns) != 0) {
 			scl_cnt->ss_scl_lcnt += 1;
 		}
 		// Calculate CNT values for FS
-		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_HIGH_TIME_NS/clk_ns;
+		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_HIGH_TIME_NS / clk_ns;
 		if ((MIN_DW_IIC_FS_HIGH_TIME_NS % clk_ns) != 0) {
 			scl_cnt->fs_scl_hcnt += 1;
 		}
-		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_LOW_TIME_NS/clk_ns;
+		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_LOW_TIME_NS / clk_ns;
 		if ((MIN_DW_IIC_FS_LOW_TIME_NS % clk_ns) != 0) {
 			scl_cnt->fs_scl_lcnt += 1;
 		}
 		// Calculate CNT values for HS
 		if (caploading == DW_IIC_CAP_LOADING_100PF) {
-			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_100PF_HIGH_TIME_NS/clk_ns;
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_100PF_HIGH_TIME_NS / clk_ns;
 			if ((MIN_DW_IIC_HS_100PF_HIGH_TIME_NS % clk_ns) != 0) {
 				scl_cnt->hs_scl_hcnt += 1;
 			}
-			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_100PF_LOW_TIME_NS/clk_ns;
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_100PF_LOW_TIME_NS / clk_ns;
 			if ((MIN_DW_IIC_HS_100PF_LOW_TIME_NS % clk_ns) != 0) {
 				scl_cnt->hs_scl_lcnt += 1;
 			}
 		} else {
-			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_400PF_HIGH_TIME_NS/clk_ns;
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_400PF_HIGH_TIME_NS / clk_ns;
 			if ((MIN_DW_IIC_HS_400PF_HIGH_TIME_NS % clk_ns) != 0) {
 				scl_cnt->hs_scl_hcnt += 1;
 			}
-			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_400PF_LOW_TIME_NS/clk_ns;
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_400PF_LOW_TIME_NS / clk_ns;
 			if ((MIN_DW_IIC_HS_400PF_LOW_TIME_NS % clk_ns) != 0) {
 				scl_cnt->hs_scl_lcnt += 1;
 			}
 		}
 	} else {
 		// Calculate CNT values for SS
-		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_HIGH_TIME_NS*clk_ns;
-		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_LOW_TIME_NS*clk_ns;
+		scl_cnt->ss_scl_hcnt = MIN_DW_IIC_SS_HIGH_TIME_NS * clk_ns;
+		scl_cnt->ss_scl_lcnt = MIN_DW_IIC_SS_LOW_TIME_NS * clk_ns;
 		// Calculate CNT values for FS
-		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_HIGH_TIME_NS*clk_ns;
-		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_LOW_TIME_NS*clk_ns;
+		scl_cnt->fs_scl_hcnt = MIN_DW_IIC_FS_HIGH_TIME_NS * clk_ns;
+		scl_cnt->fs_scl_lcnt = MIN_DW_IIC_FS_LOW_TIME_NS * clk_ns;
 		// Calculate CNT values for HS
 		if (caploading == DW_IIC_CAP_LOADING_100PF) {
-			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_100PF_HIGH_TIME_NS*clk_ns;
-			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_100PF_LOW_TIME_NS*clk_ns;
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_100PF_HIGH_TIME_NS * clk_ns;
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_100PF_LOW_TIME_NS * clk_ns;
 		} else {
-			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_400PF_HIGH_TIME_NS*clk_ns;
-			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_400PF_LOW_TIME_NS*clk_ns;
+			scl_cnt->hs_scl_hcnt = MIN_DW_IIC_HS_400PF_HIGH_TIME_NS * clk_ns;
+			scl_cnt->hs_scl_lcnt = MIN_DW_IIC_HS_400PF_LOW_TIME_NS * clk_ns;
 		}
 	}
 	if (scl_cnt->ss_scl_hcnt < MIN_DW_IIC_SS_SCL_HCNT(spklen->fs_spklen)) {
@@ -378,35 +379,35 @@ static uint32_t dw_iic_get_slv_state(DW_IIC_REG *iic_reg_ptr)
 
 	status = iic_reg_ptr->IC_RAW_INTR_STAT;
 	if (status & IC_INTR_STAT_GEN_CALL) {
-	/* General Call address is received and it is acknowledged */
+		/* General Call address is received and it is acknowledged */
 		slv_state |= IIC_SLAVE_STATE_GC_REQ;
 	}
 	if (status & IC_INTR_STAT_RX_FULL) {
-	/* master is attempting to write data to this slave */
+		/* master is attempting to write data to this slave */
 		slv_state |= IIC_SLAVE_STATE_WR_REQ;
 	}
 	if (status & IC_INTR_STAT_RD_REQ) {
-	/* master is attempting to read data from this slave */
+		/* master is attempting to read data from this slave */
 		slv_state |= IIC_SLAVE_STATE_RD_REQ;
 	}
 	if (status & IC_INTR_STAT_RX_DONE) {
-	/* master does not acknowledge a transmitted byte, and transmission is done */
+		/* master does not acknowledge a transmitted byte, and transmission is done */
 		slv_state |= IIC_SLAVE_STATE_RD_DONE;
 		status = iic_reg_ptr->IC_CLR_RX_DONE;
 	}
 	if (status & IC_INTR_STAT_START_DET) {
-	/* a START or RESTART condition has occurred */
+		/* a START or RESTART condition has occurred */
 		slv_state |= IIC_SLAVE_STATE_START;
 		status = iic_reg_ptr->IC_CLR_START_DET; /* Clear it when read */
 	}
 	if (status & IC_INTR_STAT_STOP_DET) {
-	/* a STOP condition has occurred */
+		/* a STOP condition has occurred */
 		slv_state |= IIC_SLAVE_STATE_STOP;
 		status = iic_reg_ptr->IC_CLR_STOP_DET;  /* Clear it when read */
 	}
-	if (status & (IC_INTR_STAT_TX_ABRT|IC_INTR_STAT_TX_OVER\
-		|IC_INTR_STAT_RX_OVER|IC_INTR_STAT_RX_UNDER)) {
-	/* error case */
+	if (status & (IC_INTR_STAT_TX_ABRT | IC_INTR_STAT_TX_OVER \
+		      | IC_INTR_STAT_RX_OVER | IC_INTR_STAT_RX_UNDER)) {
+		/* error case */
 		slv_state |= IIC_SLAVE_STATE_ERROR;
 		status = iic_reg_ptr->IC_CLR_TX_ABRT;  /* Clear it when read */
 		status = iic_reg_ptr->IC_CLR_TX_OVER;
@@ -507,11 +508,11 @@ static int32_t dw_iic_mst_chkerr(DW_IIC_CTRL *iic_ctrl_ptr)
 		status = iic_reg_ptr->IC_CLR_TX_ABRT;
 	} else {
 		if (status & IC_INTR_STAT_TX_OVER) {
-			iic_ctrl_ptr->iic_tx_over ++;
+			iic_ctrl_ptr->iic_tx_over++;
 			status = iic_reg_ptr->IC_CLR_TX_OVER;
 		}
-		if (status & (IC_INTR_STAT_RX_OVER|IC_INTR_STAT_RX_UNDER)) {
-			iic_ctrl_ptr->iic_rx_over ++;
+		if (status & (IC_INTR_STAT_RX_OVER | IC_INTR_STAT_RX_UNDER)) {
+			iic_ctrl_ptr->iic_rx_over++;
 			status = iic_reg_ptr->IC_CLR_RX_OVER;
 			status = iic_reg_ptr->IC_CLR_RX_UNDER;
 		}
@@ -540,11 +541,11 @@ static int32_t dw_iic_slv_chkerr(DW_IIC_CTRL *iic_ctrl_ptr)
 		status = iic_reg_ptr->IC_CLR_TX_ABRT;
 	} else {
 		if (status & IC_INTR_STAT_TX_OVER) {
-			iic_ctrl_ptr->iic_tx_over ++;
+			iic_ctrl_ptr->iic_tx_over++;
 			status = iic_reg_ptr->IC_CLR_TX_OVER;
 		}
-		if (status & (IC_INTR_STAT_RX_OVER|IC_INTR_STAT_RX_UNDER)) {
-			iic_ctrl_ptr->iic_rx_over ++;
+		if (status & (IC_INTR_STAT_RX_OVER | IC_INTR_STAT_RX_UNDER)) {
+			iic_ctrl_ptr->iic_rx_over++;
 			status = iic_reg_ptr->IC_CLR_RX_OVER;
 			status = iic_reg_ptr->IC_CLR_RX_UNDER;
 		}
@@ -571,7 +572,7 @@ static void dw_iic_disable_device(DEV_IIC_INFO *iic_info_ptr)
 	DW_IIC_REG *iic_reg_ptr = (DW_IIC_REG *)(iic_ctrl_ptr->dw_iic_regs);
 	uint32_t i;
 
-	for (i=0; i<DW_IIC_DISABLE_MAX_T_POLL_CNT; i++) {
+	for (i = 0; i < DW_IIC_DISABLE_MAX_T_POLL_CNT; i++) {
 		dw_iic_disable(iic_reg_ptr);
 		if ((iic_reg_ptr->IC_ENABLE_STATUS & IC_ENABLE_STATUS_IC_EN) == 0) {
 			break;
@@ -601,16 +602,16 @@ static void dw_iic_mst_dis_cbr(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t cbrtn)
 	DW_IIC_REG *iic_reg_ptr = (DW_IIC_REG *)(iic_ctrl_ptr->dw_iic_regs);
 
 	switch (cbrtn) {
-		case DW_IIC_RDY_SND:
-			dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_MST_TX_ENABLE);
-			iic_ctrl_ptr->int_status &= ~DW_IIC_TXINT_ENABLE;
-			break;
-		case DW_IIC_RDY_RCV:
-			dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_MST_RX_ENABLE);
-			iic_ctrl_ptr->int_status &= ~DW_IIC_RXINT_ENABLE;
-			break;
-		default:
-			break;
+	case DW_IIC_RDY_SND:
+		dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_MST_TX_ENABLE);
+		iic_ctrl_ptr->int_status &= ~DW_IIC_TXINT_ENABLE;
+		break;
+	case DW_IIC_RDY_RCV:
+		dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_MST_RX_ENABLE);
+		iic_ctrl_ptr->int_status &= ~DW_IIC_RXINT_ENABLE;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -620,16 +621,16 @@ static void dw_iic_slv_dis_cbr(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t cbrtn)
 	DW_IIC_REG *iic_reg_ptr = (DW_IIC_REG *)(iic_ctrl_ptr->dw_iic_regs);
 
 	switch (cbrtn) {
-		case DW_IIC_RDY_SND:
-			dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_SLV_TX_ENABLE);
-			iic_ctrl_ptr->int_status &= ~DW_IIC_TXINT_ENABLE;
-			break;
-		case DW_IIC_RDY_RCV:
-			dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_SLV_RX_ENABLE);
-			iic_ctrl_ptr->int_status &= ~DW_IIC_RXINT_ENABLE;
-			break;
-		default:
-			break;
+	case DW_IIC_RDY_SND:
+		dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_SLV_TX_ENABLE);
+		iic_ctrl_ptr->int_status &= ~DW_IIC_TXINT_ENABLE;
+		break;
+	case DW_IIC_RDY_RCV:
+		dw_iic_mask_interrupt(iic_reg_ptr, IC_INT_SLV_RX_ENABLE);
+		iic_ctrl_ptr->int_status &= ~DW_IIC_RXINT_ENABLE;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -639,16 +640,16 @@ static void dw_iic_mst_ena_cbr(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t cbrtn)
 	DW_IIC_REG *iic_reg_ptr = (DW_IIC_REG *)(iic_ctrl_ptr->dw_iic_regs);
 
 	switch (cbrtn) {
-		case DW_IIC_RDY_SND:
-			iic_ctrl_ptr->int_status |= DW_IIC_TXINT_ENABLE;
-			dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_MST_TX_ENABLE);
-			break;
-		case DW_IIC_RDY_RCV:
-			iic_ctrl_ptr->int_status |= DW_IIC_RXINT_ENABLE;
-			dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_MST_RX_ENABLE);
-			break;
-		default:
-			break;
+	case DW_IIC_RDY_SND:
+		iic_ctrl_ptr->int_status |= DW_IIC_TXINT_ENABLE;
+		dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_MST_TX_ENABLE);
+		break;
+	case DW_IIC_RDY_RCV:
+		iic_ctrl_ptr->int_status |= DW_IIC_RXINT_ENABLE;
+		dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_MST_RX_ENABLE);
+		break;
+	default:
+		break;
 	}
 }
 
@@ -658,16 +659,16 @@ static void dw_iic_slv_ena_cbr(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t cbrtn)
 	DW_IIC_REG *iic_reg_ptr = (DW_IIC_REG *)(iic_ctrl_ptr->dw_iic_regs);
 
 	switch (cbrtn) {
-		case DW_IIC_RDY_SND:
-			iic_ctrl_ptr->int_status |= DW_IIC_TXINT_ENABLE;
-			dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_SLV_TX_ENABLE);
-			break;
-		case DW_IIC_RDY_RCV:
-			iic_ctrl_ptr->int_status |= DW_IIC_RXINT_ENABLE;
-			dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_SLV_RX_ENABLE);
-			break;
-		default:
-			break;
+	case DW_IIC_RDY_SND:
+		iic_ctrl_ptr->int_status |= DW_IIC_TXINT_ENABLE;
+		dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_SLV_TX_ENABLE);
+		break;
+	case DW_IIC_RDY_RCV:
+		iic_ctrl_ptr->int_status |= DW_IIC_RXINT_ENABLE;
+		dw_iic_unmask_interrupt(iic_reg_ptr, IC_INT_SLV_RX_ENABLE);
+		break;
+	default:
+		break;
 	}
 }
 
@@ -687,7 +688,7 @@ static void dw_iic_dis_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 	}
 
 	if (iic_ctrl_ptr->int_status & DW_IIC_GINT_ENABLE) {
-		if ((iic_ctrl_ptr->int_status & (DW_IIC_RXINT_ENABLE|DW_IIC_TXINT_ENABLE)) == 0) {
+		if ((iic_ctrl_ptr->int_status & (DW_IIC_RXINT_ENABLE | DW_IIC_TXINT_ENABLE)) == 0) {
 			if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
 				int_disable(iic_ctrl_ptr->intno);
 			}
@@ -712,7 +713,7 @@ static void dw_iic_ena_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 	}
 
 	if ((iic_ctrl_ptr->int_status & DW_IIC_GINT_ENABLE) == 0) {
-		if (iic_ctrl_ptr->int_status & (DW_IIC_RXINT_ENABLE|DW_IIC_TXINT_ENABLE)) {
+		if (iic_ctrl_ptr->int_status & (DW_IIC_RXINT_ENABLE | DW_IIC_TXINT_ENABLE)) {
 			iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
 			if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
 				int_enable(iic_ctrl_ptr->intno);
@@ -732,7 +733,7 @@ static void dw_iic_enable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 	if (iic_ctrl_ptr->intno != DW_IIC_INVALID_INTNO) {
 		int_handler_install(iic_ctrl_ptr->intno, iic_ctrl_ptr->dw_iic_int_handler);
 		iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
-		int_enable(iic_ctrl_ptr->intno);	/** enable iic interrupt */
+		int_enable(iic_ctrl_ptr->intno);        /** enable iic interrupt */
 	} else {
 		iic_ctrl_ptr->int_status |= DW_IIC_GINT_ENABLE;
 	}
@@ -752,7 +753,7 @@ static void dw_iic_disable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 		/* disable iic interrupt */
 		int_disable(iic_ctrl_ptr->intno);
 	}
-	iic_ctrl_ptr->int_status &= ~(DW_IIC_GINT_ENABLE|DW_IIC_TXINT_ENABLE|DW_IIC_RXINT_ENABLE);
+	iic_ctrl_ptr->int_status &= ~(DW_IIC_GINT_ENABLE | DW_IIC_TXINT_ENABLE | DW_IIC_RXINT_ENABLE);
 }
 
 /** abort current interrupt transmit transfer */
@@ -835,11 +836,15 @@ static int32_t dw_iic_mst_write_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t data, u
 	DW_IIC_REG *iic_reg_ptr = (DW_IIC_REG *)(iic_ctrl_ptr->dw_iic_regs);
 
 	while (dw_iic_putready(iic_reg_ptr) == 0) {
-		if (i++ > iic_ctrl_ptr->retry_cnt) return IIC_ERR_TIMEOUT;
+		if (i++ > iic_ctrl_ptr->retry_cnt) {
+			return IIC_ERR_TIMEOUT;
+		}
 		ercd = dw_iic_mst_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (ercd != IIC_ERR_NONE) {
+			return ercd;
+		}
 	}
-	dw_iic_putdata(iic_reg_ptr, data|IC_DATA_CMD_WRITE_REQ|next_cond);
+	dw_iic_putdata(iic_reg_ptr, data | IC_DATA_CMD_WRITE_REQ | next_cond);
 
 	return ercd;
 }
@@ -855,7 +860,9 @@ static int32_t dw_iic_slv_write_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t data)
 
 	for (i = 0; i < iic_ctrl_ptr->retry_cnt; i++) {
 		ercd = dw_iic_slv_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (ercd != IIC_ERR_NONE) {
+			return ercd;
+		}
 		slv_state = iic_reg_ptr->IC_RAW_INTR_STAT;
 		if (slv_state & IC_INTR_STAT_RD_REQ) {
 			if (dw_iic_putready(iic_reg_ptr)) {
@@ -872,7 +879,7 @@ static int32_t dw_iic_slv_write_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t data)
 		}
 	}
 	if (ready2send) {
-		dw_iic_putdata(iic_reg_ptr, data|IC_DATA_CMD_WRITE_REQ);
+		dw_iic_putdata(iic_reg_ptr, data | IC_DATA_CMD_WRITE_REQ);
 	} else {
 		ercd = IIC_ERR_TIMEOUT;
 	}
@@ -893,17 +900,25 @@ static int32_t dw_iic_mst_read_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t *data, u
 
 	/* Issue a read request */
 	while (dw_iic_putready(iic_reg_ptr) == 0) {
-		if (i++ > iic_ctrl_ptr->retry_cnt) return IIC_ERR_TIMEOUT;
+		if (i++ > iic_ctrl_ptr->retry_cnt) {
+			return IIC_ERR_TIMEOUT;
+		}
 		ercd = dw_iic_mst_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (ercd != IIC_ERR_NONE) {
+			return ercd;
+		}
 	}
-	dw_iic_putdata(iic_reg_ptr, next_cond|IC_DATA_CMD_READ_REQ);
+	dw_iic_putdata(iic_reg_ptr, next_cond | IC_DATA_CMD_READ_REQ);
 	/* Wait to read data */
 	i = 0;
 	while (dw_iic_getready(iic_reg_ptr) == 0) {
-		if (i++ > iic_ctrl_ptr->retry_cnt) return IIC_ERR_TIMEOUT;
+		if (i++ > iic_ctrl_ptr->retry_cnt) {
+			return IIC_ERR_TIMEOUT;
+		}
 		ercd = dw_iic_mst_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (ercd != IIC_ERR_NONE) {
+			return ercd;
+		}
 	}
 	*data = dw_iic_getdata(iic_reg_ptr);
 	return ercd;
@@ -920,7 +935,9 @@ static int32_t dw_iic_slv_read_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t *data)
 
 	for (i = 0; i < iic_ctrl_ptr->retry_cnt; i++) {
 		ercd = dw_iic_slv_chkerr(iic_ctrl_ptr);
-		if (ercd != IIC_ERR_NONE) return ercd;
+		if (ercd != IIC_ERR_NONE) {
+			return ercd;
+		}
 		slv_state = iic_reg_ptr->IC_RAW_INTR_STAT;
 		if (slv_state & IC_INTR_STAT_START_DET) {
 			temp = iic_reg_ptr->IC_CLR_START_DET;
@@ -967,14 +984,14 @@ static void dw_iic_mst_int_write(DEV_IIC *iic_obj)
 		if (iic_int_status & IC_INTR_STAT_TX_EMPTY) {
 			xmit_end = 0;
 			while (dw_iic_putready(iic_reg_ptr)) {
-				xmit_data = (uint32_t)(p_charbuf[buf_ptr->ofs])|IC_DATA_CMD_WRITE_REQ;
-				if (buf_ptr->ofs == (buf_ptr->len-1)) {
+				xmit_data = (uint32_t)(p_charbuf[buf_ptr->ofs]) | IC_DATA_CMD_WRITE_REQ;
+				if (buf_ptr->ofs == (buf_ptr->len - 1)) {
 					xmit_end = 1;
 					xmit_data |= last_cond;
 				} else {
 					xmit_data |= IC_DATA_CMD_NONE;
 				}
-				buf_ptr->ofs ++;
+				buf_ptr->ofs++;
 				dw_iic_putdata(iic_reg_ptr, xmit_data);
 				if (xmit_end) {
 					dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_SND);
@@ -989,7 +1006,7 @@ static void dw_iic_mst_int_write(DEV_IIC *iic_obj)
 			}
 		}
 		if (iic_int_status & IC_INTR_STAT_TX_OVER) {
-			iic_ctrl_ptr->iic_tx_over ++;
+			iic_ctrl_ptr->iic_tx_over++;
 		}
 		if (iic_int_status & IC_INTR_STAT_TX_ABRT) {
 			iic_info_ptr->err_state = dw_iic_mst_chkerr(iic_ctrl_ptr);
@@ -1040,19 +1057,19 @@ static void dw_iic_mst_int_read(DEV_IIC *iic_obj)
 					break;
 				}
 				xmit_data = IC_DATA_CMD_READ_REQ;
-				if (dw_iic_rxbuf_ptr->ofs == (dw_iic_rxbuf_ptr->len-1)) {
+				if (dw_iic_rxbuf_ptr->ofs == (dw_iic_rxbuf_ptr->len - 1)) {
 					xmit_data |= last_cond;
 				} else {
 					xmit_data |= IC_DATA_CMD_NONE;
 				}
-				dw_iic_rxbuf_ptr->ofs ++;
+				dw_iic_rxbuf_ptr->ofs++;
 				dw_iic_putdata(iic_reg_ptr, xmit_data);
 			}
 		}
 		if (iic_int_status & IC_INTR_STAT_RX_FULL) {
 			while (dw_iic_getready(iic_reg_ptr)) {
 				p_charbuf[buf_ptr->ofs] = dw_iic_getdata(iic_reg_ptr);
-				buf_ptr->ofs ++;
+				buf_ptr->ofs++;
 				if (buf_ptr->ofs >= buf_ptr->len) {
 					dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_RCV);
 					iic_info_ptr->cur_state = IIC_FREE;
@@ -1067,8 +1084,8 @@ static void dw_iic_mst_int_read(DEV_IIC *iic_obj)
 				}
 			}
 		}
-		if (iic_int_status & (IC_INTR_STAT_RX_OVER|IC_INTR_STAT_RX_UNDER)) {
-			iic_ctrl_ptr->iic_rx_over ++;
+		if (iic_int_status & (IC_INTR_STAT_RX_OVER | IC_INTR_STAT_RX_UNDER)) {
+			iic_ctrl_ptr->iic_rx_over++;
 		}
 		if (iic_int_status & IC_INTR_STAT_TX_ABRT) {
 			iic_info_ptr->err_state = dw_iic_mst_chkerr(iic_ctrl_ptr);
@@ -1116,10 +1133,10 @@ static void dw_iic_slv_int_process(DEV_IIC *iic_obj)
 		}
 	}
 	if (iic_int_status & IC_INTR_STAT_TX_OVER) {
-		iic_ctrl_ptr->iic_tx_over ++;
+		iic_ctrl_ptr->iic_tx_over++;
 	}
-	if (iic_int_status & (IC_INTR_STAT_RX_OVER|IC_INTR_STAT_RX_UNDER)) {
-		iic_ctrl_ptr->iic_rx_over ++;
+	if (iic_int_status & (IC_INTR_STAT_RX_OVER | IC_INTR_STAT_RX_UNDER)) {
+		iic_ctrl_ptr->iic_rx_over++;
 	}
 	if (iic_int_status & IC_INTR_STAT_TX_ABRT) {
 		iic_info_ptr->err_state = dw_iic_slv_chkerr(iic_ctrl_ptr);
@@ -1156,7 +1173,7 @@ static void dw_iic_slv_int_process(DEV_IIC *iic_obj)
  * \retval	E_PAR	Parameter is not valid
  * \retval	E_NOSPT	Open settings are not supported
  */
-int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
+int32_t dw_iic_open(DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 {
 	int32_t ercd = E_OK;
 	uint32_t support_modes;
@@ -1165,9 +1182,9 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 
 	/* START ERROR CHECK */
 	VALID_CHK_IIC_INFO_OBJECT(iic_info_ptr);
-	DW_IIC_CHECK_EXP((mode==DEV_MASTER_MODE)||(mode==DEV_SLAVE_MODE), E_PAR);
+	DW_IIC_CHECK_EXP((mode == DEV_MASTER_MODE) || (mode == DEV_SLAVE_MODE), E_PAR);
 	if (mode == DEV_MASTER_MODE) {
-		DW_IIC_CHECK_EXP((param>=IIC_SPEED_STANDARD) && (param<=IIC_SPEED_ULTRA), E_PAR);
+		DW_IIC_CHECK_EXP((param >= IIC_SPEED_STANDARD) && (param <= IIC_SPEED_ULTRA), E_PAR);
 	}
 	/* END OF ERROR CHECK */
 
@@ -1175,8 +1192,8 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 
 	/* Check supported modes, master or slave */
 	support_modes = iic_ctrl_ptr->support_modes;
-	DW_IIC_CHECK_EXP( (((support_modes)&DW_IIC_MASTER_SUPPORTED)&&(mode == DEV_MASTER_MODE)) || \
-				(((support_modes)&DW_IIC_SLAVE_SUPPORTED)&&(mode == DEV_SLAVE_MODE)), E_NOSPT);
+	DW_IIC_CHECK_EXP((((support_modes) & DW_IIC_MASTER_SUPPORTED) && (mode == DEV_MASTER_MODE)) || \
+			 (((support_modes) & DW_IIC_SLAVE_SUPPORTED) && (mode == DEV_SLAVE_MODE)), E_NOSPT);
 
 	/** Check opened before use case */
 	if (iic_info_ptr->opn_cnt > 0) {
@@ -1184,12 +1201,12 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 			/* current working mode is different from passing mode */
 			return E_SYS;
 		}
-		if (mode == DEV_MASTER_MODE) { /* param is speed_mode when as master */
+		if (mode == DEV_MASTER_MODE) {  /* param is speed_mode when as master */
 			param2check = iic_info_ptr->speed_mode;
-		} else { /* param is slv_addr when as slave */
+		} else {                        /* param is slv_addr when as slave */
 			param2check = iic_info_ptr->slv_addr;
 		}
-		iic_info_ptr->opn_cnt ++;
+		iic_info_ptr->opn_cnt++;
 		if (param != param2check) { /* open with different speed mode */
 			return E_OPNED;
 		} else {
@@ -1197,7 +1214,7 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 		}
 	}
 	/* auto increase open count */
-	iic_info_ptr->opn_cnt ++;
+	iic_info_ptr->opn_cnt++;
 
 	iic_info_ptr->mode = mode;
 	if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
@@ -1215,9 +1232,9 @@ int32_t dw_iic_open (DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 	iic_ctrl_ptr->rx_fifo_len = dw_iic_get_rxfifo_len(iic_ctrl_ptr->dw_iic_regs);
 #endif
 
-	dw_iic_calc_spklen(iic_ctrl_ptr->ic_clkhz/1000, &(iic_ctrl_ptr->iic_spklen));
-	dw_iic_calc_sclcnt(iic_ctrl_ptr->ic_clkhz/1000, iic_ctrl_ptr->ic_caploading, \
-		&(iic_ctrl_ptr->iic_scl_cnt), &(iic_ctrl_ptr->iic_spklen));
+	dw_iic_calc_spklen(iic_ctrl_ptr->ic_clkhz / 1000, &(iic_ctrl_ptr->iic_spklen));
+	dw_iic_calc_sclcnt(iic_ctrl_ptr->ic_clkhz / 1000, iic_ctrl_ptr->ic_caploading, \
+			   &(iic_ctrl_ptr->iic_scl_cnt), &(iic_ctrl_ptr->iic_spklen));
 	/* Disable device before init it */
 	dw_iic_disable_device(iic_info_ptr);
 
@@ -1259,7 +1276,7 @@ error_exit:
  * \retval	E_OPNED	Device is still opened, the device \ref dev_iic_info::opn_cnt "opn_cnt" decreased by 1
  * \retval	E_OBJ	Device object is not valid
  */
-int32_t dw_iic_close (DEV_IIC *iic_obj)
+int32_t dw_iic_close(DEV_IIC *iic_obj)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
@@ -1269,7 +1286,7 @@ int32_t dw_iic_close (DEV_IIC *iic_obj)
 	DW_IIC_CHECK_EXP(iic_info_ptr->opn_cnt > 0, E_OK);
 	/* END OF ERROR CHECK */
 
-	iic_info_ptr->opn_cnt --;
+	iic_info_ptr->opn_cnt--;
 	if (iic_info_ptr->opn_cnt == 0) {
 		dw_iic_disable_interrupt(iic_info_ptr);
 		dw_iic_abort_tx(iic_obj);
@@ -1303,7 +1320,7 @@ error_exit:
  * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
  * \retval	E_NOSPT	Control command is not supported or not valid
  */
-int32_t dw_iic_control (DEV_IIC *iic_obj, uint32_t ctrl_cmd, void *param)
+int32_t dw_iic_control(DEV_IIC *iic_obj, uint32_t ctrl_cmd, void *param)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
@@ -1325,187 +1342,187 @@ int32_t dw_iic_control (DEV_IIC *iic_obj, uint32_t ctrl_cmd, void *param)
 		 * only IIC_CMD_ENA_DEV, IIC_CMD_DIS_DEV, IIC_CMD_GET_STATUS, IIC_CMD_RESET
 		 * are available, other commands will return E_SYS
 		 */
-		if ((ctrl_cmd != IIC_CMD_ENA_DEV) && \
-			(ctrl_cmd != IIC_CMD_DIS_DEV) && \
-			(ctrl_cmd != IIC_CMD_GET_STATUS) && \
-			(ctrl_cmd != IIC_CMD_RESET) ) {
+		if ((ctrl_cmd != IIC_CMD_ENA_DEV) &&	\
+		    (ctrl_cmd != IIC_CMD_DIS_DEV) &&	\
+		    (ctrl_cmd != IIC_CMD_GET_STATUS) &&	\
+		    (ctrl_cmd != IIC_CMD_RESET)) {
 			return E_SYS;
 		}
 	}
 
 	switch (ctrl_cmd) {
-		/* Commmon commands for both master and slave mode */
-		case IIC_CMD_GET_STATUS:
-			DW_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = iic_info_ptr->status;
-			break;
-		case IIC_CMD_ENA_DEV:
-			dw_iic_enable_device(iic_info_ptr);
-			break;
-		case IIC_CMD_DIS_DEV:
-			dw_iic_disable_device(iic_info_ptr);
-			break;
-		case IIC_CMD_RESET:
-			dw_iic_reset_device(iic_info_ptr);
-			break;
-		case IIC_CMD_FLUSH_TX:
-			dw_iic_flush_tx(iic_reg_ptr);
-			break;
-		case IIC_CMD_FLUSH_RX:
-			dw_iic_flush_rx(iic_reg_ptr);
-			break;
-		case IIC_CMD_SET_ADDR_MODE:
-			val32 = (uint32_t)param;
-			DW_IIC_CHECK_EXP((val32==IIC_7BIT_ADDRESS) || (val32==IIC_10BIT_ADDRESS), E_PAR);
-			if (iic_info_ptr->mode == DEV_MASTER_MODE) {
-				dw_iic_set_mstaddr_mode(iic_reg_ptr, val32);
-			} else {
-				dw_iic_set_slvaddr_mode(iic_reg_ptr, val32);
-			}
-			iic_info_ptr->addr_mode = val32;
-			break;
-		case IIC_CMD_GET_RXAVAIL:
-			DW_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dw_iic_get_rxavail(iic_ctrl_ptr);
-			break;
-		case IIC_CMD_GET_TXAVAIL:
-			DW_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dw_iic_get_txavail(iic_ctrl_ptr);
-			break;
-		case IIC_CMD_SET_TXCB:
-			DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			iic_info_ptr->iic_cbs.tx_cb = param;
-			break;
-		case IIC_CMD_SET_RXCB:
-			DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			iic_info_ptr->iic_cbs.rx_cb = param;
-			break;
-		case IIC_CMD_SET_ERRCB:
-			DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			iic_info_ptr->iic_cbs.err_cb = param;
-			break;
-		case IIC_CMD_ABORT_TX:
-			dw_iic_abort_tx(iic_obj);
-			if ((iic_info_ptr->mode == DEV_MASTER_MODE) \
-				&& (iic_info_ptr->cur_state == IIC_IN_TX)) {
-				iic_info_ptr->cur_state = IIC_FREE;
-			}
-			break;
-		case IIC_CMD_ABORT_RX:
-			dw_iic_abort_rx(iic_obj);
-			if ((iic_info_ptr->mode == DEV_MASTER_MODE) \
-				&& (iic_info_ptr->cur_state == IIC_IN_RX)) {
-				iic_info_ptr->cur_state = IIC_FREE;
-			}
-			break;
-		case IIC_CMD_SET_TXINT:
-			if (iic_info_ptr->mode == DEV_MASTER_MODE) {
-				DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_RX, E_CTX);
-			}
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_SND);
-				iic_info_ptr->cur_state = IIC_FREE;
-			} else {
-				iic_info_ptr->cur_state = IIC_IN_TX;
-				dw_iic_ena_cbr(iic_info_ptr, DW_IIC_RDY_SND);
-			}
-			break;
-		case IIC_CMD_SET_RXINT:
-			if (iic_info_ptr->mode == DEV_MASTER_MODE) {
-				DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_TX, E_CTX);
-			}
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				iic_info_ptr->cur_state = IIC_FREE;
-				dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_RCV);
-			} else {
-				iic_info_ptr->cur_state = IIC_IN_RX;
-				dw_iic_ena_cbr(iic_info_ptr, DW_IIC_RDY_RCV);
-			}
-			break;
-		case IIC_CMD_SET_TXINT_BUF:
-			if (iic_info_ptr->mode == DEV_MASTER_MODE) {
-				DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_TX, E_CTX);
-			}
-			DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				iic_info_ptr->tx_buf = *devbuf;
-				iic_info_ptr->tx_buf.ofs = 0;
-			} else {
-				iic_info_ptr->tx_buf.buf = NULL;
-				iic_info_ptr->tx_buf.len = 0;
-				iic_info_ptr->tx_buf.ofs = 0;
-			}
-			break;
-		case IIC_CMD_SET_RXINT_BUF:
-			if (iic_info_ptr->mode == DEV_MASTER_MODE) {
-				DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_RX, E_CTX);
-			}
-			DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				iic_info_ptr->rx_buf = *devbuf;
-				iic_info_ptr->rx_buf.ofs = 0;
-				iic_ctrl_ptr->dw_iic_rxbuf.ofs = 0;
-				iic_ctrl_ptr->dw_iic_rxbuf.len = devbuf->len;
-			} else {
-				iic_info_ptr->rx_buf.buf = NULL;
-				iic_info_ptr->rx_buf.len = 0;
-				iic_info_ptr->rx_buf.ofs = 0;
-				iic_ctrl_ptr->dw_iic_rxbuf.ofs = 0;
-				iic_ctrl_ptr->dw_iic_rxbuf.len = 0;
-			}
-			break;
+	/* Commmon commands for both master and slave mode */
+	case IIC_CMD_GET_STATUS:
+		DW_IIC_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = iic_info_ptr->status;
+		break;
+	case IIC_CMD_ENA_DEV:
+		dw_iic_enable_device(iic_info_ptr);
+		break;
+	case IIC_CMD_DIS_DEV:
+		dw_iic_disable_device(iic_info_ptr);
+		break;
+	case IIC_CMD_RESET:
+		dw_iic_reset_device(iic_info_ptr);
+		break;
+	case IIC_CMD_FLUSH_TX:
+		dw_iic_flush_tx(iic_reg_ptr);
+		break;
+	case IIC_CMD_FLUSH_RX:
+		dw_iic_flush_rx(iic_reg_ptr);
+		break;
+	case IIC_CMD_SET_ADDR_MODE:
+		val32 = (uint32_t)param;
+		DW_IIC_CHECK_EXP((val32 == IIC_7BIT_ADDRESS) || (val32 == IIC_10BIT_ADDRESS), E_PAR);
+		if (iic_info_ptr->mode == DEV_MASTER_MODE) {
+			dw_iic_set_mstaddr_mode(iic_reg_ptr, val32);
+		} else {
+			dw_iic_set_slvaddr_mode(iic_reg_ptr, val32);
+		}
+		iic_info_ptr->addr_mode = val32;
+		break;
+	case IIC_CMD_GET_RXAVAIL:
+		DW_IIC_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = dw_iic_get_rxavail(iic_ctrl_ptr);
+		break;
+	case IIC_CMD_GET_TXAVAIL:
+		DW_IIC_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = dw_iic_get_txavail(iic_ctrl_ptr);
+		break;
+	case IIC_CMD_SET_TXCB:
+		DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		iic_info_ptr->iic_cbs.tx_cb = param;
+		break;
+	case IIC_CMD_SET_RXCB:
+		DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		iic_info_ptr->iic_cbs.rx_cb = param;
+		break;
+	case IIC_CMD_SET_ERRCB:
+		DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		iic_info_ptr->iic_cbs.err_cb = param;
+		break;
+	case IIC_CMD_ABORT_TX:
+		dw_iic_abort_tx(iic_obj);
+		if ((iic_info_ptr->mode == DEV_MASTER_MODE) \
+		    && (iic_info_ptr->cur_state == IIC_IN_TX)) {
+			iic_info_ptr->cur_state = IIC_FREE;
+		}
+		break;
+	case IIC_CMD_ABORT_RX:
+		dw_iic_abort_rx(iic_obj);
+		if ((iic_info_ptr->mode == DEV_MASTER_MODE) \
+		    && (iic_info_ptr->cur_state == IIC_IN_RX)) {
+			iic_info_ptr->cur_state = IIC_FREE;
+		}
+		break;
+	case IIC_CMD_SET_TXINT:
+		if (iic_info_ptr->mode == DEV_MASTER_MODE) {
+			DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_RX, E_CTX);
+		}
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_SND);
+			iic_info_ptr->cur_state = IIC_FREE;
+		} else {
+			iic_info_ptr->cur_state = IIC_IN_TX;
+			dw_iic_ena_cbr(iic_info_ptr, DW_IIC_RDY_SND);
+		}
+		break;
+	case IIC_CMD_SET_RXINT:
+		if (iic_info_ptr->mode == DEV_MASTER_MODE) {
+			DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_TX, E_CTX);
+		}
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			iic_info_ptr->cur_state = IIC_FREE;
+			dw_iic_dis_cbr(iic_info_ptr, DW_IIC_RDY_RCV);
+		} else {
+			iic_info_ptr->cur_state = IIC_IN_RX;
+			dw_iic_ena_cbr(iic_info_ptr, DW_IIC_RDY_RCV);
+		}
+		break;
+	case IIC_CMD_SET_TXINT_BUF:
+		if (iic_info_ptr->mode == DEV_MASTER_MODE) {
+			DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_TX, E_CTX);
+		}
+		DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			iic_info_ptr->tx_buf = *devbuf;
+			iic_info_ptr->tx_buf.ofs = 0;
+		} else {
+			iic_info_ptr->tx_buf.buf = NULL;
+			iic_info_ptr->tx_buf.len = 0;
+			iic_info_ptr->tx_buf.ofs = 0;
+		}
+		break;
+	case IIC_CMD_SET_RXINT_BUF:
+		if (iic_info_ptr->mode == DEV_MASTER_MODE) {
+			DW_IIC_CHECK_EXP(iic_info_ptr->cur_state != IIC_IN_RX, E_CTX);
+		}
+		DW_IIC_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			iic_info_ptr->rx_buf = *devbuf;
+			iic_info_ptr->rx_buf.ofs = 0;
+			iic_ctrl_ptr->dw_iic_rxbuf.ofs = 0;
+			iic_ctrl_ptr->dw_iic_rxbuf.len = devbuf->len;
+		} else {
+			iic_info_ptr->rx_buf.buf = NULL;
+			iic_info_ptr->rx_buf.len = 0;
+			iic_info_ptr->rx_buf.ofs = 0;
+			iic_ctrl_ptr->dw_iic_rxbuf.ofs = 0;
+			iic_ctrl_ptr->dw_iic_rxbuf.len = 0;
+		}
+		break;
 
-		/* Master mode only commands */
-		case IIC_CMD_MST_SET_SPEED_MODE:
-			DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
-			val32 = (uint32_t)param;
-			DW_IIC_CHECK_EXP((val32>=IIC_SPEED_STANDARD) && (val32<=IIC_SPEED_ULTRA), E_PAR);
-			dw_iic_set_speedmode(iic_reg_ptr, val32);
-			iic_info_ptr->speed_mode = val32;
-			break;
-		case IIC_CMD_MST_SET_TAR_ADDR:
-			DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
-			if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
-				val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
-			} else {
-				val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
-			}
-			if (val32 != iic_info_ptr->tar_addr) {
-				dw_iic_set_taraddr(iic_reg_ptr, val32);
-				iic_info_ptr->tar_addr = val32;
-			}
-			break;
-		case IIC_CMD_MST_SET_NEXT_COND:
-			DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
-			val32 = (uint32_t)param;
-			DW_IIC_CHECK_EXP((val32==IIC_MODE_STOP) || (val32==IIC_MODE_RESTART), E_PAR);
-			iic_info_ptr->next_cond = (uint32_t)param;
-			break;
+	/* Master mode only commands */
+	case IIC_CMD_MST_SET_SPEED_MODE:
+		DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
+		val32 = (uint32_t)param;
+		DW_IIC_CHECK_EXP((val32 >= IIC_SPEED_STANDARD) && (val32 <= IIC_SPEED_ULTRA), E_PAR);
+		dw_iic_set_speedmode(iic_reg_ptr, val32);
+		iic_info_ptr->speed_mode = val32;
+		break;
+	case IIC_CMD_MST_SET_TAR_ADDR:
+		DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
+		if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
+			val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
+		} else {
+			val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
+		}
+		if (val32 != iic_info_ptr->tar_addr) {
+			dw_iic_set_taraddr(iic_reg_ptr, val32);
+			iic_info_ptr->tar_addr = val32;
+		}
+		break;
+	case IIC_CMD_MST_SET_NEXT_COND:
+		DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_MASTER_MODE, E_NOSPT);
+		val32 = (uint32_t)param;
+		DW_IIC_CHECK_EXP((val32 == IIC_MODE_STOP) || (val32 == IIC_MODE_RESTART), E_PAR);
+		iic_info_ptr->next_cond = (uint32_t)param;
+		break;
 
-		/* Slave mode only commands */
-		case IIC_CMD_SLV_SET_SLV_ADDR:
-			DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_SLAVE_MODE, E_NOSPT);
-			if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
-				val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
-			} else {
-				val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
-			}
-			dw_iic_set_slvaddr(iic_reg_ptr, val32);
-			iic_info_ptr->slv_addr = val32;
-			break;
-		case IIC_CMD_SLV_GET_SLV_STATE:
-			DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_SLAVE_MODE, E_NOSPT);
-			DW_IIC_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((uint32_t *)param) = dw_iic_get_slv_state(iic_reg_ptr);
-			break;
+	/* Slave mode only commands */
+	case IIC_CMD_SLV_SET_SLV_ADDR:
+		DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_SLAVE_MODE, E_NOSPT);
+		if (iic_info_ptr->addr_mode == IIC_7BIT_ADDRESS) {
+			val32 = ((uint32_t)param) & IIC_7BIT_ADDRESS_MASK;
+		} else {
+			val32 = ((uint32_t)param) & IIC_10BIT_ADDRESS_MASK;
+		}
+		dw_iic_set_slvaddr(iic_reg_ptr, val32);
+		iic_info_ptr->slv_addr = val32;
+		break;
+	case IIC_CMD_SLV_GET_SLV_STATE:
+		DW_IIC_CHECK_EXP(iic_info_ptr->mode == DEV_SLAVE_MODE, E_NOSPT);
+		DW_IIC_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((uint32_t *)param) = dw_iic_get_slv_state(iic_reg_ptr);
+		break;
 
-		default:
-			ercd = E_NOSPT;
-			break;
+	default:
+		ercd = E_NOSPT;
+		break;
 	}
 
 error_exit:
@@ -1524,7 +1541,7 @@ error_exit:
  * \retval	E_CTX	Device is still in transfer state
  * \retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
  */
-int32_t dw_iic_write (DEV_IIC *iic_obj, const void *data, uint32_t len)
+int32_t dw_iic_write(DEV_IIC *iic_obj, const void *data, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
@@ -1533,8 +1550,8 @@ int32_t dw_iic_write (DEV_IIC *iic_obj, const void *data, uint32_t len)
 	VALID_CHK_IIC_INFO_OBJECT(iic_info_ptr);
 	DW_IIC_CHECK_EXP(iic_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_IIC_CHECK_EXP(iic_info_ptr->status & DEV_ENABLED, E_SYS);
-	DW_IIC_CHECK_EXP(data!=NULL, E_PAR);
-	DW_IIC_CHECK_EXP(len>0, E_PAR);
+	DW_IIC_CHECK_EXP(data != NULL, E_PAR);
+	DW_IIC_CHECK_EXP(len > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
 	int32_t i = 0;
@@ -1558,7 +1575,7 @@ int32_t dw_iic_write (DEV_IIC *iic_obj, const void *data, uint32_t len)
 			if (error_state != IIC_ERR_NONE) {
 				break;
 			}
-			i ++;
+			i++;
 		}
 		/* Try to transmit the last data with STOP or RESTART condition */
 		if (error_state == IIC_ERR_NONE) {
@@ -1573,7 +1590,7 @@ int32_t dw_iic_write (DEV_IIC *iic_obj, const void *data, uint32_t len)
 			if (error_state != IIC_ERR_NONE) {
 				break;
 			}
-			i ++;
+			i++;
 		}
 	}
 	iic_info_ptr->err_state = error_state;
@@ -1595,7 +1612,7 @@ error_exit:
  * \retval	E_PAR	Parameter is not valid
  * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
  */
-int32_t dw_iic_read (DEV_IIC *iic_obj, void *data, uint32_t len)
+int32_t dw_iic_read(DEV_IIC *iic_obj, void *data, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_INFO *iic_info_ptr = &(iic_obj->iic_info);
@@ -1604,8 +1621,8 @@ int32_t dw_iic_read (DEV_IIC *iic_obj, void *data, uint32_t len)
 	VALID_CHK_IIC_INFO_OBJECT(iic_info_ptr);
 	DW_IIC_CHECK_EXP(iic_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_IIC_CHECK_EXP(iic_info_ptr->status & DEV_ENABLED, E_SYS);
-	DW_IIC_CHECK_EXP(data!=NULL, E_PAR);
-	DW_IIC_CHECK_EXP(len>0, E_PAR);
+	DW_IIC_CHECK_EXP(data != NULL, E_PAR);
+	DW_IIC_CHECK_EXP(len > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
 	int32_t i = 0;
@@ -1632,7 +1649,7 @@ int32_t dw_iic_read (DEV_IIC *iic_obj, void *data, uint32_t len)
 			} else {
 				p_charbuf[i] = (uint8_t)val32;
 			}
-			i ++;
+			i++;
 		}
 		/* Try to receive the last data with STOP or RESTART condition */
 		if (error_state == IIC_ERR_NONE) {
@@ -1650,7 +1667,7 @@ int32_t dw_iic_read (DEV_IIC *iic_obj, void *data, uint32_t len)
 			} else {
 				p_charbuf[i] = (uint8_t)val32;
 			}
-			i ++;
+			i++;
 		}
 	}
 	iic_info_ptr->err_state = error_state;

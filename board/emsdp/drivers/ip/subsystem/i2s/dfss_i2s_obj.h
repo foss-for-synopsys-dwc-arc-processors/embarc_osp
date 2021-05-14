@@ -26,26 +26,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DFSS_I2S_OBJ_H_
 #define _DFSS_I2S_OBJ_H_
 
 #include "device/ip_hal/dev_i2s.h"
 
-#define DFSS_I2S_0_ID		0	/*!< I2S 0 ID macro */
-#define DFSS_I2S_1_ID		1	/*!< I2S 1 ID macro */
-#define DFSS_NO_I2S			(-1)/* in case no ID is in use, dfss_i2s_get_dev() should handle this value*/
+#define DFSS_I2S_0_ID           0               /*!< I2S 0 ID macro */
+#define DFSS_I2S_1_ID           1               /*!< I2S 1 ID macro */
+#define DFSS_NO_I2S                     (-1)    /* in case no ID is in use, dfss_i2s_get_dev() should handle this value*/
 
 #ifdef IO_I2S_TX_MST0_PRESENT
-#define USE_DFSS_I2S_0		1	/*!< enable use DFSS I2S 0 as TX */
+#define USE_DFSS_I2S_0          1       /*!< enable use DFSS I2S 0 as TX */
 #else
-#define USE_DFSS_I2S_0		0	/*!< disable use DFSS I2S 0 as TX */
+#define USE_DFSS_I2S_0          0       /*!< disable use DFSS I2S 0 as TX */
 #endif
 
 #ifdef IO_I2S_RX_MST0_PRESENT
-#define USE_DFSS_I2S_1		1	/*!< enable use DFSS I2S 1 as RX */
+#define USE_DFSS_I2S_1          1       /*!< enable use DFSS I2S 1 as RX */
 #else
-#define USE_DFSS_I2S_1		0	/*!< disable use DFSS I2S 1 as RX */
+#define USE_DFSS_I2S_1          0       /*!< disable use DFSS I2S 1 as RX */
 #endif
 
 #ifdef __cplusplus

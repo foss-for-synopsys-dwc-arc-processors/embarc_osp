@@ -26,25 +26,25 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_TRNG_OBJ_H_
 #define _DW_TRNG_OBJ_H_
 
 #include "dw_trng.h"
 #include "dw_nist_trng.h"
 
-#define DW_TRNG_NUM		(1)	/*!< DesignWare TRNG valid number */
+#define DW_TRNG_NUM             (1)     /*!< DesignWare TRNG valid number */
 
 /**
  * Designware TRNG Object ID Macros
  */
-#define DW_TRNG_BASE_ID		0
-#define DW_TRNG_0_ID		0	/*!< Trng */
+#define DW_TRNG_BASE_ID         0
+#define DW_TRNG_0_ID            0       /*!< Trng */
 
 /**
  * Designware TRNG Object Control Macros
  */
-#define USE_DW_TRNG_0		1	/*!< enable use designware TRNG 0 */
+#define USE_DW_TRNG_0           1       /*!< enable use designware TRNG 0 */
 
 #ifdef __cplusplus
 extern "C" {

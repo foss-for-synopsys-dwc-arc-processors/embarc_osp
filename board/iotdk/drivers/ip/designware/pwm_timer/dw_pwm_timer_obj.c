@@ -26,47 +26,45 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dw_pwm_timer_obj.h"
 
 #include "iotdk/iotdk.h"
 
-
 #if (USE_DW_PWM_TIMER_0)
-#define PWM_TIMER_0_CH_0_INTNO	98			/*!< designware pwm_timer group 0 channel 0 interrupt number  */
-static DEV_PWM_TIMER	dw_pwm_timer_0;		/*!< designware pwm_timer object */
-static DW_PWM_TIMER_CTRL dw_pwm_timer_0_ctrl;		/*!< designware pwm_timer group 0 ctrl */
-static DEV_PWM_TIMER_HANDLER dw_pwm_timer_0_handler[DW_PWM_TIMER_0_CH_MAX_COUNT];	/*!< designware pwm_timer group 0 channels callback handler */
+#define PWM_TIMER_0_CH_0_INTNO  98                                                      /*!< designware pwm_timer group 0 channel 0 interrupt number  */
+static DEV_PWM_TIMER dw_pwm_timer_0;                                                    /*!< designware pwm_timer object */
+static DW_PWM_TIMER_CTRL dw_pwm_timer_0_ctrl;                                           /*!< designware pwm_timer group 0 ctrl */
+static DEV_PWM_TIMER_HANDLER dw_pwm_timer_0_handler[DW_PWM_TIMER_0_CH_MAX_COUNT];       /*!< designware pwm_timer group 0 channels callback handler */
 
-static DEV_PWM_TIMER_MODE dw_pwm_timer_0_mode[DW_PWM_TIMER_0_CH_MAX_COUNT]; /*!< designware pwm_timer group 0 channels mode */
+static DEV_PWM_TIMER_MODE dw_pwm_timer_0_mode[DW_PWM_TIMER_0_CH_MAX_COUNT];             /*!< designware pwm_timer group 0 channels mode */
 
 static DW_PWM_TIMER_CH_ISR dw_pwm_timer_0_ch_isr = {
 	DW_PWM_TIMER_0_CH_MAX_COUNT, dw_pwm_timer_0_handler
 };
 
-
 /** DesignWare PWM_TIMER 0 open */
-static int32_t dw_pwm_timer_0_open (void)
+static int32_t dw_pwm_timer_0_open(void)
 {
 	return dw_pwm_timer_open(&dw_pwm_timer_0);
 }
 /** DesignWare PWM_TIMER 0 close */
-static int32_t dw_pwm_timer_0_close (void)
+static int32_t dw_pwm_timer_0_close(void)
 {
 	return dw_pwm_timer_close(&dw_pwm_timer_0);
 }
 /** DesignWare PWM_TIMER 0 control */
-static int32_t dw_pwm_timer_0_control (uint32_t ch, uint32_t cmd, void *param)
+static int32_t dw_pwm_timer_0_control(uint32_t ch, uint32_t cmd, void *param)
 {
 	return dw_pwm_timer_control(&dw_pwm_timer_0, ch, cmd, param);
 }
 /** DesignWare PWM_TIMER 0 write */
-static int32_t dw_pwm_timer_0_write (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)
+static int32_t dw_pwm_timer_0_write(uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)
 {
 	return dw_pwm_timer_write(&dw_pwm_timer_0, ch, mode, freq, dc);
 }
 /** DesignWare PWM_TIMER 0 read */
-static int32_t dw_pwm_timer_0_read (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)
+static int32_t dw_pwm_timer_0_read(uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)
 {
 	return dw_pwm_timer_read(&dw_pwm_timer_0, ch, mode, freq, dc);
 }
@@ -94,12 +92,11 @@ static void dw_pwm_timer_0_install(void)
 	dw_pwm_timer_ctrl_ptr->ch_num = DW_PWM_TIMER_0_CH_MAX_COUNT;
 	dw_pwm_timer_ctrl_ptr->int_handler = dw_pwm_timer_0_isr;
 
-	for (i=0; i < dw_pwm_timer_0_ch_isr.int_ch_max_cnt; i++) {
+	for (i = 0; i < dw_pwm_timer_0_ch_isr.int_ch_max_cnt; i++) {
 		dw_pwm_timer_0_ch_isr.int_ch_handler_ptr[i] = NULL;
 	}
 	dw_pwm_timer_ctrl_ptr->ch_isr = &(dw_pwm_timer_0_ch_isr);
 	dw_pwm_timer_ctrl_ptr->mode = dw_pwm_timer_0_mode;
-
 
 	/** PWM_TIMER dev init */
 	dw_pwm_timer_ptr->pwm_timer_open = dw_pwm_timer_0_open;
@@ -121,7 +118,6 @@ void dw_pwm_timer_all_install(void)
 #endif
 }
 
-
 /** get one designware device structure */
 DEV_PWM_TIMER_PTR pwm_timer_get_dev(int32_t pwm_timer_id)
 {
@@ -136,15 +132,13 @@ DEV_PWM_TIMER_PTR pwm_timer_get_dev(int32_t pwm_timer_id)
 	switch (pwm_timer_id) {
 #if (USE_DW_PWM_TIMER_0)
 
-		case DW_PWM_TIMER_0_ID:
-			return &dw_pwm_timer_0;
-			break;
+	case DW_PWM_TIMER_0_ID:
+		return &dw_pwm_timer_0;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;
 }
-
-

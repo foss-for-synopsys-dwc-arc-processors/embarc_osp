@@ -30,7 +30,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dfss_uart_obj.h"
 #include "ss_uart.h"
 
@@ -101,7 +101,6 @@ static void dfss_uart_0_install(void)
 {
 	DEV_UART *dfss_uart_ptr = &dfss_uart_0;
 	DEV_UART_INFO *dfss_uart_info_ptr = &(dfss_uart_0.uart_info);
-
 
 	uart_context0.info = &(dfss_uart_0.uart_info);
 	/** uart info init */
@@ -184,7 +183,6 @@ static void dfss_uart_1_install(void)
 {
 	DEV_UART *dfss_uart_ptr = &dfss_uart_1;
 	DEV_UART_INFO *dfss_uart_info_ptr = &(dfss_uart_1.uart_info);
-
 
 	uart_context1.info = &(dfss_uart_1.uart_info);
 	/** uart info init */
@@ -281,7 +279,6 @@ static void dfss_uart_2_install(void)
 	dfss_uart_ptr->uart_read = dfss_uart_2_read;
 }
 #endif /* USE_DFSS_UART_2 */
-
 
 #if USE_DFSS_UART_3
 
@@ -397,31 +394,31 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 	switch (uart_id) {
 #if USE_DFSS_UART_0
 
-		case DFSS_UART_0_ID:
-			return &dfss_uart_0;
-			break;
+	case DFSS_UART_0_ID:
+		return &dfss_uart_0;
+		break;
 #endif
 #if USE_DFSS_UART_1
 
-		case DFSS_UART_1_ID:
-			return &dfss_uart_1;
-			break;
+	case DFSS_UART_1_ID:
+		return &dfss_uart_1;
+		break;
 #endif
 #if USE_DFSS_UART_2
 
-		case DFSS_UART_2_ID:
-			return &dfss_uart_2;
-			break;
+	case DFSS_UART_2_ID:
+		return &dfss_uart_2;
+		break;
 #endif
 #if USE_DFSS_UART_3
 
-		case DFSS_UART_3_ID:
-			return &dfss_uart_3;
-			break;
+	case DFSS_UART_3_ID:
+		return &dfss_uart_3;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

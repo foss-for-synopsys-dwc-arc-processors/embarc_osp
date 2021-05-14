@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <stdint.h>
 #include "embARC_error.h"
@@ -34,7 +34,7 @@
 #include "board.h"
 #include "cy8c95xx.h"
 
-#define CY8C95XX_CHECK_EXP_NORTN(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define CY8C95XX_CHECK_EXP_NORTN(EXPR, ERROR_CODE)              CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 int32_t cy8c95xx_reg_write(CY8C95XX_DEF_PTR obj, uint8_t dev, uint8_t regaddr, uint8_t *val, uint8_t len)
 {
@@ -100,6 +100,7 @@ int32_t cy8c95xx_readid(CY8C95XX_DEF_PTR obj, uint8_t *value)
 {
 	int32_t ercd = E_OK;
 	uint8_t buffer_rx[1];
+
 	CY8C95XX_CHECK_EXP_NORTN(value != NULL, E_PAR);
 	CY8C95XX_CHECK_EXP_NORTN(cy8c95xx_reg_read(obj, CY8C95XX_DEV_IO, CY8C95XX_DEVICE_ID_REG, buffer_rx, 1) == E_OK, E_SYS);
 	*value = buffer_rx[0];
@@ -115,7 +116,7 @@ int32_t cy8c95xx_writeport(CY8C95XX_DEF_PTR obj, uint8_t port, uint8_t value)
 	uint8_t val = 0;
 
 	CY8C95XX_CHECK_EXP_NORTN(port < CY8C95XX_PORT_NONE, E_PAR);
-	//Set port [0..7]
+	// Set port [0..7]
 	buffer_tx[0] = value;
 	CY8C95XX_CHECK_EXP_NORTN(cy8c95xx_reg_write(obj, CY8C95XX_DEV_IO, CY8C95XX_OUTPUT_PORT0_REG + port, buffer_tx, 1) == E_OK, E_SYS);
 	CY8C95XX_CHECK_EXP_NORTN(cy8c95xx_reg_read(obj, CY8C95XX_DEV_IO, CY8C95XX_OUTPUT_PORT0_REG + port, &val, 1) == E_OK, E_SYS);

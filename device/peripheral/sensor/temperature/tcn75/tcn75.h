@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _TCN75_H_
 #define _TCN75_H_
@@ -34,12 +34,12 @@
 #include "device/ip_hal/dev_iic.h"
 
 /* TCN75 iic address, can be selected using jumpers on board */
-#define TCN75_A0_PIN		1	/*!< I2C Serial Bus Address Selection Pin */
-#define TCN75_A1_PIN		1	/*!< I2C Serial Bus Address Selection Pin */
-#define TCN75_A2_PIN		0	/*!< I2C Serial Bus Address Selection Pin */
-#define TCN75_IIC_ADDRESS	(0x48 + (TCN75_A2_PIN << 2) +(TCN75_A1_PIN << 1) + TCN75_A0_PIN)
+#define TCN75_A0_PIN            1       /*!< I2C Serial Bus Address Selection Pin */
+#define TCN75_A1_PIN            1       /*!< I2C Serial Bus Address Selection Pin */
+#define TCN75_A2_PIN            0       /*!< I2C Serial Bus Address Selection Pin */
+#define TCN75_IIC_ADDRESS       (0x48 + (TCN75_A2_PIN << 2) + (TCN75_A1_PIN << 1) + TCN75_A0_PIN)
 
-#define TEMP_I2C_SLAVE_ADDRESS	TCN75_IIC_ADDRESS
+#define TEMP_I2C_SLAVE_ADDRESS  TCN75_IIC_ADDRESS
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,8 +47,8 @@ extern "C" {
 
 /* options for mode parameter of temp_sensor_mode() */
 typedef enum {
-	TCN75_OP_MODE_NORMAL	= 0,
-	TCN75_OP_MODE_SHUTDOWN	= 1
+	TCN75_OP_MODE_NORMAL    = 0,
+	TCN75_OP_MODE_SHUTDOWN  = 1
 } TCN75_OP_MODE;
 
 /* temperature sensor object type*/
@@ -56,14 +56,14 @@ typedef struct {
 	uint32_t i2c_id;
 	uint32_t slvaddr;
 
-	int32_t  op_mode;
+	int32_t op_mode;
 } TCN75_DEF, *TCN75_DEF_PTR;
 
 #define TCN75_DEFINE(NAME, I2C_ID, SLAVE_ADDRESS) \
-	TCN75_DEF __ ## NAME = { \
-			.i2c_id = I2C_ID, \
-			.slvaddr = SLAVE_ADDRESS, \
-	}; \
+	TCN75_DEF __ ## NAME = {		  \
+		.i2c_id = I2C_ID,		  \
+		.slvaddr = SLAVE_ADDRESS,	  \
+	};					  \
 	TCN75_DEF_PTR NAME = &__ ## NAME
 
 extern int32_t tcn75_sensor_init(TCN75_DEF_PTR obj);

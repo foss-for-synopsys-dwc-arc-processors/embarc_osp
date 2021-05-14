@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 #include <stdarg.h>
@@ -44,7 +44,7 @@
 #include "os_hal_inc.h"
 #endif
 
-#define HSDK_NTSHELL_UART_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define HSDK_NTSHELL_UART_CHECK_EXP(EXPR, ERROR_CODE)   CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 typedef struct ntshell_io_uart NTSHELL_IO_UART, *NTSHELL_IO_UART_PTR;
 
@@ -61,14 +61,14 @@ static int32_t ntshell_uart_nt_ioinit(NTSHELL_IO *nt_io)
 	DEV_UART *uart_dev;
 	NTSHELL_IO_UART *nt_uart;
 
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL, E_OBJ);
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info!=NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io != NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info != NULL, E_OBJ);
 
 	nt_uart = (NTSHELL_IO_UART *)nt_io->extra_info;
 
 	uart_dev = uart_get_dev(nt_uart->uart_id);
 
-	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL, E_PAR);
+	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev != NULL, E_PAR);
 	uart_dev->uart_open(nt_uart->uart_freq);
 
 	ercd = E_OK;
@@ -84,13 +84,13 @@ static int32_t ntshell_uart_nt_read(NTSHELL_IO *nt_io, void *buf, uint32_t cnt)
 	NTSHELL_IO_UART *nt_uart;
 	int32_t rd_avail = 0;
 
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL, E_OBJ);
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info!=NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io != NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info != NULL, E_OBJ);
 
 	nt_uart = (NTSHELL_IO_UART *)nt_io->extra_info;
 	uart_dev = uart_get_dev(nt_uart->uart_id);
 
-	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL, E_PAR);
+	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev != NULL, E_PAR);
 
 	ercd = cnt;
 	do {
@@ -107,7 +107,6 @@ static int32_t ntshell_uart_nt_read(NTSHELL_IO *nt_io, void *buf, uint32_t cnt)
 		}
 	} while (cnt > 0);
 
-
 error_exit:
 	return ercd;
 }
@@ -118,13 +117,13 @@ static int32_t ntshell_uart_nt_write(NTSHELL_IO *nt_io, const void *buf, uint32_
 	DEV_UART *uart_dev;
 	NTSHELL_IO_UART *nt_uart;
 
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL, E_OBJ);
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info!=NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io != NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info != NULL, E_OBJ);
 
 	nt_uart = (NTSHELL_IO_UART *)nt_io->extra_info;
 	uart_dev = uart_get_dev(nt_uart->uart_id);
 
-	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL, E_PAR);
+	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev != NULL, E_PAR);
 
 	ercd = (int32_t)uart_dev->uart_write(buf, cnt);
 
@@ -136,22 +135,23 @@ static void ntshell_uart_nt_printf(NTSHELL_IO *nt_io, const char *fmt, va_list a
 {
 	int32_t ercd = E_OK;
 	NTSHELL_IO_UART *nt_uart;
+
 	void (*pf)(unsigned char);
 
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io!=NULL, E_OBJ);
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info!=NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io != NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_io->extra_info != NULL, E_OBJ);
 
 	nt_uart = (NTSHELL_IO_UART *)nt_io->extra_info;
 
 	if (nt_uart->write_byte) {
-		pf = xfunc_out;	 /* Save current output device */
-		xfunc_out = nt_uart->write_byte;   /* Switch output to specified device */
+		pf = xfunc_out;                         /* Save current output device */
+		xfunc_out = nt_uart->write_byte;        /* Switch output to specified device */
 		xvprintf(fmt, arp);
-		xfunc_out = pf;	 /* Restore output device */
+		xfunc_out = pf;                         /* Restore output device */
 	}
 
 error_exit:
-	return ;
+	return;
 }
 
 static void ntshell_uart_write_byte(NTSHELL_IO_UART *nt_uart, unsigned char byte)
@@ -159,17 +159,16 @@ static void ntshell_uart_write_byte(NTSHELL_IO_UART *nt_uart, unsigned char byte
 	int32_t ercd = E_OK;
 	DEV_UART *uart_dev;
 
-	HSDK_NTSHELL_UART_CHECK_EXP(nt_uart!=NULL, E_OBJ);
+	HSDK_NTSHELL_UART_CHECK_EXP(nt_uart != NULL, E_OBJ);
 
 	uart_dev = uart_get_dev(nt_uart->uart_id);
-	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev!=NULL, E_PAR);
+	HSDK_NTSHELL_UART_CHECK_EXP(uart_dev != NULL, E_PAR);
 
 	uart_dev->uart_write((const void *)&byte, 1);
 
 error_exit:
-	return ;
+	return;
 }
-
 
 #if USE_HSDK_NTSHELL_UART_1
 static int32_t ntshell_uart_1_nt_ioinit(void)
@@ -198,7 +197,7 @@ static void ntshell_uart_1_nt_printf(const char *fmt, ...)
 
 static void ntshell_uart_1_write_byte(unsigned char byte);
 
-static ntshell_t  uart_ntshell_1;
+static ntshell_t uart_ntshell_1;
 static NTSHELL_IO_UART ntshell_uart_1_info = {
 	BOARD_CONSOLE_UART_ID, UART_BAUDRATE_115200, DEV_POLL_METHOD, \
 	ntshell_uart_1_write_byte
@@ -210,17 +209,17 @@ static void ntshell_uart_1_write_byte(unsigned char byte)
 }
 
 NTSHELL_IO ntshell_uart_1 = {
-	&uart_ntshell_1, \
-	&help_cmd, \
-	NULL, \
-	"COM1>", \
-	(void *)(&ntshell_uart_1_info), \
-	ntshell_uart_1_nt_ioinit, \
-	ntshell_uart_1_nt_read, \
-	ntshell_uart_1_nt_write, \
+	&uart_ntshell_1,		\
+	&help_cmd,			\
+	NULL,				\
+	"COM1>",			\
+	(void *)(&ntshell_uart_1_info),	\
+	ntshell_uart_1_nt_ioinit,	\
+	ntshell_uart_1_nt_read,		\
+	ntshell_uart_1_nt_write,	\
 	ntshell_uart_1_nt_printf
 };
 
-#endif /** USE_HSDK_NTSHELL_UART_1 */
+#endif  /** USE_HSDK_NTSHELL_UART_1 */
 
-#endif /** MID_NTSHELL */
+#endif  /** MID_NTSHELL */

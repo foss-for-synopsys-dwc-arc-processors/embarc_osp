@@ -26,16 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _HSDK_IO_H_
 #define _HSDK_IO_H_
 
 #include "../drivers/ip/designware/iic/dw_iic_obj.h"
 
-#define HSDK_I2C_ADDR_CY8C95XX_IO		(0x20)
-#define HSDK_I2C_ADDR_CY8C95XX_EEP		(0x40)
-#define HSDK_I2C_ID_CY8C95XX			(DW_IIC_0_ID)
+#define HSDK_I2C_ADDR_CY8C95XX_IO               (0x20)
+#define HSDK_I2C_ADDR_CY8C95XX_EEP              (0x40)
+#define HSDK_I2C_ID_CY8C95XX                    (DW_IIC_0_ID)
 
 #ifdef __cplusplus
 extern "C" {

@@ -26,27 +26,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SPI_FLASH_FL256S_H_
 #define _SPI_FLASH_FL256S_H_
 
-//Manufacturer: 0x01, DeviceId: 0x0219, ID-CFI: 0x4D
-#define FLASH_ID			0x0102194D
-#define FLASH_SECTOR_SIZE	0x00001000
-#define FLASH_PAGE_SIZE		0x00000100
+// Manufacturer: 0x01, DeviceId: 0x0219, ID-CFI: 0x4D
+#define FLASH_ID                        0x0102194D
+#define FLASH_SECTOR_SIZE       0x00001000
+#define FLASH_PAGE_SIZE         0x00000100
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
 /** flash data type */
 typedef struct {
-	uint32_t head;		/*!< 0x68656164 ='head' */
-	uint32_t cpu_type;	/*!< = 0 - all images, reserved for future */
-	uint32_t start;		/*!< start address of application image in spi flash */
-	uint32_t size;		/*!< size of image in bytes */
-	uint32_t ramaddr;	/*!< address of ram for loading image */
-	uint32_t ramstart;	/*!< start address of application in RAM !!!! */
-	uint32_t checksum;	/*!< checksum of all bytes in image */
+	uint32_t head;          /*!< 0x68656164 ='head' */
+	uint32_t cpu_type;      /*!< = 0 - all images, reserved for future */
+	uint32_t start;         /*!< start address of application image in spi flash */
+	uint32_t size;          /*!< size of image in bytes */
+	uint32_t ramaddr;       /*!< address of ram for loading image */
+	uint32_t ramstart;      /*!< start address of application in RAM !!!! */
+	uint32_t checksum;      /*!< checksum of all bytes in image */
 } image_t;
 
 /** fl256s object type */
@@ -58,16 +58,16 @@ typedef struct fl256s_t {
 
 	uint32_t page_sz;
 	uint32_t sector_sz;
-} FL256S_DEF, * FL256S_DEF_PTR;
+} FL256S_DEF, *FL256S_DEF_PTR;
 
 #define FL256S_DEF(name, spi_master_id, cs_line, page, sector) \
-	FL256S_DEF __ ## name = { \
-		.spi_master = spi_master_id, \
-		.cs = cs_line, \
-		.page_sz = page, \
-		.sector_sz = sector \
-	}; \
-	FL256S_DEF_PTR name = &__ ## name \
+	FL256S_DEF __ ## name = {			       \
+		.spi_master = spi_master_id,		       \
+		.cs = cs_line,				       \
+		.page_sz = page,			       \
+		.sector_sz = sector			       \
+	};						       \
+	FL256S_DEF_PTR name = &__ ## name		       \
 
 #ifdef __cplusplus
 extern "C" {

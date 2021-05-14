@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -38,6 +38,7 @@ static volatile int main_run_flag = 0;
 int main(void)
 {
 	NTSHELL_IO *nt_io;
+
 	nt_io = get_ntshell_io(BOARD_ONBOARD_NTSHELL_ID);
 
 	EMBARC_PRINTF("Start FreeRTOS LwM2M Client Demo by run lwm2m_client command\r\n");
@@ -49,4 +50,3 @@ int main(void)
 
 	return 0;
 }
-

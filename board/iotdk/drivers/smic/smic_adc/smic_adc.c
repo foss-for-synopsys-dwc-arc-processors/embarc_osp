@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "arc/arc.h"
 #include "arc/arc_builtin.h"
@@ -36,8 +36,8 @@
 
 #include "smic_adc.h"
 
-#define SMIC_ADC_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
-#define SMIC_ADC_CHECK_EXP(EXPR, ERROR_CODE)	CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define SMIC_ADC_CHECK_EXP_NORTN(EXPR)          CHECK_EXP_NOERCD(EXPR, error_exit)
+#define SMIC_ADC_CHECK_EXP(EXPR, ERROR_CODE)    CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 int32_t smic_adc_open(SMIC_ADC_DEF_PTR obj)
 {
@@ -48,9 +48,9 @@ int32_t smic_adc_open(SMIC_ADC_DEF_PTR obj)
 
 	obj->adc_open_cnt++;
 	obj->adc_reg->ADCCON = 0x16;
-	//enable ADC;
-	//single mode;
-	//Fadc = 144/2^6 = 2.25Mhz, Sampling Rate = Fadc/16 = 140625Hz
+	// enable ADC;
+	// single mode;
+	// Fadc = 144/2^6 = 2.25Mhz, Sampling Rate = Fadc/16 = 140625Hz
 	int_handler_install(obj->adc_intno, obj->adc_handle);
 	int_disable(obj->adc_intno);
 
@@ -86,23 +86,25 @@ int32_t smic_adc_read_polling(SMIC_ADC_DEF_PTR obj, uint8_t channel, uint16_t *v
 
 	SMIC_ADC_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_ADC_CHECK_EXP(obj->adc_open_cnt != 0, E_CLSED);
-	SMIC_ADC_CHECK_EXP(channel >=0 && channel < obj->adc_channel_max, E_PAR);
+	SMIC_ADC_CHECK_EXP(channel >= 0 && channel < obj->adc_channel_max, E_PAR);
 
-	obj->adc_reg->ADCIMSC |= 1 << channel; //enable interrupt
-	obj->adc_reg->ADCSCAN |= (0x10000 | (1 << channel));//adc channel enable, adc start
+	obj->adc_reg->ADCIMSC |= 1 << channel;                  // enable interrupt
+	obj->adc_reg->ADCSCAN |= (0x10000 | (1 << channel));    // adc channel enable, adc start
 
-	while (!(obj->adc_reg->ADCRIS& (1 << channel)));//wait for ADC conversion end
+	while (!(obj->adc_reg->ADCRIS & (1 << channel))) {
+		;                                       // wait for ADC conversion end
 
+	}
 	if (channel < 8) {
 		adc_value = obj->adc_reg->ADCD0_7[channel];
 	} else {
-		adc_value = obj->adc_reg->ADCD8_15[channel-8];
+		adc_value = obj->adc_reg->ADCD8_15[channel - 8];
 	}
 
-	obj->adc_reg->ADCICLR |= (1 << channel);//clear interrupt flag
+	obj->adc_reg->ADCICLR |= (1 << channel);                // clear interrupt flag
 
-	obj->adc_reg->ADCIMSC &= ~(uint32_t)(1 << channel); //disable interrupt
-	obj->adc_reg->ADCSCAN &= ~(uint32_t)(1 << channel);//adc channel disable
+	obj->adc_reg->ADCIMSC &= ~(uint32_t)(1 << channel);     // disable interrupt
+	obj->adc_reg->ADCSCAN &= ~(uint32_t)(1 << channel);     // adc channel disable
 	*val = adc_value & 0xFFF;
 
 error_exit:
@@ -116,24 +118,26 @@ int32_t smic_adc_read_int(SMIC_ADC_DEF_PTR obj, uint8_t channel, uint16_t *val)
 
 	SMIC_ADC_CHECK_EXP(obj != NULL, E_OBJ);
 	SMIC_ADC_CHECK_EXP(obj->adc_open_cnt != 0, E_CLSED);
-	SMIC_ADC_CHECK_EXP(channel >=0 && channel < obj->adc_channel_max, E_PAR);
+	SMIC_ADC_CHECK_EXP(channel >= 0 && channel < obj->adc_channel_max, E_PAR);
 
 	obj->adc_ready_flag &= ~((uint32_t)(1 << channel));
 
 	int_enable(obj->adc_intno);
 
-	obj->adc_reg->ADCIMSC |= 1 << channel; //enable interrupt
-	obj->adc_reg->ADCSCAN |= (0x10000 | (1 << channel));//adc channel enable, adc start
+	obj->adc_reg->ADCIMSC |= 1 << channel;                  // enable interrupt
+	obj->adc_reg->ADCSCAN |= (0x10000 | (1 << channel));    // adc channel enable, adc start
 
-	while (!(obj->adc_ready_flag & (1 << channel)));
+	while (!(obj->adc_ready_flag & (1 << channel))) {
+		;
+	}
 
 	adc_value = obj->adc_data[channel];
 
 	int_disable(obj->adc_intno);
 
 	obj->adc_ready_flag &= ~((uint32_t)(1 << channel));
-	obj->adc_reg->ADCIMSC &= ~(uint32_t)(1 << channel); //disable interrupt
-	obj->adc_reg->ADCSCAN &= ~(uint32_t)(1 << channel);//adc channel disable
+	obj->adc_reg->ADCIMSC &= ~(uint32_t)(1 << channel);     // disable interrupt
+	obj->adc_reg->ADCSCAN &= ~(uint32_t)(1 << channel);     // adc channel disable
 	*val = adc_value & 0xFFF;
 
 error_exit:
@@ -155,36 +159,35 @@ int32_t smic_adc_control(SMIC_ADC_DEF_PTR obj, uint32_t ctrl_cmd, void *param)
 	}
 
 	switch (ctrl_cmd) {
-		case SMIC_ADC_SET_MODE:
-			SMIC_ADC_CHECK_EXP(*((SMIC_ADC_MODE *)param) != ADC_MODE_CONTINUOUS && \
-			                   *((SMIC_ADC_MODE *)param) != ADC_MODE_SINGLE, E_PAR);
-			obj->adc_reg->ADCCON |= (*((SMIC_ADC_MODE *)param) << 3);
-			obj->adc_mode = *((SMIC_ADC_MODE *)param);
-			break;
+	case SMIC_ADC_SET_MODE:
+		SMIC_ADC_CHECK_EXP(*((SMIC_ADC_MODE *)param) != ADC_MODE_CONTINUOUS && \
+				   *((SMIC_ADC_MODE *)param) != ADC_MODE_SINGLE, E_PAR);
+		obj->adc_reg->ADCCON |= (*((SMIC_ADC_MODE *)param) << 3);
+		obj->adc_mode = *((SMIC_ADC_MODE *)param);
+		break;
 
-		case SMIC_ADC_GET_MODE:
-			obj->adc_mode = (SMIC_ADC_MODE)((obj->adc_reg->ADCCON & (1 << 3)) >> 3);
-			*((SMIC_ADC_MODE *)param) = obj->adc_mode;
-			break;
+	case SMIC_ADC_GET_MODE:
+		obj->adc_mode = (SMIC_ADC_MODE)((obj->adc_reg->ADCCON & (1 << 3)) >> 3);
+		*((SMIC_ADC_MODE *)param) = obj->adc_mode;
+		break;
 
-		case SMIC_ADC_SET_CALLBACK:
-			SMIC_ADC_CHECK_EXP(((SMIC_ADC_CALLBACK_BIT *)param)->channel >=0 && \
-			((SMIC_ADC_CALLBACK_BIT *)param)->channel < obj->adc_channel_max, E_PAR);
-			obj->adc_callback[((SMIC_ADC_CALLBACK_BIT *)param)->channel] \
+	case SMIC_ADC_SET_CALLBACK:
+		SMIC_ADC_CHECK_EXP(((SMIC_ADC_CALLBACK_BIT *)param)->channel >= 0 && \
+				   ((SMIC_ADC_CALLBACK_BIT *)param)->channel < obj->adc_channel_max, E_PAR);
+		obj->adc_callback[((SMIC_ADC_CALLBACK_BIT *)param)->channel] \
 			= ((SMIC_ADC_CALLBACK_BIT *)param)->isr;
-			break;
+		break;
 
-		case SMIC_ADC_GET_CALLBACK:
-			SMIC_ADC_CHECK_EXP(((SMIC_ADC_CALLBACK_BIT *)param)->channel >=0 && \
-			((SMIC_ADC_CALLBACK_BIT *)param)->channel < obj->adc_channel_max, E_PAR);
-			((SMIC_ADC_CALLBACK_BIT *)param)->isr = \
+	case SMIC_ADC_GET_CALLBACK:
+		SMIC_ADC_CHECK_EXP(((SMIC_ADC_CALLBACK_BIT *)param)->channel >= 0 && \
+				   ((SMIC_ADC_CALLBACK_BIT *)param)->channel < obj->adc_channel_max, E_PAR);
+		((SMIC_ADC_CALLBACK_BIT *)param)->isr =	\
 			obj->adc_callback[((SMIC_ADC_CALLBACK_BIT *)param)->channel];
-			break;
+		break;
 
-		default:
-			break;
+	default:
+		break;
 	}
-
 
 error_exit:
 	return ercd;
@@ -193,6 +196,7 @@ error_exit:
 int32_t smic_adc_int_isr(SMIC_ADC_DEF_PTR obj, void *ptr)
 {
 	int32_t ercd = E_OK;
+
 	SMIC_ADC_CHECK_EXP(obj != NULL, E_OBJ);
 
 	for (uint8_t i = 0; i < obj->adc_channel_max; i++) {
@@ -201,11 +205,11 @@ int32_t smic_adc_int_isr(SMIC_ADC_DEF_PTR obj, void *ptr)
 			if (i < 8) {
 				obj->adc_data[i] = obj->adc_reg->ADCD0_7[i];
 			} else {
-				obj->adc_data[i] = obj->adc_reg->ADCD8_15[i-8];
+				obj->adc_data[i] = obj->adc_reg->ADCD8_15[i - 8];
 			}
 
 			obj->adc_ready_flag |= (1 << i);
-			obj->adc_reg->ADCICLR |= (1 << i);//clear interrupt flag
+			obj->adc_reg->ADCICLR |= (1 << i);// clear interrupt flag
 
 			if (obj->adc_callback[i] != NULL) {
 				obj->adc_callback[i]((void *) (uint32_t)obj->adc_data[i]);

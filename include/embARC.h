@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \file
@@ -95,10 +95,9 @@
 #include "embARC_syscalls.h"
 #endif
 
-
 /* LIB_SECURESHIELD should be at the end */
 #ifdef LIB_SECURESHIELD
 #include "secureshield_lib.h"
 #endif
 
-#endif	/* _EMBARC_H_ */
+#endif  /* _EMBARC_H_ */

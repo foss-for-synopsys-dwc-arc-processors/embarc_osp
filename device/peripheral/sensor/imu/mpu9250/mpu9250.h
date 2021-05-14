@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _MPU9250_H_
 #define _MPU9250_H_
 
@@ -34,15 +34,13 @@
 
 #define MPU9250_USE_DMP
 
+#define MPU9250_AD0_PIN         0       /*!< I2C Serial Bus Address Selection Pin */
+#define MPU9250_IIC_ADDRESS     (0x68 + (MPU9250_AD0_PIN << 1))
 
-#define MPU9250_AD0_PIN		0	/*!< I2C Serial Bus Address Selection Pin */
-#define MPU9250_IIC_ADDRESS	(0x68 + (MPU9250_AD0_PIN << 1))
-
-#define MAG_IIC_ADDRESS 	0x0C
+#define MAG_IIC_ADDRESS         0x0C
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 typedef struct {
 	int16_t accel_x;
@@ -59,7 +57,6 @@ typedef struct {
 	float yaw;
 } MPU9250_DATA, *MPU9250_DATA_PTR;
 
-
 typedef struct {
 	uint32_t i2c_id;
 	uint32_t mpu_slvaddr;
@@ -68,11 +65,11 @@ typedef struct {
 } MPU9250_DEF, *MPU9250_DEF_PTR;
 
 #define MPU9250_DEFINE(NAME, I2C_ID, SLAVE_ADDRESS) \
-	MPU9250_DEF __ ## NAME = { \
-			.i2c_id = I2C_ID, \
-			.mpu_slvaddr = SLAVE_ADDRESS, \
-			.mag_slvaddr = MAG_IIC_ADDRESS \
-	}; \
+	MPU9250_DEF __ ## NAME = {		    \
+		.i2c_id = I2C_ID,		    \
+		.mpu_slvaddr = SLAVE_ADDRESS,	    \
+		.mag_slvaddr = MAG_IIC_ADDRESS	    \
+	};					    \
 	MPU9250_DEF_PTR NAME = &__ ## NAME
 
 extern int32_t mpu9250_sensor_init(MPU9250_DEF_PTR obj);

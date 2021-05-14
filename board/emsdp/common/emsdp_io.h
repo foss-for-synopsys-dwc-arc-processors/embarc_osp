@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _EMSDP_GPIO_H_
 #define _EMSDP_GPIO_H_
 
@@ -35,18 +35,18 @@
 /**
  * EMSDP LED Port Configuration
  */
-#define EMSDP_LED_OFFSET	(0)
-#define EMSDP_LED_MASK		((0xff) << EMSDP_LED_OFFSET)
-#define EMSDP_LED_PORT		(DEV_GPIO_PORT_B)
-#define EMSDP_LED_DIR		((0xff) << EMSDP_LED_OFFSET)
+#define EMSDP_LED_OFFSET        (0)
+#define EMSDP_LED_MASK          ((0xff) << EMSDP_LED_OFFSET)
+#define EMSDP_LED_PORT          (DEV_GPIO_PORT_B)
+#define EMSDP_LED_DIR           ((0xff) << EMSDP_LED_OFFSET)
 
 /**
  * EMSDP Switch Port Configuration
  */
-#define EMSDP_SWITCH_OFFSET	(0)
-#define EMSDP_SWITCH_MASK	((0xf) << EMSDP_SWITCH_OFFSET)
-#define EMSDP_SWITCH_PORT	(DEV_GPIO_PORT_A)
-#define EMSDP_SWITCH_DIR	((0x0) << EMSDP_SWITCH_OFFSET)
+#define EMSDP_SWITCH_OFFSET     (0)
+#define EMSDP_SWITCH_MASK       ((0xf) << EMSDP_SWITCH_OFFSET)
+#define EMSDP_SWITCH_PORT       (DEV_GPIO_PORT_A)
+#define EMSDP_SWITCH_DIR        ((0x0) << EMSDP_SWITCH_OFFSET)
 
 #ifdef __cplusplus
 extern "C" {

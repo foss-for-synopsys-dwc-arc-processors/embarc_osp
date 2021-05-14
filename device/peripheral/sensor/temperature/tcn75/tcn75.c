@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "arc/arc.h"
 #include "arc/arc_builtin.h"
@@ -55,13 +55,13 @@ enum registers {
 
 /* TCN75_CONFIG_FAULT_QUEUE(x) options */
 enum fault_queue {
-	FAULT_QUEUE_1 = 1,
-	FAULT_QUEUE_2 = 2,
-	FAULT_QUEUE_3 = 4,
-	FAULT_QUEUE_4 = 6
+	FAULT_QUEUE_1   = 1,
+	FAULT_QUEUE_2   = 2,
+	FAULT_QUEUE_3   = 4,
+	FAULT_QUEUE_4   = 6
 };
 
-#define TCN75_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define TCN75_CHECK_EXP_NORTN(EXPR)             CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /**
  * \brief	write adt7420 register
@@ -80,7 +80,7 @@ static int32_t _tcn75_reg_write(TCN75_DEF_PTR obj, uint8_t regaddr, uint8_t *val
 
 	dbg_printf(DBG_LESS_INFO, "[%s]%d: obj 0x%x, regaddr 0x%x, val 0x%x\r\n", __FUNCTION__, __LINE__, obj, regaddr, *val);
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	TCN75_CHECK_EXP_NORTN(iic_obj!=NULL);
+	TCN75_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	data[0] = (uint8_t)(regaddr & 0xff);
 
@@ -112,7 +112,7 @@ static int32_t _tcn75_reg_read(TCN75_DEF_PTR obj, uint8_t regaddr, uint8_t *val,
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	TCN75_CHECK_EXP_NORTN(iic_obj!=NULL);
+	TCN75_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	data[0] = (uint8_t)(regaddr & 0xff);
 	/** make sure set the temp sensor's slave address */
@@ -139,7 +139,7 @@ int32_t tcn75_sensor_init(TCN75_DEF_PTR obj)
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	TCN75_CHECK_EXP_NORTN(iic_obj!=NULL);
+	TCN75_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
@@ -163,6 +163,7 @@ int32_t tcn75_sensor_deinit(TCN75_DEF_PTR obj)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
+
 	ercd = iic_obj->iic_close();
 	TCN75_CHECK_EXP_NORTN(ercd == E_OK);
 	/*Set back to default value*/
@@ -178,14 +179,16 @@ error_exit:
  * \param[in]	mode	sensor working mode, choose from enum sensor_op_mode
  * \retval	E_OK	always return E_OK
  */
-int32_t tcn75_sensor_mode(TCN75_DEF_PTR obj, int32_t mode){
+int32_t tcn75_sensor_mode(TCN75_DEF_PTR obj, int32_t mode)
+{
 	uint8_t config;
+
 	obj->op_mode = mode;
 
 	_tcn75_reg_read(obj, TCN75_REG_CONFIG, &config, 1);
 	/** set working mode bits: first clear bits to zero, then set bits to correct mode */
 	config &= ~TCN75_CONFIG_OP_MODE;
-	config |= (obj->op_mode == TCN75_OP_MODE_SHUTDOWN) ? TCN75_CONFIG_OP_MODE : 0x00 ;
+	config |= (obj->op_mode == TCN75_OP_MODE_SHUTDOWN) ? TCN75_CONFIG_OP_MODE : 0x00;
 	_tcn75_reg_write(obj, TCN75_REG_CONFIG, &config, 1);
 	return E_OK;
 }
@@ -203,7 +206,7 @@ int32_t tcn75_sensor_read(TCN75_DEF_PTR obj, float *val)
 	uint8_t data[2];
 	int16_t temp;
 
-	TCN75_CHECK_EXP_NORTN(val!=NULL);
+	TCN75_CHECK_EXP_NORTN(val != NULL);
 
 	ercd = _tcn75_reg_read(obj, TCN75_REG_TEMP, data, 2);
 
@@ -216,7 +219,7 @@ int32_t tcn75_sensor_read(TCN75_DEF_PTR obj, float *val)
 		dbg_printf(DBG_LESS_INFO, "[%s]%d: temp %x\r\n", __FUNCTION__, __LINE__, temp);
 		/** conversion (val = temp*0.5) for 9bits[15:7] resolution in Degrees Celsius */
 		temp >>= 7;
-		*val = temp*0.5;
+		*val = temp * 0.5;
 	}
 
 error_exit:

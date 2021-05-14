@@ -26,8 +26,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-//#define DBG_MORE
+   --------------------------------------------- */
+// #define DBG_MORE
 
 #include "arc/arc.h"
 #include "arc/arc_builtin.h"
@@ -40,13 +40,13 @@
 #include "board.h"
 
 /** AD7991_REG_CONFIG definition */
-#define AD7991_CONFIG_BIT_TRAIL_DELAY	(1 << 0)
-#define AD7991_CONFIG_SAMPLE_DELAY	(1 << 1)
-#define AD7991_CONFIG_FLTR		(1 << 2)
-#define AD7991_CONFIG_REF_SEL		(1 << 3)
+#define AD7991_CONFIG_BIT_TRAIL_DELAY   (1 << 0)
+#define AD7991_CONFIG_SAMPLE_DELAY      (1 << 1)
+#define AD7991_CONFIG_FLTR              (1 << 2)
+#define AD7991_CONFIG_REF_SEL           (1 << 3)
 /** AD7991_CONFIG_CH0 ~ CH3 defines see ad7991.h  */
 
-#define EMSK_ADC_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define EMSK_ADC_CHECK_EXP_NORTN(EXPR)          CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /**
  * \brief	write ad7991 register
@@ -60,8 +60,8 @@ static int32_t _ad7991_reg_write(AD7991_DEF_PTR obj, uint8_t val)
 	int32_t ercd = E_PAR;
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->dev_id);
 
-	//dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	EMSK_ADC_CHECK_EXP_NORTN(iic_obj!=NULL);
+	// dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
+	EMSK_ADC_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	/** make sure set the slave address */
 	iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(obj->slvaddr));
@@ -85,14 +85,14 @@ static int32_t _ad7991_reg_read(AD7991_DEF_PTR obj, uint8_t *val, uint8_t channe
 	int32_t ercd = E_PAR;
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->dev_id);
 
-	//dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	EMSK_ADC_CHECK_EXP_NORTN(iic_obj!=NULL);
+	// dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
+	EMSK_ADC_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	/** make sure set the slave address */
 	iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(obj->slvaddr));
 	/** read 2 bytes value */
 	ercd = iic_obj->iic_control(IIC_CMD_MST_SET_NEXT_COND, CONV2VOID(IIC_MODE_STOP));
-	ercd = iic_obj->iic_read(val, 2*channel_num);
+	ercd = iic_obj->iic_read(val, 2 * channel_num);
 
 error_exit:
 	return ercd;
@@ -110,7 +110,7 @@ int32_t ad7991_adc_init(AD7991_DEF_PTR obj)
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->dev_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	EMSK_ADC_CHECK_EXP_NORTN(iic_obj!=NULL);
+	EMSK_ADC_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_HIGH);
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
@@ -136,6 +136,7 @@ int32_t ad7991_adc_deinit(AD7991_DEF_PTR obj)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->dev_id);
+
 	ercd = iic_obj->iic_close();
 	return ercd;
 }
@@ -149,7 +150,7 @@ int32_t ad7991_adc_deinit(AD7991_DEF_PTR obj)
 int32_t ad7991_ref_select(AD7991_DEF_PTR obj, int32_t source)
 {
 
-	if(source == AD7991_REF_EXTERNAL) {
+	if (source == AD7991_REF_EXTERNAL) {
 		obj->ref_source = source;
 		obj->ref_voltage_mv = AD2_REF_EXTERNAL;
 		obj->reg_config |= AD7991_CONFIG_REF_SEL;
@@ -160,9 +161,9 @@ int32_t ad7991_ref_select(AD7991_DEF_PTR obj, int32_t source)
 		obj->ref_voltage_mv = AD2_REF_VDD;
 		obj->reg_config &= ~AD7991_CONFIG_REF_SEL;
 	}
-		/** set working source bits: first clear bits to zero, then set bits to correct source */
-		dbg_printf(DBG_MORE_INFO, "[%s]%d: after: reg 0x%x , source 0x%x\r\n", __FUNCTION__, __LINE__, obj->reg_config, obj->ref_source);
-		_ad7991_reg_write(obj, obj->reg_config);
+	/** set working source bits: first clear bits to zero, then set bits to correct source */
+	dbg_printf(DBG_MORE_INFO, "[%s]%d: after: reg 0x%x , source 0x%x\r\n", __FUNCTION__, __LINE__, obj->reg_config, obj->ref_source);
+	_ad7991_reg_write(obj, obj->reg_config);
 	return E_OK;
 }
 
@@ -175,17 +176,18 @@ int32_t ad7991_ref_select(AD7991_DEF_PTR obj, int32_t source)
 int32_t ad7991_adc_channel(AD7991_DEF_PTR obj, int8_t channel)
 {
 	uint8_t channel_num = 0;
+
 	if (channel & AD7991_CONFIG_CH0_EN) {
-		channel_num ++;
+		channel_num++;
 	}
 	if (channel & AD7991_CONFIG_CH1_EN) {
-		channel_num ++;
+		channel_num++;
 	}
 	if (channel & AD7991_CONFIG_CH2_EN) {
-		channel_num ++;
+		channel_num++;
 	}
-	if ((obj->ref_source == AD7991_REF_VDD) && (channel & AD7991_CONFIG_CH3_EN)){
-		channel_num ++;
+	if ((obj->ref_source == AD7991_REF_VDD) && (channel & AD7991_CONFIG_CH3_EN)) {
+		channel_num++;
 	}
 	/**clear channel bits in config reg and then set bits*/
 	obj->reg_config = (obj->reg_config & 0x0F) | channel;
@@ -204,12 +206,12 @@ int32_t ad7991_adc_channel(AD7991_DEF_PTR obj, int8_t channel)
 int32_t ad7991_adc_read(AD7991_DEF_PTR obj, float *val)
 {
 	int32_t ercd = E_OK;
-	uint8_t data[8] = {0};
+	uint8_t data[8] = { 0 };
 	uint8_t index;
 	int16_t voltage;
 	int16_t actual_ref;
 
-	EMSK_ADC_CHECK_EXP_NORTN(val!=NULL);
+	EMSK_ADC_CHECK_EXP_NORTN(val != NULL);
 
 	ercd = _ad7991_reg_read(obj, data, obj->channel_num);
 
@@ -222,31 +224,30 @@ int32_t ad7991_adc_read(AD7991_DEF_PTR obj, float *val)
 		dbg_printf(DBG_MORE_INFO, "[%s]%d: data[0] 0x%x; data[1] 0x%x\r\n", __FUNCTION__, __LINE__, data[2], data[3]);
 		dbg_printf(DBG_MORE_INFO, "[%s]%d: data[0] 0x%x; data[1] 0x%x\r\n", __FUNCTION__, __LINE__, data[4], data[5]);
 		dbg_printf(DBG_MORE_INFO, "[%s]%d: data[0] 0x%x; data[1] 0x%x\r\n", __FUNCTION__, __LINE__, data[6], data[7]);
-		if(obj->ref_source == AD7991_REF_VDD) {
+		if (obj->ref_source == AD7991_REF_VDD) {
 			actual_ref = AD2_REF_VDD;
 		} else {
 			actual_ref = AD2_REF_EXTERNAL;
 		}
 		/* use index to put value, so if there are more values than channel_num, new value will overwrite old value */
-		voltage = ((int16_t)(data[0] &0x0F) << 8) + ((int16_t)data[1]);
-		index = data[0]>>4;
+		voltage = ((int16_t)(data[0] & 0x0F) << 8) + ((int16_t)data[1]);
+		index = data[0] >> 4;
 		dbg_printf(DBG_LESS_INFO, "[%s]%d: voltage[0] %x\r\n", __FUNCTION__, __LINE__, voltage);
-		val[index] = voltage * actual_ref /4096.0;
-		voltage = ((int16_t)(data[2] &0x0F) << 8) + ((int16_t)data[3]);
-		index = data[2]>>4;
+		val[index] = voltage * actual_ref / 4096.0;
+		voltage = ((int16_t)(data[2] & 0x0F) << 8) + ((int16_t)data[3]);
+		index = data[2] >> 4;
 		dbg_printf(DBG_LESS_INFO, "[%s]%d: voltage[1] %x\r\n", __FUNCTION__, __LINE__, voltage);
-		val[index] = voltage * actual_ref /4096.0;
-		voltage = ((int16_t)(data[4] &0x0F) << 8) + ((int16_t)data[5]);
-		index = data[4]>>4;
+		val[index] = voltage * actual_ref / 4096.0;
+		voltage = ((int16_t)(data[4] & 0x0F) << 8) + ((int16_t)data[5]);
+		index = data[4] >> 4;
 		dbg_printf(DBG_LESS_INFO, "[%s]%d: voltage[2] %x\r\n", __FUNCTION__, __LINE__, voltage);
-		val[index] = voltage * actual_ref /4096.0;
-		voltage = ((int16_t)(data[6] &0x0F) << 8) + ((int16_t)data[7]);
-		index = data[6]>>4;
+		val[index] = voltage * actual_ref / 4096.0;
+		voltage = ((int16_t)(data[6] & 0x0F) << 8) + ((int16_t)data[7]);
+		index = data[6] >> 4;
 		dbg_printf(DBG_LESS_INFO, "[%s]%d: voltage[3] %x\r\n\r\n", __FUNCTION__, __LINE__, voltage);
-		val[index] = voltage * actual_ref /4096.0;
+		val[index] = voltage * actual_ref / 4096.0;
 	}
 
 error_exit:
 	return ercd;
 }
-

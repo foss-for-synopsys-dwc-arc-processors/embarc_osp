@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DEVICE_DW_TRNG_H_
 #define _DEVICE_DW_TRNG_H_
 
@@ -35,44 +35,44 @@
 
 #ifndef TRNG_VERSION_NIST
 
-#define DW_TRNG_INVALID_INTNO		(DEV_INTNO_INVALID)
+#define DW_TRNG_INVALID_INTNO           (DEV_INTNO_INVALID)
 
-//DesignWare TRNG register structure
+// DesignWare TRNG register structure
 typedef volatile struct dw_trng_reg {
-	uint32_t CTRL;			//(0x0)
-	uint32_t STAT;			//(0x4)
-	uint32_t MODE;			//(0x8)
-	uint32_t SMODE;			//(0xC)
-	uint32_t IE;			//(0x10)
-	uint32_t ISTAT;			//(0x14)
-	uint32_t COREKIT_REL;	//(0x18)
-	uint32_t FEATURES;		//(0x1C)
-	uint32_t RAND0;			//(0x20)
-	uint32_t RAND1;			//(0x24)
-	uint32_t RAND2;			//(0x28)
-	uint32_t RAND3;			//(0x2C)
-	uint32_t RAND4;			//(0x30)
-	uint32_t RAND5;			//(0x34)
-	uint32_t RAND6;			//(0x38)
-	uint32_t RAND7;			//(0x3C)
-	uint32_t SEED0;			//(0x40)
-	uint32_t SEED1;			//(0x44)
-	uint32_t SEED2;			//(0x48)
-	uint32_t SEED3;			//(0x4C)
-	uint32_t SEED4;			//(0x50)
-	uint32_t SEED5;			//(0x54)
-	uint32_t SEED6;			//(0x58)
-	uint32_t SEED7;			//(0x5C)
-	uint32_t AUTO_RQSTS;	//(0x60)
-	uint32_t AUTO_AGE;		//(0x64)
-	uint32_t BUILD_CONFIG;	//(0x68)
+	uint32_t CTRL;          // (0x0)
+	uint32_t STAT;          // (0x4)
+	uint32_t MODE;          // (0x8)
+	uint32_t SMODE;         // (0xC)
+	uint32_t IE;            // (0x10)
+	uint32_t ISTAT;         // (0x14)
+	uint32_t COREKIT_REL;   // (0x18)
+	uint32_t FEATURES;      // (0x1C)
+	uint32_t RAND0;         // (0x20)
+	uint32_t RAND1;         // (0x24)
+	uint32_t RAND2;         // (0x28)
+	uint32_t RAND3;         // (0x2C)
+	uint32_t RAND4;         // (0x30)
+	uint32_t RAND5;         // (0x34)
+	uint32_t RAND6;         // (0x38)
+	uint32_t RAND7;         // (0x3C)
+	uint32_t SEED0;         // (0x40)
+	uint32_t SEED1;         // (0x44)
+	uint32_t SEED2;         // (0x48)
+	uint32_t SEED3;         // (0x4C)
+	uint32_t SEED4;         // (0x50)
+	uint32_t SEED5;         // (0x54)
+	uint32_t SEED6;         // (0x58)
+	uint32_t SEED7;         // (0x5C)
+	uint32_t AUTO_RQSTS;    // (0x60)
+	uint32_t AUTO_AGE;      // (0x64)
+	uint32_t BUILD_CONFIG;  // (0x68)
 } DW_TRNG_REG, *DW_TRNG_REG_PTR;
 
 typedef struct dw_trng_ctrl {
-	DW_TRNG_REG_PTR	dw_trng_regs;			/*!< dw trng register */
-	uint32_t intno;							/*!< interrupt vector number */
-	INT_HANDLER_T dw_trng_int_handler;		/*!< interrupt handler */
-	uint32_t int_status;					/*!< interrupt status */
+	DW_TRNG_REG_PTR dw_trng_regs;                   /*!< dw trng register */
+	uint32_t intno;                                 /*!< interrupt vector number */
+	INT_HANDLER_T dw_trng_int_handler;              /*!< interrupt handler */
+	uint32_t int_status;                            /*!< interrupt status */
 } DW_TRNG_CTRL, *DW_TRNG_CTRL_PTR;
 
 #ifdef __cplusplus
@@ -89,6 +89,6 @@ extern void dw_trng_isr(DEV_TRNG_PTR trng_obj, void *ptr);
 }
 #endif
 
-#endif /* TRNG_VERSION_NIST */
+#endif  /* TRNG_VERSION_NIST */
 
-#endif /* _DEVICE_DW_TRNG_H_ */
+#endif  /* _DEVICE_DW_TRNG_H_ */

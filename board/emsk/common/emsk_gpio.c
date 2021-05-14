@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \defgroup	BOARD_EMSK_DRV_GPIO	EMSK GPIO Driver
  * \ingroup	BOARD_EMSK_DRIVER
@@ -59,7 +59,7 @@ static DEV_GPIO *led_port;
 static DEV_GPIO *button_port;
 static DEV_GPIO *switch_port;
 
-#define EMSK_GPIO_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define EMSK_GPIO_CHECK_EXP_NORTN(EXPR)         CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /** emsk on board gpio init */
 void emsk_gpio_init(void)

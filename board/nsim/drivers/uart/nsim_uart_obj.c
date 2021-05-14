@@ -38,11 +38,11 @@
  */
 #if (USE_NSIM_UART_0)
 static void dw_uart_0_isr(void *ptr);
-#define DW_UART_0_BASE   (0xf0000000) /*!< designware uart 0 relative baseaddr */
-#define DW_UART_0_INTNO  (24)         /*!< designware uart 0 interrupt number  */
+#define DW_UART_0_BASE   (0xf0000000)   /*!< designware uart 0 relative baseaddr */
+#define DW_UART_0_INTNO  (24)           /*!< designware uart 0 interrupt number  */
 
-static DEV_UART dw_uart_0;                      /*!< designware uart object */
-static DW_UART_CTRL dw_uart_0_ctrl = {          /*!< designware uart 0 ctrl */
+static DEV_UART dw_uart_0;              /*!< designware uart object */
+static DW_UART_CTRL dw_uart_0_ctrl = {  /*!< designware uart 0 ctrl */
 	0, 1000000, DW_UART_0_INTNO, (INT_HANDLER_T)dw_uart_0_isr,
 	1, 1, 0
 };

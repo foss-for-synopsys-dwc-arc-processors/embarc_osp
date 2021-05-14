@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
 #include "embARC_assert.h"
@@ -35,7 +35,6 @@
 #include "container2.h"
 #include "container3.h"
 #include "background_container.h"
-
 
 static void tst_func7(int arg)
 {
@@ -55,11 +54,10 @@ void default_interrupt_handler(void *p_exinf)
 	EMBARC_PRINTF("default interrupt handler\r\n");
 }
 
-
-
 int main(void)
 {
 	int32_t val;
+
 	EMBARC_PRINTF("interrupt operation tests\r\n");
 	EMBARC_PRINTF("test cases for secureshield_int_disable\r\n");
 

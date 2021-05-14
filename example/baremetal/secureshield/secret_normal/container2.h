@@ -26,13 +26,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef CONTAINER2_H
 #define CONTAINER2_H
 
 typedef struct {
-	uint8_t secret[SECRET_LEN+1];
+	uint8_t secret[SECRET_LEN + 1];
 	uint8_t initialized;
 } SECRET_CONTEXT2;
 

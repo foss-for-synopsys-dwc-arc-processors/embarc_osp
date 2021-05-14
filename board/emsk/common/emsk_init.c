@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \defgroup	BOARD_EMSK_COMMON_INIT	EMSK Common Init Module
  * \ingroup	BOARD_EMSK_COMMON
@@ -50,7 +50,6 @@
 #include "board.h"
 #include "emsk_timer.h"
 #include "device/dev_pinmux.h"
-
 
 /**
  * \brief	Board init routine MUST be called in each application

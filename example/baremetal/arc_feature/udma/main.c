@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -39,17 +39,17 @@
 #define UDMA_TIMER_ID TIMER_1
 #endif
 
-//Waring: remember to increase heap size in makefile in order to use multiple channels.
-//Warning: With multiple channels in use, the memory usage is increase and it could exceed cache's capability. A significent redution of cycles for cache operations will be observed.
-#define DMA_USE_CHANNEL_NUM 	4		//DMA_ALL_CHANNEL_NUM
-#define TEST_INCREMENT			1024	//MEMSZ_GAP
-#if DMA_USE_CHANNEL_NUM	> DMA_ALL_CHANNEL_NUM
+// Waring: remember to increase heap size in makefile in order to use multiple channels.
+// Warning: With multiple channels in use, the memory usage is increase and it could exceed cache's capability. A significent redution of cycles for cache operations will be observed.
+#define DMA_USE_CHANNEL_NUM     4               // DMA_ALL_CHANNEL_NUM
+#define TEST_INCREMENT                  1024    // MEMSZ_GAP
+#if DMA_USE_CHANNEL_NUM > DMA_ALL_CHANNEL_NUM
 #warning Use more channels than the board has!
 #undef DMA_USE_CHANNEL_NUM
-#define DMA_USE_CHANNEL_NUM		DMA_ALL_CHANNEL_NUM
+#define DMA_USE_CHANNEL_NUM             DMA_ALL_CHANNEL_NUM
 #endif
 
-//define USE_EXTRA_TASK will stop reading of comparison result, assuming that all memory copy / dma copy are succeed
+// define USE_EXTRA_TASK will stop reading of comparison result, assuming that all memory copy / dma copy are succeed
 #define USE_EXTRA_TASK
 #ifdef USE_EXTRA_TASK
 #define EXTRA_TASK_NUM 1
@@ -57,10 +57,10 @@
 #define EXTRA_TASK_NUM 0
 #endif
 
-#define _MEMORY_FENCE()				arc_sync()
-#define _DCACHE_FLUSH_MLINES(addr, size)	dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
-#define _DCACHE_INVALIDATE_MLINES(addr, size)	dcache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
-#define _ICACHE_INVALIDATE_MLINES(addr, size)	icache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
+#define _MEMORY_FENCE()                         arc_sync()
+#define _DCACHE_FLUSH_MLINES(addr, size)        dcache_flush_mlines((uint32_t)(addr), (uint32_t)(size))
+#define _DCACHE_INVALIDATE_MLINES(addr, size)   dcache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
+#define _ICACHE_INVALIDATE_MLINES(addr, size)   icache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
 
 static volatile uint32_t start = 0;
 static uint32_t perf_id = 0xFF;
@@ -69,7 +69,9 @@ static void perf_init(uint32_t id)
 {
 	if (arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
 		EMBARC_PRINTF("perf timer init failed\r\n");
-		while(1);
+		while (1) {
+			;
+		}
 	}
 	perf_id = id;
 }
@@ -106,6 +108,7 @@ int32_t extra_cpy_task(uint32_t size);
 int32_t dma_prepare(void)
 {
 	int32_t dma_channel = DMA_CHN_ANY;
+
 	DMA_CTRL_SET_OP(&dma_ctrl, DMA_SINGLE_TRANSFER);
 	DMA_CTRL_SET_RT(&dma_ctrl, DMA_AUTO_REQUEST);
 	DMA_CTRL_SET_DTT(&dma_ctrl, DMA_MEM2MEM);
@@ -114,7 +117,7 @@ int32_t dma_prepare(void)
 	DMA_CTRL_SET_ARB(&dma_ctrl, 255);
 	DMA_CTRL_SET_INT(&dma_ctrl, DMA_INT_ENABLE);
 
-	for(uint8_t i = 0; i < DMA_USE_CHANNEL_NUM; i++){
+	for (uint8_t i = 0; i < DMA_USE_CHANNEL_NUM; i++) {
 		dmac_config_desc(dma_desc + i, NULL, NULL, 0, &dma_ctrl);
 		dmac_desc_add_linked(dma_desc + i, NULL);
 
@@ -123,7 +126,7 @@ int32_t dma_prepare(void)
 		dmac_config_channel(dma_chn + i, dma_desc + i);
 		/* Reserve a channel for use */
 		dma_channel = dmac_reserve_channel(DMA_CHN_ANY, dma_chn + i, DMA_REQ_SOFT);
-		if(dma_channel == DMA_CHN_INVALID){
+		if (dma_channel == DMA_CHN_INVALID) {
 			EMBARC_PRINTF("dmac_reserve_channel No.%d failed, ret %d\r\n", i, dma_channel);
 		}
 	}
@@ -133,8 +136,8 @@ int32_t dma_prepare(void)
 void dma_finish(void)
 {
 	/* Release channel resource */
-	for(uint8_t i = 0; i < DMA_USE_CHANNEL_NUM; i++){
-		dmac_release_channel(dma_chn+i);
+	for (uint8_t i = 0; i < DMA_USE_CHANNEL_NUM; i++) {
+		dmac_release_channel(dma_chn + i);
 	}
 }
 
@@ -154,6 +157,7 @@ uint32_t cycles_idx = 0;
 int32_t dma_copy(void *dst, void *src, uint32_t size)
 {
 	int32_t ercd = -1;
+
 	cycles_idx = 0;
 	dma_callback_t xfer_cb = NULL;
 	uint8_t ch_idx;
@@ -166,8 +170,8 @@ int32_t dma_copy(void *dst, void *src, uint32_t size)
 	ch_src = (uint32_t)src;
 	ch_size = size / DMA_USE_CHANNEL_NUM;
 	cycles_cnt[cycles_idx++] = perf_end();
-	for(ch_idx = 0; ch_idx < DMA_USE_CHANNEL_NUM; ch_idx++){
-		//EMBARC_PRINTF("dma_copy:%d src%x, dst%x, size%d \r\n", ch_idx, ch_src, ch_dst, ch_size);
+	for (ch_idx = 0; ch_idx < DMA_USE_CHANNEL_NUM; ch_idx++) {
+		// EMBARC_PRINTF("dma_copy:%d src%x, dst%x, size%d \r\n", ch_idx, ch_src, ch_dst, ch_size);
 		dmac_config_desc(dma_desc + ch_idx, (void *)ch_src, (void *)ch_dst, ch_size, &dma_ctrl);
 		ch_src += ch_size;
 		ch_dst += ch_size;
@@ -182,9 +186,9 @@ int32_t dma_copy(void *dst, void *src, uint32_t size)
 	cycles_cnt[cycles_idx++] = perf_end();
 
 	/* Start channel transfer with priority, without callback  */
-	for(ch_idx = 0; ch_idx < DMA_USE_CHANNEL_NUM; ch_idx++){
+	for (ch_idx = 0; ch_idx < DMA_USE_CHANNEL_NUM; ch_idx++) {
 		ercd = dmac_start_channel(dma_chn + ch_idx, xfer_cb, DMA_CHN_HIGH_PRIO);
-		if(ercd != 0){
+		if (ercd != 0) {
 			EMBARC_PRINTF("dma_copy: start channel failed, index %d ret %d\r\n", ch_idx, ercd);
 		}
 	}
@@ -194,7 +198,9 @@ int32_t dma_copy(void *dst, void *src, uint32_t size)
 	// EMBARC_PRINTF("dma_copy: extra_cpy_task ret %d\r\n", ercd);
 #endif
 	/* Wait until transfer is done */
-	while(task_done_count < DMA_USE_CHANNEL_NUM + EXTRA_TASK_NUM);
+	while (task_done_count < DMA_USE_CHANNEL_NUM + EXTRA_TASK_NUM) {
+		;
+	}
 	cycles_cnt[cycles_idx++] = perf_end();
 
 	_MEMORY_FENCE();
@@ -209,7 +215,7 @@ int32_t dma_copy(void *dst, void *src, uint32_t size)
 
 void init_data(uint8_t *src, uint8_t *dst, uint32_t size)
 {
-	for (uint32_t i = 0; i < size; i ++) {
+	for (uint32_t i = 0; i < size; i++) {
 		src[i] = i;
 		dst[i] = 0xFF;
 	}
@@ -217,11 +223,11 @@ void init_data(uint8_t *src, uint8_t *dst, uint32_t size)
 
 int32_t cmp_data(uint8_t *src, uint8_t *dst, uint32_t size)
 {
-	for (uint32_t i = 0; i < size; i ++) {
+	for (uint32_t i = 0; i < size; i++) {
 		if (src[i] != dst[i]) {
-			//EMBARC_PRINTF("%u:%u %u\r\n", i, src[i], dst[i]);
+			// EMBARC_PRINTF("%u:%u %u\r\n", i, src[i], dst[i]);
 			#ifndef USE_EXTRA_TASK
-				return -1;
+			return -1;
 			#endif
 		}
 	}
@@ -231,17 +237,20 @@ int32_t cmp_data(uint8_t *src, uint8_t *dst, uint32_t size)
 int32_t perf_memcpy(uint8_t *src, uint8_t *dst, uint32_t size)
 {
 	uint32_t cycles;
+
 	task_done_count = 0;
 	init_data(src, dst, size);
 	perf_init(UDMA_TIMER_ID);
 	perf_start();
 	memcpy(dst, src, size);
 #ifdef USE_EXTRA_TASK
-	if(extra_cpy_task(size)!=0){
+	if (extra_cpy_task(size) != 0) {
 		return -1;
 	}
 #endif
-	while(task_done_count < EXTRA_TASK_NUM);
+	while (task_done_count < EXTRA_TASK_NUM) {
+		;
+	}
 	cycles = perf_end();
 	if (cmp_data(src, dst, size) == 0) {
 		return cycles;
@@ -253,6 +262,7 @@ int32_t perf_memcpy(uint8_t *src, uint8_t *dst, uint32_t size)
 int32_t perf_dmacpy(uint8_t *src, uint8_t *dst, uint32_t size)
 {
 	uint32_t cycles;
+
 	task_done_count = 0;
 	init_data(src, dst, size);
 	perf_init(UDMA_TIMER_ID);
@@ -269,6 +279,7 @@ int32_t perf_dmacpy(uint8_t *src, uint8_t *dst, uint32_t size)
 int32_t perf_overhead(void)
 {
 	uint32_t cycles;
+
 	perf_init(UDMA_TIMER_ID);
 	perf_start();
 	cycles = perf_end();
@@ -276,7 +287,8 @@ int32_t perf_overhead(void)
 }
 
 #ifdef USE_EXTRA_TASK
-int32_t extra_cpy_task(uint32_t size){
+int32_t extra_cpy_task(uint32_t size)
+{
 	uint8_t *src_ptr = NULL;
 	uint8_t *dst_ptr = NULL;
 
@@ -302,9 +314,9 @@ int32_t extra_cpy_task(uint32_t size){
 		return -1;
 	}
 }
-#endif //USE_EXTRA_TASK
+#endif // USE_EXTRA_TASK
 
-int main( void )
+int main(void)
 {
 	uint32_t test_sz = TEST_INCREMENT;
 	uint8_t *src_ptr = NULL;
@@ -324,7 +336,7 @@ int main( void )
 	EMBARC_PRINTF("Performance benchmark for both dmacpy and memcpy including overhead\r\n");
 	EMBARC_PRINTF("XFER_SIZE DESC_CONF CACHE_FLUSH XFER_START XFER_WAIT CACHE_INV DMACPY MEMCPY\r\n");
 	do {
-		if(test_sz % DMA_USE_CHANNEL_NUM != 0){
+		if (test_sz % DMA_USE_CHANNEL_NUM != 0) {
 			EMBARC_PRINTF("dma_copy: test_sz unable to be divided by %d channels, skip\r\n", DMA_USE_CHANNEL_NUM);
 		} else {
 			src_ptr = (uint8_t *)malloc(test_sz);
@@ -345,7 +357,7 @@ int main( void )
 			}
 			EMBARC_PRINTF("%u ", test_sz);
 			for (uint32_t i = 1; i < cycles_idx; i++) {
-				EMBARC_PRINTF("%u ", cycles_cnt[i]-cycles_cnt[i-1]);
+				EMBARC_PRINTF("%u ", cycles_cnt[i] - cycles_cnt[i - 1]);
 			}
 			EMBARC_PRINTF("%u %u\r\n", (uint32_t)dmacpy_cycles, (uint32_t)memcpy_cycles);
 
@@ -359,7 +371,7 @@ int main( void )
 			EMBARC_PRINTF("DMA only support 8K cell transfer\r\n");
 			break;
 		}
-	} while(1);
+	} while (1);
 
 	if (src_ptr != NULL) {
 		free(src_ptr);

@@ -26,17 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_PWM_TIMER_H_
 #define _DW_PWM_TIMER_H_
 
 #include "device/ip_hal/dev_pwm_timer.h"
 #include "arc/arc_exception.h"
 
-#define	DW_PWM_TIMER_CH_MAX_COUNT		8
+#define DW_PWM_TIMER_CH_MAX_COUNT               8
 
-#define DW_PWM_TIMER_INVALID_INTNO		(DEV_INTNO_INVALID)
-
+#define DW_PWM_TIMER_INVALID_INTNO              (DEV_INTNO_INVALID)
 
 /**
  * \name	DesignWare PWM_TIMER Register Structure
@@ -44,45 +43,43 @@
  * @{
  */
 typedef volatile struct dw_pwm_timer_ch_reg {
-	uint32_t LOAD_COUNT;		/*!< Value to be loaded into Timer */
-	uint32_t CURRENT_VALUE;		/*!< Current Value of Timer */
-	uint32_t CONTROL_REG;		/*!< Control Register for Timer */
-	uint32_t EOI;				/*!< Clears the interrupt from Timer */
-	uint32_t INT_STATUS;		/*!< Contains the interrupt status for Timer */
+	uint32_t LOAD_COUNT;            /*!< Value to be loaded into Timer */
+	uint32_t CURRENT_VALUE;         /*!< Current Value of Timer */
+	uint32_t CONTROL_REG;           /*!< Control Register for Timer */
+	uint32_t EOI;                   /*!< Clears the interrupt from Timer */
+	uint32_t INT_STATUS;            /*!< Contains the interrupt status for Timer */
 } CH_CTRL;
 
 typedef volatile struct dw_pwm_timer_reg {
-	CH_CTRL CTRL[DW_PWM_TIMER_CH_MAX_COUNT];		/*!< (0x00 ~ 0x9C) */
-	uint32_t PWM_TIMERS_INT_STATUS;					/*!< (0xA0) Contains the interrupt status of all timers in the component.*/
-	uint32_t PWM_TIMERS_EOI;						/*!< (0xA4) Read return all zeroes (0) and clears all active interrupts.*/
-	uint32_t PWM_TIMERS_RAWINT_STATUS;				/*!< (0xA8) Contains the unmasked interrupt status of all timers in the component.*/
-	uint32_t PWM_TIMERS_COMP_VER;					/*!< (0xAC) Current revision number of the DW_apb_timers component.*/
-	uint32_t LOAD_COUNT2[DW_PWM_TIMER_CH_MAX_COUNT];/*!< (0xB0 ~ 0xCC) Value to be loaded into Timer when toggle output changes from 0 to 1*/
+	CH_CTRL CTRL[DW_PWM_TIMER_CH_MAX_COUNT];                /*!< (0x00 ~ 0x9C) */
+	uint32_t PWM_TIMERS_INT_STATUS;                         /*!< (0xA0) Contains the interrupt status of all timers in the component.*/
+	uint32_t PWM_TIMERS_EOI;                                /*!< (0xA4) Read return all zeroes (0) and clears all active interrupts.*/
+	uint32_t PWM_TIMERS_RAWINT_STATUS;                      /*!< (0xA8) Contains the unmasked interrupt status of all timers in the component.*/
+	uint32_t PWM_TIMERS_COMP_VER;                           /*!< (0xAC) Current revision number of the DW_apb_timers component.*/
+	uint32_t LOAD_COUNT2[DW_PWM_TIMER_CH_MAX_COUNT];        /*!< (0xB0 ~ 0xCC) Value to be loaded into Timer when toggle output changes from 0 to 1*/
 } DW_PWM_TIMER_REG, *DW_PWM_TIMER_REG_PTR;
 /** @} */
 
 /** interrupt handler for each pwm_timer channel */
 typedef struct dw_pwm_timer_ch_isr {
-	uint32_t int_ch_max_cnt;		/*!< max channel count for each pwm_timer group */
-	DEV_PWM_TIMER_HANDLER *int_ch_handler_ptr;	/*!< interrupt handler pointer */
-} DW_PWM_TIMER_CH_ISR, * DW_PWM_TIMER_CH_ISR_PTR;
-
+	uint32_t int_ch_max_cnt;                        /*!< max channel count for each pwm_timer group */
+	DEV_PWM_TIMER_HANDLER *int_ch_handler_ptr;      /*!< interrupt handler pointer */
+} DW_PWM_TIMER_CH_ISR, *DW_PWM_TIMER_CH_ISR_PTR;
 
 /**
  * \brief	DesignWare PWM_TIMER control structure definition
  * \details	implement of pwm_timer_info::pwm_timer_ctrl
  */
 typedef struct dw_pwm_timer_ctrl {
-	uint32_t id;						/*!< pwm_timer group id */
-	DW_PWM_TIMER_REG_PTR regs;			/*!< pwm_timer port register */
-	uint32_t intno;						/*!< pwm_timer interrupt vector number */
-	uint32_t ch_num;					/*!< pwm_timer group channel count */
-	uint32_t clock;						/*!< pwm_timer clock */
-	INT_HANDLER_T int_handler;			/*!< pwm_timer interrupt handler pointer */
-	DW_PWM_TIMER_CH_ISR_PTR ch_isr;		/*!< pwm_timer group channel callback pointer */
-	DEV_PWM_TIMER_MODE_PTR mode;		/*!< pwm_timer group channel work mode array pointer*/
+	uint32_t id;                            /*!< pwm_timer group id */
+	DW_PWM_TIMER_REG_PTR regs;              /*!< pwm_timer port register */
+	uint32_t intno;                         /*!< pwm_timer interrupt vector number */
+	uint32_t ch_num;                        /*!< pwm_timer group channel count */
+	uint32_t clock;                         /*!< pwm_timer clock */
+	INT_HANDLER_T int_handler;              /*!< pwm_timer interrupt handler pointer */
+	DW_PWM_TIMER_CH_ISR_PTR ch_isr;         /*!< pwm_timer group channel callback pointer */
+	DEV_PWM_TIMER_MODE_PTR mode;            /*!< pwm_timer group channel work mode array pointer*/
 } DW_PWM_TIMER_CTRL, *DW_PWM_TIMER_CTRL_PTR;
-
 
 #ifdef __cplusplus
 extern "C" {

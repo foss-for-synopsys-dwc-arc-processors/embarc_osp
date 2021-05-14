@@ -26,14 +26,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DEV_PINMUX_H_
 #define _DEV_PINMUX_H_
 
 #include "embARC_toolchain.h"
 
-#define IO_PINMUX_ENABLE 	1
-#define IO_PINMUX_DISABLE 	0
+#define IO_PINMUX_ENABLE        1
+#define IO_PINMUX_DISABLE       0
 
 typedef enum arduino_pin {
 	ARDUINO_PIN_0 = 0,
@@ -103,7 +103,6 @@ typedef enum pinmux_type {
 	PINMUX_TYPE_MIKRO,
 	PINMUX_TYPE_NONE
 } PINMUX_TYPE;
-
 
 #ifdef __cplusplus
 extern "C" {

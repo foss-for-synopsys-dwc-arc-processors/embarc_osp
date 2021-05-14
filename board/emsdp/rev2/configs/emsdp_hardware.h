@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef __EMSDP_HARDWARE_H__
 #define __EMSDP_HARDWARE_H__
 
@@ -44,46 +44,45 @@
  * Clock Definitions
  */
 #ifndef EMSDP_PWM_TIMER_CLOCK
-#define EMSDP_PWM_TIMER_CLOCK		(EMSDP_REF_CLOCK)
+#define EMSDP_PWM_TIMER_CLOCK           (EMSDP_REF_CLOCK)
 #endif
 #ifndef EMSDP_SPI_CLOCK
-#define EMSDP_SPI_REF_CLOCK 		(EMSDP_REF_CLOCK)
+#define EMSDP_SPI_REF_CLOCK             (EMSDP_REF_CLOCK)
 #endif
 
 #ifndef EMSDP_I2C_CLOCK
-#define EMSDP_I2C_CLOCK			(EMSDP_REF_CLOCK)
+#define EMSDP_I2C_CLOCK                 (EMSDP_REF_CLOCK)
 #endif
 
 /** CPU Clock Frequency definition */
 #if defined(BOARD_CPU_FREQ)
-	/*!< Get cpu clock frequency definition from build system */
-	#define CLK_CPU					(BOARD_CPU_FREQ)
+/*!< Get cpu clock frequency definition from build system */
+	#define CLK_CPU                                 (BOARD_CPU_FREQ)
 #elif defined(ARC_FEATURE_CPU_CLOCK_FREQ)
-	/*!< Get cpu clock frequency definition from tcf file */
-	#define CLK_CPU					(40000000U)//(ARC_FEATURE_CPU_CLOCK_FREQ)
+/*!< Get cpu clock frequency definition from tcf file */
+	#define CLK_CPU                                 (40000000U)// (ARC_FEATURE_CPU_CLOCK_FREQ)
 #else
-	/*!< Default cpu clock frequency */
-	#define CLK_CPU					(50000000U)
+/*!< Default cpu clock frequency */
+	#define CLK_CPU                                 (50000000U)
 #endif
 
 /** Peripheral Bus Reference Clock definition */
 #ifdef BOARD_DEV_FREQ
-	/*!< Get peripheral bus reference clock defintion from build system */
-	#define CLK_BUS_APB				(BOARD_DEV_FREQ)
+/*!< Get peripheral bus reference clock defintion from build system */
+	#define CLK_BUS_APB                             (BOARD_DEV_FREQ)
 #else
-	/*!< Default peripheral bus reference clock defintion */
-	#define CLK_BUS_APB				(100000000U)
+/*!< Default peripheral bus reference clock defintion */
+	#define CLK_BUS_APB                             (100000000U)
 #endif
 
+// CREG Control Register Map
+#define EMSDP_CREG_BOOT_OFFSET                  (0x0000)
+#define EMSDP_CREG_START_OFFSET                 (0x0010)
+#define EMSDP_CREG_PMOD_MUX_OFFSET              (0x0030)
+#define EMSDP_CREG_ARDUINO_MUX_OFFSET   (0x0034)
+#define EMSDP_CREG_GENERIC_MUX_OFFSET   (0x0038)
+#define EMSDP_CREG_IP_SW_RESET_OFFSET   (0x1FF0)
+#define EMSDP_CREG_IP_VERSION_OFFSET    (0x1FF8)
+#define EMSDP_CREG_IP_TYPE_OFFSET               (0x1FFC)
 
-//CREG Control Register Map
-#define EMSDP_CREG_BOOT_OFFSET			(0x0000)
-#define EMSDP_CREG_START_OFFSET			(0x0010)
-#define EMSDP_CREG_PMOD_MUX_OFFSET		(0x0030)
-#define EMSDP_CREG_ARDUINO_MUX_OFFSET	(0x0034)
-#define EMSDP_CREG_GENERIC_MUX_OFFSET	(0x0038)
-#define EMSDP_CREG_IP_SW_RESET_OFFSET	(0x1FF0)
-#define EMSDP_CREG_IP_VERSION_OFFSET	(0x1FF8)
-#define EMSDP_CREG_IP_TYPE_OFFSET		(0x1FFC)
-
-#endif //__EMSDP_HARDWARE_H__
+#endif // __EMSDP_HARDWARE_H__

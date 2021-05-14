@@ -26,10 +26,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "axs_103_interrupt.h"
-
 
 typedef volatile struct dw_ictl_reg {
 	uint32_t ENABLE_L;
@@ -51,16 +50,15 @@ typedef volatile struct dw_ictl_reg {
 
 typedef volatile struct ictl_gpio_reg {
 	uint32_t reserved[12];
-	uint32_t INTEN;		/*!< (0x30) */
-	uint32_t INTMASK;	/*!< (0x34) */
-	uint32_t INTTYPE_LEVEL;	/*!< (0x38) */
-	uint32_t INT_POLARITY;	/*!< (0x3c) */
-	uint32_t INTSTATUS;	/*!< (0x40) */
-	uint32_t RAW_INTSTATUS;	/*!< (0x44) */
-	uint32_t DEBOUNCE;	/*!< (0x48) */
-	uint32_t PORTA_EOI;	/*!< (0x4c) */
+	uint32_t INTEN;         /*!< (0x30) */
+	uint32_t INTMASK;       /*!< (0x34) */
+	uint32_t INTTYPE_LEVEL; /*!< (0x38) */
+	uint32_t INT_POLARITY;  /*!< (0x3c) */
+	uint32_t INTSTATUS;     /*!< (0x40) */
+	uint32_t RAW_INTSTATUS; /*!< (0x44) */
+	uint32_t DEBOUNCE;      /*!< (0x48) */
+	uint32_t PORTA_EOI;     /*!< (0x4c) */
 } ICTL_GPIO_REG, *ICTL_GPIO_REG_PTR;
-
 
 void dw_ictl_int_enable(DW_ICTL_REG_PTR reg, uint32_t intno)
 {
@@ -111,7 +109,6 @@ void dw_ictl_int_sw_trigger(DW_ICTL_REG_PTR reg, uint32_t intno)
 	reg->FORCE_L = (1 << intno);
 }
 
-
 void ictl_gpio_int_enable(ICTL_GPIO_REG_PTR reg, uint32_t intno)
 {
 	uint32_t val;
@@ -158,6 +155,7 @@ uint32_t ictl_gpio_int_probe(ICTL_GPIO_REG_PTR reg, uint32_t intno)
 void ictl_gpio_int_level_config(ICTL_GPIO_REG_PTR reg, uint32_t intno, uint32_t level)
 {
 	uint32_t val;
+
 	val = reg->INTTYPE_LEVEL;
 	val &= ~(1 << intno);
 	val |= (level << intno);
@@ -167,6 +165,7 @@ void ictl_gpio_int_level_config(ICTL_GPIO_REG_PTR reg, uint32_t intno, uint32_t 
 void ictl_gpio_int_polarity_config(ICTL_GPIO_REG_PTR reg, uint32_t intno, uint32_t polarity)
 {
 	uint32_t val;
+
 	val = reg->INT_POLARITY;
 	val &= ~(1 << intno);
 	val |= (polarity << intno);
@@ -183,13 +182,11 @@ static void axs_103_int_handler_default(void *ptr)
 	ptr = ptr;
 }
 
-
 static ICTL_GPIO_REG_PTR ictl_gpio_ptr = (ICTL_GPIO_REG_PTR)(REGBASE_ICTL_CPU);
 static DW_ICTL_REG_PTR dw_ictl_ptr = (DW_ICTL_REG_PTR)(REGBASE_ICTL);
 static INT_HANDLER_T axs_103_int_handler_table[NUM_INT_ALL] = {
-	[0 ... NUM_INT_ALL-1] = axs_103_int_handler_default
+	[0 ... NUM_INT_ALL - 1] = axs_103_int_handler_default
 };
-
 
 static void dw_ictl_int_isr(void *ptr)
 {
@@ -198,7 +195,7 @@ static void dw_ictl_int_isr(void *ptr)
 
 	status = dw_ictl_ptr->FINALSTATUS_L;
 
-	for (i=0; i < ICTL_INTNO_NUM ; i ++) {
+	for (i = 0; i < ICTL_INTNO_NUM; i++) {
 		if (status & (1 << i)) {
 			axs_103_int_handler_table[i]((void *)i);
 		}
@@ -212,13 +209,12 @@ static void ictl_gpio_int_isr(void *ptr)
 
 	status = ictl_gpio_ptr->INTSTATUS;
 
-	for (i=0; i < ICTL_INTNO_NUM ; i ++) {
+	for (i = 0; i < ICTL_INTNO_NUM; i++) {
 		if (status & (1 << i)) {
-			axs_103_int_handler_table[i+ICTL_INTNO_NUM]((void *)i);
+			axs_103_int_handler_table[i + ICTL_INTNO_NUM]((void *)i);
 		}
 	}
 }
-
 
 /**
  * \brief disable the specific interrupt
@@ -234,7 +230,7 @@ int32_t int_disable(const uint32_t intno)
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) {
 		/* arc interrupt controller */
 		arc_int_disable(sub_intno);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		dw_ictl_int_disable(dw_ictl_ptr, sub_intno);
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		ictl_gpio_int_disable(ictl_gpio_ptr, sub_intno);
@@ -257,9 +253,9 @@ int32_t int_enable(const uint32_t intno)
 	uint32_t sub_intno = intno & 0xff;
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) {
-	/* arc interrupt controller */
+		/* arc interrupt controller */
 		arc_int_enable(sub_intno);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		dw_ictl_int_enable(dw_ictl_ptr, sub_intno);
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		ictl_gpio_int_enable(ictl_gpio_ptr, sub_intno);
@@ -284,7 +280,7 @@ int32_t int_enabled(const uint32_t intno)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { /* arc interrupt controller */
 		return arc_int_enabled(sub_intno);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		return dw_ictl_int_enabled(dw_ictl_ptr, sub_intno);
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		return ictl_gpio_int_enabled(ictl_gpio_ptr, sub_intno);
@@ -303,7 +299,6 @@ int32_t int_ipm_get(void)
 	return ((int32_t)arc_int_ipm_get() + INT_PRI_MIN);
 }
 
-
 /**
  * \brief  set the interrupt priority mask
  *
@@ -317,9 +312,8 @@ int32_t int_ipm_set(int32_t intpri)
 		return 0;
 	}
 
-	return  -1;
+	return -1;
 }
-
 
 /**
  * \brief  get current interrupt priority mask
@@ -335,7 +329,7 @@ int32_t int_pri_get(const uint32_t intno)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) {
 		return (int32_t)arc_int_pri_get(sub_intno) + INT_PRI_MIN;
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) {
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {
 		return (int32_t)arc_int_pri_get(INTNO_ICTL_MB) + INT_PRI_MIN;
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) {
 		return (int32_t)arc_int_pri_get(INTNO_ICTL_CPU) + INT_PRI_MIN;
@@ -360,7 +354,7 @@ int32_t int_pri_set(const uint32_t intno, int32_t intpri)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) {
 		arc_int_pri_set(sub_intno, (uint32_t)intpri);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) {
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {
 		arc_int_pri_set(INTNO_ICTL_MB, (uint32_t)intpri);
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) {
 		arc_int_pri_set(INTNO_ICTL_CPU, (uint32_t)intpri);
@@ -386,7 +380,7 @@ int32_t int_probe(const uint32_t intno)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { /* arc interrupt controller */
 		return arc_int_probe(sub_intno);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) {
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {
 		return dw_ictl_int_probe(dw_ictl_ptr, sub_intno);
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) {
 		return ictl_gpio_int_probe(ictl_gpio_ptr, sub_intno);
@@ -394,7 +388,6 @@ int32_t int_probe(const uint32_t intno)
 
 	return -1;
 }
-
 
 /**
  * \brief  trigger the interrupt in software
@@ -410,7 +403,7 @@ int32_t int_sw_trigger(const uint32_t intno)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { /* arc interrupt controller */
 		arc_int_sw_trigger(sub_intno);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		dw_ictl_int_sw_trigger(dw_ictl_ptr, sub_intno);
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		return -1;
@@ -436,7 +429,7 @@ int32_t int_level_config(const uint32_t intno, const uint32_t level)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { /* arc interrupt controller */
 		arc_int_level_config(sub_intno, level);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		return -1;
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		ictl_gpio_int_level_config(ictl_gpio_ptr, sub_intno, level);
@@ -446,7 +439,6 @@ int32_t int_level_config(const uint32_t intno, const uint32_t level)
 
 	return 0;
 }
-
 
 /**
  * \brief  lock cpu, disable interrupts
@@ -498,7 +490,7 @@ int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { /* arc interrupt controller */
 		exc_handler_install(sub_intno, handler);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		axs_103_int_handler_table[sub_intno] = handler;
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		axs_103_int_handler_table[sub_intno + ICTL_INTNO_NUM] = handler;
@@ -523,7 +515,7 @@ INT_HANDLER_T int_handler_get(const uint32_t intno)
 
 	if (ictl == 0 && sub_intno >= NUM_EXC_CPU && sub_intno < NUM_EXC_ALL) { /* arc interrupt controller */
 		return exc_handler_get(sub_intno);
-	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM ) { /* main board ictl */
+	} else if (ictl == INTNO_ICTL_MB && sub_intno <= ICTL_INTNO_NUM) {      /* main board ictl */
 		return axs_103_int_handler_table[sub_intno];
 	} else if (ictl == INTNO_ICTL_CPU && sub_intno <= CPU_ICTL_INTNO_NUM) { /* cpu card ictl */
 		return axs_103_int_handler_table[sub_intno + ICTL_INTNO_NUM];
@@ -532,17 +524,15 @@ INT_HANDLER_T int_handler_get(const uint32_t intno)
 	return NULL;
 }
 
-
 void axs_interrupt_init(void)
 {
 
 	DEV_GPIO_INT_CFG int_cfg;
 	DEV_GPIO_BIT_ISR bit_isr;
 
-	DEV_GPIO * port_ptr;
+	DEV_GPIO *port_ptr;
 
 	port_ptr = gpio_get_dev(CPU_DW_GPIO_PORT_A);
-
 
 	int_cfg.int_bit_mask = ICTL_GPIOA_LINE_MASK;
 	int_cfg.int_bit_type = GPIO_INT_BITS_LEVEL_TRIG(ICTL_GPIOA_LINE_MASK);

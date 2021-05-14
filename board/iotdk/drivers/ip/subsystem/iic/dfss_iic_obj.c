@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "dfss_iic_obj.h"
 #include "ss_i2c_master.h"
 
@@ -38,9 +38,9 @@ static void iic_tx_cb0(void *param);
 static void iic_rx_cb0(void *param);
 static void iic_err_cb0(void *param);
 
-#define DFSS_IIC_0_TARADDR	(0)
+#define DFSS_IIC_0_TARADDR      (0)
 
-static DEV_IIC			dfss_iic_0;
+static DEV_IIC dfss_iic_0;
 
 static SS_IIC_MASTER_DEV_CONTEXT iic_master_context0 = {
 	.reg_base = AR_IO_I2C_MST0_CON,
@@ -53,7 +53,6 @@ static SS_IIC_MASTER_DEV_CONTEXT iic_master_context0 = {
 	.int_tx_cb = iic_tx_cb0,
 	.int_err_cb = iic_err_cb0,
 };
-
 
 static void iic_tx_cb0(void *param)
 {
@@ -101,7 +100,6 @@ static void dfss_iic_0_install(void)
 	DEV_IIC *dfss_iic_ptr = &dfss_iic_0;
 	DEV_IIC_INFO *dfss_iic_info_ptr = &(dfss_iic_0.iic_info);
 
-
 	iic_master_context0.info = &(dfss_iic_0.iic_info);
 	/* Info init */
 	dfss_iic_info_ptr->iic_ctrl = (void *)&iic_master_context0;
@@ -124,9 +122,9 @@ static void iic_tx_cb1(void *param);
 static void iic_rx_cb1(void *param);
 static void iic_err_cb1(void *param);
 
-#define DFSS_IIC_1_TARADDR	(0)
+#define DFSS_IIC_1_TARADDR      (0)
 
-static DEV_IIC			dfss_iic_1;
+static DEV_IIC dfss_iic_1;
 
 static SS_IIC_MASTER_DEV_CONTEXT iic_master_context1 = {
 	.reg_base = AR_IO_I2C_MST1_CON,
@@ -139,7 +137,6 @@ static SS_IIC_MASTER_DEV_CONTEXT iic_master_context1 = {
 	.int_tx_cb = iic_tx_cb1,
 	.int_err_cb = iic_err_cb1,
 };
-
 
 static void iic_tx_cb1(void *param)
 {
@@ -187,7 +184,6 @@ static void dfss_iic_1_install(void)
 	DEV_IIC *dfss_iic_ptr = &dfss_iic_1;
 	DEV_IIC_INFO *dfss_iic_info_ptr = &(dfss_iic_1.iic_info);
 
-
 	iic_master_context1.info = &(dfss_iic_1.iic_info);
 	/* Info init */
 	dfss_iic_info_ptr->iic_ctrl = (void *)&iic_master_context1;
@@ -218,19 +214,19 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 	switch (iic_id) {
 #if USE_DFSS_IIC_0
 
-		case DFSS_IIC_0_ID:
-			return &dfss_iic_0;
-			break;
+	case DFSS_IIC_0_ID:
+		return &dfss_iic_0;
+		break;
 #endif
 #if USE_DFSS_IIC_1
 
-		case DFSS_IIC_1_ID:
-			return &dfss_iic_1;
-			break;
+	case DFSS_IIC_1_ID:
+		return &dfss_iic_1;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

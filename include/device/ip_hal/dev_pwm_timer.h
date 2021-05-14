@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \defgroup	DEVICE_HAL_PWM_TIMER		PWM_TIMER Device HAL Interface
  * \ingroup	DEVICE_HAL_DEF
@@ -82,21 +82,21 @@
  * @{
  */
 
-#define PWM_TIMER_CMD_SET_CFG			DEV_SET_SYSCMD(0)
+#define PWM_TIMER_CMD_SET_CFG                   DEV_SET_SYSCMD(0)
 
-#define PWM_TIMER_CMD_GET_CFG			DEV_SET_SYSCMD(1)
+#define PWM_TIMER_CMD_GET_CFG                   DEV_SET_SYSCMD(1)
 
-#define PWM_TIMER_CMD_ENA_CH			DEV_SET_SYSCMD(2)
+#define PWM_TIMER_CMD_ENA_CH                    DEV_SET_SYSCMD(2)
 
-#define PWM_TIMER_CMD_DIS_CH			DEV_SET_SYSCMD(3)
+#define PWM_TIMER_CMD_DIS_CH                    DEV_SET_SYSCMD(3)
 
-#define PWM_TIMER_CMD_SET_ISR			DEV_SET_SYSCMD(4)
+#define PWM_TIMER_CMD_SET_ISR                   DEV_SET_SYSCMD(4)
 
-#define PWM_TIMER_CMD_GET_ISR			DEV_SET_SYSCMD(5)
+#define PWM_TIMER_CMD_GET_ISR                   DEV_SET_SYSCMD(5)
 
-#define PWM_TIMER_CMD_DIS_ISR			DEV_SET_SYSCMD(6)
+#define PWM_TIMER_CMD_DIS_ISR                   DEV_SET_SYSCMD(6)
 
-#define PWM_TIMER_CMD_ENA_ISR			DEV_SET_SYSCMD(7)
+#define PWM_TIMER_CMD_ENA_ISR                   DEV_SET_SYSCMD(7)
 
 /** @} */
 
@@ -105,30 +105,28 @@ typedef void (*DEV_PWM_TIMER_HANDLER) (void *ptr);
 
 /** interrupt handler for each pwm_timer channel */
 typedef struct dev_pwm_timer_ch_isr {
-	uint32_t int_ch_num;		/*!< pwm_timer channel num*/
-	DEV_PWM_TIMER_HANDLER int_ch_handler;		/*!< interrupt handler */
-} DEV_PWM_TIMER_CH_ISR, * DEV_PWM_TIMER_CH_ISR_PTR;
+	uint32_t int_ch_num;                    /*!< pwm_timer channel num*/
+	DEV_PWM_TIMER_HANDLER int_ch_handler;   /*!< interrupt handler */
+} DEV_PWM_TIMER_CH_ISR, *DEV_PWM_TIMER_CH_ISR_PTR;
 
 /**
  * PWM_TIMER Device Work Mode Types Enum
  */
 typedef enum dev_pwm_timer_mode {
-	DEV_PWM_TIMER_MODE_CLOSE = 0,	/*!< mode close */
-	DEV_PWM_TIMER_MODE_TIMER = 1,	/*!< mode timer */
-	DEV_PWM_TIMER_MODE_PWM = 2		/*!< mode pwm */
+	DEV_PWM_TIMER_MODE_CLOSE        = 0,    /*!< mode close */
+	DEV_PWM_TIMER_MODE_TIMER        = 1,    /*!< mode timer */
+	DEV_PWM_TIMER_MODE_PWM          = 2     /*!< mode pwm */
 } DEV_PWM_TIMER_MODE, *DEV_PWM_TIMER_MODE_PTR;
-
 
 /**
  * PWM_TIMER Device Config Struct
  */
 typedef struct dev_pwm_timer_cfg {
-	DEV_PWM_TIMER_MODE mode;		/*!< work mode*/
-	uint16_t count_low;				/*!< count for timer or pwm period low*/
-	uint16_t count_high;			/*!< count for pwm period high*/
-	DEV_PWM_TIMER_HANDLER isr_hander;		/*!< channel ch isr hander*/
+	DEV_PWM_TIMER_MODE mode;                /*!< work mode*/
+	uint16_t count_low;                     /*!< count for timer or pwm period low*/
+	uint16_t count_high;                    /*!< count for pwm period high*/
+	DEV_PWM_TIMER_HANDLER isr_hander;       /*!< channel ch isr hander*/
 } DEV_PWM_TIMER_CFG, *DEV_PWM_TIMER_CFG_PTR;
-
 
 /**
  * \defgroup	DEVICE_HAL_PWM_TIMER_DEVSTRUCT	PWM_TIMER Device Interface Definition
@@ -148,9 +146,9 @@ typedef struct dev_pwm_timer_cfg {
 typedef struct dev_pwm_timer_info {
 	void *pwm_timer_ctrl;
 	uint32_t opn_cnt;
-	//uint32_t status;
-	//uint32_t mode;
-} DEV_PWM_TIMER_INFO, * DEV_PWM_TIMER_INFO_PTR;
+	// uint32_t status;
+	// uint32_t mode;
+} DEV_PWM_TIMER_INFO, *DEV_PWM_TIMER_INFO_PTR;
 
 /**
  * \brief	PWM_TIMER device interface definition
@@ -159,13 +157,13 @@ typedef struct dev_pwm_timer_info {
  * \note	All this details are implemented by user in user porting code
  */
 typedef struct dev_pwm_timer {
-	DEV_PWM_TIMER_INFO pwm_timer_info;				/*!< PWM_TIMER device information */
-	int32_t (*pwm_timer_open) (void);				/*!< Open pwm_timer device */
-	int32_t (*pwm_timer_close) (void);				/*!< Close pwm_timer device */
-	int32_t (*pwm_timer_control) (uint32_t ch, uint32_t cmd, void *param2);	/*!< Control pwm_timer device */
-	int32_t (*pwm_timer_write) (uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc);	/*!< Set the configuration of pwm_timer*/
-	int32_t (*pwm_timer_read) (uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc);	/*!< Read the configuration of pwm_timer*/
-} DEV_PWM_TIMER, * DEV_PWM_TIMER_PTR;
+	DEV_PWM_TIMER_INFO pwm_timer_info;                                                      /*!< PWM_TIMER device information */
+	int32_t (*pwm_timer_open)(void);                                                        /*!< Open pwm_timer device */
+	int32_t (*pwm_timer_close)(void);                                                       /*!< Close pwm_timer device */
+	int32_t (*pwm_timer_control)(uint32_t ch, uint32_t cmd, void *param2);                  /*!< Control pwm_timer device */
+	int32_t (*pwm_timer_write)(uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc);     /*!< Set the configuration of pwm_timer*/
+	int32_t (*pwm_timer_read)(uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc);   /*!< Read the configuration of pwm_timer*/
+} DEV_PWM_TIMER, *DEV_PWM_TIMER_PTR;
 /**
  * \fn		int32_t (* dev_pwm_timer::pwm_timer_open) (void)
  * \details	open pwm_timer device
@@ -227,8 +225,6 @@ typedef struct dev_pwm_timer {
  * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
  */
 /** @} */
-
-
 
 #ifdef __cplusplus
 extern "C" {

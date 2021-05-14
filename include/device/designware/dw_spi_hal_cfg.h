@@ -26,22 +26,21 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _DEVICE_DW_SPI_HAL_CFG_H_
 #define _DEVICE_DW_SPI_HAL_CFG_H_
 
 #ifndef DW_SPI_CALC_FIFO_LEN_ENABLE
-#define DW_SPI_CALC_FIFO_LEN_ENABLE		(1)	/*!< Defaultly enable calculate fifo length */
+#define DW_SPI_CALC_FIFO_LEN_ENABLE             (1)     /*!< Defaultly enable calculate fifo length */
 #endif
 
 #ifndef DW_SPI_MAX_FIFO_LENGTH
-#define DW_SPI_MAX_FIFO_LENGTH			(256)	/*!< Max FIFO depth for designware SPI device */
+#define DW_SPI_MAX_FIFO_LENGTH                  (256)   /*!< Max FIFO depth for designware SPI device */
 #endif
 
 #ifndef DW_SPI_MIN_FIFO_LENGTH
-#define DW_SPI_MIN_FIFO_LENGTH			(2)	/*!< Min FIFO depth for designware SPI device */
+#define DW_SPI_MIN_FIFO_LENGTH                  (2)     /*!< Min FIFO depth for designware SPI device */
 #endif
 
 #endif /* _DEVICE_DW_SPI_HAL_CFG_H_ */
-

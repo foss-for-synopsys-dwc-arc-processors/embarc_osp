@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF  THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <stddef.h>
 #include <string.h>
@@ -50,20 +50,21 @@
 #define DEBUG
 #include "embARC_debug.h"
 
-
-#define MRF_CHECK_EXP(EXPR, ERROR_CODE)			CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
-#define MRF_GPIO_SETUP(port_pin, port, pin)		{ \
-		port = (port_pin & 0xffff0000) >>16; \
-		pin = port_pin & 0xffff; \
-	}
-#define MRF_GPIO_PORT_SETUP(port_pin, port)		port = (port_pin & 0xffff0000) >>16
-#define MRF_GPIO_PIN_SETUP(port_pin, pin)		pin = port_pin & 0xffff
+#define MRF_CHECK_EXP(EXPR, ERROR_CODE)                 CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define MRF_GPIO_SETUP(port_pin, port, pin)             { \
+		port = (port_pin & 0xffff0000) >> 16;	  \
+		pin = port_pin & 0xffff;		  \
+}
+#define MRF_GPIO_PORT_SETUP(port_pin, port)             port = (port_pin & 0xffff0000) >> 16
+#define MRF_GPIO_PIN_SETUP(port_pin, pin)               pin = port_pin & 0xffff
 
 static int32_t spi_check_obj(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
+
 	MRF_CHECK_EXP(mrf24j40 != NULL, E_OBJ);
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
+
 	MRF_CHECK_EXP(dev_spi_ptr != NULL, E_OBJ);
 
 error_exit:
@@ -74,6 +75,7 @@ static int32_t gpio_check_obj(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
 	int16_t port_reset, port_wake;
+
 	MRF_GPIO_PORT_SETUP((mrf24j40->gpio_pin_reset), port_reset);
 	MRF_GPIO_PORT_SETUP((mrf24j40->gpio_pin_wake), port_wake);
 	MRF_CHECK_EXP(mrf24j40 != NULL, E_OBJ);
@@ -162,7 +164,7 @@ static int32_t spi_write_long_ctrl_reg(MRF24J40_DEF *mrf24j40, uint16_t addr, ui
 	msg[0] = (uint8_t)(((addr >> 3) & 0x7F) | 0x80);
 	msg[1] = (uint8_t)(((addr << 5) & 0xE0) | (1 << 4));
 	msg[2] = value;
-	msg[3] = 0x0;	/* have to write 1 more byte, why ?*/
+	msg[3] = 0x0;   /* have to write 1 more byte, why ?*/
 
 	DEV_SPI_XFER_SET_TXBUF(&dev_spi_xfer, msg, 0, 4);
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, 4, 0);
@@ -192,7 +194,7 @@ static int32_t spi_write_short_ctrl_reg(MRF24J40_DEF *mrf24j40, uint8_t addr, ui
 
 	msg[0] = (((addr << 1) & 0x7E) | 1);
 	msg[1] = value;
-	msg[2] = 0x0;	/* have to write 1 more byte, why ?*/
+	msg[2] = 0x0;   /* have to write 1 more byte, why ?*/
 
 	DEV_SPI_XFER_SET_TXBUF(&dev_spi_xfer, msg, 0, 3);
 	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, 3, 0);
@@ -217,7 +219,9 @@ static void mrf24j40_delay_us(uint32_t us)
 	us_delayed = (uint64_t)us;
 	start_us = board_get_cur_us();
 
-	while ((board_get_cur_us() - start_us) < us_delayed);
+	while ((board_get_cur_us() - start_us) < us_delayed) {
+		;
+	}
 }
 
 static void mrf24j40_delay_ms(uint32_t ms)
@@ -512,8 +516,8 @@ void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
 	uint8_t rf_state;
 	uint8_t rxmcr;
 
-	//mrf24j40_cs_pin(1);
-	//mrf24j40_wake_pin(1);
+	// mrf24j40_cs_pin(1);
+	// mrf24j40_wake_pin(1);
 	mrf24j40_wake_pin(mrf24j40, 1);
 
 	mrf24j40_reset(mrf24j40);
@@ -552,8 +556,8 @@ void mrf24j40_initialize(MRF24J40_DEF *mrf24j40)
 
 	// TURNTIME Defaule value: 0x4 and TURNTIME=0x3
 	mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_TXTIME, 0x30);
-	//mrf24j40_write_short_ctrl_reg(MRF24J40_TXPEND, mrf24j40_read_short_ctrl_reg(MRF24J40_TXPEND) & MRF24J40_FPACK);
-	//mrf24j40_write_long_ctrl_reg(MRF24J40_SLPCON0, MRF24J40_SLPCLKEN);
+	// mrf24j40_write_short_ctrl_reg(MRF24J40_TXPEND, mrf24j40_read_short_ctrl_reg(MRF24J40_TXPEND) & MRF24J40_FPACK);
+	// mrf24j40_write_long_ctrl_reg(MRF24J40_SLPCON0, MRF24J40_SLPCLKEN);
 	// mrf24j40_write_short_ctrl_reg(MRF24J40_ACKTMOUT, mrf24j40_read_short_ctrl_reg(MRF24J40_ACKTMOUT) | MRF24J40_DRPACK);
 	// mrf24j40_write_short_ctrl_reg(MRF24J40_RXMCR, mrf24j40_read_short_ctrl_reg(MRF24J40_RXMCR) | MRF24J40_PROMI);
 
@@ -601,20 +605,20 @@ int32_t mrf24j40_setup(MRF24J40_DEF *mrf24j40)
 	result = gpio_wake_ptr->gpio_open(1 << pin_wake);
 	MRF_CHECK_EXP(result == E_OPNED, E_CLSED);
 	gpio_wake_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-	                            (void *)(1 << pin_wake));
+				    (void *)(1 << pin_wake));
 	gpio_wake_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT,
-	                            (void *)(1 << pin_wake));
+				    (void *)(1 << pin_wake));
 
 	result = gpio_reset_ptr->gpio_open(1 << pin_reset);
 	MRF_CHECK_EXP(result == E_OPNED, E_CLSED);
 	gpio_reset_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-	                             (void *)(1 << pin_reset));
+				     (void *)(1 << pin_reset));
 	gpio_reset_ptr->gpio_control(GPIO_CMD_DIS_BIT_INT,
-	                             (void *)(1 << pin_reset));
+				     (void *)(1 << pin_reset));
 
 	/* Flush buffer */
-	memset(&(mrf24j40->rx_buf[0]), 0, sizeof(uint8_t)*MRF24J40_BUF_SIZE);
-	memset(&(mrf24j40->tx_buf[0]), 0, sizeof(uint8_t)*MRF24J40_BUF_SIZE);
+	memset(&(mrf24j40->rx_buf[0]), 0, sizeof(uint8_t) * MRF24J40_BUF_SIZE);
+	memset(&(mrf24j40->tx_buf[0]), 0, sizeof(uint8_t) * MRF24J40_BUF_SIZE);
 
 error_exit:
 	return ercd;
@@ -741,7 +745,7 @@ error_exit:
 static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *key)
 {
 	int32_t ercd = E_OK;
-	uint8_t msg[16+2];
+	uint8_t msg[16 + 2];
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
 	uint8_t i;
@@ -753,7 +757,7 @@ static int32_t mrf24j40_set_key(MRF24J40_DEF *mrf24j40, uint16_t addr, uint8_t *
 	msg[1] = (uint8_t)(((addr << 5) & 0xE0) | (1 << 4));
 
 	for (i = 0; i < 16; i++) {
-		msg[i+2] = key[0];
+		msg[i + 2] = key[0];
 	}
 
 	DEV_SPI_XFER_SET_TXBUF(&dev_spi_xfer, msg, 0, 18);
@@ -829,7 +833,7 @@ int32_t mrf24j40_set_channel(MRF24J40_DEF *mrf24j40, int16_t ch)
 
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
 	MRF_CHECK_EXP(mrf24j40_write_long_ctrl_reg(mrf24j40, MRF24J40_RFCON0,
-	              MRF24J40_CHANNEL(ch) | MRF24J40_RFOPT(0x03)) == E_OK, E_SYS);
+						   MRF24J40_CHANNEL(ch) | MRF24J40_RFOPT(0x03)) == E_OK, E_SYS);
 	MRF_CHECK_EXP(mrf24j40_rf_reset(mrf24j40) == E_OK, E_SYS);
 
 error_exit:
@@ -902,28 +906,29 @@ error_exit:
 }
 
 static int32_t mrf24j40_txpkt_frame_write(MRF24J40_DEF *mrf24j40, uint16_t address, uint8_t *frame, uint8_t hdr_len,
-        uint8_t frame_len)
+					  uint8_t frame_len)
 {
 	int32_t ercd = E_OK;
-	uint8_t msg[frame_len+2+2];
+	uint8_t msg[frame_len + 2 + 2];
 	DEV_SPI_TRANSFER dev_spi_xfer;
 	int32_t ret0, ret1, ret2;
 	uint8_t i = 0;
 	uint32_t cs_line = mrf24j40->spi_cs;
 
 	DEV_SPI_PTR dev_spi_ptr = spi_get_dev(mrf24j40->spi);
+
 	msg[0] = (uint8_t)(((address >> 3) & 0x7F) | 0x80);
 	msg[1] = (uint8_t)(((address << 5) & 0xE0) | (1 << 4));
 	msg[2] = (uint8_t)hdr_len;
 	msg[3] = (uint8_t)frame_len;
 
 	for (i = 0; i < frame_len; i++) {
-		msg[i+4] = *frame;
+		msg[i + 4] = *frame;
 		frame++;
 	}
 
-	DEV_SPI_XFER_SET_TXBUF(&dev_spi_xfer, msg, 0, frame_len+2+2);
-	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, frame_len+2+2, 0);
+	DEV_SPI_XFER_SET_TXBUF(&dev_spi_xfer, msg, 0, frame_len + 2 + 2);
+	DEV_SPI_XFER_SET_RXBUF(&dev_spi_xfer, NULL, frame_len + 2 + 2, 0);
 	DEV_SPI_XFER_SET_NEXT(&dev_spi_xfer, NULL);
 
 	ret0 = dev_spi_ptr->spi_control(SPI_CMD_MST_SEL_DEV, CONV2VOID(cs_line));
@@ -948,12 +953,12 @@ error_exit:
  *
  */
 /* TX buffer packet */
-//typedef struct mrf24j40_txbuf
-//{				/* Name: byte */
+// typedef struct mrf24j40_txbuf
+// {				/* Name: byte */
 //	uint8_t hlen;		/* Head length (m): 1 */
 //	uint8_t flen;		/* Frame length (m+n): 1 */
 //	uint8_t pck[128];	/* Header： m + Data payload: n */
-//}MRF24J40_TXBUF;
+// }MRF24J40_TXBUF;
 int32_t mrf24j40_txpkt(MRF24J40_DEF *mrf24j40)
 {
 	int32_t ercd = E_OK;
@@ -1004,7 +1009,7 @@ int32_t mrf24j40_set_cipher(MRF24J40_DEF *mrf24j40, uint8_t rxcipher, uint8_t tx
 
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
 	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_SECCON0,
-	              MRF24J40_RXCIPHER(rxcipher) | MRF24J40_TXNCIPHER(txcipher)) == E_OK, E_SYS);
+						    MRF24J40_RXCIPHER(rxcipher) | MRF24J40_TXNCIPHER(txcipher)) == E_OK, E_SYS);
 
 error_exit:
 	return ercd;
@@ -1015,7 +1020,7 @@ error_exit:
  * \details	Read security decryption error bit
  * \param[in]	mrf24j40	MRF24J40 object pointer
  * \param[out] 	err	0	Security decryption error occurred
-			1	Security decryption error did not occur
+                        1	Security decryption error did not occur
  * \retval	E_OK	Setup device successfully
  * \retval	E_OBJ	Device object is not valid or not exists
  * \retval	E_SYS	Error in SPI/GPIO process
@@ -1078,7 +1083,7 @@ error_exit:
  */
 // RX buffer packet
 // typedef struct mrf24j40_rxbuf
-//{				 Name: byte
+// {				 Name: byte
 //	uint8_t flen;		 Frame length (m+n+2): 1
 //	uint8_t pck[128];	 Header (MHR): m + Data payload (MSDU): n + FCS: 2
 //	uint8_t lqi;		/* LQI: 1 */
@@ -1179,7 +1184,7 @@ int32_t mrf24j40_set_transmit_trig(MRF24J40_DEF *mrf24j40)
 
 	MRF_CHECK_EXP(spi_check_obj(mrf24j40) == E_OK, E_OBJ);
 	MRF_CHECK_EXP(mrf24j40_read_short_ctrl_reg(mrf24j40, MRF24J40_TXNCON, &retval) == E_OK, E_SYS);
-	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_TXNCON, retval| MRF24J40_TXNTRIG) == E_OK, E_SYS);
+	MRF_CHECK_EXP(mrf24j40_write_short_ctrl_reg(mrf24j40, MRF24J40_TXNCON, retval | MRF24J40_TXNTRIG) == E_OK, E_SYS);
 
 error_exit:
 	return ercd;

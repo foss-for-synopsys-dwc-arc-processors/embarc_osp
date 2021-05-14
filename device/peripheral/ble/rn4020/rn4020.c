@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #define DEBUG
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -38,7 +38,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 #ifdef RN4020_INTERRUPT_DRIVERN
 static RN4020_DEF_PTR rn4020_ptr;
 #endif
@@ -48,33 +47,33 @@ static void _rn4020_set_state(RN4020_DEF_PTR rn4020, RN4020_STATE new_state)
 #ifdef DEBUG
 
 	switch (new_state) {
-		case RN4020_STATE_INITIALIZING:
-			DBG("state: INITIALIZING\n");
-			break;
+	case RN4020_STATE_INITIALIZING:
+		DBG("state: INITIALIZING\n");
+		break;
 
-		case RN4020_STATE_READY:
-			DBG("state: READY\n");
-			break;
+	case RN4020_STATE_READY:
+		DBG("state: READY\n");
+		break;
 
-		case RN4020_STATE_WAITING_FOR_CMD:
-			DBG("state: WAITING_FOR_CMD\n");
-			break;
+	case RN4020_STATE_WAITING_FOR_CMD:
+		DBG("state: WAITING_FOR_CMD\n");
+		break;
 
-		case RN4020_STATE_WAITING_FOR_AOK:
-			DBG("state: WAITING_FOR_AOK\n");
-			break;
+	case RN4020_STATE_WAITING_FOR_AOK:
+		DBG("state: WAITING_FOR_AOK\n");
+		break;
 
-		case RN4020_STATE_WAITING_FOR_RESET:
-			DBG("state: WAITING_FOR_RESET\n");
-			break;
+	case RN4020_STATE_WAITING_FOR_RESET:
+		DBG("state: WAITING_FOR_RESET\n");
+		break;
 
-		case RN4020_STATE_WAITING_FOR_LS:
-			DBG("state: WAITING_FOR_LS\n");
-			break;
+	case RN4020_STATE_WAITING_FOR_LS:
+		DBG("state: WAITING_FOR_LS\n");
+		break;
 
-		default:
-			DBG("state: unknown\n");
-			break;
+	default:
+		DBG("state: unknown\n");
+		break;
 	}
 
 #endif
@@ -132,7 +131,7 @@ static uint8_t _rn4020_parse_handle_uuid_line(const char *line, RN4020_HANDLE_UU
 	comma_ptr = strchr(uuid_ptr, ',');
 
 	_rn4020_parse_uuid_str(uuid_ptr, comma_ptr - uuid_ptr,
-	                       item->uuid, &item->uuid_len);
+			       item->uuid, &item->uuid_len);
 
 	/* \todo 128bit uuid support */
 	strncpy(handle, comma_ptr + 1, 4);
@@ -184,52 +183,52 @@ static void _rn4020_line_parser(RN4020_DEF_PTR rn4020, const char *line)
 	}
 
 	switch (rn4020->state) {
-		case RN4020_STATE_INITIALIZING:
-		case RN4020_STATE_WAITING_FOR_CMD:
-			if (strcmp(line, "CMD") == 0) {
-				_rn4020_set_state(rn4020, RN4020_STATE_READY);
-				return;
-			}
+	case RN4020_STATE_INITIALIZING:
+	case RN4020_STATE_WAITING_FOR_CMD:
+		if (strcmp(line, "CMD") == 0) {
+			_rn4020_set_state(rn4020, RN4020_STATE_READY);
+			return;
+		}
 
-			if (strcmp(line, "Reboot") == 0) {
-				return;
-			}
+		if (strcmp(line, "Reboot") == 0) {
+			return;
+		}
 
-			break;
+		break;
 
-		case RN4020_STATE_WAITING_FOR_AOK:
-			if (strcmp(line, "AOK") == 0) {
-				_rn4020_set_state(rn4020, RN4020_STATE_READY);
-				return;
-			}
+	case RN4020_STATE_WAITING_FOR_AOK:
+		if (strcmp(line, "AOK") == 0) {
+			_rn4020_set_state(rn4020, RN4020_STATE_READY);
+			return;
+		}
 
-			break;
+		break;
 
-		case RN4020_STATE_WAITING_FOR_RESET:
-			if (strcmp(line, "Reboot") == 0) {
-				_rn4020_set_state(rn4020, RN4020_STATE_WAITING_FOR_CMD);
-				return;
-			}
+	case RN4020_STATE_WAITING_FOR_RESET:
+		if (strcmp(line, "Reboot") == 0) {
+			_rn4020_set_state(rn4020, RN4020_STATE_WAITING_FOR_CMD);
+			return;
+		}
 
-			break;
+		break;
 
-		case RN4020_STATE_WAITING_FOR_LS:
-			if (_rn4020_parse_handle_uuid_line(line,
-			                                   &rn4020->handle_uuid_table[rn4020->handle_uuid_cnt])) {
-				rn4020->handle_uuid_cnt++;
-				return;
-			} else if (strcmp(line, "END") == 0) {
-				_rn4020_set_state(rn4020, RN4020_STATE_READY);
-				return;
-			} else if (strlen(line) == 4 || strlen(line) == RN4020_PRIVATE_UUID_HEX_STRING_LENGTH) {
-				DBG("service uuid, skip it\r\n");
-				return;
-			}
+	case RN4020_STATE_WAITING_FOR_LS:
+		if (_rn4020_parse_handle_uuid_line(line,
+						   &rn4020->handle_uuid_table[rn4020->handle_uuid_cnt])) {
+			rn4020->handle_uuid_cnt++;
+			return;
+		} else if (strcmp(line, "END") == 0) {
+			_rn4020_set_state(rn4020, RN4020_STATE_READY);
+			return;
+		} else if (strlen(line) == 4 || strlen(line) == RN4020_PRIVATE_UUID_HEX_STRING_LENGTH) {
+			DBG("service uuid, skip it\r\n");
+			return;
+		}
 
-			break;
+		break;
 
-		case RN4020_STATE_READY:
-			break;
+	case RN4020_STATE_READY:
+		break;
 	}
 
 	DBG("unexpected line: %s\n", line);
@@ -264,8 +263,8 @@ static int32_t _rn4020_cmd_aok(RN4020_DEF_PTR rn4020, const char *cmd)
 }
 
 static int32_t _rn4020_server_write_char(RN4020_DEF_PTR rn4020,
-        const uint8_t *uuid, uint8_t uuid_len,
-        const uint8_t *data, uint32_t data_len)
+					 const uint8_t *uuid, uint8_t uuid_len,
+					 const uint8_t *data, uint32_t data_len)
 {
 	char line[RN4020_PRIVATE_UUID_HEX_STRING_LENGTH + 3];
 
@@ -324,23 +323,23 @@ int32_t rn4020_setup(RN4020_DEF_PTR rn4020)
 
 	if (gpio_wake_sw->gpio_open((1 << rn4020->pin_wake_sw)) == E_OPNED) {
 		gpio_wake_sw->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-		                           (void *)(1 << rn4020->pin_wake_sw));
+					   (void *)(1 << rn4020->pin_wake_sw));
 		gpio_wake_sw->gpio_control(GPIO_CMD_DIS_BIT_INT,
-		                           (void *)(1 << rn4020->pin_wake_sw));
+					   (void *)(1 << rn4020->pin_wake_sw));
 	}
 
 	if (gpio_wake_hw->gpio_open((1 << rn4020->pin_wake_hw)) == E_OPNED) {
 		gpio_wake_sw->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-		                           (void *)(1 << rn4020->pin_wake_hw));
+					   (void *)(1 << rn4020->pin_wake_hw));
 		gpio_wake_sw->gpio_control(GPIO_CMD_DIS_BIT_INT,
-		                           (void *)(1 << rn4020->pin_wake_hw));
+					   (void *)(1 << rn4020->pin_wake_hw));
 	}
 
 	if (gpio_cmd->gpio_open((1 << rn4020->pin_cmd)) == E_OPNED) {
 		gpio_cmd->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,
-		                       (void *)(1 << rn4020->pin_cmd));
+				       (void *)(1 << rn4020->pin_cmd));
 		gpio_cmd->gpio_control(GPIO_CMD_DIS_BIT_INT,
-		                       (void *)(1 << rn4020->pin_cmd));
+				       (void *)(1 << rn4020->pin_cmd));
 	}
 
 	gpio_wake_hw->gpio_write(0, 1 << rn4020->pin_wake_hw);
@@ -361,9 +360,9 @@ int32_t rn4020_setup(RN4020_DEF_PTR rn4020)
 	_rn4020_set_state(rn4020, RN4020_STATE_INITIALIZING);
 
 	gpio_wake_hw->gpio_write(1 << rn4020->pin_wake_hw,
-	                         1 << rn4020->pin_wake_hw);
+				 1 << rn4020->pin_wake_hw);
 	gpio_wake_sw->gpio_write(1 << rn4020->pin_wake_sw,
-	                         1 << rn4020->pin_wake_sw);
+				 1 << rn4020->pin_wake_sw);
 	gpio_cmd->gpio_write(0, 1 << rn4020->pin_cmd);
 
 	board_delay_ms(100, 0);
@@ -396,6 +395,7 @@ int32_t rn4020_reset_to_factory(RN4020_DEF_PTR rn4020)
 int32_t rn4020_set_services(RN4020_DEF_PTR rn4020, uint32_t services)
 {
 	char line[15];
+
 	snprintf(line, 15, "SS,%08X", services);
 	return _rn4020_cmd_aok(rn4020, line);
 }
@@ -403,6 +403,7 @@ int32_t rn4020_set_services(RN4020_DEF_PTR rn4020, uint32_t services)
 int32_t rn4020_set_features(RN4020_DEF_PTR rn4020, uint32_t features)
 {
 	char line[15];
+
 	snprintf(line, 15, "SR,%08X", features);
 	return _rn4020_cmd_aok(rn4020, line);
 }
@@ -410,6 +411,7 @@ int32_t rn4020_set_features(RN4020_DEF_PTR rn4020, uint32_t features)
 int32_t rn4020_set_dev_name_mac(RN4020_DEF_PTR rn4020, const char *name)
 {
 	char line[15];
+
 	snprintf(line, 15, "S-,%s", name);
 	return _rn4020_cmd_aok(rn4020, line);
 }
@@ -417,6 +419,7 @@ int32_t rn4020_set_dev_name_mac(RN4020_DEF_PTR rn4020, const char *name)
 int32_t rn4020_set_dev_name(RN4020_DEF_PTR rn4020, const char *name)
 {
 	char line[15];
+
 	snprintf(line, 15, "SN,%s", name);
 	return _rn4020_cmd_aok(rn4020, line);
 }
@@ -424,6 +427,7 @@ int32_t rn4020_set_dev_name(RN4020_DEF_PTR rn4020, const char *name)
 int32_t rn4020_set_manufacturer_name(RN4020_DEF_PTR rn4020, const char *name)
 {
 	char line[15];
+
 	snprintf(line, 15, "SDN,%s", name);
 	return _rn4020_cmd_aok(rn4020, line);
 }
@@ -461,17 +465,19 @@ int32_t rn4020_clear_private(RN4020_DEF_PTR rn4020)
 
 int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t *uuid)
 {
-	char line[RN4020_PRIVATE_UUID_HEX_STRING_LENGTH+5];
+	char line[RN4020_PRIVATE_UUID_HEX_STRING_LENGTH + 5];
+
 	strcpy(line, "PS,");
 	rn4020_uuid_to_string(line + 3, uuid, RN4020_PRIVATE_UUID_LENGTH_BYTES);
 	return _rn4020_cmd_aok(rn4020, line);
 }
 
 int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, uint8_t property,
-                            uint8_t size, uint8_t security)
+			    uint8_t size, uint8_t security)
 {
 	char line[50];
 	char *dest;
+
 	strcpy(line, "PC,");
 	rn4020_uuid_to_string(line + 3, uuid, RN4020_PRIVATE_UUID_LENGTH_BYTES);
 	dest = line + strlen(line);
@@ -573,7 +579,7 @@ int32_t rn4020_server_write_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid,
 }
 
 int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020,
-        uint16_t handle, const uint8_t *data, uint32_t len)
+					    uint16_t handle, const uint8_t *data, uint32_t len)
 {
 	char line[20];
 

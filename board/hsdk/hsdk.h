@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _HSDK_H_
 #define _HSDK_H_
 
@@ -50,85 +50,85 @@
 
 /* common macros must be defined by all boards */
 
-#define BOARD_CONSOLE_UART_ID		DW_UART_3_ID
-#define BOARD_CONSOLE_UART_BAUD		UART_BAUDRATE_115200
-#define BOARD_ADC_IIC_ID		DW_IIC_0_ID
-#define BOARD_TEMP_SENSOR_IIC_ID	DW_IIC_0_ID
+#define BOARD_CONSOLE_UART_ID           DW_UART_3_ID
+#define BOARD_CONSOLE_UART_BAUD         UART_BAUDRATE_115200
+#define BOARD_ADC_IIC_ID                DW_IIC_0_ID
+#define BOARD_TEMP_SENSOR_IIC_ID        DW_IIC_0_ID
 
-#define BOARD_SFLASH_SPI_ID		DW_SPI_0_ID
-#define BOARD_WIFI_SPI_ID		DW_SPI_2_ID
+#define BOARD_SFLASH_SPI_ID             DW_SPI_0_ID
+#define BOARD_WIFI_SPI_ID               DW_SPI_2_ID
 
-#define BOARD_SDCARD_SPI_LINE		HSDC_SPI_CS_0
-#define BOARD_WIFI_SPI_LINE		HSDC_SPI_CS_1
-#define BOARD_SFLASH_SPI_LINE		HSDC_SPI_CS_0
+#define BOARD_SDCARD_SPI_LINE           HSDC_SPI_CS_0
+#define BOARD_WIFI_SPI_LINE             HSDC_SPI_CS_1
+#define BOARD_SFLASH_SPI_LINE           HSDC_SPI_CS_0
 
 #ifndef BOARD_SPI_FREQ
-#define BOARD_SPI_FREQ			(15000000)
+#define BOARD_SPI_FREQ                  (15000000)
 #endif
 
-#define BOARD_SYS_TIMER_ID		TIMER_0
-#define BOARD_SYS_TIMER_INTNO		INTNO_TIMER0
-#define BOARD_SYS_TIMER_HZ		(1000)
+#define BOARD_SYS_TIMER_ID              TIMER_0
+#define BOARD_SYS_TIMER_INTNO           INTNO_TIMER0
+#define BOARD_SYS_TIMER_HZ              (1000)
 
 /** board timer count frequency (HZ) */
-#define BOARD_SYS_TIMER_MS_HZ		(1000)
+#define BOARD_SYS_TIMER_MS_HZ           (1000)
 /** board timer count frequency convention based on the global timer counter */
-#define BOARD_SYS_TIMER_MS_CONV		(BOARD_SYS_TIMER_MS_HZ/BOARD_SYS_TIMER_HZ)
+#define BOARD_SYS_TIMER_MS_CONV         (BOARD_SYS_TIMER_MS_HZ / BOARD_SYS_TIMER_HZ)
 
-#define BOARD_OS_TIMER_ID		TIMER_0
-#define BOARD_OS_TIMER_INTNO		INTNO_TIMER0
+#define BOARD_OS_TIMER_ID               TIMER_0
+#define BOARD_OS_TIMER_INTNO            INTNO_TIMER0
 
-#define BOARD_CPU_CLOCK			CLK_CPU
-#define BOARD_DEV_CLOCK			CLK_BUS_APB
+#define BOARD_CPU_CLOCK                 CLK_CPU
+#define BOARD_DEV_CLOCK                 CLK_BUS_APB
 
-#define BOARD_ONBOARD_NTSHELL_ID	(HSDK_NTSHELL_0_ID)
-#define NTSHELL_CONSOLE_ID		(HSDK_NTSHELL_0_ID)
-#define NTSHELL_NETWORK_ID		(HSDK_NTSHELL_1_ID)
+#define BOARD_ONBOARD_NTSHELL_ID        (HSDK_NTSHELL_0_ID)
+#define NTSHELL_CONSOLE_ID              (HSDK_NTSHELL_0_ID)
+#define NTSHELL_NETWORK_ID              (HSDK_NTSHELL_1_ID)
 
-#define WF_IPADDR_1			(192)
-#define WF_IPADDR_2			(168)
-#define WF_IPADDR_3			(43)
-#define WF_IPADDR_4			(102)
+#define WF_IPADDR_1                     (192)
+#define WF_IPADDR_2                     (168)
+#define WF_IPADDR_3                     (43)
+#define WF_IPADDR_4                     (102)
 
-#define WF_NETMASK_1			(255)
-#define WF_NETMASK_2			(255)
-#define WF_NETMASK_3			(255)
-#define WF_NETMASK_4			(0)
+#define WF_NETMASK_1                    (255)
+#define WF_NETMASK_2                    (255)
+#define WF_NETMASK_3                    (255)
+#define WF_NETMASK_4                    (0)
 
-#define WF_GATEWAY_1			(192)
-#define WF_GATEWAY_2			(168)
-#define WF_GATEWAY_3			(43)
-#define WF_GATEWAY_4			(1)
+#define WF_GATEWAY_1                    (192)
+#define WF_GATEWAY_2                    (168)
+#define WF_GATEWAY_3                    (43)
+#define WF_GATEWAY_4                    (1)
 
-#define WF_HOTSPOT_IS_OPEN		(0)
+#define WF_HOTSPOT_IS_OPEN              (0)
 
-#define WF_IPADDR_DHCP			(1)
+#define WF_IPADDR_DHCP                  (1)
 
-#define WF_HOTSPOT_NAME			"embARC"
-#define WF_HOTSPOT_PASSWD		"qazwsxedc"
+#define WF_HOTSPOT_NAME                 "embARC"
+#define WF_HOTSPOT_PASSWD               "qazwsxedc"
 
-#define WF_ENABLE_MANUAL_SET_MAC	(0)
+#define WF_ENABLE_MANUAL_SET_MAC        (0)
 
-#define WF_MAC_ADDR0			(HSDK_PMWIFI_0_MAC_ADDR0)
-#define WF_MAC_ADDR1			(HSDK_PMWIFI_0_MAC_ADDR1)
-#define WF_MAC_ADDR2			(HSDK_PMWIFI_0_MAC_ADDR2)
-#define WF_MAC_ADDR3			(HSDK_PMWIFI_0_MAC_ADDR3)
-#define WF_MAC_ADDR4			(HSDK_PMWIFI_0_MAC_ADDR4)
-#define WF_MAC_ADDR5			(HSDK_PMWIFI_0_MAC_ADDR5)
+#define WF_MAC_ADDR0                    (HSDK_PMWIFI_0_MAC_ADDR0)
+#define WF_MAC_ADDR1                    (HSDK_PMWIFI_0_MAC_ADDR1)
+#define WF_MAC_ADDR2                    (HSDK_PMWIFI_0_MAC_ADDR2)
+#define WF_MAC_ADDR3                    (HSDK_PMWIFI_0_MAC_ADDR3)
+#define WF_MAC_ADDR4                    (HSDK_PMWIFI_0_MAC_ADDR4)
+#define WF_MAC_ADDR5                    (HSDK_PMWIFI_0_MAC_ADDR5)
 
-#define BOARD_PMWIFI_0_ID		HSDK_PMWIFI_0_ID
-#define BOARD_PMWIFI_ID_MAX		HSDK_PMWIFI_0_ID
+#define BOARD_PMWIFI_0_ID               HSDK_PMWIFI_0_ID
+#define BOARD_PMWIFI_ID_MAX             HSDK_PMWIFI_0_ID
 
-#define BOARD_LED_MASK			(0xff)
-#define BOARD_LED_CNT			(4)
+#define BOARD_LED_MASK                  (0xff)
+#define BOARD_LED_CNT                   (4)
 
 // Un-implemented Switch/Button functions and macros
-#define BOARD_BTN_MASK			(0x0)
-#define BOARD_BTN_CNT			(0)
-#define BOARD_SWT_MASK			(0x0)
-#define BOARD_SWT_CNT			(0)
+#define BOARD_BTN_MASK                  (0x0)
+#define BOARD_BTN_CNT                   (0)
+#define BOARD_SWT_MASK                  (0x0)
+#define BOARD_SWT_CNT                   (0)
 
-#define switch_read(mask)		(0x0)
-#define button_read(mask)		(0x0)
+#define switch_read(mask)               (0x0)
+#define button_read(mask)               (0x0)
 
-#endif	/* _HSDK_H_ */
+#endif  /* _HSDK_H_ */

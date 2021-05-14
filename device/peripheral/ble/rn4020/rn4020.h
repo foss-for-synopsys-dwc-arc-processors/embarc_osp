@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _RN4020_H_
 #define _RN4020_H_
 
@@ -109,7 +109,6 @@
 #define RN4020_BATTERY_LEVEL_UUID  0x2a19
 #define RN4020_BATTERY_MAX_LEVEL   0x64
 
-
 typedef enum rn4020_state {
 	RN4020_STATE_INITIALIZING,
 	RN4020_STATE_READY,
@@ -119,13 +118,11 @@ typedef enum rn4020_state {
 	RN4020_STATE_WAITING_FOR_LS
 } RN4020_STATE;
 
-
 typedef struct {
 	uint16_t handle;
 	uint8_t uuid[RN4020_MAX_UUID_LEN_BYTES ];
 	uint8_t uuid_len;
 } RN4020_HANDLE_UUID_ITEM;
-
 
 typedef struct rn4020_def {
 	uint8_t uart;
@@ -148,17 +145,16 @@ typedef struct rn4020_def {
 } RN4020_DEF, *RN4020_DEF_PTR;
 
 #define RN4020_DEFINE(name, uart_id, sw_id, sw_pin, hw_id, hw_pin, cmd_id, cmd_pin) \
-	RN4020_DEF __ ## name = { \
-		.uart = uart_id, \
-		.gpio_wake_sw = sw_id, \
-		.pin_wake_sw = sw_pin, \
-		.gpio_wake_hw = hw_id, \
-		.pin_wake_hw = hw_pin, \
-		.gpio_cmd = cmd_id, \
-		.pin_cmd = cmd_pin, \
-	}; \
+	RN4020_DEF __ ## name = {						    \
+		.uart = uart_id,						    \
+		.gpio_wake_sw = sw_id,						    \
+		.pin_wake_sw = sw_pin,						    \
+		.gpio_wake_hw = hw_id,						    \
+		.pin_wake_hw = hw_pin,						    \
+		.gpio_cmd = cmd_id,						    \
+		.pin_cmd = cmd_pin,						    \
+	};									    \
 	RN4020_DEF_PTR name = &__ ## name
-
 
 EMBARC_WEAK extern void rn4020_on_realtime_read(RN4020_DEF_PTR rn4020, uint16_t handle);
 EMBARC_WEAK extern void rn4020_on_write(RN4020_DEF_PTR rn4020, uint16_t handle, uint8_t *data);
@@ -179,7 +175,7 @@ extern int32_t rn4020_clear_private(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_is_connected(RN4020_DEF_PTR rn4020);
 extern int32_t rn4020_add_prv_service(RN4020_DEF_PTR rn4020, const uint8_t *uuid);
 extern int32_t rn4020_add_prv_char(RN4020_DEF_PTR rn4020, const uint8_t *uuid, uint8_t property,
-                                   uint8_t size, uint8_t security);
+				   uint8_t size, uint8_t security);
 extern void rn4020_uuid_to_string(char *dest, const uint8_t *uuid, uint8_t len);
 extern RN4020_HANDLE_UUID_ITEM *rn4020_lookup_handle(RN4020_DEF_PTR rn4020, uint16_t handle);
 extern uint8_t rn4020_handle_match_uuid16(RN4020_HANDLE_UUID_ITEM *item, uint16_t uuid);
@@ -195,6 +191,5 @@ extern int32_t rn4020_server_write_pub_char_handle(RN4020_DEF_PTR rn4020, uint16
  * level 0x00 (0%) - 0x64 (100%)
  */
 extern int32_t rn4020_battery_set_level(RN4020_DEF_PTR rn4020, uint8_t level);
-
 
 #endif /* _RN4020_H_ */

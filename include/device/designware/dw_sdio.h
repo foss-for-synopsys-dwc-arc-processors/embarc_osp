@@ -26,26 +26,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_SDIO_H_
 #define _DW_SDIO_H_
 
 #include "device/ip_hal/dev_sdio.h"
 #include "arc/arc_builtin.h"
 
-
 /**
  * \brief	DesignWare SDIO control structure definition
  * \details	implement of dev_iic_info::iic_ctrl
  */
 typedef struct dw_sdio_ctrl {
-	void * reg_base;	/*!< sdio registers base */
-	uint32_t ref_clk; 	/* reference clk */
-	uint32_t intno;		/* interrupt no */
+	void *reg_base;         /*!< sdio registers base */
+	uint32_t ref_clk;       /* reference clk */
+	uint32_t intno;         /* interrupt no */
 	uint32_t fifo_depth;
 	/* Variables which should be set during object implementation */
 } DW_SDIO_CTRL, *DW_SDIO_CTRL_PTR;
-
 
 Inline uint32_t dw_sdio_reg_read(DW_SDIO_CTRL_PTR sdio, uint32_t reg)
 {
@@ -57,7 +55,6 @@ Inline void dw_sdio_reg_write(DW_SDIO_CTRL_PTR sdio, uint32_t reg, uint32_t val)
 	arc_write_uncached_32((void *)((uint32_t)sdio->reg_base + reg), val);
 }
 
-
 extern void dw_sdio_isr(DEV_SDIO *sdio_obj, void *ptr);
 extern int32_t dw_sdio_cmd_poll(DEV_SDIO *sdio_obj, SDIO_CMD_PTR cmd, SDIO_DATA_PTR data);
 extern int32_t dw_sdio_open(DEV_SDIO *sdio_obj, uint32_t card_number);
@@ -65,6 +62,5 @@ extern int32_t dw_sdio_close(DEV_SDIO *sdio_obj, uint32_t card_number);
 extern int32_t dw_sdio_cd(DEV_SDIO *sdio_obj, uint32_t card_number);
 extern int32_t dw_sdio_wp(DEV_SDIO *sdio_obj, uint32_t card_number);
 extern int32_t dw_sdio_control(DEV_SDIO *sdio_obj, SDIO_CTRL_CMD_PTR ctrl_cmd, void *param);
-
 
 #endif /* _DW_SDIO_H_ */

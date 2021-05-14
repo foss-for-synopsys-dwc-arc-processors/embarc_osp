@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _NTSHELL_IO_UART_H_
 #define _NTSHELL_IO_UART_H_
 
@@ -35,7 +35,7 @@
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
 #include "ntshell_task.h"
 
-#define USE_HSDK_NTSHELL_UART_1		1
+#define USE_HSDK_NTSHELL_UART_1         1
 
 #ifdef __cplusplus
 extern "C" {
@@ -49,6 +49,6 @@ extern NTSHELL_IO ntshell_uart_1;
 }
 #endif
 
-#endif /** MID_NTSHELL */
+#endif  /** MID_NTSHELL */
 
-#endif /** _NTSHELL_IO_UART_H_ */
+#endif  /** _NTSHELL_IO_UART_H_ */

@@ -72,9 +72,9 @@ Inline void arc_spin_lock(ARC_SPINLOCK_T *lock)
 		"	scond	%[LOCKED], [%[slock]]	\n"     /* acquire */
 		"	bnz	1b			\n"
 		"					\n"
-		: [val]"=&r"(val)
-		: [slock]"r"(&(lock->slock)),
-		  [LOCKED]"r"(ARC_SPIN_LOCK_LOCKED)
+		:[val] "=&r" (val)
+		:[slock] "r" (&(lock->slock)),
+		[LOCKED] "r" (ARC_SPIN_LOCK_LOCKED)
 		: "memory", "cc");
 
 	arc_smp_mb();
@@ -105,9 +105,9 @@ Inline int32_t arc_spin_trylock(ARC_SPINLOCK_T *lock)
 		"	mov	%[got_it], 1		\n"
 		"4:					\n"
 		"					\n"
-		: [val]"=&r"(val), [got_it]"+&r"(got_it)
-		: [slock]"r"(&(lock->slock)),
-		  [LOCKED]"r"(ARC_SPIN_LOCK_LOCKED)
+		:[val] "=&r" (val), [got_it] "+&r" (got_it)
+		:[slock] "r" (&(lock->slock)),
+		[LOCKED] "r" (ARC_SPIN_LOCK_LOCKED)
 		: "memory", "cc");
 	arc_smp_mb();
 
@@ -150,4 +150,4 @@ extern void arc_slave_start(uint32_t cpu_num);
 #endif
 #endif  /* __ASSEMBLY__ */
 
-#endif /* H_ARC_MP */
+#endif  /* H_ARC_MP */

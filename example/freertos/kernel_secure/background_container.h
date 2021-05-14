@@ -26,13 +26,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef BACKGROUND_CONTAINER_H
 #define BACKGROUND_CONTAINER_H
 
-#define INTNO_LOW_PRI	18
-#define INTNO_HIGH_PRI	19
+#define INTNO_LOW_PRI   18
+#define INTNO_HIGH_PRI  19
 
 extern void default_interrupt_handler(void *p_exinf);
 

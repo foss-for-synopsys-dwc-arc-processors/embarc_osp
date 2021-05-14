@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -44,7 +44,6 @@ static MPU9250_DEFINE(mpu9250_sensor, MPU9250_IIC_ID, MPU9250_IIC_ADDRESS);
 int main(void)
 {
 	MPU9250_DATA mpu9250_data = { 0 };
-
 
 	mpu9250_sensor_init(mpu9250_sensor);
 	EMBARC_PRINTF("\r\n\r\n\r\n");
@@ -74,5 +73,3 @@ int main(void)
 
 	return E_SYS;
 }
-
-

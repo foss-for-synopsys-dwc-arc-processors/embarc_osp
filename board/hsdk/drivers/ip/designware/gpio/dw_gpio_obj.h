@@ -26,35 +26,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _DW_GPIO_OBJ_H_
 #define _DW_GPIO_OBJ_H_
 
 #include "dw_gpio.h"
 
-
-#define CPU_DW_GPIO_PORT_A		0
+#define CPU_DW_GPIO_PORT_A              0
 
 /**
  * \name	Designware GPIO Port Bank Control Macros
  * @{
  */
-#define USE_CPU_DW_GPIO_PORT_A		1
+#define USE_CPU_DW_GPIO_PORT_A          1
 /** @} end of name */
 
 /**
  * \name	Designware GPIO Port Interrupt Available Number Macros
  * @{
  */
-#define HSDK_CPU_GPIO_A_INT_MAX_COUNT	24
+#define HSDK_CPU_GPIO_A_INT_MAX_COUNT   24
 /** @} end of name */
 
 /**
  * \name	Designware GPIO Port Available Bits Macros
  * @{
  */
-#define HSDK_CPU_GPIO_A_VALID_MASK	0xFFFFFF
+#define HSDK_CPU_GPIO_A_VALID_MASK      0xFFFFFF
 /** @} end of name */
 
 #ifdef __cplusplus

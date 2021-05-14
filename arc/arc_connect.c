@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "arc/arc_connect.h"
 #include "arc/arc_mp.h"
 
@@ -46,26 +46,26 @@ static uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP_T *op)
 	if (!op) {
 		return 0;
 	}
-	regval = op->cmd | ((op->param)<<8);
+	regval = op->cmd | ((op->param) << 8);
 	arc_spin_lock(&arc_connect_lock);
 
 	switch (op->type) {
-		case ARC_CONNECT_CMD_TYPE_CMD_ONLY:
-			arc_aux_write(AUX_CONNECT_CMD, regval);
-			break;
-		case ARC_CONNECT_CMD_TYPE_CMD_RETURN:
-			arc_aux_write(AUX_CONNECT_CMD, regval);
-			break;
-		case ARC_CONNECT_CMD_TYPE_CMD_WDATA:
-			arc_aux_write(AUX_CONNECT_WDATA, op->wdata);
-			arc_aux_write(AUX_CONNECT_CMD, regval);
-			break;
-		case ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN:
-			arc_aux_write(AUX_CONNECT_WDATA, op->wdata);
-			arc_aux_write(AUX_CONNECT_CMD, regval);
-			break;
-		default:
-			break;
+	case ARC_CONNECT_CMD_TYPE_CMD_ONLY:
+		arc_aux_write(AUX_CONNECT_CMD, regval);
+		break;
+	case ARC_CONNECT_CMD_TYPE_CMD_RETURN:
+		arc_aux_write(AUX_CONNECT_CMD, regval);
+		break;
+	case ARC_CONNECT_CMD_TYPE_CMD_WDATA:
+		arc_aux_write(AUX_CONNECT_WDATA, op->wdata);
+		arc_aux_write(AUX_CONNECT_CMD, regval);
+		break;
+	case ARC_CONNECT_CMD_TYPE_CMD_WDATA_RETURN:
+		arc_aux_write(AUX_CONNECT_WDATA, op->wdata);
+		arc_aux_write(AUX_CONNECT_CMD, regval);
+		break;
+	default:
+		break;
 	}
 	regval = arc_aux_read(AUX_CONNECT_READBACK);
 
@@ -139,8 +139,8 @@ void arc_connect_idu_set_mode(uint32_t irq_num, uint16_t trigger_mode, uint16_t 
 {
 	ARC_CONNECT_OP_T op;
 
-	ARC_CONNECT_CMD_WDATA_OP_SET(&op, ARC_CONNECT_CMD_IDU_SET_MODE, \
-		irq_num, (distri_mode|(trigger_mode<<4)));
+	ARC_CONNECT_CMD_WDATA_OP_SET(&op, ARC_CONNECT_CMD_IDU_SET_MODE,	\
+				     irq_num, (distri_mode | (trigger_mode << 4)));
 
 	arc_connect_cmd_execute(&op);
 }

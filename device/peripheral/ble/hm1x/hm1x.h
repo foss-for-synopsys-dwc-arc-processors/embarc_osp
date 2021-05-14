@@ -26,16 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <stdint.h>
 
 /** uart id which HM-10 BLE uses */
-#ifndef HM_1X_UART_ID	//you can define this at board header file (e.g. emsk.h)
+#ifndef HM_1X_UART_ID   // you can define this at board header file (e.g. emsk.h)
 #if defined(BOARD_EMSK) || defined(BOARD_HSDK)
-#define HM_1X_UART_ID		DW_UART_0_ID
-#elif defined(BOARD_EMSDP)|| defined(BOARD_IOTDK)
-#define HM_1X_UART_ID		DFSS_UART_1_ID
+#define HM_1X_UART_ID           DW_UART_0_ID
+#elif defined(BOARD_EMSDP) || defined(BOARD_IOTDK)
+#define HM_1X_UART_ID           DFSS_UART_1_ID
 #else
 #warning hm1x is not supported on this board!
 #endif
@@ -44,8 +44,8 @@
 /**
  * HM1X working role: master or slave
  */
-#define BLE_HM1X_MASTER_ROLE	1
-#define BLE_HM1X_SLAVE_ROLE	0
+#define BLE_HM1X_MASTER_ROLE    1
+#define BLE_HM1X_SLAVE_ROLE     0
 
 /**
  * HM1X working mode:
@@ -53,9 +53,9 @@
  * 1: PIO sample & remote control & transparent
  * 2: remote control & transparent
  */
-#define BLE_HM1X_MODE_0		0
-#define BLE_HM1X_MODE_1		1
-#define BLE_HM1X_MODE_2		2
+#define BLE_HM1X_MODE_0         0
+#define BLE_HM1X_MODE_1         1
+#define BLE_HM1X_MODE_2         2
 
 /**
  * HM1X working type
@@ -64,10 +64,10 @@
  * 2: match with password
  * 3: match and bind
  */
-#define BLE_HM1X_TYPE_0		0
-#define BLE_HM1X_TYPE_1		1
-#define BLE_HM1X_TYPE_2		2
-#define BLE_HM1X_TYPE_3		3
+#define BLE_HM1X_TYPE_0         0
+#define BLE_HM1X_TYPE_1         1
+#define BLE_HM1X_TYPE_2         2
+#define BLE_HM1X_TYPE_3         3
 
 #ifdef __cplusplus
 extern "C" {
@@ -78,10 +78,10 @@ typedef struct {
 	uint32_t uart_id;
 } HM1X_DEF, *HM1X_DEF_PTR;
 
-#define HM1X_DEFINE(NAME, UART_ID) \
-	HM1X_DEF __ ## NAME = { \
-			.uart_id = UART_ID, \
-	}; \
+#define HM1X_DEFINE(NAME, UART_ID)  \
+	HM1X_DEF __ ## NAME = {	    \
+		.uart_id = UART_ID, \
+	};			    \
 	HM1X_DEF_PTR NAME = &__ ## NAME
 
 extern void hm1x_flush(HM1X_DEF_PTR obj);

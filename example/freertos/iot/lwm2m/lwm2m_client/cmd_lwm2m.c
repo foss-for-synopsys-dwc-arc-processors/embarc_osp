@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <stdlib.h>
 #include <string.h>
@@ -39,10 +39,10 @@
 #include "lwip_wifi.h"
 
 #ifndef USE_NTSHELL_EXTOBJ /* don't use ntshell extobj */
-#define CMD_DEBUG(fmt, ...)	EMBARC_PRINTF(fmt, ##__VA_ARGS__)
+#define CMD_DEBUG(fmt, ...)     EMBARC_PRINTF(fmt, ##__VA_ARGS__)
 #endif
 
-#define TSKPRI_LWM2M_CLIENT	(configMAX_PRIORITIES-2)	/**< lwm2m task priority */
+#define TSKPRI_LWM2M_CLIENT     (configMAX_PRIORITIES - 2)        /**< lwm2m task priority */
 
 /* lwM2M client info */
 static lwm2m_client_info c_info;
@@ -51,12 +51,13 @@ static int lwm2m_client_start_flag = 0;
 static TaskHandle_t task_lwm2m_client_handle = NULL;
 
 #if defined(BOARD_EMSK)
-#define BOOTLOADER_STARTADDRESS		0x17f00000
+#define BOOTLOADER_STARTADDRESS         0x17f00000
 typedef int (*fp_t)(void);
 
 void go_bootloader(void)
 {
 	fp_t fp;
+
 	fp = (fp_t)(*((uint32_t *)BOOTLOADER_STARTADDRESS));
 	cpu_lock();
 
@@ -75,7 +76,6 @@ void task_lwm2m_update(void *par)
 	go_bootloader();
 }
 #endif
-
 
 void task_lwm2m_client(void *par)
 {
@@ -110,7 +110,7 @@ void task_lwm2m_client(void *par)
 	}
 }
 
-#define min(x,y) ((x) < (y) ? (x) : (y))
+#define min(x, y) ((x) < (y) ? (x) : (y))
 
 /* show help of command */
 static void cmd_lwm2m_client_help(char *cmd_name, void *extobj)
@@ -126,10 +126,10 @@ static void cmd_lwm2m_client_help(char *cmd_name, void *extobj)
 	}
 
 	CMD_DEBUG("usage: %s \r\n"
-	          "	-q 			quit client\r\n"
-	          "	-s <server_url>		set the lwM2M server URL\r\n"
-	          "	-c <client_name>	set the lwM2M client endpoint name\r\n"
-	          "	-p <server port>	set the LwM2M server port\r\n", cmd_name);
+		  "	-q 			quit client\r\n"
+		  "	-s <server_url>		set the lwM2M server URL\r\n"
+		  "	-c <client_name>	set the lwM2M client endpoint name\r\n"
+		  "	-p <server port>	set the LwM2M server port\r\n", cmd_name);
 
 error_exit:
 	return;
@@ -180,46 +180,46 @@ static int cmd_lwm2m_client(int argc, char **argv, void *extobj)
 		goto error_exit;
 	}
 
-	while ((opt=getopt(argc, argv, "s:c:p:qhH?")) != -1) {
-		opt_enter_cnt ++;
+	while ((opt = getopt(argc, argv, "s:c:p:qhH?")) != -1) {
+		opt_enter_cnt++;
 
 		switch (opt) {
-			case 'h':
-			case '?':
-			case 'H':
-				cmd_lwm2m_client_help(argv[0], extobj);
-				goto error_exit;
-				break;
+		case 'h':
+		case '?':
+		case 'H':
+			cmd_lwm2m_client_help(argv[0], extobj);
+			goto error_exit;
+			break;
 
-			case 'q':
-				c_quit = 1;
-				break;
+		case 'q':
+			c_quit = 1;
+			break;
 
-			case 's':
-				if (p_server == NULL) {
-					p_server = malloc_and_copy(optarg);
-				}
+		case 's':
+			if (p_server == NULL) {
+				p_server = malloc_and_copy(optarg);
+			}
 
-				break;
+			break;
 
-			case 'c':
-				if (p_client_name == NULL) {
-					p_client_name = malloc_and_copy(optarg);
-				}
+		case 'c':
+			if (p_client_name == NULL) {
+				p_client_name = malloc_and_copy(optarg);
+			}
 
-				break;
+			break;
 
-			case 'p':
-				if (p_port == NULL) {
-					p_port = malloc_and_copy(optarg);
-				}
+		case 'p':
+			if (p_port == NULL) {
+				p_port = malloc_and_copy(optarg);
+			}
 
-				break;
+			break;
 
-			default:
-				opt_enter_cnt --;
-				CMD_DEBUG("unrecognized option:%c\r\n", opt);
-				break;
+		default:
+			opt_enter_cnt--;
+			CMD_DEBUG("unrecognized option:%c\r\n", opt);
+			break;
 		}
 	}
 
@@ -248,7 +248,7 @@ static int cmd_lwm2m_client(int argc, char **argv, void *extobj)
 
 	if (task_lwm2m_client_handle == NULL) {
 		if (xTaskCreate(task_lwm2m_client, "lwm2m client", 4096, (void *)1,
-		                TSKPRI_LWM2M_CLIENT, &task_lwm2m_client_handle) != pdPASS) {
+				TSKPRI_LWM2M_CLIENT, &task_lwm2m_client_handle) != pdPASS) {
 			EMBARC_PRINTF("create lwm2m client failed\r\n");
 		}
 	} else {
@@ -274,7 +274,7 @@ error_exit:
 	return ercd;
 }
 
-static CMD_TABLE_T lwm2m_client_cmd = {"lwm2m_client", "connect to LwM2M server", cmd_lwm2m_client, NULL};
+static CMD_TABLE_T lwm2m_client_cmd = { "lwm2m_client", "connect to LwM2M server", cmd_lwm2m_client, NULL };
 /**
  * register lwm2m_client command
  */

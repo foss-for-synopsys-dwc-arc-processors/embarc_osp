@@ -26,12 +26,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "arc/arc_timer.h"
 #include "board.h"
 #include "emsdp_timer.h"
 #include "device/dev_pinmux.h"
-
 
 /**
  * \brief	Board init routine MUST be called in each application

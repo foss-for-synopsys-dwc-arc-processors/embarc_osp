@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "arc/arc.h"
 #include "arc/arc_builtin.h"
@@ -71,16 +71,16 @@ enum registers {
 
 /* ADT7420_CONFIG_FAULT_QUEUE(x) options */
 enum fault_queue {
-	FAULT_QUEUE_1 = 0,
-	FAULT_QUEUE_2 = 1,
-	FAULT_QUEUE_3 = 2,
-	FAULT_QUEUE_4 = 3
+	FAULT_QUEUE_1   = 0,
+	FAULT_QUEUE_2   = 1,
+	FAULT_QUEUE_3   = 2,
+	FAULT_QUEUE_4   = 3
 };
 
 /* ADT7420 default ID */
 #define ADT7420_DEFAULT_ID  0xCB
 
-#define ADT7420_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define ADT7420_CHECK_EXP_NORTN(EXPR)           CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /**
  * \brief	write adt7420 register
@@ -99,7 +99,7 @@ static int32_t _adt7420_reg_write(ADT7420_DEF_PTR obj, uint8_t regaddr, uint8_t 
 
 	dbg_printf(DBG_LESS_INFO, "[%s]%d: obj 0x%x, regaddr 0x%x, val 0x%x\r\n", __FUNCTION__, __LINE__, obj, regaddr, *val);
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	ADT7420_CHECK_EXP_NORTN(iic_obj!=NULL);
+	ADT7420_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	data[0] = (uint8_t)(regaddr & 0xff);
 
@@ -131,7 +131,7 @@ static int32_t _adt7420_reg_read(ADT7420_DEF_PTR obj, uint8_t regaddr, uint8_t *
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	ADT7420_CHECK_EXP_NORTN(iic_obj!=NULL);
+	ADT7420_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	data[0] = (uint8_t)(regaddr & 0xff);
 	/** make sure set the temp sensor's slave address */
@@ -158,7 +158,7 @@ int32_t adt7420_sensor_init(ADT7420_DEF_PTR obj)
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
 
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: iic_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, iic_obj, *iic_obj);
-	ADT7420_CHECK_EXP_NORTN(iic_obj!=NULL);
+	ADT7420_CHECK_EXP_NORTN(iic_obj != NULL);
 
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_FAST);
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
@@ -184,6 +184,7 @@ int32_t adt7420_sensor_deinit(ADT7420_DEF_PTR obj)
 {
 	int32_t ercd = E_OK;
 	DEV_IIC_PTR iic_obj = iic_get_dev(obj->i2c_id);
+
 	ercd = iic_obj->iic_close();
 	ADT7420_CHECK_EXP_NORTN(ercd == E_OK);
 	/*Set back to default value*/
@@ -200,8 +201,10 @@ error_exit:
  * \param[in]	mode	sensor working mode, choose from enum sensor_op_mode
  * \retval	E_OK	always return E_OK
  */
-int32_t adt7420_sensor_mode(ADT7420_DEF_PTR obj, int32_t mode){
+int32_t adt7420_sensor_mode(ADT7420_DEF_PTR obj, int32_t mode)
+{
 	uint8_t config;
+
 	obj->op_mode = mode;
 
 	_adt7420_reg_read(obj, ADT7420_REG_CONFIG, &config, 1);
@@ -218,7 +221,8 @@ int32_t adt7420_sensor_mode(ADT7420_DEF_PTR obj, int32_t mode){
  * \param[in]	resolution	resolution of temperature sensor
  * \retval	E_OK	always return E_OK
  */
-int32_t adt7420_sensor_resolution(ADT7420_DEF_PTR obj, int32_t resolution){
+int32_t adt7420_sensor_resolution(ADT7420_DEF_PTR obj, int32_t resolution)
+{
 	uint8_t config;
 
 	obj->resolution = resolution;
@@ -246,7 +250,7 @@ int32_t adt7420_sensor_read(ADT7420_DEF_PTR obj, float *val)
 	uint8_t data[2];
 	int16_t temp;
 
-	ADT7420_CHECK_EXP_NORTN(val!=NULL);
+	ADT7420_CHECK_EXP_NORTN(val != NULL);
 
 	ercd = _adt7420_reg_read(obj, ADT7420_REG_TEMP_MSB, data, 2);
 
@@ -260,9 +264,9 @@ int32_t adt7420_sensor_read(ADT7420_DEF_PTR obj, float *val)
 		/* conversion (val = temp*0.0625) for 13bits[15:3] resolution and (val = temp*0.0078) for 16bits resolution in Degrees Celsius */
 		if (obj->resolution == ADT7420_RESOLUTION_13BIT) {
 			temp >>= 3;
-			*val = temp*0.0625;
+			*val = temp * 0.0625;
 		} else {
-			*val = temp*0.0078;
+			*val = temp * 0.0078;
 		}
 	}
 

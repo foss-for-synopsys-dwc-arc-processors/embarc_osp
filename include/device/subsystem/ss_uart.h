@@ -26,27 +26,25 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _SS_UART_H_
 #define _SS_UART_H_
 /* the wrapper of subsystem uart driver */
 
 #include "device/ip_hal/dev_uart.h"
 
-#define SS_UART_FLAG_TX	(1 << 0) /* interrupt tx */
-#define SS_UART_FLAG_RX	(1 << 1) /* interrupt rx */
-#define SS_UART_FLAG_BUSY	(1 << 2)
-#define SS_UART_FLAG_TX_RX	(1 << 3) /* both tx and rx */
-#define SS_UART_FLAG_ERROR	(1 << 4)
+#define SS_UART_FLAG_TX (1 << 0)                /* interrupt tx */
+#define SS_UART_FLAG_RX (1 << 1)                /* interrupt rx */
+#define SS_UART_FLAG_BUSY       (1 << 2)
+#define SS_UART_FLAG_TX_RX      (1 << 3)        /* both tx and rx */
+#define SS_UART_FLAG_ERROR      (1 << 4)
 
-
-typedef struct ss_uart_dev_context
-{
+typedef struct ss_uart_dev_context {
 	uint32_t reg_base;
 	uint8_t dev_id;
 
-	uint8_t	intno;
-	volatile uint16_t 	flags;
+	uint8_t intno;
+	volatile uint16_t flags;
 
 	uint32_t bus_freq;
 

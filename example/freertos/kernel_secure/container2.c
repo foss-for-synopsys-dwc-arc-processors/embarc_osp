@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -46,12 +46,12 @@ void trusted_ops(void)
 	ctx = &container2_context;
 
 	EMBARC_PRINTF("container 2 is trusted\r\n");
-	if(container_call(container1, operate_secret, NULL, GET_SECRET, private_shared_data)) {
+	if (container_call(container1, operate_secret, NULL, GET_SECRET, private_shared_data)) {
 		EMBARC_PRINTF("get secret failed - someone tried to hack the system?\r\n");
 		return;
 	}
 
-	if (! ctx->initialized) {
+	if (!ctx->initialized) {
 		EMBARC_PRINTF("container 2: got the secret for the first time and stored it for private use\r\n");
 		memcpy(ctx->secret, private_shared_data, SECRET_LEN);
 		ctx->initialized = 1;
