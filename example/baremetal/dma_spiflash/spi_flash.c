@@ -4,7 +4,7 @@
 #include "spi_flash.h"
 #include "arc/arc_udma.h"
 #include "dw_spi_hal.h"
-#include "device/designware/dw_spi.h"
+#include "dw_spi.h"
 #include "spi_flash_w25qxx.h"
 
 #define _MEMORY_FENCE()                         arc_sync()

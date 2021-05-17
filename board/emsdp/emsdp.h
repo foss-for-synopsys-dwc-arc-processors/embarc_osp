@@ -50,6 +50,7 @@
 #include "drivers/mux/mux.h"
 
 #include "common/emsdp_io.h"
+#include "device/dev_pinmux.h"
 
 #include "emsdp_hardware.h"
 

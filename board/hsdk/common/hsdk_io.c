@@ -27,14 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
    --------------------------------------------- */
-
-#include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "dw_gpio.h"
-#include "hsdk_io.h"
 #include "cy8c95xx.h"
-#include "hsdk/hsdk.h"
+#include "board.h"
 
 #define HSDK_LED_GPORT_OFFSET                   0
 

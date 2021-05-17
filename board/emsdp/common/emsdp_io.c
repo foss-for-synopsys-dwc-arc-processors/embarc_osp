@@ -27,11 +27,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
    --------------------------------------------- */
-#include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "emsdp_io.h"
-#include "emsdp/emsdp.h"
+#include "board.h"
 
 static DEV_GPIO *led_port;
 static DEV_GPIO *switch_port;

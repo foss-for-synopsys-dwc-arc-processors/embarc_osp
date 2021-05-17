@@ -45,12 +45,6 @@ extern void hsdk_io_init(void);
 extern void led_write(uint32_t led_val, uint32_t mask);
 extern uint32_t led_read(uint32_t mask);
 
-// Un-implemented Switch/Button functions
-// extern void hsdk_button_init(void);
-// extern void hsdk_switch_init(void);
-// extern uint32_t switch_read(uint32_t mask);
-// extern uint32_t button_read(uint32_t mask);
-
 #ifdef __cplusplus
 }
 #endif

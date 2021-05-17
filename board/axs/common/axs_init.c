@@ -27,13 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
    --------------------------------------------- */
-#include "arc/arc_builtin.h"
-#include "arc/arc.h"
 #include "arc/arc_timer.h"
-#include "embARC_debug.h"
-
 #include "board.h"
-#include "axs_timer.h"
 
 /**
  * \brief	Board init routine MUST be called in each application

@@ -32,9 +32,9 @@
 #include "embARC_toolchain.h"
 #include "arc/arc_exception.h"
 
-#include "device/subsystem/i2c_master.h"
-#include "device/subsystem/ss_i2c_master.h"
-#include "device/subsystem/i2c_priv.h"
+#include "i2c_master.h"
+#include "ss_i2c_master.h"
+#include "i2c_priv.h"
 
 #define REG_READ(x)             arc_aux_read((ctx->reg_base + x))
 #define REG_WRITE(x, y)         arc_aux_write((ctx->reg_base + x), y)

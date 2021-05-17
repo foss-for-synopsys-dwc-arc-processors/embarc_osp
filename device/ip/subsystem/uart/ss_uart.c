@@ -32,8 +32,8 @@
 #include "embARC_toolchain.h"
 #include "arc/arc_exception.h"
 
-#include "device/subsystem/uart.h"
-#include "device/subsystem/ss_uart.h"
+#include "uart.h"
+#include "ss_uart.h"
 #include "io_config.h"
 
 /* APEX UART device registers  */

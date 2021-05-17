@@ -32,7 +32,7 @@
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "device/designware/dw_gpio.h"
+#include "dw_gpio.h"
 #include "axc003_gpio.h"
 #include "axs_hardware.h"
 

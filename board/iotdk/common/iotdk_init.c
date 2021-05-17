@@ -31,12 +31,7 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
    --------------------------------------------- */
-#include "arc/arc_builtin.h"
-#include "arc/arc.h"
 #include "arc/arc_timer.h"
-#include "arc/arc_exception.h"
-#include "embARC_debug.h"
-
 #include "board.h"
 
 static void iotdk_mux_init(void)

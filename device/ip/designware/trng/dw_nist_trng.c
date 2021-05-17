@@ -33,7 +33,7 @@
 #include "arc/arc_exception.h"
 #include "string.h"
 
-#include "device/designware/dw_nist_trng.h"
+#include "dw_nist_trng.h"
 
 #ifdef TRNG_VERSION_NIST
 

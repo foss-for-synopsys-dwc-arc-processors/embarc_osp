@@ -48,12 +48,9 @@
  * \addtogroup	BOARD_EMSK_DRV_GPIO
  * @{
  */
-#include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "dw_gpio.h"
-#include "emsk_gpio.h"
-#include "emsk/emsk.h"
+#include "board.h"
 
 static DEV_GPIO *led_port;
 static DEV_GPIO *button_port;

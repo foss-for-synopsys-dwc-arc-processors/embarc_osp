@@ -49,7 +49,7 @@
  */
 #include "mux.h"
 #include "embARC_error.h"
-#include "../../emsk.h"
+#include "emsk/emsk.h"
 
 static MUX_REG *mux_regs;
 

@@ -35,8 +35,8 @@
 
 #include "arc/arc_exception.h"
 
-#include "device/designware/dw_uart_hal.h"
-#include "device/designware/dw_uart.h"
+#include "dw_uart_hal.h"
+#include "dw_uart.h"
 
 /**
  * DesignWare UART driver macros used in uart driver

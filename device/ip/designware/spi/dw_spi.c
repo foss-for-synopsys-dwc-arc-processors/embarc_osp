@@ -35,8 +35,8 @@
 
 #include "arc/arc_exception.h"
 
-#include "device/designware/dw_spi_hal.h"
-#include "device/designware/dw_spi.h"
+#include "dw_spi_hal.h"
+#include "dw_spi.h"
 
 /**
  * DesignWare SPI driver macros used in spi driver

@@ -35,8 +35,8 @@
 
 #include "arc/arc_exception.h"
 
-#include "device/designware/dw_iic_hal.h"
-#include "device/designware/dw_iic.h"
+#include "dw_iic_hal.h"
+#include "dw_iic.h"
 
 /** check expressions used in DesignWare IIC driver implementation */
 #define DW_IIC_CHECK_EXP(EXPR, ERROR_CODE)              CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)

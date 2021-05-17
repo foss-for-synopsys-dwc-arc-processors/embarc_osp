@@ -48,8 +48,6 @@
  */
 #include "arc/arc_timer.h"
 #include "board.h"
-#include "emsk_timer.h"
-#include "device/dev_pinmux.h"
 
 /**
  * \brief	Board init routine MUST be called in each application
