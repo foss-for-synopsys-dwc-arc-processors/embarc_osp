@@ -30,6 +30,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -191,34 +192,34 @@
 <h2>Build Example for EMSK<a class="headerlink" href="#build-example-for-emsk" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p>Generate board configuration files and move them to the application folder. Use following commands for the EMSK 2.3 board and ARC EM7D as an example.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>EMSK <span class="m">2</span>.3, ARC EM7D on Windows
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> EMSK <span class="m">2</span>.3, ARC EM7D on Windows
 <span class="go">cd embarc_bsp\board\emsk\configs\23</span>
-<span class="gp"># </span>EMSK <span class="m">2</span>.3, ARC EM7D on Linux
+<span class="gp">#</span> EMSK <span class="m">2</span>.3, ARC EM7D on Linux
 <span class="go">cd embarc_bsp/board/emsk/configs/23</span>
-<span class="gp"># </span>MetaWare
+<span class="gp">#</span> MetaWare
 <span class="go">tcftool arcem7d.tcf -q -x C_defines,arc_core_config.h -x ccac.arg</span>
-<span class="gp"># </span>ARC GNU
+<span class="gp">#</span> ARC GNU
 <span class="go">tcftool arcem7d.tcf -q -x C_defines,arc_core_config.h -x gcc.arg</span>
 </pre></div>
 </div>
 </li>
 <li><p>Move the linker script and copy <em>arc_core_config.h</em> and <em>.arg</em> to the application folder.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>MetaWare on Windows
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> MetaWare on Windows
 <span class="go">mv arc_core_config.h ccac.arg ../../../../example/hello/mwdt</span>
 <span class="go">cp ld\linker_mw.ld ../../../../example/hello/mwdt</span>
 <span class="go">cd ..\..\..\..\example\hello\mwdt</span>
 <span class="go">mv linker_mw.ld arc_core.ld</span>
-<span class="gp"># </span>ARC GNU on Windows
+<span class="gp">#</span> ARC GNU on Windows
 <span class="go">mv arc_core_config.h gcc.arg ../../../../example/hello/arcgnu</span>
 <span class="go">cp ld\linker_gnu.ld ../../../../example/hello/arcgnu</span>
 <span class="go">cd ..\..\..\..\example\hello\arcgnu</span>
 <span class="go">mv linker_gnu.ld arc_core.ld</span>
-<span class="gp"># </span>MetaWare on Linux
+<span class="gp">#</span> MetaWare on Linux
 <span class="go">mv arc_core_config.h ccac.arg ../../../../example/hello/mwdt</span>
 <span class="go">cp ld/linker_mw.ld ../../../../example/hello/mwdt</span>
 <span class="go">cd ../../../../example/hello/mwdt</span>
 <span class="go">mv linker_mw.ld arc_core.ld</span>
-<span class="gp"># </span>ARC GNU on Linux
+<span class="gp">#</span> ARC GNU on Linux
 <span class="go">mv arc_core_config.h gcc.arg ../../../../example/hello/arcgnu</span>
 <span class="go">cp ld/linker_gnu.ld ../../../../example/hello/arcgnu</span>
 <span class="go">cd ../../../../example/hello/arcgnu</span>
@@ -227,9 +228,9 @@
 </div>
 </li>
 <li><p>Build the <em>hello world</em> example for the EMSK 2.3 board and ARC EM7D.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>MetaWare
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> MetaWare
 <span class="go">gmake</span>
-<span class="gp"># </span>ARC GNU
+<span class="gp">#</span> ARC GNU
 <span class="go">make</span>
 </pre></div>
 </div>

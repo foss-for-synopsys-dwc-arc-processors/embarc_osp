@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="dw__sdio_8h" kind="file">
     <compoundname>dw_sdio.h</compoundname>
     <includes refid="dev__sdio_8h" local="yes">dev_sdio.h</includes>
@@ -15,8 +15,37 @@
       <node id="3231">
         <label>stdint.h</label>
       </node>
+      <node id="3233">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="3231" relation="include">
+        </childnode>
+        <childnode refid="3234" relation="include">
+        </childnode>
+        <childnode refid="3235" relation="include">
+        </childnode>
+        <childnode refid="3236" relation="include">
+        </childnode>
+      </node>
       <node id="3235">
         <label>stddef.h</label>
+      </node>
+      <node id="3229">
+        <label>dev_sdio.h</label>
+        <link refid="dev__sdio_8h_source"/>
+        <childnode refid="3230" relation="include">
+        </childnode>
+      </node>
+      <node id="3234">
+        <label>limits.h</label>
+      </node>
+      <node id="3228">
+        <label>dw_sdio.h</label>
+        <link refid="dw_sdio.h"/>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3232" relation="include">
+        </childnode>
       </node>
       <node id="3230">
         <label>dev_common.h</label>
@@ -30,48 +59,15 @@
         <childnode refid="3233" relation="include">
         </childnode>
       </node>
-      <node id="3234">
-        <label>limits.h</label>
-      </node>
-      <node id="3229">
-        <label>dev_sdio.h</label>
-        <link refid="dev__sdio_8h_source"/>
-        <childnode refid="3230" relation="include">
-        </childnode>
-      </node>
-      <node id="3233">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="3231" relation="include">
-        </childnode>
-        <childnode refid="3234" relation="include">
-        </childnode>
-        <childnode refid="3235" relation="include">
-        </childnode>
-        <childnode refid="3236" relation="include">
-        </childnode>
-      </node>
-      <node id="3228">
-        <label>dw_sdio.h</label>
-        <link refid="dw_sdio.h"/>
-        <childnode refid="3229" relation="include">
-        </childnode>
-        <childnode refid="3232" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3239">
-        <label>dw_sdio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      <node id="3246">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
       </node>
-      <node id="3238">
-        <label>dw_sdio_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
-        <childnode refid="3239" relation="include">
-        </childnode>
-        <childnode refid="3240" relation="include">
-        </childnode>
+      <node id="3241">
+        <label>emsdp_io.c</label>
+        <link refid="emsdp__io_8c_source"/>
       </node>
       <node id="3247">
         <label>mux.c</label>
@@ -81,21 +77,13 @@
         <label>dw_sdio_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="3242">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
-      </node>
-      <node id="3244">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
-      </node>
-      <node id="3246">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
-      </node>
       <node id="3245">
         <label>dw_uart_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      </node>
+      <node id="3242">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="3240">
         <label>emsdp.h</label>
@@ -117,13 +105,17 @@
         <childnode refid="3247" relation="include">
         </childnode>
       </node>
-      <node id="3241">
-        <label>emsdp_io.c</label>
-        <link refid="emsdp__io_8c_source"/>
-      </node>
-      <node id="3249">
+      <node id="3239">
         <label>dw_sdio_obj.c</label>
-        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="3238">
+        <label>dw_sdio_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
+        <childnode refid="3239" relation="include">
+        </childnode>
+        <childnode refid="3240" relation="include">
+        </childnode>
       </node>
       <node id="3250">
         <label>dw_sdio.c</label>
@@ -141,9 +133,17 @@
         <childnode refid="3250" relation="include">
         </childnode>
       </node>
+      <node id="3249">
+        <label>dw_sdio_obj.c</label>
+        <link refid="iotdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
       <node id="3243">
         <label>dw_spi_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
+      </node>
+      <node id="3244">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structdw__sdio__ctrl" prot="public">dw_sdio_ctrl</innerclass>
@@ -159,7 +159,7 @@
 <para>implement of <ref refid="structdev__iic__info_1a13f93fe4cc7af7293b1671e8f1ff4d42" kindref="member">dev_iic_info::iic_ctrl</ref> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="47" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="47" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="dw__sdio_8h_1a1d6e21cb64ab2874880517ec0af31529" prot="public" static="no">
         <type>struct <ref refid="structdw__sdio__ctrl" kindref="compound">dw_sdio_ctrl</ref> *</type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="47" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="47" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="50" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" bodystart="50" bodyend="53"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="50" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1a3b3c33ff47642b34ebf2f9eda5b6b060" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="55" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" bodystart="55" bodyend="58"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="55" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1a7ddbb6b92c3ff9ef69de956c6e7453cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -241,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="61" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="325" bodyend="360"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="61" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="325" bodyend="360"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1a9b8e6b4316c45a186b105c5a78784774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -266,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="62" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="362" bodyend="439"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="62" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="362" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1a0ee55d98e2fa5436baded62c53ece72a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="63" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="441" bodyend="480"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="63" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="441" bodyend="480"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1aa7d4cb1475ef3a9c6c21c9e355ea1ce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -308,7 +308,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="64" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="482" bodyend="498"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="64" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="482" bodyend="498"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1af129bb5e210e5ad7791ab8aa3ae406d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -329,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="65" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="500" bodyend="522"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="65" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="500" bodyend="522"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1a81ee7e09ddf685e88c3ce7302f7456d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -350,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="66" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="524" bodyend="538"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="66" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="524" bodyend="538"/>
       </memberdef>
       <memberdef kind="function" id="dw__sdio_8h_1a64131de3f9abe8c42b9152513e389033" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -375,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="67" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="540" bodyend="563"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h" line="67" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.c" bodystart="540" bodyend="563"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -450,6 +450,6 @@
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_SDIO_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/sdio/dw_sdio.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/sdio/dw_sdio.h"/>
   </compounddef>
 </doxygen>

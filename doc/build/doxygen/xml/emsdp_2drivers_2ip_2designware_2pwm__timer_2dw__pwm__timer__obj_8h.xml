@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h" kind="file">
     <compoundname>emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h</compoundname>
     <includes refid="dw__pwm__timer_8h" local="yes">dw_pwm_timer.h</includes>
@@ -9,14 +9,13 @@
       <node id="3177">
         <label>stdbool.h</label>
       </node>
-      <node id="3168">
-        <label>dw_pwm_timer_obj.h</label>
-        <link refid="emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h"/>
-        <childnode refid="3169" relation="include">
+      <node id="3169">
+        <label>dw_pwm_timer.h</label>
+        <link refid="dw__pwm__timer_8h_source"/>
+        <childnode refid="3170" relation="include">
         </childnode>
-      </node>
-      <node id="3172">
-        <label>stdint.h</label>
+        <childnode refid="3173" relation="include">
+        </childnode>
       </node>
       <node id="3170">
         <label>dev_pwm_timer.h</label>
@@ -24,33 +23,14 @@
         <childnode refid="3171" relation="include">
         </childnode>
       </node>
-      <node id="3176">
-        <label>stddef.h</label>
+      <node id="3172">
+        <label>stdint.h</label>
       </node>
-      <node id="3171">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="3172" relation="include">
+      <node id="3168">
+        <label>dw_pwm_timer_obj.h</label>
+        <link refid="emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h"/>
+        <childnode refid="3169" relation="include">
         </childnode>
-      </node>
-      <node id="3180">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3174" relation="include">
-        </childnode>
-      </node>
-      <node id="3175">
-        <label>limits.h</label>
-      </node>
-      <node id="3178">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="3179" relation="include">
-        </childnode>
-      </node>
-      <node id="3179">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
       </node>
       <node id="3174">
         <label>embARC_toolchain.h</label>
@@ -64,6 +44,22 @@
         <childnode refid="3177" relation="include">
         </childnode>
       </node>
+      <node id="3178">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="3179" relation="include">
+        </childnode>
+      </node>
+      <node id="3176">
+        <label>stddef.h</label>
+      </node>
+      <node id="3175">
+        <label>limits.h</label>
+      </node>
+      <node id="3179">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
       <node id="3173">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
@@ -74,19 +70,27 @@
         <childnode refid="3180" relation="include">
         </childnode>
       </node>
-      <node id="3169">
-        <label>dw_pwm_timer.h</label>
-        <link refid="dw__pwm__timer_8h_source"/>
-        <childnode refid="3170" relation="include">
+      <node id="3171">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="3172" relation="include">
         </childnode>
-        <childnode refid="3173" relation="include">
+      </node>
+      <node id="3180">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3174" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3186">
-        <label>dw_sdio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      <node id="3190">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
+      <node id="3184">
+        <label>emsdp_io.c</label>
+        <link refid="emsdp__io_8c_source"/>
       </node>
       <node id="3191">
         <label>mux.c</label>
@@ -104,21 +108,13 @@
         <childnode refid="3183" relation="include">
         </childnode>
       </node>
-      <node id="3185">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
-      </node>
-      <node id="3188">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
-      </node>
-      <node id="3190">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
-      </node>
       <node id="3189">
         <label>dw_uart_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      </node>
+      <node id="3185">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="3183">
         <label>emsdp.h</label>
@@ -140,13 +136,17 @@
         <childnode refid="3191" relation="include">
         </childnode>
       </node>
-      <node id="3184">
-        <label>emsdp_io.c</label>
-        <link refid="emsdp__io_8c_source"/>
+      <node id="3186">
+        <label>dw_sdio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
       <node id="3187">
         <label>dw_spi_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
+      </node>
+      <node id="3188">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -159,7 +159,7 @@
 <para>enable use DesignWare PWM TIMER </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="35" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="35" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="35" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_1a240885767ba8e58f3db5fb3296f40f74" prot="public" static="no">
         <name>USE_DW_PWM_TIMER_1</name>
@@ -170,7 +170,7 @@
 <para>enable use DesignWare PWM TIMER </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="36" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="36" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="36" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_1a76bf53b7e1194faff56d8163a6a52dd5" prot="public" static="no">
         <name>DW_PWM_TIMER_0_ID</name>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="40" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="40" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_1a82e792f1c6856fc64703a9b9e1e7e690" prot="public" static="no">
         <name>DW_PWM_TIMER_1_ID</name>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="41" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_1ab183cc544586ebc56b4b67c2e080ebac" prot="public" static="no">
         <name>DW_PWM_TIMER_0_CH_MAX_COUNT</name>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="43" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="43" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_1abc831bbfb0a52a2afbd03e49e6044c2c" prot="public" static="no">
         <name>DW_PWM_TIMER_1_CH_MAX_COUNT</name>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="44" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="44" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -233,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="50" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.c" bodystart="208" bodyend="236"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h" line="50" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.c" bodystart="208" bodyend="236"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -295,6 +295,6 @@
 <codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_PWM_TIMER_OBJ_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h"/>
   </compounddef>
 </doxygen>

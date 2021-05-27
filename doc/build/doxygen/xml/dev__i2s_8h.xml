@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="dev__i2s_8h" kind="file">
     <compoundname>dev_i2s.h</compoundname>
     <includes refid="dev__common_8h" local="yes">dev_common.h</includes>
@@ -11,52 +11,20 @@
       <node id="1864">
         <label>stdint.h</label>
       </node>
-      <node id="1863">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="1864" relation="include">
-        </childnode>
-      </node>
       <node id="1862">
         <label>dev_i2s.h</label>
         <link refid="dev_i2s.h"/>
         <childnode refid="1863" relation="include">
         </childnode>
       </node>
+      <node id="1863">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="1864" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1871">
-        <label>dw_sdio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="1867">
-        <label>dfss_i2s_obj.c</label>
-        <link refid="dfss__i2s__obj_8c_source"/>
-      </node>
-      <node id="1866">
-        <label>dfss_i2s_obj.h</label>
-        <link refid="dfss__i2s__obj_8h_source"/>
-        <childnode refid="1867" relation="include">
-        </childnode>
-        <childnode refid="1868" relation="include">
-        </childnode>
-      </node>
-      <node id="1876">
-        <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
-      </node>
-      <node id="1884">
-        <label>ss_i2s_master.c</label>
-        <link refid="ss__i2s__master_8c_source"/>
-      </node>
-      <node id="1883">
-        <label>ss_i2s_master.h</label>
-        <link refid="ss__i2s__master_8h_source"/>
-        <childnode refid="1867" relation="include">
-        </childnode>
-        <childnode refid="1884" relation="include">
-        </childnode>
-      </node>
       <node id="1878">
         <label>dw_i2s_obj.c</label>
         <link refid="dw__i2s__obj_8c_source"/>
@@ -75,9 +43,17 @@
         <childnode refid="1880" relation="include">
         </childnode>
       </node>
-      <node id="1870">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      <node id="1875">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
+      <node id="1869">
+        <label>emsdp_io.c</label>
+        <link refid="emsdp__io_8c_source"/>
+      </node>
+      <node id="1876">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
       </node>
       <node id="1882">
         <label>dw_i2s.c</label>
@@ -91,14 +67,6 @@
         <childnode refid="1882" relation="include">
         </childnode>
       </node>
-      <node id="1873">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
-      </node>
-      <node id="1875">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
-      </node>
       <node id="1874">
         <label>dw_uart_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
@@ -107,16 +75,32 @@
         <label>mux.c</label>
         <link refid="iotdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="1865">
-        <label>dev_i2s.h</label>
-        <link refid="dev_i2s.h"/>
-        <childnode refid="1866" relation="include">
+      <node id="1870">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      </node>
+      <node id="1867">
+        <label>dfss_i2s_obj.c</label>
+        <link refid="dfss__i2s__obj_8c_source"/>
+      </node>
+      <node id="1866">
+        <label>dfss_i2s_obj.h</label>
+        <link refid="dfss__i2s__obj_8h_source"/>
+        <childnode refid="1867" relation="include">
         </childnode>
-        <childnode refid="1877" relation="include">
+        <childnode refid="1868" relation="include">
         </childnode>
-        <childnode refid="1881" relation="include">
+      </node>
+      <node id="1884">
+        <label>ss_i2s_master.c</label>
+        <link refid="ss__i2s__master_8c_source"/>
+      </node>
+      <node id="1883">
+        <label>ss_i2s_master.h</label>
+        <link refid="ss__i2s__master_8h_source"/>
+        <childnode refid="1867" relation="include">
         </childnode>
-        <childnode refid="1883" relation="include">
+        <childnode refid="1884" relation="include">
         </childnode>
       </node>
       <node id="1868">
@@ -139,13 +123,29 @@
         <childnode refid="1876" relation="include">
         </childnode>
       </node>
-      <node id="1869">
-        <label>emsdp_io.c</label>
-        <link refid="emsdp__io_8c_source"/>
+      <node id="1871">
+        <label>dw_sdio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
       <node id="1872">
         <label>dw_spi_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
+      </node>
+      <node id="1865">
+        <label>dev_i2s.h</label>
+        <link refid="dev_i2s.h"/>
+        <childnode refid="1866" relation="include">
+        </childnode>
+        <childnode refid="1877" relation="include">
+        </childnode>
+        <childnode refid="1881" relation="include">
+        </childnode>
+        <childnode refid="1883" relation="include">
+        </childnode>
+      </node>
+      <node id="1873">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structdev__i2s__cbs" prot="public">dev_i2s_cbs</innerclass>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="158" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="158" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="158" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gac4f584df7c0472ab6489b544e330ccb6" prot="public" static="no">
         <name>DEV_SET_I2S_MST_SYSCMD</name>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="160" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="160" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="160" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga037a647020b711b88bf56baf09919fed" prot="public" static="no">
         <name>I2S_CMD_GET_STATUS</name>
@@ -187,7 +187,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="169" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="169" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="169" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="169" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2592a778e686350849092aefaa07d918" prot="public" static="no">
@@ -201,7 +201,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="177" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="177" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="177" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="177" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaaf68019e52d5f886e1e6ff63a15f8de1" prot="public" static="no">
@@ -215,7 +215,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="185" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="185" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="185" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="185" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga45e69392e112fd10f1305e493e72dc1c" prot="public" static="no">
@@ -229,7 +229,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="193" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="193" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="193" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="193" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaad994a18db5d47151d07c42c65c7ad1d" prot="public" static="no">
@@ -243,7 +243,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="200" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="200" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="200" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="200" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga537794ba30ce41e9976762593aec4f6b" prot="public" static="no">
@@ -257,7 +257,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="207" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="207" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="207" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="207" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2d21ce33c2a315372e8dbb5b05589ee0" prot="public" static="no">
@@ -271,7 +271,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="215" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="215" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="215" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="215" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga8253934e8ddf4b6787eed66dee4fa165" prot="public" static="no">
@@ -285,7 +285,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="222" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="222" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="222" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="222" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gae62dfbb01e2798e7e33a09cff42e83b4" prot="public" static="no">
@@ -299,7 +299,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="229" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="229" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="229" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="229" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga24bf675644bb36e8d3e7a5dcca82d405" prot="public" static="no">
@@ -313,7 +313,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="236" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="236" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="236" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="236" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga9e1135e0f8e70f24eacf52f773f3a2e7" prot="public" static="no">
@@ -327,7 +327,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="246" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="246" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="246" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="246" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga1b992d2acdf80fc76c508820985b67f6" prot="public" static="no">
@@ -342,7 +342,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="258" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="258" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="258" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="258" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa204cdf430eb9c973e4304d66bb1b446" prot="public" static="no">
@@ -357,7 +357,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="267" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="267" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="267" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="267" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa1affb1cc889d958982be0037863e22c" prot="public" static="no">
@@ -372,7 +372,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="278" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="278" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="278" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="278" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga81a3368d5b5c1472a6ec9b3c1038a169" prot="public" static="no">
@@ -387,7 +387,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="289" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="289" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="289" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="289" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6e9d48b0520928ca24a7b0ce877c82ea" prot="public" static="no">
@@ -401,7 +401,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="298" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="298" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="298" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="298" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa53406c0b959b9c557ed8e3e50b2f2c0" prot="public" static="no">
@@ -415,7 +415,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="305" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="305" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="305" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="305" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga3c143148075c2346d07e74469e95bb21" prot="public" static="no">
@@ -429,7 +429,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="312" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="312" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="312" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="312" bodyend="-1"/>
         <referencedby refid="group___d_e_v_i_c_e___d_w___i2_s___f_u_n_c_d_l_r_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" compoundref="dw__i2s_8c" startline="1688" endline="1959">dw_i2s_control</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga14a028919c4c6fb0a8b0ba7d6ba6b496" prot="public" static="no">
@@ -443,7 +443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="360" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="360" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="360" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="360" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga6279e7b89f92b9203ac13dc92b33d4e3" prot="public" static="no">
         <name>DEV_I2S_INFO_GET_EXTRA_OBJECT</name>
@@ -455,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="362" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="362" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="362" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="362" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
@@ -515,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="69" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="69" bodyend="76"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="69" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="69" bodyend="76"/>
       </memberdef>
       <memberdef kind="enum" id="group___i2_s___a_u_d___s_a_m_p_l_e___r_a_t_e_1gae2cbd5f5057b79658c8defe964257899" prot="public" static="no">
         <name>i2s_aud_sample_rate</name>
@@ -581,7 +581,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="85" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="85" bodyend="93"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="85" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="85" bodyend="93"/>
       </memberdef>
       <memberdef kind="enum" id="group___i2_s___d_e_v_i_c_e___t_y_p_e_1ga705f27f97f7a5cb298fce2320fceb1a8" prot="public" static="no">
         <name>i2s_device_type</name>
@@ -607,7 +607,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="102" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="102" bodyend="105"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="102" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="102" bodyend="105"/>
       </memberdef>
       <memberdef kind="enum" id="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1ga67f538687c96848312471f06a448fde3" prot="public" static="no">
         <name>i2s_working_state</name>
@@ -641,7 +641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="114" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="114" bodyend="118"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="114" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="114" bodyend="118"/>
       </memberdef>
       <memberdef kind="enum" id="group___i2_s___e_r_r_o_r___s_t_a_t_e_1gabe4a7caff4d6ff8c15ffc11499423a46" prot="public" static="no">
         <name>i2s_error_state</name>
@@ -683,7 +683,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="127" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="127" bodyend="132"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="127" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" bodystart="127" bodyend="132"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -698,7 +698,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="76" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="76" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___i2_s___a_u_d___s_a_m_p_l_e___r_a_t_e_1gabcf309bea738d86582b194d155f8fa03" prot="public" static="no">
         <type>enum <ref refid="group___i2_s___a_u_d___s_a_m_p_l_e___r_a_t_e_1gae2cbd5f5057b79658c8defe964257899" kindref="member">i2s_aud_sample_rate</ref></type>
@@ -711,7 +711,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="93" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="93" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gadd71aac64bf3e8f8738cfba0559e4a79" prot="public" static="no">
         <type>enum <ref refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1ga705f27f97f7a5cb298fce2320fceb1a8" kindref="member">i2s_device_type</ref></type>
@@ -724,7 +724,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="105" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="105" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gae57728809ae3d970b2eeba2dd40d1a82" prot="public" static="no">
         <type>enum <ref refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1ga67f538687c96848312471f06a448fde3" kindref="member">i2s_working_state</ref></type>
@@ -737,7 +737,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="118" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="118" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___i2_s___e_r_r_o_r___s_t_a_t_e_1ga46aa09c5fe87244a107e51ec8ab16a1d" prot="public" static="no">
         <type>enum <ref refid="group___i2_s___e_r_r_o_r___s_t_a_t_e_1gabe4a7caff4d6ff8c15ffc11499423a46" kindref="member">i2s_error_state</ref></type>
@@ -750,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="132" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="132" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_a_l_l_b_a_c_k_1gadeedfd46a45539a7a09855d626aec511" prot="public" static="no">
         <type>struct <ref refid="structdev__i2s__cbs" kindref="compound">dev_i2s_cbs</ref></type>
@@ -763,7 +763,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="326" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="326" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___i2_s___c_a_l_l_b_a_c_k_1gac69a9244797511488628c6a1758739c1" prot="public" static="no">
         <type>struct <ref refid="structdev__i2s__cbs" kindref="compound">dev_i2s_cbs</ref> *</type>
@@ -776,7 +776,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="326" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="326" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga7b91c9deef53310f03e7269e2f72fb29" prot="public" static="no">
         <type>struct <ref refid="structdev__i2s__info" kindref="compound">dev_i2s_info</ref></type>
@@ -789,7 +789,7 @@
 <para>informations about I2S open state, working state, baurate, I2S registers, working method, interrupt number </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="357" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="357" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1gaf259712c88d0184d8d8492a45beb70e1" prot="public" static="no">
         <type>struct <ref refid="structdev__i2s__info" kindref="compound">dev_i2s_info</ref> *</type>
@@ -802,7 +802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="357" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="357" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" prot="public" static="no">
         <type>struct <ref refid="structdev__i2s" kindref="compound">dev_i2s</ref></type>
@@ -816,7 +816,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="379" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="379" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1gaa00d6b2d267c8b314ab23762a1e770fa" prot="public" static="no">
         <type>struct <ref refid="structdev__i2s" kindref="compound">dev_i2s</ref> *</type>
@@ -829,7 +829,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="379" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="379" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -845,7 +845,8 @@
         <briefdescription>
 <para>get an <ref refid="structdev__i2s" kindref="compound">i2s device</ref> by i2s device id. </para>        </briefdescription>
         <detaileddescription>
-<para>For how to use i2s device hal refer to <ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t" kindref="compound">Functions in i2s device structure</ref> <parameterlist kind="param"><parameteritem>
+<para><verbatim>    For how to use i2s device hal refer to \ref DEVICE_HAL_I2S_DEVSTRUCT &quot;Functions in i2s device structure&quot;
+</verbatim> <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">i2s_id</parametername>
 </parameternamelist>
@@ -872,7 +873,7 @@
 get an <ref refid="structdev__i2s" kindref="compound">i2s device</ref> by i2s device id. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="461" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/ip/ip_obj_mgr.c" bodystart="187" bodyend="203"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h" line="461" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/ip_obj_mgr.c" bodystart="187" bodyend="203"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1034,6 +1035,6 @@ get an <ref refid="structdev__i2s" kindref="compound">i2s device</ref> by i2s de
 <codeline lineno="466"><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="468"><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DEVICE_HAL_I2S_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/dev_i2s.h"/>
   </compounddef>
 </doxygen>

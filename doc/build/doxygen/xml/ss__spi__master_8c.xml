@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="ss__spi__master_8c" kind="file">
     <compoundname>ss_spi_master.c</compoundname>
     <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
@@ -11,16 +11,60 @@
       <node id="7889">
         <label>stdbool.h</label>
       </node>
-      <node id="7894">
-        <label>ioctl.h</label>
-        <link refid="ioctl_8h_source"/>
-        <childnode refid="7890" relation="include">
+      <node id="7884">
+        <label>stdint.h</label>
+      </node>
+      <node id="7886">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="7884" relation="include">
+        </childnode>
+        <childnode refid="7887" relation="include">
+        </childnode>
+        <childnode refid="7888" relation="include">
+        </childnode>
+        <childnode refid="7889" relation="include">
+        </childnode>
+      </node>
+      <node id="7891">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="7892" relation="include">
+        </childnode>
+      </node>
+      <node id="7888">
+        <label>stddef.h</label>
+      </node>
+      <node id="7887">
+        <label>limits.h</label>
+      </node>
+      <node id="7892">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="7895">
+        <label>ip/ip_hal/inc/dev_spi.h</label>
+        <link refid="dev__spi_8h"/>
+        <childnode refid="7896" relation="include">
+        </childnode>
+      </node>
+      <node id="7893">
+        <label>ip/subsystem/spi/spi_master.h</label>
+        <link refid="spi__master_8h_source"/>
+        <childnode refid="7894" relation="include">
+        </childnode>
+        <childnode refid="7895" relation="include">
+        </childnode>
+      </node>
+      <node id="7890">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="7886" relation="include">
+        </childnode>
+        <childnode refid="7891" relation="include">
         </childnode>
         <childnode refid="7885" relation="include">
         </childnode>
-      </node>
-      <node id="7884">
-        <label>stdint.h</label>
       </node>
       <node id="7883">
         <label>embARC_error.h</label>
@@ -30,28 +74,12 @@
         <childnode refid="7885" relation="include">
         </childnode>
       </node>
-      <node id="7888">
-        <label>stddef.h</label>
-      </node>
-      <node id="7896">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="7884" relation="include">
+      <node id="7894">
+        <label>ioctl.h</label>
+        <link refid="ioctl_8h_source"/>
+        <childnode refid="7890" relation="include">
         </childnode>
-      </node>
-      <node id="7885">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="7886" relation="include">
-        </childnode>
-      </node>
-      <node id="7887">
-        <label>limits.h</label>
-      </node>
-      <node id="7891">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="7892" relation="include">
+        <childnode refid="7885" relation="include">
         </childnode>
       </node>
       <node id="7882">
@@ -74,44 +102,16 @@
         <childnode refid="7895" relation="include">
         </childnode>
       </node>
-      <node id="7893">
-        <label>ip/subsystem/spi/spi_master.h</label>
-        <link refid="spi__master_8h_source"/>
-        <childnode refid="7894" relation="include">
-        </childnode>
-        <childnode refid="7895" relation="include">
-        </childnode>
-      </node>
-      <node id="7892">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="7886">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
+      <node id="7896">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
         <childnode refid="7884" relation="include">
         </childnode>
-        <childnode refid="7887" relation="include">
-        </childnode>
-        <childnode refid="7888" relation="include">
-        </childnode>
-        <childnode refid="7889" relation="include">
-        </childnode>
       </node>
-      <node id="7895">
-        <label>ip/ip_hal/inc/dev_spi.h</label>
-        <link refid="dev__spi_8h"/>
-        <childnode refid="7896" relation="include">
-        </childnode>
-      </node>
-      <node id="7890">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
+      <node id="7885">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
         <childnode refid="7886" relation="include">
-        </childnode>
-        <childnode refid="7891" relation="include">
-        </childnode>
-        <childnode refid="7885" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="43" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="43" bodyend="97"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="43" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="43" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1a9eabf9c15b59c96eb3820c034e75eb11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="99" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="99" bodyend="116"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="99" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="99" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1a3c3d42f357b038f3179f981142821039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="118" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="118" bodyend="293"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="118" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="118" bodyend="293"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1a40acb04ac1f9c178afe39cc4ff5d4211" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="295" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="295" bodyend="328"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="295" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="295" bodyend="328"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1ae133b665fcf40674b3619bff02275338" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -231,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="330" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="330" bodyend="361"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="330" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="330" bodyend="361"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1a9ab0aca0e7592d98f8b75b1f2eff2a1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="363" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="363" bodyend="382"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="363" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="363" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1a39afd0698b2cdd3243787cb981e0c806" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="384" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="384" bodyend="402"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="384" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="384" bodyend="402"/>
       </memberdef>
       <memberdef kind="function" id="ss__spi__master_8c_1a5329239bd68ae9552a440cf4c7fe1b11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -294,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="404" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="404" bodyend="413"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" line="404" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c" bodystart="404" bodyend="413"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -716,6 +716,6 @@
 <codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="413"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/subsystem/spi/ss_spi_master.c"/>
   </compounddef>
 </doxygen>

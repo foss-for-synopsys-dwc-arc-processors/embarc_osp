@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="arc__udma_8h" kind="file">
     <compoundname>arc_udma.h</compoundname>
     <includes local="no">stdint.h</includes>
@@ -15,17 +15,6 @@
     <incdepgraph>
       <node id="1053">
         <label>stdbool.h</label>
-      </node>
-      <node id="1059">
-        <label>arc_udma_config.h</label>
-        <link refid="arc__udma__config_8h"/>
-        <childnode refid="1055" relation="include">
-        </childnode>
-        <childnode refid="1058" relation="include">
-        </childnode>
-      </node>
-      <node id="1048">
-        <label>stdint.h</label>
       </node>
       <node id="1047">
         <label>arc_udma.h</label>
@@ -47,17 +36,20 @@
         <childnode refid="1059" relation="include">
         </childnode>
       </node>
-      <node id="1049">
-        <label>stddef.h</label>
+      <node id="1048">
+        <label>stdint.h</label>
       </node>
-      <node id="1056">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="1051" relation="include">
+      <node id="1051">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="1048" relation="include">
         </childnode>
-      </node>
-      <node id="1052">
-        <label>limits.h</label>
+        <childnode refid="1052" relation="include">
+        </childnode>
+        <childnode refid="1049" relation="include">
+        </childnode>
+        <childnode refid="1053" relation="include">
+        </childnode>
       </node>
       <node id="1054">
         <label>arc.h</label>
@@ -65,8 +57,11 @@
         <childnode refid="1055" relation="include">
         </childnode>
       </node>
-      <node id="1050">
-        <label>string.h</label>
+      <node id="1049">
+        <label>stddef.h</label>
+      </node>
+      <node id="1052">
+        <label>limits.h</label>
       </node>
       <node id="1057">
         <label>arc_cache.h</label>
@@ -84,17 +79,8 @@
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="1051">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="1048" relation="include">
-        </childnode>
-        <childnode refid="1052" relation="include">
-        </childnode>
-        <childnode refid="1049" relation="include">
-        </childnode>
-        <childnode refid="1053" relation="include">
-        </childnode>
+      <node id="1050">
+        <label>string.h</label>
       </node>
       <node id="1058">
         <label>arc_exception.h</label>
@@ -106,8 +92,66 @@
         <childnode refid="1056" relation="include">
         </childnode>
       </node>
+      <node id="1059">
+        <label>arc_udma_config.h</label>
+        <link refid="arc__udma__config_8h"/>
+        <childnode refid="1055" relation="include">
+        </childnode>
+        <childnode refid="1058" relation="include">
+        </childnode>
+      </node>
+      <node id="1056">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="1051" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="1074">
+        <label>dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c_source"/>
+      </node>
+      <node id="1060">
+        <label>arc_udma.h</label>
+        <link refid="arc_udma.h"/>
+        <childnode refid="1061" relation="include">
+        </childnode>
+        <childnode refid="1062" relation="include">
+        </childnode>
+      </node>
+      <node id="1075">
+        <label>dw_i2s.c</label>
+        <link refid="dw__i2s_8c_source"/>
+      </node>
+      <node id="1073">
+        <label>dw_i2s.h</label>
+        <link refid="dw__i2s_8h_source"/>
+        <childnode refid="1074" relation="include">
+        </childnode>
+        <childnode refid="1075" relation="include">
+        </childnode>
+      </node>
+      <node id="1061">
+        <label>arc_udma.c</label>
+        <link refid="arc__udma_8c"/>
+      </node>
+      <node id="1072">
+        <label>hsdk_interrupt.c</label>
+        <link refid="hsdk__interrupt_8c_source"/>
+      </node>
+      <node id="1066">
+        <label>embARC_syscalls.c</label>
+        <link refid="emb_a_r_c__syscalls_8c_source"/>
+      </node>
+      <node id="1067">
+        <label>secure_console.c</label>
+        <link refid="emsdp_2common_2secure__console_8c_source"/>
+      </node>
+      <node id="1070">
+        <label>axs_103_interrupt.c</label>
+        <link refid="axs__103__interrupt_8c_source"/>
+      </node>
       <node id="1062">
         <label>embARC.h</label>
         <link refid="emb_a_r_c_8h"/>
@@ -130,46 +174,6 @@
         <childnode refid="1073" relation="include">
         </childnode>
       </node>
-      <node id="1060">
-        <label>arc_udma.h</label>
-        <link refid="arc_udma.h"/>
-        <childnode refid="1061" relation="include">
-        </childnode>
-        <childnode refid="1062" relation="include">
-        </childnode>
-      </node>
-      <node id="1074">
-        <label>dw_i2s_obj.c</label>
-        <link refid="dw__i2s__obj_8c_source"/>
-      </node>
-      <node id="1064">
-        <label>dirent.h</label>
-        <link refid="dirent_8h_source"/>
-      </node>
-      <node id="1072">
-        <label>hsdk_interrupt.c</label>
-        <link refid="hsdk__interrupt_8c_source"/>
-      </node>
-      <node id="1075">
-        <label>dw_i2s.c</label>
-        <link refid="dw__i2s_8c_source"/>
-      </node>
-      <node id="1073">
-        <label>dw_i2s.h</label>
-        <link refid="dw__i2s_8h_source"/>
-        <childnode refid="1074" relation="include">
-        </childnode>
-        <childnode refid="1075" relation="include">
-        </childnode>
-      </node>
-      <node id="1067">
-        <label>secure_console.c</label>
-        <link refid="emsdp_2common_2secure__console_8c_source"/>
-      </node>
-      <node id="1061">
-        <label>arc_udma.c</label>
-        <link refid="arc__udma_8c"/>
-      </node>
       <node id="1065">
         <label>fatfs_dirent.c</label>
         <link refid="fatfs__dirent_8c_source"/>
@@ -182,25 +186,21 @@
         <childnode refid="1065" relation="include">
         </childnode>
       </node>
-      <node id="1066">
-        <label>embARC_syscalls.c</label>
-        <link refid="emb_a_r_c__syscalls_8c_source"/>
-      </node>
-      <node id="1070">
-        <label>axs_103_interrupt.c</label>
-        <link refid="axs__103__interrupt_8c_source"/>
-      </node>
       <node id="1071">
         <label>board.c</label>
         <link refid="board_8c_source"/>
       </node>
-      <node id="1069">
-        <label>secure_console.c</label>
-        <link refid="iotdk_2common_2secure__console_8c_source"/>
+      <node id="1064">
+        <label>dirent.h</label>
+        <link refid="dirent_8h_source"/>
       </node>
       <node id="1068">
         <label>secure_console.c</label>
         <link refid="emsk_2common_2secure__console_8c_source"/>
+      </node>
+      <node id="1069">
+        <label>secure_console.c</label>
+        <link refid="iotdk_2common_2secure__console_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="struct__dma__ctrl__field" prot="public">_dma_ctrl_field</innerclass>
@@ -218,7 +218,7 @@
 <para>&lt; Number of all DMA channels Number of all aux-register based DMA channels </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="63" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="63" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="63" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="63" bodyend="-1"/>
         <referencedby refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga107a89b989ee59962d38425fbb22b187" compoundref="arc__udma_8c" startline="552" endline="563">_dmac_interrupt_completed</referencedby>
         <referencedby refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga804207997607d5a3bad949188b6c5300" compoundref="arc__udma_8c" startline="565" endline="576">_dmac_interrupt_error</referencedby>
         <referencedby refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga5cdbefc94c44553c2e42d016d6cfb54f" compoundref="arc__udma_8c" startline="869" endline="891">dmac_check_channel</referencedby>
@@ -239,7 +239,7 @@
 <para>Mask of all DMA channels at the most </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="67" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="67" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="67" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga1e656f95a8cb87b02d8a79853210ee0a" prot="public" static="no">
         <name>DMA_ALL_CHANNEL_MASK</name>
@@ -250,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="71" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="71" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga3b5573ef57629c751ae39c5f12de6f7d" prot="public" static="no">
         <name>DMACTRLx_OP_OFS</name>
@@ -261,7 +261,7 @@
 <para>bit field offset: bit 0,1 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="73" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="73" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="73" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga2899e234bca37fbfcff7beb307416e80" prot="public" static="no">
         <name>DMACTRLx_R_OFS</name>
@@ -272,7 +272,7 @@
 <para>bit field offset: bit 2 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="74" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="74" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga086b211216c85d46ca879d01a4ed1e98" prot="public" static="no">
         <name>DMACTRLx_DTT_OFS</name>
@@ -283,7 +283,7 @@
 <para>bit field offset: bit 3,4 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="75" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="75" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad49f849bd52d48d3f2b53ea5130251c2" prot="public" static="no">
         <name>DMACTRLx_DWINC_OFS</name>
@@ -294,7 +294,7 @@
 <para>bit field offset: bit 5,6,7 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="76" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="76" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="76" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga93a80795d8f15775272ce151207655a8" prot="public" static="no">
         <name>DMACTRLx_SIZE_OFS</name>
@@ -305,7 +305,7 @@
 <para>bit field offset: bit 8..20 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="77" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="77" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="77" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga8c0257c0859578c2754b424f9ed6561c" prot="public" static="no">
         <name>DMACTRLx_ARB_OFS</name>
@@ -316,7 +316,7 @@
 <para>bit field offset: bit 21..28 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="78" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="78" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga31a279ac20de678a5d95139520d61482" prot="public" static="no">
         <name>DMACTRLx_INT_OFS</name>
@@ -327,7 +327,7 @@
 <para>bit field offset: bit 29 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="79" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="79" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gade1850d1b521cc9dd20a7aaf0bb9c1fb" prot="public" static="no">
         <name>DMACTRLx_AM_OFS</name>
@@ -338,7 +338,7 @@
 <para>bit field offset: bit 30,31 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="80" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="80" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="80" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga41d979f2c6d3f1b38eb1b9e06702d6b3" prot="public" static="no">
         <name>DMACTRLx_OP</name>
@@ -350,7 +350,7 @@
 <para>bit field value: bit 0,1 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="82" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="82" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="82" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga52e6e61880941be08bfbb3de211e0229" prot="public" static="no">
         <name>DMACTRLx_R</name>
@@ -362,7 +362,7 @@
 <para>bit field value: bit 2 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="83" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="83" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="83" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gacf6a1f73d4a4ecff800fa48f715f9cbc" prot="public" static="no">
         <name>DMACTRLx_DTT</name>
@@ -374,7 +374,7 @@
 <para>bit field value: bit 3,4 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="84" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="84" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="84" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga37fcc916a26f83883a7fee1caaa0cde0" prot="public" static="no">
         <name>DMACTRLx_DWINC</name>
@@ -386,7 +386,7 @@
 <para>bit field value: bit 5,6,7 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="85" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="85" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="85" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gac2f590aac7504e3960cf3607c973f664" prot="public" static="no">
         <name>DMACTRLx_SIZE</name>
@@ -398,7 +398,7 @@
 <para>bit field value: bit 8..20 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="86" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="86" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="86" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga46a9c1990f09d7b7640534e5b396575a" prot="public" static="no">
         <name>DMACTRLx_ARB</name>
@@ -410,7 +410,7 @@
 <para>bit field value: bit 21..28 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="87" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="87" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="87" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad7b8fd9be8515f3be65b4809b66235f3" prot="public" static="no">
         <name>DMACTRLx_INT</name>
@@ -422,7 +422,7 @@
 <para>bit field value: bit 29 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="88" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="88" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="88" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga6f6826c4c867b294c7744ae7ca10e1e0" prot="public" static="no">
         <name>DMACTRLx_AM</name>
@@ -434,7 +434,7 @@
 <para>bit field value: bit 30,31 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="89" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="89" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="89" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae24b57a3add49e83da7ca8726b611ab4" prot="public" static="no">
         <name>DMACTRLx_OP_MASK</name>
@@ -445,7 +445,7 @@
 <para>bit field mask: bit 0,1 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="91" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="91" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="91" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gab75c4448785d187e51cffe9fe3348f12" prot="public" static="no">
         <name>DMACTRLx_R_MASK</name>
@@ -456,7 +456,7 @@
 <para>bit field mask: bit 2 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="92" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="92" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="92" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad31a9e4496940638ae397b4e98eb524b" prot="public" static="no">
         <name>DMACTRLx_DTT_MASK</name>
@@ -467,7 +467,7 @@
 <para>bit field mask: bit 3,4 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="93" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="93" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="93" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaaae12efddb5d280847bfe8cec54dce80" prot="public" static="no">
         <name>DMACTRLx_DWINC_MASK</name>
@@ -478,7 +478,7 @@
 <para>bit field mask: bit 5,6,7 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="94" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="94" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="94" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaf0b85ea535b49f78caedc2c15c1bb743" prot="public" static="no">
         <name>DMACTRLx_SIZE_MASK</name>
@@ -489,7 +489,7 @@
 <para>bit field mask: bit 8..20 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="95" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="95" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="95" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaea8174d2d67026a0e77aa8b6b00cd5f2" prot="public" static="no">
         <name>DMACTRLx_ARB_MASK</name>
@@ -500,7 +500,7 @@
 <para>bit field mask: bit 21..28 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="96" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="96" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="96" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga53d0a9711055e401c57d3d654b020879" prot="public" static="no">
         <name>DMACTRLx_INT_MASK</name>
@@ -511,7 +511,7 @@
 <para>bit field mask: bit 29 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="97" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="97" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="97" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaf58c8da68a90d064668776f6c5cb7347" prot="public" static="no">
         <name>DMACTRLx_AM_MASK</name>
@@ -522,7 +522,7 @@
 <para>bit field mask: bit 30,31 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="98" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="98" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="98" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga1ec5fe68d27f31d10ef534096fd08145" prot="public" static="no">
         <name>DMACHANNEL</name>
@@ -534,7 +534,7 @@
 <para>Channel number to Bit </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="100" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="100" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="100" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="100" bodyend="-1"/>
         <referencedby refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaa8def3178273523539defa6f8b832b1a" compoundref="arc__udma_8c" startline="699" endline="761">dmac_start_channel</referencedby>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga5bfc90842e558ba607b22779febaa55e" prot="public" static="no">
@@ -546,7 +546,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="218" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="218" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="218" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaa05397c67f1ca927f140e195108d7334" prot="public" static="no">
         <name>DMA_CHECK_REGISTER</name>
@@ -558,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="228" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="228" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="228" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="228" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga953064c2f0d009a5077daa2433a639e3" prot="public" static="no">
         <name>DMA_CTRL_SET_OP</name>
@@ -586,7 +586,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="274" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="274" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="274" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae16af2522ce8a6ecba90d692fcf0af91" prot="public" static="no">
         <name>DMA_CTRL_SET_RT</name>
@@ -614,7 +614,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="280" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="280" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="280" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="280" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga27adf242d61f7b91b638bbc4ad95fd7e" prot="public" static="no">
         <name>DMA_CTRL_SET_DTT</name>
@@ -642,7 +642,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="286" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="286" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="286" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="286" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga4a69004fd86b7cb4f58337bf9b946989" prot="public" static="no">
         <name>DMA_CTRL_SET_DWINC</name>
@@ -670,7 +670,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="292" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="292" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="292" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="292" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga40c309561706031ad808577793a4fdd7" prot="public" static="no">
         <name>DMA_CTRL_BLKSZ</name>
@@ -698,7 +698,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="298" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="298" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="298" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="298" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga32ba6fdd3f7b0d710ac4f8453bf0a186" prot="public" static="no">
         <name>DMA_CTRL_SET_BLKSZ</name>
@@ -726,7 +726,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="304" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="304" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="304" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="304" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga37aa2e14b2c8884f4b81d76c301e7c04" prot="public" static="no">
         <name>DMA_CTRL_SET_ARB</name>
@@ -754,7 +754,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="310" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="310" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="310" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gade35d9b6153a6be05277b5d13841c91e" prot="public" static="no">
         <name>DMA_CTRL_SET_INT</name>
@@ -782,7 +782,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="316" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="316" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="316" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="316" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga3149b76bdf33d26240875f72a7954182" prot="public" static="no">
         <name>DMA_CTRL_SET_AM</name>
@@ -810,7 +810,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="322" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="322" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="322" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="322" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga3d1ae1072b84f3974de1105e8b03fdbb" prot="public" static="no">
         <name>DMA_CTRL_SET_VALUE</name>
@@ -838,7 +838,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="329" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="329" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="329" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="329" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
@@ -882,7 +882,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="123" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="123" bodyend="128"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="123" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="123" bodyend="128"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga498dee7f1d3792d2ddd59a0ab1a4931f" prot="public" static="no">
         <name>_dma_channel_type</name>
@@ -908,7 +908,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="131" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="131" bodyend="134"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="131" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="131" bodyend="134"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafd16b7227cfdebb996c941d293ddd600" prot="public" static="no">
         <name>_dma_request_source</name>
@@ -934,7 +934,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="137" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="137" bodyend="140"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="137" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="137" bodyend="140"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad971167f35029882a24e9f29bed2e522" prot="public" static="no">
         <name>_dma_ctrl_op</name>
@@ -976,7 +976,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="163" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="163" bodyend="168"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="163" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="163" bodyend="168"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaae2ba81fe06b6e3c25a58309fe2cfb91" prot="public" static="no">
         <name>_dma_ctrl_rt</name>
@@ -1002,7 +1002,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="171" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="171" bodyend="174"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="171" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="171" bodyend="174"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gadadfb0518af231314689edd493b4f841" prot="public" static="no">
         <name>_dma_ctrl_dtt</name>
@@ -1044,7 +1044,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="177" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="177" bodyend="182"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="177" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="177" bodyend="182"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga1f177e8a3c0fc8a0e765bb0c687655a9" prot="public" static="no">
         <name>_dma_ctrl_dwinc</name>
@@ -1118,7 +1118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="185" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="185" bodyend="194"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="185" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="185" bodyend="194"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafdab70dc8716fc49745f38ddfc1df066" prot="public" static="no">
         <name>_dma_ctrl_int</name>
@@ -1144,7 +1144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="197" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="197" bodyend="200"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="197" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="197" bodyend="200"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gab14325a2538ebe990ccdde4c92e586d3" prot="public" static="no">
         <name>_dma_ctrl_am</name>
@@ -1186,7 +1186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="203" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="203" bodyend="208"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="203" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="203" bodyend="208"/>
       </memberdef>
       <memberdef kind="enum" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga71b0bab3c4b4272add6ba11dd273d05b" prot="public" static="no">
         <name>_dma_chn_prio</name>
@@ -1212,7 +1212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="211" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="211" bodyend="214"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="211" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="211" bodyend="214"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -1227,7 +1227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="103" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" bodystart="103" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="103" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae9f686f29367668129d1562f3fea0a8b" prot="public" static="no">
         <type>struct <ref refid="struct__dma__ctrl__field" kindref="compound">_dma_ctrl_field</ref></type>
@@ -1240,7 +1240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="114" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="114" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga32ace06fabbad31be8e5248550434dbf" prot="public" static="no">
         <type>union <ref refid="union__dma__ctrl" kindref="compound">_dma_ctrl</ref></type>
@@ -1253,7 +1253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="120" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="120" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gae2b60a27d68acd095c27cab358a2ce9d" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga276d4cc1d756d731dfb6ff5af7553056" kindref="member">_dma_status</ref></type>
@@ -1266,7 +1266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="128" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="128" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga4ab1406bf196a260bfc24ec6f004eb38" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga498dee7f1d3792d2ddd59a0ab1a4931f" kindref="member">_dma_channel_type</ref></type>
@@ -1279,7 +1279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="134" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="134" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga87fac76863c6c941e6363236dde6f58e" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafd16b7227cfdebb996c941d293ddd600" kindref="member">_dma_request_source</ref></type>
@@ -1292,7 +1292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="140" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="140" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga70e62b9d60cf124ecc6427a59cf5e43a" prot="public" static="no">
         <type>struct <ref refid="struct__dma__desc" kindref="compound">_dma_desc</ref></type>
@@ -1305,7 +1305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="149" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="149" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga0d1854ef6ca92f26e35a4e869f8a157f" prot="public" static="no">
         <type>struct <ref refid="struct__dma__channel" kindref="compound">_dma_channel</ref></type>
@@ -1318,7 +1318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="160" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="160" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga8430596640eb5771ef5a44e913a65420" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gad971167f35029882a24e9f29bed2e522" kindref="member">_dma_ctrl_op</ref></type>
@@ -1331,7 +1331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="168" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="168" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaeb82abb7da6ae9e38c45c19287b40616" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaae2ba81fe06b6e3c25a58309fe2cfb91" kindref="member">_dma_ctrl_rt</ref></type>
@@ -1344,7 +1344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="174" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="174" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga29d38d8f435f4344d564522569e531b8" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gadadfb0518af231314689edd493b4f841" kindref="member">_dma_ctrl_dtt</ref></type>
@@ -1357,7 +1357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="182" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="182" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga9148d68057bfa06c9e32c1f17c651e68" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga1f177e8a3c0fc8a0e765bb0c687655a9" kindref="member">_dma_ctrl_dwinc</ref></type>
@@ -1370,7 +1370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="194" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="194" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga12b792a0d4ebffe66828afe49993541b" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafdab70dc8716fc49745f38ddfc1df066" kindref="member">_dma_ctrl_int</ref></type>
@@ -1383,7 +1383,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="200" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="200" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga0fbf02a7ca3a2839df910e6599700085" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gab14325a2538ebe990ccdde4c92e586d3" kindref="member">_dma_ctrl_am</ref></type>
@@ -1396,7 +1396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="208" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="208" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga810d6c59a45aa2f16572989a2a13a82b" prot="public" static="no">
         <type>enum <ref refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga71b0bab3c4b4272add6ba11dd273d05b" kindref="member">_dma_chn_prio</ref></type>
@@ -1409,7 +1409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="214" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="214" column="1"/>
       </memberdef>
       <memberdef kind="typedef" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaf5a20874bcce56e9dfa0554ffa808322" prot="public" static="no">
         <type>struct <ref refid="struct__dma__state" kindref="compound">_dma_state</ref></type>
@@ -1422,7 +1422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h" line="245" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h" line="245" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -1464,7 +1464,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="412" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="412" bodyend="464"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="412" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="412" bodyend="464"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga107a89b989ee59962d38425fbb22b187" compoundref="arc__udma_8c" startline="552" endline="563">_dmac_interrupt_completed</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga804207997607d5a3bad949188b6c5300" compoundref="arc__udma_8c" startline="565" endline="576">_dmac_interrupt_error</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
@@ -1488,7 +1488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="599" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="599" bodyend="613"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="599" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="599" bodyend="613"/>
       </memberdef>
       <memberdef kind="function" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga8e2f3e09ce52ab0b4491dcc7dbfc354a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1572,7 +1572,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="615" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="615" bodyend="627"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="615" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="615" bodyend="627"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga6c274621c4d7d5f6d7fbcd99b7056d23" compoundref="arc__udma_8h" startline="119">_dma_ctrl::value</references>
       </memberdef>
       <memberdef kind="function" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga51f97eff40bff94fd6643a90b6b9d73e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1624,7 +1624,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="629" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="629" bodyend="636"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="629" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="629" bodyend="636"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga3e783899fc429d24c481c3e6868c6f1f" compoundref="arc__udma_8h" startline="148">_dma_desc::DMALLPx</references>
       </memberdef>
       <memberdef kind="function" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaa984f158247d9697415e110803b88d89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1665,7 +1665,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="638" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="638" bodyend="651"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="638" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="638" bodyend="651"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga565ea94beec1957ba58e486d05d95f8a" compoundref="arc__udma_8h" startline="159">_dma_channel::callback</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
@@ -1724,7 +1724,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="653" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="653" bodyend="662"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="653" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="653" bodyend="662"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
       </memberdef>
       <memberdef kind="function" id="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gaaff2446b924c369ec11cd71a6aa0f185" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1787,7 +1787,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="664" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="664" bodyend="697"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="664" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="664" bodyend="697"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gga498dee7f1d3792d2ddd59a0ab1a4931faddf5388cd546689a825b0194475f4ecc" compoundref="arc__udma_8h" startline="132">DMA_CHN_ANY</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gga498dee7f1d3792d2ddd59a0ab1a4931fa08d397f51a21ff82f2bffdba52e5ba66" compoundref="arc__udma_8h" startline="133">DMA_CHN_INVALID</references>
@@ -1859,7 +1859,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="699" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="699" bodyend="761"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="699" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="699" bodyend="761"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga565ea94beec1957ba58e486d05d95f8a" compoundref="arc__udma_8h" startline="159">_dma_channel::callback</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
@@ -1913,7 +1913,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="763" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="763" bodyend="787"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="763" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="763" bodyend="787"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
@@ -1959,7 +1959,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="816" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="816" bodyend="841"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="816" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="816" bodyend="841"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
@@ -2010,7 +2010,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="843" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="843" bodyend="867"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="843" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="843" bodyend="867"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
@@ -2071,7 +2071,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="869" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="869" bodyend="891"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="869" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="869" bodyend="891"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
@@ -2117,7 +2117,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" line="789" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_udma.c" bodystart="789" bodyend="814"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" line="789" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_udma.c" bodystart="789" bodyend="814"/>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga338a87a56ac20b3fb6eb55d0fbc8bd31" compoundref="arc__udma_8h" startline="153">_dma_channel::channel</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1gafacb52388c1247e781414892c1751d7f" compoundref="arc__udma_8h" startline="157">_dma_channel::desc</references>
         <references refid="group___a_r_c___h_a_l___m_i_s_c___u_d_m_a_1ga33e5192848954a63f872b0c7df80367a" compoundref="arc__udma_8h" startline="63">DMA_ALL_CHANNEL_NUM</references>
@@ -2389,6 +2389,6 @@
 <codeline lineno="477"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="478"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_ARC_UDMA_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_udma.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_udma.h"/>
   </compounddef>
 </doxygen>

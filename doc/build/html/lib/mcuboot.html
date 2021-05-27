@@ -30,6 +30,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -206,8 +207,8 @@ and signature verification, and embARC uses MCUBoot image tools to sign each app
 <ul>
 <li><p>Install Python3</p></li>
 <li><p>Install several dependencies on Python libraries</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> &lt;embarc_root&gt;/library/mcuboot
-<span class="gp">$ </span>pip3 install --user -r scripts/requirements.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/library/mcuboot
+<span class="gp">$</span> pip3 install --user -r scripts/requirements.txt
 </pre></div>
 </div>
 </li>
@@ -218,8 +219,8 @@ and signature verification, and embARC uses MCUBoot image tools to sign each app
 <p>This signs the image by computing hash over the image, and then signing that hash. Signature is computed by newt tool when it’s creating the image.
 This signature is placed in the image trailer.</p>
 <p>embARC already adds the sign command in compile system, you can use it very conveniently.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> &lt;embarc_applcation&gt;
-<span class="gp">$ </span>make sign
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_applcation&gt;
+<span class="gp">$</span> make sign
 </pre></div>
 </div>
 <p>There is a default public keypair used to signature and validation under the folder <em>&lt;embarc_root&gt;/library/mcuboot</em>.

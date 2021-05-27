@@ -30,6 +30,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -203,163 +204,197 @@ driver to implement. Here is a diagram for the pwm_timer interface.</p>
 <img alt="PWM_TIMER HAL" src="../_images/dev_pwm_timer_hal.jpg" />
 <div class="section" id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
-<dl class="group">
-<dt>
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t"></span><em><span class="pre">group</span></em> <code class="sig-name descname"><span class="pre">DEVICE_HAL_PWM_TIMER_DEVSTRUCT</span></code></dt>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">DEVICE_HAL_PWM_TIMER_DEVSTRUCT</span></span></dt>
 <dd><p>Contains definitions of pwm_timer device interface structure. </p>
 <p>This structure will be used in user implemented code, which was called Device Driver Implement Layer for pwm_timer to use in implementation code. Application developer should use the PWM_TIMER API provided here to access to PWM_TIMER devices. BSP developer should follow the API definition to implement PWM_TIMER device drivers. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Typedefs</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="cpp type">
-<dt id="_CPPv418DEV_PWM_TIMER_INFO">
-<span id="_CPPv318DEV_PWM_TIMER_INFO"></span><span id="_CPPv218DEV_PWM_TIMER_INFO"></span><span id="DEV_PWM_TIMER_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gaabe67107db642e3d3038647a0d14cc89"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv418dev_pwm_timer_info" title="dev_pwm_timer_info"><span class="pre">dev_pwm_timer_info</span></a> <code class="sig-name descname"><span class="pre">DEV_PWM_TIMER_INFO</span></code><a class="headerlink" href="#_CPPv418DEV_PWM_TIMER_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv418DEV_PWM_TIMER_INFO">
+<span id="_CPPv318DEV_PWM_TIMER_INFO"></span><span id="_CPPv218DEV_PWM_TIMER_INFO"></span><span id="DEV_PWM_TIMER_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gaabe67107db642e3d3038647a0d14cc89"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418dev_pwm_timer_info" title="dev_pwm_timer_info"><span class="n"><span class="pre">dev_pwm_timer_info</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEV_PWM_TIMER_INFO</span></span></span><a class="headerlink" href="#_CPPv418DEV_PWM_TIMER_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>PWM_TIMER information struct definition. </p>
 <p>informations about pwm_timer open count, working status, pwm_timer registers and ctrl structure </p>
 </dd></dl>
 
 <dl class="cpp type">
-<dt id="_CPPv422DEV_PWM_TIMER_INFO_PTR">
-<span id="_CPPv322DEV_PWM_TIMER_INFO_PTR"></span><span id="_CPPv222DEV_PWM_TIMER_INFO_PTR"></span><span id="DEV_PWM_TIMER_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga9940e72a57bdb157210298c7d4ed0744"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv418dev_pwm_timer_info" title="dev_pwm_timer_info"><span class="pre">dev_pwm_timer_info</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_PWM_TIMER_INFO_PTR</span></code><a class="headerlink" href="#_CPPv422DEV_PWM_TIMER_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv422DEV_PWM_TIMER_INFO_PTR">
+<span id="_CPPv322DEV_PWM_TIMER_INFO_PTR"></span><span id="_CPPv222DEV_PWM_TIMER_INFO_PTR"></span><span id="DEV_PWM_TIMER_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga9940e72a57bdb157210298c7d4ed0744"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418dev_pwm_timer_info" title="dev_pwm_timer_info"><span class="n"><span class="pre">dev_pwm_timer_info</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_PWM_TIMER_INFO_PTR</span></span></span><a class="headerlink" href="#_CPPv422DEV_PWM_TIMER_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
-<dt id="_CPPv413DEV_PWM_TIMER">
-<span id="_CPPv313DEV_PWM_TIMER"></span><span id="_CPPv213DEV_PWM_TIMER"></span><span id="DEV_PWM_TIMER"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv413dev_pwm_timer" title="dev_pwm_timer"><span class="pre">dev_pwm_timer</span></a> <code class="sig-name descname"><span class="pre">DEV_PWM_TIMER</span></code><a class="headerlink" href="#_CPPv413DEV_PWM_TIMER" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv413DEV_PWM_TIMER">
+<span id="_CPPv313DEV_PWM_TIMER"></span><span id="_CPPv213DEV_PWM_TIMER"></span><span id="DEV_PWM_TIMER"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413dev_pwm_timer" title="dev_pwm_timer"><span class="n"><span class="pre">dev_pwm_timer</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEV_PWM_TIMER</span></span></span><a class="headerlink" href="#_CPPv413DEV_PWM_TIMER" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>PWM_TIMER device interface definition. </p>
-<p>Define pwm_timer device interface, like pwm_timer information structure, provide functions to open/close/control pwm_timer, send/receive data by pwm_timer <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
-</dd>
-</dl>
-</p>
+<p>Define pwm_timer device interface, like pwm_timer information structure, provide functions to open/close/control pwm_timer, send/receive data by pwm_timer </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All this details are implemented by user in user porting code </p>
+</div>
 </dd></dl>
 
 <dl class="cpp type">
-<dt id="_CPPv417DEV_PWM_TIMER_PTR">
-<span id="_CPPv317DEV_PWM_TIMER_PTR"></span><span id="_CPPv217DEV_PWM_TIMER_PTR"></span><span id="DEV_PWM_TIMER_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0c2d2708d97bea0800b17278df08609"></span><em class="property"><span class="pre">typedef</span> </em><em class="property"><span class="pre">struct</span></em> <a class="reference internal" href="#_CPPv413dev_pwm_timer" title="dev_pwm_timer"><span class="pre">dev_pwm_timer</span></a> <span class="pre">*</span><code class="sig-name descname"><span class="pre">DEV_PWM_TIMER_PTR</span></code><a class="headerlink" href="#_CPPv417DEV_PWM_TIMER_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv417DEV_PWM_TIMER_PTR">
+<span id="_CPPv317DEV_PWM_TIMER_PTR"></span><span id="_CPPv217DEV_PWM_TIMER_PTR"></span><span id="DEV_PWM_TIMER_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0c2d2708d97bea0800b17278df08609"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413dev_pwm_timer" title="dev_pwm_timer"><span class="n"><span class="pre">dev_pwm_timer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_PWM_TIMER_PTR</span></span></span><a class="headerlink" href="#_CPPv417DEV_PWM_TIMER_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Variables</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
 <dl class="cpp var">
-<dt id="_CPPv414pwm_timer_open">
-<span id="_CPPv314pwm_timer_open"></span><span id="_CPPv214pwm_timer_open"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga4e262cd5ec22e28b615fb21aae4776ce"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_timer_open</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414pwm_timer_open" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv414pwm_timer_open">
+<span id="_CPPv314pwm_timer_open"></span><span id="_CPPv214pwm_timer_open"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga4e262cd5ec22e28b615fb21aae4776ce"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pwm_timer_open</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv414pwm_timer_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Open pwm_timer device</p>
-<p>open pwm_timer device <dl class="simple">
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
-</ul>
+<p>open pwm_timer device </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns E_OK</dt>
+<dd class="field-odd"><p>Open successfully without any issues </p>
+</dd>
+<dt class="field-even">Returns E_OPNED</dt>
+<dd class="field-even"><p>If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid </p>
+</dd>
+<dt class="field-even">Returns E_PAR</dt>
+<dd class="field-even"><p>Parameter is not valid </p>
+</dd>
+<dt class="field-odd">Returns E_NOSPT</dt>
+<dd class="field-odd"><p>Open settings are not supported </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv415pwm_timer_close">
-<span id="_CPPv315pwm_timer_close"></span><span id="_CPPv215pwm_timer_close"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga06ca58b15c125ab85a5467a16b946158"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_timer_close</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">void</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415pwm_timer_close" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv415pwm_timer_close">
+<span id="_CPPv315pwm_timer_close"></span><span id="_CPPv215pwm_timer_close"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga06ca58b15c125ab85a5467a16b946158"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pwm_timer_close</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv415pwm_timer_close" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Close pwm_timer device</p>
-<p>close an pwm_timer device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
-</ul>
+<p>close an pwm_timer device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns E_OK</dt>
+<dd class="field-odd"><p>Close successfully without any issues(including scenario that device is already closed) </p>
+</dd>
+<dt class="field-even">Returns E_OPNED</dt>
+<dd class="field-even"><p>Device is still opened, the device opn_cnt decreased by 1 </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv417pwm_timer_control">
-<span id="_CPPv317pwm_timer_control"></span><span id="_CPPv217pwm_timer_control"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga4774713e05dfa69c9105e506c89ebbff"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_timer_control</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint32_t</span> <span class="pre">ch</span>, <span class="pre">uint32_t</span> <span class="pre">cmd</span>, <span class="pre">void</span> <span class="pre">*</span><span class="pre">param2</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417pwm_timer_control" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv417pwm_timer_control">
+<span id="_CPPv317pwm_timer_control"></span><span id="_CPPv217pwm_timer_control"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1ga4774713e05dfa69c9105e506c89ebbff"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pwm_timer_control</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ch</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">param2</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv417pwm_timer_control" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Control pwm_timer device</p>
-<p>control an pwm_timer device [channel number: ch] by ctrl_cmd, with passed param. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ch</span></code>: channel number of pwm_timer to control, must &gt;= 0 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to pwm_timer </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command </p></li>
+<p>control an pwm_timer device [channel number: ch] by ctrl_cmd, with passed param. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ch</strong> – <strong>[in]</strong> channel number of pwm_timer to control, must &gt;= 0 </p></li>
+<li><p><strong>ctrl_cmd</strong> – <strong>[in]</strong> control command, to change or get some thing related to pwm_timer </p></li>
+<li><p><strong>param</strong> – <strong>[inout]</strong> parameters that maybe argument of the command, or return values of the command </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
-</ul>
+<dt class="field-even">Returns E_OK</dt>
+<dd class="field-even"><p>Control device successfully </p>
+</dd>
+<dt class="field-odd">Returns E_CLSED</dt>
+<dd class="field-odd"><p>Device is not opened </p>
+</dd>
+<dt class="field-even">Returns E_OBJ</dt>
+<dd class="field-even"><p>Device object is not valid or not exists </p>
+</dd>
+<dt class="field-odd">Returns E_PAR</dt>
+<dd class="field-odd"><p>Parameter is not valid for current control command </p>
+</dd>
+<dt class="field-even">Returns E_SYS</dt>
+<dd class="field-even"><p>Control device failed, due to hardware issues, such as device is disabled </p>
+</dd>
+<dt class="field-odd">Returns E_CTX</dt>
+<dd class="field-odd"><p>Control device failed, due to different reasons like in transfer state </p>
+</dd>
+<dt class="field-even">Returns E_NOSPT</dt>
+<dd class="field-even"><p>Control command is not supported or not valid </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv415pwm_timer_write">
-<span id="_CPPv315pwm_timer_write"></span><span id="_CPPv215pwm_timer_write"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gaca656043f520755819f02909a38f50e5"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_timer_write</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint32_t</span> <span class="pre">ch</span>, <span class="pre">uint32_t</span> <span class="pre">mode</span>, <span class="pre">uint32_t</span> <span class="pre">freq</span>, <span class="pre">uint32_t</span> <span class="pre">dc</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415pwm_timer_write" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv415pwm_timer_write">
+<span id="_CPPv315pwm_timer_write"></span><span id="_CPPv215pwm_timer_write"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gaca656043f520755819f02909a38f50e5"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pwm_timer_write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ch</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">dc</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv415pwm_timer_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set the configuration of pwm_timer</p>
-<p>set the configuration of pwm_timer. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ch</span></code>: channel number of pwm_timer to write, must &gt;= 0 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">mode</span></code>: set the mode of pwm_timer, must not be NULL </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">freq</span></code>: set the frequency of pwm_timer, must not be NULL </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">dc</span></code>: set the duty cycle of pwm_timer, must not be NULL </p></li>
+<p>set the configuration of pwm_timer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ch</strong> – <strong>[in]</strong> channel number of pwm_timer to write, must &gt;= 0 </p></li>
+<li><p><strong>mode</strong> – <strong>[in]</strong> set the mode of pwm_timer, must not be NULL </p></li>
+<li><p><strong>freq</strong> – <strong>[in]</strong> set the frequency of pwm_timer, must not be NULL </p></li>
+<li><p><strong>dc</strong> – <strong>[in]</strong> set the duty cycle of pwm_timer, must not be NULL </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: set device successfully </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
-</ul>
+<dt class="field-even">Returns E_OK</dt>
+<dd class="field-even"><p>set device successfully </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid or not exists </p>
+</dd>
+<dt class="field-even">Returns E_PAR</dt>
+<dd class="field-even"><p>Parameter is not valid </p>
+</dd>
+<dt class="field-odd">Returns E_SYS</dt>
+<dd class="field-odd"><p>Can’t receive data from hardware due to hardware issues, such as device is disabled </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv414pwm_timer_read">
-<span id="_CPPv314pwm_timer_read"></span><span id="_CPPv214pwm_timer_read"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gaac1fd059387788ba98b9969860d35cb6"></span><span class="pre">int32_t</span> <span class="pre">(</span><span class="pre">*</span><code class="sig-name descname"><span class="pre">pwm_timer_read</span></code><span class="pre">)</span><span class="sig-paren">(</span><span class="pre">uint32_t</span> <span class="pre">ch</span>, <span class="pre">uint32_t</span> <span class="pre">*</span><span class="pre">mode</span>, <span class="pre">uint32_t</span> <span class="pre">*</span><span class="pre">freq</span>, <span class="pre">uint32_t</span> <span class="pre">*</span><span class="pre">dc</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414pwm_timer_read" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv414pwm_timer_read">
+<span id="_CPPv314pwm_timer_read"></span><span id="_CPPv214pwm_timer_read"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gaac1fd059387788ba98b9969860d35cb6"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pwm_timer_read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ch</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dc</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv414pwm_timer_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read the configuration of pwm_timer</p>
-<p>read the configuration of pwm_timer. <dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ch</span></code>: channel number of pwm_timer to read, must &gt;= 0 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">mode</span></code>: pointer to data mode of pwm_timer, must not be NULL </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">freq</span></code>: pointer to data frequency of pwm_timer, must not be NULL </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">dc</span></code>: pointer to data duty cycle of pwm_timer, must not be NULL </p></li>
+<p>read the configuration of pwm_timer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ch</strong> – <strong>[in]</strong> channel number of pwm_timer to read, must &gt;= 0 </p></li>
+<li><p><strong>mode</strong> – <strong>[out]</strong> pointer to data mode of pwm_timer, must not be NULL </p></li>
+<li><p><strong>freq</strong> – <strong>[out]</strong> pointer to data frequency of pwm_timer, must not be NULL </p></li>
+<li><p><strong>dc</strong> – <strong>[out]</strong> pointer to data duty cycle of pwm_timer, must not be NULL </p></li>
 </ul>
 </dd>
-<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Read device successfully </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
-</ul>
+<dt class="field-even">Returns E_OK</dt>
+<dd class="field-even"><p>Read device successfully </p>
+</dd>
+<dt class="field-odd">Returns E_OBJ</dt>
+<dd class="field-odd"><p>Device object is not valid or not exists </p>
+</dd>
+<dt class="field-even">Returns E_PAR</dt>
+<dd class="field-even"><p>Parameter is not valid </p>
+</dd>
+<dt class="field-odd">Returns E_SYS</dt>
+<dd class="field-odd"><p>Can’t receive data from hardware due to hardware issues, such as device is disabled </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 </div>
 <dl class="cpp struct">
-<dt id="_CPPv418dev_pwm_timer_info">
-<span id="_CPPv318dev_pwm_timer_info"></span><span id="_CPPv218dev_pwm_timer_info"></span><span id="dev_pwm_timer_info"></span><span class="target" id="structdev__pwm__timer__info"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_pwm_timer_info</span></code><a class="headerlink" href="#_CPPv418dev_pwm_timer_info" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv418dev_pwm_timer_info">
+<span id="_CPPv318dev_pwm_timer_info"></span><span id="_CPPv218dev_pwm_timer_info"></span><span id="dev_pwm_timer_info"></span><span class="target" id="structdev__pwm__timer__info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dev_pwm_timer_info</span></span></span><a class="headerlink" href="#_CPPv418dev_pwm_timer_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_pwm_timer.h&gt;</em><p>PWM_TIMER information struct definition. </p>
 <p>informations about pwm_timer open count, working status, pwm_timer registers and ctrl structure </p>
 </dd></dl>
 
 <dl class="cpp struct">
-<dt id="_CPPv413dev_pwm_timer">
-<span id="_CPPv313dev_pwm_timer"></span><span id="_CPPv213dev_pwm_timer"></span><span id="dev_pwm_timer"></span><span class="target" id="structdev__pwm__timer"></span><em class="property"><span class="pre">struct</span> </em><code class="sig-name descname"><span class="pre">dev_pwm_timer</span></code><a class="headerlink" href="#_CPPv413dev_pwm_timer" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv413dev_pwm_timer">
+<span id="_CPPv313dev_pwm_timer"></span><span id="_CPPv213dev_pwm_timer"></span><span id="dev_pwm_timer"></span><span class="target" id="structdev__pwm__timer"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dev_pwm_timer</span></span></span><a class="headerlink" href="#_CPPv413dev_pwm_timer" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_pwm_timer.h&gt;</em><p>PWM_TIMER device interface definition. </p>
-<p>Define pwm_timer device interface, like pwm_timer information structure, provide functions to open/close/control pwm_timer, send/receive data by pwm_timer <dl class="simple">
-<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
-</dd>
-</dl>
+<p>Define pwm_timer device interface, like pwm_timer information structure, provide functions to open/close/control pwm_timer, send/receive data by pwm_timer <div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All this details are implemented by user in user porting code </p>
+</div>
 </p>
 </dd></dl>
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="axs__timer_8h" kind="file">
     <compoundname>axs_timer.h</compoundname>
     <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
@@ -11,18 +11,6 @@
       </node>
       <node id="1269">
         <label>stdint.h</label>
-      </node>
-      <node id="1271">
-        <label>stddef.h</label>
-      </node>
-      <node id="1270">
-        <label>limits.h</label>
-      </node>
-      <node id="1267">
-        <label>axs_timer.h</label>
-        <link refid="axs_timer.h"/>
-        <childnode refid="1268" relation="include">
-        </childnode>
       </node>
       <node id="1268">
         <label>embARC_toolchain.h</label>
@@ -36,11 +24,27 @@
         <childnode refid="1272" relation="include">
         </childnode>
       </node>
+      <node id="1271">
+        <label>stddef.h</label>
+      </node>
+      <node id="1270">
+        <label>limits.h</label>
+      </node>
+      <node id="1267">
+        <label>axs_timer.h</label>
+        <link refid="axs_timer.h"/>
+        <childnode refid="1268" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="1274">
         <label>axs.h</label>
         <link refid="axs_8h_source"/>
+      </node>
+      <node id="1275">
+        <label>axs_init.c</label>
+        <link refid="axs__init_8c_source"/>
       </node>
       <node id="1273">
         <label>axs_timer.h</label>
@@ -49,10 +53,6 @@
         </childnode>
         <childnode refid="1275" relation="include">
         </childnode>
-      </node>
-      <node id="1275">
-        <label>axs_init.c</label>
-        <link refid="axs__init_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="var">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.h" line="39" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="51" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.h" line="39" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.c" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="axs__timer_8h_1af5c5c4e97199ea393457754474dbfb92" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.h" line="40" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="53" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.h" line="40" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.c" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -95,10 +95,11 @@
         <briefdescription>
 <para>init bare-metal axs board timer and interrupt </para>        </briefdescription>
         <detaileddescription>
-<para>This function is called in <ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>, and it initializes the 1-MS timer interrupt for bare-metal mode </para>        </detaileddescription>
+<para><verbatim>    This function is called in \ref board_init, and
+</verbatim> it initializes the 1-MS timer interrupt for bare-metal mode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.h" line="42" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.c" bodystart="104" bodyend="113"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.h" line="42" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.c" bodystart="104" bodyend="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -155,6 +156,6 @@
 <codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_AXS_TIMER_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/axs/common/axs_timer.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/common/axs_timer.h"/>
   </compounddef>
 </doxygen>

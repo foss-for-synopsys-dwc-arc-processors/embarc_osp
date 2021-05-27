@@ -1,40 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="cgu__hsdc__reg__map_8h" kind="file">
     <compoundname>cgu_hsdc_reg_map.h</compoundname>
     <includedby refid="cgu__hsdc__reg_8h" local="yes">cgu_hsdc_reg.h</includedby>
     <invincdepgraph>
-      <node id="1478">
-        <label>dw_sdio_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
-      </node>
-      <node id="1471">
-        <label>cgu_hsdc_reg.h</label>
-        <link refid="cgu__hsdc__reg_8h_source"/>
-        <childnode refid="1472" relation="include">
-        </childnode>
-      </node>
       <node id="1470">
         <label>cgu_hsdc_reg_map.h</label>
         <link refid="cgu_hsdc_reg_map.h"/>
         <childnode refid="1471" relation="include">
         </childnode>
       </node>
-      <node id="1479">
-        <label>dw_spi_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
-      </node>
-      <node id="1481">
-        <label>mux.c</label>
-        <link refid="hsdk_2drivers_2mux_2mux_8c_source"/>
-      </node>
       <node id="1477">
         <label>dw_iic_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c_source"/>
-      </node>
-      <node id="1476">
-        <label>dw_gpio_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="1473">
         <label>cgu_hsdc.c</label>
@@ -47,6 +25,34 @@
         </childnode>
         <childnode refid="1474" relation="include">
         </childnode>
+      </node>
+      <node id="1478">
+        <label>dw_sdio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="1475">
+        <label>hsdk_io.c</label>
+        <link refid="hsdk__io_8c_source"/>
+      </node>
+      <node id="1476">
+        <label>dw_gpio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      </node>
+      <node id="1481">
+        <label>mux.c</label>
+        <link refid="hsdk_2drivers_2mux_2mux_8c_source"/>
+      </node>
+      <node id="1479">
+        <label>dw_spi_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
+      </node>
+      <node id="1483">
+        <label>pmwifi.c</label>
+        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c_source"/>
+      </node>
+      <node id="1480">
+        <label>dw_uart_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
       </node>
       <node id="1474">
         <label>hsdk.h</label>
@@ -70,28 +76,22 @@
         <childnode refid="1483" relation="include">
         </childnode>
       </node>
+      <node id="1471">
+        <label>cgu_hsdc_reg.h</label>
+        <link refid="cgu__hsdc__reg_8h_source"/>
+        <childnode refid="1472" relation="include">
+        </childnode>
+      </node>
       <node id="1482">
         <label>ntshell_io_uart.c</label>
         <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
       </node>
-      <node id="1483">
-        <label>pmwifi.c</label>
-        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c_source"/>
-      </node>
-      <node id="1475">
-        <label>hsdk_io.c</label>
-        <link refid="hsdk__io_8c_source"/>
-      </node>
-      <node id="1480">
-        <label>dw_uart_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
-      </node>
     </invincdepgraph>
     <innerclass refid="structcgu__hsdc__reg" prot="public">cgu_hsdc_reg</innerclass>
       <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="cgu__hsdc__reg__map_8h_1a5cb4b2f7dc2bf1d6acaec59915940d43" prot="public" static="no">
+      <memberdef kind="typedef" id="cgu__hsdc__reg__map_8h_1ab220bb1a61b0bd6517f22e4cdb28b0a0" prot="public" static="no">
         <type>struct <ref refid="structcgu__hsdc__reg" kindref="compound">cgu_hsdc_reg</ref></type>
-        <definition>typedef volatile struct cgu_hsdc_reg   CGU_HSDC_STRUCT</definition>
+        <definition>typedef struct cgu_hsdc_reg   CGU_HSDC_STRUCT</definition>
         <argsstring></argsstring>
         <name>CGU_HSDC_STRUCT</name>
         <briefdescription>
@@ -100,11 +100,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/cgu/cgu_hsdc_reg_map.h" line="135" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/cgu/cgu_hsdc_reg_map.h" line="135" column="1"/>
       </memberdef>
-      <memberdef kind="typedef" id="cgu__hsdc__reg__map_8h_1aa3eb3e092bad96d282cfc607af7dd6ba" prot="public" static="no">
+      <memberdef kind="typedef" id="cgu__hsdc__reg__map_8h_1a4000d9e151931a7a3460a758178ddbc6" prot="public" static="no">
         <type>struct <ref refid="structcgu__hsdc__reg" kindref="compound">cgu_hsdc_reg</ref> *</type>
-        <definition>typedef volatile struct cgu_hsdc_reg *  CGU_HSDC_STRUCT_PTR</definition>
+        <definition>typedef struct cgu_hsdc_reg *  CGU_HSDC_STRUCT_PTR</definition>
         <argsstring></argsstring>
         <name>CGU_HSDC_STRUCT_PTR</name>
         <briefdescription>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/cgu/cgu_hsdc_reg_map.h" line="135" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/cgu/cgu_hsdc_reg_map.h" line="135" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -255,9 +255,9 @@
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reserved28[1];</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGU_IP_VERSION;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>R<sp/><sp/><sp/><sp/>0xFF8<sp/><sp/><sp/>CGU<sp/>IP<sp/>version<sp/>register</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGU_IP_TYPE;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>R<sp/><sp/><sp/><sp/>0xFFC<sp/><sp/><sp/>CGU<sp/>IP<sp/>type<sp/>register</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}<sp/><sp/>CGU_HSDC_STRUCT,<sp/>*<sp/>CGU_HSDC_STRUCT_PTR;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}<sp/><sp/><ref refid="structcgu__hsdc__reg" kindref="compound">CGU_HSDC_STRUCT</ref>,<sp/>*<sp/><ref refid="structcgu__hsdc__reg" kindref="compound">CGU_HSDC_STRUCT_PTR</ref>;</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/hsdk/drivers/cgu/cgu_hsdc_reg_map.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/drivers/cgu/cgu_hsdc_reg_map.h"/>
   </compounddef>
 </doxygen>

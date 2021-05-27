@@ -30,6 +30,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
@@ -390,16 +391,16 @@ For EMSK 1.0, it can be upgraded to 1.1 by 1.1’s firmware. For EMSK 2.0/2.1/2.
 <p class="admonition-title">Note</p>
 <p>If you want to disable MCUBoot, you should set <strong>USE_MCUBOOT = 0</strong> in your makefile</p>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
-<span class="gp">$ </span>gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Generate a secondary bootloader binary file for iotdk use eflash</p></li>
 </ul>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">//remember to set APPL_DEFINES += -DUSE_APPL_MEM_CONFIG in makefile</span>
-<span class="gp">$ </span><span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
-<span class="gp">$ </span>gmake <span class="nv">BOARD</span><span class="o">=</span>iotdk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">10</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem9d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+<span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/baremetal/bootloader
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>iotdk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">10</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem9d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
 </pre></div>
 </div>
 <p>If the binary file is generated successfully, you will output as follows:</p>
@@ -442,9 +443,9 @@ $ gmake BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw run</p>
 <li><p>Here take <em>&lt;embarc_root&gt;/example/freertos/kernel</em> for example</p></li>
 <li><p>When using MCUBoot, you should modify <strong>LIB_SEL += mcuboot</strong> and <strong>MID_SEL += mbedtls</strong> in your makefile to enable MCUBoot. And you should use the imgtool to sign the generated binary</p></li>
 </ul>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">  $ </span><span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
-<span class="gp">  $ </span>gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
-<span class="gp">  $ </span>gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw sign
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">  $</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
+<span class="gp">  $</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+<span class="gp">  $</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw sign
 
 <span class="go">Or you can use sign command directly, which will generate binary firstly and sign it</span>
 </pre></div>
@@ -452,8 +453,8 @@ $ gmake BOARD=iotdk BD_VER=10 CUR_CORE=arcem9d TOOLCHAIN=mw run</p>
 <ul class="simple">
 <li><p>When not using MCUBoot, the example ram start address should be 0x10000000</p></li>
 </ul>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
-<span class="gp">$ </span>gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> &lt;embarc_root&gt;/example/freertos/kernel
+<span class="gp">$</span> gmake <span class="nv">BOARD</span><span class="o">=</span>emsk <span class="nv">BD_VER</span><span class="o">=</span><span class="m">22</span> <span class="nv">CUR_CORE</span><span class="o">=</span>arcem7d <span class="nv">TOOLCHAIN</span><span class="o">=</span>mw bin
 </pre></div>
 </div>
 <ul class="simple">

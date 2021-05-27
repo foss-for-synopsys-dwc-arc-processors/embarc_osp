@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="arc__cache_8h" kind="file">
     <compoundname>arc_cache.h</compoundname>
     <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
@@ -17,23 +17,29 @@
       <node id="467">
         <label>stdint.h</label>
       </node>
-      <node id="469">
-        <label>stddef.h</label>
-      </node>
-      <node id="473">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="466" relation="include">
+      <node id="466">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="467" relation="include">
         </childnode>
-      </node>
-      <node id="468">
-        <label>limits.h</label>
+        <childnode refid="468" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
       </node>
       <node id="471">
         <label>arc.h</label>
         <link refid="arc_8h"/>
         <childnode refid="472" relation="include">
         </childnode>
+      </node>
+      <node id="469">
+        <label>stddef.h</label>
+      </node>
+      <node id="468">
+        <label>limits.h</label>
       </node>
       <node id="465">
         <label>arc_cache.h</label>
@@ -51,18 +57,6 @@
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="466">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="467" relation="include">
-        </childnode>
-        <childnode refid="468" relation="include">
-        </childnode>
-        <childnode refid="469" relation="include">
-        </childnode>
-        <childnode refid="470" relation="include">
-        </childnode>
-      </node>
       <node id="474">
         <label>arc_exception.h</label>
         <link refid="arc__exception_8h"/>
@@ -73,8 +67,78 @@
         <childnode refid="473" relation="include">
         </childnode>
       </node>
+      <node id="473">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="466" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="492">
+        <label>dw_i2s_obj.c</label>
+        <link refid="dw__i2s__obj_8c_source"/>
+      </node>
+      <node id="478">
+        <label>arc_udma.h</label>
+        <link refid="arc__udma_8h"/>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+      </node>
+      <node id="493">
+        <label>dw_i2s.c</label>
+        <link refid="dw__i2s_8c_source"/>
+      </node>
+      <node id="491">
+        <label>dw_i2s.h</label>
+        <link refid="dw__i2s_8h_source"/>
+        <childnode refid="492" relation="include">
+        </childnode>
+        <childnode refid="493" relation="include">
+        </childnode>
+      </node>
+      <node id="479">
+        <label>arc_udma.c</label>
+        <link refid="arc__udma_8c"/>
+      </node>
+      <node id="476">
+        <label>arc_cache.c</label>
+        <link refid="arc__cache_8c"/>
+      </node>
+      <node id="490">
+        <label>hsdk_interrupt.c</label>
+        <link refid="hsdk__interrupt_8c_source"/>
+      </node>
+      <node id="475">
+        <label>arc_cache.h</label>
+        <link refid="arc_cache.h"/>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="478" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+      </node>
+      <node id="484">
+        <label>embARC_syscalls.c</label>
+        <link refid="emb_a_r_c__syscalls_8c_source"/>
+      </node>
+      <node id="485">
+        <label>secure_console.c</label>
+        <link refid="emsdp_2common_2secure__console_8c_source"/>
+      </node>
+      <node id="488">
+        <label>axs_103_interrupt.c</label>
+        <link refid="axs__103__interrupt_8c_source"/>
+      </node>
+      <node id="477">
+        <label>arc_exception.c</label>
+        <link refid="arc__exception_8c"/>
+      </node>
       <node id="480">
         <label>embARC.h</label>
         <link refid="emb_a_r_c_8h"/>
@@ -97,66 +161,6 @@
         <childnode refid="491" relation="include">
         </childnode>
       </node>
-      <node id="478">
-        <label>arc_udma.h</label>
-        <link refid="arc__udma_8h"/>
-        <childnode refid="479" relation="include">
-        </childnode>
-        <childnode refid="480" relation="include">
-        </childnode>
-      </node>
-      <node id="492">
-        <label>dw_i2s_obj.c</label>
-        <link refid="dw__i2s__obj_8c_source"/>
-      </node>
-      <node id="482">
-        <label>dirent.h</label>
-        <link refid="dirent_8h_source"/>
-      </node>
-      <node id="490">
-        <label>hsdk_interrupt.c</label>
-        <link refid="hsdk__interrupt_8c_source"/>
-      </node>
-      <node id="493">
-        <label>dw_i2s.c</label>
-        <link refid="dw__i2s_8c_source"/>
-      </node>
-      <node id="491">
-        <label>dw_i2s.h</label>
-        <link refid="dw__i2s_8h_source"/>
-        <childnode refid="492" relation="include">
-        </childnode>
-        <childnode refid="493" relation="include">
-        </childnode>
-      </node>
-      <node id="485">
-        <label>secure_console.c</label>
-        <link refid="emsdp_2common_2secure__console_8c_source"/>
-      </node>
-      <node id="479">
-        <label>arc_udma.c</label>
-        <link refid="arc__udma_8c"/>
-      </node>
-      <node id="475">
-        <label>arc_cache.h</label>
-        <link refid="arc_cache.h"/>
-        <childnode refid="476" relation="include">
-        </childnode>
-        <childnode refid="477" relation="include">
-        </childnode>
-        <childnode refid="478" relation="include">
-        </childnode>
-        <childnode refid="480" relation="include">
-        </childnode>
-      </node>
-      <node id="476">
-        <label>arc_cache.c</label>
-        <link refid="arc__cache_8c"/>
-      </node>
-      <node id="477">
-        <label>arc_exception.c</label>
-        <link refid="arc__exception_8c"/>
-      </node>
       <node id="483">
         <label>fatfs_dirent.c</label>
         <link refid="fatfs__dirent_8c_source"/>
@@ -169,25 +173,21 @@
         <childnode refid="483" relation="include">
         </childnode>
       </node>
-      <node id="484">
-        <label>embARC_syscalls.c</label>
-        <link refid="emb_a_r_c__syscalls_8c_source"/>
-      </node>
-      <node id="488">
-        <label>axs_103_interrupt.c</label>
-        <link refid="axs__103__interrupt_8c_source"/>
-      </node>
       <node id="489">
         <label>board.c</label>
         <link refid="board_8c_source"/>
       </node>
-      <node id="487">
-        <label>secure_console.c</label>
-        <link refid="iotdk_2common_2secure__console_8c_source"/>
+      <node id="482">
+        <label>dirent.h</label>
+        <link refid="dirent_8h_source"/>
       </node>
       <node id="486">
         <label>secure_console.c</label>
         <link refid="emsk_2common_2secure__console_8c_source"/>
+      </node>
+      <node id="487">
+        <label>secure_console.c</label>
+        <link refid="iotdk_2common_2secure__console_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="user-defined">
@@ -202,7 +202,7 @@
 <para>enable instruction cache </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="50" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="50" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="50" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1a8b1837f2e109d4394dded75f3b680be2" prot="public" static="no">
@@ -214,7 +214,7 @@
 <para>disable instruction cache </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="51" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="51" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="51" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a123100ba87b65281603052f5e7983934" compoundref="arc__cache_8h" startline="102" endline="106">icache_disable</referencedby>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1a58b146a52b956f6f1d0e0329ea17ccc1" prot="public" static="no">
@@ -226,7 +226,7 @@
 <para>direct access mode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="52" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="52" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1ad9d26d7c4d98f519c5d20fa9031eeaee" prot="public" static="no">
         <name>IC_CTRL_INDIRECT_ACCESS</name>
@@ -237,7 +237,7 @@
 <para>indirect access mode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="53" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="53" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="53" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a39066bae5c76a364a9764ca535c4fe8e" compoundref="arc__cache_8h" startline="155" endline="163">icache_access_mode</referencedby>
         <referencedby refid="arc__cache_8h_1a6444cdd20acd74647d4959dea9a2dd36" compoundref="arc__cache_8c" startline="154" endline="166">icache_direct_read</referencedby>
         <referencedby refid="arc__cache_8h_1a3efe68d04d6fd03795066a79f032059f" compoundref="arc__cache_8c" startline="132" endline="144">icache_direct_write</referencedby>
@@ -252,7 +252,7 @@
 <para>instruction cache operation succeeded </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="54" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="54" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="54" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="54" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a438d802e1198870ae27d3ff22512ef20" compoundref="arc__cache_8c" startline="176" endline="191">icache_indirect_read</referencedby>
         <referencedby refid="arc__cache_8h_1a26dbe00651013802d3b8a7ad4565ec36" compoundref="arc__cache_8h" startline="140" endline="149">icache_lock_line</referencedby>
         <referencedby refid="arc__cache_8h_1a48f9fb90008431f06fcb385d9f67fc8c" compoundref="arc__cache_8c" startline="92" endline="122">icache_lock_mlines</referencedby>
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="62" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="62" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="62" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1a94b39308cfd002663d63689cda868a09" prot="public" static="no">
         <name>DC_CTRL_DC_ENABLE</name>
@@ -280,7 +280,7 @@
 <para>enable data cache </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="63" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="63" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="63" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1a5c1a63346f607c480d88d68b40ac3cef" prot="public" static="no">
         <name>DC_CTRL_DC_DISABLE</name>
@@ -291,7 +291,7 @@
 <para>disable data cache </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="64" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="64" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="64" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="64" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1aa520bede19111ccdecc72f13a1998474" compoundref="arc__cache_8h" startline="223" endline="227">dcache_disable</referencedby>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1a65272db83521f6977dfd0a46468952ba" prot="public" static="no">
@@ -303,7 +303,7 @@
 <para>invalid data cache only </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="65" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="65" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="65" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1ad39e2ba72c52a7531bed72e5c53ceb64" prot="public" static="no">
         <name>DC_CTRL_INVALID_FLUSH</name>
@@ -314,7 +314,7 @@
 <para>invalid and flush data cache </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="66" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="66" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="66" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1ae0adad0cc819a38dfa21b2a8ce5a77b5" prot="public" static="no">
@@ -326,7 +326,7 @@
 <para>the locked data cache can be flushed </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="67" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="67" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="67" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1a8dcb9d71ecace8c648c4b525a8bc6190" prot="public" static="no">
         <name>DC_CTRL_DISABLE_FLUSH_LOCKED</name>
@@ -337,7 +337,7 @@
 <para>the locked data cache cannot be flushed </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="68" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="68" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="68" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="68" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1ac2f3f57da7299e52cdb89ec2e53b4de8" prot="public" static="no">
@@ -349,7 +349,7 @@
 <para>flush status </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="69" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="69" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="69" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a8053b9c4705de17adfaf962e8b348c3c" compoundref="arc__cache_8h" startline="232" endline="242">dcache_flush</referencedby>
         <referencedby refid="arc__cache_8h_1a905611d458ccec8f6ed984ca541cdc04" compoundref="arc__cache_8h" startline="248" endline="258">dcache_flush_line</referencedby>
         <referencedby refid="arc__cache_8h_1a22809d879f9791c65001e86ff559434c" compoundref="arc__cache_8c" startline="239" endline="268">dcache_flush_mlines</referencedby>
@@ -365,7 +365,7 @@
 <para>direct access mode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="70" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="70" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="arc__cache_8h_1ab6018a2516d040b1f7cab03b37883eb1" prot="public" static="no">
         <name>DC_CTRL_INDIRECT_ACCESS</name>
@@ -376,7 +376,7 @@
 <para>indirect access mode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="71" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="71" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="71" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
         <referencedby refid="arc__cache_8h_1a1e194aa415489e2982983c6f71c21cc8" compoundref="arc__cache_8h" startline="280" endline="288">dcache_access_mode</referencedby>
         <referencedby refid="arc__cache_8h_1a10472449765a96cb2eeab9fb89f188da" compoundref="arc__cache_8c" startline="340" endline="352">dcache_direct_read</referencedby>
@@ -392,7 +392,7 @@
 <para>data cache operation succeeded </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="72" column="9" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="72" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="72" bodyend="-1"/>
         <referencedby refid="arc__cache_8h_1a9c6a7e168e8daf46938f6c8a63318e1f" compoundref="arc__cache_8c" startline="362" endline="377">dcache_indirect_read</referencedby>
         <referencedby refid="arc__cache_8h_1aff88b1dee48572a46c012e97f7b822b6" compoundref="arc__cache_8h" startline="265" endline="274">dcache_lock_line</referencedby>
         <referencedby refid="arc__cache_8h_1a04d4e5c837e79cc0eaffe1e462b744bc" compoundref="arc__cache_8c" startline="277" endline="308">dcache_lock_mlines</referencedby>
@@ -414,7 +414,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="84" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="84" bodyend="87"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="84" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="84" bodyend="87"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga9e91cea4c263ee77386aaedab738171d" compoundref="arc_8h" startline="131">AUX_BCR_I_CACHE</references>
         <referencedby refid="arc__cache_8h_1a6f0c3d1cb5e164571bf826622a20c65e" compoundref="arc__cache_8c" startline="56" endline="83">icache_invalidate_mlines</referencedby>
         <referencedby refid="arc__cache_8h_1a48f9fb90008431f06fcb385d9f67fc8c" compoundref="arc__cache_8c" startline="92" endline="122">icache_lock_mlines</referencedby>
@@ -451,7 +451,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="93" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="93" bodyend="97"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="93" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="93" bodyend="97"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="arc__cache_8h_1a3283605cba3118e42141a52664a7a69e" compoundref="arc__cache_8h" startline="84" endline="87">icache_available</references>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
@@ -470,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="102" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="102" bodyend="106"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="102" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="102" bodyend="106"/>
         <references refid="arc__cache_8h_1a3283605cba3118e42141a52664a7a69e" compoundref="arc__cache_8h" startline="84" endline="87">icache_available</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="arc__cache_8h_1a8b1837f2e109d4394dded75f3b680be2" compoundref="arc__cache_8h" startline="51">IC_CTRL_IC_DISABLE</references>
@@ -489,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="111" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="111" bodyend="119"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="111" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="111" bodyend="119"/>
         <references refid="arc__cache_8h_1a3283605cba3118e42141a52664a7a69e" compoundref="arc__cache_8h" startline="84" endline="87">icache_available</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga9a51b9a570b9907dea431df00e74cb2e" compoundref="arc_8h" startline="381">AUX_IC_IVIC</references>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
@@ -517,7 +517,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="125" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="125" bodyend="133"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="125" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="125" bodyend="133"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga23c848b7d154e5e2fbb21679bb15bcd0" compoundref="arc_8h" startline="384">AUX_IC_IVIL</references>
         <references refid="arc__cache_8h_1a3283605cba3118e42141a52664a7a69e" compoundref="arc__cache_8h" startline="84" endline="87">icache_available</references>
         <referencedby refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gac2f60bf83e06ce8f4198782f0ba2fdf6" compoundref="arc__exception_8c" startline="448" endline="479">exc_entry_install</referencedby>
@@ -546,7 +546,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="140" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="140" bodyend="149"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="140" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="140" bodyend="149"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga3039c4ecba760b2b9495d56bee1d35bf" compoundref="arc_8h" startline="383">AUX_IC_LIL</references>
         <references refid="arc__cache_8h_1a69a15333c7c721cf4ef4a62f5ada1711" compoundref="arc__cache_8h" startline="54">IC_CTRL_OP_SUCCEEDED</references>
@@ -576,7 +576,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="155" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="155" bodyend="163"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="155" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="155" bodyend="163"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="arc__cache_8h_1ad9d26d7c4d98f519c5d20fa9031eeaee" compoundref="arc__cache_8h" startline="53">IC_CTRL_INDIRECT_ACCESS</references>
         <references refid="arc__cache_8h_1a3283605cba3118e42141a52664a7a69e" compoundref="arc__cache_8h" startline="84" endline="87">icache_available</references>
@@ -598,7 +598,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="177" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="177" bodyend="180"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="177" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="177" bodyend="180"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga0a71e31c0c9c908d33185905eb042010" compoundref="arc_8h" startline="127">AUX_BCR_D_CACHE</references>
         <referencedby refid="arc__cache_8h_1a59d602ce2dc5882749c4efb11d4afd45" compoundref="arc__cache_8c" startline="200" endline="230">dcache_invalidate_mlines</referencedby>
         <referencedby refid="arc__cache_8h_1a22809d879f9791c65001e86ff559434c" compoundref="arc__cache_8c" startline="239" endline="268">dcache_flush_mlines</referencedby>
@@ -629,7 +629,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="185" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="185" bodyend="195"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="185" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="185" bodyend="195"/>
         <references refid="arc__cache_8h_1a2865fcd615aecb1cfea37f209a17f0b6" compoundref="arc__cache_8h" startline="177" endline="180">dcache_available</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga1b53815dcb6c4d2a51d526fec3c595ce" compoundref="arc_8h" startline="389">AUX_DC_IVDC</references>
@@ -661,7 +661,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="201" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="201" bodyend="208"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="201" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="201" bodyend="208"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gafa3d5fee50e1f5347c7b8bc9c81f456a" compoundref="arc_8h" startline="392">AUX_DC_IVDL</references>
         <references refid="arc__cache_8h_1a2865fcd615aecb1cfea37f209a17f0b6" compoundref="arc__cache_8h" startline="177" endline="180">dcache_available</references>
       </memberdef>
@@ -688,7 +688,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="214" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="214" bodyend="218"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="214" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="214" bodyend="218"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="arc__cache_8h_1a2865fcd615aecb1cfea37f209a17f0b6" compoundref="arc__cache_8h" startline="177" endline="180">dcache_available</references>
         <referencedby refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" compoundref="arc__cache_8c" startline="384" endline="414">arc_cache_init</referencedby>
@@ -707,7 +707,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="223" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="223" bodyend="227"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="223" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="223" bodyend="227"/>
         <references refid="arc__cache_8h_1a2865fcd615aecb1cfea37f209a17f0b6" compoundref="arc__cache_8h" startline="177" endline="180">dcache_available</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="arc__cache_8h_1a5c1a63346f607c480d88d68b40ac3cef" compoundref="arc__cache_8h" startline="64">DC_CTRL_DC_DISABLE</references>
@@ -726,7 +726,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="232" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="232" bodyend="242"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="232" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="232" bodyend="242"/>
         <references refid="arc__cache_8h_1a2865fcd615aecb1cfea37f209a17f0b6" compoundref="arc__cache_8h" startline="177" endline="180">dcache_available</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga600e9b61d799439a05b8794215d05b3f" compoundref="arc_8h" startline="393">AUX_DC_FLSH</references>
@@ -757,7 +757,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="248" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="248" bodyend="258"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="248" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="248" bodyend="258"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga236b3dc26d0b964410b6761f9823b805" compoundref="arc_8h" startline="394">AUX_DC_FLDL</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
@@ -790,7 +790,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="265" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="265" bodyend="274"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="265" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="265" bodyend="274"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga4ee8b95b2c3572a96d3e2d84008a003c" compoundref="arc_8h" startline="391">AUX_DC_LDL</references>
         <references refid="arc__cache_8h_1acb1e748794870e28d437a192b88b60b3" compoundref="arc__cache_8h" startline="72">DC_CTRL_OP_SUCCEEDED</references>
@@ -820,7 +820,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="280" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" bodystart="280" bodyend="288"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="280" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" bodystart="280" bodyend="288"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="arc__cache_8h_1ab6018a2516d040b1f7cab03b37883eb1" compoundref="arc__cache_8h" startline="71">DC_CTRL_INDIRECT_ACCESS</references>
         <references refid="arc__cache_8h_1a2865fcd615aecb1cfea37f209a17f0b6" compoundref="arc__cache_8h" startline="177" endline="180">dcache_available</references>
@@ -863,7 +863,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="300" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="56" bodyend="83"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="300" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="56" bodyend="83"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga23c848b7d154e5e2fbb21679bb15bcd0" compoundref="arc_8h" startline="384">AUX_IC_IVIL</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
         <references refid="arc__exception_8c_1acb9f94a852339140f2d1d4ab8411c9c3" compoundref="arc__exception_8c" startline="736" endline="739">cpu_unlock_restore</references>
@@ -904,7 +904,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="301" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="92" bodyend="122"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="301" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="92" bodyend="122"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga3039c4ecba760b2b9495d56bee1d35bf" compoundref="arc_8h" startline="383">AUX_IC_LIL</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
@@ -959,7 +959,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="302" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="132" bodyend="144"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="302" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="132" bodyend="144"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga912c5d0798a4c495486123dfa5e67976" compoundref="arc_8h" startline="388">AUX_IC_DATA</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga764928917e2b3e891231ceb1cb67dc94" compoundref="arc_8h" startline="385">AUX_IC_RAM_ADDR</references>
@@ -1014,7 +1014,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="303" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="154" bodyend="166"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="303" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="154" bodyend="166"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga912c5d0798a4c495486123dfa5e67976" compoundref="arc_8h" startline="388">AUX_IC_DATA</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga764928917e2b3e891231ceb1cb67dc94" compoundref="arc_8h" startline="385">AUX_IC_RAM_ADDR</references>
@@ -1069,7 +1069,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="304" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="176" bodyend="191"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="304" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="176" bodyend="191"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" compoundref="arc_8h" startline="382">AUX_IC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga912c5d0798a4c495486123dfa5e67976" compoundref="arc_8h" startline="388">AUX_IC_DATA</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga764928917e2b3e891231ceb1cb67dc94" compoundref="arc_8h" startline="385">AUX_IC_RAM_ADDR</references>
@@ -1113,7 +1113,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="305" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="200" bodyend="230"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="305" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="200" bodyend="230"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gafa3d5fee50e1f5347c7b8bc9c81f456a" compoundref="arc_8h" startline="392">AUX_DC_IVDL</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
@@ -1156,7 +1156,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="306" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="239" bodyend="268"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="306" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="239" bodyend="268"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga236b3dc26d0b964410b6761f9823b805" compoundref="arc_8h" startline="394">AUX_DC_FLDL</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
@@ -1199,7 +1199,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="307" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="277" bodyend="308"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="307" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="277" bodyend="308"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga4ee8b95b2c3572a96d3e2d84008a003c" compoundref="arc_8h" startline="391">AUX_DC_LDL</references>
         <references refid="arc__exception_8c_1a8801f275b2a194a99f6d673a0e72cd32" compoundref="arc__exception_8c" startline="726" endline="729">cpu_lock_save</references>
@@ -1254,7 +1254,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="308" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="318" bodyend="330"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="308" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="318" bodyend="330"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaaacbef93c439e5fac4830959aac4fa92" compoundref="arc_8h" startline="398">AUX_DC_DATA</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabdb8bb15de43a7ed71160bd32e1b2c44" compoundref="arc_8h" startline="395">AUX_DC_RAM_ADDR</references>
@@ -1309,7 +1309,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="309" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="340" bodyend="352"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="309" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="340" bodyend="352"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaaacbef93c439e5fac4830959aac4fa92" compoundref="arc_8h" startline="398">AUX_DC_DATA</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabdb8bb15de43a7ed71160bd32e1b2c44" compoundref="arc_8h" startline="395">AUX_DC_RAM_ADDR</references>
@@ -1364,7 +1364,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="310" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="362" bodyend="377"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="310" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="362" bodyend="377"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" compoundref="arc_8h" startline="390">AUX_DC_CTRL</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaaacbef93c439e5fac4830959aac4fa92" compoundref="arc_8h" startline="398">AUX_DC_DATA</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabdb8bb15de43a7ed71160bd32e1b2c44" compoundref="arc_8h" startline="395">AUX_DC_RAM_ADDR</references>
@@ -1389,7 +1389,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h" line="311" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/arc/arc_cache.c" bodystart="384" bodyend="414"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h" line="311" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_cache.c" bodystart="384" bodyend="414"/>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga0a71e31c0c9c908d33185905eb042010" compoundref="arc_8h" startline="127">AUX_BCR_D_CACHE</references>
         <references refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga9e91cea4c263ee77386aaedab738171d" compoundref="arc_8h" startline="131">AUX_BCR_I_CACHE</references>
         <references refid="arc__cache_8h_1a8dcb9d71ecace8c648c4b525a8bc6190" compoundref="arc__cache_8h" startline="68">DC_CTRL_DISABLE_FLUSH_LOCKED</references>
@@ -1607,18 +1607,18 @@
 <codeline lineno="293"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="295"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="300"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a6f0c3d1cb5e164571bf826622a20c65e" kindref="member">icache_invalidate_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a48f9fb90008431f06fcb385d9f67fc8c" kindref="member">icache_lock_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a3efe68d04d6fd03795066a79f032059f" kindref="member">icache_direct_write</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>tag,<sp/>uint32_t<sp/>data);</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a6444cdd20acd74647d4959dea9a2dd36" kindref="member">icache_direct_read</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a438d802e1198870ae27d3ff22512ef20" kindref="member">icache_indirect_read</ref>(uint32_t<sp/>mem_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a59d602ce2dc5882749c4efb11d4afd45" kindref="member">dcache_invalidate_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a22809d879f9791c65001e86ff559434c" kindref="member">dcache_flush_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a04d4e5c837e79cc0eaffe1e462b744bc" kindref="member">dcache_lock_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1abfdca8296f41bd31cc9e5643a8d24e32" kindref="member">dcache_direct_write</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>tag,<sp/>uint32_t<sp/>data);</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a10472449765a96cb2eeab9fb89f188da" kindref="member">dcache_direct_read</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8h_1a9c6a7e168e8daf46938f6c8a63318e1f" kindref="member">dcache_indirect_read</ref>(uint32_t<sp/>mem_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="arc__cache_8h_1a6bda12adc92ba421f24f6e836051db9c" kindref="member">arc_cache_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="300"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a6f0c3d1cb5e164571bf826622a20c65e" kindref="member">icache_invalidate_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a48f9fb90008431f06fcb385d9f67fc8c" kindref="member">icache_lock_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a3efe68d04d6fd03795066a79f032059f" kindref="member">icache_direct_write</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>tag,<sp/>uint32_t<sp/>data);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a6444cdd20acd74647d4959dea9a2dd36" kindref="member">icache_direct_read</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a438d802e1198870ae27d3ff22512ef20" kindref="member">icache_indirect_read</ref>(uint32_t<sp/>mem_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a59d602ce2dc5882749c4efb11d4afd45" kindref="member">dcache_invalidate_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a22809d879f9791c65001e86ff559434c" kindref="member">dcache_flush_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a04d4e5c837e79cc0eaffe1e462b744bc" kindref="member">dcache_lock_mlines</ref>(uint32_t<sp/>start_addr,<sp/>uint32_t<sp/>size);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1abfdca8296f41bd31cc9e5643a8d24e32" kindref="member">dcache_direct_write</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>tag,<sp/>uint32_t<sp/>data);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a10472449765a96cb2eeab9fb89f188da" kindref="member">dcache_direct_read</ref>(uint32_t<sp/>cache_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>int32_t<sp/><ref refid="arc__cache_8c_1a9c6a7e168e8daf46938f6c8a63318e1f" kindref="member">dcache_indirect_read</ref>(uint32_t<sp/>mem_addr,<sp/>uint32_t<sp/>*tag,<sp/>uint32_t<sp/>*data);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="arc__cache_8c_1a6bda12adc92ba421f24f6e836051db9c" kindref="member">arc_cache_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"></highlight></codeline>
 <codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
 <codeline lineno="314"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
@@ -1626,6 +1626,6 @@
 <codeline lineno="316"><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="318"><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_ARC_HAL_CACHE_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/inc/arc/arc_cache.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/inc/arc/arc_cache.h"/>
   </compounddef>
 </doxygen>

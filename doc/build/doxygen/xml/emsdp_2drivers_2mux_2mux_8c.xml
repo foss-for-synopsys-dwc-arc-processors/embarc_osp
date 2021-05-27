@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsdp_2drivers_2mux_2mux_8c" kind="file">
     <compoundname>emsdp/drivers/mux/mux.c</compoundname>
     <includes refid="emsdp_2drivers_2mux_2mux__hal_8h" local="yes">mux_hal.h</includes>
@@ -9,25 +9,43 @@
     <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
     <includes refid="emsdp_8h" local="yes">emsdp/emsdp.h</includes>
     <incdepgraph>
-      <node id="5884">
-        <label>drivers/ip/designware/spi/dw_spi_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_source"/>
-        <childnode refid="5885" relation="include">
+      <node id="5907">
+        <label>drivers/ip/subsystem/gpio/dfss_gpio_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8h_source"/>
+        <childnode refid="5906" relation="include">
+        </childnode>
+        <childnode refid="5894" relation="include">
         </childnode>
       </node>
       <node id="5876">
         <label>stdbool.h</label>
       </node>
-      <node id="5895">
-        <label>drivers/ip/designware/sdio/dw_sdio_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
-        <childnode refid="5896" relation="include">
+      <node id="5913">
+        <label>drivers/ntshell/ntshell_io.h</label>
+        <link refid="emsdp_2drivers_2ntshell_2ntshell__io_8h"/>
+        <childnode refid="5914" relation="include">
+        </childnode>
+        <childnode refid="5916" relation="include">
         </childnode>
       </node>
-      <node id="5911">
-        <label>drivers/ip/subsystem/i2s/dfss_i2s_obj.h</label>
-        <link refid="dfss__i2s__obj_8h_source"/>
-        <childnode refid="5912" relation="include">
+      <node id="5910">
+        <label>ip/ip_hal/inc/dev_iic.h</label>
+        <link refid="dev__iic_8h"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5923">
+        <label>common/emsdp_io.h</label>
+        <link refid="emsdp__io_8h_source"/>
+        <childnode refid="5894" relation="include">
+        </childnode>
+      </node>
+      <node id="5903">
+        <label>dw_pwm_timer.h</label>
+        <link refid="dw__pwm__timer_8h_source"/>
+        <childnode refid="5904" relation="include">
+        </childnode>
+        <childnode refid="5888" relation="include">
         </childnode>
       </node>
       <node id="5869">
@@ -46,6 +64,12 @@
         <childnode refid="5882" relation="include">
         </childnode>
       </node>
+      <node id="5904">
+        <label>dev_pwm_timer.h</label>
+        <link refid="dev__pwm__timer_8h"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
       <node id="5871">
         <label>mux.h</label>
         <link refid="emsdp_2drivers_2mux_2mux_8h_source"/>
@@ -54,53 +78,8 @@
         <childnode refid="5877" relation="include">
         </childnode>
       </node>
-      <node id="5902">
-        <label>drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_source"/>
-        <childnode refid="5903" relation="include">
-        </childnode>
-      </node>
       <node id="5915">
         <label>ntshell_task.h</label>
-      </node>
-      <node id="5873">
-        <label>stdint.h</label>
-      </node>
-      <node id="5890">
-        <label>dw_uart.h</label>
-        <link refid="dw__uart_8h_source"/>
-        <childnode refid="5891" relation="include">
-        </childnode>
-        <childnode refid="5888" relation="include">
-        </childnode>
-      </node>
-      <node id="5899">
-        <label>dw_trng.h</label>
-        <link refid="dw__trng_8h_source"/>
-        <childnode refid="5900" relation="include">
-        </childnode>
-        <childnode refid="5888" relation="include">
-        </childnode>
-      </node>
-      <node id="5904">
-        <label>dev_pwm_timer.h</label>
-        <link refid="dev__pwm__timer_8h"/>
-        <childnode refid="5887" relation="include">
-        </childnode>
-      </node>
-      <node id="5891">
-        <label>dev_uart.h</label>
-        <link refid="dev__uart_8h"/>
-        <childnode refid="5887" relation="include">
-        </childnode>
-      </node>
-      <node id="5917">
-        <label>drivers/sdcard/sdcard.h</label>
-        <link refid="emsdp_2drivers_2sdcard_2sdcard_8h_source"/>
-        <childnode refid="5872" relation="include">
-        </childnode>
-        <childnode refid="5918" relation="include">
-        </childnode>
       </node>
       <node id="5921">
         <label>dev_wnic.h</label>
@@ -108,18 +87,19 @@
         <childnode refid="5887" relation="include">
         </childnode>
       </node>
-      <node id="5878">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="5873" relation="include">
-        </childnode>
-        <childnode refid="5879" relation="include">
+      <node id="5873">
+        <label>stdint.h</label>
+      </node>
+      <node id="5883">
+        <label>arc_em.h</label>
+        <link refid="arc__em_8h"/>
+        <childnode refid="5880" relation="include">
         </childnode>
       </node>
-      <node id="5892">
-        <label>drivers/ip/designware/gpio/dw_gpio_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h_source"/>
-        <childnode refid="5893" relation="include">
+      <node id="5902">
+        <label>drivers/ip/designware/pwm_timer/dw_pwm_timer_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2pwm__timer_2dw__pwm__timer__obj_8h_source"/>
+        <childnode refid="5903" relation="include">
         </childnode>
       </node>
       <node id="5885">
@@ -130,187 +110,18 @@
         <childnode refid="5888" relation="include">
         </childnode>
       </node>
-      <node id="5875">
-        <label>stddef.h</label>
-      </node>
-      <node id="5920">
-        <label>drivers/pmwifi/pmwifi.h</label>
-        <link refid="emsdp_2drivers_2pmwifi_2pmwifi_8h_source"/>
-        <childnode refid="5921" relation="include">
-        </childnode>
-      </node>
-      <node id="5908">
-        <label>drivers/ip/subsystem/uart/dfss_uart_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8h_source"/>
-        <childnode refid="5906" relation="include">
-        </childnode>
-        <childnode refid="5891" relation="include">
-        </childnode>
-      </node>
-      <node id="5883">
-        <label>arc_em.h</label>
-        <link refid="arc__em_8h"/>
-        <childnode refid="5880" relation="include">
-        </childnode>
-      </node>
-      <node id="5887">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="5873" relation="include">
-        </childnode>
-      </node>
-      <node id="5909">
-        <label>drivers/ip/subsystem/iic/dfss_iic_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8h_source"/>
-        <childnode refid="5906" relation="include">
-        </childnode>
-        <childnode refid="5910" relation="include">
-        </childnode>
-      </node>
-      <node id="5879">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
+      <node id="5917">
+        <label>drivers/sdcard/sdcard.h</label>
+        <link refid="emsdp_2drivers_2sdcard_2sdcard_8h_source"/>
         <childnode refid="5872" relation="include">
         </childnode>
-      </node>
-      <node id="5874">
-        <label>limits.h</label>
-      </node>
-      <node id="5898">
-        <label>drivers/ip/designware/trng/dw_trng_obj.h</label>
-        <link refid="dw__trng__obj_8h_source"/>
-        <childnode refid="5899" relation="include">
-        </childnode>
-        <childnode refid="5901" relation="include">
-        </childnode>
-      </node>
-      <node id="5924">
-        <label>emsdp_hardware.h</label>
-        <link refid="emsdp__hardware_8h_source"/>
-        <childnode refid="5881" relation="include">
-        </childnode>
-        <childnode refid="5925" relation="include">
-        </childnode>
-        <childnode refid="5926" relation="include">
-        </childnode>
-      </node>
-      <node id="5926">
-        <label>board_emsdp.h</label>
-      </node>
-      <node id="5907">
-        <label>drivers/ip/subsystem/gpio/dfss_gpio_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2subsystem_2gpio_2dfss__gpio__obj_8h_source"/>
-        <childnode refid="5906" relation="include">
-        </childnode>
-        <childnode refid="5894" relation="include">
-        </childnode>
-      </node>
-      <node id="5877">
-        <label>dev_pinmux.h</label>
-        <link refid="dev__pinmux_8h_source"/>
-        <childnode refid="5872" relation="include">
-        </childnode>
-      </node>
-      <node id="5894">
-        <label>dev_gpio.h</label>
-        <link refid="dev__gpio_8h"/>
-        <childnode refid="5887" relation="include">
-        </childnode>
-      </node>
-      <node id="5880">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="5881" relation="include">
-        </childnode>
-      </node>
-      <node id="5916">
-        <label>ntshell_io_netconn.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
-        <childnode refid="5872" relation="include">
-        </childnode>
-        <childnode refid="5915" relation="include">
-        </childnode>
-      </node>
-      <node id="5870">
-        <label>mux_hal.h</label>
-        <link refid="emsdp_2drivers_2mux_2mux__hal_8h_source"/>
-      </node>
-      <node id="5914">
-        <label>ntshell_io_uart.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__uart_8h"/>
-        <childnode refid="5872" relation="include">
-        </childnode>
-        <childnode refid="5915" relation="include">
+        <childnode refid="5918" relation="include">
         </childnode>
       </node>
       <node id="5889">
         <label>drivers/ip/designware/uart/dw_uart_obj.h</label>
         <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_source"/>
         <childnode refid="5890" relation="include">
-        </childnode>
-      </node>
-      <node id="5913">
-        <label>drivers/ntshell/ntshell_io.h</label>
-        <link refid="emsdp_2drivers_2ntshell_2ntshell__io_8h"/>
-        <childnode refid="5914" relation="include">
-        </childnode>
-        <childnode refid="5916" relation="include">
-        </childnode>
-      </node>
-      <node id="5906">
-        <label>io_config.h</label>
-      </node>
-      <node id="5900">
-        <label>dev_trng.h</label>
-        <link refid="dev__trng_8h_source"/>
-        <childnode refid="5887" relation="include">
-        </childnode>
-      </node>
-      <node id="5922">
-        <label>common/emsdp_timer.h</label>
-        <link refid="emsdp__timer_8h_source"/>
-        <childnode refid="5872" relation="include">
-        </childnode>
-      </node>
-      <node id="5893">
-        <label>dw_gpio.h</label>
-        <link refid="dw__gpio_8h_source"/>
-        <childnode refid="5894" relation="include">
-        </childnode>
-        <childnode refid="5888" relation="include">
-        </childnode>
-      </node>
-      <node id="5919">
-        <label>ff_diskio.h</label>
-      </node>
-      <node id="5881">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="5901">
-        <label>dw_nist_trng.h</label>
-        <link refid="dw__nist__trng_8h_source"/>
-        <childnode refid="5900" relation="include">
-        </childnode>
-        <childnode refid="5888" relation="include">
-        </childnode>
-      </node>
-      <node id="5918">
-        <label>sdcard_sdio.h</label>
-        <link refid="emsdp_2drivers_2sdcard_2sdcard__sdio_8h_source"/>
-        <childnode refid="5919" relation="include">
-        </childnode>
-      </node>
-      <node id="5912">
-        <label>ip/ip_hal/inc/dev_i2s.h</label>
-        <link refid="dev__i2s_8h"/>
-        <childnode refid="5887" relation="include">
-        </childnode>
-      </node>
-      <node id="5897">
-        <label>dev_sdio.h</label>
-        <link refid="dev__sdio_8h_source"/>
-        <childnode refid="5887" relation="include">
         </childnode>
       </node>
       <node id="5872">
@@ -323,6 +134,113 @@
         <childnode refid="5875" relation="include">
         </childnode>
         <childnode refid="5876" relation="include">
+        </childnode>
+      </node>
+      <node id="5880">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="5881" relation="include">
+        </childnode>
+      </node>
+      <node id="5924">
+        <label>emsdp_hardware.h</label>
+        <link refid="emsdp__hardware_8h_source"/>
+        <childnode refid="5881" relation="include">
+        </childnode>
+        <childnode refid="5925" relation="include">
+        </childnode>
+        <childnode refid="5926" relation="include">
+        </childnode>
+      </node>
+      <node id="5892">
+        <label>drivers/ip/designware/gpio/dw_gpio_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8h_source"/>
+        <childnode refid="5893" relation="include">
+        </childnode>
+      </node>
+      <node id="5911">
+        <label>drivers/ip/subsystem/i2s/dfss_i2s_obj.h</label>
+        <link refid="dfss__i2s__obj_8h_source"/>
+        <childnode refid="5912" relation="include">
+        </childnode>
+      </node>
+      <node id="5875">
+        <label>stddef.h</label>
+      </node>
+      <node id="5900">
+        <label>dev_trng.h</label>
+        <link refid="dev__trng_8h_source"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5897">
+        <label>dev_sdio.h</label>
+        <link refid="dev__sdio_8h_source"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5891">
+        <label>dev_uart.h</label>
+        <link refid="dev__uart_8h"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5874">
+        <label>limits.h</label>
+      </node>
+      <node id="5881">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="5922">
+        <label>common/emsdp_timer.h</label>
+        <link refid="emsdp__timer_8h_source"/>
+        <childnode refid="5872" relation="include">
+        </childnode>
+      </node>
+      <node id="5918">
+        <label>sdcard_sdio.h</label>
+        <link refid="emsdp_2drivers_2sdcard_2sdcard__sdio_8h_source"/>
+        <childnode refid="5919" relation="include">
+        </childnode>
+      </node>
+      <node id="5908">
+        <label>drivers/ip/subsystem/uart/dfss_uart_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2uart_2dfss__uart__obj_8h_source"/>
+        <childnode refid="5906" relation="include">
+        </childnode>
+        <childnode refid="5891" relation="include">
+        </childnode>
+      </node>
+      <node id="5926">
+        <label>board_emsdp.h</label>
+      </node>
+      <node id="5899">
+        <label>dw_trng.h</label>
+        <link refid="dw__trng_8h_source"/>
+        <childnode refid="5900" relation="include">
+        </childnode>
+        <childnode refid="5888" relation="include">
+        </childnode>
+      </node>
+      <node id="5914">
+        <label>ntshell_io_uart.h</label>
+        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__uart_8h"/>
+        <childnode refid="5872" relation="include">
+        </childnode>
+        <childnode refid="5915" relation="include">
+        </childnode>
+      </node>
+      <node id="5886">
+        <label>dev_spi.h</label>
+        <link refid="dev__spi_8h"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5894">
+        <label>dev_gpio.h</label>
+        <link refid="dev__gpio_8h"/>
+        <childnode refid="5887" relation="include">
         </childnode>
       </node>
       <node id="5882">
@@ -369,42 +287,34 @@
         <childnode refid="5924" relation="include">
         </childnode>
       </node>
-      <node id="5905">
-        <label>drivers/ip/subsystem/spi/dfss_spi_obj.h</label>
-        <link refid="emsdp_2drivers_2ip_2subsystem_2spi_2dfss__spi__obj_8h_source"/>
-        <childnode refid="5906" relation="include">
-        </childnode>
-        <childnode refid="5886" relation="include">
+      <node id="5895">
+        <label>drivers/ip/designware/sdio/dw_sdio_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8h_source"/>
+        <childnode refid="5896" relation="include">
         </childnode>
       </node>
-      <node id="5923">
-        <label>common/emsdp_io.h</label>
-        <link refid="emsdp__io_8h_source"/>
+      <node id="5893">
+        <label>dw_gpio.h</label>
+        <link refid="dw__gpio_8h_source"/>
         <childnode refid="5894" relation="include">
         </childnode>
-      </node>
-      <node id="5896">
-        <label>dw_sdio.h</label>
-        <link refid="dw__sdio_8h_source"/>
-        <childnode refid="5897" relation="include">
-        </childnode>
-        <childnode refid="5879" relation="include">
+        <childnode refid="5888" relation="include">
         </childnode>
       </node>
-      <node id="5925">
-        <label>apexextensions.h</label>
-      </node>
-      <node id="5886">
-        <label>dev_spi.h</label>
-        <link refid="dev__spi_8h"/>
-        <childnode refid="5887" relation="include">
+      <node id="5916">
+        <label>ntshell_io_netconn.h</label>
+        <link refid="emsdp_2drivers_2ntshell_2ntshell__io__netconn_8h"/>
+        <childnode refid="5872" relation="include">
+        </childnode>
+        <childnode refid="5915" relation="include">
         </childnode>
       </node>
-      <node id="5910">
-        <label>ip/ip_hal/inc/dev_iic.h</label>
-        <link refid="dev__iic_8h"/>
-        <childnode refid="5887" relation="include">
-        </childnode>
+      <node id="5870">
+        <label>mux_hal.h</label>
+        <link refid="emsdp_2drivers_2mux_2mux__hal_8h_source"/>
+      </node>
+      <node id="5906">
+        <label>io_config.h</label>
       </node>
       <node id="5888">
         <label>arc_exception.h</label>
@@ -416,10 +326,100 @@
         <childnode refid="5879" relation="include">
         </childnode>
       </node>
-      <node id="5903">
-        <label>dw_pwm_timer.h</label>
-        <link refid="dw__pwm__timer_8h_source"/>
-        <childnode refid="5904" relation="include">
+      <node id="5877">
+        <label>dev_pinmux.h</label>
+        <link refid="dev__pinmux_8h_source"/>
+        <childnode refid="5872" relation="include">
+        </childnode>
+      </node>
+      <node id="5878">
+        <label>embARC_error.h</label>
+        <link refid="emb_a_r_c__error_8h"/>
+        <childnode refid="5873" relation="include">
+        </childnode>
+        <childnode refid="5879" relation="include">
+        </childnode>
+      </node>
+      <node id="5920">
+        <label>drivers/pmwifi/pmwifi.h</label>
+        <link refid="emsdp_2drivers_2pmwifi_2pmwifi_8h_source"/>
+        <childnode refid="5921" relation="include">
+        </childnode>
+      </node>
+      <node id="5896">
+        <label>dw_sdio.h</label>
+        <link refid="dw__sdio_8h_source"/>
+        <childnode refid="5897" relation="include">
+        </childnode>
+        <childnode refid="5879" relation="include">
+        </childnode>
+      </node>
+      <node id="5919">
+        <label>ff_diskio.h</label>
+      </node>
+      <node id="5905">
+        <label>drivers/ip/subsystem/spi/dfss_spi_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2spi_2dfss__spi__obj_8h_source"/>
+        <childnode refid="5906" relation="include">
+        </childnode>
+        <childnode refid="5886" relation="include">
+        </childnode>
+      </node>
+      <node id="5901">
+        <label>dw_nist_trng.h</label>
+        <link refid="dw__nist__trng_8h_source"/>
+        <childnode refid="5900" relation="include">
+        </childnode>
+        <childnode refid="5888" relation="include">
+        </childnode>
+      </node>
+      <node id="5884">
+        <label>drivers/ip/designware/spi/dw_spi_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_source"/>
+        <childnode refid="5885" relation="include">
+        </childnode>
+      </node>
+      <node id="5912">
+        <label>ip/ip_hal/inc/dev_i2s.h</label>
+        <link refid="dev__i2s_8h"/>
+        <childnode refid="5887" relation="include">
+        </childnode>
+      </node>
+      <node id="5898">
+        <label>drivers/ip/designware/trng/dw_trng_obj.h</label>
+        <link refid="dw__trng__obj_8h_source"/>
+        <childnode refid="5899" relation="include">
+        </childnode>
+        <childnode refid="5901" relation="include">
+        </childnode>
+      </node>
+      <node id="5925">
+        <label>apexextensions.h</label>
+      </node>
+      <node id="5887">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="5873" relation="include">
+        </childnode>
+      </node>
+      <node id="5909">
+        <label>drivers/ip/subsystem/iic/dfss_iic_obj.h</label>
+        <link refid="emsdp_2drivers_2ip_2subsystem_2iic_2dfss__iic__obj_8h_source"/>
+        <childnode refid="5906" relation="include">
+        </childnode>
+        <childnode refid="5910" relation="include">
+        </childnode>
+      </node>
+      <node id="5879">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="5872" relation="include">
+        </childnode>
+      </node>
+      <node id="5890">
+        <label>dw_uart.h</label>
+        <link refid="dw__uart_8h_source"/>
+        <childnode refid="5891" relation="include">
         </childnode>
         <childnode refid="5888" relation="include">
         </childnode>
@@ -437,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="37" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="37" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="37" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -456,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="40" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="40" bodyend="43"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="40" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1gab7f64addda6f60359e9382320e696861" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -472,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="46" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="46" bodyend="49"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="46" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1a5593f5619da51cdfa0e28a168f5a4680" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -489,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="52" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="52" bodyend="55"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="52" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1ae97e399b99bd4cdf51669a735f7eb772" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -505,7 +505,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="58" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="58" bodyend="61"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="58" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1a3281588ba1b5ca8be5f9a2ad28bd918e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -522,7 +522,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="64" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="64" bodyend="67"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="64" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="64" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1afee490e59dde8acf2e78acc76d575971" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -538,7 +538,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="70" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="70" bodyend="73"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="70" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="70" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1a8fc8550242f1a2dee25a8b1612f6bce1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -563,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="75" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="75" bodyend="142"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="75" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="75" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1aea9c8745e17c7340aac1b83ca78f0bd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -580,7 +580,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="144" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="144" bodyend="149"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="144" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="144" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1a8981ef574064d7afe0b09b193834773c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="151" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="151" bodyend="242"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="151" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="151" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1aed6d84e2f298582850bade46596b82fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -622,7 +622,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="244" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="244" bodyend="251"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="244" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="244" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1af4d73821b689e641fe3bea3c1ee3666d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -639,7 +639,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="253" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="253" bodyend="260"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="253" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="253" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1a89a57c39917f80eb6379d0d353780729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -656,7 +656,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="262" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="262" bodyend="269"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="262" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="262" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2mux_2mux_8c_1adbb2990c863c9961339946c92f2fc2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -672,7 +672,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" line="271" column="1" bodyfile="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="271" bodyend="303"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" line="271" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c" bodystart="271" bodyend="303"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -972,6 +972,6 @@
 <codeline lineno="303"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/board/emsdp/drivers/mux/mux.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/mux/mux.c"/>
   </compounddef>
 </doxygen>

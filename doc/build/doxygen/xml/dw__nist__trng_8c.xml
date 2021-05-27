@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="dw__nist__trng_8c" kind="file">
     <compoundname>dw_nist_trng.c</compoundname>
     <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
@@ -14,31 +14,17 @@
       <node id="3048">
         <label>stdint.h</label>
       </node>
-      <node id="3052">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
+      <node id="3047">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
         <childnode refid="3048" relation="include">
         </childnode>
-        <childnode refid="3053" relation="include">
+        <childnode refid="3049" relation="include">
         </childnode>
-      </node>
-      <node id="3050">
-        <label>stddef.h</label>
-      </node>
-      <node id="3060">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="3048" relation="include">
+        <childnode refid="3050" relation="include">
         </childnode>
-      </node>
-      <node id="3053">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3047" relation="include">
+        <childnode refid="3051" relation="include">
         </childnode>
-      </node>
-      <node id="3049">
-        <label>limits.h</label>
       </node>
       <node id="3055">
         <label>arc.h</label>
@@ -46,8 +32,8 @@
         <childnode refid="3056" relation="include">
         </childnode>
       </node>
-      <node id="3057">
-        <label>string.h</label>
+      <node id="3050">
+        <label>stddef.h</label>
       </node>
       <node id="3059">
         <label>dev_trng.h</label>
@@ -55,9 +41,33 @@
         <childnode refid="3060" relation="include">
         </childnode>
       </node>
+      <node id="3049">
+        <label>limits.h</label>
+      </node>
       <node id="3056">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
+      </node>
+      <node id="3057">
+        <label>string.h</label>
+      </node>
+      <node id="3054">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="3047" relation="include">
+        </childnode>
+        <childnode refid="3055" relation="include">
+        </childnode>
+        <childnode refid="3053" relation="include">
+        </childnode>
+      </node>
+      <node id="3052">
+        <label>embARC_error.h</label>
+        <link refid="emb_a_r_c__error_8h"/>
+        <childnode refid="3048" relation="include">
+        </childnode>
+        <childnode refid="3053" relation="include">
+        </childnode>
       </node>
       <node id="3046">
         <label>dw_nist_trng.c</label>
@@ -81,26 +91,16 @@
         <childnode refid="3054" relation="include">
         </childnode>
       </node>
-      <node id="3047">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
+      <node id="3060">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
         <childnode refid="3048" relation="include">
         </childnode>
-        <childnode refid="3049" relation="include">
-        </childnode>
-        <childnode refid="3050" relation="include">
-        </childnode>
-        <childnode refid="3051" relation="include">
-        </childnode>
       </node>
-      <node id="3054">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
+      <node id="3053">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
         <childnode refid="3047" relation="include">
-        </childnode>
-        <childnode refid="3055" relation="include">
-        </childnode>
-        <childnode refid="3053" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -172,22 +172,22 @@
 <codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DW_TRNG_CMD_RUN_KAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x8)</highlight></codeline>
 <codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DW_TRNG_CMD_ZEROIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xF)</highlight></codeline>
 <codeline lineno="63"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_unmask_reg_interrupt(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>mask){</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_unmask_reg_interrupt(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>mask){</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;IE<sp/>|=<sp/>mask;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_mask_reg_interrupt(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>mask){</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_mask_reg_interrupt(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>mask){</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;IE<sp/>&amp;=<sp/>~mask;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_wait_till_idle(DW_TRNG_REG_PTR<sp/>trng_reg){</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_wait_till_idle(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg){</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(trng_reg-&gt;stat.busy);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_cmd(<ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>trng_info_ptr,<sp/>uint32_t<sp/>cmd){</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_wait_till_idle(trng_reg_ptr);</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(cmd){</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_NOP:</highlight></codeline>
@@ -238,7 +238,7 @@
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_reseed(<ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>trng_info_ptr,<sp/>uint32_t<sp/>*nonce_buf){</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nonce_buf<sp/>!=<sp/>NULL){</highlight><highlight class="comment">//<sp/>Nonce<sp/>Reseed<sp/>cmd,<sp/>need<sp/>to<sp/>be<sp/>run<sp/>2~3<sp/>time<sp/>with<sp/>new<sp/>nonce<sp/>depending<sp/>on<sp/>chosen<sp/>security<sp/>algorithm</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>i;</highlight></codeline>
@@ -254,7 +254,7 @@
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
 <codeline lineno="146"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_get_rand(DW_TRNG_REG_PTR<sp/>trng_reg_ptr,<sp/>uint32_t<sp/>*data){</highlight><highlight class="comment">//read<sp/>from<sp/>rand0~3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_get_rand(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr,<sp/>uint32_t<sp/>*data){</highlight><highlight class="comment">//read<sp/>from<sp/>rand0~3</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(data<sp/>!=<sp/>NULL){</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[0]<sp/>=<sp/>trng_reg_ptr-&gt;RAND0;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[1]<sp/>=<sp/>trng_reg_ptr-&gt;RAND1;</highlight></codeline>
@@ -268,7 +268,7 @@
 <codeline lineno="159"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_iic_mst_int_read(<ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref><sp/>trng_obj){</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>trng_info_ptr<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__buffer" kindref="compound">DEV_BUFFER</ref><sp/>*buf_ptr<sp/>=<sp/>&amp;(trng_info_ptr-&gt;<ref refid="structdev__trng__info_1afd5b2fc259a627ef433d3918dbebe9d8" kindref="member">out_buf</ref>);</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>*p_buf<sp/>=<sp/>(uint32_t<sp/>*)buf_ptr-&gt;<ref refid="structdev__buffer_1a9229a6df77f315674f8a9e08809f97c1" kindref="member">buf</ref>;</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
@@ -287,7 +287,7 @@
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>trng_info_ptr<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_TRNG_INFO_OBJECT(trng_info_ptr);</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg_ptr-&gt;smode.secure_en<sp/>=<sp/>1;</highlight><highlight class="comment">//enable<sp/>mission<sp/>mode<sp/>(secure)</highlight></codeline>
 <codeline lineno="187"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_disable_sys_interrupt(trng_info_ptr);</highlight></codeline>
@@ -308,7 +308,7 @@
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>trng_info_ptr<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_TRNG_INFO_OBJECT(trng_info_ptr);</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"></highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_mask_reg_interrupt(trng_reg_ptr,<sp/>DW_TRNG_INT_ALL);</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_disable_sys_interrupt(trng_info_ptr);</highlight></codeline>
@@ -368,7 +368,7 @@
 <codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>trng_info_ptr<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_TRNG_INFO_OBJECT(trng_info_ptr);</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"></highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(trng_info_ptr,<sp/>DW_TRNG_CMD_GEN_RANDOM);</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(data_buf<sp/>!=<sp/>NULL){</highlight></codeline>
@@ -389,7 +389,7 @@
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_TRNG_INFO_OBJECT(trng_info_ptr);</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>trng_ctrl_ptr<sp/>=<sp/>trng_info_ptr-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>trng_reg_ptr<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg_ptr<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_MORE_INFO,<sp/></highlight><highlight class="stringliteral">&quot;dw_trng_isr<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"></highlight></codeline>
 <codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(trng_reg_ptr-&gt;alarms.illegal_cmd_seq)<sp/>{</highlight></codeline>
@@ -435,6 +435,6 @@
 <codeline lineno="329"><highlight class="normal"></highlight></codeline>
 <codeline lineno="330"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>TRNG_VERSION_NIST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/home/travis/build/foss-for-synopsys-dwc-arc-processors/embarc_osp/device/ip/designware/trng/dw_nist_trng.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_nist_trng.c"/>
   </compounddef>
 </doxygen>

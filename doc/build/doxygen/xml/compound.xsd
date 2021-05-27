@@ -386,7 +386,6 @@
       <xsd:element name="rtfonly" type="xsd:string" />
       <xsd:element name="latexonly" type="xsd:string" />
       <xsd:element name="dot" type="xsd:string" />
-      <xsd:element name="msc" type="xsd:string" />
       <xsd:element name="anchor" type="docAnchorType" />
       <xsd:element name="formula" type="docFormulaType" />
       <xsd:element name="ref" type="docRefTextType" />
@@ -502,16 +501,13 @@
       <xsd:element name="table" type="docTableType" />
       <xsd:element name="heading" type="docHeadingType" />
       <xsd:element name="image" type="docImageType" />
-      <xsd:element name="dotfile" type="docFileType" />
-      <xsd:element name="mscfile" type="docFileType" />
-      <xsd:element name="diafile" type="docFileType" />
+      <xsd:element name="dotfile" type="docDotFileType" />
       <xsd:element name="toclist" type="docTocListType" />
       <xsd:element name="language" type="docLanguageType" />
       <xsd:element name="parameterlist" type="docParamListType" />
       <xsd:element name="xrefsect" type="docXRefSectType" />
       <xsd:element name="copydoc" type="docCopyType" />
       <xsd:element name="blockquote" type="docBlockQuoteType" />
-      <xsd:element name="parblock" type="docParBlockType" />
     </xsd:choice>
   </xsd:group>
 
@@ -631,7 +627,7 @@
     <xsd:attribute name="height" type="xsd:string" /> 
   </xsd:complexType>
 
-  <xsd:complexType name="docFileType" mixed="true">
+  <xsd:complexType name="docDotFileType" mixed="true">
     <xsd:group ref="docTitleCmdGroup" minOccurs="0" maxOccurs="unbounded" />
     <xsd:attribute name="name" type="xsd:string" /> 
   </xsd:complexType>
@@ -706,12 +702,6 @@
   </xsd:complexType>
 
   <xsd:complexType name="docBlockQuoteType">
-    <xsd:sequence>
-      <xsd:element name="para" type="docParaType" minOccurs="0" maxOccurs="unbounded" />
-    </xsd:sequence>
-  </xsd:complexType>
-
-  <xsd:complexType name="docParBlockType">
     <xsd:sequence>
       <xsd:element name="para" type="docParaType" minOccurs="0" maxOccurs="unbounded" />
     </xsd:sequence>
