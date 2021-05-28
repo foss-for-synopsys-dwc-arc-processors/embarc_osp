@@ -317,7 +317,7 @@ int main( void )
 	dmac_init(&udma);
 	ret = dma_prepare();
 	if (ret == DMA_CHN_INVALID) {
-		EMBARC_PRINTF("dma channel failed, exit.\r\n");
+		EMBARC_PRINTF("Test Error: dma channel failed, exit.\r\n");
 		return -1;
 	}
 	EMBARC_PRINTF("Performance benchmark timer overhead is %u cycles\r\n", perf_overhead());
@@ -369,5 +369,6 @@ int main( void )
 	}
 	dma_finish();
 	dmac_close();
+	EMBARC_PRINTF("uDMA Test Done\n");
 	return 0;
 }

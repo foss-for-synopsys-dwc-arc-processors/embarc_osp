@@ -113,7 +113,7 @@ int main(void)
 		timer_start(TIMER_0, TIMER_CTRL_W, 5*BOARD_CPU_CLOCK);
 	}
 
-	EMBARC_PRINTF("---end----\r\n");
+	EMBARC_PRINTF("Timer Test Done\n");
 	while(1);
 	return E_SYS;
 }
