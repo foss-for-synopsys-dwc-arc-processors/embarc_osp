@@ -10,7 +10,7 @@ else
 fi
 
 # identify OS source tree root directory
-export embARC_OSP_BASE=$( builtin cd "$( dirname "$dir" )" > /dev/null && pwd ${pwd_opt})
+export EMBARC_ROOT=$( builtin cd "$( dirname "$dir" )" > /dev/null && pwd ${pwd_opt})
 unset pwd_opt
 
 patches_required_folders="library,middleware,os"
@@ -28,7 +28,7 @@ echo ""
 exit_ok=0
 for patch_folder in ${patches_required_folder_list[@]}
 do
-	patch_scripts=$(find ${embARC_OSP_BASE}/${patch_folder} -maxdepth 2 -name "apply_embARC_patch.sh")
+	patch_scripts=$(find ${EMBARC_ROOT}/${patch_folder} -maxdepth 2 -name "apply_embARC_patch.sh")
 	for script in ${patch_scripts[@]}
 	do
 		patch_dir=$(dirname ${script})
