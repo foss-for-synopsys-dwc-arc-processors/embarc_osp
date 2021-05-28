@@ -1,8 +1,7 @@
 language: python
-python: 3.6
+python: 3.7
 
 sudo: required
-dist: trusty
 
 env:
   global:
@@ -22,7 +21,7 @@ env:
       --data @- << DATA\n{
       "body": "$COMMENT"
       }\nDATA'
-    - TOOLCHAIN_VER="latest"
+    - TOOLCHAIN_VER="2020.09"
     - OSP_ROOT="."
     - EXAMPLES="example/baremetal,example/freertos" 
 
@@ -39,14 +38,7 @@ branches:
 before_install:
   # setup git config 
   - git config --global user.name "embARC Automated Bot"
-  - git config --global user.email "Huaqi.Fang@synopsys.com"
-  - >
-    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-      diff=$(git diff FETCH_HEAD master .ci)
-      if [ "$diff" == "" ]; then
-        git checkout remotes/origin/master -- .ci
-      fi
-    fi
+  - git config --global user.email "jingru@synopsys.com"
   - bash .ci/before_install.sh
 
 after_success:
@@ -57,50 +49,34 @@ after_failure:
 
 script:
   - bash .ci/script.sh
-  
 
 matrix:
   include:
 
-    - env: NAME="sphinx_doc" TOOLCHAIN="sphinx" OSP_ROOT="none" TOOLCHAIN_VER="none"
+    - env: NAME="emsk-11-gnu-2020.09" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="11"
       os: linux
       compiler: gcc
 
-    - env: NAME="emsk-11-gnu-latest" TOOLCHAIN="gnu"  BOARD="emsk" BD_VER="11" EXPECTED=".ci/expected.ini" PARALLEL=8
+    - env: NAME="emsk-22-gnu-2020.09" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22"
       os: linux
       compiler: gcc
 
-    - env: NAME="emsk-22-gnu-latest" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="22" EXPECTED=".ci/expected.ini" PARALLEL=8
+    - env: NAME="emsk-23-gnu-2020.09" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23"
       os: linux
       compiler: gcc
 
-    - env: NAME="baremetal-emsk-23-gnu-latest" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" EXPECTED=".ci/expected.ini" PARALLEL=8 EXAMPLES="example/baremetal" 
+    - env: NAME="hsdk-gnu-2020.09" TOOLCHAIN="gnu" BOARD="hsdk"
       os: linux
       compiler: gcc
 
-    - env: NAME="freertos-emsk-23-gnu-latest" TOOLCHAIN="gnu" BOARD="emsk" BD_VER="23" EXPECTED=".ci/expected.ini" PARALLEL=8 EXAMPLES="example/freertos" 
+    - env: NAME="iotdk-gnu-2020.09" TOOLCHAIN="gnu" BOARD="iotdk"
       os: linux
       compiler: gcc
 
-    - env: NAME="hsdk-gnu-latest" TOOLCHAIN="gnu" BOARD="hsdk" EXPECTED=".ci/expected.ini"
+    - env: NAME="nsim-gnu-2020.09" TOOLCHAIN="gnu" BOARD="nsim"
       os: linux
       compiler: gcc
 
-    - env: NAME="iotdk-gnu-latest" TOOLCHAIN="gnu" BOARD="iotdk" EXPECTED=".ci/expected.ini"
+    - env: NAME="emsdp-gnu-2020.09" TOOLCHAIN="gnu" BOARD="emsdp"
       os: linux
       compiler: gcc
-
-    - env: NAME="nsim-gnu-latest" TOOLCHAIN="gnu"  BOARD="nsim" EXPECTED=".ci/expected.ini"
-      os: linux
-      compiler: gcc
-
-    - env: NAME="emsdp-gnu-latest" TOOLCHAIN="gnu"  BOARD="emsdp" EXPECTED=".ci/expected.ini"
-      os: linux
-      compiler: gcc
-
-notifications:
-  email:
-    recipients:
-      - jingru@synopsys.com
-    on_success: never
-    on_failure: always
