@@ -150,9 +150,9 @@ endif
 
 OPENOCD_EXECUTABLE_ROOT = $(dir $(shell $(WHICH) openocd))
 ifeq ($(OPENOCD_EXECUTABLE_ROOT), )
-	$(error "Tool openocd - openocd doesn't exist, please install it!")
+    $(info "Tool openocd - openocd doesn't exist, please install it!")
 else
-	OPENOCD_SCRIPT_ROOT = $(OPENOCD_EXECUTABLE_ROOT)/share/openocd/scripts
+    OPENOCD_SCRIPT_ROOT = $(OPENOCD_EXECUTABLE_ROOT)/share/openocd/scripts
 endif
 
 ## Don't change this line
