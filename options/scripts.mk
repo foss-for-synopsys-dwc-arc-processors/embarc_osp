@@ -60,6 +60,7 @@ ifeq "$(HOST_OS)" "Windows"
 	ECHO=$(DOS_CMD) echo
 	CP=copy /Y
 	MKD = $(DOS_CMD) mkdir
+	WHICH=where
 
 	IFEXISTDIR=$(DOS_CMD) if exist$(space)
 	ENDIFEXISTDIR=$(space)
@@ -87,6 +88,7 @@ ifeq "$(HOST_OS)" "Cygwin"
 	ECHO=echo
 	CP=cp -rf
 	MKD = mkdir -p
+	WHICH=where
 
 	IFEXISTDIR=[ ! -d$(space)
 	ENDIFEXISTDIR=$(space)] ||
@@ -114,6 +116,7 @@ ifeq "$(HOST_OS)" "GNU/Linux"
 	ECHO=echo
 	CP=cp
 	MKD = mkdir -p
+	WHICH=which
 
 	IFEXISTDIR=[ ! -d$(space)
 	ENDIFEXISTDIR=$(space)] ||
