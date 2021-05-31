@@ -22,6 +22,7 @@ DIG_NAME ?=
 override JTAG := $(strip $(JTAG))
 override DIG_NAME := $(strip $(DIG_NAME))
 override DIG_CHOICE := $(strip $(DIG_CHOICE))
+override DEBUG_CACHE_AUTOFLUSH := $(strip $(DEBUG_CACHE_AUTOFLUSH))
 
 ## Set Valid JTAG
 VALID_JTAG = $(call check_item_exist, $(JTAG), $(SUPPORTED_JTAGS))
@@ -72,6 +73,10 @@ else
 ifeq ($(VALID_JTAG), usb)
 	DBG_HW_FLAGS += -digilent $(DIGILENT_PROP) #-on=verify_download -on=spot_verify_download
 endif
+endif
+
+ifeq ($(DEBUG_CACHE_AUTOFLUSH), 0)
+	DBG_HW_FLAGS += -off=flush_dcache
 endif
 
 endif # end of mdb case #

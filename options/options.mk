@@ -100,6 +100,13 @@ DIG_SPEED ?=
 DEBUG ?= 1
 
 ##
+# DEBUG_CACHE_AUTOFLUSH to enable or disable automatic cache flush
+# 1 for enable, debugger will flush cache when halted (step debug or breakpoint, etc.)
+# 0 for disable
+##
+DEBUG_CACHE_AUTOFLUSH ?= 1
+
+##
 # generate map
 # 1 for enable
 # other for disable
