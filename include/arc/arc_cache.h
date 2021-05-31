@@ -59,7 +59,6 @@
  * \todo this definition will be reviewed.
  * @{
  */
-#define IC_CTRL_I
 #define DC_CTRL_DC_ENABLE                       0x0     /*!< enable data cache */
 #define DC_CTRL_DC_DISABLE                      0x1     /*!< disable data cache */
 #define DC_CTRL_INVALID_ONLY                    0x0     /*!< invalid data cache only */
@@ -71,6 +70,26 @@
 #define DC_CTRL_INDIRECT_ACCESS                 0x20    /*!< indirect access mode */
 #define DC_CTRL_OP_SUCCEEDED                    0x4     /*!< data cache operation succeeded */
 /** @} */
+
+/**
+ * @name Marco definitions for L2 cache control
+ * @todo These definition will be reviewed.
+ * @{
+ */
+#define SLC_CTRL_ENABLE               (0x0)            /*!< enable l2 cache */
+#define SLC_CTRL_DISABLE              (0x1)            /*!< disable l2 cahce */
+#define SLC_CTRL_OP_SUCCEEDED         (0x4)            /*!< cache operation succeeded */
+#define SLC_CTRL_IM                   (0x40)           /*!< Invalidated mode for invalidate command: 0 invalidate only; 1 invalid and flush */
+#define SLC_CTRL_ENABLE_FLUSH_LOCKED  (0x80)           /*!< the locked data cache can be flushed */
+#define SLC_CTRL_DISABLE_FLUSH_LOCKED (0x0)            /*!< the locked data cache cannot be flushed */
+#define SLC_CTRL_BUSY                 (0x100)          /*!< Busy status */
+#define SLC_CTRL_RGN_OP_INV           (0x200)          /*!< Region invalidate */
+#define SLC_CTRL_RGN_OP_PREFETCH      (0x400)          /*!< Region prefetch; the purpose is preloading L2 cache; if the line exists, it is skipped. */
+/** @} */
+
+#define SLC_OP_FLUSH            0
+#define SLC_OP_INV              1
+#define SLC_OP_PREFETCH         2
 
 #ifndef __ASSEMBLY__
 #ifdef __cplusplus
@@ -104,6 +123,15 @@ Inline void icache_enable(uint32_t icache_en_mask)
 }
 
 /**
+ * @fn void icache_enabled(void)
+ * @brief check if icache is enabled
+ */
+Inline uint32_t icache_enabled(void)
+{
+  return !(arc_aux_read(AUX_IC_CTRL)&IC_CTRL_IC_DISABLE);
+}
+
+/**
  * \brief  disable instruction cache
  */
 Inline void icache_disable(void)
@@ -134,6 +162,13 @@ Inline void icache_invalidate_line(uint32_t address)
 	arc_nop();
 	arc_nop();
 	arc_nop();
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+  arc_aux_write(AUX_SLC_LINE_INV, address);
+  arc_nop();
+  arc_nop();
+  arc_nop();
+#endif
+
 }
 
 /**
@@ -218,6 +253,15 @@ Inline void dcache_enable(uint32_t dcache_en_mask)
 }
 
 /**
+ * @fn void dcache_enabled(void)
+ * @brief check if dcache is enabled
+ */
+Inline uint32_t dcache_enabled(void)
+{
+  return !(arc_aux_read(AUX_DC_CTRL)&DC_CTRL_DC_DISABLE);
+}
+
+/**
  * \brief disable data cache
  */
 Inline void dcache_disable(void)
@@ -238,6 +282,13 @@ Inline void dcache_flush(void)
 	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
 		;
 	}
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+  arc_aux_write(AUX_SLC_FLUSH, 1);
+  while (arc_aux_read(AUX_SLC_CTRL) & SLC_CTRL_BUSY) {
+    ;
+  }
+#endif
+
 	cpu_unlock_restore(status);
 }
 
@@ -254,6 +305,13 @@ Inline void dcache_flush_line(uint32_t address)
 	while (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_FLUSH_STATUS) {
 		;
 	}
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+  arc_aux_write(AUX_SLC_LINE_FLUSH, address);
+  while (arc_aux_read(AUX_SLC_CTRL) & SLC_CTRL_BUSY) {
+    ;
+  }
+#endif
+
 	cpu_unlock_restore(status);
 }
 
@@ -284,6 +342,93 @@ Inline void dcache_access_mode(uint32_t mode)
 		arc_aux_write(AUX_DC_CTRL, arc_aux_read(AUX_DC_CTRL) & (~DC_CTRL_INDIRECT_ACCESS));
 	}
 }
+
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+/* Warning: L2 Cache is shared by all cores
+ * The implement here is only for one core scenario
+ * accesses to L2 Cache registers are not protected by any mutex/semaphore
+ * Warning: The implement here is only for ARC 32-bit architecture
+ */
+
+/**
+ * @fn void slc_enable(uint32_t slc_en_mask)
+ * @brief Enable l2 cache
+ * @param slc_en_mask Operation mask
+ */
+Inline void slc_enable(uint32_t slc_en_mask)
+{
+  arc_aux_write(AUX_SLC_CTRL, slc_en_mask);
+}
+
+/**
+ * @fn void slc_enabled(void)
+ * @brief check if l2 cache is enabled
+ */
+Inline uint32_t slc_enabled(void)
+{
+  return !(arc_aux_read(AUX_SLC_CTRL)&SLC_CTRL_DISABLE );
+}
+
+/**
+ * @fn void slc_disable(void)
+ * @brief Disable l2 cache
+ */
+Inline void slc_disable(void)
+{
+  arc_aux_write(AUX_SLC_CTRL, SLC_CTRL_DISABLE);
+}
+
+/**
+ * @fn void slc_invalidate(void)
+ * @brief Invalidate the entire data cache
+ */
+Inline void slc_invalidate(void)
+{
+  uint32_t status;
+
+  status = cpu_lock_save();
+  arc_aux_write(AUX_SLC_INV, 1);
+  /* wait for flush completion */
+  while (arc_aux_read(AUX_SLC_CTRL) & SLC_CTRL_BUSY) {
+    ;
+  }
+  cpu_unlock_restore(status);
+}
+
+/**
+ * @fn void slc_flush(void)
+ * @brief Flush l2 cache
+ */
+Inline void slc_flush(void)
+{
+  uint32_t status;
+
+  status = cpu_lock_save();
+  arc_aux_write(AUX_SLC_FLUSH, 1);
+  /* wait for flush completion */
+  while (arc_aux_read(AUX_SLC_CTRL) & SLC_CTRL_BUSY) {
+    ;
+  }
+  cpu_unlock_restore(status);
+}
+
+/**
+ * @fn void slc_flush_line(uint32_t address)
+ * @brief Flush the specific l2 cache line
+ * @param address Memory address
+ */
+Inline void slc_flush_line(uint32_t address)
+{
+  uint32_t status;
+
+  status = cpu_lock_save();
+  arc_aux_write(AUX_SLC_LINE_FLUSH, address);
+  while (arc_aux_read(AUX_SLC_CTRL) & SLC_CTRL_BUSY) {
+    ;
+  }
+  cpu_unlock_restore(status);
+}
+#endif
 
 /** @} */
 

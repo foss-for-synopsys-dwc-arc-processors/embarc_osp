@@ -355,6 +355,16 @@
 #endif
 #endif
 
+/** L2 Cache options */
+#if !defined(ARC_FEATURE_SL2CACHE_PRESENT)
+#if defined(core_config_sl2cache_present) && core_config_sl2cache_present == 1
+#define ARC_FEATURE_SL2CACHE_PRESENT
+#define ARC_FEATURE_SL2CACHE_SIZE           core_config_sl2cache_size
+#define ARC_FEATURE_SL2CACHE_LINE_SIZE      core_config_sl2cache_line_size
+#define ARC_FEATURE_SL2CACHE_WAYS           core_config_sl2cache_ways
+#endif
+#endif
+
 /** ARC uDMA options */
 #if !defined(ARC_FEATURE_DMAC)
 #if defined(core_config_dmac)

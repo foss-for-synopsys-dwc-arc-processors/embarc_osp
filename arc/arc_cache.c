@@ -29,28 +29,33 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup ARC_HAL_MISC_CACHE
- * \brief implementation of cache related functions
+ * @file
+ * @ingroup ARC_HAL_MISC_CACHE
+ * @brief Cache manipulation
+ *
+ * This module contains functions for manipulation caches.
  */
-#undef LIB_SECURESHIELD_OVERRIDES
+
 #include "arc/arc_cache.h"
 
 struct cache_config {
-	uint8_t ver;                    /* version */
-	uint8_t assoc;                  /* Cache Associativity */
-	uint16_t line;                  /* cache line/block size */
-	uint32_t capacity;              /* capacity */
+	uint8_t ver;            /* Version */
+	uint8_t assoc;          /* Cache Associativity */
+	uint16_t line;          /* Cache line/block size */
+	uint32_t capacity;      /* Capacity */
 };
 
 static struct cache_config icache_config, dcache_config;
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+static struct cache_config slc_config;
+#endif
 
 /**
- * \brief invalidate multi instruction cache lines
+ * @brief Invalidate instruction cache lines
  *
- * \param[in] start_addr start address in instruction cache
- * \param[in] size  the bytes to be invalidated
- * \return 0, succeeded, -1, failed
+ * @param start_addr Start address in instruction cache
+ * @param size Bytes to be invalidated
+ * @return 0, succeeded, -1, failed
  */
 int32_t icache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 {
@@ -80,11 +85,11 @@ int32_t icache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 }
 
 /**
- * \brief lock multi lines in instruction cache
+ * @brief Lock instruction cache lines
  *
- * \param[in] start_addr start address in instruction cache
- * \param[in] size  the bytes to be locked
- * \return 0, succeeded, -1, failed (cache already locked or other reasons)
+ * @param start_addr Start address in instruction cache
+ * @param size Bytes to be locked
+ * @return 0, succeeded, -1, failed (cache already locked or other reasons)
  */
 int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 {
@@ -107,7 +112,7 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 		if (arc_aux_read(AUX_IC_CTRL) & IC_CTRL_OP_SUCCEEDED) {
 			start_addr += line_size;
 		} else {
-			ercd = -1;      /* the operation failed */
+			ercd = -1;  /* the operation failed */
 			break;
 		}
 	} while (start_addr <= end_addr);
@@ -118,12 +123,12 @@ int32_t icache_lock_mlines(uint32_t start_addr, uint32_t size)
 
 #if ARC_FEATURE_ICACHE_FEATURE == 2
 /**
- * \brief directly write icache internal ram
+ * @brief Directly write icache internal ram
  *
- * \param[in] cache_addr, icache internal address(way+index+offset)
- * \param[in] tag	cache tag to write (tag+lock bit+valid bit)
- * \param[in] data	cache data to write
- * \return 0, succeeded, -1, failed
+ * @param cache_addr Icache internal address(way+index+offset)
+ * @param tag Cache tag to write (tag+lock bit+valid bit)
+ * @param data Cache data to write
+ * @return 0, succeeded, -1, failed
  */
 int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 {
@@ -138,12 +143,12 @@ int32_t icache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 }
 
 /**
- * \brief directly read icache internal ram
+ * @brief Directly read icache internal ram
  *
- * \param[in] cache_addr, icache internal address(way+index+offset)
- * \param[out] tag	cache tag to read (tag+index+lock bit+valid bit)
- * \param[out] data	cache data to read
- * \return 0, succeeded, -1, failed
+ * @param cache_addr Icache internal address(way+index+offset)
+ * @param tag Cache tag to read (tag+index+lock bit+valid bit)
+ * @param data Cache data to read
+ * @return 0, succeeded, -1, failed
  */
 int32_t icache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 {
@@ -158,12 +163,12 @@ int32_t icache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 }
 
 /**
- * \brief indirectly read icache internal ram
+ * @brief Indirectly read icache internal ram
  *
- * \param[in] mem_addr, memory address
- * \param[out] tag	cache tag to read
- * \param[out] data	cache data to read
- * \return 0, succeeded, -1, failed
+ * @param mem_addr Memory address
+ * @param tag Cache tag to read
+ * @param data Cache data to read
+ * @return 0, succeeded, -1, failed
  */
 int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 {
@@ -175,24 +180,76 @@ int32_t icache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 		*tag = arc_aux_read(AUX_IC_TAG);
 		*data = arc_aux_read(AUX_IC_DATA);
 	} else {
-		return -1;      /* the specified memory is not in icache */
+		return -1;  /* the specified memory is not in icache */
 	}
 	return 0;
 }
- #endif
+#endif
+
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+// SLC_OP_PREFETCH is not implemented
+void _slc_rgn_op(uint32_t start_addr, uint32_t size, uint32_t op)
+{
+	uint32_t ctrl;
+	uint32_t end_addr;
+
+	if (!slc_enabled()) {
+		return;
+	}
+	ctrl = arc_aux_read(AUX_SLC_CTRL);
+	// /* Don't rely on default value of IM bit */
+	// if (!(op & SLC_OP_FLUSH))		/* i.e. SLC_OP_INV */
+	// {
+	// 	ctrl &= ~SLC_CTRL_IM;	/* clear IM: Disable flush before Inv */
+	// }
+	// else
+	// {
+	// 	ctrl |= SLC_CTRL_IM;
+	// }
+
+	if (op & SLC_OP_INV) {
+		ctrl |= SLC_CTRL_RGN_OP_INV;    /* Inv or flush-n-inv */
+	} else {
+		ctrl &= ~SLC_CTRL_RGN_OP_INV;
+	}
+	arc_aux_write(AUX_SLC_CTRL, ctrl);
+	/*
+	 * Lower bits are ignored, no need to clip
+	 * END needs to be setup before START (latter triggers the operation)
+	 * END can't be same as START, so add (l2_line_sz - 1) to sz
+	 */
+	end_addr = start_addr + size + slc_config.line - 1;
+	/*
+	 * Upper addresses (ARC_AUX_SLC_RGN_END1 and ARC_AUX_SLC_RGN_START1)
+	 * are always == 0 as we don't use PAE40, so we only setup lower ones
+	 * (ARC_AUX_SLC_RGN_END and ARC_AUX_SLC_RGN_START)
+	 */
+	arc_aux_write(AUX_SLC_RGN_END, end_addr);
+	arc_aux_write(AUX_SLC_RGN_START, start_addr);
+	/* Make sure "busy" bit reports correct stataus, see STAR 9001165532 */
+	arc_aux_read(AUX_SLC_CTRL);
+	while (arc_aux_read(AUX_SLC_CTRL) & SLC_CTRL_BUSY) {
+		;
+	}
+}
+
+#endif
 
 /**
- * \brief invalidate multi data cache lines
+ * @brief Invalidate data cache lines
  *
- * \param[in] start_addr start address in data cache
- * \param[in] size  the bytes to be invalidated
- * \return 0, succeeded, -1, failed
+ * @param start_addr Start address in data cache
+ * @param size Bytes to be invalidated
+ * @return 0, succeeded, -1, failed
  */
 int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 {
 	uint32_t end_addr;
 	uint32_t line_size;
 	uint32_t status;
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+	uint32_t start = start_addr;
+#endif
 
 	if ((size == 0) || (size > dcache_config.capacity)) {
 		return -1;
@@ -214,6 +271,10 @@ int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 		}
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
+
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+	_slc_rgn_op(start, size, SLC_OP_INV);
+#endif
 	cpu_unlock_restore(status);
 
 	return 0;
@@ -221,17 +282,20 @@ int32_t dcache_invalidate_mlines(uint32_t start_addr, uint32_t size)
 }
 
 /**
- * \brief flush multi lines in data cache
+ * @brief Flush data cache lines to memory
  *
- * \param[in] start_addr start address
- * \param[in] size	the bytes to be flushed
- * \return 0, succeeded, -1, failed
+ * @param start_addr Start address
+ * @param size Bytes to be flushed
+ * @return 0, succeeded, -1, failed
  */
 int32_t dcache_flush_mlines(uint32_t start_addr, uint32_t size)
 {
 	uint32_t end_addr;
 	uint32_t line_size;
 	uint32_t status;
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+	uint32_t start = start_addr;
+#endif
 
 	if ((size == 0) || (size > dcache_config.capacity)) {
 		return -1;
@@ -253,17 +317,21 @@ int32_t dcache_flush_mlines(uint32_t start_addr, uint32_t size)
 		}
 		start_addr += line_size;
 	} while (start_addr <= end_addr);
+
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+	_slc_rgn_op(start, size, SLC_OP_FLUSH);
+#endif
 	cpu_unlock_restore(status);
 
 	return 0;
 }
 
 /**
- * \brief lock multi lines in data cache
+ * @brief Lock data cache lines
  *
- * \param[in] start_addr start address in data cache
- * \param[in] size  the bytes to be locked
- * \return 0, succeeded, -1, failed
+ * @param start_addr Start address in data cache
+ * @param size Bytes to be locked
+ * @return 0, succeeded, -1, failed
  */
 int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
 {
@@ -287,7 +355,7 @@ int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
 		if (arc_aux_read(AUX_DC_CTRL) & DC_CTRL_OP_SUCCEEDED) {
 			start_addr += line_size;
 		} else {
-			ercd = -1;      /* the operation failed */
+			ercd = -1;  /* the operation failed */
 			break;
 		}
 	} while (start_addr <= end_addr);
@@ -297,12 +365,12 @@ int32_t dcache_lock_mlines(uint32_t start_addr, uint32_t size)
 }
 
 /**
- * \brief directly write dcache internal ram
+ * @brief Directly write dcache internal ram
  *
- * \param[in] cache_addr, dcache internal address(way+index+offset)
- * \param[in] tag	cache tag to write
- * \param[in] data	cache data to write
- * \return 0, succeeded, -1, failed
+ * @param cache_addr Dcache internal address(way+index+offset)
+ * @param tag Cache tag to write
+ * @param data Cache data to write
+ * @return 0, succeeded, -1, failed
  */
 int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 {
@@ -318,12 +386,12 @@ int32_t dcache_direct_write(uint32_t cache_addr, uint32_t tag, uint32_t data)
 }
 
 /**
- * \brief directly read dcache internal ram
+ * @brief Directly read dcache internal ram
  *
- * \param[in] cache_addr, dcache internal address(way+index+offset)
- * \param[out] tag	cache tag to read
- * \param[out] data	cache data to read
- * \return 0, succeeded, -1, failed
+ * @param cache_addr Dcache internal address(way+index+offset)
+ * @param tag Cache tag to read
+ * @param data Cache data to read
+ * @return 0, succeeded, -1, failed
  */
 int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 {
@@ -339,12 +407,12 @@ int32_t dcache_direct_read(uint32_t cache_addr, uint32_t *tag, uint32_t *data)
 }
 
 /**
- * \brief indirectly read dcache internal ram
+ * @brief Indirectly read dcache internal ram
  *
- * \param[in] mem_addr, memory address(tag+index+offset)
- * \param[out] tag	cache tag to read
- * \param[out] data	cache data to read
- * \return 0, succeeded, -1, failed
+ * @param mem_addr Memory address(tag+index+offset)
+ * @param tag Cache tag to read
+ * @param data Cache data to read
+ * @return 0, succeeded, -1, failed
  */
 int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 {
@@ -357,14 +425,14 @@ int32_t dcache_indirect_read(uint32_t mem_addr, uint32_t *tag, uint32_t *data)
 		*tag = arc_aux_read(AUX_DC_TAG);
 		*data = arc_aux_read(AUX_DC_DATA);
 	} else {
-		return -1;      /* the specified memory is not in dcache */
+		return -1;  /* the specified memory is not in dcache */
 	}
 
 	return 0;
 }
 
 /**
- * \brief  initialize cache
+ * @brief  Initialize cache
  * 1. invalidate icache and dcache
  * 2. Only support ARCv2 cache
  */
@@ -397,5 +465,18 @@ void arc_cache_init(void)
 		icache_enable(IC_CTRL_IC_ENABLE);
 		icache_invalidate();
 	}
+
+#ifdef ARC_FEATURE_SL2CACHE_PRESENT
+	build_cfg = arc_aux_read(AUX_BCR_SLC);
+	slc_config.ver = build_cfg & 0xff;
+
+	build_cfg = arc_aux_read(AUX_SLC_CACHE_CONFIG);
+	slc_enable(SLC_CTRL_DISABLE_FLUSH_LOCKED | SLC_CTRL_IM);
+	slc_invalidate();
+	slc_config.assoc = 4 << ((build_cfg >> 6) & 0x3);
+	// default 128KB = 0x20000
+	slc_config.capacity = 0x20000 << ((build_cfg) & 0xf);
+	slc_config.line = 128 >> ((build_cfg >> 4) & 0x3);
+#endif
 
 }

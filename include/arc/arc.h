@@ -143,6 +143,7 @@
 #define AUX_BCR_BS                      (0xcb)  /*!< build configuration for bitstream */
 #define AUX_BCR_AGU                     (0xcc)  /*!< build configuration for address generate unit */
 #define AUX_BCR_DMAC                    (0xcd)  /*!< build configuration for DMA */
+#define AUX_BCR_SLC                     (0xce)  /*!< build configuration for L2 Cache */
 #define AUX_BCR_CONNECT_SYSTEM          (0xd0)  /*!< build configuration for arc connect */
 #define AUX_BCR_CONNECT_SEMA            (0xd1)  /*!< build configuration for inter-core semaphore */
 #define AUX_BCR_CONNECT_MESSAGE         (0xd2)  /*!< build configuration for inter-code message */
