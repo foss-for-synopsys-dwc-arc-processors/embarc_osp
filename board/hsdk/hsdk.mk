@@ -9,7 +9,7 @@ BOARD_HSDK_DIR = $(BOARDS_ROOT)/hsdk
 # in any other place or through make options
 # it will select a proper BD_VER according to your cur_core
 ##
-SUPPORTED_BD_VERS = 10
+SUPPORTED_BD_VERS = 10 20
 
 ## Select Board Version
 BD_VER ?= 10
