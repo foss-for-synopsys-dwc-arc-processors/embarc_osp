@@ -46,7 +46,11 @@
 
 	.file "arc_startup.s"
 
+#ifdef __GNU__
+.weak	__SDATA_BEGIN__		/* start of small data, defined in link script */
+#else
 .weak	_f_sdata		/* start of small data, defined in link script */
+#endif
 .weak	init_hardware_hook	/* app hardware init hook */
 
 .extern	board_main
@@ -112,8 +116,11 @@ _arc_reset_stage2:
 #else
 	sr	exc_entry_table, [AUX_INT_VECT_BASE]
 #endif
-
+#ifdef __GNU__
+	mov	gp, __SDATA_BEGIN__	/* init small-data base register */
+#else
 	mov	gp, _f_sdata	/* init small-data base register */
+#endif
 	mov	fp, 0		/* init fp register */
 
 #if ARC_FEATURE_MP_NUM_CPUS > 1
