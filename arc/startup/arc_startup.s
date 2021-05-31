@@ -79,7 +79,6 @@ _arc_cache_init_start:
 	jle	_arc_icache_init
 	mov	r0, 1
 	sr	r0, [AUX_DC_IVDC]
-	sr	r0, [AUX_DC_CTRL]
 _arc_icache_init:
 	lr	r0, [AUX_BCR_I_CACHE]
 	cmp	r0, 2

@@ -31,6 +31,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
+#if ARC_FEATURE_CONNECT_PRESENT
 #define DELAY_COUNT     1000000
 
 static ARC_SPINLOCK_T output_lock;
@@ -106,8 +107,11 @@ static void slave_cores_entry(uint32_t id, void *arg)
 #define SLAVE_CORE_STACK_SIZE   (2048)
 static uint32_t slave_core_stacks[ARC_FEATURE_MP_NUM_CPUS - 1][SLAVE_CORE_STACK_SIZE / 4];
 
+#endif /* ARC_FEATURE_CONNECT_PRESENT */
+
 int32_t main(void)
 {
+#if ARC_FEATURE_CONNECT_PRESENT
 	int32_t i;
 
 	int_handler_install(INTNO_TIMER0, cores_timer0_isr);
@@ -122,4 +126,8 @@ int32_t main(void)
 	}
 
 	cores_main(0, NULL);
+#else /* ARC_FEATURE_CONNECT_PRESENT */
+	EMBARC_PRINTF("This example is not supportted under current configures \r\n");
+#endif /* ARC_FEATURE_CONNECT_PRESENT */
+
 }
