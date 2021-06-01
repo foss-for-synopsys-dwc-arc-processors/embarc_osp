@@ -874,8 +874,10 @@ class ProjectBuilder:
         env = os.environ.copy()
 
         p = subprocess.Popen(cmd, cwd=self.build_dir, env=env, **kwargs)
-        out, errs = p.communicate()
-
+        out, _ = p.communicate()
+        if out:
+            with open(os.path.join(self.build_dir, self.log), "a") as log:
+                log.write(out.decode())
         results = {}
         msg = "build status: %s version %s core %s %s %s" % (
             self.platform.name,
@@ -888,19 +890,9 @@ class ProjectBuilder:
         if p.returncode == 0:
             self.instance.status = "passed"
             results = {'msg': msg, "returncode": p.returncode, "instance": self.instance}
-
-            if out:
-                with open(os.path.join(self.build_dir, self.log), "a") as log:
-                    log.write(out.decode())
-            else:
+            if not out:
                 return None
         else:
-            if out:
-                with open(os.path.join(self.build_dir, self.log), "a") as log:
-                    log.write(out.decode())
-                    if errs:
-                        log.write(errs.decode())
-                        logger.debug(errs.decode())
             self.instance.status = "error"
             self.instance.reason = "Build failure"
 
