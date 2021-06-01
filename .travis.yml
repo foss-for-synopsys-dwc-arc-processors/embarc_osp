@@ -14,13 +14,7 @@ env:
       "context": "travis-ci/$NAME",
       "target_url": "https://travis-ci.org/$TRAVIS_REPO_SLUG/jobs/$TRAVIS_JOB_ID"
       }\nDATA'
-      
-      COMMENT=none
-      COMMENTS=$'curl -so/dev/null --user "$EMBARC_BOT" --request POST
-      https://api.github.com/repos/$TRAVIS_REPO_SLUG/issues/$TRAVIS_PULL_REQUEST/comments
-      --data @- << DATA\n{
-      "body": "$COMMENT"
-      }\nDATA'
+
     - TOOLCHAIN_VER="2020.09"
     - OSP_ROOT="."
     - EXAMPLES="example/baremetal,example/freertos" 
@@ -39,7 +33,7 @@ before_install:
   # setup git config 
   - git config --global user.name "embARC Automated Bot"
   - git config --global user.email "jingru@synopsys.com"
-  - bash .ci/before_install.sh
+  - bash ./scripts/.ci/before_install.sh
 
 after_success:
   - bash -c "$STATUS" success "Local $NAME testing has passed"
@@ -48,7 +42,7 @@ after_failure:
   - bash -c "$STATUS" failure "Local $NAME testing has failed"
 
 script:
-  - bash .ci/script.sh
+  - bash ./scripts/.ci/script.sh
 
 matrix:
   include:
