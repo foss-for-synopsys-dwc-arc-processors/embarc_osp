@@ -30,6 +30,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
+#if ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT
 #ifdef BOARD_EMSDP
 // EMDK only has 2 way cache, it might have some chances that the cache get switched out before locking,
 //   causing cached data being wrote to memory in advance
@@ -45,12 +46,14 @@
 
 __attribute__ ((aligned(DCACHE_LINE_LENGTH * DCACHE_LINE_NUM)))
 static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH] = { 0xFF };
+#endif
 
 /**
  * \brief	call cache related functions
  */
 int main(void)
 {
+#if ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT
 	uint32_t cache_ver;
 	uint32_t cache_size;
 	uint32_t cache_llen;
@@ -139,6 +142,9 @@ int main(void)
 	while (1) {
 		;
 	}
+#else /* ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT */
+	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
+#endif
 
 	return E_SYS;
 }

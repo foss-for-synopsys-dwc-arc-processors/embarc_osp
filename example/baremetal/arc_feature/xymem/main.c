@@ -121,7 +121,7 @@ int main(void)
 
 	EMBARC_PRINTF("add for %d numbers : %d cycles\r\n---end----\r\n", DATA_SIZE, end);
 #else /* ARC_FEATURE_XCCM_PRESENT && ARC_FEATURE_YCCM_PRESENT */
-	EMBARC_PRINTF("This example is not supportted under current configures \r\n");
+	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
 #endif /* ARC_FEATURE_XCCM_PRESENT && ARC_FEATURE_YCCM_PRESENT */
 
 }

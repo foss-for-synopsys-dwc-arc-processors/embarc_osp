@@ -294,6 +294,6 @@ int main(void)
 	EMBARC_PRINTF("go to user mode \r\n");
 	arc_goto_usermode(user_mode_func, &user_mode_stack[512]);
 #else /* ARC_FEATURE_MPU_PRESENT */
-	EMBARC_PRINTF("This example is not supportted under current configures \r\n");
+	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
 #endif /* ARC_FEATURE_MPU_PRESENT */
 }

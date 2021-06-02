@@ -127,7 +127,7 @@ int32_t main(void)
 
 	cores_main(0, NULL);
 #else /* ARC_FEATURE_CONNECT_PRESENT */
-	EMBARC_PRINTF("This example is not supportted under current configures \r\n");
+	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
 #endif /* ARC_FEATURE_CONNECT_PRESENT */
 
 }

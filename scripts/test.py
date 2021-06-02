@@ -479,7 +479,7 @@ class Harness:
     CONSOLE_START = "Compiler Version:"
     CONSOLE_END = "Test Done"
     BLINKY_MESSAGE = "led out:"
-    SKIPPED_MESSAGE = "This example is not supportted"
+    SKIPPED_MESSAGE = "This example is not supported"
     EXCEPTION_INFO = [
         "Memory Error",
         "Instruction Error",

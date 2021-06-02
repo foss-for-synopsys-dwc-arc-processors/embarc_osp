@@ -31,6 +31,7 @@
 #include "embARC.h"
 #include "embARC_debug.h"
 
+#if ARC_FEATURE_DMAC_PRESENT
 #include "stdlib.h"
 
 #ifdef BOARD_EMSDP
@@ -315,9 +316,11 @@ int32_t extra_cpy_task(uint32_t size)
 	}
 }
 #endif // USE_EXTRA_TASK
+#endif /* ARC_FEATURE_DMAC_PRESENT */
 
 int main(void)
 {
+#if ARC_FEATURE_DMAC_PRESENT
 	uint32_t test_sz = TEST_INCREMENT;
 	uint8_t *src_ptr = NULL;
 	uint8_t *dst_ptr = NULL;
@@ -382,5 +385,8 @@ int main(void)
 	dma_finish();
 	dmac_close();
 	EMBARC_PRINTF("uDMA Test Done\n");
+#else /* ARC_FEATURE_DMAC_PRESENT */
+	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
+#endif /* ARC_FEATURE_DMAC_PRESENT */
 	return 0;
 }
