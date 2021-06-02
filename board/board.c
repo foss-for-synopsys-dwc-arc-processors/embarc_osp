@@ -243,13 +243,14 @@ EMBARC_WEAK void platform_main(void)
 #ifdef MID_NTSHELL
 	xTaskCreate((TaskFunction_t)ntshell_task, "ntshell-console", TASK_STACK_SIZE_NTSHELL,
 		    (void *)nt_io, TASK_PRI_NTSHELL, &task_handle_ntshell);
+#else
+	xTaskCreate((TaskFunction_t)task_main, "main", TASK_STACK_SIZE_MAIN,
+		    (void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
 #endif
 #ifdef MID_LWIP
 	xTaskCreate((TaskFunction_t)task_wifi, "wifi-conn", TASK_STACK_SIZE_WIFI,
 		    (void *)1, TASK_PRI_WIFI, &task_handle_wifi);
 #endif
-	xTaskCreate((TaskFunction_t)task_main, "main", TASK_STACK_SIZE_MAIN,
-		    (void *)(&s_main_args), TASK_PRI_MAIN, &task_handle_main);
 	// vTaskStartScheduler() Will not return unless a task calls vTaskEndScheduler
 	vTaskStartScheduler();
 #else /* OS_FREERTOS not defined */
