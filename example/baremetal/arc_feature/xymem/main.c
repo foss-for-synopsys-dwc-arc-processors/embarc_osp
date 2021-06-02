@@ -120,6 +120,7 @@ int main(void)
 	}
 
 	EMBARC_PRINTF("add for %d numbers : %d cycles\r\n---end----\r\n", DATA_SIZE, end);
+	EMBARC_PRINTF("XY memory Test Done\n");
 #else /* ARC_FEATURE_XCCM_PRESENT && ARC_FEATURE_YCCM_PRESENT */
 	EMBARC_PRINTF("This example is not supportted under current configures \r\n");
 #endif /* ARC_FEATURE_XCCM_PRESENT && ARC_FEATURE_YCCM_PRESENT */

@@ -139,4 +139,5 @@ int main(void)
 	if (x.same_value(y)) {
 		EMBARC_PRINTF("x and y are the same\r\n");
 	}
+	EMBARC_PRINTF("CPP Test Done\n");
 }
