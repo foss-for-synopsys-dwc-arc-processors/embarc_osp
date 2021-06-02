@@ -44,7 +44,7 @@
 #define _WF_DEV_HAL_H
 
 #include "device/dev_wnic.h"
-#include "device/dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 #include "device/ip_hal/dev_spi.h"
 #include "embARC_error.h"
 
