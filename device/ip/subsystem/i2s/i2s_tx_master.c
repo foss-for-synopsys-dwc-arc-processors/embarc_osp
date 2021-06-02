@@ -450,6 +450,14 @@ static uint32_t i2s_tx_master_write_samples(uint32_t dev_id,
         if (NULL != dev->tx_cb) {
         dev->tx_cb(dev_id);
         }
+        /* As the whole data requested by the upper 
+        layer has been sent, there is no need to keep
+        a value in *count.
+        Setting *count to zero will prevent calling
+        i2s_tx_master_write_samples again, where
+        usr_cnt will be equal to sys_cnt,
+        which will result in masking the interrupt */
+        *count = 0;
     }
     }
 
