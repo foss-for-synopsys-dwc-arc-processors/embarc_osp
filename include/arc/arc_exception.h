@@ -210,7 +210,9 @@ typedef struct processor_frame {
 #define ARC_EXC_FRAME_SIZE              (sizeof(INT_EXC_FRAME) / sizeof(uint32_t))
 #define ARC_CALLEE_FRAME_SIZE           (sizeof(CALLEE_FRAME) / sizeof(uint32_t))
 
+#ifdef OS_FREERTOS
 extern uint32_t exc_nest_count;
+#endif
 
 /**
  * \brief write the exception vector base
@@ -232,6 +234,7 @@ Inline uint32_t arc_vector_base_read(void)
 	return arc_aux_read(AUX_INT_VECT_BASE);
 }
 
+#ifdef OS_FREERTOS
 /**
  * \brief  sense whether in exc/interrupt processing
  *
@@ -242,6 +245,7 @@ Inline uint32_t exc_sense(void)
 {
 	return (exc_nest_count > 0U);
 }
+#endif
 
 /** @}*/
 
@@ -544,6 +548,7 @@ extern void arc_firq_stack_set(uint8_t *firq_sp);
 #if defined(LIB_SECURESHIELD) && defined(LIB_SECURESHIELD_OVERRIDES) && (SECURESHIELD_VERSION == 1)
 #define OVERRIDE_ARC_HAL_EXCEPTION_H
 #include "secureshield_overrides.h"
+#undef OVERRIDE_ARC_HAL_EXCEPTION_H
 #endif
 
 #endif /* _ARC_HAL_EXCEPTION_H_*/

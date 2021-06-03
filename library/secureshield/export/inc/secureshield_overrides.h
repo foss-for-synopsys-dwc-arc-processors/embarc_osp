@@ -45,7 +45,8 @@
 #undef int_level_config
 #undef cpu_lock
 #undef cpu_unlock
-#undef cpu_lock_restore
+#undef cpu_lock_save
+#undef cpu_unlock_restore
 
 #define int_disable(intno)			secureshield_int_disable(intno)
 #define int_enable(intno)			secureshield_int_enable(intno)

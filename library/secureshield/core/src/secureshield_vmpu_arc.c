@@ -473,7 +473,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 			region->attr |= (g_secure_sid_mask << 16);
 		}
 
-		arc_mpu_region(i + ARC_MPU_RESERVED_REGIONS, region->base,
+		arc_mpu_region_config(i + ARC_MPU_RESERVED_REGIONS, region->base,
 				 region->size, region->attr);
 		region++;
 	}
@@ -505,7 +505,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 			if (mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
 				 break;
 			}
-			arc_mpu_region(mpu_slot, region->base, region->size, region->attr);
+			arc_mpu_region_config(mpu_slot, region->base, region->size, region->attr);
 			region++;
 			mpu_slot++;
 		}
@@ -520,7 +520,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 			 break;
 		}
 
-		arc_mpu_region(mpu_slot, region->base, region->size, region->attr);
+		arc_mpu_region_config(mpu_slot, region->base, region->size, region->attr);
 
 		/* process next slot */
 		region++;
@@ -531,7 +531,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 
 	/* clear remaining slots */
 	while (mpu_slot < ARC_FEATURE_MPU_REGIONS) {
-		arc_mpu_region(mpu_slot, 0, 0, 0);
+		arc_mpu_region_config(mpu_slot, 0, 0, 0);
 		mpu_slot++;
 	}
 #endif
@@ -570,7 +570,7 @@ uint32_t vmpu_ac_static_region(uint8_t region, void* base, uint32_t size, CONTAI
 	/* apply access control */
 	vmpu_ac_update_container_region(&res, 0, base, size, ac);
 
-	arc_mpu_region(region, res.base, res.size, res.attr);
+	arc_mpu_region_config(region, res.base, res.size, res.attr);
 
 	return res.size;
 }
@@ -769,7 +769,7 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 		return -1;
 	}
 
-	arc_mpu_region(g_mpu_slot, region->base, region->size, region->attr);
+	arc_mpu_region_config(g_mpu_slot, region->base, region->size, region->attr);
 
 	g_mpu_slot++;
 

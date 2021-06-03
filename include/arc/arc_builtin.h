@@ -386,6 +386,7 @@ Inline uint32_t arc_core_id(void)
 #if defined(LIB_SECURESHIELD) && defined(LIB_SECURESHIELD_OVERRIDES) && (SECURESHIELD_VERSION == 1)
 #define OVERRIDE_ARC_HAL_BUILTIN_H
 #include "secureshield_overrides.h"
+#undef OVERRIDE_ARC_HAL_BUILTIN_H
 #endif
 
 #endif  /* __ASSEMBLY__ */

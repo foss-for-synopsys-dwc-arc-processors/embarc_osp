@@ -28,7 +28,7 @@
  *
 --------------------------------------------- */
 #undef LIB_SECURESHIELD_OVERRIDES
-#include "arc/arc_timer.c"
+#include "arc_timer.c"
 
 
 #if 0
