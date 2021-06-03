@@ -37,7 +37,7 @@
 #include "embARC_error.h"
 #include "arc/arc_exception.h"
 
-#include "hsdk/hsdk.h"
+#include "board.h"
 
 #ifdef ENABLE_OS
 #include "os_hal_inc.h"
