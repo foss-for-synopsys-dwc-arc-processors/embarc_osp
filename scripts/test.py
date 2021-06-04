@@ -13,7 +13,7 @@ from multiprocessing.managers import BaseManager
 from multiprocessing import Lock, Process, Value
 import queue
 import threading
-import contextlib
+import re
 import glob
 import shutil
 import copy
@@ -295,29 +295,73 @@ class Platform:
 
         self.type = "na"
         self.simulation = "na"
+        self.peripherals = dict()
+        self.supported_versions = list()
+
+        self.configs = dict()
 
     def load(self, platform_file):
         pass
 
-    def get_versions(self, example):
-        result = list()
+    def extract_mk_vars(self, example):
+        mk_vars = dict()
+        mk_var_types = ["environment", "makefile", "'override'"]
+        re_var = re.compile(r"^#\s*Variables\b")                # start of variable segment
+        re_varend = re.compile(r"^#\s*variable")                # end of variables
+        state = None                                            # state of parser
+        mname = None
         cmd = ["make", "EMBARC_ROOT=%s" % EMBARC_ROOT]
         cmd.append("BOARD=%s" % (self.name))
-        cmd.extend(["-C", example])
-        cmd.append("spopt")
+        cmd.extend(["-C", example, "-pn"])
         try:
             output = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
             if output:
-                opt_lines = output.decode("utf-8").splitlines()
-                for opt_line in opt_lines:
-                    if opt_line.startswith("SUPPORTED_BD_VERS"):
-                        platform_versions = opt_line.split(":", 1)[1]
-                        result.extend(platform_versions.split())
-                        break
+                for line in output.splitlines():
+                    try:
+                        line = line.decode("utf-8").strip()
+                    except UnicodeDecodeError:                  # GMSL has illegal sequence of characters
+                        continue
+                    if "$(" in line:                            # command cubstitution
+                        continue
+                    if state is None and re_var.search(line):
+                        state = "var"
+                    elif state == "var":
+                        if re_varend.search(line):              # last line of variable block
+                            state = "end"
+                            break
+                        if line.startswith("#"):                # type of variable
+                            var_type = line.split()
+                            mname = var_type[1]
+                        elif mname is not None:
+                            if mk_var_types is not None and mname not in mk_var_types:
+                                continue
+                            if mname not in mk_vars:
+                                mk_vars[mname] = dict()
+                            var_content = line.split(maxsplit=2) # key =|:= value
+                            if len(var_content) == 3:
+                                mk_vars[mname][var_content[0]] = var_content[2]
+                                if var_content[0] == "ONCHIP_IP_LIST":
+                                    self._get_peripherals(var_content[2])
+                                if var_content[0] == "SUPPORTED_BD_VERS":
+                                    self._get_versions(var_content[2])
+                            mname = None          
         except subprocess.CalledProcessError as ex:
             logger.error("Fail to run command {}".format(cmd))
             sys.exit(ex.output.decode("utf-8"))
-        return result
+
+        self.configs.update(mk_vars)
+
+    def _get_peripherals(self, onchip_ip_list):
+        ip_list = onchip_ip_list.split()
+        for ip in ip_list:
+            peripheral = ip.split("/", maxsplit=1)
+            if len(peripheral) == 2:
+                if peripheral[0] not in self.peripherals:
+                   self.peripherals[peripheral[0]] = list()
+                self.peripherals[peripheral[0]].append(peripheral[1])
+
+    def _get_versions(self, supported_bd_vers):
+        self.supported_versions = supported_bd_vers.split()
 
     def get_cores(self, example, version):
         result = list()
@@ -1095,7 +1139,8 @@ class TestSuite(DisablePyTestCollectionMixin):
                 if platform.name == "nsim":
                     platform.simulation = "nsim"
                     platform.run = True
-                versions = platform.get_versions(example_path)
+                platform.extract_mk_vars(example_path)
+                versions = platform.supported_versions
                 for version in versions:
                     cores = platform.get_cores(example_path, version)
                     for core in cores:
