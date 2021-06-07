@@ -27,7 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include <stdio.h>
+#include "dw_uart.h"
+#include "nsim_uart_obj.h"
 #include "arc.h"
 #include "arc_builtin.h"
 #include "embARC_toolchain.h"
@@ -39,63 +40,72 @@
  * NSIM UART 0 Object Instantiation
  */
 #if (USE_NSIM_UART_0)
+static void dw_uart_0_isr(void *ptr);
+#define DW_UART_0_BASE   (0xf0000000) /*!< designware uart 0 relative baseaddr */
+#define DW_UART_0_INTNO  (24)         /*!< designware uart 0 interrupt number  */
 
-DEV_UART		nsim_uart_0;			/*!< nsim uart object */
+static DEV_UART dw_uart_0;                      /*!< designware uart object */
+static DW_UART_CTRL dw_uart_0_ctrl = {          /*!< designware uart 0 ctrl */
+	0, 1000000, DW_UART_0_INTNO, (INT_HANDLER)dw_uart_0_isr,
+	1, 1, 0
+};
 
-
-/** nsim uart 0 open */
-static int32_t nsim_uart_0_open(uint32_t baud)
+/** designware uart 0 open */
+static int32_t dw_uart_0_open(uint32_t baud)
 {
-	/* no need to open, stdio is used */
-	return 0;
+	return dw_uart_open(&dw_uart_0, baud);
 }
-/** nsim uart 0 close */
-static int32_t nsim_uart_0_close (void)
+/** designware uart 0 close */
+static int32_t dw_uart_0_close(void)
 {
-	return 0;
+	return dw_uart_close(&dw_uart_0);
 }
-/** nsim uart 0 control */
-static int32_t nsim_uart_0_control(uint32_t ctrl_cmd, void *param)
+/** designware uart 0 control */
+static int32_t dw_uart_0_control(uint32_t ctrl_cmd, void *param)
 {
-	return 0;
+	return dw_uart_control(&dw_uart_0, ctrl_cmd, param);
 }
-/** nsim uart 0 write */
-static int32_t nsim_uart_0_write(const void *data, uint32_t len)
+/** designware uart 0 write */
+static int32_t dw_uart_0_write(const void *data, uint32_t len)
 {
-	return fwrite(data, len, sizeof(unsigned char), stdout);
+	return dw_uart_write(&dw_uart_0, data, len);
 }
-/** nsim uart 0 close */
-static int32_t nsim_uart_0_read(void *data, uint32_t len)
+/** designware uart 0 close */
+static int32_t dw_uart_0_read(void *data, uint32_t len)
 {
-	unsigned int i;
-	int c;
+	return dw_uart_read(&dw_uart_0, data, len);
+}
+/** designware uart 0 interrupt rountine */
+static void dw_uart_0_isr(void *ptr)
+{
+	dw_uart_isr(&dw_uart_0, ptr);
+}
+/** install designware uart 0 to system */
+static void dw_uart_0_install(void)
+{
+	uint32_t uart_abs_base = 0;
+	DEV_UART *dw_uart_ptr = &dw_uart_0;
+	DEV_UART_INFO *dw_uart_info_ptr = &(dw_uart_0.uart_info);
+	DW_UART_CTRL *dw_uart_ctrl_ptr = &dw_uart_0_ctrl;
 
-	for (i = 0; i < len; i++) {
-		c = getchar();
-		if (c < 0) {
-			break;
-		}
-		if (c == 10) {
-			c = 13;
-		}
-		*((unsigned char *)data) = (unsigned char)c;
-		data++;
-	}
+	/**
+	 * get absolute designware base address
+	 */
+	uart_abs_base = (uint32_t)DW_UART_0_BASE;
+	dw_uart_ctrl_ptr->dw_uart_regbase = uart_abs_base;
 
-	return i;
-}
-
-/** install nsim uart 0 to system */
-static void nsim_uart_0_install(void)
-{
-	DEV_UART *nsim_uart_ptr = &nsim_uart_0;
+	/** uart info init */
+	dw_uart_info_ptr->uart_ctrl = (void *)dw_uart_ctrl_ptr;
+	dw_uart_info_ptr->opn_cnt = 0;
+	dw_uart_info_ptr->status = 0;
+	dw_uart_info_ptr->baudrate = UART_BAUDRATE_115200;  /* default 115200bps */
 
 	/** uart dev init */
-	nsim_uart_ptr->uart_open = nsim_uart_0_open;
-	nsim_uart_ptr->uart_close = nsim_uart_0_close;
-	nsim_uart_ptr->uart_control = nsim_uart_0_control;
-	nsim_uart_ptr->uart_write = nsim_uart_0_write;
-	nsim_uart_ptr->uart_read = nsim_uart_0_read;
+	dw_uart_ptr->uart_open = dw_uart_0_open;
+	dw_uart_ptr->uart_close = dw_uart_0_close;
+	dw_uart_ptr->uart_control = dw_uart_0_control;
+	dw_uart_ptr->uart_write = dw_uart_0_write;
+	dw_uart_ptr->uart_read = dw_uart_0_read;
 
 }
 #endif /* USE_DW_UART_0 */
@@ -114,7 +124,7 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 	switch (uart_id) {
 #if (USE_NSIM_UART_0)
 		case NSIM_UART_0_ID:
-			return &nsim_uart_0;
+			return &dw_uart_0;
 			break;
 #endif
 		default:
@@ -130,6 +140,6 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 void nsim_uart_all_install(void)
 {
 #if (USE_NSIM_UART_0)
-	nsim_uart_0_install();
+	dw_uart_0_install();
 #endif
 }
