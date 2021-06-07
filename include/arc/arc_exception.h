@@ -97,7 +97,7 @@ typedef struct int_exc_frame {
 	uint32_t ret;
 	uint32_t sec_stat;
 	uint32_t status32;
-} EMBARC_PACKED INT_EXC_FRAME;
+} EMBARC_PACKED INT_EXC_FRAME_T;
 #else
 typedef struct int_exc_frame {
 	uint32_t erbta;
@@ -131,7 +131,7 @@ typedef struct int_exc_frame {
 
 	uint32_t ret;
 	uint32_t status32;
-} EMBARC_PACKED INT_EXC_FRAME;
+} EMBARC_PACKED INT_EXC_FRAME_T;
 #endif
 
 typedef struct dsp_ext_frame {
@@ -146,7 +146,7 @@ typedef struct dsp_ext_frame {
 	uint32_t acc0_lo;
 	uint32_t dsp_ctrl;
 
-} EMBARC_PACKED DSP_EXT_FRAME;
+} EMBARC_PACKED DSP_EXT_FRAME_T;
 
 typedef struct fpu_ext_frame {
 #if ARC_FEATURE_FPU_DA
@@ -159,18 +159,18 @@ typedef struct fpu_ext_frame {
 	uint32_t fpu_status;
 	uint32_t fpu_ctrl;
 
-} EMBARC_PACKED FPU_EXT_FRAME;
+} EMBARC_PACKED FPU_EXT_FRAME_T;
 
 typedef struct callee_frame {
 
 #if ARC_FEATURE_FPU_DSP_CONTEXT
 
 #if ARC_FEATURE_DSP
-	DSP_EXT_FRAME dsp_regs;
+	DSP_EXT_FRAME_T dsp_regs;
 #endif
 
 #if ARC_FEATURE_FPU
-	FPU_EXT_FRAME fpu_ext_regs;
+	FPU_EXT_FRAME_T fpu_ext_regs;
 #endif
 
 #endif /* ARC_FEATURE_FPU_DSP_CONTEXT */
@@ -199,16 +199,16 @@ typedef struct callee_frame {
 	uint32_t r15;
 	uint32_t r14;
 	uint32_t r13;
-} EMBARC_PACKED CALLEE_FRAME;
+} EMBARC_PACKED CALLEE_FRAME_T;
 
 typedef struct processor_frame {
-	CALLEE_FRAME callee_regs;
-	INT_EXC_FRAME exc_frame;
-} EMBARC_PACKED PROCESSOR_FRAME;
+	CALLEE_FRAME_T callee_regs;
+	INT_EXC_FRAME_T exc_frame;
+} EMBARC_PACKED PROCESSOR_FRAME_T;
 
-#define ARC_PROCESSOR_FRAME_SIZE        (sizeof(PROCESSOR_FRAME) / sizeof(uint32_t))
-#define ARC_EXC_FRAME_SIZE              (sizeof(INT_EXC_FRAME) / sizeof(uint32_t))
-#define ARC_CALLEE_FRAME_SIZE           (sizeof(CALLEE_FRAME) / sizeof(uint32_t))
+#define ARC_PROCESSOR_FRAME_T_SIZE        (sizeof(PROCESSOR_FRAME_T) / sizeof(uint32_t))
+#define ARC_EXC_FRAME_T_SIZE              (sizeof(INT_EXC_FRAME_T) / sizeof(uint32_t))
+#define ARC_CALLEE_FRAME_T_SIZE           (sizeof(CALLEE_FRAME_T) / sizeof(uint32_t))
 
 #ifdef OS_FREERTOS
 extern uint32_t exc_nest_count;

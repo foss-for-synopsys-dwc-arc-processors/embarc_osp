@@ -695,7 +695,7 @@ uint32_t* dst_container_user_sp;
  * \param[in] src_frame   interrupt frame
  * \return  target container sp
  */
-uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
+uint32_t secureshield_interrupt_handle(INT_EXC_FRAME_T *src_frame)
 {
 	uint32_t src_id, dst_id;
 	INT_HANDLER_T handler;
@@ -737,7 +737,7 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 		/* switch access control table */
 		vmpu_switch(src_id, dst_id);
 		/* save current state */
-		container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
+		container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_T_SIZE,
 			(uint32_t *)arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
 		/* gather information from current state */
 
@@ -760,7 +760,7 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
 
 			return 0;
 		} else {
-			container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_SIZE,
+			container_stack_push(src_id, (uint32_t *)src_frame - ARC_CALLEE_FRAME_T_SIZE,
 			(uint32_t *)arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id);
 			arc_aux_write(AUX_ERRET, (uint32_t)handler);
 			arc_aux_write(AUX_ERSTATUS, src_frame->status32);
@@ -776,7 +776,7 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *src_frame)
  * \param[in] dst_frame   exception frame
  * \return  target container sp
  */
-uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
+uint32_t secureshield_int_return(INT_EXC_FRAME_T *dst_frame)
 {
 	uint32_t src_id, dst_id;
 
@@ -784,7 +784,7 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 
-	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_SIZE,
+	if (container_stack_pop(dst_id, (uint32_t *)dst_frame + ARC_EXC_FRAME_T_SIZE,
 		(uint32_t *)arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0 ) {
 		return 0;
 	}
@@ -813,7 +813,7 @@ uint32_t secureshield_int_return(INT_EXC_FRAME *dst_frame)
  * \brief interrupt operation handler
  * \param[in] frame exception frame
  */
-void secureshield_int_ops(INT_EXC_FRAME *frame)
+void secureshield_int_ops(INT_EXC_FRAME_T *frame)
 {
 	/* FIXME: remove switch case structure, use jump table */
 	/* r0 is used as operation id */
@@ -907,7 +907,7 @@ void * secureshield_interrupt_handle(uint32_t *sp)
 	if (src_id != dst_id) {
 		vmpu_switch(src_id, dst_id);
 
-		container_stack_push(src_id, (uint32_t *)sp - ARC_CALLEE_FRAME_SIZE,
+		container_stack_push(src_id, (uint32_t *)sp - ARC_CALLEE_FRAME_T_SIZE,
 			(uint32_t *)arc_aux_read(AUX_KERNEL_SP), arc_aux_read(AUX_STATUS32),
 			 dst_id);
 

@@ -633,7 +633,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	uint32_t rodata_attribute;
 	uint32_t ram_attribute;
 
-	PROCESSOR_FRAME *context;
+	PROCESSOR_FRAME_T *context;
 
 
 	if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
@@ -681,9 +681,9 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		arc_aux_write(AUX_ERSTATUS, g_container_context[0].cpu_status);
 	} else {
 		if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_T_SIZE);
 		} else {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.user_sp = (uint32_t)container_cfg->stack_area;
 			g_container_context[container_id].normal_sp = container_cfg->stack_area;
 		}
@@ -694,7 +694,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	uint32_t size;
 	uint32_t secure;
 
-	PROCESSOR_FRAME *context;
+	PROCESSOR_FRAME_T *context;
 
 	secure = container_cfg->type;
 
@@ -736,10 +736,10 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	} else {
 		/* \todo init cpu status ? */
 		if (secure == SECURESHIELD_AC_SECURE) {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_area;
 		} else {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.kernel_sp = (uint32_t)container_cfg->stack_area;
 			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_secure;
 			g_container_context[container_id].normal_sp =container_cfg->stack_area;

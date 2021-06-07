@@ -214,7 +214,7 @@ int32_t secure_container_id_caller(void)
  * \brief system service provided by secureshield runtime
  * \param[in] frame exception frame
  */
-void secureshield_sys_ops(INT_EXC_FRAME *frame)
+void secureshield_sys_ops(INT_EXC_FRAME_T *frame)
 {
 	/* FIXME: remove switch case structure, use jump table */
 	/* r0 is used as operation id */

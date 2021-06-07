@@ -39,7 +39,7 @@ extern int32_t secure_container_id_self(void);
 
 #if SECURESHIELD_VERSION == 1
 
-extern void secureshield_sys_ops(INT_EXC_FRAME *frame);
+extern void secureshield_sys_ops(INT_EXC_FRAME_T *frame);
 
 #elif SECURESHIELD_VERSION == 2
 /* secureshield version 1 specific system services */

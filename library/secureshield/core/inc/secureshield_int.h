@@ -56,9 +56,9 @@ extern void secureshield_int_init(void);
 
 
 #if SECURESHIELD_VERSION == 1
-extern uint32_t secureshield_interrupt_handle(INT_EXC_FRAME *sp);
-extern uint32_t secureshield_int_return(INT_EXC_FRAME *sp);
-extern void secureshield_int_ops(INT_EXC_FRAME *frame);
+extern uint32_t secureshield_interrupt_handle(INT_EXC_FRAME_T *sp);
+extern uint32_t secureshield_int_return(INT_EXC_FRAME_T *sp);
+extern void secureshield_int_ops(INT_EXC_FRAME_T *frame);
 
 #elif SECURESHIELD_VERSION == 2
 extern void * secureshield_interrupt_handle(uint32_t *sp);

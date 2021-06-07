@@ -45,11 +45,11 @@ extern void secureshield_exc_entry_cpu(void);
  * \param[in] src_frame exception handling
  * \return  target container sp
  */
-static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
+static uint32_t trap_container_call_in(INT_EXC_FRAME_T *src_frame)
 {
 	uint32_t trap_pc;
 	uint8_t src_id, dst_id;
-	PROCESSOR_FRAME *dst_frame;
+	PROCESSOR_FRAME_T *dst_frame;
 	uint32_t dst_fn;
 	/* number of arguments to pass to the target function */
 	uint8_t args;
@@ -92,13 +92,13 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
 
 	/* push the calling container and set the callee container */
 	/* the left registers of src container will be saved later, reserve space here */
-	if (container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_SIZE,
+	if (container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_T_SIZE,
 		(uint32_t *)arc_aux_read(AUX_USER_SP), src_frame->status32, dst_id) != 0) {
 		return 0;
 	}
 
 	/* create the cpu frame and exception frame for the destination container */
-	dst_frame = (PROCESSOR_FRAME *)(g_container_context[dst_id].cur_sp);
+	dst_frame = (PROCESSOR_FRAME_T *)(g_container_context[dst_id].cur_sp);
 
 	dst_frame->exc_frame.erbta = 0; /* erbta is 0, no branch */
 	dst_frame->exc_frame.ret = dst_fn; /* eret */
@@ -135,22 +135,22 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME *src_frame)
  * \param[in] dst_frame exception frame
  * \return  target container sp
  */
-static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
+static uint32_t trap_container_call_out(INT_EXC_FRAME_T *dst_frame)
 {
 	uint32_t src_id, dst_id;
-	PROCESSOR_FRAME *src;
+	PROCESSOR_FRAME_T *src;
 
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 
-	if (container_stack_pop(dst_id, (uint32_t *)dst_frame - ARC_CALLEE_FRAME_SIZE,
+	if (container_stack_pop(dst_id, (uint32_t *)dst_frame - ARC_CALLEE_FRAME_T_SIZE,
 		(uint32_t *)arc_aux_read(AUX_USER_SP), dst_frame->status32) != 0) {
 		return 0;
 	}
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
 
-	src = (PROCESSOR_FRAME *)g_container_stack[g_container_stack_ptr].src_sp;
+	src = (PROCESSOR_FRAME_T *)g_container_stack[g_container_stack_ptr].src_sp;
 
 	/* copy return value */
 	src->exc_frame.r0 = dst_frame->r0;
@@ -169,7 +169,7 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME *dst_frame)
  */
 uint32_t secureshield_trap_handler(void *exc_frame)
 {
-	INT_EXC_FRAME *trap_frame = (INT_EXC_FRAME *)exc_frame;
+	INT_EXC_FRAME_T *trap_frame = (INT_EXC_FRAME_T *)exc_frame;
 	uint8_t trap_id;
 
 	SECURESHIELD_ASSERT(trap_frame != NULL);
