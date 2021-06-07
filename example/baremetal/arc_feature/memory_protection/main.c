@@ -92,7 +92,7 @@ static void user_mode_func(void)
 	arc_kflag(0);
 	arc_goto_kernelmode(0, 0);
 
-	EMBARC_PRINTF("end of program\r\n");
+	EMBARC_PRINTF("Memory Protection Test Done\n");
 	while (1) {
 		;
 	}
@@ -292,7 +292,12 @@ int main(void)
 	EMBARC_PRINTF("raise violation of execute in RAM \r\n");
 	trigger_execute_violation((uint32_t)_f_data);
 	EMBARC_PRINTF("go to user mode \r\n");
+#if	ARC_FEATURE_STACK_CHECK
+	// disable stack check
+	arc_stack_check_disable();
+#endif
 	arc_goto_usermode(user_mode_func, &user_mode_stack[512]);
+	// arc_goto_usermode() does NOT return
 #else /* ARC_FEATURE_MPU_PRESENT */
 	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
 #endif /* ARC_FEATURE_MPU_PRESENT */

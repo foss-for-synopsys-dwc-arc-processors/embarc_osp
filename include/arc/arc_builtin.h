@@ -379,6 +379,93 @@ Inline uint32_t arc_core_id(void)
 	return ret;
 }
 
+/**
+ * @fn void arc_stack_check_disable(void)
+ * @brief Disable hardware stack checking
+ */
+Inline void arc_stack_check_disable(void)
+{
+#if ARC_FEATURE_SEC_PRESENT
+  Asm(
+    "bclr %0, %0, %1\n"
+    "sflag %%r0\n"
+    :
+    : "r" (arc_aux_read(AUX_SEC_STAT)), "i" (AUX_SEC_STAT_BIT_SSC));
+#else
+  Asm(
+    "bclr %0, %0, %1\n"
+    "kflag %%r0\n"
+    :
+    : "r" (arc_aux_read(AUX_STATUS32)), "i" (AUX_STATUS_BIT_SC));
+#endif
+}
+
+/**
+ * @fn void arc_kernel_stack_check_configure(uint32_t top, uint32_t base)
+ * @brief Configure stack checking in kernel mode
+ *
+ * @param top Top of stack
+ * @param base Base of stack
+ */
+Inline void arc_kernel_stack_check_configure(uint32_t top, uint32_t base)
+{
+#if ARC_FEATURE_SEC_PRESENT
+  arc_aux_write(AUX_S_KSTACK_TOP, top);
+  arc_aux_write(AUX_S_KSTACK_BASE, base);
+#else
+  arc_aux_write(AUX_KSTACK_TOP, top);
+  arc_aux_write(AUX_KSTACK_BASE, base);
+#endif
+}
+
+/**
+ * @fn uint32_t arc_is_user_mode(void)
+ * @brief Check whether processor is in user mode
+ * this function relies on AUX_STATUS_BIT_US set in privileged mode first
+ * @return 1 user mode, 0 privileged mode
+ */
+Inline uint32_t arc_in_user_mode(void)
+{
+  uint32_t status;
+
+  Asm(
+    "lr %0, [%1]\n"
+    : "=r" (status)
+    : "i" (AUX_STATUS32)
+    : "memory");
+
+  return !(status & AUX_STATUS_MASK_US) ? 1 : 0;
+}
+
+/**
+ * @brief Go to user mode
+ * It's suggested to disable interrupt before call this function especially
+ * when using current stack, i.e., sp == 0. Because interrupt handling requires
+ * kernel mode stack which is different with user mode stack.
+ * @param target Target address to run in user mode, 0 means next
+ *               line of code
+ * @param sp Stack where the target address runs, 0 means using
+ *           current stack
+ */
+extern void arc_goto_usermode(void *target, uint32_t *sp);
+
+/**
+ * @brief Go to kernel mode
+ * this function uses trap exception to do switch from user mode to kernel mode,
+ * please install exc_entry_arc_goto_kernelmode for trap exception before call this
+ * function
+ * @param target Target address to run in kernel mode, 0 means next line of code
+ * @param sp Stack where the target address runs, 0 means using current stack
+ */
+extern void arc_goto_kernelmode(void *target, uint32_t *sp);
+
+/**
+ * @brief Trap exception entry used for arc_goto_kernelmode
+ *
+ * install this entry for trap exception before call arc_goto_kernelmode
+ */
+extern void exc_entry_arc_goto_kernelmode(void);
+
 #ifdef __cplusplus
 }
 #endif
