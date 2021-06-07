@@ -1,5 +1,5 @@
 /* ------------------------------------------
- * Copyright (c) 2017, Synopsys, Inc. All rights reserved.
+ * Copyright (c) 2017-2021, Synopsys, Inc. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
@@ -207,6 +207,9 @@ _s3_clear_bss_loop:
 	bset r0, r0, AUX_STATUS_BIT_SC
 	kflag r0
 #endif
+#endif
+#ifdef LIB_EMBARC_MLI
+	jl	_embarc_mli_startup
 #endif
 /* STAGE 3: go to main */
 

@@ -41,6 +41,10 @@ SECTIONS {
 		}
 	} > REGION_ROM
 
+#if defined(LIB_EMBARC_MLI)
+#include <linker_template_mli_mw.ld>
+#endif
+
 #if (REGION_XCCM_SIZE != 0)
 	GROUP (NOLOAD): {
 		.x_ccm ALIGN(8): {
