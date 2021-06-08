@@ -15,6 +15,7 @@ import queue
 import threading
 import re
 import glob
+import pathlib
 import shutil
 import copy
 import serial
@@ -350,7 +351,7 @@ class Platform:
                         continue
                     if mname not in mk_vars:
                         mk_vars[mname] = dict()
-                    var_content = line.split(maxsplit=2)        # key =|:= value
+                    var_content = line.split(maxsplit=2)
                     if len(var_content) == 3:
                         mk_vars[mname][var_content[0]] = var_content[2]
                         if var_content[0] == "ONCHIP_IP_LIST":
@@ -374,7 +375,7 @@ class Platform:
             logger.error("Fail to run command {}".format(cmd))
             sys.exit(ex.output.decode("utf-8"))
 
-    def _parse_core_props(self, version, tcf):
+    def _parse_core_props(self, version, core, tcf):
         configs = dict()
         tags = list()
         with open(tcf, "rb") as f:
@@ -395,24 +396,39 @@ class Platform:
                                 tags.append("smp")
                             continue
                         tags.append(self.platform_tags[key[12:]])
-        core = os.path.basename(tcf)
         if not version in self.configs:
             self.configs[version] = dict()
-        self.configs[version][core[0:-4]] = {
+        self.configs[version][core] = {
             "configs": configs,
             "tags": tags
         }
 
-    def get_cores(self, version):
+    def get_cores(self, example, version):
         cores = list()
+        cmd = ["make", "EMBARC_ROOT=%s" % EMBARC_ROOT]
+        cmd.append("BOARD=%s" % (self.name))
+        cmd.append("BD_VER=%s" % (version))
+        cmd.extend(["-C", example])
+        cmd.append("spopt")
+        try:
+            output = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+            if output:
+                opt_lines = output.decode("utf-8").splitlines()
+                for opt_line in opt_lines:
+                    if opt_line.startswith("SUPPORTED_CORES"):
+                        platforms_cores = opt_line.split(":", 1)[1]
+                        cores.extend(platforms_cores.split())
+                        break
+        except subprocess.CalledProcessError as ex:
+            logger.error("Fail to run command {}".format(cmd))
+            sys.exit(ex.output.decode("utf-8"))
         board_root = os.path.join(EMBARC_ROOT, "board", self.name)
-        for root, _, files in os.walk(board_root):
-            if version in root:
-                for file in files:
-                    if file.endswith(".tcf"):
-                        cores.append(os.path.splitext(file)[0])
-                        tcf = os.path.join(root, file)
-                        self._parse_core_props(version, tcf)
+        for file in pathlib.Path(board_root).glob('**/*.tcf'):
+            if version in str(file):
+                tcf = os.path.join(board_root, str(file))
+                for core in cores:
+                    if core in tcf:
+                        self._parse_core_props(version, core, tcf)
         return cores
 
     def __repr__(self):
@@ -1177,7 +1193,7 @@ class TestSuite(DisablePyTestCollectionMixin):
                 platform.get_configs(example_path)
                 versions = platform.supported_versions
                 for version in versions:
-                    cores = platform.get_cores(version)
+                    cores = platform.get_cores(example_path, version)
                     for core in cores:
                         platform.version = version
                         platform.core = core
