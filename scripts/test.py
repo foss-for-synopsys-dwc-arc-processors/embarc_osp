@@ -951,7 +951,7 @@ class ProjectBuilder:
 
     def build(self, **kwargs):
         kwargs['stdout'] = subprocess.PIPE
-        kwargs['stderr'] = subprocess.STDOUT
+        kwargs['stderr'] = subprocess.PIPE
 
         cmd = ["make", "BOARD=%s" % (self.platform.name),
                "BD_VER=%s" % (self.platform.version),
@@ -966,12 +966,13 @@ class ProjectBuilder:
         env = os.environ.copy()
 
         p = subprocess.Popen(cmd, cwd=self.build_dir, env=env, **kwargs)
-        out, _ = p.communicate()
+        out, err = p.communicate()
         if out:
             with open(os.path.join(self.build_dir, self.log), "a") as log:
                 log.write(out.decode())
                 if p.returncode:
-                    logger.debug(out.decode())
+                    log.write(err.decode())
+                    logger.debug(err.decode())
         results = {}
         msg = "build status: %s version %s core %s %s %s" % (
             self.platform.name,
