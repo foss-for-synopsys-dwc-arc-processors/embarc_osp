@@ -368,12 +368,10 @@ class Platform:
         cmd.append("BOARD=%s" % (self.name))
         cmd.extend(["-C", example, "-pn"])
         try:
-            output = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-            if output:
-                self._extract_mk_vars(output)
+            output = subprocess.check_output(cmd, stderr=subprocess.STDOUT) 
         except subprocess.CalledProcessError as ex:
-            logger.error("Fail to run command {}".format(cmd))
-            sys.exit(ex.output.decode("utf-8"))
+            output = ex.output
+        self._extract_mk_vars(output)
 
     def _parse_core_props(self, version, core, tcf):
         configs = dict()
@@ -458,6 +456,7 @@ class TestCase(DisablePyTestCollectionMixin):
         self.timeout = 300
         self.cases = []
         self.tags = list()
+        self.ignore_overflowed_error = False
         self.skip = False
         self.extra_args = None
 
@@ -966,13 +965,11 @@ class ProjectBuilder:
         env = os.environ.copy()
 
         p = subprocess.Popen(cmd, cwd=self.build_dir, env=env, **kwargs)
-        out, err = p.communicate()
+        out, errs = p.communicate()
         if out:
             with open(os.path.join(self.build_dir, self.log), "a") as log:
                 log.write(out.decode())
-                if p.returncode:
-                    log.write(err.decode())
-                    logger.debug(err.decode())
+                log.write(errs.decode())
         results = {}
         msg = "build status: %s version %s core %s %s %s" % (
             self.platform.name,
@@ -987,8 +984,15 @@ class ProjectBuilder:
             if not out:
                 return None
         else:
-            self.instance.status = "error"
-            self.instance.reason = "Build failure"
+            res = re.findall("region `(REGION_ICCM|REGION_DCCM)' overflowed by", errs.decode())
+            if res and self.instance.testcase.ignore_overflowed_error:
+                logger.debug("Test skipped due to {} Overflow".format(res[0]))
+                self.instance.status = "skipped"
+                self.instance.reason = "{} overflow".format(res[0])
+            else:
+                logger.debug(errs.decode())
+                self.instance.status = "error"
+                self.instance.reason = "Build failure"
 
             results = {
                 "returncode": p.returncode,
@@ -1137,6 +1141,7 @@ class TestSuite(DisablePyTestCollectionMixin):
                                     tc.extra_args = tc_filter.get("extra_args", [])
                                     tc_platform_exclude = tc_filter.get("platform_exclude", None)
                                     tc.build_only = tc_filter.get("build_only", False)
+                                    tc.ignore_overflowed_error = tc_filter.get("ignore_overflowed_error", False)
                                     if isinstance(tc_platform_exclude, str):
                                         tc.platform_exclude = [Platform(name) for name in tc_platform_exclude.split()]
                                     if isinstance(tc_platform_exclude, dict):
@@ -1154,7 +1159,7 @@ class TestSuite(DisablePyTestCollectionMixin):
                                             versions_allow = str(versions).split()
                                             for version in versions_allow:
                                                 tc.platform_allow.append(Platform(name, version=version))
-                                    tc.source_dir = dirpath
+                                    tc.source_dir = dirpath.replace(os.path.sep, '/')
                                     tc.cases.append(tc.id)
                                     self.testcases[tc.name] = tc
                             except Exception as e:
