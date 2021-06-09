@@ -150,7 +150,11 @@ endif
 
 OPENOCD_EXECUTABLE_ROOT = $(dir $(shell $(WHICH) openocd))
 ifeq ($(OPENOCD_EXECUTABLE_ROOT), )
+ifneq ($(MAKECMDGOALS), )
+ifeq ($(findstring $(MAKECMDGOALS),run gui),)
     $(info "Tool openocd - openocd doesn't exist, please install it!")
+endif
+endif
 else
     OPENOCD_SCRIPT_ROOT = $(OPENOCD_EXECUTABLE_ROOT)/share/openocd/scripts
 endif

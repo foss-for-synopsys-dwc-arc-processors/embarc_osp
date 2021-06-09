@@ -92,7 +92,7 @@ static void user_mode_func(void)
 	arc_kflag(0);
 	arc_goto_kernelmode(0, 0);
 
-	EMBARC_PRINTF("Memory Protection Test Done\n");
+	EMBARC_PRINTF("MPU Test Done\r\n");
 	while (1) {
 		;
 	}
