@@ -990,9 +990,15 @@ class ProjectBuilder:
                 self.instance.status = "skipped"
                 self.instance.reason = "{} overflow".format(res[0])
             else:
-                logger.debug(errs.decode())
-                self.instance.status = "error"
-                self.instance.reason = "Build failure"
+                res = re.findall("is not supported in secureshield", errs.decode())
+                if res:
+                    logger.debug("Test skipped due to platform doesn't support secureshield")
+                    self.instance.status = "skipped"
+                    self.instance.reason = "Unsupport secureshield"
+                else:
+                    logger.debug(errs.decode())
+                    self.instance.status = "error"
+                    self.instance.reason = "Build failure"
 
             results = {
                 "returncode": p.returncode,
@@ -1054,7 +1060,7 @@ class ProjectBuilder:
             else:
                 more_info = "build"
 
-        logger.info("{:>{}}/{} {:<5} {:<3} {:<5} {:<50} {} ({})".format(
+        logger.info("{:>{}}/{} {:<5} {:<3} {:<30} {:<50} {:>15} ({})".format(
             results.done, total_tests_width, total_to_do, instance.platform.name,
             instance.platform.version, instance.platform.core,
             instance.testcase.name, instance.status, more_info))
