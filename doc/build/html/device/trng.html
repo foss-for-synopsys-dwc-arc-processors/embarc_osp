@@ -1,43 +1,39 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>TRNG HAL &mdash; embARC 2019.06 documentation</title>
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
-
+  
   
   
 
   
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="PWM_TIMER HAL" href="pwm_timer.html" />
@@ -82,7 +78,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,7 +128,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -168,13 +162,11 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="device.html">Devices</a> &raquo;</li>
         
@@ -183,7 +175,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/device/trng.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -204,167 +196,141 @@ driver to implement. Here is a diagram for the trng interface.</p>
 <img alt="TRNG HAL" src="../_images/dev_trng_hal.jpg" />
 <div class="section" id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
-<dl>
-<dt class="sig sig-object cpp">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">DEVICE_HAL_TRNG_DEVSTRUCT</span></span></dt>
+<dl class="group">
+<dt>
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_TRNG_DEVSTRUCT</code></dt>
 <dd><p>Contains definitions of trng device interface structure. </p>
 <p>This structure will be used in user implemented code, which was called Device Driver Implement Layer for trng to use in implementation code. Application developer should use the TRNG API provided here to access to TRNG devices. BSP developer should follow the API definition to implement TRNG device drivers. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<p class="breathe-sectiondef-title rubric">Defines</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.DEV_TRNG_INFO_SET_EXTRA_OBJECT">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gab09960371ab78fc25db2c0c3271f2dfb"></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_TRNG_INFO_SET_EXTRA_OBJECT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">trng_info_ptr</span></span>, <span class="n"><span class="pre">extra_info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.DEV_TRNG_INFO_SET_EXTRA_OBJECT">
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gab09960371ab78fc25db2c0c3271f2dfb"></span><code class="sig-name descname">DEV_TRNG_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>trng_info_ptr</em>, <em>extra_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set extra information pointer of trng info. </p>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.DEV_TRNG_INFO_GET_EXTRA_OBJECT">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga3e1b027e9e19df14f940828cd2eacac3"></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_TRNG_INFO_GET_EXTRA_OBJECT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">trng_info_ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.DEV_TRNG_INFO_GET_EXTRA_OBJECT">
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga3e1b027e9e19df14f940828cd2eacac3"></span><code class="sig-name descname">DEV_TRNG_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>trng_info_ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_TRNG_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get extra information pointer of trng info. </p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv413DEV_TRNG_INFO">
-<span id="_CPPv313DEV_TRNG_INFO"></span><span id="_CPPv213DEV_TRNG_INFO"></span><span id="DEV_TRNG_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga9ad887f71481fc3ec6b4a913a6837d0a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info"><span class="n"><span class="pre">dev_trng_info</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEV_TRNG_INFO</span></span></span><a class="headerlink" href="#_CPPv413DEV_TRNG_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv413DEV_TRNG_INFO">
+<span id="_CPPv313DEV_TRNG_INFO"></span><span id="_CPPv213DEV_TRNG_INFO"></span><span id="DEV_TRNG_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga9ad887f71481fc3ec6b4a913a6837d0a"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info">dev_trng_info</a> <code class="sig-name descname">DEV_TRNG_INFO</code><a class="headerlink" href="#_CPPv413DEV_TRNG_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>TRNG information struct definition. </p>
 <p>informations about trng open count, working status, baudrate, trng registers and ctrl structure, trng dps format </p>
 </dd></dl>
 
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv417DEV_TRNG_INFO_PTR">
-<span id="_CPPv317DEV_TRNG_INFO_PTR"></span><span id="_CPPv217DEV_TRNG_INFO_PTR"></span><span id="DEV_TRNG_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga78deb4b193aea1614270c55d8d9ab5b3"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info"><span class="n"><span class="pre">dev_trng_info</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_TRNG_INFO_PTR</span></span></span><a class="headerlink" href="#_CPPv417DEV_TRNG_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv417DEV_TRNG_INFO_PTR">
+<span id="_CPPv317DEV_TRNG_INFO_PTR"></span><span id="_CPPv217DEV_TRNG_INFO_PTR"></span><span id="DEV_TRNG_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga78deb4b193aea1614270c55d8d9ab5b3"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_trng_info" title="dev_trng_info">dev_trng_info</a> *<code class="sig-name descname">DEV_TRNG_INFO_PTR</code><a class="headerlink" href="#_CPPv417DEV_TRNG_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv48DEV_TRNG">
-<span id="_CPPv38DEV_TRNG"></span><span id="_CPPv28DEV_TRNG"></span><span id="DEV_TRNG"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad76ef8e2bfd608b5fe53450e3e41cff4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48dev_trng" title="dev_trng"><span class="n"><span class="pre">dev_trng</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEV_TRNG</span></span></span><a class="headerlink" href="#_CPPv48DEV_TRNG" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv48DEV_TRNG">
+<span id="_CPPv38DEV_TRNG"></span><span id="_CPPv28DEV_TRNG"></span><span id="DEV_TRNG"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad76ef8e2bfd608b5fe53450e3e41cff4"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_trng" title="dev_trng">dev_trng</a> <code class="sig-name descname">DEV_TRNG</code><a class="headerlink" href="#_CPPv48DEV_TRNG" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv412DEV_TRNG_PTR">
-<span id="_CPPv312DEV_TRNG_PTR"></span><span id="_CPPv212DEV_TRNG_PTR"></span><span id="DEV_TRNG_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga8899a6956a8a5e626e659bf674a8f9e6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48dev_trng" title="dev_trng"><span class="n"><span class="pre">dev_trng</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_TRNG_PTR</span></span></span><a class="headerlink" href="#_CPPv412DEV_TRNG_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv412DEV_TRNG_PTR">
+<span id="_CPPv312DEV_TRNG_PTR"></span><span id="_CPPv212DEV_TRNG_PTR"></span><span id="DEV_TRNG_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga8899a6956a8a5e626e659bf674a8f9e6"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_trng" title="dev_trng">dev_trng</a> *<code class="sig-name descname">DEV_TRNG_PTR</code><a class="headerlink" href="#_CPPv412DEV_TRNG_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<p class="breathe-sectiondef-title rubric">Variables</p>
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv49trng_open">
-<span id="_CPPv39trng_open"></span><span id="_CPPv29trng_open"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga04c9d8c088c7010eb15c98c903d84a46"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">trng_open</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv49trng_open" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv49trng_open">
+<span id="_CPPv39trng_open"></span><span id="_CPPv29trng_open"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1ga04c9d8c088c7010eb15c98c903d84a46"></span>int32_t (*<code class="sig-name descname">trng_open</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49trng_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Open trng device</p>
-<p>open trng device </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns E_OK</dt>
-<dd class="field-odd"><p>Open successfully without any issues </p>
-</dd>
-<dt class="field-even">Returns E_OPNED</dt>
-<dd class="field-even"><p>If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid </p>
-</dd>
-<dt class="field-even">Returns E_PAR</dt>
-<dd class="field-even"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_NOSPT</dt>
-<dd class="field-odd"><p>Open settings are not supported </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv410trng_close">
-<span id="_CPPv310trng_close"></span><span id="_CPPv210trng_close"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gac0bedc6bb3255a9676ddb1acfdaec88f"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">trng_close</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv410trng_close" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Close trng device</p>
-<p>close an trng device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns E_OK</dt>
-<dd class="field-odd"><p>Close successfully without any issues(including scenario that device is already closed) </p>
-</dd>
-<dt class="field-even">Returns E_OPNED</dt>
-<dd class="field-even"><p>Device is still opened, the device opn_cnt decreased by 1 </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv412trng_control">
-<span id="_CPPv312trng_control"></span><span id="_CPPv212trng_control"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gaee9b6fb38769538998861284a95d38f1"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">trng_control</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ctrl_cmd</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv412trng_control" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Control trng device</p>
-<p>control an trng device [channel number: ch] by ctrl_cmd, with passed param. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ch</strong> – <strong>[in]</strong> channel number of trng to control, must &gt;= 0 </p></li>
-<li><p><strong>ctrl_cmd</strong> – <strong>[in]</strong> control command, to change or get some thing related to trng </p></li>
-<li><p><strong>param</strong> – <strong>[inout]</strong> parameters that maybe argument of the command, or return values of the command </p></li>
+<p>open trng device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns E_OK</dt>
-<dd class="field-even"><p>Control device successfully </p>
-</dd>
-<dt class="field-odd">Returns E_CLSED</dt>
-<dd class="field-odd"><p>Device is not opened </p>
-</dd>
-<dt class="field-even">Returns E_OBJ</dt>
-<dd class="field-even"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-odd">Returns E_PAR</dt>
-<dd class="field-odd"><p>Parameter is not valid for current control command </p>
-</dd>
-<dt class="field-even">Returns E_SYS</dt>
-<dd class="field-even"><p>Control device failed, due to hardware issues, such as device is disabled </p>
-</dd>
-<dt class="field-odd">Returns E_CTX</dt>
-<dd class="field-odd"><p>Control device failed, due to different reasons like in transfer state </p>
-</dd>
-<dt class="field-even">Returns E_NOSPT</dt>
-<dd class="field-even"><p>Control command is not supported or not valid </p>
-</dd>
 </dl>
+</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv49trng_read">
-<span id="_CPPv39trng_read"></span><span id="_CPPv29trng_read"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad41050fa27c5915ae7ea6540f3e9aea2"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">trng_read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data_buf</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv49trng_read" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Read data from trng device(blocked)</p>
-<p>read the configuration of trng. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data_buf</strong> – <strong>[out]</strong> pointer to data buffer read from trng, must not be NULL </p>
-</dd>
-<dt class="field-even">Returns E_OK</dt>
-<dd class="field-even"><p>Read device successfully </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-even">Returns E_PAR</dt>
-<dd class="field-even"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_SYS</dt>
-<dd class="field-odd"><p>Can’t receive data from hardware due to hardware issues, such as device is disabled </p>
+<dt id="_CPPv410trng_close">
+<span id="_CPPv310trng_close"></span><span id="_CPPv210trng_close"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gac0bedc6bb3255a9676ddb1acfdaec88f"></span>int32_t (*<code class="sig-name descname">trng_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410trng_close" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Close trng device</p>
+<p>close an trng device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+</ul>
 </dd>
 </dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv412trng_control">
+<span id="_CPPv312trng_control"></span><span id="_CPPv212trng_control"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gaee9b6fb38769538998861284a95d38f1"></span>int32_t (*<code class="sig-name descname">trng_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412trng_control" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Control trng device</p>
+<p>control an trng device [channel number: ch] by ctrl_cmd, with passed param. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ch</span></code>: channel number of trng to control, must &gt;= 0 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to trng </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command </p></li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv49trng_read">
+<span id="_CPPv39trng_read"></span><span id="_CPPv29trng_read"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___t_r_n_g___d_e_v_s_t_r_u_c_t_1gad41050fa27c5915ae7ea6540f3e9aea2"></span>int32_t (*<code class="sig-name descname">trng_read</code>)<span class="sig-paren">(</span>uint32_t *data_buf<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49trng_read" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Read data from trng device(blocked)</p>
+<p>read the configuration of trng. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data_buf</span></code>: pointer to data buffer read from trng, must not be NULL </p></li>
+</ul>
+</dd>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Read device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 </div>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv413dev_trng_info">
-<span id="_CPPv313dev_trng_info"></span><span id="_CPPv213dev_trng_info"></span><span id="dev_trng_info"></span><span class="target" id="structdev__trng__info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dev_trng_info</span></span></span><a class="headerlink" href="#_CPPv413dev_trng_info" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv413dev_trng_info">
+<span id="_CPPv313dev_trng_info"></span><span id="_CPPv213dev_trng_info"></span><span id="dev_trng_info"></span><span class="target" id="structdev__trng__info"></span><em class="property">struct </em><code class="sig-name descname">dev_trng_info</code><a class="headerlink" href="#_CPPv413dev_trng_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_trng.h&gt;</em><p>TRNG information struct definition. </p>
 <p>informations about trng open count, working status, baudrate, trng registers and ctrl structure, trng dps format </p>
 </dd></dl>
 
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv48dev_trng">
-<span id="_CPPv38dev_trng"></span><span id="_CPPv28dev_trng"></span><span id="dev_trng"></span><span class="target" id="structdev__trng"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dev_trng</span></span></span><a class="headerlink" href="#_CPPv48dev_trng" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv48dev_trng">
+<span id="_CPPv38dev_trng"></span><span id="_CPPv28dev_trng"></span><span id="dev_trng"></span><span class="target" id="structdev__trng"></span><em class="property">struct </em><code class="sig-name descname">dev_trng</code><a class="headerlink" href="#_CPPv48dev_trng" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -377,29 +343,29 @@ driver to implement. Here is a diagram for the trng interface.</p>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="pwm_timer.html" class="btn btn-neutral float-right" title="PWM_TIMER HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="wnic.html" class="btn btn-neutral float-left" title="WNIC HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="pwm_timer.html" class="btn btn-neutral float-right" title="PWM_TIMER HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="wnic.html" class="btn btn-neutral float-left" title="WNIC HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2019, Synopsys.
+        &copy; Copyright 2019, Synopsys
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -407,6 +373,7 @@ driver to implement. Here is a diagram for the trng interface.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

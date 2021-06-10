@@ -1,43 +1,39 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>UART HAL &mdash; embARC 2019.06 documentation</title>
   
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
-
+  
   
   
 
   
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="SDIO HAL" href="sdio.html" />
@@ -82,7 +78,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -133,7 +128,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -168,13 +162,11 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="device.html">Devices</a> &raquo;</li>
         
@@ -183,7 +175,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/device/uart.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -204,210 +196,177 @@ driver to implement. Here is a diagram for the uart interface.</p>
 <img alt="UART HAL" src="../_images/dev_uart_hal.jpg" />
 <div class="section" id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
-<dl>
-<dt class="sig sig-object cpp">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">DEVICE_HAL_UART_DEVSTRUCT</span></span></dt>
+<dl class="group">
+<dt>
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t"></span><em>group</em> <code class="sig-name descname">DEVICE_HAL_UART_DEVSTRUCT</code></dt>
 <dd><p>Contains definitions of uart device interface structure. </p>
 <p>This structure will be used in user implemented code, which was called Device Driver Implement Layer for uart to use in implementation code. Application developer should use the UART API provided here to access to UART devices. BSP developer should follow the API definition to implement UART device drivers. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<p class="breathe-sectiondef-title rubric">Defines</p>
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.DEV_UART_INFO_SET_EXTRA_OBJECT">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga6150a860d3b101329e8521e178e3df38"></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_UART_INFO_SET_EXTRA_OBJECT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uart_info_ptr</span></span>, <span class="n"><span class="pre">extra_info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_UART_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.DEV_UART_INFO_SET_EXTRA_OBJECT">
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga6150a860d3b101329e8521e178e3df38"></span><code class="sig-name descname">DEV_UART_INFO_SET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>uart_info_ptr</em>, <em>extra_info</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_UART_INFO_SET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set extra information pointer of uart info. </p>
 </dd></dl>
 
 <dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.DEV_UART_INFO_GET_EXTRA_OBJECT">
-<span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga62092f9afef6b9e2e7c6f27623ba87ff"></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_UART_INFO_GET_EXTRA_OBJECT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uart_info_ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_UART_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="c.DEV_UART_INFO_GET_EXTRA_OBJECT">
+<span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga62092f9afef6b9e2e7c6f27623ba87ff"></span><code class="sig-name descname">DEV_UART_INFO_GET_EXTRA_OBJECT</code><span class="sig-paren">(</span><em>uart_info_ptr</em><span class="sig-paren">)</span><a class="headerlink" href="#c.DEV_UART_INFO_GET_EXTRA_OBJECT" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get extra information pointer of uart info. </p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<p class="breathe-sectiondef-title rubric">Typedefs</p>
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv413DEV_UART_INFO">
-<span id="_CPPv313DEV_UART_INFO"></span><span id="_CPPv213DEV_UART_INFO"></span><span id="DEV_UART_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413dev_uart_info" title="dev_uart_info"><span class="n"><span class="pre">dev_uart_info</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEV_UART_INFO</span></span></span><a class="headerlink" href="#_CPPv413DEV_UART_INFO" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv413DEV_UART_INFO">
+<span id="_CPPv313DEV_UART_INFO"></span><span id="_CPPv213DEV_UART_INFO"></span><span id="DEV_UART_INFO"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gad3367f6deb377a74d2856e07762424bc"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_uart_info" title="dev_uart_info">dev_uart_info</a> <code class="sig-name descname">DEV_UART_INFO</code><a class="headerlink" href="#_CPPv413DEV_UART_INFO" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>UART information struct definition. </p>
 <p>informations about uart open count, working status, baudrate, uart registers and ctrl structure, uart dps format </p>
 </dd></dl>
 
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv417DEV_UART_INFO_PTR">
-<span id="_CPPv317DEV_UART_INFO_PTR"></span><span id="_CPPv217DEV_UART_INFO_PTR"></span><span id="DEV_UART_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gac52b13f4483cb9248ab45bedd427a483"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413dev_uart_info" title="dev_uart_info"><span class="n"><span class="pre">dev_uart_info</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_UART_INFO_PTR</span></span></span><a class="headerlink" href="#_CPPv417DEV_UART_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv417DEV_UART_INFO_PTR">
+<span id="_CPPv317DEV_UART_INFO_PTR"></span><span id="_CPPv217DEV_UART_INFO_PTR"></span><span id="DEV_UART_INFO_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gac52b13f4483cb9248ab45bedd427a483"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv413dev_uart_info" title="dev_uart_info">dev_uart_info</a> *<code class="sig-name descname">DEV_UART_INFO_PTR</code><a class="headerlink" href="#_CPPv417DEV_UART_INFO_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv48DEV_UART">
-<span id="_CPPv38DEV_UART"></span><span id="_CPPv28DEV_UART"></span><span id="DEV_UART"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8e8dd2c66ea7a119aec01e976ff4d6b4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48dev_uart" title="dev_uart"><span class="n"><span class="pre">dev_uart</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEV_UART</span></span></span><a class="headerlink" href="#_CPPv48DEV_UART" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv48DEV_UART">
+<span id="_CPPv38DEV_UART"></span><span id="_CPPv28DEV_UART"></span><span id="DEV_UART"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8e8dd2c66ea7a119aec01e976ff4d6b4"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_uart" title="dev_uart">dev_uart</a> <code class="sig-name descname">DEV_UART</code><a class="headerlink" href="#_CPPv48DEV_UART" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>UART device interface definition. </p>
-<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All this details are implemented by user in user porting code </p>
-</div>
+<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv412DEV_UART_PTR">
-<span id="_CPPv312DEV_UART_PTR"></span><span id="_CPPv212DEV_UART_PTR"></span><span id="DEV_UART_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga7fde4b7e17e3ec14c087fd9fe68ca838"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48dev_uart" title="dev_uart"><span class="n"><span class="pre">dev_uart</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">DEV_UART_PTR</span></span></span><a class="headerlink" href="#_CPPv412DEV_UART_PTR" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv412DEV_UART_PTR">
+<span id="_CPPv312DEV_UART_PTR"></span><span id="_CPPv212DEV_UART_PTR"></span><span id="DEV_UART_PTR"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga7fde4b7e17e3ec14c087fd9fe68ca838"></span><em class="property">typedef </em><em class="property">struct</em> <a class="reference internal" href="#_CPPv48dev_uart" title="dev_uart">dev_uart</a> *<code class="sig-name descname">DEV_UART_PTR</code><a class="headerlink" href="#_CPPv412DEV_UART_PTR" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<p class="breathe-sectiondef-title rubric">Variables</p>
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv49uart_open">
-<span id="_CPPv39uart_open"></span><span id="_CPPv29uart_open"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga00f4f8769a030124d548f65895d2ff87"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uart_open</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">baud</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv49uart_open" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv49uart_open">
+<span id="_CPPv39uart_open"></span><span id="_CPPv29uart_open"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga00f4f8769a030124d548f65895d2ff87"></span>int32_t (*<code class="sig-name descname">uart_open</code>)<span class="sig-paren">(</span>uint32_t baud<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49uart_open" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Open uart device</p>
-<p>open an uart device with defined baudrate </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>baud</strong> – <strong>[in]</strong> initial baudrate of uart, must &gt; 0 </p>
+<p>open an uart device with defined baudrate <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">baud</span></code>: initial baudrate of uart, must &gt; 0 </p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns E_OK</dt>
-<dd class="field-even"><p>Open successfully without any issues </p>
-</dd>
-<dt class="field-odd">Returns E_OPNED</dt>
-<dd class="field-odd"><p>If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p>
-</dd>
-<dt class="field-even">Returns E_OBJ</dt>
-<dd class="field-even"><p>Device object is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_PAR</dt>
-<dd class="field-odd"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-even">Returns E_NOSPT</dt>
-<dd class="field-even"><p>Open settings are not supported </p>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Open successfully without any issues </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: If device was opened before with different parameters, then just increase the opn_cnt and return E_OPNED </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Open settings are not supported </p></li>
+</ul>
 </dd>
 </dl>
+</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv410uart_close">
-<span id="_CPPv310uart_close"></span><span id="_CPPv210uart_close"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gae615fe682e9ce8147c0f31b40dfc6438"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uart_close</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv410uart_close" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv410uart_close">
+<span id="_CPPv310uart_close"></span><span id="_CPPv210uart_close"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gae615fe682e9ce8147c0f31b40dfc6438"></span>int32_t (*<code class="sig-name descname">uart_close</code>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410uart_close" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Close uart device</p>
-<p>close an uart device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns E_OK</dt>
-<dd class="field-odd"><p>Close successfully without any issues(including scenario that device is already closed) </p>
-</dd>
-<dt class="field-even">Returns E_OPNED</dt>
-<dd class="field-even"><p>Device is still opened, the device opn_cnt decreased by 1 </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid </p>
+<p>close an uart device, just decrease the opn_cnt, if opn_cnt equals 0, then close the device <dl class="simple">
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Close successfully without any issues(including scenario that device is already closed) </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OPNED</span></code>: Device is still opened, the device opn_cnt decreased by 1 </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid </p></li>
+</ul>
 </dd>
 </dl>
+</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv412uart_control">
-<span id="_CPPv312uart_control"></span><span id="_CPPv212uart_control"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga7cd1bf12f5d9ca4663980883d01c092a"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uart_control</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ctrl_cmd</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv412uart_control" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv412uart_control">
+<span id="_CPPv312uart_control"></span><span id="_CPPv212uart_control"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga7cd1bf12f5d9ca4663980883d01c092a"></span>int32_t (*<code class="sig-name descname">uart_control</code>)<span class="sig-paren">(</span>uint32_t ctrl_cmd, void *param<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412uart_control" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Control uart device</p>
-<p>control an uart device by ctrl_cmd, with passed param. you can control uart device using predefined uart control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as change baudrate, flush output and more. And you can also control uart device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own uart device driver implementation. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ctrl_cmd</strong> – <strong>[in]</strong> control command, to change or get some thing related to uart </p></li>
-<li><p><strong>param</strong> – <strong>[inout]</strong> parameters that maybe argument of the command, or return values of the command </p></li>
+<p>control an uart device by ctrl_cmd, with passed param. you can control uart device using predefined uart control commands defined using DEV_SET_SYSCMD (which must be implemented by bsp developer), such as change baudrate, flush output and more. And you can also control uart device using your own specified commands defined using DEV_SET_USRCMD, but these specified commands should be defined in your own uart device driver implementation. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ctrl_cmd</span></code>: control command, to change or get some thing related to uart </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[inout]</span> <span class="pre">param</span></code>: parameters that maybe argument of the command, or return values of the command </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns E_OK</dt>
-<dd class="field-even"><p>Control device successfully </p>
-</dd>
-<dt class="field-odd">Returns E_CLSED</dt>
-<dd class="field-odd"><p>Device is not opened </p>
-</dd>
-<dt class="field-even">Returns E_OBJ</dt>
-<dd class="field-even"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-odd">Returns E_PAR</dt>
-<dd class="field-odd"><p>Parameter is not valid for current control command </p>
-</dd>
-<dt class="field-even">Returns E_SYS</dt>
-<dd class="field-even"><p>Control device failed, due to hardware issues, such as device is disabled </p>
-</dd>
-<dt class="field-odd">Returns E_CTX</dt>
-<dd class="field-odd"><p>Control device failed, due to different reasons like in transfer state </p>
-</dd>
-<dt class="field-even">Returns E_NOSPT</dt>
-<dd class="field-even"><p>Control command is not supported or not valid </p>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OK</span></code>: Control device successfully </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CLSED</span></code>: Device is not opened </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid for current control command </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Control device failed, due to hardware issues, such as device is disabled </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_CTX</span></code>: Control device failed, due to different reasons like in transfer state </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_NOSPT</span></code>: Control command is not supported or not valid </p></li>
+</ul>
 </dd>
 </dl>
+</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv410uart_write">
-<span id="_CPPv310uart_write"></span><span id="_CPPv210uart_write"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gadb3f65e65636442af53578c64f2ea2a4"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uart_write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv410uart_write" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv410uart_write">
+<span id="_CPPv310uart_write"></span><span id="_CPPv210uart_write"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1gadb3f65e65636442af53578c64f2ea2a4"></span>int32_t (*<code class="sig-name descname">uart_write</code>)<span class="sig-paren">(</span><em class="property">const</em> void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410uart_write" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Send data by uart device(blocked)</p>
-<p>send data through uart with defined len(blocked). </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – <strong>[in]</strong> pointer to data need to send by uart, must not be NULL </p></li>
-<li><p><strong>len</strong> – <strong>[in]</strong> length of data to be sent, must &gt; 0 </p></li>
+<p>send data through uart with defined len(blocked). <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">data</span></code>: pointer to data need to send by uart, must not be NULL </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be sent, must &gt; 0 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns &gt;0</dt>
-<dd class="field-even"><p>Byte count that was successfully sent for poll method </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-even">Returns E_PAR</dt>
-<dd class="field-even"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_SYS</dt>
-<dd class="field-odd"><p>Can’t write data to hardware due to hardware issues, such as device is disabled </p>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully sent for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t write data to hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
 </dd>
 </dl>
+</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv49uart_read">
-<span id="_CPPv39uart_read"></span><span id="_CPPv29uart_read"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8fa470ea11eca6e728e802b64501cbb5"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">uart_read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv49uart_read" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv49uart_read">
+<span id="_CPPv39uart_read"></span><span id="_CPPv29uart_read"></span><span class="target" id="group___d_e_v_i_c_e___h_a_l___u_a_r_t___d_e_v_s_t_r_u_c_t_1ga8fa470ea11eca6e728e802b64501cbb5"></span>int32_t (*<code class="sig-name descname">uart_read</code>)<span class="sig-paren">(</span>void *data, uint32_t len<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49uart_read" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read data from uart device(blocked)</p>
-<p>receive data of defined len through uart(blocked). </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – <strong>[out]</strong> pointer to data need to received by uart, must not be NULL </p></li>
-<li><p><strong>len</strong> – <strong>[in]</strong> length of data to be received, must &gt; 0 </p></li>
+<p>receive data of defined len through uart(blocked). <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">data</span></code>: pointer to data need to received by uart, must not be NULL </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">len</span></code>: length of data to be received, must &gt; 0 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns &gt;0</dt>
-<dd class="field-even"><p>Byte count that was successfully received for poll method </p>
-</dd>
-<dt class="field-odd">Returns E_OBJ</dt>
-<dd class="field-odd"><p>Device object is not valid or not exists </p>
-</dd>
-<dt class="field-even">Returns E_PAR</dt>
-<dd class="field-even"><p>Parameter is not valid </p>
-</dd>
-<dt class="field-odd">Returns E_SYS</dt>
-<dd class="field-odd"><p>Can’t receive data from hardware due to hardware issues, such as device is disabled </p>
+<dt><strong>Return Value</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Byte count that was successfully received for poll method </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_OBJ</span></code>: Device object is not valid or not exists </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_PAR</span></code>: Parameter is not valid </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_SYS</span></code>: Can’t receive data from hardware due to hardware issues, such as device is disabled </p></li>
+</ul>
 </dd>
 </dl>
+</p>
 </dd></dl>
 
 </div>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv413dev_uart_info">
-<span id="_CPPv313dev_uart_info"></span><span id="_CPPv213dev_uart_info"></span><span id="dev_uart_info"></span><span class="target" id="structdev__uart__info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dev_uart_info</span></span></span><a class="headerlink" href="#_CPPv413dev_uart_info" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv413dev_uart_info">
+<span id="_CPPv313dev_uart_info"></span><span id="_CPPv213dev_uart_info"></span><span id="dev_uart_info"></span><span class="target" id="structdev__uart__info"></span><em class="property">struct </em><code class="sig-name descname">dev_uart_info</code><a class="headerlink" href="#_CPPv413dev_uart_info" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_uart.h&gt;</em><p>UART information struct definition. </p>
 <p>informations about uart open count, working status, baudrate, uart registers and ctrl structure, uart dps format </p>
 </dd></dl>
 
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv48dev_uart">
-<span id="_CPPv38dev_uart"></span><span id="_CPPv28dev_uart"></span><span id="dev_uart"></span><span class="target" id="structdev__uart"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dev_uart</span></span></span><a class="headerlink" href="#_CPPv48dev_uart" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv48dev_uart">
+<span id="_CPPv38dev_uart"></span><span id="_CPPv28dev_uart"></span><span id="dev_uart"></span><span class="target" id="structdev__uart"></span><em class="property">struct </em><code class="sig-name descname">dev_uart</code><a class="headerlink" href="#_CPPv48dev_uart" title="Permalink to this definition">¶</a><br /></dt>
 <dd><em>#include &lt;dev_uart.h&gt;</em><p>UART device interface definition. </p>
-<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All this details are implemented by user in user porting code </p>
-</div>
+<p>Define uart device interface, like uart information structure, provide functions to open/close/control uart, send/receive data by uart <dl class="simple">
+<dt><strong>Note</strong></dt><dd><p>All this details are implemented by user in user porting code </p>
+</dd>
+</dl>
 </p>
 </dd></dl>
 
@@ -421,29 +380,29 @@ driver to implement. Here is a diagram for the uart interface.</p>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="sdio.html" class="btn btn-neutral float-right" title="SDIO HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="spi.html" class="btn btn-neutral float-left" title="SPI HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="sdio.html" class="btn btn-neutral float-right" title="SDIO HAL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spi.html" class="btn btn-neutral float-left" title="SPI HAL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2019, Synopsys.
+        &copy; Copyright 2019, Synopsys
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -451,6 +410,7 @@ driver to implement. Here is a diagram for the uart interface.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
