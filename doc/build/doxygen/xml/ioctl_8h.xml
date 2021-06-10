@@ -24,8 +24,44 @@
       <node id="5636">
         <label>stdbool.h</label>
       </node>
+      <node id="5639">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="5632" relation="include">
+        </childnode>
+      </node>
+      <node id="5637">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="5638" relation="include">
+        </childnode>
+      </node>
       <node id="5633">
         <label>stdint.h</label>
+      </node>
+      <node id="5630">
+        <label>ioctl.h</label>
+        <link refid="ioctl.h"/>
+        <childnode refid="5631" relation="include">
+        </childnode>
+        <childnode refid="5639" relation="include">
+        </childnode>
+      </node>
+      <node id="5635">
+        <label>stddef.h</label>
+      </node>
+      <node id="5634">
+        <label>limits.h</label>
+      </node>
+      <node id="5631">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="5632" relation="include">
+        </childnode>
+        <childnode refid="5637" relation="include">
+        </childnode>
+        <childnode refid="5639" relation="include">
+        </childnode>
       </node>
       <node id="5632">
         <label>embARC_toolchain.h</label>
@@ -39,93 +75,23 @@
         <childnode refid="5636" relation="include">
         </childnode>
       </node>
-      <node id="5637">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="5638" relation="include">
-        </childnode>
-      </node>
-      <node id="5635">
-        <label>stddef.h</label>
-      </node>
-      <node id="5634">
-        <label>limits.h</label>
-      </node>
       <node id="5638">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
       </node>
-      <node id="5631">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="5632" relation="include">
-        </childnode>
-        <childnode refid="5637" relation="include">
-        </childnode>
-        <childnode refid="5639" relation="include">
-        </childnode>
-      </node>
-      <node id="5630">
-        <label>ioctl.h</label>
-        <link refid="ioctl.h"/>
-        <childnode refid="5631" relation="include">
-        </childnode>
-        <childnode refid="5639" relation="include">
-        </childnode>
-      </node>
-      <node id="5639">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="5632" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5657">
-        <label>i2c_master.c</label>
-        <link refid="i2c__master_8c_source"/>
+      <node id="5646">
+        <label>gpio.c</label>
+        <link refid="gpio_8c_source"/>
       </node>
-      <node id="5656">
-        <label>i2c_master.h</label>
-        <link refid="i2c__master_8h_source"/>
-        <childnode refid="5657" relation="include">
+      <node id="5645">
+        <label>gpio.h</label>
+        <link refid="gpio_8h_source"/>
+        <childnode refid="5646" relation="include">
         </childnode>
-        <childnode refid="5658" relation="include">
+        <childnode refid="5647" relation="include">
         </childnode>
-      </node>
-      <node id="5642">
-        <label>adc.c</label>
-        <link refid="adc_8c_source"/>
-      </node>
-      <node id="5641">
-        <label>adc.h</label>
-        <link refid="adc_8h_source"/>
-        <childnode refid="5642" relation="include">
-        </childnode>
-      </node>
-      <node id="5650">
-        <label>ss_i2s_master.c</label>
-        <link refid="ss__i2s__master_8c_source"/>
-      </node>
-      <node id="5647">
-        <label>ss_gpio.c</label>
-        <link refid="ss__gpio_8c_source"/>
-      </node>
-      <node id="5667">
-        <label>spi_master.c</label>
-        <link refid="spi__master_8c_source"/>
-      </node>
-      <node id="5666">
-        <label>spi_master.h</label>
-        <link refid="spi__master_8h_source"/>
-        <childnode refid="5667" relation="include">
-        </childnode>
-        <childnode refid="5668" relation="include">
-        </childnode>
-      </node>
-      <node id="5658">
-        <label>ss_i2c_master.c</label>
-        <link refid="ss__i2c__master_8c_source"/>
       </node>
       <node id="5640">
         <label>ioctl.h</label>
@@ -163,6 +129,98 @@
         <childnode refid="5672" relation="include">
         </childnode>
       </node>
+      <node id="5668">
+        <label>ss_spi_master.c</label>
+        <link refid="ss__spi__master_8c_source"/>
+      </node>
+      <node id="5660">
+        <label>i2c_slave.c</label>
+        <link refid="i2c__slave_8c_source"/>
+      </node>
+      <node id="5661">
+        <label>i2c_slave.h</label>
+        <link refid="i2c__slave_8h_source"/>
+        <childnode refid="5660" relation="include">
+        </childnode>
+      </node>
+      <node id="5644">
+        <label>dac.c</label>
+        <link refid="dac_8c_source"/>
+      </node>
+      <node id="5643">
+        <label>dac.h</label>
+        <link refid="dac_8h_source"/>
+        <childnode refid="5644" relation="include">
+        </childnode>
+      </node>
+      <node id="5670">
+        <label>spi_slave.c</label>
+        <link refid="spi__slave_8c_source"/>
+      </node>
+      <node id="5671">
+        <label>spi_slave.h</label>
+        <link refid="spi__slave_8h_source"/>
+        <childnode refid="5670" relation="include">
+        </childnode>
+      </node>
+      <node id="5663">
+        <label>pdm_rx.c</label>
+        <link refid="pdm__rx_8c_source"/>
+      </node>
+      <node id="5658">
+        <label>ss_i2c_master.c</label>
+        <link refid="ss__i2c__master_8c_source"/>
+      </node>
+      <node id="5662">
+        <label>pdm_rx.h</label>
+        <link refid="pdm__rx_8h_source"/>
+        <childnode refid="5663" relation="include">
+        </childnode>
+      </node>
+      <node id="5654">
+        <label>i3c_master.c</label>
+        <link refid="i3c__master_8c_source"/>
+      </node>
+      <node id="5653">
+        <label>i3c_master.h</label>
+        <link refid="i3c__master_8h_source"/>
+        <childnode refid="5654" relation="include">
+        </childnode>
+      </node>
+      <node id="5650">
+        <label>ss_i2s_master.c</label>
+        <link refid="ss__i2s__master_8c_source"/>
+      </node>
+      <node id="5667">
+        <label>spi_master.c</label>
+        <link refid="spi__master_8c_source"/>
+      </node>
+      <node id="5666">
+        <label>spi_master.h</label>
+        <link refid="spi__master_8h_source"/>
+        <childnode refid="5667" relation="include">
+        </childnode>
+        <childnode refid="5668" relation="include">
+        </childnode>
+      </node>
+      <node id="5652">
+        <label>i2s_tx_master.c</label>
+        <link refid="i2s__tx__master_8c_source"/>
+      </node>
+      <node id="5655">
+        <label>i3c_priv.h</label>
+        <link refid="i3c__priv_8h_source"/>
+        <childnode refid="5654" relation="include">
+        </childnode>
+      </node>
+      <node id="5651">
+        <label>i2s_tx_master.h</label>
+        <link refid="i2s__tx__master_8h_source"/>
+        <childnode refid="5652" relation="include">
+        </childnode>
+        <childnode refid="5650" relation="include">
+        </childnode>
+      </node>
       <node id="5669">
         <label>spi_priv.h</label>
         <link refid="spi__priv_8h_source"/>
@@ -183,14 +241,16 @@
         <childnode refid="5650" relation="include">
         </childnode>
       </node>
-      <node id="5644">
-        <label>dac.c</label>
-        <link refid="dac_8c_source"/>
+      <node id="5657">
+        <label>i2c_master.c</label>
+        <link refid="i2c__master_8c_source"/>
       </node>
-      <node id="5643">
-        <label>dac.h</label>
-        <link refid="dac_8h_source"/>
-        <childnode refid="5644" relation="include">
+      <node id="5656">
+        <label>i2c_master.h</label>
+        <link refid="i2c__master_8h_source"/>
+        <childnode refid="5657" relation="include">
+        </childnode>
+        <childnode refid="5658" relation="include">
         </childnode>
       </node>
       <node id="5665">
@@ -203,69 +263,13 @@
         <childnode refid="5665" relation="include">
         </childnode>
       </node>
-      <node id="5668">
-        <label>ss_spi_master.c</label>
-        <link refid="ss__spi__master_8c_source"/>
-      </node>
-      <node id="5673">
-        <label>ss_uart.c</label>
-        <link refid="ss__uart_8c_source"/>
-      </node>
-      <node id="5660">
-        <label>i2c_slave.c</label>
-        <link refid="i2c__slave_8c_source"/>
-      </node>
-      <node id="5661">
-        <label>i2c_slave.h</label>
-        <link refid="i2c__slave_8h_source"/>
-        <childnode refid="5660" relation="include">
-        </childnode>
-      </node>
-      <node id="5652">
-        <label>i2s_tx_master.c</label>
-        <link refid="i2s__tx__master_8c_source"/>
-      </node>
-      <node id="5651">
-        <label>i2s_tx_master.h</label>
-        <link refid="i2s__tx__master_8h_source"/>
-        <childnode refid="5652" relation="include">
-        </childnode>
-        <childnode refid="5650" relation="include">
-        </childnode>
-      </node>
-      <node id="5670">
-        <label>spi_slave.c</label>
-        <link refid="spi__slave_8c_source"/>
-      </node>
-      <node id="5671">
-        <label>spi_slave.h</label>
-        <link refid="spi__slave_8h_source"/>
-        <childnode refid="5670" relation="include">
-        </childnode>
-      </node>
-      <node id="5654">
-        <label>i3c_master.c</label>
-        <link refid="i3c__master_8c_source"/>
-      </node>
-      <node id="5653">
-        <label>i3c_master.h</label>
-        <link refid="i3c__master_8h_source"/>
-        <childnode refid="5654" relation="include">
-        </childnode>
-      </node>
-      <node id="5663">
-        <label>pdm_rx.c</label>
-        <link refid="pdm__rx_8c_source"/>
+      <node id="5647">
+        <label>ss_gpio.c</label>
+        <link refid="ss__gpio_8c_source"/>
       </node>
       <node id="5674">
         <label>uart.c</label>
         <link refid="uart_8c_source"/>
-      </node>
-      <node id="5662">
-        <label>pdm_rx.h</label>
-        <link refid="pdm__rx_8h_source"/>
-        <childnode refid="5663" relation="include">
-        </childnode>
       </node>
       <node id="5672">
         <label>uart.h</label>
@@ -275,22 +279,14 @@
         <childnode refid="5674" relation="include">
         </childnode>
       </node>
-      <node id="5655">
-        <label>i3c_priv.h</label>
-        <link refid="i3c__priv_8h_source"/>
-        <childnode refid="5654" relation="include">
-        </childnode>
+      <node id="5642">
+        <label>adc.c</label>
+        <link refid="adc_8c_source"/>
       </node>
-      <node id="5646">
-        <label>gpio.c</label>
-        <link refid="gpio_8c_source"/>
-      </node>
-      <node id="5645">
-        <label>gpio.h</label>
-        <link refid="gpio_8h_source"/>
-        <childnode refid="5646" relation="include">
-        </childnode>
-        <childnode refid="5647" relation="include">
+      <node id="5641">
+        <label>adc.h</label>
+        <link refid="adc_8h_source"/>
+        <childnode refid="5642" relation="include">
         </childnode>
       </node>
       <node id="5659">
@@ -302,6 +298,10 @@
         </childnode>
         <childnode refid="5658" relation="include">
         </childnode>
+      </node>
+      <node id="5673">
+        <label>ss_uart.c</label>
+        <link refid="ss__uart_8c_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structio__cb__t" prot="public">io_cb_t</innerclass>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="44" column="13" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="44" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="44" column="13" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="ioctl_8h_1a5af61a2ac8df8eea2cdabcee0eda1f42" prot="public" static="no">
         <name>IO_SET_CB_TX</name>
@@ -326,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="45" column="13" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="45" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="45" column="13" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="ioctl_8h_1a6c28797a422f0fff30a061d0c0381238" prot="public" static="no">
         <name>IO_SET_CB_ERR</name>
@@ -337,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="46" column="13" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="46" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="46" column="13" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="ioctl_8h_1a77eacd05c23b45f2f6ac237786548415" prot="public" static="no">
         <name>_Interrupt</name>
@@ -347,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="54" column="10" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="54" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="54" column="10" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="ioctl_8h_1a4c9c02099640ab3793786fbd96c68669" prot="public" static="no">
         <name>_setvecti</name>
@@ -360,7 +360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="56" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -375,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="37" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="37" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" line="37" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -453,6 +453,6 @@
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/ip_hal/inc/ioctl.h"/>
   </compounddef>
 </doxygen>

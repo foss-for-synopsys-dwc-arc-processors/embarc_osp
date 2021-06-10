@@ -9,6 +9,18 @@
       <node id="3614">
         <label>stdbool.h</label>
       </node>
+      <node id="3617">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3611" relation="include">
+        </childnode>
+      </node>
+      <node id="3615">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="3616" relation="include">
+        </childnode>
+      </node>
       <node id="3609">
         <label>stdint.h</label>
       </node>
@@ -20,39 +32,11 @@
         <childnode refid="3610" relation="include">
         </childnode>
       </node>
-      <node id="3611">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="3609" relation="include">
-        </childnode>
-        <childnode refid="3612" relation="include">
-        </childnode>
-        <childnode refid="3613" relation="include">
-        </childnode>
-        <childnode refid="3614" relation="include">
-        </childnode>
-      </node>
-      <node id="3615">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="3616" relation="include">
-        </childnode>
-      </node>
       <node id="3613">
         <label>stddef.h</label>
       </node>
       <node id="3612">
         <label>limits.h</label>
-      </node>
-      <node id="3616">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="3607">
-        <label>dev_spi.h</label>
-        <link refid="dev__spi_8h"/>
-        <childnode refid="3608" relation="include">
-        </childnode>
       </node>
       <node id="3610">
         <label>arc_exception.h</label>
@@ -70,39 +54,59 @@
         <childnode refid="3606" relation="include">
         </childnode>
       </node>
+      <node id="3607">
+        <label>dev_spi.h</label>
+        <link refid="dev__spi_8h"/>
+        <childnode refid="3608" relation="include">
+        </childnode>
+      </node>
+      <node id="3611">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
+        <childnode refid="3609" relation="include">
+        </childnode>
+        <childnode refid="3612" relation="include">
+        </childnode>
+        <childnode refid="3613" relation="include">
+        </childnode>
+        <childnode refid="3614" relation="include">
+        </childnode>
+      </node>
       <node id="3608">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
         <childnode refid="3609" relation="include">
         </childnode>
       </node>
-      <node id="3617">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3611" relation="include">
-        </childnode>
+      <node id="3616">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3626">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
+      <node id="3622">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="3621">
         <label>emsdp_io.c</label>
         <link refid="emsdp__io_8c_source"/>
       </node>
-      <node id="3627">
-        <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
-      </node>
       <node id="3625">
         <label>dw_uart_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
       </node>
-      <node id="3622">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      <node id="3619">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
+      </node>
+      <node id="3618">
+        <label>dw_spi_obj.h</label>
+        <link refid="emsdp/drivers/ip/designware/spi/dw_spi_obj.h"/>
+        <childnode refid="3619" relation="include">
+        </childnode>
+        <childnode refid="3620" relation="include">
+        </childnode>
       </node>
       <node id="3620">
         <label>emsdp.h</label>
@@ -124,25 +128,21 @@
         <childnode refid="3627" relation="include">
         </childnode>
       </node>
+      <node id="3624">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="3626">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
       <node id="3623">
         <label>dw_sdio_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="3619">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
-      </node>
-      <node id="3618">
-        <label>dw_spi_obj.h</label>
-        <link refid="emsdp/drivers/ip/designware/spi/dw_spi_obj.h"/>
-        <childnode refid="3619" relation="include">
-        </childnode>
-        <childnode refid="3620" relation="include">
-        </childnode>
-      </node>
-      <node id="3624">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
+      <node id="3627">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -155,7 +155,7 @@
 <para>DesignWare SPI valid number </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="35" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="35" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="35" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_1a4d4261604502419dcea7dc53e2a889ca" prot="public" static="no">
         <name>DW_SPI_BASE_ID</name>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_1a906ed6ea818fb3ea7b3b52f174751ec2" prot="public" static="no">
         <name>DW_SPI_0_ID</name>
@@ -177,7 +177,7 @@
 <para>SPI 0 id macro (Redpine) </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="42" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="42" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="42" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_1a8a5280ff5f1815b96c5cf853e366527b" prot="public" static="no">
         <name>DW_SPI_1_ID</name>
@@ -188,7 +188,7 @@
 <para>SPI 1 id macro (SPI flash) </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="43" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_1a34e3341140daa698fc095af193bf853d" prot="public" static="no">
         <name>USE_DW_SPI_0</name>
@@ -199,7 +199,7 @@
 <para>enable use designware SPI 0 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="48" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="48" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="48" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8h_1abcfda0fb678fcc8afb4f799433dfb84f" prot="public" static="no">
         <name>USE_DW_SPI_1</name>
@@ -210,7 +210,7 @@
 <para>enable use designware SPI 1 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="49" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="55" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.c" bodystart="241" bodyend="266"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="55" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.c" bodystart="241" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1gaaa3b69249c635b3f104fbca9d6d51355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -245,7 +245,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="56" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.c" bodystart="272" bodyend="280"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h" line="56" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.c" bodystart="272" bodyend="280"/>
         <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga5e304233b6cea5fb2403f13d0b4bcb27" compoundref="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c" startline="275" endline="300">spi_get_dev</referencedby>
       </memberdef>
       </sectiondef>
@@ -307,6 +307,6 @@
 <codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_SPI_OBJ_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/spi/dw_spi_obj.h"/>
   </compounddef>
 </doxygen>

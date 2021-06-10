@@ -13,22 +13,10 @@
       <node id="7707">
         <label>stdbool.h</label>
       </node>
-      <node id="7704">
-        <label>stdint.h</label>
-      </node>
-      <node id="7713">
-        <label>stdlib.h</label>
-      </node>
-      <node id="7703">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="7704" relation="include">
-        </childnode>
-        <childnode refid="7705" relation="include">
-        </childnode>
-        <childnode refid="7706" relation="include">
-        </childnode>
-        <childnode refid="7707" relation="include">
+      <node id="7702">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="7703" relation="include">
         </childnode>
       </node>
       <node id="7700">
@@ -37,8 +25,41 @@
         <childnode refid="7701" relation="include">
         </childnode>
       </node>
+      <node id="7708">
+        <label>embARC_error.h</label>
+        <link refid="emb_a_r_c__error_8h"/>
+        <childnode refid="7704" relation="include">
+        </childnode>
+        <childnode refid="7702" relation="include">
+        </childnode>
+      </node>
+      <node id="7704">
+        <label>stdint.h</label>
+      </node>
+      <node id="7713">
+        <label>stdlib.h</label>
+      </node>
       <node id="7706">
         <label>stddef.h</label>
+      </node>
+      <node id="7705">
+        <label>limits.h</label>
+      </node>
+      <node id="7709">
+        <label>embARC_debug.h</label>
+        <link refid="emb_a_r_c__debug_8h"/>
+        <childnode refid="7710" relation="include">
+        </childnode>
+      </node>
+      <node id="7712">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="7703" relation="include">
+        </childnode>
+        <childnode refid="7700" relation="include">
+        </childnode>
+        <childnode refid="7702" relation="include">
+        </childnode>
       </node>
       <node id="7699">
         <label>smic_eflash.c</label>
@@ -64,45 +85,24 @@
         <childnode refid="7712" relation="include">
         </childnode>
       </node>
-      <node id="7705">
-        <label>limits.h</label>
-      </node>
-      <node id="7701">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="7712">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="7703" relation="include">
-        </childnode>
-        <childnode refid="7700" relation="include">
-        </childnode>
-        <childnode refid="7702" relation="include">
-        </childnode>
-      </node>
-      <node id="7708">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
+      <node id="7703">
+        <label>embARC_toolchain.h</label>
+        <link refid="emb_a_r_c__toolchain_8h"/>
         <childnode refid="7704" relation="include">
         </childnode>
-        <childnode refid="7702" relation="include">
+        <childnode refid="7705" relation="include">
+        </childnode>
+        <childnode refid="7706" relation="include">
+        </childnode>
+        <childnode refid="7707" relation="include">
         </childnode>
       </node>
       <node id="7710">
         <label>xprintf.h</label>
       </node>
-      <node id="7709">
-        <label>embARC_debug.h</label>
-        <link refid="emb_a_r_c__debug_8h"/>
-        <childnode refid="7710" relation="include">
-        </childnode>
-      </node>
-      <node id="7702">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="7703" relation="include">
-        </childnode>
+      <node id="7701">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="define">
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="40" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8c_1a34c9be909c47303d57232c921319dddf" prot="public" static="no">
         <name>SMIC_EFLASH_CHECK_EXP</name>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="smic__eflash_8c_1a1f2d297f98c72909d4acc97b4f62d584" prot="public" static="no">
         <name>FMC_BUSY_MASK</name>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="43" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="45" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="45" bodyend="51"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="45" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="45" bodyend="51"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="53" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="53" bodyend="56"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="53" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1a6861e412aaa305e005ada58df6a723a8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -232,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="58" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="58" bodyend="68"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="58" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="58" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1aaf4bce185c2e5dc2290c0c511d30761a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -253,7 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="70" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="70" bodyend="80"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="70" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="70" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1adeb794d466abfcdc5a5bd09029412134" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="83" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="83" bodyend="102"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="83" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="83" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1a3e53d4b7c97f275f80674f9916d5f14b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="104" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="104" bodyend="117"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="104" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="104" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1acd225c8bc7cd987ddceeb139da874109" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="119" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="119" bodyend="147"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="119" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="119" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1a9626362671ecf09ad80114aa7ec9c8e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -345,7 +345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="149" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="149" bodyend="187"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="149" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="149" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1a004dea6ccbba52f2e442dd0f75e24faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -374,7 +374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="189" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="189" bodyend="248"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="189" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="189" bodyend="248"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1aaa617c5c02e1b5cb463f061a33aad201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="250" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="250" bodyend="306"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="250" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="250" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="smic__eflash_8c_1ac63d60fe7a10d14fc55a30d44dfc9172" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -424,7 +424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="308" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="308" bodyend="347"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" line="308" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c" bodystart="308" bodyend="347"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -780,6 +780,6 @@
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
 <codeline lineno="347"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/smic/smic_eflash/smic_eflash.c"/>
   </compounddef>
 </doxygen>

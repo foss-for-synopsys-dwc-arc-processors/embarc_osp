@@ -10,8 +10,42 @@
       <node id="3071">
         <label>stdbool.h</label>
       </node>
+      <node id="3074">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3068" relation="include">
+        </childnode>
+      </node>
+      <node id="3072">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="3073" relation="include">
+        </childnode>
+      </node>
       <node id="3066">
         <label>stdint.h</label>
+      </node>
+      <node id="3070">
+        <label>stddef.h</label>
+      </node>
+      <node id="3069">
+        <label>limits.h</label>
+      </node>
+      <node id="3067">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="3068" relation="include">
+        </childnode>
+        <childnode refid="3072" relation="include">
+        </childnode>
+        <childnode refid="3074" relation="include">
+        </childnode>
+      </node>
+      <node id="3064">
+        <label>dev_trng.h</label>
+        <link refid="dev__trng_8h_source"/>
+        <childnode refid="3065" relation="include">
+        </childnode>
       </node>
       <node id="3068">
         <label>embARC_toolchain.h</label>
@@ -25,37 +59,15 @@
         <childnode refid="3071" relation="include">
         </childnode>
       </node>
-      <node id="3072">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="3073" relation="include">
+      <node id="3065">
+        <label>dev_common.h</label>
+        <link refid="dev__common_8h"/>
+        <childnode refid="3066" relation="include">
         </childnode>
-      </node>
-      <node id="3070">
-        <label>stddef.h</label>
-      </node>
-      <node id="3064">
-        <label>dev_trng.h</label>
-        <link refid="dev__trng_8h_source"/>
-        <childnode refid="3065" relation="include">
-        </childnode>
-      </node>
-      <node id="3069">
-        <label>limits.h</label>
       </node>
       <node id="3073">
         <label>arc_feature_config.h</label>
         <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="3067">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="3068" relation="include">
-        </childnode>
-        <childnode refid="3072" relation="include">
-        </childnode>
-        <childnode refid="3074" relation="include">
-        </childnode>
       </node>
       <node id="3063">
         <label>dw_nist_trng.h</label>
@@ -65,39 +77,23 @@
         <childnode refid="3067" relation="include">
         </childnode>
       </node>
-      <node id="3065">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="3066" relation="include">
-        </childnode>
-      </node>
-      <node id="3074">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3068" relation="include">
-        </childnode>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3084">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
+      <node id="3080">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="3079">
         <label>emsdp_io.c</label>
         <link refid="emsdp__io_8c_source"/>
       </node>
-      <node id="3085">
-        <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
-      </node>
       <node id="3083">
         <label>dw_uart_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
       </node>
-      <node id="3080">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
+      <node id="3082">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
       </node>
       <node id="3078">
         <label>emsdp.h</label>
@@ -119,6 +115,22 @@
         <childnode refid="3085" relation="include">
         </childnode>
       </node>
+      <node id="3077">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="3076">
+        <label>dw_trng_obj.h</label>
+        <link refid="dw__trng__obj_8h_source"/>
+        <childnode refid="3077" relation="include">
+        </childnode>
+        <childnode refid="3078" relation="include">
+        </childnode>
+      </node>
+      <node id="3084">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
       <node id="3081">
         <label>dw_sdio_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
@@ -135,21 +147,9 @@
         <childnode refid="3086" relation="include">
         </childnode>
       </node>
-      <node id="3082">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
-      </node>
-      <node id="3077">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
-      </node>
-      <node id="3076">
-        <label>dw_trng_obj.h</label>
-        <link refid="dw__trng__obj_8h_source"/>
-        <childnode refid="3077" relation="include">
-        </childnode>
-        <childnode refid="3078" relation="include">
-        </childnode>
+      <node id="3085">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
       </node>
     </invincdepgraph>
     <briefdescription>
@@ -327,6 +327,6 @@
 <codeline lineno="168"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DEVICE_DW_NIST_TRNG_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_nist_trng.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_nist_trng.h"/>
   </compounddef>
 </doxygen>

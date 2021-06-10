@@ -9,8 +9,56 @@
       <node id="2738">
         <label>stdbool.h</label>
       </node>
+      <node id="2741">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="2735" relation="include">
+        </childnode>
+      </node>
+      <node id="2739">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="2740" relation="include">
+        </childnode>
+      </node>
+      <node id="2730">
+        <label>dw_gpio.h</label>
+        <link refid="dw__gpio_8h_source"/>
+        <childnode refid="2731" relation="include">
+        </childnode>
+        <childnode refid="2734" relation="include">
+        </childnode>
+      </node>
+      <node id="2731">
+        <label>dev_gpio.h</label>
+        <link refid="dev__gpio_8h"/>
+        <childnode refid="2732" relation="include">
+        </childnode>
+      </node>
       <node id="2733">
         <label>stdint.h</label>
+      </node>
+      <node id="2729">
+        <label>dw_gpio_obj.h</label>
+        <link refid="emsk/drivers/ip/designware/gpio/dw_gpio_obj.h"/>
+        <childnode refid="2730" relation="include">
+        </childnode>
+      </node>
+      <node id="2737">
+        <label>stddef.h</label>
+      </node>
+      <node id="2736">
+        <label>limits.h</label>
+      </node>
+      <node id="2734">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="2735" relation="include">
+        </childnode>
+        <childnode refid="2739" relation="include">
+        </childnode>
+        <childnode refid="2741" relation="include">
+        </childnode>
       </node>
       <node id="2735">
         <label>embARC_toolchain.h</label>
@@ -24,74 +72,18 @@
         <childnode refid="2738" relation="include">
         </childnode>
       </node>
-      <node id="2739">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="2740" relation="include">
-        </childnode>
-      </node>
-      <node id="2737">
-        <label>stddef.h</label>
-      </node>
-      <node id="2729">
-        <label>dw_gpio_obj.h</label>
-        <link refid="emsk/drivers/ip/designware/gpio/dw_gpio_obj.h"/>
-        <childnode refid="2730" relation="include">
-        </childnode>
-      </node>
-      <node id="2736">
-        <label>limits.h</label>
-      </node>
-      <node id="2740">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="2731">
-        <label>dev_gpio.h</label>
-        <link refid="dev__gpio_8h"/>
-        <childnode refid="2732" relation="include">
-        </childnode>
-      </node>
-      <node id="2730">
-        <label>dw_gpio.h</label>
-        <link refid="dw__gpio_8h_source"/>
-        <childnode refid="2731" relation="include">
-        </childnode>
-        <childnode refid="2734" relation="include">
-        </childnode>
-      </node>
-      <node id="2734">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="2735" relation="include">
-        </childnode>
-        <childnode refid="2739" relation="include">
-        </childnode>
-        <childnode refid="2741" relation="include">
-        </childnode>
-      </node>
       <node id="2732">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
         <childnode refid="2733" relation="include">
         </childnode>
       </node>
-      <node id="2741">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="2735" relation="include">
-        </childnode>
+      <node id="2740">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2748">
-        <label>dw_uart_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
-      </node>
-      <node id="2747">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
-      </node>
       <node id="2749">
         <label>mux.c</label>
         <link refid="emsk_2drivers_2mux_2mux_8c"/>
@@ -99,6 +91,10 @@
       <node id="2746">
         <label>dw_iic_obj.c</label>
         <link refid="emsk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c"/>
+      </node>
+      <node id="2748">
+        <label>dw_uart_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c"/>
       </node>
       <node id="2743">
         <label>dw_gpio_obj.c</label>
@@ -111,6 +107,10 @@
         </childnode>
         <childnode refid="2744" relation="include">
         </childnode>
+      </node>
+      <node id="2747">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c"/>
       </node>
       <node id="2745">
         <label>emsk_gpio.c</label>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="49" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1ga489889df218c36a7ab642edf22db5343" prot="public" static="no">
         <name>USE_DW_GPIO_PORT_B</name>
@@ -155,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="50" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1gab401acad26783330053b4e812ec05624" prot="public" static="no">
         <name>USE_DW_GPIO_PORT_C</name>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="51" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1ga23d9a869b858de896b6b74dfacd70785" prot="public" static="no">
         <name>USE_DW_GPIO_PORT_D</name>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="52" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="59" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="59" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="59" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1ga7d4994dbc72f8646cddd020f6586c46c" prot="public" static="no">
         <name>EMSK_GPIO_B_INT_MAX_COUNT</name>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="60" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="60" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="60" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1ga41729e7b148881019fbd44082a3e430e" prot="public" static="no">
         <name>EMSK_GPIO_C_INT_MAX_COUNT</name>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="61" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1ga24006cf8c47da7a090e9333404ad4c98" prot="public" static="no">
         <name>EMSK_GPIO_D_INT_MAX_COUNT</name>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="62" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="62" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="62" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -238,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="69" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1gaa2b765b83a3d2a2b6ac10e2d3c3a7597" prot="public" static="no">
         <name>EMSK_GPIO_B_VALID_MASK</name>
@@ -249,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="70" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1gaf186328d2bcaa92935c1bdd64e89a0db" prot="public" static="no">
         <name>EMSK_GPIO_C_VALID_MASK</name>
@@ -260,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="71" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___g_p_i_o___o_b_j_1ga81eace7f938cfaa3eeeba8ad0bcb9b90" prot="public" static="no">
         <name>EMSK_GPIO_D_VALID_MASK</name>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="72" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.c" line="352" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.c" bodystart="352" bodyend="366"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.c" line="352" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.c" bodystart="352" bodyend="366"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -359,6 +359,6 @@
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_GPIO_OBJ_H_*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="86"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/ip/designware/gpio/dw_gpio_obj.h"/>
   </compounddef>
 </doxygen>

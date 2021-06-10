@@ -6,11 +6,8 @@
     <includedby refid="hsdk__io_8c" local="yes">hsdk_io.c</includedby>
     <includedby refid="hsdk_8h" local="yes">hsdk.h</includedby>
     <incdepgraph>
-      <node id="5300">
-        <label>dev_iic.h</label>
-        <link refid="dev__iic_8h"/>
-        <childnode refid="5301" relation="include">
-        </childnode>
+      <node id="5302">
+        <label>stdint.h</label>
       </node>
       <node id="5299">
         <label>../drivers/ip/designware/iic/dw_iic_obj.h</label>
@@ -18,8 +15,11 @@
         <childnode refid="5300" relation="include">
         </childnode>
       </node>
-      <node id="5302">
-        <label>stdint.h</label>
+      <node id="5300">
+        <label>dev_iic.h</label>
+        <link refid="dev__iic_8h"/>
+        <childnode refid="5301" relation="include">
+        </childnode>
       </node>
       <node id="5298">
         <label>hsdk_io.h</label>
@@ -35,6 +35,14 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="5309">
+        <label>dw_spi_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
+      </node>
+      <node id="5312">
+        <label>ntshell_io_uart.c</label>
+        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
+      </node>
       <node id="5307">
         <label>dw_iic_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2iic_2dw__iic__obj_8c_source"/>
@@ -42,6 +50,10 @@
       <node id="5308">
         <label>dw_sdio_obj.c</label>
         <link refid="hsdk_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
+      </node>
+      <node id="5310">
+        <label>dw_uart_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
       </node>
       <node id="5304">
         <label>hsdk_io.c</label>
@@ -55,25 +67,13 @@
         <childnode refid="5305" relation="include">
         </childnode>
       </node>
-      <node id="5306">
-        <label>dw_gpio_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
-      </node>
       <node id="5311">
         <label>mux.c</label>
         <link refid="hsdk_2drivers_2mux_2mux_8c_source"/>
       </node>
-      <node id="5309">
-        <label>dw_spi_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
-      </node>
-      <node id="5313">
-        <label>pmwifi.c</label>
-        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c_source"/>
-      </node>
-      <node id="5310">
-        <label>dw_uart_obj.c</label>
-        <link refid="hsdk_2drivers_2ip_2designware_2uart_2dw__uart__obj_8c_source"/>
+      <node id="5306">
+        <label>dw_gpio_obj.c</label>
+        <link refid="hsdk_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="5305">
         <label>hsdk.h</label>
@@ -97,9 +97,9 @@
         <childnode refid="5313" relation="include">
         </childnode>
       </node>
-      <node id="5312">
-        <label>ntshell_io_uart.c</label>
-        <link refid="hsdk_2drivers_2ntshell_2ntshell__io__uart_8c_source"/>
+      <node id="5313">
+        <label>pmwifi.c</label>
+        <link refid="hsdk_2drivers_2pmwifi_2pmwifi_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="36" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" bodystart="36" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="36" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hsdk__io_8h_1adb932469b9aaf2682ec51c2f3b1dcdca" prot="public" static="no">
         <name>HSDK_I2C_ADDR_CY8C95XX_EEP</name>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" bodystart="37" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hsdk__io_8h_1aa1039577ad6017835a87ccc433b8b117" prot="public" static="no">
         <name>HSDK_I2C_ID_CY8C95XX</name>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" bodystart="38" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="44" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="123" bodyend="126"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="44" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.c" bodystart="123" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0d116692517e4c11de41ec07145b8404" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="45" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_io.c" bodystart="83" bodyend="94"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="45" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_io.c" bodystart="83" bodyend="94"/>
         <references refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga70bd322128648796b6652e4026a2eb91" compoundref="dev__gpio_8h" startline="422">dev_gpio::gpio_write</references>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1ga0dc68bc0b79209469f458809e464b178" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="46" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_io.c" bodystart="107" bodyend="121"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h" line="46" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/common/emsdp_io.c" bodystart="107" bodyend="121"/>
         <references refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga0583a36e5d0aab4bd914c34bb44832c9" compoundref="dev__gpio_8h" startline="423">dev_gpio::gpio_read</references>
       </memberdef>
       </sectiondef>
@@ -259,6 +259,6 @@
 <codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_HSDK_IO_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/hsdk/common/hsdk_io.h"/>
   </compounddef>
 </doxygen>

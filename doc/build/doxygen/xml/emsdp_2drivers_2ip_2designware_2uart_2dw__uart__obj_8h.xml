@@ -9,8 +9,50 @@
       <node id="4000">
         <label>stdbool.h</label>
       </node>
+      <node id="4003">
+        <label>arc_builtin.h</label>
+        <link refid="arc__builtin_8h"/>
+        <childnode refid="3997" relation="include">
+        </childnode>
+      </node>
+      <node id="4001">
+        <label>arc.h</label>
+        <link refid="arc_8h"/>
+        <childnode refid="4002" relation="include">
+        </childnode>
+      </node>
       <node id="3995">
         <label>stdint.h</label>
+      </node>
+      <node id="3993">
+        <label>dev_uart.h</label>
+        <link refid="dev__uart_8h"/>
+        <childnode refid="3994" relation="include">
+        </childnode>
+      </node>
+      <node id="3992">
+        <label>dw_uart.h</label>
+        <link refid="dw__uart_8h_source"/>
+        <childnode refid="3993" relation="include">
+        </childnode>
+        <childnode refid="3996" relation="include">
+        </childnode>
+      </node>
+      <node id="3999">
+        <label>stddef.h</label>
+      </node>
+      <node id="3998">
+        <label>limits.h</label>
+      </node>
+      <node id="3996">
+        <label>arc_exception.h</label>
+        <link refid="arc__exception_8h"/>
+        <childnode refid="3997" relation="include">
+        </childnode>
+        <childnode refid="4001" relation="include">
+        </childnode>
+        <childnode refid="4003" relation="include">
+        </childnode>
       </node>
       <node id="3991">
         <label>dw_uart_obj.h</label>
@@ -30,71 +72,29 @@
         <childnode refid="4000" relation="include">
         </childnode>
       </node>
-      <node id="4001">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="4002" relation="include">
-        </childnode>
-      </node>
-      <node id="3999">
-        <label>stddef.h</label>
-      </node>
-      <node id="3993">
-        <label>dev_uart.h</label>
-        <link refid="dev__uart_8h"/>
-        <childnode refid="3994" relation="include">
-        </childnode>
-      </node>
-      <node id="3998">
-        <label>limits.h</label>
-      </node>
-      <node id="4002">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="3996">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="3997" relation="include">
-        </childnode>
-        <childnode refid="4001" relation="include">
-        </childnode>
-        <childnode refid="4003" relation="include">
-        </childnode>
-      </node>
       <node id="3994">
         <label>dev_common.h</label>
         <link refid="dev__common_8h"/>
         <childnode refid="3995" relation="include">
         </childnode>
       </node>
-      <node id="4003">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3997" relation="include">
-        </childnode>
-      </node>
-      <node id="3992">
-        <label>dw_uart.h</label>
-        <link refid="dw__uart_8h_source"/>
-        <childnode refid="3993" relation="include">
-        </childnode>
-        <childnode refid="3996" relation="include">
-        </childnode>
+      <node id="4002">
+        <label>arc_feature_config.h</label>
+        <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4012">
-        <label>ip_obj_mgr.c</label>
-        <link refid="ip__obj__mgr_8c_source"/>
+      <node id="4008">
+        <label>dw_gpio_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="4007">
         <label>emsdp_io.c</label>
         <link refid="emsdp__io_8c_source"/>
       </node>
-      <node id="4013">
-        <label>mux.c</label>
-        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
+      <node id="4010">
+        <label>dw_spi_obj.c</label>
+        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
       </node>
       <node id="4005">
         <label>dw_uart_obj.c</label>
@@ -107,10 +107,6 @@
         </childnode>
         <childnode refid="4006" relation="include">
         </childnode>
-      </node>
-      <node id="4008">
-        <label>dw_gpio_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2gpio_2dw__gpio__obj_8c_source"/>
       </node>
       <node id="4006">
         <label>emsdp.h</label>
@@ -132,17 +128,21 @@
         <childnode refid="4013" relation="include">
         </childnode>
       </node>
+      <node id="4011">
+        <label>dw_trng_obj.c</label>
+        <link refid="dw__trng__obj_8c_source"/>
+      </node>
+      <node id="4012">
+        <label>ip_obj_mgr.c</label>
+        <link refid="ip__obj__mgr_8c_source"/>
+      </node>
       <node id="4009">
         <label>dw_sdio_obj.c</label>
         <link refid="emsdp_2drivers_2ip_2designware_2sdio_2dw__sdio__obj_8c_source"/>
       </node>
-      <node id="4010">
-        <label>dw_spi_obj.c</label>
-        <link refid="emsdp_2drivers_2ip_2designware_2spi_2dw__spi__obj_8c_source"/>
-      </node>
-      <node id="4011">
-        <label>dw_trng_obj.c</label>
-        <link refid="dw__trng__obj_8c_source"/>
+      <node id="4013">
+        <label>mux.c</label>
+        <link refid="emsdp_2drivers_2mux_2mux_8c_source"/>
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
@@ -155,7 +155,7 @@
 <para>DesignWare UART valid number </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="38" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="38" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_1a61cfe53266aacb4cb6a0f8b879507dee" prot="public" static="no">
         <name>DW_UART_0_ID</name>
@@ -166,7 +166,7 @@
 <para>uart 0 id macro </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="43" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_1a5fb2a0672ce7e3c57ea515366808fe56" prot="public" static="no">
         <name>DW_UART_1_ID</name>
@@ -177,7 +177,7 @@
 <para>uart 1 id macro </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="44" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_1a50fce0ca9fc47ca9b62f20978bb07c68" prot="public" static="no">
         <name>USE_DW_UART_0</name>
@@ -188,7 +188,7 @@
 <para>enable use designware uart 0 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="49" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="emsdp_2drivers_2ip_2designware_2uart_2dw__uart__obj_8h_1a3ab11c72fb6de4b75eaed479b58f9299" prot="public" static="no">
         <name>USE_DW_UART_1</name>
@@ -199,7 +199,7 @@
 <para>enable use designware uart 1 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="50" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -217,7 +217,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.c" bodystart="177" bodyend="202"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.c" bodystart="177" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___u_a_r_t___o_b_j_1ga753da64d72c992edb3b90f781ef53828" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -234,7 +234,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="58" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/drivers/ip/designware/uart/dw_uart_obj.c" bodystart="284" bodyend="295"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h" line="58" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/axs/drivers/ip/designware/uart/dw_uart_obj.c" bodystart="284" bodyend="295"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -294,6 +294,6 @@
 <codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_DW_UART_OBJ_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/ip/designware/uart/dw_uart_obj.h"/>
   </compounddef>
 </doxygen>
