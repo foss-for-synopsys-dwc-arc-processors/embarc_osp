@@ -40,7 +40,7 @@
 #include "stdint.h"
 #include "lwip/opt.h"
 #include "lwip/def.h"
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 
 #include "lwip/sys.h"
 

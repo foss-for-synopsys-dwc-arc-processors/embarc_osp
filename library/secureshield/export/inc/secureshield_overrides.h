@@ -45,7 +45,8 @@
 #undef int_level_config
 #undef cpu_lock
 #undef cpu_unlock
-#undef cpu_lock_restore
+#undef cpu_lock_save
+#undef cpu_unlock_restore
 
 #define int_disable(intno)			secureshield_int_disable(intno)
 #define int_enable(intno)			secureshield_int_enable(intno)
@@ -64,10 +65,10 @@
 #endif /* OVERRIDE_ARC_HAL_EXCEPTION_H */
 
 #ifdef OVERRIDE_ARC_HAL_BUILTIN_H
-#undef _arc_lr_reg
-#undef _arc_sr_reg
-#define _arc_lr_reg(reg)			secureshield_arc_lr_reg(reg)
-#define _arc_sr_reg(reg, val)			secureshield_arc_sr_reg(reg,val)
+#undef arc_aux_read
+#undef arc_aux_write
+#define arc_aux_read(reg)			secureshield_arc_lr_reg(reg)
+#define arc_aux_write(reg, val)			secureshield_arc_sr_reg(reg,val)
 #endif /* OVERRIDE_ARC_HAL_BUILTIN_H */
 
 //#endif	/* _SECURESHIELD_OVERRIDES_H_ */

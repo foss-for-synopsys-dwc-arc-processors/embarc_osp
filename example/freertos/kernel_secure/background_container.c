@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -35,8 +35,8 @@
 #include "container1.h"
 #include "container2.h"
 
-static void task1(void * par);
-static void task2(void * par);
+static void task1(void *par);
+static void task2(void *par);
 static void interrupt_high_pri(void *p_excinf);
 static void interrupt_low_pri(void *p_excinf);
 
@@ -65,9 +65,11 @@ static unsigned int t_nest_int;
 /** performance timer initialization */
 static void perf_init(unsigned int id)
 {
-	if (timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
+	if (arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
 		EMBARC_PRINTF("perf timer init failed\r\n");
-		while(1);
+		while (1) {
+			;
+		}
 	}
 	perf_id = id;
 }
@@ -75,7 +77,7 @@ static void perf_init(unsigned int id)
 /** performance timer start */
 static void perf_start(void)
 {
-	if (timer_current(perf_id, (void *)(&start)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&start)) < 0) {
 		start = 0;
 	}
 }
@@ -85,7 +87,7 @@ static unsigned int perf_end(void)
 {
 	unsigned int end = 0;
 
-	if (timer_current(perf_id, (void *)(&end)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&end)) < 0) {
 		return 0;
 	}
 
@@ -96,15 +98,12 @@ static unsigned int perf_end(void)
 	}
 }
 
-
 static uint8_t public_data[SECRET_LEN];
-
 
 void default_interrupt_handler(void *p_exinf)
 {
 	EMBARC_PRINTF("default interrupt handler\r\n");
 }
-
 
 /**
  * \brief  call FreeRTOS API, create and start tasks
@@ -122,24 +121,22 @@ int main(void)
 		return -1;
 	}
 
-
-	int_handler_install(INTNO_LOW_PRI, (INT_HANDLER)interrupt_low_pri);
+	int_handler_install(INTNO_LOW_PRI, (INT_HANDLER_T)interrupt_low_pri);
 	int_pri_set(INTNO_LOW_PRI, INT_PRI_MAX);
 	int_enable(INTNO_LOW_PRI);
 
-	int_handler_install(INTNO_HIGH_PRI, (INT_HANDLER)interrupt_high_pri);
+	int_handler_install(INTNO_HIGH_PRI, (INT_HANDLER_T)interrupt_high_pri);
 	int_pri_set(INTNO_HIGH_PRI, INT_PRI_MIN);
 	int_enable(INTNO_HIGH_PRI);
 
-
 	vTaskSuspendAll();
-	if (xTaskCreate(task1, "task1", 256, (void *)1, configMAX_PRIORITIES-2, &task1_handle)
-		!= pdPASS) {	/*!< FreeRTOS xTaskCreate() API function */
+	if (xTaskCreate(task1, "task1", 256, (void *)1, configMAX_PRIORITIES - 2, &task1_handle)
+	    != pdPASS) {        /*!< FreeRTOS xTaskCreate() API function */
 		EMBARC_PRINTF("create task1 error\r\n");
 		return -1;
 	}
-	if (xTaskCreate(task2, "task2", 256, (void *)2, configMAX_PRIORITIES-1, &task2_handle)
-		!= pdPASS) {	/*!< FreeRTOS xTaskCreate() API function */
+	if (xTaskCreate(task2, "task2", 256, (void *)2, configMAX_PRIORITIES - 1, &task2_handle)
+	    != pdPASS) {        /*!< FreeRTOS xTaskCreate() API function */
 		EMBARC_PRINTF("create task2 error\r\n");
 		return -1;
 	}
@@ -148,21 +145,20 @@ int main(void)
 	return 0;
 }
 
-
 /**
  * \brief  task1 in FreeRTOS
  * \details Call vTaskDelayUntil() to execute task1 with a fixed period 1 second.
  * \param[in] *par
  */
-static void task1(void * par)
+static void task1(void *par)
 {
-	while(1) {
+	while (1) {
 		perf_start();
-		_arc_aux_write(AUX_IRQ_HINT, INTNO_LOW_PRI);	/*!< activate low priority interrupt */
+		arc_aux_write(AUX_IRQ_HINT, INTNO_LOW_PRI);     /*!< activate low priority interrupt */
 		t_t2_t1 = perf_end();
 
 		EMBARC_PRINTF("The performance data is:\r\n");
-		EMBARC_PRINTF("\ttask2->task1:%d cycles\r\n",t_t2_t1);
+		EMBARC_PRINTF("\ttask2->task1:%d cycles\r\n", t_t2_t1);
 		EMBARC_PRINTF("\ttask1->int:%d cycles\r\n", t_t1_int);
 		EMBARC_PRINTF("\tint->nest int:%d cycles\r\n", t_int_nest);
 		EMBARC_PRINTF("\tnest int->int:%d cycles\r\n", t_nest_int);
@@ -184,15 +180,15 @@ static void task1(void * par)
  * \details Print information in task2 and suspend task2.
  * \param[in] *par
  */
-static void task2(void * par)
+static void task2(void *par)
 {
 	int i = 0;
 	uint32_t ret = 0;
 
 	perf_init(TIMER_1);
-	while(1) {
+	while (1) {
 		perf_start();
-		vTaskSuspend(NULL);	/*!< suspend task2 */
+		vTaskSuspend(NULL);     /*!< suspend task2 */
 		t_int_t2 = perf_end();
 
 		EMBARC_PRINTF("\r\nRounds: %d\r\n", i++);
@@ -220,7 +216,7 @@ static void interrupt_high_pri(void *p_excinf)
 	// show exception frame
 	t_int_nest = perf_end();
 	if (xTaskResumeFromISR(task2_handle) == pdTRUE) {
-		portYIELD_FROM_ISR();	/* need to make task switch */
+		portYIELD_FROM_ISR();   /* need to make task switch */
 	}
 	perf_start();
 }
@@ -234,7 +230,7 @@ static void interrupt_low_pri(void *p_exinf)
 {
 	t_t1_int = perf_end();
 	perf_start();
-	_arc_aux_write(AUX_IRQ_HINT, INTNO_HIGH_PRI);	/*!< activate high priority interrupt */
+	arc_aux_write(AUX_IRQ_HINT, INTNO_HIGH_PRI);    /*!< activate high priority interrupt */
 	t_nest_int = perf_end();
 	perf_start();
 }

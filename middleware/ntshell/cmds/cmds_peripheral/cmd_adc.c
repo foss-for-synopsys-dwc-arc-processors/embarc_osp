@@ -65,7 +65,7 @@ static void cmd_adc_help(char *cmd_name, void *extobj)
 {
 	VALID_EXTOBJ_NORTN(extobj);
 
-	if (_arc_rarely((cmd_name == NULL))) {
+	if (arc_compiler_rarely((cmd_name == NULL))) {
 		/* cmd_name not valid */
 		return;
 	}

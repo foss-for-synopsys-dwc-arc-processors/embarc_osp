@@ -26,49 +26,49 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <string.h>
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "dw_uart_hal.h"
 #include "dw_uart.h"
-
 
 /**
  * DesignWare UART driver macros used in uart driver
  */
 /** check expressions used in DesignWare UART driver implementation */
-#define DW_UART_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define DW_UART_CHECK_EXP(EXPR, ERROR_CODE)             CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 #ifndef DISABLE_DEVICE_OBJECT_VALID_CHECK
 /** valid check of uart info object */
-#define VALID_CHK_UART_INFO_OBJECT(uartinfo_obj_ptr)		{				\
-			DW_UART_CHECK_EXP((uartinfo_obj_ptr)!=NULL, E_OBJ);			\
-			DW_UART_CHECK_EXP(((uartinfo_obj_ptr)->uart_ctrl)!=NULL, E_OBJ);	\
- 		}
+#define VALID_CHK_UART_INFO_OBJECT(uartinfo_obj_ptr)            {		   \
+		DW_UART_CHECK_EXP((uartinfo_obj_ptr) != NULL, E_OBJ);		   \
+		DW_UART_CHECK_EXP(((uartinfo_obj_ptr)->uart_ctrl) != NULL, E_OBJ); \
+}
 #endif
 
 /** convert DesignWare baudrate to divisor */
-#define DW_UART_BAUD2DIV(perifreq, baud)		((perifreq) / ((baud)*16))
+#define DW_UART_BAUD2DIV(perifreq, baud)                ((perifreq) / ((baud) * 16))
 
 /**
  * DesignWare UART interrupt callback routines select macros definitions
  */
-#define DW_UART_RDY_SND					(1U)	/*!< ready to send callback */
-#define DW_UART_RDY_RCV					(2U)	/*!< ready to receive callback */
+#define DW_UART_RDY_SND                                 (1U)    /*!< ready to send callback */
+#define DW_UART_RDY_RCV                                 (2U)    /*!< ready to receive callback */
 
 /**
  * Static or inline functions, variables for DesignWare UART handle uart operations,
  * 	only used in this file
  */
-const uint8_t dw_uart_databits[] = { \
+const uint8_t dw_uart_databits[] = {		      \
 	DW_UART_LCR_WORD_LEN5, DW_UART_LCR_WORD_LEN6, \
-	DW_UART_LCR_WORD_LEN7, DW_UART_LCR_WORD_LEN8};
+	DW_UART_LCR_WORD_LEN7, DW_UART_LCR_WORD_LEN8
+};
 const uint8_t dw_uart_parity[] = {
 	DW_UART_LCR_PARITY_NONE, DW_UART_LCR_PARITY_ODD,
 	DW_UART_LCR_PARITY_EVEN, DW_UART_LCR_PARITY_MASK,
@@ -141,7 +141,9 @@ Inline int32_t dw_uart_rcv_chr(DW_UART_REG *uart_reg_ptr)
 Inline void dw_uart_psnd_chr(DW_UART_REG *uart_reg_ptr, char chr)
 {
 	/** wait until uart is ready to send */
-	while (!dw_uart_putready(uart_reg_ptr)); /* blocked */
+	while (!dw_uart_putready(uart_reg_ptr)) {
+		;                                /* blocked */
+	}
 	/** send char */
 	dw_uart_putchar(uart_reg_ptr, chr);
 }
@@ -153,7 +155,9 @@ Inline void dw_uart_psnd_chr(DW_UART_REG *uart_reg_ptr, char chr)
 Inline int32_t dw_uart_prcv_chr(DW_UART_REG *uart_reg_ptr)
 {
 	/** wait until uart is ready to receive */
-	while (!dw_uart_getready(uart_reg_ptr)); /* blocked */
+	while (!dw_uart_getready(uart_reg_ptr)) {
+		;                                /* blocked */
+	}
 	/** receive data */
 	return dw_uart_getchar(uart_reg_ptr);
 }
@@ -201,15 +205,23 @@ static int32_t dw_uart_set_dps(DW_UART_REG *uart_reg_ptr, UART_DPS_FORMAT *dps)
 {
 	uint32_t dps_value = 0;
 
-	if (dps == NULL) return -1;
+	if (dps == NULL) {
+		return -1;
+	}
 	/* data bits check */
-	if ((dps->databits < 5) || (dps->databits > 8)) return -1;
+	if ((dps->databits < 5) || (dps->databits > 8)) {
+		return -1;
+	}
 	/* stop bits check */
-	if (dps->stopbits > UART_STPBITS_TWO) return -1;
+	if (dps->stopbits > UART_STPBITS_TWO) {
+		return -1;
+	}
 	/* parity bit type check */
-	if (dps->parity > UART_PARITY_SPACE) return -1;
+	if (dps->parity > UART_PARITY_SPACE) {
+		return -1;
+	}
 
-	dps_value |= (uint32_t)dw_uart_databits[dps->databits-5];
+	dps_value |= (uint32_t)dw_uart_databits[dps->databits - 5];
 	dps_value |= (uint32_t)dw_uart_stopbits[dps->stopbits];
 	dps_value |= (uint32_t)dw_uart_parity[dps->parity];
 
@@ -233,8 +245,8 @@ static void dw_uart_set_baud(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor)
 	/**
 	 * setting uart baudrate registers
 	 */
-	uart_reg_ptr->DATA = baud_divisor & 0xff;	/*!< DLL */
-	uart_reg_ptr->IER = (baud_divisor>>8) & 0xff;	/*!< DLH */
+	uart_reg_ptr->DATA = baud_divisor & 0xff;       /*!< DLL */
+	uart_reg_ptr->IER = (baud_divisor >> 8) & 0xff; /*!< DLH */
 	/** disable DLAB */
 	uart_reg_ptr->LCR &= ~(DW_UART_LCR_DLAB);
 }
@@ -245,8 +257,10 @@ static void dw_uart_set_baud(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor)
  */
 Inline void dw_uart_software_reset(DW_UART_REG *uart_reg_ptr)
 {
-	uart_reg_ptr->SRR = DW_UART_SRR_UR|DW_UART_SRR_RFR|DW_UART_SRR_XFR;
-	while(uart_reg_ptr->USR & DW_UART_USR_BUSY); /* wait until software reset completed */
+	uart_reg_ptr->SRR = DW_UART_SRR_UR | DW_UART_SRR_RFR | DW_UART_SRR_XFR;
+	while (uart_reg_ptr->USR & DW_UART_USR_BUSY) {
+		;                                    /* wait until software reset completed */
+	}
 }
 
 /**
@@ -258,10 +272,10 @@ Inline void dw_uart_software_reset(DW_UART_REG *uart_reg_ptr)
 static void dw_uart_set_hwfc(DW_UART_REG *uart_reg_ptr, UART_HW_FLOW_CONTROL hwfc)
 {
 	if (hwfc == UART_FC_NONE) {
-		uart_reg_ptr->MCR &= ~(DW_UART_MCR_AFCE|DW_UART_MCR_RTS);
+		uart_reg_ptr->MCR &= ~(DW_UART_MCR_AFCE | DW_UART_MCR_RTS);
 	}
 	if ((hwfc == UART_FC_RTS) || (hwfc == UART_FC_BOTH)) {
-		uart_reg_ptr->MCR |= (DW_UART_MCR_AFCE|DW_UART_MCR_RTS);
+		uart_reg_ptr->MCR |= (DW_UART_MCR_AFCE | DW_UART_MCR_RTS);
 	}
 	if ((hwfc == UART_FC_CTS) || (hwfc == UART_FC_BOTH)) {
 		uart_reg_ptr->MCR |= (DW_UART_MCR_AFCE);
@@ -291,8 +305,8 @@ static void dw_uart_init(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor, UART_
 	dw_uart_set_dps(uart_reg_ptr, dps);
 	dw_uart_set_baud(uart_reg_ptr, baud_divisor);
 
-	uart_reg_ptr->IIR = 0x1;	/** enable uart fifo (FCR IIR is the same) */
-	uart_reg_ptr->IER = 0x0;	/** disable all uart interrupt */
+	uart_reg_ptr->IIR = 0x1;        /** enable uart fifo (FCR IIR is the same) */
+	uart_reg_ptr->IER = 0x0;        /** disable all uart interrupt */
 }
 
 /**
@@ -309,7 +323,7 @@ static void dw_uart_flush_output(DEV_UART_INFO *uart_info_ptr)
 
 	if (uart_info_ptr->tx_buf.buf != NULL) {
 		p_charbuf = (char *)(uart_info_ptr->tx_buf.buf);
-		for (i = uart_info_ptr->tx_buf.ofs; i < uart_info_ptr->tx_buf.len; i ++) {
+		for (i = uart_info_ptr->tx_buf.ofs; i < uart_info_ptr->tx_buf.len; i++) {
 			dw_uart_psnd_chr(uart_reg_ptr, p_charbuf[i]);
 		}
 		/* clear transmit buffer */
@@ -319,9 +333,13 @@ static void dw_uart_flush_output(DEV_UART_INFO *uart_info_ptr)
 	}
 	if (uart_reg_ptr->CPR & DW_UART_CPR_FIFO_STAT) {
 		/* wait until transmit fifo is empty */
-		while ((uart_reg_ptr->USR & DW_UART_USR_TFE) == 0);
+		while ((uart_reg_ptr->USR & DW_UART_USR_TFE) == 0) {
+			;
+		}
 	}
-	while (uart_reg_ptr->USR & DW_UART_USR_BUSY);
+	while (uart_reg_ptr->USR & DW_UART_USR_BUSY) {
+		;
+	}
 }
 
 /**
@@ -335,19 +353,19 @@ static void dw_uart_dis_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 	DW_UART_REG *uart_reg_ptr = (DW_UART_REG_PTR)(uart_ctrl_ptr->dw_uart_regbase);
 
 	switch (cbrtn) {
-		case DW_UART_RDY_SND:
-			uart_reg_ptr->IER &= ~DW_UART_IER_XMIT_EMPTY;
-			uart_ctrl_ptr->int_status &= ~DW_UART_TXINT_ENABLE;
-			break;
-		case DW_UART_RDY_RCV:
-			uart_reg_ptr->IER &= ~DW_UART_IER_DATA_AVAIL;
-			uart_ctrl_ptr->int_status &= ~DW_UART_RXINT_ENABLE;
-			break;
-		default:
-			break;
+	case DW_UART_RDY_SND:
+		uart_reg_ptr->IER &= ~DW_UART_IER_XMIT_EMPTY;
+		uart_ctrl_ptr->int_status &= ~DW_UART_TXINT_ENABLE;
+		break;
+	case DW_UART_RDY_RCV:
+		uart_reg_ptr->IER &= ~DW_UART_IER_DATA_AVAIL;
+		uart_ctrl_ptr->int_status &= ~DW_UART_RXINT_ENABLE;
+		break;
+	default:
+		break;
 	}
 	if (uart_ctrl_ptr->int_status & DW_UART_GINT_ENABLE) {
-		if ((uart_ctrl_ptr->int_status & (DW_UART_RXINT_ENABLE|DW_UART_TXINT_ENABLE)) == 0) {
+		if ((uart_ctrl_ptr->int_status & (DW_UART_RXINT_ENABLE | DW_UART_TXINT_ENABLE)) == 0) {
 			if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
 				int_disable(uart_ctrl_ptr->intno);
 			}
@@ -367,19 +385,19 @@ static void dw_uart_ena_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 	DW_UART_REG *uart_reg_ptr = (DW_UART_REG_PTR)(uart_ctrl_ptr->dw_uart_regbase);
 
 	switch (cbrtn) {
-		case DW_UART_RDY_SND:
-			uart_ctrl_ptr->int_status |= DW_UART_TXINT_ENABLE;
-			uart_reg_ptr->IER |= DW_UART_IER_XMIT_EMPTY;
-			break;
-		case DW_UART_RDY_RCV:
-			uart_ctrl_ptr->int_status |= DW_UART_RXINT_ENABLE;
-			uart_reg_ptr->IER |= DW_UART_IER_DATA_AVAIL;
-			break;
-		default:
-			break;
+	case DW_UART_RDY_SND:
+		uart_ctrl_ptr->int_status |= DW_UART_TXINT_ENABLE;
+		uart_reg_ptr->IER |= DW_UART_IER_XMIT_EMPTY;
+		break;
+	case DW_UART_RDY_RCV:
+		uart_ctrl_ptr->int_status |= DW_UART_RXINT_ENABLE;
+		uart_reg_ptr->IER |= DW_UART_IER_DATA_AVAIL;
+		break;
+	default:
+		break;
 	}
 	if ((uart_ctrl_ptr->int_status & DW_UART_GINT_ENABLE) == 0) {
-		if (uart_ctrl_ptr->int_status & (DW_UART_RXINT_ENABLE|DW_UART_TXINT_ENABLE)) {
+		if (uart_ctrl_ptr->int_status & (DW_UART_RXINT_ENABLE | DW_UART_TXINT_ENABLE)) {
 			uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
 			if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
 				int_enable(uart_ctrl_ptr->intno);
@@ -399,7 +417,7 @@ static void dw_uart_enable_interrupt(DEV_UART_INFO *uart_info_ptr)
 	if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
 		int_handler_install(uart_ctrl_ptr->intno, uart_ctrl_ptr->dw_uart_int_handler);
 		uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
-		int_enable(uart_ctrl_ptr->intno);	/** enable uart interrupt */
+		int_enable(uart_ctrl_ptr->intno);       /** enable uart interrupt */
 	} else {
 		uart_ctrl_ptr->int_status |= DW_UART_GINT_ENABLE;
 	}
@@ -419,7 +437,7 @@ static void dw_uart_disable_interrupt(DEV_UART_INFO *uart_info_ptr)
 	if (uart_ctrl_ptr->intno != DW_UART_INVALID_INTNO) {
 		int_disable(uart_ctrl_ptr->intno);
 	}
-	uart_ctrl_ptr->int_status &= ~(DW_UART_GINT_ENABLE|DW_UART_TXINT_ENABLE|DW_UART_RXINT_ENABLE);
+	uart_ctrl_ptr->int_status &= ~(DW_UART_GINT_ENABLE | DW_UART_TXINT_ENABLE | DW_UART_RXINT_ENABLE);
 }
 
 /** enable designware uart */
@@ -514,7 +532,6 @@ static int32_t dw_uart_get_rxavail(DW_UART_CTRL *uart_ctrl_ptr)
 	return rx_avail;
 }
 
-
 /** @} end of group DEVICE_DW_UART_STATIC */
 
 /**
@@ -527,21 +544,21 @@ static int32_t dw_uart_get_rxavail(DW_UART_CTRL *uart_ctrl_ptr)
  * \retval	E_PAR	Parameter is not valid
  * \retval	E_NOSPT	Open settings are not supported
  */
-int32_t dw_uart_open (DEV_UART *uart_obj, uint32_t baud)
+int32_t dw_uart_open(DEV_UART *uart_obj, uint32_t baud)
 {
 	int32_t ercd = E_OK;
 	DEV_UART_INFO *uart_info_ptr = &(uart_obj->uart_info);
 
 	/* START ERROR CHECK */
 	VALID_CHK_UART_INFO_OBJECT(uart_info_ptr);
-	DW_UART_CHECK_EXP(baud>0, E_PAR);
+	DW_UART_CHECK_EXP(baud > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
-	uart_info_ptr->opn_cnt ++;
-	if (uart_info_ptr->opn_cnt > 1) { /* opened before */
-		if (baud == uart_info_ptr->baudrate) { /* baudrate is the same */
+	uart_info_ptr->opn_cnt++;
+	if (uart_info_ptr->opn_cnt > 1) {               /* opened before */
+		if (baud == uart_info_ptr->baudrate) {  /* baudrate is the same */
 			return E_OK;
-		} else { /* open with different baudrate */
+		} else {                                /* open with different baudrate */
 			return E_OPNED;
 		}
 	}
@@ -594,7 +611,7 @@ error_exit:
  * \retval	E_OPNED	Device is still opened, the device opn_cnt decreased by 1
  * \retval	E_OBJ	Device object is not valid
  */
-int32_t dw_uart_close (DEV_UART *uart_obj)
+int32_t dw_uart_close(DEV_UART *uart_obj)
 {
 	int32_t ercd = E_OK;
 	DEV_UART_INFO *uart_info_ptr = &(uart_obj->uart_info);
@@ -604,7 +621,7 @@ int32_t dw_uart_close (DEV_UART *uart_obj)
 	DW_UART_CHECK_EXP(uart_info_ptr->opn_cnt > 0, E_OK);
 	/* END OF ERROR CHECK */
 
-	uart_info_ptr->opn_cnt --;
+	uart_info_ptr->opn_cnt--;
 	if (uart_info_ptr->opn_cnt == 0) {
 		dw_uart_disable_interrupt(uart_info_ptr);
 		dw_uart_abort_tx(uart_obj);
@@ -638,7 +655,7 @@ error_exit:
  * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
  * \retval	E_NOSPT	Control command is not supported or not valid
  */
-int32_t dw_uart_control (DEV_UART *uart_obj, uint32_t ctrl_cmd, void *param)
+int32_t dw_uart_control(DEV_UART *uart_obj, uint32_t ctrl_cmd, void *param)
 {
 	int32_t ercd = E_OK;
 	DEV_UART_INFO *uart_info_ptr = &(uart_obj->uart_info);
@@ -664,125 +681,125 @@ int32_t dw_uart_control (DEV_UART *uart_obj, uint32_t ctrl_cmd, void *param)
 		 * are available, other commands will return E_SYS
 		 */
 		if ((ctrl_cmd != UART_CMD_ENA_DEV) && \
-			(ctrl_cmd != UART_CMD_DIS_DEV) && \
-			(ctrl_cmd != UART_CMD_GET_STATUS) ) {
+		    (ctrl_cmd != UART_CMD_DIS_DEV) && \
+		    (ctrl_cmd != UART_CMD_GET_STATUS)) {
 			return E_SYS;
 		}
 	}
 
 	switch (ctrl_cmd) {
-		case UART_CMD_SET_BAUD:
-			val32 = (uint32_t)param;
-			DW_UART_CHECK_EXP(val32>0, E_PAR);
-			if (val32 != uart_info_ptr->baudrate) {
-				baud_divisor = DW_UART_BAUD2DIV(uart_ctrl_ptr->dw_apb_bus_freq, val32);
-				dw_uart_set_baud(uart_reg_ptr, baud_divisor);
-				uart_info_ptr->baudrate = val32;
-			}
-			break;
-		case UART_CMD_GET_STATUS:
-			DW_UART_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = uart_info_ptr->status;
-			break;
-		case UART_CMD_ENA_DEV:
-			dw_uart_enable_device(uart_info_ptr);
-			break;
-		case UART_CMD_DIS_DEV:
-			dw_uart_disable_device(uart_info_ptr);
-			break;
-		case UART_CMD_FLUSH_OUTPUT:
-			dw_uart_flush_output(uart_info_ptr);
-			break;
-		case UART_CMD_GET_RXAVAIL:
-			DW_UART_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dw_uart_get_rxavail(uart_ctrl_ptr);
-			break;
-		case UART_CMD_GET_TXAVAIL:
-			DW_UART_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-			*((int32_t *)param) = dw_uart_get_txavail(uart_ctrl_ptr);
-			break;
-		case UART_CMD_BREAK_SET:
-			dw_uart_set_break(uart_reg_ptr);
-			break;
-		case UART_CMD_BREAK_CLR:
-			dw_uart_clr_break(uart_reg_ptr);
-			break;
-		case UART_CMD_SET_DPS_FORMAT:
-			DW_UART_CHECK_EXP(param!=NULL, E_PAR);
-			dps_ptr = (UART_DPS_FORMAT *)param;
-			if (dw_uart_set_dps(uart_reg_ptr, dps_ptr) == 0) {
-				uart_info_ptr->dps_format = *dps_ptr;
-			} else {
-				ercd = E_PAR;
-			}
-			break;
-		case UART_CMD_SET_HWFC:
-			hwfc_local = (UART_HW_FLOW_CONTROL)param;
-			DW_UART_CHECK_EXP(((hwfc_local>=UART_FC_NONE) && (hwfc_local<=UART_FC_BOTH)), E_PAR);
-			dw_uart_set_hwfc(uart_reg_ptr, hwfc_local);
-			uart_info_ptr->hwfc = hwfc_local;
-			break;
-		case UART_CMD_SET_TXCB:
-			DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			uart_info_ptr->uart_cbs.tx_cb = param;
-			break;
-		case UART_CMD_SET_RXCB:
-			DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			uart_info_ptr->uart_cbs.rx_cb = param;
-			break;
-		case UART_CMD_SET_ERRCB:
-			DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			uart_info_ptr->uart_cbs.err_cb = param;
-			break;
-		case UART_CMD_ABORT_TX:
-			dw_uart_abort_tx(uart_obj);
-			break;
-		case UART_CMD_ABORT_RX:
-			dw_uart_abort_rx(uart_obj);
-			break;
-		case UART_CMD_SET_TXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_SND);
-			} else {
-				dw_uart_ena_cbr(uart_info_ptr, DW_UART_RDY_SND);
-			}
-			break;
-		case UART_CMD_SET_RXINT:
-			val32 = (uint32_t)param;
-			if (val32 == 0) {
-				dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_RCV);
-			} else {
-				dw_uart_ena_cbr(uart_info_ptr, DW_UART_RDY_RCV);
-			}
-			break;
-		case UART_CMD_SET_TXINT_BUF:
-			DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				uart_info_ptr->tx_buf = *devbuf;
-				uart_info_ptr->tx_buf.ofs = 0;
-			} else {
-				uart_info_ptr->tx_buf.buf = NULL;
-				uart_info_ptr->tx_buf.len = 0;
-				uart_info_ptr->tx_buf.ofs = 0;
-			}
-			break;
-		case UART_CMD_SET_RXINT_BUF:
-			DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				uart_info_ptr->rx_buf = *devbuf;
-				uart_info_ptr->rx_buf.ofs = 0;
-			} else {
-				uart_info_ptr->rx_buf.buf = NULL;
-				uart_info_ptr->rx_buf.len = 0;
-				uart_info_ptr->rx_buf.ofs = 0;
-			}
-			break;
-		default:
-			ercd = E_NOSPT;
-			break;
+	case UART_CMD_SET_BAUD:
+		val32 = (uint32_t)param;
+		DW_UART_CHECK_EXP(val32 > 0, E_PAR);
+		if (val32 != uart_info_ptr->baudrate) {
+			baud_divisor = DW_UART_BAUD2DIV(uart_ctrl_ptr->dw_apb_bus_freq, val32);
+			dw_uart_set_baud(uart_reg_ptr, baud_divisor);
+			uart_info_ptr->baudrate = val32;
+		}
+		break;
+	case UART_CMD_GET_STATUS:
+		DW_UART_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = uart_info_ptr->status;
+		break;
+	case UART_CMD_ENA_DEV:
+		dw_uart_enable_device(uart_info_ptr);
+		break;
+	case UART_CMD_DIS_DEV:
+		dw_uart_disable_device(uart_info_ptr);
+		break;
+	case UART_CMD_FLUSH_OUTPUT:
+		dw_uart_flush_output(uart_info_ptr);
+		break;
+	case UART_CMD_GET_RXAVAIL:
+		DW_UART_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = dw_uart_get_rxavail(uart_ctrl_ptr);
+		break;
+	case UART_CMD_GET_TXAVAIL:
+		DW_UART_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		*((int32_t *)param) = dw_uart_get_txavail(uart_ctrl_ptr);
+		break;
+	case UART_CMD_BREAK_SET:
+		dw_uart_set_break(uart_reg_ptr);
+		break;
+	case UART_CMD_BREAK_CLR:
+		dw_uart_clr_break(uart_reg_ptr);
+		break;
+	case UART_CMD_SET_DPS_FORMAT:
+		DW_UART_CHECK_EXP(param != NULL, E_PAR);
+		dps_ptr = (UART_DPS_FORMAT *)param;
+		if (dw_uart_set_dps(uart_reg_ptr, dps_ptr) == 0) {
+			uart_info_ptr->dps_format = *dps_ptr;
+		} else {
+			ercd = E_PAR;
+		}
+		break;
+	case UART_CMD_SET_HWFC:
+		hwfc_local = (UART_HW_FLOW_CONTROL)param;
+		DW_UART_CHECK_EXP(((hwfc_local >= UART_FC_NONE) && (hwfc_local <= UART_FC_BOTH)), E_PAR);
+		dw_uart_set_hwfc(uart_reg_ptr, hwfc_local);
+		uart_info_ptr->hwfc = hwfc_local;
+		break;
+	case UART_CMD_SET_TXCB:
+		DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		uart_info_ptr->uart_cbs.tx_cb = param;
+		break;
+	case UART_CMD_SET_RXCB:
+		DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		uart_info_ptr->uart_cbs.rx_cb = param;
+		break;
+	case UART_CMD_SET_ERRCB:
+		DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		uart_info_ptr->uart_cbs.err_cb = param;
+		break;
+	case UART_CMD_ABORT_TX:
+		dw_uart_abort_tx(uart_obj);
+		break;
+	case UART_CMD_ABORT_RX:
+		dw_uart_abort_rx(uart_obj);
+		break;
+	case UART_CMD_SET_TXINT:
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_SND);
+		} else {
+			dw_uart_ena_cbr(uart_info_ptr, DW_UART_RDY_SND);
+		}
+		break;
+	case UART_CMD_SET_RXINT:
+		val32 = (uint32_t)param;
+		if (val32 == 0) {
+			dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_RCV);
+		} else {
+			dw_uart_ena_cbr(uart_info_ptr, DW_UART_RDY_RCV);
+		}
+		break;
+	case UART_CMD_SET_TXINT_BUF:
+		DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			uart_info_ptr->tx_buf = *devbuf;
+			uart_info_ptr->tx_buf.ofs = 0;
+		} else {
+			uart_info_ptr->tx_buf.buf = NULL;
+			uart_info_ptr->tx_buf.len = 0;
+			uart_info_ptr->tx_buf.ofs = 0;
+		}
+		break;
+	case UART_CMD_SET_RXINT_BUF:
+		DW_UART_CHECK_EXP(CHECK_ALIGN_4BYTES(param), E_PAR);
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			uart_info_ptr->rx_buf = *devbuf;
+			uart_info_ptr->rx_buf.ofs = 0;
+		} else {
+			uart_info_ptr->rx_buf.buf = NULL;
+			uart_info_ptr->rx_buf.len = 0;
+			uart_info_ptr->rx_buf.ofs = 0;
+		}
+		break;
+	default:
+		ercd = E_NOSPT;
+		break;
 	}
 
 error_exit:
@@ -799,7 +816,7 @@ error_exit:
  * \retval	E_PAR	Parameter is not valid for current control command
  * \retval	E_SYS	Can't write data to hardware due to hardware issues
  */
-int32_t dw_uart_write (DEV_UART *uart_obj, const void *data, uint32_t len)
+int32_t dw_uart_write(DEV_UART *uart_obj, const void *data, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_UART_INFO *uart_info_ptr = &(uart_obj->uart_info);
@@ -808,8 +825,8 @@ int32_t dw_uart_write (DEV_UART *uart_obj, const void *data, uint32_t len)
 	VALID_CHK_UART_INFO_OBJECT(uart_info_ptr);
 	DW_UART_CHECK_EXP(uart_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_UART_CHECK_EXP(uart_info_ptr->status & DEV_ENABLED, E_SYS);
-	DW_UART_CHECK_EXP(data!=NULL, E_PAR);
-	DW_UART_CHECK_EXP(len>0, E_PAR);
+	DW_UART_CHECK_EXP(data != NULL, E_PAR);
+	DW_UART_CHECK_EXP(len > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
 	int32_t i = 0;
@@ -837,7 +854,7 @@ error_exit:
  * \retval	E_PAR	Parameter is not valid for current control command
  * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
  */
-int32_t dw_uart_read (DEV_UART *uart_obj, void *data, uint32_t len)
+int32_t dw_uart_read(DEV_UART *uart_obj, void *data, uint32_t len)
 {
 	int32_t ercd = E_OK;
 	DEV_UART_INFO *uart_info_ptr = &(uart_obj->uart_info);
@@ -846,8 +863,8 @@ int32_t dw_uart_read (DEV_UART *uart_obj, void *data, uint32_t len)
 	VALID_CHK_UART_INFO_OBJECT(uart_info_ptr);
 	DW_UART_CHECK_EXP(uart_info_ptr->opn_cnt > 0, E_CLSED);
 	DW_UART_CHECK_EXP(uart_info_ptr->status & DEV_ENABLED, E_SYS);
-	DW_UART_CHECK_EXP(data!=NULL, E_PAR);
-	DW_UART_CHECK_EXP(len>0, E_PAR);
+	DW_UART_CHECK_EXP(data != NULL, E_PAR);
+	DW_UART_CHECK_EXP(len > 0, E_PAR);
 	/* END OF ERROR CHECK */
 
 	int32_t i = 0;
@@ -870,7 +887,7 @@ error_exit:
  * \param[in]	uart_obj	uart object structure pointer
  * \param[in]	ptr		extra information
  */
-void dw_uart_isr (DEV_UART *uart_obj, void *ptr)
+void dw_uart_isr(DEV_UART *uart_obj, void *ptr)
 {
 	int32_t ercd = E_OK;
 	DEV_UART_INFO *uart_info_ptr = &(uart_obj->uart_info);
@@ -879,8 +896,8 @@ void dw_uart_isr (DEV_UART *uart_obj, void *ptr)
 	VALID_CHK_UART_INFO_OBJECT(uart_info_ptr);
 	/* END OF ERROR CHECK */
 
-	uint32_t uart_int_status; /** uart interrupt status */
-	volatile uint32_t temp; /** read error status to clear interrupt */
+	uint32_t uart_int_status;       /** uart interrupt status */
+	volatile uint32_t temp;         /** read error status to clear interrupt */
 	DEV_BUFFER *buf_ptr;
 	char *p_charbuf;
 
@@ -891,67 +908,67 @@ void dw_uart_isr (DEV_UART *uart_obj, void *ptr)
 	uart_int_status = (uart_reg_ptr->IIR) & DW_UART_IIR_INT_ID_MASK;
 
 	switch (uart_int_status) {
-		case DW_UART_IIR_MDM_STATUS:
-			temp = (volatile uint32_t)(uart_reg_ptr->MSR);
-			break;
-		case DW_UART_IIR_LINE_STATUS:
-			if (uart_info_ptr->uart_cbs.err_cb) {
-				uart_info_ptr->uart_cbs.err_cb(uart_info_ptr);
-			}
-			temp = (volatile uint32_t)(uart_reg_ptr->LSR);
-			break;
-		case DW_UART_IIR_XMIT_EMPTY:
-			buf_ptr = &(uart_info_ptr->tx_buf);
-			p_charbuf = (char *)buf_ptr->buf;
-			if (p_charbuf != NULL) {
-				while (dw_uart_putready(uart_reg_ptr)) {
-					dw_uart_putchar(uart_reg_ptr, p_charbuf[buf_ptr->ofs]);
-					buf_ptr->ofs ++;
-					if (buf_ptr->ofs >= buf_ptr->len) {
-						dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_SND);
-						if (uart_info_ptr->uart_cbs.tx_cb) {
-							uart_info_ptr->uart_cbs.tx_cb(uart_obj);
-						}
-						/* clear the send buffer pointer */
-						memset(buf_ptr, 0, sizeof(DEV_BUFFER));
-						break;
+	case DW_UART_IIR_MDM_STATUS:
+		temp = (volatile uint32_t)(uart_reg_ptr->MSR);
+		break;
+	case DW_UART_IIR_LINE_STATUS:
+		if (uart_info_ptr->uart_cbs.err_cb) {
+			uart_info_ptr->uart_cbs.err_cb(uart_info_ptr);
+		}
+		temp = (volatile uint32_t)(uart_reg_ptr->LSR);
+		break;
+	case DW_UART_IIR_XMIT_EMPTY:
+		buf_ptr = &(uart_info_ptr->tx_buf);
+		p_charbuf = (char *)buf_ptr->buf;
+		if (p_charbuf != NULL) {
+			while (dw_uart_putready(uart_reg_ptr)) {
+				dw_uart_putchar(uart_reg_ptr, p_charbuf[buf_ptr->ofs]);
+				buf_ptr->ofs++;
+				if (buf_ptr->ofs >= buf_ptr->len) {
+					dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_SND);
+					if (uart_info_ptr->uart_cbs.tx_cb) {
+						uart_info_ptr->uart_cbs.tx_cb(uart_obj);
 					}
-				}
-			} else {
-				if (uart_info_ptr->uart_cbs.tx_cb) {
-					uart_info_ptr->uart_cbs.tx_cb(uart_obj);
+					/* clear the send buffer pointer */
+					memset(buf_ptr, 0, sizeof(DEV_BUFFER));
+					break;
 				}
 			}
-			break;
-		case DW_UART_IIR_RX_TIMEOUT:
-			temp = dw_uart_getchar(uart_reg_ptr);
-			break;
-		case DW_UART_IIR_DATA_AVAIL:
-			buf_ptr = &(uart_info_ptr->rx_buf);
-			p_charbuf = (char *)buf_ptr->buf;
-			if (p_charbuf != NULL) {
-				while (dw_uart_getready(uart_reg_ptr)) {
-					p_charbuf[buf_ptr->ofs] = (char)dw_uart_getchar(uart_reg_ptr);
-					buf_ptr->ofs ++;
-					if (buf_ptr->ofs >= buf_ptr->len) {
-						dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_RCV);
-						if (uart_info_ptr->uart_cbs.rx_cb) {
-							uart_info_ptr->uart_cbs.rx_cb(uart_obj);
-						}
-						/* clear the send buffer pointer */
-						memset(buf_ptr, 0, sizeof(DEV_BUFFER));
-						break;
+		} else {
+			if (uart_info_ptr->uart_cbs.tx_cb) {
+				uart_info_ptr->uart_cbs.tx_cb(uart_obj);
+			}
+		}
+		break;
+	case DW_UART_IIR_RX_TIMEOUT:
+		temp = dw_uart_getchar(uart_reg_ptr);
+		break;
+	case DW_UART_IIR_DATA_AVAIL:
+		buf_ptr = &(uart_info_ptr->rx_buf);
+		p_charbuf = (char *)buf_ptr->buf;
+		if (p_charbuf != NULL) {
+			while (dw_uart_getready(uart_reg_ptr)) {
+				p_charbuf[buf_ptr->ofs] = (char)dw_uart_getchar(uart_reg_ptr);
+				buf_ptr->ofs++;
+				if (buf_ptr->ofs >= buf_ptr->len) {
+					dw_uart_dis_cbr(uart_info_ptr, DW_UART_RDY_RCV);
+					if (uart_info_ptr->uart_cbs.rx_cb) {
+						uart_info_ptr->uart_cbs.rx_cb(uart_obj);
 					}
-				}
-			} else {
-				if (uart_info_ptr->uart_cbs.rx_cb) {
-					uart_info_ptr->uart_cbs.rx_cb(uart_obj);
+					/* clear the send buffer pointer */
+					memset(buf_ptr, 0, sizeof(DEV_BUFFER));
+					break;
 				}
 			}
-			break;
-		default:
-			temp = (volatile uint32_t)(uart_reg_ptr->USR);
-			break;
+		} else {
+			if (uart_info_ptr->uart_cbs.rx_cb) {
+				uart_info_ptr->uart_cbs.rx_cb(uart_obj);
+			}
+		}
+		break;
+	default:
+		temp = (volatile uint32_t)(uart_reg_ptr->USR);
+		break;
 	}
 
 error_exit:

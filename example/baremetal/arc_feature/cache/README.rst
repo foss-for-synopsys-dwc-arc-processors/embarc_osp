@@ -54,27 +54,29 @@ Sample Output
 	      \___|_| |_| |_|_.__/_/   \_\_| \_\\____|
 	------------------------------------------------------------
 
-	embARC Build Time: Mar 26 2018, 17:07:17
-	Compiler Version: Metaware, 4.2.1 Compatible Clang 4.0.1 (branches/release_40)
-	Data cache, ver:4, capacity:16384, ways:2, line len:32
-	Instruction cache, ver:4, capacity:16384, ways:2, line len:32
+	embARC Build Time: Jan 20 2021, 16:09:20
+	Compiler Version: Metaware, Clang 9.0.1
+
+	Data cache, ver:5, capacity:16384, ways:2, line len:32
+	Instruction cache, ver:5, capacity:16384, ways:2, line len:32
 	fill the data cache with data
-	cache data:0,  mem data:0
+	cache data:0,  mem data:ff
 	lock the data in data cache
 	invalidate data cache, even it's locked
-	cache data:3c3c3c3c,  mem data:3c3c3c3c
+	cache data:3f3f3f3f,  mem data:3f3f3f3f
 	invalidate one cache line
-	cache the data into one cache line with 0xff
-	cache data:ffffffff,  mem data:0
+	cache the data into one cache line with 0xcc
+	cache data:cccccccc,  mem data:0
 	flush the changed cache line
-	cache data:ffffffff,  mem data:0
+	cache data:cccccccc,  mem data:cccccccc
 	cached the data into one cache line again with 0x55
-	cache data:55555555,  mem data:0
+	cache data:55555555,  mem data:cccccccc
 	lock the changed cache line
 	flush the whole data chache, the locked line won't be flushed
-	cache data:55555555,  mem data:0
+	cache data:55555555,  mem data:cccccccc
 	refill the cache with data
-	cache data:3020100,  mem data:3c3c3c3c
+	cache data:3020100,  mem data:3f3f3f3f
 	flush multiple cache lines
-	cache data:3020100,  mem data:3c3c3c3c
+	cache data:3020100,  mem data:3020100
 	Cache Test Done
+

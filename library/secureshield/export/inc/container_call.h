@@ -30,7 +30,7 @@
 #ifndef _CONTAINER_CALL_H_
 #define _CONTAINER_CALL_H_
 
-#include "arc_feature_config.h"
+#include "arc/arc_feature_config.h"
 
 #if ARC_FEATURE_MPU_BUILD_S == 1 && SECURESHIELD_USE_MPU_SID == 1
 /* container call */

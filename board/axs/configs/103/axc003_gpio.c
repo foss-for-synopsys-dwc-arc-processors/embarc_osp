@@ -26,9 +26,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "arc.h"
-#include "arc_builtin.h"
+   --------------------------------------------- */
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
@@ -36,18 +36,17 @@
 #include "axc003_gpio.h"
 #include "axs_hardware.h"
 
-
 static DEV_GPIO *leda_port;
 static DEV_GPIO *ledb_port;
 static DEV_GPIO *button_port;
 static DEV_GPIO *seven_seg_port;
 
-#define AXC003_GPIO_CHECK_EXP_NORTN(EXPR)		CHECK_EXP_NOERCD(EXPR, error_exit)
+#define AXC003_GPIO_CHECK_EXP_NORTN(EXPR)               CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /** axc003 on board gpio init */
 void axc003_gpio_init(void)
 {
-	DEV_GPIO * port_ptr;
+	DEV_GPIO *port_ptr;
 
 	port_ptr = gpio_get_dev(CPU_DW_GPIO_PORT_A);
 	port_ptr->gpio_open(CPU_POARTA_DIR);
@@ -70,20 +69,18 @@ void leda_write(uint32_t led_val, uint32_t mask)
 {
 	AXC003_GPIO_CHECK_EXP_NORTN(leda_port != NULL);
 
- 	led_val &= mask;
+	led_val &= mask;
 	led_val = (led_val & 0x3) | ((led_val & 0xC) << 0x3) | ((led_val & 0x30) << 0x6) |
-		((led_val & 0xC0) << 9);
+		  ((led_val & 0xC0) << 9);
 
 	mask = (mask & 0x3) | ((mask & 0xC) << 0x3) | ((mask & 0x30) << 0x6) |
-		((mask & 0xC0) << 9);
+	       ((mask & 0xC0) << 9);
 
 	leda_port->gpio_write(led_val, mask);
 
 error_exit:
 	return;
 }
-
-
 
 /** write 1 to light on led bit, else light off led */
 void ledb_write(uint32_t led_val, uint32_t mask)
@@ -120,8 +117,8 @@ void button_install_isr(uint32_t offset, void (*isr_ptr)(void *ptr))
 {
 
 /* note: CPU card's creg ctrl's gpio int source to INTNO_ICTL_MB,
-default is A12 which is int request from main board, int request from SW2504-SW2507 can not
-go to INTNO_ICTL_MB */
+   default is A12 which is int request from main board, int request from SW2504-SW2507 can not
+   go to INTNO_ICTL_MB */
 	DEV_GPIO_BIT_ISR bit_isr;
 	DEV_GPIO_INT_CFG int_cfg;
 	uint32_t mask;
@@ -148,16 +145,16 @@ error_exit:
 }
 
 static const uint8_t num_to_7seg_table[10] = {
-	0x3f, // 0
-	0x06, // 1
-	0x5B, // 2
-	0x4F, // 3
-	0x66, // 4
-	0x6D, // 5
-	0x7D, // 6
-	0x07, // 7
-	0x7F, // 8
-	0x6F // 9
+	0x3f,   // 0
+	0x06,   // 1
+	0x5B,   // 2
+	0x4F,   // 3
+	0x66,   // 4
+	0x6D,   // 5
+	0x7D,   // 6
+	0x07,   // 7
+	0x7F,   // 8
+	0x6F    // 9
 };
 
 void seven_seg_write(uint32_t val)

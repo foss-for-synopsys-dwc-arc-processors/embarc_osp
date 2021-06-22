@@ -26,40 +26,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_toolchain.h"
 #include "iotdk_hardware.h"
 #include "sysconf.h"
 
-#define PLL_CLK_IN	(BOARD_REF_CLK / 1000000)  /* PLL clock in */
+#define PLL_CLK_IN      (BOARD_REF_CLK / 1000000)  /* PLL clock in */
 
 SYSCONF_REG_PTR sysconf_reg_ptr = (SYSCONF_REG_PTR)(BASE_ADDR_SYSCONFIG);
-
 
 typedef struct pll_conf {
 	uint32_t fout;
 	uint32_t pll;
 } PLL_CONF;
 
-#define PLL_CONF_VAL(n, m, od) \
-	(((n) << PLLCON_BIT_OFFSET_N) | \
-	((m) << (PLLCON_BIT_OFFSET_M)) | \
-	((od) << PLLCON_BIT_OFFSET_OD))
+#define PLL_CONF_VAL(n, m, od)		  \
+	(((n) << PLLCON_BIT_OFFSET_N) |	  \
+	 ((m) << (PLLCON_BIT_OFFSET_M)) | \
+	 ((od) << PLLCON_BIT_OFFSET_OD))
 
 /* the following configuration is based on Fin = 16 Mhz */
 static const PLL_CONF pll_configuration[] = {
-	{200, PLL_CONF_VAL(1, 25, 1)}, /* 200 Mhz */
-	{100, PLL_CONF_VAL(1, 25, 2)}, /* 100 Mhz */
-	{50,  PLL_CONF_VAL(1, 25, 3)},  /* 50 Mhz */
-	{400, PLL_CONF_VAL(1, 25, 0)}, /* 400 Mhz */
-	{150, PLL_CONF_VAL(4, 75, 1)}, /* 150 Mhz */
-	{75,  PLL_CONF_VAL(4, 75, 2)},  /* 75 Mhz */
-	{300, PLL_CONF_VAL(4, 75, 0)}, /* 300 Mhz */
-	{25,  PLL_CONF_VAL(2, 25, 3)},  /* 25 Mhz */
-	{72,  PLL_CONF_VAL(8, 144, 2)}, /* 72 Mhz */
-	{144, PLL_CONF_VAL(8, 144, 1)}, /* 144 Mhz */
-	{180, PLL_CONF_VAL(8, 180, 1)}, /* 180 Mhz */
+	{ 200, PLL_CONF_VAL(1, 25, 1) },        /* 200 Mhz */
+	{ 100, PLL_CONF_VAL(1, 25, 2) },        /* 100 Mhz */
+	{ 50,  PLL_CONF_VAL(1, 25, 3) },        /* 50 Mhz */
+	{ 400, PLL_CONF_VAL(1, 25, 0) },        /* 400 Mhz */
+	{ 150, PLL_CONF_VAL(4, 75, 1) },        /* 150 Mhz */
+	{ 75,  PLL_CONF_VAL(4, 75, 2) },        /* 75 Mhz */
+	{ 300, PLL_CONF_VAL(4, 75, 0) },        /* 300 Mhz */
+	{ 25,  PLL_CONF_VAL(2, 25, 3) },        /* 25 Mhz */
+	{ 72,  PLL_CONF_VAL(8, 144, 2) },       /* 72 Mhz */
+	{ 144, PLL_CONF_VAL(8, 144, 1) },       /* 144 Mhz */
+	{ 180, PLL_CONF_VAL(8, 180, 1) },       /* 180 Mhz */
 };
 
 /**
@@ -87,7 +86,9 @@ void pll_conf_reg(uint32_t val)
 	sysconf_reg_ptr->PLLCON = val & (~(1 << PLLCON_BIT_OFFSET_PLLRST));
 
 	while (!(sysconf_reg_ptr->PLLSTAT
-	         & (1 << PLLSTAT_BIT_OFFSET_PLLSTB)));
+		 & (1 << PLLSTAT_BIT_OFFSET_PLLSTB))) {
+		;
+	}
 
 	sysconf_reg_ptr->CLKSEL = CLKSEL_PLL;
 
@@ -118,7 +119,6 @@ int32_t pll_fout_config(uint32_t freq)
 	}
 
 	pll_conf_reg(pll_configuration[i].pll);
-
 
 	/* config eflash clk, must be < 100 Mhz */
 	if (freq > 100) {
@@ -217,13 +217,13 @@ void spi_master_clk_divisor(uint8_t id, uint8_t div)
 {
 	if (id == SPI_MASTER_0) {
 		sysconf_reg_ptr->SPI_MST_CLKDIV =
-		    (sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffffff00) | div;
+			(sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffffff00) | div;
 	} else if (id == SPI_MASTER_1) {
 		sysconf_reg_ptr->SPI_MST_CLKDIV =
-		    (sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffff00ff) | (div << 8);
+			(sysconf_reg_ptr->SPI_MST_CLKDIV & 0xffff00ff) | (div << 8);
 	} else if (id == SPI_MASTER_2) {
 		sysconf_reg_ptr->SPI_MST_CLKDIV =
-		    (sysconf_reg_ptr->SPI_MST_CLKDIV & 0xff00ffff) | (div << 16);
+			(sysconf_reg_ptr->SPI_MST_CLKDIV & 0xff00ffff) | (div << 16);
 	}
 }
 
@@ -239,16 +239,16 @@ void gpio8b_dbclk_div(uint8_t bank, uint8_t div)
 {
 	if (bank == GPIO8B_BANK0) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffffff00) | div;
+			(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffffff00) | div;
 	} else if (bank == GPIO8B_BANK1) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffff00ff) | (div << 8);
+			(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xffff00ff) | (div << 8);
 	} else if (bank == GPIO8B_BANK2) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xff00ffff) | (div << 16);
+			(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0xff00ffff) | (div << 16);
 	} else if (bank == GPIO8B_BANK3) {
 		sysconf_reg_ptr->GPIO8B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0x00ffffff) | (div << 24);
+			(sysconf_reg_ptr->GPIO8B_DBCLK_DIV & 0x00ffffff) | (div << 24);
 	}
 }
 
@@ -264,13 +264,13 @@ void gpio4b_dbclk_div(uint8_t bank, uint8_t div)
 {
 	if (bank == GPIO4B_BANK0) {
 		sysconf_reg_ptr->GPIO4B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffffff00) | div;
+			(sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffffff00) | div;
 	} else if (bank == GPIO4B_BANK1) {
 		sysconf_reg_ptr->GPIO4B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffff00ff) | (div << 8);
+			(sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xffff00ff) | (div << 8);
 	} else if (bank == GPIO4B_BANK2) {
 		sysconf_reg_ptr->GPIO4B_DBCLK_DIV =
-		    (sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xff00ffff) | (div << 16);
+			(sysconf_reg_ptr->GPIO4B_DBCLK_DIV & 0xff00ffff) | (div << 16);
 	}
 }
 
@@ -307,16 +307,16 @@ void dvfs_clk_divisor(uint8_t level, uint8_t div)
 {
 	if (level == DVFS_PERF_LEVEL0) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xffffff00) | div;
+			(sysconf_reg_ptr->DVFS_CLKDIV & 0xffffff00) | div;
 	} else if (level == DVFS_PERF_LEVEL1) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xffff00ff) | (div << 8);
+			(sysconf_reg_ptr->DVFS_CLKDIV & 0xffff00ff) | (div << 8);
 	} else if (level == DVFS_PERF_LEVEL2) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xff00ffff) | (div << 16);
+			(sysconf_reg_ptr->DVFS_CLKDIV & 0xff00ffff) | (div << 16);
 	} else if (level == DVFS_PERF_LEVEL3) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-		    (sysconf_reg_ptr->DVFS_CLKDIV & 0x00ffffff) | (div << 24);
+			(sysconf_reg_ptr->DVFS_CLKDIV & 0x00ffffff) | (div << 24);
 	}
 }
 
@@ -326,16 +326,16 @@ void dvfs_vdd_config(uint8_t level, uint8_t val)
 
 	if (level == DVFS_PERF_LEVEL0) {
 		sysconf_reg_ptr->DVFS_VDDSET =
-		    (sysconf_reg_ptr->DVFS_VDDSET & 0xfffffff0) | val;
+			(sysconf_reg_ptr->DVFS_VDDSET & 0xfffffff0) | val;
 	} else if (level == DVFS_PERF_LEVEL1) {
 		sysconf_reg_ptr->DVFS_VDDSET =
-		    (sysconf_reg_ptr->DVFS_VDDSET & 0xffffff0f) | (val << 4);
+			(sysconf_reg_ptr->DVFS_VDDSET & 0xffffff0f) | (val << 4);
 	} else if (level == DVFS_PERF_LEVEL2) {
 		sysconf_reg_ptr->DVFS_VDDSET =
-		    (sysconf_reg_ptr->DVFS_VDDSET & 0xfffff0ff) | (val << 8);
+			(sysconf_reg_ptr->DVFS_VDDSET & 0xfffff0ff) | (val << 8);
 	} else if (level == DVFS_PERF_LEVEL3) {
 		sysconf_reg_ptr->DVFS_CLKDIV =
-		    (sysconf_reg_ptr->DVFS_CLKDIV & 0xffff0fff) | (val << 12);
+			(sysconf_reg_ptr->DVFS_CLKDIV & 0xffff0fff) | (val << 12);
 	}
 }
 
@@ -346,7 +346,7 @@ void dvfs_vwtime_config(uint8_t time)
 
 void pmc_pwwtime_config(uint8_t time)
 {
-	sysconf_reg_ptr->PMC_PUWTIME= time;
+	sysconf_reg_ptr->PMC_PUWTIME = time;
 }
 
 void uart3_clk_divisor(uint8_t div)
@@ -379,6 +379,7 @@ void pwm_timer_pause(uint32_t id, uint32_t pause)
 void eflash_clk_div(uint8_t div)
 {
 	uint32_t val = sysconf_reg_ptr->AHBCLKDIV;
+
 	val &= (~(7 << 8));
 	val |= (div << 8);
 	sysconf_reg_ptr->AHBCLKDIV = val;

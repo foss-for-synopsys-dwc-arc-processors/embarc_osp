@@ -26,31 +26,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
+#if ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT
 #ifdef BOARD_EMSDP
-//EMDK only has 2 way cache, it might have some chances that the cache get switched out before locking,
+// EMDK only has 2 way cache, it might have some chances that the cache get switched out before locking,
 //   causing cached data being wrote to memory in advance
 //   If that is the case, please test other lines of cache_data
-#define DCACHE_LINE_NUM		256
-#define DCACHE_LINE_LENGTH 	32
+#define DCACHE_LINE_NUM         256
+#define DCACHE_LINE_LENGTH      32
 #else
-#define DCACHE_LINE_NUM		64
-#define DCACHE_LINE_LENGTH 	128
+#define DCACHE_LINE_NUM         64
+#define DCACHE_LINE_LENGTH      128
 #endif
 
-#define FILLED_DATA			0xcc
+#define FILLED_DATA                     0xcc
 
-__attribute__ ((aligned(DCACHE_LINE_LENGTH*DCACHE_LINE_NUM)))
-static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH] = {0xFF};
+__attribute__ ((aligned(DCACHE_LINE_LENGTH * DCACHE_LINE_NUM)))
+static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH] = { 0xFF };
+#endif
 
 /**
  * \brief	call cache related functions
  */
 int main(void)
 {
+#if ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT
 	uint32_t cache_ver;
 	uint32_t cache_size;
 	uint32_t cache_llen;
@@ -59,7 +62,7 @@ int main(void)
 	volatile register int i = 0;
 	volatile register int j = 0;
 
-	build_cfg = _arc_aux_read(AUX_BCR_D_CACHE);
+	build_cfg = arc_aux_read(AUX_BCR_D_CACHE);
 
 	cache_ver = build_cfg & 0xff;
 
@@ -69,11 +72,13 @@ int main(void)
 		cache_llen = 16 << ((build_cfg >> 16) & 0xf);
 		/* show data cache info */
 		EMBARC_PRINTF("Data cache, ver:%d, capacity:%d, ways:%d, line len:%d\n",
-				cache_ver, cache_size, cache_ways, cache_llen);
-		build_cfg = _arc_aux_read(AUX_BCR_I_CACHE);
+			      cache_ver, cache_size, cache_ways, cache_llen);
+		build_cfg = arc_aux_read(AUX_BCR_I_CACHE);
 	} else {
 		EMBARC_PRINTF("Test Error: no data cache\n");
-		while(1);
+		while(1) {
+			;
+		}
 	}
 
 	cache_ver = build_cfg & 0xff;
@@ -83,58 +88,63 @@ int main(void)
 	cache_llen = 8 << ((build_cfg >> 16) & 0xf);
 
 	if (cache_ver) {
-	/* show instruction cache info */
+		/* show instruction cache info */
 		EMBARC_PRINTF("Instruction cache, ver:%d, capacity:%d, ways:%d, line len:%d\n",
-			cache_ver, cache_size, cache_ways, cache_llen);
+			      cache_ver, cache_size, cache_ways, cache_llen);
 	} else {
 		EMBARC_PRINTF("no instruction cache\n");
 	}
 
 	EMBARC_PRINTF("fill the data cache with data\n");
 	for (i = 0; i < DCACHE_LINE_NUM; i++) {
-		for (j = 0; j < DCACHE_LINE_LENGTH ; j++) {
+		for (j = 0; j < DCACHE_LINE_LENGTH; j++) {
 			cache_data[i][j] = i;
 		}
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("lock the data in data cache\n");
 	dcache_lock_mlines((unsigned int)cache_data, 8192);
 	EMBARC_PRINTF("invalidate data cache, even it's locked\n");
-	dcache_invalidate_mlines((unsigned int)(cache_data)+4096, 4096);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
+	dcache_invalidate_mlines((unsigned int)(cache_data) + 4096, 4096);
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data[DCACHE_LINE_NUM - 1]), arc_read_uncached_32(cache_data[DCACHE_LINE_NUM - 1]));
 
 	EMBARC_PRINTF("invalidate one cache line\n");
 	dcache_invalidate_line((unsigned int)cache_data);
 	EMBARC_PRINTF("cache the data into one cache line with 0x%x\n", FILLED_DATA);
-	for (j = 0 ; j < DCACHE_LINE_LENGTH ; j++) {
+	for (j = 0; j < DCACHE_LINE_LENGTH; j++) {
 		cache_data[0][j] = FILLED_DATA;
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("flush the changed cache line\n");
 	dcache_flush_line((unsigned int)cache_data);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("cached the data into one cache line again with 0x55\n");
-	for (j = 0 ; j < DCACHE_LINE_LENGTH ; j++) {
+	for (j = 0; j < DCACHE_LINE_LENGTH; j++) {
 		cache_data[0][j] = 0x55;
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("lock the changed cache line\n");
 	dcache_lock_line((unsigned int)cache_data);
 	EMBARC_PRINTF("flush the whole data chache, the locked line won't be flushed\n");
 	dcache_flush();
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data), _arc_read_uncached_32(cache_data));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data), arc_read_uncached_32(cache_data));
 	EMBARC_PRINTF("refill the cache with data\n");
-	for (i = DCACHE_LINE_NUM/2; i < DCACHE_LINE_NUM; i++) {
-		for (j = 0; j < DCACHE_LINE_LENGTH ; j++) {
+	for (i = DCACHE_LINE_NUM / 2; i < DCACHE_LINE_NUM; i++) {
+		for (j = 0; j < DCACHE_LINE_LENGTH; j++) {
 			cache_data[i][j] = j;
 		}
 	}
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data[DCACHE_LINE_NUM - 1]), arc_read_uncached_32(cache_data[DCACHE_LINE_NUM - 1]));
 	EMBARC_PRINTF("flush multiple cache lines\n");
-	dcache_flush_mlines((unsigned int)(cache_data)+5000, 4096);
-	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", _arc_read_cached_32(cache_data[DCACHE_LINE_NUM-1]), _arc_read_uncached_32(cache_data[DCACHE_LINE_NUM-1]));
+	dcache_flush_mlines((unsigned int)(cache_data) + 5000, 4096);
+	EMBARC_PRINTF("cache data:%x,  mem data:%x\n", arc_read_cached_32(cache_data[DCACHE_LINE_NUM - 1]), arc_read_uncached_32(cache_data[DCACHE_LINE_NUM - 1]));
 	EMBARC_PRINTF("Cache Test Done\n");
-	while(1);
+	while (1) {
+		;
+	}
+#else /* ARC_FEATURE_ICACHE_PRESENT || ARC_FEATURE_DCACHE_PRESENT */
+	EMBARC_PRINTF("This example is not supported under current configurations \r\n");
+#endif
 
 	return E_SYS;
 }

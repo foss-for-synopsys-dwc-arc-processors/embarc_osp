@@ -28,7 +28,7 @@
  *
 --------------------------------------------- */
 #define __ASSEMBLY__
-#include "arc_asm_common.h"
+#include "arc/arc_asm_common.h"
 
 /* MPU enabled, SID=1, S mode, KR, KW, KE, also used as MPU disabled */
 #if SECURESHIELD_VERSION == 1

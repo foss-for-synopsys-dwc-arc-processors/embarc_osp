@@ -26,16 +26,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "ip/subsystem/uart/uart.h"
-#include "ip/subsystem/uart/ss_uart.h"
+#include "uart.h"
+#include "ss_uart.h"
 #include "io_config.h"
-
 
 /* APEX UART device registers  */
 #define UART_RBR    (0x00)
@@ -47,17 +46,16 @@
 #define UART_FCR    (0x08)
 #define UART_LCR    (0x0c)
 #define UART_MCR    (0x10)
-#define UART_LSR    (0x14)  // unused
-#define UART_MSR    (0x18)  // unused
-#define UART_USR    (0x7c)  // unused
+#define UART_LSR    (0x14)      // unused
+#define UART_MSR    (0x18)      // unused
+#define UART_USR    (0x7c)      // unused
 #define UART_CLKEN  (0xc0)
 
-
-#define REG_READ(x) 		_arc_aux_read((ctx->reg_base + x))
-#define REG_WRITE(x, y) 	_arc_aux_write((ctx->reg_base + x), y)
+#define REG_READ(x)             arc_aux_read((ctx->reg_base + x))
+#define REG_WRITE(x, y)         arc_aux_write((ctx->reg_base + x), y)
 
 /** convert uart baudrate to subsystem divisor */
-#define SS_UART_BAUD2DIV(perifreq, baud)		((perifreq) / ((baud)*16) + 1)
+#define SS_UART_BAUD2DIV(perifreq, baud)                ((perifreq) / ((baud) * 16) + 1)
 
 Inline int32_t set_hwfc(uint32_t dev_id, uint32_t control)
 {
@@ -91,26 +89,24 @@ static int32_t set_dps(uint32_t dev_id, const UART_DPS_FORMAT *format)
 	uint32_t param = 0;
 
 	switch (format->databits) {
-		case 6:
-			param |= 0x1;
-			break;
-		case 7:
-			param |= 0x2;
-			break;
-		case 8:
-			param |= 0x3;
-			break;
-		default:
-			return E_NOSPT;
+	case 6:
+		param |= 0x1;
+		break;
+	case 7:
+		param |= 0x2;
+		break;
+	case 8:
+		param |= 0x3;
+		break;
+	default:
+		return E_NOSPT;
 	}
 
 	if (format->stopbits == UART_STPBITS_ONE) {
 
-	}
-	else if (format->stopbits == UART_STPBITS_ONEHALF && format->databits == 5) {
+	} else if (format->stopbits == UART_STPBITS_ONEHALF && format->databits == 5) {
 		param |= 0x4;
-	}
-	else {
+	} else   {
 		return E_NOSPT;
 	}
 
@@ -119,8 +115,7 @@ static int32_t set_dps(uint32_t dev_id, const UART_DPS_FORMAT *format)
 
 		if (format->parity == UART_PARITY_EVEN) {
 			param |= 0x10; // EPS
-		}
-		else if (format->parity == UART_PARITY_MARK) {
+		} else if (format->parity == UART_PARITY_MARK) {
 			// PEN & Stick parity = logic 1
 			param |= (0x20);
 		} else if (format->parity == UART_PARITY_SPACE) {
@@ -134,70 +129,73 @@ static int32_t set_dps(uint32_t dev_id, const UART_DPS_FORMAT *format)
 	return E_OK;
 }
 
-
 static void io_uart_poll_write(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t *size)
 {
-    uint32_t old_val;
-    uint32_t i = 0;
-    uint32_t len;
+	uint32_t old_val;
+	uint32_t i = 0;
+	uint32_t len;
 
-    /* disbale uart interrupt */
-    old_val = REG_READ(UART_IER);
-    REG_WRITE(UART_IER, 0x80);
+	/* disbale uart interrupt */
+	old_val = REG_READ(UART_IER);
+	REG_WRITE(UART_IER, 0x80);
 
-    len = *size;
-    while (i < len) {
-        while ((REG_READ(UART_LSR) & 0x20)); // wait THR empty
-        REG_WRITE(UART_THR, data[i++]);
-    }
+	len = *size;
+	while (i < len) {
+		while ((REG_READ(UART_LSR) & 0x20)) {
+			;                    // wait THR empty
+		}
+		REG_WRITE(UART_THR, data[i++]);
+	}
 
-    REG_WRITE(UART_IER, old_val);
+	REG_WRITE(UART_IER, old_val);
 }
 
 static void io_uart_poll_read(SS_UART_DEV_CONTEXT *ctx, uint8_t *data, uint32_t *size)
 {
-    uint32_t i = 0;
-    uint32_t len;
-    uint32_t old_val;
+	uint32_t i = 0;
+	uint32_t len;
+	uint32_t old_val;
 
-    old_val = REG_READ(UART_IER);
-    REG_WRITE(UART_IER, 0x80);
+	old_val = REG_READ(UART_IER);
+	REG_WRITE(UART_IER, 0x80);
 
-    len = *size;
-    while (i < len) {
-        while (!(REG_READ(UART_LSR) & 0x1)); // wait data ready
-        data[i++] = REG_READ(UART_RBR);
-    }
+	len = *size;
+	while (i < len) {
+		while (!(REG_READ(UART_LSR) & 0x1)) {
+			;                    // wait data ready
+		}
+		data[i++] = REG_READ(UART_RBR);
+	}
 
-    REG_WRITE(UART_IER, old_val);
+	REG_WRITE(UART_IER, old_val);
 }
 
 static void io_uart_rx_int(SS_UART_DEV_CONTEXT *ctx, uint32_t enable)
 {
-    uint32_t val;
+	uint32_t val;
 
-    if (enable) {
-        /* enable ERBFI interrupt */
-        val = REG_READ( UART_IER ) | 0x1;
-        REG_WRITE( UART_IER, val);
-    } else {
-        val = REG_READ( UART_IER ) & ~0x1;
-        REG_WRITE( UART_IER, val);
-    }
+	if (enable) {
+		/* enable ERBFI interrupt */
+		val = REG_READ(UART_IER) | 0x1;
+		REG_WRITE(UART_IER, val);
+	} else {
+		val = REG_READ(UART_IER) & ~0x1;
+		REG_WRITE(UART_IER, val);
+	}
 }
 
 static void io_uart_tx_int(SS_UART_DEV_CONTEXT *ctx, uint32_t enable)
 {
-    uint32_t val;
+	uint32_t val;
 
-    if (enable) {
-        /* enable ETBEI interrupt and enable use of interrupt for TX threshold */
-        val = REG_READ( UART_IER ) | 0x82;
-        REG_WRITE( UART_IER, val);
-    } else {
-        val = REG_READ( UART_IER ) & ~0x82;
-        REG_WRITE( UART_IER, val);
-    }
+	if (enable) {
+		/* enable ETBEI interrupt and enable use of interrupt for TX threshold */
+		val = REG_READ(UART_IER) | 0x82;
+		REG_WRITE(UART_IER, val);
+	} else {
+		val = REG_READ(UART_IER) & ~0x82;
+		REG_WRITE(UART_IER, val);
+	}
 }
 
 int32_t ss_uart_open(SS_UART_DEV_CONTEXT *ctx, uint32_t baud)
@@ -206,7 +204,6 @@ int32_t ss_uart_open(SS_UART_DEV_CONTEXT *ctx, uint32_t baud)
 	DEV_UART_INFO *info = ctx->info;
 	io_cb_t callback;
 	int32_t dev_id = ctx->dev_id;
-
 
 	info->opn_cnt++;
 
@@ -270,82 +267,82 @@ int32_t ss_uart_control(SS_UART_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param
 	DEV_UART_INFO *info = ctx->info;
 
 	switch (ctrl_cmd) {
-		case UART_CMD_SET_BAUD:
-			return set_baud(ctx, int_val);
-		case UART_CMD_SET_HWFC:
-			io_uart_ioctl(dev_id, IO_UART_SET_FLOW_CONTROL, param);
-			return E_OK;
-		case UART_CMD_SET_DPS_FORMAT:
-			return set_dps(dev_id, (UART_DPS_FORMAT *)param);
-		case UART_CMD_GET_RXAVAIL:
-			if (REG_READ(UART_LSR) & 0x1) {
-				/* at least one byte */
-				*((uint32_t *)param) = 1;
-			} else {
+	case UART_CMD_SET_BAUD:
+		return set_baud(ctx, int_val);
+	case UART_CMD_SET_HWFC:
+		io_uart_ioctl(dev_id, IO_UART_SET_FLOW_CONTROL, param);
+		return E_OK;
+	case UART_CMD_SET_DPS_FORMAT:
+		return set_dps(dev_id, (UART_DPS_FORMAT *)param);
+	case UART_CMD_GET_RXAVAIL:
+		if (REG_READ(UART_LSR) & 0x1) {
+			/* at least one byte */
+			*((uint32_t *)param) = 1;
+		} else {
+			*((uint32_t *)param) = 0;
+		}
+		return E_OK;
+	case UART_CMD_GET_TXAVAIL:
+		int_val = REG_READ(UART_LSR);
+		if (int_val & 0x40) {
+			*((uint32_t *)param) = IO_UART0_FS;
+		} else {
+			if (int_val & 0x20) {
+				/* FIFO full */
 				*((uint32_t *)param) = 0;
-			}
-			return  E_OK;
-		case UART_CMD_GET_TXAVAIL:
-			int_val = REG_READ(UART_LSR);
-			if (int_val & 0x40) {
-				*((uint32_t *)param) = IO_UART0_FS;
 			} else {
-				if (int_val & 0x20) {
-					/* FIFO full */
-					*((uint32_t *)param) = 0;
-				} else {
-					*((uint32_t *)param) = 1;
-				}
+				*((uint32_t *)param) = 1;
 			}
-			return  E_OK;
-		case UART_CMD_SET_RXCB:
-			info->uart_cbs.rx_cb = param;
-			return E_OK;
-		case UART_CMD_SET_TXCB:
-			info->uart_cbs.tx_cb = param;
-			return E_OK;
-		case UART_CMD_SET_ERRCB:
-			info->uart_cbs.err_cb = param;
-			return E_OK;
-		case UART_CMD_SET_TXINT:
-			io_uart_tx_int(ctx, int_val);
-			return E_OK;
-		case UART_CMD_SET_RXINT:
-			io_uart_rx_int(ctx, int_val);
-			return E_OK;
-		case UART_CMD_SET_TXINT_BUF:
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				info->tx_buf = *devbuf;
-				info->tx_buf.ofs = 0;
-				io_uart_write(dev_id, (uint8_t *)(devbuf->buf),
-						 &(devbuf->len));
-			} else {
-				info->tx_buf.buf = NULL;
-				info->tx_buf.len = 0;
-				info->tx_buf.ofs = 0;
-				io_uart_write(dev_id, NULL, &(info->tx_buf.len));
-			}
-			break;
-		case UART_CMD_SET_RXINT_BUF:
-			if (param != NULL) {
-				devbuf = (DEV_BUFFER *)param;
-				info->rx_buf = *devbuf;
-				info->rx_buf.ofs = 0;
-				io_uart_read(dev_id, (uint8_t *)(devbuf->buf),
-						 &(devbuf->len));
-			} else {
-				info->rx_buf.buf = NULL;
-				info->rx_buf.len = 0;
-				info->rx_buf.ofs = 0;
-				io_uart_read(dev_id, NULL, &(info->rx_buf.len));
-			}
-			break;
-		case UART_CMD_BREAK_SET:
-		case UART_CMD_BREAK_CLR:
-			return E_NOSPT;
-		default:
-			return E_NOSPT;
+		}
+		return E_OK;
+	case UART_CMD_SET_RXCB:
+		info->uart_cbs.rx_cb = param;
+		return E_OK;
+	case UART_CMD_SET_TXCB:
+		info->uart_cbs.tx_cb = param;
+		return E_OK;
+	case UART_CMD_SET_ERRCB:
+		info->uart_cbs.err_cb = param;
+		return E_OK;
+	case UART_CMD_SET_TXINT:
+		io_uart_tx_int(ctx, int_val);
+		return E_OK;
+	case UART_CMD_SET_RXINT:
+		io_uart_rx_int(ctx, int_val);
+		return E_OK;
+	case UART_CMD_SET_TXINT_BUF:
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			info->tx_buf = *devbuf;
+			info->tx_buf.ofs = 0;
+			io_uart_write(dev_id, (uint8_t *)(devbuf->buf),
+				      &(devbuf->len));
+		} else {
+			info->tx_buf.buf = NULL;
+			info->tx_buf.len = 0;
+			info->tx_buf.ofs = 0;
+			io_uart_write(dev_id, NULL, &(info->tx_buf.len));
+		}
+		break;
+	case UART_CMD_SET_RXINT_BUF:
+		if (param != NULL) {
+			devbuf = (DEV_BUFFER *)param;
+			info->rx_buf = *devbuf;
+			info->rx_buf.ofs = 0;
+			io_uart_read(dev_id, (uint8_t *)(devbuf->buf),
+				     &(devbuf->len));
+		} else {
+			info->rx_buf.buf = NULL;
+			info->rx_buf.len = 0;
+			info->rx_buf.ofs = 0;
+			io_uart_read(dev_id, NULL, &(info->rx_buf.len));
+		}
+		break;
+	case UART_CMD_BREAK_SET:
+	case UART_CMD_BREAK_CLR:
+		return E_NOSPT;
+	default:
+		return E_NOSPT;
 	}
 	return E_OK;
 }
@@ -361,7 +358,9 @@ int32_t ss_uart_write(SS_UART_DEV_CONTEXT *ctx, const void *data, uint32_t len)
 		io_uart_write(dev_id, (uint8_t *) data, &len);
 
 		/* wait finished: uart int enable & no cpu lock */
-		while (ctx->flags & SS_UART_FLAG_TX);
+		while (ctx->flags & SS_UART_FLAG_TX) {
+			;
+		}
 
 		if (ctx->flags & SS_UART_FLAG_ERROR) {
 			ctx->flags = 0;
@@ -386,7 +385,9 @@ int32_t ss_uart_read(SS_UART_DEV_CONTEXT *ctx, void *data, uint32_t len)
 		io_uart_read(dev_id, (uint8_t *) data, &len);
 
 		/* wait finished: uart int enable & no cpu lock */
-		while (ctx->flags & SS_UART_FLAG_RX);
+		while (ctx->flags & SS_UART_FLAG_RX) {
+			;
+		}
 
 		if (ctx->flags & SS_UART_FLAG_ERROR) {
 			ctx->flags = 0;

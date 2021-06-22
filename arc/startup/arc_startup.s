@@ -41,13 +41,17 @@
 /** @cond STARTUP_ASM */
 
 #define __ASSEMBLY__
-#include "arc.h"
+#include "arc/arc.h"
+#include "arc/arc_asm_common.h"
 
 	.file "arc_startup.s"
 
+#ifdef __GNU__
+.weak	__SDATA_BEGIN__		/* start of small data, defined in link script */
+#else
 .weak	_f_sdata		/* start of small data, defined in link script */
+#endif
 .weak	init_hardware_hook	/* app hardware init hook */
-.weak	init_software_hook	/* app software init hook */
 
 .extern	board_main
 .extern exc_entry_table
@@ -79,7 +83,6 @@ _arc_cache_init_start:
 	jle	_arc_icache_init
 	mov	r0, 1
 	sr	r0, [AUX_DC_IVDC]
-	sr	r0, [AUX_DC_CTRL]
 _arc_icache_init:
 	lr	r0, [AUX_BCR_I_CACHE]
 	cmp	r0, 2
@@ -113,32 +116,30 @@ _arc_reset_stage2:
 #else
 	sr	exc_entry_table, [AUX_INT_VECT_BASE]
 #endif
-
-/* init stack */
-#if ARC_FEATURE_RGF_BANKED_REGS >= 16 && ARC_FEATURE_FIRQ == 1
-#if _STACKSIZE < 512
-#error "not enough stack size for irq and firq"
-#endif
-
-/* switch to register bank1 */
-	lr      r0, [AUX_STATUS32]
-	bic     r0, r0, 0x70000
-	or      r0, r0, 0x10000
-	kflag   r0
-/* set sp, gp, fp in bank1 */
-	mov     sp, _f_stack+256
-	mov     gp, _f_sdata
-	mov     fp, 0
-/* come back to bank0 */
-	lr      r0, [AUX_STATUS32]
-	bic     r0, r0, 0x70000
-	kflag   r0
-	mov	sp, _e_stack
+#ifdef __GNU__
+	mov	gp, __SDATA_BEGIN__	/* init small-data base register */
 #else
-	mov	sp, _e_stack	/* init stack pointer */
-#endif
 	mov	gp, _f_sdata	/* init small-data base register */
+#endif
 	mov	fp, 0		/* init fp register */
+
+#if ARC_FEATURE_MP_NUM_CPUS > 1
+	GET_CORE_ID r0
+	breq r0, 0, _master_core_startup
+
+_slave_core_wait:
+	ld r1, [arc_cpu_wake_flag]
+	brne r0, r1, _slave_core_wait
+
+	ld sp, [arc_cpu_sp]
+	/* signal master core that slave core runs */
+	st 0, [arc_cpu_wake_flag]
+
+	j arc_slave_start
+
+_master_core_startup:
+#endif
+	mov	sp, _e_stack	/* init stack pointer */
 
 _arc_reset_stage3:
 _s3_copy_text:
@@ -211,34 +212,17 @@ _s3_clear_bss_loop:
 /* STAGE 3: go to main */
 
 _arc_reset_call_main:
-	mov	r0, init_software_hook
-	cmp	r0, 0
-	jlne	[r0]
+
 /* board level library init */
 #ifdef	LIB_SECURESHIELD
 	jl 	secureshield_start
 #if SECURESHIELD_VERSION == 2
 	jl 	secureshield_except_bit_clear
 #endif
-#else
-/* early init of interrupt and exception */
-	jl	exc_int_init
-	/* init cache */
-	jl	arc_cache_init
-#endif
-
-#if defined(__MW__)
-	jl	_init
-#elif defined(__GNU__)
-	jl	__do_global_ctors_aux
-	jl	__do_init_array_aux
 #endif
 	jl	board_main	/* board-level main */
-#if defined(__MW__)
-	jl	_fini
-#elif defined(__GNU__)
-	jl	__do_global_dtors_aux
-#endif
+	b	_exit_loop
+
 	.global _exit_loop
 	.global _exit_halt
 	.align 4
@@ -251,10 +235,10 @@ _exit_loop:
 	b	_exit_loop
 
 #if defined(__MW__)
-	.global _init, _fini
+	.global arc_mwdt_init, arc_mwdt_fini
 	.section ".init",text
-_init:
-	.cfa_bf	_init
+arc_mwdt_init:
+	.cfa_bf	arc_mwdt_init
 	push	%blink
 	.cfa_push	{%blink}
 
@@ -265,7 +249,7 @@ _init:
 	.cfa_ef
 
 	.section ".fini", text
-_fini:
+arc_mwdt_fini:
 	.cfa_bf	_fini
 	push	%blink
 	.cfa_push	{%blink}

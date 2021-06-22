@@ -26,17 +26,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_I2S_OBJ_H_
 #define _DW_I2S_OBJ_H_
 
-#include "ip/ip_hal/inc/dev_i2s.h"
+#include "device/ip_hal/dev_i2s.h"
 
-#define DW_I2S_0_ID		0	/*!< I2S 0 ID macro */
-#define DW_I2S_1_ID		1	/*!< I2S 1 ID macro */
+#define DW_I2S_0_ID             0       /*!< I2S 0 ID macro */
+#define DW_I2S_1_ID             1       /*!< I2S 1 ID macro */
 
-#define USE_DW_I2S_0		1	/*!< enable use DesignWare I2S 0 as TX */
-#define USE_DW_I2S_1		1	/*!< enable use DesignWare I2S 1 as TX */
+#define USE_DW_I2S_0            1       /*!< enable use DesignWare I2S 0 as TX */
+#define USE_DW_I2S_1            1       /*!< enable use DesignWare I2S 1 as TX */
 
 #ifdef __cplusplus
 extern "C" {

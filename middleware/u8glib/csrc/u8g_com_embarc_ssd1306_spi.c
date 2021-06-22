@@ -39,7 +39,7 @@
 
 #include "u8g.h"
 #include "embARC.h"
-#include "dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 #include "ssd1306_app_config.h"
 
 #ifndef SSD1306_SPI_ID

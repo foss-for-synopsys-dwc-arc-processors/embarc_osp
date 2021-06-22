@@ -26,15 +26,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _EMSDP_SDCARD_SDIO_H_
 #define _EMSDP_SDCARD_SDIO_H_
 
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include "ff_diskio.h"
 
-#define USE_EMSDP_SDCARD_SDIO_0 	1
-
+#define USE_EMSDP_SDCARD_SDIO_0         1
 
 #ifdef __cplusplus
 extern "C" {
@@ -48,6 +47,6 @@ extern FATFS_DISKIO sdcard_sdio_0_diskio;
 }
 #endif
 
-#endif /* MID_FATFS */
+#endif  /* MID_FATFS */
 
-#endif /** _EMSDP_SDCARD_SDIO_H_ */
+#endif  /** _EMSDP_SDCARD_SDIO_H_ */

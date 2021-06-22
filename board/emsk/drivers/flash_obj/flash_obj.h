@@ -26,17 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _EMSK_FLASH_OBJ_H_
 #define _EMSK_FLASH_OBJ_H_
 
-#include "dev_flash.h"
+#include "device/dev_flash.h"
 
-#define USE_EMSK_DDR_RAM		1
+#define USE_EMSK_DDR_RAM                1
 
-#define EMSK_DDR_RAM_ID		0
-
+#define EMSK_DDR_RAM_ID         0
 
 #ifdef __cplusplus
 extern "C" {

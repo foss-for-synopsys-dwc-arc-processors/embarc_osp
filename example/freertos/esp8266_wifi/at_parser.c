@@ -26,30 +26,29 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_error.h"
 #include "string.h"
 #include "board.h"
 #include "at_parser.h"
-//#include "embARC_error.h"
+// #include "embARC_error.h"
 
 #define DBG_MORE
 #include "embARC_debug.h"
 
 /* if \r\n is needed to be attached at the end of AT comand, define AT_ADD_POSTFIX
-*  otherwise comment out this line
-*/
+ *  otherwise comment out this line
+ */
 #define AT_ADD_POSTFIX
 
-#define AT_PREFIX	"AT"
-#define AT_POSTFIX	"\r\n"
+#define AT_PREFIX       "AT"
+#define AT_POSTFIX      "\r\n"
 
-#define AT_TIMENOW()	OSP_GET_CUR_MS()
+#define AT_TIMENOW()    OSP_GET_CUR_MS()
 
 #define AT_MAX_LEN 128
 #define AT_MAX_PARAMETER 8
-
 
 int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate)
 {
@@ -75,8 +74,8 @@ int32_t at_write(AT_PARSER_DEF_PTR obj, char *buf, uint32_t cnt)
 }
 
 /*
-* please use NULL as last parameter
-*/
+ * please use NULL as last parameter
+ */
 int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...)
 {
 	va_list vl;
@@ -86,7 +85,7 @@ int32_t at_send_cmd(AT_PARSER_DEF_PTR obj, AT_MODE mode, AT_STRING command, ...)
 	if (str == NULL) {
 		dbg_printf(DBG_MORE_INFO, "[%s]%d: command is NULL, send AT test command\r\n", __FUNCTION__, __LINE__);
 	} else {
-		strcat(at_out,"+");
+		strcat(at_out, "+");
 		strcat(at_out, command);
 
 		switch (mode) {
@@ -138,6 +137,7 @@ int32_t at_get_reply(AT_PARSER_DEF_PTR obj, char *buf, uint32_t timeout)
 	uint32_t cur_ofs = 0;
 	uint32_t read_cnt;
 	uint32_t cur_time;
+
 	cur_time = AT_TIMENOW();
 
 	do {
@@ -145,15 +145,15 @@ int32_t at_get_reply(AT_PARSER_DEF_PTR obj, char *buf, uint32_t timeout)
 		cur_ofs += read_cnt;
 		buf[cur_ofs] = '\0';
 
-		if ((strstr(buf, AT_OK_STR)!= NULL) || (strstr(buf, AT_ERROR_STR)!= NULL)) {
+		if ((strstr(buf, AT_OK_STR) != NULL) || (strstr(buf, AT_ERROR_STR) != NULL)) {
 			break;
 		}
-	} while ((AT_TIMENOW()-cur_time) < timeout);
+	} while ((AT_TIMENOW() - cur_time) < timeout);
 
 	buf[cur_ofs] = '\0';
 	dbg_printf(DBG_LESS_INFO, "[%s]%d: \"%s\" (%d)\r\n", __FUNCTION__, __LINE__, buf, strlen(buf));
 
-	if (strstr(buf, AT_OK_STR)!= NULL) {
+	if (strstr(buf, AT_OK_STR) != NULL) {
 		return AT_OK;
 	}
 
@@ -163,7 +163,7 @@ int32_t at_get_reply(AT_PARSER_DEF_PTR obj, char *buf, uint32_t timeout)
 int32_t at_test(AT_PARSER_DEF_PTR obj)
 {
 	char rcv_buf[64];
+
 	at_send_cmd(obj, AT_LIST, NULL);
 	return at_get_reply(obj, rcv_buf, AT_NORMAL_TIMEOUT);
 }
-

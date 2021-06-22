@@ -26,31 +26,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "spi_flash_w25qxx.h"
 
 #include "embARC_error.h"
 #include "board.h"
-#include "dev_spi.h"
-#include "arc_exception.h"
+#include "device/ip_hal/dev_spi.h"
+#include "arc/arc_exception.h"
 #include "string.h"
 
 /**
  * \name W25QXX SPI Flash Commands
  * @{
  */
-#define RDID	0x9F	/*!<read chip ID */
-#define RDSR	0x05	/*!< read status register */
-#define WRSR	0x01	/*!< write status register */
-#define WREN	0x06	/*!< write enablewaitDeviceReady */
-#define WRDI	0x04	/*!< write disable */
-#define READ	0x03	/*!< read data bytes */
-#define SE		0x20	/*!< sector erase */
-#define PP		0x02	/*!< page program */
+#define RDID    0x9F            /*!<read chip ID */
+#define RDSR    0x05            /*!< read status register */
+#define WRSR    0x01            /*!< write status register */
+#define WREN    0x06            /*!< write enablewaitDeviceReady */
+#define WRDI    0x04            /*!< write disable */
+#define READ    0x03            /*!< read data bytes */
+#define SE              0x20    /*!< sector erase */
+#define PP              0x02    /*!< page program */
 /** @} end of name */
 
-#define W25QXX_NOT_VALID	(0xFFFFFFFF)
-
+#define W25QXX_NOT_VALID        (0xFFFFFFFF)
 
 /**
  * \brief	spi flash spi send command to operate spi flash
@@ -99,7 +98,6 @@ uint32_t w25qxx_read_status(W25QXX_DEF_PTR dev)
 	}
 }
 
-
 /**
  * \brief 	enable to write flash
  * \retval	0	success
@@ -111,6 +109,7 @@ int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev)
 	DEV_SPI_TRANSFER cmd_xfer;
 
 	uint32_t status = 0;
+
 	do {
 		local_buf[0] = WREN;
 
@@ -129,11 +128,10 @@ int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev)
 		}
 		// clear protection bits
 		//  Write Protect. and Write Enable.
-		if( (status & 0xfc) && (status & 0x02) ) {
-			local_buf[0] = WRSR; // write status
-			local_buf[1] = 0x00; // write status
-			local_buf[2] = 0x00; // write status
-
+		if ((status & 0xfc) && (status & 0x02)) {
+			local_buf[0] = WRSR;    // write status
+			local_buf[1] = 0x00;    // write status
+			local_buf[2] = 0x00;    // write status
 
 			DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, local_buf, 0, 3);
 			DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, NULL, 0, 0);
@@ -144,7 +142,7 @@ int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev)
 			}
 			status = 0;
 		}
-	} while ( status != 0x02);
+	} while (status != 0x02);
 
 	return 0;
 }
@@ -206,6 +204,7 @@ uint32_t w25qxx_read_id(W25QXX_DEF_PTR dev)
 int32_t w25qxx_wait_ready(W25QXX_DEF_PTR dev)
 {
 	uint32_t status = 0x01;
+
 	do {
 		status = w25qxx_read_status(dev);
 
@@ -294,7 +293,7 @@ int32_t w25qxx_erase(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size)
 
 		address += dev->sector_sz;
 		count++;
-	} while(address <= last_address);
+	} while (address <= last_address);
 
 	if (w25qxx_wait_ready(dev) != 0) {
 		return -1;
@@ -348,7 +347,7 @@ int32_t w25qxx_write(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, const 
 		// DEV_SPI_XFER_SET_RXBUF(&data_xfer, NULL, 0, 0);
 		// DEV_SPI_XFER_SET_NEXT(&data_xfer, NULL);
 
-		DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, dev->write_buf, 0, 4+first);
+		DEV_SPI_XFER_SET_TXBUF(&cmd_xfer, dev->write_buf, 0, 4 + first);
 		DEV_SPI_XFER_SET_RXBUF(&cmd_xfer, NULL, 0, 0);
 		DEV_SPI_XFER_SET_NEXT(&cmd_xfer, NULL);
 

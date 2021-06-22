@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_UART_OBJ_H_
 #define _DW_UART_OBJ_H_
 
@@ -35,27 +35,26 @@
 /**
  * DesignWare UART Object Number
  */
-#define DW_UART_NUM	(2)	/*!< DesignWare UART valid number */
+#define DW_UART_NUM     (2)     /*!< DesignWare UART valid number */
 
 /**
  * Designware UART Object ID Macros
  */
-#define DW_UART_0_ID	0	/*!< uart 0 id macro */
-#define DW_UART_1_ID	1	/*!< uart 1 id macro */
+#define DW_UART_0_ID    0       /*!< uart 0 id macro */
+#define DW_UART_1_ID    1       /*!< uart 1 id macro */
 
 /**
  * Designware UART Object Control Macros
  */
-#define USE_DW_UART_0	1     	/*!< enable use designware uart 0 */
-#define USE_DW_UART_1	1     	/*!< enable use designware uart 1 */
-
+#define USE_DW_UART_0   1       /*!< enable use designware uart 0 */
+#define USE_DW_UART_1   1       /*!< enable use designware uart 1 */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+// Declaration of functions here
 extern DEV_UART_PTR dw_uart_get_dev(int32_t);
-extern void dw_uart_all_install(void);
 
 #ifdef __cplusplus
 }

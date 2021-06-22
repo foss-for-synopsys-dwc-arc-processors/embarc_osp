@@ -26,17 +26,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-
-#include "embARC_toolchain.h"
+   --------------------------------------------- */
 #include "embARC_error.h"
 
-#include "dw_gpio.h"
-#include "hsdk_io.h"
 #include "cy8c95xx.h"
-#include "hsdk/hsdk.h"
+#include "board.h"
 
-#define HSDK_LED_GPORT_OFFSET			0
+#define HSDK_LED_GPORT_OFFSET                   0
 
 static CY8C95XX_DEF cy8c95xx_obj;
 
@@ -46,7 +42,9 @@ static void cy8c95xx_delay_us(uint32_t us)
 
 	us_delayed = (uint64_t)us;
 	start_us = board_get_cur_us();
-	while ((board_get_cur_us() - start_us) < us_delayed);
+	while ((board_get_cur_us() - start_us) < us_delayed) {
+		;
+	}
 }
 
 /** hsdk on-board led init, led default off */
@@ -62,12 +60,12 @@ void hsdk_led_init(void)
 	cy8c95xx_obj.slvaddr_eep = HSDK_I2C_ADDR_CY8C95XX_EEP;
 
 	DEV_IIC_PTR iic_obj = iic_get_dev(cy8c95xx_obj.i2c_id);
+
 	ercd = iic_obj->iic_open(DEV_MASTER_MODE, IIC_SPEED_STANDARD);
 
 	if ((ercd == E_OK) || (ercd == E_OPNED)) {
 		iic_obj->iic_control(IIC_CMD_MST_SET_TAR_ADDR, CONV2VOID(cy8c95xx_obj.slvaddr_io));
 	}
-
 
 	/* Select port */
 	buffer_tx[0] = CY8C95XX_PORT_1;

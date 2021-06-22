@@ -26,16 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
 #include <stddef.h>
 #include <string.h>
 
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "board.h"
 
@@ -45,36 +45,35 @@
 
 #include "pmwifi.h"
 
-//#define DBG_LESS
+// #define DBG_LESS
 #define DEBUG
 #include "embARC_debug.h"
 
-#define PMWIFI_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define PMWIFI_CHECK_EXP(EXPR, ERROR_CODE)              CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 #if (USE_IOTDK_PMWIFI_0)
 /** PMOD WIFI SPI FREQ & CLK MODE SETTINGS */
-#define IOTDK_PMWIFI_0_SPI_FREQ		BOARD_SPI_FREQ
+#define IOTDK_PMWIFI_0_SPI_FREQ         BOARD_SPI_FREQ
 
-#define IOTDK_PMWIFI_0_SPI_ID		DFSS_SPI_1_ID
+#define IOTDK_PMWIFI_0_SPI_ID           DFSS_SPI_1_ID
 /** IOTDK uses J7, SPI1*/
-#define IOTDK_PMWIFI_0_SPI_LINE		BOARD_WIFI_SPI_LINE
-#define IOTDK_PMWIFI_0_GPIO_ID		(DFSS_GPIO_8B0_ID)
+#define IOTDK_PMWIFI_0_SPI_LINE         BOARD_WIFI_SPI_LINE
+#define IOTDK_PMWIFI_0_GPIO_ID          (DFSS_GPIO_8B0_ID)
 
-#define IOTDK_PMWIFI_0_INT_PIN		BOARD_WIFI_0_INT
-#define IOTDK_PMWIFI_0_RST_PIN		BOARD_WIFI_0_RST
-#define IOTDK_PMWIFI_0_WP_PIN		(DEV_GPIO_PIN_NC)
-#define IOTDK_PMWIFI_0_HIB_PIN		(DEV_GPIO_PIN_NC)
+#define IOTDK_PMWIFI_0_INT_PIN          BOARD_WIFI_0_INT
+#define IOTDK_PMWIFI_0_RST_PIN          BOARD_WIFI_0_RST
+#define IOTDK_PMWIFI_0_WP_PIN           (DEV_GPIO_PIN_NC)
+#define IOTDK_PMWIFI_0_HIB_PIN          (DEV_GPIO_PIN_NC)
 
-#define IOTDK_PMWIFI_0_PIN_GAP		(IOTDK_PMWIFI_0_INT_PIN-WF_GPIO_INT_PIN_OFS)
+#define IOTDK_PMWIFI_0_PIN_GAP          (IOTDK_PMWIFI_0_INT_PIN - WF_GPIO_INT_PIN_OFS)
 
 /*********************PMOD WIFI -> MRF24WG*********************/
 #if defined(WIFI_MRF24G)
 #include "wf_dev_hal.h"
 #include "mrf24g_adapter.h"
 
-
 /* WF OPERATIONS */
-#define IOTDK_PMWIFI_0_TIMER_ID		TIMER_0
+#define IOTDK_PMWIFI_0_TIMER_ID         TIMER_0
 
 /* gpio ops */
 static int32_t pmwifi_0_gpio_open(uint32_t pin_mask, uint32_t pin_dir)
@@ -86,14 +85,14 @@ static int32_t pmwifi_0_gpio_open(uint32_t pin_mask, uint32_t pin_dir)
 	pmwifi_gpio_ptr = gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);
 	PMWIFI_CHECK_EXP(pmwifi_gpio_ptr != NULL, E_OBJ);
 
-	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL)<<IOTDK_PMWIFI_0_PIN_GAP);
-	mask = (pin_dir<<IOTDK_PMWIFI_0_PIN_GAP) & pin_mask;
+	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL) << IOTDK_PMWIFI_0_PIN_GAP);
+	mask = (pin_dir << IOTDK_PMWIFI_0_PIN_GAP) & pin_mask;
 	ercd = pmwifi_gpio_ptr->gpio_open(mask);
 
 	if (ercd == E_OPNED) {
 		/* direction */
 		pmwifi_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT, (void *)mask);
-		mask = (~(pin_dir<<IOTDK_PMWIFI_0_PIN_GAP)) & pin_mask;
+		mask = (~(pin_dir << IOTDK_PMWIFI_0_PIN_GAP)) & pin_mask;
 		pmwifi_gpio_ptr->gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT, (void *)mask);
 	}
 
@@ -133,7 +132,7 @@ static int32_t pmwifi_0_gpio_read(uint32_t pin_mask, uint32_t *value)
 	pmwifi_gpio_ptr = gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);
 	PMWIFI_CHECK_EXP(pmwifi_gpio_ptr != NULL, E_OBJ);
 
-	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL)<<IOTDK_PMWIFI_0_PIN_GAP);
+	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL) << IOTDK_PMWIFI_0_PIN_GAP);
 	ercd = pmwifi_gpio_ptr->gpio_read(value, pin_mask);
 	*value = (*value) >> IOTDK_PMWIFI_0_PIN_GAP;
 
@@ -149,7 +148,7 @@ static int32_t pmwifi_0_gpio_write(uint32_t pin_mask, uint32_t value)
 	pmwifi_gpio_ptr = gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);
 	PMWIFI_CHECK_EXP(pmwifi_gpio_ptr != NULL, E_OBJ);
 
-	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL)<<IOTDK_PMWIFI_0_PIN_GAP);
+	pin_mask = ((pin_mask & WF_GPIO_PIN_MASK_ALL) << IOTDK_PMWIFI_0_PIN_GAP);
 	value = value << IOTDK_PMWIFI_0_PIN_GAP;
 	ercd = pmwifi_gpio_ptr->gpio_write(value, pin_mask);
 
@@ -167,7 +166,7 @@ static int32_t pmwifi_0_gpio_eint_install(DEV_GPIO_HANDLER gpio_handler)
 	pmwifi_gpio_ptr = gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);
 	PMWIFI_CHECK_EXP(pmwifi_gpio_ptr != NULL, E_OBJ);
 
-	int_cfg.int_bit_mask = (1<<IOTDK_PMWIFI_0_INT_PIN);
+	int_cfg.int_bit_mask = (1 << IOTDK_PMWIFI_0_INT_PIN);
 	int_cfg.int_bit_type = GPIO_INT_BIT_LEVEL_TRIG(IOTDK_PMWIFI_0_INT_PIN);
 	int_cfg.int_bit_polarity = GPIO_INT_BIT_POL_ACT_LOW(IOTDK_PMWIFI_0_INT_PIN);
 	int_cfg.int_bit_debounce = GPIO_INT_BIT_DIS_DEBOUNCE(IOTDK_PMWIFI_0_INT_PIN);
@@ -195,7 +194,7 @@ static int32_t pmwifi_0_gpio_eint_is_enabled(void)
 
 	if (ercd == E_OK) {
 		mthd &= mask;
-		ercd = ((mthd==0) ? WF_EINT_DISABLE:WF_EINT_ENABLE);
+		ercd = ((mthd == 0) ? WF_EINT_DISABLE:WF_EINT_ENABLE);
 	}
 
 error_exit:
@@ -319,6 +318,7 @@ static int32_t pmwifi_0_spi_transfer(DEV_SPI_TRANSFER *xfer)
 {
 	int32_t ercd = E_OK;
 	DEV_SPI *pmwifi_spi_ptr;
+
 	pmwifi_spi_ptr = spi_get_dev(IOTDK_PMWIFI_0_SPI_ID);
 	PMWIFI_CHECK_EXP(pmwifi_spi_ptr != NULL, E_OBJ);
 	PMWIFI_CHECK_EXP(xfer != NULL, E_PAR);
@@ -347,11 +347,11 @@ static WF_OPS pmwifi_0_ops = {
 };
 
 /** install wnic 0 to system */
-#define PMWIFI_0_NAME		"MRF24G"
-#define PMWIFI_0_IFNAME0	'w'
-#define PMWIFI_0_IFNAME1	'0'
+#define PMWIFI_0_NAME           "MRF24G"
+#define PMWIFI_0_IFNAME0        'w'
+#define PMWIFI_0_IFNAME1        '0'
 static DEV_WNIC pmwifi_0_wnic;
-const uint8_t  pmwifi_0_mac_addr[WNIC_HDR_LEN] = {
+const uint8_t pmwifi_0_mac_addr[WNIC_HDR_LEN] = {
 	IOTDK_PMWIFI_0_MAC_ADDR0,
 	IOTDK_PMWIFI_0_MAC_ADDR1,
 	IOTDK_PMWIFI_0_MAC_ADDR2,
@@ -523,42 +523,41 @@ static void pmwifi_0_install(void)
 	pmwifi_wnic_info_ptr->rx_pending = 0;
 	pmwifi_wnic_info_ptr->power_status = WNIC_POWER_OFF;
 
-	pmwifi_wnic_on_ops_ptr->on_init_success	= NULL;
-	pmwifi_wnic_on_ops_ptr->on_init_fail	= NULL;
-	pmwifi_wnic_on_ops_ptr->on_connected 	= NULL;
-	pmwifi_wnic_on_ops_ptr->on_disconnected	= NULL;
-	pmwifi_wnic_on_ops_ptr->on_mac_updated 	= NULL;
-	pmwifi_wnic_on_ops_ptr->on_scan_finished= NULL;
-	pmwifi_wnic_on_ops_ptr->on_rxdata_comes	= NULL;
-	pmwifi_wnic_on_ops_ptr->on_dev_asserted	= NULL;
+	pmwifi_wnic_on_ops_ptr->on_init_success = NULL;
+	pmwifi_wnic_on_ops_ptr->on_init_fail = NULL;
+	pmwifi_wnic_on_ops_ptr->on_connected = NULL;
+	pmwifi_wnic_on_ops_ptr->on_disconnected = NULL;
+	pmwifi_wnic_on_ops_ptr->on_mac_updated = NULL;
+	pmwifi_wnic_on_ops_ptr->on_scan_finished = NULL;
+	pmwifi_wnic_on_ops_ptr->on_rxdata_comes = NULL;
+	pmwifi_wnic_on_ops_ptr->on_dev_asserted = NULL;
 
-
-	pmwifi_wnic_ptr->wnic_get_info 		= pmwifi_0_wnic_get_info	;
-	pmwifi_wnic_ptr->wnic_control		= pmwifi_0_wnic_control		;
-	pmwifi_wnic_ptr->wnic_init		= pmwifi_0_wnic_init		;
-	pmwifi_wnic_ptr->poll_init_status	= pmwifi_0_poll_init_status	;
-	pmwifi_wnic_ptr->poll_busy_status	= pmwifi_0_poll_busy_status	;
-	pmwifi_wnic_ptr->set_network_type	= pmwifi_0_set_network_type	;
-	pmwifi_wnic_ptr->set_macaddr		= pmwifi_0_set_macaddr		;
-	pmwifi_wnic_ptr->get_macaddr		= pmwifi_0_get_macaddr		;
-	pmwifi_wnic_ptr->start_scan		= pmwifi_0_start_scan		;
-	pmwifi_wnic_ptr->stop_scan		= pmwifi_0_stop_scan		;
-	pmwifi_wnic_ptr->poll_scan_status	= pmwifi_0_poll_scan_status	;
-	pmwifi_wnic_ptr->get_scan_result_cnt	= pmwifi_0_get_scan_result_cnt	;
-	pmwifi_wnic_ptr->get_scan_result 	= pmwifi_0_get_scan_result	;
-	pmwifi_wnic_ptr->wnic_connect		= pmwifi_0_wnic_connect		;
-	pmwifi_wnic_ptr->poll_conn_status	= pmwifi_0_poll_conn_status	;
-	pmwifi_wnic_ptr->wnic_disconnect	= pmwifi_0_wnic_disconnect	;
-	pmwifi_wnic_ptr->prepare_tx		= pmwifi_0_prepare_tx		;
-	pmwifi_wnic_ptr->add_tx_data		= pmwifi_0_add_tx_data		;
-	pmwifi_wnic_ptr->commit_tx		= pmwifi_0_commit_tx		;
-	pmwifi_wnic_ptr->prepare_rx		= pmwifi_0_prepare_rx		;
-	pmwifi_wnic_ptr->get_rx_data		= pmwifi_0_get_rx_data		;
-	pmwifi_wnic_ptr->accept_rx		= pmwifi_0_accept_rx		;
-	pmwifi_wnic_ptr->config_power_mode	= pmwifi_0_config_power_mode	;
-	pmwifi_wnic_ptr->poll_power_mode	= pmwifi_0_poll_power_mode	;
-	pmwifi_wnic_ptr->wnic_reset		= pmwifi_0_wnic_reset		;
-	pmwifi_wnic_ptr->period_process		= pmwifi_0_period_process	;
+	pmwifi_wnic_ptr->wnic_get_info = pmwifi_0_wnic_get_info;
+	pmwifi_wnic_ptr->wnic_control = pmwifi_0_wnic_control;
+	pmwifi_wnic_ptr->wnic_init = pmwifi_0_wnic_init;
+	pmwifi_wnic_ptr->poll_init_status = pmwifi_0_poll_init_status;
+	pmwifi_wnic_ptr->poll_busy_status = pmwifi_0_poll_busy_status;
+	pmwifi_wnic_ptr->set_network_type = pmwifi_0_set_network_type;
+	pmwifi_wnic_ptr->set_macaddr = pmwifi_0_set_macaddr;
+	pmwifi_wnic_ptr->get_macaddr = pmwifi_0_get_macaddr;
+	pmwifi_wnic_ptr->start_scan = pmwifi_0_start_scan;
+	pmwifi_wnic_ptr->stop_scan = pmwifi_0_stop_scan;
+	pmwifi_wnic_ptr->poll_scan_status = pmwifi_0_poll_scan_status;
+	pmwifi_wnic_ptr->get_scan_result_cnt = pmwifi_0_get_scan_result_cnt;
+	pmwifi_wnic_ptr->get_scan_result = pmwifi_0_get_scan_result;
+	pmwifi_wnic_ptr->wnic_connect = pmwifi_0_wnic_connect;
+	pmwifi_wnic_ptr->poll_conn_status = pmwifi_0_poll_conn_status;
+	pmwifi_wnic_ptr->wnic_disconnect = pmwifi_0_wnic_disconnect;
+	pmwifi_wnic_ptr->prepare_tx = pmwifi_0_prepare_tx;
+	pmwifi_wnic_ptr->add_tx_data = pmwifi_0_add_tx_data;
+	pmwifi_wnic_ptr->commit_tx = pmwifi_0_commit_tx;
+	pmwifi_wnic_ptr->prepare_rx = pmwifi_0_prepare_rx;
+	pmwifi_wnic_ptr->get_rx_data = pmwifi_0_get_rx_data;
+	pmwifi_wnic_ptr->accept_rx = pmwifi_0_accept_rx;
+	pmwifi_wnic_ptr->config_power_mode = pmwifi_0_config_power_mode;
+	pmwifi_wnic_ptr->poll_power_mode = pmwifi_0_poll_power_mode;
+	pmwifi_wnic_ptr->wnic_reset = pmwifi_0_wnic_reset;
+	pmwifi_wnic_ptr->period_process = pmwifi_0_period_process;
 }
 
 WF_OPS_PTR get_wf_ops(void)
@@ -586,13 +585,13 @@ DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
 	switch (wnic_id) {
 #if (USE_IOTDK_PMWIFI_0)
 
-		case IOTDK_PMWIFI_0_ID:
-			return &pmwifi_0_wnic;
-			break;
+	case IOTDK_PMWIFI_0_ID:
+		return &pmwifi_0_wnic;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

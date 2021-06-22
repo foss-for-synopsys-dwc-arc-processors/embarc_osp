@@ -26,14 +26,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
 #if defined(BOARD_EMSK)
 #include "spi_flash.h"
 #include "spi_flash_w25qxx.h"
-
 
 #define BUFFER_SIZE 0x4000
 
@@ -48,15 +47,15 @@ static void perf_init(unsigned int id);
 static void perf_start(void);
 static unsigned int perf_end(void);
 
-#define BOOTIMAGE_START		(0xD80000)
+#define BOOTIMAGE_START         (0xD80000)
 
-#define DMA_FLASH_TEST		1
-#define POLL_FLASH_TEST		2
+#define DMA_FLASH_TEST          1
+#define POLL_FLASH_TEST         2
 
 //// Uncomment the following test modes, just leave one TEST_MODE defined
-//#define TEST_MODE		(DMA_FLASH_TEST|POLL_FLASH_TEST)
-#define TEST_MODE		(DMA_FLASH_TEST)
-//#define TEST_MODE		(POLL_FLASH_TEST)
+// #define TEST_MODE		(DMA_FLASH_TEST|POLL_FLASH_TEST)
+#define TEST_MODE               (DMA_FLASH_TEST)
+// #define TEST_MODE		(POLL_FLASH_TEST)
 
 /**
  * \brief	call cache related functions
@@ -64,16 +63,17 @@ static unsigned int perf_end(void);
 int main(void)
 {
 	uint32_t i = 0, freq;
-	while(1) {
-		i ++;
+
+	while (1) {
+		i++;
 		freq = 1000000 * i;
 #if (TEST_MODE & DMA_FLASH_TEST) == DMA_FLASH_TEST
 		EMBARC_PRINTF("Do SPIFlash DMA Test @%dHz\r\n", freq);
 		flash_dma_test(freq);
 #endif
 #if (TEST_MODE & POLL_FLASH_TEST) == POLL_FLASH_TEST
-		EMBARC_PRINTF("Do SPIFlash Poll Test @%dHz\r\n", freq>>2);
-		flash_poll_test(freq>>2);
+		EMBARC_PRINTF("Do SPIFlash Poll Test @%dHz\r\n", freq >> 2);
+		flash_poll_test(freq >> 2);
 #endif
 	}
 	return E_SYS;
@@ -82,9 +82,10 @@ int main(void)
 uint32_t mem_cmp(uint8_t *src, uint8_t *dst, uint32_t size)
 {
 	uint32_t err_cnt = 0;
+
 	for (int i = 0; i < size; i++) {
 		if (src[i] != dst[i]) {
-			err_cnt ++;
+			err_cnt++;
 		}
 	}
 	return err_cnt;
@@ -101,7 +102,7 @@ uint32_t flash_dma_test(uint32_t freq)
 	EMBARC_PRINTF("Random value:%d\r\n", initval);
 
 	for (i = 0; i < BUFFER_SIZE; i++) {
-		test_buffer[i] = (initval+i) & 0xff;
+		test_buffer[i] = (initval + i) & 0xff;
 	}
 	spiflash_init(freq);
 	perf_init(TIMER_1);
@@ -132,7 +133,7 @@ uint32_t flash_dma_test(uint32_t freq)
 	/* verify read and write */
 	if ((wr_err_cnt = mem_cmp(test_buffer_rd, test_buffer, BUFFER_SIZE)) > 0) {
 		EMBARC_PRINTF("SPI FLASH Write Read Verification Error @%uHz, error count:%u\r\n", \
-		              freq, wr_err_cnt);
+			      freq, wr_err_cnt);
 	} else {
 		EMBARC_PRINTF("SPI FLASH Write Read Verification successfully\r\n");
 	}
@@ -145,13 +146,14 @@ uint32_t flash_poll_test(uint32_t freq)
 	uint32_t i = 0, wr_err_cnt;
 	uint8_t initval;
 	uint32_t cost_cyc;
+
 	W25QXX_DEF(flash, BOARD_SFLASH_SPI_ID, BOARD_SFLASH_SPI_LIN, FLASH_PAGE_SIZE, FLASH_SECTOR_SIZE);
 
 	initval = (uint8_t)OSP_GET_CUR_MS();
 	EMBARC_PRINTF("Random value:%d\r\n", initval);
 
 	for (i = 0; i < BUFFER_SIZE; i++) {
-		test_buffer[i] = (initval+i) & 0xff;
+		test_buffer[i] = (initval + i) & 0xff;
 	}
 	w25qxx_init(flash, freq);
 	perf_init(TIMER_1);
@@ -182,7 +184,7 @@ uint32_t flash_poll_test(uint32_t freq)
 	/* verify read and write */
 	if ((wr_err_cnt = mem_cmp(test_buffer_rd, test_buffer, BUFFER_SIZE)) > 0) {
 		EMBARC_PRINTF("SPI FLASH Write Read Verification Error @%uHz, error count:%u\r\n", \
-		              freq, wr_err_cnt);
+			      freq, wr_err_cnt);
 	} else {
 		EMBARC_PRINTF("SPI FLASH Write Read Verification successfully\r\n");
 	}
@@ -192,9 +194,11 @@ uint32_t flash_poll_test(uint32_t freq)
 /** performance timer initialization */
 static void perf_init(unsigned int id)
 {
-	if (timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
+	if (arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF) < 0) {
 		EMBARC_PRINTF("perf timer init failed\r\n");
-		while(1);
+		while (1) {
+			;
+		}
 	}
 	perf_id = id;
 }
@@ -202,7 +206,7 @@ static void perf_init(unsigned int id)
 /** performance timer start */
 static void perf_start(void)
 {
-	if (timer_current(perf_id, (void *)(&start)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&start)) < 0) {
 		start = 0;
 	}
 }
@@ -212,7 +216,7 @@ static unsigned int perf_end(void)
 {
 	unsigned int end = 0;
 
-	if (timer_current(perf_id, (void *)(&end)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&end)) < 0) {
 		return 0;
 	}
 
@@ -226,6 +230,8 @@ static unsigned int perf_end(void)
 int main(void)
 {
 	EMBARC_PRINTF("\r\n\r\ndma_spiflash example only support EMSK board!\r\n");
-	while(1);
+	while (1) {
+		;
+	}
 }
-#endif //BOARD_EMSK
+#endif // BOARD_EMSK

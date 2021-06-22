@@ -26,29 +26,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "cs4344.h"
 #include "embARC_debug.h"
 
+#define BOARD_I2S_SEND_IIS_ID                   DW_I2S_0_ID
+#define BOARD_I2S_RECEIVE_IIS_ID                DW_I2S_1_ID
 
-#define BOARD_I2S_SEND_IIS_ID			DW_I2S_0_ID
-#define BOARD_I2S_RECEIVE_IIS_ID		DW_I2S_1_ID
+#define I2S_0_EMP_C0                                    0x0080000
+#define I2S_1_SD_C0                                     0x00d0000
 
-#define I2S_0_EMP_C0 					0x0080000
-#define I2S_1_SD_C0 					0x00d0000
-
-static DEV_I2S *dev_i2s_tx_p = NULL;
+static DEV_I2S * dev_i2s_tx_p = NULL;
 
 /**
  * \brief   The transmiter mode's callback function of interrupt mode.
  * \detail  This function will be callback when the whole data has been send and you have to \
- 			resatrt the interrupt and point the data buffer in this function.
-*/
+                        resatrt the interrupt and point the data buffer in this function.
+ */
 void cs4344_tx_isr_restart(DEV_BUFFER *tx_buffer)
 {
-	dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT_BUF,tx_buffer);
+	dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT_BUF, tx_buffer);
 	/* Enable interrupt */
-	dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT,(void *)1);
+	dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT, (void *)1);
 }
 
 /**
@@ -66,14 +65,14 @@ void cs4344_err_isr(void *ptr)
  * \param cs4344_init_str.Structure used to init i2s
  * \param dev.Used to init some parameters related with interrupt,and can be NULL when you do not use interrupt mode.
  * \param i2s_tx_isr.Function pointer pointing to he callback function when all data has been sent.
-*/
-uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str,DEV_BUFFER *dev,void (*i2s_isr)(void))
+ */
+uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str, DEV_BUFFER *dev, void (*i2s_isr)(void))
 {
 	uint32_t div_number;
 
 	DW_I2S_CONFIG *i2s_config_ptr = (DW_I2S_CONFIG *)(dev_i2s_tx_p->i2s_info.i2s_config);
-	if (dev_i2s_tx_p == NULL)
-	{
+
+	if (dev_i2s_tx_p == NULL) {
 		printf("The i2s init func error!\n");
 		return -1;
 	}
@@ -82,7 +81,7 @@ uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str,DEV_BUFFER *dev
 	i2s_config_ptr->ws_length = cs4344_init_str->num_sclk;
 	i2s_config_ptr->data_res[0] = cs4344_init_str->data_format;
 	i2s_config_ptr->sample_rate[0] = cs4344_init_str->sample_rate;
-	div_number = (MCLK_FREQUENCY_KHZ)/((cs4344_init_str->sample_rate)*(cs4344_init_str->num_sclk*16)*2);
+	div_number = (MCLK_FREQUENCY_KHZ) / ((cs4344_init_str->sample_rate) * (cs4344_init_str->num_sclk * 16) * 2);
 
 	i2s_tx_clk_div(div_number);
 	/* flush the tx fifo */
@@ -90,18 +89,17 @@ uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str,DEV_BUFFER *dev
 	dev_i2s_tx_p->i2s_open(DEV_MASTER_MODE, I2S_DEVICE_TRANSMITTER);
 
 	/* Enable device */
-	dev_i2s_tx_p->i2s_control(I2S_CMD_ENA_DEV,(void *)0);
+	dev_i2s_tx_p->i2s_control(I2S_CMD_ENA_DEV, (void *)0);
 	/* Enable master clock */
-	dev_i2s_tx_p->i2s_control(I2S_CMD_MST_SET_CLK,(void *)1);
-	if (cs4344_init_str->pll_isr_sel == CS4344_MODE_ISR)
-	{
+	dev_i2s_tx_p->i2s_control(I2S_CMD_MST_SET_CLK, (void *)1);
+	if (cs4344_init_str->pll_isr_sel == CS4344_MODE_ISR) {
 		/* interrupt related */
-		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXCHET_BUF,(void *)I2S_0_EMP_C0);
-		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXCB,i2s_isr);
-		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_ERRCB,cs4344_err_isr);
-		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT_BUF,dev);
+		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXCHET_BUF, (void *)I2S_0_EMP_C0);
+		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXCB, i2s_isr);
+		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_ERRCB, cs4344_err_isr);
+		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT_BUF, dev);
 		/* Enable interrupt */
-		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT,(void *)1);
+		dev_i2s_tx_p->i2s_control(I2S_CMD_SET_TXINT, (void *)1);
 	}
 	return E_OK;
 }
@@ -109,9 +107,9 @@ uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str,DEV_BUFFER *dev
 /**
  * \brief	Init I2S with the structure of CS4344_INIT_STR
  * \param	buffer.The point which is pointed to the buffer used in interrupt mode. \
- 			This parameter can be NULL when you use polling mode.
-*/
-int16_t cs4344_tx_init(uint32_t freq,uint32_t dfmt,uint32_t mode_sel,DEV_BUFFER *buffer,void (*i2s_isr)(void))
+                        This parameter can be NULL when you use polling mode.
+ */
+int16_t cs4344_tx_init(uint32_t freq, uint32_t dfmt, uint32_t mode_sel, DEV_BUFFER *buffer, void (*i2s_isr)(void))
 {
 	CS4344_INIT_STR cs4344_init_str;
 
@@ -123,7 +121,7 @@ int16_t cs4344_tx_init(uint32_t freq,uint32_t dfmt,uint32_t mode_sel,DEV_BUFFER 
 	cs4344_init_str.pll_isr_sel = mode_sel;
 
 	dev_i2s_tx_p = i2s_get_dev(BOARD_I2S_SEND_IIS_ID);
-	cs4344_init_func(&cs4344_init_str,buffer,i2s_isr);
+	cs4344_init_func(&cs4344_init_str, buffer, i2s_isr);
 
 	return 0;
 }
@@ -134,8 +132,8 @@ int16_t cs4344_tx_init(uint32_t freq,uint32_t dfmt,uint32_t mode_sel,DEV_BUFFER 
  * \param data.Pointer pointed to the data ready to be sent.
  * \param len.The length of data to be sent.
  * \param channel.0.
-*/
-uint32_t cs4344_write_data(const void *data,uint32_t len,uint32_t channel)
+ */
+uint32_t cs4344_write_data(const void *data, uint32_t len, uint32_t channel)
 {
 	return dw_i2s_write(dev_i2s_tx_p, data, len, channel);
 }
@@ -146,8 +144,8 @@ uint32_t cs4344_write_data(const void *data,uint32_t len,uint32_t channel)
  * \param data.Pointer pointed to the buffer used to receive data.
  * \param len.The length of data to receive.
  * \param channel.0.
-*/
-uint32_t cs4344_read_data(void *data,uint32_t len,uint32_t channel)
+ */
+uint32_t cs4344_read_data(void *data, uint32_t len, uint32_t channel)
 {
 	return dw_i2s_read(dev_i2s_tx_p, data, len, channel);
 }
@@ -158,7 +156,7 @@ uint32_t cs4344_read_data(void *data,uint32_t len,uint32_t channel)
  */
 void cs4344_tx_flush_fifo(void)
 {
-	dev_i2s_tx_p->i2s_control(I2S_CMD_FLUSH_TX,(void *)NULL);
+	dev_i2s_tx_p->i2s_control(I2S_CMD_FLUSH_TX, (void *)NULL);
 }
 
 /**
@@ -167,5 +165,5 @@ void cs4344_tx_flush_fifo(void)
  */
 void cs4344_rx_flush_fifo(void)
 {
-	dev_i2s_tx_p->i2s_control(I2S_CMD_FLUSH_RX,(void *)NULL);
+	dev_i2s_tx_p->i2s_control(I2S_CMD_FLUSH_RX, (void *)NULL);
 }

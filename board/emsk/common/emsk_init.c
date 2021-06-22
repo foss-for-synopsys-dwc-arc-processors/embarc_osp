@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \defgroup	BOARD_EMSK_COMMON_INIT	EMSK Common Init Module
  * \ingroup	BOARD_EMSK_COMMON
@@ -46,11 +46,8 @@
  * \addtogroup	BOARD_EMSK_COMMON_INIT
  * @{
  */
-#include "arc_timer.h"
+#include "arc/arc_timer.h"
 #include "board.h"
-#include "emsk_timer.h"
-#include "dev_pinmux.h"
-
 
 /**
  * \brief	Board init routine MUST be called in each application
@@ -59,10 +56,9 @@
  */
 void board_init(void)
 {
-	timer_init();
 	io_mux_init();
 	emsk_gpio_init();
-	emsk_timer_init();
+	arc_timer_init();
 }
 
 /** @} end of group BOARD_EMSK_COMMON_INIT */

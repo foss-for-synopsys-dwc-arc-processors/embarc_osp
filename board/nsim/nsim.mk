@@ -15,8 +15,6 @@ BD_VER ?= 10
 
 override BD_VER := $(strip $(BD_VER))
 
-## Extra Hostlink Options
-
 ## Set Valid Board Version
 VALID_BD_VER = $(call check_item_exist, $(BD_VER), $(SUPPORTED_BD_VERS))
 

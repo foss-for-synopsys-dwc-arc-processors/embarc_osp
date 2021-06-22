@@ -68,11 +68,11 @@ static void sjli_default_entry(void)
  * \param[in]  src_frame container context frame
  * \return target container's stack pointer
  */
-uint32_t container_call_in(INT_EXC_FRAME *src_frame)
+uint32_t container_call_in(INT_EXC_FRAME_T *src_frame)
 {
 
 	uint8_t src_id, dst_id;
-	PROCESSOR_FRAME *dst_frame;
+	PROCESSOR_FRAME_T *dst_frame;
 	uint32_t dst_fn;
 	/* number of arguments to pass to the target function */
 	uint8_t args;
@@ -128,15 +128,15 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
 
 	/* push the calling container and set the callee container */
 	/* the left registers of src container will be saved later, reserve space here */
-	container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_SIZE,
-		(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), src_frame->status32, dst_id);
+	container_stack_push(src_id, ((uint32_t *)src_frame) - ARC_CALLEE_FRAME_T_SIZE,
+		(uint32_t *)arc_aux_read(AUX_KERNEL_SP), src_frame->status32, dst_id);
 
 	if (container_is_secure(src_id)) {
-		g_container_context[0].normal_sp = (uint32_t *)_arc_aux_read(AUX_KERNEL_SP);
+		g_container_context[0].normal_sp = (uint32_t *)arc_aux_read(AUX_KERNEL_SP);
 	}
 
 	/* create the cpu frame and exception frame for the destination container */
-	dst_frame = (PROCESSOR_FRAME *)(g_container_context[dst_id].cur_sp);
+	dst_frame = (PROCESSOR_FRAME_T *)(g_container_context[dst_id].cur_sp);
 
 	dst_frame->exc_frame.blink = dst_fn; /* eret */
 	dst_frame->exc_frame.ret = dst_fn; /* eret */
@@ -182,20 +182,20 @@ uint32_t container_call_in(INT_EXC_FRAME *src_frame)
  * \param[in]  status32  callee container's status register
  * \return     caller container's stack pointer
  */
-uint32_t container_call_out(PROCESSOR_FRAME *dst)
+uint32_t container_call_out(PROCESSOR_FRAME_T *dst)
 {
 	uint32_t src_id, dst_id;
-	PROCESSOR_FRAME *src;
+	PROCESSOR_FRAME_T *src;
 
 	/* discard the created cpu frame, recover the original sp of destination container */
 	dst_id = g_container_stack_curr_id;
 
 	container_stack_pop(dst_id, (uint32_t *)dst,
-		(uint32_t *)_arc_aux_read(AUX_KERNEL_SP), _arc_aux_read(AUX_STATUS32));
+		(uint32_t *)arc_aux_read(AUX_KERNEL_SP), arc_aux_read(AUX_STATUS32));
 
 	src_id = g_container_stack[g_container_stack_ptr].src_id;
 
-	src = (PROCESSOR_FRAME *)g_container_stack[g_container_stack_ptr].src_sp;
+	src = (PROCESSOR_FRAME_T *)g_container_stack[g_container_stack_ptr].src_sp;
 
 	/* copy return value */
 	src->exc_frame.r0 = dst->exc_frame.r0;
@@ -211,6 +211,6 @@ uint32_t container_call_out(PROCESSOR_FRAME *dst)
  */
 void sjli_init(void)
 {
-	_arc_aux_write(AUX_NSC_TABLE_BASE, (uint32_t)secureshield_sjli_entry_table);
-	_arc_aux_write(AUX_NSC_TABLE_TOP, (uint32_t)(secureshield_sjli_entry_table + NUM_SJLI_ENTRY));
+	arc_aux_write(AUX_NSC_TABLE_BASE, (uint32_t)secureshield_sjli_entry_table);
+	arc_aux_write(AUX_NSC_TABLE_TOP, (uint32_t)(secureshield_sjli_entry_table + NUM_SJLI_ENTRY));
 }

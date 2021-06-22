@@ -30,16 +30,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "board.h"
+   --------------------------------------------- */
+#include "emsdp/emsdp.h"
 
 #include "dfss_spi_obj.h"
-#include "ip/subsystem/spi/ss_spi_master.h"
-#include "ip/subsystem/spi/ss_spi_slave.h"
-
+#include "ss_spi_master.h"
+#include "ss_spi_slave.h"
 
 #if (USE_DFSS_SPI_0)
 static void spi_tx_cb0(void *param);
@@ -82,7 +78,7 @@ static int32_t dfss_spi_0_open(uint32_t mode, uint32_t param)
 	return ss_spi_master_open(&spi_master_context0, mode, param);
 }
 
-static int32_t dfss_spi_0_close (void)
+static int32_t dfss_spi_0_close(void)
 {
 	return ss_spi_master_close(&spi_master_context0);
 }
@@ -292,7 +288,7 @@ static void dfss_spi_2_install(void)
 	info->mode = DEV_MASTER_MODE;
 	info->clk_mode = SPI_CLK_MODE_DEFAULT;
 	info->slave = SPI_SLAVE_NOT_SELECTED;
-	info->dfs = 16;//ADC requires 2 x Bytes per frame
+	info->dfs = 16;// ADC requires 2 x Bytes per frame
 	info->dummy = 0xff;
 	info->spi_ctrl = (void *)&spi_master_context2;
 
@@ -317,26 +313,26 @@ DEV_SPI_PTR dfss_spi_get_dev(int32_t spi_id)
 	}
 
 	switch (spi_id) {
-#if (USE_DFSS_SPI_0)	//Arduino
-		case DFSS_SPI_0_ID:
-			return &dfss_spi_0;
-			break;
+#if (USE_DFSS_SPI_0)    // Arduino
+	case DFSS_SPI_0_ID:
+		return &dfss_spi_0;
+		break;
 #endif
 
-#if (USE_DFSS_SPI_1)	//PMOD
-		case DFSS_SPI_1_ID:
-			return &dfss_spi_1;
-			break;
+#if (USE_DFSS_SPI_1)    // PMOD
+	case DFSS_SPI_1_ID:
+		return &dfss_spi_1;
+		break;
 #endif
 
-#if (USE_DFSS_SPI_2)	//ADC
-		case DFSS_SPI_2_ID:
-			return &dfss_spi_2;
-			break;
+#if (USE_DFSS_SPI_2)    // ADC
+	case DFSS_SPI_2_ID:
+		return &dfss_spi_2;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

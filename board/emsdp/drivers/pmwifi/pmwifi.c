@@ -26,16 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
 #include <stddef.h>
 #include <string.h>
 
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "board.h"
 
@@ -45,27 +45,25 @@
 
 #include "pmwifi.h"
 
-
 #if (USE_EMSDP_RSWIFI_0)
 /** PMOD WIFI SPI FREQ & CLK MODE SETTINGS */
 // #define EMSDP_RSWIFI_0_SPI_FREQ		BOARD_SPI_FREQ
 
 // #define EMSDP_RSWIFI_0_SPI_ID		DW_SPI_0_ID
 
-
 /*********************WIFI_RS9113*********************/
 #if defined(WIFI_RS9113)
 #include "rs9113_adapter.h"
 
 /* WF OPERATIONS */
-#define EMSDP_RSWIFI_0_TIMER_ID		TIMER_0
+#define EMSDP_RSWIFI_0_TIMER_ID         TIMER_0
 
 /** install wnic 0 to system */
-#define RSWIFI_0_NAME		"RS9113"
-#define RSWIFI_0_IFNAME0	'r'
-#define RSWIFI_0_IFNAME1	's'
+#define RSWIFI_0_NAME           "RS9113"
+#define RSWIFI_0_IFNAME0        'r'
+#define RSWIFI_0_IFNAME1        's'
 static DEV_WNIC rswifi_0_wnic;
-const uint8_t  rswifi_0_mac_addr[WNIC_HDR_LEN] = {
+const uint8_t rswifi_0_mac_addr[WNIC_HDR_LEN] = {
 	EMSDP_RSWIFI_0_MAC_ADDR0,
 	EMSDP_RSWIFI_0_MAC_ADDR1,
 	EMSDP_RSWIFI_0_MAC_ADDR2,
@@ -237,42 +235,41 @@ static void rswifi_0_install(void)
 	rswifi_wnic_info_ptr->rx_pending = 0;
 	rswifi_wnic_info_ptr->power_status = WNIC_POWER_OFF;
 
-	rswifi_wnic_on_ops_ptr->on_init_success	= NULL;
-	rswifi_wnic_on_ops_ptr->on_init_fail	= NULL;
-	rswifi_wnic_on_ops_ptr->on_connected 	= NULL;
-	rswifi_wnic_on_ops_ptr->on_disconnected	= NULL;
-	rswifi_wnic_on_ops_ptr->on_mac_updated 	= NULL;
-	rswifi_wnic_on_ops_ptr->on_scan_finished= NULL;
-	rswifi_wnic_on_ops_ptr->on_rxdata_comes	= NULL;
-	rswifi_wnic_on_ops_ptr->on_dev_asserted	= NULL;
+	rswifi_wnic_on_ops_ptr->on_init_success = NULL;
+	rswifi_wnic_on_ops_ptr->on_init_fail = NULL;
+	rswifi_wnic_on_ops_ptr->on_connected = NULL;
+	rswifi_wnic_on_ops_ptr->on_disconnected = NULL;
+	rswifi_wnic_on_ops_ptr->on_mac_updated = NULL;
+	rswifi_wnic_on_ops_ptr->on_scan_finished = NULL;
+	rswifi_wnic_on_ops_ptr->on_rxdata_comes = NULL;
+	rswifi_wnic_on_ops_ptr->on_dev_asserted = NULL;
 
-
-	rswifi_wnic_ptr->wnic_get_info 		= rswifi_0_wnic_get_info;
-	rswifi_wnic_ptr->wnic_control		= rswifi_0_wnic_control;
-	rswifi_wnic_ptr->wnic_init		= rswifi_0_wnic_init;
-	rswifi_wnic_ptr->poll_init_status	= rswifi_0_poll_init_status;
-	rswifi_wnic_ptr->poll_busy_status	= rswifi_0_poll_busy_status;
-	rswifi_wnic_ptr->set_network_type	= rswifi_0_set_network_type;
-	rswifi_wnic_ptr->set_macaddr		= rswifi_0_set_macaddr;
-	rswifi_wnic_ptr->get_macaddr		= rswifi_0_get_macaddr;
-	rswifi_wnic_ptr->start_scan		= rswifi_0_start_scan;
-	rswifi_wnic_ptr->stop_scan		= rswifi_0_stop_scan;
-	rswifi_wnic_ptr->poll_scan_status	= rswifi_0_poll_scan_status;
-	rswifi_wnic_ptr->get_scan_result_cnt	= rswifi_0_get_scan_result_cnt;
-	rswifi_wnic_ptr->get_scan_result 	= rswifi_0_get_scan_result;
-	rswifi_wnic_ptr->wnic_connect		= rswifi_0_wnic_connect;
-	rswifi_wnic_ptr->poll_conn_status	= rswifi_0_poll_conn_status;
-	rswifi_wnic_ptr->wnic_disconnect	= rswifi_0_wnic_disconnect;
-	rswifi_wnic_ptr->prepare_tx		= rswifi_0_prepare_tx;
-	rswifi_wnic_ptr->add_tx_data		= rswifi_0_add_tx_data;
-	rswifi_wnic_ptr->commit_tx		= rswifi_0_commit_tx;
-	rswifi_wnic_ptr->prepare_rx		= rswifi_0_prepare_rx;
-	rswifi_wnic_ptr->get_rx_data		= rswifi_0_get_rx_data;
-	rswifi_wnic_ptr->accept_rx		= rswifi_0_accept_rx;
-	rswifi_wnic_ptr->config_power_mode	= rswifi_0_config_power_mode;
-	rswifi_wnic_ptr->poll_power_mode	= rswifi_0_poll_power_mode;
-	rswifi_wnic_ptr->wnic_reset		= rswifi_0_wnic_reset;
-	rswifi_wnic_ptr->period_process		= rswifi_0_period_process;
+	rswifi_wnic_ptr->wnic_get_info = rswifi_0_wnic_get_info;
+	rswifi_wnic_ptr->wnic_control = rswifi_0_wnic_control;
+	rswifi_wnic_ptr->wnic_init = rswifi_0_wnic_init;
+	rswifi_wnic_ptr->poll_init_status = rswifi_0_poll_init_status;
+	rswifi_wnic_ptr->poll_busy_status = rswifi_0_poll_busy_status;
+	rswifi_wnic_ptr->set_network_type = rswifi_0_set_network_type;
+	rswifi_wnic_ptr->set_macaddr = rswifi_0_set_macaddr;
+	rswifi_wnic_ptr->get_macaddr = rswifi_0_get_macaddr;
+	rswifi_wnic_ptr->start_scan = rswifi_0_start_scan;
+	rswifi_wnic_ptr->stop_scan = rswifi_0_stop_scan;
+	rswifi_wnic_ptr->poll_scan_status = rswifi_0_poll_scan_status;
+	rswifi_wnic_ptr->get_scan_result_cnt = rswifi_0_get_scan_result_cnt;
+	rswifi_wnic_ptr->get_scan_result = rswifi_0_get_scan_result;
+	rswifi_wnic_ptr->wnic_connect = rswifi_0_wnic_connect;
+	rswifi_wnic_ptr->poll_conn_status = rswifi_0_poll_conn_status;
+	rswifi_wnic_ptr->wnic_disconnect = rswifi_0_wnic_disconnect;
+	rswifi_wnic_ptr->prepare_tx = rswifi_0_prepare_tx;
+	rswifi_wnic_ptr->add_tx_data = rswifi_0_add_tx_data;
+	rswifi_wnic_ptr->commit_tx = rswifi_0_commit_tx;
+	rswifi_wnic_ptr->prepare_rx = rswifi_0_prepare_rx;
+	rswifi_wnic_ptr->get_rx_data = rswifi_0_get_rx_data;
+	rswifi_wnic_ptr->accept_rx = rswifi_0_accept_rx;
+	rswifi_wnic_ptr->config_power_mode = rswifi_0_config_power_mode;
+	rswifi_wnic_ptr->poll_power_mode = rswifi_0_poll_power_mode;
+	rswifi_wnic_ptr->wnic_reset = rswifi_0_wnic_reset;
+	rswifi_wnic_ptr->period_process = rswifi_0_period_process;
 }
 
 #else /* WIFI_RSI */
@@ -294,12 +291,12 @@ DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
 
 	switch (wnic_id) {
 #if (USE_EMSDP_RSWIFI_0)
-		case EMSDP_RSWIFI_0_ID:
-			return &rswifi_0_wnic;
-			break;
+	case EMSDP_RSWIFI_0_ID:
+		return &rswifi_0_wnic;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

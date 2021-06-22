@@ -26,27 +26,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _CREG_HSDC_REG_H_
 #define _CREG_HSDC_REG_H_
 
 /* CREG bit definitions */
-#define VERSION_REF               0x0000000CU //2 bits
+#define VERSION_REF               0x0000000CU // 2 bits
 #define VERSION_REF_POS           2
 
-//FPGA version
-#define VERSION_DAY               0x0000001FU //5 bits
+// FPGA version
+#define VERSION_DAY               0x0000001FU   // 5 bits
 #define VERSION_DAY_POS           0
-#define VERSION_MONTH             0x000001E0U //4 bits
+#define VERSION_MONTH             0x000001E0U   // 4 bits
 #define VERSION_MONTH_POS         5
-#define VERSION_YEAR              0x001FFE00U //12 bits
+#define VERSION_YEAR              0x001FFE00U   // 12 bits
 #define VERSION_YEAR_POS          9
-#define VERSION_TIME_MIN          0x07E00000U //6 bits
+#define VERSION_TIME_MIN          0x07E00000U   // 6 bits
 #define VERSION_TIME_MIN_POS      21
-#define VERSION_TIME_HOUR         0xF8000000U //5 bits
+#define VERSION_TIME_HOUR         0xF8000000U   // 5 bits
 #define VERSION_TIME_HOUR_POS     27
 
-//start register
+// start register
 #define START_MASK               (0x0000000FU)
 #define START_POS                0
 
@@ -65,11 +65,10 @@
 #define DEBUG_UART_MODE_MASK     (0x00010000U)
 #define DEBUG_UART_MODE_POS      16
 
-//sw register
+// sw register
 #define RESET_MASK               (0x00000001U)
 #define RESET_POS                0
 
 #include "creg_hsdc_reg_map.h"
 
 #endif /* _CREG_HSDC_REG_H_ */
-

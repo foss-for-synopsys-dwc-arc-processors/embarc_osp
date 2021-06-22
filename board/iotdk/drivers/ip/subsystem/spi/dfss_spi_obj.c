@@ -30,16 +30,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
-
+   --------------------------------------------- */
 #include "dfss_spi_obj.h"
-#include "ip/subsystem/spi/ss_spi_master.h"
-#include "ip/subsystem/spi/ss_spi_slave.h"
+#include "ss_spi_master.h"
+#include "ss_spi_slave.h"
 
+#include "iotdk/iotdk.h"
 
 #if (USE_DFSS_SPI_0)
 static void spi_tx_cb0(void *param);
@@ -82,7 +78,7 @@ static int32_t dfss_spi_0_open(uint32_t mode, uint32_t param)
 	return ss_spi_master_open(&spi_master_context0, mode, param);
 }
 
-static int32_t dfss_spi_0_close (void)
+static int32_t dfss_spi_0_close(void)
 {
 	return ss_spi_master_close(&spi_master_context0);
 }
@@ -230,20 +226,20 @@ DEV_SPI_PTR spi_get_dev(int32_t spi_id)
 	switch (spi_id) {
 #if (USE_DFSS_SPI_0)
 
-		case DFSS_SPI_0_ID:
-			return &dfss_spi_0;
-			break;
+	case DFSS_SPI_0_ID:
+		return &dfss_spi_0;
+		break;
 #endif
 
 #if (USE_DFSS_SPI_1)
 
-		case DFSS_SPI_1_ID:
-			return &dfss_spi_1;
-			break;
+	case DFSS_SPI_1_ID:
+		return &dfss_spi_1;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

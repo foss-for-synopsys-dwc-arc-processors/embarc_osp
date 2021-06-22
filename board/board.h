@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  *
  * \file
@@ -78,6 +78,32 @@
 #ifdef BOARD_EMSDP
 #include "emsdp/emsdp.h"
 #endif /* BOARD_EMDK */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void board_init(void);
+extern void board_timer_update(uint32_t precision);
+extern void board_delay_ms(uint32_t ms, uint8_t os_compat);
+extern uint64_t board_get_hwticks(void);
+extern uint64_t board_get_cur_us(void);
+extern uint64_t board_get_cur_syshz(void);
+extern uint32_t board_get_cur_ms(void);
+extern void platform_main(void);
+extern void board_main(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#define OSP_DELAY_OS_COMPAT_ENABLE      (1)
+#define OSP_DELAY_OS_COMPAT_DISABLE     (0)
+
+#define OSP_GET_CUR_SYSHZ()         bord_get_cur_syshz()
+#define OSP_GET_CUR_MS()            board_get_cur_ms()
+#define OSP_GET_CUR_US()            board_get_cur_us()
+#define OSP_GET_CUR_HWTICKS()       board_get_hwticks()
 
 #endif /* _EMBARC_BOARD_H_ */
 

@@ -26,23 +26,23 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 
 #ifdef MID_NTSHELL /* only available when enable ntshell middleware */
 #include "ntshell_io.h"
 
 /** get ntshell interface by index */
-NTSHELL_IO* get_ntshell_io(uint32_t id)
+NTSHELL_IO *get_ntshell_io(uint32_t id)
 {
 	switch (id) {
 #if (USE_NSIM_NTSHELL_UART_1)
-		case NSIM_NTSHELL_0_ID:
-			return &ntshell_uart_1;
-			break;
+	case NSIM_NTSHELL_0_ID:
+		return &ntshell_uart_1;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

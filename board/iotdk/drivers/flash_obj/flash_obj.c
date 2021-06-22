@@ -26,10 +26,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "iotdk/drivers/smic/smic_eflash/smic_eflash.h"
 #include "iotdk/drivers/smic/smic_bootspi/smic_bootspi.h"
@@ -38,7 +38,7 @@
 #include "flash_obj.h"
 #include <string.h>
 
-#define DW_FLASH_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define DW_FLASH_CHECK_EXP(EXPR, ERROR_CODE)            CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 #if (USE_IOTDK_EFLASH)
 static DEV_FLASH iotdk_eflash_obj;
@@ -83,22 +83,22 @@ static int32_t iotdk_eflash_control(uint32_t cmd, void *param)
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt > 0, E_CLSED);
 
 	switch (cmd) {
-		case FLASH_CMD_GET_INFO:
-			((DEV_FLASH_INFO *)param)->begin_addr = info_ptr->begin_addr;
-			((DEV_FLASH_INFO *)param)->total_size = info_ptr->total_size;
-			break;
+	case FLASH_CMD_GET_INFO:
+		((DEV_FLASH_INFO *)param)->begin_addr = info_ptr->begin_addr;
+		((DEV_FLASH_INFO *)param)->total_size = info_ptr->total_size;
+		break;
 
-		case FLASH_CMD_PAGE_ERASE:
-			ercd = smic_eflash_control(eflash, SMIC_EFLASH_PAGE_ERASE, param);
-			break;
+	case FLASH_CMD_PAGE_ERASE:
+		ercd = smic_eflash_control(eflash, SMIC_EFLASH_PAGE_ERASE, param);
+		break;
 
-		case FLASH_CMD_CHIP_ERASE:
-			ercd = smic_eflash_control(eflash, SMIC_EFLASH_MACRO_ERASE, param);
-			break;
+	case FLASH_CMD_CHIP_ERASE:
+		ercd = smic_eflash_control(eflash, SMIC_EFLASH_MACRO_ERASE, param);
+		break;
 
-		default:
-			ercd = E_NOSPT;
-			break;
+	default:
+		ercd = E_NOSPT;
+		break;
 	}
 
 error_exit:
@@ -246,22 +246,22 @@ static int32_t iotdk_bootspi_control(uint32_t cmd, void *param)
 	DW_FLASH_CHECK_EXP(info_ptr->open_cnt > 0, E_CLSED);
 
 	switch (cmd) {
-		case FLASH_CMD_GET_INFO:
-			((DEV_FLASH_INFO *)param)->begin_addr = info_ptr->begin_addr;
-			((DEV_FLASH_INFO *)param)->total_size = info_ptr->total_size;
-			break;
+	case FLASH_CMD_GET_INFO:
+		((DEV_FLASH_INFO *)param)->begin_addr = info_ptr->begin_addr;
+		((DEV_FLASH_INFO *)param)->total_size = info_ptr->total_size;
+		break;
 
-		case FLASH_CMD_PAGE_ERASE:
-			ercd = smic_bootspi_control(bootspi, SMIC_BOOTSPI_SEC_ERASE, param);
-			break;
+	case FLASH_CMD_PAGE_ERASE:
+		ercd = smic_bootspi_control(bootspi, SMIC_BOOTSPI_SEC_ERASE, param);
+		break;
 
-		case FLASH_CMD_CHIP_ERASE:
-			ercd = smic_bootspi_control(bootspi, SMIC_BOOTSPI_CHIP_ERASE, param);
-			break;
+	case FLASH_CMD_CHIP_ERASE:
+		ercd = smic_bootspi_control(bootspi, SMIC_BOOTSPI_CHIP_ERASE, param);
+		break;
 
-		default:
-			ercd = E_NOSPT;
-			break;
+	default:
+		ercd = E_NOSPT;
+		break;
 	}
 
 error_exit:
@@ -390,18 +390,18 @@ DEV_FLASH_PTR flash_get_dev(int32_t flash_id)
 
 	switch (flash_id) {
 #if (USE_IOTDK_EFLASH)
-		case IOTDK_EFLASH_ID:
-			return &iotdk_eflash_obj;
-			break;
+	case IOTDK_EFLASH_ID:
+		return &iotdk_eflash_obj;
+		break;
 #endif
 
 #if (USE_IOTDK_BOOT_SPI_FLASH)
-		case IOTDK_BOOT_SPI_FLASH_ID:
-			return &iotdk_bootspi_obj;
-			break;
+	case IOTDK_BOOT_SPI_FLASH_ID:
+		return &iotdk_bootspi_obj;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

@@ -28,8 +28,8 @@
  *
 --------------------------------------------- */
 #define __ASSEMBLY__
-#include "arc.h"
-#include "arc_asm_common.h"
+#include "arc/arc.h"
+#include "arc/arc_asm_common.h"
 #include "secureshield_secure_call_exports.h"
 
 #define MPU_DISABLE	0x400181c0  // MPU enabled, SID=1, S mode, KR, KW, KE

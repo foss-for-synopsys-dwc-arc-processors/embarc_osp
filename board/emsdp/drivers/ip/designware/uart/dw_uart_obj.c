@@ -26,47 +26,44 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "embARC_toolchain.h"
+   --------------------------------------------- */
 #include "dw_uart_obj.h"
 #include "emsdp/emsdp.h"
 
-#define DW_UART_FIFO_LEN	32
-
+#define DW_UART_FIFO_LEN        32
 
 #if (USE_DW_UART_0)
 static void dw_uart_0_isr(void *ptr);
-#define DW_UART_0_BASE		(EMSDP_DBG_UART_BASE)	/*!< designware uart 0 relative baseaddr */
-#define DW_UART_0_INTNO		(EMSDP_DBG_UART_INTR)	/*!< designware uart 0 interrupt number  */
+#define DW_UART_0_BASE          (EMSDP_DBG_UART_BASE)   /*!< designware uart 0 relative baseaddr */
+#define DW_UART_0_INTNO         (EMSDP_DBG_UART_INTR)   /*!< designware uart 0 interrupt number  */
 
-static DEV_UART		dw_uart_0;			/*!< designware uart object */
-static DW_UART_CTRL	dw_uart_0_ctrl = {			/*!< designware uart 0 ctrl */
-	0, CLK_BUS_APB, DW_UART_0_INTNO, (INT_HANDLER)dw_uart_0_isr,
+static DEV_UART dw_uart_0;                              /*!< designware uart object */
+static DW_UART_CTRL dw_uart_0_ctrl = {                  /*!< designware uart 0 ctrl */
+	0, CLK_BUS_APB, DW_UART_0_INTNO, (INT_HANDLER_T)dw_uart_0_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
-
-static int32_t dw_uart_0_open (uint32_t baud)
+static int32_t dw_uart_0_open(uint32_t baud)
 {
 	return dw_uart_open(&dw_uart_0, baud);
 }
 
-static int32_t dw_uart_0_close (void)
+static int32_t dw_uart_0_close(void)
 {
 	return dw_uart_close(&dw_uart_0);
 }
 
-static int32_t dw_uart_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_uart_0_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_uart_control(&dw_uart_0, ctrl_cmd, param);
 }
 
-static int32_t dw_uart_0_write (const void *data, uint32_t len)
+static int32_t dw_uart_0_write(const void *data, uint32_t len)
 {
 	return dw_uart_write(&dw_uart_0, data, len);
 }
 
-static int32_t dw_uart_0_read (void *data, uint32_t len)
+static int32_t dw_uart_0_read(void *data, uint32_t len)
 {
 	return dw_uart_read(&dw_uart_0, data, len);
 }
@@ -107,36 +104,36 @@ static void dw_uart_0_install(void)
 
 #if (USE_DW_UART_1)
 static void dw_uart_1_isr(void *ptr);
-#define DW_UART_1_BASE		(EMSDP_UART_BASE)	/*!< designware uart 1 relative baseaddr */
-#define DW_UART_1_INTNO		(EMSDP_UART_INTR)	/*!< designware uart 1 interrupt number  */
+#define DW_UART_1_BASE          (EMSDP_UART_BASE)       /*!< designware uart 1 relative baseaddr */
+#define DW_UART_1_INTNO         (EMSDP_UART_INTR)       /*!< designware uart 1 interrupt number  */
 
-static DEV_UART		dw_uart_1;			/*!< designware uart 1 object */
-static DW_UART_CTRL	dw_uart_1_ctrl = {			/*!< designware uart 1 ctrl */
-	0, CLK_BUS_APB, DW_UART_1_INTNO, (INT_HANDLER)dw_uart_1_isr,
+static DEV_UART dw_uart_1;                              /*!< designware uart 1 object */
+static DW_UART_CTRL dw_uart_1_ctrl = {                  /*!< designware uart 1 ctrl */
+	0, CLK_BUS_APB, DW_UART_1_INTNO, (INT_HANDLER_T)dw_uart_1_isr,
 	DW_UART_FIFO_LEN, DW_UART_FIFO_LEN, 0
 };
 
-static int32_t dw_uart_1_open (uint32_t baud)
+static int32_t dw_uart_1_open(uint32_t baud)
 {
 	return dw_uart_open(&dw_uart_1, baud);
 }
 
-static int32_t dw_uart_1_close (void)
+static int32_t dw_uart_1_close(void)
 {
 	return dw_uart_close(&dw_uart_1);
 }
 
-static int32_t dw_uart_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_uart_1_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_uart_control(&dw_uart_1, ctrl_cmd, param);
 }
 
-static int32_t dw_uart_1_write (const void *data, uint32_t len)
+static int32_t dw_uart_1_write(const void *data, uint32_t len)
 {
 	return dw_uart_write(&dw_uart_1, data, len);
 }
 
-static int32_t dw_uart_1_read (void *data, uint32_t len)
+static int32_t dw_uart_1_read(void *data, uint32_t len)
 {
 	return dw_uart_read(&dw_uart_1, data, len);
 }
@@ -174,33 +171,6 @@ static void dw_uart_1_install(void)
 }
 #endif /* USE_DW_UART_1 */
 
-DEV_UART_PTR dw_uart_get_dev(int32_t uart_id)
-{
-	static uint32_t install_flag = 0;
-
-	/* intall device objects */
-	if (install_flag == 0) {
-		install_flag = 1;
-		dw_uart_all_install();
-	}
-
-	switch (uart_id) {
-#if (USE_DW_UART_0)
-		case DW_UART_0_ID:
-			return &dw_uart_0;
-			break;
-#endif
-#if (USE_DW_UART_1)
-		case DW_UART_1_ID:
-			return &dw_uart_1;
-			break;
-#endif
-		default:
-			break;
-	}
-	return NULL;
-}
-
 /**
  * \brief	install all uart objects
  * \note	\b MUST be called during system init
@@ -213,4 +183,31 @@ void dw_uart_all_install(void)
 #if (USE_DW_UART_1)
 	dw_uart_1_install();
 #endif
+}
+
+DEV_UART_PTR dw_uart_get_dev(int32_t uart_id)
+{
+	static uint32_t install_flag = 0;
+
+	/* intall device objects */
+	if (install_flag == 0) {
+		install_flag = 1;
+		dw_uart_all_install();
+	}
+
+	switch (uart_id) {
+#if (USE_DW_UART_0)
+	case DW_UART_0_ID:
+		return &dw_uart_0;
+		break;
+#endif
+#if (USE_DW_UART_1)
+	case DW_UART_1_ID:
+		return &dw_uart_1;
+		break;
+#endif
+	default:
+		break;
+	}
+	return NULL;
 }

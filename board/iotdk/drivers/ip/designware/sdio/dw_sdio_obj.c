@@ -26,19 +26,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
-#include "ip/designware/sdio/dw_sdio.h"
+   --------------------------------------------- */
+#include "dw_sdio.h"
 #include "dw_sdio_obj.h"
+
+#include "iotdk/iotdk.h"
 
 #if (USE_DW_SDIO_0)
 
 static DW_SDIO_CTRL dw_sdio_0_ctrl;
 static DEV_SDIO dw_sdio_0;
-
 
 static void dw_sdio_0_isr(void *ptr)
 {
@@ -91,7 +88,6 @@ static void dw_sdio_0_install(void)
 	dw_sdio_info_ptr->sdio_ctrl = (void *)dw_sdio_ctrl_ptr;
 	dw_sdio_info_ptr->status = DEV_DISABLED;
 
-
 	dw_sdio_ctrl_ptr->reg_base = (void *) BASE_ADDR_SDIO;
 	dw_sdio_ctrl_ptr->intno = INTNO_SDIO;
 	dw_sdio_ctrl_ptr->ref_clk = CLK_CPU;
@@ -120,18 +116,17 @@ DEV_SDIO_PTR sdio_get_dev(uint32_t sdio_id)
 	switch (sdio_id) {
 #if (USE_DW_SDIO_0)
 
-		case DW_SDIO_0_ID:
-			return &dw_sdio_0;
-			break;
+	case DW_SDIO_0_ID:
+		return &dw_sdio_0;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;
 }
-
 
 void dw_sdio_all_install()
 {

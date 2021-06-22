@@ -13,8 +13,9 @@ from multiprocessing.managers import BaseManager
 from multiprocessing import Lock, Process, Value
 import queue
 import threading
-import contextlib
+import re
 import glob
+import pathlib
 import shutil
 import copy
 import serial
@@ -22,6 +23,7 @@ import yaml
 import json
 import string
 import logging
+import xml.etree.ElementTree as ET
 
 
 logger = logging.getLogger('osp-test')
@@ -284,6 +286,17 @@ class HardwareMap:
 
 
 class Platform:
+
+    platform_tags = {
+        "bcr.dmac_build": "dma",
+        "icache.present": "icache",
+        "dcache.present": "dcache",
+        "bcr.timer_build": "timer",
+        "bcr.mpu_build": "mpu",
+        "bcr.cluster_build.num_cores": "smp",
+        "xy": "xymem"
+    }
+
     def __init__(self, name, version=None, core=None):
         """Constructor.
 
@@ -295,32 +308,101 @@ class Platform:
 
         self.type = "na"
         self.simulation = "na"
+        self.peripherals = list()
+        self.supported_versions = list()
+
+        self.configs = dict()
 
     def load(self, platform_file):
         pass
 
-    def get_versions(self, example):
-        result = list()
+    def _get_peripherals(self, onchip_ip_list):
+        ip_list = onchip_ip_list.split()
+        for ip in ip_list:
+            peripheral = ip.split("/", maxsplit=1)
+            if len(peripheral) == 2:
+                self.peripherals.append(peripheral[1])
+
+    def _extract_mk_vars(self, data):
+        mk_vars = dict()
+        mk_var_types = ["environment", "makefile", "'override'"]
+        re_var = re.compile(r"^#\s*Variables\b")                # start of variable segment
+        re_varend = re.compile(r"^#\s*variable")                # end of variables
+        state = None                                            # state of parser
+        mname = None
+        for line in data.splitlines():
+            try:
+                line = line.decode("utf-8").strip()
+            except UnicodeDecodeError:                          # GMSL has illegal sequence of characters
+                continue
+            if "$(" in line:                                    # command cubstitution
+                continue
+            if state is None and re_var.search(line):
+                state = "var"
+            elif state == "var":
+                if re_varend.search(line):                      # last line of variable block
+                    state = "end"
+                    break
+                if line.startswith("#"):                        # type of variable
+                    var_type = line.split()
+                    mname = var_type[1]
+                elif mname is not None:
+                    if mk_var_types is not None and mname not in mk_var_types:
+                        continue
+                    if mname not in mk_vars:
+                        mk_vars[mname] = dict()
+                    var_content = line.split(maxsplit=2)
+                    if len(var_content) == 3:
+                        mk_vars[mname][var_content[0]] = var_content[2]
+                        if var_content[0] == "ONCHIP_IP_LIST":
+                            if not self.peripherals:
+                                self._get_peripherals(var_content[2])
+                        if var_content[0] == "SUPPORTED_BD_VERS":
+                            if not self.supported_versions:
+                                self.supported_versions = var_content[2].split()
+                    mname = None
+        self.configs.update(mk_vars)
+
+    def get_configs(self, example):
         cmd = ["make", "EMBARC_ROOT=%s" % EMBARC_ROOT]
         cmd.append("BOARD=%s" % (self.name))
-        cmd.extend(["-C", example])
-        cmd.append("spopt")
+        cmd.extend(["-C", example, "-pn"])
         try:
-            output = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-            if output:
-                opt_lines = output.decode("utf-8").splitlines()
-                for opt_line in opt_lines:
-                    if opt_line.startswith("SUPPORTED_BD_VERS"):
-                        platform_versions = opt_line.split(":", 1)[1]
-                        result.extend(platform_versions.split())
-                        break
+            output = subprocess.check_output(cmd, stderr=subprocess.STDOUT) 
         except subprocess.CalledProcessError as ex:
-            logger.error("Fail to run command {}".format(cmd))
-            sys.exit(ex.output.decode("utf-8"))
-        return result
+            output = ex.output
+        self._extract_mk_vars(output)
+
+    def _parse_core_props(self, version, core, tcf):
+        configs = dict()
+        tags = list()
+        with open(tcf, "rb") as f:
+            tree = ET.ElementTree(ET.fromstring(f.read().decode("utf-8")))
+            eleTestsuites = tree.getroot()
+            core_tag = eleTestsuites.findall(f'configuration/[@filename="core.props"]')
+            if core_tag:
+                core_text = core_tag[0].find("string").text
+                core_props = core_text.splitlines()
+                for line in core_props:
+                    if not line:
+                        continue
+                    key, value = line.strip('\t').split("=", maxsplit=1)
+                    configs[key[12:]] = value # key start with core_configs.
+                    if key[12:] in self.platform_tags.keys():
+                        if key[12:] == "bcr.cluster_build.num_cores":
+                            if int(value) > 1:
+                                tags.append("smp")
+                            continue
+                        tags.append(self.platform_tags[key[12:]])
+        if not version in self.configs:
+            self.configs[version] = dict()
+        self.configs[version][core] = {
+            "configs": configs,
+            "tags": tags
+        }
 
     def get_cores(self, example, version):
-        result = list()
+        cores = list()
         cmd = ["make", "EMBARC_ROOT=%s" % EMBARC_ROOT]
         cmd.append("BOARD=%s" % (self.name))
         cmd.append("BD_VER=%s" % (version))
@@ -333,12 +415,19 @@ class Platform:
                 for opt_line in opt_lines:
                     if opt_line.startswith("SUPPORTED_CORES"):
                         platforms_cores = opt_line.split(":", 1)[1]
-                        result.extend(platforms_cores.split())
+                        cores.extend(platforms_cores.split())
                         break
         except subprocess.CalledProcessError as ex:
             logger.error("Fail to run command {}".format(cmd))
             sys.exit(ex.output.decode("utf-8"))
-        return result
+        board_root = os.path.join(EMBARC_ROOT, "board", self.name)
+        for file in pathlib.Path(board_root).glob('**/*.tcf'):
+            if version in str(file):
+                tcf = os.path.join(board_root, str(file))
+                for core in cores:
+                    if core in tcf:
+                        self._parse_core_props(version, core, tcf)
+        return cores
 
     def __repr__(self):
         return "<%s version %s core %s on arc>" % (self.name, self.version, self.core)
@@ -359,13 +448,15 @@ class TestCase(DisablePyTestCollectionMixin):
         self.id = name
         self.platform_exclude = None
         self.platform_allow = None
+        self.core_exclude = None
         self.toolchain_exclude = None
         self.toolchain_allow = None
         self.tc_filter = None
         self.build_only = False
         self.timeout = 300
         self.cases = []
-        self.tags = set()
+        self.tags = list()
+        self.ignore_overflowed_error = False
         self.skip = False
         self.extra_args = None
 
@@ -479,7 +570,7 @@ class Harness:
     CONSOLE_START = "Compiler Version:"
     CONSOLE_END = "Test Done"
     BLINKY_MESSAGE = "led out:"
-    SKIPPED_MESSAGE = "This example is not supportted"
+    SKIPPED_MESSAGE = "This example is not supported"
     EXCEPTION_INFO = [
         "Memory Error",
         "Instruction Error",
@@ -859,7 +950,7 @@ class ProjectBuilder:
 
     def build(self, **kwargs):
         kwargs['stdout'] = subprocess.PIPE
-        kwargs['stderr'] = subprocess.STDOUT
+        kwargs['stderr'] = subprocess.PIPE
 
         cmd = ["make", "BOARD=%s" % (self.platform.name),
                "BD_VER=%s" % (self.platform.version),
@@ -875,7 +966,10 @@ class ProjectBuilder:
 
         p = subprocess.Popen(cmd, cwd=self.build_dir, env=env, **kwargs)
         out, errs = p.communicate()
-
+        if out:
+            with open(os.path.join(self.build_dir, self.log), "a") as log:
+                log.write(out.decode())
+                log.write(errs.decode())
         results = {}
         msg = "build status: %s version %s core %s %s %s" % (
             self.platform.name,
@@ -884,25 +978,27 @@ class ProjectBuilder:
             self.instance.name,
             "failed" if p.returncode else "passed"
         )
-        logger.debug(msg)
         if p.returncode == 0:
             self.instance.status = "passed"
             results = {'msg': msg, "returncode": p.returncode, "instance": self.instance}
-
-            if out:
-                with open(os.path.join(self.build_dir, self.log), "a") as log:
-                    log.write(out.decode())
-            else:
+            if not out:
                 return None
         else:
-            if out:
-                with open(os.path.join(self.build_dir, self.log), "a") as log:
-                    log.write(out.decode())
-                    if errs:
-                        log.write(errs.decode())
-                        logger.debug(errs.decode())
-            self.instance.status = "error"
-            self.instance.reason = "Build failure"
+            res = re.findall("region `(REGION_ICCM|REGION_DCCM)' overflowed by", errs.decode())
+            if res and self.instance.testcase.ignore_overflowed_error:
+                logger.debug("Test skipped due to {} Overflow".format(res[0]))
+                self.instance.status = "skipped"
+                self.instance.reason = "{} overflow".format(res[0])
+            else:
+                res = re.findall("is not supported in secureshield", errs.decode())
+                if res:
+                    logger.debug("Test skipped due to platform doesn't support secureshield")
+                    self.instance.status = "skipped"
+                    self.instance.reason = "Unsupport secureshield"
+                else:
+                    logger.debug(errs.decode())
+                    self.instance.status = "error"
+                    self.instance.reason = "Build failure"
 
             results = {
                 "returncode": p.returncode,
@@ -964,7 +1060,7 @@ class ProjectBuilder:
             else:
                 more_info = "build"
 
-        logger.info("{:>{}}/{} {:<5} {:<3} {:<5} {:<50} {} ({})".format(
+        logger.info("{:>{}}/{} {:<5} {:<3} {:<30} {:<50} {:>15} ({})".format(
             results.done, total_tests_width, total_to_do, instance.platform.name,
             instance.platform.version, instance.platform.core,
             instance.testcase.name, instance.status, more_info))
@@ -1044,11 +1140,14 @@ class TestSuite(DisablePyTestCollectionMixin):
                                 if name in supported_tc:
                                     tc = TestCase(root, workdir, name)
                                     tc_filter = self.tc_white_black_list["examples"][name]
-                                    tc.tags = tc_filter.get("tags", set())
+                                    if tc_filter.get("tags", list()):
+                                        tc.tags = tc_filter["tags"].split()
                                     tc.skip = tc_filter.get("skip", False)
+                                    tc.core_exclude = tc_filter.get("core_exclude", [])
                                     tc.extra_args = tc_filter.get("extra_args", [])
                                     tc_platform_exclude = tc_filter.get("platform_exclude", None)
                                     tc.build_only = tc_filter.get("build_only", False)
+                                    tc.ignore_overflowed_error = tc_filter.get("ignore_overflowed_error", False)
                                     if isinstance(tc_platform_exclude, str):
                                         tc.platform_exclude = [Platform(name) for name in tc_platform_exclude.split()]
                                     if isinstance(tc_platform_exclude, dict):
@@ -1066,7 +1165,7 @@ class TestSuite(DisablePyTestCollectionMixin):
                                             versions_allow = str(versions).split()
                                             for version in versions_allow:
                                                 tc.platform_allow.append(Platform(name, version=version))
-                                    tc.source_dir = dirpath
+                                    tc.source_dir = dirpath.replace(os.path.sep, '/')
                                     tc.cases.append(tc.id)
                                     self.testcases[tc.name] = tc
                             except Exception as e:
@@ -1103,7 +1202,8 @@ class TestSuite(DisablePyTestCollectionMixin):
                 if platform.name == "nsim":
                     platform.simulation = "nsim"
                     platform.run = True
-                versions = platform.get_versions(example_path)
+                platform.get_configs(example_path)
+                versions = platform.supported_versions
                 for version in versions:
                     cores = platform.get_cores(example_path, version)
                     for core in cores:
@@ -1181,6 +1281,17 @@ class TestSuite(DisablePyTestCollectionMixin):
                             discards[instance] = discards.get(instance, "In testcase platform exlude list.")
                         if plat.version in platform_exclude.get(plat.name):
                             discards[instance] = discards.get(instance, "In testcase platform version exlude list.")
+                if tc.core_exclude:
+                    for core in tc.core_exclude:
+                        if "_".join([plat.name, plat.version, plat.core]) == core:
+                            discards[instance] = discards.get(instance, "In testcase platform core exlude list.")
+                if not instance in discards and tc.tags:
+                    for tag in tc.tags:
+                        if tag in ["secureshield", "blinky", "bootloader"]:
+                            continue
+                        if not tag in plat.configs[plat.version][plat.core]["tags"]:
+                            if not tag in plat.peripherals:
+                                discards[instance] = discards.get(instance, "Platform core doesn't support {}".format(tag))
 
                 for t in tc.cases:
                     instance.results[t] = None
@@ -1196,6 +1307,7 @@ class TestSuite(DisablePyTestCollectionMixin):
             instance.reason = self.discards[instance]
             instance.status = "skipped"
             instance.fill_results_by_status()
+            logger.debug("Skip {}, {}".format(instance, instance.reason))
         return discards
 
     def add_tasks_to_queue(self, pipeline, build_only=False):

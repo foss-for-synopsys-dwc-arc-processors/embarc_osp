@@ -37,7 +37,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "arc_builtin.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
 
@@ -74,7 +74,7 @@ static int func_ntshell_read(char *buf, int cnt, void *extobj)
 
     p_nt_io = (NTSHELL_IO *)extobj;
 
-    if (_arc_usually(p_nt_io->nt_read != NULL)) { /* check read func is valid */
+    if (arc_compiler_usually(p_nt_io->nt_read != NULL)) { /* check read func is valid */
         ercd = p_nt_io->nt_read((void *)buf, cnt);
         if (ercd <= 0) {
             ercd = -1;
@@ -111,7 +111,7 @@ static int func_ntshell_write(const char *buf, int cnt, void *extobj)
 
     p_nt_io = (NTSHELL_IO *)extobj;
 
-    if (_arc_usually(p_nt_io->nt_write != NULL)) { /* check read func is valid */
+    if (arc_compiler_usually(p_nt_io->nt_write != NULL)) { /* check read func is valid */
         ercd = (int)p_nt_io->nt_write((const void *)buf, (uint32_t)cnt);
     } else {
         ercd = -1;

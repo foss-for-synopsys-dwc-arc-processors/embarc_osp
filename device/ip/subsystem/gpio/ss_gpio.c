@@ -26,16 +26,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /* the wrapper of subsystem gpio driver */
 
 #include "embARC_error.h"
 #include "embARC_toolchain.h"
 
-#include "ip/subsystem/gpio/gpio.h"
-#include "ip/subsystem/gpio/ss_gpio.h"
-
+#include "gpio.h"
+#include "ss_gpio.h"
 
 int32_t ss_gpio_open(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir)
 {
@@ -45,10 +44,10 @@ int32_t ss_gpio_open(SS_GPIO_DEV_CONTEXT *ctx, uint32_t dir)
 
 	info->opn_cnt++;
 
-	if (info->opn_cnt > 1) { /* opened before */
-		if (dir == info->direction) { /* direction is the same */
+	if (info->opn_cnt > 1) {                /* opened before */
+		if (dir == info->direction) {   /* direction is the same */
 			return E_OK;
-		} else { /* open with different direction */
+		} else {                        /* open with different direction */
 			return E_OPNED;
 		}
 	}
@@ -99,79 +98,78 @@ int32_t ss_gpio_control(SS_GPIO_DEV_CONTEXT *ctx, uint32_t ctrl_cmd, void *param
 	uint32_t mask;
 
 	switch (ctrl_cmd) {
-		case GPIO_CMD_SET_BIT_DIR_INPUT:
-		case GPIO_CMD_SET_BIT_DIR_OUTPUT:
-			if (ctrl_cmd == GPIO_CMD_SET_BIT_DIR_OUTPUT) {
-				info->direction |= ((uint32_t)param);
-			} else {
-				info->direction &= ~((uint32_t)param);
-			}
-			io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_DIRECTION, &(info->direction));
-			break;
-		case GPIO_CMD_GET_BIT_DIR:
-			*((uint32_t *) param) = info->direction;
-			break;
+	case GPIO_CMD_SET_BIT_DIR_INPUT:
+	case GPIO_CMD_SET_BIT_DIR_OUTPUT:
+		if (ctrl_cmd == GPIO_CMD_SET_BIT_DIR_OUTPUT) {
+			info->direction |= ((uint32_t)param);
+		} else {
+			info->direction &= ~((uint32_t)param);
+		}
+		io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_DIRECTION, &(info->direction));
+		break;
+	case GPIO_CMD_GET_BIT_DIR:
+		*((uint32_t *) param) = info->direction;
+		break;
 
-		case GPIO_CMD_ENA_BIT_INT:
-		case GPIO_CMD_DIS_BIT_INT:
-			if (ctrl_cmd == GPIO_CMD_ENA_BIT_INT) {
-				info->method |= ((uint32_t)param);
-			}
-			else {
-				info->method &= ~((uint32_t)param);
-			}
-			io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_ENABLE, &(info->method));
-			if (info->method) {
-				int_enable(ctx->intno);
-			} else {
-				int_disable(ctx->intno);
-			}
-			break;
+	case GPIO_CMD_ENA_BIT_INT:
+	case GPIO_CMD_DIS_BIT_INT:
+		if (ctrl_cmd == GPIO_CMD_ENA_BIT_INT) {
+			info->method |= ((uint32_t)param);
+		} else   {
+			info->method &= ~((uint32_t)param);
+		}
+		io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_ENABLE, &(info->method));
+		if (info->method) {
+			int_enable(ctx->intno);
+		} else {
+			int_disable(ctx->intno);
+		}
+		break;
 
-		case GPIO_CMD_GET_BIT_MTHD:
-			io_gpio_ioctl(ctx->dev_id, IO_GPIO_GET_INT_ENABLE, &(info->method));
-			*((uint32_t *) param) = info->method;
-			break;
-		case GPIO_CMD_SET_BIT_INT_CFG:
-			mask = cfg->int_bit_mask;
-			ctx->int_bit_type &= ~(mask);
-			ctx->int_bit_type |= cfg->int_bit_type;
-			io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_TYPE, &ctx->int_bit_type);
+	case GPIO_CMD_GET_BIT_MTHD:
+		io_gpio_ioctl(ctx->dev_id, IO_GPIO_GET_INT_ENABLE, &(info->method));
+		*((uint32_t *) param) = info->method;
+		break;
+	case GPIO_CMD_SET_BIT_INT_CFG:
+		mask = cfg->int_bit_mask;
+		ctx->int_bit_type &= ~(mask);
+		ctx->int_bit_type |= cfg->int_bit_type;
+		io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_TYPE, &ctx->int_bit_type);
 
-			ctx->int_bit_polarity &= ~(mask);
-			ctx->int_bit_polarity |= cfg->int_bit_polarity;
-			io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_POLARITY, &ctx->int_bit_polarity);
+		ctx->int_bit_polarity &= ~(mask);
+		ctx->int_bit_polarity |= cfg->int_bit_polarity;
+		io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_INT_POLARITY, &ctx->int_bit_polarity);
 
-			cfg->int_bit_debounce &= mask;
-			ctx->int_bit_debounce &= ~(mask);
-			ctx->int_bit_debounce |= cfg->int_bit_debounce;
-			io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_DEBOUNCE, &ctx->int_bit_debounce);
-			break;
+		cfg->int_bit_debounce &= mask;
+		ctx->int_bit_debounce &= ~(mask);
+		ctx->int_bit_debounce |= cfg->int_bit_debounce;
+		io_gpio_ioctl(ctx->dev_id, IO_GPIO_SET_DEBOUNCE, &ctx->int_bit_debounce);
+		break;
 
-		case GPIO_CMD_GET_BIT_INT_CFG:
-			cfg->int_bit_type = ctx->int_bit_type & cfg->int_bit_mask;
-			cfg->int_bit_polarity = ctx->int_bit_polarity & cfg->int_bit_mask;
-			cfg->int_bit_debounce = ctx->int_bit_debounce & cfg->int_bit_mask;
-			break;
+	case GPIO_CMD_GET_BIT_INT_CFG:
+		cfg->int_bit_type = ctx->int_bit_type & cfg->int_bit_mask;
+		cfg->int_bit_polarity = ctx->int_bit_polarity & cfg->int_bit_mask;
+		cfg->int_bit_debounce = ctx->int_bit_debounce & cfg->int_bit_mask;
+		break;
 
-		case GPIO_CMD_SET_BIT_ISR:
-			if (isr->int_bit_ofs < ctx->width) {
-				ctx->handlers[isr->int_bit_ofs] = isr->int_bit_handler;
-			} else {
-				ret = E_PAR;
-			}
-			break;
+	case GPIO_CMD_SET_BIT_ISR:
+		if (isr->int_bit_ofs < ctx->width) {
+			ctx->handlers[isr->int_bit_ofs] = isr->int_bit_handler;
+		} else {
+			ret = E_PAR;
+		}
+		break;
 
-		case GPIO_CMD_GET_BIT_ISR:
-			if (isr->int_bit_ofs < ctx->width) {
-				isr->int_bit_handler = ctx->handlers[isr->int_bit_ofs];
-			} else {
-				ret = E_PAR;
-			}
-			break;
-		default:
-			ret = E_NOSPT;
-			break;
+	case GPIO_CMD_GET_BIT_ISR:
+		if (isr->int_bit_ofs < ctx->width) {
+			isr->int_bit_handler = ctx->handlers[isr->int_bit_ofs];
+		} else {
+			ret = E_PAR;
+		}
+		break;
+	default:
+		ret = E_NOSPT;
+		break;
 	}
 
 	return ret;
@@ -198,7 +196,6 @@ int32_t ss_gpio_read(SS_GPIO_DEV_CONTEXT *ctx, uint32_t *val, uint32_t mask)
 
 	return 0;
 }
-
 
 void ss_gpio_int_cb(SS_GPIO_DEV_CONTEXT *ctx, void *param)
 {

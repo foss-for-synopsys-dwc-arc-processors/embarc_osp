@@ -26,16 +26,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef __CGU_HSDC_H__
 #define __CGU_HSDC_H__
 
 #include "cgu_hsdc_reg.h"
 
-//Pll
-typedef enum
-{
+// Pll
+typedef enum {
 	CGU_HSDC_PLL_ARC = 0,
 	CGU_HSDC_PLL_SYS,
 	CGU_HSDC_PLL_DDR,
@@ -44,9 +43,8 @@ typedef enum
 	CGU_HSDC_PLL_NONE
 } CGU_HSDC_PLL_T;
 
-//Idiv
-typedef enum
-{
+// Idiv
+typedef enum {
 	CGU_HSDC_IDIV_ARC = 0,
 	CGU_HSDC_IDIV_SYS,
 	CGU_HSDC_IDIV_TUNNEL,
@@ -55,9 +53,8 @@ typedef enum
 	CGU_HSDC_IDIV_NONE
 } CGU_HSDC_IDIV_T;
 
-//Fmeas
-typedef enum
-{
+// Fmeas
+typedef enum {
 	CGU_HSDC_FMEAS_ARC = 0,
 	CGU_HSDC_FMEAS_SYS,
 	CGU_HSDC_FMEAS_TUNNEL,
@@ -66,9 +63,8 @@ typedef enum
 	CGU_HSDC_FMEAS_NONE
 } CGU_HSDC_FMEAS_T;
 
-//Reset
-typedef enum
-{
+// Reset
+typedef enum {
 	CGU_HSDC_RSTCTRL_ARC = 0,
 	CGU_HSDC_RSTCTRL_SYS,
 	CGU_HSDC_RSTCTRL_DDR,
@@ -76,63 +72,61 @@ typedef enum
 	CGU_HSDC_RSTCTRL_NONE
 } CGU_HSDC_RSTCTRL_T;
 
-typedef struct
-{
-   uint32_t      freq;
-   uint32_t      BS;
-   uint32_t      F;
-   uint32_t      R;
-   uint32_t      OD;
-   uint32_t      bypass;
-   uint32_t      pd;
+typedef struct {
+	uint32_t freq;
+	uint32_t BS;
+	uint32_t F;
+	uint32_t R;
+	uint32_t OD;
+	uint32_t bypass;
+	uint32_t pd;
 } CGU_REGISTER_PLL_SETTING_T;
 
-typedef enum CGU_HSDC_PLL_FREQ
-{
-    CGU_HSDC_PLL_FREQ_BYPASS = 0
-   ,CGU_HSDC_PLL_FREQ_100MHZ
-   ,CGU_HSDC_PLL_FREQ_133MHZ
-   ,CGU_HSDC_PLL_FREQ_150MHZ
-   ,CGU_HSDC_PLL_FREQ_167MHZ
-   ,CGU_HSDC_PLL_FREQ_200MHZ
-   ,CGU_HSDC_PLL_FREQ_233MHZ
-   ,CGU_HSDC_PLL_FREQ_250MHZ
-   ,CGU_HSDC_PLL_FREQ_267MHZ
-   ,CGU_HSDC_PLL_FREQ_300MHZ
-   ,CGU_HSDC_PLL_FREQ_333MHZ
-   ,CGU_HSDC_PLL_FREQ_350MHZ
-   ,CGU_HSDC_PLL_FREQ_367MHZ
-   ,CGU_HSDC_PLL_FREQ_400MHZ
-   ,CGU_HSDC_PLL_FREQ_433MHZ
-   ,CGU_HSDC_PLL_FREQ_450MHZ
-   ,CGU_HSDC_PLL_FREQ_467MHZ
-   ,CGU_HSDC_PLL_FREQ_500MHZ
-   ,CGU_HSDC_PLL_FREQ_533MHZ
-   ,CGU_HSDC_PLL_FREQ_550MHZ
-   ,CGU_HSDC_PLL_FREQ_567MHZ
-   ,CGU_HSDC_PLL_FREQ_600MHZ
-   ,CGU_HSDC_PLL_FREQ_633MHZ
-   ,CGU_HSDC_PLL_FREQ_650MHZ
-   ,CGU_HSDC_PLL_FREQ_667MHZ
-   ,CGU_HSDC_PLL_FREQ_700MHZ
-   ,CGU_HSDC_PLL_FREQ_733MHZ
-   ,CGU_HSDC_PLL_FREQ_750MHZ
-   ,CGU_HSDC_PLL_FREQ_767MHZ
-   ,CGU_HSDC_PLL_FREQ_800MHZ
-   ,CGU_HSDC_PLL_FREQ_833MHZ
-   ,CGU_HSDC_PLL_FREQ_867MHZ
-   ,CGU_HSDC_PLL_FREQ_900MHZ
-   ,CGU_HSDC_PLL_FREQ_933MHZ
-   ,CGU_HSDC_PLL_FREQ_967MHZ
-   ,CGU_HSDC_PLL_FREQ_1000MHZ
-   ,CGU_HSDC_PLL_FREQ_NONE
+typedef enum CGU_HSDC_PLL_FREQ {
+	CGU_HSDC_PLL_FREQ_BYPASS = 0
+	, CGU_HSDC_PLL_FREQ_100MHZ
+	, CGU_HSDC_PLL_FREQ_133MHZ
+	, CGU_HSDC_PLL_FREQ_150MHZ
+	, CGU_HSDC_PLL_FREQ_167MHZ
+	, CGU_HSDC_PLL_FREQ_200MHZ
+	, CGU_HSDC_PLL_FREQ_233MHZ
+	, CGU_HSDC_PLL_FREQ_250MHZ
+	, CGU_HSDC_PLL_FREQ_267MHZ
+	, CGU_HSDC_PLL_FREQ_300MHZ
+	, CGU_HSDC_PLL_FREQ_333MHZ
+	, CGU_HSDC_PLL_FREQ_350MHZ
+	, CGU_HSDC_PLL_FREQ_367MHZ
+	, CGU_HSDC_PLL_FREQ_400MHZ
+	, CGU_HSDC_PLL_FREQ_433MHZ
+	, CGU_HSDC_PLL_FREQ_450MHZ
+	, CGU_HSDC_PLL_FREQ_467MHZ
+	, CGU_HSDC_PLL_FREQ_500MHZ
+	, CGU_HSDC_PLL_FREQ_533MHZ
+	, CGU_HSDC_PLL_FREQ_550MHZ
+	, CGU_HSDC_PLL_FREQ_567MHZ
+	, CGU_HSDC_PLL_FREQ_600MHZ
+	, CGU_HSDC_PLL_FREQ_633MHZ
+	, CGU_HSDC_PLL_FREQ_650MHZ
+	, CGU_HSDC_PLL_FREQ_667MHZ
+	, CGU_HSDC_PLL_FREQ_700MHZ
+	, CGU_HSDC_PLL_FREQ_733MHZ
+	, CGU_HSDC_PLL_FREQ_750MHZ
+	, CGU_HSDC_PLL_FREQ_767MHZ
+	, CGU_HSDC_PLL_FREQ_800MHZ
+	, CGU_HSDC_PLL_FREQ_833MHZ
+	, CGU_HSDC_PLL_FREQ_867MHZ
+	, CGU_HSDC_PLL_FREQ_900MHZ
+	, CGU_HSDC_PLL_FREQ_933MHZ
+	, CGU_HSDC_PLL_FREQ_967MHZ
+	, CGU_HSDC_PLL_FREQ_1000MHZ
+	, CGU_HSDC_PLL_FREQ_NONE
 } CGU_HSDC_PLL_FREQ_T;
 
-//Arc: n
+// Arc: n
 #define IDIV_ARC              0
 #define IDIV_ARC_NONE         1
 
-//Sys: n
+// Sys: n
 #define IDIV_SYS_APB          0
 #define IDIV_SYS_AXI          1
 #define IDIV_SYS_ETH          2
@@ -151,24 +145,24 @@ typedef enum CGU_HSDC_PLL_FREQ
 #define IDIV_SYS_EBI_REF      15
 #define IDIV_SYS_NONE         16
 
-//Tunnel: n
+// Tunnel: n
 #define IDIV_TUNNEL           0
 #define IDIV_ROM              1
 #define IDIV_PWM              2
 #define IDIV_TUNNEL_NONE      3
 
-//Hdmi: n
+// Hdmi: n
 #define IDIV_HDMI             0
 #define IDIV_HDMI_NONE        1
 
-//I2s: n
+// I2s: n
 #define IDIV_I2S_TX           0
 #define IDIV_I2S_RX           1
 #define IDIV_I2S_NONE         2
-//arc
+// arc
 #define ARC_ARC_RST        (0x1U << 16)
 
-//sys
+// sys
 #define SYS_APB_RST        (0x1U << 16)
 #define SYS_AXI_RST        (0x1U << 17)
 #define SYS_ETH_RST        (0x1U << 18)
@@ -179,42 +173,40 @@ typedef enum CGU_HSDC_PLL_FREQ
 #define SYS_DMAC_RST       (0x1U << 25)
 #define SYS_EBI_RST        (0x1U << 31)
 
-//ddr
+// ddr
 #define DDR_DDR_RST        (0x1U << 0)
 
-//tunnel
+// tunnel
 #define TUN_TUN_RST        (0x1U << 16)
 
-typedef struct
-{
+typedef struct {
 	CGU_HSDC_PLL_T pll;
 	uint32_t freq;
-	uint32_t intnum;  //lock interrupt 0
+	uint32_t intnum;  // lock interrupt 0
 } CGU_HSDC_PLL_CONFIG_T;
-
 
 extern void cgu_hsdc_init(CGU_HSDC_STRUCT_PTR cgu_regs);
 
-//Pll functions
+// Pll functions
 extern int32_t cgu_hsdc_set_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_CONFIG_T *config);
 extern uint32_t cgu_hsdc_compare_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_CONFIG_T *config);
 
-//Get value from table
+// Get value from table
 extern uint32_t cgu_hsdc_get_pll_freq(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_FREQ_T freq);
 extern uint32_t cgu_hsdc_is_pll_in_bypass(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pll);
 
-//FMeas functions
+// FMeas functions
 extern uint32_t cgu_hsdc_measure_pll(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_PLL_T pll, uint32_t fref);
 
-//Idiv functions
+// Idiv functions
 extern int32_t cgu_hsdc_set_idiv(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_IDIV_T idiv, uint8_t n, uint8_t div);
 extern uint8_t cgu_hsdc_get_idiv(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_IDIV_T idiv, uint8_t n);
 
-//FMeas functions
+// FMeas functions
 extern uint32_t cgu_hsdc_measure_clk(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_FMEAS_T fmeas, uint8_t n, uint32_t fref);
 
-//Reset IP's
+// Reset IP's
 extern void  cgu_hsdc_sw_reset_ctrl(CGU_HSDC_STRUCT_PTR cgu_regs, CGU_HSDC_RSTCTRL_T ctrl, uint32_t rst);
 extern void  cgu_hsdc_sw_reset(CGU_HSDC_STRUCT_PTR cgu_regs, uint32_t delay);
 
-#endif //__CGU_HSDC_H__
+#endif // __CGU_HSDC_H__

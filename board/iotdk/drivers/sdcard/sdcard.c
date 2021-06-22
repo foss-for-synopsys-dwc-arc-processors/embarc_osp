@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
@@ -42,12 +42,12 @@ uint32_t diskio_get_fattime(void)
 
 	cur_time = time(NULL);
 	p_tm = localtime(&cur_time);
-	fattime = ((p_tm->tm_year+1900-1980)&0x7f) << 25;
-	fattime |= ((p_tm->tm_mon+1)&0xf) << 21;
-	fattime |= ((p_tm->tm_mday)&0x1f) << 16;
-	fattime |= ((p_tm->tm_hour)&0x1f) << 11;
-	fattime |= ((p_tm->tm_min)&0x3f) << 5;
-	fattime |= ((p_tm->tm_sec>>1)&0x1f);
+	fattime = ((p_tm->tm_year + 1900 - 1980) & 0x7f) << 25;
+	fattime |= ((p_tm->tm_mon + 1) & 0xf) << 21;
+	fattime |= ((p_tm->tm_mday) & 0x1f) << 16;
+	fattime |= ((p_tm->tm_hour) & 0x1f) << 11;
+	fattime |= ((p_tm->tm_min) & 0x3f) << 5;
+	fattime |= ((p_tm->tm_sec >> 1) & 0x1f);
 
 	return fattime;
 }
@@ -55,15 +55,15 @@ uint32_t diskio_get_fattime(void)
 FATFS_DISKIO *get_fatfs_diskio(uint32_t drvid)
 {
 	switch (drvid) {
-#if (USE_IOTDK_SDCARD_SDIO_0 )
+#if (USE_IOTDK_SDCARD_SDIO_0)
 
-		case IOTDK_SDCARD_0_DRVID:
-			return &sdcard_sdio_0_diskio;
-			break;
+	case IOTDK_SDCARD_0_DRVID:
+		return &sdcard_sdio_0_diskio;
+		break;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

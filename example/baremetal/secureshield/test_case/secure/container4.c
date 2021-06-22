@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #undef LIB_SECURESHIELD_OVERRIDES
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -41,20 +41,21 @@
 void timer1_interrupt1(void *p_exinf)
 {
 	uint32_t val;
-	val = _arc_aux_read(AUX_TIMER1_CTRL);
+
+	val = arc_aux_read(AUX_TIMER1_CTRL);
 	val &= ~TIMER_CTRL_IP;
-	_arc_aux_write(AUX_TIMER1_CTRL, val);
-	//secure_int_sw_trigger(INTNO_SWI3);
+	arc_aux_write(AUX_TIMER1_CTRL, val);
+	// secure_int_sw_trigger(INTNO_SWI3);
 }
 #endif
 
 int tst_func_sec1(void)
 {
 #ifndef BOARD_EMSDP
-	_arc_aux_write(AUX_TIMER1_CTRL, 0);
-	_arc_aux_write(AUX_TIMER1_LIMIT, 5000);
-	_arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE|TIMER_CTRL_NH);
-	_arc_aux_write(AUX_TIMER1_CNT, 0);
+	arc_aux_write(AUX_TIMER1_CTRL, 0);
+	arc_aux_write(AUX_TIMER1_LIMIT, 5000);
+	arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE | TIMER_CTRL_NH);
+	arc_aux_write(AUX_TIMER1_CNT, 0);
 	secure_int_handler_install(INTNO_TIMER1, timer1_interrupt1);
 	secure_int_pri_set(INTNO_TIMER1, INT_PRI_MIN);
 	secure_int_enable(INTNO_TIMER1);

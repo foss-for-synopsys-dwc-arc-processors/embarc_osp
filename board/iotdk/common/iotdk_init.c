@@ -30,15 +30,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "arc_builtin.h"
-#include "arc.h"
-#include "arc_timer.h"
-#include "arc_exception.h"
-#include "embARC_debug.h"
-
+   --------------------------------------------- */
+#include "arc/arc_timer.h"
 #include "board.h"
-#include "iotdk_timer.h"
 
 static void iotdk_mux_init(void)
 {
@@ -55,8 +49,7 @@ static void iotdk_mux_init(void)
 void board_init(void)
 {
 	/* cpu to CLK_CPU */
-	pll_fout_config(CLK_CPU/1000000);
-	timer_init();
+	pll_fout_config(CLK_CPU / 1000000);
 	iotdk_mux_init();
-	iotdk_timer_init();
+	arc_timer_init();
 }

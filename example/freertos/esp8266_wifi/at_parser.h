@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _AT_PARSER_H_
 #define _AT_PARSER_H_
@@ -34,17 +34,17 @@
 #include "ez_sio.h"
 #include "embARC_error.h"
 
-#define AT_OK		0
-#define AT_ERROR	-1
-#define AT_OK_STR	"OK"
-#define AT_ERROR_STR	"ERROR"
+#define AT_OK           0
+#define AT_ERROR        -1
+#define AT_OK_STR       "OK"
+#define AT_ERROR_STR    "ERROR"
 
-#define AT_RX_BUFSIZE	512
-#define AT_TX_BUFSIZE	128
+#define AT_RX_BUFSIZE   512
+#define AT_TX_BUFSIZE   128
 
-#define AT_NORMAL_TIMEOUT	100
-#define AT_LONG_TIMEOUT		5000
-#define AT_EXTRA_TIMEOUT	20000
+#define AT_NORMAL_TIMEOUT       100
+#define AT_LONG_TIMEOUT         5000
+#define AT_EXTRA_TIMEOUT        20000
 
 typedef enum {
 	AT_LIST,
@@ -61,11 +61,11 @@ typedef struct {
 	EZ_SIO *psio;
 } AT_PARSER_DEF, *AT_PARSER_DEF_PTR;
 
-#define AT_PARSER_DEFINE(NAME, UART_ID) \
-	AT_PARSER_DEF __ ## NAME = { \
-	                             .uart_id = UART_ID, \
-	                             .psio = NULL, \
-	                           }; \
+#define AT_PARSER_DEFINE(NAME, UART_ID)	\
+	AT_PARSER_DEF __ ## NAME = {	\
+		.uart_id = UART_ID,	\
+		.psio = NULL,		\
+	};				\
 	AT_PARSER_DEF_PTR NAME = &__ ## NAME
 
 int32_t at_parser_init(AT_PARSER_DEF_PTR obj, uint32_t baudrate);

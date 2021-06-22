@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	BOARD_EMSK_DRV_MID_FS_SDCARD_SPI	EMSK SDCard SPI Interface Driver
@@ -51,13 +51,13 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "arc.h"
-#include "arc_builtin.h"
+#include "arc/arc.h"
+#include "arc/arc_builtin.h"
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
-#include "dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 #include "board.h"
 
 #ifdef ENABLE_OS
@@ -71,12 +71,12 @@
 
 #if USE_EMSK_SDCARD_SPI_0
 
-#define EMSK_SDCARD_SPI_0_ID		(DW_SPI_0_ID)
-#define EMSK_SDCARD_SPI_0_LINE		BOARD_SDCARD_SPI_LINE
+#define EMSK_SDCARD_SPI_0_ID            (DW_SPI_0_ID)
+#define EMSK_SDCARD_SPI_0_LINE          BOARD_SDCARD_SPI_LINE
 
 /** SDCARD SPI FREQ & CLK MODE SETTINGS */
-#define EMSK_SDCARD_SPI_0_FREQ		BOARD_SPI_FREQ
-#define EMSK_SDCARD_SPI_0_CLKMODE	SPI_CLK_MODE_0
+#define EMSK_SDCARD_SPI_0_FREQ          BOARD_SPI_FREQ
+#define EMSK_SDCARD_SPI_0_CLKMODE       SPI_CLK_MODE_0
 
 static int32_t sdcard_spi_card_is_writeprotect(void)
 {
@@ -136,7 +136,7 @@ FATFS_DISKIO sdcard_spi_0_diskio = {
 	sdcard_spi_0_diskio_timerproc
 };
 
-#endif /* USE_EMSK_SDCARD_SPI_0 */
+#endif  /* USE_EMSK_SDCARD_SPI_0 */
 
-#endif /* MID_FATFS */
+#endif  /* MID_FATFS */
 /** @} end of group BOARD_EMSK_DRV_MID_FS_SDCARD_SPI */

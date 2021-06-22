@@ -37,7 +37,7 @@
 #endif
 #include "secureshield_container_stack.h"
 #include "secureshield_container_call.h"
-#include "arc_mpu.h"
+#include "arc/arc_mpu.h"
 
 
 /* Maximu MPU region count that can be defined in container configuration */
@@ -473,7 +473,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 			region->attr |= (g_secure_sid_mask << 16);
 		}
 
-		arc_mpu_region(i + ARC_MPU_RESERVED_REGIONS, region->base,
+		arc_mpu_region_config(i + ARC_MPU_RESERVED_REGIONS, region->base,
 				 region->size, region->attr);
 		region++;
 	}
@@ -505,7 +505,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 			if (mpu_slot >= ARC_FEATURE_MPU_REGIONS) {
 				 break;
 			}
-			arc_mpu_region(mpu_slot, region->base, region->size, region->attr);
+			arc_mpu_region_config(mpu_slot, region->base, region->size, region->attr);
 			region++;
 			mpu_slot++;
 		}
@@ -520,7 +520,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 			 break;
 		}
 
-		arc_mpu_region(mpu_slot, region->base, region->size, region->attr);
+		arc_mpu_region_config(mpu_slot, region->base, region->size, region->attr);
 
 		/* process next slot */
 		region++;
@@ -531,7 +531,7 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 
 	/* clear remaining slots */
 	while (mpu_slot < ARC_FEATURE_MPU_REGIONS) {
-		arc_mpu_region(mpu_slot, 0, 0, 0);
+		arc_mpu_region_config(mpu_slot, 0, 0, 0);
 		mpu_slot++;
 	}
 #endif
@@ -570,7 +570,7 @@ uint32_t vmpu_ac_static_region(uint8_t region, void* base, uint32_t size, CONTAI
 	/* apply access control */
 	vmpu_ac_update_container_region(&res, 0, base, size, ac);
 
-	arc_mpu_region(region, res.base, res.size, res.attr);
+	arc_mpu_region_config(region, res.base, res.size, res.attr);
 
 	return res.size;
 }
@@ -633,7 +633,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	uint32_t rodata_attribute;
 	uint32_t ram_attribute;
 
-	PROCESSOR_FRAME *context;
+	PROCESSOR_FRAME_T *context;
 
 
 	if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
@@ -677,13 +677,13 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	/* handle background container */
 	if (!container_id) {
 		/* container 0 is background container, it uses the default stack, just set the secure stack*/
-		_arc_aux_write(AUX_USER_SP, (uint32_t)container_cfg->stack_secure);
-		_arc_aux_write(AUX_ERSTATUS, g_container_context[0].cpu_status);
+		arc_aux_write(AUX_USER_SP, (uint32_t)container_cfg->stack_secure);
+		arc_aux_write(AUX_ERSTATUS, g_container_context[0].cpu_status);
 	} else {
 		if (container_cfg->type == SECURESHIELD_CONTAINER_SECURE) {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_T_SIZE);
 		} else {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.user_sp = (uint32_t)container_cfg->stack_area;
 			g_container_context[container_id].normal_sp = container_cfg->stack_area;
 		}
@@ -694,7 +694,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	uint32_t size;
 	uint32_t secure;
 
-	PROCESSOR_FRAME *context;
+	PROCESSOR_FRAME_T *context;
 
 	secure = container_cfg->type;
 
@@ -732,14 +732,14 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 	/* initialize the status of container, stack pointer and status register */
 	if (!container_id) {
 		/* container 0 is background container, it uses the default stack */
-		_arc_aux_write(AUX_SEC_K_SP, (uint32_t)container_cfg->stack_secure);
+		arc_aux_write(AUX_SEC_K_SP, (uint32_t)container_cfg->stack_secure);
 	} else {
 		/* \todo init cpu status ? */
 		if (secure == SECURESHIELD_AC_SECURE) {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_area;
 		} else {
-			context = (PROCESSOR_FRAME *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_SIZE);
+			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_secure - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.kernel_sp = (uint32_t)container_cfg->stack_area;
 			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_secure;
 			g_container_context[container_id].normal_sp =container_cfg->stack_area;
@@ -769,7 +769,7 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 		return -1;
 	}
 
-	arc_mpu_region(g_mpu_slot, region->base, region->size, region->attr);
+	arc_mpu_region_config(g_mpu_slot, region->base, region->size, region->attr);
 
 	g_mpu_slot++;
 
@@ -879,7 +879,7 @@ void vmpu_arch_init(void)
 
 	g_mpu_slot = ARC_MPU_RESERVED_REGIONS;
 
-	mpu_cfg = _arc_aux_read(AUX_BCR_MPU);
+	mpu_cfg = arc_aux_read(AUX_BCR_MPU);
 	SECURESHIELD_DBG("MPU version:%x, regions:%d\r\n", mpu_cfg & 0xff, (mpu_cfg >> 8) & 0xff);
 	SECURESHIELD_DBG("MPU ALIGNMENT=0x%x\r\n", 1UL << ARC_FEATURE_MPU_ALIGNMENT_BITS);
 

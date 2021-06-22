@@ -26,9 +26,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
-#include "embARC_toolchain.h"
 #include "embARC_error.h"
 
 #include "iotdk/iotdk.h"
@@ -146,7 +145,7 @@ static int32_t io_arduino_config_gpio(uint32_t num, uint32_t config)
 	case ARDUINO_PIN_AD5:
 		val = ARDUINO_MUX_I2C;
 		break;
-	default :
+	default:
 		return E_PAR;
 	}
 
@@ -181,7 +180,7 @@ static int32_t io_arduino_config_adc(uint32_t pin_num, uint32_t config)
 		sysconf_reg_ptr->ARDUINO_MUX &= ~ARDUINO_MUX_I2C;
 		val = ARDUINO_MUX_ADC5;
 		break;
-	default :
+	default:
 		return E_PAR;
 	}
 
@@ -209,21 +208,21 @@ int32_t io_arduino_config(uint32_t pin_num, uint32_t type, uint32_t config)
 		break;
 	case ARDUINO_SPI:
 		if (pin_num == ARDUINO_PIN_10 ||
-				pin_num == ARDUINO_PIN_11 ||
-				pin_num == ARDUINO_PIN_12 ||
-				pin_num == ARDUINO_PIN_13) {
+		    pin_num == ARDUINO_PIN_11 ||
+		    pin_num == ARDUINO_PIN_12 ||
+		    pin_num == ARDUINO_PIN_13) {
 			ret = io_arduino_config_spi(config);
 		}
 		break;
 	case ARDUINO_I2C:
 		if (pin_num == ARDUINO_PIN_AD5 ||
-				pin_num == ARDUINO_PIN_AD4) {
+		    pin_num == ARDUINO_PIN_AD4) {
 			ret = io_arduino_config_i2c(config);
 		}
 		break;
 	case ARDUINO_UART:
 		if (pin_num == ARDUINO_PIN_0 ||
-				pin_num == ARDUINO_PIN_1) {
+		    pin_num == ARDUINO_PIN_1) {
 			ret = io_arduino_config_uart(config);
 		}
 		break;

@@ -26,11 +26,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
-#define LED_TOGGLE_MASK		BOARD_LED_MASK
+#define LED_TOGGLE_MASK         BOARD_LED_MASK
 
 /**
  * \brief	Test hardware board without any peripheral

@@ -26,28 +26,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
-
-#include "iotdk_hardware.h"
-
+   --------------------------------------------- */
 #include "dfss_gpio_obj.h"
-#include "ip/subsystem/gpio/ss_gpio.h"
+#include "ss_gpio.h"
 
-
+#include "iotdk/iotdk.h"
 
 #if (USE_DFSS_GPIO_8B0)
 
 static void gpio_int_cb0(void *param);
-static DEV_GPIO		gpio_0;
+static DEV_GPIO gpio_0;
 static DEV_GPIO_HANDLER gpio_int_handlers0[8];
 static SS_GPIO_DEV_CONTEXT gpio_context0 = {
 	AR_IO_GPIO_8B0_SWPORTA_DR,
 	DFSS_GPIO_8B0_ID, 8, IO_GPIO_8B0_INT_INTR_FLAG,
-	0, gpio_int_cb0, gpio_int_handlers0,0
+	0, gpio_int_cb0, gpio_int_handlers0, 0
 };
-
 
 static void gpio_int_cb0(void *param)
 {
@@ -102,12 +96,12 @@ static void dfss_gpio_0_install(void)
 #if USE_DFSS_GPIO_8B1
 
 static void gpio_int_cb1(void *param);
-static DEV_GPIO		gpio_1;
+static DEV_GPIO gpio_1;
 static DEV_GPIO_HANDLER gpio_int_handlers1[8];
 static SS_GPIO_DEV_CONTEXT gpio_context1 = {
 	AR_IO_GPIO_8B1_SWPORTA_DR,
 	DFSS_GPIO_8B1_ID, 8, IO_GPIO_8B1_INT_INTR_FLAG,
-	0, gpio_int_cb1, gpio_int_handlers1,0
+	0, gpio_int_cb1, gpio_int_handlers1, 0
 };
 
 static void gpio_int_cb1(void *param)
@@ -160,16 +154,15 @@ static void dfss_gpio_1_install(void)
 }
 #endif // USE_DFSS_GPIO_8B1
 
-
 #if USE_DFSS_GPIO_8B2
 
 static void gpio_int_cb2(void *param);
-static DEV_GPIO		gpio_2;
+static DEV_GPIO gpio_2;
 static DEV_GPIO_HANDLER gpio_int_handlers2[8];
 static SS_GPIO_DEV_CONTEXT gpio_context2 = {
 	AR_IO_GPIO_8B2_SWPORTA_DR,
 	DFSS_GPIO_8B2_ID, 8, IO_GPIO_8B2_INT_INTR_FLAG,
-	0, gpio_int_cb2, gpio_int_handlers2,0
+	0, gpio_int_cb2, gpio_int_handlers2, 0
 };
 
 static void gpio_int_cb2(void *param)
@@ -225,12 +218,12 @@ static void dfss_gpio_2_install(void)
 #if USE_DFSS_GPIO_8B3
 
 static void gpio_int_cb3(void *param);
-static DEV_GPIO		gpio_3;
+static DEV_GPIO gpio_3;
 static DEV_GPIO_HANDLER gpio_int_handlers3[8];
 static SS_GPIO_DEV_CONTEXT gpio_context3 = {
 	AR_IO_GPIO_8B3_SWPORTA_DR,
 	DFSS_GPIO_8B3_ID, 8, IO_GPIO_8B3_INT_INTR_FLAG,
-	0, gpio_int_cb3, gpio_int_handlers3,0
+	0, gpio_int_cb3, gpio_int_handlers3, 0
 };
 
 static void gpio_int_cb3(void *param)
@@ -286,12 +279,12 @@ static void dfss_gpio_3_install(void)
 #if USE_DFSS_GPIO_4B0
 
 static void gpio_int_cb4(void *param);
-static DEV_GPIO		gpio_4;
+static DEV_GPIO gpio_4;
 static DEV_GPIO_HANDLER gpio_int_handlers4[4];
 static SS_GPIO_DEV_CONTEXT gpio_context4 = {
 	AR_IO_GPIO_4B0_SWPORTA_DR,
 	DFSS_GPIO_4B0_ID, 4, IO_GPIO_4B0_INT_INTR_FLAG,
-	0, gpio_int_cb4, gpio_int_handlers4,0
+	0, gpio_int_cb4, gpio_int_handlers4, 0
 };
 
 static void gpio_int_cb4(void *param)
@@ -344,16 +337,15 @@ static void dfss_gpio_4_install(void)
 }
 #endif // USE_DFSS_GPIO_4B0
 
-
 #if USE_DFSS_GPIO_4B1
 
 static void gpio_int_cb5(void *param);
-static DEV_GPIO		gpio_5;
+static DEV_GPIO gpio_5;
 static DEV_GPIO_HANDLER gpio_int_handlers5[4];
 static SS_GPIO_DEV_CONTEXT gpio_context5 = {
 	AR_IO_GPIO_4B1_SWPORTA_DR,
 	DFSS_GPIO_4B1_ID, 4, IO_GPIO_4B1_INT_INTR_FLAG,
-	0, gpio_int_cb5, gpio_int_handlers5,0
+	0, gpio_int_cb5, gpio_int_handlers5, 0
 };
 
 static void gpio_int_cb5(void *param)
@@ -411,12 +403,12 @@ static void dfss_gpio_5_install(void)
 #if USE_DFSS_GPIO_4B2
 
 static void gpio_int_cb6(void *param);
-static DEV_GPIO		gpio_6;
+static DEV_GPIO gpio_6;
 static DEV_GPIO_HANDLER gpio_int_handlers6[4];
 static SS_GPIO_DEV_CONTEXT gpio_context6 = {
 	AR_IO_GPIO_4B2_SWPORTA_DR,
 	DFSS_GPIO_4B2_ID, 4, IO_GPIO_4B2_INT_INTR_FLAG,
-	0, gpio_int_cb6, gpio_int_handlers6,0
+	0, gpio_int_cb6, gpio_int_handlers6, 0
 };
 
 static void gpio_int_cb6(void *param)
@@ -469,7 +461,6 @@ static void dfss_gpio_6_install(void)
 }
 #endif // USE_DFSS_GPIO_4B2
 
-
 void dfss_gpio_all_install(void);
 
 DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
@@ -485,35 +476,35 @@ DEV_GPIO_PTR gpio_get_dev(int32_t gpio_id)
 	switch (gpio_id) {
 #if (USE_DFSS_GPIO_8B0)
 
-		case DFSS_GPIO_8B0_ID: return &gpio_0;
+	case DFSS_GPIO_8B0_ID: return &gpio_0;
 #endif
 #if (USE_DFSS_GPIO_8B1)
 
-		case DFSS_GPIO_8B1_ID: return &gpio_1;
+	case DFSS_GPIO_8B1_ID: return &gpio_1;
 #endif
 #if (USE_DFSS_GPIO_8B2)
 
-		case DFSS_GPIO_8B2_ID: return &gpio_2;
+	case DFSS_GPIO_8B2_ID: return &gpio_2;
 #endif
 #if (USE_DFSS_GPIO_8B3)
 
-		case DFSS_GPIO_8B3_ID: return &gpio_3;
+	case DFSS_GPIO_8B3_ID: return &gpio_3;
 #endif
 #if (USE_DFSS_GPIO_4B0)
 
-		case DFSS_GPIO_4B0_ID: return &gpio_4;
+	case DFSS_GPIO_4B0_ID: return &gpio_4;
 #endif
 #if (USE_DFSS_GPIO_4B1)
 
-		case DFSS_GPIO_4B1_ID: return &gpio_5;
+	case DFSS_GPIO_4B1_ID: return &gpio_5;
 #endif
 #if (USE_DFSS_GPIO_4B2)
 
-		case DFSS_GPIO_4B2_ID: return &gpio_6;
+	case DFSS_GPIO_4B2_ID: return &gpio_6;
 #endif
 
-		default:
-			break;
+	default:
+		break;
 	}
 
 	return NULL;

@@ -29,26 +29,65 @@
 --------------------------------------------- */
 
 #define __ASSEMBLY__
-#include "arc.h"
-#include "arc_asm_common.h"
+#include "arc/arc.h"
+#include "arc/arc_asm_common.h"
 
 	.file "arc_utils.s"
 
-	.text
-	.global _arc_in_user_mode
-	.align 4
-_arc_in_user_mode:
-	lr r0, [AUX_STATUS32]
-	bbit1 r0, 20, 1f
-	bset r1, r0, 20
-	bclr r1, r1, 31
-	kflag r1
-	lr r1, [AUX_STATUS32]
-	bbit0 r1, 20, 2f
-	kflag r0
-1:
-	j_s.d [blink]
-	mov r0, 0
-2:
-	j_s.d [blink]
-	mov r0, 1
+/**
+ * @brief Go to user mode
+ *
+ * @param target Target address to run in user mode, 0 means next
+ *               line of code
+ * @param sp Stack where the target address runs, 0 means using
+ *           current stack
+ */
+    .text
+    .global arc_goto_usermode
+    .align 4
+arc_goto_usermode:
+    cmp r0, 0
+    mov.z   r0, blink
+    cmp r1, 0
+    mov.nz  sp, r1
+#if defined(ARC_FEATURE_SEC_PRESENT)
+    sr  (1 << AUX_ERSEC_STAT_BIT_ERM), [AUX_ERSEC_STAT]
+    sr  sp, [AUX_SEC_U_SP]
+#else
+    sr  sp, [AUX_USER_SP]
+#endif
+    lr  r1, [AUX_STATUS32]
+    bset    r1, r1, AUX_STATUS_BIT_U
+    sr  r1, [AUX_ERSTATUS]
+    lr  r1, [AUX_STATUS32]
+    bset    r1, r1, AUX_STATUS_BIT_AE
+    kflag   r1
+    sr  r0, [AUX_ERRET]
+    rtie
+
+/**
+ * @brief go to kernel mode
+ * this function uses trap exception to do switch from user mode to kernel mode,
+ * please install exc_entry_arc_goto_kernelmode for trap exception before call this
+ * function
+ * @param target, the target address to run in kernel mode, 0 means next line of code
+ * @param sp, the stack where the target address runs, 0 means using current stack
+ */
+    .text
+    .global arc_goto_kernelmode
+    .global exc_entry_arc_goto_kernelmode
+    .align 4
+arc_goto_kernelmode:
+    cmp r0, 0
+    mov.z   r0, blink
+    cmp r1, 0
+    mov.z   r1, sp
+    trap_s  0
+    .align 4
+exc_entry_arc_goto_kernelmode:
+    mov sp, r1
+    sr  r0, [AUX_ERRET]
+    lr  r0, [AUX_ERSTATUS]
+    bclr    r0, r0, AUX_STATUS_BIT_U
+    sr  r0, [AUX_ERSTATUS]
+    rtie

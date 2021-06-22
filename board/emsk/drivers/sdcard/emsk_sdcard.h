@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \file
  * \ingroup	BOARD_EMSK_DRV_MID_FS_SDCARD
@@ -44,7 +44,7 @@
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include "emsk_sdcard_spi.h"
 
-#define EMSK_SDCARD_0_DRVID		(0)
+#define EMSK_SDCARD_0_DRVID             (0)
 
 #endif /* MID_FATFS */
 

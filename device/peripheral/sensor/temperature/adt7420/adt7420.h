@@ -26,22 +26,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _ADT7420_H_
 #define _ADT7420_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 /**
  * I2C address of PmodTmp2 (ADT7420) can be selected via jumpers: 0x48, 0x49, 0x4A, 0x4B
  * Default (all jumpers removed) is 0x4B
  */
-#define ADT7420_A0_PIN		1	/*!< I2C Serial Bus Address Selection Pin */
-#define ADT7420_A1_PIN		1	/*!< I2C Serial Bus Address Selection Pin */
-#define ADT7420_IIC_ADDRESS	(0x48 + (ADT7420_A1_PIN << 1) + ADT7420_A0_PIN)
+#define ADT7420_A0_PIN          1       /*!< I2C Serial Bus Address Selection Pin */
+#define ADT7420_A1_PIN          1       /*!< I2C Serial Bus Address Selection Pin */
+#define ADT7420_IIC_ADDRESS     (0x48 + (ADT7420_A1_PIN << 1) + ADT7420_A0_PIN)
 
-#define TEMP_I2C_SLAVE_ADDRESS	ADT7420_IIC_ADDRESS
+#define TEMP_I2C_SLAVE_ADDRESS  ADT7420_IIC_ADDRESS
 
 #ifdef __cplusplus
 extern "C" {
@@ -49,10 +49,10 @@ extern "C" {
 
 /* options for mode parameter of temp_sensor_mode() */
 typedef enum {
-	ADT7420_OP_MODE_CONT_CONV	= 0,
-	ADT7420_OP_MODE_ONE_SHOT	= 1,
-	ADT7420_OP_MODE_1_SPS		= 2,
-	ADT7420_OP_MODE_SHUTDOWN	= 3
+	ADT7420_OP_MODE_CONT_CONV       = 0,
+	ADT7420_OP_MODE_ONE_SHOT        = 1,
+	ADT7420_OP_MODE_1_SPS           = 2,
+	ADT7420_OP_MODE_SHUTDOWN        = 3
 } ADT7420_OP_MODE;
 
 /* options for resolution parameter of temp_sensor_resolution() */
@@ -66,15 +66,15 @@ typedef struct {
 	uint32_t i2c_id;
 	uint32_t slvaddr;
 
-	int32_t  resolution;
-	int32_t  op_mode;
+	int32_t resolution;
+	int32_t op_mode;
 } ADT7420_DEF, *ADT7420_DEF_PTR;
 
 #define ADT7420_DEFINE(NAME, I2C_ID, SLAVE_ADDRESS) \
-	ADT7420_DEF __ ## NAME = { \
-			.i2c_id = I2C_ID, \
-			.slvaddr = SLAVE_ADDRESS, \
-	}; \
+	ADT7420_DEF __ ## NAME = {		    \
+		.i2c_id = I2C_ID,		    \
+		.slvaddr = SLAVE_ADDRESS,	    \
+	};					    \
 	ADT7420_DEF_PTR NAME = &__ ## NAME
 
 extern int32_t adt7420_sensor_init(ADT7420_DEF_PTR obj);

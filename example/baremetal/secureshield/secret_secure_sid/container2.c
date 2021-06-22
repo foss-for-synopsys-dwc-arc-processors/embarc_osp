@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <string.h>
 #include <stdio.h>
@@ -48,8 +48,8 @@ void trusted_ops(void)
 	ctx = &container2_context;
 
 	/* data is on container's  stack, normally other containers can not access it. As
-	container1 is a secure container, it can access container 2's stack */
-	if(container_call(container1, operate_secret, NULL, GET_SECRET, data)) {
+	   container1 is a secure container, it can access container 2's stack */
+	if (container_call(container1, operate_secret, NULL, GET_SECRET, data)) {
 		return;
 	}
 

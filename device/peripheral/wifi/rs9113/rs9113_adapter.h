@@ -34,7 +34,7 @@
 extern "C" {
 #endif
 
-#include "dev_wnic.h"
+#include "device/dev_wnic.h"
 
 #define WLAN_RSI		//If defined, Select RSI as WLAN module
 

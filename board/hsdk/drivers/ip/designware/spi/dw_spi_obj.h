@@ -26,36 +26,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _DW_SPI_OBJ_H_
 #define _DW_SPI_OBJ_H_
 
-#include "dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 
 /**
  * \name	DesignWare SPI Object Number
  * @{
  */
-#define DW_SPI_NUM		(3)	/*!< DesignWare SPI valid number */
+#define DW_SPI_NUM              (3)     /*!< DesignWare SPI valid number */
 /** @} end of name */
 
 /**
  * \name	Designware SPI Object ID Macros
  * @{
  */
-#define DW_SPI_0_ID		0	/*!< SPI 0 id macro */
-#define DW_SPI_1_ID		1	/*!< SPI 1 id macro */
-#define DW_SPI_2_ID		2	/*!< SPI 2 id macro */
+#define DW_SPI_0_ID             0       /*!< SPI 0 id macro */
+#define DW_SPI_1_ID             1       /*!< SPI 1 id macro */
+#define DW_SPI_2_ID             2       /*!< SPI 2 id macro */
 /** @} end of name */
 
 /**
  * \name	Designware SPI Object Control Macros
  * @{
  */
-#define USE_DW_SPI_0		1	/*!< enable use designware SPI 0 */
-#define USE_DW_SPI_1		1	/*!< enable use designware SPI 1 */
-#define USE_DW_SPI_2		1	/*!< enable use designware SPI 2 */
+#define USE_DW_SPI_0            1       /*!< enable use designware SPI 0 */
+#define USE_DW_SPI_1            1       /*!< enable use designware SPI 1 */
+#define USE_DW_SPI_2            1       /*!< enable use designware SPI 2 */
 /** @} end of name */
 
 #ifdef __cplusplus

@@ -26,29 +26,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "dw_gpio.h"
 
-
 /** check expressions used in DesignWare GPIO driver implementation */
-#define DW_GPIO_CHECK_EXP(EXPR, ERROR_CODE)		CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
+#define DW_GPIO_CHECK_EXP(EXPR, ERROR_CODE)             CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 #ifndef DISABLE_DEVICE_OBJECT_VALID_CHECK
 /** valid check of uart info object */
-#define VALID_CHK_GPIO_INFO_OBJECT(gpioinfo_obj_ptr)		{				\
-			DW_GPIO_CHECK_EXP((gpioinfo_obj_ptr)!=NULL, E_OBJ);			\
-			DW_GPIO_CHECK_EXP(((gpioinfo_obj_ptr)->gpio_ctrl)!=NULL, E_OBJ);	\
- 		}
+#define VALID_CHK_GPIO_INFO_OBJECT(gpioinfo_obj_ptr)            {		   \
+		DW_GPIO_CHECK_EXP((gpioinfo_obj_ptr) != NULL, E_OBJ);		   \
+		DW_GPIO_CHECK_EXP(((gpioinfo_obj_ptr)->gpio_ctrl) != NULL, E_OBJ); \
+}
 #endif
 
 Inline uint32_t dw_gpio_read_ext(DW_GPIO_PORT_PTR port)
 {
-	return  port->regs->EXT_PORTS[port->no];
+	return port->regs->EXT_PORTS[port->no];
 }
 
 Inline uint32_t dw_gpio_read_dir(DW_GPIO_PORT_PTR port)
@@ -226,13 +225,14 @@ int32_t dw_gpio_open(DEV_GPIO *gpio_obj, uint32_t dir)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no <= DW_GPIO_PORT_D, E_OBJ);
 
-	port_info_ptr->opn_cnt ++;
-	if (port_info_ptr->opn_cnt > 1) { /* opened before */
-		if (dir == port_info_ptr->direction) { /* direction is the same */
+	port_info_ptr->opn_cnt++;
+	if (port_info_ptr->opn_cnt > 1) {               /* opened before */
+		if (dir == port_info_ptr->direction) {  /* direction is the same */
 			return E_OK;
-		} else { /* open with different direction */
+		} else {                                /* open with different direction */
 			return E_OPNED;
 		}
 	}
@@ -276,11 +276,12 @@ int32_t dw_gpio_close(DEV_GPIO *gpio_obj)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no <= DW_GPIO_PORT_D, E_OBJ);
 
 	DW_GPIO_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_OK);
 
-	port_info_ptr->opn_cnt --;
+	port_info_ptr->opn_cnt--;
 	port_info_ptr->bitofs = 0;
 	if (port_info_ptr->opn_cnt == 0) {
 		dw_gpio_write_dr(port, port->valid_bit_mask, 0);
@@ -315,12 +316,13 @@ int32_t dw_gpio_read(DEV_GPIO *gpio_obj, uint32_t *val, uint32_t mask)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no <= DW_GPIO_PORT_D, E_OBJ);
 	DW_GPIO_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
 
-	DW_GPIO_CHECK_EXP(val!=NULL, E_PAR);
+	DW_GPIO_CHECK_EXP(val != NULL, E_PAR);
 
-	//*val = dw_gpio_read_ext(port) & mask;
+	// *val = dw_gpio_read_ext(port) & mask;
 	*val = dw_gpio_read_val(port) & mask;
 
 error_exit:
@@ -338,6 +340,7 @@ int32_t dw_gpio_write(DEV_GPIO *gpio_obj, uint32_t val, uint32_t mask)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no <= DW_GPIO_PORT_D, E_OBJ);
 	DW_GPIO_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
 
@@ -358,10 +361,11 @@ int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no <= DW_GPIO_PORT_D, E_OBJ);
 	DW_GPIO_CHECK_EXP(port_info_ptr->opn_cnt > 0, E_CLSED);
 
-	uint32_t val32;	/** to receive unsigned int value */
+	uint32_t val32; /** to receive unsigned int value */
 
 	if (ctrl_cmd == GPIO_CMD_SET_BIT_DIR_INPUT) {
 		val32 = (uint32_t)param;
@@ -372,7 +376,7 @@ int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param)
 		dw_gpio_write_dir(port, val32, DW_GPIO_OUTPUT_ALL);
 		port_info_ptr->direction = dw_gpio_read_dir(port);
 	} else if (ctrl_cmd == GPIO_CMD_GET_BIT_DIR) {
-		DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+		DW_GPIO_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
 		port_info_ptr->direction = dw_gpio_read_dir(port);
 		*((int32_t *)param) = port_info_ptr->direction;
 	} else if (ctrl_cmd == GPIO_CMD_TOGGLE_BITS) {
@@ -387,63 +391,63 @@ int32_t dw_gpio_control(DEV_GPIO *gpio_obj, uint32_t ctrl_cmd, void *param)
 		DEV_GPIO_BIT_ISR *port_bit_isr;
 
 		switch (ctrl_cmd) {
-			case GPIO_CMD_SET_BIT_INT_CFG:
-				DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-				gpio_int_cfg = (DEV_GPIO_INT_CFG *)param;
-				dw_gpio_set_int_cfg(port, gpio_int_cfg);
-				break;
-			case GPIO_CMD_GET_BIT_INT_CFG:
-				DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-				gpio_int_cfg = (DEV_GPIO_INT_CFG *)param;
-				/** read configuration, each bit stands for different configuration */
-				dw_gpio_get_int_cfg(port, gpio_int_cfg);
-				break;
-			case GPIO_CMD_SET_BIT_ISR:
-				DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-				port_bit_isr = (DEV_GPIO_BIT_ISR *)param;
-				if (port_bit_isr->int_bit_ofs < port->gpio_bit_isr->int_bit_max_cnt) {
-					port->gpio_bit_isr->int_bit_handler_ptr[port_bit_isr->int_bit_ofs] = port_bit_isr->int_bit_handler;
-				} else {
-					ercd = E_PAR;
+		case GPIO_CMD_SET_BIT_INT_CFG:
+			DW_GPIO_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			gpio_int_cfg = (DEV_GPIO_INT_CFG *)param;
+			dw_gpio_set_int_cfg(port, gpio_int_cfg);
+			break;
+		case GPIO_CMD_GET_BIT_INT_CFG:
+			DW_GPIO_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			gpio_int_cfg = (DEV_GPIO_INT_CFG *)param;
+			/** read configuration, each bit stands for different configuration */
+			dw_gpio_get_int_cfg(port, gpio_int_cfg);
+			break;
+		case GPIO_CMD_SET_BIT_ISR:
+			DW_GPIO_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			port_bit_isr = (DEV_GPIO_BIT_ISR *)param;
+			if (port_bit_isr->int_bit_ofs < port->gpio_bit_isr->int_bit_max_cnt) {
+				port->gpio_bit_isr->int_bit_handler_ptr[port_bit_isr->int_bit_ofs] = port_bit_isr->int_bit_handler;
+			} else {
+				ercd = E_PAR;
+			}
+			break;
+		case GPIO_CMD_GET_BIT_ISR:
+			DW_GPIO_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			port_bit_isr = (DEV_GPIO_BIT_ISR *)param;
+			if (port_bit_isr->int_bit_ofs < port->gpio_bit_isr->int_bit_max_cnt) {
+				port_bit_isr->int_bit_handler = port->gpio_bit_isr->int_bit_handler_ptr[port_bit_isr->int_bit_ofs];
+			} else {
+				ercd = E_PAR;
+			}
+			break;
+		case GPIO_CMD_ENA_BIT_INT:
+			val32 = (uint32_t)param;
+			dw_gpio_int_enable(port, val32);
+			port_info_ptr->method = dw_gpio_read_mthd(port);
+			if (port_info_ptr->method) {
+				if (port->intno != DW_GPIO_INVALID_INTNO) {
+					int_enable(port->intno);
 				}
-				break;
-			case GPIO_CMD_GET_BIT_ISR:
-				DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-				port_bit_isr = (DEV_GPIO_BIT_ISR *)param;
-				if (port_bit_isr->int_bit_ofs < port->gpio_bit_isr->int_bit_max_cnt) {
-					port_bit_isr->int_bit_handler = port->gpio_bit_isr->int_bit_handler_ptr[port_bit_isr->int_bit_ofs];
-				} else {
-					ercd = E_PAR;
+			}
+			break;
+		case GPIO_CMD_DIS_BIT_INT:
+			val32 = (uint32_t)param;
+			dw_gpio_int_disable(port, val32);
+			port_info_ptr->method = dw_gpio_read_mthd(port);
+			if (port_info_ptr->method == 0) {
+				if (port->intno != DW_GPIO_INVALID_INTNO) {
+					int_disable(port->intno);
 				}
-				break;
-			case GPIO_CMD_ENA_BIT_INT:
-				val32 = (uint32_t)param;
-				dw_gpio_int_enable(port, val32);
-				port_info_ptr->method = dw_gpio_read_mthd(port);
-				if (port_info_ptr->method) {
-					if (port->intno != DW_GPIO_INVALID_INTNO) {
-						int_enable(port->intno);
-					}
-				}
-				break;
-			case GPIO_CMD_DIS_BIT_INT:
-				val32 = (uint32_t)param;
-				dw_gpio_int_disable(port, val32);
-				port_info_ptr->method = dw_gpio_read_mthd(port);
-				if (port_info_ptr->method == 0) {
-					if (port->intno != DW_GPIO_INVALID_INTNO) {
-						int_disable(port->intno);
-					}
-				}
-				break;
-			case GPIO_CMD_GET_BIT_MTHD:
-				DW_GPIO_CHECK_EXP((param!=NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
-				port_info_ptr->method = dw_gpio_read_mthd(port);
-				*((int32_t *)param) = port_info_ptr->method;
-				break;
-			default:
-				ercd = E_NOSPT;
-				break;
+			}
+			break;
+		case GPIO_CMD_GET_BIT_MTHD:
+			DW_GPIO_CHECK_EXP((param != NULL) && CHECK_ALIGN_4BYTES(param), E_PAR);
+			port_info_ptr->method = dw_gpio_read_mthd(port);
+			*((int32_t *)param) = port_info_ptr->method;
+			break;
+		default:
+			ercd = E_NOSPT;
+			break;
 		}
 	}
 error_exit:
@@ -461,6 +465,7 @@ int32_t dw_gpio_isr_handler(DEV_GPIO *gpio_obj, void *ptr)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no == DW_GPIO_PORT_A, E_NOSPT);
 
 	uint32_t i, gpio_bit_isr_state;
@@ -475,14 +480,14 @@ int32_t dw_gpio_isr_handler(DEV_GPIO *gpio_obj, void *ptr)
 		dw_gpio_int_clear(port, gpio_bit_isr_state);
 	}
 
-	for (i=0; i<max_int_bit_count; i++) {
-		if (gpio_bit_isr_state & (1<<i)) {
+	for (i = 0; i < max_int_bit_count; i++) {
+		if (gpio_bit_isr_state & (1 << i)) {
 			/* this bit interrupt enabled */
 			port_info_ptr->bitofs = i;
 			if (port->gpio_bit_isr->int_bit_handler_ptr[i]) {
 				port->gpio_bit_isr->int_bit_handler_ptr[i](gpio_obj);
 			}
-			dw_gpio_int_clear(port, (1<<i)); /** clear this bit interrupt */
+			dw_gpio_int_clear(port, (1 << i)); /** clear this bit interrupt */
 		}
 	}
 
@@ -501,6 +506,7 @@ int32_t dw_gpio_bit_isr_handler(DEV_GPIO *gpio_obj, uint32_t bitofs, void *ptr)
 	/* END OF ERROR CHECK */
 
 	DW_GPIO_PORT_PTR port = (DW_GPIO_PORT_PTR)(port_info_ptr->gpio_ctrl);
+
 	DW_GPIO_CHECK_EXP(port->no == DW_GPIO_PORT_A, E_NOSPT);
 
 	uint32_t gpio_bit_isr_state;
@@ -512,13 +518,13 @@ int32_t dw_gpio_bit_isr_handler(DEV_GPIO *gpio_obj, uint32_t bitofs, void *ptr)
 	if (port->gpio_bit_isr) {
 		max_int_bit_count = (port->gpio_bit_isr->int_bit_max_cnt);
 		if (bitofs < max_int_bit_count) {
-			if (gpio_bit_isr_state & (1<<bitofs)) {
+			if (gpio_bit_isr_state & (1 << bitofs)) {
 				/* this bit interrupt enabled */
 				port_info_ptr->bitofs = bitofs;
 				if (port->gpio_bit_isr->int_bit_handler_ptr[bitofs]) {
 					port->gpio_bit_isr->int_bit_handler_ptr[bitofs](gpio_obj);
 				}
-				dw_gpio_int_clear(port, (1<<bitofs)); /** clear this bit interrupt */
+				dw_gpio_int_clear(port, (1 << bitofs)); /** clear this bit interrupt */
 			}
 		}
 	} else {

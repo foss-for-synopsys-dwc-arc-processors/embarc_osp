@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	BOARD_EMSK_DRV_DW_IIC_OBJ	EMSK DW IIC Object
@@ -48,16 +48,13 @@
  * \addtogroup	BOARD_EMSK_DRV_DW_IIC_OBJ
  * @{
  */
-#include "embARC_toolchain.h"
-
-#include "arc_exception.h"
 
 #include "dw_iic.h"
 #include "dw_iic_obj.h"
 
 #include "emsk/emsk.h"
 
-#define DW_IIC_CLOCK		CLK_BUS_APB
+#define DW_IIC_CLOCK            CLK_BUS_APB
 
 /**
  * \name	EMSK DesignWare IIC 0 Object Instantiation
@@ -65,41 +62,41 @@
  */
 #if (USE_DW_IIC_0)
 static void dw_iic_0_isr(void *ptr);
-#define DW_IIC_0_RELBASE	(REL_REGBASE_I2C0)	/*!< designware iic 0 relative baseaddr */
-#define DW_IIC_0_INTNO		(INTNO_I2C0)		/*!< designware iic 0 interrupt number  */
-#define DW_IIC_0_SLVADDR	(0x55)			/*!< iic 0 slave address working in slave mode */
-#define DW_IIC_0_TX_FIFO_LEN	(32)
-#define DW_IIC_0_RX_FIFO_LEN	(32)
-#define DW_IIC_0_MASTER_CODE	(0)
-#define DW_IIC_0_TARADDR	(0x55)
-#define DW_IIC_0_CLK		(DW_IIC_CLOCK)
-#define DW_IIC_0_IC_CAPLOADING	(DW_IIC_CAP_LOADING_100PF)
+#define DW_IIC_0_RELBASE        (REL_REGBASE_I2C0)      /*!< designware iic 0 relative baseaddr */
+#define DW_IIC_0_INTNO          (INTNO_I2C0)            /*!< designware iic 0 interrupt number  */
+#define DW_IIC_0_SLVADDR        (0x55)                  /*!< iic 0 slave address working in slave mode */
+#define DW_IIC_0_TX_FIFO_LEN    (32)
+#define DW_IIC_0_RX_FIFO_LEN    (32)
+#define DW_IIC_0_MASTER_CODE    (0)
+#define DW_IIC_0_TARADDR        (0x55)
+#define DW_IIC_0_CLK            (DW_IIC_CLOCK)
+#define DW_IIC_0_IC_CAPLOADING  (DW_IIC_CAP_LOADING_100PF)
 
-DEV_IIC			dw_iic_0;			/*!< designware iic object */
-DW_IIC_CTRL		dw_iic_0_ctrl;			/*!< designware iic 0 ctrl */
+DEV_IIC dw_iic_0;                                       /*!< designware iic object */
+DW_IIC_CTRL dw_iic_0_ctrl;                              /*!< designware iic 0 ctrl */
 
 /** designware iic 0 open */
-static int32_t dw_iic_0_open (uint32_t mode, uint32_t param)
+static int32_t dw_iic_0_open(uint32_t mode, uint32_t param)
 {
 	return dw_iic_open(&dw_iic_0, mode, param);
 }
 /** designware iic 0 close */
-static int32_t dw_iic_0_close (void)
+static int32_t dw_iic_0_close(void)
 {
 	return dw_iic_close(&dw_iic_0);
 }
 /** designware iic 0 control */
-static int32_t dw_iic_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_iic_0_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_iic_control(&dw_iic_0, ctrl_cmd, param);
 }
 /** designware iic 0 write */
-static int32_t dw_iic_0_write (const void *data, uint32_t len)
+static int32_t dw_iic_0_write(const void *data, uint32_t len)
 {
 	return dw_iic_write(&dw_iic_0, data, len);
 }
 /** designware iic 0 close */
-static int32_t dw_iic_0_read (void *data, uint32_t len)
+static int32_t dw_iic_0_read(void *data, uint32_t len)
 {
 	return dw_iic_read(&dw_iic_0, data, len);
 }
@@ -132,7 +129,7 @@ static void dw_iic_0_install(void)
 	dw_iic_ctrl_ptr->dw_iic_regs = dw_iic_reg_ptr;
 	/* Variables which should be set during object implementation */
 	dw_iic_ctrl_ptr->ic_clkhz = DW_IIC_0_CLK;
-	dw_iic_ctrl_ptr->ic_caploading= DW_IIC_0_IC_CAPLOADING;
+	dw_iic_ctrl_ptr->ic_caploading = DW_IIC_0_IC_CAPLOADING;
 	dw_iic_ctrl_ptr->support_modes = DW_IIC_BOTH_SUPPORTED;
 	dw_iic_ctrl_ptr->tx_fifo_len = DW_IIC_0_TX_FIFO_LEN;
 	dw_iic_ctrl_ptr->rx_fifo_len = DW_IIC_0_RX_FIFO_LEN;
@@ -161,41 +158,41 @@ static void dw_iic_0_install(void)
  */
 #if (USE_DW_IIC_1)
 static void dw_iic_1_isr(void *ptr);
-#define DW_IIC_1_RELBASE	(REL_REGBASE_I2C1)	/*!< designware iic 1 relative baseaddr */
-#define DW_IIC_1_INTNO		(INTNO_I2C1)		/*!< designware iic 1 interrupt number  */
-#define DW_IIC_1_SLVADDR	(0x56)			/*!< iic 1 slave address working in slave mode */
-#define DW_IIC_1_TX_FIFO_LEN	(32)
-#define DW_IIC_1_RX_FIFO_LEN	(32)
-#define DW_IIC_1_MASTER_CODE	(1)
-#define DW_IIC_1_TARADDR	(0x56)
-#define DW_IIC_1_CLK		(DW_IIC_CLOCK)
-#define DW_IIC_1_IC_CAPLOADING	(DW_IIC_CAP_LOADING_100PF)
+#define DW_IIC_1_RELBASE        (REL_REGBASE_I2C1)      /*!< designware iic 1 relative baseaddr */
+#define DW_IIC_1_INTNO          (INTNO_I2C1)            /*!< designware iic 1 interrupt number  */
+#define DW_IIC_1_SLVADDR        (0x56)                  /*!< iic 1 slave address working in slave mode */
+#define DW_IIC_1_TX_FIFO_LEN    (32)
+#define DW_IIC_1_RX_FIFO_LEN    (32)
+#define DW_IIC_1_MASTER_CODE    (1)
+#define DW_IIC_1_TARADDR        (0x56)
+#define DW_IIC_1_CLK            (DW_IIC_CLOCK)
+#define DW_IIC_1_IC_CAPLOADING  (DW_IIC_CAP_LOADING_100PF)
 
-DEV_IIC		dw_iic_1;				/*!< designware iic 1 object */
-DW_IIC_CTRL 	dw_iic_1_ctrl;				/*!< designware iic 1 ctrl */
+DEV_IIC dw_iic_1;                                       /*!< designware iic 1 object */
+DW_IIC_CTRL dw_iic_1_ctrl;                              /*!< designware iic 1 ctrl */
 
 /** designware iic 1 open */
-static int32_t dw_iic_1_open (uint32_t mode, uint32_t param)
+static int32_t dw_iic_1_open(uint32_t mode, uint32_t param)
 {
 	return dw_iic_open(&dw_iic_1, mode, param);
 }
 /** designware iic 1 close */
-static int32_t dw_iic_1_close (void)
+static int32_t dw_iic_1_close(void)
 {
 	return dw_iic_close(&dw_iic_1);
 }
 /** designware iic 1 control */
-static int32_t dw_iic_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_iic_1_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_iic_control(&dw_iic_1, ctrl_cmd, param);
 }
 /** designware iic 1 write */
-static int32_t dw_iic_1_write (const void *data, uint32_t len)
+static int32_t dw_iic_1_write(const void *data, uint32_t len)
 {
 	return dw_iic_write(&dw_iic_1, data, len);
 }
 /** designware iic 1 close */
-static int32_t dw_iic_1_read (void *data, uint32_t len)
+static int32_t dw_iic_1_read(void *data, uint32_t len)
 {
 	return dw_iic_read(&dw_iic_1, data, len);
 }
@@ -228,7 +225,7 @@ static void dw_iic_1_install(void)
 	dw_iic_ctrl_ptr->dw_iic_regs = dw_iic_reg_ptr;
 	/* Variables which should be set during object implementation */
 	dw_iic_ctrl_ptr->ic_clkhz = DW_IIC_1_CLK;
-	dw_iic_ctrl_ptr->ic_caploading= DW_IIC_1_IC_CAPLOADING;
+	dw_iic_ctrl_ptr->ic_caploading = DW_IIC_1_IC_CAPLOADING;
 	dw_iic_ctrl_ptr->support_modes = DW_IIC_BOTH_SUPPORTED;
 	dw_iic_ctrl_ptr->tx_fifo_len = DW_IIC_1_TX_FIFO_LEN;
 	dw_iic_ctrl_ptr->rx_fifo_len = DW_IIC_1_RX_FIFO_LEN;
@@ -264,17 +261,17 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 
 	switch (iic_id) {
 #if (USE_DW_IIC_0)
-		case DW_IIC_0_ID:
-			return &dw_iic_0;
-			break;
+	case DW_IIC_0_ID:
+		return &dw_iic_0;
+		break;
 #endif
 #if (USE_DW_IIC_1)
-		case DW_IIC_1_ID:
-			return &dw_iic_1;
-			break;
+	case DW_IIC_1_ID:
+		return &dw_iic_1;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

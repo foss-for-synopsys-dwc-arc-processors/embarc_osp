@@ -26,15 +26,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "board.h"
 #include "dw_sdio_hal.h"
 #include "dw_sdio.h"
 #include "embARC_debug.h"
-
 
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 
@@ -42,6 +41,7 @@ Inline void dw_sdio_enable_card_threshold(DW_SDIO_CTRL_PTR sdio, uint32_t thresh
 {
 	/* according to datasheet, write threshold is only applicable for HS400 mode */
 	uint32_t reg;
+
 	reg = dw_sdio_reg_read(sdio, DWSDIO_REG_CARD_THR_CTRL);
 	reg |= 0x1;
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CARD_THR_CTRL, reg);
@@ -110,7 +110,7 @@ Inline void dw_sdio_fifo_write_poll(DW_SDIO_CTRL_PTR sdio, uint32_t *buf, uint32
 			dw_sdio_reg_write(sdio, DWSDIO_REG_DATA, *buf++);
 		}
 		size = size > len ? (size - len) : 0;
- 	}
+	}
 }
 
 Inline void dw_sdio_power_on(DW_SDIO_CTRL_PTR sdio, uint32_t card_number)
@@ -121,7 +121,8 @@ Inline void dw_sdio_power_on(DW_SDIO_CTRL_PTR sdio, uint32_t card_number)
 Inline void dw_sdio_power_off(DW_SDIO_CTRL_PTR sdio, uint32_t card_number)
 {
 	uint32_t reg = dw_sdio_reg_read(sdio, DWSDIO_REG_PWREN);
-	reg &= ~ (1 << card_number);
+
+	reg &= ~(1 << card_number);
 	dw_sdio_reg_write(sdio, DWSDIO_REG_PWREN, reg);
 }
 
@@ -145,10 +146,10 @@ Inline void dw_sdio_bus_type_set(DW_SDIO_CTRL_PTR sdio, uint32_t card_number, ui
 	reg &= ~((1 << card_number) | (1 << (card_number + 16)));
 
 	switch (width) {
-		case 1: break;
-		case 4: reg |= (1 << card_number);break;
-		case 8: reg |= (1 << (card_number + 16));break;
-		default: break;
+	case 1: break;
+	case 4: reg |= (1 << card_number); break;
+	case 8: reg |= (1 << (card_number + 16)); break;
+	default: break;
 	}
 
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CTYPE, reg);
@@ -194,7 +195,7 @@ static int32_t dw_sdio_bus_freq_set(DW_SDIO_CTRL_PTR sdio, uint32_t card_number,
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CLKDIV, div);
 
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CMD, DWSDIO_CMD_PRV_DAT_WAIT |
-			DWSDIO_CMD_UPD_CLK | DWSDIO_CMD_START |  DWSDIO_CMD_USE_HOLD_REG);
+			  DWSDIO_CMD_UPD_CLK | DWSDIO_CMD_START |  DWSDIO_CMD_USE_HOLD_REG);
 
 	do {
 		status = dw_sdio_reg_read(sdio, DWSDIO_REG_CMD);
@@ -207,7 +208,7 @@ static int32_t dw_sdio_bus_freq_set(DW_SDIO_CTRL_PTR sdio, uint32_t card_number,
 	dw_sdio_clk_enable(sdio, card_number);
 
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CMD, DWSDIO_CMD_PRV_DAT_WAIT |
-			DWSDIO_CMD_UPD_CLK | DWSDIO_CMD_START |  DWSDIO_CMD_USE_HOLD_REG);
+			  DWSDIO_CMD_UPD_CLK | DWSDIO_CMD_START |  DWSDIO_CMD_USE_HOLD_REG);
 
 	timeout = 10000;
 	do {
@@ -277,7 +278,7 @@ static int32_t dw_sdio_cmd_set(DW_SDIO_CTRL_PTR sdio, SDIO_CMD_PTR cmd, SDIO_DAT
 	reg |= (cmd->cmdidx | (cmd->card << DWSDIO_CMD_BIT_CARD_NO) | DWSDIO_CMD_START
 		| DWSDIO_CMD_USE_HOLD_REG);
 
-	DBG("Sending CMD%d to card %d \r\n",cmd->cmdidx, cmd->card);
+	DBG("Sending CMD%d to card %d \r\n", cmd->cmdidx, cmd->card);
 
 	dw_sdio_reg_write(sdio, DWSDIO_REG_CMD, reg);
 
@@ -324,14 +325,12 @@ static int32_t dw_sdio_data_transfer_poll(DW_SDIO_CTRL_PTR sdio, SDIO_DATA_PTR d
 
 void dw_sdio_isr(DEV_SDIO *sdio_obj, void *ptr)
 {
-	uint32_t  int_status;
+	uint32_t int_status;
 
 	DEV_SDIO_INFO_PTR sdio_info_ptr = &(sdio_obj->sdio_info);
 	DW_SDIO_CTRL_PTR sdio = (DW_SDIO_CTRL_PTR)sdio_info_ptr->sdio_ctrl;
 
-
 	int_status = dw_sdio_reg_read(sdio, DWSDIO_REG_MINTSTS);
-
 
 	if (int_status & DWSDIO_INT_CAD) {
 		DBG("SDIO card detected\r\n");
@@ -385,7 +384,7 @@ int32_t dw_sdio_cmd_poll(DEV_SDIO *sdio_obj, SDIO_CMD_PTR cmd, SDIO_DATA_PTR dat
 		dw_sdio_reset_wait(sdio, DWSDIO_CTRL_RESET_FIFO);
 	}
 
-	if (dw_sdio_cmd_set(sdio, cmd, data) < 0 ) {
+	if (dw_sdio_cmd_set(sdio, cmd, data) < 0) {
 		return E_SYS;
 	}
 
@@ -416,7 +415,7 @@ int32_t dw_sdio_cmd_poll(DEV_SDIO *sdio_obj, SDIO_CMD_PTR cmd, SDIO_DATA_PTR dat
 		DBG("%s: Response Timeout:%x.\r\n", __func__, mask);
 		return E_TMOUT;
 	} else if (mask & DWSDIO_INT_RE) {
-		DBG("%s: Response Error:%x.\r\n", __func__,mask);
+		DBG("%s: Response Error:%x.\r\n", __func__, mask);
 		return E_SYS;
 	}
 
@@ -461,19 +460,18 @@ int32_t dw_sdio_open(DEV_SDIO *sdio_obj, uint32_t card_number)
 	dw_sdio_power_on(sdio, card_number);
 	dw_sdio_reset(sdio, card_number);
 
-	dw_sdio_bus_type_set(sdio, card_number,	1);
+	dw_sdio_bus_type_set(sdio, card_number, 1);
 	dw_sdio_bus_freq_set(sdio, card_number, DWSDIO_ENUMERATION_FREQ);
-
 
 	if (sdio->fifo_depth == 0) {
 		fifo_depth = dw_sdio_reg_read(sdio, DWSDIO_REG_FIFOTH);
 		fifo_depth = ((fifo_depth & DWSDIO_FIFOTH_MASK_RX_WMARK) >>
-				DWSDIO_FIFOTH_BIT_RX_WMARK) + 1;
+			      DWSDIO_FIFOTH_BIT_RX_WMARK) + 1;
 		sdio->fifo_depth = fifo_depth;
 	}
 
 	fifo_depth = DWSDIO_FIFOTH_M_SIZE(0x2) |  DWSDIO_FIFOTH_RX_WMASK(sdio->fifo_depth / 2 - 1) |
-			DWSDIO_FIFOTH_TX_WMASK(sdio->fifo_depth / 2);
+		     DWSDIO_FIFOTH_TX_WMASK(sdio->fifo_depth / 2);
 	dw_sdio_reg_write(sdio, DWSDIO_REG_FIFOTH, fifo_depth);
 
 	return E_OK;
@@ -549,15 +547,15 @@ int32_t dw_sdio_control(DEV_SDIO *sdio_obj, SDIO_CTRL_CMD_PTR ctrl_cmd, void *pa
 	card = ctrl_cmd->card;
 
 	switch (cmd) {
-		case SDIO_CMD_SET_BUS_WIDTH:
-			dw_sdio_bus_type_set(sdio, card, (uint32_t)param);
-			break;
-		case SDIO_CMD_SET_BUS_FREQ:
-			dw_sdio_bus_freq_set(sdio, card, (uint32_t)param);
-			break;
-		/* \todo add more cmds */
-		default:
-			ret = E_PAR;
+	case SDIO_CMD_SET_BUS_WIDTH:
+		dw_sdio_bus_type_set(sdio, card, (uint32_t)param);
+		break;
+	case SDIO_CMD_SET_BUS_FREQ:
+		dw_sdio_bus_freq_set(sdio, card, (uint32_t)param);
+		break;
+	/* \todo add more cmds */
+	default:
+		ret = E_PAR;
 	}
 	return ret;
 }

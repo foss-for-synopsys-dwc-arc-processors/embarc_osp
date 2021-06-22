@@ -12,7 +12,7 @@ OSES_ROOT_DIR = $(EMBARC_ROOT)/os
 # OS
 # select supported os
 ##
-SUPPORTED_OSES = freertos contiki
+SUPPORTED_OSES = freertos
 OS_SEL ?= freertos
 
 override OS_SEL := $(strip $(OS_SEL))
@@ -50,8 +50,8 @@ ifeq ($(OS_SEL), freertos)
 #os definition
 OS_ID = OS_FREERTOS
 #os usage settings
-COMMON_COMPILE_PREREQUISITES += $(OSES_ROOT_DIR)/freertos/freertos.mk
-include $(OSES_ROOT_DIR)/freertos/freertos.mk
+COMMON_COMPILE_PREREQUISITES += $(OSES_ROOT_DIR)/freertos.mk
+include $(OSES_ROOT_DIR)/freertos.mk
 else #end of freertos#
 ## OTHER CASE ##
 endif #end of freertos

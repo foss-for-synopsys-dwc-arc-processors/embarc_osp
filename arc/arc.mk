@@ -1,5 +1,6 @@
 ## CPU Related ##
 # CPU root declaration
+ARC_ISA_VER ?= 2
 CPUS_ROOT = $(EMBARC_ROOT)/arc
 
 EXTRA_CSRCDIR += $(EMBARC_ROOT)/arc/startup
@@ -32,7 +33,7 @@ CPU_ARC_DIR = $(CPUS_ROOT)
 
 CPU_ARC_ASMSRCDIR	= $(CPU_ARC_DIR)
 CPU_ARC_CSRCDIR		= $(CPU_ARC_DIR)
-CPU_ARC_INCDIR		= $(CPU_ARC_DIR)
+CPU_ARC_INCDIR		=
 
 # find all the source files in the target directories
 CPU_ARC_CSRCS = $(call get_csrcs, $(CPU_ARC_CSRCDIR))

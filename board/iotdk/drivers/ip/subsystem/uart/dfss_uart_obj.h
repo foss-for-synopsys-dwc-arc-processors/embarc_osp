@@ -26,50 +26,49 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DFSS_UART_H_
 #define _DFSS_UART_H_
 
 #include "io_config.h"
-#include "ip/ip_hal/inc/dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 
 #ifdef IO_UART0_PRESENT
-#define USE_DFSS_UART_0				1	/*!< enable use DFSS UART 0 */
+#define USE_DFSS_UART_0                         1       /*!< enable use DFSS UART 0 */
 #else
-#define USE_DFSS_UART_0				0	/*!< disable use DFSS UART 0 */
+#define USE_DFSS_UART_0                         0       /*!< disable use DFSS UART 0 */
 #endif
 
 #ifdef IO_UART1_PRESENT
-#define USE_DFSS_UART_1				1	/*!< enable use DFSS UART 1 */
+#define USE_DFSS_UART_1                         1       /*!< enable use DFSS UART 1 */
 #else
-#define USE_DFSS_UART_1				0	/*!< disable use DFSS UART 1 */
+#define USE_DFSS_UART_1                         0       /*!< disable use DFSS UART 1 */
 #endif
 
 #ifdef IO_UART2_PRESENT
-#define USE_DFSS_UART_2				1	/*!< enable use DFSS UART 2 */
+#define USE_DFSS_UART_2                         1       /*!< enable use DFSS UART 2 */
 #else
-#define USE_DFSS_UART_2				0	/*!< disable use DFSS UART 2 */
+#define USE_DFSS_UART_2                         0       /*!< disable use DFSS UART 2 */
 #endif
 
 #ifdef IO_UART3_PRESENT
-#define USE_DFSS_UART_3				1	/*!< enable use DFSS UART 3 */
+#define USE_DFSS_UART_3                         1       /*!< enable use DFSS UART 3 */
 #else
-#define USE_DFSS_UART_3				0	/*!< disable use DFSS UART 3 */
+#define USE_DFSS_UART_3                         0       /*!< disable use DFSS UART 3 */
 #endif
 
+#define DFSS_UART_NUM   (4)             /*!< DFSS UART valid number */
 
-#define DFSS_UART_NUM	(4)	/*!< DFSS UART valid number */
-
-#define DFSS_UART_0_ID		0	/*!< UART 0 ID macro */
-#define DFSS_UART_1_ID		1	/*!< UART 1 ID macro */
-#define DFSS_UART_2_ID		2	/*!< UART 2 ID macro */
-#define DFSS_UART_3_ID		3	/*!< UART 3 ID macro */
+#define DFSS_UART_0_ID          0       /*!< UART 0 ID macro */
+#define DFSS_UART_1_ID          1       /*!< UART 1 ID macro */
+#define DFSS_UART_2_ID          2       /*!< UART 2 ID macro */
+#define DFSS_UART_3_ID          3       /*!< UART 3 ID macro */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern void dfss_uart_all_install(void);
+// Declaration of functions here
 
 #ifdef __cplusplus
 }

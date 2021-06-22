@@ -28,15 +28,15 @@
  *
 --------------------------------------------- */
 #undef LIB_SECURESHIELD_OVERRIDES
-#include "arc_builtin.h"
-#include "arc_exception.h"
+#include "arc/arc_builtin.h"
+#include "arc/arc_exception.h"
 #include "secureshield_lib.h"
 
 #if SECURESHIELD_VERSION == 1
 uint32_t secureshield_arc_lr_reg(uint32_t addr)
 {
-	if (_arc_in_user_mode() == 0) {
-		return _arc_lr_reg(addr);
+	if (arc_in_user_mode() == 0) {
+		return arc_aux_read(addr);
 	} else {
 		return SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_LR, addr);
 	}
@@ -44,8 +44,8 @@ uint32_t secureshield_arc_lr_reg(uint32_t addr)
 
 void secureshield_arc_sr_reg(uint32_t addr, uint32_t val)
 {
-	if (_arc_in_user_mode() == 0) {
-		_arc_sr_reg(addr, val);
+	if (arc_in_user_mode() == 0) {
+		arc_aux_write(addr, val);
 	} else {
 		SECURESHIELD_SECURE_CALL(SECURESHIELD_SECURE_CALL_SYS, "", SECURESHIELD_SYS_SR, addr, val);
 	}
@@ -100,13 +100,16 @@ static void temp_trap_handler(void)
  */
 void secureshield_except_bit_clear(void)
 {
-    EXC_HANDLER prev_trap_handler;
-
+    EXC_HANDLER_T prev_trap_handler;
+#ifdef OS_FREERTOS
     exc_nest_count = 1;
+#endif
     prev_trap_handler = exc_handler_get(EXC_NO_TRAP);
-    exc_handler_install(EXC_NO_TRAP, (EXC_HANDLER)temp_trap_handler);
+    exc_handler_install(EXC_NO_TRAP, (EXC_HANDLER_T)temp_trap_handler);
     Asm("trap_s 0");
+#ifdef OS_FREERTOS
     exc_nest_count = 0;
+#endif
     exc_handler_install(EXC_NO_TRAP, prev_trap_handler);
 }
 

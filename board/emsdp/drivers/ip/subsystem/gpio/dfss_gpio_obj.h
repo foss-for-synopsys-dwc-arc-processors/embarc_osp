@@ -26,99 +26,98 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DFSS_GPIO_OBJ_H_
 #define _DFSS_GPIO_OBJ_H_
 
 #include "io_config.h"
-#include "ip/ip_hal/inc/dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 
-#define DFSS_GPIO_BASE_ID		10
-#define DFSS_GPIO_0_ID			10	/* GPIO 0 ID macro (io_gpio0) */
-#define DFSS_GPIO_1_ID			11	/* GPIO 1 ID macro (io_gpio1) */
-#define DFSS_GPIO_2_ID			12	/* GPIO 2 ID macro (io_gpio2) */
-#define DFSS_GPIO_3_ID			13	/* GPIO 3 ID macro (io_gpio3) */
-#define DFSS_GPIO_8B0_ID		14	/* GPIO 8 ID macro (io_gpio_8b0) */
-#define DFSS_GPIO_8B1_ID		15	/* GPIO 9 ID macro (io_gpio_8b1) */
-#define DFSS_GPIO_8B2_ID		16	/* GPIO 10 ID macro (io_gpio_8b2) */
-#define DFSS_GPIO_8B3_ID		17	/* GPIO 11 ID macro (io_gpio_8b3) */
-#define DFSS_GPIO_4B0_ID		18	/* GPIO 4 ID macro (io_gpio_4b0) */
-#define DFSS_GPIO_4B1_ID		19	/* GPIO 5 ID macro (io_gpio_4b1) */
-#define DFSS_GPIO_4B2_ID		20	/* GPIO 6 ID macro (io_gpio_4b2) */
-#define DFSS_GPIO_4B3_ID		21	/* GPIO 7 ID macro (io_gpio_4b3) */
+#define DFSS_GPIO_BASE_ID               10
+#define DFSS_GPIO_0_ID                  10      /* GPIO 0 ID macro (io_gpio0) */
+#define DFSS_GPIO_1_ID                  11      /* GPIO 1 ID macro (io_gpio1) */
+#define DFSS_GPIO_2_ID                  12      /* GPIO 2 ID macro (io_gpio2) */
+#define DFSS_GPIO_3_ID                  13      /* GPIO 3 ID macro (io_gpio3) */
+#define DFSS_GPIO_8B0_ID                14      /* GPIO 8 ID macro (io_gpio_8b0) */
+#define DFSS_GPIO_8B1_ID                15      /* GPIO 9 ID macro (io_gpio_8b1) */
+#define DFSS_GPIO_8B2_ID                16      /* GPIO 10 ID macro (io_gpio_8b2) */
+#define DFSS_GPIO_8B3_ID                17      /* GPIO 11 ID macro (io_gpio_8b3) */
+#define DFSS_GPIO_4B0_ID                18      /* GPIO 4 ID macro (io_gpio_4b0) */
+#define DFSS_GPIO_4B1_ID                19      /* GPIO 5 ID macro (io_gpio_4b1) */
+#define DFSS_GPIO_4B2_ID                20      /* GPIO 6 ID macro (io_gpio_4b2) */
+#define DFSS_GPIO_4B3_ID                21      /* GPIO 7 ID macro (io_gpio_4b3) */
 
 #ifdef IO_GPIO0_PRESENT
-#define USE_DFSS_GPIO_0		1	/* enable use DFSS GPIO 0 */
+#define USE_DFSS_GPIO_0         1       /* enable use DFSS GPIO 0 */
 #else
-#define USE_DFSS_GPIO_0		0	/* disable use DFSS GPIO 0 */
+#define USE_DFSS_GPIO_0         0       /* disable use DFSS GPIO 0 */
 #endif
 
 #ifdef IO_GPIO1_PRESENT
-#define USE_DFSS_GPIO_1		1	/* enable use DFSS GPIO 1 */
+#define USE_DFSS_GPIO_1         1       /* enable use DFSS GPIO 1 */
 #else
-#define USE_DFSS_GPIO_1		0	/* disable use DFSS GPIO 1 */
+#define USE_DFSS_GPIO_1         0       /* disable use DFSS GPIO 1 */
 #endif
 
 #ifdef IO_GPIO2_PRESENT
-#define USE_DFSS_GPIO_2		1	/* enable use DFSS GPIO 2 */
+#define USE_DFSS_GPIO_2         1       /* enable use DFSS GPIO 2 */
 #else
-#define USE_DFSS_GPIO_2		0	/* disable use DFSS GPIO 2 */
+#define USE_DFSS_GPIO_2         0       /* disable use DFSS GPIO 2 */
 #endif
 
 #ifdef IO_GPIO3_PRESENT
-#define USE_DFSS_GPIO_3		1	/* enable use DFSS GPIO 3 */
+#define USE_DFSS_GPIO_3         1       /* enable use DFSS GPIO 3 */
 #else
-#define USE_DFSS_GPIO_3		0	/* disable use DFSS GPIO 3 */
+#define USE_DFSS_GPIO_3         0       /* disable use DFSS GPIO 3 */
 #endif
 
 #ifdef IO_GPIO_8B0_PRESENT
-#define USE_DFSS_GPIO_8B0		1	/* enable use DFSS GPIO 8B 0 */
+#define USE_DFSS_GPIO_8B0               1       /* enable use DFSS GPIO 8B 0 */
 #else
-#define USE_DFSS_GPIO_8B0		0	/* disable use DFSS GPIO 8B 0 */
+#define USE_DFSS_GPIO_8B0               0       /* disable use DFSS GPIO 8B 0 */
 #endif
 
 #ifdef IO_GPIO_8B1_PRESENT
-#define USE_DFSS_GPIO_8B1		1	/* enable use DFSS GPIO 8B 1 */
+#define USE_DFSS_GPIO_8B1               1       /* enable use DFSS GPIO 8B 1 */
 #else
-#define USE_DFSS_GPIO_8B1		0	/* disable use DFSS GPIO 8B 1 */
+#define USE_DFSS_GPIO_8B1               0       /* disable use DFSS GPIO 8B 1 */
 #endif
 
 #ifdef IO_GPIO_8B2_PRESENT
-#define USE_DFSS_GPIO_8B2		1	/* enable use DFSS GPIO 8B 2 */
+#define USE_DFSS_GPIO_8B2               1       /* enable use DFSS GPIO 8B 2 */
 #else
-#define USE_DFSS_GPIO_8B2		0	/* disable use DFSS GPIO 8B 2 */
+#define USE_DFSS_GPIO_8B2               0       /* disable use DFSS GPIO 8B 2 */
 #endif
 
 #ifdef IO_GPIO_8B3_PRESENT
-#define USE_DFSS_GPIO_8B3		1	/* enable use DFSS GPIO 8B 3 */
+#define USE_DFSS_GPIO_8B3               1       /* enable use DFSS GPIO 8B 3 */
 #else
-#define USE_DFSS_GPIO_8B3		0	/* disable use DFSS GPIO 8B 3 */
+#define USE_DFSS_GPIO_8B3               0       /* disable use DFSS GPIO 8B 3 */
 #endif
 
 #ifdef IO_GPIO_4B0_PRESENT
-#define USE_DFSS_GPIO_4B0		1	/* enable use DFSS GPIO 4B 0 */
+#define USE_DFSS_GPIO_4B0               1       /* enable use DFSS GPIO 4B 0 */
 #else
-#define USE_DFSS_GPIO_4B0		0	/* disable use DFSS GPIO 4B 0 */
+#define USE_DFSS_GPIO_4B0               0       /* disable use DFSS GPIO 4B 0 */
 #endif
 
 #ifdef IO_GPIO_4B1_PRESENT
-#define USE_DFSS_GPIO_4B1		1	/* enable use DFSS GPIO 4B 1 */
+#define USE_DFSS_GPIO_4B1               1       /* enable use DFSS GPIO 4B 1 */
 #else
-#define USE_DFSS_GPIO_4B1		0	/* disable use DFSS GPIO 4B 1 */
+#define USE_DFSS_GPIO_4B1               0       /* disable use DFSS GPIO 4B 1 */
 #endif
 
 #ifdef IO_GPIO_4B2_PRESENT
-#define USE_DFSS_GPIO_4B2		1	/* enable use DFSS GPIO 4B 2 */
+#define USE_DFSS_GPIO_4B2               1       /* enable use DFSS GPIO 4B 2 */
 #else
-#define USE_DFSS_GPIO_4B2		0	/* disable use DFSS GPIO 4B 2 */
+#define USE_DFSS_GPIO_4B2               0       /* disable use DFSS GPIO 4B 2 */
 #endif
 
 #ifdef IO_GPIO_4B3_PRESENT
-#define USE_DFSS_GPIO_4B3		1	/* enable use DFSS GPIO 4B 3 */
+#define USE_DFSS_GPIO_4B3               1       /* enable use DFSS GPIO 4B 3 */
 #else
-#define USE_DFSS_GPIO_4B3		0	/* disable use DFSS GPIO 4B 3 */
+#define USE_DFSS_GPIO_4B3               0       /* disable use DFSS GPIO 4B 3 */
 #endif
-
 
 #ifdef __cplusplus
 extern "C" {

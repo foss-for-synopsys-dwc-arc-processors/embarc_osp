@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC_toolchain.h"
 #include "embARC_error.h"
@@ -35,45 +35,44 @@
 #include "stdio.h"
 #include "string.h"
 
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 #include "board.h"
 
-#define HM1X_TIMENOW()		OSP_GET_CUR_MS()
+#define HM1X_TIMENOW()          OSP_GET_CUR_MS()
 
-#define HM1X_READ_TMOUT		500
-#define HM1X_SYS_DELAY_MS	550
+#define HM1X_READ_TMOUT         500
+#define HM1X_SYS_DELAY_MS       550
 
-#define MAX_READ_CNT		20
-#define MAX_CMD_LENGTH		32
-#define MAX_RESP_LENGTH		32
+#define MAX_READ_CNT            20
+#define MAX_CMD_LENGTH          32
+#define MAX_RESP_LENGTH         32
 
-#define AT_TEST_PREFIX		"AT"
-#define OK_PREFIX		"OK"
-#define AT_CMD_PREFIX		"AT+"
-#define OK_SET_PREFIX		"OK+Set:"
-#define OK_GET_PREFIX		"OK+Get:"
-#define AT_ROLE_COMMAND		"ROLE"
-#define AT_MODE_COMMAND		"MODE"
-#define AT_TYPE_COMMAND		"TYPE"
-#define CMD_BAUD_SET_PREFIX	"AT+BAUD"
-#define CMD_RESET_PREFIX	"AT+RESET"
-#define CMD_RENEW_PREFIX	"AT+RENEW"
+#define AT_TEST_PREFIX          "AT"
+#define OK_PREFIX               "OK"
+#define AT_CMD_PREFIX           "AT+"
+#define OK_SET_PREFIX           "OK+Set:"
+#define OK_GET_PREFIX           "OK+Get:"
+#define AT_ROLE_COMMAND         "ROLE"
+#define AT_MODE_COMMAND         "MODE"
+#define AT_TYPE_COMMAND         "TYPE"
+#define CMD_BAUD_SET_PREFIX     "AT+BAUD"
+#define CMD_RESET_PREFIX        "AT+RESET"
+#define CMD_RENEW_PREFIX        "AT+RENEW"
 
-#define BAUD_INDEX_MAX		8
-#define BAUD_INDEX_MIN		0
-
+#define BAUD_INDEX_MAX          8
+#define BAUD_INDEX_MIN          0
 
 #define ENABLE_HM1X_DEBUG
 
 #ifdef ENABLE_HM1X_DEBUG
 #include "embARC_debug.h"
-#define HM1X_DEBUG(fmt, ...)	EMBARC_PRINTF(fmt, ##__VA_ARGS__)
+#define HM1X_DEBUG(fmt, ...)    EMBARC_PRINTF(fmt, ##__VA_ARGS__)
 #else
 #define HM1X_DEBUG(fmt, ...)
 #endif
 
-#define EMSK_BLE_CHECK_EXP(EXPR, ERCD, ERROR_CODE)	CHECK_EXP(EXPR, ERCD, ERROR_CODE, error_exit)
-#define EMSK_BLE_CHECK_EXP_NORTN(EXPR)			CHECK_EXP_NOERCD(EXPR, error_exit)
+#define EMSK_BLE_CHECK_EXP(EXPR, ERCD, ERROR_CODE)      CHECK_EXP(EXPR, ERCD, ERROR_CODE, error_exit)
+#define EMSK_BLE_CHECK_EXP_NORTN(EXPR)                  CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /** Internal delay function used by hm1x */
 static void _hm1x_delay(uint32_t ms)
@@ -87,40 +86,39 @@ static int32_t _hm1x_baudrate_map(uint32_t baudrate)
 	int32_t baud_idx = -1;
 
 	switch (baudrate) {
-		case 1200:
-			baud_idx  = 7;
-			break;
-		case 2400:
-			baud_idx  = 6;
-			break;
-		case 4800:
-			baud_idx  = 5;
-			break;
-		case 9600:
-			baud_idx  = 0;
-			break;
-		case 19200:
-			baud_idx  = 1;
-			break;
-		case 38400:
-			baud_idx  = 2;
-			break;
-		case 57600:
-			baud_idx  = 3;
-			break;
-		case 115200:
-			baud_idx  = 4;
-			break;
-		case 230400:
-			baud_idx  = 8;
-			break;
-		default:
-			baud_idx  = -1;
-			break;
+	case 1200:
+		baud_idx = 7;
+		break;
+	case 2400:
+		baud_idx = 6;
+		break;
+	case 4800:
+		baud_idx = 5;
+		break;
+	case 9600:
+		baud_idx = 0;
+		break;
+	case 19200:
+		baud_idx = 1;
+		break;
+	case 38400:
+		baud_idx = 2;
+		break;
+	case 57600:
+		baud_idx = 3;
+		break;
+	case 115200:
+		baud_idx = 4;
+		break;
+	case 230400:
+		baud_idx = 8;
+		break;
+	default:
+		baud_idx = -1;
+		break;
 	}
 	return baud_idx;
 }
-
 
 /** Flush the hm1x input data */
 void hm1x_flush(HM1X_DEF_PTR obj)
@@ -132,12 +130,12 @@ void hm1x_flush(HM1X_DEF_PTR obj)
 
 	uart_obj->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rd_avail));
 	do {
-		rd_cnt = (rd_avail>MAX_READ_CNT)?MAX_READ_CNT:rd_avail;
+		rd_cnt = (rd_avail > MAX_READ_CNT)?MAX_READ_CNT:rd_avail;
 		if (rd_avail > 0) {
 			uart_obj->uart_read((void *)read_chr, rd_cnt);
 		}
 		uart_obj->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rd_avail));
-	} while(rd_avail > 0);
+	} while (rd_avail > 0);
 }
 
 /**
@@ -151,6 +149,7 @@ int32_t hm1x_init(HM1X_DEF_PTR obj, uint32_t baudrate)
 {
 	int32_t ercd = E_OK;
 	DEV_UART *uart_obj = uart_get_dev(obj->uart_id);
+
 	dbg_printf(DBG_MORE_INFO, "[%s]%d: uart_obj 0x%x -> 0x%x\r\n", __FUNCTION__, __LINE__, uart_obj, *uart_obj);
 	EMSK_BLE_CHECK_EXP(uart_obj != NULL, ercd, E_OBJ);
 
@@ -173,6 +172,7 @@ int32_t hm1x_deinit(HM1X_DEF_PTR obj)
 {
 	int32_t ercd = E_OK;
 	DEV_UART *uart_obj = uart_get_dev(obj->uart_id);
+
 	ercd = uart_obj->uart_close();
 	return ercd;
 }
@@ -187,7 +187,8 @@ int32_t hm1x_deinit(HM1X_DEF_PTR obj)
 uint32_t hm1x_write(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 {
 	DEV_UART *uart_obj = uart_get_dev(obj->uart_id);
-	if(uart_obj == NULL){
+
+	if (uart_obj == NULL) {
 		return E_OBJ;
 	}
 	return uart_obj->uart_write(buf, cnt);
@@ -204,7 +205,8 @@ uint32_t hm1x_read(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 {
 	uint32_t rd_avail;
 	DEV_UART *uart_obj = uart_get_dev(obj->uart_id);
-	if (uart_obj == NULL){
+
+	if (uart_obj == NULL) {
 		return E_OBJ;
 	}
 	uart_obj->uart_control(UART_CMD_GET_RXAVAIL, (void *)(&rd_avail));
@@ -214,7 +216,6 @@ uint32_t hm1x_read(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 	}
 	return cnt;
 }
-
 
 /**
  * \brief	Execute command and wait for response with timeout
@@ -229,6 +230,7 @@ int32_t hm1x_exec_command(HM1X_DEF_PTR obj, char *cmd, char *resp, uint32_t wait
 	uint32_t cur_ofs = 0;
 	uint32_t read_cnt;
 	uint32_t cur_time;
+
 	if ((cmd == NULL) || (resp == NULL)) {
 		return E_PAR;
 	}
@@ -238,7 +240,7 @@ int32_t hm1x_exec_command(HM1X_DEF_PTR obj, char *cmd, char *resp, uint32_t wait
 		do {
 			read_cnt = hm1x_read(obj, (uint8_t *)(&resp[cur_ofs]), 2);
 			cur_ofs += read_cnt;
-		} while((HM1X_TIMENOW()-cur_time) < wait_ms);
+		} while ((HM1X_TIMENOW() - cur_time) < wait_ms);
 		resp[cur_ofs] = '\0';
 		return cur_ofs;
 	}
@@ -300,7 +302,7 @@ int32_t hm1x_set_param(HM1X_DEF_PTR obj, char *param, char *val)
 	char cmd_buf[MAX_CMD_LENGTH];
 	uint32_t cmd_length = 0;
 
-	if ((param == NULL) || (val == NULL)){
+	if ((param == NULL) || (val == NULL)) {
 		return E_PAR;
 	}
 
@@ -311,7 +313,7 @@ int32_t hm1x_set_param(HM1X_DEF_PTR obj, char *param, char *val)
 	}
 	sprintf(cmd_buf, "%s%s%s", AT_CMD_PREFIX, param, val);
 
-	if (hm1x_exec_cmd_chkresp(obj, cmd_buf, OK_SET_PREFIX, NULL, 2) >=0 ) {
+	if (hm1x_exec_cmd_chkresp(obj, cmd_buf, OK_SET_PREFIX, NULL, 2) >= 0) {
 		return E_OK;
 	} else {
 		return -1;
@@ -325,7 +327,7 @@ int32_t hm1x_get_param(HM1X_DEF_PTR obj, char *param, char *r_val)
 	char cmd_buf[MAX_CMD_LENGTH];
 	uint32_t cmd_length = 0;
 
-	if ((param == NULL) || (r_val == NULL)){
+	if ((param == NULL) || (r_val == NULL)) {
 		return E_PAR;
 	}
 
@@ -384,11 +386,11 @@ int32_t hm1x_set_baud(HM1X_DEF_PTR obj, uint32_t baudrate)
 
 	baud_idx = _hm1x_baudrate_map(baudrate);
 
-	if (baud_idx == -1){
+	if (baud_idx == -1) {
 		return E_PAR;
 	}
-	cmd_buf[prefix_len] = baud_idx+'0';
-	cmd_buf[prefix_len+1] = '\0';
+	cmd_buf[prefix_len] = baud_idx + '0';
+	cmd_buf[prefix_len + 1] = '\0';
 
 	return hm1x_exec_cmd_chkresp(obj, cmd_buf, OK_PREFIX, NULL, 2);
 }

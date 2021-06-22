@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #undef LIB_SECURESHIELD_OVERRIDES
 #include <string.h>
@@ -40,14 +40,12 @@
 #include "secureshield_sys.h"
 #include "secureshield_int.h"
 
-
 /* Container 1 : the keystore component */
 
 /* non-secure containers cannot access pwd and secret, as they are in secure container data section through the use of the SECURE_DATA */
-uint8_t container1_pwd[PWD_LEN+1] = {'e','m','b','a','r','c'};
-uint8_t container1_secret[SECRET_LEN+1] = {'i', ' ','l', 'o', 'v', 'e', ' ', 'e', 'm',
-	'b', 'a', 'r', 'c'};
-
+uint8_t container1_pwd[PWD_LEN + 1] = { 'e', 'm', 'b', 'a', 'r', 'c' };
+uint8_t container1_secret[SECRET_LEN + 1] = { 'i', ' ', 'l', 'o', 'v', 'e', ' ', 'e', 'm',
+					      'b', 'a', 'r', 'c' };
 
 SECRET_CONTEXT container1_context;
 
@@ -55,13 +53,13 @@ SECRET_CONTEXT container1_context;
 static void timer1_interrupt1(void *p_exinf)
 {
 	uint32_t val;
-	val = _arc_aux_read(AUX_TIMER1_CTRL);
+
+	val = arc_aux_read(AUX_TIMER1_CTRL);
 	val &= ~TIMER_CTRL_IP;
-	_arc_aux_write(AUX_TIMER1_CTRL, val);
-	//Asm("kflag 1");
+	arc_aux_write(AUX_TIMER1_CTRL, val);
+	// Asm("kflag 1");
 }
 #endif
-
 
 int32_t init_secret(void)
 {
@@ -76,10 +74,10 @@ int32_t init_secret(void)
 		ctx->secret = container1_secret;
 
 #ifndef BOARD_EMSDP
-		_arc_aux_write(AUX_TIMER1_CTRL, 0);
-		_arc_aux_write(AUX_TIMER1_LIMIT, 5000);
-		_arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE|TIMER_CTRL_NH);
-		_arc_aux_write(AUX_TIMER1_CNT, 0);
+		arc_aux_write(AUX_TIMER1_CTRL, 0);
+		arc_aux_write(AUX_TIMER1_LIMIT, 5000);
+		arc_aux_write(AUX_TIMER1_CTRL, TIMER_CTRL_IE | TIMER_CTRL_NH);
+		arc_aux_write(AUX_TIMER1_CNT, 0);
 
 		secure_int_handler_install(INTNO_TIMER1, timer1_interrupt1);
 		secure_int_pri_set(INTNO_TIMER1, INT_PRI_MIN);
@@ -93,7 +91,7 @@ int32_t init_secret(void)
 }
 
 // Note that some parameters of this function are pointers. Care should be taken that Container 1 has access to the memory pointed at
-int32_t operate_secret(char* pwd, uint32_t cmd, char * data)
+int32_t operate_secret(char *pwd, uint32_t cmd, char *data)
 {
 	SECRET_CONTEXT *ctx;
 	uint32_t len;

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "embARC.h"
 #include "embARC_debug.h"
 
@@ -43,10 +43,9 @@ static char http_get[] = "GET /";
 static char http_IDP[] = "+IPD,";
 static char http_html_header[] = "HTTP/1.x 200 OK\r\nContent-type: text/html\r\n\r\n";
 static char http_html_body_1[] =
-    "<html><head><title>ESP8266_AT_HttpServer</title></head><body><h1>Welcome to this Website</h1>";
+	"<html><head><title>ESP8266_AT_HttpServer</title></head><body><h1>Welcome to this Website</h1>";
 static char http_html_body_2[] =
-    "<p>This Website is used to test the AT command about HttpServer of ESP8266.</p></body></html>";
-
+	"<p>This Website is used to test the AT command about HttpServer of ESP8266.</p></body></html>";
 
 static char http_server_buf[2048];
 
@@ -54,7 +53,7 @@ int main(void)
 {
 	char *conn_buf;
 
-	//ESP8266 Init
+	// ESP8266 Init
 	EMBARC_PRINTF("============================ Init ============================\n");
 
 	ESP8266_DEFINE(esp8266);
@@ -62,7 +61,7 @@ int main(void)
 	at_test(esp8266->p_at);
 	board_delay_ms(100, 1);
 
-	//Set Mode
+	// Set Mode
 	EMBARC_PRINTF("============================ Set Mode ============================\n");
 
 	esp8266_wifi_mode_get(esp8266, false);
@@ -70,14 +69,14 @@ int main(void)
 	esp8266_wifi_mode_set(esp8266, 3, false);
 	board_delay_ms(100, 1);
 
-	//Connect WiFi
+	// Connect WiFi
 	EMBARC_PRINTF("============================ Connect WiFi ============================\n");
 
 	do {
 		esp8266_wifi_scan(esp8266, http_server_buf, WIFI_SSID);
 		EMBARC_PRINTF("Searching for WIFI %s ......\n", WIFI_SSID);
 		board_delay_ms(100, 1);
-	} while (strstr(http_server_buf, WIFI_SSID)==NULL);
+	} while (strstr(http_server_buf, WIFI_SSID) == NULL);
 
 	EMBARC_PRINTF("WIFI %s found! Try to connect\n", WIFI_SSID);
 
@@ -88,12 +87,12 @@ int main(void)
 
 	EMBARC_PRINTF("WIFI %s connect succeed\n", WIFI_SSID);
 
-	//Creat Server
+	// Creat Server
 	EMBARC_PRINTF("============================ Connect Server ============================\n");
 
 	esp8266_tcp_server_open(esp8266, 80);
 
-	//Show IP
+	// Show IP
 	EMBARC_PRINTF("============================ Show IP ============================\n");
 
 	esp8266_address_get(esp8266);
@@ -101,9 +100,9 @@ int main(void)
 
 	while (1) {
 		memset(http_server_buf, 0, sizeof(http_server_buf));
-		at_read(esp8266->p_at ,http_server_buf ,1000);
+		at_read(esp8266->p_at, http_server_buf, 1000);
 		board_delay_ms(200, 1);
-		//EMBARC_PRINTF("Alive\n");
+		// EMBARC_PRINTF("Alive\n");
 
 		if (strstr(http_server_buf, http_get) != NULL) {
 			EMBARC_PRINTF("============================ send ============================\n");
@@ -111,18 +110,18 @@ int main(void)
 			EMBARC_PRINTF("\nThe message is:\n%s\n", http_server_buf);
 
 			conn_buf = strstr(http_server_buf, http_IDP) + 5;
-			*(conn_buf+1) = 0;
+			*(conn_buf + 1) = 0;
 
 			EMBARC_PRINTF("Send Start\n");
 			board_delay_ms(10, 1);
 
-			esp8266_connect_write(esp8266, http_html_header, conn_buf, (sizeof(http_html_header)-1));
+			esp8266_connect_write(esp8266, http_html_header, conn_buf, (sizeof(http_html_header) - 1));
 			board_delay_ms(100, 1);
 
-			esp8266_connect_write(esp8266, http_html_body_1, conn_buf, (sizeof(http_html_body_1)-1));
+			esp8266_connect_write(esp8266, http_html_body_1, conn_buf, (sizeof(http_html_body_1) - 1));
 			board_delay_ms(300, 1);
 
-			esp8266_connect_write(esp8266, http_html_body_2, conn_buf, (sizeof(http_html_body_2)-1));
+			esp8266_connect_write(esp8266, http_html_body_2, conn_buf, (sizeof(http_html_body_2) - 1));
 			board_delay_ms(300, 1);
 
 			esp8266_CIPCLOSE(esp8266, conn_buf);

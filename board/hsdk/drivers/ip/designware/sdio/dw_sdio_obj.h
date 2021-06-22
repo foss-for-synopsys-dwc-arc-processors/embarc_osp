@@ -26,17 +26,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_SDIO_OBJ_H_
 #define _DW_SDIO_OBJ_H_
 
+#define DW_SDIO_NUM             (1)
 
-#define DW_SDIO_NUM 		(1)
+#define DW_SDIO_0_ID            (0)
 
-#define DW_SDIO_0_ID 		(0)
-
-#define USE_DW_SDIO_0		1
-
+#define USE_DW_SDIO_0           1
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,6 +45,5 @@ extern void dw_sdio_all_install(void);
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif /* _DW_SDIO_OBJ_H_ */

@@ -26,27 +26,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_SPI_OBJ_H_
 #define _DW_SPI_OBJ_H_
 
 #include "dw_spi.h"
 
-#define DW_SPI_NUM		(2)	/*!< DesignWare SPI valid number */
-
+#define DW_SPI_NUM              (2)     /*!< DesignWare SPI valid number */
 
 /**
  * Designware SPI Object ID Macros
  */
-#define DW_SPI_BASE_ID	0
-#define DW_SPI_0_ID		0	/*!< SPI 0 id macro (Redpine) */
-#define DW_SPI_1_ID		1	/*!< SPI 1 id macro (SPI flash) */
+#define DW_SPI_BASE_ID  0
+#define DW_SPI_0_ID             0       /*!< SPI 0 id macro (Redpine) */
+#define DW_SPI_1_ID             1       /*!< SPI 1 id macro (SPI flash) */
 
 /**
  * Designware SPI Object Control Macros
  */
-#define USE_DW_SPI_0		1	/*!< enable use designware SPI 0 */
-#define USE_DW_SPI_1		1	/*!< enable use designware SPI 1 */
+#define USE_DW_SPI_0            1       /*!< enable use designware SPI 0 */
+#define USE_DW_SPI_1            1       /*!< enable use designware SPI 1 */
 
 #ifdef __cplusplus
 extern "C" {

@@ -26,14 +26,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "arc_builtin.h"
-#include "arc.h"
-#include "arc_timer.h"
-#include "embARC_debug.h"
-
+   --------------------------------------------- */
+#include "arc/arc_timer.h"
 #include "board.h"
-#include "axs_timer.h"
 
 /**
  * \brief	Board init routine MUST be called in each application
@@ -42,7 +37,6 @@
  */
 void board_init(void)
 {
-	timer_init();
 	axs_hardware_init();
-	axs_timer_init();
+	arc_timer_init();
 }

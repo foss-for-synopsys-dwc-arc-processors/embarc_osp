@@ -76,7 +76,7 @@ void WF_TimerInit(void)
 
     WFTIMER_CHECK_EXP_NORTN(p_wf_ops);
 
-    p_wf_ops->timer_ops->timer_init(WF_TIMER_FREQ_1K);
+    p_wf_ops->timer_ops->arc_timer_init(WF_TIMER_FREQ_1K);
 
 error_exit:
     return;

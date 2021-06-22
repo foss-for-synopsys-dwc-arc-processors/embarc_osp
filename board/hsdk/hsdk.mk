@@ -9,7 +9,7 @@ BOARD_HSDK_DIR = $(BOARDS_ROOT)/hsdk
 # in any other place or through make options
 # it will select a proper BD_VER according to your cur_core
 ##
-SUPPORTED_BD_VERS = 10
+SUPPORTED_BD_VERS = 10 20
 
 ## Select Board Version
 BD_VER ?= 10
@@ -121,7 +121,7 @@ BOARD_HSDK_OBJS = $(BOARD_HSDK_COBJS) $(BOARD_HSDK_ASMOBJS)
 BOARD_HSDK_DEPS = $(call get_deps, $(BOARD_HSDK_OBJS))
 
 # extra macros to be defined
-BOARD_HSDK_DEFINES += $(CORE_DEFINES) $(DEV_DEFINES) -DEMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
+BOARD_HSDK_DEFINES += $(CORE_DEFINES) $(DEV_DEFINES) -DEMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT -DARC_FEATURE_CONNECT_PRESENT
 
 # genearte library
 BOARD_LIB_HSDK = $(OUT_DIR)/libboard_hsdk.a

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	EMBARC_APP_FREERTOS_KERNEL	embARC FreeRTOS Kernel Example
@@ -77,11 +77,10 @@ static void soft_interrupt(void *p_excinf);
  * INTNO 17 is for timer 1 (cnnnot be used)
  * the INTNO for console
  */
-#define SWI_INTNO		(NUM_EXC_ALL - 1)
+#define SWI_INTNO               (NUM_EXC_ALL - 1)
 
-
-#define TSK_PRIOR_HI		(configMAX_PRIORITIES-1)
-#define TSK_PRIOR_LO		(configMAX_PRIORITIES-2)
+#define TSK_PRIOR_HI            (configMAX_PRIORITIES - 1)
+#define TSK_PRIOR_LO            (configMAX_PRIORITIES - 2)
 
 // Task IDs
 static TaskHandle_t task1_handle = NULL;
@@ -95,7 +94,7 @@ static SemaphoreHandle_t sem1_id;
 
 // Events
 static EventGroupHandle_t evt1_cb;
-#define EVENT_WAIT_BITS		0x00000001
+#define EVENT_WAIT_BITS         0x00000001
 
 // Queues
 static QueueHandle_t dtq1_id;
@@ -104,12 +103,12 @@ static QueueHandle_t dtq1_id;
 static volatile unsigned int start = 0;
 static unsigned int perf_id = 0xFF;
 
-//#define ENABLE_DETAILED_RESULT_OUTPUT
+// #define ENABLE_DETAILED_RESULT_OUTPUT
 
 // Change this macro if you want to run more or less times
-#define MAX_SAMPLES		200
+#define MAX_SAMPLES             200
 
-#define TASK_DELAY_MS		2
+#define TASK_DELAY_MS           2
 
 typedef struct _sample {
 	unsigned int t_measure;
@@ -125,9 +124,8 @@ typedef struct _sample {
 	unsigned int t_dtq_wri;
 } sample;
 
-
 static sample x;
-static sample x_aver = {0};
+static sample x_aver = { 0 };
 
 static sample sample_array[MAX_SAMPLES];
 static int sample_count = 0;
@@ -135,12 +133,14 @@ static int sample_count = 0;
 /** performance timer initialization */
 static void perf_init(unsigned int id)
 {
-	if (timer_present(id) == 0) {
+	if (arc_timer_present(id) == 0) {
 		EMBARC_PRINTF("perf timer %d is not present\r\n", id);
-		while (1);
+		while (1) {
+			;
+		}
 	}
 
-	timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF);
+	arc_timer_start(id, TIMER_CTRL_NH, 0xFFFFFFFF);
 
 	perf_id = id;
 }
@@ -148,7 +148,7 @@ static void perf_init(unsigned int id)
 /** performance timer start */
 static void perf_start(void)
 {
-	if (timer_current(perf_id, (void *)(&start)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&start)) < 0) {
 		start = 0;
 	}
 }
@@ -158,7 +158,7 @@ static unsigned int perf_end(void)
 {
 	unsigned int end = 0;
 
-	if (timer_current(perf_id, (void *)(&end)) < 0) {
+	if (arc_timer_current(perf_id, (void *)(&end)) < 0) {
 		return 0;
 	}
 
@@ -175,11 +175,11 @@ static unsigned int perf_end(void)
 int main(void)
 {
 	EMBARC_PRINTF("Benchmark CPU Frequency: %d Hz\r\n", BOARD_CPU_CLOCK);
-	EMBARC_PRINTF("Benchmark will run %d times, please wait about %d ms\r\n", MAX_SAMPLES, (TASK_DELAY_MS*MAX_SAMPLES));
+	EMBARC_PRINTF("Benchmark will run %d times, please wait about %d ms\r\n", MAX_SAMPLES, (TASK_DELAY_MS * MAX_SAMPLES));
 
 	// Register interrupts
-	int_handler_install(SWI_INTNO, (EXC_HANDLER)soft_interrupt);
-	//int_pri_set(SWI_INTNO, INT_PRI_MIN);
+	int_handler_install(SWI_INTNO, (EXC_HANDLER_T)soft_interrupt);
+	// int_pri_set(SWI_INTNO, INT_PRI_MIN);
 	int_enable(SWI_INTNO);
 
 	exc_handler_install(EXC_NO_TRAP, trap_exception); /*!< install the exception handler */
@@ -188,13 +188,13 @@ int main(void)
 
 	// Create Tasks
 	if (xTaskCreate(task1, "task1", 128, (void *)1, TSK_PRIOR_LO, &task1_handle)
-	    != pdPASS) {	/*!< FreeRTOS xTaskCreate() API function */
+	    != pdPASS) {        /*!< FreeRTOS xTaskCreate() API function */
 		EMBARC_PRINTF("create task1 error\r\n");
 		return -1;
 	}
 
 	if (xTaskCreate(task2, "task2", 128, (void *)2, TSK_PRIOR_HI, &task2_handle)
-	    != pdPASS) {	/*!< FreeRTOS xTaskCreate() API function */
+	    != pdPASS) {        /*!< FreeRTOS xTaskCreate() API function */
 		EMBARC_PRINTF("create task2 error\r\n");
 		return -1;
 	}
@@ -220,7 +220,6 @@ int main(void)
 	return 0;
 }
 
-
 /**
  * \brief  task1 in FreeRTOS
  * \details Call vTaskDelayUntil() to execute task1 with a fixed period 1 second.
@@ -230,6 +229,7 @@ static void task1(void *par)
 {
 	uint32_t queue_data = 1;
 	TickType_t xLastExecutionTime;
+
 	xLastExecutionTime = xTaskGetTickCount(); /*!< initialize current tick */
 
 	while (1) {
@@ -237,12 +237,12 @@ static void task1(void *par)
 		x.t_t2_t1 = perf_end();
 		//// 2-S: Task1 --> Int
 		perf_start();
-		_arc_aux_write(AUX_IRQ_HINT, SWI_INTNO); /*!< activate soft_interrupt */
+		arc_aux_write(AUX_IRQ_HINT, SWI_INTNO); /*!< activate soft_interrupt */
 		//// 5-E: Int --> Task1
 		x.t_int_t1 = perf_end();
 
 		// task delay, to control benchmark run speed
-		vTaskDelayUntil( &xLastExecutionTime, TASK_DELAY_MS);
+		vTaskDelayUntil(&xLastExecutionTime, TASK_DELAY_MS);
 		// Task 1 acquire mutex first
 		xSemaphoreTake(mux1_id, portMAX_DELAY);
 		// Task 1 acquire semaphore first
@@ -271,7 +271,7 @@ static void task1(void *par)
 		perf_start();
 		// Task 1 write queue, task 2 read it
 		xQueueSend(dtq1_id, (void *)(&queue_data),  portMAX_DELAY);
-		queue_data ++;
+		queue_data++;
 	}
 
 }
@@ -285,6 +285,7 @@ static void task2(void *par)
 {
 	static uint32_t perf_times = 0;
 	uint32_t queue_data = 0;
+
 	perf_init(TIMER_1);
 
 	while (1) {
@@ -328,7 +329,7 @@ static void task2(void *par)
 				/* Suspend task 1 */
 				vTaskSuspend(task1_handle);
 
-				for (int i = 0; i < MAX_SAMPLES; i ++) {
+				for (int i = 0; i < MAX_SAMPLES; i++) {
 					x_aver.t_measure += sample_array[i].t_measure;
 					x_aver.t_t2_t1 += sample_array[i].t_t2_t1;
 					x_aver.t_int_t1 += sample_array[i].t_int_t1;
@@ -373,24 +374,24 @@ static void task2(void *par)
 				EMBARC_PRINTF("Detailed benchmark result table list as follows:\r\n");
 				EMBARC_PRINTF("t_measure t_t2_t1 t_t1_int t_int_nest t_nest_int t_int_t1 t_t1_t2 t_mux_rls t_sem_snd t_evt_snd t_dtq_wri\r\n");
 
-				for (int i = 0; i < MAX_SAMPLES; i ++) {
-					EMBARC_PRINTF("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\r\n", \
-					              sample_array[i].t_measure, sample_array[i].t_t2_t1, \
-					              sample_array[i].t_t1_int, sample_array[i].t_int_nest, \
-					              sample_array[i].t_nest_int, sample_array[i].t_int_t1, \
-					              sample_array[i].t_t1_t2, sample_array[i].t_mux_rls, \
-					              sample_array[i].t_sem_snd, sample_array[i].t_evt_snd, \
-					              sample_array[i].t_dtq_wri);
+				for (int i = 0; i < MAX_SAMPLES; i++) {
+					EMBARC_PRINTF("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\r\n",	    \
+						      sample_array[i].t_measure, sample_array[i].t_t2_t1,   \
+						      sample_array[i].t_t1_int, sample_array[i].t_int_nest, \
+						      sample_array[i].t_nest_int, sample_array[i].t_int_t1, \
+						      sample_array[i].t_t1_t2, sample_array[i].t_mux_rls,   \
+						      sample_array[i].t_sem_snd, sample_array[i].t_evt_snd, \
+						      sample_array[i].t_dtq_wri);
 				}
 
 #endif
 				exit(0); /* Exit benchmark application */
 			}
 
-			sample_count ++;
+			sample_count++;
 		}
 
-		perf_times ++;
+		perf_times++;
 	}
 }
 

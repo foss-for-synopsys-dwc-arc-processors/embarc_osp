@@ -1,13 +1,13 @@
 # devices root declaration
 DEVICES_ROOT = $(EMBARC_ROOT)/device
+DEVICES_INCROOT = $(EMBARC_ROOT)/include/device
 
-DEV_INCDIR += $(DEVICES_ROOT)/inc $(DEVICES_ROOT)/ip/ip_hal/inc $(DEVICES_ROOT)
+DEV_INCDIR += $(DEVICES_INCROOT)/designware $(DEVICES_INCROOT)/subsystem
 
 # onchip ip rules
 ifdef ONCHIP_IP_LIST
 	override ONCHIP_IP_LIST  := $(sort $(strip $(ONCHIP_IP_LIST)))
 	DEV_CSRCDIR += $(foreach ONCHIP_IP, $(ONCHIP_IP_LIST), $(addprefix $(DEVICES_ROOT)/ip/, $(ONCHIP_IP)))
-	DEV_INCDIR += $(foreach ONCHIP_IP, $(ONCHIP_IP_LIST), $(addprefix $(DEVICES_ROOT)/ip/, $(ONCHIP_IP)))
 endif
 
 # external device rules

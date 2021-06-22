@@ -26,12 +26,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "arc_builtin.h"
-#include "arc.h"
-#include "arc_timer.h"
-#include "arc_exception.h"
-
+   --------------------------------------------- */
+#include "arc/arc_timer.h"
 #include "board.h"
 
 /**
@@ -41,6 +37,5 @@
  */
 void board_init(void)
 {
-	timer_init();
-	nsim_timer_init();
+	arc_timer_init();
 }

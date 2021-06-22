@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	OS_HAL_INC 		OS Header File required by embARC
@@ -65,15 +65,15 @@
 #include "arc_freertos_exceptions.h"
 
 /** global macros that may need */
-#define os_hal_exc_init()		freertos_exc_init()
+#define os_hal_exc_init()               freertos_exc_init()
 
-#endif	/* OS_FREERTOS */
+#endif  /* OS_FREERTOS */
 
 #else /* NO OS */
 
 /** global macros that may need */
 #define os_hal_exc_init()
 
-#endif 	/* ENABLE_OS */
+#endif  /* ENABLE_OS */
 
 /** @} */ /* OS_HAL_INC */

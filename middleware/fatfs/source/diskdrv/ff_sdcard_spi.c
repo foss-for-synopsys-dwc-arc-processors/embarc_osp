@@ -32,7 +32,7 @@
 
 #include "ff_diskio.h"
 
-#include "dev_spi.h"
+#include "device/ip_hal/dev_spi.h"
 
 #include "diskio.h"
 

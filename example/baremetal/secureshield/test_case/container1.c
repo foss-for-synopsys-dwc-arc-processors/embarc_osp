@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include "embARC.h"
 #include "embARC_debug.h"
@@ -40,7 +40,7 @@ TEST_CONTEXT container1_context;
 int tst_func0(void)
 {
 	EMBARC_PRINTF("tst_func0 in container 1, no arguments\r\n");
-	EMBARC_PRINTF("my container id is:%d\r\n",secureshield_container_id_self());
+	EMBARC_PRINTF("my container id is:%d\r\n", secureshield_container_id_self());
 	EMBARC_PRINTF("the id of caller is:%d\r\n", secureshield_container_id_caller());
 	return 0;
 }
@@ -66,9 +66,7 @@ int tst_func2(int arg1, int arg2)
 	return 2;
 }
 
-
 void soft_interrupt1(void *p_exinf)
 {
 	EMBARC_PRINTF("soft interrupt 1 interrupt handler\r\n");
 }
-

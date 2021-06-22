@@ -69,7 +69,7 @@ static void _auxiliary_register_dump(uint32_t start_addr, uint32_t end_addr, voi
 		CMD_DEBUG("0x%08x: ", p);
 
 		for (x = 0; x < MAXROWS; x++) {
-			val = _arc_aux_read(p);	/* read aux register */
+			val = arc_aux_read(p);	/* read aux register */
 			CMD_DEBUG("0x%08x  ", val);
 			np = p + 1;
 
@@ -300,7 +300,7 @@ static int cmd_sr(int argc, char **argv, void *extobj)
 
 	/* perform aux register fill */
 	for (aux_addr = start_addr; aux_addr <= end_addr; aux_addr += 1) {
-		_arc_aux_write(aux_addr, reg_val);
+		arc_aux_write(aux_addr, reg_val);
 	}
 
 error_exit:

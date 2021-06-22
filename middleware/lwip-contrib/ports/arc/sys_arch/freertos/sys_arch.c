@@ -41,7 +41,7 @@
 #include "lwip/opt.h"
 #include "lwip/stats.h"
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #define LWIP_MIN_STACKSIZE    128
 

@@ -55,7 +55,7 @@
 /* add a memory resource to container */
 extern void vmpu_ac_mem(uint8_t container_id, void *addr, uint32_t size, CONTAINER_AC ac);
 /* add an irq resource to container */
-extern int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER function, uint32_t intno);
+extern int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER_T function, uint32_t intno);
 /* add a peripheral resource to container */
 extern int32_t vmpu_ac_peripheral(CONTAINER_AC ac, uint16_t periperal_id);
 /* add a interface to container */

@@ -23,7 +23,7 @@
 /**
  * Includes
  */
-#include "dev_gpio.h"
+#include "device/ip_hal/dev_gpio.h"
 #include "embARC_error.h"
 #include "rsi_driver.h"
 

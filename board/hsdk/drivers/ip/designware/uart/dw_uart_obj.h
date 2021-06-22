@@ -26,37 +26,37 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_UART_OBJ_H_
 #define _DW_UART_OBJ_H_
 
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 
 /**
  * \name	DesignWare UART Object Number
  * @{
  */
-#define DW_UART_NUM	(4)	/*!< DesignWare UART valid number */
+#define DW_UART_NUM     (4)     /*!< DesignWare UART valid number */
 /** @} end of name */
 
 /**
  * \name	Designware UART Object ID Macros
  * @{
  */
-#define DW_UART_0_ID	0	/*!< uart 0 id macro */
-#define DW_UART_1_ID	1	/*!< uart 1 id macro */
-#define DW_UART_2_ID	2	/*!< uart 2 id macro */
-#define DW_UART_3_ID	3	/*!< uart 3 id macro */
+#define DW_UART_0_ID    0       /*!< uart 0 id macro */
+#define DW_UART_1_ID    1       /*!< uart 1 id macro */
+#define DW_UART_2_ID    2       /*!< uart 2 id macro */
+#define DW_UART_3_ID    3       /*!< uart 3 id macro */
 /** @} end of name */
 
 /**
  * \name	Designware UART Object Control Macros
  * @{
  */
-#define USE_DW_UART_0	1     	/*!< enable use designware uart 0 */
-#define USE_DW_UART_1	1     	/*!< enable use designware uart 1 */
-#define USE_DW_UART_2	1     	/*!< enable use designware uart 2 */
-#define USE_DW_UART_3	1     	/*!< enable use designware uart 3 */
+#define USE_DW_UART_0   1       /*!< enable use designware uart 0 */
+#define USE_DW_UART_1   1       /*!< enable use designware uart 1 */
+#define USE_DW_UART_2   1       /*!< enable use designware uart 2 */
+#define USE_DW_UART_3   1       /*!< enable use designware uart 3 */
 
 /** @} end of name */
 
@@ -64,7 +64,7 @@
 extern "C" {
 #endif
 
-extern void dw_uart_all_install(void);
+// Declaration of functions here
 
 #ifdef __cplusplus
 }

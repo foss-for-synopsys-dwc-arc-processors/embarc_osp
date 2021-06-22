@@ -32,7 +32,7 @@
 
 #undef LIB_SECURESHIELD_OVERRIDES
 
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 
 #include "embARC_debug.h"
 #include "embARC_assert.h"

@@ -26,12 +26,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _AXC003_GPIO_H_
 #define _AXC003_GPIO_H_
 
 #include "../../drivers/ip/designware/gpio/dw_gpio_obj.h"
-
 
 /*
  * CPU GPIO PORT A description
@@ -60,50 +59,48 @@
  */
 #define CPU_PORTB_DIR 0xFFFFFFF0
 
-
 /**
  * \name	AXC003 LED Port A Configuration
  * @{
  */
-#define AXC003_LEDA_MASK	CPU_POARTA_DIR
-#define AXC003_LEDA_PORT	(CPU_DW_GPIO_PORT_A)
-#define AXC003_LEDA_DIR		CPU_POARTA_DIR
+#define AXC003_LEDA_MASK        CPU_POARTA_DIR
+#define AXC003_LEDA_PORT        (CPU_DW_GPIO_PORT_A)
+#define AXC003_LEDA_DIR         CPU_POARTA_DIR
 /** @} end of name */
 
 /**
  * \name	AXC003 LED Port B Configuration
  * @{
  */
-#define AXC003_LEDB_OFFSET	(8)
-#define AXC003_LEDB_MASK	((0xff) << AXC003_LEDB_OFFSET)
-#define AXC003_LEDB_PORT	(CPU_DW_GPIO_PORT_B)
-#define AXC003_LEDB_DIR		((0xff) << AXC003_LEDB_OFFSET)
+#define AXC003_LEDB_OFFSET      (8)
+#define AXC003_LEDB_MASK        ((0xff) << AXC003_LEDB_OFFSET)
+#define AXC003_LEDB_PORT        (CPU_DW_GPIO_PORT_B)
+#define AXC003_LEDB_DIR         ((0xff) << AXC003_LEDB_OFFSET)
 /** @} end of name */
-
 
 /**
  * \name	AXC003 7-segment Port Configuration
  * @{
  */
-#define AXC003_7SEG_OFFSET	(16)
-#define AXC003_7SEG_MASK	((0xffff) << AXC003_7SEG_OFFSET)
-#define AXC003_7SEG_PORT	(CPU_DW_GPIO_PORT_B)
-#define AXC003_7SEG_DIR		((0xffff) << AXC003_7SEG_OFFSET)
+#define AXC003_7SEG_OFFSET      (16)
+#define AXC003_7SEG_MASK        ((0xffff) << AXC003_7SEG_OFFSET)
+#define AXC003_7SEG_PORT        (CPU_DW_GPIO_PORT_B)
+#define AXC003_7SEG_DIR         ((0xffff) << AXC003_7SEG_OFFSET)
 /** @} end of name */
 
 /**
  * \name	AXC003 Button Port Configuration
  * @{
  */
-#define AXC003_BUTTON_OFFSET	(20)
-#define AXC003_BUTTON_MASK	((0xf) << AXC003_BUTTON_OFFSET)
-#define AXC003_BUTTON_PORT	(CPU_DW_GPIO_PORT_A)
-#define AXC003_BUTTON_DIR	((0x0) << AXC003_BUTTON_OFFSET)
+#define AXC003_BUTTON_OFFSET    (20)
+#define AXC003_BUTTON_MASK      ((0xf) << AXC003_BUTTON_OFFSET)
+#define AXC003_BUTTON_PORT      (CPU_DW_GPIO_PORT_A)
+#define AXC003_BUTTON_DIR       ((0x0) << AXC003_BUTTON_OFFSET)
 
-#define AXC003_BUTTON_SW2504_OFFSET	(20)
-#define AXC003_BUTTON_SW2505_OFFSET	(22)
-#define AXC003_BUTTON_SW2506_OFFSET	(21)
-#define AXC003_BUTTON_SW2507_OFFSET	(23)
+#define AXC003_BUTTON_SW2504_OFFSET     (20)
+#define AXC003_BUTTON_SW2505_OFFSET     (22)
+#define AXC003_BUTTON_SW2506_OFFSET     (21)
+#define AXC003_BUTTON_SW2507_OFFSET     (23)
 /** @} end of name */
 
 #ifdef __cplusplus

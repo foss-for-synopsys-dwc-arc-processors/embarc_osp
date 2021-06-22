@@ -27,7 +27,7 @@
 
 #include "stdint.h"
 #include "ringbuffer.h"
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 
 /** easy serial io structure */
 typedef struct ez_sio {

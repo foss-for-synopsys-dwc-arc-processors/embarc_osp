@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /**
  * \file
  * \ingroup	BOARD_EMSK_DRV_DW_IIC_OBJ
@@ -40,16 +40,16 @@
 #ifndef _DW_IIC_OBJ_H_
 #define _DW_IIC_OBJ_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 /**
  * \name	DesignWare IIC Object Number
  * @{
  */
 #if defined(HW_VERSION) && (HW_VERSION > 11)
-#define DW_IIC_NUM		(2)	/*!< DesignWare IIC valid number */
+#define DW_IIC_NUM              (2)     /*!< DesignWare IIC valid number */
 #else
-#define DW_IIC_NUM		(1)	/*!< DesignWare IIC valid number */
+#define DW_IIC_NUM              (1)     /*!< DesignWare IIC valid number */
 #endif
 /** @} end of name */
 
@@ -57,17 +57,17 @@
  * \name	Designware IIC Object ID Macros
  * @{
  */
-#define DW_IIC_0_ID		0	/*!< iic 0 id macro */
-#define DW_IIC_1_ID		1	/*!< iic 1 id macro */
+#define DW_IIC_0_ID             0       /*!< iic 0 id macro */
+#define DW_IIC_1_ID             1       /*!< iic 1 id macro */
 /** @} end of name */
 
 /**
  * \name	Designware IIC Object Control Macros
  * @{
  */
-#define USE_DW_IIC_0		1	/*!< enable use designware iic 0 */
+#define USE_DW_IIC_0            1       /*!< enable use designware iic 0 */
 #if defined(HW_VERSION) && (HW_VERSION > 11)
-#define USE_DW_IIC_1		1	/*!< enable use designware iic 1 */
+#define USE_DW_IIC_1            1       /*!< enable use designware iic 1 */
 #endif
 /** @} end of name */
 

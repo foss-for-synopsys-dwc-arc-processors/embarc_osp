@@ -22,7 +22,7 @@
 /**
  * Includes
  */
-#include "dev_uart.h"
+#include "device/ip_hal/dev_uart.h"
 #include "board.h"
 #include "rsi_driver.h"
 #include "embARC_error.h"

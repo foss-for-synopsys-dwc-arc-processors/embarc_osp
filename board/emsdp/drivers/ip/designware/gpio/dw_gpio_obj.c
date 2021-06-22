@@ -26,14 +26,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
-#include "embARC_toolchain.h"
+   --------------------------------------------- */
 #include "dw_gpio_obj.h"
 #include "emsdp/emsdp.h"
 
 #if (USE_DW_GPIO_PORT_A)
-static DEV_GPIO		port_a;
-static DW_GPIO_PORT	dw_gpio_port_a;
+static DEV_GPIO port_a;
+static DW_GPIO_PORT dw_gpio_port_a;
 static DEV_GPIO_HANDLER dw_gpio_bit_handler_a[EMSDP_GPIO_A_INT_MAX_COUNT];
 static DW_GPIO_BIT_ISR dw_gpio_bit_isr_a = {
 	EMSDP_GPIO_A_INT_MAX_COUNT, dw_gpio_bit_handler_a
@@ -88,7 +87,7 @@ static void porta_install(void)
 	dw_port_ptr->intno = EMSDP_GPIO_INTR0;
 	dw_port_ptr->int_handler = porta_isr;
 
-	for (i=0; i<dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
+	for (i = 0; i < dw_gpio_bit_isr_a.int_bit_max_cnt; i++) {
 		dw_gpio_bit_isr_a.int_bit_handler_ptr[i] = NULL;
 	}
 	dw_port_ptr->gpio_bit_isr = &dw_gpio_bit_isr_a;
@@ -102,8 +101,8 @@ static void porta_install(void)
 #endif
 
 #if (USE_DW_GPIO_PORT_B)
-static DEV_GPIO		port_b;
-static DW_GPIO_PORT	dw_gpio_port_b;
+static DEV_GPIO port_b;
+static DW_GPIO_PORT dw_gpio_port_b;
 
 static int32_t portb_open(uint32_t dir)
 {
@@ -162,10 +161,9 @@ static void portb_install(void)
 }
 #endif
 
-
 #if (USE_DW_GPIO_PORT_C)
-static DEV_GPIO		port_c;
-static DW_GPIO_PORT	dw_gpio_port_c;
+static DEV_GPIO port_c;
+static DW_GPIO_PORT dw_gpio_port_c;
 
 static int32_t portc_open(uint32_t dir)
 {
@@ -225,8 +223,8 @@ static void portc_install(void)
 #endif
 
 #if (USE_DW_GPIO_PORT_D)
-static DEV_GPIO		port_d;
-static DW_GPIO_PORT	dw_gpio_port_d;
+static DEV_GPIO port_d;
+static DW_GPIO_PORT dw_gpio_port_d;
 
 static int32_t portd_open(uint32_t dir)
 {
@@ -296,19 +294,19 @@ DEV_GPIO_PTR dw_gpio_get_dev(int32_t gpio_id)
 
 	switch (gpio_id) {
 #if (USE_DW_GPIO_PORT_A)
-		case DW_GPIO_PORT_A: return &port_a;
+	case DW_GPIO_PORT_A: return &port_a;
 #endif
 #if (USE_DW_GPIO_PORT_B)
-		case DW_GPIO_PORT_B: return &port_b;
+	case DW_GPIO_PORT_B: return &port_b;
 #endif
 #if (USE_DW_GPIO_PORT_C)
-		case DW_GPIO_PORT_C: return &port_c;
+	case DW_GPIO_PORT_C: return &port_c;
 #endif
 #if (USE_DW_GPIO_PORT_D)
-		case DW_GPIO_PORT_D: return &port_d;
+	case DW_GPIO_PORT_D: return &port_d;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

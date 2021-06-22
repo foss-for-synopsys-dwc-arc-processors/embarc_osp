@@ -26,13 +26,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
+
 #include "dw_uart.h"
 #include "nsim_uart_obj.h"
-#include "arc.h"
-#include "arc_builtin.h"
-#include "embARC_toolchain.h"
-#include "embARC_error.h"
 
 #include "nsim/nsim.h"
 
@@ -41,12 +38,12 @@
  */
 #if (USE_NSIM_UART_0)
 static void dw_uart_0_isr(void *ptr);
-#define DW_UART_0_BASE   (0xf0000000) /*!< designware uart 0 relative baseaddr */
-#define DW_UART_0_INTNO  (24)         /*!< designware uart 0 interrupt number  */
+#define DW_UART_0_BASE   (0xf0000000)   /*!< designware uart 0 relative baseaddr */
+#define DW_UART_0_INTNO  (24)           /*!< designware uart 0 interrupt number  */
 
-static DEV_UART dw_uart_0;                      /*!< designware uart object */
-static DW_UART_CTRL dw_uart_0_ctrl = {          /*!< designware uart 0 ctrl */
-	0, 1000000, DW_UART_0_INTNO, (INT_HANDLER)dw_uart_0_isr,
+static DEV_UART dw_uart_0;              /*!< designware uart object */
+static DW_UART_CTRL dw_uart_0_ctrl = {  /*!< designware uart 0 ctrl */
+	0, 1000000, DW_UART_0_INTNO, (INT_HANDLER_T)dw_uart_0_isr,
 	1, 1, 0
 };
 
@@ -110,6 +107,17 @@ static void dw_uart_0_install(void)
 }
 #endif /* USE_DW_UART_0 */
 
+/**
+ * \brief	install all uart objects
+ * \note	\b MUST be called during system init
+ */
+static void nsim_uart_all_install(void)
+{
+#if (USE_NSIM_UART_0)
+	dw_uart_0_install();
+#endif
+}
+
 /** get one uart device structure */
 DEV_UART_PTR uart_get_dev(int32_t uart_id)
 {
@@ -123,23 +131,12 @@ DEV_UART_PTR uart_get_dev(int32_t uart_id)
 
 	switch (uart_id) {
 #if (USE_NSIM_UART_0)
-		case NSIM_UART_0_ID:
-			return &dw_uart_0;
-			break;
+	case NSIM_UART_0_ID:
+		return &dw_uart_0;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
-}
-
-/**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
- */
-void nsim_uart_all_install(void)
-{
-#if (USE_NSIM_UART_0)
-	dw_uart_0_install();
-#endif
 }

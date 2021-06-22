@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	BOARD_EMSK_DRV_MID_FS_SDCARD	EMSK Fatfs Middleware SDCard Driver
@@ -62,12 +62,12 @@ uint32_t diskio_get_fattime(void)
 
 	cur_time = time(NULL);
 	p_tm = localtime(&cur_time);
-	fattime = ((p_tm->tm_year+1900-1980)&0x7f) << 25;
-	fattime |= ((p_tm->tm_mon+1)&0xf) << 21;
-	fattime |= ((p_tm->tm_mday)&0x1f) << 16;
-	fattime |= ((p_tm->tm_hour)&0x1f) << 11;
-	fattime |= ((p_tm->tm_min)&0x3f) << 5;
-	fattime |= ((p_tm->tm_sec>>1)&0x1f);
+	fattime = ((p_tm->tm_year + 1900 - 1980) & 0x7f) << 25;
+	fattime |= ((p_tm->tm_mon + 1) & 0xf) << 21;
+	fattime |= ((p_tm->tm_mday) & 0x1f) << 16;
+	fattime |= ((p_tm->tm_hour) & 0x1f) << 11;
+	fattime |= ((p_tm->tm_min) & 0x3f) << 5;
+	fattime |= ((p_tm->tm_sec >> 1) & 0x1f);
 
 	return fattime;
 }
@@ -76,12 +76,12 @@ FATFS_DISKIO *get_fatfs_diskio(uint32_t drvid)
 {
 	switch (drvid) {
 #if (USE_EMSK_SDCARD_SPI_0)
-		case EMSK_SDCARD_0_DRVID:
-			return &sdcard_spi_0_diskio;
-			break;
+	case EMSK_SDCARD_0_DRVID:
+		return &sdcard_spi_0_diskio;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }
@@ -93,7 +93,6 @@ void emsk_sdcard_1ms_update(void)
 	sdcard_spi_0_diskio.diskio_timerproc();
 #endif
 }
-
 
 #endif /* MID_FATFS */
 

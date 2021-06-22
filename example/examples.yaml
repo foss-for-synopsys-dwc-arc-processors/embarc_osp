@@ -1,105 +1,165 @@
+#
+# This file contails the supported examples and the test scenario for each example
+# Each examples block can define the follwing key/value
+#     tags: <list of tags>
+#         a set of string tags. Usually pertains to features and peripherals that 
+#         platform support. Command line invocations of this script can filter the
+#         set of examples to run based on tag
+#     skip: <True|False>
+#         skip example unconditionally
+#     build_only: <True|False>
+#         if true, don't try to run the example
+#     platform_allow: <list of platforms>
+#         set of platforms that this example should only be run for
+#     platform_exclude: <list of platforms>
+#         set of platforms that this example should not be run for
+#     core_exlude: <list of cores>
+#         set of cores that this example should not be run for, the
+#         core should format as <platform_name>_<platform_version>_<core_name>
+#     extra_args: <list of extra Make arguments>
+#         extra arguments to pass to Make when building or running the example
+#     ignore_overflowed_error: <True|False>
+#         if true, test result will be marked as skipped when example fails 
+#         because of overflow
+#
 examples:
-    example.baremetal.blinky:
-        build_only: true
     example.baremetal.arc_feature.udma:
+        tags: dma
         build_only: false
-        platform_exclude: axs
     example.baremetal.arc_feature.cache:
+        tags: icache dcache
         build_only: false
-        platform_exclude: axs nsim
     example.baremetal.arc_feature.timer_interrupt:
+        tags: timer
         build_only: false
-    example.baremetal.dma_spiflash:
+    example.baremetal.arc_feature.memory_protection:
+        tags: mpu
+        build_only: false
+    example.baremetal.arc_feature.multicore:
+        tags: smp
         build_only: true
-        platform_exclude:
-            emsk: 11 22
-    example.baremetal.imu_mpu9250:
+    example.baremetal.arc_feature.xymem:
+        tags: xymem
+        build_only: false
+    example.baremetal.axs103:
+        build_only: true
+        platform_allow: axs
+    example.baremetal.ble_rn4020:
+        tags: uart
         build_only: true
         platform_exclude: nsim
     example.baremetal.ble_hm1x:
+        tags: uart
+        build_only: true
+        platform_exclude: nsim
+    example.baremetal.blinky:
+        tags: blinky
+        build_only: true
+    example.baremetal.bootloader:
+        tags: bootloader
+        build_only: true
+        platform_allow: emsk iotdk
+    example.baremetal.cxx:
+        build_only: false
+    example.baremetal.dma_spiflash:
+        tags: dma spi
         build_only: true
         platform_exclude: nsim
     example.baremetal.graphic_u8glib:
         build_only: true
         platform_exclude: nsim
-    example.baremetal.ble_rn4020:
+    example.baremetal.imu_mpu9250:
         build_only: true
         platform_exclude: nsim
-    example.baremetal.openthread.ncp:
-        build_only: true
-        platform_exclude: nsim emsdp iotdk
     example.baremetal.openthread.cli:
+        ignore_overflowed_error: true
+        tags: bootloader
         build_only: true
-        platform_exclude: emsdp axs nsim
-    example.baremetal.secureshield.secret_secure_sid:
+        platform_allow: emsk iotdk
+    example.baremetal.openthread.ncp:
+        ignore_overflowed_error: true
+        tags: bootloader
+        build_only: true
+        platform_allow: emsk iotdk
+    example.baremetal.secureshield.secret_normal:
         skip: true
-        tags: secureshield
+        tags: mpu secureshield
         extra_args: USE_SECURESHIELD_APPL_GEN=1
         build_only: true
         platform_allow:
             emsk: 23
-            nsim: 10
             iotdk: 10
     example.baremetal.secureshield.secret_secure:
         skip: true
-        tags: secureshield
+        tags: mpu secureshield
         extra_args: USE_SECURESHIELD_APPL_GEN=1
         build_only: true
         platform_allow:
             emsk: 23
             iotdk: 10
-    example.baremetal.secureshield.secret_normal:
+    example.baremetal.secureshield.secret_secure_sid:
         skip: true
-        tags: secureshield
+        tags: mpu secureshield
         extra_args: USE_SECURESHIELD_APPL_GEN=1
-        build_only: true
-        platform_allow:
-            emsk: 23
-            iotdk: 10
-    example.baremetal.secureshield.test_case:
-        tags: secureshield
         build_only: true
         platform_allow:
             emsk: 23
             nsim: 10
             iotdk: 10
-    example.baremetal.axs103:
-        build_only: true
-        platform_allow: axs
-    example.baremetal.bootloader:
-        build_only: true
-        platform_exclude: emsdp hsdk axs nsim
-    example.freertos.kernel_secure:
+    example.baremetal.secureshield.test_case:
+        tags: mpu secureshield
         build_only: true
         platform_allow:
             emsk: 23
-    example.freertos.sec.mbedtls.ssl.client2:
-        build_only: true
-        platform_exclude: iotdk nsim hsdk
-    example.freertos.sec.mbedtls.ssl.server2:
-        build_only: true
-        platform_exclude: iotdk nsim hsdk
-    example.freertos.sec.mbedtls.dtls.client:
-        build_only: true
-        platform_exclude: iotdk nsim hsdk
-    example.freertos.sec.mbedtls.dtls.server:
-        build_only: true
-        platform_exclude: iotdk nsim hsdk
-    example.freertos.net.httpserver:
-        build_only: true
-        platform_exclude: nsim
-    example.freertos.net.ntshell:
-        build_only: true
-        platform_exclude: nsim
+            nsim: 10
+            iotdk: 10
     example.freertos.esp8266_wifi:
+        tags: uart
         build_only: true
         platform_exclude: nsim
+    example.freertos.freertos_blinky:
+        tags: blinky
+        build_only: true
     example.freertos.iot.coap.coap_server:
+        ignore_overflowed_error: true
         build_only: true
         platform_exclude: nsim
     example.freertos.iot.lwm2m.lwm2m_client:
+        ignore_overflowed_error: true
         build_only: true
         platform_exclude: nsim
     example.freertos.iot.lwm2m.lwm2m_server:
+        ignore_overflowed_error: true
         build_only: true
         platform_exclude: nsim
+    example.freertos.kernel:
+        build_only: true 
+    example.freertos.kernel_secure:
+        tags: mpu secureshield
+        build_only: true
+        platform_allow:
+            emsk: 23
+    example.freertos.net.httpserver:
+        ignore_overflowed_error: true
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.net.ntshell:
+        ignore_overflowed_error: true
+        build_only: true
+        platform_exclude: nsim
+    example.freertos.sec.mbedtls.dtls.client:
+        ignore_overflowed_error: true
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.sec.mbedtls.dtls.server:
+        ignore_overflowed_error: true
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.sec.mbedtls.ssl.client2:
+        ignore_overflowed_error: true
+        build_only: true
+        platform_exclude: iotdk nsim hsdk
+    example.freertos.sec.mbedtls.ssl.server2:
+        ignore_overflowed_error: true
+        build_only: true
+        platform_exclude: iotdk nsim hsdk

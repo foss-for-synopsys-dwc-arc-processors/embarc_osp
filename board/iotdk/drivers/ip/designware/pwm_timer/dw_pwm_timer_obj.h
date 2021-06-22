@@ -26,19 +26,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _DW_PWM_TIMER_OBJ_H_
 #define _DW_PWM_TIMER_OBJ_H_
 
 #include "dw_pwm_timer.h"
 
-#define USE_DW_PWM_TIMER_0		1	/*!< enable use DesignWare PWM TIMER */
+#define USE_DW_PWM_TIMER_0              1       /*!< enable use DesignWare PWM TIMER */
 
+#define DW_PWM_TIMER_0_ID                               0
 
-
-#define DW_PWM_TIMER_0_ID				0
-
-#define DW_PWM_TIMER_0_CH_MAX_COUNT		6
+#define DW_PWM_TIMER_0_CH_MAX_COUNT             6
 
 #ifdef __cplusplus
 extern "C" {

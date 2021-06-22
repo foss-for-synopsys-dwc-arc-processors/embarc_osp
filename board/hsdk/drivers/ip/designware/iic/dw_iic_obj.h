@@ -26,36 +26,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef _DW_IIC_OBJ_H_
 #define _DW_IIC_OBJ_H_
 
-#include "dev_iic.h"
+#include "device/ip_hal/dev_iic.h"
 
 /**
  * \name	DesignWare IIC Object Number
  * @{
  */
-#define DW_IIC_NUM		(3)	/*!< DesignWare IIC valid number */
+#define DW_IIC_NUM              (3)     /*!< DesignWare IIC valid number */
 /** @} end of name */
 
 /**
  * \name	Designware IIC Object ID Macros
  * @{
  */
-#define DW_IIC_0_ID		0	/*!< iic 0 id macro */
-#define DW_IIC_1_ID		1	/*!< iic 1 id macro */
-#define DW_IIC_2_ID		2	/*!< iic 2 id macro */
+#define DW_IIC_0_ID             0       /*!< iic 0 id macro */
+#define DW_IIC_1_ID             1       /*!< iic 1 id macro */
+#define DW_IIC_2_ID             2       /*!< iic 2 id macro */
 /** @} end of name */
 
 /**
  * \name	Designware IIC Object Control Macros
  * @{
  */
-#define USE_DW_IIC_0		1	/*!< enable use designware iic 0 */
-#define USE_DW_IIC_1		1	/*!< enable use designware iic 1 */
-#define USE_DW_IIC_2		1	/*!< enable use designware iic 2 */
+#define USE_DW_IIC_0            1       /*!< enable use designware iic 0 */
+#define USE_DW_IIC_1            1       /*!< enable use designware iic 1 */
+#define USE_DW_IIC_2            1       /*!< enable use designware iic 2 */
 /** @} end of name */
 
 #ifdef __cplusplus

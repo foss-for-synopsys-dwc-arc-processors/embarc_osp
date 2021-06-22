@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _HSDK_SDCARD_H_
 #define _HSDK_SDCARD_H_
 #include "embARC_toolchain.h"
@@ -34,7 +34,7 @@
 #ifdef MID_FATFS /* only available when enable fatfs middleware */
 #include "sdcard_sdio.h"
 
-#define HSDK_SDCARD_0_DRVID		(0)
+#define HSDK_SDCARD_0_DRVID             (0)
 
 #endif /* MID_FATFS */
 

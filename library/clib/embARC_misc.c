@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
 --------------------------------------------- */
-#include "arc_exception.h"
+#include "arc/arc_exception.h"
 #include "embARC_syscalls.h"
 
 /**
@@ -39,6 +39,6 @@
 void gnu_printf_setup(void)
 {
 #if defined(__GNU__) && !defined(_HAVE_LIBGLOSS_) && !defined(_HOSTLINK_)
-	exc_handler_install(EXC_NO_SWI, (EXC_HANDLER)syscall_swi);
+	exc_handler_install(EXC_NO_SWI, (EXC_HANDLER_T)syscall_swi);
 #endif
 }

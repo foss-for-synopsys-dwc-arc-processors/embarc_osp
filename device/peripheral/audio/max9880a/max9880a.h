@@ -26,51 +26,50 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _MAX9880A_H_
 #define _MAX9880A_H_
 
 #define I2C_DEVICE_ADDRESS_MAX9880A       (0x10)
 
-typedef enum
-{
+typedef enum {
 	/**
-	* Use external MCLK of 13 MHz
-	* S1 pins are mapped on DAI1
-	* S2 pins are mapped on DAI2
-	*/
-	MAX9880A_I2SIN_LINEOUT_13MHZ = 0,         //Playback
-	MAX9880A_LINEIN_I2SOUT_13MHZ,             //Recording
+	 * Use external MCLK of 13 MHz
+	 * S1 pins are mapped on DAI1
+	 * S2 pins are mapped on DAI2
+	 */
+	MAX9880A_I2SIN_LINEOUT_13MHZ = 0,               // Playback
+	MAX9880A_LINEIN_I2SOUT_13MHZ,                   // Recording
 
 	/**
-	* Use no external MCLK, but route Xtal to clk-prescaler
-	* S1 pins are mapped on DAI1
-	* S2 pins are mapped on DAI2
-	*/
-	MAX9880A_I2SIN_LINEOUT_12DOT288MHZ,       //Playback
-	MAX9880A_LINEIN_I2SOUT_12DOT288MHZ,       //Recording
+	 * Use no external MCLK, but route Xtal to clk-prescaler
+	 * S1 pins are mapped on DAI1
+	 * S2 pins are mapped on DAI2
+	 */
+	MAX9880A_I2SIN_LINEOUT_12DOT288MHZ,             // Playback
+	MAX9880A_LINEIN_I2SOUT_12DOT288MHZ,             // Recording
 
 	/**
-	* Use external MCLK of 24.567 MHz
-	* S1 pins are mapped on DAI1
-	* S2 pins are mapped on DAI2
-	*/
-	MAX9880A_I2SIN_LINEOUT_24DOT567MHZ,       //Playback
-	MAX9880A_LINEIN_I2SOUT_24DOT567MHZ,       //Recording
+	 * Use external MCLK of 24.567 MHz
+	 * S1 pins are mapped on DAI1
+	 * S2 pins are mapped on DAI2
+	 */
+	MAX9880A_I2SIN_LINEOUT_24DOT567MHZ,             // Playback
+	MAX9880A_LINEIN_I2SOUT_24DOT567MHZ,             // Recording
 
 	/**
-	* !!!! Use these settings for HSDK-IC on BOARD !!!!
-	*
-	* Mapping is now different
-	* S1 pins are mapped on DAI2
-	* S2 pins are mapped on DAI1
-	*
-	* Use external MCLK of 24.567 MHz
-	* Use DAI2 (S1) for playback (I2S-TX), Use DAI1 (S2) for recording (I2S-RX)
-	*/
-	MAX9880A_DAI2_I2SIN_LINEOUT_24DOT567MHZ,  //Playback
-	MAX9880A_LINEIN_DAI1_I2SOUT_24DOT567MHZ,  //Recording
-	MAX9880A_24DOT567MHZ,                     //PlayBack and Recording (Regression)
+	 * !!!! Use these settings for HSDK-IC on BOARD !!!!
+	 *
+	 * Mapping is now different
+	 * S1 pins are mapped on DAI2
+	 * S2 pins are mapped on DAI1
+	 *
+	 * Use external MCLK of 24.567 MHz
+	 * Use DAI2 (S1) for playback (I2S-TX), Use DAI1 (S2) for recording (I2S-RX)
+	 */
+	MAX9880A_DAI2_I2SIN_LINEOUT_24DOT567MHZ,        // Playback
+	MAX9880A_LINEIN_DAI1_I2SOUT_24DOT567MHZ,        // Recording
+	MAX9880A_24DOT567MHZ,                           // PlayBack and Recording (Regression)
 
 } max9880a_config_t;
 
@@ -81,10 +80,10 @@ typedef struct {
 } MAX9880A_DEF, *MAX9880A_DEF_PTR;
 
 #define MAX9880A_DEFINE(NAME, I2C_ID, SLAVE_ADDRESS) \
-	MAX9880A_DEF __ ## NAME = { \
-			.i2c_id = I2C_ID, \
-			.slvaddr = SLAVE_ADDRESS, \
-	}; \
+	MAX9880A_DEF __ ## NAME = {		     \
+		.i2c_id = I2C_ID,		     \
+		.slvaddr = SLAVE_ADDRESS,	     \
+	};					     \
 	MAX9880A_DEF_PTR NAME = &__ ## NAME
 
 extern uint32_t max9880a_dump_reg(MAX9880A_DEF_PTR obj);

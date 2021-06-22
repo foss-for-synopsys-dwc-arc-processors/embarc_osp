@@ -26,11 +26,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 /* embARC HAL */
 #include "embARC.h"
 #include "embARC_debug.h"
-
 
 volatile static int t0 = 0;
 volatile static int t1 = 0;
@@ -38,7 +37,7 @@ volatile static int t1 = 0;
 /** arc timer 0 interrupt routine */
 static void timer0_isr(void *ptr)
 {
-	timer_int_clear(TIMER_0);
+	arc_timer_int_clear(TIMER_0);
 	t0++;
 	EMBARC_PRINTF("timer0 interrupt with the highest priority(fiq if fiq enabled):%d\r\n", t0);
 }
@@ -46,7 +45,7 @@ static void timer0_isr(void *ptr)
 /** arc timer 1 interrupt routine */
 static void timer1_isr(void *ptr)
 {
-	timer_int_clear(TIMER_1);
+	arc_timer_int_clear(TIMER_1);
 	t1++;
 	EMBARC_PRINTF("timer1 interrupt:%d\r\n", t1);
 }
@@ -57,7 +56,7 @@ int main(void)
 	unsigned int int_bcr;
 
 	EMBARC_PRINTF("ARC timer and interrupt\r\n");
-	int_bcr = _arc_lr_reg(AUX_BCR_IRQ);
+	int_bcr = arc_aux_read(AUX_BCR_IRQ);
 	EMBARC_PRINTF("interrupt number:%d, ", (unsigned char)(int_bcr >> 8));
 	EMBARC_PRINTF("extern interrupts:%d, ", (unsigned char)(int_bcr >> 16));
 	EMBARC_PRINTF("interrupt priorities:%d, ", (unsigned char)((int_bcr >> 24) & 0xf) + 1);
@@ -68,11 +67,11 @@ int main(void)
 		EMBARC_PRINTF("fiq disabled\r\n");
 	}
 
-	if (timer_present(TIMER_0)) {
+	if (arc_timer_present(TIMER_0)) {
 		EMBARC_PRINTF("timer 0 is present\r\n");
-		timer_current(TIMER_0, &val);
+		arc_timer_current(TIMER_0, &val);
 		EMBARC_PRINTF("cnt:%d\r\n", val);
-		timer_stop(TIMER_0); /* Stop it first since it might be enabled before */
+		arc_timer_stop(TIMER_0); /* Stop it first since it might be enabled before */
 		int_handler_install(INTNO_TIMER0, timer0_isr);
 		/* to enable fiq, interrupt priority must be the highest */
 		int_pri_set(INTNO_TIMER0, INT_PRI_MIN);
@@ -81,39 +80,46 @@ int main(void)
 		EMBARC_PRINTF("timer 0 is not present\r\n");
 	}
 
-	if (timer_present(TIMER_1)) {
+	if (arc_timer_present(TIMER_1)) {
 		EMBARC_PRINTF("timer 1 is present\n");
-		timer_current(TIMER_1, &val);
+		arc_timer_current(TIMER_1, &val);
 		EMBARC_PRINTF("cnt:%d\r\n", val);
-		timer_stop(TIMER_1); /* Stop it first since it might be enabled before */
+		arc_timer_stop(TIMER_1); /* Stop it first since it might be enabled before */
 		int_handler_install(INTNO_TIMER1, timer1_isr);
 		int_enable(INTNO_TIMER1);
 	} else {
 		EMBARC_PRINTF("timer 1 is not present\r\n");
 	}
 
-	if (timer_present(TIMER_0)) {
-		timer_start(TIMER_0, TIMER_CTRL_IE, BOARD_CPU_CLOCK);
-		while (t0 < 2);
-		timer_stop(TIMER_0);
-		timer_current(TIMER_0, &val);
+	if (arc_timer_present(TIMER_0)) {
+		arc_timer_start(TIMER_0, TIMER_CTRL_IE, BOARD_CPU_CLOCK);
+		while (t0 < 2) {
+			;
+		}
+		arc_timer_stop(TIMER_0);
+		arc_timer_current(TIMER_0, &val);
 		EMBARC_PRINTF("stop timer0, cnt:%d\r\n", val);
 	}
 
-	if (timer_present(TIMER_1)) {
-		timer_start(TIMER_1, TIMER_CTRL_IE, 2*BOARD_CPU_CLOCK);
-		while (t1 < 2);
-		timer_stop(TIMER_1);
-		timer_current(TIMER_1, &val);
+	if (arc_timer_present(TIMER_1)) {
+		arc_timer_start(TIMER_1, TIMER_CTRL_IE, 2 * BOARD_CPU_CLOCK);
+		while (t1 < 2) {
+			;
+		}
+		arc_timer_stop(TIMER_1);
+		arc_timer_current(TIMER_1, &val);
 		EMBARC_PRINTF("stop timer1, cnt:%d\r\n", val);
 	}
 
-	if (timer_present(TIMER_0)) {
+	if (arc_timer_present(TIMER_0)) {
 		EMBARC_PRINTF("enable timer 0 watchdog\r\n");
-		timer_start(TIMER_0, TIMER_CTRL_W, 5*BOARD_CPU_CLOCK);
+		arc_timer_start(TIMER_0, TIMER_CTRL_W, 5 * BOARD_CPU_CLOCK);
 	}
 
 	EMBARC_PRINTF("Timer Test Done\n");
-	while(1);
+	while(1) {
+		;
+	}
+
 	return E_SYS;
 }

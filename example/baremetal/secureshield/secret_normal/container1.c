@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #include <string.h>
 #include <stdio.h>
@@ -36,13 +36,14 @@
 
 #include "container1.h"
 
-extern SECRET_CONTEXT * challenge;
+extern SECRET_CONTEXT *challenge;
 
 /* For secure initialization of secret and password data, these are stored in a separate section that other containers have no access to.
  * In an application with secure persistent storage like EEPROM or flash, it would be stored there.
  */
 CONTAINER_RODATA(container1) const uint8_t secret_const_data[256] = {
-     'e', 'm', 'b', 'a', 'r', 'c', 0, 'i', ' ','l', 'o', 'v', 'e', ' ', 'e', 'm', 'b', 'a', 'r', 'c', 0,};
+	'e', 'm', 'b', 'a', 'r', 'c', 0, 'i', ' ', 'l', 'o', 'v', 'e', ' ', 'e', 'm', 'b', 'a', 'r', 'c', 0,
+};
 CONTAINER_BSS(container1) SECRET_CONTEXT container1_context;
 
 int32_t init_secret(void)
@@ -58,19 +59,19 @@ int32_t init_secret(void)
 
 		// Copy initialization data to private context
 		i = 0;
-		while ((i<PWD_LEN) && (secret_const_data[i] != 0)) {
+		while ((i < PWD_LEN) && (secret_const_data[i] != 0)) {
 			ctx->pwd[i] = secret_const_data[i];
 			i++;
 		}
-		memset(&(ctx->pwd[i]), 0, PWD_LEN-i);
+		memset(&(ctx->pwd[i]), 0, PWD_LEN - i);
 
 		i++;
 		j = 0;
-		while ((j<SECRET_LEN) && (secret_const_data[i] != 0)) {
+		while ((j < SECRET_LEN) && (secret_const_data[i] != 0)) {
 			ctx->secret[j++] = secret_const_data[i];
 			i++;
 		}
-		memset(&(ctx->secret[j]), 0, SECRET_LEN-j);
+		memset(&(ctx->secret[j]), 0, SECRET_LEN - j);
 	}
 
 	// simulate the case of memory leakage; make available the pointer to the secret context through a global variable
@@ -80,7 +81,7 @@ int32_t init_secret(void)
 }
 
 // Note that some parameters of this function are pointers. Care should be taken that Container 1 has access to the memory pointed at
-int32_t operate_secret(char* pwd, uint32_t cmd, char * data)
+int32_t operate_secret(char *pwd, uint32_t cmd, char *data)
 {
 	SECRET_CONTEXT *ctx;
 	uint32_t len;
@@ -114,7 +115,7 @@ int32_t operate_secret(char* pwd, uint32_t cmd, char * data)
 		EMBARC_PRINTF("container2 is trusted, no need to check password\r\n");
 		// In this example container 2 data pointer should be in the special shared private region
 		// Though container 2 is trusted, good practice to check anyway; addresses are defined in the linker file
-		if (((uint32_t)data<CONTAINER_12_SHARED_ORIGIN ) || ((uint32_t)data+SECRET_LEN>CONTAINER_12_SHARED_ORIGIN+CONTAINER_12_SHARED_LENGTH ) ) {
+		if (((uint32_t)data < CONTAINER_12_SHARED_ORIGIN) || ((uint32_t)data + SECRET_LEN > CONTAINER_12_SHARED_ORIGIN + CONTAINER_12_SHARED_LENGTH)) {
 			EMBARC_PRINTF("container2 provided an incorrect data pointer for storing the secret\r\n");
 			return -1;
 		}

@@ -26,24 +26,23 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #ifndef _IOTDK_FLASH_OBJ_H_
 #define _IOTDK_FLASH_OBJ_H_
 
-#include "dev_flash.h"
+#include "device/dev_flash.h"
 
-#define USE_IOTDK_EFLASH				1
-#define USE_IOTDK_BOOT_SPI_FLASH		1
-#define USE_IOTDK_ICCM					0
-#define USE_IOTDK_DCCM					0
-#define USE_IOTDK_SRAM					0
+#define USE_IOTDK_EFLASH                                1
+#define USE_IOTDK_BOOT_SPI_FLASH                1
+#define USE_IOTDK_ICCM                                  0
+#define USE_IOTDK_DCCM                                  0
+#define USE_IOTDK_SRAM                                  0
 
-#define IOTDK_EFLASH_ID					0
-#define IOTDK_BOOT_SPI_FLASH_ID			1
-#define IOTDK_ICCM_ID					2
-#define IOTDK_DCCM_ID					3
-#define IOTDK_SRAM_ID					4
-
+#define IOTDK_EFLASH_ID                                 0
+#define IOTDK_BOOT_SPI_FLASH_ID                 1
+#define IOTDK_ICCM_ID                                   2
+#define IOTDK_DCCM_ID                                   3
+#define IOTDK_SRAM_ID                                   4
 
 #ifdef __cplusplus
 extern "C" {

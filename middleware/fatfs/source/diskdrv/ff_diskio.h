@@ -18,7 +18,7 @@
 
 #include "stdint.h"
 #include "diskio.h"
-#include "dev_sdio.h"
+#include "device/ip_hal/dev_sdio.h"
 
 /* SDCard card type flags (MMC_GET_TYPE) */
 #define SDCARD_CT_MMC		0x01		/*!< MMC ver 3 */

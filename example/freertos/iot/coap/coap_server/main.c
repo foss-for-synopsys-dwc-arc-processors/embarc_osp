@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER	embARC LwIP CoAP Server Example
@@ -81,9 +81,9 @@
 #include "adt7420.h"
 #endif
 
-#define min(x,y) ((x) < (y) ? (x) : (y))
+#define min(x, y) ((x) < (y) ? (x) : (y))
 
-#define TSKPRI_COAP_SERVER	(configMAX_PRIORITIES-2)	  /**< coap server task priority */
+#define TSKPRI_COAP_SERVER      (configMAX_PRIORITIES - 2)          /**< coap server task priority */
 
 static void task_coap_server(void *par);
 
@@ -91,7 +91,7 @@ static TaskHandle_t task_coap_server_handle = NULL;
 static coap_resource_t *temp_resource = NULL;
 
 #if defined(BOARD_EMSK)
-#define TSKPRI_TEMPTX		(configMAX_PRIORITIES-3)
+#define TSKPRI_TEMPTX           (configMAX_PRIORITIES - 3)
 static TaskHandle_t task_temptx_handle = NULL;
 static void task_temp_tx(void *par);
 static ADT7420_DEFINE(temp, BOARD_TEMP_SENSOR_IIC_ID, TEMP_I2C_SLAVE_ADDRESS);
@@ -103,7 +103,7 @@ int main(void)
 		return 0;
 	}
 	if (xTaskCreate(task_coap_server, "coap server", 512, (void *)1,
-		TSKPRI_COAP_SERVER, &task_coap_server_handle) != pdPASS) {
+			TSKPRI_COAP_SERVER, &task_coap_server_handle) != pdPASS) {
 		EMBARC_PRINTF("create coap server failed\r\n");
 		return -1;
 	}
@@ -114,25 +114,26 @@ int main(void)
 #define HELLO "hello world"
 
 static void hnd_get_hello(coap_context_t  *ctx, struct coap_resource_t *resource,
-			coap_address_t *peer, coap_pdu_t *request, str *token,
-			coap_pdu_t *response) {
+			  coap_address_t *peer, coap_pdu_t *request, str *token,
+			  coap_pdu_t *response)
+{
 	unsigned char buf[3];
 
 	response->hdr->code = COAP_RESPONSE_CODE(205);
 
 	coap_add_option(response, COAP_OPTION_CONTENT_TYPE,
-		coap_encode_var_bytes(buf, COAP_MEDIATYPE_TEXT_PLAIN), buf);
+			coap_encode_var_bytes(buf, COAP_MEDIATYPE_TEXT_PLAIN), buf);
 
 	coap_add_option(response, COAP_OPTION_MAXAGE,
-		coap_encode_var_bytes(buf, 0x2ffff), buf);
+			coap_encode_var_bytes(buf, 0x2ffff), buf);
 
 	coap_add_data(response, strlen(HELLO), (unsigned char *)HELLO);
 }
 
-
 static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
-			coap_address_t *peer, coap_pdu_t *request, str *token,
-			coap_pdu_t *response) {
+			 coap_address_t *peer, coap_pdu_t *request, str *token,
+			 coap_pdu_t *response)
+{
 
 	coap_opt_iterator_t opt_iter;
 	unsigned char buf[40];
@@ -144,7 +145,7 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 
 	/* handle observe request */
 	if (request != NULL &&
-		coap_check_option(request, COAP_OPTION_OBSERVE, &opt_iter)) {
+	    coap_check_option(request, COAP_OPTION_OBSERVE, &opt_iter)) {
 		subscription = coap_add_observer(resource, peer, token);
 		if (subscription) {
 			subscription->non = request->hdr->type == COAP_MESSAGE_NON;
@@ -154,7 +155,7 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 
 	if (resource->dirty == 1) {
 		coap_add_option(response, COAP_OPTION_OBSERVE,
-			coap_encode_var_bytes(buf, ctx->observe), buf);
+				coap_encode_var_bytes(buf, ctx->observe), buf);
 	}
 
 	coap_add_option(response, COAP_OPTION_CONTENT_FORMAT,
@@ -162,7 +163,7 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 
 	/* temp data is fresh in 60 seconds */
 	coap_add_option(response, COAP_OPTION_MAXAGE,
-		coap_encode_var_bytes(buf, 60), buf);
+			coap_encode_var_bytes(buf, 60), buf);
 
 #if defined(BOARD_EMSK)
 	if (adt7420_sensor_read(temp, &temp_val) != E_OK) {
@@ -171,14 +172,15 @@ static void hnd_get_temp(coap_context_t  *ctx, struct coap_resource_t *resource,
 #endif
 
 	len = snprintf((char *)buf,
-			min(sizeof(buf), response->max_size - response->length),
-			"%f", temp_val);
+		       min(sizeof(buf), response->max_size - response->length),
+		       "%f", temp_val);
 	coap_add_data(response, len, buf);
 }
 
 static void hnd_post_leds(coap_context_t  *ctx, struct coap_resource_t *resource,
-			coap_address_t *peer, coap_pdu_t *request, str *token,
-			coap_pdu_t *response) {
+			  coap_address_t *peer, coap_pdu_t *request, str *token,
+			  coap_pdu_t *response)
+{
 
 	long val;
 	size_t size;
@@ -189,14 +191,14 @@ static void hnd_post_leds(coap_context_t  *ctx, struct coap_resource_t *resource
 	coap_get_data(request, &size, &data);
 
 	if (size) {
-		data[size] = '\0';	/* borrow one byte in pbuf */
+		data[size] = '\0';      /* borrow one byte in pbuf */
 		xatoi((char **)&data, &val);
 		led_write(val, 0xffffffff);
 	}
 }
 
-
-void init_resources(coap_context_t *ctx) {
+void init_resources(coap_context_t *ctx)
+{
 	coap_resource_t *r;
 
 	/* register hello world resource */
@@ -231,7 +233,6 @@ void init_resources(coap_context_t *ctx) {
 #ifndef WITHOUT_ASYNC
 #endif /* WITHOUT_ASYNC */
 
-
 static void task_coap_server(void *par)
 {
 	coap_context_t  *ctx;
@@ -252,7 +253,7 @@ static void task_coap_server(void *par)
 
 #if defined(BOARD_EMSK)
 	if (xTaskCreate(task_temp_tx, "temperature update task", 128, (void *)1,
-		TSKPRI_TEMPTX, &task_temptx_handle) != pdPASS) {
+			TSKPRI_TEMPTX, &task_temptx_handle) != pdPASS) {
 		EMBARC_PRINTF("create temperature update task failed\r\n");
 		vTaskDelete(NULL);
 		return;

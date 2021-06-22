@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 #ifndef CONTAINER2_H
 #define CONTAINER2_H
@@ -34,11 +34,11 @@
 #include "container1.h"
 
 typedef struct {
-	uint8_t secret[SECRET_LEN+1];
+	uint8_t secret[SECRET_LEN + 1];
 	uint8_t initialized;
 } SECRET_CONTEXT2;
 
 extern void trusted_ops(void);
-extern const void * const container2_cfg_ptr;
+extern const void *const container2_cfg_ptr;
 
 #endif /* CONTAINER2_H */

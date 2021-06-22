@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 
 /**
  * \defgroup	BOARD_EMSK_DRV_DW_SPI_OBJ	EMSK DW SPI Object
@@ -48,15 +48,11 @@
  * \addtogroup	BOARD_EMSK_DRV_DW_SPI_OBJ
  * @{
  */
-#include "embARC_toolchain.h"
-
-#include "arc_exception.h"
 
 #include "dw_spi.h"
 #include "dw_spi_obj.h"
 
 #include "emsk/emsk.h"
-
 
 /**
  * \name	EMSK DesignWare SPI 0 Object Instantiation
@@ -64,41 +60,42 @@
  */
 #if (USE_DW_SPI_0)
 static void dw_spi_0_isr(void *ptr);
-#define DW_SPI_0_RELBASE	(REL_REGBASE_SPI0)	/*!< designware spi 0 relative baseaddr */
-#define DW_SPI_0_INTNO		(INTNO_SPI_MASTER)	/*!< designware spi 0 interrupt number  */
-#define DW_SPI_0_RX_SAMPLEDLY	0			/*!< designware spi 0 RXD Sample Delay  */
+#define DW_SPI_0_RELBASE        (REL_REGBASE_SPI0)      /*!< designware spi 0 relative baseaddr */
+#define DW_SPI_0_INTNO          (INTNO_SPI_MASTER)      /*!< designware spi 0 interrupt number  */
+#define DW_SPI_0_RX_SAMPLEDLY   0                       /*!< designware spi 0 RXD Sample Delay  */
 
-#define DW_SPI_0_TX_FIFO_LEN	(32)
-#define DW_SPI_0_RX_FIFO_LEN	(32)
+#define DW_SPI_0_TX_FIFO_LEN    (32)
+#define DW_SPI_0_RX_FIFO_LEN    (32)
 
-#define DW_SPI_0_SUPPORTED_MODE	DW_SPI_MASTER_SUPPORTED
+#define DW_SPI_0_SUPPORTED_MODE DW_SPI_MASTER_SUPPORTED
 
-DEV_SPI			dw_spi_0;			/*!< designware spi object */
-DW_SPI_CTRL		dw_spi_0_ctrl;			/*!< designware spi 0 ctrl */
+DEV_SPI dw_spi_0;                                       /*!< designware spi object */
+DW_SPI_CTRL dw_spi_0_ctrl;                              /*!< designware spi 0 ctrl */
 #if HW_VERSION < 23
 static uint32_t dw_spi_0_cs_status;
 #endif
 
 /** designware spi 0 open */
-static int32_t dw_spi_0_open (uint32_t mode, uint32_t param)
+static int32_t dw_spi_0_open(uint32_t mode, uint32_t param)
 {
 	return dw_spi_open(&dw_spi_0, mode, param);
 }
 /** designware spi 0 close */
-static int32_t dw_spi_0_close (void)
+static int32_t dw_spi_0_close(void)
 {
 	return dw_spi_close(&dw_spi_0);
 }
 /** designware spi 0 control */
-static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_spi_0_control(uint32_t ctrl_cmd, void *param)
 {
 	int32_t ercd;
+
 	ercd = dw_spi_control(&dw_spi_0, ctrl_cmd, param);
 #if HW_VERSION >= 23
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
-		_arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 1 << ((uint32_t)param));
+		arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 1 << ((uint32_t)param));
 	} else if (ctrl_cmd == SPI_CMD_MST_DSEL_DEV) {
-		_arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 0);
+		arc_write_uncached_32((void *)(PERIPHERAL_BASE + REL_REGBASE_SPI_MST_CS_CTRL), 0);
 	}
 #else
 	if (ctrl_cmd == SPI_CMD_MST_SEL_DEV) {
@@ -110,12 +107,12 @@ static int32_t dw_spi_0_control (uint32_t ctrl_cmd, void *param)
 	return ercd;
 }
 /** designware spi 0 write */
-static int32_t dw_spi_0_write (const void *data, uint32_t len)
+static int32_t dw_spi_0_write(const void *data, uint32_t len)
 {
 	return dw_spi_write(&dw_spi_0, data, len);
 }
 /** designware spi 0 close */
-static int32_t dw_spi_0_read (void *data, uint32_t len)
+static int32_t dw_spi_0_read(void *data, uint32_t len)
 {
 	return dw_spi_read(&dw_spi_0, data, len);
 }
@@ -180,40 +177,40 @@ static void dw_spi_0_install(void)
  */
 #if (USE_DW_SPI_1)
 static void dw_spi_1_isr(void *ptr);
-#define DW_SPI_1_RELBASE	(REL_REGBASE_SPI1)	/*!< designware spi 1 relative baseaddr */
-#define DW_SPI_1_INTNO		(INTNO_SPI_SLAVE)	/*!< designware spi 1 interrupt number  */
-#define DW_SPI_1_RX_SAMPLEDLY	0			/*!< designware spi 1 RXD Sample Delay  */
+#define DW_SPI_1_RELBASE        (REL_REGBASE_SPI1)      /*!< designware spi 1 relative baseaddr */
+#define DW_SPI_1_INTNO          (INTNO_SPI_SLAVE)       /*!< designware spi 1 interrupt number  */
+#define DW_SPI_1_RX_SAMPLEDLY   0                       /*!< designware spi 1 RXD Sample Delay  */
 
-#define DW_SPI_1_TX_FIFO_LEN	(32)
-#define DW_SPI_1_RX_FIFO_LEN	(32)
+#define DW_SPI_1_TX_FIFO_LEN    (32)
+#define DW_SPI_1_RX_FIFO_LEN    (32)
 
-#define DW_SPI_1_SUPPORTED_MODE	DW_SPI_SLAVE_SUPPORTED
+#define DW_SPI_1_SUPPORTED_MODE DW_SPI_SLAVE_SUPPORTED
 
-DEV_SPI			dw_spi_1;			/*!< designware spi 1 object */
-DW_SPI_CTRL		dw_spi_1_ctrl;			/*!< designware spi 1 ctrl */
+DEV_SPI dw_spi_1;                                       /*!< designware spi 1 object */
+DW_SPI_CTRL dw_spi_1_ctrl;                              /*!< designware spi 1 ctrl */
 
 /** designware spi 1 open */
-static int32_t dw_spi_1_open (uint32_t mode, uint32_t param)
+static int32_t dw_spi_1_open(uint32_t mode, uint32_t param)
 {
 	return dw_spi_open(&dw_spi_1, mode, param);
 }
 /** designware spi 1 close */
-static int32_t dw_spi_1_close (void)
+static int32_t dw_spi_1_close(void)
 {
 	return dw_spi_close(&dw_spi_1);
 }
 /** designware spi 1 control */
-static int32_t dw_spi_1_control (uint32_t ctrl_cmd, void *param)
+static int32_t dw_spi_1_control(uint32_t ctrl_cmd, void *param)
 {
 	return dw_spi_control(&dw_spi_1, ctrl_cmd, param);
 }
 /** designware spi 1 write */
-static int32_t dw_spi_1_write (const void *data, uint32_t len)
+static int32_t dw_spi_1_write(const void *data, uint32_t len)
 {
 	return dw_spi_write(&dw_spi_1, data, len);
 }
 /** designware spi 1 close */
-static int32_t dw_spi_1_read (void *data, uint32_t len)
+static int32_t dw_spi_1_read(void *data, uint32_t len)
 {
 	return dw_spi_read(&dw_spi_1, data, len);
 }
@@ -284,17 +281,17 @@ DEV_SPI_PTR spi_get_dev(int32_t spi_id)
 
 	switch (spi_id) {
 #if (USE_DW_SPI_0)
-		case DW_SPI_0_ID:
-			return &dw_spi_0;
-			break;
+	case DW_SPI_0_ID:
+		return &dw_spi_0;
+		break;
 #endif
 #if (USE_DW_SPI_1)
-		case DW_SPI_1_ID:
-			return &dw_spi_1;
-			break;
+	case DW_SPI_1_ID:
+		return &dw_spi_1;
+		break;
 #endif
-		default:
-			break;
+	default:
+		break;
 	}
 	return NULL;
 }

@@ -26,7 +26,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
---------------------------------------------- */
+   --------------------------------------------- */
 #include "esp8266.h"
 #include "stdlib.h"
 #include "stdio.h"
@@ -69,9 +69,9 @@ int32_t esp8266_test(ESP8266_DEF_PTR obj)
 	return at_test(obj->p_at);
 }
 
-//TODO: MAC address functions
-//uint32_t AT_MAC_get();// AT+CIPSTAMAC_CUR?
-//uint32_t AT_MAC_set();// AT+CIPSTAMAC_CUR="18:fe:35:98:d3:7b"
+// TODO: MAC address functions
+// uint32_t AT_MAC_get();// AT+CIPSTAMAC_CUR?
+// uint32_t AT_MAC_set();// AT+CIPSTAMAC_CUR="18:fe:35:98:d3:7b"
 
 int32_t esp8266_wifi_mode_get(ESP8266_DEF_PTR obj, bool flash)
 {
@@ -79,12 +79,13 @@ int32_t esp8266_wifi_mode_get(ESP8266_DEF_PTR obj, bool flash)
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
 	uint32_t ret = 0;
+
 	at_send_cmd(p_at, AT_READ, flash?"CWMODE_DEF":"CWMODE_CUR", NULL);
 
-	if (at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT)==AT_OK) {
+	if (at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT) == AT_OK) {
 		pos = strstr(rcv_buf, flash?"CWMODE_DEF:":"CWMODE_CUR:");
 
-		if (sscanf(pos, flash?"CWMODE_DEF:%d":"CWMODE_CUR:%d", &ret)>0) {
+		if (sscanf(pos, flash?"CWMODE_DEF:%d":"CWMODE_CUR:%d", &ret) > 0) {
 			dbg_printf(DBG_LESS_INFO, flash?"CWMODE_DEF = %d\n":"CWMODE_CUR = %d\n", ret);
 			return ret;
 		}
@@ -96,7 +97,8 @@ int32_t esp8266_wifi_mode_get(ESP8266_DEF_PTR obj, bool flash)
 int32_t esp8266_wifi_mode_set(ESP8266_DEF_PTR obj, ESP8266_WIFI_MODE mode, bool flash)
 {
 	char rcv_buf[512];
-	char mode_str[4]= {0};
+	char mode_str[4] = { 0 };
+
 	sprintf(mode_str, "%d", mode);
 	at_send_cmd(obj->p_at, AT_WRITE, flash?"CWMODE_DEF":"CWMODE_CUR", mode_str, NULL);
 	return at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT);
@@ -105,26 +107,27 @@ int32_t esp8266_wifi_mode_set(ESP8266_DEF_PTR obj, ESP8266_WIFI_MODE mode, bool 
 /* rcv_buf should be large enough for scan result */
 int32_t esp8266_wifi_scan(ESP8266_DEF_PTR obj, char *rcv_buf, char *ssid)
 {
-	char cmd_str[512]= {0};
+	char cmd_str[512] = { 0 };
+
 	sprintf(cmd_str, "CWLAP=%s", ssid);
 	at_send_cmd(obj->p_at, AT_EXECUTE, cmd_str);
 	return at_get_reply(obj->p_at, rcv_buf, AT_LONG_TIMEOUT);
 }
 
 /*
-* obj: ESP8266_DEF_PTR (esp8266 struct pointer object)
-* ssid: AP ssid, need to be quoted
-* pwd: AP password, need to be quoted
-* flash: configuration save (true) or not save (false) in the flash
-*
-* Return Value:
-* AT_OK == 0, success
-* AT_ERROR == -1, error occurs
-* CWJAP==1, connection timeout
-* CWJAP==2, wrong password
-* CWJAP==3, cannot find the target AP
-* CWJAP==4, connection failed
-*/
+ * obj: ESP8266_DEF_PTR (esp8266 struct pointer object)
+ * ssid: AP ssid, need to be quoted
+ * pwd: AP password, need to be quoted
+ * flash: configuration save (true) or not save (false) in the flash
+ *
+ * Return Value:
+ * AT_OK == 0, success
+ * AT_ERROR == -1, error occurs
+ * CWJAP==1, connection timeout
+ * CWJAP==2, wrong password
+ * CWJAP==3, cannot find the target AP
+ * CWJAP==4, connection failed
+ */
 int32_t esp8266_wifi_connect(ESP8266_DEF_PTR obj, AT_STRING ssid, AT_STRING pwd, bool flash)
 {
 	char rcv_buf[512];
@@ -132,15 +135,15 @@ int32_t esp8266_wifi_connect(ESP8266_DEF_PTR obj, AT_STRING ssid, AT_STRING pwd,
 	char *pos;
 	uint32_t ret = 0;
 
-	if ( esp8266_wifi_mode_set(obj, ESP8266_STA, false) == AT_OK) {
+	if (esp8266_wifi_mode_set(obj, ESP8266_STA, false) == AT_OK) {
 		memset(rcv_buf, 0, sizeof(rcv_buf));
 		at_send_cmd(p_at, AT_WRITE, flash?"CWJAP_DEF":"CWJAP_CUR", ssid, pwd, NULL);
 
-		if (at_get_reply(p_at, rcv_buf, AT_EXTRA_TIMEOUT)==AT_OK) {
+		if (at_get_reply(p_at, rcv_buf, AT_EXTRA_TIMEOUT) == AT_OK) {
 			pos = strstr(rcv_buf, "CWJAP:");
 
-			//check if any error happen during connection setting up
-			if (sscanf(pos, "CWJAP:%d", &ret)>0) {
+			// check if any error happen during connection setting up
+			if (sscanf(pos, "CWJAP:%d", &ret) > 0) {
 				dbg_printf(DBG_LESS_INFO, "CWJAP = %d\n", ret);
 				return ret;
 			} else {
@@ -157,9 +160,10 @@ int32_t esp8266_wifi_disconnect(ESP8266_DEF_PTR obj)
 {
 	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
+
 	at_send_cmd(p_at, AT_EXECUTE, "CWQAP");
 
-	if (at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT)== AT_OK) {
+	if (at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT) == AT_OK) {
 		obj->wifi_connected = false;
 		return AT_OK;
 	} else {
@@ -171,30 +175,32 @@ int32_t esp8266_address_get(ESP8266_DEF_PTR obj)
 {
 	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
+
 	at_send_cmd(p_at, AT_EXECUTE, "CIFSR");
 	return at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT);
 }
 
 /*
-* Return Value:
-* AT_ERROR == -1, error occurs
-* STATUS==2, The ESP8266 Station is connected to an AP and its IP is obtained
-* STATUS==3, The ESP8266 Station has created a TCP or UDP transmission
-* STATUS==4, The TCP or UDP transmission of ESP8266 Station is disconnected
-* STATUS==5, The ESP8266 Station does NOT connect to an AP
-*/
+ * Return Value:
+ * AT_ERROR == -1, error occurs
+ * STATUS==2, The ESP8266 Station is connected to an AP and its IP is obtained
+ * STATUS==3, The ESP8266 Station has created a TCP or UDP transmission
+ * STATUS==4, The TCP or UDP transmission of ESP8266 Station is disconnected
+ * STATUS==5, The ESP8266 Station does NOT connect to an AP
+ */
 int32_t esp8266_conn_status(ESP8266_DEF_PTR obj)
 {
 	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
 	uint32_t ret = 0;
+
 	at_send_cmd(p_at, AT_EXECUTE, "CIPSTATUS");
 
-	if (at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT)==AT_OK) {
+	if (at_get_reply(p_at, rcv_buf, AT_NORMAL_TIMEOUT) == AT_OK) {
 		pos = strstr(rcv_buf, "STATUS:");
 
-		if (sscanf(pos, "STATUS:%d", &ret)>0) {
+		if (sscanf(pos, "STATUS:%d", &ret) > 0) {
 			dbg_printf(DBG_LESS_INFO, "STATUS = %d\n", ret);
 			return ret;
 		}
@@ -208,19 +214,20 @@ int32_t esp8266_dns_lookup(ESP8266_DEF_PTR obj, char *domain_ip, AT_STRING domai
 	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
 	char *pos;
-	int len=0;
+	int len = 0;
+
 	at_send_cmd(p_at, AT_WRITE, "CIPDOMAIN", domain_name, NULL);
 
-	if (at_get_reply(p_at, rcv_buf, AT_LONG_TIMEOUT)==AT_OK) {
+	if (at_get_reply(p_at, rcv_buf, AT_LONG_TIMEOUT) == AT_OK) {
 		dbg_printf(DBG_MORE_INFO, "rcv_buf = %s\n", rcv_buf);
 		pos = strstr(rcv_buf, "CIPDOMAIN:");
 
-		if (pos!=NULL) {
+		if (pos != NULL) {
 			pos += strlen("CIPDOMAIN:");
 			dbg_printf(DBG_LESS_INFO, "domain_ip = %s, len = %d\n", pos, strlen(pos));
-			len=strstr(pos, "\r\n") - pos;
+			len = strstr(pos, "\r\n") - pos;
 			strncpy(domain_ip, pos, len);
-			domain_ip[len]='\0';
+			domain_ip[len] = '\0';
 			dbg_printf(DBG_LESS_INFO, "domain_ip = %s, len = %d\n", domain_ip, strlen(domain_ip));
 			return AT_OK;
 		}
@@ -233,6 +240,7 @@ int32_t esp8266_tcp_connect(ESP8266_DEF_PTR obj, AT_STRING server_IP, uint32_t p
 {
 	char rcv_buf[512];
 	char IP_Str[32], port_Str[16];
+
 	sprintf(IP_Str, "\"%s\"", server_IP);
 	sprintf(port_Str, "%d", port);
 	at_send_cmd(obj->p_at, AT_WRITE, "CIPSTART", "\"TCP\"", IP_Str, port_Str, NULL);
@@ -249,6 +257,7 @@ static int32_t esp8266_tcp_server(ESP8266_DEF_PTR obj, uint32_t mode, uint32_t p
 	sprintf(port_buf, "%d", port);
 
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
+
 	at_send_cmd(p_at, AT_WRITE, "CIPSERVER", mode_buf, port_buf, NULL);
 	return at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT);
 }
@@ -257,9 +266,10 @@ int32_t esp8266_tcp_server_open(ESP8266_DEF_PTR obj, uint32_t port)
 {
 	char rcv_buf[512];
 	AT_PARSER_DEF_PTR p_at = obj->p_at;
+
 	at_send_cmd(p_at, AT_WRITE, "CIPMUX", "1", NULL);
 
-	if (at_get_reply(p_at, rcv_buf, AT_LONG_TIMEOUT)==AT_OK) {
+	if (at_get_reply(p_at, rcv_buf, AT_LONG_TIMEOUT) == AT_OK) {
 		return esp8266_tcp_server(obj, 1, port);
 	}
 }
@@ -273,7 +283,8 @@ int32_t esp8266_transmission_mode(ESP8266_DEF_PTR obj, ESP8266_TRANS_MODE mode)
 {
 	char rcv_buf[512];
 	uint32_t ret;
-	char mode_str[4]= {0};
+	char mode_str[4] = { 0 };
+
 	sprintf(mode_str, "%d", mode);
 	at_send_cmd(obj->p_at, AT_WRITE, "CIPMODE", mode_str, NULL);
 	ret = at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT);
@@ -291,7 +302,7 @@ int32_t esp8266_passthr_start(ESP8266_DEF_PTR obj)
 	char rcv_buf[512];
 
 	if (obj->wifi_connected) {
-		if (esp8266_transmission_mode(obj, ESP8266_PASSTHR)==AT_OK) {
+		if (esp8266_transmission_mode(obj, ESP8266_PASSTHR) == AT_OK) {
 			at_send_cmd(obj->p_at, AT_EXECUTE, "CIPSEND");
 			return at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT);
 		}
@@ -303,17 +314,18 @@ int32_t esp8266_passthr_start(ESP8266_DEF_PTR obj)
 int32_t esp8266_passthr_end(ESP8266_DEF_PTR obj)
 {
 	char passthr_end_symbol[] = "+++";
-	//uint32_t ret;
-	//board_delay_ms(500, OSP_DELAY_OS_COMPAT_ENABLE);
-	//ret = at_write(obj->p_at, passthr_end_symbol, 3);//do not send '\0' as string ending
-	at_write(obj->p_at, passthr_end_symbol, 3);//do not send '\0' as string ending
-	//board_delay_ms(500, OSP_DELAY_OS_COMPAT_ENABLE);
-	//if(ret == 3){
+
+	// uint32_t ret;
+	// board_delay_ms(500, OSP_DELAY_OS_COMPAT_ENABLE);
+	// ret = at_write(obj->p_at, passthr_end_symbol, 3);//do not send '\0' as string ending
+	at_write(obj->p_at, passthr_end_symbol, 3);// do not send '\0' as string ending
+	// board_delay_ms(500, OSP_DELAY_OS_COMPAT_ENABLE);
+	// if(ret == 3){
 	obj->trans_mode = ESP8266_NORMALSEND;
 	return AT_OK;
-	//} else {
+	// } else {
 	//	return AT_ERROR;
-	//}
+	// }
 }
 
 int32_t esp8266_passthr_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
@@ -328,11 +340,11 @@ int32_t esp8266_passthr_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 uint32_t esp8266_normal_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 {
 	char rcv_buf[512];
-	char cnt_str[16]= {0};
+	char cnt_str[16] = { 0 };
 
 	if (obj->wifi_connected) {
 		if (obj->trans_mode != ESP8266_NORMALSEND) {
-			if (esp8266_transmission_mode(obj, ESP8266_NORMALSEND)!=AT_OK) {
+			if (esp8266_transmission_mode(obj, ESP8266_NORMALSEND) != AT_OK) {
 				return AT_ERROR;
 			} else {
 				obj->trans_mode = ESP8266_NORMALSEND;
@@ -342,7 +354,7 @@ uint32_t esp8266_normal_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 		sprintf(cnt_str, "%d", cnt);
 		at_send_cmd(obj->p_at, AT_WRITE, "CIPSEND", cnt_str, NULL);
 
-		if (at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT)==AT_OK) {
+		if (at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT) == AT_OK) {
 			at_write(obj->p_at, buf, cnt);
 			return at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT);
 		}
@@ -354,11 +366,11 @@ uint32_t esp8266_normal_write(ESP8266_DEF_PTR obj, char *buf, uint32_t cnt)
 uint32_t esp8266_connect_write(ESP8266_DEF_PTR obj, char *buf, char *connect, uint32_t cnt)
 {
 	char rcv_buf[512];
-	char cnt_str[16]= {0};
+	char cnt_str[16] = { 0 };
 
 	if (obj->wifi_connected) {
 		if (obj->trans_mode != ESP8266_NORMALSEND) {
-			if (esp8266_transmission_mode(obj, ESP8266_NORMALSEND)!=AT_OK) {
+			if (esp8266_transmission_mode(obj, ESP8266_NORMALSEND) != AT_OK) {
 				return AT_ERROR;
 			} else {
 				obj->trans_mode = ESP8266_NORMALSEND;
@@ -368,7 +380,7 @@ uint32_t esp8266_connect_write(ESP8266_DEF_PTR obj, char *buf, char *connect, ui
 		sprintf(cnt_str, "%d", cnt);
 		at_send_cmd(obj->p_at, AT_WRITE, "CIPSEND", connect, cnt_str, NULL);
 
-		if (at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT)==AT_OK) {
+		if (at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT) == AT_OK) {
 			at_write(obj->p_at, buf, cnt);
 			return at_get_reply(obj->p_at, rcv_buf, AT_NORMAL_TIMEOUT);
 		}
@@ -389,7 +401,7 @@ int32_t esp8266_read(ESP8266_DEF_PTR obj, char *buf, uint32_t timeout)
 		do {
 			read_cnt = at_read(obj->p_at, &buf[cur_ofs], 1);
 			cur_ofs += read_cnt;
-		} while ((OSP_GET_CUR_MS()-cur_time) < timeout);
+		} while ((OSP_GET_CUR_MS() - cur_time) < timeout);
 
 		buf[cur_ofs] = '\0';
 		dbg_printf(DBG_LESS_INFO, "[%s]%d: \"%s\" (%d)\r\n", __FUNCTION__, __LINE__, buf, strlen(buf));
@@ -408,11 +420,11 @@ uint32_t esp8266_nread(ESP8266_DEF_PTR obj, char *buf, uint32_t n)
 	return AT_ERROR;
 }
 
-
-//at_httpserver
+// at_httpserver
 int32_t esp8266_CIPCLOSE(ESP8266_DEF_PTR obj, char *conn_buf)
 {
 	char rcv_buf[512];
+
 	at_send_cmd(obj->p_at, AT_WRITE, "CIPCLOSE", conn_buf, NULL);
 	return at_get_reply(obj->p_at, rcv_buf, AT_EXTRA_TIMEOUT);
 }
