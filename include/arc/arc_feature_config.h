@@ -435,6 +435,19 @@
 
 #endif
 
+#if !defined(ARC_FEATURE_AGU)
+#if defined(core_config_bcr_agu_build)
+#define ARC_FEATURE_AGU                 1
+#if core_config_agu_small
+#define ARC_FEATURE_AGU_SMALL           1
+#elif core_config_agu_medium
+#define ARC_FEATURE_AGU_MEDIUM          1
+#elif core_config_agu_large
+#define ARC_FEATURE_AGU_LARGE           1
+#endif
+#endif
+#endif
+
 #if !defined(ARC_FEATURE_STACK_CHECK)
 #if core_config_stack_check
 #define ARC_FEATURE_STACK_CHECK         1

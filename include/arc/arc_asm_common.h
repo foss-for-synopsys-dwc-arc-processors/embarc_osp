@@ -173,6 +173,33 @@
 #endif
 .endm
 
+/* macro to save agu related regs */
+.macro SAVE_AGU_REGS
+#if ARC_FEATURE_AGU
+	// PUSHAX AUX_
+#if ARC_FEATURE_AGU_SMALL || ARC_FEATURE_AGU_MEDIUM || ARC_FEATURE_AGU_LARGE
+#endif
+#if ARC_FEATURE_AGU_MEDIUM || ARC_FEATURE_AGU_LARGE
+#endif
+#if ARC_FEATURE_AGU_LARGE
+#endif
+
+#endif
+.endm
+
+/* macro to restore dsp related regs */
+.macro RESTORE_AGU_REGS
+#if ARC_FEATURE_AGU
+
+#if ARC_FEATURE_AGU_LARGE
+#endif
+#if ARC_FEATURE_AGU_MEDIUM || ARC_FEATURE_AGU_LARGE
+#endif
+#if ARC_FEATURE_AGU_SMALL || ARC_FEATURE_AGU_MEDIUM || ARC_FEATURE_AGU_LARGE
+#endif
+	// POPAX AUX_
+#endif
+.endm
 
 /*--------------------------------------------------------------
  * Helpers to save/restore callee-saved regs:
@@ -207,6 +234,7 @@
 #if ARC_FEATURE_FPU_DSP_CONTEXT
 	SAVE_FPU_REGS
 	SAVE_DSP_REGS
+	SAVE_AGU_REGS
 #endif
 
 .endm
@@ -214,6 +242,7 @@
 .macro RESTORE_CALLEE_REGS
 
 #if ARC_FEATURE_FPU_DSP_CONTEXT
+	RESTORE_AGU_REGS
 	RESTORE_DSP_REGS
 	RESTORE_FPU_REGS
 #endif
