@@ -531,8 +531,8 @@
 #define AUX_AGU_AP7                     (0x5c7)
 #define AUX_AGU_AP8                     (0x5c8)
 #define AUX_AGU_AP9                     (0x5c9)
-#define AUX_AGU_APA                     (0x5ca)
-#define AUX_AGU_APB                     (0x5cb)
+#define AUX_AGU_AP10                    (0x5ca)
+#define AUX_AGU_AP11                    (0x5cb)
 
 #define AUX_AGU_OS0                     (0x5d0)
 #define AUX_AGU_OS1                     (0x5d1)
@@ -551,6 +551,22 @@
 #define AUX_AGU_MOD5                    (0x5e5)
 #define AUX_AGU_MOD6                    (0x5e6)
 #define AUX_AGU_MOD7                    (0x5e7)
+#define AUX_AGU_MOD8                    (0x5e8)
+#define AUX_AGU_MOD9                    (0x5e9)
+#define AUX_AGU_MOD10                   (0x5ea)
+#define AUX_AGU_MOD11                   (0x5eb)
+#define AUX_AGU_MOD12                   (0x5ec)
+#define AUX_AGU_MOD13                   (0x5ed)
+#define AUX_AGU_MOD14                   (0x5ee)
+#define AUX_AGU_MOD15                   (0x5ef)
+#define AUX_AGU_MOD16                   (0x5f0)
+#define AUX_AGU_MOD17                   (0x5f1)
+#define AUX_AGU_MOD18                   (0x5f2)
+#define AUX_AGU_MOD19                   (0x5f3)
+#define AUX_AGU_MOD20                   (0x5f4)
+#define AUX_AGU_MOD21                   (0x5f5)
+#define AUX_AGU_MOD22                   (0x5f6)
+#define AUX_AGU_MOD23                   (0x5f7)
 
 /** @} */
 
