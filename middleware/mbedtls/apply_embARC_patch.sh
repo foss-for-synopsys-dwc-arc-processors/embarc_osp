@@ -51,24 +51,12 @@ fi
 echo "Clone repo from ${REPO_LINK} at commit or tag ${REPO_COMMIT}"
 git init .
 git remote add origin ${REPO_LINK}
-git fetch origin -t
-git_branch=($(git branch -a|grep 'remotes'|sed -e 's/^[[:space:]]*remotes\///'))
-if [ "x${git_branch[0]}" == "x" ] ; then
-	echo "Fetch tag failed, just fetch all the source code"
-	git fetch origin
-	git_branch=($(git branch -a|grep 'remotes'|sed -e 's/^[[:space:]]*remotes\///'))
-fi
-if [ "x${git_branch[0]}" == "x" ] ; then
-	echo "No branch found in the remote repo, patch failed"
-	rm -rf .git
-	exit_proc 1
-fi
-git checkout -b master ${git_branch[0]}
-git log --pretty -1 ${REPO_COMMIT}
-if [[ ! $? -eq 0 ]] ; then
-	echo "No commit related to ${REPO_COMMIT}, try to fetch more from remote"
-	git fetch --depth 3000
-fi
+git fetch --depth 1 origin refs/tags/${REPO_COMMIT}:refs/tags/${REPO_COMMIT} || {
+	echo "Fetch tag failed, try default branch"
+	default_branch=$(git remote show ${REPO_LINK} | sed -n "s/^.*HEAD branch: \(.*\)$/\1/p")
+	git fetch origin ${default_branch}
+}
+
 git checkout -b embARC ${REPO_COMMIT}
 echo "Try to apply patch for this repo"
 git am *.patch
