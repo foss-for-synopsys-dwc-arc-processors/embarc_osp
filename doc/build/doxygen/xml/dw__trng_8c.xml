@@ -2,97 +2,28 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="dw__trng_8c" kind="file">
     <compoundname>dw_trng.c</compoundname>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
-    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
-    <includes refid="dw__trng_8h" local="yes">dw_trng.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_error.h</includes>
+    <includes local="yes">dw_trng.h</includes>
     <incdepgraph>
-      <node id="3660">
-        <label>stdbool.h</label>
-      </node>
-      <node id="3662">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3656" relation="include">
-        </childnode>
-      </node>
-      <node id="3667">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="3668" relation="include">
-        </childnode>
-      </node>
-      <node id="3661">
+      <node id="1705">
         <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="3657" relation="include">
-        </childnode>
-        <childnode refid="3662" relation="include">
-        </childnode>
       </node>
-      <node id="3657">
-        <label>stdint.h</label>
+      <node id="1706">
+        <label>dw_trng.h</label>
       </node>
-      <node id="3659">
-        <label>stddef.h</label>
-      </node>
-      <node id="3658">
-        <label>limits.h</label>
-      </node>
-      <node id="3666">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="3656" relation="include">
-        </childnode>
-        <childnode refid="3667" relation="include">
-        </childnode>
-        <childnode refid="3662" relation="include">
-        </childnode>
-      </node>
-      <node id="3655">
+      <node id="1703">
         <label>dw_trng.c</label>
         <link refid="dw_trng.c"/>
-        <childnode refid="3656" relation="include">
+        <childnode refid="1704" relation="include">
         </childnode>
-        <childnode refid="3661" relation="include">
+        <childnode refid="1705" relation="include">
         </childnode>
-        <childnode refid="3663" relation="include">
-        </childnode>
-      </node>
-      <node id="3663">
-        <label>dw_trng.h</label>
-        <link refid="dw__trng_8h_source"/>
-        <childnode refid="3664" relation="include">
-        </childnode>
-        <childnode refid="3666" relation="include">
+        <childnode refid="1706" relation="include">
         </childnode>
       </node>
-      <node id="3664">
-        <label>dev_trng.h</label>
-        <link refid="dev__trng_8h_source"/>
-        <childnode refid="3665" relation="include">
-        </childnode>
-      </node>
-      <node id="3656">
+      <node id="1704">
         <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="3657" relation="include">
-        </childnode>
-        <childnode refid="3658" relation="include">
-        </childnode>
-        <childnode refid="3659" relation="include">
-        </childnode>
-        <childnode refid="3660" relation="include">
-        </childnode>
-      </node>
-      <node id="3665">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="3657" relation="include">
-        </childnode>
-      </node>
-      <node id="3668">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="define">
@@ -100,14 +31,14 @@
         <name>DW_TRNG_CHECK_EXP</name>
         <param><defname>EXPR</defname></param>
         <param><defname>ERROR_CODE</defname></param>
-        <initializer><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <initializer>CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="37" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a4fab40437ef5f63b012527c065daf6a7" prot="public" static="no">
         <name>DW_TRNG_MODE_R256</name>
@@ -118,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="39" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="39" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="39" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a40c6603dce8e730a42ecd94c7f950cd7" prot="public" static="no">
         <name>DW_TRNG_MODE_R256_OFFSET</name>
@@ -129,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="40" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="40" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a2b7cebb967acc342ba6784c84c84e5c3" prot="public" static="no">
         <name>DW_TRNG_ISTAT_RAND_RDY</name>
@@ -140,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="42" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="42" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="42" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a59d7137f775b3ca2648843ba34463f5f" prot="public" static="no">
         <name>DW_TRNG_ISTAT_RAND_RDY_OFFSET</name>
@@ -151,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="43" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="43" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a21526c023a7cebe0f303761d456cd582" prot="public" static="no">
         <name>DW_TRNG_ISTAT_SEED_DONE</name>
@@ -162,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="44" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a7e87a9925aacf2f84fd46f1f5126e5e8" prot="public" static="no">
         <name>DW_TRNG_ISTAT_SEED_DONE_OFFSET</name>
@@ -173,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="45" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a95651d8f4d24a452049f304f01e07646" prot="public" static="no">
         <name>DW_TRNG_ISTAT_AGE_ALARM</name>
@@ -184,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="46" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="46" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="46" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a3b1708066b7a2502a52e9b590bb1d805" prot="public" static="no">
         <name>DW_TRNG_ISTAT_AGE_ALARM_OFFSET</name>
@@ -195,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="47" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="47" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="47" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1aff723ac09965cf26e73c493a542e9cd0" prot="public" static="no">
         <name>DW_TRNG_ISTAT_RQST_ALARM</name>
@@ -206,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="48" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="48" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="48" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a328a869cea02766c13b65b044035e1e5" prot="public" static="no">
         <name>DW_TRNG_ISTAT_RQST_ALARM_OFFSET</name>
@@ -217,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="49" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a83378383b18e94d0c8e69b3d17e2521c" prot="public" static="no">
         <name>DW_TRNG_ISTAT_LFSR_LOCKUP</name>
@@ -228,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="50" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1aea24af09100417da583641fb5a147502" prot="public" static="no">
         <name>DW_TRNG_ISTAT_LFSR_LOCKUP_OFFSET</name>
@@ -239,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="51" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a8d54650bcb1b251b3f8fe5bab56adab0" prot="public" static="no">
         <name>DW_TRNG_CMD_GEN</name>
@@ -250,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="53" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a408c3c7aa2e25e22ff7e69c9b729c606" prot="public" static="no">
         <name>DW_TRNG_CMD_RESEED</name>
@@ -261,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="54" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="54" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="54" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__trng_8c_1a736556a179fa03d7896c4f3831ab66f0" prot="public" static="no">
         <name>DW_TRNG_CMD_NONCE</name>
@@ -272,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="55" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="55" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="55" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -282,7 +213,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg, uint32_t cmd)</argsstring>
         <name>_dw_trng_cmd</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <param>
@@ -295,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="59" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="59" bodyend="78"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="57" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a27bd4efb2973fd944a4417c653ff7c62" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int32_t</type>
@@ -303,7 +234,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg)</argsstring>
         <name>_dw_trng_get_mode</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <briefdescription>
@@ -312,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="80" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="80" bodyend="82"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="80" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="80" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a6bd9204da7d42a038b0247fb005b0248" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -320,7 +251,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg, uint32_t r256)</argsstring>
         <name>_dw_trng_set_mode</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <param>
@@ -333,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="84" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="84" bodyend="90"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="85" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="85" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1afc7e1740509e4e0a9f42e6bd6cb53cea" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int32_t</type>
@@ -341,7 +272,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg)</argsstring>
         <name>_dw_trng_get_istat_rand_rdy</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <briefdescription>
@@ -350,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="92" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="92" bodyend="94"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="94" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="94" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a0e2977581cc60974fd142a9d38a952f6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -358,7 +289,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg)</argsstring>
         <name>_dw_trng_clear_istat_rand_rdy</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <briefdescription>
@@ -367,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="96" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="96" bodyend="98"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="99" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="99" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a6e452fc3a60815a8209d479957d1ed35" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int32_t</type>
@@ -375,7 +306,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg)</argsstring>
         <name>_dw_trng_get_istat_seed_done</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <briefdescription>
@@ -384,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="100" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="100" bodyend="102"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="104" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="104" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a57ea61f8e6cefb2e9a972c8848dbdf0d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -392,7 +323,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg)</argsstring>
         <name>_dw_trng_clear_istat_seed_done</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <briefdescription>
@@ -401,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="104" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="104" bodyend="106"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="109" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="109" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a7968573b4bdfc9c92e3c0c9c727b5d67" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -409,7 +340,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg, uint32_t *data)</argsstring>
         <name>_dw_trng_get_rand</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <param>
@@ -422,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="109" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="109" bodyend="121"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="114" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="114" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1acc41669323298da6313c7186957bfa39" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -430,7 +361,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg, uint32_t *stat)</argsstring>
         <name>_dw_trng_get_stat</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <param>
@@ -443,7 +374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="123" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="123" bodyend="126"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="129" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="129" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a5a4c107a26b30ead1ca53a369270c4c3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -451,7 +382,7 @@
         <argsstring>(DW_TRNG_REG_PTR trng_reg, uint32_t *nonce_buf)</argsstring>
         <name>_dw_trng_reseed</name>
         <param>
-          <type><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref></type>
+          <type>DW_TRNG_REG_PTR</type>
           <declname>trng_reg</declname>
         </param>
         <param>
@@ -464,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="128" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="128" bodyend="140"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="135" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="135" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a8a7a8f9fd972e58fb564534316ae3581" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -472,7 +403,7 @@
         <argsstring>(DEV_TRNG_PTR trng_obj)</argsstring>
         <name>dw_trng_open</name>
         <param>
-          <type><ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref></type>
+          <type>DEV_TRNG_PTR</type>
           <declname>trng_obj</declname>
         </param>
         <briefdescription>
@@ -481,7 +412,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="142" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="142" bodyend="151"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="150" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="150" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a78cf2c79798d3c23901a666c6aa9d5ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -489,7 +420,7 @@
         <argsstring>(DEV_TRNG_PTR trng_obj)</argsstring>
         <name>dw_trng_close</name>
         <param>
-          <type><ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref></type>
+          <type>DEV_TRNG_PTR</type>
           <declname>trng_obj</declname>
         </param>
         <briefdescription>
@@ -498,7 +429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="153" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="153" bodyend="155"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="163" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="163" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1aa7453c656249243c48cf327a2b4ac267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -506,7 +437,7 @@
         <argsstring>(DEV_TRNG_PTR trng_obj, uint32_t ctrl_cmd, void *param)</argsstring>
         <name>dw_trng_control</name>
         <param>
-          <type><ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref></type>
+          <type>DEV_TRNG_PTR</type>
           <declname>trng_obj</declname>
         </param>
         <param>
@@ -523,7 +454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="157" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="157" bodyend="190"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="168" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="168" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a1a614a6f55f9c66dc84130308480b358" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -531,7 +462,7 @@
         <argsstring>(DEV_TRNG_PTR trng_obj, uint32_t *data_buf)</argsstring>
         <name>dw_trng_read</name>
         <param>
-          <type><ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref></type>
+          <type>DEV_TRNG_PTR</type>
           <declname>trng_obj</declname>
         </param>
         <param>
@@ -544,7 +475,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="192" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="192" bodyend="206"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="204" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="204" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="dw__trng_8c_1a951bd58ef01dd00069461e4a17b96d76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -552,7 +483,7 @@
         <argsstring>(DEV_TRNG_PTR trng_obj, void *ptr)</argsstring>
         <name>dw_trng_isr</name>
         <param>
-          <type><ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref></type>
+          <type>DEV_TRNG_PTR</type>
           <declname>trng_obj</declname>
         </param>
         <param>
@@ -565,7 +496,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="208" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="208" bodyend="210"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" line="222" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c" bodystart="222" bodyend="225"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -601,10 +532,10 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dw_trng.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>TRNG_VERSION_NIST</highlight></codeline>
@@ -629,163 +560,178 @@
 <codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DW_TRNG_CMD_RESEED<sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
 <codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>DW_TRNG_CMD_NONCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
 <codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_cmd(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>cmd){</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(cmd){</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_GEN:</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;CTRL<sp/>|=<sp/>cmd;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_cmd(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>cmd)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(cmd)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_GEN:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;CTRL<sp/>|=<sp/>cmd;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_RESEED:</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;CTRL<sp/>|=<sp/>cmd;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_RESEED:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;CTRL<sp/>|=<sp/>cmd;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_NONCE:</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;CTRL<sp/>|=<sp/>cmd;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>DW_TRNG_CMD_NONCE:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;CTRL<sp/>|=<sp/>cmd;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>E_PAR;<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_get_mode(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg){</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(trng_reg-&gt;MODE<sp/>&amp;<sp/>DW_TRNG_MODE_R256)<sp/>&gt;&gt;<sp/>3;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_set_mode(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>r256){</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(r256){</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;MODE<sp/>|=<sp/>DW_TRNG_MODE_R256;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;MODE<sp/>&amp;=<sp/>~DW_TRNG_MODE_R256;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_get_istat_rand_rdy(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg){</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(trng_reg-&gt;ISTAT<sp/>&amp;<sp/>DW_TRNG_ISTAT_RAND_RDY)<sp/>&gt;&gt;<sp/>DW_TRNG_ISTAT_RAND_RDY_OFFSET;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_clear_istat_rand_rdy(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg){</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;ISTAT<sp/>=<sp/>DW_TRNG_ISTAT_RAND_RDY;</highlight><highlight class="comment">//write<sp/>1<sp/>to<sp/>clear<sp/>register<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_get_istat_seed_done(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg){</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(trng_reg-&gt;ISTAT<sp/>&amp;<sp/>DW_TRNG_ISTAT_SEED_DONE)<sp/>&gt;&gt;<sp/>DW_TRNG_ISTAT_SEED_DONE_OFFSET;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_get_mode(DW_TRNG_REG_PTR<sp/>trng_reg)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(trng_reg-&gt;MODE<sp/>&amp;<sp/>DW_TRNG_MODE_R256)<sp/>&gt;&gt;<sp/>3;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_set_mode(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>r256)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r256)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;MODE<sp/>|=<sp/>DW_TRNG_MODE_R256;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;MODE<sp/>&amp;=<sp/>~DW_TRNG_MODE_R256;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_get_istat_rand_rdy(DW_TRNG_REG_PTR<sp/>trng_reg)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(trng_reg-&gt;ISTAT<sp/>&amp;<sp/>DW_TRNG_ISTAT_RAND_RDY)<sp/>&gt;&gt;<sp/>DW_TRNG_ISTAT_RAND_RDY_OFFSET;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_clear_istat_rand_rdy(DW_TRNG_REG_PTR<sp/>trng_reg)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;ISTAT<sp/>=<sp/>DW_TRNG_ISTAT_RAND_RDY;</highlight><highlight class="comment">//<sp/>write<sp/>1<sp/>to<sp/>clear<sp/>register<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_clear_istat_seed_done(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg){</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;ISTAT<sp/>=<sp/>DW_TRNG_ISTAT_SEED_DONE;</highlight><highlight class="comment">//write<sp/>1<sp/>to<sp/>clear<sp/>register<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_get_istat_seed_done(DW_TRNG_REG_PTR<sp/>trng_reg)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(trng_reg-&gt;ISTAT<sp/>&amp;<sp/>DW_TRNG_ISTAT_SEED_DONE)<sp/>&gt;&gt;<sp/>DW_TRNG_ISTAT_SEED_DONE_OFFSET;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_get_rand(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>*data){</highlight><highlight class="comment">//read<sp/>from<sp/>rand0~3<sp/>or<sp/>rand0~7</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>*data)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[0]<sp/>=<sp/>trng_reg-&gt;RAND0;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[1]<sp/>=<sp/>trng_reg-&gt;RAND1;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[2]<sp/>=<sp/>trng_reg-&gt;RAND2;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[3]<sp/>=<sp/>trng_reg-&gt;RAND3;</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//if(dw_trng_get_mode(trng_reg)<sp/>==<sp/>1<sp/>)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[4]<sp/>=<sp/>trng_reg-&gt;RAND4;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[5]<sp/>=<sp/>trng_reg-&gt;RAND5;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[6]<sp/>=<sp/>trng_reg-&gt;RAND6;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[7]<sp/>=<sp/>trng_reg-&gt;RAND7;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_get_stat(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>*stat){</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*stat<sp/>=<sp/>trng_reg-&gt;STAT;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_reseed(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>trng_reg,<sp/>uint32_t<sp/>*nonce_buf){</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nonce_buf<sp/>!=<sp/>NULL){</highlight><highlight class="comment">//<sp/>Nonce<sp/>Reseed<sp/>cmd</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(trng_reg,<sp/>DW_TRNG_CMD_NONCE);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight><highlight class="comment">//Random<sp/>Reseed<sp/>cmd</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(trng_reg,<sp/>DW_TRNG_CMD_RESEED);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!_dw_trng_get_istat_seed_done(trng_reg)){</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//do<sp/>nothing,<sp/>wait<sp/>until<sp/>reseed<sp/>is<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_clear_istat_seed_done(trng_reg);</highlight><highlight class="comment">//clear<sp/>ISTAT.RAND_RDY<sp/>bit<sp/>to<sp/>acknowledge</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal">int32_t<sp/>dw_trng_open(<ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref><sp/>trng_obj){</highlight><highlight class="comment">//reseed<sp/>with<sp/>internal<sp/>random<sp/>seed<sp/>generator</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>ptrng_info<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>dw_trng_ctrl_ptr<sp/>=<sp/>ptrng_info-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>ptrng<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>dw_trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_reseed(ptrng,<sp/>NULL);</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal">int32_t<sp/>dw_trng_close(<ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref><sp/>trng_obj){</highlight><highlight class="comment">//do<sp/>nothing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_clear_istat_seed_done(DW_TRNG_REG_PTR<sp/>trng_reg)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>trng_reg-&gt;ISTAT<sp/>=<sp/>DW_TRNG_ISTAT_SEED_DONE;</highlight><highlight class="comment">//<sp/>write<sp/>1<sp/>to<sp/>clear<sp/>register<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_get_rand(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>*data)<sp/></highlight><highlight class="comment">//<sp/>read<sp/>from<sp/>rand0~3<sp/>or<sp/>rand0~7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>*data)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[0]<sp/>=<sp/>trng_reg-&gt;RAND0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[1]<sp/>=<sp/>trng_reg-&gt;RAND1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[2]<sp/>=<sp/>trng_reg-&gt;RAND2;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[3]<sp/>=<sp/>trng_reg-&gt;RAND3;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if(dw_trng_get_mode(trng_reg)<sp/>==<sp/>1<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[4]<sp/>=<sp/>trng_reg-&gt;RAND4;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[5]<sp/>=<sp/>trng_reg-&gt;RAND5;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[6]<sp/>=<sp/>trng_reg-&gt;RAND6;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data[7]<sp/>=<sp/>trng_reg-&gt;RAND7;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_dw_trng_get_stat(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>*stat)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*stat<sp/>=<sp/>trng_reg-&gt;STAT;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>_dw_trng_reseed(DW_TRNG_REG_PTR<sp/>trng_reg,<sp/>uint32_t<sp/>*nonce_buf)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nonce_buf<sp/>!=<sp/>NULL)<sp/>{</highlight><highlight class="comment">//<sp/>Nonce<sp/>Reseed<sp/>cmd</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(trng_reg,<sp/>DW_TRNG_CMD_NONCE);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight><highlight class="comment">//<sp/>Random<sp/>Reseed<sp/>cmd</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(trng_reg,<sp/>DW_TRNG_CMD_RESEED);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!_dw_trng_get_istat_seed_done(trng_reg))<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>nothing,<sp/>wait<sp/>until<sp/>reseed<sp/>is<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_clear_istat_seed_done(trng_reg);</highlight><highlight class="comment">//<sp/>clear<sp/>ISTAT.RAND_RDY<sp/>bit<sp/>to<sp/>acknowledge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>E_OK;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">int32_t<sp/>dw_trng_open(DEV_TRNG_PTR<sp/>trng_obj)<sp/></highlight><highlight class="comment">//<sp/>reseed<sp/>with<sp/>internal<sp/>random<sp/>seed<sp/>generator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_TRNG_INFO_PTR<sp/>ptrng_info<sp/>=<sp/>&amp;trng_obj-&gt;trng_info;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_CTRL_PTR<sp/>dw_trng_ctrl_ptr<sp/>=<sp/>ptrng_info-&gt;trng_ctrl;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>ptrng<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>dw_trng_ctrl_ptr-&gt;dw_trng_regs;</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal">int32_t<sp/>dw_trng_control(<ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref><sp/>trng_obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param){</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>ptrng_info<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>dw_trng_ctrl_ptr<sp/>=<sp/>ptrng_info-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>ptrng<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>dw_trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_reseed(ptrng,<sp/>NULL);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//uint32_t<sp/>val32;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>to<sp/>receive<sp/>unsigned<sp/>int<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>switch<sp/>(ctrl_cmd)<sp/>{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_128_BIT_OUTPUT:</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_set_mode(ptrng,<sp/>0);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_256_BIT_OUTPUT:</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_set_mode(ptrng,<sp/>1);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_RESEED_AUTO:</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_reseed(ptrng,<sp/>NULL);</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_RESEED_NONCE:</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(param<sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_reseed(ptrng,<sp/>param);</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" kindref="member">E_NOSPT</ref>;</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal">int32_t<sp/>dw_trng_read(<ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref><sp/>trng_obj,<sp/>uint32_t<sp/>*data_buf){</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__trng__info" kindref="compound">DEV_TRNG_INFO_PTR</ref><sp/>ptrng_info<sp/>=<sp/>&amp;trng_obj-&gt;<ref refid="structdev__trng_1a26fe3b72f72ba7fa5f0b51abf72e4f38" kindref="member">trng_info</ref>;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__ctrl" kindref="compound">DW_TRNG_CTRL_PTR</ref><sp/>dw_trng_ctrl_ptr<sp/>=<sp/>ptrng_info-&gt;<ref refid="structdev__trng__info_1af0427239462a9bf31739e150aa5ecc30" kindref="member">trng_ctrl</ref>;</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref><sp/>ptrng<sp/>=<sp/>(<ref refid="structdw__trng__reg" kindref="compound">DW_TRNG_REG_PTR</ref>)<sp/>dw_trng_ctrl_ptr-&gt;<ref refid="structdw__trng__ctrl_1a783122b45a3b9f1454db039f87086439" kindref="member">dw_trng_regs</ref>;</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(ptrng,<sp/>DW_TRNG_CMD_GEN);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!_dw_trng_get_istat_rand_rdy(ptrng)){</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//do<sp/>nothing,<sp/>wait<sp/>until<sp/>random<sp/>numbers<sp/>are<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_clear_istat_rand_rdy(ptrng);</highlight><highlight class="comment">//clear<sp/>ISTAT.RAND_RDY<sp/>bit<sp/>to<sp/>acknowledge</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_get_rand(ptrng,<sp/>data_buf);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">int32_t<sp/>dw_trng_close(DEV_TRNG_PTR<sp/>trng_obj)<sp/></highlight><highlight class="comment">//<sp/>do<sp/>nothing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>E_OK;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal">int32_t<sp/>dw_trng_control(DEV_TRNG_PTR<sp/>trng_obj,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_TRNG_INFO_PTR<sp/>ptrng_info<sp/>=<sp/>&amp;trng_obj-&gt;trng_info;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_CTRL_PTR<sp/>dw_trng_ctrl_ptr<sp/>=<sp/>ptrng_info-&gt;trng_ctrl;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>ptrng<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>dw_trng_ctrl_ptr-&gt;dw_trng_regs;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint32_t<sp/>val32;<sp/><sp/><sp/><sp/><sp/><sp/>/**<sp/>to<sp/>receive<sp/>unsigned<sp/>int<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>switch<sp/>(ctrl_cmd)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_128_BIT_OUTPUT:</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_set_mode(ptrng,<sp/>0);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_256_BIT_OUTPUT:</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_set_mode(ptrng,<sp/>1);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_RESEED_AUTO:</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_reseed(ptrng,<sp/>NULL);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>TRNG_CMD_SET_RAND_RESEED_NONCE:</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(param<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>E_PAR;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_reseed(ptrng,<sp/>param);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>E_NOSPT;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_trng_isr(<ref refid="structdev__trng" kindref="compound">DEV_TRNG_PTR</ref><sp/>trng_obj,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr){</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//polling<sp/>mode,<sp/>isr<sp/>not<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>TRNG_VERSION_NIST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">int32_t<sp/>dw_trng_read(DEV_TRNG_PTR<sp/>trng_obj,<sp/>uint32_t<sp/>*data_buf)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_TRNG_INFO_PTR<sp/>ptrng_info<sp/>=<sp/>&amp;trng_obj-&gt;trng_info;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_CTRL_PTR<sp/>dw_trng_ctrl_ptr<sp/>=<sp/>ptrng_info-&gt;trng_ctrl;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_TRNG_REG_PTR<sp/>ptrng<sp/>=<sp/>(DW_TRNG_REG_PTR)<sp/>dw_trng_ctrl_ptr-&gt;dw_trng_regs;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_cmd(ptrng,<sp/>DW_TRNG_CMD_GEN);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!_dw_trng_get_istat_rand_rdy(ptrng))<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>nothing,<sp/>wait<sp/>until<sp/>random<sp/>numbers<sp/>are<sp/>ready</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_clear_istat_rand_rdy(ptrng);</highlight><highlight class="comment">//<sp/>clear<sp/>ISTAT.RAND_RDY<sp/>bit<sp/>to<sp/>acknowledge</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_dw_trng_get_rand(ptrng,<sp/>data_buf);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_trng_isr(DEV_TRNG_PTR<sp/>trng_obj,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>polling<sp/>mode,<sp/>isr<sp/>not<sp/>implemented</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>TRNG_VERSION_NIST<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/trng/dw_trng.c"/>
   </compounddef>
 </doxygen>

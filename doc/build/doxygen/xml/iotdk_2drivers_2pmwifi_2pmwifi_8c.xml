@@ -4,135 +4,80 @@
     <compoundname>iotdk/drivers/pmwifi/pmwifi.c</compoundname>
     <includes local="no">stddef.h</includes>
     <includes local="no">string.h</includes>
-    <includes refid="arc_8h" local="yes">arc.h</includes>
-    <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
-    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
-    <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
+    <includes local="yes">arc/arc.h</includes>
+    <includes local="yes">arc/arc_builtin.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_error.h</includes>
+    <includes local="yes">arc/arc_exception.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
     <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
     <includes refid="iotdk_2drivers_2pmwifi_2pmwifi_8h" local="yes">pmwifi.h</includes>
-    <includes refid="emb_a_r_c__debug_8h" local="yes">embARC_debug.h</includes>
+    <includes local="yes">embARC_debug.h</includes>
     <incdepgraph>
-      <node id="6843">
-        <label>stdbool.h</label>
+      <node id="3377">
+        <label>embARC_debug.h</label>
       </node>
-      <node id="6847">
+      <node id="3372">
+        <label>arc/arc_exception.h</label>
+      </node>
+      <node id="3369">
+        <label>arc/arc_builtin.h</label>
+      </node>
+      <node id="3366">
+        <label>stddef.h</label>
+      </node>
+      <node id="3371">
+        <label>embARC_error.h</label>
+      </node>
+      <node id="3367">
+        <label>string.h</label>
+      </node>
+      <node id="3376">
+        <label>device/dev_wnic.h</label>
+      </node>
+      <node id="3370">
+        <label>embARC_toolchain.h</label>
+      </node>
+      <node id="3365">
+        <label>pmwifi.c</label>
+        <link refid="iotdk/drivers/pmwifi/pmwifi.c"/>
+        <childnode refid="3366" relation="include">
+        </childnode>
+        <childnode refid="3367" relation="include">
+        </childnode>
+        <childnode refid="3368" relation="include">
+        </childnode>
+        <childnode refid="3369" relation="include">
+        </childnode>
+        <childnode refid="3370" relation="include">
+        </childnode>
+        <childnode refid="3371" relation="include">
+        </childnode>
+        <childnode refid="3372" relation="include">
+        </childnode>
+        <childnode refid="3373" relation="include">
+        </childnode>
+        <childnode refid="3374" relation="include">
+        </childnode>
+        <childnode refid="3375" relation="include">
+        </childnode>
+        <childnode refid="3377" relation="include">
+        </childnode>
+      </node>
+      <node id="3375">
+        <label>pmwifi.h</label>
+        <link refid="iotdk_2drivers_2pmwifi_2pmwifi_8h_source"/>
+        <childnode refid="3376" relation="include">
+        </childnode>
+      </node>
+      <node id="3374">
         <label>os_hal_inc.h</label>
         <link refid="os__hal__inc_8h"/>
       </node>
-      <node id="6839">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="6840" relation="include">
-        </childnode>
+      <node id="3368">
+        <label>arc/arc.h</label>
       </node>
-      <node id="6837">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="6838" relation="include">
-        </childnode>
-      </node>
-      <node id="6844">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="6841" relation="include">
-        </childnode>
-        <childnode refid="6839" relation="include">
-        </childnode>
-      </node>
-      <node id="6841">
-        <label>stdint.h</label>
-      </node>
-      <node id="6835">
-        <label>stddef.h</label>
-      </node>
-      <node id="6842">
-        <label>limits.h</label>
-      </node>
-      <node id="6851">
-        <label>embARC_debug.h</label>
-        <link refid="emb_a_r_c__debug_8h"/>
-        <childnode refid="6852" relation="include">
-        </childnode>
-      </node>
-      <node id="6845">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="6840" relation="include">
-        </childnode>
-        <childnode refid="6837" relation="include">
-        </childnode>
-        <childnode refid="6839" relation="include">
-        </childnode>
-      </node>
-      <node id="6836">
-        <label>string.h</label>
-      </node>
-      <node id="6849">
-        <label>dev_wnic.h</label>
-        <link refid="dev__wnic_8h"/>
-        <childnode refid="6850" relation="include">
-        </childnode>
-      </node>
-      <node id="6840">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="6841" relation="include">
-        </childnode>
-        <childnode refid="6842" relation="include">
-        </childnode>
-        <childnode refid="6835" relation="include">
-        </childnode>
-        <childnode refid="6843" relation="include">
-        </childnode>
-      </node>
-      <node id="6852">
-        <label>xprintf.h</label>
-      </node>
-      <node id="6850">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="6841" relation="include">
-        </childnode>
-      </node>
-      <node id="6838">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="6834">
-        <label>pmwifi.c</label>
-        <link refid="iotdk/drivers/pmwifi/pmwifi.c"/>
-        <childnode refid="6835" relation="include">
-        </childnode>
-        <childnode refid="6836" relation="include">
-        </childnode>
-        <childnode refid="6837" relation="include">
-        </childnode>
-        <childnode refid="6839" relation="include">
-        </childnode>
-        <childnode refid="6840" relation="include">
-        </childnode>
-        <childnode refid="6844" relation="include">
-        </childnode>
-        <childnode refid="6845" relation="include">
-        </childnode>
-        <childnode refid="6846" relation="include">
-        </childnode>
-        <childnode refid="6847" relation="include">
-        </childnode>
-        <childnode refid="6848" relation="include">
-        </childnode>
-        <childnode refid="6851" relation="include">
-        </childnode>
-      </node>
-      <node id="6848">
-        <label>pmwifi.h</label>
-        <link refid="iotdk_2drivers_2pmwifi_2pmwifi_8h_source"/>
-        <childnode refid="6849" relation="include">
-        </childnode>
-      </node>
-      <node id="6846">
+      <node id="3373">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
@@ -146,20 +91,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="49" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1a4bdf8da26ddf1b5d1a38298c7d5ae5b8" prot="public" static="no">
         <name>PMWIFI_CHECK_EXP</name>
         <param><defname>EXPR</defname></param>
         <param><defname>ERROR_CODE</defname></param>
-        <initializer><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <initializer>CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="52" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1a8139f7f574a9b9bad94ea675a4372380" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_SPI_FREQ</name>
@@ -170,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="56" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1a07b12e5e97685768641beb279853cc76" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_SPI_ID</name>
@@ -181,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="58" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="58" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="58" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1ae453fb2541199fe6299fb6023faebe39" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_SPI_LINE</name>
@@ -192,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="60" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="60" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="60" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1a40441d47b25d44958c6f33f536451dd9" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_GPIO_ID</name>
@@ -203,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="61" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1ace57f8bb2f4b58548e76a9c78f74666c" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_INT_PIN</name>
@@ -214,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="63" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="63" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="63" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1ac566a9d17ffebc4fb7bf11213a8cb222" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_RST_PIN</name>
@@ -225,45 +170,45 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="64" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="64" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="64" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1aa4d17a257d8f95bcee5f31bbacf6e8b6" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_WP_PIN</name>
-        <initializer>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___p_i_n_d_e_f_1ggab250cf93325c17613311c44766920a12a16df4617a020c44a7e883baf8cea7b01" kindref="member">DEV_GPIO_PIN_NC</ref>)</initializer>
+        <initializer>(DEV_GPIO_PIN_NC)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="65" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="65" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="65" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1aea9aee4645a8d1119c79a339a1156e3f" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_HIB_PIN</name>
-        <initializer>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___p_i_n_d_e_f_1ggab250cf93325c17613311c44766920a12a16df4617a020c44a7e883baf8cea7b01" kindref="member">DEV_GPIO_PIN_NC</ref>)</initializer>
+        <initializer>(DEV_GPIO_PIN_NC)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="66" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1aaa3113963c654cb1e0b5eb7e26e018cc" prot="public" static="no">
         <name>IOTDK_PMWIFI_0_PIN_GAP</name>
-        <initializer>(IOTDK_PMWIFI_0_INT_PIN-WF_GPIO_INT_PIN_OFS)</initializer>
+        <initializer>(IOTDK_PMWIFI_0_INT_PIN - WF_GPIO_INT_PIN_OFS)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="68" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="68" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="68" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structdev__wnic" kindref="compound">DEV_WNIC_PTR</ref></type>
+      <memberdef kind="function" id="iotdk_2drivers_2pmwifi_2pmwifi_8c_1a4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DEV_WNIC_PTR</type>
         <definition>DEV_WNIC_PTR wnic_get_dev</definition>
         <argsstring>(int32_t wnic_id)</argsstring>
         <name>wnic_get_dev</name>
@@ -274,11 +219,10 @@
         <briefdescription>
 <para>get one wnic device structure </para>        </briefdescription>
         <detaileddescription>
-<para>get an <ref refid="structdev__wnic" kindref="compound">wnic device</ref> by wnic device id. </para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="576" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="576" bodyend="599"/>
-        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" compoundref="emsk_2drivers_2pmwifi_2pmwifi_8c" startline="625" endline="630">pmwifi_all_install</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="575" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="575" bodyend="598"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -295,7 +239,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="605" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="605" bodyend="610"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" line="604" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c" bodystart="604" bodyend="609"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -331,16 +275,16 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MID_LWIP)<sp/>&amp;&amp;<sp/>defined(MID_LWIP_CONTRIB)</highlight></codeline>
 <codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_builtin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
@@ -350,9 +294,9 @@
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pmwifi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>DBG_LESS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>DBG_LESS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEBUG</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__debug_8h" kindref="compound">embARC_debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_debug.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PMWIFI_CHECK_EXP(EXPR,<sp/>ERROR_CODE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CHECK_EXP(EXPR,<sp/>ercd,<sp/>ERROR_CODE,<sp/>error_exit)</highlight></codeline>
 <codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
@@ -370,265 +314,265 @@
 <codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_PMWIFI_0_WP_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(DEV_GPIO_PIN_NC)</highlight></codeline>
 <codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_PMWIFI_0_HIB_PIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(DEV_GPIO_PIN_NC)</highlight></codeline>
 <codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_PMWIFI_0_PIN_GAP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(IOTDK_PMWIFI_0_INT_PIN-WF_GPIO_INT_PIN_OFS)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_PMWIFI_0_PIN_GAP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(IOTDK_PMWIFI_0_INT_PIN<sp/>-<sp/>WF_GPIO_INT_PIN_OFS)</highlight></codeline>
 <codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">/*********************PMOD<sp/>WIFI<sp/>-&gt;<sp/>MRF24WG*********************/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(WIFI_MRF24G)</highlight></codeline>
 <codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;wf_dev_hal.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mrf24g_adapter.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>WF<sp/>OPERATIONS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_PMWIFI_0_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>gpio<sp/>ops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_open(uint32_t<sp/>pin_mask,<sp/>uint32_t<sp/>pin_dir)</highlight></codeline>
-<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mask;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin_mask<sp/>=<sp/>((pin_mask<sp/>&amp;<sp/>WF_GPIO_PIN_MASK_ALL)&lt;&lt;IOTDK_PMWIFI_0_PIN_GAP);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(pin_dir&lt;&lt;IOTDK_PMWIFI_0_PIN_GAP)<sp/>&amp;<sp/>pin_mask;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga5127296ba57626bc984aa48d6ee5f010" kindref="member">gpio_open</ref>(mask);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>direction<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga012ec483702c3346090ed3990fb5c424" kindref="member">GPIO_CMD_SET_BIT_DIR_OUTPUT</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(~(pin_dir&lt;&lt;IOTDK_PMWIFI_0_PIN_GAP))<sp/>&amp;<sp/>pin_mask;</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1gadf2e3c74bf24056161b11fe605ae2465" kindref="member">GPIO_CMD_SET_BIT_DIR_INPUT</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Default<sp/>all<sp/>set<sp/>to<sp/>pull<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga628f933ae67d4f0acdedffd3b8b3ae99" kindref="member">GPIO_CMD_DIS_BIT_INT</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pin_mask);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_close(uint32_t<sp/>pin_mask)</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>close_mask<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close_mask<sp/>|=<sp/>pin_mask;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close_mask<sp/>&amp;=<sp/>WF_GPIO_PIN_MASK_ALL;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(close_mask<sp/>==<sp/>WF_GPIO_PIN_MASK_ALL)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>close<sp/>it<sp/>when<sp/>all<sp/>pin<sp/>need<sp/>to<sp/>be<sp/>closed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1gacbf9ba33414dd4d1dc01995b7c4fc52e" kindref="member">gpio_close</ref>();</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close_mask<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_read(uint32_t<sp/>pin_mask,<sp/>uint32_t<sp/>*value)</highlight></codeline>
-<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin_mask<sp/>=<sp/>((pin_mask<sp/>&amp;<sp/>WF_GPIO_PIN_MASK_ALL)&lt;&lt;IOTDK_PMWIFI_0_PIN_GAP);</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga0583a36e5d0aab4bd914c34bb44832c9" kindref="member">gpio_read</ref>(value,<sp/>pin_mask);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>(*value)<sp/>&gt;&gt;<sp/>IOTDK_PMWIFI_0_PIN_GAP;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_write(uint32_t<sp/>pin_mask,<sp/>uint32_t<sp/>value)</highlight></codeline>
-<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin_mask<sp/>=<sp/>((pin_mask<sp/>&amp;<sp/>WF_GPIO_PIN_MASK_ALL)&lt;&lt;IOTDK_PMWIFI_0_PIN_GAP);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>value<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga70bd322128648796b6652e4026a2eb91" kindref="member">gpio_write</ref>(value,<sp/>pin_mask);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_eint_install(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t_1ga8b480cf689e0b43585d081d51d1b6ff6" kindref="member">DEV_GPIO_HANDLER</ref><sp/>gpio_handler)</highlight></codeline>
-<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio__bit__isr" kindref="compound">DEV_GPIO_BIT_ISR</ref><sp/>bit_isr;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio__int__cfg" kindref="compound">DEV_GPIO_INT_CFG</ref><sp/>int_cfg;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.<ref refid="structdev__gpio__int__cfg_1abd8f09f3ae841c70f4eac7996b131ba3" kindref="member">int_bit_mask</ref><sp/>=<sp/>(1&lt;&lt;IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.<ref refid="structdev__gpio__int__cfg_1a3fc775dfe0535f3009cdc177411625c3" kindref="member">int_bit_type</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t_1ga245c0a48052a3e3ac76712bb38c6b871" kindref="member">GPIO_INT_BIT_LEVEL_TRIG</ref>(IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.<ref refid="structdev__gpio__int__cfg_1a1cb57db4fecc7b34137972ff05a3ecc5" kindref="member">int_bit_polarity</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t_1gad7a71014dc4411c347c81eb386f943a2" kindref="member">GPIO_INT_BIT_POL_ACT_LOW</ref>(IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.<ref refid="structdev__gpio__int__cfg_1aceb9fb6c9a83d3d2a511cf63f87c3fda" kindref="member">int_bit_debounce</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___i_n_t___c_f_g___s_e_t_1ga204e3512591e7fac986480673487edc9" kindref="member">GPIO_INT_BIT_DIS_DEBOUNCE</ref>(IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1gada822221fb039eb5549af98e8c88ce9b" kindref="member">GPIO_CMD_SET_BIT_INT_CFG</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;int_cfg));</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bit_isr.<ref refid="structdev__gpio__bit__isr_1ac46b214e96ed33acaa2394e2fb75fe34" kindref="member">int_bit_ofs</ref><sp/>=<sp/>IOTDK_PMWIFI_0_INT_PIN;</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bit_isr.<ref refid="structdev__gpio__bit__isr_1a4c3106c9eedd78f6b1dec60069db08b6" kindref="member">int_bit_handler</ref><sp/>=<sp/>gpio_handler;</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1gad43d27e0971a8cbca838dc69af2639a7" kindref="member">GPIO_CMD_SET_BIT_ISR</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;bit_isr));</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_eint_is_enabled(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="184"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mask;</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mthd;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga5c4b788e2447b60ec5e67dea7fc96104" kindref="member">GPIO_CMD_GET_BIT_MTHD</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;mthd));</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mthd<sp/>&amp;=<sp/>mask;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>((mthd==0)<sp/>?<sp/>WF_EINT_DISABLE:WF_EINT_ENABLE);</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_eint_control(int32_t<sp/>state)</highlight></codeline>
-<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mask;</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__gpio" kindref="compound">DEV_GPIO</ref><sp/>*pmwifi_gpio_ptr;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o_1gaa3ed54c8ec11f3ae9033d93c86e21c72" kindref="member">gpio_get_dev</ref>(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"></highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state<sp/>==<sp/>WF_EINT_ENABLE)<sp/>{</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga0dc3ba08f56ab2c5ca64e4beab70fed5" kindref="member">GPIO_CMD_ENA_BIT_INT</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___d_e_v_s_t_r_u_c_t_1ga659dba8a34f6d83194be83c3bdee0677" kindref="member">gpio_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___g_p_i_o___c_t_r_l_c_m_d_1ga628f933ae67d4f0acdedffd3b8b3ae99" kindref="member">GPIO_CMD_DIS_BIT_INT</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"></highlight></codeline>
-<codeline lineno="222"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>wifi<sp/>gpio<sp/>operation<sp/>object<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>WF_GPIO_OPS<sp/>pmwifi_0_gpio_ops<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_open,</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_close,</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_read,</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_write,</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_eint_install,</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_eint_is_enabled,</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_eint_control</highlight></codeline>
-<codeline lineno="235"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>timer<sp/>ops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_timer_init(uint32_t<sp/>freq)</highlight></codeline>
-<codeline lineno="239"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>pmwifi_0_timer_read_ms(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="244"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>OSP_GET_CUR_MS();</highlight></codeline>
-<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pmwifi_0_timer_delay(uint32_t<sp/>ms)</highlight></codeline>
-<codeline lineno="249"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight></codeline>
-<codeline lineno="251"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(ms);</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="253"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r_1gadf80b95e6ceb5c1014e3e1a6f243fe8e" kindref="member">board_delay_ms</ref>(ms,<sp/>OSP_DELAY_OS_COMPAT_ENABLE);</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="255"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>wifi<sp/>timer<sp/>operations<sp/>object<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>WF_TIMER_OPS<sp/>pmwifi_0_timer_ops<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_timer_init,</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_timer_read_ms,</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_timer_delay</highlight></codeline>
-<codeline lineno="262"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>spi<sp/>ops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_open(uint32_t<sp/>freq,<sp/>uint32_t<sp/>clk_mode)</highlight></codeline>
-<codeline lineno="265"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__spi" kindref="compound">DEV_SPI</ref><sp/>*pmwifi_spi_ptr;</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"></highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1gab6b6fc8a280ce9652f6245ba803a4f8c" kindref="member">spi_open</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1ga9b1ad5abdf677288f655dd4bc9dc188d" kindref="member">DEV_MASTER_MODE</ref>,<sp/>freq);</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ercd<sp/>==<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref>)<sp/>||<sp/>(ercd<sp/>==<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>))<sp/>{</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9a3ba6c5fbec77ee3555e07fb08667d7" kindref="member">spi_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1gab5418cf6273988439379b02902fcb27d" kindref="member">SPI_CMD_SET_CLK_MODE</ref>,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1gaf3c5dc8db3ff175533e07d6a7c275520" kindref="member">CONV2VOID</ref>(clk_mode));</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_LESS_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="281"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"></highlight></codeline>
-<codeline lineno="283"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_close(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="284"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__spi" kindref="compound">DEV_SPI</ref><sp/>*pmwifi_spi_ptr;</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"></highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"></highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga1c550a415224864ca189f3b18a58c5d2" kindref="member">spi_close</ref>();</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_LESS_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="296"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"></highlight></codeline>
-<codeline lineno="298"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_cs(int32_t<sp/>cs)</highlight></codeline>
-<codeline lineno="299"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__spi" kindref="compound">DEV_SPI</ref><sp/>*pmwifi_spi_ptr;</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>cs_line<sp/>=<sp/>IOTDK_PMWIFI_0_SPI_LINE;</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"></highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cs<sp/>==<sp/>WF_CHIP_SELECTED)<sp/>{</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9a3ba6c5fbec77ee3555e07fb08667d7" kindref="member">spi_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga3917a1fd406a1d67750f3d0f2fd4d767" kindref="member">SPI_CMD_MST_SEL_DEV</ref>,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1gaf3c5dc8db3ff175533e07d6a7c275520" kindref="member">CONV2VOID</ref>(cs_line));</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9a3ba6c5fbec77ee3555e07fb08667d7" kindref="member">spi_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1ga8f6ad6c20c16aa1a0dcd696f27a7af5c" kindref="member">SPI_CMD_MST_DSEL_DEV</ref>,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_f_c_m_d_1gaf3c5dc8db3ff175533e07d6a7c275520" kindref="member">CONV2VOID</ref>(cs_line));</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight></codeline>
-<codeline lineno="313"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_MORE_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="316"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"></highlight></codeline>
-<codeline lineno="318"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_transfer(<ref refid="structdev__spi__transfer" kindref="compound">DEV_SPI_TRANSFER</ref><sp/>*xfer)</highlight></codeline>
-<codeline lineno="319"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__spi" kindref="compound">DEV_SPI</ref><sp/>*pmwifi_spi_ptr;</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(xfer<sp/>!=<sp/>NULL,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>WF<sp/>OPERATIONS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>IOTDK_PMWIFI_0_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>gpio<sp/>ops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_open(uint32_t<sp/>pin_mask,<sp/>uint32_t<sp/>pin_dir)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mask;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin_mask<sp/>=<sp/>((pin_mask<sp/>&amp;<sp/>WF_GPIO_PIN_MASK_ALL)<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(pin_dir<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP)<sp/>&amp;<sp/>pin_mask;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_open(mask);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/>E_OPNED)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>direction<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_SET_BIT_DIR_OUTPUT,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(~(pin_dir<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP))<sp/>&amp;<sp/>pin_mask;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_SET_BIT_DIR_INPUT,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Default<sp/>all<sp/>set<sp/>to<sp/>pull<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_DIS_BIT_INT,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pin_mask);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_close(uint32_t<sp/>pin_mask)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>close_mask<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close_mask<sp/>|=<sp/>pin_mask;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close_mask<sp/>&amp;=<sp/>WF_GPIO_PIN_MASK_ALL;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(close_mask<sp/>==<sp/>WF_GPIO_PIN_MASK_ALL)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>close<sp/>it<sp/>when<sp/>all<sp/>pin<sp/>need<sp/>to<sp/>be<sp/>closed<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_close();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close_mask<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_read(uint32_t<sp/>pin_mask,<sp/>uint32_t<sp/>*value)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin_mask<sp/>=<sp/>((pin_mask<sp/>&amp;<sp/>WF_GPIO_PIN_MASK_ALL)<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_read(value,<sp/>pin_mask);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*value<sp/>=<sp/>(*value)<sp/>&gt;&gt;<sp/>IOTDK_PMWIFI_0_PIN_GAP;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_write(uint32_t<sp/>pin_mask,<sp/>uint32_t<sp/>value)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin_mask<sp/>=<sp/>((pin_mask<sp/>&amp;<sp/>WF_GPIO_PIN_MASK_ALL)<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>value<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_PIN_GAP;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_write(value,<sp/>pin_mask);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_eint_install(DEV_GPIO_HANDLER<sp/>gpio_handler)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO_BIT_ISR<sp/>bit_isr;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO_INT_CFG<sp/>int_cfg;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.int_bit_mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.int_bit_type<sp/>=<sp/>GPIO_INT_BIT_LEVEL_TRIG(IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.int_bit_polarity<sp/>=<sp/>GPIO_INT_BIT_POL_ACT_LOW(IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int_cfg.int_bit_debounce<sp/>=<sp/>GPIO_INT_BIT_DIS_DEBOUNCE(IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_SET_BIT_INT_CFG,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;int_cfg));</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bit_isr.int_bit_ofs<sp/>=<sp/>IOTDK_PMWIFI_0_INT_PIN;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bit_isr.int_bit_handler<sp/>=<sp/>gpio_handler;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_SET_BIT_ISR,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;bit_isr));</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_eint_is_enabled(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mask;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mthd;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_GET_BIT_MTHD,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(&amp;mthd));</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ercd<sp/>==<sp/>E_OK)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mthd<sp/>&amp;=<sp/>mask;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>((mthd<sp/>==<sp/>0)<sp/>?<sp/>WF_EINT_DISABLE:WF_EINT_ENABLE);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_gpio_eint_control(int32_t<sp/>state)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>mask;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_GPIO<sp/>*pmwifi_gpio_ptr;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_gpio_ptr<sp/>=<sp/>gpio_get_dev(IOTDK_PMWIFI_0_GPIO_ID);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_gpio_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mask<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>IOTDK_PMWIFI_0_INT_PIN);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state<sp/>==<sp/>WF_EINT_ENABLE)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_ENA_BIT_INT,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_gpio_ptr-&gt;gpio_control(GPIO_CMD_DIS_BIT_INT,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)mask);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>wifi<sp/>gpio<sp/>operation<sp/>object<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>WF_GPIO_OPS<sp/>pmwifi_0_gpio_ops<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_open,</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_close,</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_read,</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_write,</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_eint_install,</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_eint_is_enabled,</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_gpio_eint_control</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>timer<sp/>ops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_timer_init(uint32_t<sp/>freq)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>E_OK;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>pmwifi_0_timer_read_ms(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>OSP_GET_CUR_MS();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pmwifi_0_timer_delay(uint32_t<sp/>ms)</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OS_FREERTOS</highlight></codeline>
+<codeline lineno="250"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(ms);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="252"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___c_o_m_m_o_n_1gadf80b95e6ceb5c1014e3e1a6f243fe8e" kindref="member">board_delay_ms</ref>(ms,<sp/>OSP_DELAY_OS_COMPAT_ENABLE);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="254"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>wifi<sp/>timer<sp/>operations<sp/>object<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>WF_TIMER_OPS<sp/>pmwifi_0_timer_ops<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_timer_init,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_timer_read_ms,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_timer_delay</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>spi<sp/>ops<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_open(uint32_t<sp/>freq,<sp/>uint32_t<sp/>clk_mode)</highlight></codeline>
+<codeline lineno="264"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SPI<sp/>*pmwifi_spi_ptr;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;spi_open(DEV_MASTER_MODE,<sp/>freq);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((ercd<sp/>==<sp/>E_OPNED)<sp/>||<sp/>(ercd<sp/>==<sp/>E_OK))<sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;spi_control(SPI_CMD_SET_CLK_MODE,<sp/>CONV2VOID(clk_mode));</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_LESS_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_close(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SPI<sp/>*pmwifi_spi_ptr;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;spi_close();</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_LESS_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_cs(int32_t<sp/>cs)</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SPI<sp/>*pmwifi_spi_ptr;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>cs_line<sp/>=<sp/>IOTDK_PMWIFI_0_SPI_LINE;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cs<sp/>==<sp/>WF_CHIP_SELECTED)<sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;spi_control(SPI_CMD_MST_SEL_DEV,<sp/>CONV2VOID(cs_line));</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;spi_control(SPI_CMD_MST_DSEL_DEV,<sp/>CONV2VOID(cs_line));</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_MORE_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_spi_transfer(DEV_SPI_TRANSFER<sp/>*xfer)</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_SPI<sp/>*pmwifi_spi_ptr;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_spi_ptr<sp/>=<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___d_w___s_p_i___o_b_j_1ga5e304233b6cea5fb2403f13d0b4bcb27" kindref="member">spi_get_dev</ref>(IOTDK_PMWIFI_0_SPI_ID);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(pmwifi_spi_ptr<sp/>!=<sp/>NULL,<sp/>E_OBJ);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMWIFI_CHECK_EXP(xfer<sp/>!=<sp/>NULL,<sp/>E_PAR);</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___d_e_v_s_t_r_u_c_t_1ga9a3ba6c5fbec77ee3555e07fb08667d7" kindref="member">spi_control</ref>(<ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_t_r_l_c_m_d_1gaa452500b09f0649f72ae32684f1ae786" kindref="member">SPI_CMD_TRANSFER_POLLING</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(xfer));</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>pmwifi_spi_ptr-&gt;spi_control(SPI_CMD_TRANSFER_POLLING,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(xfer));</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"></highlight></codeline>
 <codeline lineno="328"><highlight class="normal">error_exit:</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dbg_printf(DBG_LESS_INFO,<sp/></highlight><highlight class="stringliteral">&quot;[%s]%d:<sp/>ercd<sp/>%d\r\n&quot;</highlight><highlight class="normal">,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>ercd);</highlight></codeline>
@@ -642,7 +586,7 @@
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_spi_cs,</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_spi_transfer,</highlight></codeline>
 <codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IOTDK_PMWIFI_0_SPI_FREQ,</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e_1ggab7e00794f1fac3fdb4d4bf9fd0244c7ba60ae806d0aef91816b6f428b70f6ac53" kindref="member">SPI_CPOL_0_CPHA_0</ref></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPI_CPOL_0_CPHA_0</highlight></codeline>
 <codeline lineno="341"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"></highlight></codeline>
 <codeline lineno="343"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>WF_OPS<sp/>pmwifi_0_ops<sp/>=<sp/>{</highlight></codeline>
@@ -654,8 +598,8 @@
 <codeline lineno="350"><highlight class="preprocessor">#define<sp/>PMWIFI_0_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;MRF24G&quot;</highlight></codeline>
 <codeline lineno="351"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PMWIFI_0_IFNAME0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;w&apos;</highlight></codeline>
 <codeline lineno="352"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PMWIFI_0_IFNAME1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;0&apos;</highlight></codeline>
-<codeline lineno="353"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>pmwifi_0_wnic;</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/>pmwifi_0_mac_addr[<ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s_1gad31392abb15670470441f4fdbe8936cc" kindref="member">WNIC_HDR_LEN</ref>]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>DEV_WNIC<sp/>pmwifi_0_wnic;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>pmwifi_0_mac_addr[WNIC_HDR_LEN]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IOTDK_PMWIFI_0_MAC_ADDR0,</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IOTDK_PMWIFI_0_MAC_ADDR1,</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IOTDK_PMWIFI_0_MAC_ADDR2,</highlight></codeline>
@@ -723,12 +667,12 @@
 <codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mrf24g_get_scan_result_cnt(&amp;pmwifi_0_wnic);</highlight></codeline>
 <codeline lineno="420"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="421"><highlight class="normal"></highlight></codeline>
-<codeline lineno="422"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_get_scan_result(uint32_t<sp/>index,<sp/><ref refid="structwnic__scan__result" kindref="compound">WNIC_SCAN_RESULT</ref><sp/>*result)</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_get_scan_result(uint32_t<sp/>index,<sp/>WNIC_SCAN_RESULT<sp/>*result)</highlight></codeline>
 <codeline lineno="423"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mrf24g_get_scan_result(&amp;pmwifi_0_wnic,<sp/>index,<sp/>result);</highlight></codeline>
 <codeline lineno="425"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="426"><highlight class="normal"></highlight></codeline>
-<codeline lineno="427"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_wnic_connect(uint32_t<sp/>security,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*ssid,<sp/><ref refid="structwnic__auth__key" kindref="compound">WNIC_AUTH_KEY</ref><sp/>*key)</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>pmwifi_0_wnic_connect(uint32_t<sp/>security,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*ssid,<sp/>WNIC_AUTH_KEY<sp/>*key)</highlight></codeline>
 <codeline lineno="428"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mrf24g_wnic_connect(&amp;pmwifi_0_wnic,<sp/>security,<sp/>ssid,<sp/>key);</highlight></codeline>
 <codeline lineno="430"><highlight class="normal">}</highlight></codeline>
@@ -795,120 +739,119 @@
 <codeline lineno="491"><highlight class="normal"></highlight></codeline>
 <codeline lineno="492"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pmwifi_0_install(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="493"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*pmwifi_wnic_ptr<sp/>=<sp/>&amp;pmwifi_0_wnic;</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_WNIC<sp/>*pmwifi_wnic_ptr<sp/>=<sp/>&amp;pmwifi_0_wnic;</highlight></codeline>
 <codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WF_OPS<sp/>*pmwifi_ops_ptr<sp/>=<sp/>&amp;pmwifi_0_ops;</highlight></codeline>
-<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__wnic__info" kindref="compound">DEV_WNIC_INFO</ref><sp/>*pmwifi_wnic_info_ptr<sp/>=<sp/>&amp;(pmwifi_0_wnic.<ref refid="structdev__wnic_1af7f763cbd12dc36731707bb46ca1f7f4" kindref="member">wnic_info</ref>);</highlight></codeline>
-<codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__wnic__on__ops" kindref="compound">DEV_WNIC_ON_OPS</ref><sp/>*pmwifi_wnic_on_ops_ptr<sp/>=<sp/>&amp;(pmwifi_0_wnic.<ref refid="structdev__wnic_1a1077f20286f70ab27c37284704a1f6ba" kindref="member">wnic_on_ops</ref>);</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_WNIC_INFO<sp/>*pmwifi_wnic_info_ptr<sp/>=<sp/>&amp;(pmwifi_0_wnic.wnic_info);</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_WNIC_ON_OPS<sp/>*pmwifi_wnic_on_ops_ptr<sp/>=<sp/>&amp;(pmwifi_0_wnic.wnic_on_ops);</highlight></codeline>
 <codeline lineno="498"><highlight class="normal"></highlight></codeline>
-<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a553f0a77cb8749169bdaef61cc5ace4f" kindref="member">name</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)PMWIFI_0_NAME,<sp/>strlen(PMWIFI_0_NAME));</highlight></codeline>
-<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a368a37af9cebdbe3b51a11a65907244e" kindref="member">ifname</ref>[0]<sp/>=<sp/>PMWIFI_0_IFNAME0;</highlight></codeline>
-<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a368a37af9cebdbe3b51a11a65907244e" kindref="member">ifname</ref>[1]<sp/>=<sp/>PMWIFI_0_IFNAME1;</highlight></codeline>
-<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a3b18a25028f286c0713f7648135c5402" kindref="member">ssid</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structwnic__cfg__ssid" kindref="compound">WNIC_CFG_SSID</ref>));</highlight></codeline>
-<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a3b18a25028f286c0713f7648135c5402" kindref="member">ssid</ref>.ssid[0]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_wnic_info_ptr-&gt;name,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)PMWIFI_0_NAME,<sp/>strlen(PMWIFI_0_NAME));</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;ifname[0]<sp/>=<sp/>PMWIFI_0_IFNAME0;</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;ifname[1]<sp/>=<sp/>PMWIFI_0_IFNAME1;</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;pmwifi_wnic_info_ptr-&gt;ssid,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(WNIC_CFG_SSID));</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;ssid.ssid[0]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="504"><highlight class="normal"></highlight></codeline>
-<codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a54bc3fca4bc2ce2294107dd266e84131" kindref="member">ctrl</ref><sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_ops_ptr;</highlight></codeline>
-<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1aeef0484506fbbf880c4d0e2d427414bc" kindref="member">extra</ref><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a8540acbf5a5ddcccf4b980e6d0f13f23" kindref="member">opn_flg</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_e_1gacc57cb6b21940d6081f11ccda4a6edeb" kindref="member">DEV_CLOSED</ref>;</highlight></codeline>
-<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1ad956dfea5ed1fb1890be924039887793" kindref="member">err_flg</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_e_1ga50eab4ae331d5583953b3c538b8b9b32" kindref="member">DEV_GOOD</ref>;</highlight></codeline>
-<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a81085be37351f8ca36a0a5c9361362b8" kindref="member">network_type</ref><sp/>=<sp/>WNIC_NETWORK_TYPE_INFRASTRUCTURE;</highlight></codeline>
-<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1ae8e985f8e237e05452df9f1375428f17" kindref="member">init_status</ref><sp/>=<sp/>WNIC_NOT_INITIALIZED;</highlight></codeline>
-<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a18841715e4c445d1498173b3a9f0b71a" kindref="member">conn_status</ref><sp/>=<sp/>WNIC_NOT_CONNECTED;</highlight></codeline>
-<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1ad52382ee7bf26cae60a11414b1e52ab4" kindref="member">conn_type</ref><sp/>=<sp/>WNIC_CONN_NONE;</highlight></codeline>
-<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a927a69da74cb67ec296733e91b6c15e3" kindref="member">mac_status</ref><sp/>=<sp/>WNIC_MAC_NOT_UPDATED;</highlight></codeline>
-<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a3f3a0fc5c459d12a535c9e64076d8f0b" kindref="member">scan_status</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaf6133468ed8ac7bba26e29f755bb3084" kindref="member">WNIC_NOT_SCANED</ref>;</highlight></codeline>
-<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a47c20c5df91cf79ee09abb48259621fc" kindref="member">scan_results</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a02ee59366a86fb92fe4f2e056fc8d28d" kindref="member">mac_addr</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_0_mac_addr,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s_1gad31392abb15670470441f4fdbe8936cc" kindref="member">WNIC_HDR_LEN</ref>);</highlight></codeline>
-<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a0482d4e497510b10f79f7c1be32af4ab" kindref="member">busy_status</ref><sp/>=<sp/>WNIC_IS_FREE;</highlight></codeline>
-<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a9edee3bf1242d83605c77d08bd3e3235" kindref="member">tx_frame_cnt</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1aafaa8434f4aa89a49742c7a26084f9b6" kindref="member">tx_speed</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1abfd2f13e8d21dbc9ce38e3b52a0a9c4c" kindref="member">tx_pending</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a218f41336d89dbe60a19ba81fcea4a5f" kindref="member">rx_frame_cnt</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a33ca4b7c5e85c07b2033f0d546e203bf" kindref="member">rx_speed</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a59dc94c6e6875bf730c6307f7d6f7a6f" kindref="member">rx_pending</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a4ff4703269b5603af0fe386eb7a51d71" kindref="member">power_status</ref><sp/>=<sp/>WNIC_POWER_OFF;</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;ctrl<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_ops_ptr;</highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;extra<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;opn_flg<sp/>=<sp/>DEV_CLOSED;</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;err_flg<sp/>=<sp/>DEV_GOOD;</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;network_type<sp/>=<sp/>WNIC_NETWORK_TYPE_INFRASTRUCTURE;</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;init_status<sp/>=<sp/>WNIC_NOT_INITIALIZED;</highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;conn_status<sp/>=<sp/>WNIC_NOT_CONNECTED;</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;conn_type<sp/>=<sp/>WNIC_CONN_NONE;</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;mac_status<sp/>=<sp/>WNIC_MAC_NOT_UPDATED;</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;scan_status<sp/>=<sp/>WNIC_NOT_SCANED;</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;scan_results<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_wnic_info_ptr-&gt;mac_addr,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pmwifi_0_mac_addr,<sp/>WNIC_HDR_LEN);</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;busy_status<sp/>=<sp/>WNIC_IS_FREE;</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;tx_frame_cnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;tx_speed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;tx_pending<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;rx_frame_cnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;rx_speed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;rx_pending<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_info_ptr-&gt;power_status<sp/>=<sp/>WNIC_POWER_OFF;</highlight></codeline>
 <codeline lineno="525"><highlight class="normal"></highlight></codeline>
 <codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_init_success<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="527"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_init_fail<sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_connected<sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_init_fail<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_connected<sp/>=<sp/>NULL;</highlight></codeline>
 <codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_disconnected<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_mac_updated<sp/><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_scan_finished=<sp/>NULL;</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_mac_updated<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_scan_finished<sp/>=<sp/>NULL;</highlight></codeline>
 <codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_rxdata_comes<sp/>=<sp/>NULL;</highlight></codeline>
 <codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_on_ops_ptr-&gt;on_dev_asserted<sp/>=<sp/>NULL;</highlight></codeline>
 <codeline lineno="534"><highlight class="normal"></highlight></codeline>
-<codeline lineno="535"><highlight class="normal"></highlight></codeline>
-<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a0253a38c4916fa13163d092b1945e477" kindref="member">wnic_get_info</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_wnic_get_info<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1af14b3c96ea64f865b7acf2707d478242" kindref="member">wnic_control</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_wnic_control<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a777e4c1df90d66387707bd6fb6691a63" kindref="member">wnic_init</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_wnic_init<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a4afd84c6f7dd1f35a4dea0b8e3f7f677" kindref="member">poll_init_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_poll_init_status<sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1aa1c896b5634950d8773e87bc516c96fe" kindref="member">poll_busy_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_poll_busy_status<sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1af4f1b139659e7ef865c838cc3f0947b8" kindref="member">set_network_type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_set_network_type<sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="542"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ad6695099e2cbf7c74432feca799bbe74" kindref="member">set_macaddr</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_set_macaddr<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ac5b66354759860280141897638cf960c" kindref="member">get_macaddr</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_get_macaddr<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a5dd0bffad4b6e332191b0439bd7449d8" kindref="member">start_scan</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_start_scan<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a8005386dd2745adf69559909527f0501" kindref="member">stop_scan</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_stop_scan<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a852763d47bffd419c79d6ba105212fa9" kindref="member">poll_scan_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_poll_scan_status<sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ab0fed9e2278ac060ffc01366288a73e3" kindref="member">get_scan_result_cnt</ref><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_get_scan_result_cnt<sp/><sp/>;</highlight></codeline>
-<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ad40e29ab395b3c7c6adfc39da6ee8c96" kindref="member">get_scan_result</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_get_scan_result<sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_connect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_wnic_connect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a7c2edc48a9df1e87abec944a02db0b72" kindref="member">poll_conn_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_poll_conn_status<sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a41e9deabe10c26df933f453936799a9f" kindref="member">wnic_disconnect</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_wnic_disconnect<sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a47054ca712cef2adf5a4d38d8e3a5cce" kindref="member">prepare_tx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_prepare_tx<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1abd3b3af59fd9226237159bd2dc79eb2c" kindref="member">add_tx_data</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_add_tx_data<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="554"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1add8c0d7908623d71af6b7ba461e8ed27" kindref="member">commit_tx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_commit_tx<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a1cd50ac28c732f8593a1754038502518" kindref="member">prepare_rx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_prepare_rx<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a2143baf1c09c1f072ea558bca46bc1ca" kindref="member">get_rx_data</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_get_rx_data<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a080ed3e1d6da3301aeb8e4d68c582eed" kindref="member">accept_rx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_accept_rx<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1af8396b93c61e16e6141ff7568d619877" kindref="member">config_power_mode</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_config_power_mode<sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1afca31d056eccaa148cf17fa13ef9357b" kindref="member">poll_power_mode</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_poll_power_mode<sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a1242b0ee806c0c31712b1f337152b5e8" kindref="member">wnic_reset</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_wnic_reset<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="561"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a64b9373e298359b770fbbe9c52ea54a7" kindref="member">period_process</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pmwifi_0_period_process<sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
-<codeline lineno="562"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="563"><highlight class="normal"></highlight></codeline>
-<codeline lineno="564"><highlight class="normal">WF_OPS_PTR<sp/>get_wf_ops(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="565"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;pmwifi_0_ops;</highlight></codeline>
-<codeline lineno="567"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="568"><highlight class="normal"></highlight></codeline>
-<codeline lineno="569"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="570"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;no<sp/>wifi<sp/>module<sp/>selected&quot;</highlight></codeline>
-<codeline lineno="571"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="572"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="573"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_IOTDK_PMWIFI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="574"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="576" refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" refkind="member"><highlight class="normal"><ref refid="structdev__wnic" kindref="compound">DEV_WNIC_PTR</ref><sp/><ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" kindref="member">wnic_get_dev</ref>(int32_t<sp/>wnic_id)</highlight></codeline>
-<codeline lineno="577"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>install_flag<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="579"><highlight class="normal"></highlight></codeline>
-<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>install<sp/>device<sp/>objects<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(install_flag<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install_flag<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" kindref="member">pmwifi_all_install</ref>();</highlight></codeline>
-<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="585"><highlight class="normal"></highlight></codeline>
-<codeline lineno="586"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(wnic_id)<sp/>{</highlight></codeline>
-<codeline lineno="587"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_PMWIFI_0)</highlight></codeline>
-<codeline lineno="588"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_PMWIFI_0_ID:</highlight></codeline>
-<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;pmwifi_0_wnic;</highlight></codeline>
-<codeline lineno="591"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="592"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="593"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="594"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="595"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="596"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="597"><highlight class="normal"></highlight></codeline>
-<codeline lineno="598"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="599"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="600"><highlight class="normal"></highlight></codeline>
-<codeline lineno="605" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" kindref="member">pmwifi_all_install</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="606"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="607"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_PMWIFI_0)</highlight></codeline>
-<codeline lineno="608"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_install();</highlight></codeline>
-<codeline lineno="609"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="610"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="611"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>MID_LWIP<sp/>&amp;&amp;<sp/>MID_LWIP_CONTRIB<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_get_info<sp/>=<sp/>pmwifi_0_wnic_get_info;</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_control<sp/>=<sp/>pmwifi_0_wnic_control;</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_init<sp/>=<sp/>pmwifi_0_wnic_init;</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;poll_init_status<sp/>=<sp/>pmwifi_0_poll_init_status;</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;poll_busy_status<sp/>=<sp/>pmwifi_0_poll_busy_status;</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;set_network_type<sp/>=<sp/>pmwifi_0_set_network_type;</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;set_macaddr<sp/>=<sp/>pmwifi_0_set_macaddr;</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;get_macaddr<sp/>=<sp/>pmwifi_0_get_macaddr;</highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;start_scan<sp/>=<sp/>pmwifi_0_start_scan;</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;stop_scan<sp/>=<sp/>pmwifi_0_stop_scan;</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;poll_scan_status<sp/>=<sp/>pmwifi_0_poll_scan_status;</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;get_scan_result_cnt<sp/>=<sp/>pmwifi_0_get_scan_result_cnt;</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;get_scan_result<sp/>=<sp/>pmwifi_0_get_scan_result;</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_connect<sp/>=<sp/>pmwifi_0_wnic_connect;</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;poll_conn_status<sp/>=<sp/>pmwifi_0_poll_conn_status;</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_disconnect<sp/>=<sp/>pmwifi_0_wnic_disconnect;</highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;prepare_tx<sp/>=<sp/>pmwifi_0_prepare_tx;</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;add_tx_data<sp/>=<sp/>pmwifi_0_add_tx_data;</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;commit_tx<sp/>=<sp/>pmwifi_0_commit_tx;</highlight></codeline>
+<codeline lineno="554"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;prepare_rx<sp/>=<sp/>pmwifi_0_prepare_rx;</highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;get_rx_data<sp/>=<sp/>pmwifi_0_get_rx_data;</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;accept_rx<sp/>=<sp/>pmwifi_0_accept_rx;</highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;config_power_mode<sp/>=<sp/>pmwifi_0_config_power_mode;</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;poll_power_mode<sp/>=<sp/>pmwifi_0_poll_power_mode;</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;wnic_reset<sp/>=<sp/>pmwifi_0_wnic_reset;</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_wnic_ptr-&gt;period_process<sp/>=<sp/>pmwifi_0_period_process;</highlight></codeline>
+<codeline lineno="561"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="562"><highlight class="normal"></highlight></codeline>
+<codeline lineno="563"><highlight class="normal">WF_OPS_PTR<sp/>get_wf_ops(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="564"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;pmwifi_0_ops;</highlight></codeline>
+<codeline lineno="566"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"></highlight></codeline>
+<codeline lineno="568"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="569"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;no<sp/>wifi<sp/>module<sp/>selected&quot;</highlight></codeline>
+<codeline lineno="570"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="571"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="572"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_IOTDK_PMWIFI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="573"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="575"><highlight class="normal">DEV_WNIC_PTR<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga4ea6fc486b6808c2c88e8116dde30a05" kindref="member">wnic_get_dev</ref>(int32_t<sp/>wnic_id)</highlight></codeline>
+<codeline lineno="576"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>install_flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>install<sp/>device<sp/>objects<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(install_flag<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install_flag<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" kindref="member">pmwifi_all_install</ref>();</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"></highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(wnic_id)<sp/>{</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_PMWIFI_0)</highlight></codeline>
+<codeline lineno="587"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IOTDK_PMWIFI_0_ID:</highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;pmwifi_0_wnic;</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="591"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="592"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="593"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="594"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="595"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"></highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="598"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="599"><highlight class="normal"></highlight></codeline>
+<codeline lineno="604" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga7861cbf3a1afabd29778ad7c6a39ef45" kindref="member">pmwifi_all_install</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="605"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="606"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_IOTDK_PMWIFI_0)</highlight></codeline>
+<codeline lineno="607"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pmwifi_0_install();</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="609"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="610"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>MID_LWIP<sp/>&amp;&amp;<sp/>MID_LWIP_CONTRIB<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/pmwifi/pmwifi.c"/>
   </compounddef>
 </doxygen>

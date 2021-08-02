@@ -2,100 +2,34 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="dw__pwm__timer_8c" kind="file">
     <compoundname>dw_pwm_timer.c</compoundname>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
-    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
-    <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
-    <includes refid="dw__pwm__timer_8h" local="yes">dw_pwm_timer.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_error.h</includes>
+    <includes local="yes">arc/arc_exception.h</includes>
+    <includes local="yes">dw_pwm_timer.h</includes>
     <incdepgraph>
-      <node id="3092">
-        <label>stdbool.h</label>
-      </node>
-      <node id="3094">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="3088" relation="include">
-        </childnode>
-      </node>
-      <node id="3096">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="3097" relation="include">
-        </childnode>
-      </node>
-      <node id="3093">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="3089" relation="include">
-        </childnode>
-        <childnode refid="3094" relation="include">
-        </childnode>
-      </node>
-      <node id="3089">
-        <label>stdint.h</label>
-      </node>
-      <node id="3091">
-        <label>stddef.h</label>
-      </node>
-      <node id="3090">
-        <label>limits.h</label>
-      </node>
-      <node id="3095">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="3088" relation="include">
-        </childnode>
-        <childnode refid="3096" relation="include">
-        </childnode>
-        <childnode refid="3094" relation="include">
-        </childnode>
-      </node>
-      <node id="3087">
+      <node id="1301">
         <label>dw_pwm_timer.c</label>
         <link refid="dw_pwm_timer.c"/>
-        <childnode refid="3088" relation="include">
+        <childnode refid="1302" relation="include">
         </childnode>
-        <childnode refid="3093" relation="include">
+        <childnode refid="1303" relation="include">
         </childnode>
-        <childnode refid="3095" relation="include">
+        <childnode refid="1304" relation="include">
         </childnode>
-        <childnode refid="3098" relation="include">
-        </childnode>
-      </node>
-      <node id="3098">
-        <label>dw_pwm_timer.h</label>
-        <link refid="dw__pwm__timer_8h_source"/>
-        <childnode refid="3099" relation="include">
-        </childnode>
-        <childnode refid="3095" relation="include">
+        <childnode refid="1305" relation="include">
         </childnode>
       </node>
-      <node id="3088">
+      <node id="1304">
+        <label>arc/arc_exception.h</label>
+      </node>
+      <node id="1303">
+        <label>embARC_error.h</label>
+      </node>
+      <node id="1302">
         <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="3089" relation="include">
-        </childnode>
-        <childnode refid="3090" relation="include">
-        </childnode>
-        <childnode refid="3091" relation="include">
-        </childnode>
-        <childnode refid="3092" relation="include">
-        </childnode>
       </node>
-      <node id="3099">
-        <label>dev_pwm_timer.h</label>
-        <link refid="dev__pwm__timer_8h"/>
-        <childnode refid="3100" relation="include">
-        </childnode>
-      </node>
-      <node id="3100">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="3089" relation="include">
-        </childnode>
-      </node>
-      <node id="3097">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
+      <node id="1305">
+        <label>dw_pwm_timer.h</label>
       </node>
     </incdepgraph>
       <sectiondef kind="define">
@@ -103,29 +37,29 @@
         <name>DW_PWM_TIMER_CHECK_EXP</name>
         <param><defname>EXPR</defname></param>
         <param><defname>ERROR_CODE</defname></param>
-        <initializer><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga4151670bbcb21a581f28ed6bc5baa906" kindref="member">CHECK_EXP</ref>(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
+        <initializer>CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)</initializer>
         <briefdescription>
 <para>check expressions used in DesignWare PWM_TIMER driver implementation </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="37" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="37" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="dw__pwm__timer_8c_1aab4c30daed19037e0f17b943ece4f797" prot="public" static="no">
         <name>VALID_CHK_PWM_TIMER_INFO_OBJECT</name>
         <param><defname>pwm_timerinfo_obj_ptr</defname></param>
-        <initializer>{				\
-			DW_PWM_TIMER_CHECK_EXP((pwm_timerinfo_obj_ptr)!=NULL, <ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);			\
-			DW_PWM_TIMER_CHECK_EXP(((pwm_timerinfo_obj_ptr)-&gt;pwm_timer_ctrl)!=NULL, <ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" kindref="member">E_OBJ</ref>);	\
- 		}</initializer>
+        <initializer>{			  \
+		DW_PWM_TIMER_CHECK_EXP((pwm_timerinfo_obj_ptr) != NULL, E_OBJ);			  \
+		DW_PWM_TIMER_CHECK_EXP(((pwm_timerinfo_obj_ptr)-&gt;pwm_timer_ctrl) != NULL, E_OBJ); \
+}</initializer>
         <briefdescription>
 <para>valid check of uart info object </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="41" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -135,7 +69,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port)</argsstring>
         <name>dw_pwm_timer_int_read_status</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <briefdescription>
@@ -144,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="47" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="47" bodyend="50"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="47" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a73f39b23b1d0934cf2a75d764188d515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -152,7 +86,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint32_t ch)</argsstring>
         <name>dw_pwm_timer_timer_enable</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -165,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="52" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="52" bodyend="55"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="52" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a345cc17bcfd335aedca1ce8b7faf5bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -173,7 +107,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint32_t ch)</argsstring>
         <name>dw_pwm_timer_timer_disable</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -186,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="57" bodyend="60"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="57" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1aaf0b139add593a2ffb45c9c0f66500be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -194,7 +128,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint32_t ch)</argsstring>
         <name>dw_pwm_timer_pwm_enable</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -207,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="62" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="62" bodyend="65"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="62" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1afb6e1592e9df678f72b2cd1be3b5def9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -215,7 +149,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint32_t ch)</argsstring>
         <name>dw_pwm_timer_pwm_disable</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -228,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="67" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="67" bodyend="70"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="67" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a66ae97ac44d9c837aeead8c1ee2577bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -236,7 +170,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint8_t ch, uint16_t val)</argsstring>
         <name>dw_pwm_timer_count_set</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -253,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="72" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="72" bodyend="75"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="72" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a39bbff41dbb9d3de48050285d500af03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline uint16_t</type>
@@ -261,7 +195,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint8_t ch)</argsstring>
         <name>dw_pwm_timer_count_get</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -274,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="77" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="77" bodyend="80"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="77" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="77" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1ab222d515b5372f6e2b421e621d75ad95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline void</type>
@@ -282,7 +216,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint8_t ch, uint16_t val)</argsstring>
         <name>dw_pwm_timer_count2_set</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -299,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="82" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="82" bodyend="85"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="82" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="82" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1aeb121c03e379680dadc1a42744a66dbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Inline uint16_t</type>
@@ -307,7 +241,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint8_t ch)</argsstring>
         <name>dw_pwm_timer_count2_get</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -320,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="87" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="87" bodyend="90"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="87" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="87" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a6146e898df284e65c60ce9350780b77a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -328,7 +262,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port)</argsstring>
         <name>dw_pwm_timer_int_clear_all</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <briefdescription>
@@ -337,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="92" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="92" bodyend="96"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="92" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="92" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a229e73613a78137691ccc3a754438c78" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -345,7 +279,7 @@
         <argsstring>(DW_PWM_TIMER_CTRL_PTR port, uint32_t ch)</argsstring>
         <name>dw_pwm_timer_int_clear</name>
         <param>
-          <type><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref></type>
+          <type>DW_PWM_TIMER_CTRL_PTR</type>
           <declname>port</declname>
         </param>
         <param>
@@ -358,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="98" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="98" bodyend="102"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="99" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="99" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1abf2b866d8aaac40908b3372ae897b305" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -366,7 +300,7 @@
         <argsstring>(DEV_PWM_TIMER *pwm_timer_obj)</argsstring>
         <name>dw_pwm_timer_open</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92" kindref="member">DEV_PWM_TIMER</ref> *</type>
+          <type>DEV_PWM_TIMER *</type>
           <declname>pwm_timer_obj</declname>
         </param>
         <briefdescription>
@@ -375,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="106" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="106" bodyend="133"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="108" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="108" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a57ee00e89584d1d5fa12c59f91ea709e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -383,7 +317,7 @@
         <argsstring>(DEV_PWM_TIMER *pwm_timer_obj)</argsstring>
         <name>dw_pwm_timer_close</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92" kindref="member">DEV_PWM_TIMER</ref> *</type>
+          <type>DEV_PWM_TIMER *</type>
           <declname>pwm_timer_obj</declname>
         </param>
         <briefdescription>
@@ -392,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="136" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="136" bodyend="165"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="138" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="138" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a1e7bea71974c2210e61595eef2891152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -400,7 +334,7 @@
         <argsstring>(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t *mode, uint32_t *freq, uint32_t *dc)</argsstring>
         <name>dw_pwm_timer_read</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92" kindref="member">DEV_PWM_TIMER</ref> *</type>
+          <type>DEV_PWM_TIMER *</type>
           <declname>pwm_timer_obj</declname>
         </param>
         <param>
@@ -425,7 +359,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="168" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="168" bodyend="206"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="170" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="170" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a62bfd755bd055a3653deb4ce23fe31e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -433,7 +367,7 @@
         <argsstring>(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t mode, uint32_t freq, uint32_t dc)</argsstring>
         <name>dw_pwm_timer_write</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92" kindref="member">DEV_PWM_TIMER</ref> *</type>
+          <type>DEV_PWM_TIMER *</type>
           <declname>pwm_timer_obj</declname>
         </param>
         <param>
@@ -458,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="209" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="209" bodyend="256"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="213" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="213" bodyend="261"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1ac8c29094e2ce2db6cd8d7dcda5603ae1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -466,7 +400,7 @@
         <argsstring>(DEV_PWM_TIMER *pwm_timer_obj, uint32_t ch, uint32_t ctrl_cmd, void *par)</argsstring>
         <name>dw_pwm_timer_control</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92" kindref="member">DEV_PWM_TIMER</ref> *</type>
+          <type>DEV_PWM_TIMER *</type>
           <declname>pwm_timer_obj</declname>
         </param>
         <param>
@@ -487,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="259" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="259" bodyend="332"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="264" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="264" bodyend="339"/>
       </memberdef>
       <memberdef kind="function" id="dw__pwm__timer_8c_1a55d0d88dd401fe63458633160d4e0744" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -495,7 +429,7 @@
         <argsstring>(DEV_PWM_TIMER *pwm_timer_obj, void *ptr)</argsstring>
         <name>dw_pwm_timer_isr_handler</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r___d_e_v_s_t_r_u_c_t_1gad0702db577c4ff3e528c53a9b9175e92" kindref="member">DEV_PWM_TIMER</ref> *</type>
+          <type>DEV_PWM_TIMER *</type>
           <declname>pwm_timer_obj</declname>
         </param>
         <param>
@@ -508,7 +442,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="335" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="335" bodyend="370"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" line="342" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c" bodystart="342" bodyend="377"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -544,10 +478,10 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dw_pwm_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
@@ -555,330 +489,337 @@
 <codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DISABLE_DEVICE_OBJECT_VALID_CHECK</highlight></codeline>
 <codeline lineno="40"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="41"><highlight class="preprocessor">#define<sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(pwm_timerinfo_obj_ptr)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((pwm_timerinfo_obj_ptr)!=NULL,<sp/>E_OBJ);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(((pwm_timerinfo_obj_ptr)-&gt;pwm_timer_ctrl)!=NULL,<sp/>E_OBJ);<sp/>\</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor">#define<sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(pwm_timerinfo_obj_ptr)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((pwm_timerinfo_obj_ptr)<sp/>!=<sp/>NULL,<sp/>E_OBJ);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(((pwm_timerinfo_obj_ptr)-&gt;pwm_timer_ctrl)<sp/>!=<sp/>NULL,<sp/>E_OBJ);<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor">}</highlight></codeline>
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal">Inline<sp/>uint32_t<sp/>dw_pwm_timer_int_read_status(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">Inline<sp/>uint32_t<sp/>dw_pwm_timer_int_read_status(DW_PWM_TIMER_CTRL_PTR<sp/>port)</highlight></codeline>
 <codeline lineno="48"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a5a5a76be86206270cd764ae5ec9ac489" kindref="member">PWM_TIMERS_INT_STATUS</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port-&gt;regs-&gt;PWM_TIMERS_INT_STATUS;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_timer_enable(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_timer_enable(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1a119ba80dd2594a580dc4acb8c8fd0e9a" kindref="member">CONTROL_REG</ref><sp/>|=<sp/>0x03;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;regs-&gt;CTRL[ch].CONTROL_REG<sp/>|=<sp/>0x03;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_timer_disable(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_timer_disable(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1a119ba80dd2594a580dc4acb8c8fd0e9a" kindref="member">CONTROL_REG</ref><sp/>&amp;=<sp/>(~0x03);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;regs-&gt;CTRL[ch].CONTROL_REG<sp/>&amp;=<sp/>(~0x03);</highlight></codeline>
 <codeline lineno="60"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_pwm_enable(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_pwm_enable(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
 <codeline lineno="63"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1a119ba80dd2594a580dc4acb8c8fd0e9a" kindref="member">CONTROL_REG</ref><sp/>|=<sp/>0x08;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;regs-&gt;CTRL[ch].CONTROL_REG<sp/>|=<sp/>0x08;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_pwm_disable(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_pwm_disable(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1a119ba80dd2594a580dc4acb8c8fd0e9a" kindref="member">CONTROL_REG</ref><sp/>&amp;=<sp/>(~0x08);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;regs-&gt;CTRL[ch].CONTROL_REG<sp/>&amp;=<sp/>(~0x08);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_count_set(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint8_t<sp/>ch,<sp/>uint16_t<sp/>val)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_count_set(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint8_t<sp/>ch,<sp/>uint16_t<sp/>val)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1a4dce2faee76fae9f7e11173e063fd01c" kindref="member">LOAD_COUNT</ref><sp/>=<sp/>val;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;regs-&gt;CTRL[ch].LOAD_COUNT<sp/>=<sp/>val;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal">Inline<sp/>uint16_t<sp/>dw_pwm_timer_count_get(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint8_t<sp/>ch)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">Inline<sp/>uint16_t<sp/>dw_pwm_timer_count_get(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint8_t<sp/>ch)</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1a4dce2faee76fae9f7e11173e063fd01c" kindref="member">LOAD_COUNT</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port-&gt;regs-&gt;CTRL[ch].LOAD_COUNT;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_count2_set(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint8_t<sp/>ch,<sp/>uint16_t<sp/>val)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">Inline<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_count2_set(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint8_t<sp/>ch,<sp/>uint16_t<sp/>val)</highlight></codeline>
 <codeline lineno="83"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a67b2f97f920f45230095d43f592cccbe" kindref="member">LOAD_COUNT2</ref>[ch]<sp/>=<sp/>val;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;regs-&gt;LOAD_COUNT2[ch]<sp/>=<sp/>val;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal">Inline<sp/>uint16_t<sp/>dw_pwm_timer_count2_get(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint8_t<sp/>ch)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">Inline<sp/>uint16_t<sp/>dw_pwm_timer_count2_get(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint8_t<sp/>ch)</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a67b2f97f920f45230095d43f592cccbe" kindref="member">LOAD_COUNT2</ref>[ch];</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port-&gt;regs-&gt;LOAD_COUNT2[ch];</highlight></codeline>
 <codeline lineno="90"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_int_clear_all(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_int_clear_all(DW_PWM_TIMER_CTRL_PTR<sp/>port)</highlight></codeline>
 <codeline lineno="93"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>reg_val;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reg_val<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a09325d1eebcc8a35e5044866553a20fc" kindref="member">PWM_TIMERS_EOI</ref>;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_int_clear(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
-<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>reg_val;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reg_val<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a6770af32a9798df6492bbbfbc5e32016" kindref="member">regs</ref>-&gt;<ref refid="structdw__pwm__timer__reg_1a45da4e71c5466bee3a3ccc547f6842e7" kindref="member">CTRL</ref>[ch].<ref refid="structdw__pwm__timer__ch__reg_1ad836d5e042a89ee6004c0e93eae35497" kindref="member">EOI</ref>;</highlight></codeline>
-<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>interface<sp/>for<sp/>DEV_PWM_TIMER<sp/>*/</highlight></codeline>
-<codeline lineno="106"><highlight class="normal">int32_t<sp/>dw_pwm_timer_open(<ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER</ref><sp/>*pwm_timer_obj)</highlight></codeline>
-<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO_PTR</ref><sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;<ref refid="structdev__pwm__timer_1af7fb260666298ab6f4110b1c1209eb4b" kindref="member">pwm_timer_info</ref>);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port<sp/>=<sp/>(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref>)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reg_val<sp/>=<sp/>port-&gt;regs-&gt;PWM_TIMERS_EOI;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>dw_pwm_timer_int_clear(DW_PWM_TIMER_CTRL_PTR<sp/>port,<sp/>uint32_t<sp/>ch)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>reg_val;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reg_val<sp/>=<sp/>port-&gt;regs-&gt;CTRL[ch].EOI;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>interface<sp/>for<sp/>DEV_PWM_TIMER<sp/>*/</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">int32_t<sp/>dw_pwm_timer_open(DEV_PWM_TIMER<sp/>*pwm_timer_obj)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_INFO_PTR<sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;pwm_timer_info);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port_info_ptr-&gt;opn_cnt<sp/>++;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>1)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>opened<sp/>before<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref>;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>!=<sp/>DW_PWM_TIMER_INVALID_INTNO)<sp/>{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1af0e5e48b37466efd4c583b9fe28faca6" kindref="member">ch_num</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>i);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>i);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1aa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>i);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga92d3c2a8a703078234357e7bce5a5c48" kindref="member">int_handler_install</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>i,<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a569385643764ecbd8335941ee906d02d" kindref="member">int_handler</ref>);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal">int32_t<sp/>dw_pwm_timer_close(<ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER</ref><sp/>*pwm_timer_obj)</highlight></codeline>
-<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO_PTR</ref><sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;<ref refid="structdev__pwm__timer_1af7fb260666298ab6f4110b1c1209eb4b" kindref="member">pwm_timer_info</ref>);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port<sp/>=<sp/>(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref>)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CTRL_PTR<sp/>port<sp/>=<sp/>(DW_PWM_TIMER_CTRL_PTR)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port_info_ptr-&gt;opn_cnt++;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>1)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>opened<sp/>before<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>E_OPNED;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;intno<sp/>!=<sp/>DW_PWM_TIMER_INVALID_INTNO)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>port-&gt;ch_num;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>i);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>i);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gaa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;intno<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga75a43aab696debc012bc72b6de13e30a" kindref="member">int_handler_install</ref>(port-&gt;intno<sp/>+<sp/>i,<sp/>port-&gt;int_handler);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">int32_t<sp/>dw_pwm_timer_close(DEV_PWM_TIMER<sp/>*pwm_timer_obj)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_INFO_PTR<sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;pwm_timer_info);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CTRL_PTR<sp/>port<sp/>=<sp/>(DW_PWM_TIMER_CTRL_PTR)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port_info_ptr-&gt;opn_cnt<sp/>--;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port_info_ptr-&gt;opn_cnt<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>!=<sp/>DW_PWM_TIMER_INVALID_INTNO)<sp/>{</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1af0e5e48b37466efd4c583b9fe28faca6" kindref="member">ch_num</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>i);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>i);</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1aa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>i);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" kindref="member">E_OPNED</ref>;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal">int32_t<sp/>dw_pwm_timer_read(<ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER</ref><sp/>*pwm_timer_obj,<sp/>uint32_t<sp/>ch,<sp/>uint32_t<sp/>*mode,<sp/>uint32_t<sp/>*freq,<sp/>uint32_t<sp/>*dc)</highlight></codeline>
-<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO_PTR</ref><sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;<ref refid="structdev__pwm__timer_1af7fb260666298ab6f4110b1c1209eb4b" kindref="member">pwm_timer_info</ref>);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port<sp/>=<sp/>(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref>)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>);</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((ch<sp/>&gt;=<sp/>0)&amp;&amp;(ch<sp/>&lt;<sp/>port-&gt;ch_num),<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/>E_OK);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port_info_ptr-&gt;opn_cnt--;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port_info_ptr-&gt;opn_cnt<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;intno<sp/>!=<sp/>DW_PWM_TIMER_INVALID_INTNO)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint8_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>port-&gt;ch_num;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>i);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>i);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gaa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;intno<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>E_OPNED;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal">int32_t<sp/>dw_pwm_timer_read(DEV_PWM_TIMER<sp/>*pwm_timer_obj,<sp/>uint32_t<sp/>ch,<sp/>uint32_t<sp/>*mode,<sp/>uint32_t<sp/>*freq,<sp/>uint32_t<sp/>*dc)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_INFO_PTR<sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;pwm_timer_info);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CTRL_PTR<sp/>port<sp/>=<sp/>(DW_PWM_TIMER_CTRL_PTR)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>count_low<sp/>=<sp/>dw_pwm_timer_count_get(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>count_high<sp/>=<sp/>dw_pwm_timer_count2_get(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/>E_CLSED);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((ch<sp/>&gt;=<sp/>0)<sp/>&amp;&amp;<sp/>(ch<sp/>&lt;<sp/>port-&gt;ch_num),<sp/>E_PAR);</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*mode<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch];</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*mode<sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" kindref="member">DEV_PWM_TIMER_MODE_TIMER</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>100;</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count_low<sp/>!=<sp/>0)</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa604fa905274e7a58da6d867995ac72d" kindref="member">clock</ref><sp/>/<sp/>(count_low*2);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*mode<sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" kindref="member">DEV_PWM_TIMER_MODE_PWM</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count_low<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>count_high<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>(count_high<sp/>*<sp/>100)<sp/>/<sp/>(count_high<sp/>+<sp/>count_low);</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa604fa905274e7a58da6d867995ac72d" kindref="member">clock</ref><sp/>/<sp/>(count_high<sp/>+<sp/>count_low);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>count_low<sp/>=<sp/>dw_pwm_timer_count_get(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>count_high<sp/>=<sp/>dw_pwm_timer_count2_get(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*mode<sp/>=<sp/>port-&gt;mode[ch];</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_TIMER)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count_low<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>port-&gt;clock<sp/>/<sp/>(count_low<sp/>*<sp/>2);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_PWM)<sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count_low<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>count_high<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>(count_high<sp/>*<sp/>100)<sp/>/<sp/>(count_high<sp/>+<sp/>count_low);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>port-&gt;clock<sp/>/<sp/>(count_high<sp/>+<sp/>count_low);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*dc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*freq<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal">int32_t<sp/>dw_pwm_timer_write(<ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER</ref><sp/>*pwm_timer_obj,<sp/>uint32_t<sp/>ch,<sp/>uint32_t<sp/>mode,<sp/>uint32_t<sp/>freq,<sp/>uint32_t<sp/>dc)</highlight></codeline>
-<codeline lineno="210"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>count,<sp/>count_high;</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO_PTR</ref><sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;<ref refid="structdev__pwm__timer_1af7fb260666298ab6f4110b1c1209eb4b" kindref="member">pwm_timer_info</ref>);</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal">int32_t<sp/>dw_pwm_timer_write(DEV_PWM_TIMER<sp/>*pwm_timer_obj,<sp/>uint32_t<sp/>ch,<sp/>uint32_t<sp/>mode,<sp/>uint32_t<sp/>freq,<sp/>uint32_t<sp/>dc)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>count,<sp/>count_high;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_INFO_PTR<sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;pwm_timer_info);</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"></highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port<sp/>=<sp/>(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref>)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>);</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((ch<sp/>&gt;=<sp/>0)&amp;&amp;(ch<sp/>&lt;<sp/>port-&gt;ch_num),<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((dc<sp/>&gt;=<sp/>0)&amp;&amp;(dc<sp/>&lt;=<sp/>100),<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" kindref="member">DEV_PWM_TIMER_MODE_TIMER</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(freq<sp/>&gt;<sp/>0,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch]<sp/>=<sp/>mode;</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa604fa905274e7a58da6d867995ac72d" kindref="member">clock</ref><sp/>/<sp/>freq;</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>count/2);</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>0);</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1ab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>ch);</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" kindref="member">DEV_PWM_TIMER_MODE_PWM</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(freq<sp/>&gt;<sp/>0,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch]<sp/>=<sp/>mode;</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa604fa905274e7a58da6d867995ac72d" kindref="member">clock</ref><sp/>/<sp/>freq;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count_high<sp/>=<sp/>(count<sp/>*<sp/>dc)/100;</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>count-count_high);</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>count_high);</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1aa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>ch);</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8ae6d703585a9f1825b10e2469e1a238c7" kindref="member">DEV_PWM_TIMER_MODE_CLOSE</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch]<sp/>=<sp/>mode;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>0);</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>0);</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1aa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>ch);</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="254"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal">int32_t<sp/>dw_pwm_timer_control(<ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER</ref><sp/>*pwm_timer_obj,<sp/>uint32_t<sp/>ch,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*par)</highlight></codeline>
-<codeline lineno="260"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO_PTR</ref><sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;<ref refid="structdev__pwm__timer_1af7fb260666298ab6f4110b1c1209eb4b" kindref="member">pwm_timer_info</ref>);</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"></highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port<sp/>=<sp/>(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref>)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" kindref="member">E_CLSED</ref>);</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((ch&gt;=0)&amp;&amp;(ch&lt;port-&gt;ch_num),<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"></highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__cfg" kindref="compound">DEV_PWM_TIMER_CFG</ref><sp/>*cfg_ptr;</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ctrl_cmd)<sp/>{</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_SET_CFG:</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr<sp/>=<sp/>(<ref refid="structdev__pwm__timer__cfg" kindref="compound">DEV_PWM_TIMER_CFG</ref><sp/>*)<sp/>par;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1a01ee89b6503597df05ac7e04cc7f612b" kindref="member">count_low</ref>);</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1a95da444b025deb0688e62a65f70bce12" kindref="member">count_high</ref>);</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aa19049c4070f58d5d16dcccf648aa80d" kindref="member">isr_hander</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kindref="member">int_ch_handler_ptr</ref>[ch]<sp/>=<sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aa19049c4070f58d5d16dcccf648aa80d" kindref="member">isr_hander</ref>;</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref><sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8af171a7ee7661cd6af16ecbf01e995f2b" kindref="member">DEV_PWM_TIMER_MODE_TIMER</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch]<sp/>=<sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref>;</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1ab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>ch);</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref><sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8a6aec2ed0d6fe6db8c641cba35fc89be4" kindref="member">DEV_PWM_TIMER_MODE_PWM</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch]<sp/>=<sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref>;</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref><sp/>==<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1gga7ad4d8634ea972bfafe4a6517c5a81f8ae6d703585a9f1825b10e2469e1a238c7" kindref="member">DEV_PWM_TIMER_MODE_CLOSE</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch]<sp/>=<sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref>;</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_GET_CFG:</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr<sp/>=<sp/>(<ref refid="structdev__pwm__timer__cfg" kindref="compound">DEV_PWM_TIMER_CFG</ref><sp/>*)<sp/>par;</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1a01ee89b6503597df05ac7e04cc7f612b" kindref="member">count_low</ref><sp/>=<sp/>dw_pwm_timer_count_get(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1a95da444b025deb0688e62a65f70bce12" kindref="member">count_high</ref><sp/>=<sp/>dw_pwm_timer_count2_get(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aa19049c4070f58d5d16dcccf648aa80d" kindref="member">isr_hander</ref><sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aa19049c4070f58d5d16dcccf648aa80d" kindref="member">isr_hander</ref><sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kindref="member">int_ch_handler_ptr</ref>[ch];</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;<ref refid="structdev__pwm__timer__cfg_1aebfa4bf66433ec5f223c760d4a053a1d" kindref="member">mode</ref><sp/>=<sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1aa8e84ff37189b8024beb756ce10e55c8" kindref="member">mode</ref>[ch];</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_DIS_CH:</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_ENA_CH:</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_DIS_ISR:</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1aa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>ch);</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_ENA_ISR:</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__exception_8c_1ab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a8a978f364383724fb392a7f7453399f8" kindref="member">intno</ref><sp/>+<sp/>ch);</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_SET_ISR:</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((par!=NULL)<sp/>&amp;&amp;<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gace3d588dc25676d080bcf53ee3522d63" kindref="member">CHECK_ALIGN_4BYTES</ref>(par),<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kindref="member">int_ch_handler_ptr</ref>[ch]<sp/>=<sp/>(<ref refid="group___d_e_v_i_c_e___h_a_l___p_w_m___t_i_m_e_r_1ga8db6fd35a0475f738f2afa833bcb69d5" kindref="member">DEV_PWM_TIMER_HANDLER</ref>)par;</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_GET_ISR:</highlight></codeline>
-<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((par!=NULL)<sp/>&amp;&amp;<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gace3d588dc25676d080bcf53ee3522d63" kindref="member">CHECK_ALIGN_4BYTES</ref>(par),<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" kindref="member">E_PAR</ref>);</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>par<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kindref="member">int_ch_handler_ptr</ref>[ch]);</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" kindref="member">E_NOSPT</ref>;</highlight></codeline>
-<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="329"><highlight class="normal"></highlight></codeline>
-<codeline lineno="330"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="332"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"></highlight></codeline>
-<codeline lineno="335"><highlight class="normal">int32_t<sp/>dw_pwm_timer_isr_handler(<ref refid="structdev__pwm__timer" kindref="compound">DEV_PWM_TIMER</ref><sp/>*pwm_timer_obj,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
-<codeline lineno="336"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/><ref refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" kindref="member">E_OK</ref>;</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__pwm__timer__info" kindref="compound">DEV_PWM_TIMER_INFO_PTR</ref><sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;<ref refid="structdev__pwm__timer_1af7fb260666298ab6f4110b1c1209eb4b" kindref="member">pwm_timer_info</ref>);</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"></highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="343"><highlight class="normal"></highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref><sp/>port<sp/>=<sp/>(<ref refid="structdw__pwm__timer__ctrl" kindref="compound">DW_PWM_TIMER_CTRL_PTR</ref>)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
-<codeline lineno="345"><highlight class="normal"></highlight></codeline>
-<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>i,<sp/>pwm_timer_bit_isr_state;</highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>max_int_bit_count<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"></highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pwm_timer_bit_isr_state<sp/>=<sp/>dw_pwm_timer_int_read_status(port);</highlight></codeline>
-<codeline lineno="351"><highlight class="normal"></highlight></codeline>
-<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max_int_bit_count<sp/>=<sp/>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1a68a4c1c3568e410e32fdb7ec9016dc05" kindref="member">int_ch_max_cnt</ref>);</highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_int_clear_all(port);</highlight></codeline>
-<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"></highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;max_int_bit_count;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm_timer_bit_isr_state<sp/>&amp;<sp/>(1&lt;&lt;i))<sp/>{</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>this<sp/>bit<sp/>interrupt<sp/>enabled<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kindref="member">int_ch_handler_ptr</ref>[i])<sp/>{</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;<ref refid="structdw__pwm__timer__ctrl_1a5d805f0079c270ac5aada7e5e8558471" kindref="member">ch_isr</ref>-&gt;<ref refid="structdw__pwm__timer__ch__isr_1aefe87a655463664fe0199b0eaaafcf00" kindref="member">int_ch_handler_ptr</ref>[i](pwm_timer_obj);</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_int_clear(port,<sp/>i);<sp/></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"></highlight></codeline>
-<codeline lineno="368"><highlight class="normal">error_exit:</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
-<codeline lineno="370"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CTRL_PTR<sp/>port<sp/>=<sp/>(DW_PWM_TIMER_CTRL_PTR)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/>E_CLSED);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((ch<sp/>&gt;=<sp/>0)<sp/>&amp;&amp;<sp/>(ch<sp/>&lt;<sp/>port-&gt;ch_num),<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((dc<sp/>&gt;=<sp/>0)<sp/>&amp;&amp;<sp/>(dc<sp/>&lt;=<sp/>100),<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_TIMER)<sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(freq<sp/>&gt;<sp/>0,<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;mode[ch]<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>=<sp/>port-&gt;clock<sp/>/<sp/>freq;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>count<sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>0);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(port-&gt;intno<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_PWM)<sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(freq<sp/>&gt;<sp/>0,<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;mode[ch]<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count<sp/>=<sp/>port-&gt;clock<sp/>/<sp/>freq;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count_high<sp/>=<sp/>(count<sp/>*<sp/>dc)<sp/>/<sp/>100;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>count<sp/>-<sp/>count_high);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>count_high);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gaa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;intno<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_CLOSE)<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;mode[ch]<sp/>=<sp/>mode;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>0);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>0);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gaa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;intno<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal">int32_t<sp/>dw_pwm_timer_control(DEV_PWM_TIMER<sp/>*pwm_timer_obj,<sp/>uint32_t<sp/>ch,<sp/>uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*par)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_INFO_PTR<sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;pwm_timer_info);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CTRL_PTR<sp/>port<sp/>=<sp/>(DW_PWM_TIMER_CTRL_PTR)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP(port_info_ptr-&gt;opn_cnt<sp/>&gt;<sp/>0,<sp/>E_CLSED);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((ch<sp/>&gt;=<sp/>0)<sp/>&amp;&amp;<sp/>(ch<sp/>&lt;<sp/>port-&gt;ch_num),<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_CFG<sp/>*cfg_ptr;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ctrl_cmd)<sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_SET_CFG:</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr<sp/>=<sp/>(DEV_PWM_TIMER_CFG<sp/>*)<sp/>par;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count_set(port,<sp/>ch,<sp/>cfg_ptr-&gt;count_low);</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_count2_set(port,<sp/>ch,<sp/>cfg_ptr-&gt;count_high);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;isr_hander<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;ch_isr-&gt;int_ch_handler_ptr[ch]<sp/>=<sp/>cfg_ptr-&gt;isr_hander;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_TIMER)<sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;mode[ch]<sp/>=<sp/>cfg_ptr-&gt;mode;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(port-&gt;intno<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_PWM)<sp/>{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;mode[ch]<sp/>=<sp/>cfg_ptr-&gt;mode;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;mode<sp/>==<sp/>DEV_PWM_TIMER_MODE_CLOSE)<sp/>{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;mode[ch]<sp/>=<sp/>cfg_ptr-&gt;mode;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_pwm_disable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_GET_CFG:</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr<sp/>=<sp/>(DEV_PWM_TIMER_CFG<sp/>*)<sp/>par;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;count_low<sp/>=<sp/>dw_pwm_timer_count_get(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;count_high<sp/>=<sp/>dw_pwm_timer_count2_get(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg_ptr-&gt;isr_hander<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;isr_hander<sp/>=<sp/>port-&gt;ch_isr-&gt;int_ch_handler_ptr[ch];</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cfg_ptr-&gt;mode<sp/>=<sp/>port-&gt;mode[ch];</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_DIS_CH:</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_disable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_ENA_CH:</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_timer_enable(port,<sp/>ch);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_DIS_ISR:</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gaa06cd81d78d066c1cdc46dde7dabeb57" kindref="member">int_disable</ref>(port-&gt;intno<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_ENA_ISR:</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1gab709d97aa7dcc618975fc7e8d5860c7f" kindref="member">int_enable</ref>(port-&gt;intno<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_SET_ISR:</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((par<sp/>!=<sp/>NULL)<sp/>&amp;&amp;<sp/>CHECK_ALIGN_4BYTES(par),<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;ch_isr-&gt;int_ch_handler_ptr[ch]<sp/>=<sp/>(DEV_PWM_TIMER_HANDLER)par;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>PWM_TIMER_CMD_GET_ISR:</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CHECK_EXP((par<sp/>!=<sp/>NULL)<sp/>&amp;&amp;<sp/>CHECK_ALIGN_4BYTES(par),<sp/>E_PAR);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>par<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)(port-&gt;ch_isr-&gt;int_ch_handler_ptr[ch]);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ercd<sp/>=<sp/>E_NOSPT;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal">int32_t<sp/>dw_pwm_timer_isr_handler(DEV_PWM_TIMER<sp/>*pwm_timer_obj,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
+<codeline lineno="343"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>ercd<sp/>=<sp/>E_OK;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_PWM_TIMER_INFO_PTR<sp/>port_info_ptr<sp/>=<sp/>&amp;(pwm_timer_obj-&gt;pwm_timer_info);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>START<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALID_CHK_PWM_TIMER_INFO_OBJECT(port_info_ptr);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>END<sp/>OF<sp/>ERROR<sp/>CHECK<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_PWM_TIMER_CTRL_PTR<sp/>port<sp/>=<sp/>(DW_PWM_TIMER_CTRL_PTR)(port_info_ptr-&gt;pwm_timer_ctrl);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>i,<sp/>pwm_timer_bit_isr_state;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>max_int_bit_count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pwm_timer_bit_isr_state<sp/>=<sp/>dw_pwm_timer_int_read_status(port);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;ch_isr)<sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>max_int_bit_count<sp/>=<sp/>(port-&gt;ch_isr-&gt;int_ch_max_cnt);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_int_clear_all(port);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>max_int_bit_count;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwm_timer_bit_isr_state<sp/>&amp;<sp/>(1<sp/>&lt;&lt;<sp/>i))<sp/>{</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>this<sp/>bit<sp/>interrupt<sp/>enabled<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(port-&gt;ch_isr-&gt;int_ch_handler_ptr[i])<sp/>{</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port-&gt;ch_isr-&gt;int_ch_handler_ptr[i](pwm_timer_obj);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dw_pwm_timer_int_clear(port,<sp/>i);<sp/></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal">error_exit:</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ercd;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/pwm_timer/dw_pwm_timer.c"/>
   </compounddef>
 </doxygen>

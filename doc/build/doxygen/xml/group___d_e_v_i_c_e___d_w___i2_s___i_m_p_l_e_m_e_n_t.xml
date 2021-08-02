@@ -10,7 +10,7 @@
         <argsstring>(DEV_I2S *i2s_obj, uint32_t mode, uint32_t param)</argsstring>
         <name>dw_i2s_open</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <param>
@@ -36,14 +36,14 @@
 <parametername direction="in">mode</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>working mode (<ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1ga9b1ad5abdf677288f655dd4bc9dc188d" kindref="member">master</ref> or <ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1gaf070489d9f19e9000cb9700bb859a079" kindref="member">slave</ref>) </para></parameterdescription>
+<para>working mode (master or slave) </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername direction="in">param</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>device type (<ref refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8ab3c8bedf88d7ae02593d28719246ef48" kindref="member">transmitter</ref> OR <ref refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8a3fafd3ba0b838d8ef620f6c4dd47b2d6" kindref="member">receiver</ref>) </para></parameterdescription>
+<para>device type (transmitter OR receiver) </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 <parameterlist kind="retval"><parameteritem>
@@ -92,66 +92,20 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1399" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1399" bodyend="1604"/>
-        <references refid="structdw__i2s__config_1a74f72da6c2e1a67333b976aa457e5c86" compoundref="dw__i2s_8h" startline="292">dw_i2s_config::channels</references>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1ga9b1ad5abdf677288f655dd4bc9dc188d" compoundref="dev__common_8h" startline="101">DEV_MASTER_MODE</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1gaf070489d9f19e9000cb9700bb859a079" compoundref="dev__common_8h" startline="102">DEV_SLAVE_MODE</references>
-        <references refid="structdev__i2s__info_1a5a7508edb747385284b4cb8cfd3b8006" compoundref="dev__i2s_8h" startline="347">dev_i2s_info::device</references>
-        <references refid="structdw__i2s__rx__ctrl_1acc47795854417d3bfd416eb05ebff5d7" compoundref="dw__i2s_8h" startline="311">dw_i2s_rx_ctrl::dw_i2s_buf</references>
-        <references refid="structdw__i2s__tx__ctrl_1a4893b43fbef045671ec60067276c28c8" compoundref="dw__i2s_8h" startline="318">dw_i2s_tx_ctrl::dw_i2s_buf</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac7fadb04eb93fcc0a4d71223de05b156a0c98e53afc84991bdab403cf9015d4df" compoundref="dw__i2s_8h" startline="74">DW_I2S_CHANNEL0</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac7fadb04eb93fcc0a4d71223de05b156aa258a56ecf02c752d0b985e9b759c7b2" compoundref="dw__i2s_8h" startline="75">DW_I2S_CHANNEL1</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac7fadb04eb93fcc0a4d71223de05b156a0c97f61e9ce9e8cf5143e5b661e46832" compoundref="dw__i2s_8h" startline="76">DW_I2S_CHANNEL2</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac7fadb04eb93fcc0a4d71223de05b156a3554475e7d9398d3c1e001959a87d1ff" compoundref="dw__i2s_8h" startline="77">DW_I2S_CHANNEL3</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ga7e88ab69f8194f7cd08ffdcceaa392bc" compoundref="dw__i2s_8h" startline="68">DW_I2S_CHANNEL3_SUPPORTED</references>
-        <references refid="structdw__i2s__config_1a7ce16572cfa7258741522194700dadfe" compoundref="dw__i2s_8h" startline="300">dw_i2s_config::dw_i2s_int_handler</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ga64cee01f968a2e7e0602070a834d1081" compoundref="dw__i2s_8h" startline="62">DW_I2S_MASTER_SUPPORTED</references>
-        <references refid="structdw__i2s__rx__ctrl_1a71daa7a369906595766196a1d69b0275" compoundref="dw__i2s_8h" startline="308">dw_i2s_rx_ctrl::dw_i2s_regs</references>
-        <references refid="structdw__i2s__tx__ctrl_1a8285a3c6a4932c49f7081aadba8e1d8a" compoundref="dw__i2s_8h" startline="315">dw_i2s_tx_ctrl::dw_i2s_regs</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1305" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1305" bodyend="1484"/>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5a33da03f5c5864b9504c34ae76f473f" compoundref="dw__i2s_8c" startline="97" endline="100">dw_i2s_rx_block_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga6e1790c58b29db1eaca63babfbc3630f" compoundref="dw__i2s_8c" startline="440" endline="443">dw_i2s_rx_clock_disable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga6e1790c58b29db1eaca63babfbc3630f" compoundref="dw__i2s_8c" startline="429" endline="432">dw_i2s_rx_clock_disable</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga26507001d32cf3e103112f7cd8b19b5c" compoundref="dw__i2s_8c" startline="75" endline="78">dw_i2s_rx_disable</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga42c190a80f098936146f1deb315f1b48" compoundref="dw__i2s_8c" startline="80" endline="83">dw_i2s_rx_enable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5db720a7b172bb59b304bbb328eed027" compoundref="dw__i2s_8c" startline="460" endline="463">dw_i2s_rx_flush_fifo</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gaead710ae56669826c874559d81f52dec" compoundref="dw__i2s_8c" startline="453" endline="457">dw_i2s_rx_set_wss</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ga733231eaf5720259904e95e8acd6d2ac" compoundref="dw__i2s_8h" startline="63">DW_I2S_SLAVE_SUPPORTED</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5db720a7b172bb59b304bbb328eed027" compoundref="dw__i2s_8c" startline="449" endline="452">dw_i2s_rx_flush_fifo</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gaead710ae56669826c874559d81f52dec" compoundref="dw__i2s_8c" startline="442" endline="446">dw_i2s_rx_set_wss</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga49e2e3cb9d926271de3497eed5954f3e" compoundref="dw__i2s_8c" startline="107" endline="110">dw_i2s_tx_block_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga30cb542e5efa9b2e65ad1d1de4c2c554" compoundref="dw__i2s_8c" startline="429" endline="432">dw_i2s_tx_clock_disable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga30cb542e5efa9b2e65ad1d1de4c2c554" compoundref="dw__i2s_8c" startline="418" endline="421">dw_i2s_tx_clock_disable</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga0aa713d512475081c77b92f245773ba4" compoundref="dw__i2s_8c" startline="86" endline="89">dw_i2s_tx_disable</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5677ecdcb260cdcf8f49afffe583abb5" compoundref="dw__i2s_8c" startline="91" endline="94">dw_i2s_tx_enable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga3b35bdf6ea641b8be99ccb6073df9eb6" compoundref="dw__i2s_8c" startline="465" endline="468">dw_i2s_tx_flush_fifo</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga82488f6fe90ce9347ae0850e0a2cc36c" compoundref="dw__i2s_8c" startline="446" endline="450">dw_i2s_tx_set_wss</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" compoundref="emb_a_r_c__error_8h" startline="57">E_NOSPT</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" compoundref="emb_a_r_c__error_8h" startline="78">E_OPNED</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" compoundref="emb_a_r_c__error_8h" startline="60">E_PAR</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" compoundref="emb_a_r_c__error_8h" startline="56">E_SYS</references>
-        <references refid="structdev__i2s__cbs_1ab127e42d50952973972d0a7373273d6f" compoundref="dev__i2s_8h" startline="325">dev_i2s_cbs::err_cb</references>
-        <references refid="structdev__i2s__info_1a765db1a62b0b9a158c953c320c43564f" compoundref="dev__i2s_8h" startline="350">dev_i2s_info::err_state</references>
-        <references refid="structdev__i2s__info_1ae7bb447852ce6cab30ecdd0785e598ad" compoundref="dev__i2s_8h" startline="354">dev_i2s_info::extra</references>
-        <references refid="structdw__i2s__config_1a654ceb6083eae2d3668f790efe33fb20" compoundref="dw__i2s_8h" startline="291">dw_i2s_config::fifo_len</references>
-        <references refid="structdev__i2s__info_1a351d911884f5a1faea32d61ca8949bdb" compoundref="dev__i2s_8h" startline="353">dev_i2s_info::i2s_cbs</references>
-        <references refid="structdev__i2s__info_1a78c37f09b5b8d6a721149247fe0b4719" compoundref="dev__i2s_8h" startline="344">dev_i2s_info::i2s_config</references>
-        <references refid="structdev__i2s__info_1ac96373648e415570d15070e80468f59b" compoundref="dev__i2s_8h" startline="343">dev_i2s_info::i2s_ctrl</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8a3fafd3ba0b838d8ef620f6c4dd47b2d6" compoundref="dev__i2s_8h" startline="104">I2S_DEVICE_RECEIVER</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8ab3c8bedf88d7ae02593d28719246ef48" compoundref="dev__i2s_8h" startline="103">I2S_DEVICE_TRANSMITTER</references>
-        <references refid="group___i2_s___e_r_r_o_r___s_t_a_t_e_1ggabe4a7caff4d6ff8c15ffc11499423a46a7010438f2a7e36117a2f7323e765977e" compoundref="dev__i2s_8h" startline="128">I2S_ERR_NONE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
-        <references refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga92d3c2a8a703078234357e7bce5a5c48" compoundref="arc__exception_8c" startline="747" endline="755">int_handler_install</references>
-        <references refid="structdw__i2s__config_1aa99acf292baf85967ca3b6b1ce7ed5e9" compoundref="dw__i2s_8h" startline="299">dw_i2s_config::intno</references>
-        <references refid="structdev__i2s__info_1a7cb6f4a9110c7e62b17a9188e23098cc" compoundref="dev__i2s_8h" startline="348">dev_i2s_info::mode</references>
-        <references refid="structdev__i2s__info_1a6e6f365b6451f280a44ee076818c9747" compoundref="dev__i2s_8h" startline="345">dev_i2s_info::opn_cnt</references>
-        <references refid="structdev__i2s__info_1a9a724c9b669633d63ce6b717a5a62eab" compoundref="dev__i2s_8h" startline="352">dev_i2s_info::rx_buf</references>
-        <references refid="structdev__i2s__cbs_1a92fc7de4510fd3712188a40e0b98f74e" compoundref="dev__i2s_8h" startline="324">dev_i2s_cbs::rx_cb</references>
-        <references refid="structdw__i2s__config_1adf31bca6d156df3bb93256a7f888a267" compoundref="dw__i2s_8h" startline="295">dw_i2s_config::sclk_gate</references>
-        <references refid="structdev__i2s__info_1ad048a278c9feb6d8fa7d75e2253f5864" compoundref="dev__i2s_8h" startline="346">dev_i2s_info::status</references>
-        <references refid="structdw__i2s__config_1a4a80ecdcc69a527a0d2715d6d158dee4" compoundref="dw__i2s_8h" startline="290">dw_i2s_config::support_modes</references>
-        <references refid="structdev__i2s__info_1a69d4d988c87fd397a95d65d5e6b5bf7f" compoundref="dev__i2s_8h" startline="351">dev_i2s_info::tx_buf</references>
-        <references refid="structdev__i2s__cbs_1ac9068ac4f5f4f0f76e776d92bf949076" compoundref="dev__i2s_8h" startline="323">dev_i2s_cbs::tx_cb</references>
-        <references refid="structdw__i2s__config_1a141363cba24918fbf8e3ee44c47635e3" compoundref="dw__i2s_8h" startline="294">dw_i2s_config::ws_length</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga3b35bdf6ea641b8be99ccb6073df9eb6" compoundref="dw__i2s_8c" startline="454" endline="457">dw_i2s_tx_flush_fifo</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga82488f6fe90ce9347ae0850e0a2cc36c" compoundref="dw__i2s_8c" startline="435" endline="439">dw_i2s_tx_set_wss</references>
+        <references refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga75a43aab696debc012bc72b6de13e30a" compoundref="arc__exception_8c" startline="740" endline="748">int_handler_install</references>
       </memberdef>
       <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___i2_s___i_m_p_l_e_m_e_n_t_1ga9d7c24093650665f8fa04e3548b9f713" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -159,7 +113,7 @@
         <argsstring>(DEV_I2S *i2s_obj)</argsstring>
         <name>dw_i2s_close</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <briefdescription>
@@ -185,7 +139,7 @@
 <parametername>E_OPNED</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Device is still opened, the device <ref refid="structdev__i2s__info_1a6e6f365b6451f280a44ee076818c9747" kindref="member">opn_cnt</ref> decreased by 1 </para></parameterdescription>
+<para>Device is still opened, the device opn_cnt decreased by 1 </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -198,37 +152,13 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1613" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1613" bodyend="1672"/>
-        <references refid="structdw__i2s__config_1a74f72da6c2e1a67333b976aa457e5c86" compoundref="dw__i2s_8h" startline="292">dw_i2s_config::channels</references>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gacacfd9a0d19ea1f779312ce02f789269" compoundref="dev__common_8h" startline="111">DEV_DISABLED</references>
-        <references refid="structdev__i2s__info_1a5a7508edb747385284b4cb8cfd3b8006" compoundref="dev__i2s_8h" startline="347">dev_i2s_info::device</references>
-        <references refid="structdw__i2s__rx__ctrl_1a71daa7a369906595766196a1d69b0275" compoundref="dw__i2s_8h" startline="308">dw_i2s_rx_ctrl::dw_i2s_regs</references>
-        <references refid="structdw__i2s__tx__ctrl_1a8285a3c6a4932c49f7081aadba8e1d8a" compoundref="dw__i2s_8h" startline="315">dw_i2s_tx_ctrl::dw_i2s_regs</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1493" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1493" bodyend="1548"/>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5a33da03f5c5864b9504c34ae76f473f" compoundref="dw__i2s_8c" startline="97" endline="100">dw_i2s_rx_block_disable</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga26507001d32cf3e103112f7cd8b19b5c" compoundref="dw__i2s_8c" startline="75" endline="78">dw_i2s_rx_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5db720a7b172bb59b304bbb328eed027" compoundref="dw__i2s_8c" startline="460" endline="463">dw_i2s_rx_flush_fifo</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5db720a7b172bb59b304bbb328eed027" compoundref="dw__i2s_8c" startline="449" endline="452">dw_i2s_rx_flush_fifo</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga49e2e3cb9d926271de3497eed5954f3e" compoundref="dw__i2s_8c" startline="107" endline="110">dw_i2s_tx_block_disable</references>
         <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga0aa713d512475081c77b92f245773ba4" compoundref="dw__i2s_8c" startline="86" endline="89">dw_i2s_tx_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga3b35bdf6ea641b8be99ccb6073df9eb6" compoundref="dw__i2s_8c" startline="465" endline="468">dw_i2s_tx_flush_fifo</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gaa5935765e74b9d1a7e72c9c8f9018b42" compoundref="emb_a_r_c__error_8h" startline="78">E_OPNED</references>
-        <references refid="structdev__i2s__cbs_1ab127e42d50952973972d0a7373273d6f" compoundref="dev__i2s_8h" startline="325">dev_i2s_cbs::err_cb</references>
-        <references refid="structdev__i2s__info_1a765db1a62b0b9a158c953c320c43564f" compoundref="dev__i2s_8h" startline="350">dev_i2s_info::err_state</references>
-        <references refid="structdev__i2s__info_1ae7bb447852ce6cab30ecdd0785e598ad" compoundref="dev__i2s_8h" startline="354">dev_i2s_info::extra</references>
-        <references refid="structdev__i2s__info_1a351d911884f5a1faea32d61ca8949bdb" compoundref="dev__i2s_8h" startline="353">dev_i2s_info::i2s_cbs</references>
-        <references refid="structdev__i2s__info_1a78c37f09b5b8d6a721149247fe0b4719" compoundref="dev__i2s_8h" startline="344">dev_i2s_info::i2s_config</references>
-        <references refid="structdev__i2s__info_1ac96373648e415570d15070e80468f59b" compoundref="dev__i2s_8h" startline="343">dev_i2s_info::i2s_ctrl</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8a3fafd3ba0b838d8ef620f6c4dd47b2d6" compoundref="dev__i2s_8h" startline="104">I2S_DEVICE_RECEIVER</references>
-        <references refid="group___i2_s___e_r_r_o_r___s_t_a_t_e_1ggabe4a7caff4d6ff8c15ffc11499423a46a7010438f2a7e36117a2f7323e765977e" compoundref="dev__i2s_8h" startline="128">I2S_ERR_NONE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
-        <references refid="structdev__i2s__info_1a6e6f365b6451f280a44ee076818c9747" compoundref="dev__i2s_8h" startline="345">dev_i2s_info::opn_cnt</references>
-        <references refid="structdev__i2s__info_1a9a724c9b669633d63ce6b717a5a62eab" compoundref="dev__i2s_8h" startline="352">dev_i2s_info::rx_buf</references>
-        <references refid="structdev__i2s__cbs_1a92fc7de4510fd3712188a40e0b98f74e" compoundref="dev__i2s_8h" startline="324">dev_i2s_cbs::rx_cb</references>
-        <references refid="structdev__i2s__info_1ad048a278c9feb6d8fa7d75e2253f5864" compoundref="dev__i2s_8h" startline="346">dev_i2s_info::status</references>
-        <references refid="structdev__i2s__info_1a69d4d988c87fd397a95d65d5e6b5bf7f" compoundref="dev__i2s_8h" startline="351">dev_i2s_info::tx_buf</references>
-        <references refid="structdev__i2s__cbs_1ac9068ac4f5f4f0f76e776d92bf949076" compoundref="dev__i2s_8h" startline="323">dev_i2s_cbs::tx_cb</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga3b35bdf6ea641b8be99ccb6073df9eb6" compoundref="dw__i2s_8c" startline="454" endline="457">dw_i2s_tx_flush_fifo</references>
       </memberdef>
       <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___i2_s___i_m_p_l_e_m_e_n_t_1ga8366ac5ab4d9028eaa17b5d7fadaa83a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -236,7 +166,7 @@
         <argsstring>(DEV_I2S *i2s_obj, uint32_t ctrl_cmd, void *param)</argsstring>
         <name>dw_i2s_control</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <param>
@@ -262,7 +192,7 @@
 <parametername direction="in">ctrl_cmd</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d" kindref="compound">control command</ref>, to change or get some thing related to i2s </para></parameterdescription>
+<para>control command, to change or get some thing related to i2s </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -325,84 +255,19 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1688" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1688" bodyend="1959"/>
-        <references refid="structdev__buffer_1a9229a6df77f315674f8a9e08809f97c1" compoundref="dev__common_8h" startline="187">dev_buffer::buf</references>
-        <references refid="structdw__i2s__config_1a74f72da6c2e1a67333b976aa457e5c86" compoundref="dw__i2s_8h" startline="292">dw_i2s_config::channels</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gace3d588dc25676d080bcf53ee3522d63" compoundref="emb_a_r_c__error_8h" startline="143">CHECK_ALIGN_4BYTES</references>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gacacfd9a0d19ea1f779312ce02f789269" compoundref="dev__common_8h" startline="111">DEV_DISABLED</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1ga9b1ad5abdf677288f655dd4bc9dc188d" compoundref="dev__common_8h" startline="101">DEV_MASTER_MODE</references>
-        <references refid="structdev__i2s__info_1a5a7508edb747385284b4cb8cfd3b8006" compoundref="dev__i2s_8h" startline="347">dev_i2s_info::device</references>
-        <references refid="structdw__i2s__rx__ctrl_1acc47795854417d3bfd416eb05ebff5d7" compoundref="dw__i2s_8h" startline="311">dw_i2s_rx_ctrl::dw_i2s_buf</references>
-        <references refid="structdw__i2s__tx__ctrl_1a4893b43fbef045671ec60067276c28c8" compoundref="dw__i2s_8h" startline="318">dw_i2s_tx_ctrl::dw_i2s_buf</references>
-        <references refid="structdw__i2s__rx__ctrl_1a71daa7a369906595766196a1d69b0275" compoundref="dw__i2s_8h" startline="308">dw_i2s_rx_ctrl::dw_i2s_regs</references>
-        <references refid="structdw__i2s__tx__ctrl_1a8285a3c6a4932c49f7081aadba8e1d8a" compoundref="dw__i2s_8h" startline="315">dw_i2s_tx_ctrl::dw_i2s_regs</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gaea32166a6d2d5581a5d9f5e9a648f896" compoundref="dw__i2s_8c" startline="118" endline="137">dw_i2s_rx_channel_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gac72696308e708da2b4538c4a109df000" compoundref="dw__i2s_8c" startline="139" endline="158">dw_i2s_rx_channel_enable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga6e1790c58b29db1eaca63babfbc3630f" compoundref="dw__i2s_8c" startline="440" endline="443">dw_i2s_rx_clock_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga0eedfd3889793d542b540d0993e547e2" compoundref="dw__i2s_8c" startline="435" endline="438">dw_i2s_rx_clock_enable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga77a9ce680646b27629cfa784e76f48e3" compoundref="dw__i2s_8c" startline="404" endline="421">dw_i2s_rx_set_rxchdt</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gaead710ae56669826c874559d81f52dec" compoundref="dw__i2s_8c" startline="453" endline="457">dw_i2s_rx_set_wss</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac3b88efa783fceb4a86ba3571ef4b254a631a7c96c4c48b3198c17cf2b76d1956" compoundref="dw__i2s_8h" startline="90">DW_I2S_SCLKG_12_CLK</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac3b88efa783fceb4a86ba3571ef4b254a224357066d159cbebc678c9e8998b89e" compoundref="dw__i2s_8h" startline="91">DW_I2S_SCLKG_16_CLK</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac3b88efa783fceb4a86ba3571ef4b254a6ce0829a1f067c7997b8695d37723624" compoundref="dw__i2s_8h" startline="92">DW_I2S_SCLKG_20_CLK</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac3b88efa783fceb4a86ba3571ef4b254a8ffa48dcd7d93e4b6f57bdc145e8daed" compoundref="dw__i2s_8h" startline="93">DW_I2S_SCLKG_24_CLK</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ggac3b88efa783fceb4a86ba3571ef4b254afd07cad3fc9f220ae113452fef361773" compoundref="dw__i2s_8h" startline="89">DW_I2S_SCLKG_NO</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gac6f9f1c97f754c7a1b067c0614bbb5e5" compoundref="dw__i2s_8c" startline="160" endline="179">dw_i2s_tx_channel_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga90a04dc76f497b242746339c75291219" compoundref="dw__i2s_8c" startline="181" endline="201">dw_i2s_tx_channel_enable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga30cb542e5efa9b2e65ad1d1de4c2c554" compoundref="dw__i2s_8c" startline="429" endline="432">dw_i2s_tx_clock_disable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gadceb963f9c9596d62793b7672f8b8cc3" compoundref="dw__i2s_8c" startline="424" endline="427">dw_i2s_tx_clock_enable</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5f2be5358db38ea5c1be05875773d474" compoundref="dw__i2s_8c" startline="358" endline="377">dw_i2s_tx_set_txchet</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga82488f6fe90ce9347ae0850e0a2cc36c" compoundref="dw__i2s_8c" startline="446" endline="450">dw_i2s_tx_set_wss</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1gga9eddb7e9c14a1b4dbe12aebb64dc78a1a69c68159677511da3c4a3097b2f225a9" compoundref="dw__i2s_8h" startline="82">DW_I2S_WSS_16_CLK</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1gga9eddb7e9c14a1b4dbe12aebb64dc78a1ab2cbdfdf3777d3b2366832c43ee68a23" compoundref="dw__i2s_8h" startline="83">DW_I2S_WSS_24_CLK</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1gga9eddb7e9c14a1b4dbe12aebb64dc78a1a469250c7fc43656c19100131a925be5a" compoundref="dw__i2s_8h" startline="84">DW_I2S_WSS_32_CLK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" compoundref="emb_a_r_c__error_8h" startline="79">E_CLSED</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" compoundref="emb_a_r_c__error_8h" startline="62">E_CTX</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac05cde47c29052935fd39d6d8a6c5ff4" compoundref="emb_a_r_c__error_8h" startline="57">E_NOSPT</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" compoundref="emb_a_r_c__error_8h" startline="60">E_PAR</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" compoundref="emb_a_r_c__error_8h" startline="56">E_SYS</references>
-        <references refid="structdev__i2s__cbs_1ab127e42d50952973972d0a7373273d6f" compoundref="dev__i2s_8h" startline="325">dev_i2s_cbs::err_cb</references>
-        <references refid="structdev__i2s__info_1a351d911884f5a1faea32d61ca8949bdb" compoundref="dev__i2s_8h" startline="353">dev_i2s_info::i2s_cbs</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga9e1135e0f8e70f24eacf52f773f3a2e7" compoundref="dev__i2s_8h" startline="246">I2S_CMD_DIS_DEV</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga24bf675644bb36e8d3e7a5dcca82d405" compoundref="dev__i2s_8h" startline="236">I2S_CMD_ENA_DEV</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gae62dfbb01e2798e7e33a09cff42e83b4" compoundref="dev__i2s_8h" startline="229">I2S_CMD_FLUSH_RX</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga8253934e8ddf4b6787eed66dee4fa165" compoundref="dev__i2s_8h" startline="222">I2S_CMD_FLUSH_TX</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga037a647020b711b88bf56baf09919fed" compoundref="dev__i2s_8h" startline="169">I2S_CMD_GET_STATUS</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga6e9d48b0520928ca24a7b0ce877c82ea" compoundref="dev__i2s_8h" startline="298">I2S_CMD_MST_SET_CLK</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga3c143148075c2346d07e74469e95bb21" compoundref="dev__i2s_8h" startline="312">I2S_CMD_MST_SET_SCLKG</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa53406c0b959b9c557ed8e3e50b2f2c0" compoundref="dev__i2s_8h" startline="305">I2S_CMD_MST_SET_WSS</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2d21ce33c2a315372e8dbb5b05589ee0" compoundref="dev__i2s_8h" startline="215">I2S_CMD_RESET</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga45e69392e112fd10f1305e493e72dc1c" compoundref="dev__i2s_8h" startline="193">I2S_CMD_SET_ERRCB</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaaf68019e52d5f886e1e6ff63a15f8de1" compoundref="dev__i2s_8h" startline="185">I2S_CMD_SET_RXCB</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga81a3368d5b5c1472a6ec9b3c1038a169" compoundref="dev__i2s_8h" startline="289">I2S_CMD_SET_RXCHDT_BUF</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga537794ba30ce41e9976762593aec4f6b" compoundref="dev__i2s_8h" startline="207">I2S_CMD_SET_RXINT</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa204cdf430eb9c973e4304d66bb1b446" compoundref="dev__i2s_8h" startline="267">I2S_CMD_SET_RXINT_BUF</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga2592a778e686350849092aefaa07d918" compoundref="dev__i2s_8h" startline="177">I2S_CMD_SET_TXCB</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaa1affb1cc889d958982be0037863e22c" compoundref="dev__i2s_8h" startline="278">I2S_CMD_SET_TXCHET_BUF</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1gaad994a18db5d47151d07c42c65c7ad1d" compoundref="dev__i2s_8h" startline="200">I2S_CMD_SET_TXINT</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___i2_s___c_t_r_l_c_m_d_1ga1b992d2acdf80fc76c508820985b67f6" compoundref="dev__i2s_8h" startline="258">I2S_CMD_SET_TXINT_BUF</references>
-        <references refid="structdev__i2s__info_1a78c37f09b5b8d6a721149247fe0b4719" compoundref="dev__i2s_8h" startline="344">dev_i2s_info::i2s_config</references>
-        <references refid="structdev__i2s__info_1ac96373648e415570d15070e80468f59b" compoundref="dev__i2s_8h" startline="343">dev_i2s_info::i2s_ctrl</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8a3fafd3ba0b838d8ef620f6c4dd47b2d6" compoundref="dev__i2s_8h" startline="104">I2S_DEVICE_RECEIVER</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8ab3c8bedf88d7ae02593d28719246ef48" compoundref="dev__i2s_8h" startline="103">I2S_DEVICE_TRANSMITTER</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3af22c2ba1386c443582947c7984b5af0d" compoundref="dev__i2s_8h" startline="117">I2S_IN_RX</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a72959205b5463e7315287fc6f0468aa7" compoundref="dev__i2s_8h" startline="116">I2S_IN_TX</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
-        <references refid="structdev__buffer_1a39df7479eb803d0ca261490f1b2b677d" compoundref="dev__common_8h" startline="188">dev_buffer::len</references>
-        <references refid="structdev__i2s__info_1a7cb6f4a9110c7e62b17a9188e23098cc" compoundref="dev__i2s_8h" startline="348">dev_i2s_info::mode</references>
-        <references refid="structdev__buffer_1aa3763537ccb4d9fd5619c2d1647397a6" compoundref="dev__common_8h" startline="189">dev_buffer::ofs</references>
-        <references refid="structdev__i2s__info_1a6e6f365b6451f280a44ee076818c9747" compoundref="dev__i2s_8h" startline="345">dev_i2s_info::opn_cnt</references>
-        <references refid="structdev__i2s__info_1a9a724c9b669633d63ce6b717a5a62eab" compoundref="dev__i2s_8h" startline="352">dev_i2s_info::rx_buf</references>
-        <references refid="structdev__i2s__cbs_1a92fc7de4510fd3712188a40e0b98f74e" compoundref="dev__i2s_8h" startline="324">dev_i2s_cbs::rx_cb</references>
-        <references refid="structdw__i2s__config_1adf31bca6d156df3bb93256a7f888a267" compoundref="dw__i2s_8h" startline="295">dw_i2s_config::sclk_gate</references>
-        <references refid="structdev__i2s__info_1ad048a278c9feb6d8fa7d75e2253f5864" compoundref="dev__i2s_8h" startline="346">dev_i2s_info::status</references>
-        <references refid="structdev__i2s__info_1a69d4d988c87fd397a95d65d5e6b5bf7f" compoundref="dev__i2s_8h" startline="351">dev_i2s_info::tx_buf</references>
-        <references refid="structdev__i2s__cbs_1ac9068ac4f5f4f0f76e776d92bf949076" compoundref="dev__i2s_8h" startline="323">dev_i2s_cbs::tx_cb</references>
-        <references refid="structdw__i2s__config_1a141363cba24918fbf8e3ee44c47635e3" compoundref="dw__i2s_8h" startline="294">dw_i2s_config::ws_length</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1564" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1564" bodyend="1803"/>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gaea32166a6d2d5581a5d9f5e9a648f896" compoundref="dw__i2s_8c" startline="118" endline="136">dw_i2s_rx_channel_disable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gac72696308e708da2b4538c4a109df000" compoundref="dw__i2s_8c" startline="138" endline="156">dw_i2s_rx_channel_enable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga6e1790c58b29db1eaca63babfbc3630f" compoundref="dw__i2s_8c" startline="429" endline="432">dw_i2s_rx_clock_disable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga0eedfd3889793d542b540d0993e547e2" compoundref="dw__i2s_8c" startline="424" endline="427">dw_i2s_rx_clock_enable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga77a9ce680646b27629cfa784e76f48e3" compoundref="dw__i2s_8c" startline="394" endline="410">dw_i2s_rx_set_rxchdt</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gaead710ae56669826c874559d81f52dec" compoundref="dw__i2s_8c" startline="442" endline="446">dw_i2s_rx_set_wss</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gac6f9f1c97f754c7a1b067c0614bbb5e5" compoundref="dw__i2s_8c" startline="158" endline="176">dw_i2s_tx_channel_disable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga90a04dc76f497b242746339c75291219" compoundref="dw__i2s_8c" startline="178" endline="198">dw_i2s_tx_channel_enable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga30cb542e5efa9b2e65ad1d1de4c2c554" compoundref="dw__i2s_8c" startline="418" endline="421">dw_i2s_tx_clock_disable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gadceb963f9c9596d62793b7672f8b8cc3" compoundref="dw__i2s_8c" startline="413" endline="416">dw_i2s_tx_clock_enable</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga5f2be5358db38ea5c1be05875773d474" compoundref="dw__i2s_8c" startline="349" endline="367">dw_i2s_tx_set_txchet</references>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga82488f6fe90ce9347ae0850e0a2cc36c" compoundref="dw__i2s_8c" startline="435" endline="439">dw_i2s_tx_set_wss</references>
       </memberdef>
       <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___i2_s___i_m_p_l_e_m_e_n_t_1gafefa16859094c71c6aa91918acc3a017" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -410,7 +275,7 @@
         <argsstring>(DEV_I2S *i2s_obj, const void *data, uint32_t len, uint32_t channel)</argsstring>
         <name>dw_i2s_write</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <param>
@@ -462,7 +327,7 @@
 <parametername>&gt;0</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Byte count that was successfully sent for poll method, it might can&apos;t send that much due to <ref refid="structdev__i2s__info_1a765db1a62b0b9a158c953c320c43564f" kindref="member">I2S_ERROR_STATE</ref>. </para></parameterdescription>
+<para>Byte count that was successfully sent for poll method, it might can&apos;t send that much due to I2S_ERROR_STATE. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -496,34 +361,8 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1974" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1974" bodyend="2048"/>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1ga9b1ad5abdf677288f655dd4bc9dc188d" compoundref="dev__common_8h" startline="101">DEV_MASTER_MODE</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1gaf070489d9f19e9000cb9700bb859a079" compoundref="dev__common_8h" startline="102">DEV_SLAVE_MODE</references>
-        <references refid="structdev__i2s__info_1a5a7508edb747385284b4cb8cfd3b8006" compoundref="dev__i2s_8h" startline="347">dev_i2s_info::device</references>
-        <references refid="structdw__i2s__tx__ctrl_1a4893b43fbef045671ec60067276c28c8" compoundref="dw__i2s_8h" startline="318">dw_i2s_tx_ctrl::dw_i2s_buf</references>
-        <references refid="structdw__i2s__tx__ctrl_1a8285a3c6a4932c49f7081aadba8e1d8a" compoundref="dw__i2s_8h" startline="315">dw_i2s_tx_ctrl::dw_i2s_regs</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gadceb963f9c9596d62793b7672f8b8cc3" compoundref="dw__i2s_8c" startline="424" endline="427">dw_i2s_tx_clock_enable</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" compoundref="emb_a_r_c__error_8h" startline="79">E_CLSED</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" compoundref="emb_a_r_c__error_8h" startline="62">E_CTX</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" compoundref="emb_a_r_c__error_8h" startline="69">E_OBJ</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" compoundref="emb_a_r_c__error_8h" startline="60">E_PAR</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" compoundref="emb_a_r_c__error_8h" startline="56">E_SYS</references>
-        <references refid="structdev__i2s__info_1a765db1a62b0b9a158c953c320c43564f" compoundref="dev__i2s_8h" startline="350">dev_i2s_info::err_state</references>
-        <references refid="structdw__i2s__config_1a654ceb6083eae2d3668f790efe33fb20" compoundref="dw__i2s_8h" startline="291">dw_i2s_config::fifo_len</references>
-        <references refid="structdev__i2s__info_1a78c37f09b5b8d6a721149247fe0b4719" compoundref="dev__i2s_8h" startline="344">dev_i2s_info::i2s_config</references>
-        <references refid="structdev__i2s__info_1ac96373648e415570d15070e80468f59b" compoundref="dev__i2s_8h" startline="343">dev_i2s_info::i2s_ctrl</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8ab3c8bedf88d7ae02593d28719246ef48" compoundref="dev__i2s_8h" startline="103">I2S_DEVICE_TRANSMITTER</references>
-        <references refid="group___i2_s___e_r_r_o_r___s_t_a_t_e_1ggabe4a7caff4d6ff8c15ffc11499423a46a7010438f2a7e36117a2f7323e765977e" compoundref="dev__i2s_8h" startline="128">I2S_ERR_NONE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a72959205b5463e7315287fc6f0468aa7" compoundref="dev__i2s_8h" startline="116">I2S_IN_TX</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
-        <references refid="structdw__i2s__tx__reg_1aa7468a2a91d95d611ef6691e72b17107" compoundref="dw__i2s_8h" startline="213">dw_i2s_tx_reg::ISR0</references>
-        <references refid="structdev__i2s__info_1a7cb6f4a9110c7e62b17a9188e23098cc" compoundref="dev__i2s_8h" startline="348">dev_i2s_info::mode</references>
-        <references refid="structdev__i2s__info_1a6e6f365b6451f280a44ee076818c9747" compoundref="dev__i2s_8h" startline="345">dev_i2s_info::opn_cnt</references>
-        <references refid="structdev__i2s__info_1ad048a278c9feb6d8fa7d75e2253f5864" compoundref="dev__i2s_8h" startline="346">dev_i2s_info::status</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1818" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1818" bodyend="1888"/>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1gadceb963f9c9596d62793b7672f8b8cc3" compoundref="dw__i2s_8c" startline="413" endline="416">dw_i2s_tx_clock_enable</references>
       </memberdef>
       <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___i2_s___i_m_p_l_e_m_e_n_t_1ga1d9ef7056c96a5d52a6fe3ef1cb132e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -531,7 +370,7 @@
         <argsstring>(DEV_I2S *i2s_obj, void *data, uint32_t len, uint32_t channel)</argsstring>
         <name>dw_i2s_read</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <param>
@@ -576,7 +415,7 @@
 <parametername>&gt;0</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Byte count that was successfully received for poll method, it might can&apos;t send that much due to <ref refid="structdev__i2s__info_1a765db1a62b0b9a158c953c320c43564f" kindref="member">I2S_ERROR_STATE</ref>. </para></parameterdescription>
+<para>Byte count that was successfully received for poll method, it might can&apos;t send that much due to I2S_ERROR_STATE. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -610,32 +449,8 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="2062" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="2062" bodyend="2132"/>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_u_s_1gaad1f383b0e8eb7feec60f52998730eff" compoundref="dev__common_8h" startline="112">DEV_ENABLED</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1ga9b1ad5abdf677288f655dd4bc9dc188d" compoundref="dev__common_8h" startline="101">DEV_MASTER_MODE</references>
-        <references refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_m_o_d_e_1gaf070489d9f19e9000cb9700bb859a079" compoundref="dev__common_8h" startline="102">DEV_SLAVE_MODE</references>
-        <references refid="structdev__i2s__info_1a5a7508edb747385284b4cb8cfd3b8006" compoundref="dev__i2s_8h" startline="347">dev_i2s_info::device</references>
-        <references refid="structdw__i2s__rx__ctrl_1acc47795854417d3bfd416eb05ebff5d7" compoundref="dw__i2s_8h" startline="311">dw_i2s_rx_ctrl::dw_i2s_buf</references>
-        <references refid="structdw__i2s__rx__ctrl_1a71daa7a369906595766196a1d69b0275" compoundref="dw__i2s_8h" startline="308">dw_i2s_rx_ctrl::dw_i2s_regs</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga0eedfd3889793d542b540d0993e547e2" compoundref="dw__i2s_8c" startline="435" endline="438">dw_i2s_rx_clock_enable</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gac4e674c971a46afe82377d02a2d19451" compoundref="emb_a_r_c__error_8h" startline="79">E_CLSED</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" compoundref="emb_a_r_c__error_8h" startline="62">E_CTX</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga33dcdca4c2e85d1b2899272d9d176553" compoundref="emb_a_r_c__error_8h" startline="69">E_OBJ</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" compoundref="emb_a_r_c__error_8h" startline="60">E_PAR</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1gae5989e632e687010b35b613304089823" compoundref="emb_a_r_c__error_8h" startline="56">E_SYS</references>
-        <references refid="structdev__i2s__info_1a765db1a62b0b9a158c953c320c43564f" compoundref="dev__i2s_8h" startline="350">dev_i2s_info::err_state</references>
-        <references refid="structdev__i2s__info_1ac96373648e415570d15070e80468f59b" compoundref="dev__i2s_8h" startline="343">dev_i2s_info::i2s_ctrl</references>
-        <references refid="group___i2_s___d_e_v_i_c_e___t_y_p_e_1gga705f27f97f7a5cb298fce2320fceb1a8a3fafd3ba0b838d8ef620f6c4dd47b2d6" compoundref="dev__i2s_8h" startline="104">I2S_DEVICE_RECEIVER</references>
-        <references refid="group___i2_s___e_r_r_o_r___s_t_a_t_e_1ggabe4a7caff4d6ff8c15ffc11499423a46a7010438f2a7e36117a2f7323e765977e" compoundref="dev__i2s_8h" startline="128">I2S_ERR_NONE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3af22c2ba1386c443582947c7984b5af0d" compoundref="dev__i2s_8h" startline="117">I2S_IN_RX</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
-        <references refid="structdw__i2s__rx__reg_1ace54b51a48ca92d79e6a0b7bf3ea9c0f" compoundref="dw__i2s_8h" startline="129">dw_i2s_rx_reg::ISR0</references>
-        <references refid="structdev__i2s__info_1a7cb6f4a9110c7e62b17a9188e23098cc" compoundref="dev__i2s_8h" startline="348">dev_i2s_info::mode</references>
-        <references refid="structdev__i2s__info_1a6e6f365b6451f280a44ee076818c9747" compoundref="dev__i2s_8h" startline="345">dev_i2s_info::opn_cnt</references>
-        <references refid="structdev__i2s__info_1ad048a278c9feb6d8fa7d75e2253f5864" compoundref="dev__i2s_8h" startline="346">dev_i2s_info::status</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1902" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1902" bodyend="1968"/>
+        <references refid="group___d_e_v_i_c_e___d_w___i2_s___s_t_a_t_i_c_1ga0eedfd3889793d542b540d0993e547e2" compoundref="dw__i2s_8c" startline="424" endline="427">dw_i2s_rx_clock_enable</references>
       </memberdef>
       <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___i2_s___i_m_p_l_e_m_e_n_t_1gaf4cb924b26c2588b8bdd238961413636" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -643,7 +458,7 @@
         <argsstring>(DEV_I2S *i2s_obj, void *ptr)</argsstring>
         <name>dw_i2s_isr_tx</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <param>
@@ -671,17 +486,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="2139" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="2139" bodyend="2158"/>
-        <references refid="structdw__i2s__config_1a74f72da6c2e1a67333b976aa457e5c86" compoundref="dw__i2s_8h" startline="292">dw_i2s_config::channels</references>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ga7e88ab69f8194f7cd08ffdcceaa392bc" compoundref="dw__i2s_8h" startline="68">DW_I2S_CHANNEL3_SUPPORTED</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" compoundref="emb_a_r_c__error_8h" startline="62">E_CTX</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" compoundref="emb_a_r_c__error_8h" startline="60">E_PAR</references>
-        <references refid="structdev__i2s__info_1a78c37f09b5b8d6a721149247fe0b4719" compoundref="dev__i2s_8h" startline="344">dev_i2s_info::i2s_config</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a72959205b5463e7315287fc6f0468aa7" compoundref="dev__i2s_8h" startline="116">I2S_IN_TX</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="1975" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="1975" bodyend="1995"/>
       </memberdef>
       <memberdef kind="function" id="group___d_e_v_i_c_e___d_w___i2_s___i_m_p_l_e_m_e_n_t_1ga7b75a256555426e52cf2584c78b98c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -689,7 +494,7 @@
         <argsstring>(DEV_I2S *i2s_obj, void *ptr)</argsstring>
         <name>dw_i2s_isr_rx</name>
         <param>
-          <type><ref refid="group___d_e_v_i_c_e___h_a_l___i2_s___d_e_v_s_t_r_u_c_t_1ga5a83a980e84ee405fbd3cca1df9b2114" kindref="member">DEV_I2S</ref> *</type>
+          <type>DEV_I2S *</type>
           <declname>i2s_obj</declname>
         </param>
         <param>
@@ -717,17 +522,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="2165" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="2165" bodyend="2184"/>
-        <references refid="structdw__i2s__config_1a74f72da6c2e1a67333b976aa457e5c86" compoundref="dw__i2s_8h" startline="292">dw_i2s_config::channels</references>
-        <references refid="structdev__i2s__info_1a94ecfd059eb63235cbf196ac4563f759" compoundref="dev__i2s_8h" startline="349">dev_i2s_info::cur_state</references>
-        <references refid="group___d_e_v_i_c_e___d_w___i2_s___i_n_f_o_1ga7e88ab69f8194f7cd08ffdcceaa392bc" compoundref="dw__i2s_8h" startline="68">DW_I2S_CHANNEL3_SUPPORTED</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga794d581c6f9c0407cbdde9f738c24e9e" compoundref="emb_a_r_c__error_8h" startline="62">E_CTX</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga1e7cc741c56207a8872ea58373276925" compoundref="emb_a_r_c__error_8h" startline="55">E_OK</references>
-        <references refid="group___e_m_b_a_r_c___e_r_r_o_r_1ga28d0303b78b18735ae91a99ecc11bc8e" compoundref="emb_a_r_c__error_8h" startline="60">E_PAR</references>
-        <references refid="structdev__i2s__info_1a78c37f09b5b8d6a721149247fe0b4719" compoundref="dev__i2s_8h" startline="344">dev_i2s_info::i2s_config</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3a7e0bd35eae6fd8994aa85f69c2692777" compoundref="dev__i2s_8h" startline="115">I2S_FREE</references>
-        <references refid="group___i2_s___w_o_r_k_i_n_g___s_t_a_t_e_1gga67f538687c96848312471f06a448fde3af22c2ba1386c443582947c7984b5af0d" compoundref="dev__i2s_8h" startline="117">I2S_IN_RX</references>
-        <references refid="structdev__i2s_1a9c5277fd78a33dcb54b8a8c8f8070153" compoundref="dev__i2s_8h" startline="371">dev_i2s::i2s_info</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" line="2002" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/device/ip/designware/i2s/dw_i2s.c" bodystart="2002" bodyend="2022"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

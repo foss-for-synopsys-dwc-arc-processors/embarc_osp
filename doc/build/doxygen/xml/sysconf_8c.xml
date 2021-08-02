@@ -2,63 +2,42 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="sysconf_8c" kind="file">
     <compoundname>sysconf.c</compoundname>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
     <includes refid="iotdk__hardware_8h" local="yes">iotdk_hardware.h</includes>
     <includes refid="sysconf_8h" local="yes">sysconf.h</includes>
     <incdepgraph>
-      <node id="7967">
-        <label>stdbool.h</label>
-      </node>
-      <node id="7970">
-        <label>apexextensions.h</label>
-        <link refid="iotdk_2configs_210_2apexextensions_8h_source"/>
-      </node>
-      <node id="7968">
-        <label>iotdk_hardware.h</label>
-        <link refid="iotdk__hardware_8h_source"/>
-        <childnode refid="7969" relation="include">
-        </childnode>
-        <childnode refid="7970" relation="include">
-        </childnode>
-      </node>
-      <node id="7964">
-        <label>stdint.h</label>
-      </node>
-      <node id="7969">
-        <label>io_config.h</label>
-        <link refid="iotdk_2configs_210_2io__config_8h_source"/>
-      </node>
-      <node id="7962">
+      <node id="4086">
         <label>sysconf.c</label>
         <link refid="sysconf.c"/>
-        <childnode refid="7963" relation="include">
+        <childnode refid="4087" relation="include">
         </childnode>
-        <childnode refid="7968" relation="include">
+        <childnode refid="4088" relation="include">
         </childnode>
-        <childnode refid="7971" relation="include">
+        <childnode refid="4091" relation="include">
         </childnode>
       </node>
-      <node id="7971">
+      <node id="4091">
         <label>sysconf.h</label>
         <link refid="sysconf_8h_source"/>
       </node>
-      <node id="7966">
-        <label>stddef.h</label>
+      <node id="4088">
+        <label>iotdk_hardware.h</label>
+        <link refid="iotdk__hardware_8h_source"/>
+        <childnode refid="4089" relation="include">
+        </childnode>
+        <childnode refid="4090" relation="include">
+        </childnode>
       </node>
-      <node id="7965">
-        <label>limits.h</label>
+      <node id="4089">
+        <label>io_config.h</label>
+        <link refid="iotdk_2configs_210_2io__config_8h_source"/>
       </node>
-      <node id="7963">
+      <node id="4090">
+        <label>apexextensions.h</label>
+        <link refid="iotdk_2configs_210_2apexextensions_8h_source"/>
+      </node>
+      <node id="4087">
         <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="7964" relation="include">
-        </childnode>
-        <childnode refid="7965" relation="include">
-        </childnode>
-        <childnode refid="7966" relation="include">
-        </childnode>
-        <childnode refid="7967" relation="include">
-        </childnode>
       </node>
     </incdepgraph>
     <innerclass refid="structpll__conf" prot="public">pll_conf</innerclass>
@@ -72,23 +51,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="35" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="35" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="35" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="sysconf_8c_1aaef1d3da21784a957ba5d676c44a720d" prot="public" static="no">
         <name>PLL_CONF_VAL</name>
         <param><defname>n</defname></param>
         <param><defname>m</defname></param>
         <param><defname>od</defname></param>
-        <initializer>(((n) &lt;&lt; PLLCON_BIT_OFFSET_N) | \
-	((m) &lt;&lt; (PLLCON_BIT_OFFSET_M)) | \
-	((od) &lt;&lt; PLLCON_BIT_OFFSET_OD))</initializer>
+        <initializer>(((n) &lt;&lt; PLLCON_BIT_OFFSET_N) |	  \
+	 ((m) &lt;&lt; (PLLCON_BIT_OFFSET_M)) | \
+	 ((od) &lt;&lt; PLLCON_BIT_OFFSET_OD))</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="45" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="44" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -103,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="43" column="1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="42" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -119,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="37" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="37" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="37" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="sysconf_8c_1a9b17a8f94fe7e80e35271b184370e50c" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structpll__conf" kindref="compound">PLL_CONF</ref></type>
@@ -127,17 +106,17 @@
         <argsstring>[]</argsstring>
         <name>pll_configuration</name>
         <initializer>= {
-	{200, PLL_CONF_VAL(1, 25, 1)}, 
-	{100, PLL_CONF_VAL(1, 25, 2)}, 
-	{50,  PLL_CONF_VAL(1, 25, 3)},  
-	{400, PLL_CONF_VAL(1, 25, 0)}, 
-	{150, PLL_CONF_VAL(4, 75, 1)}, 
-	{75,  PLL_CONF_VAL(4, 75, 2)},  
-	{300, PLL_CONF_VAL(4, 75, 0)}, 
-	{25,  PLL_CONF_VAL(2, 25, 3)},  
-	{72,  PLL_CONF_VAL(8, 144, 2)}, 
-	{144, PLL_CONF_VAL(8, 144, 1)}, 
-	{180, PLL_CONF_VAL(8, 180, 1)}, 
+	{ 200, PLL_CONF_VAL(1, 25, 1) },        
+	{ 100, PLL_CONF_VAL(1, 25, 2) },        
+	{ 50,  PLL_CONF_VAL(1, 25, 3) },        
+	{ 400, PLL_CONF_VAL(1, 25, 0) },        
+	{ 150, PLL_CONF_VAL(4, 75, 1) },        
+	{ 75,  PLL_CONF_VAL(4, 75, 2) },        
+	{ 300, PLL_CONF_VAL(4, 75, 0) },        
+	{ 25,  PLL_CONF_VAL(2, 25, 3) },        
+	{ 72,  PLL_CONF_VAL(8, 144, 2) },       
+	{ 144, PLL_CONF_VAL(8, 144, 1) },       
+	{ 180, PLL_CONF_VAL(8, 180, 1) },       
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -145,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="51" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="51" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="50" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -164,7 +143,7 @@
 <para>Fref = Fin / N; Fvco = Fref * M Fout = Fvco / NO</para><para>N = input divider value (1, 2, 3 … 15) M = feedback divider value (4, 5, 6 … 16383) NO = output divider value (1, 2, 4, or 8)</para><para>1 Mhz &lt;= Fref &lt;= 50 Mhz 200 Mhz &lt;= Fvco &lt;= 400 Mhz </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="79" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="79" bodyend="100"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="78" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="78" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a673957d32354c51a004befa4214a12d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -181,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="102" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="102" bodyend="133"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="103" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="103" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1aa3e2cd4c0424671ed7fa32d8059765b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -198,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="135" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="135" bodyend="138"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="135" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1adab43e5a5ea4107e3a6d9b1d87e4bbf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -231,7 +210,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="147" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="147" bodyend="154"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="147" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="147" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1ab93df4f44d26ab129f13d6daf7cbd484" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -264,7 +243,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="163" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="163" bodyend="170"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="163" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="163" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a72f130b6063ea2693137b58465b9d54c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -281,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="172" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="172" bodyend="175"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="172" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="172" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a6f61168c63258af9d560b1948d3c0aeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -298,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="177" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="177" bodyend="184"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="177" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="177" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a5aa632f294b20ae1ac82d20ca38e3000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -315,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="186" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="186" bodyend="193"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="186" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="186" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a764b037b3698ac75bc71fff238a0b121" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -348,7 +327,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="203" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="203" bodyend="206"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="203" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="203" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a74a1dcc4c0061ac715403ede90308e91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -392,7 +371,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="216" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="216" bodyend="228"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="216" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="216" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a47b0b1857c32487860d0a29731a3634a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -436,7 +415,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="238" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="238" bodyend="253"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="238" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="238" bodyend="253"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a518faa5e3c92ad59894fb1f28a98314f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -480,7 +459,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="263" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="263" bodyend="275"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="263" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="263" bodyend="275"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a611c5c9946c98f7501cb28b901ec7836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -497,7 +476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="277" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="277" bodyend="280"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="277" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="277" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a8724a457f651421f98ac0070c09452e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -514,7 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="282" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="282" bodyend="285"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="282" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="282" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a148af5009dd964ade197b3015e42364b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -531,7 +510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="287" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="287" bodyend="290"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="287" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="287" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1aae13f5226b064c31ccd8996d0d2ebb56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -547,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="292" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="292" bodyend="295"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="292" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="292" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a644c44108cdaf626eac4d36aa7e62448" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -563,7 +542,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="297" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="297" bodyend="304"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="297" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="297" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a17cd3965571509010be8fff6914b4adb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -584,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="306" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="306" bodyend="321"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="306" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="306" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1aada9e800994307128bd314e1da9f9300" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -605,7 +584,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="323" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="323" bodyend="340"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="323" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="323" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1ac2c9e3a1c8528e218193b0cf643fe873" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -622,7 +601,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="342" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="342" bodyend="345"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="342" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="342" bodyend="345"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a3a7a5b9b559e7cda325eb956f3239710" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -639,7 +618,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="347" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="347" bodyend="350"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="347" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="347" bodyend="350"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a6f66885b7923efc9af11179e1dc53cf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -656,7 +635,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="352" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="352" bodyend="355"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="352" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="352" bodyend="355"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1a2a8bbd2c387432c31fb346c3c3ac0e67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -673,7 +652,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="357" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="357" bodyend="360"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="357" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="357" bodyend="360"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1ae524a32d7c963c897deb3815f2f640a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -694,7 +673,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="362" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="362" bodyend="377"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="362" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="362" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="sysconf_8c_1aaf3841435f15e53efaeea3e0c7343ff0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -711,7 +690,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="379" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="379" bodyend="385"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" line="379" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c" bodystart="379" bodyend="386"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -747,9 +726,9 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;iotdk_hardware.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sysconf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
@@ -757,75 +736,75 @@
 <codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><ref refid="structsysconf__reg" kindref="compound">SYSCONF_REG_PTR</ref><sp/>sysconf_reg_ptr<sp/>=<sp/>(<ref refid="structsysconf__reg" kindref="compound">SYSCONF_REG_PTR</ref>)(BASE_ADDR_SYSCONFIG);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="structpll__conf" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structpll__conf" kindref="compound">pll_conf</ref><sp/>{</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>fout;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>pll;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal">}<sp/><ref refid="structpll__conf" kindref="compound">PLL_CONF</ref>;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLL_CONF_VAL(n,<sp/>m,<sp/>od)<sp/>\</highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(((n)<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_N)<sp/>|<sp/>\</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((m)<sp/>&lt;&lt;<sp/>(PLLCON_BIT_OFFSET_M))<sp/>|<sp/>\</highlight></codeline>
-<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((od)<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_OD))</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>the<sp/>following<sp/>configuration<sp/>is<sp/>based<sp/>on<sp/>Fin<sp/>=<sp/>16<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structpll__conf" kindref="compound">PLL_CONF</ref><sp/>pll_configuration[]<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{200,<sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>1)},<sp/></highlight><highlight class="comment">/*<sp/>200<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{100,<sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>2)},<sp/></highlight><highlight class="comment">/*<sp/>100<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{50,<sp/><sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>3)},<sp/><sp/></highlight><highlight class="comment">/*<sp/>50<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{400,<sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>0)},<sp/></highlight><highlight class="comment">/*<sp/>400<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{150,<sp/>PLL_CONF_VAL(4,<sp/>75,<sp/>1)},<sp/></highlight><highlight class="comment">/*<sp/>150<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{75,<sp/><sp/>PLL_CONF_VAL(4,<sp/>75,<sp/>2)},<sp/><sp/></highlight><highlight class="comment">/*<sp/>75<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{300,<sp/>PLL_CONF_VAL(4,<sp/>75,<sp/>0)},<sp/></highlight><highlight class="comment">/*<sp/>300<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{25,<sp/><sp/>PLL_CONF_VAL(2,<sp/>25,<sp/>3)},<sp/><sp/></highlight><highlight class="comment">/*<sp/>25<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{72,<sp/><sp/>PLL_CONF_VAL(8,<sp/>144,<sp/>2)},<sp/></highlight><highlight class="comment">/*<sp/>72<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{144,<sp/>PLL_CONF_VAL(8,<sp/>144,<sp/>1)},<sp/></highlight><highlight class="comment">/*<sp/>144<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{180,<sp/>PLL_CONF_VAL(8,<sp/>180,<sp/>1)},<sp/></highlight><highlight class="comment">/*<sp/>180<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pll_conf_reg(uint32_t<sp/>val)</highlight></codeline>
-<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;CLKSEL<sp/>=<sp/>CLKSEL_EXT_16M;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x52000000<sp/>is<sp/>not<sp/>described<sp/>in<sp/>spec.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PLLCON<sp/>=<sp/>val<sp/>|<sp/>(0x52000000);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PLLCON<sp/>=<sp/>val<sp/>|<sp/>(1<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_PLLRST);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PLLCON<sp/>=<sp/>val<sp/>&amp;<sp/>(~(1<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_PLLRST));</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!(sysconf_reg_ptr-&gt;PLLSTAT</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<sp/>(1<sp/>&lt;&lt;<sp/>PLLSTAT_BIT_OFFSET_PLLSTB)));</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;CLKSEL<sp/>=<sp/>CLKSEL_PLL;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>AHB<sp/>clk<sp/>divisor<sp/>=<sp/>1,<sp/>Flash<sp/>controller<sp/>clock<sp/>divider<sp/>=<sp/>2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;AHBCLKDIV<sp/>=<sp/>0x201;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>from<sp/>AHB_CLK_DIVIDER,<sp/>not<sp/>from<sp/>DVFSS&amp;PMC<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;AHBCLKDIV_SEL<sp/>|=<sp/>1;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal">int32_t<sp/>pll_fout_config(uint32_t<sp/>freq)</highlight></codeline>
-<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>i;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(freq<sp/>==<sp/>PLL_CLK_IN)<sp/>{</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;CLKSEL<sp/>=<sp/>CLKSEL_EXT_16M;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>EMBARC_ARRAY_COUNT(pll_configuration);<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pll_configuration[i].fout<sp/>==<sp/>freq)<sp/>{</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&gt;=<sp/>EMBARC_ARRAY_COUNT(pll_configuration))<sp/>{</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pll_conf_reg(pll_configuration[i].pll);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="structpll__conf" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structpll__conf" kindref="compound">pll_conf</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>fout;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>pll;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}<sp/><ref refid="structpll__conf" kindref="compound">PLL_CONF</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLL_CONF_VAL(n,<sp/>m,<sp/>od)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(((n)<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_N)<sp/>|<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((m)<sp/>&lt;&lt;<sp/>(PLLCON_BIT_OFFSET_M))<sp/>|<sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((od)<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_OD))</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>the<sp/>following<sp/>configuration<sp/>is<sp/>based<sp/>on<sp/>Fin<sp/>=<sp/>16<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structpll__conf" kindref="compound">PLL_CONF</ref><sp/>pll_configuration[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>200,<sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>1)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>200<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>100,<sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>2)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>100<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>50,<sp/><sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>3)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>50<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>400,<sp/>PLL_CONF_VAL(1,<sp/>25,<sp/>0)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>400<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>150,<sp/>PLL_CONF_VAL(4,<sp/>75,<sp/>1)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>150<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>75,<sp/><sp/>PLL_CONF_VAL(4,<sp/>75,<sp/>2)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>75<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>300,<sp/>PLL_CONF_VAL(4,<sp/>75,<sp/>0)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>300<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>25,<sp/><sp/>PLL_CONF_VAL(2,<sp/>25,<sp/>3)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>25<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>72,<sp/><sp/>PLL_CONF_VAL(8,<sp/>144,<sp/>2)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>72<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>144,<sp/>PLL_CONF_VAL(8,<sp/>144,<sp/>1)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>144<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>180,<sp/>PLL_CONF_VAL(8,<sp/>180,<sp/>1)<sp/>},<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>180<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pll_conf_reg(uint32_t<sp/>val)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;CLKSEL<sp/>=<sp/>CLKSEL_EXT_16M;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>0x52000000<sp/>is<sp/>not<sp/>described<sp/>in<sp/>spec.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PLLCON<sp/>=<sp/>val<sp/>|<sp/>(0x52000000);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PLLCON<sp/>=<sp/>val<sp/>|<sp/>(1<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_PLLRST);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PLLCON<sp/>=<sp/>val<sp/>&amp;<sp/>(~(1<sp/>&lt;&lt;<sp/>PLLCON_BIT_OFFSET_PLLRST));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!(sysconf_reg_ptr-&gt;PLLSTAT</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<sp/>(1<sp/>&lt;&lt;<sp/>PLLSTAT_BIT_OFFSET_PLLSTB)))<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;CLKSEL<sp/>=<sp/>CLKSEL_PLL;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>AHB<sp/>clk<sp/>divisor<sp/>=<sp/>1,<sp/>Flash<sp/>controller<sp/>clock<sp/>divider<sp/>=<sp/>2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;AHBCLKDIV<sp/>=<sp/>0x201;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>from<sp/>AHB_CLK_DIVIDER,<sp/>not<sp/>from<sp/>DVFSS&amp;PMC<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;AHBCLKDIV_SEL<sp/>|=<sp/>1;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">int32_t<sp/>pll_fout_config(uint32_t<sp/>freq)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>i;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(freq<sp/>==<sp/>PLL_CLK_IN)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;CLKSEL<sp/>=<sp/>CLKSEL_EXT_16M;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>EMBARC_ARRAY_COUNT(pll_configuration);<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pll_configuration[i].fout<sp/>==<sp/>freq)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>&gt;=<sp/>EMBARC_ARRAY_COUNT(pll_configuration))<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pll_conf_reg(pll_configuration[i].pll);</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>config<sp/>eflash<sp/>clk,<sp/>must<sp/>be<sp/>&lt;<sp/>100<sp/>Mhz<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(freq<sp/>&gt;<sp/>100)<sp/>{</highlight></codeline>
@@ -894,13 +873,13 @@
 <codeline lineno="217"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/>SPI_MASTER_0)<sp/>{</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/>SPI_MASTER_1)<sp/>{</highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>==<sp/>SPI_MASTER_2)<sp/>{</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;SPI_MST_CLKDIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="228"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
@@ -908,16 +887,16 @@
 <codeline lineno="239"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO8B_BANK0)<sp/>{</highlight></codeline>
 <codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO8B_BANK1)<sp/>{</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO8B_BANK2)<sp/>{</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO8B_BANK3)<sp/>{</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0x00ffffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>24);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO8B_DBCLK_DIV<sp/>&amp;<sp/>0x00ffffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>24);</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="253"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"></highlight></codeline>
@@ -925,13 +904,13 @@
 <codeline lineno="264"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO4B_BANK0)<sp/>{</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO4B_BANK1)<sp/>{</highlight></codeline>
 <codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
 <codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bank<sp/>==<sp/>GPIO4B_BANK2)<sp/>{</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>=</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;GPIO4B_DBCLK_DIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="275"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"></highlight></codeline>
@@ -968,16 +947,16 @@
 <codeline lineno="307"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL0)<sp/>{</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xffffff00)<sp/>|<sp/>div;</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL1)<sp/>{</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xffff00ff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL2)<sp/>{</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xff00ffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL3)<sp/>{</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0x00ffffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>24);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0x00ffffff)<sp/>|<sp/>(div<sp/>&lt;&lt;<sp/>24);</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="321"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"></highlight></codeline>
@@ -987,16 +966,16 @@
 <codeline lineno="326"><highlight class="normal"></highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL0)<sp/>{</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>=</highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>&amp;<sp/>0xfffffff0)<sp/>|<sp/>val;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>&amp;<sp/>0xfffffff0)<sp/>|<sp/>val;</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL1)<sp/>{</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>=</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>&amp;<sp/>0xffffff0f)<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>4);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>&amp;<sp/>0xffffff0f)<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>4);</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL2)<sp/>{</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>=</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>&amp;<sp/>0xfffff0ff)<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_VDDSET<sp/>&amp;<sp/>0xfffff0ff)<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>DVFS_PERF_LEVEL3)<sp/>{</highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>=</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xffff0fff)<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>12);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(sysconf_reg_ptr-&gt;DVFS_CLKDIV<sp/>&amp;<sp/>0xffff0fff)<sp/>|<sp/>(val<sp/>&lt;&lt;<sp/>12);</highlight></codeline>
 <codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="340"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"></highlight></codeline>
@@ -1007,7 +986,7 @@
 <codeline lineno="346"><highlight class="normal"></highlight></codeline>
 <codeline lineno="347"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>pmc_pwwtime_config(uint8_t<sp/>time)</highlight></codeline>
 <codeline lineno="348"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PMC_PUWTIME=<sp/>time;</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;PMC_PUWTIME<sp/>=<sp/>time;</highlight></codeline>
 <codeline lineno="350"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="351"><highlight class="normal"></highlight></codeline>
 <codeline lineno="352"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>uart3_clk_divisor(uint8_t<sp/>div)</highlight></codeline>
@@ -1040,11 +1019,12 @@
 <codeline lineno="379"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>eflash_clk_div(uint8_t<sp/>div)</highlight></codeline>
 <codeline lineno="380"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>val<sp/>=<sp/>sysconf_reg_ptr-&gt;AHBCLKDIV;</highlight></codeline>
-<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>&amp;=<sp/>(~(7<sp/>&lt;&lt;<sp/>8));</highlight></codeline>
-<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>|=<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;AHBCLKDIV<sp/>=<sp/>val;</highlight></codeline>
-<codeline lineno="385"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>&amp;=<sp/>(~(7<sp/>&lt;&lt;<sp/>8));</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val<sp/>|=<sp/>(div<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sysconf_reg_ptr-&gt;AHBCLKDIV<sp/>=<sp/>val;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/iotdk/drivers/sysconf/sysconf.c"/>
   </compounddef>
 </doxygen>

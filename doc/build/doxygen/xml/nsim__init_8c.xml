@@ -2,93 +2,27 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="nsim__init_8c" kind="file">
     <compoundname>nsim_init.c</compoundname>
-    <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
-    <includes refid="arc_8h" local="yes">arc.h</includes>
-    <includes refid="arc__timer_8h" local="yes">arc_timer.h</includes>
-    <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
+    <includes local="yes">arc/arc_timer.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
     <incdepgraph>
-      <node id="6122">
-        <label>stdbool.h</label>
+      <node id="2890">
+        <label>arc/arc_timer.h</label>
       </node>
-      <node id="6125">
-        <label>arc_timer.h</label>
-        <link refid="arc__timer_8h"/>
-        <childnode refid="6123" relation="include">
-        </childnode>
-        <childnode refid="6117" relation="include">
-        </childnode>
-        <childnode refid="6118" relation="include">
-        </childnode>
-      </node>
-      <node id="6117">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="6118" relation="include">
-        </childnode>
-      </node>
-      <node id="6123">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="6124" relation="include">
-        </childnode>
-      </node>
-      <node id="6119">
-        <label>stdint.h</label>
-      </node>
-      <node id="6121">
-        <label>stddef.h</label>
-      </node>
-      <node id="6116">
+      <node id="2889">
         <label>nsim_init.c</label>
         <link refid="nsim_init.c"/>
-        <childnode refid="6117" relation="include">
+        <childnode refid="2890" relation="include">
         </childnode>
-        <childnode refid="6123" relation="include">
-        </childnode>
-        <childnode refid="6125" relation="include">
-        </childnode>
-        <childnode refid="6126" relation="include">
-        </childnode>
-        <childnode refid="6127" relation="include">
+        <childnode refid="2891" relation="include">
         </childnode>
       </node>
-      <node id="6120">
-        <label>limits.h</label>
-      </node>
-      <node id="6126">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="6118" relation="include">
-        </childnode>
-        <childnode refid="6123" relation="include">
-        </childnode>
-        <childnode refid="6117" relation="include">
-        </childnode>
-      </node>
-      <node id="6118">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="6119" relation="include">
-        </childnode>
-        <childnode refid="6120" relation="include">
-        </childnode>
-        <childnode refid="6121" relation="include">
-        </childnode>
-        <childnode refid="6122" relation="include">
-        </childnode>
-      </node>
-      <node id="6124">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="6127">
+      <node id="2891">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group___b_o_a_r_d___c_o_m_m_o_n_1ga916f2adc2080b4fe88034086d107a8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void board_init</definition>
         <argsstring>(void)</argsstring>
@@ -99,12 +33,12 @@
         <briefdescription>
 <para>Board init routine MUST be called in each application. </para>        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
+<para>here is a sample of EMSK board resource definitions</para><para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/common/nsim_init.c" line="42" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/common/nsim_init.c" bodystart="42" bodyend="46"/>
-        <references refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" compoundref="arc__timer_8c" startline="191" endline="204">timer_init</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/common/nsim_init.c" line="38" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/common/nsim_init.c" bodystart="38" bodyend="41"/>
+        <references refid="arc__timer_8c_1ac4edf3c4dbed2f2a41f0880ed8f7a5b7" compoundref="arc__timer_8c" startline="191" endline="204">arc_timer_init</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -140,20 +74,15 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__timer_8h" kindref="compound">arc_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" kindref="member">timer_init</ref>();</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nsim_timer_init();</highlight></codeline>
-<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="group___b_o_a_r_d___c_o_m_m_o_n_1ga916f2adc2080b4fe88034086d107a8dc" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___c_o_m_m_o_n_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__timer_8c_1ac4edf3c4dbed2f2a41f0880ed8f7a5b7" kindref="member">arc_timer_init</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/common/nsim_init.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/nsim/common/nsim_init.c"/>
   </compounddef>
 </doxygen>

@@ -7,156 +7,93 @@
     <includes refid="secureshield__vmpu_8h" local="yes">secureshield_vmpu.h</includes>
     <includes refid="secureshield__container__stack_8h" local="yes">secureshield_container_stack.h</includes>
     <includes refid="secureshield__container__call_8h" local="yes">secureshield_container_call.h</includes>
-    <includes refid="arc__mpu_8h" local="yes">arc_mpu.h</includes>
+    <includes local="yes">arc/arc_mpu.h</includes>
     <incdepgraph>
-      <node id="7598">
-        <label>stdbool.h</label>
+      <node id="3909">
+        <label>embARC_debug.h</label>
       </node>
-      <node id="7601">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="7594" relation="include">
-        </childnode>
-      </node>
-      <node id="7599">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="7600" relation="include">
-        </childnode>
-      </node>
-      <node id="7595">
-        <label>stdint.h</label>
-      </node>
-      <node id="7608">
+      <node id="3914">
         <label>secureshield_vmpu.h</label>
         <link refid="secureshield__vmpu_8h_source"/>
-        <childnode refid="7609" relation="include">
+        <childnode refid="3915" relation="include">
         </childnode>
       </node>
-      <node id="7612">
+      <node id="3912">
+        <label>secureshield_config.h</label>
+        <link refid="secureshield__config_8h_source"/>
+        <childnode refid="3913" relation="include">
+        </childnode>
+      </node>
+      <node id="3907">
+        <label>secureshield.h</label>
+        <link refid="secureshield_8h_source"/>
+        <childnode refid="3908" relation="include">
+        </childnode>
+        <childnode refid="3909" relation="include">
+        </childnode>
+        <childnode refid="3910" relation="include">
+        </childnode>
+        <childnode refid="3911" relation="include">
+        </childnode>
+        <childnode refid="3912" relation="include">
+        </childnode>
+      </node>
+      <node id="3908">
+        <label>arc/arc_exception.h</label>
+      </node>
+      <node id="3905">
+        <label>secureshield_vmpu_arc.c</label>
+        <link refid="secureshield_vmpu_arc.c"/>
+        <childnode refid="3906" relation="include">
+        </childnode>
+        <childnode refid="3907" relation="include">
+        </childnode>
+        <childnode refid="3914" relation="include">
+        </childnode>
+        <childnode refid="3916" relation="include">
+        </childnode>
+        <childnode refid="3917" relation="include">
+        </childnode>
+        <childnode refid="3919" relation="include">
+        </childnode>
+      </node>
+      <node id="3910">
+        <label>embARC_assert.h</label>
+      </node>
+      <node id="3918">
         <label>secureshield_secure_call_exports.h</label>
         <link refid="secureshield__secure__call__exports_8h_source"/>
       </node>
-      <node id="7610">
-        <label>secureshield_container_stack.h</label>
-        <link refid="secureshield__container__stack_8h_source"/>
-        <childnode refid="7592" relation="include">
-        </childnode>
-      </node>
-      <node id="7597">
-        <label>stddef.h</label>
-      </node>
-      <node id="7596">
-        <label>limits.h</label>
-      </node>
-      <node id="7613">
-        <label>arc_mpu.h</label>
-        <link refid="arc__mpu_8h_source"/>
-        <childnode refid="7599" relation="include">
-        </childnode>
-        <childnode refid="7601" relation="include">
-        </childnode>
-      </node>
-      <node id="7602">
-        <label>embARC_debug.h</label>
-        <link refid="emb_a_r_c__debug_8h"/>
-        <childnode refid="7603" relation="include">
-        </childnode>
-      </node>
-      <node id="7606">
-        <label>secureshield_config.h</label>
-        <link refid="secureshield__config_8h_source"/>
-        <childnode refid="7607" relation="include">
-        </childnode>
-      </node>
-      <node id="7593">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="7594" relation="include">
-        </childnode>
-        <childnode refid="7599" relation="include">
-        </childnode>
-        <childnode refid="7601" relation="include">
-        </childnode>
-      </node>
-      <node id="7591">
+      <node id="3906">
         <label>string.h</label>
       </node>
-      <node id="7609">
+      <node id="3915">
         <label>secureshield_vmpu_exports.h</label>
         <link refid="secureshield__vmpu__exports_8h_source"/>
       </node>
-      <node id="7607">
+      <node id="3913">
         <label>secureshield_board_config.h</label>
       </node>
-      <node id="7594">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="7595" relation="include">
+      <node id="3917">
+        <label>secureshield_container_call.h</label>
+        <link refid="secureshield__container__call_8h_source"/>
+        <childnode refid="3907" relation="include">
         </childnode>
-        <childnode refid="7596" relation="include">
-        </childnode>
-        <childnode refid="7597" relation="include">
-        </childnode>
-        <childnode refid="7598" relation="include">
+        <childnode refid="3918" relation="include">
         </childnode>
       </node>
-      <node id="7603">
-        <label>xprintf.h</label>
-      </node>
-      <node id="7590">
-        <label>secureshield_vmpu_arc.c</label>
-        <link refid="secureshield_vmpu_arc.c"/>
-        <childnode refid="7591" relation="include">
-        </childnode>
-        <childnode refid="7592" relation="include">
-        </childnode>
-        <childnode refid="7608" relation="include">
-        </childnode>
-        <childnode refid="7610" relation="include">
-        </childnode>
-        <childnode refid="7611" relation="include">
-        </childnode>
-        <childnode refid="7613" relation="include">
-        </childnode>
-      </node>
-      <node id="7605">
+      <node id="3911">
         <label>secureshield_exports.h</label>
         <link refid="secureshield__exports_8h_source"/>
       </node>
-      <node id="7604">
-        <label>embARC_assert.h</label>
-        <link refid="emb_a_r_c__assert_8h"/>
-        <childnode refid="7603" relation="include">
-        </childnode>
-        <childnode refid="7594" relation="include">
+      <node id="3916">
+        <label>secureshield_container_stack.h</label>
+        <link refid="secureshield__container__stack_8h_source"/>
+        <childnode refid="3907" relation="include">
         </childnode>
       </node>
-      <node id="7611">
-        <label>secureshield_container_call.h</label>
-        <link refid="secureshield__container__call_8h_source"/>
-        <childnode refid="7592" relation="include">
-        </childnode>
-        <childnode refid="7612" relation="include">
-        </childnode>
-      </node>
-      <node id="7600">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="7592">
-        <label>secureshield.h</label>
-        <link refid="secureshield_8h_source"/>
-        <childnode refid="7593" relation="include">
-        </childnode>
-        <childnode refid="7602" relation="include">
-        </childnode>
-        <childnode refid="7604" relation="include">
-        </childnode>
-        <childnode refid="7605" relation="include">
-        </childnode>
-        <childnode refid="7606" relation="include">
-        </childnode>
+      <node id="3919">
+        <label>arc/arc_mpu.h</label>
       </node>
     </incdepgraph>
     <innerclass refid="struct_m_p_u___r_e_g_i_o_n" prot="public">MPU_REGION</innerclass>
@@ -173,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="45" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__vmpu__arc_8c_1ab04e54ea355de7416d84ce35ba7e3bd6" prot="public" static="no">
         <name>ARC_MPU_RESERVED_REGIONS</name>
@@ -184,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="53" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="secureshield__vmpu__arc_8c_1ac15b0b92c0e57be00b3e7b96cdc5a3eb" prot="public" static="no">
         <name>CONTAINER_INTERFACE_COUNT</name>
@@ -195,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="56" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="56" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -210,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="94" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="94" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="94" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__vmpu__arc_8c_1a9c753e3ea9e62724ad0ac0a087e5f93c" prot="public" static="yes" mutable="no">
         <type>uint32_t</type>
@@ -223,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="95" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="95" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="95" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__vmpu__arc_8c_1ab181e498ccd90cb0fe877dea9c345fbd" prot="public" static="yes" mutable="no">
         <type><ref refid="struct_m_p_u___r_e_g_i_o_n" kindref="compound">MPU_REGION</ref></type>
@@ -236,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="96" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="96" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="96" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__vmpu__arc_8c_1a0e6650e5fb26f5e2b96009f1b4cc8f2f" prot="public" static="yes" mutable="no">
         <type><ref refid="struct_m_p_u___c_o_n_t_a_i_n_e_r" kindref="compound">MPU_CONTAINER</ref></type>
@@ -249,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="97" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="97" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="97" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__vmpu__arc_8c_1ad916ec874b81d7b0f0df829c873bd031" prot="public" static="yes" mutable="no">
         <type>uint32_t</type>
@@ -262,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="99" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="99" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="99" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__vmpu__arc_8c_1a788a4bde185a123fbf97fd1117688604" prot="public" static="yes" mutable="no">
         <type><ref refid="struct_c_o_n_t_a_i_n_e_r___i_n_t_e_r_f_a_c_e" kindref="compound">CONTAINER_INTERFACE</ref></type>
@@ -275,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="100" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="100" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="100" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="secureshield__vmpu__arc_8c_1a56c9e07457e564fca13cb3834383ed41" prot="public" static="yes" mutable="no">
         <type><ref refid="struct_i_n_t_e_r_f_a_c_e___c_o_n_t_a_i_n_e_r" kindref="compound">INTERFACE_CONTAINER</ref></type>
@@ -288,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="101" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="101" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="101" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="101" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -327,7 +264,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="119" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="119" bodyend="135"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="119" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="119" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1ac9b65801d8570bc0bdc7f4d813a5c2a7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="struct_m_p_u___r_e_g_i_o_n" kindref="compound">MPU_REGION</ref> *</type>
@@ -353,7 +290,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="144" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="144" bodyend="170"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="144" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="144" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a08802fa59fdc2e9c4af8b043bf797f8e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -379,7 +316,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="178" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="178" bodyend="202"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="178" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="178" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a78432f7014f5e6dd9a1278001d5b7d58" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -405,7 +342,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="209" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="209" bodyend="226"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="209" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="209" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a019e2b9f6916d5dff369070943df9948" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -431,7 +368,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="233" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="233" bodyend="297"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="233" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="233" bodyend="297"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1ad9cbe7e69b4f4318df23a7f6684f33b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -468,7 +405,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="437" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="437" bodyend="440"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="437" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="437" bodyend="440"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1ab361336cfb5ea0ee2a1ccd0ba4bc60d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -504,7 +441,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="447" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="447" bodyend="538"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="447" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="447" bodyend="538"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1ae1217ddc338beed85ddcb44fefaad4ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -529,7 +466,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="544" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="544" bodyend="552"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="544" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="544" bodyend="552"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a8040e03fc3c84a6f00ddb8ebc39771a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -588,7 +525,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="562" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="562" bodyend="576"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="562" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="562" bodyend="576"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a26ddd727c0fd8202c363535e43415825" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -646,7 +583,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="585" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="585" bodyend="619"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="585" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="585" bodyend="619"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1aaa6f0eb8f9b969dd8ae4b11891e1ae76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -682,7 +619,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="626" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="626" bodyend="751"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="626" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="626" bodyend="751"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a2f85826e2cb277b23ded85e6954afd71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -721,7 +658,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="760" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="760" bodyend="793"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="760" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="760" bodyend="793"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a9effa087764a3948ba4dae4189edc6f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -769,7 +706,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="802" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="802" bodyend="838"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="802" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="802" bodyend="838"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1af0173f25a25e6d187ea15118d202bd94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void *</type>
@@ -817,7 +754,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="847" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="847" bodyend="873"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="847" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="847" bodyend="873"/>
       </memberdef>
       <memberdef kind="function" id="secureshield__vmpu__arc_8c_1a20a8d7230440997f5204057198b9d333" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -833,7 +770,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="876" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="876" bodyend="912"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" line="876" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c" bodystart="876" bodyend="912"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -880,7 +817,7 @@
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;secureshield_container_stack.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;secureshield_container_call.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc_mpu.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_mpu.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Maximu<sp/>MPU<sp/>region<sp/>count<sp/>that<sp/>can<sp/>be<sp/>defined<sp/>in<sp/>container<sp/>configuration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -1261,7 +1198,7 @@
 <codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>region-&gt;attr<sp/>|=<sp/>(g_secure_sid_mask<sp/>&lt;&lt;<sp/>16);</highlight></codeline>
 <codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="475"><highlight class="normal"></highlight></codeline>
-<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarc__mpu__region" kindref="compound">arc_mpu_region</ref>(i<sp/>+<sp/>ARC_MPU_RESERVED_REGIONS,<sp/>region-&gt;base,</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_mpu_region_config(i<sp/>+<sp/>ARC_MPU_RESERVED_REGIONS,<sp/>region-&gt;base,</highlight></codeline>
 <codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
 <codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>region++;</highlight></codeline>
 <codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1293,7 +1230,7 @@
 <codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mpu_slot<sp/>&gt;=<sp/>ARC_FEATURE_MPU_REGIONS)<sp/>{</highlight></codeline>
 <codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarc__mpu__region" kindref="compound">arc_mpu_region</ref>(mpu_slot,<sp/>region-&gt;base,<sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_mpu_region_config(mpu_slot,<sp/>region-&gt;base,<sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
 <codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>region++;</highlight></codeline>
 <codeline lineno="510"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpu_slot++;</highlight></codeline>
 <codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1308,7 +1245,7 @@
 <codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="522"><highlight class="normal"></highlight></codeline>
-<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarc__mpu__region" kindref="compound">arc_mpu_region</ref>(mpu_slot,<sp/>region-&gt;base,<sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_mpu_region_config(mpu_slot,<sp/>region-&gt;base,<sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
 <codeline lineno="524"><highlight class="normal"></highlight></codeline>
 <codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>process<sp/>next<sp/>slot<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>region++;</highlight></codeline>
@@ -1319,7 +1256,7 @@
 <codeline lineno="531"><highlight class="normal"></highlight></codeline>
 <codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>clear<sp/>remaining<sp/>slots<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(mpu_slot<sp/>&lt;<sp/>ARC_FEATURE_MPU_REGIONS)<sp/>{</highlight></codeline>
-<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarc__mpu__region" kindref="compound">arc_mpu_region</ref>(mpu_slot,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_mpu_region_config(mpu_slot,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
 <codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpu_slot++;</highlight></codeline>
 <codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="537"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
@@ -1346,7 +1283,7 @@
 <codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>apply<sp/>access<sp/>control<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmpu_ac_update_container_region(&amp;res,<sp/>0,<sp/>base,<sp/>size,<sp/>ac);</highlight></codeline>
 <codeline lineno="572"><highlight class="normal"></highlight></codeline>
-<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarc__mpu__region" kindref="compound">arc_mpu_region</ref>(region,<sp/>res.base,<sp/>res.size,<sp/>res.attr);</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_mpu_region_config(region,<sp/>res.base,<sp/>res.size,<sp/>res.attr);</highlight></codeline>
 <codeline lineno="574"><highlight class="normal"></highlight></codeline>
 <codeline lineno="575"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res.size;</highlight></codeline>
 <codeline lineno="576"><highlight class="normal">}</highlight></codeline>
@@ -1397,7 +1334,7 @@
 <codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>rodata_attribute;</highlight></codeline>
 <codeline lineno="634"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>ram_attribute;</highlight></codeline>
 <codeline lineno="635"><highlight class="normal"></highlight></codeline>
-<codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprocessor__frame" kindref="compound">PROCESSOR_FRAME</ref><sp/>*context;</highlight></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PROCESSOR_FRAME_T<sp/>*context;</highlight></codeline>
 <codeline lineno="637"><highlight class="normal"></highlight></codeline>
 <codeline lineno="638"><highlight class="normal"></highlight></codeline>
 <codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(container_cfg-&gt;type<sp/>==<sp/>SECURESHIELD_CONTAINER_SECURE)<sp/>{</highlight></codeline>
@@ -1441,13 +1378,13 @@
 <codeline lineno="677"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>handle<sp/>background<sp/>container<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="678"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!container_id)<sp/>{</highlight></codeline>
 <codeline lineno="679"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>container<sp/>0<sp/>is<sp/>background<sp/>container,<sp/>it<sp/>uses<sp/>the<sp/>default<sp/>stack,<sp/>just<sp/>set<sp/>the<sp/>secure<sp/>stack*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="680"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_arc_aux_write(<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga7e2cd99d5a9fc31e3b0f860a9db1fe4d" kindref="member">AUX_USER_SP</ref>,<sp/>(uint32_t)container_cfg-&gt;stack_secure);</highlight></codeline>
-<codeline lineno="681"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_arc_aux_write(<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga49fee03f8e12dad45b431f328fcad731" kindref="member">AUX_ERSTATUS</ref>,<sp/>g_container_context[0].cpu_status);</highlight></codeline>
+<codeline lineno="680"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_aux_write(AUX_USER_SP,<sp/>(uint32_t)container_cfg-&gt;stack_secure);</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_aux_write(AUX_ERSTATUS,<sp/>g_container_context[0].cpu_status);</highlight></codeline>
 <codeline lineno="682"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="683"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(container_cfg-&gt;type<sp/>==<sp/>SECURESHIELD_CONTAINER_SECURE)<sp/>{</highlight></codeline>
-<codeline lineno="684"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(<ref refid="structprocessor__frame" kindref="compound">PROCESSOR_FRAME</ref><sp/>*)<sp/>(container_cfg-&gt;stack_area<sp/>-<sp/>ARC_PROCESSOR_FRAME_SIZE);</highlight></codeline>
+<codeline lineno="684"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(PROCESSOR_FRAME_T<sp/>*)<sp/>(container_cfg-&gt;stack_area<sp/>-<sp/>ARC_PROCESSOR_FRAME_T_SIZE);</highlight></codeline>
 <codeline lineno="685"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="686"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(<ref refid="structprocessor__frame" kindref="compound">PROCESSOR_FRAME</ref><sp/>*)<sp/>(container_cfg-&gt;stack_secure<sp/>-<sp/>ARC_PROCESSOR_FRAME_SIZE);</highlight></codeline>
+<codeline lineno="686"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(PROCESSOR_FRAME_T<sp/>*)<sp/>(container_cfg-&gt;stack_secure<sp/>-<sp/>ARC_PROCESSOR_FRAME_T_SIZE);</highlight></codeline>
 <codeline lineno="687"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;callee_regs.user_sp<sp/>=<sp/>(uint32_t)container_cfg-&gt;stack_area;</highlight></codeline>
 <codeline lineno="688"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_container_context[container_id].normal_sp<sp/>=<sp/>container_cfg-&gt;stack_area;</highlight></codeline>
 <codeline lineno="689"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1458,7 +1395,7 @@
 <codeline lineno="694"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>size;</highlight></codeline>
 <codeline lineno="695"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>secure;</highlight></codeline>
 <codeline lineno="696"><highlight class="normal"></highlight></codeline>
-<codeline lineno="697"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structprocessor__frame" kindref="compound">PROCESSOR_FRAME</ref><sp/>*context;</highlight></codeline>
+<codeline lineno="697"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PROCESSOR_FRAME_T<sp/>*context;</highlight></codeline>
 <codeline lineno="698"><highlight class="normal"></highlight></codeline>
 <codeline lineno="699"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secure<sp/>=<sp/>container_cfg-&gt;type;</highlight></codeline>
 <codeline lineno="700"><highlight class="normal"></highlight></codeline>
@@ -1496,14 +1433,14 @@
 <codeline lineno="732"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>initialize<sp/>the<sp/>status<sp/>of<sp/>container,<sp/>stack<sp/>pointer<sp/>and<sp/>status<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="733"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!container_id)<sp/>{</highlight></codeline>
 <codeline lineno="734"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>container<sp/>0<sp/>is<sp/>background<sp/>container,<sp/>it<sp/>uses<sp/>the<sp/>default<sp/>stack<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="735"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_arc_aux_write(<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga75e0b9b52d9017a3fdbbedbec53e4380" kindref="member">AUX_SEC_K_SP</ref>,<sp/>(uint32_t)container_cfg-&gt;stack_secure);</highlight></codeline>
+<codeline lineno="735"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_aux_write(AUX_SEC_K_SP,<sp/>(uint32_t)container_cfg-&gt;stack_secure);</highlight></codeline>
 <codeline lineno="736"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="737"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>\todo<sp/>init<sp/>cpu<sp/>status<sp/>?<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="738"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(secure<sp/>==<sp/>SECURESHIELD_AC_SECURE)<sp/>{</highlight></codeline>
-<codeline lineno="739"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(<ref refid="structprocessor__frame" kindref="compound">PROCESSOR_FRAME</ref><sp/>*)<sp/>(container_cfg-&gt;stack_area<sp/>-<sp/>ARC_PROCESSOR_FRAME_SIZE);</highlight></codeline>
+<codeline lineno="739"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(PROCESSOR_FRAME_T<sp/>*)<sp/>(container_cfg-&gt;stack_area<sp/>-<sp/>ARC_PROCESSOR_FRAME_T_SIZE);</highlight></codeline>
 <codeline lineno="740"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;callee_regs.secure_kernel_sp<sp/>=<sp/>(uint32_t)container_cfg-&gt;stack_area;</highlight></codeline>
 <codeline lineno="741"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(<ref refid="structprocessor__frame" kindref="compound">PROCESSOR_FRAME</ref><sp/>*)<sp/>(container_cfg-&gt;stack_secure<sp/>-<sp/>ARC_PROCESSOR_FRAME_SIZE);</highlight></codeline>
+<codeline lineno="742"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context<sp/>=<sp/>(PROCESSOR_FRAME_T<sp/>*)<sp/>(container_cfg-&gt;stack_secure<sp/>-<sp/>ARC_PROCESSOR_FRAME_T_SIZE);</highlight></codeline>
 <codeline lineno="743"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;callee_regs.kernel_sp<sp/>=<sp/>(uint32_t)container_cfg-&gt;stack_area;</highlight></codeline>
 <codeline lineno="744"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;callee_regs.secure_kernel_sp<sp/>=<sp/>(uint32_t)container_cfg-&gt;stack_secure;</highlight></codeline>
 <codeline lineno="745"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_container_context[container_id].normal_sp<sp/>=container_cfg-&gt;stack_area;</highlight></codeline>
@@ -1527,7 +1464,7 @@
 <codeline lineno="769"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="770"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="771"><highlight class="normal"></highlight></codeline>
-<codeline lineno="772"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarc__mpu__region" kindref="compound">arc_mpu_region</ref>(g_mpu_slot,<sp/>region-&gt;base,<sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
+<codeline lineno="772"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arc_mpu_region_config(g_mpu_slot,<sp/>region-&gt;base,<sp/>region-&gt;size,<sp/>region-&gt;attr);</highlight></codeline>
 <codeline lineno="773"><highlight class="normal"></highlight></codeline>
 <codeline lineno="774"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_mpu_slot++;</highlight></codeline>
 <codeline lineno="775"><highlight class="normal"></highlight></codeline>
@@ -1623,7 +1560,7 @@
 <codeline lineno="879"><highlight class="normal"></highlight></codeline>
 <codeline lineno="880"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>g_mpu_slot<sp/>=<sp/>ARC_MPU_RESERVED_REGIONS;</highlight></codeline>
 <codeline lineno="881"><highlight class="normal"></highlight></codeline>
-<codeline lineno="882"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpu_cfg<sp/>=<sp/>_arc_aux_read(<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gad8d5e75ac2fab6fd5acfd9910d47d334" kindref="member">AUX_BCR_MPU</ref>);</highlight></codeline>
+<codeline lineno="882"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpu_cfg<sp/>=<sp/>arc_aux_read(AUX_BCR_MPU);</highlight></codeline>
 <codeline lineno="883"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SECURESHIELD_DBG(</highlight><highlight class="stringliteral">&quot;MPU<sp/>version:%x,<sp/>regions:%d\r\n&quot;</highlight><highlight class="normal">,<sp/>mpu_cfg<sp/>&amp;<sp/>0xff,<sp/>(mpu_cfg<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xff);</highlight></codeline>
 <codeline lineno="884"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SECURESHIELD_DBG(</highlight><highlight class="stringliteral">&quot;MPU<sp/>ALIGNMENT=0x%x\r\n&quot;</highlight><highlight class="normal">,<sp/>1UL<sp/>&lt;&lt;<sp/>ARC_FEATURE_MPU_ALIGNMENT_BITS);</highlight></codeline>
 <codeline lineno="885"><highlight class="normal"></highlight></codeline>
@@ -1655,6 +1592,6 @@
 <codeline lineno="911"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SECURE_RAM_ATTR);</highlight></codeline>
 <codeline lineno="912"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/secureshield_vmpu_arc.c"/>
   </compounddef>
 </doxygen>

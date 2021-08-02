@@ -4,130 +4,81 @@
     <compoundname>emsdp/drivers/pmwifi/pmwifi.c</compoundname>
     <includes local="no">stddef.h</includes>
     <includes local="no">string.h</includes>
-    <includes refid="arc_8h" local="yes">arc.h</includes>
-    <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
-    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
-    <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
+    <includes local="yes">arc/arc.h</includes>
+    <includes local="yes">arc/arc_builtin.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_error.h</includes>
+    <includes local="yes">arc/arc_exception.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
     <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
     <includes refid="emsdp_2drivers_2pmwifi_2pmwifi_8h" local="yes">pmwifi.h</includes>
     <incdepgraph>
-      <node id="6761">
-        <label>stdbool.h</label>
+      <node id="3333">
+        <label>arc/arc_exception.h</label>
       </node>
-      <node id="6765">
+      <node id="3330">
+        <label>arc/arc_builtin.h</label>
+      </node>
+      <node id="3327">
+        <label>stddef.h</label>
+      </node>
+      <node id="3332">
+        <label>embARC_error.h</label>
+      </node>
+      <node id="3328">
+        <label>string.h</label>
+      </node>
+      <node id="3337">
+        <label>device/dev_wnic.h</label>
+      </node>
+      <node id="3326">
+        <label>pmwifi.c</label>
+        <link refid="emsdp/drivers/pmwifi/pmwifi.c"/>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3328" relation="include">
+        </childnode>
+        <childnode refid="3329" relation="include">
+        </childnode>
+        <childnode refid="3330" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3332" relation="include">
+        </childnode>
+        <childnode refid="3333" relation="include">
+        </childnode>
+        <childnode refid="3334" relation="include">
+        </childnode>
+        <childnode refid="3335" relation="include">
+        </childnode>
+        <childnode refid="3336" relation="include">
+        </childnode>
+      </node>
+      <node id="3336">
+        <label>pmwifi.h</label>
+        <link refid="emsdp_2drivers_2pmwifi_2pmwifi_8h_source"/>
+        <childnode refid="3337" relation="include">
+        </childnode>
+      </node>
+      <node id="3331">
+        <label>embARC_toolchain.h</label>
+      </node>
+      <node id="3335">
         <label>os_hal_inc.h</label>
         <link refid="os__hal__inc_8h"/>
       </node>
-      <node id="6757">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="6758" relation="include">
-        </childnode>
+      <node id="3329">
+        <label>arc/arc.h</label>
       </node>
-      <node id="6755">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="6756" relation="include">
-        </childnode>
-      </node>
-      <node id="6752">
-        <label>pmwifi.c</label>
-        <link refid="emsdp/drivers/pmwifi/pmwifi.c"/>
-        <childnode refid="6753" relation="include">
-        </childnode>
-        <childnode refid="6754" relation="include">
-        </childnode>
-        <childnode refid="6755" relation="include">
-        </childnode>
-        <childnode refid="6757" relation="include">
-        </childnode>
-        <childnode refid="6758" relation="include">
-        </childnode>
-        <childnode refid="6762" relation="include">
-        </childnode>
-        <childnode refid="6763" relation="include">
-        </childnode>
-        <childnode refid="6764" relation="include">
-        </childnode>
-        <childnode refid="6765" relation="include">
-        </childnode>
-        <childnode refid="6766" relation="include">
-        </childnode>
-      </node>
-      <node id="6766">
-        <label>pmwifi.h</label>
-        <link refid="emsdp_2drivers_2pmwifi_2pmwifi_8h_source"/>
-        <childnode refid="6767" relation="include">
-        </childnode>
-      </node>
-      <node id="6762">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="6759" relation="include">
-        </childnode>
-        <childnode refid="6757" relation="include">
-        </childnode>
-      </node>
-      <node id="6759">
-        <label>stdint.h</label>
-      </node>
-      <node id="6753">
-        <label>stddef.h</label>
-      </node>
-      <node id="6760">
-        <label>limits.h</label>
-      </node>
-      <node id="6763">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="6758" relation="include">
-        </childnode>
-        <childnode refid="6755" relation="include">
-        </childnode>
-        <childnode refid="6757" relation="include">
-        </childnode>
-      </node>
-      <node id="6754">
-        <label>string.h</label>
-      </node>
-      <node id="6767">
-        <label>dev_wnic.h</label>
-        <link refid="dev__wnic_8h"/>
-        <childnode refid="6768" relation="include">
-        </childnode>
-      </node>
-      <node id="6758">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="6759" relation="include">
-        </childnode>
-        <childnode refid="6760" relation="include">
-        </childnode>
-        <childnode refid="6753" relation="include">
-        </childnode>
-        <childnode refid="6761" relation="include">
-        </childnode>
-      </node>
-      <node id="6768">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="6759" relation="include">
-        </childnode>
-      </node>
-      <node id="6756">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="6764">
+      <node id="3334">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structdev__wnic" kindref="compound">DEV_WNIC_PTR</ref></type>
+      <memberdef kind="function" id="emsdp_2drivers_2pmwifi_2pmwifi_8c_1a4ea6fc486b6808c2c88e8116dde30a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>DEV_WNIC_PTR</type>
         <definition>DEV_WNIC_PTR wnic_get_dev</definition>
         <argsstring>(int32_t wnic_id)</argsstring>
         <name>wnic_get_dev</name>
@@ -138,10 +89,10 @@
         <briefdescription>
 <para>PMOD WIFI SPI FREQ &amp; CLK MODE SETTINGS. </para>        </briefdescription>
         <detaileddescription>
-<para>get an <ref refid="structdev__wnic" kindref="compound">wnic device</ref> by wnic device id.</para><para>get one wnic device structure </para>        </detaileddescription>
+<para>get one wnic device structure </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" line="285" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" bodystart="285" bodyend="305"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" line="282" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" bodystart="282" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="emsdp_2drivers_2pmwifi_2pmwifi_8c_1ac9e2fa94d4c366b7e88513037072709d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -158,7 +109,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" line="311" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" bodystart="311" bodyend="316"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" line="308" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c" bodystart="308" bodyend="313"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -194,16 +145,16 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(MID_LWIP)<sp/>&amp;&amp;<sp/>defined(MID_LWIP_CONTRIB)</highlight></codeline>
 <codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_builtin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
@@ -213,272 +164,269 @@
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pmwifi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_RSWIFI_0)</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="51"><highlight class="comment">//<sp/>#define<sp/>EMSDP_RSWIFI_0_SPI_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_SPI_FREQ</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>EMSDP_RSWIFI_0_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">/*********************WIFI_RS9113*********************/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(WIFI_RS9113)</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;rs9113_adapter.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>WF<sp/>OPERATIONS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMSDP_RSWIFI_0_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
-<codeline lineno="62"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="64"><highlight class="preprocessor">#define<sp/>RSWIFI_0_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;RS9113&quot;</highlight></codeline>
-<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RSWIFI_0_IFNAME0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;r&apos;</highlight></codeline>
-<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RSWIFI_0_IFNAME1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;s&apos;</highlight></codeline>
-<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>rswifi_0_wnic;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/><sp/>rswifi_0_mac_addr[<ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s_1gad31392abb15670470441f4fdbe8936cc" kindref="member">WNIC_HDR_LEN</ref>]<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR0,</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR1,</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR2,</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR3,</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR4,</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR5</highlight></codeline>
-<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_get_info(uint32_t<sp/>cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rinfo)</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_get_info(&amp;rswifi_0_wnic,<sp/>cmd,<sp/>rinfo);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_control(uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param)</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_control(&amp;rswifi_0_wnic,<sp/>ctrl_cmd,<sp/>param);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_init(uint32_t<sp/>network_type)</highlight></codeline>
-<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_init(&amp;rswifi_0_wnic,<sp/>network_type);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_init_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_init_status(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_busy_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_busy_status(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_set_network_type(uint32_t<sp/>type)</highlight></codeline>
-<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_set_network_type(&amp;rswifi_0_wnic,<sp/>type);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_set_macaddr(uint8_t<sp/>*mac)</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_set_macaddr(&amp;rswifi_0_wnic,<sp/>mac);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_macaddr(uint8_t<sp/>*mac)</highlight></codeline>
-<codeline lineno="113"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_macaddr(&amp;rswifi_0_wnic,<sp/>mac);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_start_scan(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_start_scan(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_stop_scan(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_stop_scan(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_scan_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_scan_status(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_scan_result_cnt(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="133"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_scan_result_cnt(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_scan_result(uint32_t<sp/>index,<sp/><ref refid="structwnic__scan__result" kindref="compound">WNIC_SCAN_RESULT</ref><sp/>*result)</highlight></codeline>
-<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_scan_result(&amp;rswifi_0_wnic,<sp/>index,<sp/>result);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_connect(uint32_t<sp/>security,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*ssid,<sp/><ref refid="structwnic__auth__key" kindref="compound">WNIC_AUTH_KEY</ref><sp/>*key)</highlight></codeline>
-<codeline lineno="143"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_connect(&amp;rswifi_0_wnic,<sp/>security,<sp/>ssid,<sp/>key);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_conn_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_conn_status(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_disconnect(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_disconnect(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_prepare_tx(uint32_t<sp/>tx_len)</highlight></codeline>
-<codeline lineno="158"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_prepare_tx(&amp;rswifi_0_wnic,<sp/>tx_len);</highlight></codeline>
-<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_add_tx_data(uint8_t<sp/>*p_buf,<sp/>uint32_t<sp/>len)</highlight></codeline>
-<codeline lineno="163"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_add_tx_data(&amp;rswifi_0_wnic,<sp/>p_buf,<sp/>len);</highlight></codeline>
-<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_commit_tx(uint32_t<sp/>len)</highlight></codeline>
-<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_commit_tx(&amp;rswifi_0_wnic,<sp/>len);</highlight></codeline>
-<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_prepare_rx(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="173"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_prepare_rx(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_rx_data(uint8_t<sp/>*p_buf,<sp/>uint32_t<sp/>len)</highlight></codeline>
-<codeline lineno="178"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_rx_data(&amp;rswifi_0_wnic,<sp/>p_buf,<sp/>len);</highlight></codeline>
-<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_accept_rx(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_accept_rx(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_config_power_mode(int32_t<sp/>power_mode)</highlight></codeline>
-<codeline lineno="188"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_config_power_mode(&amp;rswifi_0_wnic,<sp/>power_mode);</highlight></codeline>
-<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_power_mode(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="193"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_power_mode(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_reset(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="198"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_reset(&amp;rswifi_0_wnic);</highlight></codeline>
-<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"></highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rswifi_0_period_process(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
-<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rs9113_period_process(&amp;rswifi_0_wnic,<sp/>ptr);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rswifi_0_install(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="208"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__wnic" kindref="compound">DEV_WNIC</ref><sp/>*rswifi_wnic_ptr<sp/>=<sp/>&amp;rswifi_0_wnic;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__wnic__info" kindref="compound">DEV_WNIC_INFO</ref><sp/>*rswifi_wnic_info_ptr<sp/>=<sp/>&amp;(rswifi_0_wnic.<ref refid="structdev__wnic_1af7f763cbd12dc36731707bb46ca1f7f4" kindref="member">wnic_info</ref>);</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structdev__wnic__on__ops" kindref="compound">DEV_WNIC_ON_OPS</ref><sp/>*rswifi_wnic_on_ops_ptr<sp/>=<sp/>&amp;(rswifi_0_wnic.<ref refid="structdev__wnic_1a1077f20286f70ab27c37284704a1f6ba" kindref="member">wnic_on_ops</ref>);</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a553f0a77cb8749169bdaef61cc5ace4f" kindref="member">name</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)RSWIFI_0_NAME,<sp/>strlen(RSWIFI_0_NAME));</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a368a37af9cebdbe3b51a11a65907244e" kindref="member">ifname</ref>[0]<sp/>=<sp/>RSWIFI_0_IFNAME0;</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a368a37af9cebdbe3b51a11a65907244e" kindref="member">ifname</ref>[1]<sp/>=<sp/>RSWIFI_0_IFNAME1;</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a3b18a25028f286c0713f7648135c5402" kindref="member">ssid</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structwnic__cfg__ssid" kindref="compound">WNIC_CFG_SSID</ref>));</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a3b18a25028f286c0713f7648135c5402" kindref="member">ssid</ref>.ssid[0]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a54bc3fca4bc2ce2294107dd266e84131" kindref="member">ctrl</ref><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1aeef0484506fbbf880c4d0e2d427414bc" kindref="member">extra</ref><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a8540acbf5a5ddcccf4b980e6d0f13f23" kindref="member">opn_flg</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_e_1gacc57cb6b21940d6081f11ccda4a6edeb" kindref="member">DEV_CLOSED</ref>;</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1ad956dfea5ed1fb1890be924039887793" kindref="member">err_flg</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___c_o_m_m_o_n___d_e_v_s_t_a_t_e_1ga50eab4ae331d5583953b3c538b8b9b32" kindref="member">DEV_GOOD</ref>;</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a81085be37351f8ca36a0a5c9361362b8" kindref="member">network_type</ref><sp/>=<sp/>WNIC_NETWORK_TYPE_INFRASTRUCTURE;</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1ae8e985f8e237e05452df9f1375428f17" kindref="member">init_status</ref><sp/>=<sp/>WNIC_NOT_INITIALIZED;</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a18841715e4c445d1498173b3a9f0b71a" kindref="member">conn_status</ref><sp/>=<sp/>WNIC_NOT_CONNECTED;</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1ad52382ee7bf26cae60a11414b1e52ab4" kindref="member">conn_type</ref><sp/>=<sp/>WNIC_CONN_NONE;</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a927a69da74cb67ec296733e91b6c15e3" kindref="member">mac_status</ref><sp/>=<sp/>WNIC_MAC_NOT_UPDATED;</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a3f3a0fc5c459d12a535c9e64076d8f0b" kindref="member">scan_status</ref><sp/>=<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s_1ggaeb8375d4e6a245d40ba5ecbc3a520a2eaf6133468ed8ac7bba26e29f755bb3084" kindref="member">WNIC_NOT_SCANED</ref>;</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a47c20c5df91cf79ee09abb48259621fc" kindref="member">scan_results</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a02ee59366a86fb92fe4f2e056fc8d28d" kindref="member">mac_addr</ref>,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)rswifi_0_mac_addr,<sp/><ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c___m_a_c_r_o_s_1gad31392abb15670470441f4fdbe8936cc" kindref="member">WNIC_HDR_LEN</ref>);</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a0482d4e497510b10f79f7c1be32af4ab" kindref="member">busy_status</ref><sp/>=<sp/>WNIC_IS_FREE;</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a9edee3bf1242d83605c77d08bd3e3235" kindref="member">tx_frame_cnt</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1aafaa8434f4aa89a49742c7a26084f9b6" kindref="member">tx_speed</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1abfd2f13e8d21dbc9ce38e3b52a0a9c4c" kindref="member">tx_pending</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a218f41336d89dbe60a19ba81fcea4a5f" kindref="member">rx_frame_cnt</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a33ca4b7c5e85c07b2033f0d546e203bf" kindref="member">rx_speed</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a59dc94c6e6875bf730c6307f7d6f7a6f" kindref="member">rx_pending</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;<ref refid="structdev__wnic__info_1a4ff4703269b5603af0fe386eb7a51d71" kindref="member">power_status</ref><sp/>=<sp/>WNIC_POWER_OFF;</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"></highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_init_success<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_init_fail<sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_connected<sp/><sp/><sp/><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_disconnected<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_mac_updated<sp/><sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_scan_finished=<sp/>NULL;</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_rxdata_comes<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_dev_asserted<sp/>=<sp/>NULL;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"></highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a0253a38c4916fa13163d092b1945e477" kindref="member">wnic_get_info</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_wnic_get_info;</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1af14b3c96ea64f865b7acf2707d478242" kindref="member">wnic_control</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_wnic_control;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a777e4c1df90d66387707bd6fb6691a63" kindref="member">wnic_init</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_wnic_init;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a4afd84c6f7dd1f35a4dea0b8e3f7f677" kindref="member">poll_init_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_poll_init_status;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1aa1c896b5634950d8773e87bc516c96fe" kindref="member">poll_busy_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_poll_busy_status;</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1af4f1b139659e7ef865c838cc3f0947b8" kindref="member">set_network_type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_set_network_type;</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ad6695099e2cbf7c74432feca799bbe74" kindref="member">set_macaddr</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_set_macaddr;</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ac5b66354759860280141897638cf960c" kindref="member">get_macaddr</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_get_macaddr;</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a5dd0bffad4b6e332191b0439bd7449d8" kindref="member">start_scan</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_start_scan;</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a8005386dd2745adf69559909527f0501" kindref="member">stop_scan</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_stop_scan;</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a852763d47bffd419c79d6ba105212fa9" kindref="member">poll_scan_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_poll_scan_status;</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ab0fed9e2278ac060ffc01366288a73e3" kindref="member">get_scan_result_cnt</ref><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_get_scan_result_cnt;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1ad40e29ab395b3c7c6adfc39da6ee8c96" kindref="member">get_scan_result</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_get_scan_result;</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_connect<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_wnic_connect;</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a7c2edc48a9df1e87abec944a02db0b72" kindref="member">poll_conn_status</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_poll_conn_status;</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a41e9deabe10c26df933f453936799a9f" kindref="member">wnic_disconnect</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_wnic_disconnect;</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a47054ca712cef2adf5a4d38d8e3a5cce" kindref="member">prepare_tx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_prepare_tx;</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1abd3b3af59fd9226237159bd2dc79eb2c" kindref="member">add_tx_data</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_add_tx_data;</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1add8c0d7908623d71af6b7ba461e8ed27" kindref="member">commit_tx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_commit_tx;</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a1cd50ac28c732f8593a1754038502518" kindref="member">prepare_rx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_prepare_rx;</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a2143baf1c09c1f072ea558bca46bc1ca" kindref="member">get_rx_data</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_get_rx_data;</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a080ed3e1d6da3301aeb8e4d68c582eed" kindref="member">accept_rx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_accept_rx;</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1af8396b93c61e16e6141ff7568d619877" kindref="member">config_power_mode</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_config_power_mode;</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1afca31d056eccaa148cf17fa13ef9357b" kindref="member">poll_power_mode</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_poll_power_mode;</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a1242b0ee806c0c31712b1f337152b5e8" kindref="member">wnic_reset</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_wnic_reset;</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;<ref refid="structdev__wnic_1a64b9373e298359b770fbbe9c52ea54a7" kindref="member">period_process</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>rswifi_0_period_process;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>WIFI_RSI<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="279"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;no<sp/>wifi<sp/>module<sp/>selected&quot;</highlight></codeline>
-<codeline lineno="280"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="281"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_EMSDP_RSWIFI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="283"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="285" refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" refkind="member"><highlight class="normal"><ref refid="structdev__wnic" kindref="compound">DEV_WNIC_PTR</ref><sp/><ref refid="group___d_e_v_i_c_e___h_a_l___w_n_i_c_1ga4ea6fc486b6808c2c88e8116dde30a05" kindref="member">wnic_get_dev</ref>(int32_t<sp/>wnic_id)</highlight></codeline>
-<codeline lineno="286"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>install_flag<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>install<sp/>device<sp/>objects<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(install_flag<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install_flag<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_all_install();</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(wnic_id)<sp/>{</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_RSWIFI_0)</highlight></codeline>
-<codeline lineno="297"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EMSDP_RSWIFI_0_ID:</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;rswifi_0_wnic;</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="301"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="305"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"></highlight></codeline>
-<codeline lineno="311"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rswifi_all_install(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="312"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_RSWIFI_0)</highlight></codeline>
-<codeline lineno="314"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_0_install();</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="316"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"></highlight></codeline>
-<codeline lineno="318"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>MID_LWIP<sp/>&amp;&amp;<sp/>MID_LWIP_CONTRIB<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_RSWIFI_0)</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">//<sp/>#define<sp/>EMSDP_RSWIFI_0_SPI_FREQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOARD_SPI_FREQ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>EMSDP_RSWIFI_0_SPI_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DW_SPI_0_ID</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">/*********************WIFI_RS9113*********************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(WIFI_RS9113)</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;rs9113_adapter.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>WF<sp/>OPERATIONS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMSDP_RSWIFI_0_TIMER_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TIMER_0</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor">#define<sp/>RSWIFI_0_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;RS9113&quot;</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RSWIFI_0_IFNAME0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;r&apos;</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>RSWIFI_0_IFNAME1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&apos;s&apos;</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>DEV_WNIC<sp/>rswifi_0_wnic;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>rswifi_0_mac_addr[WNIC_HDR_LEN]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR0,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR1,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR2,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR3,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR4,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EMSDP_RSWIFI_0_MAC_ADDR5</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_get_info(uint32_t<sp/>cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*rinfo)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_get_info(&amp;rswifi_0_wnic,<sp/>cmd,<sp/>rinfo);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_control(uint32_t<sp/>ctrl_cmd,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*param)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_control(&amp;rswifi_0_wnic,<sp/>ctrl_cmd,<sp/>param);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_init(uint32_t<sp/>network_type)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_init(&amp;rswifi_0_wnic,<sp/>network_type);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_init_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_init_status(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_busy_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_busy_status(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_set_network_type(uint32_t<sp/>type)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_set_network_type(&amp;rswifi_0_wnic,<sp/>type);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_set_macaddr(uint8_t<sp/>*mac)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_set_macaddr(&amp;rswifi_0_wnic,<sp/>mac);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_macaddr(uint8_t<sp/>*mac)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_macaddr(&amp;rswifi_0_wnic,<sp/>mac);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_start_scan(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_start_scan(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_stop_scan(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_stop_scan(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_scan_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_scan_status(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_scan_result_cnt(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_scan_result_cnt(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_scan_result(uint32_t<sp/>index,<sp/>WNIC_SCAN_RESULT<sp/>*result)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_scan_result(&amp;rswifi_0_wnic,<sp/>index,<sp/>result);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_connect(uint32_t<sp/>security,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*ssid,<sp/>WNIC_AUTH_KEY<sp/>*key)</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_connect(&amp;rswifi_0_wnic,<sp/>security,<sp/>ssid,<sp/>key);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_conn_status(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_conn_status(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_disconnect(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_disconnect(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_prepare_tx(uint32_t<sp/>tx_len)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_prepare_tx(&amp;rswifi_0_wnic,<sp/>tx_len);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_add_tx_data(uint8_t<sp/>*p_buf,<sp/>uint32_t<sp/>len)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_add_tx_data(&amp;rswifi_0_wnic,<sp/>p_buf,<sp/>len);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_commit_tx(uint32_t<sp/>len)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_commit_tx(&amp;rswifi_0_wnic,<sp/>len);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_prepare_rx(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_prepare_rx(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_get_rx_data(uint8_t<sp/>*p_buf,<sp/>uint32_t<sp/>len)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_get_rx_data(&amp;rswifi_0_wnic,<sp/>p_buf,<sp/>len);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_accept_rx(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_accept_rx(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_config_power_mode(int32_t<sp/>power_mode)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_config_power_mode(&amp;rswifi_0_wnic,<sp/>power_mode);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_poll_power_mode(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_poll_power_mode(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>int32_t<sp/>rswifi_0_wnic_reset(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rs9113_wnic_reset(&amp;rswifi_0_wnic);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rswifi_0_period_process(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*ptr)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rs9113_period_process(&amp;rswifi_0_wnic,<sp/>ptr);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rswifi_0_install(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_WNIC<sp/>*rswifi_wnic_ptr<sp/>=<sp/>&amp;rswifi_0_wnic;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_WNIC_INFO<sp/>*rswifi_wnic_info_ptr<sp/>=<sp/>&amp;(rswifi_0_wnic.wnic_info);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DEV_WNIC_ON_OPS<sp/>*rswifi_wnic_on_ops_ptr<sp/>=<sp/>&amp;(rswifi_0_wnic.wnic_on_ops);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)rswifi_wnic_info_ptr-&gt;name,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)RSWIFI_0_NAME,<sp/>strlen(RSWIFI_0_NAME));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;ifname[0]<sp/>=<sp/>RSWIFI_0_IFNAME0;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;ifname[1]<sp/>=<sp/>RSWIFI_0_IFNAME1;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;rswifi_wnic_info_ptr-&gt;ssid,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(WNIC_CFG_SSID));</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;ssid.ssid[0]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;ctrl<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;extra<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;opn_flg<sp/>=<sp/>DEV_CLOSED;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;err_flg<sp/>=<sp/>DEV_GOOD;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;network_type<sp/>=<sp/>WNIC_NETWORK_TYPE_INFRASTRUCTURE;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;init_status<sp/>=<sp/>WNIC_NOT_INITIALIZED;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;conn_status<sp/>=<sp/>WNIC_NOT_CONNECTED;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;conn_type<sp/>=<sp/>WNIC_CONN_NONE;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;mac_status<sp/>=<sp/>WNIC_MAC_NOT_UPDATED;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;scan_status<sp/>=<sp/>WNIC_NOT_SCANED;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;scan_results<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)rswifi_wnic_info_ptr-&gt;mac_addr,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)rswifi_0_mac_addr,<sp/>WNIC_HDR_LEN);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;busy_status<sp/>=<sp/>WNIC_IS_FREE;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;tx_frame_cnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;tx_speed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;tx_pending<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;rx_frame_cnt<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;rx_speed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;rx_pending<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_info_ptr-&gt;power_status<sp/>=<sp/>WNIC_POWER_OFF;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_init_success<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_init_fail<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_connected<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_disconnected<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_mac_updated<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_scan_finished<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_rxdata_comes<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_on_ops_ptr-&gt;on_dev_asserted<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_get_info<sp/>=<sp/>rswifi_0_wnic_get_info;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_control<sp/>=<sp/>rswifi_0_wnic_control;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_init<sp/>=<sp/>rswifi_0_wnic_init;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;poll_init_status<sp/>=<sp/>rswifi_0_poll_init_status;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;poll_busy_status<sp/>=<sp/>rswifi_0_poll_busy_status;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;set_network_type<sp/>=<sp/>rswifi_0_set_network_type;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;set_macaddr<sp/>=<sp/>rswifi_0_set_macaddr;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;get_macaddr<sp/>=<sp/>rswifi_0_get_macaddr;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;start_scan<sp/>=<sp/>rswifi_0_start_scan;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;stop_scan<sp/>=<sp/>rswifi_0_stop_scan;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;poll_scan_status<sp/>=<sp/>rswifi_0_poll_scan_status;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;get_scan_result_cnt<sp/>=<sp/>rswifi_0_get_scan_result_cnt;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;get_scan_result<sp/>=<sp/>rswifi_0_get_scan_result;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_connect<sp/>=<sp/>rswifi_0_wnic_connect;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;poll_conn_status<sp/>=<sp/>rswifi_0_poll_conn_status;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_disconnect<sp/>=<sp/>rswifi_0_wnic_disconnect;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;prepare_tx<sp/>=<sp/>rswifi_0_prepare_tx;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;add_tx_data<sp/>=<sp/>rswifi_0_add_tx_data;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;commit_tx<sp/>=<sp/>rswifi_0_commit_tx;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;prepare_rx<sp/>=<sp/>rswifi_0_prepare_rx;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;get_rx_data<sp/>=<sp/>rswifi_0_get_rx_data;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;accept_rx<sp/>=<sp/>rswifi_0_accept_rx;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;config_power_mode<sp/>=<sp/>rswifi_0_config_power_mode;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;poll_power_mode<sp/>=<sp/>rswifi_0_poll_power_mode;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;wnic_reset<sp/>=<sp/>rswifi_0_wnic_reset;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_wnic_ptr-&gt;period_process<sp/>=<sp/>rswifi_0_period_process;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="comment">/*<sp/>WIFI_RSI<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;no<sp/>wifi<sp/>module<sp/>selected&quot;</highlight></codeline>
+<codeline lineno="277"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="278"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_EMSDP_RSWIFI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="280"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal">DEV_WNIC_PTR<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___p_m_o_d_w_i_f_i_1ga4ea6fc486b6808c2c88e8116dde30a05" kindref="member">wnic_get_dev</ref>(int32_t<sp/>wnic_id)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>install_flag<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>install<sp/>device<sp/>objects<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(install_flag<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install_flag<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_all_install();</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(wnic_id)<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_RSWIFI_0)</highlight></codeline>
+<codeline lineno="294"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>EMSDP_RSWIFI_0_ID:</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;rswifi_0_wnic;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="298"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rswifi_all_install(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(USE_EMSDP_RSWIFI_0)</highlight></codeline>
+<codeline lineno="311"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rswifi_0_install();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="313"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>MID_LWIP<sp/>&amp;&amp;<sp/>MID_LWIP_CONTRIB<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsdp/drivers/pmwifi/pmwifi.c"/>
   </compounddef>
 </doxygen>

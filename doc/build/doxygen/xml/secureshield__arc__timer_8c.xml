@@ -4,78 +4,24 @@
     <compoundname>secureshield_arc_timer.c</compoundname>
     <includes refid="arc__timer_8c" local="yes">arc_timer.c</includes>
     <incdepgraph>
-      <node id="7270">
-        <label>stdbool.h</label>
+      <node id="3651">
+        <label>arc/arc_exception.h</label>
       </node>
-      <node id="7262">
-        <label>arc_timer.h</label>
-        <link refid="arc__timer_8h"/>
-        <childnode refid="7263" relation="include">
-        </childnode>
-        <childnode refid="7265" relation="include">
-        </childnode>
-        <childnode refid="7266" relation="include">
-        </childnode>
+      <node id="3650">
+        <label>arc/arc_timer.h</label>
       </node>
-      <node id="7265">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="7266" relation="include">
-        </childnode>
-      </node>
-      <node id="7263">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="7264" relation="include">
-        </childnode>
-      </node>
-      <node id="7267">
-        <label>stdint.h</label>
-      </node>
-      <node id="7261">
+      <node id="3649">
         <label>arc_timer.c</label>
         <link refid="arc__timer_8c"/>
-        <childnode refid="7262" relation="include">
+        <childnode refid="3650" relation="include">
         </childnode>
-        <childnode refid="7271" relation="include">
-        </childnode>
-      </node>
-      <node id="7269">
-        <label>stddef.h</label>
-      </node>
-      <node id="7268">
-        <label>limits.h</label>
-      </node>
-      <node id="7271">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="7266" relation="include">
-        </childnode>
-        <childnode refid="7263" relation="include">
-        </childnode>
-        <childnode refid="7265" relation="include">
+        <childnode refid="3651" relation="include">
         </childnode>
       </node>
-      <node id="7266">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="7267" relation="include">
-        </childnode>
-        <childnode refid="7268" relation="include">
-        </childnode>
-        <childnode refid="7269" relation="include">
-        </childnode>
-        <childnode refid="7270" relation="include">
-        </childnode>
-      </node>
-      <node id="7264">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="7260">
+      <node id="3648">
         <label>secureshield_arc_timer.c</label>
         <link refid="secureshield_arc_timer.c"/>
-        <childnode refid="7261" relation="include">
+        <childnode refid="3649" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -119,15 +65,15 @@
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight></codeline>
 <codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_SEC_TIMER1_PRESENT)<sp/>||<sp/>defined(ARC_FEATURE_SEC_TIMER0_PRESENT)</highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga4e1c7f5b50bb6c2066d9536aa82c86e7" kindref="member">timer_present</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no)<sp/>EMBARC_LINKTO(secure_timer_present);</highlight></codeline>
-<codeline lineno="37"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga6abd8670e2fcdeb2a95954064cd1f91e" kindref="member">timer_start</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>mode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>val)<sp/>EMBARC_LINKTO(secure_timer_start);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga226cf3c78e50cb364d4e2b7b81b87b45" kindref="member">timer_stop</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no)<sp/>EMBARC_LINKTO(secure_timer_stop);</highlight></codeline>
-<codeline lineno="39"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1gaa622d918484c0e2e615a10c850bebabf" kindref="member">timer_current</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*val)<sp/>EMBARC_LINKTO(secure_timer_current);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal">int32_t<sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga04189c0ae851819a2b9bcb8f7e1c504a" kindref="member">timer_int_clear</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no)<sp/>EMBARC_LINKTO(secure_timer_int_clear);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" kindref="member">timer_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>EMBARC_LINKTO(secure_timer_init);</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal">int32_t<sp/><ref refid="arc__timer_8c_1a932c45dfc9a9503c778ef586fccade99" kindref="member">arc_timer_present</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no)<sp/>EMBARC_LINKTO(arc_secure_timer_present);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">int32_t<sp/><ref refid="arc__timer_8c_1a4ca591bc3b7a83e307437f9b16d387c0" kindref="member">arc_timer_start</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>mode,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>val)<sp/>EMBARC_LINKTO(arc_secure_timer_start);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">int32_t<sp/><ref refid="arc__timer_8c_1a8ded41aa619120071c9742eaf9f50f31" kindref="member">arc_timer_stop</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no)<sp/>EMBARC_LINKTO(arc_secure_timer_stop);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">int32_t<sp/><ref refid="arc__timer_8c_1a651d9dfeffc650c2575542eb21b4cefb" kindref="member">arc_timer_current</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*val)<sp/>EMBARC_LINKTO(arc_secure_timer_current);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">int32_t<sp/><ref refid="arc__timer_8c_1aa491d0f301accab4ef12ef453b848777" kindref="member">arc_timer_int_clear</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>no)<sp/>EMBARC_LINKTO(arc_secure_timer_int_clear);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="arc__timer_8c_1ac4edf3c4dbed2f2a41f0880ed8f7a5b7" kindref="member">arc_timer_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>EMBARC_LINKTO(arc_secure_timer_init);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="43"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_arc_timer.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/core/src/arc_hal/secureshield_arc_timer.c"/>
   </compounddef>
 </doxygen>

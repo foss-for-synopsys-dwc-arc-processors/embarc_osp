@@ -5,21 +5,21 @@
     <includes refid="secureshield__int__exports_8h" local="yes">secureshield_int_exports.h</includes>
     <includes refid="secureshield__sys__ops__exports_8h" local="yes">secureshield_sys_ops_exports.h</includes>
     <incdepgraph>
-      <node id="7451">
-        <label>secureshield_int_exports.h</label>
-        <link refid="secureshield__int__exports_8h_source"/>
-      </node>
-      <node id="7452">
+      <node id="3803">
         <label>secureshield_sys_ops_exports.h</label>
         <link refid="secureshield__sys__ops__exports_8h_source"/>
       </node>
-      <node id="7450">
+      <node id="3801">
         <label>secureshield_overrides.h</label>
         <link refid="secureshield_overrides.h"/>
-        <childnode refid="7451" relation="include">
+        <childnode refid="3802" relation="include">
         </childnode>
-        <childnode refid="7452" relation="include">
+        <childnode refid="3803" relation="include">
         </childnode>
+      </node>
+      <node id="3802">
+        <label>secureshield_int_exports.h</label>
+        <link refid="secureshield__int__exports_8h_source"/>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -74,33 +74,34 @@
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>int_level_config</highlight></codeline>
 <codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>cpu_lock</highlight></codeline>
 <codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>cpu_unlock</highlight></codeline>
-<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>cpu_lock_restore</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>int_disable(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_disable(intno)</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_enable(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_enable(intno)</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_pri_set(intno,<sp/>intpri)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_pri_set(intno,<sp/>intpri)</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_pri_get(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_pri_get(intno)</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_handler_install(intno,<sp/>handler)<sp/><sp/><sp/><sp/><sp/>secureshield_int_handler_install(intno,<sp/>handler)</highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_handler_get(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_handler_get(intno)</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_sw_trigger(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_sw_trigger(intno)</highlight></codeline>
-<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_probe(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_probe(intno)</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_level_config(intno,<sp/>level)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_level_config(intno,<sp/>level)</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_lock()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_lock()</highlight></codeline>
-<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_unlock()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_unlock()</highlight></codeline>
-<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_lock_save()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_lock_save()</highlight></codeline>
-<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_unlock_restore(status)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_unlock_restore(status)</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OVERRIDE_ARC_HAL_EXCEPTION_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OVERRIDE_ARC_HAL_BUILTIN_H</highlight></codeline>
-<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>_arc_lr_reg</highlight></codeline>
-<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>_arc_sr_reg</highlight></codeline>
-<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_arc_lr_reg(reg)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_arc_lr_reg(reg)</highlight></codeline>
-<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_arc_sr_reg(reg,<sp/>val)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_arc_sr_reg(reg,val)</highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OVERRIDE_ARC_HAL_BUILTIN_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//#endif<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/*<sp/>_SECURESHIELD_OVERRIDES_H_<sp/>*/</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>cpu_lock_save</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>cpu_unlock_restore</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>int_disable(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_disable(intno)</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_enable(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_enable(intno)</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_pri_set(intno,<sp/>intpri)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_pri_set(intno,<sp/>intpri)</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_pri_get(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_pri_get(intno)</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_handler_install(intno,<sp/>handler)<sp/><sp/><sp/><sp/><sp/>secureshield_int_handler_install(intno,<sp/>handler)</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_handler_get(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_handler_get(intno)</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_sw_trigger(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_sw_trigger(intno)</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_probe(intno)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_probe(intno)</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>int_level_config(intno,<sp/>level)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_int_level_config(intno,<sp/>level)</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_lock()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_lock()</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_unlock()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_unlock()</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_lock_save()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_lock_save()</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>cpu_unlock_restore(status)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_cpu_unlock_restore(status)</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OVERRIDE_ARC_HAL_EXCEPTION_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>OVERRIDE_ARC_HAL_BUILTIN_H</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>arc_aux_read</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#undef<sp/>arc_aux_write</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>arc_aux_read(reg)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_arc_lr_reg(reg)</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>arc_aux_write(reg,<sp/>val)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secureshield_arc_sr_reg(reg,val)</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>OVERRIDE_ARC_HAL_BUILTIN_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//#endif<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/*<sp/>_SECURESHIELD_OVERRIDES_H_<sp/>*/</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/export/inc/secureshield_overrides.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/library/secureshield/export/inc/secureshield_overrides.h"/>
   </compounddef>
 </doxygen>

@@ -38,243 +38,227 @@
 <codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="preprocessor">#define<sp/>__ASSEMBLY__</highlight></codeline>
-<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.file<sp/></highlight><highlight class="stringliteral">&quot;arc_startup.s&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal">.weak<sp/><sp/><sp/>_f_sdata<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>start<sp/>of<sp/>small<sp/>data,<sp/>defined<sp/>in<sp/>link<sp/>script<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal">.weak<sp/><sp/><sp/>init_hardware_hook<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>app<sp/>hardware<sp/>init<sp/>hook<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal">.weak<sp/><sp/><sp/>init_software_hook<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>app<sp/>software<sp/>init<sp/>hook<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal">.extern<sp/>board_main</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">.extern<sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga91b7022c29998a80fe16897fd8514a8f" kindref="member">exc_entry_table</ref></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>initial<sp/>vector<sp/>table<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/>.init_vector,<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.long<sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga7eada76e99261c0fcc1ad28909770ef1" kindref="member">_arc_reset</ref></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/>.init_bootstrap,<sp/></highlight><highlight class="stringliteral">&quot;ax&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga7eada76e99261c0fcc1ad28909770ef1" kindref="member">_arc_reset</ref></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_start</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
-<codeline lineno="62"><highlight class="normal">_start:</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga7eada76e99261c0fcc1ad28909770ef1" kindref="member">_arc_reset</ref>:</highlight></codeline>
-<codeline lineno="64"><highlight class="normal">_arc_reset_stage1:</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c_1ga16c85de3f35dd1260842a7015e8cd791" kindref="member">STATUS32_RESET_VALUE</ref></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>STAGE<sp/>1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>necessary<sp/>hardware<sp/>should<sp/>be<sp/>done<sp/>first<sp/>to<sp/>speed<sp/>up<sp/>initialization</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.<sp/>system<sp/>clk</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2.<sp/>mem<sp/>controller<sp/>must<sp/>be<sp/>initialized<sp/>before<sp/>any<sp/>access<sp/>to<sp/>external</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mem.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3.<sp/>others</highlight></codeline>
-<codeline lineno="74"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal">_arc_cache_init_start:</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga0a71e31c0c9c908d33185905eb042010" kindref="member">AUX_BCR_D_CACHE</ref>]</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>2</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>invalidate<sp/>dcache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jle<sp/><sp/><sp/><sp/><sp/>_arc_icache_init</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>1</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga1b53815dcb6c4d2a51d526fec3c595ce" kindref="member">AUX_DC_IVDC</ref>]</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gabc9aa216033011852fa809e848091ee3" kindref="member">AUX_DC_CTRL</ref>]</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">_arc_icache_init:</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga9e91cea4c263ee77386aaedab738171d" kindref="member">AUX_BCR_I_CACHE</ref>]</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>2</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jle<sp/><sp/><sp/><sp/><sp/>_arc_cache_init_end</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>invalidate<sp/>icache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>1</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga9a51b9a570b9907dea431df00e74cb2e" kindref="member">AUX_IC_IVIC</ref>]</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop_s</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop_s</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop_s</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaca70ade7fa06ffa8895b13aff6e1dd7b" kindref="member">AUX_IC_CTRL</ref>]</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal">_arc_cache_init_end:</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>init_hardware_hook</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>0</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlne<sp/><sp/><sp/><sp/>[r0]</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>STAGE<sp/>2:<sp/>init<sp/>necessary<sp/>registers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal">_arc_reset_stage2:</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>0</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_asm_common.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.file<sp/></highlight><highlight class="stringliteral">&quot;arc_startup.s&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__GNU__</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal">.weak<sp/><sp/><sp/>__SDATA_BEGIN__<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>start<sp/>of<sp/>small<sp/>data,<sp/>defined<sp/>in<sp/>link<sp/>script<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal">.weak<sp/><sp/><sp/>_f_sdata<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>start<sp/>of<sp/>small<sp/>data,<sp/>defined<sp/>in<sp/>link<sp/>script<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal">.weak<sp/><sp/><sp/>init_hardware_hook<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>app<sp/>hardware<sp/>init<sp/>hook<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">.extern<sp/>board_main</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">.extern<sp/>exc_entry_table</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>initial<sp/>vector<sp/>table<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/>.init_vector,<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.long<sp/>_arc_reset</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/>.init_bootstrap,<sp/></highlight><highlight class="stringliteral">&quot;ax&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_arc_reset</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_start</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">_start:</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">_arc_reset:</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">_arc_reset_stage1:</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/>STATUS32_RESET_VALUE</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>STAGE<sp/>1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>necessary<sp/>hardware<sp/>should<sp/>be<sp/>done<sp/>first<sp/>to<sp/>speed<sp/>up<sp/>initialization</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1.<sp/>system<sp/>clk</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2.<sp/>mem<sp/>controller<sp/>must<sp/>be<sp/>initialized<sp/>before<sp/>any<sp/>access<sp/>to<sp/>external</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mem.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3.<sp/>others</highlight></codeline>
+<codeline lineno="78"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">_arc_cache_init_start:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_BCR_D_CACHE]</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>2</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>invalidate<sp/>dcache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jle<sp/><sp/><sp/><sp/><sp/>_arc_icache_init</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>1</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_DC_IVDC]</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">_arc_icache_init:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_BCR_I_CACHE]</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>2</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jle<sp/><sp/><sp/><sp/><sp/>_arc_cache_init_end</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>invalidate<sp/>icache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>1</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_IC_IVIC]</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop_s</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop_s</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop_s</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_IC_CTRL]</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">_arc_cache_init_end:</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>init_hardware_hook</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>0</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlne<sp/><sp/><sp/><sp/>[r0]</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>STAGE<sp/>2:<sp/>init<sp/>necessary<sp/>registers<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>interrupt<sp/>related<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaa168f623c7c5e97772436be2d5faaed2" kindref="member">AUX_IRQ_ACT</ref>]</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gad07a04f21e4b6880f191139bdc714cf8" kindref="member">AUX_IRQ_CTRL</ref>]</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gae2b13d1f0090d6a1ace0a6bc4ae7d09a" kindref="member">AUX_IRQ_HINT</ref>]</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>use<sp/>the<sp/>new<sp/>vector<sp/>table<sp/>to<sp/>replace<sp/>the<sp/>old<sp/>one<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_SEC_PRESENT)<sp/>&amp;&amp;<sp/>(SECURESHIELD_VERSION<sp/>&lt;<sp/>2)</highlight></codeline>
-<codeline lineno="112"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga91b7022c29998a80fe16897fd8514a8f" kindref="member">exc_entry_table</ref>,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga0a13f498fbbf80ecf9da3a7c24d9db61" kindref="member">AUX_INT_VECT_BASE_S</ref>]</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="114"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___c_p_u_1ga91b7022c29998a80fe16897fd8514a8f" kindref="member">exc_entry_table</ref>,<sp/>[<ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1gaa35f715c5d59826f7879abde183353e7" kindref="member">AUX_INT_VECT_BASE</ref>]</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="116"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>init<sp/>stack<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_RGF_BANKED_REGS<sp/>&gt;=<sp/>16<sp/>&amp;&amp;<sp/>ARC_FEATURE_FIRQ<sp/>==<sp/>1</highlight></codeline>
-<codeline lineno="119"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#if<sp/>_STACKSIZE<sp/>&lt;<sp/>512</highlight></codeline>
-<codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#error<sp/>&quot;not<sp/>enough<sp/>stack<sp/>size<sp/>for<sp/>irq<sp/>and<sp/>firq&quot;</highlight></codeline>
-<codeline lineno="121"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="122"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>switch<sp/>to<sp/>register<sp/>bank1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_STATUS32]</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bic<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r0,<sp/>0x70000</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>or<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>r0,<sp/>0x10000</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/>r0</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>set<sp/>sp,<sp/>gp,<sp/>fp<sp/>in<sp/>bank1<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_f_stack+256</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>gp,<sp/>_f_sdata</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>fp,<sp/>0</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>come<sp/>back<sp/>to<sp/>bank0<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_STATUS32]</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bic<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r0,<sp/>0x70000</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/>r0</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>stack<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="140"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>gp,<sp/>_f_sdata<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>small-data<sp/>base<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>fp,<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>fp<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal">_arc_reset_stage3:</highlight></codeline>
-<codeline lineno="144"><highlight class="normal">_s3_copy_text:</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_text</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_load_addr_text</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>if<sp/>load<sp/>addr<sp/>==<sp/>run<sp/>addr,<sp/>no<sp/>need<sp/>to<sp/>copy<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jeq<sp/><sp/><sp/><sp/><sp/>_s3_copy_rodata</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r3,<sp/>_e_text</highlight></codeline>
-<codeline lineno="152"><highlight class="normal">_s3_copy_text_loop:</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.ab<sp/><sp/><sp/>r2,<sp/>[r1,<sp/>4]</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r3</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_copy_text_loop</highlight></codeline>
-<codeline lineno="157"><highlight class="normal">_s3_copy_rodata:</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_rodata</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_load_addr_rodata</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>if<sp/>load<sp/>addr<sp/>==<sp/>run<sp/>addr,<sp/>no<sp/>need<sp/>to<sp/>copy<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jeq<sp/><sp/><sp/><sp/><sp/>_s3_copy_data</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r3,<sp/>_e_rodata</highlight></codeline>
-<codeline lineno="165"><highlight class="normal">_s3_copy_rodata_loop:</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.ab<sp/><sp/><sp/>r2,<sp/>[r1,<sp/>4]</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r3</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_copy_rodata_loop</highlight></codeline>
-<codeline lineno="170"><highlight class="normal">_s3_copy_data:</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_data</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_load_addr_data</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jeq<sp/><sp/><sp/><sp/><sp/>_s3_clear_bss</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>if<sp/>load<sp/>addr<sp/>==<sp/>run<sp/>addr,<sp/>no<sp/>need<sp/>to<sp/>copy<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r3,<sp/>_e_data</highlight></codeline>
-<codeline lineno="178"><highlight class="normal">_s3_copy_data_loop:</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.ab<sp/><sp/><sp/>r2,<sp/>[r1,<sp/>4]</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r3</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_copy_data_loop</highlight></codeline>
-<codeline lineno="183"><highlight class="normal">_s3_clear_bss:</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_bss</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_e_bss</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jge<sp/><sp/><sp/><sp/><sp/>_arc_reset_call_main</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r2,<sp/>0</highlight></codeline>
-<codeline lineno="189"><highlight class="normal">_s3_clear_bss_loop:</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_clear_bss_loop</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_STACK_CHECK</highlight></codeline>
-<codeline lineno="195"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/>r0,<sp/>_e_stack</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/>r1,<sp/>_f_stack</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_SEC_PRESENT</highlight></codeline>
-<codeline lineno="198"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r1,<sp/>[AUX_S_KSTACK_TOP]</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r0,<sp/>[AUX_S_KSTACK_BASE]</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/>r0,<sp/>[AUX_SEC_STAT]</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bset<sp/>r0,<sp/>r0,<sp/>AUX_SEC_STAT_BIT_SSC</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sflag<sp/>r0</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="204"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r1,<sp/>[AUX_KSTACK_TOP]</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r0,<sp/>[AUX_KSTACK_BASE]</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/>r0,<sp/>[AUX_STATUS32]</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bset<sp/>r0,<sp/>r0,<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga750d52d86a5ddb9c016a04cb61f1bdf5" kindref="member">AUX_STATUS_BIT_SC</ref></highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/>r0</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="210"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="211"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>STAGE<sp/>3:<sp/>go<sp/>to<sp/>main<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal">_arc_reset_call_main:</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>init_software_hook</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>0</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlne<sp/><sp/><sp/><sp/>[r0]</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>board<sp/>level<sp/>library<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>LIB_SECURESHIELD</highlight></codeline>
-<codeline lineno="219"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_start</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SECURESHIELD_VERSION<sp/>==<sp/>2</highlight></codeline>
-<codeline lineno="221"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_except_bit_clear</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="223"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="224"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>early<sp/>init<sp/>of<sp/>interrupt<sp/>and<sp/>exception<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___e_x_c_e_p_t_i_o_n___i_n_t_e_r_r_u_p_t_1ga0d83599ed3aa340e40e593d5556e811f" kindref="member">exc_int_init</ref></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>cache<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__cache_8c_1a6bda12adc92ba421f24f6e836051db9c" kindref="member">arc_cache_init</ref></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="229"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
-<codeline lineno="231"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>_init</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__GNU__)</highlight></codeline>
-<codeline lineno="233"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_global_ctors_aux</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_init_array_aux</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="236"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>board_main<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>board-level<sp/>main<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">_arc_reset_stage2:</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>0</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>interrupt<sp/>related<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_IRQ_ACT]</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_IRQ_CTRL]</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>r0,<sp/>[AUX_IRQ_HINT]</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>use<sp/>the<sp/>new<sp/>vector<sp/>table<sp/>to<sp/>replace<sp/>the<sp/>old<sp/>one<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_SEC_PRESENT)<sp/>&amp;&amp;<sp/>(SECURESHIELD_VERSION<sp/>&lt;<sp/>2)</highlight></codeline>
+<codeline lineno="115"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>exc_entry_table,<sp/>[AUX_INT_VECT_BASE_S]</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/><sp/><sp/><sp/><sp/><sp/>exc_entry_table,<sp/>[AUX_INT_VECT_BASE]</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="119"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#ifdef<sp/>__GNU__</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>gp,<sp/>__SDATA_BEGIN__<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>small-data<sp/>base<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>gp,<sp/>_f_sdata<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>small-data<sp/>base<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>fp,<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>fp<sp/>register<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_MP_NUM_CPUS<sp/>&gt;<sp/>1</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GET_CORE_ID<sp/>r0</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>breq<sp/>r0,<sp/>0,<sp/>_master_core_startup</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">_slave_core_wait:</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld<sp/>r1,<sp/>[arc_cpu_wake_flag]</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>brne<sp/>r0,<sp/>r1,<sp/>_slave_core_wait</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld<sp/>sp,<sp/>[arc_cpu_sp]</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>signal<sp/>master<sp/>core<sp/>that<sp/>slave<sp/>core<sp/>runs<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st<sp/>0,<sp/>[arc_cpu_wake_flag]</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/>arc_slave_start</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">_master_core_startup:</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="142"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>sp,<sp/>_e_stack<sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>init<sp/>stack<sp/>pointer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal">_arc_reset_stage3:</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">_s3_copy_text:</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_text</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_load_addr_text</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>if<sp/>load<sp/>addr<sp/>==<sp/>run<sp/>addr,<sp/>no<sp/>need<sp/>to<sp/>copy<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jeq<sp/><sp/><sp/><sp/><sp/>_s3_copy_rodata</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r3,<sp/>_e_text</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">_s3_copy_text_loop:</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.ab<sp/><sp/><sp/>r2,<sp/>[r1,<sp/>4]</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r3</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_copy_text_loop</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">_s3_copy_rodata:</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_rodata</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_load_addr_rodata</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>if<sp/>load<sp/>addr<sp/>==<sp/>run<sp/>addr,<sp/>no<sp/>need<sp/>to<sp/>copy<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jeq<sp/><sp/><sp/><sp/><sp/>_s3_copy_data</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r3,<sp/>_e_rodata</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">_s3_copy_rodata_loop:</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.ab<sp/><sp/><sp/>r2,<sp/>[r1,<sp/>4]</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r3</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_copy_rodata_loop</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">_s3_copy_data:</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_data</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_load_addr_data</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jeq<sp/><sp/><sp/><sp/><sp/>_s3_clear_bss</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>if<sp/>load<sp/>addr<sp/>==<sp/>run<sp/>addr,<sp/>no<sp/>need<sp/>to<sp/>copy<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r3,<sp/>_e_data</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">_s3_copy_data_loop:</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ld.ab<sp/><sp/><sp/>r2,<sp/>[r1,<sp/>4]</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r3</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_copy_data_loop</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">_s3_clear_bss:</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r0,<sp/>_f_bss</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r1,<sp/>_e_bss</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jge<sp/><sp/><sp/><sp/><sp/>_arc_reset_call_main</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/><sp/><sp/><sp/><sp/>r2,<sp/>0</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">_s3_clear_bss_loop:</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>st.ab<sp/><sp/><sp/>r2,<sp/>[r0,<sp/>4]</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmp<sp/><sp/><sp/><sp/><sp/>r0,<sp/>r1</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jlt<sp/><sp/><sp/><sp/><sp/>_s3_clear_bss_loop</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_STACK_CHECK</highlight></codeline>
+<codeline lineno="196"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/>r0,<sp/>_e_stack</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/>r1,<sp/>_f_stack</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ARC_FEATURE_SEC_PRESENT</highlight></codeline>
+<codeline lineno="199"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r1,<sp/>[AUX_S_KSTACK_TOP]</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r0,<sp/>[AUX_S_KSTACK_BASE]</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/>r0,<sp/>[AUX_SEC_STAT]</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bset<sp/>r0,<sp/>r0,<sp/>AUX_SEC_STAT_BIT_SSC</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sflag<sp/>r0</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="205"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r1,<sp/>[AUX_KSTACK_TOP]</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sr<sp/>r0,<sp/>[AUX_KSTACK_BASE]</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/>r0,<sp/>[AUX_STATUS32]</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bset<sp/>r0,<sp/>r0,<sp/>AUX_STATUS_BIT_SC</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/>r0</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="211"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="212"><highlight class="preprocessor"></highlight><highlight class="comment">/*<sp/>STAGE<sp/>3:<sp/>go<sp/>to<sp/>main<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal">_arc_reset_call_main:</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>board<sp/>level<sp/>library<sp/>init<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/><sp/>LIB_SECURESHIELD</highlight></codeline>
+<codeline lineno="218"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_start</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>SECURESHIELD_VERSION<sp/>==<sp/>2</highlight></codeline>
+<codeline lineno="220"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>secureshield_except_bit_clear</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="222"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="223"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>board_main<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>board-level<sp/>main<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_exit_loop</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_loop</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_halt</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">_exit_halt:</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">_exit_loop:</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/><sp/><sp/><sp/>AUX_STATUS_MASK_HALT</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_exit_loop</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
-<codeline lineno="238"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>_fini</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__GNU__)</highlight></codeline>
-<codeline lineno="240"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jl<sp/><sp/><sp/><sp/><sp/><sp/>__do_global_dtors_aux</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="242"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_loop</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_exit_halt</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
-<codeline lineno="245"><highlight class="normal">_exit_halt:</highlight></codeline>
-<codeline lineno="246"><highlight class="normal">_exit_loop:</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag<sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga289482433da15b3faa9af6ab2b6547e3" kindref="member">AUX_STATUS_MASK_HALT</ref></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nop</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/><sp/><sp/><sp/><sp/><sp/><sp/>_exit_loop</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"></highlight></codeline>
-<codeline lineno="253"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__MW__)</highlight></codeline>
-<codeline lineno="254"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>_init,<sp/>_fini</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init&quot;</highlight><highlight class="normal">,text</highlight></codeline>
-<codeline lineno="256"><highlight class="normal">_init:</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_init</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini&quot;</highlight><highlight class="normal">,<sp/>text</highlight></codeline>
-<codeline lineno="268"><highlight class="normal">_fini:</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_fini</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="279"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="238"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/>arc_mwdt_init,<sp/>arc_mwdt_fini</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init&quot;</highlight><highlight class="normal">,text</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">arc_mwdt_init:</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>arc_mwdt_init</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.init$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini&quot;</highlight><highlight class="normal">,<sp/>text</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">arc_mwdt_fini:</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_bf<sp/>_fini</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>push<sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_push<sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.section<sp/></highlight><highlight class="stringliteral">&quot;.fini$999999&quot;</highlight><highlight class="normal">,<sp/>text,<sp/>1,<sp/>2,<sp/>check_text_align=0</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pop<sp/><sp/><sp/><sp/><sp/>%blink</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_pop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{%blink}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j<sp/><sp/><sp/><sp/><sp/><sp/><sp/>[%blink]</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.cfa_ef</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="263"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/startup/arc_startup.s"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/startup/arc_startup.s"/>
   </compounddef>
 </doxygen>

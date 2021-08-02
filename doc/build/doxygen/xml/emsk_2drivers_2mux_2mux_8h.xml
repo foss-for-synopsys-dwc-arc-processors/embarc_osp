@@ -2,52 +2,84 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsk_2drivers_2mux_2mux_8h" kind="file">
     <compoundname>emsk/drivers/mux/mux.h</compoundname>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
     <includedby refid="emsk_2drivers_2mux_2mux_8c" local="yes">mux.c</includedby>
     <incdepgraph>
-      <node id="6088">
-        <label>stdbool.h</label>
-      </node>
-      <node id="6083">
+      <node id="2873">
         <label>mux.h</label>
         <link refid="emsk/drivers/mux/mux.h"/>
-        <childnode refid="6084" relation="include">
+        <childnode refid="2874" relation="include">
         </childnode>
       </node>
-      <node id="6085">
-        <label>stdint.h</label>
-      </node>
-      <node id="6087">
-        <label>stddef.h</label>
-      </node>
-      <node id="6086">
-        <label>limits.h</label>
-      </node>
-      <node id="6084">
+      <node id="2874">
         <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="6085" relation="include">
-        </childnode>
-        <childnode refid="6086" relation="include">
-        </childnode>
-        <childnode refid="6087" relation="include">
-        </childnode>
-        <childnode refid="6088" relation="include">
-        </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="6090">
+      <node id="2876">
         <label>mux.c</label>
         <link refid="emsk_2drivers_2mux_2mux_8c"/>
       </node>
-      <node id="6089">
+      <node id="2875">
         <label>mux.h</label>
         <link refid="emsk/drivers/mux/mux.h"/>
-        <childnode refid="6090" relation="include">
+        <childnode refid="2876" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Mux Control Register Index</header>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4d35210978aabf96b9198d753bddcf77" prot="public" static="no">
+        <name>PMOD_MUX_CTRL</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x0, This register controls mapping of the peripheral device signals on Pmod connectors </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab7f64addda6f60359e9382320e696861" compoundref="emsdp_2drivers_2mux_2mux_8c" startline="43" endline="46">get_pmod_mux</referencedby>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8356bee63484f5b67a7995fbde693d11" compoundref="emsdp_2drivers_2mux_2mux_8c" startline="37" endline="40">set_pmod_mux</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaf6292d2ca82caea2f0c018716b6bc1d4" prot="public" static="no">
+        <name>I2C_MAP_CTRL</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x4 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga850031942d708e94f93c3399e58917f9" prot="public" static="no">
+        <name>SPI_MAP_CTRL</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x8, SPI_MAP_CTRL[0] selects the mode of operation of the SPI Slave:<itemizedlist>
+<listitem><para>Normal operation, SPI_MAP_CTRL[0]=0: SPI Slave is connected to Pmod1 at connector J1.</para></listitem><listitem><para>Loop-back mode, SPI_MAP_CTRL[0]=1: SPI Slave is connected to the SPI Master inside the FPGA using CS4. </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="58" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="55" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab1edc41eb546dfce3d1f6c23636540fc" compoundref="emsk_2drivers_2mux_2mux_8c" startline="69" endline="72">set_spi_map</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6532dcdafba6b20ce40aa06495a79fc6" prot="public" static="no">
+        <name>UART_MAP_CTRL</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>32-bits, offset 0x8, This register controls the mapping of the UART signals on the Pmod1 connector. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaa1c11b77b7888c47cf5b107eb7ee15a2" compoundref="emsk_2drivers_2mux_2mux_8c" startline="75" endline="78">set_uart_map</referencedby>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="user-defined">
       <header>Default pin muxer settings</header>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4c9c0eb890da3157523cacb1092eddbc" prot="public" static="no">
@@ -59,7 +91,7 @@
 <para>all pins are configured as GPIO inputs </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="76" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="76" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="94" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga5eb7f84cdeb8a0f092b11e5c238b88b0" prot="public" static="no">
         <name>SPI_MAP_CTRL_DEFAULT</name>
@@ -70,7 +102,7 @@
 <para>normal SPI mode </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="77" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="77" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="95" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga98b1debfeed8daf9056378946e66b6b6" prot="public" static="no">
         <name>UART_MAP_CTRL_DEFAULT</name>
@@ -81,7 +113,7 @@
 <para>TYPE4 PMOD compatible </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="78" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="96" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -95,7 +127,7 @@
 <para>Pmod1[4:1] are connected to DW GPIO Port C[11:8] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="85" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="85" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="103" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4e9e9b308d70c9fe3e4a012376520b21" prot="public" static="no">
         <name>PM1_UR_UART_0</name>
@@ -106,7 +138,7 @@
 <para>Pmod1[4:1] are connected to DW UART0 signals </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="86" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="86" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="104" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gad8e54756e21619a92f75a02f69e00577" prot="public" static="no">
         <name>PM1_LR_GPIO_A</name>
@@ -117,7 +149,7 @@
 <para>Pmod1[10:7] are connected to DW GPIO Port A[11:8] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="88" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="88" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="106" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaba0ff4df68cf401eea282652138f0a4a" prot="public" static="no">
         <name>PM1_LR_SPI_S</name>
@@ -128,7 +160,7 @@
 <para>Pmod1[10:7] are connected to DW SPI Slave signals </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="89" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="89" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="107" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -142,7 +174,7 @@
 <para>Pmod2[4:1] are connected to DW GPIO Port C[15:12], Pmod2[10:7] are connected to DW GPIO Port A[15:12] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="98" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="97" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="115" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga800fd20d486dd68269d1441cfa980723" prot="public" static="no">
         <name>PM2_I2C_HRI</name>
@@ -153,7 +185,7 @@
 <para>connect I2C to Pmod2[4:1] and halt/run interface to Pmod2[10:7] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="100" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="101" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="117" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -167,7 +199,7 @@
 <para>Pmod3[4:1] are connected to DW GPIO Port C[19:16], Pmod3[10:7] are connected to DW GPIO Port A[19:16] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="109" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="109" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="125" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga724e6ca2f412048967b237c0796c3f07" prot="public" static="no">
         <name>PM3_I2C_GPIO_D</name>
@@ -178,7 +210,7 @@
 <para>Pmod3[4:3] are connected to DW I2C signals, Pmod3[2:1] are connected to DW GPIO Port D[1:0], Pmod3[10:7] are connected to DW GPIO Port D[3:2] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="113" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="113" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="129" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -192,7 +224,7 @@
 <para>Pmod4[4:1] are connected to DW GPIO Port C[23:20], Pmod4[10:7] are connected to DW GPIO Port A[23:20] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="122" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="125" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="137" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga0a801370d7b24fe67c9f2af40b018949" prot="public" static="no">
         <name>PM4_I2C_GPIO_D</name>
@@ -203,7 +235,7 @@
 <para>Pmod4[4:3] are connected to DW I2C signals, Pmod4[2:1] are connected to DW GPIO Port D[5:4], Pmod4[10:7] are connected to DW GPIO Port D[7:6] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="126" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="129" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="141" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -217,7 +249,7 @@
 <para>Pmod5[4:1] are connected to DW GPIO Port C[27:24] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="133" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="140" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="148" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6d0d0ed66635d7cb86adef808dd37b3e" prot="public" static="no">
         <name>PM5_UR_SPI_M1</name>
@@ -228,7 +260,7 @@
 <para>Pmod5[4:1] are connected to DW SPI Master signals using CS1_N </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="134" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="141" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="149" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6d6a44b48160468bda1a1b5bd846413e" prot="public" static="no">
         <name>PM5_LR_GPIO_A</name>
@@ -239,7 +271,7 @@
 <para>Pmod5[10:7] are connected to DW GPIO Port A[27:24] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="136" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="143" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="151" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga516015d4756e0c6fddd642e6434764bd" prot="public" static="no">
         <name>PM5_LR_SPI_M2</name>
@@ -250,7 +282,7 @@
 <para>Pmod5[10:7] are connected to DW SPI Master signals using CS2_N </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="137" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="144" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="152" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="165" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -264,7 +296,7 @@
 <para>Pmod6[4:1] are connected to DW GPIO Port C[31:28] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="145" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="152" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="159" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gac2a55fd4964c1e65a7ceec8eef8aacac" prot="public" static="no">
         <name>PM6_UR_SPI_M0</name>
@@ -275,7 +307,7 @@
 <para>Pmod6[4:1] are connected to DW SPI Master signals using CS0_N </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="146" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="153" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="160" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga12efa7dd4ca8cd27ffc675e4e9acfbc3" prot="public" static="no">
         <name>PM6_LR_GPIO_A</name>
@@ -286,7 +318,7 @@
 <para>Pmod6[10:7] are connected to DW GPIO Port A[31:28] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="148" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="155" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="162" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8ca92cbdeb138e0294d4b99b752b1172" prot="public" static="no">
         <name>PM6_LR_CSS_STAT</name>
@@ -297,7 +329,7 @@
 <para>Pmod6[8:7] are connected to the DW SPI Master chip select signals CS1_N and CS2_N, Pmod6[6:5] are connected to the ARC EM halt and sleep status signals </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="151" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="157" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="165" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="177" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -311,7 +343,7 @@
 <para>Pmod7[4:1] are connected to DW GPIO Port D[11:8] </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="158" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="166" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="172" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gae4344445edd3cce894cad6488d164698" prot="public" static="no">
         <name>PM7_STAT</name>
@@ -322,7 +354,7 @@
 <para>Pmod7[4:1] are connected to the ARC EM sleep status signals </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="159" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="167" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="173" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="187" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">
@@ -335,7 +367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="45" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="45" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="64" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga601923eba46784638244c1ebf2622a2a" prot="public" static="no">
         <name>BIT1</name>
@@ -346,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="46" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="46" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="65" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga9c9560bccccb00174801c728f1ed1399" prot="public" static="no">
         <name>BIT2</name>
@@ -357,7 +389,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="47" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="47" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8e44574a8a8becc885b05f3bc367ef6a" prot="public" static="no">
         <name>BIT3</name>
@@ -368,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="48" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="48" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="67" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gad7ae27c76d646f46cc6c117d7792011f" prot="public" static="no">
         <name>PM1_OFFSET</name>
@@ -379,7 +411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="49" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="49" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="68" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaab1bd3ac0050f0fab37032750fb3f7df" prot="public" static="no">
         <name>PM2_OFFSET</name>
@@ -390,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="50" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="50" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaad624fc9e1a9daa634a632548ff22116" prot="public" static="no">
         <name>PM3_OFFSET</name>
@@ -401,7 +433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="51" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="51" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8e42cd8138d98cf039180338277c357b" prot="public" static="no">
         <name>PM4_OFFSET</name>
@@ -412,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="52" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="52" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="71" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga447c07e5615e4bad0d982529901ea2c3" prot="public" static="no">
         <name>PM5_OFFSET</name>
@@ -423,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="53" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="53" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="72" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga3010b754031bf248baa6d2a0c8bdd0c1" prot="public" static="no">
         <name>PM6_OFFSET</name>
@@ -434,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="54" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="54" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="73" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga89cb54b4a011b5d42cbfee1d0c0042d4" prot="public" static="no">
         <name>PM7_OFFSET</name>
@@ -445,7 +477,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="55" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="55" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaaea82a566e2ce9ddb1c2109f4b8f5ab2" prot="public" static="no">
         <name>PM1_MASK</name>
@@ -456,7 +488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="57" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="57" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="76" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab15fca5be68d3277b8cfb1ae829ccfc6" prot="public" static="no">
         <name>PM2_MASK</name>
@@ -467,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="58" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="58" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="77" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga00377bac287616a62d67b1bafb5ab631" prot="public" static="no">
         <name>PM3_MASK</name>
@@ -478,7 +510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="59" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="59" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaf3d3b950966144e371bd01a078d0ccc9" prot="public" static="no">
         <name>PM4_MASK</name>
@@ -489,7 +521,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="60" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="60" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gac59b5d976b73aaadd69b89f4dd919bda" prot="public" static="no">
         <name>PM5_MASK</name>
@@ -500,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="61" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="61" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="80" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab049fb2d980545c1c4992c8ad512e13a" prot="public" static="no">
         <name>PM6_MASK</name>
@@ -511,7 +543,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="62" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="62" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="81" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga13a5cc8f28afc96e9bcd5a04c67b65d6" prot="public" static="no">
         <name>PM7_MASK</name>
@@ -522,7 +554,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="63" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="63" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="82" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga58ba88a29b6d0fe0a5719d24e2654daa" prot="public" static="no">
         <name>SPI_MAP_NORMAL</name>
@@ -533,7 +565,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="66" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="66" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="84" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga2896ec6b153444f4462fce88a5b73bda" prot="public" static="no">
         <name>SPI_MAP_LOOPBACK</name>
@@ -544,7 +576,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="67" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="67" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="85" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaf5e4292983c99d8ba978298b21734d1e" prot="public" static="no">
         <name>UART_MAP_TYPE4</name>
@@ -555,7 +587,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="69" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="69" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="87" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4314d7e2656c79fbbacf420d57cb7162" prot="public" static="no">
         <name>UART_MAP_TYPE3</name>
@@ -566,7 +598,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="70" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="70" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="88" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -581,7 +613,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="169" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="169" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" line="189" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h" bodystart="189" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -600,8 +632,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="61" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="61" bodyend="64"/>
-        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4d35210978aabf96b9198d753bddcf77" compoundref="emsk_2drivers_2mux_2mux__hal_8h" startline="48">PMOD_MUX_CTRL</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="57" bodyend="60"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4d35210978aabf96b9198d753bddcf77" compoundref="emsk_2drivers_2mux_2mux_8h" startline="49">PMOD_MUX_CTRL</references>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab7f64addda6f60359e9382320e696861" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -617,8 +649,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="67" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="67" bodyend="70"/>
-        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4d35210978aabf96b9198d753bddcf77" compoundref="emsk_2drivers_2mux_2mux__hal_8h" startline="48">PMOD_MUX_CTRL</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="63" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="63" bodyend="66"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4d35210978aabf96b9198d753bddcf77" compoundref="emsk_2drivers_2mux_2mux_8h" startline="49">PMOD_MUX_CTRL</references>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab1edc41eb546dfce3d1f6c23636540fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -635,8 +667,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="73" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="73" bodyend="76"/>
-        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga850031942d708e94f93c3399e58917f9" compoundref="emsk_2drivers_2mux_2mux__hal_8h" startline="54">SPI_MAP_CTRL</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="69" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="69" bodyend="72"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga850031942d708e94f93c3399e58917f9" compoundref="emsk_2drivers_2mux_2mux_8h" startline="55">SPI_MAP_CTRL</references>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaa1c11b77b7888c47cf5b107eb7ee15a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -653,8 +685,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="79" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="79" bodyend="82"/>
-        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6532dcdafba6b20ce40aa06495a79fc6" compoundref="emsk_2drivers_2mux_2mux__hal_8h" startline="64">UART_MAP_CTRL</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" line="75" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.c" bodystart="75" bodyend="78"/>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6532dcdafba6b20ce40aa06495a79fc6" compoundref="emsk_2drivers_2mux_2mux_8h" startline="65">UART_MAP_CTRL</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -690,80 +722,83 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight></codeline>
 <codeline lineno="40"><highlight class="preprocessor">#ifndef<sp/>_MUX_H_</highlight></codeline>
 <codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_MUX_H_</highlight></codeline>
 <codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BIT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BIT1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BIT2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2)</highlight></codeline>
-<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BIT3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM1_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM2_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM3_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(8)</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM4_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(12)</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM5_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(16)</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM6_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(20)</highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM7_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(24)</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PM1_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM1_OFFSET)</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM2_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM2_OFFSET)</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM3_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM3_OFFSET)</highlight></codeline>
-<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM4_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM4_OFFSET)</highlight></codeline>
-<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM5_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM5_OFFSET)</highlight></codeline>
-<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM6_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM6_OFFSET)</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM7_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM7_OFFSET)</highlight></codeline>
-<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SPI_MAP_NORMAL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
-<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SPI_MAP_LOOPBACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
-<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MAP_TYPE4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xE4)</highlight></codeline>
-<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_MAP_TYPE3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x6C)</highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="76" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4c9c0eb890da3157523cacb1092eddbc" refkind="member"><highlight class="preprocessor">#define<sp/>PMOD_MUX_CTRL_DEFAULT<sp/><sp/><sp/>(0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="77" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga5eb7f84cdeb8a0f092b11e5c238b88b0" refkind="member"><highlight class="preprocessor">#define<sp/>SPI_MAP_CTRL_DEFAULT<sp/><sp/><sp/><sp/>(SPI_MAP_NORMAL)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="78" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga98b1debfeed8daf9056378946e66b6b6" refkind="member"><highlight class="preprocessor">#define<sp/>UART_MAP_CTRL_DEFAULT<sp/><sp/><sp/>(UART_MAP_TYPE4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="85" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga7752fbbf2f08432a3c0869767ea8f9a1" refkind="member"><highlight class="preprocessor">#define<sp/>PM1_UR_GPIO_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="86" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4e9e9b308d70c9fe3e4a012376520b21" refkind="member"><highlight class="preprocessor">#define<sp/>PM1_UR_UART_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="88" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gad8e54756e21619a92f75a02f69e00577" refkind="member"><highlight class="preprocessor">#define<sp/>PM1_LR_GPIO_A<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="89" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaba0ff4df68cf401eea282652138f0a4a" refkind="member"><highlight class="preprocessor">#define<sp/>PM1_LR_SPI_S<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="97" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaa7fcfad85a6e80594c6e3eef39224732" refkind="member"><highlight class="preprocessor">#define<sp/>PM2_GPIO_AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM2_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="100"><highlight class="preprocessor">#define<sp/>PM2_I2C_HRI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM2_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="108"><highlight class="preprocessor">#define<sp/>PM3_GPIO_AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM3_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="111"><highlight class="preprocessor">#define<sp/>PM3_I2C_GPIO_D<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM3_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="121"><highlight class="preprocessor">#define<sp/>PM4_GPIO_AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM4_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="124"><highlight class="preprocessor">#define<sp/>PM4_I2C_GPIO_D<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM4_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="133"><highlight class="preprocessor">#define<sp/>PM5_UR_GPIO_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="134"><highlight class="preprocessor">#define<sp/>PM5_UR_SPI_M1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="136"><highlight class="preprocessor">#define<sp/>PM5_LR_GPIO_A<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="137"><highlight class="preprocessor">#define<sp/>PM5_LR_SPI_M2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="145"><highlight class="preprocessor">#define<sp/>PM6_UR_GPIO_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="146"><highlight class="preprocessor">#define<sp/>PM6_UR_SPI_M0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="148"><highlight class="preprocessor">#define<sp/>PM6_LR_GPIO_A<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="150"><highlight class="preprocessor">#define<sp/>PM6_LR_CSS_STAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="158"><highlight class="preprocessor">#define<sp/>PM7_GPIO_D<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM7_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="159"><highlight class="preprocessor">#define<sp/>PM7_STAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM7_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="161"><highlight class="preprocessor">typedef<sp/>volatile<sp/>uint32_t<sp/>MUX_REG;</highlight></codeline>
-<codeline lineno="162"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="164"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="166" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga844929859a1e2fc74b6ddbeda0d1f34d" refkind="member"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="167" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gae4344445edd3cce894cad6488d164698" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8356bee63484f5b67a7995fbde693d11" kindref="member">set_pmod_mux</ref>(uint32_t<sp/>val);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab7f64addda6f60359e9382320e696861" kindref="member">get_pmod_mux</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab1edc41eb546dfce3d1f6c23636540fc" kindref="member">set_spi_map</ref>(uint32_t<sp/>val);</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaa1c11b77b7888c47cf5b107eb7ee15a2" kindref="member">set_uart_map</ref>(uint32_t<sp/>val);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="173"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="175"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_MUX_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="177"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="49" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga4d35210978aabf96b9198d753bddcf77" refkind="member"><highlight class="preprocessor">#define<sp/>PMOD_MUX_CTRL<sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor">#define<sp/>I2C_MAP_CTRL<sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor">#define<sp/>SPI_MAP_CTRL<sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor">#define<sp/>UART_MAP_CTRL<sp/><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor">#define<sp/>BIT0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="65" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6532dcdafba6b20ce40aa06495a79fc6" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BIT1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BIT2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(2)</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>BIT3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(3)</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM1_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM2_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(4)</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM3_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(8)</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM4_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(12)</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM5_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(16)</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM6_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(20)</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM7_OFFSET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(24)</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PM1_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM1_OFFSET)</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM2_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM2_OFFSET)</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM3_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM3_OFFSET)</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM4_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM4_OFFSET)</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM5_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM5_OFFSET)</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM6_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM6_OFFSET)</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>PM7_MASK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xf<sp/>&lt;&lt;<sp/>PM7_OFFSET)</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SPI_MAP_NORMAL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0)</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>SPI_MAP_LOOPBACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1)</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>UART_MAP_TYPE4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0xE4)</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>UART_MAP_TYPE3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x6C)</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor">#define<sp/>PMOD_MUX_CTRL_DEFAULT<sp/><sp/><sp/>(0)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor">#define<sp/>SPI_MAP_CTRL_DEFAULT<sp/><sp/><sp/><sp/>(SPI_MAP_NORMAL)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor">#define<sp/>UART_MAP_CTRL_DEFAULT<sp/><sp/><sp/>(UART_MAP_TYPE4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor">#define<sp/>PM1_UR_GPIO_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor">#define<sp/>PM1_UR_UART_0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor">#define<sp/>PM1_LR_GPIO_A<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor">#define<sp/>PM1_LR_SPI_S<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM1_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor">#define<sp/>PM2_GPIO_AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM2_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor">#define<sp/>PM2_I2C_HRI<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM2_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga800fd20d486dd68269d1441cfa980723" refkind="member"><highlight class="preprocessor">#define<sp/>PM3_GPIO_AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM3_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor">#define<sp/>PM3_I2C_GPIO_D<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM3_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor">#define<sp/>PM4_GPIO_AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM4_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="preprocessor">#define<sp/>PM4_I2C_GPIO_D<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM4_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148"><highlight class="preprocessor">#define<sp/>PM5_UR_GPIO_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor">#define<sp/>PM5_UR_SPI_M1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor">#define<sp/>PM5_LR_GPIO_A<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor">#define<sp/>PM5_LR_SPI_M2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM5_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor">#define<sp/>PM6_UR_GPIO_C<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor">#define<sp/>PM6_UR_SPI_M0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6d0d0ed66635d7cb86adef808dd37b3e" refkind="member"><highlight class="preprocessor">#define<sp/>PM6_LR_GPIO_A<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="164" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga6d6a44b48160468bda1a1b5bd846413e" refkind="member"><highlight class="preprocessor">#define<sp/>PM6_LR_CSS_STAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT2)<sp/>&lt;&lt;<sp/>PM6_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gace1a4332a5364557879ec9cdf25a0ba3" refkind="member"><highlight class="preprocessor">#define<sp/>PM7_GPIO_D<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM7_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gac2a55fd4964c1e65a7ceec8eef8aacac" refkind="member"><highlight class="preprocessor">#define<sp/>PM7_STAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((1<sp/>&lt;&lt;<sp/>BIT0)<sp/>&lt;&lt;<sp/>PM7_OFFSET)<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="175" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga12efa7dd4ca8cd27ffc675e4e9acfbc3" refkind="member"><highlight class="preprocessor">typedef<sp/>volatile<sp/>uint32_t<sp/>MUX_REG;</highlight></codeline>
+<codeline lineno="176"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8ca92cbdeb138e0294d4b99b752b1172" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="178"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="180"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga8356bee63484f5b67a7995fbde693d11" kindref="member">set_pmod_mux</ref>(uint32_t<sp/>val);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab7f64addda6f60359e9382320e696861" kindref="member">get_pmod_mux</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gab1edc41eb546dfce3d1f6c23636540fc" kindref="member">set_spi_map</ref>(uint32_t<sp/>val);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gaa1c11b77b7888c47cf5b107eb7ee15a2" kindref="member">set_uart_map</ref>(uint32_t<sp/>val);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1ga844929859a1e2fc74b6ddbeda0d1f34d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="187" refid="group___b_o_a_r_d___e_m_s_k___d_r_v___m_u_x_1gae4344445edd3cce894cad6488d164698" refkind="member"><highlight class="preprocessor"></highlight><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="189"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_MUX_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="191"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/mux/mux.h"/>
   </compounddef>
 </doxygen>

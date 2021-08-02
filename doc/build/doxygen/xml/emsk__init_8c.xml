@@ -2,86 +2,21 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="emsk__init_8c" kind="file">
     <compoundname>emsk_init.c</compoundname>
-    <includes refid="arc__timer_8h" local="yes">arc_timer.h</includes>
+    <includes local="yes">arc/arc_timer.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
-    <includes refid="emsk__timer_8h" local="yes">emsk_timer.h</includes>
-    <includes refid="dev__pinmux_8h" local="yes">dev_pinmux.h</includes>
     <incdepgraph>
-      <node id="4873">
-        <label>stdbool.h</label>
+      <node id="2176">
+        <label>arc/arc_timer.h</label>
       </node>
-      <node id="4865">
-        <label>arc_timer.h</label>
-        <link refid="arc__timer_8h"/>
-        <childnode refid="4866" relation="include">
-        </childnode>
-        <childnode refid="4868" relation="include">
-        </childnode>
-        <childnode refid="4869" relation="include">
-        </childnode>
-      </node>
-      <node id="4868">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="4869" relation="include">
-        </childnode>
-      </node>
-      <node id="4866">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="4867" relation="include">
-        </childnode>
-      </node>
-      <node id="4875">
-        <label>emsk_timer.h</label>
-        <link refid="emsk__timer_8h"/>
-        <childnode refid="4869" relation="include">
-        </childnode>
-      </node>
-      <node id="4870">
-        <label>stdint.h</label>
-      </node>
-      <node id="4876">
-        <label>dev_pinmux.h</label>
-        <link refid="dev__pinmux_8h_source"/>
-        <childnode refid="4869" relation="include">
-        </childnode>
-      </node>
-      <node id="4864">
+      <node id="2175">
         <label>emsk_init.c</label>
         <link refid="emsk_init.c"/>
-        <childnode refid="4865" relation="include">
+        <childnode refid="2176" relation="include">
         </childnode>
-        <childnode refid="4874" relation="include">
-        </childnode>
-        <childnode refid="4875" relation="include">
-        </childnode>
-        <childnode refid="4876" relation="include">
+        <childnode refid="2177" relation="include">
         </childnode>
       </node>
-      <node id="4872">
-        <label>stddef.h</label>
-      </node>
-      <node id="4871">
-        <label>limits.h</label>
-      </node>
-      <node id="4869">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="4870" relation="include">
-        </childnode>
-        <childnode refid="4871" relation="include">
-        </childnode>
-        <childnode refid="4872" relation="include">
-        </childnode>
-        <childnode refid="4873" relation="include">
-        </childnode>
-      </node>
-      <node id="4867">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="4874">
+      <node id="2177">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
@@ -98,14 +33,13 @@
         <briefdescription>
 <para>Board init routine MUST be called in each application. </para>        </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
+<para>here is a sample of EMSK board resource definitions</para><para><simplesect kind="note"><para>It is better to disable interrupts when calling this function remember to enable interrupt when you want to use them </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_init.c" line="60" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_init.c" bodystart="60" bodyend="66"/>
-        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gaa1c3c3474fcd341b7f0c8c2dd8318e97" compoundref="emsk__gpio_8c" startline="65" endline="70">emsk_gpio_init</references>
-        <references refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r_1gaa39776349a5b6abdebd9ea209b6d4f8e" compoundref="emsk__timer_8c" startline="128" endline="137">emsk_timer_init</references>
-        <references refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" compoundref="arc__timer_8c" startline="191" endline="204">timer_init</references>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_init.c" line="57" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_init.c" bodystart="57" bodyend="62"/>
+        <references refid="arc__timer_8c_1ac4edf3c4dbed2f2a41f0880ed8f7a5b7" compoundref="arc__timer_8c" startline="191" endline="204">arc_timer_init</references>
+        <references refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gaa1c3c3474fcd341b7f0c8c2dd8318e97" compoundref="emsk__gpio_8c" startline="62" endline="67">emsk_gpio_init</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -141,22 +75,18 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__timer_8h" kindref="compound">arc_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor">#include<sp/>&quot;arc/arc_timer.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emsk__timer_8h" kindref="compound">emsk_timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dev_pinmux.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___a_r_c___h_a_l___m_i_s_c___t_i_m_e_r_1ga7b8ab79df77b57475a5494f5f81c3bd9" kindref="member">timer_init</ref>();</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_mux_init();</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gaa1c3c3474fcd341b7f0c8c2dd8318e97" kindref="member">emsk_gpio_init</ref>();</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___t_i_m_e_r_1gaa39776349a5b6abdebd9ea209b6d4f8e" kindref="member">emsk_timer_init</ref>();</highlight></codeline>
-<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="group___b_o_a_r_d___e_m_s_k___c_o_m_m_o_n___i_n_i_t_1ga916f2adc2080b4fe88034086d107a8dc" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group___b_o_a_r_d___c_o_m_m_o_n_1ga916f2adc2080b4fe88034086d107a8dc" kindref="member">board_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>io_mux_init();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group___b_o_a_r_d___e_m_s_k___d_r_v___g_p_i_o_1gaa1c3c3474fcd341b7f0c8c2dd8318e97" kindref="member">emsk_gpio_init</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="arc__timer_8c_1ac4edf3c4dbed2f2a41f0880ed8f7a5b7" kindref="member">arc_timer_init</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_init.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/common/emsk_init.c"/>
   </compounddef>
 </doxygen>

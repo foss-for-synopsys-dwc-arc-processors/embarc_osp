@@ -2,30 +2,22 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
   <compounddef id="arc__util_8s" kind="file">
     <compoundname>arc_util.s</compoundname>
-    <includes refid="arc_8h" local="yes">arc.h</includes>
-    <includes refid="arc__asm__common_8h" local="yes">arc_asm_common.h</includes>
+    <includes local="yes">arc/arc.h</includes>
+    <includes local="yes">arc/arc_asm_common.h</includes>
     <incdepgraph>
-      <node id="1104">
+      <node id="90">
         <label>arc_util.s</label>
         <link refid="arc_util.s"/>
-        <childnode refid="1105" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
-        <childnode refid="1107" relation="include">
-        </childnode>
-      </node>
-      <node id="1105">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="1106" relation="include">
+        <childnode refid="92" relation="include">
         </childnode>
       </node>
-      <node id="1107">
-        <label>arc_asm_common.h</label>
-        <link refid="arc__asm__common_8h"/>
+      <node id="92">
+        <label>arc/arc_asm_common.h</label>
       </node>
-      <node id="1106">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
+      <node id="91">
+        <label>arc/arc.h</label>
       </node>
     </incdepgraph>
       <sectiondef kind="define">
@@ -37,26 +29,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="31" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="31" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="31" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="arc__util_8s_1ae6be749e455068f024327cc97364d4e9" prot="public" static="no" mutable="no">
-        <type>file arc_utils s text global _arc_in_user_mode align</type>
-        <definition>file arc_utils s text global _arc_in_user_mode align _arc_in_user_mode</definition>
+      <memberdef kind="variable" id="arc__util_8s_1a516d876557f8cb5c990b1160cd4b74ae" prot="public" static="no" mutable="no">
+        <type>file arc_utils s text global arc_goto_usermode align</type>
+        <definition>file arc_utils s text global arc_goto_usermode align arc_goto_usermode</definition>
         <argsstring></argsstring>
-        <name>_arc_in_user_mode</name>
+        <name>arc_goto_usermode</name>
         <briefdescription>
-        </briefdescription>
+<para>Go to user mode. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target address to run in user mode, 0 means next line of code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Stack where the target address runs, 0 means using current stack </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="40" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="48" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="49" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="arc__util_8s_1acc3b344dbb08869cca07265946a025df" prot="public" static="no" mutable="no">
-        <type>file arc_utils s text global <ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga547f9841aa3efb0af6448e4106e19701" kindref="member">_arc_in_user_mode</ref> align bbit1</type>
-        <definition>file arc_utils s text global _arc_in_user_mode align bbit1 bset bclr kflag r1 lr bbit0 kflag r0</definition>
+      <memberdef kind="variable" id="arc__util_8s_1a80cf70a06075c910b03b928a66606d16" prot="public" static="no" mutable="no">
+        <type>file arc_utils s text global arc_goto_usermode align mov z</type>
+        <definition>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr lr bset AUX_STATUS_BIT_U sr lr bset AUX_STATUS_BIT_AE kflag r1 sr rtie text global arc_goto_kernelmode global exc_entry_arc_goto_kernelmode align mov z blink cmp mov z sp trap_s align r1 sr lr bclr AUX_STATUS_BIT_U sr r0</definition>
         <argsstring></argsstring>
         <name>r0</name>
         <briefdescription>
@@ -65,11 +72,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="42" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="50" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="49" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="arc__util_8s_1a4413f23699a3d13d6bcd7c42083d1b25" prot="public" static="no" mutable="no">
-        <type>file arc_utils s text global <ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga547f9841aa3efb0af6448e4106e19701" kindref="member">_arc_in_user_mode</ref> align bbit1 bset</type>
-        <definition>file arc_utils s text global _arc_in_user_mode align bbit1 bset bclr kflag r1 lr bbit0 r1</definition>
+      <memberdef kind="variable" id="arc__util_8s_1ab25c288ece854d462b5ed47fc1e9d225" prot="public" static="no" mutable="no">
+        <type>file arc_utils s text global arc_goto_usermode align mov z blink cmp</type>
+        <definition>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr lr bset AUX_STATUS_BIT_U sr lr bset AUX_STATUS_BIT_AE kflag r1 sr rtie text global arc_goto_kernelmode global exc_entry_arc_goto_kernelmode align mov z blink cmp mov z r1</definition>
         <argsstring></argsstring>
         <name>r1</name>
         <briefdescription>
@@ -78,7 +85,63 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="43" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="41" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="51" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="arc__util_8s_1a496b7f674efc14b97d32d08f2edca947" prot="public" static="no" mutable="no">
+        <type>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz</type>
+        <definition>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr sp</definition>
+        <argsstring></argsstring>
+        <name>sp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="52" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="arc__util_8s_1ad6c380c25f349822c0253380999d88c2" prot="public" static="no" mutable="no">
+        <type>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr lr bset AUX_STATUS_BIT_U sr lr bset AUX_STATUS_BIT_AE kflag r1 sr rtie text global arc_goto_kernelmode global exc_entry_arc_goto_kernelmode align</type>
+        <definition>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr lr bset AUX_STATUS_BIT_U sr lr bset AUX_STATUS_BIT_AE kflag r1 sr rtie text global arc_goto_kernelmode global exc_entry_arc_goto_kernelmode align arc_goto_kernelmode</definition>
+        <argsstring></argsstring>
+        <name>arc_goto_kernelmode</name>
+        <briefdescription>
+<para>go to kernel mode this function uses trap exception to do switch from user mode to kernel mode, please install exc_entry_arc_goto_kernelmode for trap exception before call this function </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target address to run in kernel mode, 0 means next line of code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sp</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>stack where the target address runs, 0 means using current stack </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="80" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="arc__util_8s_1ad34b12849a9b39e0fde7d18998e26df3" prot="public" static="no" mutable="no">
+        <type>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr lr bset AUX_STATUS_BIT_U sr lr bset AUX_STATUS_BIT_AE kflag r1 sr rtie text global arc_goto_kernelmode global exc_entry_arc_goto_kernelmode align mov z blink cmp mov z sp trap_s align</type>
+        <definition>file arc_utils s text global arc_goto_usermode align mov z blink cmp mov nz r1 sr lr bset AUX_STATUS_BIT_U sr lr bset AUX_STATUS_BIT_AE kflag r1 sr rtie text global arc_goto_kernelmode global exc_entry_arc_goto_kernelmode align mov z blink cmp mov z sp trap_s align exc_entry_arc_goto_kernelmode</definition>
+        <argsstring></argsstring>
+        <name>exc_entry_arc_goto_kernelmode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" line="87" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -117,30 +180,53 @@
 <codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__ASSEMBLY__</highlight></codeline>
-<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__asm__common_8h" kindref="compound">arc_asm_common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_asm_common.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.file<sp/></highlight><highlight class="stringliteral">&quot;arc_utils.s&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.text</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga547f9841aa3efb0af6448e4106e19701" kindref="member">_arc_in_user_mode</ref></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><ref refid="group___a_r_c___h_a_l___c_o_r_e___c_o_m_m_1ga547f9841aa3efb0af6448e4106e19701" kindref="member">_arc_in_user_mode</ref>:</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/>r0,<sp/>[AUX_STATUS32]</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbit1<sp/>r0,<sp/>20,<sp/>1f</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bset<sp/>r1,<sp/>r0,<sp/>20</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bclr<sp/>r1,<sp/>r1,<sp/>31</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/>r1</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lr<sp/>r1,<sp/>[AUX_STATUS32]</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bbit0<sp/>r1,<sp/>20,<sp/>2f</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kflag<sp/>r0</highlight></codeline>
-<codeline lineno="49"><highlight class="normal">1:</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j_s.d<sp/>[blink]</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/>r0,<sp/>0</highlight></codeline>
-<codeline lineno="52"><highlight class="normal">2:</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j_s.d<sp/>[blink]</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mov<sp/>r0,<sp/>1</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>.text</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>.global<sp/>arc_goto_usermode</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">arc_goto_usermode:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>cmp<sp/>r0,<sp/>0</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>mov.z<sp/><sp/><sp/>r0,<sp/>blink</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>cmp<sp/>r1,<sp/>0</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>mov.nz<sp/><sp/>sp,<sp/>r1</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(ARC_FEATURE_SEC_PRESENT)</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>(1<sp/>&lt;&lt;<sp/>AUX_ERSEC_STAT_BIT_ERM),<sp/>[AUX_ERSEC_STAT]</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>sp,<sp/>[AUX_SEC_U_SP]</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>sp,<sp/>[AUX_USER_SP]</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>lr<sp/><sp/>r1,<sp/>[AUX_STATUS32]</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>bset<sp/><sp/><sp/><sp/>r1,<sp/>r1,<sp/>AUX_STATUS_BIT_U</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>r1,<sp/>[AUX_ERSTATUS]</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>lr<sp/><sp/>r1,<sp/>[AUX_STATUS32]</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>bset<sp/><sp/><sp/><sp/>r1,<sp/>r1,<sp/>AUX_STATUS_BIT_AE</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>kflag<sp/><sp/><sp/>r1</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>r0,<sp/>[AUX_ERRET]</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>rtie</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>.text</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>.global<sp/>arc_goto_kernelmode</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>.global<sp/>exc_entry_arc_goto_kernelmode</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">arc_goto_kernelmode:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>cmp<sp/>r0,<sp/>0</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>mov.z<sp/><sp/><sp/>r0,<sp/>blink</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>cmp<sp/>r1,<sp/>0</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>mov.z<sp/><sp/><sp/>r1,<sp/>sp</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>trap_s<sp/><sp/>0</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>.align<sp/>4</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">exc_entry_arc_goto_kernelmode:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>mov<sp/>sp,<sp/>r1</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>r0,<sp/>[AUX_ERRET]</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>lr<sp/><sp/>r0,<sp/>[AUX_ERSTATUS]</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>bclr<sp/><sp/><sp/><sp/>r0,<sp/>r0,<sp/>AUX_STATUS_BIT_U</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>sr<sp/><sp/>r0,<sp/>[AUX_ERSTATUS]</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>rtie</highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/arc/arc_util.s"/>
   </compounddef>
 </doxygen>

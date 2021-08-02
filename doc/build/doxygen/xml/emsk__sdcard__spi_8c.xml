@@ -4,138 +4,89 @@
     <compoundname>emsk_sdcard_spi.c</compoundname>
     <includes local="no">stddef.h</includes>
     <includes local="no">string.h</includes>
-    <includes refid="arc_8h" local="yes">arc.h</includes>
-    <includes refid="arc__builtin_8h" local="yes">arc_builtin.h</includes>
-    <includes refid="emb_a_r_c__toolchain_8h" local="yes">embARC_toolchain.h</includes>
-    <includes refid="emb_a_r_c__error_8h" local="yes">embARC_error.h</includes>
-    <includes refid="arc__exception_8h" local="yes">arc_exception.h</includes>
-    <includes refid="dev__spi_8h" local="yes">dev_spi.h</includes>
+    <includes local="yes">arc/arc.h</includes>
+    <includes local="yes">arc/arc_builtin.h</includes>
+    <includes local="yes">embARC_toolchain.h</includes>
+    <includes local="yes">embARC_error.h</includes>
+    <includes local="yes">arc/arc_exception.h</includes>
+    <includes local="yes">device/ip_hal/dev_spi.h</includes>
     <includes refid="board_8h" local="yes">board.h</includes>
     <includes refid="os__hal__inc_8h" local="yes">os_hal_inc.h</includes>
     <includes local="yes">ff_diskio.h</includes>
     <includes local="yes">ff_sdcard.h</includes>
     <includes refid="emsk__sdcard__spi_8h" local="yes">emsk_sdcard_spi.h</includes>
     <incdepgraph>
-      <node id="4915">
-        <label>stdbool.h</label>
+      <node id="2205">
+        <label>arc/arc_exception.h</label>
       </node>
-      <node id="4921">
+      <node id="2202">
+        <label>arc/arc_builtin.h</label>
+      </node>
+      <node id="2199">
+        <label>stddef.h</label>
+      </node>
+      <node id="2204">
+        <label>embARC_error.h</label>
+      </node>
+      <node id="2198">
+        <label>emsk_sdcard_spi.c</label>
+        <link refid="emsk_sdcard_spi.c"/>
+        <childnode refid="2199" relation="include">
+        </childnode>
+        <childnode refid="2200" relation="include">
+        </childnode>
+        <childnode refid="2201" relation="include">
+        </childnode>
+        <childnode refid="2202" relation="include">
+        </childnode>
+        <childnode refid="2203" relation="include">
+        </childnode>
+        <childnode refid="2204" relation="include">
+        </childnode>
+        <childnode refid="2205" relation="include">
+        </childnode>
+        <childnode refid="2206" relation="include">
+        </childnode>
+        <childnode refid="2207" relation="include">
+        </childnode>
+        <childnode refid="2208" relation="include">
+        </childnode>
+        <childnode refid="2209" relation="include">
+        </childnode>
+        <childnode refid="2210" relation="include">
+        </childnode>
+        <childnode refid="2211" relation="include">
+        </childnode>
+      </node>
+      <node id="2211">
+        <label>emsk_sdcard_spi.h</label>
+        <link refid="emsk__sdcard__spi_8h"/>
+        <childnode refid="2209" relation="include">
+        </childnode>
+      </node>
+      <node id="2200">
+        <label>string.h</label>
+      </node>
+      <node id="2210">
+        <label>ff_sdcard.h</label>
+      </node>
+      <node id="2206">
+        <label>device/ip_hal/dev_spi.h</label>
+      </node>
+      <node id="2203">
+        <label>embARC_toolchain.h</label>
+      </node>
+      <node id="2209">
+        <label>ff_diskio.h</label>
+      </node>
+      <node id="2208">
         <label>os_hal_inc.h</label>
         <link refid="os__hal__inc_8h"/>
       </node>
-      <node id="4911">
-        <label>arc_builtin.h</label>
-        <link refid="arc__builtin_8h"/>
-        <childnode refid="4912" relation="include">
-        </childnode>
+      <node id="2201">
+        <label>arc/arc.h</label>
       </node>
-      <node id="4909">
-        <label>arc.h</label>
-        <link refid="arc_8h"/>
-        <childnode refid="4910" relation="include">
-        </childnode>
-      </node>
-      <node id="4916">
-        <label>embARC_error.h</label>
-        <link refid="emb_a_r_c__error_8h"/>
-        <childnode refid="4913" relation="include">
-        </childnode>
-        <childnode refid="4911" relation="include">
-        </childnode>
-      </node>
-      <node id="4906">
-        <label>emsk_sdcard_spi.c</label>
-        <link refid="emsk_sdcard_spi.c"/>
-        <childnode refid="4907" relation="include">
-        </childnode>
-        <childnode refid="4908" relation="include">
-        </childnode>
-        <childnode refid="4909" relation="include">
-        </childnode>
-        <childnode refid="4911" relation="include">
-        </childnode>
-        <childnode refid="4912" relation="include">
-        </childnode>
-        <childnode refid="4916" relation="include">
-        </childnode>
-        <childnode refid="4917" relation="include">
-        </childnode>
-        <childnode refid="4918" relation="include">
-        </childnode>
-        <childnode refid="4920" relation="include">
-        </childnode>
-        <childnode refid="4921" relation="include">
-        </childnode>
-        <childnode refid="4922" relation="include">
-        </childnode>
-        <childnode refid="4923" relation="include">
-        </childnode>
-        <childnode refid="4924" relation="include">
-        </childnode>
-      </node>
-      <node id="4913">
-        <label>stdint.h</label>
-      </node>
-      <node id="4924">
-        <label>emsk_sdcard_spi.h</label>
-        <link refid="emsk__sdcard__spi_8h"/>
-        <childnode refid="4922" relation="include">
-        </childnode>
-      </node>
-      <node id="4907">
-        <label>stddef.h</label>
-      </node>
-      <node id="4914">
-        <label>limits.h</label>
-      </node>
-      <node id="4917">
-        <label>arc_exception.h</label>
-        <link refid="arc__exception_8h"/>
-        <childnode refid="4912" relation="include">
-        </childnode>
-        <childnode refid="4909" relation="include">
-        </childnode>
-        <childnode refid="4911" relation="include">
-        </childnode>
-      </node>
-      <node id="4908">
-        <label>string.h</label>
-      </node>
-      <node id="4923">
-        <label>ff_sdcard.h</label>
-      </node>
-      <node id="4918">
-        <label>dev_spi.h</label>
-        <link refid="dev__spi_8h"/>
-        <childnode refid="4919" relation="include">
-        </childnode>
-      </node>
-      <node id="4922">
-        <label>ff_diskio.h</label>
-      </node>
-      <node id="4912">
-        <label>embARC_toolchain.h</label>
-        <link refid="emb_a_r_c__toolchain_8h"/>
-        <childnode refid="4913" relation="include">
-        </childnode>
-        <childnode refid="4914" relation="include">
-        </childnode>
-        <childnode refid="4907" relation="include">
-        </childnode>
-        <childnode refid="4915" relation="include">
-        </childnode>
-      </node>
-      <node id="4919">
-        <label>dev_common.h</label>
-        <link refid="dev__common_8h"/>
-        <childnode refid="4913" relation="include">
-        </childnode>
-      </node>
-      <node id="4910">
-        <label>arc_feature_config.h</label>
-        <link refid="arc__feature__config_8h"/>
-      </node>
-      <node id="4920">
+      <node id="2207">
         <label>board.h</label>
         <link refid="board_8h"/>
       </node>
@@ -150,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="74" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="74" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gae731bd3eee8f7317075a201578cd2298" prot="public" static="no">
         <name>EMSK_SDCARD_SPI_0_LINE</name>
@@ -161,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="75" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="75" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga7a378b99881cd3645c5698b3887f3686" prot="public" static="no">
         <name>EMSK_SDCARD_SPI_0_FREQ</name>
@@ -172,18 +123,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="78" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="78" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga4f987d693a48d388b7794e049702c1e3" prot="public" static="no">
         <name>EMSK_SDCARD_SPI_0_CLKMODE</name>
-        <initializer><ref refid="group___d_e_v_i_c_e___h_a_l___s_p_i___c_l_k___m_o_d_e_1ggab7e00794f1fac3fdb4d4bf9fd0244c7ba61bb9ad4a905372e5df6fe772828858a" kindref="member">SPI_CLK_MODE_0</ref></initializer>
+        <initializer>SPI_CLK_MODE_0</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="79" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="79" column="9" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="79" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -205,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="121" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="121" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="121" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga6dc3a92c5832ccaf220e95c1e7b7c7dc" prot="public" static="no" mutable="no">
         <type>FATFS_DISKIO</type>
@@ -227,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="129" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="129" bodyend="-1"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="129" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="129" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -245,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="81" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="81" bodyend="84"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="81" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="81" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaf90d5d49e0bdb463451a52dacf2eef37" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -261,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="86" bodyend="89"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="86" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="86" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga8eef1686df4be6dd1bc8dd80723c97f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -277,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="91" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="91" bodyend="94"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="91" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="91" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1gaeb5b16ba3a527fbeeaee1abf50fd644c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -293,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="96" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="96" bodyend="99"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="96" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="96" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga130977899860bcdcc251b06c5cea0de8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -318,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="101" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="101" bodyend="104"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="101" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="101" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga1f74d818dfa8f9d759282ac162fbca80" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -343,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="106" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="106" bodyend="109"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="106" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="106" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga611b5cd343778505a5de15618d8c70d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -364,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="111" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="111" bodyend="114"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="111" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="group___b_o_a_r_d___e_m_s_k___d_r_v___m_i_d___f_s___s_d_c_a_r_d___s_p_i_1ga367b6e28e65be7dc88382143e34c9175" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -380,7 +331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="116" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="116" bodyend="119"/>
+        <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" line="116" column="1" bodyfile="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c" bodystart="116" bodyend="119"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -416,19 +367,19 @@
 <codeline lineno="26"><highlight class="comment"><sp/>*<sp/>(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
 <codeline lineno="27"><highlight class="comment"><sp/>*<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
 <codeline lineno="28"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="29"><highlight class="comment">---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/><sp/><sp/>---------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="preprocessor">#ifdef<sp/>MID_FATFS<sp/></highlight><highlight class="comment">/*<sp/>only<sp/>available<sp/>when<sp/>enable<sp/>fatfs<sp/>middleware<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc_8h" kindref="compound">arc.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__builtin_8h" kindref="compound">arc_builtin.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__toolchain_8h" kindref="compound">embARC_toolchain.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="emb_a_r_c__error_8h" kindref="compound">embARC_error.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arc__exception_8h" kindref="compound">arc_exception.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_builtin.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_toolchain.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;embARC_error.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;arc/arc_exception.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dev__spi_8h" kindref="compound">dev_spi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;device/ip_hal/dev_spi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="board_8h" kindref="compound">board.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_OS</highlight></codeline>
@@ -506,11 +457,11 @@
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sdcard_spi_0_diskio_timerproc</highlight></codeline>
 <codeline lineno="137"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>USE_EMSK_SDCARD_SPI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>USE_EMSK_SDCARD_SPI_0<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="140"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>MID_FATFS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>MID_FATFS<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
 <codeline lineno="142"><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
-    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c"/>
+    <location file="/slowfs/ru20arcjenkins/de02-arcjenkins2/slaves/ru20-gp-hw-linux105/workspace/arcoss_verification/sandbox_jingru/testing_jobs/embarc_osp_verification/embarc_osp_website/embarc_osp/board/emsk/drivers/sdcard/emsk_sdcard_spi.c"/>
   </compounddef>
 </doxygen>
