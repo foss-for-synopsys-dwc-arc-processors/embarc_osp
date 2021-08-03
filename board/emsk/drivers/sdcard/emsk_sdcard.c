@@ -29,22 +29,22 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSK_DRV_MID_FS_SDCARD	EMSK Fatfs Middleware SDCard Driver
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Fatfs Middleware SDCard Interface Driver
- * \details
+ * @defgroup	BOARD_EMSK_DRV_MID_FS_SDCARD	EMSK Fatfs Middleware SDCard Driver
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Fatfs Middleware SDCard Interface Driver
+ * @details
  *		Realize the sdcard driver for fatfs based on the middleware fatfs diskio abstract
  *	layer, sdcard interface can be spi or sdio and so on.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_MID_FS_SDCARD
- * \brief	sdcard driver for fatfs of emsk board
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_MID_FS_SDCARD
+ * @brief	sdcard driver for fatfs of emsk board
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_MID_FS_SDCARD
+ * @addtogroup	BOARD_EMSK_DRV_MID_FS_SDCARD
  * @{
  */
 #ifdef MID_FATFS /* only available when enable fatfs middleware */

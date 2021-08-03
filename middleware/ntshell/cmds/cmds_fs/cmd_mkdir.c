@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief filesystem operation commands: mkdir
+* @file
+* @brief filesystem operation commands: mkdir
 */
 
 #include "cmds_fs_cfg.h"

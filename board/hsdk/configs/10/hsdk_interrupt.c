@@ -79,9 +79,9 @@ static void arc_connect_int_isr(void *ptr)
 }
 
 /**
- * \brief disable the specific interrupt
+ * @brief disable the specific interrupt
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 int32_t int_disable(const uint32_t intno)
 {
@@ -97,9 +97,9 @@ int32_t int_disable(const uint32_t intno)
 }
 
 /**
- * \brief  enable the specific int
+ * @brief  enable the specific int
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 int32_t int_enable(const uint32_t intno)
 {
@@ -114,12 +114,6 @@ int32_t int_enable(const uint32_t intno)
 	return -1;
 }
 
-/**
- * \brief  check whether the specific int is enabled
- *
- * \param[in] intno interrupt number
- * \return 0 disabled, 1 enabled, < 0 error
- */
 int32_t int_enabled(const uint32_t intno)
 {
 	int32_t enabled = 0;
@@ -137,9 +131,9 @@ int32_t int_enabled(const uint32_t intno)
 }
 
 /**
- * \brief  get the interrupt priority mask
+ * @brief  get the interrupt priority mask
  *
- * \returns interrupt priority mask, negative num
+ * @returns interrupt priority mask, negative num
  */
 int32_t int_ipm_get(void)
 {
@@ -147,9 +141,9 @@ int32_t int_ipm_get(void)
 }
 
 /**
- * \brief  set the interrupt priority mask
+ * @brief  set the interrupt priority mask
  *
- * \param[in] intpri interrupt priority
+ * @param[in] intpri interrupt priority
  */
 int32_t int_ipm_set(int32_t intpri)
 {
@@ -162,12 +156,6 @@ int32_t int_ipm_set(int32_t intpri)
 	return -1;
 }
 
-/**
- * \brief  get current interrupt priority mask
- *
- * \param[in] intno interrupt number
- * \return  <0 interrupt priority, 0 error
- */
 int32_t int_pri_get(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -178,10 +166,10 @@ int32_t int_pri_get(const uint32_t intno)
 }
 
 /**
- * \brief set interrupt priority
+ * @brief set interrupt priority
  *
- * \param[in] intno interrupt number
- * \param[in] intpri interrupt priority
+ * @param[in] intno interrupt number
+ * @param[in] intpri interrupt priority
  */
 int32_t int_pri_set(const uint32_t intno, int32_t intpri)
 {
@@ -197,13 +185,6 @@ int32_t int_pri_set(const uint32_t intno, int32_t intpri)
 	return -1;
 }
 
-/**
- * \brief  probe the pending status of interrupt
- *
- * \param[in] intno interrupt number
- *
- * \returns 1 pending, 0 no pending, -1 error
- */
 int32_t int_probe(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -212,12 +193,6 @@ int32_t int_probe(const uint32_t intno)
 	return -1;
 }
 
-/**
- * \brief  trigger the interrupt in software
- *
- * \param[in] intno interrupt number
- * \return 0 ok, -1 error
- */
 int32_t int_sw_trigger(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -231,13 +206,6 @@ int32_t int_sw_trigger(const uint32_t intno)
 	return -1;
 }
 
-/**
- * \brief  config the interrupt level triggered or pulse triggered
- *
- * \param[in] intno interrupt number
- * \param[in] level, 0-level trigger, 1-pluse triggered
- * \return 0 ok, -1 error
- */
 int32_t int_level_config(const uint32_t intno, const uint32_t level)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -261,7 +229,7 @@ int32_t int_level_config(const uint32_t intno, const uint32_t level)
 }
 
 /**
- * \brief  lock cpu, disable interrupts
+ * @brief  lock cpu, disable interrupts
  */
 void cpu_lock(void)
 {
@@ -269,7 +237,7 @@ void cpu_lock(void)
 }
 
 /**
- * \brief  unlock cpu, enable interrupts to happen
+ * @brief  unlock cpu, enable interrupts to happen
  */
 void cpu_unlock(void)
 {
@@ -277,9 +245,9 @@ void cpu_unlock(void)
 }
 
 /**
- * \brief  lock cpu and staus
+ * @brief  lock cpu and staus
  *
- * \returns cpu status
+ * @returns cpu status
  */
 uint32_t cpu_lock_save(void)
 {
@@ -287,9 +255,9 @@ uint32_t cpu_lock_save(void)
 }
 
 /**
- * \brief  unlock cpu with the specific status
+ * @brief  unlock cpu with the specific status
  *
- * \param[in] status  cpu status saved by cpu_lock_save
+ * @param[in] status  cpu status saved by cpu_lock_save
  */
 void cpu_unlock_restore(const uint32_t status)
 {
@@ -297,10 +265,10 @@ void cpu_unlock_restore(const uint32_t status)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  install an interrupt handler
- * \param[in] intno	interrupt number
- * \param[in] handler interrupt handler to install
+ * @ingroup ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief  install an interrupt handler
+ * @param[in] intno	interrupt number
+ * @param[in] handler interrupt handler to install
  */
 int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 {
@@ -318,12 +286,7 @@ int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 	return 0;
 }
 
-/**
- * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  get the installed an interrupt handler
- * \param[in] intno interrupt number
- * \return the installed interrupt handler or NULL
- */
+
 INT_HANDLER_T int_handler_get(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU) {

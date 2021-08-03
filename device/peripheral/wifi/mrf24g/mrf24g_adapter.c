@@ -55,13 +55,13 @@
  */
 
 /**
- * \defgroup	DEVICE_MICROCHIP_MRF24WG	MicroChip MRF24WG Device Driver
- * \ingroup	DEVICE_MICROCHIP
- * \brief	microchip mrf24wg device driver implementation based on dev_wnic.h
+ * @defgroup	DEVICE_MICROCHIP_MRF24WG	MicroChip MRF24WG Device Driver
+ * @ingroup	DEVICE_MICROCHIP
+ * @brief	microchip mrf24wg device driver implementation based on dev_wnic.h
  * @{
  *
- * \file	mrf24g_adapter.c
- * \brief	microchip mrf24wg device driver implementation based on dev_wnic.h
+ * @file	mrf24g_adapter.c
+ * @brief	microchip mrf24wg device driver implementation based on dev_wnic.h
  *
  */
 #include "string.h"

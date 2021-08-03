@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief read the PMOD temperature sensor data
+* @file
+* @brief read the PMOD temperature sensor data
 */
 #include "cmds_peripheral_cfg.h"
 #if NTSHELL_USE_CMDS_PERIPHERAL_TEMP

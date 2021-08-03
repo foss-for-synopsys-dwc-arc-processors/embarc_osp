@@ -1,6 +1,6 @@
 /**
- * \file
- * \brief Implementation of natural tiny shell command task
+ * @file
+ * @brief Implementation of natural tiny shell command task
  */
 
 /*
@@ -61,13 +61,13 @@ static int usrcmd_help(int argc, char **argv, void *extobj);
 static int usrcmd_info(int argc, char **argv, void *extobj);
 
 /**
- * \brief NT-Shell Command Excute
- * \details
+ * @brief NT-Shell Command Excute
+ * @details
  *
- * \param text input text
+ * @param text input text
  *
- * \retval 0 success
- * \retval !0 failed
+ * @retval 0 success
+ * @retval !0 failed
  */
 int ntshell_usrcmd_execute(const char *text, void *extobj)
 {
@@ -78,14 +78,14 @@ int ntshell_usrcmd_execute(const char *text, void *extobj)
 }
 
 /**
- * \brief run corresponding commands
- * \details
+ * @brief run corresponding commands
+ * @details
  *
- * \param argc arguments count
- * \param argv arguments
+ * @param argc arguments count
+ * @param argv arguments
  *
- * \retval 0 success
- * \retval !0 failed
+ * @retval 0 success
+ * @retval !0 failed
  */
 static int usrcmd_ntopt_callback(int argc, char **argv, void *extobj)
 {
@@ -122,14 +122,14 @@ static int usrcmd_ntopt_callback(int argc, char **argv, void *extobj)
 }
 
 /**
- * \brief help command
- * \details
+ * @brief help command
+ * @details
  *
- * \param argc argument count
- * \param argv arguments
+ * @param argc argument count
+ * @param argv arguments
  *
- * \retval 0 success
- * \retval !0 fail
+ * @retval 0 success
+ * @retval !0 fail
  */
 static int usrcmd_help(int argc, char **argv, void *extobj)
 {
@@ -159,14 +159,14 @@ static int usrcmd_help(int argc, char **argv, void *extobj)
 }
 
 /**
- * \brief info command
- * \details
+ * @brief info command
+ * @details
  *
- * \param argc argument count
- * \param argv arguments
+ * @param argc argument count
+ * @param argv arguments
  *
- * \retval 0 success
- * \retval !0 fail
+ * @retval 0 success
+ * @retval !0 fail
  */
 static int usrcmd_info(int argc, char **argv, void *extobj)
 {
@@ -201,10 +201,10 @@ static int usrcmd_info(int argc, char **argv, void *extobj)
 }
 
 /**
- * \brief   register a new ntshell command
- * \param   new        new command to be register
- * \param   prev       command insert before
- * \retval
+ * @brief   register a new ntshell command
+ * @param   new        new command to be register
+ * @param   prev       command insert before
+ * @retval
  *          NULL    failed to register command
  *          !NULL   the ntshell command inserted
  */
@@ -234,9 +234,9 @@ CMD_TABLE_T* ntshell_usrcmd_register(CMD_TABLE_T *new, CMD_TABLE_T *prev)
 }
 
 /**
- * \brief   find the tail of the command table
- * \param   cmd_t      the input command table
- * \retval
+ * @brief   find the tail of the command table
+ * @param   cmd_t      the input command table
+ * @retval
  *         NULL    not exist tail
  *         !NULL   tail of table
  */

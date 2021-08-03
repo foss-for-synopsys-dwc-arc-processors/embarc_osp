@@ -31,7 +31,7 @@
 #include "axs_103_interrupt.h"
 
 /**
- * \brief       axs hardware initialization
+ * @brief       axs hardware initialization
  */
 void axs_hardware_init(void)
 {

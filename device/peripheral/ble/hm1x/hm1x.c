@@ -139,11 +139,11 @@ void hm1x_flush(HM1X_DEF_PTR obj)
 }
 
 /**
- * \brief	Init HM1X BLE device
- * \param  obj	HM1X type object
- * \param  baudrate	ble working baudrate
- * \retval E_OK		success
- * \retval !E_OK	fail
+ * @brief	Init HM1X BLE device
+ * @param  obj	HM1X type object
+ * @param  baudrate	ble working baudrate
+ * @retval E_OK		success
+ * @retval !E_OK	fail
  */
 int32_t hm1x_init(HM1X_DEF_PTR obj, uint32_t baudrate)
 {
@@ -163,10 +163,10 @@ error_exit:
 }
 
 /**
- * \brief	Deinit HM1X BLE device
- * \param  obj		HM1X type object
- * \retval E_OK		success
- * \retval !E_OK	fail
+ * @brief	Deinit HM1X BLE device
+ * @param  obj		HM1X type object
+ * @retval E_OK		success
+ * @retval !E_OK	fail
  */
 int32_t hm1x_deinit(HM1X_DEF_PTR obj)
 {
@@ -178,11 +178,11 @@ int32_t hm1x_deinit(HM1X_DEF_PTR obj)
 }
 
 /**
- * \brief	Write data to HM1X
- * \param  buf	Buffer to be written
- * \param  cnt	Number to be written
- * \retval <0 	Failed to write
- * \retval >=0	Written count
+ * @brief	Write data to HM1X
+ * @param  buf	Buffer to be written
+ * @param  cnt	Number to be written
+ * @retval <0 	Failed to write
+ * @retval >=0	Written count
  */
 uint32_t hm1x_write(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 {
@@ -195,11 +195,11 @@ uint32_t hm1x_write(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 }
 
 /**
- * \brief	Read data from HM1X
- * \param  buf	Buffer to be read to
- * \param  cnt	Number to be read
- * \retval <0	Failed to read
- * \retval >=0	Read count
+ * @brief	Read data from HM1X
+ * @param  buf	Buffer to be read to
+ * @param  cnt	Number to be read
+ * @retval <0	Failed to read
+ * @retval >=0	Read count
  */
 uint32_t hm1x_read(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 {
@@ -218,12 +218,12 @@ uint32_t hm1x_read(HM1X_DEF_PTR obj, uint8_t *buf, uint32_t cnt)
 }
 
 /**
- * \brief	Execute command and wait for response with timeout
- * \param  cmd		Command to send to the BLE device using the UART
- * \param  resp		Response buffer, must not be NULL
- * \param  wait_ms	Maximum MS to wait for response
- * \retval <0	Fail
- * \retval >=0	Response string count
+ * @brief	Execute command and wait for response with timeout
+ * @param  cmd		Command to send to the BLE device using the UART
+ * @param  resp		Response buffer, must not be NULL
+ * @param  wait_ms	Maximum MS to wait for response
+ * @retval <0	Fail
+ * @retval >=0	Response string count
  */
 int32_t hm1x_exec_command(HM1X_DEF_PTR obj, char *cmd, char *resp, uint32_t wait_ms)
 {
@@ -248,13 +248,13 @@ int32_t hm1x_exec_command(HM1X_DEF_PTR obj, char *cmd, char *resp, uint32_t wait
 }
 
 /**
- * \brief	Execute command and check whether the response prefix matches
- * \param  cmd		Command to send to the BLE device using the UART
- * \param  resp_prefix	Response prefix string, like OK. Must not be NULL
- * \param  resp_data	Response data buffer, may be NULL
- * \param  max_try	How many times this function can try to run
- * \retval	<0	Fail
- * \retval	>=0	Response data length
+ * @brief	Execute command and check whether the response prefix matches
+ * @param  cmd		Command to send to the BLE device using the UART
+ * @param  resp_prefix	Response prefix string, like OK. Must not be NULL
+ * @param  resp_data	Response data buffer, may be NULL
+ * @param  max_try	How many times this function can try to run
+ * @retval	<0	Fail
+ * @retval	>=0	Response data length
  */
 int32_t hm1x_exec_cmd_chkresp(HM1X_DEF_PTR obj, char *cmd, char *resp_prefix, char *resp_data, uint32_t max_try)
 {

@@ -37,7 +37,7 @@
 
 #define DW_UART_CLOCK           HSDC_CLK_SYS_PLL_UARTREF
 /**
- * \name	HSDK DesignWare UART 0 Object Instantiation
+ * @name	HSDK DesignWare UART 0 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_0)
@@ -115,7 +115,7 @@ static void dw_uart_0_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare UART 1 Object Instantiation
+ * @name	HSDK DesignWare UART 1 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_1)
@@ -192,7 +192,7 @@ static void dw_uart_1_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare UART 2 Object Instantiation
+ * @name	HSDK DesignWare UART 2 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_2)
@@ -269,7 +269,7 @@ static void dw_uart_2_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare UART 2 Object Instantiation
+ * @name	HSDK DesignWare UART 2 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_3)
@@ -346,8 +346,8 @@ static void dw_uart_3_install(void)
 /** @} end of name */
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 void dw_uart_all_install(void)
 {

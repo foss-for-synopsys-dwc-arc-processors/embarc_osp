@@ -13,7 +13,7 @@
 #define _ICACHE_INVALIDATE_MLINES(addr, size)   icache_invalidate_mlines((uint32_t)(addr), (uint32_t)(size))
 
 /**
- * \name	SPI Flash Commands
+ * @name	SPI Flash Commands
  * @{
  */
 #define RDID    0x9F    /*!<read chip ID */
@@ -32,7 +32,7 @@
 
 typedef struct spi_xfer SPI_XFER, *SPI_XFER_PTR;
 /**
- * \brief	spi read and write data structure used by \ref SPI_CMD_TRANSFER
+ * @brief	spi read and write data structure used by @ref SPI_CMD_TRANSFER_INT or @ref SPI_CMD_TRANSFER_POLLING
  * 	spi write then read data
  *
  */
@@ -245,9 +245,9 @@ int32_t spi_xfer(SPI_XFER *xfer)
 }
 
 /**
- * \brief	init spi flash related interface
- * \retval	0	success
- * \retval	-1	fail
+ * @brief	init spi flash related interface
+ * @retval	0	success
+ * @retval	-1	fail
  */
 void spiflash_init(uint32_t freq)
 {
@@ -256,8 +256,8 @@ void spiflash_init(uint32_t freq)
 }
 
 /**
- * \brief	read spi flash identification ID
- * \return	the id of the spi flash
+ * @brief	read spi flash identification ID
+ * @return	the id of the spi flash
  */
 uint32_t spiflash_read_id(void)
 {
@@ -282,8 +282,8 @@ uint32_t spiflash_read_id(void)
 }
 
 /**
- * \brief	read the status of spi flash
- * \return	current status of spi flash
+ * @brief	read the status of spi flash
+ * @return	current status of spi flash
  */
 uint32_t spiflash_read_status(void)
 {
@@ -305,13 +305,13 @@ uint32_t spiflash_read_status(void)
 }
 
 /**
- * \brief	read data from flash
- * \param[in]	address		read start address of spi flash
- * \param[in]	size		read size of spi flash
- * \param[out]	data		data to store the return data
+ * @brief	read data from flash
+ * @param[in]	address		read start address of spi flash
+ * @param[in]	size		read size of spi flash
+ * @param[out]	data		data to store the return data
  *
- * \retval	-1		failed in read operation
- * \retval	>=0		data size of data read
+ * @retval	-1		failed in read operation
+ * @retval	>=0		data size of data read
  */
 int32_t spiflash_read(uint32_t address, uint32_t size, void *data)
 {
@@ -359,9 +359,9 @@ int32_t spiflash_read(uint32_t address, uint32_t size, void *data)
 }
 
 /**
- * \brief 	Read status and wait while busy flag is set
- * \retval	0	success
- * \retval	-1	fail
+ * @brief 	Read status and wait while busy flag is set
+ * @retval	0	success
+ * @retval	-1	fail
  */
 int32_t spiflash_wait_ready(void)
 {
@@ -377,9 +377,9 @@ int32_t spiflash_wait_ready(void)
 }
 
 /**
- * \brief 	enable to write flash
- * \retval	0	success
- * \retval	-1	fail
+ * @brief 	enable to write flash
+ * @retval	0	success
+ * @retval	-1	fail
  */
 int32_t spiflash_write_enable(void)
 {
@@ -426,13 +426,13 @@ int32_t spiflash_write_enable(void)
 }
 
 /**
- * \brief 	flash erase in sectors
+ * @brief 	flash erase in sectors
  *
- * \param[in]	address		erase start address of spi flash
- * \param[in]	size		erase size
+ * @param[in]	address		erase start address of spi flash
+ * @param[in]	size		erase size
  *
- * \retval	-1 		failed in erase operation
- * \retval	>=0		sector count erased
+ * @retval	-1 		failed in erase operation
+ * @retval	>=0		sector count erased
  */
 int32_t spiflash_erase(uint32_t address, uint32_t size)
 {
@@ -481,14 +481,14 @@ int32_t spiflash_erase(uint32_t address, uint32_t size)
 }
 
 /**
- * \brief	write data to spi flash
+ * @brief	write data to spi flash
  *
- * \param[in]	address	start address
- * \param[in]	size	data size
- * \param[in]	data	pointer to data
+ * @param[in]	address	start address
+ * @param[in]	size	data size
+ * @param[in]	data	pointer to data
  *
- * \retval	>=0		written bytes number
- * \retval 	<0 		error
+ * @retval	>=0		written bytes number
+ * @retval 	<0 		error
  */
 int32_t spiflash_write(uint32_t address, uint32_t size, const void *data)
 {

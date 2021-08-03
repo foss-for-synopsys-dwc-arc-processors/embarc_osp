@@ -106,8 +106,8 @@ SECURESHIELD_INT_HANDLER secureshield_int_handler_table[NUM_EXC_INT];
 
 #if SECURESHIELD_VERSION == 2
 /**
- * \brief handler for new ecr in secureshield
- * \param[in] parameter exception parameter
+ * @brief handler for new ecr in secureshield
+ * @param[in] parameter exception parameter
  */
 static void secure_violation_handler(uint32_t parameter)
 {
@@ -140,8 +140,8 @@ static void secure_violation_handler(uint32_t parameter)
 
 
 /**
- * \brief privilege violation exception handler
- * \param[in] frame exception frame
+ * @brief privilege violation exception handler
+ * @param[in] frame exception frame
  */
 static void secureshield_exc_handler_privilege_v(void *frame)
 {
@@ -177,14 +177,14 @@ static void secureshield_exc_handler_privilege_v(void *frame)
 			SECURESHIELD_HALT("unknown cause:0x%x", cause_code);
 			break;
 	}
-	/* \todo, how to recover from privilege violation exception */
+	/* @todo, how to recover from privilege violation exception */
 }
 
 
 
 /**
- * \brief protection violation handler
- * \param[in] frame exception frame
+ * @brief protection violation handler
+ * @param[in] frame exception frame
  */
 static void secureshield_exc_handler_protect_v(void *frame)
 {
@@ -272,8 +272,8 @@ static void secureshield_exc_handler_protect_v(void *frame)
 
 
 /**
- * \brief default exception handler, not recoverable
- * \param[in] frame exception frame
+ * @brief default exception handler, not recoverable
+ * @param[in] frame exception frame
  */
 static void secureshield_exc_handler_default(void *frame)
 {
@@ -295,9 +295,9 @@ static void secureshield_exc_handler_default(void *frame)
 
 
 /**
- * \brief check default interrupt attribute
- * \param[in]  intno interrupt no.
- * \return 0 ok, -1 failed
+ * @brief check default interrupt attribute
+ * @param[in]  intno interrupt no.
+ * @return 0 ok, -1 failed
  */
 static int32_t secure_int_default_check(uint32_t intno)
 {
@@ -320,9 +320,9 @@ static int32_t secure_int_default_check(uint32_t intno)
 
 
 /**
- * \brief check the access control to the specified interrupt
- * \param[in]  intno interrupt no.
- * \return 0 ok, -1 failed
+ * @brief check the access control to the specified interrupt
+ * @param[in]  intno interrupt no.
+ * @return 0 ok, -1 failed
  */
 static int32_t secure_int_ac_check(uint32_t intno)
 {
@@ -362,10 +362,10 @@ static int32_t secure_int_ac_check(uint32_t intno)
 
 
 /**
- * \brief install an interrupt handler
- * \param[in]  intno   interrupt no.
- * \param[in]  handler interrupt handler
- * \return     0 ok, -1 failed
+ * @brief install an interrupt handler
+ * @param[in]  intno   interrupt no.
+ * @param[in]  handler interrupt handler
+ * @return     0 ok, -1 failed
  */
 int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER_T handler)
 {
@@ -401,9 +401,9 @@ int32_t secure_int_handler_install(uint32_t intno, INT_HANDLER_T handler)
 
 
 /**
- * \brief get interrupt handler
- * \param[in]  intno interrupt no.
- * \return interrupt handler
+ * @brief get interrupt handler
+ * @param[in]  intno interrupt no.
+ * @return interrupt handler
  */
 INT_HANDLER_T secure_int_handler_get(uint32_t intno)
 {
@@ -416,9 +416,9 @@ INT_HANDLER_T secure_int_handler_get(uint32_t intno)
 
 
 /**
- * \brief disable interrupt
- * \param[in] intno interrupt no.
- * \return 0 0k, -1 failed
+ * @brief disable interrupt
+ * @param[in] intno interrupt no.
+ * @return 0 0k, -1 failed
  */
 int32_t secure_int_disable(uint32_t intno)
 {
@@ -432,9 +432,9 @@ int32_t secure_int_disable(uint32_t intno)
 }
 
 /**
- * \brief enable interrupt
- * \param[in] intno interrupt no.
- * \return 0 0k, -1 failed
+ * @brief enable interrupt
+ * @param[in] intno interrupt no.
+ * @return 0 0k, -1 failed
  */
 int32_t secure_int_enable(uint32_t intno)
 {
@@ -448,9 +448,9 @@ int32_t secure_int_enable(uint32_t intno)
 }
 
 /**
- * \brief is interrupt enabled?
- * \param[in] intno interrupt no.
- * \return 0 disabled, 1 enabled, -1 failed
+ * @brief is interrupt enabled?
+ * @param[in] intno interrupt no.
+ * @return 0 disabled, 1 enabled, -1 failed
  */
 int32_t secure_int_enabled(uint32_t intno)
 {
@@ -463,9 +463,10 @@ int32_t secure_int_enabled(uint32_t intno)
 }
 
 /**
- * \brief set interrupt priority
- * \param[in] intno interrupt no.
- * \return 0 0k, -1 failed
+ * @brief set interrupt priority
+ * @param[in] intno interrupt no.
+ * @param[in] intpri interrupt priority.
+ * @return 0 0k, -1 failed
  */
 int32_t secure_int_pri_set(uint32_t intno, int intpri)
 {
@@ -480,9 +481,9 @@ int32_t secure_int_pri_set(uint32_t intno, int intpri)
 }
 
 /**
- * \brief get interrupt priority
- * \param[in] intno interrupt no.
- * \return interrupt priority, 0 for failed
+ * @brief get interrupt priority
+ * @param[in] intno interrupt no.
+ * @return interrupt priority, 0 for failed
  */
 int32_t secure_int_pri_get(uint32_t intno)
 {
@@ -495,9 +496,9 @@ int32_t secure_int_pri_get(uint32_t intno)
 
 
 /**
- * \brief trigger the interrupt in software
- * \param[in] intno interrupt no.
- * \return  0 ok,  -1 failed
+ * @brief trigger the interrupt in software
+ * @param[in] intno interrupt no.
+ * @return  0 ok,  -1 failed
  */
 int32_t secure_int_sw_trigger(uint32_t intno)
 {
@@ -510,9 +511,9 @@ int32_t secure_int_sw_trigger(uint32_t intno)
 }
 
 /**
- * \brief probe the interrupt whether is pending
- * \param[in] intno interrupt no.
- * \return 1 pending, 0 no pending, -1 error
+ * @brief probe the interrupt whether is pending
+ * @param[in] intno interrupt no.
+ * @return 1 pending, 0 no pending, -1 error
  */
 int32_t secure_int_probe(const uint32_t intno)
 {
@@ -524,9 +525,9 @@ int32_t secure_int_probe(const uint32_t intno)
 }
 
 /**
- * \brief config the trigger level of interrupt
- * \param[in] intno interrupt no.
- * \param[in] level 0-level trigger, 1-pulse triggered
+ * @brief config the trigger level of interrupt
+ * @param[in] intno interrupt no.
+ * @param[in] level 0-level trigger, 1-pulse triggered
  */
 int32_t secure_int_level_config(const uint32_t intno, const uint32_t level)
 {
@@ -539,7 +540,7 @@ int32_t secure_int_level_config(const uint32_t intno, const uint32_t level)
 }
 
 /**
- * \brief lock cpu--just disable the interrupt belonging to current container
+ * @brief lock cpu--just disable the interrupt belonging to current container
  */
 void secure_cpu_lock(void)
 {
@@ -557,7 +558,7 @@ void secure_cpu_lock(void)
 }
 
 /**
- * \brief unlock cpu--just enable the interrupt belonging to current container
+ * @brief unlock cpu--just enable the interrupt belonging to current container
  */
 void secure_cpu_unlock(void)
 {
@@ -593,7 +594,7 @@ typedef union {
 } aux_irq_ctrl_t;
 
 /**
- *  \brief interrupt initialization in secure world
+ * @brief interrupt initialization in secure world
  */
 void secureshield_int_init(void)
 {
@@ -644,11 +645,11 @@ void secureshield_int_init(void)
 
 
 /**
- * \brief allocate an interrupt to the specified container
- * \param[in]  container_id container id
- * \param[in]  handler 	interrupt handler
- * \param[in]  intno        interrupt no.
- * \return 0 ok, -1 failed
+ * @brief allocate an interrupt to the specified container
+ * @param[in]  container_id container id
+ * @param[in]  handler 	interrupt handler
+ * @param[in]  intno        interrupt no.
+ * @return 0 ok, -1 failed
  */
 int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER_T handler, uint32_t intno)
 {
@@ -691,9 +692,9 @@ int32_t vmpu_ac_irq(uint8_t container_id, INT_HANDLER_T handler, uint32_t intno)
 uint32_t* dst_container_user_sp;
 
 /**
- * \brief common part of interrupt handling in secure world
- * \param[in] src_frame   interrupt frame
- * \return  target container sp
+ * @brief common part of interrupt handling in secure world
+ * @param[in] src_frame   interrupt frame
+ * @return  target container sp
  */
 uint32_t secureshield_interrupt_handle(INT_EXC_FRAME_T *src_frame)
 {
@@ -772,9 +773,9 @@ uint32_t secureshield_interrupt_handle(INT_EXC_FRAME_T *src_frame)
 }
 
 /**
- * \brief interrupt return from normal world
- * \param[in] dst_frame   exception frame
- * \return  target container sp
+ * @brief interrupt return from normal world
+ * @param[in] dst_frame   exception frame
+ * @return  target container sp
  */
 uint32_t secureshield_int_return(INT_EXC_FRAME_T *dst_frame)
 {
@@ -810,8 +811,8 @@ uint32_t secureshield_int_return(INT_EXC_FRAME_T *dst_frame)
 }
 
 /**
- * \brief interrupt operation handler
- * \param[in] frame exception frame
+ * @brief interrupt operation handler
+ * @param[in] frame exception frame
  */
 void secureshield_int_ops(INT_EXC_FRAME_T *frame)
 {
@@ -864,11 +865,11 @@ void secureshield_int_ops(INT_EXC_FRAME_T *frame)
 }
 #elif SECURESHIELD_VERSION == 2
 /**
- * \brief secure interrupt handle
- * \details the secure interrupt is handled in secureshield runtime stack
+ * @brief secure interrupt handle
+ * @details the secure interrupt is handled in secureshield runtime stack
  *
- * \param[in] src_frame interrupt frame
- * \return  interrupt handler address
+ * @param[in] src_frame interrupt frame
+ * @return  interrupt handler address
  */
 void * secureshield_interrupt_handle(uint32_t *sp)
 {
@@ -941,9 +942,9 @@ void * secureshield_interrupt_handle(uint32_t *sp)
 }
 
 /**
- * \brief the handling after secure interrupt handler returns
- * \param[in]  status cpu status (not used now)
- * \return        previous interrupted container's stack pointer
+ * @brief the handling after secure interrupt handler returns
+ * @param[in]  status cpu status (not used now)
+ * @return        previous interrupted container's stack pointer
  */
 void *secureshield_interrupt_handle_return(uint32_t* sp)
 {
@@ -962,11 +963,11 @@ void *secureshield_interrupt_handle_return(uint32_t* sp)
 }
 
 /**
- * \brief interrupt operation handler
- * \param[in]  ops  operation id
- * \param[in]  par1 1st parameter
- * \param[in]  par2 2nd parameter
- * \return     operation result
+ * @brief interrupt operation handler
+ * @param[in]  ops  operation id
+ * @param[in]  par1 1st parameter
+ * @param[in]  par2 2nd parameter
+ * @return     operation result
  */
 int32_t secureshield_int_ops(uint32_t ops, uint32_t par1, uint32_t par2)
 {

@@ -29,9 +29,9 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
- * \brief C Implementation of exception and interrupt management
+ * @file
+ * @ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief C Implementation of exception and interrupt management
  */
 #undef LIB_SECURESHIELD_OVERRIDES
 #include "arc/arc_exception.h"
@@ -41,10 +41,10 @@
 #include "embARC_debug.h"
 
 /**
- * \addtogroup ARC_HAL_EXCEPTION_CPU
+ * @addtogroup ARC_HAL_EXCEPTION_CPU
  * @{
- * \var exc_entry_table
- * \brief exception entry table
+ * @var exc_entry_table
+ * @brief exception entry table
  *
  * install exception entry table to ARC_AUX_INT_VECT_BASE in startup.
  * According to ARCv2 ISA, vectors are fetched in instruction space and thus
@@ -298,9 +298,9 @@ static void dump_exception_info(uint32_t vector, uint32_t cause, uint32_t param)
 #endif /* CONFIG_ARC_EXCEPTION_DEBUG */
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_CPU
- * \brief  default cpu exception handler
- * \param p_excinf pointer to the exception frame
+ * @ingroup ARC_HAL_EXCEPTION_CPU
+ * @brief  default cpu exception handler
+ * @param p_excinf pointer to the exception frame
  */
 static void exc_handler_default(void *p_excinf)
 {
@@ -332,9 +332,9 @@ static void exc_handler_default(void *p_excinf)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  default interrupt handler
- * \param[in] p_excinf	information for interrupt handler
+ * @ingroup ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief  default interrupt handler
+ * @param[in] p_excinf	information for interrupt handler
  */
 static void int_handler_default(void *p_excinf)
 {
@@ -359,8 +359,8 @@ EXC_ENTRY_T exc_entry_table[NUM_EXC_ALL] = {
 	[NUM_EXC_CPU ... NUM_EXC_ALL - 1] = exc_entry_int
 };
 /**
- * \var exc_int_handler_table
- * \brief the cpu exception and interrupt exception handler table
+ * @var exc_int_handler_table
+ * @brief the cpu exception and interrupt exception handler table
  * called in exc_entry_default and exc_entry_int
  */
 EXC_HANDLER_T exc_int_handler_table[NUM_EXC_ALL] = {
@@ -387,8 +387,8 @@ typedef union {
 
 extern uint8_t _f_stack[];
 /**
- * \ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  initialize the exception and interrupt handling
+ * @ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief  initialize the exception and interrupt handling
  */
 void exc_int_init(void)
 {
@@ -440,10 +440,10 @@ void exc_int_init(void)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_CPU
- * \brief  install a CPU exception entry
- * \param[in] excno exception number
- * \param[in] entry the entry of exception to install
+ * @ingroup ARC_HAL_EXCEPTION_CPU
+ * @brief  install a CPU exception entry
+ * @param[in] excno exception number
+ * @param[in] entry the entry of exception to install
  */
 int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY_T entry)
 {
@@ -479,10 +479,10 @@ int32_t exc_entry_install(const uint32_t excno, EXC_ENTRY_T entry)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_CPU
- * \brief  get the installed CPU exception entry
- * \param[in] excno exception number
- * \return the installed CPU exception entry
+ * @ingroup ARC_HAL_EXCEPTION_CPU
+ * @brief  get the installed CPU exception entry
+ * @param[in] excno exception number
+ * @return the installed CPU exception entry
  */
 EXC_ENTRY_T exc_entry_get(const uint32_t excno)
 {
@@ -493,10 +493,10 @@ EXC_ENTRY_T exc_entry_get(const uint32_t excno)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_CPU
- * \brief  install an exception handler
- * \param[in] excno	exception number
- * \param[in] handler the handler of exception to install
+ * @ingroup ARC_HAL_EXCEPTION_CPU
+ * @brief  install an exception handler
+ * @param[in] excno	exception number
+ * @param[in] handler the handler of exception to install
  */
 int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER_T handler)
 {
@@ -509,10 +509,10 @@ int32_t exc_handler_install(const uint32_t excno, EXC_HANDLER_T handler)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_CPU
- * \brief  get the installed exception handler
- * \param[in] excno	exception number
- * \return the installed exception handler or NULL
+ * @ingroup ARC_HAL_EXCEPTION_CPU
+ * @brief  get the installed exception handler
+ * @param[in] excno	exception number
+ * @return the installed exception handler or NULL
  */
 EXC_HANDLER_T exc_handler_get(const uint32_t excno)
 {
@@ -525,9 +525,9 @@ EXC_HANDLER_T exc_handler_get(const uint32_t excno)
 
 #ifndef EMBARC_OVERRIDE_ARC_INTERRUPT_MANAGEMENT
 /**
- * \brief disable the specific interrupt
+ * @brief disable the specific interrupt
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 int32_t int_disable(const uint32_t intno)
 {
@@ -540,9 +540,9 @@ int32_t int_disable(const uint32_t intno)
 }
 
 /**
- * \brief  enable the specific int
+ * @brief  enable the specific int
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 int32_t int_enable(const uint32_t intno)
 {
@@ -554,12 +554,6 @@ int32_t int_enable(const uint32_t intno)
 	return -1;
 }
 
-/**
- * \brief  check whether the specific int is enabled
- *
- * \param[in] intno interrupt number
- * \return 0 disabled, 1 enabled, < 0 error
- */
 int32_t int_enabled(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -571,9 +565,9 @@ int32_t int_enabled(const uint32_t intno)
 }
 
 /**
- * \brief  get the interrupt priority mask
+ * @brief  get the interrupt priority mask
  *
- * \returns interrupt priority mask, negative num
+ * @returns interrupt priority mask, negative num
  */
 int32_t int_ipm_get(void)
 {
@@ -581,9 +575,9 @@ int32_t int_ipm_get(void)
 }
 
 /**
- * \brief  set the interrupt priority mask
+ * @brief  set the interrupt priority mask
  *
- * \param[in] intpri interrupt priority
+ * @param[in] intpri interrupt priority
  */
 int32_t int_ipm_set(int32_t intpri)
 {
@@ -596,12 +590,6 @@ int32_t int_ipm_set(int32_t intpri)
 	return -1;
 }
 
-/**
- * \brief  get current interrupt priority mask
- *
- * \param[in] intno interrupt number
- * \return  <0 interrupt priority, 0 error
- */
 int32_t int_pri_get(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -612,11 +600,11 @@ int32_t int_pri_get(const uint32_t intno)
 }
 
 /**
- * \brief set interrupt priority
+ * @brief set interrupt priority
  *
- * \param[in] intno interrupt number
- * \param[in] intpri interrupt priority
- * \return  <0 error, 0 ok
+ * @param[in] intno interrupt number
+ * @param[in] intpri interrupt priority
+ * @return  <0 error, 0 ok
  */
 int32_t int_pri_set(const uint32_t intno, int32_t intpri)
 {
@@ -633,11 +621,11 @@ int32_t int_pri_set(const uint32_t intno, int32_t intpri)
 }
 
 /**
- * \brief set interrupt secure or not secure
+ * @brief set interrupt secure or not secure
  * This function is valid in secureshield v2
- * \param[in] intno interrupt number
- * \param[in] secure, 0 for normal, >0 for secure
- * \return <0 error, 0 ok
+ * @param[in] intno interrupt number
+ * @param[in] secure, 0 for normal, >0 for secure
+ * @return <0 error, 0 ok
  */
 int32_t int_secure_set(const uint32_t intno, uint32_t secure)
 {
@@ -649,13 +637,7 @@ int32_t int_secure_set(const uint32_t intno, uint32_t secure)
 
 }
 
-/**
- * \brief  probe the pending status of interrupt
- *
- * \param[in] intno interrupt number
- *
- * \returns 1 pending, 0 no pending, -1 error
- */
+
 int32_t int_probe(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -664,12 +646,7 @@ int32_t int_probe(const uint32_t intno)
 	return -1;
 }
 
-/**
- * \brief  trigger the interrupt in software
- *
- * \param[in] intno interrupt number
- * \return 0 ok, -1 error
- */
+
 int32_t int_sw_trigger(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -679,13 +656,7 @@ int32_t int_sw_trigger(const uint32_t intno)
 	return -1;
 }
 
-/**
- * \brief  config the interrupt level triggered or pulse triggered
- *
- * \param[in] intno interrupt number
- * \param[in] level, 0-level trigger, 1-pulse triggered
- * \return 0 ok, -1 error
- */
+
 int32_t int_level_config(const uint32_t intno, const uint32_t level)
 {
 	if (intno >= NUM_EXC_CPU && intno < NUM_EXC_ALL) {
@@ -696,7 +667,7 @@ int32_t int_level_config(const uint32_t intno, const uint32_t level)
 }
 
 /**
- * \brief  lock cpu, disable interrupts
+ * @brief  lock cpu, disable interrupts
  */
 void cpu_lock(void)
 {
@@ -704,7 +675,7 @@ void cpu_lock(void)
 }
 
 /**
- * \brief  unlock cpu, enable interrupts to happen
+ * @brief  unlock cpu, enable interrupts to happen
  */
 void cpu_unlock(void)
 {
@@ -712,9 +683,9 @@ void cpu_unlock(void)
 }
 
 /**
- * \brief  lock cpu and return status
+ * @brief  lock cpu and return status
  *
- * \returns cpu status
+ * @returns cpu status
  */
 uint32_t cpu_lock_save(void)
 {
@@ -722,9 +693,9 @@ uint32_t cpu_lock_save(void)
 }
 
 /**
- * \brief  unlock cpu with the specific status
+ * @brief  unlock cpu with the specific status
  *
- * \param[in] status  cpu status saved by cpu_lock_save
+ * @param[in] status  cpu status saved by cpu_lock_save
  */
 void cpu_unlock_restore(const uint32_t status)
 {
@@ -732,14 +703,14 @@ void cpu_unlock_restore(const uint32_t status)
 }
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  install an interrupt handler
- * \param[in] intno	interrupt number
- * \param[in] handler interrupt handler to install
+ * @ingroup ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief  install an interrupt handler
+ * @param[in] intno	interrupt number
+ * @param[in] handler interrupt handler to install
  */
 int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 {
-	/*!< \todo parameter check ? */
+	/*!< @todo parameter check ? */
 	if (intno >= NUM_EXC_CPU) {
 		return exc_handler_install(intno, handler);
 	}
@@ -747,12 +718,7 @@ int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler)
 	return -1;
 }
 
-/**
- * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \brief  get the installed an interrupt handler
- * \param[in] intno interrupt number
- * \return the installed interrupt handler or NULL
- */
+
 INT_HANDLER_T int_handler_get(const uint32_t intno)
 {
 	if (intno >= NUM_EXC_CPU) {

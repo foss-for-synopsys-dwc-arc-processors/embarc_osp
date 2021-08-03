@@ -264,8 +264,8 @@ DEV_SPI_PTR dw_spi_get_dev(int32_t spi_id)
 }
 
 /**
- * \brief	install all spi objects
- * \note	\b MUST be called during system init
+ * @brief	install all spi objects
+ * @note	@b MUST be called during system init
  */
 void dw_spi_all_install(void)
 {

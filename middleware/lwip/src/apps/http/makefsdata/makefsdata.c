@@ -6,7 +6,7 @@
  * Author: Jim Pettinato
  *         Simon Goldschmidt
  *
- * @todo:
+ * \todo:
  * - take TCP_MSS, LWIP_TCP_TIMESTAMPS and
  *   PAYLOAD_ALIGN_TYPE/PAYLOAD_ALIGNMENT as arguments
  */

@@ -35,7 +35,7 @@
 
 #define DW_SPI_DEFAULT_FREQ             1000000
 /**
- * \name	HSDK DesignWare SPI 0 Object Instantiation
+ * @name	HSDK DesignWare SPI 0 Object Instantiation
  * @{
  */
 #if (USE_DW_SPI_0)
@@ -144,7 +144,7 @@ static void dw_spi_0_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare SPI 1 Object Instantiation
+ * @name	HSDK DesignWare SPI 1 Object Instantiation
  * @{
  */
 #if (USE_DW_SPI_1)
@@ -252,7 +252,7 @@ static void dw_spi_1_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare SPI 2 Object Instantiation
+ * @name	HSDK DesignWare SPI 2 Object Instantiation
  * @{
  */
 #if (USE_DW_SPI_2)
@@ -393,8 +393,8 @@ DEV_SPI_PTR spi_get_dev(int32_t spi_id)
 }
 
 /**
- * \brief	install all spi objects
- * \note	\b MUST be called during system init
+ * @brief	install all spi objects
+ * @note	@b MUST be called during system init
  */
 void dw_spi_all_install(void)
 {

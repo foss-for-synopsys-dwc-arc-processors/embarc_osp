@@ -18,9 +18,9 @@
  */
 
 /**
- * \file
- * \ingroup EMBARC_TEST
- * \brief a light unit test framework based on CTest and  Contiki App\unitest
+ * @file
+ * @ingroup EMBARC_TEST
+ * @brief a light unit test framework based on CTest and  Contiki App\unitest
  */
 
 #include <setjmp.h>
@@ -50,11 +50,11 @@ static const char *suite_name;
 
 
 /**
- * \brief a default test suite filter
+ * @brief a default test suite filter
  *
- * \param t	pointer to test case
+ * @param t	pointer to test case
  *
- * \returns 1
+ * @returns 1
  */
 static int suite_all(struct unit_test* t) {
 	return 1;
@@ -62,23 +62,23 @@ static int suite_all(struct unit_test* t) {
 
 
 /**
- * \brief a test suite filter by name
+ * @brief a test suite filter by name
  *
- * \param t pointer to test case
+ * @param t pointer to test case
  *
- * \returns 1 in the suite, 0 not in the suite
+ * @returns 1 in the suite, 0 not in the suite
  */
 static int suite_filter(struct unit_test* t) {
 	return strncmp(suite_name, t->ssname, strlen(suite_name)) == 0;
 }
 
 /**
- * \brief assert when the real string isn't the expected string
+ * @brief assert when the real string isn't the expected string
  *
- * \param exp	expected string
- * \param real	real string
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param exp	expected string
+ * @param real	real string
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_str(const char* exp, const char*  real, const char* caller, int line) {
 	if ((exp == NULL && real != NULL) ||
@@ -89,14 +89,14 @@ void unit_test_assert_str(const char* exp, const char*  real, const char* caller
 }
 
 /**
- * \brief assert when the real data area doesn't equal the expected data area
+ * @brief assert when the real data area doesn't equal the expected data area
  *
- * \param exp		expected data area
- * \param expsize	data size of expected data area
- * \param real		real data area
- * \param realsize	data size of real data area
- * \param caller	the caller file
- * \param line		line number in the caller file
+ * @param exp		expected data area
+ * @param expsize	data size of expected data area
+ * @param real		real data area
+ * @param realsize	data size of real data area
+ * @param caller	the caller file
+ * @param line		line number in the caller file
  */
 void unit_test_assert_data(				\
 	const unsigned char* exp, int expsize,		\
@@ -116,12 +116,12 @@ void unit_test_assert_data(				\
 }
 
 /**
- * \brief assert when the real value doesn't equal the expected value
+ * @brief assert when the real value doesn't equal the expected value
  *
- * \param exp	expected value
- * \param real	real value
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param exp	expected value
+ * @param real	real value
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_equal(long exp, long real, const char* caller, int line) {
 	if ((exp) != (real)) {
@@ -130,12 +130,12 @@ void unit_test_assert_equal(long exp, long real, const char* caller, int line) {
 }
 
 /**
- * \brief assert when the real value equal the expected value
+ * @brief assert when the real value equal the expected value
  *
- * \param exp	expected value
- * \param real	real value
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param exp	expected value
+ * @param real	real value
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_not_equal(long exp, long real, const char* caller, int line) {
 	if ((exp) == (real)) {
@@ -144,11 +144,11 @@ void unit_test_assert_not_equal(long exp, long real, const char* caller, int lin
 }
 
 /**
- * \brief assert when the real value is not null
+ * @brief assert when the real value is not null
  *
- * \param real	real value
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param real	real value
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_null(void* real, const char* caller, int line) {
 	if ((real) != NULL) {
@@ -157,11 +157,11 @@ void unit_test_assert_null(void* real, const char* caller, int line) {
 }
 
 /**
- * \brief assert when the real value is null
+ * @brief assert when the real value is null
  *
- * \param real	real value
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param real	real value
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_not_null(const void* real, const char* caller, int line) {
 	if ((real) == NULL) {
@@ -170,11 +170,11 @@ void unit_test_assert_not_null(const void* real, const char* caller, int line) {
 }
 
 /**
- * \brief assert when the real value is not true
+ * @brief assert when the real value is not true
  *
- * \param real	real value
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param real	real value
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_true(int real, const char* caller, int line) {
 	if ((real) == 0) {
@@ -183,11 +183,11 @@ void unit_test_assert_true(int real, const char* caller, int line) {
 }
 
 /**
- * \brief assert when the real value is not false
+ * @brief assert when the real value is not false
  *
- * \param real	real value
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param real	real value
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_false(int real, const char* caller, int line) {
 	if ((real) != 0) {
@@ -196,10 +196,10 @@ void unit_test_assert_false(int real, const char* caller, int line) {
 }
 
 /**
- * \brief assert when fail unconditionally
+ * @brief assert when fail unconditionally
  *
- * \param caller the caller file name string
- * \param line	line number in the caller file
+ * @param caller the caller file name string
+ * @param line	line number in the caller file
  */
 void unit_test_assert_fail(const char* caller, int line) {
 	UNIT_TEST_ERR("%s:%d  shouldn't come here\n", caller, line);
@@ -209,11 +209,11 @@ void unit_test_assert_fail(const char* caller, int line) {
 extern struct unit_test _f_embarc_unittest;
 extern struct unit_test _e_embarc_unittest;
 /**
- * \brief run unit test
+ * @brief run unit test
  *
- * \param test_suite the test suite need to run, NULL for all
+ * @param test_suite the test suite need to run, NULL for all
  *
- * \returns the number of failed test cases
+ * @returns the number of failed test cases
  */
 int unit_test_run(const char * test_suite)
 {

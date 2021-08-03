@@ -29,10 +29,10 @@
    --------------------------------------------- */
 /**
  *
- * \file
- * \ingroup	BOARD_COMMON
- * \brief	common board header file
- * \details
+ * @file
+ * @ingroup	BOARD_COMMON
+ * @brief	common board header file
+ * @details
  * - This header file will contain board related settings for different boards.
  * - Each board configurations are put in its own header file, like emsk/emsk.h
  * - If you want to change the configuration, you need to go to related header file, e.g.
@@ -41,14 +41,14 @@
  */
 
 /**
- * \addtogroup BOARD_COMMON
+ * @addtogroup BOARD_COMMON
  * @{
  */
 #ifndef _EMBARC_BOARD_H_
 #define _EMBARC_BOARD_H_
 /**
- * \todo	add comments and documents to describe the macros
- * \note 	the following macros must use the same name, because
+ * @todo	add comments and documents to describe the macros
+ * @note 	the following macros must use the same name, because
  *	they are used by middleware and other applications
  */
 /** here is a sample of EMSK board resource definitions */

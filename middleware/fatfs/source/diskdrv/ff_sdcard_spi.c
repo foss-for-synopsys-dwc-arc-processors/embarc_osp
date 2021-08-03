@@ -14,12 +14,12 @@
  */
 
 /**
- * \defgroup	MID_FS_FATFS_MMCSPI	FatFS filesystem Middleware SPI SDCard Driver Implement
- * \ingroup	MID_FS_FATFS
- * \brief	implement sdcard driver based on spi for fatfs
+ * @defgroup	MID_FS_FATFS_MMCSPI	FatFS filesystem Middleware SPI SDCard Driver Implement
+ * @ingroup	MID_FS_FATFS
+ * @brief	implement sdcard driver based on spi for fatfs
  *
- * \file
- * \brief	spi sdcard driver
+ * @file
+ * @brief	spi sdcard driver
  */
 #include "stdint.h"
 #include "stddef.h"

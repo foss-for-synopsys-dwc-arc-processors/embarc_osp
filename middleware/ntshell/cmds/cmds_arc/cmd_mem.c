@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief filesystem operation commands: mem
+* @file
+* @brief filesystem operation commands: mem
 */
 
 #include "cmds_arc_cfg.h"

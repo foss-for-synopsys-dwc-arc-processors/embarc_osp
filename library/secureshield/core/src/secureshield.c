@@ -32,7 +32,7 @@
 #include "secureshield_int.h"
 
 /**
- * \brief the post initialization of secureshield
+ * @brief the post initialization of secureshield
  */
 static void secureshield_init_post(void)
 {
@@ -42,7 +42,7 @@ static void secureshield_init_post(void)
 
 
 /**
- * \brief initialization of secureshield
+ * @brief initialization of secureshield
  */
 void secureshield_init(void)
 {

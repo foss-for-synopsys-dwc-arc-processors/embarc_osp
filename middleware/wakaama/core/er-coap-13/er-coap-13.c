@@ -30,11 +30,11 @@
  */
 
 /**
- * \file
+ * @file
  *      An implementation of the Constrained Application Protocol (draft 12)
- * \author
+ * @author
  *      Matthias Kovatsch <kovatsch@inf.ethz.ch>
- * \contributors
+ * @contributors
  *    David Navarro, Intel Corporation - Adapt to usage in liblwm2m
  */
 

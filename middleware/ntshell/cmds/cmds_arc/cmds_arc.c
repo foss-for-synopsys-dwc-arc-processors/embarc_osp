@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief register arc kernel operation commands
+* @file
+* @brief register arc kernel operation commands
 */
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_ARC

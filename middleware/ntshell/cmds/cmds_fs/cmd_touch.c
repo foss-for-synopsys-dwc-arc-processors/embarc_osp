@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief filesystem operation commands: touch
+* @file
+* @brief filesystem operation commands: touch
 */
 
 #include "cmds_fs_cfg.h"

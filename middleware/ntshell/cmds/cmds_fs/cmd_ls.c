@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief filesystem operation commands: ls
+* @file
+* @brief filesystem operation commands: ls
 */
 
 #include "cmds_fs_cfg.h"

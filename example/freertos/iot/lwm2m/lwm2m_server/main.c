@@ -28,16 +28,16 @@
  *
    --------------------------------------------- */
 /**
- * \defgroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER	embARC LwIP LwM2M Server Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_LWIP
- * \ingroup	EMBARC_APPS_MID_LWM2M
- * \ingroup	EMBARC_APPS_MID_NTSHELL
- * \ingroup	EMBARC_APPS_MID_FATFS
- * \brief	embARC Example for LwM2M Server on LwIP and FreeRTOS
+ * @defgroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER	embARC LwIP LwM2M Server Example
+ * @ingroup	EMBARC_APPS_TOTAL
+ * @ingroup	EMBARC_APPS_OS_FREERTOS
+ * @ingroup	EMBARC_APPS_MID_LWIP
+ * @ingroup	EMBARC_APPS_MID_LWM2M
+ * @ingroup	EMBARC_APPS_MID_NTSHELL
+ * @ingroup	EMBARC_APPS_MID_FATFS
+ * @brief	embARC Example for LwM2M Server on LwIP and FreeRTOS
  *
- * \details
+ * @details
  * ### Extra Required Tools
  *
  * ### Extra Required Peripherals
@@ -47,7 +47,7 @@
  *     This example is designed to show how to use LwM2M server in FreeRTOS.
  *
  * ### Usage Manual
- *     The Pmod modules should be connected to \ref EMBARC_BOARD_CONNECTION "EMSK".
+ *     The Pmod modules should be connected to @ref EMBARC_BOARD_CONNECTION "EMSK".
  *     This is an example running LwM2M server. It is not recommended to run lwm2m server on a resource-constrained board. It provides two ntshell commands to show this demo, one is *lwm2m_server* to set up a LwM2M server, and another one is *lwm2m_op* to operate at connected clients.
  *     - First, download the program to the board, when program is ready, you can run *lwm2m_server* to start up a LwM2M server at default port 5683.
  *     - Then, you need to install firefox and a firefox plugin - [OMA LwM2M Kit](https://addons.mozilla.org/en-US/firefox/addon/oma-lwm2m-devkit/), this plugin can serve as a lwm2m client.
@@ -61,13 +61,13 @@
  */
 
 /**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER
- * \brief	main source of LwM2M Server example
+ * @file
+ * @ingroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER
+ * @brief	main source of LwM2M Server example
  */
 
 /**
- * \addtogroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER
+ * @addtogroup	EMBARC_APP_FREERTOS_IOT_LWM2M_LWM2M_SERVER
  * @{
  */
 

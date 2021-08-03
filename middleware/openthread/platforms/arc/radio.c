@@ -682,8 +682,8 @@ void arcRadioProcess(otInstance *aInstance)
 }
 
 /**
- * \brief isr routine of mrf24j40
- * \param[in] ptr pointer transferred frome interrupt entry
+ * @brief isr routine of mrf24j40
+ * @param[in] ptr pointer transferred frome interrupt entry
  */
 static void RadioIsr(void *ptr)
 {

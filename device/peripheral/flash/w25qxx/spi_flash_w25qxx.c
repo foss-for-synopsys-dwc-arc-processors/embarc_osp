@@ -36,7 +36,7 @@
 #include "string.h"
 
 /**
- * \name W25QXX SPI Flash Commands
+ * @name W25QXX SPI Flash Commands
  * @{
  */
 #define RDID    0x9F            /*!<read chip ID */
@@ -52,10 +52,10 @@
 #define W25QXX_NOT_VALID        (0xFFFFFFFF)
 
 /**
- * \brief	spi flash spi send command to operate spi flash
- * \param[in]	xfer	spi transfer that need to transfer to spi device
- * \retval	0	success
- * \retval	-1	fail
+ * @brief	spi flash spi send command to operate spi flash
+ * @param[in]	xfer	spi transfer that need to transfer to spi device
+ * @retval	0	success
+ * @retval	-1	fail
  */
 Inline int32_t spi_send_cmd(W25QXX_DEF_PTR dev, DEV_SPI_TRANSFER *xfer)
 {
@@ -76,8 +76,8 @@ Inline int32_t spi_send_cmd(W25QXX_DEF_PTR dev, DEV_SPI_TRANSFER *xfer)
 }
 
 /**
- * \brief	read the status of spi flash
- * \return	current status of spi flash
+ * @brief	read the status of spi flash
+ * @return	current status of spi flash
  */
 uint32_t w25qxx_read_status(W25QXX_DEF_PTR dev)
 {
@@ -99,9 +99,9 @@ uint32_t w25qxx_read_status(W25QXX_DEF_PTR dev)
 }
 
 /**
- * \brief 	enable to write flash
- * \retval	0	success
- * \retval	-1	fail
+ * @brief 	enable to write flash
+ * @retval	0	success
+ * @retval	-1	fail
  */
 int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev)
 {
@@ -148,9 +148,9 @@ int32_t w25qxx_write_enable(W25QXX_DEF_PTR dev)
 }
 
 /**
- * \brief	init spi flash related interface
- * \retval	0	success
- * \retval	-1	fail
+ * @brief	init spi flash related interface
+ * @retval	0	success
+ * @retval	-1	fail
  */
 int32_t w25qxx_init(W25QXX_DEF_PTR dev, uint32_t freq)
 {
@@ -172,8 +172,8 @@ int32_t w25qxx_init(W25QXX_DEF_PTR dev, uint32_t freq)
 }
 
 /**
- * \brief	read spi flash identification ID
- * \return	the id of the spi flash
+ * @brief	read spi flash identification ID
+ * @return	the id of the spi flash
  */
 uint32_t w25qxx_read_id(W25QXX_DEF_PTR dev)
 {
@@ -197,9 +197,9 @@ uint32_t w25qxx_read_id(W25QXX_DEF_PTR dev)
 }
 
 /**
- * \brief 	Read status and wait while busy flag is set
- * \retval	0	success
- * \retval	-1	fail
+ * @brief 	Read status and wait while busy flag is set
+ * @retval	0	success
+ * @retval	-1	fail
  */
 int32_t w25qxx_wait_ready(W25QXX_DEF_PTR dev)
 {
@@ -217,13 +217,13 @@ int32_t w25qxx_wait_ready(W25QXX_DEF_PTR dev)
 }
 
 /**
- * \brief	read data from flash
- * \param[in]	address		read start address of spi flash
- * \param[in]	size		read size of spi flash
- * \param[out]	data		data to store the return data
+ * @brief	read data from flash
+ * @param[in]	address		read start address of spi flash
+ * @param[in]	size		read size of spi flash
+ * @param[out]	data		data to store the return data
  *
- * \retval	-1		failed in read operation
- * \retval	>=0		data size of data read
+ * @retval	-1		failed in read operation
+ * @retval	>=0		data size of data read
  */
 int32_t w25qxx_read(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, void *data)
 {
@@ -248,13 +248,13 @@ int32_t w25qxx_read(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, void *d
 }
 
 /**
- * \brief 	flash erase in sectors
+ * @brief 	flash erase in sectors
  *
- * \param[in]	address		erase start address of spi flash
- * \param[in]	size		erase size
+ * @param[in]	address		erase start address of spi flash
+ * @param[in]	size		erase size
  *
- * \retval	-1 		failed in erase operation
- * \retval	>=0		sector count erased
+ * @retval	-1 		failed in erase operation
+ * @retval	>=0		sector count erased
  */
 int32_t w25qxx_erase(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size)
 {
@@ -303,14 +303,14 @@ int32_t w25qxx_erase(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size)
 }
 
 /**
- * \brief	write data to spi flash
+ * @brief	write data to spi flash
  *
- * \param[in]	address	start address
- * \param[in]	size	data size
- * \param[in]	data	pointer to data
+ * @param[in]	address	start address
+ * @param[in]	size	data size
+ * @param[in]	data	pointer to data
  *
- * \retval	>=0		written bytes number
- * \retval 	<0 		error
+ * @retval	>=0		written bytes number
+ * @retval 	<0 		error
  */
 int32_t w25qxx_write(W25QXX_DEF_PTR dev, uint32_t address, uint32_t size, const void *data)
 {

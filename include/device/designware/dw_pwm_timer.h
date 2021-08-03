@@ -38,8 +38,8 @@
 #define DW_PWM_TIMER_INVALID_INTNO              (DEV_INTNO_INVALID)
 
 /**
- * \name	DesignWare PWM_TIMER Register Structure
- * \brief	contains definitions of DesignWare PWM_TIMER register structure.
+ * @name	Structure definitions for DesignWare PWM_TIMER Register
+ * @brief	Contains definitions of DesignWare PWM_TIMER register structure
  * @{
  */
 typedef volatile struct dw_pwm_timer_ch_reg {
@@ -67,8 +67,8 @@ typedef struct dw_pwm_timer_ch_isr {
 } DW_PWM_TIMER_CH_ISR, *DW_PWM_TIMER_CH_ISR_PTR;
 
 /**
- * \brief	DesignWare PWM_TIMER control structure definition
- * \details	implement of pwm_timer_info::pwm_timer_ctrl
+ * @brief	DesignWare PWM_TIMER control structure definition
+ * @details	implement of pwm_timer_info::pwm_timer_ctrl
  */
 typedef struct dw_pwm_timer_ctrl {
 	uint32_t id;                            /*!< pwm_timer group id */
@@ -86,9 +86,9 @@ extern "C" {
 #endif
 
 /**
- * \name	DesignWare PWM_TIMER Function Declaration
- * \brief	contains declarations of designware pwm_timer functions.
- * \details	This are only used in pwm_timer object implementation source file
+ * @name	DesignWare PWM_TIMER Function Declaration
+ * @brief	contains declarations of designware pwm_timer functions.
+ * @details	This are only used in pwm_timer object implementation source file
  * @{
  */
 extern int32_t dw_pwm_timer_open(DEV_PWM_TIMER *pwm_timer_obj);
@@ -103,3 +103,4 @@ extern int32_t dw_pwm_timer_isr_handler(DEV_PWM_TIMER *pwm_timer_obj, void *ptr)
 #endif
 
 #endif /* _DW_PWM_TIMER_H_ */
+/** @} */

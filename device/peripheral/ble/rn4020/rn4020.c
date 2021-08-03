@@ -133,7 +133,7 @@ static uint8_t _rn4020_parse_handle_uuid_line(const char *line, RN4020_HANDLE_UU
 	_rn4020_parse_uuid_str(uuid_ptr, comma_ptr - uuid_ptr,
 			       item->uuid, &item->uuid_len);
 
-	/* \todo 128bit uuid support */
+	/* @todo 128bit uuid support */
 	strncpy(handle, comma_ptr + 1, 4);
 	handle[4] = 0;
 	item->handle = strtol(handle, NULL, 16);

@@ -233,8 +233,8 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 }
 
 /**
- * \brief	install all iic objects
- * \note	\b MUST be called during system init
+ * @brief	install all iic objects
+ * @note	@b MUST be called during system init
  */
 void dfss_iic_all_install(void)
 {

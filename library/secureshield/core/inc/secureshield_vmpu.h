@@ -74,7 +74,13 @@ extern void vmpu_switch(uint8_t src_id, uint8_t dst_id);
 extern void vmpu_load_container(uint8_t container_id);
 /* according to the fault_addr and size, find the correct access control */
 extern uint32_t vmpu_fault_find_ac(uint32_t fault_addr, uint32_t size);
-/* try to recover from an exception raiser by MPU, i.e. , MPU walking */
+
+/**
+ * @brief try to recover from an exception raiser by MPU, i.e. , MPU walking
+ * @param[in] fault_addr the address which caused exception
+ * @param[in] type  not used now
+ * @return -1 the mpu region not found, 0 mpu region found
+ */
 extern int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type);
 /* hardware dependent init */
 extern void vmpu_arch_init(void);

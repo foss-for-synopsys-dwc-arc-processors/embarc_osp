@@ -124,4 +124,4 @@ extern void arc_secure_timer_init(void);
 #endif  /* __ASSEMBLY__ */
 
 #endif  /* _ARC_HAL_TIMER_H_ */
-/** }@*/
+/** @} */

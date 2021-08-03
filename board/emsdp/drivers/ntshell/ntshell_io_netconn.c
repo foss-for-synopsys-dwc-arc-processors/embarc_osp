@@ -29,22 +29,22 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_NETCONN	EMSDP NTShell NETCONN IO Driver
- * \ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
- * \brief	EMSDP NTShell Middleware NET Connection IO Driver
- * \details
+ * @defgroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_NETCONN	EMSDP NTShell NETCONN IO Driver
+ * @ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
+ * @brief	EMSDP NTShell Middleware NET Connection IO Driver
+ * @details
  *		Implementation of middleware ntshell ntshell_io netconn driver, use net connection as
  *	ntshell interface.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_NETCONN
- * \brief	middleware ntshell io netconn interface driver
+ * @file
+ * @ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_NETCONN
+ * @brief	middleware ntshell io netconn interface driver
  */
 
 /**
- * \addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_NETCONN
+ * @addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_NETCONN
  * @{
  */
 #include "embARC_toolchain.h"

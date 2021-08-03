@@ -83,13 +83,13 @@ enum fault_queue {
 #define ADT7420_CHECK_EXP_NORTN(EXPR)           CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /**
- * \brief	write adt7420 register
- * \param[in]	obj	temperature sensor object
- * \param[in]	regaddr temperature sensor register address
- * \param[in] 	val	pointer to buffer to write
- * \param[in] 	len	length of data in buffer
- * \retval	>=0	write success, return bytes written
- * \retval	!E_OK	write failed
+ * @brief	write adt7420 register
+ * @param[in]	obj	temperature sensor object
+ * @param[in]	regaddr temperature sensor register address
+ * @param[in] 	val	pointer to buffer to write
+ * @param[in] 	len	length of data in buffer
+ * @retval	>=0	write success, return bytes written
+ * @retval	!E_OK	write failed
  */
 static int32_t _adt7420_reg_write(ADT7420_DEF_PTR obj, uint8_t regaddr, uint8_t *val, uint8_t len)
 {
@@ -116,13 +116,13 @@ error_exit:
 }
 
 /**
- * \brief	read adt7420 register
- * \param[in]	obj	emperature sensor object
- * \param[in]	regaddr temperature sensor register address
- * \param[in] 	val	pointer to buffer to read
- * \param[in] 	len	length of data to read
- * \retval	>=0	read success, return bytes read
- * \retval	!E_OK	read failed
+ * @brief	read adt7420 register
+ * @param[in]	obj	emperature sensor object
+ * @param[in]	regaddr temperature sensor register address
+ * @param[in] 	val	pointer to buffer to read
+ * @param[in] 	len	length of data to read
+ * @retval	>=0	read success, return bytes read
+ * @retval	!E_OK	read failed
  */
 static int32_t _adt7420_reg_read(ADT7420_DEF_PTR obj, uint8_t regaddr, uint8_t *val, uint8_t len)
 {
@@ -147,10 +147,10 @@ error_exit:
 }
 
 /**
- * \brief	adt7420 init
- * \param[in]	obj	temperature sensor object
- * \retval	E_OK	init success
- * \retval	!E_OK	init failed
+ * @brief	adt7420 init
+ * @param[in]	obj	temperature sensor object
+ * @retval	E_OK	init success
+ * @retval	!E_OK	init failed
  */
 int32_t adt7420_sensor_init(ADT7420_DEF_PTR obj)
 {
@@ -175,10 +175,10 @@ error_exit:
 }
 
 /**
- * \brief	temperature sensor deinit
- * \param[in]	obj	temperature sensor object
- * \retval	E_OK	init success
- * \retval	!E_OK	init failed
+ * @brief	temperature sensor deinit
+ * @param[in]	obj	temperature sensor object
+ * @retval	E_OK	init success
+ * @retval	!E_OK	init failed
  */
 int32_t adt7420_sensor_deinit(ADT7420_DEF_PTR obj)
 {
@@ -196,10 +196,10 @@ error_exit:
 }
 
 /**
- * \brief	temperature sensor deinit
- * \param[in]	obj		temperature sensor object
- * \param[in]	mode	sensor working mode, choose from enum sensor_op_mode
- * \retval	E_OK	always return E_OK
+ * @brief	temperature sensor deinit
+ * @param[in]	obj		temperature sensor object
+ * @param[in]	mode	sensor working mode, choose from enum sensor_op_mode
+ * @retval	E_OK	always return E_OK
  */
 int32_t adt7420_sensor_mode(ADT7420_DEF_PTR obj, int32_t mode)
 {
@@ -216,10 +216,10 @@ int32_t adt7420_sensor_mode(ADT7420_DEF_PTR obj, int32_t mode)
 }
 
 /**
- * \brief	temperature sensor resolution setting
- * \param[in]	obj	        temperature sensor object
- * \param[in]	resolution	resolution of temperature sensor
- * \retval	E_OK	always return E_OK
+ * @brief	temperature sensor resolution setting
+ * @param[in]	obj	        temperature sensor object
+ * @param[in]	resolution	resolution of temperature sensor
+ * @retval	E_OK	always return E_OK
  */
 int32_t adt7420_sensor_resolution(ADT7420_DEF_PTR obj, int32_t resolution)
 {
@@ -238,11 +238,11 @@ int32_t adt7420_sensor_resolution(ADT7420_DEF_PTR obj, int32_t resolution)
 }
 
 /**
- * \brief	read temperature sensor value in 0.1c unit
- * \param[in]	obj	temperature sensor object
- * \param[out]	val	return temperature in degrees Celsius (°C)
- * \retval	E_OK	read success
- * \retval	!E_OK	read failed
+ * @brief	read temperature sensor value in 0.1c unit
+ * @param[in]	obj	temperature sensor object
+ * @param[out]	val	return temperature in degrees Celsius (°C)
+ * @retval	E_OK	read success
+ * @retval	!E_OK	read failed
  */
 int32_t adt7420_sensor_read(ADT7420_DEF_PTR obj, float *val)
 {

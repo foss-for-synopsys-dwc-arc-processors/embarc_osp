@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief the command to access auxiliary registers
+* @file
+* @brief the command to access auxiliary registers
 */
 
 
@@ -118,10 +118,10 @@ error_exit:
 }
 
 /**
- * \brief  ntshell command : lr (read auxiliary register)
- * \param[in]  argc argument number count
- * \param[in]  argv arguments list
- * \retval
+ * @brief  ntshell command : lr (read auxiliary register)
+ * @param[in]  argc argument number count
+ * @param[in]  argv arguments list
+ * @retval
  *		  0   success
  *		  -1  failed
  */
@@ -218,10 +218,10 @@ error_exit:
 }
 
 /**
- * \brief  ntshell command : sr (write auxiliary register)
- * \param  argc[in] argument number count
- * \param  argv[in] arguments list
- * \return 0 success, -1 failure
+ * @brief  ntshell command : sr (write auxiliary register)
+ * @param  argc[in] argument number count
+ * @param  argv[in] arguments list
+ * @return 0 success, -1 failure
  */
 static int cmd_sr(int argc, char **argv, void *extobj)
 {

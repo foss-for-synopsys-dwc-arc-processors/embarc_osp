@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief register filesystem operation commands
+* @file
+* @brief register filesystem operation commands
 */
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_FS

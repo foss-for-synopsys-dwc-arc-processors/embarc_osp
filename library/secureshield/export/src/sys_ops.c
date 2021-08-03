@@ -89,7 +89,7 @@ static void temp_trap_handler(void)
 }
 
 /**
- * \brief
+ * @brief
  * The exception state registers (ERET, ECR, ERSTATUS, ERBTA, EFA, ESYN) will be protected by a new internal bit.
  * This will be set on exception entry if the exception is triggered on a secure mode instruction and cleared on
  * exception entry if the exception is triggered on a non-secure instruction. If set, this bit will prevent

@@ -28,10 +28,10 @@
  *
    --------------------------------------------- */
 /**
- * \defgroup	BOARD_EMSK_DRV_DW_GPIO_OBJ	EMSK DW GPIO Object
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Designware GPIO Objects
- * \details
+ * @defgroup	BOARD_EMSK_DRV_DW_GPIO_OBJ	EMSK DW GPIO Object
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Designware GPIO Objects
+ * @details
  *		Implement the EMSK board GPIO object using the DesignWare GPIO device driver.
  *	Only need to implement some DesignWare GPIO structures and combine with EMSK GPIO
  *	hardware resources, like in C++ class instantiation.
@@ -44,13 +44,13 @@
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_DW_GPIO_OBJ
- * \brief	DesignWare GPIO object instantiation on EMSK
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_DW_GPIO_OBJ
+ * @brief	DesignWare GPIO object instantiation on EMSK
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_DW_GPIO_OBJ
+ * @addtogroup	BOARD_EMSK_DRV_DW_GPIO_OBJ
  * @{
  */
 #include "dw_gpio.h"

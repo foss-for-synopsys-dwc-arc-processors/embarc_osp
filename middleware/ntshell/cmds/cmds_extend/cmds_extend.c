@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief register extend operation commands
+* @file
+* @brief register extend operation commands
 */
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_EXTEND

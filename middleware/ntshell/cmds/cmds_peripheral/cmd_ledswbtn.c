@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief operate the LEDs through DIP switches and buttons
+* @file
+* @brief operate the LEDs through DIP switches and buttons
 */
 
 #include "cmds_peripheral_cfg.h"

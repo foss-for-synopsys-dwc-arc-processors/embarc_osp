@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief filesystem operation commands: pwd
+* @file
+* @brief filesystem operation commands: pwd
 */
 
 #include "cmds_fs_cfg.h"

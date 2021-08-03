@@ -172,8 +172,8 @@ static void dw_uart_1_install(void)
 #endif /* USE_DW_UART_1 */
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 void dw_uart_all_install(void)
 {

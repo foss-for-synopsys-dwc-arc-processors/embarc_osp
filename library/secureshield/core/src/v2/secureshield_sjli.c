@@ -56,7 +56,7 @@ const SJLI_ENTRY secureshield_sjli_entry_table[NUM_SJLI_ENTRY] = {
 
 
 /**
- * \brief default sjli entry
+ * @brief default sjli entry
  */
 static void sjli_default_entry(void)
 {
@@ -64,9 +64,9 @@ static void sjli_default_entry(void)
 }
 
 /**
- * \brief the handler of container call, caller -> callee
- * \param[in]  src_frame container context frame
- * \return target container's stack pointer
+ * @brief the handler of container call, caller -> callee
+ * @param[in]  src_frame container context frame
+ * @return target container's stack pointer
  */
 uint32_t container_call_in(INT_EXC_FRAME_T *src_frame)
 {
@@ -176,11 +176,9 @@ uint32_t container_call_in(INT_EXC_FRAME_T *src_frame)
 }
 
 /**
- * \brief the post handler of container call,  callee->caller
- * \param[in]  ret_value return value from callee container
- * \param[in]  sp        callee container's stack pointer
- * \param[in]  status32  callee container's status register
- * \return     caller container's stack pointer
+ * @brief the post handler of container call,  callee->caller
+ * @param[in]  dst target container's stack pointer
+ * @return     caller container's stack pointer
  */
 uint32_t container_call_out(PROCESSOR_FRAME_T *dst)
 {
@@ -207,7 +205,7 @@ uint32_t container_call_out(PROCESSOR_FRAME_T *dst)
 }
 
 /**
- * \brief sjli init
+ * @brief sjli init
  */
 void sjli_init(void)
 {

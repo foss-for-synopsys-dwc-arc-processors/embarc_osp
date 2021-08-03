@@ -29,16 +29,16 @@
 --------------------------------------------- */
 
 /**
- * \defgroup	MID_BUF_RINGBUFFER	Ringbuffer Middleware
- * \ingroup	MID_BUF
- * \brief	a ringbuffer middleware implemention.
+ * @defgroup	MID_BUF_RINGBUFFER	Ringbuffer Middleware
+ * @ingroup	MID_BUF
+ * @brief	a ringbuffer middleware implemention.
  *	ringbuffer or called circular buffer is described in wikipedia as this
  *	<a href="http://en.wikipedia.org/wiki/Circular_buffer">Circular_buffer</a>.
  * @{
  *
- * \file
- * \brief	a ringbuffer implemention
- * \details	ringbuffer or called circular buffer is described in wikipedia as this
+ * @file
+ * @brief	a ringbuffer implemention
+ * @details	ringbuffer or called circular buffer is described in wikipedia as this
  *	<a href="http://en.wikipedia.org/wiki/Circular_buffer">Circular_buffer</a>.
  */
 #include <stddef.h>
@@ -49,19 +49,19 @@
 #include "embARC_debug.h"
 
 /**
- * \defgroup	MID_BUF_RBOP	Ringbuffer Operation API
- * \ingroup	MID_BUF
- * \brief	ringbuffer operation api called by other functions,
+ * @defgroup	MID_BUF_RBOP	Ringbuffer Operation API
+ * @ingroup	MID_BUF
+ * @brief	ringbuffer operation api called by other functions,
  *	like init, debug, empty & full detect, add/remove operation
  * @{
  */
 /**
- * \brief	init ringbuffer buffer and size
- * \param[in]	rb	ringbuffer that you want to init
- * \param[in]	buf	buffer that ringbuffer will use
- * \param[in]	item_cnt	the buffer size in rb_buftype
- * \retval	0	ringbuffer init success
- * \retval	-1	ringbuffer passed arguments miss the requirement
+ * @brief	init ringbuffer buffer and size
+ * @param[in]	rb	ringbuffer that you want to init
+ * @param[in]	buf	buffer that ringbuffer will use
+ * @param[in]	item_cnt	the buffer size in rb_buftype
+ * @retval	0	ringbuffer init success
+ * @retval	-1	ringbuffer passed arguments miss the requirement
  */
 int rb_init(RINGBUFFER *rb, rb_buftype *buf, unsigned int item_cnt)
 {
@@ -80,10 +80,10 @@ int rb_init(RINGBUFFER *rb, rb_buftype *buf, unsigned int item_cnt)
 }
 
 /**
- * \brief	print ringbuffer info
- * \param[in]	rb	ringbuffer to query
- * \retval	0	ringbuffer init success
- * \retval	-1	ringbuffer passed arguments miss the requirement
+ * @brief	print ringbuffer info
+ * @param[in]	rb	ringbuffer to query
+ * @retval	0	ringbuffer init success
+ * @retval	-1	ringbuffer passed arguments miss the requirement
  */
 int rb_dbg(RINGBUFFER *rb)
 {
@@ -96,11 +96,11 @@ int rb_dbg(RINGBUFFER *rb)
 }
 
 /**
- * \brief	check whether ringbuffer is full
- * \param[in]	rb	ringbuffer to query
- * \retval	1	buffer was full
- * \retval	0	buffer was not full
- * \retval	-1	ringbuffer passed arguments miss the requirement
+ * @brief	check whether ringbuffer is full
+ * @param[in]	rb	ringbuffer to query
+ * @retval	1	buffer was full
+ * @retval	0	buffer was not full
+ * @retval	-1	ringbuffer passed arguments miss the requirement
  */
 int rb_isfull(RINGBUFFER *rb)
 {
@@ -110,11 +110,11 @@ int rb_isfull(RINGBUFFER *rb)
 }
 
 /**
- * \brief	check whether ringbuffer is empty
- * \param[in]	rb	ringbuffer to query
- * \retval	1	buffer was empty
- * \retval	0	buffer was not empty
- * \retval	-1	ringbuffer passed arguments miss the requirement
+ * @brief	check whether ringbuffer is empty
+ * @param[in]	rb	ringbuffer to query
+ * @retval	1	buffer was empty
+ * @retval	0	buffer was not empty
+ * @retval	-1	ringbuffer passed arguments miss the requirement
  */
 int rb_isempty(RINGBUFFER *rb)
 {
@@ -124,12 +124,12 @@ int rb_isempty(RINGBUFFER *rb)
 }
 
 /**
- * \brief	add a new item(rb_buftype) to ringbuffer
- * \param[in]	rb	ringbuffer to operate
- * \param[in]	item	item to add
- * \retval	0	add item to buffer successfully
- * \retval	-1	buffer error, buffer was not valid
- * \retval	-2	buffer full
+ * @brief	add a new item(rb_buftype) to ringbuffer
+ * @param[in]	rb	ringbuffer to operate
+ * @param[in]	item	item to add
+ * @retval	0	add item to buffer successfully
+ * @retval	-1	buffer error, buffer was not valid
+ * @retval	-2	buffer full
  */
 int rb_add(RINGBUFFER *rb, rb_buftype item)
 {
@@ -152,13 +152,13 @@ int rb_add(RINGBUFFER *rb, rb_buftype item)
 }
 
 /**
- * \brief	remove one valid item(rb_buftype) from ringbuffer
- * \param[in]	rb	ringbuffer to operate
- * \param[out]	item	the removed item get from the ringbuffer
- * \retval	0	success
- * \retval	-1	ringbuffer error, buffer was not valid
- * \retval	-2	buffer full
- * \retval	-3	item not valid
+ * @brief	remove one valid item(rb_buftype) from ringbuffer
+ * @param[in]	rb	ringbuffer to operate
+ * @param[out]	item	the removed item get from the ringbuffer
+ * @retval	0	success
+ * @retval	-1	ringbuffer error, buffer was not valid
+ * @retval	-2	buffer full
+ * @retval	-3	item not valid
  */
 int rb_remove(RINGBUFFER *rb, rb_buftype *item)
 {
@@ -186,10 +186,10 @@ int rb_remove(RINGBUFFER *rb, rb_buftype *item)
 }
 
 /**
- * \brief	Push more items(rb_buftype) into ringbuffer
- * \param[in]	rb	ringbuffer to operate
- * \param[out]	items	the items need to pushed into ringbuffer
- * \retval	>=0	pushed size
+ * @brief	Push more items(rb_buftype) into ringbuffer
+ * @param[in]	rb	ringbuffer to operate
+ * @param[out]	items	the items need to pushed into ringbuffer
+ * @retval	>=0	pushed size
  */
 unsigned int rb_push(RINGBUFFER *rb, rb_buftype *items, unsigned int cnt)
 {
@@ -206,10 +206,10 @@ unsigned int rb_push(RINGBUFFER *rb, rb_buftype *items, unsigned int cnt)
 }
 
 /**
- * \brief	Pop more items(rb_buftype) from ringbuffer
- * \param[in]	rb	ringbuffer to operate
- * \param[out]	items	the items need to poped from ringbuffer
- * \retval	>=0	poped size
+ * @brief	Pop more items(rb_buftype) from ringbuffer
+ * @param[in]	rb	ringbuffer to operate
+ * @param[out]	items	the items need to poped from ringbuffer
+ * @retval	>=0	poped size
  */
 unsigned int rb_pop(RINGBUFFER *rb, rb_buftype *items, unsigned int cnt)
 {

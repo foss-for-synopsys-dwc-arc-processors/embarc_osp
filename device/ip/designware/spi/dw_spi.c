@@ -116,12 +116,12 @@ Inline int32_t dw_spi_rxflr(DW_SPI_REG *spi_reg_ptr)
 	return (int32_t)spi_reg_ptr->RXFLR;
 }
 /**
- * \brief	send data by spi when available,
+ * @brief	send data by spi when available,
  * 	mostly used in interrupt method, non-blocked function
- * \param[in]	spi_reg_ptr	spi register structure pointer
- * \param[in]	data		data to be sent
- * \retval	E_OK		send successfully
- * \retval	E_OBJ		not ready to send data
+ * @param[in]	spi_reg_ptr	spi register structure pointer
+ * @param[in]	data		data to be sent
+ * @retval	E_OK		send successfully
+ * @retval	E_OBJ		not ready to send data
  */
 Inline int32_t dw_spi_snd_dat(DW_SPI_REG *spi_reg_ptr, int32_t data)
 {
@@ -132,19 +132,19 @@ Inline int32_t dw_spi_snd_dat(DW_SPI_REG *spi_reg_ptr, int32_t data)
 	return E_OBJ;
 }
 /**
- * \brief	receive one char from spi,
+ * @brief	receive one char from spi,
  * 	mostly used in interrupt routine, non-blocked function
- * \param[in]	spi_reg_ptr	spi register structure pointer
- * \return	data received by the spi
+ * @param[in]	spi_reg_ptr	spi register structure pointer
+ * @return	data received by the spi
  */
 Inline int32_t dw_spi_rcv_dat(DW_SPI_REG *spi_reg_ptr)
 {
 	return dw_spi_getdata(spi_reg_ptr);
 }
 /**
- * \brief	send char by spi in poll method, blocked function
- * \param[in]	spi_reg_ptr	spi register structure pointer
- * \param[in]	data		data to be sent
+ * @brief	send char by spi in poll method, blocked function
+ * @param[in]	spi_reg_ptr	spi register structure pointer
+ * @param[in]	data		data to be sent
  */
 Inline void dw_spi_psnd_dat(DW_SPI_REG *spi_reg_ptr, int32_t data)
 {
@@ -156,9 +156,9 @@ Inline void dw_spi_psnd_dat(DW_SPI_REG *spi_reg_ptr, int32_t data)
 	dw_spi_putdata(spi_reg_ptr, data);
 }
 /**
- * \brief	receive one char from spi in poll method, blocked function
- * \param[in]	spi_reg_ptr	spi register structure pointer
- * \return	data received by the spi
+ * @brief	receive one char from spi in poll method, blocked function
+ * @param[in]	spi_reg_ptr	spi register structure pointer
+ * @return	data received by the spi
  */
 Inline int32_t dw_spi_prcv_dat(DW_SPI_REG *spi_reg_ptr)
 {
@@ -406,9 +406,9 @@ static void dw_spi_disable_device(DEV_SPI_INFO *spi_info_ptr)
 }
 
 /**
- * \brief	disable designware spi send or receive interrupt
- * \param[in]	DEV_SPI_INFO 	*spi_info_ptr
- * \param[in]	cbrtn		control code of callback routine of send or receive
+ * @brief	disable designware spi send or receive interrupt
+ * @param[in]	DEV_SPI_INFO 	*spi_info_ptr
+ * @param[in]	cbrtn		control code of callback routine of send or receive
  */
 static int32_t dw_spi_dis_cbr(DEV_SPI_INFO *spi_info_ptr, uint32_t cbrtn)
 {
@@ -448,9 +448,9 @@ error_exit:
 }
 
 /**
- * \brief	enable DesignWare SPI send or receive interrupt
- * \param[in]	DEV_SPI_INFO 	*spi_info_ptr
- * \param[in]	cbrtn		control code of callback routine of send or receive
+ * @brief	enable DesignWare SPI send or receive interrupt
+ * @param[in]	DEV_SPI_INFO 	*spi_info_ptr
+ * @param[in]	cbrtn		control code of callback routine of send or receive
  */
 static int32_t dw_spi_ena_cbr(DEV_SPI_INFO *spi_info_ptr, uint32_t cbrtn)
 {
@@ -485,8 +485,8 @@ error_exit:
 }
 
 /**
- * \brief	enable designware spi interrupt
- * \param	spi_info_ptr	spi information structure pointer
+ * @brief	enable designware spi interrupt
+ * @param	spi_info_ptr	spi information structure pointer
  */
 static void dw_spi_enable_interrupt(DEV_SPI_INFO *spi_info_ptr)
 {
@@ -502,8 +502,8 @@ static void dw_spi_enable_interrupt(DEV_SPI_INFO *spi_info_ptr)
 	}
 }
 /**
- * \brief	disable designware spi interrupt
- * \param	spi_info_ptr	spi information structure pointer
+ * @brief	disable designware spi interrupt
+ * @param	spi_info_ptr	spi information structure pointer
  */
 static void dw_spi_disable_interrupt(DEV_SPI_INFO *spi_info_ptr)
 {
@@ -882,17 +882,17 @@ static uint32_t dw_spi_quad_receive(DEV_SPI_INFO *spi_info_ptr, DEV_SPI_PAK_PTR 
 /** @} */
 
 /**
- * \brief	open a designware spi device
- * \param[in]	spi_obj	spi object pointer
- * \param[in]	mode	spi working mode (master or slave)
- * \param[in]	param	parameter, for master, param is the freq, for slave, param is dfs
- * \retval	E_OK	Open successfully without any issues
- * \retval	E_OPNED	If device was opened before with different parameters,
- *			then just increase the \ref dev_spi_info::opn_cnt "opn_cnt" and return \ref E_OPNED
- * \retval	E_OBJ	Device object is not valid
- * \retval	E_SYS	Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first.
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_NOSPT	Open settings are not supported
+ * @brief	open a designware spi device
+ * @param[in]	spi_obj	spi object pointer
+ * @param[in]	mode	spi working mode (master or slave)
+ * @param[in]	param	parameter, for master, param is the freq, for slave, param is dfs
+ * @retval	E_OK	Open successfully without any issues
+ * @retval	E_OPNED	If device was opened before with different parameters,
+ *			then just increase the @ref dev_spi_info::opn_cnt "opn_cnt" and return @ref E_OPNED
+ * @retval	E_OBJ	Device object is not valid
+ * @retval	E_SYS	Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first.
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_NOSPT	Open settings are not supported
  */
 int32_t dw_spi_open(DEV_SPI *spi_obj, uint32_t mode, uint32_t param)
 {
@@ -982,11 +982,11 @@ error_exit:
 }
 
 /**
- * \brief	close a DesignWare SPI device
- * \param[in]	spi_obj	spi object pointer
- * \retval	E_OK	Close successfully without any issues(including scenario that device is already closed)
- * \retval	E_OPNED	Device is still opened, the device \ref dev_spi_info::opn_cnt "opn_cnt" decreased by 1
- * \retval	E_OBJ	Device object is not valid
+ * @brief	close a DesignWare SPI device
+ * @param[in]	spi_obj	spi object pointer
+ * @retval	E_OK	Close successfully without any issues(including scenario that device is already closed)
+ * @retval	E_OPNED	Device is still opened, the device @ref dev_spi_info::opn_cnt "opn_cnt" decreased by 1
+ * @retval	E_OBJ	Device object is not valid
  */
 int32_t dw_spi_close(DEV_SPI *spi_obj)
 {
@@ -1020,17 +1020,17 @@ error_exit:
 }
 
 /**
- * \brief	control spi by ctrl command
- * \param[in]		spi_obj		spi object pointer
- * \param[in]		ctrl_cmd	control command code to do specific spi work
- * \param[in,out]	param		parameters used to control spi or return something
- * \retval	E_OK	Control device successfully
- * \retval	E_CLSED	Device is not opened
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
- * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
- * \retval	E_NOSPT	Control command is not supported or not valid
+ * @brief	control spi by ctrl command
+ * @param[in]		spi_obj		spi object pointer
+ * @param[in]		ctrl_cmd	control command code to do specific spi work
+ * @param[in,out]	param		parameters used to control spi or return something
+ * @retval	E_OK	Control device successfully
+ * @retval	E_CLSED	Device is not opened
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
+ * @retval	E_CTX	Control device failed, due to different reasons like in transfer state
+ * @retval	E_NOSPT	Control command is not supported or not valid
  */
 int32_t dw_spi_control(DEV_SPI *spi_obj, uint32_t ctrl_cmd, void *param)
 {
@@ -1268,15 +1268,15 @@ error_exit:
 }
 
 /**
- * \brief	send data through DesignWare SPI
- * \param[in]	spi_obj	spi object pointer
- * \param[in]	data	pointer to data need to send by spi
- * \param[in]	len	length of data to be sent
- * \retval	>0	Byte count that was successfully sent for poll method
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_CTX	Device is still in transfer state
- * \retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
+ * @brief	send data through DesignWare SPI
+ * @param[in]	spi_obj	spi object pointer
+ * @param[in]	data	pointer to data need to send by spi
+ * @param[in]	len	length of data to be sent
+ * @retval	>0	Byte count that was successfully sent for poll method
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_CTX	Device is still in transfer state
+ * @retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
  */
 int32_t dw_spi_write(DEV_SPI *spi_obj, const void *data, uint32_t len)
 {
@@ -1312,15 +1312,15 @@ error_exit:
 }
 
 /**
- * \brief	read data through DesignWare SPI
- * \param[in]	spi_info_ptr	spi information structure pointer
- * \param[out]	data		data that need to read (data must be char type)
- * \param[in]	len		data count need to read
- * \retval	>=0		data have been read
- * \retval	E_PAR		arguments passed was wrong
- * \retval	E_OBJ		spi has something error, nothing can be done
- * \retval	E_CLSED		spi was closed, not available for control
- * \retval	<0		other error code not defined here
+ * @brief	read data through DesignWare SPI
+ * @param[in]	spi_info_ptr	spi information structure pointer
+ * @param[out]	data		data that need to read (data must be char type)
+ * @param[in]	len		data count need to read
+ * @retval	>=0		data have been read
+ * @retval	E_PAR		arguments passed was wrong
+ * @retval	E_OBJ		spi has something error, nothing can be done
+ * @retval	E_CLSED		spi was closed, not available for control
+ * @retval	<0		other error code not defined here
  */
 int32_t dw_spi_read(DEV_SPI *spi_obj, void *data, uint32_t len)
 {
@@ -1356,9 +1356,9 @@ error_exit:
 }
 
 /**
- * \brief	DesignWare SPI interrupt processing routine
- * \param[in]	spi_info_ptr	DEV_SPI_INFO *spi_info_ptr
- * \param[in]	ptr		extra information
+ * @brief	DesignWare SPI interrupt processing routine
+ * @param[in]	spi_info_ptr	DEV_SPI_INFO *spi_info_ptr
+ * @param[in]	ptr		extra information
  */
 void dw_spi_isr(DEV_SPI *spi_obj, void *ptr)
 {

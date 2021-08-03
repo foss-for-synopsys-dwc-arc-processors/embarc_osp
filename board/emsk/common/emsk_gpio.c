@@ -28,24 +28,24 @@
  *
    --------------------------------------------- */
 /**
- * \defgroup	BOARD_EMSK_DRV_GPIO	EMSK GPIO Driver
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Onboard GPIO Peripherals Driver
- * \details
+ * @defgroup	BOARD_EMSK_DRV_GPIO	EMSK GPIO Driver
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Onboard GPIO Peripherals Driver
+ * @details
  *		Implementation of EMSK on-board button, led, dip switch driver,
  *	this is for better use, you don't have to get a gpio object before operating
  *	led,button,switch, because some basic functions for usage are provided.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_GPIO
- * \brief	all on emsk board gpio device init and operate functions
- * \details	this gpio devices are button, led, dip switch
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_GPIO
+ * @brief	all on emsk board gpio device init and operate functions
+ * @details	this gpio devices are button, led, dip switch
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_GPIO
+ * @addtogroup	BOARD_EMSK_DRV_GPIO
  * @{
  */
 #include "embARC_error.h"

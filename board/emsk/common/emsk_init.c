@@ -28,30 +28,30 @@
  *
    --------------------------------------------- */
 /**
- * \defgroup	BOARD_EMSK_COMMON_INIT	EMSK Common Init Module
- * \ingroup	BOARD_EMSK_COMMON
- * \brief	EMSK Board Common Init Module
- * \details
+ * @defgroup	BOARD_EMSK_COMMON_INIT	EMSK Common Init Module
+ * @ingroup	BOARD_EMSK_COMMON
+ * @brief	EMSK Board Common Init Module
+ * @details
  * 		EMSK timer/gpio/interrupt init process. Device-driver installation is done while
  *	getting the device object for the first time.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_COMMON_INIT
- * \brief	common emsk init module
+ * @file
+ * @ingroup	BOARD_EMSK_COMMON_INIT
+ * @brief	common emsk init module
  */
 
 /**
- * \addtogroup	BOARD_EMSK_COMMON_INIT
+ * @addtogroup	BOARD_EMSK_COMMON_INIT
  * @{
  */
 #include "arc/arc_timer.h"
 #include "board.h"
 
 /**
- * \brief	Board init routine MUST be called in each application
- * \note	It is better to disable interrupts when calling this function
+ * @brief	Board init routine MUST be called in each application
+ * @note	It is better to disable interrupts when calling this function
  *	remember to enable interrupt when you want to use them
  */
 void board_init(void)

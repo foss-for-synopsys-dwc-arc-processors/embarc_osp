@@ -29,19 +29,19 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	DEVICE_HAL_I2S		I2S Device HAL Interface
- * \ingroup	DEVICE_HAL_DEF
- * \brief	Definitions for I2S device hardware layer (\ref dev_iis.h)
- * \details	Provide unified APIs for I2S driver to implement.
+ * @defgroup	DEVICE_HAL_I2S		I2S Device HAL Interface
+ * @ingroup	DEVICE_HAL_DEF
+ * @brief	Definitions for I2S device hardware layer (@ref dev_i2s.h)
+ * @details	Provide unified APIs for I2S driver to implement.
  *
  * ### Reference Links
  *     * [Serial Port](https://en.wikipedia.org/wiki/I%C2%B2S)
  *
  * @{6
  *
- * \file
- * \brief	I2S device hardware layer definitions
- * \details	Provide common definitions for I2S device,
+ * @file
+ * @brief	I2S device hardware layer definitions
+ * @details	Provide common definitions for I2S device,
  * 	then software developer can develop I2S driver
  * 	following this definitions, and the applications
  * 	can directly call this definition to realize functions
@@ -54,16 +54,16 @@
 #include "device/dev_common.h"
 
 /**
- * \defgroup	DEVICE_HAL_I2S_CFG	I2S Related Configurations
- * \ingroup	DEVICE_HAL_I2S
- * \brief	Macros for I2S device related configurations.
+ * @defgroup	DEVICE_HAL_I2S_CFG	I2S Related Configurations
+ * @ingroup	DEVICE_HAL_I2S
+ * @brief	Macros for I2S device related configurations.
  * @{
  */
 
 /**
- * \defgroup	I2S_AUD_DATA_RES	I2S Audio Data Resolution
- * \ingroup	DEVICE_HAL_I2S_CFG
- * \brief	definitions for I2S audio data resolution
+ * @defgroup	I2S_AUD_DATA_RES	I2S Audio Data Resolution
+ * @ingroup	DEVICE_HAL_I2S_CFG
+ * @brief	definitions for I2S audio data resolution
  * @{
  */
 typedef enum i2s_aud_data_res {
@@ -77,9 +77,9 @@ typedef enum i2s_aud_data_res {
 /** @} */
 
 /**
- * \defgroup	I2S_AUD_SAMPLE_RATE	I2S Audio Sampling Rate
- * \ingroup	DEVICE_HAL_I2S_CFG
- * \brief	definitions for I2S audio sampling rate
+ * @defgroup	I2S_AUD_SAMPLE_RATE	I2S Audio Sampling Rate
+ * @ingroup	DEVICE_HAL_I2S_CFG
+ * @brief	definitions for I2S audio sampling rate
  * @{
  */
 typedef enum i2s_aud_sample_rate {
@@ -94,9 +94,9 @@ typedef enum i2s_aud_sample_rate {
 /** @} */
 
 /**
- * \defgroup	I2S_DEVICE_TYPE		I2S Device Type
- * \ingroup	DEVICE_HAL_I2S_CFG
- * \brief	definitions for I2S device type
+ * @defgroup	I2S_DEVICE_TYPE		I2S Device Type
+ * @ingroup	DEVICE_HAL_I2S_CFG
+ * @brief	definitions for I2S device type
  * @{
  */
 typedef enum i2s_device_type {
@@ -106,9 +106,9 @@ typedef enum i2s_device_type {
 /** @} */
 
 /**
- * \defgroup	I2S_WORKING_STATE	I2S Working State
- * \ingroup	DEVICE_HAL_I2S_CFG
- * \brief	definitions for I2S working state
+ * @defgroup	I2S_WORKING_STATE	I2S Working State
+ * @ingroup	DEVICE_HAL_I2S_CFG
+ * @brief	definitions for I2S working state
  * @{
  */
 typedef enum i2s_working_state {
@@ -119,9 +119,9 @@ typedef enum i2s_working_state {
 /** @} */
 
 /**
- * \defgroup	I2S_ERROR_STATE		I2S Error State
- * \ingroup	DEVICE_HAL_I2S_CFG
- * \brief	definitions for I2S error state
+ * @defgroup	I2S_ERROR_STATE		I2S Error State
+ * @ingroup	DEVICE_HAL_I2S_CFG
+ * @brief	definitions for I2S error state
  * @{
  */
 typedef enum i2s_error_state {
@@ -135,22 +135,22 @@ typedef enum i2s_error_state {
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_I2S_CTRLCMD		I2S Device Control Commands
- * \ingroup	DEVICE_HAL_I2S
- * \brief	Definitions for I2S control command, used in \ref dev_i2s::i2s_control "I2S Control"
- * \details	These commands defined here can be used in user code directly.
+ * @defgroup	DEVICE_HAL_I2S_CTRLCMD		I2S Device Control Commands
+ * @ingroup	DEVICE_HAL_I2S
+ * @brief	Definitions for I2S control command, used in @ref dev_i2s::i2s_control "I2S Control"
+ * @details	These commands defined here can be used in user code directly.
  * - Parameters Usage
  *   - For passing parameters like integer, just use uint32_t/int32_t to directly pass values
  *   - For passing parameters for a structure, please use pointer to pass values
  *   - For getting some data, please use pointer to store the return data
  * - Common Return Values
- *   - \ref E_OK,	Control device successfully
- *   - \ref E_CLSED,	Device is not opened
- *   - \ref E_OBJ,	Device object is not valid or not exists
- *   - \ref E_PAR,	Parameter is not valid for current control command
- *   - \ref E_SYS,	Control device failed, due to hardware issues such as device is disabled
- *   - \ref E_CTX,	Control device failed, due to different reasons like in transfer state
- *   - \ref E_NOSPT,	Control command is not supported or not valid
+ *   - @ref E_OK,	Control device successfully
+ *   - @ref E_CLSED,	Device is not opened
+ *   - @ref E_OBJ,	Device object is not valid or not exists
+ *   - @ref E_PAR,	Parameter is not valid for current control command
+ *   - @ref E_SYS,	Control device failed, due to hardware issues such as device is disabled
+ *   - @ref E_CTX,	Control device failed, due to different reasons like in transfer state
+ *   - @ref E_NOSPT,	Control command is not supported or not valid
  * @{
  */
 
@@ -161,32 +161,32 @@ typedef enum i2s_error_state {
 
 /* ++++ Common commands for SPI Device ++++ */
 /**
- * Get \ref dev_i2s_info::status "current device status"
+ * Get @ref dev_i2s_info::status "current device status"
  * - Param type : uint32_t *
  * - Param usage : store result of current status
  * - Return value explanation :
  */
 #define I2S_CMD_GET_STATUS                      DEV_SET_I2S_SYSCMD(0)
 /**
- * Set \ref dev_i2s_cbs::tx_cb "I2S transmit success callback" function
+ * Set @ref dev_i2s_cbs::tx_cb "I2S transmit success callback" function
  * when all required bytes are transmitted for interrupt method
- * - Param type : \ref DEV_CALLBACK * or NULL
+ * - Param type : @ref DEV_CALLBACK * or NULL
  * - Param usage : transmit success callback function for I2S
  * - Return value explanation :
  */
 #define I2S_CMD_SET_TXCB                        DEV_SET_I2S_SYSCMD(1)
 /**
- * Set \ref dev_i2s_cbs::rx_cb "I2S receive success callback" function
+ * Set @ref dev_i2s_cbs::rx_cb "I2S receive success callback" function
  * when all required bytes are received for interrupt method
- * - Param type : \ref DEV_CALLBACK * or NULL
+ * - Param type : @ref DEV_CALLBACK * or NULL
  * - Param usage : receive success callback function for I2S
  * - Return value explanation :
  */
 #define I2S_CMD_SET_RXCB                        DEV_SET_I2S_SYSCMD(2)
 /**
- * Set \ref dev_i2s_cbs::err_cb "I2S transfer error callback" function
+ * Set @ref dev_i2s_cbs::err_cb "I2S transfer error callback" function
  * when something error happened for interrupt method
- * - Param type : \ref DEV_CALLBACK * or NULL
+ * - Param type : @ref DEV_CALLBACK * or NULL
  * - Param usage : transfer error callback function for I2S
  * - Return value explanation :
  */
@@ -236,16 +236,16 @@ typedef enum i2s_error_state {
 #define I2S_CMD_ENA_DEV                         DEV_SET_I2S_SYSCMD(9)
 /**
  * Disable I2S device, when device is disabled,
- * only \ref I2S_CMD_ENA_DEV, \ref I2S_CMD_DIS_DEV,
- * \ref I2S_CMD_GET_STATUS and \ref I2S_CMD_RESET
- * commands can be executed, other commands will return \ref E_SYS
+ * only @ref I2S_CMD_ENA_DEV, @ref I2S_CMD_DIS_DEV,
+ * @ref I2S_CMD_GET_STATUS and @ref I2S_CMD_RESET
+ * commands can be executed, other commands will return @ref E_SYS
  * - Param type : Device channel nummber
  * - Param usage : Specified device channel number
  * - Return value explanation :
  */
 #define I2S_CMD_DIS_DEV                         DEV_SET_I2S_SYSCMD(10)
 /**
- * Set buffer for interrupt transmit, and it will set \ref dev_i2s_info::tx_buf "tx_buf".
+ * Set buffer for interrupt transmit, and it will set @ref dev_i2s_info::tx_buf "tx_buf".
  * - I2S transmitter command \n
  *    If setting TX buffer to NULL, when tx interrupt is enabled and entered into tx interrupt,
  * it will automatically disable the tx interrupt, so when you want to transfer something, you need to set the
@@ -257,9 +257,9 @@ typedef enum i2s_error_state {
  */
 #define I2S_CMD_SET_TXINT_BUF                   DEV_SET_I2S_SYSCMD(11)
 /**
- * Set buffer for interrupt receive, and it will set \ref dev_i2s_info::rx_buf "rx_buf"
+ * Set buffer for interrupt receive, and it will set @ref dev_i2s_info::rx_buf "rx_buf"
  * - I2S receiver command \n
- *   Similiar to \ref I2S_CMD_SET_TXINT_BUF
+ *   Similiar to @ref I2S_CMD_SET_TXINT_BUF
  * - Param type : DEV_BUFFER * or NULL
  * - Param usage : buffer structure pointer, if param is NULL, then it will set rx_buf to NULL
  * - Return value explanation :
@@ -314,9 +314,9 @@ typedef enum i2s_error_state {
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_I2S_CALLBACK	I2S Interrupt Callback Functions
- * \ingroup	DEVICE_HAL_I2S
- * \brief	callback function structure for I2S device
+ * @defgroup	DEVICE_HAL_I2S_CALLBACK	I2S Interrupt Callback Functions
+ * @ingroup	DEVICE_HAL_I2S
+ * @brief	callback function structure for I2S device
  * @{
  */
 typedef struct dev_i2s_cbs {
@@ -327,33 +327,33 @@ typedef struct dev_i2s_cbs {
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_I2S_DEVSTRUCT	I2S Device Structure
- * \ingroup	DEVICE_HAL_I2S
- * \brief	contains definitions of I2S device structure.
- * \details	this structure will be used in user implemented code, which was called
+ * @defgroup	DEVICE_HAL_I2S_DEVSTRUCT	I2S Device Structure
+ * @ingroup	DEVICE_HAL_I2S
+ * @brief	contains definitions of I2S device structure.
+ * @details	this structure will be used in user implemented code, which was called
  *     Device Driver Implement Layer for I2S to realize in user code.
  * @{
  */
 /**
- * \brief	I2S information struct definition
- * \details	informations about I2S open state, working state,
+ * @brief	I2S information struct definition
+ * @details	informations about I2S open state, working state,
  * 	baurate, I2S registers, working method, interrupt number
  */
 typedef struct dev_i2s_info {
 	void *i2s_ctrl;         /*!< I2S control related pointer, implemented by BSP developer, and this should be set during i2s object implementation */
 	void *i2s_config;       /*!< I2S device configuration, implemented by BSP developer, and this shoud be set in object implementation */
 	uint32_t opn_cnt;       /*!< I2S open count, open it will increase 1, close it will decrease 1, 0 for close, >0 for open */
-	uint32_t status;        /*!< current working status, refer to \ref DEVICE_HAL_COMMON_DEVSTATUS, this should be \ref DEV_ENABLED for first open */
-	uint32_t device;        /*!< device type, refer to \ref I2S_DEVICE_TYPE, this should be set for object initialization */
-	uint32_t mode;          /*!< current working mode, which can be \ref DEV_MASTER_MODE "master mode" or \ref DEV_SLAVE_MODE "slave mode" */
-	uint32_t cur_state;     /*!< \ref I2S_WORKING_STATE "current working state for I2S device", this should be \ref I2S_FREE for first open */
-	uint32_t err_state;     /*!< \ref I2S_ERROR_STATE "current error state for I2S device", this should be \ref I2S_ERR_NONE for first open */
+	uint32_t status;        /*!< current working status, refer to @ref DEVICE_HAL_COMMON_DEVSTATUS, this should be @ref DEV_ENABLED for first open */
+	uint32_t device;        /*!< device type, refer to @ref I2S_DEVICE_TYPE, this should be set for object initialization */
+	uint32_t mode;          /*!< current working mode, which can be @ref DEV_MASTER_MODE "master mode" or @ref DEV_SLAVE_MODE "slave mode" */
+	uint32_t cur_state;     /*!< @ref I2S_WORKING_STATE "current working state for I2S device", this should be @ref I2S_FREE for first open */
+	uint32_t err_state;     /*!< @ref I2S_ERROR_STATE "current error state for I2S device", this should be @ref I2S_ERR_NONE for first open */
 	DEV_BUFFER tx_buf;      /*!< transmit buffer via interrupt, this should be all zero for first open */
 	DEV_BUFFER rx_buf;      /*!< receive buffer via interrupt, this should be all zero for first open */
 	DEV_I2S_CBS i2s_cbs;    /*!< I2S callbacks, for both master and slave mode, this should be all NULL for first open */
 	void *extra;            /*!< a extra pointer to get hook to applications which should not used by BSP developer,
-	                                this should be NULL for first open and you can \ref DEV_I2I_INFO_SET_EXTRA_OBJECT "set"
-	                                or \ref DEV_I2S_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
+	                                this should be NULL for first open and you can @ref DEV_I2S_INFO_SET_EXTRA_OBJECT "set"
+	                                or @ref DEV_I2S_INFO_GET_EXTRA_OBJECT "get" the extra information pointer */
 } DEV_I2S_INFO, *DEV_I2S_INFO_PTR;
 
 /** Set extra information pointer of I2S */
@@ -362,10 +362,10 @@ typedef struct dev_i2s_info {
 #define DEV_I2S_INFO_GET_EXTRA_OBJECT(i2s_info_ptr)                     ((i2s_info_ptr)->extra)
 
 /**
- * \brief	I2S device interface definition
- * \details	define I2S device interface, like I2S information structure,
+ * @brief	I2S device interface definition
+ * @details	define I2S device interface, like I2S information structure,
  * 		fuctions to get I2S info, open/close/control I2S, send/receive data by I2S
- * \note	all this details are implemented by user in user porting code
+ * @note	all this details are implemented by user in user porting code
  */
 typedef struct dev_i2s {
 	DEV_I2S_INFO i2s_info;                                  /*!< I2S device information */
@@ -379,70 +379,70 @@ typedef struct dev_i2s {
 } DEV_I2S, *DEV_I2S_PTR;
 
 /**
- * \fn		int32_t (* dev_i2s::i2s_open) (uint32_t mode, uint32_t param)
- * \details	open an I2S device with selected mode (master or slave) with defined \ref param
- * \param[in]	mode	working mode (\ref DEV_MASTER_MODE "master" or \ref DEV_SLAVE_MODE "slave")
- * \param[in]	param	device type (\ref I2S_DEVICE_TRANSMITTER "transmitter" OR \ref I2S_DEVICE_RECEIVER "receiver")
- * \retval	E_OK	Open successfully without any issues
- * \retval	E_OPNED	Device was opened before
- * \retval	E_OBJ	Device object is not valid
- * \retval	E_SYS	Device initialized parameters are different with parameters in IP
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_NOSPT	Open settings are not supported
+ * @fn		int32_t (* dev_i2s::i2s_open) (uint32_t mode, uint32_t param)
+ * @details	open an I2S device with selected mode (master or slave) with defined param
+ * @param[in]	mode	working mode (@ref DEV_MASTER_MODE "master" or @ref DEV_SLAVE_MODE "slave")
+ * @param[in]	param	device type (@ref I2S_DEVICE_TRANSMITTER "transmitter" OR @ref I2S_DEVICE_RECEIVER "receiver")
+ * @retval	E_OK	Open successfully without any issues
+ * @retval	E_OPNED	Device was opened before
+ * @retval	E_OBJ	Device object is not valid
+ * @retval	E_SYS	Device initialized parameters are different with parameters in IP
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_NOSPT	Open settings are not supported
  */
 
 /**
- * \fn		int32_t (* dev_i2s::i2s_close) (void)
- * \details	close an I2S device, just decrease the \ref dev_i2s_info::opn_cnt "opn_cnt",
- *      if \ref dev_i2s_info::opn_cnt "opn_cnt" equals 0, then close the device
- * \retval	E_OK	Close successfully without any issues(including scenario that device is already closed)
- * \retval	E_OPNED	Device is still opened, the device \ref dev_i2s_info::opn_cnt "opn_cnt" decreased by 1
- * \retval	E_OBJ	Device object is not valid
+ * @fn		int32_t (* dev_i2s::i2s_close) (void)
+ * @details	close an I2S device, just decrease the @ref dev_i2s_info::opn_cnt "opn_cnt",
+ *      if @ref dev_i2s_info::opn_cnt "opn_cnt" equals 0, then close the device
+ * @retval	E_OK	Close successfully without any issues(including scenario that device is already closed)
+ * @retval	E_OPNED	Device is still opened, the device @ref dev_i2s_info::opn_cnt "opn_cnt" decreased by 1
+ * @retval	E_OBJ	Device object is not valid
  */
 
 /**
- * \fn		int32_t (* dev_i2s::i2s_control) (uint32_t ctrl_cmd, void *param)
- * \details	control an I2S device by \ref ctrl_cmd, with passed \ref param.
- * 	you can control I2S device using predefined I2S control commands defined using \ref DEV_SET_SYSCMD
- * 	(which must be implemented by bsp developer), \ref DEVICE_HAL_I2S_CTRLCMD "command details".
- * 	And you can also control I2S device using your own specified commands defined using \ref DEV_SET_USRCMD,
+ * @fn		int32_t (* dev_i2s::i2s_control) (uint32_t ctrl_cmd, void *param)
+ * @details	control an I2S device by ctrl_cmd, with passed param.
+ * 	you can control I2S device using predefined I2S control commands defined using @ref DEV_SET_SYSCMD
+ * 	(which must be implemented by bsp developer), @ref DEVICE_HAL_I2S_CTRLCMD "command details".
+ * 	And you can also control I2S device using your own specified commands defined using @ref DEV_SET_USRCMD,
  * 	but these specified commands should be defined in your own I2S device driver implementation.
- * \param[in]		ctrl_cmd	\ref DEVICE_HAL_I2S_CTRLCMD "control command", to change or get some thing related to I2S
- * \param[in,out]	param		parameters that maybe argument of the command,
+ * @param[in]		ctrl_cmd	@ref DEVICE_HAL_I2S_CTRLCMD "control command", to change or get some thing related to I2S
+ * @param[in,out]	param		parameters that maybe argument of the command,
  * 					or return values of the command, must not be NULL
- * \retval	E_OK	Control device successfully
- * \retval	E_CLSED	Device is not opened
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
- * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
- * \retval	E_NOSPT	Control command is not supported or not valid
+ * @retval	E_OK	Control device successfully
+ * @retval	E_CLSED	Device is not opened
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
+ * @retval	E_CTX	Control device failed, due to different reasons like in transfer state
+ * @retval	E_NOSPT	Control command is not supported or not valid
  */
 
 /**
- * \fn		int32_t (* dev_i2s::i2s_write) (const void *data, uint32_t len)
- * \details	send \ref data through I2S with defined \ref len to RX device.
- * \param[in]	data	pointer to data need to send by I2S
- * \param[in]	len	length of data to be sent
- * \retval	>0	Byte count that was successfully sent for poll method,
- * 			it might can't send that much due to \ref \ref dev_i2s_info::err_state "different error state".
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_CTX	Device is still in transfer state
- * \retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
+ * @fn		int32_t (* dev_i2s::i2s_write) (const void *data, uint32_t len)
+ * @details	send data through I2S with defined len to RX device.
+ * @param[in]	data	pointer to data need to send by I2S
+ * @param[in]	len	length of data to be sent
+ * @retval	>0	Byte count that was successfully sent for poll method,
+ * 			it might can't send that much due to @ref dev_i2s_info::err_state "different error state".
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_CTX	Device is still in transfer state
+ * @retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
  */
 
 /**
- * \fn		int32_t (* dev_i2s::i2s_read) (void *data, uint32_t len)
- * \details	receive \ref data of defined \ref len through I2S from TX device.
- * \param[out]	data	pointer to data need to received by I2S
- * \param[in]	len	length of data to be received
- * \retval	>0	Byte count that was successfully received for poll method,
- * 			it might can't send that much due to \ref \ref dev_i2s_info::err_state "different error state".
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_CTX	Device is still in transfer state
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
+ * @fn		int32_t (* dev_i2s::i2s_read) (void *data, uint32_t len)
+ * @details	receive data of defined len through I2S from TX device.
+ * @param[out]	data	pointer to data need to received by I2S
+ * @param[in]	len	length of data to be received
+ * @retval	>0	Byte count that was successfully received for poll method,
+ * 			it might can't send that much due to @ref dev_i2s_info::err_state "different error state".
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_CTX	Device is still in transfer state
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
  */
 /** @} */
 
@@ -451,12 +451,12 @@ extern "C" {
 #endif
 
 /**
- * \brief	get an \ref dev_i2s "i2s device" by i2s device id.
- * 	For how to use i2s device hal refer to \ref DEVICE_HAL_I2S_DEVSTRUCT "Functions in i2s device structure"
- * \param[in]	i2s_id	id of i2s, defined by user
- * \retval	!NULL	pointer to an \ref dev_i2s "i2s device structure"
- * \retval	NULL	failed to find the i2s device by \ref i2s_id
- * \note	need to implemented by user in user code
+ * @brief	get an @ref dev_i2s "i2s device" by i2s device id.
+ * 	For how to use i2s device hal refer to @ref DEVICE_HAL_I2S_DEVSTRUCT "Functions in i2s device structure"
+ * @param[in]	i2s_id	id of i2s, defined by user
+ * @retval	!NULL	pointer to an @ref dev_i2s "i2s device structure"
+ * @retval	NULL	failed to find the i2s device by i2s_id
+ * @note	need to implemented by user in user code
  */
 extern DEV_I2S_PTR i2s_get_dev(int32_t i2s_id);
 

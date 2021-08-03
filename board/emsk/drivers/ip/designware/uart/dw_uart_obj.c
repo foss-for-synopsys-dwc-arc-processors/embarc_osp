@@ -29,23 +29,23 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSK_DRV_DW_UART_OBJ	EMSK DW UART Object
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Designware UART Objects
- * \details
+ * @defgroup	BOARD_EMSK_DRV_DW_UART_OBJ	EMSK DW UART Object
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Designware UART Objects
+ * @details
  *		Realize the EMSK board uart object using Designware uart device driver,
  *	only need to realize some Designware uart structures combine with EMSK uart
  *	hardware resource. just like cpp class instantiation.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
- * \brief	designware uart object instantiation on emsk
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
+ * @brief	designware uart object instantiation on emsk
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_DW_UART_OBJ
+ * @addtogroup	BOARD_EMSK_DRV_DW_UART_OBJ
  * @{
  */
 
@@ -57,7 +57,7 @@
 #define DW_UART_FIFO_LEN        32
 
 /**
- * \name	EMSK DesignWare UART 0 Object Instantiation
+ * @name	EMSK DesignWare UART 0 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_0)
@@ -133,7 +133,7 @@ static void dw_uart_0_install(void)
 /** @} end of name */
 
 /**
- * \name	EMSK DesignWare UART 1 Object Instantiation
+ * @name	EMSK DesignWare UART 1 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_1)
@@ -208,7 +208,7 @@ static void dw_uart_1_install(void)
 /** @} end of name */
 
 /**
- * \name	EMSK DesignWare UART 2 Object Instantiation
+ * @name	EMSK DesignWare UART 2 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_2)
@@ -283,8 +283,8 @@ static void dw_uart_2_install(void)
 /** @} end of name */
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 void dw_uart_all_install(void)
 {

@@ -29,15 +29,15 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	DEVICE_HAL_COMMON	Common Device Layer Definitions
- * \ingroup	DEVICE_HAL_DEF
- * \brief	common definitions for device layer (\ref dev_common.h)
+ * @defgroup	DEVICE_HAL_COMMON	Common Device Layer Definitions
+ * @ingroup	DEVICE_HAL_DEF
+ * @brief	common definitions for device layer (@ref dev_common.h)
  *
  * @{
  *
- * \file
- * \brief	header file to define common definitions for device layer
- * \details	Here in this file provide definitions that need by other
+ * @file
+ * @brief	header file to define common definitions for device layer
+ * @details	Here in this file provide definitions that need by other
  * 	devices in device layer
  */
 
@@ -47,13 +47,13 @@
 #include <stdint.h>
 
 /**
- * \defgroup	DEVICE_HAL_COMMON_DEVSTATE	Common Device State
- * \ingroup	DEVICE_HAL_COMMON
- * \brief	definitions for device state
- * \details	here defines macros for device open/close,
+ * @defgroup	DEVICE_HAL_COMMON_DEVSTATE	Common Device State
+ * @ingroup	DEVICE_HAL_COMMON
+ * @brief	definitions for device state
+ * @details	here defines macros for device open/close,
  * 	device working good/error, used in
- * 	\ref DEVICE_HAL_UART, \ref DEVICE_HAL_SPI,
- * 	\ref DEVICE_HAL_IIC, \ref DEVICE_HAL_GPIO
+ * 	@ref DEVICE_HAL_UART, @ref DEVICE_HAL_SPI,
+ * 	@ref DEVICE_HAL_IIC, @ref DEVICE_HAL_GPIO
  * @{
  */
 /*
@@ -70,13 +70,13 @@
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_COMMON_DEVMTHD	Common Device Working Method
- * \ingroup	DEVICE_HAL_COMMON
- * \brief	definitions for device working method(interrupt or poll)
- * \details	here defines macros for working method,
+ * @defgroup	DEVICE_HAL_COMMON_DEVMTHD	Common Device Working Method
+ * @ingroup	DEVICE_HAL_COMMON
+ * @brief	definitions for device working method(interrupt or poll)
+ * @details	here defines macros for working method,
  * 	interrupt or poll method,used in
- * 	\ref DEVICE_HAL_UART, \ref DEVICE_HAL_SPI,
- * 	\ref DEVICE_HAL_IIC, \ref DEVICE_HAL_GPIO
+ * 	@ref DEVICE_HAL_UART, @ref DEVICE_HAL_SPI,
+ * 	@ref DEVICE_HAL_IIC, @ref DEVICE_HAL_GPIO
  * @{
  */
 /*
@@ -87,12 +87,12 @@
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_COMMON_DEVMODE	Common Device Working Mode
- * \ingroup	DEVICE_HAL_COMMON
- * \brief	definitions for device working mode(master or slave)
- * \details	here defines macros for working mode,
+ * @defgroup	DEVICE_HAL_COMMON_DEVMODE	Common Device Working Mode
+ * @ingroup	DEVICE_HAL_COMMON
+ * @brief	definitions for device working mode(master or slave)
+ * @details	here defines macros for working mode,
  * 	Master or Slave mode,used in
- * 	\ref DEV_HAL_IIC, \ref DEV_HAL_SPI.
+ * 	@ref DEVICE_HAL_IIC, @ref DEVICE_HAL_SPI.
  * @{
  */
 /*
@@ -103,9 +103,9 @@
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_COMMON_DEVSTATUS	Common Device Status
- * \ingroup	DEVICE_HAL_COMMON
- * \brief	definitions for device status, 1 bit for 1 function
+ * @defgroup	DEVICE_HAL_COMMON_DEVSTATUS	Common Device Status
+ * @ingroup	DEVICE_HAL_COMMON
+ * @brief	definitions for device status, 1 bit for 1 function
  * @{
  */
 #define DEV_DISABLED                            (0)             /*!< Bit 0 for device enabled state, disabled */
@@ -119,9 +119,9 @@
 /** @} */
 
 /**
- * \defgroup	DEVICE_HAL_COMMON_DEVID		Common Device ID
- * \ingroup	DEVICE_HAL_COMMON
- * \brief	definitions for device id,
+ * @defgroup	DEVICE_HAL_COMMON_DEVID		Common Device ID
+ * @ingroup	DEVICE_HAL_COMMON
+ * @brief	definitions for device id,
  *	used in GPIO/UART/IIC/SPI/WNIC object identification.
  * @{
  */
@@ -155,16 +155,16 @@ typedef enum dev_id {
 #define DEV_INTNO_INVALID               (0xFFFFFFFF)
 
 /**
- * \defgroup	DEVICE_HAL_COMMON_DEFCMD	Common Device Defining Command
- * \ingroup	DEVICE_HAL_COMMON
- * \brief	definitions for defining command code
- * \details	here defines macros to define command code,
- * 	in system code, use \ref DEV_SET_SYSCMD to define command code.
- * 	in user code, use \ref DEV_SET_USRCMD to define command code.
+ * @defgroup	DEVICE_HAL_COMMON_DEFCMD	Common Device Defining Command
+ * @ingroup	DEVICE_HAL_COMMON
+ * @brief	definitions for defining command code
+ * @details	here defines macros to define command code,
+ * 	in system code, use @ref DEV_SET_SYSCMD to define command code.
+ * 	in user code, use @ref DEV_SET_USRCMD to define command code.
  * 	So that there will be no conflicts in system and user defined command code.
  * 	this used used in
- * 	\ref DEVICE_HAL_UART, \ref DEVICE_HAL_SPI,
- * 	\ref DEVICE_HAL_IIC, \ref DEVICE_HAL_GPIO,
+ * 	@ref DEVICE_HAL_UART, @ref DEVICE_HAL_SPI,
+ * 	@ref DEVICE_HAL_IIC, @ref DEVICE_HAL_GPIO,
  *     	and in user code
  * @{
  */
@@ -198,7 +198,7 @@ typedef struct dev_buffer {
 /**
  *   Device callback function typedef.
  * This is usually used in device callback settings,
- * and \ptr should be the device object pointer,
+ * and ptr should be the device object pointer,
  * such as DEV_IIC * */
 typedef void (*DEV_CALLBACK) (void *ptr);
 

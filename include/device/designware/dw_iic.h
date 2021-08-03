@@ -54,9 +54,12 @@ enum {
 };
 
 /**
- * \brief	DesignWare IIC register structure
- * \details	Detailed struct description of DesignWare IIC
- *	block register information, implementation of dev_iic_info::iic_regs
+ * @defgroup	DEVICE_DW_IIC_REGSTRUCT		DesignWare IIC Register Structure
+ * @ingroup	DEVICE_DW_I2S
+ * @brief	Structure definitions for DesignWare IIC register
+ * @details	Detailed struct description of DesignWare IIC
+ *	block register information, implementation of DEV_IIC_INFO::iic_regs
+ * @{
  */
 typedef volatile struct dw_iic_reg {
 	uint32_t IC_CON;                /*!< (0x00) : IIC control */
@@ -136,8 +139,8 @@ typedef struct dw_iic_buffer {
 } DW_IIC_BUFFER, *DW_IIC_BUFFER_PTR;
 
 /**
- * \brief	DesignWare IIC control structure definition
- * \details	implement of dev_iic_info::iic_ctrl
+ * @brief	DesignWare IIC control structure definition
+ * @details	implement of dev_iic_info::iic_ctrl
  */
 typedef struct dw_iic_ctrl {
 	DW_IIC_REG *dw_iic_regs;                /*!< iic device registers */

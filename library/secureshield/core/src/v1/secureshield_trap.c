@@ -41,9 +41,9 @@ extern void secureshield_secure_call_container_out(void);
 extern void secureshield_exc_entry_cpu(void);
 
 /**
- * \brief container call in handling
- * \param[in] src_frame exception handling
- * \return  target container sp
+ * @brief container call in handling
+ * @param[in] src_frame exception handling
+ * @return  target container sp
  */
 static uint32_t trap_container_call_in(INT_EXC_FRAME_T *src_frame)
 {
@@ -131,9 +131,9 @@ static uint32_t trap_container_call_in(INT_EXC_FRAME_T *src_frame)
 }
 
 /**
- * \brief container call out handling
- * \param[in] dst_frame exception frame
- * \return  target container sp
+ * @brief container call out handling
+ * @param[in] dst_frame exception frame
+ * @return  target container sp
  */
 static uint32_t trap_container_call_out(INT_EXC_FRAME_T *dst_frame)
 {
@@ -163,9 +163,9 @@ static uint32_t trap_container_call_out(INT_EXC_FRAME_T *dst_frame)
 
 
 /**
- * \brief trap exception handler
- * \param[in] exc_frame   exception frame
- * \return  target container sp
+ * @brief trap exception handler
+ * @param[in] exc_frame   exception frame
+ * @return  target container sp
  */
 uint32_t secureshield_trap_handler(void *exc_frame)
 {

@@ -28,23 +28,23 @@
  *
    --------------------------------------------- */
 /**
- * \defgroup	BOARD_EMSK_DRV_MUX	EMSK Mux Driver
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Mux Controller Driver
- * \details
+ * @defgroup	BOARD_EMSK_DRV_MUX	EMSK Mux Driver
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Mux Controller Driver
+ * @details
  *		Mux controller is the hardware external PMOD port pin connection
  *	controller, it can distribute the external port pins into different
  *	functions like general input/output, spi, iic, uart and so on.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_MUX
- * \brief	emsk mux controller driver
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_MUX
+ * @brief	emsk mux controller driver
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_MUX
+ * @addtogroup	BOARD_EMSK_DRV_MUX
  * @{
  */
 #include "mux.h"

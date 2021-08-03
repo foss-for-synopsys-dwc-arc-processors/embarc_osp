@@ -251,8 +251,8 @@ DEV_I2S_PTR i2s_get_dev(int32_t i2s_id)
 }
 
 /**
- * \brief	install all i2s objects
- * \note	\b MUST be called during system init
+ * @brief	install all i2s objects
+ * @note	@b MUST be called during system init
  */
 void dw_i2s_all_install(void)
 {

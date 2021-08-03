@@ -31,7 +31,7 @@
 #include "embARC_syscalls.h"
 
 /**
- * \brief Install the syscall swi handler into exception table.
+ * @brief Install the syscall swi handler into exception table.
  * 	This need to be done after exception table has been initialized.
  * 	When RTOS is implemented, you need to manually call this function after
  * 	your RTOS exception table is setup.

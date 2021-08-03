@@ -35,7 +35,7 @@
 static void task_blinky(void *par);
 
 /**
- * \brief	Test hardware board without any peripheral
+ * @brief	Test hardware board without any peripheral
  */
 int main(void)
 {

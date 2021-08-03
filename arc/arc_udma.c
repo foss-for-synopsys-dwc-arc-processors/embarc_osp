@@ -28,13 +28,13 @@
  *
    --------------------------------------------- */
 /**
- * \file
- * \ingroup ARC_HAL_MISC_UDMA
- * \brief API implementation for DMA Controller for ARC.
+ * @file
+ * @ingroup ARC_HAL_MISC_UDMA
+ * @brief API implementation for DMA Controller for ARC.
  */
 
 /**
- * \addtogroup ARC_HAL_MISC_UDMA
+ * @addtogroup ARC_HAL_MISC_UDMA
  * @{
  */
 #include "arc/arc_udma.h"

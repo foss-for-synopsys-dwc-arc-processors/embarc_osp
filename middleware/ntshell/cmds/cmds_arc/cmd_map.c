@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief show the memory map of bootloader
+* @file
+* @brief show the memory map of bootloader
 */
 
 #include "cmds_arc_cfg.h"

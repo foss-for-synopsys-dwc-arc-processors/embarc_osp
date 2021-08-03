@@ -62,9 +62,9 @@ static AUX_CONTAINER g_aux_container[SECURESHIELD_MAX_CONTAINERS];
 
 
 /**
- * \brief check whether the specified container is able to access the specified aux address
- * \param[in] container_id  container id
- * \param[in] addr         address in aux register space
+ * @brief check whether the specified container is able to access the specified aux address
+ * @param[in] container_id  container id
+ * @param[in] addr         address in aux register space
  */
 static int32_t _secureshield_aux_check(uint8_t container_id, uint32_t addr)
 {
@@ -112,9 +112,9 @@ static int32_t _secureshield_aux_check(uint8_t container_id, uint32_t addr)
 
 
 /**
- * \brief read an aux register
- * \param[in]  addr the aux reg address
- * \return  aux register value (ok) or 0xffffffff (failed)
+ * @brief read an aux register
+ * @param[in]  addr the aux reg address
+ * @return  aux register value (ok) or 0xffffffff (failed)
  */
 uint32_t secure_arc_lr_reg(uint32_t addr)
 {
@@ -127,8 +127,8 @@ uint32_t secure_arc_lr_reg(uint32_t addr)
 
 /**
  * write an aux register
- * \param[in] addr the aux reg address
- * \param[in] val  value to write
+ * @param[in] addr the aux reg address
+ * @param[in] val  value to write
  */
 void secure_arc_sr_reg(uint32_t addr, uint32_t val)
 {
@@ -139,11 +139,11 @@ void secure_arc_sr_reg(uint32_t addr, uint32_t val)
 
 
 /**
- * \brief allocate an aux region to the specified container
- * \param[in]  container_id container id
- * \param[in]  start        start address
- * \param[in]  size         address size
- * \return     0 ok, -1 failed
+ * @brief allocate an aux region to the specified container
+ * @param[in]  container_id container id
+ * @param[in]  start        start address
+ * @param[in]  size         address size
+ * @return     0 ok, -1 failed
  */
 int32_t vmpu_ac_aux(uint8_t container_id, uint32_t start, uint32_t size)
 {
@@ -184,8 +184,8 @@ int32_t vmpu_ac_aux(uint8_t container_id, uint32_t start, uint32_t size)
 }
 
 /**
- * \brief get current container's id
- * \return  container id
+ * @brief get current container's id
+ * @return  container id
  */
 int32_t secure_container_id_self(void)
 {
@@ -194,8 +194,8 @@ int32_t secure_container_id_self(void)
 
 
 /**
- * \brief get the id of caller container's id
- * \return  caller container's id
+ * @brief get the id of caller container's id
+ * @return  caller container's id
  */
 int32_t secure_container_id_caller(void)
 {
@@ -211,8 +211,8 @@ int32_t secure_container_id_caller(void)
 
 #if SECURESHIELD_VERSION == 1
 /**
- * \brief system service provided by secureshield runtime
- * \param[in] frame exception frame
+ * @brief system service provided by secureshield runtime
+ * @param[in] frame exception frame
  */
 void secureshield_sys_ops(INT_EXC_FRAME_T *frame)
 {
@@ -241,13 +241,13 @@ void secureshield_sys_ops(INT_EXC_FRAME_T *frame)
 
 #elif SECURESHIELD_VERSION == 2
 /**
- * \brief secureshield runtime service
- * \param[in]  sys_id system service id
- * \param[in]  par1   1st parameter
- * \param[in]  par2   2nd parameter
- * \param[in]  par3   3rd parameter
- * \param[in]  par4   4th parameter
- * \return        return value of runtime service
+ * @brief secureshield runtime service
+ * @param[in]  sys_id system service id
+ * @param[in]  par1   1st parameter
+ * @param[in]  par2   2nd parameter
+ * @param[in]  par3   3rd parameter
+ * @param[in]  par4   4th parameter
+ * @return        return value of runtime service
  */
 int32_t secureshield_sys_ops(uint32_t sys_id, uint32_t par1, uint32_t par2, uint32_t par3, uint32_t par4)
 {

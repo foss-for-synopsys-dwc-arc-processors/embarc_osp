@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief load .bin file from SD card
+* @file
+* @brief load .bin file from SD card
 */
 
 #include "cmds_fs_cfg.h"

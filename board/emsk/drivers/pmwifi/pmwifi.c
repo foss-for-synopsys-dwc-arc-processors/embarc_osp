@@ -29,22 +29,22 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSK_DRV_PMODWIFI	EMSK PMOD WIFI Driver
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Pmod Wifi Driver
- * \details
+ * @defgroup	BOARD_EMSK_DRV_PMODWIFI	EMSK PMOD WIFI Driver
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Pmod Wifi Driver
+ * @details
  *		Realize the EMSK board PMOD wifi driver based on the wnic device abstract,
  *	this driver is based on microchip mrf24g device.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_PMODWIFI
- * \brief	pmod wifi driver for emsk board
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_PMODWIFI
+ * @brief	pmod wifi driver for emsk board
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_PMODWIFI
+ * @addtogroup	BOARD_EMSK_DRV_PMODWIFI
  * @{
  */
 #if defined(MID_LWIP) && defined(MID_LWIP_CONTRIB)
@@ -617,8 +617,8 @@ DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
 }
 
 /**
- * \brief  	install all wnic objects
- * \note 	\b MUST be called during system init
+ * @brief  	install all wnic objects
+ * @note 	@b MUST be called during system init
  */
 void pmwifi_all_install(void)
 {

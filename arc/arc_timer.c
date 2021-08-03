@@ -29,10 +29,10 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup	ARC_HAL_MISC_TIMER
- * \brief  implementation of internal timer related functions
- * \todo RTC support should be improved if RTC is enabled
+ * @file
+ * @ingroup	ARC_HAL_MISC_TIMER
+ * @brief  implementation of internal timer related functions
+ * @todo RTC support should be improved if RTC is enabled
  */
 #include "arc/arc_timer.h"
 #include "arc/arc_exception.h"
@@ -43,9 +43,9 @@ volatile uint64_t gl_loops_per_jiffy = 1;
 volatile uint32_t gl_count = 1;
 
 /**
- * \brief  check whether the specific timer present
- * \param[in] no timer number
- * \return 1 present, 0 not present
+ * @brief  check whether the specific timer present
+ * @param[in] no timer number
+ * @return 1 present, 0 not present
  */
 int32_t arc_timer_present(const uint32_t no)
 {
@@ -71,11 +71,11 @@ int32_t arc_timer_present(const uint32_t no)
 }
 
 /**
- * \brief  start the specific timer
- * \param[in] no	timer number
- * \param[in] mode	timer mode
- * \param[in] val	timer limit value (not for RTC)
- * \return 0 success, -1 failure
+ * @brief  start the specific timer
+ * @param[in] no	timer number
+ * @param[in] mode	timer mode
+ * @param[in] val	timer limit value (not for RTC)
+ * @return 0 success, -1 failure
  */
 int32_t arc_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
@@ -103,10 +103,10 @@ int32_t arc_timer_start(const uint32_t no, const uint32_t mode, const uint32_t v
 }
 
 /**
- * \brief  stop and clear the specific timer
+ * @brief  stop and clear the specific timer
  *
- * \param[in] no timer number
- * \return 0 success, -1 failure
+ * @param[in] no timer number
+ * @return 0 success, -1 failure
  */
 int32_t arc_timer_stop(const uint32_t no)
 {
@@ -132,11 +132,11 @@ int32_t arc_timer_stop(const uint32_t no)
 }
 
 /**
- * \brief  get timer current tick
+ * @brief  get timer current tick
  *
- * \param[in] no timer number
- * \param[out] val, timer value
- * \return 0 success, -1 failure
+ * @param[in] no timer number
+ * @param[out] val, timer value
+ * @return 0 success, -1 failure
  */
 int32_t arc_timer_current(const uint32_t no, void *val)
 {
@@ -158,10 +158,10 @@ int32_t arc_timer_current(const uint32_t no, void *val)
 }
 
 /**
- * \brief  clear the interrupt pending bit of timer
+ * @brief  clear the interrupt pending bit of timer
  *
- * \param[in] no timer number
- * \return 0 success, -1 failure
+ * @param[in] no timer number
+ * @return 0 success, -1 failure
  */
 int32_t arc_timer_int_clear(const uint32_t no)
 {
@@ -186,7 +186,7 @@ int32_t arc_timer_int_clear(const uint32_t no)
 }
 
 /**
- * \brief  init internal timer
+ * @brief  init internal timer
  */
 void arc_timer_init(void)
 {
@@ -205,9 +205,9 @@ void arc_timer_init(void)
 
 #if defined(ARC_FEATURE_SEC_TIMER1_PRESENT) || defined(ARC_FEATURE_SEC_TIMER0_PRESENT)
 /**
- * \brief  check whether the specific secure timer present
- * \param[in] no timer number
- * \return 1 present, 0 not present
+ * @brief  check whether the specific secure timer present
+ * @param[in] no timer number
+ * @return 1 present, 0 not present
  */
 int32_t arc_secure_timer_present(const uint32_t no)
 {
@@ -230,11 +230,11 @@ int32_t arc_secure_timer_present(const uint32_t no)
 }
 
 /**
- * \brief  start the specific secure timer
- * \param[in] no	timer number
- * \param[in] mode	timer mode
- * \param[in] val	timer limit value (not for RTC)
- * \return 0 success, -1 failure
+ * @brief  start the specific secure timer
+ * @param[in] no	timer number
+ * @param[in] mode	timer mode
+ * @param[in] val	timer limit value (not for RTC)
+ * @return 0 success, -1 failure
  */
 int32_t arc_secure_timer_start(const uint32_t no, const uint32_t mode, const uint32_t val)
 {
@@ -259,10 +259,10 @@ int32_t arc_secure_timer_start(const uint32_t no, const uint32_t mode, const uin
 }
 
 /**
- * \brief  stop and clear the specific secure timer
+ * @brief  stop and clear the specific secure timer
  *
- * \param[in] no timer number
- * \return 0 success, -1 failure
+ * @param[in] no timer number
+ * @return 0 success, -1 failure
  */
 int32_t arc_secure_timer_stop(const uint32_t no)
 {
@@ -285,11 +285,11 @@ int32_t arc_secure_timer_stop(const uint32_t no)
 }
 
 /**
- * \brief  get secure timer current tick
+ * @brief  get secure timer current tick
  *
- * \param[in] no timer number
- * \param[out] val, timer value
- * \return 0 success, -1 failure
+ * @param[in] no timer number
+ * @param[out] val, timer value
+ * @return 0 success, -1 failure
  */
 int32_t arc_secure_timer_current(const uint32_t no, void *val)
 {
@@ -308,10 +308,10 @@ int32_t arc_secure_timer_current(const uint32_t no, void *val)
 }
 
 /**
- * \brief  clear the interrupt pending bit of timer
+ * @brief  clear the interrupt pending bit of timer
  *
- * \param[in] no timer number
- * \return 0 success, -1 failure
+ * @param[in] no timer number
+ * @return 0 success, -1 failure
  */
 int32_t arc_secure_timer_int_clear(const uint32_t no)
 {
@@ -336,7 +336,7 @@ int32_t arc_secure_timer_int_clear(const uint32_t no)
 }
 
 /**
- * \brief  init internal secure timer
+ * @brief  init internal secure timer
  */
 void arc_secure_timer_init(void)
 {
@@ -351,9 +351,9 @@ void arc_secure_timer_init(void)
 #endif /* ARC_FEATURE_SEC_TIMER1_PRESENT && ARC_FEATURE_SEC_TIMER0_PRESENT */
 
 /**
- * \brief  provide US delay function
+ * @brief  provide US delay function
  *
- * \param[in] usecs US to delay
+ * @param[in] usecs US to delay
  */
 void arc_delay_us(uint32_t usecs)
 {
@@ -375,10 +375,10 @@ void arc_delay_us(uint32_t usecs)
 }
 
 /**
- * \brief  calibrate delay
+ * @brief  calibrate delay
  *
- * \param[in] board cpu clock
- * \return loops_per_jiffy
+ * @param[in] board cpu clock
+ * @return loops_per_jiffy
  */
 uint64_t arc_timer_calibrate_delay(uint32_t cpu_clock)
 {

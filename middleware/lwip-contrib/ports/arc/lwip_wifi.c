@@ -35,13 +35,13 @@
  */
 
 /**
- * \defgroup	MID_LWIP_CONTRIB_PMWIFI		LWIP PMOD WIFI Interface
- * \ingroup	MID_LWIP_CONTRIB
- * \brief	lwip wifi interface
+ * @defgroup	MID_LWIP_CONTRIB_PMWIFI		LWIP PMOD WIFI Interface
+ * @ingroup	MID_LWIP_CONTRIB
+ * @brief	lwip wifi interface
  * @{
  *
- * \file
- * \brief	lwip wifi interface
+ * @file
+ * @brief	lwip wifi interface
  */
 #include "stdint.h"
 #include "stdbool.h"

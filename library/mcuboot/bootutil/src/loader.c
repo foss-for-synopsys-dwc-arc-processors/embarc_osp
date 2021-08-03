@@ -654,7 +654,7 @@ boot_copy_sz(int last_sector_idx, int *out_first_sector_idx)
 /**
  * Erases a region of flash.
  *
- * @param flash_area_idx        The ID of the flash area containing the region
+ * @param flash_area_id        The ID of the flash area containing the region
  *                                  to erase.
  * @param off                   The offset within the flash area to start the
  *                                  erase.

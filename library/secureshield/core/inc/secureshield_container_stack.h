@@ -59,12 +59,13 @@ extern uint32_t g_container_stack_curr_id;
 
 
 /**
- * \brief push a container into the container context stack
- * \param[in] src_id container id
- * \param[in] src_sp container's current sp
- * \param[in] status cpu status
- * \param[in] dst_id destination container
- * \return 0 ok, -1 failed
+ * @brief push a container into the container context stack
+ * @param[in] src_id container id
+ * @param[in] src_sp container's current sp
+ * @param[in] normal_sp normal container's sp
+ * @param[in] status cpu status
+ * @param[in] dst_id destination container
+ * @return 0 ok, -1 failed
  */
 Inline int32_t container_stack_push(uint8_t src_id, uint32_t *src_sp,
 			uint32_t *normal_sp, uint32_t status, uint8_t dst_id)
@@ -92,11 +93,12 @@ Inline int32_t container_stack_push(uint8_t src_id, uint32_t *src_sp,
 
 
 /**
- * \brief pop a container from the container context stack
- * \param[in] dst_id container id
- * \param[in] dst_sp container's current sp
- * \param[in] status cpu status
- * \return  0 ok, -1 failed
+ * @brief pop a container from the container context stack
+ * @param[in] dst_id target container id
+ * @param[in] dst_sp target container's current sp
+ * @param[in] normal_sp normal container's sp
+ * @param[in] status cpu status
+ * @return  0 ok, -1 failed
  */
 Inline int32_t container_stack_pop(uint8_t dst_id, uint32_t *dst_sp,
 				uint32_t *normal_sp, uint32_t status)

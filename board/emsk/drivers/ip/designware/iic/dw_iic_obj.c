@@ -29,23 +29,23 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSK_DRV_DW_IIC_OBJ	EMSK DW IIC Object
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Designware IIC Objects
- * \details
+ * @defgroup	BOARD_EMSK_DRV_DW_IIC_OBJ	EMSK DW IIC Object
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Designware IIC Objects
+ * @details
  *		Realize the EMSK board iic object using designware iic device driver,
  *	only need to realize some designware iic structures combine with EMSK iic
  *	hardware resource. just like cpp class instantiation.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_DW_IIC_OBJ
- * \brief	designware iic object instantiation on emsk
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_DW_IIC_OBJ
+ * @brief	designware iic object instantiation on emsk
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_DW_IIC_OBJ
+ * @addtogroup	BOARD_EMSK_DRV_DW_IIC_OBJ
  * @{
  */
 
@@ -57,7 +57,7 @@
 #define DW_IIC_CLOCK            CLK_BUS_APB
 
 /**
- * \name	EMSK DesignWare IIC 0 Object Instantiation
+ * @name	EMSK DesignWare IIC 0 Object Instantiation
  * @{
  */
 #if (USE_DW_IIC_0)
@@ -153,7 +153,7 @@ static void dw_iic_0_install(void)
 /** @} end of name */
 
 /**
- * \name	EMSK DesignWare IIC 1 Object Instantiation
+ * @name	EMSK DesignWare IIC 1 Object Instantiation
  * @{
  */
 #if (USE_DW_IIC_1)
@@ -277,8 +277,8 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 }
 
 /**
- * \brief	install all iic objects
- * \note	\b MUST be called during system init
+ * @brief	install all iic objects
+ * @note	@b MUST be called during system init
  */
 void dw_iic_all_install(void)
 {

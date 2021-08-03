@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
- * \file
- * \brief  common io implementation
+ * @file
+ * @brief  common io implementation
  */
 #include <stdio.h>
 

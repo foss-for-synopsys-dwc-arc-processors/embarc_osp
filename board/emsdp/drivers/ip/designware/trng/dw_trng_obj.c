@@ -123,8 +123,8 @@ DEV_TRNG_PTR dw_trng_get_dev(int32_t trng_id)
 }
 
 /**
- * \brief	install all trng objects
- * \note	\b MUST be called during system init
+ * @brief	install all trng objects
+ * @note	@b MUST be called during system init
  */
 void dw_trng_all_install(void)
 {

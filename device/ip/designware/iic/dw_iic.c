@@ -50,8 +50,8 @@
 #endif
 
 /**
- * \name	DesignWare IIC Interrupt Callback Routine Select Marcos
- * \brief	DesignWare IIC interrupt callback routines select macros definitions
+ * @name	DesignWare IIC Interrupt Callback Routine Select Marcos
+ * @brief	DesignWare IIC interrupt callback routines select macros definitions
  * @{
  */
 #define DW_IIC_RDY_SND                                  (1U)    /*!< ready to send callback */
@@ -59,9 +59,9 @@
 /** @} */
 
 /**
- * \defgroup	DEVICE_DW_IIC_STATIC	DesignWare IIC Driver Static Functions
- * \ingroup	DEVICE_DW_IIC
- * \brief	Static or inline functions, variables for DesignWare IIC handle iic operations,
+ * @defgroup	DEVICE_DW_IIC_STATIC	DesignWare IIC Driver Static Functions
+ * @ingroup	DEVICE_DW_IIC
+ * @brief	Static or inline functions, variables for DesignWare IIC handle iic operations,
  * 	only used in this file.
  * @{
  */
@@ -673,9 +673,9 @@ static void dw_iic_slv_ena_cbr(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t cbrtn)
 }
 
 /**
- * \brief	disable designware iic send or receive interrupt
- * \param[in]	DEV_IIC_INFO 	*iic_info_ptr
- * \param[in]	cbrtn		control code of callback routine of send or receive
+ * @brief	disable designware iic send or receive interrupt
+ * @param[in]	DEV_IIC_INFO 	*iic_info_ptr
+ * @param[in]	cbrtn		control code of callback routine of send or receive
  */
 static void dw_iic_dis_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 {
@@ -698,9 +698,9 @@ static void dw_iic_dis_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 }
 
 /**
- * \brief	enable DesignWare IIC send or receive interrupt
- * \param[in]	DEV_IIC_INFO 	*iic_info_ptr
- * \param[in]	cbrtn		control code of callback routine of send or receive
+ * @brief	enable DesignWare IIC send or receive interrupt
+ * @param[in]	DEV_IIC_INFO 	*iic_info_ptr
+ * @param[in]	cbrtn		control code of callback routine of send or receive
  */
 static void dw_iic_ena_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 {
@@ -723,8 +723,8 @@ static void dw_iic_ena_cbr(DEV_IIC_INFO *iic_info_ptr, uint32_t cbrtn)
 }
 
 /**
- * \brief	enable designware iic interrupt
- * \param	iic_info_ptr	iic information structure pointer
+ * @brief	enable designware iic interrupt
+ * @param	iic_info_ptr	iic information structure pointer
  */
 static void dw_iic_enable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 {
@@ -739,8 +739,8 @@ static void dw_iic_enable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 	}
 }
 /**
- * \brief	disable designware iic interrupt
- * \param	iic_info_ptr	iic information structure pointer
+ * @brief	disable designware iic interrupt
+ * @param	iic_info_ptr	iic information structure pointer
  */
 static void dw_iic_disable_interrupt(DEV_IIC_INFO *iic_info_ptr)
 {
@@ -826,8 +826,8 @@ static int32_t dw_iic_get_rxavail(DW_IIC_CTRL *iic_ctrl_ptr)
 
 /**
  * IIC Master device transmit 1 data,
- * next_cond can be \ref IC_DATA_CMD_STOP,
- * \ref IC_DATA_CMD_RESTART and ref IC_DATA_CMD_NONE
+ * next_cond can be @ref IC_DATA_CMD_STOP,
+ * @ref IC_DATA_CMD_RESTART and ref IC_DATA_CMD_NONE
  */
 static int32_t dw_iic_mst_write_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t data, uint32_t next_cond)
 {
@@ -889,8 +889,8 @@ static int32_t dw_iic_slv_write_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t data)
 
 /**
  * IIC Master device receive 1 data,
- * next_cond can be \ref IC_DATA_CMD_STOP,
- * \ref IC_DATA_CMD_RESTART and ref IC_DATA_CMD_NONE
+ * next_cond can be @ref IC_DATA_CMD_STOP,
+ * @ref IC_DATA_CMD_RESTART and ref IC_DATA_CMD_NONE
  */
 static int32_t dw_iic_mst_read_data(DW_IIC_CTRL *iic_ctrl_ptr, uint32_t *data, uint32_t next_cond)
 {
@@ -1153,25 +1153,25 @@ static void dw_iic_slv_int_process(DEV_IIC *iic_obj)
 /** @} end of group DEVICE_DW_IIC_STATIC */
 
 /**
- * \defgroup	DEVICE_DW_IIC_IMPLEMENT	DesignWare IIC Driver Function API Implement
- * \ingroup	DEVICE_DW_IIC
- * \brief	implement device hal iic api with DesignWare IIC
+ * @defgroup	DEVICE_DW_IIC_IMPLEMENT	DesignWare IIC Driver Function API Implement
+ * @ingroup	DEVICE_DW_IIC
+ * @brief	implement device hal iic api with DesignWare IIC
  * @{
  */
 
 /**
- * \brief	open a designware iic device
- * \param[in]	iic_obj	iic device object pointer
- * \param[in]	mode	iic working mode (master or slave)
- * \param[in]	param	When mode is \ref DEV_MASTER_MODE, param stands for \ref dev_iic_info::speed_mode "speed mode",
- *			when mode is \ref DEV_SLAVE_MODE, param stands for \ref dev_iic_info::slv_addr "slave device 7bit address"
- * \retval	E_OK	Open successfully without any issues
- * \retval	E_OPNED	If device was opened before with different parameters,
- *			then just increase the \ref dev_iic_info::opn_cnt "opn_cnt" and return \ref E_OPNED
- * \retval	E_OBJ	Device object is not valid
- * \retval	E_SYS	Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first.
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_NOSPT	Open settings are not supported
+ * @brief	open a designware iic device
+ * @param[in]	iic_obj	iic device object pointer
+ * @param[in]	mode	iic working mode (master or slave)
+ * @param[in]	param	When mode is @ref DEV_MASTER_MODE, param stands for @ref dev_iic_info::speed_mode "speed mode",
+ *			when mode is @ref DEV_SLAVE_MODE, param stands for @ref dev_iic_info::slv_addr "slave device 7bit address"
+ * @retval	E_OK	Open successfully without any issues
+ * @retval	E_OPNED	If device was opened before with different parameters,
+ *			then just increase the @ref dev_iic_info::opn_cnt "opn_cnt" and return @ref E_OPNED
+ * @retval	E_OBJ	Device object is not valid
+ * @retval	E_SYS	Device is opened for different mode before, if you want to open it with different mode, you need to fully close it first.
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_NOSPT	Open settings are not supported
  */
 int32_t dw_iic_open(DEV_IIC *iic_obj, uint32_t mode, uint32_t param)
 {
@@ -1270,11 +1270,11 @@ error_exit:
 }
 
 /**
- * \brief	Close a DesignWare IIC device
- * \param[in]	iic_obj	iic device object pointer
- * \retval	E_OK	Close successfully without any issues(including secenary that device is already closed)
- * \retval	E_OPNED	Device is still opened, the device \ref dev_iic_info::opn_cnt "opn_cnt" decreased by 1
- * \retval	E_OBJ	Device object is not valid
+ * @brief	Close a DesignWare IIC device
+ * @param[in]	iic_obj	iic device object pointer
+ * @retval	E_OK	Close successfully without any issues(including secenary that device is already closed)
+ * @retval	E_OPNED	Device is still opened, the device @ref dev_iic_info::opn_cnt "opn_cnt" decreased by 1
+ * @retval	E_OBJ	Device object is not valid
  */
 int32_t dw_iic_close(DEV_IIC *iic_obj)
 {
@@ -1307,18 +1307,18 @@ error_exit:
 }
 
 /**
- * \brief	Control iic by ctrl command
- * \param[in]	iic_obj	iic device object pointer
- * \param[in]		ctrl_cmd	\ref DEVICE_HAL_IIC_CTRLCMD "control command", to change or get some thing related to iic
- * \param[in,out]	param		parameters that maybe argument of the command,
+ * @brief	Control iic by ctrl command
+ * @param[in]	iic_obj	iic device object pointer
+ * @param[in]		ctrl_cmd	@ref DEVICE_HAL_IIC_CTRLCMD "control command", to change or get some thing related to iic
+ * @param[in,out]	param		parameters that maybe argument of the command,
  * 					or return values of the command, must not be NULL
- * \retval	E_OK	Control device successfully
- * \retval	E_CLSED	Device is not opened
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
- * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
- * \retval	E_NOSPT	Control command is not supported or not valid
+ * @retval	E_OK	Control device successfully
+ * @retval	E_CLSED	Device is not opened
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
+ * @retval	E_CTX	Control device failed, due to different reasons like in transfer state
+ * @retval	E_NOSPT	Control command is not supported or not valid
  */
 int32_t dw_iic_control(DEV_IIC *iic_obj, uint32_t ctrl_cmd, void *param)
 {
@@ -1530,16 +1530,16 @@ error_exit:
 }
 
 /**
- * \brief	poll transmit data through DesignWare IIC as master or slave
- * \param[in]	iic_obj	iic device object pointer
- * \param[in]	data	data that need to send (data must be uint8_t type)
- * \param[in]	len	data length need to send
- * \retval	>0	Byte count that was successfully sent for poll method,
- * 			it might can't send that much due to \ref \ref dev_iic_info::err_state "different error state".
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_CTX	Device is still in transfer state
- * \retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
+ * @brief	poll transmit data through DesignWare IIC as master or slave
+ * @param[in]	iic_obj	iic device object pointer
+ * @param[in]	data	data that need to send (data must be uint8_t type)
+ * @param[in]	len	data length need to send
+ * @retval	>0	Byte count that was successfully sent for poll method,
+ * 			it might can't send that much due to @ref @ref dev_iic_info::err_state "different error state".
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_CTX	Device is still in transfer state
+ * @retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
  */
 int32_t dw_iic_write(DEV_IIC *iic_obj, const void *data, uint32_t len)
 {
@@ -1601,16 +1601,16 @@ error_exit:
 }
 
 /**
- * \brief	read data through DesignWare IIC
- * \param[in]	iic_obj	iic device object pointer
- * \param[out]	data	data that need to read (data must be uint8_t type)
- * \param[in]	len	data count need to read
- * \retval	>0	Byte count that was successfully received for poll method,
- * 			it might can't send that much due to \ref \ref dev_iic_info::err_state "different error state".
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_CTX	Device is still in transfer state
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
+ * @brief	read data through DesignWare IIC
+ * @param[in]	iic_obj	iic device object pointer
+ * @param[out]	data	data that need to read (data must be uint8_t type)
+ * @param[in]	len	data count need to read
+ * @retval	>0	Byte count that was successfully received for poll method,
+ * 			it might can't send that much due to @ref @ref dev_iic_info::err_state "different error state".
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_CTX	Device is still in transfer state
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
  */
 int32_t dw_iic_read(DEV_IIC *iic_obj, void *data, uint32_t len)
 {
@@ -1678,9 +1678,9 @@ error_exit:
 }
 
 /**
- * \brief	DesignWare IIC interrupt processing routine
- * \param[in]	iic_info_ptr	DEV_IIC *iic_obj
- * \param[in]	ptr		extra information
+ * @brief	DesignWare IIC interrupt processing routine
+ * @param[in]	iic_info_ptr	DEV_IIC *iic_obj
+ * @param[in]	ptr		extra information
  */
 void dw_iic_isr(DEV_IIC *iic_obj, void *ptr)
 {

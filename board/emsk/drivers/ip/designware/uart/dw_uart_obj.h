@@ -28,13 +28,13 @@
  *
    --------------------------------------------- */
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
- * \brief	header file of designware uart object instantiation on emsk
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_DW_UART_OBJ
+ * @brief	header file of designware uart object instantiation on emsk
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_DW_UART_OBJ
+ * @addtogroup	BOARD_EMSK_DRV_DW_UART_OBJ
  * @{
  */
 #ifndef _DW_UART_OBJ_H_
@@ -43,7 +43,7 @@
 #include "device/ip_hal/dev_uart.h"
 
 /**
- * \name	DesignWare UART Object Number
+ * @name	DesignWare UART Object Number
  * @{
  */
 #if defined(HW_VERSION) && (HW_VERSION > 11)
@@ -54,7 +54,7 @@
 /** @} end of name */
 
 /**
- * \name	Designware UART Object ID Macros
+ * @name	Designware UART Object ID Macros
  * @{
  */
 #define DW_UART_0_ID    0       /*!< uart 0 id macro */
@@ -63,7 +63,7 @@
 /** @} end of name */
 
 /**
- * \name	Designware UART Object Control Macros
+ * @name	Designware UART Object Control Macros
  * @{
  */
 #define USE_DW_UART_0   1       /*!< enable use designware uart 0 */
@@ -85,3 +85,4 @@ extern "C" {
 #endif
 
 #endif /* _DW_UART_OBJ_H_ */
+/** @} */
