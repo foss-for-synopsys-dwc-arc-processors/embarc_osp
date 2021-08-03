@@ -27,7 +27,7 @@ and communication devices. A Digilent Pmod™ compatible extension board
 containing a four-channel 12-bit A/D converter with an IIC interface and an AC
 power adapter are included in the package.
 
-.. image:: /pic/emsk_board.jpg
+.. image:: /pic/emsk_board.png
     :alt: EM Starter Kit Board
 
 
@@ -81,7 +81,7 @@ PMOD pins Definition
 
 The location of the pins on the PMOD connectors is shown:
 
-.. image:: /pic/iotdk_pinout_diagram_of_pmod.jpg
+.. image:: /pic/iotdk_pinout_diagram_of_pmod.png
     :alt: ARC EMSK Pinout Diagram of PMOD
 
 =====  ============  ============       =====  ============  ============

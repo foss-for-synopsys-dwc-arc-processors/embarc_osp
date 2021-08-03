@@ -18,12 +18,11 @@
 #
 import sys
 import os
-import shlex
-# import os
-# import sys
+import sphinx_rtd_theme
 
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'extensions'))
 
 
 # -- General configuration ------------------------------------------------
@@ -37,9 +36,13 @@ sys.path.insert(0, os.path.abspath('../../'))
 # ones.
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.extlinks',
     'sphinx.ext.todo',
     'breathe',
-    'sphinx.ext.ifconfig']
+    'sphinx.ext.ifconfig',
+    'embarc.link-roles',
+    'embarc.html_redirects',
+    'sphinx_tabs.tabs']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -50,8 +53,7 @@ source_parsers = {
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
+
 source_suffix = ['.rst', '.md']
 
 # The master toctree document.
@@ -87,8 +89,13 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
+# Additional lexer for Pygments (syntax highlighting)
+from lexer.DtsLexer import DtsLexer
+from sphinx.highlighting import lexers
+lexers['DTS'] = DtsLexer()
+
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
+todo_include_todos = False
 
 
 # -- Options for HTML output ----------------------------------------------
@@ -97,7 +104,20 @@ todo_include_todos = True
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_theme_options = {
+    'prev_next_buttons_location': None
+}
+if tags.has('release'):  # pylint: disable=undefined-variable
+    is_release = True
+    docs_title = 'Docs / %s' %(version)
+else:
+    is_release = False
+    docs_title = 'Docs / Latest'
 
+# The name for this set of Sphinx documents.  If None, it defaults to
+# "<project> v<release> documentation".
+html_title = "embARC OSP Project Documentation"
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -108,6 +128,31 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+# using the given strftime format.
+html_last_updated_fmt = '%b %d, %Y'
+
+# If false, no module index is generated.
+html_domain_indices = False
+
+# If false, no index is generated.
+html_use_index = True
+
+# If true, the index is split into individual pages for each letter.
+html_split_index = True
+
+# If true, links to the reST sources are added to the pages.
+html_show_sourcelink = False
+
+# If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
+html_show_sphinx = False
+
+# If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
+# html_show_copyright = tags.has('development')
+
+# If true, license is shown in the HTML footer. Default is True.
+html_show_license = True
 
 
 html_context = {
@@ -136,7 +181,7 @@ latex_elements = {
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-
+    'preamble': r'\setcounter{tocdepth}{2}',
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',

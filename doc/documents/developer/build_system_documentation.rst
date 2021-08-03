@@ -9,7 +9,7 @@ Overview
 The embARC build system is based on the makefile system as shown below. To add new components, add a new makefile to the system. All embARC components are compiled into libraries,
 which are then merged into one final library called **libembarc.a**. The application objects are then linked against **libembarc.a** to produce the target .elf file.
 
-.. figure:: /pic/images/developer/build_system_documentation/build.jpg
+.. figure:: /pic/images/developer/build_system_documentation/build.png
    :scale: 40 %
 
    embARC build system

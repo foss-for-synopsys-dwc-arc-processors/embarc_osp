@@ -16,7 +16,7 @@ Toolkit, MetaWare Lite tools or the ARC GNU Tool Chain.
 See also this URL for details about the board: `DesignWare ARC HS Development Kit
 (HSDK) <https://www.synopsys.com/dw/ipdir.php?ds=arc-hs-development-kit>`_
 
-.. image:: /pic/hsdk_board.jpg
+.. image:: /pic/hsdk_board.png
     :alt: ARC HS Development Kit
 
 
@@ -51,10 +51,10 @@ The ARC HS Development Kit features the following components:
     - mikroBUS headers
     - PMOD Interfaces (3x), PMOD A and PMOD B (12 pins), PMOD C (6 pins)
 
-.. image:: /pic/hsdk_block_diagram.jpg
+.. image:: /pic/hsdk_block_diagram.png
     :alt: ARC HSDK Block Diagram
 
-.. image:: /pic/hsdk_chip.jpg
+.. image:: /pic/hsdk_chip.png
     :alt: ARC HS System on Chip (SoC) Block Diagram
 
 The ARC HS SoC provides the following main features:

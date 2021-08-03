@@ -89,7 +89,7 @@ There are many peripheral devices available, such as SPI, IIC, UART, GPIO.
 Upon these, the |emsdp| offers multiple interfaces for audio, USB, micro-SD card, wireless, ADC, motion sensor, etc.
 External hardware modules can also be easily connected to the board though extension interfaces using Pmod Connectors, Arduino, mikro BUS.
 
-.. image:: /pic/emsdp_peripheral_interfaces.jpg
+.. image:: /pic/emsdp_peripheral_interfaces.png
     :alt: |emsdp| Interfaces
 
 Extensions
