@@ -132,7 +132,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 Unsure where to begin contributing to embARC OSP? You can start by looking through the existing issues.
 
-If you want to read about using embARC OSP or developing board support package, peripheral drivers, libraries, middlewares or applications in embARC OSP, the [embARC OSP documentation](https://embarc.org/embarc_osp) is free and available online.
+If you want to read about using embARC OSP or developing board support package, peripheral drivers, libraries, middlewares or applications in embARC OSP, the [embARC OSP documentation](https://foss-for-synopsys-dwc-arc-processors.github.io/embarc_osp/doc/build/html/index.html) is free and available online.
 
 ### Pull Requests
 
