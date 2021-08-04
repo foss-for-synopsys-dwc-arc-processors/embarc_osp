@@ -49,11 +49,11 @@
 #define EMSK_ADC_CHECK_EXP_NORTN(EXPR)          CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /**
- * \brief	write ad7991 register
- * \param[in]	obj	ad7991 object
- * \param[in] 	val	config value to write
- * \retval	>=0	write success, return bytes written
- * \retval	!E_OK	write failed
+ * @brief	write ad7991 register
+ * @param[in]	obj	ad7991 object
+ * @param[in] 	val	config value to write
+ * @retval	>=0	write success, return bytes written
+ * @retval	!E_OK	write failed
  */
 static int32_t _ad7991_reg_write(AD7991_DEF_PTR obj, uint8_t val)
 {
@@ -73,12 +73,12 @@ error_exit:
 }
 
 /**
- * \brief	read ad7991 register
- * \param[in]	obj		ad7991 object
- * \param[in] 	val		pointer to buffer to read
- * \param[in] 	channel_num	active channel number
- * \retval	>=0		read success, return bytes read
- * \retval	<E_OK	read failed
+ * @brief	read ad7991 register
+ * @param[in]	obj		ad7991 object
+ * @param[in] 	val		pointer to buffer to read
+ * @param[in] 	channel_num	active channel number
+ * @retval	>=0		read success, return bytes read
+ * @retval	<E_OK	read failed
  */
 static int32_t _ad7991_reg_read(AD7991_DEF_PTR obj, uint8_t *val, uint8_t channel_num)
 {
@@ -99,10 +99,10 @@ error_exit:
 }
 
 /**
- * \brief	ad7991 init function
- * \param[in]	obj	ad7991 object
- * \retval	E_OK	init success
- * \retval	!E_OK	init failed
+ * @brief	ad7991 init function
+ * @param[in]	obj	ad7991 object
+ * @retval	E_OK	init success
+ * @retval	!E_OK	init failed
  */
 int32_t ad7991_adc_init(AD7991_DEF_PTR obj)
 {
@@ -127,10 +127,10 @@ error_exit:
 }
 
 /**
- * \brief	ad7991 deinit
- * \param[in]	obj	ad7991 object
- * \retval	E_OK	init success
- * \retval	!E_OK	init failed
+ * @brief	ad7991 deinit
+ * @param[in]	obj	ad7991 object
+ * @retval	E_OK	init success
+ * @retval	!E_OK	init failed
  */
 int32_t ad7991_adc_deinit(AD7991_DEF_PTR obj)
 {
@@ -142,10 +142,10 @@ int32_t ad7991_adc_deinit(AD7991_DEF_PTR obj)
 }
 
 /**
- * \brief	ad7991 reference voltage source selection
- * \param[in]	obj		ad7991 object
- * \param[in]	source	sensor working source, choose from enum sensor_op_mode
- * \retval		E_OK	always return E_OK
+ * @brief	ad7991 reference voltage source selection
+ * @param[in]	obj		ad7991 object
+ * @param[in]	source	sensor working source, choose from enum sensor_op_mode
+ * @retval		E_OK	always return E_OK
  */
 int32_t ad7991_ref_select(AD7991_DEF_PTR obj, int32_t source)
 {
@@ -168,10 +168,10 @@ int32_t ad7991_ref_select(AD7991_DEF_PTR obj, int32_t source)
 }
 
 /**
- * \brief	ad7991 adc channel setting
- * \param[in]	obj	        ad7991 object
- * \param[in]	channel		channel selection
- * \retval	E_OK		always return E_OK
+ * @brief	ad7991 adc channel setting
+ * @param[in]	obj	        ad7991 object
+ * @param[in]	channel		channel selection
+ * @retval	E_OK		always return E_OK
  */
 int32_t ad7991_adc_channel(AD7991_DEF_PTR obj, int8_t channel)
 {
@@ -197,11 +197,11 @@ int32_t ad7991_adc_channel(AD7991_DEF_PTR obj, int8_t channel)
 }
 
 /**
- * \brief	read 4 channel ADC converted value in 1.0 mV unit
- * \param[in]	obj	ad7991 object
- * \param[out]	val	need at least float [4] array to run, return latest avaiable convert data, array index corresponding to channel
- * \retval	E_OK	read success
- * \retval	!E_OK	read failed
+ * @brief	read 4 channel ADC converted value in 1.0 mV unit
+ * @param[in]	obj	ad7991 object
+ * @param[out]	val	need at least float [4] array to run, return latest avaiable convert data, array index corresponding to channel
+ * @retval	E_OK	read success
+ * @retval	!E_OK	read failed
  */
 int32_t ad7991_adc_read(AD7991_DEF_PTR obj, float *val)
 {

@@ -128,7 +128,7 @@ snmp_mib2_set_syscontact(u8_t *ocstr, u16_t *ocstrlen, u16_t bufsize)
 
 /**
  * @ingroup snmp_mib2
- * see \ref snmp_mib2_set_syscontact but set pointer to readonly memory
+ * see @ref snmp_mib2_set_syscontact but set pointer to readonly memory
  */
 void
 snmp_mib2_set_syscontact_readonly(const u8_t *ocstr, const u16_t *ocstrlen)
@@ -170,7 +170,7 @@ snmp_mib2_set_sysname(u8_t *ocstr, u16_t *ocstrlen, u16_t bufsize)
 
 /**
  * @ingroup snmp_mib2
- * see \ref snmp_mib2_set_sysname but set pointer to readonly memory
+ * see @ref snmp_mib2_set_sysname but set pointer to readonly memory
  */
 void
 snmp_mib2_set_sysname_readonly(const u8_t *ocstr, const u16_t *ocstrlen)
@@ -211,7 +211,7 @@ snmp_mib2_set_syslocation(u8_t *ocstr, u16_t *ocstrlen, u16_t bufsize)
 
 /**
  * @ingroup snmp_mib2
- * see \ref snmp_mib2_set_syslocation but set pointer to readonly memory
+ * see @ref snmp_mib2_set_syslocation but set pointer to readonly memory
  */
 void
 snmp_mib2_set_syslocation_readonly(const u8_t *ocstr, const u16_t *ocstrlen)

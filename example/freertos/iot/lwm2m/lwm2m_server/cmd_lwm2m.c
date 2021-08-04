@@ -29,9 +29,9 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup	EMBARC_APP_LWIP_FREERTOS_LWM2M_SERVER
- * \brief	NTShell Command:lwm2m_server and lwm2m_op implementation
+ * @file
+ * @ingroup	EMBARC_APP_LWIP_FREERTOS_LWM2M_SERVER
+ * @brief	NTShell Command:lwm2m_server and lwm2m_op implementation
  */
 
 #include <stdlib.h>

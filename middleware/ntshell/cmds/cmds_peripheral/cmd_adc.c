@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief PMOD ADC sensor demo commands
+* @file
+* @brief PMOD ADC sensor demo commands
 */
 
 

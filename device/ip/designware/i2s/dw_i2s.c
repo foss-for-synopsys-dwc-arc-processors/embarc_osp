@@ -55,8 +55,8 @@
 #endif
 
 /**
- * \name	DesignWare I2S Interrupt Callback Routine Select Marcos
- * \brief	DesignWare I2S interrupt callback routines select macros definitions
+ * @name	DesignWare I2S Interrupt Callback Routine Select Marcos
+ * @brief	DesignWare I2S interrupt callback routines select macros definitions
  * @{
  */
 #define DW_I2S_TX_RDY_SND                       (0)     /*!< TX ready to send callback */
@@ -65,9 +65,9 @@
 /** @} */
 
 /**
- * \defgroup	DEVICE_DW_I2S_STATIC	DesignWare I2S Driver Static Functions
- * \ingroup	DEVICE_DW_I2S
- * \brief	Static or inline functions, variables for DesignWare I2S handle I2S operations,
+ * @defgroup	DEVICE_DW_I2S_STATIC	DesignWare I2S Driver Static Functions
+ * @ingroup	DEVICE_DW_I2S
+ * @brief	Static or inline functions, variables for DesignWare I2S handle I2S operations,
  * 	only used in this file.
  * @{
  */
@@ -1014,11 +1014,11 @@ static void dw_i2s_rx_read_right_hold_reg(DW_I2S_RX_CTRL *i2s_rx_ctrl_ptr, uint3
 }
 
 /*
- * \brief	I2S TX write samples into FIFO
- * \param[in]	i2s_info_ptr Pointer of I2S device information
- * \param[in]	count        Count of stereo data (two as left + right)
- * \param[in]	channel      Target channel of transmitter
- * \retval	remaining sample count for the next transmitting in TX FIFO
+ * @brief	I2S TX write samples into FIFO
+ * @param[in]	i2s_info_ptr Pointer of I2S device information
+ * @param[in]	count        Count of stereo data (two as left + right)
+ * @param[in]	channel      Target channel of transmitter
+ * @retval	remaining sample count for the next transmitting in TX FIFO
  */
 static uint32_t dw_i2s_tx_write_samples(DEV_I2S_INFO *i2s_info_ptr, uint32_t count, uint32_t channel)
 {
@@ -1063,11 +1063,11 @@ static uint32_t dw_i2s_tx_write_samples(DEV_I2S_INFO *i2s_info_ptr, uint32_t cou
 }
 
 /*
- * \brief	I2S RX read samples from FIFO
- * \param[in]	i2s_info_ptr Pointer of I2S device information
- * \param[in]	count        Available count of stereo data (two as left + right)
- * \param[in]	channel      Target channel of transmitter
- * \retval	remaining count in the buffer
+ * @brief	I2S RX read samples from FIFO
+ * @param[in]	i2s_info_ptr Pointer of I2S device information
+ * @param[in]	count        Available count of stereo data (two as left + right)
+ * @param[in]	channel      Target channel of transmitter
+ * @retval	remaining count in the buffer
  */
 static uint32_t dw_i2s_rx_read_samples(DEV_I2S_INFO *i2s_info_ptr, uint32_t count, uint32_t channel)
 {
@@ -1130,8 +1130,8 @@ static void delay(uint32_t delay_cycle)
 }
 
 /*
- * \brief	I2S write data in interrupt.
- * \param[in]	i2s_obj Pointer of I2S device
+ * @brief	I2S write data in interrupt.
+ * @param[in]	i2s_obj Pointer of I2S device
  */
 static void dw_i2s_mst_int_write(DEV_I2S *i2s_obj)
 {
@@ -1195,8 +1195,8 @@ static void dw_i2s_mst_int_write(DEV_I2S *i2s_obj)
 }
 
 /*
- * \brief	I2S read data in interrupt.
- * \param[in]	i2s_obj Pointer of I2S device
+ * @brief	I2S read data in interrupt.
+ * @param[in]	i2s_obj Pointer of I2S device
  */
 static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 {
@@ -1284,23 +1284,23 @@ static void dw_i2s_mst_int_rx(DEV_I2S *i2s_obj)
 /* Clear interrupt */
 
 /**
- * \defgroup	DEVICE_DW_I2S_IMPLEMENT	DesignWare I2S Driver Function API Implement
- * \ingroup	DEVICE_DW_I2S
- * \brief	implement device hal I2S api with DesignWare I2S
+ * @defgroup	DEVICE_DW_I2S_IMPLEMENT	DesignWare I2S Driver Function API Implement
+ * @ingroup	DEVICE_DW_I2S
+ * @brief	implement device hal I2S api with DesignWare I2S
  * @{
  */
 
 /**
- * \brief	open a designware i2s device
- * \param[in]	i2s_obj	I2S device object pointer
- * \param[in]	mode	working mode (\ref DEV_MASTER_MODE "master" or \ref DEV_SLAVE_MODE "slave")
- * \param[in]	param	device type (\ref I2S_DEVICE_TRANSMITTER "transmitter" OR \ref I2S_DEVICE_RECEIVER "receiver")
- * \retval	E_OK	Open successfully without any issues
- * \retval	E_OPNED	Device was opened before
- * \retval	E_OBJ	Device object is not valid
- * \retval	E_SYS	Device initialized parameters are different with parameters in IP
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_NOSPT	Open settings are not supported
+ * @brief	open a designware i2s device
+ * @param[in]	i2s_obj	I2S device object pointer
+ * @param[in]	mode	working mode (@ref DEV_MASTER_MODE "master" or @ref DEV_SLAVE_MODE "slave")
+ * @param[in]	param	device type (@ref I2S_DEVICE_TRANSMITTER "transmitter" OR @ref I2S_DEVICE_RECEIVER "receiver")
+ * @retval	E_OK	Open successfully without any issues
+ * @retval	E_OPNED	Device was opened before
+ * @retval	E_OBJ	Device object is not valid
+ * @retval	E_SYS	Device initialized parameters are different with parameters in IP
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_NOSPT	Open settings are not supported
  */
 int32_t dw_i2s_open(DEV_I2S *i2s_obj, uint32_t mode, uint32_t param)
 {
@@ -1484,11 +1484,11 @@ error_exit:
 }
 
 /**
- * \brief	Close a DesignWare I2S device
- * \param[in]	i2s_obj	I2S device object pointer
- * \retval	E_OK	Close successfully without any issues (including that device is already closed)
- * \retval	E_OPNED	Device is still opened, the device \ref dev_i2s_info::opn_cnt "opn_cnt" decreased by 1
- * \retval	E_OBJ	Device object is not valid
+ * @brief	Close a DesignWare I2S device
+ * @param[in]	i2s_obj	I2S device object pointer
+ * @retval	E_OK	Close successfully without any issues (including that device is already closed)
+ * @retval	E_OPNED	Device is still opened, the device @ref dev_i2s_info::opn_cnt "opn_cnt" decreased by 1
+ * @retval	E_OBJ	Device object is not valid
  */
 int32_t dw_i2s_close(DEV_I2S *i2s_obj)
 {
@@ -1548,18 +1548,18 @@ error_exit:
 }
 
 /**
- * \brief	Control I2S by ctrl command
- * \param[in]	i2s_obj	I2S device object pointer
- * \param[in]		ctrl_cmd	\ref DEVICE_HAL_I2S_CTRLCMD "control command", to change or get some thing related to i2s
- * \param[in,out]	param		parameters that maybe argument of the command,
+ * @brief	Control I2S by ctrl command
+ * @param[in]	i2s_obj	I2S device object pointer
+ * @param[in]		ctrl_cmd	@ref DEVICE_HAL_I2S_CTRLCMD "control command", to change or get some thing related to i2s
+ * @param[in,out]	param		parameters that maybe argument of the command,
  * 					or return values of the command, must not be NULL
- * \retval	E_OK	Control device successfully
- * \retval	E_CLSED	Device is not opened
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
- * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
- * \retval	E_NOSPT	Control command is not supported or not valid
+ * @retval	E_OK	Control device successfully
+ * @retval	E_CLSED	Device is not opened
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Control device failed, due to hardware issues, such as device is disabled
+ * @retval	E_CTX	Control device failed, due to different reasons like in transfer state
+ * @retval	E_NOSPT	Control command is not supported or not valid
  */
 int32_t dw_i2s_control(DEV_I2S *i2s_obj, uint32_t ctrl_cmd, void *param)
 {
@@ -1803,17 +1803,17 @@ error_exit:
 }
 
 /**
- * \brief	poll transmit data through DesignWare I2S as master or slave
- * \param[in]	i2s_obj	i2s device object pointer
- * \param[in]	data data you want to send
- * \param[in]	len	data length need to send, no timeout check
- * \param[in]	channel Send data via specified channel
- * \retval	>0	Byte count that was successfully sent for poll method,
- * 			it might can't send that much due to \ref \ref dev_i2s_info::err_state "I2S_ERROR_STATE".
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_CTX	Device is still in transfer state
- * \retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
+ * @brief	poll transmit data through DesignWare I2S as master or slave
+ * @param[in]	i2s_obj	i2s device object pointer
+ * @param[in]	data data you want to send
+ * @param[in]	len	data length need to send, no timeout check
+ * @param[in]	channel Send data via specified channel
+ * @retval	>0	Byte count that was successfully sent for poll method,
+ * 			it might can't send that much due to @ref @ref dev_i2s_info::err_state "I2S_ERROR_STATE".
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_CTX	Device is still in transfer state
+ * @retval	E_SYS	Can't write data to hardware due to hardware issues, such as device is disabled
  */
 int32_t dw_i2s_write(DEV_I2S *i2s_obj, const void *data, uint32_t len, uint32_t channel)
 {
@@ -1888,16 +1888,16 @@ error_exit:
 }
 
 /**
- * \brief	Read data through DesignWare I2S as master or slave
- * \param[in]	i2s_obj	I2S device object pointer
- * \param[out]	data	data that need to receive (data must be uint32_t type), uint32_t(left) and uint32_t(right) alternating
- * \param[in]	len	data count need to read
- * \retval	>0	Byte count that was successfully received for poll method,
- * 			it might can't send that much due to \ref dev_i2s_info::err_state "I2S_ERROR_STATE".
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_CTX	Device is still in receive state
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_SYS	Can't read data from hardware due to hardware issues, such as device is disabled
+ * @brief	Read data through DesignWare I2S as master or slave
+ * @param[in]	i2s_obj	I2S device object pointer
+ * @param[out]	data	data that need to receive (data must be uint32_t type), uint32_t(left) and uint32_t(right) alternating
+ * @param[in]	len	data count need to read
+ * @retval	>0	Byte count that was successfully received for poll method,
+ * 			it might can't send that much due to @ref dev_i2s_info::err_state "I2S_ERROR_STATE".
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_CTX	Device is still in receive state
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_SYS	Can't read data from hardware due to hardware issues, such as device is disabled
  */
 int32_t dw_i2s_read(DEV_I2S *i2s_obj, void *data, uint32_t len, uint32_t channel)
 {
@@ -1968,9 +1968,9 @@ error_exit:
 }
 
 /**
- * \brief	DesignWare I2S interrupt processing routine
- * \param[in]	i2s_info_ptr	DEV_I2S *i2s_obj
- * \param[in]	ptr		extra information
+ * @brief	DesignWare I2S interrupt processing routine
+ * @param[in]	i2s_info_ptr	DEV_I2S *i2s_obj
+ * @param[in]	ptr		extra information
  */
 void dw_i2s_isr_tx(DEV_I2S *i2s_obj, void *ptr)
 {
@@ -1995,9 +1995,9 @@ error_exit:
 }
 
 /**
- * \brief	DesignWare I2S interrupt processing routine
- * \param[in]	i2s_info_ptr	DEV_I2S *i2s_obj
- * \param[in]	ptr		extra information
+ * @brief	DesignWare I2S interrupt processing routine
+ * @param[in]	i2s_info_ptr	DEV_I2S *i2s_obj
+ * @param[in]	ptr		extra information
  */
 void dw_i2s_isr_rx(DEV_I2S *i2s_obj, void *ptr)
 {

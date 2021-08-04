@@ -35,7 +35,7 @@
 #define DW_IIC_CLOCK            HSDC_CLK_SYS_PLL_I2CREF
 
 /**
- * \name	HSDK DesignWare IIC 0 Object Instantiation
+ * @name	HSDK DesignWare IIC 0 Object Instantiation
  * @{
  */
 #if (USE_DW_IIC_0)
@@ -131,7 +131,7 @@ static void dw_iic_0_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare IIC 1 Object Instantiation
+ * @name	HSDK DesignWare IIC 1 Object Instantiation
  * @{
  */
 #if (USE_DW_IIC_1)
@@ -227,7 +227,7 @@ static void dw_iic_1_install(void)
 /** @} end of name */
 
 /**
- * \name	HSDK DesignWare IIC 2 Object Instantiation
+ * @name	HSDK DesignWare IIC 2 Object Instantiation
  * @{
  */
 #if (USE_DW_IIC_2)
@@ -356,8 +356,8 @@ DEV_IIC_PTR iic_get_dev(int32_t iic_id)
 }
 
 /**
- * \brief	install all iic objects
- * \note	\b MUST be called during system init
+ * @brief	install all iic objects
+ * @note	@b MUST be called during system init
  */
 void dw_iic_all_install(void)
 {
@@ -371,5 +371,3 @@ void dw_iic_all_install(void)
 	dw_iic_2_install();
 #endif
 }
-
-/** @} end of group BOARD_HSDK_DRV_DW_IIC_OBJ */

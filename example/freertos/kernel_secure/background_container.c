@@ -41,15 +41,15 @@ static void interrupt_high_pri(void *p_excinf);
 static void interrupt_low_pri(void *p_excinf);
 
 /**
- * \var		task1_handle
- * \brief	handle of task1
- * \details	If task handle is not used, set Null.
+ * @var		task1_handle
+ * @brief	handle of task1
+ * @details	If task handle is not used, set Null.
  */
 static TaskHandle_t task1_handle = NULL;
 /**
- * \var		task2_handle
- * \brief	handle of task2
- * \details	If task handle is not used, set Null.
+ * @var		task2_handle
+ * @brief	handle of task2
+ * @details	If task handle is not used, set Null.
  */
 static TaskHandle_t task2_handle = NULL;
 
@@ -106,7 +106,7 @@ void default_interrupt_handler(void *p_exinf)
 }
 
 /**
- * \brief  call FreeRTOS API, create and start tasks
+ * @brief  call FreeRTOS API, create and start tasks
  */
 int main(void)
 {
@@ -146,9 +146,9 @@ int main(void)
 }
 
 /**
- * \brief  task1 in FreeRTOS
- * \details Call vTaskDelayUntil() to execute task1 with a fixed period 1 second.
- * \param[in] *par
+ * @brief  task1 in FreeRTOS
+ * @details Call vTaskDelayUntil() to execute task1 with a fixed period 1 second.
+ * @param[in] *par
  */
 static void task1(void *par)
 {
@@ -176,9 +176,9 @@ static void task1(void *par)
 }
 
 /**
- * \brief  task2 in FreeRTOS
- * \details Print information in task2 and suspend task2.
- * \param[in] *par
+ * @brief  task2 in FreeRTOS
+ * @details Print information in task2 and suspend task2.
+ * @param[in] *par
  */
 static void task2(void *par)
 {
@@ -206,10 +206,10 @@ static void task2(void *par)
 }
 
 /**
- * \brief  high priority interrupt
- * \details Call xTaskResumeFromISR() to resume task2 that can be called from within ISR.
+ * @brief  high priority interrupt
+ * @details Call xTaskResumeFromISR() to resume task2 that can be called from within ISR.
  * If resuming the task2 should result in a context switch, call vPortYieldFromIsr() to generate task switch request.
- * \param[in] *p_excinf
+ * @param[in] *p_excinf
  */
 static void interrupt_high_pri(void *p_excinf)
 {
@@ -222,9 +222,9 @@ static void interrupt_high_pri(void *p_excinf)
 }
 
 /**
- * \brief  low priority interrupt
- * \details write AUX_IRQ_HINT to raise higher priority interrupt.
- * \param[in] *p_excinf
+ * @brief  low priority interrupt
+ * @details write AUX_IRQ_HINT to raise higher priority interrupt.
+ * @param[in] *p_excinf
  */
 static void interrupt_low_pri(void *p_exinf)
 {

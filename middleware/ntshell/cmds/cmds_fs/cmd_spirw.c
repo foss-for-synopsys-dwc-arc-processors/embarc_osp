@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief read and write the program image in the SPI flash
+* @file
+* @brief read and write the program image in the SPI flash
 */
 
 

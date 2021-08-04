@@ -132,7 +132,7 @@ called in entry. You can define your own entry using ``exc_entry_install`` to re
 
 For interrupts, a standard interrupt processing model is shown in the picture below.
 
-.. image:: /pic/interrupt.jpg
+.. image:: /pic/interrupt.png
     :alt: interrupt and exception processing
 
 

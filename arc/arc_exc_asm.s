@@ -29,28 +29,28 @@
 --------------------------------------------- */
 
 /**
- * \file
- * \ingroup ARC_HAL_EXCEPTION_CPU
- * \brief  assembly part of exception and interrupt processing
+ * @file
+ * @ingroup ARC_HAL_EXCEPTION_CPU
+ * @brief  assembly part of exception and interrupt processing
  */
 
 /**
- * \addtogroup ARC_HAL_EXCEPTION_CPU
+ * @addtogroup ARC_HAL_EXCEPTION_CPU
  * @{
  */
 
 /* function documentation */
 /**
- * \fn void exc_entry_cpu(void)
- * \brief default entry of CPU exceptions, such as TLB miss and swap.
+ * @fn void exc_entry_cpu(void)
+ * @brief default entry of CPU exceptions, such as TLB miss and swap.
  *
- * \fn void exc_entry_int(void)
- * \brief normal interrupt exception entry.
+ * @fn void exc_entry_int(void)
+ * @brief normal interrupt exception entry.
  * 	In default, all interrupt exceptions are installed with normal entry.
  * 	If FIRQ is required, exc_entry_firq should be the entry.
  *
- * \fn void exc_entry_firq(void)
- * \brief firq exception entry
+ * @fn void exc_entry_firq(void)
+ * @brief firq exception entry
  */
 /** }@ */
 

@@ -53,9 +53,9 @@
 
  */
 /**
- * \file
- * \ingroup	EMBARC_APP_LWIP_FREERTOS_LWM2M_CLIENT
- * \brief	Implementation for LwM2M client
+ * @file
+ * @ingroup	EMBARC_APP_LWIP_FREERTOS_LWM2M_CLIENT
+ * @brief	Implementation for LwM2M client
  */
 
 #include "lwm2mclient.h"

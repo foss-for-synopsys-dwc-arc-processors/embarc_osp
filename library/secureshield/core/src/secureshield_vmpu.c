@@ -47,8 +47,8 @@ CONTAINER_CONTEXT g_container_context[SECURESHIELD_MAX_CONTAINERS];
 uint32_t g_container_stack_curr_id;
 
 /**
- * \brief do necessary config checks
- * \return -1 failed, 0 ok
+ * @brief do necessary config checks
+ * @return -1 failed, 0 ok
  */
 static int32_t vmpu_config_checks(void)
 {
@@ -103,7 +103,7 @@ static int32_t vmpu_config_checks(void)
 
 
 /**
- * \brief setup the execution environment for each container
+ * @brief setup the execution environment for each container
  */
 static void vmpu_setup_containers(void)
 {
@@ -152,8 +152,8 @@ static void vmpu_setup_containers(void)
 		if ((region = (*container_cfgtbl)->ac_table)!=NULL) {
 			count = (*container_cfgtbl)->ac_count;
 			for(i = 0; i < count; i++) {
-				/* \todo  check the region ? */
-				/* \todo: add more AC type support */
+				/* @todo  check the region ? */
+				/* @todo: add more AC type support */
 				if (region->ac & SECURESHIELD_AC_IRQ) {
 					vmpu_ac_irq(container_id, region->param1, region->param2);
 				} else if (region->ac & SECURESHIELD_AC_INTERFACE) {
@@ -174,7 +174,7 @@ static void vmpu_setup_containers(void)
 }
 
 /**
- * \brief the initial init of vmpu
+ * @brief the initial init of vmpu
  */
 int32_t vmpu_init_pre(void)
 {
@@ -182,7 +182,7 @@ int32_t vmpu_init_pre(void)
 }
 
 /**
- * \brief the post init of vmpu
+ * @brief the post init of vmpu
  */
 void vmpu_init_post(void)
 {

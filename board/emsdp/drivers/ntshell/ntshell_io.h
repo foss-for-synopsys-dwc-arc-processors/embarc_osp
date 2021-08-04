@@ -28,13 +28,13 @@
  *
    --------------------------------------------- */
 /**
- * \file
- * \ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
- * \brief	header file of middleware ntshell io interface driver
+ * @file
+ * @ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
+ * @brief	header file of middleware ntshell io interface driver
  */
 
 /**
- * \addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
+ * @addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
  * @{
  */
 #ifndef _NTSHELL_IO_H_

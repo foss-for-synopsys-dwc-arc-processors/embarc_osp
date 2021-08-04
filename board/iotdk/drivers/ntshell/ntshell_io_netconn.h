@@ -55,5 +55,3 @@ extern NTSHELL_IO ntshell_netconn_0;
 #endif  /** MID_NTSHELL  MID_LWIP */
 
 #endif  /** _NTSHELL_IO_NETCONN_H_ */
-
-/** @} end of group BOARD_IOTDK_DRV_MID_NTSHELL_IO_NETCONN */

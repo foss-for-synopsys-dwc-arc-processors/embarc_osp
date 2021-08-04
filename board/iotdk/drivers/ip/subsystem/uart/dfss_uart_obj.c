@@ -362,8 +362,8 @@ static void dfss_uart_3_install(void)
 #endif /* USE_DFSS_UART_3 */
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 void dfss_uart_all_install(void)
 {

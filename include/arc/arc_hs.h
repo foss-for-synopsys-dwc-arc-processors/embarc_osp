@@ -119,4 +119,4 @@ extern "C" {
 #endif  /* __ASSEMBLY__ */
 
 #endif  /* _ARC_HAL_HS_H_ */
-/** }@*/
+/** @} */

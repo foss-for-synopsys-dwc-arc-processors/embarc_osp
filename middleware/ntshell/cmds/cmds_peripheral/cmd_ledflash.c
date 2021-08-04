@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief LED flash command
+* @file
+* @brief LED flash command
 */
 
 

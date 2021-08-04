@@ -498,4 +498,4 @@ extern int32_t dmac_clear_channel(dma_channel_t *dma_chn);
 #endif  /* __ASSEMBLY__ */
 
 #endif  /* _ARC_UDMA_H_ */
-/** }@*/
+/** @} */

@@ -49,7 +49,7 @@ static unsigned char cache_data[DCACHE_LINE_NUM][DCACHE_LINE_LENGTH] = { 0xFF };
 #endif
 
 /**
- * \brief	call cache related functions
+ * @brief	call cache related functions
  */
 int main(void)
 {

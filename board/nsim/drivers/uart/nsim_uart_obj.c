@@ -108,8 +108,8 @@ static void dw_uart_0_install(void)
 #endif /* USE_DW_UART_0 */
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 static void nsim_uart_all_install(void)
 {

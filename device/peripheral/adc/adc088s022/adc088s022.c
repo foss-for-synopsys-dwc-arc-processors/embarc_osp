@@ -40,10 +40,10 @@
 #define ADC_CHECK_EXP_NORTN(EXPR)               CHECK_EXP_NOERCD(EXPR, error_exit)
 
 /**
- * \brief	adc088s022 init function
- * \param[in]	obj	adc088s022 object
- * \retval	E_OK	init succeed
- * \retval	!E_OK	init failed
+ * @brief	adc088s022 init function
+ * @param[in]	obj	adc088s022 object
+ * @retval	E_OK	init succeed
+ * @retval	!E_OK	init failed
  */
 int32_t adc088s022_adc_init(ADC088S022_DEF_PTR obj)
 {
@@ -63,10 +63,10 @@ error_exit:
 }
 
 /**
- * \brief	adc088s022 deinit
- * \param[in]	obj	adc088s022 object
- * \retval	E_OK	deinit succeed
- * \retval	!E_OK	deinit failed
+ * @brief	adc088s022 deinit
+ * @param[in]	obj	adc088s022 object
+ * @retval	E_OK	deinit succeed
+ * @retval	!E_OK	deinit failed
  */
 int32_t adc088s022_adc_deinit(ADC088S022_DEF_PTR obj)
 {
@@ -78,12 +78,12 @@ int32_t adc088s022_adc_deinit(ADC088S022_DEF_PTR obj)
 }
 
 /**
- * \brief	adc088s022 read
- * \param[in]	obj	adc088s022 object
- * \param[out]	val	pointer to store read value (Unit is mV)
- * \param[in]	channel select channel
- * \retval	E_OK	read succeed
- * \retval	!E_OK	read failed
+ * @brief	adc088s022 read
+ * @param[in]	obj	adc088s022 object
+ * @param[out]	val	pointer to store read value (Unit is mV)
+ * @param[in]	channel select channel
+ * @retval	E_OK	read succeed
+ * @retval	!E_OK	read failed
  */
 int32_t adc088s022_adc_read(ADC088S022_DEF_PTR obj, float *val, int8_t channel)
 {

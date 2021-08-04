@@ -34,7 +34,7 @@
 
 #define DW_UART_FIFO_LEN        32
 /**
- * \name	AXS DesignWare UART 0 Object Instantiation
+ * @name	AXS DesignWare UART 0 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_0)
@@ -102,7 +102,7 @@ static void dw_uart_0_install(void)
 /** @} end of name */
 
 /**
- * \name	AXS DesignWare UART 1 Object Instantiation
+ * @name	AXS DesignWare UART 1 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_1)
@@ -169,7 +169,7 @@ static void dw_uart_1_install(void)
 /** @} end of name */
 
 /**
- * \name	AXS DesignWare UART 2 Object Instantiation
+ * @name	AXS DesignWare UART 2 Object Instantiation
  * @{
  */
 #if (USE_DW_UART_2)
@@ -236,8 +236,8 @@ static void dw_uart_2_install(void)
 /** @} end of name */
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 void dw_uart_all_install(void)
 {

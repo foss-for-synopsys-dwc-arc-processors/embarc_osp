@@ -29,12 +29,12 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_FREERTOS_KERNEL	embARC FreeRTOS Kernel Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \brief	embARC Example for testing FreeRTOS task switch and interrupt/exception handling
+ * @defgroup	EMBARC_APP_FREERTOS_KERNEL	embARC FreeRTOS Kernel Example
+ * @ingroup	EMBARC_APPS_TOTAL
+ * @ingroup	EMBARC_APPS_OS_FREERTOS
+ * @brief	embARC Example for testing FreeRTOS task switch and interrupt/exception handling
  *
- * \details
+ * @details
  * ### Extra Required Tools
  *
  * ### Extra Required Peripherals
@@ -51,13 +51,13 @@
  */
 
 /**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_KERNEL
- * \brief	main source file of the freertos demo
+ * @file
+ * @ingroup	EMBARC_APP_FREERTOS_KERNEL
+ * @brief	main source file of the freertos demo
  */
 
 /**
- * \addtogroup	EMBARC_APP_FREERTOS_KERNEL
+ * @addtogroup	EMBARC_APP_FREERTOS_KERNEL
  * @{
  */
 
@@ -170,7 +170,7 @@ static unsigned int perf_end(void)
 }
 
 /**
- * \brief  call FreeRTOS API, create and start tasks
+ * @brief  call FreeRTOS API, create and start tasks
  */
 int main(void)
 {
@@ -221,9 +221,9 @@ int main(void)
 }
 
 /**
- * \brief  task1 in FreeRTOS
- * \details Call vTaskDelayUntil() to execute task1 with a fixed period 1 second.
- * \param[in] *par
+ * @brief  task1 in FreeRTOS
+ * @details Call vTaskDelayUntil() to execute task1 with a fixed period 1 second.
+ * @param[in] *par
  */
 static void task1(void *par)
 {
@@ -277,9 +277,9 @@ static void task1(void *par)
 }
 
 /**
- * \brief  task2 in FreeRTOS
- * \details Print information in task2 and suspend task2.
- * \param[in] *par
+ * @brief  task2 in FreeRTOS
+ * @details Print information in task2 and suspend task2.
+ * @param[in] *par
  */
 static void task2(void *par)
 {
@@ -396,10 +396,10 @@ static void task2(void *par)
 }
 
 /**
- * \brief  trap exception
- * \details Call xTaskResumeFromISR() to resume task2 that can be called from within ISR.
+ * @brief  trap exception
+ * @details Call xTaskResumeFromISR() to resume task2 that can be called from within ISR.
  * If resuming the task2 should result in a context switch, call vPortYieldFromIsr() to generate task switch request.
- * \param[in] *p_excinf
+ * @param[in] *p_excinf
  */
 static void trap_exception(void *p_excinf)
 {
@@ -410,9 +410,9 @@ static void trap_exception(void *p_excinf)
 }
 
 /**
- * \brief  soft interrupt
- * \details Call trap_s instruction to raise the exception.
- * \param[in] *p_excinf
+ * @brief  soft interrupt
+ * @details Call trap_s instruction to raise the exception.
+ * @param[in] *p_excinf
  */
 static void soft_interrupt(void *p_exinf)
 {

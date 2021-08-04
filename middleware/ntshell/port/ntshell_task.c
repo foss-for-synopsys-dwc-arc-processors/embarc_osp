@@ -31,8 +31,8 @@
  */
 
 /**
- * \file
- * \brief  implementation of nt shell task
+ * @file
+ * @brief  implementation of nt shell task
  */
 #include <stdio.h>
 #include <unistd.h>
@@ -54,14 +54,14 @@ static int func_ntshell_write(const char *buf, int cnt, void *extobj);
 #define NTSHELL_TASK_CHECK_EXP(EXPR, ERROR_CODE)     CHECK_EXP(EXPR, ercd, ERROR_CODE, error_exit)
 
 /**
- * \brief NT-Shell library read need function
- * \details this function will be blocked until read  specified number of bytes
+ * @brief NT-Shell library read need function
+ * @details this function will be blocked until read  specified number of bytes
  *
- * \param buf read buffer
- * \param cnt bytes count need to read
+ * @param buf read buffer
+ * @param cnt bytes count need to read
  *
- * \retval 0 success and the accurrate read count
- * \retval !0 fail
+ * @retval 0 success and the accurrate read count
+ * @retval !0 fail
  */
 static int func_ntshell_read(char *buf, int cnt, void *extobj)
 {
@@ -91,14 +91,14 @@ error_exit:
 }
 
 /**
- * \brief NT-Shell Library write need fuction
- * \details this function will be blocked until write certain number of bytes
+ * @brief NT-Shell Library write need fuction
+ * @details this function will be blocked until write certain number of bytes
  *
- * \param buf write buffer
- * \param cnt byte number need to write
+ * @param buf write buffer
+ * @param cnt byte number need to write
  *
- * \retval >0 success and the accurate count written
- * \retval <0 fail
+ * @retval >0 success and the accurate count written
+ * @retval <0 fail
  */
 static int func_ntshell_write(const char *buf, int cnt, void *extobj)
 {
@@ -122,7 +122,7 @@ error_exit:
 }
 
 /**
- * \brief Console NT-Shell Task
+ * @brief Console NT-Shell Task
  */
 void ntshell_task(void *p_arg)
 {

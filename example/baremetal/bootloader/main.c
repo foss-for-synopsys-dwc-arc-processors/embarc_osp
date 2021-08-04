@@ -95,7 +95,7 @@ static FIL file;
 #if BOARD_FLASH_EXIST == 0
 extern uint32_t boot_status_off(const struct flash_area *fap);
 /**
- * \brief	set the trailers of SLOT0 & SLOT1 as 0xFFFFFFFF
+ * @brief	set the trailers of SLOT0 & SLOT1 as 0xFFFFFFFF
  *			simulate as the initial state of flash in ram
  */
 static int image_trailer_init(void)
@@ -136,8 +136,8 @@ done:
 #endif
 
 /**
- * \brief	do secure boot by using mcuboot
- * \return  0 failed, else the start address of booted image
+ * @brief	do secure boot by using mcuboot
+ * @return  0 failed, else the start address of booted image
  */
 static fp_t secure_boot(void)
 {
@@ -168,7 +168,7 @@ static fp_t secure_boot(void)
 #endif
 
 /**
- * \brief	test bootloader
+ * @brief	test bootloader
  */
 int main(void)
 {

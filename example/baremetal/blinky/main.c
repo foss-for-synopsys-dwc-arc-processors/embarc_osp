@@ -33,7 +33,7 @@
 #define LED_TOGGLE_MASK         BOARD_LED_MASK
 
 /**
- * \brief	Test hardware board without any peripheral
+ * @brief	Test hardware board without any peripheral
  */
 int main(void)
 {

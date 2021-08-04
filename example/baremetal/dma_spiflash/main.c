@@ -58,7 +58,7 @@ static unsigned int perf_end(void);
 // #define TEST_MODE		(POLL_FLASH_TEST)
 
 /**
- * \brief	call cache related functions
+ * @brief	call cache related functions
  */
 int main(void)
 {

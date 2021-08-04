@@ -399,8 +399,8 @@ DEV_UART_PTR dfss_uart_get_dev(int32_t uart_id)
 }
 
 /**
- * \brief	install all uart objects
- * \note	\b MUST be called during system init
+ * @brief	install all uart objects
+ * @note	@b MUST be called during system init
  */
 void dfss_uart_all_install(void)
 {

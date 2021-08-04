@@ -36,7 +36,7 @@
 #define CPU_DW_GPIO_PORT_B      2
 
 /**
- * \name	Designware GPIO Port Bank Control Macros
+ * @name	Designware GPIO Port Bank Control Macros
  * @{
  */
 #define USE_CPU_DW_GPIO_PORT_A          1
@@ -44,14 +44,14 @@
 /** @} end of name */
 
 /**
- * \name	Designware GPIO Port Interrupt Available Number Macros
+ * @name	Designware GPIO Port Interrupt Available Number Macros
  * @{
  */
 #define AXS_CPU_GPIO_A_INT_MAX_COUNT    32
 /** @} end of name */
 
 /**
- * \name	Designware GPIO Port Available Bits Macros
+ * @name	Designware GPIO Port Available Bits Macros
  * @{
  */
 #define AXS_CPU_GPIO_A_VALID_MASK               0xF19C63

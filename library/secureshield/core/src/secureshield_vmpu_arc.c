@@ -110,11 +110,11 @@ static uint32_t g_secure_sid_mask;
 
 
 /**
- * \brief find the MPU_REGION in the specified container
- * \param[in] fault_addr fault address
- * \param[in] container the specified container
+ * @brief find the MPU_REGION in the specified container
+ * @param[in] fault_addr fault address
+ * @param[in] container the specified container
  *
- * \return the pointer of MPU_REGION which contains the fault address. NULL if no MPU_REGION found
+ * @return the pointer of MPU_REGION which contains the fault address. NULL if no MPU_REGION found
  */
 static const MPU_REGION* vmpu_fault_find_container_region(uint32_t fault_addr, const MPU_CONTAINER *container)
 {
@@ -135,11 +135,11 @@ static const MPU_REGION* vmpu_fault_find_container_region(uint32_t fault_addr, c
 }
 
 /**
- * \brief find the right mpu region according to the fault address
- * \details search the mpu regions of current container first, then search the background
+ * @brief find the right mpu region according to the fault address
+ * @details search the mpu regions of current container first, then search the background
  *          container
- * \param[in] fault_addr fault address
- * \return the pointer of MPU_REGION which contains the fault address. NULL if no MPU_REGION found
+ * @param[in] fault_addr fault address
+ * @return the pointer of MPU_REGION which contains the fault address. NULL if no MPU_REGION found
  */
 static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 {
@@ -170,10 +170,10 @@ static const MPU_REGION* vmpu_fault_find_region(uint32_t fault_addr)
 }
 
 /**
- * \brief mpu region address check
- * \details search all mpu regions to check if the region address is confict with that
+ * @brief mpu region address check
+ * @details search all mpu regions to check if the region address is confict with that
  *          allow shared memory
- * \return 0 no confict, 1 exist conflict
+ * @return 0 no confict, 1 exist conflict
  */
 static uint32_t mem_region_checks(uint32_t start, uint32_t end, CONTAINER_AC ac)
 {
@@ -202,9 +202,9 @@ static uint32_t mem_region_checks(uint32_t start, uint32_t end, CONTAINER_AC ac)
 }
 
 /**
- * \brief get the bits according to size
- * \param[in] size
- * \return bits
+ * @brief get the bits according to size
+ * @param[in] size
+ * @return bits
  */
 static int32_t vmpu_region_bits(uint32_t size)
 {
@@ -226,9 +226,9 @@ static int32_t vmpu_region_bits(uint32_t size)
 }
 
 /**
- * \brief map the AC to MPU region setting
- * \param[in] ac access control
- * \return MPU region setting
+ * @brief map the AC to MPU region setting
+ * @param[in] ac access control
+ * @return MPU region setting
  */
 static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 {
@@ -298,12 +298,12 @@ static uint32_t vmpu_map_ac(CONTAINER_AC ac)
 
 #if SECURESHIELD_VERSION == 1
 /**
- * \brief update the setting of MPU region in the specified container
- * \param[in] region MPU region
- * \param[in] container_id  the specified container
- * \param[in] base start address
- * \param[in] size region size
- * \param[in] ac  access control of the region
+ * @brief update the setting of MPU region in the specified container
+ * @param[in] region MPU region
+ * @param[in] container_id  the specified container
+ * @param[in] base start address
+ * @param[in] size region size
+ * @param[in] ac  access control of the region
  */
 static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t container_id,
 	void* base, uint32_t size, CONTAINER_AC ac)
@@ -355,12 +355,12 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 
 #elif SECURESHIELD_VERSION == 2
 /**
- * \brief update the setting of MPU region in the specified container
- * \param[in] region MPU region
- * \param[in] container_id  the specified container
- * \param[in] base start address
- * \param[in] size region size
- * \param[in] ac  access control of the region
+ * @brief update the setting of MPU region in the specified container
+ * @param[in] region MPU region
+ * @param[in] container_id  the specified container
+ * @param[in] base start address
+ * @param[in] size region size
+ * @param[in] ac  access control of the region
  */
 static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t container_id,
 	void* base, uint32_t size, CONTAINER_AC ac)
@@ -430,9 +430,9 @@ static void vmpu_ac_update_container_region(MPU_REGION *region, uint8_t containe
 
 /**
  * find the access control of the specified address with the specified size
- * \param[in]  fault_addr
- * \param[in]  size
- * \return     0
+ * @param[in]  fault_addr
+ * @param[in]  size
+ * @return     0
  */
 uint32_t vmpu_fault_find_ac(uint32_t fault_addr, uint32_t size)
 {
@@ -440,9 +440,9 @@ uint32_t vmpu_fault_find_ac(uint32_t fault_addr, uint32_t size)
 }
 
 /**
- * \brief MPU context switch
- * \param[in] src_id source container
- * \param[in] dst_id destination container
+ * @brief MPU context switch
+ * @param[in] src_id source container
+ * @param[in] dst_id destination container
  */
 void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 {
@@ -538,8 +538,8 @@ void vmpu_switch(uint8_t src_id, uint8_t dst_id)
 }
 
 /**
- * \brief load container
- * \param[in] container_id the specified container
+ * @brief load container
+ * @param[in] container_id the specified container
  */
 void vmpu_load_container(uint8_t container_id)
 {
@@ -552,12 +552,12 @@ void vmpu_load_container(uint8_t container_id)
 }
 
 /**
- * \brief add an global MPU region
- * \param[in] region region id
- * \param[in] base start address
- * \param[in] size region size
- * \param[in] ac region access control
- * \return adjusted region size, 0 for fail
+ * @brief add an global MPU region
+ * @param[in] region region id
+ * @param[in] base start address
+ * @param[in] size region size
+ * @param[in] ac region access control
+ * @return adjusted region size, 0 for fail
  */
 uint32_t vmpu_ac_static_region(uint8_t region, void* base, uint32_t size, CONTAINER_AC ac)
 {
@@ -576,11 +576,11 @@ uint32_t vmpu_ac_static_region(uint8_t region, void* base, uint32_t size, CONTAI
 }
 
 /**
- * \brief add a memory space region for the specified container
- * \param[in] container_id the specified container
- * \param[in] addr start address
- * \param[in] size region size
- * \param[in] ac access control
+ * @brief add a memory space region for the specified container
+ * @param[in] container_id the specified container
+ * @param[in] addr start address
+ * @param[in] size region size
+ * @param[in] ac access control
  */
 void vmpu_ac_mem(uint8_t container_id, void* addr, uint32_t size, CONTAINER_AC ac)
 {
@@ -619,9 +619,9 @@ void vmpu_ac_mem(uint8_t container_id, void* addr, uint32_t size, CONTAINER_AC a
 }
 
 /**
- * \brief load the basic configuration of the specified container
- * \param[in] container_id the specified container
- * \param[in] container_cfg container configuration
+ * @brief load the basic configuration of the specified container
+ * @param[in] container_id the specified container
+ * @param[in] container_cfg container configuration
  */
 void vmpu_ac_container(uint8_t container_id, const CONTAINER_CONFIG *container_cfg)
 {
@@ -734,7 +734,7 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 		/* container 0 is background container, it uses the default stack */
 		arc_aux_write(AUX_SEC_K_SP, (uint32_t)container_cfg->stack_secure);
 	} else {
-		/* \todo init cpu status ? */
+		/* @todo init cpu status ? */
 		if (secure == SECURESHIELD_AC_SECURE) {
 			context = (PROCESSOR_FRAME_T *) (container_cfg->stack_area - ARC_PROCESSOR_FRAME_T_SIZE);
 			context->callee_regs.secure_kernel_sp = (uint32_t)container_cfg->stack_area;
@@ -751,12 +751,6 @@ aligned to the size of region and the region's size must be  2K, 4K, 8K ...*/
 }
 
 
-/**
- * \brief MPU walk function when an MPU exception occurs
- * \param[in] fault_address, the address which caused exception
- * \param[in] type,  not used now
- * \return -1 the mpu region not found, 0 mpu region found
- */
 int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 {
 	const MPU_REGION *region;
@@ -793,11 +787,11 @@ int32_t vmpu_fault_recovery_mpu(uint32_t fault_addr, uint32_t type)
 }
 
 /**
- * \brief add an interface for the specified container
- * \param[in] container_id the specified container
- * \param[in] func interface function
- * \param[in] args_num valid argument number
- * \return  0 for success, -1 for fail
+ * @brief add an interface for the specified container
+ * @param[in] container_id the specified container
+ * @param[in] func interface function
+ * @param[in] args_num valid argument number
+ * @return  0 for success, -1 for fail
  */
 int32_t vmpu_ac_interface(uint8_t container_id, void *func, uint32_t args_num)
 {
@@ -838,11 +832,11 @@ int32_t vmpu_ac_interface(uint8_t container_id, void *func, uint32_t args_num)
 }
 
 /**
- * \brief get the correct interface of the specified container
- * \param[in] container_id the specified container
- * \param[in] func the callee interface
- * \param[in] args_num the argument number of the callee interface
- * \return real interface pointer
+ * @brief get the correct interface of the specified container
+ * @param[in] container_id the specified container
+ * @param[in] func the callee interface
+ * @param[in] args_num the argument number of the callee interface
+ * @return real interface pointer
  */
 void * vmpu_find_interface(uint8_t container_id, void *func, uint32_t args_num)
 {
@@ -872,7 +866,7 @@ void * vmpu_find_interface(uint8_t container_id, void *func, uint32_t args_num)
 	return NULL;
 }
 
-/* \brief vmpu_arch_init is target-dependent */
+/* @brief vmpu_arch_init is target-dependent */
 void vmpu_arch_init(void)
 {
 	uint32_t mpu_cfg;

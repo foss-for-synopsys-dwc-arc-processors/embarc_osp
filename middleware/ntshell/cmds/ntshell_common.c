@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
- * \file
- * \brief process the error of arguments
+ * @file
+ * @brief process the error of arguments
  */
 #include "embARC_debug.h"
 

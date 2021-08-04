@@ -28,13 +28,13 @@
  *
    --------------------------------------------- */
 /**
- * \file
- * \ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
- * \brief	header file of middleware ntshell io uart interface driver
+ * @file
+ * @ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
+ * @brief	header file of middleware ntshell io uart interface driver
  */
 
 /**
- * \addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
+ * @addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
  * @{
  */
 #ifndef _NTSHELL_IO_UART_H_

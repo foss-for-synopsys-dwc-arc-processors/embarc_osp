@@ -316,7 +316,7 @@ static int32_t sdio_identify_and_standy_by(FS_SDCARD_SDIO_CTRL_PTR sd_dev)
 	sd_dev->card_info.csd[2] = cmd.resp[2];
 	sd_dev->card_info.csd[3] = cmd.resp[3];
 
-	/* \todo: For MMC cards, get the exact version from csd */
+	/* @todo: For MMC cards, get the exact version from csd */
 
 	/* get supported trans-speed */
 	ret = cmd.resp[0] & 0xff;
@@ -331,7 +331,7 @@ static int32_t sdio_identify_and_standy_by(FS_SDCARD_SDIO_CTRL_PTR sd_dev)
 	}
 
 	/* In CSD V2.0, fixed to 512 bytes */
-	/* \to add the hanlde of MMC */
+	/* @to add the hanlde of MMC */
 	sd_dev->card_info.read_bl_len = 512;
 	sd_dev->card_info.write_bl_len = 512;
 

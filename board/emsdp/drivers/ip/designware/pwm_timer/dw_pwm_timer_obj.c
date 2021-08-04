@@ -181,8 +181,8 @@ static void dw_pwm_timer_1_install(void)
 #endif /* USE_DW_PWM_TIMER_1 */
 
 /**
- * \brief	install all pwm_timer objects
- * \note	\b MUST be called during system init
+ * @brief	install all pwm_timer objects
+ * @note	@b MUST be called during system init
  */
 void dw_pwm_timer_all_install(void)
 {

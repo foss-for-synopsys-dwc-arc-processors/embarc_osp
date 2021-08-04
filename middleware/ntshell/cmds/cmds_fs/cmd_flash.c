@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief filesystem operation commands: flash
+* @file
+* @brief filesystem operation commands: flash
 */
 
 #include "cmds_fs_cfg.h"

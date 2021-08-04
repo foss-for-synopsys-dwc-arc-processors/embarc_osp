@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief Ymodem command: Ymodem
+* @file
+* @brief Ymodem command: Ymodem
 */
 
 #include "cmds_fs_cfg.h"

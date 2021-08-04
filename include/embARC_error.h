@@ -29,13 +29,13 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup	EMBARC_ERROR
- * \brief	header file to define common definitions error management
+ * @file
+ * @ingroup	EMBARC_ERROR
+ * @brief	header file to define common definitions error management
  */
 
 /**
- * \addtogroup	EMBARC_ERROR
+ * @addtogroup	EMBARC_ERROR
  * @{
  */
 
@@ -50,7 +50,7 @@
 extern "C" {
 #endif
 /**
- * \name	Main Error Code Definitions
+ * @name	Main Error Code Definitions
  * @{
  */
 #define E_OK            (0)             /*!< ok */
@@ -81,7 +81,7 @@ extern "C" {
 /** @} end of name */
 
 /**
- * \name	Generate And Decompose Error Code
+ * @name	Generate And Decompose Error Code
  * @{
  */
 #ifndef ERCD
@@ -107,16 +107,16 @@ extern "C" {
 /** @} end of name */
 
 /**
- * \name	Check Error
+ * @name	Check Error
  * @{
  */
 /**
- * \brief   check an expression to see if it is right, and when error
+ * @brief   check an expression to see if it is right, and when error
  * 	set the ercd, and goto exit_label
- * \param   EXPR	the expression that need to be checked (==0 failed)
- * \param   ERCD	MUST pass a variable to here to get the error code
- * \param   ERROR_CODE error code that pass to ERCD
- * \param   EXIT_LABEL a label to go when error happens
+ * @param   EXPR	the expression that need to be checked (==0 failed)
+ * @param   ERCD	MUST pass a variable to here to get the error code
+ * @param   ERROR_CODE error code that pass to ERCD
+ * @param   EXIT_LABEL a label to go when error happens
  */
 #define CHECK_EXP(EXPR, ERCD, ERROR_CODE, EXIT_LABEL)   { \
 		if (arc_compiler_rarely(!(EXPR))) {	  \
@@ -125,11 +125,10 @@ extern "C" {
 		}					  \
 }
 /**
- * \brief   check an expression to see if it is right, and when error
+ * @brief   check an expression to see if it is right, and when error
  * 			directly goto exit_label
- * \param   EXPR       the expression that need to be checked (==0 failed)
- * \param   EXIT_LABEL a label to go when error happens
- * \retval
+ * @param   EXPR       the expression that need to be checked (==0 failed)
+ * @param   EXIT_LABEL a label to go when error happens
  */
 #define CHECK_EXP_NOERCD(EXPR, EXIT_LABEL) {	    \
 		if (arc_compiler_rarely(!(EXPR))) { \

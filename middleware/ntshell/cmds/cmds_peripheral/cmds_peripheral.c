@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief register peripheral operation commands
+* @file
+* @brief register peripheral operation commands
 */
 #include "cmd_cfg.h"
 #if NTSHELL_USE_CMDS_PERIPHERAL

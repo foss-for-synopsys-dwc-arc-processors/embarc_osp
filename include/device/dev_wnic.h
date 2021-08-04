@@ -358,12 +358,12 @@ extern "C" {
 #endif
 
 /**
- * \brief	get an \ref dev_wnic "wnic device" by wnic device id.
- *  	For how to use wnic device hal refer to \ref dev_wnic "Functions in wnic device structure"
- * \param[in]	wnic_id		id of wnic, defined by user
- * \retval	!NULL		pointer to an wnic device structure (\ref dev_wnic)
- * \retval	NULL		failed to find the wnic device by \ref wnic_id
- * \note	need to implemented by user in user code
+ * @brief	get an @ref dev_wnic "wnic device" by wnic device id.
+ *  	For how to use wnic device hal refer to @ref dev_wnic "Functions in wnic device structure"
+ * @param[in]	wnic_id		id of wnic, defined by user
+ * @retval	!NULL		pointer to an wnic device structure (@ref dev_wnic)
+ * @retval	NULL		failed to find the wnic device
+ * @note	need to implemented by user in user code
  */
 extern DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id);
 

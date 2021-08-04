@@ -60,7 +60,7 @@
 #define CPU_PORTB_DIR 0xFFFFFFF0
 
 /**
- * \name	AXC003 LED Port A Configuration
+ * @name	AXC003 LED Port A Configuration
  * @{
  */
 #define AXC003_LEDA_MASK        CPU_POARTA_DIR
@@ -69,7 +69,7 @@
 /** @} end of name */
 
 /**
- * \name	AXC003 LED Port B Configuration
+ * @name	AXC003 LED Port B Configuration
  * @{
  */
 #define AXC003_LEDB_OFFSET      (8)
@@ -79,7 +79,7 @@
 /** @} end of name */
 
 /**
- * \name	AXC003 7-segment Port Configuration
+ * @name	AXC003 7-segment Port Configuration
  * @{
  */
 #define AXC003_7SEG_OFFSET      (16)
@@ -89,7 +89,7 @@
 /** @} end of name */
 
 /**
- * \name	AXC003 Button Port Configuration
+ * @name	AXC003 Button Port Configuration
  * @{
  */
 #define AXC003_BUTTON_OFFSET    (20)

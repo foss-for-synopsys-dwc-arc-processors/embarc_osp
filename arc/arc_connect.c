@@ -33,10 +33,10 @@
 static ARC_SPINLOCK_T arc_connect_lock;
 
 /**
- * \brief execute arc connect cmd
+ * @brief execute arc connect cmd
  *
- * \param op, pointer to arc connect operation
- * \return result of arc connect cmd
+ * @param op, pointer to arc connect operation
+ * @return result of arc connect cmd
  */
 static uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP_T *op)
 
@@ -75,9 +75,9 @@ static uint32_t arc_connect_cmd_execute(ARC_CONNECT_OP_T *op)
 }
 
 /**
- * \brief get the core id in arc connect
+ * @brief get the core id in arc connect
  *
- * \return core id
+ * @return core id
  */
 uint32_t arc_connect_check_core_id(void)
 {
@@ -89,7 +89,7 @@ uint32_t arc_connect_check_core_id(void)
 }
 
 /**
- * \brief enable interrupt distribute unit
+ * @brief enable interrupt distribute unit
  *
  */
 void arc_connect_idu_enable(void)
@@ -102,7 +102,7 @@ void arc_connect_idu_enable(void)
 }
 
 /**
- * \brief disable interrupt distribute unit
+ * @brief disable interrupt distribute unit
  *
  */
 void arc_connect_idu_disable(void)
@@ -115,9 +115,9 @@ void arc_connect_idu_disable(void)
 }
 
 /**
- * \brief read interrupt distribute enable status
+ * @brief read interrupt distribute enable status
  *
- * \return enable status
+ * @return enable status
  */
 uint32_t arc_connect_idu_read_enable(void)
 {
@@ -129,11 +129,11 @@ uint32_t arc_connect_idu_read_enable(void)
 }
 
 /**
- * \brief set the mode of irq connected to idu
+ * @brief set the mode of irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \param trigger_mode trigger mode, level or pulse
- * \param distri_mode distribute mode
+ * @param irq_num the num of irq connected to idu
+ * @param trigger_mode trigger mode, level or pulse
+ * @param distri_mode distribute mode
  */
 void arc_connect_idu_set_mode(uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode)
 {
@@ -146,10 +146,10 @@ void arc_connect_idu_set_mode(uint32_t irq_num, uint16_t trigger_mode, uint16_t 
 }
 
 /**
- * \brief read the mode of irq connected to idu
+ * @brief read the mode of irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \return
+ * @param irq_num the num of irq connected to idu
+ * @return
  */
 uint32_t arc_connect_idu_read_mode(uint32_t irq_num)
 {
@@ -161,10 +161,10 @@ uint32_t arc_connect_idu_read_mode(uint32_t irq_num)
 }
 
 /**
- * \brief set the target core to handle the irq connected to idu
+ * @brief set the target core to handle the irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \param target_core the target core
+ * @param irq_num the num of irq connected to idu
+ * @param target_core the target core
  */
 void arc_connect_idu_set_dest(uint32_t irq_num, uint32_t target_core)
 {
@@ -176,10 +176,10 @@ void arc_connect_idu_set_dest(uint32_t irq_num, uint32_t target_core)
 }
 
 /**
- * \brief read the target core to handle the irq connected to idu
+ * @brief read the target core to handle the irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \return the target core
+ * @param irq_num the num of irq connected to idu
+ * @return the target core
  */
 uint32_t arc_connect_idu_read_dest(uint32_t irq_num)
 {
@@ -191,9 +191,9 @@ uint32_t arc_connect_idu_read_dest(uint32_t irq_num)
 }
 
 /**
- * \brief generate the irq connected to idu in software
+ * @brief generate the irq connected to idu in software
  *
- * \param irq_num the num of irq connected to idu
+ * @param irq_num the num of irq connected to idu
  */
 void arc_connect_idu_gen_cirq(uint32_t irq_num)
 {
@@ -205,9 +205,9 @@ void arc_connect_idu_gen_cirq(uint32_t irq_num)
 }
 
 /**
- * \brief acknowledge irq connected to idu
+ * @brief acknowledge irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
+ * @param irq_num the num of irq connected to idu
  */
 void arc_connect_idu_ack_cirq(uint32_t irq_num)
 {
@@ -219,10 +219,10 @@ void arc_connect_idu_ack_cirq(uint32_t irq_num)
 }
 
 /**
- * \brief check the status of irq connected to idu
+ * @brief check the status of irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \return status of irq connected to idu
+ * @param irq_num the num of irq connected to idu
+ * @return status of irq connected to idu
  */
 uint32_t arc_connect_idu_check_status(uint32_t irq_num)
 {
@@ -234,10 +234,10 @@ uint32_t arc_connect_idu_check_status(uint32_t irq_num)
 }
 
 /**
- * \brief check the source of irq connected to idu
+ * @brief check the source of irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \return the source of irq connected to idu
+ * @param irq_num the num of irq connected to idu
+ * @return the source of irq connected to idu
  */
 uint32_t arc_connect_idu_check_source(uint32_t irq_num)
 {
@@ -249,10 +249,10 @@ uint32_t arc_connect_idu_check_source(uint32_t irq_num)
 }
 
 /**
- * \brief set the interrupt mask of irq connected to idu
+ * @brief set the interrupt mask of irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \param mask interrupt mask
+ * @param irq_num the num of irq connected to idu
+ * @param mask interrupt mask
  */
 void arc_connect_idu_set_mask(uint32_t irq_num, uint32_t mask)
 {
@@ -264,10 +264,10 @@ void arc_connect_idu_set_mask(uint32_t irq_num, uint32_t mask)
 }
 
 /**
- * \brief read the interrupt mask of irq connected to idu
+ * @brief read the interrupt mask of irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \return interrupt mask
+ * @param irq_num the num of irq connected to idu
+ * @return interrupt mask
  */
 uint32_t arc_connect_idu_read_mask(uint32_t irq_num)
 {
@@ -279,10 +279,10 @@ uint32_t arc_connect_idu_read_mask(uint32_t irq_num)
 }
 
 /**
- * \brief check the first core to handle the irq connected to idu
+ * @brief check the first core to handle the irq connected to idu
  *
- * \param irq_num the num of irq connected to idu
- * \return core number
+ * @param irq_num the num of irq connected to idu
+ * @return core number
  */
 uint32_t arc_connect_idu_check_first(uint32_t irq_num)
 {
@@ -294,12 +294,12 @@ uint32_t arc_connect_idu_check_first(uint32_t irq_num)
 }
 
 /**
- * \brief configure the irq connected to idu
+ * @brief configure the irq connected to idu
  *
- * \param core target core to handle the irq
- * \param irq_num the num of irq connected to idu
- * \param trigger_mode trigger mode
- * \param distri_mode distribute mode
+ * @param core target core to handle the irq
+ * @param irq_num the num of irq connected to idu
+ * @param trigger_mode trigger mode
+ * @param distri_mode distribute mode
  */
 void arc_connect_idu_config_irq(uint32_t core, uint32_t irq_num, uint16_t trigger_mode, uint16_t distri_mode)
 {

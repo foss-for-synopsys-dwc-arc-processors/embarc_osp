@@ -29,13 +29,13 @@
 --------------------------------------------- */
 
 /**
- * \file
- * \ingroup ARC_HAL_STARTUP
- * \brief assembly part of startup process
+ * @file
+ * @ingroup ARC_HAL_STARTUP
+ * @brief assembly part of startup process
  */
 
 /**
- * \addtogroup ARC_HAL_STARTUP
+ * @addtogroup ARC_HAL_STARTUP
  * @{
  */
 /** @cond STARTUP_ASM */

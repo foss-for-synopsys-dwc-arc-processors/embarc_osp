@@ -42,8 +42,8 @@ static void iotdk_mux_init(void)
 }
 
 /**
- * \brief	Board init routine MUST be called in each application
- * \note	It is better to disable interrupts when calling this function
+ * @brief	Board init routine MUST be called in each application
+ * @note	It is better to disable interrupts when calling this function
  *	remember to enable interrupt when you want to use them
  */
 void board_init(void)

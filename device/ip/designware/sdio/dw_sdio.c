@@ -355,7 +355,7 @@ void dw_sdio_isr(DEV_SDIO *sdio_obj, void *ptr)
 	/* clear interrupt */
 	dw_sdio_reg_write(sdio, DWSDIO_REG_RINTSTS, int_status);
 
-	/* \todo dma based interrupt */
+	/* @todo dma based interrupt */
 }
 
 int32_t dw_sdio_cmd_poll(DEV_SDIO *sdio_obj, SDIO_CMD_PTR cmd, SDIO_DATA_PTR data)
@@ -553,7 +553,7 @@ int32_t dw_sdio_control(DEV_SDIO *sdio_obj, SDIO_CTRL_CMD_PTR ctrl_cmd, void *pa
 	case SDIO_CMD_SET_BUS_FREQ:
 		dw_sdio_bus_freq_set(sdio, card, (uint32_t)param);
 		break;
-	/* \todo add more cmds */
+	/* @todo add more cmds */
 	default:
 		ret = E_PAR;
 	}

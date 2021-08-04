@@ -29,9 +29,9 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup	ARC_HAL_MISC_CACHE
- * \brief header file of cache module
+ * @file
+ * @ingroup	ARC_HAL_MISC_CACHE
+ * @brief header file of cache module
  */
 
 #ifndef _ARC_HAL_CACHE_H_
@@ -43,8 +43,8 @@
 #include "arc/arc_exception.h"
 
 /**
- * \name instruction cache control register related definition
- * \todo this definitions will be reviewed.
+ * @name instruction cache control register related definition
+ * @todo this definitions will be reviewed.
  * @{
  */
 #define IC_CTRL_IC_ENABLE                       0x0     /*!< enable instruction cache */
@@ -55,8 +55,8 @@
 /** @} */
 
 /**
- * \name data cache control register related definition
- * \todo this definition will be reviewed.
+ * @name data cache control register related definition
+ * @todo this definition will be reviewed.
  * @{
  */
 #define DC_CTRL_DC_ENABLE                       0x0     /*!< enable data cache */
@@ -97,12 +97,12 @@ extern "C" {
 #endif
 
 /**
- * \name instruction cache related inline function
+ * @name instruction cache related inline function
  * @{
  */
 
 /**
- * \brief  check whether instruction cache is available,
+ * @brief  check whether instruction cache is available,
  * 0 for not available, >0 for available
  */
 Inline uint8_t icache_available(void)
@@ -111,8 +111,8 @@ Inline uint8_t icache_available(void)
 }
 
 /**
- * \brief  enable instruction cache
- * \param[in] icache_en_mask operation mask
+ * @brief  enable instruction cache
+ * @param[in] icache_en_mask operation mask
  */
 Inline void icache_enable(uint32_t icache_en_mask)
 {
@@ -132,7 +132,7 @@ Inline uint32_t icache_enabled(void)
 }
 
 /**
- * \brief  disable instruction cache
+ * @brief  disable instruction cache
  */
 Inline void icache_disable(void)
 {
@@ -140,7 +140,7 @@ Inline void icache_disable(void)
 }
 
 /**
- * \brief  invalidate the entire instruction cache
+ * @brief  invalidate the entire instruction cache
  */
 Inline void icache_invalidate(void)
 {
@@ -152,8 +152,8 @@ Inline void icache_invalidate(void)
 }
 
 /**
- * \brief  invalidate specific cache line
- * \param[in] address memory address
+ * @brief  invalidate specific cache line
+ * @param[in] address memory address
  */
 Inline void icache_invalidate_line(uint32_t address)
 {
@@ -172,9 +172,9 @@ Inline void icache_invalidate_line(uint32_t address)
 }
 
 /**
- * \brief  lock specific cache line
- * \param[in] address memory address
- * \return 0, succeeded, -1, failed
+ * @brief  lock specific cache line
+ * @param[in] address memory address
+ * @return 0, succeeded, -1, failed
  */
 Inline int32_t icache_lock_line(uint32_t address)
 {
@@ -187,8 +187,8 @@ Inline int32_t icache_lock_line(uint32_t address)
 }
 
 /**
- * \brief  set icache access mode
- * \param[in] mode, access mode, 1: indirect access 0:direct access
+ * @brief  set icache access mode
+ * @param[in] mode access mode, 1: indirect access 0:direct access
  */
 Inline void icache_access_mode(uint32_t mode)
 {
@@ -202,12 +202,12 @@ Inline void icache_access_mode(uint32_t mode)
 /** @} */
 
 /**
- * \name data cache related inline functions
+ * @name data cache related inline functions
  * @{
  */
 
 /**
- * \brief  check whether data cache is available,
+ * @brief  check whether data cache is available,
  * 0 for not available, >0 for available
  */
 Inline uint8_t dcache_available(void)
@@ -216,7 +216,7 @@ Inline uint8_t dcache_available(void)
 }
 
 /**
- * \brief 	invalidate the entire data cache
+ * @brief 	invalidate the entire data cache
  */
 Inline void dcache_invalidate(void)
 {
@@ -232,8 +232,8 @@ Inline void dcache_invalidate(void)
 }
 
 /**
- * \brief invalidate the specific cache line
- * \param[in] address memory address
+ * @brief invalidate the specific cache line
+ * @param[in] address memory address
  */
 Inline void dcache_invalidate_line(uint32_t address)
 {
@@ -244,8 +244,8 @@ Inline void dcache_invalidate_line(uint32_t address)
 }
 
 /**
- * \brief enable data cache
- * \param[in] dcache_en_mask operation mask
+ * @brief enable data cache
+ * @param[in] dcache_en_mask operation mask
  */
 Inline void dcache_enable(uint32_t dcache_en_mask)
 {
@@ -262,7 +262,7 @@ Inline uint32_t dcache_enabled(void)
 }
 
 /**
- * \brief disable data cache
+ * @brief disable data cache
  */
 Inline void dcache_disable(void)
 {
@@ -270,7 +270,7 @@ Inline void dcache_disable(void)
 }
 
 /**
- * \brief flush data cache
+ * @brief flush data cache
  */
 Inline void dcache_flush(void)
 {
@@ -293,8 +293,8 @@ Inline void dcache_flush(void)
 }
 
 /**
- * \brief  flush the specific data cache line
- * \param[in] address memory address
+ * @brief  flush the specific data cache line
+ * @param[in] address memory address
  */
 Inline void dcache_flush_line(uint32_t address)
 {
@@ -316,9 +316,9 @@ Inline void dcache_flush_line(uint32_t address)
 }
 
 /**
- * \brief  lock the specific data cache line
- * \param[in] address memory address
- * \return 0, succeeded, -1, failed
+ * @brief  lock the specific data cache line
+ * @param[in] address memory address
+ * @return 0, succeeded, -1, failed
  */
 Inline int dcache_lock_line(uint32_t address)
 {
@@ -331,8 +331,8 @@ Inline int dcache_lock_line(uint32_t address)
 }
 
 /**
- * \brief  set dcache access mode
- * \param[in] mode, access mode, 1: indirect access 0:direct access
+ * @brief  set dcache access mode
+ * @param[in] mode access mode, 1: indirect access 0:direct access
  */
 Inline void dcache_access_mode(uint32_t mode)
 {
@@ -433,7 +433,7 @@ Inline void slc_flush_line(uint32_t address)
 /** @} */
 
 /**
- * \name declarations of cache related functions
+ * @name declarations of cache related functions
  * @{
  */
 extern int32_t icache_invalidate_mlines(uint32_t start_addr, uint32_t size);

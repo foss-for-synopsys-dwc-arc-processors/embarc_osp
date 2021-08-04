@@ -598,8 +598,8 @@ DEV_WNIC_PTR wnic_get_dev(int32_t wnic_id)
 }
 
 /**
- * \brief  	install all wnic objects
- * \note 	\b MUST be called during system init
+ * @brief  	install all wnic objects
+ * @note 	@b MUST be called during system init
  */
 void pmwifi_all_install(void)
 {

@@ -138,11 +138,11 @@ void ahb_clk_divisor(uint8_t div)
 }
 
 /**
- * \brief       enable the clk of ahb device
+ * @brief       enable the clk of ahb device
  *
- * \param[in]   dev ahb device number
+ * @param[in]   dev ahb device number
  *
- * \retval      none
+ * @retval      none
  */
 void ahb_clk_enable(uint8_t dev)
 {
@@ -154,11 +154,11 @@ void ahb_clk_enable(uint8_t dev)
 }
 
 /**
- * \brief       disable the clk of ahb device
+ * @brief       disable the clk of ahb device
  *
- * \param[in]   dev ahb device number
+ * @param[in]   dev ahb device number
  *
- * \retval      none
+ * @retval      none
  */
 void ahb_clk_disable(uint8_t dev)
 {
@@ -193,12 +193,12 @@ void apb_clk_disable(uint8_t dev)
 }
 
 /**
- * \brief       configure the sdio clk divisor
+ * @brief       configure the sdio clk divisor
  * 		sdio is in ahb bus
  *
- * \param[in]   div divisor
+ * @param[in]   div divisor
  *
- * \retval      none
+ * @retval      none
  */
 void sdio_clk_divisor(uint8_t div)
 {
@@ -206,12 +206,12 @@ void sdio_clk_divisor(uint8_t div)
 }
 
 /**
- * \brief       configure the spi master's clk divisor
+ * @brief       configure the spi master's clk divisor
  *
- * \param[in]   id  spi master id
- * \param[in]   div divisor
+ * @param[in]   id  spi master id
+ * @param[in]   div divisor
  *
- * \retval      none
+ * @retval      none
  */
 void spi_master_clk_divisor(uint8_t id, uint8_t div)
 {
@@ -228,12 +228,12 @@ void spi_master_clk_divisor(uint8_t id, uint8_t div)
 }
 
 /**
- * \brief     configure the debounce clk divisor of gpio8b
+ * @brief     configure the debounce clk divisor of gpio8b
  *
- * \param[in]   bank bank number
- * \param[in]   div  debounce clk divisor
+ * @param[in]   bank bank number
+ * @param[in]   div  debounce clk divisor
  *
- * \retval      none
+ * @retval      none
  */
 void gpio8b_dbclk_div(uint8_t bank, uint8_t div)
 {
@@ -253,12 +253,12 @@ void gpio8b_dbclk_div(uint8_t bank, uint8_t div)
 }
 
 /**
- * \brief     configure the debounce clk divisor of gpio4b
+ * @brief     configure the debounce clk divisor of gpio4b
  *
- * \param[in]   bank bank number
- * \param[in]   div  debounce clk divisor
+ * @param[in]   bank bank number
+ * @param[in]   div  debounce clk divisor
  *
- * \retval      none
+ * @retval      none
  */
 void gpio4b_dbclk_div(uint8_t bank, uint8_t div)
 {

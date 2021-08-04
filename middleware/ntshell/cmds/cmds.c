@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief register commands
+* @file
+* @brief register commands
 */
 
 #include "cmd.h"

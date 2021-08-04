@@ -419,7 +419,7 @@ Inline void arc_kernel_stack_check_configure(uint32_t top, uint32_t base)
 }
 
 /**
- * @fn uint32_t arc_is_user_mode(void)
+ * @fn uint32_t arc_in_user_mode(void)
  * @brief Check whether processor is in user mode
  * this function relies on AUX_STATUS_BIT_US set in privileged mode first
  * @return 1 user mode, 0 privileged mode

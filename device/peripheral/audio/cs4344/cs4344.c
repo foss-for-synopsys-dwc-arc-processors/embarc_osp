@@ -39,8 +39,8 @@
 static DEV_I2S * dev_i2s_tx_p = NULL;
 
 /**
- * \brief   The transmiter mode's callback function of interrupt mode.
- * \detail  This function will be callback when the whole data has been send and you have to \
+ * @brief   The transmiter mode's callback function of interrupt mode.
+ * @detail  This function will be callback when the whole data has been send and you have to \
                         resatrt the interrupt and point the data buffer in this function.
  */
 void cs4344_tx_isr_restart(DEV_BUFFER *tx_buffer)
@@ -51,7 +51,7 @@ void cs4344_tx_isr_restart(DEV_BUFFER *tx_buffer)
 }
 
 /**
- * \brief Error callback function.
+ * @brief Error callback function.
  */
 void cs4344_err_isr(void *ptr)
 {
@@ -60,11 +60,11 @@ void cs4344_err_isr(void *ptr)
 }
 
 /**
- * \brief Init i2s.
- * \param dev_i2s_tx_p.Pointer pointing to the I2S device.
- * \param cs4344_init_str.Structure used to init i2s
- * \param dev.Used to init some parameters related with interrupt,and can be NULL when you do not use interrupt mode.
- * \param i2s_tx_isr.Function pointer pointing to he callback function when all data has been sent.
+ * @brief Init i2s.
+ * @param dev_i2s_tx_p.Pointer pointing to the I2S device.
+ * @param cs4344_init_str.Structure used to init i2s
+ * @param dev.Used to init some parameters related with interrupt,and can be NULL when you do not use interrupt mode.
+ * @param i2s_tx_isr.Function pointer pointing to he callback function when all data has been sent.
  */
 uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str, DEV_BUFFER *dev, void (*i2s_isr)(void))
 {
@@ -105,8 +105,8 @@ uint32_t cs4344_init_func(const CS4344_INIT_STR *cs4344_init_str, DEV_BUFFER *de
 }
 
 /**
- * \brief	Init I2S with the structure of CS4344_INIT_STR
- * \param	buffer.The point which is pointed to the buffer used in interrupt mode. \
+ * @brief	Init I2S with the structure of CS4344_INIT_STR
+ * @param	buffer.The point which is pointed to the buffer used in interrupt mode. \
                         This parameter can be NULL when you use polling mode.
  */
 int16_t cs4344_tx_init(uint32_t freq, uint32_t dfmt, uint32_t mode_sel, DEV_BUFFER *buffer, void (*i2s_isr)(void))
@@ -127,11 +127,11 @@ int16_t cs4344_tx_init(uint32_t freq, uint32_t dfmt, uint32_t mode_sel, DEV_BUFF
 }
 
 /**
- * \brief Write data by i2s.
- * \param dev_i2s_tx_p.Pointer pointing to the I2S device.
- * \param data.Pointer pointed to the data ready to be sent.
- * \param len.The length of data to be sent.
- * \param channel.0.
+ * @brief Write data by i2s.
+ * @param dev_i2s_tx_p.Pointer pointing to the I2S device.
+ * @param data.Pointer pointed to the data ready to be sent.
+ * @param len.The length of data to be sent.
+ * @param channel.0.
  */
 uint32_t cs4344_write_data(const void *data, uint32_t len, uint32_t channel)
 {
@@ -139,11 +139,11 @@ uint32_t cs4344_write_data(const void *data, uint32_t len, uint32_t channel)
 }
 
 /**
- * \brief Read data by i2s.
- * \param dev_i2s_tx_p.Pointer pointing to the I2S device.
- * \param data.Pointer pointed to the buffer used to receive data.
- * \param len.The length of data to receive.
- * \param channel.0.
+ * @brief Read data by i2s.
+ * @param dev_i2s_tx_p.Pointer pointing to the I2S device.
+ * @param data.Pointer pointed to the buffer used to receive data.
+ * @param len.The length of data to receive.
+ * @param channel.0.
  */
 uint32_t cs4344_read_data(void *data, uint32_t len, uint32_t channel)
 {
@@ -151,8 +151,8 @@ uint32_t cs4344_read_data(void *data, uint32_t len, uint32_t channel)
 }
 
 /**
- * \brief Flush transmiter fifo
- * \param dev_i2s_tx_p.Pointer pointing to the I2S device.
+ * @brief Flush transmiter fifo
+ * @param dev_i2s_tx_p.Pointer pointing to the I2S device.
  */
 void cs4344_tx_flush_fifo(void)
 {
@@ -160,8 +160,8 @@ void cs4344_tx_flush_fifo(void)
 }
 
 /**
- * \brief Flush receive fifo
- * \param dev_i2s_tx_p.Pointer pointing to the I2S device.
+ * @brief Flush receive fifo
+ * @param dev_i2s_tx_p.Pointer pointing to the I2S device.
  */
 void cs4344_rx_flush_fifo(void)
 {

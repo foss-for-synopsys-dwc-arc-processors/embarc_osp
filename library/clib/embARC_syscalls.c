@@ -49,7 +49,7 @@
 #include "embARC.h"
 
 /**
- * \todo Consider hostlink and nsim support
+ * @todo Consider hostlink and nsim support
  */
 
 #ifndef _HOSTLINK_ /* Not using hostlink library */
@@ -412,7 +412,7 @@ int SYSCALL_PREFIX(_lstat)(const char *path, struct stat *buf)
 }
 
 /** Status of an open file */
-/** \todo fstat need more work to provide correct file stat */
+/** @todo fstat need more work to provide correct file stat */
 int SYSCALL_PREFIX(_fstat)(int handle, struct stat *buf)
 {
 	if (!buf) return -1;
@@ -467,7 +467,7 @@ char *SYSCALL_PREFIX(getcwd)(char *buf, int len)
 
 ////////////////////////////////////////
 // Process Management                 //
-// \todo Integrate with FreeRTOS task //
+// @todo Integrate with FreeRTOS task //
 ////////////////////////////////////////
 /** Determining a Process ID */
 int SYSCALL_PREFIX(_getpid)(void)
@@ -559,7 +559,7 @@ char *_mwgetenv2(const char *var)
 // Time Calculation //
 //////////////////////
 /*
- * \todo
+ * @todo
  * the arc_timer.h in embARC conflicts with arc_timer.h in MWDT library
  * both in name and path.
  * A better fix is to rename arc_timer.h in embARC to arc_sys_timer.h/
@@ -670,9 +670,9 @@ typedef struct exc_frame {
 	uint32_t r0;
 } EXC_FRAME;
 /**
- * \brief syscall functions
+ * @brief syscall functions
  * 		  partly implemented for gnu in swi exception handler
- * \param ptr exception handle stack pointer
+ * @param ptr exception handle stack pointer
  */
 void syscall_swi(void *ptr)
 {

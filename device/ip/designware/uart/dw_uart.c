@@ -108,12 +108,12 @@ Inline int32_t dw_uart_getchar(DW_UART_REG *uart_reg_ptr)
 	return (int32_t)uart_reg_ptr->DATA;
 }
 /**
- * \brief	send char by uart when available,
+ * @brief	send char by uart when available,
  * 	mostly used in interrupt method, non-blocked function
- * \param[in]	uart_reg_ptr	uart register structure pointer
- * \param[in]	chr		char to be sent
- * \retval	0		send successfully
- * \retval	-1		not ready to send data
+ * @param[in]	uart_reg_ptr	uart register structure pointer
+ * @param[in]	chr		char to be sent
+ * @retval	0		send successfully
+ * @retval	-1		not ready to send data
  */
 Inline int32_t dw_uart_snd_chr(DW_UART_REG *uart_reg_ptr, char chr)
 {
@@ -124,19 +124,19 @@ Inline int32_t dw_uart_snd_chr(DW_UART_REG *uart_reg_ptr, char chr)
 	return -1;
 }
 /**
- * \brief	receive one char from uart,
+ * @brief	receive one char from uart,
  * 	mostly used in interrupt routine, non-blocked function
- * \param[in]	uart_reg_ptr	uart register structure pointer
- * \return	data received by the uart
+ * @param[in]	uart_reg_ptr	uart register structure pointer
+ * @return	data received by the uart
  */
 Inline int32_t dw_uart_rcv_chr(DW_UART_REG *uart_reg_ptr)
 {
 	return dw_uart_getchar(uart_reg_ptr);
 }
 /**
- * \brief	send char by uart in poll method, blocked function
- * \param[in]	uart_reg_ptr	uart register structure pointer
- * \param[in]	chr		char to be sent
+ * @brief	send char by uart in poll method, blocked function
+ * @param[in]	uart_reg_ptr	uart register structure pointer
+ * @param[in]	chr		char to be sent
  */
 Inline void dw_uart_psnd_chr(DW_UART_REG *uart_reg_ptr, char chr)
 {
@@ -148,9 +148,9 @@ Inline void dw_uart_psnd_chr(DW_UART_REG *uart_reg_ptr, char chr)
 	dw_uart_putchar(uart_reg_ptr, chr);
 }
 /**
- * \brief	receive one char from uart in poll method, blocked function
- * \param[in]	uart_reg_ptr	uart register structure pointer
- * \return	data received by the uart
+ * @brief	receive one char from uart in poll method, blocked function
+ * @param[in]	uart_reg_ptr	uart register structure pointer
+ * @return	data received by the uart
  */
 Inline int32_t dw_uart_prcv_chr(DW_UART_REG *uart_reg_ptr)
 {
@@ -195,11 +195,11 @@ Inline uint32_t dw_uart_get_rxfifo_len(DW_UART_REG *uart_reg_ptr)
 }
 
 /**
- * \brief	set designware uart DPS value
- * \param	uart_reg_ptr	uart register structure
- * \param	dps		data bits/parity bit/stop bits parameter
- * \retval	0	Set ok
- * \retval	!0	Set failed
+ * @brief	set designware uart DPS value
+ * @param	uart_reg_ptr	uart register structure
+ * @param	dps		data bits/parity bit/stop bits parameter
+ * @retval	0	Set ok
+ * @retval	!0	Set failed
  */
 static int32_t dw_uart_set_dps(DW_UART_REG *uart_reg_ptr, UART_DPS_FORMAT *dps)
 {
@@ -234,9 +234,9 @@ static int32_t dw_uart_set_dps(DW_UART_REG *uart_reg_ptr, UART_DPS_FORMAT *dps)
 }
 
 /**
- * \brief	set designware uart baudrate
- * \param	uart_reg_ptr	uart register structure
- * \param	baud_divisor	uart baudrate divisor
+ * @brief	set designware uart baudrate
+ * @param	uart_reg_ptr	uart register structure
+ * @param	baud_divisor	uart baudrate divisor
  */
 static void dw_uart_set_baud(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor)
 {
@@ -252,8 +252,8 @@ static void dw_uart_set_baud(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor)
 }
 
 /**
- * \brief	Do uart software reset
- * \param	uart_reg_ptr	uart register structure
+ * @brief	Do uart software reset
+ * @param	uart_reg_ptr	uart register structure
  */
 Inline void dw_uart_software_reset(DW_UART_REG *uart_reg_ptr)
 {
@@ -264,10 +264,10 @@ Inline void dw_uart_software_reset(DW_UART_REG *uart_reg_ptr)
 }
 
 /**
- * \brief	set designware uart baudrate
- * \param	uart_reg_ptr	uart register structure
- * \param	hwfc		uart hardware flow control type
- * \note	Need to set corresponding pin functions
+ * @brief	set designware uart baudrate
+ * @param	uart_reg_ptr	uart register structure
+ * @param	hwfc		uart hardware flow control type
+ * @note	Need to set corresponding pin functions
  */
 static void dw_uart_set_hwfc(DW_UART_REG *uart_reg_ptr, UART_HW_FLOW_CONTROL hwfc)
 {
@@ -293,9 +293,9 @@ Inline void dw_uart_clr_break(DW_UART_REG *uart_reg_ptr)
 }
 
 /**
- * \brief	init designware uart with selected baud
- * \param[in]	uart_reg_ptr	uart register structure pointer
- * \param[in]	baud_divisor	baudrate divisor
+ * @brief	init designware uart with selected baud
+ * @param[in]	uart_reg_ptr	uart register structure pointer
+ * @param[in]	baud_divisor	baudrate divisor
  */
 static void dw_uart_init(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor, UART_DPS_FORMAT *dps, UART_HW_FLOW_CONTROL hwfc)
 {
@@ -310,8 +310,8 @@ static void dw_uart_init(DW_UART_REG *uart_reg_ptr, uint32_t baud_divisor, UART_
 }
 
 /**
- * \brief	set designware uart baudrate
- * \param	uart_info_ptr	uart information structure pointer
+ * @brief	set designware uart baudrate
+ * @param	uart_info_ptr	uart information structure pointer
  */
 static void dw_uart_flush_output(DEV_UART_INFO *uart_info_ptr)
 {
@@ -343,9 +343,9 @@ static void dw_uart_flush_output(DEV_UART_INFO *uart_info_ptr)
 }
 
 /**
- * \brief	disable designware uart send or receive interrupt
- * \param[in]	DEV_UART_INFO 	*uart_info_ptr
- * \param[in]	cbrtn		control code of callback routine of send or receive
+ * @brief	disable designware uart send or receive interrupt
+ * @param[in]	DEV_UART_INFO 	*uart_info_ptr
+ * @param[in]	cbrtn		control code of callback routine of send or receive
  */
 static void dw_uart_dis_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 {
@@ -375,9 +375,9 @@ static void dw_uart_dis_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 }
 
 /**
- * \brief	enable DesignWare UART send or receive interrupt
- * \param[in]	DEV_UART_INFO 	*uart_info_ptr
- * \param[in]	cbrtn		control code of callback routine of send or receive
+ * @brief	enable DesignWare UART send or receive interrupt
+ * @param[in]	DEV_UART_INFO 	*uart_info_ptr
+ * @param[in]	cbrtn		control code of callback routine of send or receive
  */
 static void dw_uart_ena_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 {
@@ -407,8 +407,8 @@ static void dw_uart_ena_cbr(DEV_UART_INFO *uart_info_ptr, uint32_t cbrtn)
 }
 
 /**
- * \brief	enable designware uart interrupt
- * \param	uart_info_ptr	uart information structure pointer
+ * @brief	enable designware uart interrupt
+ * @param	uart_info_ptr	uart information structure pointer
  */
 static void dw_uart_enable_interrupt(DEV_UART_INFO *uart_info_ptr)
 {
@@ -423,8 +423,8 @@ static void dw_uart_enable_interrupt(DEV_UART_INFO *uart_info_ptr)
 	}
 }
 /**
- * \brief	disable designware uart interrupt
- * \param	uart_info_ptr	uart information structure pointer
+ * @brief	disable designware uart interrupt
+ * @param	uart_info_ptr	uart information structure pointer
  */
 static void dw_uart_disable_interrupt(DEV_UART_INFO *uart_info_ptr)
 {
@@ -535,14 +535,14 @@ static int32_t dw_uart_get_rxavail(DW_UART_CTRL *uart_ctrl_ptr)
 /** @} end of group DEVICE_DW_UART_STATIC */
 
 /**
- * \brief	open a designware uart device
- * \param[in]	uart_obj	uart object structure pointer
- * \param[in]	baud		baudrate to initialized
- * \retval	E_OK	Open successfully without any issues
- * \retval	E_OPNED	If device was opened before with different baudrate, then return E_OPNED
- * \retval	E_OBJ	Device object is not valid
- * \retval	E_PAR	Parameter is not valid
- * \retval	E_NOSPT	Open settings are not supported
+ * @brief	open a designware uart device
+ * @param[in]	uart_obj	uart object structure pointer
+ * @param[in]	baud		baudrate to initialized
+ * @retval	E_OK	Open successfully without any issues
+ * @retval	E_OPNED	If device was opened before with different baudrate, then return E_OPNED
+ * @retval	E_OBJ	Device object is not valid
+ * @retval	E_PAR	Parameter is not valid
+ * @retval	E_NOSPT	Open settings are not supported
  */
 int32_t dw_uart_open(DEV_UART *uart_obj, uint32_t baud)
 {
@@ -605,11 +605,11 @@ error_exit:
 }
 
 /**
- * \brief	close a DesignWare UART device
- * \param[in]	uart_obj	uart object structure pointer
- * \retval	E_OK	Open successfully without any issues
- * \retval	E_OPNED	Device is still opened, the device opn_cnt decreased by 1
- * \retval	E_OBJ	Device object is not valid
+ * @brief	close a DesignWare UART device
+ * @param[in]	uart_obj	uart object structure pointer
+ * @retval	E_OK	Open successfully without any issues
+ * @retval	E_OPNED	Device is still opened, the device opn_cnt decreased by 1
+ * @retval	E_OBJ	Device object is not valid
  */
 int32_t dw_uart_close(DEV_UART *uart_obj)
 {
@@ -642,18 +642,18 @@ error_exit:
 }
 
 /**
- * \brief	control uart by ctrl command
- * \param[in]	uart_obj	uart object structure pointer
- * \param[in]	ctrl_cmd	control command code to do specific uart work
- * \param[in,out]	param	parameters used to control uart or return something
- * \retval	E_OK	Control device successfully
- * \retval	E_CLSED	Device is not opened
- * \retval	E_DIS	Device is disabled
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Control device failed, due to hardware issues
- * \retval	E_CTX	Control device failed, due to different reasons like in transfer state
- * \retval	E_NOSPT	Control command is not supported or not valid
+ * @brief	control uart by ctrl command
+ * @param[in]	uart_obj	uart object structure pointer
+ * @param[in]	ctrl_cmd	control command code to do specific uart work
+ * @param[in,out]	param	parameters used to control uart or return something
+ * @retval	E_OK	Control device successfully
+ * @retval	E_CLSED	Device is not opened
+ * @retval	E_DIS	Device is disabled
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Control device failed, due to hardware issues
+ * @retval	E_CTX	Control device failed, due to different reasons like in transfer state
+ * @retval	E_NOSPT	Control command is not supported or not valid
  */
 int32_t dw_uart_control(DEV_UART *uart_obj, uint32_t ctrl_cmd, void *param)
 {
@@ -807,14 +807,14 @@ error_exit:
 }
 
 /**
- * \brief	send data through DesignWare UART
- * \param[in]	uart_obj	uart object structure pointer
- * \param[in]	data		data that need to send (data must be char type)
- * \param[in]	len		data length need to send
- * \retval	>0	Byte count that was successfully sent for poll method
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Can't write data to hardware due to hardware issues
+ * @brief	send data through DesignWare UART
+ * @param[in]	uart_obj	uart object structure pointer
+ * @param[in]	data		data that need to send (data must be char type)
+ * @param[in]	len		data length need to send
+ * @retval	>0	Byte count that was successfully sent for poll method
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Can't write data to hardware due to hardware issues
  */
 int32_t dw_uart_write(DEV_UART *uart_obj, const void *data, uint32_t len)
 {
@@ -845,14 +845,14 @@ error_exit:
 }
 
 /**
- * \brief	read data through DesignWare UART
- * \param[in]	uart_obj	uart object structure pointer
- * \param[out]	data		data that need to read (data must be char type)
- * \param[in]	len		data count need to read
- * \retval	>0	Byte count that was successfully sent for poll method
- * \retval	E_OBJ	Device object is not valid or not exists
- * \retval	E_PAR	Parameter is not valid for current control command
- * \retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
+ * @brief	read data through DesignWare UART
+ * @param[in]	uart_obj	uart object structure pointer
+ * @param[out]	data		data that need to read (data must be char type)
+ * @param[in]	len		data count need to read
+ * @retval	>0	Byte count that was successfully sent for poll method
+ * @retval	E_OBJ	Device object is not valid or not exists
+ * @retval	E_PAR	Parameter is not valid for current control command
+ * @retval	E_SYS	Can't receive data from hardware due to hardware issues, such as device is disabled
  */
 int32_t dw_uart_read(DEV_UART *uart_obj, void *data, uint32_t len)
 {
@@ -883,9 +883,9 @@ error_exit:
 }
 
 /**
- * \brief	DesignWare UART interrupt processing routine
- * \param[in]	uart_obj	uart object structure pointer
- * \param[in]	ptr		extra information
+ * @brief	DesignWare UART interrupt processing routine
+ * @param[in]	uart_obj	uart object structure pointer
+ * @param[in]	ptr		extra information
  */
 void dw_uart_isr(DEV_UART *uart_obj, void *ptr)
 {

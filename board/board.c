@@ -417,18 +417,18 @@ uint64_t board_get_cur_syshz(void)
 }
 
 /**
- * \brief	provide MS delay function
- * \details
+ * @brief	provide MS delay function
+ * @details
  * 		this function needs a 1-MS timer interrupt to work.
  * 	For bare-metal, it is implemented in this file.
- * 	For OS, you must call \ref board_timer_update in
+ * 	For OS, you must call @ref board_timer_update in
  * 	the OS 1-MS timer interrupt when the bare-metal timer interrupt
  * 	is not ready
- * \param[in]	ms		MS to delay
- * \param[in]	os_compat	Enable or disable
+ * @param[in]	ms		MS to delay
+ * @param[in]	os_compat	Enable or disable
  *	When this delay is enabled, use the OS delay function, if one is provided.
- *	See \ref OSP_DELAY_OS_COMPAT_ENABLE and
- *	\ref OSP_DELAY_OS_COMPAT_DISABLE
+ *	See @ref OSP_DELAY_OS_COMPAT_ENABLE and
+ *	@ref OSP_DELAY_OS_COMPAT_DISABLE
  */
 void board_delay_ms(uint32_t ms, uint8_t os_compat)
 {
@@ -436,7 +436,7 @@ void board_delay_ms(uint32_t ms, uint8_t os_compat)
 
 #ifdef ENABLE_OS
 	if (os_compat == OSP_DELAY_OS_COMPAT_ENABLE) {
-		/** \todo add different os delay functions */
+		/** @todo add different os delay functions */
 #ifdef OS_FREERTOS
 		vTaskDelay(ms);
 		return;

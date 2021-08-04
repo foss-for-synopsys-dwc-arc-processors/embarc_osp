@@ -29,22 +29,22 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART	EMSDP NTShell UART IO Driver
- * \ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
- * \brief	EMSDP NTShell Middleware UART IO Driver
- * \details
+ * @defgroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART	EMSDP NTShell UART IO Driver
+ * @ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO
+ * @brief	EMSDP NTShell Middleware UART IO Driver
+ * @details
  *		Implementation of the middleware ntshell ntshell_io uart driver, use uart as ntshell
  *	interface.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
- * \brief	middleware ntshell io uart interface driver
+ * @file
+ * @ingroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
+ * @brief	middleware ntshell io uart interface driver
  */
 
 /**
- * \addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
+ * @addtogroup	BOARD_EMSDP_DRV_MID_NTSHELL_IO_UART
  * @{
  */
 #include "embARC_toolchain.h"

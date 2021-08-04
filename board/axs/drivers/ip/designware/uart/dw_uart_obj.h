@@ -33,14 +33,14 @@
 #include "device/ip_hal/dev_uart.h"
 
 /**
- * \name	DesignWare UART Object Number
+ * @name	DesignWare UART Object Number
  * @{
  */
 #define DW_UART_NUM     (3)     /*!< DesignWare UART valid number */
 /** @} end of name */
 
 /**
- * \name	Designware UART Object ID Macros
+ * @name	Designware UART Object ID Macros
  * @{
  */
 #define DW_UART_0_ID    0       /*!< uart 0 id macro */
@@ -49,7 +49,7 @@
 /** @} end of name */
 
 /**
- * \name	Designware UART Object Control Macros
+ * @name	Designware UART Object Control Macros
  * @{
  */
 #define USE_DW_UART_0   1       /*!< enable use designware uart 0 */

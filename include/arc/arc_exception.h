@@ -29,9 +29,9 @@
    --------------------------------------------- */
 
 /**
- * \file
- * \ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
- * \brief header file of exception and interrupt management module
+ * @file
+ * @ingroup ARC_HAL_EXCEPTION_CPU ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief header file of exception and interrupt management module
  */
 
 #ifndef _ARC_HAL_EXCEPTION_H_
@@ -47,7 +47,7 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup ARC_HAL_EXCEPTION_CPU
+ * @addtogroup ARC_HAL_EXCEPTION_CPU
  * @{
  */
 #ifndef NUM_EXC_CPU
@@ -215,9 +215,9 @@ extern uint32_t exc_nest_count;
 #endif
 
 /**
- * \brief write the exception vector base
+ * @brief write the exception vector base
  *
- * \param[in] vec_base the target vector base
+ * @param[in] vec_base the target vector base
  */
 Inline void arc_vector_base_write(const void *vec_base)
 {
@@ -225,9 +225,9 @@ Inline void arc_vector_base_write(const void *vec_base)
 }
 
 /**
- * \brief read current exception vector base
+ * @brief read current exception vector base
  *
- * \returns exception vector base (uint32_t)
+ * @returns exception vector base (uint32_t)
  */
 Inline uint32_t arc_vector_base_read(void)
 {
@@ -236,10 +236,10 @@ Inline uint32_t arc_vector_base_read(void)
 
 #ifdef OS_FREERTOS
 /**
- * \brief  sense whether in exc/interrupt processing
+ * @brief  sense whether in exc/interrupt processing
  *
- * \retval 0	not in exc/interrupt processing
- * \retval 1	in exc/interrupt processing
+ * @retval 0	not in exc/interrupt processing
+ * @retval 1	in exc/interrupt processing
  */
 Inline uint32_t exc_sense(void)
 {
@@ -250,7 +250,7 @@ Inline uint32_t exc_sense(void)
 /** @}*/
 
 /**
- * \addtogroup ARC_HAL_EXCEPTION_INTERRUPT
+ * @addtogroup ARC_HAL_EXCEPTION_INTERRUPT
  * @{
  */
 #ifndef INT_PRI_MIN
@@ -259,9 +259,9 @@ Inline uint32_t exc_sense(void)
 
 #define INT_PRI_MAX (-1)                /*!< the maximum interrupt priority */
 /**
- * \brief disable the specific interrupt
+ * @brief disable the specific interrupt
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 Inline void arc_int_disable(const uint32_t intno)
 {
@@ -270,9 +270,9 @@ Inline void arc_int_disable(const uint32_t intno)
 }
 
 /**
- * \brief  enable the specific int
+ * @brief  enable the specific int
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 Inline void arc_int_enable(const uint32_t intno)
 {
@@ -281,10 +281,10 @@ Inline void arc_int_enable(const uint32_t intno)
 }
 
 /**
- * \brief  check whether the specific int is enabled
+ * @brief  check whether the specific int is enabled
  *
- * \param[in] intno interrupt number
- * \return 0 disabled, 1 enabled
+ * @param[in] intno interrupt number
+ * @return 0 disabled, 1 enabled
  */
 Inline uint32_t arc_int_enabled(const uint32_t intno)
 {
@@ -293,9 +293,9 @@ Inline uint32_t arc_int_enabled(const uint32_t intno)
 }
 
 /**
- * \brief  get the interrupt priority mask
+ * @brief  get the interrupt priority mask
  *
- * \returns interrupt priority mask, negative num
+ * @returns interrupt priority mask, negative num
  */
 Inline uint32_t arc_int_ipm_get(void)
 {
@@ -303,9 +303,9 @@ Inline uint32_t arc_int_ipm_get(void)
 }
 
 /**
- * \brief  set the interrupt priority mask
+ * @brief  set the interrupt priority mask
  *
- * \param[in] intpri interrupt priority
+ * @param[in] intpri interrupt priority
  */
 Inline void arc_int_ipm_set(uint32_t intpri)
 {
@@ -319,9 +319,9 @@ Inline void arc_int_ipm_set(uint32_t intpri)
 }
 
 /**
- * \brief  get current interrupt priority mask
+ * @brief  get current interrupt priority mask
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 Inline uint32_t arc_int_pri_get(const uint32_t intno)
 {
@@ -330,10 +330,10 @@ Inline uint32_t arc_int_pri_get(const uint32_t intno)
 }
 
 /**
- * \brief set interrupt priority
+ * @brief set interrupt priority
  *
- * \param[in] intno interrupt number
- * \param[in] intpri interrupt priority
+ * @param[in] intno interrupt number
+ * @param[in] intpri interrupt priority
  */
 Inline void arc_int_pri_set(const uint32_t intno, uint32_t intpri)
 {
@@ -342,10 +342,10 @@ Inline void arc_int_pri_set(const uint32_t intno, uint32_t intpri)
 }
 
 /**
- * \brief set interrupt secure or not secure
+ * @brief set interrupt secure or not secure
  *
- * \param[in] intno interrupt number
- * \param[in] secure, 0 for normal, >0 for secure
+ * @param[in] intno interrupt number
+ * @param[in] secure 0 for normal, >0 for secure
  */
 Inline void arc_int_secure_set(const uint32_t intno, uint32_t secure)
 {
@@ -362,11 +362,11 @@ Inline void arc_int_secure_set(const uint32_t intno, uint32_t secure)
 }
 
 /**
- * \brief  probe the pending status of interrupt
+ * @brief  probe the pending status of interrupt
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  *
- * \returns 1 pending, 0 no pending
+ * @returns 1 pending, 0 no pending
  */
 Inline uint32_t arc_int_probe(const uint32_t intno)
 {
@@ -375,9 +375,9 @@ Inline uint32_t arc_int_probe(const uint32_t intno)
 }
 
 /**
- * \brief  trigger the interrupt in software
+ * @brief  trigger the interrupt in software
  *
- * \param[in] intno interrupt number
+ * @param[in] intno interrupt number
  */
 Inline void arc_int_sw_trigger(const uint32_t intno)
 {
@@ -385,10 +385,10 @@ Inline void arc_int_sw_trigger(const uint32_t intno)
 }
 
 /**
- * \brief  config the interrupt level triggered or pulse triggered
+ * @brief  config the interrupt level triggered or pulse triggered
  *
- * \param[in] intno interrupt number
- * \param[in] level, 0-level trigger, 1-pluse triggered
+ * @param[in] intno interrupt number
+ * @param[in] level 0-level trigger, 1-pluse triggered
  */
 Inline void arc_int_level_config(const uint32_t intno, const uint32_t level)
 {
@@ -397,7 +397,7 @@ Inline void arc_int_level_config(const uint32_t intno, const uint32_t level)
 }
 
 /**
- * \brief  lock cpu, disable interrupts
+ * @brief  lock cpu, disable interrupts
  */
 Inline void arc_lock(void)
 {
@@ -405,7 +405,7 @@ Inline void arc_lock(void)
 }
 
 /**
- * \brief  unlock cpu, enable interrupts to happen
+ * @brief  unlock cpu, enable interrupts to happen
  */
 Inline void arc_unlock(void)
 {
@@ -413,9 +413,9 @@ Inline void arc_unlock(void)
 }
 
 /**
- * \brief  cpu is locked?
+ * @brief  cpu is locked?
  *
- * \returns 1 locked, 0 unlocked
+ * @returns 1 locked, 0 unlocked
  */
 Inline uint32_t arc_locked(void)
 {
@@ -427,9 +427,9 @@ Inline uint32_t arc_locked(void)
 }
 
 /**
- * \brief  lock cpu and status
+ * @brief  lock cpu and status
  *
- * \returns cpu status
+ * @returns cpu status
  */
 Inline uint32_t arc_lock_save(void)
 {
@@ -437,9 +437,9 @@ Inline uint32_t arc_lock_save(void)
 }
 
 /**
- * \brief  unlock cpu with the specific status
+ * @brief  unlock cpu with the specific status
  *
- * \param[in] status  cpu status saved by cpu_lock_save
+ * @param[in] status  cpu status saved by cpu_lock_save
  */
 Inline void arc_unlock_restore(const uint32_t status)
 {
@@ -447,9 +447,9 @@ Inline void arc_unlock_restore(const uint32_t status)
 }
 
 /**
- * \brief  interrupt is active ?
+ * @brief  interrupt is active ?
  *
- * \returns 1 active, 0 inactive
+ * @returns 1 active, 0 inactive
  */
 Inline uint32_t arc_int_active(void)
 {
@@ -462,53 +462,53 @@ Inline uint32_t arc_int_active(void)
 /** @}*/
 
 /**
- * \addtogroup ARC_HAL_EXCEPTION_CPU
+ * @addtogroup ARC_HAL_EXCEPTION_CPU
  * @{
  */
 /**
- * \typedef EXC_ENTRY_T
- * \brief  the data type for exception entry
+ * @typedef EXC_ENTRY_T
+ * @brief  the data type for exception entry
  */
 typedef void (*EXC_ENTRY_T) (void);
 /**
- * \typedef EXC_HANDLER_T
- * \brief  the data type for exception handler
+ * @typedef EXC_HANDLER_T
+ * @brief  the data type for exception handler
  */
 typedef void (*EXC_HANDLER_T) (void *exc_frame);
 /** @}*/
 
 /**
- * \ingroup ARC_HAL_EXCEPTION_INTERRUPT
- * \typedef INT_HANDLER_T
- * \brief  the data type for interrupt handler
+ * @ingroup ARC_HAL_EXCEPTION_INTERRUPT
+ * @typedef INT_HANDLER_T
+ * @brief  the data type for interrupt handler
  */
 typedef void (*INT_HANDLER_T) (void *ptr);
 
 extern EXC_ENTRY_T exc_entry_table[NUM_EXC_ALL];
 extern EXC_HANDLER_T exc_int_handler_table[NUM_EXC_ALL];
 
-/** \ingroup ARC_HAL_EXCEPTION_CPU
+/** @ingroup ARC_HAL_EXCEPTION_CPU
  * @{
  */
 /**
- * \fn _arc_reset
- * \brief the reset entry
+ * @fn _arc_reset
+ * @brief the reset entry
  */
 extern void _arc_reset(void);
 /**
- * \fn exc_entry_cpu
- * \brief the default CPU exception entry
+ * @fn exc_entry_cpu
+ * @brief the default CPU exception entry
  */
 extern void exc_entry_cpu(void);
 
 /**
- * \fn exc_entry_firq
- * \brief the fast interrupt exception entry
+ * @fn exc_entry_firq
+ * @brief the fast interrupt exception entry
  */
 extern void exc_entry_firq(void);
 /**
- * \fn exc_entry_int
- * \brief the interrupt exception entry
+ * @fn exc_entry_int
+ * @brief the interrupt exception entry
  */
 extern void exc_entry_int(void);
 /** @}*/
@@ -523,19 +523,61 @@ extern EXC_HANDLER_T exc_handler_get(const uint32_t excno);
 /* interrupt related APIs */
 extern int32_t int_disable(const uint32_t intno);
 extern int32_t int_enable(const uint32_t intno);
+/**
+ * @brief  check whether the specific int is enabled
+ *
+ * @param[in] intno interrupt number
+ * @return 0 disabled, 1 enabled, < 0 error
+ */
 extern int32_t int_enabled(const uint32_t intno);
 extern int32_t int_ipm_get(void);
 extern int32_t int_ipm_set(int32_t intpri);
+
+/**
+ * @brief  get current interrupt priority mask
+ *
+ * @param[in] intno interrupt number
+ * @return  <0 interrupt priority, 0 error
+ */
 extern int32_t int_pri_get(const uint32_t intno);
 extern int32_t int_pri_set(const uint32_t intno, int32_t intpri);
+
+/**
+ * @brief  probe the pending status of interrupt
+ *
+ * @param[in] intno interrupt number
+ * @returns 1 pending, 0 no pending, -1 error
+ */
 extern int32_t int_probe(const uint32_t intno);
+
+/**
+ * @brief  trigger the interrupt in software
+ *
+ * @param[in] intno interrupt number
+ * @return 0 ok, -1 error
+ */
 extern int32_t int_sw_trigger(const uint32_t intno);
+
+/**
+ * @brief  config the interrupt level triggered or pulse triggered
+ *
+ * @param[in] intno interrupt number
+ * @param[in] level 0-level trigger, 1-pluse triggered
+ * @return 0 ok, -1 error
+ */
 extern int32_t int_level_config(const uint32_t intno, const uint32_t level);
 extern void cpu_lock(void);
 extern void cpu_unlock(void);
 extern uint32_t cpu_lock_save(void);
 extern void cpu_unlock_restore(const uint32_t status);
 extern int32_t int_handler_install(const uint32_t intno, INT_HANDLER_T handler);
+
+/**
+ * @ingroup ARC_HAL_EXCEPTION_INTERRUPT
+ * @brief  get the installed an interrupt handler
+ * @param[in] intno interrupt number
+ * @return the installed interrupt handler or NULL
+ */
 extern INT_HANDLER_T int_handler_get(const uint32_t intno);
 extern int32_t int_secure_set(const uint32_t intno, uint32_t secure);
 extern void arc_firq_stack_set(uint8_t *firq_sp);

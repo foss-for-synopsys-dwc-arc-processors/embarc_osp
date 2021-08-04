@@ -29,14 +29,14 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER	embARC LwIP CoAP Server Example
- * \ingroup	EMBARC_APPS_TOTAL
- * \ingroup	EMBARC_APPS_OS_FREERTOS
- * \ingroup	EMBARC_APPS_MID_LWIP
- * \ingroup	EMBARC_APPS_MID_COAP
- * \brief	embARC Example for CoAP Protocol on FreeRTOS
+ * @defgroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER	embARC LwIP CoAP Server Example
+ * @ingroup	EMBARC_APPS_TOTAL
+ * @ingroup	EMBARC_APPS_OS_FREERTOS
+ * @ingroup	EMBARC_APPS_MID_LWIP
+ * @ingroup	EMBARC_APPS_MID_COAP
+ * @brief	embARC Example for CoAP Protocol on FreeRTOS
  *
- * \details
+ * @details
  * ### Extra Required Tools
  *     * [Firefox with CoAP Plugin](https://addons.mozilla.org/en-US/firefox/addon/copper-270430/)
  *
@@ -49,7 +49,7 @@
  *
  * ### Usage Manual
  *     This is an example running coap server on LwIP with FreeRTOS.
- *     The Pmod modules should be connected to \ref EMBARC_BOARD_CONNECTION "EMSK".
+ *     The Pmod modules should be connected to @ref EMBARC_BOARD_CONNECTION "EMSK".
  *     - This is a example similiar but simpler than the contiki coap_server one,
  *     so you can almost following the instruction list in contiki coap_server example,
  *     you need to check if you can ping emsk board, sometimes you need to clear arp table by run *arp -d*.
@@ -63,13 +63,13 @@
  */
 
 /**
- * \file
- * \ingroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER
- * \brief	lwip coap server example
+ * @file
+ * @ingroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER
+ * @brief	lwip coap server example
  */
 
 /**
- * \addtogroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER
+ * @addtogroup	EMBARC_APP_FREERTOS_IOT_COAP_COAP_SERVER
  * @{
  */
 #include "embARC.h"

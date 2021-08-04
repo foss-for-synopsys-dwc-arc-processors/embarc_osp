@@ -139,4 +139,4 @@ extern void arc_mwdt_fini(void);
 #endif  /* __ASSEMBLY__ */
 
 #endif  /* _EMBARC_TOOLCHAIN_H_ */
-/** }@ */
+/** @} */

@@ -29,23 +29,23 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSK_DRV_MID_NTSHELL_IO	EMSK NTShell Middleware IO Driver
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK NTShell Middleware IO Driver
- * \details
+ * @defgroup	BOARD_EMSK_DRV_MID_NTSHELL_IO	EMSK NTShell Middleware IO Driver
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK NTShell Middleware IO Driver
+ * @details
  *		Realize the driver which the middleware ntshell need, the driver implementation
  *	is based on the standard of ntshell_io structure, the ntshell io can be uart,
  *	network and other similar io driver.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_MID_NTSHELL_IO
- * \brief	middleware ntshell io interface driver
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_MID_NTSHELL_IO
+ * @brief	middleware ntshell io interface driver
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_MID_NTSHELL_IO
+ * @addtogroup	BOARD_EMSK_DRV_MID_NTSHELL_IO
  * @{
  */
 #include "embARC_toolchain.h"

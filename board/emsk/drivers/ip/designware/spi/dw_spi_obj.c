@@ -29,23 +29,23 @@
    --------------------------------------------- */
 
 /**
- * \defgroup	BOARD_EMSK_DRV_DW_SPI_OBJ	EMSK DW SPI Object
- * \ingroup	BOARD_EMSK_DRIVER
- * \brief	EMSK Designware SPI Objects
- * \details
+ * @defgroup	BOARD_EMSK_DRV_DW_SPI_OBJ	EMSK DW SPI Object
+ * @ingroup	BOARD_EMSK_DRIVER
+ * @brief	EMSK Designware SPI Objects
+ * @details
  *		realize the EMSK board spi object using designware spi device driver,
  *	only need to realize some designware spi structures combine with EMSK spi
  *	hardware resource. just like cpp class instantiation.
  */
 
 /**
- * \file
- * \ingroup	BOARD_EMSK_DRV_DW_SPI_OBJ
- * \brief	designware spi object instantiation on emsk
+ * @file
+ * @ingroup	BOARD_EMSK_DRV_DW_SPI_OBJ
+ * @brief	designware spi object instantiation on emsk
  */
 
 /**
- * \addtogroup	BOARD_EMSK_DRV_DW_SPI_OBJ
+ * @addtogroup	BOARD_EMSK_DRV_DW_SPI_OBJ
  * @{
  */
 
@@ -55,7 +55,7 @@
 #include "emsk/emsk.h"
 
 /**
- * \name	EMSK DesignWare SPI 0 Object Instantiation
+ * @name	EMSK DesignWare SPI 0 Object Instantiation
  * @{
  */
 #if (USE_DW_SPI_0)
@@ -172,7 +172,7 @@ static void dw_spi_0_install(void)
 /** @} end of name */
 
 /**
- * \name	EMSK DesignWare SPI 1 Object Instantiation
+ * @name	EMSK DesignWare SPI 1 Object Instantiation
  * @{
  */
 #if (USE_DW_SPI_1)
@@ -297,8 +297,8 @@ DEV_SPI_PTR spi_get_dev(int32_t spi_id)
 }
 
 /**
- * \brief	install all spi objects
- * \note	\b MUST be called during system init
+ * @brief	install all spi objects
+ * @note	@b MUST be called during system init
  */
 void dw_spi_all_install(void)
 {

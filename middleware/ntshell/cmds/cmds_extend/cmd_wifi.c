@@ -29,8 +29,8 @@
 --------------------------------------------- */
 
 /**
-* \file
-* \brief operate PMOD WiFi module
+* @file
+* @brief operate PMOD WiFi module
 */
 #include "cmds_extend_cfg.h"
 #if NTSHELL_USE_CMDS_EXTEND_WIFI

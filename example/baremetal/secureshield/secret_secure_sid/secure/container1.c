@@ -28,9 +28,9 @@
  *
    --------------------------------------------- */
 /**
- * \file
- * \ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_V2_SID
- * \brief	secureshield secure container 1
+ * @file
+ * @ingroup	EMBARC_APP_BAREMETAL_SECURESHIELD_SECRET_V2_SID
+ * @brief	secureshield secure container 1
  */
 #undef LIB_SECURESHIELD_OVERRIDES
 #include <string.h>
